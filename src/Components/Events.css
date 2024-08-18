@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.caro-container {
+  display: flex;
+  overflow: hidden;
+  margin-left: 20px;
+  margin-top: 60px;
+  width: 920px; /* Fixed width to fit exactly two boxes with margin */
+  height: 405px; /* Fixed height */
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.caro-content {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Width for sliding */
+  position: absolute;
+  left: 0;
+}
+
+.caro-item {
+  width: 425px; /* Fixed width of each box */
+  height: 400px; /* Fixed height of each box */
+  margin-right: 40px; /* Space between the boxes */
+  flex-shrink: 0;
+}
+
+.event-box {
+  width: 425px; /* Full width of the carousel-item */
+  height: 375px; /* Full height of the carousel-item */
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3); /* Thicker shadow with more blur and spread */
+  border-radius: 10px;
+  display: flex;
+  border-style: thin;
+  border-color: #000000;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+.event-header {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Remove all margins */
+  padding-bottom: 15px; /* Increased padding to create more space */
+}
+
+.event-date .circle {
+  background-color: #2cbcf5;
+  color: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border: 5px solid #f0f0f0;
+}
+
+.event-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 20px;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.event-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-row.department-name {
+  background-color: #2cbcf5;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 5px; /* Reduced margin */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-row.description {
+  color: rgb(3, 3, 3);
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 25px; /* Reduced margin */
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  flex: 1; /* Allow description to grow */
+}
+
+.event-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.event-row.duration,
+.event-row.links {
+  text-align: center;
+  margin-top: 20px; /* Adjusted margin */
+  color: #333;
+}
+
+.event-row.links {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.event-row.links a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.event-row.links a:hover {
+  text-decoration: underline;
+}

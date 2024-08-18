@@ -1,0 +1,83 @@
+.car-container {
+    width: 550px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    border:  3px thin black;
+    margin-right: 10px;
+  }
+  
+  .car {
+    font-family: 'Roboto Condensed', sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .car-item { 
+    font-size: 15px; /* Correctly specify font size */
+    font-family: 'Roboto', sans-serif;
+    color: rgb(109, 109, 146);
+    height: 50px;
+    text-align: left;
+    line-height: 50px;
+    border-bottom: 2px dashed #ddd;
+    padding-left: 20px;
+    font-weight: 600;
+  }
+  
+  .controls {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .announcements{
+    padding-top:20px;
+    margin-top: -350px;
+    float: right;
+    border: 1px solid rgb(109, 109, 146);
+  }
+  
+  .announcements h1 {
+    text-align: center;
+    font-size: 23px; /* Correctly specify font size */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+  
+  .car i{
+    font-size: 10px;
+    color: black;
+    margin-left: 10px;
+  }
+
+  .car a{
+    font-size: 14px;
+    cursor: pointer;
+    color: rgb(9, 9, 224);
+  }
+
+  .news .seal{
+    font-weight: 600;
+    margin-right: 20px;
+    margin-top: 10px;
+    float: right;
+    font-size: 17px;
+    font-family: bold;
+    color: rgb(109, 109, 146);
+    cursor: pointer;
+  }
+
+  .news .seal:hover{
+    text-decoration: underline;
+    color: rgb(9, 9, 224);
+  }
+
+  .test{
+    cursor: pointer;
+  }

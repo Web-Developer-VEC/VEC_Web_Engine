@@ -1,0 +1,60 @@
+.contact-icon-container {
+  position: fixed;
+  bottom: 20px; 
+  left: 20px;  
+}
+
+.contact-icon {
+  cursor: pointer;
+  height: 50px;
+  border-radius: 100%;
+  border: 2px solid ;
+
+}
+/* 
+.click-popup {
+  position: fixed;
+  background-color: white;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  z-index: 1000;
+  width: fit-content;
+}  */
+
+/*.hover-popup {
+  display: block;
+  height: fit-content;
+  left: 70px;
+  bottom: 60px; 
+  border: .5px solid #000000;
+  
+   
+} */
+
+.click-popup {
+  background: #5198df;
+  color: white;
+  padding: 10px;
+  position:fixed;
+  height: 8vw;
+  width: 400px;
+  bottom: 100px; 
+  left: 20px; 
+  border: 2px solid white;
+  border-style: thin;
+  border-radius: 10px;
+  box-shadow:  black 1px 1px;
+
+} 
+.click-popup  a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.click-popup a:hover {
+  color:blue
+  
+}
+.click-popup  h3{
+  font-size: 20px;
+}

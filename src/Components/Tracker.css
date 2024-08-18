@@ -1,0 +1,66 @@
+/* StatsGrid.css */
+
+.page-container {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  margin-bottom: -150px;
+  margin-top: -485px;
+}
+
+.stats-grid-container {
+  position: absolute;
+  right: 10px; /* Adjust as needed */
+  bottom: 30%; /* Adjust as needed */
+  display: flex;
+  width: 550px;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally if needed */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Adjust grid layout as needed */
+  gap: 20px; /* Space between grid items */
+  background: #f9f9f9; /* Optional: background color for the grid */
+  border: 1px solid #ddd; /* Optional: border for the grid */
+  padding: 20px; /* Optional: padding inside the grid */
+  width: 600px;
+  height: 380px;
+  border-radius: 12px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .icon{
+  margin-left: 95px;
+  margin-bottom: 10px;
+}
+
+.stat-icon {
+  font-size: 2px; /* Adjust icon size as needed */
+
+
+}
+
+.stat-number {
+  font-size: 1.5rem; /* Adjust number size as needed */
+ 
+
+}
+
+.stat-label {
+  font-size: 1rem; /* Adjust label size as needed */
+  /*width: 150px;
+  margin-left: 50px;*/
+ 
+}
+
+.section-title {
+  font-size: 24px; /* Adjust the size as needed */
+  margin-bottom: 20px; /* Space between title and stats grid */
+  text-align: center; /* Center align the title */
+  font-weight: bold;
+}

@@ -1,0 +1,10 @@
+/*About.css*/
+
+.abt{
+    text-align: center;
+    width: 900px;
+    margin-top: 50px;
+    /*border: solid 2px rgb(182, 177, 177);*/
+    margin-left: 20px;
+    border-radius: 10px;
+}
