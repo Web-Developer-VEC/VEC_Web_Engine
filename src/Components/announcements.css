@@ -1,83 +1,158 @@
-.car-container {
-    width: 550px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-    border:  3px thin black;
-    margin-right: 10px;
-  }
-  
-  .car {
-    font-family: 'Roboto Condensed', sans-serif;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .car-item { 
-    font-size: 15px; /* Correctly specify font size */
-    font-family: 'Roboto', sans-serif;
-    color: rgb(109, 109, 146);
-    height: 50px;
-    text-align: left;
-    line-height: 50px;
-    border-bottom: 2px dashed #ddd;
-    padding-left: 20px;
-    font-weight: 600;
-  }
-  
-  .controls {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .announcements{
-    padding-top:20px;
-    margin-top: -350px;
-    float: right;
-    border: 1px solid rgb(109, 109, 146);
-  }
-  
-  .announcements h1 {
-    text-align: center;
-    font-size: 23px; /* Correctly specify font size */
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-  }
-  
-  .car i{
-    font-size: 10px;
-    color: black;
-    margin-left: 10px;
-  }
+.news {
+  position: relative;
+  padding: 20px;
+  color: black;
+  background-color: #fff;
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 50px;
+}
 
-  .car a{
-    font-size: 14px;
-    cursor: pointer;
-    color: rgb(9, 9, 224);
-  }
+.news .head{
+  text-align: top;
+  font-size: 35px;
+  color: chocolate;
+  margin-top: -20px;
+}
 
-  .news .seal{
-    font-weight: 600;
-    margin-right: 20px;
-    margin-top: 10px;
-    float: right;
-    font-size: 17px;
-    font-family: bold;
-    color: rgb(109, 109, 146);
-    cursor: pointer;
-  }
+.news img {
+  /* padding: 20px; */
+  width: 26rem;
+}
 
-  .news .seal:hover{
-    text-decoration: underline;
-    color: rgb(9, 9, 224);
-  }
+.announcement {
+  display: flex;
+}
 
-  .test{
-    cursor: pointer;
-  }
+.announcement .main {
+  width: 490px;
+  padding: 25px;
+  margin-left: 50px;
+  /* border-right: 2px solid black; */
+}
+
+.announcement .main h2 {
+  font-size: 20px;
+  color: rgb(149, 59, 10);
+  font-weight: 600;
+}
+
+.announcement .main button {
+  background-color: rgb(224, 59, 9);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.announcement .main button:hover {
+  background-color: rgb(7, 7, 180);
+}
+
+.tiles {
+  display: flex;
+  padding: 0 50px;
+  align-items: center;
+}
+
+.announcement .card {
+  position: relative;
+  width: 330px;
+  height: 400px;
+  /* border-left: 2px solid black; */
+}
+
+.announcement .card-inner {
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+}
+
+.announcement .card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.announcement .card-front,
+.announcement .card-back {
+  /* border-width: 50px 10px 15px 20px; */
+  /* clip-path: polygon(7% 5%, 99% 1%, 89% 99%, 7% 95%); */
+  padding: 0 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center items */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.tiles .content h4{
+  display: flex;
+}
+
+.tiles .content h4:hover {
+  transform: scale(1.05); /* Zoom in effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+.announcement .card-front {
+  background: #fff;
+  color: #5b44a8;
+}
+
+.announcement .card-back {
+  background: #f0f0f0;
+  color: #4b484e;
+  transform: rotateY(180deg);
+}
+
+.announcement .card-front {
+  background-color: rgb(201, 221, 215);
+}
+
+.announcement .card-back{
+  background-color: #8ad9e1;
+}
+
+.tiles .content{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tiles .card h4{
+  border-bottom: 1px dashed #111;
+  padding:20px 10px;
+}
+
+.tiles .card a {
+  font-size: 14px;
+  cursor: pointer;
+  background:  linear-gradient(45deg, #ff6f61, #ffbc00, #ffc3a0);;
+  /* background: linear-gradient(45deg, yellow, white, rgb(223, 189, 144)); */
+  -webkit-background-clip: text;
+  font-style: bold;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  text-decoration: underline;
+}
+
+.tiles .card a:hover {
+  background-image: linear-gradient(45deg, #37ff00, #0066ff, #fd5e02), linear-gradient(to bottom, currentColor 0%, currentColor 100%);
+  background-clip: text, border-box;
+  text-decoration: underline; 
+  -webkit-background-clip: text, padding-box;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 100%, 100% 2px;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}

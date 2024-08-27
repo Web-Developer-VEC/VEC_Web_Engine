@@ -1,74 +1,142 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './announcements.css';
+import React, { useState, useEffect } from "react";
+import "./announcements.css";
+import img1 from "./Assets/hostel.jpg";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
-const Carousel = () => {
-  const carouselRef = useRef(null);
-  const [itemHeight, setItemHeight] = useState(0);
-  const scrollInterval = 3000; // Time in milliseconds (3 seconds)
-  const totalItems = 5; // Number of original items
+const Announcements1 = () => {
+  const main = [
+    { head: "Nominations are invited from alumni for the year 2024" },
+    {
+      content:
+        "Brain; be agile, where they will be appreciated. We recognize ourgreat minds cultivated by Velammal who leaps above and beyond in theirdomain and inspire the young hearts to grow agile by awarding them inthese following categories.",
+    },
+    {
+      awards: [
+        { ttle: "Placement Icon Award" },
+        { ttle: "Emerging Entrepreneur Award" },
+        { ttle: "Path Breakers Award" },
+        { ttle: "Optimal pursuer Award" },
+        { ttle: "Humanitarian Award" },
+      ],
+    },
+  ];
 
+  const ance = [
+    { ttle: "<FaLongArrowAltRight/> B.E / B.Tech Admissions open for 1st years" },
+    { ttle: "MBA Admissions open" },
+    { ttle: "B.E / B.Tech Admissions open for Lateral Entry" },
+    { ttle: "SEE results for 3rd year" },
+    { ttle: "SEE results for 2nd year" },
+    { ttle: "Revaluation Application for 2nd years" },
+    { ttle: "Revaluation Application for 3rd years" },
+    { ttle: "Revaluation Application for MBA" },
+    { ttle: "Culturals" },
+  ];
+
+  // const ance = [
+  //   { ttle: <><FaLongArrowAltRight /> B.E / B.Tech Admissions open for 1st years</> },
+  //   { ttle: <><FaLongArrowAltRight /> MBA Admissions open</> },
+  //   { ttle: <><FaLongArrowAltRight /> B.E / B.Tech Admissions open for Lateral Entry</> },
+  //   { ttle: <><FaLongArrowAltRight /> SEE results for 3rd year</> },
+  //   { ttle: <><FaLongArrowAltRight /> SEE results for 2nd year</> },
+  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for 2nd years</> },
+  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for 3rd years</> },
+  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for MBA</> },
+  //   { ttle: <><FaLongArrowAltRight /> Culturals</> },
+  // ];
+
+  const [flipped, setFlipped] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically flip the card every 3 seconds, unless hovered
   useEffect(() => {
-    const carousel = carouselRef.current;
-    const carouselItems = Array.from(carousel.children);
-    const height = carouselItems[0].clientHeight;
+    let flipInterval;
+    let indexUpdateInterval;
 
-    setItemHeight(height);
+    if (!hovered) {
+      flipInterval = setInterval(() => {
+        setFlipped((prev) => !prev);
+      }, 6250); // Flip every 6250 ms
 
-    // Clone items to create an infinite loop effect
-    const cloneItems = carouselItems.map(item => item.cloneNode(true));
-    carousel.append(...cloneItems);
+      indexUpdateInterval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % ance.length);
+      }, 12700); // Update index every 12700 ms
+    }
 
-    // Set the total number of items including clones
-    const totalVisibleItems = totalItems * 2;
-    carousel.style.height = `${height * totalVisibleItems}px`;
-
-    let currentIndex = 0;
-
-    const autoScroll = () => {
-      setInterval(() => {
-        currentIndex++;
-        if (currentIndex >= totalItems) {
-          // Reset to start after scrolling past the original items
-          carousel.style.transition = 'none'; // Disable transition during reset
-          carousel.style.transform = `translateY(0px)`;
-          currentIndex = 0;
-
-          // Re-enable transition after reset
-          setTimeout(() => {
-            carousel.style.transition = 'transform 0.5s ease-in-out';
-          }, 50);
-        } else {
-          carousel.style.transform = `translateY(-${currentIndex * height}px)`;
-        }
-      }, scrollInterval);
+    // Clean up intervals on hover state change or component unmount
+    return () => {
+      clearInterval(flipInterval);
+      clearInterval(indexUpdateInterval);
     };
-
-    autoScroll();
-  }, [itemHeight]);
+  }, [hovered, ance.length]); // Dependency array
 
   return (
-    <section className="announcements news">
-    <h1>News and Announcements</h1>
-      <div className="car-container">
-        <div className="car" ref={carouselRef}>
-          <div className="car-item">B.E / B.Tech Admissions <i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">MBA Admissions <i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">SEE Results for 3rd year <i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">SEE Results for 2nd year <i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">Reavlution Application for B.E/B.Tech<i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">Reavlution Application for MBA<i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">Reavlution Application for M.E<i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
-          <div className="car-item">Culturals<i class="fa-solid fa-link"></i> . <a href="#">click here</a></div>
+      <section className="news">
+      <div className="head">News</div>
+      <div className="announcement">
+        <div className="img">
+          <img src={img1} alt="college" />
+        </div>
+        <div className="main">
+          <h2>{main[0].head}</h2>
+          <p>{main[1].content}</p>
+          <ul>
+            {main[2].awards.map((item, index) => (
+              <li key={index}>{item.ttle}</li>
+            ))}
+          </ul>
+          <button>Apply Now</button>
+        </div>
+
+        <div className="tiles">
+          <div
+            className="card"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            <div className={`card-inner ${flipped ? "flipped" : ""}`}>
+              <div className="card-front">
+                <h2>Announcements</h2>
+                <div className="content">
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px', marginTop: "10px" }}/>
+                    {ance[currentIndex % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                    {ance[(currentIndex + 1) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                    {ance[(currentIndex + 2) % ance.length].ttle}{" "}
+                  </h4>
+                </div>
+              </div>
+              <div className="card-back">
+                <h2>Announcements</h2>
+                <div className="content">
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                    {ance[(currentIndex + 3) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                    {ance[(currentIndex + 4) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                    {ance[(currentIndex + 5) % ance.length].ttle}{" "}
+                  </h4>
+                  {/* You can add more detailed content here if needed */}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="#" className="seal"><h5 className='alan'>All Announcements <i className="fa-solid fa-arrow-right"></i></h5></a>
-      
     </section>
   );
 };
 
-function announcements() {
-  return <Carousel />;
-}
-
-export default announcements;
+export default Announcements1;

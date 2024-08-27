@@ -20,18 +20,18 @@ const Sidebar = (props) => {
   return (
     <>
       {/* Fixed icon on the right side of the screen */}
-      <div className={`group rounded-md p-2 -mt-2 ${props.Sz} transition-all ease-in-out duration-300`}
+      <div className={`group rounded-md border-2 border-slate-700 p-2 -mt-10 ${props.Sz} transition-all ease-in-out duration-300`}
         style={{
           position: "fixed",
-          top: "20px",
+          top: "5vmax",
           right: "20px",
           zIndex: "1100", // Higher than the sidebar z-index
           cursor: "pointer",
-          background: "#333",
+          background: "transparent",
         }}
         onClick={toggleSidebar}
       >
-        <Bars3BottomRightIcon className= 'group-[.tny]:size-6 size-10  transition-all duration-300 ease-in-out' color="#fff" />
+        <Bars3BottomRightIcon className= 'size-10 text-black transition-all duration-300 ease-in-out' color="#fff" />
       </div>
 
       {/* Main Sidebar */}

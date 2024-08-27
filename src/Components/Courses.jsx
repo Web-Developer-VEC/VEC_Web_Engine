@@ -71,7 +71,7 @@ const CourseCarousel = ({ courses }) => {
       onMouseUp={handleDragEnd}
       onDragStart={(e) => e.preventDefault()}
     >
-      <h1 className="head font-rome">EXPLORE COURSES</h1>
+      <h1 className="head font-rome" style={{color:"orange", fontSize:"1.5rem", marginBottom:"2%"}}>EXPLORE COURSES</h1>
       <button className="nav-button left" onClick={handlePrev}>
         &#60;
       </button>

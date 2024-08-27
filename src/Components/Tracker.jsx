@@ -71,22 +71,22 @@ const StatsGrid = () => {
       <div className="stats-grid-container">
         <div className="stats-grid" ref={statsRef}>
           <div className="stat-item">
-          <FaChalkboardTeacher className='icon' size={50} />
+          <FaChalkboardTeacher className='icon' size={90} color='orange' />
             <h2 className="stat-number">{counters.teachers}</h2>
             <p className="stat-label">Teachers</p>
           </div>
           <div className="stat-item">
-            <PiStudentBold className='icon' size={50}/>
+            <PiStudentBold className='icon' size={90} color='orange'/>
             <h2 className="stat-number" >{counters.phdHolders} INR</h2>
             <p className="stat-label">highest Salary (LPA)</p>
           </div>
           <div className="stat-item">
-            <IoIosPeople className='icon' size={50}/>
+            <IoIosPeople className='icon' size={90} color='orange'/>
             <h2 className="stat-number">{counters.students}</h2>
             <p className="stat-label">Active Learners</p>
           </div>
           <div className="stat-item">
-            <GiAchievement className='icon' size={50}/>
+            <GiAchievement className='icon' size={90} color='orange'/>
             <h2 className="stat-number">{counters.placement}%</h2>
             <p className="stat-label">Placement</p>
           </div>

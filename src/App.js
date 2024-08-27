@@ -9,6 +9,7 @@ import Samplereact from './Components/Courses';
 import Footer from './Components/Footer';
 import Contact from './Components/ContactIcon'
 import Chat from './Components/ChatPopup'
+import Boot from './Components/BootUp';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const courses = [
@@ -73,6 +74,7 @@ const courses = [
 const LandingPage = () => {
   return (
     <div className="landing-page">
+      <Boot />
       <Head/>
       <ImgSld/>
       <Abt/>

@@ -1,61 +1,49 @@
-/* StatsGrid.css */
-
 .page-container {
-  position: relative;
-  height: 100vh; /* Full viewport height */
-  width: 100%; /* Full width */
-  margin-bottom: -150px;
-  margin-top: -485px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  width: 100%;
 }
 
 .stats-grid-container {
-  position: absolute;
-  right: 10px; /* Adjust as needed */
-  bottom: 30%; /* Adjust as needed */
   display: flex;
-  width: 550px;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally if needed */
+  justify-content: center; /* Center the grid horizontally */
+  align-items: center; /* Center the grid vertically */
+  width: 100%; /* Full width */
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Adjust grid layout as needed */
-  gap: 20px; /* Space between grid items */
-  background: #f9f9f9; /* Optional: background color for the grid */
-  border: 1px solid #ddd; /* Optional: border for the grid */
+  display: flex; 
+  justify-content: space-between; /* Space out the items evenly */
+  align-items: center; /* Align items vertically */
+  gap: 250px; 
+  margin-left: 40px;
+  margin-bottom: 20%;
   padding: 20px; /* Optional: padding inside the grid */
-  width: 600px;
-  height: 380px;
   border-radius: 12px;
+  /* max-width: 90%; Adjust width to keep the content responsive */
 }
 
 .stat-item {
   text-align: center;
+  flex: 1; /* Allow equal space for each item */
+  margin: 10px 0; /* Margin for vertical spacing */
 }
 
-.stat-item .icon{
-  margin-left: 95px;
-  margin-bottom: 10px;
-}
-
-.stat-icon {
-  font-size: 2px; /* Adjust icon size as needed */
-
-
+.stat-item .icon {
+  font-size: 90%; /* Maximize icon size */
+  margin-bottom: 15px; /* Space between icon and number */
 }
 
 .stat-number {
-  font-size: 1.5rem; /* Adjust number size as needed */
- 
-
+  font-size: 2rem; /* Increase number size */
+  margin: 10px 0; /* Space between number and label */
 }
 
 .stat-label {
-  font-size: 1rem; /* Adjust label size as needed */
-  /*width: 150px;
-  margin-left: 50px;*/
- 
+  font-size: 1.2rem; /* Adjust label size */
+  margin-top: 5px; /* Space above the label */
 }
 
 .section-title {

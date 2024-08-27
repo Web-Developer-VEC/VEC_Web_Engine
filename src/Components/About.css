@@ -1,10 +1,15 @@
 /*About.css*/
 
 .abt{
+    font-size: 20px;
     text-align: center;
     width: 900px;
     margin-top: 50px;
     /*border: solid 2px rgb(182, 177, 177);*/
-    margin-left: 20px;
+    margin-left: 22%;
     border-radius: 10px;
+}
+
+.abt2,.abt3{
+    font-size: 1.2rem;
 }

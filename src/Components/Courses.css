@@ -7,12 +7,12 @@
   overflow: hidden;
   position: relative;
   -webkit-user-drag: none; /* For Safari */
-  margin-top: -250px;
+  margin-top: -37%;
 }
 
 .head {
   text-align: center;
-  margin-bottom: 40px; /* Adjust this value to change the spacing between the header and the carousel */
+  margin-top: 200px; /* Adjust this value to change the spacing between the header and the carousel */
 }
 
 .nav-button {
@@ -44,7 +44,7 @@
   position: relative;
   transition: transform 0.8s ease-in-out;
   width: 100%;
-  margin-bottom: 130px;
+  margin-bottom: 10%;
 }
 
 .carousel-box {
