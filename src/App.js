@@ -77,14 +77,20 @@ const LandingPage = () => {
       <Boot />
       <Head/>
       <ImgSld/>
-      <Abt/>
-      <Announce/>
-      <Event/>
-      <Tracker/>
-      <Samplereact courses={courses} />
-      <Footer />
-      <Contact/>
-      <Chat/>
+      <div className='w-[100vw] h-fit absolute z-50'>
+        <div className='pt-2 pb-[2vmax] bg-white'>
+          <Abt/>
+          <Announce/>
+          <Event/>
+        </div>
+        <Tracker/>
+        <div className='bg-white'>
+          <Samplereact courses={courses} />
+          <Contact/>
+          <Chat/>
+          <Footer />
+        </div>
+        </div>
     </div>
   );
 };

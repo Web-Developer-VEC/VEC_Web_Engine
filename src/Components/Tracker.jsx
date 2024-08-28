@@ -67,10 +67,11 @@ const StatsGrid = () => {
   }, [isVisible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="page-container">
+    <div className="page-container flex justify-start text-white">
       <div className="stats-grid-container">
-        <div className="stats-grid" ref={statsRef}>
-          <div className="stat-item">
+        <div className="stats-grid h-fit rounded-lg bg-[#0000001a] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[3px]" 
+          ref={statsRef}>
+          <div className="stat-item px-2">
           <FaChalkboardTeacher className='icon' size={90} color='orange' />
             <h2 className="stat-number">{counters.teachers}</h2>
             <p className="stat-label">Teachers</p>
@@ -92,7 +93,7 @@ const StatsGrid = () => {
           </div>
         </div>
       </div>
-    </div>
+  </div>
   );
 };
 

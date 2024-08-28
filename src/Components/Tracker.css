@@ -1,38 +1,41 @@
 .page-container {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
+  justify-content: center;
+  height: 85vh; 
   width: 100%;
+  margin-top: 2vmax;
 }
 
 .stats-grid-container {
   display: flex;
   justify-content: center; /* Center the grid horizontally */
-  align-items: center; /* Center the grid vertically */
+  align-items: top; /* Center the grid vertically */
   width: 100%; /* Full width */
 }
 
 .stats-grid {
   display: flex; 
   justify-content: space-between; /* Space out the items evenly */
-  align-items: center; /* Align items vertically */
+  align-items: top;
   gap: 250px; 
-  margin-left: 40px;
+  /* margin-left: 40px; */
   margin-bottom: 20%;
   padding: 20px; /* Optional: padding inside the grid */
-  border-radius: 12px;
-  /* max-width: 90%; Adjust width to keep the content responsive */
+  /* border-radius: 12px; */
+  max-width: 90%;
 }
 
 .stat-item {
   text-align: center;
+  padding: 0 2vmax 2vmax 0;
   flex: 1; /* Allow equal space for each item */
+  justify-content: center;
   margin: 10px 0; /* Margin for vertical spacing */
 }
 
 .stat-item .icon {
-  font-size: 90%; /* Maximize icon size */
+  margin: auto;
+  font-size: 1.2vmax; /* Maximize icon size */
   margin-bottom: 15px; /* Space between icon and number */
 }
 
@@ -48,7 +51,7 @@
 
 .section-title {
   font-size: 24px; /* Adjust the size as needed */
-  margin-bottom: 20px; /* Space between title and stats grid */
+  margin-bottom: 20px; 
   text-align: center; /* Center align the title */
   font-weight: bold;
 }

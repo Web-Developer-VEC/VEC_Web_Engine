@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'rome': ['Times New Roman', 'ui-sans-serif', 'system-ui'],
+      'rome': ['Goudy Old Style', 'ui-sans-serif', 'system-ui'],
       'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
       'popp': ['Poppins', 'ui-sans-serif', 'system-ui']
     },
@@ -32,10 +32,33 @@ module.exports = {
       twirl: {
         'from': {transform: 'rotate(0deg)'},
         'to': {transform: 'rotate(180deg)'}
+      },
+      bam: {
+        '0%': {fontSize: '0'},
+        '100%': {fontSize: '2.75vmax'}
+      },
+      bom: {
+        '0%': {fontSize: '0'},
+        '100%': {fontSize: '1.75vmax'}
+      },
+      fadIn: {
+        '0%': {opacity: '0'},
+        '100%': {opacity: '1'}
+      },
+      slideIn: {
+        '0%': {transform: 'translateX(40vmax)', opacity: '0'},
+        '2%': {transform: 'translateX(5vmax)', opacity: '1'},
+        '16.67%': {transform: 'translateX(5vmax)', opacity: '1'},
+        // '20%': {opacity: '0'},
+        '17.67%': {transform: 'translateX(-40vmax)', opacity: '0'},
+        '100%': {opacity: '0'}
+      },
+      slideUp: {
+        '0%': {transform: 'translateY(0)'},
+        '100%': {transform: 'translateY(-100%)'}
       }
     },
     extend: {},
   },
   plugins: [],
 }
-

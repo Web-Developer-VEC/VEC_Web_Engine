@@ -96,6 +96,8 @@
 
 .tiles .content h4{
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .tiles .content h4:hover {
@@ -133,7 +135,7 @@
 }
 
 .tiles .card a {
-  font-size: 14px;
+  font-size: 25px;
   cursor: pointer;
   background:  linear-gradient(45deg, #ff6f61, #ffbc00, #ffc3a0);;
   /* background: linear-gradient(45deg, yellow, white, rgb(223, 189, 144)); */

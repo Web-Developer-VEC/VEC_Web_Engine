@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./announcements.css";
 import img1 from "./Assets/hostel.jpg";
-import { FaLongArrowAltRight } from "react-icons/fa";
 
 const Announcements1 = () => {
   const main = [
@@ -22,7 +21,7 @@ const Announcements1 = () => {
   ];
 
   const ance = [
-    { ttle: "<FaLongArrowAltRight/> B.E / B.Tech Admissions open for 1st years" },
+    { ttle: "B.E / B.Tech Admissions open for 1st years" },
     { ttle: "MBA Admissions open" },
     { ttle: "B.E / B.Tech Admissions open for Lateral Entry" },
     { ttle: "SEE results for 3rd year" },
@@ -32,18 +31,6 @@ const Announcements1 = () => {
     { ttle: "Revaluation Application for MBA" },
     { ttle: "Culturals" },
   ];
-
-  // const ance = [
-  //   { ttle: <><FaLongArrowAltRight /> B.E / B.Tech Admissions open for 1st years</> },
-  //   { ttle: <><FaLongArrowAltRight /> MBA Admissions open</> },
-  //   { ttle: <><FaLongArrowAltRight /> B.E / B.Tech Admissions open for Lateral Entry</> },
-  //   { ttle: <><FaLongArrowAltRight /> SEE results for 3rd year</> },
-  //   { ttle: <><FaLongArrowAltRight /> SEE results for 2nd year</> },
-  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for 2nd years</> },
-  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for 3rd years</> },
-  //   { ttle: <><FaLongArrowAltRight /> Revaluation Application for MBA</> },
-  //   { ttle: <><FaLongArrowAltRight /> Culturals</> },
-  // ];
 
   const [flipped, setFlipped] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -100,15 +87,15 @@ const Announcements1 = () => {
                 <h2>Announcements</h2>
                 <div className="content">
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px', marginTop: "10px" }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[currentIndex % ance.length].ttle}{" "}
                   </h4>
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 1) % ance.length].ttle}{" "}
                   </h4>
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 2) % ance.length].ttle}{" "}
                   </h4>
                 </div>
@@ -117,15 +104,15 @@ const Announcements1 = () => {
                 <h2>Announcements</h2>
                 <div className="content">
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 3) % ance.length].ttle}{" "}
                   </h4>
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 4) % ance.length].ttle}{" "}
                   </h4>
                   <h4>
-                  <FaLongArrowAltRight style={{ fontSize: '20px' }}/>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 5) % ance.length].ttle}{" "}
                   </h4>
                   {/* You can add more detailed content here if needed */}

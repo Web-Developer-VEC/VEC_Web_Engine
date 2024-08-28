@@ -3,16 +3,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: fit-content;
+  padding-top: 2vmax;
+  width: 100%;
   overflow: hidden;
   position: relative;
   -webkit-user-drag: none; /* For Safari */
-  margin-top: -37%;
+  margin-top: -15.5vmax;
 }
 
 .head {
   text-align: center;
-  margin-top: 200px; /* Adjust this value to change the spacing between the header and the carousel */
+  /* margin-top: 200px;  */
 }
 
 .nav-button {
@@ -44,7 +46,7 @@
   position: relative;
   transition: transform 0.8s ease-in-out;
   width: 100%;
-  margin-bottom: 10%;
+  margin-bottom: 4vmax;
 }
 
 .carousel-box {

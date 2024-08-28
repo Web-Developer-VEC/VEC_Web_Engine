@@ -13,13 +13,12 @@
 
   color: white;
   padding: 20px;
-  position: absolute;
+  position: relative;
   left: 0;
   top:200%;
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
-  margin-top: 80%;
 }
 
 .contact-details {

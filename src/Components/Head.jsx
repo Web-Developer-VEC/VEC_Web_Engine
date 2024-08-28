@@ -12,8 +12,8 @@ import Lknd from './Assets/linkedin.png'
  // import { componentWillUnmount }
 
 const Head = () => {
-    const [scroll, setScroll] = useState(0)
-    const [hdr, setHdr] = useState("h-20")
+    // const [scroll, setScroll] = useState(0)
+    // const [hdr, setHdr] = useState("h-20")
 
     const nacs = [Naac, Acrd,  Nord, Tnea]
     const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420"]
@@ -93,34 +93,34 @@ const Head = () => {
         // {main: "", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
     ]
 
-    const hndlScrll = () => {
-        const pos = window.scrollY
-        const pos_thresh = 0
-        console.log(pos)
-        if (pos > pos_thresh) {setHdr("top-0")}
-        else {setHdr("h-20")} 
-        setScroll(pos)
-    }
+    // const hndlScrll = () => {
+    //     const pos = window.scrollY
+    //     const pos_thresh = 0
+    //     if (pos > pos_thresh) {setHdr("top-0")}
+    //     else {setHdr("h-20")} 
+    //     setScroll(pos)
+    // }
 
-    useEffect(() => {
-        window.addEventListener('scroll', hndlScrll, {passive: true})
+    // useEffect(() => {
+    //     window.addEventListener('scroll', hndlScrll, {passive: true})
 
-        return () => {
-            window.removeEventListener('scroll', hndlScrll)
-        }
-    })
+    //     return () => {
+    //         window.removeEventListener('scroll', hndlScrll)
+    //     }
+    // })
     return (
         <>
             <nav className='fixed z-[100] w-full'>
                 <div className={'flex items-center font-popp group bg-white text-slate-200 transition-all ease-in-out duration-300 w-full h-auto ' + 
-                        'border-b-2 border-slate-800 ' + hdr}>
-                    <div className='bg-inherit z-10'>
+                        ' h-20'}>
+                    <div className='bg-inherit z-10 ml-4'>
                         <img src='https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png' alt='Vec Logo'
-                            className='group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] h-auto'></img>
+                            className='group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] 
+                            h-auto'></img>
                     </div>    
                     <div className='w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all'>
-                        <span className='font-rome text-[2vmax] text-amber-800 p-0 -mb-[0.75vmax]'>VELAMMAL</span>
-                        <span className='font-rome text-black text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
+                        <span className='font-rome text-[1.9vmax] text-amber-800 p-0 -mb-[0.75vmax]'>VELAMMAL</span>
+                        <span className='font-rome text-black text-[0.85vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
                     </div>
                     <div class="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2 lg:max-w-[17.5vw] max-w-[20.5vw] ml-2 sm:flex hidden">
                         {nacs.map((nac, i) => (
@@ -210,9 +210,9 @@ const Head = () => {
                         {/* </div> */}
                     </div>
                 </div>
-                <div className='flex font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem] text-slate-950 rounded-b-lg border-b-2 border-black'>
-                    <EnvelopeIcon className='size-5 inline -mr-2 mb-1'></EnvelopeIcon><p className='truncate h-fit md:block hidden'>{hdrs[0]}</p>
-                    <PhoneIcon className='size-5 inline -mr-2 mb-1'></PhoneIcon><p className='truncate h-fit md:block hidden'>{hdrs[1]}</p>
+                <div className='flex font-popp bg-[#fdcc03] p-[0.35rem] pl-4 gap-3 z-10 w-full h-[2.5rem] text-slate-950 rounded-b-lg'>
+                    <EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[0]}</p>
+                    <PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[1]}</p>
                     <div className='flex items-center justify-end grow gap-3'>
                         {socls.map((socl) => (
                             <a href={socl.Link}><img src={socl.Ico} alt={socl.Name} className='w-fit h-[1rem]'></img></a>
@@ -220,7 +220,7 @@ const Head = () => {
                     </div>
                 </div>
                 <div className='block lg:hidden mt-[2vmax] duration-300 ease-in-out transition-all size-12 border-black m-3 h-fit rounded-md'>
-                    <Sidebar Sz={((hdr === "h-20") ? "fll": "tny p-0")} /></div>        
+                    <Sidebar Sz="tny p-0" /></div>        
             </nav>
         </> 
     )
