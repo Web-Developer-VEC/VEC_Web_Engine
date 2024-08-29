@@ -16,7 +16,6 @@
 }
 
 .news img {
-  /* padding: 20px; */
   width: 26rem;
 }
 
@@ -28,7 +27,6 @@
   width: 490px;
   padding: 25px;
   margin-left: 50px;
-  /* border-right: 2px solid black; */
 }
 
 .announcement .main h2 {
@@ -63,7 +61,7 @@
   position: relative;
   width: 330px;
   height: 400px;
-  /* border-left: 2px solid black; */
+  border: none;
 }
 
 .announcement .card-inner {
@@ -92,18 +90,26 @@
   display: flex; /* Use Flexbox */
   align-items: center; /* Vertically center items */
   flex-direction: column; /* Stack items vertically */
+  border-radius: 10px;
 }
 
 .tiles .content h4{
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size:medium;
 }
 
-.tiles .content h4:hover {
+.tiles .card-front h4:hover {
   transform: scale(1.05); /* Zoom in effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
 }
+
+.tiles .card-back h4:hover {
+  transform: scale(1.05); /* Zoom in effect */
+  box-shadow: 0 4px 8px rgba(231, 252, 0, 0.3); /* Shadow effect */
+}
+
 .announcement .card-front {
   background: #fff;
   color: #5b44a8;
@@ -116,11 +122,12 @@
 }
 
 .announcement .card-front {
-  background-color: rgb(201, 221, 215);
+  background-color: rgb(23, 232, 110);
 }
 
 .announcement .card-back{
-  background-color: #8ad9e1;
+  background-color: #1c065e;
+  color: rgb(180, 162, 56);
 }
 
 .tiles .content{
@@ -131,7 +138,7 @@
 
 .tiles .card h4{
   border-bottom: 1px dashed #111;
-  padding:20px 10px;
+  padding: 10px 10px;
 }
 
 .tiles .card a {
@@ -157,4 +164,8 @@
   background-size: 100% 100%, 100% 2px;
   background-position: bottom;
   background-repeat: no-repeat;
+}
+
+.tiles .card-inner h2{
+  padding: 15px;
 }

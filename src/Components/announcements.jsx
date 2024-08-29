@@ -47,7 +47,7 @@ const Announcements1 = () => {
       }, 6250); // Flip every 6250 ms
 
       indexUpdateInterval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % ance.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 8) % ance.length);
       }, 12700); // Update index every 12700 ms
     }
 
@@ -59,7 +59,7 @@ const Announcements1 = () => {
   }, [hovered, ance.length]); // Dependency array
 
   return (
-      <section className="news">
+      <section className="news font-popp">
       <div className="head">News</div>
       <div className="announcement">
         <div className="img">
@@ -98,6 +98,13 @@ const Announcements1 = () => {
                   <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 2) % ance.length].ttle}{" "}
                   </h4>
+                  <h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 3) % ance.length].ttle}{" "}
+                  </h4><h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 4) % ance.length].ttle}{" "}
+                  </h4>
                 </div>
               </div>
               <div className="card-back">
@@ -105,15 +112,22 @@ const Announcements1 = () => {
                 <div className="content">
                   <h4>
                   <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
-                    {ance[(currentIndex + 3) % ance.length].ttle}{" "}
-                  </h4>
-                  <h4>
-                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
-                    {ance[(currentIndex + 4) % ance.length].ttle}{" "}
-                  </h4>
-                  <h4>
-                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
                     {ance[(currentIndex + 5) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 6) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 7) % ance.length].ttle}{" "}
+                  </h4>
+                  <h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 8) % ance.length].ttle}{" "}
+                  </h4><h4>
+                  <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
+                    {ance[(currentIndex + 9) % ance.length].ttle}{" "}
                   </h4>
                   {/* You can add more detailed content here if needed */}
                 </div>

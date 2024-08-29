@@ -40,8 +40,8 @@ const ImgSld = () => {
         <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] right-[1vmax]'>
           <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
             {lst.map((elm, i) => (
-              <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[40vmax] animate-[slideIn_25s_ease-in_infinite] p-5 border-y-4 
-                [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] bg-[#0000001a] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[3px] text-white`} 
+              <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[40vmax] animate-[slideIn_25s_ease-in_infinite] p-5 border-y-2 
+                [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] bg-[#0000001a] backdrop-blur-[0px] text-white`} 
                 style={{animationDelay: `${i * 5}s`}}>{elm}</p>
             ))}
           </div>

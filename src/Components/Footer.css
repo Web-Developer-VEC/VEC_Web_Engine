@@ -38,6 +38,7 @@
   margin-right: 700px;
   margin-left: 135px; /* Adjust this line to move the quick links to the right */
   white-space: nowrap; /* Prevents the text from wrapping */
+  margin-top: 18px; 
 }
 
 .map-container {
@@ -55,9 +56,7 @@
 }
 
 .quick-links ul li {
-  margin: -20px 0;
-  margin-top: 30px;
- 
+    margin-bottom: 4px;
 }
 
 .quick-links ul li a {

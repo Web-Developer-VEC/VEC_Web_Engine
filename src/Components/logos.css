@@ -1,0 +1,12 @@
+.logo-container{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.logo-container img{
+    height: 65px;
+    margin: 5px;
+    padding: 5px;
+}
+
