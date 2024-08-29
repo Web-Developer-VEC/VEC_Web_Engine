@@ -3,14 +3,26 @@
 .abt{
     font-size: 20px;
     text-align: center;
-    /* width: 900px; */
     margin-top: 90px;
-    /*border: solid 2px rgb(182, 177, 177);*/
-    /* margin-left: 22%; */
     margin: 10px;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text{
+    width: 700px;
 }
 
 .abt2,.abt3{
     font-size: 1.2rem;
 }
+
+.image img{
+    height:450px;
+    width:550px;
+    border-radius:5px;
+    align-items: center;
+    margin-top: 40px;
+}
+

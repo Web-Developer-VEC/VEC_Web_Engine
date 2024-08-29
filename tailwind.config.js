@@ -7,7 +7,7 @@ module.exports = {
     fontFamily: {
       'rome': ['Goudy Old Style', 'ui-sans-serif', 'system-ui'],
       'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
-      'popp': ['Poppins', 'ui-sans-serif', 'system-ui']
+      'popp': ['Futura PT', 'Times New Roman', 'system-ui']
     },
     animation: {
       'spin-slow': 'spin 3s linear infinite',
