@@ -7,7 +7,7 @@ module.exports = {
     fontFamily: {
       'rome': ['Times New Roman', 'ui-sans-serif', 'system-ui'],
       'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
-      'popp': ['Poppins', 'ui-sans-serif', 'system-ui']
+      'popp': ['Futura PT', 'ui-sans-serif', 'system-ui']
     },
     animation: {
       'spin-slow': 'spin 3s linear infinite',
@@ -50,8 +50,11 @@ module.exports = {
         '100%': {opacity: '1'}
       },
       cnnt: {
+        '0%': {opacity: '0'},
+        '10%': {opacity: '0'},
         '20%, 95%': {transform: 'translateX(-10vmax)', opacity: '1'},
-        '100%': {transform: 'translateX(10vmax)', opacity: '0'}
+        '97%': {opacity: '0'},
+        '100%': {transform: 'translateX(10vmax)'},
       },
       slideIn: {
         '0%': {transform: 'translateX(40vmax)', opacity: '0'},
