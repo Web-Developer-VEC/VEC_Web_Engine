@@ -5,9 +5,9 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'rome': ['Goudy Old Style', 'ui-sans-serif', 'system-ui'],
+      'rome': ['Times New Roman', 'ui-sans-serif', 'system-ui'],
       'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
-      'popp': ['Futura PT', 'Times New Roman', 'system-ui']
+      'popp': ['Poppins', 'ui-sans-serif', 'system-ui']
     },
     animation: {
       'spin-slow': 'spin 3s linear infinite',
@@ -41,9 +41,17 @@ module.exports = {
         '0%': {fontSize: '0'},
         '100%': {fontSize: '1.75vmax'}
       },
+      Social: {
+        '0%, 100%': {height: '1rem'},
+        '50%': {height: '2rem'}
+      },
       fadIn: {
         '0%': {opacity: '0'},
         '100%': {opacity: '1'}
+      },
+      cnnt: {
+        '20%, 95%': {transform: 'translateX(-10vmax)', opacity: '1'},
+        '100%': {transform: 'translateX(10vmax)', opacity: '0'}
       },
       slideIn: {
         '0%': {transform: 'translateX(40vmax)', opacity: '0'},
@@ -62,3 +70,4 @@ module.exports = {
   },
   plugins: [],
 }
+
