@@ -71,3 +71,15 @@
 .contact-details p:hover{
   text-decoration: underline;
 }
+
+.logo-container{
+    display: flex;
+    width: 100px;
+}
+
+.logo-container img{
+    height: 40px;
+    margin-left: 15px;
+    padding: 5px;
+    margin-top: 15px;
+}

@@ -7,7 +7,6 @@ import Event from './Components/Events';
 import Event1 from './Components/Events1';
 import Tracker from './Components/Tracker';
 import Samplereact from './Components/Courses';
-import Logo from './Components/logos';
 import Footer from './Components/Footer';
 import Contact from './Components/ContactIcon'
 import Chat from './Components/ChatPopup'
@@ -102,7 +101,6 @@ const LandingPage = () => {
           <Samplereact courses={courses} />
           <Contact/>
           <Chat/>
-          <Logo/>
           <Footer />
         </div>
         </div>
