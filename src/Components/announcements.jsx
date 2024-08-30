@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./announcements.css";
-import img1 from "./Assets/hostel.jpg";
+import img1 from "./Assets/hostel.png";
 
 const Announcements1 = () => {
   const main = [
@@ -62,10 +62,11 @@ const Announcements1 = () => {
       <section className="news font-popp">
       <div className="head">News</div>
       <div className="announcement">
-        <div className="img">
-          <img src={img1} alt="college" />
-        </div>
-        <div className="main">
+
+      <div className="cont"></div>
+      <div className="contain">
+          <img className="img" src={img1} alt="college" />
+        <div className="main" style={{marginLeft:"50%",marginTop:"-390px"}}>
           <h2>{main[0].head}</h2>
           <p>{main[1].content}</p>
           <ul>
@@ -75,7 +76,7 @@ const Announcements1 = () => {
           </ul>
           <button>Apply Now</button>
         </div>
-
+        </div>
         <div className="tiles">
           <div
             className="card"

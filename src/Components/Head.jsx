@@ -128,17 +128,17 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.1vmax] max-w-[63.5%] w-fit h-max gap-x-4 gap-y-0
+                    <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.2vmax] max-w-[63.5%] w-fit h-max gap-x-4 gap-y-0
                         duration-300 ease-in-out transition'>
                             {navs.map((nvt) => (
-                                <div className='group/nav relative transition-all'>
+                                <div className='group/nav relative transition-all mt-3'>
                                     <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]
                                         hover:bg-[position:100%_0%] text-transparent
                                         bg-gradient-to-l from-[#fdcc03] from-50% via-black via-50% to-black to-90% bg-clip-text bg-[position:0%_0%] bg-[length:200%_100%]
                                         hover:ease-out hover:duration-700 ease-in-out duration-300`}>{nvt.main}
                                         <ChevronDownIcon className='size-[1.3vmax] mb-1 ml-1 inline text-black'></ChevronDownIcon>
                                     </p>  
-                                    <div className={`grid grid-flow-row rounded-lg outline group-hover/nav:outline-[#fdcc03] outline-transparent 
+                                    <div className={`grid grid-flow-row content-center rounded-lg outline group-hover/nav:outline-[#fdcc03] outline-transparent 
                                         right-0 top-10 z-[500] absolute group-hover/nav:max-h-[70vh] max-h-0 h-fit bg-white outline-offset-2
                                         group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(0vw_0vw_0vw_0vw)]
                                         duration-500 ease-in transiton-[ht]`}>

@@ -15,8 +15,22 @@
   margin-top: -20px;
 }
 
+.announcement .cont{
+  width: 65%;
+  height: 460px;
+  background: rgb(253, 204, 3);
+  clip-path: polygon(0% 20%, 14% 0%, 100% 0%, 10% 50%, 80% 100%, 20% 100%, 0% 90%);
+
+}
+
+.announcement .contain{
+  position: absolute;
+  width: 65%; 
+  }
+
 .news img {
   width: 26rem;
+  
 }
 
 .announcement {
@@ -111,23 +125,30 @@
 }
 
 .announcement .card-front {
-  background: #fff;
+  background: linear-gradient(290deg, rgb(239, 59, 59), yellow, orange);
   color: #5b44a8;
+  animation: gradientAnimation 9s ease infinite;
+  background-size: 400% 400%;
 }
 
 .announcement .card-back {
-  background: #f0f0f0;
-  color: #4b484e;
+  background: linear-gradient(72deg, rgba(255, 0, 0, 0.74), rgba(255, 255, 0, 0.729), rgb(197, 136, 23));
+  color: #a02a2a;
   transform: rotateY(180deg);
+  background-size: 400% 400%;
+  animation: gradientAnimation 9s ease infinite;
 }
 
-.announcement .card-front {
-  background-color: rgb(23, 232, 110);
-}
-
-.announcement .card-back{
-  background-color: #1c065e;
-  color: rgb(180, 162, 56);
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 .tiles .content{

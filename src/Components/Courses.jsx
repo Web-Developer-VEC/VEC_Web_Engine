@@ -163,7 +163,7 @@ const CourseCarousel = ({ courses }) => {
         <div className="flex justify-center gap-3 w-[100vw]">
           {rdb.map((btn , i) => (
             <button className={`text-white p-2 rounded-xl min-w-[5vmax]`} style={{backgroundColor: btn.clr}} 
-              type="button" name="pos" onClick={() => {pos_hdl(i + 1)}}>{btn.name}</button>
+              type="button" name="pos" onClick={() => {pos_hdl(i + 1)}}>{btn.name} Engg</button>
           ))}
         </div>
       </div>

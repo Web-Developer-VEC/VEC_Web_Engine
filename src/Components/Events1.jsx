@@ -96,7 +96,9 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
           <div className="evnt-name">{event.eventName}</div>
         </div>
         <div className="evnt-details">
-          <div className="evnt-row department-name" style={{background: `linear-gradient(to right, ${event.dark_color}, ${event.light_color}, ${event.dark_color})`,color:`${event.tex_col}`}}>
+          <div className="evnt-row department-name backdrop-blur-[4px]" 
+            style={{background: `linear-gradient(to right, ${event.dark_color} -20%, ${event.light_color} 50%, ${event.dark_color} 120%)`,
+              color:`${event.tex_col}`}}>
             {event.departmentName}
           </div>
           <div className="evnt-row description">
