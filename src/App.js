@@ -21,7 +21,7 @@ const courses = [
   },
   {
     name: "Artificial Intelligence and Data Science",
-    image: "/images/AIDS.mp4", // CDN-hosted image
+    image: "/images/CYBER.mp4", // CDN-hosted image
     link: "https://example.com/aids",
     clr: "#be3531"
   },

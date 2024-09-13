@@ -24,74 +24,81 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
 
-    const navs = [
-        {main: "Academics", sub: [{ttl: 'Bad Subjects', sup: [
-                {ttl: 'Windows XP and how it works (CSE)', lnk: 'https://velammal.edu.in/'}, {ttl: 'Screwing Stuff ?! (Mech)', lnk: 'https://velammal.edu.in/'},
-                {ttl: 'More IF loops please (AIDS, not the disease)', lnk: 'https://velammal.edu.in/'}, {ttl: 'CSE\'s lil brother (IT)', lnk: 'https://velammal.edu.in/'},
-                {ttl: 'Something about sensors (ECE)', lnk: 'https://velammal.edu.in/'},
-            ], lnk: ''}, {ttl: 'Useless Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Boring Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Broken Labs', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'No Air Conditioning', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Back breaking academics', sup: [], lnk: 'https://velammal.edu.in/'}
-        ]}, 
-        {main: "Admissions", sub: [{ttl: 'Run', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'This is your', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Last Chance', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'RUNNNN!', sup: [], lnk: 'https://velammal.edu.in/'},
-        ]}, 
-        {main: "COE", sub: [{ttl: 'Student Login', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Staff Login', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
-        {main: "Placements", sub: [{ttl: '404 Not Found', sup: [], lnk: 'https://velammal.edu.in/'},]}, 
-        {main: "Research", sub: [{ttl: 'Fake Experiments', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'AI generated papers', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Fudged Lab results', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Dusty Documents', sup: [], lnk: 'https://velammal.edu.in/'},
-        ]}, 
-        {main: "Torture", sub: [{ttl: 'Classes', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Management', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'College', sup: [], lnk: 'https://velammal.edu.in/'}
-        ]}, 
-        {main: "Boredom", sub: [{ttl: 'Lack of events', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of activities', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Lack of free time', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of fun', sup: [], lnk: 'https://velammal.edu.in/'},
-        ]}, 
-        {main: "Hope Revial", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
-    ]
-
     // const navs = [
-    //     {main: "About Us", sub: [{ttl: 'About VEC', sup: [], lnk: ''}, {ttl: 'Vision & Mission', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'Founder\'s message', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Managment', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'Governing Council', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Our History', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Contact Us', sup: [], lnk: 'https://velammal.edu.in/'}
+    //     {main: "Academics", sub: [{ttl: 'Bad Subjects', sup: [
+    //             {ttl: 'Windows XP and how it works (CSE)', lnk: 'https://velammal.edu.in/'}, {ttl: 'Screwing Stuff ?! (Mech)', lnk: 'https://velammal.edu.in/'},
+    //             {ttl: 'More IF loops please (AIDS, not the disease)', lnk: 'https://velammal.edu.in/'}, {ttl: 'CSE\'s lil brother (IT)', lnk: 'https://velammal.edu.in/'},
+    //             {ttl: 'Something about sensors (ECE)', lnk: 'https://velammal.edu.in/'},
+    //         ], lnk: ''}, {ttl: 'Useless Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
+    //         {ttl: 'Boring Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Broken Labs', sup: [], lnk: 'https://velammal.edu.in/'}, 
+    //         {ttl: 'No Air Conditioning', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Back breaking academics', sup: [], lnk: 'https://velammal.edu.in/'}
     //     ]}, 
-    //     {main: "Academics", sub: [
-    //         {ttl: 'Departments', sup: [
-    //             {ttl: 'Artificial Intelligence and Data', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Science (AI&DS)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Automobile Engineering (AE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Chemistry', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Civil Engineering (CE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Computer Science and Engineering (CSE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Computer Science and Engineering (CYBER SECURITY)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Electrical and Electronics Engineering (EEE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Electronics & Communication Engineering (ECE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Electronics and Instrumentation Engineering (EIE)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'English', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Information Technology (IT)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Master of Business Administration (MBA)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Mathematics', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Mechanical Engineering (ME)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Physics', lnk: 'https://velammal.edu.in/'},
-    //         ], lnk: ''}, {ttl: 'Courses', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Patents', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'Supporting Staff', sup: [], lnk: 'https://velammal.edu.in/'}]},
-    //     {main: "Administration", sub: [{ttl: 'Principal', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Dean', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Associate Dean', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Admin\'s Office', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Statutory Committee', sup: [], lnk: 'https://velammal.edu.in/'}
-    //     ]},  
-    //     {main: "Admission", sub: [{ttl: 'Under Graduate Program', sup: [], lnk: 'https://velammal.edu.in/'},]}, 
-    //     {main: "Exams", sub: [{ttl: 'Circulars', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'AI generated papers', sup: [], lnk: 'https://velammal.edu.in/'},
+    //     {main: "Admissions", sub: [{ttl: 'Run', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'This is your', sup: [], lnk: 'https://velammal.edu.in/'},
+    //         {ttl: 'Last Chance', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'RUNNNN!', sup: [], lnk: 'https://velammal.edu.in/'},
+    //     ]}, 
+    //     {main: "COE", sub: [{ttl: 'Student Login', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Staff Login', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
+    //     {main: "Placements", sub: [{ttl: '404 Not Found', sup: [], lnk: 'https://velammal.edu.in/'},]}, 
+    //     {main: "Research", sub: [{ttl: 'Fake Experiments', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'AI generated papers', sup: [], lnk: 'https://velammal.edu.in/'},
     //         {ttl: 'Fudged Lab results', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Dusty Documents', sup: [], lnk: 'https://velammal.edu.in/'},
     //     ]}, 
-    //     {main: "Placement", sub: [{ttl: 'Classes', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
+    //     {main: "Torture", sub: [{ttl: 'Classes', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
     //         {ttl: 'Management', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'College', sup: [], lnk: 'https://velammal.edu.in/'}
     //     ]}, 
-    //     {main: "Research", sub: [{ttl: 'Lack of events', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of activities', sup: [], lnk: 'https://velammal.edu.in/'},
+    //     {main: "Boredom", sub: [{ttl: 'Lack of events', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of activities', sup: [], lnk: 'https://velammal.edu.in/'},
     //         {ttl: 'Lack of free time', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of fun', sup: [], lnk: 'https://velammal.edu.in/'},
     //     ]}, 
-    //     // {main: "", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
+    //     {main: "Hope Revial", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
     // ]
+
+    const navs = [
+        {main: "About Us", sub: [{ttl: 'About VEC', sup: [], lnk: ''}, 
+            {ttl: 'Managment', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Governing Council', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Our History', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Contact Us', sup: [], lnk: 'https://velammal.edu.in/'}
+        ]}, 
+        {main: "Administration", sub: [
+            {ttl: 'Principal', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Dean & Asso Deans', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Admin Office', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Committe', sup: [], lnk: 'https://velammal.edu.in/'}
+        ]},
+        {main: "Academics", sub: [
+            {ttl: 'Programs', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Departments', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Achievements', sup: [], lnk: 'https://velammal.edu.in/'}, 
+        ]},  
+        {main: "Admission", sub: [
+            {ttl: 'Under Graduate Program', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Post Graduate Program', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Research Program', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Admission 2024-25', sup: [], lnk: 'https://velammal.edu.in/'},
+        ]}, 
+        {main: "Exams", sub: [
+            {ttl: 'Apply for WES/Student Verification', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Curriculum & Syllabus', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Academic Schedule', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Circulars', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Exam Timetable', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Student Login', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Faculty Login', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Downloads', sup: [], lnk: 'https://velammal.edu.in/'},
+        ]}, 
+        {main: "Placement", sub: [
+            {ttl: 'About Placement Department', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'About Training & Placements', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Placement Team', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Placement Details', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Our Proud Alumni', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Placement Contact', sup: [], lnk: 'https://velammal.edu.in/'}
+        ]}, 
+        {main: "Research", sub: [
+            {ttl: 'Academic Research', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Sponsored Reseach', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Publication', sup: [], lnk: 'https://velammal.edu.in/'}, 
+        ]}, 
+        // {main: "", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
+    ]
 
     const hndlScrll = () => {
         const pos = window.scrollY
