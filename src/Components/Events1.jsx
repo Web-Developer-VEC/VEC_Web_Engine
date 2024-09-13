@@ -13,7 +13,7 @@ const events = [
     websiteLink: "https://example.com/website1",
     light_color: "#5e84a0",
     dark_color: "#3e5c70",
-    tex_col: "white"
+    tex_col: "black"
   },
   {
     eventName: "MEPEXPO'24",
@@ -25,7 +25,7 @@ const events = [
     websiteLink: "https://example.com/website2",
     light_color: "#896a21",
     dark_color: "#5e4a14 ",
-    tex_col: "white"
+    tex_col: "black"
   },
   {
     eventName: "INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE",
@@ -37,7 +37,7 @@ const events = [
     websiteLink: "https://example.com/website3",
     light_color: "#01a302",
     dark_color: "#014900",
-    tex_col: "white"   
+    tex_col: "black"   
   },
   {
     eventName: "ADVANCED ROBOTICS WORKSHOP",
@@ -49,7 +49,7 @@ const events = [
     websiteLink: "https://example.com/website4",
     light_color: "#be3531",
     dark_color: "#5f1214",
-    tex_col: "white"
+    tex_col: "black"
   },
   {
     eventName: "HIGH-END WORKSHOP ON CIVIL SOFTWARE APPLICATION E-tabs & Ansys Fluent",
@@ -61,7 +61,7 @@ const events = [
     websiteLink: "https://example.com/website1",
     light_color: "#a982b4",
     dark_color: "#643d6e",
-    tex_col: "white"
+    tex_col: "black"
   },
   {
     eventName: "SUSTAINABILITY IN ENGINEERING SEMINAR",
@@ -73,7 +73,7 @@ const events = [
     websiteLink: "https://example.com/website5",
     light_color: "#0226c4",
     dark_color: "#012267",
-    tex_col: "white"
+    tex_col: "black"
   },
 ];
 function EventBox({ event, onMouseEnter, onMouseLeave }) {
@@ -82,11 +82,16 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
       className="cro-item"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      whileHover={{ scale: 1.05 }} // Hover effect
+      whileHover={{ scale: 1.05  }} // Hover effect
     >
       <motion.div
         className="evnt-box"
-        whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }} // Hover shadow effect
+        whileHover={{ boxShadow: `0px 8px 30px ${event.dark_color}` }}
+        style={{
+          border: `2px solid`,
+          borderColor: `${event.dark_color}`, // Correct the borderColor syntax
+          color: `${event.tex_col}`,
+        }}
       >
         <div className="evnt-header">
           <div className="evnt-date">
@@ -96,10 +101,19 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
           <div className="evnt-name">{event.eventName}</div>
         </div>
         <div className="evnt-details">
-          <div className="evnt-row department-name backdrop-blur-[4px]" 
-            style={{background: `linear-gradient(to right, ${event.dark_color} -20%, ${event.light_color} 50%, ${event.dark_color} 120%)`,
-              color:`${event.tex_col}`}}>
-            {event.departmentName}
+        <div
+          className="evnt-row department-name"
+          style={{
+            border: `3px solid`,
+            borderColor: `${event.dark_color}`, // Correct the borderColor syntax
+            color: `${event.tex_col}`,
+            borderRadius: '10px', // Add border-radius
+            padding: '10px', // Add some padding for a cleaner look
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Add a subtle box shadow for a cleaner look
+            backgroundColor: 'white', // Optional: add a background color to enhance contrast
+          }}
+        >
+        {event.departmentName}
           </div>
           <div className="evnt-row description">
             {event.description}
