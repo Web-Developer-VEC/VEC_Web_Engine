@@ -24,53 +24,53 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", sub: [{ttl: 'About VEC', sup: [], lnk: ''}, 
-            {ttl: 'Managment', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Governing Council', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Our History', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Contact Us', sup: [], lnk: 'https://velammal.edu.in/'}
+        {main: "About Us", sub: [
+            {ttl: 'About VEC', sup: [], lnk: ''}, 
+            {ttl: 'Managment', sup: [], lnk: ''}, 
+            {ttl: 'Governing Council', sup: [], lnk: ''}, 
+            {ttl: 'Our History', sup: [], lnk: ''},
+            {ttl: 'Contact Us', sup: [], lnk: ''}
         ]}, 
         {main: "Administration", sub: [
-            {ttl: 'Principal', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Dean & Asso Deans', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Admin Office', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Committe', sup: [], lnk: 'https://velammal.edu.in/'}
+            {ttl: 'Principal', sup: [], lnk: ''},
+            {ttl: 'Dean & Asso Deans', sup: [], lnk: ''}, 
+            {ttl: 'Admin Office', sup: [], lnk: ''}, 
+            {ttl: 'Committe', sup: [], lnk: ''}
         ]},
         {main: "Academics", sub: [
-            {ttl: 'Programs', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Departments', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Achievements', sup: [], lnk: 'https://velammal.edu.in/'}, 
+            {ttl: 'Programs', sup: [], lnk: ''}, 
+            {ttl: 'Departments', sup: [], lnk: ''},
+            {ttl: 'Achievements', sup: [], lnk: ''}, 
         ]},  
         {main: "Admission", sub: [
-            {ttl: 'Under Graduate Program', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Post Graduate Program', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Research Program', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Admission 2024-25', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Under Graduate Program', sup: [], lnk: ''},
+            {ttl: 'Post Graduate Program', sup: [], lnk: ''},
+            {ttl: 'Research Program', sup: [], lnk: ''},
+            {ttl: 'Admission 2024-25', sup: [], lnk: ''},
         ]}, 
         {main: "Exams", sub: [
-            {ttl: 'Apply for WES/Student Verification', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Curriculum & Syllabus', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Academic Schedule', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Circulars', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Exam Timetable', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Student Login', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Faculty Login', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Downloads', sup: [], lnk: 'https://velammal.edu.in/'},
+            {ttl: 'Apply for WES/Student Verification', sup: [], lnk: ''}, 
+            {ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
+            {ttl: 'Academic Schedule', sup: [], lnk: ''}, 
+            {ttl: 'Circulars', sup: [], lnk: ''},
+            {ttl: 'Exam Timetable', sup: [], lnk: ''}, 
+            {ttl: 'Student Login', sup: [], lnk: ''},
+            {ttl: 'Faculty Login', sup: [], lnk: ''}, 
+            {ttl: 'Downloads', sup: [], lnk: ''},
         ]}, 
         {main: "Placement", sub: [
-            {ttl: 'About Placement Department', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'About Training & Placements', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Placement Team', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Placement Details', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Our Proud Alumni', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Placement Contact', sup: [], lnk: 'https://velammal.edu.in/'}
+            {ttl: 'About Placement Department', sup: [], lnk: ''}, 
+            {ttl: 'About Training & Placements', sup: [], lnk: ''}, 
+            {ttl: 'Placement Team', sup: [], lnk: ''}, 
+            {ttl: 'Placement Details', sup: [], lnk: ''},
+            {ttl: 'Our Proud Alumni', sup: [], lnk: ''}, 
+            {ttl: 'Placement Contact', sup: [], lnk: ''}
         ]}, 
         {main: "Research", sub: [
-            {ttl: 'Academic Research', sup: [], lnk: 'https://velammal.edu.in/'}, 
-            {ttl: 'Sponsored Reseach', sup: [], lnk: 'https://velammal.edu.in/'},
-            {ttl: 'Publication', sup: [], lnk: 'https://velammal.edu.in/'}, 
-        ]}, 
-        // {main: "", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
+            {ttl: 'Academic Research', sup: [], lnk: ''}, 
+            {ttl: 'Sponsored Reseach', sup: [], lnk: ''},
+            {ttl: 'Publication', sup: [], lnk: ''}, 
+        ]},  
     ]
 
     const hndlScrll = () => {
@@ -119,8 +119,8 @@ const Head = () => {
                                         <ChevronDownIcon className='size-[1.3vmax] mb-1 ml-1 inline text-black'></ChevronDownIcon>
                                     </p>  
                                     <div className={`grid grid-flow-row content-center rounded-lg outline group-hover/nav:outline-[#fdcc03] outline-transparent 
-                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[70vh] max-h-0 h-fit bg-white outline-offset-2
-                                        group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(0vw_0vw_0vw_0vw)]
+                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit bg-white outline-offset-2
+                                        group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
                                         duration-500 ease-in transiton-[ht]`}>
                                             {nvt.sub.map((sbj, i, {length}) => (
                                                 <div className='group/sub relative'>
@@ -134,7 +134,7 @@ const Head = () => {
                                                         outline group-hover/sub:outline-[#fdcc03] hover:outline-[#fdcc03] hover:max-h-[90vh] outline-transparent rounded-lg
                                                         outline-offset-2 duration-500 ease-in transiton-[ht]'>
                                                         {sbj.sup.map((spj, i, {length}) => (
-                                                            <a className={`no-underline inline-block bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[40vw] px-2
+                                                            <a className={`no-underline inline-block bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
                                                             ${( i !== length - 1) ? 'border-b': ''} bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% 
                                                             w-full group-hover/sub:translate-x-0 hover:delay-0 duration-200 ease-in transition-all hover:bg-[position:-100%_100%]`} 
                                                             style={{transitionDelay: `${100 * i}ms`}} 

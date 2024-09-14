@@ -10,10 +10,10 @@ const StatsGrid = () => {
   const statsRef = useRef(null);
 
   const targetValues = {
-    teachers: 286,
+    teachers: 34500,
     phdHolders: 25,
-    students: 34069,
-    placement: 90,
+    students: 300,
+    placement: 52,
   };
 
   const [counters, setCounters] = useState({
@@ -74,22 +74,22 @@ const StatsGrid = () => {
           <div className="stat-item px-2">
           <FaChalkboardTeacher className='icon' size={90} color='orange' />
             <h2 className="stat-number">{counters.teachers}</h2>
-            <p className="stat-label">Teachers</p>
+            <p className="stat-label">Active Learners</p>
           </div>
           <div className="stat-item">
             <PiStudentBold className='icon' size={90} color='orange'/>
             <h2 className="stat-number" >{counters.phdHolders} INR</h2>
-            <p className="stat-label">highest Salary (LPA)</p>
+            <p className="stat-label">Highest Salary Offered (LPA)</p>
           </div>
           <div className="stat-item">
             <IoIosPeople className='icon' size={90} color='orange'/>
-            <h2 className="stat-number">{counters.students}</h2>
-            <p className="stat-label">Active Learners</p>
+            <h2 className="stat-number">{counters.students}+</h2>
+            <p className="stat-label">Hiring Partners</p>
           </div>
           <div className="stat-item">
             <GiAchievement className='icon' size={90} color='orange'/>
             <h2 className="stat-number">{counters.placement}%</h2>
-            <p className="stat-label">Placement</p>
+            <p className="stat-label">Average Salary Hike</p>
           </div>
         </div>
       </div>
