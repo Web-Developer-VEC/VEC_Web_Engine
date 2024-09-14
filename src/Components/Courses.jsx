@@ -8,17 +8,18 @@ const CourseCarousel = ({ courses }) => {
   const [pause, setPause] = useState(false)
 
   const rdb = [
-    {name: "CSE", clr: "#01a302",},
-    {name: "AIDS", clr: "#be3531"},
+    {name: "AI&DS", clr: "#be3531"},
+    {name: "AUTO", clr: "#f6a664"},
+    {name: "CIVIL", clr: "#5e84a0",},
+    {name: "CSE", clr: "#01a302"},
+    {name: "CSE(CS)", clr: "#114738"},
+    {name: "EEE", clr: "#0226c4"},
+    {name: "ECE", clr: "#ce8143"},
+    {name: "EIE", clr: "#ca4121"},
     {name: "IT", clr: "#a982b4",},
     {name: "MECH", clr: "#896a21",},
-    {name: "CIVIL", clr: "#5e84a0",},
-    {name: "CYBER", clr: "#114738"},
-    {name: "ECE", clr: "#0226c4"},
-    {name: "EEE", clr: "#ce8143"},
-    {name: "EIE", clr: "#ca4121"},
     {name: "MBA", clr: "#14254f"},
-    {name: "AUTO", clr: "#f6a664"}
+    
   ]
 
   const pos_hdl = (pvl) => {

@@ -11,8 +11,8 @@ import './styles.css';
 
 const ImgSld = () => {
   const [ vid, setVid ] = useState("top-[35vmax]")
-  const lst = ['Sample Txt for me', 'The Best College', 'Placeholder, Come and Get Placed', 
-    'The Premier place to learn and grow', 'Your path to getting better 4 years of your life']
+  const lst = ['Sample Text', 'Sample Text', 'Sample Text', 
+    'Sample Text', 'Sample Text']
 
   const hndlScrll = () => {
     const pos = window.scrollY
