@@ -156,6 +156,7 @@ const Head = () => {
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[2]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[3]}</p>
                     <p className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</p>
+                    {/* Updated version */}
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[5]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
