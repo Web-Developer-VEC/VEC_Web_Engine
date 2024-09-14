@@ -16,40 +16,13 @@ const Head = () => {
     const [hdr, setHdr] = useState("")
 
     const nacs = [Naac, Acrd,  Nord, Tnea]
-    const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420"]
+    const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420", "IQAC", "NBA", "NAAC", "NIRF","Library", "Hostel", "Contact Us"]
     const socls = [
         {Name: "Instagram", Link: "https://instagram.com", Ico: Inta, Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"},
         {Name: "Facebook", Link: "https://instagram.com", Ico: Fcbk, Fltr: ""},
         {Name: "Twitter", Link: "https://instagram.com", Ico: Twtr, Fltr: ""},
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
-
-    // const navs = [
-    //     {main: "Academics", sub: [{ttl: 'Bad Subjects', sup: [
-    //             {ttl: 'Windows XP and how it works (CSE)', lnk: 'https://velammal.edu.in/'}, {ttl: 'Screwing Stuff ?! (Mech)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'More IF loops please (AIDS, not the disease)', lnk: 'https://velammal.edu.in/'}, {ttl: 'CSE\'s lil brother (IT)', lnk: 'https://velammal.edu.in/'},
-    //             {ttl: 'Something about sensors (ECE)', lnk: 'https://velammal.edu.in/'},
-    //         ], lnk: ''}, {ttl: 'Useless Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'Boring Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Broken Labs', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'No Air Conditioning', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Back breaking academics', sup: [], lnk: 'https://velammal.edu.in/'}
-    //     ]}, 
-    //     {main: "Admissions", sub: [{ttl: 'Run', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'This is your', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Last Chance', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'RUNNNN!', sup: [], lnk: 'https://velammal.edu.in/'},
-    //     ]}, 
-    //     {main: "COE", sub: [{ttl: 'Student Login', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Staff Login', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
-    //     {main: "Placements", sub: [{ttl: '404 Not Found', sup: [], lnk: 'https://velammal.edu.in/'},]}, 
-    //     {main: "Research", sub: [{ttl: 'Fake Experiments', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'AI generated papers', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Fudged Lab results', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Dusty Documents', sup: [], lnk: 'https://velammal.edu.in/'},
-    //     ]}, 
-    //     {main: "Torture", sub: [{ttl: 'Classes', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Subjects', sup: [], lnk: 'https://velammal.edu.in/'}, 
-    //         {ttl: 'Management', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'College', sup: [], lnk: 'https://velammal.edu.in/'}
-    //     ]}, 
-    //     {main: "Boredom", sub: [{ttl: 'Lack of events', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of activities', sup: [], lnk: 'https://velammal.edu.in/'},
-    //         {ttl: 'Lack of free time', sup: [], lnk: 'https://velammal.edu.in/'}, {ttl: 'Lack of fun', sup: [], lnk: 'https://velammal.edu.in/'},
-    //     ]}, 
-    //     {main: "Hope Revial", sub: [{ttl: 'There\'s no hope', sup: [], lnk: 'https://velammal.edu.in/'}]}, 
-    // ]
-
     const navs = [
         {main: "About Us", sub: [{ttl: 'About VEC', sup: [], lnk: ''}, 
             {ttl: 'Managment', sup: [], lnk: 'https://velammal.edu.in/'}, 
@@ -180,6 +153,13 @@ const Head = () => {
                 <div className='flex font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem] text-slate-950 rounded-b-lg transition-all'>
                     <EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[0]}</p>
                     <PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[1]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[2]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[3]}</p>
+                    <p className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[5]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
                         {socls.map((socl, i) => (
                             <a href={socl.Link}><img src={socl.Ico} alt={socl.Name} className={`w-fit h-[1rem] bg-[#fdcc03] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] text-transparent 
