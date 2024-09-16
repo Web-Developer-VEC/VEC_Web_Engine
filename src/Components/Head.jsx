@@ -16,7 +16,7 @@ const Head = () => {
     const [hdr, setHdr] = useState("")
 
     const nacs = [Naac, Acrd,  Nord, Tnea]
-    const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420", "IQAC", "NBA", "NAAC", "NIRF","Library", "Hostel", "Contact Us"]
+    const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420", "NBA", "NAAC", "NIRF","IIC","Incubation Cell","Alumni","NSS", "NCC", "YRC", "Sports","Transport", "Library", "Hostel", "Other Facilities"]
     const socls = [
         {Name: "Instagram", Link: "https://instagram.com", Ico: Inta, Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"},
         {Name: "Facebook", Link: "https://instagram.com", Ico: Fcbk, Fltr: ""},
@@ -25,52 +25,70 @@ const Head = () => {
     ]
     const navs = [
         {main: "About Us", sub: [
-            {ttl: 'About VEC', sup: [], lnk: ''}, 
-            {ttl: 'Managment', sup: [], lnk: ''}, 
+            {ttl: 'About VEC', sup: [], lnk: ''},
+            {ttl: 'About Trust', sup: [], lnk: ''}, 
+            {ttl: 'Vision & Mission', sup: [], lnk: ''},
+            {ttl: 'Management', sup: [], lnk: ''}, 
             {ttl: 'Governing Council', sup: [], lnk: ''}, 
-            {ttl: 'Our History', sup: [], lnk: ''},
             {ttl: 'Contact Us', sup: [], lnk: ''}
         ]}, 
         {main: "Administration", sub: [
             {ttl: 'Principal', sup: [], lnk: ''},
-            {ttl: 'Dean & Asso Deans', sup: [], lnk: ''}, 
+            {ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
             {ttl: 'Admin Office', sup: [], lnk: ''}, 
-            {ttl: 'Committe', sup: [], lnk: ''}
+            {ttl: "Committee's", sup: [], lnk: ''},
+            {ttl: 'Organization Chart', sup: [], lnk: ''}
         ]},
         {main: "Academics", sub: [
-            {ttl: 'Programs', sup: [], lnk: ''}, 
-            {ttl: 'Departments', sup: [], lnk: ''},
-            {ttl: 'Achievements', sup: [], lnk: ''}, 
+            {ttl: 'Artificial Intelligence and Data Science (AI&DS)', sup: [], lnk: ''},
+            {ttl: 'Automobile Engineering (AE)', sup: [], lnk: ''},
+            {ttl: 'Civil Engineering (CE)', sup: [], lnk: ''},
+            {ttl: 'Computer Science and Engineering (CSE)', sup: [], lnk: ''},
+            {ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
+            {ttl: 'Electrical and Electronics Engineering (EEE)', sup: [], lnk: ''},
+            {ttl: 'Electronics and Communication Engineering (ECE)', sup: [], lnk: ''},
+            {ttl: 'Electronics and Instrumentation Engineering (EIE)', sup: [], lnk: ''},
+            {ttl: 'Information Technology (IT)', sup: [], lnk: ''},
+            {ttl: 'Mechanical Engineering (ME)', sup: [], lnk: ''},
+            {ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
+            {ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
+            {ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
+
         ]},  
         {main: "Admission", sub: [
-            {ttl: 'Under Graduate Program', sup: [], lnk: ''},
-            {ttl: 'Post Graduate Program', sup: [], lnk: ''},
-            {ttl: 'Research Program', sup: [], lnk: ''},
-            {ttl: 'Admission 2024-25', sup: [], lnk: ''},
+            {ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
+            {ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
+            {ttl: 'M.E Admission', sup: [], lnk: ''},
+            {ttl: 'MBA Admission', sup: [], lnk: ''},
+            {ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
         {main: "Exams", sub: [
-            {ttl: 'Apply for WES/Student Verification', sup: [], lnk: ''}, 
+            {ttl: 'Regulation', sup: [], lnk: ''}, 
             {ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {ttl: 'Academic Schedule', sup: [], lnk: ''}, 
-            {ttl: 'Circulars', sup: [], lnk: ''},
-            {ttl: 'Exam Timetable', sup: [], lnk: ''}, 
-            {ttl: 'Student Login', sup: [], lnk: ''},
-            {ttl: 'Faculty Login', sup: [], lnk: ''}, 
-            {ttl: 'Downloads', sup: [], lnk: ''},
+            {ttl: 'Student Verification', sup: [], lnk: ''},
+            {ttl: 'All Forms', sup: [], lnk: ''}
+
         ]}, 
+        {
+            main: "Research",
+            sub: [
+                {ttl: 'Academic Research', sup: [], lnk: ''},
+                {ttl: 'Sponsored Research', sup: [], lnk: ''},
+                {ttl: 'Publication', sup: [
+                    {ttl: 'Journal', sup: [], lnk: ''},
+                    {ttl: 'Conference', sup: [], lnk: ''}
+                ], lnk: ''},
+                {ttl: 'Patents', sup: [], lnk: ''},
+                {ttl: 'Book Publications', sup: [], lnk: ''}
+            ]
+        },  
         {main: "Placement", sub: [
             {ttl: 'About Placement Department', sup: [], lnk: ''}, 
             {ttl: 'About Training & Placements', sup: [], lnk: ''}, 
             {ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {ttl: 'Placement Details', sup: [], lnk: ''},
-            {ttl: 'Our Proud Alumni', sup: [], lnk: ''}, 
-            {ttl: 'Placement Contact', sup: [], lnk: ''}
+            {ttl: 'Placement Details', sup: [], lnk: ''}
         ]}, 
-        {main: "Research", sub: [
-            {ttl: 'Academic Research', sup: [], lnk: ''}, 
-            {ttl: 'Sponsored Reseach', sup: [], lnk: ''},
-            {ttl: 'Publication', sup: [], lnk: ''}, 
-        ]},  
+
     ]
 
     const hndlScrll = () => {
@@ -161,13 +179,18 @@ const Head = () => {
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[9]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[10]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[11]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[13]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[14]}</p>
+                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
                         {socls.map((socl, i) => (
                             <a href={socl.Link}><img src={socl.Ico} alt={socl.Name} className={`w-fit h-[1rem] bg-[#fdcc03] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] text-transparent 
                                 `} style={{animationDelay: `${(i * 1.9)}s`}}></img></a>
                         ))}
-                        <div className='absolute translate-x-[10vmax] group-[.showoff]:animate-[cnnt_ease_forwards]' 
-                            style={{animationDuration: `${socls.length * 2}s`}}>Connect with Us</div>
                     </div>
                 </div>
                 <div className='block lg:hidden mt-[2vmax] duration-300 ease-in-out transition-all size-12 border-black m-3 h-fit rounded-md'>
