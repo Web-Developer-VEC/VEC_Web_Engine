@@ -20,8 +20,6 @@
   align-items: top;
   gap: 250px; 
   /* margin-left: 40px; */
-  margin-bottom: 20%;
-  padding: 20px; /* Optional: padding inside the grid */
   /* border-radius: 12px; */
   max-width: 90%;
 }

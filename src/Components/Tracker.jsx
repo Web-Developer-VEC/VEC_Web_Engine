@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Lottie from 'react-lottie-player';
 import './Tracker.css';
-import { FaChalkboardTeacher } from "react-icons/fa";
-import { PiStudentBold } from "react-icons/pi";
-import { GiAchievement } from "react-icons/gi";
-import { IoIosPeople } from "react-icons/io";
 
 const StatsGrid = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -69,31 +66,50 @@ const StatsGrid = () => {
   return (
     <div className="page-container flex justify-start text-white font-popp">
       <div className="stats-grid-container">
-        <div className="stats-grid h-fit rounded-lg bg-[#0000001a]  backdrop-blur-[1px]" 
-          ref={statsRef}>
+        <div className="stats-grid h-fit rounded-lg bg-[#0000001a] backdrop-blur-[3px]" ref={statsRef}>
           <div className="stat-item px-2">
-          <FaChalkboardTeacher className='icon' size={90} color='orange' />
+            <Lottie
+              loop
+              animationData={require('./Assets/salary.json')}
+              play
+              style={{ width: 125, height: 125 }}
+            />
             <h2 className="stat-number">{counters.teachers}</h2>
             <p className="stat-label">Active Learners</p>
           </div>
           <div className="stat-item">
-            <PiStudentBold className='icon' size={90} color='orange'/>
-            <h2 className="stat-number" >{counters.phdHolders} INR</h2>
+            <Lottie
+              loop
+              animationData={require('./Assets/hike.json')}
+              play
+              style={{ width: 125, height: 125 }}
+            />
+            <h2 className="stat-number">{counters.phdHolders} INR</h2>
             <p className="stat-label">Highest Salary Offered (LPA)</p>
           </div>
           <div className="stat-item">
-            <IoIosPeople className='icon' size={90} color='orange'/>
+            <Lottie
+              loop
+              animationData={require('./Assets/salary.json')}
+              play
+              style={{ width: 125, height: 125 }}
+            />
             <h2 className="stat-number">{counters.students}+</h2>
             <p className="stat-label">Hiring Partners</p>
           </div>
           <div className="stat-item">
-            <GiAchievement className='icon' size={90} color='orange'/>
+            <Lottie
+              loop
+              animationData={require('./Assets/hike.json')}
+              play
+              style={{ width: 125, height: 125 }}
+            />
             <h2 className="stat-number">{counters.placement}%</h2>
             <p className="stat-label">Average Salary Hike</p>
           </div>
         </div>
       </div>
-  </div>
+    </div>
   );
 };
 
