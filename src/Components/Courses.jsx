@@ -49,39 +49,39 @@ const CourseCarousel = ({ courses }) => {
   }, [handleNext])
 
   return (
-    <div>
-      <div className="grid w-full relative h-fit  border border-black z-10 p-10">
-        <button className="rounded-full absolute top-[25%] left-4 w-[3vmax] outline outline-offset-2 outline-amber-500 pr-2 h-[3vmax] bg-amber-600"
-          onClick={() => pos_hdl(pos - 1)}>
-          <ChevronLeftIcon className="size-max text-white"></ChevronLeftIcon>
-        </button>
-        <button className="rounded-full absolute top-[35%] right-4 w-[3vmax] outline outline-offset-2 outline-amber-500 pl-2 h-[3vmax] bg-amber-600"
-          onClick={() => pos_hdl(pos + 1)}>
-          <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
-        </button>
-        <div className="font-comf row-[1/2] col-[1/8] w-screen z-[1] h-[300px] flex items-center justify-center mb-10 -ml-10"
+    <div>        
+      <div className="grid w-full relative h-fit  border border-black z-10 p-10">  
+        <div className="font-comf row-[1/2] col-[1/8] w-screen z-[1] h-[300px] items-center justify-center flex mb-10 -ml-10"
           style={{transformStyle: 'preserve-3d', perspective: '600px'}}>
-          {courses.map((cur, i) => (
-            <div className="group absolute overflow-hidden transition-all duration-[0.25s] ease rounded-xl hover:[transform:rotateY(90deg)]" 
-              style={{transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-500 * (pos - (i + 1))}px)`,
-              zIndex: `${Math.max(((pos - (i + 1)) * -1), (pos - (i + 1))) + 100}`}} onMouseEnter={() => setPause(true)} onMouseLeave={() => setPause(false)}>
-              <div className={`relative text-center w-[30vmax] h-[17.5vmax] bg-cover bg-center transition-all duration-[2s]
-                ${(pos === i + 1) ? 'focs': ''} rounded-[20px] overflow-y-hidden group`} onClick={() => pos_hdl(i + 1)}>
-                <div className="absolute bg-black z-[-10] w-[30vmax] h-[17.5vmax] [transform:rotateY(180deg),translateZ(-10px)]">
-                  Hehe
-                </div>
-                <video className="absolute w-full h-fit" id={`Cor${i + 1}`} muted loop>
-                  <source src={cur.image}></source>
-                </video>
-                <div className={`${(pos === i + 1) ? "hidden": "block"} z-[50] w-full h-full bg-[#0000001a] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[5px]`}></div>  
-                <div className="grid content-end w-full h-full z-[40] text-white text-[2vmax] group-hover:[transform:translateZ(500px)]
-                  translate-y-[20vmax] delay-200 group-[.focs]:translate-y-0 duration-300 ease transition-all p-2"
-                  style={{background: `linear-gradient(to top, ${cur.clr}, ${cur.clr}00 55%)`}}>
-                  {cur.name}
+          <button className="rounded-full top-[25%] left-0 w-[3vmax] outline outline-offset-2 outline-amber-500 pr-2 h-[3vmax] bg-amber-600"
+            onClick={() => pos_hdl(pos - 1)}>
+            <ChevronLeftIcon className="size-max text-white" ></ChevronLeftIcon>
+          </button>
+            {courses.map((cur, i) => (
+              <div className="group absolute overflow-hidden transition-all duration-[0.25s] ease rounded-xl hover:[transform:rotateY(90deg)]" 
+                style={{transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-500 * (pos - (i + 1))}px)`,
+                zIndex: `${Math.max(((pos - (i + 1)) * -1), (pos - (i + 1))) + 100}`}} onMouseEnter={() => setPause(true)} onMouseLeave={() => setPause(false)}>
+                <div className={`relative text-center w-[30vmax] h-[17.5vmax] bg-cover bg-center transition-all duration-[2s]
+                  ${(pos === i + 1) ? 'focs': ''} rounded-[20px] overflow-y-hidden group`} onClick={() => pos_hdl(i + 1)}>
+                  <div className="absolute bg-black z-[-10] w-[30vmax] h-[17.5vmax] [transform:rotateY(180deg),translateZ(-10px)]">
+                    Hehe
+                  </div>
+                  <video className="absolute w-full h-fit" id={`Cor${i + 1}`} muted loop>
+                    <source src={cur.image}></source>
+                  </video>
+                  <div className={`${(pos === i + 1) ? "hidden": "block"} z-[50] w-full h-full bg-[#0000001a] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[5px]`}></div>  
+                  <div className="grid content-end w-full h-full z-[40] text-white text-[2vmax] group-hover:[transform:translateZ(500px)]
+                    translate-y-[20vmax] delay-200 group-[.focs]:translate-y-0 duration-300 ease transition-all p-2"
+                    style={{background: `linear-gradient(to top, ${cur.clr}, ${cur.clr}00 55%)`}}>
+                    {cur.name}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+            <button className="rounded-full top-[35%] right-4 w-[3vmax] outline outline-offset-2 outline-amber-500 pl-2 h-[3vmax] bg-amber-600"
+              onClick={() => pos_hdl(pos + 1)}>
+              <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
+            </button>
         </div>
         <div className="flex justify-center gap-4 w-[100vw]">
           {rdb.map((btn , i) => (
