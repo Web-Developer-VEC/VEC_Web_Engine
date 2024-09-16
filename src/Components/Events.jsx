@@ -26,7 +26,7 @@ const events = [
     departmentName: "Computer Science",
     description: "Detailed description of the AI conference event.",
     duration: "5 SEP - 7 SEP, 2024",
-    eventDate: "5 SEP",
+    eventDate: "05 SEP",
     brochureLink: "https://example.com/brochure3",
     websiteLink: "https://example.com/website3"
   },

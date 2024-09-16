@@ -37,7 +37,7 @@
   width: 425px;
   height: 375px;
   padding: 10px;
-  background-color: linear-gradient(to right, #E0963A, #F0A34A, #D96301);
+  background-color: rgba(255, 201, 5, 1);
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   display: flex;
@@ -61,17 +61,18 @@
 }
 
 .event-date .circle {
-  background: rgba(255, 201, 5, 1);
+  background: #642610;
   color: white;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
+  line-height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 10px;
   border: 5px solid #f0f0f0;
 }
@@ -93,11 +94,13 @@
 }
 
 .event-row.department-name {
-  background: linear-gradient(to right, #D96301 , #F0A34A, #D96301);
-  color: white;
+  background: whitesmoke;
+  color: black;
   text-align: center;
   padding: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 18px;
+  letter-spacing: 2px;
   border-radius: 5px;
   margin-top: 5px;
   width: 100%;
