@@ -70,7 +70,7 @@ const StatsGrid = () => {
           <div className="stat-item px-2">
             <Lottie
               loop
-              animationData={require('./Assets/salary.json')}
+              animationData={require('./Assets/Active Learners.json')}
               play
               style={{ width: 125, height: 125 }}
             />
@@ -90,7 +90,7 @@ const StatsGrid = () => {
           <div className="stat-item">
             <Lottie
               loop
-              animationData={require('./Assets/salary.json')}
+              animationData={require('./Assets/Hiring Partners.json')}
               play
               style={{ width: 125, height: 125 }}
             />
@@ -100,7 +100,7 @@ const StatsGrid = () => {
           <div className="stat-item">
             <Lottie
               loop
-              animationData={require('./Assets/hike.json')}
+              animationData={require('./Assets/salary.json')}
               play
               style={{ width: 125, height: 125 }}
             />

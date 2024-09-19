@@ -36,7 +36,7 @@ const CourseCarousel = ({ courses }) => {
 
   useEffect(() => {
     if (pos === 3) {
-      document.getElementById('Cor3').play();
+      // document.getElementById('Cor3').play();
     }
     if (!pause) {
       const interval = setInterval(handleNext, 3000);
