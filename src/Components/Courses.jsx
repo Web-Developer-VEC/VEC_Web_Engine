@@ -3,6 +3,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
 
 const CourseCarousel = ({ courses }) => {
   const [pos, setPos] = useState(3);
+  const [clr, setClr] = useState("")
   const [pause, setPause] = useState(false);
 
   const rdb = [
@@ -11,18 +12,19 @@ const CourseCarousel = ({ courses }) => {
     {name: "CIVIL", clr: "#5e84a0"},
     {name: "CSE", clr: "#01a302"},
     {name: "CSE(CS)", clr: "#114738"},
-    {name: "EEE", clr: "#0226c4"},
-    {name: "ECE", clr: "#ce8143"},
+    {name: "EEE", clr: "#ce8143"},
+    {name: "ECE", clr: "#0226c4"},
     {name: "EIE", clr: "#ca4121"},
     {name: "IT", clr: "#a982b4"},
     {name: "MECH", clr: "#896a21"},
     {name: "MBA", clr: "#14254f"},
   ];
 
-  const pos_hdl = (pvl) => {
+  const pos_hdl = (pvl, clr) => {
     if (pvl !== 0 && pvl <= courses.length) {
       document.getElementById(`Cor${pos}`).pause();
       setPos(pvl);
+      // setClr(clr)
       document.getElementById(`Cor${pvl}`).play();
     }
   };
@@ -47,8 +49,10 @@ const CourseCarousel = ({ courses }) => {
       <div className="grid w-full relative h-fit border border-black z-10 p-10">
         <div className="font-comf row-[1/2] col-[1/8] w-screen z-[1] h-[300px] items-center justify-center flex mb-10 -ml-10"
           style={{ transformStyle: 'preserve-3d', perspective: '600px' }}>
+          
           {/* Left Arrow Button */}
-          <button className="rounded-full absolute top-[50%] left-4 transform -translate-y-1/2 w-[3vmax] outline outline-offset-2 outline-amber-500 pr-2 h-[3vmax] bg-amber-600"
+          <button className="rounded-full absolute top-[50%] left-4 transform -translate-y-1/2 w-[3vmax] outline outline-offset-2 pr-2 h-[3vmax] 
+            ease-in transition-colors duration-300" style={{outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}`}}
             onClick={() => pos_hdl(pos - 1)}>
             <ChevronLeftIcon className="size-max text-white"></ChevronLeftIcon>
           </button>
@@ -78,7 +82,8 @@ const CourseCarousel = ({ courses }) => {
           ))}
 
           {/* Right Arrow Button */}
-          <button className="rounded-full absolute top-[50%] right-4 transform -translate-y-1/2 w-[3vmax] outline outline-offset-2 outline-amber-500 pl-2 h-[3vmax] bg-amber-600"
+          <button className="rounded-full absolute top-[50%] right-4 transform -translate-y-1/2 w-[3vmax] outline outline-offset-2 pl-2 h-[3vmax]
+            ease-in transition-colors duration-300" style={{outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}`}}
             onClick={() => pos_hdl(pos + 1)}>
             <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
           </button>

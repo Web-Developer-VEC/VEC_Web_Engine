@@ -4,8 +4,8 @@
   color: black;
   background-color: #fff;
   width: 100%;
-  margin-top: 50px;
-  margin-left: 50px;
+  /* margin-top: 50px; */
+  /* margin-left: 50px; */
 }
 
 .news .head{
@@ -16,49 +16,69 @@
 }
 
 .announcement .cont{
-  width: 65%;
-  height: 425px;
+  /* width: 65%; */
+  /* height: inherit; */
   background: rgb(253, 204, 3);
-  clip-path: polygon(10% 20%, 15% 0%, 60% 0%, 40% 100%, 75% 100%, 100% 100%, 0% 100%);
+  clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0 100%);
 
 }
 
 .announcement .contain{
-  position: absolute;
+  /* position: absolute; */
   width: 65%; 
   }
 
 .news img {
-  width: 26rem;
-  
+  /* width: 26rem; */
+  /* clip-path: polygon(0% 0%, 15% 0%, 60% 0%, 92% 100%, 70% 100%, 0% 100%);  */
 }
 
 .announcement {
-  display: flex;
+  /* display: flex; */
 }
 
 .announcement .main {
-  width: 490px;
+  /* width: 490px; */
   padding: 25px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 .announcement .main h2 {
-  font-size: 20px;
+  /* font-size: 20px; */
   color: rgb(149, 59, 10);
   font-weight: 600;
 }
 
 .announcement .main button {
-  background-color: rgb(224, 59, 9);
   color: white;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 20px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  background: repeating-linear-gradient(120deg, red, rgb(119, 15, 1), red, rgb(119, 15, 1), red);
+  background-repeat:repeat-x;
+  /* height: 100%; */
+  /* position: absolute; */
+  background-size: 400% 100%;
+  /* -webkit-animation: AnimationName 3s linear infinite;
+  -moz-animation: AnimationName 3s linear infinite;
+  animation: AnimationName 3s linear infinite; */
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:100% 100%}
+    100%{background-position:0% 100%}
 }
 
 .announcement .main button:hover {

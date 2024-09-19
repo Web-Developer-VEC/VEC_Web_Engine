@@ -89,9 +89,9 @@ const LandingPage = () => {
       <Boot />
       <Head/>
       <ImgSld/>
-      <div className='w-[100vw] h-fit absolute z-50'>
+      <div className='w-max lg:max-w-full max-w-[220vw] h-fit border-2 border-slate-900 absolute z-50'>
         <div className='pt-2 pb-[2vmax] bg-white'>
-          <Abt/>
+          <Abt />
           <Announce/>
           <Event/>
         </div>

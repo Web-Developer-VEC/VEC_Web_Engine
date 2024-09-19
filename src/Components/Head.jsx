@@ -24,7 +24,7 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", sub: [
+        {main: "About Us", cols: 0, sub: [
             {ttl: 'About VEC', sup: [], lnk: ''},
             {ttl: 'About Trust', sup: [], lnk: ''}, 
             {ttl: 'Vision & Mission', sup: [], lnk: ''},
@@ -32,14 +32,14 @@ const Head = () => {
             {ttl: 'Governing Council', sup: [], lnk: ''}, 
             {ttl: 'Contact Us', sup: [], lnk: ''}
         ]}, 
-        {main: "Administration", sub: [
+        {main: "Administration", cols: 0, sub: [
             {ttl: 'Principal', sup: [], lnk: ''},
             {ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
             {ttl: 'Admin Office', sup: [], lnk: ''}, 
             {ttl: "Committee's", sup: [], lnk: ''},
             {ttl: 'Organization Chart', sup: [], lnk: ''}
         ]},
-        {main: "Academics", sub: [
+        {main: "Academics", cols: 2, sub: [
             {ttl: 'Artificial Intelligence and Data Science (AI&DS)', sup: [], lnk: ''},
             {ttl: 'Automobile Engineering (AE)', sup: [], lnk: ''},
             {ttl: 'Civil Engineering (CE)', sup: [], lnk: ''},
@@ -55,14 +55,14 @@ const Head = () => {
             {ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
 
         ]},  
-        {main: "Admission", sub: [
+        {main: "Admission", cols: 0, sub: [
             {ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
             {ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
             {ttl: 'M.E Admission', sup: [], lnk: ''},
             {ttl: 'MBA Admission', sup: [], lnk: ''},
             {ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
-        {main: "Exams", sub: [
+        {main: "Exams", cols: 0, sub: [
             {ttl: 'Regulation', sup: [], lnk: ''}, 
             {ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
             {ttl: 'Student Verification', sup: [], lnk: ''},
@@ -71,7 +71,7 @@ const Head = () => {
         ]}, 
         {
             main: "Research",
-            sub: [
+            cols: 0, sub: [
                 {ttl: 'Academic Research', sup: [], lnk: ''},
                 {ttl: 'Sponsored Research', sup: [], lnk: ''},
                 {ttl: 'Publication', sup: [
@@ -82,7 +82,7 @@ const Head = () => {
                 {ttl: 'Book Publications', sup: [], lnk: ''}
             ]
         },  
-        {main: "Placement", sub: [
+        {main: "Placement", cols: 0, sub: [
             {ttl: 'About Placement Department', sup: [], lnk: ''}, 
             {ttl: 'About Training & Placements', sup: [], lnk: ''}, 
             {ttl: 'Placement Team', sup: [], lnk: ''}, 

@@ -64,9 +64,9 @@ const StatsGrid = () => {
   }, [isVisible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="page-container flex justify-start text-white font-popp">
-      <div className="stats-grid-container">
-        <div className="stats-grid h-fit rounded-lg bg-[#0000001a] backdrop-blur-[3px]" ref={statsRef}>
+    <div className="page-container flex justify-start text-white font-popp bg-[#0000001a] backdrop-blur-[4px]">
+      <div className="stats-grid-container mt-[5%]">
+        <div className="stats-grid h-fit rounded-lg" ref={statsRef}>
           <div className="stat-item px-2">
             <Lottie
               loop

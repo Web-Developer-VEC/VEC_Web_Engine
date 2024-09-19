@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./announcements.css";
 import img1 from "./Assets/hostel.png";
+import star from "./Assets/championship.gif";
 
 const Announcements1 = () => {
   const main = [
@@ -59,33 +60,34 @@ const Announcements1 = () => {
   }, [hovered, ance.length]); // Dependency array
 
   return (
-      <section className="news font-popp">
-      <div className="head">News</div>
-      <div className="announcement">
-
-      <div className="cont"></div>
-      <div className="contain">
-          <img className="img" src={img1} alt="college" />
-        <div className="main" style={{marginLeft:"50%",marginTop:"-390px"}}>
-          <h2>{main[0].head}</h2>
-          <p>{main[1].content}</p>
-          <ul>
-            {main[2].awards.map((item, index) => (
-              <li key={index}>{item.ttle}</li>
-            ))}
-          </ul>
-          <button>Apply Now</button>
-        </div>
-        </div>
+      <div className="news font-popp">
+      <div className="head"><p className="text-[3.5lvh]">News</p></div>
+      <div className="announcement flex flex-row max-h-[60lvh]">
+          <div className="relative min-w-[35%]">
+            <div className="cont w-[105%] absolute h-full"></div>
+            <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%] " src={img1} alt="college" />
+            {/* <div className="contain grid border-4 border-pink-700 w-[100%] h-full"></div> */} 
+          </div>
+          <div className="main w-[40%]">
+            <h2 className="text-[3  lvh]">{main[0].head}</h2>
+            <p className="text-[2lvh]">{main[1].content}</p>
+            <ul>
+              {main[2].awards.map((item, index) => (
+                <li className="text-[2lvh] mb-2" key={index}>
+                  <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy" />{item.ttle}</li>
+              ))}
+            </ul>
+            <button className="hover:animate-[AnimationName_3s_linear_infinite]">Apply Now</button>
+          </div>
         <div className="tiles">
           <div
-            className="card"
+            className="card right-[10%]"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
-              <div className="card-front">
-                <h2>Announcements</h2>
+              <div className="card-front border-2 border-blue-500">
+                <p className="text-[3lvh]">Announcements</p>
                 <div className="content">
                   <h4>
                   <a> <i class="fa-solid fa-right-to-bracket"></i> </a>
@@ -137,7 +139,7 @@ const Announcements1 = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

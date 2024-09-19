@@ -35,11 +35,11 @@ module.exports = {
       },
       bam: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '2.75vmax'}
+        '100%': {fontSize: '5.75vmin'}
       },
       bom: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '1.75vmax'}
+        '100%': {fontSize: '5.75vmin'}
       },
       Social: {
         '0%, 100%': {height: '1rem'},
