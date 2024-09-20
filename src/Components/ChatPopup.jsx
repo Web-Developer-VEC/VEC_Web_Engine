@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Lottie from 'react-lottie-player';
 import './ChatPopup.css';
 
 function ChatPopup() {
@@ -23,7 +24,11 @@ function ChatPopup() {
     <div>
       {/* Chat Icon Button */}
       <div className="chat-icon" onClick={toggleChat}>
-        <img src="/images/chat-icon.png" alt="Chat Icon" />
+        <Lottie
+              loop
+              animationData={require('./Assets/Chatbot.json')}
+              play
+         />
       </div>
 
       {/* Conditionally render chat popup based on isChatOpen */}

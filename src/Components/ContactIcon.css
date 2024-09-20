@@ -1,60 +1,52 @@
+body {
+  padding-bottom: 150px; /* Increase this value if needed */
+}
+
 .contact-icon-container {
+  z-index: 1001;
   position: fixed;
   bottom: 20px; 
   left: 20px;  
+  line-height: 15px;
+  border-radius: 50%;
+  margin-top: 20px;
 }
 
 .contact-icon {
-  cursor: pointer;
-  height: 50px;
-  border-radius: 100%;
-  border: 2px solid ;
-
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #5198df;
+    background-color: white;
+    transition: transform 0.3s ease;
 }
-/* 
-.click-popup {
-  position: fixed;
-  background-color: white;
-  border: 2px solid #ffffff;
-  padding: 10px;
-  z-index: 1000;
-  width: fit-content;
-}  */
-
-/*.hover-popup {
-  display: block;
-  height: fit-content;
-  left: 70px;
-  bottom: 60px; 
-  border: .5px solid #000000;
-  
-   
-} */
 
 .click-popup {
-  background: #5198df;
-  color: white;
+  background: rgb(253, 204, 3);
+  color: black;
   padding: 10px;
   position:fixed;
-  height: 8vw;
-  width: 400px;
-  bottom: 100px; 
+  height: 4.5vw;
+  width: 390px;
+  bottom: 80px; 
   left: 20px; 
-  border: 2px solid white;
-  border-style: thin;
-  border-radius: 10px;
-  box-shadow:  black 1px 1px;
-
+  border-radius: 5px;
+  margin-bottom: 15px;
 } 
+    
+
 .click-popup  a{
   text-decoration: none;
-  color: white;
-  font-size: 20px;
+  color: black;
+  font-size: 18px;
+  font-weight: 450;
 }
+
 .click-popup a:hover {
-  color:blue
-  
+  color:black;
+  text-decoration: underline;
 }
-.click-popup  h3{
+.click-popup  p{
   font-size: 20px;
 }

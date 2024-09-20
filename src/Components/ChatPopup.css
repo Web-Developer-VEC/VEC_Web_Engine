@@ -1,36 +1,27 @@
 /* Styling for the chat icon */
 .chat-icon {
   position: fixed;
-  bottom: 20px;
+  bottom: 15px;
   right: 20px;
   background-color: #ffffff;
-  color: white;
-  padding: 10px;
-  height: 50px;
-  width: 50px;
-  border-radius: 25%;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  align-items: center;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: .5px solid #1f1f20;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Styling for the chat icon image */
-.chat-icon img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  padding: -15px;
+  z-index: 1000;
 }
 
 /* Hover effect for chat icon */
 .chat-icon:hover {
   background-color: #f1f1f1;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Styling for the chat popup content */
 .chat-popup {
+  z-index: 1001;
   position: fixed;
   bottom: 90px;
   right: 20px;
@@ -76,8 +67,8 @@
 
 .message-input button {
   padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
+  background-color: rgb(253, 204, 3);
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
