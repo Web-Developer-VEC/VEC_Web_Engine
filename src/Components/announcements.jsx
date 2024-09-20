@@ -86,7 +86,7 @@ const Announcements1 = () => {
             onMouseLeave={() => setHovered(false)}
           >
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
-              <div className="card-front border-2 border-blue-500">
+              <div className="card-front">
                 <p className="text-[3lvh]">Announcements</p>
                 <div className="content">
                   <h4>

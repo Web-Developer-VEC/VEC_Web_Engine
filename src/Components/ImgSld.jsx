@@ -5,8 +5,14 @@ import './styles.css';
 
 const ImgSld = () => {
   const [ vid, setVid ] = useState("top-[35vmax]")
-  const lst = ['Sample Text', 'Sample Text', 'Sample Text', 
-    'Sample Text', 'Sample Text']
+  const lst = [
+    'Welcome to VEC - Empowering Future Leaders',
+    'Explore Our World-Class Facilities and Programs',
+    'Join Us in Shaping the Future Through Innovation and Education',
+    'Discover Opportunities for Personal and Academic Growth',
+    'Get Involved: Clubs, Events, and More at VEC'
+  ];
+  
 
   const hndlScrll = () => {
     const pos = window.scrollY
@@ -32,14 +38,18 @@ const ImgSld = () => {
           <source src={Vide} type='video/mp4'></source>
         </video>
         <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] right-[1vmax]'>
-          <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
+        <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
             {lst.map((elm, i) => (
-              <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] animate-[slideIn_25s_ease-in_infinite] p-5 border-y-2 
-                [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] bg-[#0000001a] backdrop-blur-[0px] text-white`} 
-                style={{animationDelay: `${i * 5}s`}}>{elm}</p>
+              <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
+                animate-[slideIn_40s_ease-in_infinite] p-5 border-y-2 
+                [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
+                bg-[#0000001a] backdrop-blur-[0px] text-white text-[1.7vmax] `} 
+                style={{animationDelay: `${i * 7}s`}}>
+                {elm}
+              </p>
             ))}
           </div>
-        </div>
+         </div>
         <video className={`h-auto w-[100vw] bg-center fixed ${vid} z-0`}>
           <source src={Vide} type='video/mp4'></source>
         </video>

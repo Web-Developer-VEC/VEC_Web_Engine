@@ -64,15 +64,15 @@ const StatsGrid = () => {
   }, [isVisible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="page-container flex justify-start text-white font-popp bg-[#0000001a] backdrop-blur-[4px]">
-      <div className="stats-grid-container mt-[5%]">
+<div className="page-container flex justify-start text-white font-popp bg-black/30 backdrop-blur-[4px]">
+<div className="stats-grid-container mt-[5%]">
         <div className="stats-grid h-fit rounded-lg" ref={statsRef}>
           <div className="stat-item px-2">
             <Lottie
               loop
               animationData={require('./Assets/Active Learners.json')}
               play
-              style={{ width: 125, height: 125 }}
+              style={{ width: 140, height: 140 }}
             />
             <h2 className="stat-number">{counters.teachers}</h2>
             <p className="stat-label">Active Learners</p>
@@ -82,7 +82,7 @@ const StatsGrid = () => {
               loop
               animationData={require('./Assets/hike.json')}
               play
-              style={{ width: 125, height: 125 }}
+              style={{ width: 140, height: 140 }}
             />
             <h2 className="stat-number">{counters.phdHolders} INR</h2>
             <p className="stat-label">Highest Salary Offered (LPA)</p>
@@ -92,7 +92,7 @@ const StatsGrid = () => {
               loop
               animationData={require('./Assets/Hiring Partners.json')}
               play
-              style={{ width: 125, height: 125 }}
+              style={{ width: 140, height: 140 }}
             />
             <h2 className="stat-number">{counters.students}+</h2>
             <p className="stat-label">Hiring Partners</p>
@@ -102,7 +102,7 @@ const StatsGrid = () => {
               loop
               animationData={require('./Assets/salary.json')}
               play
-              style={{ width: 125, height: 125 }}
+              style={{ width: 140, height: 140 }}
             />
             <h2 className="stat-number">{counters.placement}%</h2>
             <p className="stat-label">Average Salary Hike</p>
