@@ -24,72 +24,103 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", cols: 0, sub: [
-            {ttl: 'About VEC', sup: [], lnk: ''},
-            {ttl: 'About Trust', sup: [], lnk: ''}, 
-            {ttl: 'Vision & Mission', sup: [], lnk: ''},
-            {ttl: 'Management', sup: [], lnk: ''}, 
-            {ttl: 'Governing Council', sup: [], lnk: ''}, 
-            {ttl: 'Contact Us', sup: [], lnk: ''}
+        {main: "About Us", cod:[0, 6], cols: 1, sub: [
+            {hrd: false, ttl: 'About VEC', sup: [], lnk: ''},
+            {hrd: false, ttl: 'About Trust', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Governing Council', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Contact Us', sup: [], lnk: ''}
         ]}, 
-        {main: "Administration", cols: 0, sub: [
-            {ttl: 'Principal', sup: [], lnk: ''},
-            {ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
-            {ttl: 'Admin Office', sup: [], lnk: ''}, 
-            {ttl: "Committee's", sup: [], lnk: ''},
-            {ttl: 'Organization Chart', sup: [], lnk: ''}
+        {main: "Administration", cod:[0, 5], cols: 1, sub: [
+            {hrd: false, ttl: 'Principal', sup: [], lnk: ''},
+            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Admin Office', sup: [], lnk: ''}, 
+            {hrd: false, ttl: "Committee's", sup: [], lnk: ''},
+            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: ''}
         ]},
-        {main: "Academics", cols: 2, sub: [
-            {ttl: 'Artificial Intelligence and Data Science (AI&DS)', sup: [], lnk: ''},
-            {ttl: 'Automobile Engineering (AE)', sup: [], lnk: ''},
-            {ttl: 'Civil Engineering (CE)', sup: [], lnk: ''},
-            {ttl: 'Computer Science and Engineering (CSE)', sup: [], lnk: ''},
-            {ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
-            {ttl: 'Electrical and Electronics Engineering (EEE)', sup: [], lnk: ''},
-            {ttl: 'Electronics and Communication Engineering (ECE)', sup: [], lnk: ''},
-            {ttl: 'Electronics and Instrumentation Engineering (EIE)', sup: [], lnk: ''},
-            {ttl: 'Information Technology (IT)', sup: [], lnk: ''},
-            {ttl: 'Mechanical Engineering (ME)', sup: [], lnk: ''},
-            {ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
-            {ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
-            {ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
+        {main: "Academics", cod:[0, 9, 13], cols: 2, sub: [
+            {hrd: true, ttl: 'First Time ?!', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Artificial Intelligence and Data Science (AI&DS)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Automobile Engineering (AE)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Civil Engineering (CE)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Computer Science and Engineering (CSE)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Electrical and Electronics Engineering (EEE)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Electronics and Communication Engineering (ECE)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Electronics and Instrumentation Engineering (EIE)', sup: [], lnk: ''},
+            {hrd: true, ttl: 'Why did you come back ??', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Information Technology (IT)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Mechanical Engineering (ME)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
+            {hrd: false, ttl: '', sup: [], lnk: ''},
+            {hrd: true, ttl: 'Other Garbage subjects', sup: [], lnk: ''},
+            {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
 
         ]},  
-        {main: "Admission", cols: 0, sub: [
-            {ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
-            {ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
-            {ttl: 'M.E Admission', sup: [], lnk: ''},
-            {ttl: 'MBA Admission', sup: [], lnk: ''},
-            {ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
+        {main: "Admission", cod:[0, 5], cols: 1, sub: [
+            {hrd: false, ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
+            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
-        {main: "Exams", cols: 0, sub: [
-            {ttl: 'Regulation', sup: [], lnk: ''}, 
-            {ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {ttl: 'Student Verification', sup: [], lnk: ''},
-            {ttl: 'All Forms', sup: [], lnk: ''}
+        {main: "Exams", cod:[0, 4], cols: 1, sub: [
+            {hrd: false, ttl: 'Regulation', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Student Verification', sup: [], lnk: ''},
+            {hrd: false, ttl: 'All Forms', sup: [], lnk: ''}
 
         ]}, 
         {
             main: "Research",
-            cols: 0, sub: [
-                {ttl: 'Academic Research', sup: [], lnk: ''},
-                {ttl: 'Sponsored Research', sup: [], lnk: ''},
-                {ttl: 'Publication', sup: [
-                    {ttl: 'Journal', sup: [], lnk: ''},
-                    {ttl: 'Conference', sup: [], lnk: ''}
+            cod:[0, 5], cols: 1, sub: [
+                {hrd: false, ttl: 'Academic Research', sup: [], lnk: ''},
+                {hrd: false, ttl: 'Sponsored Research', sup: [], lnk: ''},
+                {hrd: false, ttl: 'Publication', sup: [
+                    {hrd: false, ttl: 'Journal', sup: [], lnk: ''},
+                    {hrd: false, ttl: 'Conference', sup: [], lnk: ''}
                 ], lnk: ''},
-                {ttl: 'Patents', sup: [], lnk: ''},
-                {ttl: 'Book Publications', sup: [], lnk: ''}
+                {hrd: false, ttl: 'Patents', sup: [], lnk: ''},
+                {hrd: false, ttl: 'Book Publications', sup: [], lnk: ''}
             ]
         },  
-        {main: "Placement", cols: 0, sub: [
-            {ttl: 'About Placement Department', sup: [], lnk: ''}, 
-            {ttl: 'About Training & Placements', sup: [], lnk: ''}, 
-            {ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {ttl: 'Placement Details', sup: [], lnk: ''}
+        {main: "Placement", cod:[0, 4], cols: 1, sub: [
+            {hrd: false, ttl: 'About Placement Department', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'About Training & Placements', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Placement Team', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''}
         ]}, 
 
     ]
+
+    function max(arr) {
+        let max = -Infinity
+        for(let i = 0; i < arr.length; i++) {
+            if(arr[i] > max) max = arr[i]
+        }
+        return max
+    }
+
+    function griddy(nvd, cld) {
+        let arr = [], num = cld.at(-1)
+        console.log(nvd)
+        console.log(`${cld.slice(0, -1)}, ${max(cld.slice(0, -1))}`)
+        if(cld.length > 2) num = max(cld.slice(0, -1))
+        for(let i = 0; i < num; i++) {
+            for(let j = 0; j < cld.length - 1; j++) {
+                console.log(`Cld ${i + cld[j]} ${nvd[i + cld[j]]}, ${nvd[0].ttl}, ${i + cld[j]}`)
+                if(nvd[i + cld[j]]) {
+                    arr.push(nvd[i + cld[j]])
+                } else {
+                    arr.push({ttl: '', sup: [], lnk: ''})
+                }
+            }
+        }
+        console.log(arr)
+        return arr
+    }
 
     const hndlScrll = () => {
         const pos = window.scrollY
@@ -137,16 +168,19 @@ const Head = () => {
                                         <ChevronDownIcon className='size-[1.3vmax] mb-1 ml-1 inline text-black'></ChevronDownIcon>
                                     </p>  
                                     <div className={`grid grid-flow-row content-center rounded-lg outline group-hover/nav:outline-[#fdcc03] outline-transparent 
-                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit bg-white outline-offset-2
+                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit ${nvt.cols > 1 ? 'min-w-[55vw]': 'w-max'} bg-white outline-offset-2
                                         group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                        duration-500 ease-in transiton-[ht]`}>
-                                            {nvt.sub.map((sbj, i, {length}) => (
-                                                <div className='group/sub relative'>
-                                                    <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg': ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[20vw] px-2
+                                        duration-500 ease-in transiton-[ht]`} style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
+                                            {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
+                                                <div className='group/sub relative w-full'>
+                                                    <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg': ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                     ${(i === length - 1) ? 'rounded-b-lg': ''} bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% border-slate-700
-                                                    w-full group-hover/nav:translate-x-0 duration-300 ease-in transition-all hover:bg-[position:-100%_100%] z-[500]`} 
+                                                    w-full group-hover/nav:translate-x-0 duration-300 ease-in transition-all z-[500]` + 
+                                                    (sbj.hrd ? '': ' hover:bg-[position:-100%_100%]')} 
                                                     style={{transitionDelay: `${100 * i}ms`}} 
-                                                    key={sbj.ttl} href={sbj.lnk}><p className='w-fit my-2 text-right align-middle text-nowrap'>{sbj.ttl}</p></a>
+                                                    key={sbj.ttl} href={sbj.lnk}><p 
+                                                        className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' + 
+                                                        (sbj.hrd ? 'font-bold border-b-2 text-center': 'text-left')}>{sbj.ttl}</p></a>
                                                     {(sbj.sup.length > 0) ? (
                                                         <div className='absolute top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden bg-white
                                                         outline group-hover/sub:outline-[#fdcc03] hover:outline-[#fdcc03] hover:max-h-[90vh] outline-transparent rounded-lg
