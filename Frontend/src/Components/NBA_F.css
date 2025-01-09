@@ -1,0 +1,196 @@
+.nba-intro {
+  font-size: 18px;
+  padding: 20px;
+  margin-top: -50px;
+  line-height: 1.8;
+  background:  #D3D3D3;
+  border-left: 5px solid #D3D3D3;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+/* Banner Section */
+.nba-banner-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(90%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.nba-banner-image:hover {
+  filter: brightness(100%);
+}
+
+/* Header Section */
+.nba-header {
+  text-align: center;
+  padding: 20px;
+  font-size: 2.5rem;
+  margin: 20px 0;
+  margin-top: 50px;
+  color: #000; /* Set the text color to black */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: slideIn 1s ease-in-out;
+}
+
+/* Content Layout */
+.nba-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px;
+  padding: 20px;
+  gap: 30px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Year Buttons */
+.nba-years {
+  padding-top: 30px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nba-year-button {
+  border-radius: 8px;
+  width: 120px;
+  padding-top: 20px;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid #FDCC03;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nba-year-button.active {
+  background-color: #FDCC03;
+  color: #222;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.ba
+
+.nba-year-button:hover {
+  background-color: #333;
+  color: #FDCC03;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Details Section */
+.nba-details {
+  width: 75%;
+  background: #fff;
+  content: center;
+  margin-right: 150px;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: slideIn 1s ease-in-out;
+}
+
+/* Action Buttons */
+.nba-year-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom:30px;
+}
+
+.nba-action-button {
+  width: 160px;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #FDCC03;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nba-action-button:hover {
+  background-color: #e6b802;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* PDF Viewer */
+.embed {
+  margin-top: 30px;
+  border: 3px solid #FDCC03;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+.nba-pdf-container{
+  
+  
+    text-align: center;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 100%; /* Add height if necessary */
+  
+  
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nba-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nba-years {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nba-details {
+    width: 100%;
+  }
+
+  .nba-year-actions {
+    gap: 20px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

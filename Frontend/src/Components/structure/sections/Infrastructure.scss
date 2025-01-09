@@ -1,0 +1,324 @@
+   @import url('https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+   $imageIds: '1517021897933-0e0319cfbc28', '1533903345306-15d1c30952de', '1545243424-0ce743321e11', '1531306728370-e2ebd9d7bb99';
+   
+   $bp-md: 600px;
+   $bp-lg: 800px;
+
+  .infra{
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font: {
+          family: "Spectral", serif; //kinda transitional
+      }
+
+      &[data-theme="night"] {
+          --text-color: white;
+          --background-color: black;
+      }
+
+      .text-author{
+        text-align: right;
+        font-size: 30px;
+      }
+
+      .text-container {
+          padding: 0px 20px;
+          .text-heading {
+              .text-title {
+                  font-size: 20px;
+                  text-align: center;
+                  margin: 120px auto;
+                  margin-bottom: 20px;
+                  text-align: right;
+              }
+              .text-author {
+                  margin-bottom: 80px;
+                  text-align: right;
+              }
+          }
+          .text-blockWrapper {
+            .text-paragraph {
+              font-size: 15pt;
+              margin-bottom: 40px;
+          }
+          }
+          .text-footer {
+              .text-referenceInfo {
+                  margin-top: 40px;
+              }
+          }
+      }
+  }
+
+   .infra{
+    padding: 3.7rem;
+   }
+
+   .infra h1{
+    border-right: 5px solid #767676;
+    border-left: 5px solid #767676;
+    text-align: center;
+   }
+
+   .ui-controls {
+    &.night-controller {
+        width: 80px;
+        height: 40px;
+        border-radius: 20px;
+        background: white;
+        position: fixed;
+        bottom: 40px;
+        right: 60px;
+        z-index: 555;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            width: 80px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 24px;
+            padding: 2px;
+            position: absolute;
+            // bottom: 60px;
+            // right: 120px;
+            transform: translate(-4px, -4px);
+            z-index: 0;
+        }
+
+        &::before {
+            content: " ";
+            width: 36px;
+            height: 36px;
+            border-radius: 24px;
+            padding: 2px;
+            position: absolute;
+            background-color: orangered;
+            // bottom: 60px;
+            // right: 120px;
+            transform: translate(0px, 0px);
+            z-index: 0;
+            transition: 0.2s ease-out all;
+        }
+
+        &[data-mode="on"]::before {
+            transform: translate(40px, 0px);
+            background-color: blue;
+        }
+        &[data-mode="on"]::after {
+            content: " ";
+            border: 2px solid white;
+            transform: translate(-4px, -4px);
+            z-index: 0;
+        }
+      }
+    } 
+
+    @media screen and (max-width: 768px) {
+        body {
+            .text-container {
+                padding: 20px;
+            }
+        }
+    }
+
+
+   
+   .page-content {
+     display: grid;
+     grid-gap: 1rem;
+     padding: 1rem;
+    margin: 0 auto;
+    outline: 5;
+     font-family: var(--font-sans);
+   
+     @media (min-width: $bp-md) {
+       grid-template-columns: repeat(2, 1fr);
+     }
+   
+     @media (min-width: $bp-lg) {
+       grid-template-columns: repeat(4, 1fr);
+     }
+
+     justify-content: center;
+   }
+   
+   .card_infa{
+     position: relative;
+     display: flex;
+     align-items: flex-end;
+     overflow: hidden;
+     padding: 1rem;
+     width: 100%;
+     text-align: center;
+     color: whitesmoke;
+     background-color: whitesmoke;
+     box-shadow: 0 1px 1px rgba(255, 249, 249, 0.1), 
+       0 2px 2px rgba(255, 249, 249, 0.1), 
+       0 4px 4px rgba(255, 249, 249, 0.1), 
+       0 8px 8px rgba(255, 249, 249, 0.1),
+       0 16px 16px rgba(0,0,0,0.1);
+     border: 2px solid #b6a888; /* Add a border */
+     border-radius: 8px; /* Optional: Add rounded corners */
+     transition: border 0.4s ease, transform 0.4s ease;
+
+     @media (min-width: $bp-md) {
+       height: 450px;
+     }
+   
+     &:before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 110%;
+       background-size: cover;
+       background-position: center;
+       transition: transform 0.4s ease;
+       pointer-events: none;
+     }
+
+     &:hover {
+      border: 5px solid #767676; /* Increase border size on hover */
+      
+      &:before {
+        transform: scale(0.1); /* Zoom out the background on hover */
+      }
+    }
+   
+     &:after {
+       content: '';
+       display: block;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 200%;
+       pointer-events: none;
+       background-image: linear-gradient(
+         to bottom,
+         hsla(0, 0%, 0%, 0) 0%,
+         hsla(0, 0%, 0%, 0.009) 11.7%,
+         hsla(0, 0%, 0%, 0.034) 22.1%,
+         hsla(0, 0%, 0%, 0.072) 31.2%,
+         hsla(0, 0%, 0%, 0.123) 39.4%,
+         hsla(0, 0%, 0%, 0.182) 46.6%,
+         hsla(0, 0%, 0%, 0.249) 53.1%,
+         hsla(0, 0%, 0%, 0.320) 58.9%,
+         hsla(0, 0%, 0%, 0.394) 64.3%,
+         hsla(0, 0%, 0%, 0.468) 69.3%,
+         hsla(0, 0%, 0%, 0.540) 74.1%,
+         hsla(0, 0%, 0%, 0.607) 78.8%,
+         hsla(0, 0%, 0%, 0.668) 83.6%,
+         hsla(0, 0%, 0%, 0.721) 88.7%,
+         hsla(0, 0%, 0%, 0.762) 94.1%,
+         hsla(0, 0%, 0%, 0.790) 100%
+       );
+       transform: translateY(-50%);
+       transition: transform calc(var(--d) * 2) var(--e);
+     }
+   
+    //  @each $id in $imageIds {
+    //    $i: index($imageIds, $id);
+   
+    //    &:nth-child(#{$i}):before {
+    //     background-image: url(https://velammal.edu.in/wp-content/uploads/2021/09/vec-Fmhel-174-1.jpg);
+    //    }
+    //  }
+   }
+   
+   .content {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     padding: 1rem;
+     transition: transform var(--d) var(--e);
+     z-index: 1;
+   
+     > * + * {
+       margin-top: 1rem;
+     }
+   }
+   
+   .title {
+     font-size: 1.3rem;
+     font-weight: bold;
+     line-height: 1.2;
+   }
+   
+   .copy {
+     font-family: var(--font-serif);
+     font-size: 1.125rem;
+     font-style: italic;
+     line-height: 1.35;
+   }
+   
+   .btn {
+     cursor: pointer;
+     margin-top: 1.5rem;
+     padding: 0.75rem 1.5rem;
+     font-size: 0.65rem;
+     font-weight: bold;
+     letter-spacing: 0.025rem;
+     text-transform: uppercase;
+     color: white;
+     background-color: black;
+     border: none;
+   
+     &:hover {
+       background-color: lighten(black, 5%);
+     }
+   
+     &:focus {
+       outline: 1px dashed yellow;
+       outline-offset: 3px;
+     }
+   }
+   
+   @media (hover: hover) and (min-width: $bp-md) {
+     .card_infa:after {
+       transform: translateY(0);
+     }
+   
+     .content {
+       transform: translateY(calc(100% - 4.5rem));
+   
+       > *:not(.title) {
+         opacity: 0;
+         transform: translateY(1rem);
+         transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+       }
+     }
+   
+     .card_infa:hover,
+     .card_infa:focus-within {
+       align-items: center;
+   
+       &:before { transform: translateY(-4%); }
+       &:after { transform: translateY(-50%); }
+   
+       .content {
+         transform: translateY(0);
+   
+         > *:not(.title) {
+           opacity: 1;
+           transform: translateY(0);
+           transition-delay: calc(var(--d) / 8);
+         }
+       }
+     }
+   
+     .card_infa:focus-within {
+       &:before,
+       &:after,
+       .content,
+       .content > *:not(.title) {
+         transition-duration: 0s;
+       }
+     }
+   }
+   

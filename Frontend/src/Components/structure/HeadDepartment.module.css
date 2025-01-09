@@ -1,0 +1,322 @@
+/* General Styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  font: 400 24px "Times New Roman", -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+/* Header */
+.header {
+  position: relative;
+  width: 100%; /* Ensure header takes full width of the screen */
+  height: 25vh; /* Or use your desired height */
+}
+
+.fullWidthImage {
+  width: 100%; /* Make the image span full width */
+  height: 100%; /* Ensure the image fills the header height */
+  object-fit: cover; /* Cover the area without distorting the image */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure the overlay spans the full width */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3); /* Darker background */
+  backdrop-filter: blur(10px); /* Stronger blur effect */
+  border-radius: 10px; /* Optional: smooth edges */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.overlayText {
+  font-size: 38px;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase; /* All caps for more modern look */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Light shadow for better contrast */
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background: #1c1c1f;
+  color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center; /* Ensure icon and text are aligned horizontally */
+}
+
+.sidebar ul li button {
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center; /* Align icon and text horizontally */
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.sidebar ul li button:hover {
+  color: #000000;
+  background: #fdcc03;
+}
+
+.sidebar ul li button:hover .icon {
+  color: #ffffff; /* Change icon color to white on hover */
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #fdcc03; /* Default icon color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Content */
+.messageContent {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.textColumn {
+  flex: 2;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hodMessage {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.8;
+}
+
+.messageBody {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: justify;
+}
+
+.messageBody:first-of-type {
+  margin-top: 0;
+}
+
+.hodMessage h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #1b1b23;
+  border-bottom: 2px solid #fdcc03;
+  display: inline-block;
+}
+
+.hodInfo {
+  margin-bottom: 20px;
+}
+
+.messageHeader {
+  font-size: 32px;
+  color: #fdcc03;
+  margin: 0;
+}
+
+.messageHeader2 {
+  font-size: 28px;
+  color: #000;
+  margin-left: 8px;
+}
+
+.hodDesignation {
+  font-size: 20px;
+  color: #555;
+}
+
+.messageTitle {
+  font-size: 28px;
+  margin-top: 20px;
+  color: #1b1b23;
+  border-bottom: 2px solid #fdcc03;
+  display: inline-block;
+}
+
+.messageBody {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* HOD Image */
+.imageColumn {
+  flex: 1;
+  text-align: center;
+}
+
+.hodImage {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* View More Button */
+.viewMoreButton {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background: #fdcc03;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.viewMoreButton:hover {
+  background: #e3c22f;
+}
+
+.socialLinks {
+  margin-top: 15px;
+  display: flex; /* Use flexbox to align the links in a row */
+  justify-content: center; /* Center the links horizontally */
+  align-items: center;
+  height: 35px;
+}
+
+.socialLink {
+  margin: 0 10px; /* Space between icons */
+  font-size: 24px;
+  color: #003366;
+}
+
+.socialLink:hover {
+  color: #fdcc03;
+}
+
+
+
+/* Mobile View (max-width: 768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack content and sidebar vertically */
+  }
+
+  .sidebar {
+    width: 100%; /* Full width for sidebar on mobile */
+  }
+
+  .messageContent {
+    flex-direction: column; /* Ensure stacking */
+    gap: 10px; /* Further reduce gap */
+  }
+
+  .textColumn, .imageColumn {
+    width: 100%; /* Full width for both */
+  }
+
+  .textColumn {
+    padding: 10px; /* Adjust padding */
+  }
+
+  .hodImage {
+    max-width: 100%; /* Ensure the image is responsive */
+    margin: 0 auto;
+  }
+
+  .socialLinks {
+    font-size: 16px; /* Smaller icons for mobile */
+  }
+
+  .viewMoreButton {
+    padding: 8px 14px; /* Smaller button */
+    font-size: 12px; /* Adjust font size */
+  }
+
+  .overlayText {
+    font-size: 30px; /* Adjust header font size for mobile */
+  }
+
+  .messageHeader {
+    font-size: 24px; /* Adjust header font size for mobile */
+  }
+
+  .messageHeader2 {
+    font-size: 20px; /* Smaller sub-header */
+  }
+
+  .hodDesignation {
+    font-size: 16px; /* Smaller designation font size */
+  }
+
+  .messageTitle {
+    font-size: 20px; /* Smaller title font size */
+  }
+
+  .messageBody {
+    font-size: 14px; /* Adjust body font size */
+    line-height: 1.5; /* Adjust line-height for readability */
+  }
+
+  .hodMessage h3 {
+    font-size: 18px; /* Smaller heading */
+  }
+
+  .hodInfo {
+    font-size: 14px; /* Smaller font for additional info */
+  }
+
+  .socialLinks {
+    font-size: 16px; /* Smaller font for social icons */
+  }
+
+  .sidebar ul li button {
+    font-size: 12px; /* Adjust button font size */
+  }
+
+  .sidebar ul li {
+    margin-bottom: 12px; /* Reduce space between sidebar items */
+  }
+
+  .sidebar ul li .icon {
+    font-size: 16px; /* Adjust icon size */
+  }
+}

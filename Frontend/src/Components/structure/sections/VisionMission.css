@@ -1,0 +1,274 @@
+body {
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.main-content {
+  padding: 30px;
+}
+
+.section-card ul {
+  padding-left: 20px;
+  margin-top: 20px;
+  list-style-type: disc;
+}
+
+.section-card li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.section-card {
+  background: linear-gradient(135deg, #f7b731, #e74c3c);
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Ensure equal height */
+}
+.vision-quote {
+  margin-top: 20px;
+  font-family: "EB Garamond", serif;
+  line-height: 1.1;
+  font-size: 32px; /* Increased font size */
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-left: 4px solid rgba(255, 255, 255, 0.7);
+  padding-left: 10px;
+}
+
+.section-card:hover {
+  transform: translateY(-10px) rotate(-1deg);
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.section-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  z-index: -1;
+  transition: transform 0.5s ease-in-out;
+}
+
+.section-card:hover::before {
+  transform: scale(1.3);
+}
+
+.section-card h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.section-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.icon-container {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon-container i {
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.testimonials {
+  margin-top: 50px;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: #555;
+  text-align: center;
+  position: relative;
+}
+
+.testimonials::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #f7b731, #e74c3c);
+}
+
+/* General Section Styling */
+.about-department {
+  padding: 50px 0;
+}
+
+.about-department h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-department-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+.about-department-image img {
+  max-width: 100%;
+  height: auto;
+  margin-left: 30px;  /* Optional gap on the left side of the image */
+
+  border-radius: 15px; /* Softer, more modern rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for a more sophisticated look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.about-department-image img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+}
+
+/* Vision and Mission Section */
+.section-card {
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-card h2 {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.section-card p,
+.section-card ul {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.section-card blockquote {
+  font-size: 24px;
+  font-style: italic;
+  color: #555;
+  border-left: 4px solid #007bff;
+  padding-left: 15px;
+  margin-left: 0;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .about-department .row {
+    flex-direction: column-reverse;
+  }
+
+  .about-department-text {
+    text-align: center;
+  }
+}
+
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .about-department-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-department-heading {
+    margin-bottom: 20px;
+  }
+
+  .about-department-text {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .about-department-image {
+    margin-top: 20px;
+  }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .about-department-content {
+    flex-direction: column;
+  }
+
+  .about-department-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-department-image {
+    margin-top: 20px;
+  }
+}
+
+/* General Section Styling */
+.section-card {
+  background: linear-gradient(135deg, #f7b731, #e74c3c);
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .parallel-sections {
+    flex-direction: column;
+  }
+
+  .section-card {
+    margin-bottom: 20px;
+  }
+}

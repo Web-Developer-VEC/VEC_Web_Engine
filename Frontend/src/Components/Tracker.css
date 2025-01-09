@@ -1,0 +1,56 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  height: auto; 
+  width: 100%;
+  /* margin-top: 2vmax; */
+  /* margin-bottom: -200px; */
+}
+
+.stats-grid-container {
+  display: flex;
+  justify-content: center; /* Center the grid horizontally */
+  align-items: top; /* Center the grid vertically */
+  width: 100%; /* Full width */
+}
+
+.stats-grid {
+  display: flex; 
+  justify-content: space-between; /* Space out the items evenly */
+  align-items: top;
+  gap: 250px; 
+  /* margin-left: 40px; */
+  /* border-radius: 12px; */
+  max-width: 90%;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 2vmax 2vmax 0;
+  flex: 1; /* Allow equal space for each item */
+  justify-content: center;
+  margin: 10px 0; /* Margin for vertical spacing */
+}
+
+.stat-item .icon {
+  margin: auto;
+  font-size: 1.2vmax; /* Maximize icon size */
+  margin-bottom: 15px; /* Space between icon and number */
+}
+
+.stat-number {
+  font-size: 2rem; /* Increase number size */
+  margin: 10px 0; /* Space between number and label */
+}
+
+.stat-label {
+  font-size: 1.2rem; /* Adjust label size */
+  margin-top: 5px; /* Space above the label */
+}
+
+.section-title {
+  font-size: 24px; /* Adjust the size as needed */
+  margin-bottom: 20px; 
+  text-align: center; /* Center align the title */
+  font-weight: bold;
+}

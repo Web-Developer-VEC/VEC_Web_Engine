@@ -1,0 +1,80 @@
+/* Styling for the chat icon */
+.chat-icon {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  align-items: center;
+  cursor: pointer;
+  border: .5px solid #1f1f20;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+/* Hover effect for chat icon */
+.chat-icon:hover {
+  background-color: #f1f1f1;
+}
+
+/* Styling for the chat popup content */
+.chat-popup {
+  z-index: 1001;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for messages container */
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+/* Styling for individual messages */
+.message {
+  background-color: #e6e6e6;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* Styling for the message input and send button */
+.message-input {
+  display: flex;
+}
+
+.message-input input {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.message-input button {
+  padding: 10px 15px;
+  background-color: rgb(253, 204, 3);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.message-input button:hover {
+  background-color: #0056b3;
+}

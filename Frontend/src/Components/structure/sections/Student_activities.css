@@ -1,0 +1,197 @@
+/* General Container Styles */
+.carousel-container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px;
+}
+
+.intro-section {
+  background-color: #ffffff; /* White background */
+  color: #333333; /* Dark gray text */
+  padding: 2.5rem 3rem;
+  border-radius: 1.25rem; /* Rounded corners */
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Ensure box shadow looks natural */
+}
+
+.intro-section:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.intro-title {
+  font-size: 2.2rem; /* Larger title */
+  font-weight: 700; /* Bold weight for better emphasis */
+  margin-bottom: 1.2rem;
+  color:rgb(253 204 3); /* Yellow for contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Light text shadow */
+}
+
+.intro-text {
+  font-size: 1.2rem; /* Slightly larger text for readability */
+  line-height: 1.8;
+  font-style: italic; /* Subtle text emphasis */
+  color: #555555; /* Darker gray text for contrast */
+}
+
+/* Description Box Styles */
+.description-box {
+  margin-top: 2rem;
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 2.5rem 3rem;
+  border-radius: 1.25rem; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Ensure box shadow looks natural */
+}
+
+.description-box:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.description-title {
+  font-size: 1.8rem; /* Larger title */
+  font-weight: 700; /* Bold weight */
+  margin-bottom: 1rem;
+  color:rgb(253 204 3); /* Yellow title */
+  text-transform: capitalize; /* First letter capitalized */
+  letter-spacing: 0.05rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.description-text {
+  font-size: 1.2rem; /* Slightly larger font size for better readability */
+  line-height: 1.75;
+  color: #333333; /* Dark gray for better contrast */
+  letter-spacing: 0.02rem; /* Slight letter spacing for readability */
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Carousel Slides */
+.carousel-slides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-out;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  animation: bounceIn 0.5s ease-out; /* Bounce-in effect */
+  z-index: 5; /* Ensure buttons are on top */
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1); /* Slightly larger on hover */
+}
+
+.prev-button {
+  left: 1rem;
+}
+
+.next-button {
+  right: 1rem;
+}
+
+.nav-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: #333333;
+}
+
+/* Dot Navigation */
+.dots-container {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.dot {
+  width: 1.0rem; /* Increased width for a more pill-like shape */
+  height: 1.0rem; /* Height to maintain a rounded look */
+  border-radius: 50px; /* Rounded corners to give a pill shape */
+  background-color: rgba(255, 255, 255, 0.5); /* Light gray for inactive dots */
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly brighter on hover */
+  transform: scale(1.2); /* Slightly enlarge on hover for interaction */
+}
+
+.dot.active {
+  width: 1rem;
+  background-color:rgb(253 204 3); /* Bright yellow for active dot */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Glow effect for active dot */
+}
+
+/* Keyframe Animations */
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-1000px);
+  }
+  60% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
