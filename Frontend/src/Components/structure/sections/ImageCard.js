@@ -25,7 +25,7 @@ const ImageCard = ({ name, photo, Designation }) => (
         <FaResearchgate/>
      </a>
      </div>
-    <button >View More</button>
+    <button className='FACButton'>View More</button>
   </div>
 );
 

@@ -56,7 +56,7 @@ module.exports = {
         '97%': {opacity: '0'},
         '100%': {transform: 'translateX(10vmax)'},
       },
-      slideIn: {
+      LslideIn: {
         '0%': {transform: 'translateX(40vmax)', opacity: '0'},
         '2%': {transform: 'translateX(5vmax)', opacity: '1'},
         '16.67%': {transform: 'translateX(5vmax)', opacity: '1'},

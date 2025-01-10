@@ -66,7 +66,7 @@ const ImgSld = () => {
           <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
             {lst.map((elm, i) => (
               <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
-                animate-[slideIn_40s_ease-in_infinite] p-5 border-y-2 
+                animate-[LslideIn_40s_ease-in_infinite] p-5 border-y-2 
                 [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
                 bg-[#0000001a] backdrop-blur-[0px] text-white text-[1.7vmax]`} 
                 style={{ animationDelay: `${i * 7}s` }}

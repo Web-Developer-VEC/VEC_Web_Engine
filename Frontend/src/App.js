@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef}from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Head from './Components/Head';
 import ImgSld from './Components/ImgSld';
@@ -31,55 +31,82 @@ const MainContentWrapper = styled.div`
 `;
 
 
+
 const Nirf1 = () => {
+  const footerRef = useRef(null);
+
+  const scrollToFooter = () => {
+    footerRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="nirf2">
       <Head />
       <NIRF /> {/* This will render the NIRF component */}
       <Contact />
       <Chat />
-      <Footer />
+      <Footer ref={footerRef}/>
     </div>
   );
 };
 
 const Naac1 = () => {
+  const footerRef = useRef(null);
+
+  const scrollToFooter = () => {
+    footerRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="naac2">
       <Head />
       <NAAC /> {/* This will render the NIRF component */}
       <Contact />
       <Chat />
-      <Footer />
+      <Footer ref={footerRef}/>
     </div>
   );
 };
 
 const Nba1 = () => {
+    const footerRef = useRef(null);
+
+    const scrollToFooter = () => {
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+    };
   return (
     <div className="nba2">
       <Head />
       <NBA /> {/* This will render the NIRF component */}
       <Contact />
       <Chat />
-      <Footer />
+      <Footer ref={footerRef}/>
     </div>
   );
 };
 
 const Dept = () => {
+    const footerRef = useRef(null);
+
+    const scrollToFooter = () => {
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+    };
   return(
     <AppContainer className="App">
       <Head />
       <MainContentWrapper>
         <DepartmentPage />{" "}
       </MainContentWrapper>
-      <Footer />
+      <Footer ref={footerRef} />
     </AppContainer>
   );
 }
 
 const App = () => {
+    const footerRef = useRef(null);
+
+    const scrollToFooter = () => {
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+
   return (
     <Router>
       <Routes>

@@ -50,7 +50,7 @@
   margin-bottom: 15px;
 }
 
-button {
+.FACButton {
   background-color: #fdcc03;
   border: none;
   padding: 10px 20px;
@@ -61,7 +61,7 @@ button {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button:hover {
+.FACButton:hover {
   background-color: #003366; /* Reverse colors on hover */
   color: #fdcc03;
 }

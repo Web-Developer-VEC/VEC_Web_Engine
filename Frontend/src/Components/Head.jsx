@@ -34,7 +34,7 @@ const Head = () => {
             {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: ''},
             {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
             {hrd: false, ttl: 'Governing Council', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Contact Us', sup: [], lnk: ''}
+            { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
             {hrd: false, ttl: 'Principal', sup: [], lnk: ''},

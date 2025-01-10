@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";//+
 import "./Footer.css"; // Add your custom CSS for styling
 import insta from './Assets/insta-logo.png';
 import linkedin from './Assets/linkedin-logo.png';
@@ -6,9 +6,9 @@ import youtube from './Assets/Youtube-logo.png';
 import x from './Assets/X-logo.png';
 import facebook from './Assets/facebook-logo.png';
 
-const Footer = () => {
+const Footer = forwardRef ((props, ref) => {
   return (
-    <footer className="footer font-popp">
+    <footer  id="footer" className="footer font-popp" ref={ref}>
       <div className="contact-details">
         <h3 style={{color:"rgb(253,204,3)",padding:"20px",margintop:"5px"}}>Contact Address</h3>
         <p style={{ marginTop:"-2%" ,fontSize:"17px",color:"white"}}>Velammal Engineering College<br></br>Ambattur Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
@@ -69,7 +69,6 @@ const Footer = () => {
 
       </div>
     </footer>
-  );
-};
+  );});
 
 export default Footer;

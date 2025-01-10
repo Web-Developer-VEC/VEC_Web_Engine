@@ -22,7 +22,7 @@ const CourseCarousel = ({ courses }) => {
 
   const pos_hdl = (pvl, clr) => {
     if (pvl !== 0 && pvl <= courses.length) {
-      document.getElementById(`Cor${pos}`).pause();
+      // document.getElementById(`Cor${pos}`).pause();
       setPos(pvl);
       // setClr(clr)
       document.getElementById(`Cor${pvl}`).play();

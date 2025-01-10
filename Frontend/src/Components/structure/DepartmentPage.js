@@ -13,7 +13,7 @@ import MOU from "./sections/mou";
 import Research from "./sections/RD";
 
 const DepartmentPage = () => {
-  const [activeSection, setActiveSection] = useState("HeadDepartment");
+  const [activeSection, setActiveSection] = useState("Vision&Mission");
   const [isMobile, setIsMobile] = useState(false);
 
   const renderSection = () => {

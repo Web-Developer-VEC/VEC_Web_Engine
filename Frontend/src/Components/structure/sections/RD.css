@@ -1,72 +1,85 @@
-/* Cleaned up CSS for centered actions */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(to right, #ece9e6, #ffffff); /* Subtle gradient background */
+  color: #333;
+  line-height: 1.6;
+}
 
 /* Page Container */
 .RD-page {
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* Intro Section */
 .RD-intro {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .RD-header {
-  text-align: center;
-  padding: 20px;
-  font-size: 2rem;
-  margin: 20px 0;
-  color: #000;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #222;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ff8c00, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Year Buttons */
 .RD-years-horizontal {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 15px;
+  margin-top: 30px;
 }
 
 .RD-year-button {
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  border: 2px solid #FDCC03;
-  background-color: #222;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #cbb811, #fca225); /* Modern gradient */
   color: #fff;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .RD-year-button.active {
-  background-color: #FDCC03;
-  color: #222;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #fca225, #cbb811);
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .RD-year-button:hover {
-  background-color: #333;
-  color: #FDCC03;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Centered Actions Section */
+/* Actions Section */
 .RD-year-actions {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two items per row */
-  gap: 20px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
   width: 100%;
-  max-width: 800px; /* Center within a container */
-  justify-content: center;
 }
 
 .RD-action-button {
@@ -74,65 +87,61 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FDCC03;
-  border-radius: 8px;
-  width: 200px;
-  height: 120px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
   text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid transparent;
 }
 
 .RD-action-button:hover {
-  background-color: #e6b802;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+  border-color: #fca225;
+}
+
+.RD-action-button svg {
+  font-size: 2.5rem;
+  color: #cbb811; /* Icon color */
+  margin-bottom: 12px;
 }
 
 .RD-action-button span {
-  display: block;
-  margin-top: 5px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .RD-year-actions {
-    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+/* Add subtle animation for hovering */
+.RD-action-button:hover svg {
+  transform: rotate(20deg);
+  transition: transform 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-/* Centered Actions Section */
-.RD-year-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Allows wrapping for multiple lines */
-  gap: 40px; /* Spacing between actions */
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-}
-
-.RD-action-button {
-  font-size: 1.2rem; /* Adjust font size */
-  font-weight: bold;
-  cursor: pointer;
-  color: #222; /* Default text color */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  text-decoration: none; /* Remove underline */
-}
-
-.RD-action-button:hover {
-  color: #FDCC03; /* Highlight on hover */
-  transform: scale(1.05); /* Slight enlargement on hover */
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .RD-year-actions {
-    flex-direction: column; /* Single column on smaller screens */
-    align-items: center; /* Center actions in a single column */
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .RD-year-button {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 }
