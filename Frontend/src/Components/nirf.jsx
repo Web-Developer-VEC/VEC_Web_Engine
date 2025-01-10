@@ -65,7 +65,7 @@ const Nirf = () => {
   };
 
   return (
-    <div className="nirf-page">2
+    <div className="nirf-page">
       <div className="nirf-banner">
         <img
           src={banner} // Replace with your banner image path

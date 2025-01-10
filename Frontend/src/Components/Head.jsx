@@ -71,9 +71,9 @@ const Head = () => {
             {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
         {main: "Exams", cod:[0, 4], cols: 1, sub: [
-            {hrd: false, ttl: 'Regulation', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Regulation', sup: [], lnk: '/reg'}, 
             {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Student Verification', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Student Verification', sup: [], lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'},
             {hrd: false, ttl: 'All Forms', sup: [], lnk: ''}
 
         ]}, 
@@ -91,10 +91,11 @@ const Head = () => {
             ]
         },  
         {main: "Placement", cod:[0, 4], cols: 1, sub: [
-            {hrd: false, ttl: 'About Placement Department', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'About Training & Placements', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'}, 
             {hrd: false, ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: ''}
+
         ]}, 
 
     ]
@@ -181,7 +182,7 @@ const Head = () => {
                                                     ${(i === length - 1) ? 'rounded-b-lg': ''} bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` + 
                                                     (sbj.hrd || sbj.ttl === "" ? '': ' hover:bg-[position:-100%_100%]')} 
-                                                    style={{transitionDelay: `${100 * i}ms`}} 
+                                                    style={{transitionDelay: `${((length > 10) ? 25: 100) * i}ms`}} 
                                                     key={sbj.ttl} href={sbj.lnk}><p 
                                                         className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' + 
                                                         (sbj.hrd ? 'font-bold border-b-2 text-center': 'text-left')}>{sbj.ttl}</p></a>

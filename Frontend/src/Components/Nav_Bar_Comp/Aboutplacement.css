@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Vision and Mission Section */
+.AP-vision-and-mission {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px; /* Space between the divs */
+}
+
+.AP-vision-and-mission h1 {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.AP-vision,
+.AP-mission {
+  margin-top: 60px;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 5px;
+  font-size: larger;
+  text-align: center;
+  margin: 60px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for zoom effect */
+  transform-origin: center; /* Ensures zoom happens from the center */
+  position: relative; /* Maintain space around each card */
+}
+
+/* Add space around elements to account for zoom */
+.AP-vision:hover,
+.AP-mission:hover {
+  transform: scale(1.1); /* Zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  z-index: 1; /* Ensure it pops above other elements */
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* Visiting Card Section */
+.AP-dynamic-card {
+  margin: 20px auto;
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 70px;
+}
+
+.AP-card-banner {
+  background-color: #e6b802;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AP-card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.AP-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.AP-title {
+  color: gray;
+  margin-bottom: 15px;
+}
+
+.AP-contact-info div {
+  margin: 5px 0;
+}
+
+.AP-address {
+  margin-top: 15px;
+  font-style: italic;
+  color: #555;
+}
+
+.AP-dynamic-card:hover {
+  transform: scale(1.1); /* Zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.AP-tr {
+  font-size: larger;
+  text-align: center;
+  background-color: rgb(192, 150, 35); /* Unique dark color */
+  color: white; /* White text for contrast */
+  padding: 20px; /* Add padding for better spacing */
+  margin: 20px auto; /* Center the section */
+  border-radius: 10px; /* Rounded corners for a unique look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  max-width: 800px; /* Restrict width for better readability */
+}
+
+.AP-tr h1 {
+  margin-bottom: 15px; /* Add spacing below the heading */
+}
+
+.AP-tr p {
+  line-height: 1.6; /* Improve readability with line spacing */
+}

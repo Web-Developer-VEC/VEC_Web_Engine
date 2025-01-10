@@ -1,0 +1,102 @@
+.container {
+  min-height: 100vh;
+  background-color: rgb(243, 244, 246);
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+      padding: 3rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+      padding: 3rem 2rem;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.grid-con {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-con {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  margin-top: auto;
+  background-color: #fdcc03;
+  color: white;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #e3c22f;
+}
+
+.button span {
+  margin-right: 0.5rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cards-link{
+  margin: 10px;
+}
+
+.cards-p{
+  margin: 10px;
+  color: #444;
+}
+
+.cards-viewmore{
+  color: black;
+}
+
+.cards-h1{
+  text-align: center;
+  color: #444;
+}
+

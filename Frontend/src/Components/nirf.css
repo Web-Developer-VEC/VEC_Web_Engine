@@ -2,7 +2,6 @@
 .nirf-intro {
   font-size: 18px;
   padding: 20px;
-  margin-top: -50px;
   line-height: 1.8;
   background:  #D3D3D3;
   border-left: 5px solid #D3D3D3;
@@ -24,7 +23,7 @@
 .nirf-banner-image {
   width: 100%;
   height: 350px;
-  margin-top: 95px;
+
   z-index: 1;
   filter: brightness(90%);
   transition: filter 0.3s ease-in-out;
