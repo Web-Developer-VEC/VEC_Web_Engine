@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Banner from '../Assets/UnivAbt-5-1.jpg'
 
-const AbtUs = () => {
+const Princ = () => {
     const banTtl = "About VEC"
     const motto = "A Journey of Thousand Miles Begins with a Single Step"
     const secTtl = `Velammal Engineering College`
@@ -23,13 +23,6 @@ const AbtUs = () => {
                 </div>
             </div>
             <div className='flex m-8'>
-                {/*<div*/}
-                {/*    className='font-rome text-center text-[0] animate-spin text-amber-800 p-0 -mb-[0.75vmax] overflow-hidden'>*/}
-                {/*    {"Velammal Torture College".split("").map((ltr, i) => (*/}
-                {/*        <span className={`animate-[bam_0.5s_ease_forwards]`}*/}
-                {/*              style={{animationDelay: `${(i + 3) * 0.15}s`}}>{ltr}</span>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
                 <div className='flex w-full h-[50vh] my-[5vh]'>
                     <div className="basis-3/4 p-4 font-popp mt-14">
                         <p className='text-3xl text-left mb-4'>{secHdr}</p>
@@ -67,4 +60,4 @@ const AbtUs = () => {
     );
 };
 
-export default AbtUs;
+export default Princ;
