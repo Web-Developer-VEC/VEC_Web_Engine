@@ -1,0 +1,59 @@
+.placement-percent {
+    margin: 3rem;
+    padding: 1rem;
+    align-items: center;
+    border: none;
+  }
+  
+  .placement-percent table {
+    width: 100%; /* Make the table span the full width of its container */
+    border-collapse: collapse; /* Removes double borders between cells */
+    margin-top: 1rem; /* Add some space above the table */
+    border-radius: 10px;
+  }
+  
+  .placement-percent th,
+  .placement-percent td {
+    border: 1px solid #ddd; /* Add border around cells */
+    padding: 8px; /* Add padding inside cells */
+    text-align: center; /* Center align the text */
+  }
+  
+  .placement-percent tr:nth-child(3n-2) {
+    background-color: rgb(219, 219, 21); /* First row in each group */
+  }
+  
+  .placement-percent tr:nth-child(3n-1) {
+    background-color: rgb(247, 245, 136); /* Second row in each group */
+  }
+  
+  .placement-percent tr:nth-child(3n) {
+    background-color: white; /* Third row in each group */
+  }
+  
+  
+  .placement-percent tr:hover {
+    background-color: #f3be2d; /* Highlight row on hover */
+    color: white;
+    cursor: default;
+  }
+  
+  .placement-percent th {
+    background-color: darkgoldenrod; /* Dark yellow */
+    color: white; /* Optional: Make text white for better contrast */
+    padding: 10px; /* Add some padding for better appearance */
+    text-align: left; /* Align text to the left */
+  }
+
+  .placement-yearwise{
+    border: none;
+  }
+
+  .placement-yearwise h4{
+    margin-left: 9rem;
+  }
+
+  .placement-percent h4{
+    padding-bottom: 5px;
+    border-bottom: 2.5px solid rgb(169, 167, 167);
+  }
