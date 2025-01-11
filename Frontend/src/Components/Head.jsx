@@ -28,12 +28,11 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", cod:[0, 6], cols: 1, sub: [
-            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/nirf'},
+        {main: "About Us", cod:[0, 5], cols: 1, sub: [
+            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/abt-us'},
             {hrd: false, ttl: 'About Trust', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: 'v_m'},
             {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Governing Council', sup: [], lnk: ''}, 
             { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
@@ -58,13 +57,17 @@ const Head = () => {
             {hrd: true, ttl:  'PG Courses', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: '', sup: [], lnk: ''},
-            {hrd: true, ttl: 'Others', sup: [], lnk: ''},
             {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
+            {hrd: false, ttl: '', sup: [], lnk: ''},
+            {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Chemistry', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'English', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Mathematicis', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Physics', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Tamil', sup: [], lnk: ''}, 
 
         ]},  
-        {main: "Admission", cod:[0, 5], cols: 1, sub: [
-            {hrd: false, ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
+        {main: "Admission", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E Admission', sup: [], lnk: ''},
             {hrd: false, ttl: 'MBA Admission', sup: [], lnk: ''},
@@ -72,9 +75,9 @@ const Head = () => {
         ]}, 
         {main: "Exams", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'Regulation', sup: [], lnk: '/reg'}, 
-            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Student Verification', sup: [], lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'},
-            {hrd: false, ttl: 'All Forms', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: '/Syllabus'},
+            {hrd: false, ttl: 'Student Verification', sup: [],  lnk: 'https://vecchennai.directverify.in/student/#/app/request',openInNewTab: true},
+            {hrd: false, ttl: 'All Forms', sup: [], lnk: '/form'}
 
         ]}, 
         {
@@ -92,8 +95,8 @@ const Head = () => {
         },  
         {main: "Placement", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'}, 
-            {hrd: false, ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Placement Team', sup: [], lnk: '/place-team'}, 
+            {hrd: false, ttl: 'Placement Details', sup: [], lnk: '/place-dep'},
             {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: ''}
 
         ]}, 
@@ -183,7 +186,8 @@ const Head = () => {
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` + 
                                                     (sbj.hrd || sbj.ttl === "" ? '': ' hover:bg-[position:-100%_100%]')} 
                                                     style={{transitionDelay: `${((length > 10) ? 25: 100) * i}ms`}} 
-                                                    key={sbj.ttl} href={sbj.lnk}><p 
+                                                    key={sbj.ttl} href={sbj.lnk}       target={sbj.openInNewTab ? '_blank' : '_self'}
+><p 
                                                         className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' + 
                                                         (sbj.hrd ? 'font-bold border-b-2 text-center': 'text-left')}>{sbj.ttl}</p></a>
                                                     {(sbj.sup.length > 0) ? (

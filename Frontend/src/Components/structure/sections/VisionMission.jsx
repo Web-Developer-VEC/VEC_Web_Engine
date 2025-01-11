@@ -8,7 +8,7 @@ const VisionMission = () => {
     <div className="main-content">
       {/* About the Department Section */}
       <section className="about-department">
-        <div className="container">
+        <div className="ABT_container">
           <div className="row align-items-center">
             <div className="col-md-6">
               <div className="about-department-text">

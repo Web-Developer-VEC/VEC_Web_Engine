@@ -11,6 +11,7 @@ import ImageCarousel from "./sections/Student_activities";
 import CurriculumPage from "./sections/CurriculamPage";
 import MOU from "./sections/mou";
 import Research from "./sections/RD";
+import Conference from "./sections/Conference";
 
 const DepartmentPage = () => {
   const [activeSection, setActiveSection] = useState("Vision&Mission");
@@ -37,7 +38,9 @@ const DepartmentPage = () => {
       case "Mous":
         return <MOU />;
       case "Research":
-        return <Research />;
+        return <Research setActiveSection={setActiveSection} />;
+      case "Conference":
+        return <Conference />;
       default:
         return <HeadDepartment />;
     }
