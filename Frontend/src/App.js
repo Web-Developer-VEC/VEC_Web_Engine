@@ -116,7 +116,7 @@ const App = () => {
       <Router>
         <AppContainer className="App">
           {/* Conditionally render Head and Footer */}
-          {location.pathname !== "/" && (
+          {window.location.pathname !== "/" && (
             <>
               <Head />
               <MainContentWrapper>
