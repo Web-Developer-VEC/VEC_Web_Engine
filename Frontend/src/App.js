@@ -23,10 +23,12 @@ import REGULATION from "./Components/Nav_Bar_Comp/Regulation.jsx";
 import Conference from "./Components/structure/sections/Conference.jsx";
 import { createGlobalStyle } from "styled-components";
 import Aboutplacement from "./Components/Nav_Bar_Comp/Aboutplacement.jsx";
+import AbtUs from "./Components/Pages/AbtUs";
+import Princ from "./Components/Pages/Princ";
 
 const GlobalStyle = createGlobalStyle`
 body {
-  cursor: url("/cursor.svg") 32 32, auto;
+  cursor: url("/cursor.svg") 32 32, auto;}
 `;
 const AppContainer = styled.div`
   display: flex;
@@ -137,6 +139,8 @@ const App = () => {
                   <Route path="/internship" element={<Conference />} />
                   <Route path="/product-development" element={<Conference />} />
                   <Route path="/abtplace" element={<Aboutplacement />} />
+                  <Route path="/abtus" element={<AbtUs />}  />
+                  <Route path="/prick" element={<Princ />} />
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />
