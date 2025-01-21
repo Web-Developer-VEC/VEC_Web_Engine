@@ -136,7 +136,7 @@ const App = () => {
                   <Route path="/nirf" element={<Nirf1 />} />
                   <Route path="/naac" element={<Naac1 />} />
                   <Route path="/nba" element={<Nba1 />} />
-                  <Route path="/dept" element={<Dept />} />
+                  <Route path="/dept/:deptID" element={<Dept />} />
                   <Route path="/v_m" element={<Collegevisionmission />} />
                   <Route path="/reg" element={<REGULATION />} />
                   <Route path="/funded-proposals" element={<Conference />} />
