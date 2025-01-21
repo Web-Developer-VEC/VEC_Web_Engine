@@ -1,14 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./collegevisionmission.module.css";
+import styles from  "./collegevisionmission.module.css";
 
 const Collegevisionmission = () => {
   return (
-    <div className="clg-vision-card">
+    <div className={styles.clgvisioncard}>
       <div className="row g-4">
         {/* Vision Section */}
         <div className="col-md-6 d-flex align-items-stretch">
-          <div className="section-card">
+          <div className={styles.sectioncard}>
             <h2>Institute Vision</h2>
             <p>
             To educate the student community both by theory and practice to fit in with the society and to conquer tomorrow’s technology at global level with human values through our dedicated team.
@@ -19,7 +19,7 @@ const Collegevisionmission = () => {
 
         {/* Mission Section */}
         <div className="col-md-6 d-flex align-items-stretch">
-          <div className="section-card">
+          <div className={styles.sectioncard}>
             <h2>Institute Mission</h2>
             <ul>
               <p>

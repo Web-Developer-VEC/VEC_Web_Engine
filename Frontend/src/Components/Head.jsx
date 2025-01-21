@@ -30,17 +30,17 @@ const Head = () => {
     const navs = [
         {main: "About Us", cod:[0, 5], cols: 1, sub: [
             {hrd: false, ttl: 'About VEC', sup: [], lnk: '/abt-us'},
-            {hrd: false, ttl: 'About Trust', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'About Trust', sup: [], lnk: '/trust'}, 
             {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: 'v_m'},
-            {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Management', sup: [], lnk: '/management'}, 
             { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
             {hrd: false, ttl: 'Principal', sup: [], lnk: ''},
-            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Admin Office', sup: [], lnk: ''}, 
-            {hrd: false, ttl: "Committee's", sup: [], lnk: ''},
-            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: ''}
+            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: '/dean'}, 
+            {hrd: false, ttl: 'Admin Office', sup: [], lnk: '/admin'}, 
+            {hrd: false, ttl: "Committee's", sup: [], lnk: '/committee'},
+            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: '/clg-org'}
         ]},
         {main: "Academics", cod:[0, 11, 13], cols: 2, sub: [
             {hrd: true, ttl: 'UG Courses', sup: [], lnk: ''},
@@ -68,9 +68,9 @@ const Head = () => {
 
         ]},  
         {main: "Admission", cod:[0, 4], cols: 1, sub: [
-            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: ''},
+            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: '/ug'},
+            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: '/m_e'},
+            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: '/mba'},
             {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
         {main: "Exams", cod:[0, 4], cols: 1, sub: [

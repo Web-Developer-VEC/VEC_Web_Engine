@@ -28,6 +28,15 @@ import Forms from "./Components/Nav_Bar_Comp/forms.jsx";
 import { PlacementDetails } from "./Components/Nav_Bar_Comp/PlacementDetails.jsx";
 import { PlacementTeam } from "./Components/Nav_Bar_Comp/PlacementTeam.jsx";
 import AbtUs from "./Components/Pages/AbtUs.jsx";
+import Management from "./Components/Nav_Bar_Comp/Management.jsx";
+import ExecutiveCommittee from "./Components/Nav_Bar_Comp/Executive commitee.jsx";
+import ME from "./Components/Nav_Bar_Comp/ADM-M.E.jsx";
+import MBA from "./Components/Nav_Bar_Comp/ADM-MBA.jsx";
+import UgAdmission from "./Components/Nav_Bar_Comp/UgAdmission.jsx";
+import Trust from "./Components/Nav_Bar_Comp/Trust.jsx";
+import CollegeOrgChart from "./Components/Nav_Bar_Comp/Organization_chart.jsx";
+import Dean from "./Components/Nav_Bar_Comp/dean.jsx";
+import CardPage from "./Components/Nav_Bar_Comp/admin.jsx";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -147,6 +156,15 @@ const App = () => {
                   <Route path="/place-dep" element={<PlacementDetails />} />
                   <Route path="/place-team" element={<PlacementTeam />} />
                   <Route path="/abt-us" element={<AbtUs />} />
+                  <Route path="/management" element={<Management />} />
+                  <Route path="/committee" element={<ExecutiveCommittee />} />
+                  <Route path="/m_e" element={<ME />} />
+                  <Route path="/mba" element={<MBA />} />
+                  <Route path="/ug" element={<UgAdmission />} />
+                  <Route path="/trust" element={<Trust />} />
+                  <Route path="/clg-org" element={<CollegeOrgChart />} />
+                  <Route path="/dean" element={<Dean />} />
+                  <Route path="/admin" element={<CardPage />} />
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />
