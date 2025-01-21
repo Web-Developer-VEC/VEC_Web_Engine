@@ -17,7 +17,7 @@ import NBA from "./Components/NBA_F";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LandingPage from "./Landing";
 import styled from "styled-components";
-import DepartmentPage from "./Components/structure/DepartmentPage.js";
+import DepartmentPage from "./Components/structure/DepartmentPage.jsx";
 import Collegevisionmission from "./Components/Nav_Bar_Comp/collegevisionmission.jsx";
 import REGULATION from "./Components/Nav_Bar_Comp/Regulation.jsx";
 import Conference from "./Components/structure/sections/Conference.jsx";

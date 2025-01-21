@@ -44,8 +44,8 @@ const Head = () => {
         ]},
         {main: "Academics", cod:[0, 11, 13], cols: 2, sub: [
             {hrd: true, ttl: 'UG Courses', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept'},
-            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept/001', deptID: "001",},
+            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: '/dept/002', deptID: "002",},
             {hrd: false, ttl: 'Civil Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'Computer Science and Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
