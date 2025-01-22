@@ -51,19 +51,18 @@
 }
 
 .FACButton {
-  background-color: #fdcc03;
+  background-color: #003366;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  color: #003366; /* Text color for contrast */
-  font-weight: bold;
+  color: #ffffff; 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .FACButton:hover {
-  background-color: #003366; /* Reverse colors on hover */
-  color: #fdcc03;
+  background-color: #fdcc03; /* Reverse colors on hover */
+  color: #000;
 }
 
 .socialLinks {
