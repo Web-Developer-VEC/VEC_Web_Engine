@@ -28,25 +28,24 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", cod:[0, 6], cols: 1, sub: [
-            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/nirf'},
-            {hrd: false, ttl: 'About Trust', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Governing Council', sup: [], lnk: ''}, 
+        {main: "About Us", cod:[0, 5], cols: 1, sub: [
+            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/abt-us'},
+            {hrd: false, ttl: 'About Trust', sup: [], lnk: '/trust'}, 
+            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: 'v_m'},
+            {hrd: false, ttl: 'Management', sup: [], lnk: '/management'}, 
             { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
             {hrd: false, ttl: 'Principal', sup: [], lnk: ''},
-            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Admin Office', sup: [], lnk: ''}, 
-            {hrd: false, ttl: "Committee's", sup: [], lnk: ''},
-            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: ''}
+            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: '/dean'}, 
+            {hrd: false, ttl: 'Admin Office', sup: [], lnk: '/admin'}, 
+            {hrd: false, ttl: "Committee's", sup: [], lnk: '/committee'},
+            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: '/clg-org'}
         ]},
         {main: "Academics", cod:[0, 11, 13], cols: 2, sub: [
             {hrd: true, ttl: 'UG Courses', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept'},
-            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept/001', deptID: "001",},
+            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: '/dept/002', deptID: "002",},
             {hrd: false, ttl: 'Civil Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'Computer Science and Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
@@ -58,23 +57,27 @@ const Head = () => {
             {hrd: true, ttl:  'PG Courses', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: '', sup: [], lnk: ''},
-            {hrd: true, ttl: 'Others', sup: [], lnk: ''},
             {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
+            {hrd: false, ttl: '', sup: [], lnk: ''},
+            {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Chemistry', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'English', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Mathematicis', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Physics', sup: [], lnk: ''}, 
+            {hrd: false, ttl: 'Tamil', sup: [], lnk: ''}, 
 
         ]},  
-        {main: "Admission", cod:[0, 5], cols: 1, sub: [
-            {hrd: false, ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
-            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: ''},
+        {main: "Admission", cod:[0, 4], cols: 1, sub: [
+            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: '/ug'},
+            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: '/m_e'},
+            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: '/mba'},
             {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
         {main: "Exams", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'Regulation', sup: [], lnk: '/reg'}, 
-            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Student Verification', sup: [], lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'},
-            {hrd: false, ttl: 'All Forms', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: '/Syllabus'},
+            {hrd: false, ttl: 'Student Verification', sup: [],  lnk: 'https://vecchennai.directverify.in/student/#/app/request',openInNewTab: true},
+            {hrd: false, ttl: 'All Forms', sup: [], lnk: '/form'}
 
         ]}, 
         {
@@ -92,8 +95,8 @@ const Head = () => {
         },  
         {main: "Placement", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'}, 
-            {hrd: false, ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Placement Team', sup: [], lnk: '/place-team'}, 
+            {hrd: false, ttl: 'Placement Details', sup: [], lnk: '/place-dep'},
             {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: ''}
 
         ]}, 
@@ -183,7 +186,8 @@ const Head = () => {
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` + 
                                                     (sbj.hrd || sbj.ttl === "" ? '': ' hover:bg-[position:-100%_100%]')} 
                                                     style={{transitionDelay: `${((length > 10) ? 25: 100) * i}ms`}} 
-                                                    key={sbj.ttl} href={sbj.lnk}><p 
+                                                    key={sbj.ttl} href={sbj.lnk}       target={sbj.openInNewTab ? '_blank' : '_self'}
+><p 
                                                         className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' + 
                                                         (sbj.hrd ? 'font-bold border-b-2 text-center': 'text-left')}>{sbj.ttl}</p></a>
                                                     {(sbj.sup.length > 0) ? (

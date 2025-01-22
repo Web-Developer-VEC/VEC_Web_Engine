@@ -1,0 +1,44 @@
+
+  .mba-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .intake-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .intake-table th, .intake-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .intake-table th {
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    color: white;
+  }
+  
+  .intake-table .even-row {
+    background-color: #fff3cd;
+  }
+  
+  .intake-table .odd-row {
+    background-color: #ffeeba;
+  }
+  .intake-table tr{
+    font-weight: bold;
+  }
+  .mba-contents{
+  
+    font-size: larger;
+    width: 85%;
+    
+  }

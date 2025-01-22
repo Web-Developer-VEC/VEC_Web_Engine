@@ -108,7 +108,7 @@ const Infrastructure = () => {
       <main className="page-content">
         {cards.map((card, index) => (
           <div
-            className="card"
+            className="card_infa"
             style={{
               backgroundImage: `url(${card.imageUrl})`,
               backgroundSize: "cover",

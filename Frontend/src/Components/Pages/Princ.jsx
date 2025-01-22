@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Banner from '../Assets/UnivAbt-5-1.jpg'
 
-const AbtUs = () => {
+const Princ = () => {
     const banTtl = "About VEC"
     const motto = "A Journey of Thousand Miles Begins with a Single Step"
     const secTtl = `Velammal Engineering College`
@@ -14,7 +14,7 @@ const AbtUs = () => {
 
     return (
         <>
-            <div className='relative flex justify-center w-screen h-[27.5vh] bg-white
+            <div className='flex justify-center w-screen h-[27.5vh] bg-white
                 bg-cover bg-no-repeat bg-[position:0px_-400px]'
                  style={{backgroundImage: `url(${Banner})`}}>
                 <div className="absolute grid justify-items-center align-self-center font-popp">
@@ -23,14 +23,7 @@ const AbtUs = () => {
                 </div>
             </div>
             <div className='flex m-8'>
-                {/*<div*/}
-                {/*    className='font-rome text-center text-[0] animate-spin text-amber-800 p-0 -mb-[0.75vmax] overflow-hidden'>*/}
-                {/*    {"Velammal Torture College".split("").map((ltr, i) => (*/}
-                {/*        <span className={`animate-[bam_0.5s_ease_forwards]`}*/}
-                {/*              style={{animationDelay: `${(i + 3) * 0.15}s`}}>{ltr}</span>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
-                <div className='flex w-full h-[50vh] my-[5vh] mb-40'>
+                <div className='flex w-full h-[50vh] my-[5vh]'>
                     <div className="basis-3/4 p-4 font-popp mt-14">
                         <p className='text-3xl text-left mb-4'>{secHdr}</p>
                         <p className='text-5xl text-center font-rome'>{secTtl}</p>
@@ -47,39 +40,24 @@ const AbtUs = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 border-amber-400 p-10 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
-    <div className="relative group min-h-[20vh] min-w-[20vw]">
-        <img
-            className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-            src={Banner}
-            alt="Banner"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-    </div>
-    <div className="flex flex-col justify-center">
-        <p className="text-2xl font-semibold text-gray-800 font-popp leading-relaxed tracking-wide">
-            {sec2Cnt}
-        </p>
-    </div>
-</div>
-
-<div className="flex flex-row-reverse gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 border-amber-400 p-10 my-14 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
-    <div className="relative group h-[20vh] min-w-[20vw]">
-        <img
-            className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-            src={Banner}
-            alt="Banner"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-    </div>
-    <div className="flex flex-col justify-center">
-        <p className="text-2xl font-semibold text-gray-800 text-justify font-popp leading-relaxed tracking-wide">
-            {sec3Cnt}
-        </p>
-    </div>
-</div>
+            <div className='flex gap-4 bg-[#eac40a15] border-y-2 border-amber-400 p-4'>
+                <div className='min-h-[20vh] min-w-[20vw]'>
+                    <img className='w-full h-full rounded-tl-[5rem] rounded-br-[5rem]' src={Banner} alt="Bann"/>
+                </div>
+                <div>
+                    <p className='w-[75%] text-2xl font-popp'>{sec2Cnt}</p>
+                </div>
+            </div>
+            <div className='flex flex-row-reverse gap-4 bg-[#eac40a15] border-y-2 border-amber-400 p-4 my-8'>
+                <div className='h-[20vh] min-w-[20vw]'>
+                    <img className='w-full h-full rounded-tl-[5rem] rounded-br-[5rem]' src={Banner} alt="Bann"/>
+                </div>
+                <div>
+                    <p className='w-[75%] text-2xl float-right text-right font-popp'>{sec3Cnt}</p>
+                </div>
+            </div>
         </>
     );
 };
 
-export default AbtUs;
+export default Princ;

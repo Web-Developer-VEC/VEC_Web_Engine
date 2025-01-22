@@ -1,0 +1,52 @@
+/* CardPage.css */
+.admin-card-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-page-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .admin-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .admin-card {
+    background-color: #fff;
+    border: 2px solid #fdcc03;
+    border-radius: 8px;
+    width: 170px;
+    padding: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .admin-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-card-image {
+    width: 150px;
+    height: 180px;
+    border-radius: 8px;
+  }
+  
+  .admin-card-name {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: #333;
+  }
+  
+  .admin-card-designation {
+    font-size: 1rem;
+    color: #777;
+  }
+  

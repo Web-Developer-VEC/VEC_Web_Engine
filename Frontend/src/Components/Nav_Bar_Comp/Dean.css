@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.de-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.de-box {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.de-heading {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: left;
+  font-size: 1.5rem; /* Larger heading size */
+  font-weight: bold;
+}
+
+.de-content {
+  display: flex;
+  gap: 40px;
+}
+
+.de-profiles-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.de-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fefefe;
+}
+
+.de-profile img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.de-profile-details {
+  line-height: 1.4;
+}
+
+.de-roles-section {
+  flex: 2;
+
+}
+
+.de-roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic columns */
+  gap: 20px;
+  padding-left: 0; /* Remove default list padding */
+  list-style: none; /* Remove default bullet points */
+  text-align:left;
+  
+}
+
+.de-roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.de-roles li {
+  position: relative;
+  padding-left: 30px; /* Add space for the custom icon */
+}
+
+.de-roles li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color:  #cbb811; /* Custom icon color */
+  border-radius: 50%; /* Circular icon */
+}
+
