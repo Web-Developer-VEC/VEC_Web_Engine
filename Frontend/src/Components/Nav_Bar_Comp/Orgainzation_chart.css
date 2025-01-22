@@ -1,3 +1,36 @@
+
+
+
+/* Connecting Lines */
+
+
+
+/* Container and Title */
+.org-chart-container {
+  padding: 40px;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  text-align: center;
+}
+
+.chart-title {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+
+/* Organizational Chart */
+.org-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+
+
 /* Container and Title */
 .org-chart-container {
   padding: 40px;
@@ -26,18 +59,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
   border-radius: 10px;
-  padding: 10px 15px;
+  height:fit-content;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  min-width: 90px;
+  font-size:10px ;
 }
 
 /* Hover Effects */
 .org-node:hover {
   transform: translateY(-12px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Person Details */
@@ -46,12 +78,12 @@
 }
 
 .person h4 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #fff;
   margin-bottom: 8px;
   padding: 4px 8px;
   border-radius: 5px;
-  background-color: #007bff; /* Blue */
+  background-color: #007bff; /* Default Blue */
 }
 
 .person p {
@@ -60,39 +92,43 @@
   margin: 0;
 }
 
-/* Chairman */
+/* Specific Node Styles */
 .ceo-node .person h4 {
-  background-color: #ff5722; /* Chairman - Orange */
+  background-color: #ff5722;
+  /* CEO - Orange */
 }
 
-/* Principal */
 .principal-node .person h4 {
-  background-color: #4caf50; /* Principal - Green */
+  background-color: #4caf50;
+  /* Principal - Green */
 }
 
-/* Committee Nodes */
 .committee-node .person h4 {
-  background-color: #9c27b0; /* Committee - Purple */
+  background-color: #9c27b0;
+  /* Committee - Purple */
 }
 
-/* Deans and Admin Nodes */
 .dean-node .person h4 {
   background-color: #2196f3; /* Deans - Blue */
+
 }
 
 .library-node .person h4 {
-  background-color: #ffc107; /* Library - Yellow */
+  background-color: #ffc107;
+  /* Library - Yellow */
 }
 
 .hostel-node .person h4 {
-  background-color: #e91e63; /* Hostel - Pink */
+  background-color: #e91e63;
+  /* Hostel - Pink */
 }
 
 /* Children Nodes */
 .children {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 50px;
+  padding: 20px;
 }
 
 /* Left and Right Children Container */
@@ -133,32 +169,27 @@
   
 }
 
-.dean-node .children{
-  position: relative;
+/* Adjust children for .dean-node and .Admin-node to display 5 per row */
+.dean-node .children,
+.Admin-node .children {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-}
-.dean-node {
-  background: #e6760e7a;
-  height: fit-content;
-  
+  flex-wrap: wrap;  /* Allow the children to wrap into multiple rows */
+  justify-content: space-between; /* Distribute space between items */
+  gap: 10px;  /* Adjust gap between items as needed */
 }
 
-.Admin-node .children{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Limit each row to 5 items */
+.dean-node .children > div,
+.Admin-node .children > div {
+  flex: 0 0 20%;  /* Set each child to take up ~18% of the container's width */
+  min-width: 150px; /* Ensure each child has a minimum width */
+}
+.Admin-node .children > div {
+  flex: 0 0 20%;  /* Set each child to take up ~18% of the container's width */
+  min-width: 80px; /* Ensure each child has a minimum width */
 }
 
-.Admin-node {
-background: #e6760e7a;
-height: fit-content;
-padding: 20px;
-  
-}
+
 .HOD-node .children{
   position: relative;
   display: flex;
@@ -166,12 +197,8 @@ padding: 20px;
   justify-content: center;
 }
 
-.HOD-node {
-background: #e6760e7a;
-height: fit-content;
-padding: 20px;
-  
-}
+
+
 .hostel-node .children{
   position: relative;
   display: flex;
@@ -179,12 +206,7 @@ padding: 20px;
   justify-content: center;
 }
 
-.hostel-node {
-background: #e6760e7a;
-height: fit-content;
-padding: 20px;
-  
-}
+
 .principal-node .side-children {
   display: flex;
   justify-content: space-between; /* Ensure left and right children are spaced correctly */
@@ -196,11 +218,41 @@ padding: 20px;
   flex-wrap: wrap;
 }
 
-
-/* Connecting Lines */
-.org-node .org-node {
-  margin-top: 30px; /* Adjust spacing between nodes */
+/* Node Specific Styling */
+.principal-node {
+  background-color: #e8f5e9; /* Light Green for Principal */
 }
+
+.dean-node {
+  background-color: #f1f8e9;
+  margin-top: 50px; /* Light Yellow-Green for Deans */
+}
+
+.Admin-node {
+  background-color: #e0f7fa;
+  margin-top: 50px; /* Light Yellow-Green for Deans */
+  /* Light Cyan for Admin */
+}
+
+.HOD-node {
+  background-color: #fff3e0;
+  margin-top: 50px; /* Light Yellow-Green for Deans */
+  /* Light Orange for HOD */
+}
+
+.hostel-node {
+  background-color: #fce4ec;
+  margin-top: 50px; /* Light Yellow-Green for Deans */
+  /* Light Pink for Hostel */
+}
+
+.library-node {
+  background-color: #fff8e1;
+  margin-top: 50px; /* Light Yellow-Green for Deans */
+  /* Light Yellow for Library */
+}
+/* Connecting Lines */
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {

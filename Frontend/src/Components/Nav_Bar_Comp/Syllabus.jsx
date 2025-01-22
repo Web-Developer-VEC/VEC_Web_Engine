@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Syllabi.css'; // Import the CSS file
+import Banner from '../Banner';
 
 const Syllabus = () => {
   const [showModal, setShowModal] = useState(false);
@@ -117,8 +118,15 @@ const Syllabus = () => {
   };
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Course & Syllabus"
+  subHeaderText="Providing a comprehensive guide to academic excellence, empowering students through structured learning."
+/>
+
+
     <div className="syl-container">
-      <h2>Course & Syllabus</h2>
       {data.map((entry, index) => (
         <div key={index} className="syllabus-section">
           <div className="syllabus-header">
@@ -153,6 +161,7 @@ const Syllabus = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

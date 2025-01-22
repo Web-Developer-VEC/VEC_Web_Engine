@@ -1,6 +1,7 @@
 // Import necessary dependencies
 import React from "react";
 import "./admin.css"; // Import the CSS file for styling
+import Banner from "../Banner";
 
 // Sample data for cards
 const cardData = [
@@ -92,6 +93,14 @@ const Card = ({ image, name, designation }) => {
 // Main CardPage component
 const CardPage = () => {
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Administrative Office"
+  subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."
+/>
+
+
     <div className="admin-card-page">
       <h1 className="admin-page-title">Our Team</h1>
       <div className="admin-card-container">
@@ -105,6 +114,7 @@ const CardPage = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

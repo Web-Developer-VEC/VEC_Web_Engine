@@ -1,5 +1,6 @@
 import React from "react";
 import "./Dean.css";
+import Banner from "../Banner";
 
 const data = [
   {
@@ -176,6 +177,13 @@ const data = [
 
 const Dean = () => {
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Dean & Associate Deans"
+  subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
+/>
+
     <div className="de-container">
       {data.map((section, index) => (
         <div className="de-box" key={index}>
@@ -208,6 +216,7 @@ const Dean = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
  

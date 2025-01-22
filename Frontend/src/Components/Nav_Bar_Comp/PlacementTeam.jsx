@@ -1,6 +1,7 @@
 import React from 'react';
 import './PlacementTeam.css';
 import image from '../Assets/Placement Team.jpg';
+import Banner from '../Banner';
 
 const persons = [
   {
@@ -41,11 +42,19 @@ function PersonDetail({ person, isImageLeft }) {
 
 export const PlacementTeam = () => {
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Placement Team"
+  subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
+/>
+
     <div className="Placement-App">
       <h1>Placement Team</h1>
       {persons.map((person, index) => (
         <PersonDetail key={person.id} person={person} isImageLeft={index % 2 === 0} />
       ))}
     </div>
+    </>
   );
 }

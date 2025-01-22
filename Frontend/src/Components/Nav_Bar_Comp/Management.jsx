@@ -1,10 +1,16 @@
 import React from "react";
 import './Management.css';
+import Banner from "../Banner";
 
 function Management(){
     return(
+        <>     
+     <Banner
+        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        headerText="Management"
+  subHeaderText="Leading with vision, fostering innovation, and inspiring integrity at every step."
+      />
         <div className="Management">
-            <h1>Management</h1>
             <div className="Founder">
                 <img src="/Images/Founder.png" alt="Founder's Image" />
                 <h2>Founder's Message</h2>
@@ -29,6 +35,7 @@ function Management(){
                 <p>We are Committed to provide Quality Education to Enable the Student Community to achieve academic and professional excellence. We endeavour to upgrade the real-time academic competencies of students and educators through continual training, motivation and active involvement.</p>
             </div>
         </div>
+        </>
     );
 }
 
