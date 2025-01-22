@@ -18,7 +18,7 @@ const Faculties = ({ data }) => {
           <Image
             key={faculty.unique_id || index}
             name={faculty.Name}
-            Photo= {faculty.Photo}
+            photo= {faculty.Photo}
 
             Designation={faculty.Designation}
             Scholar={faculty["Google Scholar Profile"]}
