@@ -4,122 +4,125 @@ import { useInView } from "react-intersection-observer";
 import "./Activities.css";
 import collegeImage from "../../Assets/college.jpeg";
 
-const Activities = () => {
+const Activities = ({data}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  console.log("Activities",data);
+  const activitiesArray = Object.values(data)
+  
 
-  const events = [
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
+  // const events = [
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
 
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
 
-    {
-      date: "05/03/2024",
-      name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
-      coordinator: "Mrs. M. Priya",
-      image: collegeImage,
-      details: {
-        resourcePerson:
-          "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
-        beneficiaries: "II- and III-YEAR students",
-        relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
-      },
-    },
-  ];
+  //   {
+  //     date: "05/03/2024",
+  //     name: "Seminar on Career Opportunity in Data Science with Table and Power BI",
+  //     coordinator: "Mrs. M. Priya",
+  //     image: collegeImage,
+  //     details: {
+  //       resourcePerson:
+  //         "Mr. Ahamed Khalid, Head - Academic Alliances, Imarticus Learning, IIM, Bangalore",
+  //       beneficiaries: "II- and III-YEAR students",
+  //       relevantPO_PSO: "PSO1, PSO2, PO3, PO6, PO9, PO10, PO11, PSO1",
+  //     },
+  //   },
+  // ];
 
   const handleViewMore = (event) => {
     setSelectedEvent(event);
@@ -132,7 +135,7 @@ const Activities = () => {
 
   return (
     <div className="activities-container">
-      {events.map((event, index) => (
+      {activitiesArray.map((event, index) => (
         <AnimatedCard
           key={index}
           event={event}
@@ -147,11 +150,11 @@ const Activities = () => {
               &times;
             </span>
             <img
-              src={selectedEvent.image}
+              src={selectedEvent.image_path}        //change the src into selectedEvent.image_path 
               alt="Event"
               className="modal-image"
             />
-            <h2>{selectedEvent.name}</h2>
+            <h2>{selectedEvent.name_of_event}</h2>
             <p>
               <strong>Date: </strong>
               {selectedEvent.date}
@@ -162,15 +165,15 @@ const Activities = () => {
             </p>
             <p>
               <strong>Resource Person: </strong>
-              {selectedEvent.details.resourcePerson}
+              {selectedEvent.resource_person}
             </p>
             <p>
               <strong>Beneficiaries: </strong>
-              {selectedEvent.details.beneficiaries}
+              {selectedEvent.beneficiaries}
             </p>
             <p>
               <strong>Relevant PO, PSO: </strong>
-              {selectedEvent.details.relevantPO_PSO}
+              {selectedEvent.relevant_PO_PSO}
             </p>
           </div>
         </div>
@@ -205,10 +208,10 @@ const AnimatedCard = ({ event, handleViewMore }) => {
       initial="hidden"
       animate={controls}
     >
-      <img src={event.image} alt="Event" className="card-image" />
+      <img src={event.image_path} alt="Event" className="card-image" />       {/*change the src into src={event.image_path}*/}
       <div className="card-details">
         <p className="card-date">{event.date}</p>
-        <h3 className="card-title">{event.name}</h3>
+        <h3 className="card-title">{event.name_of_event}</h3>
         <p className="card-coordinator">Coordinator: {event.coordinator}</p>
         <button onClick={() => handleViewMore(event)} className="view-more-btn">
           View More
