@@ -44,11 +44,10 @@
   margin-bottom: 10px;
 }
 
-.imagecard p {
+/* .imagecard p {
   font-size: 14px;
-  color: #555; /* Subtle text color */
-  margin-bottom: 15px;
-}
+  color: #555;
+} */
 
 .FACButton {
   background-color: #003366;
@@ -66,12 +65,18 @@
 }
 
 .socialLinks {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
+}
+
+.socialLinks img{
+  width: 25px;
+  height: 25px;
+  margin-top: 15px;
+  background-color: #003366;
 }
 
 .socialLink {
