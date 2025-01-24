@@ -1,0 +1,91 @@
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Light background for modern appearance */
+  padding: 20px;
+}
+
+.imagegallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.imagecard {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 250px;
+  text-align: center; /* Centers text and inline elements */
+  display: flex;
+  flex-direction: column; /* Stacks elements vertically */
+  align-items: center; /* Horizontally centers all children, including the image */
+}
+
+.imagecard img {
+  width: 150px; /* Ensures a consistent width */
+  height: 200px; /* Ensures a consistent height */
+  object-fit: cover; /* Maintains aspect ratio without stretching */
+  border-radius: 10px;
+  margin-bottom: 15px; /* Space between image and text */
+}
+
+
+.imagecard:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+
+.imagecard h3 {
+  font-size: 18px;
+  color: #333; /* Darker text for readability */
+  margin-bottom: 10px;
+}
+
+/* .imagecard p {
+  font-size: 14px;
+  color: #555;
+} */
+
+.FACButton {
+  background-color: #003366;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.FACButton:hover {
+  background-color: #fdcc03; /* Reverse colors on hover */
+  color: #000;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.socialLinks img{
+  width: 25px;
+  height: 25px;
+  margin-top: 15px;
+  background-color: #003366;
+}
+
+.socialLink {
+  font-size: 24px;
+  color: #003366;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialLink:hover {
+  color: #fdcc03;
+  transform: scale(1.2); /* Slight enlargement on hover */
+}
