@@ -36,7 +36,7 @@ const Head = () => {
             { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
-            {hrd: false, ttl: 'Principal', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Principal', sup: [], lnk: '/principal'},
             {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: '/dean'}, 
             {hrd: false, ttl: 'Admin Office', sup: [], lnk: '/admin'}, 
             {hrd: false, ttl: "Committee's", sup: [], lnk: '/committee'},
@@ -97,7 +97,7 @@ const Head = () => {
             {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'}, 
             {hrd: false, ttl: 'Placement Team', sup: [], lnk: '/place-team'}, 
             {hrd: false, ttl: 'Placement Details', sup: [], lnk: '/place-dep'},
-            {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: '/proudalumni'}
 
         ]}, 
 

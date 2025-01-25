@@ -70,7 +70,6 @@
   padding: 12px;
   font-size: 1.1rem;
   font-weight: bold;
-  cursor: pointer;
   border: 2px solid #FDCC03;
   background-color: #222;
   color: #fff;
@@ -120,7 +119,6 @@
   padding: 15px 20px;
   font-size: 1.2rem;
   font-weight: bold;
-  cursor: pointer;
   border: none;
   border-radius: 8px;
   background-color: #FDCC03;

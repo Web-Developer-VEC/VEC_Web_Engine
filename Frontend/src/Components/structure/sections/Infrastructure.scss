@@ -71,7 +71,6 @@
         bottom: 40px;
         right: 60px;
         z-index: 555;
-        cursor: pointer;
 
         &::after {
             content: "";
@@ -258,7 +257,6 @@
    }
    
    .btn {
-     cursor: pointer;
      margin-top: 1.5rem;
      padding: 0.75rem 1.5rem;
      font-size: 0.65rem;

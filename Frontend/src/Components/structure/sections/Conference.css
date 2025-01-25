@@ -65,7 +65,6 @@
   color: white;
   border-radius: 0.375rem;
   border: none;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
 

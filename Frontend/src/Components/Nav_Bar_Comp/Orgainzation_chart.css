@@ -1,352 +1,42 @@
-
-
-
-/* Connecting Lines */
-
-
-
-/* Container and Title */
+/* Banner Styles */
 .org-chart-container {
-  padding: 40px;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f9;
-  text-align: center;
-}
-
-.chart-title {
-  font-size: 2.5rem;
-  color: #333;
-}
-
-
-/* Organizational Chart */
-.org-chart {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 20px;
-}
-
-
-
-/* Container and Title */
-.org-chart-container {
-  padding: 40px;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f9;
-  text-align: center;
-}
-
-.chart-title {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-/* Organizational Chart */
-.org-chart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 20px;
-}
-
-.org-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  height:fit-content;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  font-size:10px ;
-}
-
-/* Hover Effects */
-.org-node:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 rgba(0, 0, 0, 0.2);
-}
-
-/* Person Details */
-.person {
-  text-align: center;
-}
-
-.person h4 {
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 8px;
-  padding: 4px 8px;
-  border-radius: 5px;
-  background-color: #007bff; /* Default Blue */
-}
-
-.person p {
-  font-size: 1rem;
-  color: #555;
-  margin: 0;
-}
-
-/* Specific Node Styles */
-.ceo-node .person h4 {
-  background-color: #ff5722;
-  /* CEO - Orange */
-}
-
-.principal-node .person h4 {
-  background-color: #4caf50;
-  /* Principal - Green */
-}
-
-.committee-node .person h4 {
-  background-color: #9c27b0;
-  /* Committee - Purple */
-}
-
-.dean-node .person h4 {
-  background-color: #2196f3; /* Deans - Blue */
-
-}
-
-.library-node .person h4 {
-  background-color: #ffc107;
-  /* Library - Yellow */
-}
-
-.hostel-node .person h4 {
-  background-color: #e91e63;
-  /* Hostel - Pink */
-}
-
-/* Children Nodes */
-.children {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
   padding: 20px;
 }
 
-/* Left and Right Children Container */
-.side-children {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  flex-direction: row;
+.org-chart-image {
+  padding: 30px;
+  max-width: 100%; /* Makes the image responsive */
+  object-fit: cover; /* Ensures the image covers the container proportionally */
+  height: auto;
+  border-radius: 12px; /* Rounded corners for a softer look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Smoother shadow for a modern touch */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
-/* Left Children */
-.left-children {
-  margin-top: -9%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Stack items vertically */
-  flex: 1;
-   /* Ensures the left child takes up equal space */
+.org-chart-image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
 }
-
-/* Right Children */
-.right-children {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Stack items vertically */
-  flex: 1; /* Ensures the right child takes up equal space */
-}
-
-/* Principal Node Styles */
-.principal-node {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-}
-
-/* Adjust children for .dean-node and .Admin-node to display 5 per row */
-.dean-node .children,
-.Admin-node .children {
-  display: flex;
-  flex-wrap: wrap;  /* Allow the children to wrap into multiple rows */
-  justify-content: space-between; /* Distribute space between items */
-  gap: 10px;  /* Adjust gap between items as needed */
-}
-
-/* Limit each row to 5 items */
-.dean-node .children > div,
-.Admin-node .children > div {
-  flex: 0 0 20%;  /* Set each child to take up ~18% of the container's width */
-  min-width: 150px; /* Ensure each child has a minimum width */
-}
-.Admin-node .children > div {
-  flex: 0 0 20%;  /* Set each child to take up ~18% of the container's width */
-  min-width: 80px; /* Ensure each child has a minimum width */
-}
-
-
-.HOD-node .children{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-
-.hostel-node .children{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-.principal-node .side-children {
-  display: flex;
-  justify-content: space-between; /* Ensure left and right children are spaced correctly */
-  width: 70%;
-  align-items:center;
-  align-content: stretch;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* Node Specific Styling */
-.principal-node {
-  background-color: #e8f5e9; /* Light Green for Principal */
-}
-
-.dean-node {
-  background-color: #f1f8e9;
-  margin-top: 50px; /* Light Yellow-Green for Deans */
-}
-
-.Admin-node {
-  background-color: #e0f7fa;
-  margin-top: 50px; /* Light Yellow-Green for Deans */
-  /* Light Cyan for Admin */
-}
-
-.HOD-node {
-  background-color: #fff3e0;
-  margin-top: 50px; /* Light Yellow-Green for Deans */
-  /* Light Orange for HOD */
-}
-
-.hostel-node {
-  background-color: #fce4ec;
-  margin-top: 50px; /* Light Yellow-Green for Deans */
-  /* Light Pink for Hostel */
-}
-
-.library-node {
-  background-color: #fff8e1;
-  margin-top: 50px; /* Light Yellow-Green for Deans */
-  /* Light Yellow for Library */
-}
-/* Connecting Lines */
-
 
 /* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-  .org-node {
-    min-width: 150px;
-    padding: 15px 25px;
-  }
-
-  .chart-title {
-    font-size: 2rem;
-  }
-
-  .person h4 {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-
-  .children {
-    gap: 30px;
-  }
-
-  .side-children {
-    gap: 25px;
-  }
-}
-
-@media (max-width: 992px) {
-  .org-node {
-    min-width: 130px;
-    padding: 12px 20px;
-  }
-
-  .chart-title {
-    font-size: 1.8rem;
-  }
-
-  .person h4 {
-    font-size: 1.1rem;
-    padding: 5px 10px;
-  }
-
-  .children {
-    gap: 20px;
-  }
-
-  .side-children {
-    gap: 20px;
-  }
-}
-
 @media (max-width: 768px) {
-  .org-node {
-    min-width: 110px;
-    padding: 10px 15px;
+  .org-chart-container {
+    padding: 15px; /* Slightly reduced padding on smaller screens */
   }
 
-  .chart-title {
-    font-size: 1.5rem;
-  }
-
-  .person h4 {
-    font-size: 1rem;
-    padding: 4px 8px;
-  }
-
-  .children {
-    gap: 15px;
-  }
-
-  .side-children {
-    gap: 15px;
+  .org-chart-image {
+    width: 90%; /* Adjusts image width on smaller screens */
+    border-radius: 10px; /* More rounded corners for smaller screens */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow on smaller screens */
   }
 }
 
-@media (max-width: 576px) {
-  .org-node {
-    min-width: 100px;
-    padding: 8px 12px;
-  }
-
-  .chart-title {
-    font-size: 1.2rem;
-  }
-
-  .person h4 {
-    font-size: 0.9rem;
-    padding: 4px 8px;
-  }
-
-  .children {
-    gap: 10px;
-  }
-
-  .side-children {
-    gap: 10px;
+@media (max-width: 480px) {
+  .org-chart-image {
+    width: 100%; /* Ensure image takes full width on very small screens */
+    border-radius: 8px; /* Even more rounded corners on very small screens */
   }
 }

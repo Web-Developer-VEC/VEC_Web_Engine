@@ -35,7 +35,6 @@
   .placement-percent tr:hover {
     background-color: #f3be2d; /* Highlight row on hover */
     color: white;
-    cursor: default;
   }
   
   .placement-percent th {

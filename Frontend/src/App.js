@@ -37,11 +37,20 @@ import Trust from "./Components/Nav_Bar_Comp/Trust.jsx";
 import CollegeOrgChart from "./Components/Nav_Bar_Comp/Organization_chart.jsx";
 import Dean from "./Components/Nav_Bar_Comp/dean.jsx";
 import CardPage from "./Components/Nav_Bar_Comp/admin.jsx";
+import ProudAlumni from "./Components/Nav_Bar_Comp/ProudAlumni.jsx";
+import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
 
 const GlobalStyle = createGlobalStyle`
-body {
-  cursor: url("/cursor.svg") 128 128, auto;
+  /* Global Cursor Style */
+  body {
+    cursor: url("/cursor.svg") 10 0, auto; /* Custom cursor with defined hotspot */
+  }
+
+  button, a, .clickable {
+    cursor: url("/cursor.svg") 0 0, auto;
+  }
 `;
+
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -165,6 +174,9 @@ const App = () => {
                   <Route path="/clg-org" element={<CollegeOrgChart />} />
                   <Route path="/dean" element={<Dean />} />
                   <Route path="/admin" element={<CardPage />} />
+                  <Route path="/proudalumni" element={<ProudAlumni />} />
+                  <Route path="/principal" element={<Princ />} />
+
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />
