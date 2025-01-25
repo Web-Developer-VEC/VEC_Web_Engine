@@ -38,30 +38,24 @@ const AbtUs = () => {
                         <p className="text-3xl text-center mt-4">{secCnt}</p>
                     </div>
                     <div className='relative w-full h-[50vh]'>
-                        <img className='absolute w-[40%] h-[85%] right-0' src={Banner} alt="Banner Image0"/>
-                        <img className='absolute w-[50%] h-[75%] left-[30%] top-[35%] border-[16px] border-white'
+                        <img className='absolute w-[40%] h-[80%] right-[5%] rounded-tl-[5rem] rounded-br-[5rem]'
+                             src={Banner} alt="Banner Image0"/>
+                        <img className='absolute w-[35%] h-[75%] left-[35%] top-[25%] border-[16px]
+                            rounded-tr-[5rem] rounded-bl-[5rem] border-white'
                              src={Banner} alt="Banner Image1"/>
-                        <img className='absolute w-[25%] h-[45%] left-[43.5%] top-[15%] border-[16px] border-white'
+                        <img className='absolute w-[25%] h-[45%] left-[60%] bottom-[0%] border-[16px]
+                            rounded-tl-[5rem] rounded-br-[5rem] border-white'
                              src={Banner} alt="Banner Image2"/>
                         {/*<img className='absolute' src={Banner} alt="Banner Image3"/>*/}
                     </div>
                 </div>
             </div>
-            <div className='flex gap-4 bg-[#eac40a15] border-y-2 border-amber-400 p-4'>
-                <div className='min-h-[20vh] min-w-[20vw]'>
-                    <img className='w-full h-full rounded-tl-[5rem] rounded-br-[5rem]' src={Banner} alt="Bann"/>
-                </div>
-                <div>
-                    <p className='w-[75%] text-2xl font-popp'>{sec2Cnt}</p>
-                </div>
+            <div className='flex justify-center bg-[#eac40a15] border-y-2 border-amber-400
+                outline-2 outline-amber-600 outline-solid outline-offset-2 p-4'>
+                <p className='w-[75%] text-2xl italic text-center font-popp'>{sec2Cnt}</p>
             </div>
-            <div className='flex flex-row-reverse gap-4 bg-[#eac40a15] border-y-2 border-amber-400 p-4 my-8'>
-                <div className='h-[20vh] min-w-[20vw]'>
-                    <img className='w-full h-full rounded-tl-[5rem] rounded-br-[5rem]' src={Banner} alt="Bann"/>
-                </div>
-                <div>
-                    <p className='w-[75%] text-2xl float-right text-right font-popp'>{sec3Cnt}</p>
-                </div>
+            <div className='flex justify-center bg-[#eac40a15] border-y-2 border-amber-400 p-4 my-8'>
+                <p className='w-[75%] text-2xl italic text-center font-popp'>{sec3Cnt}</p>
             </div>
         </>
     );
