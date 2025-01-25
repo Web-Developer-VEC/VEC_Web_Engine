@@ -10,7 +10,7 @@ const NewTrust = () => {
   return (
     <div>
       {/* Section 1 */}
-      <div className="flex gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 border-amber-400 p-10 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
+      <div className="flex mt-2 gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 border-amber-400 p-10 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
         <div className="flex flex-col justify-center">
           <p className="text-2xl font-semibold text-gray-800 font-popp leading-relaxed tracking-wide">
             <div className="text-container">
@@ -30,7 +30,7 @@ const NewTrust = () => {
       </div>
 
       {/* Section 2 - Banner with Strength of Trust */}
-      <div className="mt-2 flex gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 mb- border-amber-400 p-10 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
+      <div className="mt-2  flex gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 mb- border-amber-400 p-10 shadow-lg rounded-xl hover:shadow-2xl transition-all duration-300 ease-in-out">
         <div className="relative group min-h-[20vh] min-w-[20vw]">
           <img
             className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
@@ -40,7 +40,7 @@ const NewTrust = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
         </div>
         <div className="flex flex-col justify-center">
-          <h1 style={{ textAlign: 'center', borderBottom: '2px solid black' }}>Strength of the Trust</h1>
+          <h1 className="mb-3" style={{ textAlign: 'center', borderBottom: '2px solid black' }}>Strength of the Trust</h1>
           <p className="text-2xl font-semibold text-gray-800 font-popp leading-relaxed tracking-wide">
             <h6 className="highlight">
               Inspiration is like a spark. It can light the whole city. One frail lady with strong conviction has motivated thousands of others to have good education and be proud citizens.
