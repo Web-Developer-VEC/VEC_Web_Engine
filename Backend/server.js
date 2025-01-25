@@ -1,28 +1,37 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const staffRoutes = require('./routes/staffRoutes');
+const dotenv = require('dotenv');
+const connectToDatabase = require('./config/db');
+
+// Importing route files
+const departmentRoutes = require('./routes/department');
+const eventRoutes = require('./routes/events');
+const announcementRoutes = require('./routes/announcements');
+const principalRoutes = require('./routes/principal');
 
 dotenv.config();
 
-// Connect to the database
-connectDB();
-
 const app = express();
+const port = process.env.PORT || 5000;
 
-// Enable CORS for all routes
+// Middleware
 app.use(cors());
-
-// Parse incoming requests with JSON payloads
 app.use(express.json());
 
-// Routes
-app.use('/api/staff', staffRoutes);
+// Connect to MongoDB
+connectToDatabase();
 
-// Root Route
-app.get('/', (req, res) => res.send('API is running'));
+// Routes
+app.use('/api', departmentRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api', announcementRoutes);
+app.use('/api', principalRoutes);
+
+app.get('/', (req, res) => {
+    res.send("Welcome to the Node.js MongoDB API!");
+});
 
 // Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => {
+    console.log(`🚀 Server running at http://localhost:${port}`);
+});
