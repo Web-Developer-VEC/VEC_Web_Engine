@@ -2,7 +2,7 @@ const { getDb } = require('../config/db');
 
 // Fetch Vision & Mission
 async function getVisionMission(req, res) {
-    const departmentId = parseInt(req.params.deptId);
+    const departmentId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('vision_and_mission');
 
@@ -99,7 +99,7 @@ async function getSyllabus(req, res) {
 
 // Fetch Infrastructure
 async function getInfrastructure(req, res) {
-    const deptId = parseInt(req.params.deptId);
+    const deptId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('infrastructure');
 
@@ -146,7 +146,7 @@ async function getDeptActivities(req, res) {
 
 // Fetch Student Activities
 async function getStuActivities(req, res) {
-    const deptId = parseInt(req.params.deptId);
+    const deptId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('student_activities');
 
@@ -191,25 +191,25 @@ async function getSupportStaff(req, res) {
 
 // Fetch  MOUs Details 
 async function getMou(req, res) {
-    const { deptId } = req.params;
+    const deptId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('MOUs');
 
     try {
         const departmentData = await collection.findOne({
-            "VEC.Departments": deptId
+            Departments: deptId
         });
 
         if (!departmentData) {
             return res.status(404).json({ message: "Department not found" });
         }
         
+        return res.status(200).json(departmentData);
         const department = departmentData.VEC.find(dept => dept.Departments === deptId);
         
         if (!department) {
             return res.status(404).json({ message: "Department not found" });
         }
-        return res.status(200).json(department);
     } catch (error) {
         console.error("❌ Error fetching MOUs:", error);
         res.status(500).json({ error: "Error fetching MOUs" });

@@ -8,6 +8,15 @@ const departmentRoutes = require('./routes/department');
 const eventRoutes = require('./routes/events');
 const announcementRoutes = require('./routes/announcements');
 const principalRoutes = require('./routes/principal');
+const adminRoutes = require('./routes/admin');
+const committieeRoutes = require('./routes/committee');
+const regulationRoutes = require('./routes/regulation');
+const intakesRoutes = require('./routes/intake');
+const placementRoutes = require('./routes/placement');
+const allformsRoutes = require('./routes/allform');
+const alumniRoutes = require('./routes/alumni');
+const deanRoutes = require('./routes/dean');
+const bannerRoutes = require('./routes/banner');
 
 dotenv.config();
 
@@ -23,9 +32,18 @@ connectToDatabase();
 
 // Routes
 app.use('/api', departmentRoutes);
-app.use('/api/events', eventRoutes);
+app.use('/api', eventRoutes);
 app.use('/api', announcementRoutes);
 app.use('/api', principalRoutes);
+app.use('/api', adminRoutes);
+app.use('/api', committieeRoutes);
+app.use('/api', regulationRoutes);
+app.use('/api', intakesRoutes);
+app.use('/api', placementRoutes);
+app.use('/api', allformsRoutes);
+app.use('/api', alumniRoutes);
+app.use('/api', deanRoutes);
+app.use('/api', bannerRoutes);
 
 app.get('/', (req, res) => {
     res.send("Welcome to the Node.js MongoDB API!");
