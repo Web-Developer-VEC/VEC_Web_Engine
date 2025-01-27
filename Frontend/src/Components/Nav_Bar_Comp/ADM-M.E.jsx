@@ -1,5 +1,6 @@
 import React from "react";
 import "./ADM-M.E.css";
+import Banner from "../Banner";
 
 const ME = () => {
   // Data for the table
@@ -19,6 +20,14 @@ const ME = () => {
   ];
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="ME Admission"
+  subHeaderText="Shaping future engineers through advanced learning, research, and transformative opportunities."
+/>
+
+
     <div className="me-page">
         <center>
       <div className="mba-contents">
@@ -72,6 +81,7 @@ const ME = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

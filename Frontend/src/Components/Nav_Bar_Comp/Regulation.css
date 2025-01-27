@@ -33,7 +33,6 @@
   border-radius: 10px; /* Rounded corners */
   padding: 10px 15px; /* Padding for button size */
   font-size: 16px; /* Comfortable font size */
-  cursor: pointer; /* Pointer on hover */
   display: inline-flex; /* Align icon and text */
   align-items: center; /* Center icon and text vertically */
   justify-content: center; /* Center content */
@@ -87,7 +86,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer; /* Pointer on hover */
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import './UgAdmission.css';
+import Banner from '../Banner';
 
 const UgAdmission = () => {
     const Admission_1st_year = {
@@ -36,9 +37,16 @@ const UgAdmission = () => {
       };
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="UG Admission"
+  subHeaderText="Empowering the next generation of leaders through access to world-class education and opportunities."
+/>
+
+
     <div className='Admission'>
         <div className="B-E">
-            <h1>Admission</h1>
             <h3>B.E./B.Tech. Degree Programme</h3>
         </div>
 
@@ -110,6 +118,7 @@ const UgAdmission = () => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 

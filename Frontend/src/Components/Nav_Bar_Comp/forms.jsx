@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import "./Forms.css";
+import Banner from "../Banner";
 
 const Forms = () => {
   const studentTailRef = useRef(null);
@@ -46,6 +47,13 @@ const Forms = () => {
   };
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="All Forms"
+  subHeaderText="Streamlining processes with easy access to forms, empowering smooth academic and administrative workflows."
+/>
+
     <div className="tails-container">
       <div className="tail student-tail" ref={studentTailRef}>
         <div className="tail-content">
@@ -65,6 +73,7 @@ const Forms = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import "./ADM-MBA.css";
+import Banner from "../Banner";
 
 const MBA = () => {
   // Data for the table
@@ -13,6 +14,13 @@ const MBA = () => {
   ];
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="MBA Admission"
+  subHeaderText="Empowering future business leaders through strategic thinking, innovation, and global opportunities."
+/>
+
     <div className="mba-page">
       <center>
         <div className="mba-contents">
@@ -52,6 +60,7 @@ const MBA = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

@@ -84,7 +84,6 @@
   background: transparent;
   border-radius: 8px;
   width: 100%;
-  cursor: pointer;
   transition: color 0.3s ease, background 0.3s ease;
 }
 
@@ -207,7 +206,6 @@
   border: none;
   border-radius: 5px;
   transition: background 0.3s ease;
-  cursor: pointer;
 }
 
 .viewMoreButton:hover {

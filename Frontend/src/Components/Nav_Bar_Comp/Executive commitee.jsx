@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUniversity, faBuilding, faUsers, faChartLine, faCogs, faLaptop, faGraduationCap, 
   faHandHoldingUsd, faHandshake, faMicrochip, faShieldAlt, faLock, faUsersCog, faTransgender } from "@fortawesome/free-solid-svg-icons";
 import "./Executive commitee.css"; 
+import Banner from "../Banner";
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
@@ -64,10 +65,17 @@ const ExecutiveCommittee = () => {
   };
 
   return (
+    <>
+ <Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Executive Committees"
+  subHeaderText="Leading the way to success with visionary strategies, collaborative efforts, and decisive action."
+/>
+
+
     <div className="executive-committee-page">
       {/* Intro Section */}
       <div className="executive-committee-intro">
-        <h1 className="executive-committee-header">Executive Committees</h1>
       </div>
 
       {/* Committees Buttons */}
@@ -80,6 +88,7 @@ const ExecutiveCommittee = () => {
       {/* PDF Modal */}
       {selectedPdf && <PdfModal pdfUrl={selectedPdf} onClose={closeModal} />}
     </div>
+    </>
   );
 };
 
