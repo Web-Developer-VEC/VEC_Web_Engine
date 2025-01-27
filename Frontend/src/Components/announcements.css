@@ -132,6 +132,7 @@
   align-items: center;
   gap: 10px;
   font-size:medium;
+  color: black;
 }
 
 .tiles .card-front h4:hover {

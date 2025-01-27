@@ -1,63 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";  
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./Events.css";
-// Array of events
-const events = [
-  {
-    eventName: "HIGH-END WORKSHOP ON CIVIL SOFTWARE APPLICATION E-tabs & Ansys Fluent",
-    departmentName: "Civil Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriugerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "21 AUG - 23 AUG, 2024",
-    eventDate: "21 AUG",
-    brochureLink: "https://example.com/brochure1",
-    websiteLink: "https://example.com/website1"
-  },
-  {
-    eventName: "MEPEXPO'24",
-    departmentName: "Mechanical Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriuerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "29 AUG - 30 AUG, 2024",
-    eventDate: "29 AUG",
-    brochureLink: "https://example.com/brochure2",
-    websiteLink: "https://example.com/website2"
-  },
-  {
-    eventName: "INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE",
-    departmentName: "Computer Science",
-    description: "Detailed description of the AI conference event.",
-    duration: "5 SEP - 7 SEP, 2024",
-    eventDate: "05 SEP",
-    brochureLink: "https://example.com/brochure3",
-    websiteLink: "https://example.com/website3"
-  },
-  {
-    eventName: "ADVANCED ROBOTICS WORKSHOP",
-    departmentName: "Robotics Engineering",
-    description: "Insights into the advanced robotics workshop.",
-    duration: "10 SEP - 12 SEP, 2024",
-    eventDate: "10 SEP",
-    brochureLink: "https://example.com/brochure4",
-    websiteLink: "https://example.com/website4"
-  },
-  {
-    eventName: "SUSTAINABILITY IN ENGINEERING SEMINAR",
-    departmentName: "Environmental Engineering",
-    description: "A seminar focusing on sustainability in engineering.",
-    duration: "15 SEP - 17 SEP, 2024",
-    eventDate: "15 SEP",
-    brochureLink: "https://example.com/brochure5",
-    websiteLink: "https://example.com/website5"
-  },
-  {
-    eventName: "HIGH-END WORKSHOP ON CIVIL SOFTWARE APPLICATION E-tabs & Ansys Fluent",
-    departmentName: "Civil Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriugerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "21 AUG - 23 AUG, 2024",
-    eventDate: "21 AUG",
-    brochureLink: "https://example.com/brochure1",
-    websiteLink: "https://example.com/website1"
-  },
-];
+
 function EventBox({ event, onMouseEnter, onMouseLeave }) {
   return (
     <motion.div
@@ -72,26 +17,26 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
       >
         <div className="event-header">
           <div className="event-date">
-            <div className="circle">{event.eventDate}</div>
+            <div className="circle">{event.start_date}</div>
           </div>
-          <div className="event-name">{event.eventName}</div>
+          <div className="event-name">{event.title}</div>
         </div>
         <div className="event-details">
           <div className="event-row department-name">
-            {event.departmentName}
+            {event.department}
           </div>
           <div className="event-row description">
-            {event.description}
+            {event.content}
           </div>
           <div className="event-footer">
             <div className="event-row duration">
-              <i className="fas fa-calendar-alt"></i> {event.duration}
+              <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
             </div>
             <div className="event-row links">
-              <a href={event.brochureLink} target="_blank" rel="noopener noreferrer">
+              <a href={event.brochure_path} target="_blank" rel="noopener noreferrer">
                 Brochure
               </a>
-              <a href={event.websiteLink} target="_blank" rel="noopener noreferrer">
+              <a href={event.website_link} target="_blank" rel="noopener noreferrer">
                 Website
               </a>
             </div>
@@ -106,9 +51,10 @@ function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const controls = useAnimation();
   const [isPaused, setIsPaused] = useState(false);
-  const eventList = useRef([...events, ...events, ...events]);
   const ref = useRef(null);
   const isInView = useInView(ref, { threshold: 0.1 });
+  const [eventsDetail , setEventsData] = useState([false])
+  const events = [...eventsDetail, ...eventsDetail, ...eventsDetail]
 
   useEffect(() => {
     if (!isPaused && isInView) {
@@ -117,11 +63,25 @@ function Carousel() {
           x: `-${(currentIndex + 1) * (425 + 40)}px`,
           transition: { duration: 1, ease: "linear" }
         });
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % (events.length * 3));
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % (eventsDetail.length * 3));
       }, 3000); // Slide every 3 seconds
       return () => clearInterval(interval);
     }
   }, [currentIndex, controls, isPaused, isInView]);
+
+// fetching announcement data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/events`);
+        console.log("Ann",response.data);
+        setEventsData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      } 
+    };
+    fetchData();
+  },[]);
 
   const handleMouseEnter = () => {
     controls.stop();
@@ -139,7 +99,7 @@ function Carousel() {
         animate={controls}
         initial={{ x: 0 }}
       >
-        {eventList.current.map((event, index) => (
+        {events?.map((event, index) => (
           <EventBox
             key={index}
             event={event}
