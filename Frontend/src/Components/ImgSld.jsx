@@ -11,8 +11,9 @@ const ImgSld = () => {
         'Explore Our World-Class Facilities and Programs',
         'Join Us in Shaping the Future Through Innovation and Education',
         'Discover Opportunities for Personal and Academic Growth',
-        'Get Involved: Clubs, Events, and More at VEC'
+        'Get Involved: Clubs, Events, and More at VEC',
     ];
+    // const lst1 = [...lst, ...lst]
 
     // Debounce function to limit how often the scroll event is processed
     const debounce = (func, wait = 100) => {
@@ -57,7 +58,7 @@ const ImgSld = () => {
                     <source src={Vide} type='video/mp4'/>
                 </video>
 
-                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] right-[1vmax]'>
+                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] right-[1vmax] pointer-events-none overflow-hidden'>
                     <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
