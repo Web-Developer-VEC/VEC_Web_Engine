@@ -44,12 +44,10 @@ const VisionMission = ({data}) => {
           <div className="section-card">
             <h2>Department Vision</h2>
             <p>
-              To achieve value-based education and bring idealistic, ethical
-              engineers to meet the thriving trends and technology in the field
-              of Artificial Intelligence and Data Science.
+              {data.vision}
             </p>
             <blockquote className="vision-quote">
-              "Empowering students with a vision for a better future in AI and Data Science."
+              {data.department_quotes}
             </blockquote>
           </div>
         </div>
@@ -59,22 +57,11 @@ const VisionMission = ({data}) => {
           <div className="section-card">
             <h2>Department Mission</h2>
             <ul>
+              {data?.mission?.map((item) => (
               <li>
-                To engage students with the core competence to solve real-world
-                problems using Artificial Intelligence.
+                {item}
               </li>
-              <li>
-                To enlighten students into technically proficient engineers
-                through innovation in Data Science.
-              </li>
-              <li>
-                To involve students with industry collaboration, career
-                guidance, and leadership skills.
-              </li>
-              <li>
-                To mould students as ethical professionals to bring morals to
-                individuals and society.
-              </li>
+              ))}
             </ul>
           </div>
         </div>
