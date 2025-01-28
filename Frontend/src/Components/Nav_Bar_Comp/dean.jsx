@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dean.css";
-import { div } from "framer-motion/client";
+import Banner from "../Banner";
 
 const data = [
   {
@@ -128,6 +128,12 @@ const Dean = () => {
   },[]);
 
   return (
+    <>
+    <Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Dean & Associate Deans"
+  subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
+/>
     <div className="container">
        {loading && (
           <div className="loading-screen">
@@ -192,6 +198,7 @@ const Dean = () => {
         })}
       </div>
     </div>
+    </>
   );
 };
 

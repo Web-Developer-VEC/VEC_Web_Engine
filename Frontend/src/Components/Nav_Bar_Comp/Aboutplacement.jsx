@@ -1,8 +1,16 @@
 import React from "react";
 import "./Aboutplacement.css";
+import Banner from "../Banner";
 
 const Aboutplacement = () => {
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Placement Department"
+  subHeaderText="Empowering students’ career success by connecting talent with industry leaders and opportunities."
+/>
+
     <div className="AP-main-container">
       {/* Top Section with Vision and Mission */}
       <section className="AP-vision-mission">
@@ -59,6 +67,7 @@ const Aboutplacement = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

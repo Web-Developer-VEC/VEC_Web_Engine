@@ -51,7 +51,6 @@ body {
 /* Active row to show sub-content */
 /* Main content row */
 .row-item {
-  cursor: pointer;
   margin: 10px 0;
   padding: 10px;
   border: 1px solid #ccc;
@@ -136,7 +135,6 @@ body {
   border-radius: 25px;
   padding: 8px 20px;
   border: none;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -192,7 +190,6 @@ body {
   padding: 10px 25px;
   border-radius: 30px;
   border: none;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -219,7 +216,6 @@ body {
   padding: 18px;
   width: 100%;
   text-align: left;
-  cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
   color: #1d3557;

@@ -37,7 +37,7 @@ const ContactIcon = () => {
                   loop
                   animationData={require('./Assets/Call.json')}
                   play
-                  style={{ width: 80, height: 80, cursor: 'pointer' }} // Add cursor pointer for better UX
+                  style={{ width: 80, height: 80 }} // Add cursor pointer for better UX
                 />
             </div>
             {showPopup && (

@@ -115,7 +115,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: none;
-  cursor: pointer;
   animation: bounceIn 0.5s ease-out; /* Bounce-in effect */
   z-index: 5; /* Ensure buttons are on top */
 }
@@ -157,7 +156,6 @@
   background-color: rgba(255, 255, 255, 0.5); /* Light gray for inactive dots */
   border: none;
   transition: all 0.3s ease;
-  cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 

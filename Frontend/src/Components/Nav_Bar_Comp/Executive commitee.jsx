@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUniversity, faBuilding, faUsers, faChartLine, faCogs, faLaptop, faGraduationCap, 
   faHandHoldingUsd, faHandshake, faMicrochip, faShieldAlt, faLock, faUsersCog, faTransgender } from "@fortawesome/free-solid-svg-icons";
 import "./Executive commitee.css"; 
+import Banner from "../Banner";
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
@@ -88,6 +89,14 @@ const ExecutiveCommittee = () => {
   };
 
   return (
+    <>
+ <Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Executive Committees"
+  subHeaderText="Leading the way to success with visionary strategies, collaborative efforts, and decisive action."
+/>
+
+
     <div className="executive-committee-page">
       {/* Header Section */}
       <header className="header">
@@ -106,7 +115,6 @@ const ExecutiveCommittee = () => {
         )}
 
         {/* Committee Content */}
-        <div className={`committee-content ${isLoading ? "hide-while-loading" : ""}`}>
           <div className="committee-buttons-grid">
             {committieeData.map(({ name, pdf_path }) => (
               <CommitteeButton
@@ -117,13 +125,13 @@ const ExecutiveCommittee = () => {
               />
             ))}
           </div>
-        </div>
       </div>
 
 
       {/* PDF Modal */}
       {selectedPdf && <PdfModal pdfUrl={selectedPdf} onClose={closeModal} />}
     </div>
+    </>
   );
 };
 

@@ -1,9 +1,16 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from  "./collegevisionmission.module.css";
+import Banner from "../Banner";
 
 const Collegevisionmission = () => {
   return (
+    <>
+     <Banner
+        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        headerText="vision & Mission"
+        subHeaderText="Empowering a better tomorrow through innovation and integrity"
+      />
     <div className={styles.clgvisioncard}>
       <div className="row g-4">
         {/* Vision Section */}
@@ -30,6 +37,7 @@ const Collegevisionmission = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

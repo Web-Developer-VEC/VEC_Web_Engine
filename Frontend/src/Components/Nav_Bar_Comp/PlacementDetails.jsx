@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './PlacementDetails.css'
 import './Syllabi.css'
+import Banner from '../Banner';
 export const PlacementDetails = () => {
 
     const [showModal, setShowModal] = useState(false);
@@ -77,6 +78,14 @@ export const PlacementDetails = () => {
 
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Placement Details"
+  subHeaderText="Providing essential placement information and resources to guide students toward successful careers."
+/>
+
+
     <div>
     <div className="placement-percent card">
       <h4>Placement Details in % - Department Wise</h4>
@@ -165,6 +174,7 @@ export const PlacementDetails = () => {
       <h5 style={{ paddingTop: '50px' }}>* Recruitment still in progress (As on 6th Jan 2025)</h5>
     </div>
         </div>
+        </>
     )
 }
 

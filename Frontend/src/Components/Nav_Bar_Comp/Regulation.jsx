@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Regulation.css"; // Use your existing CSS
+import Banner from "../Banner";
 
 
 const REGULATION = () => {
@@ -39,6 +40,14 @@ const REGULATION = () => {
   };
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Regulations"
+  subHeaderText="Establishing clear guidelines to foster transparency, compliance, and organizational integrity."
+/>
+
+
     <div className="REG-page">
       {/* Intro Section */}
       <div className="REG-intro">
@@ -90,6 +99,7 @@ const REGULATION = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
