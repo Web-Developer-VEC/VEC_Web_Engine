@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import './PlacementTeam.css';
 import image from '../Assets/Placement Team.jpg';
 
@@ -29,23 +30,53 @@ const persons = [
 function PersonDetail({ person, isImageLeft }) {
   return (
     <div className={`person-detail ${isImageLeft ? 'left' : 'right'}`}>
-      <img src={person.image} alt={person.name} className="person-image" />
+      <img src={person.photo_path} alt={person.name} className="person-image" />
       <div className="person-content">
-        <h2>{person.title}</h2>
+        <h2>{person.designation}</h2>
         <h3>{person.name}</h3>
-        <p>{person.description}</p>
+        <p>{person.content}</p>
       </div>
     </div>
   );
 }
 
 export const PlacementTeam = () => {
+
+  const [PlacementTeam, setPlacementTeam] = useState([]);
+  const [isLoading,setLoading] = useState(true);
+  const content = PlacementTeam[0]?.placement_team || [];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/placementteam`);
+        console.log("HI",response.data);
+
+        setPlacementTeam(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setLoading(true);
+      } 
+    };
+    fetchData();
+  },[]);
+
   return (
-    <div className="Placement-App">
-      <h1>Placement Team</h1>
-      {persons.map((person, index) => (
-        <PersonDetail key={person.id} person={person} isImageLeft={index % 2 === 0} />
-      ))}
+    <div className='container'>
+      <div className="Placement-App">
+        <h1>Placement Team</h1>
+        {/* Show loading spinner during data fetch */}
+        {isLoading && (
+            <div className="loading-screen">
+              <div className="spinner"></div>
+              Loading...
+            </div>
+          )}
+        {content.map((person, index) => (
+          <PersonDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
+        ))}
+      </div>
     </div>
   );
 }
