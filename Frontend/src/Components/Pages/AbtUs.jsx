@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
-import Banner from '../Assets/UnivAbt-5-1.jpg'
+import Bannerimg from '../Assets/UnivAbt-5-1.jpg';
+import Banner from '../Banner';
 
 const AbtUs = () => {
     const banTtl = "About VEC"
@@ -14,14 +15,13 @@ const AbtUs = () => {
 
     return (
         <>
-            <div className='relative flex justify-center w-screen h-[27.5vh] bg-white
-                bg-cover bg-no-repeat bg-[position:0px_-400px]'
-                 style={{backgroundImage: `url(${Banner})`}}>
-                <div className="absolute grid justify-items-center align-self-center font-popp">
-                    <p className="text-white text-6xl">{banTtl}</p>
-                    <p className="text-amber-600 text-3xl">{motto}</p><br/>
-                </div>
-            </div>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="About VEC"
+  subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
+/>
+
+
             <div className='flex m-8'>
                 {/*<div*/}
                 {/*    className='font-rome text-center text-[0] animate-spin text-amber-800 p-0 -mb-[0.75vmax] overflow-hidden'>*/}
@@ -38,11 +38,11 @@ const AbtUs = () => {
                         <p className="text-3xl text-center mt-4">{secCnt}</p>
                     </div>
                     <div className='relative w-full h-[50vh]'>
-                        <img className='absolute w-[40%] h-[85%] right-0' src={Banner} alt="Banner Image0"/>
+                        <img className='absolute w-[40%] h-[85%] right-0' src={Bannerimg} alt="Banner Image0"/>
                         <img className='absolute w-[50%] h-[75%] left-[30%] top-[35%] border-[16px] border-white'
-                             src={Banner} alt="Banner Image1"/>
+                             src={Bannerimg} alt="Banner Image1"/>
                         <img className='absolute w-[25%] h-[45%] left-[43.5%] top-[15%] border-[16px] border-white'
-                             src={Banner} alt="Banner Image2"/>
+                             src={Bannerimg} alt="Banner Image2"/>
                         {/*<img className='absolute' src={Banner} alt="Banner Image3"/>*/}
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const AbtUs = () => {
     <div className="relative group min-h-[20vh] min-w-[20vw]">
         <img
             className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-            src={Banner}
+            src={Bannerimg}
             alt="Banner"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -67,7 +67,7 @@ const AbtUs = () => {
     <div className="relative group h-[20vh] min-w-[20vw]">
         <img
             className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-            src={Banner}
+            src={Bannerimg}
             alt="Banner"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
