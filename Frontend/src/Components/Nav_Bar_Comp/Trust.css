@@ -1,125 +1,40 @@
-
-  
-  .fullscreen-container {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-  }
-  
-  #all-pages {
-    position: relative;
-    top: 0;
-    transition: all 500ms ease-in-out;
-  }
-  
-  .page {
-    height: 100%;
-    width: 100%;
-  }
-  
-  #all-pages .page:nth-child(1) {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2000&q=80') center/cover;
-  }
-  
-  #all-pages .page:nth-child(2) {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2000&q=80') center/cover;
-  }
-  
-  #all-pages .page:nth-child(3) {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2000&q=80') center/cover;
-  }
-  
-  .text-container {
-    font-family: sans-serif;
-    color: white;
+/* Container for Management section */
+.text-container h2 {
     text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 15px;
+  }
+  
+  /* Management grid container */
+  .management-grid {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    top: 40%;
-    margin: 0 50px;
-    opacity: 0;
-    visibility: visible;
-    transform: translateY(-50%);
-    transition: all 1000ms ease;
+    gap: 30px;
   }
   
-  .text-container.in-sight {
-    opacity: 1;
+  /* Row for the first set of cards (Chairman) */
+  .management-grid-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
   }
   
-  .text-container h2 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  
-  .text-container p {
-    font-size: 1.125rem;
-    padding: 5px 0;
-    max-width: 56rem;
-    margin: 0 auto;
-  }
-  
-  .nav-dot-container {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-  }
-  
-  .nav-dot {
-    width: 20px;
-    height: 32px;
-    padding: 20px 0;
-  }
-  
-  .nav-dot span {
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: white;
-    transition: all 300ms ease;
-    margin: auto;
-  }
-  
-  .nav-dot:hover span {
-    width: 12px;
-    height: 12px;
-  }
-  
-  .nav-dot.dot-active span {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .highlight {
-    color: #ff4444;
-    font-weight: bold;
-    margin: 1rem 0;
-    font-size: 1.125rem;
-  }
-  
-  .management-grid {
-    max-width:100%;
-    margin: 0 auto;
-  }
-  
+  /* Individual card styling */
   .management-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 15px;
-    transition: transform 300ms ease;
-  }
-
-  .management-card.sons{
-    max-width: 500px;
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
   }
   
   .management-card:hover {
@@ -127,56 +42,28 @@
   }
   
   .management-card img {
-    width: 108px;
-    height: 108px;
+    width: 100%;
+    height: auto;
     border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 16px;
-    display: block;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
   }
   
+  /* Text inside the cards */
   .management-card h5 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
   }
   
   .management-card h6 {
-    font-size: 1.05rem;
-    margin-bottom: -1px;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #f39c12;
+    margin-bottom: 10px;
   }
   
-  .management-grid-row {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+  .management-card p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
   }
   
-  .strength {
-    max-width: 56rem;
-    margin: 0 auto;
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .management-grid-row {
-      grid-template-columns: 1fr;
-    }
-  
-    .text-container h2 {
-      font-size: 1rem;
-    }
-  
-    .text-container p {
-      font-size: 0.5rem;
-    }
-  }
-
-  .management-card.chairman{
-    justify-self: center;
-    max-height: 250px;
-    width: 40%; /* Adjust this value as needed */
-  }
