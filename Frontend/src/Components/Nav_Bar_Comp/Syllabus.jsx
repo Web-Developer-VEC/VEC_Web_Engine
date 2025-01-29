@@ -225,7 +225,7 @@ function Syllabus() {
                   <div className="flex items-center gap-3 mb-4">
                     {" "}
                     {/* Increased spacing */}
-                    <Calendar className="w-6 h-6" /> {/* Larger icon */}
+                    <Calendar className="w-6 h-6 caledar" /> {/* Larger icon */}
                     <h2 className="text-2xl font-bold">{section.year}</h2> {/* Larger text */}
                   </div>
                  
