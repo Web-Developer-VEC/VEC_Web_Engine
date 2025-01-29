@@ -1,83 +1,8 @@
 // Import necessary dependencies
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./admin.css"; // Import the CSS file for styling
 import Banner from "../Banner";
-
-// Sample data for cards
-const cardData = [
-  {
-    id: 1,
-    image: "/Images/Kalpana.png",
-    name: "Kalpana M",
-    designation: "Receptionist & ERP Co-ordinator",
-  },
-  {
-    id: 2,
-    image: "/Images/Kalyani.png",
-    name: "S Kalyani",
-    designation: "PA to Principal",
-  },
-  {
-    id: 3,
-    image: "/Images/Prakash.png",
-    name: "B Prakash Kumar",
-    designation: "Superintendent",
-  },
-  {
-    id: 3,
-    image: "/Images/Murugan.png",
-    name: "C Muruganantham",
-    designation: "Clerk",
-  },
-  {
-    id: 3,
-    image: "/Images/Vithya.png",
-    name: "Vithya",
-    designation: "Accountant Assistant",
-  },
-  {
-    id: 3,
-    image: "/Images/Esther.png",
-    name: "E Esther Flora",
-    designation: "Manager-HR",
-  },
-  {
-    id: 3,
-    image: "/Images/Nivethitha.png",
-    name: "N Nivethitha",
-    designation: "Admission Co-Ordinator",
-  },
-  {
-    id: 3,
-    image: "/Images/Sheeba.png",
-    name: "K Sheeba",
-    designation: "Student Affairs",
-  },
-  {
-    id: 3,
-    image: "/Images/Rajalakshmi.png",
-    name: "M Rajalakshmi",
-    designation: "Cashier",
-  },
-  {
-    id: 10,
-    image: "/Images/Karthikeyan.png",
-    name: "Karthikeyan N",
-    designation: "Office Assistant",
-  },
-  {
-    id: 11,
-    image: "/Images/Thavamani.png",
-    name: "Thavamani T",
-    designation: "Office Assistant",
-  },
-  {
-    id: 12,
-    image: "/Images/Lakshmi.png",
-    name: "R Lakshmi",
-    designation: "Office Assistant",
-  },
-];
 
 // Card component
 const Card = ({ image, name, designation }) => {
@@ -92,6 +17,25 @@ const Card = ({ image, name, designation }) => {
 
 // Main CardPage component
 const CardPage = () => {
+  const [adminData, setadminData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/adminoffice`);
+        console.log("HI",response.data);
+
+        setadminData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setLoading(true);
+      } 
+    };
+    fetchData();
+  },[]);
+
   return (
     <>
 <Banner
@@ -103,11 +47,18 @@ const CardPage = () => {
 
     <div className="admin-card-page">
       <h1 className="admin-page-title">Our Team</h1>
+      {/* Show loading spinner during data fetch */}
+      {isLoading && (
+          <div className="loading-screen">
+            <div className="spinner"></div>
+            Loading...
+          </div>
+        )}
       <div className="admin-card-container">
-        {cardData.map((card) => (
+        {adminData.map((card) => (
           <Card
             key={card.id}
-            image={card.image}
+            image={card.photo_path}
             name={card.name}
             designation={card.designation}
           />

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./Dean.css";
 import Banner from "../Banner";
 
@@ -22,17 +23,7 @@ const data = [
       "Dept Magazine / News letter",
       "Quality of Internal Question paper / Assignments",
       "Quality of completed Projects and Prototype",
-    ],
-    dean: {
-      name: "Dr. A. Jebamalar",
-      title: "Prof & Head – Civil Engineering",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. M. Arockia Jaswin",
-      title: "Prof. Mechanical Engg.",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
   {
     heading: "Planning and Development",
@@ -46,17 +37,7 @@ const data = [
       "Expansion of new courses",
       "Expanding Computing Network support, computing facilities / Wifi / Internet services / Website of Institution",
       "Support for establishment of new labs in dept",
-    ],
-    dean: {
-      name: "Dr. Jeeva Katiravan",
-      title: "Prof and Head – Information Technology",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. S. Rajalakshmi",
-      title: "AP – CSE",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
   {
     heading: "Student Development and Welfare",
@@ -76,17 +57,7 @@ const data = [
       "Students Complaints cell",
       "Mentoring and counselling",
       "Best outgoing student award and other student awards",
-    ],
-    dean: {
-      name: "Dr. S. Shahil Kirupavathy",
-      title: "Prof and Head – Department of Physics",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. Geetha R",
-      title: "AP - EEE",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
   {
     heading: "Faculty Development and Welfare",
@@ -101,17 +72,7 @@ const data = [
       "AICTE 360 degree feedback",
       "RTI related matters",
       "Grievance related to faculty",
-    ],
-    dean: {
-      name: "Dr. S Mary Jones",
-      title: "Prof & Head – Department of Electronics and Communication Engg.",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. R.S.Lekshmi",
-      title: "Asst Prof – Head – MBA",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
   {
     heading: "Research and Development",
@@ -125,31 +86,11 @@ const data = [
       "Start-up and Entrepreneurships",
       "AICTE - IIC",
       "Research magazine",
-    ],
-    dean: {
-      name: "Dr. A. Balaji Ganesh",
-      title: "Prof - Dept of Computer Science",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. S. Bhaskara Sethupathy",
-      title: "Prof & Head – Automobile Engineering",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
   {
     heading: "Accreditations and Ranking",
-    roles: ["NBA", "NAAC", "IQAC", "NIRF ranking", "ARIIA ranking"],
-    dean: {
-      name: "Dr. E Ganapathy Sundaram",
-      title: "Prof & Head – Mech. Engineering",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. P. Visu",
-      title: "Prof – CSE",
-      image: "/images/ass.jpg",
-    },
+    roles: ["NBA", "NAAC", "IQAC", "NIRF ranking", "ARIIA ranking"]
   },
   {
     heading: "Corporate Relations and Higher Studies",
@@ -161,63 +102,104 @@ const data = [
       "Career guidance and higher studies",
       "Alumni relations, Alumni reunions",
       "Starting Alumni chapter in Metro Cities",
-    ],
-    dean: {
-      name: "Mr. Arun Ramasamy",
-      title: "Head – Placements",
-      image: "/images/dean.jpg",
-    },
-    associateDean: {
-      name: "Dr. K. Suresh Kumar",
-      title: "Asso. Prof – EEE",
-      image: "/images/ass.jpg",
-    },
+    ]
   },
 ];
 
 const Dean = () => {
+
+  const [deanData, setDeanData] = useState([]);
+  const [loading ,setloading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/deanandassociates`);
+        console.log("HI",response.data);
+
+        setDeanData(response.data);
+        setloading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setloading(true);
+      } 
+    };
+    fetchData();
+  },[]);
+
   return (
     <>
-<Banner
+    <Banner
   backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
   headerText="Dean & Associate Deans"
   subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
 />
-
-    <div className="de-container">
-      {data.map((section, index) => (
-        <div className="de-box" key={index}>
-          <h1 className="de-heading">{section.heading}</h1>
-          <div className="de-content">
-            {/* Profiles Section */}
-            <div className="de-profiles-section">
-              {[section.dean, section.associateDean].map((profile, idx) => (
-                <div className="de-profile" key={idx}>
-                  <img src={profile.image} alt={profile.name} />
-                  <div className="de-profile-details">
-                    <strong>{profile.name}</strong>
-                    <br />
-                    <span>{profile.title}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Roles Section */}
-            <div className="de-roles-section">
-            <h2 style={{ marginTop: '-30px' }}>Roles and Responsibilities</h2>
-              <ul className="de-roles">
-                {section.roles.map((role, i) => (
-                  <li key={i}>{role}</li>
-                ))}
-              </ul>
-            </div>
+    <div className="container">
+       {loading && (
+          <div className="loading-screen">
+            <div className="spinner"></div>
+            Loading...
           </div>
-        </div>
-      ))}
+        )}
+      <div className="de-container">
+        {data.map((section, index) => {
+          const responsibleDean = deanData.find(
+            (dean) => dean.Position === section.heading
+          );
+
+          return (
+            <div className="de-box" key={index}>
+              <h1 className="de-heading">{section.heading}</h1>
+              <div className="de-content">
+                {/* Profiles Section */}
+                {responsibleDean ? (
+                  <div className="de-profiles-section">
+                    <div className="de-profile">
+                      <img
+                        src={responsibleDean.Dean_Image} // Replace with a valid image URL
+                        alt={responsibleDean.Dean}
+                      />
+                      <div className="de-profile-details">
+                        <strong>{responsibleDean.Dean}</strong>
+                        <br />
+                        <span>{responsibleDean.Dean_Designation}</span>
+                      </div>
+                    </div>
+                    {responsibleDean.Associate_Dean && (
+                      <div className="de-profile">
+                        <img
+                          src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
+                          alt={responsibleDean.Associate_Dean}
+                        />
+                        <div className="de-profile-details">
+                          <strong>{responsibleDean.Associate_Dean}</strong>
+                          <br />
+                          <span>{responsibleDean.Associate_Dean_Designation}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p>No assigned dean for this section.</p>
+                )}
+
+                {/* Roles Section */}
+                <div className="de-roles-section">
+                  <h2>Roles and Responsibilities</h2>
+                  <ul className="de-roles">
+                    {section.roles.map((role, i) => (
+                      <li key={i}>{role}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
     </>
   );
 };
- 
+
 export default Dean;
