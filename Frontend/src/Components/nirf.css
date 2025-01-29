@@ -125,7 +125,7 @@
 }
 
 .nirf-action-button {
-  width: 160px;
+  min-width: 160px;
   padding: 15px 20px;
   font-size: 1.2rem;
   font-weight: bold;
