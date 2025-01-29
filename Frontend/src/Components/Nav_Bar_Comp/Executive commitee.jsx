@@ -98,12 +98,6 @@ const ExecutiveCommittee = () => {
 
 
     <div className="executive-committee-page">
-      {/* Header Section */}
-      <header className="header">
-        <h1>Executive Committee</h1>
-        {/* Add any other header content here */}
-      </header>
-
       {/* Committee Page Content */}
       <div className="committee-container">
         {/* Show loading spinner during data fetch */}
