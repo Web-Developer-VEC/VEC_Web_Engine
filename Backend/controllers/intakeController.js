@@ -5,7 +5,7 @@ async function getUG (req, res) {
     const collection = db.collection('Intakes');
 
     try {
-        const data = await collection.findOne({}, { projection: { UG: 1, UG_Lateral: 1, _id: 0 } });
+        const data = await collection.findOne({}, { projection: { UG: 1, UG_Lateral: 1, _id: 0, Year:1 } });
         if (!data) {
             return res.status(404).json({ message: 'No UG and UG_Lateral details found' });
         }
@@ -21,7 +21,7 @@ async function getPG (req, res) {
     const collection = db.collection('Intakes');
 
     try {
-        const data = await collection.findOne({}, { projection: { PG: 1, _id: 0 } });
+        const data = await collection.findOne({}, { projection: { PG: 1, _id: 0 , Year:1} });
         if (!data) {
             return res.status(404).json({ message: 'No PG details found' });
         }
@@ -37,7 +37,7 @@ async function getMBA (req, res) {
     const collection = db.collection('Intakes');
 
     try {
-        const data = await collection.findOne({}, { projection: { MBA: 1, _id: 0 } });
+        const data = await collection.findOne({}, { projection: { MBA: 1, _id: 0 , Year:1} });
         if (!data) {
             return res.status(404).json({ message: 'No MBA details found' });
         }

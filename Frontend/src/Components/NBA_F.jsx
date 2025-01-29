@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import "./NBA_F.css"; // Create a CSS file for styling specific to this component
+import "./NBA_F.css"; // Import the CSS file for styling
 import banner from "./Assets/banner image.jpg";
+import Banner from './Banner';
 
 const NBA_F = () => {
-  const [selectedYear, setSelectedYear] = useState("Civil");
+  const [selectedYear, setSelectedYear] = useState(null); // Start with no PDF selected
 
-  // Year buttons with associated PDF links
   const yearButtons = {
     "Civil": "/pdfs/Civil_CSE_EEE_ECE_EI.pdf",
     "CSE": "/pdfs/Civil_CSE_EEE_ECE_EI.pdf",
@@ -14,68 +14,75 @@ const NBA_F = () => {
     "E&I": "/pdfs/Civil_CSE_EEE_ECE_EI.pdf",
     "IT": "/pdfs/IT_Mech.pdf",
     "Mech": "/pdfs/IT_Mech.pdf",
-    // Add more departments as needed
+    
   };
 
   const handleYearClick = (year) => {
-    setSelectedYear(year); // Update the selected year to show the PDF
+    setSelectedYear(year); // Set the selected year to display the PDF
   };
 
   return (
+    <>
+<Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="National Board of Accreditation"
+  subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
+/>
+
     <div className="nba-page">
-      <div className="nba-banner">
-        <img
-          src={banner} // Replace with your banner image path
-          alt="NBA Banner"
-          className="nba-banner-image"
-        />
-      </div>
 
-      {/* Introductory Text */}
       <div className="nba-intro">
-        <h1 className="nba-header">NATIONAL BOARD OF ACCREDITATION (NBA)</h1>
-        <p className="nba-about">
-          <h3><center><strong>About NBA</strong></center></h3>
-          <br /><br />
-          The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs, including engineering, management, pharmacy, architecture, and others.
-          <br /><br />
-          <h3><center><strong>Purpose of NBA Accreditation</strong></center></h3>
-          <br /><br />
-          The primary goal of NBA accreditation is to assess and ensure that academic programs meet predefined quality standards, thereby promoting continuous improvement in educational institutions. It helps students, employers, and other stakeholders identify programs that deliver high-quality education and are aligned with industry and societal needs.
-        </p>
+        <div className="nba-tiles">
+          {/* Tile 1: About NBA */}
+          <div className="nba-tile">
+            <h3 className="nba-tile-header">About NBA</h3>
+            <p className="nba-tile-text">
+              The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs, including engineering, management, pharmacy, architecture, and others.
+            </p>
+          </div>
+
+          {/* Tile 2: Purpose of NBA */}
+          <div className="nba-tile">
+            <h3 className="nba-tile-header">Purpose of NBA Accreditation</h3>
+            <p className="nba-tile-text">
+              The primary goal of NBA accreditation is to assess and ensure that academic programs meet predefined quality standards, thereby promoting continuous improvement in educational institutions. It helps students, employers, and other stakeholders identify programs that deliver high-quality education and are aligned with industry and societal needs.
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Page Content */}
-      <div className="nba-content">
-        {/* Left Side - Years */}
-        <div className="nba-years">
-          {Object.keys(yearButtons)
-            .map((year) => (
-              <button
-                key={year}
-                className={`nba-year-button ${selectedYear === year ? "active" : ""}`}
-                onClick={() => handleYearClick(year)} // Show PDF directly when clicked
-              >
-                {year}
-              </button>
-            ))}
-        </div>
 
-        {/* Right Side - Display PDF */}
+
+      {/* Buttons Section */}
+      <div className="nba-years">
+        {Object.keys(yearButtons).map((year) => (
+          <button
+            key={year}
+            className={`nba-year-button ${selectedYear === year ? "active" : ""}`}
+            onClick={() => handleYearClick(year)}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
+
+      {/* PDF Viewer */}
+      {selectedYear && (
         <div className="nba-details">
           <div className="nba-pdf-container">
             <h3>{`Viewing: ${selectedYear}`}</h3>
             <embed
               className="embed"
-              src={yearButtons[selectedYear]} // Display PDF of the selected year
+              src={yearButtons[selectedYear]}
               type="application/pdf"
               width="100%"
               height="600px"
             />
           </div>
         </div>
-      </div>
+      )}
     </div>
+    </>
   );
 };
 
