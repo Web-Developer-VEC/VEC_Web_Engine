@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./nirf.css"; // Create a CSS file for styling specific to this component
 import banner from "./Assets/banner image.jpg";
+import Banner from './Banner';
 const Nirf = () => {
   const [selectedYear, setSelectedYear] = useState("2025");
   const [selectedAction, setSelectedAction] = useState(null); // Track the selected action for PDF display
@@ -65,14 +66,13 @@ const Nirf = () => {
   };
 
   return (
-    <div className="nirf-page">
-      <div className="nirf-banner">
-        <img
-          src={banner} // Replace with your banner image path
-          alt="NIRF Banner"
-          className="nirf-banner-image"
+    <>
+      <Banner
+          backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+          headerText="NIRF"
+          subHeaderText="The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015."
         />
-      </div>
+    <div className="nirf-page">
 
       {/* Introductory Text */}
       <div className="nirf-intro">
@@ -132,6 +132,7 @@ const Nirf = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
