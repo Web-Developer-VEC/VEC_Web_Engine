@@ -17,6 +17,8 @@ const allformsRoutes = require('./routes/allform');
 const alumniRoutes = require('./routes/alumni');
 const deanRoutes = require('./routes/dean');
 const bannerRoutes = require('./routes/banner');
+const secondnavbarController = require('./routes/secondnavbar');
+const staffprofileRoutes = require('./routes/staffprofile');
 
 dotenv.config();
 
@@ -44,6 +46,8 @@ app.use('/api', allformsRoutes);
 app.use('/api', alumniRoutes);
 app.use('/api', deanRoutes);
 app.use('/api', bannerRoutes);
+app.use('/api', secondnavbarController);
+app.use('/api', staffprofileRoutes);
 
 app.get('/', (req, res) => {
     res.send("Welcome to the Node.js MongoDB API!");

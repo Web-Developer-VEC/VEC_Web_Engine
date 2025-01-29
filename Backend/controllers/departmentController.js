@@ -45,32 +45,15 @@ async function getHODDetails(req, res) {
 async function getStaffDetails(req, res) {
     const deptId = req.params.deptId;
     const db = getDb();
-    const collection = db.collection('staff_details');
+    const collection = db.collection('faculty_data');
 
     try {
-        const staffDetails = await collection.find(
-            { unique_id: { $regex: `^VEC-${deptId}-` } }, 
-            {
-                projection: {
-                    Name: 1,
-                    Designation: 1,
-                    Photo: 1,
-                    "Google Scholar Profile": 1,
-                    "Research Gate": 1,
-                    "Orchid Profile": 1,
-                    "Publon Profile": 1,
-                    "Scopus Author Profile": 1,
-                    "LinkedIn Profile": 1,
-                    unique_id:1,
-                    _id: 0, 
-                }
-            }
-        ).toArray();
+        const staffDetails = await collection.findOne({ dept_id: deptId });
 
-        if (staffDetails.length > 0) {
-            return res.status(200).json(staffDetails);
+        if (staffDetails) {
+            res.status(200).json(staffDetails);
         } else {
-            res.status(404).json({ message: 'No staff found for the given department ID.' });
+            res.status(404).json({ message: 'No staff details found for the given department ID.' });
         }
     } catch (error) {
         console.error("❌ Error fetching staff details:", error);
@@ -166,7 +149,7 @@ async function getStuActivities(req, res) {
 
 // Fetch Support Staff Details  (innu varala)
 async function getSupportStaff(req, res) {
-    const deptId = parseInt(req.params.deptId);
+    const deptId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('support_staffs');
 
@@ -191,25 +174,20 @@ async function getSupportStaff(req, res) {
 
 // Fetch  MOUs Details 
 async function getMou(req, res) {
-    const deptId = req.params.deptId;
+    const { deptId } = req.params;
     const db = getDb();
     const collection = db.collection('MOUs');
 
     try {
         const departmentData = await collection.findOne({
-            Departments: deptId
+            Departments: deptId       //remove the VEC array for new push
         });
 
         if (!departmentData) {
-            return res.status(404).json({ message: "Department not found" });
+            return res.status(404).json({ message: "Department not found" });  //for the new push directly return the departmentData
         }
         
         return res.status(200).json(departmentData);
-        const department = departmentData.VEC.find(dept => dept.Departments === deptId);
-        
-        if (!department) {
-            return res.status(404).json({ message: "Department not found" });
-        }
     } catch (error) {
         console.error("❌ Error fetching MOUs:", error);
         res.status(500).json({ error: "Error fetching MOUs" });
