@@ -38,15 +38,12 @@ const CardPage = () => {
 
   return (
     <>
-<Banner
-  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-  headerText="Administrative Office"
-  subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."
-/>
-
-
+    <Banner
+      backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+      headerText="Administrative Office"
+      subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."
+    />
     <div className="admin-card-page">
-      <h1 className="admin-page-title">Our Team</h1>
       {/* Show loading spinner during data fetch */}
       {isLoading && (
           <div className="loading-screen">
