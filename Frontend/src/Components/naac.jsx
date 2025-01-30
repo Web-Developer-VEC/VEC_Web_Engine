@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import "./naac.css"; // Create a CSS file for styling specific to this component
+import "./naac.css";
 import banner from "./Assets/banner image.jpg";
-const Nirf = () => {
-  const [selectedYear, setSelectedYear] = useState("IQAC MoM");
-  const [selectedAction, setSelectedAction] = useState(null); // Track the selected action for PDF display
+import Banner from './Banner';
 
-  // Buttons for each year and their associated PDF links for different actions
+const Naac = () => {
+  const [selectedYear, setSelectedYear] = useState("IQAC MoM");
+  const [selectedAction, setSelectedAction] = useState(null);
+
   const yearButtons = {
-   "IQAC MoM": {
+    "IQAC MoM": {
       actions: {
         "Odd sem 2020-21": "/pdfs/IQAC-MoM-Odd-Sem-2020-21.pdf",
         "Even sem 2020-21": "/pdfs/IQAC-MoM-Even-Sem-2020-21.pdf",
       }
-      },
+    },
     "AQAR": {
       actions: {
         "AQAR 2018-19": "/pdfs/AQAR-Report-2018-19.pdf",
@@ -40,97 +41,76 @@ const Nirf = () => {
         "2023-24": "/pdfs/distinctiveness_23-24.pdf",
       },
     },
-    "Code of ethics ": {
+    "Code of Ethics": {
       actions: {
         "View here": "/pdfs/CODE-OF-ETHICS.pdf",
-       
       },
     },
-    // "2w": {
-    //   actions: {
-    //     "Overall": "/pdfs/NIRF-2021.pdf",
-    //   },
-    // },
-    // "a": {
-    //   actions: {
-    //     "Overall": "/pdfs/NIRF-2020.pdf",
-    //   },
-    // },
   };
 
-  const openPdf = (action) => {
-    setSelectedAction(action); // Set the selected action to display the PDF
-  };
-
-  const downloadPdf = (action) => {
-    const pdfUrl = yearButtons[selectedYear]?.actions[action];
-    if (pdfUrl) {
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = action + ".pdf"; // Set the file name for download
-      link.click();
-    }
-  };
+  const openPdf = (action) => setSelectedAction(action);
   const handleYearClick = (year) => {
-    setSelectedYear(year); // Set the selected year
-    setSelectedAction(null); // Reset the selected action when changing the year
+    setSelectedYear(year);
+    setSelectedAction(null);
   };
 
   return (
-    <div className="nirf-page">2
-      <div className="nirf-banner">
-        <img
-          src={banner} // Replace with your banner image path
-          alt="NIRF Banner"
-          className="nirf-banner-image"
+    <>
+      <Banner
+          backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+          headerText="NAAC"
+          subHeaderText="NATIONAL ASSESSMENT AND ACCREDITATION COUNCIL (NAAC)"
         />
+    <div className="naac-page">
+      <div className="about-section">
+        <div className="naac-info-panel">
+          <h2>About NAAC</h2>
+          <p>
+          The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution. NAAC evaluates the institutions for its conformance to the standards of quality in terms of its performance related to the educational processes and outcomes, curriculum coverage, teaching-learning processes, faculty, research, infrastructure, learning resources, organisation, governance, financial well being and student services.
+          </p>
+        </div>
+
+        <div className="iqac-info-panel">
+          <h2>About IQAC</h2>
+          <p>
+            The Internal Quality Assurance Cell (IQAC) is a pivotal body established 
+            to ensure continuous quality enhancement in academic and administrative 
+            performance. Formulated as a post-accreditation quality sustenance measure 
+            recommended by NAAC.
+          </p>
+        </div>
       </div>
 
-      {/* Introductory Text */}
-      <div className="nirf-intro">
-        {/* <h1 >NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1> */}
-        <h1 className="nirf-header">About IQAC</h1>
-      <div className="para">
-        <p>
-        The Internal Quality Assurance Cell (IQAC) is an institutional mechanism established to ensure quality enhancement and sustenance in higher education institutions. It was recommended by the National Assessment and Accreditation Council (NAAC) as a post-accreditation quality sustenance measure. The IQAC aims to promote a consistent and catalytic improvement in academic and administrative performance by institutionalizing best practices.
-        </p>
-        <h3>Objectives</h3>
+      <div className="objectives-section">
+        <h2>Key Objectives</h2>
         <ol>
-        <li>1. <b> Quality Enhancement:</b> To develop a system for conscious, consistent, and catalytic improvement in institutional performance.</li>
-         <li> 2. <b> Promoting Best Practices:</b> To encourage and institutionalize innovative and effective practices.</li>
-        <li>3. <b>Stakeholder Engagement: </b> To ensure active participation of all stakeholders in the quality assurance process.</li>
-        <li>4. <b>Documentation and Reporting:</b>  To document institutional processes and communicate quality achievements effectively.</li>
+          <li><b>Quality Enhancement:</b> Develop system for consistent improvement</li>
+          <li><b>Best Practices:</b> Institutionalize innovative practices</li>
+          <li><b>Stakeholder Engagement:</b> Ensure active participation</li>
+          <li><b>Documentation:</b> Maintain records effectively</li>
         </ol>
-        </div>
       </div>
-     
 
-      {/* Page Content */}
-      <div className="nirf-content">
-        {/* Left Side - Years */}
-        <div className="nirf-years">
-          {Object.keys(yearButtons)
-            .sort((a, b) => b - a) // Sort years in descending order
-            .map((year) => (
-              <button
-                key={year}
-                className={`nirf-year-button ${selectedYear === year ? "active" : ""}`}
-                onClick={() => handleYearClick(year)} // Set selected year when clicked
-              >
-                {year}
-              </button>
-            ))}
+      <div className="naac-content">
+        <div className="naac-years">
+          {Object.keys(yearButtons).map((year) => (
+            <button
+              key={year}
+              className={`naac-year-button ${selectedYear === year ? "active" : ""}`}
+              onClick={() => handleYearClick(year)}
+            >
+              {year}
+            </button>
+          ))}
         </div>
 
-        {/* Right Side - Buttons for Selected Year */}
-        <div className="nirf-details">
-          
-          <div className="nirf-year-actions">
+        <div className="naac-details">
+          <div className="naac-year-actions">
             {Object.keys(yearButtons[selectedYear]?.actions || {}).map((action, index) => (
               <div key={index}>
                 <button
-                  className="nirf-action-button"
-                  onClick={() => openPdf(action)} // Show the PDF for the selected action
+                  className="naac-action-button"
+                  onClick={() => openPdf(action)}
                 >
                   {action}
                 </button>
@@ -138,11 +118,11 @@ const Nirf = () => {
             ))}
           </div>
 
-          {/* Display PDF if an action is selected */}
           {selectedAction && (
-            <div className="nirf-pdf-container">
+            <div className="naac-pdf-container">
               <h3>{`Viewing: ${selectedAction}`}</h3>
-              <embed className='embed'
+              <embed
+                className="embed"
                 src={yearButtons[selectedYear]?.actions[selectedAction]}
                 type="application/pdf"
                 width="100%"
@@ -153,7 +133,8 @@ const Nirf = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
-export default Nirf;
+export default Naac;

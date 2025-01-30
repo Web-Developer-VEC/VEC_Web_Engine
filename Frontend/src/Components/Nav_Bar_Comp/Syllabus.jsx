@@ -3,24 +3,9 @@ import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Calendar, BookOpen } from "lucide-react"
 import "./Syllabi.css"
+import Banner from "../Banner"
 
-// Simple Banner component
-const Banner = ({ title, description, backgroundImage }) => (
-  <div
-    className="banner h-64 flex items-center justify-center text-white relative mb-12" // Added mb-12
-    style={{
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
-  >
-    <div className="absolute inset-0 bg-black/50"></div>
-    <div className="relative text-center p-4">
-      <h1 className="text-4xl font-bold mb-4">{title}</h1>
-      <p className="text-lg">{description}</p>
-    </div>
-  </div>
-)
+
 
 // CourseCard component
 const CourseCard = ({ course, onClick }) => (
@@ -213,14 +198,16 @@ function Syllabus() {
   const [selectedPdf, setSelectedPdf] = useState(null)
 
   return (
+    <>
+          <Banner
+  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+  headerText="Course & Syllabus"
+  subHeaderText="Empowering students through structured learning and academic excellence"
+/>
     <div className="min-h-screen bg-white mt-2">
       {" "}
       {/* Update 1 */}
-      <Banner
-        title="Course & Syllabus"
-        description="Empowering students through structured learning and academic excellence"
-        backgroundImage="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
-      />
+
       {/* Updated container with shadow and spacing */}
       <div className="">
         {" "}
@@ -238,7 +225,7 @@ function Syllabus() {
                   <div className="flex items-center gap-3 mb-4">
                     {" "}
                     {/* Increased spacing */}
-                    <Calendar className="w-6 h-6" /> {/* Larger icon */}
+                    <Calendar className="w-6 h-6 caledar" /> {/* Larger icon */}
                     <h2 className="text-2xl font-bold">{section.year}</h2> {/* Larger text */}
                   </div>
                  
@@ -279,6 +266,7 @@ function Syllabus() {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }
 export default Syllabus

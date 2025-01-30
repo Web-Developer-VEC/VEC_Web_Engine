@@ -1,121 +1,168 @@
-/* Intro Section */
-.nirf-intro {
-  font-size: 18px;
-  padding: 20px;
-  line-height: 1.8;
-  background:  #D3D3D3;
-  border-left: 5px solid #D3D3D3;
-  border-radius: 8px;
+/* Page Container */
+.naac-page {
+  margin: 0;
+  padding: px;
+}
+
+/* Fully Stretched Banner */
+.naac-banner {
+  width: 100vw; /* Full viewport width */
+  margin: 0; /* Remove any gaps */
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.naac-banner-image {
+  width: 100vw; /* Full viewport width */
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0; /* Remove rounded edges for full width */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-in-out;
-  /* height: 100%; */
-}
-.nirf-about {
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  height: 100%; /* Add height if necessary */
 }
 
+/* About Section */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 40px 0;
+}
 
+/* Info Panels */
+.naac-info-panel, .iqac-info-panel {
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin:20px;
+}
 
+.naac-info-panel {
+  background: #e8f4fc;
+  border-left: 5px solid #3498db;
+}
 
-/* Banner Section */
-.nirf-banner-image {
+.iqac-info-panel {
+  background: #fcf3e8;
+  border-left: 5px solid #e67e22;
+}
+
+/* Objectives Section with Left Border */
+.objectives-section {
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 250px;
+  max-width: 800px;
   width: 100%;
-  height: 350px;
-  
-  filter: brightness(90%);
-  transition: filter 0.3s ease-in-out;
+  margin: 40px auto;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 6px solid #007bff;
 }
 
-.nirf-banner-image:hover {
-  filter: brightness(100%);
+/* Objectives Hover Effect */
+.objectives-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Header Section */
-.nirf-header {
+/* Objectives Section Heading */
+.objectives-section h2 {
   text-align: center;
-  padding: 20px;
-  font-size: 2.5rem;
-  margin: 20px 0;
-  margin-top: 50px;
-  color: #000; /* Set the text color to black */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  animation: slideIn 1s ease-in-out;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  width: 100%;
 }
 
-/* Content Layout */
-.nirf-content {
+/* Objectives List */
+.objectives-section ol {
+  padding-left: 20px;
+  list-style-position: outside;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Two-Column Layout for List Items */
+.objectives-section li {
+  width: calc(50% - 10px);
+  margin: 10px 0;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* List Item Hover Effect */
+.objectives-section li:hover {
+  background: rgba(253, 204, 3, 0.1);
+}
+
+/* NAAC Content Layout */
+.naac-content {
   display: flex;
   justify-content: space-between;
-  margin-top: 0px;
+  margin-top: 30px;
   padding: 20px;
   gap: 30px;
-  animation: fadeIn 1s ease-in-out;
 }
 
-/* Year Buttons */
-.nirf-years {
+/* NAAC Years Sidebar */
+.naac-years {
   width: 20%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.nirf-year-button {
+/* Year Selection Buttons */
+.naac-year-button {
   border-radius: 8px;
-  width: 120px;
   padding: 12px;
   font-size: 1.1rem;
   font-weight: bold;
   border: 2px solid #FDCC03;
   background-color: #222;
   color: #fff;
-  text-align: center;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nirf-year-button.active {
+.naac-year-button.active {
   background-color: #FDCC03;
   color: #222;
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-.nir
 
-.nirf-year-button:hover {
+.naac-year-button:hover {
   background-color: #333;
-  color: #FDCC03;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Details Section */
-.nirf-details {
+/* NAAC Details Panel */
+.naac-details {
   width: 75%;
   background: #fff;
-  content: center;
-  margin-right: 150px;
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  animation: slideIn 1s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Action Buttons */
-.nirf-year-actions {
+/* NAAC Actions */
+.naac-year-actions {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
-.nirf-action-button {
-  width: 160px;
+.naac-action-button {
   padding: 15px 20px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -123,79 +170,57 @@
   border-radius: 8px;
   background-color: #FDCC03;
   color: #222;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nirf-action-button:hover {
+.naac-action-button:hover {
   background-color: #e6b802;
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* PDF Viewer */
-.embed {
+/* PDF Embed Container */
+.naac-pdf-container {
   margin-top: 30px;
+  text-align: center;
+}
+
+.embed {
+  width: 100%;
+  height: 600px;
   border: 3px solid #FDCC03;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-in-out;
-}
-.nirf-pdf-container{
-  
-  
-    text-align: center;
-    justify-content: center; /* Horizontal centering */
-    align-items: center; /* Vertical centering */
-    height: 100%; /* Add height if necessary */
-  
-  
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .nirf-content {
-    flex-direction: column;
-    gap: 20px;
+  /* Stack About Section */
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Single Column List */
+  .objectives-section ol {
+    columns: 1;
   }
 
-  .nirf-years {
+  /* Stack NAAC Content */
+  .naac-content {
+    flex-direction: column;
+  }
+
+  /* NAAC Years as a Row */
+  .naac-years {
     width: 100%;
     flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
   }
 
-  .nirf-details {
+  /* Full-Width Details */
+  .naac-details {
     width: 100%;
   }
 
-  .nirf-year-actions {
+  /* Reduce Button Gap */
+  .naac-year-actions {
     gap: 20px;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
