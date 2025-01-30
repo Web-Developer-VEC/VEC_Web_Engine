@@ -35,7 +35,7 @@ const VisionMission = ({ data }) => {
         <div className="col-md-6 d-flex align-items-stretch">
           <div className="section-card p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
-              <Eye size={32} className="text-primary me-3" /> {/* Vision Icon */}
+              <Eye size={32} className="me-3" /> {/* Vision Icon */}
               <h2>Department Vision</h2>
             </div>
             <p>{data.vision}</p>
@@ -47,7 +47,7 @@ const VisionMission = ({ data }) => {
         <div className="col-md-6 d-flex align-items-stretch">
           <div className="section-card p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
-              <Target size={32} className="text-primary me-3" /> {/* Mission Icon */}
+              <Target size={32} className="me-3" /> {/* Mission Icon */}
               <h2>Department Mission</h2>
             </div>
             <ul>

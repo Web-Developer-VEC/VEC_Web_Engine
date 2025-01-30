@@ -49,8 +49,7 @@ export const PlacementTeam = () => {
     subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
 />
     <div className='container'>
-      <div className="Placement-App">
-        <h1>Placement Team</h1>
+      <div className="Placement-App" style={{marginTop:'30px'}}>
         {/* Show loading spinner during data fetch */}
         {isLoading && (
             <div className="loading-screen">
