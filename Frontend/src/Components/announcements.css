@@ -209,3 +209,23 @@
 .tiles .card-inner h2{
   padding: 15px;
 }
+
+.flip-buttons {
+  position: absolute;
+  left: 2%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 25vw;
+}
+
+.flip-btn {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
