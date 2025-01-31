@@ -5,7 +5,6 @@ import Banner from './Banner';
 
 const NBA_F = () => {
   const [selectedYear, setSelectedYear] = useState(null);
-  const [adnbadata, setNbaData] = useState([]);
   const [yearButtons, setYearButtons] = useState({});
   const [isLoading, setLoading] = useState(true);
 
