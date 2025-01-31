@@ -37,6 +37,9 @@ import Trust from "./Components/Nav_Bar_Comp/Trust.jsx";
 import CollegeOrgChart from "./Components/Nav_Bar_Comp/Organization_chart.jsx";
 import Dean from "./Components/Nav_Bar_Comp/dean.jsx";
 import CardPage from "./Components/Nav_Bar_Comp/admin.jsx";
+// import Iic from "./Components/iic.jsx";
+import Gallery from "./Components/iic.jsx";
+
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -136,6 +139,7 @@ const App = () => {
                   <Route path="/nirf" element={<Nirf1 />} />
                   <Route path="/naac" element={<Naac1 />} />
                   <Route path="/nba" element={<Nba1 />} />
+                  <Route path="/iic" element={<Gallery />} />
                   <Route path="/dept/:deptID" element={<Dept />} />
                   <Route path="/v_m" element={<Collegevisionmission />} />
                   <Route path="/reg" element={<REGULATION />} />
