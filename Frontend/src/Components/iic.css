@@ -386,8 +386,8 @@
     gap: 4rem;
   }
 
-  .left,
-  .right {
+   .iic-left,
+  .iic-right {
     display: flex;
     align-items: center;
     position: relative;
@@ -410,20 +410,20 @@
     transition: transform 1000ms cubic-bezier(0, 0.55, 0.45, 1); /* Changed from 2000ms to 1000ms */
   }
 
-  .left .inner {
+  .iic-left .inner {
     perspective-origin: right center;
   }
 
-  .right .inner {
+  .iic-right .inner {
     perspective-origin: left center;
   }
 
-  .left .item {
+  .iic-left .item {
     right: -10rem;
     margin-right: 13.75rem;
   }
 
-  .right .item {
+  .iic-right .item {
     left: -10rem;
     margin-left: 13.75rem;
   }

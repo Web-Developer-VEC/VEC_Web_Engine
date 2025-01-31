@@ -296,7 +296,7 @@ const Iic = () => {
       <div className="">
         <h3 className="iic-faici">Facilities And Infrastructure</h3>
         <div className="gallery">
-          <div className="left">
+          <div className="left iic-left">
             <div className="inner">
               {images.left.map((src, index) => (
                 <img
@@ -311,7 +311,7 @@ const Iic = () => {
             </div>
           </div>
 
-          <div className="right">
+          <div className="right iic-right">
             <div className="inner">
               {images.right.map((src, index) => (
                 <img

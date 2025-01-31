@@ -1,6 +1,7 @@
 import { Button } from "../Button";
 import { FaSignInAlt } from "react-icons/fa";
 import Banner from "../Banner";
+import HostelImg from "../Assets/VEC Hostel.jpg";
 
 export default function HostelPage() {
   return (
@@ -42,7 +43,7 @@ export default function HostelPage() {
           </p>
         </div>
         <img
-          src="/hostel-image.jpg"
+          src={HostelImg}
           alt="Hostel Facilities"
           className="w-1/2 rounded-3xl shadow-xl ml-8 hidden md:block"
         />
