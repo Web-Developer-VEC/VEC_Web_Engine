@@ -18,7 +18,6 @@
 
 .navbar-logo {
   color: #222;
-  cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
   display: flex;
@@ -80,7 +79,6 @@
 
 .dropdown li {
   background: #fff;
-  cursor: pointer;
 }
 
 .dropdown li a {
@@ -106,7 +104,6 @@
   background-color: inherit; /* Default background color */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
   font-size: 16px; /* Adjust font size as needed */
-  cursor: pointer; /* Pointer cursor on hover */
 }
 
 .lis:hover {
@@ -164,7 +161,6 @@
     right: 0;
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
-    cursor: pointer;
   }
 
   .fa-times {

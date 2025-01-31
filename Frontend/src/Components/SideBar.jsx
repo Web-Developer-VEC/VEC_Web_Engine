@@ -26,7 +26,6 @@ const Sidebar = (props) => {
           top: "5vmax",
           right: "20px",
           zIndex: "1100", // Higher than the sidebar z-index
-          cursor: "pointer",
           background: "transparent",
         }}
         onClick={toggleSidebar}
@@ -53,36 +52,36 @@ const Sidebar = (props) => {
       >
         <h3>Main Menu</h3>
         <ul>
-          <li  className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li  className="lis" onClick={toggleSubSidebar} >
             Open Sub-Menu
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar}>
             RAndom STuff 1
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 2
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 3
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 4
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 5
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 6
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar}>
             RAndom STuff 7
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar}>
             RAndom STuff 8
           </li>
-          <li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          <li className="lis" onClick={toggleSubSidebar} >
             RAndom STuff 9
-          </li><li className="lis" onClick={toggleSubSidebar} style={{ cursor: "pointer" }}>
+          </li><li className="lis" onClick={toggleSubSidebar}>
             RAndom STuff 10
           </li>
           {/* Add more sidebar items as needed */}

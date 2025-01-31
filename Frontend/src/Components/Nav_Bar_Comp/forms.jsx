@@ -1,70 +1,129 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Forms.css";
+import Banner from "../Banner";
 
 const Forms = () => {
   const studentTailRef = useRef(null);
+  const [studentResources, setStudentResources] = useState([]);
+  const [facultyResources, setFacultyResources] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const [selectedPdf, setSelectedPdf] = useState(null); // State for modal
 
-  const studentResources = [
-    { name: "NPTEL Course Registration form for credit transfer", url: "/pdfs/application.pdf" },
-    { name: "Application Form- NPTEL Credit Transfer", url: "/pdfs/Application_for_CGPA_to_Percentage_conversion.pdf" },
-    { name: "Application form-CGPA to percentage Conversion", url: "/pdfs/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf" },
-    { name: "Application form -Review after Revaluation", url: "" },
-    { name: "Application form-Revaluation(After obtaining Photocopy)", url: "/pdfs/" },
-    { name: "Application form -Photocopy", url: "/pdfs/" },
-    { name: "Evaluation Form for Photocopy of answer scripts B.E tech", url: "/pdfs/" },
-    { name: "B.E & M.E -evaluation form for photocopy of answer script", url: "/pdfs/" },
-    { name: "Project Report Format", url: "/pdfs.Application-Form-Revaluation-After-obtaining-Photocopy.pdf" },
-    { name: "Project Report Specimen", url: "/pdfs/Application_for_CGPA_to_Percentage_conversion.pdf" },
-    { name: "Application Form-Name Correction", url: "/pdfs/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf" },
-    { name: "Application form -Duplicate Certificate", url: "/pdfs/Application-Form-for-Withdrawal.pdf" },
-    { name: "Application Form - Duplicate Hall Ticket", url: "/pdfs/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf" },
-    { name: "Application Form - Withdrawal", url: "/pdfs/Application-Form-for-Withdrawal.pdf" },
-    { name: "Application Form - Transcript Certificate", url: "/pdfs/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf" },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/allforms`);
+        const data = response.data[0]; // Assuming API returns an array with one object
 
-  const facultyResources = [
-    { name: "SEE_QP_feedback_R2023", url: "/pdfs/SEE_QP_Feedback_R2023.pdf" },
-    { name: "SEE_QP_Feedback_R2019", url: "/pdfs/SEE_QP_Feedback_R2019.pdf" },
-    { name: "Self declaration form (Children/spouse pursuing UG/PG degree in VEC)", url: "/pdfs/Declaration_from_Staff(Children_Spouse_doing_UG_PG_degree_in_VEC).pdf" },
-    { name: "Exam Duty Alteration Format (for Faculty)", url: "/pdfs/Duty_alteration_Format_Faculty_Final.pdf" },
-    { name: "Registration Form - Ph.D. Course Work", url: "/pdfs/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf" },
-  ];
+        if (data) {
+          const students = data.students[0];
+          const faculty = data.faculty[0];
+
+          const formattedStudentResources = students.name.map((name, index) => ({
+            name,
+            url: students.link[index] || "#", // Default to "#" if no link is provided
+          }));
+
+          const formattedFacultyResources = faculty.name.map((name, index) => ({
+            name,
+            url: faculty.link[index] || "#",
+          }));
+
+          setStudentResources(formattedStudentResources);
+          setFacultyResources(formattedFacultyResources);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setLoading(true);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleViewClick = (pdfUrl, name) => {
+    setSelectedPdf({ url: pdfUrl, name });
+  };
+
+  const closeModal = () => {
+    setSelectedPdf(null);
+  };
 
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
-      <div
-        key={index}
-        className="resource-item"
-        onClick={() => window.open(resource.url, "_blank")}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && window.open(resource.url, "_blank")}
-      >
-        {resource.name}
+      <div key={index} className="resource-item">
+          <a
+            className="view-button"
+            onClick={() => handleViewClick(resource.url, resource.name)}
+          >
+            {resource.name}
+          </a>
       </div>
     ));
   };
 
   return (
-    <div className="tails-container">
-      <div className="tail student-tail" ref={studentTailRef}>
-        <div className="tail-content">
-          <h2>Student Resources</h2>
-          <div className="download-links-container">
-            {renderResourceLinks(studentResources)}
+    <>
+      <Banner
+        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        headerText="All Forms"
+        subHeaderText="Streamlining processes with easy access to forms, empowering smooth academic and administrative workflows."
+      />
+
+      <div className="tails-container">
+        <div className="tail student-tail" ref={studentTailRef}>
+          <div className="tail-content">
+            <h2>Student Resources</h2>
+            <div className="download-links-container">
+              {isLoading ? (
+                <div className="loading-screen">
+                  <div className="spinner"></div>
+                  Loading...
+                </div>
+              ) : (
+                renderResourceLinks(studentResources)
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="tail faculty-tail">
+          <div className="tail-content">
+            <h2>Faculty Resources</h2>
+            <div className="download-links-container">
+              {isLoading ? (
+                <div className="loading-screen">
+                  <div className="spinner"></div>
+                  Loading...
+                </div>
+              ) : (
+                renderResourceLinks(facultyResources)
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="tail faculty-tail">
-        <div className="tail-content">
-          <h2>Faculty Resources</h2>
-          <div className="download-links-container">
-            {renderResourceLinks(facultyResources)}
+      {selectedPdf && (
+        <div className="pdf-modal">
+          <div className="pdf-modal-content">
+            <button className="pdf-close-button" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2>{selectedPdf.name}</h2>
+            <iframe
+              src={selectedPdf.url}
+              title={selectedPdf.name}
+              className="pdf-iframe"
+            ></iframe>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

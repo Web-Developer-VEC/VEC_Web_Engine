@@ -57,7 +57,6 @@
   /* margin-top: 50px; */
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   background: repeating-linear-gradient(120deg, red, rgb(119, 15, 1), red, rgb(119, 15, 1), red);
   background-repeat:repeat-x;
   /* height: 100%; */
@@ -132,6 +131,7 @@
   align-items: center;
   gap: 10px;
   font-size:medium;
+  color: black;
 }
 
 .tiles .card-front h4:hover {
@@ -184,7 +184,6 @@
 
 .tiles .card a {
   font-size: 25px;
-  cursor: pointer;
   background:  linear-gradient(45deg, #ff6f61, #ffbc00, #ffc3a0);;
   /* background: linear-gradient(45deg, yellow, white, rgb(223, 189, 144)); */
   -webkit-background-clip: text;
@@ -209,4 +208,24 @@
 
 .tiles .card-inner h2{
   padding: 15px;
+}
+
+.flip-buttons {
+  position: absolute;
+  left: 2%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 25vw;
+}
+
+.flip-btn {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }

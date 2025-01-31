@@ -1,97 +1,40 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import axios from "axios"; 
+import { ChevronLeft, ChevronRight } from "lucide-react"; 
+import { animate, motion, useAnimationFrame, useMotionValue, useTransform } from "framer-motion";
 import "./Events.css";
-// Array of events
-const events = [
-  {
-    eventName: "HIGH-END WORKSHOP ON CIVIL SOFTWARE APPLICATION E-tabs & Ansys Fluent",
-    departmentName: "Civil Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriugerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "21 AUG - 23 AUG, 2024",
-    eventDate: "21 AUG",
-    brochureLink: "https://example.com/brochure1",
-    websiteLink: "https://example.com/website1"
-  },
-  {
-    eventName: "MEPEXPO'24",
-    departmentName: "Mechanical Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriuerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "29 AUG - 30 AUG, 2024",
-    eventDate: "29 AUG",
-    brochureLink: "https://example.com/brochure2",
-    websiteLink: "https://example.com/website2"
-  },
-  {
-    eventName: "INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE",
-    departmentName: "Computer Science",
-    description: "Detailed description of the AI conference event.",
-    duration: "5 SEP - 7 SEP, 2024",
-    eventDate: "05 SEP",
-    brochureLink: "https://example.com/brochure3",
-    websiteLink: "https://example.com/website3"
-  },
-  {
-    eventName: "ADVANCED ROBOTICS WORKSHOP",
-    departmentName: "Robotics Engineering",
-    description: "Insights into the advanced robotics workshop.",
-    duration: "10 SEP - 12 SEP, 2024",
-    eventDate: "10 SEP",
-    brochureLink: "https://example.com/brochure4",
-    websiteLink: "https://example.com/website4"
-  },
-  {
-    eventName: "SUSTAINABILITY IN ENGINEERING SEMINAR",
-    departmentName: "Environmental Engineering",
-    description: "A seminar focusing on sustainability in engineering.",
-    duration: "15 SEP - 17 SEP, 2024",
-    eventDate: "15 SEP",
-    brochureLink: "https://example.com/brochure5",
-    websiteLink: "https://example.com/website5"
-  },
-  {
-    eventName: "HIGH-END WORKSHOP ON CIVIL SOFTWARE APPLICATION E-tabs & Ansys Fluent",
-    departmentName: "Civil Engineering",
-    description: "nrugeuirgbuiebrvuibaeryufuierbiuegrueioriugerguiberiogbeuirgienrguieruigfiegrbiuerguieriogneoiruiebrigbeiurguiergbeuirbb",
-    duration: "21 AUG - 23 AUG, 2024",
-    eventDate: "21 AUG",
-    brochureLink: "https://example.com/brochure1",
-    websiteLink: "https://example.com/website1"
-  },
-];
+
 function EventBox({ event, onMouseEnter, onMouseLeave }) {
   return (
     <motion.div
       className="caro-item"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      whileHover={{ scale: 1.05 }} // Hover effect
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      onHoverStart={onMouseEnter}
+      onHoverEnd={onMouseLeave}
     >
       <motion.div
         className="event-box"
-        whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }} // Hover shadow effect
+        whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }}
       >
         <div className="event-header">
           <div className="event-date">
-            <div className="circle">{event.eventDate}</div>
+            <div className="circle">{event.start_date}</div>
           </div>
-          <div className="event-name">{event.eventName}</div>
+          <div className="event-name">{event.title}</div>
         </div>
         <div className="event-details">
-          <div className="event-row department-name">
-            {event.departmentName}
-          </div>
-          <div className="event-row description">
-            {event.description}
-          </div>
+          <div className="event-row department-name">{event.department}</div>
+          <div className="event-row description">{event.content}</div>
           <div className="event-footer">
             <div className="event-row duration">
-              <i className="fas fa-calendar-alt"></i> {event.duration}
+              <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
             </div>
             <div className="event-row links">
-              <a href={event.brochureLink} target="_blank" rel="noopener noreferrer">
+              <a href={event.brochure_path} target="_blank" rel="noopener noreferrer">
                 Brochure
               </a>
-              <a href={event.websiteLink} target="_blank" rel="noopener noreferrer">
+              <a href={event.website_link} target="_blank" rel="noopener noreferrer">
                 Website
               </a>
             </div>
@@ -103,51 +46,100 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
 }
 
 function Carousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const controls = useAnimation();
-  const [isPaused, setIsPaused] = useState(false);
-  const eventList = useRef([...events, ...events, ...events]);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { threshold: 0.1 });
+  const x = useMotionValue(0);
+  const lastScrollTime = useRef(Date.now());
+  const isHovered = useRef(false);
+  const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    if (!isPaused && isInView) {
-      const interval = setInterval(() => {
-        controls.start({
-          x: `-${(currentIndex + 1) * (425 + 40)}px`,
-          transition: { duration: 1, ease: "linear" }
-        });
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % (events.length * 3));
-      }, 3000); // Slide every 3 seconds
-      return () => clearInterval(interval);
+  const CARD_WIDTH = 465;
+  const SCROLL_SPEED = 3;
+  const SCROLL_INTERVAL = 16;
+
+  // Duplicate events to ensure smooth looping
+  const duplicatedEvents = [...events, ...events, ...events];
+  const TOTAL_WIDTH = duplicatedEvents.length * CARD_WIDTH;
+
+  const wrappedX = useTransform(x, (value) => {
+    const range = TOTAL_WIDTH;
+    const wrapped = ((value % range) + range) % range;
+    return -wrapped;
+  });
+
+  // Auto-scrolling logic
+  useAnimationFrame(() => {
+    if (!isHovered.current) {
+      const now = Date.now();
+      if (now - lastScrollTime.current >= SCROLL_INTERVAL) {
+        const currentX = x.get();
+        const newX = currentX + SCROLL_SPEED;
+
+        // Reset the position seamlessly
+        if (newX >= TOTAL_WIDTH / 3) {
+          x.set(0);
+        } else {
+          x.set(newX);
+        }
+
+        lastScrollTime.current = now;
+      }
     }
-  }, [currentIndex, controls, isPaused, isInView]);
+  });
 
-  const handleMouseEnter = () => {
-    controls.stop();
-    setIsPaused(true);
+  const handleHoverStart = () => {
+    isHovered.current = true;
   };
 
-  const handleMouseLeave = () => {
-    setIsPaused(false);
+  const handleHoverEnd = () => {
+    isHovered.current = false;
   };
+
+  // Fetch events
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/events`);
+        setEvents(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div className="caro-container font-popp" ref={ref}>
-      <motion.div
-        className={`caro-content ${isPaused ? "paused" : ""}`}
-        animate={controls}
-        initial={{ x: 0 }}
-      >
-        {eventList.current.map((event, index) => (
-          <EventBox
-            key={index}
-            event={event}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          />
-        ))}
-      </motion.div>
+    <div className="carousel-wrapper">
+      <div className="nav-button-area left">
+        <motion.button
+          className="nav-button"
+          onClick={() => x.set(x.get() - CARD_WIDTH)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <ChevronLeft className="nav-icon" />
+        </motion.button>
+      </div>
+      <div className="caro-container font-popp">
+        <motion.div className="caro-content" style={{ x: wrappedX }}>
+          {duplicatedEvents.map((event, index) => (
+            <EventBox
+              key={index}
+              event={event}
+              onMouseEnter={handleHoverStart}
+              onMouseLeave={handleHoverEnd}
+            />
+          ))}
+        </motion.div>
+      </div>
+      <div className="nav-button-area right">
+        <motion.button
+          className="nav-button"
+          onClick={() => x.set(x.get() + CARD_WIDTH)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <ChevronRight className="nav-icon" />
+        </motion.button>
+      </div>
     </div>
   );
 }
