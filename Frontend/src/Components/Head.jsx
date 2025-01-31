@@ -230,7 +230,7 @@ const Head = () => {
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[11]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[13]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[14]}</p>
+                    <button  onClick={() => navigate('/hostel')}className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
                         {socls.map((socl, i) => (
