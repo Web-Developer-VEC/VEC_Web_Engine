@@ -1,0 +1,470 @@
+  .iic-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .naac-page {
+    
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .naac-banner {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .naac-banner-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .about-section {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 40px 0;
+  }
+
+  .naac-info-panel, .iqac-info-panel, .function-info-panel {
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .naac-info-panel {
+    background: #e8f4fc;
+    border-left: 5px solid #3498db;
+  }
+
+  .iqac-info-panel {
+    background: #fcf3e8;
+    border-left: 5px solid #e67e22;
+  }
+
+  /* Update the functions-info-panel class */
+  .functions-info-panel {
+    align-items: center;
+    margin: 0 auto;
+    width: 90%; /* Reduced from 100% to better center content */
+    background: #fcf3e8;
+    border-left: 5px solid #8b22e6;
+    text-align: center; /* Center align the text */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  /* Style the heading inside functions-info-panel */
+  .functions-info-panel h2 {
+    font-size: 2rem; /* Increased font size for heading */
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  /* Style the paragraph and list items inside functions-info-panel */
+  .functions-info-panel p {
+    font-size: 1.2rem; /* Increased font size for content */
+    line-height: 1.8; /* Improved line height for better readability */
+    text-align: left; /* Keep bullet points aligned left for better readability */
+    margin: 0 auto;
+    max-width: 90%; /* Contains the text width for better readability */
+  }
+
+  /* Add responsive adjustments */
+  @media (max-width: 768px) {
+    .functions-info-panel {
+      width: 90%;
+    }
+    
+    .functions-info-panel h2 {
+      font-size: 1.75rem;
+    }
+    
+    .functions-info-panel p {
+      font-size: 1.1rem;
+    }
+  }
+
+
+  .iic-header h1 {
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+    color: #333;
+  }
+
+  .iic-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    gap: 2rem; /* Spacing between cards */
+    width: 100%;
+  }
+
+  .iic-card {
+    background: #f8f9fa;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: left; /* Adjust text alignment if needed */
+  }
+
+  .iic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .iic-cards {
+      grid-template-columns: 1fr; /* Stack cards in a single column on smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .iic-card {
+      padding: 0.75rem;
+    }
+  }
+
+
+  .members {
+    text-align: center;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    width: 250px;
+    height: auto;
+    padding: 1rem;
+    background: white;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin: 0 auto;
+  }
+
+  .members img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .members p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333;
+  }
+
+  .members h4 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #666;
+    margin: 0.25rem 0;
+    font-weight: 500;
+  }
+
+  .members:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* .faculty-icc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+    .nir-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+    }
+    .nir-section {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+    */
+  .nir-heading {
+    font-size: 1.5rem;
+    color: #333;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    border-radius: 5px;
+    margin: 5px 0;
+    background: linear-gradient(135deg, #fdcc03 0%, #fdb347 100%);
+    color: white;
+  }
+
+  .nir-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: red;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+  }
+
+  .nir-action-button {
+    width: auto;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #a86915, #38321a);
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nir-action-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .nirf-details:not(.members-section) .members {
+    display: none;
+  }
+
+  .faculty-icc::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .faculty-icc::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  .faculty-icc::-webkit-scrollbar-thumb {
+    background: #fdcc03;
+    border-radius: 4px;
+  }
+
+  .faculty-icc::-webkit-scrollbar-thumb:hover {
+    background: #fdb347;
+  }
+
+  @media (max-width: 768px) {
+    .nir-buttons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .faculty-icc {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nir-buttons {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .nir-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+  }
+
+  .nir-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .nir-heading {
+    font-size: 1.5rem;
+    color: white;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    background: linear-gradient(45deg, #ffd21c, #ffd93d);
+  }
+
+  .nir-buttons {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-height: 60px;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .nir-section {
+    animation: slide-in 0.8s ease-out;
+  }
+
+  .nir-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    animation: slide-in 0.8s ease-out; /* Apply the animation */
+  }
+
+  .nir-container .nir-section {
+    animation: slide-in 0.8s ease-out;
+  } 
+
+  @media (max-width: 480px) {
+    .nir-buttons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .faculty-icc .members {
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .nir-buttons {
+      gap: 0.75rem;
+    }
+
+    .faculty-icc {
+      gap: 1rem;
+    }
+  }
+
+  .faculty-icc {
+    gap: 2rem;
+    padding: 2rem;
+    max-height: 600px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+
+  .iic-faici{
+    font-size: 3rem;
+    font-style: oblique;
+    text-align: center;
+    border-bottom: 1px solid violet;
+  }
+
+  .gallery {
+    display: flex;
+    height: 30vh;
+    gap: 4rem;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: calc(50% - 2rem);
+  }
+
+  .inner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    perspective: 500px;
+    transform-style: preserve-3d;
+  }
+
+  .item {
+    position: absolute;
+    width: 12rem;
+    height: 14rem;
+    transition: transform 1000ms cubic-bezier(0, 0.55, 0.45, 1); /* Changed from 2000ms to 1000ms */
+  }
+
+  .left .inner {
+    perspective-origin: right center;
+  }
+
+  .right .inner {
+    perspective-origin: left center;
+  }
+
+  .left .item {
+    right: -10rem;
+    margin-right: 13.75rem;
+  }
+
+  .right .item {
+    left: -10rem;
+    margin-left: 13.75rem;
+  }
+
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .members {
+    text-align: center;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    padding: 1rem;
+    background: white;
+    transition: transform 0.2s ease-in;
+  }
+
+  /* Remove the slide-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply fade-in animation to nir-section */
+.nir-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  animation: fade-in 0.8s ease-out; /* Apply fade-in animation */
+}
+
+/* Ensure the nir-container sections fade in */
+.nir-container .nir-section {
+  animation: fade-in 0.8s ease-out;
+}

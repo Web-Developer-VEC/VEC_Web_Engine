@@ -1,0 +1,302 @@
+/* Specific styles for Chairman, CEO, and Principal */
+
+/* Chairman */
+.chairman .person h4 {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background: linear-gradient(45deg, #6a1b9a, #4a148c);
+  color: white;
+  margin: 0;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: for handling overflowed text */
+  border-radius: 5px;
+  width: auto;
+  min-width: fit-content; /* Width adapts to content */
+}
+
+/* CEO */
+.ceo .person h4 {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background: linear-gradient(45deg, #d84315, #bf360c);
+  color: white;
+  margin: 0;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  width: auto;
+  min-width: fit-content;
+}
+
+/* Principal */
+.principal .person h4 {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background: linear-gradient(45deg, #2e7d32, #1b5e20);
+  color: white;
+  margin: 0;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  width: auto;
+  min-width: fit-content;
+}
+
+/* General Person Styling (applies to all other nodes) */
+.org-node .person h4 {
+  font-size: 1rem;
+  padding: 6px 10px;
+  background: linear-gradient(45deg, #6a1b9a, #4a148c);
+  color: white;
+  margin: 0;
+  text-align: center;
+  white-space: normal; /* Allows text to wrap */
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  width: 100%; /* Ensure all nodes except CEO, Chairman, and Principal take full width */
+}
+
+/* Remove unnecessary padding from org-node to avoid extra space */
+.org-node {
+  padding: 0; /* Remove extra padding */
+  margin: 0;
+  width: 100%; /* Take full width except for specific roles */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto; /* Height adjusts dynamically based on content */
+  word-wrap: break-word;
+}
+
+/* Connecting Lines */
+.child-wrapper {
+  position: relative;
+  padding-top: 20px;
+}
+
+.child-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, #b0bec5, #90a4ae);
+}
+
+.children {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.children::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #90a4ae, transparent);
+}
+
+/* Side Children Lines */
+.side-children-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+.side-children-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #90a4ae, transparent);
+}
+
+.side-child-wrapper {
+  position: relative;
+  margin: 10px 0;
+}
+
+.side-child-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 2px;
+  height: 10px;
+  background: linear-gradient(to bottom, #b0bec5, #90a4ae);
+}
+
+/* Hover Effects */
+.org-node:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Person Details */
+.person {
+  text-align: center;
+  width: 100%; /* Ensure it's only as wide as the text */
+}
+
+/* Special styles for the chart title */
+.chart-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #1a237e, #311b92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Organizational Chart */
+.org-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+  min-width: fit-content;
+}
+
+/* Side Children Layout */
+.side-children {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .person h4 {
+    font-size: 1rem;
+    padding: 6px 8px;
+  }
+
+  .dean-node,
+  .Admin-node,
+  .HOD-node,
+  .hostel-node {
+    width: 180px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .org-chart-container {
+    padding: 20px;
+  }
+
+  .chart-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .person h4 {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  .side-children-container {
+    flex-direction: column;
+  }
+
+  .dean-node,
+  .Admin-node,
+  .HOD-node,
+  .hostel-node {
+    width: 160px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .chart-title {
+    font-size: 1.5rem;
+  }
+
+  .org-node {
+    min-width: auto;
+  }
+
+  .children {
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+}
+
+/* Node Colors with Gradients */
+.ceo .person h4 {
+  background: linear-gradient(45deg, #d84315, #bf360c);
+}
+
+.principal .person h4 {
+  background: linear-gradient(45deg, #2e7d32, #1b5e20);
+}
+
+.dean-node .person h4,
+.dean-node .children .person h4 {
+  background: linear-gradient(45deg, #1565c0, #0d47a1);
+}
+
+.library-node .person h4 {
+  background: linear-gradient(45deg, #f57f17, #f9a825);
+}
+
+.Admin-node .person h4,
+.Admin-node .children .person h4 {
+  background: linear-gradient(45deg, #4e342e, #3e2723);
+}
+
+.HOD-node .person h4,
+.HOD-node .children .person h4 {
+  background: linear-gradient(45deg, #455a64, #37474f);
+}
+
+.hostel-node .person h4,
+.hostel-node .children .person h4 {
+  background: linear-gradient(45deg, #c2185b, #880e4f);
+}
+
+.dean-node,
+.Admin-node,
+.HOD-node,
+.hostel-node {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  padding: 15px;
+  border-radius: 15px;
+  width: 100%; /* These nodes take full width */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 0 10px;
+}
+
+.dean-node .children,
+.Admin-node .children,
+.HOD-node .children,
+.hostel-node .children {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}

@@ -54,7 +54,8 @@ const ImgSld = () => {
                 className="flex h-[35vmax] top-[15vmax] bg-center overflow-hidden relative justify-items-stretch bg-transparent w-[100vw]">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed top-0 z-0'
-                    autoPlay loop muted ref={videoRef1} id='BgVid'>
+                    autoPlay loop muted ref={videoRef1} id='BgVid'
+                    playsInline>
                     <source src={Vide} type='video/mp4'/>
                 </video>
 
@@ -77,6 +78,8 @@ const ImgSld = () => {
                 <video
                     className={`h-auto w-[100vw] bg-center fixed ${vid} z-0`}
                     ref={videoRef2}
+                    muted
+                    playsInline
                 >
                     <source src={Vide} type='video/mp4'/>
                 </video>
