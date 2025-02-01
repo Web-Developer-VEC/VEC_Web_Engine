@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./RD.css"; // Use your existing CSS
 
-const Research= () => {
+const Research= ({ setActiveSection}) => {
   const [selectedYear, setSelectedYear] = useState("2022-2023");
 
   // Action to Icon Mapping
@@ -108,11 +108,15 @@ const Research= () => {
               <div
                 key={action}
                 className="RD-action-button"
-                onClick={() => handleActionClick(link)} // Redirect on click
+                onClick={() => {
+                  setActiveSection("Conference"); // Navigate to conference section
+                }}
               >
                 <FontAwesomeIcon icon={actionIcons[action]} style={{ marginRight: "10px" }} />
                 {action}
               </div>
+
+
             ))}
           </div>
         </div>

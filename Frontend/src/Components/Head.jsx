@@ -28,53 +28,56 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {main: "About Us", cod:[0, 6], cols: 1, sub: [
-            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/nirf'},
-            {hrd: false, ttl: 'About Trust', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Management', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Governing Council', sup: [], lnk: ''}, 
+        {main: "About Us", cod:[0, 5], cols: 1, sub: [
+            {hrd: false, ttl: 'About VEC', sup: [], lnk: '/abt-us'},
+            {hrd: false, ttl: 'About Trust', sup: [], lnk: '/trust'}, 
+            {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: 'v_m'},
+            {hrd: false, ttl: 'Management', sup: [], lnk: '/management'}, 
             { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
         ]}, 
         {main: "Administration", cod:[0, 5], cols: 1, sub: [
-            {hrd: false, ttl: 'Principal', sup: [], lnk: ''},
-            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Admin Office', sup: [], lnk: ''}, 
-            {hrd: false, ttl: "Committee's", sup: [], lnk: ''},
-            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Principal', sup: [], lnk: '/principal'},
+            {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: '/dean'}, 
+            {hrd: false, ttl: 'Admin Office', sup: [], lnk: '/admin'}, 
+            {hrd: false, ttl: "Committee's", sup: [], lnk: '/committee'},
+            {hrd: false, ttl: 'Organization Chart', sup: [], lnk: '/clg-org'}
         ]},
         {main: "Academics", cod:[0, 11, 13], cols: 2, sub: [
             {hrd: true, ttl: 'UG Courses', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept'},
-            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Civil Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Computer Science and Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Electrical and Electronics Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Electronics and Communication Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Electronics and Instrumentation Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Information Technology', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Mechanical Engineering (ME)', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Artificial Intelligence and Data Science', sup: [], lnk: '/dept/001', deptID: "001",},
+            {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: '/dept/002', deptID: "002",},
+            {hrd: false, ttl: 'Civil Engineering', sup: [], lnk: '/dept/004' ,deptID: "004",},
+            {hrd: false, ttl: 'Computer Science and Engineering', sup: [], lnk: '/dept/005', deptID: "005",},
+            {hrd: false, ttl: 'Computer Science and Engineering (Cyber Security)', sup: [], lnk: '/dept/006', deptID: "006",},
+            {hrd: false, ttl: 'Electrical and Electronics Engineering', sup: [], lnk: '/dept/007', deptID: "007",},
+            {hrd: false, ttl: 'Electronics and Communication Engineering', sup: [], lnk: '/dept/009', deptID: "009",},
+            {hrd: false, ttl: 'Electronics and Instrumentation Engineering', sup: [], lnk: '/dept/008', deptID: "008",},
+            {hrd: false, ttl: 'Information Technology', sup: [], lnk: '/dept/011', deptID: "011",},
+            {hrd: false, ttl: 'Mechanical Engineering (ME)', sup: [], lnk: '/dept/013', deptID: "013",},
             {hrd: true, ttl:  'PG Courses', sup: [], lnk: ''},
-            {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: ''},
-            {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: ''},
+            {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
+            {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
+            {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: '/dept/002', deptID: "001",}, //
             {hrd: false, ttl: '', sup: [], lnk: ''},
-            {hrd: true, ttl: 'Others', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: ''}, 
+            {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
+            {hrd: false, ttl: 'Chemistry', sup: [], lnk: '/dept/003', deptID: "003",}, 
+            {hrd: false, ttl: 'English', sup: [], lnk: '/dept/010', deptID: "010",}, 
+            {hrd: false, ttl: 'Mathematicis', sup: [], lnk: '/dept/012', deptID: "012",}, 
+            {hrd: false, ttl: 'Physics', sup: [], lnk: '/dept/015', deptID: "015",}, 
+            {hrd: false, ttl: 'Tamil', sup: [], lnk: '/dept/002', deptID: "001",}, //
 
         ]},  
-        {main: "Admission", cod:[0, 5], cols: 1, sub: [
-            {hrd: false, ttl: 'Eligibilities For UG/PG', sup: [], lnk: ''},
-            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: ''},
-            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: ''},
+        {main: "Admission", cod:[0, 4], cols: 1, sub: [
+            {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: '/ug'},
+            {hrd: false, ttl: 'M.E Admission', sup: [], lnk: '/m_e'},
+            {hrd: false, ttl: 'MBA Admission', sup: [], lnk: '/mba'},
             {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
         ]}, 
         {main: "Exams", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'Regulation', sup: [], lnk: '/reg'}, 
-            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Student Verification', sup: [], lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'},
-            {hrd: false, ttl: 'All Forms', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: '/Syllabus'},
+            {hrd: false, ttl: 'Student Verification', sup: [],  lnk: 'https://vecchennai.directverify.in/student/#/app/request',openInNewTab: true},
+            {hrd: false, ttl: 'All Forms', sup: [], lnk: '/form'}
 
         ]}, 
         {
@@ -92,9 +95,9 @@ const Head = () => {
         },  
         {main: "Placement", cod:[0, 4], cols: 1, sub: [
             {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'}, 
-            {hrd: false, ttl: 'Placement Team', sup: [], lnk: ''}, 
-            {hrd: false, ttl: 'Placement Details', sup: [], lnk: ''},
-            {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: ''}
+            {hrd: false, ttl: 'Placement Team', sup: [], lnk: '/place-team'}, 
+            {hrd: false, ttl: 'Placement Details', sup: [], lnk: '/place-dep'},
+            {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: '/proudalumni'}
 
         ]}, 
 
@@ -147,14 +150,17 @@ const Head = () => {
             <nav className='fixed z-[100] w-full'>
                 <div className={'flex items-center font-popp group bg-white text-slate-200 transition-all ease-in-out duration-300 w-full h-auto ' + 
                         ' h-20'}>
-                    <div className='bg-inherit z-10'>
-                        <img src='https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png' alt='Vec Logo'
-                            className='group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] h-auto'></img>
-                    </div>    
-                    <div className='w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all'>
-                        <span className='font-rome text-[2vmax] text-amber-800 p-0 -mb-[0.75vmax]'>VELAMMAL</span>
-                        <span className='font-rome text-black text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
-                    </div>
+                    <a href="/" className="flex items-center text-decoration-none">
+                        <div className='bg-inherit z-10'>
+                            <img src='https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png' alt='Vec Logo'
+                                className='group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] h-auto'></img>
+                        </div>    
+                        <div className='w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all'>
+                            <span className='font-rome text-[2vmax] text-amber-800 p-0 -mb-[0.75vmax]'>VELAMMAL</span>
+                            <span className='font-rome text-black text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
+                            <span className="font-rome text-black text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">The Wheel of Knowledge rolls on!</span>
+                        </div>
+                    </a>
                     <div class="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2 lg:max-w-[17.5vw] max-w-[20.5vw] ml-2 sm:flex hidden">
                         {nacs.map((nac, i) => (
                             <div class="duration-200 self-center ease-linear" data-carousel-item>
@@ -183,7 +189,8 @@ const Head = () => {
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` + 
                                                     (sbj.hrd || sbj.ttl === "" ? '': ' hover:bg-[position:-100%_100%]')} 
                                                     style={{transitionDelay: `${((length > 10) ? 25: 100) * i}ms`}} 
-                                                    key={sbj.ttl} href={sbj.lnk}><p 
+                                                    key={sbj.ttl} href={sbj.lnk}       target={sbj.openInNewTab ? '_blank' : '_self'}
+><p 
                                                         className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' + 
                                                         (sbj.hrd ? 'font-bold border-b-2 text-center': 'text-left')}>{sbj.ttl}</p></a>
                                                     {(sbj.sup.length > 0) ? (
@@ -214,8 +221,7 @@ const Head = () => {
                     <button  onClick={() => navigate('/naac')}className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
                     <button  onClick={() => navigate('/nirf')}className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
                     {/* Updated version */}
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[5]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
+                    <button  onClick={() => navigate('/iic')}className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[9]}</p>
@@ -223,7 +229,7 @@ const Head = () => {
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[11]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[13]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[14]}</p>
+                    <button  onClick={() => navigate('/hostel')}className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
                         {socls.map((socl, i) => (

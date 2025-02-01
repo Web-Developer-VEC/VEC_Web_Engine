@@ -1,0 +1,42 @@
+/* Banner Styles */
+.org-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.org-chart-image {
+  padding: 30px;
+  max-width: 100%; /* Makes the image responsive */
+  object-fit: cover; /* Ensures the image covers the container proportionally */
+  height: auto;
+  border-radius: 12px; /* Rounded corners for a softer look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Smoother shadow for a modern touch */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.org-chart-image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .org-chart-container {
+    padding: 15px; /* Slightly reduced padding on smaller screens */
+  }
+
+  .org-chart-image {
+    width: 90%; /* Adjusts image width on smaller screens */
+    border-radius: 10px; /* More rounded corners for smaller screens */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .org-chart-image {
+    width: 100%; /* Ensure image takes full width on very small screens */
+    border-radius: 8px; /* Even more rounded corners on very small screens */
+  }
+}

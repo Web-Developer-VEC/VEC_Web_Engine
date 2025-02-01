@@ -1,0 +1,134 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers items in the last row */
+  gap: 1rem;
+}
+
+.course-card {
+  width: 100%; /* Full width on mobile */
+  transition: transform 0.2s;
+}
+
+@media (min-width: 768px) {
+  .course-card {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-card {
+    width: calc(33.333% - 0.666rem); /* Three columns, accounting for gap */
+  }
+}
+
+/* Rest of your existing CSS remains the same */
+.course-card:hover {
+  transform: scale(1.05);
+}
+
+.course-button {
+  width: 100%;
+  height: auto;
+  padding: 1.5rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border: 2px solid #fdcd03;
+  border-radius: 0.5rem;
+}
+
+/* ... other existing styles ... */
+
+
+.course-button:hover {
+  background: #fae079;
+}
+
+.groups{
+  margin: -30px 0;
+}
+
+.course-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #a38200;
+}
+
+.caledar{
+  color: #a38200;
+}
+
+.pdf-dialog {
+  max-width: 72rem;
+  height: 80vh;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: calc(80vh - 80px);
+}
+
+  /* Loading Screen */
+  .loading-screen {
+    position: absolute; /* Position relative to the committee container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #333;
+    z-index: 10; /* Higher than committee content but lower than header/footer */
+  }
+  
+  /* Spinner */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin-right: 30px;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+@media (min-width: 768px) {
+  .course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

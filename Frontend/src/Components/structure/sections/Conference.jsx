@@ -76,8 +76,8 @@ const cards = [
     Attachment: "https://drive.google.com/file/d/1F7CPnY7yzCFEJZ3cddpw1qcZxDnvDa_G/view?usp=share_link"
   }
 ];
+const Conference= () => {
 
-function Conference() {
   const [expandedIds, setExpandedIds] = useState([]);
 
   const handleExpand = (id) => {
@@ -92,6 +92,7 @@ function Conference() {
   const rightColumnCards = cards.filter((_, index) => index % 2 === 1);
 
   return (
+    <>
     <div className="container">
       <h1 className='cards-h1'>Conferences</h1>
       <div className="wrapper">
@@ -143,7 +144,7 @@ function Conference() {
                 }}
               >
                 <div className="card-content">
-                  <h2 className="cards-p"><b>Title: {card.title}</b></h2>
+                  <h2 className="cards-p"><b>Title:</b> {card.title}</h2>
                   <p className='cards-p'><b>Name Of the Faculty: </b>{card.Name}</p>
                   <p className='cards-p'><b>Name Of the Conference: </b>{card.Conference}</p>
                   {expandedIds.includes(card.id) && (
@@ -173,6 +174,7 @@ function Conference() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

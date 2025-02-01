@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from "axios"; 
 import Lottie from 'react-lottie-player';
 import './Tracker.css';
 
 const StatsGrid = () => {
   const [isVisible, setIsVisible] = useState(false);
   const statsRef = useRef(null);
+  
 
-  const targetValues = {
-    teachers: 34500,
-    phdHolders: 25,
-    students: 300,
-    placement: 52,
-  };
+  const [targetValues, setTargetValues] = useState({
+    teachers: 0,
+    phdHolders: 0,
+    students: 0,
+    placement: 0,
+  });
 
   const [counters, setCounters] = useState({
     teachers: 0,
@@ -19,6 +21,26 @@ const StatsGrid = () => {
     students: 0,
     placement: 0,
   });
+ 
+  //fetching banner counts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/banner`);
+        console.log("Count",response.data[0]);
+        const fetchedData = response.data[0]; 
+        setTargetValues({
+          teachers: parseInt(fetchedData.Active_Learners),
+          phdHolders: parseInt(fetchedData.Highest_Salary_Offered.replace(' INR', '')),
+          students: parseInt(fetchedData.Hiring_Partners.replace('+', '')),
+          placement: parseInt(fetchedData.Average_Salary_Hike.replace('%', '')),
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      } 
+    };
+    fetchData();
+  },[]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

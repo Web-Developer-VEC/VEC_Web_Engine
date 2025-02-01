@@ -1,0 +1,69 @@
+/* Container for Management section */
+.text-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 15px;
+  }
+  
+  /* Management grid container */
+  .management-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  /* Row for the first set of cards (Chairman) */
+  .management-grid-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  
+  /* Individual card styling */
+  .management-card {
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .management-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .management-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  /* Text inside the cards */
+  .management-card h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .management-card h6 {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #f39c12;
+    margin-bottom: 10px;
+  }
+  
+  .management-card p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
