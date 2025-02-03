@@ -9,7 +9,6 @@ import facilityImage4 from"./Assets/iic-facility-4.png";
 import facilityImage5 from"./Assets/iic-facility-5.png";
 import facilityImage6 from"./Assets/iic-facility-6.png";
 
-
 const Iic = () => {
   const leftCardsRef = useRef([]);
   const rightCardsRef = useRef([]);
@@ -82,7 +81,6 @@ const Iic = () => {
       facilityImage4,
       facilityImage5,
       facilityImage6,
-      
     ],
     right: [
       facilityImage6,
@@ -198,8 +196,8 @@ const Iic = () => {
     { year: "PATENTS", path: "/pdfs/PATENTS.pdf" },
   ];
 
-  const openPdf = (action) => {
-    setSelectedAction(action);
+  const openPdf = (category, year) => {
+    setSelectedAction({ category, year });
   };
 
   const handleYearClick = (year) => {
@@ -348,19 +346,31 @@ const Iic = () => {
             <div className="nirf-year-actions faculty-icc">
               {selectedYear === "Certificate" &&
                 certificateArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf(action.year)}>
+                  <div
+                    key={index}
+                    className="nirf-action-button"
+                    onClick={() => openPdf("Certificate", action.year)}
+                  >
                     {action.year}
                   </div>
                 ))}
               {selectedYear === "Events Organized" &&
                 eventsOrganizedArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf(action.year)}>
+                  <div
+                    key={index}
+                    className="nirf-action-button"
+                    onClick={() => openPdf("Events Organized", action.year)}
+                  >
                     {action.year}
                   </div>
                 ))}
               {selectedYear === "Policy" &&
                 policyArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf(action.year)}>
+                  <div
+                    key={index}
+                    className="nirf-action-button"
+                    onClick={() => openPdf("Policy", action.year)}
+                  >
                     {action.year}
                   </div>
                 ))}
@@ -378,23 +388,30 @@ const Iic = () => {
               )}
               {selectedYear === "Other Stuffs" &&
                 otherStuffsArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf(action.year)}>
+                  <div
+                    key={index}
+                    className="nirf-action-button"
+                    onClick={() => openPdf("Other Stuffs", action.year)}
+                  >
                     {action.year}
                   </div>
                 ))}
             </div>
           )}
 
-          {selectedAction && selectedAction !== "Total Individuals Registered: 2119" && (
+          {selectedAction && (
             <div className="nirf-pdf-container">
-              <h3>{`Viewing: ${selectedAction}`}</h3>
+              <h3>{`Viewing: ${selectedAction.year}`}</h3>
               <embed
                 className="embed"
                 src={
-                  certificateArray.find((item) => item.year === selectedAction)?.path ||
-                  eventsOrganizedArray.find((item) => item.year === selectedAction)?.path ||
-                  policyArray.find((item) => item.year === selectedAction)?.path ||
-                  otherStuffsArray.find((item) => item.year === selectedAction)?.path
+                  selectedAction.category === "Certificate"
+                    ? certificateArray.find((item) => item.year === selectedAction.year)?.path
+                    : selectedAction.category === "Events Organized"
+                    ? eventsOrganizedArray.find((item) => item.year === selectedAction.year)?.path
+                    : selectedAction.category === "Policy"
+                    ? policyArray.find((item) => item.year === selectedAction.year)?.path
+                    : otherStuffsArray.find((item) => item.year === selectedAction.year)?.path
                 }
                 type="application/pdf"
                 width="100%"
