@@ -22,6 +22,7 @@ const DepartmentPage = () => {
   const [sectionData, setSectionData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  console.log("ajith",activeSection)
 
   useEffect(() => {
     const fetchSections = async () => {
@@ -87,19 +88,25 @@ const DepartmentPage = () => {
       case "Conference":
         return <Conference data={sectionData} />;
       default:
-        return <div>Select a section</div>;
+        return <VisionMission data={sectionData} />;
     }
   };
 
   if (!availableSections.length) return <div>Loading sections...</div>;
 
   return (
-    <div>
+    <div className={styles.main}>
+      {loading && (
+          <div className={styles.loadingscreen}>
+            <div className={styles.spinner}></div>
+              Loading...
+            </div>
+        )}
       {/* Header */}
       <div className={styles.header}>
         <img src={college} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
-          <h1 className={styles.overlayText}>Department Page</h1>
+          <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
 
@@ -113,9 +120,7 @@ const DepartmentPage = () => {
         />
         
         {/* Content */}
-        <div style={{ flex: 1, padding: "20px" }}>
-          {loading ? <div>Loading...</div> : error ? <div>Error: {error}</div> : renderSection()}
-        </div>
+        <div style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const iconMap = {
   "StudentActivities": <FaGraduationCap className={styles.icon} />,
   "SupportingStaff": <FaUsers className={styles.icon} />,
   "Mous": <FaHandshake className={styles.icon} />,
-  "Research Data": <FaFlask className={styles.icon} />
+  "Research": <FaFlask className={styles.icon} />
 };
 
 const Sidebar = ({ sections, activeSection, setActiveSection }) => {
