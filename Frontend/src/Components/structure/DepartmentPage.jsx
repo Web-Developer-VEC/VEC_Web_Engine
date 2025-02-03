@@ -22,8 +22,7 @@ const DepartmentPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [sectionData, setSectionData] = useState(null); // Store backend data for the active section
   const [loading, setLoading] = useState(true); // Loading state for fetch calls
-  const [error, setError] = useState(null); // Error state for fetch calls
-
+  const [rdsection, setRDSection] = useState(null);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -46,9 +45,7 @@ const DepartmentPage = () => {
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
-        return <Research setActiveSection={setActiveSection} data={sectionData} />;
-      case "Conference":
-        return <Conference data={sectionData} />;
+        return <Research data={sectionData} />;
       default:
         return <HeadDepartment data={sectionData} />;
     }
@@ -66,18 +63,15 @@ const DepartmentPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
-        setError(null); // Reset error state
         const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
         console.log(response)
-
         setSectionData(response.data);
+        setLoading(false)
       } catch (error) {
         console.error("Error fetching data:", error.message);
-        setError("Failed to fetch data. Please try again.");
-      } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 
@@ -85,19 +79,15 @@ const DepartmentPage = () => {
       fetchData();
     }
   }, [deptID, activeSection]);
-  
-  
-
-  if (loading) {
-    return <div>Loading...</div>; // Display a loading state
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>; // Display an error state
-  }
 
   return (
-    <div>
+    <div className={styles.main}>
+      {loading && (
+          <div className={styles.loadingscreen}>
+            <div className={styles.spinner}></div>
+              Loading...
+            </div>
+        )}
       {/* Header section */}
       <div className={styles.header}>
         <img
@@ -107,7 +97,7 @@ const DepartmentPage = () => {
         />
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>
-            Artificial Intelligence and Data Science (AI&DS)
+            {sectionData?.department_name}
           </h1>
         </div>
       </div>

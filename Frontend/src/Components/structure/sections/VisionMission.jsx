@@ -14,13 +14,13 @@ const VisionMission = ({ data }) => {
             <div className="col-md-6">
               <div className="about-department-text">
                 <h2>About the Department</h2>
-                <p>{data.about_department}</p>
+                <p>{data?.about_department}</p>
               </div>
             </div>
             <div className="col-md-6">
               <div className="about-department-image">
                 <img
-                  src={college}
+                  src={data?.department_image}
                   alt="Department of AI"
                   className="img-fluid rounded"
                 />
@@ -38,8 +38,8 @@ const VisionMission = ({ data }) => {
               <Eye size={32} className="me-3" /> {/* Vision Icon */}
               <h2>Department Vision</h2>
             </div>
-            <p>{data.vision}</p>
-            <blockquote className="vision-quote">{data.department_quotes}</blockquote>
+            <p>{data?.vision}</p>
+            <blockquote className="vision-quote">{data?.department_quotes}</blockquote>
           </div>
         </div>
 
