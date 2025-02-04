@@ -1,0 +1,406 @@
+body{
+    background-color: #5b5b5b;
+}
+/* Container Styles */
+.student-history-container {
+    align-items: center;
+    margin: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+}
+
+.student-history-header {
+    font-size: 2.0rem; /* Adjusted for better readability */
+    font-weight: bold;
+    color: #2c3e50; /* Dark blue-gray */
+    display: flex;
+    margin-bottom: 3rem;
+    align-items: center;
+    gap: 10px; /* Adds space between icon and text */
+  }
+
+  .history-icon {
+    width: 50px;  /* Adjust size as needed */
+    height: 50px;
+    color: #377dc8; /* Blue color */
+  }
+
+.student-history-container .select-dropdown {
+    background: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem;
+    font-size: 1.5rem;
+    max-height: 4rem;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.student-history-container .select-dropdown:hover {
+    border-color: #2980b9;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.student-history-container .select-dropdown:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+}
+
+/* Card Styles */
+.student-history-container .student-history-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.student-history-container .student-history-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.student-history-container .student-history-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.student-history-card.not-current {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(245, 245, 245, 0.9);
+}
+
+.student-history-card.not-current::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    opacity: 0.6;
+    transform: rotate(45deg);
+    border-radius: 10px;
+}
+
+.student-history-card.not-current .history-info p {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: 'Georgia', serif;
+}
+
+.student-history-card.not-current .history-info {
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.student-history-card.not-current:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.student-history-card.not-current:hover::before {
+    opacity: 0.8;
+}
+
+.student-history-container .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align modal content to the top */
+    z-index: 1000;
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
+}
+
+.student-history-container .modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 600px;
+    height: auto; /* Adjust height based on content */
+    margin-top: 2rem; /* Add margin from the top */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Allow scrolling inside the modal */
+}
+
+.student-history-container .popup-x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.student-history-container .popup-x:hover {
+    color: #000;
+}
+
+.student-history-container .details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.student-history-container .details-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.student-history-container .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align modal content to the top */
+    z-index: 1000;
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
+}
+
+.student-history-container .modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 600px;
+    height: auto; /* Adjust height based on content */
+    margin-top: 2rem; /* Add margin from the top */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure the close button is positioned correctly */
+}
+
+.student-history-container .popup-x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.student-history-container .popup-x:hover {
+    color: #000;
+}
+
+.student-history-container .details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.student-history-container .details-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.student-history-container .modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.student-history-container .modal-close-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #fdcd03;
+    color: #000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.student-history-container .modal-close-button:hover {
+    background-color: #e6b800;
+}
+
+.student-history-container  .popup-x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+  }
+  
+.student-history-container  .popup-x:hover {
+    color: #000;
+  }
+  
+.student-history-container  .details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+.student-history-container  .details-column {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+ .student-history-container .modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+ .student-history-container .modal-close-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #fdcd03;
+    color: #000;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+ .student-history-container .modal-close-button:hover {
+    background-color: #e6b800;
+  }
+/* Text Styles */
+.student-history-container .text-primary {
+    color: #2c3e50;
+}
+
+.student-history-container .text-secondary {
+    color: #555;
+}
+
+.student-history-container .text-danger {
+    color: #e74c3c;
+}
+
+.student-history-container .text-success {
+    color: #2ecc71;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .student-history-container .student-history-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .student-history-card .history-info {
+        width: 100%;
+    }
+}
+
+.student-history-container .modal-content {
+    border-radius: 5px;
+    position: relative; /* This will allow the absolute positioning of the close button */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+ .student-history-container .popup-x {
+    position: absolute;  /* Absolute positioning for the close button */
+    top: 10px;
+    right: 10px;  /* Position it to the right of the modal */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+ .student-history-container .popup-x:hover {
+    color: red; /* Optional: Change color on hover */
+  }
+  
+  /* Image styling */
+ .student-history-container .modal-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  /* Flex container for Proof and QR images */
+  
+  /* Close button styling */
+ .student-history-container .modal-close-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+ .student-history-container .modal-close-button:hover {
+    background-color: #45a049;
+  }
+  
+ .student-history-container .status {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+ .student-history-container .status.waiting-for-parent {
+    background-color: #ffeb3b; /* Yellow for "Waiting for Parent" */
+    color: #333;
+  }
+  
+ .student-history-container .status.parent-approved {
+    background-color: #4caf50; /* Green for "Parent Approved" */
+    color: white;
+  }
+  
+ .student-history-container .status.warden-approved {
+    background-color: #2196f3; /* Blue for "Warden Approved" */
+    color: white;
+  }
+  
+ .student-history-container .status.arrived {
+    background-color: #f44336; /* Red for "Arrived" */
+    color: white;
+  }
+  
