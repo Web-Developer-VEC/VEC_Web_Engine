@@ -14,13 +14,13 @@ const VisionMission = ({ data }) => {
             <div className="col-md-6">
               <div className="about-department-text">
                 <h2>About the Department</h2>
-                <p>{data.about_department}</p>
+                <p>{data?.about_department}</p>
               </div>
             </div>
             <div className="col-md-6">
               <div className="about-department-image">
                 <img
-                  src={college}
+                  src={data?.department_image}
                   alt="Department of AI"
                   className="img-fluid rounded"
                 />
@@ -35,11 +35,11 @@ const VisionMission = ({ data }) => {
         <div className="col-md-6 d-flex align-items-stretch">
           <div className="section-card p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
-              <Eye size={32} className="text-primary me-3" /> {/* Vision Icon */}
+              <Eye size={32} className="me-3" /> {/* Vision Icon */}
               <h2>Department Vision</h2>
             </div>
-            <p>{data.vision}</p>
-            <blockquote className="vision-quote">{data.department_quotes}</blockquote>
+            <p>{data?.vision}</p>
+            <blockquote className="vision-quote">{data?.department_quotes}</blockquote>
           </div>
         </div>
 
@@ -47,7 +47,7 @@ const VisionMission = ({ data }) => {
         <div className="col-md-6 d-flex align-items-stretch">
           <div className="section-card p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
-              <Target size={32} className="text-primary me-3" /> {/* Mission Icon */}
+              <Target size={32} className="me-3" /> {/* Mission Icon */}
               <h2>Department Mission</h2>
             </div>
             <ul>

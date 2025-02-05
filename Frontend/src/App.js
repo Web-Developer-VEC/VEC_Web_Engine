@@ -39,6 +39,8 @@ import Dean from "./Components/Nav_Bar_Comp/dean.jsx";
 import CardPage from "./Components/Nav_Bar_Comp/admin.jsx";
 import ProudAlumni from "./Components/Nav_Bar_Comp/ProudAlumni.jsx";
 import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
+import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
+import IIC  from "./Components/iic.jsx";
 
 const GlobalStyle = createGlobalStyle`
   /* Global Cursor Style */
@@ -145,6 +147,7 @@ const App = () => {
                   <Route path="/nirf" element={<Nirf1 />} />
                   <Route path="/naac" element={<Naac1 />} />
                   <Route path="/nba" element={<Nba1 />} />
+                  <Route path="/iic" element={<IIC />} />
                   <Route path="/dept/:deptID" element={<Dept />} />
                   <Route path="/v_m" element={<Collegevisionmission />} />
                   <Route path="/reg" element={<REGULATION />} />
@@ -176,6 +179,7 @@ const App = () => {
                   <Route path="/admin" element={<CardPage />} />
                   <Route path="/proudalumni" element={<ProudAlumni />} />
                   <Route path="/principal" element={<Princ />} />
+                  <Route path="/hostel" element={<Hostel />} />
 
                 </Routes>
               </MainContentWrapper>

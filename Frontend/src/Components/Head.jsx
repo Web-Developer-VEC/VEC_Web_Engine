@@ -221,8 +221,7 @@ const Head = () => {
                     <button  onClick={() => navigate('/naac')}className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
                     <button  onClick={() => navigate('/nirf')}className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
                     {/* Updated version */}
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[5]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
+                    <button  onClick={() => navigate('/iic')}className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[9]}</p>
@@ -230,7 +229,7 @@ const Head = () => {
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[11]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[13]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[14]}</p>
+                    <button  onClick={() => navigate('/hostel')}className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
                         {socls.map((socl, i) => (
