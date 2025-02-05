@@ -3,11 +3,22 @@
   font-size: 18px;
   padding: 20px;
   line-height: 1.8;
-  background:  #D3D3D3;
-  border-left: 5px solid #D3D3D3;
+  background-color: #e2d68b;
+  
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s ease-in-out,box-shadow 0.3s ease-in-out;
+  cursor:pointer;
+  margin-top:20px;
+  width:95%;
+  margin-left:40px;
+  
+}
+
+.nirf-intro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 .nirf-about {
   display: flex;
@@ -84,7 +95,6 @@
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-.nir
 
 .nirf-year-button:hover {
   background-color: #333;
@@ -115,7 +125,7 @@
 }
 
 .nirf-action-button {
-  width: 160px;
+  min-width: 160px;
   padding: 15px 20px;
   font-size: 1.2rem;
   font-weight: bold;

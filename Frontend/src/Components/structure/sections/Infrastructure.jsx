@@ -2,65 +2,6 @@ import React from "react";
 import "./Infrastructure.scss";
 import lab from '../../Assets/college.jpeg';
 
-// const cards = [
-//   {
-//     title: "Mech lab",
-//     copy: "The Mechanical Lab provides modern equipment for hands-on learning in design, manufacturing, and thermal engineering.",
-//     button: "About lab",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/vec-Fmhel-174-1.jpg",
-//   },
-//   {
-//     title: "Communication Lab",
-//     copy: "The Communication Lab enhances language and presentation skills using advanced audio-visual tools.",
-//     button: "About Trips",
-//     imageUrl:
-//     "https://velammal.edu.in/wp-content/uploads/2021/09/newimage-300x200.png",
-//   },
-//   {
-//     title: "Library",
-//     copy: "The library offers a vast collection of books, journals, and digital resources, fostering research and learning in a quiet, modern space.",
-//     button: "About library",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/DSC_0162-1.jpg",
-//   },
-//   {
-//     title: "Mechanical Cell",
-//     copy: "The Mechanical Block houses advanced labs, classrooms, and workshops, providing students with practical knowledge in manufacturing, and innovation.",
-//     button: "About Dept",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/DSC_0124-1.jpg",
-//   },    
-//   {
-//     title: "Mechanical Cell",
-//     copy: "The Mechanical Block houses advanced labs, classrooms, and workshops, providing students with practical knowledge in manufacturing, and innovation.",
-//     button: "About Dept",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/DSC_0124-1.jpg",
-//   },
-//   {
-//     title: "Library",
-//     copy: "The library offers a vast collection of books, journals, and digital resources, fostering research and learning in a quiet, modern space.",
-//     button: "About library",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/DSC_0162-1.jpg",
-//   },  
-//   {
-//     title: "Mech lab",
-//     copy: "The Mechanical Lab provides modern equipment for hands-on learning in design, manufacturing, and thermal engineering.",
-//     button: "About lab",
-//     imageUrl:
-//       "https://velammal.edu.in/wp-content/uploads/2021/09/vec-Fmhel-174-1.jpg",
-//   },
-//   {
-//     title: "Communication Lab",
-//     copy: "The Communication Lab enhances language and presentation skills using advanced audio-visual tools.",
-//     button: "About Trips",
-//     imageUrl:
-//     "https://velammal.edu.in/wp-content/uploads/2021/09/newimage-300x200.png",
-//   },
-// ];
-
 const Infrastructure = ({data}) => {
   return (
     <div>

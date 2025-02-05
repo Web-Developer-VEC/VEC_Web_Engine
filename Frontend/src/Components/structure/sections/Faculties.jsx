@@ -8,25 +8,25 @@ const Faculties = ({ data }) => {
   }
 
   // Convert the object into an array if needed
-  const facultyArray = Object.values(data);
+  const facultyArray = data.faculty_members
 
   return (
     <div className={styles.app}>
       <h2>Faculties</h2>
       <div className={styles.imagegallery}>
-        {facultyArray.map((faculty, index) => (
+        {facultyArray?.map((faculty, index) => (
           <Image
             key={faculty.unique_id || index}
-            name={faculty.Name}
-            photo= {faculty.Photo}
+            name={faculty.name}
+            photo= {faculty.photo}
 
-            Designation={faculty.Designation}
-            Scholar={faculty["Google Scholar Profile"]}
-            Research={faculty["Research Gate"]}
-            Orchid={faculty["Orchid Profile"]}
-            Publon={faculty["Publon Profile"]}
-            Scopus={faculty["Scopus Author Profile"]}
-            Linkedin={faculty["LinkedIn Profile"]}
+            Designation={faculty.designation}
+            Scholar={faculty.profiles.google_scholar}
+            Research={faculty.profiles.research_gate}
+            Orchid={faculty.profiles.orchid}
+            Publon={faculty.profiles.publon}
+            Scopus={faculty.profiles.scopus}
+            Linkedin={faculty.profiles.linkedin}
           />
         ))}
       </div>
