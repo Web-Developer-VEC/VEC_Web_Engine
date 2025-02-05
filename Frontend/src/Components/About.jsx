@@ -4,8 +4,8 @@ import Tree from "./Assets/Banyan.jpg";
 
 const About = () => {
   return (
-    <div className='abt bg-white w-full font-popp overflow-hidden'>
-        <div className='max-w-[60%] px-12 subpixel-antialiased font-medium'>
+    <div className='abt flex mx-auto bg-white w-[95%] font-popp overflow-hidden'>
+        <div className='max-w-[90%] lg:max-w-[60%] px-12 subpixel-antialiased font-medium'>
           <h5 className='text-[2.5lvh]' style={{color:"maroon", marginTop:"40px"}}>A Journey of Thousand Miles Begins with a Single Step</h5>
           <br></br>
           <p className='text-[5lvh]'>Velammal Engineering College</p>
@@ -18,8 +18,8 @@ const About = () => {
                   <p>Velammal Engineering College was established in the year 1995-96 to impart quality education. It is a self-financing non-minority institution, affiliated to Anna University and approved by the All India Council for Technical Education (AICTE) and also an ISO-certified institution.</p>
               </div>
             </div>
-            <div className='lg:block hidden image'>
-          <img src={Tree} className='h-[100%] min-w-[25%]'  alt="Banyan Tree" />
+        <div className='lg:block hidden image'>
+          <img src={Tree} className='h-[100%] min-w-[75%] w-auto'  alt="Banyan Tree" />
         </div>
     </div>
   )

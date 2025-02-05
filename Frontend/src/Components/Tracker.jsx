@@ -86,7 +86,7 @@ const StatsGrid = () => {
   }, [isVisible]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-<div className="page-container flex justify-start text-white font-popp bg-black/30 backdrop-blur-[4px]">
+<div className="page-container flex -ml-16 lg:ml-0 justify-start text-white font-popp bg-black/30 backdrop-blur-[4px]">
 <div className="stats-grid-container mt-[5%]">
         <div className="stats-grid h-fit rounded-lg" ref={statsRef}>
           <div className="stat-item px-2">
