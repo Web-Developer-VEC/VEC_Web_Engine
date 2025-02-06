@@ -22,26 +22,21 @@ const DepartmentPage = () => {
   const [sectionData, setSectionData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("ajith",activeSection)
+  const [isMobile, setIsMobile] = useState(false);
 
+  console.log("ajith",activeSection)
   useEffect(() => {
-    const fetchSections = async () => {
-      try {
-        const response = await axios.get(`/api/${deptID}/sidebar`);
-        console.log("API Response:", response.data);
-        const validSections = response.data.content
-          .filter((section) => section.hascontent)
-          .map((section) => section.id);
-        
-        setAvailableSections(validSections);
-        setActiveSection(validSections[0] || null); // Set first available section
-      } catch (error) {
-        console.error("Error fetching sections:", error.message);
-        setError("Failed to fetch sections.");
-      }
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-    fetchSections();
-  }, [deptID]);
+  
+    handleResize(); // Call it immediately after defining it
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+
 
   useEffect(() => {
     if (!activeSection) return;
@@ -62,7 +57,24 @@ const DepartmentPage = () => {
     
     fetchData();
   }, [deptID, activeSection]);
-
+  useEffect(() => {
+    const fetchSections = async () => {
+      try {
+        const response = await axios.get(`/api/${deptID}/sidebar`);
+        console.log("API Response:", response.data);
+        const validSections = response.data.content
+          .filter((section) => section.hascontent)
+          .map((section) => section.id);
+        
+        setAvailableSections(validSections);
+        setActiveSection(validSections[0] || null); // Set first available section
+      } catch (error) {
+        console.error("Error fetching sections:", error.message);
+        setError("Failed to fetch sections.");
+      }
+    };
+    fetchSections();
+  }, [deptID]);
   const renderSection = () => {
     switch (activeSection) {
       case "HeadDepartment":
@@ -110,16 +122,19 @@ const DepartmentPage = () => {
         </div>
       </div>
 
-      {/* Main Layout */}
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row", // Sidebar on top in mobile, right in desktop
+        }}
+      >
         {/* Sidebar */}
         <Sidebar 
           sections={availableSections} 
           activeSection={activeSection} 
           setActiveSection={setActiveSection} 
         />
-        
-        {/* Content */}
+        {/* Main content */}
         <div style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
       </div>
     </div>
