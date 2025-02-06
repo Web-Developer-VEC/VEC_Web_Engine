@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,11 +6,10 @@ body {
   background-color: #f9f9f9;
 }
 
-.container{
+.container {
   display: flex;
-  background-color: transparent;
   flex-direction: column;
-  min-height: 100vh; /* Full height of the screen */
+  min-height: 100vh;
 }
 
 .de-container {
@@ -27,24 +27,28 @@ body {
   margin-bottom: 20px;
 }
 
+/* Heading */
 .de-heading {
   margin-bottom: 20px;
   color: #333;
   text-align: left;
-  font-size: 1.5rem; /* Larger heading size */
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
+/* Content Layout */
 .de-content {
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
+/* Profile Section */
 .de-profiles-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .de-profile {
@@ -52,16 +56,16 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fefefe;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .de-profile img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #ccc;
@@ -72,81 +76,52 @@ body {
   line-height: 1.4;
 }
 
+/* Roles Section */
 .de-roles-section {
   flex: 2;
-
 }
 
 .de-roles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic columns */
-  gap: 20px;
-  padding-left: 0; /* Remove default list padding */
-  list-style: none; /* Remove default bullet points */
-  text-align:left;
-  
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  list-style: none;
+  padding: 0;
 }
 
-/* Roles section container */
-.de-roles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between list items */
-}
-
-/* Role list items */
 .de-roles li {
-  flex: 1 1 auto; /* Allow items to grow or shrink naturally based on content */
-  box-sizing: border-box;
-  padding: 8px 8px 8px 24px; /* Add space for the indicator */
-  margin: 6px 0; /* Reduce vertical spacing */
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
   background: #f9f9f9;
-  border-radius: 6px; /* Optional: Smooth corners */
-  line-height: 1.4;
-  text-align: left;
-  position: relative; /* Required for the indicator */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Soft shadow */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-/* Indicator for list items */
 .de-roles li::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background-color:  #cbb811; /* Custom icon color */
-  border-radius: 50%; /* Circular icon */
-}
-
-/* Ensure text starts after the indicator */
-.de-roles li span {
-  display: inline-block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .de-roles li {
-    flex: 1 1 100%; /* Single-column layout on smaller screens */
-  }
+  width: 10px;
+  height: 10px;
+  background-color: #cbb811;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 /* Loading Screen */
 .loading-screen {
-  position: absolute; /* Position relative to the committee container */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   color: #333;
-  z-index: 10; /* Higher than committee content but lower than header/footer */
+  z-index: 10;
 }
 
 /* Spinner */
@@ -160,10 +135,51 @@ body {
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .de-container {
+    padding: 15px;
   }
-  100% {
-    transform: rotate(360deg);
+
+  .de-content {
+    flex-direction: column;
+  }
+
+  .de-profile img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .de-roles {
+    grid-template-columns: 1fr;
+  }
+
+  .de-roles li {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .de-box {
+    padding: 15px;
+  }
+
+  .de-profile img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .de-heading {
+    font-size: 1.3rem;
+  }
+
+  .de-roles li {
+    padding: 8px 12px;
   }
 }
