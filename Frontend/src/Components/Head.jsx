@@ -53,11 +53,11 @@ const Head = () => {
             {hrd: false, ttl: 'Electronics and Communication Engineering', sup: [], lnk: '/dept/009', deptID: "009",},
             {hrd: false, ttl: 'Electronics and Instrumentation Engineering', sup: [], lnk: '/dept/008', deptID: "008",},
             {hrd: false, ttl: 'Information Technology', sup: [], lnk: '/dept/011', deptID: "011",},
-            {hrd: false, ttl: 'Mechanical Engineering (ME)', sup: [], lnk: '/dept/013', deptID: "013",},
+            {hrd: false, ttl: 'Mechanical Engineering', sup: [], lnk: '/dept/013', deptID: "013",},
             {hrd: true, ttl:  'PG Courses', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
             {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
-            {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: '/dept/002', deptID: "001",}, //
+            {hrd: false, ttl: 'Master of Business Administration', sup: [], lnk: '/dept/002', deptID: "001",}, //
             {hrd: false, ttl: '', sup: [], lnk: ''},
             {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
             {hrd: false, ttl: 'Chemistry', sup: [], lnk: '/dept/003', deptID: "003",}, 

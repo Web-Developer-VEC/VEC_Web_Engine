@@ -23,6 +23,7 @@ const HeadDepartment = ({ data }) => {
 
   const {
     Name = departmentData.Name,
+    uid = departmentData.Unique_id,
     Qualification = [departmentData.Qualification],
     designation = departmentData.designation,
     Hod_message = departmentData.Hod_message,
@@ -44,7 +45,7 @@ const HeadDepartment = ({ data }) => {
           <h3 className={styles.messageTitle}>HOD's Message</h3>
           <p className={styles.messageBody}>{Hod_message}</p>
         </div>
-        <button className={styles.viewMoreButton}>View More</button>
+        <a className={styles.viewMoreButton} href={`/facultyprofile/${uid}`}>View More</a>
       </div>
 
       <div className={styles.imageColumn}>

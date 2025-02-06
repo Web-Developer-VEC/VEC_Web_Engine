@@ -3,6 +3,8 @@ import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 
 const Faculties = ({ data }) => {
+  console.log("Fac",data);
+  
   if (!data || !Array.isArray(data.faculty_members)) {
     return <div>No faculty data available.</div>;
   }
@@ -26,6 +28,7 @@ const Faculties = ({ data }) => {
               Scopus={facultyArray[0].profiles.scopus}
               Linkedin={facultyArray[0].profiles.linkedin}
               firstTile={true}
+              uid={facultyArray[0].unique_id}
             />
           </div>
         )}
@@ -43,6 +46,7 @@ const Faculties = ({ data }) => {
               Publon={faculty.profiles.publon}
               Scopus={faculty.profiles.scopus}
               Linkedin={faculty.profiles.linkedin}
+              uid={faculty.unique_id}
             />
           ))}
         </div>
