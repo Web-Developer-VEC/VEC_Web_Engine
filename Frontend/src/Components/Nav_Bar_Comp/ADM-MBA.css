@@ -112,16 +112,23 @@ h5, h6 {
       }
     }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
     .mba-contents,
     .mba-container {
       padding: 10px;
+      max-width: 100%;
+    }
+  
+    .mba-intake-table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
     }
   
     .mba-intake-table th,
     .mba-intake-table td {
       padding: 8px;
+      font-size: 14px;
     }
   
     .mba-intake-table th {

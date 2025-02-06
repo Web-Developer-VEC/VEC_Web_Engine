@@ -274,82 +274,155 @@
   }
 
   .sidebar {
-    width: 100%; /* Full width for sidebar on mobile */
+    width: 100%;
   }
 
   .messageContent {
-    flex-direction: column; /* Ensure stacking */
-    gap: 10px; /* Further reduce gap */
+    flex-direction: column;
   }
 
-  .textColumn, .imageColumn {
-    width: 100%; /* Full width for both */
-  }
-
-  .textColumn {
-    padding: 10px; /* Adjust padding */
-  }
-
-  .hodImage {
-    max-width: 100%; /* Ensure the image is responsive */
-    margin: 0 auto;
-  }
-
-  .socialLinks {
-    font-size: 16px; /* Smaller icons for mobile */
-  }
-
-  .viewMoreButton {
-    padding: 8px 14px; /* Smaller button */
-    font-size: 12px; /* Adjust font size */
+  .textColumn,
+  .imageColumn {
+    width: 100%;
   }
 
   .overlayText {
-    font-size: 30px; /* Adjust header font size for mobile */
+    font-size: 32px;
   }
 
   .messageHeader {
-    font-size: 24px; /* Adjust header font size for mobile */
+    font-size: 28px;
   }
 
   .messageHeader2 {
-    font-size: 20px; /* Smaller sub-header */
-  }
-
-  .hodDesignation {
-    font-size: 16px; /* Smaller designation font size */
+    font-size: 22px;
   }
 
   .messageTitle {
-    font-size: 20px; /* Smaller title font size */
+    font-size: 24px;
   }
 
   .messageBody {
-    font-size: 14px; /* Adjust body font size */
-    line-height: 1.5; /* Adjust line-height for readability */
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
 
-  .hodMessage h3 {
-    font-size: 18px; /* Smaller heading */
+  .header {
+    height: 20vh;
+    
   }
 
-  .hodInfo {
-    font-size: 14px; /* Smaller font for additional info */
-  }
-
-  .socialLinks {
-    font-size: 16px; /* Smaller font for social icons */
+  .sidebar {
+    padding: 15px;
   }
 
   .sidebar ul li button {
-    font-size: 12px; /* Adjust button font size */
+    font-size: 14px;
+  }
+
+  .messageContent {
+    gap: 10px;
+  }
+
+  .overlayText {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+
+  .messageHeader {
+    font-size: 22px;
+  }
+
+  .messageHeader2 {
+    font-size: 18px;
+  }
+
+  .hodDesignation {
+    font-size: 16px;
+  }
+
+  .messageTitle {
+    font-size: 20px;
+  }
+
+  .messageBody {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .hodMessage h3 {
+    font-size: 18px;
+  }
+
+  .socialLinks {
+    font-size: 16px;
+  }
+
+  .viewMoreButton {
+    padding: 8px 14px;
+    font-size: 14px;
   }
 
   .sidebar ul li {
-    margin-bottom: 12px; /* Reduce space between sidebar items */
+    margin-bottom: 12px;
   }
 
   .sidebar ul li .icon {
-    font-size: 16px; /* Adjust icon size */
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 15vh;
+    margin-top: 13%;
+  }
+  .overlayText {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .sidebar {
+    padding: 10px;
+  }
+
+  .sidebar ul li button {
+    font-size: 12px;
+  }
+
+  .sidebar ul li .icon {
+    font-size: 16px;
+  }
+
+  .messageHeader {
+    font-size: 20px;
+  }
+
+  .messageHeader2 {
+    font-size: 16px;
+  }
+
+  .hodDesignation {
+    font-size: 14px;
+  }
+
+  .messageTitle {
+    font-size: 18px;
+  }
+
+  .messageBody {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .viewMoreButton {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
