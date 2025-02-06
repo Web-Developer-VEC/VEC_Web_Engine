@@ -42,6 +42,8 @@ import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
 import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
 import IIC  from "./Components/iic.jsx";
 import Facultyprofile from './Components/structure/sections/Facultyprofile.jsx'
+import SportsPage from "./Components/Nav_Bar_Comp/sports/SportsPage.jsx";
+
 
 const GlobalStyle = createGlobalStyle`
   /* Global Cursor Style */
@@ -62,9 +64,11 @@ const AppContainer = styled.div`
 
 const MainContentWrapper = styled.div`
   flex: 1;
+`;
+const MainContentWrapper1= styled.div`
+  flex: 1;
   padding-top: 9%;
 `;
-
 const Nirf1 = () => {
   const footerRef = useRef(null);
 
@@ -142,7 +146,12 @@ const App = () => {
           {/* Conditionally render Head and Footer */}
           {window.location.pathname !== "/" && (
             <>
-              <Head />
+              <Head />              
+              <MainContentWrapper1>
+              <Routes>
+              <Route path="/sports" element={<SportsPage/>} />
+              </Routes>
+              </MainContentWrapper1>
               <MainContentWrapper>
                 <Routes>
                   <Route path="/nirf" element={<Nirf1 />} />
