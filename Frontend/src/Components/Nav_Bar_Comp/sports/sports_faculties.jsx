@@ -45,7 +45,7 @@ const Sportsfaculties = () => {
   return (
     <div className={styles.app}>
     <h2 style={{ color: 'black' }}>Faculties</h2>
-    <div className={styles.imagegallery}>
+    <div className={styles.imagegallery} >
         {facultyData.map((faculty) => (
           <Image
             key={faculty.unique_id}
