@@ -138,10 +138,15 @@
 .naac-year-button.active {
   background-color: #FDCC03;
   color: #222;
+  /* border: 3px solid #f8961e; */
+  transform: scale(1.05);
 }
 
 .naac-year-button:hover {
   background-color: #333;
+  color: #FDCC03;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* NAAC Details Panel */

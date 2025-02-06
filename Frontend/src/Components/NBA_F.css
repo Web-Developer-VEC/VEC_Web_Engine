@@ -107,8 +107,9 @@ body {
 }
 
 .nba-year-button.active {
-  background-color: #222;
-  color: #f8961e;
+  background-color: #fff;
+  border: 3px solid #f8961e;
+  color: black;
   transform: scale(1.05);
 }
 

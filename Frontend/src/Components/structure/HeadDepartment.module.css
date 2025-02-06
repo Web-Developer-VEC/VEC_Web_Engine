@@ -206,6 +206,8 @@
   border: none;
   border-radius: 5px;
   transition: background 0.3s ease;
+  width: fit-content;
+  text-decoration: none;
 }
 
 .viewMoreButton:hover {

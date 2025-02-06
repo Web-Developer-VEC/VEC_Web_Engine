@@ -41,6 +41,7 @@ import ProudAlumni from "./Components/Nav_Bar_Comp/ProudAlumni.jsx";
 import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
 import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
 import IIC  from "./Components/iic.jsx";
+import Facultyprofile from './Components/structure/sections/Facultyprofile.jsx'
 
 const GlobalStyle = createGlobalStyle`
   /* Global Cursor Style */
@@ -157,6 +158,7 @@ const App = () => {
                     element={<Conference />}
                   />
                   <Route path="//patent-details" element={<Conference />} />
+                  <Route path="/facultyprofile/:uid" element={<Facultyprofile/>}></Route>
                   <Route path="/books" element={<Conference />} />
                   <Route path="/conferences" element={<Conference />} />
                   <Route path="/consultancy" element={<Conference />} />
