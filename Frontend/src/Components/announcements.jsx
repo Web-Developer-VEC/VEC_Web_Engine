@@ -64,25 +64,24 @@ const Announcements1 = () => {
   };
 
   return (
-    <div className="news font-popp">
-      <div className="head"><p className="text-[3.5lvh]">News</p></div>
-      <div className="relative announcement flex flex-wrap flex-row min-h-[50lvh] max-h-[60lvh] w-full
-        border-y-4 [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1]">
-        <div className="relative blur-lg lg:blur-0 basis-1/2 lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
+    <div className="news font-popp mb-[60vh] lg:mb-0">
+      <p className="text-xl text-amber-600 ml-6">News</p>
+      <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] max-h-[60lvh] w-full">
+        <div className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
           <div className="cont w-[105%] absolute h-full"></div>
           <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%]" src={img1} alt="college" />
         </div>
 
-        <div className="main absolute lg:relative lg:basis-1/3 w-[50%]">
+        <div className="main relative lg:basis-1/3 w-full">
           {spcannouncements.map((item) => (
             <div key={item.title}>
-              <h2 className="text-[3lvh]">{item.title}</h2>
-              <p className="text-[2lvh]">{item.content}</p>
+              <h2 className="text-3xl">{item.title}</h2>
+              <p className="text-xl">{item.content}</p>
             </div>
           ))}
-          <ul>
+          <ul className="list-none">
             {content?.map((item, index) => (
-              <li className="text-[2lvh] mb-2" key={index}>
+              <li className="text-xl mb-2" key={index}>
                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy" />
                 {item}
               </li>
@@ -92,16 +91,16 @@ const Announcements1 = () => {
         </div>
 
         {/* Announcements Section */}
-        <div className="tiles justify-center basis-1/2 lg:basis-1/4 grow w-full">
-          <div className="relative w-[65%] lg:w-[95%] h-[75%] right-32 lg:right-10"
+        <div className="tiles justify-center lg:basis-1/4 w-full h-[50vh]">
+          <div className="relative size-full right-6"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}>
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
               <div className="card-front">
-                <h2 className='text-[3lvh]'>Announcements</h2>
+                <h2 className='text-3xl'>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i} className='text-[2lvh]'>
+                    <h4 key={i} className='text-xl'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
                     </h4>
@@ -120,8 +119,8 @@ const Announcements1 = () => {
                 </div>
               </div>
             </div>
-            <button className="absolute flip-btn bottom-0 left-3 text-6xl lg:text-3xl" onClick={handleManualFlip}> &#8617;</button>
-            <button className="absolute flip-btn bottom-0 -right-16 text-6xl lg:text-3xl" onClick={handleManualFlip}> &#8618;</button>
+            <button className="absolute flip-btn bottom-0 left-3 text-3xl lg:text-3xl" onClick={handleManualFlip}> &#8617;</button>
+            <button className="absolute flip-btn bottom-0 -right-10 text-3xl lg:text-3xl" onClick={handleManualFlip}> &#8618;</button>
           </div>
 
           {/* Flip Control Buttons */}

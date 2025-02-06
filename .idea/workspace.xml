@@ -6,21 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/About.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/About.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/BootUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/BootUp.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Events.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Events.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Pages/AbtUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Pages/AbtUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Tracker.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Tracker.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/announcements.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/announcements.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Landing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -100,6 +100,9 @@
       <workItem from="1737695418895" duration="591000" />
       <workItem from="1738639706442" duration="2127000" />
       <workItem from="1738726420320" duration="16640000" />
+      <workItem from="1738813145521" duration="4383000" />
+      <workItem from="1738818785369" duration="8397000" />
+      <workItem from="1738850269326" duration="6557000" />
     </task>
     <servers />
   </component>

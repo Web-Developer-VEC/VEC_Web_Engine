@@ -51,22 +51,22 @@ const ImgSld = () => {
 
     return (
         <div className='w-[500%]'>
-            <div className="flex h-[35vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent w-[100vw]">
+            <div className="flex h-[30vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent w-[100vw]">
                 <video
-                    className='min-h-[50vmax] w-full bg-center fixed top-0 z-10'
+                    className='min-h-[50vmax] w-full bg-center fixed -top-10 z-10'
                     autoPlay loop muted ref={videoRef1} id='BgVid'
                     playsInline>
                     <source src={Vide} type='video/mp4'/>
                 </video>
 
-                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] lg:right-[1vmax] right-[5vmax]
+                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
                     <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
-                                animate-[LslideIn_40s_ease-in_infinite] p-5 border-y-2 
+                                animate-[LslideIn_40s_ease-in_infinite] p-4 border-y-2 
                                 [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
-                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[1.7vmax]`}
+                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[2vmax]`}
                                style={{animationDelay: `${i * 7}s`}}
                                key={i}
                             >

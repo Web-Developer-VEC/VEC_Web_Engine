@@ -56,15 +56,15 @@ const CourseCarousel = ({ courses }) => {
 
   return (
     <div>
-      <div className="grid w-full relative h-fit border-2 border-black z-10 p-10">
+      <div className="grid w-full relative h-fit z-10 lg:py-8">
         <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 h-[300px] items-center justify-center
-          flex mb-10 ml-[42vw] lg:-ml-10"
+          flex mb-1 -ml-10 lg:-ml-[7.5%]"
           style={{ transformStyle: 'preserve-3d', perspective: '600px' }}>
 
           {/* Left Arrow Button */}
           <button
-            className="rounded-full absolute top-[50%] left-[-45%] transform -translate-y-1/2 w-[3vmax]
-              outline outline-offset-2 pr-2 h-[3vmax] ease-in transition-colors duration-300"
+            className="rounded-full absolute top-[50%] left-[15%] transform -translate-y-1/2 w-[3vmax] z-[500]
+              outline outline-offset-2 h-[20%] ease-in transition-colors duration-300"
             style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos - 1)}>
             <ChevronLeftIcon className="size-max text-white"></ChevronLeftIcon>
@@ -72,10 +72,10 @@ const CourseCarousel = ({ courses }) => {
 
           {courses.map((cur, i) => (
             <div key={i} className="group absolute overflow-hidden transition-all duration-[0.25s] ease
-              rounded-xl hover:[transform:rotateY(90deg)]"
+              rounded-xl hover:[transform:rotateY(90deg)] ml-[20vw]"
               style={{
-                transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-500 * (pos - (i + 1))}px)`,
-                zIndex: `${Math.max(((pos - (i + 1)) * -1), (pos - (i + 1))) + 100}`
+                transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-20 * (pos - (i + 1))}vmax)`,
+                zIndex: `${Math.max(((pos - (i + 1)) * -1), (pos - (i + 1))) + 10}`
               }}
               onMouseEnter={() => setPause(true)} onMouseLeave={() => setPause(false)}>
 
@@ -102,15 +102,15 @@ const CourseCarousel = ({ courses }) => {
 
           {/* Right Arrow Button */}
           <button
-            className="rounded-full absolute top-[50%] -right-[45%] lg:right-4 transform -translate-y-1/2 w-[3vmax]
-            outline outline-offset-2 pl-2 h-[3vmax] ease-in transition-colors duration-300"
+            className="rounded-full absolute top-[50%] -right-[5%] lg:right-4 transform -translate-y-1/2 w-[3vmax]
+            outline outline-offset-2 h-[20%] ease-in transition-colors duration-300"
             style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos + 1)}>
             <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
           </button>
         </div>
 
-        <div className="flex justify-center gap-4 w-[100vmax]">
+        <div className="flex flex-wrap px-12 mb-4 justify-center gap-4 w-screen">
           {rdb.map((btn, i) => (
             <button key={i} className={`font-comf text-[1.5vmax] px-2 ${(pos === i + 1) ? 'border-b-2' : ''}`}
               style={{ color: btn.clr, borderBottomColor: btn.clr }}
