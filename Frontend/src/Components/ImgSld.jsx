@@ -53,7 +53,7 @@ const ImgSld = () => {
         <div className='w-[500%]'>
             <div className="flex h-[30vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent w-[100vw]">
                 <video
-                    className='min-h-[50vmax] w-full bg-center fixed -top-10 z-10'
+                    className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef1} id='BgVid'
                     playsInline>
                     <source src={Vide} type='video/mp4'/>

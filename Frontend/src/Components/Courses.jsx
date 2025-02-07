@@ -82,7 +82,6 @@ const CourseCarousel = ({ courses }) => {
               <div className={`relative text-center w-[30vmax] h-[17.5vmax] bg-cover bg-center transition-all duration-[2s]
                 ${(pos === i + 1) ? 'focs' : ''} rounded-[20px] overflow-y-hidden group`} onClick={() => pos_hdl(i + 1)}>
                 <div className="absolute bg-black z-[-10] w-[30vmax] h-[17.5vmax] [transform:rotateY(180deg),translateZ(-10px)]">
-                  Hehe
                 </div>
 
                 <video className="absolute w-full h-fit" id={`Cor${i + 1}`} muted playsInline loop>

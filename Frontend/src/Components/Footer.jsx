@@ -35,7 +35,7 @@ const Footer = forwardRef ((props, ref) => {
                     title="Google Maps"
                 ></iframe>
             </div>
-            <div className="logo-container">
+            <div className="logo-container mt-6">
                 <img src={insta} alt="Insta"/>
                 <img src={linkedin} alt="linkedin"/>
                 <img src={youtube} alt="youtube"/>

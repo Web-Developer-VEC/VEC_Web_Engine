@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="">
+    <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Final Fork Up of the day">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/About.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Events.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Events.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Tracker.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Tracker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/announcements.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/announcements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Landing.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,11 +91,25 @@
       <workItem from="1738726420320" duration="16640000" />
       <workItem from="1738813145521" duration="4383000" />
       <workItem from="1738818785369" duration="8397000" />
-      <workItem from="1738850269326" duration="6557000" />
+      <workItem from="1738850269326" duration="7238000" />
+      <workItem from="1738898709447" duration="1360000" />
     </task>
+    <task id="LOCAL-00001" summary="Final Fork Up of the day">
+      <option name="closed" value="true" />
+      <created>1738858389836</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738858389836</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Final Fork Up of the day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Fork Up of the day" />
   </component>
 </project>
