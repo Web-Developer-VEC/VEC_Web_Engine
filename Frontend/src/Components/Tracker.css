@@ -16,12 +16,12 @@
 
 .stats-grid {
   display: flex; 
-  /*justify-content: space-between; !* Space out the items evenly *!*/
-  /*align-items: top;*/
-  /*gap: 250px; */
+  justify-content: space-between; /* Space out the items evenly */
+  align-items: top;
+  gap: 250px; 
   /* margin-left: 40px; */
   /* border-radius: 12px; */
-  max-width: 100%;
+  max-width: 90%;
 }
 
 .stat-item {

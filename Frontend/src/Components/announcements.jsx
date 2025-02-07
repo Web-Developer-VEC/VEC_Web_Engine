@@ -64,24 +64,24 @@ const Announcements1 = () => {
   };
 
   return (
-    <div className="news font-popp mb-[60vh] lg:mb-0">
-      <p className="text-xl text-amber-600 ml-6">News</p>
-      <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] max-h-[60lvh] w-full">
-        <div className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
+    <div className="news font-popp">
+      <div className="head"><p className="text-[3.5lvh]">News</p></div>
+      <div className="announcement flex flex-row max-h-[60lvh]">
+        <div className="relative min-w-[35%]">
           <div className="cont w-[105%] absolute h-full"></div>
           <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%]" src={img1} alt="college" />
         </div>
 
-        <div className="main relative lg:basis-1/3 w-full">
+        <div className="main w-[40%]">
           {spcannouncements.map((item) => (
             <div key={item.title}>
-              <h2 className="text-3xl">{item.title}</h2>
-              <p className="text-xl">{item.content}</p>
+              <h2 className="text-[3lvh]">{item.title}</h2>
+              <p className="text-[2lvh]">{item.content}</p>
             </div>
           ))}
-          <ul className="list-none">
+          <ul>
             {content?.map((item, index) => (
-              <li className="text-xl mb-2" key={index}>
+              <li className="text-[2lvh] mb-2" key={index}>
                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy" />
                 {item}
               </li>
@@ -91,16 +91,18 @@ const Announcements1 = () => {
         </div>
 
         {/* Announcements Section */}
-        <div className="tiles justify-center lg:basis-1/4 w-full h-[50vh]">
-          <div className="relative size-full right-6"
+        <div className="tiles">
+          <div
+            className="card right-[10%]"
             onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}>
+            onMouseLeave={() => setHovered(false)}
+          >
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
               <div className="card-front">
-                <h2 className='text-3xl'>Announcements</h2>
+                <h2>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i} className='text-xl'>
+                    <h4 key={i}>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
                     </h4>
@@ -108,10 +110,10 @@ const Announcements1 = () => {
                 </div>
               </div>
               <div className="card-back">
-                <h2 className='text-[3lvh]'>Announcements</h2>
+                <h2>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i + 5} className='text-[2lvh]'>
+                    <h4 key={i + 5}>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
                     </h4>
@@ -119,8 +121,10 @@ const Announcements1 = () => {
                 </div>
               </div>
             </div>
-            <button className="absolute flip-btn bottom-0 left-3 text-3xl lg:text-3xl" onClick={handleManualFlip}> &#8617;</button>
-            <button className="absolute flip-btn bottom-0 -right-10 text-3xl lg:text-3xl" onClick={handleManualFlip}> &#8618;</button>
+            <div className="flip-buttons">
+              <button className="flip-btn" onClick={handleManualFlip}> &#8617;</button>
+              <button className="flip-btn" onClick={handleManualFlip}> &#8618;</button>
+            </div>
           </div>
 
           {/* Flip Control Buttons */}
