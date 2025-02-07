@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Pages/AbtUs.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/VecCur.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/VecCur.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.js" afterDir="false" />
+    <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Final Fork Up of the day">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Courses.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +48,15 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Leroy/ReactProjects/VEC_Final&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Forked-Up&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Leroy/ReactProjects/Velammal-Engineering-College-Backend-main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -85,10 +83,33 @@
       <updated>1736485835224</updated>
       <workItem from="1736485836278" duration="1528000" />
       <workItem from="1736518329981" duration="4220000" />
+      <workItem from="1736830091530" duration="596000" />
+      <workItem from="1737613338730" duration="4329000" />
+      <workItem from="1737650956005" duration="1184000" />
+      <workItem from="1737695418895" duration="591000" />
+      <workItem from="1738639706442" duration="2127000" />
+      <workItem from="1738726420320" duration="16640000" />
+      <workItem from="1738813145521" duration="4383000" />
+      <workItem from="1738818785369" duration="8397000" />
+      <workItem from="1738850269326" duration="7238000" />
+      <workItem from="1738898709447" duration="1360000" />
     </task>
+    <task id="LOCAL-00001" summary="Final Fork Up of the day">
+      <option name="closed" value="true" />
+      <created>1738858389836</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738858389836</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Final Fork Up of the day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Fork Up of the day" />
   </component>
 </project>

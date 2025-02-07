@@ -161,10 +161,11 @@ const Head = () => {
                             <span className="font-rome text-black text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">The Wheel of Knowledge rolls on!</span>
                         </div>
                     </a>
-                    <div class="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2 lg:max-w-[17.5vw] max-w-[20.5vw] ml-2 sm:flex hidden">
+                    <div class="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
+                        lg:max-w-[17.5vw] max-w-[40%] ml-2 flex">
                         {nacs.map((nac, i) => (
                             <div class="duration-200 self-center ease-linear" data-carousel-item>
-                                <img src={nac} class="block max-h-[4vmax] mt-2 h-full w-auto p-1" alt="naac" key="naac" />
+                                <img src={nac} class="block max-h-[5vmax] mt-2 h-full w-auto p-1" alt="naac" key="naac" />
                             </div>
                         ))}
                     </div>
@@ -214,9 +215,10 @@ const Head = () => {
                         {/* </div> */}
                     </div>
                 </div>
-                <div className='flex font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem] text-slate-950 rounded-b-lg transition-all'>
-                    <EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[0]}</p>
-                    <PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit md:block hidden'>{hdrs[1]}</p>
+                <div className='hidden lg:flex font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem]
+                    text-slate-950 rounded-b-lg transition-all'>
+                    <EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[0]}</p>
+                    <PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[1]}</p>
                     <button  onClick={() => navigate('/nba')}className=' mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
                     <button  onClick={() => navigate('/naac')}className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
                     <button  onClick={() => navigate('/nirf')}className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
