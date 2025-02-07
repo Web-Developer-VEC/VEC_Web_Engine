@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileAlt,
@@ -9,114 +10,117 @@ import {
   faChartBar,
   faCogs,
   faCodeBranch,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import "./RD.css"; // Use your existing CSS
+import "./RD.css";
+import Conference from "./Conference";
 
-const Research= () => {
-  const [selectedYear, setSelectedYear] = useState("2022-2023");
+const Research = ({ data }) => {
+  const [selectedYear, setSelectedYear] = useState("2022-23");
+  const [yearData, setYearData] = useState(null);
+  const [selectedAction, setSelectedAction] = useState(null);
+  const [selectedActionData, setSelectedActionData] = useState(null);
 
-  // Action to Icon Mapping
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/001/research/${selectedYear}`);
+        setYearData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchData();
+  }, [selectedYear]);
+
+  // Extracting years
+  const years = data?.data?.data?.map((entry) => entry.year);
+
+  // Extract available actions
+  const availableActions = yearData
+    ? yearData.docs.flatMap((doc) => Object.keys(doc))
+    : [];
+
+  // Icons for actions
   const actionIcons = {
-    "FUNDED PROPOSALS": faFileAlt,
-    "JOURNAL PUBLICATIONS": faBook,
-    "PATENT DETAILS": faClipboard,
-    "BOOK/BOOK CHAPTERS": faBook,
-    "INTERNATIONAL / NATIONAL CONFERENCES": faChartBar,
-    "CONSULTANCY": faCogs,
-    "INTERNSHIP": faIndustry,
-    "PRODUCT DEVELOPMENT": faLightbulb,
-    "START-UP / TECHNOLOGY TRANSFER": faCodeBranch,
-  };
-
-  // Yearly data with dynamic actions
-  const yearDetails = {
-    "2022-2023": {
-      actions: {
-        "FUNDED PROPOSALS": "/funded-proposals",
-        "JOURNAL PUBLICATIONS": "/journal-publications",
-        "PATENT DETAILS": "/patent-details",
-        "BOOK/BOOK CHAPTERS": "/books",
-        "INTERNATIONAL / NATIONAL CONFERENCES": "/conferences",
-        "CONSULTANCY": "/consultancy",
-        "INTERNSHIP": "/internship",
-        "PRODUCT DEVELOPMENT": "/product-development",
-      },
-    },
-    "2023-2024": {
-      actions: {
-        "FUNDED PROPOSALS": "/funded-proposals-2023",
-        "JOURNAL PUBLICATIONS": "/journal-publications-2023",
-        "PATENT DETAILS": "/patent-details-2023",
-        "BOOK/BOOK CHAPTERS": "/books-2023",
-        "INTERNATIONAL / NATIONAL CONFERENCES": "/conferences-2023",
-        "CONSULTANCY": "/consultancy-2023",
-        "INTERNSHIP": "/internship-2023",
-        "PRODUCT DEVELOPMENT": "/product-development-2023",
-        "START-UP / TECHNOLOGY TRANSFER": "/startups",
-      },
-    },
-    "2024-2025": {
-      actions: {
-        "FUNDED PROPOSALS": "/funded-proposals-2024",
-        "JOURNAL PUBLICATIONS": "/journal-publications-2024",
-        "PATENT DETAILS": "/patent-details-2024",
-        "BOOK/BOOK CHAPTERS": "/books-2024",
-        "INTERNATIONAL / NATIONAL CONFERENCES": "/conferences-2024",
-        "CONSULTANCY": "/consultancy-2024",
-        "INTERNSHIP": "/internship-2024",
-        "PRODUCT DEVELOPMENT": "/product-development-2024",
-        "START-UP / TECHNOLOGY TRANSFER": "",
-      },
-    },
+    FUNDEDPROPOSALS: faFileAlt,
+    JOURNALPUBLICATIONS: faBook,
+    PATENTDETAILS: faClipboard,
+    BOOKBOOKCHAPTERS: faBook,
+    INTERNATIONALNATIONALCONFERENCES: faChartBar,
+    CONSULTANCY: faCogs,
+    INTERNSHIP: faIndustry,
+    PRODUCTDEVELOPMENT: faLightbulb,
+    STARTUPTECHNOLOGYTRANSFER: faCodeBranch,
   };
 
   const handleYearClick = (year) => {
-    setSelectedYear(year); // Set the selected year
+    setSelectedYear(year);
+    setSelectedAction(null);
+    setSelectedActionData(null);
   };
 
-  const handleActionClick = (link) => {
-    window.location.href = link; // Redirect to the specified URL
+  const handleActionClick = (actionKey) => {
+    setSelectedAction(actionKey);
+    const actionData = yearData?.docs
+      .map((doc) => doc[actionKey])
+      .filter(Boolean)
+      .flat(); // Merge all matching entries
+    setSelectedActionData(actionData || []);
+  };
+
+  const handleBack = () => {
+    setSelectedAction(null);
+    setSelectedActionData(null);
   };
 
   return (
     <div className="Rd-page">
-      {/* Intro Section */}
       <div className="RD-intro">
         <h1 className="RD-header">RESEARCH DATA</h1>
       </div>
 
-      {/* Year Buttons */}
-      <div className="RD-years-horizontal">
-        {Object.keys(yearDetails)
-          .sort((a, b) => b - a) // Sort years in descending order
-          .map((year) => (
-            <button
-              key={year}
-              className={`RD-year-button ${selectedYear === year ? "active" : ""}`}
-              onClick={() => handleYearClick(year)} // Set selected year when clicked
-            >
-              {year}
-            </button>
-          ))}
-      </div>
-
-      {/* Actions Section */}
-      <div className="RD-content">
-        <div className="RD-details">
-          <div className="RD-year-actions">
-            {Object.entries(yearDetails[selectedYear]?.actions).map(([action, link]) => (
-              <div
-                key={action}
-                className="RD-action-button"
-                onClick={() => handleActionClick(link)} // Redirect on click
+      {selectedAction ? (
+        // Show selected component only
+        <div className="RD-action-content">
+          <button className="RD-back-button" onClick={handleBack}>
+            <FontAwesomeIcon icon={faArrowLeft} /> Back
+          </button>
+          <Conference data={selectedActionData} action={selectedAction} />
+        </div>
+      ) : (
+        // Show year and action selection
+        <>
+          <div className="RD-years-horizontal">
+            {years?.map((year) => (
+              <button
+                key={year}
+                className={`RD-year-button ${selectedYear === year ? "active" : ""}`}
+                onClick={() => handleYearClick(year)}
               >
-                <FontAwesomeIcon icon={actionIcons[action]} style={{ marginRight: "10px" }} />
-                {action}
-              </div>
+                {year}
+              </button>
             ))}
           </div>
-        </div>
-      </div>
+
+          <div className="RD-content">
+            <div className="RD-details">
+              <div className="RD-year-actions">
+                {availableActions.map((action) => (
+                  <div
+                    key={action}
+                    className={`RD-action-button ${selectedAction === action ? "active" : ""}`}
+                    onClick={() => handleActionClick(action)}
+                  >
+                    <FontAwesomeIcon icon={actionIcons[action.replace(/[_-]/g,'')]} style={{ marginRight: "10px" }} />
+                    {action.replace(/_/g, " ")}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

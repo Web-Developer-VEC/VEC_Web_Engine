@@ -1,0 +1,133 @@
+/* General styles (for desktop) */
+.Management {
+    display: block; /* Default layout for desktop */
+}
+
+.Management h1{
+    color: #444;
+    text-align: center;
+}
+
+.Management div {
+    padding: 20px;
+    height: 100%;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.Management .Founder img{
+    height: max-content;
+}
+.Management .Chairman {
+    height:300px;
+}
+.Management div img {
+    width: 500px;
+    height: 250px;
+    float: left; /* Keep the floated layout for desktop */
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.Management div p {
+    line-height: 2;
+    color: #444;
+}
+
+.Management div h2 {
+    color: #444;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .Management div {
+        width: 95%;
+        max-width: 900px;
+        padding: 18px;
+        margin: 15px auto;
+    }
+
+    .Management div img {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        float: none;
+        display: block;
+        margin: 0 auto 12px;
+    }
+
+    .Management div h2 {
+        text-align: center;
+        font-size: 1.6em;
+    }
+
+    .Management div p {
+        text-align: justify;
+        font-size: 1em;
+        line-height: 1.8;
+    }
+
+    .Management .Chairman {
+        height: auto;
+    }
+}
+
+/* Mobile - Tablets & Small Laptops */
+@media screen and (max-width: 768px) {
+    .Management {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .Management div {
+        width: 95%;
+        max-width: 700px;
+        padding: 16px;
+        margin: 15px 0;
+    }
+
+    .Management div img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    .Management div h2 {
+        font-size: 1.4em;
+    }
+
+    .Management div p {
+        font-size: 0.95em;
+        line-height: 1.7;
+    }
+
+    .Management .Chairman {
+        height: auto;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 480px) {
+    .Management div {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .Management div img {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .Management div h2 {
+        font-size: 1.2em;
+    }
+
+    .Management div p {
+        font-size: 0.9em;
+        line-height: 1.6;
+    }
+}

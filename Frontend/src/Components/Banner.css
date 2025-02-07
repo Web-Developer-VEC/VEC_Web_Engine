@@ -1,0 +1,138 @@
+/* Banner Wrapper */
+.banner {
+    position: relative;
+    width: 100%;
+    height:fit-content;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: hidden;
+  }
+  
+  /* Parallax Background */
+  .banner-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  
+  /* Overlay */
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+  }
+  
+  /* Content */
+  .banner-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 50px;
+    color: white;
+  }
+  
+  /* Header */
+/* Header */
+.banner-header {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(to right, #ff7f50, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* animation: glow 2s infinite alternate; */
+}
+
+/* @keyframes glow {
+  0% {
+    text-shadow: 0 2px 5px rgba(255, 127, 80, 0.6);
+  }
+  100% {
+    text-shadow: 0 5px 15px rgba(255, 127, 80, 1);
+  }
+} */
+
+  /* Underline */
+  .banner-underline {
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(to right, #ff7f50, #ffd700);
+    margin: 20px 0;
+    transform-origin: left;
+  }
+  
+  /* Subheader */
+  .banner-subheader {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  
+  /* Responsiveness */
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .banner-content {
+    padding: 0 20px;
+    margin-top: 7%;
+  }
+
+  .banner-header {
+    font-size: 2.5rem;
+  }
+
+  .banner-subheader {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-content {
+    padding: 0 15px;
+    margin-top: 10%;
+  }
+
+  .banner-header {
+    font-size: 2rem;
+  }
+
+  .banner-subheader {
+    font-size: 1rem;
+  }
+
+  .banner-underline {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-header {
+    font-size: 1.8rem;
+  }
+
+  .banner-subheader {
+    font-size: 0.9rem;
+  }
+
+  .banner-underline {
+    width: 100px;
+  }
+}
+
+  

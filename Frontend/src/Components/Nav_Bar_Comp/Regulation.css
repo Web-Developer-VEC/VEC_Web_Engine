@@ -1,6 +1,9 @@
 .REG-page {
   font-family: Arial, sans-serif;
   padding: 1.5rem;
+  display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .REG-header {
@@ -33,7 +36,6 @@
   border-radius: 10px; /* Rounded corners */
   padding: 10px 15px; /* Padding for button size */
   font-size: 16px; /* Comfortable font size */
-  cursor: pointer; /* Pointer on hover */
   display: inline-flex; /* Align icon and text */
   align-items: center; /* Center icon and text vertically */
   justify-content: center; /* Center content */
@@ -87,7 +89,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer; /* Pointer on hover */
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
@@ -97,4 +98,51 @@
 
 .REG-close-button svg {
   font-size: 18px; /* Icon size */
+}
+@media (max-width: 768px) {
+  .REG-page {
+    padding: 1rem;
+  }
+
+  .REG-header {
+    font-size: 1.5rem;
+  }
+
+  .REG-content {
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .REG-regulation {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  .REG-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 5px 0;
+  }
+
+  .REG-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .REG-iframe {
+    height: 400px;
+  }
+
+  .REG-close-button {
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .REG-close-button svg {
+    font-size: 16px;
+  }
 }

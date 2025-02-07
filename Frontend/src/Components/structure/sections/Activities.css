@@ -39,6 +39,10 @@ body {
 
 .card-details {
   padding: 20px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; /* Push button to bottom */
+  height: 100%; /* Make the container take full height */
 }
 
 .card-date {
@@ -57,19 +61,22 @@ body {
   color: #555;
 }
 
-.view-more-btn {
+.activities-view-more-btn {
   margin-top: auto; /* Push the button to the bottom if needed */
   padding: 10px 20px;
   background-color: #fdcc03;
   color: #000;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
+  width: fit-content;
+  margin-top: auto; 
+  align-self: center;
 }
 
-.view-more-btn: {
-  background-color: #e3c22f;
+.activities-view-more-btn:hover{
+  background-color: #fbd634;
+  color: white;
 }
 
 @keyframes falling {
@@ -150,7 +157,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease,
     box-shadow 0.3s ease;
@@ -174,7 +180,6 @@ body {
   color: #000;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
