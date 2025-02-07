@@ -126,6 +126,8 @@ function Carousel() {
               event={event}
               onMouseEnter={handleHoverStart}
               onMouseLeave={handleHoverEnd}
+              onClick={handleHoverStart}
+              onFocusEnd={handleHoverEnd}
             />
           ))}
         </motion.div>
