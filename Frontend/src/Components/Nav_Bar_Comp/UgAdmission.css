@@ -138,6 +138,31 @@ background-color: #ffeeba;
       transform: rotate(360deg);
     }
   }
+@media (max-width: 1024px) {
+    .Admission {
+        padding: 2.5rem;
+    }
+
+    .B-E h1 {
+        font-size: 2.2rem;
+    }
+
+    .B-E h3 {
+        font-size: 1.3rem;
+    }
+
+    .ADM-content {
+        padding: 1.5rem;
+    }
+
+    .description-text {
+        font-size: 1rem;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 10px;
+    }
+}
 
 @media (max-width: 768px) {
     .Admission {
@@ -152,16 +177,56 @@ background-color: #ffeeba;
         font-size: 1.2rem;
     }
 
+    .ADM-content {
+        padding: 1.2rem;
+    }
+
+    .description-text {
+        font-size: 0.9rem;
+    }
+
     .table-container {
         margin-top: 1.5rem;
+        overflow-x: auto;
     }
 
     .styled-table th, .styled-table td {
         padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .lateral-entry {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .Admission {
+        padding: 1.5rem;
+    }
+
+    .B-E h1 {
+        font-size: 1.8rem;
+    }
+
+    .B-E h3 {
+        font-size: 1.1rem;
+    }
+
+    .ADM-content {
+        padding: 1rem;
     }
 
     .description-text {
-        font-size: 1.5rem;
-        font-weight: bold;
+        font-size: 0.85rem;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    .lateral-entry {
+        padding: 1.2rem;
     }
 }

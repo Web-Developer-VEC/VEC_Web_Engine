@@ -37,7 +37,7 @@ const MOU = ({data}) => {
           {selectedYearData.map((detail, index) => (
             <div key={index} className="mou-detail-box">
               <div className="mou-logo">
-                <img src={detail.logo} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
+                <img src={detail.LOGO_PATH} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
               </div>
               <h3>{detail.ORGANISATION_NAME}</h3>
               <p><strong>Duration:</strong> {detail.MONTH_AND_YEAR}</p>

@@ -198,56 +198,6 @@ ul {
   padding-left: 20px;
   list-style-type: disc;
 }
-
-/* Responsive Design */
-@media (max-width: 767px) {
-  .about-department .row {
-    flex-direction: column-reverse;
-  }
-
-  .about-department-text {
-    text-align: center;
-  }
-}
-
-
-/* For mobile responsiveness */
-@media (max-width: 768px) {
-  .about-department-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-department-heading {
-    margin-bottom: 20px;
-  }
-
-  .about-department-text {
-    max-width: 100%;
-    padding: 0 15px;
-  }
-
-  .about-department-image {
-    margin-top: 20px;
-  }
-}
-
-/* For mobile responsiveness */
-@media (max-width: 768px) {
-  .about-department-content {
-    flex-direction: column;
-  }
-
-  .about-department-text {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .about-department-image {
-    margin-top: 20px;
-  }
-}
-
 /* General Section Styling */
 .section-card {
   background: linear-gradient(135deg, #f7b731, #e74c3c);
@@ -263,12 +213,108 @@ ul {
   height: 100%;
 }
 
+/* Responsive Design for Tablets */
+@media (max-width: 1024px) {
+  .committee-buttons-grid {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .committee-button {
+    flex: 0 1 calc(33.33% - 20px);
+    padding: 18px;
+  }
+}
+
+/* Responsive Design for Small Tablets and Mobile */
 @media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+
   .parallel-sections {
     flex-direction: column;
   }
 
   .section-card {
     margin-bottom: 20px;
+  }
+
+  .committee-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .committee-button {
+    flex: unset;
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .about-department {
+    padding: 0;
+  }
+
+  .about-department-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-department-text {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .about-department-image {
+    margin-top: 20px;
+  }
+}
+
+/* Responsive Design for Mobile Screens */
+@media (max-width: 480px) {
+  .committee-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .committee-button {
+    width: 90%;
+    margin: 0 auto;
+    padding: 12px;
+  }
+
+  .committee-button svg {
+    font-size: 2rem;
+  }
+
+  .committee-button span {
+    font-size: 1rem;
+  }
+
+  .about-department .row {
+    flex-direction: column-reverse;
+  }
+
+  .about-department-text {
+    text-align: center;
+  }
+
+  .section-card {
+    padding: 20px;
+  }
+
+  .section-card h2 {
+    font-size: 24px;
+  }
+
+  .section-card p,
+  .section-card ul {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .vision-quote {
+    font-size: 24px;
   }
 }

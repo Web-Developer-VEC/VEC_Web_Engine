@@ -7,7 +7,6 @@
   }
 
   .naac-page {
-    
     margin: 0 auto;
     padding: 20px;
   }
@@ -24,6 +23,24 @@
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
+
+.iic-action-button{
+  color: black;
+  width: 300px;
+  height: 70px;
+  border: 1px solid #fdcc03;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* background-color: black; */
+}
+
+.iic-action-button:hover{
+  transform: translateY(-3px);
+}
 
   .about-section {
     padding: 2rem;
@@ -207,7 +224,7 @@
     margin: 0;
     border-radius: 5px;
     margin: 5px 0;
-    background: linear-gradient(135deg, #fdcc03 0%, #fdb347 100%);
+    /* background: linear-gradient(135deg, #fdcc03 0%, #fdb347 100%); */
     color: white;
   }
 
@@ -298,10 +315,10 @@
 
   .nir-heading {
     font-size: 1.5rem;
-    color: white;
+    color: black;
     padding: 0.75rem 1rem;
     margin: 0;
-    background: linear-gradient(45deg, #ffd21c, #ffd93d);
+    /* background: linear-gradient(45deg, #ffd21c, #ffd93d); */
   }
 
   .nir-buttons {
