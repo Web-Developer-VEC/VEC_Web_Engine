@@ -1,102 +1,88 @@
 import React, { useState } from 'react';
-import curriculumData from '../../Assets/curriculumData.json';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
 import './CurriculumPage.css';
 
-const CurriculumPage = () => {
+const CurriculumPage = ({ data }) => {
   const [activePO, setActivePO] = useState(null); // Track which PO is active (open)
+  const [selectedRegulation, setSelectedRegulation] = useState(null);
+  console.log("Ajith",selectedRegulation);
+  
 
   const togglePO = (id) => {
     setActivePO((prev) => (prev === id ? null : id)); // Toggle the active PO
   };
 
+  const handleViewClick = (regulation,year) => {
+    setSelectedRegulation([regulation,year]);
+  };
+
+  const handleDownloadClick = (pdfPath, year) => {
+    if (pdfPath) {
+      const link = document.createElement("a");
+      link.href = pdfPath;
+      link.download = `${year}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedRegulation(null);
+  };
+
+
   return (
     <div className="containers mt-5">
       <div className="row">
-        
         {/* Left Column: Curriculum and PSOs */}
         <div className="col-md-6">
-        <div className="content-section">
+          <div className="content-section">
             <h2 className="text-start">Curriculum & Syllabus</h2>
 
             {/* Regulation Rows */}
-            {curriculumData.curriculums.map((item) => (
-              <div
-                className="row-item"
-                key={item.regulation}
-              >
-                <p>Regulation {item.regulation}                <div className="options-container">
-                  <button className="options-btn">Options</button>
-                  <div className="options-dropdown">
-                    <a
-                      className="dropdown-item"
-                      href={item.viewUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View
-                    </a>
-                    <a
-                      className="dropdown-item"
-                      href={item.downloadUrl}
-                      download={`Regulation_${item.regulation}.pdf`}
-                    >
-                      Download
-                    </a>
+            {data?.regulation?.year?.map((year, index) => (
+              <div className="row-item" key={year}>
+                <p>
+                  Regulation {year}
+                  <div className="options-container">
+                    <button className="options-btn">Options</button>
+                    <div className="options-dropdown">
+                      <a
+                        className="dropdown-item"
+                        onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
+                      >
+                        <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
+                        View
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        onClick={() => handleDownloadClick(data.regulation.pdf_path[index], `Curriculum & Syllabus ${year}`)}
+                      >
+                        <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
+                        Download
+                      </a>
+                    </div>
                   </div>
-                </div>
                 </p>
-
-
-                {/* SubParts (Always rendered if present) */}
-                {item.subParts && item.subParts.length > 0 && (
-                  <div className="sub-row-container">
-                    {item.subParts.map((subItem) => (
-                      <div className="sub-row-item" key={subItem.regulation}>
-                        <p>For Year {subItem.regulation}<div className="options-container">
-                          <button className="options-btn">Options</button>
-                          <div className="options-dropdown">
-                            <a
-                              className="dropdown-item"
-                              href={subItem.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              View
-                            </a>
-                            <a
-                              className="dropdown-item"
-                              href={subItem.downloadUrl}
-                              download={`Sub-Regulation_${subItem.regulation}.pdf`}
-                            >
-                              Download
-                            </a>
-                          </div>
-                        </div></p>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </div>
 
-        <div className="psos-section mt-5">
+          {/* Program Specific Outcomes (PSOs) */}
+          <div className="psos-section mt-5">
             <h2>Program Specific Outcomes</h2>
             <div className="accordion" id="psosAccordion">
-              {curriculumData.psos.map((pso) => (
-                <div className="accordion-item" key={pso.id}>
-                  <h2 className="accordion-header" id={`psosHeading${pso.id}`}>
-                    <button
-                      className="accordion-buttons"
-                      onClick={() => togglePO(pso.id)}
-                    >
-                      PSO{pso.id}
+              {data?.program_specific_outcomes?.headings?.map((heading, index) => (
+                <div className="accordion-item" key={index}>
+                  <h2 className="accordion-header" id={`psosHeading${index}`}>
+                    <button className="accordion-buttons" onClick={() => togglePO(index)}>
+                      {heading}
                     </button>
                   </h2>
-                  <div
-                    className={`accordion-body ${activePO === pso.id ? 'show' : ''}`}
-                  >
-                    {pso.description}
+                  <div className={`accordion-body ${activePO === index ? 'show' : ''}`}>
+                    {data.program_specific_outcomes.content[index]}
                   </div>
                 </div>
               ))}
@@ -109,20 +95,15 @@ const CurriculumPage = () => {
           <div className="pos-section">
             <h2>Program Outcomes</h2>
             <div className="accordion">
-              {curriculumData.pos.map((po) => (
-                <div className="accordion-item" key={po.id}>
+              {data?.program_outcomes?.headings?.map((heading, index) => (
+                <div className="accordion-item" key={index}>
                   <h2 className="accordion-header">
-                    <button
-                      className="accordion-buttons"
-                      onClick={() => togglePO(po.id)}
-                    >
-                      PO{po.id}: {po.name}
+                    <button className="accordion-buttons" onClick={() => togglePO(index)}>
+                      {heading}
                     </button>
                   </h2>
-                  <div
-                    className={`accordion-body ${activePO === po.id ? 'show' : ''}`}
-                  >
-                    {po.content}
+                  <div className={`accordion-body ${activePO === index ? 'show' : ''}`}>
+                    {data.program_outcomes.content[index]}
                   </div>
                 </div>
               ))}
@@ -130,6 +111,21 @@ const CurriculumPage = () => {
           </div>
         </div>
       </div>
+      {selectedRegulation && (
+        <div className="REG-modal">
+          <div className="REG-modal-content">
+            <button className="REG-close-button" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2>Curriculum & Syllabus {selectedRegulation[1]}</h2>
+            <iframe
+              src={selectedRegulation[0]}
+              title={selectedRegulation[1]}
+              className="REG-iframe"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

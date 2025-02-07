@@ -53,11 +53,11 @@ const Head = () => {
             {hrd: false, ttl: 'Electronics and Communication Engineering', sup: [], lnk: '/dept/009', deptID: "009",},
             {hrd: false, ttl: 'Electronics and Instrumentation Engineering', sup: [], lnk: '/dept/008', deptID: "008",},
             {hrd: false, ttl: 'Information Technology', sup: [], lnk: '/dept/011', deptID: "011",},
-            {hrd: false, ttl: 'Mechanical Engineering (ME)', sup: [], lnk: '/dept/013', deptID: "013",},
+            {hrd: false, ttl: 'Mechanical Engineering', sup: [], lnk: '/dept/013', deptID: "013",},
             {hrd: true, ttl:  'PG Courses', sup: [], lnk: ''},
             {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
             {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
-            {hrd: false, ttl: 'Master Of Business Administration (MBA)', sup: [], lnk: '/dept/002', deptID: "001",}, //
+            {hrd: false, ttl: 'Master of Business Administration', sup: [], lnk: '/dept/002', deptID: "001",}, //
             {hrd: false, ttl: '', sup: [], lnk: ''},
             {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
             {hrd: false, ttl: 'Chemistry', sup: [], lnk: '/dept/003', deptID: "003",}, 
@@ -222,13 +222,14 @@ const Head = () => {
                     <button  onClick={() => navigate('/nba')}className=' mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
                     <button  onClick={() => navigate('/naac')}className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
                     <button  onClick={() => navigate('/nirf')}className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
+
                     {/* Updated version */}
                     <button  onClick={() => navigate('/iic')}className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[9]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[10]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[11]}</p>
+                    <button  onClick={() => navigate('/sports')}className=' mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[13]}</p>
                     <button  onClick={() => navigate('/hostel')}className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>

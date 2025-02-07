@@ -4,7 +4,8 @@ import { FaGoogleScholar } from "react-icons/fa6";
 import { FaOrcid, FaResearchgate, FaLinkedin } from "react-icons/fa";
 import styles from "./Faculties.module.css";
 
-const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile }) => (
+const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid}) => (
+  <>
   <div className={firstTile ? styles.firstTile : styles.imageCard}>
     <img src={photo} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
@@ -37,9 +38,10 @@ const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon
           </a>
         )}
       </div>
-      <button className={styles.facButton}>View More</button>
+      <button className={styles.facButton}><a href={`/facultyprofile/${uid}`} className="no-underline text-white">View More</a></button>
     </div>
   </div>
+  </>
 );
 
 export default ImageCard;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Banner from '../Assets/UnivAbt-5-1.jpg';
+import Banner from '../Banner';
 
 const Princ = () => {
   const [data, setData] = useState(null); // State to store fetched data
@@ -41,34 +41,34 @@ const Princ = () => {
   // Destructure fetched data
   const { photo_path, name, qualification, message } = data;
 
-  const banTtl = 'Principal of VEC';
-  const secHdr = "From the Principal's Desk";
 
   return (
     <>
-      <div
-        className="relative flex justify-start items-end w-screen h-[20vh] bg-white
-          bg-cover bg-no-repeat bg-[position:0px_-550px]"
-        style={{ backgroundImage: `url(${Banner})` }}
-      >
-        <div className="absolute grid bg-amber-600 rounded-tr-3xl px-4 pt-3 justify-items-end font-popp">
-          <p className="text-white text-5xl">{banTtl}</p>
-        </div>
-      </div>
-      <div className="flex m-8">
-        <div className="flex w-full my-[5vh]">
-          <div className="basis-3/4 px-4 font-popp ml-20">
-            <p className="text-3xl font-bold text-left mb-4">{secHdr}</p>
-            <q className="text-2xl text-justify italic">{message}</q>
-          </div>
-          <div className="grid justify-items-center w-full">
-            <img
-              className=" max-h-[45vh] h-auto float-right rounded-xl"
+      <Banner
+        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        headerText="Principal's Desk"
+        subHeaderText="Leading with vision and commitment to excellence in education and innovation."
+      />
+
+      <div className="max-w-[90%] mx-auto my-8 px-4">
+        <div className="flex flex-col lg:flex-row-reverse items-start">
+          {/* Image on the right for large screens, floating for text wrapping */}
+          <div className="lg:max-w-sm lg:ml-6 flex-shrink-0">
+          <img
+              className="max-h-[40vh] lg:max-h-[45vh] w-auto rounded-xl float-right"
               src={photo_path}
               alt="Principal"
             />
-            <span className="text-4xl font-popp mt-3">{name}</span>
-            <span className="text-2xl font-rome font-bold text-amber-950">{qualification}</span>
+            <div className="text-center lg:text-left">
+              <span className="text-2xl font-semibold block">{name}</span>
+              <span className="text-lg font-bold text-amber-950 block">{qualification}</span>
+            </div>
+          </div>
+
+          {/* Text Content Wrapped Around */}
+          <div className="text-justify leading-relaxed">
+            <p className="text-2xl lg:text-3xl font-bold mb-3">From the Principal's Desk</p>
+            <q className="text-lg lg:text-xl italic">{message}</q>
           </div>
         </div>
       </div>

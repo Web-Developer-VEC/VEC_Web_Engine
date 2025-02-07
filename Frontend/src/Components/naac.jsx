@@ -32,7 +32,7 @@ const Naac = () => {
   // Helper function to structure the API data
   const parseNaacData = (data) => {
     const formattedData = {};
-    
+
     if (data.length > 0 && data[0].Title) {
       data[0].Title.forEach(categoryObj => {
         const categoryName = Object.keys(categoryObj)[0];
@@ -40,11 +40,11 @@ const Naac = () => {
 
         formattedData[categoryName] = {
           years: categoryData.years || [],
-          pdfPaths: categoryData.PDF_Path || []
+          pdfPaths: Array.isArray(categoryData.PDF_Path) ? categoryData.PDF_Path : [categoryData.PDF_Path]
         };
       });
     }
-    
+
     return formattedData;
   };
 
@@ -64,26 +64,24 @@ const Naac = () => {
         headerText="NAAC"
         subHeaderText="NATIONAL ASSESSMENT AND ACCREDITATION COUNCIL (NAAC)"
       />
-      
+
       <div className="naac-page">
-      {isLoading && (
+        {isLoading && (
           <div className="loading-screen">
             <div className="spinner"></div>
             Loading...
           </div>
         )}
+
         <div className="about-section">
           <div className="naac-info-panel">
             <h2>About NAAC</h2>
-            <p>The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution. NAAC evaluates the institutions for its conformance to the standards of quality in terms of its performance related to the educational processes and outcomes, curriculum coverage, teaching-learning processes, faculty, research, infrastructure, learning resources, organisation, governance, financial well being and student services.</p>
+            <p>The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution...</p>
           </div>
 
           <div className="iqac-info-panel">
             <h2>About IQAC</h2>
-            <p>The Internal Quality Assurance Cell (IQAC) is a pivotal body established 
-            to ensure continuous quality enhancement in academic and administrative 
-            performance. Formulated as a post-accreditation quality sustenance measure 
-            recommended by NAAC.</p>
+            <p>The Internal Quality Assurance Cell (IQAC) is a pivotal body established to ensure continuous quality enhancement...</p>
           </div>
         </div>
 
@@ -111,7 +109,7 @@ const Naac = () => {
           </div>
 
           <div className="naac-details">
-            {selectedCategory && (
+            {selectedCategory && selectedCategory !== "code_of_ethics" && (
               <div className="naac-year-actions">
                 {naacData[selectedCategory].years.map((year, index) => (
                   <button
@@ -125,16 +123,28 @@ const Naac = () => {
               </div>
             )}
 
-            {selectedYear && (
+            {selectedCategory && (
               <div className="naac-pdf-container">
-                <h3>Viewing: {selectedYear}</h3>
-                <embed
-                  className="embed"
-                  src={naacData[selectedCategory].pdfPaths[naacData[selectedCategory].years.indexOf(selectedYear)]}
-                  type="application/pdf"
-                  width="100%"
-                  height="600px"
-                />
+                {selectedCategory === "code_of_ethics" ? (
+                  // Always show PDF for "code_of_ethics"
+                  <embed
+                    className="embed"
+                    src={naacData[selectedCategory].pdfPaths[0]}
+                    type="application/pdf"
+                    width="100%"
+                    height="600px"
+                  />
+                ) : (
+                  selectedYear && (
+                    <embed
+                      className="embed"
+                      src={naacData[selectedCategory].pdfPaths[naacData[selectedCategory].years.indexOf(selectedYear)]}
+                      type="application/pdf"
+                      width="100%"
+                      height="600px"
+                    />
+                  )
+                )}
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from '../HeadDepartment.module.css';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaBook, FaLinkedin } from 'react-icons/fa';
 import { SiPublons } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { FaOrcid } from "react-icons/fa";
@@ -23,6 +23,7 @@ const HeadDepartment = ({ data }) => {
 
   const {
     Name = departmentData.Name,
+    uid = departmentData.Unique_id,
     Qualification = [departmentData.Qualification],
     designation = departmentData.designation,
     Hod_message = departmentData.Hod_message,
@@ -44,7 +45,7 @@ const HeadDepartment = ({ data }) => {
           <h3 className={styles.messageTitle}>HOD's Message</h3>
           <p className={styles.messageBody}>{Hod_message}</p>
         </div>
-        <button className={styles.viewMoreButton}>View More</button>
+        <a className={styles.viewMoreButton} href={`/facultyprofile/${uid}`}>View More</a>
       </div>
 
       <div className={styles.imageColumn}>
@@ -54,6 +55,16 @@ const HeadDepartment = ({ data }) => {
           <p>No image available</p>
         )}
         <div className={styles.socialLinks}>
+        {Social_media_links['LinkedIn'] && (
+            <a
+              href={Social_media_links['LinkedIn']}
+              className={styles.socialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+          )}
           {Social_media_links['Publon'] && (
             <a
               href={Social_media_links['Publon']}
@@ -92,6 +103,16 @@ const HeadDepartment = ({ data }) => {
               rel="noopener noreferrer"
             >
               <FaResearchgate />
+            </a>
+          )}
+          {Social_media_links['Scopus'] && (
+            <a
+              href={Social_media_links['Scopus']}
+              className={styles.socialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaBook />
             </a>
           )}
         </div>

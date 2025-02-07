@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import Sidebar from "./Sidebar";
 import HeadDepartment from "./sections/HeadDepartment";
 import Activities from "./sections/activities";
-import styles from "./HeadDepartment.module.css"; // Assuming you're using CSS modules
 import Infrastructure from "./sections/Infrastructure";
-import college from "../Assets/college.jpeg";
 import VisionMission from "./sections/VisionMission";
 import Faculties from "./sections/Faculties";
 import ImageCarousel from "./sections/Student_activities";
@@ -14,17 +12,69 @@ import CurriculumPage from "./sections/CurriculamPage";
 import MOU from "./sections/mou";
 import Research from "./sections/RD";
 import Conference from "./sections/Conference";
+import styles from "./HeadDepartment.module.css"; 
+import college from "../Assets/college.jpeg";
 
 const DepartmentPage = () => {
-  const { deptID } = useParams(); // Get departmentID from the URL
-  console.log("Params:", deptID);
-  const [activeSection, setActiveSection] = useState("Vision&Mission");
+  const { deptID } = useParams();
+  const [activeSection, setActiveSection] = useState(null);
+  const [availableSections, setAvailableSections] = useState([]);
+  const [sectionData, setSectionData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [sectionData, setSectionData] = useState(null); // Store backend data for the active section
-  const [loading, setLoading] = useState(true); // Loading state for fetch calls
-  const [error, setError] = useState(null); // Error state for fetch calls
+
+  console.log("ajith",activeSection)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+  
+    handleResize(); // Call it immediately after defining it
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
 
 
+  useEffect(() => {
+    if (!activeSection) return;
+
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
+        setSectionData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setError("Failed to fetch data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, [deptID, activeSection]);
+  useEffect(() => {
+    const fetchSections = async () => {
+      try {
+        const response = await axios.get(`/api/${deptID}/sidebar`);
+        console.log("API Response:", response.data);
+        const validSections = response.data.content
+          .filter((section) => section.hascontent)
+          .map((section) => section.id);
+        
+        setAvailableSections(validSections);
+        setActiveSection(validSections[0] || null); // Set first available section
+      } catch (error) {
+        console.error("Error fetching sections:", error.message);
+        setError("Failed to fetch sections.");
+      }
+    };
+    fetchSections();
+  }, [deptID]);
   const renderSection = () => {
     switch (activeSection) {
       case "HeadDepartment":
@@ -46,73 +96,32 @@ const DepartmentPage = () => {
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
-        return <Research setActiveSection={setActiveSection} data={sectionData} />;
+        return <Research data={sectionData} />;
       case "Conference":
         return <Conference data={sectionData} />;
       default:
-        return <HeadDepartment data={sectionData} />;
+        return <VisionMission data={sectionData} />;
     }
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust 768px for tablets and mobile
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Call it once to set the initial state
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null); // Reset error state
-        const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
-        console.log(response)
-
-        setSectionData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-        setError("Failed to fetch data. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (activeSection) {
-      fetchData();
-    }
-  }, [deptID, activeSection]);
-  
-  
-
-  if (loading) {
-    return <div>Loading...</div>; // Display a loading state
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>; // Display an error state
-  }
+  if (!availableSections.length) return <div>Loading sections...</div>;
 
   return (
-    <div>
-      {/* Header section */}
+    <div className={styles.main}>
+      {loading && (
+          <div className={styles.loadingscreen}>
+            <div className={styles.spinner}></div>
+              Loading...
+            </div>
+        )}
+      {/* Header */}
       <div className={styles.header}>
-        <img
-          src={college}
-          alt="Department Header"
-          className={styles.fullWidthImage}
-        />
+        <img src={college} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
-          <h1 className={styles.overlayText}>
-            Artificial Intelligence and Data Science (AI&DS)
-          </h1>
+          <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
 
-      {/* Main content and sidebar */}
       <div
         style={{
           display: "flex",
@@ -120,8 +129,11 @@ const DepartmentPage = () => {
         }}
       >
         {/* Sidebar */}
-        <Sidebar setActiveSection={setActiveSection} />
-
+        <Sidebar 
+          sections={availableSections} 
+          activeSection={activeSection} 
+          setActiveSection={setActiveSection} 
+        />
         {/* Main content */}
         <div style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
       </div>
