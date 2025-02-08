@@ -86,19 +86,53 @@
   }
   
   /* Responsiveness */
-  @media (max-width: 1200px) {
-
-    .banner-content {
-      padding: 0 20px;
-      margin-top: 7%;
-    }
-  
-    .banner-header {
-      font-size: 2.5rem;
-    }
-  
-    .banner-subheader {
-      font-size: 1.2rem;
-    }
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .banner-content {
+    padding: 0 20px;
+    margin-top: 7%;
   }
+
+  .banner-header {
+    font-size: 2.5rem;
+  }
+
+  .banner-subheader {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-content {
+    padding: 0 15px;
+    margin-top: 10%;
+  }
+
+  .banner-header {
+    font-size: 2rem;
+  }
+
+  .banner-subheader {
+    font-size: 1rem;
+  }
+
+  .banner-underline {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-header {
+    font-size: 1.8rem;
+  }
+
+  .banner-subheader {
+    font-size: 0.9rem;
+  }
+
+  .banner-underline {
+    width: 100px;
+  }
+}
+
   

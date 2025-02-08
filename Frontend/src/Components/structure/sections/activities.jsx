@@ -99,7 +99,7 @@ const AnimatedCard = ({ event, handleViewMore }) => {
         <p className="card-date">{event.date}</p>
         <h3 className="card-title">{event.name_of_event}</h3>
         <p className="card-coordinator">Coordinator: {event.coordinator}</p>
-        <button onClick={() => handleViewMore(event)} className="view-more-btn">
+        <button onClick={() => handleViewMore(event)} className="activities-view-more-btn">
           View More
         </button>
       </div>
