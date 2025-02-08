@@ -41,6 +41,10 @@ module.exports = {
         '0%': {fontSize: '0'},
         '100%': {fontSize: '1.75vh'}
       },
+      bem: {
+        '0%': {fontSize: '0'},
+        '100%': {fontSize: '2.25vh'}
+      },
       Social: {
         '0%, 100%': {filter: true},
         '50%': {filter: false},
@@ -68,7 +72,7 @@ module.exports = {
         '17.67%': {transform: 'translateX(-40vw)', opacity: '0'},
         '100%': {opacity: '0'}
       },
-      slideUp: {
+      LslideUp: {
         '0%': {transform: 'translateY(0)'},
         '100%': {transform: 'translateY(-100%)'}
       }

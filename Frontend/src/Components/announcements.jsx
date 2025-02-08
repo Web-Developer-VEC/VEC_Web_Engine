@@ -64,7 +64,7 @@ const Announcements1 = () => {
   };
 
   return (
-    <div className="news font-popp mb-[60vh] lg:mb-0">
+    <div className="news font-popp mb-[75vh] lg:mb-0 mt-4">
       <p className="text-xl text-amber-600 ml-6">News</p>
       <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] max-h-[60lvh] w-full">
         <div className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
@@ -97,7 +97,7 @@ const Announcements1 = () => {
             onMouseLeave={() => setHovered(false)}>
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
               <div className="card-front">
-                <h2 className='text-3xl'>Announcements</h2>
+                <h2 className='text-3xl' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <h4 key={i} className='text-xl'>
@@ -108,10 +108,10 @@ const Announcements1 = () => {
                 </div>
               </div>
               <div className="card-back">
-                <h2 className='text-[3lvh]'>Announcements</h2>
+                <h2 className='text-[3lvh]' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i + 5} className='text-[2lvh]'>
+                    <h4 key={i + 5} className='text-[2lvh] truncate'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
                     </h4>

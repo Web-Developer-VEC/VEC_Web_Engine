@@ -38,7 +38,7 @@
   margin-right: 700px;
   /*margin-left: 135px; !* Adjust this line to move the quick links to the right *!*/
   white-space: nowrap; /* Prevents the text from wrapping */
-  margin-top: 18px; 
+  /*margin-top: 18px; */
 }
 
 .map-container {

@@ -11,6 +11,7 @@ import Contact from './Components/ContactIcon'
 import Chat from './Components/ChatPopup'
 import Boot from './Components/BootUp';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Cookies from "universal-cookie";
 
 const courses = [
   {
@@ -84,9 +85,15 @@ const courses = [
 
 
 const LandingPage = () => {
+  const cookies = new Cookies()
+  let isAuth = cookies.get('firstTime') !== undefined || +(cookies.get('firstTime')) > 2
+  if (!isAuth) cookies.set('firstTime', 0)
+  else if(+(cookies.get('firstTime')) < 2) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+  console.log(isAuth);
+  
   return (
     <div className="landing-page">
-      <Boot />
+      <Boot isAuth={isAuth} />
       <Head/>
       <ImgSld/>
       <div className='max-w-full h-fit absolute z-50'>

@@ -17,7 +17,7 @@ const About = () => {
                         which is important to mould them into useful and capable citizens. The watchwords of the Trust
                         are “Dedication, Determination, and Distinction”.</p>
                 </div>
-                <div className='abt3 text-lg lg:text-xl'>
+                <div className='abt3 mt-4 text-lg lg:text-xl'>
                     <p>Velammal Engineering College was established in the year 1995-96 to impart quality education. It
                         is a self-financing non-minority institution, affiliated to Anna University and approved by the
                         All India Council for Technical Education (AICTE) and also an ISO-certified institution.</p>

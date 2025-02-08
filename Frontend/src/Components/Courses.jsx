@@ -103,8 +103,7 @@ const CourseCarousel = ({ courses }) => {
           <button
             className="rounded-full absolute top-[50%] -right-[5%] lg:right-4 transform -translate-y-1/2 w-[3vmax]
             outline outline-offset-2 h-[20%] ease-in transition-colors duration-300"
-            style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
-            onClick={() => pos_hdl(pos + 1)}>
+            style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}            onClick={() => pos_hdl(pos + 1)}>
             <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
           </button>
         </div>

@@ -196,7 +196,7 @@ async function getMou(req, res) {
 
 
 // Fetch Research Data  (innu varala)
-async function getRD(req, res) {
+async function getRDyear(req, res) {
     const { deptId, year } = req.params;
 
     if (!deptId || !year) {
@@ -207,21 +207,81 @@ async function getRD(req, res) {
     const collection = db.collection('research_data');
 
     try {
-        const result = await collection.find({
-            deptId: deptId,
-            "data.data.year": year
-        }).toArray();
+        // Fetch the document for the department
+        const result = await collection.findOne({ dept_id: deptId });
 
-        if (result.length === 0) {
-            return res.status(404).json({ message: 'No research data found for the given department and year' });
+        if (!result || !result.data || !result.data.data) {
+            return res.status(404).json({ message: 'No research data found for the given department' });
+        }
+        
+        const yearData = result.data.data.find(entry => entry.year === year);
+
+        if (!yearData) {
+            return res.status(404).json({ message: 'No research data found for the given year' });
         }
 
-        res.status(200).json(result);
+        res.status(200).json(yearData);
     } catch (error) {
         console.error("❌ Error fetching research data:", error);
         res.status(500).json({ error: "Error fetching research data" });
     }
 }
+
+async function getRD(req, res) {
+    const { deptId } = req.params;
+
+    if (!deptId) {
+        return res.status(400).json({ error: 'Both dept_id required' });
+    }
+
+    const db = getDb();
+    const collection = db.collection('research_data');
+
+    try {
+        // Fetch the document for the department
+        const result = await collection.findOne({ dept_id: deptId });
+
+        if (!result || !result.data || !result.data.data) {
+            return res.status(404).json({ message: 'No research data found for the given department' });
+        }
+        res.status(200).json(result);
+        
+        // const yearData = result.data.data.find(entry => entry.year === year);
+
+        // if (!yearData) {
+        //     return res.status(404).json({ message: 'No research data found for the given year' });
+        // }
+
+    } catch (error) {
+        console.error("❌ Error fetching research data:", error);
+        res.status(500).json({ error: "Error fetching research data" });
+    }
+}
+
+async function getslidebar (req, res) {
+    const db = getDb();
+    const collection = db.collection('sidebar');
+    const deptid = req.params.deptId;
+
+    try {
+        // Find the document that matches the given deptid
+        const departmentData = await collection.findOne({ deptId: deptid });
+
+        // Check if the department exists
+        if (!departmentData) {
+            return res.status(404).json({ message: `No data found for deptId: ${deptid}` });
+        }
+
+        // Send the matched department data
+        res.status(200).json(departmentData);
+    } catch (error) {
+        console.error('❌ Error fetching department data:', error);
+        res.status(500).json({ error: 'Error fetching department data' });
+    }
+}
+
+
+
 
 module.exports = {
     getVisionMission,
@@ -233,5 +293,7 @@ module.exports = {
     getStuActivities,
     getSupportStaff,
     getMou,
-    getRD
+    getRDyear,
+    getRD,
+    getslidebar
 };
