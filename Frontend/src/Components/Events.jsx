@@ -87,6 +87,7 @@ function Carousel() {
 
   const handleHoverStart = () => {
     isHovered.current = true;
+    console.log("Clickey")
   };
 
   const handleHoverEnd = () => {
@@ -107,8 +108,8 @@ function Carousel() {
   }, []);
 
   return (
-    <div className="carousel-wrapper">
-      <div className="nav-button-area left">
+    <div className="event-carousel-wrapper">
+      <div className="event-nav-button-area left">
         <motion.button
           className="nav-button"
           onClick={() => x.set(x.get() - CARD_WIDTH)}
@@ -124,8 +125,10 @@ function Carousel() {
             <EventBox
               key={index}
               event={event}
-              onMouseEnter={handleHoverStart}
+              // onMouseEnter={handleHoverStart}
               onMouseLeave={handleHoverEnd}
+              onClick={handleHoverStart}
+              // onPressUp={handleHoverEnd}
             />
           ))}
         </motion.div>
