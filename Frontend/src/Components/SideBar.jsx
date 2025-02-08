@@ -208,8 +208,7 @@ const Sidebar = () => {
           position: "fixed",
           top: "5vmax",
           right: "20px",
-          zIndex: "1100",
-          cursor: "pointer",
+          zIndex: "1100", // Higher than the sidebar z-index
           background: "transparent",
         }}
         onClick={toggleSidebar}
@@ -237,14 +236,43 @@ const Sidebar = () => {
           flexDirection: "column",
         }}
       >
-        <div style={{ flex: 1, overflowY: "auto" }}>
-          {/* Header */}
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-            {currentContent ? (
-              <ArrowLeftIcon className="h-6 w-6 text-gray-600 cursor-pointer" onClick={goBackToMainMenu} />
-            ) : null}
-            <h3 style={{ marginLeft: currentContent ? "10px" : "0" }}>{currentContent || "Main Menu"}</h3>
-          </div>
+        <h3>Main Menu</h3>
+        <ul>
+          <li  className="lis" onClick={toggleSubSidebar} >
+            Open Sub-Menu
+          </li>
+          <li className="lis" onClick={toggleSubSidebar}>
+            RAndom STuff 1
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 2
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 3
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 4
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 5
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 6
+          </li>
+          <li className="lis" onClick={toggleSubSidebar}>
+            RAndom STuff 7
+          </li>
+          <li className="lis" onClick={toggleSubSidebar}>
+            RAndom STuff 8
+          </li>
+          <li className="lis" onClick={toggleSubSidebar} >
+            RAndom STuff 9
+          </li><li className="lis" onClick={toggleSubSidebar}>
+            RAndom STuff 10
+          </li>
+          {/* Add more sidebar items as needed */}
+        </ul>
+      </div>
 
           {/* Main Menu or Sub-Items */}
           <ul className={fadeIn ? "fade-in" : ""}>
