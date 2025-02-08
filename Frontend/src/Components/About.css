@@ -5,9 +5,9 @@
     text-align: center;
     /* margin-top: 90px; */
     /* margin: 10px; */
-    /*border-radius: 10px;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .text{

@@ -1,5 +1,5 @@
 .footer {
-  /*display: flex;*/
+  display: flex;
   justify-content: space-between;
   /* background: linear-gradient(109.6deg, rgb(56, 56, 56) 91.1%,rgb(209, 134, 35) 11.2%); */
   /* background: linear-gradient(109.6deg, rgb(209,134,35) 2%, rgb(56, 56, 56) 5%, rgb(209,134,35) 50%); */
@@ -22,7 +22,7 @@
 }
 
 .contact-details {
-  /*max-width: 45%;*/
+  max-width: 45%;
   margin-bottom: 60px;
 }
 
@@ -33,10 +33,10 @@
 
 .quick-links {
   max-width: 45%;
-  /*display: flex;*/
+  display: flex;
   flex-wrap: wrap;
   margin-right: 700px;
-  /*margin-left: 135px; !* Adjust this line to move the quick links to the right *!*/
+  margin-left: 135px; /* Adjust this line to move the quick links to the right */
   white-space: nowrap; /* Prevents the text from wrapping */
   /*margin-top: 18px; */
 }
@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 150px; /* Adjust this height as needed */
+  height: 200px; /* Adjust this height as needed */
 }
 
 .quick-links ul li {
@@ -74,13 +74,12 @@
 
 .logo-container{
     display: flex;
-    width: fit-content;
-    /*flex-wrap: wrap;*/
+    width: 100px;
 }
 
 .logo-container img{
-    height: 50px;
-    margin-left: 5%;
+    height: 40px;
+    margin-left: 15px;
     padding: 5px;
-    /*margin-top: 15px;*/
+    margin-top: 15px;
 }
