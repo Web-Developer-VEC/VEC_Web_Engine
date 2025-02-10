@@ -7,8 +7,6 @@ import { createGlobalStyle } from "styled-components";
 import LandingPage from "./Landing.jsx";
 import Head from "./Components/Landing Comp/Head.jsx";
 import Footer from "./Components/Landing Comp/Footer.jsx";
-import Contact from "./Components/Landing Comp/ContactIcon.jsx";
-import Chat from "./Components/Landing Comp/ChatPopup.jsx";
 /* AboutUs Pages Imports */
 import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
 import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
@@ -71,10 +69,6 @@ const MainContentWrapper = styled.div`
 
 const App = () => {
   const footerRef = useRef(null);
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <>
