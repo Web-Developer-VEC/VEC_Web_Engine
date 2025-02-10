@@ -152,9 +152,9 @@ body {
 
 .about-department-image img {
   max-width: 100%;
-  height: auto;
+  height: 350px;
+  width: 500px;
   margin-left: 30px;  /* Optional gap on the left side of the image */
-
   border-radius: 15px; /* Softer, more modern rounded corners */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for a more sophisticated look */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */

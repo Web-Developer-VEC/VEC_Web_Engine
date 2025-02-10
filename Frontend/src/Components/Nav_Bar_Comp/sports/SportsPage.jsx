@@ -7,6 +7,7 @@ import ZonalResults from './ZonalResults';
 import WinnerSlider from './winners_sld';
 import Sportsfaculties from './sports_faculties';
 import Achievements from './achivements';
+import Achievements1 from './Achivements2';
 
 const SportsPage = () => {
   return (
@@ -43,6 +44,7 @@ const SportsPage = () => {
       </section>
       <SportsActionPlan />
       <SportsInfra/>
+      <Achievements1/>
       <ZonalResults/>
       <WinnerSlider />
       <Sportsfaculties/>

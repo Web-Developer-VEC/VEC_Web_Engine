@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "./Achievements.module.css";
+import styles from "./Achievements1.module.css";
 
 const achievements = [
   { id: 1, text: "Anna University Zonal Badminton (M) Third Place Match held at VEC", image: "/sports/achive1.png" },
@@ -20,7 +20,7 @@ const achievements = [
   { id: 13, text: "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal", image: "/sports/achive13.png" }
 ];
 
-const Achievements = () => {
+const Achievements1 = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -36,7 +36,8 @@ const Achievements = () => {
 
   return (
     <div className={styles.achievementsContainer}>
-      <h2 className="sports_achievement">Achievements</h2>
+      <h2 className={styles.sportscoordinator}>Anna University Zone 1</h2>
+      <p className={styles.coordinatordes}>Co-ordinating Centre 2024-25</p>
       <Slider {...settings}>
         {achievements.map((item) => (
           <div key={item.id} className={styles.slide}>
@@ -49,4 +50,4 @@ const Achievements = () => {
   );
 };
 
-export default Achievements;
+export default Achievements1;

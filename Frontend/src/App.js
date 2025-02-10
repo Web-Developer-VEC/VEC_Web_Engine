@@ -43,6 +43,7 @@ import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
 import IIC  from "./Components/iic.jsx";
 import Facultyprofile from './Components/structure/sections/Facultyprofile.jsx'
 import SportsPage from "./Components/Nav_Bar_Comp/sports/SportsPage.jsx";
+import Library from "./Components/Nav_Bar_Comp/library/LibraryLayout.jsx"
 import Login from "./Components/Pages/Login.jsx";
 
 
@@ -192,6 +193,8 @@ const App = () => {
                   <Route path="/admin" element={<CardPage />} />
                   <Route path="/proudalumni" element={<ProudAlumni />} />
                   <Route path="/principal" element={<Princ />} />
+                  <Route path="/hostel" element={<Hostel />} />
+                  <Route path="/library" element={<Library />} />
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />

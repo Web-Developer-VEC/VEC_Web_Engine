@@ -85,7 +85,7 @@ z-index: 1000;
 .place-modal-content {
 position: relative;
 background: white;
-width: 80%;
+width: 55%;
 height: 80%;
 border-radius: 8px;
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -323,7 +323,7 @@ text-align: left;
 
 /* Grid Layout for Courses */
 .place-Sylgrid {
-display: grid;
+/* display: grid; */
 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 gap: 16px;
 padding: 8px;
@@ -346,11 +346,11 @@ border-color: #7e694a;
 }
 
 /* Modal Responsive */
-.place-modal-content {
+/* .place-modal-content {
 width: 90%;
 max-width: 600px;
 height: auto;
-}
+} */
 
 /* Responsive Typography */
 .place-syl-container h2 {

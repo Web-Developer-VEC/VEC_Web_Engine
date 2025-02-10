@@ -567,7 +567,7 @@ a:hover {
   color: #e83f43;
 }
 
-img {
+.sport_img {
   width: 100%;
   height: 40vh;
   object-fit: cover;
@@ -597,7 +597,7 @@ img {
   color: #ffffff;
 }
 
-.description {
+.sports_description {
   position: relative;
   z-index: 1;
   margin: 1rem 0 1.5rem 0;
@@ -788,7 +788,7 @@ img {
     height: 60vh;
   }
 
-  .description {
+  .sports_description {
     font-size: 1.25rem;
     margin: 1rem 0 0 0;
   }
