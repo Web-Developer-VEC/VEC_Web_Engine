@@ -1,17 +1,18 @@
 import React from 'react';
-import Head from './Components/Head';
-import ImgSld from './Components/ImgSld';
-import Abt from './Components/About';
-import Announce from './Components/announcements';
-import Event from './Components/Events';
-import Tracker from './Components/Tracker';
-import Samplereact from './Components/Courses';
-import Footer from './Components/Footer';
-import Contact from './Components/ContactIcon'
-import Chat from './Components/ChatPopup'
-import Boot from './Components/BootUp';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "universal-cookie";
+
+import Boot from './Components/Landing Comp/BootUp';
+import Head from './Components/Landing Comp/Head';
+import ImgSld from './Components/Landing Comp/ImgSld';
+import Abt from './Components/Landing Comp/About';
+import Announce from './Components/Landing Comp/announcements';
+import Event from './Components/Landing Comp/Events';
+import Tracker from './Components/Landing Comp/Tracker';
+import Samplereact from './Components/Landing Comp/Courses';
+import Contact from './Components/Landing Comp/ContactIcon'
+import Chat from './Components/Landing Comp/ChatPopup'
+import Footer from './Components/Landing Comp/Footer';
 
 const courses = [
   {
