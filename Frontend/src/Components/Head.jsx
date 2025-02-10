@@ -301,7 +301,7 @@ const Head = () => {
                             className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[16]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[17]}</p>
+                    <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden rounded-full
                         bg-black text-[#fdcc03] px-2'>{hdrs[18]}</p>
                     <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3 ${hdr}`}>
