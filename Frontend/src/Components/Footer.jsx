@@ -25,7 +25,7 @@ const Footer = forwardRef ((props, ref) => {
                                   style={{color: "rgb(253, 204, 3)", textDecoration: "none"}}>9123547550</a> , <a
                 href="tel:+918939221120" style={{color: "rgb(253, 204, 3)", textDecoration: "none"}}>8939221120</a></p>
             <div className="mt-4 lg:mt-[-240px] lg:ml-[375px]">
-                <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[25vh] lg:mt-[-15rem]"
+                <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[30vh] lg:mt-[-15rem]"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1757.9530530830932!2d80.19081618175407!3d13.149609328912868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sVelammal%20Engineering%20College!5e1!3m2!1sen!2sin!4v1723700873764!5m2!1sen!2sin"
                     width="400"
                     height="260"

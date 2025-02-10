@@ -35,7 +35,7 @@ module.exports = {
       },
       bam: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '2.75vh'}
+        '100%': {fontSize: '2.75vmax'}
       },
       bom: {
         '0%': {fontSize: '0'},

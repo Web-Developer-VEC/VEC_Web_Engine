@@ -130,7 +130,7 @@
 
 .tiles .contentAnn h4{
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   gap: 10px;
   font-size:medium;
   color: black;
@@ -227,7 +227,7 @@
   border: none;
   padding: 5px 5px;
   cursor: pointer;
-  font-size: 16px;
+  /*font-size: 16px;*/
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }

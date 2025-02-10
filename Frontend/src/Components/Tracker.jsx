@@ -91,7 +91,7 @@ const StatsGrid = () => {
             <div className="stats-grid-container mt-[5%]">
                 <div className="stats-grid flex-wrap sm:gap-4 lg:gap-[10rem] h-fit rounded-lg lg:justify-between" ref={statsRef}>
                     <div className="stat-item basis-1/2 lg:basis-1/4 lg:px-2">
-                        <Lottie
+                        <Lottie className="mx-auto"
                             loop
                             animationData={require('./Assets/Active Learners.json')}
                             play
@@ -101,7 +101,7 @@ const StatsGrid = () => {
                         <p className="stat-label">Active Learners</p>
                     </div>
                     <div className="stat-item basis-1/2 lg:basis-1/4">
-                        <Lottie
+                        <Lottie className="mx-auto"
                             loop
                             animationData={require('./Assets/hike.json')}
                             play
@@ -112,7 +112,7 @@ const StatsGrid = () => {
                     </div>
                     <div className="basis-full lg:hidden"></div>
                     <div className="stat-item basis-1/2 lg:basis-1/4">
-                        <Lottie
+                        <Lottie className="mx-auto"
                             loop
                             animationData={require('./Assets/Hiring Partners.json')}
                             play
@@ -122,7 +122,7 @@ const StatsGrid = () => {
                         <p className="stat-label">Hiring Partners</p>
                     </div>
                     <div className="stat-item basis-1/2 lg:basis-1/4">
-                        <Lottie
+                        <Lottie className="mx-auto" 
                             loop
                             animationData={require('./Assets/salary.json')}
                             play
