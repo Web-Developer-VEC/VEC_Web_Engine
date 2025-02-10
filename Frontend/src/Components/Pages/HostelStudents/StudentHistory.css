@@ -1,8 +1,9 @@
+
 body{
     background-color: #5b5b5b;
 }
 /* Container Styles */
-.student-history-container {
+/* .student-history-container {
     align-items: center;
     margin: 2rem;
     background: rgba(255, 255, 255, 0.9);
@@ -13,14 +14,14 @@ body{
 }
 
 .student-history-header {
-    font-size: 2.0rem; /* Adjusted for better readability */
+    font-size: 2.0rem; 
     font-weight: bold;
-    color: #2c3e50; /* Dark blue-gray */
+    color: #2c3e50; 
     display: flex;
     margin-bottom: 3rem;
     align-items: center;
-    gap: 10px; /* Adds space between icon and text */
-  }
+    gap: 10px; 
+  } */
 
   .history-icon {
     width: 50px;  /* Adjust size as needed */
@@ -142,11 +143,13 @@ body{
     padding: 1.5rem;
     border-radius: 0.5rem;
     width: 90%;
+    padding: 20px;
     max-width: 600px;
     height: auto; /* Adjust height based on content */
     margin-top: 2rem; /* Add margin from the top */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow-y: auto; /* Allow scrolling inside the modal */
+    
 }
 
 .student-history-container .popup-x {
@@ -173,32 +176,6 @@ body{
 .student-history-container .details-column {
     flex: 1;
     min-width: 200px;
-}
-
-.student-history-container .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align modal content to the top */
-    z-index: 1000;
-    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
-}
-
-.student-history-container .modal-content {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    width: 90%;
-    max-width: 600px;
-    height: auto; /* Adjust height based on content */
-    margin-top: 2rem; /* Add margin from the top */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative; /* Ensure the close button is positioned correctly */
 }
 
 .student-history-container .popup-x {
@@ -326,16 +303,6 @@ body{
         width: 100%;
     }
 }
-
-.student-history-container .modal-content {
-    border-radius: 5px;
-    position: relative; /* This will allow the absolute positioning of the close button */
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 100%;
-  }
   
  .student-history-container .popup-x {
     position: absolute;  /* Absolute positioning for the close button */

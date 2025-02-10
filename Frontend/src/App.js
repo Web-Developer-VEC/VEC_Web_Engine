@@ -41,8 +41,6 @@ import ProudAlumni from "./Components/Nav_Bar_Comp/ProudAlumni.jsx";
 import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
 import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
 import IIC  from "./Components/iic.jsx";
-import StudentHistory from "./Components/Pages/StudentHistory.jsx";
-import HostelSidebar from "./Components/Pages/HostelSidebar.jsx";
 
 const GlobalStyle = createGlobalStyle`
   /* Global Cursor Style */
@@ -181,9 +179,6 @@ const App = () => {
                   <Route path="/admin" element={<CardPage />} />
                   <Route path="/proudalumni" element={<ProudAlumni />} />
                   <Route path="/principal" element={<Princ />} />
-                  <Route path="/hostel" element={<HostelSidebar/>}>
-                    <Route path="history" element={<StudentHistory />} /> 
-                  </Route >
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />

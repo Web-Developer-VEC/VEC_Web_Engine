@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './StudentHistory.css';
 import { X, History } from 'lucide-react';
-import '../Assets/30_ yearold_man_acting_like_college.png';
 
 const StudentHistory = () => {
   const history = [
@@ -104,15 +103,17 @@ const StudentHistory = () => {
   const handleCardClick = (data) => {
     setSelectedData(data);
     setIsModalOpen(true);
+    document.body.classList.add('blur-background');
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedData(null);
+    document.body.classList.remove('blur-background');
   };
 
   return (
-    <div className="student-history-container">
+    <div className="student-history-container card m-6 p-15">
       <div className="mb-8 flex justify-between">
         <h1 className="student-history-header flex items-center gap-2">
           <History className="history-icon" /> 
@@ -145,7 +146,9 @@ const StudentHistory = () => {
                       ? "bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg hover:shadow-xl transition-shadow" 
                       : "not-current bg-gradient-to-r from-gray-50 to-gray-100"
                   }`}
-                  onClick={() => val.year === "Current" && handleCardClick(info)}
+                  onClick={() => {
+                    val.year === "Current" && handleCardClick(info)
+                  }}
                 >
                   <div className="history-info">
                     <p className="text-secondary">
@@ -185,39 +188,39 @@ const StudentHistory = () => {
       </div>
 
       {isModalOpen && selectedData && (
-  <div className="modal-overlay">
-    <div className="modal-content">
-      <button onClick={closeModal} className="popup-x">
-        <X />
-      </button>
-      <h2 className="text-primary">Details</h2>
-      <div className="details-row">
-        <div className="details-column">
-          <p><strong>Place to Visit:</strong> {selectedData.placeToVisit}</p>
-          <p><strong>Reason:</strong> {selectedData.Reason}</p>
-          <p><strong>Out Date:</strong> {selectedData.outDate}</p>
-          <p><strong>In Date:</strong> {selectedData.inDate}</p>
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button onClick={closeModal} className="popup-x">
+              <X />
+            </button>
+            <h2 className="text-primary">Details</h2>
+            <div className="details-row">
+              <div className="details-column">
+                <p><strong>Place to Visit:</strong> {selectedData.placeToVisit}</p>
+                <p><strong>Reason:</strong> {selectedData.Reason}</p>
+                <p><strong>Out Date:</strong> {selectedData.outDate}</p>
+                <p><strong>In Date:</strong> {selectedData.inDate}</p>
+              </div>
+              <div className="details-column">
+                <p><strong>Status:</strong> 
+                  <span className={`status ${selectedData.status.toLowerCase().replace(/\s+/g, '-')}`}>
+                    {selectedData.status}
+                  </span>
+                </p>
+                <p><strong>Applied Date:</strong> {selectedData.applied_date}</p>
+                <p><strong>Pass Type:</strong> {selectedData.passType}</p>
+              </div>
+            </div>
+            <div className="flex justify-around">
+              <p><strong>Proof:</strong> <img src={`${selectedData.proof}`} alt="Proof" className="modal-image" /></p>
+              <p><strong>Scan ME:</strong> <img src={selectedData.qrImage} alt="QR Code" className="modal-image" /></p>
+            </div>
+            <button onClick={closeModal} className="modal-close-button">
+              Close
+            </button>
+          </div>
         </div>
-        <div className="details-column">
-          <p><strong>Status:</strong> 
-            <span className={`status ${selectedData.status.toLowerCase().replace(/\s+/g, '-')}`}>
-              {selectedData.status}
-            </span>
-          </p>
-          <p><strong>Applied Date:</strong> {selectedData.applied_date}</p>
-          <p><strong>Pass Type:</strong> {selectedData.passType}</p>
-        </div>
-      </div>
-      <div className="flex justify-around">
-        <p><strong>Proof:</strong> <img src={`${selectedData.proof}`} alt="Proof" className="modal-image" /></p>
-        <p><strong>Scan ME:</strong> <img src={selectedData.qrImage} alt="QR Code" className="modal-image" /></p>
-      </div>
-      <button onClick={closeModal} className="modal-close-button">
-        Close
-      </button>
-    </div>
-  </div>
-)}
+      )}
     </div>
   );
 };

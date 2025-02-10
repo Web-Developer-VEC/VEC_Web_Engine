@@ -15,9 +15,9 @@ const HostelSidebar = () => {
             case "history":
                 return <StudentHistory />;
             case "profile":
-                return <h2>Profile Component</h2>;
+                return <h2></h2>;
             default:
-                return <h2>Profile Component</h2>;
+                return <h2></h2>;
         }
     };
 
