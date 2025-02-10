@@ -87,7 +87,6 @@ function Carousel() {
 
     const handleHoverStart = () => {
         isHovered.current = true;
-        console.log("Clickey")
     };
 
     const handleHoverEnd = () => {
