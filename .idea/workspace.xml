@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Assets/Hell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Assets/youtube.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/ChatPopup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Events.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/ImgSld.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Tracker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/announcements.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Landing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Head.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +60,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Leroy\ReactProjects\CoolVec\Frontend\src\Components\Assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Leroy\ReactProjects\VEC_Final" />
       <recent name="C:\Users\Leroy\ReactProjects\VEC_Final\Frontend\src" />
@@ -105,7 +98,7 @@
       <workItem from="1738898709447" duration="4384000" />
       <workItem from="1738903785758" duration="12849000" />
       <workItem from="1738987559153" duration="4395000" />
-      <workItem from="1739158070806" duration="981000" />
+      <workItem from="1739158070806" duration="1754000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />
