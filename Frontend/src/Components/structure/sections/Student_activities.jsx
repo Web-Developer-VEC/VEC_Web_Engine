@@ -66,7 +66,7 @@ const ImageCarousel = ({data}) => {
               >
                 <img
                   src={item.image_path}
-                  alt={item.image_content}        //image title is image_content in db change it to event_name
+                  alt={item.event_name}        //image title is image_content in db change it to event_name
                   className="carousel-image"
                 />
               </div>
@@ -98,8 +98,8 @@ const ImageCarousel = ({data}) => {
         </div>
 
         <div className="description-box">
-          <h2 className="description-title">{images[currentIndex]?.image_content}</h2>    {/*image title is image_content in db change it to event_name*/}
-          <p className="description-text">{images[currentIndex]?.event_name}</p>          {/*image content is image_name in db change it to image_content*/}
+          <h2 className="description-title">{images[currentIndex]?.event_name}</h2>    {/*image title is image_content in db change it to event_name*/}
+          <p className="description-text">{images[currentIndex]?.image_content}</p>          {/*image content is image_name in db change it to image_content*/}
         </div>
       </div>
     </div>

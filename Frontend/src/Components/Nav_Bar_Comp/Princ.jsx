@@ -41,7 +41,6 @@ const Princ = () => {
   // Destructure fetched data
   const { photo_path, name, qualification, message } = data;
 
-
   return (
     <>
       <Banner
@@ -54,7 +53,7 @@ const Princ = () => {
         <div className="flex flex-col lg:flex-row-reverse items-start">
           {/* Image on the right for large screens, floating for text wrapping */}
           <div className="lg:max-w-sm lg:ml-6 flex-shrink-0">
-          <img
+            <img
               className="max-h-[40vh] lg:max-h-[45vh] w-auto rounded-xl float-right"
               src={photo_path}
               alt="Principal"
@@ -66,9 +65,9 @@ const Princ = () => {
           </div>
 
           {/* Text Content Wrapped Around */}
-          <div className="text-justify leading-relaxed">
-            <p className="text-2xl lg:text-3xl font-bold mb-3">From the Principal's Desk</p>
-            <q className="text-lg lg:text-xl italic">{message}</q>
+          <div className="text-justify leading-relaxed max-w-[80%] lg:max-w-[60%] mx-auto">
+            <p className="text-xl lg:text-2xl font-bold mb-3">From the Principal's Desk</p>
+            <q className="text-md lg:text-lg italic block">{message}</q>
           </div>
         </div>
       </div>

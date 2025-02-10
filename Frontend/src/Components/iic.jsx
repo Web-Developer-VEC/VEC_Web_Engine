@@ -176,6 +176,7 @@ const Iic = () => {
   const renderNIRContent = () => {
     return (
       <div className="nir-container">
+        <h2>National Innovation Repository (NIR)</h2>
         {nirSectionsArray.map((section, index) => (
           <div key={index} className="nir-section">
             <h3 className="nir-heading">{section.heading}</h3>

@@ -38,7 +38,7 @@
   padding: 10px;
 }
 
-.card {
+.sports_card {
   background-color: white;
   padding: 30px;
   border-radius: 15px;
@@ -46,29 +46,29 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h3 {
+.sports_card h3 {
   font-size: 26px;
   color: #333;
   margin-bottom: 15px;
 }
 
-.card p, .card ul {
+.sports_card p, .sports_card ul {
   font-size: 18px;
   color: #555;
   line-height: 1.8;
 }
 
-.card ul {
+.sports_card ul {
   list-style-type: none;
   padding: 0;
 }
 
-.card li {
-  padding-left: 20px;
+.sports_card li {
+  padding-left: 30px;
   position: relative;
 }
 
-.card li::before {
+.sports_card li::before {
   content: '✔️';
   position: absolute;
   left: 0;
@@ -76,17 +76,17 @@
   color: #ff6600;
 }
 
-.card:hover {
+.sports_card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Additional-Info Card Styles */
-.card.additional-info {
-  grid-column: span 2;  /* This will make the card span across two columns in the grid */
+/* Additional-Info sports_card Styles */
+.sports_card.additional-info {
+  grid-column: span 2;  /* This will make the sports_card span across two columns in the grid */
 }
-.card.training {
-  grid-column: span 2;  /* This will make the card span across two columns in the grid */
+.sports_card.training {
+  grid-column: span 2;  /* This will make the sports_card span across two columns in the grid */
 }
 .additional-info ul {
   padding-left: 20px;
@@ -136,27 +136,27 @@
     gap: 20px;
   }
 
-  .card {
+  .sports_card {
     padding: 20px;
     border-radius: 10px;
   }
 
-  .card h3 {
+  .sports_card h3 {
     font-size: 20px;
     margin-bottom: 10px;
   }
 
-  .card p, .card ul {
+  .sports_card p, .sports_card ul {
     font-size: 14px;
     line-height: 1.5;
   }
 
-  .card li::before {
+  .sports_card li::before {
     font-size: 16px;
   }
 
-  .card.additional-info,
-  .card.training {
+  .sports_card.additional-info,
+  .sports_card.training {
     grid-column: span 1;
   }
 }
@@ -176,19 +176,19 @@
     font-size: 12px;
   }
 
-  .card {
+  .sports_card {
     padding: 15px;
   }
 
-  .card h3 {
+  .sports_card h3 {
     font-size: 18px;
   }
 
-  .card p, .card ul {
+  .sports_card p, .sports_card ul {
     font-size: 12px;
   }
 
-  .card li::before {
+  .sports_card li::before {
     font-size: 14px;
   }
 }

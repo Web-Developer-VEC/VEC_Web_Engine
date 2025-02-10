@@ -38,13 +38,17 @@ h5, h6 {
     text-align: center;
     color: #333;
   }
+
+  .mba-content{
+    max-width: 800px;
+    margin: 0 auto;
+  }
   
   .mba-intake-table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     position: relative;
-
   }
   
   .mba-intake-table th,

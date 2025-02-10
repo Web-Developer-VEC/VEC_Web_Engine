@@ -121,7 +121,7 @@ const SportsInfra = () => {
                       </div>
                       <div className="column-xs-12 column-md-10">
                         <div className="image-holder">
-                          <img src={item.imageUrl} alt={item.title} />
+                          <img className="sport_img" src={item.imageUrl} alt={item.title} />
                         </div>
                         <div className="grid1">
                           <div className="column-xs-12 column-md-9">
@@ -134,7 +134,7 @@ const SportsInfra = () => {
                                 </h1>
                               </a>
                             </div>
-                            <p className="description">{item.description}</p>
+                            <p className="sports_description">{item.description}</p>
                           </div>
                         </div>
                       </div>
