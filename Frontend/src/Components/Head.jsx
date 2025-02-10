@@ -164,12 +164,9 @@ const Head = () => {
 
     function griddy(nvd, cld) {
         let arr = [], num = cld.at(-1)
-        console.log(nvd)
-        console.log(`${cld.slice(0, -1)}, ${max(cld.slice(0, -1))}`)
         if (cld.length > 2) num = max(cld.slice(0, -1))
         for (let i = 0; i < num; i++) {
             for (let j = 0; j < cld.length - 1; j++) {
-                console.log(`Cld ${i + cld[j]} ${nvd[i + cld[j]]}, ${nvd[0].ttl}, ${i + cld[j]}`)
                 if (nvd[i + cld[j]]) {
                     arr.push(nvd[i + cld[j]])
                 } else {
@@ -177,7 +174,6 @@ const Head = () => {
                 }
             }
         }
-        console.log(arr)
         return arr
     }
 
