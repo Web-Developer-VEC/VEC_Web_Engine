@@ -7,7 +7,7 @@ import "./Events.css";
 function EventBox({ event, onMouseEnter, onMouseLeave }) {
   return (
     <motion.div
-      className="caro-item"
+      className="caro-item text-lg"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       onHoverStart={onMouseEnter}
@@ -21,11 +21,11 @@ function EventBox({ event, onMouseEnter, onMouseLeave }) {
           <div className="event-date">
             <div className="circle">{event.start_date}</div>
           </div>
-          <div className="event-name">{event.title}</div>
+          <div className="event-name line-clamp-2 text-2xl">{event.title}</div>
         </div>
         <div className="event-details">
-          <div className="event-row department-name">{event.department}</div>
-          <div className="event-row description">{event.content}</div>
+          <div className="event-row department-name text-xl">{event.department}</div>
+          <div className="event-row description text-sm line-clamp-2">{event.content}</div>
           <div className="event-footer">
             <div className="event-row duration">
               <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
@@ -120,7 +120,7 @@ function Carousel() {
         </motion.button>
       </div>
       <div className="caro-container font-popp">
-        <motion.div className="caro-content" style={{ x: wrappedX }}>
+        <motion.div className="caro-content text-xl" style={{ x: wrappedX }}>
           {duplicatedEvents.map((event, index) => (
             <EventBox
               key={index}

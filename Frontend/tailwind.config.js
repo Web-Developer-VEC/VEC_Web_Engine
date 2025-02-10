@@ -35,23 +35,27 @@ module.exports = {
       },
       bam: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '5.75vmin'}
+        '100%': {fontSize: '2.75vh'}
       },
       bom: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '5.75vmin'}
+        '100%': {fontSize: '1.75vh'}
       },
       bem: {
         '0%': {fontSize: '0'},
         '100%': {fontSize: '2.25vh'}
       },
       Social: {
-        '0%, 100%': {height: '1rem'},
-        '50%': {height: '2rem'}
+        '0%, 100%': {filter: true},
+        '50%': {filter: false},
       },
       fadIn: {
         '0%': {opacity: '0'},
         '100%': {opacity: '1'}
+      },
+      fadOut: {
+        '0%': {opacity: '1'},
+        '100%': {opacity: '0', zIndex: '-1'}
       },
       cnnt: {
         '0%': {opacity: '0'},
@@ -61,11 +65,11 @@ module.exports = {
         '100%': {transform: 'translateX(10vmax)'},
       },
       LslideIn: {
-        '0%': {transform: 'translateX(40vmax)', opacity: '0'},
-        '2%': {transform: 'translateX(5vmax)', opacity: '1'},
-        '16.67%': {transform: 'translateX(5vmax)', opacity: '1'},
+        '0%': {transform: 'translateX(40vw)', opacity: '0'},
+        '2%': {transform: 'translateX(5vw)', opacity: '1'},
+        '16.67%': {transform: 'translateX(5vw)', opacity: '1'},
         // '20%': {opacity: '0'},
-        '17.67%': {transform: 'translateX(-40vmax)', opacity: '0'},
+        '17.67%': {transform: 'translateX(-40vw)', opacity: '0'},
         '100%': {opacity: '0'}
       },
       LslideUp: {
@@ -77,4 +81,3 @@ module.exports = {
   },
   plugins: [],
 }
-

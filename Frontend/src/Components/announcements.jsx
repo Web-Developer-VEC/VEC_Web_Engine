@@ -100,7 +100,7 @@ const Announcements1 = () => {
                 <h2 className='text-3xl' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i} className='text-xl'>
+                    <h4 key={i} className='text-3xl'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
                     </h4>
@@ -110,8 +110,8 @@ const Announcements1 = () => {
               <div className="card-back">
                 <h2 className='text-[3lvh]' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <h4 key={i + 5} className='text-[2lvh] truncate'>
+                  {Array.from({ length: 7 }).map((_, i) => (
+                    <h4 key={i + 5} className='text-2xl'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
                     </h4>
