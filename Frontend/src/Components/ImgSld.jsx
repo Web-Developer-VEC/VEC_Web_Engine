@@ -15,7 +15,7 @@ const ImgSld = () => {
         'Get Involved: Clubs, Events, and More at VEC',
     ];
     const vidHdr = [
-        "+91 99969 00420", "velammal@hell.go.kill.ur.self"
+        "+91  91235 47550", "velammal@velammal.edu.in"
     ]
     // const lst1 = [...lst, ...lst]
 
