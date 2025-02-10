@@ -278,7 +278,7 @@ const Head = () => {
                         {/* </div> */}
                     </div>
                 </div>
-                <div className='hidden lg:flex font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem]
+                <div className='hidden lg:flex pl-4 font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem]
                     text-slate-950 rounded-b-lg transition-all'>
                     {/*<EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[0]}</p>*/}
                     {/*<PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[1]}</p>*/}
@@ -312,7 +312,7 @@ const Head = () => {
                     </div>
                 </div>
                 <div
-                    className='block lg:hidden mt-[2vmax] duration-300 ease-in-out transition-all size-12 border-black m-3 h-fit rounded-md'>
+                    className='block lg:hidden h-fit'>
                     <Sidebar Sz="tny p-0"/></div>
             </nav>
         </>

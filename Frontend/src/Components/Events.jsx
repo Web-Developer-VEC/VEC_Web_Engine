@@ -108,7 +108,7 @@ function Carousel() {
 
     return (
         <div className="event-carousel-wrapper">
-            <div className="event-nav-button-area left">
+            <div className="nav-button-area left">
                 <motion.button
                     className="nav-button"
                     onClick={() => x.set(x.get() - CARD_WIDTH)}
@@ -121,7 +121,7 @@ function Carousel() {
             <div className="caro-container font-popp">
                 <motion.div className="caro-content text-xl" style={{x: wrappedX}}>
                     {duplicatedEvents.map((event, index) => (
-                        <div onClick={handleHoverStart} onMouseLeave={handleHoverEnd} key={index}>
+                        <div draggable={true} onClick={handleHoverStart} onMouseLeave={handleHoverEnd} key={index}>
                             <EventBox
                                 event={event}
                                 onMouseEnter={handleHoverStart}

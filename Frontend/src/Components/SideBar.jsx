@@ -114,7 +114,7 @@ const hdrs = [
 return (
   <div>
     {/* Sidebar Open Button */}
-    <button onClick={() => setIsOpen(true)} className={`fixed top-1 right-2 z-50 bg-gray-900 text-white p-2 rounded-lg shadow-xl transition-all duration-300 ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}>
+    <button onClick={() => setIsOpen(true)} className={`fixed top-2 right-2 z-50 bg-gray-900 text-white p-2 rounded-lg shadow-xl transition-all duration-300 ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}>
       <Bars3Icon className="w-7 h-7" />
     </button>
 

@@ -14,6 +14,9 @@ const ImgSld = () => {
         'Discover Opportunities for Personal and Academic Growth',
         'Get Involved: Clubs, Events, and More at VEC',
     ];
+    const vidHdr = [
+        "+91 99969 00420", "velammal@hell.go.kill.ur.self"
+    ]
     // const lst1 = [...lst, ...lst]
 
     // Debounce function to limit how often the scroll event is processed
@@ -58,15 +61,23 @@ const ImgSld = () => {
                     playsInline>
                     <source src={Vide} type='video/mp4'/>
                 </video>
-
-                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -right-5 lg:right-[1vmax]
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] left-0 mb-3 ml-3">
+                    {vidHdr.map((hdr) => (
+                        <p className="bg-white rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-white outline-offset-2 hover:outline-[#fdcc03]
+                        bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
+                        text-slate-950 bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03]
+                        via-50% to-white to-50% border-slate-700 w-full duration-[150ms]
+                        ease-in transition-all hover:bg-[position:-100%_100%]">{hdr}</p>
+                    ))}
+                </div>
+                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
                     <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
-                                animate-[LslideIn_40s_ease-in_infinite] p-4 border-y-2 
+                                animate-[LslideIn_40s_ease-in_infinite] p-4 border-y-2 line-clamp-3 lg:line-clamp-none 
                                 [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
-                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[2vmax]`}
+                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[1.75vmax]`}
                                style={{animationDelay: `${i * 7}s`}}
                                key={i}
                             >

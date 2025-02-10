@@ -122,7 +122,7 @@ const Boot = (props) => {
             <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000]  
                 ${(!isAuth) ? 'bg-white animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
                     'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' }`}>
-                <div className='relative lg:w-[20vmax] lg:h-[20vmax] w-[40vmax] h-[40vmax] group/ttl'>
+                <div className='relative w-[20vmax] h-[20vmax] group/ttl'>
                     <div className='w-full h-full [clip-path:polygon(0_0,100%_0,100%_50%,65%_65%,53%_80%,60%_70%,50%_40%,40%_70%,42%_70%,0_45%)] absolute'>
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox='0 0 500 500'
                              className={`${(!isAuth) ? '[animation-delay:0.5s,1.5s] scale-0 animate-[sizeUp_1s_ease_forwards,twirl_1.5s_ease_infinite]' : 

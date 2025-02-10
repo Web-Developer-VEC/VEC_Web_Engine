@@ -108,9 +108,9 @@ const CourseCarousel = ({ courses }) => {
           </button>
         </div>
 
-        <div className="flex flex-wrap px-12 mb-4 justify-center gap-4 w-screen">
+        <div className="flex flex-wrap px-12 mb-4 justify-center gap-4 w-screen lg:mt-2">
           {rdb.map((btn, i) => (
-            <button key={i} className={`font-comf text-[1.5vmax] px-2 ${(pos === i + 1) ? 'border-b-2' : ''}`}
+            <button key={i} className={`font-comf text-[1.25rem] px-2 ${(pos === i + 1) ? 'border-b-2' : ''}`}
               style={{ color: btn.clr, borderBottomColor: btn.clr }}
               type="button" name="pos" onClick={() => { pos_hdl(i + 1) }}>
               {btn.name}
