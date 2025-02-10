@@ -35,7 +35,6 @@ function ChatPopup() {
       {isChatOpen && (
         <div className="chat-popup">
           <h2>Chat with us!</h2>
-          
           {/* Display messages */}
           <div className="messages">
             {messages.map((message, index) => (

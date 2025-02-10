@@ -44,6 +44,7 @@ import IIC  from "./Components/iic.jsx";
 import Facultyprofile from './Components/structure/sections/Facultyprofile.jsx'
 import SportsPage from "./Components/Nav_Bar_Comp/sports/SportsPage.jsx";
 import Library from "./Components/Nav_Bar_Comp/library/LibraryLayout.jsx"
+import Login from "./Components/Pages/Login.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -159,6 +160,7 @@ const App = () => {
                   <Route path="/naac" element={<Naac1 />} />
                   <Route path="/nba" element={<Nba1 />} />
                   <Route path="/iic" element={<IIC />} />
+                  <Route path='/login' element={<Login />}/>
                   <Route path="/dept/:deptID" element={<Dept />} />
                   <Route path="/v_m" element={<Collegevisionmission />} />
                   <Route path="/reg" element={<REGULATION />} />
@@ -193,7 +195,6 @@ const App = () => {
                   <Route path="/principal" element={<Princ />} />
                   <Route path="/hostel" element={<Hostel />} />
                   <Route path="/library" element={<Library />} />
-
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />
