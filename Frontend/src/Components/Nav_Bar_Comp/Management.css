@@ -40,7 +40,41 @@
     color: #444;
 }
 
-/* Media Query for Mobile */
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .Management div {
+        width: 95%;
+        max-width: 900px;
+        padding: 18px;
+        margin: 15px auto;
+    }
+
+    .Management div img {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        float: none;
+        display: block;
+        margin: 0 auto 12px;
+    }
+
+    .Management div h2 {
+        text-align: center;
+        font-size: 1.6em;
+    }
+
+    .Management div p {
+        text-align: justify;
+        font-size: 1em;
+        line-height: 1.8;
+    }
+
+    .Management .Chairman {
+        height: auto;
+    }
+}
+
+/* Mobile - Tablets & Small Laptops */
 @media screen and (max-width: 768px) {
     .Management {
         display: flex;
@@ -50,46 +84,42 @@
     }
 
     .Management div {
-        width: 90%; /* Full width for mobile */
-        max-width: 800px; /* Restrict width on larger mobile screens */
-        padding: 15px;
-        margin: 20px 0;
+        width: 95%;
+        max-width: 700px;
+        padding: 16px;
+        margin: 15px 0;
     }
 
     .Management div img {
-        width: 90%; /* Larger image size for mobile */
-        max-width: 450px; /* Cap the size to avoid overly large images */
-        float: none; /* Disable float for mobile */
-        display: block; /* Center the image */
-        margin: 0 auto 15px auto; /* Center and add spacing below */
+        width: 100%;
+        max-width: 400px;
+        height: auto;
     }
 
     .Management div h2 {
-        text-align: center;
-        font-size: 1.5em; /* Adjust font size */
+        font-size: 1.4em;
     }
 
     .Management div p {
-        text-align: justify; /* Better readability */
-        font-size: 0.95em; /* Slightly smaller font size */
-        line-height: 1.6; /* Adjust line height for better spacing */
+        font-size: 0.95em;
+        line-height: 1.7;
     }
 
-    .Management .Chairman{
-        height: 420px;
+    .Management .Chairman {
+        height: auto;
     }
 }
 
-/* Media Query for Extra Small Devices */
+/* Extra Small Devices */
 @media screen and (max-width: 480px) {
     .Management div {
-        padding: 10px;
-        margin: 10px 0;
+        padding: 12px;
+        margin: 12px 0;
     }
 
     .Management div img {
-        width: 90%; /* Slightly larger size for very small devices */
-        max-width: 350px; /* Increase max size for clarity */
+        width: 100%;
+        max-width: 320px;
     }
 
     .Management div h2 {
@@ -97,7 +127,7 @@
     }
 
     .Management div p {
-        font-size: 0.9em; /* Adjust font size further */
+        font-size: 0.9em;
+        line-height: 1.6;
     }
-
 }
