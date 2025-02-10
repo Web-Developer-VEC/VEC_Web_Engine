@@ -39,11 +39,11 @@ module.exports = {
       },
       bom: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '1.75vh'}
+        '100%': {fontSize: '1.75vmax'}
       },
       bem: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '2.25vh'}
+        '100%': {fontSize: '2.25vmax'}
       },
       Social: {
         '0%, 100%': {filter: true},
