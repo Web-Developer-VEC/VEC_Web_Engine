@@ -57,7 +57,7 @@
   /* margin-top: 50px; */
   border: none;
   border-radius: 5px;
-  background: repeating-linear-gradient(120deg, red, rgb(119, 15, 1), red, rgb(119, 15, 1), red);
+  background: repeating-linear-gradient(120deg, red, rgb(119, 15, 1), red, rgb(119, 15, 1));
   background-repeat:repeat-x;
   /* height: 100%; */
   /* position: absolute; */

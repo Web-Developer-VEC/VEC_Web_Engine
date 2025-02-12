@@ -8,7 +8,7 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
     return (
         <motion.div
             className="caro-item text-lg"
-            whileHover={{scale: 1.05}}
+            whileHover={{scale: 1.1, zIndex: 10}}
             transition={{duration: 0.3, ease: "easeOut"}}
             onHoverStart={onMouseEnter}
             onHoverEnd={onMouseLeave}
@@ -25,7 +25,7 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
                 </div>
                 <div className="event-details">
                     <div className="event-row department-name text-xl">{event.department}</div>
-                    <div className="event-row description text-sm line-clamp-2">{event.content}</div>
+                    <div className="event-row description text-md/2 line-clamp-2">{event.content}</div>
                     <div className="event-footer">
                         <div className="event-row duration">
                             <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
