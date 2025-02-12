@@ -64,9 +64,10 @@ const Announcements1 = () => {
   };
 
   return (
-    <div className="news font-popp mb-[75vh] lg:mb-[27.5vmin] mt-4">
+      // mb-[75vh] lg:mb-[27.5vmin]
+    <div className="news font-popp mt-4">
       {/*<p className="text-xl text-amber-600 ml-6">News</p>*/}
-      <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] max-h-[60lvh] w-full">
+      <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] w-full">
         <div className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
           <div className="cont w-[105%] absolute h-full"></div>
           <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%]" src={img1} alt="college" />
@@ -88,7 +89,7 @@ const Announcements1 = () => {
               </li>
             ))}
           </ul>
-          <button className="hover:animate-[AnimationName_3s_linear_infinite]">Apply Now</button>
+          <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button>
         </div>
 
         {/* Announcements Section */}
@@ -98,10 +99,10 @@ const Announcements1 = () => {
             onMouseLeave={() => setHovered(false)}>
             <div className={`card-inner ${flipped ? "flipped" : ""}`}>
               <div className="card-front">
-                <h2 className='text-3xl' style={{marginBottom: 0}}>Announcements</h2>
+                <h2 className='text-3xl text-[#953b0a]' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn w-full">
-                  {Array.from({ length: 7 }).map((_, i) => (
-                    <h4 key={i} className='text-3xl'>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <h4 key={i} className='text-base/6 line-clamp-2'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
                     </h4>
@@ -109,10 +110,10 @@ const Announcements1 = () => {
                 </div>
               </div>
               <div className="card-back">
-                <h2 className='text-[3lvh]' style={{marginBottom: 0}}>Announcements</h2>
+                <h2 className='text-[3lvh] text-[#953b0a]' style={{marginBottom: 0}}>Announcements</h2>
                 <div className="contentAnn w-full">
                   {Array.from({ length: 7 }).map((_, i) => (
-                    <h4 key={i + 5} className='text-2xl'>
+                    <h4 key={i + 5} className='text-base/6 line-clamp-2'>
                       <a><i className="fa-solid fa-right-to-bracket"></i></a>
                       {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
                     </h4>

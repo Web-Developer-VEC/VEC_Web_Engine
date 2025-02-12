@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "universal-cookie";
 
 import Boot from './Components/Landing Comp/BootUp';
-import Head from './Components/Landing Comp/Head';
 import ImgSld from './Components/Landing Comp/ImgSld';
 import Abt from './Components/Landing Comp/About';
 import Announce from './Components/Landing Comp/announcements';
@@ -96,7 +95,7 @@ const LandingPage = () => {
     <div className="landing-page -mt-[5vmax]">
       <Boot isAuth={isAuth} />
       <ImgSld/>
-      <div className='w-max lg:max-w-full max-w-[100vw] h-fit absolute z-50'>
+      <div className='w-max max-w-[100vw] h-fit absolute z-50'>
         <div className='pt-2 pb-[2vmax] bg-white'>
           <Abt />
           <Announce/>
