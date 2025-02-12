@@ -43,6 +43,8 @@ import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
+import Grievences from "./Components/Second_Nav_Bar/Grievences.jsx";
+import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -73,7 +75,6 @@ const App = () => {
     return (
         <>
             <GlobalStyle/>
-
             {/* The rest of the routes */}
             <Router>
                 <AppContainer className="App">
@@ -111,6 +112,7 @@ const App = () => {
                                 <Route path="/sports" element={<SportsPage/>}/>
                                 <Route path="/library" element={<Library/>}/>
                                 <Route path="/hostel" element={<Hostel/>}/>
+                                <Route path="/greviences" element={<GrievanceForm />}/>
                                 <Route path='/login' element={<Login/>}/>
                             </Routes>
                         </MainContentWrapper>
