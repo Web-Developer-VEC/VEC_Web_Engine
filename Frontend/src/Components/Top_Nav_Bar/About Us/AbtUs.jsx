@@ -38,7 +38,7 @@ const AbtUs = () => {
                         <p className='text-2xl font-bold text-amber-950 text-center'>{secSub}</p>
                         <p className="text-3xl text-center mt-4">{secCnt}</p>
                     </div>
-                    <div className='absolute lg:relative w-[120vw] h-[45vh] left-[-20vw] top-[25%] lg:left-0 lg:top-0
+                    <div className='absolute lg:relative w-[120vw] h-[45vh] left-[-20vw] top-[25%] lg:left-0 lg:top-10
                         opacity-40 lg:opacity-100'>
                         <img className='absolute w-[40%] h-[65%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]'
                              src={Bannerimg} alt="Banner Image0"/>
