@@ -119,7 +119,7 @@ const Boot = (props) => {
             <canvas
                 className={'fixed bg-white z-[1000] size-full top-0 animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s] ' + dwn}
                 ref={canRf}></canvas>
-            <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0  
+            <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 
                 ${(!isAuth) ? 'bg-white animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
                     'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' }`}>
                 <div className='relative w-[20vmax] h-[20vmax] group/ttl'>
