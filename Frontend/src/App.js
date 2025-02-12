@@ -76,7 +76,7 @@ const App = () => {
 
             {/* The rest of the routes */}
             <Router>
-                <AppContainer className="App">
+                <AppContainer className="App bg-white">
                     {/* Conditionally render Head and Footer */}
                     <>
                         <Head/>
