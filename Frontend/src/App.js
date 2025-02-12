@@ -74,22 +74,15 @@ const App = () => {
     <>
       <GlobalStyle />
 
-      <Router>
-        {/* Landing Page Route */}
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </Router>
 
       {/* The rest of the routes */}
       <Router>
         <AppContainer className="App">
-          {/* Conditionally render Head and Footer */}
-          {window.location.pathname !== "/" && (
             <>
               <Head />              
               <MainContentWrapper>
                 <Routes>
+                  <Route path="/" element={<LandingPage />} />
                   <Route path="/abt-us" element={<AbtUs />} />
                   <Route path="/trust" element={<Trust />} />
                   <Route path="/v_m" element={<Collegevisionmission />} />
@@ -123,7 +116,6 @@ const App = () => {
               </MainContentWrapper>
               <Footer ref={footerRef} />
             </>
-          )}
         </AppContainer>
       </Router>
     </>

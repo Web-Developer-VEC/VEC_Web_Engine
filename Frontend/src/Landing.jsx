@@ -93,9 +93,8 @@ const LandingPage = () => {
   console.log(isAuth);
   
   return (
-    <div className="landing-page">
+    <div className="landing-page -mt-[5vmax]">
       <Boot isAuth={isAuth} />
-      <Head/>
       <ImgSld/>
       <div className='w-max lg:max-w-full max-w-[100vw] h-fit absolute z-50'>
         <div className='pt-2 pb-[2vmax] bg-white'>
