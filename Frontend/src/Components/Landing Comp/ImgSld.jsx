@@ -17,7 +17,6 @@ const ImgSld = () => {
     const vidHdr = [
         "+91  91235 47550", "velammal@velammal.edu.in"
     ]
-    // const lst1 = [...lst, ...lst]
 
     // Debounce function to limit how often the scroll event is processed
     const debounce = (func, wait = 100) => {
@@ -53,8 +52,9 @@ const ImgSld = () => {
     }, []);
 
     return (
-        <div className='w-[500%]'>
-            <div className="flex h-[30vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent w-[100vw]">
+        <div className=''>
+            <div className="flex h-[30vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
+                w-[100vw] pointer-event-none">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef1} id='BgVid'
@@ -75,22 +75,16 @@ const ImgSld = () => {
                     <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
-                                animate-[LslideIn_40s_ease-in_infinite] p-4 border-y-2 line-clamp-3 lg:line-clamp-none 
-                                [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
-                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[1.75vmax]`}
+                                animate-[LslideIn_40s_ease-in_infinite] px-4 py-[4vw] border-y-2 line-clamp-2 
+                                lg:line-clamp-none [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
+                                bg-[#0000001a] backdrop-blur-[0px] text-white text-[125%]`}
                                style={{animationDelay: `${i * 7}s`}}
-                               key={i}
-                            >
-                                {elm}
+                               key={i}>{elm}
                             </p>
                         ))}
                     </div>
                 </div>
 
-                {/*<video className={`h-[50vh] w-auto bg-cover fixed ${vid} z-0`}*/}
-                {/*    ref={videoRef2} muted playsInline>*/}
-                {/*    <source src={Vide} type='video/mp4'/>*/}
-                {/*</video>*/}
                 <img alt="Hell on earth" src={College} className={`h-[100vh] w-auto bg-cover bottom-0 fixed z-0`}/>
             </div>
         </div>
