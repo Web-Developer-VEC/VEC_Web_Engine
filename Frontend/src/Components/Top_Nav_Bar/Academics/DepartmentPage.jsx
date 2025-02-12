@@ -23,8 +23,6 @@ const DepartmentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-
-  console.log("ajith",activeSection)
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);

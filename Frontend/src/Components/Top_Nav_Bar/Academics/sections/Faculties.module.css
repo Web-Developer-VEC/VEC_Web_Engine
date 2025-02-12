@@ -36,7 +36,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   gap: 20px;
-  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .firstTileImage {
@@ -50,6 +50,7 @@
 /* Grid for remaining tiles */
 .gridContainer {
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(270px, 2fr));
   justify-content: center;
 }
@@ -68,6 +69,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 20px;
 }
 
 .imageCard img {
@@ -135,6 +137,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10px;
   gap: 8px; /* Add spacing between text elements */
 }
 
@@ -143,12 +146,14 @@
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
+  width: fit-content;
 }
 
 .firstTileContent p {
   font-size: 16px;
   color: #555;
   margin-bottom: 10px;
+  width: fit-content;
 }
 
 .firstTileSocialLinks {
@@ -195,6 +200,67 @@
   transform: scale(1.2);
 }
 
+.prefaculty{
+  display: flex;
+  justify-content: flex-end;
+  /*border: 1px dotted black;*/
+  margin-right: 35px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.prefacultybtn{
+  padding: 8px;
+  font-size: medium;
+  background-color: #fdcc03;
+  border-radius: 20px;
+}
+
+.pdfmodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.pdfmodalcontent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.pdfclosebutton {
+  position: absolute; /* Position close button in the modal */
+  top: 10px;
+  right: 10px;
+  background-color: #FDCC03; /* Button color */
+  color: #000; /* Icon color */
+  border: none; /* Remove border */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Make it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.pdfiframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
 @media (max-width: 1024px) {
   .imagegallery {
     flex-wrap: wrap;
@@ -217,6 +283,12 @@
     grid-template-columns: 1fr;
   }
 
+  .pdfiframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+  }
+
   .imagegallery {
     flex-direction: column;
     align-items: center;
@@ -234,10 +306,40 @@
     width: 100%;
   }
 }
+/* phone view */
 
 @media (max-width: 480px) {
+.imageCard{
+  width: 100%;
+  margin-left: 0;
+}
+
+.gridContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdfiframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
   .firstTile {
     padding: 15px;
+    width: 250px;
+  }
+
+  .firstTileContent{
+    width: 150px;
+    align-items: center;
+  }
+
+  .prefaculty{
+    /* justify-content: center; */
+    display: block;
+    margin-left: 30px;
   }
 
   .firstTileContent h3 {
@@ -251,5 +353,6 @@
   .facButton {
     font-size: 14px;
     height: 35px;
+    width: fit-content;
   }
 }

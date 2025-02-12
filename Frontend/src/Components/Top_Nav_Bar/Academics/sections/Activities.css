@@ -7,6 +7,17 @@ body {
   scroll-behavior: smooth; /* Remove default padding */
 }
 
+/* Filter Button */
+.activities-filter-bar{
+  width: 97%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-select{
+  width: 300px;
+}
+
 /* Activities container grid */
 .activities-container {
   display: grid;
@@ -224,14 +235,28 @@ body {
 @media (max-width: 768px) {
   /* Activities container grid for mobile */
   .activities-container {
-    grid-template-columns: 1fr; /* Single column for mobile */
-    gap: 10px;
-    padding: 10px;
+    /* grid-template-columns: 1fr; Single column for mobile */
+    /* gap: 10px; */
+    /* padding: 10px; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
   }
 
   /* Card styling for mobile */
   .card_act {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    /* width: 350px; */
+  }
+
+  .filter-select{
+    width: 100px;
+  }
+
+  .activities-view-more-btn{
+    padding: 5px;
+    font-size: small;
   }
 
   .card-title {
@@ -248,7 +273,7 @@ body {
   }
 
   .card-image {
-    height: 150px; /* Reduce image height further */
+    height: 200px; /* Reduce image height further */
   }
 
   /* Modal adjustments for mobile */

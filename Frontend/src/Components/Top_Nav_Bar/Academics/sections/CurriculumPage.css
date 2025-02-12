@@ -158,11 +158,6 @@ body {
   z-index: 9999; /* Ensures the dropdown is rendered on top */
 }
 
-.options-container:hover .options-dropdown {
-  display: block;
-  opacity: 1;
-}
-
 .dropdown-item {
   display: block;
   padding: 12px;
