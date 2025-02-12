@@ -43,6 +43,8 @@ import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
+import Grievences from "./Components/Second_Nav_Bar/Grievences.jsx";
+import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -87,7 +89,7 @@ const App = () => {
           {/* Conditionally render Head and Footer */}
           {window.location.pathname !== "/" && (
             <>
-              <Head />              
+              <Head />
               <MainContentWrapper>
                 <Routes>
                   <Route path="/abt-us" element={<AbtUs />} />
@@ -100,7 +102,10 @@ const App = () => {
                   <Route path="/committee" element={<ExecutiveCommittee />} />
                   <Route path="/clg-org" element={<CollegeOrgChart />} />
                   <Route path="/dept/:deptID" element={<DepartmentPage />} />
-                  <Route path="/facultyprofile/:uid" element={<Facultyprofile/>}></Route>
+                  <Route
+                    path="/facultyprofile/:uid"
+                    element={<Facultyprofile />}
+                  ></Route>
                   <Route path="/ug" element={<UgAdmission />} />
                   <Route path="/m_e" element={<ME />} />
                   <Route path="/mba" element={<MBA />} />
@@ -115,10 +120,11 @@ const App = () => {
                   <Route path="/naac" element={<NAAC />} />
                   <Route path="/nirf" element={<NIRF />} />
                   <Route path="/iic" element={<IIC />} />
-                  <Route path="/sports" element={<SportsPage/>} />
+                  <Route path="/sports" element={<SportsPage />} />
                   <Route path="/library" element={<Library />} />
                   <Route path="/hostel" element={<Hostel />} />
-                  <Route path='/login' element={<Login />}/>
+                  <Route path="/greviences" element={<GrievanceForm />}></Route>
+                  <Route path="/login" element={<Login />} />
                 </Routes>
               </MainContentWrapper>
               <Footer ref={footerRef} />
