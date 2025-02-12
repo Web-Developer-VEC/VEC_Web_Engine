@@ -36,6 +36,7 @@
   line-height: 1.8;
   font-style: italic; /* Subtle text emphasis */
   color: #555555; /* Darker gray text for contrast */
+  text-align: justify;
 }
 
 /* Description Box Styles */
@@ -71,7 +72,6 @@
   letter-spacing: 0.02rem; /* Slight letter spacing for readability */
 }
 
-/* Carousel Wrapper */
 .carousel-wrapper {
   position: relative;
   height: 450px;
@@ -80,7 +80,9 @@
   border-radius: 1rem;
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Ensure wrapper is above the images */
 }
+
 
 /* Carousel Slides */
 .carousel-slides {
@@ -96,7 +98,9 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 5; /* Lower than buttons */
 }
+
 
 .carousel-image {
   width: 100%;
@@ -109,19 +113,26 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark background for visibility */
+  padding: 1.2rem; /* Increase padding for better clickability */
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   border: none;
-  animation: bounceIn 0.5s ease-out; /* Bounce-in effect */
-  z-index: 5; /* Ensure buttons are on top */
+  z-index: 20; /* Ensure it's above images */
+  color: white; /* Ensure icon is visible */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border: 3px dotted black;
 }
 
 .nav-button:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: scale(1.1); /* Slightly larger on hover */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black; /* Icon turns black for contrast */
+  transform: scale(1.1);
 }
 
 .prev-button {
@@ -133,10 +144,11 @@
 }
 
 .nav-icon {
-  width: 2.2rem;
-  height: 2.2rem;
-  fill: #333333;
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: white; /* Icon color */
 }
+
 
 /* Dot Navigation */
 .dots-container {
@@ -177,31 +189,32 @@
   .carousel-container {
     padding: 1.5rem;
   }
-
+  
   .intro-section, .description-box {
     padding: 2rem;
   }
-
+  
   .intro-title {
     font-size: 2rem;
   }
-
+  
   .intro-text, .description-text {
     font-size: 1.1rem;
+    text-align: justify;
   }
-
+  
   .description-title {
     font-size: 1.6rem;
   }
-
+  
   .carousel-wrapper {
     height: 400px;
   }
-
+  
   .nav-button {
     padding: 0.8rem;
   }
-
+  
   .nav-icon {
     width: 2rem;
     height: 2rem;
@@ -212,40 +225,45 @@
   .carousel-container {
     padding: 1rem;
   }
-
+  
   .intro-section, .description-box {
     padding: 1.5rem;
   }
-
+  
   .intro-title {
     font-size: 1.8rem;
   }
-
+  
   .intro-text, .description-text {
     font-size: 1rem;
+    text-align: justify;
   }
-
+  
   .description-title {
     font-size: 1.4rem;
   }
-
+  
   .carousel-wrapper {
-    height: 350px;
+    height: 200px;
   }
-
+  
+  .carousel-slides{
+    height: 200px;
+  }
+  
   .nav-button {
     padding: 0.7rem;
   }
-
+  
   .nav-icon {
     width: 1.8rem;
     height: 1.8rem;
   }
-
+  
   .dots-container {
     bottom: 1rem;
   }
-
+  
   .dot {
     width: 0.8rem;
     height: 0.8rem;
@@ -256,27 +274,35 @@
   .carousel-container {
     padding: 0.5rem;
   }
-
+  
   .intro-section, .description-box {
     padding: 1rem;
   }
-
+  
   .intro-title {
     font-size: 1.5rem;
   }
-
+  
   .intro-text, .description-text {
     font-size: 0.9rem;
+    text-align: justify;
   }
-
+  
   .description-title {
     font-size: 1.2rem;
   }
-
+  
   .carousel-wrapper {
-    height: 300px;
+    height: 200px;
+    width: 35
+    000px;
   }
 
+  .carousel-slides{
+    height: 100%;
+    width: 100%;
+  }
+  
   .nav-button {
     padding: 0.5rem;
   }

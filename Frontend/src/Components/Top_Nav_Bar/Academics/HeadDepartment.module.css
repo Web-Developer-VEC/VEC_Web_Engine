@@ -288,6 +288,10 @@
     width: 100%;
   }
 
+  .textColumn{
+    order: 1;
+  }
+
   .overlayText {
     font-size: 32px;
   }
@@ -307,6 +311,18 @@
   .messageBody {
     font-size: 16px;
     line-height: 1.6;
+  }
+
+  .hodImage{
+    width: 300px;
+    /* margin-left: 5%; */
+  }
+
+  .imageColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -383,7 +399,7 @@
 @media (max-width: 480px) {
   .header {
     height: 15vh;
-    margin-top: 13%;
+    margin-top: 6%;
   }
   .overlayText {
     font-size: 22px;
@@ -426,5 +442,9 @@
   .viewMoreButton {
     padding: 6px 12px;
     font-size: 12px;
+  }
+
+  .hodImage{
+    width: 300px;
   }
 }

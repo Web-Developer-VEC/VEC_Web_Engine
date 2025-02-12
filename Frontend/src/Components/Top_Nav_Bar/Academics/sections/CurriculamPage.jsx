@@ -5,27 +5,19 @@ import './CurriculumPage.css';
 
 const CurriculumPage = ({ data }) => {
   const [activePO, setActivePO] = useState(null); // Track which PO is active (open)
+  const [activePOS, setActivePOS] = useState(null);
   const [selectedRegulation, setSelectedRegulation] = useState(null);
-  console.log("Ajith",selectedRegulation);
   
 
   const togglePO = (id) => {
     setActivePO((prev) => (prev === id ? null : id)); // Toggle the active PO
   };
+  const togglePOS = (id) => {
+    setActivePOS((prev) => (prev === id ? null : id)); // Toggle the active PO
+  };
 
   const handleViewClick = (regulation,year) => {
     setSelectedRegulation([regulation,year]);
-  };
-
-  const handleDownloadClick = (pdfPath, year) => {
-    if (pdfPath) {
-      const link = document.createElement("a");
-      link.href = pdfPath;
-      link.download = `${year}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
   };
 
   const closeModal = () => {
@@ -47,23 +39,15 @@ const CurriculumPage = ({ data }) => {
                 <p>
                   Regulation {year}
                   <div className="options-container">
-                    <button className="options-btn">Options</button>
-                    <div className="options-dropdown">
-                      <a
-                        className="dropdown-item"
-                        onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
-                      >
-                        <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
-                        View
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        onClick={() => handleDownloadClick(data.regulation.pdf_path[index], `Curriculum & Syllabus ${year}`)}
-                      >
-                        <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
-                        Download
-                      </a>
-                    </div>
+                    <button 
+                    className="options-btn" 
+                    onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
+                    >
+                      <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
+
+                      View
+                    
+                    </button>
                   </div>
                 </p>
               </div>
@@ -77,11 +61,11 @@ const CurriculumPage = ({ data }) => {
               {data?.program_specific_outcomes?.headings?.map((heading, index) => (
                 <div className="accordion-item" key={index}>
                   <h2 className="accordion-header" id={`psosHeading${index}`}>
-                    <button className="accordion-buttons" onClick={() => togglePO(index)}>
+                    <button className="accordion-buttons" onClick={() => togglePOS(index)}>
                       {heading}
                     </button>
                   </h2>
-                  <div className={`accordion-body ${activePO === index ? 'show' : ''}`}>
+                  <div className={`accordion-body ${activePOS === index ? 'show' : ''}`}>
                     {data.program_specific_outcomes.content[index]}
                   </div>
                 </div>

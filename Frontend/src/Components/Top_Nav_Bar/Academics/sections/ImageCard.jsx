@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { SiPublons } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { FaOrcid, FaResearchgate, FaLinkedin } from "react-icons/fa";
 import styles from "./Faculties.module.css";
 
 const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid}) => (
+
   <>
   <div className={firstTile ? styles.firstTile : styles.imageCard}>
     <img src={photo} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
