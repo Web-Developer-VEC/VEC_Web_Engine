@@ -1,206 +1,128 @@
-import React, { useRef } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Head from "./Components/Head";
-import ImgSld from "./Components/ImgSld";
-import Abt from "./Components/About";
-import Announce from "./Components/announcements";
-import Event from "./Components/Events";
-import Tracker from "./Components/Tracker";
-import Samplereact from "./Components/Courses";
-import Footer from "./Components/Footer";
-import Contact from "./Components/ContactIcon";
-import Chat from "./Components/ChatPopup";
-import Boot from "./Components/BootUp";
-import NIRF from "./Components/nirf"; // Ensure this is correctly imported
-import NAAC from "./Components/naac";
-import NBA from "./Components/NBA_F";
+import React, {useRef} from "react";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LandingPage from "./Landing";
 import styled from "styled-components";
-import DepartmentPage from "./Components/structure/DepartmentPage.jsx";
-import Collegevisionmission from "./Components/Nav_Bar_Comp/collegevisionmission.jsx";
-import REGULATION from "./Components/Nav_Bar_Comp/Regulation.jsx";
-import Conference from "./Components/structure/sections/Conference.jsx";
-import { createGlobalStyle } from "styled-components";
-import Aboutplacement from "./Components/Nav_Bar_Comp/Aboutplacement.jsx";
-import Syllabus from "./Components/Nav_Bar_Comp/Syllabus.jsx";
-import Forms from "./Components/Nav_Bar_Comp/forms.jsx";
-import { PlacementDetails } from "./Components/Nav_Bar_Comp/PlacementDetails.jsx";
-import { PlacementTeam } from "./Components/Nav_Bar_Comp/PlacementTeam.jsx";
-import AbtUs from "./Components/Pages/AbtUs.jsx";
-import Management from "./Components/Nav_Bar_Comp/Management.jsx";
-import ExecutiveCommittee from "./Components/Nav_Bar_Comp/Executive commitee.jsx";
-import ME from "./Components/Nav_Bar_Comp/ADM-M.E.jsx";
-import MBA from "./Components/Nav_Bar_Comp/ADM-MBA.jsx";
-import UgAdmission from "./Components/Nav_Bar_Comp/UgAdmission.jsx";
-import Trust from "./Components/Nav_Bar_Comp/Trust.jsx";
-import CollegeOrgChart from "./Components/Nav_Bar_Comp/Organization_chart.jsx";
-import Dean from "./Components/Nav_Bar_Comp/dean.jsx";
-import CardPage from "./Components/Nav_Bar_Comp/admin.jsx";
-import ProudAlumni from "./Components/Nav_Bar_Comp/ProudAlumni.jsx";
-import Princ from "./Components/Nav_Bar_Comp/Princ.jsx";
-import Hostel from "./Components/Nav_Bar_Comp/Hostel.jsx";
-import IIC  from "./Components/iic.jsx";
-import Facultyprofile from './Components/structure/sections/Facultyprofile.jsx'
-import SportsPage from "./Components/Nav_Bar_Comp/sports/SportsPage.jsx";
+import {createGlobalStyle} from "styled-components";
+/* Landing Page Imports */
+import LandingPage from "./Landing.jsx";
+import Head from "./Components/Landing Comp/Head.jsx";
+import Footer from "./Components/Landing Comp/Footer.jsx";
+/* AboutUs Pages Imports */
+import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
+import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
+import Collegevisionmission from "./Components/Top_Nav_Bar/About Us/collegevisionmission.jsx";
+import Management from "./Components/Top_Nav_Bar/About Us/Management.jsx";
+/* Administration Pages Imports */
+import Princ from "./Components/Top_Nav_Bar/Administration/Princ.jsx";
+import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
+import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
+import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
+import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
+/* Academics Pages Imports */
+import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
+import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
+/* Admisiion Pages Imports */
+import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
+import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
+import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
+/* Exams Pages Imports */
+import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
+import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
+import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
+/* Placements Pages Imports */
+import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
+import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
+import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
+import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
+/* Second_Nav_Bar Pages Imports */
+import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
+import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
+import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
+import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
+import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
+import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
+import Login from "./Components/Second_Nav_Bar/Login.jsx";
+import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
+import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
-  /* Global Cursor Style */
-  body {
-    cursor: url("/cursor.svg") 10 0, auto; /* Custom cursor with defined hotspot */
-  }
+    /* Global Cursor Style */
+    body {
+        cursor: url("/cursor.svg") 10 0, auto; /* Custom cursor with defined hotspot */
+    }
 
-  button, a, .clickable {
-    cursor: url("/cursor.svg") 0 0, auto;
-  }
+    button, a, .clickable {
+        cursor: url("/cursor.svg") 0 0, auto;
+    }
 `;
 
 const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 `;
 
 const MainContentWrapper = styled.div`
-  flex: 1;
+    flex: 1;
+    padding-top: 8.69%;
 `;
-const MainContentWrapper1= styled.div`
-  flex: 1;
-  padding-top: 9%;
-`;
-const Nirf1 = () => {
-  const footerRef = useRef(null);
 
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  return (
-    <div className="nirf2">
-      <NIRF /> {/* This will render the NIRF component */}
-      <Contact />
-      <Chat />
-    </div>
-  );
-};
-
-const Naac1 = () => {
-  const footerRef = useRef(null);
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  return (
-    <div className="naac2">
-      <NAAC /> {/* This will render the NIRF component */}
-      <Contact />
-      <Chat />
-    </div>
-  );
-};
-
-const Nba1 = () => {
-  const footerRef = useRef(null);
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  return (
-    <div className="nba2">
-      <NBA /> {/* This will render the NIRF component */}
-      <Contact />
-      <Chat />
-    </div>
-  );
-};
-
-const Dept = () => {
-  const footerRef = useRef(null);
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  return <DepartmentPage />;
-};
 const App = () => {
-  const footerRef = useRef(null);
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <>
-      <GlobalStyle />
-
-      <Router>
-        {/* Landing Page Route */}
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </Router>
-
-      {/* The rest of the routes */}
-      <Router>
-        <AppContainer className="App">
-          {/* Conditionally render Head and Footer */}
-          {window.location.pathname !== "/" && (
-            <>
-              <Head />              
-              <MainContentWrapper1>
-              <Routes>
-              <Route path="/sports" element={<SportsPage/>} />
-              </Routes>
-              </MainContentWrapper1>
-              <MainContentWrapper>
-                <Routes>
-                  <Route path="/nirf" element={<Nirf1 />} />
-                  <Route path="/naac" element={<Naac1 />} />
-                  <Route path="/nba" element={<Nba1 />} />
-                  <Route path="/iic" element={<IIC />} />
-                  <Route path="/dept/:deptID" element={<Dept />} />
-                  <Route path="/v_m" element={<Collegevisionmission />} />
-                  <Route path="/reg" element={<REGULATION />} />
-                  <Route path="/funded-proposals" element={<Conference />} />
-                  <Route
-                    path="/journal-publications"
-                    element={<Conference />}
-                  />
-                  <Route path="//patent-details" element={<Conference />} />
-                  <Route path="/facultyprofile/:uid" element={<Facultyprofile/>}></Route>
-                  <Route path="/books" element={<Conference />} />
-                  <Route path="/conferences" element={<Conference />} />
-                  <Route path="/consultancy" element={<Conference />} />
-                  <Route path="/internship" element={<Conference />} />
-                  <Route path="/product-development" element={<Conference />} />
-                  <Route path="/abtplace" element={<Aboutplacement />} />
-                  <Route path="/Syllabus" element={<Syllabus />} />
-                  <Route path="/form" element={<Forms />} />
-                  <Route path="/place-dep" element={<PlacementDetails />} />
-                  <Route path="/place-team" element={<PlacementTeam />} />
-                  <Route path="/abt-us" element={<AbtUs />} />
-                  <Route path="/management" element={<Management />} />
-                  <Route path="/committee" element={<ExecutiveCommittee />} />
-                  <Route path="/m_e" element={<ME />} />
-                  <Route path="/mba" element={<MBA />} />
-                  <Route path="/ug" element={<UgAdmission />} />
-                  <Route path="/trust" element={<Trust />} />
-                  <Route path="/clg-org" element={<CollegeOrgChart />} />
-                  <Route path="/dean" element={<Dean />} />
-                  <Route path="/admin" element={<CardPage />} />
-                  <Route path="/proudalumni" element={<ProudAlumni />} />
-                  <Route path="/principal" element={<Princ />} />
-                  <Route path="/hostel" element={<Hostel />} />
-
-                </Routes>
-              </MainContentWrapper>
-              <Footer ref={footerRef} />
-            </>
-          )}
-        </AppContainer>
-      </Router>
-    </>
-  );
+    const footerRef = useRef(null);
+  
+    return (
+        <>
+            <GlobalStyle/>
+            {/* The rest of the routes */}
+            <Router>
+                <AppContainer className="App bg-white">
+                    {/* Conditionally render Head and Footer */}
+                    <>
+                        <Head/>
+                        <MainContentWrapper>
+                            <Routes>
+                                <Route path="/" element={<LandingPage/>}/>
+                                <Route path="/abt-us" element={<AbtUs/>}/>
+                                <Route path="/trust" element={<Trust/>}/>
+                                <Route path="/v_m" element={<Collegevisionmission/>}/>
+                                <Route path="/management" element={<Management/>}/>
+                                <Route path="/principal" element={<Princ/>}/>
+                                <Route path="/dean" element={<Dean/>}/>
+                                <Route path="/admin" element={<CardPage/>}/>
+                                <Route path="/committee" element={<ExecutiveCommittee/>}/>
+                                <Route path="/clg-org" element={<CollegeOrgChart/>}/>
+                                <Route path="/dept/:deptID" element={<DepartmentPage/>}/>
+                                <Route path="/facultyprofile/:uid" element={<Facultyprofile/>}></Route>
+                                <Route path="/ug" element={<UgAdmission/>}/>
+                                <Route path="/m_e" element={<ME/>}/>
+                                <Route path="/mba" element={<MBA/>}/>
+                                <Route path="/reg" element={<REGULATION/>}/>
+                                <Route path="/Syllabus" element={<Syllabus/>}/>
+                                <Route path="/form" element={<Forms/>}/>
+                                <Route path="/abtplace" element={<Aboutplacement/>}/>
+                                <Route path="/place-team" element={<PlacementTeam/>}/>
+                                <Route path="/place-dep" element={<PlacementDetails/>}/>
+                                <Route path="/proudalumni" element={<ProudAlumni/>}/>
+                                <Route path="/nba" element={<NBA/>}/>
+                                <Route path="/naac" element={<NAAC/>}/>
+                                <Route path="/nirf" element={<NIRF/>}/>
+                                <Route path="/iic" element={<IIC/>}/>
+                                <Route path="/sports" element={<SportsPage/>}/>
+                                <Route path="/library" element={<Library/>}/>
+                                <Route path="/hostel" element={<Hostel/>}/>
+                                <Route path="/other-facilities" element={<OtherFacilities />} />
+                                <Route path="/greviences" element={<GrievanceForm />}/>
+                                <Route path='/login' element={<Login/>}/>
+                            </Routes>
+                        </MainContentWrapper>
+                        <Footer ref={footerRef}/>
+                    </>
+                </AppContainer>
+            </Router>
+        </>
+    );
 };
 
 export default App;

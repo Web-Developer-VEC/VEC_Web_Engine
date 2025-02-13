@@ -1,16 +1,17 @@
 import React from 'react';
-import Head from './Components/Head';
-import ImgSld from './Components/ImgSld';
-import Abt from './Components/About';
-import Announce from './Components/announcements';
-import Event from './Components/Events';
-import Tracker from './Components/Tracker';
-import Samplereact from './Components/Courses';
-import Footer from './Components/Footer';
-import Contact from './Components/ContactIcon'
-import Chat from './Components/ChatPopup'
-import Boot from './Components/BootUp';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Cookies from "universal-cookie";
+
+import Boot from './Components/Landing Comp/BootUp';
+import ImgSld from './Components/Landing Comp/ImgSld';
+import Abt from './Components/Landing Comp/About';
+import Announce from './Components/Landing Comp/announcements';
+import Event from './Components/Landing Comp/Events';
+import Tracker from './Components/Landing Comp/Tracker';
+import Samplereact from './Components/Landing Comp/Courses';
+import Contact from './Components/Landing Comp/ContactIcon'
+import Chat from './Components/Landing Comp/ChatPopup'
+import Footer from './Components/Landing Comp/Footer';
 
 const courses = [
   {
@@ -84,12 +85,17 @@ const courses = [
 
 
 const LandingPage = () => {
+  const cookies = new Cookies()
+  let isAuth = cookies.get('firstTime') !== undefined || +(cookies.get('firstTime')) > 2
+  if (!isAuth) cookies.set('firstTime', 0)
+  else if(+(cookies.get('firstTime')) < 2) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+  console.log(isAuth);
+  
   return (
-    <div className="landing-page">
-      <Boot />
-      <Head/>
+    <div className="landing-page -mt-[5vmax]">
+      <Boot isAuth={isAuth} />
       <ImgSld/>
-      <div className='w-max lg:max-w-full max-w-[220vw] h-fit absolute z-50'>
+      <div className='w-max max-w-[100vw] h-fit absolute z-50'>
         <div className='pt-2 pb-[2vmax] bg-white'>
           <Abt />
           <Announce/>

@@ -1,0 +1,383 @@
+/* Carousel Container and Wrapper Styles */
+.event-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*margin-top: 5%;*/
+  padding: 0;
+  overflow: hidden;
+}
+
+.caro-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* Navigation Button Styles */
+.nav-button-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: transparent; /* Ensure transparency */
+}
+
+.nav-button-area.left {
+  left: 0;
+}
+
+.nav-button-area.right {
+  right: 0;
+}
+
+.nav-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+
+.nav-button-area:hover .nav-button {
+  opacity: 1;
+}
+
+.nav-button:hover {
+  background:white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  color: #642610; /* Keep icon color for contrast */
+}
+
+/* Carousel Content Styles */
+.caro-content {
+  display: flex;
+  gap: 1vw;
+  transition: transform 0.3s ease-out; /* Increased speed of transition */
+  padding: 10px 0; /* Added padding for hover space */
+  
+}
+
+.caro-item {
+  flex: 0 0 auto;
+  width: 425px;
+  height: 400px; /* Reverted from 450px */
+  position: relative;
+  padding: 10px;
+}
+
+/* Event Box Styles */
+.event-box {
+  width: 425px;
+  height: 380px; /* Reverted from 430px */
+  padding: 20px;
+  background-color: rgba(255, 201, 5, 1);
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  transform-origin: center center;
+  position: relative;
+  z-index: 1;
+}
+
+.event-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(72deg, rgb(255, 178, 35), rgba(255, 255, 0, 0.899), rgb(255, 178, 35));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2; /* Ensure hover appears above other cards */
+}
+
+/* Event Header Styles */
+.event-header {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 20px; /* Increased padding */
+}
+
+.event-date .circle {
+  background: #642610;
+  color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*font-size: 16px;*/
+  text-align: center;
+  padding: 10px;
+  border: 5px solid #f0f0f0;
+}
+
+.event-name {
+  /*font-size: 18px;*/
+  /*font-weight: bold;*/
+  color: #333;
+  margin-left: 20px;
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Event Details Styles */
+.event-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-row.department-name {
+  background: whitesmoke;
+  color: black;
+  text-align: center;
+  padding: 12px; /* Increased padding */
+  /*font-size: 18px;*/
+  letter-spacing: 2px;
+  border-radius: 5px;
+  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-row.description {
+  color: rgb(3, 3, 3);
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6; /* Increased line height */
+  flex: 1;
+  padding: 0 10px; /* Added horizontal padding */
+}
+
+/* Event Footer Styles */
+.event-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  margin-top: 20px; /* Added top margin */
+}
+
+.event-row.duration,
+.event-row.links {
+  text-align: center;
+  /*margin-top: 10px;*/
+  color: #642610;
+}
+
+.event-row.links {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.event-row.links a {
+  text-decoration: none;
+  color: blue;  /* Changed to blue */
+  /*font-weight: 500;*/
+  transition: color 0.3s ease;
+  padding: 5px 10px; /* Added padding for better touch targets */
+}
+
+.event-row.links a:hover {
+  text-decoration: underline;
+  color: #a02a2a;
+}
+
+/* Animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1400px) {
+  .caro-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 968px) {
+  .caro-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .caro-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-button-area {
+    width: 60px;
+  }
+
+  .nav-button-area.left {
+    left: 10px;
+  }
+
+  .nav-button-area.right {
+    right: 10px;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .event-box {
+    width: 350px;
+    height: 350px; /* Adjusted for consistency */
+  }
+
+  .caro-item {
+    width: 350px;
+    height: 370px; /* Adjusted for consistency */
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 580px) {
+  .caro-container {
+    width: 100%;
+    margin: 0;
+    padding: 15px 0;
+  }
+
+  .caro-item,
+  .event-box {
+    width: 100%;
+    max-width: 425px;
+  }
+
+  .nav-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-button-area {
+    width: 50px;
+  }
+
+  .nav-button-area.left {
+    left: 5px;
+  }
+
+  .nav-button-area.right {
+    right: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .caro-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .nav-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .event-box {
+    width: 300px;
+    height: 330px; /* Adjusted for consistency */
+    padding: 15px;
+  }
+
+  .caro-item {
+    width: 300px;
+    height: 350px; /* Adjusted for consistency */
+    margin-right: 20px;
+    padding: 8px;
+  }
+
+  .event-name {
+    /*font-size: 16px;*/
+  }
+
+  .event-row.department-name {
+    /*font-size: 16px;*/
+    padding: 10px;
+  }
+
+  .event-date .circle {
+    width: 60px;
+    height: 60px;
+    /*font-size: 14px;*/
+  }
+
+  .event-row.description {
+    /*font-size: 14px;*/
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+
+  .event-footer {
+    margin-bottom: 20px;
+  }
+}
