@@ -43,7 +43,7 @@ import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
-import Grievences from "./Components/Second_Nav_Bar/Grievences.jsx";
+import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
 
 
@@ -71,7 +71,7 @@ const MainContentWrapper = styled.div`
 
 const App = () => {
     const footerRef = useRef(null);
-
+  
     return (
         <>
             <GlobalStyle/>
@@ -112,6 +112,7 @@ const App = () => {
                                 <Route path="/sports" element={<SportsPage/>}/>
                                 <Route path="/library" element={<Library/>}/>
                                 <Route path="/hostel" element={<Hostel/>}/>
+                                <Route path="/other-facilities" element={<OtherFacilities />} />
                                 <Route path="/greviences" element={<GrievanceForm />}/>
                                 <Route path='/login' element={<Login/>}/>
                             </Routes>
