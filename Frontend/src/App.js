@@ -39,11 +39,12 @@ import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
 import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import YRC from "./Components/Second_Nav_Bar/YRC.jsx"
 import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
-import Grievences from "./Components/Second_Nav_Bar/Grievences.jsx";
+import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
 
 
@@ -71,13 +72,13 @@ const MainContentWrapper = styled.div`
 
 const App = () => {
     const footerRef = useRef(null);
-
+  
     return (
         <>
             <GlobalStyle/>
             {/* The rest of the routes */}
             <Router>
-                <AppContainer className="App">
+                <AppContainer className="App bg-white">
                     {/* Conditionally render Head and Footer */}
                     <>
                         <Head/>
@@ -109,9 +110,11 @@ const App = () => {
                                 <Route path="/naac" element={<NAAC/>}/>
                                 <Route path="/nirf" element={<NIRF/>}/>
                                 <Route path="/iic" element={<IIC/>}/>
+                                <Route path="/YRC" element={<YRC/>}/>
                                 <Route path="/sports" element={<SportsPage/>}/>
                                 <Route path="/library" element={<Library/>}/>
                                 <Route path="/hostel" element={<Hostel/>}/>
+                                <Route path="/other-facilities" element={<OtherFacilities />} />
                                 <Route path="/greviences" element={<GrievanceForm />}/>
                                 <Route path='/login' element={<Login/>}/>
                             </Routes>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "./Sidebar";
@@ -23,20 +23,18 @@ const DepartmentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const contentRef = useRef(null);
 
-  console.log("ajith",activeSection)
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-  
-    handleResize(); // Call it immediately after defining it
+
+    handleResize(); // Call it immediately
     window.addEventListener("resize", handleResize);
-  
+    
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
-
 
   useEffect(() => {
     if (!activeSection) return;
@@ -54,20 +52,32 @@ const DepartmentPage = () => {
         setLoading(false);
       }
     };
-    
+
     fetchData();
-  }, [deptID, activeSection]);
+    
+    // 🔥 Fix Scroll Issue: Ensure content is fully rendered before scrolling
+    setTimeout(() => {
+      if (isMobile && contentRef.current) {
+        contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // 🔥 Force reflow to fix Safari & some Android browsers
+        document.body.style.height = "auto";
+        void document.body.offsetHeight; // Trigger reflow
+      }
+    }, 100);
+
+  }, [deptID, activeSection, isMobile]);
+
   useEffect(() => {
     const fetchSections = async () => {
       try {
         const response = await axios.get(`/api/${deptID}/sidebar`);
-        console.log("API Response:", response.data);
         const validSections = response.data.content
           .filter((section) => section.hascontent)
           .map((section) => section.id);
         
         setAvailableSections(validSections);
-        setActiveSection(validSections[0] || null); // Set first available section
+        setActiveSection(validSections[0] || null);
       } catch (error) {
         console.error("Error fetching sections:", error.message);
         setError("Failed to fetch sections.");
@@ -75,32 +85,21 @@ const DepartmentPage = () => {
     };
     fetchSections();
   }, [deptID]);
+
   const renderSection = () => {
     switch (activeSection) {
-      case "HeadDepartment":
-        return <HeadDepartment data={sectionData} />;
-      case "Vision&Mission":
-        return <VisionMission data={sectionData} />;
-      case "Faculties":
-        return <Faculties data={sectionData} />;
-      case "Activities":
-        return <Activities data={sectionData} />;
-      case "Syllabus":
-        return <CurriculumPage data={sectionData} />;
-      case "Infrastructure":
-        return <Infrastructure data={sectionData} />;
-      case "StudentActivities":
-        return <ImageCarousel data={sectionData} />;
-      case "SupportingStaff":
-        return <Faculties data={sectionData} />;
-      case "Mous":
-        return <MOU data={sectionData} />;
-      case "Research":
-        return <Research data={sectionData} />;
-      case "Conference":
-        return <Conference data={sectionData} />;
-      default:
-        return <VisionMission data={sectionData} />;
+      case "HeadDepartment": return <HeadDepartment data={sectionData} />;
+      case "Vision&Mission": return <VisionMission data={sectionData} />;
+      case "Faculties": return <Faculties data={sectionData} />;
+      case "Activities": return <Activities data={sectionData} />;
+      case "Syllabus": return <CurriculumPage data={sectionData} />;
+      case "Infrastructure": return <Infrastructure data={sectionData} />;
+      case "StudentActivities": return <ImageCarousel data={sectionData} />;
+      case "SupportingStaff": return <Faculties data={sectionData} />;
+      case "Mous": return <MOU data={sectionData} />;
+      case "Research": return <Research data={sectionData} />;
+      case "Conference": return <Conference data={sectionData} />;
+      default: return <VisionMission data={sectionData} />;
     }
   };
 
@@ -109,11 +108,12 @@ const DepartmentPage = () => {
   return (
     <div className={styles.main}>
       {loading && (
-          <div className={styles.loadingscreen}>
-            <div className={styles.spinner}></div>
-              Loading...
-            </div>
-        )}
+        <div className={styles.loadingscreen}>
+          <div className={styles.spinner}></div>
+          Loading...
+        </div>
+      )}
+      
       {/* Header */}
       <div className={styles.header}>
         <img src={college} alt="Department Header" className={styles.fullWidthImage} />
@@ -122,12 +122,7 @@ const DepartmentPage = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row", // Sidebar on top in mobile, right in desktop
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
         {/* Sidebar */}
         <Sidebar 
           sections={availableSections} 
@@ -135,7 +130,7 @@ const DepartmentPage = () => {
           setActiveSection={setActiveSection} 
         />
         {/* Main content */}
-        <div style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
+        <div ref={contentRef} style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
       </div>
     </div>
   );
