@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef, useState, useCallback } from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
@@ -53,6 +53,8 @@ import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
+import Boot from "./Components/Landing Comp/BootUp";
+import Cookies from "universal-cookie";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -79,19 +81,31 @@ const MainContentWrapper = styled.div`
 
 const App = () => {
     const footerRef = useRef(null);
-  
+    const [loaded, setLoaded] = useState(false);
+
+    const cookies = new Cookies()
+    let isAuth = cookies.get('firstTime') !== undefined && +(cookies.get('firstTime')) > 3
+    if (cookies.get('firstTime') === undefined) cookies.set('firstTime', 0)
+    else cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+
+    const load = useCallback(() => {
+        setLoaded(true);
+        console.log("Called back")
+    })
+
     return (
         <>
             <GlobalStyle/>
             {/* The rest of the routes */}
             <Router>
+                {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} />)}
                 <AppContainer className="App bg-white">
                     {/* Conditionally render Head and Footer */}
                     <>
                         <Head/>
                         <MainContentWrapper>
                             <Routes>
-                                <Route path="/" element={<LandingPage/>}/>
+                                <Route path="/" element={<LandingPage load={load}/>}/>
                                 <Route path="/abt-us" element={<AbtUs/>}/>
                                 <Route path="/trust" element={<Trust/>}/>
                                 <Route path="/v_m" element={<Collegevisionmission/>}/>

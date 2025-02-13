@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/AbtUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/AbtUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/BootUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/BootUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Head.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Landing.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +102,8 @@
       <workItem from="1738903785758" duration="12849000" />
       <workItem from="1738987559153" duration="4395000" />
       <workItem from="1739158070806" duration="10171000" />
+      <workItem from="1739417183997" duration="8890000" />
+      <workItem from="1739439866089" duration="317000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />
