@@ -116,7 +116,7 @@
 .event-box:hover {
   transform: scale(1.02);
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(72deg, rgb(255, 178, 35), rgba(255, 255, 0, 0.729), rgb(255, 178, 35));
+  background: linear-gradient(72deg, rgb(255, 178, 35), rgba(255, 255, 0, 0.899), rgb(255, 178, 35));
   background-size: 200% 200%;
   animation: gradientAnimation 5s ease infinite;
   border: 1px solid rgba(255, 255, 255, 0.2);

@@ -63,7 +63,7 @@ const CourseCarousel = ({ courses }) => {
 
           {/* Left Arrow Button */}
           <button
-            className="rounded-full absolute top-[50%] left-[15%] transform -translate-y-1/2 w-[3vmax] z-[500]
+            className="rounded-full absolute top-[50%] left-[15vw] transform -translate-y-1/2 w-[3vmax] z-[500]
               outline outline-offset-2 h-[20%] ease-in transition-colors duration-300"
             style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos - 1)}>
@@ -72,9 +72,9 @@ const CourseCarousel = ({ courses }) => {
 
           {courses.map((cur, i) => (
             <div key={i} className="group absolute overflow-hidden transition-all duration-[0.25s] ease
-              rounded-xl hover:[transform:rotateY(90deg)] ml-[20vw]"
+              rounded-xl hover:[transform:rotateY(90deg)] ml-[10.2rem] lg:ml-[30rem]"
               style={{
-                transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-20 * (pos - (i + 1))}vmax)`,
+                transform: `rotateY(${-10 * (pos - (i + 1))}deg) translateX(${-20 * (pos - (i + 0.75))}vmax)`,
                 zIndex: `${Math.max(((pos - (i + 1)) * -1), (pos - (i + 1))) + 10}`
               }}
               onMouseEnter={() => setPause(true)} onMouseLeave={() => setPause(false)}>
@@ -101,7 +101,7 @@ const CourseCarousel = ({ courses }) => {
 
           {/* Right Arrow Button */}
           <button
-            className="rounded-full absolute top-[50%] -right-[5%] lg:right-4 transform -translate-y-1/2 w-[3vmax]
+            className="rounded-full absolute top-[50%] -right-[1rem] sm:-right-[5vw] z-[50] lg:right-4 transform -translate-y-1/2 w-[3vmax]
             outline outline-offset-2 h-[20%] ease-in transition-colors duration-300"
             style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}            onClick={() => pos_hdl(pos + 1)}>
             <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>

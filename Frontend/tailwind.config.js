@@ -39,7 +39,7 @@ module.exports = {
       },
       bom: {
         '0%': {fontSize: '0'},
-        '100%': {fontSize: '1.75vmax'}
+        '100%': {fontSize: '1.5vmax'}
       },
       bem: {
         '0%': {fontSize: '0'},
