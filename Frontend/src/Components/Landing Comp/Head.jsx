@@ -35,124 +35,242 @@ const Head = () => {
         {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
-        {
-            main: "About Us", cod: [0, 5], cols: 1, sub: [
-                {hrd: false, ttl: 'About VEC', sup: [], lnk: '/abt-us'},
-                {hrd: false, ttl: 'About Trust', sup: [], lnk: '/trust'},
-                {hrd: false, ttl: 'Vision & Mission', sup: [], lnk: 'v_m'},
-                {hrd: false, ttl: 'Management', sup: [], lnk: '/management'},
-                {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
-            ]
-        },
-        {
-            main: "Administration", cod: [0, 5], cols: 1, sub: [
-                {hrd: false, ttl: 'Principal', sup: [], lnk: '/principal'},
-                {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: '/dean'},
-                {hrd: false, ttl: 'Admin Office', sup: [], lnk: '/admin'},
-                {hrd: false, ttl: "Committee's", sup: [], lnk: '/committee'},
-                {hrd: false, ttl: 'Organization Chart', sup: [], lnk: '/clg-org'}
-            ]
-        },
-        {
-            main: "Academics", cod: [0, 11, 13], cols: 2, sub: [
-                {hrd: true, ttl: 'UG Courses', sup: [], lnk: ''},
-                {
-                    hrd: false,
-                    ttl: 'Artificial Intelligence and Data Science',
-                    sup: [],
-                    lnk: '/dept/001',
-                    deptID: "001",
-                },
-                {hrd: false, ttl: 'Automobile Engineering', sup: [], lnk: '/dept/002', deptID: "002",},
-                {hrd: false, ttl: 'Civil Engineering', sup: [], lnk: '/dept/004', deptID: "004",},
-                {hrd: false, ttl: 'Computer Science and Engineering', sup: [], lnk: '/dept/005', deptID: "005",},
-                {
-                    hrd: false,
-                    ttl: 'Computer Science and Engineering (Cyber Security)',
-                    sup: [],
-                    lnk: '/dept/006',
-                    deptID: "006",
-                },
-                {hrd: false, ttl: 'Electrical and Electronics Engineering', sup: [], lnk: '/dept/007', deptID: "007",},
-                {
-                    hrd: false,
-                    ttl: 'Electronics and Communication Engineering',
-                    sup: [],
-                    lnk: '/dept/009',
-                    deptID: "009",
-                },
-                {
-                    hrd: false,
-                    ttl: 'Electronics and Instrumentation Engineering',
-                    sup: [],
-                    lnk: '/dept/008',
-                    deptID: "008",
-                },
-                {hrd: false, ttl: 'Information Technology', sup: [], lnk: '/dept/011', deptID: "011",},
-                {hrd: false, ttl: 'Mechanical Engineering', sup: [], lnk: '/dept/013', deptID: "013",},
-                {hrd: true, ttl: 'PG Courses', sup: [], lnk: ''},
-                {hrd: false, ttl: 'M.E. Computer Science & Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
-                {hrd: false, ttl: 'M.E. Power System Engineering', sup: [], lnk: '/dept/002', deptID: "001",},//
-                {hrd: false, ttl: 'Master of Business Administration', sup: [], lnk: '/dept/002', deptID: "001",}, //
-                {hrd: false, ttl: '', sup: [], lnk: ''},
-                {hrd: true, ttl: 'Science & Humanities', sup: [], lnk: ''},
-                {hrd: false, ttl: 'Chemistry', sup: [], lnk: '/dept/003', deptID: "003",},
-                {hrd: false, ttl: 'English', sup: [], lnk: '/dept/010', deptID: "010",},
-                {hrd: false, ttl: 'Mathematicis', sup: [], lnk: '/dept/012', deptID: "012",},
-                {hrd: false, ttl: 'Physics', sup: [], lnk: '/dept/015', deptID: "015",},
-                {hrd: false, ttl: 'Tamil', sup: [], lnk: '/dept/002', deptID: "001",}, //
-
-            ]
-        },
-        {
-            main: "Admission", cod: [0, 4], cols: 1, sub: [
-                {hrd: false, ttl: 'B.E/B.Tech Admission', sup: [], lnk: '/ug'},
-                {hrd: false, ttl: 'M.E Admission', sup: [], lnk: '/m_e'},
-                {hrd: false, ttl: 'MBA Admission', sup: [], lnk: '/mba'},
-                {hrd: false, ttl: 'Ph.D Programme Details', sup: [], lnk: ''}
-            ]
-        },
-        {
-            main: "Exams", cod: [0, 4], cols: 1, sub: [
-                {hrd: false, ttl: 'Regulation', sup: [], lnk: '/reg'},
-                {hrd: false, ttl: 'Curriculum & Syllabus', sup: [], lnk: '/Syllabus'},
-                {
-                    hrd: false,
-                    ttl: 'Student Verification',
-                    sup: [],
-                    lnk: 'https://vecchennai.directverify.in/student/#/app/request',
-                    openInNewTab: true
-                },
-                {hrd: false, ttl: 'All Forms', sup: [], lnk: '/form'}
-
-            ]
-        },
-        {
-            main: "Research",
-            cod: [0, 5], cols: 1, sub: [
-                {hrd: false, ttl: 'Academic Research', sup: [], lnk: ''},
-                {hrd: false, ttl: 'Sponsored Research', sup: [], lnk: ''},
-                {
-                    hrd: false, ttl: 'Publication', sup: [
-                        {hrd: false, ttl: 'Journal', sup: [], lnk: ''},
-                        {hrd: false, ttl: 'Conference', sup: [], lnk: ''}
-                    ], lnk: ''
-                },
-                {hrd: false, ttl: 'Patents', sup: [], lnk: ''},
-                {hrd: false, ttl: 'Book Publications', sup: [], lnk: ''}
-            ]
-        },
-        {
-            main: "Placement", cod: [0, 4], cols: 1, sub: [
-                {hrd: false, ttl: 'About Placement Department', sup: [], lnk: '/abtplace'},
-                {hrd: false, ttl: 'Placement Team', sup: [], lnk: '/place-team'},
-                {hrd: false, ttl: 'Placement Details', sup: [], lnk: '/place-dep'},
-                {hrd: false, ttl: 'Our Proud Alumni', sup: [], lnk: '/proudalumni'}
-
-            ]
-        },
-
-    ]
+      {
+        main: "About Us",
+        cod: [0, 5],
+        cols: 1,
+        sub: [
+          { hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us" },
+          { hrd: false, ttl: "About Trust", sup: [], lnk: "/trust" },
+          { hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m" },
+          { hrd: false, ttl: "Management", sup: [], lnk: "/management" },
+          { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
+        ],
+      },
+      {
+        main: "Administration",
+        cod: [0, 5],
+        cols: 1,
+        sub: [
+          { hrd: false, ttl: "Principal", sup: [], lnk: "/principal" },
+          { hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: "/dean" },
+          { hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin" },
+          { hrd: false, ttl: "Committee's", sup: [], lnk: "/committee" },
+          { hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org" },
+        ],
+      },
+      {
+        main: "Academics",
+        cod: [0, 11, 13],
+        cols: 2,
+        sub: [
+          { hrd: true, ttl: "UG Courses", sup: [], lnk: "" },
+          {
+            hrd: false,
+            ttl: "Artificial Intelligence and Data Science",
+            sup: [],
+            lnk: "/dept/001",
+            deptID: "001",
+          },
+          {
+            hrd: false,
+            ttl: "Automobile Engineering",
+            sup: [],
+            lnk: "/dept/002",
+            deptID: "002",
+          },
+          {
+            hrd: false,
+            ttl: "Civil Engineering",
+            sup: [],
+            lnk: "/dept/004",
+            deptID: "004",
+          },
+          {
+            hrd: false,
+            ttl: "Computer Science and Engineering",
+            sup: [],
+            lnk: "/dept/005",
+            deptID: "005",
+          },
+          {
+            hrd: false,
+            ttl: "Computer Science and Engineering (Cyber Security)",
+            sup: [],
+            lnk: "/dept/006",
+            deptID: "006",
+          },
+          {
+            hrd: false,
+            ttl: "Electrical and Electronics Engineering",
+            sup: [],
+            lnk: "/dept/007",
+            deptID: "007",
+          },
+          {
+            hrd: false,
+            ttl: "Electronics and Communication Engineering",
+            sup: [],
+            lnk: "/dept/009",
+            deptID: "009",
+          },
+          {
+            hrd: false,
+            ttl: "Electronics and Instrumentation Engineering",
+            sup: [],
+            lnk: "/dept/008",
+            deptID: "008",
+          },
+          {
+            hrd: false,
+            ttl: "Information Technology",
+            sup: [],
+            lnk: "/dept/011",
+            deptID: "011",
+          },
+          {
+            hrd: false,
+            ttl: "Mechanical Engineering",
+            sup: [],
+            lnk: "/dept/013",
+            deptID: "013",
+          },
+          { hrd: true, ttl: "PG Courses", sup: [], lnk: "" },
+          {
+            hrd: false,
+            ttl: "M.E. Computer Science & Engineering",
+            sup: [],
+            lnk: "/dept/002",
+            deptID: "001",
+          }, //
+          {
+            hrd: false,
+            ttl: "M.E. Power System Engineering",
+            sup: [],
+            lnk: "/dept/002",
+            deptID: "001",
+          }, //
+          {
+            hrd: false,
+            ttl: "Master of Business Administration",
+            sup: [],
+            lnk: "/dept/002",
+            deptID: "001",
+          }, //
+          { hrd: false, ttl: "", sup: [], lnk: "" },
+          { hrd: true, ttl: "Science & Humanities", sup: [], lnk: "" },
+          {
+            hrd: false,
+            ttl: "Chemistry",
+            sup: [],
+            lnk: "/dept/003",
+            deptID: "003",
+          },
+          {
+            hrd: false,
+            ttl: "English",
+            sup: [],
+            lnk: "/dept/010",
+            deptID: "010",
+          },
+          {
+            hrd: false,
+            ttl: "Mathematicis",
+            sup: [],
+            lnk: "/dept/012",
+            deptID: "012",
+          },
+          {
+            hrd: false,
+            ttl: "Physics",
+            sup: [],
+            lnk: "/dept/015",
+            deptID: "015",
+          },
+          {
+            hrd: false,
+            ttl: "Tamil",
+            sup: [],
+            lnk: "/dept/002",
+            deptID: "001",
+          }, //
+        ],
+      },
+      {
+        main: "Admission",
+        cod: [0, 4],
+        cols: 1,
+        sub: [
+          { hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug" },
+          { hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e" },
+          { hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba" },
+          { hrd: false, ttl: "Ph.D Programme Details", sup: [], lnk: "" },
+        ],
+      },
+      {
+        main: "Exams",
+        cod: [0, 4],
+        cols: 1,
+        sub: [
+          { hrd: false, ttl: "Regulation", sup: [], lnk: "/reg" },
+          {
+            hrd: false,
+            ttl: "Curriculum & Syllabus",
+            sup: [],
+            lnk: "/Syllabus",
+          },
+          {
+            hrd: false,
+            ttl: "Student Verification",
+            sup: [],
+            lnk: "https://vecchennai.directverify.in/student/#/app/request",
+            openInNewTab: true,
+          },
+          { hrd: false, ttl: "All Forms", sup: [], lnk: "/form" },
+        ],
+      },
+      {
+        main: "Research",
+        cod: [0, 5],
+        cols: 1,
+        sub: [
+          { hrd: false, ttl: "Academic Research", sup: [], lnk: "/Academic" },
+          { hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch" },
+          {
+            hrd: false,
+            ttl: "Publication",
+            sup: [
+              { hrd: false, ttl: "Journal", sup: [], lnk: "/journal" },
+              { hrd: false, ttl: "Conference", sup: [], lnk: "/conference" },
+            ],
+            lnk: "",
+          },
+          { hrd: false, ttl: "Patents", sup: [], lnk: "/patents" },
+          {
+            hrd: false,
+            ttl: "Book Publications",
+            sup: [],
+            lnk: "/Bookpubliction",
+          },
+        ],
+      },
+      {
+        main: "Placement",
+        cod: [0, 4],
+        cols: 1,
+        sub: [
+          {
+            hrd: false,
+            ttl: "About Placement Department",
+            sup: [],
+            lnk: "/abtplace",
+          },
+          { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
+          { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
+          { hrd: false, ttl: "Our Proud Alumni", sup: [], lnk: "/proudalumni" },
+        ],
+      },
+    ];
 
     function max(arr) {
         let max = -Infinity
@@ -263,20 +381,24 @@ const Head = () => {
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
                                                             ${(i !== length - 1) ? 'border-b' : ''} bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% 
                                                             w-full group-hover/sub:translate-x-0 hover:delay-0 duration-200 ease-in transition-all hover:bg-[position:-100%_100%]`}
-                                                           style={{transitionDelay: `${100 * i}ms`}}
-                                                           key={sbj.ttl} href={sbj.lnk}><p
-                                                            className='w-fit my-2 text-right align-middle text-nowrap'>{spj.ttl}</p>
-                                                        </a>
-                                                    ))}
-                                                </div>
-                                            ) : (<p className='hidden'></p>)}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                        {/* </div> */}
-                    </div>
+
+                                style={{ transitionDelay: `${100 * i}ms` }}
+                                key={sbj.ttl}
+                                href={spj.lnk}
+                              >
+                                <p className="w-fit my-2 text-right align-middle text-nowrap">
+                                  {spj.ttl}
+                                </p>
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="hidden"></p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                                                          
                 </div>
                 <div className='hidden lg:flex pl-4 font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem]
                     text-slate-950 rounded-b-lg transition-all'>
