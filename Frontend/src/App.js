@@ -29,6 +29,13 @@ import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
 import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
 import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
+/* Research Pages Import */
+import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
+import Sponsres from "./Components/Top_Nav_Bar/Research/Sponseredresearch.jsx";
+import JounalPub from "./Components/Top_Nav_Bar/Research/Journalpublication.jsx";
+import ConfPub from "./Components/Top_Nav_Bar/Research/Conferencepublication.jsx";
+import Patentsres from "./Components/Top_Nav_Bar/Research/Patent.jsx";
+import Bookres from "./Components/Top_Nav_Bar/Research/Bookpublication.jsx";
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
@@ -102,6 +109,12 @@ const App = () => {
                                 <Route path="/reg" element={<REGULATION/>}/>
                                 <Route path="/Syllabus" element={<Syllabus/>}/>
                                 <Route path="/form" element={<Forms/>}/>
+                                <Route path="/Academic" element={<Academres/>}/>
+                                <Route path="/Sponseredresearch" element={<Sponsres/>}/>
+                                <Route path="/journal" element={<JounalPub/>}/>
+                                <Route path="/conference" element={<ConfPub/>}/>
+                                <Route path="/patents" element={<Patentsres/>}/>
+                                <Route path="/Bookpubliction" element={<Bookres/>}/>
                                 <Route path="/abtplace" element={<Aboutplacement/>}/>
                                 <Route path="/place-team" element={<PlacementTeam/>}/>
                                 <Route path="/place-dep" element={<PlacementDetails/>}/>
