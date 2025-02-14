@@ -407,15 +407,15 @@ const Head = () => {
                     <button onClick={() => navigate('/iic')} className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[8]}</p>
+                    <button onClick={() => navigate('/NSS')} className=' mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[9]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[10]}</p>
+                    <button onClick={() => navigate('/YRC')} className=' mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
                     <button onClick={() => navigate('/sports')} className=' mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[12]}</p>
+                    <button onClick={() => navigate('/trans')} className=' mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
                     <button onClick={() => navigate('/library')} className=' mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
                     <button onClick={() => navigate('/hostel')} className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[15]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[16]}</p>
+                    <button onClick={() => navigate('/other-facilities')} className=' mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
+                    <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden rounded-full
                         bg-black text-[#fdcc03] px-2'>{hdrs[18]}</p>

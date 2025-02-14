@@ -3,7 +3,9 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import {createGlobalStyle} from "styled-components";
+import Cookies from "universal-cookie";
 /* Landing Page Imports */
+import Boot from "./Components/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
 import Head from "./Components/Landing Comp/Head.jsx";
 import Footer from "./Components/Landing Comp/Footer.jsx";
@@ -55,8 +57,6 @@ import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
-import Boot from "./Components/Landing Comp/BootUp";
-import Cookies from "universal-cookie";
 
 
 const GlobalStyle = createGlobalStyle`
