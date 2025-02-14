@@ -495,7 +495,12 @@ const Head = () => {
             </button>
             <p className="truncate mt-1 h-fit md:block hidden">{hdrs[6]}</p>
             <p className="truncate mt-1 h-fit md:block hidden">{hdrs[7]}</p>
-            <p className="truncate mt-1 h-fit md:block hidden">{hdrs[8]}</p>
+            <button
+              onClick={() => navigate("/NSS")}
+              className=" mt-1 h-fit md:block hidden"
+            >
+              {hdrs[8]}
+            </button>
             <p className="truncate mt-1 h-fit md:block hidden">{hdrs[9]}</p>
             <button
               onClick={() => navigate("/YRC")}
@@ -509,7 +514,12 @@ const Head = () => {
             >
               {hdrs[11]}
             </button>
-            <p className="truncate mt-1 h-fit md:block hidden">{hdrs[12]}</p>
+            <button
+              onClick={() => navigate("/trans")}
+              className=" mt-1 h-fit md:block hidden"
+            >
+              {hdrs[12]}
+            </button>
             <button
               onClick={() => navigate("/library")}
               className=" mt-1 h-fit md:block hidden"

@@ -625,7 +625,7 @@ color: #000000;
 color: #e83f43;
 }
 
-img {
+.ofac img {
 width: 100%;
 height: 40vh;
 object-fit: cover;
@@ -921,7 +921,7 @@ transition: transform 0.1s ease;
 }
 
 /* Container styling */
-.min-h-screen {
+.ofac .min-h-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
