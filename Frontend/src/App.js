@@ -46,8 +46,10 @@ import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
 import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx"
 import YRC from "./Components/Second_Nav_Bar/YRC.jsx"
 import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
+import Transport from "./Components/Second_Nav_Bar/Transport/Transport.jsx"
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
@@ -137,8 +139,10 @@ const App = () => {
                                 <Route path="/naac" element={<NAAC/>}/>
                                 <Route path="/nirf" element={<NIRF/>}/>
                                 <Route path="/iic" element={<IIC/>}/>
+                                <Route path="/NSS" element={<NSS/>}/>
                                 <Route path="/YRC" element={<YRC/>}/>
                                 <Route path="/sports" element={<SportsPage/>}/>
+                                <Route path="/trans" element={<Transport/>}/>
                                 <Route path="/library" element={<Library/>}/>
                                 <Route path="/hostel" element={<Hostel/>}/>
                                 <Route path="/other-facilities" element={<OtherFacilities />} />
