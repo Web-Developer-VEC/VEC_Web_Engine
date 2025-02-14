@@ -10,9 +10,8 @@
   animation: fadeIn 1s ease-in-out;
   transition: transform 0.3s ease-in-out,box-shadow 0.3s ease-in-out;
   cursor:pointer;
-  margin-top:20px;
   width:95%;
-  margin-left:40px;
+  margin:40px;
   
 }
 
@@ -26,8 +25,6 @@
   align-items: center; /* Vertical centering */
   height: 100%; /* Add height if necessary */
 }
-
-
 
 
 /* Banner Section */
@@ -199,10 +196,33 @@
       transform: rotate(360deg);
     }
   }
-  
+
+@media (max-width: 1128px) {
+  .nirf-intro {
+    width: 92%;
+    /* Adjust width for better centering */
+    margin: 30px auto;
+    /* Ensures equal margin on both sides */
+  }
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nirf-intro {
+      font-size: 18px;
+      padding: 15px;
+      line-height: 1.8;
+      background-color: #e2d68b;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+      width: 95%;
+      margin: 10px auto;
+      /* Centering with equal margin */
+    }
+  
   .nirf-content {
     flex-direction: column;
     gap: 20px;
