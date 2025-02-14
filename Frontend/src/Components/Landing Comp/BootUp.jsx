@@ -1,22 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
-import Nord from '../Assets/1723802229690.png'
-import Naac from '../Assets/1723802229711.png'
-import Acrd from '../Assets/1723802229732.png'
-import Tnea from '../Assets/TNEA-Code.png'
-import Cookies from "universal-cookie";
  // import { componentWillUnmount }
 
 const Boot = (props) => {
     const isAuth = props.isAuth
+    const isLoaded = props.isLoaded
     const delay = (isAuth) ? 3 : 0
     console.log(`Auth: ${isAuth}`)
 
-    const [scroll, setScroll] = useState(0)
-    const [hdr, setHdr] = useState("h-20")
-    const cog_clr = "amber-100"
-
-    const nacs = [Naac, Acrd,  Nord, Tnea]
-    const [dwn, setDwn] = useState("")
     const canRf = useRef(null)
     let ani
 
@@ -24,10 +14,8 @@ const Boot = (props) => {
         const canva = canRf.current
         const cntx = canva.getContext('2d')
         let wdt = (canva.width = window.innerWidth)
-        let hgt = (canva.height = window.innerHeight)
+        canva.height = window.innerHeight
         let col = Math.floor(wdt / 20)
-        const chr = "01"
-        const chrArr = chr.split("")
         let rain = [], prtl = []
         let ani, crt, trn
 
@@ -106,22 +94,23 @@ const Boot = (props) => {
 
         const fnldl = setTimeout(() => {
             cancelAnimationFrame(trn)
-            setDwn("hidden")
             console.log("Stopped")
         }, (!isAuth) ? 3500: 2500);
 
         return () => clearTimeout(srtdl, fnldl);
-    }, [dwn, isAuth]);
+    }, [isAuth]);
 
 
     return (
         <>
             <canvas
-                className={'fixed bg-white z-[1000] size-full top-0 animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s] ' + dwn}
+                className={`fixed bg-white z-[1000] size-full top-0
+                    ${(isLoaded) ? (!isAuth) ? 'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2.5s]' : 
+                    'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' : ''}`}
                 ref={canRf}></canvas>
-            <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 
-                ${(!isAuth) ? 'bg-white animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
-                    'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' }`}>
+            <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 ` +
+                `${(isLoaded) ? (!isAuth) ? 'bg-white animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
+                    'animate-[fadOut_0.5s_ease-in_forwards] [animation-delay:2s]': `${isAuth}`} ${isAuth}`}>
                 <div className='relative w-[20vmax] h-[20vmax] group/ttl'>
                     <div className='w-full h-full [clip-path:polygon(0_0,100%_0,100%_50%,65%_65%,53%_80%,60%_70%,50%_40%,40%_70%,42%_70%,0_45%)] absolute'>
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox='0 0 500 500'
@@ -183,7 +172,7 @@ const Boot = (props) => {
                                   style={{animationDelay: `${(i + delay * 2) * 0.04}s`}}>{ltr}</span>
                         ))}
                     </div>
-                    {/* <div className='block font-rome text-black text-[1.5vmax] opacity-0 animate-[fadIn_1s_ease_forwards]'>ENGINEERING COLLEGE</div> */}
+                    {/* <div className='block font-rome tex t-black text-[1.5vmax] opacity-0 animate-[fadIn_1s_ease_forwards]'>ENGINEERING COLLEGE</div> */}
                 </div>
             </div>
         </>
