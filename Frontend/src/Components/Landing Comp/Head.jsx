@@ -431,7 +431,7 @@ const Head = () => {
                 </div>
                 <div
                     className='block lg:hidden h-fit'>
-                    <Sidebar Sz="tny p-0"/></div>
+                    <Sidebar navs={navs} Sz="tny p-0"/></div>
             </nav>
         </>
     )
