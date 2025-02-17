@@ -2,10 +2,8 @@ import React, {useEffect, useState, useRef} from 'react';
 import Vide from '../Assets/stock.mp4';
 import College from '../Assets/Hell.png';
 
-const ImgSld = () => {
-    // const [vid, setVid] = useState("bottom-[0vh]");
-    const videoRef1 = useRef(null); // Reference for the background video
-    const videoRef2 = useRef(null); // Reference for the second video
+const ImgSld = ({load}) => {
+    const videoRef = useRef(null); // Reference for the background video
 
     const lst = [
         'Welcome to VEC - Empowering Future Leaders',
@@ -30,26 +28,38 @@ const ImgSld = () => {
     const hndlScrll = debounce(() => {
         const pos = window.scrollY;
         const pos_thresh = 300;
-        console.log(pos);
 
         if (pos > pos_thresh) {
             // Pause video when scrolled past threshold
-            if (videoRef1.current) videoRef1.current.pause();
+            if (videoRef.current) videoRef.current.pause();
             // setVid("bottom-[0vmax]");
         } else {
             // Play video when scrolled above threshold
-            if (videoRef1.current) videoRef1.current.play();
+            if (videoRef.current) videoRef.current.play();
             // setVid("bottom-[35vmax]");
         }
     }, 100); // Adjust the debounce time as needed
 
     useEffect(() => {
         window.addEventListener('scroll', hndlScrll, {passive: true});
+        const video = videoRef.current;
+
+        const handleCanPlayThrough = () => {
+            console.log("Can play through");
+            load()
+        };
+
+        if (video) {
+            video.addEventListener('loadstart', handleCanPlayThrough);
+        }
 
         return () => {
+            if (video) {
+                video.removeEventListener('canplaythrough', handleCanPlayThrough);
+            }
             window.removeEventListener('scroll', hndlScrll);
         };
-    }, []);
+    }, [hndlScrll]);
 
     return (
         <div className=''>
@@ -57,13 +67,14 @@ const ImgSld = () => {
                 w-[100vw] pointer-event-none">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
-                    autoPlay loop muted ref={videoRef1} id='BgVid'
+                    autoPlay loop muted ref={videoRef} id='BgVid'
                     playsInline>
                     <source src={Vide} type='video/mp4'/>
                 </video>
                 <div className="absolute flex gap-3 z-[50] bottom-[50%] left-0 mb-3 ml-3">
-                    {vidHdr.map((hdr) => (
-                        <p className="bg-white rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-white outline-offset-2 hover:outline-[#fdcc03]
+                    {vidHdr.map((hdr, i) => (
+                        <p key={i} className="bg-white rounded-full px-3 py-1 lg:py-2 lg:px-3
+                        outline outline-white outline-offset-2 hover:outline-[#fdcc03]
                         bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
                         text-slate-950 bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03]
                         via-50% to-white to-50% border-slate-700 w-full duration-[150ms]

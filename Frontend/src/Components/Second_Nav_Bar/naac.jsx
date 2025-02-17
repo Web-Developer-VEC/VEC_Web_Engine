@@ -67,13 +67,13 @@ const Naac = () => {
 
       <div className="naac-page">
         {isLoading && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
+          <div className="naac-loading-screen">
+            <div className="naac-spinner"></div>
             Loading...
           </div>
         )}
 
-        <div className="about-section">
+        <div className="naac-about-section">
           <div className="naac-info-panel">
             <h2>About NAAC</h2>
             <p>The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution...</p>
@@ -85,7 +85,7 @@ const Naac = () => {
           </div>
         </div>
 
-        <div className="objectives-section">
+        <div className="naac-objectives-section">
           <h2>Key Objectives</h2>
           <ol>
             <li><b>Quality Enhancement:</b> Develop system for consistent improvement</li>
