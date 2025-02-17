@@ -96,7 +96,7 @@ const SportsInfra = () => {
   }, []);
 
   return (
-    <div>
+    <div className="sports">
       <main className={`intro1-section ${animate ? "animate" : ""}`}>
         <div className="container1">
           <div className="grid1">
@@ -120,7 +120,7 @@ const SportsInfra = () => {
                         </div>
                       </div>
                       <div className="column-xs-12 column-md-10">
-                        <div className="image-holder">
+                        <div className="image-holder1">
                           <img className="sport_img" src={item.imageUrl} alt={item.title} />
                         </div>
                         <div className="grid1">
