@@ -53,7 +53,7 @@ import YRC from "./Components/Second_Nav_Bar/YRC.jsx"
 import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Transport from "./Components/Second_Nav_Bar/Transport/Transport.jsx"
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
-import Hostel from "./Components/Second_Nav_Bar/Hostel.jsx";
+import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
