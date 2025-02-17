@@ -1,125 +1,125 @@
 /* 12columns.css | Created by Katherine Kato | Released under the MIT license */
 /* GitHub: https://kathykato.github.io/12columns/ */
 @import url("https://fonts.googleapis.com/css?family=Barlow:400,500,700");
-.sports .container1 {
+.container1 {
   margin: auto;
   padding: 0 1rem;
   max-width: 71.25rem;
   width: 100%;
 }
 
-.sports .grid1 {
+.grid1 {
   display: flex;
   flex-direction: column;
   flex-flow: row wrap;
   align-items: center;
 }
-.sports .grid1 > [class*=column-] {
+.grid1 > [class*=column-] {
   display: block;
 }
 
-.sports .first {
+.first {
   order: -1;
 }
 
-.sports .last {
+.last {
   order: 12;
 }
 
-.sports .align-top {
+.align-top {
   align-items: start;
 }
 
-.sports .align-center {
+.align-center {
   align-items: center;
 }
 
-.sports .align-bottom {
+.align-bottom {
   align-items: end;
 }
 
-.sports .column-xs-1 {
+.column-xs-1 {
   flex-basis: 8.3333333333%;
   max-width: 8.3333333333%;
 }
 
-.sports .column-xs-2 {
+.column-xs-2 {
   flex-basis: 16.6666666667%;
   max-width: 16.6666666667%;
 }
 
-.sports .column-xs-3 {
+.column-xs-3 {
   flex-basis: 25%;
   max-width: 25%;
 }
 
-.sports .column-xs-4 {
+.column-xs-4 {
   flex-basis: 33.3333333333%;
   max-width: 33.3333333333%;
 }
 
-.sports .column-xs-5 {
+.column-xs-5 {
   flex-basis: 41.6666666667%;
   max-width: 41.6666666667%;
 }
 
-.sports .column-xs-6 {
+.column-xs-6 {
   flex-basis: 50%;
   max-width: 50%;
 }
 
-.sports.column-xs-7 {
+.column-xs-7 {
   flex-basis: 58.3333333333%;
   max-width: 58.3333333333%;
 }
 
-.sports.column-xs-8 {
+.column-xs-8 {
   flex-basis: 66.6666666667%;
   max-width: 66.6666666667%;
 }
 
-.sports.column-xs-9 {
+.column-xs-9 {
   flex-basis: 75%;
   max-width: 75%;
 }
 
-.sports.column-xs-10 {
+.column-xs-10 {
   flex-basis: 83.3333333333%;
   max-width: 83.3333333333%;
 }
 
-.sports.column-xs-11 {
+.column-xs-11 {
   flex-basis: 91.6666666667%;
   max-width: 91.6666666667%;
 }
 
-.sports.column-xs-12 {
+.column-xs-12 {
   flex-basis: 100%;
   max-width: 100%;
 }
 
 @media (min-width: 48rem) {
-  .sports.column-sm-1 {
+  .column-sm-1 {
     flex-basis: 8.3333333333%;
     max-width: 8.3333333333%;
   }
 
-  .sports.column-sm-2 {
+  .column-sm-2 {
     flex-basis: 16.6666666667%;
     max-width: 16.6666666667%;
   }
 
-  .sports.column-sm-3 {
+  .column-sm-3 {
     flex-basis: 25%;
     max-width: 25%;
   }
 
-  .sports.column-sm-4 {
+  .column-sm-4 {
     flex-basis: 33.3333333333%;
     max-width: 33.3333333333%;
   }
 
-  .sports .column-sm-5 {
+  .column-sm-5 {
     flex-basis: 41.6666666667%;
     max-width: 41.6666666667%;
   }
@@ -129,241 +129,241 @@
     max-width: 50%;
   }
 
-  .sports .column-sm-7 {
+  .column-sm-7 {
     flex-basis: 58.3333333333%;
     max-width: 58.3333333333%;
   }
 
-  .sports .column-sm-8 {
+  .column-sm-8 {
     flex-basis: 66.6666666667%;
     max-width: 66.6666666667%;
   }
 
-  .sports .column-sm-9 {
+  .column-sm-9 {
     flex-basis: 75%;
     max-width: 75%;
   }
 
-  .sports .column-sm-10 {
+  .column-sm-10 {
     flex-basis: 83.3333333333%;
     max-width: 83.3333333333%;
   }
 
-  .sports .column-sm-11 {
+  .column-sm-11 {
     flex-basis: 91.6666666667%;
     max-width: 91.6666666667%;
   }
 
-  .sports .column-sm-12 {
+  .column-sm-12 {
     flex-basis: 100%;
     max-width: 100%;
   }
 }
 @media (min-width: 62rem) {
-  .sports .column-md-1 {
+  .column-md-1 {
     flex-basis: 8.3333333333%;
     max-width: 8.3333333333%;
   }
 
-  .sports .column-md-2 {
+  .column-md-2 {
     flex-basis: 16.6666666667%;
     max-width: 16.6666666667%;
   }
 
-  .sports .column-md-3 {
+  .column-md-3 {
     flex-basis: 25%;
     max-width: 25%;
   }
 
-  .sports .column-md-4 {
+  .column-md-4 {
     flex-basis: 33.3333333333%;
     max-width: 33.3333333333%;
   }
 
-  .sports .column-md-5 {
+  .column-md-5 {
     flex-basis: 41.6666666667%;
     max-width: 41.6666666667%;
   }
 
-  .sports .column-md-6 {
+  .column-md-6 {
     flex-basis: 50%;
     max-width: 50%;
   }
 
-  .sports .column-md-7 {
+  .column-md-7 {
     flex-basis: 58.3333333333%;
     max-width: 58.3333333333%;
   }
 
-  .sports .column-md-8 {
+  .column-md-8 {
     flex-basis: 66.6666666667%;
     max-width: 66.6666666667%;
   }
 
-  .sports .column-md-9 {
+  .column-md-9 {
     flex-basis: 75%;
     max-width: 75%;
   }
 
-  .sports .column-md-10 {
+  .column-md-10 {
     flex-basis: 83.3333333333%;
     max-width: 83.3333333333%;
   }
 
-  .sports .column-md-11 {
+  .column-md-11 {
     flex-basis: 91.6666666667%;
     max-width: 91.6666666667%;
   }
 
-  .sports .column-md-12 {
+  .column-md-12 {
     flex-basis: 100%;
     max-width: 100%;
   }
 }
 @media (min-width: 75rem) {
-  .sports .column-lg-1 {
+  .column-lg-1 {
     flex-basis: 8.3333333333%;
     max-width: 8.3333333333%;
   }
 
-  .sports .column-lg-2 {
+  .column-lg-2 {
     flex-basis: 16.6666666667%;
     max-width: 16.6666666667%;
   }
 
-  .sports .column-lg-3 {
+  .column-lg-3 {
     flex-basis: 25%;
     max-width: 25%;
   }
 
-  .sports .column-lg-4 {
+  .column-lg-4 {
     flex-basis: 33.3333333333%;
     max-width: 33.3333333333%;
   }
 
-  .sports .column-lg-5 {
+  .column-lg-5 {
     flex-basis: 41.6666666667%;
     max-width: 41.6666666667%;
   }
 
-  .sports .column-lg-6 {
+  .column-lg-6 {
     flex-basis: 50%;
     max-width: 50%;
   }
 
-  .sports .column-lg-7 {
+  .column-lg-7 {
     flex-basis: 58.3333333333%;
     max-width: 58.3333333333%;
   }
 
-  .sports .column-lg-8 {
+  .column-lg-8 {
     flex-basis: 66.6666666667%;
     max-width: 66.6666666667%;
   }
 
-  .sports .column-lg-9 {
+  .column-lg-9 {
     flex-basis: 75%;
     max-width: 75%;
   }
 
-  .sports .column-lg-10 {
+  .column-lg-10 {
     flex-basis: 83.3333333333%;
     max-width: 83.3333333333%;
   }
 
-  .sports .column-lg-11 {
+  .column-lg-11 {
     flex-basis: 91.6666666667%;
     max-width: 91.6666666667%;
   }
 
-  .sports .column-lg-12 {
+  .column-lg-12 {
     flex-basis: 100%;
     max-width: 100%;
   }
 }
 @supports (display: grid) {
-  .sports .grid1 {
+  .grid1 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
   }
-  .sports .grid1 > [class*=column-] {
+  .grid1 > [class*=column-] {
     margin: 0;
     max-width: 100%;
   }
 
-  .sports .column-xs-1 {
+  .column-xs-1 {
     grid-column-start: span 1;
     grid-column-end: span 1;
   }
 
-  .sports .column-xs-2 {
+  .column-xs-2 {
     grid-column-start: span 2;
     grid-column-end: span 2;
   }
 
-  .sports .column-xs-3 {
+  .column-xs-3 {
     grid-column-start: span 3;
     grid-column-end: span 3;
   }
 
-  .sports .column-xs-4 {
+  .column-xs-4 {
     grid-column-start: span 4;
     grid-column-end: span 4;
   }
 
-  .sports .column-xs-5 {
+  .column-xs-5 {
     grid-column-start: span 5;
     grid-column-end: span 5;
   }
 
-  .sports .column-xs-6 {
+  .column-xs-6 {
     grid-column-start: span 6;
     grid-column-end: span 6;
   }
 
-  .sports .column-xs-7 {
+  .column-xs-7 {
     grid-column-start: span 7;
     grid-column-end: span 7;
   }
 
-  .sports .column-xs-8 {
+  .column-xs-8 {
     grid-column-start: span 8;
     grid-column-end: span 8;
   }
 
-  .sports .column-xs-9 {
+  .column-xs-9 {
     grid-column-start: span 9;
     grid-column-end: span 9;
   }
 
-  .sports .column-xs-10 {
+  .column-xs-10 {
     grid-column-start: span 10;
     grid-column-end: span 10;
   }
 
-  .sports .column-xs-11 {
+  .column-xs-11 {
     grid-column-start: span 11;
     grid-column-end: span 11;
   }
 
-  .sports .column-xs-12 {
+  .column-xs-12 {
     grid-column-start: span 12;
     grid-column-end: span 12;
   }
 
   @media (min-width: 48rem) {
-    .sports .column-sm-1 {
+    .column-sm-1 {
       grid-column-start: span 1;
       grid-column-end: span 1;
     }
 
-    .sports .column-sm-2 {
+    .column-sm-2 {
       grid-column-start: span 2;
       grid-column-end: span 2;
     }
 
-    .sports .column-sm-3 {
+    .column-sm-3 {
       grid-column-start: span 3;
       grid-column-end: span 3;
     }
@@ -373,171 +373,171 @@
       grid-column-end: span 4;
     }
 
-    .sports .column-sm-5 {
+    .column-sm-5 {
       grid-column-start: span 5;
       grid-column-end: span 5;
     }
 
-    .sports .column-sm-6 {
+    .column-sm-6 {
       grid-column-start: span 6;
       grid-column-end: span 6;
     }
 
-    .sports .column-sm-7 {
+    .column-sm-7 {
       grid-column-start: span 7;
       grid-column-end: span 7;
     }
 
-    .sports .column-sm-8 {
+    .column-sm-8 {
       grid-column-start: span 8;
       grid-column-end: span 8;
     }
 
-    .sports .column-sm-9 {
+    .column-sm-9 {
       grid-column-start: span 9;
       grid-column-end: span 9;
     }
 
-    .sports .column-sm-10 {
+    .column-sm-10 {
       grid-column-start: span 10;
       grid-column-end: span 10;
     }
 
-    .sports .column-sm-11 {
+    .column-sm-11 {
       grid-column-start: span 11;
       grid-column-end: span 11;
     }
 
-    .sports .column-sm-12 {
+    .column-sm-12 {
       grid-column-start: span 12;
       grid-column-end: span 12;
     }
   }
   @media (min-width: 62rem) {
-    .sports .column-md-1 {
+    .column-md-1 {
       grid-column-start: span 1;
       grid-column-end: span 1;
     }
 
-    .sports .column-md-2 {
+    .column-md-2 {
       grid-column-start: span 2;
       grid-column-end: span 2;
     }
 
-    .sports .column-md-3 {
+    .column-md-3 {
       grid-column-start: span 3;
       grid-column-end: span 3;
     }
 
-    .sports .column-md-4 {
+    .column-md-4 {
       grid-column-start: span 4;
       grid-column-end: span 4;
     }
 
-    .sports .column-md-5 {
+    .column-md-5 {
       grid-column-start: span 5;
       grid-column-end: span 5;
     }
 
-    .sports .column-md-6 {
+    .column-md-6 {
       grid-column-start: span 6;
       grid-column-end: span 6;
     }
 
-    .sports .column-md-7 {
+    .column-md-7 {
       grid-column-start: span 7;
       grid-column-end: span 7;
     }
 
-    .sports .column-md-8 {
+    .column-md-8 {
       grid-column-start: span 8;
       grid-column-end: span 8;
     }
 
-    .sports .column-md-9 {
+    .column-md-9 {
       grid-column-start: span 9;
       grid-column-end: span 9;
     }
 
-    .sports .column-md-10 {
+    .column-md-10 {
       grid-column-start: span 10;
       grid-column-end: span 10;
     }
 
-    .sports .column-md-11 {
+    .column-md-11 {
       grid-column-start: span 11;
       grid-column-end: span 11;
     }
 
-    .sports .column-md-12 {
+    .column-md-12 {
       grid-column-start: span 12;
       grid-column-end: span 12;
     }
   }
   @media (min-width: 75rem) {
-    .sports .column-lg-1 {
+    .column-lg-1 {
       grid-column-start: span 1;
       grid-column-end: span 1;
     }
 
-    .sports .column-lg-2 {
+    .column-lg-2 {
       grid-column-start: span 2;
       grid-column-end: span 2;
     }
 
-    .sports .column-lg-3 {
+    .column-lg-3 {
       grid-column-start: span 3;
       grid-column-end: span 3;
     }
 
-    .sports .column-lg-4 {
+    .column-lg-4 {
       grid-column-start: span 4;
       grid-column-end: span 4;
     }
 
-    .sports .column-lg-5 {
+    .column-lg-5 {
       grid-column-start: span 5;
       grid-column-end: span 5;
     }
 
-    .sports .column-lg-6 {
+    .column-lg-6 {
       grid-column-start: span 6;
       grid-column-end: span 6;
     }
 
-    .sports .column-lg-7 {
+    .column-lg-7 {
       grid-column-start: span 7;
       grid-column-end: span 7;
     }
 
-    .sports .column-lg-8 {
+    .column-lg-8 {
       grid-column-start: span 8;
       grid-column-end: span 8;
     }
 
-    .sports .column-lg-9 {
+    .column-lg-9 {
       grid-column-start: span 9;
       grid-column-end: span 9;
     }
 
-    .sports .column-lg-10 {
+    .column-lg-10 {
       grid-column-start: span 10;
       grid-column-end: span 10;
     }
 
-    .sports .column-lg-11 {
+    .column-lg-11 {
       grid-column-start: span 11;
       grid-column-end: span 11;
     }
 
-    .sports .column-lg-12 {
+    .column-lg-12 {
       grid-column-start: span 12;
       grid-column-end: span 12;
     }
   }
 }
 
-.sports .container1 {
+.container1 {
   font-family: "Barlow", sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
@@ -547,58 +547,58 @@
   overflow-x: hidden;
 }
 
-.sports a {
+a {
   color: #4e4e4e;
   text-decoration: none;
 }
-.sports a:hover {
+a:hover {
   color: #000000;
 }
 
 
 
 
-.sports #highlight {
+#highlight {
   color: #e83f43;
 }
 
-.sports .sport_img {
+.sport_img {
   object-fit: cover;
 }
 
 /* Add animation ONLY to .image-holder1 */
-.sports .image-holder1 {
+.image-holder1 {
   position: relative;
   animation: fadeInLeft 0.8s ease forwards;
 }
 
 /* If the images themselves should animate */
-.sports .sport_img {
+.sport_img {
   aspect-ratio: 2;
 
   animation: fadeInLeft 0.8s ease forwards;
 }
 
 /* Ensure only the active slider's image gets the animation */
-.sports .slider-item.active .image-holder1,
-.sports .slider-item.active .sport_img {
+.slider-item.active .image-holder1,
+.slider-item.active .sport_img {
   animation: fadeInLeft 0.8s ease forwards;
 }
 
 
-.sports .vertical {
+.vertical {
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.sports .intro1 {
+.intro1 {
   position: relative;
   z-index: 2;
   opacity: 0;
   animation: fadeIn 0.8s 0.4s ease forwards;
 }
-.sports .intro1 .title {
+.intro1 .title {
   display: inline-block;
   font-size: 2rem;
   font-weight: 500;
@@ -606,11 +606,11 @@
   text-decoration: underline;
   color: #e83f43;
 }
-.sports .intro1 .title .underline {
+.intro1 .title .underline {
   color: #ffffff;
 }
 
-.sports .sports_description {
+.sports_description {
   position: relative;
   z-index: 1;
   margin: 1rem 0 1.5rem 0;
@@ -619,24 +619,24 @@
   animation: fadeIn 0.8s 0.6s ease forwards;
 }
 
-.sports .slider-item {
+.slider-item {
   display: none;
 }
-.sports .slider-item.active {
+.slider-item.active {
   display: block;
 }
 
-.sports .slider-item.active .hide-mobile {
+.slider-item.active .hide-mobile {
   display: none;
 }
-.sports .slider-item.active .show-mobile {
+.slider-item.active .show-mobile {
   display: block;
   margin: 1rem 0;
 }
 
 
 
-.sports .controls {
+.controls {
   position: relative;
   z-index: 1;
   display: flex;
@@ -644,10 +644,10 @@
   padding: 0.25rem 0 0.25rem 0;
   bottom: 120%;
 }
-.sports .controls .previous {
+.controls .previous {
   border: 1px solid #000000;
 }
-.sports .previous , .next {
+.previous .next {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -664,7 +664,7 @@
   width: 55px;
   height: 55px;
 }
-.sports .indicator {
+.indicator {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -681,14 +681,14 @@
   width: 55px;
   height: 55px;
 }
-.sports .controls .icon {
+.controls .icon {
   position: relative;
   margin: auto;
   width: 20px;
   height: 1px;
   background-color: currentColor;
 }
-.sports .controls .icon.arrow-left::before {
+.controls .icon.arrow-left::before {
   content: "";
   position: absolute;
   left: 1px;
@@ -699,7 +699,7 @@
   border-right: solid 1px currentColor;
   transform: rotate(-135deg);
 }
-.sports .controls .icon.arrow-right::before {
+.controls .icon.arrow-right::before {
   content: "";
   position: absolute;
   right: 1px;
@@ -711,8 +711,8 @@
   transform: rotate(45deg);
 }
 
-.sports .previous,
-.sports .next {
+.previous,
+.next {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -720,16 +720,16 @@
   font-size: 2rem;
   color: #000000;
 }
-.sports .previous:hover .icon,
-.sports .next:hover .icon {
+.previous:hover .icon,
+.next:hover .icon {
   transform: scale(1.5);
 }
-.sports .previous .icon,
-.sports .next .icon {
+.previous .icon,
+.next .icon {
   transition: transform 0.1s ease;
 }
 
-  .sports .active .image-holder1::before {
+  .active .image-holder1::before {
     position: absolute;
   content: "";
   z-index: 1;
@@ -770,29 +770,29 @@
   }
 }
 @media (max-width: 62rem) {
-  .sports .controls {
+  .controls {
     padding: 1rem 0 1rem 0;
     bottom:0%;
   }
-  .sports .intro1 .title .underline {
+  .intro1 .title .underline {
     color: #000000;
   }
 }
 @media (min-width: 62rem) {
 
 
-  .sports #logo {
+  #logo {
     font-size: 1.25rem;
   }
 
-  .sports .controls {
+  .controls {
     padding: 1.75rem 0 1.75rem 0;
   }
 
-  .sports .intro1 {
+  .intro1 {
     animation: fadeInLeft 0.8s 0.4s ease forwards;
   }
-  .sports .intro1 .title {
+  .intro1 .title {
     font-size: 3.25rem;
     padding: 2.5rem 2.5rem 3rem 2.5rem;
     background: #fdcb03a9;
@@ -802,8 +802,8 @@
     margin: 1rem 0 0 0;
   }
 
-  .sports .previous,
-.sports .next {
+  .previous,
+.next {
     flex-basis: 8.33%;
   }
 
