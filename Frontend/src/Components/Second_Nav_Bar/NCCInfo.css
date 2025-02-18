@@ -1,0 +1,416 @@
+/* NCC Container */
+.NCC-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Content Wrapper */
+.NCC-content-wrapper {
+    background: #fff;
+    padding: 30px;
+    animation: slideInLeft 1s ease-out;
+}
+
+/* Title Styling */
+.NCC-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    animation: slideInRight 1s ease-out;
+}
+
+/* Section Styling */
+.NCC-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    animation: slideInLeft 1s ease-out;
+}
+
+/* Section Title */
+.NCC-section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1a5276;
+    padding-left: 15px;
+    border-bottom: 3px solid #fdb515;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    animation: slideInRight 1s ease-out;
+}
+
+/* List Styling */
+.NCC-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.NCC-list li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.NCC-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #1a5276;
+    font-size: 1.5rem;
+}
+
+/* Row Layout */
+.NCC-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.NCC-row .NCC-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Aim Section (Separate Box) */
+.NCC-aim-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideInLeft 1s ease-out;
+}
+
+.NCC-aim {
+    padding: 20px;
+}
+
+.NCC-heading {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    color: #154360;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #fdb515;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.NCC-icon {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.NCC-aimcontent {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* Motto & Pledge Section */
+.NCC-motto-pledge-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    min-width: 200px;
+}
+
+.NCC-motto,
+.NCC-pledge {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 200px;
+    animation: slideInRight 1s ease-out;
+}
+
+/* Common Content Style */
+.NCC-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* NCC Profile Section */
+.NCC-profile-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin: 50px auto;
+    border-left: 5px solid orange;
+    animation: slideInLeft 1s ease-out;
+}
+
+.NCC-profile-photo {
+    flex: 0 0 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NCC-profile-photo img {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.NCC-profile-content {
+    flex: 1;
+    text-align: left;
+}
+
+.NCC-profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: underline orange;
+}
+
+.NCC-profile-position {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+    text-decoration: underline orange;
+}
+
+.NCC-profile-bio {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+
+/* Tablet View */
+/* Tablet View (up to 1024px) */
+@media screen and (max-width: 1024px) {
+    .NCC-container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .NCC-row {
+        gap: 20px;
+    }
+
+    .NCC-title {
+        font-size: 2.5rem;
+    }
+
+    .NCC-section-title,
+    .NCC-heading {
+        font-size: 1.8rem;
+    }
+
+    .NCC-content {
+        font-size: 1rem;
+    }
+
+    .NCC-profile-container {
+        width: 90%;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .NCC-profile-photo {
+        flex: 0 0 200px;
+    }
+
+    .NCC-profile-photo img {
+        width: 200px;
+        height: 280px;
+    }
+
+    .NCC-profile-name {
+        font-size: 22px;
+    }
+
+    .NCC-profile-position {
+        font-size: 16px;
+    }
+
+    .NCC-profile-bio {
+        font-size: 15px;
+    }
+}
+
+/* Mobile View (up to 768px) */
+@media screen and (max-width: 768px) {
+    .NCC-container {
+        padding: 10px;
+    }
+
+    .NCC-row,
+    .NCC-motto-pledge-container {
+        flex-direction: column;
+        min-width: 200px;
+    }
+
+    .NCC-title {
+        font-size: 2rem;
+    }
+
+    .NCC-section-title,
+    .NCC-heading {
+        font-size: 1.6rem;
+    }
+
+    .NCC-icon {
+        width: 50px;
+    }
+    
+
+    .NCC-row .NCC-section,
+    .NCC-motto,
+    .NCC-pledge {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .NCC-profile-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .NCC-profile-photo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .NCC-profile-photo img {
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .NCC-profile-content {
+        text-align: center;
+    }
+
+    .NCC-profile-name {
+        font-size: 20px;
+    }
+
+    .NCC-profile-position {
+        font-size: 15px;
+    }
+
+    .NCC-profile-bio {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .NCC-section {
+        padding: 15px;
+    }
+
+    .NCC-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .NCC-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Small Mobile View (up to 480px) */
+@media screen and (max-width: 480px) {
+    .NCC-container {
+        padding: 5px;
+    }
+
+    .NCC-title {
+        font-size: 1.8rem;
+    }
+
+    .NCC-section-title,
+    .NCC-heading {
+        font-size: 1.4rem;
+    }
+
+    .NCC-icon {
+        width: 40px;
+    }
+
+    .NCC-content {
+        font-size: 0.95rem;
+    }
+
+    .NCC-profile-container {
+        margin: 30px auto;
+    }
+
+    .NCC-profile-photo img {
+        width: 190px;
+        height: 250px;
+    }
+
+    .NCC-profile-name {
+        font-size: 18px;
+    }
+
+    .NCC-profile-position {
+        font-size: 14px;
+    }
+
+    .NCC-profile-bio {
+        font-size: 13px;
+    }
+}
+@media (max-width: 768px) {
+
+    .NCC-motto,
+    .NCC-pledge {
+        width: 100%;
+        padding: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+}
