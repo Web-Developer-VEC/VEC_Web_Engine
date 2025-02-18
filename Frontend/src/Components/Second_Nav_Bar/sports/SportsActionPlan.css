@@ -1,0 +1,194 @@
+/* General Styles for the Action Plan Section */
+.sports-action-plan {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f8e4d3, #f1e0a1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 40px;
+  color: #ff6600;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.section-header p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.action-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 10px;
+}
+
+.sports_card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sports_card h3 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.sports_card p, .sports_card ul {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.sports_card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sports_card li {
+  padding-left: 30px;
+  position: relative;
+}
+
+.sports_card li::before {
+  content: '✔️';
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  color: #ff6600;
+}
+
+.sports_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional-Info sports_card Styles */
+.sports_card.additional-info {
+  grid-column: span 2;  /* This will make the sports_card span across two columns in the grid */
+}
+.sports_card.training {
+  grid-column: span 2;  /* This will make the sports_card span across two columns in the grid */
+}
+.additional-info ul {
+  padding-left: 20px;
+}
+
+.additional-info li {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.additional-info li::before {
+  content: '✔️';
+  font-size: 20px;
+  color: #ff6600;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sports-action-plan {
+    width: 95%;
+    padding: 20px;
+    margin: 30px auto;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .section-header p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .action-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sports_card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .sports_card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .sports_card p, .sports_card ul {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .sports_card li::before {
+    font-size: 16px;
+  }
+
+  .sports_card.additional-info,
+  .sports_card.training {
+    grid-column: span 1;
+  }
+}
+
+/* Further Reduction for Extra Small Screens */
+@media (max-width: 480px) {
+  .sports-action-plan {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .section-header h2 {
+    font-size: 24px;
+  }
+
+  .section-header p {
+    font-size: 12px;
+  }
+
+  .sports_card {
+    padding: 15px;
+  }
+
+  .sports_card h3 {
+    font-size: 18px;
+  }
+
+  .sports_card p, .sports_card ul {
+    font-size: 12px;
+  }
+
+  .sports_card li::before {
+    font-size: 14px;
+  }
+}

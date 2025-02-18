@@ -1,0 +1,220 @@
+.achievementsContainer {
+    margin: auto;
+    text-align: center;
+    padding: 40px 20px;
+    background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 80%;
+  }
+  
+  .slick-slider {
+    position: relative;
+  }
+  
+  .slick-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    width: 100% !important;
+  }
+  
+  .slick-slide:hover {
+    transform: scale(1.05);
+  }
+  
+  .image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    display: block;
+  }
+  
+  .text {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .sportscoordinator{
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .coordinatordes{
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+
+  }
+  
+  .slick-prev,
+  .slick-next {
+    font-size: 50px;
+    color: #ffcc00 !important;
+    z-index: 10;
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .slick-prev:hover,
+  .slick-next:hover {
+    background: #ffcc00;
+    color: #1e1e2f !important;
+  }
+  
+  .slick-prev {
+    left: -80px;
+  }
+  
+  .slick-next {
+    right: -80px;
+  }
+  
+  .slick-dots {
+    bottom: -30px;
+    z-index: 5;
+  }
+  
+  .slick-dots li button:before {
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #ffcc00;
+    font-size: 20px;
+  }
+  
+  @media (max-width: 1200px) {
+    .achievementsContainer {
+      width: 90%;
+    }
+  
+    .slick-prev {
+      left: -60px;
+    }
+  
+    .slick-next {
+      right: -60px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .achievementsContainer {
+      width: 95%;
+      padding: 30px 15px;
+    }
+  
+    h2 {
+      font-size: 2rem;
+    }
+  
+    .text {
+      font-size: 1.2rem;
+    }
+  
+    .slick-prev,
+    .slick-next {
+      width: 50px;
+      height: 50px;
+      font-size: 40px;
+    }
+  
+    .slick-prev {
+      left: -40px;
+    }
+  
+    .slick-next {
+      right: -40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.8rem;
+    }
+  
+    .text {
+      font-size: 1.1rem;
+    }
+  
+    .slick-slide {
+      padding: 20px;
+    }
+  
+    .image {
+      max-width: 100%;
+    }
+  
+    .slick-prev,
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      font-size: 30px;
+    }
+  
+    .slick-prev {
+      left: -30px;
+    }
+  
+    .slick-next {
+      right: -30px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .achievementsContainer {
+      width: 100%;
+      padding: 20px 10px;
+    }
+  
+    h2 {
+      font-size: 1.6rem;
+    }
+  
+    .text {
+      font-size: 1rem;
+    }
+  
+    .slick-slide {
+      padding: 15px;
+    }
+  
+    .slick-prev,
+    .slick-next {
+      display: none;
+    }
+  
+    .slick-dots {
+      bottom: -20px;
+    }
+  }
+  
