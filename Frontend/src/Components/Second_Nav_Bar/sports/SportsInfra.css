@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   flex-flow: row wrap;
+  align-items: center;
 }
 .grid1 > [class*=column-] {
   display: block;
@@ -535,12 +536,6 @@
     }
   }
 }
-* {
-  box-sizing: border-box;
-}
-*::before, *::after {
-  box-sizing: border-box;
-}
 
 .container1 {
   font-family: "Barlow", sans-serif;
@@ -568,10 +563,28 @@ a:hover {
 }
 
 .sport_img {
-  width: 100%;
-  height: 40vh;
   object-fit: cover;
 }
+
+/* Add animation ONLY to .image-holder1 */
+.image-holder1 {
+  position: relative;
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+/* If the images themselves should animate */
+.sport_img {
+  aspect-ratio: 2;
+
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+/* Ensure only the active slider's image gets the animation */
+.slider-item.active .image-holder1,
+.slider-item.active .sport_img {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
 
 .vertical {
   flex-direction: column;
@@ -612,6 +625,7 @@ a:hover {
 .slider-item.active {
   display: block;
 }
+
 .slider-item.active .hide-mobile {
   display: none;
 }
@@ -715,8 +729,8 @@ a:hover {
   transition: transform 0.1s ease;
 }
 
-.active .image-holder::before {
-  position: absolute;
+  .active .image-holder1::before {
+    position: absolute;
   content: "";
   z-index: 1;
   display: block;
@@ -783,11 +797,6 @@ a:hover {
     padding: 2.5rem 2.5rem 3rem 2.5rem;
     background: #fdcb03a9;
   }
-
-  img {
-    height: 60vh;
-  }
-
   .sports_description {
     font-size: 1.25rem;
     margin: 1rem 0 0 0;

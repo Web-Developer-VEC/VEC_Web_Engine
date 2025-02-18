@@ -1,0 +1,83 @@
+.admissions-container {
+    width: 100%;
+    background: linear-gradient(to right, #F59E0B, #B45309); /* Equivalent to from-yellow-500 to-yellow-700 */
+    padding: 4rem; /* p-16 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* shadow-2xl */
+    text-align: center;
+    color: white;
+  }
+  
+  .admissions-title {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* drop-shadow-lg */
+  }
+  
+  .admissions-text {
+    margin-top: 1.5rem; /* mt-6 */
+    font-size: 1.25rem; /* text-xl */
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .admissions-buttons {
+    margin-top: 2rem; /* mt-8 */
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* gap-6 */
+  }
+  
+  .admissions-button {
+    padding: 1rem 2rem; /* px-8 py-4 */
+    border-radius: 0.75rem; /* rounded-xl */
+    font-size: 1.25rem; /* text-xl */
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* shadow-lg */
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .apply-now {
+    background-color: black;
+    color: #FACC15; /* text-yellow-400 */
+  }
+  
+  .apply-now:hover {
+    background-color: #1F2937; /* hover:bg-gray-800 */
+  }
+  
+  .fee-payment {
+    background-color: #DC2626; /* bg-red-600 */
+    color: white;
+  }
+  
+  .fee-payment:hover {
+    background-color: #B91C1C; /* hover:bg-red-700 */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .admissions-container {
+      padding: 2rem; /* Reduce padding for smaller screens */
+    }
+  
+    .admissions-title {
+      font-size: 2.5rem;
+    }
+  
+    .admissions-text {
+      font-size: 1rem;
+    }
+  
+    .admissions-buttons {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .admissions-button {
+      width: 100%;
+    }
+  }
+  
