@@ -93,13 +93,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.nirf-year-button:hover {
-  background-color: #333;
-  color: #FDCC03;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
 /* Details Section */
 .nirf-details {
   width: 75%;
@@ -203,6 +196,15 @@
     /* Adjust width for better centering */
     margin: 30px auto;
     /* Ensures equal margin on both sides */
+  }
+}
+
+@media screen and (min-width: 910px){
+  .nirf-year-button:hover {
+    background-color: #333;
+    color: #FDCC03;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   }
 }
 

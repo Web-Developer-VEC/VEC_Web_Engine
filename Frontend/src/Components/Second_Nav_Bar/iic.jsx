@@ -209,7 +209,7 @@ const Iic = () => {
         )}
 
       <div className="about-section">
-        <div className="naac-info-panel">
+        <div className="naac-info-panel ">
           <h2>About IIC</h2>
           <p>
             The Ministry of Education (MoE), Govt. of India has established ‘MoE’s Innovation Cell (MIC)’ to
@@ -271,7 +271,7 @@ const Iic = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className="fuck md:card">
         <h3 className="iic-faici">Facilities And Infrastructure</h3>
         <div className="gallery">
           <div className="left iic-left">
