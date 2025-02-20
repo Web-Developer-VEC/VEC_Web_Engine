@@ -49,7 +49,7 @@ const slideData = [
     },
 ];
 
-const NSSCarousel = () => {
+const NSSCarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
 
@@ -74,12 +74,12 @@ const NSSCarousel = () => {
     return (
         <div className="nss-carousel-wrap">
             <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {slideData.map((slide, index) => (
+                {data?.image_path?.map((image, index) => (
                     <div className="nss-carousel-slide" key={index}>
-                        <img src={slide.image} alt={slide.title} />
+                        <img src={image} alt={data?.image_content[index]} />
                         <div className="nss-carousel-text">
-                            <h3>{slide.title}</h3>
-                            <p>{slide.desc}</p>
+                            <h3>{data?.image_content[index]}</h3>
+                            <p>{data?.desc[index]}</p>
                         </div>
                     </div>
                 ))}

@@ -1,6 +1,7 @@
 import React from "react";
 
-const LibraryIntro = () => {
+const LibraryIntro = ({about}) => {
+  console.log("About",about);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-50 to-white px-3 sm:px-5 md:px-10 py-6 sm:py-10">
       <div className="max-w-7xl w-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
@@ -11,10 +12,10 @@ const LibraryIntro = () => {
             ABOUT THE LIBRARY
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-gray-800 leading-relaxed">
-            The college library is located in the Bill Gates Block, spanning the Ground and First floors. With a total area of <span className="font-semibold text-yellow-600">24,000 sq. ft.</span>, it is a spacious, well-ventilated space. Our library houses over <span className="font-semibold text-yellow-600">77,525 volumes</span> of books and <span className="font-semibold text-black">25,156 titles</span> across various disciplines.
+            The college library is located in the Bill Gates Block, spanning the Ground and First floors. With a total area of <span className="font-semibold text-yellow-600">{about?.Area}</span>, it is a spacious, well-ventilated space. Our library houses over <span className="font-semibold text-yellow-600">{about?.no_of_books}</span> of books and <span className="font-semibold text-black">{about?.no_of_titles} titles</span> across various disciplines.
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-800 leading-relaxed">
-            Additionally, we offer access to <span className="font-semibold text-yellow-600">174 National and International Journals</span> and over <span className="font-semibold text-black">9,517 online journals</span>. The library follows the Universal Decimal Classification Scheme and operates on an Open Access System.
+            Additionally, we offer access to <span className="font-semibold text-yellow-600">{about?.no_of_journals} Journals</span> and over <span className="font-semibold text-black">{about?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal Classification Scheme and operates on an Open Access System.
           </p>
 
           {/* Library Timings */}

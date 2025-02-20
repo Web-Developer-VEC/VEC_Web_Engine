@@ -5,7 +5,10 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { useState } from "react";
 
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";const LibrarySections = () => {
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+const LibrarySections = ({faculty, collection, membership}) => {
+  
   const sections = [
     {
       title: "The Ground Floor",
@@ -401,7 +404,7 @@ const ImageGallery = [
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
   >
-    {/* 🚀 Full-width Scrollable Wrapper for Mobile */}
+    {/* Full-width Scrollable Wrapper for Mobile */}
     <div className="w-full overflow-x-auto">
       <div className="min-w-[750px] inline-block">
         <table className="w-full border-collapse bg-white/30 backdrop-blur-lg shadow-xl">
@@ -414,9 +417,9 @@ const ImageGallery = [
             </tr>
           </thead>
           <tbody>
-            {members.map((member, index) => (
+            {membership?.member_details?.map((member, index) => (
               <motion.tr
-                key={member.id}
+                key={index}
                 className="border-b border-gray-300 bg-white/40 transition-all duration-300 hover:bg-white"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -424,16 +427,16 @@ const ImageGallery = [
                 viewport={{ once: true }}
               >
                 <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-800">
-                  {member.id}
+                  {index + 1}
                 </td>
                 <td className="py-3 px-3 sm:py-4 sm:px-6 text-center text-gray-800">
-                  {member.role}
+                  {member}
                 </td>
                 <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-900">
-                  {member.books}
+                  {membership?.no_of_books?.[index]}
                 </td>
                 <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-900">
-                  {member.extra}
+                  {membership?.["periodical/back_volumes/cd"]?.[index]}
                 </td>
               </motion.tr>
             ))}
@@ -671,7 +674,7 @@ const ImageGallery = [
       </h2>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {facultyData.map((faculty, index) => (
+        {faculty?.name?.map((name, index) => (
           <motion.div
             key={index}
             className="relative bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
@@ -682,21 +685,21 @@ const ImageGallery = [
           >
             <div className="group relative">
               <img
-                src={faculty.image}
-                alt={faculty.name}
+                src={faculty?.image[index]}
+                alt={name}
                 className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                 <h3 className="text-xl font-bold text-white text-center px-4">
-                  {faculty.name}
+                  {name}
                 </h3>
               </div>
             </div>
 
             <div className="p-6 text-center">
-              <h3 className="text-2xl font-bold text-gray-900">{faculty.name}</h3>
-              <p className="text-gray-600 mt-2">{faculty.qualification}</p>
-              <p className="text-yellow-700 font-semibold mt-2">{faculty.role}</p>
+              <h3 className="text-2xl font-bold text-gray-900">{name}</h3>
+              <p className="text-gray-600 mt-2">{faculty?.educational_qualification[index]}</p>
+              <p className="text-yellow-700 font-semibold mt-2">{faculty?.designation[index]}</p>
             </div>
           </motion.div>
         ))}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './SportsPage.css'; // Import the CSS file for styling
 import Banner from '../../Banner';
 import SportsActionPlan from './SportsActionPlan';
@@ -8,8 +8,25 @@ import WinnerSlider from './winners_sld';
 import Sportsfaculties from './sports_faculties';
 import Achievements from './achivements';
 import Achievements1 from './Achivements2';
+import axios from 'axios';
 
 const SportsPage = () => {
+  const [sportData,setSportsData] = useState(null);
+
+  useEffect(()=> {
+    const fetchData = async ()=>{
+      try{
+        const responce = await axios.get('/api/sportsdata');
+        setSportsData(responce.data);
+        console.log("Responce",responce.data);
+        
+      }
+      catch (err){
+        console.error("Error Fetching data", err.message);
+      }
+    }
+    fetchData();
+  },[])
   return (
     <>
 <Banner
@@ -44,12 +61,12 @@ const SportsPage = () => {
       </section>
       <SportsActionPlan />
       <SportsInfra/>
-      <Achievements1/>
-      <ZonalResults/>
-      <WinnerSlider />
-      <Sportsfaculties/>
+      <Achievements1 data={sportData && sportData.length > 2 ? sportData[4] : null}/>
+      <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>
+      <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/><br/>
+      <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>
     </div>
-    <Achievements/>
+    <Achievements data={sportData && sportData.length > 2 ? sportData[3] : null}/>
     </>
   );
 };

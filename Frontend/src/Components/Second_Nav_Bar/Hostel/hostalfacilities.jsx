@@ -6,25 +6,25 @@ const facilities = [
     id: 1,
     title: "Comfortable Rooms",
     description: "Our rooms are designed for comfort and relaxation, ensuring a good night's sleep.",
-    image: "https://images.pexels.com/photos/1845208/pexels-photo-1845208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM7KFDxGz0vjoMnZbtF9Wlx2Vze9b6TQXxZg&s",
   },
   {
     id: 2,
     title: "Modern Kitchen",
     description: "A fully equipped kitchen where you can prepare your favorite meals.",
-    image: "https://images.pexels.com/photos/1468379/pexels-photo-1468379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR521-msTuln7iMR8YLB-namJ11KKV-8Vqng&s",
   },
   {
     id: 3,
     title: "Cozy Common Area",
     description: "A spacious common area for socializing and relaxing with other guests.",
-    image: "https://images.pexels.com/photos/36469/woman-person-flowers-wreaths.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    image: "https://ugcounselor-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/02/14155408/Velammal-Institute-of-Technology.jpg",
   },
   {
     id: 4,
     title: "Lounge Area",
     description: "A comfortable lounge to unwind and connect with others.",
-    image: "https://images.pexels.com/photos/247322/pexels-photo-247322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSROIRP2sPDuJfQ6OogQkW7X-JXJNiJcIuWyw&s",
   },
 ];
 

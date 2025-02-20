@@ -20,7 +20,7 @@ const achievements = [
   { id: 13, text: "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal", image: "/sports/achive13.png" }
 ];
 
-const Achievements1 = () => {
+const Achievements1 = ({data}) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -36,13 +36,12 @@ const Achievements1 = () => {
 
   return (
     <div className={styles.achievementsContainer}>
-      <h2 className={styles.sportscoordinator}>Anna University Zone 1</h2>
-      <p className={styles.coordinatordes}>Co-ordinating Centre 2024-25</p>
+      <h2 className={styles.sportscoordinator}>Anna University Zone {data?.zone}</h2>
+      <p className={styles.coordinatordes}>Co-ordinating Centre {data?.year}</p>
       <Slider {...settings}>
-        {achievements.map((item) => (
+        {data?.image?.map((item) => (
           <div key={item.id} className={styles.slide}>
-            <img src={item.image} alt="Achievement" className={styles.image} />
-            <p className={styles.text}>{item.text}</p>
+            <img src={item} alt="Achievement" className={styles.image} />
           </div>
         ))}
       </Slider>

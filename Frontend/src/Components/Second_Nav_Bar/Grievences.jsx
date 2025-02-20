@@ -3,21 +3,42 @@ import "./Grievences.css";
 import Banner from "../Banner";
 
 const GrievanceForm = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    subject: "",
-    content: "",
-  });
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [content, setContent] = useState('');
+  const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page refresh
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Grievance submitted successfully!");
-    setFormData({ email: "", subject: "", content: "" });
+    try {
+      const response = await fetch("/api/get_grevience", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", 
+        body: JSON.stringify({ email, subject, content }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(`Success: ${data.message}`);
+        console.log("User Info:", data.message); 
+        alert("email send successfully")
+      } else {
+        setMessage(`Error: ${data.error || data.message}`);
+        alert(data.message);
+      }
+    } catch (error) {
+      setMessage("Error connecting to the server");
+      console.error("Login Error:", error);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setContent('');
+    setSubject('');
+    setEmail('');
   };
 
   return (
@@ -44,8 +65,8 @@ const GrievanceForm = () => {
             className="grievances-input-email"
             type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)}
             required
           />
 
@@ -54,8 +75,8 @@ const GrievanceForm = () => {
             className="grievances-input-subject"
             type="text"
             name="subject"
-            value={formData.subject}
-            onChange={handleChange}
+            value={subject}
+            onChange={(e)=> setSubject(e.target.value)}
             required
           />
 
@@ -63,8 +84,8 @@ const GrievanceForm = () => {
           <textarea
             className="grievances-textarea-content"
             name="content"
-            value={formData.content}
-            onChange={handleChange}
+            value={content}
+            onChange={(e)=> setContent(e.target.value)}
             required
           ></textarea>
 
@@ -72,6 +93,12 @@ const GrievanceForm = () => {
             Submit
           </button>
         </form>
+        {message && (
+          <>
+            <br />
+            <p>{message}</p>
+          </>
+        )}
       </div>
     </>
   );

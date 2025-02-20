@@ -1,18 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Journalpublication.css";
 import Banner from "../../Banner";
 
 export default function Journalpublication() {
-  const [pdfUrl, setPdfUrl] = useState("/pdfs/2024-2025.pdf"); // Default PDF
-  const [activeYear, setActiveYear] = useState("2024-2025"); // Track active button
+  const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
+  const [activeYear, setActiveYear] = useState(null); // Track active button
+  const [journalPublication, setJournalPublication] = useState(null);
 
-  const years = [
-    "2024-2025",
-    "2023-2024",
-    "2022-2023",
-    "2021-2022",
-    "2020-2021",
-  ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/get_research_data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ category: "journal_publication" }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setJournalPublication(data);
+          setPdfUrl(data?.pdf_path[0]);
+          setActiveYear(data?.year[0]);
+        }
+      } catch (error) {
+        console.error("Fetching Error:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -29,11 +49,11 @@ export default function Journalpublication() {
         </h1>
 
         <div className="research-journal-button-container">
-          {years.map((year) => (
+          {journalPublication?.year?.map((year,index) => (
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(`/pdfs/${year}.pdf`);
+                setPdfUrl(journalPublication?.pdf_path[index]);
                 setActiveYear(year);
               }}
               className={`research-journal-button ${
