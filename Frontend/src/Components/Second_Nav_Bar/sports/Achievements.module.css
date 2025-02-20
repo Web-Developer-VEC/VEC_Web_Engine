@@ -9,7 +9,7 @@
   width: 80%;
 }
 
-.sportsachievement {
+.sports_achievement {
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 30px;
@@ -156,10 +156,6 @@
     font-size: 1.8rem;
   }
 
-  .achievementsContainer{
-    /* width: 90vw; */
-  }
-
   .text {
     font-size: 1.1rem;
   }
@@ -190,13 +186,11 @@
 
 @media (max-width: 576px) {
   .achievementsContainer {
-    width: 90vw;
+    width: 100%;
     padding: 20px 10px;
-    height: fit-content;
-    margin-bottom: 10px;
   }
 
-  .sportsachievement {
+  h2 {
     font-size: 1.6rem;
   }
 
@@ -211,5 +205,9 @@
   .slick-prev,
   .slick-next {
     display: none;
+  }
+
+  .slick-dots {
+    bottom: -20px;
   }
 }

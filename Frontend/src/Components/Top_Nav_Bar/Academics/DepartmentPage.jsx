@@ -14,16 +14,28 @@ import Research from "./sections/RD";
 import Conference from "./sections/Conference";
 import styles from "./HeadDepartment.module.css"; 
 import college from "../../Assets/college.jpeg";
+import Sun from "../../Assets/sun.png";
+import Moon from "../../Assets/moon.png";
+import Cookies from "universal-cookie";
+import Toggle from "../../Toggle";
 
-const DepartmentPage = () => {
+const DepartmentPage = ({theme, toggle}) => {
   const { deptID } = useParams();
-  const [activeSection, setActiveSection] = useState(null);
+  const cookies = new Cookies()
+  if(cookies.get(`${deptID}_sec`) === undefined) cookies.set(`${deptID}_sec`, "HeadDepartment");
+  const [activeSection, setActiveSection] = useState(cookies.get(`${deptID}_sec`));
+  console.log(activeSection)
   const [availableSections, setAvailableSections] = useState([]);
   const [sectionData, setSectionData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef(null);
+
+  const handleSection = (section) => {
+    cookies.set(`${deptID}_sec`, section);
+    setActiveSection(section);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,13 +49,13 @@ const DepartmentPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!activeSection) return;
+    if (!cookies.get(`${deptID}_sec`)) return;
 
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
+        const response = await axios.get(`/api/${deptID}/${cookies.get(`${deptID}_sec`).toLowerCase()}`);
         setSectionData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -87,7 +99,8 @@ const DepartmentPage = () => {
   }, [deptID]);
 
   const renderSection = () => {
-    switch (activeSection) {
+    console.log(`Render ${activeSection}`)
+    switch (cookies.get(`${deptID}_sec`)) {
       case "HeadDepartment": return <HeadDepartment data={sectionData} />;
       case "Vision&Mission": return <VisionMission data={sectionData} />;
       case "Faculties": return <Faculties data={sectionData} />;
@@ -115,22 +128,24 @@ const DepartmentPage = () => {
       )}
       
       {/* Header */}
-      <div className={styles.header}>
-        <img src={college} alt="Department Header" className={styles.fullWidthImage} />
+      <div className={styles.header + " bottom-3"}>
+        <Toggle attr="absolute bottom-0 float-right right-24 size-12" toggle={toggle} theme={theme} />
+        <img src={college} alt="Department Header" className={styles.fullWidthImage}/>
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
 
-      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
+      <div style={{display: "flex", flexDirection: isMobile ? "column" : "row"}}>
         {/* Sidebar */}
-        <Sidebar 
-          sections={availableSections} 
-          activeSection={activeSection} 
-          setActiveSection={setActiveSection} 
+        <Sidebar
+            sections={availableSections}
+            activeSection={cookies.get(`${deptID}_sec`)}
+            setActiveSection={handleSection}
         />
         {/* Main content */}
-        <div ref={contentRef} style={{ flex: 1, padding: "20px" }}>{renderSection()}</div>
+        <div ref={contentRef} className="text-text dark:text-drkt"
+             style={{flex: 1, padding: "20px"}}>{renderSection()}</div>
       </div>
     </div>
   );

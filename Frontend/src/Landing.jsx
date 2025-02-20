@@ -84,23 +84,23 @@ const courses = [
 ];
 
 
-const LandingPage = ({load}) => {
+const LandingPage = ({theme, load, toggle}) => {
 
     return (
         <div className="landing-page -mt-[5vmax]">
-            <ImgSld load={load}/>
+            <ImgSld load={load} toggle={toggle} theme={theme}/>
             <div className='w-max max-w-[100vw] h-fit absolute z-50'>
-                <div className='pt-2 pb-[2vmax] bg-white'>
+                <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
                     <Abt/>
                     <Announce/>
                     <Event/>
                 </div>
                 <Tracker/>
-                <div className='bg-white'>
+                <div className='bg-prim dark:bg-drkp'>
                     <Samplereact courses={courses}/>
                     <Contact/>
                     <Chat/>
-                    <Footer/>
+                    <Footer theme={theme}/>
                 </div>
             </div>
         </div>

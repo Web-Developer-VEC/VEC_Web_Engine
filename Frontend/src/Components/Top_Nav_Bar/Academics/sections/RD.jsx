@@ -77,7 +77,9 @@ const Research = ({ data }) => {
   return (
     <div className="Rd-page">
       <div className="RD-intro">
-        <h1 className="RD-header">RESEARCH DATA</h1>
+        <h1 className="RD-header bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_50%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">RESEARCH DATA</h1>
       </div>
 
       {selectedAction ? (
@@ -95,7 +97,8 @@ const Research = ({ data }) => {
             {years?.map((year) => (
               <button
                 key={year}
-                className={`RD-year-button ${selectedYear === year ? "active" : ""}`}
+                className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-drka" 
+                    : "bg-secd text-text dark:bg-drks"}`}
                 onClick={() => handleYearClick(year)}
               >
                 {year}

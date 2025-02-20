@@ -3,7 +3,7 @@
     import './Other-Facilities.css'
     import { ArrowBigLeft, ArrowBigRight, Building2 } from 'lucide-react';
 
-    const OtherFacilities = () => {
+    const OtherFacilities = ({theme, toggle}) => {
 
         const items = [
             {
@@ -103,21 +103,22 @@
             
 
       return (
-        <div className='ofac'>
-        <Banner
+         <>
+             <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Campus Facilities"
           subHeaderText="Excellence in Infrastructure"
-          className="banner-ofac"
+          // className="banner-ofac"
         />
-        <div className="card">
+        <div className='ofac'>
+        <div className="card-oth dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-b-8 border-secd dark:border-drks">
           <div className="card-content">
             <div className="icon-wrapper">
-              <div className="icon-bg">
+              <div className="icon-bg text-secd dark:text-drks">
                 <Building2 className="icon" />
               </div>
             </div>
-            <h3 className="card-title">World Class Infrastructure</h3>
+            <h3 className="card-title-oth text-secd dark:text-drks">World Class Infrastructure</h3>
             <div className="relative">
               <p className="card-text">
                 Velammal Engineering College in Chennai offers excellent facilities, including well-equipped laboratories, a central library with vast digital and physical resources, and modern classrooms. The campus also provides hostel accommodations, sports facilities, a cafeteria, an auditorium, seminar halls, and dedicated research centers.
@@ -131,7 +132,7 @@
           <div className="container1">
             <div className="grid1">
               <div className="column-xs-12">
-                <ul className="slider card">
+                <ul className="slider card-oth dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] p-4">
                   {items.map((item, index) => (
                     <li
                       key={index}
@@ -165,7 +166,7 @@
                               </div>
                             </div>
                           </div>
-                          <div className="grid1">
+                          <div className="grid1 text-text dark:text-drkt">
                             <div className="column-xs-12 column-md-9">
                               <div className="intro1 show-mobile">
                                 <a href="#">
@@ -209,7 +210,7 @@
           </div>
         </main>
       </div>
-
+</>
       )
     }
 

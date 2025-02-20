@@ -4,8 +4,9 @@ import { useState, useRef, useEffect } from 'react'
 const Boot = (props) => {
     const isAuth = props.isAuth
     const isLoaded = props.isLoaded
+    const theme = props.theme
+
     const delay = (isAuth) ? 3 : 0
-    console.log(`Auth: ${isAuth}`)
 
     const canRf = useRef(null)
     let ani
@@ -30,7 +31,7 @@ const Boot = (props) => {
         let lstFrm = Date.now()
 
         function Clear() {
-            cntx.fillStyle = "rgba(255, 255, 255, 0.07)"
+            cntx.fillStyle = (theme === "light") ? "rgba(255, 255, 255, 0.07)": "rgba(34, 40, 49, 0.2)"
             cntx.fillRect(0, 0, canva.width, canva.height);
         }
 
@@ -104,12 +105,12 @@ const Boot = (props) => {
     return (
         <>
             <canvas
-                className={`fixed bg-white z-[1000] size-full top-0
+                className={`fixed bg-prim dark:bg-drkp z-[1000] size-full top-0
                     ${(isLoaded) ? (!isAuth) ? 'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2.5s]' : 
                     'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' : ''}`}
                 ref={canRf}></canvas>
             <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 ` +
-                `${(isLoaded) ? (!isAuth) ? 'bg-white animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
+                `${(isLoaded) ? (!isAuth) ? 'bg-prim dark:bg-drkp text-text dark:text-drkt animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
                     'animate-[fadOut_0.5s_ease-in_forwards] [animation-delay:2s]': `${isAuth}`} ${isAuth}`}>
                 <div className='relative w-[20vmax] h-[20vmax] group/ttl'>
                     <div className='w-full h-full [clip-path:polygon(0_0,100%_0,100%_50%,65%_65%,53%_80%,60%_70%,50%_40%,40%_70%,42%_70%,0_45%)] absolute'>
@@ -127,7 +128,7 @@ const Boot = (props) => {
                              className='relative w-full h-full group duration-300 transition-all'>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className='fill-orange-600 stroke-orange stroke-1 stroke-white absolute origin-bottom translate-y-[-5%]'/>
+                                className='fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute origin-bottom translate-y-[-5%]'/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
                                 className={`fill-orange-600 stroke-orange stroke-1 absolute origin-bottom translate-y-[-5%] 
@@ -140,12 +141,12 @@ const Boot = (props) => {
                                     [clip-path:polygon(0_0,100%_0,100%_50%,50%_50%,50%_100%,0_100%)] duration-300 transition-all`}/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className={`fill-orange-600 stroke-orange stroke-1 stroke-white absolute
+                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute
                                     origin-bottom translate-y-[-5%] ${(!isAuth) ? 'animate-[midPetR_1s_ease_forwards]': 'animate-[midPetR_0s_ease_forwards]'}
                                     duration-300 transition-all`}/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className={`fill-orange-600 stroke-orange stroke-1 stroke-white absolute 
+                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute 
                                     origin-bottom translate-y-[-5%] ${(!isAuth) ? 'animate-[midPetL_1s_ease_forwards]': 'animate-[midPetL_0s_ease_forwards]'}
                                     duration-300 transition-all`}/>
                         </svg>
@@ -153,20 +154,20 @@ const Boot = (props) => {
                 </div>
                 <div className='xl:top-[63%] md:top-[62%] top-[60%]  w-fit h-auto'>
                     <div
-                        className='font-rome text-center animate-spin text-amber-800 p-0 -mb-[0.75vmax] text-[0]
+                        className='font-rome text-center text-accn dark:text-drks p-0 -mb-[0.75vmax] text-[0]
                         overflow-hidden'>
                         {"VELAMMAL".split("").map((ltr, i) => (
                             <span className={`animate-[bam_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay) * 0.15}s`}}>{ltr}</span>
                         ))}
                     </div>
-                    <div className='font-rome text-center text-[0] animate-spin text-black p-0 -mb-[0.75vmax] overflow-hidden'>
+                    <div className='font-rome text-center text-[0] text-text dark:text-drkt p-0 -mb-[0.75vmax] overflow-hidden'>
                         {"ENGINEERING COLLEGE".split("").map((ltr, i) => (
                             <span className={`animate-[bom_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay * 4) * 0.05}s`}}>{ltr}</span>
                         ))}
                     </div>
-                    <div className='font-rome text-center text-[0] animate-spin text-amber-800 p-0 mt-4 -mb-[0.75vmax] overflow-hidden'>
+                    <div className='font-rome text-center text-[0] text-accn dark:text-drks p-0 mt-4 -mb-[0.75vmax] overflow-hidden'>
                         {"Wheel of Knowledge rolls on".split("").map((ltr, i) => (
                             <span className={`animate-[bem_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay * 2) * 0.04}s`}}>{ltr}</span>

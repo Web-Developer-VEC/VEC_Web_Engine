@@ -10,7 +10,7 @@
     font-size: 28px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #222;
+    /*color: #222;*/
     margin-bottom: 20px;
   }
   
@@ -39,8 +39,8 @@
   }
   
   .NSS-download-btn {
-    background-color: #d1b91b;
-    color: white;
+    /*background-color: #d1b91b;*/
+    /*color: white;*/
     padding: 10px 15px;
     font-size: 16px;
     font-weight: bold;
@@ -51,7 +51,7 @@
   }
   
   .NSS-download-btn:hover {
-    background-color: #b89e1a;
+    /*background-color: #b89e1a;*/
     transform: scale(1.05);
   }
   

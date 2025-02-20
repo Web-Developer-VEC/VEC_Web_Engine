@@ -13,8 +13,8 @@
   width: 85%;
   padding: 30px;
   border-radius: 10px;
-  background: #ffffff;
-  border-left: 5px solid #d1b91b;
+  /*background: #ffffff;*/
+  /*border-left: 5px solid #d1b91b;*/
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
@@ -42,7 +42,7 @@
 .YRC-content {
   font-size: 16px;
   line-height: 1.7;
-  color: #444;
+  /*color: #444;*/
 }
 
 /* Mission & Vision Section */
@@ -57,8 +57,8 @@
   width: 50%;
   padding: 30px;
   border-radius: 10px;
-  background: #ffffff;
-  border-left: 5px solid #d1b91b;
+  /*background: #ffffff;*/
+  /*border-left: 5px solid #d1b91b;*/
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
@@ -83,7 +83,7 @@
   font-size: 28px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #222;
+  /*color: #222;*/
   margin-bottom: 30px;
 }
 
@@ -93,8 +93,8 @@
   font-weight: bold;
   text-transform: uppercase;
   margin: 20px 0 10px;
-  color: #d1b91b;
-  border-bottom: 3px solid #d1b91b;
+  /*color: #d1b91b;*/
+  /*border-bottom: 3px solid #d1b91b;*/
   display: inline-block;
   padding-bottom: 5px;
 }
@@ -110,10 +110,10 @@
 /* ID Card Styling */
 .YRC-id-card {
   width: 280px;
-  background: #ffffff;
+  /*background: #ffffff;*/
   padding: 20px;
   border-radius: 12px;
-  border: 2px solid #d1b91b;
+  /*border: 2px solid #d1b91b;*/
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: center;
@@ -133,7 +133,7 @@
   height: 140px;
   border-radius: 10px; /* Soft rounded corners */
   object-fit: cover;
-  border: 4px solid #d1b91b;
+  /*border: 4px solid #d1b91b;*/
   margin-bottom: 10px;
   display: block;
 }
@@ -143,12 +143,12 @@
   font-size: 20px;
   font-weight: bold;
   margin: 5px 0;
-  color: #222;
+  /*color: #222;*/
 }
 
 .YRC-role {
   font-size: 16px;
-  color: #666;
+  /*color: #666;*/
   font-style: italic;
 }
 
@@ -162,12 +162,12 @@
 
 .YRC-social-link {
   font-size: 22px;
-  color: #666;
+  /*color: #666;*/
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .YRC-social-link:hover {
-  color: #d1b91b;
+  /*color: #d1b91b;*/
   transform: scale(1.2);
 }
 

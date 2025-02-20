@@ -99,7 +99,7 @@
   width: 425px;
   height: 380px; /* Reverted from 430px */
   padding: 20px;
-  background-color: rgba(255, 201, 5, 1);
+  /*background-color: rgba(255, 201, 5, 1);*/
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   display: flex;
@@ -132,8 +132,8 @@
 }
 
 .event-date .circle {
-  background: #642610;
-  color: white;
+  /*background: #642610;*/
+  /*color: white;*/
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -144,7 +144,7 @@
   /*font-size: 16px;*/
   text-align: center;
   padding: 10px;
-  border: 5px solid #f0f0f0;
+  /*border: 5px solid #f0f0f0;*/
 }
 
 .event-name {
@@ -165,8 +165,8 @@
 }
 
 .event-row.department-name {
-  background: whitesmoke;
-  color: black;
+  /*background: whitesmoke;*/
+  /*color: black;*/
   text-align: center;
   padding: 12px; /* Increased padding */
   /*font-size: 18px;*/
@@ -178,7 +178,7 @@
 }
 
 .event-row.description {
-  color: rgb(3, 3, 3);
+  /*color: rgb(3, 3, 3);*/
   border-radius: 5px;
   text-align: center;
   margin-top: 25px;
@@ -204,7 +204,7 @@
 .event-row.links {
   text-align: center;
   /*margin-top: 10px;*/
-  color: #642610;
+  /*color: #642610;*/
 }
 
 .event-row.links {

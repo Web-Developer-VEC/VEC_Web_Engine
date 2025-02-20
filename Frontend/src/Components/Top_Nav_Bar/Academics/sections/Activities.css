@@ -31,7 +31,7 @@ body {
 .card_act {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  /*background-color: #fff;*/
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transform: translateY(-50px);
@@ -58,36 +58,36 @@ body {
 
 .card-date {
   font-size: 14px;
-  color: #888;
+  /*color: #888;*/
 }
 
 .card-title {
   font-size: 20px;
-  color: #333;
+  /*color: #333;*/
   margin: 10px 0;
 }
 
 .card-coordinator {
   font-size: 16px;
-  color: #555;
+  /*color: #555;*/
 }
 
 .activities-view-more-btn {
   margin-top: auto; /* Push the button to the bottom if needed */
   padding: 10px 20px;
-  background-color: #fdcc03;
-  color: #000;
+  /*background-color: #fdcc03;*/
+  /*color: #000;*/
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  /*transition: background-color 0.3s ease;*/
   width: fit-content;
   margin-top: auto; 
   align-self: center;
 }
 
 .activities-view-more-btn:hover{
-  background-color: #fbd634;
-  color: white;
+  /*background-color: #fbd634;*/
+  /*color: white;*/
 }
 
 @keyframes falling {
@@ -120,8 +120,8 @@ body {
   opacity: 1;
 }
 
-.modal-content {
-  background-color: #fff;
+.modal-content-act {
+  /*background-color: #fff;*/
   padding: 20px;
   border-radius: 15px;
   width: 90%;
@@ -140,15 +140,15 @@ body {
   margin-bottom: 20px;
 }
 
-.modal-content h2 {
+.modal-content-act h2 {
   font-size: 26px;
-  color: #333;
+  /*color: #333;*/
   margin-bottom: 15px;
 }
 
-.modal-content p {
+.modal-content-act p {
   font-size: 18px;
-  color: #555;
+  /*color: #555;/*/
   margin-bottom: 15px;
 }
 
@@ -159,10 +159,10 @@ body {
   right: 10px;
   width: 35px;
   height: 35px;
-  background-color: #fdcc03;
+  /*background-color: #fdcc03;*/
   border: none;
   border-radius: 50%;
-  color: #000;
+  /*color: #000;*/
   font-size: 20px;
   font-weight: bold;
   display: flex;
@@ -175,7 +175,7 @@ body {
 
 .close-btn:hover {
   transform: scale(1.1);
-  background-color: #e3c22f;
+  /*background-color: #e3c22f;*/
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -187,15 +187,15 @@ body {
 
 .view-more-btn {
   padding: 10px 20px;
-  background-color: #fdcc03;
-  color: #000;
+  /*background-color: #fdcc03;*/
+  /*color: #000;*/
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
 .view-more-btn:hover {
-  background-color: #e3c22f;
+  /*background-color: #e3c22f;*/
 }
 
 /* General styles for tablets and mobiles */
@@ -277,7 +277,7 @@ body {
   }
 
   /* Modal adjustments for mobile */
-  .modal-content {
+  .modal-content-act {
     padding: 15px; /* Reduce padding inside modal */
     width: 95%; /* Maximize space on smaller screens */
   }
@@ -286,11 +286,11 @@ body {
     height: 200px; /* Smaller image height for modal */
   }
 
-  .modal-content h2 {
+  .modal-content-act h2 {
     font-size: 20px; /* Adjust heading size */
   }
 
-  .modal-content p {
+  .modal-content-act p {
     font-size: 16px; /* Adjust paragraph text */
   }
 

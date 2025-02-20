@@ -155,7 +155,7 @@ const Head = () => {
                     lnk: "/dept/002",
                     deptID: "001",
                 }, //
-                {hrd: false, ttl: "", sup: [], lnk: ""},
+                // {hrd: false, ttl: "", sup: [], lnk: ""},
                 {hrd: true, ttl: "Science & Humanities", sup: [], lnk: ""},
                 {
                     hrd: false,
@@ -304,18 +304,17 @@ const Head = () => {
     //     setScroll(pos)
     // }
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', hndlScrll, {passive: true})
-    //
-    //     return () => {
-    //         window.removeEventListener('scroll', hndlScrll)
+    // useEffeaccn{
+    //     window.addEventListener('scroll', hndlScrll, {passive: truatext dark:text-drkt//     return () => {
+    //         window.removeEventListener(text dark:text-drktll', hndlScrll)
     //     }
     // })
     return (
         <>
             <nav className='fixed z-[100] w-full'>
                 <div
-                    className={'flex items-center font-popp group bg-white text-slate-200 transition-all ease-in-out duration-300 w-full h-auto ' +
+                    className={'flex items-center font-popp group bg-prim dark:bg-drkp text-text dark:text-drkt ' +
+                        'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
                     <a href="/" className="flex items-center text-decoration-none">
                         <div className='bg-inherit z-10'>
@@ -326,11 +325,11 @@ const Head = () => {
                         </div>
                         <div
                             className='w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all'>
-                            <span className='font-rome text-[2vmax] text-amber-800 p-0 -mb-[0.75vmax]'>VELAMMAL</span>
+                            <span className='font-rome text-[2vmax] text-accn p-0 -mb-[0.75vmax]'>VELAMMAL</span>
                             <span
-                                className='font-rome text-black text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
+                                className='font-rome text-text dark:text-drkt text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
                             <span
-                                className="font-rome text-black text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">The Wheel of Knowledge rolls on!</span>
+                                className="font-rome text-text dark:text-drkt text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">The Wheel of Knowledge rolls on!</span>
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
@@ -342,49 +341,52 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.2vmax] max-w-[63.5%] w-fit h-max gap-x-4 gap-y-0
-                        duration-300 ease-in-out transition'>
+                    <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.2vmax] max-w-[63.5%]
+                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
-                            <div className='group/nav relative transition-all mt-3' key={ind}>
+                            <div className='group/nav relative transition-all mt-3 rounded-xl' key={ind}>
                                 <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]
                                         hover:bg-[position:100%_0%] text-transparent
-                                        bg-gradient-to-l from-[#fdcc03] from-50% via-black via-50% to-black to-90% bg-clip-text bg-[position:0%_0%] bg-[length:200%_100%]
+                                        bg-gradient-to-l from-secd dark:from-drks from-50% via-text dark:via-drkt via-50% 
+                                        to-text dark:to-drkt to-90% bg-clip-text bg-[position:0%_0%] bg-[length:200%_100%]
                                         hover:ease-out hover:duration-700 ease-in-out duration-300`}>{nvt.main}
                                     <ChevronDownIcon
-                                        className='size-[1.3vmax] mb-1 ml-1 inline text-black'></ChevronDownIcon>
+                                        className='size-[1.3vmax] mb-1 ml-1 inline text-text dark:text-drkt'></ChevronDownIcon>
                                 </p>
-                                <div className={`grid grid-flow-row content-center rounded-lg outline group-hover/nav:outline-[#fdcc03] outline-transparent 
-                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit ${nvt.cols > 1 ? 'min-w-[55vw]' : 'w-max'} bg-white outline-offset-2
+                                <div className={`grid grid-flow-row content-center rounded-lg outline 
+                                    group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
+                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit ${nvt.cols > 1 ? 'min-w-[55vw]' : 'w-max'} outline-offset-2
                                         group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                        duration-500 ease-in transiton-[ht]`}
+                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}
                                      style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
-                                        <div className='group/sub relative w-full' key={i}>
+                                        <div className='group/sub relative w-full bg-prim dark:bg-drkp first:rounded-lg last:rounded-b-lg' key={i}>
                                             <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
-                                                    ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% border-slate-700
+                                                    ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` +
                                                 (sbj.hrd || sbj.ttl === "" ? '' : ' hover:bg-[position:-100%_100%]')}
                                                style={{transitionDelay: `${((length > 10) ? 25 : 100) * i}ms`}}
                                                key={sbj.ttl} href={sbj.lnk}
                                                target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
-                                                className={'w-full my-2 align-middle text-nowrap border-slate-500 border-dashed ' +
+                                                className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt border-slate-500 border-dashed ' +
                                                     (sbj.hrd ? 'font-bold border-b-2 text-center' : 'text-left')}>{sbj.ttl}</p>
                                             </a>
                                             {(sbj.sup.length > 0) ? (
-                                                <div className='absolute top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden bg-white
-                                                        outline group-hover/sub:outline-[#fdcc03] hover:outline-[#fdcc03] hover:max-h-[90vh] outline-transparent rounded-lg
-                                                        outline-offset-2 duration-500 ease-in transiton-[ht]'>
+                                                <div className='absolute bg-prim dark:bg-drkp top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden
+                                                        outline group-hover/sub:outline-secd dark:group-hover/sub:outline-drks hover:max-h-[90vh] outline-transparent
+                                                        outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
                                                     {sbj.sup.map((spj, i, {length}) => (
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] 
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
-                                                            ${(i !== length - 1) ? 'border-b' : ''} bg-gradient-to-l 
-                                                            from-[#fdcc03] from-0% via-[#fdcc03] via-50% to-white to-50% 
+                                                            ${(i !== length - 1) ? '' : ''} bg-gradient-to-l 
+                                                            from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
                                                             w-full group-hover/sub:translate-x-0 hover:delay-0 duration-200 
                                                             ease-in transition-all hover:bg-[position:-100%_100%]`}
                                                            style={{transitionDelay: `${100 * i}ms`}}
-                                                           key={sbj.ttl + i} href={spj.lnk}><p
-                                                            className='w-fit my-2 text-right align-middle text-nowrap'>{spj.ttl}</p>
+                                                           key={sbj.ttl + i} href={spj.lnk}>
+                                                            <p className='w-fit my-2 text-right align-middle
+                                                            text-text dark:text-drkt text-nowrap'>{spj.ttl}</p>
                                                         </a>
                                                     ))}
                                                 </div>
@@ -397,8 +399,8 @@ const Head = () => {
                         {/* </div> */}
                     </div>
                 </div>
-                <div className='hidden lg:flex pl-4 font-popp bg-[#fdcc03] p-[0.35rem] gap-3 z-10 w-full h-[2.5rem]
-                    text-slate-950 rounded-b-lg transition-all'>
+                <div className='hidden lg:flex px-4 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt
+                    gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
                     {/*<EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[0]}</p>*/}
                     {/*<PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[1]}</p>*/}
                     <button onClick={() => navigate('/nba')} className=' mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
@@ -418,12 +420,12 @@ const Head = () => {
                     <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden rounded-full
-                        bg-black text-[#fdcc03] px-2'>{hdrs[18]}</p>
-                    <div className={`flex group bg-[#fdcc03] items-center justify-end grow gap-3`}>
+                        bg-text dark:bg-drkt text-secd dark:text-drks px-2'>{hdrs[18]}</p>
+                    <div className={`flex group items-center justify-end grow gap-3`}>
                         {socls.map((socl, i) => (
                             <a href={socl.Link} key={i}><img src={socl.Ico} alt={socl.Name}
-                               className={`w-fit h-[1rem] bg-[#fdcc03] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] text-transparent 
-                                `} style={{animationDelay: `${(i * 1.9)}s`}}></img></a>
+                               className={`w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
+                                   dark:invert mt-1 text-transparent`} style={{animationDelay: `${(i * 1.9)}s`}}></img></a>
                         ))}
                     </div>
                 </div>

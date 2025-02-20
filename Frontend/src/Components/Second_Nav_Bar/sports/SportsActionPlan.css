@@ -3,11 +3,11 @@
   width: 90%;
   max-width: 1200px;
   margin: 60px auto;
-  background-color: #fff;
+  /*background-color: #fff;*/
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #f8e4d3, #f1e0a1);
+  /*background: linear-gradient(135deg, #f8e4d3, #f1e0a1);*/
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -18,14 +18,14 @@
 
 .section-header h2 {
   font-size: 40px;
-  color: #ff6600;
+  /*color: #ff6600;*/
   font-weight: 700;
   margin-bottom: 20px;
 }
 
 .section-header p {
   font-size: 18px;
-  color: #555;
+  /*color: #555;*/
   line-height: 1.8;
   max-width: 800px;
   margin: 0 auto;
@@ -39,7 +39,7 @@
 }
 
 .sports_card {
-  background-color: white;
+  /*background-color: white;*/
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -48,13 +48,13 @@
 
 .sports_card h3 {
   font-size: 26px;
-  color: #333;
+  /*color: #333;*/
   margin-bottom: 15px;
 }
 
 .sports_card p, .sports_card ul {
   font-size: 18px;
-  color: #555;
+  /*color: #555;*/
   line-height: 1.8;
 }
 
@@ -73,7 +73,7 @@
   position: absolute;
   left: 0;
   font-size: 20px;
-  color: #ff6600;
+  /*color: #ff6600;*/
 }
 
 .sports_card:hover {
@@ -100,7 +100,7 @@
 .additional-info li::before {
   content: '✔️';
   font-size: 20px;
-  color: #ff6600;
+  /*color: #ff6600;*/
 }
 
 

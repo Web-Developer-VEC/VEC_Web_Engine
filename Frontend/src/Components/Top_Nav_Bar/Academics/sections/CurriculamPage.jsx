@@ -30,17 +30,18 @@ const CurriculumPage = ({ data }) => {
       <div className="row">
         {/* Left Column: Curriculum and PSOs */}
         <div className="col-md-6">
-          <div className="content-section">
+          <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <h2 className="text-start">Curriculum & Syllabus</h2>
 
             {/* Regulation Rows */}
             {data?.regulation?.year?.map((year, index) => (
-              <div className="row-item" key={year}>
+              <div className="row-item rounded-lg dark:bg-drkp border-0 hover:bg-secd dark:hover:bg-drks" key={year}>
                 <p>
                   Regulation {year}
                   <div className="options-container">
                     <button 
-                    className="options-btn" 
+                    className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
+                      dark:hover:bg-drka"
                     onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
                     >
                       <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
@@ -59,7 +60,7 @@ const CurriculumPage = ({ data }) => {
             <h2>Program Specific Outcomes</h2>
             <div className="accordion" id="psosAccordion">
               {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-                <div className="accordion-item" key={index}>
+                <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
                   <h2 className="accordion-header" id={`psosHeading${index}`}>
                     <button className="accordion-buttons" onClick={() => togglePOS(index)}>
                       {heading}
@@ -80,7 +81,7 @@ const CurriculumPage = ({ data }) => {
             <h2>Program Outcomes</h2>
             <div className="accordion">
               {data?.program_outcomes?.headings?.map((heading, index) => (
-                <div className="accordion-item" key={index}>
+                <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
                   <h2 className="accordion-header">
                     <button className="accordion-buttons" onClick={() => togglePO(index)}>
                       {heading}
@@ -97,11 +98,12 @@ const CurriculumPage = ({ data }) => {
       </div>
       {selectedRegulation && (
         <div className="REG-modal">
-          <div className="REG-modal-content">
-            <button className="REG-close-button" onClick={closeModal}>
+          <div className="REG-modal-content bg-prim dark:bg-drkp">
+            <button className="REG-close-button bg-secd text-text dark:bg-drks dark:text-drkt hover:bg-accn hover:dark:bg-drka"
+                    onClick={closeModal}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <h2>Curriculum & Syllabus {selectedRegulation[1]}</h2>
+            <h2 className="mb-4">Curriculum & Syllabus {selectedRegulation[1]}</h2>
             <iframe
               src={selectedRegulation[0]}
               title={selectedRegulation[1]}

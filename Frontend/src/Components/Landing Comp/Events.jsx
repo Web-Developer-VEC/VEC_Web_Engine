@@ -14,20 +14,21 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
             onHoverEnd={onMouseLeave}
         >
             <motion.div
-                className="event-box"
-                whileHover={{boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)"}}
+                className="event-box bg-secd dark:bg-drks text-prim"
+                whileHover={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)"}}
             >
                 <div className="event-header">
                     <div className="event-date">
-                        <div className="circle">{event.start_date}</div>
+                        <div className="circle bg-accn dark:bg-drka text-text dark:text-drkt
+                            border-8 border-prim dark:border-drkp">{event.start_date}</div>
                     </div>
                     <div className="event-name line-clamp-2 text-2xl">{event.title}</div>
                 </div>
                 <div className="event-details">
-                    <div className="event-row department-name text-xl">{event.department}</div>
+                    <div className="event-row department-name bg-prim dark:bg-drkp text-text dark:text-drkt text-xl">{event.department}</div>
                     <div className="event-row description text-md/2 line-clamp-2">{event.content}</div>
                     <div className="event-footer">
-                        <div className="event-row duration">
+                        <div className="event-row text-accn dark:text-drka duration">
                             <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
                         </div>
                         <div className="event-row links">

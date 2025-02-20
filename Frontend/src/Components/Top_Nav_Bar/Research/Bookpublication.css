@@ -25,8 +25,8 @@
 .research-bookpublication-button {
     padding: 10px 12px;
     font-size: 16px;
-    background-color: #3b82f6;
-    color: white;
+    /*background-color: #3b82f6;*/
+    /*color: white;*/
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -34,22 +34,22 @@
 }
 
 .research-bookpublication-button:hover {
-    background-color: #1e40af;
+    /*background-color: #1e40af;*/
     transform: scale(1.1);
 }
 
 /* Active button stays animated */
 .research-bookpublication-button.active {
-    background-color: #1e3a8a;
+    /*background-color: #1e3a8a;*/
     transform: scale(1.1);
-    box-shadow: 0px 0px 10px rgba(59, 130, 246, 0.7);
+    /*box-shadow: 0px 0px 10px rgba(59, 130, 246, 0.7);*/
 }
 
 /* iFrame container */
 .research-bookpublication-iframe-container {
     width: 90%;
     height: 600px;
-    border: 10px solid #ffe102;
+    /*border: 10px solid #ffe102;*/
     border-radius: 8px;
 }
 
@@ -67,7 +67,7 @@
     .research-bookpublication-iframe-container {
         width: 95%;
         height: 500px;
-        border: 8px solid #ffe102;
+        /*border: 8px solid #ffe102;*/
     }
 }
 
@@ -102,6 +102,6 @@
     .research-bookpublication-iframe-container {
         width: 100%;
         height: 400px;
-        border: 6px solid #ffe102;
+        /*border: 6px solid #ffe102;*/
     }
 }

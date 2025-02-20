@@ -6,6 +6,7 @@ import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
+import {sup} from "framer-motion/m";
 
 // Import Framer Motion // Import Framer Motion
 const Sidebar = (props) => {
@@ -104,20 +105,45 @@ const Sidebar = (props) => {
                         <div>
                             <ul className="space-y-2 pl-4 border-l-2 border-gray-600/50">
                                 {navs[activeIndex].sub.map((sub, idx) => (
-                                    <motion.li key={idx} initial={{opacity: 0, x: 10}} animate={{opacity: 1, x: 0}}
-                                               transition={{duration: 0.2, delay: idx * 0.08, ease: "easeInOut"}}>
-                                        {sub.hrd ? (
-                                            <h3 className="text-sm font-semibold text-gray-200 mt-2">{sub.ttl}</h3>
-                                        ) : (
-                                            <Link to={sub.lnk}
-                                                  className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
-                                                  onClick={() => {
-                                                      setIsOpen(false);
-                                                  }}>
-                                                {sub.ttl}
-                                            </Link>
-                                        )}
-                                    </motion.li>
+                                    (sub.sup.length === 0) ?
+                                        <motion.li key={idx} initial={{opacity: 0, x: 10}} animate={{opacity: 1, x: 0}}
+                                                   transition={{duration: 0.2, delay: idx * 0.08, ease: "easeInOut"}}>
+                                            {sub.hrd ? (
+                                                <h3 className="text-sm font-semibold text-gray-200 my-1">{sub.ttl}</h3>
+                                            ) : (
+                                                <Link to={sub.lnk}
+                                                      className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
+                                                      onClick={() => {
+                                                          setIsOpen(false);
+                                                      }}>
+                                                    {sub.ttl}
+                                                </Link>
+                                            )}
+                                        </motion.li>
+                                        : <div className="my-4">
+                                            <h3 className="text-xs font-semibold text-gray-200 mb-1">{sub.ttl}</h3>
+                                            {sub.sup.map((spj, ix) => (
+                                                <motion.li key={spj.ttl + ix} initial={{opacity: 0, x: 10}} className="mb-2"
+                                                           animate={{opacity: 1, x: 0}}
+                                                           transition={{
+                                                               duration: 0.2,
+                                                               delay: ix * 0.08,
+                                                               ease: "easeInOut"
+                                                           }}>
+                                                    {spj.hrd ? (
+                                                        <h3 className="text-sm font-semibold text-gray-200 mt-2">{spj.ttl}</h3>
+                                                    ) : (
+                                                        <Link to={spj.lnk}
+                                                              className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
+                                                              onClick={() => {
+                                                                  setIsOpen(false);
+                                                              }}>
+                                                            {spj.ttl}
+                                                        </Link>
+                                                    )}
+                                                </motion.li>
+                                            ))}
+                                        </div>
                                 ))}
                             </ul>
                         </div>

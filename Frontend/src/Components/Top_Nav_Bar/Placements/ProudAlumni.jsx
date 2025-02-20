@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./DynamicPhotoText.css";
 import "./calen.css";
 
-
-
 const ProudAlumni = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -80,7 +78,7 @@ const ProudAlumni = () => {
           <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
         </div>
 
-        <div className="flipbook">
+        <div className="flipbook dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <div className="pages">
             <div
               className={`page ${
@@ -104,14 +102,16 @@ const ProudAlumni = () => {
             <button
               onClick={handlePrev}
               disabled={currentPage === 0 || isFlipping}
-              className="button"
+              className="button bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] hover:bg-secd dark:hover:bg-drks"
             >
               ‹
             </button>
             <button
               onClick={handleNext}
               disabled={currentPage === data.length - 1 || isFlipping}
-              className="button"
+              className="button bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] hover:bg-secd dark:hover:bg-drks"
             >
               ›
             </button>
@@ -122,8 +122,9 @@ const ProudAlumni = () => {
       <div className="dept">
         {data.map((department, index) => (
           <div key={index} className="dynamic-container">
-            <h1>{department.alumni.department_name}</h1>
-            <div className="dynamic-content">
+            <h1 className="border-l-[0.5rem] border-secd dark:border-drks">{department.alumni.department_name}</h1>
+            <div className="dynamic-content bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={department.alumni.students[currentIndex].photo}

@@ -2,16 +2,16 @@ import React from "react";
 import './Management.css';
 import Banner from "../../Banner";
 
-function Management(){
+function Management({theme, toggle}){
     return(
         <>     
-     <Banner
+     <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="Management"
   subHeaderText="Leading with vision, fostering innovation, and inspiring integrity at every step."
       />
-        <div className="Management">
-            <div className="Founder">
+        <div className="Management bg-prim dark:bg-drkp">
+            <div className="Founder text-text dark:text-drkt">
                 <img src="/Images/Founder.png" alt="Founder's Image" />
                 <h2>Founder's Message</h2>
                 <p>As Founder - Chairman of the Velammal group of institutions, it is indeed a unique privilege for me to communicate to you utilizing our college website.

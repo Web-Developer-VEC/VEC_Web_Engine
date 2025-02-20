@@ -5,15 +5,6 @@
   padding: 0;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7fafc;
-  color: #333;
-  line-height: 1.6;
-  width: 100%;
-  padding: 0;
-}
-
 .containers {
   width: 100%;
   margin: 0;
@@ -23,7 +14,7 @@ body {
 .content-section,
 .psos-section,
 .pos-section {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   padding: 20px; /* Adjust padding for better spacing */
   border-radius: 12px; /* Slightly less rounded for a modern look */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -41,7 +32,7 @@ body {
 .content-section h2,
 .psos-section h2,
 .pos-section h2 {
-  color: #1a202c; /* Darker text color for emphasis */
+  /*color: #1a202c; !* Darker text color for emphasis *!*/
   font-size: 22px; /* Adjusted size for small screens */
   margin-bottom: 16px;
 }
@@ -60,7 +51,7 @@ body {
 
 /* Active row to show sub-content */
 .row-item.active {
-  background-color: #f1f1f1;
+  /*background-color: #f1f1f1;*/
 }
 
 /* Sub-row content container, initially hidden */
@@ -70,7 +61,7 @@ body {
   margin-top: 10px; /* Space between main row and sub-row */
   padding: 10px;
   border: 1px solid #e2e8f0;
-  background-color: #f9fafb;
+  /*background-color: #f9fafb;*/
 }
 
 /* Show sub-content when the row is active */
@@ -86,7 +77,7 @@ body {
 }
 
 /* Accordion styles for PO and PSO sections */
-.accordion-item {
+.accordion-item-cir {
   margin: 10px 0;
 }
 
@@ -104,17 +95,17 @@ body {
 
 
 .row-item:last-child {
-  border-bottom: none;
+  /*border-bottom: none;*/
 }
 
 .row-item:hover {
-  background-color: #edf2f7;
+  /*background-color: #edf2f7;*/
 }
 
 .row-item p {
   font-size: 16px;
   margin-bottom: 0rem;
-  color: #4a5568;
+  /*color: #4a5568;*/
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -130,8 +121,8 @@ body {
 .options-btn {
   font-size: 14px;
   font-weight: bold;
-  background-color: #fca311;
-  color: #fff;
+  /*background-color: #fca311;*/
+  /*color: #fff;*/
   border-radius: 25px;
   padding: 8px 20px;
   border: none;
@@ -140,14 +131,14 @@ body {
 
 
 .options-btn:hover {
-  background-color: #e07b00;
+  /*background-color: #e07b00;*/
   transform: scale(1.05);
 }
 
 .options-dropdown {
   position: absolute;
   right: 0;
-  background-color: white;
+  /*background-color: white;*/
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   display: none;
@@ -168,7 +159,7 @@ body {
 }
 
 .dropdown-item:hover {
-  background-color: #f1f1f1;
+  /*background-color: #f1f1f1;*/
 }
 
 /* Calendar Section */
@@ -193,10 +184,10 @@ body {
 }
 
 /* Accordion Styles */
-.accordion-item {
+.accordion-item-cir {
   margin-bottom: 15px;
   border-radius: 8px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -205,7 +196,7 @@ body {
 }
 
 .accordion-buttons {
-  background-color: #f9fafb;
+  /*background-color: #f9fafb;*/
   border: none;
   font-size: 18px;
   padding: 18px;
@@ -213,12 +204,12 @@ body {
   text-align: left;
   transition: all 0.3s ease;
   border-radius: 8px;
-  color: #1d3557;
+  /*color: #1d3557;*/
   font-weight: 600;
 }
 
 .accordion-buttons:hover {
-  background-color: #f1f5f9;
+  /*background-color: #f1f5f9;*/
   transform: scale(1.03);
 }
 
@@ -230,10 +221,10 @@ body {
   display: none;
   padding: 20px;
   font-size: 16px;
-  background-color: #f7f9fc;
+  /*background-color: #f7f9fc;*/
   border-radius: 8px;
   margin-top: 10px;
-  color: #333;
+  /*color: #333;*/
   transition: all 0.3s ease;
 }
 

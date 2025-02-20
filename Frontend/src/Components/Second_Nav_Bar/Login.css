@@ -1,22 +1,22 @@
-.student-login-container .fancy .text{
-    color: rgb(255, 255, 255);
+.student-login-container .fancy-lgn .text{
+    /*color: rgb(255, 255, 255);*/
 }
 
-.student-login-container .fancy::before {
-    background: white;
+.student-login-container .fancy-lgn::before {
+    /*background: white;*/
 }
 
-.student-login-container .fancy:hover::before {
-    background: black; /* Changes to white on hover */
+.student-login-container .fancy-lgn:hover::before {
+    /*background: black; !* Changes to white on hover *!*/
 }
 
 
-.student-login-container .fancy:hover {
-    background: white;
+.student-login-container .fancy-lgn:hover {
+    /*background: white;*/
 }
    
-.student-login-container .fancy:hover .text{
-    color: black;
+.student-login-container .fancy-lgn:hover .text{
+    /*color: black;*/
 }
 
 /* Container */
@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-color: white;
+    /*background-color: white;*/
 }
 
 .student-login-container h1,
@@ -53,16 +53,16 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-color: rgb(250, 204, 21);
+    /*background-color: rgb(250, 204, 21);*/
 }
 
 .faculty-login-container h5 {
-    color: white;
+    /*color: white;*/
 }
 
 /* Fancy Button */
-.fancy {
-    background-color: transparent;
+.fancy-lgn {
+    /*background-color: transparent;*/
     border: 2px solid black;
     box-sizing: border-box;
     color: black;
@@ -84,7 +84,7 @@
 }
 
 /* Fancy Button Styling */
-.fancy::before {
+.fancy-lgn::before {
     content: " ";
     width: 1.5625rem;
     height: 2px;
@@ -96,45 +96,45 @@
 }
 
 /* Student Button */
-.student-login-container .fancy {
-    background: rgb(250, 204, 21);
+.student-login-container .fancy-lgn {
+    /*background: rgb(250, 204, 21);*/
 }
 
-.student-login-container .fancy::before {
-    background: white;
+.student-login-container .fancy-lgn::before {
+    /*background: white;*/
 }
 
-.student-login-container .fancy:hover::before {
-    background: black;
+.student-login-container .fancy-lgn:hover::before {
+    /*background: black;*/
 }
 
-.student-login-container .fancy:hover {
-    background: white;
+.student-login-container .fancy-lgn:hover {
+    /*background: white;*/
 }
 
-.student-login-container .fancy:hover .text {
-    color: black;
+.student-login-container .fancy-lgn:hover .text {
+    /*color: black;*/
 }
 
 /* Faculty Button */
-.faculty-login-container .fancy {
-    background: white;
+.faculty-login-container .fancy-lgn {
+    /*background: white;*/
 }
 
-.faculty-login-container .fancy::before {
-    background: black;
+.faculty-login-container .fancy-lgn::before {
+    /*background: black;*/
 }
 
-.faculty-login-container .fancy:hover::before {
-    background: white;
+.faculty-login-container .fancy-lgn:hover::before {
+    /*background: white;*/
 }
 
-.faculty-login-container .fancy:hover {
-    background: rgb(250, 204, 21);
+.faculty-login-container .fancy-lgn:hover {
+    /*background: rgb(250, 204, 21);*/
 }
 
 /* Fancy Button Effects */
-.fancy .text {
+.fancy-lgn .text {
     font-size: 1.125em;
     padding-left: 2em;
     display: block;
@@ -143,7 +143,7 @@
     text-transform: uppercase;
 }
 
-.fancy .top-key {
+.fancy-lgn .top-key {
     height: 2px;
     width: 1.5625rem;
     top: -2px;
@@ -153,7 +153,7 @@
     transition: width 0.5s ease-out, left 0.3s ease-out;
 }
 
-.fancy .bottom-key-1 {
+.fancy-lgn .bottom-key-1 {
     height: 2px;
     width: 1.5625rem;
     right: 1.875rem;
@@ -163,7 +163,7 @@
     transition: width 0.5s ease-out, right 0.3s ease-out;
 }
 
-.fancy .bottom-key-2 {
+.fancy-lgn .bottom-key-2 {
     height: 2px;
     width: 0.625rem;
     right: 0.625rem;
@@ -173,199 +173,22 @@
     transition: width 0.5s ease-out, right 0.3s ease-out;
 }
 
-.fancy:hover::before {
+.fancy-lgn:hover::before {
     width: 0.9375rem;
 }
 
-.fancy:hover .text {
-    color: white;
+.fancy-lgn:hover .text {
+    /*color: ;*/
     padding-left: 1.5em;
 }
 
-.fancy:hover .top-key {
+.fancy-lgn:hover .top-key {
     left: -2px;
     width: 0px;
 }
 
-.fancy:hover .bottom-key-1,
-.fancy:hover .bottom-key-2 {
+.fancy-lgn:hover .bottom-key-1,
+.fancy-lgn:hover .bottom-key-2 {
     right: 0;
     width: 0;
-}
-
-@media screen and (min-width: 950px) and (max-width: 1086px) {
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 3rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 1.75rem;
-    }
-}
-
-
-
-@media screen and (min-width: 850px) and (max-width: 950px) {
-
-    .student-login-container,
-    .faculty-login-container {
-        padding: 2rem;
-        text-align: center;
-    }
-
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 2rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 1.25rem;
-    }
-
-    .fancy {
-        font-size: 14px;
-    }
-
-    .fancy .text {
-        font-size: 1em;
-    }
-}
-
-@media screen and (max-width: 850px){
-    .login-container {
-        grid-template-columns: 1fr; /* Switch to a single column layout */
-    }
-
-    .student-login-container,
-    .faculty-login-container {
-        padding: 2rem;
-        text-align: center;
-    }
-}
-
-@media screen and (min-width: 540px) and (max-width: 850px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 3rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 2.05rem;
-    }
-
-    .fancy {
-        font-size: 14px;
-    }
-
-    .fancy .text {
-        font-size: 1em;
-    }
-}
-
-@media screen and (min-width: 440px) and (max-width: 540px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 2.5rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 1.55rem;
-    }
-
-    .fancy {
-        font-size: 14px;
-    }
-
-    .fancy .text {
-        font-size: 1em;
-    }
-}
-
-
-@media screen and (min-width: 395px) and (max-width: 440px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 2.2rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 1.25rem;
-    }
-
-    .fancy {
-        font-size: 10px;
-    }
-
-    .fancy .text {
-        font-size: 0.75em;
-    }
-}
-
-@media screen and (min-width: 350px) and (max-width: 395px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 1.9rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 0.95rem;
-    }
-
-    .fancy {
-        font-size: 10px;
-    }
-
-    .fancy .text {
-        font-size: 0.8rem;
-    }
-}
-
-
-@media screen and (min-width: 320px) and (max-width: 350px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 1.7rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 0.85rem;
-    }
-
-    .fancy {
-        font-size: 10px;
-    }
-
-    .fancy .text {
-        font-size: 0.8rem;
-    }
-}
-
-
-
-@media screen and (max-width: 320px){
-    .student-login-container h1,
-    .faculty-login-container h1 {
-        font-size: 1.30rem;
-    }
-
-    .student-login-container h5,
-    .faculty-login-container h5 {
-        font-size: 0.80 rem;
-    }
-
-    .fancy {
-        font-size: 10px;
-    }
-
-    .fancy .text {
-        font-size: 0.8rem;
-    }
 }

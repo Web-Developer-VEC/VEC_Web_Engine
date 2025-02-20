@@ -80,7 +80,7 @@
 .nss-dot {
     width: 10px;
     height: 10px;
-    background: #ccc;
+    /*background: #ccc;*/
     display: inline-block;
     margin: 5px;
     border-radius: 50%;
@@ -88,5 +88,5 @@
 }
 
 .nss-dot.active {
-    background: #fdb515;
+    /*background: #fdb515;*/
 }
