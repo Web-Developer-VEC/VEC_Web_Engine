@@ -35,7 +35,6 @@ const LibraryLayout = () => {
         <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />
         <LibrarySections
           faculty={libraryData ? libraryData["faculty & Staff"] : null}
-          collection={libraryData ? libraryData["collection"] : null}
           membership={libraryData ? libraryData["membership_details"] : null}
         />
       </div>

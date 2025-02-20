@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const LibrarySections = ({faculty, collection, membership}) => {
+const LibrarySections = ({faculty, membership}) => {
   
   const sections = [
     {
