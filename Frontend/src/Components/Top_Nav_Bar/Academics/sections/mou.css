@@ -1,8 +1,8 @@
 .mou-page {
   font-family: Arial, sans-serif;
   padding: 30px;
-  background-color: #f4f4f9;
-  color: #333;
+  /*background-color: #f4f4f9;*/
+  /*color: #333;*/
   width: 100%;
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@
 
 .mou-header h1 {
   font-size: 2.5rem;
-  color: #444;
+  /*color: #444;*/
   margin-bottom: 20px;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .mou-year-button {
-  background-color: #fdcc03;
+  /*background-color: #fdcc03;*/
   border: none;
   padding: 12px 25px;
   font-size: 18px;
@@ -38,7 +38,7 @@
 }
 
 .mou-year-button.active {
-  background-color: #ff9900;
+  /*background-color: #ff9900;*/
   transform: scale(1.1);
 }
 
@@ -53,8 +53,8 @@
 
 .mou-detail-box {
   position: relative;
-  background-color: #fff;
-  border: 2px solid #fdcc03;
+  /*background-color: #fff;*/
+  /*border: 2px solid #fdcc03;*/
   border-radius: 8px;
   padding: 25px;
   text-align: center;
@@ -69,7 +69,7 @@
   max-width: 120px;
   left: 30%;
   transform: translateX(-50%) scale(0.9); /* Initial scale to make the logo smaller */
-  background-color: #fff;
+  /*background-color: #fff;*/
   border-radius: 8px;
   height: 80px;
   display: flex;
@@ -96,7 +96,7 @@
 
 .mou-detail-box h3 {
   font-size: 1.75rem;
-  color: #222;
+  /*color: #222;*/
   font-weight: 500;
   margin-top: 20px;
   letter-spacing: 0.5px;
@@ -104,13 +104,13 @@
 
 .mou-detail-box p {
   font-size: 1.1rem;
-  color: #555;
+  /*color: #555;*/
   margin-top: 10px;
   line-height: 1.6;
 }
 
 .mou-detail-box p strong {
-  color: #333;
+  /*color: #333;*/
 }
 
 @media (max-width: 1024px) {

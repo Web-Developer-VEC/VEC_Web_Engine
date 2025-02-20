@@ -1,8 +1,8 @@
 /* General Styles */
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f4f4f9; /* Light background for contrast */
-  color: #333;
+  /*background-color: #f4f4f9; !* Light background for contrast *!*/
+  /*color: #333;*/
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -23,9 +23,9 @@ body {
   font-weight: bold;
   letter-spacing: 2px;
   margin-bottom: 50px;
-  color: #222;
-  background: linear-gradient(135deg, #f9d923, #f8961e); /* Yellow-orange gradient */
-  color: #fff;
+  /*color: #222;*/
+  /*background: linear-gradient(135deg, #f9d923, #f8961e); !* Yellow-orange gradient *!*/
+  /*color: #fff;*/
   display: inline-block;
   padding: 12px 30px;
   border-radius: 12px;
@@ -43,8 +43,8 @@ body {
 
 /* Individual Tile Styles */
 .nba-tile {
-  background: #ffffff;
-  color: #333;
+  /*background: #ffffff;*/
+  /*color: #333;*/
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,10 +53,10 @@ body {
 
 .nba-tile:hover {
   transform: translateY(-10px) scale(1.05); /* Adds lift and slight scaling */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(249, 217, 35, 0.4); /* Add a soft glow effect */
-  outline: 2px solid #f8961e; /* Orange outline */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Add a soft glow effect */
+  /*outline: 2px solid #f8961e; !* Orange outline *!*/
   outline-offset: 6px; /* Create an offset glow effect */
-  background: linear-gradient(135deg, #fdfdfd, #f9f9f9); /* Subtle gradient on hover */
+  /*background: linear-gradient(135deg, #fdfdfd, #f9f9f9); !* Subtle gradient on hover *!*/
   transition: transform 0.3s ease, box-shadow 0.3s ease, outline-offset 0.3s ease;
 }
 
@@ -67,9 +67,9 @@ body {
   font-weight: bold;
   margin-bottom: 15px;
   text-transform: uppercase;
-  color: #f8961e;
+  /*color: #f8961e;*/
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid #f8961e;
+  /*border-bottom: 2px solid #f8961e;*/
   padding-bottom: 8px;
 }
 
@@ -78,7 +78,7 @@ body {
   font-size: 1.1rem;
   line-height: 1.8;
   text-align: justify;
-  color: #555;
+  /*color: #555;*/
 }
 
 /* Buttons Section */
@@ -98,8 +98,8 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   border: none;
-  background-color: #f8961e;
-  color: #fff;
+  /*background-color: #f8961e;*/
+  /*color: #fff;*/
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -107,14 +107,14 @@ body {
 }
 
 .nba-year-button.active {
-  background-color: #fff;
-  border: 3px solid #f8961e;
-  color: black;
+  /*background-color: #fff;*/
+  /*border: 3px solid #f8961e;*/
+  /*color: black;*/
   transform: scale(1.05);
 }
 
 .nba-year-button:hover {
-  background-color: #f9d923;
+  /*background-color: #f9d923;*/
   color: #222;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -125,7 +125,7 @@ body {
   width: 85%;
   margin: 0 auto;
   margin-top: 30px;
-  background: #ffffff;
+  /*background: #ffffff;*/
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -140,7 +140,7 @@ body {
 
 .embed {
   margin-top: 15px;
-  border: 2px solid #f8961e;
+  /*border: 2px solid #f8961e;*/
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
@@ -167,7 +167,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    /*background-color: rgba(255, 255, 255, 0.8); !* White background with opacity *!*/
     display: flex;
     justify-content: center;
     align-items: center;

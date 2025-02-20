@@ -4,10 +4,10 @@ import styles from "./collegevisionmission.module.css";
 import { Eye, Target } from "lucide-react"; // Importing icons
 import Banner from "../../Banner";
 
-const Collegevisionmission = () => {
+const Collegevisionmission = ({theme, toggle}) => {
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="Vision & Mission"
         subHeaderText="Empowering a better tomorrow through innovation and integrity"

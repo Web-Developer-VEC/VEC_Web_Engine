@@ -106,7 +106,7 @@ const data = [
   },
 ];
 
-const Dean = () => {
+const Dean = ({theme, toggle}) => {
 
   const [deanData, setDeanData] = useState([]);
   const [loading ,setloading] = useState(true);
@@ -129,7 +129,7 @@ const Dean = () => {
 
   return (
     <>
-    <Banner
+    <Banner toggle={toggle} theme={theme}
   backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
   headerText="Dean & Associate Deans"
   subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
@@ -149,12 +149,12 @@ const Dean = () => {
 
           return (
             <div className="de-box" key={index}>
-              <h1 className="de-heading">{section.heading}</h1>
+              <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
               <div className="de-content">
                 {/* Profiles Section */}
                 {responsibleDean ? (
                   <div className="de-profiles-section">
-                    <div className="de-profile">
+                    <div className="de-profile bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                       <img
                         src={responsibleDean.Dean_Image} // Replace with a valid image URL
                         alt={responsibleDean.Dean}
@@ -166,7 +166,7 @@ const Dean = () => {
                       </div>
                     </div>
                     {responsibleDean.Associate_Dean && (
-                      <div className="de-profile">
+                      <div className="de-profile bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                         <img
                           src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
                           alt={responsibleDean.Associate_Dean}
@@ -188,7 +188,8 @@ const Dean = () => {
                   <h2>Roles and Responsibilities</h2>
                   <ul className="de-roles">
                     {section.roles.map((role, i) => (
-                      <li key={i}>{role}</li>
+                      <li className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                        before:bg-secd dark:before:bg-drks" key={i}>{role}</li>
                     ))}
                   </ul>
                 </div>

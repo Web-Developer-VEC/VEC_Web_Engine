@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import Bannerimg from '../../Assets/UnivAbt-5-1.jpg';
 import Banner from '../../Banner';
 
-const AbtUs = () => {
+const AbtUs = ({theme, toggle}) => {
     const banTtl = "About VEC"
     const motto = "A Journey of Thousand Miles Begins with a Single Step"
     const secTtl = `Velammal Engineering College`
@@ -12,10 +12,11 @@ const AbtUs = () => {
         "to making a positive impact at local, national, and global levels."
     const sec2Cnt = "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV NORD, Germany, in just 5 years of its inception. The college is accredited by NAAC and all the UG programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support and highly disciplined life. "
     const sec3Cnt = "Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence."
+    const lis = [sec2Cnt, sec3Cnt]
 
     return (
         <>
-            <Banner
+            <Banner toggle={toggle} theme={theme}
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
                 headerText="About VEC"
                 subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
@@ -23,19 +24,12 @@ const AbtUs = () => {
 
 
             <div className='flex m-8'>
-                {/*<div*/}
-                {/*    className='font-rome text-center text-[0] animate-spin text-amber-800 p-0 -mb-[0.75vmax] overflow-hidden'>*/}
-                {/*    {"Velammal Torture College".split("").map((ltr, i) => (*/}
-                {/*        <span className={`animate-[bam_0.5s_ease_forwards]`}*/}
-                {/*              style={{animationDelay: `${(i + 3) * 0.15}s`}}>{ltr}</span>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
                 <div className='flex relative w-full max-h-[100vh]'>
                     <div className="relative grow p-4 font-popp mt-14 basis-3/4 z-10
                         bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0">
                         <p className='text-3xl text-left mb-4'>{secHdr}</p>
                         <p className='text-3xl text-center font-rome'>{secTtl}</p>
-                        <p className='text-lg font-bold text-amber-950 text-center'>{secSub}</p>
+                        <p className='text-lg font-bold text-accn dark:text-drka text-center'>{secSub}</p>
                         <p className="text-2xl text-center mt-4">{secCnt}</p>
                     </div>
                     <div className='absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[25%] lg:left-0 lg:top-10
@@ -43,52 +37,27 @@ const AbtUs = () => {
                         <img className='absolute w-[40%] h-[65%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]'
                              src={Bannerimg} alt="Banner Image0"/>
                         <img className='absolute w-[40%] h-[90%] rounded-tr-[3rem] rounded-bl-[3rem]
-                            left-[15%] top-[10%] border-[2vmin] border-white' src={Bannerimg} alt="Banner Image1"/>
+                            left-[15%] top-[10%] border-[2vmin] border-prim dark:border-drkp' src={Bannerimg} alt="Banner Image1"/>
                         <img className='absolute w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]
-                            border-[2vmin] border-white' src={Bannerimg} alt="Banner Image2"/>
+                            border-[2vmin] border-prim dark:border-drkp' src={Bannerimg} alt="Banner Image2"/>
                         {/*<img className='absolute w-[35%] h-[50%] left-[25%] top-[50%] rounded-tr-[3rem] rounded-bl-[3rem]*/}
                         {/*    border-[16px] border-white' src={Bannerimg} alt="Banner Image3"/>*/}
                         {/*<img className='absolute' src={Banner} alt="Banner Image3"/>*/}
                     </div>
                 </div>
             </div>
-            <div className="flex gap-8 mt-14 bg-gradient-to-r from-[#fffbea] to-[#fef6d9] border-y-4 border-amber-400
-                p-10 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out">
-                {/*<div className="relative group min-h-[20vh] min-w-[20vw]">*/}
-                {/*    <img*/}
-                {/*        className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"*/}
-                {/*        src={Bannerimg}*/}
-                {/*        alt="Banner"*/}
-                {/*    />*/}
-                {/*    <div*/}
-                {/*        className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem] rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>*/}
-                {/*</div>*/}
-                <div className="flex flex-col justify-center px-2 lg:px-12">
-                    <p className="text-lg lg:text-2xl text-center text-gray-800 font-popp
+            {lis.map((itm) => (
+                <div className="flex gap-8 my-14 border-y-4 border-secd dark:border-drks
+                    bg-[color-mix(in_srgb,theme(colors.secd)_15%,white)] dark:bg-[color-mix(in_srgb,theme(colors.drks)_15%,white)]
+                    p-10 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out">
+                    <div className="flex flex-col justify-center px-2 lg:px-12">
+                        <p className="text-lg lg:text-2xl text-center text-text font-popp
                         leading-relaxed tracking-wide">
-                        {sec2Cnt}
-                    </p>
+                            {itm}
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-            <div className="flex flex-row-reverse gap-8 bg-gradient-to-r from-[#fffbea] to-[#fef6d9]
-                border-y-4 border-amber-400 p-10 my-14 shadow-lg hover:shadow-2xl
-                transition-all duration-300 ease-in-out">
-                {/*<div className="relative group h-[20vh] min-w-[20vw]">*/}
-                {/*    <img*/}
-                {/*        className="w-full h-full rounded-tl-[2rem] rounded-br-[2rem] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"*/}
-                {/*        src={Bannerimg}*/}
-                {/*        alt="Banner"*/}
-                {/*    />*/}
-                {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 rounded-tl-[2rem]*/}
-                {/*    rounded-br-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>*/}
-                {/*</div>*/}
-                <div className="flex flex-col justify-center px-1 lg:px-12">
-                    <p className="text-lg lg:text-2xl text-center font-popp leading-relaxed tracking-wide">
-                        {sec3Cnt}
-                    </p>
-                </div>
-            </div>
+            ))}
         </>
     );
 };

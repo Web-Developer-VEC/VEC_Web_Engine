@@ -2,20 +2,20 @@
 .Admission {
     padding: 3rem;
     font-family: 'Roboto', sans-serif;
-    color: #2c3e50;
-    background-color: #ffffff; /* Light beige background for a warmer, lighter look */
+    /*color: #2c3e50;*/
+    /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
     border-radius: 12px;
 }
 
 .B-E h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: #d4af37; /* Gold color to mimic oil sheen */
+    /*color: #d4af37; !* Gold color to mimic oil sheen *!*/
 }
 
 .B-E h3 {
     font-size: 1.5rem;
-    color: #f39c12; /* Bright yellow for emphasis */
+    /*color: #f39c12; !* Bright yellow for emphasis *!*/
     margin-bottom: 2rem;
     font-weight: 300;
     letter-spacing: 1px;
@@ -23,7 +23,7 @@
 
 .ADM-content {
     padding: 2rem;
-    background: linear-gradient(135deg, aliceblue, #f4e1c1); /* Light gradient */
+    /*background: linear-gradient(135deg, aliceblue, #f4e1c1); !* Light gradient *!*/
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -32,12 +32,12 @@
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    color: #8e5b3f; /* Earthy brownish text color */
+    /*color: #8e5b3f; !* Earthy brownish text color *!*/
 }
 
 h4, h5, h6 {
     font-weight: bold;
-    color: #d4af37; /* Gold color for headers */
+    /*color: #d4af37; !* Gold color for headers *!*/
 }
 
 h4 {
@@ -46,7 +46,7 @@ h4 {
 
 h5, h6 {
     font-size: 1.3rem;
-    color: #f39c12; /* Slightly different shade of yellow for variety */
+    /*color: #f39c12; !* Slightly different shade of yellow for variety *!*/
 }
 
 /* Table Styles */
@@ -56,21 +56,21 @@ h5, h6 {
 }
 
 .table-card {
-    background: #fff7e6; /* Light oil sheen background for the card */
+    /*background: #fff7e6; !* Light oil sheen background for the card *!*/
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .styled-table {
     width: 100%;
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
     margin: 20px 0;
 }
 
 .styled-table th, .styled-table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
 }
 
 .styled-table td{
@@ -78,15 +78,15 @@ h5, h6 {
 }
 
 .styled-table th {
-    background: linear-gradient(45deg, #ffd700, #ffa500);
-    color: white;
+    /*background: linear-gradient(45deg, #ffd700, #ffa500);*/
+    /*color: white;*/
 }
 .styled_-table .even-row {
-    background-color: #fff3cd;
+    /*background-color: #fff3cd;*/
 }
   
 .styled-table .odd-row {
-background-color: #ffeeba;
+/*background-color: #ffeeba;*/
 }
 
 .styled-table tr {
@@ -96,7 +96,7 @@ background-color: #ffeeba;
 
 /* Lateral Entry Section */
 .lateral-entry {
-    background-color: #f39c12; /* Yellow/orange background for emphasis */
+    /*background-color: #f39c12; !* Yellow/orange background for emphasis *!*/
     padding: 2rem;
     border-radius: 15px;
     margin-top: 2rem;
@@ -110,7 +110,7 @@ background-color: #ffeeba;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    /*background-color: rgba(255, 255, 255, 0.8); !* White background with opacity *!*/
     display: flex;
     justify-content: center;
     align-items: center;

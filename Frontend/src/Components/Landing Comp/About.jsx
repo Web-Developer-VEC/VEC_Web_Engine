@@ -4,9 +4,10 @@ import Tree from "../Assets/Banyan.jpg";
 
 const About = () => {
     return (
-        <div className='abt flex mx-auto bg-white w-[95%] font-popp overflow-hidden'>
+        <div className='abt flex mx-auto bg-prim dark:bg-drkp text-text dark:text-drkt w-[95%] font-popp overflow-hidden'>
             <div className='max-w-full lg:max-w-[60%] text-center px-4 lg:px-12 subpixel-antialiased font-medium'>
-                <h5 className='text-xl mt-4 lg:mt-12' style={{color: "maroon"}}>A Journey of Thousand Miles Begins with a
+                <h5 className='text-xl text-accn dark:text-drka mt-4 lg:mt-12'>A Journey of Thousand Miles Begins with
+                    a
                     Single Step</h5>
                 <p className='text-5xl tracking-tighter'>Velammal Engineering College</p>
                 <h4 style={{color: "gray"}} className='text-xl'>An Autonomous Institution</h4>

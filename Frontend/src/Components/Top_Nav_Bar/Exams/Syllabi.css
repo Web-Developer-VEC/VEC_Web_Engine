@@ -11,6 +11,14 @@
   gap: 1rem;
 }
 
+.card-syl {
+  /*background-color: #fff;*/
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
 .course-card {
   width: 100%; /* Full width on mobile */
   transition: transform 0.2s;
@@ -40,8 +48,8 @@
   text-align: left;
   position: relative;
   overflow: hidden;
-  background: white;
-  border: 2px solid #fdcd03;
+  /*background: white;*/
+  /*border: 2px solid #fdcd03;*/
   border-radius: 0.5rem;
 }
 
@@ -49,7 +57,7 @@
 
 
 .course-button:hover {
-  background: #fae079;
+  /*background: #fae079;*/
 }
 
 .groups{
@@ -67,11 +75,11 @@
 .course-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #a38200;
+  /*color: #a38200;*/
 }
 
 .caledar{
-  color: #a38200;
+  /*color: #a38200;*/
 }
 
 .pdf-dialog {
@@ -91,7 +99,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    /*background-color: rgba(255, 255, 255, 0.8); !* White background with opacity *!*/
     display: flex;
     justify-content: center;
     align-items: center;

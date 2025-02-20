@@ -3,7 +3,7 @@ import axios from "axios";
 import "./UgAdmission.css";
 import Banner from "../../Banner";
 
-const UgAdmission = () => {
+const UgAdmission = ({theme, toggle}) => {
   const [ugData, setUgData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -27,23 +27,32 @@ const UgAdmission = () => {
 
   const renderTable = (data, title, subtitle) => (
     <div className="table-container">
-      <h4>{title}</h4>
-      <h6>{subtitle}</h6>
+      <h4 className="text-secd dark:text-drks">{title}</h4>
+      <h6 className="text-secd dark:text-drks">{subtitle}</h6>
       <div className="table-card">
         <table className="styled-table">
           <thead>
             <tr>
-              <th>UG COURSES</th>
-              <th>GOVERNMENT QUOTA INTAKE</th>
-              <th>MANAGEMENT QUOTA INTAKE</th>
-              <th>TOTAL INTAKE</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">UG COURSES</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">GOVERNMENT QUOTA INTAKE</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">MANAGEMENT QUOTA INTAKE</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">TOTAL INTAKE</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, rowIndex) => {
               const [courseName, courseDetails] = Object.entries(item)[0];
               return (
-                <tr key={rowIndex} className={rowIndex % 2 === 0 ? "even-row" : "odd-row"}>
+                <tr key={rowIndex} className={"even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)] " +
+                    "dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]"}>
                   <td>{courseName}</td>
                   <td>{courseDetails["Government Quota Intakes"]}</td>
                   <td>{courseDetails["Management Quota Intakes"]}</td>
@@ -59,7 +68,7 @@ const UgAdmission = () => {
 
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="UG Admission"
         subHeaderText="Empowering the next generation of leaders through access to world-class education and opportunities."
@@ -72,10 +81,10 @@ const UgAdmission = () => {
           </div>
         )}
         <div className="B-E">
-          <h3>B.E./B.Tech. Degree Programme</h3>
+          <h3 className="text-secd dark:text-drks">B.E./B.Tech. Degree Programme</h3>
         </div>
 
-        <div className="ADM-content">
+        <div className="ADM-content dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <p className="description-text">
             Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
           </p>
@@ -86,8 +95,8 @@ const UgAdmission = () => {
           {renderTable(ug, `UG COURSES - TOTAL INTAKE ${year}`, "(For First Year Admissions)")}
         </div>
 
-        <div className="ADM-content lateral-entry">
-          <h5>Lateral Entry Admission</h5>
+        <div className="ADM-content lateral-entry dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <h5 className="text-secd dark:text-drks">Lateral Entry Admission</h5>
           <p className="description-text">
             Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
           </p>

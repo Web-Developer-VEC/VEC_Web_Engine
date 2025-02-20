@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Poppins', Arial, sans-serif;
-  background: linear-gradient(to right, #ece9e6, #ffffff); /* Subtle gradient background */
-  color: #333;
+  /*background: linear-gradient(to right, #ece9e6, #ffffff); !* Subtle gradient background *!*/
+  /*color: #333;*/
   line-height: 1.6;
 }
 
@@ -32,11 +32,11 @@ body {
 .RD-header {
   font-size: 3rem;
   font-weight: 800;
-  color: #222;
+  /*color: #222;*/
   text-transform: uppercase;
   margin-bottom: 20px;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ff8c00, #ffa500);
+  /*background: linear-gradient(90deg, #ff8c00, #ffa500);*/
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -56,13 +56,13 @@ body {
   font-weight: 600;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(135deg, #cbb811, #fca225); /* Modern gradient */
-  color: #fff;
+  /*background: linear-gradient(135deg, #cbb811, #fca225); !* Modern gradient *!*/
+  /*color: #fff;*/
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .RD-year-button.active {
-  background: linear-gradient(135deg, #fca225, #cbb811);
+  /*background: linear-gradient(135deg, #fca225, #cbb811);*/
   transform: scale(1.1);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

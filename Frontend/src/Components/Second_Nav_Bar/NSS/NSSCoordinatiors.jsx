@@ -111,22 +111,22 @@ const Coordinators = () => {
       {/* Staff Coordinator (Centered) */}
       <h3 className="NSS-subheading">Staff Coordinator</h3>
       <div className="NSS-staff-container">
-        <div className="NSS-id-card">
+        <div className="NSS-id-card dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <img
             src={dummyCoordinators.staffCoordinator.photo}
             alt="Staff Coordinator"
             className="NSS-profile-pic"
           />
-          <h4 className="NSS-name">{dummyCoordinators.staffCoordinator.name}</h4>
+          <h4 className="NSS-name text-secd dark:text-drks">{dummyCoordinators.staffCoordinator.name}</h4>
           <p className="NSS-role">{dummyCoordinators.staffCoordinator.role}</p>
           <div className="NSS-social-icons">
-            <a href={dummyCoordinators.staffCoordinator.facebook} className="NSS-social-link">
+            <a href={dummyCoordinators.staffCoordinator.facebook} className="NSS-social-link text-secd dark:text-drks">
               <i className="fab fa-facebook"></i>
             </a>
-            <a href={dummyCoordinators.staffCoordinator.instagram} className="NSS-social-link">
+            <a href={dummyCoordinators.staffCoordinator.instagram} className="NSS-social-link text-secd dark:text-drks">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href={dummyCoordinators.staffCoordinator.linkedin} className="NSS-social-link">
+            <a href={dummyCoordinators.staffCoordinator.linkedin} className="NSS-social-link text-secd dark:text-drks">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>
@@ -137,18 +137,18 @@ const Coordinators = () => {
       <h3 className="NSS-subheading">Student Coordinators</h3>
       <div className="NSS-student-coordinators">
         {dummyCoordinators.studentCoordinators.map((student, index) => (
-          <div key={index} className="NSS-id-card">
+          <div key={index} className="NSS-id-card dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <img src={student.photo} alt={student.name} className="NSS-profile-pic" />
-            <h4 className="NSS-name">{student.name}</h4>
+            <h4 className="NSS-name text-secd dark:text-drks">{student.name}</h4>
             <p className="NSS-role">{student.role}</p>
             <div className="NSS-social-icons">
-              <a href={student.facebook} className="NSS-social-link">
+              <a href={student.facebook} className="NSS-social-link text-secd dark:text-drks">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href={student.instagram} className="NSS-social-link">
+              <a href={student.instagram} className="NSS-social-link text-secd dark:text-drks">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href={student.linkedin} className="NSS-social-link">
+              <a href={student.linkedin} className="NSS-social-link text-secd dark:text-drks">
                 <i className="fab fa-linkedin"></i>
               </a>
             </div>

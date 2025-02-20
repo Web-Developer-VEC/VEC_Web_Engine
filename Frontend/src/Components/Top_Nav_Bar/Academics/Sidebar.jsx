@@ -14,16 +14,16 @@ import {
 import styles from "./HeadDepartment.module.css";
 
 const iconMap = {
-  "Vision&Mission": <FaEye className={styles.icon} />,
-  "HeadDepartment": <FaUserTie className={styles.icon} />,
-  "Faculties": <FaChalkboardTeacher className={styles.icon} />,
-  "Syllabus": <FaBook className={styles.icon} />,
-  "Infrastructure": <FaBuilding className={styles.icon} />,
-  "Activities": <FaTasks className={styles.icon} />,
-  "StudentActivities": <FaGraduationCap className={styles.icon} />,
-  "SupportingStaff": <FaUsers className={styles.icon} />,
-  "Mous": <FaHandshake className={styles.icon} />,
-  "Research": <FaFlask className={styles.icon} />
+  "Vision&Mission": <FaEye className={styles.icon + " text-secd dark:text-drks"} />,
+    "HeadDepartment": <FaUserTie className={styles.icon + " text-secd dark:text-drks"} />,
+    "Faculties": <FaChalkboardTeacher className={styles.icon + " text-secd dark:text-drks"} />,
+    "Syllabus": <FaBook className={styles.icon + " text-secd dark:text-drks"} />,
+    "Infrastructure": <FaBuilding className={styles.icon + " text-secd dark:text-drks"} />,
+    "Activities": <FaTasks className={styles.icon + " text-secd dark:text-drks"} />,
+    "StudentActivities": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
+    "SupportingStaff": <FaUsers className={styles.icon + " text-secd dark:text-drks"} />,
+    "Mous": <FaHandshake className={styles.icon + " text-secd dark:text-drks"} />,
+    "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />
 };
 
 const Sidebar = ({ sections, activeSection, setActiveSection }) => {
@@ -31,9 +31,9 @@ const Sidebar = ({ sections, activeSection, setActiveSection }) => {
     <div className={styles.sidebar}>
       <ul>
         {sections.map((section) => (
-          <li key={section}>
+          <li key={section} className="hover:bg-secd dark:hover:bg-drks hover:rounded-lg">
             <button
-              className={`${styles.sidebarItem} ${activeSection === section ? styles.active : ""}`}
+              className={`text-prim ${styles.sidebarItem} ${activeSection === section ? " bg-secd dark:bg-drks text-text" : ""}`}
               onClick={() => setActiveSection(section)}
             >
               {iconMap[section] || "📄"} {section.replace(/([A-Z])/g, " $1")}

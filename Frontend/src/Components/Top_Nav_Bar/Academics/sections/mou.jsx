@@ -11,12 +11,13 @@ const MOU = ({data}) => {
     return (
       <div className="mou-page">
         <div className="mou-header">
-          <h1>Memorandum of Understanding (MOU)</h1>
+          <h1 className="text-secd dark:text-drks">Memorandum of Understanding (MOU)</h1>
           <div className="mou-year-buttons">
             {Data?.map((year) => (
               <button
                 key={year.unique_id}
-                className={`mou-year-button ${selectedYear === year.unique_id ? "active" : ""}`}
+                className={`mou-year-button ${selectedYear === year.unique_id ? "active bg-accn text-prim dark:bg-drka" 
+                    : "bg-secd dark:bg-drks"}`}
                 onClick={() => setSelectedYear(year.unique_id)}
               >
                 {year.unique_id}
@@ -26,8 +27,9 @@ const MOU = ({data}) => {
         </div>
         <div className="mou-details">
           {selectedYearData.map((detail, index) => (
-            <div key={index} className="mou-detail-box">
-              <div className="mou-logo">
+            <div key={index} className="mou-detail-box border-2 border-secd dark:border-drks
+                bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <div className="mou-logo bg-prim dark:bg-drkp">
                 <img src={detail.LOGO_PATH} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
               </div>
               <h3>{detail.ORGANISATION_NAME}</h3>

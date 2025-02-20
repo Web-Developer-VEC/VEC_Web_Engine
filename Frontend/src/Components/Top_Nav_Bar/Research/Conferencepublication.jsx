@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Conferencepublication.css";
 import Banner from "../../Banner";
 
-export default function Conferencepublication() {
+export default function Conferencepublication({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState("/pdfs/2024-2025.pdf"); // Default PDF
   const [activeYear, setActiveYear] = useState("2024-2025"); // Track active button
 
@@ -17,14 +17,14 @@ export default function Conferencepublication() {
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Conference Publication"
           subHeaderText="Enrich Your Knowledge"
         />
       </div>
       <div className="research-conference-container">
-        <h1 className="research-conference-title">
+        <h1 className="research-conference-title text-secd dark:text-drks">
           Conference Publication - Yearwise Consolidation
         </h1>
 
@@ -36,8 +36,8 @@ export default function Conferencepublication() {
                 setPdfUrl(`/pdfs/${year}.pdf`);
                 setActiveYear(year);
               }}
-              className={`research-conference-button ${
-                activeYear === year ? "active" : ""
+              className={`research-conference-button dark:text-drkt ${
+                activeYear === year ? "active bg-accn dark:bg-drka text-prim" : "bg-secd dark:bg-drks text-text"
               }`}
             >
               {year}
@@ -45,7 +45,8 @@ export default function Conferencepublication() {
           ))}
         </div>
 
-        <iframe src={pdfUrl} className="research-conference-iframe-container" />
+        <iframe src={pdfUrl} className="research-conference-iframe-container [border:0.25rem_solid_theme(colors.secd)]
+            dark:[border:0.25rem_solid_theme(colors.drks)]" />
       </div>
     </>
   );

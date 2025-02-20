@@ -4,7 +4,7 @@
 }
 
 .Management h1{
-    color: #444;
+    /*color: #444;*/
     text-align: center;
 }
 
@@ -14,7 +14,7 @@
     border-radius: 5px;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
 }
 
 .Management .Founder img{
@@ -33,11 +33,11 @@
 
 .Management div p {
     line-height: 2;
-    color: #444;
+    /*color: #444;*/
 }
 
 .Management div h2 {
-    color: #444;
+    /*color: #444;*/
 }
 
 /* Responsive Design */

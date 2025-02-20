@@ -27,7 +27,7 @@ const ZonalResults = () => {
         Zonal Results 2024-2025
       </h1>
 
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+      <div className="overflow-x-auto shadow-md rounded-lg">
         <table className="min-w-full table-auto text-sm sm:text-base">
           <thead>
             <tr className="bg-gray-200 hidden sm:table-row">
@@ -40,7 +40,8 @@ const ZonalResults = () => {
           <tbody>
             {resultPairs.map((pair, index) => (
               <React.Fragment key={index}>
-                <tr className="border-t border-gray-200 hidden sm:table-row">
+                <tr className="border-t border-gray-200 hidden sm:table-row even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
                   <td className="py-3 px-4">{pair[0].game}</td>
                   <td className="py-3 px-4">{pair[0].position}</td>
                   <td className="py-3 px-4">{pair[1]?.game}</td>

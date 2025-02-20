@@ -3,7 +3,7 @@ import axios from "axios";
 import "./NBA_F.css"; 
 import Banner from '../Banner';
 
-const NBA_F = () => {
+const NBA_F = ({theme, toggle}) => {
   const [selectedYear, setSelectedYear] = useState(null);
   const [yearButtons, setYearButtons] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -36,22 +36,23 @@ const NBA_F = () => {
 
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="National Board of Accreditation"
         subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
       />
-      <div className="nba-page">
+      <div className="nba-page mb-24">
         <div className="nba-intro">
           <div className="nba-tiles">
-            <div className="nba-tile">
-              <h3 className="nba-tile-header">About NBA</h3>
+            <div className="nba-tile dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+              border-2 border-secd dark:border-drkp">
+              <h3 className="nba-tile-header text-secd dark:text-drks border-b-2 border-secd dark:border-drks">About NBA</h3>
               <p className="nba-tile-text">
                 The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs, including engineering, management, pharmacy, architecture, and others.
               </p>
             </div>
-            <div className="nba-tile">
-              <h3 className="nba-tile-header">Purpose of NBA Accreditation</h3>
+            <div className="nba-tile dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h3 className="nba-tile-header text-secd dark:text-drks border-b-2 border-secd dark:border-drks">Purpose of NBA Accreditation</h3>
               <p className="nba-tile-text">
                 The primary goal of NBA accreditation is to assess and ensure that academic programs meet predefined quality standards, thereby promoting continuous improvement in educational institutions. It helps students, employers, and other stakeholders identify programs that deliver high-quality education and are aligned with industry and societal needs.
               </p>
@@ -69,7 +70,8 @@ const NBA_F = () => {
               {Object.keys(yearButtons).map((year) => (
                 <button
                   key={year}
-                  className={`nba-year-button ${selectedYear === year ? "active" : ""}`}
+                  className={`nba-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-drka" 
+                      : "bg-secd dark:bg-drks"}`}
                   onClick={() => handleYearClick(year)}
                 >
                   {year}
@@ -77,11 +79,11 @@ const NBA_F = () => {
               ))}
             </div>
             {selectedYear && (
-              <div className="nba-details">
+              <div className="nba-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                 <div className="nba-pdf-container">
                   <h3>{`Viewing: ${selectedYear}`}</h3>
                   <embed
-                    className="embed"
+                    className="embed border-4 border-secd dark:border-drks"
                     src={yearButtons[selectedYear]}
                     type="application/pdf"
                     width="100%"

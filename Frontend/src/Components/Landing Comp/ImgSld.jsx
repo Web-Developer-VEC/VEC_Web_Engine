@@ -1,8 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Vide from '../Assets/stock.mp4';
 import College from '../Assets/Hell.png';
+import Sun from '../Assets/sun.png';
+import Moon from '../Assets/moon.png';
+import Toggle from "../Toggle";
 
-const ImgSld = ({load}) => {
+const ImgSld = ({load, toggle, theme}) => {
     const videoRef = useRef(null); // Reference for the background video
 
     const lst = [
@@ -81,9 +84,14 @@ const ImgSld = ({load}) => {
                         ease-in transition-all hover:bg-[position:-100%_100%]">{hdr}</p>
                     ))}
                 </div>
+                <Toggle toggle={toggle} theme={theme}
+                        attr="absolute -top-[30%] lg:-top-[36%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
+                        rounded-br-xl"/>
+                {/*<div className='relative flex gap-2  mt-2  px-2 py-2 z-[50]*/}
+                {/*    '>*/}
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
-                    <div className='relative no-wrap h-[15vmax] w-[35vmax] overflow-hidden'>
+                    <div className='relative no-wrap h-[15vmax] w-[35vmax] mt-4 overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
                                 animate-[LslideIn_40s_ease-in_infinite] px-4 py-[4vw] border-y-2 line-clamp-2 

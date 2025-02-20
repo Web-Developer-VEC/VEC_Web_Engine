@@ -7,16 +7,16 @@ import Banner from "../../Banner";
 // Card component
 const Card = ({ image, name, designation }) => {
   return (
-    <div className="admin-card">
+    <div className="admin-card border-2 border-secd dark:border-drks">
       <img src={image} alt={name} className="admin-card-image" />
-      <h3 className="admin-card-name">{name}</h3>
+      <h3 className="admin-card-name text-secd dark:text-drks">{name}</h3>
       <p className="admin-card-designation">{designation}</p>
     </div>
   );
 };
 
 // Main CardPage component
-const CardPage = () => {
+const CardPage = ({theme, toggle}) => {
   const [adminData, setadminData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -38,7 +38,7 @@ const CardPage = () => {
 
   return (
     <>
-    <Banner
+    <Banner toggle={toggle} theme={theme}
       backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
       headerText="Administrative Office"
       subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."

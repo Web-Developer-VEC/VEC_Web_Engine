@@ -3,7 +3,7 @@ import axios from "axios";
 import "./nirf.css";
 import Banner from '../Banner';
 
-const Nirf = () => {
+const Nirf = ({theme, toggle}) => {
   const [selectedYear, setSelectedYear] = useState("2025");
   const [selectedAction, setSelectedAction] = useState(null); 
   const [yearButtons, setYearButtons] = useState({});
@@ -57,20 +57,21 @@ const Nirf = () => {
 
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="NIRF"
           subHeaderText="The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015."
         />
-      <div className="nirf-page">
+      <div className="nirf-page mb-24">
       {isLoading && (
           <div className="loading-screen">
             <div className="spinner"></div>
             Loading...
           </div>
         )}
-        <div className="nirf-intro">
-          <h1 className="nirf-header">NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1>
+        <div className="nirf-intro bg-[color-mix(in_srgb,theme(colors.secd),transparent_80%)]
+                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
+          <h1 className="nirf-header text-accn dark:text-drks">NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1>
           <p>
             <strong>About NIRF</strong>
             <br />
@@ -87,7 +88,8 @@ const Nirf = () => {
               .map((year) => (
                 <button
                   key={year}
-                  className={`nirf-year-button ${selectedYear === year ? "active" : ""}`}
+                  className={`nirf-year-button ${selectedYear === year ? "active bg-accn dark:bg-drka text-prim" 
+                      : "bg-secd dark:bg-drks"}`}
                   onClick={() => handleYearClick(year)}
                 >
                   {year}
@@ -96,12 +98,12 @@ const Nirf = () => {
           </div>
 
           {/* Right Side - Buttons for Selected Year */}
-          <div className="nirf-details">
+          <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="nirf-year-actions">
               {Object.keys(yearButtons[selectedYear]?.actions || {}).map((action, index) => (
                 <div key={index}>
                   <button
-                    className="nirf-action-button"
+                    className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                     onClick={() => openPdf(action)}
                   >
                     {action}

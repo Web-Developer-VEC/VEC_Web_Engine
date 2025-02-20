@@ -1,8 +1,8 @@
 .news {
   position: relative;
   padding: 20px;
-  color: black;
-  background-color: #fff;
+  /*color: black;*/
+  /*background-color: #fff;*/
   width: 100%;
   /* margin-top: 50px; */
   /* margin-left: 50px; */
@@ -11,14 +11,14 @@
 .news .head{
   text-align: top;
   font-size: 35px;
-  color: chocolate;
+  /*color: chocolate;*/
   margin-top: -20px;
 }
 
 .announcement .cont{
   /* width: 65%; */
   /* height: inherit; */
-  background: rgb(253, 204, 3);
+  /*background: rgb(253, 204, 3);*/
   clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0 100%);
 
 }
@@ -45,7 +45,7 @@
 
 .announcement .main h2 {
   /* font-size: 20px; */
-  color: rgb(149, 59, 10);
+  /*color: rgb(149, 59, 10);*/
   font-weight: 600;
 }
 

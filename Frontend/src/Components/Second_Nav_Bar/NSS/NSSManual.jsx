@@ -15,7 +15,8 @@ const NSSManual = () => {
       <div className="NSS-pdf-container">
         <p>Download the NSS Manual:</p>
         <a href="./manualNss.pdf" className="NSS-pdf-link" target="_blank" rel="noopener noreferrer">
-          <button className="NSS-download-btn">Download PDF</button>
+          <button className="NSS-download-btn dark:text-drkt
+            bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka">Download PDF</button>
         </a>
       </div>
     </div>

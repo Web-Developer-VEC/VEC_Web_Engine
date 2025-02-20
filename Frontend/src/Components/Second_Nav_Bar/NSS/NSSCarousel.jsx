@@ -94,7 +94,7 @@ const NSSCarousel = () => {
                 {slideData.map((_, index) => (
                     <span
                         key={index}
-                        className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+                        className={`nss-dot ${index === currentIndex ? "bg-secd dark:bg-drks" : "bg-gray-500"}`}
                         onClick={() => setCurrentIndex(index)}
                     ></span>
                 ))}

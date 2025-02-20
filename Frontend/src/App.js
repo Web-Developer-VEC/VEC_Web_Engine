@@ -83,16 +83,25 @@ const MainContentWrapper = styled.div`
 
 const App = () => {
     const footerRef = useRef(null);
-    const [loaded, setLoaded] = useState(false);
-
     const cookies = new Cookies()
+    if (cookies.get('theme') === undefined) cookies.set('theme', 'light')
+
+
+    const [loaded, setLoaded] = useState(false);
+    const [theme, setTheme] = useState(cookies.get('theme'));
+
     let isAuth = cookies.get('firstTime') !== undefined && +(cookies.get('firstTime')) > 3
     if (cookies.get('firstTime') === undefined) cookies.set('firstTime', 0)
-    else cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+    else if(cookies.get('firstTime') < 5) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
 
     const load = useCallback(() => {
         setLoaded(true);
-        console.log("Called back")
+    })
+
+    const toggle = useCallback(() => {
+        if(theme === "light") cookies.set('theme', 'dark')
+        else cookies.set('theme', 'light')
+        setTheme(cookies.get('theme'))
     })
 
     return (
@@ -100,54 +109,55 @@ const App = () => {
             <GlobalStyle/>
             {/* The rest of the routes */}
             <Router>
-                {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} />)}
-                <AppContainer className="App bg-white">
+                    <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
+                    {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
                     {/* Conditionally render Head and Footer */}
                     <>
                         <Head/>
                         <MainContentWrapper>
                             <Routes>
-                                <Route path="/" element={<LandingPage load={load}/>}/>
-                                <Route path="/abt-us" element={<AbtUs/>}/>
-                                <Route path="/trust" element={<Trust/>}/>
-                                <Route path="/v_m" element={<Collegevisionmission/>}/>
-                                <Route path="/management" element={<Management/>}/>
-                                <Route path="/principal" element={<Princ/>}/>
-                                <Route path="/dean" element={<Dean/>}/>
-                                <Route path="/admin" element={<CardPage/>}/>
-                                <Route path="/committee" element={<ExecutiveCommittee/>}/>
-                                <Route path="/clg-org" element={<CollegeOrgChart/>}/>
-                                <Route path="/dept/:deptID" element={<DepartmentPage/>}/>
-                                <Route path="/facultyprofile/:uid" element={<Facultyprofile/>}></Route>
-                                <Route path="/ug" element={<UgAdmission/>}/>
-                                <Route path="/m_e" element={<ME/>}/>
-                                <Route path="/mba" element={<MBA/>}/>
-                                <Route path="/reg" element={<REGULATION/>}/>
-                                <Route path="/Syllabus" element={<Syllabus/>}/>
-                                <Route path="/form" element={<Forms/>}/>
-                                <Route path="/Academic" element={<Academres/>}/>
-                                <Route path="/Sponseredresearch" element={<Sponsres/>}/>
-                                <Route path="/journal" element={<JounalPub/>}/>
-                                <Route path="/conference" element={<ConfPub/>}/>
-                                <Route path="/patents" element={<Patentsres/>}/>
-                                <Route path="/Bookpubliction" element={<Bookres/>}/>
-                                <Route path="/abtplace" element={<Aboutplacement/>}/>
-                                <Route path="/place-team" element={<PlacementTeam/>}/>
-                                <Route path="/place-dep" element={<PlacementDetails/>}/>
-                                <Route path="/proudalumni" element={<ProudAlumni/>}/>
-                                <Route path="/nba" element={<NBA/>}/>
-                                <Route path="/naac" element={<NAAC/>}/>
-                                <Route path="/nirf" element={<NIRF/>}/>
-                                <Route path="/iic" element={<IIC/>}/>
-                                <Route path="/NSS" element={<NSS/>}/>
-                                <Route path="/YRC" element={<YRC/>}/>
-                                <Route path="/sports" element={<SportsPage/>}/>
-                                <Route path="/trans" element={<Transport/>}/>
-                                <Route path="/library" element={<Library/>}/>
-                                <Route path="/hostel" element={<Hostel/>}/>
-                                <Route path="/other-facilities" element={<OtherFacilities />} />
-                                <Route path="/greviences" element={<GrievanceForm />}/>
-                                <Route path='/login' element={<Login/>}/>
+                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
+                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
+                                <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
+                                <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
+                                <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme}/>}/>
+                                <Route path="/dean" drk element={<Dean toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin" drk element={<CardPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme}/>}/>
+                                <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
+                                <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
+                                <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
+                                <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
+                                <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
+                                <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/>
+                                <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
+                                <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
+                                <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/proudalumni" drk element={<ProudAlumni />}/>
+
+                                <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
+                                <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
+                                <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/trans" drk element={<Transport/>}/>
+                                <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
+                                <Route path="/hostel" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
+                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
+                                <Route path="/greviences" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                <Route path='/login' drk element={<Login/>}/>
                             </Routes>
                         </MainContentWrapper>
                         <Footer ref={footerRef}/>

@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./YRC.css";
 
-const YRC = () => {
+const YRC = ({theme, toggle}) => {
   // Dummy data for development
   const dummyCoordinators = {
     staffCoordinator: {
@@ -69,16 +69,17 @@ const carouselSettings = {
 
   return (
     <div>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://kristujayanti.edu.in/studentlife/images/youth-red-cross-banner.jpg"
         headerText="Youth Red Cross (YRC)"
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
       />
 
-      <div className="YRC-container">
+      <div className="YRC-container ">
         {/* About Us */}
-        <div className="YRC-Aboutus">
-          <h2 className="YRC-heading">
+        <div className="YRC-Aboutus border-l-4 border-secd dark:border-drks
+          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
+          <h2 className="YRC-heading text-secd dark:text-drks">
             <img src="/YRC_logo.jpg" alt="YRC Logo" className="YRC-icon" />
             ABOUT US
           </h2>
@@ -90,15 +91,17 @@ const carouselSettings = {
 
         {/* Mission & Vision */}
         <div className="YRC-mission-vision-container">
-          <div className="YRC-mission">
-            <h2 className="YRC-heading">MISSION</h2>
+          <div className="YRC-mission border-l-4 border-secd dark:border-drks
+          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
+            <h2 className="YRC-heading text-secd dark:text-drks">MISSION</h2>
             <p className="YRC-content">
             Our mission is to serve humanity by promoting health and hygiene, offering aid to the sick and needy, and providing relief during emergencies. Through activities such as blood donation drives, food distribution, and social care projects, we strive to build a society that prioritizes kindness, well-being, and inclusivity.  
 
             </p>
           </div>
-          <div className="YRC-vision">
-            <h2 className="YRC-heading">VISION</h2>
+          <div className="YRC-vision border-l-4 border-secd dark:border-drks
+          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
+            <h2 className="YRC-heading text-secd dark:text-drks">VISION</h2>
             <p className="YRC-content">
             We envision a world where young individuals lead with compassion and actively contribute to the betterment of society. By fostering national and international friendships, enhancing moral and mental capacities, and promoting social responsibility, we aim to create a future where humanity thrives in unity, resilience, and service.
             </p>
@@ -106,15 +109,15 @@ const carouselSettings = {
         </div>
 
         {/* Coordinators Section */}
-        <div className="YRC-coordinators-section">
+        <div className="YRC-coordinators-section ">
           <h2 className="YRC-section-heading">COORDINATORS</h2>
 
           {/* Staff Coordinator */}
           <h3 className="YRC-subheading">Staff Coordinator</h3>
           <div className="YRC-faculty-coordinator">
-            <div className="YRC-id-card">
+            <div className="YRC-id-card dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
               <img src={dummyCoordinators.staffCoordinator.photo} alt="Staff Coordinator" className="YRC-profile-pic" />
-              <h4 className="YRC-name">{dummyCoordinators.staffCoordinator.name}</h4>
+              <h4 className="YRC-name text-secd dark:text-drks">{dummyCoordinators.staffCoordinator.name}</h4>
               <p className="YRC-role">{dummyCoordinators.staffCoordinator.role}</p>
             </div>
           </div>
@@ -123,14 +126,17 @@ const carouselSettings = {
           <h3 className="YRC-subheading">Student Coordinators</h3>
           <div className="YRC-student-coordinators">
             {dummyCoordinators.studentCoordinators.map((student, index) => (
-              <div key={index} className="YRC-id-card">
+              <div key={index} className="YRC-id-card dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                 <img src={student.photo} alt={student.name} className="YRC-profile-pic" />
-                <h4 className="YRC-name">{student.name}</h4>
+                <h4 className="YRC-name text-secd dark:text-drks">{student.name}</h4>
                 <p className="YRC-role">{student.role}</p>
                 <div className="YRC-social-icons">
-                  <a href={student.facebook} className="YRC-social-link"><FaFacebook /></a>
-                  <a href={student.instagram} className="YRC-social-link"><FaInstagram /></a>
-                  <a href={student.linkedin} className="YRC-social-link"><FaLinkedin /></a>
+                  <a href={student.facebook} className="YRC-social-link text-secd dark:text-drks
+                    hover:text-accn dark:hover:text-drka"><FaFacebook /></a>
+                  <a href={student.instagram} className="YRC-social-link text-secd dark:text-drks
+                    hover:text-accn dark:hover:text-drka"><FaInstagram /></a>
+                  <a href={student.linkedin} className="YRC-social-link text-secd dark:text-drks
+                    hover:text-accn dark:hover:text-drka"><FaLinkedin /></a>
                 </div>
               </div>
             ))}

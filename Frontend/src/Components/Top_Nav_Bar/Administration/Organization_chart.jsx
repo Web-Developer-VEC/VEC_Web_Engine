@@ -2,10 +2,10 @@ import React from "react";
 import './Orgainzation_chart.css'; // Ensure the CSS file includes necessary styles
 import Banner from "../../Banner";
 
-const CollegeOrgChart = () => {
+const CollegeOrgChart = ({theme, toggle}) => {
     return (
       <>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Organization Chart"
           subHeaderText="A clear framework for success, aligning teams and leaders toward shared goals and growth."
