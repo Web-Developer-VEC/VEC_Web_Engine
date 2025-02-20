@@ -65,19 +65,19 @@ const Announcements1 = () => {
 
     return (
         // mb-[75vh] lg:mb-[27.5vmin]
-        <div className="news font-popp mt-4">
+        <div className="news bg-prim dark:bg-drkp text-text dark:text-drkt font-popp mt-4">
             {/*<p className="text-xl text-amber-600 ml-6">News</p>*/}
             <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] w-full">
                 <div
                     className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
-                    <div className="cont w-[105%] absolute h-full"></div>
+                    <div className="cont bg-secd dark:bg-drks w-[105%] absolute h-full"></div>
                     <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%]" src={img1} alt="college"/>
                 </div>
 
                 <div className="main relative lg:basis-1/3 w-full">
                     {spcannouncements.map((item) => (
                         <div key={item.title}>
-                            <h2 className="text-3xl">{item.title}</h2>
+                            <h2 className="text-3xl text-accn dark:text-drka">{item.title}</h2>
                             <p className="text-xl">{item.content}</p>
                         </div>
                     ))}
@@ -100,7 +100,7 @@ const Announcements1 = () => {
                          onMouseLeave={() => setHovered(false)}>
                         <div className={`card-inner ${flipped ? "flipped" : ""}`}>
                             <div className="card-front">
-                                <h2 className='text-3xl text-[#953b0a]' style={{marginBottom: 0}}>Announcements</h2>
+                                <h2 className='text-3xl text-accn dark:text-drka mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 5}).map((_, i) => (
                                         <h4 key={i} className='text-base/6 line-clamp-2'>
@@ -111,7 +111,7 @@ const Announcements1 = () => {
                                 </div>
                             </div>
                             <div className="card-back">
-                                <h2 className='text-[3lvh] text-[#953b0a]' style={{marginBottom: 0}}>Announcements</h2>
+                                <h2 className='text-[3lvh] text-accn dark:text-drka mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i + 5} className='text-base/6 line-clamp-2'>

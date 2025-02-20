@@ -3,9 +3,9 @@
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
-    color: #2c3e50;
+    /*color: #2c3e50;*/
     margin-bottom: 30px;
-    border-bottom: 2px solid #f39c12;
+    /*border-bottom: 2px solid #f39c12;*/
     padding-bottom: 15px;
   }
   
@@ -30,7 +30,7 @@
   .management-card {
     width: 250px;
     padding: 20px;
-    background-color: #fff;
+    /*background-color: #fff;*/
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -58,12 +58,12 @@
   .management-card h6 {
     font-size: 1rem;
     font-weight: normal;
-    color: #f39c12;
+    /*color: #f39c12;*/
     margin-bottom: 10px;
   }
   
   .management-card p {
     font-size: 0.9rem;
-    color: #7f8c8d;
+    /*color: #7f8c8d;*/
   }
   

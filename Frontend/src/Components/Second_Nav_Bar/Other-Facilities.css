@@ -10,8 +10,8 @@
 
 .ofac-container h3{
   display: inline;
-  border-bottom: 5px solid green;
-  padding-bottom: 7px;
+  /*border-bottom: 5px solid green;*/
+  /*padding-bottom: 7px;*/
   padding: 0 7px;
 }
 
@@ -751,7 +751,7 @@ align-content: center;
 justify-content: center;
 flex-basis: 15%;
 font-size: 2rem;
-color: #000000;
+/*color: #000000;*/
 }
 .ofac .previous:hover .icon,
 .next:hover .icon {
@@ -869,7 +869,7 @@ transition: transform 0.1s ease;
   bottom:0%;
 }
 .intro1 .title .underline {
-  color: #000000;
+  /*color: #000000;*/
 }
 }
 @media (min-width: 62rem) {
@@ -927,19 +927,19 @@ transition: transform 0.1s ease;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+  /*background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);*/
 }
 
 /* Card styling */
-.ofac .card {
+.ofac .card-oth {
   max-width: 90%; /* Equivalent to max-w-3xl */
   margin: 10px auto;
   width: 100%;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   border-radius: 0.75rem;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  border: 1px solid #f3f4f6;
+  /*border: 1px solid #f3f4f6;*/
 }
 
 .ofac .slider{
@@ -962,7 +962,7 @@ transition: transform 0.1s ease;
 
 /* Blue icon background */
 .ofac .icon-bg {
-  background-color: #ebf5ff;
+  /*background-color: #ebf5ff;*/
   padding: 0.75rem;
   border-radius: 50%;
 }
@@ -971,15 +971,15 @@ transition: transform 0.1s ease;
 .ofac .icon {
   width: 2rem;
   height: 2rem;
-  color: #fdaf13;
+  /*color: #fdaf13;*/
 }
 
 /* Title styling */
-.ofac .card-title {
+.ofac .card-title-oth {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
-  color: #fdaf13;
+  /*color: #fdaf13;*/
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
@@ -989,7 +989,7 @@ transition: transform 0.1s ease;
   position: absolute;
   width: 5rem;
   height: 0.25rem;
-  background-color: #ebe825;
+  /*background-color: #ebe825;*/
 }
 
 /* Positioning of top lines */
@@ -1017,7 +1017,7 @@ transition: transform 0.1s ease;
 /* Text styling */
 .ofac .card-text {
   padding-top: 2rem;
-  color: #374151;
+  /*color: #374151;*/
   line-height: 1.625;
   font-size: 1.125rem;
   text-align: justify;
@@ -1026,7 +1026,7 @@ transition: transform 0.1s ease;
 /* Gradient border at the bottom */
 .ofac .gradient-bar {
   height: 0.5rem;
-  background: linear-gradient(to right, #ebe825, #c0eb25, #ebe825);
+  /*background: linear-gradient(to right, #ebe825, #c0eb25, #ebe825);*/
 }
 
 
@@ -1035,7 +1035,7 @@ transition: transform 0.1s ease;
     padding: 10px;
   }
   
-  .ofac .card-title {
+  .ofac .card-title-oth {
     font-size: 1.2rem;
   }
   

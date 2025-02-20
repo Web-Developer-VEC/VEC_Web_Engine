@@ -17,7 +17,7 @@ html, body {
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  background: #f8fafc;
+  /*background: #f8fafc;*/
   min-height: 100vh;
 }
 
@@ -29,7 +29,7 @@ html, body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   overflow-x: hidden;
-  background: #fff;
+  /*background: #fff;*/
 }
 
 /* Scrollbar styles */
@@ -211,5 +211,5 @@ html, body {
   border: none;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  /*color: black;*/
 }

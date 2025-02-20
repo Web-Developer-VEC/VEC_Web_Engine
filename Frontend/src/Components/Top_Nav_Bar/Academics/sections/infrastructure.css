@@ -1,26 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-:root {
-  --text-color: black;
-  --background-color: white;
-}
-
 .infra {
   /* background-color: var(--background-color); */
-  color: var(--text-color);
+  /*color: var(--text-color);*/
   font-family: "Spectral", serif;
   padding: 3.7rem;
 }
 
-.infra[data-theme="night"] {
-  --text-color: white;
-  --background-color: black;
-}
+/*.infra[data-theme="night"] {*/
+/*  --text-color: white;*/
+/*  --background-color: black;*/
+/*}*/
 
 .infra h1 {
-  border-right: 5px solid #767676;
-  border-left: 5px solid #767676;
+  /*border-right: 5px solid #767676;*/
+  /*border-left: 5px solid #767676;*/
   text-align: center;
 }
 
@@ -37,8 +32,8 @@
   font-size: 20px;
   text-align: center;
   margin: 120px auto;
-  margin-bottom: 20px;
-  text-align: right;
+  /*margin-bottom: 20px;*/
+  /*text-align: right;*/
 }
 
 .text-heading .text-author {

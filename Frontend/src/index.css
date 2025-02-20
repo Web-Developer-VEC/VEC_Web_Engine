@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/*@custom-variant dark (&:where(.dark, .dark *));*/
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

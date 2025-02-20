@@ -1,6 +1,6 @@
 /* Container Styles */
 .nss-container {
-    background-color: #f8f9fa;
+    /*background-color: #f8f9fa;*/
     padding: 50px 20px;
     display: flex;
     justify-content: center;
@@ -16,9 +16,9 @@
   
   /* NSS Box */
   .nss-box {
-    background: white;
+    /*background: white;*/
     padding: 20px;
-    border-left: 5px solid #fdb515;
+    /*border-left: 5px solid #fdb515;*/
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -27,8 +27,8 @@
   .nss-title {
     font-size: 22px;
     font-weight: bold;
-    color: #1d1d1d;
-    border-bottom: 3px solid #fdb515;
+    /*color: #1d1d1d;*/
+    /*border-bottom: 3px solid #fdb515;*/
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 15px;
@@ -37,14 +37,14 @@
   /* Paragraph Text */
   .nss-text {
     font-size: 16px;
-    color: #444;
+    /*color: #444;*/
     line-height: 1.7;
     margin-bottom: 10px;
   }
   
   /* Highlighted Text */
   .nss-highlight {
-    color: #1d1d1d;
+    /*color: #1d1d1d;*/
     font-weight: bold;
   }
   
@@ -52,7 +52,7 @@
   .nss-list {
     list-style-type: disc;
     padding-left: 20px;
-    color: #444;
+    /*color: #444;*/
     font-size: 16px;
     line-height: 1.7;
   }

@@ -5,8 +5,7 @@ const PdfOpener = () => {
 
   return (
     <div style={styles.container}>
-      <button 
-        style={styles.button} 
+      <button className="bg-secd dark:bg-drks p-3 mb-8 rounded-xl"
         onClick={() => setShowPdf(true)}
       >
         Open PDF

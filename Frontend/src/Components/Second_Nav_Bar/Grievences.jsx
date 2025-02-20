@@ -2,57 +2,37 @@ import React, { useState } from "react";
 import "./Grievences.css";
 import Banner from "../Banner";
 
-const GrievanceForm = () => {
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [content, setContent] = useState('');
-  const [message, setMessage] = useState("");
+const GrievanceForm = ({toggle, theme}) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    subject: "",
+    content: "",
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page refresh
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    try {
-      const response = await fetch("/api/get_grevience", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", 
-        body: JSON.stringify({ email, subject, content }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage(`Success: ${data.message}`);
-        console.log("User Info:", data.message); 
-        alert("email send successfully")
-      } else {
-        setMessage(`Error: ${data.error || data.message}`);
-        alert(data.message);
-      }
-    } catch (error) {
-      setMessage("Error connecting to the server");
-      console.error("Login Error:", error);
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setContent('');
-    setSubject('');
-    setEmail('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Grievance submitted successfully!");
+    setFormData({ email: "", subject: "", content: "" });
   };
 
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Grievance Form"
           subHeaderText="Raise your concerns here"
         />
       </div>
 
-      <div className="grievances-form-container">
-        <h2 className="grievances-heading">Grievance Form</h2>
+      <div className="grievances-form-container bg-[color-mix(in_srgb,theme(colors.secd),transparent_80%)]
+        dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
+        <h2 className="grievances-heading text-secd dark:text-drks">Grievance Form</h2>
         <p className="grievances-description">
           If you have any concerns regarding college facilities, faculty,
           administration, or any other issue affecting your academic experience,
@@ -62,43 +42,38 @@ const GrievanceForm = () => {
         <form className="grievances-form" onSubmit={handleSubmit}>
           <label className="grievances-label-email">Email:</label>
           <input
-            className="grievances-input-email"
+            className="grievances-input-email bg-prim dark:bg-drkp"
             type="email"
             name="email"
-            value={email}
-            onChange={(e)=> setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleChange}
             required
           />
 
           <label className="grievances-label-subject">Subject:</label>
           <input
-            className="grievances-input-subject"
+            className="grievances-input-subject bg-prim dark:bg-drkp"
             type="text"
             name="subject"
-            value={subject}
-            onChange={(e)=> setSubject(e.target.value)}
+            value={formData.subject}
+            onChange={handleChange}
             required
           />
 
           <label className="grievances-label-content">Content:</label>
           <textarea
-            className="grievances-textarea-content"
+            className="grievances-textarea-content bg-prim dark:bg-drkp"
             name="content"
-            value={content}
-            onChange={(e)=> setContent(e.target.value)}
+            value={formData.content}
+            onChange={handleChange}
             required
           ></textarea>
 
-          <button className="grievances-button-submit" type="submit">
+          <button className="grievances-button-submit bg-secd dark:bg-drks
+            hover:bg-accn hover:text-prim dark:hover:bg-drka shadow-lg" type="submit">
             Submit
           </button>
         </form>
-        {message && (
-          <>
-            <br />
-            <p>{message}</p>
-          </>
-        )}
       </div>
     </>
   );

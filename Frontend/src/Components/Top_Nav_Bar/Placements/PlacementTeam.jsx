@@ -6,10 +6,10 @@ import Banner from '../../Banner';
 
 function PersonDetail({ person, isImageLeft }) {
   return (
-    <div className={`person-detail ${isImageLeft ? 'left' : 'right'}`}>
+    <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
       <img src={person.photo_path} alt={person.name} className="person-image" />
       <div className="person-content">
-        <h2>{person.designation}</h2>
+        <h2 className="text-secd dark:text-drks">{person.designation}</h2>
         <h3>{person.name}</h3>
         <p>{person.content}</p>
       </div>

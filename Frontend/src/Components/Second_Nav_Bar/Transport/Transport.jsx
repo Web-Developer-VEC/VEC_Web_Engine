@@ -6,29 +6,31 @@ import Transportvideo from "./TransportVideo";
 
 const Transport = () => {
     return (
-        <div style={{ backgroundColor: "#f8f9fa", paddingBottom: "40px" }}>
+        <div style={{ paddingBottom: "40px",
+            // backgroundColor: "#f8f9fa"
+        }}>
             <div style={{ position: "relative" }}>
                 <Transportvideo />
             </div>
             
             {/* Styled Transport Facilities Paragraph */}
-            <div style={{ 
+            <div className="border-l-4 border-secd dark:border-drks" style={{
                 maxWidth: "900px", 
                 margin: "40px auto", 
                 padding: "20px",
                 fontSize: "18px", 
                 lineHeight: "1.8", 
-                color: "#333", 
+                // color: "#333",
                 fontWeight: "400",
-                backgroundColor: "#f8f9fa",
-                borderLeft: "5px solid #fdb515",  // Yellow highlight border
+                // backgroundColor: "#f8f9fa",
+                // borderLeft: "5px solid #fdb515",  // Yellow highlight border
                 paddingLeft: "20px"
             }}>
-                <h2 style={{
+                <h2 className="text-secd dark:text-drks border-b-4 border-secd dark:border-drks" style={{
                     fontSize: "24px",
                     fontWeight: "bold",
-                    color: "#1d1d1d",
-                    borderBottom: "3px solid #fdb515", // Yellow underline
+                    // color: "#1d1d1d",
+                    // borderBottom: "3px solid #fdb515", // Yellow underline
                     display: "inline-block",
                     paddingBottom: "5px",
                     marginBottom: "10px"

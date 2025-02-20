@@ -3,7 +3,7 @@ import "./naac.css";
 import axios from "axios";
 import Banner from '../Banner';
 
-const Naac = () => {
+const Naac = ({toggle, theme}) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
   const [naacData, setNaacData] = useState({});
@@ -59,7 +59,7 @@ const Naac = () => {
 
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="NAAC"
         subHeaderText="NATIONAL ASSESSMENT AND ACCREDITATION COUNCIL (NAAC)"
@@ -67,26 +67,29 @@ const Naac = () => {
 
       <div className="naac-page">
         {isLoading && (
-          <div className="naac-loading-screen">
-            <div className="naac-spinner"></div>
+          <div className="loading-screen">
+            <div className="spinner"></div>
             Loading...
           </div>
         )}
 
-        <div className="naac-about-section">
-          <div className="naac-info-panel">
-            <h2>About NAAC</h2>
+        <div className="about-section">
+          <div className="naac-info-panel border-l-4 border-secd dark:border-drks
+            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <h2 className="text-secd dark:text-drks">About NAAC</h2>
             <p>The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution...</p>
           </div>
 
-          <div className="iqac-info-panel">
-            <h2>About IQAC</h2>
+          <div className="iqac-info-panel border-l-4 border-secd dark:border-drks
+            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <h2 className="text-secd dark:text-drks">About IQAC</h2>
             <p>The Internal Quality Assurance Cell (IQAC) is a pivotal body established to ensure continuous quality enhancement...</p>
           </div>
         </div>
 
-        <div className="naac-objectives-section">
-          <h2>Key Objectives</h2>
+        <div className="objectives-section border-l-8 border-secd dark:border-drks
+          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <h2 className="text-secd dark:text-drks">Key Objectives</h2>
           <ol>
             <li><b>Quality Enhancement:</b> Develop system for consistent improvement</li>
             <li><b>Best Practices:</b> Institutionalize innovative practices</li>
@@ -100,7 +103,8 @@ const Naac = () => {
             {Object.keys(naacData).map((category) => (
               <button
                 key={category}
-                className={`naac-year-button ${selectedCategory === category ? "active" : ""}`}
+                className={`naac-year-button ${selectedCategory === category ? "bg-accn dark:bg-drka text-prim" 
+                    : "bg-secd dark:bg-drks"}`}
                 onClick={() => handleCategoryClick(category)}
               >
                 {category}
@@ -108,13 +112,13 @@ const Naac = () => {
             ))}
           </div>
 
-          <div className="naac-details">
+          <div className="naac-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             {selectedCategory && selectedCategory !== "code_of_ethics" && (
               <div className="naac-year-actions">
                 {naacData[selectedCategory].years.map((year, index) => (
                   <button
                     key={index}
-                    className="naac-action-button"
+                    className="naac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                     onClick={() => handleYearClick(year)}
                   >
                     {year}

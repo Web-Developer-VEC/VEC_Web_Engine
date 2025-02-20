@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../../Banner';
 
-const Princ = () => {
+const Princ = ({theme, toggle}) => {
   const [data, setData] = useState(null); // State to store fetched data
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [error, setError] = useState(null); // State for error handling
@@ -43,7 +43,7 @@ const Princ = () => {
 
   return (
     <>
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="Principal's Desk"
         subHeaderText="Leading with vision and commitment to excellence in education and innovation."
@@ -60,7 +60,7 @@ const Princ = () => {
             />
             <div className="text-center lg:text-left">
               <span className="text-2xl font-semibold block">{name}</span>
-              <span className="text-lg font-bold text-amber-950 block">{qualification}</span>
+              <span className="text-lg font-bold text-accn dark:text-drka block">{qualification}</span>
             </div>
           </div>
 

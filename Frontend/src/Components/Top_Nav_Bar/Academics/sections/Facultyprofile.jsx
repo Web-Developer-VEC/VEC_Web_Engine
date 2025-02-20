@@ -13,6 +13,8 @@ import { GoProjectRoadmap } from "react-icons/go";
 import { MdCoPresent } from "react-icons/md";
 import '../sections/Facultyprofile.css'
 import { useParams } from 'react-router-dom';
+import Sun from "../../../Assets/sun.png";
+import Moon from "../../../Assets/moon.png";
 
 
   
@@ -31,7 +33,7 @@ const StatCard = ({ number, title, icon: Icon }) => (
 const SocialIcon = ({ icon: Icon, label, bgColor, url }) => (
   <a 
     href={url} 
-    className={`faculty-social-icon ${bgColor}`} 
+    className={`faculty-social-icon ${bgColor} bg-secd dark:bg-drks text-text dark:text-drkt`}
     title={label} 
     target="_blank" 
     rel="noopener noreferrer"
@@ -127,7 +129,8 @@ const ProfileSection = ({data}) => {
           {/* Left Column - Photo and Social Icons */}
           <div className="faculty-profile-left">
             {/* Photo */}
-            <div className="faculty-profile-photo">
+            <div className="faculty-profile-photo border-4 border-secd dark:border-drks rounded-lg
+              [box-shadow:0_4px_15px_theme(colors.secd)] dark:[box-shadow:0_4px_15px_theme(colors.drks)]">
               <img 
                 src={data?.Photo} 
                 alt="Profile" 
@@ -339,9 +342,10 @@ export const EducationTimeline = ({ data }) => {
                 </div>
               )}
 
-              <div className="faculty-education-card">
+              <div className="faculty-education-card bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                 <div className="faculty-card-header">
-                  <h3>{education.DEGREE} / {education.BRANCH}</h3>
+                  <h3 className="text-secd dark:text-drks">{education.DEGREE} / {education.BRANCH}</h3>
                 </div>
                 <div className="faculty-card-content">
                   <div className="faculty-duration-row">
@@ -528,15 +532,16 @@ const Tile = ({ title, icon, items, onItemClick }) => {
   const visibleItems = expanded ? items : items.slice(0, 5);
 
   return (
-    <div className="faculty-tiles-app-tile">
+    <div className="faculty-tiles-app-tile bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+      dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-2 border-secd dark:border-drks">
       <div className="faculty-tiles-app-tile-header">
         <div className="faculty-tiles-app-tile-icon">{icon}</div>
-        <h2 className="faculty-tiles-app-tile-title">{title}</h2>
+        <h2 className="faculty-tiles-app-tile-title text-text dark:text-drkt">{title}</h2>
       </div>
       <ul className="faculty-tiles-app-tile-list">
         {visibleItems.map((item, index) => (
           <li key={index} className="faculty-tiles-app-tile-item">
-            <ArrowRight className="faculty-tiles-app-item-icon" />
+            <ArrowRight className="faculty-tiles-app-item-icon text-secd dark:text-drks" />
             {item && (
               <a
                 className="faculty-tiles-app-item-link"
@@ -552,7 +557,8 @@ const Tile = ({ title, icon, items, onItemClick }) => {
         ))}
       </ul>
       {items.length > 5 && (
-        <button className="faculty-tiles-app-view-more" onClick={handleViewMore}>
+        <button className="faculty-tiles-app-view-more bg-secd dark:bg-drks text-text dark:text-drkt
+          hover:bg-accn hover:text-prim dark:hover:bg-drka dark:hover:text-prim" onClick={handleViewMore}>
           {expanded ? "View Less" : "View More"}
         </button>
       )}
@@ -692,7 +698,7 @@ const Tiles = ({ data }) => {
 };
 
 
-const Facultyprofile = () => {
+const Facultyprofile = ({theme, toggle}) => {
   const { uid } = useParams();
   const [facultyData, setProfileData] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -720,16 +726,33 @@ const Facultyprofile = () => {
   
     return(
         <div>
+          <div className='absolute flex gap-2 float-right mt-4 lg:-mt-1 size-12 px-2 py-2 z-[50]
+            bg-prim dark:bg-drkp w-48 -right-10 rounded-bl-xl'>
+            <img className="h-8 w-auto p-1 grayscale-0 dark:grayscale" src={Sun} alt="Dark"/>
+            <label className="inline-flex items-center cursor-pointer">
+              <input type="checkbox" value="" className="sr-only peer" onChange={toggle}
+                     checked={(theme !== "light")}/>
+              <div className="relative h-6 w-12 bg-gray-200 rounded-full peer
+              dark:bg-gray-700 peer-checked:after:translate-x-full
+              rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white
+              after:content-[''] after:absolute after:top-0.5 after:start-1 after:bg-white
+              after:border-gray-300 after:border after:rounded-full after:size-5
+              after:transition-all dark:border-gray-600 peer-checked:bg-blue-600
+              dark:peer-checked:bg-blue-600"></div>
+              {/*<span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>*/}
+            </label>
+            <img className="h-8 w-auto p-1.5 grayscale dark:grayscale-0" src={Moon} alt="light"/>
+          </div>
           {isLoading && (
-            <div className="loading-screen">
-              <div className="spinner"></div>
-              Loading...
-            </div>
+              <div className="loading-screen">
+                <div className="spinner"></div>
+                Loading...
+              </div>
           )}
-            <ProfileSection data = {facultyData} />
-            <EducationTimeline data = {facultyData}/>
-            <Experience data = {facultyData}/>
-            <Tiles data = {facultyData}/>
+          <ProfileSection data={facultyData}/>
+          <EducationTimeline data={facultyData}/>
+          <Experience data={facultyData}/>
+          <Tiles data={facultyData}/>
         </div>
     );
 };

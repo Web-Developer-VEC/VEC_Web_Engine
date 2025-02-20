@@ -9,7 +9,7 @@ import facilityImage4 from "../Assets/iic-facility-4.png"
 import facilityImage5 from "../Assets/iic-facility-5.png"
 import facilityImage6 from "../Assets/iic-facility-6.png"
 
-const Iic = () => {
+const Iic = ({toggle, theme}) => {
   const leftCardsRef = useRef([])
   const rightCardsRef = useRef([])
 
@@ -182,7 +182,8 @@ const Iic = () => {
             <h3 className="nir-heading">{section.heading}</h3>
             <div className="nir-buttons">
               {section.buttons.map((button, btnIndex) => (
-                <div key={btnIndex} className="iic-action-button">
+                <div key={btnIndex} className="iic-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
+                  dark:hover:bg-drka rounded-xl border-2 border-accn dark:border-drka">
                   {button.text}
                 </div>
               ))}
@@ -195,7 +196,7 @@ const Iic = () => {
 
   return (
     <div className="nirf-page">
-      <Banner
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="IIC"
         subHeaderText="Instituition's Innovation Council"
@@ -209,8 +210,8 @@ const Iic = () => {
         )}
 
       <div className="about-section">
-        <div className="naac-info-panel ">
-          <h2>About IIC</h2>
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
+          <h2 className="text-secd dark:text-drks">About IIC</h2>
           <p>
             The Ministry of Education (MoE), Govt. of India has established ‘MoE’s Innovation Cell (MIC)’ to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The
@@ -223,7 +224,7 @@ const Iic = () => {
           </p>
         </div>
 
-        <div className="naac-info-panel">
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
           <h2>Major Focus of IIC</h2>
           <p>
             <br />• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
@@ -234,7 +235,7 @@ const Iic = () => {
           </p>
         </div>
 
-        <div className="iqac-info-panel">
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
           <h2>Vision</h2>
           <p>
             To facilitate a conducive environment with the intention of making an innovation to reach the society or
@@ -242,7 +243,7 @@ const Iic = () => {
           </p>
         </div>
 
-        <div className="iqac-info-panel">
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
           <h2>Mission</h2>
           <p>
             To enable student and faculty to establish a start-up to market their innovative products; an enhanced
@@ -254,7 +255,7 @@ const Iic = () => {
       </div>
 
       <div className="mb-10">
-        <div className="card functions-info-panel">
+        <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks">
           <h2>Functions of IIC</h2>
           <p>
             <br />• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC in a
@@ -271,7 +272,7 @@ const Iic = () => {
         </div>
       </div>
 
-      <div className="fuck md:card">
+      <div className="">
         <h3 className="iic-faici">Facilities And Infrastructure</h3>
         <div className="gallery">
           <div className="left iic-left">
@@ -311,7 +312,8 @@ const Iic = () => {
           {["Certificate", "Events Organized", "Policy", "Members", "NIR", "Other Stuffs"].map((category) => (
             <button
               key={category}
-              className={`nirf-year-button ${selectedYear === category ? "active" : ""}`}
+              className={`nirf-year-button ${selectedYear === category ? "active bg-accn dark:bg-drka text-prim" 
+                  : "bg-secd dark:bg-drks"}`}
               onClick={() => handleYearClick(category)}
             >
               {category}
@@ -319,14 +321,16 @@ const Iic = () => {
           ))}
         </div>
 
-        <div className={`nirf-details height ${selectedYear === "Members" ? "members-section" : ""}`}>
+        <div className={`nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+          height ${selectedYear === "Members" ? "members-section" : ""}`}>
           {selectedYear === "NIR" ? (
             renderNIRContent()
           ) : (
             <div className="nirf-year-actions faculty-icc">
               {selectedYear === "Certificate" &&
                 certificateArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf("Certificate", action.year)}>
+                  <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
+                    dark:hover:bg-drka" onClick={() => openPdf("Certificate", action.year)}>
                     {action.year}
                   </div>
                 ))}
@@ -334,7 +338,7 @@ const Iic = () => {
                 eventsOrganizedArray.map((action, index) => (
                   <div
                     key={index}
-                    className="nirf-action-button"
+                    className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                     onClick={() => openPdf("Events Organized", action.year)}
                   >
                     {action.year}
@@ -342,16 +346,16 @@ const Iic = () => {
                 ))}
               {selectedYear === "Policy" &&
                 policyArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf("Policy", action.year)}>
+                  <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Policy", action.year)}>
                     {action.year}
                   </div>
                 ))}
               {selectedYear === "Members" && (
                 <div className="members-grid">
                   {membersArray.map((member, index) => (
-                    <div key={index} className="members">
+                    <div key={index} className="members dark:bg-drkp">
                       <img src={member.image || "/placeholder.svg"} alt={member.name} className="member-image" />
-                      <p>{member.name}</p>
+                      <p className="text-secd dark:text-drks">{member.name}</p>
                       <h6>{member.designation}</h6>
                       <p>{member.keyRole}</p>
                     </div>
@@ -360,7 +364,7 @@ const Iic = () => {
               )}
               {selectedYear === "Other Stuffs" &&
                 otherStuffsArray.map((action, index) => (
-                  <div key={index} className="nirf-action-button" onClick={() => openPdf("Other Stuffs", action.year)}>
+                  <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Other Stuffs", action.year)}>
                     {action.year}
                   </div>
                 ))}

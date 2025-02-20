@@ -5,16 +5,16 @@
   gap: 20px; /* Space between the columns */
   align-items: center;
   margin: 20px 10%;
-  background: #fff;
+  /*background: #fff;*/
   overflow: hidden;
 }
 
 /* Left Section (h1) */
 .dynamic-container h1 {
   padding: 4px;
-  border-left: 0.5rem solid red;
+  /*border-left: 0.5rem solid red;*/
   font-size: 24px;
-  color: #333;
+  /*color: #333;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,7 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to bottom, #fcfbe0, #f3e9cf);
+  /*background: linear-gradient(to bottom, #fcfbe0, #f3e9cf);*/
   width: 95%; /* Ensure it fills 70% of the grid column */
   height: 250px; /* Fixed height for all cards */
   overflow: hidden; /* Prevent content from overflowing */
@@ -59,11 +59,11 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  /*color: #333;*/
 }
 .dynamic-description {
   font-size: 16px;
-  color: #555;
+  /*color: #555;*/
   overflow: hidden; /* Prevent description overflow */
   text-overflow: ellipsis; /* Add ellipsis if the text is too long */
   white-space: nowrap; /* Prevent wrapping */

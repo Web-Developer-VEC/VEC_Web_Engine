@@ -8,8 +8,9 @@ import Banner from "../../Banner";
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
-  <div className="committee-button" onClick={onClick}>
-    <FontAwesomeIcon icon={icon} style={{ marginRight: "10px" }} />
+  <div className="committee-button bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+    hover:border-2 hover:border-secd dark:hover:border-drks" onClick={onClick}>
+    <FontAwesomeIcon className="text-secd dark:text-drks" icon={icon} style={{ marginRight: "10px" }} />
     {name}
   </div>
 );
@@ -26,7 +27,7 @@ const PdfModal = ({ pdfUrl, onClose }) => (
   </div>
 );
 
-const ExecutiveCommittee = () => {
+const ExecutiveCommittee = ({theme, toggle}) => {
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [committieeData, setCommittieeData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Track loading state
@@ -90,7 +91,7 @@ const ExecutiveCommittee = () => {
 
   return (
     <>
- <Banner
+ <Banner toggle={toggle} theme={theme}
   backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
   headerText="Executive Committees"
   subHeaderText="Leading the way to success with visionary strategies, collaborative efforts, and decisive action."

@@ -6,8 +6,8 @@
 }
 
 .intro-section {
-  background-color: #ffffff; /* White background */
-  color: #333333; /* Dark gray text */
+  /*background-color: #ffffff; !* White background *!*/
+  /*color: #333333; !* Dark gray text *!*/
   padding: 2.5rem 3rem;
   border-radius: 1.25rem; /* Rounded corners */
   margin-bottom: 2.5rem;
@@ -25,24 +25,24 @@
   font-size: 2.2rem; /* Larger title */
   font-weight: 700; /* Bold weight for better emphasis */
   margin-bottom: 1.2rem;
-  color:rgb(253 204 3); /* Yellow for contrast */
+  /*color:rgb(253 204 3); !* Yellow for contrast *!*/
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Light text shadow */
 }
 
-.intro-text {
+.intro-text-act {
   font-size: 1.2rem; /* Slightly larger text for readability */
   line-height: 1.8;
   font-style: italic; /* Subtle text emphasis */
-  color: #555555; /* Darker gray text for contrast */
+  /*color: #555555; !* Darker gray text for contrast *!*/
   text-align: justify;
 }
 
 /* Description Box Styles */
 .description-box {
   margin-top: 2rem;
-  background-color: #f9f9f9; /* Light gray background */
+  /*background-color: #f9f9f9; !* Light gray background *!*/
   padding: 2.5rem 3rem;
   border-radius: 1.25rem; /* Rounded corners */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -59,16 +59,16 @@
   font-size: 1.8rem; /* Larger title */
   font-weight: 700; /* Bold weight */
   margin-bottom: 1rem;
-  color:rgb(253 204 3); /* Yellow title */
+  /*color:rgb(253 204 3); !* Yellow title *!*/
   text-transform: capitalize; /* First letter capitalized */
   letter-spacing: 0.05rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 
-.description-text {
+.description-text-act {
   font-size: 1.2rem; /* Slightly larger font size for better readability */
   line-height: 1.75;
-  color: #333333; /* Dark gray for better contrast */
+  /*color: #333333; !* Dark gray for better contrast *!*/
   letter-spacing: 0.02rem; /* Slight letter spacing for readability */
 }
 
@@ -198,7 +198,7 @@
     font-size: 2rem;
   }
   
-  .intro-text, .description-text {
+  .intro-text-act, .description-text-act {
     font-size: 1.1rem;
     text-align: justify;
   }
@@ -234,7 +234,7 @@
     font-size: 1.8rem;
   }
   
-  .intro-text, .description-text {
+  .intro-text-act, .description-text-act {
     font-size: 1rem;
     text-align: justify;
   }
@@ -283,7 +283,7 @@
     font-size: 1.5rem;
   }
   
-  .intro-text, .description-text {
+  .intro-text-act, .description-text-act {
     font-size: 0.9rem;
     text-align: justify;
   }
