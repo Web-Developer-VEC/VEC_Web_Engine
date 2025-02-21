@@ -15,17 +15,17 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
         >
             <motion.div
                 className="event-box bg-secd dark:bg-drks text-prim"
-                whileHover={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)"}}
+                whileHover={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.15)"}}
             >
                 <div className="event-header">
                     <div className="event-date">
-                        <div className="circle bg-accn dark:bg-drka text-text dark:text-drkt
+                        <div className="circle bg-accn dark:bg-drka text-prim dark:text-drkt
                             border-8 border-prim dark:border-drkp">{event.start_date}</div>
                     </div>
                     <div className="event-name line-clamp-2 text-2xl">{event.title}</div>
                 </div>
-                <div className="event-details">
-                    <div className="event-row department-name bg-prim dark:bg-drkp text-text dark:text-drkt text-xl">{event.department}</div>
+                <div className="event-details text-text dark:text-drkt">
+                    <div className="event-row department-name bg-prim dark:bg-drkp text-xl">{event.department}</div>
                     <div className="event-row description text-md/2 line-clamp-2">{event.content}</div>
                     <div className="event-footer">
                         <div className="event-row text-accn dark:text-drka duration">
@@ -109,9 +109,9 @@ function Carousel() {
 
     return (
         <div className="event-carousel-wrapper">
-            <div className="nav-button-area left">
+            <div className="nav-button-area-ann z-[500] left">
                 <motion.button
-                    className="nav-button"
+                    className="nav-button-ann"
                     onClick={() => x.set(x.get() - CARD_WIDTH)}
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.9}}
@@ -120,7 +120,7 @@ function Carousel() {
                 </motion.button>
             </div>
             <div className="caro-container font-popp">
-                <motion.div className="caro-content text-xl" style={{x: wrappedX}}>
+                <motion.div className="caro-content md:gap-8 text-xl" style={{x: wrappedX}}>
                     {duplicatedEvents.map((event, index) => (
                         <div draggable={true} onClick={handleHoverStart} onMouseLeave={handleHoverEnd} key={index}>
                             <EventBox
@@ -132,9 +132,9 @@ function Carousel() {
                     ))}
                 </motion.div>
             </div>
-            <div className="nav-button-area right">
+            <div className="nav-button-area-ann right">
                 <motion.button
-                    className="nav-button"
+                    className="nav-button-ann"
                     onClick={() => x.set(x.get() + CARD_WIDTH)}
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.9}}

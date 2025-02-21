@@ -128,7 +128,7 @@ const DepartmentPage = ({theme, toggle}) => {
       )}
       
       {/* Header */}
-      <div className={styles.header + " bottom-3"}>
+      <div className={styles.header}>
         <Toggle attr="absolute bottom-0 float-right right-24 size-12" toggle={toggle} theme={theme} />
         <img src={college} alt="Department Header" className={styles.fullWidthImage}/>
         <div className={styles.overlay}>

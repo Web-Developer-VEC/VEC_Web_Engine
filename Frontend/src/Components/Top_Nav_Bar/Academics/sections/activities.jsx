@@ -79,7 +79,8 @@ const Activities = ({ data }) => {
       {isModalOpen && (
         <div className={`modal ${isModalOpen ? "open" : ""}`}>
           <div className="bg-prim dark:bg-drkp modal-content-act">
-            <span className="close-btn text-text bg-secd dark:bg-drks dark:text-drkt" onClick={closeModal}>&times;</span>
+            <span className="close-btn text-text bg-secd dark:bg-drks dark:text-drkt
+              hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={closeModal}>&times;</span>
             <img src={selectedEvent.image_path} alt="Event" className="modal-image" />
             <h2>{selectedEvent.name_of_event}</h2>
             <p><strong>Date: </strong>{selectedEvent.date}</p>
@@ -111,11 +112,14 @@ const AnimatedCard = ({ event, handleViewMore }) => {
   };
 
   return (
-    <motion.div ref={ref} className="card_act bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" variants={cardVariants} initial="hidden" animate={controls}>
+    <motion.div ref={ref} className="card_act bg-prim
+      bg-[color-mix(in_srgb,theme(colors.prim)_80%,black)]
+      dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" variants={cardVariants}
+      initial="hidden" animate={controls}>
       <img src={event.image_path} alt="Event" className="card-image" />
       <div className="card-details">
         <p className="card-date">{event.date}</p>
-        <h3 className="my-2 text-xl text-secd">{event.name_of_event}</h3>
+        <h3 className="my-2 text-xl text-accn">{event.name_of_event}</h3>
         <p className="card-coordinator">Coordinator: {event.coordinator}</p>
         <button onClick={() => handleViewMore(event)} className="activities-view-more-btn mt-3
           bg-secd text-text dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka">

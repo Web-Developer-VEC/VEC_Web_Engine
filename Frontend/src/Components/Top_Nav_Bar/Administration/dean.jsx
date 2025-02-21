@@ -148,13 +148,13 @@ const Dean = ({theme, toggle}) => {
           );
 
           return (
-            <div className="de-box" key={index}>
+            <div className="de-box bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
               <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
               <div className="de-content">
                 {/* Profiles Section */}
                 {responsibleDean ? (
                   <div className="de-profiles-section">
-                    <div className="de-profile bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+                    <div className="de-profile bg-prim dark:bg-drkp">
                       <img
                         src={responsibleDean.Dean_Image} // Replace with a valid image URL
                         alt={responsibleDean.Dean}
@@ -166,7 +166,7 @@ const Dean = ({theme, toggle}) => {
                       </div>
                     </div>
                     {responsibleDean.Associate_Dean && (
-                      <div className="de-profile bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+                      <div className="de-profile bg-prim dark:bg-drkp">
                         <img
                           src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
                           alt={responsibleDean.Associate_Dean}
@@ -188,8 +188,7 @@ const Dean = ({theme, toggle}) => {
                   <h2>Roles and Responsibilities</h2>
                   <ul className="de-roles">
                     {section.roles.map((role, i) => (
-                      <li className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                        before:bg-secd dark:before:bg-drks" key={i}>{role}</li>
+                      <li className=" bg-prim dark:bg-drkp before:bg-secd dark:before:bg-drks" key={i}>{role}</li>
                     ))}
                   </ul>
                 </div>

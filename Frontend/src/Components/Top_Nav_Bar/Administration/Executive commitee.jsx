@@ -8,7 +8,8 @@ import Banner from "../../Banner";
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
-  <div className="committee-button bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+  <div className="committee-button bg-prim bg-[color-mix(in_srgb,theme(colors.prim)_88%,black)]
+    dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
     hover:border-2 hover:border-secd dark:hover:border-drks" onClick={onClick}>
     <FontAwesomeIcon className="text-secd dark:text-drks" icon={icon} style={{ marginRight: "10px" }} />
     {name}

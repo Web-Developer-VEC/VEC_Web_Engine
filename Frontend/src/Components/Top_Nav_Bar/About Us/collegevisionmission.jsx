@@ -6,7 +6,7 @@ import Banner from "../../Banner";
 
 const Collegevisionmission = ({theme, toggle}) => {
   return (
-    <>
+    <div className="mb-40">
       <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="Vision & Mission"
@@ -16,12 +16,12 @@ const Collegevisionmission = ({theme, toggle}) => {
         <div className="row g-4">
           {/* Vision Section */}
           <div className="col-md-6 d-flex align-items-stretch">
-            <div className={`${styles.sectioncard} p-4 shadow-lg rounded`}>
+            <div className={`${styles.sectioncard} shadow-lg rounded`}>
               <div className="d-flex align-items-center mb-3">
                 <Eye size={32} className="text-white-500 me-3" /> {/* Vision Icon */}
                 <h2 className="mb-0">Institute Vision</h2>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 h-full">
                 To educate the student community both by theory and practice to
                 fit in with society and to conquer tomorrow’s technology at a
                 global level with human values through our dedicated team.
@@ -47,7 +47,7 @@ const Collegevisionmission = ({theme, toggle}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

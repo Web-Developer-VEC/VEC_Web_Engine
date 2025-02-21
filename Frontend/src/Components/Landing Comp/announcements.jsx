@@ -67,14 +67,15 @@ const Announcements1 = () => {
         // mb-[75vh] lg:mb-[27.5vmin]
         <div className="news bg-prim dark:bg-drkp text-text dark:text-drkt font-popp mt-4">
             {/*<p className="text-xl text-amber-600 ml-6">News</p>*/}
-            <div className="relative announcement lg:flex flex-wrap flex-row min-h-[50lvh] w-full">
-                <div
-                    className="relative blur-lg hidden lg:block lg:blur-0 basis-full lg:basis-1/3 min-w-[35%] opacity-[0.45] lg:opacity-100">
-                    <div className="cont bg-secd dark:bg-drks w-[105%] absolute h-full"></div>
+            <div className="relative announcement md:flex flex-wrap gap-y-4 flex-row min-h-[50lvh] w-full">
+                <div className="relative blur-lg hidden md:block md:blur-0 basis-full md:basis-1/2 lg:basis-1/3
+                        min-w-[35%] opacity-[0.45] md:opacity-100">
+                    <div className="cont bg-gradient-to-b from-[color-mix(in_srgb,theme(colors.accn)_75%,white)]
+                        to-transparent dark:bg-drks w-[105%] absolute h-full"></div>
                     <img className="img bottom-0 absolute w-[73.5%] h-auto min-h-[90%]" src={img1} alt="college"/>
                 </div>
 
-                <div className="main relative lg:basis-1/3 w-full">
+                <div className="main relative md:basis-1/2 lg:basis-1/3 w-full">
                     {spcannouncements.map((item) => (
                         <div key={item.title}>
                             <h2 className="text-3xl text-accn dark:text-drka">{item.title}</h2>
@@ -94,16 +95,16 @@ const Announcements1 = () => {
                 </div>
 
                 {/* Announcements Section */}
-                <div className="tiles lg:basis-1/4 w-full h-[50vh]">
-                    <div className="relative size-full right-6"
+                <div className="tiles lg:basis-1/4 w-full grow h-[50vh] lg:min-h-[55vh]">
+                    <div className="relative h-full w-full"
                          onMouseEnter={() => setHovered(true)}
                          onMouseLeave={() => setHovered(false)}>
                         <div className={`card-inner ${flipped ? "flipped" : ""}`}>
                             <div className="card-front">
-                                <h2 className='text-3xl text-accn dark:text-drka mb-0'>Announcements</h2>
+                                <h2 className='md:text-[2lvh] xl:text-3xl text-accn dark:text-drka mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
-                                    {Array.from({length: 5}).map((_, i) => (
-                                        <h4 key={i} className='text-base/6 line-clamp-2'>
+                                    {Array.from({length: 7}).map((_, i) => (
+                                        <h4 key={i} className='text-xl line-clamp-2'>
                                             <a><i className="fa-solid fa-right-to-bracket"></i></a>
                                             {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
                                         </h4>
@@ -111,10 +112,10 @@ const Announcements1 = () => {
                                 </div>
                             </div>
                             <div className="card-back">
-                                <h2 className='text-[3lvh] text-accn dark:text-drka mb-0'>Announcements</h2>
+                                <h2 className='text-[2lvh] text-accn dark:text-drka mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
-                                        <h4 key={i + 5} className='text-base/6 line-clamp-2'>
+                                        <h4 key={i + 5} className='text-xl line-clamp-2'>
                                             <a><i className="fa-solid fa-right-to-bracket"></i></a>
                                             {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
                                         </h4>
@@ -124,7 +125,7 @@ const Announcements1 = () => {
                         </div>
                         <button className="absolute flip-btn bottom-0 left-3 text-3xl"
                                 onClick={handleManualFlip}> &#8617;</button>
-                        <button className="absolute flip-btn bottom-0 -right-10 text-3xl"
+                        <button className="absolute flip-btn bottom-0 right-3 text-3xl"
                                 onClick={handleManualFlip}> &#8618;</button>
                     </div>
 

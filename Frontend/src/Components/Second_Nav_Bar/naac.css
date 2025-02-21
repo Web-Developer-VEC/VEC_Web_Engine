@@ -22,10 +22,10 @@
 }
 
 /* About Section */
-.about-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+.about-section-naac {
+  /*display: grid;*/
+  /*grid-template-columns: 1fr 1fr;*/
+  /*gap: 30px;*/
   margin: 40px 0;
 }
 
@@ -235,8 +235,8 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   /* Stack About Section */
-  .about-section {
-    grid-template-columns: 1fr;
+  .about-section-naac {
+    /*grid-template-columns: 1fr;*/
   }
   
   /* Single Column List */

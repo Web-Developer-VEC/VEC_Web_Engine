@@ -91,7 +91,7 @@ const ImgSld = ({load, toggle, theme}) => {
                 {/*    '>*/}
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
-                    <div className='relative no-wrap h-[15vmax] w-[35vmax] mt-4 overflow-hidden'>
+                    <div className='relative no-wrap h-[15vmax] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
                                 animate-[LslideIn_40s_ease-in_infinite] px-4 py-[4vw] border-y-2 line-clamp-2 
