@@ -6,20 +6,21 @@ const LibraryIntro = () => {
       <div className="max-w-7xl w-full rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
         
         {/* Text Content */}
-        <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+        <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6
+          bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l
-            from-secd dark:from-drks to-[color-mix(in_srgb,theme(colors.secd),transparent_70%)] dark:to-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
+            from-accn dark:from-drks to-[color-mix(in_srgb,theme(colors.accn),transparent_70%)] dark:to-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
             ABOUT THE LIBRARY
           </h1>
           <p className="text-sm sm:text-base md:text-lg leading-relaxed">
             The college library is located in the Bill Gates Block, spanning the Ground and First floors. With a total
-            area of <span className="font-semibold text-secd dark:text-drks">24,000 sq. ft.</span>, it is a spacious,
-            well-ventilated space. Our library houses over <span className="font-semibold text-secd dark:text-drks">
-            77,525 volumes</span> of books and <span className="font-semibold text-secd dark:text-drks">25,156 titles</span> across various disciplines.
+            area of <span className="font-semibold text-accn dark:text-drks">24,000 sq. ft.</span>, it is a spacious,
+            well-ventilated space. Our library houses over <span className="font-semibold text-accn dark:text-drks">
+            77,525 volumes</span> of books and <span className="font-semibold text-accn dark:text-drks">25,156 titles</span> across various disciplines.
           </p>
           <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-            Additionally, we offer access to <span className="font-semibold text-secd dark:text-drks">
-            174 National and International Journals</span> and over <span className="font-semibold text-secd dark:text-drks">
+            Additionally, we offer access to <span className="font-semibold text-accn dark:text-drks">
+            174 National and International Journals</span> and over <span className="font-semibold text-accn dark:text-drks">
             9,517 online journals</span>. The library follows the Universal Decimal Classification Scheme and operates
             on an Open Access System.
           </p>

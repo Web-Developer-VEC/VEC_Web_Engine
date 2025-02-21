@@ -19,7 +19,7 @@
 }
 
 /* Navigation Button Styles */
-.nav-button-area {
+.nav-button-area-ann {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -31,15 +31,15 @@
   background: transparent; /* Ensure transparency */
 }
 
-.nav-button-area.left {
+.nav-button-area-ann.left {
   left: 0;
 }
 
-.nav-button-area.right {
+.nav-button-area-ann.right {
   right: 0;
 }
 
-.nav-button {
+.nav-button-ann {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -55,7 +55,7 @@
   opacity: 0;
 }
 
-.nav-button-area:hover .nav-button {
+.nav-button-area-ann:hover .nav-button-ann {
   opacity: 1;
 }
 
@@ -80,10 +80,10 @@
 /* Carousel Content Styles */
 .caro-content {
   display: flex;
-  gap: 1vw;
+  /*gap: 1vw;*/
   transition: transform 0.3s ease-out; /* Increased speed of transition */
   padding: 10px 0; /* Added padding for hover space */
-  
+
 }
 
 .caro-item {
@@ -267,20 +267,20 @@
     margin: 0;
   }
 
-  .nav-button {
+  .nav-button-ann {
     width: 40px;
     height: 40px;
   }
 
-  .nav-button-area {
+  .nav-button-area-ann {
     width: 60px;
   }
 
-  .nav-button-area.left {
+  .nav-button-area-ann.left {
     left: 10px;
   }
 
-  .nav-button-area.right {
+  .nav-button-area-ann.right {
     right: 10px;
   }
 
@@ -314,20 +314,20 @@
     max-width: 425px;
   }
 
-  .nav-button {
+  .nav-button-ann {
     width: 36px;
     height: 36px;
   }
 
-  .nav-button-area {
+  .nav-button-area-ann {
     width: 50px;
   }
 
-  .nav-button-area.left {
+  .nav-button-area-ann.left {
     left: 5px;
   }
 
-  .nav-button-area.right {
+  .nav-button-area-ann.right {
     right: 5px;
   }
 }
@@ -338,7 +338,7 @@
     margin: 0;
   }
 
-  .nav-button {
+  .nav-button-ann {
     width: 36px;
     height: 36px;
   }

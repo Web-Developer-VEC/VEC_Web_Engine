@@ -25,8 +25,8 @@ const Faculties = ({ data }) => {
   const facultyArray = data.faculty_members;
 
   return (
-    <div className={styles.app}>
-      <div className={styles.imageGallery}>
+    <div className={styles.app + " p-0 md:p-12"}>
+      <div className={styles.imageGallery + " w-full"}>
         {facultyArray.length > 0 && (
           <div className={styles.fullWidthTile}>
             <ImageCard
@@ -65,13 +65,16 @@ const Faculties = ({ data }) => {
         </div>
       </div>
       <div className={styles.prefaculty}>
-        <button className={styles.prefacultybtn} onClick={() => handleViewClick(url, Name)}> Previous Year brFaculties</button>
+        <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text px-4 " +
+            "dark:bg-drks dark:text-text-drkt dark:hover:bg-drka"}
+                onClick={() => handleViewClick(url, Name)}> Previous Year brFaculties</button>
       </div>
 
       {open && (
               <div className={styles.pdfmodal}>
-                <div className={styles.pdfmodalcontent}>
-                  <button className={styles.pdfclosebutton} onClick={closeModal}>
+                <div className={styles.pdfmodalcontent + " bg-prim dark:bg-drkp"}>
+                  <button className={styles.pdfclosebutton + " text-text bg-secd dark:bg-drks dark:text-drkt " +
+                      "hover:bg-accn hover:text-prim dark:hover:bg-drka"} onClick={closeModal}>
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
                   <h2>{open.name}</h2>
