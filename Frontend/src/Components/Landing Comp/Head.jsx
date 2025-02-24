@@ -202,7 +202,7 @@ const Head = () => {
                 {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
                 {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
                 {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
-                {hrd: false, ttl: "Ph.D Programme Details", sup: [], lnk: ""},
+                {hrd: false, ttl: "Ph.D Programme Details", sup: [], lnk: "/phd"},
             ],
         },
         {
