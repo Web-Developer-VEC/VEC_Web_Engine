@@ -1,43 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Sponseredresearch.css";
 import Banner from "../../Banner";
 
-export default function Sponseredresearch({theme, toggle}) {
-  const [pdfUrl, setPdfUrl] = useState("/pdfs/2024-2025.pdf"); // Default PDF
-  const [activeYear, setActiveYear] = useState("2024-2025"); // Track active button
+export default function Sponseredresearch() {
+  const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
+  const [activeYear, setActiveYear] = useState(null); // Track active button
+  const [sponserresearch, setSponserResearch] = useState(null);
 
-  const years = [
-    "2024-2025",
-    "2023-2024",
-    "2022-2023",
-    "2021-2022",
-    "2020-2021",
-  ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/get_research_data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ category: "sponsored_research" }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setSponserResearch(data);
+          setPdfUrl(data?.pdf_path[0]);
+          setActiveYear(data?.year[0]);
+        }
+      } catch (error) {
+        console.error("Fetching Error:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <div>
-        <Banner toggle={toggle} theme={theme}
+        <Banner
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Sponsered Research "
           subHeaderText="Enrich Your Knowledge"
         />
       </div>
       <div className="research-sponsoredresearch-container">
-        <h1 className="research-sponsoredresearch-title text-secd dark:text-drks">
+        <h1 className="research-sponsoredresearch-title">
           Sponsered Research - Yearwise Consolidation
         </h1>
 
         <div className="research-sponsoredresearch-button-container">
-          {years.map((year) => (
+          {sponserresearch?.year?.map((year,index) => (
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(`/pdfs/${year}.pdf`);
+                setPdfUrl(sponserresearch?.pdf_path[index]);
                 setActiveYear(year);
               }}
-              className={`research-sponsoredresearch-button dark:text-drkt ${
-                activeYear === year ? "active bg-accn dark:bg-drka text-prim" : "bg-secd dark:bg-drks text-text"
+              className={`research-sponsoredresearch-button ${
+                activeYear === year ? "active" : ""
               }`}
             >
               {year}
@@ -47,8 +67,7 @@ export default function Sponseredresearch({theme, toggle}) {
 
         <iframe
           src={pdfUrl}
-          className="research-sponsoredresearch-iframe-container [border:0.25rem_solid_theme(colors.secd)]
-            dark:[border:0.25rem_solid_theme(colors.drks)]"
+          className="research-sponsoredresearch-iframe-container"
         />
       </div>
     </>

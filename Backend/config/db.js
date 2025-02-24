@@ -3,7 +3,6 @@ require('dotenv').config();
 
 const mongoUri = process.env.MONGO_URI;
 const dbName = process.env.DB_NAME;
-// const dbName = "Ajith";
 
 async function connectToDatabase() {
     const client = new MongoClient(mongoUri);

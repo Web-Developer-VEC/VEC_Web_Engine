@@ -1,43 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PatentConsolidation.css"; // Import the CSS file
 import Banner from "../../Banner";
 
-export default function PatentConsolidation({theme, toggle}) {
-  const [pdfUrl, setPdfUrl] = useState("/pdfs/2024-2025.pdf"); // Default PDF
-  const [activeYear, setActiveYear] = useState("2024-2025"); // Track active button
+export default function PatentConsolidation() {
+  const [pdfUrl, setPdfUrl] = useState(null); 
+  const [activeYear, setActiveYear] = useState(null); 
+  const [patent, setPatent] = useState(null);
 
-  const years = [
-    "2024-2025",
-    "2023-2024",
-    "2022-2023",
-    "2021-2022",
-    "2020-2021",
-  ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/get_research_data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ category: "patents" }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setPatent(data);
+          setPdfUrl(data?.pdf_path[0]);
+          setActiveYear(data?.year[0]);
+        }
+      } catch (error) {
+        console.error("Fetching Error:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <div>
-        <Banner toggle={toggle} theme={theme}
+        <Banner
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Patents"
           subHeaderText="Enrich Your Knowledge"
         />
       </div>
       <div className="research-patent-container">
-        <h1 className="research-patent-title text-secd dark:text-drks">
+        <h1 className="research-patent-title">
           Patent - Yearwise Consolidation
         </h1>
 
         <div className="research-patent-button-container">
-          {years.map((year) => (
+          {patent?.year?.map((year,index) => (
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(`/pdfs/${year}.pdf`);
+                setPdfUrl(patent?.pdf_path[index]);
                 setActiveYear(year);
               }}
-              className={`research-patent-button dark:text-drkt ${
-                activeYear === year ? "active bg-accn dark:bg-drka text-prim" : "bg-secd dark:bg-drks text-text"
+              className={`research-patent-button ${
+                activeYear === year ? "active" : ""
               }`}
             >
               {year}
@@ -45,8 +65,7 @@ export default function PatentConsolidation({theme, toggle}) {
           ))}
         </div>
 
-        <iframe src={pdfUrl} className="research-patent-iframe-container [border:0.25rem_solid_theme(colors.secd)]
-            dark:[border:0.25rem_solid_theme(colors.drks)]" />
+        <iframe src={pdfUrl} className="research-patent-iframe-container" />
       </div>
     </>
   );
