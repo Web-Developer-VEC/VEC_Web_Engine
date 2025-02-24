@@ -27,6 +27,7 @@ import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyp
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
 import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
+import PHD from "./Components/Top_Nav_Bar/Admission/Phd/PhdAdmission.jsx";
 /* Exams Pages Imports */
 import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
@@ -131,6 +132,7 @@ const App = () => {
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
                                 <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/phd" drk element={<PHD toggle={toggle} theme={theme}/>}/>
                                 <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
