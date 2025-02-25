@@ -1,0 +1,136 @@
+/* Reset default margins and ensure consistent box sizing */
+
+
+/* Main container for the entire page */
+.alumni-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px; /* Increased padding for a polished look */
+}
+
+/* Banner styling */
+
+
+
+/* Section styling */
+.alumni-section {
+    margin-bottom: 50px; /* Increased spacing between sections for a polished look */
+}
+
+.alumni-section.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap for better separation */
+}
+
+/* Column styling for two-column sections */
+.column {
+    flex: 1;
+    min-width: 300px;
+    background: #fff;
+    padding: 25px; /* Increased padding for a spacious feel */
+    border-left: 12px solid #fdb515; /* Slightly wider yellow border for prominence */
+    border-radius: 0 12px 12px 0; /* Larger radius for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    position: relative;
+}
+
+.column::before {
+    content: '';
+    position: absolute;
+    left: -12px; /* Match border width */
+    top: 0;
+    width: 12px;
+    height: 100%;
+    background-color: #fdb515;
+    z-index: -1;
+}
+
+/* Section title styling */
+.section-title {
+    font-size: 28px; /* Slightly larger for prominence */
+    font-weight: bold;
+    color: #1d1d1d;
+    margin-bottom: 20px; /* More space below title */
+}
+
+/* Section content styling */
+.section-content {
+    font-size: 18px; /* Slightly larger for readability */
+    color: #1d1d1d;
+    text-align: justify;
+}
+
+.section-content ul {
+    list-style-type: disc;
+    padding-left: 25px; /* Increased indent for bullet points */
+    margin-top: 15px; /* More space above list */
+}
+
+.section-content li {
+    margin-bottom: 15px; /* Increased spacing between list items */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .alumni-container {
+        padding: 15px 10px; /* Reduced padding on mobile */
+    }
+
+    .alumni-section {
+        margin-bottom: 30px; /* Reduced spacing on mobile */
+    }
+
+    .alumni-section.two-column {
+        flex-direction: column;
+        gap: 20px; /* Reduced gap on mobile */
+    }
+
+    .column {
+        min-width: 100%;
+        padding: 15px; /* Reduced padding on mobile */
+        border-left: 10px solid #fdb515; /* Slightly smaller border on mobile */
+        border-radius: 0 8px 8px 0; /* Smaller radius on mobile */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Reduced shadow on mobile */
+    }
+
+    .column::before {
+        left: -10px; /* Match border width on mobile */
+        width: 10px;
+    }
+
+    .banner {
+        padding: 30px 10px; /* Reduced padding on mobile */
+        margin-bottom: 30px; /* Reduced margin on mobile */
+    }
+
+    .banner-title {
+        font-size: 28px; /* Slightly smaller on mobile */
+    }
+
+    .banner-subtitle {
+        font-size: 16px; /* Smaller on mobile */
+    }
+
+    .section-title {
+        font-size: 22px; /* Smaller on mobile */
+    }
+
+    .section-content {
+        font-size: 16px; /* Smaller on mobile */
+    }
+
+    .section-content ul {
+        padding-left: 20px; /* Reduced indent on mobile */
+    }
+
+    .section-content li {
+        margin-bottom: 10px; /* Reduced spacing on mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    .banner {
+        padding: 20px 5px; /* Further reduced padding on very small screens */
+    }
+}
