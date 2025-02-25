@@ -25,10 +25,10 @@
   }
 
 .iic-action-button{
-  /*color: black;*/
-  width: 300px;
-  height: 70px;
-  /*border: 1px solid #fdcc03;*/
+  /* color: black; */
+  width: 270px;
+  height: 68px;
+  border: 1px solid #fdcc03;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
   /* Style the heading inside functions-info-panel */
   .functions-info-panel h2 {
     font-size: 2rem; /* Increased font size for heading */
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
     /*color: #333;*/
   }
 
@@ -97,21 +97,9 @@
     max-width: 90%; /* Contains the text width for better readability */
   }
 
-  /* Add responsive adjustments */
-  @media (max-width: 768px) {
-    .functions-info-panel {
-      width: 90%;
-    }
-    
-    .functions-info-panel h2 {
-      font-size: 1.75rem;
-    }
-    
-    .functions-info-panel p {
-      font-size: 1.1rem;
-    }
+  .about-section h2{
+    margin-bottom: 10px;
   }
-
 
   .iic-header h1 {
     margin-bottom: 1.5rem;
@@ -141,19 +129,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
-  @media (max-width: 768px) {
-    .iic-cards {
-      grid-template-columns: 1fr; /* Stack cards in a single column on smaller screens */
-    }
-  }
-
-  @media (max-width: 480px) {
-    .iic-card {
-      padding: 0.75rem;
-    }
-  }
-
-
   .members {
     text-align: center;
     align-items: center;
@@ -161,7 +136,7 @@
     border-radius: 12px;
     width: 250px;
     height: auto;
-    padding: 1rem;
+    padding: 1.5rem;
     /*background: white;*/
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     margin: 0 auto;
@@ -280,29 +255,13 @@
     /*background: #fdb347;*/
   }
 
-  @media (max-width: 768px) {
-    .nir-buttons {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .faculty-icc {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .nir-buttons {
-      grid-template-columns: 1fr;
-    }
-  }
-
   .nir-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    align-items: center;
+    place-items: center;
     /*background: #f8f9fa;*/
   }
 
@@ -362,24 +321,8 @@
     animation: slide-in 0.8s ease-out;
   } 
 
-  @media (max-width: 480px) {
-    .nir-buttons {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
   .faculty-icc .members {
     margin-bottom: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .nir-buttons {
-      gap: 0.75rem;
-    }
-
-    .faculty-icc {
-      gap: 1rem;
-    }
   }
 
   .faculty-icc {
@@ -399,8 +342,9 @@
 
   .gallery {
     display: flex;
-    height: 30vh;
-    gap: 4rem;
+    height: 11rem;
+    gap: 2rem;
+    max-width: 100%; 
   }
 
    .iic-left,
@@ -408,7 +352,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    width: calc(50% - 2rem);
+    width: calc(50% - 1rem);
   }
 
   .inner {
@@ -484,4 +428,286 @@
 /* Ensure the nir-container sections fade in */
 .nir-container .nir-section {
   animation: fade-in 0.8s ease-out;
+}
+
+@media screen and (max-width: 1300px){
+  .nir-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 1050px){
+  .about-section{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .about-section .naac-info-panel, .about-section .iqac-info-panel {
+    max-width: none;
+    margin: 0 auto;
+  }
+  .functions-info-panel {
+    width: 90%;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    align-items: flex-start;
+  }
+
+  .functions-info-panel h2 {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    text-align: left;
+    margin-left: 0.9rem;
+  }  
+
+  .functions-info-panel p {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 920px){
+  .nir-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 840px){
+  .members-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .fuck{
+    width: 98%;
+    margin: 0 auto;
+    overflow-x : hidden;
+    border-radius: 13px;
+    padding: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (min-width: 615px) and (max-width: 768px){
+  .members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    height: 25vh; /* Reduce height */
+    gap: 3rem; /* Reduce gap */
+    transform: scale(0.8); /* 1.2 means 20% zoom-in */
+  }
+  .iic-faici{
+    font-size: 2rem;
+  }
+    /* Add responsive adjustments */
+  .functions-info-panel {
+    width: 90%;
+  }
+  
+  .functions-info-panel h2 {
+    font-size: 1.75rem;
+  }
+  
+  .functions-info-panel p {
+    font-size: 1.1rem;
+  }
+
+  .iic-cards {
+    grid-template-columns: 1fr; /* Stack cards in a single column on smaller screens */
+  }
+
+  .faculty-icc {
+    gap: 1rem;
+  }
+
+  .faculty-icc {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow-x: hidden;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .fuck{
+    width: 95%;
+  }
+}
+
+
+@media screen and (max-width: 550px){
+  .about-section h2{
+    font-size: 1.7rem;
+  }
+  .about-section p{
+    font-size: 1.rem;
+  }
+  
+  .functions-info-panel {
+    width: 90%;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    align-items: flex-start;
+  }
+
+  .functions-info-panel h2 {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    text-align: left;
+    margin-left: 0.9rem;
+    font-size: 1.5rem;
+  }  
+
+  .functions-info-panel p {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    font-size: 1.0rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    margin-left: 2.35rem;
+    transform: scale(0.7); /* 1.2 means 20% zoom-in */
+  }
+  .iic-faici{
+    font-size: 1.5rem;
+  }
+  .nir-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .iic-card {
+    padding: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 430px){
+  .about-section h2{
+    font-size: 1.4rem;
+  }
+  .about-section p{
+    font-size: 0.85rem;
+  }
+  .about-section .naac-info-panel, .about-section .iqac-info-panel{
+    padding: 1rem;
+  }
+  .about-section{
+    margin: 0;
+    padding: 1rem;
+  }
+  .functions-info-panel {
+    width: 90%;
+    padding: 1.2rem 0.85rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    align-items: flex-start;
+  }
+
+  .functions-info-panel h2 {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    text-align: left;
+    font-size: 1.4rem;
+  }  
+
+  .functions-info-panel p {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    font-size: 0.85rem;
+  }
+
+  .iic-action-button{
+    color: black;
+    width: 240px;
+    height: 61px;
+    font-size: 0.8rem;
+    /* background-color: black; */
+  }
+
+  .gallery{
+    max-height: 9rem;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .about-section h2{
+    font-size: 1.2rem;
+  }
+  .about-section p{
+    font-size: 0.7rem;
+  }
+  .about-section .naac-info-panel, .about-section .iqac-info-panel{
+    padding: 0.5rem;
+  }
+  .about-section{
+    margin: 0;
+    padding: 0.62rem;
+  }
+  .naac-info-panel {
+    border-left: 3px solid #3498db;
+  }
+  .iqac-info-panel {
+    border-left: 3px solid #e67e22;
+  }
+  .functions-info-panel {
+    width: 95%;
+    padding: 0.15rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    align-items: flex-start;
+    border-left: 3px solid #8b22e6;
+  }
+
+  .functions-info-panel h2 {
+    line-height: 1.5; /* Improved line height */
+    max-width: 95%;
+    text-align: left;
+    font-size: 1.1rem;
+    margin-bottom: -0.5rem;
+    margin-left: 0.1rem;
+  }  
+
+  .functions-info-panel p {
+    line-height: 1.4; /* Improved line height */
+    max-width: 95%;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 250px){
+  .about-section h2{
+    font-size: 1.15rem;
+  }
+  .about-section p{
+    font-size: 0.65rem;
+  }
+  .about-section .naac-info-panel, .about-section .iqac-info-panel{
+    padding: 0.4rem;
+  }
+  .about-section{
+    margin: 0;
+    padding: 0.5rem;
+  }
+
+  .functions-info-panel p {
+    line-height: 1.3; /* Improved line height */
+    max-width: 95%;
+    font-size: 0.65rem;
+  }
 }
