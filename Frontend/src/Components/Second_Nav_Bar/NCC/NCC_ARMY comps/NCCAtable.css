@@ -1,0 +1,148 @@
+/* NCC-A Table Styles */
+.NCC-A-table-container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Table Title */
+.NCC-A-table-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #222;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Table Wrapper */
+.NCC-A-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Table Styling */
+.NCC-A-ncc-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    table-layout: fixed; /* Keeps column width consistent */
+}
+
+/* Sticky Header */
+.NCC-A-ncc-table thead {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.NCC-A-ncc-table th {
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #0056b3;
+    white-space: nowrap; /* Prevents headers from wrapping */
+}
+
+/* Column Widths */
+.NCC-A-ncc-table th:nth-child(1), 
+.NCC-A-ncc-table td:nth-child(1) { width: 8%; } /* S.NO */
+.NCC-A-ncc-table th:nth-child(2), 
+.NCC-A-ncc-table td:nth-child(2) { width: 12%; } /* RANK */
+.NCC-A-ncc-table th:nth-child(3), 
+.NCC-A-ncc-table td:nth-child(3) { width: 25%; } /* NAME */
+.NCC-A-ncc-table th:nth-child(4), 
+.NCC-A-ncc-table td:nth-child(4) { width: 20%; } /* REGIMENTAL NO */
+.NCC-A-ncc-table th:nth-child(5), 
+.NCC-A-ncc-table td:nth-child(5) { width: 15%; } /* BRANCH */
+.NCC-A-ncc-table th:nth-child(6), 
+.NCC-A-ncc-table td:nth-child(6) { width: 20%; } /* REGISTER NO */
+
+/* Table Body */
+.NCC-A-ncc-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    word-wrap: break-word; /* Ensures text wraps inside the cell */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Truncates overflow text with ellipsis */
+}
+
+/* Alternate Row Colors */
+.NCC-A-ncc-table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+/* Hover Effect */
+.NCC-A-ncc-table tbody tr:hover {
+    background-color: #e9ecef;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Responsive Table for Small Screens */
+@media (max-width: 1024px) {
+    .NCC-A-table-container {
+        width: 95%;
+    }
+
+    .NCC-A-table-title {
+        font-size: 1.5rem;
+    }
+
+    .NCC-A-ncc-table {
+        font-size: 0.9rem;
+    }
+
+    .NCC-A-ncc-table th,
+    .NCC-A-ncc-table td {
+        padding: 10px;
+    }
+}
+
+/* Fully Responsive Table for Mobile (Without Block View) */
+@media (max-width: 768px) {
+    .NCC-A-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .NCC-A-ncc-table {
+        font-size: 0.85rem;
+    }
+
+    .NCC-A-table-title {
+        font-size: 1.3rem;
+    }
+
+    .NCC-A-ncc-table th,
+    .NCC-A-ncc-table td {
+        padding: 8px;
+        font-size: 0.8rem;
+        white-space: nowrap; /* Prevent text wrapping on small screens */
+    }
+}
+
+/* Mobile View - Table Structure with Horizontal Scrolling */
+@media (max-width: 600px) {
+    .NCC-A-ncc-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .NCC-A-ncc-table {
+        font-size: 0.75rem;
+        width: 100%;
+    }
+
+    .NCC-A-ncc-table th,
+    .NCC-A-ncc-table td {
+        padding: 8px;
+    }
+}

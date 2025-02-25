@@ -1,0 +1,318 @@
+/* NCC_NAVY Container */
+.NCC_NAVY-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Content Wrapper */
+.NCC_NAVY-content-wrapper {
+  background: #fff;
+  padding: 30px;
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Title Styling */
+.NCC_NAVY-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  animation: slideInRight 1s ease-out;
+}
+
+/* Section Styling */
+.NCC_NAVY-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Section Title */
+.NCC_NAVY-section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1a5276;
+  padding-left: 15px;
+  border-bottom: 3px solid #fdb515;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  animation: slideInRight 1s ease-out;
+}
+
+/* List Styling */
+.NCC_NAVY-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.NCC_NAVY-list li {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.NCC_NAVY-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #1a5276;
+  font-size: 1.5rem;
+}
+
+/* Row Layout */
+.NCC_NAVY-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.NCC_NAVY-row .NCC_NAVY-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Aim Section (Separate Box) */
+.NCC_NAVY-aim-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideInLeft 1s ease-out;
+}
+
+.NCC_NAVY-aim {
+  padding: 20px;
+}
+
+.NCC_NAVY-heading {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #154360;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #fdb515;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.NCC_NAVY-icon {
+  width: 60px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.NCC_NAVY-aimcontent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* Motto & Pledge Section */
+.NCC_NAVY-motto-pledge-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  min-width: 200px;
+}
+
+.NCC_NAVY-motto,
+.NCC_NAVY-pledge {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 200px;
+  animation: slideInRight 1s ease-out;
+}
+
+/* Common Content Style */
+.NCC_NAVY-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+      opacity: 0;
+      transform: translateX(100%);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* NCC_NAVY Profile Section */
+.NCC_NAVY-profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin: 50px auto;
+  border-left: 5px solid orange;
+  animation: slideInLeft 1s ease-out;
+}
+
+.NCC_NAVY-profile-photo {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NCC_NAVY-profile-photo img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.NCC_NAVY-profile-content {
+  flex: 1;
+  text-align: left;
+}
+
+.NCC_NAVY-profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-decoration: underline orange;
+}
+
+.NCC_NAVY-profile-position {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 15px;
+  text-decoration: underline orange;
+}
+
+.NCC_NAVY-profile-bio {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+/* Tablet View (up to 1024px) */
+@media screen and (max-width: 1024px) {
+  .NCC_NAVY-container {
+      max-width: 95%;
+      padding: 15px;
+  }
+
+  .NCC_NAVY-row {
+      gap: 20px;
+  }
+
+  .NCC_NAVY-title {
+      font-size: 2.5rem;
+  }
+
+  .NCC_NAVY-section-title,
+  .NCC_NAVY-heading {
+      font-size: 1.8rem;
+  }
+
+  .NCC_NAVY-content {
+      font-size: 1rem;
+  }
+
+  .NCC_NAVY-profile-container {
+      width: 90%;
+      gap: 20px;
+      padding: 15px;
+  }
+
+  .NCC_NAVY-profile-photo img {
+      width: 200px;
+      height: 280px;
+  }
+}
+
+/* Mobile View (up to 768px) */
+@media screen and (max-width: 768px) {
+  .NCC_NAVY-container {
+      padding: 10px;
+  }
+
+  .NCC_NAVY-row,
+  .NCC_NAVY-motto-pledge-container {
+      flex-direction: column;
+      min-width: 200px;
+  }
+
+  .NCC_NAVY-profile-container {
+      flex-direction: column;
+      width: 100%;
+      gap: 15px;
+      padding: 10px;
+  }
+
+  .NCC_NAVY-profile-photo img {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+  }
+
+  .NCC_NAVY-profile-content {
+      text-align: center;
+  }
+}
+
+/* Small Mobile View (up to 480px) */
+@media screen and (max-width: 480px) {
+  .NCC_NAVY-container {
+      padding: 5px;
+  }
+
+  .NCC_NAVY-title {
+      font-size: 1.8rem;
+  }
+
+  .NCC_NAVY-section-title,
+  .NCC_NAVY-heading {
+      font-size: 1.4rem;
+  }
+
+  .NCC_NAVY-profile-photo img {
+      width: 190px;
+      height: 250px;
+  }
+
+  .NCC_NAVY-profile-name {
+      font-size: 18px;
+  }
+
+  .NCC_NAVY-profile-bio {
+      font-size: 13px;
+  }
+}
