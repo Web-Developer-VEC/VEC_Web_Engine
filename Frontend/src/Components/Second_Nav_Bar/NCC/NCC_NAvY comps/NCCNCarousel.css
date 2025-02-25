@@ -1,0 +1,132 @@
+/* Carousel Wrapper */
+.ncc-carousel-wrap {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Carousel Inner Container */
+.ncc-carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Slide */
+.ncc-carousel-slide {
+    min-width: 100%;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image Styling */
+.ncc-carousel-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Text Overlay */
+.ncc-carousel-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    max-width: 300px;
+}
+
+/* Carousel Buttons */
+.ncc-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.ncc-carousel-btn-left {
+    left: 10px;
+}
+
+.ncc-carousel-btn-right {
+    right: 10px;
+}
+
+/* Hover Effects */
+.ncc-carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots Indicator */
+.ncc-carousel-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.ncc-dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.ncc-dot.active {
+    background: #fdb515;
+}
+
+/* Responsive for Tablets */
+@media (max-width: 1024px) {
+    .ncc-carousel-slide img {
+        height: 65vh;
+    }
+}
+
+/* Responsive for Mobile Devices */
+@media (max-width: 768px) {
+    .ncc-carousel-slide img {
+        height: auto; /* Maintain aspect ratio */
+        width: 100vw;
+        transform: translateY(-15px); /* Move image slightly higher */
+    }
+
+    /* Move text below the image */
+    .ncc-carousel-text {
+        position: relative; /* Remove absolute positioning */
+        bottom: auto;
+        right: auto;
+        background: none; /* Remove background */
+        color: black; /* Change text color for visibility */
+        font-size: 14px;
+        max-width: 100%;
+        padding: 10px;
+        text-align: center; /* Center text */
+    }
+}
+
+/* Fully Responsive for Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .ncc-carousel-slide img {
+        transform: translateY(-20px); /* Move image a bit higher */
+    }
+
+    .ncc-carousel-text {
+        font-size: 12px; /* Slightly smaller text */
+        padding: 8px;
+    }
+}
