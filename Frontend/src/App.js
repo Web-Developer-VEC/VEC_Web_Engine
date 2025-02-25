@@ -49,8 +49,9 @@ import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
 import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";
-import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx"
-import YRC from "./Components/Second_Nav_Bar/YRC.jsx"
+import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
+import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
+import YRC from "./Components/Second_Nav_Bar/YRC.jsx";
 import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Transport from "./Components/Second_Nav_Bar/Transport/Transport.jsx"
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
@@ -152,6 +153,7 @@ const App = () => {
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
+                                <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/trans" drk element={<Transport/>}/>
