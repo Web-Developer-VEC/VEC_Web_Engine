@@ -408,7 +408,7 @@ const Head = () => {
                     <button onClick={() => navigate('/nirf')} className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
                     <button onClick={() => navigate('/iic')} className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
                     <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[7]}</p>
+                    <button onClick={() => navigate('/alumni')} className=' mt-1 h-fit md:block hidden'>{hdrs[7]}</button>
                     <button onClick={() => navigate('/NSS')} className=' mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
                     <button onClick={() => navigate('/NCC')} className=' mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
                     <button onClick={() => navigate('/YRC')} className=' mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
@@ -419,8 +419,9 @@ const Head = () => {
                     <button onClick={() => navigate('/other-facilities')} className=' mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
                     <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
-                    <p className='truncate mt-1 h-fit md:block hidden rounded-full
-                        bg-text dark:bg-drkt text-secd dark:text-drks px-2'>{hdrs[18]}</p>
+                    <button className='truncate mt-1 h-fit md:block hidden rounded-full
+                        bg-text dark:bg-drkt text-secd dark:text-drks px-2' onClick={() => navigate('/https://easycollege.in/vecengg/college/webpayindex.aspx')}>{hdrs[18]}</button>
+                    
                     <div className={`flex group items-center justify-end grow gap-3`}>
                         {socls.map((socl, i) => (
                             <a href={socl.Link} key={i}><img src={socl.Ico} alt={socl.Name}
