@@ -49,6 +49,7 @@ import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
 import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import Incubation from "./Components/Second_Nav_Bar/InCub.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
 import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
@@ -153,6 +154,7 @@ const App = () => {
                                 <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/incubation" drk element={<Incubation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>

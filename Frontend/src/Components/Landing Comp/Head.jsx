@@ -407,7 +407,7 @@ const Head = () => {
                     <button onClick={() => navigate('/naac')} className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
                     <button onClick={() => navigate('/nirf')} className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
                     <button onClick={() => navigate('/iic')} className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
-                    <p className='truncate mt-1 h-fit md:block hidden'>{hdrs[6]}</p>
+                    <button onClick={() => navigate('/incubation')} className=' mt-1 h-fit md:block hidden'>{hdrs[6]}</button>
                     <button onClick={() => navigate('/alumni')} className=' mt-1 h-fit md:block hidden'>{hdrs[7]}</button>
                     <button onClick={() => navigate('/NSS')} className=' mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
                     <button onClick={() => navigate('/NCC')} className=' mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
