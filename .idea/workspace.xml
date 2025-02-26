@@ -5,26 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Assets/announce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/public/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Assets/MsmeLtr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Assets/msme.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/InCub.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/About.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Banner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Banner.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Courses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Courses.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Events.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Events.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Events.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Events.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/announcements.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/DepartmentPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/DepartmentPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/ImageCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/ImageCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/activities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/activities.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Dean.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Dean.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/dean.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/dean.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
     </list>
@@ -63,21 +55,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Forked-Up&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Forked-Up",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Leroy\ReactProjects\CoolVec\Frontend\src\Components\Assets" />
@@ -122,7 +114,13 @@
       <workItem from="1739417183997" duration="8890000" />
       <workItem from="1739439866089" duration="317000" />
       <workItem from="1740039987128" duration="6919000" />
-      <workItem from="1740108255993" duration="10712000" />
+      <workItem from="1740108255993" duration="11017000" />
+      <workItem from="1740125761630" duration="235000" />
+      <workItem from="1740368423172" duration="18963000" />
+      <workItem from="1740456459237" duration="3195000" />
+      <workItem from="1740460793673" duration="15509000" />
+      <workItem from="1740488498452" duration="637000" />
+      <workItem from="1740540725995" duration="4023000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />

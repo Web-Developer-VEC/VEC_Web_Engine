@@ -28,7 +28,7 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
                     <div className="event-row department-name bg-prim dark:bg-drkp text-xl">{event.department}</div>
                     <div className="event-row description text-md/2 line-clamp-2">{event.content}</div>
                     <div className="event-footer">
-                        <div className="event-row text-accn dark:text-drka duration">
+                        <div className="event-row text-accn dark:text-drka duration font-semibold">
                             <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
                         </div>
                         <div className="event-row links">

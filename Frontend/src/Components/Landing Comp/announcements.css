@@ -138,23 +138,23 @@
 
 .tiles .card-front h4:hover {
   transform: scale(1.05); /* Zoom in effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); !* Shadow effect *!*/
 }
 
 .tiles .card-back h4:hover {
   transform: scale(1.05); /* Zoom in effect */
-  box-shadow: 0 4px 8px rgba(231, 252, 0, 0.3); /* Shadow effect */
+  /*box-shadow: 0 4px 8px rgba(231, 252, 0, 0.3); !* Shadow effect *!*/
 }
 
 .announcement .card-front {
-  background: linear-gradient(290deg, rgb(239, 59, 59), yellow, orange);
+  /*background: linear-gradient(290deg, rgb(239, 59, 59), yellow, orange);*/
   color: #5b44a8;
   animation: gradientAnimation 9s ease infinite;
   background-size: 400% 400%;
 }
 
 .announcement .card-back {
-  background: linear-gradient(72deg, rgba(255, 0, 0, 0.74), rgba(255, 255, 0, 0.729), rgb(197, 136, 23));
+  /*background: linear-gradient(72deg, rgba(255, 0, 0, 0.74), rgba(255, 255, 0, 0.729), rgb(197, 136, 23));*/
   color: #a02a2a;
   transform: rotateY(180deg);
   background-size: 400% 400%;

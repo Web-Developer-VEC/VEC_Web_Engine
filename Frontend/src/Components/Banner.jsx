@@ -23,7 +23,7 @@ const Banner = ({ backgroundImage, headerText, subHeaderText, toggle, theme }) =
 
           {/* Overlay */}
           <div className="banner-overlay z-[50] right-1">
-              <Toggle attr="float-right -top-[30%] lg:-top-[0%] right-24" toggle={toggle} theme={theme} />
+              <Toggle attr="float-right -top-[30%] lg:-top-[0%] mr-24" toggle={toggle} theme={theme} />
           </div>
 
           {/* Content with unique layout */}
