@@ -95,7 +95,9 @@ const ImgSld = ({load, toggle, theme}) => {
                         {lst.map((elm, i) => (
                             <p className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] translate-x-[-40vmax] 
                                 animate-[LslideIn_40s_ease-in_infinite] px-4 py-[4vw] border-y-2 line-clamp-2 
-                                lg:line-clamp-none [border-image:linear-gradient(to_right,#d96402,#efa249,#d96402)_1] 
+                                lg:line-clamp-none 
+                                [border-image:linear-gradient(to_right,theme(colors.secd),theme(colors.accn),theme(colors.secd))_1] 
+                                dark:[border-image:linear-gradient(to_right,theme(colors.drks),theme(colors.drka),theme(colors.drks))_1] 
                                 bg-[#0000001a] backdrop-blur-[0px] text-white text-[125%]`}
                                style={{animationDelay: `${i * 7}s`}}
                                key={i}>{elm}

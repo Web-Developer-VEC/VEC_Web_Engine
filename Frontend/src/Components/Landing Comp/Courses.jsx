@@ -65,7 +65,10 @@ const CourseCarousel = ({ courses }) => {
           <button
             className="rounded-full absolute top-[50%] left-[2vw] transform -translate-y-1/2 w-[3vmax] z-[500]
               outline outline-offset-2 h-[7.5vmax] ease-in transition-colors duration-300
-              outline-[color-mix(in_srgb,theme(colors.accn)_70%,black)] bg-[color-mix(in_srgb,theme(colors.accn)_70%,black)]"
+              outline-[color-mix(in_srgb,theme(colors.accn)_70%,black)]
+              bg-[color-mix(in_srgb,theme(colors.accn)_70%,black)]
+              dark:outline-[color-mix(in_srgb,theme(colors.drka)_70%,black)]
+              dark:bg-[color-mix(in_srgb,theme(colors.drka)_70%,black)]"
             // style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos - 1)}>
             <ChevronLeftIcon className="size-max text-white"></ChevronLeftIcon>
@@ -93,7 +96,8 @@ const CourseCarousel = ({ courses }) => {
 
                 <div className="grid content-end w-full h-full z-[40] text-white text-[2vmax] group-hover:[transform:translateZ(500px)]
                   translate-y-[20vmax] delay-200 group-[.focs]:translate-y-0 duration-300 ease transition-all p-2
-                  bg-gradient-to-t from-[color-mix(in_srgb,theme(colors.accn)_69%,black)] via-transparent via-45 to-transparent"
+                  bg-gradient-to-t from-[color-mix(in_srgb,theme(colors.accn)_69%,black)]
+                  dark:from-[color-mix(in_srgb,theme(colors.drka)_50%,black)] via-transparent via-35 to-transparent"
                   // style={{ background: `linear-gradient(to top, ${cur.clr}, ${cur.clr}00 55%)` }}
                 >{cur.name}
                 </div>
@@ -105,7 +109,10 @@ const CourseCarousel = ({ courses }) => {
           <button
             className="rounded-full absolute top-[50%]  z-[50] right-[2vw] transform -translate-y-1/2 w-[3vmax]
             outline outline-offset-2 h-[7.5vmax] ease-in transition-colors duration-300
-            outline-[color-mix(in_srgb,theme(colors.accn)_70%,black)] bg-[color-mix(in_srgb,theme(colors.accn)_70%,black)]"
+            outline-[color-mix(in_srgb,theme(colors.accn)_70%,black)]
+            bg-[color-mix(in_srgb,theme(colors.accn)_70%,black)]
+            dark:outline-[color-mix(in_srgb,theme(colors.drka)_70%,black)]
+            dark:bg-[color-mix(in_srgb,theme(colors.drka)_70%,black)]"
             // style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos + 1)}>
             <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
@@ -115,8 +122,10 @@ const CourseCarousel = ({ courses }) => {
         <div className="flex flex-wrap px-12 mb-4 justify-center gap-4 w-screen lg:mt-2">
           {rdb.map((btn, i) => (
             <button key={i} className={`font-comf text-[1.25rem] px-2 
-              text-[color-mix(in_srgb,theme(colors.accn)_70%,black)] font-bold dark:text-drks   
-              border-[color-mix(in_srgb,theme(colors.accn)_70%,black)] dark:border-drks ${(pos === i + 1) ? 'border-b-2' 
+              text-[color-mix(in_srgb,theme(colors.accn)_70%,black)] font-bold   
+              border-[color-mix(in_srgb,theme(colors.accn)_70%,black)]
+              dark:text-[color-mix(in_srgb,theme(colors.drka)_70%,black)]
+              dark:border-[color-mix(in_srgb,theme(colors.drka)_70%,black)] ${(pos === i + 1) ? 'border-b-2' 
                 : ''}`}
               // style={{ color: btn.clr, borderBottomColor: btn.clr }}
               type="button" name="pos" onClick={() => { pos_hdl(i + 1) }}>
