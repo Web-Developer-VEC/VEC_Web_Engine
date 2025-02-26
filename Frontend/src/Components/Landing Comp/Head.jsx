@@ -419,8 +419,8 @@ const Head = () => {
                     <button onClick={() => navigate('/other-facilities')} className=' mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
                     <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
-                    <button className='truncate mt-1 h-fit md:block hidden rounded-full
-                        bg-text dark:bg-drkt text-secd dark:text-drks px-2' onClick={() => navigate('/https://easycollege.in/vecengg/college/webpayindex.aspx')}>{hdrs[18]}</button>
+                    <a href='https://easycollege.in/vecengg/college/webpayindex.aspx' target='__blank'><button className='truncate mt-1 h-fit md:block hidden rounded-full
+                        bg-text dark:bg-drkt text-secd dark:text-drks px-2' >{hdrs[18]}</button></a>
                     
                     <div className={`flex group items-center justify-end grow gap-3`}>
                         {socls.map((socl, i) => (

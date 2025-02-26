@@ -11,7 +11,7 @@ const Login = () => {
           <h1>Are you a Student?</h1>
           <h5>Login Using this button</h5>
           <div className="student-login-button">
-            <a className="fancy" href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/">
+            <a className="fancy" href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target='__blank'>
               <span className="top-key"></span>
               <span className="text">Click Here</span>
               <span className="bottom-key-1"></span>
@@ -41,7 +41,7 @@ const Login = () => {
             <h1>Are you a Faculty?</h1>
             <h5>Login Using this button</h5>
             <div className="faculty-login-button">
-              <a className="fancy text-black" href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/">
+              <a className="fancy text-black" href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target='__blank'>
                 <span className="top-key"></span>
                 <span className="text">CLICK HERE</span>
                 <span className="bottom-key-1"></span>
