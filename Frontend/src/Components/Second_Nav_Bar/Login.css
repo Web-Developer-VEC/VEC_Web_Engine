@@ -16,11 +16,11 @@
 }
    
 .student-login-container .fancy:hover .text{
-    color: black;
+    /*color: black;*/
 }
 
 .student-login-container h1, .student-login-container h5{
-    color: black;
+    /*color: black;*/
 }
 
 /* Container */
@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-color: white;
+    /*background-color: white;*/
     border: none;
     outline: none;
 }
@@ -51,9 +51,9 @@
   
   .student-login-container {
     position: relative;
-    width: 430px;
+    /*width: 430px;*/
     padding: 3em;
-    color: #fff;
+    /*color: #fff;*/
     transform: rotateY(5deg) rotateX(2.5deg);
     transform-style: preserve-3d;
     transition: transform 1s;
@@ -65,9 +65,9 @@
   
   .faculty-login-container {
     position: relative;
-    width: 430px;
+    /*width: 430px;*/
     padding: 3em;
-    color: black;
+    /*color: black;*/
     transform: rotateY(4deg) rotateX(2deg);
     transform-style: preserve-3d;
     transition: transform 1s;
@@ -95,11 +95,11 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-color: white;
+    /*background-color: white;*/
 }
 
 .faculty-login-container h5 {
-    color: black;
+    /*color: black;*/
 }
 
 .student-login-container, .faculty-login-container {
@@ -149,7 +149,7 @@
 
 /* Student Button */
 .student-login-container .fancy {
-    background: rgb(250, 204, 21);
+    /*background: rgb(250, 204, 21);*/
 }
 
 .student-login-container .fancy::before {
@@ -257,7 +257,7 @@
   }
   
   .card-container:nth-child(2) {
-    --bi: linear-gradient(#555 5em, transparent 3em), linear-gradient(60deg, #880E4F, #1A237E);
+    /*--bi: linear-gradient(#555 5em, transparent 3em), linear-gradient(60deg, #880E4F, #1A237E);*/
   }
   
   /* Layered 3D Effect */
@@ -303,7 +303,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-color: #fff; /* Initial Yellow */
+    /*background-color: #fff; !* Initial Yellow *!*/
     border: none;
     outline: none;
     overflow: hidden; /* Ensure background stays within container */
@@ -356,7 +356,7 @@
     right: -50px;
     width: 100px;
     height: 100px;
-    background-color: rgb(250, 204, 21); /* Set initial color */
+    /*background-color: rgb(250, 204, 21); !* Set initial color *!*/
     border-radius: 50%;
     z-index: 0;
     transition: transform 0.8s ease-in-out, background-color 0.8s ease-in-out; /* Smooth transition */
@@ -366,7 +366,7 @@
 /* Hover Effect */
 .student-login-container:hover .student-login-bg {
     transform: scale(15);
-    background-color: rgb(250, 204, 21); /* Ensure transition applies smoothly */
+    /*background-color: rgb(250, 204, 21); !* Ensure transition applies smoothly *!*/
 }
 
 /* Reverse Animation on Mouse Leave */
@@ -389,13 +389,13 @@
 
 .faculty-login-container:hover, .faculty-login-bg{
     transition: color 0.25s ease-in-out 0.25s; /* Smooth color transition */
-    background-color: rgb(250, 204, 21);
+    /*background-color: rgb(250, 204, 21);*/
 }
 
 /* Faculty Card */
 .faculty-login-container:hover h1, 
 .faculty-login-container:hover h5 {
-    color: white;
+    /*color: white;*/
     transition: color 0.25s ease-in-out 0.25s; /* Smooth color transition */
 }
 
@@ -408,7 +408,7 @@
 /* Student Card */
 .student-login-container:hover h1, 
 .student-login-container:hover h5 {
-    color: white;
+    /*color: white;*/
     transition: color 0.25s ease-in-out 0.25s;
 }
 

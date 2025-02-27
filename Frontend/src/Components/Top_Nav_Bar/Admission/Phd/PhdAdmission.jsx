@@ -15,40 +15,44 @@ const PhdAdmission = ({theme, toggle}) => {
       />
       <div class="phd">
         <div className="contain">
-          <div className="card left1">
+          <div className="p-4 left1 border-l-8 border-secd dark:border-drks rounded-xl
+            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)] hover:scale-105
+            dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
             <h1>
               In Velammal Engineering College the following departments are
               recognized research centers of Anna University, Chennai
             </h1>
             <span className="phd-dep">
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Computer Science and Engineering
               </p>
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Information Technology
               </p>
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Electronics and Communication Engineering
               </p>
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Electrical and Electronics Engineering
               </p>
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Mechanical Engineering
               </p>
               <p>
-                <img src={point} alt="" className="phd-logo" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Physics
               </p>
             </span>
           </div>
 
-          <div className="card right1">
+          <div className="p-4 right1 border-l-8 p-4 border-secd dark:border-drks rounded-xl
+            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)] hover:scale-105
+            dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
             <h1>PhD (Research) Admission Process & Eligibility</h1>
             <span className="span">
               <p className="chase">

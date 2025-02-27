@@ -119,7 +119,7 @@ const AnimatedCard = ({ event, handleViewMore }) => {
       <img src={event.image_path} alt="Event" className="card-image" />
       <div className="card-details">
         <p className="card-date">{event.date}</p>
-        <h3 className="my-2 text-xl text-accn">{event.name_of_event}</h3>
+        <h3 className="my-2 text-xl text-accn dark:text-drka">{event.name_of_event}</h3>
         <p className="card-coordinator">Coordinator: {event.coordinator}</p>
         <button onClick={() => handleViewMore(event)} className="activities-view-more-btn mt-3
           bg-secd text-text dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka">

@@ -15,13 +15,16 @@ const Collegevisionmission = ({theme, toggle}) => {
       <div className={`${styles.clgvisioncard} mx-4`}>
         <div className="row g-4">
           {/* Vision Section */}
-          <div className="col-md-6 d-flex align-items-stretch">
-            <div className={`${styles.sectioncard} shadow-lg rounded`}>
+          <div className="col-md-6 d-flex align-items-stretch justify-content-center">
+            <div className={`${styles.sectioncard} lg:max-w-[35vw] 
+              bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+              dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
+              shadow-lg rounded`}>
               <div className="d-flex align-items-center mb-3">
                 <Eye size={32} className="text-white-500 me-3" /> {/* Vision Icon */}
                 <h2 className="mb-0">Institute Vision</h2>
               </div>
-              <p className="text-gray-600 h-full">
+              <p className="text-text dark:text-drkt h-full">
                 To educate the student community both by theory and practice to
                 fit in with society and to conquer tomorrow’s technology at a
                 global level with human values through our dedicated team.
@@ -30,13 +33,16 @@ const Collegevisionmission = ({theme, toggle}) => {
           </div>
 
           {/* Mission Section */}
-          <div className="col-md-6 d-flex align-items-stretch">
-            <div className={`${styles.sectioncard} p-4 shadow-lg rounded`}>
+          <div className="col-md-6 d-flex align-items-stretch justify-content-center">
+            <div className={`${styles.sectioncard} lg:max-w-[35vw] 
+              bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+              dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
+              p-4 shadow-lg rounded`}>
               <div className="d-flex align-items-center mb-3">
                 <Target size={32} className="text-white-500 me-3" /> {/* Mission Icon */}
                 <h2 className="mb-0">Institute Mission</h2>
               </div>
-              <p className="text-gray-600">
+              <p className="text-text dark:text-drkt">
                 To provide world-class education in engineering, technology, and
                 management, to foster research & development, to encourage
                 creativity and promote innovation, to build leadership,

@@ -74,7 +74,7 @@ function Syllabus({theme, toggle}) {
     <motion.div key={year} variants={itemVariants} className="w-full">
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
-          <div className="flex items-center gap-3 mb-4 text-secd dark:text-drks">
+          <div className="flex items-center gap-3 mb-4 text-accn dark:text-drka">
             <Calendar className="w-6 h-6" />
             <h2 className="text-xl sm:text-2xl font-bold">{data.year}</h2>
           </div>

@@ -26,13 +26,13 @@ const AbtUs = ({theme, toggle}) => {
             <div className='flex m-8'>
                 <div className='flex relative w-full max-h-[100vh]'>
                     <div className="relative grow p-4 font-popp mt-14 basis-3/4 z-10
-                        bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0">
+                        bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                         <p className='text-3xl text-left mb-4'>{secHdr}</p>
                         <p className='text-3xl text-center font-rome'>{secTtl}</p>
                         <p className='text-lg font-bold text-accn dark:text-drka text-center'>{secSub}</p>
                         <p className="text-2xl text-center mt-4">{secCnt}</p>
                     </div>
-                    <div className='absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[25%] lg:left-0 lg:top-10
+                    <div className='absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
                         opacity-30 lg:opacity-100'>
                         <img className='absolute w-[40%] h-[65%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]'
                              src={Bannerimg} alt="Banner Image0"/>
@@ -48,10 +48,11 @@ const AbtUs = ({theme, toggle}) => {
             </div>
             {lis.map((itm) => (
                 <div className="flex gap-8 my-14 border-y-4 border-secd dark:border-drks
-                    bg-[color-mix(in_srgb,theme(colors.secd)_15%,white)] dark:bg-[color-mix(in_srgb,theme(colors.drks)_15%,white)]
+                    bg-[color-mix(in_srgb,theme(colors.secd)_15%,white)]
+                    dark:bg-[color-mix(in_srgb,theme(colors.drks)_30%,black)]
                     p-10 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out">
                     <div className="flex flex-col justify-center px-2 lg:px-12">
-                        <p className="text-lg lg:text-2xl text-center text-text font-popp
+                        <p className="text-lg lg:text-2xl text-center font-popp
                         leading-relaxed tracking-wide">
                             {itm}
                         </p>

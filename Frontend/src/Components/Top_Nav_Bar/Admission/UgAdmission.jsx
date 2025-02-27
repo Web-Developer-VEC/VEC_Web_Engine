@@ -27,8 +27,8 @@ const UgAdmission = ({theme, toggle}) => {
 
   const renderTable = (data, title, subtitle) => (
     <div className="table-container">
-      <h4 className="text-secd dark:text-drks">{title}</h4>
-      <h6 className="text-secd dark:text-drks">{subtitle}</h6>
+      <h4 className="text-accn dark:text-drka">{title}</h4>
+      <h6 className="text-accn dark:text-drka">{subtitle}</h6>
       <div className="table-card">
         <table className="styled-table">
           <thead>
@@ -81,10 +81,11 @@ const UgAdmission = ({theme, toggle}) => {
           </div>
         )}
         <div className="B-E">
-          <h3 className="text-secd dark:text-drks">B.E./B.Tech. Degree Programme</h3>
+          <h3 className="text-accn dark:text-drka">B.E./B.Tech. Degree Programme</h3>
         </div>
 
-        <div className="ADM-content dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+        <div className="ADM-content bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <p className="description-text">
             Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
           </p>
@@ -95,8 +96,9 @@ const UgAdmission = ({theme, toggle}) => {
           {renderTable(ug, `UG COURSES - TOTAL INTAKE ${year}`, "(For First Year Admissions)")}
         </div>
 
-        <div className="ADM-content lateral-entry dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-          <h5 className="text-secd dark:text-drks">Lateral Entry Admission</h5>
+        <div className="ADM-content lateral-entry bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <h5 className="text-accn dark:text-drka">Lateral Entry Admission</h5>
           <p className="description-text">
             Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
           </p>

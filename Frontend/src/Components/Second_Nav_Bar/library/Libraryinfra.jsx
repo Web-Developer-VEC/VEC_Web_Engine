@@ -7,8 +7,7 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const LibrarySections = ({faculty, collection, membership}) => {
-  
+const LibrarySections = () => {
   const sections = [
     {
       title: "The Ground Floor",
@@ -74,8 +73,8 @@ const LibrarySections = ({faculty, collection, membership}) => {
       items: ["E-Journals", "E-books", "DELNET", "NPTEL", "NDL"],
     },
   ];
-  
- 
+
+
   const generalInstructions = [
     "Students can obtain membership cards by showing their ID cards with barcodes.",
     "Members should sign in at the entrance to accept library rules.",
@@ -107,7 +106,7 @@ const LibrarySections = ({faculty, collection, membership}) => {
     "/static/Images/EEE.jpeg",
     "/static/Images/EIE.jpeg",
   ];
-  
+
   const librarySections = [
     {
       title: "ACQUISITION SECTION",
@@ -189,7 +188,7 @@ const ImageGallery = [
         image: "https://velammal.edu.in/wp-content/uploads/2022/04/internet-cd.jpg",
       },
     ];
-  
+
 
     const facultyData = [
         {
@@ -293,15 +292,16 @@ const ImageGallery = [
       const toggleSection = (index) => {
         setOpenSection(openSection === index ? null : index);
       };
-    
+
   return (
     <>
-<div className="min-h-screen bg-gradient-to-r from-yellow-50 to-white p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
+<div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
   <div className="max-w-7xl mx-auto flex gap-4 justify-center">
     {sections.map((section, index) => (
       <motion.div
         key={index}
-        className="flex flex-col bg-white rounded-xl shadow-md overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
+        className="flex flex-col rounded-xl shadow-md overflow-hidden cursor-pointer transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+        transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -316,8 +316,8 @@ const ImageGallery = [
           />
         </div>
         <div className="p-4 sm:p-5 space-y-3 sm:space-y-5">
-          <h2 className="text-xl sm:text-2xl font-semibold text-yellow-700">{section.title}</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-gray-800">
+          <h2 className="text-xl sm:text-2xl font-semibold text-accn dark:text-drka">{section.title}</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
             {section.items.map((item, i) => (
               <motion.li
                 key={i}
@@ -327,7 +327,7 @@ const ImageGallery = [
                 transition={{ delay: (i % 5) * 0.08 }}
                 viewport={{ once: true }}
               >
-                <span className="w-2 h-2 bg-yellow-700 rounded-full"></span>
+                <span className="w-2 h-2 bg-secd dark:bg-drks rounded-full"></span>
                 <span>{item}</span>
               </motion.li>
             ))}
@@ -343,24 +343,26 @@ const ImageGallery = [
   {additionalSections.map((section, index) => (
     <motion.div
       key={index}
-      className="p-4 sm:p-6 md:p-8 bg-white rounded-2xl shadow-md sm:shadow-lg text-center transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-yellow-50"
+      className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+       transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+        dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-600 mb-4 sm:mb-6">{section.category}</h2>
-      <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg text-gray-800">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">{section.category}</h2>
+      <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
         {section.items.map((item, i) => (
           <motion.li
             key={i}
-            className="flex items-center space-x-2 sm:space-x-3 hover:text-yellow-600 transition-colors duration-300"
+            className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 rounded-full"></span>
+            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
             <span className="text-start">{item}</span>
           </motion.li>
         ))}
@@ -372,21 +374,26 @@ const ImageGallery = [
 
     </div>
 
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-white py-10 px-4 sm:px-6 flex flex-col items-center">
-  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-600 mb-6 sm:mb-10">GENERAL INSTRUCTIONS</h2>
+    <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center">
+  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drka mb-6 sm:mb-10">GENERAL INSTRUCTIONS</h2>
   <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
     {generalInstructions.map((instruction, index) => (
       <motion.div
         key={index}
-        className="relative bg-white rounded-lg shadow-md sm:shadow-lg p-4 sm:p-6 flex items-center cursor-pointer transition-all duration-500 hover:bg-yellow-100"
+        className="relative dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+          rounded-lg shadow-md sm:shadow-lg p-4 sm:p-6 flex items-center cursor-pointer
+          transition-all duration-500 hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+        dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
       >
         <div className="flex items-center space-x-3 sm:space-x-4">
-          <span className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-yellow-600 text-white font-bold rounded-full text-sm sm:text-lg transition-transform duration-500">{index + 1}</span>
-          <p className="text-sm sm:text-base md:text-lg text-gray-800">{instruction}</p>
+          <span className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
+          bg-secd text-text dark:bg-drks dark:text-drkt font-bold rounded-full text-sm sm:text-lg
+          transition-transform duration-500">{index + 1}</span>
+          <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
         </div>
       </motion.div>
     ))}
@@ -394,7 +401,7 @@ const ImageGallery = [
 </div>
 
 <div className="mx-auto p-4 sm:p-6">
-  <h2 className="text-2xl sm:text-3xl font-bold text-center text-yellow-600 mb-4 sm:mb-6">
+  <h2 className="text-2xl sm:text-3xl font-bold text-center text-accn dark:text-drka mb-4 sm:mb-6">
     MEMBERSHIP DETAILS
   </h2>
   <motion.div
@@ -404,12 +411,12 @@ const ImageGallery = [
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
   >
-    {/* Full-width Scrollable Wrapper for Mobile */}
+    {/* 🚀 Full-width Scrollable Wrapper for Mobile */}
     <div className="w-full overflow-x-auto">
       <div className="min-w-[750px] inline-block">
-        <table className="w-full border-collapse bg-white/30 backdrop-blur-lg shadow-xl">
+        <table className="w-full border-collapse backdrop-blur-lg shadow-xl">
           <thead>
-            <tr className="bg-yellow-600 text-white text-sm sm:text-base">
+            <tr className="bg-secd dark:bg-drks text-white text-sm sm:text-base">
               <th className="py-2 px-3 sm:py-3 sm:px-6">S. No</th>
               <th className="py-2 px-3 sm:py-3 sm:px-6">Member Details</th>
               <th className="py-2 px-3 sm:py-3 sm:px-6">No. of Books</th>
@@ -417,26 +424,28 @@ const ImageGallery = [
             </tr>
           </thead>
           <tbody>
-            {membership?.member_details?.map((member, index) => (
+            {members.map((member, index) => (
               <motion.tr
-                key={index}
-                className="border-b border-gray-300 bg-white/40 transition-all duration-300 hover:bg-white"
+                key={member.id}
+                className="border-b border-gray-300 transition-all duration-300 bg-prim dark:bg-drkp
+                  even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                  dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-800">
-                  {index + 1}
+                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
+                  {member.id}
                 </td>
-                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center text-gray-800">
-                  {member}
+                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center">
+                  {member.role}
                 </td>
-                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-900">
-                  {membership?.no_of_books?.[index]}
+                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
+                  {member.books}
                 </td>
-                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold text-gray-900">
-                  {membership?.["periodical/back_volumes/cd"]?.[index]}
+                <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
+                  {member.extra}
                 </td>
               </motion.tr>
             ))}
@@ -478,24 +487,24 @@ const ImageGallery = [
 
       {/* Text */}
       <motion.div
-        className="w-full lg:w-1/2 space-y-4 bg-white/30 backdrop-blur-lg p-6 rounded-xl shadow-xl"
+        className="w-full lg:w-1/2 space-y-4 backdrop-blur-lg p-6 rounded-xl shadow-xl"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl font-bold text-yellow-600">BORROWING AND CIRCULATION</h2>
-        <p className="text-gray-800 text-lg">
-          The Circulation Section consists of five computers with barcode scanners for issue, return, 
-          and renewal of books. All the library transactions are computerized. Enquiries regarding 
+        <h2 className="text-3xl font-bold text-accn dark:text-drka">BORROWING AND CIRCULATION</h2>
+        <p className="text-lg">
+          The Circulation Section consists of five computers with barcode scanners for issue, return,
+          and renewal of books. All the library transactions are computerized. Enquiries regarding
           availability of books, CDs, journals, and reservation of books are made in the circulation section.
         </p>
       </motion.div>
     </div>
 
 
-    <div className="min-h-screen bg-gradient-to-r from-yellow-50 to-white py-12 sm:py-16 px-4 sm:px-6 space-y-12 sm:space-y-16">
-  <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-yellow-700 uppercase tracking-wide">
+    <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6 space-y-12 sm:space-y-16">
+  <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide">
     Library Sections
   </h2>
 
@@ -525,9 +534,10 @@ const ImageGallery = [
       </motion.div>
 
       {/* Text Content */}
-      <div className="w-full md:w-1/2 h-full p-6 bg-white/30 backdrop-blur-lg rounded-2xl shadow-lg flex flex-col justify-center">
-        <h3 className="text-2xl sm:text-3xl font-bold text-yellow-700">{section.title}</h3>
-        <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-800 leading-relaxed">
+      <div className="w-full md:w-1/2 h-full p-6 backdrop-blur-lg rounded-2xl shadow-lg
+        dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] flex flex-col justify-center">
+        <h3 className="text-2xl sm:text-3xl font-bold text-accn dark:text-drka">{section.title}</h3>
+        <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
           {section.description}
         </p>
       </div>
@@ -537,8 +547,8 @@ const ImageGallery = [
 
 </div>
 
-<div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 py-12 sm:py-16 px-4 sm:px-6">
-  <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-yellow-700 uppercase tracking-wide mb-8 sm:mb-12">
+<div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
+  <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide mb-8 sm:mb-12">
     Library Highlights
   </h2>
 
@@ -554,7 +564,8 @@ const ImageGallery = [
       >
         <Tilt
           options={{ max: 15, scale: 1.05, speed: 400, glare: true, "max-glare": 0.2 }}
-          className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all transform group-hover:shadow-2xl"
+          className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform
+          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
         >
           <div className="relative overflow-hidden">
             <img
@@ -566,10 +577,11 @@ const ImageGallery = [
           </div>
 
           <div className="p-5 sm:p-6">
-            <h3 className="text-xl sm:text-2xl font-bold text-yellow-700 group-hover:text-yellow-800 transition-colors">
+            <h3 className="text-xl sm:text-2xl font-bold text-accn dark:text-drka
+              group-hover:text-secd dark:group-hover:text-drks transition-colors">
               {section.title}
             </h3>
-            <p className="mt-2 sm:mt-3 text-gray-700 leading-relaxed">
+            <p className="mt-2 sm:mt-3 leading-relaxed">
               {section.description}
             </p>
           </div>
@@ -580,7 +592,7 @@ const ImageGallery = [
 </div>
 
 
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
+    <div className="min-h-screen py-16 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Images */}
         <div className="relative group">
@@ -604,27 +616,27 @@ const ImageGallery = [
 
         {/* Right Side - Text Content */}
         <motion.div
-          className="text-gray-800"
+          className=""
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h2 className="text-4xl font-bold text-yellow-700 mb-6">
+          <h2 className="text-4xl font-bold text-accn dark:text-drka mb-6">
             MULTIMEDIA LIBRARY
           </h2>
           <p className="text-lg leading-relaxed">
-            A separate Multimedia Library is provided to utilize CD-ROMs, Online Journals, 
-            and NPTEL courses. It offers internet browsing, enabling students and faculty 
+            A separate Multimedia Library is provided to utilize CD-ROMs, Online Journals,
+            and NPTEL courses. It offers internet browsing, enabling students and faculty
             to access multidisciplinary video learning materials.
           </p>
           <p className="mt-4 text-lg leading-relaxed">
-            Our college is a proud member of <strong>DELNET</strong>, promoting resource sharing 
-            among libraries. We provide access to online journals like IEEE Transactions, 
+            Our college is a proud member of <strong>DELNET</strong>, promoting resource sharing
+            among libraries. We provide access to online journals like IEEE Transactions,
             ASME Proceedings, and more for research activities.
           </p>
           <p className="mt-4 text-lg leading-relaxed">
-            The <strong>National Digital Library of India</strong> integrates global digital 
-            libraries under a single portal. It supports academic disciplines in multiple 
+            The <strong>National Digital Library of India</strong> integrates global digital
+            libraries under a single portal. It supports academic disciplines in multiple
             languages, making knowledge accessible for all.
           </p>
         </motion.div>
@@ -632,8 +644,8 @@ const ImageGallery = [
     </div>
 
 
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
-      <h2 className="text-4xl font-bold text-yellow-600 mb-12 text-center">
+    <div className="min-h-screen py-16 px-6">
+      <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
         NEW ARRIVALS
       </h2>
 
@@ -641,7 +653,8 @@ const ImageGallery = [
         {NewArrivals.map((section, index) => (
           <motion.div
             key={index}
-            className="relative bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+            className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
+              dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -653,31 +666,33 @@ const ImageGallery = [
                 alt={section.title}
                 className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                <h3 className="text-2xl font-bold text-white text-center px-4">
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0
+                group-hover:opacity-100 transition-all">
+                <h3 className="text-2xl text-black font-bold text-center px-4">
                   {section.title}
                 </h3>
               </div>
             </div>
 
             <div className="p-6">
-              <p className="text-gray-700 leading-relaxed">{section.description}</p>
+              <p className="leading-relaxed">{section.description}</p>
             </div>
           </motion.div>
         ))}
       </div>
     </div>
 
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
-      <h2 className="text-4xl font-bold text-yellow-600 mb-12 text-center">
+    <div className="min-h-screen py-16 px-6">
+      <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
         Faculty & Staff
       </h2>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {faculty?.name?.map((name, index) => (
+        {facultyData.map((faculty, index) => (
           <motion.div
             key={index}
-            className="relative bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+            className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
+              dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -685,21 +700,21 @@ const ImageGallery = [
           >
             <div className="group relative">
               <img
-                src={faculty?.image[index]}
-                alt={name}
+                src={faculty.image}
+                alt={faculty.name}
                 className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                 <h3 className="text-xl font-bold text-white text-center px-4">
-                  {name}
+                  {faculty.name}
                 </h3>
               </div>
             </div>
 
             <div className="p-6 text-center">
-              <h3 className="text-2xl font-bold text-gray-900">{name}</h3>
-              <p className="text-gray-600 mt-2">{faculty?.educational_qualification[index]}</p>
-              <p className="text-yellow-700 font-semibold mt-2">{faculty?.designation[index]}</p>
+              <h3 className="text-2xl font-bold">{faculty.name}</h3>
+              <p className="mt-2">{faculty.qualification}</p>
+              <p className="text-accn dark:text-drka font-semibold mt-2">{faculty.role}</p>
             </div>
           </motion.div>
         ))}
@@ -708,17 +723,20 @@ const ImageGallery = [
 
 
 
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
-      <h2 className="text-4xl font-bold text-yellow-600 mb-12 text-center">
+    <div className="min-h-screen py-16 px-6">
+      <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
         Library Resources
       </h2>
 
       <div className="max-w-4xl mx-auto space-y-6">
         {Links.map((section, index) => (
-          <div key={index} className="bg-white rounded-2xl shadow-lg">
+          <div key={index} className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg">
             <button
               onClick={() => toggleSection(index)}
-              className="w-full flex justify-between items-center px-6 py-4 text-xl font-semibold text-gray-800 bg-yellow-100 hover:bg-yellow-200 transition-all rounded-t-2xl"
+              className="w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
+                bg-[color-mix(in_srgb,theme(colors.secd)_50%,white)] hover:bg-[color-mix(in_srgb,theme(colors.secd)_75%,white)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drks)_50%,white)] dark:hover:bg-[color-mix(in_srgb,theme(colors.drks)_75%,white)]
+                transition-all rounded-2xl dark:text-drkp"
             >
               {section.title}
               {openSection === index ? <FaChevronUp /> : <FaChevronDown />}
@@ -729,16 +747,16 @@ const ImageGallery = [
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="px-6 py-4 text-gray-700"
+                className="px-6 py-4"
               >
                 {Array.isArray(section.content) ? (
-                  <ul className="list-disc pl-6 space-y-2">
+                  <ul className="list-disc marker:text-accn dark:marker:text-drka pl-6 space-y-2">
                     {section.content.map((item, idx) =>
                       typeof item === "string" ? (
                         <li key={idx}>{item}</li>
                       ) : (
                         <li key={idx}>
-                          <a href={item.link} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                          <a href={item.link} className="text-accn dark:text-drka hover:underline" target="_blank" rel="noopener noreferrer">
                             {item.name}
                           </a>
                         </li>

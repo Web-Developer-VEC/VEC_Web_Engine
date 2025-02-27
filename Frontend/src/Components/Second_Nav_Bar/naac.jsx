@@ -76,20 +76,20 @@ const Naac = ({toggle, theme}) => {
         <div className="about-section">
           <div className="naac-info-panel border-l-4 border-secd dark:border-drks
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-          <h2 className="text-secd dark:text-drks">About NAAC</h2>
+          <h2 className="text-accn dark:text-drka">About NAAC</h2>
             <p>The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI) such as colleges, universities or other recognised institutions to derive an understanding of the ‘Quality Status’ of the institution...</p>
           </div>
 
           <div className="iqac-info-panel border-l-4 border-secd dark:border-drks
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className="text-secd dark:text-drks">About IQAC</h2>
+            <h2 className="text-accn dark:text-drka">About IQAC</h2>
             <p>The Internal Quality Assurance Cell (IQAC) is a pivotal body established to ensure continuous quality enhancement...</p>
           </div>
         </div>
 
         <div className="objectives-section border-l-8 border-secd dark:border-drks
           dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-          <h2 className="text-secd dark:text-drks">Key Objectives</h2>
+          <h2 className="text-accn dark:text-drka">Key Objectives</h2>
           <ol>
             <li><b>Quality Enhancement:</b> Develop system for consistent improvement</li>
             <li><b>Best Practices:</b> Institutionalize innovative practices</li>

@@ -19,7 +19,7 @@
   }
   
   .sectioncard {
-    background: linear-gradient(135deg, #f7b731, #e74c3c);
+    /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
     color: #fff;
     padding: 15px;
     border-radius: 12px;
@@ -123,7 +123,7 @@
     width: 50%;
     height: 2px;
     margin: 10px auto 0;
-    background: linear-gradient(90deg, #f7b731, #e74c3c);
+    /*background: linear-gradient(90deg, #f7b731, #e74c3c);*/
   }
   
   /* General Section Styling */
@@ -177,7 +177,7 @@
   .sectioncard ul {
     font-size: 20px;
     line-height: 1.6;
-    color: #333;
+    /*color: #333;*/
   }
   
   .sectioncard blockquote {
@@ -245,7 +245,7 @@
   
   /* General Section Styling */
   .sectioncard {
-    background: linear-gradient(135deg, #f7b731, #e74c3c);
+    /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
     color: #fff;
     padding: 30px;
     border-radius: 12px;

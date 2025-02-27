@@ -32,22 +32,29 @@ const VisionMission = ({ data }) => {
       <div className="row g-4">
         {/* Vision Section */}
         <div className="col-md-6 d-flex align-items-stretch">
-          <div className="section-card p-4 shadow rounded">
+          <div className="section-card
+            bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+            dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
+            p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
               <Eye size={32} className="me-3" /> {/* Vision Icon */}
-              <h2>Department Vision</h2>
+              <h2 className="my-auto">Department Vision</h2>
             </div>
             <p>{data?.vision}</p>
-            <blockquote className="vision-quote">{data?.department_quotes}</blockquote>
+            <blockquote className="vision-quote border-l-4 border-accn dark:border-drka text-accn dark:text-drka">
+              {data?.department_quotes}</blockquote>
           </div>
         </div>
 
         {/* Mission Section */}
         <div className="col-md-6 d-flex align-items-stretch">
-          <div className="section-card p-4 shadow rounded">
+          <div className="section-card
+            bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+            dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
+            p-4 shadow rounded">
             <div className="d-flex align-items-center mb-3">
               <Target size={32} className="me-3" /> {/* Mission Icon */}
-              <h2>Department Mission</h2>
+              <h2 className="my-auto">Department Mission</h2>
             </div>
             <ul>
               {data?.mission?.map((item, index) => (

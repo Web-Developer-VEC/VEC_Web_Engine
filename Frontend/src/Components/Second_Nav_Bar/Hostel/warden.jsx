@@ -47,7 +47,7 @@ export default function Warden() {
 
       {/* Growing Line */}
       <motion.div 
-        className="line" 
+        className="line bg-text dark:bg-drkt"
         initial={{ height: 0 }}
         whileInView={{ height: 50 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -68,14 +68,14 @@ export default function Warden() {
 
       {/* Growing Line */}
       <motion.div 
-        className="line" 
+        className="line bg-text dark:bg-drkt"
         initial={{ height: 0 }}
         whileInView={{ height: 50 }}
         transition={{ duration: 1, delay: 0.5 }}
       />
             {/* 🔹 NEW: Horizontal Line Splitting to Boys & Girls Wardens */}
       <motion.div
-        className="line horizontal mid-line"
+        className="line bg-text dark:bg-drkt horizontal mid-line"
         initial={{ width: 0 }}
         whileInView={{ width: window.innerWidth > 768 ? 650 : "60vw" }}
         transition={{ duration: 1, delay: 1.1 }}
@@ -83,13 +83,13 @@ export default function Warden() {
 
       <div className="line-container">
         <motion.div 
-          className="line1" 
+          className="line1 bg-text dark:bg-drkt"
           initial={{ height: 0 }}
           whileInView={{ height: 50 }}
           transition={{ duration: 1, delay: 1.8 }}
         />
         <motion.div 
-          className="line2" 
+          className="line2 bg-text dark:bg-drkt"
           initial={{ height: 0 }}
           whileInView={{ height: 50 }}
           transition={{ duration: 1, delay: 1.8 }}

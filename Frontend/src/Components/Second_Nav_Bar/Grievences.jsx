@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Grievences.css";
 import Banner from "../Banner";
 
-const GrievanceForm = () => {
+const GrievanceForm = ({theme, toggle}) => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
@@ -44,15 +44,17 @@ const GrievanceForm = () => {
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Grievance Form"
           subHeaderText="Raise your concerns here"
         />
       </div>
 
-      <div className="grievances-form-container">
-        <h2 className="grievances-heading">Grievance Form</h2>
+      <div className="grievances-form-container border-4 border-secd dark:border-drks
+        bg-[color-mix(in_srgb,theme(colors.accn)_10%,white)]
+        dark:bg-[color-mix(in_srgb,theme(colors.drka)_10%,black)]">
+        <h2 className="grievances-heading text-accn dark:text-drka">Grievance Form</h2>
         <p className="grievances-description">
           If you have any concerns regarding college facilities, faculty,
           administration, or any other issue affecting your academic experience,
@@ -62,7 +64,7 @@ const GrievanceForm = () => {
         <form className="grievances-form" onSubmit={handleSubmit}>
           <label className="grievances-label-email">Email:</label>
           <input
-            className="grievances-input-email"
+            className="grievances-input-email bg-prim dark:bg-drkp"
             type="email"
             name="email"
             value={email}
@@ -72,7 +74,7 @@ const GrievanceForm = () => {
 
           <label className="grievances-label-subject">Subject:</label>
           <input
-            className="grievances-input-subject"
+            className="grievances-input-subject bg-prim dark:bg-drkp"
             type="text"
             name="subject"
             value={subject}
@@ -82,7 +84,7 @@ const GrievanceForm = () => {
 
           <label className="grievances-label-content">Content:</label>
           <textarea
-            className="grievances-textarea-content"
+            className="grievances-textarea-content bg-prim dark:bg-drkp"
             name="content"
             value={content}
             onChange={(e)=> setContent(e.target.value)}

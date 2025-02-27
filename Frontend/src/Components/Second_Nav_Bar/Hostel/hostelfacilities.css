@@ -42,7 +42,7 @@
 @media (min-width: 769px) {
   .hostel-fac-item:hover {
     flex: 0 0 600px;
-    box-shadow: 1px 3px 15px #FDCC03;
+    /*box-shadow: 1px 3px 15px #FDCC03;*/
     transform: translateY(-30px);
   }
 
@@ -56,7 +56,7 @@
 /* 🔹 Content Animation */
 .hostel-fac-item .content {
   font-size: 1.5rem;
-  color: #fff;
+  /*color: #fff;*/
   display: flex;
   align-items: center;
   padding: 15px;
@@ -64,7 +64,7 @@
   flex-direction: column;
   height: 100%;
   justify-content: flex-end;
-  background: linear-gradient(0deg, rgba(253, 204, 3, 0.7) 0%, rgba(255, 255, 255, 0) 25%);
+  /*background: linear-gradient(0deg, rgba(253, 204, 3, 0.7) 0%, rgba(255, 255, 255, 0) 25%);*/
   transform: translateY(100%);
   transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
   visibility: hidden;

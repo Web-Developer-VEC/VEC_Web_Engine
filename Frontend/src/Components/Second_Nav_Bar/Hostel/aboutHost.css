@@ -2,7 +2,7 @@
   border-radius: 30px;
   transition: box-shadow 0.3s ease-in-out;
   margin-bottom: 30px;
-  border: 1px solid rgb(136, 131, 131);
+  /*border: 1px solid rgb(136, 131, 131);*/
 }
 
 .about-hostel:hover{
@@ -24,7 +24,7 @@
   
   /* About hostel section */
   .about-hostel {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     padding: 4rem 0;
     text-align: center;
   }
@@ -36,7 +36,7 @@
   
   .about-hostel p {
     font-size: 1.1rem;
-    color: #666;
+    /*color: #666;*/
     max-width: 800px;
     margin: 0 auto;
   }

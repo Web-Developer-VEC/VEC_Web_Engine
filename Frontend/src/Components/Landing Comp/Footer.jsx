@@ -15,21 +15,21 @@ const Footer = forwardRef((props, ref) => {
             dark:bg-[linear-gradient(111deg,theme(colors.drks)_0%,theme(colors.drks)_3%,theme(colors.text)_3%,theme(colors.text)_90%,theme(colors.drks)_90%,theme(colors.drks)_100%)]
             " ref={ref}>
             <div className="contact-details basis-1/4 ml-4">
-                <h3 className="text-secd dark:text-drks" style={{padding: "0 20px", margintop: "5px"}}>Contact
+                <h3 className="text-secd dark:text-drks font-bold" style={{padding: "0 20px", margintop: "5px"}}>Contact
                     Address</h3>
                 <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College<br></br>Ambattur
                     Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
                 <p style={{marginTop: "27px"}}>
-                    Contact: <a className="text-secd dark:text-drks" href="tel:+914426590758"
+                    Contact: <a className="text-secd dark:text-drks font-bold" href="tel:+914426590758"
                                 style={{textDecoration: "none"}}>044 – 26590758</a>
                 </p>
                 <p>
-                    Career: <a href="mailto:example@example.com" className="text-secd dark:text-drks"
+                    Career: <a href="mailto:example@example.com" className="text-secd dark:text-drks font-bold"
                                style={{textDecoration: "none"}}>example@example.com</a>
                 </p>
-                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks"
+                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks font-bold"
                                       style={{textDecoration: "none"}}>9123547550</a> , <a
-                    href="tel:+918939221120" className="text-secd dark:text-drks" style={{textDecoration: "none"}}>
+                    href="tel:+918939221120" className="text-secd dark:text-drks font-bold" style={{textDecoration: "none"}}>
                     8939221120</a>
                 </p>
                 <div className="logo-container my-2">
@@ -54,7 +54,7 @@ const Footer = forwardRef((props, ref) => {
                 ></iframe>
             </div>
             <div className="quick-links basis-1/3 px-4">
-                <h3 className="text-secd dark:text-drks">Quick Links</h3>
+                <h3 className="text-secd dark:text-drks font-bold">Quick Links</h3>
                 <ul className="gap-x-8 h-[15vh]">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/about">About Us</a></li>

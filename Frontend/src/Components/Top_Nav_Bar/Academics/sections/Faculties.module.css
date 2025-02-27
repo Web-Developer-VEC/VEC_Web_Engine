@@ -1,14 +1,14 @@
 .app {
   text-align: center;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  padding: 20px;
+  /*background-color: #f9f9f9;*/
+  /*padding: 20px;*/
 }
 
 /* Container for the faculty tiles */
 .imagegallery {
   display: flex;
-  flex-wrap: nowrap;
+  /*flex-wrap: nowrap;*/
   gap: 20px;
   overflow-x: auto;
   justify-content: center;
@@ -26,17 +26,17 @@
 }
 
 .firstTile {
-  width: 100%;
+  /*width: 100%;*/
   display: flex;
   align-items: center;
-  background: #fff;
-  border: 1px solid #ddd;
+  /*background: #fff;*/
+  /*border: 1px solid #ddd;*/
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   gap: 20px;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 
 .firstTileImage {
@@ -49,20 +49,20 @@
 
 /* Grid for remaining tiles */
 .gridContainer {
-  display: grid;
+  /*display: grid;*/
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 2fr));
+  /*grid-template-columns: repeat(auto-fit, minmax(270px, 2fr));*/
   justify-content: center;
 }
 
 /* Faculty tiles */
 .imageCard {
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
   border-radius: 10px;
   padding: 15px;
-  width: 250px;
+  /*width: 250px;*/
   text-align: center;
-  background: #fff;
+  /*background: #fff;*/
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 10px;
@@ -87,22 +87,22 @@
 
 .facultyName {
   font-size: 18px;
-  color: #333;
+  /*color: #333;*/
   margin-bottom: 8px;
 }
 
 .designation {
   font-size: 14px;
-  color: #555;
+  /*color: #555;*/
   margin-bottom: 12px;
 }
 
 .facButton {
-  background-color: #003366;
+  /*background-color: #003366;*/
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
-  color: #ffffff;
+  /*color: #ffffff;*/
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
   width: 110px;
@@ -110,11 +110,11 @@
 }
 
 .firstTileFacButton{
-  background-color: #003366;
+  /*background-color: #003366;*/
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
-  color: #ffffff;
+  /*color: #ffffff;*/
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
   width: 110px;
@@ -122,8 +122,8 @@
 }
 
 .facButton:hover {
-  background-color: #fdcc03;
-  color: #000;
+  /*background-color: #fdcc03;*/
+  /*color: #000;*/
 }
 
 .firstTileSocialLinks {
@@ -144,14 +144,14 @@
 .firstTileContent h3 {
   font-size: 22px;
   font-weight: bold;
-  color: #333;
+  /*color: #333;*/
   margin-bottom: 5px;
   width: fit-content;
 }
 
 .firstTileContent p {
   font-size: 16px;
-  color: #555;
+  /*color: #555;*/
   margin-bottom: 10px;
   width: fit-content;
 }
@@ -165,13 +165,13 @@
 
 .firstTileSocialLinks a {
   font-size: 22px;
-  color: #003366;
+  /*color: #003366;*/
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .firstTileSocialLinks a:hover {
-  color: #fdcc03;
-  transform: scale(1.2);
+  /*color: #fdcc03;*/
+  /*transform: scale(1.2);*/
 }
 
 .socialLinks {
@@ -185,19 +185,19 @@
 .socialLinks img {
   width: 25px;
   height: 25px;
-  background-color: #003366;
+  /*background-color: #003366;*/
   border-radius: 50%;
 }
 
 .socialLinks a{
   font-size: 22px;
-  color: #003366;
+  /*color: #003366;*/
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socialLinks a:hover {
-  color: #fdcc03;
-  transform: scale(1.2);
+  /*color: #fdcc03;*/
+  /*transform: scale(1.2);*/
 }
 
 .prefaculty{
@@ -210,9 +210,9 @@
 }
 
 .prefacultybtn{
-  padding: 8px;
-  font-size: medium;
-  background-color: #fdcc03;
+  /*padding: 8px;*/
+  /*font-size: medium;*/
+  /*background-color: #fdcc03;*/
   border-radius: 20px;
 }
 
@@ -243,8 +243,8 @@
   position: absolute; /* Position close button in the modal */
   top: 10px;
   right: 10px;
-  background-color: #FDCC03; /* Button color */
-  color: #000; /* Icon color */
+  /*background-color: #FDCC03; !* Button color *!*/
+  /*color: #000; !* Icon color *!*/
   border: none; /* Remove border */
   width: 40px;
   height: 40px;
@@ -268,7 +268,7 @@
   }
 
   .gridContainer {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
   }
 
   .firstTile {
@@ -280,7 +280,7 @@
 
 @media (max-width: 768px) {
   .gridContainer {
-    grid-template-columns: 1fr;
+    /*grid-template-columns: 1fr;*/
   }
 
   .pdfiframe {
@@ -310,14 +310,14 @@
 
 @media (max-width: 480px) {
 .imageCard{
-  width: 250px;
+  /*width: 250px;*/
   margin-left: 0;
 }
 
 .gridContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
 }
 
 .pdfiframe {

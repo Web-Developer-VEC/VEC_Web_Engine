@@ -27,13 +27,20 @@ const sections = [
       <table className="phd-table">
         <thead>
           <tr>
-            <th>Sl.No.</th>
-            <th>Programme</th>
-            <th>Qualification for Admission</th>
+            <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Sl.No.</th>
+            <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Programme</th>
+            <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Qualification for Admission</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
             <td>(i)</td>
             <td>Ph.D. Degree in Engineering/Technology</td>
             <td>
@@ -257,21 +264,40 @@ const sections = [
         <table className="phd-table">
           <thead>
             <tr>
-              <th>Sl.No.</th>
-              <th>Programme</th>
-              <th colspan="2">Minimum duration (years)</th>
-              <th>Maximum duration (years)</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Sl.No.</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Programme</th>
+              <th colspan="2" className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Minimum duration (years)</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Maximum duration (years)</th>
             </tr>
             <tr>
-              <th></th>
-              <th></th>
-              <th>Full-time</th>
-              <th>Part-time</th>
-              <th>Full-time/Part-time</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]"></th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]"></th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Full-time</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Part-time</th>
+              <th className="bg-gradient-to-r
+        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
+        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Full-time/Part-time</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
               <td>1.</td>
               <td>
                 <strong>
@@ -353,7 +379,7 @@ export default function PhDAdmissionGuidelines() {
         <div key={index} className="phd-section">
           <button
             onClick={() => toggleSection(index)}
-            className="phd-section-title"
+            className="phd-section-title bg-accn dark:bg-drka text-prim"
           >
             {section.title}{" "}
             <span className="phd-dropdown-icon">
@@ -361,10 +387,10 @@ export default function PhDAdmissionGuidelines() {
             </span>
           </button>
           {openIndex === index && (
-            <div className="phd-section-content">
+            <div className="phd-section-content border-l-4 border-accn dark:border-drka">
               {section.subsections ? (
                 section.subsections.map((subSection, subIndex) => (
-                  <div key={subIndex} className="phd-subsection">
+                  <div key={subIndex} className="phd-subsection border-l-4 border-accn dark:border-drka">
                     <button
                       onClick={() => toggleSubSection(subIndex)}
                       className="phd-subsection-title"
@@ -379,7 +405,7 @@ export default function PhDAdmissionGuidelines() {
                         {subSection.subsections ? (
                           subSection.subsections.map(
                             (nestedSubSection, nestedIndex) => (
-                              <div key={nestedIndex} className="phd-subsection">
+                              <div key={nestedIndex} className="phd-subsection border-l-4 border-accn dark:border-drka">
                                 <button
                                   onClick={() =>
                                     toggleNestedSubSection(nestedIndex)

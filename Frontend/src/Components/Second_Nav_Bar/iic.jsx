@@ -211,7 +211,7 @@ const Iic = ({toggle, theme}) => {
 
       <div className="about-section">
         <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-          <h2 className="text-black dark:text-drks">About IIC</h2>
+          <h2 className="">About IIC</h2>
           <p>
             The Ministry of Education (MoE), Govt. of India has established ‘MoE’s Innovation Cell (MIC)’ to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The

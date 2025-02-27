@@ -13,8 +13,10 @@ const NCC_ARMY = () => {
         <div className="NCC_ARMY-content-wrapper">
 
           {/* About NCC_ARMY Section */}
-          <section className="NCC_ARMY-section">
-            <h2 className="NCC_ARMY-section-title">About NCC</h2>
+          <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
+            border-b-2 border-secd dark:border-drks">About NCC</h2>
             <ul className="NCC_ARMY-list">
               <li>
                 National Cadet Corps is a Tri-Services Organization, comprising
@@ -51,16 +53,20 @@ const NCC_ARMY = () => {
 
           {/* Vision and Mission Section */}
           <div className="NCC_ARMY-row">
-            <section className="NCC_ARMY-section">
-              <h2 className="NCC_ARMY-section-title">Vision</h2>
+            <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
+              border-b-2 border-secd dark:border-drks">Vision</h2>
               <p className="NCC_ARMY-content">
                 Empower volunteer youth to become potential leaders and
                 responsible citizens of the country.
               </p>
             </section>
 
-            <section className="NCC_ARMY-section">
-              <h2 className="NCC_ARMY-section-title">Mission</h2>
+            <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
+              border-b-2 border-secd dark:border-drks">Mission</h2>
               <p className="NCC_ARMY-content">
                 To develop leadership and character qualities, mold discipline
                 and nurture social integration and cohesion through
@@ -70,9 +76,11 @@ const NCC_ARMY = () => {
           </div>
 
           {/* Aim Section */}
-          <div className="NCC_ARMY-aim-container">
+          <div className="NCC_ARMY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="NCC_ARMY-aim">
-              <h2 className="NCC_ARMY-heading">
+              <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+
                 <img src="./ncc_logo.png" alt="NCC Logo" className="NCC_ARMY-icon" />
                 AIM of NCC
               </h2>
@@ -89,8 +97,10 @@ const NCC_ARMY = () => {
 
           {/* Motto & Pledge Section */}
           <div className="NCC_ARMY-motto-pledge-container">
-            <div className="NCC_ARMY-motto">
-              <h2 className="NCC_ARMY-heading">MOTTO OF NCC</h2>
+            <div className="NCC_ARMY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+                MOTTO OF NCC</h2>
               <p className="NCC_ARMY-content">
               The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
                 1957. It brings together the youth from different parts of the
@@ -100,8 +110,10 @@ const NCC_ARMY = () => {
               </p>
             </div>
 
-            <div className="NCC_ARMY-pledge">
-              <h2 className="NCC_ARMY-heading">CARDINALS OF NCC</h2>
+            <div className="NCC_ARMY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+                CARDINALS OF NCC</h2>
               <p className="NCC_ARMY-content">
                 * Obey with a smile
                 <br/>
@@ -115,13 +127,14 @@ const NCC_ARMY = () => {
           </div>
 
           {/* Profile Section */}
-          <div className="NCC_ARMY-profile-container">
+          <div className="NCC_ARMY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="NCC_ARMY-profile-photo">
               <img src="./ncc_staff.jpg" alt="Sub. LT R DHANALAKSHMI" />
             </div>
             <div className="NCC_ARMY-profile-content">
-              <h2 className="NCC_ARMY-profile-name">Captain R Chezhian</h2>
-              <h4 className="NCC_ARMY-profile-position">NCC Army Coordinator</h4>
+              <h2 className="NCC_ARMY-profile-name ">Captain R Chezhian</h2>
+              <h4 className="NCC_ARMY-profile-position text-accn dark:text-drka">NCC Army Coordinator</h4>
               <p className="NCC_ARMY-profile-bio">
               Captain R. Chezhian, Associate NCC Officer (Army Wing) at Velammal Engineering College, earned his NCC 'C' Certificate with a commendable 'B' grade on 31st October 1995. These distinctions, along with his dedication and commitment, earned him the position of Associate NCC Officer (Army Wing) at Velammal Engineering College and the rank of Lieutenant as a Direct Commission Officer on 15th July 2011.
               </p>

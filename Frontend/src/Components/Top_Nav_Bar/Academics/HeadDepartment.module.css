@@ -88,12 +88,12 @@
 }
 
 .sidebar ul li button:hover {
-  color: #000000;
+  /*color: #000000;*/
   /*background: #fdcc03;*/
 }
 
 .sidebar ul li button:hover .icon {
-  color: #ffffff; /* Change icon color to white on hover */
+  /*color: #ffffff; !* Change icon color to white on hover *!*/
 }
 
 .icon {

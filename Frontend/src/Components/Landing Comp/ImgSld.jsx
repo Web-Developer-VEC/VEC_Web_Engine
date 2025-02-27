@@ -76,11 +76,11 @@ const ImgSld = ({load, toggle, theme}) => {
                 </video>
                 <div className="absolute flex gap-3 z-[50] bottom-[50%] left-0 mb-3 ml-3">
                     {vidHdr.map((hdr, i) => (
-                        <p key={i} className="bg-white rounded-full px-3 py-1 lg:py-2 lg:px-3
-                        outline outline-white outline-offset-2 hover:outline-[#fdcc03]
-                        bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
-                        text-slate-950 bg-gradient-to-l from-[#fdcc03] from-0% via-[#fdcc03]
-                        via-50% to-white to-50% border-slate-700 w-full duration-[150ms]
+                        <p key={i} className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3
+                        outline outline-prim dark:outline-drkp outline-offset-2 hover:outline-secd
+                        dark:hover:outline-drks bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
+                        text-text dark:text-drkt bg-gradient-to-l from-secd dark:from-drks from-0% via-secd
+                        dark:via-drks via-50% to-white to-50% border-slate-700 w-full duration-[150ms]
                         ease-in transition-all hover:bg-[position:-100%_100%]">{hdr}</p>
                     ))}
                 </div>

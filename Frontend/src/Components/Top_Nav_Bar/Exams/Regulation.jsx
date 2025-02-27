@@ -53,7 +53,7 @@ const REGULATION = ({theme, toggle}) => {
 
       <div className="REG-page">
         <div className="REG-intro">
-          <h1 className="REG-header text-secd dark:text-drks">REGULATION DATA</h1>
+          <h1 className="REG-header text-accn dark:text-drka">REGULATION DATA</h1>
         </div>
         {isLoading && (
           <div className="loading-screen">
@@ -97,7 +97,7 @@ const REGULATION = ({theme, toggle}) => {
                         hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={closeModal}>
                 <FontAwesomeIcon icon={faTimes} />
               </button>
-              <h2 className="text-secd dark:text-drks mb-2">{selectedRegulation.name}</h2>
+              <h2 className="text-accn dark:text-drka mb-2">{selectedRegulation.name}</h2>
               <iframe
                 src={selectedRegulation.pdf_path}
                 title={selectedRegulation.name}

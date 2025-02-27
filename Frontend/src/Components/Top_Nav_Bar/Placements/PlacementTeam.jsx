@@ -9,7 +9,7 @@ function PersonDetail({ person, isImageLeft }) {
     <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
       <img src={person.photo_path} alt={person.name} className="person-image" />
       <div className="person-content">
-        <h2 className="text-secd dark:text-drks">{person.designation}</h2>
+        <h2 className="text-accn dark:text-drka">{person.designation}</h2>
         <h3>{person.name}</h3>
         <p>{person.content}</p>
       </div>
@@ -17,7 +17,7 @@ function PersonDetail({ person, isImageLeft }) {
   );
 }
 
-export const PlacementTeam = () => {
+export const PlacementTeam = ({toggle, theme}) => {
 
   const [PlacementTeam, setPlacementTeam] = useState([]);
   const [isLoading,setLoading] = useState(true);
@@ -42,7 +42,7 @@ export const PlacementTeam = () => {
   return (
 
     <>
-    <Banner
+    <Banner toggle={toggle} theme={theme}
     backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
     headerText="Placement Team"
     subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."

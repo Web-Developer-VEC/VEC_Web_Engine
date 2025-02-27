@@ -1,5 +1,5 @@
 .mba-page{
-  padding: 3rem;
+  padding: 3vmax;
   font-family: 'Roboto', sans-serif;
   /*color: #2c3e50;*/
   /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
@@ -119,7 +119,7 @@ h5, h6 {
   @media (max-width: 768px) {
     .mba-contents,
     .mba-container {
-      padding: 10px;
+      /*padding: 10px;*/
       max-width: 100%;
     }
   

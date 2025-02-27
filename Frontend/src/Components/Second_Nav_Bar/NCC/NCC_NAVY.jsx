@@ -13,8 +13,10 @@ const NCC_NAVY = () => {
         <div className="NCC_NAVY-content-wrapper">
 
           {/* About NCC_NAVY Section */}
-          <section className="NCC_NAVY-section">
-            <h2 className="NCC_NAVY-section-title">About NCC</h2>
+          <section className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <h2 className="NCC_NAVY-section-title  ext-accn dark:text-drka
+            border-b-2 border-secd dark:border-drks">About NCC</h2>
             <ul className="NCC_NAVY-list">
               <li>
                 National Cadet Corps is a Tri-Services Organization, comprising
@@ -51,16 +53,20 @@ const NCC_NAVY = () => {
 
           {/* Vision and Mission Section */}
           <div className="NCC_NAVY-row">
-            <section className="NCC_NAVY-section">
-              <h2 className="NCC_NAVY-section-title">Vision</h2>
+            <section className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_NAVY-section-title text-accn dark:text-drka
+            border-b-2 border-secd dark:border-drks">Vision</h2>
               <p className="NCC_NAVY-content">
                 Empower volunteer youth to become potential leaders and
                 responsible citizens of the country.
               </p>
             </section>
 
-            <section className="NCC_NAVY-section">
-              <h2 className="NCC_NAVY-section-title">Mission</h2>
+            <section className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_NAVY-section-title text-accn dark:text-drka
+            border-b-2 border-secd dark:border-drks">Mission</h2>
               <p className="NCC_NAVY-content">
                 To develop leadership and character qualities, mold discipline
                 and nurture social integration and cohesion through
@@ -70,9 +76,10 @@ const NCC_NAVY = () => {
           </div>
 
           {/* Aim Section */}
-          <div className="NCC_NAVY-aim-container">
+          <div className="NCC_NAVY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="NCC_NAVY-aim">
-              <h2 className="NCC_NAVY-heading">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
                 <img src="./ncc_logo.png" alt="NCC Logo" className="NCC_NAVY-icon" />
                 AIM of NCC
               </h2>
@@ -92,8 +99,9 @@ const NCC_NAVY = () => {
 
           {/* Motto & Pledge Section */}
           <div className="NCC_NAVY-motto-pledge-container">
-            <div className="NCC_NAVY-motto">
-              <h2 className="NCC_NAVY-heading">MOTTO OF NCC</h2>
+            <div className="NCC_NAVY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">MOTTO OF NCC</h2>
               <p className="NCC_NAVY-content">
                 The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
                 1957. It brings together the youth from different parts of the
@@ -102,8 +110,9 @@ const NCC_NAVY = () => {
               </p>
             </div>
 
-            <div className="NCC_NAVY-pledge">
-              <h2 className="NCC_NAVY-heading">NCC PLEDGE</h2>
+            <div className="NCC_NAVY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">NCC PLEDGE</h2>
               <p className="NCC_NAVY-content">
                 We, the cadets of the National Cadet Corps, do solemnly pledge
                 that we shall always uphold the unity of India. We resolve to be
@@ -113,13 +122,14 @@ const NCC_NAVY = () => {
           </div>
 
           {/* Profile Section */}
-          <div className="NCC_NAVY-profile-container">
+          <div className="NCC_NAVY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="NCC_NAVY-profile-photo">
               <img src="./ncc_staff.jpg" alt="Sub. LT R DHANALAKSHMI" />
             </div>
             <div className="NCC_NAVY-profile-content">
               <h2 className="NCC_NAVY-profile-name">Sub. LT R DHANALAKSHMI</h2>
-              <h4 className="NCC_NAVY-profile-position">NCC Navy Coordinator</h4>
+              <h4 className="NCC_NAVY-profile-position text-accn dark:text-drka">NCC Navy Coordinator</h4>
               <p className="NCC_NAVY-profile-bio">
                 Sub. LT R DHANALAKSHMI is an NCC Cadet (2008) with CUO Rank 1 & Grade “A” Associate NCC Officer (NAVY).
                 She was awarded the Certificate of Excellence 2024 for Best Naval Practical Skills and secured the 1st position

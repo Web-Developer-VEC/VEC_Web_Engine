@@ -83,11 +83,14 @@ export const PlacementDetails = ({theme, toggle}) => {
                 <div className="placement-yearwise card-plc dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
                     <div className="place-syl-container">
                         <div className="place-syllabus-section">
-                            <div className="place-syllabus-header">
-                                <h3 className="text-text">Placement Details - Year Wise</h3>
+                            <div className="place-syllabus-header bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                                dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
+                                before:border-r-accn dark:before:border-r-drka before:border-transparent
+                                after:border-l-accn dark:after:border-l-drka after:border-transparent">
+                                <h3 className="text-sm lg:text-lg">Placement Details - Year Wise</h3>
                             </div>
                             <div className="place-syllabus-content">
-                                <div className="place-Sylgrid bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                                <div className="place-Sylgrid flex p-8 bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
                                     {placementData?.Year_Wise?.year_pdf.map((year, index) => (
                                         <button
@@ -95,7 +98,7 @@ export const PlacementDetails = ({theme, toggle}) => {
                                             className="place-course-button"
                                             onClick={() => openModal(placementData?.Year_Wise?.Pdf_path[index])}
                                         >
-                                            <div className="place-course bg-secd dark:bg-drks">
+                                            <div className="place-course py-2 bg-secd dark:bg-drks">
                                                 {year}
                                             </div>
                                         </button>
