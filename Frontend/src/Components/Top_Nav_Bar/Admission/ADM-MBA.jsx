@@ -40,16 +40,17 @@ const MBA = ({theme, toggle}) => {
           </div>
         )}
         <div className="MBA">
-          <h3 className="text-secd dark:text-drks">M.B.A Admission</h3>
+          <h3 className="text-accn dark:text-drka ml-4">M.B.A Admission</h3>
         </div>
-        <div className="mba-container dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+        <div className="mba-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <p className="description-text">
             Learners for admission to the first semester of the MBA Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu single window counselling process. The Government of Tamil Nadu releases the updated eligibility criteria for the admission. Admission shall be offered only to candidates who possess the qualification prescribed and the eligibility criteria for the programme.
           </p>
 
           <div className="mba-content">
             <center>
-              <h4 className="text-secd dark:text-drks">MBA - Total Intake ({mbaData?.Year})</h4>
+              <h4 className="text-accn dark:text-drka">MBA - Total Intake ({mbaData?.Year})</h4>
             </center>
             <table className="mba-intake-table">
               <thead>
@@ -70,7 +71,7 @@ const MBA = ({theme, toggle}) => {
               </thead>
               <tbody>
                 <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
                   <td>Master of Business Administration (MBA)</td>
                   <td>{mba["Government Quota Intakes"]}</td>
                   <td>{mba["Management Quota Intakes"]}</td>

@@ -65,12 +65,9 @@ const InCub = ({toggle, theme}) => {
         "Prototyping & Testing", "Marketing & Networking", "Growth & Scaling Support"
     ]
     const stat = [
-        {ttl: "No. Startups", val: 69},
-        {ttl: "No. Startups", val: 69},
-        {ttl: "No. Startups", val: 69},
-        {ttl: "No. Startups", val: 69},
-        {ttl: "No. Startups", val: 69},
-        {ttl: "No. Startups", val: 69},
+        {ttl: "Startups", val: 13},
+        {ttl: "Patents", val: 37},
+        {ttl: "Mentors", val: 20},
     ]
     const strt = [
         {dep: 'ECE', nme: 'Swap Inc LLP', lic: 'LLP-AAZ-3585', yer: '2021-2022'},

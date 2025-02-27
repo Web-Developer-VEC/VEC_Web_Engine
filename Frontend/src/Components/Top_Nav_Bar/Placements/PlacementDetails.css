@@ -141,7 +141,7 @@ z-index: 10;
 }
 
 .place-syllabus-header h3 {
-font-size: 18px;
+/*font-size: 18px;*/
 font-weight: bold;
 /*color: #333;*/
 }
@@ -149,7 +149,7 @@ font-weight: bold;
 .place-syllabus-content {
 /*border: 2px solid #ff6a01;*/
 border-radius: 50px;
-box-shadow: 2px 2px 8px rgb(255, 170, 0);
+/*box-shadow: 2px 2px 8px rgb(255, 170, 0);*/
 transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -159,8 +159,8 @@ box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .place-Sylgrid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
+/*display: grid;*/
+/*grid-template-columns: repeat(3, 1fr);*/
 gap: 1px;
 /*background:rgb(253 204 3 / var(--tw-bg-opacity, 1));*/
 border-radius: 50px;
@@ -168,7 +168,7 @@ border-radius: 50px;
 
 .place-course {
 font-size: medium;
-padding: 16px;
+/*padding: 16px;*/
 /*background: white;*/
 text-align: center;
 /*color: #555;*/
@@ -184,13 +184,13 @@ transform: scale(0.95);
 
 @media (max-width: 1024px) {
 .place-Sylgrid {
-  grid-template-columns: repeat(2, 1fr);
+  /*grid-template-columns: repeat(2, 1fr);*/
 }
 }
 
 @media (max-width: 768px) {
 .place-Sylgrid {
-  grid-template-columns: 1fr;
+  /*grid-template-columns: 1fr;*/
 }
 }
 
@@ -200,12 +200,12 @@ transform: scale(0.95);
 display: flex;
 flex-wrap: wrap; 
 justify-content: center;
-gap: 16px; 
-padding: 8px; 
+/*gap: 16px; */
+/*padding: 8px; */
 }
 
 .place-course {
-padding: 16px;
+/*padding: 16px;*/
 /*background: white;*/
 text-align: center;
 font-size: medium;
@@ -213,7 +213,7 @@ font-size: medium;
 transition: transform 0.3s ease, background 0.2s;
 border: 2px solid rgb(101, 93, 93);
 min-width: 200px;
-flex: 1 1 calc(33.33% - 32px); 
+/*flex: 1 1 calc(33.33% - 32px); */
 box-sizing: border-box; 
 }
 
@@ -224,20 +224,20 @@ transform: scale(0.95);
 
 @media (max-width: 1024px) {
 .place-course {
-  flex: 1 1 calc(50% - 32px); 
+  /*flex: 1 1 calc(50% - 32px); */
 }
 }
 
 @media (max-width: 768px) {
 .place-course {
-  flex: 1 1 calc(100% - 32px); 
+  /*flex: 1 1 calc(100% - 32px); */
 }
 }
 
 .place-syllabus-header {
 /* position: relative;  */
 /*color: #333;*/
-background-color: #fff5ca;
+/*background-color: #fff5ca;*/
 text-align: center;
 font-weight: bold;
 font-size: 16px;
@@ -257,19 +257,19 @@ bottom: 0;
 width: 0;
 height: 0;
 border-style: solid;
-filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); /* Shadow for the folds */
+/*filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); !* Shadow for the folds *!*/
 }
 
 .place-syllabus-header::before {
 left: 0;
-border-width: 1px 13px 17px 0;
-border-color: transparent #f07f1c transparent transparent;
+border-width: 0 18px 23px 0;
+/*border-color: transparent #f07f1c transparent transparent;*/
 }
 
 .place-syllabus-header::after {
 right: 0;
 border-width: 0 0 23px 18px;
-border-color: transparent transparent transparent #cb670f;
+/*border-color: transparent transparent transparent #cb670f;*/
 }
 
 /* Loading Screen */
@@ -331,14 +331,14 @@ text-align: left;
 /* Grid Layout for Courses */
 .place-Sylgrid {
 /* display: grid; */
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
 gap: 16px;
-padding: 8px;
+/*padding: 8px;*/
 }
 
 .place-course {
-padding: 16px;
-/background: white;
+/*padding: 16px;*/
+/*/background: white;*/
 text-align: center;
 font-size: medium;
 /*color: #555;*/
@@ -372,7 +372,7 @@ font-size: 1.2rem;
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
 .place-Sylgrid {
-  grid-template-columns: repeat(2, 1fr);
+  /*grid-template-columns: repeat(2, 1fr);*/
 }
 .place-course {
   font-size: small;
@@ -384,7 +384,7 @@ font-size: 1.2rem;
   text-size-adjust: 10px;
 }
 .place-Sylgrid {
-  grid-template-columns: 1fr;
+  /*grid-template-columns: 1fr;*/
 }
 .placement-percent {
   margin: 20px;

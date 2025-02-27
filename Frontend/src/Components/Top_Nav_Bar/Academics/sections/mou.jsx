@@ -11,7 +11,7 @@ const MOU = ({data}) => {
     return (
       <div className="mou-page">
         <div className="mou-header">
-          <h1 className="text-secd dark:text-drks">Memorandum of Understanding (MOU)</h1>
+          <h1 className="text-accn dark:text-drka">Memorandum of Understanding (MOU)</h1>
           <div className="mou-year-buttons">
             {Data?.map((year) => (
               <button
@@ -32,7 +32,7 @@ const MOU = ({data}) => {
               <div className="mou-logo bg-prim dark:bg-drkp">
                 <img src={detail.LOGO_PATH} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
               </div>
-              <h3>{detail.ORGANISATION_NAME}</h3>
+              <h3 className="text-accn dark:text-drka">{detail.ORGANISATION_NAME}</h3>
               <p><strong>Duration:</strong> {detail.MONTH_AND_YEAR}</p>
               <p><strong>Validity:</strong> {detail.VALIDITY}</p>
             </div>

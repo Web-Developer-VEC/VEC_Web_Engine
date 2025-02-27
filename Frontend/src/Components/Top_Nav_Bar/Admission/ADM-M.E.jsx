@@ -40,12 +40,13 @@ const ME = ({theme, toggle}) => {
           </div>
         )}
       <div className="ME">
-        <h3 className="text-secd dark:text-drks">M.E. Degree Programme</h3>
-        <h3 className="text-secd dark:text-drks">
+        <h3 className="text-accn dark:text-drka">M.E. Degree Programme</h3>
+        <h3 className="text-accn dark:text-drka">
           Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
         </h3>
       </div>
-      <div className="me-contents dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+      <div className="me-contents bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
         <p className="description-text">
           Candidates for admission to the first semester of the Post-Graduate Degree Programme shall be
           required to have passed an appropriate Under-Graduate Degree Examination of Anna University or
@@ -65,7 +66,7 @@ const ME = ({theme, toggle}) => {
           offered only after obtaining equivalence to such degrees.
         </p>
         <div className="me-container">
-          <center><h4 className="text-secd dark:text-drks">M.E - Total Intake {pgData.Year}</h4></center>
+          <center><h4 className="text-accn dark:text-drka">M.E - Total Intake {pgData.Year}</h4></center>
           <table className="intake-table">
             <thead>
               <tr>
@@ -87,7 +88,8 @@ const ME = ({theme, toggle}) => {
             {pg.map((item, rowIndex) => {
               const [courseName, courseDetails] = Object.entries(item)[0];
               return (
-                <tr key={rowIndex} className={rowIndex % 2 === 0 ? "even-row" : "odd-row"}>
+                <tr key={rowIndex} className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
                   <td>{courseName}</td>
                   <td>{courseDetails["Government Quota Intakes"]}</td>
                   <td>{courseDetails["Management Quota Intakes"]}</td>

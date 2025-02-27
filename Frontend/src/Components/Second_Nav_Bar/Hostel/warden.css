@@ -9,9 +9,9 @@
 }
 
 .warden-card {
-  background: #fff;
-  color: #F68220;
-  border: 1px solid #F68220;
+  /*background: #fff;*/
+  /*color: #F68220;*/
+  /*border: 1px solid #F68220;*/
   padding: 10px;
   border-radius: 10px;
   font-weight: bold;
@@ -23,7 +23,7 @@
 }
 
 .warden-card h3 {
-  color: #F68220;
+  /*color: #F68220;*/
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -47,7 +47,7 @@
 
 .line {
   width: 2px;
-  background: black;
+  /*background: black;*/
 }
 
 /* Line Styling */
@@ -60,7 +60,7 @@
 
 .line1, .line2 {
   width: 2px;
-  background: black;
+  /*background: black;*/
   height: 50px; 
 }
 

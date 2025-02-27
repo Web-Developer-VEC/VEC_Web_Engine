@@ -63,7 +63,8 @@ export default function HostelFacilities() {
                 backgroundImage: `url(${facility.image})`,
               }}
             >
-              <div className="content">
+              <div className="content bg-gradient-to-t from-[color-mix(in_srgb,theme(colors.accn)_69%,black)]
+                  dark:from-[color-mix(in_srgb,theme(colors.drka)_50%,black)] via-transparent via-35 to-transparent">
                 <h2>{facility.title}</h2>
                 <span>{facility.description}</span>
               </div>

@@ -1,6 +1,6 @@
 
   .me-page{
-    padding: 3rem;
+    padding: 3vmax;
     font-family: 'Roboto', sans-serif;
     /*color: #2c3e50;*/
     /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
@@ -69,7 +69,6 @@ h5, h6 {
     font-weight: bold;
   }
   .me-contents{
-  
     padding: 2rem;
     /*background: linear-gradient(135deg, aliceblue, #f4e1c1); !* Light gradient *!*/
     border-radius: 15px;

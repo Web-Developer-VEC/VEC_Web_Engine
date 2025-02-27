@@ -11,7 +11,7 @@ const Infrastructure = ({ data }) => {
   return (
     <div>
       <section className="infra">
-        <h1 className="text-text dark:text-drkt border-x-4 border-text dark:border-drkt">Infrastructure</h1>
+        <h1 className="text-accn dark:text-drka border-x-4 border-accn dark:border-drka">Infrastructure</h1>
       </section> 
 
       <main className="page-content">

@@ -38,7 +38,7 @@ const ImageCarousel = ({ data }) => {
         <>
           {/* 🔹 Section Heading */}
           <div className="intro-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h1 className="intro-title text-secd dark:text-drks">
+            <h1 className="intro-title text-accn dark:text-drka">
               <i className="inline-block mr-2 mb-1" /> Student Achievements
             </h1>
             <p className="intro-text-act text-text dark:text-drkt">{data.content}</p>
@@ -87,7 +87,7 @@ const ImageCarousel = ({ data }) => {
 
           {/* 🔹 Image Description Box */}
           <div className="description-box bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className="description-title text-secd dark:text-drks">{images[currentIndex]?.event_name || "No Title"}</h2>
+            <h2 className="description-title text-accn dark:text-drka">{images[currentIndex]?.event_name || "No Title"}</h2>
             <p className="description-text-act">{images[currentIndex]?.image_content || "No Description"}</p>
           </div>
         </>

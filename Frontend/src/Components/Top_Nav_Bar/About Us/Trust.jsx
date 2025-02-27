@@ -43,7 +43,7 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl font-bold mb-4 border-b-4 border-amber-500 inline-block pb-2">
+              <h2 className="text-3xl font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
               Velammal Educational Trust (VET)
               </h2>
               <p className="text-lg leading-relaxed">
@@ -57,7 +57,7 @@ const NewTrust = ({theme, toggle}) => {
             {/* Image Section */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex justify-center group overflow-hidden rounded-2xl shadow-lg"
+              className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
             >
               <img
                 className="w-max h-max object-cover transition-transform duration-500 group-hover:scale-110"
@@ -73,7 +73,7 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl font-bold mb-4 border-b-4 border-amber-500 inline-block pb-2">
+              <h2 className="text-3xl font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Strength of the Trust
               </h2>
               <p className="text-lg leading-relaxed">
@@ -88,7 +88,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
         {/* Section 3 - Management */}
         <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">The Management</h2>
+            <h2 className="text-3xl font-bold text-accn dark:text-drka mb-6">The Management</h2>
           </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
             {managementTeam.map((person, index) => (
@@ -106,7 +106,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                 <h5 className="text-xl font-bold">
                   {person.name}
                 </h5>
-                <h6 className="text-sm text-secd dark:text-drks">{person.role}</h6>
+                <h6 className="text-sm text-accn dark:text-drka">{person.role}</h6>
                 <p className="mt-2">Velammal Educational Trust</p>
               </motion.div>
             ))}

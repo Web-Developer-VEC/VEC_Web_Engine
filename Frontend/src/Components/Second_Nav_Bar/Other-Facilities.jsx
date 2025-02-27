@@ -114,11 +114,11 @@
         <div className="card-oth dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-b-8 border-secd dark:border-drks">
           <div className="card-content">
             <div className="icon-wrapper">
-              <div className="icon-bg text-secd dark:text-drks">
+              <div className="icon-bg text-accn dark:text-drka">
                 <Building2 className="icon" />
               </div>
             </div>
-            <h3 className="card-title-oth text-secd dark:text-drks">World Class Infrastructure</h3>
+            <h3 className="card-title-oth text-accn dark:text-drka">World Class Infrastructure</h3>
             <div className="relative">
               <p className="card-text">
                 Velammal Engineering College in Chennai offers excellent facilities, including well-equipped laboratories, a central library with vast digital and physical resources, and modern classrooms. The campus also provides hostel accommodations, sports facilities, a cafeteria, an auditorium, seminar halls, and dedicated research centers.

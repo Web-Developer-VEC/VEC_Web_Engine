@@ -3,7 +3,7 @@
   font-size: 18px;
   padding: 20px;
   line-height: 1.8;
-  background-color: #e2d68b;
+  /*background-color: #e2d68b;*/
   
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -48,7 +48,7 @@
   font-size: 2.5rem;
   margin: 20px 0;
   margin-top: 50px;
-  color: #000; /* Set the text color to black */
+  /*color: #000; !* Set the text color to black *!*/
   text-transform: uppercase;
   letter-spacing: 2px;
   animation: slideIn 1s ease-in-out;
@@ -78,17 +78,17 @@
   padding: 12px;
   font-size: 1.1rem;
   font-weight: bold;
-  border: 2px solid #FDCC03;
-  background-color: #222;
-  color: #fff;
+  /*border: 2px solid #FDCC03;*/
+  /*background-color: #222;*/
+  /*color: #fff;*/
   text-align: center;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nirf-year-button.active {
-  background-color: #FDCC03;
-  color: #222;
+  /*background-color: #FDCC03;*/
+  /*color: #222;*/
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
@@ -96,7 +96,7 @@
 /* Details Section */
 .nirf-details {
   width: 75%;
-  background: #fff;
+  /*background: #fff;*/
   content: center;
   margin-right: 150px;
   border-radius: 12px;
@@ -131,7 +131,7 @@
 }
 
 .nirf-action-button:hover {
-  background-color: #e6b802;
+  /*background-color: #e6b802;*/
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
@@ -139,7 +139,7 @@
 /* PDF Viewer */
 .embed {
   margin-top: 30px;
-  border: 3px solid #FDCC03;
+  /*border: 3px solid #FDCC03;*/
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease-in-out;
@@ -201,8 +201,8 @@
 
 @media screen and (min-width: 910px){
     .nirf-year-button:hover {
-      background-color: #333;
-      color: #FDCC03;
+      /*background-color: #333;*/
+      /*color: #FDCC03;*/
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
@@ -213,7 +213,7 @@
       font-size: 18px;
       padding: 15px;
       line-height: 1.8;
-      background-color: #e2d68b;
+      /*background-color: #e2d68b;*/
       border-radius: 8px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       animation: fadeIn 1s ease-in-out;

@@ -35,8 +35,8 @@ const HeadDepartment = ({ data }) => {
     <div className={styles.messageContent + " text-text dark:text-drkt"}>
       <div className={styles.textColumn}>
         <div className={styles.hodInfo}>
-          <h2 className={styles.messageHeader + " text-secd dark:text-drks"}>
-            {Name}, <span className={styles.messageHeader2 + " text-accn dark:text-drka"}>{Qualification.join(", ")}</span>
+          <h2 className={styles.messageHeader + " text-accn dark:text-drka"}>
+            {Name}, <span className={styles.messageHeader2 + " text-secd dark:text-drks"}>{Qualification.join(", ")}</span>
           </h2>
           <p className={styles.hodDesignation}>{designation}</p>
         </div>
@@ -58,7 +58,7 @@ const HeadDepartment = ({ data }) => {
         {Social_media_links['LinkedIn'] && (
             <a
               href={Social_media_links['LinkedIn']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -68,7 +68,7 @@ const HeadDepartment = ({ data }) => {
           {Social_media_links['Publon'] && (
             <a
               href={Social_media_links['Publon']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -78,7 +78,7 @@ const HeadDepartment = ({ data }) => {
           {Social_media_links['Google Scholar'] && (
             <a
               href={Social_media_links['Google Scholar']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -88,7 +88,7 @@ const HeadDepartment = ({ data }) => {
           {Social_media_links['Orchid Profile'] && (
             <a
               href={Social_media_links['Orchid Profile']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -98,7 +98,7 @@ const HeadDepartment = ({ data }) => {
           {Social_media_links['Research Gate'] && (
             <a
               href={Social_media_links['Research Gate']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -108,7 +108,7 @@ const HeadDepartment = ({ data }) => {
           {Social_media_links['Scopus'] && (
             <a
               href={Social_media_links['Scopus']}
-              className={styles.socialLink + " text-secd dark:text-drks"}
+              className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
               target="_blank"
               rel="noopener noreferrer"
             >

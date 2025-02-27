@@ -27,9 +27,9 @@
 .column {
     flex: 1;
     min-width: 300px;
-    background: #fff;
+    /*background: #fff;*/
     padding: 25px; /* Increased padding for a spacious feel */
-    border-left: 12px solid #fdb515; /* Slightly wider yellow border for prominence */
+    /*border-left: 12px solid #fdb515; !* Slightly wider yellow border for prominence *!*/
     border-radius: 0 12px 12px 0; /* Larger radius for a softer look */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
     position: relative;
@@ -42,7 +42,7 @@
     top: 0;
     width: 12px;
     height: 100%;
-    background-color: #fdb515;
+    /*background-color: #fdb515;*/
     z-index: -1;
 }
 
@@ -50,14 +50,14 @@
 .section-title {
     font-size: 28px; /* Slightly larger for prominence */
     font-weight: bold;
-    color: #1d1d1d;
+    /*color: #1d1d1d;*/
     margin-bottom: 20px; /* More space below title */
 }
 
 /* Section content styling */
 .section-content {
     font-size: 18px; /* Slightly larger for readability */
-    color: #1d1d1d;
+    /*color: #1d1d1d;*/
     text-align: justify;
 }
 
@@ -89,7 +89,7 @@
     .column {
         min-width: 100%;
         padding: 15px; /* Reduced padding on mobile */
-        border-left: 10px solid #fdb515; /* Slightly smaller border on mobile */
+        /*border-left: 10px solid #fdb515; !* Slightly smaller border on mobile *!*/
         border-radius: 0 8px 8px 0; /* Smaller radius on mobile */
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Reduced shadow on mobile */
     }

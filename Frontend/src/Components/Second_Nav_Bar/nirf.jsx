@@ -71,7 +71,7 @@ const Nirf = ({theme, toggle}) => {
         )}
         <div className="nirf-intro bg-[color-mix(in_srgb,theme(colors.secd),transparent_80%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
-          <h1 className="nirf-header text-accn dark:text-drks">NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1>
+          <h1 className="nirf-header text-accn dark:text-drka">NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1>
           <p>
             <strong>About NIRF</strong>
             <br />

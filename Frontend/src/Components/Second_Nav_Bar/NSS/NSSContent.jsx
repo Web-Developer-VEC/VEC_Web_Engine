@@ -8,7 +8,7 @@ const NSSContent = () => {
         {/* Left Section - NSS Introduction */}
         <div className="nss-box border-l-4 border-secd dark:border-drks
           dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
-          <h2 className="nss-title text-secd dark:text-drks">Welcome to the National Service Scheme</h2>
+          <h2 className="nss-title text-accn dark:text-drka">Welcome to the National Service Scheme</h2>
           <p className="nss-text">
             The National Service Scheme (NSS) is an Indian government-sponsored
             public service program conducted by the Ministry of Youth Affairs
@@ -18,7 +18,7 @@ const NSSContent = () => {
             Popularly known as NSS, the scheme was launched in Gandhiji's
             Centenary year, 1969. Aimed at developing students' personality
             through community service.{" "}
-            <strong className="nss-highlight text-secd dark:text-drks">
+            <strong className="nss-highlight text-accn dark:text-drka">
               The motto of NSS is "Not Me, But You".
             </strong>
           </p>
@@ -27,8 +27,8 @@ const NSSContent = () => {
         {/* Right Section - Objectives */}
         <div className="nss-box border-l-4 border-secd dark:border-drks
           dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
-          <h2 className="nss-title text-secd dark:text-drks">Our Objectives</h2>
-          <ul className="nss-list marker:text-secd dark:marker:text-drks">
+          <h2 className="nss-title text-accn dark:text-drka">Our Objectives</h2>
+          <ul className="nss-list marker:text-accn dark:marker:text-drka">
             <li>To understand the community in which they work.</li>
             <li>To understand themselves in relation to their community.</li>
             <li>

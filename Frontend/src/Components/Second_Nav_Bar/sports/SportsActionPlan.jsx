@@ -8,9 +8,9 @@ const SportsActionPlan = () => {
         dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
         
       <div className="section-header">
-        <h2 className="text-secd dark:text-drks">Our Action Plan</h2>
+        <h2 className="text-accn dark:text-drka">Our Action Plan</h2>
         <div className='w-fit ml-5'>
-          <ul className='text-justify marker:text-secd dark:marker:text-drks'>
+          <ul className='text-justify marker:text-accn dark:marker:taxt-drks'>
             <li>We give effective training for the students to develop their physical fitness.</li>
             <li>We provide efficient coaching system for the students to their sports performance.</li>
             <li>To engage the students for a greater number of participations to develop their match experience.</li>
@@ -20,11 +20,11 @@ const SportsActionPlan = () => {
 
       <div className="action-content">
         <div className="sports_card training bg-prim dark:bg-drkp">
-            <h3 className="text-secd dark:text-drks">Training Schedule</h3>
+            <h3 className="text-accn dark:text-drka">Training Schedule</h3>
             <p>Regular practice sessions from 4:15 pm to 6:15 pm.</p>
         </div>
         <div className="sports_card goals-objectives bg-prim dark:bg-drkp">
-          <h3 className="text-secd dark:text-drks">Goals & Objectives</h3>
+          <h3 className="text-accn dark:text-drka">Goals & Objectives</h3>
           <ul className='text-justify'>
             <li>To become champions of champions.</li>
             <li>To attract a greater number of students for sports participation.</li>
@@ -33,7 +33,7 @@ const SportsActionPlan = () => {
         </div>
 
         <div className="sports_card health-awareness bg-prim dark:bg-drkp">
-          <h3 className="text-secd dark:text-drks">Health Awareness & Orientation</h3>
+          <h3 className="text-accn dark:text-drka">Health Awareness & Orientation</h3>
           <ul className='text-justify'>
             <li>To give awareness to the importance of regular food habits.</li>
             <li>To insist the importance and benefits of the blood donation. </li>
@@ -44,7 +44,7 @@ const SportsActionPlan = () => {
         </div>
 
         <div className="sports_card additional-info bg-prim dark:bg-drkp">
-          <h3 className="text-secd dark:text-drks">Facilities & Achievements</h3>
+          <h3 className="text-accn dark:text-drka">Facilities & Achievements</h3>
           <ul className='text-justify'>
             <li>Above said facilities are available in our college to inculcate sports activities among admitted students.</li>
             <li> Over all champions in Anna University Zone 1 Sports Competition for 18 consecutive years (2003 -2021).</li>

@@ -25,7 +25,7 @@ body {
 }
 
 .section-card {
-  background: linear-gradient(135deg, #f7b731, #e74c3c);
+  /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
   color: #fff;
   padding: 30px;
   border-radius: 12px;
@@ -42,9 +42,9 @@ body {
   font-family: "EB Garamond", serif;
   line-height: 1.1;
   font-size: 32px; /* Increased font size */
-  color: rgba(255, 255, 255, 0.9);
+  /*color: rgba(255, 255, 255, 0.9);*/
   text-align: center;
-  border-left: 4px solid rgba(255, 255, 255, 0.7);
+  /*border-left: 4px solid rgba(255, 255, 255, 0.7);*/
   padding-left: 10px;
 }
 
@@ -128,7 +128,7 @@ body {
   width: 50%;
   height: 2px;
   margin: 10px auto 0;
-  background: linear-gradient(90deg, #f7b731, #e74c3c);
+  /*background: linear-gradient(90deg, #f7b731, #e74c3c);*/
 }
 
 /* General Section Styling */
@@ -181,14 +181,14 @@ body {
 .section-card ul {
   font-size: 20px;
   line-height: 1.6;
-  color: #333;
+  /*color: #333;*/
 }
 
 .section-card blockquote {
   font-size: 24px;
   font-style: italic;
-  color: #555;
-  border-left: 4px solid #007bff;
+  /*color: #555;*/
+  /*border-left: 4px solid #007bff;*/
   padding-left: 15px;
   margin-left: 0;
 }
@@ -199,7 +199,7 @@ ul {
 }
 /* General Section Styling */
 .section-card {
-  background: linear-gradient(135deg, #f7b731, #e74c3c);
+  /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
   color: #fff;
   padding: 30px;
   border-radius: 12px;

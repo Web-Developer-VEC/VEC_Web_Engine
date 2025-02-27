@@ -31,10 +31,12 @@ const Sidebar = ({ sections, activeSection, setActiveSection }) => {
     <div className={styles.sidebar}>
       <ul>
         {sections.map((section) => (
-          <li key={section} className="hover:bg-secd dark:hover:bg-drks hover:rounded-lg">
+          <li key={section} className="hover:bg-secd dark:hover:bg-drks hover:rounded-lg
+            hover:*:text-text dark:hover:*:text-drkt">
             <button
-              className={`text-prim ${styles.sidebarItem} ${activeSection === section ? " bg-secd dark:bg-drks text-text" : ""}`}
-              onClick={() => setActiveSection(section)}
+              className={`text-prim *:hover:text-text dark:*:hover:text-drkt 
+                ${styles.sidebarItem} ${activeSection === section ? " bg-secd dark:bg-drks text-text dark:text-drkt" 
+                  : ""}`} onClick={() => setActiveSection(section)}
             >
               {iconMap[section] || "📄"} {section.replace(/([A-Z])/g, " $1")}
             </button>

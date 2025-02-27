@@ -9,11 +9,12 @@ const Card = ({ image, name, designation }) => {
   return (
     <div className="admin-card border-2 border-secd dark:border-drks">
       <img src={image} alt={name} className="admin-card-image" />
-      <h3 className="admin-card-name text-secd dark:text-drks">{name}</h3>
+      <h3 className="admin-card-name text-accn dark:text-drka">{name}</h3>
       <p className="admin-card-designation">{designation}</p>
     </div>
   );
 };
+
 
 // Main CardPage component
 const CardPage = ({theme, toggle}) => {
