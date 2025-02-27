@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     height:fit-content;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     padding-bottom: 30px;
     overflow: hidden;
   }

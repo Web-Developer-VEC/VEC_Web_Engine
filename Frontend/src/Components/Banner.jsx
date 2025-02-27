@@ -11,7 +11,7 @@ const Banner = ({ backgroundImage, headerText, subHeaderText, toggle, theme }) =
   const headerOpacity = useTransform(scrollY, [0, 100], [1, 0.5]);
 
   return (
-      <div className="banner bottom-2">
+      <div className="banner bottom-2 pt-12">
           {/* Parallax Background */}
           <motion.div
               className="banner-background"
