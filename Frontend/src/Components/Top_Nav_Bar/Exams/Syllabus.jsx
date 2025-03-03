@@ -121,12 +121,12 @@ function Syllabus({theme, toggle}) {
       </div>
       <AnimatePresence>
         {selectedPdf && (
-          <div className="fixed inset-0 z-50 mt-24 bg-black/50 flex items-center justify-center p-4 sm:p-8">
+          <div className="fixed inset-0 z-50 mt-12 bg-black/50 flex items-center justify-center p-4 sm:p-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.5 }}
-              className="bg-prim dark:bg-drkp rounded-lg p-4 sm:p-6 w-full max-w-3xl"
+              className="bg-prim dark:bg-drkp rounded-lg p-3 mt-[65px] sm:p-6 w-full max-w-3xl"
             >
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg sm:text-xl text-secd dark:text-drks font-semibold">Syllabus Viewer</h2>
