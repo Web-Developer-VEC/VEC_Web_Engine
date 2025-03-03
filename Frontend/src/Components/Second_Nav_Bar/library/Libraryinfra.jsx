@@ -295,47 +295,47 @@ const ImageGallery = [
 
   return (
     <>
-<div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
-  <div className="max-w-7xl mx-auto flex gap-4 justify-center">
-    {sections.map((section, index) => (
-      <motion.div
-        key={index}
-        className="flex flex-col rounded-xl shadow-md overflow-hidden cursor-pointer transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-        transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        whileHover={{ rotate: 1 }}
-      >
-        <div className="w-full">
-          <img
-            src={section.image}
-            alt={section.title}
-            className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 hover:scale-105"
-          />
+      <div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
+        <div className="max-w-7xl mx-auto lg:flex flex-wrap gap-4 justify-center">
+          {sections.map((section, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col rounded-xl shadow-md overflow-hidden cursor-pointer transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+              transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ rotate: 1 }}
+            >
+              <div className="w-full">
+                <img
+                  src={section.image}
+                  alt={section.title}
+                  className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div className="p-4 sm:p-5 space-y-3 sm:space-y-5">
+                <h2 className="text-xl sm:text-2xl font-semibold text-accn dark:text-drka">{section.title} </h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
+                  {section.items.map((item, i) => (
+                    <motion.li
+                      key={i}
+                      className="flex items-center space-x-2 hover:text-yellow-700 transition-colors duration-300"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (i % 5) * 0.08 }}
+                      viewport={{ once: true }}
+                    >
+                      <span className="w-2 h-2 bg-secd dark:bg-drks rounded-full"></span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
-        <div className="p-4 sm:p-5 space-y-3 sm:space-y-5">
-          <h2 className="text-xl sm:text-2xl font-semibold text-accn dark:text-drka">{section.title}</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
-            {section.items.map((item, i) => (
-              <motion.li
-                key={i}
-                className="flex items-center space-x-2 hover:text-yellow-700 transition-colors duration-300"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: (i % 5) * 0.08 }}
-                viewport={{ once: true }}
-              >
-                <span className="w-2 h-2 bg-secd dark:bg-drks rounded-full"></span>
-                <span>{item}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
-    ))}
-  </div>
 
       {/* Additional Sections */}
 {/* Additional Sections */}
@@ -400,21 +400,21 @@ const ImageGallery = [
   </div>
 </div>
 
-<div className="mx-auto p-4 sm:p-6">
+<div className="overflow-auto w-auto p-4 sm:p-6">
   <h2 className="text-2xl sm:text-3xl font-bold text-center text-accn dark:text-drka mb-4 sm:mb-6">
     MEMBERSHIP DETAILS
   </h2>
   <motion.div
-    className="overflow-hidden rounded-2xl shadow-lg"
+    className="rounded-2xl shadow-lg  mx-auto"
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
   >
     {/* 🚀 Full-width Scrollable Wrapper for Mobile */}
-    <div className="w-full overflow-x-auto">
-      <div className="min-w-[750px] inline-block">
-        <table className="w-full border-collapse backdrop-blur-lg shadow-xl">
+    <div className="overflow-x-auto">
+      <div className="min-w-[750px] border-r-2">
+        <table className="w-full border-collapse backdrop-blur-lg shadow-xl overflow-x-auto">
           <thead>
             <tr className="bg-secd dark:bg-drks text-white text-sm sm:text-base">
               <th className="py-2 px-3 sm:py-3 sm:px-6">S. No</th>
@@ -522,7 +522,7 @@ const ImageGallery = [
     >
       {/* Image Section */}
       <motion.div
-        className="w-full md:w-1/2 h-full overflow-hidden rounded-3xl shadow-lg"
+        className="hidden md:block w-full md:w-1/2 h-full overflow-hidden rounded-3xl shadow-lg"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.5 }}
       >
@@ -532,6 +532,7 @@ const ImageGallery = [
           className="w-full h-80 object-cover rounded-3xl"
         />
       </motion.div>
+
 
       {/* Text Content */}
       <div className="w-full md:w-1/2 h-full p-6 backdrop-blur-lg rounded-2xl shadow-lg
@@ -576,7 +577,7 @@ const ImageGallery = [
             <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
           </div>
 
-          <div className="p-5 sm:p-6">
+          <div className="p-5 sm:p-6  min-h-[45vh]  md:min-h-[65vh] ">
             <h3 className="text-xl sm:text-2xl font-bold text-accn dark:text-drka
               group-hover:text-secd dark:group-hover:text-drks transition-colors">
               {section.title}
@@ -723,7 +724,7 @@ const ImageGallery = [
 
 
 
-    <div className="min-h-screen py-16 px-6">
+    <div className="py-1 px-6">
       <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
         Library Resources
       </h2>

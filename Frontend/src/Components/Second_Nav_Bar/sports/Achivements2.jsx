@@ -35,10 +35,10 @@ const Achievements1 = ({data}) => {
   };
 
   return (
-    <div className={styles.achievementsContainer}>
+    <div className={`${styles.achievementsContainer}`}>
       <h2 className={styles.sportscoordinator}>Anna University Zone {data?.zone}</h2>
       <p className={styles.coordinatordes}>Co-ordinating Centre {data?.year}</p>
-      <Slider {...settings}>
+      <Slider {...settings} className="">
         {data?.image?.map((item) => (
           <div key={item.id} className={styles.slide}>
             <img src={item} alt="Achievement" className={styles.image} />

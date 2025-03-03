@@ -15,7 +15,7 @@ const Aboutplacement = ({theme, toggle}) => {
       {/* Top Section with Vision and Mission */}
       <section className="AP-vision-mission">
         <div className="AP-grid">
-          <div className="AP-grid-item">
+          <div className="AP-grid-item mb-4">
             <div className="AP-card bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
               <h2 className="AP-card-title text-accn dark:text-drka">Our Vision</h2>
