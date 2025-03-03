@@ -61,7 +61,7 @@ const NewTrust = ({theme, toggle}) => {
             >
               <img
                 className="w-max h-max object-cover transition-transform duration-500 group-hover:scale-110"
-                src="/smt_velammal.png"
+                src="./smt_velammal.png"
                 alt="Velammal Trust Banner"
               />
             </motion.div>

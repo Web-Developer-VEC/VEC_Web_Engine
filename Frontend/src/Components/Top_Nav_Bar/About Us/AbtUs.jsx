@@ -6,7 +6,7 @@ const AbtUs = ({theme, toggle}) => {
     const banTtl = "About VEC"
     const motto = "A Journey of Thousand Miles Begins with a Single Step"
     const secTtl = `Velammal Engineering College`
-    const secHdr = 'Welcome to,'
+   
     const secSub = "An Autonomous Institution"
     const secCnt = "We stand for innovation, with our diverse community of scholars and engineers dedicated " +
         "to making a positive impact at local, national, and global levels."
@@ -27,7 +27,7 @@ const AbtUs = ({theme, toggle}) => {
                 <div className='flex relative w-full max-h-[100vh]'>
                     <div className="relative grow p-4 font-popp mt-14 basis-3/4 z-10
                         bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
-                        <p className='text-3xl text-left mb-4'>{secHdr}</p>
+                       
                         <p className='text-3xl text-center font-rome'>{secTtl}</p>
                         <p className='text-lg font-bold text-accn dark:text-drka text-center'>{secSub}</p>
                         <p className="text-2xl text-center mt-4">{secCnt}</p>
