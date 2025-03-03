@@ -2,13 +2,13 @@
 .NCC_NAVY-container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
 }
 
 /* Content Wrapper */
 .NCC_NAVY-content-wrapper {
   /*background: #fff;*/
-  padding: 30px;
+  padding: 0px;
   animation: slideInLeft 1s ease-out;
 }
 
@@ -225,7 +225,7 @@
 /* Tablet View (up to 1024px) */
 @media screen and (max-width: 1024px) {
   .NCC_NAVY-container {
-      max-width: 95%;
+      max-width: 105%;
       padding: 15px;
   }
 
@@ -239,7 +239,7 @@
 
   .NCC_NAVY-section-title,
   .NCC_NAVY-heading {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
   }
 
   .NCC_NAVY-content {
@@ -286,12 +286,25 @@
   .NCC_NAVY-profile-content {
       text-align: center;
   }
+
+  .NCC_NAVY-section-title,
+  .NCC_NAVY-heading {
+    font-size: 1.3rem;
+  }  
+
+  .NCC_NAVY-content,
+  .NCC_NAVY-aimcontent,
+  .NCC_NAVY-list li {
+    font-size: 0.9rem;
+    line-height: 1.9;
+  }
 }
 
 /* Small Mobile View (up to 480px) */
 @media screen and (max-width: 480px) {
   .NCC_NAVY-container {
-      padding: 5px;
+      padding: 1px;
+      margin: 1px;
   }
 
   .NCC_NAVY-title {

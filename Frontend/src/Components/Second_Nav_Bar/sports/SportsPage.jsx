@@ -28,12 +28,12 @@ const SportsPage = ({theme, toggle}) => {
     fetchData();
   },[])
   return (
-    <>
-<Banner theme={theme} toggle={toggle}
-  backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"  // Replace with an image related to sports or fitness
-  headerText="Physical Education Department"
-  subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
-/>
+    <div className='mb-10'>
+    <Banner theme={theme} toggle={toggle}
+      backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"  // Replace with an image related to sports or fitness
+      headerText="Physical Education Department"
+      subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+    />
 
     <div className="sports-page">
       {/* Introduction Section */}
@@ -66,8 +66,8 @@ const SportsPage = ({theme, toggle}) => {
       <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/><br/>
       <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>
     </div>
-    <Achievements data={sportData && sportData.length > 2 ? sportData[3] : null}/>
-    </>
+    <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>
+    </div>
   );
 };
 
