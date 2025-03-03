@@ -9,9 +9,10 @@ body {
 
 /* Main Container */
 .AP-main-container {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  margin: auto;
+  padding: 2rem;
 }
 
 /* Vision and Mission Section */
@@ -22,7 +23,7 @@ body {
 .AP-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 1rem;
 }
 
 .AP-card {
@@ -35,6 +36,11 @@ body {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   height: 250px;
+ 
+  min-height: 200px;
+  /* Adjust based on content */
+  padding: 1rem;
+
 }
 
 .AP-card:hover {
@@ -53,6 +59,8 @@ body {
   /*color: #555;*/
   line-height: 1.8;
   font-size: 1.1em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* About Section */
@@ -153,15 +161,13 @@ body {
   }
 }
 
-
-/* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1120px) {
   .AP-main-container {
-    padding: 20px;
+    padding: 10px;
   }
 
   .AP-card {
-    padding: 20px;
+    padding: 10px;
   }
 
   .AP-about-title,
@@ -171,6 +177,56 @@ body {
 
   .AP-contact-info {
     padding: 20px;
+  }
+
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .AP-main-container {
+    padding: 20px;
+  }
+
+  .AP-card {
+    padding: 10px;
+  }
+  .AP-card-text {
+    /*color: #555;*/
+    line-height: 1.8;
+    font-size: 0.9em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .AP-about-title,
+  .AP-contact-header h2 {
+    font-size: 1.5em;
+  }
+
+  .AP-contact-info {
+    padding: 20px;
+  }
+}
+@media (max-width: 650px) {
+  
+
+  .AP-card-text {
+    /*color: #555;*/
+    line-height: 1.8;
+    font-size: 1.1em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  
+}
+@media (max-width: 385px) {
+
+
+  .AP-card-text {
+    /*color: #555;*/
+    line-height: 1.8;
+    font-size: 0.9em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
 }
