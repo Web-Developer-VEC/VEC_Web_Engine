@@ -12,7 +12,7 @@ const LibraryLayout = ({toggle, theme}) => {
     subHeaderText="The only thing that you absolutely have to know, is the location of the library."
   />
 
-    <div className="min-h-screen p-10 flex flex-col gap-10">
+    <div className="min-h-screen flex flex-col gap-1">
       <LibraryIntro />
       <LibrarySections />
     </div>

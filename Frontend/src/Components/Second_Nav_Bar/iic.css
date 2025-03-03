@@ -478,6 +478,12 @@
   }
 }
 
+@media screen and (min-width: 480px) and (max-width: 1050px) {
+  .gallery {
+    padding-left: 3.3rem;
+  }
+}
+
 @media screen and (max-width: 920px){
   .nir-buttons {
     grid-template-columns: 1fr;

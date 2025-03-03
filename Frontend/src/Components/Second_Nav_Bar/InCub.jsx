@@ -168,10 +168,10 @@ const InCub = ({toggle, theme}) => {
                         </div>
                     ))}
                 </div>
+                <p className="text-3xl text-center">Incubation Process</p>
                 <div className="flex flex-wrap">
-                    <div className="grid grid-cols-1 group gap-6 px-12 lg:px-32 justify-center w-fit
-                        lg:basis-1/2 lg:ml-12">
-                        <p className="text-3xl -ml-8 lg:ml-0">Incubation Process</p>
+                    <div className="grid grid-cols-1 group gap-6 px-12 lg:px-32 text-center w-fit
+                        lg:basis-1/2 lg:ml-12 lg:md-0 md:justify-center mx-auto ">
                         {flow.map((flw, ind) => (
                             <div className={`text-xl text-center rounded-xl w-max lg:w-fit max-w-[90vw] justify-self-center py-1 px-4
                             bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)]
@@ -185,9 +185,9 @@ const InCub = ({toggle, theme}) => {
                                 {flw}</div>
                         ))}
                     </div>
-                    <div className={`bg-cover bg-no-repeat mt-12 lg:ml-24`}
+                    <div className={`mx-auto bg-cover bg-no-repeat mt-12 lg:ml-24 w-[80%] md:w-[80%] lg:w-[auto]`}
                          style={{backgroundImage: `url(${Clge})`}}>
-                        <div className="grid grid-cols-2 gap-24 p-16 place-content-center
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-24 p-16 place-content-center
                             backdrop-blur-xl bg-prim/30
                             size-full text-text font-bold bg-[position:200px_0]">
                             {stat.map((sta, ind) => (
@@ -213,8 +213,9 @@ const InCub = ({toggle, theme}) => {
                 </div>
                 <div className="justify-center lg:mx-32 p-4 rounded-xl
                     bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                    <img src={Msme} alt="MSME" className="w-1/5 h-auto mr-4 hidden md:inline dark:invert"/>
+                    dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                    m-4">
+                    <img src={Msme} alt="MSME" className="w-1/5 h-auto mr-4 hidden inline dark:invert"/>
                     <span className="text-4xl">MSME (MINISTRY OF MICRO, SMALL & MEDIUM ENTERPRISES)</span>
                     <div className={"h-4"}/>
                     {msme.map((msm, i) => (
@@ -286,7 +287,7 @@ const InCub = ({toggle, theme}) => {
                         </div>
                     ))}
                 </div>
-                <div className="relative overflow-x-auto lg:mx-32">
+                <div className="relative overflow-x-auto sm:m-4 lg:mx-32">
                     <p className="text-3xl my-4">SEED MONEY RECEIVED FROM OTHER INCUBATION </p>
                     <table className="w-full text-sm text-left rounded-xl">
                         <thead
@@ -337,8 +338,8 @@ const InCub = ({toggle, theme}) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="lg:mx-32">
-                    <p className="text-3xl mb-4">Connect with us</p>
+                <div className="lg:mx-32 mx-auto">
+                    <p className="text-3xl mb-4 text-center">Connect with us</p>
                     <p className="py-2 px-8 rounded-xl text-xl bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] w-fit">
                         <a href="mailto:Incubation@velammal.edu.in">Incubation@velammal.edu.in
                     </a></p>

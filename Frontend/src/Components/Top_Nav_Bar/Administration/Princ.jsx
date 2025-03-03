@@ -55,7 +55,7 @@ const Princ = ({theme, toggle}) => {
           <div className="lg:max-w-sm lg:ml-6 flex-shrink-0">
             <img
               className="max-h-[40vh] lg:max-h-[45vh] w-auto rounded-xl float-right"
-              src={photo_path}
+              src={"https://thumbs.dreamstime.com/b/need-to-know-stamp-round-vintage-grunge-label-sign-186965639.jpg"}
               alt="Principal"
             />
             <div className="text-center lg:text-left">
