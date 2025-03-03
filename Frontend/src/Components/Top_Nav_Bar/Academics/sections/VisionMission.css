@@ -35,17 +35,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Ensure equal height */
+  height: 100%;
+  /* Ensure equal height */
 }
+
 .vision-quote {
   margin-top: 20px;
   font-family: "EB Garamond", serif;
   line-height: 1.1;
-  font-size: 32px; /* Increased font size */
+  font-size: 32px;
+  /* Increased font size */
   /*color: rgba(255, 255, 255, 0.9);*/
   text-align: center;
   /*border-left: 4px solid rgba(255, 255, 255, 0.7);*/
-  padding-left: 10px;
+  padding-left: 5px;
 }
 
 .section-card:hover {
@@ -107,6 +110,7 @@ body {
   from {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
+
   to {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
   }
@@ -149,21 +153,30 @@ body {
   /*color: #555;*/
   text-align: justify;
 }
+
+
 .about-department-text h2 {
   text-align: left;
 }
+
+
 .about-department-image img {
   /* max-width: 100%; */
   height: 350px;
   width: 500px;
-  border-radius: 15px; /* Softer, more modern rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for a more sophisticated look */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  border-radius: 15px;
+  /* Softer, more modern rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Deeper shadow for a more sophisticated look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 .about-department-image img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  /* Slightly deeper shadow on hover */
 }
 
 /* Vision and Mission Section */
@@ -199,6 +212,7 @@ ul {
   padding-left: 20px;
   list-style-type: disc;
 }
+
 /* General Section Styling */
 .section-card {
   /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
@@ -261,7 +275,10 @@ ul {
   }
 
   .about-department-content {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    /* Ensures horizontal centering */
     text-align: center;
   }
 
@@ -274,13 +291,23 @@ ul {
     text-align: center;
   }
 
-  .about-department-text p{
+  .about-department-text p {
     text-align: justify;
   }
 
   .about-department-image {
-    margin-top: 20px;
-    /* width: 400px; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* Ensures full width */
+  }
+
+  .about-department-image img {
+    display: block;
+    margin: 10px auto;
+    /* Centers the image */
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -290,6 +317,12 @@ ul {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+  .about-department-text h2 {
+    text-align: center;
+    font-size: 28px;
+    /* Adjust font size for smaller screens */
+  }
+
   .about-department-text h2 {
     text-align: center;
     font-size: 28px;
@@ -318,14 +351,19 @@ ul {
     text-align: center;
   }
 
-  .about-department-text p{
+  .about-department-text p {
     text-align: justify;
   }
 
-  .about-department-image img{
-    width: 390px;
-    height: 220px;
-    margin-bottom: 20px;
+  .about-department-image img {
+    width: 100%;
+    /* Make it responsive */
+    max-width: 390px;
+    /* Prevent excessive scaling */
+    height: auto;
+    margin: 10px auto;
+    /* Centers horizontally */
+    display: block;
   }
 
   .section-card {
