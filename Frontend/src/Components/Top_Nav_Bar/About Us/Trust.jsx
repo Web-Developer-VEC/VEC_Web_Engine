@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Banner from '../../Banner';
+import './Trust.css'
 
 const NewTrust = ({theme, toggle}) => {
   const managementTeam = [
@@ -53,7 +54,7 @@ const NewTrust = ({theme, toggle}) => {
               From a small school at Mugappair in Chennai, the Velammal Group of institutions has spread to the districts of Thiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Thiruvanamalai, Thanjavur, and Vellore in Tamil Nadu. Now this group holds more than a lakh students and around 12000 staff members under its umbrella.       
 </p>
 </motion.div>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center ">
             {/* Image Section */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -84,6 +85,8 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
               Her Philosophy was quite simple, She used to say, "You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent".              </p>
             </motion.div>
           </div>
+
+
         </div>
         {/* Section 3 - Management */}
         <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">

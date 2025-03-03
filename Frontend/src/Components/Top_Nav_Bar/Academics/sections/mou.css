@@ -121,7 +121,22 @@
 
 @media (max-width: 768px) {
   .mou-details {
-    grid-template-columns: 1fr; /* 1 column on smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* 1 column on smaller screens */
+  }
+
+  .mou-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .mou-detail-box {
+    width: 100%;
+    max-width: none;
+  }
+}
+@media (max-width: 580px) {
+  .mou-details {
+    grid-template-columns: 1fr;
+    /* 1 column on smaller screens */
   }
 
   .mou-header h1 {

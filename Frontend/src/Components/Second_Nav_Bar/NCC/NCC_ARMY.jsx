@@ -52,7 +52,7 @@ const NCC_ARMY = () => {
           </section>
 
           {/* Vision and Mission Section */}
-          <div className="NCC_ARMY-row">
+          <div className="NCC_ARMY-row mt-4">
             <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
               <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
