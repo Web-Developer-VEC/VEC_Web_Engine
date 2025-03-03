@@ -154,9 +154,11 @@ body {
   text-align: justify;
 }
 
+
 .about-department-text h2 {
   text-align: left;
 }
+
 
 .about-department-image img {
   /* max-width: 100%; */
@@ -244,12 +246,10 @@ ul {
   .main-content {
     padding: 10px;
   }
-
   .about-department-text h2 {
     text-align: center;
     margin-bottom: 10px;
   }
-
   .parallel-sections {
     flex-direction: column;
   }
@@ -317,6 +317,11 @@ ul {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+  .about-department-text h2 {
+    text-align: center;
+    font-size: 28px;
+    /* Adjust font size for smaller screens */
+  }
 
   .about-department-text h2 {
     text-align: center;
@@ -379,3 +384,4 @@ ul {
     font-size: 24px;
   }
 }
+
