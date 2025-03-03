@@ -32,7 +32,7 @@ const Achievements = ({data}) => {
   };
 
   return (
-    <div className={styles.achievementsContainer}>
+    <div className={`${styles.achievementsContainer}`}>
       <h2 className={styles.sportsachievement}>Achievements</h2>
       <Slider {...settings}>
         {achievements?.map((item) => (

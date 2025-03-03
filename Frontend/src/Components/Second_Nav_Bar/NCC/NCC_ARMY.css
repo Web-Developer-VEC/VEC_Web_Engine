@@ -2,13 +2,13 @@
 .NCC_ARMY-container {
 
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
 }
 
 /* Content Wrapper */
 .NCC_ARMY-content-wrapper {
   /*background: #fff;*/
-  padding: 30px;
+  padding: 0px;
   animation: slideInLeft 1s ease-out;
 }
 
@@ -242,7 +242,7 @@
 @media screen and (max-width: 1200px) {
   .NCC_ARMY-container,
   .NCC_ARMY-aim-container {
-    max-width: 98%;
+    max-width: 105%;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -253,14 +253,7 @@
 
   .NCC_ARMY-section-title,
   .NCC_ARMY-heading {
-    font-size: 2rem;
-  }
-
-  .NCC_ARMY-content,
-  .NCC_ARMY-aimcontent,
-  .NCC_ARMY-list li {
-    font-size: 1.2rem;
-    line-height: 1.9;
+    font-size: 1.7rem;
   }
 
   .NCC_ARMY-profile-name {
@@ -303,6 +296,18 @@
   /* Adds space between the Back button and NCC Army */
   .back-button {
     margin-bottom: 15px;
+  }
+
+  .NCC_ARMY-section-title,
+  .NCC_ARMY-heading {
+    font-size: 1.3rem;
+  }  
+
+  .NCC_ARMY-content,
+  .NCC_ARMY-aimcontent,
+  .NCC_ARMY-list li {
+    font-size: 0.9rem;
+    line-height: 1.9;
   }
 
   /* Reduces extra margin/padding that may extend page length */
@@ -395,7 +400,8 @@
   .NCC_ARMY-container,
   .NCC_ARMY-content-wrapper,
   .NCC_ARMY-section {
-    padding: 6px 8px; /* Reducing padding to optimize space */
+    margin: 2px;
+    padding: 6px 3px; /* Reducing padding to optimize space */
   }
 
   /* Adjusting button or navigation elements */

@@ -29,6 +29,9 @@
     grid-template-columns: 1fr 1fr;
     height: 80vh;
     margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Student Section */
@@ -51,9 +54,9 @@
   
   .student-login-container {
     position: relative;
-    /*width: 430px;*/
+    width: 35vw;
+    height: 55vh;
     padding: 3em;
-    /*color: #fff;*/
     transform: rotateY(5deg) rotateX(2.5deg);
     transform-style: preserve-3d;
     transition: transform 1s;
@@ -250,14 +253,14 @@
 /* Card Container */
 .card-container {
     perspective: 50em;
-  }
+}
   
   .card-container:nth-child(1) {
     --bi: repeating-linear-gradient(30deg, #111 0 0.25em, #333 0 1em);
   }
   
   .card-container:nth-child(2) {
-    /*--bi: linear-gradient(#555 5em, transparent 3em), linear-gradient(60deg, #880E4F, #1A237E);*/
+    /* --bi: linear-gradient(#555 5em, transparent 3em), linear-gradient(60deg, #880E4F, #1A237E); */
   }
   
   /* Layered 3D Effect */
@@ -418,204 +421,165 @@
     transition: color 0.4s ease-in-out 0.4s;
 }
 
-@media screen and (max-width: 1140px){
-    .login-container{
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-left: -3rem;
-    }
-    .faculty-login-container,
-    .student-login-container{
-        margin-left: 3.9rem;
-    }
+.student-login-bg,
+.faculty-login-bg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.8s ease-in-out;
+    transform: scale(0);
 }
 
-@media screen and (max-width: 1020px){    
-    .faculty-login-container,
-    .student-login-container{
-        margin-right: 0rem;
+@media screen and (max-width: 1250px){
+    .login-container h1{
+        font-size: 3rem;
     }
-    .faculty-login-container h1,
-    .student-login-container h1{
-        font-size: 3.3rem;
+    .login-container h5{
+        font-size: 2rem;
     }
-    .faculty-login-container h5,
-    .student-login-container h5{
-        font-size: 2.1rem;
-    }
-    .fancy{
-        padding: 0.9rem 1rem;
-    }
-    .fancy::before{
-        width: 1.1625rem;
-    }
-    .student-login-button:hover .fancy::before,
-    .faculty-login-button:hover .fancy::before{
-        width: 0.9025rem;
-        padding-left: 5px;
-    }
-    .student-login-container,
-    .faculty-login-container{
-        width: 380px;
-    }
+    
 }
 
-@media screen and (max-width:880px){
-    .faculty-login-container h1,
-    .student-login-container h1{
+@media screen and (max-width: 1080px){
+    .login-container h1{
         font-size: 2.7rem;
     }
-    .faculty-login-container h5,
-    .student-login-container h5{
+    .login-container h5{
         font-size: 1.5rem;
     }
-    .student-login-container,
-    .faculty-login-container{
-        width: 350px;
-        padding: 2.55em;
-    }
-    .fancy{
-        padding: 0.60rem 0.73rem;
-    }
-    .fancy::before{
-        width: 0.95rem;
-    }
-    .student-login-button:hover .fancy::before{
-        width: 0.80rem;
-    }
-    .fancy .text{
-        font-size: 0.90rem;
-    }
 }
 
-@media screen and (max-width:820px){
-    .login-container{
-        display: flex;
-    }
-    .faculty-login-container h1,
-    .student-login-container h1{
-        font-size: 2.6rem;
-    }
-    .faculty-login-container h5,
-    .student-login-container h5{
-        font-size: 1.5rem;
-        padding: 1rem 0;
-    }
-    .student-login-container,
-    .faculty-login-container{
-        width: 330px;
-        padding: 1.94em;
-    }
-}
-
-@media screen and (max-width:750px){
-    .login-container{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        padding: 40px 0;
-    }
-    .faculty-login-container h1,
-    .student-login-container h1{
-        font-size: 4rem;
-    }
-    .faculty-login-container h5,
-    .student-login-container h5{
-        font-size: 2.0rem;
-        padding: 1.8rem 0;
-    }
-    .student-login-container,
-    .faculty-login-container{
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        width: 430px;
-        padding: 1.94em;
-    }
-}
-
-
-@media screen and (max-width:490px){
-    .faculty-login-container h1,
-    .student-login-container h1{
-        font-size: 3.1rem;
-    }
-    .faculty-login-container h5,
-    .student-login-container h5{
-        font-size: 1.6rem;
-        padding: 0.8rem 0;
-    }
-    .student-login-container,
-    .faculty-login-container{
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        width: 370px;
-        padding: 1.54em;
-    }
-    .fancy{
-        padding: 0.6rem 0.9rem;
-    }
-    .fancy::before{
-        width: 1.1rem;
-    }
-    .student-login-button:hover .fancy::before{
-        width: 0.85rem;
-    }
-}
-
-
-@media screen and (max-width:400px){
-    .faculty-login-container h1,
-    .student-login-container h1{
-        font-size: 2.7rem;
-    }
-    .faculty-login-container h5,
-    .student-login-container h5{
-        font-size: 1.4rem;
-        padding: 0.3rem 0;
-    }
-    .student-login-container,
-    .faculty-login-container{
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        width: 330px;
-    }
-    .fancy{
-        padding: 0.54rem 0.78rem;
-    }
-    .fancy::before{
-        width: 0.9rem;
-    }
-    .student-login-button:hover .fancy::before{
-        width: 0.79rem;
-    }
-}
-
-
-@media screen and (max-width:350px){
-    .faculty-login-container h1,
-    .student-login-container h1{
+@media screen and (max-width: 1000px) {
+    .login-container h1 {
         font-size: 2.3rem;
     }
-    .faculty-login-container h5,
-    .student-login-container h5{
+
+    .login-container h5 {
+        font-size: 1.4rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        padding: 1.5rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 2rem; /* Adjust margin */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 2rem; /* Keep it consistent */
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .login-container h1 {
+        font-size: 2.3rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.4rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 2rem; /* Adjust margin */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 2rem; /* Keep it consistent */
+        padding: 1.5rem;
+    }
+}
+
+
+@media screen and (max-width: 850px) {
+    .login-container h1 {
+        font-size: 2.0rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.2rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 1.2rem; /* Adjust margin */
+        padding: 0.75rem;
+        height: 50vh;
+        width: 38vw;
+    }
+
+    .faculty-login-container {
+        margin: 1.2rem; /* Keep it consistent */
+        padding: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-container h1 {
+        font-size: 2.0rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.2rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin:1.52rem; /* Adjust margin */
+        padding: 1.3rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 1.5rem; /* Keep it consistent */
+        padding: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .login-container h1 {
+        font-size: 1.85rem;
+    }
+
+    .login-container h5 {
         font-size: 1.1rem;
-        padding: 0.15rem 0;
     }
-    .student-login-container,
-    .faculty-login-container{
-        width: 260px;
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
-    .fancy{
-        padding: 0.40rem 0.63rem;
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin:0.5rem; /* Adjust margin */
+        padding: 1rem ; /* Adjust padding */
+        height: 35vh;
+        width: 225px;
     }
-    .fancy::before{
-        width: 0.8rem;
-    }
-    .student-login-button:hover .fancy::before{
-        width: 0.73rem;
-    }
-    .fancy .text{
-        font-size: 0.85rem;
+
+    .faculty-login-container {
+        margin: 0.5rem; /* Keep it consistent */
+        padding: 1rem;
+        height: 35vh;
+        width: 225px;
     }
 }

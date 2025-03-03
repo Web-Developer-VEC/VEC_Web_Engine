@@ -103,8 +103,8 @@ export default function Warden() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.7 }}
       >
-        <div className="wardens">
-          <h2>Boys Warden</h2>
+        <div className=" wardens">
+          <h2 className="">Boys Warden</h2>
 
           <div className="boys-wardens">
             {boysWardens?.male_warden_list?.map((warden, index) => (
