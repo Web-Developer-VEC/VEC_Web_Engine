@@ -1,270 +1,177 @@
 
-  .clgvisioncard {
-    justify-content: center;
-    align-items: center; 
-    margin-top: 3%;
-    margin-bottom: 1%;
+
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container for Vision and Mission sections */
+.visionMissionContainer {
+  max-width: 1200px;
+  margin: 20px auto; /* Reduced margin-top */
+  padding: 10px; /* Inner spacing */
+  position: relative; /* For positioning the photo on desktop */
+}
+
+/* Vision & Mission Wrapper for desktop (parallel columns on left, photo on right) */
+.visionMissionWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Space between columns and photo */
+  margin-bottom: 10px; /* Reduced space below */
+}
+
+/* Vision & Mission Cards */
+.visionCard, .missionCard {
+  flex: 1;
+  max-width: 750px;
+  background: #fff;
+  padding: 15px; /* Reduced padding */
+  border-left: 8px solid #fdb515;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; /* For yellow border positioning */
+}
+
+.visionCard:hover, .missionCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.visionCard::before, .missionCard::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  background-color: #fdb515;
+  z-index: -1;
+}
+
+/* Photo on the rightmost side of the page (desktop only) */
+.photo {
+  width: 280px; /* Slightly reduced width */
+  height: 380px;
+  position: absolute;
+  right: 20px; /* Align to rightmost side with padding */
+  top: 0; /* Align with top of Vision & Mission */
+  display: none; /* Hide by default, show on desktop */
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image fills the area */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header (icon and title) */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Reduced space below header */
+}
+
+.cardTitle {
+  font-size: 28px; /* Larger for prominence, Poppins font */
+  font-weight: bold;
+  color: #1d1d1d;
+  margin: 0;
+}
+
+/* Card content styling */
+.cardContent {
+  font-size: 16px; /* Set to 16px for inner content only, Poppins font */
+  color: #1d1d1d;
+  text-align: justify;
+  margin-top: 10px; /* Space above content */
+}
+
+/* Desktop View (Above 1024px) */
+@media (min-width: 1025px) {
+  .visionMissionContainer {
+      padding: 10px;
   }
-  
-  .sectioncard ul {
-    padding-left: 20px;
-    margin-top: 20px;
-    list-style-type: disc;
+
+  .visionMissionWrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px; /* Space between Vision, Mission, and photo */
   }
-  
-  .sectioncard li {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 10px;
-  }
-  
-  .sectioncard {
-    /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
-    color: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 50%; /* Ensure equal height */
-  }
-  .vision-quote {
-    text-align: center; /* Centers text */
-    font-family: "EB Garamond", serif;
-    line-height: 1.4;
-    font-size: 36px; /* Increased font size */
-    color: rgba(255, 255, 255, 0.9);
-    width: 100%; /* Full width of the card */
-    padding: 20px; /* Adjust padding */
-  }
-  
-  
-  
-  .sectioncard:hover {
-    transform: translateY(-10px) rotate(-1deg);
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
-  }
-  
-  .sectioncard::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    z-index: -1;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .sectioncard:hover::before {
-    transform: scale(1.3);
-  }
-  
-  .sectioncard h2 {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  
-  .sectioncard p {
-    font-size: 18px;
-    line-height: 1.6;
-    font-weight: 400;
-  }
-  
-  .icon-container {
-    position: absolute;
-    top: -30px;
-    right: -30px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon-container i {
-    font-size: 40px;
-    color: rgba(255, 255, 255, 0.9);
-    animation: glow 1.5s infinite alternate;
-  }
-  
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    to {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-    }
-  }
-  
-  .testimonials {
-    margin-top: 50px;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 500;
-    color: #555;
-    text-align: center;
-    position: relative;
-  }
-  
-  .testimonials::after {
-    content: "";
-    display: block;
-    width: 50%;
-    height: 2px;
-    margin: 10px auto 0;
-    /*background: linear-gradient(90deg, #f7b731, #e74c3c);*/
-  }
-  
-  /* General Section Styling */
-  .about-department {
-    padding: 50px 0;
-  }
-  
-  .about-department h2 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .about-department-text {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
-    text-align: justify;
-  }
-  
-  .about-department-image img {
-    max-width: 100%;
-    height: auto;
-    margin-left: 30px;  /* Optional gap on the left side of the image */
-  
-    border-radius: 15px; /* Softer, more modern rounded corners */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for a more sophisticated look */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
-  }
-  
-  .about-department-image img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
-  }
-  
-  /* Vision and Mission Section */
-  .sectioncard {
-    padding: 30px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sectioncard h2 {
-    font-size: 30px;
-    color: #ffffff;
-  }
-  
-  .sectioncard p,
-  .sectioncard ul {
-    font-size: 20px;
-    line-height: 1.6;
-    /*color: #333;*/
-  }
-  
-  .sectioncard blockquote {
-    font-size: 24px;
-    font-style: italic;
-    color: #555;
-    border-left: 4px solid #007bff;
-    padding-left: 15px;
-    margin-left: 0;
-  }
-  
-  ul {
-    padding-left: 20px;
-    list-style-type: disc;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 767px) {
-    .about-department .row {
-      flex-direction: column-reverse;
-    }
-  
-    .about-department-text {
-      text-align: center;
-    }
-  }
-  
-  
-  /* For mobile responsiveness */
-  @media (max-width: 768px) {
-    .about-department-content {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .about-department-heading {
-      margin-bottom: 20px;
-    }
-  
-    .about-department-text {
-      max-width: 100%;
-      padding: 0 15px;
-    }
-  
-    .about-department-image {
+
+  .visionCard, .missionCard {
+      flex: 1;
+      max-width: 750px;
       margin-top: 20px;
-    }
   }
-  
-  /* For mobile responsiveness */
-  @media (max-width: 768px) {
-    .about-department-content {
+
+  .photo {
+      display: block; /* Show photo on desktop */
+  }
+}
+
+/* Tablet View (Below 1024px) */
+@media (max-width: 1024px) {
+  .visionMissionContainer {
+      padding: 10px;
+  }
+
+  .visionMissionWrapper {
       flex-direction: column;
-    }
-  
-    .about-department-text {
-      max-width: 100%;
+      align-items: center;
       text-align: center;
-    }
-  
-    .about-department-image {
-      margin-top: 20px;
-    }
+      margin-bottom: 15px;
   }
-  
-  /* General Section Styling */
-  .sectioncard {
-    /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
-    color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+
+  .visionCard, .missionCard {
+      width: 100%;
+      max-width: 100%;
+      padding: 15px;
+      border-left: 8px solid #fdb515;
   }
-  
-  @media (max-width: 768px) {
-    .parallel-sections {
-      flex-direction: column;
-    }
-  
-    .section-card {
-      margin-bottom: 20px;
-    }
+
+  .photo {
+      width: 70%;
+      height: auto;
+      max-height: 300px;
+      order: -1; /* Move image above text */
+      margin-bottom: 10px;
+      position: static; /* Remove absolute positioning */
+      display: block; /* Show on tablet */
   }
-  
+}
+
+/* Mobile View (Below 768px) */
+@media (max-width: 768px) {
+  .photo {
+      display: none; /* Hide image on mobile */
+  }
+
+  .visionCard, .missionCard {
+      width: 100%;
+      max-width: 100%;
+      padding: 12px;
+      border-left: 6px solid #fdb515;
+  }
+
+  .cardTitle {
+      font-size: 20px;
+  }
+
+  .cardContent {
+      font-size: 14px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 600px) {
+  .visionMissionContainer {
+      padding: 5px;
+  }
+}
+
+/* Ensure Poppins font is loaded */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
