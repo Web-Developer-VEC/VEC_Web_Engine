@@ -149,7 +149,9 @@ body {
   /*color: #555;*/
   text-align: justify;
 }
-
+.about-department-text h2 {
+  text-align: left;
+}
 .about-department-image img {
   /* max-width: 100%; */
   height: 350px;
@@ -230,7 +232,10 @@ ul {
   .main-content {
     padding: 10px;
   }
-
+  .about-department-text h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
   .parallel-sections {
     flex-direction: column;
   }
@@ -285,6 +290,11 @@ ul {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+  .about-department-text h2 {
+    text-align: center;
+    font-size: 28px;
+    /* Adjust font size for smaller screens */
+  }
 
   .committee-button {
     width: 90%;
@@ -336,3 +346,4 @@ ul {
     font-size: 24px;
   }
 }
+

@@ -4,7 +4,7 @@
   grid-template-columns: 30% 70%; /* 30% for h1, 70% for the card */
   gap: 20px; /* Space between the columns */
   align-items: center;
-  margin: 20px 10%;
+  margin: 40px 10%;
   /*background: #fff;*/
   overflow: hidden;
 }
@@ -68,7 +68,31 @@
   text-overflow: ellipsis; /* Add ellipsis if the text is too long */
   white-space: nowrap; /* Prevent wrapping */
 }
+@media (max-width: 900px) {
+  .dynamic-container {
+    grid-template-columns: 1fr;
+    /* Stack columns on smaller screens */
+  }
 
+  .dynamic-container h1 {
+    font-size: 16px;
+  }
+
+  .dynamic-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    max-width: 100%;
+    /* Allow dynamic resizing on smaller screens */
+    height: auto;
+    /* Adjust height */
+  }
+
+  .dynamic-image {
+    width: 250px;
+    height: 150px;
+  }
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .dynamic-container {

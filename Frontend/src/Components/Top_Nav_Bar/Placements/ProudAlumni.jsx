@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./DynamicPhotoText.css";
-import "./calen.css";
 
 const ProudAlumni = () => {
   const [data, setData] = useState([]);
@@ -24,33 +23,7 @@ const ProudAlumni = () => {
     fetchData();
   }, []);
 
-  const handleNext = () => {
-    if (currentPage < data.length - 1 && !isFlipping) {
-      setIsFlipping(true);
-      setFlipDirection("right");
-
-      setTimeout(() => {
-        setCurrentPage((prev) => prev + 1);
-        setIsFlipping(false);
-        setFlipDirection(null);
-        setCurrentIndex(0); // Reset alumni index when changing pages
-      }, 500);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 0 && !isFlipping) {
-      setIsFlipping(true);
-      setFlipDirection("left");
-
-      setTimeout(() => {
-        setCurrentPage((prev) => prev - 1);
-        setIsFlipping(false);
-        setFlipDirection(null);
-        setCurrentIndex(0); // Reset alumni index when changing pages
-      }, 500);
-    }
-  };
+ 
 
   // Automatically cycle through alumni within the current department
   useEffect(() => {
@@ -70,55 +43,6 @@ const ProudAlumni = () => {
 
   return (
     <div className="proud-alumni">
-      <div className="app-container">
-        <div className="text-content">
-          <h1>Get</h1>
-          <h2 style={{ margin: "0 20px" }}>Inspired</h2>
-          <h3 style={{ margin: "0 40px" }}>by</h3>
-          <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
-        </div>
-
-        <div className="flipbook dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-          <div className="pages">
-            <div
-              className={`page ${
-                flipDirection === "right" ? "flip-right" : ""
-              } ${flipDirection === "left" ? "flip-left" : ""}`}
-            >
-              {data.length > 0 && (
-                <div>
-                  <h2>{data[currentPage].alumni.department_name}</h2>
-                  <img
-                    src={data[currentPage].alumni.students[currentIndex].photo}
-                    alt={data[currentPage].alumni.students[currentIndex].name}
-                    className="image"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="controls">
-            <button
-              onClick={handlePrev}
-              disabled={currentPage === 0 || isFlipping}
-              className="button bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] hover:bg-secd dark:hover:bg-drks"
-            >
-              ‹
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={currentPage === data.length - 1 || isFlipping}
-              className="button bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] hover:bg-secd dark:hover:bg-drks"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-      </div>
-
       <div className="dept">
         {data.map((department, index) => (
           <div key={index} className="dynamic-container">
