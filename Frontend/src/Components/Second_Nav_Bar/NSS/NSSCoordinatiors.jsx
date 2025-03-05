@@ -119,17 +119,7 @@ const Coordinators = ({faculty, students}) => {
           />
           <h4 className="NSS-name">{faculty?.name}</h4>
           <p className="NSS-role">{faculty?.designation}</p>
-          <div className="NSS-social-icons">
-            <a href={"#"} className="NSS-social-link">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href={"#"} className="NSS-social-link">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href={"#"} className="NSS-social-link">
-              <i className="fab fa-linkedin"></i>
-            </a>
-          </div>
+          
         </div>
       </div>
 

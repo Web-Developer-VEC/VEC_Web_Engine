@@ -1,16 +1,31 @@
-/* Page Container */
-.naac-page {
-  margin: 0;
-  padding: 0;
-}
 
-/* Fully Stretched Banner */
+
+
 .naac-banner {
   width: 100vw; /* Full viewport width */
   margin: 0; /* Remove any gaps */
   position: relative;
   left: 0;
   top: 0;
+}
+.nnaac-page {
+  margin: 0 auto;
+  
+}
+
+@media screen and (max-width: 1050px) {
+  .nabout-section {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+  }
+}
+.nabout-section {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  
 }
 
 .naac-banner-image {
@@ -21,13 +36,15 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* About Section */
-.about-section-naac {
-  /*display: grid;*/
-  /*grid-template-columns: 1fr 1fr;*/
-  /*gap: 30px;*/
-  margin: 40px 0;
+.objectives-section {
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+  width:92vw; 
+
 }
+
+
 
 /* Info Panels */
 .naac-info-panel, .iqac-info-panel {
@@ -35,7 +52,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  margin:20px;
+
 }
 
 .naac-info-panel {
@@ -50,27 +67,21 @@
 
 /* Objectives Section with Left Border */
 .objectives-section {
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
   min-height: 250px;
-  max-width: 800px;
-  width: 100%;
-  margin: 40px auto;
-  /*background: #f8f9fa;*/
+  width:94vw; /* Full viewport width */
+  max-width: none; /* Remove max-width limit */
+  margin: 0 auto; /* Center alignment */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*border-left: 6px solid #007bff;*/
 }
 
-/* Objectives Hover Effect */
-.objectives-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+
 
 /* Objectives Section Heading */
 .objectives-section h2 {
@@ -86,16 +97,14 @@
   list-style-position: outside;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 /* Two-Column Layout for List Items */
 .objectives-section li {
-  width: calc(50% - 10px);
+  width: 45%; /* Adjusted for responsiveness */
   margin: 10px 0;
   padding: 12px;
-  /*background: rgba(255, 255, 255, 0.9);*/
   border-radius: 6px;
   transition: background 0.3s ease;
   box-sizing: border-box;
@@ -129,22 +138,27 @@
   padding: 12px;
   font-size: 1.1rem;
   font-weight: bold;
-  /*border: 2px solid #FDCC03;*/
-  /*background-color: #222;*/
-  /*color: #fff;*/
+  
+  background-color:#FDCC03;
+  
   transition: all 0.3s ease-in-out;
+}
+.naac-action-button:active{
+  background-color: white;
+  color:#800000;
+  transform: scale(1.1);
 }
 
 .naac-year-button.active {
   /*background-color: #FDCC03;*/
-  /*color: #222;*/
+  color: #FDCC03;
   /* border: 3px solid #f8961e; */
   transform: scale(1.05);
 }
 
 .naac-year-button:hover {
-  /*background-color: #333;*/
-  /*color: #FDCC03;*/
+  background-color: #800000;
+  color:white;
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
@@ -178,9 +192,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.naac-action-button:hover {
-  /*background-color: #e6b802;*/
-}
+
 
 /* PDF Embed Container */
 .naac-pdf-container {
@@ -235,7 +247,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   /* Stack About Section */
-  .about-section-naac {
+  .nabout-section-naac {
     /*grid-template-columns: 1fr;*/
   }
   
