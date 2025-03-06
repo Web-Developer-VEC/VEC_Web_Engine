@@ -11,6 +11,7 @@ const Announcements1 = () => {
     const [hovered, setHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const content = spcannouncements[0]?.list_of_contents || [];
+    const links = spcannouncements[0]?.list_of_links || [];
 
     // Fetching Special Announcements
     useEffect(() => {
@@ -88,11 +89,11 @@ const Announcements1 = () => {
                         {content?.map((item, index) => (
                             <li className="text-xl mb-2" key={index}>
                                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                                {item}
+                                <a href={links[index]} className="text-black no-underline">{item}</a>
                             </li>
                         ))}
                     </ul>
-                    <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button>
+                    {/* <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button> */}
                 </div>
 
                 {/* Announcements Section */}
@@ -107,8 +108,17 @@ const Announcements1 = () => {
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i} className='text-xl line-clamp-2'>
-                                            <a><i className="fa-solid fa-right-to-bracket"></i></a>
-                                            {announcements[(currentIndex + i) % announcements.length]?.announcement_name}
+                                            {announcements[(currentIndex + i) % announcements.length] && (
+                                                <a
+                                                    href={announcements[(currentIndex + i) % announcements.length].pdf_path || announcements[(currentIndex + i) % announcements.length].link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-black hover:underline no-underline"
+                                                >
+                                                    <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                                                    {announcements[(currentIndex + i) % announcements.length].announcement_name}
+                                                </a>
+                                            )}
                                         </h4>
                                     ))}
                                 </div>
@@ -118,9 +128,18 @@ const Announcements1 = () => {
                                 <h2 className='text-3xl text-accn dark:text-drks mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
-                                        <h4 key={i + 5} className='text-xl line-clamp-2'>
-                                            <a><i className="fa-solid fa-right-to-bracket"></i></a>
-                                            {announcements[(currentIndex + i + 5) % announcements.length]?.announcement_name}
+                                        <h4 key={i} className='text-xl line-clamp-2'>
+                                            {announcements[(currentIndex + i) % announcements.length] && (
+                                                <a
+                                                    href={announcements[(currentIndex + i) % announcements.length].pdf_path || announcements[(currentIndex + i) % announcements.length].link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-black hover:underline no-underline"
+                                                >
+                                                    <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                                                    {announcements[(currentIndex + i) % announcements.length].announcement_name}
+                                                </a>
+                                            )}
                                         </h4>
                                     ))}
                                 </div>

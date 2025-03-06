@@ -8,7 +8,7 @@ import {
   } from 'lucide-react';  
 import { useEffect, useRef, useState } from 'react';
 import { SiPublons } from "react-icons/si";
-import { FaGoogleScholar, FaOrcid, FaResearchgate } from "react-icons/fa6";
+import { FaEnvelope, FaGoogleScholar, FaLinkedin, FaOrcid, FaPhone, FaResearchgate } from "react-icons/fa6";
 import { GoProjectRoadmap } from "react-icons/go";
 import { MdCoPresent } from "react-icons/md";
 import '../sections/Facultyprofile.css'
@@ -43,84 +43,83 @@ const SocialIcon = ({ icon: Icon, label, bgColor, url }) => (
 );
 
 const ProfileSection = ({data}) => {
+  const getNumber = (value) => value ? Number(value) : 0;
+
   const stats = [
     {
-      number: 28,
+      number: getNumber(data?.Journal_Publications) + getNumber(data?.Conference_Publications),
       title: 'Publications',
       icon: BookText,
       bgColor: 'faculty-bg-cyan'
     },
     {
-      number: 22,
+      number: getNumber(data?.Sponsored_Projects),
       title: 'Sponsored Projects',
       icon: Award,
       bgColor: 'faculty-bg-lime'
     },
     {
-      number: 12,
-      title: 'Consultancy Projects',
+      number: getNumber(data?.Patent_Filed) + getNumber(data?.Patent_Published) + getNumber(data?.Patent_Granted),
+      title: 'Patents (Filed, Published, Granted)',
       icon: Briefcase,
       bgColor: 'faculty-bg-purple'
     },
     {
-      number: 1,
+      number: getNumber(data?.PHD_Produced) + getNumber(data?.PHD_Pursuing),
       title: 'M.E./Ph.D. Scholars',
       icon: GraduationCap,
       bgColor: 'faculty-bg-orange'
     },
     {
-      number: 40,
-      title: 'Seminar, Conference, Workshop Attended',
+      number: getNumber(data?.Guest_Lectures_Attended),
+      title: 'Guest Lectures Attended',
       icon: Users,
       bgColor: 'faculty-bg-emerald'
-    },
-    {
-      number: 40,
-      title: 'Seminar, Conference, Workshop Attended',
-      icon: Users,
-      bgColor: 'faculty-bg-emerald'
-    },
-    {
-      number: 40,
-      title: 'Seminar, Conference, Workshop Attended',
-      icon: Users,
-      bgColor: 'faculty-bg-emerald'
-    },
-  
+    }
   ];
 
-  const socials = [
+  const getValidUrl = (url) => url ? url : null;
+
+  const social = [
     { 
       icon: SiPublons, 
       label: 'Publon', 
       bgColor: 'faculty-bg-publons', 
-      url: "https://www.webofscience.com/wos/author/record/21718142"
+      url: getValidUrl(data?.Publon_Profile)
     },
     { 
       icon: FaGoogleScholar, 
       label: 'Google Scholar', 
       bgColor: 'faculty-bg-google-scholar', 
-      url: 'https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2' 
+      url: getValidUrl(data?.Google_Scholar_Profile)
     },
     { 
       icon: FaOrcid, 
-      label: 'Orchid', 
-      bgColor: 'faculty-bg-publons', 
-      url: 'https://orcid.org/my-orcid?orcid=0000-0001-8020-1678' 
+      label: 'Orcid', 
+      bgColor: 'faculty-bg-orcid', 
+      url: getValidUrl(data?.Orchid_Profile)
     },
     { 
       icon: FaResearchgate, 
       label: 'Research Gate', 
       bgColor: 'faculty-bg-research', 
-      url: 'https://www.researchgate.net/profile/Pandu-Visu' 
+      url: getValidUrl(data?.Research_Gate)
     },
     { 
-      icon: FaResearchgate, 
-      label: 'Research Gate', 
-      bgColor: 'faculty-bg-research', 
-      url: undefined 
+      icon: FaLinkedin, 
+      label: 'LinkedIn', 
+      bgColor: 'faculty-bg-linkedin', 
+      url: getValidUrl(data?.LinkedIn_Profile)
+    },
+    { 
+      icon: FaOrcid, 
+      label: 'Scopus', 
+      bgColor: 'faculty-bg-scopus', 
+      url: getValidUrl(data?.Scopus_Author_Profile)
     }
   ];
+  
+  const socials = social.filter(item => item.url !== null);
 
   return (
     <div className="faculty-profile-container">
@@ -157,8 +156,8 @@ const ProfileSection = ({data}) => {
                 <p className="faculty-profile-designation">Department Of {data?.Department_Name}</p>
               </div>
               <div className='faculty-profile-contact'>
-                <p>Phone: +91 152463987</p>
-                <p>Email: madara@gmail.com</p>
+                <p className='fac-contact'> <FaPhone style={{ marginRight: "8px" }} />Phone: +91 152463987</p>
+                <p className='fac-contact'> <FaEnvelope style={{ marginRight: "8px" }} />Email: madara@gmail.com</p>
               </div>
               
             </div>
@@ -183,7 +182,13 @@ const ProfileSection = ({data}) => {
 
 export const EducationTimeline = ({ data }) => {
 
-  const educationalQualifications = data?.EDUCATIONAL_QUALIFICATION || [];
+  const educationalQualifications = (data?.EDUCATIONAL_QUALIFICATION || [])
+  .filter((item) => 
+    item.DEGREE && 
+    item.BRANCH && 
+    item.INSTITUTE && 
+    item.YEAR
+  );
 
   const [visibleCards, setVisibleCards] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -382,9 +387,15 @@ const Experience = ({data}) => {
   const [isSettled, setIsSettled] = useState(false);
   const autoScrollTimeoutRef = useRef(null);
 
-  const experiences = data?.EXPERIENCE || [];
-
-
+  const experiences = (data?.EXPERIENCE || [])
+  .filter((item) => 
+    item.From && 
+    item.TO && 
+    item.YEARS && 
+    item.MONTHS && 
+    item.DESIGNATION && 
+    item.INSTITUTION
+  );
 
   useEffect(() => {
     if (roadmapRef.current) {
@@ -539,23 +550,23 @@ const Tile = ({ title, icon, items, onItemClick }) => {
         <h2 className="faculty-tiles-app-tile-title text-text dark:text-drkt">{title}</h2>
       </div>
       <ul className="faculty-tiles-app-tile-list">
-        {visibleItems.map((item, index) => (
+      {visibleItems
+        .filter((item) => item.text && Object.keys(item.details).length > 0) // Ensure text and details exist
+        .map((item, index) => (
           <li key={index} className="faculty-tiles-app-tile-item">
             <ArrowRight className="faculty-tiles-app-item-icon text-secd dark:text-drks" />
-            {item && (
-              <a
-                className="faculty-tiles-app-item-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onItemClick(item);
-                }}
-              >
-                {item.text}
-              </a>
-            )}
+            <a
+              className="faculty-tiles-app-item-link"
+              onClick={(e) => {
+                e.preventDefault();
+                onItemClick(item);
+              }}
+            >
+              {item.text}
+            </a>
           </li>
         ))}
-      </ul>
+    </ul>
       {items.length > 5 && (
         <button className="faculty-tiles-app-view-more bg-secd dark:bg-drks text-text dark:text-drkt
           hover:bg-accn hover:text-prim dark:hover:bg-drka dark:hover:text-prim" onClick={handleViewMore}>
@@ -579,97 +590,156 @@ const Tiles = ({ data }) => {
       {
         title: "Projects",
         icon: <Lightbulb size={24} />,
-        items: data.PROJECTS?.map((item) => ({
-          text: item.TITLE || "No Title Available",
-          link: item.LINK || "#",
-          details: {
-            "Sponsoring Agency": item["SPONSORING AGENCY"] || "N/A",
-            "Amount": item.AMOUNT || "N/A",
-            "Year of Sanction": item["YEAR OF SANCTION"] || "N/A",
-            "Duration": item.DURATION || "N/A",
-            "Responsibility": item["RESPONSIBILITY (PI / CO PI)"] || "N/A",
-            "Status": item["STATUS ( Completed / Ongoing)"] || "N/A",
-          },
-        })) || [],
+        items: data.PROJECTS?.map((item) => {
+          const details = {
+            "Sponsoring Agency": item["SPONSORING AGENCY"],
+            "Amount": item.AMOUNT,
+            "Year of Sanction": item["YEAR OF SANCTION"],
+            "Duration": item.DURATION,
+            "Responsibility": item["RESPONSIBILITY (PI / CO PI)"],
+            "Status": item["STATUS ( Completed / Ongoing)"],
+          };
+    
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+    
+          if (!item.TITLE && Object.keys(filteredDetails).length === 0) return null;
+    
+          return {
+            text: item.TITLE || "No Title Available",
+            link: item.LINK || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
       {
         title: "Patents",
         icon: <GoProjectRoadmap size={24} />,
-        items: data.PATENTS?.map((item) => ({
-          text: item.NAME_OF_PATENT || "No Title Available",
-          link: item.LINK || "#",
-          details: {
-            "Patent Type": item["PATENT_TYPE_(UTILITY)"] || "N/A",
-            "Country": item.COUNTRY || "N/A",
-            "Status": item["STATUS_(_Published_/_FER_/_Granted_)"] || "N/A",
-            "Date of Recent Achieved Level": item.DATE_OF_RECENT_ACHIEVED_LEVEL || "N/A",
-          },
-        })) || [],
+        items: data.PATENTS?.map((item) => {
+          const details = {
+            "Patent Type": item["PATENT_TYPE_(UTILITY)"],
+            "Country": item.COUNTRY,
+            "Status": item["STATUS_(_Published_/_FER_/_Granted_)"],
+            "Date of Recent Achieved Level": item.DATE_OF_RECENT_ACHIEVED_LEVEL,
+          };
+    
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+    
+          if (!item.NAME_OF_PATENT && Object.keys(filteredDetails).length === 0) return null;
+    
+          return {
+            text: item.NAME_OF_PATENT || "No Title Available",
+            link: item.LINK || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
       {
         title: "Journals",
         icon: <GoProjectRoadmap size={24} />,
-        items: data.JOURNAL_PUBLICATIONS?.map((item) => ({
-          text: item.PAPER_TITLE || "No Title Available",
-          link: item.DOI_NUMBER || "#",
-          details: {
-            "Authors": item.AUTHORS || "N/A",
-            "Journal Name": item.JOURNAL_NAME || "N/A",
-            "DOI Number": item.DOI_NUMBER || "N/A",
-            "Page No": item.PAGE_NO || "N/A",
-            "Month & Year": item["MONTH_&_YEAR"] || "N/A",
-          },
-        })) || [],
+        items: data.JOURNAL_PUBLICATIONS?.map((item) => {
+          const details = {
+            "Authors": item.AUTHORS,
+            "Journal Name": item.JOURNAL_NAME,
+            "DOI Number": item.DOI_NUMBER,
+            "Page No": item.PAGE_NO,
+            "Month & Year": item["MONTH_&_YEAR"],
+          };
+    
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+    
+          if (!item.PAPER_TITLE && Object.keys(filteredDetails).length === 0) return null;
+    
+          return {
+            text: item.PAPER_TITLE || "No Title Available",
+            link: item.DOI_NUMBER || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
       {
         title: "Conference",
         icon: <MdCoPresent size={24} />,
-        items: data.CONFERENCE_PUBLICATIONS?.map((item) => ({
-          text: item.PAPER_TITLE || "No Title Available",
-          link: item.LINK || "#",
-          details: {
-            "Authors": item.AUTHORS || "N/A",
-            "Conference Name": item["CONFERENCE NAME"] || "N/A",
-            "Organized By": item["ORGANIZED BY"] || "N/A",
-            "ISBN / ISSN / DOI": item["ISBN / ISSN /DOI NO"] || "N/A",
-            "Month & Year": item["MONTH_&_YEAR"] || "N/A",
-          },
-        })) || [],
+        items: data.CONFERENCE_PUBLICATIONS?.map((item) => {
+          const details = {
+            "Authors": item.AUTHORS,
+            "Conference Name": item["CONFERENCE NAME"],
+            "Organized By": item["ORGANIZED BY"],
+            "ISBN / ISSN / DOI": item["ISBN / ISSN /DOI NO"],
+            "Month & Year": item["MONTH_&_YEAR"],
+          };
+    
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+    
+          if (!item.PAPER_TITLE && Object.keys(filteredDetails).length === 0) return null;
+    
+          return {
+            text: item.PAPER_TITLE || "No Title Available",
+            link: item.LINK || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
       {
         title: "Books Published",
         icon: <Book size={24} />,
-        items: data.BOOK_PUBLICATIONS?.map((item) => ({
-          text: item["BOOK NAME, EDITION"] || "No Title Available",
-          link: item.LINK || "#",
-          details: {
-            "Author": item.AUTHOR || "N/A",
-            "Publisher": item.PUBLISHER || "N/A",
-            "ISBN / ISSN": item["ISBN / ISSN NO"] || "N/A",
-            "Month & Year": item["MONTH_&_YEAR"] || "N/A",
-            "Type": item["BOOK / BOOK CHAPTER"] || "N/A",
-          },
-        })) || [],
+        items: data.BOOK_PUBLICATIONS?.map((item) => {
+          const details = {
+            "Author": item.AUTHOR,
+            "Publisher": item.PUBLISHER,
+            "ISBN / ISSN": item["ISBN / ISSN NO"],
+            "Month & Year": item["MONTH_&_YEAR"],
+            "Type": item["BOOK / BOOK CHAPTER"],
+          };
+      
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+      
+          if (!item["BOOK_NAME,_EDITION"] && Object.keys(filteredDetails).length === 0) return null;
+      
+          return {
+            text: item["BOOK_NAME,_EDITION"] || "No Title Available",
+            link: item.LINK || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
       {
         title: "Research Scholars",
         icon: <GoProjectRoadmap size={24} />,
-        items: data.RESEARCH_SCHOLARS?.map((item) => ({
-          text: item.RESEARCH_TITLE || "No Title Available",
-          link: item["PROFILE LINK"] || "#",
-          details: {
-            "Scholar Name": item.RESEARCH_SCHOLAR_NAME || "N/A",
-            "Category": item["CATEGORY__(FULL_TIME_/_PART__TIME)"] || "N/A",
-            "Status": item["STATUS_(_ONGOING_/_COMPLETED)"] || "N/A",
-            "Degree Awarded": item["MONTH_&_YEAR_OF_DEGREE_AWARDED"] || "N/A",
-          },
-        })) || [],
+        items: data.RESEARCH_SCHOLARS?.map((item) => {
+          const details = {
+            "Scholar Name": item.RESEARCH_SCHOLAR_NAME,
+            "Category": item["CATEGORY__(FULL_TIME_/_PART__TIME)"],
+            "Status": item["STATUS_(_ONGOING_/_COMPLETED)"],
+            "Degree Awarded": item["MONTH_&_YEAR_OF_DEGREE_AWARDED"],
+          };
+    
+          const filteredDetails = Object.fromEntries(
+            Object.entries(details).filter(([_, value]) => value)
+          );
+    
+          if (!item.RESEARCH_TITLE && Object.keys(filteredDetails).length === 0) return null;
+    
+          return {
+            text: item.RESEARCH_TITLE || "No Title Available",
+            link: item["PROFILE LINK"] || "#",
+            details: filteredDetails,
+          };
+        }).filter(Boolean) || [],
       },
     ];
-
-    // Filter out tiles with NO items
+    
+    // Remove categories that have no items
     const filteredTiles = tiles.filter((tile) => tile.items.length > 0);
-
     setTileData(filteredTiles);
   }, [data]);
 
