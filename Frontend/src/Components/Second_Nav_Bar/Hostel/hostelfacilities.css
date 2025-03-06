@@ -8,6 +8,7 @@
   text-align: center;
   font-size: 3rem;
   margin-bottom: 3%;
+  color: #800000;
 }
 
 .facilities-wrapper {
@@ -36,6 +37,7 @@
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  color: rgb(255, 255, 255);
 }
 
 /* 🔹 Hover Effect (Desktop Only) */

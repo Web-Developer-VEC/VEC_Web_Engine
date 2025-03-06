@@ -13,13 +13,13 @@ const LibraryIntro = () => {
           </h1>
           <p className="text-sm sm:text-base md:text-lg leading-relaxed">
             The college library is located in the Bill Gates Block, spanning the Ground and First floors. With a total
-            area of <span className="font-semibold text-accn dark:text-drka">24,000 sq. ft.</span>, it is a spacious,
-            well-ventilated space. Our library houses over <span className="font-semibold text-accn dark:text-drka">
-            77,525 volumes</span> of books and <span className="font-semibold text-accn dark:text-drka">25,156 titles</span> across various disciplines.
+            area of <span className="font-semibold text-black dark:text-black">24,000 sq. ft.</span>, it is a spacious,
+            well-ventilated space. Our library houses over <span className="font-semibold text-black dark:text-black">
+            77,525 volumes</span> of books and <span className="font-semibold text-black dark:text-black">25,156 titles</span> across various disciplines.
           </p>
           <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-            Additionally, we offer access to <span className="font-semibold text-accn dark:text-drka">
-            174 National and International Journals</span> and over <span className="font-semibold text-accn dark:text-drka">
+            Additionally, we offer access to <span className="font-semibold text-black dark:text-black">
+            174 National and International Journals</span> and over <span className="font-semibold text-black dark:text-black">
             9,517 online journals</span>. The library follows the Universal Decimal Classification Scheme and operates
             on an Open Access System.
           </p>

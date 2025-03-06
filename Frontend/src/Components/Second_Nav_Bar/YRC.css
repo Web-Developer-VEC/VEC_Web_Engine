@@ -18,6 +18,8 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
+  border-left: #fdb515 8px solid;
+  border-right: #fdb515 8px solid;
 }
 
 /* Center "ABOUT US" Heading with Icon */
@@ -113,7 +115,7 @@
   /*background: #ffffff;*/
   padding: 20px;
   border-radius: 12px;
-  /*border: 2px solid #d1b91b;*/
+  border:5px solid #fdb515;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: center;
@@ -178,6 +180,7 @@
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+  
 }
 
 /* Carousel Container */
@@ -205,7 +208,7 @@
 
 /* Image Hover Effect */
 .YRC-carousel-slide:hover .YRC-carousel-image {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 /* Carousel Text (Overlay) */
