@@ -136,6 +136,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 10px;
 }
 
 .faculty-profile-contact{
@@ -165,7 +166,6 @@
   height: fit-content;
   width: 100%;
   justify-content: center;
-  margin-left: 20px;
 }
 
 .faculty-stat-wrapper {
@@ -224,6 +224,13 @@
   text-align: center;
 }
 
+.fac-contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 /* Background colors */
 .faculty-bg-cyan { background-color: #06b6d4; }
 .faculty-bg-lime { background-color: #84cc16; }
@@ -244,20 +251,19 @@
   }
 
   .faculty-stats-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .faculty-stats-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
+
 }
 
 @media (max-width: 767px) {
   .faculty-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
+    margin-left:5px;
   }
 
   .faculty-stat-card {
@@ -266,6 +272,24 @@
 
   .faculty-stat-number {
     font-size: 1.75rem;
+  }
+
+  .faculty-stat-wrapper{
+    width: 40vw;
+    height: 20vh;
+  }
+
+  .faculty-profile-info{
+    flex-direction: column;
+  }
+
+  .faculty-profile-information{
+    align-items: center;
+  }
+
+  .faculty-profile-contact{
+    justify-content: center;
+    align-items: center;
   }
 
   .faculty-stat-title {
@@ -318,7 +342,6 @@
 
 .faculty-timeline-cards-container {
   overflow: hidden;
-  margin: 0 4rem;
 }
 
 .faculty-timeline-cards {
@@ -549,7 +572,7 @@
 .faculty-roadmap-wrapper {
   position: relative;
   width: auto;
-  max-width: 1270px;
+  max-width: 90vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -777,6 +800,17 @@
 @media (min-width: 1024px) {
   .faculty-tiles-app-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .faculty-tiles-app-grid {
+    column-count: 1;
+    place-items: center;
+  }
+
+  .faculty-tiles-app-tile{
+    width: 90vw;
   }
 }
 
