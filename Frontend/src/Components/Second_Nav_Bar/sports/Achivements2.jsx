@@ -36,9 +36,14 @@ const Achievements1 = ({data}) => {
 
   return (
     <div className={`${styles.achievementsContainer}`}>
-      <h2 className={styles.sportscoordinator}>Anna University Zone {data?.zone}</h2>
+      <h2 className={styles.sportscoordinator}>
+        Anna University Zone {data?.zone}
+      </h2>
       <p className={styles.coordinatordes}>Co-ordinating Centre {data?.year}</p>
-      <Slider {...settings} className="">
+      <Slider
+        {...settings}
+        className=" [&_.slick-prev]:text-xs [&_.slick-next]:text-xs [&_.slick-prev]:w-6 [&_.slick-next]:w-6"
+      >
         {data?.image?.map((item) => (
           <div key={item.id} className={styles.slide}>
             <img src={item} alt="Achievement" className={styles.image} />

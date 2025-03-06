@@ -24,6 +24,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
+    color:#800000
   }
   
   /* Introduction Section */
@@ -34,6 +35,8 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
     animation: fadeInUp 1s ease-in-out;
+    border-left: 8px solid #fdb515;
+    border-right: 8px solid #fdb515;
   }
   
   .intro-text {
@@ -56,6 +59,7 @@ body {
     padding: 40px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
+    border-left: 8px solid #fdb515;
   }
   
   .vision-mission-text {
@@ -65,15 +69,9 @@ body {
     margin-bottom: 0;
     /*background: #fff;*/
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .vision-mission-text:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
+
   
   /* Animations */
   @keyframes fadeInUp {
