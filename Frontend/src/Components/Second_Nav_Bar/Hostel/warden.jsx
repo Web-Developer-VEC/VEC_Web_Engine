@@ -29,7 +29,7 @@ export default function Warden() {
 
   return (
     <>
-    <h2 className="mt-10">Wardens</h2>
+    <h2 className="warden-heading1 mt-10">Wardens</h2>
 
     <div className="tree-container">
       {/* Chief Warden */}

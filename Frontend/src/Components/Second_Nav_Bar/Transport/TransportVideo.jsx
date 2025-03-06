@@ -33,7 +33,7 @@ const Transportvideo = () => {
     return (
         <div style={{ width: '100%', height: '400px', position: 'relative', overflow: 'hidden' }}>
             <video
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ width: '120%', height: '100%', objectFit: 'cover' }}
                 autoPlay
                 loop
                 muted
@@ -47,8 +47,6 @@ const Transportvideo = () => {
                 style={{
                     position: 'absolute',
                     top: '80%',
-                    
-                    
                     left: 0,
                     width: '40%',
                     textAlign: 'center',

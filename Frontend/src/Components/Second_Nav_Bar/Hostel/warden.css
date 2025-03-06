@@ -7,11 +7,13 @@
   width: 100%;
   position: relative;
 }
-
+.warden-heading1{
+  color: #800000;
+}
 .warden-card {
   /*background: #fff;*/
   /*color: #F68220;*/
-  /*border: 1px solid #F68220;*/
+  border: 5px solid #800000;
   padding: 10px;
   border-radius: 10px;
   font-weight: bold;

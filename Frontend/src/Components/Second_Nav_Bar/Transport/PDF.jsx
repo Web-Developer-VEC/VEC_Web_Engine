@@ -5,17 +5,18 @@ const PdfOpener = () => {
 
   return (
     <div style={styles.container}>
-      <button className="bg-secd dark:bg-drks p-3 mb-8 rounded-xl"
+      <button
+        className="bg-secd dark:bg-drks p-3 mb-4 rounded-xl hover:bg-accn dark:hover:bg-blue-700"
         onClick={() => setShowPdf(true)}
       >
-        Open PDF
+        View Transport Routes
       </button>
 
       {showPdf && (
         <div style={styles.pdfContainer}>
           <div style={styles.header}>
             <h3 style={styles.title}>Viewing PDF Document</h3>
-            <button 
+            <button
               style={styles.closeButton}
               onClick={() => setShowPdf(false)}
             >
@@ -39,8 +40,6 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-   
-    padding: "20px",
   },
   button: {
     padding: "12px 24px",

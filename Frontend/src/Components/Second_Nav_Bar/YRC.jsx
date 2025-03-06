@@ -87,11 +87,7 @@ const YRC = () => {
                   <img src={studentCoordinators.images[index]} alt={name} className="YRC-profile-pic" />
                   <h4 className="YRC-name">{name}</h4>
                   <p className="YRC-role">{studentCoordinators.roles[index]}</p>
-                  <div className="YRC-social-icons">
-                    <a href="#" className="YRC-social-link"><FaFacebook /></a>
-                    <a href="#" className="YRC-social-link"><FaInstagram /></a>
-                    <a href="#" className="YRC-social-link"><FaLinkedin /></a>
-                  </div>
+                  
                 </div>
               ))}
           </div>

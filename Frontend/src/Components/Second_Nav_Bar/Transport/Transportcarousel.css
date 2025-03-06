@@ -560,9 +560,6 @@ a:hover {
   color: #000000;
 }
 
-
-
-
 #highlight {
   color: #e83f43;
 }
@@ -625,15 +622,14 @@ a:hover {
   margin: 1rem 0;
 }
 
-
-
 .transport-controls {
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: flex-end;
   padding: 0.25rem 0 0.25rem 0;
-  bottom: 120%;
+  bottom: 30%;
+  right: 35%;
 }
 .transport-controls .transport-previous, .transport-controls .transport-next {
   margin: 3px;
@@ -647,7 +643,6 @@ a:hover {
   vertical-align: middle;
   text-decoration: none;
   background: transparent;
-  
   margin: 0;
   padding: 0;
   font-size: 100%;

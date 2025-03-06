@@ -4,7 +4,7 @@ import "./aboutHost.css"
 export default function AboutHostel () {
     return (
         <>
-      <section className="about-hostel border-2 border-secd dark:border-drks">
+      <section className="about-hostel  ">
         <div className="hostel-abt-container hover-box">
           <h2 className="fade-in">About Our Hostel</h2>
           <p className="fade-in delay">
