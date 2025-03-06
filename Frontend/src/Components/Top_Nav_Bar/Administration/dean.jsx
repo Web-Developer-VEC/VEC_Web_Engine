@@ -148,7 +148,7 @@ const Dean = ({theme, toggle}) => {
           );
 
           return (
-            <div className="de-box min-w-[70vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
+            <div className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
               <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
               <div className="de-content">
                 {/* Profiles Section */}
@@ -168,7 +168,7 @@ const Dean = ({theme, toggle}) => {
                     </div>
                     {responsibleDean.Associate_Dean && (
                       <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw]
-                        border-2 border-secd dark:border-drks">
+                        border-2 border-secd dark:border-drks ">
                         <img
                           src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
                           alt={responsibleDean.Associate_Dean}
