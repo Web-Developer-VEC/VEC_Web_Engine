@@ -1,133 +1,192 @@
-/* General styles (for desktop) */
-.Management {
-    display: block; /* Default layout for desktop */
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Main container */
+.FCP-message-container {
+    max-width: 1400px; /* Increased width */
+    margin: 0 auto;
+    padding: 24px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.Management h1{
-    /*color: #444;*/
+/* Message sections */
+.FCP-message-section {
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Section titles */
+.FCP-section-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* Content container */
+.FCP-content-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Text container */
+.FCP-text-container {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px; /* Adjusted paragraph size */
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Image container */
+.FCP-image-container {
+    width: 25%; /* Adjusted size for larger screens */
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensuring image is responsive */
+.FCP-image-container img {
+    width: 100%; /* Make the image responsive */
+    max-width: 100%; /* Ensure the image doesn't overflow */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 300px; /* Control image height */
+}
+
+/* Placeholder text */
+.FCP-placeholder-text {
+    font-size: 14px;
     text-align: center;
 }
 
-.Management div {
-    padding: 20px;
-    height: 100%;
-    border-radius: 5px;
-    margin: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /*background-color: #ffffff;*/
+/* Vision text styling */
+.FCP-vision-text {
+    display: block;
+    margin: 8px 0;
+    font-weight: 600;
 }
 
-.Management .Founder img{
-    height: max-content;
-}
-.Management .Chairman {
-    height:300px;
-}
-.Management div img {
-    width: 500px;
-    height: 250px;
-    float: left; /* Keep the floated layout for desktop */
-    margin-right: 15px;
-    border-radius: 5px;
+/* CEO section adjustments */
+.FCP-ceo-section .FCP-content-container {
+    gap: 12px; /* Reduce spacing */
 }
 
-.Management div p {
-    line-height: 2;
-    /*color: #444;*/
+/* Heading 2 tag styling */
+h2 {
+    font-size: 20px; /* Adjusted h2 size */
 }
 
-.Management div h2 {
-    /*color: #444;*/
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-    .Management div {
-        width: 95%;
-        max-width: 900px;
-        padding: 18px;
-        margin: 15px auto;
-    }
-
-    .Management div img {
-        width: 100%;
-        max-width: 480px;
-        height: auto;
-        float: none;
-        display: block;
-        margin: 0 auto 12px;
-    }
-
-    .Management div h2 {
-        text-align: center;
-        font-size: 1.6em;
-    }
-
-    .Management div p {
-        text-align: justify;
-        font-size: 1em;
-        line-height: 1.8;
-    }
-
-    .Management .Chairman {
-        height: auto;
-    }
-}
-
-/* Mobile - Tablets & Small Laptops */
-@media screen and (max-width: 768px) {
-    .Management {
-        display: flex;
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .FCP-content-container {
         flex-direction: column;
         align-items: center;
-        padding: 10px;
     }
 
-    .Management div {
-        width: 95%;
-        max-width: 700px;
-        padding: 16px;
-        margin: 15px 0;
+    .FCP-image-container {
+        width: 80%;
+        margin-top: 16px;
     }
 
-    .Management div img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
+    .FCP-image-container img {
+        width: 50%; /* Ensure images take up the container width */
+        max-height: 250px; /* Reduce height on smaller devices */
     }
 
-    .Management div h2 {
-        font-size: 1.4em;
-    }
-
-    .Management div p {
-        font-size: 0.95em;
-        line-height: 1.7;
-    }
-
-    .Management .Chairman {
-        height: auto;
+    /* Reverse order for founder section on tablets and below */
+    .FCP-founder-section .FCP-content-container {
+        flex-direction: column-reverse;
     }
 }
 
-/* Extra Small Devices */
-@media screen and (max-width: 480px) {
-    .Management div {
-        padding: 12px;
-        margin: 12px 0;
+@media (max-width: 768px) {
+    .FCP-content-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .Management div img {
+    .FCP-image-container {
         width: 100%;
-        max-width: 320px;
+        margin-top: 16px;
     }
 
-    .Management div h2 {
-        font-size: 1.2em;
+    .FCP-section-title {
+        font-size: 22px;
     }
 
-    .Management div p {
-        font-size: 0.9em;
-        line-height: 1.6;
+    .FCP-text-container {
+        font-size: 16px;
     }
+
+    .FCP-image-container img {
+        width: 30%; /* Ensure images are fluid */
+        max-height: 200px; /* Further reduce image height on smaller screens */
+    }
+
+    /* Reverse order for founder section on small devices */
+    .FCP-founder-section .FCP-content-container {
+        flex-direction: column-reverse;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .FCP-content-container {
+        flex-direction: row;
+    }
+
+    .FCP-image-container {
+        width: 40%;
+        margin-top: 16px;
+    }
+
+    .FCP-text-container {
+        font-size: 18px;
+    }
+
+    .FCP-image-container img {
+        width: 50%; /* Ensure images scale */
+        max-height: 250px; /* Control image height on landscape mode */
+    }
+}
+
+/* Mobile portrait adjustments */
+@media (max-width: 480px) {
+    .FCP-message-container {
+        padding: 16px;
+    }
+
+    .FCP-section-title {
+        font-size: 20px;
+    }
+
+    .FCP-text-container {
+        font-size: 15px;
+    }
+
+    .FCP-image-container {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .FCP-placeholder-text {
+        font-size: 12px;
+    }
+
+    .FCP-image-container img {
+        width: 50%; /* Ensure images fit their containers */
+        max-height: 180px; /* Further reduce image height for small devices */
+    }
+}
+
+/* Add spacing between paragraphs */
+.FCP-text-container p + p {
+    margin-top: 12px;
 }
