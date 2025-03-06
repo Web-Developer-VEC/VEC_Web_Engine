@@ -8,8 +8,13 @@
 .research-journal-title {
     font-size: 35px;
     font-weight: bold;
-    margin-bottom: 24px;
     text-align: center;
+    padding: 10px 20px;
+    border-left: 5px solid #ffe102;
+    border-right: 5px solid #ffe102;
+    border-radius: 8px;
+    color: #800000;
+    margin-bottom: 30px;
 }
 
 /* Buttons container */
@@ -17,16 +22,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 40px;
     margin-bottom: 24px;
+
 }
 
 /* Button styles */
 .research-journal-button {
     padding: 10px 12px;
     font-size: 16px;
-    /*background-color: #3b82f6;*/
-    /*color: white;*/
+    background-color: #ffe102; /* Initial button color (yellow) */
+    color: #000; /* Initial text color */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -34,29 +40,28 @@
 }
 
 .research-journal-button:hover {
-    /*background-color: #1e40af;*/
     transform: scale(1.1);
 }
 
-/* Active button stays animated */
+/* Active button styles */
 .research-journal-button.active {
-    /*background-color: #1e3a8a;*/
+    background-color: #800000; /* Active button color (dark red) */
+    color: white; /* Active font color */
     transform: scale(1.1);
-    /*box-shadow: 0px 0px 10px rgba(59, 130, 246, 0.7);*/
+    box-shadow: 0px 0px 10px rgba(59, 130, 246, 0.7);
 }
 
 /* iFrame container */
 .research-journal-iframe-container {
-    width: 90%;
+    width: 75%;
     height: 600px;
-    /*border: 10px solid #ffe102;*/
     border-radius: 8px;
 }
 
 /* Media Query for Tablets (768px and below) */
 @media screen and (max-width: 768px) {
     .research-journal-title {
-        font-size: 20px;
+        font-size: 20px; /* Reduced font size for tablets */
     }
 
     .research-journal-button {
@@ -65,27 +70,25 @@
     }
 
     .research-journal-iframe-container {
-        width: 95%;
-        height: 500px;
-        /*border: 8px solid #ffe102;*/
+        width: 75%;
+        height: 500px; /* Adjusted iframe height */
+        border-radius: 8px;
     }
 }
 
 /* Media Query for Mobile Devices (480px and below) */
 @media screen and (max-width: 480px) {
     .research-journal-title {
-        font-size: 18px;
+        font-size: 18px; /* Reduced font size for mobile */
     }
 
     /* Updated button container to use CSS Grid for 3x2 layout */
     .research-journal-button-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        /* 3-column layout */
+        grid-template-columns: repeat(3, 1fr); /* 3 buttons per row */
         gap: 8px;
         width: 100%;
-        max-width: 320px;
-        /* To keep buttons centered */
+        max-width: 320px; /* Ensure buttons fit in mobile screen */
     }
 
     /* Ensure the last row (if it has less than 3 buttons) is centered */
@@ -103,7 +106,6 @@
 
     .research-journal-iframe-container {
         width: 100%;
-        height: 400px;
-        /*border: 6px solid #ffe102;*/
+        height: 400px; /* Adjusted iframe height for mobile */
     }
 }
