@@ -47,33 +47,23 @@ const NCCNtable = () => {
         <table className="NCC-N-ncc-table">
           <thead>
             <tr>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">S.NO</th>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">RANK</th>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">NAME OF THE CADET</th>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">REGIMENTAL NO</th>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">BATCH</th> {/* ✅ New column added */}
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">BRANCH</th>
-              <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">REGISTER NO</th>
+              <th className="bg-gray-500 dark:bg-drks">S.NO</th>
+              <th className="bg-gray-500 dark:bg-drks">RANK</th>
+              <th className="bg-gray-500 dark:bg-drks">NAME OF THE CADET</th>
+              <th className="bg-gray-500 dark:bg-drks">REGIMENTAL NO</th>
+              <th className="bg-gray-500 dark:bg-drks">BATCH</th>{" "}
+              {/* ✅ New column updated */}
+              <th className="bg-gray-500 dark:bg-drks">BRANCH</th>
+              <th className="bg-gray-500 dark:bg-drks">REGISTER NO</th>
             </tr>
           </thead>
           <tbody>
             {students.map((student) => (
-              <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp" key={student.id}>
+              <tr
+                className="
+                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp"
+                key={student.id}
+              >
                 <td>{student.id}</td>
                 <td>{student.rank}</td>
                 <td>{student.name}</td>

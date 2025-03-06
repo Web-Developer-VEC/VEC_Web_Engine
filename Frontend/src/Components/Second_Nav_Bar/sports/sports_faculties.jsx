@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../../Top_Nav_Bar/Academics/sections/ImageCard';
+import Image from './Imagecard1';
 import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 
 const Sportsfaculties = ({ data }) => {
@@ -9,7 +9,7 @@ const Sportsfaculties = ({ data }) => {
 
   return (
     <div className={styles.app}>
-      <h2 style={{ color: 'black' }}>Faculties</h2>
+      <h2 style={{ color: '#800000' ,marginTop:'30px',marginBottom:'30px'}}>Faculties</h2>
       <div className={styles.imagegallery}>
         {data?.name?.map((name, index) => (
           <Image

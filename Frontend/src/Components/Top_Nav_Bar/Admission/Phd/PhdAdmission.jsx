@@ -16,9 +16,9 @@ const PhdAdmission = ({theme, toggle}) => {
       <div class="phd">
         <div className="contain">
           <div className="p-4 left1 border-l-8 border-secd dark:border-drks rounded-xl
-            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)] hover:scale-105
+            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)]
             dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
-            <h1>
+            <h1 className="phd-h1">
               In Velammal Engineering College the following departments are
               recognized research centers of Anna University, Chennai
             </h1>
@@ -51,31 +51,27 @@ const PhdAdmission = ({theme, toggle}) => {
           </div>
 
           <div className="p-4 right1 border-l-8 p-4 border-secd dark:border-drks rounded-xl
-            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)] hover:scale-105
+            bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)]
             dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
-            <h1>PhD (Research) Admission Process & Eligibility</h1>
+            <h1 className="phd-h1">PhD (Research) Admission Process & Eligibility</h1>
             <span className="span">
               <p className="chase">
-                <GiConvergenceTarget
-                  hieght="10px"
-                  weight="10px"
-                  className="phd-logo1"
-                />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 The candidate who wants to pursue PhD / MS (Research) programmes
                 (Full Time / Part Time) has to forward his/her application to Anna
                 University through our college.
               </p>
-              <p className="chase">
-                <GiConvergenceTarget className="phd-logo1" />
+                <p className="chase"><img src={point} alt="" className="phd-logo dark:invert" />
                 Anna University calls for applications for admission to PhD / MS
                 (Research) programmes (Full Time / Part Time) twice in a year,
                 normally during September/ October for succeeding year January
                 admissions and February / March for July admissions.
               </p>
               <p className="chase">
-                <GiConvergenceTarget className="phd-logo1" />
+                <img src={point} alt="" className="phd-logo dark:invert" />
                 Qualification and eligibility are as per Anna University
-                regulations <br />
+                regulations
+              </p>
                 <span className="ml-[8px]">
                   (Visit{" "}
                   <a href="https://www.annauniv.edu/research">
@@ -83,7 +79,6 @@ const PhdAdmission = ({theme, toggle}) => {
                   </a>
                   )
                 </span>
-              </p>
             </span>
           </div>
         </div>

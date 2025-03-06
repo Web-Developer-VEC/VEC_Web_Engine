@@ -156,8 +156,8 @@
                                   : ''
                               }`}
                             />
-                            <div className="column-xs-12 column-md-2 hide-mobile title-overlay">
-                              <div className="intro1">
+                            <div className="column-xs-12 column-md-2 hide-mobile title-overlay ">
+                              <div className="intro1 ">
                                 <a href="#">
                                   <h1 className="title">
                                     <span className="underline">{item.title}</span>

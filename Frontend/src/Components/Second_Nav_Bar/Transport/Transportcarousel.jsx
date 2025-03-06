@@ -129,7 +129,7 @@ const Transportcarousel = () => {
                                 </h1>
                               </a>
                             </div>
-                            <p className="transport-sports-description">{item.description}</p>
+
                           </div>
                         </div>
                       </div>
@@ -141,7 +141,7 @@ const Transportcarousel = () => {
                 <div className="transport-column-xs-12">
                   <div className="transport-controls h-auto">
                     <button className="transport-previous" onClick={showPreviousItem}>
-                      <span className=""><ChevronLeft className="w-6 h-6 text-gray-700" /></span>
+                      <span className=""><ChevronLeft className="w-6 h-6  text-gray-700" /></span>
                     </button>
                     <button className="transport-next" onClick={showNextItem}>
                       <span className=""><ChevronRight className="w-6 h-6 text-gray-700" />

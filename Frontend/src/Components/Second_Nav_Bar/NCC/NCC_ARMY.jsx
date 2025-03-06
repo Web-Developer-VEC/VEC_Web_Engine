@@ -6,17 +6,22 @@ import NCCAtable from "./NCC_ARMY comps/NCCAtable";
 const NCC_ARMY = () => { 
   return (
     <>
-    
-     <NCCACarousel/>
+      <NCCACarousel />
       {/* Main NCC_ARMY Container */}
       <div className="NCC_ARMY-container">
         <div className="NCC_ARMY-content-wrapper">
-
           {/* About NCC_ARMY Section */}
-          <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
-            border-b-2 border-secd dark:border-drks">About NCC</h2>
+          <section
+            className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                border-l-8 border-r-8 border-[#FDB515] px-6"
+          >
+            <h2
+              className="NCC_ARMY-section-title text-accn dark:text-drka
+            border-b-2 border-secd dark:border-drks"
+            >
+              About NCC
+            </h2>
             <ul className="NCC_ARMY-list">
               <li>
                 National Cadet Corps is a Tri-Services Organization, comprising
@@ -53,20 +58,32 @@ const NCC_ARMY = () => {
 
           {/* Vision and Mission Section */}
           <div className="NCC_ARMY-row mt-4">
-            <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-              <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
-              border-b-2 border-secd dark:border-drks">Vision</h2>
+            <section
+              className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+            >
+              <h2
+                className="NCC_ARMY-section-title text-accn dark:text-drka
+              border-b-2 border-secd dark:border-drks"
+              >
+                Vision
+              </h2>
               <p className="NCC_ARMY-content">
                 Empower volunteer youth to become potential leaders and
                 responsible citizens of the country.
               </p>
             </section>
 
-            <section className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-              <h2 className="NCC_ARMY-section-title text-accn dark:text-drka
-              border-b-2 border-secd dark:border-drks">Mission</h2>
+            <section
+              className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+            >
+              <h2
+                className="NCC_ARMY-section-title text-accn dark:text-drka
+              border-b-2 border-secd dark:border-drks"
+              >
+                Mission
+              </h2>
               <p className="NCC_ARMY-content">
                 To develop leadership and character qualities, mold discipline
                 and nurture social integration and cohesion through
@@ -76,20 +93,30 @@ const NCC_ARMY = () => {
           </div>
 
           {/* Aim Section */}
-          <div className="NCC_ARMY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <div
+            className="NCC_ARMY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+          >
             <div className="NCC_ARMY-aim">
               <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
-
-                <img src="./ncc_logo.png" alt="NCC Logo" className="NCC_ARMY-icon" />
+                <img
+                  src="./ncc_logo.png"
+                  alt="NCC Logo"
+                  className="NCC_ARMY-icon"
+                />
                 AIM of NCC
               </h2>
               <p className="NCC_ARMY-aimcontent">
-             * TO DEVELOP CHARACTER, COMRADESHIP, DISCIPLINE, LEADERSHIP, SECULAR OUTLOOK, SPIRIT OF ADVENTURE, AND THE IDEALS OF SELFLESS SERVICES AMONGST YOUTH OF THE COUNTRY.
+                * TO DEVELOP CHARACTER, COMRADESHIP, DISCIPLINE, LEADERSHIP,
+                SECULAR OUTLOOK, SPIRIT OF ADVENTURE, AND THE IDEALS OF SELFLESS
+                SERVICES AMONGST YOUTH OF THE COUNTRY.
                 <br />
-              * TO CREATE A HUMAN RESOURCE OF ORGANISED, TRAINED AND MOTIVATED YOUTH, TO PROVIDE LEADERSHIP IN ALL WALKS OF LIFE AND BE ALWAYS AVAILABLE FOR THE SERVICE OF THE NATION.
+                * TO CREATE A HUMAN RESOURCE OF ORGANISED, TRAINED AND MOTIVATED
+                YOUTH, TO PROVIDE LEADERSHIP IN ALL WALKS OF LIFE AND BE ALWAYS
+                AVAILABLE FOR THE SERVICE OF THE NATION.
                 <br />
-                * TO PROVIDE A SUITABLE ENVIRONMENT TO MOTIVATE THE YOUTH TO TAKE UP CAREER IN THE ARMED FORCES.
+                * TO PROVIDE A SUITABLE ENVIRONMENT TO MOTIVATE THE YOUTH TO
+                TAKE UP CAREER IN THE ARMED FORCES.
                 <br />
               </p>
             </div>
@@ -97,52 +124,65 @@ const NCC_ARMY = () => {
 
           {/* Motto & Pledge Section */}
           <div className="NCC_ARMY-motto-pledge-container">
-            <div className="NCC_ARMY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <div
+              className="NCC_ARMY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+            >
               <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
-                MOTTO OF NCC</h2>
+                MOTTO OF NCC
+              </h2>
               <p className="NCC_ARMY-content">
-              The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
+                The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
                 1957. It brings together the youth from different parts of the
                 country, molding them into united, secular, and disciplined
                 citizens.
-               
               </p>
             </div>
 
-            <div className="NCC_ARMY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <div
+              className="NCC_ARMY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+            >
               <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
-                CARDINALS OF NCC</h2>
+                CARDINALS OF NCC
+              </h2>
               <p className="NCC_ARMY-content">
                 * Obey with a smile
-                <br/>
+                <br />
                 * BE punctual
-                <br/>
+                <br />
                 * Work hard and without fuss
-                <br/>
-                * Make no excuses and tell no lies
+                <br />* Make no excuses and tell no lies
               </p>
             </div>
           </div>
 
           {/* Profile Section */}
-          <div className="NCC_ARMY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <div
+            className="NCC_ARMY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
+          >
             <div className="NCC_ARMY-profile-photo">
               <img src="./ncc_staff.jpg" alt="Sub. LT R DHANALAKSHMI" />
             </div>
             <div className="NCC_ARMY-profile-content">
               <h2 className="NCC_ARMY-profile-name ">Captain R Chezhian</h2>
-              <h4 className="NCC_ARMY-profile-position text-accn dark:text-drka">NCC Army Coordinator</h4>
+              <h4 className="NCC_ARMY-profile-position text-accn dark:text-drka">
+                NCC Army Coordinator
+              </h4>
               <p className="NCC_ARMY-profile-bio">
-              Captain R. Chezhian, Associate NCC Officer (Army Wing) at Velammal Engineering College, earned his NCC 'C' Certificate with a commendable 'B' grade on 31st October 1995. These distinctions, along with his dedication and commitment, earned him the position of Associate NCC Officer (Army Wing) at Velammal Engineering College and the rank of Lieutenant as a Direct Commission Officer on 15th July 2011.
+                Captain R. Chezhian, Associate NCC Officer (Army Wing) at
+                Velammal Engineering College, earned his NCC 'C' Certificate
+                with a commendable 'B' grade on 31st October 1995. These
+                distinctions, along with his dedication and commitment, earned
+                him the position of Associate NCC Officer (Army Wing) at
+                Velammal Engineering College and the rank of Lieutenant as a
+                Direct Commission Officer on 15th July 2011.
               </p>
             </div>
           </div>
-
         </div>
-        <NCCAtable/>
+        <NCCAtable />
       </div>
     </>
   );

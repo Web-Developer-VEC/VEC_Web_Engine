@@ -1,7 +1,7 @@
 
   .me-page{
     padding: 3vmax;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'poppins', sans-serif;
     /*color: #2c3e50;*/
     /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
     border-radius: 12px;
@@ -12,11 +12,10 @@
     margin: 0 auto;
   }
   
-  h3 {
-    font-size: 1.5rem;
+  .ME h3 {
+    font-size: 30px;
     /*color: #f39c12; !* Bright yellow for emphasis *!*/
     margin-bottom: 2rem;
-    font-weight: 300;
     letter-spacing: 1px;
 }
 h4, h5, h6 {
@@ -78,7 +77,7 @@ h5, h6 {
   .description-text {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0rem;
     /*color: #8e5b3f; !* Earthy brownish text color *!*/
 }
 
