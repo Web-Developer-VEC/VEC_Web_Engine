@@ -22,7 +22,7 @@
 }
 
 .intro-title {
-  font-size: 2.2rem; /* Larger title */
+  font-size: 20px; /* Larger title */
   font-weight: 700; /* Bold weight for better emphasis */
   margin-bottom: 1.2rem;
   /*color:rgb(253 204 3); !* Yellow for contrast *!*/
@@ -32,7 +32,7 @@
 }
 
 .intro-text-act {
-  font-size: 1.2rem; /* Slightly larger text for readability */
+  font-size: 16px; /* Slightly larger text for readability */
   line-height: 1.8;
   font-style: italic; /* Subtle text emphasis */
   /*color: #555555; !* Darker gray text for contrast *!*/
@@ -56,7 +56,7 @@
 }
 
 .description-title {
-  font-size: 1.8rem; /* Larger title */
+  font-size: 20px; /* Larger title */
   font-weight: 700; /* Bold weight */
   margin-bottom: 1rem;
   /*color:rgb(253 204 3); !* Yellow title *!*/
@@ -66,7 +66,7 @@
 }
 
 .description-text-act {
-  font-size: 1.2rem; /* Slightly larger font size for better readability */
+  font-size: 16px; /* Slightly larger font size for better readability */
   line-height: 1.75;
   /*color: #333333; !* Dark gray for better contrast *!*/
   letter-spacing: 0.02rem; /* Slight letter spacing for readability */
@@ -112,7 +112,6 @@
 .nav-button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.6); /* Dark background for visibility */
   padding: 1.2rem; /* Increase padding for better clickability */
   border-radius: 50%;
@@ -132,7 +131,6 @@
 .nav-button:hover {
   background-color: rgba(255, 255, 255, 0.9);
   color: black; /* Icon turns black for contrast */
-  transform: scale(1.1);
 }
 
 .prev-button {
@@ -144,8 +142,8 @@
 }
 
 .nav-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1rem;
+  height: 1rem;
   fill: white; /* Icon color */
 }
 
@@ -174,7 +172,6 @@
 
 .dot:hover {
   background-color: rgba(255, 255, 255, 0.8); /* Slightly brighter on hover */
-  transform: scale(1.2); /* Slightly enlarge on hover for interaction */
 }
 
 .dot.active {
