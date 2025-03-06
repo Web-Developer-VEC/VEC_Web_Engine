@@ -81,16 +81,8 @@
     transition: transform 0.3s ease;
   }
 
-  /* Style the heading inside functions-info-panel */
-  .functions-info-panel h2 {
-    font-size: 2rem; /* Increased font size for heading */
-    /* margin-bottom: 1.5rem; */
-    /*color: #333;*/
-  }
-
   /* Style the paragraph and list items inside functions-info-panel */
   .functions-info-panel p {
-    font-size: 1.2rem; /* Increased font size for content */
     line-height: 1.8; /* Improved line height for better readability */
     text-align: left; /* Keep bullet points aligned left for better readability */
     margin: 0 auto;
@@ -233,6 +225,20 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   }
 
+  .nirf-year-button {
+    border-radius: 8px;
+    width: 120px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    /*border: 2px solid #FDCC03;*/
+    /*background-color: #222;*/
+    /*color: #fff;*/
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
   .nirf-details:not(.members-section) .members {
     display: none;
   }
@@ -334,9 +340,9 @@
   }
 
   .iic-faici{
-    font-size: 3rem;
-    font-style: oblique;
+    font-size: 30px;
     text-align: center;
+    margin-bottom: 28px;
     /*border-bottom: 1px solid violet;*/
   }
 
@@ -430,6 +436,46 @@
   animation: fade-in 0.8s ease-out;
 }
 
+/* Add these styles to your existing iic.css file */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  padding-left: 10px;
+  margin-right: 6.1rem;
+}
+
+.carousel-button {
+  padding: 0.5rem 1rem;
+  font-size: 23px;
+  border: 2px solid var(--accent-color);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.carousel-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-button.active {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.nirf-action-button{
+  font-size: 16px;
+}
+
 @media screen and (max-width: 1300px){
   .nir-buttons {
     grid-template-columns: repeat(2, 1fr);
@@ -446,6 +492,9 @@
 }
 
 @media screen and (max-width: 1050px){
+  .carousel-controls{
+    margin-right: 0rem;
+  }
   .about-section{
     padding: 2rem;
     display: flex;
@@ -474,7 +523,7 @@
   .functions-info-panel p {
     line-height: 1.5; /* Improved line height */
     max-width: 95%;
-    font-size: 1.1rem;
+    font-size: 16px;
   }
 }
 
@@ -485,6 +534,9 @@
 }
 
 @media screen and (max-width: 920px){
+  .carousel-button{
+    font-size: 20px;
+  }
   .nir-buttons {
     grid-template-columns: 1fr;
   }
@@ -511,6 +563,9 @@
 }
 
 @media (max-width: 768px) {
+  .carousel-button{
+    font-size: 18px;
+  }
   .gallery {
     height: 25vh; /* Reduce height */
     gap: 3rem; /* Reduce gap */
@@ -553,6 +608,9 @@
 
 
 @media screen and (max-width: 550px){
+  .carousel-button{
+    font-size: 17px;
+  }
   .about-section h2{
     font-size: 1.7rem;
   }
@@ -585,6 +643,9 @@
 }
 
 @media (max-width: 480px) {
+  .carousel-button{
+    font-size: 16px;
+  }
   .gallery {
     margin-left: 2.35rem;
     transform: scale(0.7); /* 1.2 means 20% zoom-in */
@@ -651,6 +712,12 @@
 }
 
 @media screen and (max-width: 330px){
+  .carousel-controls{
+    margin: 0.3rem auto;
+  }
+  .carousel-button{
+    font-size: 13px;
+  }
   .about-section h2{
     font-size: 1.2rem;
   }
@@ -684,7 +751,7 @@
     line-height: 1.5; /* Improved line height */
     max-width: 95%;
     text-align: left;
-    font-size: 1.1rem;
+    font-size: 10px;
     margin-bottom: -0.5rem;
     margin-left: 0.1rem;
   }  
