@@ -65,7 +65,7 @@ const Naac = ({toggle, theme}) => {
         subHeaderText="NATIONAL ASSESSMENT AND ACCREDITATION COUNCIL (NAAC)"
       />
 
-      <div className="naac-page">
+      <div className="nnaac-page">
         {isLoading && (
           <div className="loading-screen">
             <div className="spinner"></div>
@@ -73,7 +73,7 @@ const Naac = ({toggle, theme}) => {
           </div>
         )}
 
-        <div className="about-section">
+        <div className="nabout-section">
           <div className="naac-info-panel border-l-4 border-secd dark:border-drks
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h2 className="text-accn dark:text-drka">About NAAC</h2>
@@ -104,7 +104,7 @@ const Naac = ({toggle, theme}) => {
               <button
                 key={category}
                 className={`naac-year-button ${selectedCategory === category ? "bg-accn dark:bg-drka text-prim" 
-                    : "bg-secd dark:bg-drks"}`}
+                    : "bg-secd text-accn dark:bg-drks"}`}
                 onClick={() => handleCategoryClick(category)}
               >
                 {category}
