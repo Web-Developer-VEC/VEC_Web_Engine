@@ -1,14 +1,12 @@
-/* Reset default margins and ensure consistent box sizing */
 
 
-/* Main container for the entire page */
+
+
 .alumni-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 20px; /* Increased padding for a polished look */
-}
+    padding: 30px 20px; }
 
-/* Banner styling */
 
 
 
@@ -21,18 +19,24 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px; /* Increased gap for better separation */
+    border-left: 5px solid #800000;
+}
+
+.alumni-objectives{
+  border-right: 5px solid #800000;
 }
 
 /* Column styling for two-column sections */
 .column {
     flex: 1;
     min-width: 300px;
-    /*background: #fff;*/
+    
     padding: 25px; /* Increased padding for a spacious feel */
     /*border-left: 12px solid #fdb515; !* Slightly wider yellow border for prominence *!*/
     border-radius: 0 12px 12px 0; /* Larger radius for a softer look */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
     position: relative;
+   
 }
 
 .column::before {
@@ -47,24 +51,31 @@
 }
 
 /* Section title styling */
-.section-title {
-    font-size: 28px; /* Slightly larger for prominence */
+.asection-title {
+    font-size: 20px;/* Slightly larger for prominence */
     font-weight: bold;
-    /*color: #1d1d1d;*/
+    color:#800000;
+   
     margin-bottom: 20px; /* More space below title */
+}
+h2{
+    font-size: 20px;
 }
 
 /* Section content styling */
 .section-content {
-    font-size: 18px; /* Slightly larger for readability */
-    /*color: #1d1d1d;*/
+    font-size: 18px;
+    margin:1px solid #800000; /* Slightly larger for readability */
+   
     text-align: justify;
+    
 }
 
 .section-content ul {
     list-style-type: disc;
     padding-left: 25px; /* Increased indent for bullet points */
-    margin-top: 15px; /* More space above list */
+    margin-top: 15px;
+     /* More space above list */
 }
 
 .section-content li {
@@ -92,6 +103,7 @@
         /*border-left: 10px solid #fdb515; !* Slightly smaller border on mobile *!*/
         border-radius: 0 8px 8px 0; /* Smaller radius on mobile */
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Reduced shadow on mobile */
+        
     }
 
     .column::before {
@@ -134,3 +146,163 @@
         padding: 20px 5px; /* Further reduced padding on very small screens */
     }
 }
+/* App container */
+.app-container {
+    position: relative;
+    display: flex;
+   
+    
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  /* Eiffel Tower Shape */
+  .app-container::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 100vh;
+    background-color: rgba(200, 200, 210, 0.1);
+    clip-path: polygon(
+      /* Base */
+      30% 100%, 70% 100%,
+      /* First level */
+      65% 80%, 35% 80%,
+      /* Second level */
+      60% 60%, 40% 60%,
+      /* Third level */
+      55% 40%, 45% 40%,
+      /* Spire */
+      51% 0%, 49% 0%
+    );
+    z-index: -1;
+  }
+  
+  /* Additional decorative element */
+  .app-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(180, 180, 200, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  /* Flipbook container */
+  .app-container .flipbook {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Pages */
+  .app-container .pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .app-container .page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .app-container .page {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+  }
+  
+  .app-container .flip-right {
+    transform: rotateY(-180deg);
+  }
+  
+  .app-container .flip-left {
+    transform: rotateY(180deg);
+  }
+  
+  .app-container .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Text styles */
+  .app-container .text-content {
+    color: #2d3748;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  .text-content{
+    margin-right: 20px;
+  }
+  
+  .app-container .text-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .app-container .text-content h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0 20px;
+  }
+  
+  .app-container .text-content h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 40px;
+  }
+  
+  /* Controls */
+  .app-container .controls {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    z-index: 10;
+  }
+  
+  .app-container .button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .app-container .button:hover {
+    background-color: white;
+    transform: scale(1.1);
+  } 
+  
+  .app-container .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }

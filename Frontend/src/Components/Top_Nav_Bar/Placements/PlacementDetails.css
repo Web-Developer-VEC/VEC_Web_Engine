@@ -1,3 +1,4 @@
+/* Card Styling */
 .card-plc {
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -5,397 +6,293 @@
   transition: all 0.3s ease-in-out;
 }
 
+/* Placement Section Styling */
 .placement-percent {
   margin: 3rem;
   padding: 1rem;
   align-items: center;
   border: none;
+  overflow-x: auto; /* Ensures table is scrollable on small screens */
 }
 
+/* Responsive Table */
 .placement-percent table {
-  width: 80%; /* Make the table span the full width of its container */
-  border-collapse: collapse; /* Removes double borders between cells */
-  margin-top: 1rem; /* Add some space above the table */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
   border-radius: 10px;
+  min-width: 600px; /* Ensures table remains visible on smaller screens */
+}
+/* Wrap table inside a scrollable container */
+.table-container{
+  width: 100%;
 }
 
-.placement-percent th,
-.placement-percent td {
-  border: 1px solid #ddd; /* Add border around cells */
-  padding: 8px; /* Add padding inside cells */
-  text-align: left; /* Center align the text */
-}
 
-.placement-percent .even-row {
-  /*background-color: #fff3cd; !* First row in each group *!*/
-}
-
-.placement-percent  .odd-row {
-  /*background-color: #ffeeba; !* Second row in each group *!*/
-}
-
-.place-row-data{
-  width: 300px;
-}
-
+/* Table Heading */
 .placement-percent th {
-  /*background: linear-gradient(45deg, #ffd700, #ffa500);*/
-  /*color: white;*/
-  padding: 10px; /* Add some padding for better appearance */
-  text-align: left; /* Align text to the left */
+  background-color: #808080;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px white solid;
 }
 
-.placement-yearwise{
-  border: none;
+/* Table Content */
+.placement-percent td {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Year-wise Container */
+.placement-yearwise {
+  border: 2px solid black;
   width: 94%;
   position: relative;
   left: 3%;
+  padding: 2rem 1rem 1rem 1rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  margin-top: 2rem;
+  text-align: center;
 }
 
-.placement-yearwise h4{
-  margin-left: 9rem;
+/* Capsule Heading */
+.placement-yearwise h4 {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background-color: rgb(251, 231, 82);
+  padding: 5px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-transform: capitalize;
 }
 
-.placement-percent h4{
-  padding-bottom: 5px;
-  /*border-bottom: 2.5px solid rgb(169, 167, 167);*/
+/* Standard Button Styling */
+.place-course-button {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(45deg, #ffed4d, #ffc107);
+  display: inline-block;
+  text-align: center;
+  min-width: 150px; /* Ensures buttons are the same size */
 }
 
-/* General container styling */
-.place-syl-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 16px;
+.place-course-button:hover {
+  background: linear-gradient(45deg, #800000, #b30000);
+  color: white;
+  transform: scale(1.05);
 }
 
-.place-syl-container h2 {
-font-weight: 600;
-/*border-left: 7px solid rgb(253, 139, 0);*/
-padding: 1rem;
+/* Two-Year Buttons Side by Side in Mobile View */
+.placement-yearwise .year-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* Modal overlay */
+/* General Popup Styling */
 .place-modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.5);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 1000;
-}
-
-/* Modal content */
-.place-modal-content {
-position: relative;
-/*background: white;*/
-width: 55%;
-height: 80%;
-border-radius: 8px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-overflow: hidden;
-}
-
-/* Close button */
-.place-close-button {
-position: absolute;
-top: 10px;
-right: 10px;
-/*background: red;*/
-/*color: white;*/
-border: none;
-border-radius: 50%;
-width: 30px;
-height: 30px;
-font-size: 16px;
-font-weight: bold;
-}
-
-.place-close-button:hover {
-/*background: darkred;*/
-}
-
-/* PDF Viewer */
-.place-pdf-viewer {
-width: 100%;
-height: 100%;
-border: none;
-}
-
-/* Syllabus section styling */
-.place-syllabus-section {
-margin-top: 20px;
-position: relative;
-}
-
-.place-syllabus-header {
-position: absolute;
-top: -20px;
-left: 16px;
-/*background: white;*/
-padding: 4px 12px;
-z-index: 10;
-}
-
-.place-syllabus-header h3 {
-/*font-size: 18px;*/
-font-weight: bold;
-/*color: #333;*/
-}
-
-.place-syllabus-content {
-/*border: 2px solid #ff6a01;*/
-border-radius: 50px;
-/*box-shadow: 2px 2px 8px rgb(255, 170, 0);*/
-transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.place-syllabus-content:hover {
-transform: scale(1.03);
-box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.place-Sylgrid {
-/*display: grid;*/
-/*grid-template-columns: repeat(3, 1fr);*/
-gap: 1px;
-/*background:rgb(253 204 3 / var(--tw-bg-opacity, 1));*/
-border-radius: 50px;
-} 
-
-.place-course {
-font-size: medium;
-/*padding: 16px;*/
-/*background: white;*/
-text-align: center;
-/*color: #555;*/
-transition: transform 0.3s ease, background 0.2s;
-border: 2px solid rgb(101, 93, 93);
-border-radius: 50px;
-}
-
-.place-course:hover {
-transform: scale(0.95);
-/*border-color: #7e694a;*/
-} 
-
-@media (max-width: 1024px) {
-.place-Sylgrid {
-  /*grid-template-columns: repeat(2, 1fr);*/
-}
-}
-
-@media (max-width: 768px) {
-.place-Sylgrid {
-  /*grid-template-columns: 1fr;*/
-}
-}
-
-
-
-.place-Sylgrid {
-display: flex;
-flex-wrap: wrap; 
-justify-content: center;
-/*gap: 16px; */
-/*padding: 8px; */
-}
-
-.place-course {
-/*padding: 16px;*/
-/*background: white;*/
-text-align: center;
-font-size: medium;
-/*color: #555;*/
-transition: transform 0.3s ease, background 0.2s;
-border: 2px solid rgb(101, 93, 93);
-min-width: 200px;
-/*flex: 1 1 calc(33.33% - 32px); */
-box-sizing: border-box; 
-}
-
-.place-course:hover {
-transform: scale(0.95);
-/*border-color: #7e694a;*/
-}
-
-@media (max-width: 1024px) {
-.place-course {
-  /*flex: 1 1 calc(50% - 32px); */
-}
-}
-
-@media (max-width: 768px) {
-.place-course {
-  /*flex: 1 1 calc(100% - 32px); */
-}
-}
-
-.place-syllabus-header {
-/* position: relative;  */
-/*color: #333;*/
-/*background-color: #fff5ca;*/
-text-align: center;
-font-weight: bold;
-font-size: 16px;
-border-radius: 4px 4px 0 0; /* Rounded top corners */
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-height: 40px;
-padding: 10px;
-padding-left: 20px;
-padding-right: 20px;
-}
-
-.place-syllabus-header::before,
-.place-syllabus-header::after {
-content: "";
-position: absolute;
-bottom: 0;
-width: 0;
-height: 0;
-border-style: solid;
-/*filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); !* Shadow for the folds *!*/
-}
-
-.place-syllabus-header::before {
-left: 0;
-border-width: 0 18px 23px 0;
-/*border-color: transparent #f07f1c transparent transparent;*/
-}
-
-.place-syllabus-header::after {
-right: 0;
-border-width: 0 0 23px 18px;
-/*border-color: transparent transparent transparent #cb670f;*/
-}
-
-/* Loading Screen */
-.loading-screen {
-  position: absolute; /* Position relative to the committee container */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /*background-color: rgba(255, 255, 255, 0.8); !* White background with opacity *!*/
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.place-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  height: 80%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated Popup Entrance */
+.place-modal-overlay.show .place-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Close Button */
+.place-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.place-close-button:hover {
+  background: darkred;
+}
+
+/* Popup Header */
+.place-popup-header {
+  font-size: 22px;
+  font-weight: bold;
   color: #333;
-  z-index: 10; /* Higher than committee content but lower than header/footer */
+  margin-bottom: 15px;
 }
 
-/* Spinner */
-.spinner {
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  margin-right: 30px;
-  border-top: 4px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
+/* Popup Text */
+.place-popup-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-/* General container styling */
-.place-syl-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 16px;
-}
-
-/* Responsive table */
-.placement-percent table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 1rem;
-}
-
-.placement-percent th,
-.placement-percent td {
-border: 1px solid #ddd;
-padding: 8px;
-text-align: left;
+/* PDF Viewer */
+.place-pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* Grid Layout for Courses */
 .place-Sylgrid {
-/* display: grid; */
-/*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-gap: 16px;
-/*padding: 8px;*/
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 
-.place-course {
-/*padding: 16px;*/
-/*/background: white;*/
-text-align: center;
-font-size: medium;
-/*color: #555;*/
-transition: transform 0.3s ease, background 0.2s;
-border: 2px solid rgb(101, 93, 93);
-border-radius: 10px;
+/* Syllabus Header */
+.place-syllabus-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 40px;
+  padding: 10px 20px;
 }
 
-.place-course:hover {
-transform: scale(0.95);
-/*border-color: #7e694a;*/
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #800000;
+  padding: 10px 0;
 }
 
-/* Modal Responsive */
-/* .place-modal-content {
-width: 90%;
-max-width: 600px;
-height: auto;
-} */
 
-/* Responsive Typography */
-.place-syl-container h2 {
-font-size: 1.5rem;
-}
-
-.placement-yearwise h4,
-.placement-percent h4 {
-font-size: 1.2rem;
-}
-
-/* Responsive Adjustments */
+/* Responsive Styles */
 @media (max-width: 1024px) {
-.place-Sylgrid {
-  /*grid-template-columns: repeat(2, 1fr);*/
-}
-.place-course {
-  font-size: small;
-}
+  .place-Sylgrid {
+    /* Adjust layout for tablets */
+  }
+  .section-title {
+    font-size: 22px; /* Slightly smaller */
+    margin-bottom: 18px;
+    padding: 8px 0;
+  }
 }
 
 @media (max-width: 768px) {
-.place-syllabus-header h3{
-  text-size-adjust: 10px;
+  .placement-percent {
+    overflow-x: auto;
+  }
+
+  .placement-percent table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .placement-yearwise {
+    width: 100%;
+    left: 0;
+    padding: 1.5rem 1rem;
+  }
+
+  /* Ensure two buttons are always in one row */
+  .placement-yearwise .year-buttons {
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+
+  /* Adjust button size for uniformity */
+  .place-course-button {
+    font-size: 14px;
+    padding: 10px 20px;
+    min-width: 130px;
+  }
+
+  .place-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .place-modal-close {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .section-title {
+    font-size: 20px; /* Adjust for smaller screens */
+    margin-bottom: 15px;
+    padding: 6px 0;
+    text-align: center;
+  }
 }
-.place-Sylgrid {
-  /*grid-template-columns: 1fr;*/
+
+@media (max-width: 480px) {
+  /* Buttons still in a row */
+  .placement-yearwise .year-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .place-course-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    min-width: 120px;
+  }
+  .section-title {
+    font-size: 18px; /* Even smaller for compact view */
+    margin-bottom: 12px;
+    padding: 5px 0;
+  }
 }
-.placement-percent {
-  margin: 20px;
-  padding: 0.5rem;
-}
-.place-modal-content {
-  width: 95%;
-}
-.placement-percent table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

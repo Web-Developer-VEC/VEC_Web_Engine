@@ -6,7 +6,7 @@ import Transportvideo from "./TransportVideo";
 
 const Transport = () => {
     return (
-        <div style={{ paddingBottom: "40px", paddingLeft: "10px"
+        <div style={{ paddingBottom: "40px"
             // backgroundColor: "#f8f9fa"
         }}>
             <div style={{ position: "relative" }}>

@@ -40,12 +40,13 @@ const MBA = ({theme, toggle}) => {
           </div>
         )}
         <div className="MBA">
-          <h3 className="text-accn dark:text-drka ml-4">M.B.A Admission</h3>
+          <h3 className="text-accn dark:text-drka ml-4 font-bold">M.B.A Admission</h3>
         </div>
         <div className="mba-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <div className="text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
           <p className="description-text">
-            Learners for admission to the first semester of the MBA Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu single window counselling process. The Government of Tamil Nadu releases the updated eligibility criteria for the admission. Admission shall be offered only to candidates who possess the qualification prescribed and the eligibility criteria for the programme.
+            &nbsp;&nbsp; Learners for admission to the first semester of the MBA Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu single window counselling process. The Government of Tamil Nadu releases the updated eligibility criteria for the admission. Admission shall be offered only to candidates who possess the qualification prescribed and the eligibility criteria for the programme.
           </p>
 
           <div className="mba-content">
@@ -55,27 +56,19 @@ const MBA = ({theme, toggle}) => {
             <table className="mba-intake-table">
               <thead>
                 <tr>
-                  <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">PG Courses</th>
-                  <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Government Quota Intake</th>
-                  <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Management Quota Intake</th>
-                  <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Total Intake</th>
+                  <th className="ugHeader">PG Courses</th>
+                  <th className="ugHeader">Government Quota Intake</th>
+                  <th className="ugHeader">Management Quota Intake</th>
+                  <th className="ugHeader">Total Intake</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
                     dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
-                  <td>Master of Business Administration (MBA)</td>
-                  <td>{mba["Government Quota Intakes"]}</td>
-                  <td>{mba["Management Quota Intakes"]}</td>
-                  <td>{mba["Total Intakes"]}</td>
+                  <td className="text-start">Master of Business Administration (MBA)</td>
+                  <td className="font-light">{mba["Government Quota Intakes"]}</td>
+                  <td className="font-light">{mba["Management Quota Intakes"]}</td>
+                  <td className="font-light">{mba["Total Intakes"]}</td>
                 </tr>
               </tbody>
             </table>

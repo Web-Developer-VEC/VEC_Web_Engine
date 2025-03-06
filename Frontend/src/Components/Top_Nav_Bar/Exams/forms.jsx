@@ -56,12 +56,35 @@ const Forms = ({theme, toggle}) => {
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
       <div key={index} className="resource-item">
-          <a
-            className="view-button"
-            onClick={() => handleViewClick(resource.url, resource.name)}
-          >
-            {resource.name}
-          </a>
+        <center>
+          <div className="form-content">
+            <div className="form-regulation dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+              <span className="form-regulation-title">{resource.name}</span>
+              <div className="form-buttons">
+                <button
+                  className="form-button view-button bg-secd text-text dark:bg-drks dark:text-drkt
+                    hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                  onClick={() => handleViewClick(resource.url, resource.name)}
+                >
+                  <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
+                  View
+                </button>
+                <a
+                  className="form-button download-button bg-secd text-text dark:bg-drks dark:text-drkt
+                    hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                  href={resource.url}
+                  download={resource.name} // Ensures file downloads instead of opening
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </center>
       </div>
     ));
   };

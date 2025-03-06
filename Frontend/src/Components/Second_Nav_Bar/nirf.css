@@ -1,8 +1,9 @@
-/* Intro Section */
+
 .nirf-intro {
   font-size: 18px;
   padding: 20px;
   line-height: 1.8;
+  background-color:  #e5ebe7;;
   /*background-color: #e2d68b;*/
   
   border-radius: 8px;
@@ -12,13 +13,12 @@
   cursor:pointer;
   width:95%;
   margin:40px;
+  border-left: 4px solid #FDCC03;
+  border-right: 4px solid #FDCC03;
   
 }
 
-.nirf-intro:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+
 .nirf-about {
   display: flex;
   justify-content: center; /* Horizontal centering */
@@ -43,7 +43,7 @@
 
 /* Header Section */
 .nirf-header {
-  text-align: center;
+  text-align: justify;
   padding: 20px;
   font-size: 2.5rem;
   margin: 20px 0;
@@ -57,7 +57,7 @@
 /* Content Layout */
 .nirf-content {
   display: flex;
-  justify-content: space-between;
+  justify-content:start;
   margin-top: 0px;
   padding: 20px;
   gap: 30px;
@@ -78,9 +78,7 @@
   padding: 12px;
   font-size: 1.1rem;
   font-weight: bold;
-  /*border: 2px solid #FDCC03;*/
-  /*background-color: #222;*/
-  /*color: #fff;*/
+  /* color:#800000; */
   text-align: center;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -91,7 +89,14 @@
   /*color: #222;*/
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+
 }
+.nirf-year-button:hover{
+  background-color:#800000;
+  color:white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+} 
 
 /* Details Section */
 .nirf-details {

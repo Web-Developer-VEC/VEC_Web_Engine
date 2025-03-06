@@ -7,7 +7,7 @@ import ImageCard from "./ImageCard";
 const Faculties = ({ data }) => {
   console.log("Fac",data);
     const [open, setopen] = useState(null);
-    const Name = 'Ajith';
+    const Name = 'Previous Year Faculties';
     const url = '/pdfs/7.3.1-VEC-Institutional-Distinctivenss-2020-21.pdf'
   
   const handleViewClick = (pdfUrl, name) => {
@@ -67,7 +67,7 @@ const Faculties = ({ data }) => {
       <div className={styles.prefaculty}>
         <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +
             "dark:bg-drks dark:text-text-drkt dark:hover:bg-drka"}
-                onClick={() => handleViewClick(url, Name)}> Previous Year brFaculties</button>
+                onClick={() => handleViewClick(url, Name)}> Previous Year Faculties</button>
       </div>
 
       {open && (
@@ -77,7 +77,7 @@ const Faculties = ({ data }) => {
                       "hover:bg-accn hover:text-prim dark:hover:bg-drka"} onClick={closeModal}>
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
-                  <h2>{open.name}</h2>
+                  <h2 className={styles.facultyModalHeader}>{open.name}</h2>
                   <iframe
                     src={open.url}
                     title={open.name}
