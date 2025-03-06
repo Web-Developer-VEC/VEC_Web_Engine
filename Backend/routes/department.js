@@ -13,7 +13,7 @@ router.get('/:deptId/activities', getDeptActivities);
 router.get('/:deptId/studentactivities', getStuActivities);
 router.get('/:deptId/supportingstaff', getSupportStaff);
 router.get('/:deptId/mous', getMou);
-router.get('/:deptId/conference/:year', getRDyear);
+router.get('/:deptId/research/:year', getRDyear);
 router.get('/:deptId/research', getRD);
 router.get('/:deptId/sidebar' ,getslidebar)
 

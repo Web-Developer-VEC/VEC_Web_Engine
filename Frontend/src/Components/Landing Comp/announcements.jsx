@@ -11,6 +11,7 @@ const Announcements1 = () => {
     const [hovered, setHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const content = spcannouncements[0]?.list_of_contents || [];
+    const links = spcannouncements[0]?.list_of_links || [];
 
     // Fetching Special Announcements
     useEffect(() => {
@@ -88,11 +89,11 @@ const Announcements1 = () => {
                         {content?.map((item, index) => (
                             <li className="text-xl mb-2" key={index}>
                                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                                {item}
+                                <a href={links[index]}>{item}</a>
                             </li>
                         ))}
                     </ul>
-                    <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button>
+                    {/* <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button> */}
                 </div>
 
                 {/* Announcements Section */}
