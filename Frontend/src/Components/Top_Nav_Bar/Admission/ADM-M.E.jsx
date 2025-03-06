@@ -40,13 +40,14 @@ const ME = ({theme, toggle}) => {
           </div>
         )}
       <div className="ME">
-        <h3 className="text-accn dark:text-drka">M.E. Degree Programme</h3>
-        <h3 className="text-accn dark:text-drka">
-          Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
-        </h3>
+        <h3 className="text-accn dark:text-drka font-bold">M.E. Degree Programme</h3>
+
       </div>
       <div className="me-contents bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+        <h3 className="text-accn dark:text-drka Eligibility text-center">
+          Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
+        </h3>
         <p className="description-text">
           Candidates for admission to the first semester of the Post-Graduate Degree Programme shall be
           required to have passed an appropriate Under-Graduate Degree Examination of Anna University or
@@ -66,34 +67,25 @@ const ME = ({theme, toggle}) => {
           offered only after obtaining equivalence to such degrees.
         </p>
         <div className="me-container">
-          <center><h4 className="text-accn dark:text-drka">M.E - Total Intake {pgData.Year}</h4></center>
+          <center><h4 className="text-accn dark:text-drka Eligibility mt-5 font-thin">M.E - Total Intake {pgData.Year}</h4></center>
           <table className="intake-table">
             <thead>
               <tr>
-                <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">PG Courses</th>
-                <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Government Quota Intake</th>
-                <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Management Quota Intake</th>
-                <th className="bg-gradient-to-r
-        from-secd to-[color-mix(in_srgb,theme(colors.secd)_75%,black)]
-        dark:from-drks dark:to-[color-mix(in_srgb,theme(colors.drks)_50%,black)]">Total Intake</th>
+                <th className="ugHeader">PG Courses</th>
+                <th className="ugHeader">Government Quota Intake</th>
+                <th className="ugHeader">Management Quota Intake</th>
+                <th className="ugHeader">Total Intake</th>
               </tr>
             </thead>
             <tbody>
             {pg.map((item, rowIndex) => {
               const [courseName, courseDetails] = Object.entries(item)[0];
               return (
-                <tr key={rowIndex} className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp">
-                  <td>{courseName}</td>
-                  <td>{courseDetails["Government Quota Intakes"]}</td>
-                  <td>{courseDetails["Management Quota Intakes"]}</td>
-                  <td>{courseDetails["Total Intakes"]}</td>
+                <tr key={rowIndex} className="bg-prim dark:bg-drkp">
+                  <td className="text-start">{courseName}</td>
+                  <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
+                  <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
+                  <td className="font-light">{courseDetails["Total Intakes"]}</td>
                 </tr>
               );
             })}

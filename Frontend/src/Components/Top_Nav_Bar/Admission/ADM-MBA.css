@@ -1,6 +1,6 @@
 .mba-page{
   padding: 3vmax;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'poppins', sans-serif;
   /*color: #2c3e50;*/
   /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
   border-radius: 12px;
@@ -13,24 +13,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  h4, h5, h6 {
-    font-weight: bold;
-    /*color: #d4af37; !* Gold color for headers *!*/
-}
-
-h4 {
-    font-size: 1.7rem;
-}
-
-h5, h6 {
-    font-size: 1.3rem;
-    /*color: #f39c12; !* Slightly different shade of yellow for variety *!*/
-}
-
 .description-text {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
   /*color: #8e5b3f; !* Earthy brownish text color *!*/
 }
   
@@ -42,6 +28,12 @@ h5, h6 {
   .mba-content{
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  .mba-content h4{
+    font-size: 20px;
+    font-weight: 100;
+    margin-top: 15px;
   }
   
   .mba-intake-table {

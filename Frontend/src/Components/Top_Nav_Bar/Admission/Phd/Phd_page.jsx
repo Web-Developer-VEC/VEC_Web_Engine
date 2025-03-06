@@ -374,12 +374,12 @@ export default function PhDAdmissionGuidelines() {
 
   return (
     <div className="phd-container">
-      <h1 className="phd-heading">Admission Guidelines for Ph.D. Programme</h1>
+      <h1 className="phd-heading text-[30px]">Admission Guidelines for Ph.D. Programme</h1>
       {sections.map((section, index) => (
         <div key={index} className="phd-section">
           <button
             onClick={() => toggleSection(index)}
-            className="phd-section-title bg-accn dark:bg-drka text-prim"
+            className={`phd-section-title bg-accn dark:bg-drka text-prim ${openIndex === index ? 'openPhd': 'closePhd'}`}
           >
             {section.title}{" "}
             <span className="phd-dropdown-icon">
