@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useCallback} from "react";
 import Banner from "../Banner";
 import "./Alumni.css";
-
 const Alumni = ({ theme, toggle }) => {
   // Sample data for the flipbook (replace with actual data source in production)
   const data = [
@@ -31,7 +30,7 @@ const Alumni = ({ theme, toggle }) => {
   const [isFlipping, setIsFlipping] = useState(false);
 
   // Handle navigation to the next page
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!isFlipping && currentPage < data.length - 1) {
       setIsFlipping(true);
       setFlipDirection("right");
@@ -41,10 +40,10 @@ const Alumni = ({ theme, toggle }) => {
         setIsFlipping(false);
       }, 600); // Matches CSS animation duration
     }
-  };
+  }, [isFlipping, currentPage, data.length]);
 
   // Handle navigation to the previous page
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (!isFlipping && currentPage > 0) {
       setIsFlipping(true);
       setFlipDirection("left");
@@ -54,7 +53,15 @@ const Alumni = ({ theme, toggle }) => {
         setIsFlipping(false);
       }, 600); // Matches CSS animation duration
     }
-  };
+  }, [isFlipping, currentPage]);
+
+  // Auto-scroll every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   return (
     <div>
@@ -116,6 +123,10 @@ const Alumni = ({ theme, toggle }) => {
           </div>
         </div>
       </div>
+
+
+
+  
 
       {/* Static Sections */}
       <div className="alumni-container">
