@@ -19,7 +19,7 @@ body {
 }
 
 .section-card li {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.8;
   margin-bottom: 10px;
 }
@@ -43,7 +43,7 @@ body {
   margin-top: 20px;
   font-family: "EB Garamond", serif;
   line-height: 1.1;
-  font-size: 32px;
+  font-size: 16px;
   /* Increased font size */
   /*color: rgba(255, 255, 255, 0.9);*/
   text-align: center;
@@ -52,7 +52,7 @@ body {
 }
 
 .section-card:hover {
-  transform: translateY(-10px) rotate(-1deg);
+  transform: translateY(-5px);
   box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
 }
 
@@ -137,20 +137,24 @@ body {
 
 /* General Section Styling */
 .about-department {
-  padding: 50px 0;
+  padding-bottom: 20px;
 }
 
 .about-department h2 {
-  font-size: 36px;
+  font-size: 20px;
   font-weight: bold;
   /*color: #333;*/
   margin-bottom: 20px;
 }
 
+.ABT_container{
+  display: flex;
+  justify-content: space-between;
+}
+
 .about-department-text {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
-  /*color: #555;*/
   text-align: justify;
 }
 
@@ -172,13 +176,6 @@ body {
   /* Smooth transition for hover effect */
 }
 
-.about-department-image img:hover {
-  transform: scale(1.05);
-  /* Slight zoom effect on hover */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  /* Slightly deeper shadow on hover */
-}
-
 /* Vision and Mission Section */
 .section-card {
   padding: 30px;
@@ -188,20 +185,21 @@ body {
 }
 
 .section-card h2 {
-  font-size: 30px;
-  color: #ffffff;
+  font-size: 20px;
+  color: #000;
 }
 
 .section-card p,
 .section-card ul {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.6;
   /*color: #333;*/
 }
 
 .section-card blockquote {
-  font-size: 24px;
+  font-size: 18px;
   font-style: italic;
+  font-weight: bold;
   /*color: #555;*/
   /*border-left: 4px solid #007bff;*/
   padding-left: 15px;
@@ -216,7 +214,7 @@ ul {
 /* General Section Styling */
 .section-card {
   /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
-  color: #fff;
+  color: #000;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
@@ -226,6 +224,10 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+.my-auto{
+  color: #000;
 }
 
 /* Responsive Design for Tablets */
@@ -271,7 +273,7 @@ ul {
   }
 
   .about-department {
-    padding: 0;
+    padding: 25px 0px;
   }
 
   .about-department-content {
@@ -297,14 +299,14 @@ ul {
 
   .about-department-image {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     /* Ensures full width */
   }
 
   .about-department-image img {
     display: block;
-    margin: 10px auto;
+    margin: 10px;
     /* Centers the image */
     max-width: 100%;
     height: auto;
@@ -361,7 +363,7 @@ ul {
     max-width: 390px;
     /* Prevent excessive scaling */
     height: auto;
-    margin: 10px auto;
+    margin: 10px;
     /* Centers horizontally */
     display: block;
   }

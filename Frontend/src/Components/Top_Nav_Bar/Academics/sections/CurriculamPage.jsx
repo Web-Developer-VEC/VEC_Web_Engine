@@ -35,7 +35,7 @@ const CurriculumPage = ({ data }) => {
 
             {/* Regulation Rows */}
             {data?.regulation?.year?.map((year, index) => (
-              <div className="row-item rounded-lg dark:bg-drkp border-0 hover:bg-secd dark:hover:bg-drks" key={year}>
+              <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
                 <p>
                   Regulation {year}
                   <div className="options-container">

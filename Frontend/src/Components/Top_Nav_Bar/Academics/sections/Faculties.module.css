@@ -48,6 +48,10 @@
   margin-bottom: 20px;
 }
 
+.facultyModalHeader{
+  margin-bottom: 15px;
+}
+
 /* Grid for remaining tiles */
 .gridContainer {
   /*display: grid;*/
