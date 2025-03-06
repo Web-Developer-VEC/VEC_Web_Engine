@@ -1,232 +1,117 @@
-/* Global Styles */
-body {
-  margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  /*background: linear-gradient(135deg, #f3f4f6, #e9ecef);*/
-  /*color: #333;*/
-  line-height: 1.6;
-}
-
 /* Main Container */
 .AP-main-container {
-  width: 100%;
   max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Vision and Mission Section */
-.AP-vision-mission {
-  margin-bottom: 50px;
-}
-
+/* Grid Layout */
 .AP-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.AP-card {
-  /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
-  /*border: 1px solid #ddd;*/
-  border-radius: 15px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  position: relative;
-  height: 250px;
- 
-  min-height: 200px;
-  /* Adjust based on content */
-  padding: 1rem;
-
-}
-
-.AP-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-}
-
-.AP-card-title {
-  font-size: 1.8em;
-  /*color: #ff9800;*/
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.AP-card-text {
-  /*color: #555;*/
-  line-height: 1.8;
-  font-size: 1.1em;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* About Section */
-.AP-about-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusting min size for better small-screen support */
   gap: 20px;
-  /*background: linear-gradient(135deg, #ffffff, #f1f1f1);*/
-  border-radius: 15px;
-  padding: 50px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.8s ease-in-out;
+  margin-bottom: 40px;
 }
 
-.AP-about-title {
-  font-size: 2.2em;
-  /*color: #ff9800;*/
-  margin-bottom: 25px;
-  font-weight: bold;
+/* Card Style */
+.AP-card {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  text-align: left;
+  background-color: #ffffff;
+  border-left: 5px solid #ffcc00; /* Yellow left border */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.AP-about-paragraph {
-  /*color: #666;*/
-  max-width: 800px;
-  line-height: 1.8;
-  font-size: 1.2em;
-}
-
-/* Contact Section */
-.AP-contact-section {
-  /*background: linear-gradient(135deg, #ffffff, #f1f1f1);*/
-  border-radius: 15px;
-  padding: 50px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 50px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.AP-contact-header h2 {
-  font-size: 2.2em;
-  /*color: #ff9800;*/
-  margin-bottom: 30px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.AP-contact-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.AP-contact-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  text-align: center;
-}
-
-.AP-contact-info {
-  /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.AP-contact-info:hover {
+/* Card Hover Effect */
+.AP-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.AP-contact-name {
-  font-size: 1.5em;
-  font-weight: bold;
-  /*color: #444;*/
-  margin-bottom: 10px;
+/* Card Title */
+.AP-card-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #ff9800;
 }
 
-.AP-contact-info p {
-  /*color: #555;*/
-  font-size: 1.1em;
+/* Card Text */
+.AP-card-text {
+  line-height: 1.7;
+  font-size: 16px;
+  color: #444;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 1120px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
   .AP-main-container {
-    padding: 10px;
+    padding: 30px 15px;
+  }
+
+  .AP-grid {
+    gap: 15px;
   }
 
   .AP-card {
-    padding: 10px;
-  }
-
-  .AP-about-title,
-  .AP-contact-header h2 {
-    font-size: 1.8em;
-  }
-
-  .AP-contact-info {
     padding: 20px;
+    border-left: 4px solid #ffcc00; /* Slightly thinner border on smaller screens */
   }
 
+  .AP-card-title {
+    font-size: 20px;
+  }
+
+  .AP-card-text {
+    font-size: 15px;
+    line-height: 1.6;
+  }
 }
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .AP-main-container {
     padding: 20px;
   }
 
+  .AP-grid {
+    display: flex;
+    flex-direction: column; /* Cards stack vertically on mobile */
+  }
+
   .AP-card {
-    padding: 10px;
-  }
-  .AP-card-text {
-    /*color: #555;*/
-    line-height: 1.8;
-    font-size: 0.9em;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  .AP-about-title,
-  .AP-contact-header h2 {
-    font-size: 1.5em;
+    padding: 18px;
+    border-left: 4px solid #ffcc00;
   }
 
-  .AP-contact-info {
-    padding: 20px;
+  .AP-card-title {
+    font-size: 18px;
+  }
+
+  .AP-card-text {
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
-@media (max-width: 650px) {
-  
 
-  .AP-card-text {
-    /*color: #555;*/
-    line-height: 1.8;
-    font-size: 1.1em;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+@media (max-width: 480px) {
+  .AP-main-container {
+    padding: 15px;
   }
 
-  
-}
-@media (max-width: 385px) {
-
-
-  .AP-card-text {
-    /*color: #555;*/
-    line-height: 1.8;
-    font-size: 0.9em;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+  .AP-card {
+    padding: 15px;
+    border-left: 3px solid #ffcc00; /* Even thinner border for very small screens */
   }
 
+  .AP-card-title {
+    font-size: 16px;
+  }
+
+  .AP-card-text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
 }
