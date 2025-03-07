@@ -1,7 +1,7 @@
 import React from "react";
 import "./NCCNtable.css"; // Import external CSS
 
-const NCCNtable = () => {
+const NCCNtable = ({data}) => {
   const students = [
     { id: "01", rank: "LC", name: "ADITHYA JAISWAL B", regNo: "TN/SDN/21/928502", branch: "CSE", registerNo: "113221031008", batch: "2021-2024" },
     { id: "02", rank: "CC", name: "MANOJ K", regNo: "TN/SDN/21/928511", branch: "MECH", registerNo: "113221081041", batch: "2021-2024" },
@@ -58,19 +58,19 @@ const NCCNtable = () => {
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => (
+            {data?.rank?.map((rank,i) => (
               <tr
                 className="
                     dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] bg-prim dark:bg-drkp"
-                key={student.id}
+                key={i}
               >
-                <td>{student.id}</td>
-                <td>{student.rank}</td>
-                <td>{student.name}</td>
-                <td>{student.regNo}</td>
-                <td>{student.batch}</td> {/* ✅ New data added */}
-                <td>{student.branch}</td>
-                <td>{student.registerNo}</td>
+                <td>{data['s.no'][i]}</td>
+                <td>{rank}</td>
+                <td>{data?.name[i]}</td>
+                <td>{data?.regimental_number[i]}</td>
+                <td>{data?.batch[i]}</td> {/* ✅ New data added */}
+                <td>{data?.branch[i]}</td>
+                <td>{data?.register_number[i]}</td>
               </tr>
             ))}
           </tbody>

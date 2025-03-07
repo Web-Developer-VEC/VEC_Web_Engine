@@ -1,0 +1,538 @@
+/* Dashboard container */
+.pl-warden-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    margin-left: 16rem;
+}
+
+/* Blurred background when popup is open */
+.pl-warden-dashboard-container .blurred {
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+/* Cards Layout */
+.pl-warden-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Styling for individual cards (Total Count, Returning, Overtime) */
+.pl-warden-card {
+    background-color: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    width: 205px;
+    height: 205px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+.pl-warden-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+.pl-warden-card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Card Number */
+.pl-warden-card-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1E90FF;
+    margin-top: 10px;
+}
+
+/* Donut Chart Section */
+.pl-warden-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Custom Legend */
+.pl-warden-dashboard-container .recharts-legend-wrapper {
+    transform: translateX(50px);
+}
+
+/* Tooltip Styling */
+.pl-warden-dashboard-container .recharts-tooltip-wrapper {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal overlay with blurred background */
+.pl-warden-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Modal card styling */
+.pl-warden-modal-card {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    /* width: 350px;     */
+    height:300px;
+    position: relative;
+    transition: transform 0.3s ease;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+.pl-warden-popup-card {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 700px;
+    height: 600px;
+    position: relative;
+    transition: transform 0.3s ease;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.pl-warden-popup-card {
+    max-width: 400px;
+}
+
+.pl-warden-popup-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Close button inside the modal */
+.pl-warden-close-button {
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    padding:0px 10px;
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 15%;
+    transition: background-color 0.3s ease;
+}
+
+.pl-warden-close-button:hover {
+    background-color: #C0392B;
+}
+
+/* Modal card heading */
+.pl-warden-modal-card h3,
+.pl-warden-popup-card h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Styling for the time in red color */
+.pl-warden-time {
+    color: #D9534F;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+/* Pie chart sector animation on hover */
+@media (min-width: 769px){
+  .pl-warden-dashboard-container .recharts-pie-sector:hover {
+      opacity: 0.85;
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+  }
+}
+
+/* Popup effect on hover for legend */
+.pl-warden-dashboard-container .recharts-legend-item {
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.pl-warden-dashboard-container .recharts-legend-item:hover {
+    font-weight: bold;
+    color: #1E90FF;
+    transform: scale(1.05);
+}
+
+/* Toggle Button for Today/Tomorrow */
+.pl-warden-toggle-button {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pl-warden-toggle-button:hover {
+    background-color: #5B9BD5;
+    transform: scale(1.05);
+}
+
+.pl-warden-toggle-button:active {
+    background-color: #4A89C1;
+    transform: scale(0.98);
+}
+
+/* Adding smooth hover effect */
+.pl-warden-toggle-button:focus {
+    box-shadow: 0 0 8px rgba(0, 136, 254, 0.5);
+}
+
+.pl-warden-popup-count{
+    padding-top: 25px;
+}
+
+.pl-warden-popup-count,
+.pl-warden-popup-returning,
+.pl-warden-popup-overtime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pl-warden-popup-count h4,
+.pl-warden-popup-returning h4,
+.pl-warden-popup-overtime h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.pl-warden-popup-count strong,
+.pl-warden-popup-returning p strong,
+.pl-warden-popup-overtime p strong {
+    font-size: 16px;
+    font-weight: normal;
+    color: #1E90FF;
+    margin-left: 10px;
+}
+
+/* Calendar Button Styling */
+.pl-warden-calendar-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pl-warden-calendar-button:hover {
+    background-color: #3D8AE1;
+}
+
+/* Calendar UI Styling */
+.pl-warden-popup-card .react-calendar {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    z-index: 5;
+}
+
+.pl-warden-popup-card .react-calendar__tile {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.pl-warden-popup-card .react-calendar__tile:hover {
+    background-color: #e1f3fe;
+}
+/* Dropdown Container (Top Right) */
+.pl-warden-dropdown-container {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown Label */
+.pl-warden-dropdown-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Dropdown Select */
+.pl-warden-dropdown {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    margin-right: 20px;;
+}
+
+/* Dropdown Hover Effect */
+.pl-warden-dropdown:hover {
+    border-color: #8884d8;
+}
+
+/* Dropdown Focus Effect */
+.pl-warden-dropdown:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+/* Title Container (Top Left) */
+.pl-warden-title-container {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+/* Enlarged modal card to fit pie chart */
+.pl-warden-pie-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+/* Ensure Pie Chart is centered */
+.pl-warden-dashboard-container .recharts-pie {
+    margin-right: 50px;
+    /* Space between pie and legend */
+}
+
+.pl-warden-name-list-popup {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.pl-warden-name-list-popup h4 {
+  font-size: 18px;
+}
+
+.pl-warden-name-list-popup ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.pl-warden-name-list-popup li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.pl-warden-name-list-popup button {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 768px){
+    .pl-warden-dashboard-container{
+        margin-left: 0rem;
+        top: 55px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .pl-warden-dashboard-container {
+      padding: 20px;
+    }
+  
+    .pl-warden-chart-container {
+      transform: scale(0.9);
+      margin-top: 0;
+    }
+  
+    .pl-warden-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .pl-warden-card {
+      width: 100%;
+      margin: 0;
+      height: 180px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .pl-warden-title-container {
+      position: relative;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+  
+    .pl-warden-dropdown-container {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      right: 0;
+    }
+  
+    .pl-warden-dropdown {
+      width: 150px;
+      margin-right: 0;
+    }
+  
+    .pl-warden-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 15px;
+    }
+  
+    .pl-warden-card {
+      width: 100%;
+      height: 150px;
+      margin: 0;
+    }
+  
+    .pl-warden-chart-container {
+      transform: scale(0.8);
+      width: 120%;
+    }
+  
+    .pl-warden-modal-card,
+    .pl-warden-popup-card {
+      width: 90%;
+      max-width: 350px;
+      padding: 20px;
+      height: auto;
+      min-height: 300px;
+    }
+  
+    .pl-warden-pie-chart-container {
+      transform: scale(1);
+      margin-top: 0px;
+    }
+  
+    .recharts-legend-wrapper {
+      transform: scale(0.8);
+    }
+
+    .pl-warden-popup-title{
+      font-size: 5px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .pl-warden-title-container {
+      font-size: 20px;
+    }
+  
+    .pl-warden-dropdown-container {
+      flex-direction: row;
+      gap: 8px;
+    }
+  
+    .pl-warden-dropdown-label {
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  
+    .pl-warden-dropdown {
+      width: 120px;
+      font-size: 14px;
+    }
+  
+    .pl-warden-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+  
+    .pl-warden-card {
+      height: 130px;
+    }
+  
+    .pl-warden-card-title {
+      font-size: 18px;
+    }
+  
+    .pl-warden-card-number {
+      font-size: 24px;
+    }
+  
+    .pl-warden-chart-container {
+      transform: scale(0.9);
+      width: 140%;
+    }
+  
+    .pl-warden-modal-card,
+    .pl-warden-popup-card {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    .pl-warden-popup-count h4,
+    .pl-warden-popup-returning h4,
+    .pl-warden-popup-overtime h4 {
+      font-size: 16px;
+    }
+  
+    .pl-warden-pie-chart-container {
+      transform: scale(1.2);
+      margin-top: 0px;
+    }
+  }

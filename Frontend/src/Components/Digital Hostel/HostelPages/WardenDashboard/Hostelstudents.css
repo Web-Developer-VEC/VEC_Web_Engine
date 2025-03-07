@@ -1,0 +1,393 @@
+.details-container {
+  display: flex;
+  background-color: #f3f4f6;
+  position: relative;
+  margin-left: 16rem;
+}
+
+.details-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.details-search {
+  position: relative;
+  width: 300px;
+}
+
+.details-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.details-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.details-filter {
+  position: relative;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+  background-color: #1f2937;
+}
+
+.filter-popup {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 250px;
+  z-index: 10;
+}
+
+.filter-section {
+  margin-bottom: 1rem;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  color: #374151;
+}
+
+.details-grid {
+  column-count: 4;
+  column-gap: 1.5rem;
+}
+
+.details-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.details-food-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.details-veg {
+  background-color: #10b981;
+}
+
+.details-non-veg {
+  background-color: #ef4444;
+}
+
+.logo{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.details-basic-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.details-student-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.details-primary-info {
+  flex: 1;
+}
+
+.details-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.details-admission {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.details-year,
+.details-department {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.details-extended-info {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.details-expanded {
+  max-height: 500px;
+}
+
+.details-info-grid {
+  display: grid;
+  gap: 0.75rem;
+  /* padding: 1rem 0; */
+  border-top: 1px solid #e5e7eb;
+}
+
+.details-info-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.details-label {
+  color: #6b7280;
+}
+
+.details-view-more {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.details-view-more:hover {
+  background-color: #1f2937;
+}
+
+.details-food-edit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details-food-select {
+  padding: 0.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.details-food-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.details-food-button.save {
+  background-color: #10b981;
+  color: white;
+}
+
+.details-food-button.save:hover {
+  background-color: #059669;
+}
+
+.details-food-button.cancel {
+  background-color: #ef4444;
+  color: white;
+}
+
+.details-food-button.cancel:hover {
+  background-color: #dc2626;
+}
+
+.details-food-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details-food-edit-button {
+  padding: 0.25rem 0.5rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.details-food-edit-button:hover {
+  background-color: #1f2937;
+}
+
+.transit-icon {
+  color: #f39c12; /* Orange for walking */
+  margin-right: 5px;
+}
+
+.home-icon {
+  color: #3498db; /* Blue for home */
+  margin-right: 5px;
+}
+
+.buttons{
+  display: flex;
+  gap: 20px;
+}
+
+.details-room-input{
+  width: 70%;
+  padding: 4px;
+}
+
+.details-vaccate-button{
+  padding: 0.50rem 0.5rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.details-vaccate-button:hover{
+  background-color: #1f2937;
+}
+
+.details-vaccate-display{
+  display: flex;
+  align-items: center;  
+  width: 100%;
+  justify-content: center;
+}
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .details-container{
+    margin-top: 58px;
+    margin-left: 0rem;
+  }
+
+  .details-main {
+    margin-left: 0;
+    padding: 1rem;
+    padding-bottom: 5rem;
+  }
+
+  .details-header {
+    gap: 1rem;
+  }
+  
+  .details-search {
+    width: 100%;
+  }
+  
+  .details-grid {
+    column-count: 1;
+  }
+
+  .download{
+    font-size: small;
+  }
+  
+  .buttons{
+    flex-direction: column;
+  }
+
+  .filter-button{
+    width: 100%;
+  }
+}
+
+/* Tablet Responsive Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .details-grid {
+    column-count: 2;
+  }
+
+  .details-main {
+    margin-left: 0;
+    margin: 3rem 0;
+    padding-bottom: 5rem;
+  }
+
+  .details-student-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .details-name {
+    font-size: 1.5rem;
+  }
+
+  .details-admission,
+  .details-year,
+  .details-department,
+  .details-info-item {
+    font-size: 1rem;
+  }
+
+}

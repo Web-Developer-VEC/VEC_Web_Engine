@@ -1,0 +1,634 @@
+/* Modern Student History Styling */
+.history-icon {
+    width: 35px;
+    height: 40px;
+    background: linear-gradient(to bottom, #fef3c7, #fde68a);
+    filter: drop-shadow(0 2px 4px rgba(234, 179, 8, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.student-history-container {
+    padding: 2rem;
+    margin-left: 16rem;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.student-history-header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #854d0e;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.student-history-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #eab308;
+    border-radius: 2px;
+}
+
+.student-history-container .select-dropdown {
+    background: #ffffff;
+    border: 2px solid #eab308;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    max-height: 4rem;
+    color: #854d0e;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+    cursor: pointer;
+    font-weight: 500;
+    min-width: 150px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23eab308' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+.student-history-container .select-dropdown:hover {
+    border-color: #ca8a04;
+    box-shadow: 0 6px 16px rgba(234, 179, 8, 0.25);
+    transform: translateY(-2px);
+}
+
+.student-history-container .select-dropdown:focus {
+    outline: none;
+    border-color: #ca8a04;
+    box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.3);
+}
+
+.student-history-container .student-history-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.student-history-container .student-history-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(234, 179, 8, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.one ,.two{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.student-history-container .student-history-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, #eab308, #facc15);
+    border-radius: 3px 0 0 3px;
+}
+
+.student-history-container .student-history-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -10px rgba(234, 179, 8, 0.2);
+    background: linear-gradient(145deg, #ffffff 0%, #fffbeb 100%);
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+.student-history-card.not-current {
+    opacity: 0.8;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(245, 245, 245, 0.9);
+}
+
+.student-history-card.not-current::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    opacity: 0.6;
+    transform: rotate(45deg);
+    border-radius: 10px;
+}
+
+.student-history-card.not-current .history-info p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.text-secondary{
+    margin: 0;
+}
+
+.student-history-card.not-current .history-info {
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.student-history-card.not-current:hover {
+    opacity: 0.9;
+    transform: translateY(-4px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.student-history-card.not-current:hover::before {
+    opacity: 0.8;
+}
+
+.student-history-container .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.student-history-container .modal-content {
+    background: linear-gradient(145deg, #ffffff 0%, #fffbeb 100%);
+    padding: 1rem;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease-out;
+    border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.student-history-container .popup-x {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(234, 179, 8, 0.1);
+    border: none;
+    cursor: pointer;
+    color: #92400e;
+    /* width: 36px; */
+    /* height: 36px; */
+    border-radius: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.student-history-container .popup-x:hover {
+    background: rgba(234, 179, 8, 0.2);
+    transform: rotate(90deg);
+}
+
+.student-history-container .details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(234, 179, 8, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid rgba(234, 179, 8, 0.1);
+}
+
+.student-history-container .details-column {
+    flex: 1;
+    min-width: 180px;
+}
+
+.student-history-container .details-column p {
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px dashed rgba(234, 179, 8, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.student-history-container .details-column p strong {
+    color: #854d0e;
+    font-weight: 600;
+    /* margin-bottom: 0.25rem; */
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.student-history-container .modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    /* margin-top: 1rem; */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.student-history-container .modal-image:hover {
+    transform: scale(1.02);
+}
+
+.qr-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 4px solid white;
+    transition: all 0.3s ease;
+}
+
+.qr-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin: 1.25rem 0; */
+    padding: 0.50rem;
+    background: rgba(234, 179, 8, 0.05);
+    border-radius: 16px;
+    border: 1px dashed rgba(234, 179, 8, 0.3);
+}
+
+.qr-container p {
+    /* margin-bottom: 1rem; */
+    color: #854d0e;
+    font-weight: 600;
+}
+
+.download-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.download-icon::after {
+    content: 'Download';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eab308;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.download-icon:hover::after {
+    opacity: 1;
+}
+
+.download-icon:hover {
+    transform: translateY(-5px);
+}
+
+.student-history-container .modal-close-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #eab308;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.student-history-container .modal-close-button:hover {
+    background-color: #ca8a04;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(234, 179, 8, 0.4);
+}
+
+.student-history-container .header {
+    color: #854d0e;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(234, 179, 8, 0.2);
+    position: relative;
+}
+
+.student-history-container .header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #eab308;
+}
+
+.student-history-cards .history-info {
+    position: relative;
+    padding: 0.75rem 1rem;
+    background: rgba(234, 179, 8, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.student-history-cards .history-info:hover {
+    background: rgba(234, 179, 8, 0.1);
+}
+
+.student-history-cards .history-info .text {
+    color: #854d0e;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.student-history-container .text-danger {
+    color: #ef4444;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+.student-history-container .text-success {
+    color: #10b981;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    /* font-size: 0.875rem; */
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.status.completed {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.status.pending {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.in-out{
+    width: 500px;
+}
+
+.approve-status{
+    width: 400px;
+}
+
+.stu-edit-button {
+    display: inline-block;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.stu-edit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.5s;
+    transform: skewX(-15deg);
+}
+
+.stu-edit-button:hover::before {
+    left: 100%;
+}
+
+.stu-edit-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.stu-edit-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.stu-edit-button:hover span {
+    padding-right: 25px;
+}
+
+.stu-edit-button:hover {
+    box-shadow: 0 8px 20px rgba(234, 179, 8, 0.4);
+    transform: translateY(-3px);
+}
+
+.stu-edit-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.stu-edit-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
+.loading-message, .error-message, .no-data-message {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.loading-message {
+    color: #eab308;
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.loading-message::after {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(234, 179, 8, 0.3);
+    border-top-color: #eab308;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.error-message {
+    color: #ef4444;
+    border-left: 4px solid #ef4444;
+}
+
+.no-data-message {
+    color: #6b7280;
+    border-left: 4px solid #6b7280;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .student-history-container {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .student-history-container .student-history-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.25rem;
+    }
+
+    .student-history-card .history-info {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .student-history-container .details-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .student-history-container .modal-content {
+        width: 95%;
+        padding: 1.25rem;
+    }
+
+    .student-history-header {
+        font-size: 1.5rem;
+    }
+    
+    .one, .two{
+        flex-direction: column;
+    }
+
+    .history-info{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .text-secondary{
+        width: 250px;
+    }
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.student-history-card {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.student-history-card:nth-child(1) { animation-delay: 0.1s; }
+.student-history-card:nth-child(2) { animation-delay: 0.2s; }
+.student-history-card:nth-child(3) { animation-delay: 0.3s; }
+.student-history-card:nth-child(4) { animation-delay: 0.4s; }
+.student-history-card:nth-child(5) { animation-delay: 0.5s; }

@@ -1,0 +1,279 @@
+/* Container */
+.v-container {
+    min-height: 100vh;
+    background-color: rgba(251, 243, 219, 0.3);
+    /* display: flex; */
+}
+
+/* Main Content */
+.v-main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.v-content {
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.v-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border: 1px solid #fde68a;
+}
+
+/* Typography */
+.v-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #92400e;
+    margin-bottom: 1.5rem;
+}
+
+.v-subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Layout */
+.v-section {
+    margin-bottom: 2rem;
+}
+
+.v-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .v-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Form Elements */
+.v-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 70%;
+}
+
+.v-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #92400e;
+}
+
+.v-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #fde68a;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+
+.v-input:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* Buttons */
+.v-mobile-verify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.v-button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.v-button-verify {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+}
+
+.v-button-verify:hover {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+}
+
+.v-button-parent {
+    background: linear-gradient(to right, #fcd34d, #fbbf24);
+}
+
+.v-button-parent:hover {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+}
+
+.v-actions-centered {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+/* Animations */
+@keyframes expand {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+.v-animate-expand {
+    animation: expand 0.3s ease-out forwards;
+    transform-origin: top;
+}
+
+@media (max-width: 768px) {
+    .v-content {
+        margin: 2.5rem 0rem;
+    }
+
+    .v-button {
+        width: fit-content;
+        height: 70px;
+        padding: 10px;
+    }
+
+    .v-button-verify {
+        height: 45px;
+    }
+
+    .v-input-group{
+        width: 100%;
+    }
+
+    .print{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .v-button {
+        /* width: 120px; */
+        height: 50px;
+        padding: 5px;
+    }
+
+    .v-button-verify {
+        height: 45px;
+    }
+
+    .v-actions-centered{
+        margin-bottom: 100px;
+
+    }
+    
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .v-container, .v-container * {
+    visibility: visible;
+  }
+
+  .v-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .v-actions-centered {
+    display: none;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-form {
+    page-break-before: always;
+    height: 100vh;
+  }
+  .signatures {
+    position: absolute;
+    bottom: 30px;
+    width: 60%;
+  }
+}
+
+.form-count{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.print-form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    padding: 30px;
+  }
+  
+  .print-form h2, .print-form h3 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .print-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  
+  .print-form td {
+    padding: 10px;
+  }
+  
+  .print-form td:first-child {
+    width: 40%;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .print-form td:first-child::after {
+    content: " :";
+    float: right;
+  }
+  
+  .signatures {
+    position: absolute;
+    bottom: 10%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-weight: bold;
+  }
+  

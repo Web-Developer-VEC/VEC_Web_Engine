@@ -1,0 +1,382 @@
+/* Container */
+.HS-container {
+    min-height: 100vh;
+    background-color: rgba(251, 243, 219, 0.3);
+    display: flex;
+  }
+  
+  /* Navigation */
+  .HS-nav {
+    background: linear-gradient(to bottom, #fef3c7, #fde68a);
+    color: #78350f;
+    width: 16rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .HS-nav-content {
+    padding: 1rem;
+  }
+  
+  .HS-nav-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .HS-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .HS-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    color: #78350f;
+    text-decoration: none;
+  }
+  
+  .HS-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Main Content */
+  .HS-main {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .HS-content {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  
+  .HS-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border: 1px solid #fde68a;
+  }
+  
+  /* Typography */
+  .HS-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #92400e;
+    margin-bottom: 1.5rem;
+  }
+  
+  .HS-subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Layout */
+  .HS-section {
+    margin-bottom: 2rem;
+  }
+  
+  .HS-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .HS-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .HS-full-width {
+    grid-column: 1 / -1;
+  }
+  
+  /* Form Elements */
+  .HS-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 70%;
+  }
+  
+  .HS-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #92400e;
+  }
+  
+  .HS-input,
+  .HS-select,
+  .HS-textarea {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #fde68a;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+  }
+  
+  .HS-input:focus,
+  .HS-select:focus,
+  .HS-textarea:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+  }
+  
+  /* Pass Types */
+  .HS-pass-types {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .HS-pass-types {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .HS-pass-type {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #fde68a;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .HS-pass-type:hover {
+    border-color: #fbbf24;
+    background-color: rgba(251, 243, 219, 0.5);
+  }
+  
+  .HS-pass-type-active {
+    border-color: #fbbf24;
+    background-color: rgba(251, 243, 219, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+  }
+  
+  .HS-radio {
+    display: none;
+  }
+  
+  .HS-pass-label {
+    text-transform: capitalize;
+    color: #92400e;
+  }
+  
+  .HS-check-icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #f59e0b;
+  }
+  
+  /* Upload Box */
+  .HS-upload-box {
+    border: 2px dashed #fde68a;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: white;
+    transition: all 0.2s;
+  }
+  
+  .HS-upload-box:hover {
+    background-color: rgba(251, 243, 219, 0.5);
+  }
+  
+  .HS-file-input {
+    display: none;
+  }
+  
+  .HS-upload-label {
+    cursor: pointer;
+    color: #92400e;
+  }
+  
+  .HS-upload-label:hover {
+    color: #78350f;
+  }
+  
+  .HS-upload-hint {
+    font-size: 0.875rem;
+    color: #92400e;
+    margin-top: 0.5rem;
+  }
+
+
+  .HS-upload-success{
+    text-decoration: none;
+    color: #92400E;
+  }
+  
+  /* Buttons */
+  .HS-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .HS-button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    height: 25%;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: 10px;
+   
+  }
+
+  .HS-mobile-verify{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .HS-button-verify {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+  }
+  
+  .HS-button-verify:hover {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+  }
+  
+  .HS-button-parent {
+    background: linear-gradient(to right, #fcd34d, #fbbf24);
+  }
+  
+  .HS-button-parent:hover {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+  }
+  
+  .HS-button-warden {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+  }
+  
+  .HS-button-warden:hover {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+  }
+  
+  .HS-button-chief {
+    background: linear-gradient(to right, #f59e0b, #d97706);
+  }
+  
+  .HS-button-chief:hover {
+    background: linear-gradient(to right, #d97706, #b45309);
+  }
+  
+  .HS-button-save {
+    background: linear-gradient(to right, #d97706, #92400e);
+  }
+  
+  .HS-button-save:hover {
+    background: linear-gradient(to right, #92400e, #78350f);
+  }
+  .HS-button-update {
+    background: linear-gradient(to right, #d97706, #92400e);
+  }
+  
+  .HS-button-update:hover {
+    background: linear-gradient(to right, #92400e, #78350f);
+  }
+  
+  .HS-Draft-Button{
+    position: absolute;
+    top: 25%;
+    right: 4%;
+    border: #92400e solid 1px;
+    
+  }
+  
+  .HS-button-draft{
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 8px 16px;
+  }
+  
+  
+  /* Animations */
+  @keyframes expand {
+    from {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+    to {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+  
+  .HS-animate-expand {
+    animation: expand 0.3s ease-out forwards;
+    transform-origin: top;
+  }
+
+  @media (max-width: 768px){
+    .HS-content {
+      margin: 2.5rem 0rem;
+    }
+
+    .HS-button{
+      width: 120px;
+      height: 70px;
+      padding: 10px;
+    }
+
+    .HS-button-verify{
+      height: 45px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .HS-button {
+      width: 120px;
+      height: 50px;
+      padding: 5px;
+    }
+  
+    .HS-button-verify {
+      height: 45px;
+    }
+
+    .HS-card{
+      margin-top: 30%;
+    }
+
+    .HS-Draft-Button{
+      top: 13%;
+      border: none;
+    }
+
+    .HS-input-group{
+      width: 100%;
+    }
+
+
+  }

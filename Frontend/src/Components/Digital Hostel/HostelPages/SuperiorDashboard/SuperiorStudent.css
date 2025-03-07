@@ -1,0 +1,290 @@
+/* Container styles */
+
+.superior-container {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    margin-left: 16rem;
+    padding: 1.5rem;
+  }
+
+  .superior-content {
+    margin: 0 auto;
+  }
+  
+  /* Gender button styles */
+  .superior-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .superior-buttons button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #1c1c1f;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0.2rem;
+  }
+  
+  .superior-buttons button:hover {
+    background-color: #fdcc03;
+    color: #1c1c1f;
+  }
+  
+  .superior-buttons button.superior-active {
+    background-color: #fdcc03;
+    color: #1c1c1f;
+  }
+  
+  /* Filters styles */
+  .superior-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .superior-filters select {
+    padding: 0.5rem;
+    border: 1px solid #1c1c1f;
+    border-radius: 0.375rem;
+    background-color: white;
+  }
+  
+  /* Students grid */
+  .superior-students-grid {
+    columns: 1;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .superior-students-grid {
+      columns: 2;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .superior-students-grid {
+      columns: 3;
+    }
+  }
+  
+  /* Student tile styles */
+  .superior-student-tile {
+    break-inside: avoid;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .superior-student-header {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .superior-student-header img {
+    width: 8rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  
+  .superior-student-basic-info {
+    flex: 1;
+  }
+  
+  .superior-student-basic-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .superior-student-basic-info p {
+    color: #4b5563;
+    margin: 0.25rem 0;
+  }
+  
+  /* Student details */
+  .superior-student-details {
+    margin-top: 1rem;
+  }
+  
+  .superior-student-details p {
+    color: #4b5563;
+    margin: 0.5rem 0;
+  }
+  
+  /* Form styles */
+  .superior-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .superior-edit-form input {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    width: 100%;
+  }
+  
+  /* Action buttons */
+  .superior-student-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .superior-student-actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .superior-view-button {
+    color: #1c1c1f;
+    background: none;
+  }
+  
+  .superior-view-button:hover {
+    color: #fdcc03;
+  }
+  
+  .superior-edit-button {
+    color: #4b5563;
+    background: none;
+  }
+  
+  .superior-edit-button:hover {
+    color: #374151;
+  }
+  
+  .superior-save-button {
+    color: #059669;
+    background: none;
+  }
+  
+  .superior-save-button:hover {
+    color: #047857;
+  }
+
+  .superior-delete-button{
+    color: #ff6b36;
+    border: none;
+  }
+
+  .superior-delete-button:hover{
+    color: red;
+  }
+  
+  .superior-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .details-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+  }
+
+  .custom-select {
+    appearance: none; /* Removes default styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #9c400e; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    width: auto;
+    transition: background 0.3s ease;
+  }
+  
+  /* Arrow icon using background image */
+  .custom-select::after {
+    content: "▼"; /* Downward arrow */
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+  }
+  
+  /* Hover effect */
+  .custom-select:hover {
+    background: #b24c0e;
+  }
+  
+  /* Focus effect */
+  .custom-select:focus {
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Disabled state */
+  .custom-select:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Make sure the dropdown options are readable */
+  .custom-select option {
+    background: white;
+    color: black;
+  }
+  
+
+  /* Mobile Bottom Navigation */
+.superior-mobile-nav {
+  display: none;
+}
+
+.buttons-2{
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .superior-header, .superior-filters{
+    flex-direction: column;
+  }
+
+  .details-search-icon {
+    position: absolute;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    color: #6b7280;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .superior-container{
+    padding-bottom: 5rem;
+    margin-top: 58px;
+    margin-left: 0rem;
+  }
+
+  .download{
+    width: 40vw;
+  }
+
+  .buttons-2{
+    /* justify-content: space-between; */
+    gap: 10px;
+  }
+}

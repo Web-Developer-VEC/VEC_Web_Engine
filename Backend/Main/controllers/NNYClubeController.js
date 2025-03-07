@@ -34,7 +34,39 @@ async function getYrcData (req, res) {
     } 
 }
 
+async function getArmyData (req, res) {
+    const db = getDb();
+    const collection = db.collection('army');
+    try {
+        const Data = await collection.find({}).toArray();
+        if (Data.length === 0) {
+            return res.status(404).json({ message: 'No navy data found' });
+        }
+        res.status(200).json(Data);
+    } catch (error) {
+        console.error('❌ Error fetching navy data:', error);
+        res.status(500).json({ error: 'Error fetching armydata' });
+    }
+}
+
+async function getNavyData (req, res) {
+    const db = getDb();
+    const collection = db.collection('navy');
+    try {
+        const NAVYData = await collection.find({}).toArray();
+        if (NAVYData.length === 0) {
+            return res.status(404).json({ message: 'No navy data found' });
+        }
+        res.status(200).json(NAVYData);
+    } catch (error) {
+        console.error('❌ Error fetching navy data:', error);
+        res.status(500).json({ error: 'Error fetching navy data' });
+    }
+}
+
 module.exports = {
     getNssData,
-    getYrcData
+    getYrcData,
+    getNavyData,
+    getArmyData
 }

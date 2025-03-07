@@ -1,0 +1,563 @@
+/* Base Styles (Desktop First Approach) */
+.security-login-container {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f9f9f9, #eef1f5);
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+/* Heading Styling */
+.security-login-heading {
+    font-size: 34px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* QR Scan Button */
+.security-login-scan-button {
+    padding: 14px 26px;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.security-login-scan-button:hover {
+    background: linear-gradient(135deg, #45a049, #2e7d32);
+    box-shadow: 0 6px 14px rgba(76, 175, 80, 0.4);
+}
+
+/* QR Scanner Container */
+.security-login-scanner-container {
+    margin: 20px auto;
+    width: 320px;
+    height: 320px;
+    position: relative;
+    border: 2px dashed #2c3e50;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Cancel Button */
+.security-login-cancel-button {
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.security-login-cancel-button:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    box-shadow: 0 6px 14px rgba(231, 76, 60, 0.4);
+}
+/* Background Blur Overlay */
+.security-login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+    backdrop-filter: blur(8px); /* Apply blur effect only to the background */
+    z-index: 999; /* Ensure it covers everything behind the popup */
+}
+
+/* Popup Card */
+/* Popup Card */
+/* Popup Styling */
+/* Container styles */
+.container {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .open-button {
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .open-button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    /* z-index: 50; */
+  }
+  
+  .modal-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 28rem;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    padding: 0.25rem;
+    color: #6b7280;
+    background-color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close-button:hover {
+    color: #374151;
+  }
+  
+  /* Profile section */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+  
+  .profile-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+  }
+  
+  .profile-info p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin: 0.25rem 0 0 0;
+  }
+  
+  /* Quick info section */
+  .quick-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: #eff6ff;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .info-item svg {
+    color: #2563eb;
+  }
+  
+  /* Pass details section */
+  .pass-details {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .time-details {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9fafb;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .reason-details {
+    background-color: #f9fafb;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .label {
+    color: #6b7280;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .value {
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* Status badges */
+  .status-badges {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .status-badge {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .status-badge.pending {
+    background-color: #fef3c7;
+  }
+  
+  .status-badge.approved {
+    background-color: #d1fae5;
+  }
+  
+  .badge-label {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+  
+  .badge-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem 0 0 0;
+  }
+  
+  .pending .badge-label {
+    color: #92400e;
+  }
+  
+  .pending .badge-value {
+    color: #78350f;
+  }
+  
+  .approved .badge-label {
+    color: #065f46;
+  }
+  
+  .approved .badge-value {
+    color: #064e3b;
+  }
+  
+  /* Remarks section */
+  .remarks-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .remarks-section label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .remarks-section textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    resize: vertical;
+  }
+  
+  .remarks-section textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  
+  /* Action buttons */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  
+  .action-buttons button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .reject-button {
+    flex: 1;
+    background-color: #dc2626;
+    color: white;
+  }
+  
+  .reject-button:hover {
+    background-color: #b91c1c;
+  }
+  
+  .accept-button {
+    flex: 1;
+    background-color: #16a34a;
+    color: white;
+  }
+  
+  .accept-button:hover {
+    background-color: #15803d;
+  }
+  
+  .print-button {
+    /* width: 2.5rem; */
+    /* height: 2.5rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .print-button:hover {
+    background-color: #f9fafb;
+  }
+/* For Tablets and Small Screens */
+@media (max-width: 768px) {
+    .security-login-container {
+        padding: 25px 10px;
+    }
+
+    .security-login-scanner-container {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* For Mobile Devices */
+@media (max-width: 480px) {
+    .security-login-container {
+        padding: 20px 5px;
+    }
+
+    .security-login-scanner-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* For Very Small Devices */
+@media (max-width: 320px) {
+    .security-login-scanner-container {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* SecurityCheckout.css */
+
+/* Print-specific styles */
+@media print {
+  /* Reset margins and padding for the entire page */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Use a standard font for print */
+    font-size: 12px; /* Smaller font size for print */
+    color: #000; /* Ensure text is black for better readability */
+    background: #fff; /* Ensure white background */
+  }
+
+  /* Hide unnecessary elements */
+  .close-button,
+  .action-buttons,
+  .security-login-overlay {
+    display: none !important;
+  }
+
+  /* Style the modal card for print */
+  .modal-card {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border: none;
+    padding: 20px;
+    margin: 0;
+  }
+
+  /* Profile header styling */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  .profile-info h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #000;
+  }
+
+  .profile-info p {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: #555;
+  }
+
+  /* Quick info styling */
+  .quick-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #000;
+  }
+
+  .info-item svg {
+    display: none; /* Hide icons in print view */
+  }
+
+  /* Pass details styling */
+  .pass-details {
+    margin-bottom: 20px;
+  }
+
+  .time-details {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .time-details .label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .time-details .value {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .reason-details {
+    margin-bottom: 20px;
+  }
+
+  .reason-details .label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .reason-details .value {
+    font-size: 14px;
+    color: #000;
+  }
+
+  /* Status badges styling */
+  .status-badges {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .status-badge {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .status-badge.approved {
+    background-color: #e8f5e9; /* Light green for approved */
+  }
+
+  .status-badge.pending {
+    background-color: #fff3e0; /* Light orange for pending */
+  }
+
+  .badge-label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .badge-value {
+    font-size: 14px;
+    color: #000;
+  }
+
+  /* Remarks section styling */
+  .remarks-section {
+    margin-bottom: 20px;
+  }
+
+  .remarks-section label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .remarks-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Ensure links are styled for print */
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

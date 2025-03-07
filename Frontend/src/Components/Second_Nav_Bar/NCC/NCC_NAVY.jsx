@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./NCC_NAVY.css"; 
 import NCCNCarousel from "./NCC_NAvY comps/NCCNCarousel";
 import NCCNtable from "./NCC_NAvY comps/NCCNtable";
+import axios from "axios";
 
 const NCC_NAVY = () => { 
+  const [tabel,setTabelValue] = useState({});
+  const [curosel, setCarosel] = useState({});
+  const [ Coordinator, setCoordinator] = useState({});
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const responce = await axios.get('/api/ncc_navy');
+        const data = responce.data[0];
+
+        setTabelValue(data.Table);
+        setCarosel(data.image);
+        setCoordinator(data.Coordinator)
+
+      } catch (error) {
+        console.error("Error fetching data",error);  
+      }
+    }
+    fetchData()
+  },[]);
+
   return (
     <>
-      <NCCNCarousel />
+      <NCCNCarousel data={curosel}/>
 
       {/* Main NCC_NAVY Container */}
       <div className="NCC_NAVY-container">
@@ -159,24 +181,20 @@ const NCC_NAVY = () => {
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
           >
             <div className="NCC_NAVY-profile-photo">
-              <img src="./ncc_staff.jpg" alt="Sub. LT R DHANALAKSHMI" />
+              <img src={Coordinator?.coordinator_image} alt={Coordinator?.coordinator_name} />
             </div>
             <div className="NCC_NAVY-profile-content">
-              <h2 className="NCC_NAVY-profile-name">Sub. LT R DHANALAKSHMI</h2>
+              <h2 className="NCC_NAVY-profile-name">{Coordinator?.coordinator_name}</h2>
               <h4 className="NCC_NAVY-profile-position text-accn dark:text-drka">
-                NCC Navy Coordinator
+                {Coordinator?.coordinator_designation}
               </h4>
               <p className="NCC_NAVY-profile-bio">
-                Sub. LT R DHANALAKSHMI is an NCC Cadet (2008) with CUO Rank 1 &
-                Grade “A” Associate NCC Officer (NAVY). She was awarded the
-                Certificate of Excellence 2024 for Best Naval Practical Skills
-                and secured the 1st position among all India ANOs. She also led
-                her team as "Section-1 Commander."
+                {Coordinator?.coordinator_description}
               </p>
             </div>
           </div>
         </div>
-        <NCCNtable />
+        <NCCNtable data={tabel} />
       </div>
     </>
   );

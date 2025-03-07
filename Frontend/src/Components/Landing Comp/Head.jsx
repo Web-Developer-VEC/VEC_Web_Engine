@@ -415,7 +415,7 @@ const Head = () => {
                     <button onClick={() => navigate('/sports')} className=' mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
                     <button onClick={() => navigate('/trans')} className=' mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
                     <button onClick={() => navigate('/library')} className=' mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
-                    <button onClick={() => navigate('/hostel')} className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
+                    <button onClick={() => navigate('/hosLanding')} className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <button onClick={() => navigate('/other-facilities')} className=' mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
                     <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
