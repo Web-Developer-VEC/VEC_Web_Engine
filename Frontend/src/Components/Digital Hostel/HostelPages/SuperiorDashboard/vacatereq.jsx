@@ -128,6 +128,7 @@ function VacateReq() {
         {loading ? (
           <p>Loading...</p>
         ) : (
+          <div className='AR-table-container'>
           <table className="AR-table">
             <thead>
               <tr>
@@ -158,6 +159,7 @@ function VacateReq() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
 
         {/* Modal for Details */}

@@ -355,6 +355,29 @@
   .print-button:hover {
     background-color: #f9fafb;
   }
+
+  
+  .security-logout{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+  }
+
+  .security-logout-button{
+    padding: 14px 26px;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ca372b, #eb0914);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+  }
+
+  .security-logout-button{
+    background: linear-gradient(135deg, #ca372b, #eb0914);
+    box-shadow: 0 6px 14px rgba(76, 175, 80, 0.4);
+  }
 /* For Tablets and Small Screens */
 @media (max-width: 768px) {
     .security-login-container {

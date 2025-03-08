@@ -4,7 +4,6 @@ import { Home, Walk } from "lucide-react";
 import HostelSidebar from '../HostelSidebar';
 import './Hostelstudents.css';
 import axios from 'axios';
-import DownloadExcel from '../excel';
 import DownloadPdf from '../pdf';
 import showSweetAlert from '../Alert';
 import Swal from 'sweetalert2';

@@ -10,6 +10,12 @@ const ProudAlumni = () => {
   const [flipDirection, setFlipDirection] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   // Fetch alumni data from API
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +70,7 @@ const ProudAlumni = () => {
                   className="dynamic-image-wrapper"
                 >
                   <img
-                    src={department.alumni.students[currentIndex].photo}
+                    src={UrlParser(department.alumni.students[currentIndex].photo)}
                     alt={department.alumni.students[currentIndex].name}
                     className="dynamic-image"
                   />

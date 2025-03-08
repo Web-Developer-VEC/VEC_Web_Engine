@@ -204,6 +204,7 @@ function WardenHistory() {
         {loading ? (
           <p>No passes for selected Date</p>
         ) : (
+          <div className='AR-table-container'>
           <table className="AR-table">
             <thead>
               <tr>
@@ -218,42 +219,42 @@ function WardenHistory() {
               </tr>
             </thead>
             <tbody>
-  {filteredRecords?.map((record) => {
-    const getStatusClass = (status) => {
-      if (status === null) return "AR-status-orange"; // Pending (Orange)
-      return status ? "AR-status-green" : "AR-status-red"; // Accepted (Green) | Declined (Red)
-    };    
+              {filteredRecords?.map((record) => {
+                const getStatusClass = (status) => {
+                  if (status === null) return "AR-status-orange"; // Pending (Orange)
+                  return status ? "AR-status-green" : "AR-status-red"; // Accepted (Green) | Declined (Red)
+                };    
 
-    return (
-      <tr key={record.pass_id} onClick={() => setSelectedRecord(record)}>
-        <td>{record.name}</td>
-        <td>{["I", "II", "III", "IV"][record.year - 1] || record.year}</td>
-        <td>{record.room_no}</td>
-        <td>{new Date(record.request_time).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
-        <td>{passTypeLabels[record.passtype] || record.passtype}</td>
-        <td>{new Date(record.from).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
-          <td>
-            {record.wardern_approval !== null ? (
-              <span className={`AR-status-circle ${getStatusClass(record.wardern_approval)}`}>
-                {record.wardern_approval ? "Accepted (W)" : "Declined (W)"}
-              </span>
-            ) : (
-              <span className={`AR-status-circle ${getStatusClass(record.superior_wardern_approval)}`}>
-                {record.superior_wardern_approval ? "Accepted (SW)" : "Declined (SW)"}
-              </span>
-            )}
-          </td>
-          <td>
-            <span className={`AR-status-circle ${getStatusClass(record.parent_approval)}`}>
-              {record.parent_approval === null ? "Pending" : record.parent_approval ? "Accepted" : "Declined"}
-            </span>
-          </td>
-      </tr>
-    );
-    })}
-    </tbody>
-
+                return (
+                  <tr key={record.pass_id} onClick={() => setSelectedRecord(record)}>
+                    <td>{record.name}</td>
+                    <td>{["I", "II", "III", "IV"][record.year - 1] || record.year}</td>
+                    <td>{record.room_no}</td>
+                    <td>{new Date(record.request_time).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
+                    <td>{passTypeLabels[record.passtype] || record.passtype}</td>
+                    <td>{new Date(record.from).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
+                      <td>
+                        {record.wardern_approval !== null ? (
+                          <span className={`AR-status-circle ${getStatusClass(record.wardern_approval)}`}>
+                            {record.wardern_approval ? "Accepted (W)" : "Declined (W)"}
+                          </span>
+                        ) : (
+                          <span className={`AR-status-circle ${getStatusClass(record.superior_wardern_approval)}`}>
+                            {record.superior_wardern_approval ? "Accepted (SW)" : "Declined (SW)"}
+                          </span>
+                        )}
+                      </td>
+                      <td>
+                        <span className={`AR-status-circle ${getStatusClass(record.parent_approval)}`}>
+                          {record.parent_approval === null ? "Pending" : record.parent_approval ? "Accepted" : "Declined"}
+                        </span>
+                      </td>
+                  </tr>
+                );
+                })}
+                </tbody>
           </table>
+          </div>
         )}
 
         {selectedRecord && (

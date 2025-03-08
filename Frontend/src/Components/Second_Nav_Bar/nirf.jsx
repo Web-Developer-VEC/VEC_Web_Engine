@@ -9,6 +9,12 @@ const Nirf = ({theme, toggle}) => {
   const [yearButtons, setYearButtons] = useState({});
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -117,7 +123,7 @@ const Nirf = ({theme, toggle}) => {
               <div className="nirf-pdf-container">
                 <h3>{`Viewing: ${selectedAction}`}</h3>
                 <embed className='embed'
-                  src={yearButtons[selectedYear]?.actions[selectedAction]}
+                  src={UrlParser(yearButtons[selectedYear]?.actions[selectedAction])}
                   type="application/pdf"
                   width="100%"
                   height="600px"

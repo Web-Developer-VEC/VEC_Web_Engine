@@ -179,7 +179,7 @@ async function passMeasureSuperior (req, res) {
 
 async function analysisSuperior (req, res) {
     try {
-        const db = gender();
+        const db = getDb();
         const collection = db.collection("pass_details");
 
         const { type, year, gender} = req.body;

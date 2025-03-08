@@ -5,6 +5,12 @@ const NCCACarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     useEffect(() => {
         if (isAutoPlay) {
             const interval = setInterval(() => {
@@ -27,7 +33,7 @@ const NCCACarousel = ({data}) => {
             <div className="ncc-a-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: "transform 0.5s ease-in-out" }}>
                 {data?.carousal_images?.map((slide, index) => (
                     <div className="ncc-a-carousel-slide" key={index}>
-                        <img src={slide} alt={data?.carousal_title[index]} />
+                        <img src={UrlParser(slide)} alt={data?.carousal_title[index]} />
                         <div className="ncc-a-carousel-text">
                             <h3>{data?.carousal_title[index]}</h3>
                             <p>{data?.carousal_description[index]}</p>

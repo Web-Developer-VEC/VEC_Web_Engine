@@ -216,6 +216,8 @@ function WardenRequest() {
         {loading ? (
           <p>Loading...</p>
         ) : (
+          <div className='AR-table-container'>
+
           <table className="AR-table">
             <thead>
               <tr>
@@ -230,48 +232,48 @@ function WardenRequest() {
               </tr>
             </thead>
             <tbody>
-  {filteredRecords.map((record) => {
-    // Determine row color based on late_count
-    const getRowClass = (late_count) => {
-      if (late_count < 3) return "AR-row-green"; // Green row
-      if (late_count <= 5) return "AR-row-orange"; // Orange row
-      return "AR-row-red"; // Red row
-    };
-    const getStatusClass = (status) => {
-      if (status === null) return "AR-status-orange"; // Pending (Orange)
-      return status ? "AR-status-green" : "AR-status-red"; // Accepted (Green) | Declined (Red)
-    };    
+            {filteredRecords.map((record) => {
+              // Determine row color based on late_count
+              const getRowClass = (late_count) => {
+                if (late_count < 3) return "AR-row-green"; // Green row
+                if (late_count <= 5) return "AR-row-orange"; // Orange row
+                return "AR-row-red"; // Red row
+              };
+              const getStatusClass = (status) => {
+                if (status === null) return "AR-status-orange"; // Pending (Orange)
+                return status ? "AR-status-green" : "AR-status-red"; // Accepted (Green) | Declined (Red)
+              };    
 
-    return (
-      <tr key={record.pass_id} className={getRowClass(record.late_count)} onClick={() => setSelectedRecord(record)}>
-        <td>{record.name}</td>
-        <td>{["I", "II", "III", "IV"][record.year - 1] || record.year}</td>
-        <td>{record.room_no}</td>
-        <td>{new Date(record.request_time).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
-        <td>{passTypeLabels[record.passtype] || record.passtype}</td>
-        <td>{new Date(record.from).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
-        <td>
-          {record.passtype === 'outpass' ? (
-            <span className={`AR-late-circle ${getRowClass(record.late_count)}`}>
-              {record.late_count}
-            </span>
-          ) : (
-            <span className={`AR-late-circle ${getRowClass(record.late_count)}`}>
-              -
-            </span>
-          )}
-      </td>
-          <td>
-            <span className={`AR-status-circle ${getStatusClass(record.parent_approval)}`}>
-              {record.parent_approval === null ? "Pending" : record.parent_approval ? "Accepted" : "Declined"}
-            </span>
-          </td>
-      </tr>
-    );
-  })}
-</tbody>
-
+              return (
+                <tr key={record.pass_id} className={getRowClass(record.late_count)} onClick={() => setSelectedRecord(record)}>
+                  <td>{record.name}</td>
+                  <td>{["I", "II", "III", "IV"][record.year - 1] || record.year}</td>
+                  <td>{record.room_no}</td>
+                  <td>{new Date(record.request_time).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
+                  <td>{passTypeLabels[record.passtype] || record.passtype}</td>
+                  <td>{new Date(record.from).toLocaleDateString('en-GB').replace(/\//g, ' - ')}</td>
+                  <td>
+                    {record.passtype === 'outpass' ? (
+                      <span className={`AR-late-circle ${getRowClass(record.late_count)}`}>
+                        {record.late_count}
+                      </span>
+                    ) : (
+                      <span className={`AR-late-circle ${getRowClass(record.late_count)}`}>
+                        -
+                      </span>
+                    )}
+                </td>
+                    <td>
+                      <span className={`AR-status-circle ${getStatusClass(record.parent_approval)}`}>
+                        {record.parent_approval === null ? "Pending" : record.parent_approval ? "Accepted" : "Declined"}
+                      </span>
+                    </td>
+                </tr>
+              );
+            })}
+          </tbody>
           </table>
+          </div>
         )}
 
         {selectedRecord && (

@@ -8,6 +8,12 @@ const NBA_F = () => {
   const [selectedYear, setSelectedYear] = useState(null);
   const [nbaData, setNbaData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +41,7 @@ const NBA_F = () => {
     if (deptIndex === -1) return null;
     const yearIndex = nbaData.year[deptIndex].indexOf(selectedYear);
     if (yearIndex === -1) return null;
-    return nbaData.PDF_Path[deptIndex][yearIndex];
+    return UrlParser(nbaData.PDF_Path[deptIndex][yearIndex]);
   };
 
   return (
@@ -96,7 +102,7 @@ const NBA_F = () => {
         {/* PDF Viewer */}
         {getPdfPath() && (
           <div className="nba-pdf-container">
-            <embed className="embed" src={getPdfPath()} type="application/pdf" />
+            <embed className="nba-embed" src={getPdfPath()} type="application/pdf" />
           </div>
         )}
       </div>

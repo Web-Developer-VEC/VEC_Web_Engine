@@ -4,11 +4,13 @@
   min-height: 100vh;
   background-color: #f9fafb;
   margin-left: 16rem;
+  margin-top: -20px;
 }
 
 .AR-main {
   flex: 1;
   padding: 2rem;
+  margin-top: -20px;
 }
 
 .AR-page-title {

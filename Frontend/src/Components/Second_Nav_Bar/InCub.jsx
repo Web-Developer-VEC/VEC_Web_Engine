@@ -5,6 +5,7 @@ import Clge from '../Assets/college.jpeg';
 import { ChevronRightIcon, Square2StackIcon } from "@heroicons/react/24/solid";
 import Slider from "react-slick";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const InCub = ({ toggle, theme }) => {
     const tiles = [{
@@ -108,6 +109,34 @@ const InCub = ({ toggle, theme }) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
+    const [startUp, setStartUps] = useState(null);
+    const [funding, setFunding] = useState(null);
+    const [letter, setLetter] = useState(null);
+    const [tableData, setTableData] = useState(null);
+
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/incubation');
+                
+                const data = response.data[0].Incubation_Document;
+
+                setStartUps(data.Company_Details);
+                setFunding(data.Funding_Details);
+                setLetter(UrlParser(data.Letter.letter_path));
+                setTableData(data.Funding_Details);
+            } catch (error) {
+                console.error("Error Fetching Incubation data",error);
+            }
+        };
+        fetchData();
+    },[])
 
     // Auto-slide functionality
     useEffect(() => {
@@ -237,7 +266,7 @@ const InCub = ({ toggle, theme }) => {
                     <img className="bg-accn dark:bg-drks w-1/2 h-0 rounded-r-xl rounded-bl-xl
                         peer-checked:h-auto peer-checked:p-1
                         transition-all duration-200 ease-in"
-                         src={Ltr} alt={"Msme Approval Letter"} />
+                         src={letter} alt={"Msme Approval Letter"} />
                 </div>
                 <div className="nss-carousel-wrap h-fit">
                     <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -269,12 +298,12 @@ const InCub = ({ toggle, theme }) => {
                 </div>
                 <div className="flex flex-wrap gap-4 justify-center lg:mx-32 px-4">
                     <p className="basis-full text-xl font-poppins">Our few StartUps</p>
-                    {strt.map((srt, ind) => (
+                    {startUp?.company_name?.map((name, ind) => (
                         <div className="basis-1/5 p-4 rounded-2xl bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] grow" key={ind}>
-                            <p className="text-xl text-accn dark:text-drks mb-2 font-poppins">{srt.nme}</p>
-                            <p className="text-base font-semibold font-poppins">{srt.dep} | {srt.yer}</p>
-                            <p className="text-base font-poppins">{srt.lic}</p>
+                            <p className="text-xl text-accn dark:text-drks mb-2 font-poppins">{name}</p>
+                            <p className="text-base font-semibold font-poppins">{startUp?.department_name[ind]} | {startUp?.year[ind]}</p>
+                            <p className="text-base font-poppins">{startUp?.lic[ind]}</p>
                         </div>
                     ))}
                 </div>
@@ -300,7 +329,20 @@ const InCub = ({ toggle, theme }) => {
                             </tr>
                         </thead>
                         <tbody>
-                        {seed.map((cmp, ind) => (
+                        {tableData?.name?.map((name,i) => (
+                            <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+                            dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
+                            border-b dark:border-drka border-prim"
+                            key={i}>
+                                {console.log("aji",name)
+                                }
+                                <td className="px-6 py-4">{name}</td>
+                                <td className="px-6 py-4">{tableData?.funding[i]}</td>
+                                <td className="px-6 py-4">{tableData?.government_org[i]}</td>
+                                <td className="px-6 py-4">{tableData?.year[i]}</td>
+                            </tr>
+                        ))}
+                        {/* {seed.map((cmp, ind) => (
                             <>
                                 {cmp.sed.map((org, ind) => (
                                     <tr className="even:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
@@ -324,7 +366,7 @@ const InCub = ({ toggle, theme }) => {
                                     </tr>
                                 ))}
                             </>
-                        ))}
+                        ))} */}
                         </tbody>
                     </table>
                 </div>

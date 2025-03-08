@@ -75,14 +75,20 @@ const ImgSld = ({load, toggle, theme}) => {
                     <source src={Vide} type='video/mp4'/>
                 </video>
                 <div className="absolute flex gap-3 z-[50] bottom-[50%] left-0 mb-3 ml-3">
-                    {vidHdr.map((hdr, i) => (
-                        <p key={i} className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3
+                    {/* {vidHdr.map((hdr, i) => ( */}
+                        <p className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3
                         outline outline-prim dark:outline-drkp outline-offset-2 hover:outline-secd
                         dark:hover:outline-drks bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
                         text-text dark:text-drkt bg-gradient-to-l from-secd dark:from-drks from-0% via-secd
                         dark:via-drks via-50% to-white to-50% border-slate-700 w-full duration-[150ms]
-                        ease-in transition-all hover:bg-[position:-100%_100%]">{hdr}</p>
-                    ))}
+                        ease-in transition-all hover:bg-[position:-100%_100%]"><a href={`tel:+91  91235 47550`} className='no-underline text-black'>+91  91235 47550</a></p>
+                        <p className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3
+                        outline outline-prim dark:outline-drkp outline-offset-2 hover:outline-secd
+                        dark:hover:outline-drks bg-[length:200%_100%] bg-[position:0%_100%] text-[1lvh] lg:text-lg
+                        text-text dark:text-drkt bg-gradient-to-l from-secd dark:from-drks from-0% via-secd
+                        dark:via-drks via-50% to-white to-50% border-slate-700 w-full duration-[150ms]
+                        ease-in transition-all hover:bg-[position:-100%_100%]"><a href="mailto:ajithajay1029@gmail.com" target="_blank" rel="noopener noreferrer" className='no-underline text-black'>velammal@velammal.edu.in</a></p>
+                    {/* ))} */}
                 </div>
                 <Toggle toggle={toggle} theme={theme}
                         attr="absolute -top-[30%] lg:-top-[36%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]

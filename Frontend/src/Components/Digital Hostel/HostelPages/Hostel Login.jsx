@@ -231,11 +231,11 @@ function LoginForm() {
           />
         </motion.div>
 
-        {(type === 'warden') && (
+        {/* {(type === 'warden') && (
           <motion.div className="HL-form-links" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
             <a href="/hostel/forget-password" className="HL-form-link">Forgot Password?</a>
           </motion.div>
-        )}
+        )} */}
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
           <button type="submit" className="HL-form-button">Log In</button>

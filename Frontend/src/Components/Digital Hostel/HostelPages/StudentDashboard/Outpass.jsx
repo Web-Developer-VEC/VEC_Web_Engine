@@ -20,6 +20,7 @@ function HostelPass() {
   const [reason, setReason] = useState(null);
   const [existingFilePath, setExistingFilePath] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
+  const [parentApproval, setParentApproval] = useState(true)
 
   const location = useLocation();
   let passid  = location.state?.passid
@@ -111,6 +112,7 @@ function HostelPass() {
         setReason(data.reason_for_visit);
         setExistingFilePath(data.file_path || "");
         setMobileno(data.mobile_number);
+        setParentApproval(data.parent_approval === null ? true : false);
 
         // Fetch student data for verification
         const studentResponse = await fetch("/api/verify_student", {
@@ -689,9 +691,16 @@ const handleUpdatePass = async () => {
             {passType && (
               <div className="HS-actions HS-animate-expand">
                 {isEditMode ? (
-                  <button className="HS-button HS-button-update" onClick={handleUpdatePass}>
-                    Update Pass
-                  </button>
+                  <>
+                    <button className="HS-button HS-button-update" onClick={handleUpdatePass}>
+                      Update Pass
+                    </button>
+                    {parentApproval && (
+                      <button className="HS-button HS-button-parent" onClick={handleParentApproval}> 
+                          Parent Approval
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <>
                     {/* <button className="HS-button HS-button-parent" onClick={handleParentApproval}> 

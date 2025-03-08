@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Scanner from "react-qr-barcode-scanner";
 import { X, Printer, MapPin, Phone } from 'lucide-react';
 import "./SecurityCheckout.css";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export default function SecurityCheckout() {
   const [showScanner, setShowScanner] = useState(false);
@@ -14,7 +16,38 @@ export default function SecurityCheckout() {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
 
-console.log(passId);
+  const navigate = useNavigate();
+
+  const handleLogout = async ()=>{
+
+    try {
+      const response = await fetch("/api/logout", {
+        method: "GET",
+        credentials: "include", 
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+
+        Swal.fire({
+          title: "Log out",
+          text: data.message,
+          icon: "success",
+          timer: 2000, 
+          showConfirmButton: false,
+          willClose: () => {
+            Swal.close();
+            navigate(data.redirect);
+          },
+        });
+      } else {
+          console.error("Error During Logout");
+      }
+    } catch (error) {
+      console.error("Logout Error:", error);
+    }
+  }
 
   const yearToAlphabet = {
     '1': 'First Year', 
@@ -359,175 +392,181 @@ console.log(passId);
   
 
   return (
-    
-    <div className="security-login-container">
-      <h1 className="security-login-heading">Security Login</h1>
+    <>
+      <div className="security-logout">
+        <button className="security-logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+      <div className="security-login-container">
+        <h1 className="security-login-heading">Security Login</h1>
 
-      {/* QR Code Scan Button */}
-      <button className="security-login-scan-button" onClick={startScanner}>
-        Scan QR Code
-      </button>
-
-      {/* QR Code Scanner */}
-      {showScanner && (
-        <>
-          <div className="security-login-scanner-container">
-            <Scanner
-              onUpdate={(err, result) => {
-                if (result) handleScan(result);
-                else handleError(err);
-              }}
-              constraints={{
-                video: {
-                  facingMode: { ideal: "environment" },
-                  width: { ideal: 640 },
-                  height: { ideal: 480 },
-                },
-              }}
-              videoStyle={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                playsInline: true, // Ensures video works on iOS Safari
-              }}
-            />
-          </div>
-
-          {/* Cancel Button */}
-          <button
-            className="security-login-cancel-button"
-            onClick={() => {
-              setShowScanner(false);
-              stopCamera();
-            }}
-          >
-            Cancel
-          </button>
-        </>
-      )}
-    {showPopup && <div className="security-login-overlay"></div>}
-
-      {/* Popup Card */}
-      {/* Popup Card */}
-      {showPopup && passDetails && (
-    <div className="modal-overlay">
-      <div className="modal-card" ref={modalRef}>
-        <button
-          onClick={() => setShowPopup(false)}  // Close popup when clicked
-          className="close-button"
-        >
-          <X size={20} />
+        {/* QR Code Scan Button */}
+        <button className="security-login-scan-button" onClick={startScanner}>
+          Scan QR Code
         </button>
 
-        {/* Header with compact profile */}
-        <div className="profile-header">
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&h=200&fit=crop"
-            alt="Profile"
-            className="profile-image"
-          />
-          <div className="profile-info">
-            <h2>{passDetails.name}</h2>
-            <p>{passDetails.dept} • {yearToAlphabet[passDetails.year]}</p>
-          </div>
-        </div>
-
-        {/* Quick Info */}
-        <div className="quick-info">
-          <div className="info-item">
-            <MapPin size={16} />
-            <span>{passDetails.room_no}</span>
-          </div>
-          <div className="info-item">
-            <Phone size={16} />
-            <span><a href={`tel:${passDetails.mobile_number}`} className="no-underline">{passDetails.mobile_number}</a></span>
-          </div>
-        </div>
-
-        {/* Pass Details */}
-        <div className="pass-details">
-          <div className="time-details">
-            <div>
-              <p className="label">From</p>
-              <p className="value">{formatDateTime(passDetails.from).date} at {formatDateTime(passDetails.from).time}</p>
+        {/* QR Code Scanner */}
+        {showScanner && (
+          <>
+            <div className="security-login-scanner-container">
+              <Scanner
+                onUpdate={(err, result) => {
+                  if (result) handleScan(result);
+                  else handleError(err);
+                }}
+                constraints={{
+                  video: {
+                    facingMode: { ideal: "environment" },
+                    width: { ideal: 640 },
+                    height: { ideal: 480 },
+                  },
+                }}
+                videoStyle={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  playsInline: true, // Ensures video works on iOS Safari
+                }}
+              />
             </div>
-            <div> 
-              <p className="label">To</p>
-              <p className="value">{formatDateTime(passDetails.to).date} at {formatDateTime(passDetails.to).time}</p>
+
+            {/* Cancel Button */}
+            <button
+              className="security-login-cancel-button"
+              onClick={() => {
+                setShowScanner(false);
+                stopCamera();
+              }}
+            >
+              Cancel
+            </button>
+          </>
+        )}
+      {showPopup && <div className="security-login-overlay"></div>}
+
+        {/* Popup Card */}
+        {/* Popup Card */}
+        {showPopup && passDetails && (
+      <div className="modal-overlay">
+        <div className="modal-card" ref={modalRef}>
+          <button
+            onClick={() => setShowPopup(false)}  // Close popup when clicked
+            className="close-button"
+          >
+            <X size={20} />
+          </button>
+
+          {/* Header with compact profile */}
+          <div className="profile-header">
+            <img
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&h=200&fit=crop"
+              alt="Profile"
+              className="profile-image"
+            />
+            <div className="profile-info">
+              <h2>{passDetails.name}</h2>
+              <p>{passDetails.dept} • {yearToAlphabet[passDetails.year]}</p>
             </div>
           </div>
 
-          <div className="reason-details">
-            <p className="label">Pass Type</p>
-            <p className="value">{passTypeParse[passDetails.passtype]}</p>
-          </div>
-
-          <div className="reason-details">
-            <p className="label">Place & Reason</p>
-            <p className="value">{passDetails.place_to_visit} / {passDetails.reason_type}</p><br></br>
-            {passDetails.reason_for_visit !== "" && (
-              <>
-                <p className="label">Description</p>
-                <p>{passDetails.reason_for_visit}</p>
-              </>
-            )}
-          </div>
-
-          {/* Status Badges */}
-          <div className="status-badges">
-            <div className={`status-badge ${passDetails.parent_approval ? "approved" : "pending"}`}>
-              <p className="badge-label">Parent Approval</p>
-              <p className="badge-value">{passDetails.parent_approval ? "Accepted" : "Pending"}</p>
+          {/* Quick Info */}
+          <div className="quick-info">
+            <div className="info-item">
+              <MapPin size={16} />
+              <span>{passDetails.room_no}</span>
             </div>
-            {passDetails.superior_wardern_approval === null ? (
-              <div className={`status-badge ${passDetails.wardern_approval ? "approved" : "pending"}`}>
-                <p className="badge-label">Warden Approval</p>
-                <p className="badge-value">{passDetails.wardern_approval ? "Approved" : "Pending"}</p>
+            <div className="info-item">
+              <Phone size={16} />
+              <span><a href={`tel:${passDetails.mobile_number}`} className="no-underline">{passDetails.mobile_number}</a></span>
+            </div>
+          </div>
+
+          {/* Pass Details */}
+          <div className="pass-details">
+            <div className="time-details">
+              <div>
+                <p className="label">From</p>
+                <p className="value">{formatDateTime(passDetails.from).date} at {formatDateTime(passDetails.from).time}</p>
               </div>
-            ) : (
-              <div className={`status-badge ${passDetails.superior_wardern_approval ? "approved" : "pending"}`}>
-                <p className="badge-label">Superior Warden Approval</p>
-                <p className="badge-value">{passDetails.superior_wardern_approval ? "Approved" : "Pending"}</p>
+              <div> 
+                <p className="label">To</p>
+                <p className="value">{formatDateTime(passDetails.to).date} at {formatDateTime(passDetails.to).time}</p>
+              </div>
+            </div>
+
+            <div className="reason-details">
+              <p className="label">Pass Type</p>
+              <p className="value">{passTypeParse[passDetails.passtype]}</p>
+            </div>
+
+            <div className="reason-details">
+              <p className="label">Place & Reason</p>
+              <p className="value">{passDetails.place_to_visit} / {passDetails.reason_type}</p><br></br>
+              {passDetails.reason_for_visit !== "" && (
+                <>
+                  <p className="label">Description</p>
+                  <p>{passDetails.reason_for_visit}</p>
+                </>
+              )}
+            </div>
+
+            {/* Status Badges */}
+            <div className="status-badges">
+              <div className={`status-badge ${passDetails.parent_approval ? "approved" : "pending"}`}>
+                <p className="badge-label">Parent Approval</p>
+                <p className="badge-value">{passDetails.parent_approval ? "Accepted" : "Pending"}</p>
+              </div>
+              {passDetails.superior_wardern_approval === null ? (
+                <div className={`status-badge ${passDetails.wardern_approval ? "approved" : "pending"}`}>
+                  <p className="badge-label">Warden Approval</p>
+                  <p className="badge-value">{passDetails.wardern_approval ? "Approved" : "Pending"}</p>
+                </div>
+              ) : (
+                <div className={`status-badge ${passDetails.superior_wardern_approval ? "approved" : "pending"}`}>
+                  <p className="badge-label">Superior Warden Approval</p>
+                  <p className="badge-value">{passDetails.superior_wardern_approval ? "Approved" : "Pending"}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Remarks */}
+            {passDetails.comment !== null && (
+              <div className="remarks-section">
+                <label>Warden Notes</label>
+                {/* <textarea rows={2} placeholder="Add your remarks here..." /> */}
+                <p>{passDetails.comment}</p>
               </div>
             )}
-          </div>
 
-          {/* Remarks */}
-          {passDetails.comment !== null && (
-            <div className="remarks-section">
-              <label>Warden Notes</label>
-              {/* <textarea rows={2} placeholder="Add your remarks here..." /> */}
-              <p>{passDetails.comment}</p>
+            {/* Action Buttons */}
+            <div className="action-buttons">
+              {passDetails.exit_time !== null ? (
+                <button className="accept-button" onClick={() => {
+                  handlePassAction("accept");
+                  setShowPopup(false);
+                }}>
+                  Re Entry Confirmed
+                </button>
+              ) : (
+                <>
+                <button className="reject-button" onClick={() => handlePassAction("decline")}>
+                  Reject
+                </button>
+                <button className="accept-button" onClick={() => handlePassAction("accept")}>
+                  Accept
+                </button>
+                <button className="print-button" onClick={handlePrint}>
+                  <Printer size={16} />
+                </button>           
+                </>
+              )}
             </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="action-buttons">
-            {passDetails.exit_time !== null ? (
-              <button className="accept-button" onClick={() => {
-                handlePassAction("accept");
-                setShowPopup(false);
-              }}>
-                Re Entry Confirmed
-              </button>
-            ) : (
-              <>
-              <button className="reject-button" onClick={() => handlePassAction("decline")}>
-                Reject
-              </button>
-              <button className="accept-button" onClick={() => handlePassAction("accept")}>
-                Accept
-              </button>
-              <button className="print-button" onClick={handlePrint}>
-                <Printer size={16} />
-              </button>           
-              </>
-            )}
           </div>
         </div>
       </div>
-    </div>
-  )}
-    </div>
+    )}
+      </div>
+    </>   
   );
 }

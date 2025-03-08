@@ -43,6 +43,13 @@ const SocialIcon = ({ icon: Icon, label, bgColor, url }) => (
 );
 
 const ProfileSection = ({data}) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const getNumber = (value) => value ? Number(value) : 0;
 
   const stats = [
@@ -120,7 +127,7 @@ const ProfileSection = ({data}) => {
   ];
   
   const socials = social.filter(item => item.url !== null);
-
+  
   return (
     <div className="faculty-profile-container">
       <div className="faculty-profile-card">
@@ -131,8 +138,8 @@ const ProfileSection = ({data}) => {
             <div className="faculty-profile-photo border-4 border-secd dark:border-drks rounded-lg
               [box-shadow:0_4px_15px_theme(colors.secd)] dark:[box-shadow:0_4px_15px_theme(colors.drks)]">
               <img 
-                src={data?.Photo} 
-                alt="Profile" 
+                src={UrlParser(data?.Photo)} 
+                alt={data?.Name} 
               />
             </div>
             
@@ -585,27 +592,27 @@ const Tiles = ({ data }) => {
 
   useEffect(() => {
     if (!data) return;
-
+  
     const tiles = [
       {
         title: "Projects",
         icon: <Lightbulb size={24} />,
         items: data.PROJECTS?.map((item) => {
           const details = {
-            "Sponsoring Agency": item["SPONSORING AGENCY"],
+            "Sponsoring Agency": item.SPONSORING_AGENCY,
             "Amount": item.AMOUNT,
-            "Year of Sanction": item["YEAR OF SANCTION"],
+            "Year of Sanction": item.YEAR_OF_SANCTION,
             "Duration": item.DURATION,
-            "Responsibility": item["RESPONSIBILITY (PI / CO PI)"],
-            "Status": item["STATUS ( Completed / Ongoing)"],
+            "Responsibility": item.RESPONSIBILITY,
+            "Status": item.STATUS,
           };
-    
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-    
+  
           if (!item.TITLE && Object.keys(filteredDetails).length === 0) return null;
-    
+  
           return {
             text: item.TITLE || "No Title Available",
             link: item.LINK || "#",
@@ -618,18 +625,19 @@ const Tiles = ({ data }) => {
         icon: <GoProjectRoadmap size={24} />,
         items: data.PATENTS?.map((item) => {
           const details = {
-            "Patent Type": item["PATENT_TYPE_(UTILITY)"],
+            "Patent Type": item.PATENT_TYPE_UTILITY,
             "Country": item.COUNTRY,
-            "Status": item["STATUS_(_Published_/_FER_/_Granted_)"],
+            "Status": item.STATUS,
             "Date of Recent Achieved Level": item.DATE_OF_RECENT_ACHIEVED_LEVEL,
           };
-    
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-    
-          if (!item.NAME_OF_PATENT && Object.keys(filteredDetails).length === 0) return null;
-    
+  
+          // Ensure NAME_OF_PATENT is valid and details are not empty
+          if (!item.NAME_OF_PATENT || item.NAME_OF_PATENT === "NIL" || Object.keys(filteredDetails).length === 0) return null;
+  
           return {
             text: item.NAME_OF_PATENT || "No Title Available",
             link: item.LINK || "#",
@@ -646,15 +654,15 @@ const Tiles = ({ data }) => {
             "Journal Name": item.JOURNAL_NAME,
             "DOI Number": item.DOI_NUMBER,
             "Page No": item.PAGE_NO,
-            "Month & Year": item["MONTH_&_YEAR"],
+            "Month & Year": item["MONTH&_YEAR"],
           };
-    
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-    
+  
           if (!item.PAPER_TITLE && Object.keys(filteredDetails).length === 0) return null;
-    
+  
           return {
             text: item.PAPER_TITLE || "No Title Available",
             link: item.DOI_NUMBER || "#",
@@ -668,18 +676,18 @@ const Tiles = ({ data }) => {
         items: data.CONFERENCE_PUBLICATIONS?.map((item) => {
           const details = {
             "Authors": item.AUTHORS,
-            "Conference Name": item["CONFERENCE NAME"],
-            "Organized By": item["ORGANIZED BY"],
-            "ISBN / ISSN / DOI": item["ISBN / ISSN /DOI NO"],
-            "Month & Year": item["MONTH_&_YEAR"],
+            "Conference Name": item.CONFERENCE_NAME,
+            "Organized By": item.ORGANIZED_BY,
+            "Book Number": item.book_number,
+            "Month & Year": item["MONTH&_YEAR"],
           };
-    
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-    
+  
           if (!item.PAPER_TITLE && Object.keys(filteredDetails).length === 0) return null;
-    
+  
           return {
             text: item.PAPER_TITLE || "No Title Available",
             link: item.LINK || "#",
@@ -694,17 +702,17 @@ const Tiles = ({ data }) => {
           const details = {
             "Author": item.AUTHOR,
             "Publisher": item.PUBLISHER,
-            "ISBN / ISSN": item["ISBN / ISSN NO"],
-            "Month & Year": item["MONTH_&_YEAR"],
-            "Type": item["BOOK / BOOK CHAPTER"],
+            "ISBN / ISSN": item["ISBN_/ISSN_NO"],
+            "Month & Year": item["MONTH&_YEAR"],
+            "Type": item.BOOK,
           };
-      
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-      
+  
           if (!item["BOOK_NAME,_EDITION"] && Object.keys(filteredDetails).length === 0) return null;
-      
+  
           return {
             text: item["BOOK_NAME,_EDITION"] || "No Title Available",
             link: item.LINK || "#",
@@ -719,16 +727,16 @@ const Tiles = ({ data }) => {
           const details = {
             "Scholar Name": item.RESEARCH_SCHOLAR_NAME,
             "Category": item["CATEGORY__(FULL_TIME_/_PART__TIME)"],
-            "Status": item["STATUS_(_ONGOING_/_COMPLETED)"],
+            "Status": item.STATUS,
             "Degree Awarded": item["MONTH_&_YEAR_OF_DEGREE_AWARDED"],
           };
-    
+  
           const filteredDetails = Object.fromEntries(
             Object.entries(details).filter(([_, value]) => value)
           );
-    
+  
           if (!item.RESEARCH_TITLE && Object.keys(filteredDetails).length === 0) return null;
-    
+  
           return {
             text: item.RESEARCH_TITLE || "No Title Available",
             link: item["PROFILE LINK"] || "#",
@@ -737,8 +745,8 @@ const Tiles = ({ data }) => {
         }).filter(Boolean) || [],
       },
     ];
-    
-    // Remove categories that have no items
+  
+    // Remove categories that have no valid items
     const filteredTiles = tiles.filter((tile) => tile.items.length > 0);
     setTileData(filteredTiles);
   }, [data]);

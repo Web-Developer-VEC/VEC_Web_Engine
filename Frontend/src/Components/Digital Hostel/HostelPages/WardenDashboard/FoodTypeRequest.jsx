@@ -127,6 +127,8 @@ function FoodTypeRequest() {
         {loading ? (
           <p>Loading...</p>
         ) : (
+          <div className='SR-table-container'>
+
           <table className="VR-table">
             <thead>
               <tr>
@@ -161,6 +163,7 @@ function FoodTypeRequest() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
 
         {/* Modal */}

@@ -4,6 +4,11 @@ const WinnerSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   
   useEffect(() => {
     if (isHovered) return; // Stop auto-slide when hovered
@@ -35,7 +40,7 @@ const WinnerSlider = ({ data }) => {
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {data.title.map((description, index) => (
+          {data?.title?.map((description, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -45,7 +50,7 @@ const WinnerSlider = ({ data }) => {
               }}
             >
               <img
-                src={data.image_path[index]}
+                src={UrlParser(data?.image_path[index])}
                 alt="Winner"
                 className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
               />
@@ -71,7 +76,7 @@ const WinnerSlider = ({ data }) => {
       </div>
 
       <div className="flex justify-center space-x-2 mt-4">
-        {data.title.map((_, index) => (
+        {data?.title?.map((_, index) => (
           <button
             key={index}
             className={`w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"} transition-all`}

@@ -25,7 +25,8 @@ const libraryRoutes = require('./Main/routes/library');
 const NNYClubRoutes = require('./Main/routes/NNYClub');
 const overallResearchRoutes = require('./Main/routes/overallResearch');
 const grievanceRoutes = require('./Main/routes/grievance');
-const wardenRoutes = require('./Main/routes/wardens')
+const wardenRoutes = require('./Main/routes/wardens');
+const incubationRoutes = require('./Main/routes/incubation');
 // Importing route files For Hostel Page
 const loginRoute = require('./Hostel/routes/auth');
 const studentRequestRoute = require('./Hostel/routes/studentRoutes/request');
@@ -80,6 +81,7 @@ app.use('/api', NNYClubRoutes);
 app.use('/api', overallResearchRoutes);
 app.use('/api', grievanceRoutes);
 app.use('/api', wardenRoutes);
+app.use('/api', incubationRoutes);
 // Routes For Hostel Page
 app.use('/api', loginRoute);
 app.use('/api', studentRequestRoute);

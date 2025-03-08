@@ -7,7 +7,14 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const LibrarySections = () => {
+const LibrarySections = ({faculty, membership}) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const sections = [
     {
       title: "The Ground Floor",
@@ -84,19 +91,6 @@ const LibrarySections = () => {
     "Users should collect a receipt for any fines paid.",
     "Members can suggest new books to the librarian.",
     "Strict silence must be maintained in the library.",
-  ];
-
-  const members = [
-    {
-      id: 1,
-      role: "Professors, Associate Professors and Assistant Professors",
-      books: 8,
-      extra: 1,
-    },
-    { id: 2, role: "JRF/Research Scholars", books: 6, extra: 1 },
-    { id: 3, role: "UG Students", books: 6, extra: 1 },
-    { id: 4, role: "PG Students", books: 6, extra: 1 },
-    { id: 5, role: "Skilled Non-Teaching Staff", books: 3, extra: 1 },
   ];
 
   const images = [
@@ -194,30 +188,6 @@ const LibrarySections = () => {
         "The library contains audio cassettes, video tapes, and CDs to enhance communication skills, subject knowledge, and competitive exam preparation.",
       image:
         "https://velammal.edu.in/wp-content/uploads/2022/04/internet-cd.jpg",
-    },
-  ];
-
-  const facultyData = [
-    {
-      name: "Dr. S. Rajendraprasath",
-      qualification: "B.Sc., M.A., M.L.I.Sc., M.Phil., Ph.D",
-      role: "Librarian / HOD",
-      image:
-        "https://img.freepik.com/premium-photo/teachers-day-background_1031776-124413.jpg?w=740",
-    },
-    {
-      name: "T. Senthivel",
-      qualification: "M.A., M.L.I.Sc",
-      role: "Library Assistant",
-      image:
-        "https://img.freepik.com/free-photo/pretty-young-student-with-big-glasses-near-some-books-smiling-white-background_231208-1850.jpg?t=st=1739025085~exp=1739028685~hmac=b350edd3bd799b8313f54047eec2a02ce617a1064c9df9c3313be13c9a7062ff&w=900",
-    },
-    {
-      name: "P. Kumaravel",
-      qualification: "B.A",
-      role: "Library Assistant",
-      image:
-        "https://img.freepik.com/free-photo/businessman-black-suit-holding-his-tasklist-makes-thumb-up_114579-15902.jpg?t=st=1739025108~exp=1739028708~hmac=afb163cc96525657ca44165f580307ea0726251ce122f02d7cf5ba88e70f1eb4&w=900",
     },
   ];
 
@@ -473,7 +443,7 @@ const LibrarySections = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {members.map((member, index) => (
+                  {membership?.member_details?.map((member, index) => (
                     <motion.tr
                       key={member.id}
                       className="border-b border-gray-300 transition-all duration-300 bg-prim dark:bg-drkp                 
@@ -484,16 +454,16 @@ const LibrarySections = () => {
                       viewport={{ once: true }}
                     >
                       <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                        {member.id}
+                        {index + 1}
                       </td>
                       <td className="py-3 px-3 sm:py-4 sm:px-6 text-center">
-                        {member.role}
+                        {member}
                       </td>
                       <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                        {member.books}
+                        {membership?.no_of_books?.[index]}
                       </td>
                       <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                        {member.extra}
+                        {membership?.["periodical/back_volumes/cd"]?.[index]}
                       </td>
                     </motion.tr>
                   ))}
@@ -758,7 +728,7 @@ const LibrarySections = () => {
         </h2>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {facultyData.map((faculty, index) => (
+          {faculty?.name?.map((name, index) => (
             <motion.div
               key={index}
               className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
@@ -770,22 +740,22 @@ const LibrarySections = () => {
             >
               <div className="group relative ">
                 <img
-                  src={faculty.image}
-                  alt={faculty.name}
+                  src={UrlParser(faculty?.image[index])}
+                  alt={name}
                   className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                   <h3 className="text-xl font-bold text-white text-center px-4">
-                    {faculty.name}
+                    {name}
                   </h3>
                 </div>
               </div>
 
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold">{faculty.name}</h3>
-                <p className="mt-2">{faculty.qualification}</p>
+                <h3 className="text-2xl font-bold">{name}</h3>
+                <p className="mt-2">{faculty?.educational_qualification[index]}</p>
                 <p className="text-accn dark:text-drka font-semibold mt-2">
-                  {faculty.role}
+                  {faculty?.designation[index]}
                 </p>
               </div>
             </motion.div>
@@ -807,12 +777,12 @@ const LibrarySections = () => {
               <button
                 onClick={() => toggleSection(index)}
                 className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
-  transition-all rounded-2xl text-white dark:text-drkp mb-4
-  ${
-    openSection === index
-      ? "bg-[#2E8B57]" // ✅ Sea Green when active (No hover effect)
-      : "bg-accn dark:bg-drks"
-  }`}
+                transition-all rounded-2xl text-white dark:text-drkp mb-4
+                ${
+                  openSection === index
+                    ? "bg-[#2E8B57]" // ✅ Sea Green when active (No hover effect)
+                    : "bg-accn dark:bg-drks"
+                }`}
               >
                 {section.title}
                 {openSection === index ? <FaChevronUp /> : <FaChevronDown />}

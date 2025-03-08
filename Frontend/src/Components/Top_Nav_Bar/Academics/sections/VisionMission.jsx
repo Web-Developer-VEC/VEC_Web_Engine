@@ -4,6 +4,13 @@ import { Eye, Target } from "lucide-react"; // Importing icons
 import "./VisionMission.css";
 
 const VisionMission = ({ data }) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   return (
     <div className="main-content">
       {/* About the Department Section */}
@@ -19,7 +26,7 @@ const VisionMission = ({ data }) => {
             <div className="col-md-6">
               <div className="about-department-image">
                 <img
-                  src={data?.department_image}
+                  src={UrlParser(data?.department_image)}
                   alt="Department of AI"
                   className="img-fluid rounded"
                 />

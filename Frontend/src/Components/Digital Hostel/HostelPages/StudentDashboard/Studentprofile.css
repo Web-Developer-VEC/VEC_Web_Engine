@@ -1,7 +1,8 @@
 /* Container */
 .student-container {
   display: flex;
-  background-color: #f3f4f6;
+  background-color: #fefbf4;
+  margin-top: -20px;
 }
 
 /* Main Content */

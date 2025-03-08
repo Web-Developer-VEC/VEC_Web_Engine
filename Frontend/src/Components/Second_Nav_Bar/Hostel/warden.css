@@ -69,8 +69,8 @@
 /* Desktop View: Boys and Girls Wardens in the Same Row */
 .warden-group {
   display: flex;
-  justify-content: center;
-  gap: 450px;
+  justify-content: space-around;
+  /* gap: 450px; */
   width: 100%;
   margin-top: 20px;
 }

@@ -68,8 +68,7 @@ import SuperiorLayout from "./Components/Digital Hostel/Layouts/SuperiorDashboar
 import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboard.jsx";
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
-import HostelHeader from "./Components/Digital Hostel/Components/HeadHeader.jsx";
-
+import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -117,12 +116,6 @@ const MainContentWrapper = styled.div`
         else cookies.set('theme', 'light')
         setTheme(cookies.get('theme'))
     })
-
-    const MainContentWrapper1 = styled.div`
-            flex: 1;
-            padding-top: 6%;
-            `;
-
 
     useEffect(() => {
         setCurrentPath(location.pathname); // Update state when route changes
