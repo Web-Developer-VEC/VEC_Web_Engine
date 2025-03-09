@@ -10,6 +10,12 @@ import { FaResearchgate } from "react-icons/fa6";
 const HeadDepartment = ({ data }) => {
   const [departmentData, setDepartmentData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     // Simulating fetching data from the database (replace with actual API call)
     if (data) {
@@ -50,7 +56,7 @@ const HeadDepartment = ({ data }) => {
 
       <div className={styles.imageColumn}>
         {Image ? (
-          <img src={Image} alt="Head of Department" className={styles.hodImage} />
+          <img src={UrlParser(Image)} alt="Head of Department" className={styles.hodImage} />
         ) : (
           <p>No image available</p>
         )}

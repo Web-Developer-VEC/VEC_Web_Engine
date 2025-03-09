@@ -7,7 +7,13 @@ import axios from "axios";
 const NCC_ARMY = () => { 
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
-  const  [ Coordinator, setCoordinator] = useState({});
+  const [Coordinator, setCoordinator] = useState({});
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(()=>{
     const fetchData = async ()=>{
@@ -185,7 +191,7 @@ const NCC_ARMY = () => {
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
           >
             <div className="NCC_ARMY-profile-photo">
-              <img src={Coordinator?.coordinator_image} alt={Coordinator?.coordinator_name} />
+              <img src={UrlParser(Coordinator?.coordinator_image)} alt={Coordinator?.coordinator_name} />
             </div>
             <div className="NCC_ARMY-profile-content">
               <h2 className="NCC_ARMY-profile-name ">{Coordinator?.coordinator_name}</h2>

@@ -4,6 +4,7 @@
     min-height: 100vh;
     background-color: #f9fafb;
     margin-left: 16rem;
+    margin-top: -20px;
   }
   
   .VR-main {
@@ -492,6 +493,7 @@
       margin-top: 2.5rem;
       flex-direction: column;
       margin-left: 0rem;
+      margin-top: -10%;
     }
   }
 

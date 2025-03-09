@@ -19,7 +19,8 @@ async function getStaffProfile (req, res) {
             "Joined_in": facultyData["Joined in"],
             "Department_Name": facultyData["Department Name"],
             "Mail_ID": facultyData["Mail ID"],
-            "Photo": `/static/images/profile_photos/${facultyData["unique_id"]}.jpg`,
+            // "Photo": `/static/images/profile_photos/${facultyData["unique_id"]}.jpg`,
+            "Photo": facultyData.Photo,
             "Google_Scholar_Profile": facultyData["Google Scholar Profile"],
             "Research_Gate": facultyData["Research Gate"],
             "Orchid_Profile": facultyData["Orchid Profile"] || null,
@@ -62,7 +63,7 @@ async function getStaffProfile (req, res) {
                 "PAPER_TITLE": pub["PAPER_TITLE"],
                 "CONFERENCE_NAME": pub["CONFERENCE_NAME"],
                 "ORGANIZED_BY": pub["ORGANIZED_BY"],
-                "book_number": pub["book_number"] || "-",
+                "book_number": pub["book_number"],
                 "MONTH_&YEAR": pub["MONTH&_YEAR"]
             })),
             "BOOK_PUBLICATIONS": facultyData["BOOK_PUBLICATIONS"].map(pub => ({
@@ -88,8 +89,8 @@ async function getStaffProfile (req, res) {
                 "PAPER_TITLE": pub["PAPER_TITLE"],
                 "JOURNAL_NAME": pub["JOURNAL_NAME"],
                 "DOI_NUMBER": pub["DOI_NUMBER"],
-                "PAGE_NO": pub["PAGE_NO"] || "-",
-                "VOL_NO": pub["VOL_NO"] || "-",
+                "PAGE_NO": pub["PAGE_NO"],
+                "VOL_NO": pub["VOL_NO"],
                 "MONTH_&YEAR": pub["MONTH&_YEAR"],
                 "INDEXED": pub["INDEXED"]
             })),

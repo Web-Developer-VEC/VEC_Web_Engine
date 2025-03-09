@@ -13,6 +13,7 @@ html {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: -20px;
 }
 
 /* DynamicBackground component */
@@ -34,7 +35,7 @@ html {
   justify-content: center;
   padding: 1rem;
   z-index: 10;
-  background: white;
+  background: #fefbf4;
 }
 
 /* AnimatedLogo component */
@@ -63,7 +64,7 @@ html {
   width: 100%;
   max-width: 24rem;
   backdrop-filter: blur(16px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: white;
   padding: 2.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

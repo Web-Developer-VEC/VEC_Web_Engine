@@ -10,6 +10,12 @@ export default function Warden() {
   const [boysWardens, setBoysWarden] = useState(null);
   const [girlsWardens, setGirlsWardens] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,7 +45,7 @@ export default function Warden() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <img src={chief?.image_path} alt={chief?.warden_name} />
+        <img src={UrlParser(chief?.image_path)} alt={chief?.warden_name} />
         <h3>{chief?.warden_name}</h3>
         <p>{chief?.designation}</p>
         <a href={`tel:${chief?.phone_number}`}>{chief?.phone_number}</a>
@@ -60,7 +66,7 @@ export default function Warden() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <img src={chiefDeputy?.image_path} alt={chiefDeputy?.warden_name} />
+        <img src={UrlParser(chiefDeputy?.image_path)} alt={chiefDeputy?.warden_name} />
         <h3>{chiefDeputy?.warden_name}</h3>
         <p>{chiefDeputy?.designation}</p>
         <a href={`tel:${chiefDeputy?.phone_number}`}>{chiefDeputy?.phone_number}</a>
@@ -115,7 +121,7 @@ export default function Warden() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
-                <img src={warden?.image_path} alt={warden?.warden_name} />
+                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
                 <h3>{warden?.warden_name}</h3>
                 <p>{warden?.designation}</p>
                 <a href={`tel:${warden?.phone_number}`}>{warden?.phone_number}</a>
@@ -136,7 +142,7 @@ export default function Warden() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
-                <img src={warden?.image_path} alt={warden?.warden_name} />
+                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
                 <h3>{warden?.warden_name}</h3>
                 <p>{warden?.designation}</p>
                 <a href={`tel:${warden?.phone_number}`}>{warden?.phone_number}</a>

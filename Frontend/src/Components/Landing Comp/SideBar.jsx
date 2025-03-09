@@ -40,7 +40,7 @@ const Sidebar = (props) => {
     const hdrs = [
         "velammal@velammal.edu.in", "+91 99566 00420", "NBA", "NAAC", "NIRF",
         "IIC", "Incubation Cell", "Alumni", "NSS", "NCC", "YRC",
-        "Sports", "Transport", "Library", "Hostel", "Other Facilities"
+        "Sports", "Transport", "Library", "HosLanding", "Other Facilities"
     ];
 
 

@@ -5,6 +5,13 @@ import {animate, motion, useAnimationFrame, useMotionValue, useTransform} from "
 import "./Events.css";
 
 function EventBox({event, onMouseEnter, onMouseLeave}) {
+
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     return (
         <motion.div
             className="caro-item text-lg"
@@ -32,10 +39,10 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
                             <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
                         </div>
                         <div className="event-row links">
-                            <a href={event.brochure_path} target="_blank" rel="noopener noreferrer">
+                            <a href={UrlParser(event.brochure_path)} target="_blank" rel="noopener noreferrer">
                                 Brochure
                             </a>
-                            <a href={event.website_link} target="_blank" rel="noopener noreferrer">
+                            <a href={UrlParser(event.website_link)} target="_blank" rel="noopener noreferrer">
                                 Website
                             </a>
                         </div>

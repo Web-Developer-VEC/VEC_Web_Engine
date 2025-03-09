@@ -9,6 +9,7 @@
   /*background-color: white;*/
   border-radius: 0.5rem;
   padding: 1rem;
+  width: 1400px;
 }
 
 .faculty-profile-content {
@@ -260,6 +261,11 @@
 }
 
 @media (max-width: 767px) {
+
+  .faculty-profile-card{
+    width: 300px;
+    margin-top: 10%;
+  }
   .faculty-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;

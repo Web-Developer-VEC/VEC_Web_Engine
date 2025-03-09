@@ -3,6 +3,7 @@
     min-height: 100vh;
     background-color: rgba(251, 243, 219, 0.3);
     display: flex;
+    margin-top: -20px;
   }
   
   /* Navigation */
@@ -370,7 +371,7 @@
     }
 
     .HS-Draft-Button{
-      top: 13%;
+      top: 11%;
       border: none;
     }
 

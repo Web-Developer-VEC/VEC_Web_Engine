@@ -1,11 +1,12 @@
 /* Container */
 .svp-container {
     min-height: 100vh;
-    background-color: rgba(251, 243, 219, 0.3); /* Light beige background from Vacate */
+    background-color: #f3f4f6;/* Light beige background from Vacate */
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center all components */
+    margin-top: -40px;
   }
   
   /* Introduction Section */
@@ -191,7 +192,7 @@
   @media (max-width: 768px) {
     .svp-container {
       padding: 1rem;
-      margin-top: 10%;
+      margin-top: 5%;
     }
   
     .svp-title {

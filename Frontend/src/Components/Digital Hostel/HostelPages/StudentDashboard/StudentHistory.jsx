@@ -94,11 +94,13 @@ const StudentHistory = () => {
 
   const getStatusBadge = (status, type) => {
     if (type === 'parent') {
-      return status ? (
-        <span className="status completed"><CheckCircle size={14} /> Approved</span>
-      ) : (
-        <span className="status pending"><Clock size={14} /> Pending</span>
-      );
+      if (status === null) {
+        return <span className="status pending"><Clock size={14} /> Pending</span>;
+      } else if (status) {
+        return <span className="status completed"><CheckCircle size={14} /> Approved</span>;
+      } else {
+        return <span className="status rejected"><AlertCircle size={14} /> Rejected</span>;
+      }
     } else {
       if (status === null) {
         return <span className="status pending"><Clock size={14} /> Pending</span>;

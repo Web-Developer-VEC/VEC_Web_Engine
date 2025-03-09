@@ -9,6 +9,12 @@ export const PlacementDetails = ({ theme, toggle }) => {
     const [placementData, setPlacementData] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -86,7 +92,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                             <button
                                 key={index}
                                 className="place-course-button"
-                                onClick={() => openModal(placementData?.Year_Wise?.Pdf_path[index])}
+                                onClick={() => openModal(UrlParser(placementData?.Year_Wise?.Pdf_path[index]))}
                             >
                                 <div className="place-course">{year}</div>
                             </button>

@@ -2,6 +2,7 @@
 .v-container {
     min-height: 100vh;
     background-color: rgba(251, 243, 219, 0.3);
+    margin-top: -20px;
     /* display: flex; */
 }
 

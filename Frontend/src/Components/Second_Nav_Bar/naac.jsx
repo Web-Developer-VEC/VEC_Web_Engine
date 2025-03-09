@@ -9,6 +9,12 @@ const Naac = ({toggle, theme}) => {
   const [naacData, setNaacData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -133,7 +139,7 @@ const Naac = ({toggle, theme}) => {
                   // Always show PDF for "code_of_ethics"
                   <embed
                     className="embed"
-                    src={naacData[selectedCategory].pdfPaths[0]}
+                    src={UrlParser(naacData[selectedCategory].pdfPaths[0])}
                     type="application/pdf"
                     width="100%"
                     height="600px"

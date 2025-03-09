@@ -7,6 +7,7 @@
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
     margin-left: 16rem;
+    margin-top: -20px;
 }
 
 /* Blurred background when popup is open */

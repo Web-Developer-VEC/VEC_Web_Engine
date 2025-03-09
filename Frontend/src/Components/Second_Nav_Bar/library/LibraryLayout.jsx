@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LibraryIntro from "./LibraryIntro";
 import LibrarySections from "./Libraryinfra";
 import Banner from '../../Banner'
+import axios from "axios";
 
 const LibraryLayout = ({toggle, theme}) => {
+    const [libraryData, setLibraryData] = useState(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get("/api/library");
+          const data = response.data;
+          setLibraryData(data[0]); // Assuming the API returns an array
+        } catch (err) {
+          console.error("Error Fetching Data:", err.message);
+        }
+      };
+  
+      fetchData();
+    }, []);
   return (
     <>
   <Banner theme={theme} toggle={toggle}
@@ -13,8 +29,11 @@ const LibraryLayout = ({toggle, theme}) => {
   />
 
     <div className="min-h-screen flex flex-col gap-1">
-      <LibraryIntro />
-      <LibrarySections />
+    <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />
+        <LibrarySections
+          faculty={libraryData ? libraryData["faculty & Staff"] : null}
+          membership={libraryData ? libraryData["membership_details"] : null}
+        />
     </div>
     </>
   );

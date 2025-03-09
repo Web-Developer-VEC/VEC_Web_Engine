@@ -21,6 +21,12 @@ const CardPage = ({theme, toggle}) => {
   const [adminData, setadminData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,7 +62,7 @@ const CardPage = ({theme, toggle}) => {
         {adminData.map((card) => (
           <Card
             key={card.id}
-            image={card.photo_path}
+            image={UrlParser(card.photo_path)}
             name={card.name}
             designation={card.designation}
           />

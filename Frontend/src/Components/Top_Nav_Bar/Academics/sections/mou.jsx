@@ -3,6 +3,13 @@ import "./mou.css";
 
 const MOU = ({data}) => {
   const [selectedYear, setSelectedYear] = useState("overall");
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const Data = data.MOUs
 
   // Find the selected year's data
@@ -30,7 +37,7 @@ const MOU = ({data}) => {
             <div key={index} className="mou-detail-box border-2 border-secd dark:border-drks
                 bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
               <div className="mou-logo bg-prim dark:bg-drkp">
-                <img src={detail.LOGO_PATH} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
+                <img src={UrlParser(detail.LOGO_PATH)} alt={detail.ORGANISATION_NAME} className="mou-logo-image" />
               </div>
               <h3 className="text-accn dark:text-drka">{detail.ORGANISATION_NAME}</h3>
               <p><strong>Duration:</strong> {detail.MONTH_AND_YEAR}</p>

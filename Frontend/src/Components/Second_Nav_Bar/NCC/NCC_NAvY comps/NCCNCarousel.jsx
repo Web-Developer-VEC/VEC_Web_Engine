@@ -6,6 +6,12 @@ const NCCNCarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     // Auto-slide functionality
     useEffect(() => {
         if (isAutoPlay) {
@@ -29,7 +35,7 @@ const NCCNCarousel = ({data}) => {
             <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {data?.carousal_images?.map((slide, index) => (
                     <div className="ncc-carousel-slide" key={index}>
-                        <img src={slide} alt={data?.carousal_title[index]} />
+                        <img src={UrlParser(slide)} alt={data?.carousal_title[index]} />
                         <div className="ncc-carousel-text">
                             <h3>{data?.carousal_title[index]}</h3>
                             <p>{data?.carousal_description[index]}</p>

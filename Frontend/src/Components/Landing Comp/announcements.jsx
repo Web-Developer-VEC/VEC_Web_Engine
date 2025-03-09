@@ -13,6 +13,11 @@ const Announcements1 = () => {
     const content = spcannouncements[0]?.list_of_contents || [];
     const links = spcannouncements[0]?.list_of_links || [];
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
     // Fetching Special Announcements
     useEffect(() => {
         const fetchData = async () => {
@@ -110,7 +115,10 @@ const Announcements1 = () => {
                                         <h4 key={i} className='text-xl line-clamp-2'>
                                             {announcements[(currentIndex + i) % announcements.length] && (
                                                 <a
-                                                    href={announcements[(currentIndex + i) % announcements.length].pdf_path || announcements[(currentIndex + i) % announcements.length].link}
+                                                href={UrlParser(
+                                                    announcements[(currentIndex + i) % announcements.length].pdf_path ||
+                                                    announcements[(currentIndex + i) % announcements.length].link
+                                                  )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-black hover:underline no-underline"
@@ -131,7 +139,10 @@ const Announcements1 = () => {
                                         <h4 key={i} className='text-xl line-clamp-2'>
                                             {announcements[(currentIndex + i) % announcements.length] && (
                                                 <a
-                                                    href={announcements[(currentIndex + i) % announcements.length].pdf_path || announcements[(currentIndex + i) % announcements.length].link}
+                                                    href={UrlParser(
+                                                        announcements[(currentIndex + i) % announcements.length].pdf_path ||
+                                                        announcements[(currentIndex + i) % announcements.length].link
+                                                    )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-black hover:underline no-underline"

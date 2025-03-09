@@ -12,6 +12,12 @@ const Forms = ({theme, toggle}) => {
   const [isLoading, setLoading] = useState(true);
   const [selectedPdf, setSelectedPdf] = useState(null); // State for modal
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,12 +30,14 @@ const Forms = ({theme, toggle}) => {
 
           const formattedStudentResources = students.name.map((name, index) => ({
             name,
-            url: students.link[index] || "#", // Default to "#" if no link is provided
+            url: UrlParser(students.link[index] || "#"),
+            download: students.link[index] // Default to "#" if no link is provided
           }));
 
           const formattedFacultyResources = faculty.name.map((name, index) => ({
             name,
-            url: faculty.link[index] || "#",
+            url: UrlParser(faculty.link[index] || "#"),
+            download: faculty.link[index]
           }));
 
           setStudentResources(formattedStudentResources);
@@ -67,18 +75,18 @@ const Forms = ({theme, toggle}) => {
                   onClick={() => handleViewClick(resource.url, resource.name)}
                 >
                   <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
-                  View
+                  
                 </button>
                 <a
                   className="form-button download-button bg-secd text-text dark:bg-drks dark:text-drkt
                     hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                  href={resource.url}
+                  href={resource.download}
                   download={resource.name} // Ensures file downloads instead of opening
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
-                  Download
+                 
                 </a>
               </div>
             </div>
