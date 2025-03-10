@@ -16,6 +16,12 @@ export default function SecurityCheckout() {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const navigate = useNavigate();
 
   const handleLogout = async ()=>{
@@ -75,6 +81,15 @@ export default function SecurityCheckout() {
     }
 
     try {
+      console.log("I am in");
+      
+      const permissionStatus = await navigator.permissions.query({ name: "camera" });
+
+      if (permissionStatus.state === "denied") {
+        alert("Camera access is blocked in site settings. Please allow it manually.");
+        return false;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: "environment" }, // Rear camera on mobile
       });
@@ -460,7 +475,7 @@ export default function SecurityCheckout() {
           {/* Header with compact profile */}
           <div className="profile-header">
             <img
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&h=200&fit=crop"
+              src={UrlParser(passDetails.profile_image)}
               alt="Profile"
               className="profile-image"
             />

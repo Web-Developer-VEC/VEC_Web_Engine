@@ -20,16 +20,16 @@ const Footer = forwardRef((props, ref) => {
                 <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College<br></br>Ambattur
                     Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
                 <p style={{marginTop: "27px"}}>
-                    Contact: <a className="text-secd dark:text-drks font-bold" href="tel:+914426590758"
+                    Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href="tel:+914426590758"
                                 style={{textDecoration: "none"}}>044 – 26590758</a>
                 </p>
-                <p>
+                {/* <p>
                     Career: <a href="mailto:example@example.com" className="text-secd dark:text-drks font-bold"
                                style={{textDecoration: "none"}}>example@example.com</a>
-                </p>
-                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks font-bold"
+                </p> */}
+                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks hover:text-prim font-bold"
                                       style={{textDecoration: "none"}}>9123547550</a> , <a
-                    href="tel:+918939221120" className="text-secd dark:text-drks font-bold" style={{textDecoration: "none"}}>
+                    href="tel:+918939221120" className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
                     8939221120</a>
                 </p>
                 <div className="logo-container my-2">

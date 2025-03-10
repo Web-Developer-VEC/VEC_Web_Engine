@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import { SiPublons } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { FaOrcid, FaResearchgate, FaLinkedin } from "react-icons/fa";
 import styles from "./Faculties.module.css";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-};
 
-const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid}) => (
+function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid}) {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  const navigate = useNavigate()
+
+  return  (
 
   <>
   <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
@@ -47,13 +53,15 @@ const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon
           </a>
         )}
       </div>
-      <a href={`/facultyprofile/${uid}`} className="no-underline text-prim">
-      <button className={styles.facButton + " bg-accn dark:bg-drks hover:bg-secd hover:text-text " +
+       
+      <button
+       onClick={() => navigate(`/facultyprofile/${uid}`)}
+       className={styles.facButton + " bg-accn dark:bg-drks hover:bg-secd hover:text-text " +
           "dark:hover:bg-drka dark:hover:drkt"}>
-        View More</button></a>
+        View More</button>
     </div>
   </div>
   </>
-);
+)};
 
 export default ImageCard;

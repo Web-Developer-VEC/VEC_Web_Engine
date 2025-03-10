@@ -281,7 +281,16 @@ const handleUpdatePass = async () => {
       const data = await response.json();
   
       if (response.ok) {
-        showSweetAlert("Success!", "✅ Pass request submitted. Parent approval SMS sent!", "success");
+        Swal.fire({
+          title: "Success",
+          text: "✅ Pass request submitted. Parent approval SMS sent!.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500, // Auto-close in 1.5 sec
+          didClose: () => {
+            Swal.close();
+          },
+        });
       } else {
         showSweetAlert("Error!", `${data.error}`, "error");
       }
@@ -330,7 +339,16 @@ const handleUpdatePass = async () => {
       const data = await response.json();
   
       if (response.ok) {
-        showSweetAlert("Success!", "✅ Pass request submitted. Warden notified!", "success");
+        Swal.fire({
+          title: "Success",
+          text: "✅ Pass request submitted. Warden notified!.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500, // Auto-close in 1.5 sec
+          didClose: () => {
+            Swal.close();
+          },
+        });
       } else {
         showSweetAlert("❌ Error:", `❌ Error: ${data.error}`, "error");
       }
@@ -380,7 +398,16 @@ const handleUpdatePass = async () => {
       const data = await response.json();
   
       if (response.ok) {
-        showSweetAlert("Success!", "✅ Pass request submitted. superior Warden notified!", "success");
+        Swal.fire({
+          title: "Success",
+          text: "✅ Pass request submitted. Superior warden notified.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500, // Auto-close in 1.5 sec
+          didClose: () => {
+            Swal.close();
+          },
+        });
       } else {
         showSweetAlert("❌ Error:", `❌ Error: ${data.error}`, "error");
       }
@@ -429,7 +456,7 @@ const handleUpdatePass = async () => {
       const data = await response.json();
   
       if (response.ok) {
-        showSweetAlert('Success', "✅ Pass Saved as Draft", 'success')
+        showSweetAlert('Success', "✅ Pass Saved as Draft", 'success');
       } else {
         showSweetAlert("Error!",`❌ Error: ${data.error}`,"error")
       }
@@ -571,6 +598,7 @@ const handleUpdatePass = async () => {
                       value={type}
                       className="HS-radio"
                       onChange={() => handlePassTypeChange(type)}
+                      required
                     />
                     <span className="HS-pass-label">{type}</span>
                     {passType === type && (
@@ -599,7 +627,8 @@ const handleUpdatePass = async () => {
                     className="HS-file-input"
                     id="document-upload"
                     onChange={handleFileChange}
-                    accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"
+                    accept=".pdf, .jpg, .jpeg, .png"
+                    required
                   />
 
                   <label htmlFor="document-upload" className="HS-upload-label">
@@ -627,7 +656,7 @@ const handleUpdatePass = async () => {
                     </a>
                   ) : null}
                   {!existingFilePath && !selectedFile && (
-                    <p className="HS-upload-hint">PDF, DOC, DOCX, JPG, JPEG, PNG up to 10MB</p>
+                    <p className="HS-upload-hint">PDF, JPG, JPEG, PNG up to 10MB</p>
                   )}
                 </div>
               </div>
@@ -648,6 +677,7 @@ const handleUpdatePass = async () => {
                       id='fromDateTime' 
                       value={from} 
                       onChange={handleFromChange}
+                      required
                     />
                   </div>
                   <div className="HS-input-group">
@@ -658,11 +688,13 @@ const handleUpdatePass = async () => {
                       id='toDateTime' 
                       value={to} 
                       onChange={handleToChange}
+                      required
                     />
                   </div>
                   <div className="HS-input-group">
                     <label className="HS-label">Place of Visit</label>
-                    <input type="text" className="HS-input"  id='placeOfVisit' value={place} onChange={(e)=> setPlace(e.target.value)} />
+                    <input type="text" className="HS-input"  id='placeOfVisit' value={place} onChange={(e)=> setPlace(e.target.value)} required
+                    />
                   </div>
                   <div className="HS-input-group">
                     <label className="HS-label">Reason Type</label>

@@ -64,7 +64,7 @@ const Activities = ({ data }) => {
     <>
       {/* 🔹 Dropdown Filter */}
       <div className="activities-filter-bar">
-        <select name="filter" className="filter-select bg-prim dark:bg-drkp" onChange={handleFilterChange}>
+        <select name="filter" className="activity-filter-select bg-prim dark:bg-drkp" onChange={handleFilterChange}>
           <option value="Recent">Recent</option>
           <option value="Overall">Overall</option>
         </select>

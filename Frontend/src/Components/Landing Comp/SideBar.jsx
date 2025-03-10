@@ -35,13 +35,28 @@ const Sidebar = (props) => {
     ];
 
     const navs = props.navs
-    const spHdrs = [{ttl: "Fee Payments", lnk: ''},
+    const spHdrs = [{ttl: "Fee Payments", lnk: 'https://easycollege.in/vecengg/college/webpayindex.aspx'},
         {ttl: "Grievances", lnk: '/greviences'}, {ttl: "Login", lnk: '/login'}]
-    const hdrs = [
-        "velammal@velammal.edu.in", "+91 99566 00420", "NBA", "NAAC", "NIRF",
-        "IIC", "Incubation Cell", "Alumni", "NSS", "NCC", "YRC",
-        "Sports", "Transport", "Library", "HosLanding", "Other Facilities"
+    const hdrs1 = [
+        "velammal@velammal.edu.in", "+91 99566 00420"
     ];
+
+    const hdrs = [
+        { text: "NBA", link: "/nba" },
+        { text: "NAAC", link: "/naac" },
+        { text: "NIRF", link: "/nirf" },
+        { text: "IIC", link: "/iic" },
+        { text: "Incubation Cell", link: "/incubation" },
+        { text: "Alumni", link: "/alumni" },
+        { text: "NSS", link: "/nss" },
+        { text: "NCC", link: "/ncc" },
+        { text: "YRC", link: "/yrc" },
+        { text: "Sports", link: "/sports" },
+        { text: "Transport", link: "/transport" },
+        { text: "Library", link: "/library" },
+        { text: "Hostel", link: "/hoslanding" },
+        { text: "Other Facilities", link: "/other-facilities" }
+      ]
 
 
     return (
@@ -153,10 +168,10 @@ const Sidebar = (props) => {
                 <div className="border-t border-gray-700 mt-2 pt-2">
                     <div className="flex flex-col space-y-1 text-gray-400 text-xs">
                         <div className="flex items-center gap-2">
-                            <p className="truncate">{hdrs[0]}</p>
+                            <p className="truncate">{hdrs1[0]}</p>
                         </div>
                         <div className="flex items-center gap-2">
-                            <p>{hdrs[1]}</p>
+                            <p>{hdrs1[1]}</p>
                         </div>
                     </div>
 
@@ -165,25 +180,35 @@ const Sidebar = (props) => {
                         {spHdrs.map((item, index) => (
                             <motion.button
                                 key={index}
-                                onClick={() => navigate(`${item.lnk}`)}
+                                onClick={() => {
+                                    if (item.lnk.startsWith("http")) {
+                                        window.location.href = item.lnk;  // Open external link
+                                    } else {
+                                        navigate(item.lnk);  // Navigate internally
+                                    }
+                                    setIsOpen(false);
+                                }}
                                 className="px-2 py-1 bg-gray-800 hover:bg-gray-700 rounded-md transition text-center"
-                                initial={{opacity: 0, scale: 0.95}}
-                                animate={{opacity: 1, scale: 1}}
-                                transition={{duration: 0.2, delay: index * 0.05, ease: "easeInOut"}}>
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.2, delay: index * 0.05, ease: "easeInOut" }}>
                                 {item.ttl}
                             </motion.button>
                         ))}
                     </div>
                     <div className="grid grid-cols-3 gap-2 mt-3 text-xs text-gray-300">
-                        {hdrs.slice(2).map((item, index) => (
+                        {hdrs.map((item, index) => (
                             <motion.button
                                 key={index}
-                                onClick={() => navigate(`/${item.toLowerCase().replace(/\s+/g, "-")}`)}
+                                onClick={() => {
+                                    navigate(`${item.link}`)
+                                    setIsOpen(false);
+                                }}
                                 className="px-2 py-1 bg-gray-800 hover:bg-gray-700 rounded-md transition text-center"
                                 initial={{opacity: 0, scale: 0.95}}
                                 animate={{opacity: 1, scale: 1}}
                                 transition={{duration: 0.2, delay: index * 0.05, ease: "easeInOut"}}>
-                                {item}
+                                {item.text}
                             </motion.button>
                         ))}
                     </div>

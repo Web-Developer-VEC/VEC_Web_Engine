@@ -11,6 +11,12 @@ function StudentTile({ student, onSave ,onDelete, format}) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedStudent, setEditedStudent] = useState(student);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   
   useEffect(() => {
     setEditedStudent(student);
@@ -37,7 +43,7 @@ function StudentTile({ student, onSave ,onDelete, format}) {
         {student.transitStatus ? <Footprints size={18} className="transit-icon" /> : <Home size={18} className="home-icon" />}
       </div>
       <div className="superior-student-header">
-        <img src={student.photo} alt={student.name} />
+        <img src={UrlParser(student.photo)} alt={student.name} />
         <div className="superior-student-basic-info">
           {isEditing ? (
             <div className="superior-edit-form">
