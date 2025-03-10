@@ -391,6 +391,12 @@ function DetailModal({ record, onClose }) {
     "medical": "Medical",
     "others": "Other"
   };
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   
   return(
       <div className="AR-modal-overlay" onClick={handleOverlayClick}> {/* Overlay click handler for main modal */}
@@ -489,7 +495,7 @@ function DetailModal({ record, onClose }) {
                 </div>
                 <div className="AR-document-content">
                   <iframe
-                    src={record.documentUrl}
+                    src={UrlParser(record.documentUrl)}
                     className="AR-document-frame"
                     title="Document Preview"
                   />
