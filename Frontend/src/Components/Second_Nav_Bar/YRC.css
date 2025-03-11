@@ -179,8 +179,7 @@
   grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
   gap: 20px;
   justify-content: center;
-  margin-top: 20px;
-  
+  margin-top: 20px; 
 }
 
 /* Carousel Container */
@@ -271,9 +270,14 @@
   background: rgba(255, 0, 0, 0.8);
   transform: scale(1.1);
 }
+@media (max-width: 1500px){
+  .YRC-student-coordinators {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 /* 📌 Tablets (Max-width: 1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   /* About Us, Mission & Vision */
   .YRC-Aboutus, .YRC-mission-vision-container {
     width: 90%;
@@ -295,6 +299,7 @@
   /* Student Coordinators - 3 per row */
   .YRC-student-coordinators {
     grid-template-columns: repeat(3, 1fr);
+  
   }
 
   /* Carousel */
@@ -306,9 +311,15 @@
     height: 350px;
   }
 }
+@media (max-width: 860px){
+  .YRC-student-coordinators {
+    gap:5px;
+    margin: 5px;
+  }
+}
 
 /* 📌 Mobile Screens (Max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 830px) {
   /* About Us, Mission & Vision */
   .YRC-Aboutus, .YRC-mission-vision-container {
     width: 95%;
@@ -402,6 +413,7 @@
     align-items: center; /* Center align */
     gap: 15px;
   }
+  
 
   .YRC-id-card {
     width: 90%;
