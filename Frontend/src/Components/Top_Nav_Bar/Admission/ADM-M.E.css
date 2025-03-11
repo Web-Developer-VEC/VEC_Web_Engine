@@ -51,6 +51,14 @@ h5, h6 {
     text-align: center;
     border: 1px solid #ddd;
   }
+  .intake-table th {
+    background-color: #808080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px white solid;
+  }
   
   .intake-table th {
     /*background: linear-gradient(45deg, #ffd700, #ffa500);*/

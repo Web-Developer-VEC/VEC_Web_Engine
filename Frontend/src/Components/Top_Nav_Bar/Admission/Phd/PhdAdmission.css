@@ -1,133 +1,116 @@
-.phd .contain{
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 5rem 3rem;
-    gap: 2rem;
-}
-
-.phd .left1{
-    /*border-left: 5px solid hsl(46, 89%, 57%);*/
-    /*background: hsla(46, 89%, 57%, 0.2); !* Blue with 50% transparency *!*/
-}
-
-.phd-h1{
-    font-size: 20px;
+.phd .contain {
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }
+  
+  .phd .left1 {
+    width: 100%;
+    border-right: 8px solid yellow ;
+  }
+  
+  .phd-h1 {
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 1rem;
-}
-
-.phd-dep p{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+  }
+  
+  .phd-dep p {
     display: flex;
     align-items: center;
     flex-direction: row;
     margin: 4px 10px;
-}
-
-.phd .phd-logo{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+  }
+  
+  .phd .phd-logo {
     color: black;
-    height: 0.8rem;
+    height: 1rem;
     margin-right: 5px;
-}
-
-.phd .process{
-    display: flex;
-    justify-content: center;
-}
-
-.phd .chase {
-    display: flex;
-    flex-direction: row;
-    margin: 4px 10px;
-    line-height: 1.7rem;
-}
-
-.chase img{
-    margin-top: 6px;
-}
-
-.phd .phd-logo1 {
-    font-size: 1.05rem; /* Adjusts icon size */
-    margin: 0 8px; /* Space between icon and text */
-    vertical-align: middle; /* Aligns icon with text */
-    display: inline-block; /* Keeps it inline with text */
-}
-
-.phd .chase .span {
-    display: inline-block; /* Ensures text aligns properly */
-    vertical-align: middle;
-}
-
-.phd .right1{
-    /*border-left: 5px solid hsl(329, 84%, 61%);*/
-    /*background: hsla(329, 76%, 69%, 0.2); !* Blue with 50% transparency *!  */
-}
-
-
-/* Medium Screens (Tablets) */
-@media (max-width: 1024px) {
+  }
+  
+  /* Large Screens (Desktops & Large Tablets) */
+  @media (max-width: 1200px) {
     .phd .contain {
-        grid-template-columns: 1fr; /* Stack items */
-        margin: 3rem 2rem; /* Reduce margin */
+      margin: 4rem auto;
     }
-
-    .phd h1 {
-        font-size: 20px; /* Reduce heading size */
+  
+    .phd-h1 {
+      font-size: 22px;
     }
-
-    .phd .chase {
-        font-size: 16px; /* Adjust text size */
-        line-height: 1.6rem;
+  
+    .phd-dep p {
+      font-size: 17px;
     }
-
-    .phd .phd-logo1 {
-        font-size: 1rem; /* Reduce icon size */
-    }
-}
-
-/* Small Screens (Mobile) */
-@media (max-width: 768px) {
+  }
+  
+  /* Medium Screens (Tablets) */
+  @media (max-width: 992px) {
     .phd .contain {
-        display: block; /* Change to a single column layout */
-        margin: 2rem 1.5rem;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 3rem auto;
     }
-
-    .phd .left1, .phd .right1 {
-        margin-top: 2rem;
-        padding: 1rem; /* Add padding for better readability */
+  
+    .phd .left1 {
+      width: 100%;
+      padding: 1rem;
     }
-
-    .phd h1 {
-        font-size: 1.1rem;
-        text-align: center; /* Center headings */
+  
+    .phd-h1 {
+      font-size: 20px;
     }
-
-    .phd .chase {
-        font-size: 0.85rem;
-        line-height: 1.5rem;
+  
+    .phd-dep p {
+      font-size: 16px;
     }
-
-    .phd .phd-logo1 {
-        font-size: 0.95rem;
-    }
-}
-
-/* Extra Small Screens (Phones) */
-@media (max-width: 480px) {
+  }
+  
+  /* Small Screens (Mobile) */
+  @media (max-width: 768px) {
     .phd .contain {
-        margin: 1.5rem 1rem; /* Reduce margin */
+      width: 95%;
+      margin: 2rem auto;
     }
+  
+    .phd .left1 {
+      padding: 1rem;
+    }
+  
+    .phd-h1 {
+      font-size: 18px;
+      text-align: left;
+    }
+  
+    .phd-dep p {
+      font-size: 15px;
+    }
+  }
+  
+  /* Extra Small Screens (Phones) */
+  @media (max-width: 480px) {
+    .phd .contain {
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+  
+    .phd-h1 {
+      font-size: 16px;
+      text-align: justify;
+    }
+  
+    .phd-dep p {
+      font-size: 14px;
+      text-align: justify;
 
-    .phd h1 {
-        font-size: 1rem;
     }
-
-    .phd .chase {
-        font-size: 0.8rem;
-        line-height: 1.4rem;
-    }
-
-    .phd .phd-logo1 {
-        font-size: 0.9rem;
-    }
-}
+  }
+  

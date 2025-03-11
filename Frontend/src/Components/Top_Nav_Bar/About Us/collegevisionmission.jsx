@@ -26,7 +26,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                         </p>
                     </div>
                     <div className={styles.photo}>
-                        <img src="./astronet.jpg" alt="Vision Photo" className={styles.photoImage} />
+                        <img src="./vission_and_mission.jpg" alt="Vision Photo" className={styles.photoImage} />
                     </div>
                 </div>
 

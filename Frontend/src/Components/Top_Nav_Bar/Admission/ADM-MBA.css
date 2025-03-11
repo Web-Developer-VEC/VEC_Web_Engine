@@ -51,8 +51,12 @@
   }
   
   .mba-intake-table th {
-    /*background: linear-gradient(45deg, #ffd700, #ffa500);*/
-    /*color: white;*/
+    background-color: #808080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px white solid;
   }
   
   .mba-intake-table .mba-even-row {
