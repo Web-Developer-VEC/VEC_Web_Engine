@@ -9,7 +9,7 @@ const VisionMission = ({ data }) => {
       {/* About the Department Section */}
       <section className="about-department">
         <div className="ABT_container">
-          <div className="row align-items-center">
+          <div className="row">
             <div className="col-md-6">
               <div className="about-department-text">
                 <h2>About the Department</h2>
@@ -31,10 +31,11 @@ const VisionMission = ({ data }) => {
 
       <div className="row g-6">
         {/* Vision Section */}
-        <div className="col-lg-6 col-md-12 d-flex align-items-stretch mb-3">
+        <div className="d-flex align-items-stretch mb-3">
           <div
             className="section-card
-            bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+            bg-white
+            border-l-4 border-secd
             dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
             p-3 shadow rounded"
           >
@@ -50,12 +51,13 @@ const VisionMission = ({ data }) => {
         </div>
 
         {/* Mission Section */}
-        <div className="col-lg-6 col-md-12 d-flex align-items-stretch mb-3">
+        <div className="d-flex align-items-stretch mb-3">
           <div
             className="section-card
-            bg-[linear-gradient(135deg,theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_60%,black))]
+            border-l-4 border-secd
+            bg-white
             dark:bg-[linear-gradient(135deg,theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_85%,white))]
-            p-3 shadow rounded"
+            p-3 shadow rounded w-100"
           >
             <div className="d-flex align-items-center mb-3">
               <Target size={32} className="me-3" /> {/* Mission Icon */}

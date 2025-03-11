@@ -11,8 +11,8 @@
     /*background: hsla(46, 89%, 57%, 0.2); !* Blue with 50% transparency *!*/
 }
 
-.phd h1{
-    font-size: 1.3rem;
+.phd-h1{
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -36,9 +36,14 @@
 }
 
 .phd .chase {
-    font-size: 0.92rem; /* Uniform text size */
-    margin: 4px 0;
+    display: flex;
+    flex-direction: row;
+    margin: 4px 10px;
     line-height: 1.7rem;
+}
+
+.chase img{
+    margin-top: 6px;
 }
 
 .phd .phd-logo1 {
@@ -67,11 +72,11 @@
     }
 
     .phd h1 {
-        font-size: 1.2rem; /* Reduce heading size */
+        font-size: 20px; /* Reduce heading size */
     }
 
     .phd .chase {
-        font-size: 0.9rem; /* Adjust text size */
+        font-size: 16px; /* Adjust text size */
         line-height: 1.6rem;
     }
 

@@ -1,24 +1,31 @@
 /* General Styles */
 .Admission {
     padding: 3rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'poppins';
     /*color: #2c3e50;*/
     /*background-color: #ffffff; !* Light beige background for a warmer, lighter look *!*/
     border-radius: 12px;
 }
 
-.B-E h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    /*color: #d4af37; !* Gold color to mimic oil sheen *!*/
+.ugHeader{
+    background-color: rgb(206, 206, 206);
 }
 
 .B-E h3 {
-    font-size: 1.5rem;
+    font-size: 30px;
     /*color: #f39c12; !* Bright yellow for emphasis *!*/
     margin-bottom: 2rem;
-    font-weight: 300;
     letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.Admission h5{
+    font-size: 30px;
+}
+
+.Eligibility{
+    margin-top: 5px;
+    font-size: 20px;
 }
 
 .ADM-content {
@@ -31,22 +38,8 @@
 .description-text {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0rem;
     /*color: #8e5b3f; !* Earthy brownish text color *!*/
-}
-
-h4, h5, h6 {
-    font-weight: bold;
-    /*color: #d4af37; !* Gold color for headers *!*/
-}
-
-h4 {
-    font-size: 1.7rem;
-}
-
-h5, h6 {
-    font-size: 1.3rem;
-    /*color: #f39c12; !* Slightly different shade of yellow for variety *!*/
 }
 
 /* Table Styles */
@@ -70,7 +63,7 @@ h5, h6 {
 .styled-table th, .styled-table td {
     padding: 12px;
     text-align: center;
-    /*border: 1px solid #ddd;*/
+    border: 1px solid #cccccc;
 }
 
 .styled-table td{
@@ -145,10 +138,6 @@ h5, h6 {
 
     .B-E h1 {
         font-size: 2.2rem;
-    }
-
-    .B-E h3 {
-        font-size: 1.3rem;
     }
 
     .ADM-content {

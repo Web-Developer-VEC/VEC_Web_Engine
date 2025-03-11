@@ -94,10 +94,6 @@ body {
     margin: 0;
   }
   
-  section {
-    margin: 20px 0;
-  }
-  
   /* Adding Subtle Animations */
   @keyframes fadeInUp {
     from {

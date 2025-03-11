@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Sponseredresearch.css";
 import Banner from "../../Banner";
 
-export default function Sponseredresearch() {
+export default function Sponseredresearch({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
   const [activeYear, setActiveYear] = useState(null); // Track active button
   const [sponserresearch, setSponserResearch] = useState(null);
@@ -37,7 +37,7 @@ export default function Sponseredresearch() {
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Sponsered Research "
           subHeaderText="Enrich Your Knowledge"
@@ -45,7 +45,7 @@ export default function Sponseredresearch() {
       </div>
       <div className="research-sponsoredresearch-container">
         <h1 className="research-sponsoredresearch-title">
-          Sponsered Research - Yearwise Consolidation
+          Sponsered Research - Year wise Consolidation
         </h1>
 
         <div className="research-sponsoredresearch-button-container">
