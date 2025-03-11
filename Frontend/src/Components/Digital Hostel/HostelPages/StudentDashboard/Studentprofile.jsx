@@ -12,6 +12,12 @@ function Studentprofile() {
   const [initialFormData, setInitialFormData] = useState(formData);
   const [changedFields, setChangedFields] = useState({});
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   // Fetch profile data from the backend when component mounts
   useEffect(() => {
     const fetchProfile = async () => {
@@ -149,7 +155,7 @@ function Studentprofile() {
           <div className="student-profile-section">
             <div className="student-photo-section">
               <img
-                src={formData?.profile_photo_path}
+                src={UrlParser(formData?.profile_photo_path)}
                 alt={formData?.name}
                 className="student-profile-photo"
               />

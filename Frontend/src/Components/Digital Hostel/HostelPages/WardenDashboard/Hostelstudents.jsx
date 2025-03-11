@@ -27,7 +27,13 @@ function Hostelstudents() {
   const [yearData, setYearData] = useState(null);
   const [reg, setReg] = useState(null);
   const [editingRoomStates, setEditingRoomStates] = useState({});
-  const [tempRoomNumbers, setTempRoomNumbers] = useState({});     
+  const [tempRoomNumbers, setTempRoomNumbers] = useState({});  
+  
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   // Year Mapping
   const yearToAlphabet = {
@@ -454,7 +460,7 @@ function Hostelstudents() {
               </div>
               <div className="details-basic-info">
                 <img
-                  src={student.photo} 
+                  src={UrlParser(student.photo)} 
                   alt={student.name}
                   className="details-student-photo"
                 />

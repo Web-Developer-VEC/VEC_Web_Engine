@@ -5,6 +5,7 @@ const {
  } = require('../../services/sendSMS');
  const path = require('path');
  const fs = require('fs');
+const { error } = require('console');
 
 const submitPassParentApproval = async (req, res) => {
     try {
@@ -15,6 +16,10 @@ const submitPassParentApproval = async (req, res) => {
         const { mobile_number, name, department_name, year, room_no, registration_number, block_name, pass_type, from, to, place_to_visit, reason_type, reason_for_visit } = req.body;
 
         if (!mobile_number) return res.status(400).json({ error: "Mobile number is required" });
+
+        if (!name || !department_name || !year || !room_no || !registration_number || !block_name || !pass_type || !from || !to || !place_to_visit || !reason_type) {
+            return res.status(400).json({ error: "Fill all the fields"})
+        }
 
         const student = await studentDatabase.findOne({ phone_number_student: mobile_number });
         if (!student) return res.status(404).json({ error: "Student record not found" });
@@ -124,6 +129,10 @@ async function submitPassWardenApproval (req, res) {
 
         if (!mobile_number) {
             return res.status(400).json({ error: "Mobile number is required" });
+        }
+
+        if (!name || !department_name || !year || !room_no || !registration_number || !block_name || !pass_type || !from || !to || !place_to_visit || !reason_type) {
+            return res.status(400).json({ error: "Fill all the fields"})
         }
 
         const student = await studentDatabase.findOne({ phone_number_student: mobile_number });
@@ -248,6 +257,10 @@ async function submitPassSuperiorWardenApproval (req, res) {
             return res.status(400).json({ error: "Mobile number is required" });
         }
 
+        if (!name || !department_name || !year || !room_no || !registration_number || !block_name || !pass_type || !from || !to || !place_to_visit || !reason_type) {
+            return res.status(400).json({ error: "Fill all the fields"})
+        }
+
         const student = await studentDatabase.findOne({ phone_number_student: mobile_number });
 
         if (!student) {
@@ -368,6 +381,10 @@ async function saveDraftData(req, res) {
 
         if (!mobile_number) {
             return res.status(400).json({ error: "Mobile number is required" });
+        }
+
+        if (!name || !department_name || !year || !room_no || !registration_number || !block_name || !pass_type || !from || !to || !place_to_visit || !reason_type) {
+            return res.status(400).json({ error: "Fill all the fields"})
         }
 
         const student = await studentDatabase.findOne({ phone_number_student: mobile_number });
@@ -519,6 +536,10 @@ async function EditPassDetails (req, res) {
         
         if (!pass_id) {
             return res.status(400).json({ error: "Pass ID is required" });
+        }
+
+        if (!passtype || !from || !to || !place_to_visit || !reason_type) {
+            return res.status(400).json({ error: "Fill all the field to update the pass details"})
         }
 
         const db = getDb();

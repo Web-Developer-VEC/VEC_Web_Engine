@@ -48,20 +48,20 @@ const NewTrust = ({theme, toggle}) => {
               Velammal Educational Trust (VET)
               </h2>
               <p className="text-lg leading-relaxed">
-              The year was 1986... The seed of social consciousness that his mother Smt.Velammal had sown in the mind of Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, when he was of impressionable age, was now germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.
+              In the year 1986... Smt.Velammal had sown the seed of social consciousness  in the mind of her son Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, at his impressionable age, which started germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.
               </p>
               <p className="mt-4 text-lg leading-relaxed">
-              From a small school at Mugappair in Chennai, the Velammal Group of institutions has spread to the districts of Thiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Thiruvanamalai, Thanjavur, and Vellore in Tamil Nadu. Now this group holds more than a lakh students and around 12000 staff members under its umbrella.       
+              From a small school at Mugappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Thiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Thiruvanamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella.       
 </p>
 </motion.div>
           <div className="grid md:grid-cols-2 gap-8 items-center ">
             {/* Image Section */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{  }}
               className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
             >
               <img
-                className="w-max h-max object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-max h-max object-cover transition-transform duration-500 "
                 src="./smt_velammal.png"
                 alt="Velammal Trust Banner"
               />
@@ -77,11 +77,11 @@ const NewTrust = ({theme, toggle}) => {
               <h2 className="text-3xl font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Strength of the Trust
               </h2>
-              <p className="text-lg leading-relaxed">
+              {/* <p className="text-lg leading-relaxed">
               Inspiration is like a spark. It can light the whole city. One frail lady with strong conviction has motivated thousands of others to have good education and be proud citizens.
 A very humble, rustic lady with rural background and an unassuming attitude was how one described Smt. Velammal when they met her for the first time. But this frail lady, with her conviction and determination inspired the society and transformed it through her devoted son, Shri M.V.Muthuramalingam.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed">
+              </p> */}
+              <p className="text-lg leading-relaxed">
               Her Philosophy was quite simple, She used to say, "You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent".              </p>
             </motion.div>
           </div>

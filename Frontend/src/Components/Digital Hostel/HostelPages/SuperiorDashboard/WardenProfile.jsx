@@ -28,6 +28,11 @@ const WardenProfile = () => {
     joinedDate: "",
   });
   
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   const yearToAlphabet = {
     '1': 'First Year',
@@ -362,7 +367,7 @@ const WardenProfile = () => {
           >
             <div className="warden-content">
               <div className="warden-image-wrapper">
-                <img src={warden.img} alt={warden.name} className="warden-image" />
+                <img src={UrlParser(warden.img)} alt={warden.name} className="warden-image" />
               </div>
               <div className="warden-info">
                 <h3 className="warden-name">{warden.name}</h3>
@@ -530,7 +535,7 @@ const WardenProfile = () => {
                 </div>
                 <div className="modal-body">
                   <div className="warden-profile">
-                    <img src={selectedWarden.img} alt={selectedWarden.name} className="profile-image" />
+                    <img src={UrlParser(selectedWarden.img)} alt={selectedWarden.name} className="profile-image" />
                     <h2 className="profile-name">{selectedWarden.name}</h2>
                     <div className="profile-">
                       <p className="text-left"><span className="label">Warden For:</span> {selectedWarden.wardenFor}</p>

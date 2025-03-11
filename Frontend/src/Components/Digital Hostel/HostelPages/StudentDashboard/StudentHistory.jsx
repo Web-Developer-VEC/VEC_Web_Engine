@@ -12,6 +12,12 @@ const StudentHistory = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,7 +57,7 @@ const StudentHistory = () => {
         setHistory(formattedHistory);
         setLoading(false);
       } catch (error) {
-        setError("Failed to fetch student passes.");
+        // setError("Failed to fetch student passes.");
         setLoading(false);
       }
     };
@@ -260,7 +266,7 @@ const StudentHistory = () => {
             {selectedData.file_path && (
               <div className="mt-4">
                 <p className="font-semibold text-blue-800 mb-2">Supporting Document:</p>
-                <img src={selectedData.file_path} alt="Proof" className="modal-image" />
+                <img src={UrlParser(selectedData.file_path)} alt="Proof" className="modal-image" />
               </div>
             )}
             
@@ -274,7 +280,7 @@ const StudentHistory = () => {
                   className="download-icon"
                   title="Click to download QR code"
                 >
-                  <img src={selectedData.qrcode_path} alt="QR Code" className="qr-image" />
+                  <img src={UrlParser(selectedData.qrcode_path)} alt="QR Code" className="qr-image" />
                   <Download size={20} className="absolute bottom-2 right-2 bg-blue-500 text-white p-1 rounded-full" />
                 </button>            
               </div>
