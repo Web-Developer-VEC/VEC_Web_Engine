@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import "./PatentConsolidation.css"; // Import the CSS file
 import Banner from "../../Banner";
 
-export default function PatentConsolidation() {
+export default function PatentConsolidation({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState(null); 
   const [activeYear, setActiveYear] = useState(null); 
   const [patent, setPatent] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +42,7 @@ export default function PatentConsolidation() {
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Patents"
           subHeaderText="Enrich Your Knowledge"
@@ -45,7 +50,7 @@ export default function PatentConsolidation() {
       </div>
       <div className="research-patent-container">
         <h1 className="research-patent-title">
-          Patent - Yearwise Consolidation
+          Patent - Year wise Consolidation
         </h1>
 
         <div className="research-patent-button-container">
@@ -53,7 +58,7 @@ export default function PatentConsolidation() {
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(patent?.pdf_path[index]);
+                setPdfUrl(UrlParser(patent?.pdf_path[index]));
                 setActiveYear(year);
               }}
               className={`research-patent-button ${

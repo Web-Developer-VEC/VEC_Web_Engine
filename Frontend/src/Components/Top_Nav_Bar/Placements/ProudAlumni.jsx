@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./DynamicPhotoText.css";
+import Banner from "../../Banner";
 
 const ProudAlumni = () => {
   const [data, setData] = useState([]);
@@ -8,6 +9,12 @@ const ProudAlumni = () => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   // Fetch alumni data from API
   useEffect(() => {
@@ -22,8 +29,6 @@ const ProudAlumni = () => {
     };
     fetchData();
   }, []);
-
- 
 
   // Automatically cycle through alumni within the current department
   useEffect(() => {
@@ -42,13 +47,19 @@ const ProudAlumni = () => {
   }, [currentPage, data]);
 
   return (
+
+    <div>
+      <Banner 
+          backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+          headerText="OUR PROUD ALUMNI"
+          subHeaderText="Enrich Your Knowledge"
+        />
     <div className="proud-alumni">
       <div className="dept">
         {data.map((department, index) => (
           <div key={index} className="dynamic-container">
-            <h1 className="border-l-[0.5rem] border-secd dark:border-drks">{department.alumni.department_name}</h1>
-            <div className="dynamic-content bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]">
+            <h1 className="department-title">{department.alumni.department_name}</h1>
+            <div className="dynamic-content">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={department.alumni.students[currentIndex].photo}
@@ -59,7 +70,7 @@ const ProudAlumni = () => {
                   className="dynamic-image-wrapper"
                 >
                   <img
-                    src={department.alumni.students[currentIndex].photo}
+                    src={UrlParser(department.alumni.students[currentIndex].photo)}
                     alt={department.alumni.students[currentIndex].name}
                     className="dynamic-image"
                   />
@@ -94,6 +105,7 @@ const ProudAlumni = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

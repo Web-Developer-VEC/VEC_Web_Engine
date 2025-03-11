@@ -1,95 +1,61 @@
-/* General Styles */
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f4f4f9; /* Light background for contrast */
-  color: #333;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
 
-/* Intro Section */
-.nba-intro {
-  font-size: 18px;
-  padding: 20px;
-  line-height: 1.8;
-  background-color: #e2d68b; /* Light yellow background */
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-in-out;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  cursor: pointer;
-  width: 95%;
-  margin: 40px auto;
-}
-
-.nba-intro:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Header Section */
-.nba-header {
-  text-align: center;
-  padding: 20px;
-  font-size: 2.5rem;
-  margin: 20px 0;
-  margin-top: 50px;
-  color: #000; /* Black text color */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  animation: slideIn 1s ease-in-out;
-}
 
 /* Tiles Container */
 .nba-tiles {
   display: flex;
+  justify-content: center;
+  
+}
+
+.nba-tile-container {
+
+  display: flex;
   gap: 20px;
-  margin-bottom: 20px;
+  width:90%;
 }
 
 /* Individual Tile Styles */
 .nba-tile {
+  position: relative;
   flex: 1;
-  background: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #ffffff;
   text-align: justify;
+  border-left: 4px solid #FDCC03;
+  font-family: "Poppins", sans-serif;
+ 
 }
 
-.nba-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+/* Tail Design - Positioned Side by Side */
+
 
 /* Tile Header */
 .nba-tile-header {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+  font-size: 20px;
   color: #333;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #FDCC03;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Tile Text */
 .nba-tile-text {
-  font-size: 1rem;
+  font-size: 16px;
   color: #666;
+  font-family: "Poppins", sans-serif;
 }
 
-.nba-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-}
-
+/* Department & Year Selection */
 .nba-depts, .nba-years {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  margin: 20px 0;
 }
 
 .nba-dept-button, .nba-year-button {
@@ -99,148 +65,67 @@ body {
   font-weight: bold;
   border: none;
   border-radius: 8px;
-  background-color: #FDCC03; /* Yellow background */
-  color: #222; /* Dark text */
+  background-color: #FDCC03;
+  color: #800000;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  cursor: pointer;
 }
+.nba-dept-button:hover, .nba-year-button:hover{
+  background-color:#800000;
+
+  color:white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+
+} 
+
 
 .nba-dept-button.active, .nba-year-button.active {
-  background-color: #333; /* Darker background */
-  color: #FDCC03; /* Yellow text */
+  background-color: #333;
+  color:white;
+  
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .nba-dept-button:hover, .nba-year-button:hover {
-  background-color: #e6b802; /* Darker yellow */
+ 
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* PDF Container */
 .nba-pdf-container {
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
 }
 
-.embed {
-  width: 100%;
+.nba-embed {
+  width: 60%;
   height: 600px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.nba-pdf-container {
-  text-align: center;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  height: 100%; /* Add height if necessary */
-}
-
-/* Loading Screen */
-.loading-screen {
-  position: absolute; /* Position relative to the container */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: #333;
-  z-index: 10; /* Higher than content */
-}
-
-/* Spinner */
-.spinner {
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  margin-right: 30px;
-  border-top: 4px solid #3498db; /* Blue spinner */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* Responsive Design */
-@media (max-width: 1128px) {
-  .nba-intro {
-    width: 92%;
-    margin: 30px auto; /* Ensures equal margin on both sides */
-  }
-}
-
 @media (max-width: 768px) {
-  .nba-intro {
-    font-size: 18px;
+  .nba-tile-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .nba-tile {
     padding: 15px;
-    width: 95%;
-    margin: 10px auto; /* Centering with equal margin */
   }
-
-  .nba-content {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .nba-years {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .nba-details {
-    width: 100%;
-  }
-
-  .nba-year-depts {
-    gap: 20px;
-  }
-
-  .nba-tiles{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .nba-tile{
-    text-align: justify;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  .nba-dept-button, .nba-year-button {
+    font-size: 1rem;
+    padding: 10px 15px;
   }
 }

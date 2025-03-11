@@ -9,6 +9,12 @@ const Naac = ({toggle, theme}) => {
   const [naacData, setNaacData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,7 +71,7 @@ const Naac = ({toggle, theme}) => {
         subHeaderText="NATIONAL ASSESSMENT AND ACCREDITATION COUNCIL (NAAC)"
       />
 
-      <div className="naac-page">
+      <div className="nnaac-page">
         {isLoading && (
           <div className="loading-screen">
             <div className="spinner"></div>
@@ -73,7 +79,7 @@ const Naac = ({toggle, theme}) => {
           </div>
         )}
 
-        <div className="about-section">
+        <div className="nabout-section">
           <div className="naac-info-panel border-l-4 border-secd dark:border-drks
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h2 className="text-accn dark:text-drka">About NAAC</h2>
@@ -104,7 +110,7 @@ const Naac = ({toggle, theme}) => {
               <button
                 key={category}
                 className={`naac-year-button ${selectedCategory === category ? "bg-accn dark:bg-drka text-prim" 
-                    : "bg-secd dark:bg-drks"}`}
+                    : "bg-secd text-accn dark:bg-drks"}`}
                 onClick={() => handleCategoryClick(category)}
               >
                 {category}
@@ -133,7 +139,7 @@ const Naac = ({toggle, theme}) => {
                   // Always show PDF for "code_of_ethics"
                   <embed
                     className="embed"
-                    src={naacData[selectedCategory].pdfPaths[0]}
+                    src={UrlParser(naacData[selectedCategory].pdfPaths[0])}
                     type="application/pdf"
                     width="100%"
                     height="600px"

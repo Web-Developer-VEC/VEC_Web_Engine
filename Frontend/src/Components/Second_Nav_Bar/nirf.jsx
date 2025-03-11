@@ -9,6 +9,12 @@ const Nirf = ({theme, toggle}) => {
   const [yearButtons, setYearButtons] = useState({});
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -62,20 +68,20 @@ const Nirf = ({theme, toggle}) => {
           headerText="NIRF"
           subHeaderText="The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015."
         />
-      <div className="nirf-page mb-24">
+      <div className="nirf-page ">
       {isLoading && (
           <div className="loading-screen">
             <div className="spinner"></div>
             Loading...
           </div>
         )}
-        <div className="nirf-intro bg-[color-mix(in_srgb,theme(colors.secd),transparent_80%)]
+        <div className="nirf-intro [color-mix(in_srgb,theme(colors.secd),transparent_80%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
           <h1 className="nirf-header text-accn dark:text-drka">NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)</h1>
           <p>
-            <strong>About NIRF</strong>
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015. It provides a structured methodology to rank higher education institutions across India based on various objective and subjective criteria. The ranking is released annually, aiming to promote a competitive spirit among institutions and enhance transparency in education standards.
+         
+           
+            The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015. It provides a structured methodology to rank higher education institutions across India based on various objective and subjective criteria. The ranking is released annually, aiming to promote a competitive spirit among institutions and enhance transparency in education standards.
           </p>
         </div>
 
@@ -88,8 +94,8 @@ const Nirf = ({theme, toggle}) => {
               .map((year) => (
                 <button
                   key={year}
-                  className={`nirf-year-button ${selectedYear === year ? "active bg-accn dark:bg-drka text-prim" 
-                      : "bg-secd dark:bg-drks"}`}
+                  className={`nirf-year-button ${selectedYear === year ? "active bg-secd dark:bg-drka text-prim" 
+                      : "bg-secd text-accn dark:bg-drks"}`}
                   onClick={() => handleYearClick(year)}
                 >
                   {year}
@@ -103,7 +109,7 @@ const Nirf = ({theme, toggle}) => {
               {Object.keys(yearButtons[selectedYear]?.actions || {}).map((action, index) => (
                 <div key={index}>
                   <button
-                    className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                    className="nirf-action-button bg-secd text-accn dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                     onClick={() => openPdf(action)}
                   >
                     {action}
@@ -117,7 +123,7 @@ const Nirf = ({theme, toggle}) => {
               <div className="nirf-pdf-container">
                 <h3>{`Viewing: ${selectedAction}`}</h3>
                 <embed className='embed'
-                  src={yearButtons[selectedYear]?.actions[selectedAction]}
+                  src={UrlParser(yearButtons[selectedYear]?.actions[selectedAction])}
                   type="application/pdf"
                   width="100%"
                   height="600px"

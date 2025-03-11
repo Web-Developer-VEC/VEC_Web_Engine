@@ -1,32 +1,40 @@
+/* Container */
 .research-conference-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px;
+    gap: 24px;
 }
 
+/* Title */
 .research-conference-title {
     font-size: 35px;
     font-weight: bold;
-    margin-bottom: 24px;
     text-align: center;
+    padding: 10px 20px;
+    border-left: 5px solid #ffe102;
+    border-right: 5px solid #ffe102;
+    border-radius: 8px;
+    color: #800000;
+    margin-bottom: 30px;
 }
 
-/* Buttons container */
+/* Buttons Container */
 .research-conference-button-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 40px;
     margin-bottom: 24px;
 }
 
-/* Button styles */
+/* Button Styles */
 .research-conference-button {
-    padding: 10px 12px;
+    padding: 12px 20px;
     font-size: 16px;
-    /*background-color: #3b82f6;*/
-    /*color: white;*/
+    background-color: #ffe102; /* Yellow */
+    color: #000;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -34,60 +42,66 @@
 }
 
 .research-conference-button:hover {
-    /*background-color: #1e40af;*/
     transform: scale(1.1);
 }
 
-/* Active button stays animated */
+/* Active Button */
 .research-conference-button.active {
-    /*background-color: #1e3a8a;*/
+    background-color: #800000; /* Dark Red */
+    color: white;
     transform: scale(1.1);
-    /*box-shadow: 0px 0px 10px rgba(59, 130, 246, 0.7);*/
 }
 
-/* iFrame container */
+/* iFrame Container */
 .research-conference-iframe-container {
-    width: 90%;
-    height: 600px;
-    /*border: 10px solid #ffe102;*/
+    width: 75%;
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.research-conference-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
     border-radius: 8px;
 }
-
 /* Media Query for Tablets (768px and below) */
 @media screen and (max-width: 768px) {
     .research-conference-title {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .research-conference-button {
-        padding: 8px 10px;
+        padding: 10px 16px;
         font-size: 14px;
     }
 
     .research-conference-iframe-container {
-        width: 95%;
-        height: 500px;
-        /*border: 8px solid #ffe102;*/
+        width: 90%;
+        height: 400px;
     }
 }
 
 /* Media Query for Mobile Devices (480px and below) */
 @media screen and (max-width: 480px) {
     .research-conference-title {
-        font-size: 18px;
+        font-size: 20px;
     }
 
-    /* Updated button container to use CSS Grid for 3x2 layout */
+    /* Grid layout for buttons */
     .research-conference-button-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        grid-template-columns: repeat(2, 1fr); /* 2-column layout */
+        gap: 10px;
         width: 100%;
         max-width: 320px;
     }
 
-    /* Ensure the last row (if it has less than 3 buttons) is centered */
-    .research-conference-button-container:has(.research-conference-button:nth-child(4)) {
+    /* Ensure last row (if it has less than 2 buttons) is centered */
+    .research-conference-button-container:has(.research-conference-button:nth-child(3)) {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -101,7 +115,6 @@
 
     .research-conference-iframe-container {
         width: 100%;
-        height: 400px;
-        /*border: 6px solid #ffe102;*/
+        height: 350px;
     }
 }

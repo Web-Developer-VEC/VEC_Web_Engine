@@ -39,7 +39,7 @@ const Head = () => {
             cols: 1,
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
-                {hrd: false, ttl: "About Trust", sup: [], lnk: "/trust"},
+                {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
                 {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
@@ -400,35 +400,45 @@ const Head = () => {
                     </div>
                 </div>
                 <div className='hidden lg:flex px-4 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt
-                    gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
-                    {/*<EnvelopeIcon className='size-5 inline -mr-2 mt-1'></EnvelopeIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[0]}</p>*/}
-                    {/*<PhoneIcon className='size-5 inline -mr-2 mt-1'></PhoneIcon><p className='truncate mt-1 h-fit lg:block hidden'>{hdrs[1]}</p>*/}
-                    <button onClick={() => navigate('/nba')} className=' mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
-                    <button onClick={() => navigate('/naac')} className=' mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
-                    <button onClick={() => navigate('/nirf')} className=' mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
-                    <button onClick={() => navigate('/iic')} className=' mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
-                    <button onClick={() => navigate('/incubation')} className=' mt-1 h-fit md:block hidden'>{hdrs[6]}</button>
-                    <button onClick={() => navigate('/alumni')} className=' mt-1 h-fit md:block hidden'>{hdrs[7]}</button>
-                    <button onClick={() => navigate('/NSS')} className=' mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
-                    <button onClick={() => navigate('/NCC')} className=' mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
-                    <button onClick={() => navigate('/YRC')} className=' mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
-                    <button onClick={() => navigate('/sports')} className=' mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
-                    <button onClick={() => navigate('/trans')} className=' mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
-                    <button onClick={() => navigate('/library')} className=' mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
-                    <button onClick={() => navigate('/hostel')} className=' mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
-                    <button onClick={() => navigate('/other-facilities')} className=' mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
-                    <button onClick={() => navigate('/greviences')} className=' mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
+                gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
+
+                    <button onClick={() => navigate('/nba')} className='mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
+                    <button onClick={() => navigate('/naac')} className='mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
+                    <button onClick={() => navigate('/nirf')} className='mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
+                    <button onClick={() => navigate('/iic')} className='mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
+                    <button onClick={() => navigate('/incubation')} className='mt-1 h-fit md:block hidden'>{hdrs[6]}</button>
+                    <button onClick={() => navigate('/alumni')} className='mt-1 h-fit md:block hidden'>{hdrs[7]}</button>
+                    <button onClick={() => navigate('/NSS')} className='mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
+                    <button onClick={() => navigate('/NCC')} className='mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
+                    <button onClick={() => navigate('/YRC')} className='mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
+                    <button onClick={() => navigate('/sports')} className='mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
+                    <button onClick={() => navigate('/trans')} className='mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
+                    <button onClick={() => navigate('/library')} className='mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
+                    <button onClick={() => navigate('/hosLanding')} className='mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
+                    <button onClick={() => navigate('/other-facilities')} className='mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
+                    <button onClick={() => navigate('/greviences')} className='mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
-                    <a href='https://easycollege.in/vecengg/college/webpayindex.aspx' target='__blank'><button className='truncate mt-1 h-fit md:block hidden rounded-full
-                        bg-text dark:bg-drkt text-secd dark:text-drks px-2' >{hdrs[18]}</button></a>
-                    
-                    <div className={`flex group items-center justify-end grow gap-3`}>
+
+                    {/* Payment Button */}
+                    <button 
+                        onClick={() => window.location.href="https://easycollege.in/vecengg/college/webpayindex.aspx"} 
+                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
+    
+                        {hdrs[18]}
+                    </button>
+
+                    {/* Social Icons */}
+                    <div className="flex group items-center justify-end grow gap-3">
                         {socls.map((socl, i) => (
-                            <a href={socl.Link} key={i}><img src={socl.Ico} alt={socl.Name}
-                               className={`w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
-                                   dark:invert mt-1 text-transparent`} style={{animationDelay: `${(i * 1.9)}s`}}></img></a>
+                            <a href={socl.Link} key={i}>
+                                <img src={socl.Ico} alt={socl.Name}
+                                    className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
+                                                dark:invert mt-1 text-transparent"
+                                    style={{ animationDelay: `${i * 1.9}s` }} />
+                            </a>
                         ))}
                     </div>
+                    
                 </div>
                 <div
                     className='block lg:hidden h-fit'>

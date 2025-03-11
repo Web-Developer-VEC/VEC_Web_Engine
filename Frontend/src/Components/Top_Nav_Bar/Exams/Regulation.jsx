@@ -10,6 +10,12 @@ const REGULATION = ({theme, toggle}) => {
   const [regdata, setRegData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -99,7 +105,7 @@ const REGULATION = ({theme, toggle}) => {
               </button>
               <h2 className="text-accn dark:text-drka mb-2">{selectedRegulation.name}</h2>
               <iframe
-                src={selectedRegulation.pdf_path}
+                src={UrlParser(selectedRegulation.pdf_path)}
                 title={selectedRegulation.name}
                 className="REG-iframe"
               ></iframe>

@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
 
-export default function Academicresearch() {
+export default function Academicresearch({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
   const [activeYear, setActiveYear] = useState(null); // Track active button
   const [academicresearch, setAcademicResearch] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +42,7 @@ export default function Academicresearch() {
   return (
     <>
       <div>
-        <Banner
+        <Banner toggle={toggle} theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Academic Research"
           subHeaderText="Enrich Your Knowledge"
@@ -45,7 +50,7 @@ export default function Academicresearch() {
       </div>
       <div className="research-academicresearch-container">
         <h1 className="research-academicresearch-title">
-          Academic Research - Yearwise Consolidation
+          Academic Research - Year wise Consolidation
         </h1>
 
         <div className="research-academicresearch-button-container">
@@ -53,7 +58,7 @@ export default function Academicresearch() {
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(academicresearch?.pdf_path[index]);
+                setPdfUrl(UrlParser(academicresearch?.pdf_path[index]));
                 setActiveYear(year);
               }}
               className={`research-academicresearch-button ${

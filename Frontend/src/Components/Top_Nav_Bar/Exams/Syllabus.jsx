@@ -15,10 +15,10 @@ const CourseCard = ({ course, onClick }) => (
     whileTap={{ scale: 0.95 }}
   >
     <button className="course-button w-full" onClick={onClick}>
-      <div className="course-content flex items-center gap-2 p-3 bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-        rounded-lg shadow-md">
-        <BookOpen className="course-icon text-secd dark:text-drks" />
-        <span className="font-semibold text-sm sm:text-base">{course}</span>
+      <div className="course-content flex flex-row items-center gap-2 p-3 bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+        rounded-lg shadow-md gap-3">
+        <BookOpen className="course-icon w-10 text-lg text-secd dark:text-drks" />
+        <p className="font-semibold text-sm sm:text-base">{course}</p>
       </div>
     </button>
   </motion.div>
@@ -46,6 +46,12 @@ function Syllabus({theme, toggle}) {
   const [curriculumData, setCurriculumData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,7 +71,7 @@ function Syllabus({theme, toggle}) {
     if (yearData) {
       const yearContent = yearData[year][0];
       const departmentIndex = yearContent.department.indexOf(department);
-      return yearContent.pdf_path[departmentIndex];
+      return UrlParser(yearContent.pdf_path[departmentIndex]);
     }
     return null;
   };
@@ -75,8 +81,8 @@ function Syllabus({theme, toggle}) {
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-4 text-accn dark:text-drka">
-            <Calendar className="w-6 h-6" />
-            <h2 className="text-xl sm:text-2xl font-bold">{data.year}</h2>
+            <Calendar className="w-[30px] h-[30px]" /> {/* Set the icon size to 30px */}
+            <h2 className="text-[30px] font-bold">{data.year}</h2> {/* Set the text size to 30px */}
           </div>
           <div className="course-grid flex flex-wrap -m-2">
             {data.department.map((course, courseIndex) => (

@@ -19,7 +19,7 @@ export default function HostelPage({toggle, theme}) {
 
       <AboutHostel />
       <HostelFacilities />
-      {/* <HostelLogin/> */}
+      <HostelLogin/>
       <Warden />
       {/* <Admissions/> */}
     </div>

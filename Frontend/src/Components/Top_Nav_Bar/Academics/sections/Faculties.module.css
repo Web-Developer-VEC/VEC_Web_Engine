@@ -48,6 +48,10 @@
   margin-bottom: 20px;
 }
 
+.facultyModalHeader{
+  margin-bottom: 15px;
+}
+
 /* Grid for remaining tiles */
 .gridContainer {
   /*display: grid;*/
@@ -108,6 +112,7 @@
   cursor: pointer;
   width: 110px;
   height: 40px;
+  color: white;
 }
 
 .firstTileFacButton {

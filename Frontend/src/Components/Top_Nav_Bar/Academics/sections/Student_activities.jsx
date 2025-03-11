@@ -6,6 +6,12 @@ const ImageCarousel = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = data?.images || [];
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   // Reset to first slide when new data arrives
   useEffect(() => {
     if (images.length > 0) {
@@ -57,7 +63,7 @@ const ImageCarousel = ({ data }) => {
               {images.map((item, index) => (
                 <div key={index} className="carousel-slide" style={{ left: `${index * 100}%` }}>
                   <img
-                    src={item.image_path}
+                    src={UrlParser(item.image_path)}
                     alt={item.event_name} // Changed from image_content to event_name
                     className="carousel-image"
                   />

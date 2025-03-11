@@ -5,9 +5,16 @@ import Banner from '../../Banner';
 
 
 function PersonDetail({ person, isImageLeft }) {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+  
   return (
     <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
-      <img src={person.photo_path} alt={person.name} className="person-image" />
+      <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image" />
       <div className="person-content">
         <h2 className="text-accn dark:text-drka">{person.designation}</h2>
         <h3>{person.name}</h3>
@@ -22,6 +29,7 @@ export const PlacementTeam = ({toggle, theme}) => {
   const [PlacementTeam, setPlacementTeam] = useState([]);
   const [isLoading,setLoading] = useState(true);
   const content = PlacementTeam[0]?.placement_team || [];
+
 
   useEffect(() => {
     const fetchData = async () => {

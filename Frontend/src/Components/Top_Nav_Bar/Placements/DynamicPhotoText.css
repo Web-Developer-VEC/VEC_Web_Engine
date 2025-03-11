@@ -5,21 +5,25 @@
   gap: 20px; /* Space between the columns */
   align-items: center;
   margin: 40px 10%;
-  /*background: #fff;*/
+  padding: 20px;
+  border-left: 5px solid yellow; /* Yellow left border for the entire box */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 /* Left Section (h1) */
 .dynamic-container h1 {
-  padding: 4px;
-  /*border-left: 0.5rem solid red;*/
+  padding: 10px;
   font-size: 24px;
-  /*color: #333;*/
+  color: #800000;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border-radius: 8px;
+  background: rgba(255, 255, 0, 0.1); /* Soft yellow background */
 }
 
 /* Right Section (Card Content) */
@@ -30,7 +34,7 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  /*background: linear-gradient(to bottom, #fcfbe0, #f3e9cf);*/
+  background: linear-gradient(to bottom, #fcfbe0, #f3e9cf);
   width: 95%; /* Ensure it fills 70% of the grid column */
   height: 250px; /* Fixed height for all cards */
   overflow: hidden; /* Prevent content from overflowing */
@@ -43,6 +47,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .dynamic-image {
   width: 300px;
   height: 200px;
@@ -55,27 +60,31 @@
 .dynamic-text-container {
   max-width: 250px; /* Fixed size to prevent overflow */
 }
+
 .dynamic-title {
   font-size: 24px;
   font-weight: bold;
+  color: #800000;
   margin-bottom: 10px;
-  /*color: #333;*/
 }
+
 .dynamic-description {
   font-size: 16px;
-  /*color: #555;*/
+  color: #555;
   overflow: hidden; /* Prevent description overflow */
   text-overflow: ellipsis; /* Add ellipsis if the text is too long */
   white-space: nowrap; /* Prevent wrapping */
 }
+
+/* Responsive Design */
 @media (max-width: 900px) {
   .dynamic-container {
     grid-template-columns: 1fr;
-    /* Stack columns on smaller screens */
   }
 
   .dynamic-container h1 {
-    font-size: 16px;
+    font-size: 20px;
+    padding: 8px;
   }
 
   .dynamic-content {
@@ -83,9 +92,7 @@
     text-align: center;
     padding: 15px;
     max-width: 100%;
-    /* Allow dynamic resizing on smaller screens */
     height: auto;
-    /* Adjust height */
   }
 
   .dynamic-image {
@@ -93,21 +100,24 @@
     height: 150px;
   }
 }
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .dynamic-container {
-    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    grid-template-columns: 1fr;
   }
+
   .dynamic-container h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
+
   .dynamic-content {
     flex-direction: column;
     text-align: center;
     padding: 15px;
-    max-width: 100%; /* Allow dynamic resizing on smaller screens */
-    height: auto; /* Adjust height */
+    max-width: 100%;
+    height: auto;
   }
+
   .dynamic-image {
     width: 250px;
     height: 150px;
@@ -116,19 +126,23 @@
 
 @media (max-width: 480px) {
   .dynamic-container h1 {
-    font-size: 18px;
+    font-size: 16px;
   }
+
   .dynamic-content {
     padding: 10px;
     max-width: 100%;
   }
+
   .dynamic-image {
     width: 200px;
     height: 120px;
   }
+
   .dynamic-title {
     font-size: 20px;
   }
+
   .dynamic-description {
     font-size: 14px;
   }

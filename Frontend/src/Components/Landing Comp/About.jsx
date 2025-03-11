@@ -12,14 +12,14 @@ const About = () => {
                 <p className='text-5xl tracking-tighter'>Velammal Engineering College</p>
                 <h4 style={{color: "gray"}} className='text-xl'>An Autonomous Institution</h4>
                 <br></br>
-                <div className='abt2 text-lg lg:text-xl'>
+                <div className='abt2 text-lg lg:text-xl text-justify'>
                     <p>The Velammal Educational Trust is a registered non-minority service organization established in
                         the year 1986 by Thiru. M.V. Muthuramalingam inculcates among the youth a sense of discipline
-                        which is important to mould them into useful and capable citizens. The watchwords of the Trust
+                        which is important to mold them into knowledgeable and skilled citizens. The watchwords of the Trust
                         are “Dedication, Determination, and Distinction”.</p>
                 </div>
-                <div className='abt3 mt-4 text-lg lg:text-xl'>
-                    <p>Velammal Engineering College was established in the year 1995-96 to impart quality education. It
+                <div className='abt3 mt-4 text-lg lg:text-xl text-justify'>
+                    <p>Velammal Engineering College was established in the year 1995 to impart quality higher education. It
                         is a self-financing non-minority institution, affiliated to Anna University and approved by the
                         All India Council for Technical Education (AICTE) and also an ISO-certified institution.</p>
                 </div>

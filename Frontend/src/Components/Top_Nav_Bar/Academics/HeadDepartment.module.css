@@ -87,15 +87,6 @@
   transition: color 0.3s ease, background 0.3s ease;
 }
 
-.sidebar ul li button:hover {
-  /*color: #000000;*/
-  /*background: #fdcc03;*/
-}
-
-.sidebar ul li button:hover .icon {
-  /*color: #ffffff; !* Change icon color to white on hover *!*/
-}
-
 .icon {
   font-size: 20px;
   margin-right: 10px;
@@ -112,14 +103,20 @@
 
 .textColumn {
   flex: 2;
-  padding: 20px;
-  /*background: #f9f9f9;*/
+  padding-top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  /* background: #f9f9f9; */
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .hodMessage {
-  padding: 20px;
+  padding-top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   /*background: #ffffff;*/
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -189,7 +186,7 @@
 }
 
 .hodImage {
-  max-width: 100%;
+  /* max-width: 100%; */
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
@@ -211,8 +208,10 @@
 }
 
 .viewMoreButton:hover {
-  /*background: #e3c22f;*/
+  background: #800000;
+  color: white;
 }
+
 
 .socialLinks {
   margin-top: 15px;
@@ -289,6 +288,7 @@
   }
 
   .textColumn{
+    padding: 20px;
     order: 1;
   }
 

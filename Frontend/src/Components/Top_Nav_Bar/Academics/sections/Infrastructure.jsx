@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "./infrastructure.css";
 
 const Infrastructure = ({ data }) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (index) => {
@@ -20,7 +27,7 @@ const Infrastructure = ({ data }) => {
             key={index}
             className={`card_infa ${selectedCard === index ? "active" : ""}`}
             style={{
-              backgroundImage: `url(${card.image_path})`,
+              backgroundImage: `url(${UrlParser(card.image_path)})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

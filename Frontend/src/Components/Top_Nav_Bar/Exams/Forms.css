@@ -1,42 +1,30 @@
-/* General styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
 .tails-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  /*background: #f8fafc;*/
+  /* background: #f8fafc; */
   min-height: 100vh;
 }
 
 .tail {
-  flex: 0 0 500px;
+  flex-direction: row;
   height: 600px;
   padding: 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   overflow-x: hidden;
+  width: 45vw;
   /*background: #fff;*/
 }
 
 /* Scrollbar styles */
 .student-tail {
-  background: linear-gradient(135deg, #e1ff00d2 0%, #ff6b00 100%);
+  background: #e5e7eb;
   scrollbar-width: thin;
-  scrollbar-color: #e1ff00d2 #ff6b00;
+  scrollbar-color: #a48e8e #ededed;
 }
 
 .student-tail::-webkit-scrollbar {
@@ -60,9 +48,9 @@ html, body {
 }
 
 .faculty-tail {
-  background: linear-gradient(135deg, #e1ff00d2 0%, #ff6b00 100%);
+  background: #e5e7eb;
   scrollbar-width: thin;
-  scrollbar-color: #888 #f0f0f0;
+  scrollbar-color: #a48e8e #ededed;
 }
 
 .faculty-tail::-webkit-scrollbar {
@@ -92,7 +80,7 @@ html, body {
   margin-bottom: 2rem;
   color: #333;
 }
-
+  
 .download-links-container {
   display: flex;
   flex-direction: column;
@@ -104,11 +92,12 @@ html, body {
   padding: 8px;
   color: black !important;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease-in;
 }
 
 .resource-item:hover {
   color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.03);
 }
 
   /* Loading Screen */
@@ -156,10 +145,6 @@ html, body {
   .tail {
     width: 100%;
   }
-}
-.resource-item:hover {
-  color: rgba(224, 242, 60, 0.947); /* Change the text color */
-  background: #cfd21d; /* Optional: Change the background color */
 }
 
 .pdf-modal {
@@ -212,4 +197,149 @@ html, body {
   cursor: pointer;
   text-decoration: none;
   /*color: black;*/
+}
+
+.form-page {
+  font-family: Arial, sans-serif;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-content {
+  display: flex;
+  width: 105%;
+  flex-direction: column;
+  gap: 1rem; /* Space between forms */
+}
+
+.form-regulation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  margin: 0 5px;
+}
+
+.form-button:hover {
+  /*background-color: #e6b802; !* Slightly darker shade on hover *!*/
+}
+
+.form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.form-modal-content {
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.form-iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.form-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.form-close-button:hover {
+  /*background-color: #e6b802; !* Slightly darker shade on hover *!*/
+}
+
+.form-close-button svg {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .form-page {
+    padding: 1rem;
+  }
+
+  .form-header {
+    font-size: 1.5rem;
+  }
+
+  .form-content {
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .form-regulation {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  .form-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 5px 0;
+  }
+
+  .form-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .form-iframe {
+    height: 400px;
+  }
+
+  .form-close-button {
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .form-close-button svg {
+    font-size: 16px;
+  }
 }
