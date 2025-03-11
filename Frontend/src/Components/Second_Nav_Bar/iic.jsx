@@ -3,18 +3,18 @@ import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import "./iic.css"
 import Banner from "../Banner"
-import facilityImage1 from "../Assets/iic-facility-1.png"
-import facilityImage2 from "../Assets/iic-facility-2.png"
-import facilityImage3 from "../Assets/iic-facility-3.png"
-import facilityImage4 from "../Assets/iic-facility-4.png"
-import facilityImage5 from "../Assets/iic-facility-5.png"
-import facilityImage6 from "../Assets/iic-facility-6.png"
 
 const Iic = ({toggle, theme}) => {
   const leftCardsRef = useRef([])
   const rightCardsRef = useRef([])
   const [isPlaying, setIsPlaying] = useState(true)
-  const intervalRef = useRef(null)
+  const intervalRef = useRef(null);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   const leftPerspectives = [
     { x: -6, z: -4 },
@@ -174,26 +174,26 @@ const movePrev = () => {
   const certificateArray =
     iicData?.certificate?.year?.map((year, index) => ({
       year,
-      path: iicData.certificate.pdfpath[index],
+      path: UrlParser(iicData.certificate.pdfpath[index]),
     })) || []
 
   const eventsOrganizedArray =
     iicData?.events?.year?.map((year, index) => ({
       year,
-      path: iicData.events.pdfpath[index],
+      path: UrlParser(iicData.events.pdfpath[index]),
     })) || []
 
   const policyArray =
     iicData?.policy?.name?.map((name, index) => ({
       year: name,
-      path: iicData.policy.pdfpath[index],
+      path: UrlParser(iicData.policy.pdfpath[index]),
     })) || []
 
   // Update members array
   const membersArray =
     iicData?.members?.faculty?.map((member) => ({
       name: member.name,
-      image: member.imagepath,
+      image: UrlParser(member.imagepath),
       designation: member.designation,
       keyRole: member.role,
     })) || []
@@ -230,7 +230,7 @@ const movePrev = () => {
   const otherStuffsArray =
     iicData?.otherstuffs?.name?.map((name, index) => ({
       year: name,
-      path: iicData.otherstuffs.path[index],
+      path: UrlParser(iicData.otherstuffs.path[index]),
     })) || []
 
   const openPdf = (category, year) => {
@@ -357,7 +357,7 @@ const movePrev = () => {
                   key={src}
                   ref={(el) => (leftCardsRef.current[index] = el)}
                   className="item"
-                  src={src || "/placeholder.svg"}
+                  src={UrlParser(src)}
                   data-counter={(index + 1).toString()}
                   alt={`Left card ${index + 1}`}
                 />
@@ -369,7 +369,7 @@ const movePrev = () => {
             <div className="inner">
               {imageRight?.map((src, index) => (
                 <img
-                  key={src}
+                  key={UrlParser(src)}
                   ref={(el) => (rightCardsRef.current[index] = el)}
                   className="item"
                   src={src || "/placeholder.svg"}

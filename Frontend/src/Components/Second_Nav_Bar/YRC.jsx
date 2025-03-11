@@ -12,6 +12,17 @@ const YRC = () => {
   const [studentCoordinators, setStudentCoordinators] = useState([]);
   const [yrcEvent, setYrcEvent] = useState(null);
 
+  console.log("Ajit",studentCoordinators);
+  console.log("Ajay",yrcEvent);
+  
+  
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +82,7 @@ const YRC = () => {
           {staffCoordinator && (
             <div className="YRC-faculty-coordinator">
               <div className="YRC-id-card">
-                <img src={staffCoordinator.image_path} alt={staffCoordinator.name} className="YRC-profile-pic" />
+                <img src={UrlParser(staffCoordinator.image_path)} alt={staffCoordinator.name} className="YRC-profile-pic" />
                 <h4 className="YRC-name">{staffCoordinator.name}</h4>
                 <p className="YRC-role">{staffCoordinator.designation}</p>
               </div>
@@ -84,7 +95,7 @@ const YRC = () => {
             {studentCoordinators.names &&
               studentCoordinators.names.map((name, index) => (
                 <div key={index} className="YRC-id-card">
-                  <img src={studentCoordinators.images[index]} alt={name} className="YRC-profile-pic" />
+                  <img src={UrlParser(studentCoordinators.images[index])} alt={name} className="YRC-profile-pic" />
                   <h4 className="YRC-name">{name}</h4>
                   <p className="YRC-role">{studentCoordinators.roles[index]}</p>
                   
@@ -99,7 +110,7 @@ const YRC = () => {
           <Slider {...carouselSettings}>
             {yrcEvent?.image_path?.map((img, index) => (
               <div key={index} className="YRC-carousel-slide">
-                <img src={img} alt={yrcEvent.image_content[index]} className="YRC-carousel-image" />
+                <img src={UrlParser(img)} alt={yrcEvent.image_content[index]} className="YRC-carousel-image" />
                 <p className="YRC-carousel-text">{yrcEvent.image_content[index]}</p>
               </div>
             ))}

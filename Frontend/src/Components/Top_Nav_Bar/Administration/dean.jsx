@@ -111,6 +111,12 @@ const Dean = ({theme, toggle}) => {
   const [deanData, setDeanData] = useState([]);
   const [loading ,setloading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -157,7 +163,7 @@ const Dean = ({theme, toggle}) => {
                     <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw]
                       border-2 border-secd dark:border-drks">
                       <img
-                        src={responsibleDean.Dean_Image} // Replace with a valid image URL
+                        src={UrlParser(responsibleDean.Dean_Image)} // Replace with a valid image URL
                         alt={responsibleDean.Dean}
                       />
                       <div className="de-profile-details">
@@ -170,7 +176,7 @@ const Dean = ({theme, toggle}) => {
                       <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw]
                         border-2 border-secd dark:border-drks ">
                         <img
-                          src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
+                          src={UrlParser(responsibleDean.Associate_Dean_Image)} // Replace with a valid image URL
                           alt={responsibleDean.Associate_Dean}
                         />
                         <div className="de-profile-details">

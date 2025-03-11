@@ -53,6 +53,12 @@ const NSSCarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     // Auto-slide functionality
     useEffect(() => {
         if (isAutoPlay) {
@@ -64,11 +70,11 @@ const NSSCarousel = ({data}) => {
     }, [currentIndex, isAutoPlay]);
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? slideData.length - 1 : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? data?.image_path?.length - 1 : prev - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev === slideData.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev === data?.image_path?.length - 1 ? 0 : prev + 1));
     };
 
     return (
@@ -76,7 +82,7 @@ const NSSCarousel = ({data}) => {
             <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {data?.image_path?.map((image, index) => (
                     <div className="nss-carousel-slide" key={index}>
-                        <img src={image} alt={data?.image_content[index]} />
+                        <img src={UrlParser(image)} alt={data?.image_content[index]} />
                         <div className="nss-carousel-text">
                             <h3>{data?.image_content[index]}</h3>
                             <p>{data?.desc[index]}</p>
@@ -91,7 +97,7 @@ const NSSCarousel = ({data}) => {
 
             {/* Dots Indicator */}
             <div className="nss-carousel-dots">
-                {slideData.map((_, index) => (
+                {data?.image_path?.map((_, index) => (
                     <span
                         key={index}
                         className={`nss-dot ${index === currentIndex ? "active" : ""}`}

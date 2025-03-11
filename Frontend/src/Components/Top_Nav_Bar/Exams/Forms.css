@@ -22,7 +22,7 @@
 
 /* Scrollbar styles */
 .student-tail {
-  background: linear-gradient(135deg, #ffffff 0%, #959595 100%);
+  background: #e5e7eb;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }
@@ -48,7 +48,7 @@
 }
 
 .faculty-tail {
-  background: linear-gradient(135deg, #959595 0%, #ffffff 100%);
+  background: #e5e7eb;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }

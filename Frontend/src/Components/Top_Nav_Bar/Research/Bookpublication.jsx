@@ -7,6 +7,11 @@ export default function Bookpublication({theme, toggle}) {
   const [activeYear, setActiveYear] = useState(null); // Track active button
   const [books, setBooks] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +58,7 @@ export default function Bookpublication({theme, toggle}) {
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(books?.pdf_path[index]);
+                setPdfUrl(UrlParser(books?.pdf_path[index]));
                 setActiveYear(year);
               }}
               className={`research-bookpublication-button ${

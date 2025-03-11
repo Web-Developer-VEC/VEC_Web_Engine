@@ -6,6 +6,12 @@ const Achievements = ({ data }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [achievements, setAchievements] = useState([]);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     if (!data || !data.image_path || !data.title) {
       setAchievements([]); // Ensure `achievements` is always an array
@@ -15,7 +21,7 @@ const Achievements = ({ data }) => {
     const formattedData = data.image_path.map((image, index) => ({
       id: index + 1,
       text: data.title?.[index] || "No Title", // Fallback for undefined values
-      image: image,
+      image: UrlParser(image),
     }));
 
     setAchievements(formattedData);

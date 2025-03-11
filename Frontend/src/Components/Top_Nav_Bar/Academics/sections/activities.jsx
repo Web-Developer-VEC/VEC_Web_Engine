@@ -3,13 +3,19 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Activities.css";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
+
 const Activities = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filterOption, setFilterOption] = useState("Recent"); // Default: Recent
 
-  console.log("Activities", data);
+
   const activitiesArray = Object.values(data); // Convert object to array
 
   useEffect(() => {
@@ -58,7 +64,7 @@ const Activities = ({ data }) => {
     <>
       {/* 🔹 Dropdown Filter */}
       <div className="activities-filter-bar">
-        <select name="filter" className="filter-select bg-prim dark:bg-drkp" onChange={handleFilterChange}>
+        <select name="filter" className="activity-filter-select bg-prim dark:bg-drkp" onChange={handleFilterChange}>
           <option value="Recent">Recent</option>
           <option value="Overall">Overall</option>
         </select>
@@ -81,7 +87,7 @@ const Activities = ({ data }) => {
           <div className="bg-prim dark:bg-drkp modal-content-act">
             <span className="close-btn text-text bg-secd dark:bg-drks dark:text-drkt
               hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={closeModal}>&times;</span>
-            <img src={selectedEvent.image_path} alt="Event" className="modal-image" />
+            <img src={UrlParser(selectedEvent.image_path)} alt="Event" className="modal-image" />
             <h2>{selectedEvent.name_of_event}</h2>
             <p><strong>Date: </strong>{selectedEvent.date}</p>
             <p><strong>Coordinator: </strong>{selectedEvent.coordinator}</p>
@@ -116,7 +122,7 @@ const AnimatedCard = ({ event, handleViewMore }) => {
       bg-[color-mix(in_srgb,theme(colors.prim)_80%,black)]
       dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" variants={cardVariants}
       initial="hidden" animate={controls}>
-      <img src={event.image_path} alt="Event" className="card-image" />
+      <img src={UrlParser(event.image_path)} alt="Event" className="card-image" />
       <div className="card-details">
         <p className="card-date">{event.date}</p>
         <h3 className="my-2 text-xl text-accn dark:text-drka">{event.name_of_event}</h3>

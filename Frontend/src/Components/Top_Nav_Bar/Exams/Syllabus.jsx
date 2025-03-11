@@ -46,6 +46,12 @@ function Syllabus({theme, toggle}) {
   const [curriculumData, setCurriculumData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,7 +71,7 @@ function Syllabus({theme, toggle}) {
     if (yearData) {
       const yearContent = yearData[year][0];
       const departmentIndex = yearContent.department.indexOf(department);
-      return yearContent.pdf_path[departmentIndex];
+      return UrlParser(yearContent.pdf_path[departmentIndex]);
     }
     return null;
   };

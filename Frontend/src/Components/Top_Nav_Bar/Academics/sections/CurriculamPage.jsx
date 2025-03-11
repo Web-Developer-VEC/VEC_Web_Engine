@@ -7,6 +7,12 @@ const CurriculumPage = ({ data }) => {
   const [activePO, setActivePO] = useState(null); // Track which PO is active (open)
   const [activePOS, setActivePOS] = useState(null);
   const [selectedRegulation, setSelectedRegulation] = useState(null);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   
 
   const togglePO = (id) => {
@@ -105,7 +111,7 @@ const CurriculumPage = ({ data }) => {
             </button>
             <h2 className="mb-4">Curriculum & Syllabus {selectedRegulation[1]}</h2>
             <iframe
-              src={selectedRegulation[0]}
+              src={UrlParser(selectedRegulation[0])}
               title={selectedRegulation[1]}
               className="REG-iframe"
             ></iframe>

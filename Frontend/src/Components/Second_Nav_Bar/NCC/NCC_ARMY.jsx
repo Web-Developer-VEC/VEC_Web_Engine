@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./NCC_ARMY.css"; 
 import NCCACarousel from "./NCC_ARMY comps/NCCACarousel";
 import NCCAtable from "./NCC_ARMY comps/NCCAtable";
+import axios from "axios";
 
 const NCC_ARMY = () => { 
+  const [tabel,setTabelValue] = useState({});
+  const [curosel, setCarosel] = useState({});
+  const [Coordinator, setCoordinator] = useState({});
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const responce = await axios.get('/api/ncc_army');
+        const data = responce.data[0];
+
+        setTabelValue(data.Table);
+        setCarosel(data.image);
+        setCoordinator(data.Coordinator)
+
+      } catch (error) {
+        console.error("Error fetching data",error);  
+      }
+    }
+    fetchData()
+  },[]);
+  
   return (
     <>
-      <NCCACarousel />
+      <NCCACarousel data={curosel}/>
       {/* Main NCC_ARMY Container */}
       <div className="NCC_ARMY-container">
         <div className="NCC_ARMY-content-wrapper">
@@ -163,26 +191,20 @@ const NCC_ARMY = () => {
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
           >
             <div className="NCC_ARMY-profile-photo">
-              <img src="./ncc_staff.jpg" alt="Sub. LT R DHANALAKSHMI" />
+              <img src={UrlParser(Coordinator?.coordinator_image)} alt={Coordinator?.coordinator_name} />
             </div>
             <div className="NCC_ARMY-profile-content">
-              <h2 className="NCC_ARMY-profile-name ">Captain R Chezhian</h2>
+              <h2 className="NCC_ARMY-profile-name ">{Coordinator?.coordinator_name}</h2>
               <h4 className="NCC_ARMY-profile-position text-accn dark:text-drka">
-                NCC Army Coordinator
+                {Coordinator?.coordinator_designation}
               </h4>
               <p className="NCC_ARMY-profile-bio">
-                Captain R. Chezhian, Associate NCC Officer (Army Wing) at
-                Velammal Engineering College, earned his NCC 'C' Certificate
-                with a commendable 'B' grade on 31st October 1995. These
-                distinctions, along with his dedication and commitment, earned
-                him the position of Associate NCC Officer (Army Wing) at
-                Velammal Engineering College and the rank of Lieutenant as a
-                Direct Commission Officer on 15th July 2011.
+                {Coordinator?.coordinator_description}
               </p>
             </div>
           </div>
         </div>
-        <NCCAtable />
+        <NCCAtable data={tabel}/>
       </div>
     </>
   );

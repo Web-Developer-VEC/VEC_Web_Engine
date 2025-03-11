@@ -61,6 +61,12 @@ const ExecutiveCommittee = ({theme, toggle}) => {
     internship_cell: faUsers,
   };
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -117,7 +123,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
                 key={name}
                 name={name}
                 icon={iconMapping[name.replace(/[\s'-]/g, "_").toLowerCase()]}
-                onClick={() => handlePdfClick(pdf_path)}
+                onClick={() => handlePdfClick(UrlParser(pdf_path))}
               />
             ))}
           </div>

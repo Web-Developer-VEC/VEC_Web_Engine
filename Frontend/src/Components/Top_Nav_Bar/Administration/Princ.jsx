@@ -6,6 +6,12 @@ const Princ = ({theme, toggle}) => {
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [error, setError] = useState(null); // State for error handling
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     // Fetch data from the API
     const fetchData = async () => {
@@ -58,7 +64,7 @@ const Princ = ({theme, toggle}) => {
             <img
               className="max-h-[25vh] lg:max-h-[45vh] w-auto rounded-xl"
               src={
-                "https://thumbs.dreamstime.com/b/need-to-know-stamp-round-vintage-grunge-label-sign-186965639.jpg"
+                UrlParser(photo_path)
               }
               alt="Principal"
             />

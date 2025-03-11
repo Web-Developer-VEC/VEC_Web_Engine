@@ -8,8 +8,8 @@ const Alumni = ({ theme, toggle }) => {
       alumni: {
         department_name: "Computer Science",
         students: [
-          { name: "John Doe", photo: "https://example.com/john.jpg" },
-          { name: "Jane Smith", photo: "https://example.com/jane.jpg" },
+          { name: "John Doe", photo: "https://www.google.com/imgres?q=naruto%20images&imgurl=https%3A%2F%2Fstaticg.sportskeeda.com%2Feditor%2F2022%2F08%2F53e15-16596004347246.png%3Fw%3D640&imgrefurl=https%3A%2F%2Fwiki.sportskeeda.com%2Fnaruto%2Fnaruto-uzumaki&docid=Xi5cUqTYzP1rWM&tbnid=lM65XG49RG4GwM&vet=12ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIYBEAA..i&w=640&h=359&hcb=2&ved=2ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIYBEAA" },
+          { name: "Jane Smith", photo: "https://www.google.com/imgres?q=naruto%20images&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-photo%2Fnaruto-poster-silhouette-make-landscape-260nw-2543284261.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fnaruto&docid=SBFc9eXpq6RbqM&tbnid=L4a62PAtnkH6MM&vet=12ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA..i&w=260&h=280&hcb=2&ved=2ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA" },
         ],
       },
     },
@@ -17,7 +17,7 @@ const Alumni = ({ theme, toggle }) => {
       alumni: {
         department_name: "Electrical Engineering",
         students: [
-          { name: "Alice Brown", photo: "https://example.com/alice.jpg" },
+          { name: "Alice Brown", photo: "https://www.google.com/imgres?q=naruto%20images&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-photo%2Fnaruto-poster-silhouette-make-landscape-260nw-2543284261.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fnaruto&docid=SBFc9eXpq6RbqM&tbnid=L4a62PAtnkH6MM&vet=12ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA..i&w=260&h=280&hcb=2&ved=2ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA" },
         ],
       },
     },
@@ -123,11 +123,7 @@ const Alumni = ({ theme, toggle }) => {
           </div>
         </div>
       </div>
-
-
-
-  
-
+      
       {/* Static Sections */}
       <div className="alumni-container">
         <section className="alumni-section">

@@ -7,6 +7,11 @@ export default function PatentConsolidation({theme, toggle}) {
   const [activeYear, setActiveYear] = useState(null); 
   const [patent, setPatent] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +58,7 @@ export default function PatentConsolidation({theme, toggle}) {
             <button
               key={year}
               onClick={() => {
-                setPdfUrl(patent?.pdf_path[index]);
+                setPdfUrl(UrlParser(patent?.pdf_path[index]));
                 setActiveYear(year);
               }}
               className={`research-patent-button ${

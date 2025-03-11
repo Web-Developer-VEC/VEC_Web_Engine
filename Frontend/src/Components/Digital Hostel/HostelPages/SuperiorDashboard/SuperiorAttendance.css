@@ -1,0 +1,484 @@
+/* Container */
+.attendance-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  margin-left: 16rem;
+}
+
+/* Main Content */
+.attendance-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Year Selection */
+.attendance-year-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.attendance-year-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.attendance-year-button:hover {
+  background-color: #1f2937;
+}
+
+.attendance-year-button.attendance-active {
+  background-color: #fdcd03;
+  color: #1c1c1f;
+}
+
+/* Attendance Overview */
+.attendance-overview {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Half Donut Chart */
+.attendance-chart {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-chart-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.attendance-donut {
+  width: 100%;
+  height: auto;
+}
+
+.attendance-donut-bg {
+  fill: none;
+  stroke: #e5e7eb;
+  stroke-width: 20;
+}
+
+.attendance-donut-fill {
+  fill: none;
+  stroke-width: 20;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1.5s ease-in-out;
+}
+
+.attendance-donut-number {
+  fill: #1c1c1f;
+  font-size: 14px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.attendance-donut-label {
+  fill: #6b7280;
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+.attendance-donut-total {
+  fill: #6b7280;
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+/* Status Cards */
+.attendance-status-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.attendance-card {
+  position: relative;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.attendance-card:hover {
+  transform: translateY(-2px);
+}
+
+.attendance-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.attendance-present .attendance-card-icon {
+  background-color: #dcfce7;
+  color: #10b981;
+}
+
+.attendance-absent .attendance-card-icon {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.attendance-mismatched .attendance-card-icon {
+  background-color: #fef9c3;
+  color: #fdcd03;
+}
+
+.attendance-card-content {
+  flex: 1;
+}
+
+.attendance-card h3 {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-card-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1c1f;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-card-percentage {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Modal */
+.attendance-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.attendance-modal {
+  background-color: white;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.attendance-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.attendance-modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1c1c1f;
+  margin: 0;
+}
+
+.attendance-modal-close {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.attendance-modal-close:hover {
+  background-color: #f3f4f6;
+  color: #1c1c1f;
+}
+
+.attendance-modal-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(80vh - 4rem);
+}
+
+.attendance-modal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.attendance-modal-item:last-child {
+  border-bottom: none;
+}
+
+.attendance-modal-student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.attendance-modal-name {
+  font-weight: 500;
+  color: #1c1c1f;
+}
+
+.attendance-modal-room {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.attendance-modal-issue {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Food Section */
+.attendance-food-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-food-counts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.attendance-food-type {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.attendance-food-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.attendance-food-icon.attendance-veg {
+  background-color: #dcfce7;
+  color: #10b981;
+}
+
+.attendance-food-icon.attendance-non-veg {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.attendance-food-details h3 {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-food-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1c1f;
+  margin-bottom: 0.25rem;
+}
+
+.attendance-food-percentage {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Pie Chart */
+.attendance-pie-chart {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.attendance-pie {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  transition: background 1s ease-out;
+}
+
+.attendance-pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.attendance-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.attendance-legend-color {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+}
+
+.attendance-legend-color.attendance-veg {
+  background-color: #10b981;
+}
+
+.attendance-legend-color.attendance-non-veg {
+  background-color: #ef4444;
+}
+
+/* Consolidation Button */
+.attendance-consolidation-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #1c1c1f;
+  color: #fdcd03;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.attendance-consolidation-button:hover {
+  background-color: #1f2937;
+}
+
+.attendance-iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .attendance-container {
+    margin-top: 58px;
+    padding-bottom: 5rem;
+    margin-left: 0rem;
+  }
+
+  .attendance-main {
+    padding: 1rem;
+  }
+
+  .attendance-year-buttons {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .attendance-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-status-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .attendance-food-section {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .attendance-pie-chart {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+
+  /* Modal adjustments for mobile */
+  .attendance-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+}
+
+.attendance-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.attendance-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.attendance-filter-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.attendance-filter-select {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #1c1c1f;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 150px;
+}
+
+.attendance-filter-select:hover {
+  border-color: #fdcd03;
+}
+
+.attendance-filter-select:focus {
+  outline: none;
+  border-color: #fdcd03;
+  ring: 2px solid #fdcd03;
+}
+
+@media (max-width: 768px) {
+  .attendance-filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .attendance-filter-select {
+    width: 100%;
+  }
+}

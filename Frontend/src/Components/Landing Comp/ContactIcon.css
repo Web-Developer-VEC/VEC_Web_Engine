@@ -24,28 +24,40 @@ body {
 .click-popup {
   background: rgb(253, 204, 3);
   color: black;
-  padding: 10px;
+  padding: 20px;
   position:fixed;
-  height: 4.5vw;
-  width: 390px;
+  /* height: 5vw; */
+  /* width: 390px; */
   bottom: 80px; 
   left: 20px; 
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 15px;
 } 
     
 
 .click-popup  a{
   text-decoration: none;
-  /*color: black;*/
+  /* color: black; */
   font-size: 18px;
   font-weight: 450;
 }
 
 .click-popup a:hover {
-  /*color:black;*/
+  color:black;
   text-decoration: underline;
 }
 .click-popup  p{
   font-size: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 786px){
+  .click-popup p{
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .click-popup a{
+    font-size: 14px;
+  }
 }

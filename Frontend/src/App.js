@@ -1,5 +1,5 @@
-import React, { useRef, useState, useCallback } from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React, { useRef, useState, useCallback, useEffect } from "react";
+import { Router, Routes, Route, useLocation} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import {createGlobalStyle} from "styled-components";
@@ -61,7 +61,14 @@ import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
-
+// Digital Hostel
+import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
+import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
+import SuperiorLayout from "./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx";
+import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboard.jsx";
+import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
+import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
+import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -72,9 +79,9 @@ const GlobalStyle = createGlobalStyle`
     button, a, .clickable {
         cursor: url("/cursor.svg") 0 0, auto;
     }
-`;
-
-const AppContainer = styled.div`
+    `;
+    
+    const AppContainer = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -83,11 +90,13 @@ const AppContainer = styled.div`
 const MainContentWrapper = styled.div`
     flex: 1;
     padding-top: 8.69%;
-`;
-
-const App = () => {
+    `;
+    
+    const App = () => {
     const footerRef = useRef(null);
-    const cookies = new Cookies()
+    const location = useLocation();
+    const [currentPath, setCurrentPath] = useState(location.pathname);
+        const cookies = new Cookies()
     if (cookies.get('theme') === undefined) cookies.set('theme', 'light')
 
 
@@ -108,16 +117,22 @@ const App = () => {
         setTheme(cookies.get('theme'))
     })
 
+    useEffect(() => {
+        setCurrentPath(location.pathname); // Update state when route changes
+    }, [location]);
+
+    const isHostelRoute = currentPath.startsWith("/hostel")
+
     return (
         <>
             <GlobalStyle/>
             {/* The rest of the routes */}
-            <Router>
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
                     {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
                     {/* Conditionally render Head and Footer */}
                     <>
-                        <Head/>
+                        {/* <Head/> */}
+                        {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
                         <MainContentWrapper>
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
@@ -162,16 +177,24 @@ const App = () => {
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/trans" drk element={<Transport/>}/>
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
-                                <Route path="/hostel" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
+                                <Route path="/hosLanding" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 <Route path="/greviences" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
+
+                                {/* Hostel Pages */}
+                                <Route path="/hostel/student/*" element={<StudentLayout />} />
+                                <Route path="/hostel/warden/*" element={<WardenLayout />} />
+                                <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
+                                <Route path="/hostel/security/*" element={<SecurityLayout />} />
+                                <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
+                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
                             </Routes>
                         </MainContentWrapper>
-                        <Footer ref={footerRef}/>
+                        {/* <Footer ref={footerRef}/> */}
+                        {!isHostelRoute && <Footer ref={footerRef} />}
                     </>
                 </AppContainer>
-            </Router>
         </>
     );
 };

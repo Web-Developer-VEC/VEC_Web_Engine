@@ -16,6 +16,7 @@ module.exports = {
                 'secd': '#fdcc03',
                 'accn': '#800000',
                 'text': '#000',
+                'brwn': '#800000',
                 'drkp': '#1A1A1A',
                 'drks': '#004D61',
                 'drka': '#FF6F61',

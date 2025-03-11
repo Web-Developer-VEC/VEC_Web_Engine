@@ -1,0 +1,107 @@
+.HOS-W-warden-logs-container {
+    width: 80%;
+    /* margin: auto; */
+    margin-left: 19%;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .HOS-W-warden-logs-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .HOS-W-warden-logs-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .HOS-W-search-input,
+  .HOS-W-filter-selector {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .HOS-W-search-input {
+    width: 60%;
+  }
+  
+  .HOS-W-search-input:focus,
+  .HOS-W-filter-selector:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 5px #fbbf24;
+  }
+  
+  .HOS-W-filter-selector {
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  .HOS-W-warden-entry {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid #fbbf24;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .HOS-W-warden-entry:hover {
+    background: #eef5ff;
+    transform: translateY(-2px);
+  }
+  
+  .HOS-W-warden-status-text {
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .HOS-W-warden-activated-text {
+    font-style: italic;
+    color: #777;
+  }
+  
+  .HOS-W-duty-text {
+    margin-left: 10px;
+    color: #555;
+  }
+  
+  .HOS-W-month-section {
+    margin-bottom: 20px;
+  }
+  
+  .HOS-W-month-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+
+  @media  screen and (max-width: 768px){
+    .HOS-W-warden-logs-container{
+      margin: auto;
+      margin-bottom: 30px;
+    }
+
+    .HOS-W-warden-logs-controls{
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .HOS-W-search-input{
+      width: 100%;
+    }
+  }

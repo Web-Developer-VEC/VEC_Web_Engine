@@ -100,12 +100,16 @@
 /* PDF Container */
 .nba-pdf-container {
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
 }
 
-.embed {
-  width: 100%;
+.nba-embed {
+  width: 60%;
   height: 600px;
   border: 1px solid #ccc;
   border-radius: 5px;
