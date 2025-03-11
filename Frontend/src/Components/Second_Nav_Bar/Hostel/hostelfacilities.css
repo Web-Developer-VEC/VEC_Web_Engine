@@ -71,6 +71,11 @@
   transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
   visibility: hidden;
 }
+.hostel-fac-item .content h2{
+  font-size: 2rem;
+  color: #fff;
+}
+
 
 /* Hover Effect on Desktop, Click Effect on Mobile */
 .hostel-fac-item:hover .content,
@@ -85,50 +90,78 @@
   .hostal-fac-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    width: 85%;
+    gap: 8px;
+    margin: 0 auto;
+    /* Centers the container */
+    padding: 20px;
+    padding-bottom: 25px;
+    position: relative;
   }
 
   .hostel-fac-item {
     width: 100%;
-    height: 250px;
+    height: 180px;
+    /* Maintain proper mobile height */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    /* Default rounded corners */
+    z-index: 1;
+    /* Ensure all images remain in normal flow */
   }
 
-  /* Disable hover effect on mobile */
-  .hostel-fac-item:hover {
-    flex: unset;
-    width: unset;
-    box-shadow: unset;
-    transform: unset;
-  }
-
+  /* Expanded Image - Grows from its original position */
   .hostel-fac-item.expanded {
-    grid-column: span 2;
-    height: 70vh;
+    width: 125%;
+    /* Slightly larger */
+    height: 220px;
+    /* Slight increase in size */
+    transform: scale(1.2);
+    /* Smooth zoom */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    /* More rounded look when expanded */
+    z-index: 10;
+    /* Bring expanded image to front */
   }
 
-  .facility {
-    min-height: auto;
+  /* Ensure content inside the image appears properly */
+  .hostel-fac-item.expanded .content {
+    font-size: 70%;
+    /* Reduce content size */
+    opacity: 1;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+  }
+  .hostel-fac-item.expanded .content h2{
+    font-size: 23px;
+    /* Reduce content size */
+    opacity: 1;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
   }
 
-    /*  Disable hover effect on mobile */
-    .hostel-fac-item:hover {
-      flex: unset !important;
-      width: unset !important;
-      box-shadow: unset !important;
-      transform: unset !important;
-    }
-  
-    .hostel-fac-item:hover .content {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      transform: translateY(100%) !important;
-    }
+  /* Other images remain visible */
+  .hostel-fac-item:not(.expanded) {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
 
-    /*  Content appears only when clicked */
-    .hostel-fac-item.expanded .content {
-      opacity: 1 !important;
-      transform: translateY(0%) !important;
-      visibility: visible !important;
-      text-align: center;
-    }
+  /* Hide content on hover for mobile */
+  .hostel-fac-item:hover .content {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+  }
+
+  /* Ensure content appears when clicked */
+  .hostel-fac-item.expanded .content {
+    opacity: 1 !important;
+    transform: translateY(0%) scale(0.9) !important;
+    visibility: visible !important;
+    text-align: center;
+  }
 }
