@@ -11,19 +11,14 @@ const NewTrust = ({theme, toggle}) => {
       img: '/Images/muthu.png',
     },
     {
-      name: 'Shri. M.V. VelMohan',
-      role: 'Chief Executive Officer',
-      img: '/Images/velmoha.png',
-    },
-    {
       name: 'Shri. M.V. VelMurugan',
-      role: 'Correspondent',
+      role: 'Chief Executive Officer',
       img: '/Images/velmuruga.png',
     },
     {
-      name: 'Shri. M.V. Sasi Kumar',
-      role: 'Director',
-      img: '/Images/sasi.png',
+      name: 'Shri. M.V. VelMurugan',
+      role: 'Deputy CEO',
+      img: '/Images/velmuruga.png',
     },
   ];
 
@@ -93,7 +88,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
           <div className="text-center">
             <h2 className="text-3xl font-bold text-accn dark:text-drka mb-6">The Management</h2>
           </div>
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-20 justify-evenly">
             {managementTeam.map((person, index) => (
               <motion.div
                 key={index}
