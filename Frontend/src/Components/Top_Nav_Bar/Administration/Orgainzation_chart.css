@@ -16,10 +16,6 @@
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
-.org-chart-image:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {

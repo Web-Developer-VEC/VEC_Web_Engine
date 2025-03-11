@@ -13,7 +13,7 @@ const CollegeOrgChart = ({theme, toggle}) => {
 
         <div className="org-chart-container">
           <img
-            src="/static/Images/Chart.png"  // Replace with the correct path to your PNG chart image
+            src="./organization_chart.jpg"  // Replace with the correct path to your PNG chart image
             alt="Organization Chart"
             className="org-chart-image"
           />
