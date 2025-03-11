@@ -107,7 +107,7 @@ const DepartmentPage = ({theme, toggle}) => {
       case "Activities": return <Activities data={sectionData} />;
       case "Syllabus": return <CurriculumPage data={sectionData} />;
       case "Infrastructure": return <Infrastructure data={sectionData} />;
-      case "StudentActivities": return <ImageCarousel data={sectionData} />;
+      case "StudentAchievments": return <ImageCarousel data={sectionData} />;
       case "SupportingStaff": return <Faculties data={sectionData} />;
       case "Mous": return <MOU data={sectionData} />;
       case "Research": return <Research data={sectionData} />;

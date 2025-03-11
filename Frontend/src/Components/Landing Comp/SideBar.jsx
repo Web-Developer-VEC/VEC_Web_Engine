@@ -36,7 +36,7 @@ const Sidebar = (props) => {
 
     const navs = props.navs
     const spHdrs = [{ttl: "Fee Payments", lnk: 'https://easycollege.in/vecengg/college/webpayindex.aspx'},
-        {ttl: "Grievances", lnk: '/greviences'}, {ttl: "Login", lnk: '/login'}]
+        {ttl: "Grievances", lnk: '/grievances'}, {ttl: "Login", lnk: '/login'}]
     const hdrs1 = [
         "velammal@velammal.edu.in", "+91 99566 00420"
     ];

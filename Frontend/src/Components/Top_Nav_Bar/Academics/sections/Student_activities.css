@@ -113,7 +113,7 @@
   position: absolute;
   top: 50%;
   background-color: rgba(0, 0, 0, 0.6); /* Dark background for visibility */
-  padding: 1.2rem; /* Increase padding for better clickability */
+  padding: 0.5rem; /* Increase padding for better clickability */
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;

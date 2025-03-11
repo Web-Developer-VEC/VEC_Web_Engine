@@ -20,10 +20,23 @@ const iconMap = {
     "Syllabus": <FaBook className={styles.icon + " text-secd dark:text-drks"} />,
     "Infrastructure": <FaBuilding className={styles.icon + " text-secd dark:text-drks"} />,
     "Activities": <FaTasks className={styles.icon + " text-secd dark:text-drks"} />,
-    "StudentActivities": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
+    "StudentAchievments": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
     "SupportingStaff": <FaUsers className={styles.icon + " text-secd dark:text-drks"} />,
     "Mous": <FaHandshake className={styles.icon + " text-secd dark:text-drks"} />,
     "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />
+};
+
+const displayNameMap = {
+  "Vision&Mission": "Vision & Mission",
+  "HeadDepartment": "Head of the Department",
+  "Faculties": "Faculty Members",
+  "Syllabus": "Syllabus & Curriculum",
+  "Infrastructure": "Department Infrastructure",
+  "Activities": "Department Activities",
+  "StudentAchievments": "Student Achievements",
+  "SupportingStaff": "Supporting Staff",
+  "Mous": "MOUs",
+  "Research": "Research & Innovations",
 };
 
 const Sidebar = ({ sections, activeSection, setActiveSection }) => {
@@ -38,7 +51,7 @@ const Sidebar = ({ sections, activeSection, setActiveSection }) => {
                 ${styles.sidebarItem} ${activeSection === section ? " bg-secd dark:bg-drks text-text dark:text-drkt" 
                   : ""}`} onClick={() => setActiveSection(section)}
             >
-              {iconMap[section] || "📄"} {section.replace(/([A-Z])/g, " $1")}
+              {iconMap[section] || "📄"} {displayNameMap[section] || section.replace(/([A-Z])/g, " $1")}
             </button>
           </li>
         ))}
