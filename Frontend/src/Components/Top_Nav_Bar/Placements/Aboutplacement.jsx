@@ -41,7 +41,7 @@ const Aboutplacement = ({ theme, toggle }) => {
           </div>
           <div className="AP-card">
             <h2 className="AP-card-title">Contact Placement Cell</h2>
-            <h3 className="AP-contact-name">Head of Placement and Training</h3>
+            <h3 className="AP-contact-name ">Head of Placement and Training</h3>
             <p><strong>✉️Email:</strong> placement@velammal.edu.in</p>
             <p><strong>📞Phone:</strong> 9940127839 / 9444008233</p>
           </div>
