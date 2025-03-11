@@ -11,9 +11,10 @@
 }
 
 /* Heading styles */
-.infra h1 {
+.infra-head {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
 /* Text components */

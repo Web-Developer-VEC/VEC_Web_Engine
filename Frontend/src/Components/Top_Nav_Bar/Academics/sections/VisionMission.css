@@ -230,6 +230,32 @@ ul {
   color: #000;
 }
 
+.dual-outcomes{
+  display: flex;
+  width: 70vw;
+  justify-content: space-around;
+}
+
+.psos-section{
+  width: 30vw;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 20px; /* Spacing between items */
+  width: 70vw;
+  align-items: start;
+}
+
+.accordion-item-cir {
+  width: 100%; /* Ensure proper spacing */
+}
+
+.pos-section{
+  
+}
+
 /* Responsive Design for Tablets */
 @media (max-width: 1024px) {
   .committee-buttons-grid {

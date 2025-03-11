@@ -24,13 +24,13 @@ const Head = () => {
     const socls = [
         {
             Name: "Instagram",
-            Link: "https://instagram.com",
+            Link: "https://www.instagram.com/vec_chennai/",
             Ico: Inta,
             Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"
         },
-        {Name: "Facebook", Link: "https://instagram.com", Ico: Fcbk, Fltr: ""},
-        {Name: "Twitter", Link: "https://instagram.com", Ico: Twtr, Fltr: ""},
-        {Name: "LinkedIn", Link: "https://instagram.com", Ico: Lknd, Fltr: ""},
+        {Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: ""},
+        {Name: "Twitter", Link: " https://x.com/VelammalEnggC?t=v7fMqFl7I3bSXHphn9seUw&s=08 ", Ico: Twtr, Fltr: ""},
+        {Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
         {
@@ -53,146 +53,151 @@ const Head = () => {
                 {hrd: false, ttl: "Principal", sup: [], lnk: "/principal"},
                 {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: "/dean"},
                 {hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin"},
-                {hrd: false, ttl: "Committee's", sup: [], lnk: "/committee"},
+                {hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee"},
                 {hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org"},
             ],
         },
         {
             main: "Academics",
-            cod: [0, 11, 13],
-            cols: 2,
+            cod: [0, 3],
+            cols: 1,
             sub: [
-                {hrd: true, ttl: "UG Courses", sup: [], lnk: ""},
-                {
-                    hrd: false,
-                    ttl: "Artificial Intelligence and Data Science",
-                    sup: [],
-                    lnk: "/dept/001",
-                    deptID: "001",
-                },
-                {
-                    hrd: false,
-                    ttl: "Automobile Engineering",
-                    sup: [],
-                    lnk: "/dept/002",
-                    deptID: "002",
-                },
-                {
-                    hrd: false,
-                    ttl: "Civil Engineering",
-                    sup: [],
-                    lnk: "/dept/004",
-                    deptID: "004",
-                },
-                {
-                    hrd: false,
-                    ttl: "Computer Science and Engineering",
-                    sup: [],
-                    lnk: "/dept/005",
-                    deptID: "005",
-                },
-                {
-                    hrd: false,
-                    ttl: "Computer Science and Engineering (Cyber Security)",
-                    sup: [],
-                    lnk: "/dept/006",
-                    deptID: "006",
-                },
-                {
-                    hrd: false,
-                    ttl: "Electrical and Electronics Engineering",
-                    sup: [],
-                    lnk: "/dept/007",
-                    deptID: "007",
-                },
-                {
-                    hrd: false,
-                    ttl: "Electronics and Communication Engineering",
-                    sup: [],
-                    lnk: "/dept/009",
-                    deptID: "009",
-                },
-                {
-                    hrd: false,
-                    ttl: "Electronics and Instrumentation Engineering",
-                    sup: [],
-                    lnk: "/dept/008",
-                    deptID: "008",
-                },
-                {
-                    hrd: false,
-                    ttl: "Information Technology",
-                    sup: [],
-                    lnk: "/dept/011",
-                    deptID: "011",
-                },
-                {
-                    hrd: false,
-                    ttl: "Mechanical Engineering",
-                    sup: [],
-                    lnk: "/dept/013",
-                    deptID: "013",
-                },
-                {hrd: true, ttl: "PG Courses", sup: [], lnk: ""},
-                {
-                    hrd: false,
-                    ttl: "M.E. Computer Science & Engineering",
-                    sup: [],
-                    lnk: "/dept/002",
-                    deptID: "001",
-                }, //
-                {
-                    hrd: false,
-                    ttl: "M.E. Power System Engineering",
-                    sup: [],
-                    lnk: "/dept/002",
-                    deptID: "001",
-                }, //
-                {
-                    hrd: false,
-                    ttl: "Master of Business Administration",
-                    sup: [],
-                    lnk: "/dept/002",
-                    deptID: "001",
-                }, //
-                // {hrd: false, ttl: "", sup: [], lnk: ""},
-                {hrd: true, ttl: "Science & Humanities", sup: [], lnk: ""},
-                {
-                    hrd: false,
-                    ttl: "Chemistry",
-                    sup: [],
-                    lnk: "/dept/003",
-                    deptID: "003",
-                },
-                {
-                    hrd: false,
-                    ttl: "English",
-                    sup: [],
-                    lnk: "/dept/010",
-                    deptID: "010",
-                },
-                {
-                    hrd: false,
-                    ttl: "Mathematicis",
-                    sup: [],
-                    lnk: "/dept/012",
-                    deptID: "012",
-                },
-                {
-                    hrd: false,
-                    ttl: "Physics",
-                    sup: [],
-                    lnk: "/dept/015",
-                    deptID: "015",
-                },
-                {
-                    hrd: false,
-                    ttl: "Tamil",
-                    sup: [],
-                    lnk: "/dept/002",
-                    deptID: "001",
-                }, //
-            ],
+                { hrd: false, ttl: "Programs", sup: [], lnk: "/programs" },
+                { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "" },
+              ],
+            // sub: [
+            //     {hrd: true, ttl: "UG Courses", sup: [], lnk: ""},
+            //     {
+            //         hrd: false,
+            //         ttl: "Artificial Intelligence and Data Science",
+            //         sup: [],
+            //         lnk: "/dept/001",
+            //         deptID: "001",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Automobile Engineering",
+            //         sup: [],
+            //         lnk: "/dept/002",
+            //         deptID: "002",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Civil Engineering",
+            //         sup: [],
+            //         lnk: "/dept/004",
+            //         deptID: "004",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Computer Science and Engineering",
+            //         sup: [],
+            //         lnk: "/dept/005",
+            //         deptID: "005",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Computer Science and Engineering (Cyber Security)",
+            //         sup: [],
+            //         lnk: "/dept/006",
+            //         deptID: "006",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Electrical and Electronics Engineering",
+            //         sup: [],
+            //         lnk: "/dept/007",
+            //         deptID: "007",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Electronics and Communication Engineering",
+            //         sup: [],
+            //         lnk: "/dept/009",
+            //         deptID: "009",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Electronics and Instrumentation Engineering",
+            //         sup: [],
+            //         lnk: "/dept/008",
+            //         deptID: "008",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Information Technology",
+            //         sup: [],
+            //         lnk: "/dept/011",
+            //         deptID: "011",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Mechanical Engineering",
+            //         sup: [],
+            //         lnk: "/dept/013",
+            //         deptID: "013",
+            //     },
+            //     {hrd: true, ttl: "PG Courses", sup: [], lnk: ""},
+            //     {
+            //         hrd: false,
+            //         ttl: "M.E. Computer Science & Engineering",
+            //         sup: [],
+            //         lnk: "/dept/002",
+            //         deptID: "001",
+            //     }, //
+            //     {
+            //         hrd: false,
+            //         ttl: "M.E. Power System Engineering",
+            //         sup: [],
+            //         lnk: "/dept/002",
+            //         deptID: "001",
+            //     }, //
+            //     {
+            //         hrd: false,
+            //         ttl: "Master of Business Administration",
+            //         sup: [],
+            //         lnk: "/dept/002",
+            //         deptID: "001",
+            //     }, //
+            //     // {hrd: false, ttl: "", sup: [], lnk: ""},
+            //     {hrd: true, ttl: "Science & Humanities", sup: [], lnk: ""},
+            //     {
+            //         hrd: false,
+            //         ttl: "Chemistry",
+            //         sup: [],
+            //         lnk: "/dept/003",
+            //         deptID: "003",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "English",
+            //         sup: [],
+            //         lnk: "/dept/010",
+            //         deptID: "010",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Mathematicis",
+            //         sup: [],
+            //         lnk: "/dept/012",
+            //         deptID: "012",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Physics",
+            //         sup: [],
+            //         lnk: "/dept/015",
+            //         deptID: "015",
+            //     },
+            //     {
+            //         hrd: false,
+            //         ttl: "Tamil",
+            //         sup: [],
+            //         lnk: "/dept/002",
+            //         deptID: "001",
+            //     }, //
+            // ],
         },
         {
             main: "Admission",
@@ -202,7 +207,7 @@ const Head = () => {
                 {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
                 {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
                 {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
-                {hrd: false, ttl: "Ph.D Programme Details", sup: [], lnk: "/phd"},
+                {hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd"},
             ],
         },
         {
@@ -265,7 +270,7 @@ const Head = () => {
                 },
                 {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
                 {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
-                {hrd: false, ttl: "Our Proud Alumni", sup: [], lnk: "/proudalumni"},
+                {hrd: false, ttl: "Alumni", sup: [], lnk: "/proudalumni"},
             ],
         },
     ];
@@ -412,11 +417,11 @@ const Head = () => {
                     <button onClick={() => navigate('/NCC')} className='mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
                     <button onClick={() => navigate('/YRC')} className='mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
                     <button onClick={() => navigate('/sports')} className='mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
-                    <button onClick={() => navigate('/trans')} className='mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
+                    <button onClick={() => navigate('/transport')} className='mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
                     <button onClick={() => navigate('/library')} className='mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
                     <button onClick={() => navigate('/hosLanding')} className='mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
                     <button onClick={() => navigate('/other-facilities')} className='mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
-                    <button onClick={() => navigate('/greviences')} className='mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
+                    <button onClick={() => navigate('/grievances')} className='mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
                     <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
 
                     {/* Payment Button */}
@@ -430,7 +435,7 @@ const Head = () => {
                     {/* Social Icons */}
                     <div className="flex group items-center justify-end grow gap-3">
                         {socls.map((socl, i) => (
-                            <a href={socl.Link} key={i}>
+                            <a href={socl.Link} key={i} target='_blank'>
                                 <img src={socl.Ico} alt={socl.Name}
                                     className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
                                                 dark:invert mt-1 text-transparent"

@@ -80,7 +80,7 @@ function Management({ theme, toggle }) {
         {/* Chairman Message */}
         <div className="FCP-message-section FCP-ceo-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-          <h2 className="FCP-section-title">CHAIRMAN MESSAGE</h2>
+          <h2 className="FCP-section-title">DEPUTY CEO MESSAGE</h2>
 
           <div className="FCP-content-container">
 

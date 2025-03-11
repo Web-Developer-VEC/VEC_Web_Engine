@@ -43,8 +43,8 @@ const ContactIcon = () => {
             {showPopup && (
                 <div className="click-popup font-popp">
                     <p>📞 Call us: 
-                        <a href="tel:+044-26590758" className='font-popp'> +044-26590758 </a> | 
-                        <a href="tel:+1234567899" className='font-popp'>1234567899</a>
+                        <a href="tel:+044-26590758" className='font-popp'> +044-26590758 </a>  
+                        {/* <a href="tel:+1234567899" className='font-popp'>1234567899</a> */}
                     </p>
                     <p>🎓 For Admission:  
                         <a href="tel:+9123547550" className='font-popp'> 9123547550</a> | 

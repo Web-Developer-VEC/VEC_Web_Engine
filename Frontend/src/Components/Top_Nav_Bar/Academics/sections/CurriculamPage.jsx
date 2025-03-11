@@ -62,7 +62,7 @@ const CurriculumPage = ({ data }) => {
           </div>
 
           {/* Program Specific Outcomes (PSOs) */}
-          <div className="psos-section mt-5">
+          {/* <div className="psos-section mt-5">
             <h2>Program Specific Outcomes</h2>
             <div className="accordion" id="psosAccordion">
               {data?.program_specific_outcomes?.headings?.map((heading, index) => (
@@ -78,11 +78,11 @@ const CurriculumPage = ({ data }) => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Column: Program Outcomes */}
-        <div className="col-md-6">
+        {/* <div className="col-md-6">
           <div className="pos-section">
             <h2>Program Outcomes</h2>
             <div className="accordion">
@@ -100,7 +100,7 @@ const CurriculumPage = ({ data }) => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       {selectedRegulation && (
         <div className="REG-modal">
