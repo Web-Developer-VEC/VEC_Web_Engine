@@ -113,3 +113,61 @@
 .nirf-email:hover {
   text-decoration: underline;
 }
+@media (max-width: 1024px) {
+  .nirf-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* Change to 2 columns */
+    gap: 25px;
+    max-width: 85%;
+  }
+
+  .nirf-container {
+    padding: 20px;
+  }
+
+  .nirf-intro {
+    max-width: 90%;
+    padding: 18px;
+  }
+}
+
+/* For Small Screens (Mobile) */
+@media (max-width: 768px) {
+  .nirf-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Single column layout */
+    gap: 20px;
+    max-width: 85%;
+    justify-items: center;
+    /* Ensures equal alignment */
+  }
+
+  .nirf-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .nirf-intro {
+    max-width: 95%;
+    padding: 15px;
+  }
+}
+
+/* For Extra Small Screens */
+@media (max-width: 480px) {
+  .nirf-grid {
+    grid-template-columns: 1fr;
+    max-width: 90%;
+    gap: 15px;
+  }
+
+  .nirf-container {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .nirf-intro {
+    max-width: 95%;
+    padding: 12px;
+  }
+}
