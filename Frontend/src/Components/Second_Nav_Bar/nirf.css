@@ -1,274 +1,115 @@
-
+/* Main container */
 .nirf-intro {
-  font-size: 18px;
-  padding: 20px;
-  line-height: 1.8;
-  background-color:  #e5ebe7;;
-  /*background-color: #e2d68b;*/
-  
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-in-out;
-  transition: transform 0.3s ease-in-out,box-shadow 0.3s ease-in-out;
-  cursor:pointer;
-  width:95%;
-  margin:40px;
-  border-left: 4px solid #FDCC03;
-  border-right: 4px solid #FDCC03;
-  
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 80%;
+  margin: 30px auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-family: "Arial", sans-serif;
+  color: #333;
+  border-left: 8px solid #f4a900;
+  border-right: 8px solid #f4a900;
+  position: relative;
 }
 
-
-.nirf-about {
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  height: 100%; /* Add height if necessary */
-}
-
-
-/* Banner Section */
-.nirf-banner-image {
-  width: 100%;
-  height: 350px;
-
-  z-index: 1;
-  filter: brightness(90%);
-  transition: filter 0.3s ease-in-out;
-}
-
-.nirf-banner-image:hover {
-  filter: brightness(100%);
-}
-
-/* Header Section */
 .nirf-header {
-  text-align: justify;
-  padding: 20px;
-  font-size: 2.5rem;
-  margin: 20px 0;
-  margin-top: 50px;
-  /*color: #000; !* Set the text color to black *!*/
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  animation: slideIn 1s ease-in-out;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #800000;
+  /* Dark Red */
+  margin-bottom: 10px;
 }
 
-/* Content Layout */
-.nirf-content {
-  display: flex;
-  justify-content:start;
-  margin-top: 0px;
+.nirf-container {
+  text-align: center;
   padding: 20px;
-  gap: 30px;
-  animation: fadeIn 1s ease-in-out;
+  font-family: Arial, sans-serif;
+  max-width: 1100px;
+  /* Adjust the max-width */
+  margin: 0 auto;
+  /* Centers the entire content */
 }
 
-/* Year Buttons */
-.nirf-years {
-  width: 20%;
+/* Title styling */
+.nirf-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #800000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Grid container with proper centering */
+.nirf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 110px;
+  width: 800px;
+  margin: 0 auto;
+  /* Centers the grid horizontally */
+  justify-content: center;
+  /* Centers grid columns */
+  align-items: start;
+  /* Better for varying content heights */
+  padding: 20px 20px;
+  /* Adds vertical spacing */
+}
+
+.nirf-year {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  position: relative;
+  padding: 15px;
+  min-height: 150px;
+  align-items: start;
+  /* Adjust based on your content needs */
 }
 
-.nirf-year-button {
-  border-radius: 8px;
-  width: 120px;
-  padding: 12px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  /* color:#800000; */
+.nirf-year h3 {
   text-align: center;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
 }
 
-.nirf-year-button.active {
-  /*background-color: #FDCC03;*/
-  /*color: #222;*/
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-
-}
-.nirf-year-button:hover{
-  background-color:#800000;
-  color:white;
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-} 
-
-/* Details Section */
-.nirf-details {
-  width: 75%;
-  /*background: #fff;*/
-  content: center;
-  margin-right: 150px;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  animation: slideIn 1s ease-in-out;
+/* New wrapper div for links */
+.nirf-links {
+  margin-top: auto;
+  /* Pushes links to bottom */
+  text-align: left;
 }
 
-/* Action Buttons */
-.nirf-year-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 50px;
-  margin-bottom:30px;
+.nirf-link {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 3px 0;
 }
 
-.nirf-action-button {
-    min-width: 160px;
-    padding: 15px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    /*background-color: #FDCC03;*/
-    /*color: #222;*/
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.nirf-link:hover {
+  text-decoration: underline;
 }
 
-.nirf-action-button:hover {
-  /*background-color: #e6b802;*/
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* PDF Viewer */
-.embed {
+/* Footer styling */
+.nirf-footer {
   margin-top: 30px;
-  /*border: 3px solid #FDCC03;*/
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-in-out;
-}
-.nirf-pdf-container{
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #555;
   text-align: center;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  height: 100%; /* Add height if necessary */
-  
 }
 
-  /* Loading Screen */
-  .loading-screen {
-    position: absolute; /* Position relative to the committee container */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #333;
-    z-index: 10; /* Higher than committee content but lower than header/footer */
-  }
-  
-  /* Spinner */
-  .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    margin-right: 30px;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-@media (max-width: 1128px) {
-  .nirf-intro {
-    width: 92%;
-    /* Adjust width for better centering */
-    margin: 30px auto;
-    /* Ensures equal margin on both sides */
-  }
+/* Email link styling */
+.nirf-email {
+  color: #007bff;
+  text-decoration: none;
 }
 
-/* Responsive Design */
-
-@media screen and (min-width: 910px){
-    .nirf-year-button:hover {
-      /*background-color: #333;*/
-      /*color: #FDCC03;*/
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    }
-  }
-
-@media (max-width: 768px) {
-  .nirf-intro {
-      font-size: 18px;
-      padding: 15px;
-      line-height: 1.8;
-      /*background-color: #e2d68b;*/
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 1s ease-in-out;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      cursor: pointer;
-      width: 95%;
-      margin: 10px auto;
-      /* Centering with equal margin */
-    }
-  
-  .nirf-content {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .nirf-years {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .nirf-details {
-    width: 100%;
-  }
-
-  .nirf-year-actions {
-    gap: 20px;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.nirf-email:hover {
+  text-decoration: underline;
 }
