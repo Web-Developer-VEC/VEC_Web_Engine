@@ -49,7 +49,7 @@ const Footer = forwardRef((props, ref) => {
                 {/*mt-4 lg:mt-[-240px] lg:ml-[375px]">*/}
                 {/*    <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[30vh] 2xl:h-[20vh] lg:mt-[-15rem]*/}
             </div>
-            <div className="basis-1/3 h-[30vh] mb-16">
+            <div className="basis-1/3 h-[45vh] mt-10">
                 <iframe className="px-3 w-full h-full"
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1757.9530530830932!2d80.19081618175407!3d13.149609328912868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sVelammal%20Engineering%20College!5e1!3m2!1sen!2sin!4v1723700873764!5m2!1sen!2sin"
                         width="400"
@@ -60,25 +60,50 @@ const Footer = forwardRef((props, ref) => {
                         title="Google Maps"
                 ></iframe>
             </div>
-            <div className="quick-links basis-1/3 px-4">
-                <h3 className="text-secd dark:text-drks font-bold">Quick Links</h3>
-                <ul className="gap-x-8 h-[15vh]">
-                    <li><a href="/nba">NBA</a></li>
-                    <li><a href="/naac">NAAC</a></li>
-                    <li><a href="/nirf">NIRF</a></li>
-                    <li><a href="/iic">IIC</a></li>
-                    <li><a href="/incubation">Incubation Cell</a></li>
-                    <li><a href="/alumni">Alumni</a></li>
-                    <li><a href="/nss">NSS </a></li>
-                    <li><a href="/ncc">NCC</a></li>
-                    <li><a href="/yrc">YRC</a></li>
-                    <li><a href="/sports">Sports</a></li>
-                    <li><a href="/library">Library</a></li>
-                    <li><a href="/transport">Transport</a></li>
-                    <li><a href="/hoslanding">Hostel</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/grievances">Grievances</a></li>
-                </ul>
+            <div className="quick-links basis-1/3 px-4 mt-4">
+                <h3 className="text-secd dark:text-drks font-bold text-center md:text-left">Quick Links</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {/* Profile & College Info */}
+                    <div>
+                        <h4 className="font-semibold text-lg text-center lg:text-left">Profile & College</h4>
+                        <ul className="space-y-1 text-left lg:text-left">
+                            <li><a href="/abt-us">About Us</a></li>
+                            <li><a href="/">AICTE Approval</a></li>
+                            <li><a href="/">University Affiliation</a></li>
+                            <li><a href="/">Governing Body</a></li>
+                            <li><a href="/">Mandatory Disclosures</a></li>
+                            <li><a href="/nba">NBA</a></li>
+                            <li><a href="/naac">NAAC</a></li>
+                            <li><a href="/nirf">NIRF</a></li>
+                            <li><a href="/iic">IIC</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Academics */}
+                    <div>
+                        <h4 className="font-semibold text-lg text-center lg:text-left">Academics Links</h4>
+                        <ul className="space-y-1 text-left lg:text-left">
+                            <li><a href="/departments">Departments</a></li>
+                            <li><a href="/programs">Programes</a></li>
+                            <li><a href="/library">Library</a></li>
+                            <li><a href="/nss">NSS</a></li>
+                            <li><a href="/ncc">NCC</a></li>
+                            <li><a href="/yrc">YRC</a></li>
+                            <li><a href="/sports">Sports</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Important Links */}
+                    <div>
+                        <h4 className="font-semibold text-lg text-center lg:text-left">Important Links</h4>
+                        <ul className="space-y-1 text-lfrt lg:text-left">
+                            <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank">Student Login</a></li>
+                            <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>
+                            <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank">Fees Payment</a></li>
+                            <li><a href="/grievances">Grievances</a></li>
+                        </ul>   
+                    </div>
+                </div>
             </div>
         </footer>
     );
