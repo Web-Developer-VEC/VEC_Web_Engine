@@ -10,6 +10,7 @@ import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
+import { sup } from 'framer-motion/m';
 
 const Head = () => {
     const navigate = useNavigate();
@@ -38,7 +39,12 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
+                {hrd: false, ttl: "About VEC", sup: [
+                    {hrd: false, ttl: "AICTE Approval", sup: [], lnk: ""},
+                    {hrd: false, ttl: "University Affiliation", sup: [], lnk: ""},
+                    {hrd: false, ttl: "Governing Body", sup: [], lnk: ""},
+                    {hrd: false, ttl: "Mandatory Disclosures", sup: [], lnk: ""},
+                ], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
                 {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
