@@ -1,17 +1,14 @@
-
-
 /* Tiles Container */
 .nba-tiles {
   display: flex;
   justify-content: center;
-  
+  margin-top: 20px; /* Added 20px margin-top for the tiles component */
 }
 
 .nba-tile-container {
-
   display: flex;
   gap: 20px;
-  width:90%;
+  width: 90%;
 }
 
 /* Individual Tile Styles */
@@ -25,11 +22,7 @@
   text-align: justify;
   border-left: 4px solid #FDCC03;
   font-family: "Poppins", sans-serif;
- 
 }
-
-/* Tail Design - Positioned Side by Side */
-
 
 /* Tile Header */
 .nba-tile-header {
@@ -70,30 +63,20 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
-  
   cursor: pointer;
-}
-.nba-dept-button:hover, .nba-year-button:hover{
-  background-color:#800000;
-
-  color:white;
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-
-} 
-
-
-.nba-dept-button.active, .nba-year-button.active {
-  background-color: #333;
-  color:white;
-  
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .nba-dept-button:hover, .nba-year-button:hover {
- 
+  background-color: #800000;
+  color: white;
   transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.nba-dept-button.active, .nba-year-button.active {
+  background-color: #333;
+  color: white;
+  transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
@@ -124,4 +107,66 @@
     font-size: 1rem;
     padding: 10px 15px;
   }
+}
+
+/* Department List (Table Container) */
+.department-list {
+  width: 90%;
+  margin: 50px auto 0; /* Original 30px + 20px as requested */
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Header and Data Rows */
+.header-row, .data-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjusted for 4 columns: PG Courses, Govt Quota, Mgmt Quota, Total */
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Header Row Styling */
+.header-row {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Alternating Row Colors */
+.data-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Cells */
+.header-cell, .data-cell {
+  padding: 5px;
+}
+
+/* Column Alignment */
+.header-cell:first-child, .data-cell:first-child {
+  text-align: left; /* Left-align PG Courses column */
+}
+
+.header-cell:not(:first-child), .data-cell:not(:first-child) {
+  text-align: center; /* Center-align intake columns */
+}
+
+/* PDF Links (if applicable) */
+.pdf-link {
+  margin-bottom: 5px;
+}
+
+.pdf-link a {
+  color: #800000;
+  text-decoration: none;
+}
+
+.pdf-link a:hover {
+  text-decoration: underline;
+}
+.header-cell-1{
+  text-align: right;
 }
