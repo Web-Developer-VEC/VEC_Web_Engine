@@ -18,8 +18,8 @@ const Naac = ({ toggle, theme }) => {
     {
       title: "Self Study Reports",
       content: [
-        { title: "Previous Report", link: "/path/to/previous_report.pdf" },
-        { title: "Current Report", link: "/path/to/current_report.pdf" },
+        { title: "Cycle 1 SSR", link: "/path/to/previous_report.pdf" },
+        { title: "Cycle 2 SSR", link: "/path/to/current_report.pdf" },
       ],
     },
     {
