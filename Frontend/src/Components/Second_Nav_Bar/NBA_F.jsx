@@ -8,11 +8,78 @@ const NBA_F = () => {
   const [selectedYear, setSelectedYear] = useState(null);
   const [nbaData, setNbaData] = useState(null);
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+  const data = [
+    {
+      id: 1,
+      department: "Computer Science",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/cs1.pdf" },
+        { name: "2019-2023", link: "/pdfs/cs2.pdf" },
+        { name: "2023-2027", link: "/pdfs/cs3.pdf" },
+        { name: "2027-2031", link: "/pdfs/cs4.pdf" }
+      ]
+    },
+    {
+      id: 2,
+      department: "Mechanical Engineering",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/me1.pdf" },
+        { name: "2019-2023", link: "/pdfs/me2.pdf" },
+        { name: "2023-2027", link: "/pdfs/me3.pdf" },
+        { name: "2027-2031", link: "/pdfs/me4.pdf" }
+      ]
+    },
+    {
+      id: 3,
+      department: "Electrical Engineering",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/ee1.pdf" },
+        { name: "2019-2023", link: "/pdfs/ee2.pdf" },
+        { name: "2023-2027", link: "/pdfs/ee3.pdf" },
+        { name: "2027-2031", link: "/pdfs/ee4.pdf" }
+      ]
+    },
+    {
+      id: 4,
+      department: "Civil Engineering",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/ce1.pdf" },
+        { name: "2019-2023", link: "/pdfs/ce2.pdf" },
+        { name: "2023-2027", link: "/pdfs/ce3.pdf" },
+        { name: "2027-2031", link: "/pdfs/ce4.pdf" }
+      ]
+    },
+    {
+      id: 5,
+      department: "Electronics & Communication",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/ece1.pdf" },
+        { name: "2019-2023", link: "/pdfs/ece2.pdf" },
+        { name: "2023-2027", link: "/pdfs/ece3.pdf" },
+        { name: "2027-2031", link: "/pdfs/ece4.pdf" }
+      ]
+    },
+    {
+      id: 6,
+      department: "Information Technology",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/it1.pdf" },
+        { name: "2019-2023", link: "/pdfs/it2.pdf" },
+        { name: "2023-2027", link: "/pdfs/it3.pdf" },
+        { name: "2027-2031", link: "/pdfs/it4.pdf" }
+      ]
+    },
+    {
+      id: 7,
+      department: "Biotechnology",
+      pdfs: [
+        { name: "2015-2019", link: "/pdfs/bt1.pdf" },
+        { name: "2019-2023", link: "/pdfs/bt2.pdf" },
+        { name: "2023-2027", link: "/pdfs/bt3.pdf" },
+        { name: "2027-2031", link: "/pdfs/bt4.pdf" }
+      ]
+    }
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +108,7 @@ const NBA_F = () => {
     if (deptIndex === -1) return null;
     const yearIndex = nbaData.year[deptIndex].indexOf(selectedYear);
     if (yearIndex === -1) return null;
-    return UrlParser(nbaData.PDF_Path[deptIndex][yearIndex]);
+    return nbaData.PDF_Path[deptIndex][yearIndex];
   };
 
   return (
@@ -51,7 +118,7 @@ const NBA_F = () => {
         headerText="National Board of Accreditation"
         subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
       />
-      <div className="nba-page  ">
+      <div className="nba-page">
         <div className="nba-tiles">
           <div className="nba-tile-container">
             <div className="nba-tile">
@@ -70,44 +137,38 @@ const NBA_F = () => {
             </div>
           </div>
         </div>
+        <div className="table-data">
+          <table className="department-table">
+            <thead>
+              <tr>
+                <th>S.no</th>
+                <th>Programs</th>
+                <th>Validity Years</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.department}</td>
+                  <td>
+                    {item.pdfs.map((pdf, index) => (
+                      <li key={index} className="pdf-link">
+                        <a href={pdf.link} target="_blank" rel="noopener noreferrer">
+                          {pdf.name}
+                        </a>
+                      </li>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        {/* Department Selection Buttons */}
-        <div className="nba-depts">
-          {nbaData?.DEPT.map((dept, index) => (
-            <button
-              key={index}
-              className={`nba-dept-button ${selectedDept === dept ? "active" : ""}`}
-              onClick={() => handleDeptClick(dept)}
-            >
-              {dept}
-            </button>
-          ))}
         </div>
-
-        {/* Year Selection Buttons */}
-        {selectedDept && (
-          <div className="nba-years">
-            {nbaData?.year[nbaData.DEPT.indexOf(selectedDept)].map((year, index) => (
-              <button
-                key={index}
-                className={`nba-year-button ${selectedYear === year ? "active" : ""}`}
-                onClick={() => handleYearClick(year)}
-              >
-                {year}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* PDF Viewer */}
-        {getPdfPath() && (
-          <div className="nba-pdf-container">
-            <embed className="nba-embed" src={getPdfPath()} type="application/pdf" />
-          </div>
-        )}
       </div>
     </>
   );
 };
 
-export default NBA_F;
+export default NBA_F; 
