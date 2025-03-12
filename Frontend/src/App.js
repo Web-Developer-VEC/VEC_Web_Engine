@@ -49,6 +49,7 @@ import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
+import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";

@@ -435,13 +435,13 @@ const IQAC = () => {
     };
 
     return (
-        <div>
+        <>
             <Banner
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
                 headerText="IQAC"
                 subHeaderText="IQAC"
             />
-            <div className="nirf-content">
+            <div className="iqac-content">
                 <div className="iqac-years">
                     {[
                         "Objectives", 
@@ -480,12 +480,12 @@ const IQAC = () => {
                     ) : selectedYear === "Gallery" ? (
                         renderGalleryContent()
                     ) : (
-                        <div className="nirf-year-actions faculty-icc">
-                            {selectedYear === "Events Organized" &&
+                        <div className="iqac-year-actions faculty-icc">
+                            {/* {selectedYear === "Events Organized" &&
                                 eventsOrganizedArray.map((action, index) => (
                                     <div
                                         key={index}
-                                        className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                                        className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                                         onClick={() => openPdf("Events Organized", action.year)}
                                     >
                                         {action.year}
@@ -496,7 +496,7 @@ const IQAC = () => {
                                     <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Policy", action.year)}>
                                         {action.year}
                                     </div>
-                                ))}
+                                ))} */}
                             {selectedYear === "Members" && (
                                 <div className="members-grid">
                                     {membersArray.map((member, index) => (
@@ -511,47 +511,47 @@ const IQAC = () => {
                             )}
                             {selectedYear === "Minutes of Meetings" &&
                                 minutesOfMeetingsArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Minutes of Meetings", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Minutes of Meetings", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Academic and Administrative Audit" &&
                                 academicAdminAuditArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Academic and Administrative Audit", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Academic and Administrative Audit", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Strategic Development Plan" &&
                                 strategicPlanArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Strategic Development Plan", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Strategic Development Plan", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Best Practices" &&
                                 bestPracticesArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Best Practices", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Best Practices", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Code of Ethics" && (
-                                <div className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Code of Ethics", "Code of Ethics")}>
+                                <div className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Code of Ethics", "Code of Ethics")}>
                                     Code of Ethics
                                 </div>
                             )}
                             {selectedYear === "AQAR" &&
                                 aqarArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("AQAR", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("AQAR", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "ISO Certificate" && (
-                                <div className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("ISO Certificate", "ISO Certificate")}>
+                                <div className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("ISO Certificate", "ISO Certificate")}>
                                     ISO Certificate
                                 </div>
                             )}
                             {selectedYear === "Other Stuffs" &&
                                 otherStuffsArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Other Stuffs", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Other Stuffs", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
@@ -559,8 +559,8 @@ const IQAC = () => {
                     )}
 
                     {selectedAction && (
-                        <div className="nirf-pdf-container">
-                            <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                        <div className="nirf-pdf-container iqac-pdf-container">
+                            <h3 className="text-center">{`Viewing: ${selectedAction.year}`}</h3>
                             <embed
                                 className="embed"
                                 src={
@@ -592,7 +592,7 @@ const IQAC = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
