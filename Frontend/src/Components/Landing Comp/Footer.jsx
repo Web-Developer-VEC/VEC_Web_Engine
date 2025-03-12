@@ -20,24 +20,31 @@ const Footer = forwardRef((props, ref) => {
                 <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College<br></br>Ambattur
                     Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
                 <p style={{marginTop: "27px"}}>
-                    Contact: <a className="text-secd dark:text-drks font-bold" href="tel:+914426590758"
+                    Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href="tel:+914426590758"
                                 style={{textDecoration: "none"}}>044 – 26590758</a>
                 </p>
                 <p>
-                    Career: <a href="mailto:example@example.com" className="text-secd dark:text-drks font-bold"
-                               style={{textDecoration: "none"}}>example@example.com</a>
+                    Student Affair: <a href="tel:+914426591771" className="text-secd dark:text-drks hover:text-prim font-bold"
+                               style={{textDecoration: "none"}}>044 - 26591771</a>
                 </p>
-                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks font-bold"
+                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks hover:text-prim font-bold"
                                       style={{textDecoration: "none"}}>9123547550</a> , <a
-                    href="tel:+918939221120" className="text-secd dark:text-drks font-bold" style={{textDecoration: "none"}}>
+                    href="tel:+918939221120" className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
                     8939221120</a>
                 </p>
                 <div className="logo-container my-2">
-                    <img src={insta} alt="Insta"/>
-                    <img src={linkedin} alt="linkedin"/>
-                    <img src={youtube} alt="youtube"/>
-                    <img src={x} alt="twitter"/>
-                    <img src={facebook} alt="facebook"/>
+                    <a href="https://www.instagram.com/vec_chennai/" target="_blank" rel="noopener noreferrer">
+                        <img src={insta} alt="Insta"/>
+                    </a>
+                    <a href="https://www.linkedin.com/school/velammal-engineering-college/" target="_blank" rel="noopener noreferrer">
+                        <img src={linkedin} alt="LinkedIn"/>
+                    </a>
+                    <a href=" https://x.com/VelammalEnggC?t=v7fMqFl7I3bSXHphn9seUw&s=08 " target="_blank" rel="noopener noreferrer">
+                        <img src={x} alt="Twitter"/>
+                    </a>
+                    <a href="https://www.facebook.com/velammalengineeringcollege" target="_blank" rel="noopener noreferrer">
+                        <img src={facebook} alt="Facebook"/>
+                    </a>
                 </div>
                 {/*mt-4 lg:mt-[-240px] lg:ml-[375px]">*/}
                 {/*    <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[30vh] 2xl:h-[20vh] lg:mt-[-15rem]*/}
@@ -56,18 +63,21 @@ const Footer = forwardRef((props, ref) => {
             <div className="quick-links basis-1/3 px-4">
                 <h3 className="text-secd dark:text-drks font-bold">Quick Links</h3>
                 <ul className="gap-x-8 h-[15vh]">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/home">AQR</a></li>
-                    <li><a href="/about">Best Practices</a></li>
-                    <li><a href="/services">Institutional </a></li>
-                    <li><a href="/contact">Feedbacks</a></li>
-                    <li><a href="/home">Vec</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/nba">NBA</a></li>
+                    <li><a href="/naac">NAAC</a></li>
+                    <li><a href="/nirf">NIRF</a></li>
+                    <li><a href="/iic">IIC</a></li>
+                    <li><a href="/incubation">Incubation Cell</a></li>
+                    <li><a href="/alumni">Alumni</a></li>
+                    <li><a href="/nss">NSS </a></li>
+                    <li><a href="/ncc">NCC</a></li>
+                    <li><a href="/yrc">YRC</a></li>
+                    <li><a href="/sports">Sports</a></li>
+                    <li><a href="/library">Library</a></li>
+                    <li><a href="/transport">Transport</a></li>
+                    <li><a href="/hoslanding">Hostel</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/grievances">Grievances</a></li>
                 </ul>
             </div>
         </footer>

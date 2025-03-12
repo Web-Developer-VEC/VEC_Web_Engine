@@ -111,6 +111,12 @@ const Dean = ({theme, toggle}) => {
   const [deanData, setDeanData] = useState([]);
   const [loading ,setloading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -131,7 +137,7 @@ const Dean = ({theme, toggle}) => {
     <>
     <Banner toggle={toggle} theme={theme}
   backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-  headerText="Dean & Associate Deans"
+  headerText="Deans & Associate Deans"
   subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
 />
     <div className="container">
@@ -152,39 +158,41 @@ const Dean = ({theme, toggle}) => {
               <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
               <div className="de-content">
                 {/* Profiles Section */}
-                {responsibleDean ? (
+                {(responsibleDean?.Dean || responsibleDean?.Associate_Dean) && (
                   <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full">
-                    <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw]
-                      border-2 border-secd dark:border-drks">
-                      <img
-                        src={responsibleDean.Dean_Image} // Replace with a valid image URL
-                        alt={responsibleDean.Dean}
-                      />
-                      <div className="de-profile-details">
-                        <strong>{responsibleDean.Dean}</strong>
-                        <br />
-                        <span>{responsibleDean.Dean_Designation}</span>
-                      </div>
-                    </div>
-                    {responsibleDean.Associate_Dean && (
-                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw]
-                        border-2 border-secd dark:border-drks ">
+                    {/* Dean Profile */}
+                    {responsibleDean?.Dean && (
+                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks">
                         <img
-                          src={responsibleDean.Associate_Dean_Image} // Replace with a valid image URL
+                          src={UrlParser(responsibleDean.Dean_Image)} 
+                          alt={responsibleDean.Dean}
+                        />
+                        <div className="de-profile-details">
+                          <strong>{responsibleDean.Dean}</strong>
+                          <br />
+                          <span>{responsibleDean.Dean_Type}</span><br />
+                          <span>{responsibleDean.Dean_Designation}</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Associate Dean Profile */}
+                    {responsibleDean?.Associate_Dean && (
+                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks">
+                        <img
+                          src={UrlParser(responsibleDean.Associate_Dean_Image)}
                           alt={responsibleDean.Associate_Dean}
                         />
                         <div className="de-profile-details">
                           <strong>{responsibleDean.Associate_Dean}</strong>
                           <br />
+                          <span>{responsibleDean.Ass_Dean_Type}</span><br />
                           <span>{responsibleDean.Associate_Dean_Designation}</span>
                         </div>
                       </div>
                     )}
                   </div>
-                ) : (
-                  <p>No assigned dean for this section.</p>
                 )}
-
                 {/* Roles Section */}
                 {/*<div className="de-roles-section">*/}
                 {/*  <h2>Roles and Responsibilities</h2>*/}

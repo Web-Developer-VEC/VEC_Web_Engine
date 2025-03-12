@@ -11,22 +11,21 @@
 }
 
 /* Card-like content containers */
-.content-section,
-.psos-section,
-.pos-section {
+.content-section {
   /*background-color: #ffffff;*/
   padding: 20px; /* Adjust padding for better spacing */
   border-radius: 12px; /* Slightly less rounded for a modern look */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; /* Reduced spacing between cards */
   transition: all 0.3s ease;
+  width: 77vw;
 }
 
-.psos-section:hover,
+/* .psos-section:hover,
 .pos-section:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  transform: translateY(-8px); /* Increased hover elevation */
-}
+  transform: translateY(-8px); 
+} */
 
 .content-section h2,
 .psos-section h2,
@@ -258,7 +257,13 @@
 
 
 /* Media Queries for responsive design */
-@media (max-width: 767px) {
+@media (max-width:1024px){
+  .content-section{
+    width: 70vw;
+  }
+}
+
+@media (max-width: 768px) {
   .col-md-6 {
     width: 100%;
     padding: 0;
@@ -268,10 +273,9 @@
     gap: 0;
   }
 
-  .content-section,
-  .psos-section,
-  .pos-section {
+  .content-section {
     padding: 20px;
+    width: 96vw;
   }
 
   .options-btn,

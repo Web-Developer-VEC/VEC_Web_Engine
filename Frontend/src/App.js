@@ -23,6 +23,8 @@ import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organizatio
 /* Academics Pages Imports */
 import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
 import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
+import AcademicDepartments from "./Components/Top_Nav_Bar/Academics/Department.jsx";
+import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
 /* Admisiion Pages Imports */
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
@@ -130,6 +132,8 @@ const App = () => {
                                 <Route path="/admin" drk element={<CardPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme}/>}/>
                                 <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
+                                <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme}/>}/>
+                                <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
@@ -160,11 +164,11 @@ const App = () => {
                                 <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
-                                <Route path="/trans" drk element={<Transport/>}/>
+                                <Route path="/transport" drk element={<Transport/>}/>
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
                                 <Route path="/hostel" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
-                                <Route path="/greviences" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
                             </Routes>
                         </MainContentWrapper>
