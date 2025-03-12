@@ -8,35 +8,17 @@ import { motion } from "framer-motion";
 const Naac = ({ toggle, theme }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [openSection, setOpenSection] = useState(null);
+  const [naacData, setNaacData] = useState(null);
 
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
 
-  // Updated Links with PDF URLs for each section's contents
-  const Links = [
-    {
-      title: "Self Study Reports",
-      content: [
-        { title: "Cycle 1 SSR", link: "/path/to/previous_report.pdf" },
-        { title: "Cycle 2 SSR", link: "/path/to/current_report.pdf" },
-      ],
-    },
-    {
-      title: "Certificates",
-      content: [
-        { title: "Certificate 1", link: "/path/to/certificate1.pdf" },
-        { title: "Certificate 2", link: "/path/to/certificate2.pdf" },
-        { title: "Certificate 3", link: "/path/to/certificate3.pdf" },
-        { title: "Certificate 4", link: "/path/to/certificate4.pdf" },
-      ],
-    },
-  ];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await axios.get(`/api/naac`);
+        const response = await axios.get(`/api/naac`);
+        setNaacData(response.data[0].sections)
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -79,7 +61,7 @@ const Naac = ({ toggle, theme }) => {
 
       {/* Dropdown Sections */}
       <div className="max-w-4xl mx-auto space-y-6 mb-6 px-4">
-        {Links.map((section, index) => (
+        {naacData?.map((section, index) => (
           <div
             key={index}
             className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
