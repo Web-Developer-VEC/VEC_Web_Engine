@@ -84,7 +84,7 @@ const ImgSld = ({load, toggle, theme}) => {
                         044 – 26590758
                     </button>
 
-                    <button onClick={() => window.open('mailto:ajithajay1029@gmail.com', '_blank')}
+                    <button onClick={() => window.open('mailto:velammal@velammal.edu.in', '_blank')}
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
                         bg-[position:0%_100%] text-[1lvh] lg:text-lg text-text dark:text-white bg-gradient-to-l from-secd

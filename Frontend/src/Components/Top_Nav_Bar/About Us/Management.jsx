@@ -3,6 +3,13 @@ import './Management.css';
 import Banner from "../../Banner";
 
 function Management({ theme, toggle }) {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   return (
     <>
       <Banner 
@@ -48,7 +55,7 @@ function Management({ theme, toggle }) {
             </div>
 
             <div className="FCP-image-container">
-              <img src="/chairman.jpg" alt="Founder's Image" />
+              <img src={UrlParser('static/images/trust/velmurugan.jpg')} alt="Founder's Image" />
             </div>
           </div>
         </div>
@@ -60,7 +67,7 @@ function Management({ theme, toggle }) {
 
           <div className="FCP-content-container">
             <div className="FCP-image-container">
-              <img src="/ceo.jpg" alt="CEO's Image" />
+              <img src={UrlParser('static/images/trust/muthuramalingam.jpg')} alt="CEO's Image" />
             </div>
 
             <div className="FCP-text-container">
@@ -92,7 +99,7 @@ function Management({ theme, toggle }) {
               </p>
             </div>
             <div className="FCP-image-container">
-              <img src="/deputy-ceo.jpg" alt="deputy ceo Image" />
+              <img src={UrlParser('static/images/trust/deputyceo.jpg')} alt="deputy ceo Image" />
             </div>
           </div>
         </div>
