@@ -1,95 +1,134 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Lottie from 'react-lottie-player';
-import './ChatPopup.css';
+import React, { useState, useEffect, useRef } from "react";
+import Lottie from "react-lottie-player";
+import axios from "axios";
+import "./ChatPopup.css";
+import { p } from "framer-motion/m";
 
 function ChatPopup() {
-  const [isChatOpen, setIsChatOpen] = useState(false); 
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([]); 
-  const [newMessage, setNewMessage] = useState(''); 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [newMessage, setNewMessage] = useState(""); 
+  const [phoneNumber, setPhoneNumber] = useState(""); 
+  const [isPhoneSubmitted, setIsPhoneSubmitted] = useState(false); 
+  const [phoneMessage, setPhoneMessages] = useState("");
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const storedPhone = localStorage.getItem('phoneNumber');
-    if (storedPhone) setPhoneNumber(storedPhone);
+    const storedPhone = sessionStorage.getItem("phoneNumber");
+    if (storedPhone) {
+      setPhoneNumber(storedPhone);
+      setIsPhoneSubmitted(true);
+    }
   }, []);
 
-  const toggleChat = () => setIsChatOpen(!isChatOpen);
+  // Auto-scroll to the latest message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
 
   const handlePhoneSubmit = () => {
-    if (phoneNumber.trim().length === 10) { 
-      localStorage.setItem('phoneNumber', phoneNumber); 
+    if (phoneNumber.trim() !== "" && phoneNumber.length === 10) {
+      sessionStorage.setItem("phoneNumber", phoneNumber);
+      setIsPhoneSubmitted(true);
     } else {
-      alert('Please enter a valid 10-digit phone number.');
+      setPhoneMessages( "Enter the valid phone number");
     }
   };
 
   const sendMessage = async () => {
-    if (newMessage.trim() !== '' && phoneNumber) {
-      const userMessage = { sender: 'User', text: newMessage };
-      setMessages([...messages, userMessage]);
+
+    if (newMessage.trim() !== "" && phoneNumber) {
+      const userMessage = { sender: "User", text: newMessage };
+      setMessages((prev) => [...prev, userMessage]);
 
       try {
-        const response = await axios.post('http://localhost:8080/ask', {
+        const response = await axios.post("http://localhost:8080/ask", {
           query: newMessage,
           phone: phoneNumber,
         });
 
-        if (response.data.response) {
-          const botMessage = { sender: 'Assistant', text: response.data.response };
-          setMessages(prevMessages => [...prevMessages, botMessage]);
-        }
+        // Typing effect
+        let botMessage = { sender: "Assistant", text: "" };
+        setMessages((prev) => [...prev, botMessage]);
+
+        let responseText = response.data.response;
+        let index = 0;
+        const typingEffect = setInterval(() => {
+          if (index < responseText.length) {
+            botMessage.text += responseText[index];
+            setMessages((prev) => [...prev.slice(0, -1), botMessage]); // Update last message
+            index++;
+          } else {
+            clearInterval(typingEffect);
+          }
+        }, 30); // Adjust speed (30ms per letter)
       } catch (error) {
-        console.error('API Error:', error);
-        setMessages(prevMessages => [
-          ...prevMessages,
-          { sender: 'Assistant', text: 'Error: Unable to fetch response.' },
+        setMessages((prev) => [
+          ...prev,
+          { sender: "Assistant", text: "Error: Unable to fetch response." },
         ]);
       }
 
-      setNewMessage('');
+      setNewMessage("");
     }
   };
 
   return (
     <div>
-      {/* Chat Icon Button */}
+      {/* Chat Icon */}
       <div className="chat-icon" onClick={toggleChat}>
-        <Lottie loop animationData={require('../Assets/Chatbot.json')} play />
+        <Lottie loop animationData={require("../Assets/Chatbot.json")} play />
       </div>
 
       {/* Chat Popup */}
       {isChatOpen && (
         <div className="chat-popup">
-          <h2>Chat with us!</h2>
+          <h2 className="mb-2">Chat with us!</h2>
 
-          {/* Ask for Phone Number First */}
-          {!phoneNumber ? (
+          {/* Phone Number Input */}
+          {!isPhoneSubmitted ? (
             <div className="phone-input">
               <input
                 type="text"
-                placeholder="Enter your phone number"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value)
+                  setPhoneMessages("")
+                }}
+                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                placeholder="Enter your phone number"
               />
               <button onClick={handlePhoneSubmit}>Submit</button>
+              {phoneMessage && (
+                <p className="error-message">{phoneMessage}</p>
+              )}
             </div>
           ) : (
             <>
+              {/* Messages Display */}
               <div className="messages">
                 {messages.map((message, index) => (
-                  <div key={index} className={`message ${message.sender === 'User' ? 'user' : 'assistant'}`}>
-                    <strong>{message.sender}:</strong> {message.text}
+                  <div
+                    key={index}
+                    className={`message ${message.sender.toLowerCase()}`}
+                  >
+                    {message.text}
                   </div>
                 ))}
+                <div ref={messagesEndRef} />
               </div>
 
-              {/* Chat Input Field */}
+              {/* Input Field & Send Button */}
               <div className="message-input">
                 <input
                   type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type your message here..."
                 />
                 <button onClick={sendMessage}>Send</button>

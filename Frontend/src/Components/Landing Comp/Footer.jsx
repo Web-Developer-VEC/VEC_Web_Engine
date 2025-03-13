@@ -65,7 +65,7 @@ const Footer = forwardRef((props, ref) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {/* Profile & College Info */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Profile & College</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
                         <ul className="space-y-1 text-left lg:text-left">
                             <li><a href="/abt-us">About Us</a></li>
                             <li><a href="/">AICTE Approval</a></li>
@@ -81,7 +81,7 @@ const Footer = forwardRef((props, ref) => {
 
                     {/* Academics */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Academics Links</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Academics</h4>
                         <ul className="space-y-1 text-left lg:text-left">
                             <li><a href="/departments">Departments</a></li>
                             <li><a href="/programs">Programes</a></li>
@@ -95,7 +95,7 @@ const Footer = forwardRef((props, ref) => {
 
                     {/* Important Links */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Important Links</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Important</h4>
                         <ul className="space-y-1 text-lfrt lg:text-left">
                             <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank">Student Login</a></li>
                             <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>

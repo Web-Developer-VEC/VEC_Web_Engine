@@ -170,3 +170,27 @@
 .header-cell-1{
   text-align: right;
 }
+
+.department-table {
+  width: 80%;
+  border-collapse: collapse;
+}
+
+.department-table th,
+.department-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.department-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.table-data{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
