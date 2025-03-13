@@ -89,21 +89,25 @@ const SportsPage = ({theme, toggle}) => {
                     subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
             />
 
-            <div className="sports-page flex flex-wrap w-screen">
-                <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center
-                    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">
+            <div className="sports-page flex flex-wrap lg:flex-nowrap w-full items-start">
+                {/* Sidebar Navigation (Fixed at the Top, Full Width on Small Screens) */}
+                <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center items-start
+                    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8 
+                    self-start lg:sticky lg:top-20">
                     {Object.keys(navData).map((itm, ind) => (
                         <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                          hover:bg-accn/50 dark:hover:bg-drka/50   
-                          ${(spt === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
+                        hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
+                        ${(spt === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
                         ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}
                                 type={"button"} onClick={() => setSpt(itm)}>{itm}</button>
                     ))}
                 </nav>
+
+                {/* Main Content Section */}
                 <div className="basis-full lg:basis-4/5">
                     {navData[spt]}
                 </div>
-            </div>
+            </div>`
         </div>
     );
 };

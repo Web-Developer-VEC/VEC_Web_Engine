@@ -63,7 +63,7 @@ const LibraryLayout = ({toggle, theme}) => {
                 lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">
                 {Object.keys(navData).map((itm, ind) => (
                     <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                    hover:bg-accn/50 dark:hover:bg-drka/50   
+                    hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
                     ${(lib === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
                   ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}
                             type={"button"} onClick={() => setLib(itm)}>{itm}</button>
