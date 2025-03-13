@@ -4,22 +4,12 @@ import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
 import './CurriculumPage.css';
 
 const CurriculumPage = ({ data }) => {
-  const [activePO, setActivePO] = useState(null); // Track which PO is active (open)
-  const [activePOS, setActivePOS] = useState(null);
   const [selectedRegulation, setSelectedRegulation] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-  
-
-  const togglePO = (id) => {
-    setActivePO((prev) => (prev === id ? null : id)); // Toggle the active PO
-  };
-  const togglePOS = (id) => {
-    setActivePOS((prev) => (prev === id ? null : id)); // Toggle the active PO
   };
 
   const handleViewClick = (regulation,year) => {
@@ -43,7 +33,7 @@ const CurriculumPage = ({ data }) => {
             {data?.regulation?.year?.map((year, index) => (
               <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
                 <p>
-                  Regulation {year}
+                  R - {year}
                   <div className="options-container">
                     <button 
                     className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim

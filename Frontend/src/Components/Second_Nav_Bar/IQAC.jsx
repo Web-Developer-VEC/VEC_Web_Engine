@@ -4,26 +4,17 @@ import "./IQAC.css";
 import Banner from "../Banner";
 import axios from "axios";
 
-// Add the missing UrlParser function
-const UrlParser = (url) => {
-    if (!url) return "";
-    // Simple URL parser that ensures proper format
-    // You can adjust this function based on your specific URL handling needs
-    return url.startsWith("/") ? url : `/${url}`;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
 const IQAC = () => {
-    const leftCardsRef = useRef([]);
-    const rightCardsRef = useRef([]);
-    const [isPlaying, setIsPlaying] = useState(true);
-    const intervalRef = useRef(null);
-
     const [selectedYear, setSelectedYear] = useState("Objectives");
     const [selectedAction, setSelectedAction] = useState(null);
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    console.log("Data",iqacData);
-    
 
     useEffect(() => {
         // Simulate fetching data from a local source
@@ -148,7 +139,7 @@ const IQAC = () => {
     const aqarArray = 
         iqacData?.aqar?.years?.map((year, index) => ({
             year,
-            path: UrlParser(iqacData.aqar.paths[index]),
+            path: UrlParser("nssday.pdf"),
         })) || [];
 
     const openPdf = (category, year) => {
@@ -369,7 +360,7 @@ const IQAC = () => {
                             <embed
                                 className="embed"
                                 src={
-                                    selectedAction.category === "Events Organized"
+                                    (selectedAction.category === "Events Organized"
                                             ? eventsOrganizedArray.find((item) => item.year === selectedAction.year)?.path
                                             : selectedAction.category === "Policy"
                                                 ? policyArray.find((item) => item.year === selectedAction.year)?.path
@@ -388,6 +379,7 @@ const IQAC = () => {
                                                                         : selectedAction.category === "ISO Certificate"
                                                                             ? iqacData?.isoCertificate?.path
                                                                             : otherStuffsArray.find((item) => item.year === selectedAction.year)?.path
+                                    ) + "#toolbar=0"
                                 }
                                 type="application/pdf"
                                 width="100%"
