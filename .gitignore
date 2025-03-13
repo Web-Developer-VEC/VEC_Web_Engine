@@ -23,10 +23,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<<< HEAD:Frontend/.gitignore
 
-Backend/node_modules
-Frontend/node_modules
-========
-/Frontend/node_modules.zip
->>>>>>>> Forked-Up:.gitignore
+
+# .gitignore
+.env
+.env.development
+.env.production

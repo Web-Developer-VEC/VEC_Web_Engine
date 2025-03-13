@@ -1,0 +1,412 @@
+/* NCC_ARMY Container */
+.NCC_ARMY-container {
+
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* Content Wrapper */
+.NCC_ARMY-content-wrapper {
+  /*background: #fff;*/
+  padding: 0px;
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Title Styling */
+.NCC_ARMY-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 40px;
+  /*color: #2c3e50;*/
+  animation: slideInRight 1s ease-out;
+}
+
+/* Section Styling */
+.NCC_ARMY-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /*background: #fff;*/
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Section Title */
+.NCC_ARMY-section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  /*color: #1a5276;*/
+  padding-left: 15px;
+  /*border-bottom: 3px solid #fdb515;*/
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  animation: slideInRight 1s ease-out;
+}
+
+/* List Styling */
+.NCC_ARMY-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.NCC_ARMY-list li {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.NCC_ARMY-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  /*color: #1a5276;*/
+  font-size: 1.5rem;
+}
+
+/* Row Layout */
+.NCC_ARMY-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.NCC_ARMY-row .NCC_ARMY-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Aim Section (Separate Box) */
+.NCC_ARMY-aim-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  /*background: #fff;*/
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideInLeft 1s ease-out;
+}
+
+.NCC_ARMY-aim {
+  padding: 20px;
+}
+
+.NCC_ARMY-heading {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  /*color: #154360;*/
+  margin-bottom: 20px;
+  /*border-bottom: 3px solid #fdb515;*/
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.NCC_ARMY-icon {
+  width: 60px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.NCC_ARMY-aimcontent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* Vision & Mission Section */
+.NCC_ARMY-vision-mission-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.NCC_ARMY-vision,
+.NCC_ARMY-mission {
+  /*background: #fff;*/
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 200px;
+  animation: slideInRight 1s ease-out;
+}
+
+/* Motto & Pledge Section */
+.NCC_ARMY-motto-pledge-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.NCC_ARMY-motto,
+.NCC_ARMY-pledge {
+  /*background: #fff;*/
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 200px;
+  animation: slideInRight 1s ease-out;
+}
+
+/* Common Content Style */
+.NCC_ARMY-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* NCC_ARMY Profile Section */
+.NCC_ARMY-profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  /*background: #ffffff;*/
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin: 50px auto;
+  /*border-left: 5px solid orange;*/
+  animation: slideInLeft 1s ease-out;
+}
+
+.NCC_ARMY-profile-photo {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NCC_ARMY-profile-photo img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.NCC_ARMY-profile-content {
+  flex: 1;
+  text-align: left;
+}
+
+.NCC_ARMY-profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /*text-decoration: underline orange;*/
+}
+
+.NCC_ARMY-profile-position {
+  font-size: 18px;
+  /*color: #555;*/
+  margin-bottom: 15px;
+  /*text-decoration: underline orange;*/
+}
+
+.NCC_ARMY-profile-bio {
+  font-size: 16px;
+  /*color: #444;*/
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .NCC_ARMY-container,
+  .NCC_ARMY-aim-container {
+    max-width: 105%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .NCC_ARMY-title {
+    font-size: 3rem;
+  }
+
+  .NCC_ARMY-section-title,
+  .NCC_ARMY-heading {
+    font-size: 1.7rem;
+  }
+
+  .NCC_ARMY-profile-name {
+    font-size: 26px;
+  }
+
+  .NCC_ARMY-profile-position {
+    font-size: 20px;
+  }
+
+  .NCC_ARMY-profile-bio {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .NCC_ARMY-row,
+  .NCC_ARMY-vision-mission-container,
+  .NCC_ARMY-motto-pledge-container {
+    flex-direction: column;
+  }
+
+  .NCC_ARMY-profile-container {
+    flex-direction: column;
+    text-align: center;
+    width: 98%;
+    margin: 30px auto;
+  }
+
+  .NCC_ARMY-profile-photo {
+    margin-bottom: 20px;
+  }
+
+  .NCC_ARMY-profile-content {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Adds space between the Back button and NCC Army */
+  .back-button {
+    margin-bottom: 15px;
+  }
+
+  .NCC_ARMY-section-title,
+  .NCC_ARMY-heading {
+    font-size: 1.3rem;
+  }  
+
+  .NCC_ARMY-content,
+  .NCC_ARMY-aimcontent,
+  .NCC_ARMY-list li {
+    font-size: 0.9rem;
+    line-height: 1.9;
+  }
+
+  /* Reduces extra margin/padding that may extend page length */
+  .NCC_ARMY-container {
+    padding-bottom: 10px;
+  }
+
+  .NCC_ARMY-content-wrapper {
+    padding-bottom: 10px;
+  }
+
+  /* Removes extra spacing from sections */
+  .NCC_ARMY-section {
+    margin-bottom: 20px;
+  }
+
+  /* Reduces empty space below title */
+  .NCC_ARMY-title {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .NCC_ARMY-container,
+  .NCC_ARMY-content-wrapper,
+  .NCC_ARMY-section,
+  .NCC_ARMY-aim-container,
+  .NCC_ARMY-aim,
+  .NCC_ARMY-vision,
+  .NCC_ARMY-mission,
+  .NCC_ARMY-motto,
+  .NCC_ARMY-pledge {
+    padding: 8px 10px; /* Reducing padding to avoid excessive spacing */
+    height: auto;
+  }
+
+  /* Ensures profile photo scales properly */
+  .NCC_ARMY-profile-photo img {
+    width: 200px; /* Slightly reducing width for better fit */
+    height: auto; /* Maintaining aspect ratio */
+    max-height: 280px; /* Limiting height */
+  }
+
+  /* Optimizing padding for better alignment */
+  .NCC_ARMY-container,
+  .NCC_ARMY-aim-container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* Improving title spacing */
+  .NCC_ARMY-title {
+    font-size: 2rem; /* Slightly reducing size for smaller screens */
+    margin-bottom: 20px; /* Reducing margin to prevent unnecessary space */
+  }
+
+  /* Adjusting section and heading font sizes */
+  .NCC_ARMY-section-title,
+  .NCC_ARMY-heading {
+    font-size: 1.5rem; /* Keeping text readable but compact */
+  }
+
+  /* Adding space below the Back button */
+  .back-button {
+    margin-bottom: 50px;
+  }
+
+  /* Reducing extra vertical spacing */
+  .NCC_ARMY-section {
+    margin-bottom: 15px;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  /* Ensuring the profile photo scales properly */
+  .NCC_ARMY-profile-photo img {
+    width: 180px; /* Slightly reducing width for better fit */
+    height: auto; /* Keeping aspect ratio */
+    max-height: 260px; /* Limiting max height */
+  }
+
+  /* Adjusting font size for better readability on small screens */
+  .NCC_ARMY-profile-name ,.NCC_ARMY-vision-mission-container{
+    font-size: 18px;
+    text-align: center; /* Ensuring name is properly centered */
+    font-weight: 600; /* Making the name more prominent */
+  }
+
+  /* Adding better spacing and alignment for sections */
+  .NCC_ARMY-container,
+  .NCC_ARMY-content-wrapper,
+  .NCC_ARMY-section {
+    margin: 2px;
+    padding: 6px 3px; /* Reducing padding to optimize space */
+  }
+
+  /* Adjusting button or navigation elements */
+  .back-button {
+    margin-bottom: 10px;
+    margin-right: 10px; /* Adding some spacing below the button */
+  }
+}

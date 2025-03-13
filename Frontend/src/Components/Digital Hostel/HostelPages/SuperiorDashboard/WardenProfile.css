@@ -1,0 +1,625 @@
+.warden-container {
+  padding: 2rem;
+  background-color: white;
+  margin-left: 16rem;
+}
+
+.wardens-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hos-warden-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  border-left: 4px solid #fdcc03;
+}
+
+.hos-warden-card:hover {
+  transform: translateY(-4px);
+}
+
+.hos-warden-card.boys {
+  border-color: #fdcc03;
+}
+
+.hos-warden-card.girls {
+  border-color: #1c1c1f;
+}
+
+.warden-content {
+  padding: 1.5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.warden-image-wrapper {
+  width: 120px;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warden-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.warden-info {
+  text-align: center;
+  flex: 1;
+}
+
+.warden-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1c1c1f;
+  margin-bottom: 0.5rem;
+}
+
+.warden-detail {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #1c1c1f;
+  margin-right: 0.5rem;
+}
+
+.toggle-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #fdcc03;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+  background: #fdcc03;
+  color: white;
+}
+
+.toggle-button:hover {
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28, 28, 31, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: #f3f4f6;
+}
+
+.icon-button.edit {
+  color: #fdcc03;
+}
+
+.icon-button.close {
+  color: #1c1c1f;
+}
+
+.modal-body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.college-logo {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.college-logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.college-name {
+  font-size: 1.5rem;
+  color: #1c1c1f;
+  margin-bottom: 0.5rem;
+}
+
+.warden-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-image {
+  width: 120px;
+  height: 150px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1c1c1f;
+  margin-bottom: 1rem;
+}
+
+.profile-details {
+  text-align: center;
+  width: 100%;
+}
+
+.profile-details p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+/* Edit Form Styles */
+.edit-form {
+  padding: 1rem;
+}
+
+.edit-form h2 {
+  color: #1c1c1f;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #1c1c1f;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #fdcc03;
+  box-shadow: 0 0 0 2px rgba(253, 204, 3, 0.2);
+}
+
+.file-input {
+  border: 2px dashed #ddd;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.save-button,
+.cancel-button,
+.delete-button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-button {
+  background: #fdcc03;
+  color: #1c1c1f;
+  border: none;
+}
+
+.save-button:hover {
+  background: #e6b800;
+}
+
+.delete-button {
+  /* background: #ff6b36; */
+  color: #ff6b36;
+  border: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-button:hover {
+  background: red;
+}
+
+.cancel-button {
+  background: white;
+  color: #1c1c1f;
+  border: 1px solid #ddd;
+}
+
+.cancel-button:hover {
+  background: #f3f4f6;
+}
+
+/* Confirm Modal Styles */
+.confirm-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.confirm-modal h3 {
+  color: #1c1c1f;
+  margin-bottom: 1rem;
+}
+
+.confirm-modal p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.confirm-button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fdcc03;
+  color: #1c1c1f;
+  border: none;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  gap: 10px; /* Space between items */
+  margin-top: 10px; /* Add some spacing above the checkboxes */
+}
+
+/* Checkbox Item */
+.checkbox-item {
+  flex: 1 1 calc(50% - 10px); /* Two items per row with gap */
+  display: flex;
+  align-items: center; /* Align checkbox and label vertically */
+}
+
+/* Checkbox Input */
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px; /* Space between checkbox and label */
+  cursor: pointer; /* Show pointer on hover */
+}
+
+/* Checkbox Label */
+.checkbox-item label {
+  font-size: 14px; /* Adjust font size */
+  color: #333; /* Text color */
+  cursor: pointer; /* Show pointer on hover */
+}
+
+/* Add Buttons Container */
+.add-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Add Warden Button */
+.add-warden {
+  background-color: #9c400e; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Padding inside the button */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Show pointer on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Add Warden Button Hover Effect */
+.add-warden:hover {
+  background-color: #b24c0e; /* Darker blue on hover */
+}
+
+/* Add Warden Button Active Effect */
+.add-warden:active {
+  background-color: #9c400e; /* Even darker blue on click */
+}
+
+/* Container for each year dropdown */
+.status-year-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+/* Label for the primary year */
+.warden-pri-years {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-right: 10px;
+  flex: 1;
+}
+
+/* Dropdown select styling */
+.warden-status-select {
+  flex: 2;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dropdown hover and focus states */
+.warden-status-select:hover {
+  border-color: #888;
+}
+
+.warden-status-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Option styling */
+.warden-status-select option {
+  padding: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Option hover styling */
+.warden-status-select option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .wardens-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .warden-container {
+    padding: 1rem;
+    margin-left: 0rem;
+    margin-top: 3.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .wardens-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 600px; /* Adjust width as needed */
+  max-width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 20px; /* Space between rows and columns */
+}
+
+.form-row{
+  padding: 10px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-row input,
+.form-row select,
+.form-row .checkbox-container,
+.form-row .radio-container {
+  /* width: 100%; */
+  /* padding: 8px; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #00b5dc;
+}
+
+.form-row input,
+.form-row select{
+  margin-left: 20px;
+
+}
+
+.form-row .no-border{
+  border: none;
+}
+
+.form-row .photo{
+  width: 220px;
+  /* border: 1px solid #00b5dc; */
+
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Radio Container */
+.radio-container {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-container label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Form Actions */
+/* .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-actions .cancel-button {
+  background-color: #ccc;
+  color: #333;
+}
+
+.form-actions .save-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.form-actions .save-button:hover {
+  background-color: #0056b3;
+} */

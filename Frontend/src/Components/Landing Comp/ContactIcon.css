@@ -1,0 +1,63 @@
+body {
+  padding-bottom: 150px; /* Increase this value if needed */
+}
+
+.contact-icon-container {
+  z-index: 1001;
+  position: fixed;
+  bottom: 20px; 
+  left: 20px;  
+  line-height: 15px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.contact-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #5198df;
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+.click-popup {
+  background: rgb(253, 204, 3);
+  color: black;
+  padding: 20px;
+  position:fixed;
+  /* height: 5vw; */
+  /* width: 390px; */
+  bottom: 80px; 
+  left: 20px; 
+  border-radius: 10px;
+  margin-bottom: 15px;
+} 
+    
+
+.click-popup  a{
+  text-decoration: none;
+  /* color: black; */
+  font-size: 18px;
+  font-weight: 450;
+}
+
+.click-popup a:hover {
+  color:black;
+  text-decoration: underline;
+}
+.click-popup  p{
+  font-size: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 786px){
+  .click-popup p{
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .click-popup a{
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,181 @@
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container for Vision and Mission sections */
+.visionMissionContainer {
+  max-width: 1200px;
+  margin: 20px auto; /* Reduced margin-top */
+  padding: 10px; /* Inner spacing */
+  position: relative; /* For positioning the photo on desktop */
+}
+
+/* Vision & Mission Wrapper for desktop (parallel columns on left, photo on right) */
+.visionMissionWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Space between columns and photo */
+  margin-bottom: 10px; /* Reduced space below */
+}
+
+/* Vision & Mission Cards */
+.visionCard, .missionCard {
+  flex: 1;
+  max-width: 750px;
+  background: #fff;
+  padding: 15px; /* Reduced padding */
+  border-left: 8px solid #fdb515;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* For yellow border positioning */
+  left: -120px;
+}
+
+.visionCard::before, .missionCard::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  background-color: #fdb515;
+  z-index: -1;
+}
+
+/* Photo on the rightmost side of the page (desktop only) */
+.photo {
+  width: 680px; /* Slightly reduced width */
+  height: 355px;
+  position: absolute;
+  right: -140px; /* Align to rightmost side with padding */
+  top: 0; /* Align with top of Vision & Mission */
+  display: none; /* Hide by default, show on desktop */
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image fills the area */
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header (icon and title) */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Reduced space below header */
+}
+
+.cardTitle {
+  font-size: 20px; /* Adjusted font size */
+  font-weight: bold;
+  color: #1d1d1d;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Card content styling */
+.cardContent {
+  font-size: 16px; /* Set to 16px for inner content only, Poppins font */
+  color: #1d1d1d;
+  text-align: justify;
+  margin-top: 10px; /* Space above content */
+}
+
+/* Desktop View (Above 1024px) */
+@media (min-width: 1025px) {
+  .visionMissionContainer {
+      padding: 10px;
+  }
+
+  .visionMissionWrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px; /* Space between Vision, Mission, and photo */
+  }
+
+  .visionCard, .missionCard {
+      flex: 1;
+      max-width: 750px;
+      margin-top: 20px;
+  }
+
+  .photo {
+      display: block; /* Show photo on desktop */
+  }
+}
+
+/* Tablet View (Below 1024px) */
+@media (max-width: 1024px) {
+  .visionMissionContainer {
+      padding: 10px;
+  }
+
+  .visionMissionWrapper {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 15px;
+  }
+
+  .visionCard, .missionCard {
+      width: 100%;
+      max-width: 100%;
+      padding: 15px;
+      border-left: 8px solid #fdb515;
+  }
+
+  .photo {
+      width: 70%;
+      height: auto;
+      max-height: 300px;
+      order: -1; /* Move image above text */
+      margin-bottom: 10px;
+      position: static; /* Remove absolute positioning */
+      display: block; /* Show on tablet */
+  }
+}
+
+/* Mobile View (Below 768px) */
+@media (max-width: 768px) {
+  .photo {
+      display: none; /* Hide image on mobile */
+  }
+
+  .visionCard, .missionCard {
+      width: 100%;
+      max-width: 100%;
+      padding: 12px;
+      border-left: 6px solid #fdb515;
+      align-items: center;
+  }
+
+  .cardTitle {
+      font-size: 20px;
+  }
+
+  .cardContent {
+      font-size: 16px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 600px) {
+  .visionMissionContainer {
+      padding: 5px;
+      left: 120px;
+      
+  }
+  .cardTitle {
+    font-size: 20px;
+}
+
+.cardContent {
+    font-size: 16px;
+}
+}
+
+/* Ensure Poppins font is loaded */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

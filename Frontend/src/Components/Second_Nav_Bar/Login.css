@@ -1,0 +1,585 @@
+.student-login-container .fancy .text{
+    color: rgb(255, 255, 255);
+}
+
+.student-login-container .fancy::before {
+    background: white;
+}
+
+.student-login-container .fancy::before {
+    background: black; /* Changes to white on hover */
+}
+
+
+.student-login-container .fancy:hover {
+    background: white;
+}
+   
+.student-login-container .fancy:hover .text{
+    /*color: black;*/
+}
+
+.student-login-container h1, .student-login-container h5{
+    /*color: black;*/
+}
+
+/* Container */
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 80vh;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Student Section */
+.student-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /*background-color: white;*/
+    border: none;
+    outline: none;
+}
+
+.faculty-login-container,
+.student-login-container{
+    margin: 5rem;
+}
+
+  
+  .student-login-container {
+    position: relative;
+    width: 35vw;
+    height: 55vh;
+    padding: 3em;
+    transform: rotateY(5deg) rotateX(2.5deg);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .student-login-container:hover {
+    transform: rotateY(-5deg) rotateX(-2.5deg);
+  }
+  
+  .faculty-login-container {
+    position: relative;
+    /*width: 430px;*/
+    padding: 3em;
+    /*color: black;*/
+    transform: rotateY(4deg) rotateX(2deg);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .faculty-login-container:hover {
+    transform: rotateY(-4deg) rotateX(-2deg);
+  }
+
+.student-login-container h1,
+.faculty-login-container h1 {
+    font-size: 3.5rem;
+}
+
+.student-login-container h5,
+.faculty-login-container h5 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Faculty Section */
+.faculty-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /*background-color: white;*/
+}
+
+.faculty-login-container h5 {
+    /*color: black;*/
+}
+
+.student-login-container, .faculty-login-container {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Increased shadow */
+    border-radius: 10px; /* Optional: Adds smooth corners */
+    transition: all 0.3s ease-in-out; /* Optional: Smooth effect */
+}
+
+.student-login-container:hover, .faculty-login-container:hover {
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+/* Fancy Button */
+.fancy {
+    background-color: transparent;
+    border: 2px solid black;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+}
+
+/* Fancy Button Styling */
+.fancy::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: background 0.3s linear, width 0.3s linear;
+}
+
+/* Student Button */
+.student-login-container .fancy {
+    /*background: rgb(250, 204, 21);*/
+}
+
+.student-login-container .fancy::before {
+    background: white;
+}
+
+.student-login-container .fancy:hover::before {
+    background: black;
+}
+
+.student-login-container .fancy:hover {
+    background: white;
+}
+
+.student-login-container .fancy:hover .text {
+    color: black;
+}
+
+/* Faculty Button */
+.faculty-login-container .fancy {
+    background: white;
+}
+
+.faculty-login-container .fancy::before {
+    background: black;
+}
+
+.faculty-login-container .fancy:hover::before {
+    background: white;
+}
+
+.faculty-login-container .fancy:hover {
+    background: rgb(250, 204, 21);
+}
+
+/* Fancy Button Effects */
+.fancy .text {
+    font-size: 1.125em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover::before {
+    width: 0.9375rem;
+}
+
+.fancy:hover .text {
+    color: white;
+    padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+    left: -2px;
+    width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+}
+
+
+/* Card Container */
+.card-container {
+    perspective: 50em;
+}
+  
+  .card-container:nth-child(1) {
+    --bi: repeating-linear-gradient(30deg, #111 0 0.25em, #333 0 1em);
+  }
+  
+  .card-container:nth-child(2) {
+    /* --bi: linear-gradient(#555 5em, transparent 3em), linear-gradient(60deg, #880E4F, #1A237E); */
+  }
+  
+  /* Layered 3D Effect */
+  .layers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+  
+  .layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    background-image: var(--bi);
+    box-shadow: 0 0 0.5em #000d inset;
+  }
+  
+  .layer:nth-child(1) { transform: translateZ(0px); }
+  .layer:nth-child(2) { transform: translateZ(-4px); }
+  .layer:nth-child(3) { transform: translateZ(-8px); }
+  .layer:nth-child(4) { transform: translateZ(-12px); }
+  .layer:nth-child(5) { transform: translateZ(-16px); }
+  .layer:nth-child(6) { transform: translateZ(-20px); }
+  .layer:nth-child(7) { transform: translateZ(-24px); }
+  .layer:nth-child(8) { transform: translateZ(-28px); }
+  .layer:nth-child(9) { transform: translateZ(-32px); }
+  .layer:nth-child(10) { transform: translateZ(-36px); }
+  
+  .layer:last-child {
+    box-shadow: 0 0 0.5em #000d inset, 0 0 5px #000;
+  }
+  
+  /* Faculty Section */
+.faculty-login-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /*background-color: #fff; !* Initial Yellow *!*/
+    border: none;
+    outline: none;
+    overflow: hidden; /* Ensure background stays within container */
+    border-radius: 20px;
+}
+
+/* Background Circle */
+.faculty-login-bg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.8s ease-in-out;
+    transform: scale(0);
+}
+
+/* Hover Effect */
+.faculty-login-container:hover .faculty-login-bg {
+    transform: scale(15);
+}
+
+/* Text & Button Stay on Top */
+.faculty-login-container h1,
+.faculty-login-container h5,
+.faculty-login-button {
+    z-index: 2;
+    position: relative;
+}
+
+
+  .student-login-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    overflow: hidden; /* Ensure background stays within container */
+    border-radius: 20px;
+}
+
+/* Background Circle */
+.student-login-bg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    /*background-color: rgb(250, 204, 21); !* Set initial color *!*/
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.8s ease-in-out, background-color 0.8s ease-in-out; /* Smooth transition */
+    transform: scale(0);
+}
+
+/* Hover Effect */
+.student-login-container:hover .student-login-bg {
+    transform: scale(15);
+    /*background-color: rgb(250, 204, 21); !* Ensure transition applies smoothly *!*/
+}
+
+/* Reverse Animation on Mouse Leave */
+.student-login-container .student-login-bg {
+    transition: transform 0.8s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+
+.student-login-container:hover h1, .student-login-container:hover h5{
+    color: white;
+    transition: color 0.25s ease-in-out 0.25s;
+}
+/* Text & Button Stay on Top */
+.student-login-container h1,
+.student-login-container h5,
+.student-login-button {
+    z-index: 2;
+    position: relative;
+}
+
+.faculty-login-container:hover, .faculty-login-bg{
+    transition: color 0.25s ease-in-out 0.25s; /* Smooth color transition */
+    /*background-color: rgb(250, 204, 21);*/
+}
+
+/* Faculty Card */
+.faculty-login-container:hover h1, 
+.faculty-login-container:hover h5 {
+    /*color: white;*/
+    transition: color 0.25s ease-in-out 0.25s; /* Smooth color transition */
+}
+
+/* Delay the text color change when mouse leaves */
+.faculty-login-container h1, 
+.faculty-login-container h5 {
+    transition: color 0.4s ease-in-out 0.4s; /* Delayed transition on mouse leave */
+}
+
+/* Student Card */
+.student-login-container:hover h1, 
+.student-login-container:hover h5 {
+    /*color: white;*/
+    transition: color 0.25s ease-in-out 0.25s;
+}
+
+/* Delay the text color change when mouse leaves */
+.student-login-container h1, 
+.student-login-container h5 {
+    transition: color 0.4s ease-in-out 0.4s;
+}
+
+.student-login-bg,
+.faculty-login-bg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.8s ease-in-out;
+    transform: scale(0);
+}
+
+@media screen and (max-width: 1250px){
+    .login-container h1{
+        font-size: 3rem;
+    }
+    .login-container h5{
+        font-size: 2rem;
+    }
+    
+}
+
+@media screen and (max-width: 1080px){
+    .login-container h1{
+        font-size: 2.7rem;
+    }
+    .login-container h5{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .login-container h1 {
+        font-size: 2.3rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.4rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        padding: 1.5rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 2rem; /* Adjust margin */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 2rem; /* Keep it consistent */
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .login-container h1 {
+        font-size: 2.3rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.4rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 2rem; /* Adjust margin */
+        padding: 1.5rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 2rem; /* Keep it consistent */
+        padding: 1.5rem;
+    }
+}
+
+
+@media screen and (max-width: 850px) {
+    .login-container h1 {
+        font-size: 2.0rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.2rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin: 1.2rem; /* Adjust margin */
+        padding: 0.75rem;
+        height: 50vh;
+        width: 38vw;
+    }
+
+    .faculty-login-container {
+        margin: 1.2rem; /* Keep it consistent */
+        padding: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-container h1 {
+        font-size: 2.0rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.2rem;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin:1.52rem; /* Adjust margin */
+        padding: 1.3rem; /* Adjust padding */
+    }
+
+    .faculty-login-container {
+        margin: 1.5rem; /* Keep it consistent */
+        padding: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .login-container h1 {
+        font-size: 1.85rem;
+    }
+
+    .login-container h5 {
+        font-size: 1.1rem;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    /* Reduce margin and padding */
+    .student-login-container {
+        margin:0.5rem; /* Adjust margin */
+        padding: 1rem ; /* Adjust padding */
+        height: 35vh;
+        width: 225px;
+    }
+
+    .faculty-login-container {
+        margin: 0.5rem; /* Keep it consistent */
+        padding: 1rem;
+        height: 35vh;
+        width: 225px;
+    }
+}

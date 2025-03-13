@@ -1,0 +1,144 @@
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+  position: relative;
+}
+.warden-heading1{
+  color: #800000;
+}
+.warden-card {
+  /*background: #fff;*/
+  /*color: #F68220;*/
+  border: 5px solid #800000;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+  width: 200px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+}
+
+.warden-card h3 {
+  /*color: #F68220;*/
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.warden-card p{
+  font-size: small;
+}
+
+
+.warden-card:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.warden-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 2px;
+  /*background: black;*/
+}
+
+/* Line Styling */
+.line-container {
+  display: flex;
+  justify-content: space-between;
+  width: 650px; /* Match the width of .mid-line */
+  position: relative;
+}
+
+.line1, .line2 {
+  width: 2px;
+  /*background: black;*/
+  height: 50px; 
+}
+
+/* Desktop View: Boys and Girls Wardens in the Same Row */
+.warden-group {
+  display: flex;
+  justify-content: space-around;
+  /* gap: 450px; */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.wardens {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Desktop View - Boys & Girls Side by Side */
+.boys-wardens, .girls-wardens {
+  display: flex;
+  gap: 30px;
+}
+
+.horizontal {
+  width: 0;
+  height: 5px;
+  position: absolute;
+}
+
+.mid-line {
+  width: 0;
+  height: 5px;
+  border: 1px solid black;
+  position: relative;
+}
+
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .warden-group {
+      flex-direction: row; /* Boys & Girls stay side by side */
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      width: 90vw;
+  }
+
+  .wardens {
+      display: flex;
+      flex-direction: column; /* Warden Cards appear one by one */
+      gap: 0px;
+      width: 50%; /* Equal width for both sides */
+  }
+
+  /* Boys Wardens (Right Side) */
+  .boys-wardens {
+      align-items: flex-end;
+      flex-direction: column;
+  }
+
+  /* Girls Wardens (Left Side) */
+  .girls-wardens {
+      align-items: flex-start; 
+      flex-direction: column;
+  }
+
+  .warden-card {
+      width: 180px; /* Slightly smaller for mobile */
+  }
+
+  .line-container {
+      width: 60vw;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+
+}

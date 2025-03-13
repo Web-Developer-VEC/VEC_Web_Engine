@@ -1,0 +1,296 @@
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.containers {
+  width: 100%;
+  margin: 0;
+}
+
+/* Card-like content containers */
+.content-section {
+  /*background-color: #ffffff;*/
+  padding: 20px; /* Adjust padding for better spacing */
+  border-radius: 12px; /* Slightly less rounded for a modern look */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Reduced spacing between cards */
+  transition: all 0.3s ease;
+  width: 77vw;
+}
+
+/* .psos-section:hover,
+.pos-section:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px); 
+} */
+
+.content-section h2,
+.psos-section h2,
+.pos-section h2 {
+  /*color: #1a202c; !* Darker text color for emphasis *!*/
+  font-size: 22px; /* Adjusted size for small screens */
+  margin-bottom: 16px;
+}
+
+
+
+/* Active row to show sub-content */
+/* Main content row */
+.row-item {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column; /* Stack sub-rows below */
+}
+
+/* Active row to show sub-content */
+.row-item.active {
+  /*background-color: #f1f1f1;*/
+}
+
+/* Sub-row content container, initially hidden */
+.sub-row-container {
+  display: none;
+  margin-left: 20px; /* Indent for sub-content */
+  margin-top: 10px; /* Space between main row and sub-row */
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  /*background-color: #f9fafb;*/
+}
+
+/* Show sub-content when the row is active */
+.sub-row-container {
+  display: block;
+}
+
+
+
+/* Show sub-content when activeRegulation is clicked */
+.sub-row-container.show {
+  display: block;
+}
+
+/* Accordion styles for PO and PSO sections */
+.accordion-item-cir {
+  margin: 10px 0;
+}
+
+.accordion-body {
+  display: none;
+  padding-left: 20px;
+}
+
+.accordion-body.show {
+  display: block;
+}
+
+
+/* Row and Item Styling */
+
+
+.row-item:last-child {
+  /*border-bottom: none;*/
+}
+
+.row-item:hover {
+  /*background-color: #edf2f7;*/
+}
+
+.row-item p {
+  font-size: 16px;
+  margin-bottom: 0rem;
+  /*color: #4a5568;*/
+  font-weight: 500;
+  text-transform: capitalize;
+}
+/* Buttons and Dropdowns */
+.options-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+  align-items:flex-start;
+  margin-top: -25px; /* Centers the button vertically */
+}
+
+.options-btn {
+  font-size: 14px;
+  font-weight: bold;
+  /*background-color: #fca311;*/
+  /*color: #fff;*/
+  border-radius: 25px;
+  padding: 8px 20px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+
+.options-btn:hover {
+  /*background-color: #e07b00;*/
+  transform: scale(1.05);
+}
+
+.options-dropdown {
+  position: absolute;
+  right: 0;
+  /*background-color: white;*/
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: none;
+  width: 150px;
+  margin-top: -5px; /* Optional: adds a small gap between the button and dropdown */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999; /* Ensures the dropdown is rendered on top */
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  /*background-color: #f1f1f1;*/
+}
+
+/* Calendar Section */
+.calendar-section h4 {
+  margin-top: 20px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.calendar-section button {
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-section button:hover {
+  background-color: #45a049;
+}
+
+/* Accordion Styles */
+.accordion-item-cir {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  /*background-color: #fff;*/
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  margin: 0;
+}
+
+.accordion-buttons {
+  /*background-color: #f9fafb;*/
+  border: none;
+  font-size: 18px;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  /*color: #1d3557;*/
+  font-weight: 600;
+}
+
+.accordion-buttons:hover {
+  /*background-color: #f1f5f9;*/
+  transform: scale(1.03);
+}
+
+.accordion-buttons:focus {
+  box-shadow: none;
+}
+
+.accordion-body {
+  display: none;
+  padding: 20px;
+  font-size: 16px;
+  /*background-color: #f7f9fc;*/
+  border-radius: 8px;
+  margin-top: 10px;
+  /*color: #333;*/
+  transition: all 0.3s ease;
+}
+
+.accordion-body.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Smooth SlideDown Animation */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-body {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+.accordion-body.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Media Queries for responsive design */
+@media (max-width:1024px){
+  .content-section{
+    width: 70vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .row {
+    gap: 0;
+  }
+
+  .content-section {
+    padding: 20px;
+    width: 96vw;
+  }
+
+  .options-btn,
+  .calendar-section button {
+    padding: 8px 20px;
+  }
+
+  .accordion-buttons {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .content-section h2,
+  .psos-section h2,
+  .pos-section h2 {
+    font-size: 20px;
+  }
+}

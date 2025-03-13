@@ -1,0 +1,116 @@
+.phd .contain {
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }
+  
+  .phd .left1 {
+    width: 100%;
+    border-right: 8px solid yellow ;
+  }
+  
+  .phd-h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+  }
+  
+  .phd-dep p {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 4px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+  }
+  
+  .phd .phd-logo {
+    color: black;
+    height: 1rem;
+    margin-right: 5px;
+  }
+  
+  /* Large Screens (Desktops & Large Tablets) */
+  @media (max-width: 1200px) {
+    .phd .contain {
+      margin: 4rem auto;
+    }
+  
+    .phd-h1 {
+      font-size: 22px;
+    }
+  
+    .phd-dep p {
+      font-size: 17px;
+    }
+  }
+  
+  /* Medium Screens (Tablets) */
+  @media (max-width: 992px) {
+    .phd .contain {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 3rem auto;
+    }
+  
+    .phd .left1 {
+      width: 100%;
+      padding: 1rem;
+    }
+  
+    .phd-h1 {
+      font-size: 20px;
+    }
+  
+    .phd-dep p {
+      font-size: 16px;
+    }
+  }
+  
+  /* Small Screens (Mobile) */
+  @media (max-width: 768px) {
+    .phd .contain {
+      width: 95%;
+      margin: 2rem auto;
+    }
+  
+    .phd .left1 {
+      padding: 1rem;
+    }
+  
+    .phd-h1 {
+      font-size: 18px;
+      text-align: left;
+    }
+  
+    .phd-dep p {
+      font-size: 15px;
+    }
+  }
+  
+  /* Extra Small Screens (Phones) */
+  @media (max-width: 480px) {
+    .phd .contain {
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+  
+    .phd-h1 {
+      font-size: 16px;
+      text-align: justify;
+    }
+  
+    .phd-dep p {
+      font-size: 14px;
+      text-align: justify;
+
+    }
+  }
+  

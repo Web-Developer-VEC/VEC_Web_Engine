@@ -1,0 +1,109 @@
+.research-bookpublication-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.research-bookpublication-title {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-left: 5px solid #ffe102;
+    border-right: 5px solid #ffe102;
+    border-radius: 8px;
+    color: #800000;
+    margin-bottom: 30px;
+}
+
+/* Buttons container */
+.research-bookpublication-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 24px;
+}
+
+/* Button styles */
+.research-bookpublication-button {
+    padding: 10px 12px;
+    font-size: 16px;
+    background-color: #ffe102; /* Initial button color (yellow) */
+    color: #000; /* Initial text color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.research-bookpublication-button:hover {
+    transform: scale(1.1);
+}
+
+/* Active button styles */
+.research-bookpublication-button.active {
+    background-color: #800000; /* Active button color (dark red) */
+    color: white; /* Active font color */
+    transform: scale(1.1);
+    
+}
+
+/* iFrame container */
+.research-bookpublication-iframe-container {
+    width: 75%;
+    height: 500px; /* Adjusted iframe height */
+    border-radius: 8px;
+}
+
+/* Media Query for Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    .research-bookpublication-title {
+        font-size: 20px; /* Reduced font size for tablets */
+    }
+
+    .research-bookpublication-button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .research-bookpublication-iframe-container {
+        width: 95%; /* Increased iframe width for tablets */
+        height: 400px; /* Adjusted iframe height */
+    }
+}
+
+/* Media Query for Mobile Devices (480px and below) */
+@media screen and (max-width: 480px) {
+    .research-bookpublication-title {
+        font-size: 18px; /* Reduced font size for mobile */
+    }
+
+    /* Updated button container to use CSS Grid for 3x2 layout */
+    .research-bookpublication-button-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 buttons per row */
+        gap: 8px;
+        width: 100%;
+        max-width: 320px; /* Ensure buttons fit in mobile screen */
+    }
+
+    /* Ensure the last row (if it has less than 3 buttons) is centered */
+    .research-bookpublication-button-container:has(.research-bookpublication-button:nth-child(4)) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .research-bookpublication-button {
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .research-bookpublication-iframe-container {
+        width: 100%;
+        height: 350px; /* Adjusted iframe height for mobile */
+    }
+}

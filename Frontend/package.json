@@ -10,6 +10,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@heroicons/react": "^2.1.5",
+    "@react-three/drei": "^10.0.4",
+    "@react-three/fiber": "^8.18.0",
+    "@tailwindcss/vite": "^4.0.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,22 +20,32 @@
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "browserify-zlib": "^0.2.0",
+    "date-fns": "^4.1.0",
+    "file-saver": "^2.0.5",
     "framer-motion": "^11.16.0",
     "https-browserify": "^1.0.0",
+    "jspdf": "^3.0.0",
+    "jspdf-autotable": "^3.8.4",
     "landing": "file:",
     "lucide-react": "^0.469.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
+    "react-calendar": "^5.1.0",
+    "react-csv": "^2.2.2",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
+    "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.14.1",
     "react-lottie-player": "^2.1.0",
-    "react-router-dom": "^7.1.1",
+    "react-qr-barcode-scanner": "^2.0.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.3",
+    "react-tilt": "^1.0.2",
     "react-transition-group": "^4.4.5",
+    "recharts": "^2.15.1",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.83.1",
     "sass-loader": "^16.0.4",
@@ -40,9 +53,13 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "styled-components": "^6.1.14",
+    "sweetalert2": "^11.17.2",
+    "three": "^0.173.0",
+    "universal-cookie": "^7.2.2",
     "url": "^0.11.4",
     "util": "^0.12.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -69,6 +86,6 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.17"
   }
 }

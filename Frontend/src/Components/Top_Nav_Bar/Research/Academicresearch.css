@@ -1,0 +1,109 @@
+.research-academicresearch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.research-academicresearch-title {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-left: 5px solid #ffe102;
+    border-right: 5px solid #ffe102;
+    border-radius: 8px;
+    color: #800000;
+    margin-bottom: 30px;
+}
+
+/* Buttons container */
+.research-academicresearch-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 24px;
+}
+
+/* Button styles */
+.research-academicresearch-button {
+    padding: 10px 12px;
+    font-size: 16px;
+    background-color: #ffe102; /* Initial button color (yellow) */
+    color: #000; /* Initial text color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.research-academicresearch-button:hover {
+    transform: scale(1.1);
+}
+
+/* Active button styles */
+.research-academicresearch-button.active {
+    background-color: #800000; /* Active button color (dark red) */
+    color: white; /* Active font color */
+    transform: scale(1.1);
+    
+}
+
+/* iFrame container */
+.research-academicresearch-iframe-container {
+    width: 75%;
+    height: 500px; /* Adjusted iframe height */
+    border-radius: 8px;
+}
+
+/* Media Query for Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    .research-academicresearch-title {
+        font-size: 20px;
+    }
+
+    .research-academicresearch-button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .research-academicresearch-iframe-container {
+        width: 95%;
+        height: 400px; /* Adjusted iframe height */
+    }
+}
+
+/* Media Query for Mobile Devices (480px and below) */
+@media screen and (max-width: 480px) {
+    .research-academicresearch-title {
+        font-size: 18px;
+    }
+
+    /* Updated button container to use CSS Grid for 3x2 layout */
+    .research-academicresearch-button-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Ensure the last row (if it has less than 3 buttons) is centered */
+    .research-academicresearch-button-container:has(.research-academicresearch-button:nth-child(4)) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .research-academicresearch-button {
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .research-academicresearch-iframe-container {
+        width: 100%;
+        height: 350px; /* Adjusted iframe height */
+    }
+}

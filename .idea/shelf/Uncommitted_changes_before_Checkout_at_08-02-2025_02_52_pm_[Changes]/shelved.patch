@@ -1,0 +1,79 @@
+Index: Frontend/public/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"utf-8\" />\r\n    <link rel=\"icon\" href=\"%PUBLIC_URL%/VEC_LOGO.ico\" />\r\n    <!-- <meta name=\"viewport\" content=\"width=800\" /> -->\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">\r\n\r\n    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>\r\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\" crossorigin=\"anonymous\">\r\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\" crossorigin=\"anonymous\"></script>\r\n    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>\r\n    <link href=\"https://fonts.cdnfonts.com/css/trajan-pro\" rel=\"stylesheet\">  \r\n    <link href=\"https://fonts.cdnfonts.com/css/goudy-old-style\" rel=\"stylesheet\">\r\n    <link href=\"https://fonts.cdnfonts.com/css/futura-pt\" rel=\"stylesheet\">\r\n    <meta name=\"theme-color\" content=\"#000000\" />\r\n    <meta\r\n      name=\"description\"\r\n      content=\"Web site created using create-react-app\"\r\n    />\r\n    <link rel=\"apple-touch-icon\" href=\"%PUBLIC_URL%/logo192.png\" />\r\n    <!--\r\n      manifest.json provides metadata used when your web app is installed on a\r\n      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/\r\n    -->\r\n    <link rel=\"manifest\" href=\"%PUBLIC_URL%/manifest.json\" />\r\n    <!--\r\n      Notice the use of %PUBLIC_URL% in the tags above.\r\n      It will be replaced with the URL of the `public` folder during the build.\r\n      Only files inside the `public` folder can be referenced from the HTML.\r\n\r\n      Unlike \"/favicon.ico\" or \"favicon.ico\", \"%PUBLIC_URL%/favicon.ico\" will\r\n      work correctly both with client-side routing and a non-root public URL.\r\n      Learn how to configure a non-root public URL by running `npm run build`.\r\n    -->\r\n\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css\">\r\n    <title>Home - VEC</title>\r\n  </head>\r\n  <body class=\"z-10\">\r\n    <noscript>You need to enable JavaScript to run this app.</noscript>\r\n    <div id=\"root\"></div>\r\n    <!--\r\n      This HTML file is a template.\r\n      If you open it directly in the browser, you will see an empty page.\r\n\r\n      You can add webfonts, meta tags, or analytics to this file.\r\n      The build step will place the bundled scripts into the <body> tag.\r\n\r\n      To begin the development, run `npm start` or `yarn start`.\r\n      To create a production bundle, use `npm run build` or `yarn build`.\r\n    -->\r\n  </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Frontend/public/index.html b/Frontend/public/index.html
+--- a/Frontend/public/index.html	(revision 8611e1306d9a8b77a01e94ec211763ced03582ec)
++++ b/Frontend/public/index.html	(date 1739006556486)
+@@ -3,7 +3,7 @@
+   <head>
+     <meta charset="utf-8" />
+     <link rel="icon" href="%PUBLIC_URL%/VEC_LOGO.ico" />
+-    <!-- <meta name="viewport" content="width=800" /> -->
++     <meta name="viewport" content="width=800" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+     <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+Index: Frontend/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"landing\",\r\n  \"version\": \"0.1.0\",\r\n  \"private\": true,\r\n  \"proxy\": \"http://localhost:5000\",\r\n  \"dependencies\": {\r\n    \"@fortawesome/fontawesome-svg-core\": \"^6.7.2\",\r\n    \"@fortawesome/free-brands-svg-icons\": \"^6.7.2\",\r\n    \"@fortawesome/free-regular-svg-icons\": \"^6.7.2\",\r\n    \"@fortawesome/free-solid-svg-icons\": \"^6.7.2\",\r\n    \"@fortawesome/react-fontawesome\": \"^0.2.2\",\r\n    \"@heroicons/react\": \"^2.1.5\",\r\n    \"@testing-library/jest-dom\": \"^5.17.0\",\r\n    \"@testing-library/react\": \"^13.4.0\",\r\n    \"@testing-library/user-event\": \"^13.5.0\",\r\n    \"assert\": \"^2.1.0\",\r\n    \"axios\": \"^1.7.9\",\r\n    \"bootstrap\": \"^5.3.3\",\r\n    \"browserify-zlib\": \"^0.2.0\",\r\n    \"framer-motion\": \"^11.16.0\",\r\n    \"https-browserify\": \"^1.0.0\",\r\n    \"landing\": \"file:\",\r\n    \"lucide-react\": \"^0.469.0\",\r\n    \"primeicons\": \"^7.0.0\",\r\n    \"primereact\": \"^10.9.1\",\r\n    \"react\": \"^18.3.1\",\r\n    \"react-bootstrap\": \"^2.10.4\",\r\n    \"react-dom\": \"^18.3.1\",\r\n    \"react-icons\": \"^5.3.0\",\r\n    \"react-intersection-observer\": \"^9.14.1\",\r\n    \"react-lottie-player\": \"^2.1.0\",\r\n    \"react-router-dom\": \"^7.1.1\",\r\n    \"react-scripts\": \"5.0.1\",\r\n    \"react-slick\": \"^0.30.3\",\r\n    \"react-transition-group\": \"^4.4.5\",\r\n    \"resolve-url-loader\": \"^5.0.0\",\r\n    \"sass\": \"^1.83.1\",\r\n    \"sass-loader\": \"^16.0.4\",\r\n    \"slick-carousel\": \"^1.8.1\",\r\n    \"stream-browserify\": \"^3.0.0\",\r\n    \"stream-http\": \"^3.2.0\",\r\n    \"styled-components\": \"^6.1.14\",\r\n    \"url\": \"^0.11.4\",\r\n    \"util\": \"^0.12.5\",\r\n    \"web-vitals\": \"^2.1.4\"\r\n  },\r\n  \"scripts\": {\r\n    \"start\": \"react-scripts start\",\r\n    \"build\": \"react-scripts build\",\r\n    \"test\": \"react-scripts test\",\r\n    \"eject\": \"react-scripts eject\"\r\n  },\r\n  \"eslintConfig\": {\r\n    \"extends\": [\r\n      \"react-app\",\r\n      \"react-app/jest\"\r\n    ]\r\n  },\r\n  \"browserslist\": {\r\n    \"production\": [\r\n      \">0.2%\",\r\n      \"not dead\",\r\n      \"not op_mini all\"\r\n    ],\r\n    \"development\": [\r\n      \"last 1 chrome version\",\r\n      \"last 1 firefox version\",\r\n      \"last 1 safari version\"\r\n    ]\r\n  },\r\n  \"devDependencies\": {\r\n    \"tailwindcss\": \"^3.4.10\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Frontend/package.json b/Frontend/package.json
+--- a/Frontend/package.json	(revision 8611e1306d9a8b77a01e94ec211763ced03582ec)
++++ b/Frontend/package.json	(date 1739006390564)
+@@ -40,6 +40,7 @@
+     "stream-browserify": "^3.0.0",
+     "stream-http": "^3.2.0",
+     "styled-components": "^6.1.14",
++    "universal-cookie": "^7.2.2",
+     "url": "^0.11.4",
+     "util": "^0.12.5",
+     "web-vitals": "^2.1.4"
+Index: Frontend/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Frontend/package-lock.json b/Frontend/package-lock.json
+--- a/Frontend/package-lock.json	(revision 8611e1306d9a8b77a01e94ec211763ced03582ec)
++++ b/Frontend/package-lock.json	(date 1739006395215)
+@@ -44,6 +44,7 @@
+         "stream-browserify": "^3.0.0",
+         "stream-http": "^3.2.0",
+         "styled-components": "^6.1.14",
++        "universal-cookie": "^7.2.2",
+         "url": "^0.11.4",
+         "util": "^0.12.5",
+         "web-vitals": "^2.1.4"
+@@ -19437,6 +19438,25 @@
+         "node": ">=8"
+       }
+     },
++    "node_modules/universal-cookie": {
++      "version": "7.2.2",
++      "resolved": "https://registry.npmjs.org/universal-cookie/-/universal-cookie-7.2.2.tgz",
++      "integrity": "sha512-fMiOcS3TmzP2x5QV26pIH3mvhexLIT0HmPa3V7Q7knRfT9HG6kTwq02HZGLPw0sAOXrAmotElGRvTLCMbJsvxQ==",
++      "license": "MIT",
++      "dependencies": {
++        "@types/cookie": "^0.6.0",
++        "cookie": "^0.7.2"
++      }
++    },
++    "node_modules/universal-cookie/node_modules/cookie": {
++      "version": "0.7.2",
++      "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.7.2.tgz",
++      "integrity": "sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==",
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.6"
++      }
++    },
+     "node_modules/universalify": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/universalify/-/universalify-2.0.1.tgz",
