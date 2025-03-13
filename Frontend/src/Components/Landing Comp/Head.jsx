@@ -10,6 +10,7 @@ import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
+import { sup } from 'framer-motion/m';
 
 const Head = () => {
     const navigate = useNavigate();
@@ -18,9 +19,33 @@ const Head = () => {
     // const [hdr, setHdr] = useState("")
 
     const nacs = [Naac, Acrd, Nord, Tnea]
-    const hdrs = ["velammal@velammal.edu.in", "+91 99566 00420", "NBA", "NAAC", "NIRF", "IIC",
-        "Incubation Cell", "Alumni", "NSS", "NCC", "YRC", "Sports", "Transport", "Library", "Hostel",
-        "Other Facilities", "Grievances", "Login", "Fee Payments"]
+    const hdrs = [
+        { ttl: "IQAC", lnk: "/iqac" },
+        { ttl: "NBA", lnk: "/nba" },
+        { ttl: "NAAC", lnk: "/naac" },
+        { ttl: "NIRF", lnk: "/nirf" },
+        { ttl: "IIC", lnk: "/iic" },
+        { ttl: "Incubation Cell", lnk: "/incubation" },
+        { ttl: "Alumni", lnk: "/alumni" },
+        { ttl: "NSS", lnk: "/NSS" },
+        { ttl: "NCC", lnk: "/NCC" },
+        { ttl: "YRC", lnk: "/YRC" },
+        { ttl: "Sports", lnk: "/sports" },
+        { ttl: "Transport", lnk: "/transport" },
+        { ttl: "Library", lnk: "/library" },
+        { ttl: "Hostel", lnk: "/hosLanding" },
+        { ttl: "Other Facilities", lnk: "/other-facilities" },
+        { ttl: "Grievances", lnk: "/grievances" },
+        {
+            ttl: "Login",
+            lnk: "#",
+            sub: [
+                { ttl: "Student Login", lnk: "https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" },
+                { ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" },
+            ],
+        },
+    ];
+
     const socls = [
         {
             Name: "Instagram",
@@ -38,7 +63,12 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
+                {hrd: false, ttl: "About VEC", sup: [
+                    {hrd: false, ttl: "AICTE Approval", sup: [], lnk: ""},
+                    {hrd: false, ttl: "University Affiliation", sup: [], lnk: ""},
+                    {hrd: false, ttl: "Governing Body", sup: [], lnk: ""},
+                    {hrd: false, ttl: "Mandatory Disclosures", sup: [], lnk: ""},
+                ], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
                 {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
@@ -66,138 +96,6 @@ const Head = () => {
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
                 { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "" },
               ],
-            // sub: [
-            //     {hrd: true, ttl: "UG Courses", sup: [], lnk: ""},
-            //     {
-            //         hrd: false,
-            //         ttl: "Artificial Intelligence and Data Science",
-            //         sup: [],
-            //         lnk: "/dept/001",
-            //         deptID: "001",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Automobile Engineering",
-            //         sup: [],
-            //         lnk: "/dept/002",
-            //         deptID: "002",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Civil Engineering",
-            //         sup: [],
-            //         lnk: "/dept/004",
-            //         deptID: "004",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Computer Science and Engineering",
-            //         sup: [],
-            //         lnk: "/dept/005",
-            //         deptID: "005",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Computer Science and Engineering (Cyber Security)",
-            //         sup: [],
-            //         lnk: "/dept/006",
-            //         deptID: "006",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Electrical and Electronics Engineering",
-            //         sup: [],
-            //         lnk: "/dept/007",
-            //         deptID: "007",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Electronics and Communication Engineering",
-            //         sup: [],
-            //         lnk: "/dept/009",
-            //         deptID: "009",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Electronics and Instrumentation Engineering",
-            //         sup: [],
-            //         lnk: "/dept/008",
-            //         deptID: "008",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Information Technology",
-            //         sup: [],
-            //         lnk: "/dept/011",
-            //         deptID: "011",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Mechanical Engineering",
-            //         sup: [],
-            //         lnk: "/dept/013",
-            //         deptID: "013",
-            //     },
-            //     {hrd: true, ttl: "PG Courses", sup: [], lnk: ""},
-            //     {
-            //         hrd: false,
-            //         ttl: "M.E. Computer Science & Engineering",
-            //         sup: [],
-            //         lnk: "/dept/002",
-            //         deptID: "001",
-            //     }, //
-            //     {
-            //         hrd: false,
-            //         ttl: "M.E. Power System Engineering",
-            //         sup: [],
-            //         lnk: "/dept/002",
-            //         deptID: "001",
-            //     }, //
-            //     {
-            //         hrd: false,
-            //         ttl: "Master of Business Administration",
-            //         sup: [],
-            //         lnk: "/dept/002",
-            //         deptID: "001",
-            //     }, //
-            //     // {hrd: false, ttl: "", sup: [], lnk: ""},
-            //     {hrd: true, ttl: "Science & Humanities", sup: [], lnk: ""},
-            //     {
-            //         hrd: false,
-            //         ttl: "Chemistry",
-            //         sup: [],
-            //         lnk: "/dept/003",
-            //         deptID: "003",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "English",
-            //         sup: [],
-            //         lnk: "/dept/010",
-            //         deptID: "010",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Mathematicis",
-            //         sup: [],
-            //         lnk: "/dept/012",
-            //         deptID: "012",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Physics",
-            //         sup: [],
-            //         lnk: "/dept/015",
-            //         deptID: "015",
-            //     },
-            //     {
-            //         hrd: false,
-            //         ttl: "Tamil",
-            //         sup: [],
-            //         lnk: "/dept/002",
-            //         deptID: "001",
-            //     }, //
-            // ],
         },
         {
             main: "Admission",
@@ -298,22 +196,6 @@ const Head = () => {
         return arr
     }
 
-    // const hndlScrll = () => {
-    //     const pos = window.scrollY
-    //     const pos_thresh = 0
-    //     if (pos > pos_thresh) {
-    //         setHdr("showoff")
-    //     } else {
-    //         setHdr("")
-    //     }
-    //     setScroll(pos)
-    // }
-
-    // useEffeaccn{
-    //     window.addEventListener('scroll', hndlScrll, {passive: truatext dark:text-drkt//     return () => {
-    //         window.removeEventListener(text dark:text-drktll', hndlScrll)
-    //     }
-    // })
     return (
         <>
             <nav className='fixed z-[100] w-full'>
@@ -405,31 +287,54 @@ const Head = () => {
                     </div>
                 </div>
                 <div className='hidden lg:flex px-4 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt
-                gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
+                    gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
 
-                    <button onClick={() => navigate('/nba')} className='mt-1 h-fit md:block hidden'>{hdrs[2]}</button>
-                    <button onClick={() => navigate('/naac')} className='mt-1 h-fit md:block hidden'>{hdrs[3]}</button>
-                    <button onClick={() => navigate('/nirf')} className='mt-1 h-fit md:block hidden'>{hdrs[4]}</button>
-                    <button onClick={() => navigate('/iic')} className='mt-1 h-fit md:block hidden'>{hdrs[5]}</button>
-                    <button onClick={() => navigate('/incubation')} className='mt-1 h-fit md:block hidden'>{hdrs[6]}</button>
-                    <button onClick={() => navigate('/alumni')} className='mt-1 h-fit md:block hidden'>{hdrs[7]}</button>
-                    <button onClick={() => navigate('/NSS')} className='mt-1 h-fit md:block hidden'>{hdrs[8]}</button>
-                    <button onClick={() => navigate('/NCC')} className='mt-1 h-fit md:block hidden'>{hdrs[9]}</button>
-                    <button onClick={() => navigate('/YRC')} className='mt-1 h-fit md:block hidden'>{hdrs[10]}</button>
-                    <button onClick={() => navigate('/sports')} className='mt-1 h-fit md:block hidden'>{hdrs[11]}</button>
-                    <button onClick={() => navigate('/transport')} className='mt-1 h-fit md:block hidden'>{hdrs[12]}</button>
-                    <button onClick={() => navigate('/library')} className='mt-1 h-fit md:block hidden'>{hdrs[13]}</button>
-                    <button onClick={() => navigate('/hosLanding')} className='mt-1 h-fit md:block hidden'>{hdrs[14]}</button>
-                    <button onClick={() => navigate('/other-facilities')} className='mt-1 h-fit md:block hidden'>{hdrs[15]}</button>
-                    <button onClick={() => navigate('/grievances')} className='mt-1 h-fit md:block hidden'>{hdrs[16]}</button>
-                    <button className='truncate mt-1 h-fit md:block hidden' onClick={() => navigate('/login')}>{hdrs[17]}</button>
+                    {hdrs.map((hdr, index) => (
+                        !hdr.sub ? (
+                            // Render a button for items without a submenu
+                            <button
+                                key={index}
+                                onClick={() => hdr.lnk.startsWith('http') ? window.location.href = hdr.lnk : navigate(hdr.lnk)}
+                                className='mt-1 h-fit md:block hidden'
+                            >
+                                {hdr.ttl}
+                            </button>
+                        ) : (
+                            // Render a dropdown for items with a submenu
+                            <div key={index} className='group/nav relative transition-all rounded-xl'>
+                                <button className={`mt-1 h-fit md:block hidden`}>
+                                    {hdr.ttl}
+                                    {/* <ChevronDownIcon className='size-[1.3vmax] mb-1 ml-1 inline text-text dark:text-drkt'></ChevronDownIcon> */}
+                                </button>
+                                <div className={`grid grid-flow-row content-center rounded-lg outline 
+                                        group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
+                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
+                                        group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
+                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}>
+                                    {hdr.sub.map((subItem, i) => (
+                                        <a
+                                            key={i}
+                                            href={subItem.lnk}
+                                            className={`no-underline inline-block bg-[length:200%_100%] 
+                                                    bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
+                                                    bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
+                                                    w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500] hover:bg-[position:-100%_100%]`}
+                                            target='_blank'
+                                        >
+                                            <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt'>{subItem.ttl}</p>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                    ))}
 
                     {/* Payment Button */}
                     <button 
-                        onClick={() => window.location.href="https://easycollege.in/vecengg/college/webpayindex.aspx"} 
+                        onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
                         className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
     
-                        {hdrs[18]}
+                        fees payment
                     </button>
 
                     {/* Social Icons */}
@@ -443,7 +348,6 @@ const Head = () => {
                             </a>
                         ))}
                     </div>
-                    
                 </div>
                 <div
                     className='block lg:hidden h-fit'>

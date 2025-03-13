@@ -1,72 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./nirf.css"; // Importing the CSS file
 import Banner from "../Banner";
-
-const nirfData = [
-  {
-    year: "2025",
-    categories: [
-      { name: "Overall", link: "https://example.com/nirf2025-overall" },
-      { name: "Engineering", link: "https://example.com/nirf2025-engineering" },
-      { name: "SDG Institution", link: "https://example.com/nirf2025-sdg" },
-      { name: "Innovation", link: "https://example.com/nirf2025-innovation" },
-    ],
-  },
-  {
-    year: "2024",
-    categories: [
-      { name: "Overall", link: "https://example.com/nirf2024-overall" },
-      { name: "Engineering", link: "https://example.com/nirf2024-engineering" },
-    ],
-  },
-  {
-    year: "2023",
-    categories: [
-      { name: "Overall", link: "https://example.com/nirf2023-overall" },
-      { name: "Engineering", link: "https://example.com/nirf2023-engineering" },
-    ],
-  },
-  {
-    year: "2022",
-    categories: [
-      { name: "Overall", link: "#" },
-      { name: "Engineering", link: "#" },
-    ],
-  },
-  {
-    year: "2021",
-    categories: [
-      { name: "Overall", link: "#" },
-      { name: "Engineering", link: "#" },
-    ],
-  },
-  {
-    year: "2020",
-    categories: [
-      { name: "Engineering", link: "#" },
-    ],
-  },
-  {
-    year: "2019",
-    categories: [
-      { name: "Engineering", link: "#" },
-    ],
-  },
-  {
-    year: "2018",
-    categories: [
-      { name: "Engineering", link: "#" },
-    ],
-  },
-  {
-    year: "2017",
-    categories: [
-      { name: "Engineering", link: "#" },
-    ],
-  },
-];
+import axios from "axios";
 
 const NIRF = ({ toggle, theme, isLoading }) => {
+  const [nirfData, setNirfData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/nirf");
+        const transformedData = transformFetchedData(response.data);
+        setNirfData(transformedData);
+      } catch (error) {
+        console.error("Error fetching NIRF data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const transformFetchedData = (fetchedData) => {
+    if (!fetchedData || fetchedData.length === 0) return [];
+
+    const { year, content, "pdf path": pdfPaths } = fetchedData[0];
+
+    return year.map((yr, index) => ({
+      year: yr.toString(),
+      categories: content[index].map((category, catIndex) => ({
+        name: category,
+        link: pdfPaths[index][catIndex], // Use the corresponding PDF path as the link
+      })),
+    }));
+  };
+
   return (
     <>
       <Banner
@@ -98,7 +65,7 @@ const NIRF = ({ toggle, theme, isLoading }) => {
         </div>
         <h2 className="nirf-title">NATIONAL INSTITUTIONAL RANKING FRAMEWORK</h2>
         <div className="nirf-grid">
-          {nirfData.map((item, index) => (
+          {nirfData?.map((item, index) => (
             <div key={index} className="nirf-year">
               <h3>NIRF {item.year}</h3>
               {item.categories.map((category, catIndex) => (

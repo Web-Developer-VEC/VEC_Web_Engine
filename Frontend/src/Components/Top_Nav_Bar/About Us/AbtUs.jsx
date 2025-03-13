@@ -9,7 +9,7 @@ const AbtUs = ({ theme, toggle }) => {
 
     const secSub = "An Autonomous Institution";
     const secCnt = "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.";
-    const sec2Cnt = "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV NORD, India  in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.";
+    const sec2Cnt = "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India  in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.";
     const sec3Cnt = "Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence.";
     
     const lis = [sec2Cnt, sec3Cnt];

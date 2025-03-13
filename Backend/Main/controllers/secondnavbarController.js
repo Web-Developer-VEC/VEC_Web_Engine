@@ -65,9 +65,28 @@ async function getiic(req, res) {
     }
 }
 
+async function getIqac(req, res) {
+        try {
+            const db = getDb();
+            const collection = db.collection("IQAC");
+    
+            const data = await collection.find({}).toArray();
+    
+            if (!data || data.length === 0) {
+                return res.status(404).json({ message: "No data found" });
+            }
+    
+            res.status(200).json({ data: data });
+        } catch (error) {
+            console.error("❌ Error fetching data:", error);
+            return res.status(500).json({ error: "Internal server error" });
+        }
+    }
+
 module.exports = {
     getNaac,
     getNba,
     getNirf,
-    getiic
+    getiic,
+    getIqac
 }

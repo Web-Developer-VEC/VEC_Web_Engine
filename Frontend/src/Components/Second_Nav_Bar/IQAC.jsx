@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { TfiControlBackward, TfiControlForward, TfiControlPause, TfiControlPlay } from "react-icons/tfi";
 import "./IQAC.css";
 import Banner from "../Banner";
+import axios from "axios";
 
 // Add the missing UrlParser function
 const UrlParser = (url) => {
@@ -21,216 +22,20 @@ const IQAC = () => {
     const [selectedAction, setSelectedAction] = useState(null);
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
+    console.log("Data",iqacData);
+    
 
     useEffect(() => {
         // Simulate fetching data from a local source
-        const fetchData = () => {
-            const iicData = {
-                _id: "67b40f5e2975e6716309cc19",
-                imagepath: [
-                    "/static/images/iic/image1.jpg",
-                    "/static/images/iic/image2.jpg",
-                    "/static/images/iic/image3.jpg",
-                    "/static/images/iic/image4.jpg",
-                    "/static/images/iic/image5.jpg",
-                    "/static/images/iic/image6.jpg",
-                    "/static/images/iic/image7.jpg",
-                    "/static/images/iic/image8.jpg",
-                    "/static/images/iic/image9.jpg",
-                    "/static/images/iic/image10.jpg",
-                    "/static/images/iic/image11.jpg",
-                    "/static/images/iic/image12.jpg"
-                ],
-                events: {
-                    year: ["2020 - 21", "2021 - 22", "2022 - 23", "2023 - 24"],
-                    pdfpath: [
-                        "/static/docs/iic/event1.pdf",
-                        "/static/docs/iic/event2.pdf",
-                        "/static/docs/iic/event3.pdf",
-                        "/static/docs/iic/event4.pdf"
-                    ]
-                },
-                policy: {
-                    name: [
-                        "National Innovation Startup Policy",
-                        "Tamilnadu Innovation and Startup Policy",
-                        "TNMSME Policy",
-                        "Velammal Innovation and Startup Policy"
-                    ],
-                    pdfpath: [
-                        "/static/docs/iic/policy1.pdf",
-                        "/static/docs/iic/policy2.pdf",
-                        "/static/docs/iic/policy3.pdf",
-                        "/static/docs/iic/policy4.pdf"
-                    ]
-                },
-                members: {
-                    faculty: [
-                        {
-                            name: "Dr.A.Nirmal Raj",
-                            designation: "HoD MBA",
-                            role: "President",
-                            imagepath: "/static/images/iic/faculty1.jpg"
-                        },
-                        {
-                            name: "Dr.A.Balaji Ganesh",
-                            designation: "Research Dean",
-                            role: "Vice President",
-                            imagepath: "/static/images/iic/faculty2.jpg"
-                        },
-                        {
-                            name: "Mr.Viveak M Palanivasan",
-                            designation: "Founder of Voltrix Mobility",
-                            role: "Industry Expert",
-                            imagepath: "/static/images/iic/faculty3.jpg"
-                        },
-                        {
-                            name: "Member 4",
-                            designation: "Designation",
-                            role: "Industry Expert",
-                            imagepath: "/static/images/iic/faculty4.jpg"
-                        },
-                        {
-                            name: "Member 5",
-                            designation: "Designation",
-                            role: "Industry Expert",
-                            imagepath: "/static/images/iic/faculty5.jpg"
-                        },
-                        {
-                            name: "Member 6",
-                            designation: "Designation",
-                            role: "Industry Expert",
-                            imagepath: "/static/images/iic/faculty6.jpg"
-                        }
-                    ],
-                    // Added coordinator data
-                    coordinator: {
-                        name: "Dr. Jane Smith",
-                        designation: "Professor, Dept of Computer Science",
-                        role: "IQAC Coordinator",
-                        email: "janesmith@example.edu",
-                        phone: "+91 98765 43210",
-                        imagepath: "/static/images/iic/coordinator.jpg"
-                    }
-                },
-                NIR: {
-                    RegistrationStatistics: {
-                        name: [
-                            "Total Individuals Registered",
-                            "Total Ideas Submitted",
-                            "Total Ideas Assigned",
-                            "Total Ideas Verified",
-                            "Total Ideas Recommended",
-                            "Total Ideas Implemented"
-                        ],
-                        count: [2119, 265, 254, 250, 220, 180]
-                    },
-                    InnovationMetrics: {
-                        name: [
-                            "Patents Filed",
-                            "Startups Incubated",
-                            "Research Publications",
-                            "Industry Collaborations",
-                            "Funding Received",
-                            "Mentorship Hours"
-                        ],
-                        count: [45, 32, 156, 28, "₹2.5Cr", 1200]
-                    },
-                    ImpactAssessment: {
-                        name: [
-                            "Student Participation",
-                            "Faculty Involvement",
-                            "Success Rate",
-                            "Industry Adoption",
-                            "Community Impact",
-                            "Overall Rating"
-                        ],
-                        count: ["85%", "92%", "78%", "45%", "High", "4.8/5"]
-                    }
-                },
-                otherstuffs: {
-                    name: ["STARTUP", "SEED_MONEY", "MENTEE_INSTRUCTIONS", "PATENTS"],
-                    path: [
-                        "/static/docs/iic/startup.pdf",
-                        "/static/docs/iic/seed_money.pdf",
-                        "/static/docs/iic/mentee_instructions.pdf",
-                        "/static/docs/iic/patents.pdf"
-                    ]
-                },
-                // Added new data for the requested features
-                objectives: {
-                    about: "The Internal Quality Assurance Cell (IQAC) was established in 2004 as per the guidelines of the National Assessment and Accreditation Council (NAAC). The IQAC is responsible for developing, implementing, and continuously improving the quality systems within the institution.",
-                    objectives: [
-                        "To develop a system for conscious, consistent and catalytic action to improve the academic and administrative performance of the institution.",
-                        "To promote measures for institutional functioning towards quality enhancement through internalization of quality culture and institutionalization of best practices.",
-                        "To provide a sound basis for decision-making to improve institutional functioning.",
-                        "To act as a dynamic system for quality changes in higher education."
-                    ]
-                },
-                minutesOfMeetings: {
-                    years: ["2021-22", "2022-23", "2023-24"],
-                    paths: [
-                        "/static/docs/iqac/minutes_2021-22.pdf",
-                        "/static/docs/iqac/minutes_2022-23.pdf",
-                        "/static/docs/iqac/minutes_2023-24.pdf"
-                    ]
-                },
-                academicAdminAudit: {
-                    years: ["2021-22", "2022-23", "2023-24"],
-                    paths: [
-                        "/static/docs/iqac/audit_2021-22.pdf",
-                        "/static/docs/iqac/audit_2022-23.pdf",
-                        "/static/docs/iqac/audit_2023-24.pdf"
-                    ]
-                },
-                gallery: {
-                    images: [
-                        "/static/images/iqac/gallery1.jpg",
-                        "/static/images/iqac/gallery2.jpg",
-                        "/static/images/iqac/gallery3.jpg",
-                        "/static/images/iqac/gallery4.jpg"
-                    ],
-                    captions: [
-                        "IQAC Workshop on Quality Enhancement",
-                        "Faculty Development Program",
-                        "NAAC Peer Team Visit",
-                        "Quality Improvement Seminar"
-                    ]
-                },
-                strategicPlan: {
-                    years: ["2021-25", "2025-30"],
-                    paths: [
-                        "/static/docs/iqac/strategic_plan_2021-25.pdf",
-                        "/static/docs/iqac/strategic_plan_2025-30.pdf"
-                    ]
-                },
-                bestPractices: {
-                    years: ["2021-22", "2022-23", "2023-24"],
-                    paths: [
-                        "/static/docs/iqac/best_practices_2021-22.pdf",
-                        "/static/docs/iqac/best_practices_2022-23.pdf",
-                        "/static/docs/iqac/best_practices_2023-24.pdf"
-                    ]
-                },
-                codeOfEthics: {
-                    path: "/static/docs/iqac/code_of_ethics.pdf"
-                },
-                aqar: {
-                    years: ["2020-21", "2021-22", "2022-23", "2023-24"],
-                    paths: [
-                        "/static/docs/iqac/aqar_2020-21.pdf",
-                        "/static/docs/iqac/aqar_2021-22.pdf",
-                        "/static/docs/iqac/aqar_2022-23.pdf",
-                        "/static/docs/iqac/aqar_2023-24.pdf"
-                    ]
-                },
-                isoCertificate: {
-                    path: "/static/docs/iqac/iso_certificate.pdf"
-                }
-            };
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/iqac');
+                setIqacData(response.data.data[0]);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching data",error);
+            }
 
-            setIqacData(iicData);
-            setLoading(false);
         };
 
         fetchData();
@@ -240,19 +45,19 @@ const IQAC = () => {
     const certificateArray =
         iqacData?.certificate?.year?.map((year, index) => ({
             year,
-            path: UrlParser(iqacData.certificate.pdfpath[index]),
+            path: UrlParser(iqacData?.certificate.pdfpath[index]),
         })) || [];
 
     const eventsOrganizedArray =
         iqacData?.events?.year?.map((year, index) => ({
             year,
-            path: UrlParser(iqacData.events.pdfpath[index]),
+            path: UrlParser(iqacData?.events.pdfpath[index]),
         })) || [];
 
     const policyArray =
         iqacData?.policy?.name?.map((name, index) => ({
             year: name,
-            path: UrlParser(iqacData.policy.pdfpath[index]),
+            path: UrlParser(iqacData?.policy.pdfpath[index]),
         })) || [];
 
     // Update members array
@@ -435,13 +240,13 @@ const IQAC = () => {
     };
 
     return (
-        <div>
+        <>
             <Banner
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
                 headerText="IQAC"
                 subHeaderText="IQAC"
             />
-            <div className="nirf-content">
+            <div className="iqac-content">
                 <div className="iqac-years">
                     {[
                         "Objectives", 
@@ -480,12 +285,12 @@ const IQAC = () => {
                     ) : selectedYear === "Gallery" ? (
                         renderGalleryContent()
                     ) : (
-                        <div className="nirf-year-actions faculty-icc">
-                            {selectedYear === "Events Organized" &&
+                        <div className="iqac-year-actions faculty-icc">
+                            {/* {selectedYear === "Events Organized" &&
                                 eventsOrganizedArray.map((action, index) => (
                                     <div
                                         key={index}
-                                        className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                                        className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
                                         onClick={() => openPdf("Events Organized", action.year)}
                                     >
                                         {action.year}
@@ -496,7 +301,7 @@ const IQAC = () => {
                                     <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Policy", action.year)}>
                                         {action.year}
                                     </div>
-                                ))}
+                                ))} */}
                             {selectedYear === "Members" && (
                                 <div className="members-grid">
                                     {membersArray.map((member, index) => (
@@ -511,47 +316,47 @@ const IQAC = () => {
                             )}
                             {selectedYear === "Minutes of Meetings" &&
                                 minutesOfMeetingsArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Minutes of Meetings", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Minutes of Meetings", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Academic and Administrative Audit" &&
                                 academicAdminAuditArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Academic and Administrative Audit", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Academic and Administrative Audit", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Strategic Development Plan" &&
                                 strategicPlanArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Strategic Development Plan", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Strategic Development Plan", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Best Practices" &&
                                 bestPracticesArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Best Practices", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Best Practices", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "Code of Ethics" && (
-                                <div className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Code of Ethics", "Code of Ethics")}>
+                                <div className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Code of Ethics", "Code of Ethics")}>
                                     Code of Ethics
                                 </div>
                             )}
                             {selectedYear === "AQAR" &&
                                 aqarArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("AQAR", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("AQAR", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
                             {selectedYear === "ISO Certificate" && (
-                                <div className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("ISO Certificate", "ISO Certificate")}>
+                                <div className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("ISO Certificate", "ISO Certificate")}>
                                     ISO Certificate
                                 </div>
                             )}
                             {selectedYear === "Other Stuffs" &&
                                 otherStuffsArray.map((action, index) => (
-                                    <div key={index} className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Other Stuffs", action.year)}>
+                                    <div key={index} className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={() => openPdf("Other Stuffs", action.year)}>
                                         {action.year}
                                     </div>
                                 ))}
@@ -559,8 +364,8 @@ const IQAC = () => {
                     )}
 
                     {selectedAction && (
-                        <div className="nirf-pdf-container">
-                            <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                        <div className="nirf-pdf-container iqac-pdf-container">
+                            <h3 className="text-center">{`Viewing: ${selectedAction.year}`}</h3>
                             <embed
                                 className="embed"
                                 src={
@@ -592,7 +397,7 @@ const IQAC = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
