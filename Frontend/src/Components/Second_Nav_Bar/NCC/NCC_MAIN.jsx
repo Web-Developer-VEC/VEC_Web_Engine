@@ -22,7 +22,7 @@ const NCCMAIN = ({toggle, theme}) => {
         {/* Buttons */}
         {activePage === "buttons" && (
           <motion.div
-            className="NCC-buttons transition-transform duration-300 ease-in-out"
+            className="NCC-buttons min-h-[40vh] transition-transform duration-300 ease-in-out"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -51,7 +51,7 @@ const NCCMAIN = ({toggle, theme}) => {
                   exit={{x: "100%"}}
                   transition={{duration: 0.5 }}
           >
-            <h2 className="NCC-page-heading">NCC Army</h2>
+            {/*<h2 className="NCC-page-heading">NCC Army</h2>*/}
             <button className="NCC-back-btn-right bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
                         onClick={() => setActivePage("buttons")}>
               Back ➡
@@ -69,7 +69,7 @@ const NCCMAIN = ({toggle, theme}) => {
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="NCC-page-heading">NCC Navy</h2>
+            {/*<h2 className="NCC-page-heading">NCC Navy</h2>*/}
             <button className="NCC-back-btn bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
                     onClick={() => setActivePage("buttons")}>
               ⬅ Back

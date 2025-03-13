@@ -3,14 +3,14 @@
   width: 90%;
   margin: 50px auto;
   display: flex;
-  flex-direction: column;
+  /*flex-direction: column;*/
   align-items: center;
-  gap: 30px;
+  /*gap: 30px;*/
 }
 
 /* About Us - Large Rectangle */
 .YRC-Aboutus {
-  width: 85%;
+  /*width: 85%;*/
   padding: 30px;
   border-radius: 10px;
   /*background: #ffffff;*/
@@ -75,7 +75,7 @@
 
 /* Coordinators Section */
 .YRC-coordinators-section {
-  width: 85%;
+  /*width: 85%;*/
   text-align: center;
   margin: 50px auto;
 }
@@ -184,7 +184,7 @@
 
 /* Carousel Container */
 .YRC-carousel-container {
-  width: 85%;
+  /*width: 85%;*/
   margin: 40px auto;
   text-align: center;
 }

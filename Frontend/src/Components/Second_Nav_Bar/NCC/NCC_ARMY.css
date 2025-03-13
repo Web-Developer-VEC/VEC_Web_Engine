@@ -1,6 +1,5 @@
 /* NCC_ARMY Container */
 .NCC_ARMY-container {
-
   margin: 0 auto;
   padding: 0px;
 }
@@ -9,7 +8,7 @@
 .NCC_ARMY-content-wrapper {
   /*background: #fff;*/
   padding: 0px;
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 /* Title Styling */
@@ -18,7 +17,7 @@
   text-align: center;
   margin-bottom: 40px;
   /*color: #2c3e50;*/
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* Section Styling */
@@ -28,7 +27,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /*background: #fff;*/
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 /* Section Title */
@@ -40,7 +39,7 @@
   /*border-bottom: 3px solid #fdb515;*/
   padding-bottom: 5px;
   margin-bottom: 15px;
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* List Styling */
@@ -79,13 +78,13 @@
 
 /* Aim Section (Separate Box) */
 .NCC_ARMY-aim-container {
-  max-width: 1200px;
+  /*max-width: 1200px;*/
   margin: 40px auto;
   padding: 20px;
   /*background: #fff;*/
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 .NCC_ARMY-aim {
@@ -131,7 +130,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 200px;
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* Motto & Pledge Section */
@@ -150,7 +149,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 200px;
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* Common Content Style */
@@ -195,7 +194,7 @@
   width: 95%;
   margin: 50px auto;
   /*border-left: 5px solid orange;*/
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 .NCC_ARMY-profile-photo {
