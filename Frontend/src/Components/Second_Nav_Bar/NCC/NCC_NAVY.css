@@ -1,6 +1,6 @@
 /* NCC_NAVY Container */
 .NCC_NAVY-container {
-  max-width: 1300px;
+  /*max-width: 1300px;*/
   margin: 0 auto;
   padding: 0px;
 }
@@ -9,7 +9,7 @@
 .NCC_NAVY-content-wrapper {
   /*background: #fff;*/
   padding: 0px;
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 /* Title Styling */
@@ -18,7 +18,7 @@
   text-align: center;
   margin-bottom: 40px;
   /*color: #2c3e50;*/
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* Section Styling */
@@ -28,7 +28,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /*background: #fff;*/
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 /* Section Title */
@@ -40,7 +40,7 @@
   /*border-bottom: 3px solid #fdb515;*/
   padding-bottom: 5px;
   margin-bottom: 15px;
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* List Styling */
@@ -85,7 +85,7 @@
   /*background: #fff;*/
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 .NCC_NAVY-aim {
@@ -132,7 +132,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 200px;
-  animation: slideInRight 1s ease-out;
+  /*animation: slideInRight 1s ease-out;*/
 }
 
 /* Common Content Style */
@@ -179,7 +179,7 @@
   width: 95%;
   margin: 50px auto;
   /*border-left: 5px solid orange;*/
-  animation: slideInLeft 1s ease-out;
+  /*animation: slideInLeft 1s ease-out;*/
 }
 
 .NCC_NAVY-profile-photo {
