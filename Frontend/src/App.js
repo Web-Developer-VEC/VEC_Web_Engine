@@ -155,6 +155,7 @@ const App = () => {
                                 <Route path="/proudalumni" drk element={<ProudAlumni />}/>
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/>
