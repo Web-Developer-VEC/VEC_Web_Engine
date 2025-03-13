@@ -13,6 +13,12 @@ const AbtUs = ({ theme, toggle }) => {
     
     const lis = [sec2Cnt ];
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     return (
         <>
             <Banner toggle={toggle} theme={theme}
@@ -34,13 +40,13 @@ const AbtUs = ({ theme, toggle }) => {
                     <div className='absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
                         opacity-30 lg:opacity-100'>
                         <img className='absolute w-[40%] h-[65%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]'
-                            src={'./aboutvec2.jpg'} alt="Banner Image0" />
+                            src={UrlParser('static/images/aboutvec/aboutvec1.jpg')} alt="Banner Image0" />
                         <img className='absolute w-[40%] h-[90%] rounded-tr-[3rem] rounded-bl-[3rem]
                             left-[15%] top-[10%] border-[2vmin] border-prim dark:border-drkp' 
-                            src={'./aboutvec1.jpg'} alt="Banner Image1" />
+                            src={UrlParser('static/images/aboutvec/aboutvec2.jpg')} alt="Banner Image1" />
                         <img className='absolute w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]
                             border-[2vmin] border-prim dark:border-drkp' 
-                            src={'./aboutvec3.jpg'} alt="Banner Image2" />
+                            src={UrlParser('static/images/aboutvec/aboutvec3.jpg')} alt="Banner Image2" />
                     </div>
                 </div>
             </div>
