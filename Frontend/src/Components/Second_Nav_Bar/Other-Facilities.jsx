@@ -15,7 +15,7 @@ const facilities = [
   },
   { 
     name: "Health Center", 
-    content: "A dedicated facility offering first aid, emergency care, and medical assistance for students and faculty members.",
+    content: "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
     images: ["/images/health1.jpg", "/images/health2.jpg", "/images/health3.jpg", "/images/health4.jpg", "/images/health5.jpg"]
   },
   { 
@@ -30,12 +30,12 @@ const facilities = [
   },
   { 
     name: "Sewage Treatment Plant", 
-    content: "An advanced sewage treatment plant to promote water conservation and environmental sustainability on campus.",
+    content: "The Sewage Treatment Plant is designed for a capacity of 2,00,000 LITRES/DAYTreatment Scheme for the Existing Plant The plant operates 24x7 with regular maintenance, utilizing a three-stage treatment process: Primary Treatment: Bar screening and sedimentation in a Primary Clarifier. Secondary Treatment: Activated Sludge Process with four aeration tanks and a circular clarifier. Tertiary Treatment: Final polishing using Sand & Activated Carbon Filters for removing solids, color, and odor.Additionally, the plant includes sludge drying beds and treated water storage for efficient waste management.",
     images: ["/images/sewage1.jpg", "/images/sewage2.jpg", "/images/sewage3.jpg", "/images/sewage4.jpg", "/images/sewage5.jpg"]
   },
   { 
     name: "RO (Reverse Osmosis)", 
-    content: "A water purification system ensuring safe and clean drinking water for students and staff at all times.",
+    content: "The RO plant in the campus is designed for a Capacity of 5000L/hr. The treated water is pumped using the Pneumatic pumping system and distributed for drinking purpose in the campus. Regular maintenance of the plant is done and water tested to confirm that the quality meets BIS ( IS 10500:2012) standards.",
     images: ["/images/ro1.jpg", "/images/ro2.jpg", "/images/ro3.jpg", "/images/ro4.jpg", "/images/ro5.jpg"]
   },
   { 
@@ -45,37 +45,37 @@ const facilities = [
   },
   { 
     name: "Student Counsellor", 
-    content: "A dedicated counselling service providing support and guidance for students' personal and academic growth.",
+    content: "Our college provides a full-time qualified Student Counselor to support students' academic, emotional, and personal well-being, ensuring a healthy and positive learning environment.",
     images: ["/images/counsellor1.jpg", "/images/counsellor2.jpg", "/images/counsellor3.jpg", "/images/counsellor4.jpg", "/images/counsellor5.jpg"]
   },
   { 
     name: "Transport", 
-    content: "A well-organized transport facility ensuring safe and convenient travel for students and staff across various locations.",
+    content: "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
     images: ["/images/transport1.jpg", "/images/transport2.jpg", "/images/transport3.jpg", "/images/transport4.jpg", "/images/transport5.jpg"]
   },
   { 
     name: "Internet Bandwidth", 
-    content: "High-speed internet connectivity across the campus to support academic research, online learning, and administrative operations.",
+    content: "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
     images: ["/images/internet1.jpg", "/images/internet2.jpg", "/images/internet3.jpg", "/images/internet4.jpg", "/images/internet5.jpg"]
   },
   { 
-    name: "Student & Staff Insurance Policy", 
-    content: "Comprehensive insurance coverage ensuring safety and financial security for students and staff members.",
-    images: ["/images/insurance1.jpg", "/images/insurance2.jpg", "/images/insurance3.jpg", "/images/insurance4.jpg", "/images/insurance5.jpg"]
+    name: "Group insurance policy ", 
+    content: "Our institution provides a comprehensive Group Insurance Policy through United India Insurance covering:Teaching & Non-Teaching Staff: 433 members Students: 3,522 members This initiative ensures financial security and support for our faculty, staff, and students.",
+    images: ["/images/gym1.jpg", "/images/gym2.jpg", "/images/gym3.jpg", "/images/gym4.jpg", "/images/gym5.jpg"]
   },
   { 
     name: "Quarters", 
-    content: "On-campus residential quarters providing comfortable accommodation for faculty and staff.",
+    content: "Velammal Engineering College has faculty quarters with 16 single-bedroom houses and 16 two-bedroom houses, providing comfortable and convenient housing for faculty members. These quarters are well-maintained and provide a peaceful comfortable living environment, allowing faculty to reside on campus while focusing on their job. The setup allows faculty to easily access the college's resources and engage in campus events.",
     images: ["/images/quarters1.jpg", "/images/quarters2.jpg", "/images/quarters3.jpg", "/images/quarters4.jpg", "/images/quarters5.jpg"]
   },
   { 
     name: "Canteen", 
-    content: "A hygienic and well-maintained canteen offering a variety of delicious and nutritious food options.",
+    content: "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
     images: ["/images/canteen1.jpg", "/images/canteen2.jpg", "/images/canteen3.jpg", "/images/canteen4.jpg", "/images/canteen5.jpg"]
   },
   { 
     name: "Fire Safety", 
-    content: "Advanced fire safety measures and emergency preparedness systems to ensure campus security.",
+    content: "AVelammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
     images: ["/images/fire1.jpg", "/images/fire2.jpg", "/images/fire3.jpg", "/images/fire4.jpg", "/images/fire5.jpg"]
   },
   { 
@@ -85,14 +85,15 @@ const facilities = [
   },
   { 
     name: "Security", 
-    content: "24/7 security personnel and surveillance cameras ensuring the safety of students, staff, and campus property.",
+    content: "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently.Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
     images: ["/images/security1.jpg", "/images/security2.jpg", "/images/security3.jpg", "/images/security4.jpg", "/images/security5.jpg"]
   },
   { 
     name: "Gym", 
-    content: "A well-equipped gymnasium promoting health and fitness for students and faculty members.",
+    content: "Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff.",
     images: ["/images/gym1.jpg", "/images/gym2.jpg", "/images/gym3.jpg", "/images/gym4.jpg", "/images/gym5.jpg"]
-  }
+  },
+
 ];
 
 
