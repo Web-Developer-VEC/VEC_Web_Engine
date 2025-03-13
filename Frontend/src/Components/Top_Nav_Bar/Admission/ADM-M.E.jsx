@@ -66,6 +66,8 @@ const ME = ({theme, toggle}) => {
           for equivalence by the committee constituted for the purpose. Admission to such degrees shall be
           offered only after obtaining equivalence to such degrees.
         </p>
+        <p className="description-text mb-2 mt-2"><strong>Government Quota : </strong>Apply through TANCET/TANCA</p>
+        <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
         <div className="me-container">
           <center><h4 className="text-accn dark:text-drka Eligibility mt-5 font-thin">M.E - Total Intake {pgData.Year}</h4></center>
           <table className="intake-table">

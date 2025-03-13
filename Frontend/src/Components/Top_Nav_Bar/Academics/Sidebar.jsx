@@ -10,6 +10,7 @@ import {
   FaHandshake,
   FaFlask,
   FaEye,
+  FaNewspaper,
 } from "react-icons/fa";
 import styles from "./HeadDepartment.module.css";
 
@@ -23,20 +24,22 @@ const iconMap = {
     "StudentAchievments": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
     "SupportingStaff": <FaUsers className={styles.icon + " text-secd dark:text-drks"} />,
     "Mous": <FaHandshake className={styles.icon + " text-secd dark:text-drks"} />,
-    "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />
+    "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />,
+    "NewsLetter": <FaNewspaper className={styles.icon + " text-secd dark:text-drks"} />
 };
 
 const displayNameMap = {
   "Vision&Mission": "Vision & Mission",
   "HeadDepartment": "Head of the Department",
   "Faculties": "Faculty Members",
-  "Syllabus": "Syllabus & Curriculum",
-  "Infrastructure": "Department Infrastructure",
+  "Syllabus": "Curriculum & Syllabus",
+  "Infrastructure": "Infrastructure",
   "Activities": "Department Activities",
   "StudentAchievments": "Student Achievements",
   "SupportingStaff": "Supporting Staff",
   "Mous": "MOUs",
   "Research": "Research & Innovations",
+  "NewsLetter": "News Letters"
 };
 
 const Sidebar = ({ sections, activeSection, setActiveSection }) => {

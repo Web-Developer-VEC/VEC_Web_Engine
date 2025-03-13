@@ -275,16 +275,19 @@ li{
   position: absolute;
   bottom: 16px;
   left: 50%;
+  top: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 16px;
+  gap: 300px;
   z-index: 10;
 }
+
 
 .papp-container .pbutton {
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: black;
+  color: white;
   border: none;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -298,6 +301,7 @@ li{
 
 .papp-container .pbutton:hover {
   background-color: white;
+  color: black;
   transform: scale(1.1);
 } 
 

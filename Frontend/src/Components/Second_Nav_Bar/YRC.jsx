@@ -12,11 +12,6 @@ const YRC = () => {
   const [studentCoordinators, setStudentCoordinators] = useState([]);
   const [yrcEvent, setYrcEvent] = useState(null);
 
-  console.log("Ajit",studentCoordinators);
-  console.log("Ajay",yrcEvent);
-  
-  
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {

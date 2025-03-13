@@ -22,40 +22,40 @@ import "./dapartment1.css";
 import Banner from "../../Banner";
 
 const ugDepartments = [
+  { name: "B.E. Automobile Engineering", icon: <FaCar />, link: "/dept/002" },
+  { name: "B.E. Civil Engineering", icon: <FaBuilding />, link: "/dept/004" },
   {
-    name: "Artificial Intelligence and Data Science",
-    icon: <FaBrain />,
-    link: "/dept/001",
-  },
-  { name: "Automobile Engineering", icon: <FaCar />, link: "/dept/002" },
-  { name: "Civil Engineering", icon: <FaBuilding />, link: "/dept/004" },
-  {
-    name: "Computer Science and Engineering",
+    name: "B.E. Computer Science and Engineering",
     icon: <FaLaptopCode />,
     link: "/dept/005",
   },
   {
-    name: "Computer Science and Engineering (Cyber Security)",
+    name: "B.E. Computer Science and Engineering (Cyber Security)",
     icon: <FaShieldAlt />,
     link: "/dept/006",
   },
   {
-    name: "Electrical and Electronics Engineering",
+    name: "B.E. Electrical and Electronics Engineering",
     icon: <FaBolt />,
     link: "/dept/007",
   },
   {
-    name: "Electronics and Communication Engineering",
+    name: "B.E. Electronics and Communication Engineering",
     icon: <FaBroadcastTower />,
     link: "/dept/009",
   },
   {
-    name: "Electronics and Instrumentation Engineering",
+    name: "B.E. Electronics and Instrumentation Engineering",
     icon: <FaMicrochip />,
     link: "/dept/008",
   },
-  { name: "Information Technology", icon: <FaDatabase />, link: "/dept/011" },
-  { name: "Mechanical Engineering", icon: <FaCogs />, link: "/dept/013" },
+  { name: "B.E. Mechanical Engineering", icon: <FaCogs />, link: "/dept/013" },
+  {
+    name: "B.Tech. Artificial Intelligence and Data Science",
+    icon: <FaBrain />,
+    link: "/dept/001",
+  },
+  { name: "B.Tech. Information Technology", icon: <FaDatabase />, link: "/dept/011" },
 ];
 
 const pgDepartments = [
@@ -70,7 +70,7 @@ const pgDepartments = [
     link: "/dept/002",
   },
   {
-    name: "Master of Business Administration",
+    name: "M.B.A. Master of Business Administration",
     icon: <FaBusinessTime />,
     link: "/dept/002",
   },

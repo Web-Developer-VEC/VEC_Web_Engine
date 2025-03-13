@@ -1,5 +1,5 @@
 const express = require('express');
-const { getVisionMission, getHODDetails, getStaffDetails, getSyllabus, getInfrastructure, getDeptActivities, getStuActivities, getSupportStaff, getMou, getRD, getRDyear, getslidebar } = require('../controllers/departmentController');
+const { getVisionMission, getHODDetails, getStaffDetails, getSyllabus, getInfrastructure, getDeptActivities, getStuActivities, getSupportStaff, getMou, getRD, getRDyear, getslidebar, getNewsLetters } = require('../controllers/departmentController');
 
 const router = express.Router();
 
@@ -15,7 +15,8 @@ router.get('/:deptId/supportingstaff', getSupportStaff);
 router.get('/:deptId/mous', getMou);
 router.get('/:deptId/research/:year', getRDyear);
 router.get('/:deptId/research', getRD);
-router.get('/:deptId/sidebar' ,getslidebar)
+router.get('/:deptId/sidebar' ,getslidebar);
+router.get('/:deptId/newsletter', getNewsLetters);
 
 
 module.exports = router;

@@ -45,7 +45,7 @@
 
 /* Image container */
 .FCP-image-container {
-    width: 25%; /* Adjusted size for larger screens */
+    width: 20%; /* Adjusted size for larger screens */
     padding: 8px;
     display: flex;
     align-items: center;

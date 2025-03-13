@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Banner from "../../Banner";
 import "./ProudAlumni.css";
+import axios from "axios";
+import star from '../../Assets/championship.gif'
 
 const ProudAlumni = ({ theme, toggle }) => {
   // Data for the flipbook images
@@ -21,6 +23,22 @@ const ProudAlumni = ({ theme, toggle }) => {
   const [currentIndex, setCurrentIndex] = useState(0); // Tracks the current image index
   const [flipDirection, setFlipDirection] = useState(""); // Controls flip animation direction
   const [isFlipping, setIsFlipping] = useState(false); // Indicates if a flip animation is in progress
+  const [spcannouncements, setSpcAnnouncements] = useState([]);
+  
+  const content = spcannouncements[0]?.list_of_contents || [];
+  const links = spcannouncements[0]?.list_of_links || [];
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`/api/specialannouncements`);
+            setSpcAnnouncements(response.data);
+        } catch (error) {
+            console.error("Error fetching data:", error.message);
+        }
+    };
+    fetchData();
+}, []);
 
   // Handler for navigating to the next image
   const handleNext = useCallback(() => {
@@ -67,58 +85,80 @@ const ProudAlumni = ({ theme, toggle }) => {
         subHeaderText="Get inspired by our Legacy"
       />
 
-      {/* Flipbook Section */}
-      <div className="pproud-alumni">
-        <div className="papp-container">
-          <div className="ptext-content">
-            <h1>Get</h1>
-            <h2 style={{ margin: "0 20px" }}>Inspired</h2>
-            <h3 style={{ margin: "0 40px" }}>by</h3>
-            <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
-          </div>
-
-          <div className="pflipbook">
-            {/* Image Container */}
-            <div className="ppages">
-              <div
-                className={`ppage ${
-                  flipDirection === "right"
-                    ? "flip-right"
-                    : flipDirection === "left"
-                    ? "flip-left"
-                    : ""
-                }`}
-              >
-                <img
-                  src={data[0].alumni.students[currentIndex].photo}
-                  alt={`Alumni ${currentIndex + 1}`}
-                  className="pimage"
-                />
-              </div>
+      <div className="alumni-announcement">
+        {/* Flipbook Section */}
+        <div className="pproud-alumni">
+          <div className="papp-container">
+            <div className="ptext-content">
+              <h1>Get</h1>
+              <h2 style={{ margin: "0 20px" }}>Inspired</h2>
+              <h3 style={{ margin: "0 40px" }}>by</h3>
+              <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="pcontrols">
-              <button
-                onClick={handlePrev}
-                disabled={currentIndex === 0 || isFlipping}
-                className="pbutton"
-              >
-                ‹
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={
-                  currentIndex === data[0].alumni.students.length - 1 ||
-                  isFlipping
-                }
-                className="pbutton"
-              >
-                ›
-              </button>
+            <div className="pflipbook">
+              {/* Image Container */}
+              <div className="ppages">
+                <div
+                  className={`ppage ${
+                    flipDirection === "right"
+                      ? "flip-right"
+                      : flipDirection === "left"
+                      ? "flip-left"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={data[0].alumni.students[currentIndex].photo}
+                    alt={`Alumni ${currentIndex + 1}`}
+                    className="pimage"
+                  />
+                </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="pcontrols">
+                <button
+                  onClick={handlePrev}
+                  disabled={currentIndex === 0 || isFlipping}
+                  className="pbutton"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={
+                    currentIndex === data[0].alumni.students.length - 1 ||
+                    isFlipping
+                  }
+                  className="pbutton"
+                >
+                  ›
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Announcement section for alumni */}
+          <div className="main pr-10 pl-10 w-1/2">
+              {spcannouncements.map((item) => (
+                  <div key={item.title}>
+                      <h2 className="text-3xl text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
+                      <p className="text-xl">{item.content}</p>
+                  </div>
+              ))}
+              <br/>
+              <ul className="list-none">
+                  {content?.map((item, index) => (
+                      <li className="text-xl mb-2" key={index}>
+                          <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
+                          <a href={links[index]} className="text-black no-underline">{item}</a>
+                      </li>
+                  ))}
+              </ul>
+              {/* <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button> */}
+          </div>
       </div>
 
       {/* Static Content Sections */}

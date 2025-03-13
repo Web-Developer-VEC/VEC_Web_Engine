@@ -80,6 +80,26 @@ async function getSyllabus(req, res) {
     }
 }
 
+// Fetch News Letter Details
+async function getNewsLetters(req, res) {
+    const deptId = req.params.deptId;
+    const db = getDb();
+    const collection = db.collection('news_letter');
+
+    try {
+        const result = await collection.findOne({ dept_id: "001" });
+
+        if (result) {
+            return res.status(200).json(result);
+        } else {
+            res.status(404).json({ error: "No news letter found for the given department ID." });
+        }
+    } catch (error) {
+        console.error("Error fetching news letter", error);
+        res.status(500).json({ error: "Error fetching news letter" });
+    }
+}
+
 // Fetch Infrastructure
 async function getInfrastructure(req, res) {
     const deptId = req.params.deptId;
@@ -295,5 +315,6 @@ module.exports = {
     getMou,
     getRDyear,
     getRD,
-    getslidebar
+    getslidebar,
+    getNewsLetters
 };
