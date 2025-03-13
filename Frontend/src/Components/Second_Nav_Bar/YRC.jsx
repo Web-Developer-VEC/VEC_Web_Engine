@@ -123,12 +123,13 @@ const YRC = () => {
         subHeaderText="Fostering excellence in social service and community well-being."
       />
 
-      <div className="YRC-container flex flex-wrap mt-2 w-screen">
-        <nav className="basis-full lg:basis-1/5 flex flex-wrap justify-center lg:grid lg:float-left
-              w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">
+      <div className="YRC-container">
+        <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center items-start
+                    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8 
+                    self-start lg:sticky lg:top-20">
           {Object.keys(navData).map((itm, ind) => (
               <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                  hover:bg-accn/50 dark:hover:bg-drka/50   
+                  hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
                   ${(yrc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
                 ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}
                       type={"button"} onClick={() => setYrc(itm)}>{itm}</button>
