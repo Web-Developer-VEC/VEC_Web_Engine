@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
-      <change afterPath="$PROJECT_DIR$/Frontend/public/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/img_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/InClub.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/InCub.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/InCub.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +110,7 @@
       <workItem from="1740488498452" duration="637000" />
       <workItem from="1740540725995" duration="21354000" />
       <workItem from="1740628363299" duration="4832000" />
+      <workItem from="1741922897218" duration="3081000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />
