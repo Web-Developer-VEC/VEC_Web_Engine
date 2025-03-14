@@ -20,6 +20,12 @@ const NBA_F = () => {
     fetchData();
   }, []);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
 
   return (
     <>
@@ -64,7 +70,7 @@ const NBA_F = () => {
                   <td>
                     {item.pdfs.map((pdf, index) => (
                       <li key={index} className="pdf-link">
-                        <a href={pdf.pdfs_path  } target="_blank" rel="noopener noreferrer">
+                        <a href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`} target="_blank" rel="noopener noreferrer">
                           {pdf.name}
                         </a>
                       </li>

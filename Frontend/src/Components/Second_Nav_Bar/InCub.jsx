@@ -147,6 +147,7 @@ const InCub = ({ toggle, theme }) => {
         );
     }
 
+
     function crt_del(num) {
         return `${num * 100}ms`;
     }

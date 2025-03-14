@@ -58,28 +58,40 @@
 }
 
 /* Styling for messages */
+/* Styling for messages container */
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for individual messages */
 .message {
-  padding: 10px;
+  padding: 8px 12px;
   margin-bottom: 5px;
-  border-radius: 5px;
-  max-width: 100%;
+  border-radius: 10px;
+  max-width: 80%; /* Ensures messages don't take up the full width */
   word-wrap: break-word;
 }
 
-/* User messages */
+/* User messages (Right side) */
 .message.user {
-  background-color: #ffd700;
   align-self: flex-end;
+  background-color: #ffcc00;
+  color: black;
   text-align: right;
-  /* width: fit-content; */
+  max-width: fit-content; /* Makes sure width is dynamic */
 }
 
-/* Assistant messages */
+/* Assistant messages (Left side) */
 .message.assistant {
-  background-color: #e6e6e6;
   align-self: flex-start;
+  background-color: #e6e6e6;
+  color: black;
   text-align: left;
-  white-space: pre-wrap;
 }
 
 /* Message input field */

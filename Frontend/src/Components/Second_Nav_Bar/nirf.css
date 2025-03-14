@@ -64,8 +64,11 @@
   flex-direction: column;
   position: relative;
   padding: 15px;
-  min-height: 150px;
+  min-height: 182px;
   align-items: start;
+  /* border: 1px black solid; */
+  border-radius: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   /* Adjust based on your content needs */
 }
 
@@ -97,9 +100,9 @@
 
 /* Footer styling */
 .nirf-footer {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 18px;
   color: #555;
   text-align: center;
 }
@@ -136,8 +139,8 @@
   .nirf-grid {
     grid-template-columns: repeat(2, 1fr);
     /* Single column layout */
-    gap: 20px;
-    max-width: 85%;
+    /* gap: 20px; */
+    /* max-width: 85%; */
     justify-items: center;
     /* Ensures equal alignment */
   }
@@ -156,7 +159,7 @@
 /* For Extra Small Screens */
 @media (max-width: 480px) {
   .nirf-grid {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
     max-width: 90%;
     gap: 15px;
   }

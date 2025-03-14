@@ -1,6 +1,9 @@
 import React, { useState,useEffect,useCallback} from "react";
 import Banner from "../Banner";
 import "./Alumni.css";
+import axios from "axios";
+import star from "../Assets/championship.gif";
+
 const Alumni = ({ theme, toggle }) => {
   // Sample data for the flipbook (replace with actual data source in production)
   const data = [
@@ -8,8 +11,8 @@ const Alumni = ({ theme, toggle }) => {
       alumni: {
         department_name: "Computer Science",
         students: [
-          { name: "John Doe", photo: "https://example.com/john.jpg" },
-          { name: "Jane Smith", photo: "https://example.com/jane.jpg" },
+          { name: "John Doe", photo: "https://www.google.com/imgres?q=naruto%20images&imgurl=https%3A%2F%2Fstaticg.sportskeeda.com%2Feditor%2F2022%2F08%2F53e15-16596004347246.png%3Fw%3D640&imgrefurl=https%3A%2F%2Fwiki.sportskeeda.com%2Fnaruto%2Fnaruto-uzumaki&docid=Xi5cUqTYzP1rWM&tbnid=lM65XG49RG4GwM&vet=12ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIYBEAA..i&w=640&h=359&hcb=2&ved=2ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIYBEAA" },
+          { name: "Jane Smith", photo: "https://www.google.com/imgres?q=naruto%20images&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-photo%2Fnaruto-poster-silhouette-make-landscape-260nw-2543284261.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fnaruto&docid=SBFc9eXpq6RbqM&tbnid=L4a62PAtnkH6MM&vet=12ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA..i&w=260&h=280&hcb=2&ved=2ahUKEwjvuIfFmvqLAxUV1DgGHYfmE40QM3oFCIQBEAA" },
         ],
       },
     },
@@ -17,7 +20,7 @@ const Alumni = ({ theme, toggle }) => {
       alumni: {
         department_name: "Electrical Engineering",
         students: [
-          { name: "Alice Brown", photo: "https://example.com/alice.jpg" },
+          { name: "Alice Brown", photo: "https://preview.redd.it/what-makes-madara-uchiha-such-a-good-character-when-it-v0-316dlixm4tgc1.jpeg?auto=webp&s=b7df787f155166613508760fc26ed8544a4c35aa" },
         ],
       },
     },
@@ -28,6 +31,22 @@ const Alumni = ({ theme, toggle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipDirection, setFlipDirection] = useState("");
   const [isFlipping, setIsFlipping] = useState(false);
+  const [spcannouncements, setSpcAnnouncements] = useState([]);
+  
+  const content = spcannouncements[0]?.list_of_contents || [];
+  const links = spcannouncements[0]?.list_of_links || [];
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`/api/specialannouncements`);
+            setSpcAnnouncements(response.data);
+        } catch (error) {
+            console.error("Error fetching data:", error.message);
+        }
+    };
+    fetchData();
+}, []);
 
   // Handle navigation to the next page
   const handleNext = useCallback(() => {
@@ -75,59 +94,77 @@ const Alumni = ({ theme, toggle }) => {
       />
 
       {/* Flipbook Section - Placed directly below the Banner */}
-      <div className="proud-alumni">
-        <div className="app-container">
-          <div className="text-content">
-            <h1>Get</h1>
-            <h2 style={{ margin: "0 20px" }}>Inspired</h2>
-            <h3 style={{ margin: "0 40px" }}>by</h3>
-            <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
-          </div>
-
-          <div className="flipbook">
-            <div className="pages">
-              <div
-                className={`page ${
-                  flipDirection === "right" ? "flip-right" : ""
-                } ${flipDirection === "left" ? "flip-left" : ""}`}
-              >
-                {data.length > 0 && (
-                  <div>
-                    <h2>{data[currentPage].alumni.department_name}</h2>
-                    <img
-                      src={data[currentPage].alumni.students[currentIndex].photo}
-                      alt={data[currentPage].alumni.students[currentIndex].name}
-                      className="image"
-                    />
-                  </div>
-                )}
-              </div>
+      <div className="alumni-announcement">
+        <div className="proud-alumni">
+          <div className="app-container">
+            <div className="text-content">
+              <h1>Get</h1>
+              <h2 style={{ margin: "0 20px" }}>Inspired</h2>
+              <h3 style={{ margin: "0 40px" }}>by</h3>
+              <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
             </div>
 
-            <div className="controls">
-              <button
-                onClick={handlePrev}
-                disabled={currentPage === 0 || isFlipping}
-                className="button"
-              >
-                ‹
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={currentPage === data.length - 1 || isFlipping}
-                className="button"
-              >
-                ›
-              </button>
+            <div className="flipbook">
+              <div className="pages">
+                <div
+                  className={`page ${
+                    flipDirection === "right" ? "flip-right" : ""
+                  } ${flipDirection === "left" ? "flip-left" : ""}`}
+                >
+                  {data.length > 0 && (
+                    <div>
+                      {/* <h2>{data[currentPage].alumni.department_name}</h2> */}
+                      <img
+                        src={data[currentPage].alumni.students[currentIndex].photo}
+                        alt={data[currentPage].alumni.students[currentIndex].name}
+                        className="image"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="controls">
+                <button
+                  onClick={handlePrev}
+                  disabled={currentPage === 0 || isFlipping}
+                  className="button"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage === data.length - 1 || isFlipping}
+                  className="button"
+                >
+                  ›
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Announcement section for alumni */}
+          <div className="main pr-10 pl-10 w-1/2">
+              {spcannouncements.map((item) => (
+                  <div key={item.title}>
+                      <h2 className="text-3xl text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
+                      <p className="text-xl">{item.content}</p>
+                  </div>
+              ))}
+              <br/>
+              <ul className="list-none">
+                  {content?.map((item, index) => (
+                      <li className="text-xl mb-2" key={index}>
+                          <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
+                          <a href={links[index]} className="text-black no-underline">{item}</a>
+                      </li>
+                  ))}
+              </ul>
+              {/* <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button> */}
+          </div>
       </div>
-
-
-
-  
-
+      
       {/* Static Sections */}
       <div className="alumni-container">
         <section className="alumni-section">

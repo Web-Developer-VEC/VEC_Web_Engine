@@ -10,6 +10,12 @@ const Naac = ({ toggle, theme }) => {
   const [openSection, setOpenSection] = useState(null);
   const [naacData, setNaacData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
@@ -91,7 +97,7 @@ const Naac = ({ toggle, theme }) => {
                   {section.content.map((item, i) => (
                     <li key={i}>
                       <a
-                        href={item.link}
+                        href={`${UrlParser(item.link)}#toolbar=0`}
                         className="text-blue-500 hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"

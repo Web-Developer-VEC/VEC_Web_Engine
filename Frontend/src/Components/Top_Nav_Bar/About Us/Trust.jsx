@@ -4,21 +4,27 @@ import Banner from '../../Banner';
 import './Trust.css'
 
 const NewTrust = ({theme, toggle}) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   const managementTeam = [
     {
       name: 'Shri. M.V. Muthuramalingam',
       role: 'Chairman',
-      img: '/chairman.jpg',
+      img: 'static/images/trust/muthuramalingam.jpg',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Chief Executive Officer',
-      img: '/ceo.jpg',
+      img: 'static/images/trust/velmurugan.jpg',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Deputy CEO',
-      img: '/deputy-ceo.jpg',
+      img: 'static/images/trust/deptyceo.jpg',
     },
   ];
 
@@ -57,7 +63,7 @@ const NewTrust = ({theme, toggle}) => {
             >
               <img
                 className="w-64 h-max object-cover transition-transform duration-500 "
-                src="/patti.jpg"
+                src={UrlParser('static/images/trust/velammal.jpg')}
                 alt="Velammal Trust Banner"
               />
             </motion.div>
@@ -99,7 +105,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                           hover:shadow-xl transition-shadow duration-300"
               >
                 <img
-                  src={person.img}
+                  src={UrlParser(person.img)}
                   alt={person.role}
                   className="w-48 h-48 mr-6 shadow-lg"
                 />

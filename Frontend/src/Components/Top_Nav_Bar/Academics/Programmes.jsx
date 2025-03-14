@@ -6,7 +6,7 @@ const Programmes = (toggle, theme) => {
 
     const department = [
         {
-            type: 'UGCourses',
+            type: 'UG Courses',
             values: [
                 {
                     name: 'B.E. Automobile Engineering',
@@ -37,7 +37,7 @@ const Programmes = (toggle, theme) => {
                     lnk: '/dept/008'
                 },
                 {
-                    name: 'Mechanical Engineering',
+                    name: 'B.E. Mechanical Engineering',
                     lnk: 'dept/013'
                 },
                 {
@@ -54,37 +54,29 @@ const Programmes = (toggle, theme) => {
             type: 'Science and Humanities',
             values: [
                 {
-                    name: 'Computer Science and Engineering',
+                    name: 'Chemistry',
+                    lnk: '/dept/003'
+                },
+                {
+                    name: 'English',
+                    lnk: '/dept/010'
+                },
+                {
+                    name: 'Mathematics',
+                    lnk: '/dept/012'
+                },
+                {
+                    name: 'Tamil',
                     lnk: '/dept/002'
-                },
-                {
-                    name: 'Information Technology',
-                    lnk: '/dept/004'
-                },
-                {
-                    name: 'Electronics and Communication Engineering',
-                    lnk: '/dept/004'
-                },
-                {
-                    name: 'Computer Science and Engineering',
-                    lnk: '/dept/002'
-                },
-                {
-                    name: 'Electrical and Electronics Engineering',
-                    lnk: '/dept/004'
-                },
-                {
-                    name: 'Mechanical Engineering',
-                    lnk: '/dept/004'
                 },
                 {
                     name: 'Physics',
-                    lnk: '/dept/004'
+                    lnk: '/dept/015'
                 },
             ]
         },
         {
-            type: 'PGCourses',
+            type: 'PG Courses',
             values: [
                 {
                     name: 'M.E. Computer Science Engineering',
@@ -100,6 +92,35 @@ const Programmes = (toggle, theme) => {
                 },
             ]
         },
+        {
+            type: "Research and Science",
+            values: [
+                {
+                    name: 'Computer Science and Engineering',
+                    lnk: '/dept/'
+                },
+                {
+                    name: 'Information Technology',
+                    lnk: '.dept/'
+                },
+                {
+                    name: 'Electronics and Communication Engineering',
+                    lnk: "/dept/"
+                },
+                {
+                    name: 'Electrical and Electronics Engineering',
+                    lnk: '/dept/'
+                },
+                {
+                    name: 'Mechanical Engineering',
+                    lnk: '/dept/'
+                },
+                {
+                    name: 'Physics',
+                    lnk: '/dept/'
+                }
+            ]
+        }
     ]
 
     return (

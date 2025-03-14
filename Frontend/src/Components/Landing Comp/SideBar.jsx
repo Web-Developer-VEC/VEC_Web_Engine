@@ -30,7 +30,7 @@ const Sidebar = (props) => {
             Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"
         },
         {Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: ""},
-        {Name: "Twitter", Link: " https://x.com/VelammalEnggC?t=v7fMqFl7I3bSXHphn9seUw&s=08 ", Ico: Twtr, Fltr: ""},
+        {Name: "Twitter", Link: "https://x.com/VelammalEnggC", Ico: Twtr, Fltr: ""},
         {Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: ""},
     ]   
 

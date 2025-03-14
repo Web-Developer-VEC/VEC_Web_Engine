@@ -6,6 +6,7 @@ import "./Syllabi.css";
 import Banner from "../../Banner";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const CourseCard = ({ course, onClick }) => (
   <motion.div
@@ -46,11 +47,21 @@ function Syllabus({theme, toggle}) {
   const [curriculumData, setCurriculumData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/curriculumandsyllabus`);
         setCurriculumData(response.data);
+        console.log(response.data);
+        
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -65,9 +76,15 @@ function Syllabus({theme, toggle}) {
     if (yearData) {
       const yearContent = yearData[year][0];
       const departmentIndex = yearContent.department.indexOf(department);
-      return yearContent.pdf_path[departmentIndex];
+      return UrlParser(yearContent.pdf_path[departmentIndex]);
     }
     return null;
+  };
+
+  const handleDepartmentClick = (deptId) => {
+    navigate(`/dept/${deptId}`, {
+      state: { activeSection: "Syllabus" }, 
+    });
   };
 
   const renderSection = (data, year) => (
@@ -75,15 +92,15 @@ function Syllabus({theme, toggle}) {
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-4 text-accn dark:text-drka">
-            <Calendar className="w-[30px] h-[30px]" /> {/* Set the icon size to 30px */}
-            <h2 className="text-[30px] font-bold">{data.year}</h2> {/* Set the text size to 30px */}
+            <Calendar className="w-[30px] h-[30px]" /> 
+            <h2 className="text-[30px] font-bold">{data.year}</h2>
           </div>
           <div className="course-grid flex flex-wrap -m-2">
             {data.department.map((course, courseIndex) => (
               <CourseCard
                 key={courseIndex}
                 course={course}
-                onClick={() => setSelectedPdf(getPdfPath(year, course))}
+                onClick={() => handleDepartmentClick(data.deptid[courseIndex])}
               />
             ))}
           </div>
@@ -109,7 +126,7 @@ function Syllabus({theme, toggle}) {
             curriculumData.map((yearData, index) => {
               const year = Object.keys(yearData)[0];
               if (year === "_id") return null;
-              if (year === "Verticals") {
+              if (year === "Verticals" || year === "01") {
                 return yearData[year].map((verticalData, vIndex) =>
                   renderSection(verticalData, `${year}-${vIndex}`)
                 );
