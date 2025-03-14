@@ -273,6 +273,14 @@
   border: none;
 }
 
+.faculty{
+  font-size: 28px;
+  font-weight: bolder;
+  padding: 18px;
+  text-align: left;
+  margin-left: 3px;
+}
+
 /* ✅ Tablet View: 768px - 1024px */
 @media (max-width: 1024px) {
   .imagegallery {

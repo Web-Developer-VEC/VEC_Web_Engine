@@ -23,6 +23,7 @@ const Faculties = ({ data }) => {
   }
 
   const facultyArray = data.faculty_members;
+  const SupportingStaffArray = data.suppoting_faculty; 
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>
@@ -46,6 +47,7 @@ const Faculties = ({ data }) => {
           </div>
         )}
 
+        <h2 className={styles.faculty}>Faculty Members</h2>
         <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
           {facultyArray.slice(1).map((faculty, index) => (
             <ImageCard
@@ -63,6 +65,29 @@ const Faculties = ({ data }) => {
             />
           ))}
         </div>
+
+        {SupportingStaffArray?.length > 0 && (
+          <>
+            <h2 className={styles.faculty}>Supporting Staffs</h2> 
+            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
+              {SupportingStaffArray?.map((faculty, index) => (
+                <ImageCard
+                  key={faculty.unique_id || index}
+                  name={faculty.name}
+                  photo={faculty.photo}
+                  Designation={faculty.designation}
+                  Scholar={faculty.profiles.google_scholar}
+                  Research={faculty.profiles.research_gate}
+                  Orchid={faculty.profiles.orchid}
+                  Publon={faculty.profiles.publon}
+                  Scopus={faculty.profiles.scopus}
+                  Linkedin={faculty.profiles.linkedin}
+                  uid={faculty.unique_id}
+                />
+              ))}
+            </div>       
+          </>
+        )}
       </div>
       <div className={styles.prefaculty}>
         <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +

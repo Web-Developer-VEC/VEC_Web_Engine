@@ -3,6 +3,13 @@ import './Orgainzation_chart.css'; // Ensure the CSS file includes necessary sty
 import Banner from "../../Banner";
 
 const CollegeOrgChart = ({theme, toggle}) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
     return (
       <>
         <Banner toggle={toggle} theme={theme}
@@ -13,7 +20,7 @@ const CollegeOrgChart = ({theme, toggle}) => {
 
         <div className="org-chart-container">
           <img
-            src="./organization_chart.jpg"  // Replace with the correct path to your PNG chart image
+            src={UrlParser('static/images/orgchart/chart.jpg')}  // Replace with the correct path to your PNG chart image
             alt="Organization Chart"
             className="org-chart-image"
           />

@@ -236,15 +236,18 @@ ul {
   justify-content: space-around;
 }
 
-.psos-section{
-  width: 30vw;
+.accordion{
+  display: flex;
+  gap: 20px;
+  align-items: start;
+
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */
   gap: 20px; /* Spacing between items */
-  width: 70vw;
+  width: 73vw;
   align-items: start;
 }
 

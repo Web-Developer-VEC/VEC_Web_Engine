@@ -120,24 +120,6 @@ const VisionMission = ({ data }) => {
         </div>
       </div>
       {/* Program Specific Outcomes (PSOs) */}
-      <div className="dual-outcomes">
-        <div className="psos-section mt-5">
-          <h2>Program Specific Outcomes</h2>
-          <div className="accordion" id="psosAccordion">
-            {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-              <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-                <h2 className="accordion-header" id={`psosHeading${index}`}>
-                  <button className="accordion-buttons" onClick={() => togglePOS(index)}>
-                    {heading}
-                  </button>
-                </h2>
-                <div className={`accordion-body ${activePOS === index ? 'show' : ''}`}>
-                  {data1.program_specific_outcomes.content[index]}
-                </div>
-              </div>
-            ))}
-          </div>  
-        </div>
         <div className="psos-section mt-5">
           <h2>Program Educational Outcomes</h2>
           <div className="accordion" id="psosAccordion">
@@ -155,11 +137,12 @@ const VisionMission = ({ data }) => {
             ))}
           </div>  
         </div>
+      {/* <div className="dual-outcomes"> */}
 
-      </div>
+      {/* </div> */}
 
         {/* Right Column: Program Outcomes */}
-        <div className="col-md-6 mt-10">
+        <div className="col-md-6 mt-10 w-full">
           <div className="pos-section">
             <h2>Program Outcomes</h2>
             <div className="accordion grid-container">
@@ -177,6 +160,23 @@ const VisionMission = ({ data }) => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="psos-section mt-5">
+          <h2>Program Specific Outcomes</h2>
+          <div className="accordion" id="psosAccordion">
+            {data?.program_specific_outcomes?.headings?.map((heading, index) => (
+              <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
+                <h2 className="accordion-header" id={`psosHeading${index}`}>
+                  <button className="accordion-buttons" onClick={() => togglePOS(index)}>
+                    {heading}
+                  </button>
+                </h2>
+                <div className={`accordion-body ${activePOS === index ? 'show' : ''}`}>
+                  {data1.program_specific_outcomes.content[index]}
+                </div>
+              </div>
+            ))}
+          </div>  
         </div>
     </div>
   );

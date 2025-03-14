@@ -4,6 +4,13 @@ import { Eye, Target } from "lucide-react"; // Importing icons
 import Banner from "../../Banner";
 
 const Collegevisionmission = ({ theme, toggle }) => {
+
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     return (
         <div className={styles.root}>
             <Banner
@@ -26,7 +33,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                         </p>
                     </div>
                     <div className={styles.photo}>
-                        <img src="./vission_and_mission.jpg" alt="Vision Photo" className={styles.photoImage} />
+                        <img src={UrlParser('static/images/aboutvec/VM.jpg')} alt="Vision Photo" className={styles.photoImage} />
                     </div>
                 </div>
 

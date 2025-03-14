@@ -6,6 +6,12 @@ import axios from "axios";
 const NIRF = ({ toggle, theme, isLoading }) => {
   const [nirfData, setNirfData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +77,7 @@ const NIRF = ({ toggle, theme, isLoading }) => {
               {item.categories.map((category, catIndex) => (
                 <a
                   key={catIndex}
-                  href={category.link}
+                  href={`${UrlParser(category.link)}#toolbar=0`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nirf-link"
@@ -85,7 +91,7 @@ const NIRF = ({ toggle, theme, isLoading }) => {
         <p className="nirf-footer">
           Comments and suggestions are invited from the public to provide
           feedback through 
-          <a href="mailto:feedback_nirf@nec.edu.in" className="nirf-email"> velammal@gmail.com
+          <a href="mailto:feedback.nirf@velammal.edu.in" className="nirf-email"> feedback.nirf@velammal.edu.in
           </a>
         </p>
       </div>

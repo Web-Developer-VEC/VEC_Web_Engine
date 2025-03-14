@@ -35,7 +35,7 @@ const Head = () => {
         { ttl: "Library", lnk: "/library" },
         { ttl: "Hostel", lnk: "/hosLanding" },
         { ttl: "Other Facilities", lnk: "/other-facilities" },
-        { ttl: "Grievances", lnk: "/grievances" },
+        { ttl: "Help Desk", lnk: "/grievances" },
         {
             ttl: "Login",
             lnk: "#",
@@ -54,7 +54,7 @@ const Head = () => {
             Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"
         },
         {Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: ""},
-        {Name: "Twitter", Link: " https://x.com/VelammalEnggC?t=v7fMqFl7I3bSXHphn9seUw&s=08 ", Ico: Twtr, Fltr: ""},
+        {Name: "Twitter", Link: "https://x.com/VelammalEnggC", Ico: Twtr, Fltr: ""},
         {Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: ""},
     ]
     const navs = [
@@ -63,12 +63,7 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "About VEC", sup: [
-                    {hrd: false, ttl: "AICTE Approval", sup: [], lnk: ""},
-                    {hrd: false, ttl: "University Affiliation", sup: [], lnk: ""},
-                    {hrd: false, ttl: "Governing Body", sup: [], lnk: ""},
-                    {hrd: false, ttl: "Mandatory Disclosures", sup: [], lnk: ""},
-                ], lnk: "/abt-us"},
+                {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
                 {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
@@ -92,7 +87,7 @@ const Head = () => {
             cod: [0, 3],
             cols: 1,
             sub: [
-                { hrd: false, ttl: "Programs", sup: [], lnk: "/programs" },
+                { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
                 { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "" },
               ],
@@ -127,7 +122,7 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
-                {hrd: false, ttl: "All Forms", sup: [], lnk: "/form"},
+                {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
             ],
         },
         {
@@ -334,7 +329,7 @@ const Head = () => {
                         onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
                         className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
     
-                        fees payment
+                        Fees Payment
                     </button>
 
                     {/* Social Icons */}
