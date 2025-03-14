@@ -69,7 +69,7 @@ const LibraryLayout = ({toggle, theme}) => {
                             type={"button"} onClick={() => setLib(itm)}>{itm}</button>
                 ))}
             </nav>
-            <div className="basis-full lg:basis-9/12 overflow-hidden mt-12">
+            <div className="basis-full lg:basis-9/12 overflow-hidden">
                 {navData[lib]}
             </div>
         </div>
