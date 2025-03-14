@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/SideNav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="JSX File" />
       </list>
     </option>
@@ -111,6 +119,8 @@
       <workItem from="1740540725995" duration="21354000" />
       <workItem from="1740628363299" duration="4832000" />
       <workItem from="1741922897218" duration="3081000" />
+      <workItem from="1741940292437" duration="1106000" />
+      <workItem from="1741941431989" duration="6783000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />
