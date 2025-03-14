@@ -39,7 +39,7 @@ const Footer = forwardRef((props, ref) => {
                     <a href="https://www.linkedin.com/school/velammal-engineering-college/" target="_blank" rel="noopener noreferrer">
                         <img src={linkedin} alt="LinkedIn"/>
                     </a>
-                    <a href=" https://x.com/VelammalEnggC?t=v7fMqFl7I3bSXHphn9seUw&s=08 " target="_blank" rel="noopener noreferrer">
+                    <a href="https://x.com/VelammalEnggC" target="_blank" rel="noopener noreferrer">
                         <img src={x} alt="Twitter"/>
                     </a>
                     <a href="https://www.facebook.com/velammalengineeringcollege" target="_blank" rel="noopener noreferrer">
@@ -65,13 +65,9 @@ const Footer = forwardRef((props, ref) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {/* Profile & College Info */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Profile & College</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
                         <ul className="space-y-1 text-left lg:text-left">
                             <li><a href="/abt-us">About Us</a></li>
-                            <li><a href="/">AICTE Approval</a></li>
-                            <li><a href="/">University Affiliation</a></li>
-                            <li><a href="/">Governing Body</a></li>
-                            <li><a href="/">Mandatory Disclosures</a></li>
                             <li><a href="/nba">NBA</a></li>
                             <li><a href="/naac">NAAC</a></li>
                             <li><a href="/nirf">NIRF</a></li>
@@ -81,10 +77,10 @@ const Footer = forwardRef((props, ref) => {
 
                     {/* Academics */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Academics Links</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Academics</h4>
                         <ul className="space-y-1 text-left lg:text-left">
                             <li><a href="/departments">Departments</a></li>
-                            <li><a href="/programs">Programes</a></li>
+                            <li><a href="/programs">Programmes</a></li>
                             <li><a href="/library">Library</a></li>
                             <li><a href="/nss">NSS</a></li>
                             <li><a href="/ncc">NCC</a></li>
@@ -95,7 +91,7 @@ const Footer = forwardRef((props, ref) => {
 
                     {/* Important Links */}
                     <div>
-                        <h4 className="font-semibold text-lg text-center lg:text-left">Important Links</h4>
+                        <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Important</h4>
                         <ul className="space-y-1 text-lfrt lg:text-left">
                             <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank">Student Login</a></li>
                             <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>

@@ -25,14 +25,14 @@ const Sidebar = (props) => {
     const socls = [
         {
             Name: "Instagram",
-            Link: "https://instagram.com",
+            Link: "https://www.instagram.com/vec_chennai/",
             Ico: Inta,
             Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"
         },
-        {Name: "Facebook", Link: "https://facebook.com", Ico: Fcbk, Fltr: ""},
-        {Name: "Twitter", Link: "https://twitter.com", Ico: Twtr, Fltr: ""},
-        {Name: "LinkedIn", Link: "https://linkedin.com", Ico: Lknd, Fltr: ""},
-    ];
+        {Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: ""},
+        {Name: "Twitter", Link: "https://x.com/VelammalEnggC", Ico: Twtr, Fltr: ""},
+        {Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: ""},
+    ]   
 
     const navs = props.navs
     const spHdrs = [{ttl: "Fee Payments", lnk: 'https://easycollege.in/vecengg/college/webpayindex.aspx'},

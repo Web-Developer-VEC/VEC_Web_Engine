@@ -78,6 +78,8 @@ const UgAdmission = ({theme, toggle}) => {
         <div className="ADM-content bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">        
           <div className="text-accn dark:text-drka mb-3  Eligibility">Eligibility</div>
+          <p className="description-text mb-2"><strong>Government Quota : </strong>Apply through TNEA Counselling</p>
+          <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
           <p className="description-text">
             &nbsp; &nbsp; Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
           </p>

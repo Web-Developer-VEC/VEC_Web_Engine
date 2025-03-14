@@ -46,11 +46,12 @@ body {
 /* Photo on the rightmost side of the page (desktop only) */
 .photo {
   width: 680px; /* Slightly reduced width */
-  height: 355px;
+  height: 300px;
   position: absolute;
   right: -140px; /* Align to rightmost side with padding */
   top: 0; /* Align with top of Vision & Mission */
   display: none; /* Hide by default, show on desktop */
+  margin-top: 10px;
 }
 
 .photoImage {

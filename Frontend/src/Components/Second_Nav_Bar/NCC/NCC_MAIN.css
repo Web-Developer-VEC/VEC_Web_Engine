@@ -1,9 +1,9 @@
 /* General Container */
 .NCC-container {
   width: 100%;
-  min-height: 70vh;
+  min-height: 40vh;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   align-items: center;
   flex-direction: column;
   padding: 20px;
@@ -67,15 +67,15 @@
 
 /* Page Layout */
 .NCC-page {
-  width: 100%;
-  min-height: 100vh;
+  /*width: 100%;*/
+  /*min-height: 100vh;*/
   /*background-color: #f8f9fa;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 20px;
+  /*padding: 20px;*/
   box-sizing: border-box;
   overflow: auto;
 }
@@ -92,7 +92,7 @@
 .NCC-back-btn,
 .NCC-back-btn-right {
   position: absolute;
-  top: 20px;
+  top: 0;
   padding: 10px 15px;
   font-size: 16px;
   border: none;

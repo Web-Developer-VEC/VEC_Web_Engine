@@ -7,72 +7,162 @@
   border-radius: 50%;
   height: 70px;
   width: 70px;
+  display: flex;
   align-items: center;
-  border: .5px solid #1f1f20;
+  justify-content: center;
+  border: 0.5px solid #1f1f20;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
+  cursor: pointer;
 }
 
-/* Hover effect for chat icon */
 .chat-icon:hover {
   background-color: #f1f1f1;
 }
 
-/* Styling for the chat popup content */
+/* Styling for the chat popup */
 .chat-popup {
   z-index: 1001;
   position: fixed;
   bottom: 90px;
   right: 20px;
-  width: 300px;
-  height: 400px;
+  width: 320px;
+  height: 450px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  font-family: Arial, sans-serif;
 }
 
+/* Messages container */
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+/* Hide scrollbar in Webkit browsers */
+.messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for messages */
 /* Styling for messages container */
 .messages {
   flex-grow: 1;
   overflow-y: auto;
   margin-bottom: 10px;
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Styling for individual messages */
 .message {
-  background-color: #e6e6e6;
-  padding: 8px;
+  padding: 8px 12px;
   margin-bottom: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  max-width: 80%; /* Ensures messages don't take up the full width */
+  word-wrap: break-word;
+}
+
+/* User messages (Right side) */
+.message.user {
+  align-self: flex-end;
+  background-color: #ffcc00;
+  color: black;
+  text-align: right;
+  max-width: fit-content; /* Makes sure width is dynamic */
+}
+
+/* Assistant messages (Left side) */
+.message.assistant {
+  align-self: flex-start;
+  background-color: #e6e6e6;
+  color: black;
   text-align: left;
 }
 
-/* Styling for the message input and send button */
+/* Message input field */
 .message-input {
   display: flex;
 }
 
 .message-input input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.message-input input:focus {
+  border-color: #fdbc04; 
+  box-shadow: 0 0 5px rgba(253, 188, 4, 0.5);
+}
+
+
 .message-input button {
-  padding: 10px 15px;
-  background-color: rgb(253, 204, 3);
+  padding: 8px 12px;
+  background-color: #ffd700;
   color: black;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .message-input button:hover {
-  background-color: #0056b3;
+  background-color: #ffcc00;
+}
+
+/* Phone input */
+.phone-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phone-input input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.phone-input button {
+  padding: 8px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.phone-input button:hover {
+  background-color: #218838;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  background-color: #ffe6e6;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  text-align: center;
 }

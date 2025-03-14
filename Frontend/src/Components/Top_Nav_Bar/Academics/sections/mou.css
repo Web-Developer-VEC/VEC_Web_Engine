@@ -1,150 +1,73 @@
 .mou-page {
+  padding: 20px;
   font-family: Arial, sans-serif;
-  padding: 30px;
-  /*background-color: #f4f4f9;*/
-  /*color: #333;*/
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.mou-header {
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 .mou-header h1 {
-  font-size: 2.5rem;
-  /*color: #444;*/
-  margin-bottom: 20px;
-}
-
-.mou-year-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-  padding-bottom: 50px;
-}
-
-.mou-year-button {
-  /*background-color: #fdcc03;*/
-  border: none;
-  padding: 12px 25px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.mou-year-button.active {
-  /*background-color: #ff9900;*/
-  transform: scale(1.1);
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
 }
 
 .mou-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* Creates 3 equal-width columns */
-  gap: 50px;
-  justify-items: center;
+  margin-top: 30px;
+}
+
+.mou-table-container {
+  overflow-x: auto; /* Make table horizontally scrollable */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.mou-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
-  width: 100%;
 }
 
-.mou-detail-box {
-  position: relative;
-  /*background-color: #fff;*/
-  /*border: 2px solid #fdcc03;*/
-  border-radius: 8px;
-  padding: 25px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 350px;  /* Limit the width for better appearance */
-}
-.mou-logo {
-  position: absolute;
-  top: -40px;
-  max-width: 120px;
-  left: 30%;
-  transform: translateX(-50%) scale(0.9); /* Initial scale to make the logo smaller */
-  /*background-color: #fff;*/
-  border-radius: 8px;
-  height: 80px;
-  display: flex;
-  box-shadow: 0 4px 8px rgba(126, 106, 1, 0.2);
-  padding: 5px;
-  transition: all 0.3s ease-in-out; /* Smooth transition for scaling */
+.mou-table th, .mou-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
-.mou-detail-box:hover .mou-logo {
-  transform: translateX(-50%) scale(1.1); /* Scale the logo on hover */
+.mou-table th {
+  background-color: #808080;
+  color: white;
 }
 
-.mou-logo-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.mou-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mou-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.mou-pdf-link {
+  background-color: #fdcc03;
+  color: white;
+  padding: 5px 10px;
   border-radius: 5px;
-}
-
-.mou-detail-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-}
-
-.mou-detail-box h3 {
-  font-size: 1.75rem;
-  /*color: #222;*/
-  font-weight: 500;
-  margin-top: 20px;
-  letter-spacing: 0.5px;
-}
-
-.mou-detail-box p {
-  font-size: 1.1rem;
-  /*color: #555;*/
+  text-decoration: none;
   margin-top: 10px;
-  line-height: 1.6;
 }
 
-.mou-detail-box p strong {
-  /*color: #333;*/
-}
-
-@media (max-width: 1024px) {
-  .mou-details {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
-  }
+.mou-pdf-link:hover {
+  background-color: #830000;
 }
 
 @media (max-width: 768px) {
-  .mou-details {
-    grid-template-columns: repeat(2, 1fr); /* 1 column on smaller screens */
-  }
-
-  .mou-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .mou-detail-box {
+  .mou-table-container {
     width: 100%;
-    max-width: none;
-  }
-}
-@media (max-width: 580px) {
-  .mou-details {
-    grid-template-columns: 1fr;
-    /* 1 column on smaller screens */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .mou-header h1 {
-    font-size: 2.2rem;
+  .mou-table {
+    min-width: 600px; /* Ensure the table has a minimum width for scrolling */
   }
 
-  .mou-detail-box {
-    width: 100%;
-    max-width: none;
+  .mou-table th, .mou-table td {
+    padding: 8px; /* Adjust padding for better fit on smaller screens */
   }
 }

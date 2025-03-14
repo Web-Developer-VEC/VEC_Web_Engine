@@ -6,19 +6,13 @@ import axios from 'axios';
 const NBA_F = () => {
   const [selectedDept, setSelectedDept] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
-  const [nbaData, setNbaData] = useState(null);
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+  const [data, setNbaData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/api/nba');
-        setNbaData(response.data[0]);
+        setNbaData(response.data[0].departments);
       } catch (error) {
         console.error("Error fetching NBA Data", error);
       }
@@ -26,23 +20,12 @@ const NBA_F = () => {
     fetchData();
   }, []);
 
-  const handleDeptClick = (dept) => {
-    setSelectedDept(dept);
-    setSelectedYear(null);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const handleYearClick = (year) => {
-    setSelectedYear(year);
-  };
-
-  const getPdfPath = () => {
-    if (!selectedDept || !selectedYear || !nbaData) return null;
-    const deptIndex = nbaData.DEPT.indexOf(selectedDept);
-    if (deptIndex === -1) return null;
-    const yearIndex = nbaData.year[deptIndex].indexOf(selectedYear);
-    if (yearIndex === -1) return null;
-    return UrlParser(nbaData.PDF_Path[deptIndex][yearIndex]);
-  };
 
   return (
     <>
@@ -51,7 +34,7 @@ const NBA_F = () => {
         headerText="National Board of Accreditation"
         subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
       />
-      <div className="nba-page  ">
+      <div className="nba-page">
         <div className="nba-tiles">
           <div className="nba-tile-container">
             <div className="nba-tile">
@@ -70,44 +53,38 @@ const NBA_F = () => {
             </div>
           </div>
         </div>
+        <div className="table-data">
+          <table className="department-table">
+            <thead>
+              <tr>
+                <th>S.no</th>
+                <th>Programs</th>
+                <th>Validity Years</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.department}</td>
+                  <td>
+                    {item.pdfs.map((pdf, index) => (
+                      <li key={index} className="pdf-link">
+                        <a href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`} target="_blank" rel="noopener noreferrer">
+                          {pdf.name}
+                        </a>
+                      </li>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        {/* Department Selection Buttons */}
-        <div className="nba-depts">
-          {nbaData?.DEPT.map((dept, index) => (
-            <button
-              key={index}
-              className={`nba-dept-button ${selectedDept === dept ? "active" : ""}`}
-              onClick={() => handleDeptClick(dept)}
-            >
-              {dept}
-            </button>
-          ))}
         </div>
-
-        {/* Year Selection Buttons */}
-        {selectedDept && (
-          <div className="nba-years">
-            {nbaData?.year[nbaData.DEPT.indexOf(selectedDept)].map((year, index) => (
-              <button
-                key={index}
-                className={`nba-year-button ${selectedYear === year ? "active" : ""}`}
-                onClick={() => handleYearClick(year)}
-              >
-                {year}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* PDF Viewer */}
-        {getPdfPath() && (
-          <div className="nba-pdf-container">
-            <embed className="nba-embed" src={getPdfPath()} type="application/pdf" />
-          </div>
-        )}
       </div>
     </>
   );
 };
 
-export default NBA_F;
+export default NBA_F; 

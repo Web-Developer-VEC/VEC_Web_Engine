@@ -4,21 +4,27 @@ import Banner from '../../Banner';
 import './Trust.css'
 
 const NewTrust = ({theme, toggle}) => {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   const managementTeam = [
     {
       name: 'Shri. M.V. Muthuramalingam',
       role: 'Chairman',
-      img: '/Images/muthu.png',
+      img: 'static/images/trust/muthuramalingam.jpg',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Chief Executive Officer',
-      img: '/Images/velmuruga.png',
+      img: 'static/images/trust/velmurugan.jpg',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Deputy CEO',
-      img: '/Images/velmuruga.png',
+      img: 'static/images/trust/deptyceo.jpg',
     },
   ];
 
@@ -49,15 +55,15 @@ const NewTrust = ({theme, toggle}) => {
               From a small school at Mugappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Thiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Thiruvanamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella.       
 </p>
 </motion.div>
-          <div className="grid md:grid-cols-2 gap-8 items-center ">
+          <div className="mt-10 grid md:grid-cols-2 gap-8 items-center ">
             {/* Image Section */}
             <motion.div
               whileHover={{  }}
               className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
             >
               <img
-                className="w-max h-max object-cover transition-transform duration-500 "
-                src="./smt_velammal.png"
+                className="w-64 h-max object-cover transition-transform duration-500 "
+                src={UrlParser('static/images/trust/velammal.jpg')}
                 alt="Velammal Trust Banner"
               />
             </motion.div>
@@ -93,19 +99,22 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                    text-text dark:text-drkt p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                          hover:shadow-xl transition-shadow duration-300"
               >
                 <img
-                  src={person.img}
+                  src={UrlParser(person.img)}
                   alt={person.role}
-                  className="w-24 h-24 mx-auto rounded-full mb-4 shadow-lg"
+                  className="w-48 h-48 mr-6 shadow-lg"
                 />
-                <h5 className="text-xl font-bold">
-                  {person.name}
-                </h5>
-                <h6 className="text-sm text-accn dark:text-drka">{person.role}</h6>
-                <p className="mt-2">Velammal Educational Trust</p>
+
+                <div>
+                  <h5 className="text-xl font-bold">{person.name}</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">{person.role}</h6>
+                  <p className="mt-2">Velammal Educational Trust</p>
+                </div>
               </motion.div>
             ))}
           </div>

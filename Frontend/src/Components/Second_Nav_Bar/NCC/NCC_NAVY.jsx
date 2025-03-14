@@ -3,44 +3,11 @@ import "./NCC_NAVY.css";
 import NCCNCarousel from "./NCC_NAvY comps/NCCNCarousel";
 import NCCNtable from "./NCC_NAvY comps/NCCNtable";
 import axios from "axios";
+import NCCACarousel from "./NCC_ARMY comps/NCCACarousel";
+import NCCAtable from "./NCC_ARMY comps/NCCAtable";
 
-const NCC_NAVY = () => { 
-  const [tabel,setTabelValue] = useState({});
-  const [curosel, setCarosel] = useState({});
-  const [ Coordinator, setCoordinator] = useState({});
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-
-  useEffect(()=>{
-    const fetchData = async ()=>{
-      try {
-        const responce = await axios.get('/api/ncc_navy');
-        const data = responce.data[0];
-
-        setTabelValue(data.Table);
-        setCarosel(data.image);
-        setCoordinator(data.Coordinator)
-
-      } catch (error) {
-        console.error("Error fetching data",error);  
-      }
-    }
-    fetchData()
-  },[]);
-
-  return (
-    <>
-      <NCCNCarousel data={curosel}/>
-
-      {/* Main NCC_NAVY Container */}
-      <div className="NCC_NAVY-container">
-        <div className="NCC_NAVY-content-wrapper">
-          {/* About NCC_NAVY Section */}
-          <section
+function NCCAbout() {
+  return (<section
             className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6 "
           >
@@ -82,10 +49,11 @@ const NCC_NAVY = () => {
                 corps.
               </li>
             </ul>
-          </section>
+          </section>);
+}
 
-          {/* Vision and Mission Section */}
-          <div className="NCC_NAVY-row">
+function NCCVisMis() {
+  return (<div className="NCC_NAVY-row">
             <section
               className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
@@ -118,10 +86,11 @@ const NCC_NAVY = () => {
                 multi-faceted programs conducted in a military environment.
               </p>
             </section>
-          </div>
+          </div>);
+}
 
-          {/* Aim Section */}
-          <div
+function NCCAim() {
+  return (<div
             className="NCC_NAVY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
           >
@@ -147,10 +116,11 @@ const NCC_NAVY = () => {
                 in the Armed Forces.
               </p>
             </div>
-          </div>
+          </div>);
+}
 
-          {/* Motto & Pledge Section */}
-          <div className="NCC_NAVY-motto-pledge-container">
+function NCCMotto() {
+  return (<div className="NCC_NAVY-motto-pledge-container">
             <div
               className="NCC_NAVY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
@@ -179,10 +149,50 @@ const NCC_NAVY = () => {
                 disciplined and responsible citizens of our nation.
               </p>
             </div>
-          </div>
+          </div>);
+}
 
-          {/* Profile Section */}
-          <div
+
+const NCC_NAVY = () => {
+  const [tabel,setTabelValue] = useState({});
+  const [curosel, setCarosel] = useState({});
+  const [ Coordinator, setCoordinator] = useState({});
+  const [ncc, setNcc] = useState("Home")
+  const navData = {
+    "Home": <NCCNCarousel data={curosel}/>,
+    "About": <NCCAbout/>,
+    "Vision & Mission": <NCCVisMis/>,
+    "Aim": <NCCAim/>,
+    "Motto & Pledge": <NCCMotto/>,
+    "Profile": <NCCProf/>,
+    "Table": <NCCNtable data={tabel}/>
+  };
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const responce = await axios.get('/api/ncc_navy');
+        const data = responce.data[0];
+
+        setTabelValue(data.Table);
+        setCarosel(data.image);
+        setCoordinator(data.Coordinator)
+
+      } catch (error) {
+        console.error("Error fetching data",error);  
+      }
+    }
+    fetchData()
+  },[]);
+
+  function NCCProf() {
+  return (<div
             className="NCC_NAVY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
           >
@@ -198,11 +208,31 @@ const NCC_NAVY = () => {
                 {Coordinator?.coordinator_description}
               </p>
             </div>
+        </div>);
+  }
+
+  return (
+      <>
+        {/* Main NCC_NAVY Container */}
+        <div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">
+          <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center items-start
+                    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8 
+                    self-start lg:sticky lg:top-20">
+            {Object.keys(navData).map((itm, ind) => (
+              <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
+                  hover:bg-brwn hover:text-white dark:hover:bg-drka/50 max-h-[10px]   
+                  ${(ncc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""} 
+                  ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} 
+                  key={ind} type="button" onClick={() => setNcc(itm)}>
+                {itm}
+              </button>
+            ))}
+          </nav>
+          <div className="NCC_ARMY-content-wrapper grow basis-9/12 overflow-hidden">
+            {navData[ncc]}
           </div>
         </div>
-        <NCCNtable data={tabel} />
-      </div>
-    </>
+      </>
   );
 };
 
