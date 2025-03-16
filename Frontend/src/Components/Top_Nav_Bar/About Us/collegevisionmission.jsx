@@ -3,6 +3,7 @@ import styles from "./collegevisionmission.module.css";
 import { Eye, Target } from "lucide-react"; // Importing icons
 import Banner from "../../Banner";
 
+
 const Collegevisionmission = ({ theme, toggle }) => {
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
