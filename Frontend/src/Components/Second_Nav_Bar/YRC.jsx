@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Banner from "../Banner";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./YRC.css";
 import axios from "axios";

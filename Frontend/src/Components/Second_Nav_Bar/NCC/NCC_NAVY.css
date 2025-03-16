@@ -24,6 +24,7 @@
 /* Section Styling */
 .NCC_NAVY-section {
   margin-bottom: 40px;
+  margin: 25px;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -119,6 +120,7 @@
 .NCC_NAVY-motto-pledge-container {
   display: flex;
   gap: 30px;
+  margin:20px;
   margin-top: 40px;
   flex-wrap: wrap;
   min-width: 200px;

@@ -5,6 +5,8 @@ import NCCNtable from "./NCC_NAvY comps/NCCNtable";
 import axios from "axios";
 import NCCACarousel from "./NCC_ARMY comps/NCCACarousel";
 import NCCAtable from "./NCC_ARMY comps/NCCAtable";
+import CarouselNavy from "./NCC_NAvY comps/Corouselnavy";
+import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
 
 function NCCAbout() {
   return (<section
@@ -157,15 +159,20 @@ const NCC_NAVY = () => {
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
-  const [ncc, setNcc] = useState("Home")
+  const [ncc, setNcc] = useState("About NCC Navy");
   const navData = {
-    "Home": <NCCNCarousel data={curosel}/>,
-    "About": <NCCAbout/>,
-    "Vision & Mission": <NCCVisMis/>,
-    "Aim": <NCCAim/>,
-    "Motto & Pledge": <NCCMotto/>,
-    "Profile": <NCCProf/>,
-    "Table": <NCCNtable data={tabel}/>
+    "About NCC Navy": (
+      <>
+        <NCCAbout />
+        <NCCVisMis />
+        <NCCAim />
+        <NCCMotto />
+        <NCCNCarousel data={curosel} />
+      </>
+    ),
+    Members: <NCCNMembers />,
+    Distinguished_Alumini: <NCCProf />,
+    Gallery: <CarouselNavy />,
   };
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -212,27 +219,38 @@ const NCC_NAVY = () => {
   }
 
   return (
-      <>
-        {/* Main NCC_NAVY Container */}
-        <div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">
-          <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center items-start
-                    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8 
-                    self-start lg:sticky lg:top-20">
-            {Object.keys(navData).map((itm, ind) => (
-              <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                  hover:bg-brwn hover:text-white dark:hover:bg-drka/50 max-h-[10px]   
-                  ${(ncc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""} 
-                  ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} 
-                  key={ind} type="button" onClick={() => setNcc(itm)}>
-                {itm}
-              </button>
-            ))}
-          </nav>
-          <div className="NCC_ARMY-content-wrapper grow basis-9/12 overflow-hidden">
-            {navData[ncc]}
-          </div>
+    <>
+      {/* Main NCC_NAVY Container */}
+      <div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">
+        <nav
+          className="basis-full lg:basis-1/5 flex flex-wrap justify-center gap-y-2 gap-x-2 
+  md:grid md:grid-cols-2 lg:flex lg:flex-col lg:items-center lg:float-left lg:w-[12rem] lg:max-w-[12rem] 
+  text-xl my-8 self-start lg:ml-4 lg:mr-4 mx-4 md:mx-0"
+        >
+          {Object.keys(navData).map((itm, ind) => (
+            <button
+              className={`w-full px-4 py-2 border-2 border-text dark:border-drkt 
+      hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
+      ${
+        ncc === itm
+          ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold"
+          : ""
+      } 
+      border-b-2 border-text dark:border-drkt 
+      text-center whitespace-normal break-words mt-3`}
+              key={ind}
+              type="button"
+              onClick={() => setNcc(itm)}
+            >
+              {itm}
+            </button>
+          ))}
+        </nav>
+        <div className="NCC_ARMY-content-wrapper grow basis-9/12 overflow-hidden">
+          {navData[ncc]}
         </div>
-      </>
+      </div>
+    </>
   );
 };
 
