@@ -7,7 +7,7 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8 self-start
                 transition-all duration-300 ease-in-out">
                 {Object.keys(navData).map((itm, ind) => (
-                    (Object.keys(navData[itm]).length !== Object.keys(navData).length - 1) ?
+                    (Object.keys(navData[itm]).length !== 7) ?
                         <label className={`px-2 py-2 border-2 border-text dark:border-drkt min-w-1/2
                             hover:bg-accn/50 dark:hover:bg-drka/50 text-center has-[:checked]:bg-accn/50 
                             has-[:checked]:dark:bg-drka has-[:checked]:text-prim has-[:checked]:dark:text-drkp
