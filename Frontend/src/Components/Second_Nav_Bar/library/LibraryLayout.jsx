@@ -5,6 +5,7 @@ import Banner from '../../Banner'
 import axios from "axios";
 import NCCACarousel from "../NCC/NCC_ARMY comps/NCCACarousel";
 import NCCAtable from "../NCC/NCC_ARMY comps/NCCAtable";
+import SideNav from "../SideNav";
 
 const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
@@ -59,22 +60,7 @@ const LibraryLayout = ({toggle, theme}) => {
     headerText="Library"
     subHeaderText="The only thing that you absolutely have to know, is the location of the library."
   />
-
-        <div className="min-h-screen flex flex-wrap">
-            <nav className="basis-full h-fit lg:basis-1/5 flex gap-y-2 lg:gap-y-0 gap-x-2 flex-wrap justify-center
-                lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">
-                {Object.keys(navData).map((itm, ind) => (
-                    <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                    hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
-                    ${(lib === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
-                  ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}
-                            type={"button"} onClick={() => setLib(itm)}>{itm}</button>
-                ))}
-            </nav>
-            <div className="basis-full lg:basis-9/12 overflow-hidden mt-12">
-                {navData[lib]}
-            </div>
-        </div>
+        <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} />
     </>
   );
 };
