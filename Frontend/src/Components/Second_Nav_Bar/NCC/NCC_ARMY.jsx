@@ -7,6 +7,7 @@ import NSSCarousel from "../NSS/NSSCarousel";
 import NSSContent from "../NSS/NSSContent";
 import NSSManual from "../NSS/NSSManual";
 import Coordinators from "../NSS/NSSCoordinatiors";
+import SideNav from "../SideNav";
 
 function NCCAbout() {
     return (
@@ -230,21 +231,22 @@ const NCC_ARMY = () => {
     return (
         <>
             {/* Main NCC_ARMY Container */}
-            <div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">
-                <nav className="basis-full lg:basis-1/5 flex gap-y-2 lg:gap-y-0 gap-x-2 flex-wrap justify-center
-                lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">
-                    {Object.keys(navData).map((itm, ind) => (
-                        <button className={`px-4 py-2 border-2 border-text dark:border-drkt 
-                    hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
-                    ${(ncc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}
-                  ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}
-                                type={"button"} onClick={() => setNcc(itm)}>{itm}</button>
-                    ))}
-                </nav>
-                <div className="NCC_ARMY-content-wrapper grow lg:grow-0 basis-9/12 overflow-hidden">
-                    {navData[ncc]}
-                </div>
-            </div>
+            {/*<div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">*/}
+            {/*    <nav className="basis-full lg:basis-1/5 flex gap-y-2 lg:gap-y-0 gap-x-2 flex-wrap justify-center*/}
+            {/*    lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">*/}
+            {/*        {Object.keys(navData).map((itm, ind) => (*/}
+            {/*            <button className={`px-4 py-2 border-2 border-text dark:border-drkt */}
+            {/*        hover:bg-accn/50 dark:hover:bg-drka/50   */}
+            {/*        ${(ncc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}*/}
+            {/*      ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}*/}
+            {/*                    type={"button"} onClick={() => setNcc(itm)}>{itm}</button>*/}
+            {/*        ))}*/}
+            {/*    </nav>*/}
+            {/*    <div className="NCC_ARMY-content-wrapper grow lg:grow-0 basis-9/12 overflow-hidden">*/}
+            {/*        {navData[ncc]}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            <SideNav sts={ncc} setSts={setNcc} navData={navData} cls={"NCC_ARMY-container w-screen mt-2 max-w-screen"} />
         </>
     );
 };
