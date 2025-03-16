@@ -97,7 +97,7 @@ const Naac = ({ toggle, theme }) => {
                   {section.content.map((item, i) => (
                     <li key={i}>
                       <a
-                        href={`${UrlParser(item.link)}#toolbar=0`}
+                        href={`${UrlParser(item.pdfs_path)}#toolbar=0`}
                         className="text-blue-500 hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"
