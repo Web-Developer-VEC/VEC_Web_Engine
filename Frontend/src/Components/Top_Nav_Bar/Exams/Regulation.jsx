@@ -26,33 +26,6 @@ const REGULATION = ({ theme, toggle }) => {
     fetchData();
   },[]);
 
-  const regulations = [
-    {
-      year: "2023",
-      links: [
-        { name: "UG - B.E / B.Tech", file: "/regulation_2025_btech.pdf" },
-        { name: "PG - ME", file: "/regulation_2025_me.pdf" },
-        { name: "PG - MBA", file: "/regulation_2025_mba.pdf" },
-      ],
-    },
-    {
-      year: "2019(A)",
-      links: [
-        { name: "UG - B.E / B.Tech", file: "/regulation_2024_btech.pdf" },
-        { name: "PG - ME", file: "/regulation_2024_me.pdf" },
-        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
-      ],
-    },
-    {
-      year: "2019",
-      links: [
-        { name: "UG - B.E / B.Tech", file: "/regulation_2024_btech.pdf" },
-        { name: "PG - ME", file: "/regulation_2024_me.pdf" },
-        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
-      ],
-    },
-  ];
-
   return (
     <>
       <Banner

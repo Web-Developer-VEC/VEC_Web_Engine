@@ -42,7 +42,7 @@ const HeadDepartment = ({ data }) => {
       <div className={styles.textColumn}>
         <div className={styles.hodInfo}>
           <h2 className={styles.messageHeader + " text-accn dark:text-drka"}>
-            {Name}, <span className={styles.messageHeader2 + " text-secd dark:text-drks"}>{Qualification.join(", ")}</span>
+            {Name}, <span className={styles.messageHeader2 + " text-black dark:text-drks"}>{Qualification.join(", ")}</span>
           </h2>
           <p className={styles.hodDesignation}>{designation}</p>
         </div>
