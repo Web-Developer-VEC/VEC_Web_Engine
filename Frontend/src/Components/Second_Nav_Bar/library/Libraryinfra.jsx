@@ -239,6 +239,61 @@ const LibrarySections = ({faculty, membership, lib}) => {
       ],
     },
     {
+      title: "Library Collection Data",
+      content: [
+        {
+          branch: "AI&DS",
+          titles: 325,
+          volumes: 1782,
+          natJournals: 6,
+          intJournals: 6,
+          eJournalsIEEE: 9,
+          eJournalsDELNET: 33,
+          eBooksDELNET: 1032,
+        },
+        {
+          branch: "AME",
+          titles: 670,
+          volumes: 3025,
+          natJournals: 6,
+          intJournals: 6,
+          eJournalsIEEE: 8,
+          eJournalsDELNET: 12,
+          eBooksDELNET: 19,
+        },
+        {
+          branch: "CIVIL",
+          titles: 1168,
+          volumes: 3491,
+          natJournals: 6,
+          intJournals: 6,
+          eJournalsIEEE: 6,
+          eJournalsDELNET: 68,
+          eBooksDELNET: 90,
+        },
+        {
+          branch: "CSE",
+          titles: 4159,
+          volumes: 10786,
+          natJournals: 6,
+          intJournals: 6,
+          eJournalsIEEE: 13,
+          eJournalsDELNET: 51,
+          eBooksDELNET: 300,
+        },
+        {
+          branch: "IT",
+          titles: 3049,
+          volumes: 8714,
+          natJournals: 6,
+          intJournals: 6,
+          eJournalsIEEE: 12,
+          eJournalsDELNET: 34,
+          eBooksDELNET: 65,
+        },
+      ],
+    },
+    {
       title: "Anti-Plagiarism Scanner Software",
       content: [
         { name: "CopyCatch", link: "https://www.copycatchgold.com" },
@@ -269,18 +324,18 @@ const LibrarySections = ({faculty, membership, lib}) => {
     {
       title: "Our Collections",
       content: [
-        "Total Books: 77,525",
-        "Total Titles: 25,156",
+        "Total Books: 78,070",
+        "Total Titles: 25,271",
         "General Bank Books: 1,818",
         "SC/ST Book Bank Books: 984",
-        "e-Books: 155",
-        "Journals: 162 (75 International, 87 National)",
+        "e-Books: 4373",
+        "Journals: 180 (87 International, 93 National)",
         "CDs: 3,930",
         "Video Cassettes: 127",
         "Journal Back Volumes: 2,768",
-        "Student Project Reports: 3,192",
+        "Student Project Reports: 3,930",
         "Online Journals Package: 9,517",
-        "Magazines & Newspapers: 20",
+        "Magazines & Newspapers: 10",
       ],
     },
     {
@@ -325,7 +380,42 @@ const LibrarySections = ({faculty, membership, lib}) => {
     ["Mr.Gopikrishnan", "AP-II/Maths"],
     ["Mr.Sivaraj", "AP-I//CHE"],
     ["Mr.Balaji", "AP-II/ENG"]
-  ]
+  ];
+
+  const LibraryTable = ({ data }) => {
+    return (
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border border-gray-400">
+          <thead>
+            <tr className="bg-gray-200 dark:bg-gray-700">
+              <th className="border border-gray-400 px-4 py-2">Branch</th>
+              <th className="border border-gray-400 px-4 py-2">Titles</th>
+              <th className="border border-gray-400 px-4 py-2">Volumes</th>
+              <th className="border border-gray-400 px-4 py-2">National Journals</th>
+              <th className="border border-gray-400 px-4 py-2">International Journals</th>
+              <th className="border border-gray-400 px-4 py-2">e-Journals IEEE</th>
+              <th className="border border-gray-400 px-4 py-2">e-Journals DELNET</th>
+              <th className="border border-gray-400 px-4 py-2">e-Books DELNET</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row, index) => (
+              <tr key={index} className="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-800 dark:even:bg-gray-900">
+                <td className="border border-gray-400 px-4 py-2">{row.branch}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.titles}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.volumes}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.natJournals}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.intJournals}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.eJournalsIEEE}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.eJournalsDELNET}</td>
+                <td className="border border-gray-400 px-4 py-2">{row.eBooksDELNET}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
   function LIBFloor() {
   return (<div className="max-w-7xl mx-auto lg:flex flex-wrap gap-4 justify-center">
@@ -427,21 +517,40 @@ const LibrarySections = ({faculty, membership, lib}) => {
                 </motion.div>
             ))}
           </div>
-          <div className="flex flex-wrap gap-4 justify-center lg:px-0 mt-8">
-            <p className="basis-full text-2xl font-poppins text-accn font-semibold">LIBRARY ADVISORY COMMITTEE MEMBERS</p>
-            {advisors.map((adv, i) => (
-                <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drka
-                            bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
-                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                            transition-colors duration-300 ease-in`} key={i}>
-                  {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
-                  <p className="text-xl font-poppins">{adv[0]}</p>
-                  {/* Removed cmt.nme reference as it doesn't exist in data */}
-                  <p className="text-lg text-accn dark:text-drka">{adv[1]}</p>
-                </div>
-            ))}
-          </div>
         </div>
+    )
+  }
+
+  function Advoser () {
+    return (
+      <>
+          <div
+    className="column rounded-xl,theme(colors.secd),transparent_70%)]
+            dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
+            border-l-4 border-accn dark:border-drka"
+          >
+            {/* <h2 className="asection-title">Vision</h2> */}
+            <p className="section-content">
+            We have an exclusive Library Advisory Committee, headed by a senior Faculty member. The committee comprises of representatives from each department. The committee regularly decides about the requirement of each programmes learning resources and recommend the librarian for the purchase of the same. The consistent proceeding of this library advisory committee any deficiency pertaining to the requirement of the department are quickly addressed. Thus our library has relevant resources including e-resources.
+            </p>
+          </div>
+        <div className="flex flex-wrap gap-4 justify-center lg:px-0 mt-8">
+        <p className="basis-full text-2xl font-poppins text-accn font-semibold">LIBRARY ADVISORY COMMITTEE MEMBERS</p>
+        {advisors.map((adv, i) => (
+            <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drka
+                        bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+                        dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                        transition-colors duration-300 ease-in`} key={i}>
+              {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
+              <p className="text-xl font-poppins">{adv[0]}</p>
+              {/* Removed cmt.nme reference as it doesn't exist in data */}
+              <p className="text-lg text-accn dark:text-drka">{adv[1]}</p>
+            </div>
+        ))}
+      </div>
+      
+      </>
+
     )
   }
 
@@ -857,64 +966,54 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
   function LIBResc() {
     return (
-        <div className="py-16 px-6">
+        <div className="">
           <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
             Library Resources
           </h2>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {Links.map((section, index) => (
-                <div
-                    key={index}
-                    className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
-                >
-                  <button
-                      onClick={() => toggleSection(index)}
-                      className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
-                transition-all rounded-2xl text-white dark:text-drkp mb-4
-                ${
-                          openSection === index
-                              ? "bg-[#2E8B57]" // ✅ Sea Green when active (No hover effect)
-                              : "bg-accn dark:bg-drks"
-                      }`}
-                  >
-                    {section.title}
-                    {openSection === index ? <FaChevronUp/> : <FaChevronDown/>}
-                  </button>
+          {Links.map((section, index) => (
+        <div key={index} className="dark:bg-gray-800 rounded-2xl shadow-lg mb-4">
+          <button
+            onClick={() => toggleSection(index)}
+            className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
+            transition-all rounded-2xl text-white dark:text-gray-300
+            ${openSection === index ? "bg-[#2E8B57]" : "bg-accn dark:bg-drks"}`}
+          >
+            {section.title}
+            {openSection === index ? <FaChevronUp /> : <FaChevronDown />}
+          </button>
 
-                  {openSection === index && (
-                      <motion.div
-                          initial={{opacity: 0, height: 0}}
-                          animate={{opacity: 1, height: "auto"}}
-                          exit={{opacity: 0, height: 0}}
-                          className="px-6 py-4"
-                      >
-                        {Array.isArray(section.content) ? (
-                            <ul className="list-disc marker:text-accn dark:marker:text-drka pl-6 space-y-2">
-                              {section.content.map((item, idx) =>
-                                  typeof item === "string" ? (
-                                      <li key={idx}>{item}</li>
-                                  ) : (
-                                      <li key={idx}>
-                                        <a
-                                            href={item.link}
-                                            className="text-accn dark:text-drka hover:underline"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                          {item.name}
-                                        </a>
-                                      </li>
-                                  )
-                              )}
-                            </ul>
-                        ) : (
-                            <p>{section.content}</p>
-                        )}
-                      </motion.div>
+          {openSection === index && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="px-6 py-4"
+            >
+              {section.title === "Library Collection Data" ? ( // ✅ Strict check for table
+                <LibraryTable data={section.content} />
+              ) : Array.isArray(section.content) ? (
+                <ul className="list-disc marker:text-green-600 dark:marker:text-gray-300 pl-6 space-y-2">
+                  {section.content.map((item, idx) =>
+                    typeof item === "string" ? (
+                      <li key={idx}>{item}</li>
+                    ) : (
+                      <li key={idx}>
+                        <a href={item.link} className="text-green-600 dark:text-gray-300 hover:underline" target="_blank" rel="noopener noreferrer">
+                          {item.name}
+                        </a>
+                      </li>
+                    )
                   )}
-                </div>
-            ))}
+                </ul>
+              ) : (
+                <p>{section.content}</p>
+              )}
+            </motion.div>
+          )}
+        </div>
+      ))}
           </div>
         </div>
     )
@@ -933,7 +1032,8 @@ const LibrarySections = ({faculty, membership, lib}) => {
     "Library Highlights": <LIBHigh/>,
     "Multimedia library": <LIBMult/>,
     "New Arrivals": <LIBArvl/>,
-    "Library Resources": <LIBResc/>
+    "Library Resources": <LIBResc/>,
+    "Advisory committee members": <Advoser/>
   }
 
   const toggleSection = (index) => {

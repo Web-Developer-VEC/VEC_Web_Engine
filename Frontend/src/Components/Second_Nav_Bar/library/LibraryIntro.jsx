@@ -89,7 +89,7 @@ const LibraryIntro = ({about}) => {
                   />
               </div>
           </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-12 lg:-mt-40">
+          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-12 lg:mt-10">
               {tiles.map((tile, index) => (
                   <div className={`${tile.cls} border-l-8 p-4 border-secd dark:border-drks rounded-xl 
                             bg-gray-100 dark:bg-gray-700`} key={index}>

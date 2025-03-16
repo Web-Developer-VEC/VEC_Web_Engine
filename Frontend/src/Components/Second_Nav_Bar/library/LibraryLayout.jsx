@@ -15,6 +15,8 @@ const LibraryLayout = ({toggle, theme}) => {
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "Faculty": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
+        "Advisory committee members": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "Floor overview": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "Features": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
