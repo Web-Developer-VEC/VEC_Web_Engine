@@ -7,6 +7,7 @@ import SideNav from "./SideNav";
 
 function IicHome() {
     return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks">
+        <h1 className="text-accn text-4xl">Home</h1>
         <h2 className="text-[30px]">About IIC</h2>
         <p>
             The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
@@ -23,6 +24,7 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
+        <h1 className="text-accn text-4xl">Establishment of IIC</h1>
         <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
             <h2 className="text-[30px]">Major Focus of IIC</h2>
             <p>
@@ -55,28 +57,35 @@ function IicEst() {
 }
 
 function IicExp() {
-    return null;
+    return (        <h1 className="text-accn text-4xl">Expert Representative</h1>
+);
 }
 
 function IicRep() {
-    return null;
+    return (
+        <h1 className="text-accn text-4xl">Student Representative</h1>
+    );
 }
 
 function IicFir() {
-    return null;
+    return (<h1 className="text-accn text-4xl">IIC 1.0</h1>
+    );
 }
 
 function IicSec() {
-    return null;
+    return (<h1 className="text-accn text-4xl">IIC 2.0</h1>
+    );
 }
 
 function IicThd() {
-    return null;
+    return (<h1 className="text-accn text-4xl">IIC 3.0</h1>
+    );
 }
 
 function IicEco() {
     return (<div className="mb-10">
         <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks">
+            <h1 className="text-accn text-4xl">I & E Ecosystem</h1>
             <h2 className="text-[30px]">Functions of IIC</h2>
             <p>
                 <br/>• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC
@@ -98,7 +107,9 @@ function IicEco() {
 }
 
 function IicCon() {
-    return null;
+    return (
+        <h1 className="text-accn text-4xl">Contacts</h1>
+    );
 }
 
 const Iic = ({toggle, theme}) => {
@@ -388,6 +399,7 @@ const Iic = ({toggle, theme}) => {
                     if (isPlaying) intervalRef.current = loop(); // Resume auto-scroll only if playing
                 }}
             >
+                <h1 className="text-accn text-4xl">Calender</h1>
                 <h3 className="iic-faici">Facilities And Infrastructure</h3>
                 <div className="gallery">
                     <div className="left iic-left">
@@ -426,6 +438,7 @@ const Iic = ({toggle, theme}) => {
 
     function IicGal() {
         return (<div className="carousel-controls">
+                <h1 className="text-accn text-4xl">Gallery</h1>
                 <button
                     className={`carousel-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
                     onClick={movePrev}
@@ -450,6 +463,7 @@ const Iic = ({toggle, theme}) => {
 
     function IicFac() {
         return (<div className="nirf-content">
+            <h1 className="text-accn text-4xl">Faculty</h1>
             <div className="nirf-years">
                 {["Certificate", "Events Organized", "Policy", "Members", "NIR", "Other Stuffs"].map((category) => (
                     <button
