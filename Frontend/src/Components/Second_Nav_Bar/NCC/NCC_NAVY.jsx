@@ -5,8 +5,12 @@ import NCCNtable from "./NCC_NAvY comps/NCCNtable";
 import axios from "axios";
 import NCCACarousel from "./NCC_ARMY comps/NCCACarousel";
 import NCCAtable from "./NCC_ARMY comps/NCCAtable";
+
 import CarouselNavy from "./NCC_NAvY comps/Corouselnavy";
 import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
+
+import SideNav from "../SideNav";
+
 
 function NCCAbout() {
   return (<section
@@ -219,6 +223,7 @@ const NCC_NAVY = () => {
   }
 
   return (
+
     <>
       {/* Main NCC_NAVY Container */}
       <div className="NCC_ARMY-container flex flex-wrap w-screen mt-2 max-w-screen">
@@ -251,6 +256,7 @@ const NCC_NAVY = () => {
         </div>
       </div>
     </>
+
   );
 };
 

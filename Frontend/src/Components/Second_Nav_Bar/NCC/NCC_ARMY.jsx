@@ -7,9 +7,12 @@ import NSSCarousel from "../NSS/NSSCarousel";
 import NSSContent from "../NSS/NSSContent";
 import NSSManual from "../NSS/NSSManual";
 import Coordinators from "../NSS/NSSCoordinatiors";
+
 import NCCAMembers from "./NCC_ARMY comps/NCCAMembers";
 import Carouselarmy from "./NCC_ARMY comps/Corouselarmy";
 import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
+import SideNav from "../SideNav";
+
 
 function NCCAbout() {
     return (
@@ -269,6 +272,7 @@ const NCC_ARMY = () => {
           </div>
         </div>
       </>
+
     );
 };
 

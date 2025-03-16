@@ -1,31 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Regulation.css";
+import axios from "axios";
 import Banner from "../../Banner";
 
 const REGULATION = ({ theme, toggle }) => {
+
+  const [regulationdata, setRegulationData] = useState(null);
+  
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/regulation');
+
+        setRegulationData(response.data);
+      } catch (error) {
+        console.error("Error Fetching Regulation data");
+      }
+    }
+    fetchData();
+  },[]);
+
   const regulations = [
     {
       year: "2023",
       links: [
         { name: "UG - B.E / B.Tech", file: "/regulation_2025_btech.pdf" },
-        { name: "PG - MBA", file: "/regulation_2025_mba.pdf" },
         { name: "PG - ME", file: "/regulation_2025_me.pdf" },
+        { name: "PG - MBA", file: "/regulation_2025_mba.pdf" },
       ],
     },
     {
       year: "2019(A)",
       links: [
         { name: "UG - B.E / B.Tech", file: "/regulation_2024_btech.pdf" },
-        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
         { name: "PG - ME", file: "/regulation_2024_me.pdf" },
+        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
       ],
     },
     {
       year: "2019",
       links: [
         { name: "UG - B.E / B.Tech", file: "/regulation_2024_btech.pdf" },
-        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
         { name: "PG - ME", file: "/regulation_2024_me.pdf" },
+        { name: "PG - MBA", file: "/regulation_2024_mba.pdf" },
       ],
     },
   ];
@@ -42,13 +65,13 @@ const REGULATION = ({ theme, toggle }) => {
       <div className="regulation-container">
         <h1 className="title">Regulations</h1>
         <div className="regulation-grid">
-          {regulations.map((reg, index) => (
+          {regulationdata?.map((reg, index) => (
             <div key={index} className="regulation-card">
               <h2 className="regulation-year">Regulation {reg.year}</h2>
               <ul className="regulation-list">
                 {reg.links.map((link, idx) => (
                   <li key={idx}>
-                    <a href={link.file} target="_blank" rel="noopener noreferrer">
+                    <a href={UrlParser(link.pdf_path)} target="_blank" rel="noopener noreferrer">
                       {link.name}
                     </a>
                   </li>

@@ -36,7 +36,7 @@ const IQAC = () => {
     const certificateArray =
         iqacData?.certificate?.year?.map((year, index) => ({
             year,
-            path: UrlParser(iqacData?.certificate.pdfpath[index]),
+            path: UrlParser(iqacData?.certificate.path[index]),
         })) || [];
 
     const eventsOrganizedArray =
@@ -119,8 +119,8 @@ const IQAC = () => {
         })) || [];
 
     const galleryArray = 
-        iqacData?.gallery?.images?.map((image, index) => ({
-            image: UrlParser(image),
+        iqacData?.gallery?.images?.map((images, index) => ({
+            image: UrlParser(images),
             caption: iqacData.gallery.captions[index],
         })) || [];
 
@@ -136,10 +136,13 @@ const IQAC = () => {
             path: UrlParser(iqacData.bestPractices.paths[index]),
         })) || [];
 
+
+    
+
     const aqarArray = 
         iqacData?.aqar?.years?.map((year, index) => ({
             year,
-            path: UrlParser("nssday.pdf"),
+            path: UrlParser(iqacData.aqar.paths[index]),
         })) || [];
 
     const openPdf = (category, year) => {

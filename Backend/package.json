@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "concurrently \"npm run server\" \"npm run chatbot\"",
+    "server": "nodemon server.js",
+    "chatbot": "cd chatbotv7 && python app.py"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "backend": "file:",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

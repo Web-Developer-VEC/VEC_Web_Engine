@@ -75,6 +75,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
                 "E-Resources Access",
             ],
         },
+
         {
             category: "E-RESOURCES",
             items: ["E-Journals", "E-books", "DELNET", "NPTEL", "NDL"],
@@ -397,7 +398,8 @@ const LibrarySections = ({faculty, membership, lib}) => {
                     </div>
                 </motion.div>
             ))}
-        </div>);
+        </div>
+);
     }
 
     function LIBHod() {
@@ -891,7 +893,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
             </div>
         )
     }
-
+    
     function LIBResc() {
         return (
             <div className="py-16 px-6">
