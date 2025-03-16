@@ -163,6 +163,12 @@ body {
   text-align: left;
 }
 
+.about-department-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .about-department-image img {
   /* max-width: 100%; */
@@ -339,6 +345,15 @@ ul {
     /* Centers the image */
     max-width: 100%;
     height: auto;
+  }
+
+  .accordion{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-container{
+    width: 85vw;
   }
 }
 
