@@ -62,17 +62,17 @@ const pgDepartments = [
   {
     name: "M.E. Computer Science & Engineering",
     icon: <FaGraduationCap />,
-    link: "/dept/002",
+    link: "/dept/005",
   },
   {
     name: "M.E. Power System Engineering",
     icon: <FaBolt />,
-    link: "/dept/002",
+    link: "/dept/007",
   },
   {
     name: "M.B.A. Master of Business Administration",
     icon: <FaBusinessTime />,
-    link: "/dept/002",
+    link: "/dept/017",
   },
 ];
 
@@ -81,7 +81,7 @@ const scienceHumanities = [
   { name: "English", icon: <FaBook />, link: "/dept/010" },
   { name: "Mathematics", icon: <FaCalculator />, link: "/dept/012" },
   { name: "Physics", icon: <FaAtom />, link: "/dept/015" },
-  { name: "Tamil", icon: <FaLanguage />, link: "/dept/002" },
+  { name: "Tamil", icon: <FaLanguage />, link: "/dept/014" },
 ];
 
 const AcademicDepartments = () => {

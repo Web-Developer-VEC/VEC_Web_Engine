@@ -67,7 +67,7 @@ const Programmes = (toggle, theme) => {
                 },
                 {
                     name: 'Tamil',
-                    lnk: '/dept/002'
+                    lnk: '/dept/014'
                 },
                 {
                     name: 'Physics',
@@ -80,15 +80,15 @@ const Programmes = (toggle, theme) => {
             values: [
                 {
                     name: 'M.E. Computer Science Engineering',
-                    lnk: '/dept/002'
+                    lnk: '/dept/005'
                 },
                 {
-                    name: 'B.E. Power System Engineering',
-                    lnk: '/dept/004'
+                    name: 'M.E. Power System Engineering',
+                    lnk: '/dept/007'
                 },
                 {
                     name: 'M.B.A Master of Business Administration',
-                    lnk: '/dept/004'
+                    lnk: '/dept/017'
                 },
             ]
         },
@@ -97,27 +97,27 @@ const Programmes = (toggle, theme) => {
             values: [
                 {
                     name: 'Computer Science and Engineering',
-                    lnk: '/dept/'
+                    lnk: '/dept/005'
                 },
                 {
                     name: 'Information Technology',
-                    lnk: '.dept/'
+                    lnk: '/dept/011'
                 },
                 {
                     name: 'Electronics and Communication Engineering',
-                    lnk: "/dept/"
+                    lnk: "/dept/009"
                 },
                 {
                     name: 'Electrical and Electronics Engineering',
-                    lnk: '/dept/'
+                    lnk: '/dept/007'
                 },
                 {
                     name: 'Mechanical Engineering',
-                    lnk: '/dept/'
+                    lnk: '/dept/013'
                 },
                 {
                     name: 'Physics',
-                    lnk: '/dept/'
+                    lnk: '/dept/015'
                 }
             ]
         }
