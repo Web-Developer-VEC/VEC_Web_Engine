@@ -51,46 +51,7 @@ const CurriculumPage = ({ data }) => {
             ))}
           </div>
 
-          {/* Program Specific Outcomes (PSOs) */}
-          {/* <div className="psos-section mt-5">
-            <h2>Program Specific Outcomes</h2>
-            <div className="accordion" id="psosAccordion">
-              {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-                <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-                  <h2 className="accordion-header" id={`psosHeading${index}`}>
-                    <button className="accordion-buttons" onClick={() => togglePOS(index)}>
-                      {heading}
-                    </button>
-                  </h2>
-                  <div className={`accordion-body ${activePOS === index ? 'show' : ''}`}>
-                    {data.program_specific_outcomes.content[index]}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
         </div>
-
-        {/* Right Column: Program Outcomes */}
-        {/* <div className="col-md-6">
-          <div className="pos-section">
-            <h2>Program Outcomes</h2>
-            <div className="accordion">
-              {data?.program_outcomes?.headings?.map((heading, index) => (
-                <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-                  <h2 className="accordion-header">
-                    <button className="accordion-buttons" onClick={() => togglePO(index)}>
-                      {heading}
-                    </button>
-                  </h2>
-                  <div className={`accordion-body ${activePO === index ? 'show' : ''}`}>
-                    {data.program_outcomes.content[index]}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
       </div>
       {selectedRegulation && (
         <div className="REG-modal">
@@ -99,7 +60,7 @@ const CurriculumPage = ({ data }) => {
                     onClick={closeModal}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <h2 className="mb-4">Curriculum & Syllabus {selectedRegulation[1]}</h2>
+            <h2 className="mb-4">Regulation {selectedRegulation[1]}</h2>
             <iframe
               src={UrlParser(selectedRegulation[0])}
               title={selectedRegulation[1]}
