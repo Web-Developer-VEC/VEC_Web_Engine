@@ -55,7 +55,7 @@ function Management({ theme, toggle }) {
             </div>
 
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/velmurugan.jpg')} alt="Founder's Image" />
+              <img src={UrlParser('static/images/trust/muthuramalingam.jpg')} alt="Founder's Image" />
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ function Management({ theme, toggle }) {
 
           <div className="FCP-content-container">
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/muthuramalingam.jpg')} alt="CEO's Image" />
+              <img src={UrlParser('static/images/trust/velmurugan.jpg')} alt="CEO's Image" />
             </div>
 
             <div className="FCP-text-container">
@@ -99,7 +99,7 @@ function Management({ theme, toggle }) {
               </p>
             </div>
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/deputyceo.jpg')} alt="deputy ceo Image" />
+              <img src={UrlParser('static/images/trust/deptyceo.jpg')} alt="deputy ceo Image" />
             </div>
           </div>
         </div>

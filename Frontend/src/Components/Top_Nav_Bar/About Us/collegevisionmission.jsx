@@ -33,7 +33,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                         </p>
                     </div>
                     <div className={styles.photo}>
-                        <img src={UrlParser('static/images/aboutvec/VM.jpg')} alt="Vision Photo" className={styles.photoImage} />
+                        <img src={UrlParser('static/images/visionandmission/VM.jpg')} alt="Vision Photo" className={styles.photoImage} />
                     </div>
                 </div>
 
