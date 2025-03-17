@@ -181,8 +181,9 @@
 
 /* HOD Image */
 .imageColumn {
-  flex: 1;
+  /* flex: 1; */
   text-align: center;
+  width: 35vw;
 }
 
 .hodImage {

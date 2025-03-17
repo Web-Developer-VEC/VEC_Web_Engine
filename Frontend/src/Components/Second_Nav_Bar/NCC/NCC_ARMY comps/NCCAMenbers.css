@@ -1,0 +1,163 @@
+.membersarmy-container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.membersarmy-h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    /* Ensures the underline aligns with the text */
+}
+
+.membersarmy-underline {
+    width: 180px;
+    height: 4px;
+    background-color: #fdcc03;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* Officer Card */
+.membersarmy-officer-card {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: auto;
+    border-left: 6px solid #fdcc03;
+}
+
+.membersarmy-officer-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.membersarmy-officer-details {
+    text-align: left;
+}
+
+.membersarmy-officer-details h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.membersarmy-officer-details p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Cadet Member Cards */
+.membersarmy-members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Member Card */
+.membersarmy-member-card {
+    display: flex;
+    background-color: #0d1b2a;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    width: 100%;
+    height: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Image taking full height */
+.membersarmy-member-image {
+    width: 35%;
+    height: 100%;
+}
+
+.membersarmy-member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content on the right */
+.membersarmy-member-info {
+    width: 65%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.membersarmy-platoon {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.membersarmy-member-info h3 {
+    font-size: 18px;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.membersarmy-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.membersarmy-degree {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .membersarmy-members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .membersarmy-member-card {
+        flex-direction: row;
+    }
+
+    .membersarmy-member-image {
+        width: 40%;
+    }
+
+    .membersarmy-member-info {
+        width: 60%;
+    }
+}
+
+@media (max-width: 600px) {
+    .membersarmy-member-card {
+        flex-direction: column;
+    }
+
+    .membersarmy-member-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .membersarmy-member-info {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (max-width: 480px) {
+    .membersarmy-members-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
