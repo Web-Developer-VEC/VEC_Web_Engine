@@ -16,6 +16,7 @@ import Conference from "./sections/Conference";
 import styles from "./HeadDepartment.module.css";
 import college from "../../Assets/college.jpeg";
 import Toggle from "../../Toggle";
+import LoadComp from "../../LoadComp";
 
 const DepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
@@ -151,9 +152,8 @@ const DepartmentPage = ({ theme, toggle }) => {
   return (
     <div className={styles.main}>
       {loading && (
-        <div className={styles.loadingscreen}>
-          <div className={styles.spinner}></div>
-          Loading...
+        <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+          <LoadComp />
         </div>
       )}
 

@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px; /* Increased gap for better separation */
-    border-left: 5px solid #800000;
+    /*border-left: 5px solid #800000;*/
 }
 
 .alumni-objectives{
