@@ -68,7 +68,7 @@ const GrievanceForm = ({ theme, toggle }) => {
 
       <div className="flex justify-center p-6">
         <div className="bg-white p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit">
-          <h2 className="text-[20px] font-bold text-[#800000]">Help Desk</h2>
+          <h2 className="text-[20px] font-bold text-[#800000]">Query/Grievences</h2>
           <p className="text-[16px] text-gray-700">Please fill the form.</p>
 
           <form className="mt-2 space-y-4" onSubmit={handleSubmit}>
