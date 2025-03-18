@@ -45,14 +45,14 @@ const NCCMAIN = ({toggle, theme}) => {
           {/* NCC Army Page (Left to Right Transition) */}
           {activePage === "army" && (
               <motion.div
-                  className="NCC-page"
+                  className="NCC-page -mt-2"
                   initial={{x: "-100%"}}
                   animate={{x: 0}}
                   exit={{x: "100%"}}
                   transition={{duration: 0.5 }}
           >
             {/*<h2 className="NCC-page-heading">NCC Army</h2>*/}
-            <button className="NCC-back-btn-right bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
+            <button className="NCC-back-btn-right top-2 right-2 bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
                         onClick={() => setActivePage("buttons")}>
               Back ➡
             </button>
@@ -63,14 +63,14 @@ const NCCMAIN = ({toggle, theme}) => {
         {/* NCC Navy Page (Right to Left Transition) */}
         {activePage === "navy" && (
           <motion.div
-            className="NCC-page"
+            className="NCC-page -mt-2"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           >
             {/*<h2 className="NCC-page-heading">NCC Navy</h2>*/}
-            <button className="NCC-back-btn bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
+            <button className="NCC-back-btn left-2 top-2 bg-secd dark:bg-drks hover:bg-accn dark:hover:bg-drka hover:text-prim"
                     onClick={() => setActivePage("buttons")}>
               ⬅ Back
             </button>

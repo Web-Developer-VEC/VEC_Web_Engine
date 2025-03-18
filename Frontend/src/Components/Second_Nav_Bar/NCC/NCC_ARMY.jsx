@@ -19,7 +19,7 @@ function NCCAbout() {
         <section
             className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                border-l-8 border-r-8 border-[#FDB515] px-6"
+                border-l-8 border-r-8 border-[#FDB515] px-6 mt-4"
         >
             <h2
                 className="NCC_ARMY-section-title text-accn dark:text-drka
@@ -189,7 +189,7 @@ const NCC_ARMY = () => {
         </>
       ),
       Members: <NCCAMembers />,
-      Distinguished_Alumini : <NCCProf />,
+      "Distinguished Alumini" : <NCCProf />,
       Gallery: <Carouselarmy />,
     };
 
@@ -241,38 +241,8 @@ const NCC_ARMY = () => {
     return (
       <>
         {/* Main NCC_ARMY Container */}
-        <div className="NCC_ARMY-container flex flex-wrap w-screen mt-4 max-w-screen">
-          <nav
-            className="basis-full lg:basis-1/5 flex flex-wrap justify-center gap-y-2 gap-x-2 
-  md:grid md:grid-cols-2 lg:flex lg:flex-col lg:items-center lg:float-left lg:w-[12rem] lg:max-w-[12rem] 
-  text-xl my-8 self-start lg:ml-4 lg:mr-4 mx-4 md:mx-0"
-          >
-            {Object.keys(navData).map((itm, ind) => (
-              <button
-                className={`w-full px-4 py-2 border-2 border-text dark:border-drkt 
-      hover:bg-brwn hover:text-white dark:hover:bg-drka/50   
-      ${
-        ncc === itm
-          ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold"
-          : ""
-      } 
-      border-b-2 border-text dark:border-drkt 
-      text-center whitespace-normal break-words`}
-                key={ind}
-                type="button"
-                onClick={() => setNcc(itm)}
-              >
-                {itm}
-              </button>
-            ))}
-          </nav>
-
-          <div className="NCC_ARMY-content-wrapper grow lg:grow-0 basis-9/12 overflow-hidden">
-            {navData[ncc]}
-          </div>
-        </div>
+        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="NCC_ARMY-container" />
       </>
-
     );
 };
 

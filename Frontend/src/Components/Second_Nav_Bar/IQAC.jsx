@@ -19,7 +19,7 @@ const IQAC = () => {
     const [iqa, setIqa] = useState("Objectives")
     const navData = {
         "Objectives": <IqaObj/>,
-        "Coordinator": <IqaCor/>,
+        "Coordinators": <IqaCor/>,
         "Members": <IqaMem/>,
         "Minutes of Meetings": <IqaMet/>,
         "Academic and Administrative Audit": <IqaAud/>,
@@ -465,7 +465,7 @@ const IQAC = () => {
                 {/*    ))}*/}
                 {/*</div>*/}
 
-                <SideNav sts={iqa} setSts={setIqa} navData={navData} cls={"*:px-4"}/>
+                <SideNav sts={iqa} setSts={setIqa} navData={navData} cls={""}/>
             </div>
         </>
     );
