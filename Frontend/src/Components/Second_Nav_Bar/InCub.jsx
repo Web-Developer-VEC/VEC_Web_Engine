@@ -35,8 +35,9 @@ const Incub = () => {
 
     // Data for Facilities Carousel
     const slideData = [
-        {image: "/lab1.jpg", title: "Advanced Robotics Lab", dscrp: "State-of-the-art robotics research facility"},
-        {image: "/workshop.jpg", title: "Innovation Workshop", dscrp: "Collaborative space for student projects"},
+        {image: "/section1.jpg", title: "Advanced Robotics Lab", dscrp: "State-of-the-art robotics research facility"},
+        {image: "/section2.jpg", title: "Innovation Workshop", dscrp: "Collaborative space for student projects"},
+       
     ];
 
     // Data for Mentors
@@ -183,22 +184,21 @@ const Incub = () => {
     function CubFcl() {
         return (
             <div className="ic-wrap-h-fit">
-                <div className="ic-container"
-                     style={{transform: `translateX(-${currentIndex * 100}%)`}}>
+                <div className="ic-container">
                     {slideData.map((slide, index) => (
-                        <div className="ic-carousel-slide" key={index}>
-                            <img src={slide.image} alt={slide.title}/>
-                            <div className="ic-carousel-texty bottom-0 lg:bottom-24 lg:mb-4 lg:px-8">
+                        <div className={`ic-carousel-slide ${index === currentIndex ? "visible" : "hidden"}`} key={index}>
+                            <img src={slide.image} alt={slide.title} />
+                            <div className="ic-carousel-texty bottom-0 lg:bottom-24 lg:mb-3 lg:px-8 lg:py-4">
                                 <h3 className="text-sm lg:text-2xl lg:mb-4">{slide.title}</h3>
                                 <p className="text-xs lg:text-xl">{slide.dscrp}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-
+    
                 <button className="ic-carousel-btn ic-carousel-btn-left" onClick={prevSlide}>❮</button>
                 <button className="ic-carousel-btn ic-carousel-btn-right" onClick={nextSlide}>❯</button>
-
+    
                 <div className="ic-carousel-dots">
                     {slideData.map((_, index) => (
                         <span
