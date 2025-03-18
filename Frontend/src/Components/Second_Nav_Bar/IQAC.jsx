@@ -4,6 +4,7 @@ import "./IQAC.css";
 import Banner from "../Banner";
 import axios from "axios";
 import SideNav from "./SideNav";
+import {FaLink} from "react-icons/fa";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -16,6 +17,7 @@ const IQAC = () => {
     const [selectedAction, setSelectedAction] = useState(null);
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
+    const [gal, setGal] = useState("All");
     const [iqa, setIqa] = useState("Objectives")
     const navData = {
         "Objectives": <IqaObj/>,
@@ -234,13 +236,21 @@ const IQAC = () => {
     // Render Gallery content
     const renderGalleryContent = () => {
         return (
-            <div className="gallery-container">
-                <div className="gallery-grid">
-                    {galleryArray.map((item, index) => (
-                        <div key={index} className={`gallery-item gallery-item-${index + 1}`}>
-                            <img src={item.image || "/placeholder.svg"} alt={item.caption} className="gallery-image"/>
-                            <p className="gallery-caption">{item.caption}</p>
-                        </div>
+            <div className="mr-4">
+                <h2 className="text-2xl text-center my-4">Gallery</h2>
+                <div className="flex gap-2 justify-center mb-4">
+                    {["All", "fir", "sec", "thd"].map((item, index) => (
+                        <button className="bg-secd px-4 text-lg font-semibold rounded-lg" type={"button"}
+                        onClick={() => setGal(item)}>{item}</button>
+                    ))}
+                </div>
+                <div className="columns-xs mb-12">
+                    {[["/aboutvec1.jpg", "fir"], ["/aboutvec2.jpg", "fir"], ["/aboutvec3.jpg", "sec"], ["/astronet.jpg", "thd"], ["/ceo.jpg", "fir"], ["/deputy-ceo.jpg", "sec"], ["/YRC_I1.jpg", "sec"], ["nssphoto6.jpg", "thd"], ["/chairman.jpg", "thd"]].map((item, index) => (
+                        <img src={item[0]} alt={item.caption}
+                             className={`size-0 block box-border m-2 
+                             ${item[1] === gal || gal === "All"? 'animate-[fadBorn_1s_ease_forwards]'
+                                 : 'animate-[fadKill_1s_ease_forwards]'}`}
+                        style={{animationDelay: `${100 * index}ms`}}/>
                     ))}
                 </div>
             </div>
@@ -284,30 +294,34 @@ const IQAC = () => {
 
     function IqaMet() {
         return (
-            <div className="flex flex-wrap justify-center my-4 gap-4">
+            <div className="flex flex-wrap justify-center text-xl my-4 gap-8">
+                <h2 className={"basis-full text-center text-2xl"}>Minutes of Meetings</h2>
                 {minutesOfMeetingsArray.map((action, index) => (
-                    <div key={index}
-                         className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                         onClick={() => openPdf("Minutes of Meetings", action.year)}>
-                        {action.year}
-                    </div>
+                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                         className="hover:underline hover:text-text dark:hover:text-drkt"
+                         // onClick={() => openPdf("Minutes of Meetings", action.year)}
+                    >
+                        <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
+                    </a>
                 ))}
-                {IqaPdf()}
+                {/*{IqaPdf()}*/}
             </div>
         );
     }
 
     function IqaAud() {
         return (
-            <div className="flex flex-wrap justify-center my-4 gap-4">
+            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
+                <h2 className={"basis-full text-center text-2xl"}>Academic and Administrative Audit</h2>
                 {academicAdminAuditArray.map((action, index) => (
-                    <div key={index}
-                         className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                         onClick={() => openPdf("Academic and Administrative Audit", action.year)}>
-                        {action.year}
-                    </div>
+                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                         className="hover:underline hover:text-text dark:hover:text-drkt"
+                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
+                    >
+                        <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
+                    </a>
                 ))}
-                {IqaPdf()}
+                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -318,30 +332,34 @@ const IQAC = () => {
 
     function IqaDev() {
         return (
-            <div className="flex flex-wrap justify-center my-4 gap-4">
+            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
+                <h2 className={"basis-full text-center text-2xl"}>Strategic development plan</h2>
                 {strategicPlanArray.map((action, index) => (
-                    <div key={index}
-                         className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                         onClick={() => openPdf("Strategic Development Plan", action.year)}>
-                        {action.year}
-                    </div>
+                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                        // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
+                    >
+                        <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
+                    </a>
                 ))}
-                {IqaPdf()}
+                {/*{IqaPdf()}*/}
             </div>
         );
     }
 
     function IqaPra() {
         return (
-            <div className="flex flex-wrap justify-center my-4 gap-4">
+            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
+                <h2 className={"basis-full text-center text-2xl"}>Best Practices</h2>
                 {bestPracticesArray.map((action, index) => (
-                    <div key={index}
-                         className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                         onClick={() => openPdf("Best Practices", action.year)}>
-                        {action.year}
-                    </div>
+                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                        // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
+                    >
+                        <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
+                    </a>
                 ))}
-                {IqaPdf()}
+                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -361,15 +379,17 @@ const IQAC = () => {
 
     function IqaQar() {
         return (
-            <div className="flex flex-wrap justify-center my-4 gap-4 ">
+            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
+                <h2 className={"basis-full text-center text-2xl"}>AQAR</h2>
                 {aqarArray.map((action, index) => (
-                    <div key={index}
-                         className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                         onClick={() => openPdf("AQAR", action.year)}>
-                        {action.year}
-                    </div>
+                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                        // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
+                    >
+                        <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
+                    </a>
                 ))}
-                {IqaPdf()}
+                {/*{IqaPdf()}*/}
             </div>
         );
     }
