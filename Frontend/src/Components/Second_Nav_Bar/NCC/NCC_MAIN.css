@@ -1,233 +1,113 @@
-/* General Container */
-.NCC-container {
-  width: 100%;
+/* Main container */
+.NCC-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+/* Buttons Section */
+.NCC-main-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 40vh;
-  display: flex;
-  /*justify-content: center;*/
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-}
-
-/* Grid Layout for Buttons */
-.NCC-buttons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ensures side-by-side layout */
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 700px; /* Prevents too wide spacing */
-  place-items: center; /* Aligns buttons properly */
-}
-
-/* Individual Button */
-.NCC-button {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  /*background-color: white;*/
-  /*color: black;*/
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
-.NCC-button:hover {
-  /*background-color: #f5f5f5;*/
-  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-/* NCC Logo */
-.NCC-logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-/* Text Styling */
-.NCC-name {
-  /*font-size: 1.2rem;*/
-  /*font-weight: bold;*/
-}
-
-.NCC-rank {
-  font-size: 1rem;
-}
-
-/* Page Layout */
-.NCC-page {
-  /*width: 100%;*/
-  /*min-height: 100vh;*/
-  /*background-color: #f8f9fa;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  transition: transform 0.3s ease-in-out;
   position: relative;
-  /*padding: 20px;*/
-  box-sizing: border-box;
-  overflow: auto;
 }
 
-/* Page Headings */
-.NCC-page-heading {
-  /*font-size: 2rem;*/
-  /*font-weight: bold;*/
+/* NCC Army Logo */
+.NCC-main-logo {
+  height: 20vh;
+  width: auto;
+  margin-bottom: -5px;
+  /* Slight overlap to ensure connection */
+}
+
+/* Vertical Line Below Logo */
+.NCC-main-vertical-line {
+  width: 4px;
+  height: 50px;
+  background-color: gray;
+}
+
+/* Horizontal Line */
+.NCC-main-horizontal-container {
+  display: flex;
+  justify-content: center;
+  width: 220px;
+  position: relative;
+}
+
+.NCC-main-horizontal-line {
+  width: 220px;
+  height: 4px;
+  background-color: gray;
+  position: relative;
+}
+
+/* Split Vertical Lines (Stop Before Buttons) */
+.NCC-main-split-container {
+  display: flex;
+  justify-content: space-between;
+  width: 220px;
+  position: relative;
   margin-bottom: 20px;
-  text-align: center;
+  /* Add spacing before buttons */
+}
+
+.NCC-main-split-line {
+  width: 4px;
+  height: 40px;
+  /* Reduced height to stop before buttons */
+  background-color: gray;
+}
+
+/* Button Group */
+.NCC-main-button-group {
+  display: flex;
+  gap: 40px;
+  /* Adjusted margin */
+  margin: 5px;
+}
+
+/* Individual Buttons */
+.NCC-main-button {
+  padding: 12px 24px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  background-color: #800000;
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.NCC-main-button:hover {
+  transform: scale(1.1);
+}
+
+/* Pages (NCC Army & Navy) */
+.NCC-main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Back Button */
-.NCC-back-btn,
-.NCC-back-btn-right {
-  position: absolute;
-  top: 0;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  /*background-color: #dc3545;*/
-  /*color: white;*/
+.NCC-main-back-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
+  border: none;
+  transition: background-color 0.2s;
 }
 
-.NCC-back-btn {
-  left: 20px;
-}
-
-.NCC-back-btn-right {
-  right: 20px;
-}
-
-.NCC-back-btn:hover,
-.NCC-back-btn-right:hover {
-  /*background-color: #c82333;*/
-}
-
-/* Responsive Design */
-
-/* Tablets and Larger Mobile Screens */
-@media (max-width: 1024px) {
-  .NCC-container {
-      min-height: 60vh;
-      padding: 15px;
-  }
-
-  .NCC-buttons {
-      grid-template-columns: repeat(2, 1fr); /* Ensures two buttons side by side */
-  }
-
-  .NCC-button {
-      width: 100%;
-      max-width: 280px;
-      height: 200px;
-  }
-
-  .NCC-logo {
-      width: 90px;
-      height: 90px;
-  }
-
-  .NCC-name {
-      font-size: 1rem;
-  }
-
-  .NCC-rank {
-      font-size: 0.9rem;
-  }
-
-  .NCC-page-heading {
-      font-size: 1.8rem;
-  }
-}
-
-/* Mobile Devices */
-@media (max-width: 768px) {
-  .NCC-container {
-      padding: 10px;
-  }
-
-  .NCC-buttons {
-      grid-template-columns: repeat(2, 1fr); /* Side by side */
-  }
-
-  .NCC-button {
-      max-width: 260px;
-      height: 180px;
-  }
-
-  .NCC-logo {
-      width: 80px;
-      height: 80px;
-  }
-
-  .NCC-name {
-      font-size: 1rem;
-  }
-
-  .NCC-rank {
-      font-size: 0.8rem;
-  }
-
-  .NCC-page-heading {
-      font-size: 1.5rem;
-  }
-
-  .NCC-back-btn,
-  .NCC-back-btn-right {
-      font-size: 14px;
-      padding: 8px 12px;
-      top: 10px;
-  }
-}
-
-/* Small Mobile Screens */
-@media (max-width: 480px) {
-  .NCC-container {
-      padding: 5px;
-  }
-
-  .NCC-buttons {
-      grid-template-columns: 1fr; /* Stack vertically on small screens */
-  }
-
-  .NCC-button {
-      max-width: 240px;
-      height: 160px;
-  }
-
-  .NCC-logo {
-      width: 70px;
-      height: 70px;
-  }
-
-  .NCC-name {
-      font-size: 0.9rem;
-  }
-
-  .NCC-rank {
-      font-size: 0.75rem;
-  }
-
-  .NCC-page-heading {
-      font-size: 1.3rem;
-  }
-
-  .NCC-back-btn,
-  .NCC-back-btn-right {
-      font-size: 12px;
-      padding: 6px 10px;
-      top: 8px;
-  }
+.NCC-main-back-btn:hover {
+  background-color: #495057;
 }
