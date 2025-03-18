@@ -7,12 +7,7 @@
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/IQAC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/IQAC.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/SideNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/SideNav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#108 on Fork__Ups",
+    "git-widget-placeholder": "Fork__Ups",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets",
     "node.js.detected.package.eslint": "true",
@@ -122,7 +117,8 @@
       <workItem from="1741941431989" duration="6783000" />
       <workItem from="1742107316230" duration="1787000" />
       <workItem from="1742182484589" duration="893000" />
-      <workItem from="1742268894971" duration="9311000" />
+      <workItem from="1742268894971" duration="18823000" />
+      <workItem from="1742309620037" duration="2025000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />

@@ -78,9 +78,17 @@ module.exports = {
                     '0%': {opacity: '0'},
                     '100%': {opacity: '1'}
                 },
+                fadBorn: {
+                    '0%': {opacity: '0', height: '0', width: '0'},
+                    '100%': {opacity: '1', height: 'auto', width: '100%'},
+                },
                 fadOut: {
                     '0%': {opacity: '1'},
                     '100%': {opacity: '0', zIndex: '-1'}
+                },
+                fadKill: {
+                    '0%': {opacity: '1'},
+                    '100%': {opacity: '0', display: 'hidden', height: '0', width: '0'},
                 },
                 cnnt: {
                     '0%': {opacity: '0'},
