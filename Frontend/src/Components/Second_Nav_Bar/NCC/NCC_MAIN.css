@@ -113,3 +113,31 @@
 .NCC-main-back-btn:hover {
   background-color: #495057;
 }
+/* Back Button - Army (Right Side) */
+.NCC-main-back-btn-army {
+  align-self: flex-end;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+/* Back Button - Navy (Left Side) */
+.NCC-main-back-btn-navy {
+  align-self: flex-start;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
+/* Common Styles for Back Button */
+.NCC-main-back-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.NCC-main-back-btn:hover {
+  background-color: #495057;
+}
