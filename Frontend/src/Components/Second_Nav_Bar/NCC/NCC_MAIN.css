@@ -57,6 +57,7 @@
   /* Add spacing before buttons */
 }
 
+
 .NCC-main-split-line {
   width: 4px;
   height: 40px;
@@ -84,6 +85,7 @@
   border: none;
   cursor: pointer;
   position: relative;
+
 }
 
 .NCC-main-button:hover {

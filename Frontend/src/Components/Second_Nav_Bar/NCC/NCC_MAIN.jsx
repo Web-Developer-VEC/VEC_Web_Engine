@@ -63,6 +63,7 @@ const NCCMAIN = ({ toggle, theme }) => {
           </motion.div>
         )}
 
+
         {/* NCC Army Page (Left to Right Transition) */}
         {activePage === "army" && (
           <motion.div
@@ -76,6 +77,7 @@ const NCCMAIN = ({ toggle, theme }) => {
               className="NCC-main-back-btn"
               onClick={() => setActivePage("buttons")}
             >
+
               Back ➡
             </button>
             <NCC_ARMY />
@@ -85,16 +87,20 @@ const NCCMAIN = ({ toggle, theme }) => {
         {/* NCC Navy Page (Right to Left Transition) */}
         {activePage === "navy" && (
           <motion.div
+
             className="NCC-main-page"
+
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           >
+
             <button
               className="NCC-main-back-btn"
               onClick={() => setActivePage("buttons")}
             >
+
               ⬅ Back
             </button>
             <NCC_NAVY />
