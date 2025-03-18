@@ -15,6 +15,18 @@ const Card = ({ image, name, designation }) => {
   );
 };
 
+const AdminCard = ({ image, name, designation }) => {
+  return (
+    <div className="admin-card-ao border-2 border-secd dark:border-drks">
+      <img src={image} alt={name} className="admin-card-image" />
+      <div className="admin-text-content">
+        <h3 className="admin-card-name text-accn dark:text-drka">{name}</h3>
+        <p className="admin-card-designation">{designation}</p>
+      </div>
+    </div>
+  );
+}
+
 
 // Main CardPage component
 const CardPage = ({theme, toggle}) => {
@@ -24,7 +36,7 @@ const CardPage = ({theme, toggle}) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
@@ -58,8 +70,16 @@ const CardPage = ({theme, toggle}) => {
             Loading...
           </div>
         )}
+        <div className="ao-container">
+        <AdminCard
+          key={adminData[0]?.id}
+          image={UrlParser(adminData[0]?.photo_path)}
+          name={adminData[0]?.name}
+          designation={adminData[0]?.designation}
+        />
+        </div>
       <div className="admin-card-container">
-        {adminData.map((card) => (
+        {adminData.slice(1).map((card) => (
           <Card
             key={card.id}
             image={UrlParser(card.photo_path)}

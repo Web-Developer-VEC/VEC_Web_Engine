@@ -100,16 +100,16 @@ const Programmes = (toggle, theme) => {
                     lnk: '/dept/005'
                 },
                 {
-                    name: 'Information Technology',
-                    lnk: '/dept/011'
-                },
-                {
                     name: 'Electronics and Communication Engineering',
                     lnk: "/dept/009"
                 },
                 {
                     name: 'Electrical and Electronics Engineering',
                     lnk: '/dept/007'
+                },
+                {
+                    name: 'Information Technology',
+                    lnk: '/dept/011'
                 },
                 {
                     name: 'Mechanical Engineering',

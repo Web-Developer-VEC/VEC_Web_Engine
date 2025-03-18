@@ -8,6 +8,16 @@
     flex-direction: column;
     min-height: 100vh; /* Full height of the screen */
   }
+
+  .admin-card-ao {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
   
   .admin-page-title {
     font-size: 2rem;
@@ -20,8 +30,21 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    width: 80vw;
+    margin: auto;
+  }
+
+  .ao-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
   }
   
+  .admin-text-content{
+    text-align: left;
+  }
+
   .admin-card {
     /*background-color: #fff;*/
     /*border: 2px solid #fdcc03;*/
@@ -86,5 +109,12 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width:768px) {
+  .admin-card-container{
+    width: 90vw;
+    margin: auto;
   }
 }

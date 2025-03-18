@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "./Dean.css";
 import Banner from "../../Banner";
@@ -110,6 +111,7 @@ const Dean = ({theme, toggle}) => {
 
   const [deanData, setDeanData] = useState([]);
   const [loading ,setloading] = useState(true);
+  const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -121,7 +123,6 @@ const Dean = ({theme, toggle}) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/deanandassociates`);
-        console.log("HI",response.data);
 
         setDeanData(response.data);
         setloading(false);
@@ -162,7 +163,7 @@ const Dean = ({theme, toggle}) => {
                   <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full">
                     {/* Dean Profile */}
                     {responsibleDean?.Dean && (
-                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks">
+                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
                         <img
                           src={UrlParser(responsibleDean.Dean_Image)} 
                           alt={responsibleDean.Dean}
@@ -178,7 +179,7 @@ const Dean = ({theme, toggle}) => {
 
                     {/* Associate Dean Profile */}
                     {responsibleDean?.Associate_Dean && (
-                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks">
+                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}>
                         <img
                           src={UrlParser(responsibleDean.Associate_Dean_Image)}
                           alt={responsibleDean.Associate_Dean}
