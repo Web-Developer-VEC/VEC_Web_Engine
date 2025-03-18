@@ -96,7 +96,7 @@ const Alumni = ({ theme, toggle }) => {
       {/* Flipbook Section - Placed directly below the Banner */}
       <div className="alumni-announcement">
         <div className="proud-alumni">
-          <div className="app-container">
+          <div className="app-container h-full">
             <div className="text-content">
               <h1>Get</h1>
               <h2 style={{ margin: "0 20px" }}>Inspired</h2>

@@ -71,7 +71,7 @@ const NIRF = ({ toggle, theme, isLoading }) => {
         </div>
         <h2 className="nirf-title">NATIONAL INSTITUTIONAL RANKING FRAMEWORK</h2>
         <div className="nirf-grid">
-          {nirfData?.map((item, index) => (
+          {nirfData?.reverse().map((item, index) => (
             <div key={index} className="nirf-year">
               <h3>NIRF {item.year}</h3>
               {item.categories.map((category, catIndex) => (

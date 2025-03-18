@@ -83,7 +83,7 @@ const SportsPage = ({theme, toggle}) => {
         fetchData();
     }, [])
     return (
-        <div className='mb-10'>
+        <div className=''>
             <Banner theme={theme} toggle={toggle}
                     backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"  // Replace with an image related to sports or fitness
                     headerText="Physical Education Department"
@@ -105,7 +105,7 @@ const SportsPage = ({theme, toggle}) => {
             {/*        {navData[spt]}*/}
             {/*    </div>*/}
             {/*</div>*/}
-            <SideNav sts={spt} setSts={setSpt} navData={navData} cls={"sports-page w-screen"} />
+            <SideNav sts={spt} setSts={setSpt} navData={navData} cls={"w-screen"} />
         </div>
     );
 };

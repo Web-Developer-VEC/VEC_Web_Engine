@@ -137,7 +137,7 @@ const YRC = () => {
       {/*  </nav>*/}
       {/*  {navData[yrc]}*/}
       {/*</div>*/}
-      <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"YRC-container mt-2 w-screen"} />
+      <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
     </div>
   );
 };
