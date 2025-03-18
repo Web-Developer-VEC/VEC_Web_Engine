@@ -14,13 +14,13 @@ const facilities = [
     images: ["/images/seminar1.jpg", "/images/seminar2.jpg", "/images/seminar3.jpg", "/images/seminar4.jpg", "/images/seminar5.jpg"]
   },
   { 
-    name: "Health Center", 
+    name: "On-Campus Medical Facility ", 
     content: "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
     images: ["/images/health1.jpg", "/images/health2.jpg", "/images/health3.jpg", "/images/health4.jpg", "/images/health5.jpg"]
   },
   { 
-    name: "Xerox", 
-    content: "On-campus photocopying and printing services to help students and staff with their academic and administrative needs.",
+    name: "reprographic facility ", 
+    content: "The college has reprographic facility available for students which functions from 8:30 AM to 6:00 PM. It is located opposite to BILL GATES BLOCK in the Velammal Engineering College.",
     images: ["/images/xerox1.jpg", "/images/xerox2.jpg", "/images/xerox3.jpg", "/images/xerox4.jpg", "/images/xerox5.jpg"]
   },
   { 
@@ -44,7 +44,7 @@ const facilities = [
     images: ["/images/solar1.jpg", "/images/solar2.jpg", "/images/solar3.jpg", "/images/solar4.jpg", "/images/solar5.jpg"]
   },
   { 
-    name: "Student Counsellor", 
+    name: "Student Counseling Services", 
     content: "Our college provides a full-time qualified Student Counselor to support students' academic, emotional, and personal well-being, ensuring a healthy and positive learning environment.",
     images: ["/images/counsellor1.jpg", "/images/counsellor2.jpg", "/images/counsellor3.jpg", "/images/counsellor4.jpg", "/images/counsellor5.jpg"]
   },
@@ -54,27 +54,27 @@ const facilities = [
     images: ["/images/transport1.jpg", "/images/transport2.jpg", "/images/transport3.jpg", "/images/transport4.jpg", "/images/transport5.jpg"]
   },
   { 
-    name: "Internet Bandwidth", 
+    name: "High-Speed Internet Facility", 
     content: "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
     images: ["/images/internet1.jpg", "/images/internet2.jpg", "/images/internet3.jpg", "/images/internet4.jpg", "/images/internet5.jpg"]
   },
   { 
-    name: "Group insurance policy ", 
+    name: "Group Insurance Policy ", 
     content: "Our institution provides a comprehensive Group Insurance Policy through United India Insurance covering:Teaching & Non-Teaching Staff: 433 members Students: 3,522 members This initiative ensures financial security and support for our faculty, staff, and students.",
     images: ["/images/gym1.jpg", "/images/gym2.jpg", "/images/gym3.jpg", "/images/gym4.jpg", "/images/gym5.jpg"]
   },
   { 
-    name: "Quarters", 
+    name: "Faculty Accommodation", 
     content: "Velammal Engineering College has faculty quarters with 16 single-bedroom houses and 16 two-bedroom houses, providing comfortable and convenient housing for faculty members. These quarters are well-maintained and provide a peaceful comfortable living environment, allowing faculty to reside on campus while focusing on their job. The setup allows faculty to easily access the college's resources and engage in campus events.",
     images: ["/images/quarters1.jpg", "/images/quarters2.jpg", "/images/quarters3.jpg", "/images/quarters4.jpg", "/images/quarters5.jpg"]
   },
   { 
-    name: "Canteen", 
+    name: "Spacious Food Canteen", 
     content: "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
     images: ["/images/canteen1.jpg", "/images/canteen2.jpg", "/images/canteen3.jpg", "/images/canteen4.jpg", "/images/canteen5.jpg"]
   },
   { 
-    name: "Fire Safety", 
+    name: "Fire Extinguisher", 
     content: "AVelammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
     images: ["/images/fire1.jpg", "/images/fire2.jpg", "/images/fire3.jpg", "/images/fire4.jpg", "/images/fire5.jpg"]
   },
@@ -84,12 +84,12 @@ const facilities = [
     images: ["/images/power1.jpg", "/images/power2.jpg", "/images/power3.jpg", "/images/power4.jpg", "/images/power5.jpg"]
   },
   { 
-    name: "Security", 
+    name: "Surveillance & Security", 
     content: "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently.Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
     images: ["/images/security1.jpg", "/images/security2.jpg", "/images/security3.jpg", "/images/security4.jpg", "/images/security5.jpg"]
   },
   { 
-    name: "Gym", 
+    name: "Gym Facility", 
     content: "Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff.",
     images: ["/images/gym1.jpg", "/images/gym2.jpg", "/images/gym3.jpg", "/images/gym4.jpg", "/images/gym5.jpg"]
   },
