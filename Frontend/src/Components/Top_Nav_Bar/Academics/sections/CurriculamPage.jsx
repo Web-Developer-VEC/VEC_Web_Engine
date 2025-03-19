@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
 import './CurriculumPage.css';
+import LoadComp from '../../../LoadComp';
 
 const CurriculumPage = ({ data }) => {
   const [selectedRegulation, setSelectedRegulation] = useState(null);
@@ -20,6 +21,9 @@ const CurriculumPage = ({ data }) => {
     setSelectedRegulation(null);
   };
 
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
 
   return (
     <div className="containers mt-5">

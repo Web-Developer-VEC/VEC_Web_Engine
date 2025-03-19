@@ -148,7 +148,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                 />
 
                 <div>
-                  <h5 className="text-sm font-bold">Shri. M.V. VelMurugan</h5>
+                  <h5 className="text-sm font-bold">Shri. V. Karthik Velmurugan</h5>
                   <h6 className="text-sm text-accn dark:text-drka">Deputy CEO</h6>
                   <p className="mt-2">Velammal Educational Trust</p>
                 </div>

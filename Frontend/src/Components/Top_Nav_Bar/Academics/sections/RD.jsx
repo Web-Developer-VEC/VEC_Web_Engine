@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./RD.css";
 import Conference from "./Conference";
+import LoadComp from "../../../LoadComp";
 
 const Research = ({ data }) => {
   const [selectedYear, setSelectedYear] = useState("2022-23");
@@ -73,6 +74,10 @@ const Research = ({ data }) => {
     setSelectedAction(null);
     setSelectedActionData(null);
   };
+
+  if(!data) return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+    <LoadComp />
+  </div>
 
   return (
     <div className="Rd-page">

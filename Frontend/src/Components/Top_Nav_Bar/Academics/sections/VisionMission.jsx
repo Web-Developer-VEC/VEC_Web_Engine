@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Eye, Target } from "lucide-react"; // Importing icons
 import "./VisionMission.css";
+import LoadComp from "../../../LoadComp";
 
 const VisionMission = ({ data }) => {
 
@@ -24,6 +25,10 @@ const VisionMission = ({ data }) => {
   const togglePOE = (id) => {
     setActivePOE((prev) => (prev === id ? null : id)); // Toggle the active PO
   };
+
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
 
   return (
     <div className="main-content">

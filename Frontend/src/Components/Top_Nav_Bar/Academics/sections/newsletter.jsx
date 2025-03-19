@@ -1,11 +1,14 @@
 import { useState } from "react";
 import './newsletter.css';
+import LoadComp from "../../../LoadComp";
 
 export default function Newsletter({ data }) {
   const [activeYear, setActiveYear] = useState(null);
 
   if (!data || !data.years) {
-    return <p>Loading...</p>;
+    return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+      <LoadComp />
+    </div>
   }
 
   const {  years } = data; 

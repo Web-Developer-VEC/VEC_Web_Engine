@@ -1,7 +1,13 @@
 import React from "react";
 import "./mou.css";
+import LoadComp from "../../../LoadComp";
 
 const MOU = ({ data }) => {
+
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
+
   return (
     <div className="mou-page">
       <div className="mou-header">

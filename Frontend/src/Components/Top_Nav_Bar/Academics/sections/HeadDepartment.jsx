@@ -5,6 +5,7 @@ import { SiPublons } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { FaOrcid } from "react-icons/fa";
 import { FaResearchgate } from "react-icons/fa6";
+import LoadComp from "../../../LoadComp";
 
 
 const HeadDepartment = ({ data }) => {
@@ -24,7 +25,9 @@ const HeadDepartment = ({ data }) => {
   }, [data]);
 
   if (!departmentData) {
-    return <p>Loading...</p>;
+    return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+      <LoadComp />
+  </div>
   }
 
   const {
@@ -36,6 +39,8 @@ const HeadDepartment = ({ data }) => {
     Image = departmentData.Image, // Provide a default path if needed
     Social_media_links = {},
   } = departmentData;
+
+
 
   return (
     <div className={styles.messageContent + " text-text dark:text-drkt"}>

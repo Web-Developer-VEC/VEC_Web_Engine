@@ -52,7 +52,7 @@ body {
 .person-image {
   width: 220px;
   height: 220px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   object-fit: cover;
 }
 
@@ -66,7 +66,7 @@ body {
   font-size: 20px;
 }
 
-.person-content h3 {
+.person-content .placement-head {
   margin: 10px 0 0 0;
   font-size: 26px;
 }
@@ -80,6 +80,16 @@ body {
 
 .person-detail {
   flex-grow: 1;
+}
+
+.placement-members{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.placement-member-head {
+  font-size: 24px;
 }
 
 .loading-screen {
@@ -178,6 +188,10 @@ body {
 
   .person-content p {
     font-size: 16px;
+  }
+
+  .placement-members{
+    flex-direction: column;
   }
 }
 

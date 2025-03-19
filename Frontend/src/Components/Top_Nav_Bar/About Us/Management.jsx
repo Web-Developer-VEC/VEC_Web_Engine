@@ -36,22 +36,10 @@ function Management({ theme, toggle }) {
               <strong className="FCP-vision-text">
                 "TO EDUCATE THE STUDENT COMMUNITY BOTH BY THEORY AND PRACTICE TO FIT IN WITH SOCIETY..."
               </strong>
-              <p>          Every year, all our institutions maintain the set trend by achieving 100% pass results, and in the process
-              secure overall State Ranks, Subject State Rank marks, etc. Our performance in academics is indeed
-              praiseworthy, yet we do not tend to overlook co-curricular activities as well. Most of us are aware of the
-              vital fact that of late, students are expected to fully equip themselves such that they are able to face
-              the rigors of life at the global level. No doubt, the Trust spares no efforts, whatsoever, in this
-              particular direction. We ensure that our students are well acquainted with personalities representing
-              nearly all walks of life by utilizing their very presence as a motivating factor. In the past and at
-              present too, the Trust honors students who excel in academics and sports with free education and suitable
-              cash incentives as may be deemed necessary to encourage them to perform better. In a nutshell, I feel
-              elated to state that all our students, on completion of their tenure in our group of institutions are
-              molded into capable citizens of the morrow thereby, fulfilling the needs of their parents, society, and
-              above all, represent their nation at the global level. It is only when they achieve this target do we sit
-              back and fondly reminisce over our achievements and beyond doubt also be spurred to perform still better.
-              Let me once again welcome you into our fold and hope you will also utilize this prized opportunity to its
-              fullest extent to finally emerge as one of the brightest stars on the horizon of success. Wishing you all
-              the best and hope you have a pleasant and memorable tenure in our midst.</p>
+              <p>At Velammal Engineering College, we are driven by a singular vision—to cultivate a generation of forward-thinking professionals who are not only adept in their technical expertise but also embody the values of integrity, innovation, and global responsibility. Since our inception in 1995-96, we have remained steadfast in our commitment to academic excellence, fostering an ecosystem where knowledge meets application, and ambition meets opportunity. <br />
+                In a rapidly evolving world shaped by technological advancements and dynamic industry landscapes, we prepare our students to excel at the highest levels. Our curriculum is meticulously designed to bridge the gap between academia and industry, ensuring that our graduates emerge as future-ready leaders. Beyond academics, we place immense emphasis on holistic development, encouraging our students to cultivate critical thinking, creativity, and a global perspective. <br />
+                As you embark on this transformative journey with us, I invite you to embrace the wealth of opportunities that await you. Together, let us shape a future that is driven by knowledge, guided by values, and defined by excellence. <br />
+              </p>
             </div>
 
             <div className="FCP-image-container">
@@ -93,9 +81,11 @@ function Management({ theme, toggle }) {
 
             <div className="FCP-text-container">
               <p>
-              At Velammal Engineering College, we are driven by a singular vision—to cultivate a generation of forward-thinking professionals who are not only adept in their technical expertise but also embody the values of integrity, innovation, and global responsibility. Since our inception in 1995-96, we have remained steadfast in our commitment to academic excellence, fostering an ecosystem where knowledge meets application, and ambition meets opportunity.
-              In a rapidly evolving world shaped by technological advancements and dynamic industry landscapes, we prepare our students to excel at the highest levels. Our curriculum is meticulously designed to bridge the gap between academia and industry, ensuring that our graduates emerge as future-ready leaders. Beyond academics, we place immense emphasis on holistic development, encouraging our students to cultivate critical thinking, creativity, and a global perspective.
-              As you embark on this transformative journey with us, I invite you to embrace the wealth of opportunities that await you. Together, let us shape a future that is driven by knowledge, guided by values, and defined by excellence.
+              Dear Students, Faculty, and Visitors,
+              It is my pleasure to welcome you to Velammal Engineering College, a hub of innovation, learning, and excellence in engineering education. At Velammal Engineering College, we are committed to nurturing the next generation of engineers by providing a dynamic academic environment, industry-relevant skills, and opportunities for real-world problem-solving. <br />
+              In today’s fast-evolving technological landscape, our mission is to equip students with not only technical expertise but also critical thinking, leadership, and adaptability. We collaborate closely with industry leaders to ensure our curriculum remains cutting-edge, offering hands-on experience through internships, research projects, and skill-enhancement programs. <br />
+              Our dedicated faculty, state-of-the-art infrastructure, and student-centric approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find Velammal Engineering College to be a place that inspires creativity, innovation, and success. <br />
+              I invite you to explore our website and learn more about the opportunities we offer. Together, let us build a future where technology serves humanity and engineering drives progress.
               </p>
             </div>
             <div className="FCP-image-container">

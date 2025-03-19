@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./infrastructure.css";
+import LoadComp from "../../../LoadComp";
 
 const Infrastructure = ({ data }) => {
 
@@ -14,6 +15,10 @@ const Infrastructure = ({ data }) => {
   const handleCardClick = (index) => {
     setSelectedCard(selectedCard === index ? null : index);
   };
+
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
 
   return (
     <div>

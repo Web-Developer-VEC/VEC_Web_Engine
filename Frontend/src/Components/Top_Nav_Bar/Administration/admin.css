@@ -46,17 +46,9 @@
   }
 
   .admin-card {
-    /*background-color: #fff;*/
-    /*border: 2px solid #fdcc03;*/
     border-radius: 8px;
     width: 170px;
     padding: 12px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .admin-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
   
   .admin-card-image {
