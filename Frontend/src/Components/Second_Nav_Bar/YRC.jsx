@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
 import Banner from "../Banner";
 import "slick-carousel/slick/slick.scss";
@@ -12,6 +12,11 @@ import SideNav from "./SideNav";
 import NSSContent from "./NSS/NSSContent";
 import NSSManual from "./NSS/NSSManual";
 import Coordinators from "./NSS/NSSCoordinatiors";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 
 function YRCAbout() {
   return (<div className="YRC-Aboutus">
@@ -40,6 +45,261 @@ function YRCAwd() {
       <h2>Placeholder</h2>
   );
 }
+const NotificationBox1 = () => {
+  const marqueeRef = useRef(null);
+
+  return (
+    <div className="YRC-notification-container">
+      {/* Left-side text */}
+      <div className="YRC-news-updates">
+        Bringing you the latest news & updates 📢
+      </div>
+
+      {/* Right-side notification box */}
+      <div className="YRC-notification-box">
+        <div className="YRC-notification-header">Recent Updates</div>
+        <div className="YRC-notification-content">
+          <marquee
+            ref={marqueeRef}
+            behavior="scroll"
+            direction="up"
+            scrollamount="3"
+            onMouseOver={() => marqueeRef.current && marqueeRef.current.stop()}
+            onMouseOut={() => marqueeRef.current && marqueeRef.current.start()}
+          >
+            <p>1. College Fest 2025 will be held on March 25th.</p>
+            <p>
+              2. We have successfully completed Eco-Nomics 3.0, a 100-day tree
+              plantation initiative by YRC volunteers.
+            </p>
+            <p>3. The annual sports meet is scheduled for April 10th.</p>
+          </marquee>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+const carouselItems = [
+  {
+    image: "https://via.placeholder.com/300",
+    title: "EBSB DRDO Camp",
+    location: "Annai Violet Arts and Science ...",
+    date: "May 9, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "Annual Sports Day",
+    location: "Anna University, Chennai",
+    date: "May 9, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "Group Photo Session",
+    location: "Anna University, Chennai",
+    date: "May 7, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "CATC cum IGC Firing Sel...",
+    location: "3 (TN) Bn NCC Campus, Kancheep",
+    date: "Apr 8, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "National NCC Camp",
+    location: "Delhi, India",
+    date: "Mar 20, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "Republic Day Parade",
+    location: "Rajpath, New Delhi",
+    date: "Jan 26, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "Drill Practice Session",
+    location: "Anna University, Chennai",
+    date: "Feb 10, 2023",
+  },
+  {
+    image: "https://via.placeholder.com/300",
+    title: "NCC Trekking Camp",
+    location: "Himalayas, India",
+    date: "Dec 15, 2022",
+  },
+];
+
+const CarouselYRC = () => {
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.navigation.init();
+      swiperRef.current.swiper.navigation.update();
+    }
+  }, []);
+
+  return (
+    <div className="carouselyrc-container">
+      {/* Title with underline */}
+      <h2 className="events-title">Events</h2>
+      <div className="events-underline"></div>
+
+      <Swiper
+        ref={swiperRef}
+        modules={[Navigation]}
+        spaceBetween={20}
+        slidesPerView={4} // Default for large screens
+        loop={true}
+        navigation={{
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
+        }}
+        breakpoints={{
+          1024: { slidesPerView: 4 }, // Desktop (4 images)
+          768: { slidesPerView: 3 }, // Tablets (3 images)
+          600: { slidesPerView: 2 }, // Mobile (2 images)
+          0: { slidesPerView: 1 }, // Extra small screens (1 image)
+        }}
+      >
+        {carouselItems.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="carouselyrc-card">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="carouselyrc-image"
+              />
+              <div className="carouselyrc-content">
+                <h3>{item.title}</h3>
+                <p className="carouselyrc-location">{item.location}</p>
+                <span className="carouselyrc-date">{item.date}</span>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Custom Navigation Buttons */}
+      <button className="swiper-button-prev custom-prev">
+        <FaRegCircleLeft />
+      </button>
+      <button className="swiper-button-next custom-next">
+        <FaRegCircleRight />
+      </button>
+    </div>
+  );
+};
+const predefinedData = {
+  title: [
+    "Awards & Recognition 1",
+    "Awards & Recognition 2",
+    "Awards & Recognition 3",
+    "Awards & Recognition 4",
+    "Awards & Recognition 5",
+  ],
+  image_path: [
+    "https://via.placeholder.com/400x300?text=Alumni+1",
+    "https://via.placeholder.com/400x300?text=Alumni+2",
+    "https://via.placeholder.com/400x300?text=Alumni+3",
+    "https://via.placeholder.com/400x300?text=Alumni+4",
+    "https://via.placeholder.com/400x300?text=Alumni+5",
+  ],
+};
+
+const Awardsnss = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return; // Stop auto-slide when hovered
+    const interval = setInterval(() => {
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % predefinedData.title.length
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const handlePrev = () => {
+    setActiveIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + predefinedData.title.length) %
+        predefinedData.title.length
+    );
+  };
+
+  const handleNext = () => {
+    setActiveIndex(
+      (prevIndex) => (prevIndex + 1) % predefinedData.title.length
+    );
+  };
+
+  return (
+    <div
+      className="relative w-full max-w-4xl mx-auto mt-5 mb-3"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {predefinedData.title.map((description, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
+              style={{
+                opacity: activeIndex === index ? 1 : 0.5,
+                transition: "opacity 0.5s ease-in-out",
+              }}
+            >
+              <img
+                src={predefinedData.image_path[index]}
+                alt="Awards & Recognition"
+                className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
+              />
+              <div className="p-4 text-center bg-white rounded-b-lg">
+                <p className="text-lg font-semibold text-gray-800">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={handlePrev}
+          className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+        >
+          &#10094;
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+        >
+          &#10095;
+        </button>
+      </div>
+
+      <div className="flex justify-center space-x-2 mt-4">
+        {predefinedData.title.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2.5 h-2.5 rounded-full ${
+              activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+            } transition-all`}
+            onClick={() => setActiveIndex(index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const YRC = () => {
   const [staffCoordinator, setStaffCoordinator] = useState(null);
@@ -48,10 +308,10 @@ const YRC = () => {
   const [yrc, setYrc] = useState("About YRC")
   const navData = {
     "About YRC": <YRCAbout/>,
-    "News & Updates": <YRCNews />,
-    "Recent Events": <YRCEvt/>,
+    "News & Updates": <NotificationBox1 />,
+    "Recent Events": <CarouselYRC/>,
     "Team & Coordinators": <YRCCoord/>,
-    "Awards & Recognition": <YRCAwd />
+    "Awards & Recognition": <Awardsnss />
   };
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
