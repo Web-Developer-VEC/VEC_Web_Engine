@@ -213,14 +213,15 @@ const IQAC = () => {
     // Render Coordinator content
     const renderCoordinatorContent = () => {
         return (
-            <div className="coordinator-container">
+            <div className="coordinator-container flex-wrap">
+                <h2 className="text-2xl text-center text-accn my-4 basis-full">IQAC Coordinator</h2>
                 {coordinator && (
-                    <div className="coordinator-card">
-                        <div className="coordinator-image-container">
+                    <div className="coordinator-card mx-32">
+                        <div className="coordinator-image-container max-w-[25vmax] h-auto">
                             <img src={coordinator.image || "/placeholder.svg"} alt={coordinator.name}
                                  className="coordinator-image"/>
                         </div>
-                        <div className="coordinator-details">
+                        <div className="coordinator-details w-full">
                             <h3 className="coordinator-name">{coordinator.name}</h3>
                             <p className="coordinator-designation">{coordinator.designation}</p>
                             <p className="coordinator-role">{coordinator.keyRole}</p>

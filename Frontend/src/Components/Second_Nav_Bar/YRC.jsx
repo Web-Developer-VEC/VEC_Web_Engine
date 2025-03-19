@@ -9,6 +9,9 @@ import axios from "axios";
 import NCCNCarousel from "./NCC/NCC_NAvY comps/NCCNCarousel";
 import NCCNtable from "./NCC/NCC_NAvY comps/NCCNtable";
 import SideNav from "./SideNav";
+import NSSContent from "./NSS/NSSContent";
+import NSSManual from "./NSS/NSSManual";
+import Coordinators from "./NSS/NSSCoordinatiors";
 
 function YRCAbout() {
   return (<div className="YRC-Aboutus">
@@ -20,15 +23,35 @@ function YRCAbout() {
   </div>);
 }
 
+function YRCNews() {
+  return (
+      <h2>Placeholder</h2>
+  );
+}
+
+function YRCEvt() {
+  return (
+      <h2>Placeholder</h2>
+  );
+}
+
+function YRCAwd() {
+  return (
+      <h2>Placeholder</h2>
+  );
+}
+
 const YRC = () => {
   const [staffCoordinator, setStaffCoordinator] = useState(null);
   const [studentCoordinators, setStudentCoordinators] = useState([]);
   const [yrcEvent, setYrcEvent] = useState(null);
-  const [yrc, setYrc] = useState("About")
+  const [yrc, setYrc] = useState("About YRC")
   const navData = {
-    "About": <YRCAbout/>,
-    "Coordinators": <YRCCoord/>,
-    "Activities": <YRCActs/>
+    "About YRC": <YRCAbout/>,
+    "News & Updates": <YRCNews />,
+    "Recent Events": <YRCEvt/>,
+    "Team & Coordinators": <YRCCoord/>,
+    "Awards & Recognition": <YRCAwd />
   };
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;

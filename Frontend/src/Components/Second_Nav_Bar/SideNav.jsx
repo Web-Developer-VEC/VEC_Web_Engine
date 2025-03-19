@@ -43,7 +43,7 @@ import {
     FaPlusCircle,
     FaMap,
     FaListUl,
-    FaIdCard, FaExchangeAlt, FaColumns, FaVideo, FaPlusSquare, FaListOl
+    FaIdCard, FaExchangeAlt, FaColumns, FaVideo, FaPlusSquare, FaListOl, FaHeart
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
 
@@ -167,6 +167,18 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaPlusSquare className={sty}/>;
             case "Library Resources":
                 return <FaBook className={sty}/>;
+            case "News & Updates":
+                return <FaNewspaper className={sty}/>;
+            case "Recent Events":
+                return <FaCalendarAlt className={sty}/>;
+            case "Team & Coordinators":
+                return <FaUsers className={sty}/>;
+            case "Awards & Recognition":
+                return <FaAward className={sty}/>;
+            case "About NSS":
+                return <FaInfoCircle className={sty}/>;
+            case "About YRC":
+                return <FaHeart className={sty} />;
             default:
                 return <FaThLarge className={sty}/>;
         }

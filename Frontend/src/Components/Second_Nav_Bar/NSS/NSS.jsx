@@ -7,17 +7,25 @@ import Coordinators from "./NSSCoordinatiors";
 import axios from "axios";
 import SideNav from "../SideNav";
 
+function NSSAwd() {
+    return (
+        <h2 className="text-2xl text-accn">Awards</h2>
+    );
+}
+
 const NSS = () => {
-    const [nss, setNss] = useState("Home");
+    const [nss, setNss] = useState("About NSS");
     const [NssData, setNssData] = useState(null);
     const navData = {
-        "Home": <NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/>,
-        "Objectives": <NSSContent />,
-        "NSS Manual": <NSSManual/>,
-        "Coordinators": <Coordinators
+        "About NSS": <NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/>,
+        "News & Updates": <NSSContent />,
+        "Recent Events": <NSSManual/>,
+        "Team & Coordinators": <Coordinators
             faculty={NssData && NssData.length > 0 ? NssData[0] : null}
             students={NssData && NssData.length > 1 ? NssData[1] : null}
-        />,};
+        />,
+        "Awards & Recognition": <NSSAwd />
+    };
 
     useEffect(() => {
         const fetchData = async () => {
