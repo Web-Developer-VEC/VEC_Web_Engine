@@ -14,7 +14,6 @@ function NSSAwd() {
 }
 
 const NSS = () => {
-    const [nss, setNss] = useState("About NSS");
     const [NssData, setNssData] = useState(null);
     const navData = {
         "About NSS": <NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/>,
@@ -26,6 +25,7 @@ const NSS = () => {
         />,
         "Awards & Recognition": <NSSAwd />
     };
+    const [nss, setNss] = useState(Object.keys(navData)[0]);
 
     useEffect(() => {
         const fetchData = async () => {

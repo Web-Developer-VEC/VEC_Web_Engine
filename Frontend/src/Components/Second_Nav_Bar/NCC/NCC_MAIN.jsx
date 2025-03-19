@@ -76,7 +76,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="NCC-main-back-btn NCC-main-back-btn-army"
+              className="fixed z-[500] top-auto bottom-2 right-2 lg:left-auto lg:right-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
               Back ➡
@@ -95,7 +95,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="NCC-main-back-btn NCC-main-back-btn-navy"
+              className="fixed z-[500] top-auto bottom-2 left-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
               ⬅ Back

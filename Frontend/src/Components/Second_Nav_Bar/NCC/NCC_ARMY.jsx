@@ -223,7 +223,6 @@ const NCC_ARMY = () => {
     const [tabel, setTabelValue] = useState({});
     const [curosel, setCarosel] = useState({});
     const [Coordinator, setCoordinator] = useState({});
-    const [ncc, setNcc] = useState("About NCC Army");
     const navData = {
       "About NCC Army": (
         <>
@@ -240,6 +239,7 @@ const NCC_ARMY = () => {
       "Distinguished Alumini" : <AlumniSlider />,
       Gallery: <Carouselarmy />,
     };
+    const [ncc, setNcc] = useState(Object.keys(navData)[0]);
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const UrlParser = (path) => {
@@ -289,7 +289,7 @@ const NCC_ARMY = () => {
     return (
       <>
         {/* Main NCC_ARMY Container */}
-        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="NCC_ARMY-container" />
+        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
       </>
     );
 };

@@ -117,7 +117,6 @@ const Iic = ({toggle, theme}) => {
     const rightCardsRef = useRef([])
     const [isPlaying, setIsPlaying] = useState(true)
     const intervalRef = useRef(null);
-    const [iic, setIic] = useState("Home")
     const navData = {
         "Home": <IicHome/>,
         "Establishment of IIC": <IicEst/>,
@@ -136,6 +135,7 @@ const Iic = ({toggle, theme}) => {
         "I & E Ecosystem": <IicEco/>,
         "Contact": <IicCon/>
     }
+    const [iic, setIic] = useState(Object.keys(navData)[0])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 

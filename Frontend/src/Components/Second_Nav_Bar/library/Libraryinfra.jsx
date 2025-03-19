@@ -995,18 +995,19 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
     const [openSection, setOpenSection] = useState(null);
     const navData = {
-        "Floor overview": <LIBFloor/>,
+        "Collection": {
+            "Books": <LIBFloor />,
+            "Journals": <LIBHod />,
+            "Newspapers": <LIBFloor />
+        },
         "HOD's message": <LIBHod/>,
-        "Faculty": <LIBFacl/>,
-        "Features": <LIBFea/>,
-        "General Instructions": <LIBInstr/>,
-        "Membership details": <LIBMemb/>,
-        "Borrowing & Circulation": <LIBBorw/>,
-        "Library Sections": <LIBSect/>,
-        "Library Highlights": <LIBHigh/>,
-        "Multimedia library": <LIBMult/>,
-        "New Arrivals": <LIBArvl/>,
-        "Library Resources": <LIBResc/>
+        "Staff": <LIBFacl/>,
+        "Services": <LIBFea/>,
+        "Advisory committee members": <LIBInstr/>,
+        "Downloads": <LIBHigh/>,
+        "Activities": <LIBMult/>,
+        "OPAC": <LIBArvl/>,
+        "Digital Library & E-Resources": <LIBResc/>
     }
 
     const toggleSection = (index) => {
@@ -1016,7 +1017,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
     return (
         <>
             <div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
-                {navData[lib]}
+                {(Array.isArray(lib)) ? navData[lib[0]][lib[1]] : navData[lib]}
                 {/* Additional Sections */}
                 {/* Additional Sections */}
             </div>

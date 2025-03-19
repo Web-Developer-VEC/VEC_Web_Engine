@@ -54,20 +54,29 @@ function SPTVis() {
     </section>);
 }
 
+function SPTRpt() {
+    return null;
+}
+
+function SPTCnt() {
+    return null;
+}
+
 const SportsPage = ({theme, toggle}) => {
     const [sportData, setSportsData] = useState(null);
-    const [spt, setSpt] = useState("Introduction")
     const navData = {
-        "Introduction": <SPTIntro/>,
-        "Vision & Mission": <SPTVis/>,
-        "Action Plan": <SportsActionPlan/>,
+        "About": <SPTIntro/>,
         "Infrastructure": <SportsInfra/>,
         "Achievements": <Achievements1 data={sportData && sportData.length > 2 ? sportData[4] : null}/>,
-        "Zonal results": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
-        "Our Winners": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
+        "Intra Mural": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
+        "HOD's message": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
         "Faculty": <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>,
-        "Other": <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>
+        "Team Captains": <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>,
+        "Annual reports": <SPTRpt />,
+        "Contact Us": <SPTCnt />
     };
+    const [spt, setSpt] = useState(Object.keys(navData)[0]);
+
 
     useEffect(() => {
         const fetchData = async () => {
