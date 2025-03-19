@@ -1,0 +1,7 @@
+Flask
+Flask-Cors
+pymongo
+groq
+joblib
+rank-bm25
+numpy

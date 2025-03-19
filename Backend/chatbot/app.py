@@ -8,11 +8,10 @@ from rank_bm25 import BM25Okapi  # Lightweight BM25 library
 import numpy as np
 from flask_cors import CORS
 import os
-from dotenv import load_dotenv
+import secret
 
 app = Flask(__name__)
 CORS(app)
-load_dotenv()
 
 # -------------------------------
 # MongoDB Connection for Rate Limiting
@@ -21,12 +20,10 @@ MONGO_URI = "mongodb://localhost:27017/"
 client = MongoClient(MONGO_URI)
 db = client["vechat"]
 users_collection = db["chat"]
-groq_api_key = os.getenv("GROQ_API_KEY")
-
 # -------------------------------
 # Initialize Groq Client
 # -------------------------------
-groq_client = Groq(api_key="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")
+groq_client = Groq(api_key=secret.GROQ_API_KEY)
 
 # -------------------------------
 # BM25 Memorization Model (Persisted)
