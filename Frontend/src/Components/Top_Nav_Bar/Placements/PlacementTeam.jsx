@@ -14,11 +14,31 @@ function PersonDetail({ person, isImageLeft }) {
   
   return (
     <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
+      <img src={UrlParser(person?.photo_path)} alt={person?.name} className="person-image" />
+      <div className="person-content">
+        <h2 className="text-accn dark:text-drka">{person?.designation}</h2>
+        <h3 className='placement-head'>{person?.name}</h3>
+        <p>{person?.content}</p>
+      </div>
+    </div>
+  );
+}
+
+function PersonMemberDetail({ person, isImageLeft }) {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+  
+  return (
+    <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
       <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image" />
       <div className="person-content">
+        <h3 className='placement-member-head'>{person.name}</h3>
         <h2 className="text-accn dark:text-drka">{person.designation}</h2>
-        <h3>{person.name}</h3>
-        <p>{person.content}</p>
+        {/* <p>{person.content}</p> */}
       </div>
     </div>
   );
@@ -64,9 +84,14 @@ export const PlacementTeam = ({toggle, theme}) => {
               Loading...
             </div>
           )}
-        {content.map((person, index) => (
-          <PersonDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
-        ))}
+          <PersonDetail key={content[0]?.name} person={content[0]} />
+
+        <div className="placement-members">
+          {content.slice(1).map((person, index) => (
+            <PersonMemberDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
+          ))}
+        </div>
+
       </div>
     </div>
     </>

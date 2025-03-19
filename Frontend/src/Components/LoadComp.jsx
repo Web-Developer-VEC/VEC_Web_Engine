@@ -41,7 +41,7 @@ const LoadComp = ({txt = "Please hold on..."}) => {
                                     duration-300 transition-all`}/>
                 </svg>
             </div>
-            <p className="text-lg tracking-wide text-center">{txt}</p>
+            <p className="text-base md:text-lg tracking-wide text-center">{txt}</p>
         </div>
     )
 }

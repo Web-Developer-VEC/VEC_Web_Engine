@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Activities.css";
+import LoadComp from "../../../LoadComp";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -16,7 +17,7 @@ const Activities = ({ data }) => {
   const [filterOption, setFilterOption] = useState("Recent"); // Default: Recent
 
 
-  const activitiesArray = Object.values(data); // Convert object to array
+  const activitiesArray = data ?  Object.values(data) : []; // Convert object to array
 
   useEffect(() => {
     filterEvents();
@@ -59,6 +60,10 @@ const Activities = ({ data }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
 
   return (
     <>

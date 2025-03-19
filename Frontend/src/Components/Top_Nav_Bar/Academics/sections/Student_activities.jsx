@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './Student_activities.css';
+import LoadComp from '../../../LoadComp';
 
 const ImageCarousel = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,6 +38,10 @@ const ImageCarousel = ({ data }) => {
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
+
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
 
   return (
     <div className="carousel-container">

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
+import LoadComp from "../../../LoadComp";
 
 const Faculties = ({ data }) => {
   console.log("Fac",data);
@@ -19,7 +20,9 @@ const Faculties = ({ data }) => {
   };
   
   if (!data || !Array.isArray(data.faculty_members)) {
-    return <div>No faculty data available.</div>;
+    return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+      <LoadComp />
+  </div>
   }
 
   const facultyArray = data.faculty_members;

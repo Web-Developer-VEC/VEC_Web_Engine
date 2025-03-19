@@ -66,12 +66,12 @@ const Programmes = (toggle, theme) => {
                     lnk: '/dept/012'
                 },
                 {
-                    name: 'Tamil',
-                    lnk: '/dept/014'
-                },
-                {
                     name: 'Physics',
                     lnk: '/dept/015'
+                },
+                {
+                    name: 'Tamil',
+                    lnk: '/dept/014'
                 },
             ]
         },
@@ -100,12 +100,12 @@ const Programmes = (toggle, theme) => {
                     lnk: '/dept/005'
                 },
                 {
-                    name: 'Electronics and Communication Engineering',
-                    lnk: "/dept/009"
-                },
-                {
                     name: 'Electrical and Electronics Engineering',
                     lnk: '/dept/007'
+                },
+                {
+                    name: 'Electronics and Communication Engineering',
+                    lnk: "/dept/009"
                 },
                 {
                     name: 'Information Technology',

@@ -132,8 +132,6 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":
         return <ImageCarousel data={sectionData} />;
-      case "SupportingStaff":
-        return <Faculties data={sectionData} />;
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
@@ -147,7 +145,9 @@ const DepartmentPage = ({ theme, toggle }) => {
     }
   };
 
-  if (!availableSections.length) return <div>Loading sections...</div>;
+  if (!availableSections.length) return <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+      <LoadComp />
+    </div>
 
   return (
     <div className={styles.main}>

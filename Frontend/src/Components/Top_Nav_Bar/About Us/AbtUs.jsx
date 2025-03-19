@@ -70,19 +70,19 @@ const AbtUs = ({ theme, toggle }) => {
                 <ul className='flex flex-wrap justify-center gap-8'>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href="./aicte_approval.pdf" target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗AICTE Approval</a>
+                        <a href={UrlParser("static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗AICTE Approval</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href="./university_affiliation.pdf" target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗University Affiliation</a>
+                        <a href={UrlParser("static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗University Affiliation</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href="./governing_body.pdf" target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Governing Body</a>
+                        <a href={UrlParser("static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Governing Body</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href="./mandatory_disclosures.pdf" target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Mandatory Disclosures</a>
+                        <a href={UrlParser("static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Mandatory Disclosures</a>
                     </li>
                 </ul>
             </div>
