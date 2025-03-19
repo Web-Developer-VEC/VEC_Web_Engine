@@ -95,9 +95,8 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
             <h2 className="text-3xl font-bold text-accn dark:text-drka mb-6">The Management</h2>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
-            {managementTeam.map((person, index) => (
+            {/* {managementTeam.map((person, index) => ( */}
               <motion.div
-                key={index}
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
                           dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
@@ -105,18 +104,56 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser(person.img)}
-                  alt={person.role}
-                  className="w-24 h-24 md:w-40 md:h-40 mr-6 shadow-lg"
+                  src={UrlParser("static/images/trust/muthuramalingam.jpg")}
+                  alt="Shri. M.V. Muthuramalingam"
+                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>
-                  <h5 className="text-sm font-bold">{person.name}</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">{person.role}</h6>
+                  <h5 className="text-sm font-bold">Shri. M.V. Muthuramalingam</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">Chairman</h6>
                   <p className="mt-2">Velammal Educational Trust</p>
                 </div>
               </motion.div>
-            ))}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                          hover:shadow-xl transition-shadow duration-300 md:flex"
+              >
+                <img
+                  src={UrlParser('static/images/trust/velmurugan.jpg')}
+                  alt="Shri. M.V. VelMurugan"
+                  className="management-image-2 md:w-40 md:h-40 mr-6 shadow-lg"
+                />
+
+                <div>
+                  <h5 className="text-sm font-bold">Shri. M.V. VelMurugan</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">Chief Executive Officer</h6>
+                  <p className="mt-2">Velammal Educational Trust</p>
+                </div>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                          hover:shadow-xl transition-shadow duration-300 md:flex"
+              >
+                <img
+                  src={UrlParser("static/images/trust/deptyceo.jpg")}
+                  alt="Shri. M.V. VelMurugan"
+                  className="management-image-3 md:w-40 md:h-40 mr-6 shadow-lg"
+                />
+
+                <div>
+                  <h5 className="text-sm font-bold">Shri. M.V. VelMurugan</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">Deputy CEO</h6>
+                  <p className="mt-2">Velammal Educational Trust</p>
+                </div>
+              </motion.div>
+            {/* ))} */}
           </div>
         </div>
       </div>
