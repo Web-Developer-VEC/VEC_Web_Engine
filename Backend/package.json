@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run server\" \"npm run chatbot\"",
     "server": "nodemon server.js",
-    "chatbot": "cd chatbotv7 && python app.py"
+    "chatbot": "cd chatbot && python app.py"
   },
   "keywords": [],
   "author": "",
