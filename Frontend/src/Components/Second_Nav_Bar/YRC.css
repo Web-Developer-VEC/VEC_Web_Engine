@@ -276,7 +276,245 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+/* Container to align elements */
+.YRC-notification-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
 
+/* Left-side text styling */
+.YRC-news-updates {
+  font-size: 26px;
+  /* Increased font size */
+  font-weight: bold;
+  color: #800000;
+  /* Deep navy blue for a professional look */
+  flex: 1;
+  text-align: left;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* Adding an underline effect */
+.YRC-news-updates::after {
+  content: "";
+  display: block;
+  width: 120px;
+  /* Custom width */
+  height: 3px;
+  background: linear-gradient(to right, #ff6b6b, #ffb347);
+  /* Gradient effect */
+  margin-top: 5px;
+}
+
+/* Notification box styling */
+.YRC-notification-box {
+  width: 550px;
+  /* Increased width */
+  background-color: white;
+  border-radius: 12px;
+  /* Slightly rounded corners */
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+/* Notification header */
+.YRC-notification-header {
+  background-color: navy;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  /* Slightly larger header */
+  padding: 12px;
+}
+
+/* Notification content area */
+.YRC-notification-content {
+  height: 200px;
+  /* Increased height */
+  padding: 12px;
+  overflow: hidden;
+}
+
+/* Styling for the scrolling text */
+marquee p {
+  margin: 12px 0;
+  font-size: 18px;
+  /* Larger font for readability */
+  color: #444;
+}
+
+.carouselyrc-container {
+  width: 90%;
+  margin: auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+.events-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.events-underline {
+  width: 100px;
+  height: 4px;
+  background-color: #fdcc03;
+  margin: 0 auto 20px auto;
+}
+
+/* Ensure all cards have equal height */
+.carouselyrc-card {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Make sure images are uniform */
+.carouselyrc-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Ensure content area is flexible to fill the card */
+.carouselyrc-content {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Title styling */
+.carouselyrc-content h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  flex-grow: 1;
+}
+
+/* Location and date styling */
+.carouselyrc-location {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.carouselyrc-date {
+  font-size: 12px;
+  background: #800000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Swiper Navigation Buttons */
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background-color: #1c2833;
+  color: white !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, background-color 0.3s;
+  z-index: 100;
+  cursor: pointer;
+}
+
+/* Remove default Swiper navigation arrows */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Correct positioning */
+.custom-prev {
+  left: -10px;
+}
+
+.custom-next {
+  right: -10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .custom-prev {
+    left: -30px;
+  }
+
+  .custom-next {
+    right: -30px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+    top: 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselyrc-image {
+    height: 180px;
+  }
+
+  .carouselyrc-card {
+    min-height: 280px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carouselyrc-card {
+    min-height: 280px;
+  }
+
+  .carouselyrc-image {
+    height: 140px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+    top: 65%;
+  }
+
+  .custom-prev {
+    left: 1px;
+  }
+
+  .custom-next {
+    right: 1px;
+  }
+}
 /* 📌 Tablets (Max-width: 1024px) */
 @media (max-width: 1200px) {
   /* About Us, Mission & Vision */

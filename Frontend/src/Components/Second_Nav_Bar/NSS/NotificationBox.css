@@ -1,0 +1,72 @@
+/* Container to align elements */
+.nss-notification-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Left-side text styling */
+.nss-news-updates {
+    font-size: 26px;
+    /* Increased font size */
+    font-weight: bold;
+    color: #800000;
+    /* Deep navy blue for a professional look */
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* Adding an underline effect */
+.nss-news-updates::after {
+    content: "";
+    display: block;
+    width: 120px;
+    /* Custom width */
+    height: 3px;
+    background: linear-gradient(to right, #ff6b6b, #ffb347);
+    /* Gradient effect */
+    margin-top: 5px;
+}
+
+/* Notification box styling */
+.nss-notification-box {
+    width: 550px;
+    /* Increased width */
+    background-color: white;
+    border-radius: 12px;
+    /* Slightly rounded corners */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+/* Notification header */
+.nss-notification-header {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    /* Slightly larger header */
+    padding: 12px;
+}
+
+/* Notification content area */
+.nss-notification-content {
+    height: 200px;
+    /* Increased height */
+    padding: 12px;
+    overflow: hidden;
+}
+
+/* Styling for the scrolling text */
+marquee p {
+    margin: 12px 0;
+    font-size: 18px;
+    /* Larger font for readability */
+    color: #444;
+}
