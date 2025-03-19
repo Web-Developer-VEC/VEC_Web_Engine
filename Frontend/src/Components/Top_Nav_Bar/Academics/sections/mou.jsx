@@ -2,12 +2,6 @@ import React from "react";
 import "./mou.css";
 
 const MOU = ({ data }) => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-
   return (
     <div className="mou-page">
       <div className="mou-header">
