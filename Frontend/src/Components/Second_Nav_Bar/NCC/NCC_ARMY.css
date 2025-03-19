@@ -21,7 +21,7 @@
 
 /* Section Styling */
 .NCC_ARMY-section {
-  margin-bottom: 40px;
+  margin: 0 20px 40px;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -78,7 +78,7 @@
 /* Aim Section (Separate Box) */
 .NCC_ARMY-aim-container {
   /*max-width: 1200px;*/
-  margin: 40px auto;
+  margin: 0 20px 40px;
   padding: 20px;
   /*background: #fff;*/
   border-radius: 12px;
@@ -136,7 +136,7 @@
 .NCC_ARMY-motto-pledge-container {
   display: flex;
   gap: 30px;
-  margin-top: 40px;
+  margin: 0 20px 40px;
   flex-wrap: wrap;
 }
 .NCC_ARMY-motto{

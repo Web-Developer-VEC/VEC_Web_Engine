@@ -81,7 +81,7 @@
 /* Aim Section (Separate Box) */
 .NCC_NAVY-aim-container {
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 0 20px 40px;
   padding: 20px;
   /*background: #fff;*/
   border-radius: 12px;
