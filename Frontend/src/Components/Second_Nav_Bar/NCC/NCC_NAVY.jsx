@@ -164,7 +164,6 @@ const NCC_NAVY = () => {
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
-  const [ncc, setNcc] = useState("About NCC Navy");
   const navData = {
     "About NCC Navy": (
       <>
@@ -179,6 +178,8 @@ const NCC_NAVY = () => {
     "Distinguished Alumini": <AlumniSlider1 />,
     Gallery: <CarouselNavy />,
   };
+  const [ncc, setNcc] = useState(Object.keys(navData)[0]);
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -227,7 +228,7 @@ const NCC_NAVY = () => {
 
     <>
       {/* Main NCC_NAVY Container */}
-      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="NCC_ARMY-container first:*:first:*:mt-10" />
+      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
     </>
 
   );

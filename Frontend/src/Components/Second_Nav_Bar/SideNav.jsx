@@ -43,7 +43,17 @@ import {
     FaPlusCircle,
     FaMap,
     FaListUl,
-    FaIdCard, FaExchangeAlt, FaColumns, FaVideo, FaPlusSquare, FaListOl, FaHeart
+    FaIdCard,
+    FaExchangeAlt,
+    FaColumns,
+    FaVideo,
+    FaPlusSquare,
+    FaListOl,
+    FaHeart,
+    FaJournalWhills,
+    FaCogs,
+    FaDesktop,
+    FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
 
@@ -178,7 +188,43 @@ const SideNav = ({sts, setSts, navData, cls}) => {
             case "About NSS":
                 return <FaInfoCircle className={sty}/>;
             case "About YRC":
-                return <FaHeart className={sty} />;
+                return <FaHeart className={sty}/>;
+            case "Staff":
+                return <FaUsers className={sty}/>;
+            case "Books":
+                return <FaBook className={sty}/>;
+            case "Journals":
+                return <FaJournalWhills className={sty}/>;
+            case "Newspapers":
+                return <FaNewspaper className={sty}/>;
+            case "Services":
+                return <FaCogs className={sty}/>;
+            case "Digital Library & E-Resources":
+                return <FaDesktop className={sty}/>;
+            case "OPAC":
+                return <FaSearch className={sty}/>;
+            case "Collection":
+                return <FaColumns className={sty}/>;
+            case "Downloads":
+                return <FaDownload className={sty}/>;
+            case "Warden details":
+                return <FaUserTie className={sty}/>;
+            case "Mess Timings":
+                return <FaClock className={sty}/>;
+            case "Study Hours":
+                return <FaBookOpen className={sty}/>;
+            case "General info":
+                return <FaInfoCircle className={sty}/>;
+            case "Leave":
+                return <FaSignOutAlt className={sty}/>;
+            case "Intra Mural":
+                return <FaRunning className={sty}/>;
+            case "Team Captains":
+                return <FaUsers className={sty}/>;
+            case "Annual reports":
+                return <FaFileAlt className={sty}/>;
+            case "Contact Us":
+                return <FaPhoneAlt className={sty}/>;
             default:
                 return <FaThLarge className={sty}/>;
         }
@@ -190,7 +236,7 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 lg:grid text-md h-full content-start col-start-0 col-span-10 lg:col-span-2
                 transition-all duration-300 ease-in-out">
                 {Object.keys(navData).map((itm, ind) => (
-                    (Object.keys(navData[itm]).length <= 6) ?
+                    (Object.keys(navData[itm]).length <= 5 && Object.keys(navData[itm])[0] !== "$$typeof") ?
                         <label className={`px-4 py-2 border-secd dark:border-drks min-w-1/2 
                             text-prim hover:bg-secd dark:hover:bg-drks hover:text-text dark:hover:text-drkt 
                             has-[:checked]:bg-secd/20 rounded-lg 
