@@ -139,7 +139,10 @@
   margin-top: 40px;
   flex-wrap: wrap;
 }
-
+.NCC_ARMY-motto{
+align-items: center;
+text-align: center;
+}
 .NCC_ARMY-motto,
 .NCC_ARMY-pledge {
   /*background: #fff;*/
@@ -156,7 +159,10 @@
   font-size: 1.1rem;
   line-height: 1.8;
 }
-
+.NCC_ARMY-content-1{
+  font-size: 2rem;
+  line-height: 1.8;
+}
 /* Animations */
 @keyframes slideInLeft {
   from {
@@ -304,7 +310,7 @@
   .NCC_ARMY-content,
   .NCC_ARMY-aimcontent,
   .NCC_ARMY-list li {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     line-height: 1.9;
   }
 
