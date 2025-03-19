@@ -4,32 +4,34 @@ import datetime
 from groq import Groq  # Ensure you have the groq package installed
 import os
 import joblib
+from rank_bm25 import BM25Okapi  # Lightweight BM25 library
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from flask_cors import CORS
+import os
+import secret
 
 app = Flask(__name__)
 CORS(app)
+
 # -------------------------------
 # MongoDB Connection for Rate Limiting
 # -------------------------------
-MONGO_URI = "mongodb://127.0.0.1:27017/"
+MONGO_URI = "mongodb://localhost:27017/"
 client = MongoClient(MONGO_URI)
 db = client["vechat"]
 users_collection = db["chat"]
-
 # -------------------------------
 # Initialize Groq Client
 # -------------------------------
-groq_client = Groq(api_key="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")
+groq_client = Groq(api_key=secret.GROQ_API_KEY)
 
 # -------------------------------
-# TF-IDF Memorization Model (Persisted)
+# BM25 Memorization Model (Persisted)
 # -------------------------------
-MODEL_FILE = "tfidf_model.joblib"
+BM25_MODEL_FILE = "bm25_model.joblib"
+DOCUMENTS_FILE = "data.txt"
 
-def load_documents(file_path="data.txt"):
+def load_documents(file_path=DOCUMENTS_FILE):
     """
     Loads non-empty lines from data.txt.
     Each line is treated as a separate document.
@@ -38,28 +40,40 @@ def load_documents(file_path="data.txt"):
         docs = [line.strip() for line in f if line.strip()]
     return docs
 
-if os.path.exists(MODEL_FILE):
-    # Load the persisted model, TF-IDF matrix, and documents.
-    vectorizer, tfidf_matrix, documents = joblib.load(MODEL_FILE)
-    print("Loaded TF-IDF model from disk.")
-else:
-    # Train the model and persist it.
-    documents = load_documents("data.txt")
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform(documents)
-    joblib.dump((vectorizer, tfidf_matrix, documents), MODEL_FILE)
-    print("TF-IDF model trained and saved to disk.")
+# Load documents
+documents = load_documents()
 
-def query_tfidf(query, top_n=1):
+# Build or load BM25 model
+if os.path.exists(BM25_MODEL_FILE):
+    bm25 = joblib.load(BM25_MODEL_FILE)
+    print("Loaded BM25 model from disk.")
+else:
+    # Tokenize each document (simple whitespace tokenization and lowercasing)
+    tokenized_docs = [doc.lower().split() for doc in documents]
+    bm25 = BM25Okapi(tokenized_docs)
+    joblib.dump(bm25, BM25_MODEL_FILE)
+    print("BM25 model trained and saved to disk.")
+
+def query_bm25(query, max_chars=2000):
     """
-    Transforms the query into TF-IDF space and returns the top_n matching documents.
+    Transforms the query using BM25 and retrieves documents until the combined character 
+    count reaches max_chars.
     """
-    query_vec = vectorizer.transform([query])
-    sims = cosine_similarity(query_vec, tfidf_matrix).flatten()
-    top_indices = np.argsort(sims)[::-1][:top_n]
-    top_docs = [documents[i] for i in top_indices]
-    scores = [sims[i] for i in top_indices]
-    return top_docs, scores
+    tokenized_query = query.lower().split()
+    scores = bm25.get_scores(tokenized_query)
+    sorted_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
+    
+    selected_docs = []
+    total_chars = 0
+
+    for idx in sorted_indices:
+        doc = documents[idx]
+        if total_chars + len(doc) > max_chars:
+            break  
+        selected_docs.append(doc)
+        total_chars += len(doc)
+    
+    return selected_docs
 
 # -------------------------------
 # Groq LLM Functions
@@ -70,12 +84,12 @@ def process_with_groq(context, query):
     """
     try:
         prompt = (
-            "You are a kind, patient, and helpful assistant for Velammal Engineering College "+
-                "based in Surapet, Chennai. Any questions not relevant to the college should be strictly prohibited. " +
-                "If the provided info either is incomplete, doesn't make sense or is just straight up irrelevant, ignore it when considering your answer. do not reveal anything to the user."+
-            "You are a helpful assistant. Use the following context to answer the query.There might be some irrelevant info there as well, please do feel free to ignore it.\n\n"
+            "You are a kind, patient, and helpful assistant for Velammal Engineering College "
+            "based in Surapet, Chennai. Any questions not relevant to the college should be strictly prohibited. "
+            "If the provided info either is incomplete, doesn't make sense or is just straight up irrelevant, ignore it when considering your answer. Do not reveal anything to the user. "
+            "You are a helpful assistant. Use the following context to answer the query. There might be some irrelevant info there as well, please feel free to ignore it.\n\n"
             "Context:\n" + context + "\n\n"
-            "Query:\n" + query + ". If the question is completely irrelevant, do not answer. "
+            "Query:\n" + query + ". If the question is completely irrelevant, do not answer."
         )
         completion = groq_client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
@@ -136,16 +150,16 @@ def ask():
     if not check_limit(phone_number):
         return jsonify({"response": "Daily limit of 15 queries reached. Please try again tomorrow."})
     
-    # Use TF-IDF to retrieve the top relevant passages.
-    top_docs, scores = query_tfidf(query_text, top_n=5)
+    # Use BM25 to retrieve the top relevant passages.
+    top_docs = query_bm25(query_text, max_chars=6000)
     debug_info = []
-    for i, (doc, score) in enumerate(zip(top_docs, scores)):
-        debug_info.append(f"Doc {i+1} (score: {score:.4f}): {doc}")
+    for i, doc in enumerate(top_docs):
+        debug_info.append(f"Doc {i+1}: {doc}")
     
     # Combine the retrieved passages as context.
     final_context = "\n---\n".join(top_docs)
     if not final_context.strip():
-        final_context = query_text  # Fallback
+        final_context = query_text  # Fallback if no docs found
     
     # Use Groq's LLM to process the final context and query.
     groq_response = process_with_groq(final_context, query_text)
@@ -156,4 +170,4 @@ def ask():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True,port=8080)
