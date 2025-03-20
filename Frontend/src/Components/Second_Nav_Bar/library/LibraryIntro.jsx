@@ -1,4 +1,5 @@
 import React from "react";
+import {motion} from "framer-motion";
 
 const LibraryIntro = ({about}) => {
   const tiles = [{
@@ -8,6 +9,18 @@ const LibraryIntro = ({about}) => {
         hdr: "Mission", cls: "basis-4/5 lg:basis-[49%]",
         cnt: "\"To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources  and services in support of the research, teaching,  and learning needs of  the  college  community  To  maintain  and  improve  collections  and  achieve  efficient  services  in  an environment  of  flat  or  reduced  budgets  for  the  students,  faculty  and  staff.  To  transform  the  information available in the environment into knowledge for students, staff and faculty.\""
     }];
+
+    const generalInstructions = [
+        "Students can obtain membership cards by showing their ID cards with barcodes.",
+        "Members should sign in at the entrance to accept library rules.",
+        "Two renewals per book are allowed unless reserved by others.",
+        "Users should verify book conditions before borrowing.",
+        "Books must be returned on or before the due date.",
+        "Late returns will incur overdue charges as per rules.",
+        "Users should collect a receipt for any fines paid.",
+        "Members can suggest new books to the librarian.",
+        "Strict silence must be maintained in the library.",
+    ];
 
   function parse(cnt) {
         let lis = [];
@@ -30,12 +43,13 @@ const LibraryIntro = ({about}) => {
     }
 
   return (
+    <>
       <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10">
           <div className="max-w-7xl self-start basis-full w-full rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
               {/* Text Content */}
               <div
                   className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn font-extrabold text-transparent bg-clip-text bg-gradient-to-l
             from-accn dark:from-drka to-[color-mix(in_srgb,theme(colors.accn),transparent_70%)] dark:to-[color-mix(in_srgb,theme(colors.drka),transparent_70%)]">
                       ABOUT THE LIBRARY
                   </h1>
@@ -86,20 +100,53 @@ const LibraryIntro = ({about}) => {
                       src="https://img.freepik.com/free-photo/library-with-books_1063-98.jpg?t=st=1739020649~exp=1739024249~hmac=b239448fff3770a7d95c0d620bc0b964bbf2e1cd3267ab85b8af065e14f146d2&w=900"
                       className="w-full h-64 sm:h-80 md:h-full object-cover"
                       alt="Library"
-                  />
+                      />
               </div>
           </div>
 
-          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center lg:-mt-40">
+          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center lg: + mt-40">
               {tiles.map((tile, index) => (
                   <div className={`${tile.cls} border-l-8 p-4 border-secd dark:border-drks rounded-xl 
-                            bg-gray-100 dark:bg-gray-700`} key={index}>
+                  bg-gray-100 dark:bg-gray-700`} key={index}>
                       <p className="text-xl mb-2 text-text dark:text-drks font-poppins">{tile.hdr}</p>
                       <p className="text-base font-poppins">{parse(tile.cnt)}</p>
                   </div>
               ))}
           </div>
+          <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drka mb-6 sm:mb-10">
+                    GENERAL INSTRUCTIONS
+                </h2>
+                <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                    {generalInstructions.map((instruction, index) => (
+                        <motion.div
+                        key={index}
+                        className="relative dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                        rounded-lg shadow-md sm:shadow-lg p-4 sm:p-6 flex items-center cursor-pointer
+                        transition-all duration-500 hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+                        dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
+                        initial={{opacity: 0, scale: 0.9}}
+                        whileInView={{opacity: 1, scale: 1}}
+                        transition={{duration: 0.5, delay: index * 0.1}}
+                        viewport={{once: true}}
+                        >
+                            <div className="flex items-center space-x-3 sm:space-x-4">
+                <span
+                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
+                    bg-[#800000] text-white dark:bg-[#800000] dark:text-white font-bold rounded-full text-sm sm:text-lg
+                    transition-transform duration-500"
+                    >
+                  {index + 1}
+                </span>
+                                <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
       </div>
+      
+    </>
   );
 };
 
