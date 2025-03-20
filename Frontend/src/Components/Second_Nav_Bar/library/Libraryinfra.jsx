@@ -2,7 +2,7 @@ import React from "react";
 import {motion} from "framer-motion";
 import {Tilt} from "react-tilt";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -596,7 +596,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
                                     <motion.tr
                                         key={member.id}
                                         className="border-b border-gray-300 transition-all duration-300 bg-prim dark:bg-drkp
-                  dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]"
+                                                        dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]"
                                         initial={{opacity: 0, x: -20}}
                                         whileInView={{opacity: 1, x: 0}}
                                         transition={{delay: index * 0.1}}
@@ -733,62 +733,97 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
     function LIBHigh() {
         return (
-            <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
-                <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide mb-8 sm:mb-12">
-                    Library Highlights
-                </h2>
+            <>
+                <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
+                    <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide mb-8 sm:mb-12">
+                        Library Highlights
+                    </h2>
 
-                <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                    {ImageGallery.map((section, index) => (
-                        <motion.div
-                            key={index}
-                            className="relative group"
-                            initial={{opacity: 0, y: 50}}
-                            whileInView={{opacity: 1, y: 0}}
-                            transition={{
-                                duration: 0.6,
-                                delay: index * 0.15,
-                                ease: "easeOut",
-                            }}
-                            viewport={{once: true}}
-                        >
-                            <Tilt
-                                options={{
-                                    max: 15,
-                                    scale: 1.05,
-                                    speed: 400,
-                                    glare: true,
-                                    "max-glare": 0.2,
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                        {ImageGallery.map((section, index) => (
+                            <motion.div
+                                key={index}
+                                className="relative group"
+                                initial={{opacity: 0, y: 50}}
+                                whileInView={{opacity: 1, y: 0}}
+                                transition={{
+                                    duration: 0.6,
+                                    delay: index * 0.15,
+                                    ease: "easeOut",
                                 }}
-                                className="relative max-h-[55vh] rounded-2xl shadow-lg overflow-hidden transition-all transform
-          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
+                                viewport={{once: true}}
                             >
-                                <div className="relative overflow-hidden">
-                                    <img
-                                        src={section.image}
-                                        alt={section.title}
-                                        className="w-full h-56 sm:h-60 object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                    <div
-                                        className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
-                                </div>
+                                <Tilt
+                                    options={{
+                                        max: 15,
+                                        scale: 1.05,
+                                        speed: 400,
+                                        glare: true,
+                                        "max-glare": 0.2,
+                                    }}
+                                    className="relative max-h-[55vh] rounded-2xl shadow-lg overflow-hidden transition-all transform
+            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
+                                >
+                                    <div className="relative overflow-hidden">
+                                        <img
+                                            src={section.image}
+                                            alt={section.title}
+                                            className="w-full h-56 sm:h-60 object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div
+                                            className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
+                                    </div>
 
-                                <div className="p-5 sm:p-6  min-h-[45vh]  md:min-h-[65vh] ">
-                                    <h3
-                                        className="text-xl sm:text-2xl font-bold text-accn dark:text-drka
-              group-hover:text-secd dark:group-hover:text-drks transition-colors"
-                                    >
-                                        {section.title}
-                                    </h3>
-                                    <p className="mt-2 sm:mt-3 leading-relaxed">
-                                        {section.description}
-                                    </p>
-                                </div>
-                            </Tilt>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+                                    <div className="p-5 sm:p-6  min-h-[45vh]  md:min-h-[65vh] ">
+                                        <h3
+                                            className="text-xl sm:text-2xl font-bold text-accn dark:text-drka
+                                            group-hover:text-secd dark:group-hover:text-drks transition-colors"
+                                        >
+                                            {section.title}
+                                        </h3>
+                                        <p className="mt-2 sm:mt-3 leading-relaxed">
+                                            {section.description}
+                                        </p>
+                                    </div>
+                                </Tilt>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>          
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                            {additionalSections.map((section, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+                    dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
+                                    initial={{opacity: 0, y: 50}}
+                                    whileInView={{opacity: 1, y: 0}}
+                                    transition={{duration: 0.8}}
+                                    viewport={{once: true}}
+                                >
+                                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">
+                                        {section.category}
+                                    </h2>
+                                    <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
+                                        {section.items.map((item, i) => (
+                                            <motion.li
+                                                key={i}
+                                                className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
+                                                initial={{opacity: 0, x: -20}}
+                                                whileInView={{opacity: 1, x: 0}}
+                                                transition={{delay: i * 0.1}}
+                                                viewport={{once: true}}
+                                            >
+                                                <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
+                                                <span className="text-start">{item}</span>
+                                            </motion.li>
+                                        ))}
+                                    </ul>
+                                </motion.div>
+                            ))}
+                        </div>
+            </>
         )
     }
 
@@ -993,21 +1028,115 @@ const LibrarySections = ({faculty, membership, lib}) => {
         )
     }
 
+    const Counter = ({ value }) => {
+        const [count, setCount] = useState(0);
+      
+        useEffect(() => {
+          let start = 0;
+          const duration = 2000; // 2 seconds
+          const increment = Math.ceil(value / (duration / 50));
+      
+          const counter = setInterval(() => {
+            start += increment;
+            if (start >= value) {
+              setCount(value);
+              clearInterval(counter);
+            } else {
+              setCount(start);
+            }
+          }, 50);
+      
+          return () => clearInterval(counter);
+        }, [value]);
+      
+        return <span className="text-3xl font-semibold">{count.toLocaleString()}</span>;
+      };
+      
+    
+    const LIBbookdetails = () => {
+        const stats = [
+            { label: "Number of Books", value: 111494, icon: "📘" },
+            { label: "Text Books", value: 98896, icon: "📖" },
+            { label: "Reference Books", value: 12598, icon: "🔍" },
+            { label: "World Bank Repository Book", value: 253, icon: "🌍" },
+            { label: "Current Periodicals", value: 124, icon: "👥" },
+            { label: "Book Bank", value: 1571, icon: "🏛" }
+          ];
+        
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                  <span className="text-5xl">{stat.icon}</span>
+                  <Counter value={stat.value} />
+                  <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          );
+    }
+
+    const LIBjournalsdetails = () => {
+        const stats = [
+          { label: "Total Journals", value: 5423, icon: "📚" },
+          { label: "National Journals", value: 2145, icon: "🇮🇳" },
+          { label: "International Journals", value: 3278, icon: "🌎" },
+          { label: "E-Journals", value: 456, icon: "💻" },
+          { label: "Subscribed Journals", value: 789, icon: "📜" },
+          { label: "Archived Journals", value: 1123, icon: "📂" }
+        ];
+      
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <span className="text-5xl">{stat.icon}</span>
+                <Counter value={stat.value} />
+                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
+      const LIBnewspaperdetails = () => {
+        const stats = [
+          { label: "Total Newspapers", value: 325, icon: "📰" },
+          { label: "Daily Newspapers", value: 120, icon: "📆" },
+          { label: "Weekly Newspapers", value: 85, icon: "📅" },
+          { label: "Monthly Newspapers", value: 60, icon: "🗞" },
+          { label: "Archived Newspapers", value: 45, icon: "📂" },
+          { label: "Digital Newspapers", value: 15, icon: "💻" }
+        ];
+      
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <span className="text-5xl">{stat.icon}</span>
+                <Counter value={stat.value} />
+                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
     const [openSection, setOpenSection] = useState(null);
     const navData = {
         "Collection": {
-            "Books": <LIBFloor />,
-            "Journals": <LIBHod />,
-            "Newspapers": <LIBFloor />
+            "Books": <LIBbookdetails />,
+            "Journals": <LIBjournalsdetails />,
+            "Newspapers": <LIBnewspaperdetails />
         },
         "HOD's message": <LIBHod/>,
         "Staff": <LIBFacl/>,
-        "Services": <LIBFea/>,
+        "Services": <LIBHigh/>,
         "Advisory committee members": <LIBInstr/>,
-        "Downloads": <LIBHigh/>,
-        "Activities": <LIBMult/>,
-        "OPAC": <LIBArvl/>,
-        "Digital Library & E-Resources": <LIBResc/>
+        "Downloads": <LIBFea/>,
+        "Activities": <LIBResc/>,
+        "OPAC": <LIBMult/>,
+        "Digital Library & E-Resources": <LIBArvl/>
     }
 
     const toggleSection = (index) => {
