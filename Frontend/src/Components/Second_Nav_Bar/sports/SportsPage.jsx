@@ -9,6 +9,7 @@ import Achievements from './achivements';
 import Achievements1 from './Achivements2';
 import axios from 'axios';
 import SideNav from "../SideNav";
+import Intramural from './intramural';
 import WinnerSlider from './winners_sld';
 
 function SPTIntro() {
@@ -63,6 +64,7 @@ const SportsPage = ({theme, toggle}) => {
         "Action Plan": <SportsActionPlan/>,
         "Infrastructure": <SportsInfra/>,
         "Achievements": <Achievements1 data={sportData && sportData.length > 2 ? sportData[4] : null}/>,
+        "Intra Mural": <Intramural data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
         "Zonal results": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
         "Our Winners": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
         "HOD Message": <SportsHOD />,
