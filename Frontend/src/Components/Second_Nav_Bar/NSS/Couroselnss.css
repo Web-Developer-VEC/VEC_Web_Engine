@@ -1,4 +1,4 @@
-.carouselnavy-container {
+.carouselnss-container {
     width: 90%;
     margin: auto;
     padding: 20px 0;
@@ -20,8 +20,8 @@
 }
 
 /* Ensure all cards have equal height */
-.carouselnavy-card {
-    background-color:#f4f4f4;
+.carouselnss-card {
+    background-color: #f4f4f4;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -33,14 +33,14 @@
 }
 
 /* Make sure images are uniform */
-.carouselnavy-image {
+.carouselnss-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
 /* Ensure content area is flexible to fill the card */
-.carouselnavy-content {
+.carouselnss-content {
     flex-grow: 1;
     padding: 15px;
     display: flex;
@@ -49,19 +49,19 @@
 }
 
 /* Title styling */
-.carouselnavy-content h3 {
+.carouselnss-content h3 {
     font-size: 18px;
     margin: 5px 0;
     flex-grow: 1;
 }
 
 /* Location and date styling */
-.carouselnavy-location {
+.carouselnss-location {
     font-size: 14px;
     opacity: 0.8;
 }
 
-.carouselnavy-date {
+.carouselnss-date {
     font-size: 12px;
     background: #800000;
     color: white;
@@ -120,16 +120,16 @@
     .custom-next {
         width: 35px;
         height: 35px;
-        top: 65%
+        top: 65%;
     }
 }
 
 @media (max-width: 768px) {
-    .carouselnavy-image {
+    .carouselnss-image {
         height: 180px;
     }
 
-    .carouselnavy-card {
+    .carouselnss-card {
         min-height: 280px;
     }
 
@@ -141,11 +141,11 @@
 }
 
 @media (max-width: 600px) {
-    .carouselnavy-card {
+    .carouselnss-card {
         min-height: 280px;
     }
 
-    .carouselnavy-image {
+    .carouselnss-image {
         height: 140px;
     }
 

@@ -50,20 +50,22 @@ const NCCMAIN = ({ toggle, theme }) => {
                 className="NCC-main-button"
                 onClick={() => setActivePage("army")}
               >
-                VEC NCC ARMY <br />[TN] SIG COY NCC
+                VEC NCC ARMY <br />
+                [TN] SIG COY NCC
               </button>
 
               <button
                 className="NCC-main-button"
                 onClick={() => setActivePage("navy")}
               >
-                VEC NCC NAVY <br />[TN] NAVAL TECH UNIT, NCC
+                VEC NCC NAVY <br />
+                [TN] NAVAL TECH UNIT, NCC
               </button>
             </div>
           </motion.div>
         )}
 
-
+        {/* NCC Army Page (Left to Right Transition) */}
         {/* NCC Army Page (Left to Right Transition) */}
         {activePage === "army" && (
           <motion.div
@@ -74,10 +76,9 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="NCC-main-back-btn"
+              className="fixed z-[500] top-auto bottom-2 right-2 lg:left-auto lg:right-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
-
               Back ➡
             </button>
             <NCC_ARMY />
@@ -87,20 +88,16 @@ const NCCMAIN = ({ toggle, theme }) => {
         {/* NCC Navy Page (Right to Left Transition) */}
         {activePage === "navy" && (
           <motion.div
-
             className="NCC-main-page"
-
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           >
-
             <button
-              className="NCC-main-back-btn"
+              className="fixed z-[500] top-auto bottom-2 left-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
-
               ⬅ Back
             </button>
             <NCC_NAVY />

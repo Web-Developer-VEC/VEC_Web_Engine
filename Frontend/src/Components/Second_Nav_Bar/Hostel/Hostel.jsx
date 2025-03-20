@@ -4,8 +4,21 @@ import HostelFacilities from "./hostalfacilities";
 import Warden from "./warden";
 import HostelLogin from "./LoginHost";
 import Admissions from "./AdmissionHost";
+import {useState} from "react";
+import SideNav from "../SideNav";
 
 export default function HostelPage({toggle, theme}) {
+    const navData = {
+        "Gallery": <HostelFacilities />,
+        "Warden details": <Warden />,
+        "Mess Timings": <AboutHostel/>,
+        "Study Hours": <AboutHostel />,
+        "General info": <AboutHostel />,
+        "Leave": <AboutHostel />
+    }
+    const [hos, setHos] = useState(Object.keys(navData)[0])
+
+
   return (
     <>
           <Banner toggle={toggle} theme={theme}
@@ -13,16 +26,7 @@ export default function HostelPage({toggle, theme}) {
         headerText="VEC Hostel"
         subHeaderText="A home away from home, where comfort meets community and learning thrives in a peaceful, secure environment"
         />
-    <div className="min-h-screen flex flex-col items-center p-6">
-
-      {/* About Hostel  */}
-
-      <AboutHostel />
-      <HostelFacilities />
-      <HostelLogin/>
-      <Warden />
-      {/* <Admissions/> */}
-    </div>
+        <SideNav sts={hos} setSts={setHos} navData={navData} />
     </>
   );
 }

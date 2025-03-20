@@ -67,8 +67,7 @@
 /* Member Card */
 .membersarmy-member-card {
     display: flex;
-    background-color: #0d1b2a;
-    color: white;
+    background-color: #f4f4f4;
     border-radius: 10px;
     text-align: left;
     width: 100%;
@@ -76,7 +75,18 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
-
+.membersarmy-member-card-1 {
+    display: flex;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    text-align: left;
+    width: 100%;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 600px;
+    margin: auto;
+}
 /* Image taking full height */
 .membersarmy-member-image {
     width: 35%;
@@ -99,29 +109,39 @@
 }
 
 .membersarmy-platoon {
-    background: rgba(255, 255, 255, 0.1);
+    background: #800000;
+    color: white;
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 12px;
     display: inline-block;
-    margin-bottom: 5px;
+    width: fit-content;
+    /* Ensures it only takes the necessary width */
+    margin: 0 auto 5px;
+    /* Centers it horizontally */
 }
 
 .membersarmy-member-info h3 {
     font-size: 18px;
     margin: 5px 0;
     font-weight: bold;
+    text-align: center;
 }
 
 .membersarmy-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .membersarmy-degree {
-    font-size: 14px;
+    font-size: 12px;
 }
-
+.membersarmy-title{
+    margin-top: auto;
+    /* Pushes these elements to the bottom */
+    padding-top: 5px;
+    /* Adds some spacing */
+}
 /* Responsive Design */
 @media (max-width: 900px) {
     .membersarmy-members-grid {
@@ -153,7 +173,7 @@
 
     .membersarmy-member-info {
         width: 100%;
-        text-align: center;
+        text-align:end;
     }
 }
 @media (max-width: 480px) {

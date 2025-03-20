@@ -10,12 +10,13 @@ import CarouselNavy from "./NCC_NAvY comps/Corouselnavy";
 import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
 
 import SideNav from "../SideNav";
+import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 
 
 function NCCAbout() {
   return (<section
             className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6 "
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6 "
           >
             <h2
               className="NCC_NAVY-section-title  ext-accn dark:text-drka
@@ -62,7 +63,7 @@ function NCCVisMis() {
   return (<div className="NCC_NAVY-row">
             <section
               className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
             >
               <h2
                 className="NCC_NAVY-section-title text-accn dark:text-drka
@@ -78,7 +79,7 @@ function NCCVisMis() {
 
             <section
               className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
             >
               <h2
                 className="NCC_NAVY-section-title text-accn dark:text-drka
@@ -98,7 +99,7 @@ function NCCVisMis() {
 function NCCAim() {
   return (<div
             className="NCC_NAVY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
           >
             <div className="NCC_NAVY-aim">
               <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
@@ -129,7 +130,7 @@ function NCCMotto() {
   return (<div className="NCC_NAVY-motto-pledge-container">
             <div
               className="NCC_NAVY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
             >
               <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
                 MOTTO OF NCC
@@ -144,7 +145,7 @@ function NCCMotto() {
 
             <div
               className="NCC_NAVY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-[#FDB515] px-6"
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
             >
               <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
                 NCC PLEDGE
@@ -163,7 +164,6 @@ const NCC_NAVY = () => {
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
-  const [ncc, setNcc] = useState("About NCC Navy");
   const navData = {
     "About NCC Navy": (
       <>
@@ -175,9 +175,11 @@ const NCC_NAVY = () => {
       </>
     ),
     Members: <NCCNMembers />,
-    "Distinguished Alumini": <NCCProf />,
+    "Distinguished Alumini": <AlumniSlider1 />,
     Gallery: <CarouselNavy />,
   };
+  const [ncc, setNcc] = useState(Object.keys(navData)[0]);
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -226,7 +228,7 @@ const NCC_NAVY = () => {
 
     <>
       {/* Main NCC_NAVY Container */}
-      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="NCC_ARMY-container first:*:first:*:mt-10" />
+      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
     </>
 
   );

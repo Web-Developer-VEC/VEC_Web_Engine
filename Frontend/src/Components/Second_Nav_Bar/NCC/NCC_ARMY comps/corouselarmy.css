@@ -21,8 +21,7 @@
 
 /* Ensure all cards have equal height */
 .carouselarmy-card {
-    background-color: #0d1b2a;
-    color: white;
+    background-color: #f4f4f4;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -66,7 +65,8 @@
 
 .carouselarmy-date {
     font-size: 12px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #800000;
+    color: white;
     padding: 5px 10px;
     border-radius: 10px;
     display: inline-block;

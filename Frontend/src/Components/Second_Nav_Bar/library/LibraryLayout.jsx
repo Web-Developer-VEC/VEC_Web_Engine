@@ -9,34 +9,32 @@ import SideNav from "../SideNav";
 
 const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
-    const [lib, setLib] = useState("Overview")
+    const [lib, setLib] = useState("About")
     const navData = {
-        "Overview": <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />,
+        "About": <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />,
         "HOD's message": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Faculty": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Staff": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "Advisory committee members": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Floor overview": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Collection": {
+            "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Features": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+            "Journals": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "General Instructions": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+            "Newspapers": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Membership details": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        },
+        "Services": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Borrowing & Circulation": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Digital Library & E-Resources": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Library Sections": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "OPAC": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Library Highlights": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Activities": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Multimedia library": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "New Arrivals": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Library Resources": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Downloads": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>
     };
   

@@ -18,12 +18,17 @@ const NCCNMembers = () => {
         Meet Our Officer
         <div className="membersnavy-underline"></div>
       </h2>
-      <div className="membersnavy-officer-card">
-        <img src="https://via.placeholder.com/150" alt="Officer" />
-        <div className="membersnavy-officer-details">
+      <div className="membersnavy-member-card-1">
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Officer"
+          className="membersnavy-member-image"
+        />
+        <div className="membersnavy-member-info">
+          <span className="membersnavy-platoon">Commanding Officer</span>
           <h3>John Doe</h3>
-          <p>Bachelor of Defense Studies</p>
-          <p>
+          <p className="membersnavy-title">Bachelor of Defense Studies</p>
+          <p className="membersnavy-degree">
             A highly skilled and disciplined officer leading the cadets with
             excellence.
           </p>

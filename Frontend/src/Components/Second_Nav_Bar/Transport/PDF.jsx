@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
 const PdfOpener = () => {
-  const [showPdf, setShowPdf] = useState(false);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   return (
     <div style={styles.container}>
       <button
-        className="bg-secd dark:bg-drks p-3 mb-4 rounded-xl hover:bg-accn dark:hover:bg-blue-700"
-        onClick={() => setShowPdf(true)}
+        className="bg-secd dark:bg-drks p-3 mt-6 mb-2 rounded-xl hover:bg-accn dark:hover:bg-blue-700 hover:text-white"
+        onClick={() => window.open(UrlParser('static/pdfs/transport/bus_route.pdf'), "_blank")}
       >
         View Transport Routes
       </button>
-
-      {showPdf && (
-        <div style={styles.pdfContainer}>
-          <div style={styles.header}>
-            <h3 style={styles.title}>Viewing PDF Document</h3>
-            <button
-              style={styles.closeButton}
-              onClick={() => setShowPdf(false)}
-            >
-              ×
-            </button>
-          </div>
-          <embed
-            src="./bus route.pdf"
-            type="application/pdf"
-            style={styles.embed}
-          />
-        </div>
-      )}
     </div>
   );
 };
