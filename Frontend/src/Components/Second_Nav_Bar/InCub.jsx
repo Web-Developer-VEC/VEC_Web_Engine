@@ -123,17 +123,17 @@ const Incub = () => {
                 <table className="ic-data-table">
                     <thead>
                     <tr>
-                        <th>SL No</th>
-                        <th>Group Name</th>
-                        <th>Student Lead Name & Dept.</th>
+                        <th className="ic-table-head">SL No</th>
+                        <th className="ic-table-head">Group Name</th>
+                        <th className="ic-table-head">Student Lead Name & Dept.</th>
                     </tr>
                     </thead>
                     <tbody>
                     {startupsData.map((startup) => (
                         <tr key={startup.slNo}>
-                            <td>{startup.slNo}</td>
-                            <td>{startup.groupName}</td>
-                            <td>{startup.leadName}</td>
+                            <td className="ic-table-data">{startup.slNo}</td>
+                            <td className="ic-table-data">{startup.groupName}</td>
+                            <td className="ic-table-data">{startup.leadName}</td>
                         </tr>
                     ))}
                     </tbody>
@@ -148,19 +148,19 @@ const Incub = () => {
                 <table className="ic-data-table">
                     <thead>
                     <tr>
-                        <th>SL No</th>
-                        <th>Organization</th>
-                        <th>Duration</th>
-                        <th>Area of Collaboration</th>
+                        <th className="ic-table-head">SL No</th>
+                        <th className="ic-table-head">Organization</th>
+                        <th className="ic-table-head">Duration</th>
+                        <th className="ic-table-head">Area of Collaboration</th>
                     </tr>
                     </thead>
                     <tbody>
                     {mouData.map((mou) => (
                         <tr key={mou.slNo}>
-                            <td>{mou.slNo}</td>
-                            <td>{mou.organization}</td>
-                            <td>{mou.duration}</td>
-                            <td>{mou.area}</td>
+                            <td className="ic-table-data">{mou.slNo}</td>
+                            <td className="ic-table-data">{mou.organization}</td>
+                            <td className="ic-table-data">{mou.duration}</td>
+                            <td className="ic-table-data">{mou.area}</td>
                         </tr>
                     ))}
                     </tbody>

@@ -164,7 +164,7 @@ const Head = () => {
                 },
                 {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
                 {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
-                {hrd: false, ttl: "Alumni", sup: [], lnk: "/proudalumni"},
+                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
             ],
         },
     ];
