@@ -75,61 +75,66 @@ const Research = ({ data }) => {
     setSelectedActionData(null);
   };
 
-  if(!data) return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-    <LoadComp />
-  </div>
-
   return (
-    <div className="Rd-page">
-      <div className="RD-intro">
-        <h1 className="RD-header bg-gradient-to-r
-        from-accn to-[color-mix(in_srgb,theme(colors.accn)_50%,black)]
-        dark:from-drka dark:to-[color-mix(in_srgb,theme(colors.drka)_50%,black)]">RESEARCH DATA</h1>
-      </div>
-
-      {selectedAction ? (
-        // Show selected component only
-        <div className="RD-action-content">
-          <button className="RD-back-button" onClick={handleBack}>
-            <FontAwesomeIcon icon={faArrowLeft} /> Back
-          </button>
-          <Conference data={selectedActionData} action={selectedAction} />
+    <>
+    {years?.length > 0 ? (
+      <div className="Rd-page">
+        <div className="RD-intro">
+          <h1 className="RD-header bg-gradient-to-r
+          from-accn to-[color-mix(in_srgb,theme(colors.accn)_50%,black)]
+          dark:from-drka dark:to-[color-mix(in_srgb,theme(colors.drka)_50%,black)]">RESEARCH DATA</h1>
         </div>
-      ) : (
-        // Show year and action selection
-        <>
-          <div className="RD-years-horizontal">
-            {years?.map((year) => (
-              <button
-                key={year}
-                className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-drka" 
-                    : "bg-secd text-text dark:bg-drks"}`}
-                onClick={() => handleYearClick(year)}
-              >
-                {year}
-              </button>
-            ))}
-          </div>
 
-          <div className="RD-content">
-            <div className="RD-details">
-              <div className="RD-year-actions">
-                {availableActions.map((action) => (
-                  <div
-                    key={action}
-                    className={`RD-action-button ${selectedAction === action ? "active" : ""}`}
-                    onClick={() => handleActionClick(action)}
-                  >
-                    <FontAwesomeIcon icon={actionIcons[action.replace(/[_-]/g,'')]} style={{ marginRight: "10px" }} />
-                    {action.replace(/_/g, " ")}
-                  </div>
-                ))}
+        {selectedAction ? (
+          // Show selected component only
+          <div className="RD-action-content">
+            <button className="RD-back-button" onClick={handleBack}>
+              <FontAwesomeIcon icon={faArrowLeft} /> Back
+            </button>
+            <Conference data={selectedActionData} action={selectedAction} />
+          </div>
+        ) : (
+          // Show year and action selection
+          <>
+            <div className="RD-years-horizontal">
+              {years?.map((year) => (
+                <button
+                  key={year}
+                  className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-drka" 
+                      : "bg-secd text-text dark:bg-drks"}`}
+                  onClick={() => handleYearClick(year)}
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+
+            <div className="RD-content">
+              <div className="RD-details">
+                <div className="RD-year-actions">
+                  {availableActions.map((action) => (
+                    <div
+                      key={action}
+                      className={`RD-action-button ${selectedAction === action ? "active" : ""}`}
+                      onClick={() => handleActionClick(action)}
+                    >
+                      <FontAwesomeIcon icon={actionIcons[action.replace(/[_-]/g,'')]} style={{ marginRight: "10px" }} />
+                      {action.replace(/_/g, " ")}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    ) : (
+      <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+        <LoadComp />
+      </div>
+    )}
+    
+    </>
   );
 };
 

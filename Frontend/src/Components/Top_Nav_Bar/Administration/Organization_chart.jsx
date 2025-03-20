@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Orgainzation_chart.css'; // Ensure the CSS file includes necessary styles
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 const CollegeOrgChart = ({theme, toggle}) => {
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+}, []);
+
+if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+}
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,7 +45,7 @@ const CollegeOrgChart = ({theme, toggle}) => {
 
         <div className="org-chart-container">
           <img
-            src={UrlParser('static/images/orgchart/chart.jpg')}  // Replace with the correct path to your PNG chart image
+            src={UrlParser('static/images/orgchart/chart.jpg')} 
             alt="Organization Chart"
             className="org-chart-image"
           />

@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Management.css';
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 function Management({ theme, toggle }) {
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
+
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
+
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
+
+  if (!isOnline) {
+      return (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+      );
+  }
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -28,22 +52,12 @@ function Management({ theme, toggle }) {
           <div className="FCP-content-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="FCP-text-container">
-              <p>
-                As Founder - Chairman of the Velammal group of institutions, it is indeed a unique privilege for me to
-                communicate to you utilizing our college website. Velammal Engineering College was established in the year
-                1995-96 to impart quality education...
-              </p>
-              <strong className="FCP-vision-text">
-                "TO EDUCATE THE STUDENT COMMUNITY BOTH BY THEORY AND PRACTICE TO FIT IN WITH SOCIETY..."
-              </strong>
-              <p>At Velammal Engineering College, we are driven by a singular vision—to cultivate a generation of forward-thinking professionals who are not only adept in their technical expertise but also embody the values of integrity, innovation, and global responsibility. Since our inception in 1995-96, we have remained steadfast in our commitment to academic excellence, fostering an ecosystem where knowledge meets application, and ambition meets opportunity. <br />
-                In a rapidly evolving world shaped by technological advancements and dynamic industry landscapes, we prepare our students to excel at the highest levels. Our curriculum is meticulously designed to bridge the gap between academia and industry, ensuring that our graduates emerge as future-ready leaders. Beyond academics, we place immense emphasis on holistic development, encouraging our students to cultivate critical thinking, creativity, and a global perspective. <br />
-                As you embark on this transformative journey with us, I invite you to embrace the wealth of opportunities that await you. Together, let us shape a future that is driven by knowledge, guided by values, and defined by excellence. <br />
+              <p>At Velammal Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.
               </p>
             </div>
 
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/muthuramalingam.jpg')} alt="Founder's Image" />
+              <img src={UrlParser('static/images/trust/muthuramalingam.jpg')} alt="Founder's Image" className="founder"/>
             </div>
           </div>
         </div>
@@ -59,16 +73,10 @@ function Management({ theme, toggle }) {
             </div>
 
             <div className="FCP-text-container">
-              {/* <p>
-                We are committed to providing quality education to enable the student community to achieve academic and
-                professional excellence. We endeavor to upgrade the real-time academic competencies of students and
-                educators through continual training, motivation, and active involvement.
-              </p> */}
-              <p>At Velammal Engineering College, we empower students to innovate and lead in a dynamic global environment.</p>
-              <p>We blend academic rigor with real-world insights to foster critical thinking and practical skills.</p>
-              <p>Our commitment to continuous learning and technological advancement shapes future-ready professionals.</p>
-              <p>We nurture a community where every individual thrives through innovation, resilience, and ethical practice.</p>
-              <p>Join us in our pursuit of excellence and transformative education.</p>
+              <p>
+              At Velammal Engineering College, we empower students to innovate, lead, and excel in a dynamic global environment. Our approach integrates academic rigor with practical insights, fostering critical thinking and adaptability. We are committed to continuous learning and technological advancement, shaping professionals who are prepared for the future. Our institution nurtures a culture of resilience, ethics, and innovation, ensuring every individual thrives. With industry collaborations and experiential learning opportunities, we prepare our students to meet the demands of a competitive world. Join us in our pursuit of transformative education and a future driven by excellence.
+
+              </p>
             </div>
           </div>
         </div>
@@ -81,11 +89,8 @@ function Management({ theme, toggle }) {
 
             <div className="FCP-text-container">
               <p>
-              Dear Students, Faculty, and Visitors,
-              It is my pleasure to welcome you to Velammal Engineering College, a hub of innovation, learning, and excellence in engineering education. At Velammal Engineering College, we are committed to nurturing the next generation of engineers by providing a dynamic academic environment, industry-relevant skills, and opportunities for real-world problem-solving. <br />
-              In today’s fast-evolving technological landscape, our mission is to equip students with not only technical expertise but also critical thinking, leadership, and adaptability. We collaborate closely with industry leaders to ensure our curriculum remains cutting-edge, offering hands-on experience through internships, research projects, and skill-enhancement programs. <br />
-              Our dedicated faculty, state-of-the-art infrastructure, and student-centric approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find Velammal Engineering College to be a place that inspires creativity, innovation, and success. <br />
-              I invite you to explore our website and learn more about the opportunities we offer. Together, let us build a future where technology serves humanity and engineering drives progress.
+              Dear Students, Faculty, and Visitors, <br /><br />
+              It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity.
               </p>
             </div>
             <div className="FCP-image-container">

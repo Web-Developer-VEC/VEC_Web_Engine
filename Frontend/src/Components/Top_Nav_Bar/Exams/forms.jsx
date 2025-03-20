@@ -4,6 +4,7 @@ import { faEye, faDownload, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Forms.css";
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 const Forms = ({theme, toggle}) => {
   const studentTailRef = useRef(null);
@@ -11,6 +12,7 @@ const Forms = ({theme, toggle}) => {
   const [facultyResources, setFacultyResources] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [selectedPdf, setSelectedPdf] = useState(null); // State for modal
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -52,6 +54,27 @@ const Forms = ({theme, toggle}) => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+}, []);
+
+if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+}
 
   const handleViewClick = (pdfUrl, name) => {
     setSelectedPdf({ url: pdfUrl, name });
@@ -105,19 +128,17 @@ const Forms = ({theme, toggle}) => {
         subHeaderText="Streamlining processes with easy access to forms, empowering smooth academic and administrative workflows."
       />
 
+    {isLoading ? (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={""} />
+      </div>
+    ) : (
       <div className="tails-container">
         <div className="tail student-tail" ref={studentTailRef}>
           <div className="tail-content">
             <h2>Student Resources</h2>
             <div className="download-links-container">
-              {isLoading ? (
-                <div className="loading-screen">
-                  <div className="spinner"></div>
-                  Loading...
-                </div>
-              ) : (
-                renderResourceLinks(studentResources)
-              )}
+                {renderResourceLinks(studentResources)}
             </div>
           </div>
         </div>
@@ -126,18 +147,12 @@ const Forms = ({theme, toggle}) => {
           <div className="tail-content">
             <h2>Faculty Resources</h2>
             <div className="download-links-container">
-              {isLoading ? (
-                <div className="loading-screen">
-                  <div className="spinner"></div>
-                  Loading...
-                </div>
-              ) : (
-                renderResourceLinks(facultyResources)
-              )}
+                {renderResourceLinks(facultyResources)}
             </div>
           </div>
         </div>
       </div>
+    )}
 
       {selectedPdf && (
         <div className="pdf-modal">
