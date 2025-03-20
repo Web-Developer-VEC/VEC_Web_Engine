@@ -13,6 +13,10 @@ const Transport = () => {
                 <Transportvideo />
             </div>
             
+            <div>
+                <PDF/>
+            </div>
+            
             {/* Styled Transport Facilities Paragraph */}
             <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0" style={{
                 maxWidth: "900px", 
@@ -52,9 +56,7 @@ const Transport = () => {
             }}>
                 <Transportcarousel/>
             </div>
-            <div>
-                <PDF/>
-            </div>
+
         </div>
     );
 };

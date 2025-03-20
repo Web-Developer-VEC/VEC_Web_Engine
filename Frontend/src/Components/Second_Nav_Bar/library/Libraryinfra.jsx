@@ -2,7 +2,7 @@ import React from "react";
 import {motion} from "framer-motion";
 import {Tilt} from "react-tilt";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -1028,12 +1028,106 @@ const LibrarySections = ({faculty, membership, lib}) => {
         )
     }
 
+    const Counter = ({ value }) => {
+        const [count, setCount] = useState(0);
+      
+        useEffect(() => {
+          let start = 0;
+          const duration = 2000; // 2 seconds
+          const increment = Math.ceil(value / (duration / 50));
+      
+          const counter = setInterval(() => {
+            start += increment;
+            if (start >= value) {
+              setCount(value);
+              clearInterval(counter);
+            } else {
+              setCount(start);
+            }
+          }, 50);
+      
+          return () => clearInterval(counter);
+        }, [value]);
+      
+        return <span className="text-3xl font-semibold">{count.toLocaleString()}</span>;
+      };
+      
+    
+    const LIBbookdetails = () => {
+        const stats = [
+            { label: "Number of Books", value: 111494, icon: "📘" },
+            { label: "Text Books", value: 98896, icon: "📖" },
+            { label: "Reference Books", value: 12598, icon: "🔍" },
+            { label: "World Bank Repository Book", value: 253, icon: "🌍" },
+            { label: "Current Periodicals", value: 124, icon: "👥" },
+            { label: "Book Bank", value: 1571, icon: "🏛" }
+          ];
+        
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                  <span className="text-5xl">{stat.icon}</span>
+                  <Counter value={stat.value} />
+                  <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          );
+    }
+
+    const LIBjournalsdetails = () => {
+        const stats = [
+          { label: "Total Journals", value: 5423, icon: "📚" },
+          { label: "National Journals", value: 2145, icon: "🇮🇳" },
+          { label: "International Journals", value: 3278, icon: "🌎" },
+          { label: "E-Journals", value: 456, icon: "💻" },
+          { label: "Subscribed Journals", value: 789, icon: "📜" },
+          { label: "Archived Journals", value: 1123, icon: "📂" }
+        ];
+      
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <span className="text-5xl">{stat.icon}</span>
+                <Counter value={stat.value} />
+                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
+      const LIBnewspaperdetails = () => {
+        const stats = [
+          { label: "Total Newspapers", value: 325, icon: "📰" },
+          { label: "Daily Newspapers", value: 120, icon: "📆" },
+          { label: "Weekly Newspapers", value: 85, icon: "📅" },
+          { label: "Monthly Newspapers", value: 60, icon: "🗞" },
+          { label: "Archived Newspapers", value: 45, icon: "📂" },
+          { label: "Digital Newspapers", value: 15, icon: "💻" }
+        ];
+      
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                <span className="text-5xl">{stat.icon}</span>
+                <Counter value={stat.value} />
+                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
     const [openSection, setOpenSection] = useState(null);
     const navData = {
         "Collection": {
-            "Books": <LIBFloor />,
-            "Journals": <LIBHod />,
-            "Newspapers": <LIBFloor />
+            "Books": <LIBbookdetails />,
+            "Journals": <LIBjournalsdetails />,
+            "Newspapers": <LIBnewspaperdetails />
         },
         "HOD's message": <LIBHod/>,
         "Staff": <LIBFacl/>,
