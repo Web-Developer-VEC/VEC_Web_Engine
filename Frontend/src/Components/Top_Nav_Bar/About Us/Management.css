@@ -83,6 +83,11 @@ h2 {
     font-size: 20px; /* Adjusted h2 size */
 }
 
+.founder {
+    width: 20px;
+    height: 20px;
+}
+
 /* Responsive styles */
 @media (max-width: 1024px) {
     .FCP-content-container {

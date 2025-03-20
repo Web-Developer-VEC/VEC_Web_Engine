@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoadComp = ({txt = "Please hold on..."}) => {
+const LoadComp = ({ txt }) => {
     return (
         <div className='relative w-[10vmax] h-[10vmax] self-center justify-self-center  group/ttl'>
             <div

@@ -1,5 +1,5 @@
 // import {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
 import Sidebar from './SideBar'
 import Nord from '../Assets/1723802229690.png'
@@ -14,6 +14,7 @@ import { sup } from 'framer-motion/m';
 
 const Head = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
@@ -282,67 +283,76 @@ const Head = () => {
                     </div>
                 </div>
                 <div className='hidden lg:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt
-                    gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
-                    {hdrs.map((hdr, index) => (
-                        !hdr.sub ? (
-                            // Render a button for items without a submenu
-                            <button
-                                key={index}
-                                onClick={() => hdr.lnk.startsWith('http') ? window.location.href = hdr.lnk : navigate(hdr.lnk)}
-                                className='mt-1 h-fit md:block hidden'
-                            >
-                                {hdr.ttl}
-                            </button>
-                        ) : (
-                            // Render a dropdown for items with a submenu
-                            <div key={index} className='group/nav relative transition-all rounded-xl'>
-                                <button className={`mt-1 h-fit md:block hidden`}>
+                        gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
+                        {hdrs.map((hdr, index) => {
+                            const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
+
+                            return !hdr.sub ? (
+                                // Single button (no submenu)
+                                <button
+                                    key={index}
+                                    onClick={() => hdr.lnk.startsWith('http') ? window.location.href = hdr.lnk : navigate(hdr.lnk)}
+                                    className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}
+                                >
                                     {hdr.ttl}
-                                    {/* <ChevronDownIcon className='size-[1.3vmax] mb-1 ml-1 inline text-text dark:text-drkt'></ChevronDownIcon> */}
+                                    {/* Underline animation */}
+                                    <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
+                                                    ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                                    </span>
                                 </button>
-                                <div className={`grid grid-flow-row content-center rounded-lg outline 
-                                        group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
-                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
-                                        group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}>
-                                    {hdr.sub.map((subItem, i) => (
-                                        <a
-                                            key={i}
-                                            href={subItem.lnk}
-                                            className={`no-underline inline-block bg-[length:200%_100%] 
-                                                    bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
-                                                    bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
-                                                    w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500] hover:bg-[position:-100%_100%]`}
-                                            target='_blank'
-                                        >
-                                            <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt'>{subItem.ttl}</p>
-                                        </a>
-                                    ))}
+                            ) : (
+                                // Dropdown menu
+                                <div key={index} className='group/nav relative transition-all rounded-xl'>
+                                    <button className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}>
+                                        {hdr.ttl}
+                                        {/* Animated underline */}
+                                        <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
+                                                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                                        </span>
+                                    </button>
+                                    <div className={`grid grid-flow-row content-center rounded-lg outline 
+                                                    group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
+                                                    right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
+                                                    group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
+                                                    duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}>
+                                        {hdr.sub.map((subItem, i) => (
+                                            <a
+                                                key={i}
+                                                href={subItem.lnk}
+                                                className={`no-underline inline-block bg-[length:200%_100%] 
+                                                            bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
+                                                            bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
+                                                            w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500] hover:bg-[position:-100%_100%]
+                                                            ${location.pathname === subItem.lnk ? 'text-brwn font-semibold' : ''}`}
+                                                target='_blank'
+                                            >
+                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt'>{subItem.ttl}</p>
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    ))}
+                            );
+                        })}
 
-                    {/* Payment Button */}
-                    <button 
-                        onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
-                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
-    
-                        Fees Payment
-                    </button>
+                        {/* Payment Button */}
+                        <button 
+                            onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
+                            Fees Payment
+                        </button>
 
-                    {/* Social Icons */}
-                    <div className="flex group items-center justify-end grow gap-3">
-                        {socls.map((socl, i) => (
-                            <a href={socl.Link} key={i} target='_blank'>
-                                <img src={socl.Ico} alt={socl.Name}
-                                    className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
-                                                dark:invert mt-1 text-transparent"
-                                    style={{ animationDelay: `${i * 1.9}s` }} />
-                            </a>
-                        ))}
+                        {/* Social Icons */}
+                        <div className="flex group items-center justify-end grow gap-3">
+                            {socls.map((socl, i) => (
+                                <a href={socl.Link} key={i} target='_blank'>
+                                    <img src={socl.Ico} alt={socl.Name}
+                                        className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
+                                                    dark:invert mt-1 text-transparent"
+                                        style={{ animationDelay: `${i * 1.9}s` }} />
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
                 <div
                     className='block lg:hidden h-fit'>
                     <Sidebar navs={navs} Sz="tny p-0"/></div>

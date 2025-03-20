@@ -103,7 +103,9 @@ const ImageCarousel = ({ data }) => {
           </div>
         </>
       ) : (
-        <p className="no-content-message">No student achievements available.</p>
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
       )}
     </div>
   );

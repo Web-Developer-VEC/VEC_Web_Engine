@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
+import LoadComp from '../../LoadComp'
 
 const AbtUs = ({ theme, toggle }) => {
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [loading, setLoading] = useState({
+        img1: true,
+        img2: true,
+        img3: true
+    });
+
+    const handleLoad = (imgKey) => {
+        setLoading(prevState => ({ ...prevState, [imgKey]: false }));
+    };
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
     const banTtl = "About VEC";
     const motto = "A Journey of Thousand Miles Begins with a Single Step";
     const secTtl = "Velammal Engineering College";
@@ -37,16 +70,52 @@ const AbtUs = ({ theme, toggle }) => {
                         <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                     </div>
                     
-                    <div className='absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
-                        opacity-30 lg:opacity-100'>
-                        <img className='absolute w-[40%] h-[65%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]'
-                            src={UrlParser('static/images/aboutvec/aboutvec1.jpg')} alt="Banner Image0" />
-                        <img className='absolute w-[40%] h-[90%] rounded-tr-[3rem] rounded-bl-[3rem]
-                            left-[15%] top-[10%] border-[2vmin] border-prim dark:border-drkp' 
-                            src={UrlParser('static/images/aboutvec/aboutvec2.jpg')} alt="Banner Image1" />
-                        <img className='absolute w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]
-                            border-[2vmin] border-prim dark:border-drkp' 
-                            src={UrlParser('static/images/aboutvec/aboutvec3.jpg')} alt="Banner Image2" />
+                    <div className="absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
+                        opacity-30 lg:opacity-100">
+                        {/* Image 1 */}
+                        <div className="absolute w-[40%] h-[65%] right-[15%]">
+                            {loading.img1 && (
+                                <div className="absolute inset-0 flex justify-center items-center">
+                                    <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent 
+                                                    rounded-full animate-spin"></div>
+                                </div>
+                            )}
+                            <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img1 ? 'opacity-0' : 'opacity-100'}`}
+                                src={UrlParser('static/images/aboutvec/aboutvec1.jpg')}
+                                alt="Banner Image0"
+                                onLoad={() => handleLoad('img1')}
+                            />
+                        </div>
+
+                        {/* Image 2 */}
+                        <div className="absolute w-[40%] h-[90%] left-[15%] top-[10%] border-[2vmin] border-prim dark:border-drkp">
+                            {loading.img2 && (
+                                <div className="absolute inset-0 flex justify-center items-center">
+                                    <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent 
+                                                    rounded-full animate-spin"></div>
+                                </div>
+                            )}
+                            <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
+                                src={UrlParser('static/images/aboutvec/aboutvec2.jpg')}
+                                alt="Banner Image1"
+                                onLoad={() => handleLoad('img2')}
+                            />
+                        </div>
+
+                        {/* Image 3 */}
+                        <div className="absolute w-[25%] h-[40%] left-[40%] top-[45%] border-[2vmin] border-prim dark:border-drkp">
+                            {loading.img3 && (
+                                <div className="absolute inset-0 flex justify-center items-center">
+                                    <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent 
+                                                    rounded-full animate-spin"></div>
+                                </div>
+                            )}
+                            <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img3 ? 'opacity-0' : 'opacity-100'}`}
+                                src={UrlParser('static/images/aboutvec/aboutvec3.jpg')}
+                                alt="Banner Image2"
+                                onLoad={() => handleLoad('img3')}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
