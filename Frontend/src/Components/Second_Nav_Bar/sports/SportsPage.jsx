@@ -10,6 +10,7 @@ import Achievements from './achivements';
 import Achievements1 from './Achivements2';
 import axios from 'axios';
 import SideNav from "../SideNav";
+import Intramural from './intramural';
 
 function SPTIntro() {
     return (<section className="introduction">
@@ -68,7 +69,7 @@ const SportsPage = ({theme, toggle}) => {
         "About": <SPTIntro/>,
         "Infrastructure": <SportsInfra/>,
         "Achievements": <Achievements1 data={sportData && sportData.length > 2 ? sportData[4] : null}/>,
-        "Intra Mural": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
+        "Intra Mural": <Intramural data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
         "HOD's message": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
         "Faculty": <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>,
         "Team Captains": <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>,
