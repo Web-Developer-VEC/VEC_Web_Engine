@@ -15,6 +15,7 @@
   min-height: 40vh;
   transition: transform 0.3s ease-in-out;
   position: relative;
+  margin-top: 2vh;
 }
 
 /* NCC Army Logo */
@@ -69,14 +70,17 @@
 .NCC-main-button-group {
   display: flex;
   gap: 40px;
-  /* Adjusted margin */
+  justify-content: center;
   margin: 5px;
+  margin-bottom: 20px;
+
 }
 
-/* Individual Buttons */
 .NCC-main-button {
-  padding: 12px 24px;
-  font-size: 1.125rem;
+  width: 250px; /* Set a fixed width */
+  height: 80px; /* Set a fixed height */
+  padding: 12px;
+  font-size: 16px;
   font-weight: bold;
   background-color: #800000;
   color: white;
@@ -84,13 +88,18 @@
   transition: transform 0.2s;
   border: none;
   cursor: pointer;
-  position: relative;
-
+  text-align: center;
+  display: flex;
+  align-items: center; /* Vertically center text */
+  justify-content: center; /* Horizontally center text */
+  white-space: pre-line; /* Ensures text wraps properly */
 }
 
 .NCC-main-button:hover {
-  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
+
+
 
 /* Pages (NCC Army & Navy) */
 .NCC-main-page {
@@ -141,3 +150,12 @@
 .NCC-main-back-btn:hover {
   background-color: #495057;
 }
+@media (max-width: 600px) {
+  .NCC-main-button {
+    width: 90%; /* Make buttons responsive */
+    height: auto; /* Allow height to adjust based on content */
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 10px; /* Reduce padding for better fit */
+  }
+}
+

@@ -9,6 +9,10 @@
   font-size: 3rem;
   margin-bottom: 3%;
   color: #800000;
+  padding-top: 2.5vh;
+  margin-bottom: 2.5vh;
+  font-weight: bolder;
+  padding-bottom: 2.5vh;
 }
 
 .facilities-wrapper {
@@ -24,6 +28,7 @@
   height: auto;
   gap: 10px;
   position: relative;
+  margin-bottom: 2vh;
 }
 
 .hostel-fac-item {

@@ -235,9 +235,11 @@ const NCC_ARMY = () => {
           <NCCContact />
         </>
       ),
-      Members: <NCCAMembers />,
-      "Distinguished Alumini" : <AlumniSlider />,
-      Gallery: <Carouselarmy />,
+      "Recent Events": <Carouselarmy />,
+      "Team & Coordinators": <NCCAMembers />,
+      "Awards & Recognition" : <AlumniSlider />,
+      
+      
     };
     const [ncc, setNcc] = useState(Object.keys(navData)[0]);
 

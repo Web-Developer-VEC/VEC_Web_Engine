@@ -109,16 +109,26 @@ const Achievements1 = ({ data }) => {
 
       {/* Three buttons outside the achievementsContainer div */}
       <div className={styles.sportsAchievementsclass}>
-        <button className={styles.sportsAchievementsbutton} onClick={() => setShowZone("zone")}>
-          Zone
-        </button>
-        <button className={styles.sportsAchievementsbutton} onClick={() => setShowZone("interzone")}>
-          Inter Zone
-        </button>
-        <button className={styles.sportsAchievementsbutton} onClick={() => setShowZone("others")}>
-          Others
-        </button>
-      </div>
+  <button
+    className={`${styles.sportsAchievementsbutton} ${showZone === "zone" ? styles.active : ""}`}
+    onClick={() => setShowZone("zone")}
+  >
+    Zone
+  </button>
+  <button
+    className={`${styles.sportsAchievementsbutton} ${showZone === "interzone" ? styles.active : ""}`}
+    onClick={() => setShowZone("interzone")}
+  >
+    Inter Zone
+  </button>
+  <button
+    className={`${styles.sportsAchievementsbutton} ${showZone === "others" ? styles.active : ""}`}
+    onClick={() => setShowZone("others")}
+  >
+    Others
+  </button>
+</div>
+
 
       {showZone === "zone" ? (
         <div className="sport-zone-container mb-10">
