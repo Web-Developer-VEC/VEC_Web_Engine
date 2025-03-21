@@ -150,6 +150,10 @@ h2{
     .section-content li {
         margin-bottom: 10px; /* Reduced spacing on mobile */
     }
+
+    .alumni-announcement{
+      flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -212,7 +216,7 @@ h2{
   .app-container .flipbook {
     position: relative;
     width: 400px;
-    height: 800px;
+    height: 600px;
     background: white;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -305,16 +309,18 @@ h2{
     position: absolute;
     bottom: 16px;
     left: 50%;
+    top: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 16px;
+    gap: 275px;
     z-index: 10;
   }
   
   .app-container .button {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background-color: rgba(255, 255, 255, 0.8);
+    color: black;
     border: none;
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -327,7 +333,8 @@ h2{
   }
   
   .app-container .button:hover {
-    background-color: white;
+    background-color: black;
+    color: white;
     transform: scale(1.1);
   } 
   
@@ -353,7 +360,7 @@ h2{
   @media screen and (max-width: 560px){
     .app-container .flipbook{
       width: 300px;
-      height: 660px;
+      height: 525px;
     }
   }
 

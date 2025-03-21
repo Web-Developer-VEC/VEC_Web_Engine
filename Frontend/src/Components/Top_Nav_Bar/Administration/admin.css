@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    width: 80vw;
+    width: 90vw;
     margin: auto;
   }
 
@@ -44,10 +44,10 @@
   .admin-text-content{
     text-align: left;
   }
-
+  
   .admin-card {
     border-radius: 8px;
-    width: 170px;
+    width: 210px;
     padding: 12px;
   }
   

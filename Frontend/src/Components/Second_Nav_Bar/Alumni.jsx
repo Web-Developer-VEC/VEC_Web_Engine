@@ -147,7 +147,7 @@ const handlePrev = useCallback(() => {
         </div>
 
         {/* Announcement section for alumni */}
-          <div className="main pr-10 pl-10 w-1/2">
+          <div className="w-100">
               {spcannouncements.map((item) => (
                   <div key={item.title}>
                       <h2 className="text-3xl text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
