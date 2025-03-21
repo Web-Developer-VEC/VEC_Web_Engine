@@ -49,7 +49,7 @@ const Footer = forwardRef((props, ref) => {
                 {/*mt-4 lg:mt-[-240px] lg:ml-[375px]">*/}
                 {/*    <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[30vh] 2xl:h-[20vh] lg:mt-[-15rem]*/}
             </div>
-            <div className="basis-1/3 h-[45vh] mt-10">
+            <div className=" footer-map basis-1/3 h-[45vh] mt-10">
                 <iframe className="px-3 w-full h-full"
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1757.9530530830932!2d80.19081618175407!3d13.149609328912868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sVelammal%20Engineering%20College!5e1!3m2!1sen!2sin!4v1723700873764!5m2!1sen!2sin"
                         width="400"
