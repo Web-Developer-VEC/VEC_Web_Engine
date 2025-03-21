@@ -225,6 +225,10 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaFileAlt className={sty}/>;
             case "Contact Us":
                 return <FaPhoneAlt className={sty}/>;
+            case "About Hostel":
+                return <FaHome className={sty}/>;
+            case "Hostel Facilities":
+                return <FaBuilding className={sty}/>;
             default:
                 return <FaThLarge className={sty}/>;
         }

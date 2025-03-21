@@ -6,15 +6,17 @@ import HostelLogin from "./LoginHost";
 import Admissions from "./AdmissionHost";
 import {useState} from "react";
 import SideNav from "../SideNav";
+import InfoHostel from "./infohostel";
 
 export default function HostelPage({toggle, theme}) {
     const navData = {
-        "Gallery": <HostelFacilities />,
+       "About Hostel": <AboutHostel/>,
+        "Hostel Facilities": <HostelFacilities />,
         "Warden details": <Warden />,
-        "Mess Timings": <AboutHostel/>,
-        "Study Hours": <AboutHostel />,
-        "General info": <AboutHostel />,
-        "Leave": <AboutHostel />
+        // "Mess Timings": <AboutHostel/>,
+        // "Study Hours": <AboutHostel />,
+        "General info": <InfoHostel/>,
+        // "Leave": <AboutHostel />
     }
     const [hos, setHos] = useState(Object.keys(navData)[0])
 

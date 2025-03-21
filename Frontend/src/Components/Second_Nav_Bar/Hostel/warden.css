@@ -7,9 +7,7 @@
   width: 100%;
   position: relative;
 }
-.warden-heading1{
-  color: #800000;
-}
+
 .warden-card {
   /*background: #fff;*/
   /*color: #F68220;*/
@@ -23,7 +21,13 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
 }
-
+.warden-heading1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1%;
+  color: #800000;
+  font-weight: bolder
+}
 .warden-card h3 {
   /*color: #F68220;*/
   font-weight: 600;

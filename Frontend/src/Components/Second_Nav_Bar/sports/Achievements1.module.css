@@ -138,11 +138,14 @@
 }
 
 .sportsAchievementsbutton:hover {
-  background-color: #800000; /* Darker green on hover */
+  background-color: #800000;
   color: white;
-  transform: scale(1.05);
 }
 
+.sportsAchievementsbutton.active {
+  background-color: #800000;
+  color: white;
+}
 
 @media (max-width: 1200px) {
   .achievementsContainer {

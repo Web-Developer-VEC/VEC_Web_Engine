@@ -174,9 +174,10 @@ const NCC_NAVY = () => {
         <NCCNCarousel data={curosel} />
       </>
     ),
-    Members: <NCCNMembers />,
-    "Distinguished Alumini": <AlumniSlider1 />,
-    Gallery: <CarouselNavy />,
+    "Recent Events": <CarouselNavy />,
+    "Team & Coordinators": <NCCNMembers />,
+    "Awards & Recognition": <AlumniSlider1 />,
+    
   };
   const [ncc, setNcc] = useState(Object.keys(navData)[0]);
 
