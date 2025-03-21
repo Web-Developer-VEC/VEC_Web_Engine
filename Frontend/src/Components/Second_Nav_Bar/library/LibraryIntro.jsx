@@ -49,10 +49,11 @@ const LibraryIntro = ({about}) => {
               {/* Text Content */}
               <div
                   className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn font-extrabold text-transparent bg-clip-text bg-gradient-to-l
-            from-accn dark:from-drka to-[color-mix(in_srgb,theme(colors.accn),transparent_70%)] dark:to-[color-mix(in_srgb,theme(colors.drka),transparent_70%)]">
-                      ABOUT THE LIBRARY
-                  </h1>
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn font-extrabold">
+                        ABOUT THE LIBRARY
+                    </h1>
+
+
                   <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                       The college library is located in the Bill Gates Block, spanning the Ground and First floors. With
                       a total
@@ -104,7 +105,7 @@ const LibraryIntro = ({about}) => {
               </div>
           </div>
 
-          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center lg: + mt-40">
+          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-[45px]">
               {tiles.map((tile, index) => (
                   <div className={`${tile.cls} border-l-8 p-4 border-secd dark:border-drks rounded-xl 
                   bg-gray-100 dark:bg-gray-700`} key={index}>
