@@ -163,8 +163,8 @@ const ProfileSection = ({data}) => {
                 <p className="faculty-profile-designation">Department Of {data?.Department_Name}</p>
               </div>
               <div className='faculty-profile-contact'>
-                <p className='fac-contact'> <FaPhone style={{ marginRight: "8px" }} />Phone: +91 152463987</p>
-                <p className='fac-contact'> <FaEnvelope style={{ marginRight: "8px" }} />Email: madara@gmail.com</p>
+                <p className='fac-contact'> <FaPhone style={{ marginRight: "8px" }} />Phone: </p>
+                <p className='fac-contact'> <FaEnvelope style={{ marginRight: "8px" }} />Email: </p>
               </div>
               
             </div>
@@ -319,69 +319,31 @@ export const EducationTimeline = ({ data }) => {
     >
       <h2 className="faculty-timeline-title">
         <GraduationCap className="faculty-title-icon"/>
-        Education Qualification
+        Education Qualification 
       </h2>
 
-      <div className="faculty-scroll-progress-container">
-        <div 
-          className="faculty-scroll-progress-bar" 
-          style={{ width: `${(scrollPosition / maxScroll) * 100}%` }}
-        />
-      </div>
 
-      <button
-        className="faculty-scroll-button faculty-left"
-        onClick={() => handleScroll('left')}
-        disabled={isAnimating || scrollPosition === 0}
-      >
-        <ChevronLeft size={20} />
-      </button>
+      <table className="max-w-full border-collapse border-8 border-black rounded-lg overflow-hidden ml-5">
+  <thead>
+    <tr className="bg-brwn dark:bg-gray-900">
+      <th className="border border-gray-300 p-3 text-left text-white">Degree</th>
+      <th className="border border-gray-300 p-3 text-left text-white">Branch</th>
+      <th className="border border-gray-300 p-3 text-left text-white">Year</th>
+      <th className="border border-gray-300 p-3 text-left text-white">Institution</th>
+    </tr>
+  </thead>
+  <tbody>
+    {educationalQualifications?.map((education, index) => (
+      <tr key={index} className="hover:bg-gray-100">
+        <td className="border border-gray-300 p-3">{education.DEGREE}</td>
+        <td className="border border-gray-300 p-3">{education.BRANCH}</td>
+        <td className="border border-gray-300 p-3">{education.YEAR}</td>
+        <td className="border border-gray-300 p-3">{education.INSTITUTE}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-      <div className="faculty-timeline-cards-container">
-        <div className="faculty-timeline-cards" ref={cardsRef}>
-          {educationalQualifications?.map((education, index) => (
-            <div
-              key={index}
-              className={`faculty-card-wrapper ${visibleCards.includes(index) ? 'faculty-visible' : ''}`}
-              style={{ '--index': index }}
-            >
-              {index < educationalQualifications.length - 1 && (
-                <div className="faculty-connection-line">
-                  <div className={`faculty-line ${visibleCards.includes(index + 1) ? 'faculty-active' : ''}`} />
-                  <ChevronRight 
-                    className={`faculty-arrow-icon ${visibleCards.includes(index + 1) ? 'faculty-active' : ''}`}
-                  />
-                </div>
-              )}
-
-              <div className="faculty-education-card bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                <div className="faculty-card-header">
-                  <h3 className="text-secd dark:text-drks">{education.DEGREE} / {education.BRANCH}</h3>
-                </div>
-                <div className="faculty-card-content">
-                  <div className="faculty-duration-row">
-                    <span className="faculty-label">Year</span>
-                    <span className="faculty-year">{education.YEAR}</span>
-                  </div>
-                  <div className="faculty-institution-row">
-                    <span className="faculty-label">Institution</span>
-                    <p className="faculty-institution">{education.INSTITUTE}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <button
-        className="faculty-scroll-button faculty-right"
-        onClick={() => handleScroll('right')}
-        disabled={isAnimating || scrollPosition >= maxScroll}
-      >
-        <ChevronRight size={20} />
-      </button>
     </div>
   );
 };
@@ -454,45 +416,35 @@ const Experience = ({data}) => {
             <Handshake className="faculty-title-icon"/>
             Experience</h2>
         </div>
-        <div className="faculty-roadmap-wrapper">
-          <button
-            className={`faculty-scroll-button faculty-left ${!isSettled || hasReachedStart ? "faculty-disabled" : ""}`}
-            onClick={() => handleScroll("left")}
-            disabled={!isSettled || hasReachedStart}
-          >
-            &#8592;
-          </button>
 
-          <div
-            className="faculty-roadmap-container"
-            ref={roadmapRef}
-          >
-            <div className="faculty-roadmap">
-              {/* Horizontal Line Below Titles */}
-              <div className="faculty-roadmap-line"></div>
 
-              {experiences.map((item, index) => (
-                <div className="faculty-roadmap-item" key={index}>
-                  <div className="faculty-roadmap-title">{item.INSTITUTION}</div>
-                  <div className="faculty-roadmap-popup">
-                    <p><strong>Duration: {item.YEARS} years {item.MONTHS} months</strong></p>
-                    <p>From: {item.From}</p>
-                    <p>To: {item.TO}</p>
-                    <p><strong>Designation:</strong> {item.DESIGNATION}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="overflow-x-auto">
+  <table className="max-w-full  border-4 border-black rounded-lg overflow-hidden ml-30 ">
+    <thead className="bg-brwn text-white">
+      <tr>
+        <th className="p-3.5 border">Institution</th>
+        <th className="p-3.5 border">Duration</th>
+        <th className="p-3.5 border">From</th>
+        <th className="p-3.5 border">To</th>
+        <th className="p-3.5 border">Designation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {experiences.map((item, index) => (
+        <tr key={index} className="hover:bg-gray-100">
+          <td className="p-4 border">{item.INSTITUTION}</td>
+          <td className="p-3.5 border">
+            {item.YEARS} years {item.MONTHS} months
+          </td>
+          <td className="p-3.5 border">{item.From}</td>
+          <td className="p-3.5 border">{item.TO}</td>
+          <td className="p-3.5 border">{item.DESIGNATION}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
-          <button
-            className={`faculty-scroll-button faculty-right ${!isSettled || hasReachedEnd ? "faculty-disabled" : ""}`}
-            onClick={() => handleScroll("right")}
-            disabled={!isSettled || hasReachedEnd}
-          >
-            &#8594;
-          </button>
-        </div>
       </div>
   );
 };

@@ -72,7 +72,7 @@ const Faculties = ({ data }) => {
         {SupportingStaffArray?.length > 0 && (
           <>
             <h2 className={styles.faculty}>Supporting Staffs</h2> 
-            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
+            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4 bg-black-100'}>
               {SupportingStaffArray?.map((faculty, index) => (
                 <ImageCard
                   key={faculty.unique_id || index}

@@ -99,16 +99,16 @@ if (!isOnline) {
           </div>
 
           <div className="ADM-content bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">        
-            <div className="text-accn dark:text-drka mb-3  Eligibility">Eligibility</div>
-            <p className="description-text mb-2"><strong>Government Quota : </strong>Apply through TNEA Counselling</p>
-            <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
+                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] ">        
+           <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+           
             <p className="description-text">
-              &nbsp; &nbsp; Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
-            </p>
-            <p className="description-text text-center">( OR )</p>
+              Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
+            </p><br />
+            <p className="text-start description-text ">( OR )</p>
+            <br />
             <p className="description-text">
-            &nbsp; &nbsp; Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
+             Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
             </p>
             {renderTable(ug, `UG COURSES - TOTAL INTAKE ${year}`, "(For First Year Admissions)")}
           </div>
@@ -119,13 +119,15 @@ if (!isOnline) {
           </div>
           <div className="ADM-content lateral-entry bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"> 
-            <div className="text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+            <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
             <p className="description-text">
-              &nbsp; &nbsp; Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
+               Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
             </p>
-            <p className="description-text text-center">( OR )</p>
+            <br />
+            <p className="description-text">( OR )</p>
+            <br />
             <p className="description-text">
-              &nbsp; &nbsp; Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
+               Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
             </p>
             {renderTable(ug_lateral, `UG COURSES - TOTAL INTAKE ${year}`, "(For Diploma Holders Only)")}
           </div>

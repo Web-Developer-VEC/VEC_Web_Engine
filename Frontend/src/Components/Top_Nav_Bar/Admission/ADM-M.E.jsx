@@ -69,12 +69,7 @@ if (!isOnline) {
           <h3 className="text-accn dark:text-drka Eligibility text-center">
             Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
           </h3>
-          <p className="description-text">
-            Candidates for admission to the first semester of the Post-Graduate Degree Programme shall be
-            required to have passed an appropriate Under-Graduate Degree Examination of Anna University or
-            equivalent as specified under qualification for admission as per the Tamil Nadu Common Admission
-            (TANCA) criteria.
-          </p>
+          
           <br></br>
           <p className="description-text">
             <strong>Note:</strong> TANCA releases the updated criteria during the admissions every academic
