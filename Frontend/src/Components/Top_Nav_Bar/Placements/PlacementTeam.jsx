@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import './PlacementTeam.css';
 import Banner from '../../Banner';
+import LoadComp from '../../LoadComp';
 
 
 function PersonDetail({ person, isImageLeft }) {
@@ -49,6 +50,7 @@ export const PlacementTeam = ({toggle, theme}) => {
   const [PlacementTeam, setPlacementTeam] = useState([]);
   const [isLoading,setLoading] = useState(true);
   const content = PlacementTeam[0]?.placement_team || [];
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
 
   useEffect(() => {
@@ -67,6 +69,27 @@ export const PlacementTeam = ({toggle, theme}) => {
     fetchData();
   },[]);
 
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+}, []);
+
+if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+}
+
   return (
 
     <>
@@ -78,19 +101,22 @@ export const PlacementTeam = ({toggle, theme}) => {
     <div className='container'>
       <div className="Placement-App" style={{marginTop:'30px'}}>
         {/* Show loading spinner during data fetch */}
-        {isLoading && (
-            <div className="loading-screen">
-              <div className="spinner"></div>
-              Loading...
-            </div>
-          )}
-          <PersonDetail key={content[0]?.name} person={content[0]} />
+        {isLoading ? (
+          <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+            <LoadComp txt={""} />
+          </div>
+          ) : (
+            <>
+              <PersonDetail key={content[0]?.name} person={content[0]} />
 
-        <div className="placement-members">
-          {content.slice(1).map((person, index) => (
-            <PersonMemberDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
-          ))}
-        </div>
+            <div className="placement-members">
+              {content.slice(1).map((person, index) => (
+                <PersonMemberDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
+              ))}
+            </div>
+            
+            </>
+          )}
 
       </div>
     </div>

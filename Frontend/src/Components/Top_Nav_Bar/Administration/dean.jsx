@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "./Dean.css";
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 const data = [
   {
@@ -108,10 +109,11 @@ const data = [
 ];
 
 const Dean = ({theme, toggle}) => {
-
+  
   const [deanData, setDeanData] = useState([]);
   const [loading ,setloading] = useState(true);
   const navigate = useNavigate();
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -134,6 +136,28 @@ const Dean = ({theme, toggle}) => {
     fetchData();
   },[]);
 
+
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
+
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
+
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
+
+  if (!isOnline) {
+      return (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+      );
+  }
+
   return (
     <>
     <Banner toggle={toggle} theme={theme}
@@ -141,74 +165,74 @@ const Dean = ({theme, toggle}) => {
   headerText="Deans & Associate Deans"
   subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
 />
-    <div className="container">
-       {loading && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
-            Loading...
-          </div>
-        )}
-      <div className="de-container">
-        {data.map((section, index) => {
-          const responsibleDean = deanData.find(
-            (dean) => dean.Position === section.heading
-          );
-
-          return (
-            <div className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-              <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
-              <div className="de-content">
-                {/* Profiles Section */}
-                {(responsibleDean?.Dean || responsibleDean?.Associate_Dean) && (
-                  <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full">
-                    {/* Dean Profile */}
-                    {responsibleDean?.Dean && (
-                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
-                        <img
-                          src={UrlParser(responsibleDean.Dean_Image)} 
-                          alt={responsibleDean.Dean}
-                        />
-                        <div className="de-profile-details">
-                          <strong>{responsibleDean.Dean}</strong>
-                          <br />
-                          <span>{responsibleDean.Dean_Type}</span><br />
-                          <span>{responsibleDean.Dean_Designation}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Associate Dean Profile */}
-                    {responsibleDean?.Associate_Dean && (
-                      <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}>
-                        <img
-                          src={UrlParser(responsibleDean.Associate_Dean_Image)}
-                          alt={responsibleDean.Associate_Dean}
-                        />
-                        <div className="de-profile-details">
-                          <strong>{responsibleDean.Associate_Dean}</strong>
-                          <br />
-                          <span>{responsibleDean.Ass_Dean_Type}</span><br />
-                          <span>{responsibleDean.Associate_Dean_Designation}</span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-                {/* Roles Section */}
-                {/*<div className="de-roles-section">*/}
-                {/*  <h2>Roles and Responsibilities</h2>*/}
-                {/*  <ul className="de-roles">*/}
-                {/*    {section.roles.map((role, i) => (*/}
-                {/*      <li className=" bg-prim dark:bg-drkp before:bg-secd dark:before:bg-drks" key={i}>{role}</li>*/}
-                {/*    ))}*/}
-                {/*  </ul>*/}
-                {/*</div>*/}
-              </div>
-            </div>
-          );
-        })}
+    {loading ? (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={""} />
       </div>
-    </div>
+    ) : (
+      <div className="container">
+        <div className="de-container">
+          {data.map((section, index) => {
+            const responsibleDean = deanData.find(
+              (dean) => dean.Position === section.heading
+            );
+
+            return (
+              <div className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
+                <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
+                <div className="de-content">
+                  {/* Profiles Section */}
+                  {(responsibleDean?.Dean || responsibleDean?.Associate_Dean) && (
+                    <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full">
+                      {/* Dean Profile */}
+                      {responsibleDean?.Dean && (
+                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
+                          <img
+                            src={UrlParser(responsibleDean.Dean_Image)} 
+                            alt={responsibleDean.Dean}
+                          />
+                          <div className="de-profile-details">
+                            <strong>{responsibleDean.Dean}</strong>
+                            <br />
+                            <span>{responsibleDean.Dean_Type}</span><br />
+                            <span>{responsibleDean.Dean_Designation}</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Associate Dean Profile */}
+                      {responsibleDean?.Associate_Dean && (
+                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}>
+                          <img
+                            src={UrlParser(responsibleDean.Associate_Dean_Image)}
+                            alt={responsibleDean.Associate_Dean}
+                          />
+                          <div className="de-profile-details">
+                            <strong>{responsibleDean.Associate_Dean}</strong>
+                            <br />
+                            <span>{responsibleDean.Ass_Dean_Type}</span><br />
+                            <span>{responsibleDean.Associate_Dean_Designation}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {/* Roles Section */}
+                  {/*<div className="de-roles-section">*/}
+                  {/*  <h2>Roles and Responsibilities</h2>*/}
+                  {/*  <ul className="de-roles">*/}
+                  {/*    {section.roles.map((role, i) => (*/}
+                  {/*      <li className=" bg-prim dark:bg-drkp before:bg-secd dark:before:bg-drks" key={i}>{role}</li>*/}
+                  {/*    ))}*/}
+                  {/*  </ul>*/}
+                  {/*</div>*/}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    )}
     </>
   );
 };

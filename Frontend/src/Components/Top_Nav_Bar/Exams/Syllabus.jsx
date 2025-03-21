@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
+import { BookOpen } from "lucide-react";
 import "./Syllabi.css";
 import Banner from "../../Banner";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import LoadComp from "../../LoadComp";
 
 const CourseCard = ({ course, onClick }) => (
   <motion.div
@@ -43,25 +42,18 @@ const itemVariants = {
 };
 
 function Syllabus({theme, toggle}) {
-  const [selectedPdf, setSelectedPdf] = useState(null);
   const [curriculumData, setCurriculumData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const navigate = useNavigate();
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/curriculumandsyllabus`);
         setCurriculumData(response.data);
-        console.log(response.data);
-        
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -71,15 +63,26 @@ function Syllabus({theme, toggle}) {
     fetchData();
   }, []);
 
-  const getPdfPath = (year, department) => {
-    const yearData = curriculumData.find((item) => Object.keys(item)[0] === year);
-    if (yearData) {
-      const yearContent = yearData[year][0];
-      const departmentIndex = yearContent.department.indexOf(department);
-      return UrlParser(yearContent.pdf_path[departmentIndex]);
-    }
-    return null;
-  };
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+}, []);
+
+if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+}
 
   const handleDepartmentClick = (deptId) => {
     navigate(`/dept/${deptId}`, {
@@ -91,10 +94,6 @@ function Syllabus({theme, toggle}) {
     <motion.div key={year} variants={itemVariants} className="w-full">
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
-          {/* <div className="flex items-center gap-3 mb-4 text-accn dark:text-drka">
-            <Calendar className="w-[30px] h-[30px]" /> 
-            <h2 className="text-[30px] font-bold">{data.year}</h2>
-          </div> */}
           <div className="course-grid flex flex-wrap -m-2">
             {data.department.map((course, courseIndex) => (
               <CourseCard
@@ -119,8 +118,8 @@ function Syllabus({theme, toggle}) {
       <div className="min-h-screen mt-2 px-4 sm:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-6">
           {isLoading ? (
-            <div className="loading-screen flex justify-center items-center h-40">
-              <div className="spinner"></div> Loading...
+            <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+              <LoadComp txt={""} />
             </div>
           ) : (
             curriculumData.map((yearData, index) => {

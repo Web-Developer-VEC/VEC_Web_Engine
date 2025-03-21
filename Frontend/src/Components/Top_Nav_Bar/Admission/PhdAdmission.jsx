@@ -1,11 +1,36 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./PhdAdmission.css";
-import point from "../../../Assets/points.png";
+import point from "../../Assets/points.png";
 import { GiConvergenceTarget } from "react-icons/gi";
-import Banner from "../../../Banner";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 
 const PhdAdmission = ({theme, toggle}) => {
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+}, []);
+
+if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+}
+
   return (
     <>
       <Banner toggle={toggle} theme={theme}

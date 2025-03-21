@@ -33,6 +33,20 @@ const DepartmentPage = ({ theme, toggle }) => {
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef(null);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
+
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
+
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
 
   // Update activeSection if location.state changes
   useEffect(() => {
@@ -146,7 +160,10 @@ const DepartmentPage = ({ theme, toggle }) => {
   };
 
   if (!availableSections.length) return <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
-      <LoadComp />
+      <LoadComp txt={""}/>
+    </div>
+  if (!isOnline) return <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+      <LoadComp txt={"You are offline. Please check your internet connection."}/>
     </div>
 
   return (

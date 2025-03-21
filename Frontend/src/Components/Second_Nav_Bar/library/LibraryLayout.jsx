@@ -3,8 +3,6 @@ import LibraryIntro from "./LibraryIntro";
 import LibrarySections from "./Libraryinfra";
 import Banner from '../../Banner'
 import axios from "axios";
-import NCCACarousel from "../NCC/NCC_ARMY comps/NCCACarousel";
-import NCCAtable from "../NCC/NCC_ARMY comps/NCCAtable";
 import SideNav from "../SideNav";
 
 const LibraryLayout = ({toggle, theme}) => {

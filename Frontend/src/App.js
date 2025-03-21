@@ -29,7 +29,7 @@ import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
 import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
-import PHD from "./Components/Top_Nav_Bar/Admission/Phd/PhdAdmission.jsx";
+import PHD from "./Components/Top_Nav_Bar/Admission/PhdAdmission.jsx";
 /* Exams Pages Imports */
 import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
