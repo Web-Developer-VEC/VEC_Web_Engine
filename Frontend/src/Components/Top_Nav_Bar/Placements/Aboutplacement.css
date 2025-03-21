@@ -6,11 +6,31 @@
 }
 
 /* Grid Layout */
-.AP-grid {
+.AP-grid-VM {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusting min size for better small-screen support */
+  gap: 20px; 
+  width: 50%; 
+  margin-bottom: 40px;
+}
+.AP-grid-VMC{
+  display: flex;
+}
+.AP-grid-TPD{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusting min size for better small-screen support */
   gap: 20px;
   margin-bottom: 40px;
+}
+.AP-grid-CPC{
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusting min size for better small-screen support */
+  gap: 20px;
+  width: 50%;
+  margin-bottom: 40px;
+  margin-left: 20px;
 }
 .AP-contact-name{
   font-size: 16px;

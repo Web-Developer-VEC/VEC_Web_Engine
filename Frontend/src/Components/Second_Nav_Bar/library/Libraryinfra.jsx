@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {Tilt} from "react-tilt";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import {useState, useEffect} from "react";
-
+import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -343,6 +343,28 @@ const LibrarySections = ({faculty, membership, lib}) => {
         ["TOTAL", "25271", "78070", "93", "87", "158", "1322", "4373"]
     ]
 
+    const libFacData =   {
+        "name": [
+          "Dr.P.RAMESH KANNAN",
+          "Ms.JAYANTHI.K",
+          "Mr.SRINIVASAN.S"
+        ],
+        "image_path": [
+          "/static/images/sports_faculty/1.jpeg",
+          "/static/images/sports_faculty/2.jpeg",
+          "/static/images/sports_faculty/3.jpeg"
+        ],
+        "designation": [
+          "Head & Director of Physical Education",
+          "ASST.PD",
+          "ASST.PD"
+        ],
+        "qualification": [
+          "MA.MPEd,Mphil,Ph.D",
+          "MPEd.Mphil",
+          "MPEd.Mphil"
+        ]
+      }
 
     function LIBFloor() {
         return (<div className="max-w-7xl mx-auto lg:flex mt-4 flex-wrap gap-4 justify-center">
@@ -414,30 +436,46 @@ const LibrarySections = ({faculty, membership, lib}) => {
         )
     }
 
+    const LIBFacImageCard = ({ name, photo, Designation, firstTile}) => (
+    
+      <>
+      <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
+            styles.imageCard + ' w-fit lg:w-[90%]'} rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
+            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]`}>
+        <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
+        <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
+          <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
+          <p>{Designation}</p>
+        </div>
+      </div>
+      </>
+    );
+
     function LIBFacl() {
         return (
+            <>
             <div className=" py-16 px-6">
                 <h2 className="text-4xl font-bold text-accn dark:text-drka mb-8 text-center">
                 Faculty & Staff
                 </h2>
 
-                <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+                {/* <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
                     {faculty?.name?.map((name, index) => (
                         <motion.div
                             key={index}
                             className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
-              dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-8 border-[#800000] rounded-xl"
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-8 border-[#800000] rounded-xl"
                             initial={{opacity: 0, y: 30}}
                             whileInView={{opacity: 1, y: 0}}
                             transition={{duration: 0.5, delay: index * 0.1}}
                             viewport={{once: true}}
-                        >
+                            >
                             <div className="group relative ">
                                 <img
                                     src={UrlParser(faculty?.image[index])}
                                     alt={name}
                                     className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
-                                />
+                                    />
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                                     <h3 className="text-xl font-bold text-white text-center px-4">
@@ -455,9 +493,24 @@ const LibrarySections = ({faculty, membership, lib}) => {
                             </div>
                         </motion.div>
                     ))}
+                </div> */}
+
+            <div className={styles.app}>
+                <div className={styles.imagegallery}>
+                    {libFacData.name.map((name, index) => (
+                    <LIBFacImageCard
+                        key={index}
+                        name={name}
+                        photo={libFacData.image_path[index]} // Use the fetched image paths
+                        Designation={libFacData.designation[index]}
+                        Qualification={libFacData.qualification[index]}
+                    />
+                    ))}
+                </div>
                 </div>
                 
             </div>
+        </>
         )
     }
 
