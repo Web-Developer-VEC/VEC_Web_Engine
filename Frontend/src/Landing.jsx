@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "universal-cookie";
-
+import LoadComp from './Components/LoadComp';
 import Boot from './Components/Landing Comp/BootUp';
 import ImgSld from './Components/Landing Comp/ImgSld';
 import Abt from './Components/Landing Comp/About';
@@ -85,6 +85,29 @@ const courses = [
 
 
 const LandingPage = ({theme, load, toggle}) => {
+
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
     return (
         <div className="landing-page -mt-[5vmax]">

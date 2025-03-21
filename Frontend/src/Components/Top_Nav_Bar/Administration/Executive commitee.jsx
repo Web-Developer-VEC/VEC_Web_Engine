@@ -5,6 +5,7 @@ import { faUniversity, faBuilding, faUsers, faChartLine, faCogs, faLaptop, faGra
   faHandHoldingUsd, faHandshake, faMicrochip, faShieldAlt, faLock, faUsersCog, faTransgender } from "@fortawesome/free-solid-svg-icons";
 import "./Executive commitee.css"; 
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
@@ -32,7 +33,8 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [committieeData, setCommittieeData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Track loading state
-
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  
   // Mapping committee names to icons
   const iconMapping = {
     academic_council: faUniversity,
@@ -64,7 +66,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
@@ -77,8 +79,8 @@ const ExecutiveCommittee = ({theme, toggle}) => {
             .split("_") // Split the name by underscores
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
             .join(" "), // Join the words with spaces
-        }));
-        setCommittieeData(formattedData);
+          }));
+          setCommittieeData(formattedData);
         setIsLoading(false); // Data has finished loading
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -91,10 +93,32 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   const handlePdfClick = (pdfUrl) => {
     setSelectedPdf(pdfUrl);
   };
-
+  
   const closeModal = () => {
     setSelectedPdf(null);
   };
+  
+  
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
+
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
+
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
+
+  if (!isOnline) {
+      return (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+      );
+  }
 
   return (
     <>
@@ -103,19 +127,14 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   headerText="Administrative Committees"
   subHeaderText="Leading the way to success with visionary strategies, collaborative efforts, and decisive action."
 />
-
-
+{isLoading ? (
+  <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+    <LoadComp txt={""} />
+  </div>
+) : (
     <div className="executive-committee-page">
       {/* Committee Page Content */}
       <div className="committee-container">
-        {/* Show loading spinner during data fetch */}
-        {isLoading && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
-            Loading...
-          </div>
-        )}
-
         {/* Committee Content */}
           <div className="committee-buttons-grid">
             {committieeData.map(({ name, pdf_path }) => (
@@ -133,7 +152,8 @@ const ExecutiveCommittee = ({theme, toggle}) => {
       {/* PDF Modal */}
       {selectedPdf && <PdfModal pdfUrl={selectedPdf} onClose={closeModal} />}
     </div>
-    </>
+  )}
+  </>
   );
 };
 

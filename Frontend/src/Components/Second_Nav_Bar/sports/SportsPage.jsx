@@ -9,6 +9,7 @@ import Achievements from './achivements';
 import Achievements1 from './Achivements2';
 import axios from 'axios';
 import SideNav from "../SideNav";
+import Intramural from './intramural';
 import WinnerSlider from './winners_sld';
 
 function SPTIntro() {
@@ -60,14 +61,15 @@ const SportsPage = ({theme, toggle}) => {
     const navData = {
         "Introduction": <SPTIntro/>,
         "Vision & Mission": <SPTVis/>,
+        "HOD's message": <SportsHOD />,
+        "Faculty": <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>,
         "Action Plan": <SportsActionPlan/>,
         "Infrastructure": <SportsInfra/>,
         "Achievements": <Achievements1 data={sportData && sportData.length > 2 ? sportData[4] : null}/>,
-        "Zonal results": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
-        "Our Winners": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
-        "HOD Message": <SportsHOD />,
-        "Faculty": <Sportsfaculties data={sportData && sportData.length > 2 ? sportData[2] : null}/>,
-        "Other": <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>
+        "Intra Mural": <Intramural data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
+        // "Zonal results": <ZonalResults data={sportData && sportData.length > 2 ? sportData[0] : null}/>,
+        // "Our Winners": <WinnerSlider data={sportData && sportData.length > 2 ? sportData[1] : null}/>,
+        // "Other": <Achievements className="" data={sportData && sportData.length > 2 ? sportData[3] : null}/>
     };
 
     useEffect(() => {

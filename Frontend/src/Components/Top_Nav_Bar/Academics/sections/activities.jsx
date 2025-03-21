@@ -61,8 +61,8 @@ const Activities = ({ data }) => {
     setIsModalOpen(false);
   };
 
-  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-    <LoadComp />
+  if(!data?.dept_activities) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp txt={""} />
   </div>
 
   return (

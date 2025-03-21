@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../../Banner';
+import LoadComp from '../../LoadComp';
+import axios from 'axios';
 
 const Princ = ({theme, toggle}) => {
   const [data, setData] = useState(null); // State to store fetched data
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [error, setError] = useState(null); // State for error handling
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -16,36 +21,43 @@ const Princ = ({theme, toggle}) => {
     // Fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/principal');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const result = await response.json();
+        const response = await axios.get('/api/principal');
+
+        const result = response.data
         setData(result.principal);
         setLoading(false);
       } catch (err) {
         setError(err.message);
-        setLoading(false);
+        console.error("Error fetching the Principal data",err);
+        
+        setLoading(true);
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
-    return <p>Loading...</p>; // Display while data is loading
-  }
 
-  if (error) {
-    return <p>Error: {error}</p>; // Display in case of error
-  }
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
 
-  if (!data) {
-    return null; // If no data, render nothing
-  }
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
 
-  // Destructure fetched data
-  const { photo_path, name, qualification, message } = data;
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
+
+  if (!isOnline) {
+      return (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+      );
+  }
 
   return (
     <>
@@ -56,35 +68,59 @@ const Princ = ({theme, toggle}) => {
         headerText="Principal's Desk"
         subHeaderText="Leading with vision and commitment to excellence in education and innovation."
       />
+      {!data ? (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={""} />
+        </div>
+      ) : (
 
-      <div className="max-w-[90%] mx-auto my-8 px-4">
-        <div className="flex flex-col md:flex md:justify-center lg:flex-row-reverse items-center lg:items-start">
-          {/* Image on the right for large screens, centered for tablets */}
-          <div className="lg:max-w-sm lg:ml-6 flex-shrink-0 mx-auto">
-            <img
-              className="max-h-[25vh] lg:max-h-[45vh] w-auto rounded-xl"
-              src={
-                UrlParser(photo_path)
-              }
-              alt="Principal"
-            />
-            <div className="text-center">
-              <span className="text-2xl font-semibold block">{name}</span>
-              <span className="text-lg font-bold text-accn dark:text-drka block">
-                {qualification}
-              </span>
+        <div className="max-w-[90%] mx-auto my-8 px-4">
+          <div className="flex flex-col md:flex md:justify-center lg:flex-row-reverse items-center lg:items-start">
+            {/* Image on the right for large screens, centered for tablets */}
+            <div className="lg:max-w-sm lg:ml-6 flex-shrink-0 mx-auto">
+            <div className="relative max-h-[25vh] lg:max-h-[45vh] w-auto flex justify-center items-center">
+            {/* Loading Spinner */}
+            {isLoading && !hasError && (
+                <div className="fixed inset-0 flex justify-center items-center bg-gray-100/50">
+                  <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            )}
+
+            {/* Image */}
+            {!hasError ? (
+                <img
+                    className={`max-h-[25vh] lg:max-h-[45vh] w-auto rounded-xl transition-opacity duration-500 
+                                ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                    src={UrlParser(data?.photo_path)}
+                    alt="Principal"
+                    onLoad={() => setIsLoading(false)}
+                    onError={() => {
+                        setHasError(true);
+                        setIsLoading(false);
+                    }}
+                />
+            ) : (
+                <div className="text-red-500">Image failed to load</div>
+            )}
+        </div>
+              <div className="text-center">
+                <span className="text-2xl font-semibold block">{data?.name}</span>
+                <span className="text-lg font-bold text-accn dark:text-drka block">
+                  {data?.qualification}
+                </span>
+              </div>
+            </div>
+
+            {/* Text Content Wrapped Around */}
+            <div className="text-justify leading-relaxed max-w-[80%] lg:max-w-[60%] mx-auto">
+              <p className="text-xl lg:text-2xl font-bold mb-3">
+                From the Principal's Desk
+              </p>
+              <q className="text-md lg:text-lg italic block">{data?.message}</q>
             </div>
           </div>
-
-          {/* Text Content Wrapped Around */}
-          <div className="text-justify leading-relaxed max-w-[80%] lg:max-w-[60%] mx-auto">
-            <p className="text-xl lg:text-2xl font-bold mb-3">
-              From the Principal's Desk
-            </p>
-            <q className="text-md lg:text-lg italic block">{message}</q>
-          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -82,18 +82,6 @@ const LibrarySections = ({faculty, membership, lib}) => {
         },
     ];
 
-    const generalInstructions = [
-        "Students can obtain membership cards by showing their ID cards with barcodes.",
-        "Members should sign in at the entrance to accept library rules.",
-        "Two renewals per book are allowed unless reserved by others.",
-        "Users should verify book conditions before borrowing.",
-        "Books must be returned on or before the due date.",
-        "Late returns will incur overdue charges as per rules.",
-        "Users should collect a receipt for any fines paid.",
-        "Members can suggest new books to the librarian.",
-        "Strict silence must be maintained in the library.",
-    ];
-
     const images = [
         "/static/Images/ECE.jpeg",
         "/static/Images/EEE.jpeg",
@@ -404,22 +392,25 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
     function LIBHod() {
         return (
-            <article className="flex flex-wrap gap-y-4 bg-gray-100 shadow-xl p-6 rounded-xl">
-                <div className="basis-full md:basis-1/5">
-                    <img className={"w-full h-auto"} alt="Library Hod" src="/img_1.png"/>
+            <article className="flex flex-col gap-4 bg-gray-100 shadow-xl p-6 rounded-xl items-center text-center">
+                <div className="w-full md:w-1/5 flex justify-center">
+                    <img className="w-full h-auto" alt="Library Hod" src="/img_1.png" />
                 </div>
-                <p className="grow basis-4/5 text-xl px-4 italic">
-                    <h2 className="text-2xl not-italic">Dr.S.Rajendraprasath , B.Sc., M.A., M.L.I.Sc., M.phil., Ph.D</h2>
-                    <p className="text-lg text-accn mb-4">Librarian and Head, Department of Library and Information
-                        Science</p>
-                    "VEC’s Central Library is a one of it’s
-                    kind installation that facilitates teaching, learning and research endeavours of our students,
-                    scholars and faculty members. It is one of the formost such libraries in Tamil Nadu higher
-                    educational systems. significant efforts are not just building structure that stores books. It
-                    serves more realistically as a space for learning and knowledge exchange with users coming from
-                    diverse study and aspirational backgrounds."
-                </p>
-            </article>
+
+                <div className="flex flex-col px-4">
+                    <h2 className="text-2xl font-semibold">Dr. S. Rajendraprasath, B.Sc., M.A., M.L.I.Sc., M.Phil., Ph.D.</h2>
+    <p className="text-lg text-accn mb-2">
+      Librarian and Head, Department of Library and Information Science
+    </p>
+    <p className="text-xl italic text-justify">
+      VEC’s Central Library is a one of its kind installation that facilitates teaching, learning and research
+      endeavours of our students, scholars and faculty members. It is one of the foremost such libraries in Tamil Nadu
+      higher educational systems. Significant efforts are not just building structure that stores books. It serves more
+      realistically as a space for learning and knowledge exchange with users coming from diverse study and
+      aspirational backgrounds.
+    </p>
+  </div>
+</article>
         )
     }
 
@@ -465,21 +456,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
                         </motion.div>
                     ))}
                 </div>
-                <div className="flex flex-wrap gap-4 justify-center lg:px-0 mt-8">
-                    <p className="basis-full text-2xl font-poppins text-accn font-semibold">LIBRARY ADVISORY COMMITTEE
-                        MEMBERS</p>
-                    {advisors.map((adv, i) => (
-                        <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drka
-                            bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
-                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                            transition-colors duration-300 ease-in`} key={i}>
-                            {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
-                            <p className="text-xl font-poppins">{adv[0]}</p>
-                            {/* Removed cmt.nme reference as it doesn't exist in data */}
-                            <p className="text-lg text-accn dark:text-drka">{adv[1]}</p>
-                        </div>
-                    ))}
-                </div>
+                
             </div>
         )
     }
@@ -524,37 +501,23 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
     function LIBInstr() {
         return (
-            <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drka mb-6 sm:mb-10">
-                    GENERAL INSTRUCTIONS
-                </h2>
-                <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-                    {generalInstructions.map((instruction, index) => (
-                        <motion.div
-                            key={index}
-                            className="relative dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-          rounded-lg shadow-md sm:shadow-lg p-4 sm:p-6 flex items-center cursor-pointer
-          transition-all duration-500 hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
-        dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
-                            initial={{opacity: 0, scale: 0.9}}
-                            whileInView={{opacity: 1, scale: 1}}
-                            transition={{duration: 0.5, delay: index * 0.1}}
-                            viewport={{once: true}}
-                        >
-                            <div className="flex items-center space-x-3 sm:space-x-4">
-                <span
-                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
-          bg-[#800000] text-white dark:bg-[#800000] dark:text-white font-bold rounded-full text-sm sm:text-lg
-          transition-transform duration-500"
-                >
-                  {index + 1}
-                </span>
-                                <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
-                            </div>
-                        </motion.div>
+        <>
+        <div className="flex flex-wrap gap-4 justify-center lg:px-0 mt-8">
+                    <p className="basis-full text-2xl font-poppins text-accn font-semibold">LIBRARY ADVISORY COMMITTEE
+                        MEMBERS</p>
+                    {advisors.map((adv, i) => (
+                        <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drka
+                            bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                            transition-colors duration-300 ease-in`} key={i}>
+                            {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
+                            <p className="text-xl font-poppins">{adv[0]}</p>
+                            {/* Removed cmt.nme reference as it doesn't exist in data */}
+                            <p className="text-lg text-accn dark:text-drka">{adv[1]}</p>
+                        </div>
                     ))}
                 </div>
-            </div>
+        </>
         )
     }
 
