@@ -67,31 +67,6 @@ const Programmes = (toggle, theme) => {
             ]
         },
         {
-            type: 'Science and Humanities',
-            values: [
-                {
-                    name: 'Chemistry',
-                    lnk: '/dept/003'
-                },
-                {
-                    name: 'English',
-                    lnk: '/dept/010'
-                },
-                {
-                    name: 'Mathematics',
-                    lnk: '/dept/012'
-                },
-                {
-                    name: 'Physics',
-                    lnk: '/dept/015'
-                },
-                {
-                    name: 'Tamil',
-                    lnk: '/dept/014'
-                },
-            ]
-        },
-        {
             type: 'PG Courses',
             values: [
                 {

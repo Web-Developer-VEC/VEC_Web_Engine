@@ -321,25 +321,6 @@
   }
 }
 
-.faculty-timeline-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  touch-action: pan-y;
-}
-
-.faculty-timeline-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  /*color: #1f2937;*/
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
 .faculty-title-icon {
   width: 1.5rem;
@@ -554,10 +535,15 @@
 /* Experience Section */
 .faculty-experience-container {
   display: flex;
+  width: 102%;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
+
+
 
 .faculty-experience-head-container{
   /* border: 1px solid #fdcc03; */
@@ -565,6 +551,30 @@
 }
 
 .faculty-experience-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /*color: #1f2937;*/
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  gap: 0.5rem;
+}
+
+
+
+.faculty-timeline-container {
+  width: 74%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+} 
+
+.faculty-timeline-title {
   font-size: 1.5rem;
   font-weight: 700;
   /*color: #1f2937;*/
