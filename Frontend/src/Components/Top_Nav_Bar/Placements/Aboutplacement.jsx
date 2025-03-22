@@ -44,7 +44,9 @@ if (!isOnline) {
           <div className="AP-card">
             <h2 className="AP-card-title">Training & Placement Department</h2>
             <p className="AP-card-text">
-              Our faculties are true professionals who have the capacity to raise incisive, difficult, and sometimes uncomfortable questions that become potential GAME CHANGER. Our Faculty members consider teaching and training of new generation of graduate students as their highest calling.
+            The  Training & Placement Department is committed to bridging the gap between academic learning and industry expectations. Our primary objective is to equip students with the right skills and opportunities to secure engineering jobs and pursue higher education globally. <br />
+            Training is seamlessly integrated into the curriculum from the second year onwards, ensuring a structured and progressive learning experience. Our program focuses on technical expertise, equipping students with industry-relevant engineering skills, soft skills and communication, fostering professionalism and leadership, and foreign languages, enhancing global career prospects. This holistic approach prepares students to excel in both placements and higher education opportunities. <br />
+            Our industry-aligned methodology includes expert-led sessions, real-world projects, mock interviews, and technical assessments. More than 300+ reputed National and Multinational companies visit our institution for campus recruitment annually. As a result, our graduates consistently secure top placements in reputed engineering firms and excel in competitive exams for higher studies.
             </p>
           </div>
         </section>
@@ -68,10 +70,10 @@ if (!isOnline) {
             {/*Contact Section */}
             <section className="AP-grid-CPC">
               <div className="AP-card">
-                <h2 className="AP-card-title">Contact Placement Cell</h2>
-                <h3 className="AP-contact-name ">Head of Placement and Training</h3>
-                <p><strong>✉️Email:</strong> placement@velammal.edu.in</p>
-                <p><strong>📞Phone:</strong> 9940127839 / 9444008233</p>
+                <h2 className="AP-card-title">Contact Placement Cell</h2> <br />
+                <h3 className="AP-contact-name ">Head of Placement and Training</h3> <br />
+                <p><strong>✉️Email:</strong><a href="mailto: placement@velammal.edu.in" className="text-black"> placement@velammal.edu.in</a></p> <br />
+                <p><strong>📞Phone:</strong> <a href="tel:9940127839" className="text-black">9940127839</a> / <a href="tel:9444008233" className="text-black">9444008233</a></p>
               </div>
             </section>
         </section>

@@ -15,10 +15,13 @@ const UrlParser = (path) => {
 const IQAC = () => {
     const [selectedYear, setSelectedYear] = useState("Objectives");
     const [selectedAction, setSelectedAction] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState("OVERALL");
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [gal, setGal] = useState("All");
-    const [iqa, setIqa] = useState("Objectives")
+    const [iqa, setIqa] = useState("Objectives");
+    const [showethpdf, setShowethpdf] = useState(false);
+    const [showisopdf, setshowisopdf] = useState(false);
     const navData = {
         "Objectives": <IqaObj/>,
         "Coordinators": <IqaCor/>,
@@ -225,8 +228,8 @@ const IQAC = () => {
                             <h3 className="coordinator-name">{coordinator.name}</h3>
                             <p className="coordinator-designation">{coordinator.designation}</p>
                             <p className="coordinator-role">{coordinator.keyRole}</p>
-                            <p className="coordinator-email">Email: {coordinator.email}</p>
-                            <p className="coordinator-phone">Phone: {coordinator.phone}</p>
+                            <p className="coordinator-email">Email: <a href={`mailto:${coordinator.email}`} className="text-black">{coordinator.email}</a></p>
+                            <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-black">{coordinator.phone}</a></p>
                         </div>
                     </div>
                 )}
@@ -236,22 +239,43 @@ const IQAC = () => {
 
     // Render Gallery content
     const renderGalleryContent = () => {
+
+        const galleryData = iqacData?.gallery;
+    
+        const categories = Object.keys(galleryData);
+    
         return (
             <div className="mr-4">
                 <h2 className="text-2xl text-center my-4">Gallery</h2>
+                
+                {/* Category Buttons */}
                 <div className="flex gap-2 justify-center mb-4">
-                    {["All", "fir", "sec", "thd"].map((item, index) => (
-                        <button className="bg-secd px-4 text-lg font-semibold rounded-lg" type={"button"}
-                        onClick={() => setGal(item)}>{item}</button>
+                    {categories.map((category) => (
+                        <button
+                            key={category}
+                            className={`bg-secd px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
+                            type="button"
+                            onClick={() => setSelectedCategory(category)}
+                        >
+                            {category}
+                        </button>
                     ))}
                 </div>
+    
+                {/* Image Gallery */}
                 <div className="columns-xs mb-12">
-                    {[["/aboutvec1.jpg", "fir"], ["/aboutvec2.jpg", "fir"], ["/aboutvec3.jpg", "sec"], ["/astronet.jpg", "thd"], ["/ceo.jpg", "fir"], ["/deputy-ceo.jpg", "sec"], ["/YRC_I1.jpg", "sec"], ["nssphoto6.jpg", "thd"], ["/chairman.jpg", "thd"]].map((item, index) => (
-                        <img src={item[0]} alt={item.caption}
-                             className={`size-0 block box-border m-2 
-                             ${item[1] === gal || gal === "All"? 'animate-[fadBorn_1s_ease_forwards]'
-                                 : 'animate-[fadKill_1s_ease_forwards]'}`}
-                        style={{animationDelay: `${100 * index}ms`}}/>
+                    {galleryData[selectedCategory].map((imagePath, index) => (
+                        <img
+                            key={imagePath}
+                            src={UrlParser(imagePath)}
+                            alt={`Gallery Image ${index + 1}`}
+                            className={`size-0 block box-border m-2 ${
+                                selectedCategory === "OVERALL" || galleryData[selectedCategory].includes(imagePath)
+                                    ? "animate-[fadBorn_1s_ease_forwards]"
+                                    : "animate-[fadKill_1s_ease_forwards]"
+                            }`}
+                            style={{ animationDelay: `${100 * index}ms` }}
+                        />
                     ))}
                 </div>
             </div>
@@ -266,16 +290,6 @@ const IQAC = () => {
         return renderCoordinatorContent();
     }
 
-    //         {selectedYear === "Other Stuffs" &&
-    //             otherStuffsArray.map((action, index) => (
-    //                 <div key={index}
-    //                      className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-    //                      onClick={() => openPdf("Other Stuffs", action.year)}>
-    //                     {action.year}
-    //                 </div>
-    //             ))}
-    //     </div>
-    // )}
     function IqaMem() {
         return (
             <div className="members-grid">
@@ -288,7 +302,6 @@ const IQAC = () => {
                         <p>{member.keyRole}</p>
                     </div>
                 ))}
-                {IqaPdf()}
             </div>
         );
     }
@@ -298,14 +311,13 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center text-xl my-4 gap-8">
                 <h2 className={"basis-full text-center text-2xl"}>Minutes of Meetings</h2>
                 {minutesOfMeetingsArray.map((action, index) => (
-                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                          className="hover:underline hover:text-text dark:hover:text-drkt"
                          // onClick={() => openPdf("Minutes of Meetings", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
                     </a>
                 ))}
-                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -315,14 +327,13 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
                 <h2 className={"basis-full text-center text-2xl"}>Academic and Administrative Audit</h2>
                 {academicAdminAuditArray.map((action, index) => (
-                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                          className="hover:underline hover:text-text dark:hover:text-drkt"
                          // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
                     </a>
                 ))}
-                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -336,14 +347,13 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
                 <h2 className={"basis-full text-center text-2xl"}>Strategic development plan</h2>
                 {strategicPlanArray.map((action, index) => (
-                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
                     </a>
                 ))}
-                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -353,14 +363,13 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
                 <h2 className={"basis-full text-center text-2xl"}>Best Practices</h2>
                 {bestPracticesArray.map((action, index) => (
-                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
                     </a>
                 ))}
-                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -370,10 +379,12 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center my-4">
                 <div
                     className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                    onClick={() => openPdf("Code of Ethics", "Code of Ethics")}>
+                    onClick={() => {openPdf("Code of Ethics", "Code of Ethics"); setShowethpdf(true)}}>
                     Code of Ethics
                 </div>
-                {IqaPdf()}
+                {showethpdf && (
+                    IqaPdf()
+                )}
             </div>
         );
     }
@@ -383,14 +394,13 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
                 <h2 className={"basis-full text-center text-2xl"}>AQAR</h2>
                 {aqarArray.map((action, index) => (
-                    <a key={index} href={action.path} target="_blank" rel="noopener noreferrer"
+                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
                     </a>
                 ))}
-                {/*{IqaPdf()}*/}
             </div>
         );
     }
@@ -400,10 +410,12 @@ const IQAC = () => {
             <div className="flex flex-wrap justify-center my-4">
                 <div
                     className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                    onClick={() => openPdf("ISO Certificate", "ISO Certificate")}>
+                    onClick={() => {openPdf("ISO Certificate", "ISO Certificate"); setshowisopdf(true)}}>
                     ISO Certificate
                 </div>
-                {IqaPdf()}
+                {showisopdf && (
+                    IqaPdf()
+                )}
             </div>
         );
     }
@@ -421,7 +433,7 @@ const IQAC = () => {
                         <h3 className="text-center">{`Viewing: ${selectedAction.year}`}</h3>
                         <embed
                             className="embed"
-                            src={
+                            src={UrlParser(
                                 (selectedAction.category === "Events Organized"
                                         ? eventsOrganizedArray.find((item) => item.year === selectedAction.year)?.path
                                         : selectedAction.category === "Policy"
@@ -441,7 +453,7 @@ const IQAC = () => {
                                                                     : selectedAction.category === "ISO Certificate"
                                                                         ? iqacData?.isoCertificate?.path
                                                                         : otherStuffsArray.find((item) => item.year === selectedAction.year)?.path
-                                ) + "#toolbar=0"
+                                )) + "#toolbar=0"
                             }
                             type="application/pdf"
                             width="100%"
@@ -461,30 +473,6 @@ const IQAC = () => {
                 subHeaderText="IQAC"
             />
             <div className="">
-                {/*<div className="iqac-years">*/}
-                {/*    {[*/}
-                {/*        "Objectives",*/}
-                {/*        "Coordinator",*/}
-                {/*        "Members",*/}
-                {/*        "Minutes of Meetings",*/}
-                {/*        "Academic and Administrative Audit",*/}
-                {/*        "Gallery",*/}
-                {/*        "Strategic Development Plan",*/}
-                {/*        "Best Practices",*/}
-                {/*        "Code of Ethics",*/}
-                {/*        "AQAR",*/}
-                {/*        "ISO Certificate",*/}
-                {/*    ].map((category) => (*/}
-                {/*        <button*/}
-                {/*            key={category}*/}
-                {/*            className={`iqac-year-button ${selectedYear === category ? "active bg-accn dark:bg-drka text-prim"*/}
-                {/*                : "bg-secd dark:bg-drks text-[2px]"}`}*/}
-                {/*            onClick={() => handleYearClick(category)}*/}
-                {/*        >*/}
-                {/*            {category}*/}
-                {/*        </button>*/}
-                {/*    ))}*/}
-                {/*</div>*/}
 
                 <SideNav sts={iqa} setSts={setIqa} navData={navData} cls={""}/>
             </div>

@@ -57,7 +57,7 @@ const NBA_F = () => {
           <table className="department-table">
             <thead>
               <tr>
-                <th>S.no</th>
+                <th>s.no</th>
                 <th>Programs</th>
                 <th>Validity Years</th>
               </tr>

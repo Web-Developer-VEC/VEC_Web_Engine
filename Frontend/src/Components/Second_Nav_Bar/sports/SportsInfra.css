@@ -787,11 +787,66 @@ a:hover {
   img {
     height: 60vh;
   }
-
-  .sports_description {
+  .sports-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .sports-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+  }
+  
+  .sports-item {
+    flex: 1;
+    min-width: 45%;
+    max-width: 48%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .sports-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .sport-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sport-img:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7); /* Dark shadow on hover */
+  }  
+  .sports-title {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .sports-description {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  
+  /* .sports_description {
     font-size: 1.25rem;
     margin: 1rem 0 0 0;
-  }
+  } */
 
   .previous,
 .next {

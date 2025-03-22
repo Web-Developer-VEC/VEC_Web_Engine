@@ -234,9 +234,9 @@ const Incub = () => {
     }
 
     function CubApy() {
-        window.location.href = "https://forms.google.com/your-form-link";
+        window.open("https://forms.google.com/your-form-link", "_blank");
         return null;
-    }
+    }    
 
     return (
         <>

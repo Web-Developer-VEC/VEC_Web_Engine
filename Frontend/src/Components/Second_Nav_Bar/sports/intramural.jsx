@@ -52,7 +52,7 @@ const Intramural = ({ data }) => {
   return (
     <div className="relative w-full max-w-4xl mx-auto mb-10 mt-10">
       <h2 className="text-center text-accn text-4xl font-bold mb-4">
-      Intramural Achievements
+      Intramural Achievements {data?.year}
       </h2>
 
       {achievements.length > 0 ? (

@@ -19,7 +19,7 @@ const Sportsfaculties = ({ data }) => {
             name={name}
             photo={data?.image_path[index]} // Use the fetched image paths
             Designation={data?.designation[index]}
-            Qualification={data?.qualification[index]}
+            qualification={data?.qualification[index]}
           />
         ))}
       </div>
@@ -27,21 +27,18 @@ const Sportsfaculties = ({ data }) => {
   );
 };
 
-
-  
-
-
-const SportsHOD = () => {
+const SportsHOD = ( { data } ) => {
   return (
     <article className='SportsHOD-container'>
       <div className='Sports-HOD'>
          <img src={Banyan}alt="Sports hod" />
       </div>
       <div className='SportsHOD-details'>
-        <h2 className='SportsHODName'>Sports HOD NAME</h2> 
-        <h2 className='SportsHODDes'>designation</h2>
+        <h2 className='SportsHODName'>{data?.name}</h2>
+        <p>{data?.qualification}</p> 
+        <h2 className='SportsHODDes'>{data?.designation}</h2>
         <p className='SportsHODmessage'>
-          Sports play an important role in every human being's day-to-day life and bring people together irrespective of their age, gender, and nationality. Our department of physical education is marching towards fulfilling CEO Sir Vision as a reality. Young achievers in various sports have won prizes and medals at various state, national, and international level events. Our goal is to increase the participation of our teams in various competitions and win medals and bring laurels to the college and the country.
+          {data?.message}
         </p>
       </div>
     </article>

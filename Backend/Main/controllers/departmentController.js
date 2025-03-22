@@ -87,7 +87,7 @@ async function getNewsLetters(req, res) {
     const collection = db.collection('news_letter');
 
     try {
-        const result = await collection.findOne({ dept_id: "001" });
+        const result = await collection.findOne({ dept_id: deptId });
 
         if (result) {
             return res.status(200).json(result);

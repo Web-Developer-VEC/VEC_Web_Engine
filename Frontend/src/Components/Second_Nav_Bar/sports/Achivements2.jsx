@@ -8,8 +8,10 @@ import WinnerSlider from "./winners_sld";
 import Achievements from "./achivements";
 import Others from "./others";
 
-const Achievements1 = ({ data }) => {
+const Achievements1 = ({ zonaltable , zonewinner , interzone , others , coordinator }) => {
   const [showZone, setShowZone] = useState("");
+  console.log("zonal table",zonaltable);
+  
 
   const settings = {
     dots: true,
@@ -95,11 +97,11 @@ const Achievements1 = ({ data }) => {
   return (
     <>
       <div className={`${styles.achievementsContainer}`}>
-        <h2 className={styles.sportscoordinator}>Anna University Zone {data?.zone}</h2>
-        <p className={styles.coordinatordes}>Co-ordinating Centre {data?.year}</p>
+        <h2 className={styles.sportscoordinator}>Anna University Zone {coordinator?.zone}</h2>
+        <p className={styles.coordinatordes}>Co-ordinating Centre {coordinator?.year}</p>
 
         <Slider {...settings} className=" [&_.slick-prev]:text-xs [&_.slick-next]:text-xs [&_.slick-prev]:w-6 [&_.slick-next]:w-6">
-          {data?.image?.map((item) => (
+          {coordinator?.image?.map((item) => (
             <div key={item.id} className={styles.slide}>
               <img src={UrlParser(item)} alt="Achievement" className={styles.image} />
             </div>
@@ -132,16 +134,16 @@ const Achievements1 = ({ data }) => {
 
       {showZone === "zone" ? (
         <div className="sport-zone-container mb-10">
-          <ZonalResults data={winner} />
-          <WinnerSlider data={slide} />
+          <ZonalResults data={zonaltable} />
+          <WinnerSlider data={zonewinner} />
         </div>
       ) : showZone === "interzone" ? (
         <div className="sport-zone-container mb-10">
-          <Achievements data={slide} />
+          <Achievements data={interzone} />
         </div>
       ) : showZone === "others" ? (
         <div className="sport-zone-container mb-10">
-          <Others data={slide} />
+          <Others data={others} />
         </div>
       ) : null}
     </>

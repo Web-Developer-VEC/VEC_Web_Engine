@@ -221,6 +221,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.gallery-selected{
+  background-color: #830000;
+}
+
 @keyframes slide-in {
   from {
     transform: translateX(-100%);
