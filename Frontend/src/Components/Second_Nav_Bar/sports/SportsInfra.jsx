@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./SportsInfra.css";
 
 const SportsInfra = () => {
@@ -22,7 +22,7 @@ const SportsInfra = () => {
       imageUrl: "/sports/indoorstadium2.png",
     },
     {
-      title: "WILMA RUDOLPH VOLLEY BALL COURT",
+      title: "WILMA RUDOLPH VOLLEYBALL COURT",
       description:
         "The Volleyball Court at Wilma Rudolph Indoor Stadium is the perfect setting for exciting matches and tournaments. Whether you're a beginner or a pro, this court is designed to elevate your game.",
       imageUrl: "/sports/volleyball.png",
@@ -52,126 +52,29 @@ const SportsInfra = () => {
       imageUrl: "/sports/ladiesgym.png",
     },
   ];
-  
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animate, setAnimate] = useState(false);
-
-  const showNextItem = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex < items.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
-  const showPreviousItem = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : items.length - 1
-    );
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 37) {
-      showPreviousItem();
-    } else if (e.keyCode === 39) {
-      showNextItem();
-    }
-  };
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight; // scroll position + viewport height
-    if (scrollPosition >= window.innerHeight * 1.1) {
-      // Trigger animation when scrolling to 110vh
-      setAnimate(true);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <div>
-      <main className={`intro1-section ${animate ? "animate" : ""}`}>
-        <div className="container1">
-          <div className="grid1">
-            <div className="column-xs-12">
-              <ul className="slider">
-                {items.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`slider-item ${
-                      index === activeIndex ? "active" : ""
-                    }`}
-                  >
-                    <div className="grid1 vertical">
-                      <div className="column-xs-12 column-md-2 hide-mobile">
-                        <div className="intro1">
-                          <a href="#">
-                            <h1 className="title">
-                              <span className="underline">{item.title}</span>
-                            </h1>
-                          </a>
-                        </div>
-                      </div>
-                      <div className="column-xs-12 column-md-10">
-                        <div className="image-holder">
-                          <img className="sport_img" src={item.imageUrl} alt={item.title} />
-                        </div>
-                        <div className="grid1">
-                          <div className="column-xs-12 column-md-9">
-                            <div className="intro1 show-mobile">
-                              <a href="#">
-                                <h1 className="title">
-                                  <span className="underline">
-                                    {item.title}
-                                  </span>
-                                </h1>
-                              </a>
-                            </div>
-                            <p className="sports_description">{item.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="grid1">
-                <div className="column-xs-12">
-                  <div className="controls">
-                    <div className="indicator">
-                    <button className="previous" onClick={showPreviousItem}>
-                      <span className="visually-hidden">Previous</span>
-                      <span
-                        className="icon arrow-left"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    </div>
-                    <div className="indicator">
-                    <button className="next" onClick={showNextItem}>
-                      <span className="visually-hidden">Next</span>
-                      <span
-                        className="icon arrow-right"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className="sports-container">
+      {items.map((item, index) => (
+        index % 2 === 0 ? (
+          <div key={index} className="sports-row">
+            <div className="sports-item">
+              <img className="sport-img" src={item.imageUrl} alt={item.title} />
+              <h2 className="sports-title">{item.title}</h2>
+              <p className="sports-description">{item.description}</p>
             </div>
+            {index + 1 < items.length && (
+              <div className="sports-item">
+                <img className="sport-img" src={items[index + 1].imageUrl} alt={items[index + 1].title} />
+                <h2 className="sports-title">{items[index + 1].title}</h2>
+                <p className="sports-description">{items[index + 1].description}</p>
+              </div>
+            )}
           </div>
-        </div>
-      </main>
+        ) : null
+      ))}
     </div>
   );
 };
 
-export default SportsInfra;
+export default SportsInfra

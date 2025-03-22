@@ -16,6 +16,12 @@ const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
@@ -90,7 +96,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: UrlParser("static/pdfs/academic_calendar.pdf"), openInNewTab: true, },
               ],
         },
         {

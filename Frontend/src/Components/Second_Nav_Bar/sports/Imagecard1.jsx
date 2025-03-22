@@ -10,7 +10,7 @@ const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
-const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid}) => (
+const ImageCard = ({ name, photo, Designation , qualification , firstTile }) => (
 
   <>
   <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
@@ -19,6 +19,7 @@ const ImageCard = ({ name, photo, Designation, Scholar, Research, Orchid, Publon
     <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
       <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
+      <p>{qualification}</p>
       <p>{Designation}</p>
     </div>
   </div>

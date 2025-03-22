@@ -127,6 +127,8 @@ const Sidebar = (props) => {
                                                 <h3 className="text-sm font-semibold text-gray-200 my-1">{sub.ttl}</h3>
                                             ) : (
                                                 <Link to={sub.lnk}
+                                                  target="_blank"           
+                                                    rel="noopener noreferrer"
                                                       className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
                                                       onClick={() => {
                                                           setIsOpen(false);
@@ -182,7 +184,7 @@ const Sidebar = (props) => {
                                 key={index}
                                 onClick={() => {
                                     if (item.lnk.startsWith("http")) {
-                                        window.location.href = item.lnk;  // Open external link
+                                        window.open(item.lnk, "_blank");  
                                     } else {
                                         navigate(item.lnk);  // Navigate internally
                                     }

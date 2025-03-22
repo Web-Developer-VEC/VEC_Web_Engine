@@ -75,8 +75,8 @@ if (!isOnline) {
               <p>
             <span className="ml-[8px]">
                   (Visit{" "}
-                  <a href="https://www.annauniv.edu/research">
-                    https://www.annauniv.edu/research
+                  <a href="https://cfr.annauniv.edu/research/academics/index.php" target="_blank">
+                  https://cfr.annauniv.edu/research/academics/index.php
                   </a>
                   )
                 </span>

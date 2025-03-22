@@ -5,26 +5,12 @@ import axios from "axios";
 import star from "../Assets/championship.gif";
 
 const Alumni = ({ theme, toggle }) => {
-  // Sample data for the flipbook (replace with actual data source in production)
-  const data = [
-    {
-      alumni: {
-        department_name: "Computer Science",
-        students: [
-          { name: "John Doe", photo: "/alumni.jpeg" },
-          { name: "Jane Smith", photo: "/alumni.jpeg" },
-        ],
-      },
-    },
-    {
-      alumni: {
-        department_name: "Electrical Engineering",
-        students: [
-          { name: "Alice Brown", photo: "https://preview.redd.it/what-makes-madara-uchiha-such-a-good-character-when-it-v0-316dlixm4tgc1.jpeg?auto=webp&s=b7df787f155166613508760fc26ed8544a4c35aa" },
-        ],
-      },
-    },
-  ];
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   // State for flipbook functionality
   const [currentPage, setCurrentPage] = useState(0);
@@ -32,6 +18,9 @@ const Alumni = ({ theme, toggle }) => {
   const [flipDirection, setFlipDirection] = useState("");
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
+  const [alumniData, setAlumniData] = useState(null);
+  console.log('Alumni',alumniData?.alumni_image_path);
+  
   
   const content = spcannouncements[0]?.list_of_contents || [];
   const links = spcannouncements[0]?.list_of_links || [];
@@ -48,19 +37,30 @@ const Alumni = ({ theme, toggle }) => {
     fetchData();
 }, []);
 
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/alumni');
+      setAlumniData(response.data[0]);
+    } catch (error) {
+      console.error("Error fetching alumni data",error);
+    }
+  }
+  fetchData();
+})
+
 const handleNext = useCallback(() => {
-  if (!isFlipping && currentPage < data.length - 1) {
+  if (!isFlipping && currentPage < alumniData?.alumni_image_path.length - 1) {
     setIsFlipping(true);
     setFlipDirection("right");
 
     setTimeout(() => {
       setCurrentPage((prev) => prev + 1);
-      setCurrentIndex(0);
-      setFlipDirection("");  // Reset flip direction after flipping
+      setFlipDirection(""); // Reset flip direction
       setIsFlipping(false);
-    }, 500); // Matches CSS transition duration
+    }, 500); // Match CSS transition duration
   }
-}, [isFlipping, currentPage, data.length]);
+}, [isFlipping, currentPage, alumniData?.alumni_image_path.length]);
 
 const handlePrev = useCallback(() => {
   if (!isFlipping && currentPage > 0) {
@@ -69,20 +69,17 @@ const handlePrev = useCallback(() => {
 
     setTimeout(() => {
       setCurrentPage((prev) => prev - 1);
-      setCurrentIndex(0);  // Reset index to first student
-      setFlipDirection(""); // Reset animation
+      setFlipDirection(""); // Reset flip direction
       setIsFlipping(false);
-    }, 500); // Matches CSS transition duration
+    }, 500); // Match CSS transition duration
   }
 }, [isFlipping, currentPage]);
 
-  // Auto-scroll every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [handleNext]);
+// Auto-scroll every 3 seconds
+useEffect(() => {
+  const interval = setInterval(handleNext, 3000);
+  return () => clearInterval(interval);
+}, [handleNext]);
 
   return (
     <div>
@@ -113,19 +110,17 @@ const handlePrev = useCallback(() => {
                     flipDirection === "right" ? "flip-right" : ""
                   } ${flipDirection === "left" ? "flip-left" : ""}`}
                 >
-                  {data.length > 0 && (
-                    <div>
-                      {/* <h2>{data[currentPage].alumni.department_name}</h2> */}
-                      <img
-                        src="/alumni.jpeg"
-                        alt={data[currentPage].alumni.students[currentIndex].name}
-                        className="image"
-                      />
-                    </div>
+                  {alumniData?.alumni_image_path.length > 0 && (
+                    <img
+                      src={UrlParser(alumniData?.alumni_image_path[currentPage])}
+                      alt={`Alumni ${currentPage + 1}`}
+                      className="image"
+                    />
                   )}
                 </div>
               </div>
 
+              {/* Navigation Controls */}
               <div className="controls">
                 <button
                   onClick={handlePrev}
@@ -136,7 +131,7 @@ const handlePrev = useCallback(() => {
                 </button>
                 <button
                   onClick={handleNext}
-                  disabled={currentPage === data.length - 1 || isFlipping}
+                  disabled={currentPage === alumniData?.alumni_image_path.length - 1 || isFlipping}
                   className="button"
                 >
                   ›

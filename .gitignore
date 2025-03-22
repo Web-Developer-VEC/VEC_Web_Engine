@@ -30,3 +30,5 @@ yarn-error.log*
 .env.development
 .env.production
 secret.py
+
+/__pycache__

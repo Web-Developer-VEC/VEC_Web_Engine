@@ -40,7 +40,7 @@ const facilities = [
   },
   { 
     name: "Solar Power", 
-    content: "Eco-friendly solar panels that contribute to renewable energy solutions, reducing the campus's carbon footprint.",
+    content: "Based on the various measures taken by both state and central Govt policies as a promotional measure of enhancing the installed capacity of the Solar Power plants across T.N. M/s. Velammal Educational trust established a 10 MW Solar P.N power plant at Manjalkudi Village TiruppuvanamTaluk, Sivagangai District. The plant was commissioned on 19.03.2019",
     images: ["/images/solar1.jpg", "/images/solar2.jpg", "/images/solar3.jpg", "/images/solar4.jpg", "/images/solar5.jpg"]
   },
   { 
@@ -65,17 +65,17 @@ const facilities = [
   },
   { 
     name: "Faculty Accommodation", 
-    content: "Velammal Engineering College has faculty quarters with 16 single-bedroom houses and 16 two-bedroom houses, providing comfortable and convenient housing for faculty members. These quarters are well-maintained and provide a peaceful comfortable living environment, allowing faculty to reside on campus while focusing on their job. The setup allows faculty to easily access the college's resources and engage in campus events.",
+    content: "Velammal Engineering College has faculty quarters with 16 single-bedroom houses and 16 two-bedroom houses, providing comfortable and convenient housing for faculty members. Thesequarters are well-maintained and provide a peaceful comfortable living environment, allowing faculty to reside on campus while focusing on their job. The setup allows faculty to easily access the college's resources and engage in campus events.",
     images: ["/images/quarters1.jpg", "/images/quarters2.jpg", "/images/quarters3.jpg", "/images/quarters4.jpg", "/images/quarters5.jpg"]
   },
   { 
     name: "Spacious Food Canteen", 
-    content: "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
+    content: "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
     images: ["/images/canteen1.jpg", "/images/canteen2.jpg", "/images/canteen3.jpg", "/images/canteen4.jpg", "/images/canteen5.jpg"]
   },
   { 
     name: "Fire Extinguisher", 
-    content: "AVelammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
+    content: "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
     images: ["/images/fire1.jpg", "/images/fire2.jpg", "/images/fire3.jpg", "/images/fire4.jpg", "/images/fire5.jpg"]
   },
   { 
@@ -85,7 +85,7 @@ const facilities = [
   },
   { 
     name: "Surveillance & Security", 
-    content: "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently.Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
+    content: "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
     images: ["/images/security1.jpg", "/images/security2.jpg", "/images/security3.jpg", "/images/security4.jpg", "/images/security5.jpg"]
   },
   { 
