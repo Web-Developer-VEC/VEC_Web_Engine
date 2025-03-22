@@ -15,17 +15,19 @@ import {
 import "./RD.css";
 import Conference from "./Conference";
 import LoadComp from "../../../LoadComp";
+import { useParams } from "react-router-dom";
 
 const Research = ({ data }) => {
   const [selectedYear, setSelectedYear] = useState("2022-23");
   const [yearData, setYearData] = useState(null);
   const [selectedAction, setSelectedAction] = useState(null);
   const [selectedActionData, setSelectedActionData] = useState(null);
+  const { deptID } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/001/research/${selectedYear}`);
+        const response = await axios.get(`/api/${deptID}/research/${selectedYear}`);
         setYearData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -35,7 +37,8 @@ const Research = ({ data }) => {
   }, [selectedYear]);
 
   // Extracting years
-  const years = data?.data?.data?.map((entry) => entry.year);
+  const years = data?.data?.map((entry) => entry.year);
+  
 
   // Extract available actions
   const availableActions = yearData
@@ -77,7 +80,7 @@ const Research = ({ data }) => {
 
   return (
     <>
-    {years?.length > 0 ? (
+    {data?.data ? (
       <div className="Rd-page">
         <div className="RD-intro">
           <h1 className="RD-header bg-gradient-to-r

@@ -7,7 +7,7 @@ async function getVisionMission(req, res) {
     const collection = db.collection('vision_and_mission');
 
     try {
-        const result = await collection.findOne({ department_id: departmentId });
+        const result = await collection.findOne({ dept_id: departmentId });
         if (result) {
             return res.json(result);
         } else {
@@ -200,7 +200,7 @@ async function getMou(req, res) {
 
     try {
         const departmentData = await collection.findOne({
-            Departments: deptId       //remove the VEC array for new push
+            dept_id: deptId       
         });
 
         if (!departmentData) {
@@ -230,11 +230,11 @@ async function getRDyear(req, res) {
         // Fetch the document for the department
         const result = await collection.findOne({ dept_id: deptId });
 
-        if (!result || !result.data || !result.data.data) {
+        if (!result || !result.data ) {
             return res.status(404).json({ message: 'No research data found for the given department' });
         }
         
-        const yearData = result.data.data.find(entry => entry.year === year);
+        const yearData = result.data.find(entry => entry.year === year);
 
         if (!yearData) {
             return res.status(404).json({ message: 'No research data found for the given year' });
@@ -251,7 +251,7 @@ async function getRD(req, res) {
     const { deptId } = req.params;
 
     if (!deptId) {
-        return res.status(400).json({ error: 'Both dept_id required' });
+        return res.status(400).json({ error: 'dept_id required' });
     }
 
     const db = getDb();
@@ -261,7 +261,7 @@ async function getRD(req, res) {
         // Fetch the document for the department
         const result = await collection.findOne({ dept_id: deptId });
 
-        if (!result || !result.data || !result.data.data) {
+        if (!result || !result.data ) {
             return res.status(404).json({ message: 'No research data found for the given department' });
         }
         res.status(200).json(result);
@@ -285,7 +285,7 @@ async function getslidebar (req, res) {
 
     try {
         // Find the document that matches the given deptid
-        const departmentData = await collection.findOne({ deptId: deptid });
+        const departmentData = await collection.findOne({ dept_id: deptid });
 
         // Check if the department exists
         if (!departmentData) {
