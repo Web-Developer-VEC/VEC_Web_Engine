@@ -159,17 +159,17 @@ const DepartmentPage = ({ theme, toggle }) => {
     }
   };
 
-  if (!availableSections.length) return <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+  if (!availableSections.length) return <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
       <LoadComp txt={""}/>
     </div>
-  if (!isOnline) return <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+  if (!isOnline) return <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
       <LoadComp txt={"You are offline. Please check your internet connection."}/>
     </div>
 
   return (
     <div className={styles.main}>
       {loading && (
-        <div className={styles.loadingscreen + " grid grid-cols-1 place-content-center top-14 h-screen"}>
+        <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
           <LoadComp />
         </div>
       )}

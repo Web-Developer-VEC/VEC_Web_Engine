@@ -33,9 +33,12 @@ const SportsHOD = ( { data } ) => {
       <div className='Sports-HOD'>
          <img src={Banyan}alt="Sports hod" />
       </div>
+      <br />
       <div className='SportsHOD-details'>
-        <h2 className='SportsHODName'>{data?.name}</h2>
-        <p>{data?.qualification}</p> 
+       <div className='SportsHODNameAndqualification'>
+       <h2 className='SportsHODName'>{data?.name}  {data?.qualification}</h2>
+       </div>
+        
         <h2 className='SportsHODDes'>{data?.designation}</h2>
         <p className='SportsHODmessage'>
           {data?.message}

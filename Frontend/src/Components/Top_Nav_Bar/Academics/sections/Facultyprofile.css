@@ -535,44 +535,55 @@
 /* Experience Section */
 .faculty-experience-container {
   display: flex;
-  width: 102%;
+  width: 1200px;
+  margin: 0 auto;
   position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
 }
-
-
-
 .faculty-experience-head-container{
-  /* border: 1px solid #fdcc03; */
-  width: 77%;
+ 
+  width: 100%;
 }
-
 .faculty-experience-header {
   font-size: 1.5rem;
   font-weight: 700;
-  /*color: #1f2937;*/
+
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  margin-left: 16px;
   gap: 0.5rem;
 }
 
+.faculty-experience-content{
+  border: 2px solid rgb(253, 204, 3);
+  padding: 30px;
+  width: 1130px;
+  border-radius: 8px;
+  background-color: rgb(242, 242, 242);
+}
 
+.faculty-experience-point{
+  border-left: 3px solid green; 
+  padding-left: 15px;
+  line-height: 36px;
+}
 
+/*timeline section*/
 .faculty-timeline-container {
-  width: 74%;
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
+  width: 1200px;
+  margin: 0 auto;
   flex-direction: column;
   position: relative;
   overflow: hidden;
   touch-action: pan-y;
 } 
+
+.faculty-timeline-table{
+  width:1140px  ;
+}
 
 .faculty-timeline-title {
   font-size: 1.5rem;
@@ -583,6 +594,13 @@
   align-items: center;
   gap: 0.5rem;
 }
+
+.faculty-timeline-title-container{
+  width: 100%;
+}
+
+
+
 
 /* Roadmap Wrapper */
 .faculty-roadmap-wrapper {
@@ -623,6 +641,7 @@
   gap: 50px;
   position: relative;
 }
+
 
 /* Individual Experience Items */
 .faculty-roadmap-item {
@@ -784,7 +803,7 @@
 }
 
 .faculty-tiles-app-content {
-  max-width: 80rem;
+  max-width: 71rem;
   margin: 25px auto;
 }
 
@@ -795,40 +814,69 @@
   margin-bottom: 2rem;
   text-align: center;
 }
-
-.faculty-tiles-app-grid {
-  column-count: 2;
+/* Default styles */
+.faculty-experience-container,
+.faculty-timeline-container {
+  column-count: 1;
   column-gap: 1.5rem;
 }
 
-@media (min-width: 420px) {
-  .faculty-tiles-app-grid {
-    column-count: 1;
-  }
-}
-
-@media (min-width: 768px) {
-  .faculty-tiles-app-grid {
-    column-count: 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  .faculty-tiles-app-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Mobile View */
 @media (max-width: 768px) {
-  .faculty-tiles-app-grid {
+  .faculty-experience-container,
+  .faculty-timeline-container {
     column-count: 1;
     place-items: center;
   }
+}
 
-  .faculty-tiles-app-tile{
-    width: 90vw;
+/* Tablet View */
+@media (min-width: 768px) {
+  .faculty-experience-container,
+  .faculty-timeline-container {
+    max-width: 1140px;
+    column-count: 1;
+    margin: 0 auto;
+    place-items: center;
   }
 }
+
+/* Desktop View */
+@media (min-width: 1024px) {
+  .faculty-experience-container,
+  .faculty-timeline-container {
+    margin: 0 auto;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .faculty-experience-container
+  {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .faculty-experience-content
+   {
+    width: 100%;
+  }
+}
+
+/* Ensure they follow tiles' max-width structure */
+@media (min-width: 768px) {
+  .faculty-experience-container
+ {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .faculty-experience-content
+    {
+    max-width: 100%;
+  }
+}
+
 
 .faculty-tiles-app-tile {
   break-inside: avoid;

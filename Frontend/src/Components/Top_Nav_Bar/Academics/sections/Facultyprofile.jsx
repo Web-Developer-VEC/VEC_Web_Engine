@@ -317,33 +317,41 @@ export const EducationTimeline = ({ data }) => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      <div className='faculty-timeline-title-container'>
       <h2 className="faculty-timeline-title">
         <GraduationCap className="faculty-title-icon"/>
         Education Qualification 
       </h2>
 
+      </div>
+  
+<br />
+      <div className='faculty-timeline-table-container pl-9 pr-10 '>
 
-      <table className="max-w-full border-collapse border-8 border-black rounded-lg overflow-hidden ml-5">
-  <thead>
-    <tr className="bg-brwn dark:bg-gray-900">
-      <th className="border border-gray-300 p-3 text-left text-white">Degree</th>
-      <th className="border border-gray-300 p-3 text-left text-white">Branch</th>
-      <th className="border border-gray-300 p-3 text-left text-white">Year</th>
-      <th className="border border-gray-300 p-3 text-left text-white">Institution</th>
+      <table className="w-[1130px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden">
+  <thead className="border-b-2 border-black bg-red-800 text-white">
+    <tr>
+      <th className="border border-black p-3 text-left">Degree</th>
+      <th className="border border-black p-3 text-left">Branch</th>
+      <th className="border border-black p-3 text-left">Year</th>
+      <th className="border border-black p-3 text-left">Institution</th>
     </tr>
   </thead>
   <tbody>
     {educationalQualifications?.map((education, index) => (
-      <tr key={index} className="hover:bg-gray-100">
-        <td className="border border-gray-300 p-3">{education.DEGREE}</td>
-        <td className="border border-gray-300 p-3">{education.BRANCH}</td>
-        <td className="border border-gray-300 p-3">{education.YEAR}</td>
-        <td className="border border-gray-300 p-3">{education.INSTITUTE}</td>
+      <tr key={index} className="hover:bg-gray-100 border border-black">
+        <td className="border border-black p-3">{education.DEGREE}</td>
+        <td className="border border-black p-3">{education.BRANCH}</td>
+        <td className="border border-black p-3">{education.YEAR}</td>
+        <td className="border border-black p-3">{education.INSTITUTE}</td>
       </tr>
     ))}
   </tbody>
 </table>
-
+      </div>
+ 
+<br />
+<br />
     </div>
   );
 };
@@ -411,41 +419,33 @@ const Experience = ({data}) => {
 
   return (
       <div className="faculty-experience-container">
+      
+        <br />
+
+        <div className='faculty-experience-content'>
         <div className='faculty-experience-head-container'>
           <h2 className="faculty-experience-header">
             <Handshake className="faculty-title-icon"/>
             Experience</h2>
-        </div>
+        </div>  
+       
+          <div className='faculty-experience-point'>
+       
+          {experiences.map((item,index)=>(
+             
+          <p key={index} >{item.DESIGNATION} in {item.INSTITUTION} from {item.From} to {item.TO} ({item.YEARS} year {item.MONTHS} month)</p>
+          ))
+        }
 
 
-        <div className="overflow-x-auto">
-  <table className="max-w-full  border-4 border-black rounded-lg overflow-hidden ml-30 ">
-    <thead className="bg-brwn text-white">
-      <tr>
-        <th className="p-3.5 border">Institution</th>
-        <th className="p-3.5 border">Duration</th>
-        <th className="p-3.5 border">From</th>
-        <th className="p-3.5 border">To</th>
-        <th className="p-3.5 border">Designation</th>
-      </tr>
-    </thead>
-    <tbody>
-      {experiences.map((item, index) => (
-        <tr key={index} className="hover:bg-gray-100">
-          <td className="p-4 border">{item.INSTITUTION}</td>
-          <td className="p-3.5 border">
-            {item.YEARS} years {item.MONTHS} months
-          </td>
-          <td className="p-3.5 border">{item.From}</td>
-          <td className="p-3.5 border">{item.TO}</td>
-          <td className="p-3.5 border">{item.DESIGNATION}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+          </div>
+        
+   </div>
+  
+ 
 </div>
 
-      </div>
+    
   );
 };
 

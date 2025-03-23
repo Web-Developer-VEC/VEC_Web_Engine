@@ -9,6 +9,7 @@
     background-color: rgb(245, 245, 245);
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+   
     
 }
 
@@ -28,6 +29,8 @@
     
 }
 
+
+
 .SportsHOD-details h2 {
     text-align: center;
     font-size: larger;
@@ -44,4 +47,14 @@
 .SportsHODDes{
     font-family: 'Poppins', sans-serif;
     font-style: italic;   
+}
+
+
+.SportsHODNameAndqualification h2 p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+   
 }
