@@ -1,101 +1,135 @@
-.container {
-  margin: auto;
+/* Container */
+.Concontainer {
+  width: 90%;
+  margin: 0 auto;
   padding: 20px;
 }
 
-
-.head{
-  display: flex;
-  justify-content: center;
-}
-
-.head h1{
-  background-color: #800000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  height: 70px;
-  border-radius: 20px;
-  font-size: 20px;
-  color: white;
-  width: fit-content;
+/* Header */
+.head {
+  text-align: center;
   margin-bottom: 20px;
 }
 
+.cards-h1 {
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Cards Grid (Now using FLEX instead of GRID) */
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: flex-start; /* Ensures independent card expansion */
 }
 
-.card.expanded {
-  max-height: 1000px;
-  transition: max-height 0.3s ease-in-out;
-}
-
+/* Individual Card */
 .card {
-  /*background-color: #fff;*/
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  max-height: 400px;
+  word-wrap: break-word;
+  transition: all 0.3s ease-in-out;
+  width: calc(50% - 10px); /* Ensures 2 cards per row */
+  align-self: flex-start; /* Allows cards to expand independently */
 }
 
-.card-entry {
+/* Ensures cards expand properly */
+.card.expanded {
+  height: auto;
+  overflow: visible;
+}
+
+/* Card Head */
+.card-head {
+  text-align: center;
   margin-bottom: 10px;
 }
 
-.card-entry strong {
+.card-title {
+  font-size: 18px;
   font-weight: bold;
-  color: #555;
-}
-
-.card-entry h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
   color: #333;
+  text-transform: uppercase;
 }
 
-.card a {
-  color: #007bff;
-  text-decoration: none;
+/* Card Body */
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.card a:hover {
-  text-decoration: underline;
+/* Key-Value Pairs */
+.card-entry {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
+.card-entry strong {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-entry span {
+  font-size: 14px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+/* Prevents text from breaking layout */
+.details-grid > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+/* View More Button */
 .view-more-btn {
-  display: block;
+  margin-top: auto; /* Keeps button at the bottom */
+  padding: 10px;
   width: 100%;
-  /* background-color: ; */
-  color: #000;
-  background-color: #fdcc03;
+  background-color: #ffc107;
   border: none;
-  padding: 10px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  transition: background 0.3s ease-in-out;
 }
 
 .view-more-btn:hover {
-  color: white;
-  background-color: #800000;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  background-color: #e0a800;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .cards-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column; /* Stacks cards on small screens */
   }
-
-  .card.expanded {
-    grid-column: span 1;
+  .card {
+    width: 100%;
   }
 }
-

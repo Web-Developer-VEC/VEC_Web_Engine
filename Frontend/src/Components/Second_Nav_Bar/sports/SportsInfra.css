@@ -825,13 +825,10 @@ a:hover {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   
   }
   
-  .sport-img:hover {
-    transform: scale(1.05);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7); /* Dark shadow on hover */
-  }  
+
   .sports-title {
     font-size: 1.5rem;
     margin: 10px 0;
