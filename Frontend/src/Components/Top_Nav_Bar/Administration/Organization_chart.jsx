@@ -45,7 +45,7 @@ if (!isOnline) {
 
         <div className="org-chart-container">
           <img
-            src={UrlParser('static/images/orgchart/chart.jpg')} 
+            src={UrlParser('static/images/orgchart/chart.webp')} 
             alt="Organization Chart"
             className="org-chart-image"
           />

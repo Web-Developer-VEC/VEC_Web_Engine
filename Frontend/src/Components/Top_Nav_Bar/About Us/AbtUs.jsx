@@ -81,7 +81,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img1 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec1.jpg')}
+                                src={UrlParser('static/images/aboutvec/aboutvec1.webp')}
                                 alt="Banner Image0"
                                 onLoad={() => handleLoad('img1')}
                             />
@@ -96,7 +96,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec2.jpg')}
+                                src={UrlParser('static/images/aboutvec/aboutvec2.webp')}
                                 alt="Banner Image1"
                                 onLoad={() => handleLoad('img2')}
                             />
@@ -111,7 +111,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img3 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec3.jpg')}
+                                src={UrlParser('static/images/aboutvec/aboutvec3.webp')}
                                 alt="Banner Image2"
                                 onLoad={() => handleLoad('img3')}
                             />

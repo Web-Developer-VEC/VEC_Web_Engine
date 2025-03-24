@@ -2,7 +2,12 @@ import React from 'react';
 import Image from './Imagecard1';
 import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 import '../sports/Sportshod.css';
-import Banyan from '../../Assets/Banyan.jpg';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
 
 const Sportsfaculties = ({ data }) => {
   if (!data || !data.name || !data.image_path || !data.designation || !data.qualification) {
@@ -17,7 +22,7 @@ const Sportsfaculties = ({ data }) => {
           <Image
             key={index}
             name={name}
-            photo={data?.image_path[index]} // Use the fetched image paths
+            photo={UrlParser(data?.image_path[index])} // Use the fetched image paths
             Designation={data?.designation[index]}
             qualification={data?.qualification[index]}
           />
@@ -31,7 +36,7 @@ const SportsHOD = ( { data } ) => {
   return (
     <article className='SportsHOD-container'>
       <div className='Sports-HOD'>
-         <img src={Banyan}alt="Sports hod" />
+         <img src={UrlParser(data?.image_path)}alt="Sports hod" />
       </div>
       <br />
       <div className='SportsHOD-details'>
