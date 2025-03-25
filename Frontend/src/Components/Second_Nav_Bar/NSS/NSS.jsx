@@ -19,9 +19,9 @@ function NSSAwd() {
 const NSS = () => {
     const [NssData, setNssData] = useState(null);
     const navData = {
-        "About NSS": (<><NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/><NSSContent /></>),
+        "About NSS": (<><NSSContent /></>),
         "News & Updates": <NotificationBox />,
-        "Recent Events": <CarouselNSS/>,
+        "Recent Events": <NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/>,
         "Team & Coordinators": <Coordinators
             faculty={NssData && NssData.length > 0 ? NssData[0] : null}
             students={NssData && NssData.length > 1 ? NssData[1] : null}
