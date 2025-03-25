@@ -272,80 +272,144 @@
   transform: scale(1.1);
 }
 
-/* Outer container to center the card */
-.officer-container {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
-
-/* Officer Card */
-.officer-card {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  padding: 20px;
-  max-width: 400px;
+.yrc-coordinators-container {
   width: 90%;
-  transition: transform 0.3s ease-in-out;
+  margin: auto;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  display: block;
 }
 
-.officer-card:hover {
-  transform: scale(1.05); /* Subtle hover effect */
-}
-
-/* Image Container */
-.officer-image-container {
+.yrc-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
   position: relative;
   display: inline-block;
 }
 
-/* Officer Image */
-.officer-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
+.yrc-underline {
+  width: 260px;
+  height: 4px;
+  background-color: #fdcc03;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+/* Staff Coordinator */
+.yrc-staff-card {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: auto;
+  border-left: 6px solid #fdcc03;
+}
+
+.yrc-profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.yrc-staff-info {
+  text-align: left;
+}
+
+.yrc-staff-info h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.yrc-designation {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Programme Officer */
+.yrc-officer-card {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 700px;
   margin: auto;
 }
 
-/* Rank Badge Overlay */
-.officer-rank {
-  margin:auto;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  padding: 5px 12px;
-  font-size: 18px;
-  background:#800000;
+.yrc-officer-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.yrc-officer-info {
+  text-align: left;
+}
+
+.yrc-qualification {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.yrc-description {
+  font-size: 14px;
+}
+
+/* Student Coordinators Grid */
+.yrc-student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Student Coordinator Card */
+.yrc-student-card {
+  display: flex;
+  background-color: #f4f4f4;
   border-radius: 10px;
-  font-weight: bold;
+  text-align: left;
+  width: 90%;
+  height: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 10px;
 }
 
-/* Officer Name */
-.officer-name {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 15px;
-  color: #333;
+.yrc-student-image {
+  width: 35%;
+  height: 100%;
 }
 
-/* Officer Qualification */
-.officer-qualification {
-  font-size: 14px;
-  font-weight: bold;
-  color: #555;
-  margin-top: 5px;
+.yrc-student-info {
+  width: 65%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Officer Description */
-.officer-description {
-  font-size: 14px;
-  color: #666;
-  margin-top: 10px;
-  padding: 0 10px;
+.yrc-role {
+  background: #800000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  display: inline-block;
+  width: fit-content;
+  margin: 0 auto 5px;
+}
+
+.yrc-student-info h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media (max-width: 1500px){
@@ -591,6 +655,24 @@ marquee p {
   .custom-next {
     right: 1px;
   }
+
+  @media screen and (max-width: 768px) {
+    .yrc-student-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .yrc-staff-card, .yrc-officer-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .yrc-profile-pic, .yrc-officer-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
 }
 /* 📌 Tablets (Max-width: 1024px) */
 @media (max-width: 1200px) {
@@ -689,6 +771,41 @@ marquee p {
   }
 }
 
+/* 📌For Team & Coordinators */
+@media screen and (max-width: 768px) {
+  .yrc-student-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  .yrc-staff-card, .yrc-officer-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .yrc-profile-pic, .yrc-officer-image {
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+
+  .yrc-student-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: auto;
+  }
+
+  .yrc-student-image {
+      width: 100%;
+      height: auto;
+  }
+
+  .yrc-student-info {
+      width: 100%;
+      padding: 10px;
+  }
+}
+
 /* 📌 Small Mobile Screens (Max-width: 480px) */
 @media (max-width: 480px) {
   /* General Fix: Reduce Overall Spacing */
@@ -778,4 +895,10 @@ marquee p {
     padding: 8px;
     font-size: 20px;
   }
+
+  @media screen and (max-width: 480px) {
+    .yrc-student-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 }
