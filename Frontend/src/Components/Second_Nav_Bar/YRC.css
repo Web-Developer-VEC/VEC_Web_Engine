@@ -271,6 +271,83 @@
   background: rgba(255, 0, 0, 0.8);
   transform: scale(1.1);
 }
+
+/* Outer container to center the card */
+.officer-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Officer Card */
+.officer-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.officer-card:hover {
+  transform: scale(1.05); /* Subtle hover effect */
+}
+
+/* Image Container */
+.officer-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Officer Image */
+.officer-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
+/* Rank Badge Overlay */
+.officer-rank {
+  margin:auto;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 5px 12px;
+  font-size: 18px;
+  background:#800000;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* Officer Name */
+.officer-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #333;
+}
+
+/* Officer Qualification */
+.officer-qualification {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Officer Description */
+.officer-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
 @media (max-width: 1500px){
   .YRC-student-coordinators {
     grid-template-columns: repeat(4, 1fr);
