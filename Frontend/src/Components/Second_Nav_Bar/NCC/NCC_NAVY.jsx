@@ -171,10 +171,10 @@ const NCC_NAVY = () => {
         <NCCVisMis />
         <NCCAim />
         <NCCMotto />
-        <NCCNCarousel data={curosel} />
+        {/* <NCCNCarousel data={curosel} /> */}
       </>
     ),
-    "Recent Events": <CarouselNavy />,
+    "Recent Events": <NCCNCarousel data={curosel} />,
     "Team & Coordinators": <NCCNMembers />,
     "Awards & Recognition": <AlumniSlider1 />,
     
