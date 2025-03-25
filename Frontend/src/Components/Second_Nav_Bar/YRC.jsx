@@ -446,58 +446,70 @@ const YRC = () => {
   }, []);
 
   function YRCCoord() {
-  return (<div className="YRC-coordinators-section">
-          <h2 className="YRC-section-heading">COORDINATORS</h2>
-          {/* Staff Coordinator */}
-          {staffCoordinator && (
-            <div className="YRC-faculty-coordinator">
-              <div className="YRC-id-card">
-                <img src={UrlParser(staffCoordinator.image_path)} alt={staffCoordinator.name} className="YRC-profile-pic" />
-                <h4 className="YRC-name">{staffCoordinator.name}</h4>
-                <p className="YRC-role">{staffCoordinator.designation}</p>
+    const studentCoordinators = Array.from({ length: 10 }, (_, index) => ({
+      id: index + 1,
+      name: `Student Coordinator ${index + 1}`,
+      role: "YRC Student Leader",
+      image: "https://via.placeholder.com/150",
+    }));
+  
+    return (
+      <div className="yrc-coordinators-container">
+        <h2 className="yrc-heading">
+          Meet Our Coordinators
+          <div className="yrc-underline"></div>
+        </h2>
+        
+        {/* Staff Coordinator */}
+        {staffCoordinator && (
+          <div className="yrc-staff-card">
+            <img
+              src={UrlParser(staffCoordinator.image_path)}
+              alt={staffCoordinator.name}
+              className="yrc-profile-pic"
+            />
+            <div className="yrc-staff-info">
+              <span className="yrc-role">Faculty Coordinator</span>
+              <h3>{staffCoordinator.name}</h3>
+              <p className="yrc-designation">{staffCoordinator.designation}</p>
+            </div>
+          </div>
+        )}
+  
+        {/* Programme Officer */}
+        <div className="yrc-officer-card">
+          <img src="/officer-image.png" alt="Officer" className="yrc-officer-image" />
+          <div className="yrc-officer-info">
+            <span className="yrc-role">Programme Officer</span>
+            <h3>Ramesh V</h3>
+            <p className="yrc-qualification">Bachelor of Education</p>
+            <p className="yrc-description">
+              A highly skilled and disciplined officer leading the cadets with excellence.
+            </p>
+          </div>
+        </div>
+  
+        {/* Student Coordinators */}
+        <h2 className="yrc-subheading">Student Coordinators</h2>
+        <div className="yrc-student-grid">
+          {studentCoordinators.map((coordinator) => (
+            <div key={coordinator.id} className="yrc-student-card">
+              <img
+                src={coordinator.image}
+                alt={coordinator.name}
+                className="yrc-student-image"
+              />
+              <div className="yrc-student-info">
+                <span className="yrc-role">{coordinator.role}</span>
+                <h3>{coordinator.name}</h3>
               </div>
             </div>
-          )}
-
-<div className="officer-container">
-  <div className="officer-card">
-    <div className="officer-info">
-      <div className="officer-image-container">
-      <span className="officer-rank">Programme Officer</span>
-        <img
-          src="/officer-image.png" // Replace with actual image path
-          alt="Officer"
-          className="officer-image"
-        />
-
+          ))}
+        </div>
       </div>
-      <h3 className="officer-name">Ramesh V</h3>
-      <p className="officer-qualification">
-        <strong>Bachelor of Education</strong>
-      </p>
-      <p className="officer-description">
-        A highly skilled and disciplined officer leading the cadets with excellence.
-      </p>
-    </div>
-  </div>
-</div>
-        
-          {/* Student Coordinators */}
-          <h3 className="YRC-subheading">Student Coordinators</h3>
-          <div className="YRC-student-coordinators">
-            {studentCoordinators.names &&
-              studentCoordinators.names.map((name, index) => (
-                <div key={index} className="YRC-id-card">
-                  <img src={UrlParser(studentCoordinators.images[index])} alt={name} className="YRC-profile-pic" />
-                  <h4 className="YRC-name">{name}</h4>
-                  <p className="YRC-role">{studentCoordinators.roles[index]}</p>
-                </div>
-              ))}
-          </div>
-
-        </div>);
-}
-
+    );
+  }
+  
   // Carousel Settings
   const carouselSettings = {
     dots: true,
