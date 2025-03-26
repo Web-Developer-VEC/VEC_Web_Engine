@@ -2,7 +2,6 @@ import React from 'react';
 import Image from './Imagecard1';
 import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 import '../sports/Sportshod.css';
-import Banyan from '../../Assets/Banyan.jpg';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -23,7 +22,7 @@ const Sportsfaculties = ({ data }) => {
           <Image
             key={index}
             name={name}
-            photo={data?.image_path[index]} // Use the fetched image paths
+            photo={UrlParser(data?.image_path[index])} // Use the fetched image paths
             Designation={data?.designation[index]}
             qualification={data?.qualification[index]}
            

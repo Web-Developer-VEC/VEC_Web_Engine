@@ -37,7 +37,7 @@ const Infrastructure = ({ data }) => {
                 onClick={() => handleCardClick(index)}
               >
                 <div className="content">
-                  <h2 className="title">{card.image_name}</h2>
+                  <h1 className="infra_title">{card.image_name}</h1>
                   <p className="copy">{card.image_content}</p>
                 </div>
               </div>

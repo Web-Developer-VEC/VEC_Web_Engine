@@ -102,7 +102,7 @@ const VisionMission = ({ data }) => {
           <h2>Program Educational Outcomes</h2>
           <div className="accordion" id="psosAccordion">
             {data?.program_educational_outcomes?.headings?.map((heading, index) => (
-              <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
+              <div className="POE accordion-item-cir"key={index}>
                 <h2 className="accordion-header" id={`psosHeading${index}`}>
                   <button className="accordion-buttons" onClick={() => togglePOE(index)}>
                     {heading}
@@ -143,7 +143,7 @@ const VisionMission = ({ data }) => {
           <h2>Program Specific Outcomes</h2>
           <div className="accordion" id="psosAccordion">
             {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-              <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
+              <div className="POE accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
                 <h2 className="accordion-header" id={`psosHeading${index}`}>
                   <button className="accordion-buttons" onClick={() => togglePOS(index)}>
                     {heading}
