@@ -330,9 +330,8 @@ export const EducationTimeline = ({ data }) => {
   
 <br />
 
-<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible">
- 
-    <table className=" w-[1110px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
+<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible"> 
+    <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
       <thead className="bg-brwn text-white">
         <tr>
           <th className="border border-black p-3">Degree</  th>
@@ -353,6 +352,8 @@ export const EducationTimeline = ({ data }) => {
       </tbody>
     </table>
   </div>
+ 
+
 
 
   </div>
@@ -521,7 +522,7 @@ const Modal = ({ isOpen, onClose, content }) => {
 const Tile = ({ title, icon, items, onItemClick }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const handleViewMore = () => {
+const handleViewMore = () => {
     setExpanded((prevExpanded) => !prevExpanded);
   };
 

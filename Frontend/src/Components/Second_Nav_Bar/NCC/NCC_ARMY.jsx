@@ -231,11 +231,11 @@ const NCC_ARMY = () => {
           <NCCAim />
           <NCCMotto />
           <NCCPledge />
-          <NCCACarousel data={curosel} />
+          {/* <NCCACarousel data={curosel} /> */}
           <NCCContact />
         </>
       ),
-      "Recent Events": <Carouselarmy />,
+      "Recent Events":   <NCCACarousel data={curosel} />,
       "Team & Coordinators": <NCCAMembers />,
       "Awards & Recognition" : <AlumniSlider />,
       

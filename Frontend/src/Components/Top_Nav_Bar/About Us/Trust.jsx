@@ -38,17 +38,17 @@ const NewTrust = ({theme, toggle}) => {
     {
       name: 'Shri. M.V. Muthuramalingam',
       role: 'Chairman',
-      img: 'static/images/trust/muthuramalingam.jpg',
+      img: 'static/images/trust/muthuramalingam.webp',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Chief Executive Officer',
-      img: 'static/images/trust/velmurugan.jpg',
+      img: 'static/images/trust/velmurugan.webp',
     },
     {
       name: 'Shri. M.V. VelMurugan',
       role: 'Deputy CEO',
-      img: 'static/images/trust/deptyceo.jpg',
+      img: 'static/images/trust/deptyceo.webp',
     },
   ];
 
@@ -87,7 +87,7 @@ const NewTrust = ({theme, toggle}) => {
             >
               <img
                 className="w-64 h-max object-cover transition-transform duration-500 "
-                src={UrlParser('static/images/trust/velammal.jpg')}
+                src={UrlParser('static/images/trust/velammal.webp')}
                 alt="Velammal Trust Banner"
               />
             </motion.div>
@@ -128,7 +128,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("static/images/trust/muthuramalingam.jpg")}
+                  src={UrlParser("static/images/trust/muthuramalingam.webp")}
                   alt="Shri. M.V. Muthuramalingam"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
@@ -147,7 +147,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser('static/images/trust/velmurugan.jpg')}
+                  src={UrlParser('static/images/trust/velmurugan.webp')}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-2 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
@@ -166,7 +166,7 @@ A very humble, rustic lady with rural background and an unassuming attitude was 
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("static/images/trust/deptyceo.jpg")}
+                  src={UrlParser("static/images/trust/deptyceo.webp")}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-3 md:w-40 md:h-40 mr-6 shadow-lg"
                 />

@@ -242,6 +242,21 @@ ul {
   justify-content: space-around;
 }
 
+#psosAccordion {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  gap: 20px; /* Adds spacing between cards */
+}
+
+.POE {
+  width: 100%; /* Third item and beyond will be centered */
+  max-width: 530px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 .accordion{
   display: flex;
   gap: 20px;
@@ -249,6 +264,10 @@ ul {
 
 }
 
+.accordion-header{
+  color: #800000;
+  
+}
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */
@@ -257,14 +276,21 @@ ul {
   align-items: start;
 }
 
+.accordion-body.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideDown 0.5s ease-out;
+  margin-top: -5vh;
+  text-align: left;
+}
 .accordion-item-cir {
   width: 100%; /* Ensure proper spacing */
-}
-
-.pos-section{
   
 }
-
+POE accordion-item-circle {
+  width: 100%; /* Ensure proper spacing */
+} 
 /* Responsive Design for Tablets */
 @media (max-width: 1024px) {
   .committee-buttons-grid {
@@ -354,6 +380,9 @@ ul {
 
   .grid-container{
     width: 85vw;
+  }
+  .accordion-body.show {
+    margin-top: 0.5%;
   }
 }
 
