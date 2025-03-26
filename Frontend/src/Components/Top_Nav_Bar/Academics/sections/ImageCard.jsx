@@ -19,9 +19,16 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
   return  (
 
   <>
-  <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
-        styles.imageCard + ' w-fit lg:w-[90%]'} rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
-        dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]`}>
+
+
+<div 
+  className={`rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
+              dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+              h-[95%] 
+              ${firstTile ? 'w-[65%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 'w-fit lg:w-[90%]'} 
+              ${firstTile ? styles.firstTile : styles.imageCard}`}>
+
+
     <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
       <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
