@@ -78,7 +78,7 @@ const ImageCarousel = ({ data }) => {
 
             {/* 🔹 Navigation Buttons */}
             <button onClick={prevSlide} className="nav-button prev-button">
-              <ChevronLeft className="nav-icon" />
+              <ChevronLeft className="nav-icon" /> 
             </button>
             <button onClick={nextSlide} className="nav-button next-button">
               <ChevronRight className="nav-icon" />

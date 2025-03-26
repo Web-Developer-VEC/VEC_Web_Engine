@@ -567,7 +567,7 @@ const YRC = () => {
         </div>
   
         
-        {staffCoordinator && (
+        {/* {staffCoordinator && (
           <div className="yrc-member-card">
             <img
               src={UrlParser(staffCoordinator.image_path)}
@@ -580,29 +580,29 @@ const YRC = () => {
               <p className="yrc-title">{staffCoordinator.designation}</p>
             </div>
           </div>
-        )}
+        )} */}
   
         <h2 className="yrc-h3">
           STUDENT COORDINATORS
           <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid">
-  {studentCoordinators1.map((coordinator) => (
-    <div key={coordinator.id} className="yrc-member-card">
-      <img
-        src={coordinator.image}
-        alt={coordinator.name}
-        className="yrc-member-image"
-      />
-      <div className="yrc-member-info">
-        <h3>{coordinator.name}</h3>
-        <span className="yrc-platoon">{coordinator.role}</span>
-        <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
-        <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
+        {studentCoordinators1.map((coordinator) => (
+          <div key={coordinator.id} className="yrc-member-card">
+            <img
+              src={coordinator.image}
+              alt={coordinator.name}
+              className="yrc-member-image"
+            />
+            <div className="yrc-member-info">
+              <h3>{coordinator.name}</h3>
+              <span className="yrc-platoon">{coordinator.role}</span>
+              <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
+              <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
 
       </div>
     );
