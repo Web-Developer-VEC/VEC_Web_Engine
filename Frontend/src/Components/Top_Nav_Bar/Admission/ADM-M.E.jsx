@@ -71,19 +71,18 @@ if (!isOnline) {
           </h3>
           
           <br></br>
-          <p className="description-text">
-            <strong>Note:</strong> TANCA releases the updated criteria during the admissions every academic
-            year. Admission shall be offered only to the candidates who possess the qualification prescribed
-            against each programme.
+          <p className="M.E. Degree Programme">Candidates seeking admission for the Post-Graduate Degree Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu Common Admission (TANCA) criteria.
           </p>
+          <br />
+          <p className="description-text">
+            <strong>Note:</strong>TANCA releases the updated criteria during the admissions every academic year. Admission shall be offered only to the candidates who possess the qualification prescribed against each programme.
+            </p>
           <br></br>
           <p className="description-text">
-            Any other relevant qualification which is not prescribed against each programme shall be considered
-            for equivalence by the committee constituted for the purpose. Admission to such degrees shall be
-            offered only after obtaining equivalence to such degrees.
+          Any other relevant qualification which is not prescribed against each programme shall be considered for equivalence by the committee constituted for the purpose. Admission to such degrees shall be offered only after obtaining equivalence to such degrees.
           </p>
           <p className="description-text mb-2 mt-2"><strong>Government Quota : </strong>Apply through TANCET/TANCA</p>
-          <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
+          <p className="description-text mb-2"><strong>Management Quota : </strong> Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu.</p>
           <div className="me-container">
             <center><h4 className="text-accn dark:text-drka Eligibility mt-5 font-thin">M.E - Total Intake {pgData.Year}</h4></center>
             <table className="intake-table">

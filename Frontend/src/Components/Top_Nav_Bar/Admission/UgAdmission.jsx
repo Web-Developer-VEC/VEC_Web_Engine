@@ -103,13 +103,16 @@ if (!isOnline) {
            <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
            
             <p className="description-text">
-              Should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
+            Candidates seeking admission should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
             </p><br />
             <p className="text-start description-text ">( OR )</p>
             <br />
             <p className="description-text">
-             Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
+            Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
             </p>
+            <br />
+            <p className="description-text ug-GQ"><strong>Government Quota : </strong>Apply through TNEA Counselling</p>
+            <p className="description-text ug-MQ"><strong>Management Quota : </strong> Apply through Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
             {renderTable(ug, `UG COURSES - TOTAL INTAKE ${year}`, "(For First Year Admissions)")}
           </div>
 
@@ -121,13 +124,13 @@ if (!isOnline) {
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"> 
             <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
             <p className="description-text">
-               Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
+            Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
             </p>
             <br />
             <p className="description-text">( OR )</p>
             <br />
             <p className="description-text">
-               Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
+            Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
             </p>
             {renderTable(ug_lateral, `UG COURSES - TOTAL INTAKE ${year}`, "(For Diploma Holders Only)")}
           </div>
