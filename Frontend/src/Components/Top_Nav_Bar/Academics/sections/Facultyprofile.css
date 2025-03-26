@@ -556,8 +556,8 @@
 
 .faculty-timeline-table-container{
   @media (min-width:600px){
-    overflow-x: auto;
-    margin: 0 auto;
+     overflow-x: auto;
+     margin: 0 auto;
   }
 }
 
@@ -878,6 +878,15 @@
    {
     width: 100%;
   }
+
+  .faculty-timeline-container{
+    width: 100%;
+    padding: 0 1rem;
+  }
+.faculty-timeline-content{
+  width: 100%;
+}
+
 }
 
 /* Ensure they follow tiles' max-width structure */
@@ -894,10 +903,15 @@
   }
 
   .faculty-experience-content
-    {
+  {
     max-width: 100%;
   }
+  .faculty-timeline-content{
+    max-width: 100%;
+  }
+  
 }
+
 
 
 .faculty-tiles-app-tile {
@@ -923,9 +937,7 @@
   margin-bottom: 1rem;
 }
 
-.faculty-tiles-app-tile-icon {
-  /*color: #fdcd33;*/
-}
+
 
 .faculty-tiles-app-tile-title {
   font-size: 1.25rem;
@@ -943,7 +955,7 @@
 .faculty-tiles-app-tile-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 0.5rem;
   word-wrap: break-word;
 }
@@ -1042,12 +1054,22 @@ margin-top: 1rem;
 transition: background-color 200ms;
 }
 
-.faculty-tiles-app-view-more:hover {
-/*background-color: #d9b831;*/
-}
+
 
 .faculty-blurred {
 filter: blur(5px);
+}
+
+
+.Tilescontent-withgreen{
+  display: flex;
+  flex-direction: row;
+  padding: 10px  20px;
+}
+
+.Tilescontent{
+  padding-top:10px ;
+  margin-left: 10px;
 }
 
 .tiles-container{

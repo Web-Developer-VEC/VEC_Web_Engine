@@ -317,6 +317,9 @@ export const EducationTimeline = ({ data }) => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      <div className='faculty-timeline-content'>
+
+      
       <div className='faculty-timeline-title-container'>
       <h2 className="faculty-timeline-title">
         <GraduationCap className="faculty-title-icon"/>
@@ -328,7 +331,6 @@ export const EducationTimeline = ({ data }) => {
 <br />
 
 <div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible">
- 
     <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
       <thead className="bg-brwn text-white">
         <tr>
@@ -350,9 +352,8 @@ export const EducationTimeline = ({ data }) => {
       </tbody>
     </table>
   </div>
-
-
  
+  </div>
 <br />
 <br />
     </div>
@@ -536,7 +537,7 @@ const handleViewMore = () => {
         .filter((item) => item.text && Object.keys(item.details).length > 0) // Ensure text and details exist
         .map((item, index) => (
           <li key={index} className="faculty-tiles-app-tile-item">
-            <ArrowRight className="faculty-tiles-app-item-icon text-secd dark:text-drks" />
+     <div className="w-[0.4%] h-6 bg-black rounded-tl-full rounded-bl-full"></div>
             <a
               className="faculty-tiles-app-item-link"
               onClick={(e) => {

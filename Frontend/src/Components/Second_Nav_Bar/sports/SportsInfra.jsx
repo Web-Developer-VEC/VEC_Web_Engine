@@ -34,11 +34,12 @@ const SportsInfra = () => {
       imageUrl: "/sports/fitnesscentre.png",
     },
     {
-      title: "KAPIL DAV CRICKET GROUND",
+      title: "KAPIL DEV CRICKET GROUND",
       description:
-        "Kapil Dav Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
+        "Kapil Dev Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
       imageUrl: "/sports/cricketground.png",
     },
+    
     {
       title: "KABADDI COURT",
       description:
