@@ -352,13 +352,9 @@ export const EducationTimeline = ({ data }) => {
       </tbody>
     </table>
   </div>
- 
-
-
-
-  </div>
 <br />
 <br />
+    </div>
     </div>
   );
 };
