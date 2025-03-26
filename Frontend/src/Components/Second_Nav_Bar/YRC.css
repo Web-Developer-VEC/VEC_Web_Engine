@@ -72,117 +72,6 @@
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-
-
-/* Coordinators Section */
-.YRC-coordinators-section {
-  /*width: 85%;*/
-  text-align: center;
-  margin: 50px auto;
-}
-
-/* Main Heading */
-.YRC-section-heading {
-  font-size: 28px;
-  font-weight: bold;
-  text-transform: uppercase;
-  /*color: #222;*/
-  margin-bottom: 30px;
-}
-
-/* Subheadings (Staff & Student Coordinators) */
-.YRC-subheading {
-  font-size: 22px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 20px 0 10px;
-  /*color: #d1b91b;*/
-  /*border-bottom: 3px solid #d1b91b;*/
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-/* Faculty Coordinator - Centered */
-.YRC-faculty-coordinator {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;
-  width: 100%;
-  margin-bottom: 30px;
-}
-/* ID Card Styling */
-.YRC-id-card {
-  width: 280px;
-  /*background: #ffffff;*/
-  padding: 20px;
-  border-radius: 12px;
-  border:5px solid #fdb515;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.YRC-id-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Profile Picture (Now a Soft Box) */
-.YRC-profile-pic {
-  width: 120px;
-  height: 140px;
-  border-radius: 10px; /* Soft rounded corners */
-  object-fit: cover;
-  /*border: 4px solid #d1b91b;*/
-  margin-bottom: 10px;
-  display: block;
-}
-
-/* Name and Role */
-.YRC-name {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 5px 0;
-  /*color: #222;*/
-}
-
-.YRC-role {
-  font-size: 16px;
-  /*color: #666;*/
-  font-style: italic;
-}
-
-/* Social Media Icons */
-.YRC-social-icons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.YRC-social-link {
-  font-size: 22px;
-  /*color: #666;*/
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.YRC-social-link:hover {
-  /*color: #d1b91b;*/
-  transform: scale(1.2);
-}
-
-/* Student Coordinators Grid - 5 per row for Desktop */
-.YRC-student-coordinators {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px; 
-}
-
 /* Carousel Container */
 .YRC-carousel-container {
   /*width: 85%;*/
@@ -272,151 +161,256 @@
   transform: scale(1.1);
 }
 
+/* Overall Container */
 .yrc-coordinators-container {
-  width: 90%;
+  max-width: 1200px;
   margin: auto;
-  text-align: left;
-  font-family: Arial, sans-serif;
-  display: block;
+  padding: 20px;
+  background: #f9f9f9;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.yrc-heading {
+.yrc-underline2 {
+  width: 270px;
+  height: 4px;
+  background-color: #990000;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+
+.yrc-underline3 {
+  width: 300px;
+  height: 4px;
+  background-color: #990000;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+
+/* Section Headings */
+.yrc-h1 {
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-top: 20px;
   position: relative;
-  display: inline-block;
 }
 
-.yrc-underline {
-  width: 260px;
-  height: 4px;
-  background-color: #fdcc03;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-/* Staff Coordinator */
-.yrc-staff-card {
-  display: flex;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 700px;
-  margin: auto;
-  border-left: 6px solid #fdcc03;
-}
-
-.yrc-profile-pic {
-  width: 180px;
-  height: 180px;
-  border-radius: 8px;
-  margin-right: 20px;
-}
-
-.yrc-staff-info {
-  text-align: left;
-}
-
-.yrc-staff-info h3 {
-  font-size: 20px;
-  margin: 0;
-}
-
-.yrc-designation {
-  margin: 5px 0;
-  font-size: 16px;
-}
-
-/* Programme Officer */
-.yrc-officer-card {
-  display: flex;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 700px;
-  margin: auto;
-}
-
-.yrc-officer-image {
-  width: 180px;
-  height: 180px;
-  border-radius: 8px;
-  margin-right: 20px;
-}
-
-.yrc-officer-info {
-  text-align: left;
-}
-
-.yrc-qualification {
-  font-size: 16px;
+.yrc-h2 {
+  text-align: center;
+  font-size: 24px;
   font-weight: bold;
-}
-
-.yrc-description {
-  font-size: 14px;
-}
-
-/* Student Coordinators Grid */
-.yrc-student-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   margin-top: 20px;
+  position: relative;
 }
 
-/* Student Coordinator Card */
-.yrc-student-card {
-  display: flex;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  text-align: left;
-  width: 90%;
-  height: 180px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  margin: 10px;
-}
-
-.yrc-student-image {
-  width: 35%;
-  height: 100%;
-}
-
-.yrc-student-info {
-  width: 65%;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.yrc-role {
-  background: #800000;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 12px;
-  display: inline-block;
-  width: fit-content;
-  margin: 0 auto 5px;
-}
-
-.yrc-student-info h3 {
-  font-size: 18px;
-  margin: 5px 0;
+.yrc-h3 {
+  text-align: center;
+  font-size: 24px;
   font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+
+/* Officer Card */
+.yrc-member-card-1 {
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  margin-top: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.yrc-member-card-1 img, 
+.yrc-member-card-1 .avatar {
+  border-radius: 0; /* Removes circular border */
+  width: 150px; /* Adjust width as needed */
+  height: 150px; /* Adjust height as needed */
+}
+.yrc-member-card-1:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yrc-member-image1 {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  color: #555;
+  object-fit: cover;
+}
+
+.yrc-member-image2 {
+  display: block;
+  align-content: center;
+  margin-left: 25%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yrc-member-info1 {
+  flex: 1;
+  text-align: left;
+}
+
+.yrc-member-info2 {
+  flex: 1;
   text-align: center;
 }
 
-@media (max-width: 1500px){
-  .YRC-student-coordinators {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Faculty Coordinator Card */
+.yrc-faculty-card {
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.yrc-faculty-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yrc-faculty-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yrc-faculty-info {
+  flex: 1;
+  text-align: left;
+}
+
+.yrc-faculty-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.yrc-faculty-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.yrc-faculty-description {
+  font-size: 14px;
+  color: #444;
+}
+
+/* General container styles */
+.yrc-coordinators-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Grid layout for coordinators */
+.yrc-members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Ensure the last row is centered if it has only two items */
+.yrc-member-card {
+  flex: 1 1 calc(25% - 20px); /* Adjust for 4 columns */
+  width: 240px;
+  max-width: 250px;
+}
+
+
+/* Individual Coordinator Card */
+.yrc-member-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  align-items: center;
+  max-width: 260px;
+}
+
+/* Hover effect for better UI */
+.yrc-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile image inside the card */
+.yrc-member-image {
+  width: 100px;
+  height: 100px;
+  margin:auto;
+  border-radius: 0%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Name and role styling */
+.yrc-member-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.yrc-platoon {
+  font-size: 14px;
+  color: gray;
+}
+
+/* Department and year/section styling */
+.yrc-department,
+.yrc-year {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #555;
+}
+
+/* Faculty Coordinator Card Styling */
+.faculty-coordinator-card {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.faculty-coordinator-card h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.faculty-coordinator-card p {
+  font-size: 16px;
+  color: #444;
+}
+
 /* Container to align elements */
 .YRC-notification-container {
   display: flex;
@@ -901,4 +895,131 @@ marquee p {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+}
+
+/* For Members Tile */
+@media (max-width: 1024px) {
+  .yrc-member-card {
+    flex: 1 1 calc(33.33% - 20px); /* Adjust for 3 columns */
+  }
+}
+
+@media (max-width: 768px) {
+  .yrc-member-card {
+    flex: 1 1 calc(50% - 20px); /* Adjust for 2 columns */
+  }
+}
+
+@media (max-width: 480px) {
+  .yrc-member-card {
+    flex: 1 1 100%; /* Single column on small screens */
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .yrc-members-grid {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 15px;
+  }
+
+  .yrc-member-card {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .yrc-member-info h3 {
+    font-size: 16px;
+  }
+
+  .faculty-coordinator-card {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .yrc-coordinators-container {
+    padding: 10px;
+  }
+
+  .yrc-member-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .yrc-member-info h3 {
+    font-size: 14px;
+  }
+
+  .yrc-platoon,
+  .yrc-department,
+  .yrc-year {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1500px){
+  .YRC-student-coordinators {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .yrc-member-card-1 {
+    width: 90%; /* Full width with some margin */
+    padding: 15px;
+  }
+
+  .yrc-member-image1 {
+    width: 90px;
+    height: 90px;
+  }
+
+  .yrc-title {
+    font-size: 14px;
+  }
+
+  .yrc-degree {
+    font-size: 12px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .yrc-member-card-1 {
+    width: 95%;
+  }
+
+  .yrc-member-image1 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .yrc-title {
+    font-size: 13px;
+  }
+
+  .yrc-degree {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .yrc-member-card-1 {
+    width: 280px; /* Slightly smaller */
+  }
+
+  .yrc-member-image1 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .yrc-title {
+    font-size: 15px;
+  }
+
+  .yrc-degree {
+    font-size: 13px;
+  }
 }
