@@ -83,115 +83,217 @@ const NotificationBox1 = () => {
 
 const carouselItems = [
   {
-    image: "https://via.placeholder.com/300",
-    title: "EBSB DRDO Camp",
-    location: "Annai Violet Arts and Science ...",
-    date: "May 9, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Annual Sports Day",
-    location: "Anna University, Chennai",
-    date: "May 9, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Group Photo Session",
-    location: "Anna University, Chennai",
-    date: "May 7, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "CATC cum IGC Firing Sel...",
-    location: "3 (TN) Bn NCC Campus, Kancheep",
-    date: "Apr 8, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "National NCC Camp",
-    location: "Delhi, India",
-    date: "Mar 20, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Republic Day Parade",
-    location: "Rajpath, New Delhi",
-    date: "Jan 26, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Drill Practice Session",
-    location: "Anna University, Chennai",
-    date: "Feb 10, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "NCC Trekking Camp",
-    location: "Himalayas, India",
-    date: "Dec 15, 2022",
-  },
+    title: "NSS Volunteers in Action",
+    desc: "Engaging in community service and making a difference.",
+    image: "./nssphoto2.jpg",
+},
+{
+    title: "Ethinic Day Celebration",
+    desc: "Promoting Cultural Diversity and Unity.",
+    image: "./nssphoto3.jpg",
+},
+{
+    title: "Republic Day Celebration",
+    desc: "Patriotic fervor and national pride on display.",
+    image: "./nssphoto4.jpg",
+},
+{
+    title: "Meet up with the police",
+    desc: "Interacting with law enforcement and understanding their role.",
+    image: "./nssphoto5.jpg",
+},
+{
+    title: "Educational Programs",
+    desc: "Spreading awareness and knowledge among the underprivileged.",
+    image: "./nssphoto6.jpg",
+},
+{
+    title: "Blood Donation Camp",
+    desc: "Encouraging students to donate blood and save lives.",
+    image: "./nssphoto7.jpg",
+},
+{
+    title:"Eye check up camp",
+    desc: "Promoting eye health and awareness.",
+    image: "./nssphoto8.jpg",
+},
+{
+    title: "eye check up program",
+    desc: "Promoting eye health and awareness.",
+    image: "./nssphoto9.jpg",
+},
+{
+    title: "Blood Donation Camp",
+    desc: "Encouraging students to donate blood and save lives.",
+    image: "./nssphoto10.jpg",
+},
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "EBSB DRDO Camp",
+  //   location: "Annai Violet Arts and Science ...",
+  //   date: "May 9, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "Annual Sports Day",
+  //   location: "Anna University, Chennai",
+  //   date: "May 9, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "Group Photo Session",
+  //   location: "Anna University, Chennai",
+  //   date: "May 7, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "CATC cum IGC Firing Sel...",
+  //   location: "3 (TN) Bn NCC Campus, Kancheep",
+  //   date: "Apr 8, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "National NCC Camp",
+  //   location: "Delhi, India",
+  //   date: "Mar 20, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "Republic Day Parade",
+  //   location: "Rajpath, New Delhi",
+  //   date: "Jan 26, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "Drill Practice Session",
+  //   location: "Anna University, Chennai",
+  //   date: "Feb 10, 2023",
+  // },
+  // {
+  //   image: "https://via.placeholder.com/300",
+  //   title: "NCC Trekking Camp",
+  //   location: "Himalayas, India",
+  //   date: "Dec 15, 2022",
+  // },
 ];
 
-const CarouselYRC = () => {
-  const swiperRef = useRef(null);
-
-  useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.navigation.init();
-      swiperRef.current.swiper.navigation.update();
-    }
-  }, []);
-
-  return (
-    <div className="carouselyrc-container">
-      {/* Title with underline */}
-      <h2 className="events-title">Events</h2>
-      <div className="events-underline"></div>
-
-      <Swiper
-        ref={swiperRef}
-        modules={[Navigation]}
-        spaceBetween={20}
-        slidesPerView={4} // Default for large screens
-        loop={true}
-        navigation={{
-          nextEl: ".custom-next",
-          prevEl: ".custom-prev",
-        }}
-        breakpoints={{
-          1024: { slidesPerView: 4 }, // Desktop (4 images)
-          768: { slidesPerView: 3 }, // Tablets (3 images)
-          600: { slidesPerView: 2 }, // Mobile (2 images)
-          0: { slidesPerView: 1 }, // Extra small screens (1 image)
-        }}
-      >
-        {carouselItems.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="carouselyrc-card">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="carouselyrc-image"
-              />
-              <div className="carouselyrc-content">
-                <h3>{item.title}</h3>
-                <p className="carouselyrc-location">{item.location}</p>
-                <span className="carouselyrc-date">{item.date}</span>
+const CarouselYRC = ({data}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+      const [isAutoPlay, setIsAutoPlay] = useState(true);
+  
+      const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+      const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+      };
+  
+      // Auto-slide functionality
+      useEffect(() => {
+          if (isAutoPlay) {
+              const interval = setInterval(() => {
+                  nextSlide();
+              }, 3000);
+              return () => clearInterval(interval);
+          }
+      }, [currentIndex, isAutoPlay]);
+  
+      const prevSlide = () => {
+          setCurrentIndex((prev) => (prev === 0 ? data?.image_path?.length - 1 : prev - 1));
+      };
+  
+      const nextSlide = () => {
+          setCurrentIndex((prev) => (prev === data?.image_path?.length - 1 ? 0 : prev + 1));
+      };
+  
+      return (
+          <div className="nss-carousel-wrap">
+              <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                  {data?.image_path?.map((image, index) => (
+                      <div className="nss-carousel-slide" key={index}>
+                          <img src={UrlParser(image)} alt={data?.image_content[index]} />
+                          <div className="nss-carousel-text">
+                              <h3>{data?.image_content[index]}</h3>
+                              <p>{data?.desc[index]}</p>
+                          </div>
+                      </div>
+                  ))}
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+  
+              {/* Navigation Buttons */}
+              <button className="nss-carousel-btn nss-carousel-btn-left" onClick={prevSlide}>&#10094;</button>
+              <button className="nss-carousel-btn nss-carousel-btn-right" onClick={nextSlide}>&#10095;</button>
+  
+              {/* Dots Indicator */}
+              <div className="nss-carousel-dots">
+                  {data?.image_path?.map((_, index) => (
+                      <span
+                          key={index}
+                          className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+                          onClick={() => setCurrentIndex(index)}
+                      ></span>
+                  ))}
+              </div>
+          </div>
+      );
+  // const swiperRef = useRef(null);
 
-      {/* Custom Navigation Buttons */}
-      <button className="swiper-button-prev custom-prev">
-        <FaRegCircleLeft />
-      </button>
-      <button className="swiper-button-next custom-next">
-        <FaRegCircleRight />
-      </button>
-    </div>
-  );
+  // useEffect(() => {
+  //   if (swiperRef.current) {
+  //     swiperRef.current.swiper.navigation.init();
+  //     swiperRef.current.swiper.navigation.update();
+  //   }
+  // }, []);
+
+  // return (
+  //   <div className="carouselyrc-container">
+  //     {/* Title with underline */}
+  //     <h2 className="events-title">Events</h2>
+  //     <div className="events-underline"></div>
+
+  //     <Swiper
+  //       ref={swiperRef}
+  //       modules={[Navigation]}
+  //       spaceBetween={20}
+  //       slidesPerView={4} // Default for large screens
+  //       loop={true}
+  //       navigation={{
+  //         nextEl: ".custom-next",
+  //         prevEl: ".custom-prev",
+  //       }}
+  //       breakpoints={{
+  //         1024: { slidesPerView: 4 }, // Desktop (4 images)
+  //         768: { slidesPerView: 3 }, // Tablets (3 images)
+  //         600: { slidesPerView: 2 }, // Mobile (2 images)
+  //         0: { slidesPerView: 1 }, // Extra small screens (1 image)
+  //       }}
+  //     >
+  //       {carouselItems.map((item, index) => (
+  //         <SwiperSlide key={index}>
+  //           <div className="carouselyrc-card">
+  //             <img
+  //               src={item.image}
+  //               alt={item.title}
+  //               className="carouselyrc-image"
+  //             />
+  //             <div className="carouselyrc-content">
+  //               <h3>{item.title}</h3>
+  //               <p className="carouselyrc-location">{item.location}</p>
+  //               <span className="carouselyrc-date">{item.date}</span>
+  //             </div>
+  //           </div>
+  //         </SwiperSlide>
+  //       ))}
+  //     </Swiper>
+
+  //     {/* Custom Navigation Buttons */}
+  //     <button className="swiper-button-prev custom-prev">
+  //       <FaRegCircleLeft />
+  //     </button>
+  //     <button className="swiper-button-next custom-next">
+  //       <FaRegCircleRight />
+  //     </button>
+  //   </div>
+  // );
 };
 const predefinedData = {
   title: [
@@ -343,37 +445,168 @@ const YRC = () => {
     fetchData();
   }, []);
 
+
+  const studentCoordinators1 = [
+    {
+      id: 1,
+      name: "Praveen Hari S",
+      role: "YRC Chairman",
+      department: "Dept. of AI&DS",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg", // Replace with actual image path
+    },
+    {
+      id: 2,
+      name: "Neena V",
+      role: "YRC Vice Chairman",
+      department: "Dept. of EEE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 3,
+      name: "Aram Valartha Nayaki K",
+      role: "YRC Secretary",
+      department: "Dept. of ECE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 4,
+      name: "Logesh G",
+      role: "YRC Treasurer",
+      department: "Dept. of ECE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 5,
+      name: "Dakshan B",
+      role: "YRC Joint Secretary",
+      department: "Dept. of AI&DS",
+      year: "2nd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 6,
+      name: "Akshaya S",
+      role: "YRC Joint Secretary",
+      department: "Dept. of CSE",
+      year: "3rd Year",
+      image: "https://imgcdn.stablediffusionweb.com/2024/4/7/76683d35-d0e9-4bf4-a630-99a6cc7da8c2.jpg",
+    },
+    {
+      id:7,
+      name: "Siddharth Magesh",
+      role: "YRC Technical Head",
+      department: "Dept. of AI&DS",
+      year: "3rd year",
+      image: "https://imgcdn.stablediffusionweb.com/2024/4/7/76683d35-d0e9-4bf4-a630-99a6cc7da8c2.jpg",
+    },
+    {
+      id: 8,
+      name: "Tarakeshwaran S",
+      role: "YRC Technical Head",
+      department: "Dept. of Mechanical Engineering",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 9,
+      name: "Mithun Raj S",
+      role: "YRC Non-Technical Head",
+      department: "Dept. of AI&DS",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 10,
+      name: "Jothi Lakshmi S",
+      role: "YRC Non-Technical Head",
+      department: "Dept. of Mechanical Engineering",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+  ];
+  
   function YRCCoord() {
-  return (<div className="YRC-coordinators-section">
-          <h2 className="YRC-section-heading">COORDINATORS</h2>
+    function getStudentCoordinators() {
+      return Array.from({ length: 10 }, (_, index) => ({
+        id: index + 1,
+        name: `Student Coordinator ${index + 1}`,
+        role: "YRC Student Leader",
+        image: "https://via.placeholder.com/150",
+      }));
+    }
+  
+    const studentCoordinators = getStudentCoordinators();
+  
+    return (
+      
+      <div className="yrc-coordinators-container">
+        <h2 className="yrc-h2">
+          FACULTY COORDINATOR
+          <div className="yrc-underline2"></div>
+        </h2>
+        
+        <div className="yrc-member-card-1">
+          <img
+            src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg"
+            alt="Officer"
+            className="yrc-member-image1"
+          />
 
-          {/* Staff Coordinator */}
-          {staffCoordinator && (
-            <div className="YRC-faculty-coordinator">
-              <div className="YRC-id-card">
-                <img src={UrlParser(staffCoordinator.image_path)} alt={staffCoordinator.name} className="YRC-profile-pic" />
-                <h4 className="YRC-name">{staffCoordinator.name}</h4>
-                <p className="YRC-role">{staffCoordinator.designation}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Student Coordinators */}
-          <h3 className="YRC-subheading">Student Coordinators</h3>
-          <div className="YRC-student-coordinators">
-            {studentCoordinators.names &&
-              studentCoordinators.names.map((name, index) => (
-                <div key={index} className="YRC-id-card">
-                  <img src={UrlParser(studentCoordinators.images[index])} alt={name} className="YRC-profile-pic" />
-                  <h4 className="YRC-name">{name}</h4>
-                  <p className="YRC-role">{studentCoordinators.roles[index]}</p>
-
-                </div>
-              ))}
+          <div className="yrc-member-info1">
+            <span className="yrc-platoon">Programme Officer</span>
+            <h3>Ramesh Kumar V</h3>
+            <p className="yrc-title">Bachelor of Education</p>
+            <p className="yrc-degree">
+            The Programme Officer for the Youth Red Cross (YRC) is responsible for planning, coordinating, and implementing various YRC activities and initiatives. The role involves engaging with youth volunteers, organizing training sessions, promoting humanitarian values, and ensuring the smooth execution of YRC programs.
+            </p>
           </div>
-        </div>);
-}
+        </div>
+  
+        
+        {staffCoordinator && (
+          <div className="yrc-member-card">
+            <img
+              src={UrlParser(staffCoordinator.image_path)}
+              alt={staffCoordinator.name}
+              className="yrc-member-image1"
+            />
+            <div className="yrc-member-info2">
+              <span className="yrc-platoon">Faculty Coordinator</span>
+              <h3>{staffCoordinator.name}</h3>
+              <p className="yrc-title">{staffCoordinator.designation}</p>
+            </div>
+          </div>
+        )}
+  
+        <h2 className="yrc-h3">
+          STUDENT COORDINATORS
+          <div className="yrc-underline3"></div>
+        </h2>
+        <div className="yrc-members-grid">
+  {studentCoordinators1.map((coordinator) => (
+    <div key={coordinator.id} className="yrc-member-card">
+      <img
+        src={coordinator.image}
+        alt={coordinator.name}
+        className="yrc-member-image"
+      />
+      <div className="yrc-member-info">
+        <h3>{coordinator.name}</h3>
+        <span className="yrc-platoon">{coordinator.role}</span>
+        <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
+        <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
+      </div>
+    );
+  }
   // Carousel Settings
   const carouselSettings = {
     dots: true,
