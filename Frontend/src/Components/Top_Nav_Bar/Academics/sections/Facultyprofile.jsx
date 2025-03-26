@@ -317,6 +317,9 @@ export const EducationTimeline = ({ data }) => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      <div className='faculty-timeline-content'>
+
+      
       <div className='faculty-timeline-title-container'>
       <h2 className="faculty-timeline-title">
         <GraduationCap className="faculty-title-icon"/>
@@ -326,30 +329,33 @@ export const EducationTimeline = ({ data }) => {
       </div>
   
 <br />
-      <div className='faculty-timeline-table-container pl-9 pr-10 '>
 
-      <table className="w-[1130px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden">
-  <thead className="border-b-2 border-black bg-red-800 text-white">
-    <tr>
-      <th className="border border-black p-3 text-left">Degree</th>
-      <th className="border border-black p-3 text-left">Branch</th>
-      <th className="border border-black p-3 text-left">Year</th>
-      <th className="border border-black p-3 text-left">Institution</th>
-    </tr>
-  </thead>
-  <tbody>
-    {educationalQualifications?.map((education, index) => (
-      <tr key={index} className="hover:bg-gray-100 border border-black">
-        <td className="border border-black p-3">{education.DEGREE}</td>
-        <td className="border border-black p-3">{education.BRANCH}</td>
-        <td className="border border-black p-3">{education.YEAR}</td>
-        <td className="border border-black p-3">{education.INSTITUTE}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-      </div>
+<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible">
  
+    <table className=" w-[1110px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
+      <thead className="bg-brwn text-white">
+        <tr>
+          <th className="border border-black p-3">Degree</  th>
+          <th className="border border-black p-3">Branch</th>
+          <th className="border border-black p-3">Year</th>
+          <th className="border border-black p-3">Institution</th>
+        </tr>
+      </thead>
+      <tbody>
+        {educationalQualifications?.map((education, index) => ( 
+          <tr key={index} className="hover:bg-gray-100">
+            <td className="border border-black p-3">{education.DEGREE}</td>
+            <td className="border border-black p-3">{education.BRANCH}</td>
+            <td className="border border-black p-3">{education.YEAR}</td>
+            <td className="border border-black p-3">{education.INSTITUTE}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+
+  </div>
 <br />
 <br />
     </div>
@@ -429,21 +435,41 @@ const Experience = ({data}) => {
             Experience</h2>
         </div>  
        
-          <div className='faculty-experience-point'>
-       
-          {experiences.map((item,index)=>(
-             
-          <p key={index} >{item.DESIGNATION} in {item.INSTITUTION} from {item.From} to {item.TO} ({item.YEARS} year {item.MONTHS} month)</p>
-          ))
-        }
+      
+   <div className='faculty-experience-table-container overflow-x-auto md:overflow-x-visible'>
 
-
-          </div>
-        
-   </div>
-  
  
-</div>
+  <table className="w-[1130px] border-2 border-black border-separate border-spacing-0  rounded-lg overflow-hidden ml-30">
+    <thead className="bg-brwn text-white">
+      <tr>
+        <th className="border border-black p-3 border">Institution</th>
+        <th className="border border-black p-3 border">Duration</th>
+        <th className="border border-black p-3 border">From</th>
+        <th className="border border-black p-3 border">To</th>
+        <th className="border border-black p-3 border">Designation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {experiences.map((item, index) => (
+        <tr key={index} className="hover:bg-gray-100">
+          <td className="border border-black p-3 border">{item.INSTITUTION}</td>
+          <td className="border border-black p-3 border">
+            {item.YEARS} years {item.MONTHS} months
+          </td>
+          <td className="border border-black p-3 border">{item.From}</td>
+          <td className="border border-black p-3 border">{item.TO}</td>
+          <td className="border border-black p-3 border">{item.DESIGNATION}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  </div>
+  </div>
+        
+
+  </div>
+
 
     
   );
@@ -513,7 +539,7 @@ const Tile = ({ title, icon, items, onItemClick }) => {
         .filter((item) => item.text && Object.keys(item.details).length > 0) // Ensure text and details exist
         .map((item, index) => (
           <li key={index} className="faculty-tiles-app-tile-item">
-            <ArrowRight className="faculty-tiles-app-item-icon text-secd dark:text-drks" />
+     <div className="w-[0.4%] h-6 bg-black rounded-tl-full rounded-bl-full"></div>
             <a
               className="faculty-tiles-app-item-link"
               onClick={(e) => {
@@ -532,8 +558,8 @@ const Tile = ({ title, icon, items, onItemClick }) => {
           {expanded ? "View Less" : "View More"}
         </button>
       )}
-    </div>
-  );
+    </div>
+  );
 };
 
 

@@ -5,6 +5,8 @@ async function getStaffProfile (req, res) {
         const db = getDb();
         const collection = db.collection('staff_details');
         const uniqueId = req.params.unique_id;
+        console.log("aJITH",uniqueId);
+        
 
         const facultyData = await collection.findOne({ unique_id: uniqueId });
 
@@ -19,8 +21,7 @@ async function getStaffProfile (req, res) {
             "Joined_in": facultyData["Joined in"],
             "Department_Name": facultyData["Department Name"],
             "Mail_ID": facultyData["Mail ID"],
-            // "Photo": `/static/images/profile_photos/${facultyData["unique_id"]}.jpg`,
-            "Photo": facultyData.Photo,
+            "Photo": `/static/images/profile_photos/${facultyData["unique_id"]}.jpg`,
             "Google_Scholar_Profile": facultyData["Google Scholar Profile"],
             "Research_Gate": facultyData["Research Gate"],
             "Orchid_Profile": facultyData["Orchid Profile"] || null,
@@ -63,7 +64,7 @@ async function getStaffProfile (req, res) {
                 "PAPER_TITLE": pub["PAPER_TITLE"],
                 "CONFERENCE_NAME": pub["CONFERENCE_NAME"],
                 "ORGANIZED_BY": pub["ORGANIZED_BY"],
-                "book_number": pub["book_number"],
+                "book_number": pub["book_number"] || "-",
                 "MONTH_&YEAR": pub["MONTH&_YEAR"]
             })),
             "BOOK_PUBLICATIONS": facultyData["BOOK_PUBLICATIONS"].map(pub => ({
@@ -89,14 +90,36 @@ async function getStaffProfile (req, res) {
                 "PAPER_TITLE": pub["PAPER_TITLE"],
                 "JOURNAL_NAME": pub["JOURNAL_NAME"],
                 "DOI_NUMBER": pub["DOI_NUMBER"],
-                "PAGE_NO": pub["PAGE_NO"],
-                "VOL_NO": pub["VOL_NO"],
+                "PAGE_NO": pub["PAGE_NO"] || "-",
+                "VOL_NO": pub["VOL_NO"] || "-",
                 "MONTH_&YEAR": pub["MONTH&_YEAR"],
                 "INDEXED": pub["INDEXED"]
             })),
             "RESEARCH_SCHOLARS": facultyData["RESEARCH_SCHOLARS"] || []
         };
+        // function to convert  Date to object
+        const convertToDate = (dateStr) => {
+            if (!dateStr) return new Date(0); 
+            const [day, month, year] = dateStr.split('.').map(Number);
+            return new Date(year, month - 1, day);
+        };
+
+        // Sorting  PATENTS 
+        if (convertedData["PATENTS"] && Array.isArray(convertedData["PATENTS"])) {
+            convertedData["PATENTS"] = convertedData["PATENTS"]
+                .filter(patent => patent.DATE_OF_RECENT_ACHIEVED_LEVEL)
+                .sort((a, b) => convertToDate(a.DATE_OF_RECENT_ACHIEVED_LEVEL) - convertToDate(b.DATE_OF_RECENT_ACHIEVED_LEVEL));
+        }
+
+        // Sorting RESEARCH_SCHOLARS 
+        if (convertedData["RESEARCH_SCHOLARS"] && Array.isArray(convertedData["RESEARCH_SCHOLARS"])) {
+            convertedData["RESEARCH_SCHOLARS"].sort((a, b) => 
+                (a["MONTH_&YEAR_OF_DEGREE_AWARDED"] || 0) - (b["MONTH&_YEAR_OF_DEGREE_AWARDED"] || 0)
+            );
+        }
+
         res.json(convertedData);
+        
     } catch (error) {
         console.error('Error fetching data from MongoDB:', error);
         res.status(500).json({ message: 'Error fetching faculty data' });

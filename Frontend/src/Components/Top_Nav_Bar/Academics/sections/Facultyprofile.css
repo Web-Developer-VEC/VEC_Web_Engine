@@ -542,54 +542,65 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+
+.faculty-experience-table-container
+      
+{
+  @media (min-width:600px){
+    overflow-x: auto;
+    margin: 0 auto;
+  }
+}
+
+.faculty-timeline-table-container{
+  @media (min-width:600px){
+     overflow-x: auto;
+     margin: 0 auto;
+  }
+}
+
+.faculty-timeline-table-container{
+  width: 100%;
+}
+
 .faculty-experience-head-container{
  
-  width: 100%;
+  width: 99%;
+
 }
 .faculty-experience-header {
   font-size: 1.5rem;
   font-weight: 700;
-
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.faculty-experience-content{
-  border: 2px solid rgb(253, 204, 3);
-  padding: 30px;
-  width: 1130px;
-  border-radius: 8px;
-  background-color: rgb(242, 242, 242);
-}
 
-.faculty-experience-point{
-  border-left: 3px solid green; 
-  padding-left: 15px;
-  line-height: 36px;
-}
+
 
 /*timeline section*/
 .faculty-timeline-container {
   display: flex;
   width: 1200px;
   margin: 0 auto;
-  flex-direction: column;
   position: relative;
-  overflow: hidden;
-  touch-action: pan-y;
+  padding: 0 0.8rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 } 
 
-.faculty-timeline-table{
-  width:1140px  ;
-}
+
+
 
 .faculty-timeline-title {
   font-size: 1.5rem;
   font-weight: 700;
   /*color: #1f2937;*/
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -861,6 +872,15 @@
    {
     width: 100%;
   }
+
+  .faculty-timeline-container{
+    width: 100%;
+    padding: 0 1rem;
+  }
+.faculty-timeline-content{
+  width: 100%;
+}
+
 }
 
 /* Ensure they follow tiles' max-width structure */
@@ -871,11 +891,21 @@
     margin: 0 auto;
   }
 
+  .faculty-timeline-container{
+    max-width: 1140px;
+    max-width: 0 auto;
+  }
+
   .faculty-experience-content
-    {
+  {
     max-width: 100%;
   }
+  .faculty-timeline-content{
+    max-width: 100%;
+  }
+  
 }
+
 
 
 .faculty-tiles-app-tile {
@@ -901,9 +931,7 @@
   margin-bottom: 1rem;
 }
 
-.faculty-tiles-app-tile-icon {
-  /*color: #fdcd33;*/
-}
+
 
 .faculty-tiles-app-tile-title {
   font-size: 1.25rem;
@@ -921,7 +949,7 @@
 .faculty-tiles-app-tile-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 0.5rem;
   word-wrap: break-word;
 }
@@ -1020,11 +1048,25 @@ margin-top: 1rem;
 transition: background-color 200ms;
 }
 
-.faculty-tiles-app-view-more:hover {
-/*background-color: #d9b831;*/
-}
+
 
 .faculty-blurred {
 filter: blur(5px);
 }
 
+
+.Tilescontent-withgreen{
+  display: flex;
+  flex-direction: row;
+  padding: 10px  20px;
+}
+
+.Tilescontent{
+  padding-top:10px ;
+  margin-left: 10px;
+}
+
+
+.clip-path-custom {
+  clip-path: path("M10,10 Q50,75 10,140");
+}

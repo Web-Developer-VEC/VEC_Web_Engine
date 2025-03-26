@@ -2,7 +2,7 @@
   margin: 20px auto;
   text-align: center;
   padding: 40px 20px;
-  background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);    
+  background-image: linear-gradient( 135deg,rgb(128, 0, 0) 10%,rgb(128, 0, 0)100%);    
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
