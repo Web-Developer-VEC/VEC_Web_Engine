@@ -445,71 +445,168 @@ const YRC = () => {
     fetchData();
   }, []);
 
+
+  const studentCoordinators1 = [
+    {
+      id: 1,
+      name: "Praveen Hari S",
+      role: "YRC Chairman",
+      department: "Dept. of AI&DS",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg", // Replace with actual image path
+    },
+    {
+      id: 2,
+      name: "Neena V",
+      role: "YRC Vice Chairman",
+      department: "Dept. of EEE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 3,
+      name: "Aram Valartha Nayaki K",
+      role: "YRC Secretary",
+      department: "Dept. of ECE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 4,
+      name: "Logesh G",
+      role: "YRC Treasurer",
+      department: "Dept. of ECE",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 5,
+      name: "Dakshan B",
+      role: "YRC Joint Secretary",
+      department: "Dept. of AI&DS",
+      year: "2nd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 6,
+      name: "Akshaya S",
+      role: "YRC Joint Secretary",
+      department: "Dept. of CSE",
+      year: "3rd Year",
+      image: "https://imgcdn.stablediffusionweb.com/2024/4/7/76683d35-d0e9-4bf4-a630-99a6cc7da8c2.jpg",
+    },
+    {
+      id:7,
+      name: "Siddharth Magesh",
+      role: "YRC Technical Head",
+      department: "Dept. of AI&DS",
+      year: "3rd year",
+      image: "https://imgcdn.stablediffusionweb.com/2024/4/7/76683d35-d0e9-4bf4-a630-99a6cc7da8c2.jpg",
+    },
+    {
+      id: 8,
+      name: "Tarakeshwaran S",
+      role: "YRC Technical Head",
+      department: "Dept. of Mechanical Engineering",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 9,
+      name: "Mithun Raj S",
+      role: "YRC Non-Technical Head",
+      department: "Dept. of AI&DS",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+    {
+      id: 10,
+      name: "Jothi Lakshmi S",
+      role: "YRC Non-Technical Head",
+      department: "Dept. of Mechanical Engineering",
+      year: "3rd Year",
+      image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
+    },
+  ];
+  
   function YRCCoord() {
-    const studentCoordinators = Array.from({ length: 10 }, (_, index) => ({
-      id: index + 1,
-      name: `Student Coordinator ${index + 1}`,
-      role: "YRC Student Leader",
-      image: "https://via.placeholder.com/150",
-    }));
+    function getStudentCoordinators() {
+      return Array.from({ length: 10 }, (_, index) => ({
+        id: index + 1,
+        name: `Student Coordinator ${index + 1}`,
+        role: "YRC Student Leader",
+        image: "https://via.placeholder.com/150",
+      }));
+    }
+  
+    const studentCoordinators = getStudentCoordinators();
   
     return (
+      
       <div className="yrc-coordinators-container">
-        <h2 className="yrc-heading">
-          Meet Our Coordinators
-          <div className="yrc-underline"></div>
+        <h2 className="yrc-h2">
+          FACULTY COORDINATOR
+          <div className="yrc-underline2"></div>
         </h2>
         
-        {/* Staff Coordinator */}
-        {staffCoordinator && (
-          <div className="yrc-staff-card">
-            <img
-              src={UrlParser(staffCoordinator.image_path)}
-              alt={staffCoordinator.name}
-              className="yrc-profile-pic"
-            />
-            <div className="yrc-staff-info">
-              <span className="yrc-role">Faculty Coordinator</span>
-              <h3>{staffCoordinator.name}</h3>
-              <p className="yrc-designation">{staffCoordinator.designation}</p>
-            </div>
-          </div>
-        )}
-  
-        {/* Programme Officer */}
-        <div className="yrc-officer-card">
-          <img src="/officer-image.png" alt="Officer" className="yrc-officer-image" />
-          <div className="yrc-officer-info">
-            <span className="yrc-role">Programme Officer</span>
-            <h3>Ramesh V</h3>
-            <p className="yrc-qualification">Bachelor of Education</p>
-            <p className="yrc-description">
-              A highly skilled and disciplined officer leading the cadets with excellence.
+        <div className="yrc-member-card-1">
+          <img
+            src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg"
+            alt="Officer"
+            className="yrc-member-image1"
+          />
+
+          <div className="yrc-member-info1">
+            <span className="yrc-platoon">Programme Officer</span>
+            <h3>Ramesh Kumar V</h3>
+            <p className="yrc-title">Bachelor of Education</p>
+            <p className="yrc-degree">
+            The Programme Officer for the Youth Red Cross (YRC) is responsible for planning, coordinating, and implementing various YRC activities and initiatives. The role involves engaging with youth volunteers, organizing training sessions, promoting humanitarian values, and ensuring the smooth execution of YRC programs.
             </p>
           </div>
         </div>
   
-        {/* Student Coordinators */}
-        <h2 className="yrc-subheading">Student Coordinators</h2>
-        <div className="yrc-student-grid">
-          {studentCoordinators.map((coordinator) => (
-            <div key={coordinator.id} className="yrc-student-card">
-              <img
-                src={coordinator.image}
-                alt={coordinator.name}
-                className="yrc-student-image"
-              />
-              <div className="yrc-student-info">
-                <span className="yrc-role">{coordinator.role}</span>
-                <h3>{coordinator.name}</h3>
-              </div>
+        
+        {staffCoordinator && (
+          <div className="yrc-member-card">
+            <img
+              src={UrlParser(staffCoordinator.image_path)}
+              alt={staffCoordinator.name}
+              className="yrc-member-image1"
+            />
+            <div className="yrc-member-info2">
+              <span className="yrc-platoon">Faculty Coordinator</span>
+              <h3>{staffCoordinator.name}</h3>
+              <p className="yrc-title">{staffCoordinator.designation}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
+  
+        <h2 className="yrc-h3">
+          STUDENT COORDINATORS
+          <div className="yrc-underline3"></div>
+        </h2>
+        <div className="yrc-members-grid">
+  {studentCoordinators1.map((coordinator) => (
+    <div key={coordinator.id} className="yrc-member-card">
+      <img
+        src={coordinator.image}
+        alt={coordinator.name}
+        className="yrc-member-image"
+      />
+      <div className="yrc-member-info">
+        <h3>{coordinator.name}</h3>
+        <span className="yrc-platoon">{coordinator.role}</span>
+        <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
+        <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
     );
   }
-  
   // Carousel Settings
   const carouselSettings = {
     dots: true,
