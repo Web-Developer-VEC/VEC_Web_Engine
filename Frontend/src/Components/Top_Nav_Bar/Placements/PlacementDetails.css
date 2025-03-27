@@ -64,7 +64,7 @@
 .placement-yearwise h4 {
   position: absolute;
   top: -20px;
-  left: 20px;
+  left: 35px;
   background-color: rgb(251, 231, 82);
   padding: 5px 20px;
   font-size: 1rem;
@@ -222,6 +222,11 @@
     overflow-x: auto;
   }
 
+  .placement-percent{
+    width: 90%;
+    margin-left:1.2rem ;
+  }
+
   .placement-percent table {
     display: block;
     width: 100%;
@@ -229,9 +234,10 @@
   }
 
   .placement-yearwise {
-    width: 100%;
+    width: 90%;
     left: 0;
     padding: 1.5rem 1rem;
+    margin: 0 auto;
   }
 
   /* Ensure two buttons are always in one row */
@@ -242,7 +248,7 @@
 
   /* Adjust button size for uniformity */
   .place-course-button {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px 20px;
     min-width: 130px;
   }
@@ -274,7 +280,7 @@
   }
 
   .place-course-button {
-    font-size: 14px;
+    font-size: 16px;
     padding: 8px 16px;
     min-width: 120px;
   }
@@ -282,7 +288,7 @@
     font-size: 18px; /* Even smaller for compact view */
     margin-bottom: 12px;
     padding: 5px 0;
-  }
+  } 
 }
 
 /* Fade-in Animation */

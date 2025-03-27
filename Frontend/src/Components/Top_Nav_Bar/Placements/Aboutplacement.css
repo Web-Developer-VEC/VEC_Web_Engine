@@ -14,6 +14,14 @@
   width: 50%; 
   margin-bottom: 40px;
 }
+
+
+
+@media (max-width:480px){
+  .AP-grid-VM{
+    width: 100%;
+  }
+}
 .AP-grid-VMC{
   display: flex;
 }
@@ -24,13 +32,20 @@
   margin-bottom: 40px;
 }
 .AP-grid-CPC{
-  
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusting min size for better small-screen support */
   gap: 20px;
   width: 50%;
   margin-bottom: 40px;
   margin-left: 20px;
+}
+
+
+@media (max-width:480px){
+  .AP-grid-CPC{
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .AP-contact-name{
   font-size: 16px;
@@ -52,10 +67,10 @@
 
 /* Card Title */
 .AP-card-title {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 15px;
   font-weight: 600;
-  color: #ff9800;
+  color: rgb(128, 0, 0);
 }
 
 /* Card Text */
@@ -63,6 +78,7 @@
   line-height: 1.7;
   font-size: 16px;
   color: #444;
+  text-align: justify;
 }
 
 /* Responsive Design */
@@ -87,6 +103,7 @@
   .AP-card-text {
     font-size: 15px;
     line-height: 1.6;
+    text-align: justify;
   }
 }
 
@@ -112,17 +129,21 @@
   .AP-card-text {
     font-size: 14px;
     line-height: 1.5;
+    text-align: justify;
   }
 }
 
 @media (max-width: 480px) {
   .AP-main-container {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   .AP-card {
     padding: 15px;
     border-left: 3px solid #ffcc00; /* Even thinner border for very small screens */
+    
   }
 
   .AP-card-title {
@@ -132,5 +153,14 @@
   .AP-card-text {
     font-size: 13px;
     line-height: 1.4;
+    text-align: justify;
   }
+
+
+  .AP-grid-VMC{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
 }

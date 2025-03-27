@@ -15,18 +15,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px; /* Increased gap for better separation */
-  border-left: 5px solid #800000;
+
 }
 
 .palumni-objectives{
-border-right: 5px solid #800000;
+border-left: 5px solid #800000;
 }
 
 /* Column styling for two-column sections */
 .pcolumn {
   flex: 1;
   min-width: 300px;
-  
   padding: 25px; /* Increased padding for a spacious feel */
   border-left: 12px solid #fdb515;
   border-radius: 0 12px 12px 0; /* Larger radius for a softer look */
@@ -48,19 +47,18 @@ border-right: 5px solid #800000;
 
 /* Section title styling */
 .pasection-title {
-  font-size: 20px;/* Slightly larger for prominence */
+  font-size: 24px;/* Slightly larger for prominence */
   font-weight: bold;
   color:#800000;
- 
   margin-bottom: 20px; /* More space below title */
 }
-h2{
-  font-size: 20px;
+.pasection-title h2{
+  font-size: 24px;
 }
 
 /* Section content styling */
 .psection-content {
-  font-size: 18px;
+  font-size: 16px;
   margin:1px solid #800000; /* Slightly larger for readability */
  
   text-align: justify;
@@ -121,7 +119,7 @@ h2{
   }
 
   .psection-title {
-      font-size: 22px; /* Smaller on mobile */
+      font-size: 24px; /* Smaller on mobile */
   }
 
   .psection-content {
