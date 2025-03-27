@@ -10,7 +10,7 @@
 }
 
 .B-E h3, .Admission h5 {
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 2rem;
     letter-spacing: 1px;
     font-weight: bold;
@@ -18,7 +18,7 @@
 
 .Eligibility {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -43,7 +43,7 @@
 
 .table-card {
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); */
 }
 
 .styled-table {
@@ -125,7 +125,7 @@
 
 @media (max-width: 768px) {
     .Admission { padding: 2rem; }
-    .B-E h3 { font-size: 18px; }
+    .B-E h3 { font-size: 32px; }
     .ADM-content { padding: 1.2rem; }
     .description-text { font-size: 15px; }
     .table-container { overflow-x: auto; }
@@ -134,7 +134,7 @@
 
 @media (max-width: 480px) {
     .Admission { padding: 1.5rem; }
-    .B-E h3 { font-size: 16px; }
+    .B-E h3 { font-size: 32px; }
     .ADM-content { padding: 1rem; }
     .description-text { font-size: 14px; }
     .styled-table th, .styled-table td { padding: 6px; font-size: 14px; }

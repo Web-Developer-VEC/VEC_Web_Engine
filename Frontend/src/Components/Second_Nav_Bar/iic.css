@@ -55,6 +55,8 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    margin-top:10px;
+    margin-bottom:10px;
   }
 
   .naac-info-panel {
@@ -511,6 +513,8 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     align-items: flex-start;
+    margin-top:10px;
+    margin-bottom:10px;
   }
 
   .functions-info-panel h2 {

@@ -19,13 +19,17 @@ import "swiper/css/navigation";
 import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 
 function YRCAbout() {
-  return (<div className="YRC-Aboutus">
+  return (
+    <div className="YRC-about">
+    <div className="YRC-Aboutus">
     <h2 className="YRC-heading">ABOUT US</h2>
     <p className="YRC-content">
       The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian
       values among young individuals.
     </p>
-  </div>);
+  </div>
+  </div>
+  );
 }
 
 function YRCNews() {
