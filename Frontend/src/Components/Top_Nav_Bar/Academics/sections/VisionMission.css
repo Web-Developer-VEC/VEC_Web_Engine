@@ -74,7 +74,7 @@ body {
 }
 
 .section-card h2 {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: 1px;
@@ -82,7 +82,7 @@ body {
 }
 
 .section-card p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
 }
@@ -119,7 +119,7 @@ body {
 .testimonials {
   margin-top: 50px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   /*color: #555;*/
   text-align: center;
@@ -141,7 +141,7 @@ body {
 }
 
 .about-department h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   /*color: #333;*/
   margin-bottom: 20px;
@@ -191,7 +191,7 @@ body {
 }
 
 .section-card h2 {
-  font-size: 20px;
+  font-size: 24px;
   color: #000;
 }
 
@@ -203,7 +203,7 @@ body {
 }
 
 .section-card blockquote {
-  font-size: 18px;
+  font-size: 16px;
   font-style: italic;
   font-weight: bold;
   /*color: #555;*/
@@ -394,13 +394,13 @@ POE accordion-item-circle {
   }
   .about-department-text h2 {
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     /* Adjust font size for smaller screens */
   }
 
   .about-department-text h2 {
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     /* Adjust font size for smaller screens */
   }
 

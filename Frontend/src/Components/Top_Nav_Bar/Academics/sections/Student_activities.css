@@ -22,7 +22,7 @@
 }
 
 .intro-title {
-  font-size: 20px; /* Larger title */
+  font-size: 24px; /* Larger title */
   font-weight: 700; /* Bold weight for better emphasis */
   margin-bottom: 1.2rem;
   /*color:rgb(253 204 3); !* Yellow for contrast *!*/
@@ -56,7 +56,7 @@
 }
 
 .description-title {
-  font-size: 20px; /* Larger title */
+  font-size: 24px; /* Larger title */
   font-weight: 700; /* Bold weight */
   margin-bottom: 1rem;
   /*color:rgb(253 204 3); !* Yellow title *!*/
@@ -191,16 +191,16 @@
   }
   
   .intro-title {
-    font-size: 2rem;
+    font-size: 32px;
   }
   
   .intro-text-act, .description-text-act {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     text-align: justify;
   }
   
   .description-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   
   .carousel-wrapper {
@@ -227,7 +227,7 @@
   }
   
   .intro-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .intro-text-act, .description-text-act {
@@ -236,7 +236,7 @@
   }
   
   .description-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   
   .carousel-wrapper {
@@ -280,12 +280,12 @@
   }
   
   .intro-text-act, .description-text-act {
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: justify;
   }
   
   .description-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   
   .carousel-wrapper {

@@ -9,7 +9,9 @@
   width: 100%;
   margin: 0;
 }
-
+.text-start-car{
+  font-size: 24px;
+}
 /* Card-like content containers */
 .content-section {
   /*background-color: #ffffff;*/

@@ -33,7 +33,7 @@ const CurriculumPage = ({ data }) => {
             {/* Left Column: Curriculum and PSOs */}
             <div className="col-md-6">
               <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                <h2 className="text-start">Curriculum & Syllabus</h2>
+                <h2 className="text-start-car">Curriculum & Syllabus</h2>
     
                 {/* Regulation Rows */}
                 {data?.regulation?.year?.map((year, index) => (

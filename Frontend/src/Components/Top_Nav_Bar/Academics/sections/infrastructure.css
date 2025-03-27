@@ -14,7 +14,7 @@
 .infra-head {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 /* Text components */
@@ -24,7 +24,7 @@
 }
 
 .text-heading .text-title {
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
   margin: 120px auto;
 }
@@ -32,18 +32,18 @@
 .text-heading .text-author {
   margin-bottom: 80px;
   text-align: right;
-  font-size: 30px;
+  font-size: 32px;
 }
 
 .text-blockWrapper .text-paragraph {
-  font-size: 15pt;
+  font-size: 16px;
   margin-bottom: 40px;
   line-height: 1.6;
 }
 
 .text-footer .text-referenceInfo {
   margin-top: 40px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 /* Grid layout for page content */
@@ -165,7 +165,7 @@
 .btn {
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
-  font-size: 0.65rem;
+  font-size: 1rem;
   font-weight: bold;
   text-transform: uppercase;
   color: white;
