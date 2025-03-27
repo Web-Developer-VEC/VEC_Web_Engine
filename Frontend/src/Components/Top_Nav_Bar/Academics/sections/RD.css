@@ -52,7 +52,7 @@ body {
 
 .RD-year-button {
   padding: 12px 30px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   border: none;
   border-radius: 30px;
@@ -108,7 +108,7 @@ body {
 }
 
 .RD-action-button span {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #333;
 }

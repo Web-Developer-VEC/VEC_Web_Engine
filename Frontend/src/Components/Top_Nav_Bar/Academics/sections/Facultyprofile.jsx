@@ -332,7 +332,7 @@ export const EducationTimeline = ({ data }) => {
 
 <div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible">
     <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
-      <thead className="bg-brwn text-white">
+      <thead className="bg-gry text-white">
         <tr>
           <th className="border border-black p-3">Degree</  th>
           <th className="border border-black p-3">Branch</th>
@@ -438,7 +438,7 @@ const Experience = ({data}) => {
 
  
   <table className="w-[1130px] border-2 border-black border-separate border-spacing-0  rounded-lg overflow-hidden ml-30">
-    <thead className="bg-brwn text-white">
+    <thead className="bg-gry text-white">
       <tr>
         <th className="border border-black p-3 border">Institution</th>
         <th className="border border-black p-3 border">Duration</th>
