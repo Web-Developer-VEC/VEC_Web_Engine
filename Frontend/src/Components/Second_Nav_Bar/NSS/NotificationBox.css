@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 20px;
     width: 100%;
+    flex-direction:column;
 }
 
 /* Left-side text styling */
@@ -42,6 +43,7 @@
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     border: 1px solid #ccc;
+    margin:20px;
 }
 
 /* Notification header */
@@ -69,4 +71,10 @@ marquee p {
     font-size: 18px;
     /* Larger font for readability */
     color: #444;
+}
+@media (max-width: 768px){
+    .nss-notification-box{
+        width: 375px;
+        margin: 10px;
+    }
 }

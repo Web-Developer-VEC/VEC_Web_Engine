@@ -418,6 +418,8 @@
   justify-content: space-between;
   padding: 20px;
   width: 100%;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 /* Left-side text styling */
@@ -455,6 +457,7 @@
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border: 1px solid #ccc;
+  margin: 10px;
 }
 
 /* Notification header */
@@ -597,6 +600,10 @@ marquee p {
   .custom-prev {
     left: -30px;
   }
+  .YRC-about{
+    margin: 10px;
+
+  }
 
   .custom-next {
     right: -30px;
@@ -614,7 +621,9 @@ marquee p {
   .carouselyrc-image {
     height: 180px;
   }
-
+  .YRC-about{
+    margin: 10px;
+  }
   .carouselyrc-card {
     min-height: 280px;
   }
@@ -660,6 +669,10 @@ marquee p {
         text-align: center;
         padding: 20px;
     }
+    .YRC-notification-box{
+      width: 375px;
+      margin: 10px;
+    }
 
     .yrc-profile-pic, .yrc-officer-image {
         margin-right: 0;
@@ -674,7 +687,10 @@ marquee p {
   .YRC-Aboutus, .YRC-mission-vision-container {
     width: 90%;
   }
-
+  .YRC-notification-box{
+    width: 375px;
+    margin: 10px;
+  }
   .YRC-mission-vision-container {
     gap: 20px;
   }
@@ -716,6 +732,10 @@ marquee p {
   .YRC-Aboutus, .YRC-mission-vision-container {
     width: 95%;
     padding: 20px;
+  }
+  .YRC-notification-box{
+    width: 375px;
+    margin: 10px;
   }
 
   .YRC-mission-vision-container {
@@ -812,7 +832,7 @@ marquee p {
   .YRC-Aboutus {
     width: 100%;
     padding: 15px;
-    font-size: 14px; /* Smaller text */
+    font-size: 14px;/* Smaller text */
   }
 
   /* Mission & Vision */
@@ -969,6 +989,7 @@ marquee p {
   .yrc-member-card-1 {
     width: 90%; /* Full width with some margin */
     padding: 15px;
+    flex-direction: column;
   }
 
   .yrc-member-image1 {
@@ -989,6 +1010,7 @@ marquee p {
 @media (max-width: 480px) {
   .yrc-member-card-1 {
     width: 95%;
+    flex-direction: column;
   }
 
   .yrc-member-image1 {
@@ -1007,7 +1029,9 @@ marquee p {
 
 @media (max-width: 1024px) {
   .yrc-member-card-1 {
-    width: 280px; /* Slightly smaller */
+    width: 280px;
+    flex-direction: column; 
+    justify-content: center;/* Slightly smaller */
   }
 
   .yrc-member-image1 {

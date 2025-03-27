@@ -219,7 +219,7 @@ const IQAC = () => {
             <div className="coordinator-container flex-wrap">
                 <h2 className="text-2xl text-center text-accn my-4 basis-full">IQAC Coordinator</h2>
                 {coordinator && (
-                    <div className="coordinator-card mx-32">
+                    <div className="coordinator-card ">
                         <div className="coordinator-image-container max-w-[25vmax] h-auto">
                             <img src={UrlParser(coordinator.imagepath) || "/placeholder.svg"} alt={coordinator.name}
                                  className="coordinator-image"/>

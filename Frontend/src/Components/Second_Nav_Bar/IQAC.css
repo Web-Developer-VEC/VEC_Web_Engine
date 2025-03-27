@@ -139,6 +139,7 @@
   /*background: white;*/
 }
 
+
 .nir-action-button {
   width: auto;
   padding: 15px 20px;
@@ -223,6 +224,11 @@
 
 .gallery-selected{
   background-color: #830000;
+}
+.coordinator-card{
+  width: 350px;
+   margin-left: 150px; 
+  margin-right: 150px;
 }
 
 @keyframes slide-in {
@@ -322,6 +328,13 @@
 @media screen and (max-width: 920px) {
   .nir-buttons {
     grid-template-columns: 1fr;
+  }
+  .coordinator-card{
+    width: 300px; /* Adjust as needed */
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
   }
 }
 
@@ -548,7 +561,14 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .coordinator-card {
-    flex-direction: column;
+  flex-direction: column;
+  width: 90%; 
+  max-width: 400px; 
+  min-width: 280px; 
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   }
 
   .coordinator-image-container,
