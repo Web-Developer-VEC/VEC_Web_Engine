@@ -777,7 +777,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
                                         glare: true,
                                         "max-glare": 0.2,
                                     }}
-                                    className="relative max-h-[55vh] rounded-2xl shadow-lg overflow-hidden transition-all transform
+                                    className="relative h-[75vh] rounded-2xl shadow-lg overflow-hidden transition-all transform
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
                                 >
                                     <div className="relative overflow-hidden">

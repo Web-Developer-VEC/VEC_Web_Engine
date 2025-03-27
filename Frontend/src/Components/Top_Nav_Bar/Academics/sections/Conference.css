@@ -41,7 +41,6 @@
   transition: all 0.3s ease-in-out;
   width: calc(50% - 10px); /* Ensures 2 cards per row */
   align-self: flex-start; /* Allows cards to expand independently */
-  height: 50vh;
 }
 
 /* Ensures cards expand properly */

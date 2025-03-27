@@ -35,9 +35,6 @@ const AbtUs = ({ theme, toggle }) => {
           </div>
         );
     }
-
-    const banTtl = "About VEC";
-    const motto = "A Journey of Thousand Miles Begins with a Single Step";
     const secTtl = "Velammal Engineering College";
 
     const secSub = "An Autonomous Institution";
