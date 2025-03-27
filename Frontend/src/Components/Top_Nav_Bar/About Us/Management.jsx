@@ -46,18 +46,18 @@ function Management({ theme, toggle }) {
 
       <div className={`FCP-message-container ${theme === 'dark' ? 'dark-theme' : ''}`}>
         {/* Founder Message Section */}
-        <div className="FCP-message-section FCP-founder-section">
+        <div className="FCP-message-section FCP-founder-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h2 className="FCP-section-title">FOUNDER MESSAGE</h2>
 
-          <div className="FCP-content-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <div className="FCP-content-container">
             <div className="FCP-text-container">
               <p>At Velammal Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.
               </p>
             </div>
 
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/muthuramalingam.webp')} alt="Founder's Image" className="founder"/>
+              <img src={UrlParser('static/images/management/muthuramalingam.webp')} alt="Founder's Image" className="founder"/>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ function Management({ theme, toggle }) {
 
           <div className="FCP-content-container">
             <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/velmurugan.webp')} alt="CEO's Image" />
+              <img src={UrlParser('static/images/management/velmurugan.webp')} alt="CEO's Image" />
             </div>
 
             <div className="FCP-text-container">
@@ -93,8 +93,8 @@ function Management({ theme, toggle }) {
               It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity.
               </p>
             </div>
-            <div className="FCP-image-container">
-              <img src={UrlParser('static/images/trust/deptyceo.webp')} alt="deputy ceo Image" />
+            <div className="FCP-image-container FCP-image-container1">
+              <img src={UrlParser('static/images/management/deptyceo.webp')} alt="deputy ceo Image" />
             </div>
           </div>
         </div>

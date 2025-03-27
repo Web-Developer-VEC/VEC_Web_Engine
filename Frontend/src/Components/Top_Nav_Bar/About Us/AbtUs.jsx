@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
+import styles from './AbtUs.css';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -118,10 +119,8 @@ const AbtUs = ({ theme, toggle }) => {
             </div>
 
             {lis.map((itm, index) => (
-                <div key={index} className="flex gap-8 my-14 border-y-4 border-secd dark:border-drks
-                    bg-[color-mix(in_srgb,theme(colors.secd)_15%,white)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks)_30%,black)]
-                    p-10 shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out">
+                <div key={index} className="flex gap-8 my-14 
+                    p-10 transition-all duration-300 ease-in-out">
                     
                     <div className="flex flex-col justify-center px-2 lg:px-12">
                         <p className="text-[16px] lg:text-[16px] text-justify font-[Poppins]
@@ -133,8 +132,8 @@ const AbtUs = ({ theme, toggle }) => {
             ))}
 
             <div className='m-8 p-6'>
-                <ul className='flex flex-wrap justify-center gap-8'>
-                    <li className='text-lg flex items-center gap-2'>
+                <ul className='pdf-links flex flex-wrap justify-center gap-8' >
+                    <li className='text-lg flex items-center gap-'>
                         <FaLink className='text-prim dark:text-drkp' />
                         <a href={UrlParser("static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗AICTE Approval</a>
                     </li>
