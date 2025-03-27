@@ -101,6 +101,7 @@ const VisionMission = ({ data }) => {
         <div className="psos-section mt-5">
           <h2>Program Educational Outcomes</h2>
           <div className="accordion" id="psosAccordion">
+            
             {data?.program_educational_outcomes?.headings?.map((heading, index) => (
               <div className="POE accordion-item-cir"key={index}>
                 <h2 className="accordion-header" id={`psosHeading${index}`}>
