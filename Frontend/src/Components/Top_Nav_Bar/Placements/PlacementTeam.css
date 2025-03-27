@@ -61,14 +61,15 @@ body {
   justify-content: space-between;
 }
 
-.person-content h2 {
+.person-content h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 24px;
+
 }
 
 .person-content .placement-head {
   margin: 10px 0 0 0;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .person-content p {

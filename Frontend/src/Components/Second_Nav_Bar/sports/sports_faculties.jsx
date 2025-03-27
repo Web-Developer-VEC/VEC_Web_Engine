@@ -6,7 +6,7 @@ import '../sports/Sportshod.css';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
 const Sportsfaculties = ({ data }) => {

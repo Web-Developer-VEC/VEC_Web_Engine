@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
 }
 
 .org-chart-image {
@@ -20,7 +20,7 @@
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .org-chart-container {
-    padding: 15px; /* Slightly reduced padding on smaller screens */
+    padding: 12px; /* Slightly reduced padding on smaller screens */
   }
 
   .org-chart-image {

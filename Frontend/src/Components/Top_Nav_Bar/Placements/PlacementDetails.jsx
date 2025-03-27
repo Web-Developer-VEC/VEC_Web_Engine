@@ -108,7 +108,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
 
                         {/* Year-wise PDF Reports */}
                         <div className="placement-yearwise card-plc">
-                            <h4>Placement Details Year Wise</h4>
+                            <h4 >Placement Details Year Wise</h4>
                             <div className="place-Sylgrid">
                                 {placementData?.Year_Wise?.year_pdf.map((year, index) => (
                                     <button

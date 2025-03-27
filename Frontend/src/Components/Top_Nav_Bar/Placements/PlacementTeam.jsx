@@ -17,8 +17,8 @@ function PersonDetail({ person, isImageLeft }) {
     <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
       <img src={UrlParser(person?.photo_path)} alt={person?.name} className="person-image" />
       <div className="person-content">
-        <h2 className="text-accn dark:text-drka">{person?.designation}</h2>
-        <h3 className='placement-head'>{person?.name}</h3>
+      <h3 className='placement-head'>{person?.name}</h3>
+        <h2 className="text-accn dark:text-drka text-[24px]">{person?.designation}</h2>
         <p>{person?.content}</p>
       </div>
     </div>
@@ -38,7 +38,7 @@ function PersonMemberDetail({ person, isImageLeft }) {
       <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image" />
       <div className="person-content">
         <h3 className='placement-member-head'>{person.name}</h3>
-        <h2 className="text-accn dark:text-drka">{person.designation}</h2>
+        <h3 className="text-accn dark:text-drka ">{person.designation}</h3>
         {/* <p>{person.content}</p> */}
       </div>
     </div>

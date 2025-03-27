@@ -330,7 +330,7 @@ export const EducationTimeline = ({ data }) => {
   
 <br />
 
-<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible">
+<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible"> 
     <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
       <thead className="bg-brwn text-white">
         <tr>
@@ -352,10 +352,9 @@ export const EducationTimeline = ({ data }) => {
       </tbody>
     </table>
   </div>
- 
-  </div>
 <br />
 <br />
+    </div>
     </div>
   );
 };

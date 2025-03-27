@@ -171,7 +171,7 @@ const Dean = ({theme, toggle}) => {
       </div>
     ) : (
       <div className="container">
-        <div className="de-container">
+        <div className="de-container font-poppins">
           {data.map((section, index) => {
             const responsibleDean = deanData.find(
               (dean) => dean.Position === section.heading
@@ -179,19 +179,19 @@ const Dean = ({theme, toggle}) => {
 
             return (
               <div className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-                <h1 className="de-heading text-accn dark:text-drka">{section.heading}</h1>
+                <h1 className="de-heading text-accn dark:text-drka font-poppins">{section.heading}</h1>
                 <div className="de-content">
                   {/* Profiles Section */}
                   {(responsibleDean?.Dean || responsibleDean?.Associate_Dean) && (
-                    <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full">
+                    <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-poppins">
                       {/* Dean Profile */}
                       {responsibleDean?.Dean && (
-                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
+                        <div className="font-poppins de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
                           <img
                             src={UrlParser(responsibleDean.Dean_Image)} 
                             alt={responsibleDean.Dean}
                           />
-                          <div className="de-profile-details">
+                          <div className="de-profile-details font-poppins">
                             <strong>{responsibleDean.Dean}</strong>
                             <br />
                             <span>{responsibleDean.Dean_Type}</span><br />

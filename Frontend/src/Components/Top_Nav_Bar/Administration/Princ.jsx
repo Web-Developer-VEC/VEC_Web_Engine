@@ -104,19 +104,19 @@ const Princ = ({theme, toggle}) => {
             )}
         </div>
               <div className="text-center">
-                <span className="text-2xl font-semibold block">{data?.name}</span>
-                <span className="text-lg font-bold text-accn dark:text-drka block">
+                <span className="text-2xl font-semibold block font-poppins">{data?.name}</span>
+                <span className="text-lg font-bold text-accn dark:text-drka block font-poppins">
                   {data?.qualification}
                 </span>
               </div>
             </div>
-
+<br />
             {/* Text Content Wrapped Around */}
             <div className="text-justify leading-relaxed max-w-[80%] lg:max-w-[60%] mx-auto">
-              <p className="text-xl lg:text-2xl font-bold mb-3">
+              <p className="text-lg lg:text-[24px] font-bold mb-3 font-poppins">
                 From the Principal's Desk
               </p>
-              <q className="text-md lg:text-lg italic block">{data?.message}</q>
+              <q className="text-md lg:text-[16px] font-poppins block">{data?.message}</q>
             </div>
           </div>
         </div>

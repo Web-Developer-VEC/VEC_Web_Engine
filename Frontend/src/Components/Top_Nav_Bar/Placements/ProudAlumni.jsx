@@ -144,7 +144,7 @@ const ProudAlumni = ({ theme, toggle }) => {
           <div className="main pr-10 pl-10 w-1/2">
               {spcannouncements.map((item) => (
                   <div key={item.title}>
-                      <h2 className="text-3xl text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
+                      <h2 className="text-[24px] text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
                       <p className="text-xl">{item.content}</p>
                   </div>
               ))}

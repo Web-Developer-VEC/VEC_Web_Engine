@@ -1060,7 +1060,6 @@ transition: background-color 200ms;
 filter: blur(5px);
 }
 
-
 .Tilescontent-withgreen{
   display: flex;
   flex-direction: row;

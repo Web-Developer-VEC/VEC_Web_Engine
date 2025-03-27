@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./PatentConsolidation.css"; // Import the CSS file
 import Banner from "../../Banner";
+import "./Patent.css";
 
 export default function PatentConsolidation({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState(null); 
@@ -39,39 +39,95 @@ export default function PatentConsolidation({theme, toggle}) {
     fetchData();
   }, []);
 
+
+  const tableData = [
+    {
+      department: "AI & DS",
+      processOwners: [
+        {
+          name: "John Doe",
+          patents: [
+            { title: "AI Model Optimization", status: "Approved", date: "2024-01-01" },
+            { title: "Deep Learning Framework", status: "Pending", date: "2024-02-15" }
+          ]
+        },
+        {
+          name: "Jane Smith",
+          patents: [
+            { title: "Neural Network Acceleration", status: "Approved", date: "2024-03-20" }
+          ]
+        }
+      ]
+    },
+    {
+      department: "CSE",
+      processOwners: [
+        {
+          name: "Alice Johnson",
+          patents: [
+            { title: "Blockchain Security", status: "Filed", date: "2024-04-05" }
+          ]
+        }
+      ]
+    }
+  ];
+  
+
   return (
-    <>
-      <div>
-        <Banner toggle={toggle} theme={theme}
-          backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-          headerText="Patents"
-          subHeaderText="Enrich Your Knowledge"
-        />
-      </div>
-      <div className="research-patent-container">
-        <h1 className="research-patent-title">
-          Patent - Year wise Consolidation
-        </h1>
 
-        <div className="research-patent-button-container">
-          {patent?.year?.map((year,index) => (
-            <button
-              key={year}
-              onClick={() => {
-                setPdfUrl(UrlParser(patent?.pdf_path[index]));
-                setActiveYear(year);
-              }}
-              className={`research-patent-button ${
-                activeYear === year ? "active" : ""
-              }`}
-            >
-              {year}
-            </button>
-          ))}
-        </div>
+<>
 
-        <iframe src={pdfUrl} className="research-patent-iframe-container" />
-      </div>
-    </>
+<div className="Patent-container">
+<div className="Patent-content">
+  <div className="Patent-title-container">
+    <h2 className="Patent-content">
+      Patent - Department wise Consolidation
+    </h2>
+
+  </div>
+
+  <div className="Patent-table-container">
+  <table className="Patent-table  border-2 border-black border-separate border-spacing-0 rounded-lg">
+      <thead>
+        <tr>
+          <th className="border border-black p-3">Department</th>
+          <th className="border border-black p-3">Process Owner</th>
+          <th className="border border-black p-3">Patent Title</th>
+          <th className="border border-black p-3">Process Status</th>
+          <th className="border border-black p-3">Process Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableData.map((department, deptIndex) => {
+          const departmentRowSpan = department.processOwners.reduce(
+            (acc, owner) => acc + owner.patents.length,
+            0
+          );
+
+          return department.processOwners.map((owner, ownerIndex) => {
+            return owner.patents.map((patent, patentIndex) => (
+              <tr key={`${deptIndex}-${ownerIndex}-${patentIndex}`}>
+                {ownerIndex === 0 && patentIndex === 0 && (
+                  <td rowSpan={departmentRowSpan} className="border border-black p-3">{department.department}</td>
+                )}
+                {patentIndex === 0 && (
+                  <td rowSpan={owner.patents.length} className="border border-black p-3">{owner.name}</td>
+                )}
+                <td className="border border-black p-3">{patent.title}</td>
+                <td className="border border-black p-3">{patent.status}</td>
+                <td className="border border-black p-3"> {patent.date}</td>
+              </tr>
+            ));
+          });
+        })}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+ 
+</>
+ 
   );
 }
