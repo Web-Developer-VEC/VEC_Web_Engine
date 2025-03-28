@@ -9,14 +9,14 @@
   }
   
   .admissions-title {
-    font-size: 3rem; /* text-5xl */
+    font-size: 2rem; /* text-5xl */
     font-weight: 800; /* font-extrabold */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* drop-shadow-lg */
   }
   
   .admissions-text {
     margin-top: 1.5rem; /* mt-6 */
-    font-size: 1.25rem; /* text-xl */
+    font-size: 1rem; /* text-xl */
     max-width: 48rem; /* max-w-3xl */
     margin-left: auto;
     margin-right: auto;
@@ -32,7 +32,7 @@
   .admissions-button {
     padding: 1rem 2rem; /* px-8 py-4 */
     border-radius: 0.75rem; /* rounded-xl */
-    font-size: 1.25rem; /* text-xl */
+    font-size: 1rem; /* text-xl */
     font-weight: bold;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* shadow-lg */
     transition: background-color 0.3s ease-in-out;
@@ -64,7 +64,7 @@
     }
   
     .admissions-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   
     .admissions-text {

@@ -47,7 +47,7 @@
 }
 
 .membersarmy-officer-details h3 {
-    font-size: 20px;
+    font-size: 24px;
     margin: 0;
 }
 
@@ -113,7 +113,7 @@
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
-    font-size: 12px;
+    font-size: 16px;
     display: inline-block;
     width: fit-content;
     /* Ensures it only takes the necessary width */
@@ -122,19 +122,19 @@
 }
 
 .membersarmy-member-info h3 {
-    font-size: 18px;
+    font-size: 16px;
     margin: 5px 0;
     font-weight: bold;
     text-align: center;
 }
 
 .membersarmy-title {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .membersarmy-degree {
-    font-size: 12px;
+    font-size: 16px;
 }
 .membersarmy-title{
     margin-top: auto;
