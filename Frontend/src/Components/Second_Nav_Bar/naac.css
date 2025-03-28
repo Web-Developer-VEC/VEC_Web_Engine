@@ -5,6 +5,8 @@
   min-height: 20vh;
   margin-bottom: 20px;
   align-items: center;
+  font-family:  'Poppins', sans-serif;
+
 }
 
 .nabout-section {
@@ -14,6 +16,9 @@
   align-items: center;
   text-align: center;
   width: 100%;
+}
+body{
+  font-family:  'Poppins', sans-serif;
 }
 
 .naac-info-panel {
@@ -27,8 +32,9 @@
 }
 
 .naac-info-panel h2 {
-  color: #333;
+  color: #800000;
   margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .naac-info-panel p {

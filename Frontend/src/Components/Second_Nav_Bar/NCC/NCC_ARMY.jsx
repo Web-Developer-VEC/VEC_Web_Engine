@@ -203,10 +203,10 @@ function NCCPledge() {
 function NCCContact() {
     return (
         <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md text-center">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+            <h2 className="text-2xl text-brwn font-bold  dark:text-white mb-4">
                 Contact Us
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg font-poppi text-[16px] text-gray-700 dark:text-gray-300">
                 VEC NCC Army Room (Next to Electronic Practices Lab)
                 <br />
                 Anna Auditorium, Velammal Engineering College, Surapet,

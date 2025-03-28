@@ -21,17 +21,20 @@
   text-align: left;
   border-left: #fdb515 8px solid;
   border-right: #fdb515 8px solid;
+  font-family:  'Poppins', sans-serif;
 }
 
 /* Center "ABOUT US" Heading with Icon */
 .YRC-heading {
-  font-size: 22px;
+  font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center; /* Centers horizontally */
   gap: 10px; /* Space between icon and text */
+  font-family:  'Poppins', sans-serif;
+  color:#800000;
 }
 
 /* Icon Styling */
@@ -179,7 +182,9 @@
   margin: 5px auto;
   border-radius: 5px;
 }
-
+.YRC-about{
+  margin: 10px;
+}
 .yrc-underline3 {
   width: 300px;
   height: 4px;
@@ -212,6 +217,8 @@
   margin-top: 20px;
   margin-bottom: 10px;
   position: relative;
+  font-family:  'Poppins', sans-serif;
+
 }
 
 
@@ -228,6 +235,8 @@
   margin: 20px auto;
   margin-top: 20px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  font-family:  'Poppins', sans-serif;
+
 }
 
 .yrc-member-card-1 img, 
@@ -263,11 +272,14 @@
 .yrc-member-info1 {
   flex: 1;
   text-align: left;
+  font-family:  'Poppins', sans-serif;
+
 }
 
 .yrc-member-info2 {
   flex: 1;
   text-align: center;
+  font-family:  'Poppins', sans-serif;
 }
 
 /* Faculty Coordinator Card */
@@ -332,6 +344,7 @@
   justify-content: center; /* Center items horizontally */
   gap: 20px;
   padding: 20px;
+  font-family:  'Poppins', sans-serif;
 }
 
 /* Ensure the last row is centered if it has only two items */
@@ -420,6 +433,8 @@
   width: 100%;
   flex-direction: column;
   margin-top: 10px;
+  font-family:  'Poppins', sans-serif;
+  font-size: 24px;
 }
 
 /* Left-side text styling */
@@ -477,6 +492,7 @@
   /* Increased height */
   padding: 12px;
   overflow: hidden;
+  font-size: 16px;
 }
 
 /* Styling for the scrolling text */
@@ -485,6 +501,7 @@ marquee p {
   font-size: 18px;
   /* Larger font for readability */
   color: #444;
+  font-size: 16px;
 }
 
 .carouselyrc-container {
@@ -602,7 +619,6 @@ marquee p {
   }
   .YRC-about{
     margin: 10px;
-
   }
 
   .custom-next {
@@ -672,6 +688,7 @@ marquee p {
     .YRC-notification-box{
       width: 375px;
       margin: 10px;
+      font-size: 16px;
     }
 
     .yrc-profile-pic, .yrc-officer-image {

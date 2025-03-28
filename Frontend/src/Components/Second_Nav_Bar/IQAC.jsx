@@ -217,7 +217,7 @@ const IQAC = () => {
     const renderCoordinatorContent = () => {
         return (
             <div className="coordinator-container flex-wrap">
-                <h2 className="text-2xl text-center text-accn my-4 basis-full">IQAC Coordinator</h2>
+                <h2 className="text-[24px] text-center text-accn my-4 basis-full">IQAC Coordinator</h2>
                 {coordinator && (
                     <div className="coordinator-card ">
                         <div className="coordinator-image-container max-w-[25vmax] h-auto">
@@ -309,7 +309,7 @@ const IQAC = () => {
     function IqaMet() {
         return (
             <div className="flex flex-wrap justify-center text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-2xl"}>Minutes of Meetings</h2>
+                <h2 className={"basis-full text-brwn text-center text-[24px]"}>Minutes of Meetings</h2>
                 {minutesOfMeetingsArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                          className="hover:underline hover:text-text dark:hover:text-drkt"
@@ -325,7 +325,7 @@ const IQAC = () => {
     function IqaAud() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-2xl"}>Academic and Administrative Audit</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Academic and Administrative Audit</h2>
                 {academicAdminAuditArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                          className="hover:underline hover:text-text dark:hover:text-drkt"
@@ -345,7 +345,7 @@ const IQAC = () => {
     function IqaDev() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-2xl"}>Strategic development plan</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Strategic development plan</h2>
                 {strategicPlanArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
@@ -361,7 +361,7 @@ const IQAC = () => {
     function IqaPra() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-2xl"}>Best Practices</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Best Practices</h2>
                 {bestPracticesArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
@@ -392,7 +392,7 @@ const IQAC = () => {
     function IqaQar() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-2xl"}>AQAR</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn"}>AQAR</h2>
                 {aqarArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt"
