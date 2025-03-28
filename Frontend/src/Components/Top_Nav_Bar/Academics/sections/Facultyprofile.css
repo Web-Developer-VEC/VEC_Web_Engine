@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: center; /* Center align items */
   gap: 0.75rem;
-  max-width: 100%; /* Ensure it adapts to different screen sizes */
+  /* max-width: 100%; Ensure it adapts to different screen sizes */
 }
 
 .faculty-social-icon {
@@ -104,6 +104,7 @@
   .faculty-social-icons {
     flex-wrap: wrap;
     justify-content: space-evenly;
+    width: 100%;
   }
 }
 
@@ -148,7 +149,7 @@
 }
 
 .faculty-profile-name {
-  font-size: 1.875rem;
+  font-size: 24px;
   font-weight: 700;
   color: #1f2937;
   /* margin-bottom: 0.5rem; */
@@ -156,7 +157,7 @@
 
 .faculty-profile-qualification,
 .faculty-profile-designation {
-  font-size: 1.5rem;
+  font-size: 16px;
   margin-bottom: 0;
 }
 
@@ -233,11 +234,11 @@
 }
 
 /* Background colors */
-.faculty-bg-cyan { background-color: #06b6d4; }
-.faculty-bg-lime { background-color: #84cc16; }
-.faculty-bg-purple { background-color: #9333ea; }
-.faculty-bg-orange { background-color: #f97316; }
-.faculty-bg-emerald { background-color: #10b981; }
+.faculty-bg-cyan { background-color: #fdae61; }
+.faculty-bg-lime { background-color: #fee08a; }
+.faculty-bg-purple { background-color: #ffffbf; }
+.faculty-bg-orange { background-color: #e6f598; }
+.faculty-bg-emerald { background-color: #acdda5; }
 .faculty-bg-linkedin { background-color: #ffcc33; }
 .faculty-bg-github { background-color: #24292e; }
 /*.faculty-bg-publons { background-color: #003366; }*/
@@ -308,12 +309,12 @@
   }
 
   .faculty-profile-name {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 
   .faculty-profile-qualification,
   .faculty-profile-designation {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .faculty-social-icon {
