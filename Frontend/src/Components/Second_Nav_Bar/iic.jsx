@@ -7,8 +7,8 @@ import SideNav from "./SideNav";
 
 function IicHome() {
     return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-        <h1 className="text-accn text-4xl">Home</h1>
-        <h2 className="text-[30px]">About IIC</h2>
+        <h1 className="text-accn text-[32px]">Home</h1>
+        <h2 className="text-[24px]">About IIC</h2>
         <p>
             The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The

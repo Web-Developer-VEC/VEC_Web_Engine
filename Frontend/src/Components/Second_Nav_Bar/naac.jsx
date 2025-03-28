@@ -66,7 +66,7 @@ const Naac = ({ toggle, theme }) => {
       </div>
 
       {/* Dropdown Sections */}
-      <div className="max-w-4xl mx-auto space-y-6 mb-6 px-4">
+      <div className="max-w-4xl mx-auto space-y-6 mb-6 px-4 font-poppi">
         {naacData?.map((section, index) => (
           <div
             key={index}

@@ -25,6 +25,8 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family:  'Poppins', sans-serif;
+  font: size 16px;;
   /*background: #fff;*/
   /*animation: slideInLeft 1s ease-out;*/
 }
@@ -51,7 +53,7 @@
   margin-bottom: 15px;
   padding-left: 25px;
   position: relative;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -109,9 +111,10 @@
 }
 
 .NCC_ARMY-aimcontent {
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.8;
   white-space: pre-line;
+  font-family:  'Poppins', sans-serif;
 }
 
 /* Vision & Mission Section */
@@ -157,8 +160,9 @@ text-align: center;
 
 /* Common Content Style */
 .NCC_ARMY-content {
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.8;
+  font-family:  'Poppins', sans-serif;
 }
 .NCC_ARMY-content-1{
   font-size: 1rem;

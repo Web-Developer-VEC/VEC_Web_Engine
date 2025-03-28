@@ -10,6 +10,7 @@
 
 
 
+
 /* Section styling */
 .alumni-section {
     margin-bottom: 50px; /* Increased spacing between sections for a polished look */
@@ -60,6 +61,7 @@
 }
 h2{
     font-size: 20px;
+    font-family:  'Poppins', sans-serif;
 }
 
 /* Section content styling */

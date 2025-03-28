@@ -26,8 +26,8 @@
 
 /* Tile Header */
 .nba-tile-header {
-  font-size: 20px;
-  color: #333;
+  font-size: 24px;
+  color: #800000;
   margin-bottom: 10px;
   border-bottom: 2px solid #FDCC03;
   display: inline-block;

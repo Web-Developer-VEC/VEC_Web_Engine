@@ -40,6 +40,8 @@
     /*color: #444;*/
     line-height: 1.7;
     margin-bottom: 10px;
+    font-family:  'Poppins', sans-serif;
+
   }
   
   /* Highlighted Text */
@@ -55,6 +57,8 @@
     /*color: #444;*/
     font-size: 16px;
     line-height: 1.7;
+    font-family:  'Poppins', sans-serif;
+
   }
   
   /* Responsive */
