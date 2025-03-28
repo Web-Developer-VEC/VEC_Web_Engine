@@ -13,13 +13,24 @@ const Sidebar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(null);
     const [title, setTitle] = useState("");
+
     useEffect(() => {
-        if (activeIndex !== null) {
+        if (isOpen && activeIndex !== null) {
             setTitle(navs[activeIndex].main);
-        } else {
-            setTitle("Navigation");
         }
-    }, [activeIndex]);
+    }, [isOpen, activeIndex]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    
+        return () => {
+            document.body.style.overflow = "auto"; // Cleanup when component unmounts
+        };
+    }, [isOpen]);    
 
     const navigate = useNavigate();
     const socls = [
@@ -36,7 +47,7 @@ const Sidebar = (props) => {
 
     const navs = props.navs
     const spHdrs = [{ttl: "Fee Payments", lnk: 'https://easycollege.in/vecengg/college/webpayindex.aspx'},
-        {ttl: "Grievances", lnk: '/grievances'}, {ttl: "Login", lnk: '/login'}]
+         {ttl: "Login", lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'}, {ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/"}]
     const hdrs1 = [
         "velammal@velammal.edu.in", "+91 99566 00420"
     ];
@@ -55,7 +66,8 @@ const Sidebar = (props) => {
         { text: "Transport", link: "/transport" },
         { text: "Library", link: "/library" },
         { text: "Hostel", link: "/hoslanding" },
-        { text: "Other Facilities", link: "/other-facilities" }
+        { text: "Other Facilities", link: "/other-facilities" },
+         {text: "Help desk", link: '/grievances'}
       ]
 
 
@@ -63,8 +75,8 @@ const Sidebar = (props) => {
         <div>
             {/* Sidebar Open Button */}
             <button onClick={() => setIsOpen(true)} className={`fixed top-2 right-2 z-50 bg-gray-900 text-white p-2 
-        rounded-lg shadow-xl transition-all duration-300 
-        ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}>
+            rounded-lg shadow-xl transition-all duration-300 
+            ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}>
                 <Bars3Icon className="size-[3vmax]"/>
             </button>
 
@@ -84,7 +96,7 @@ const Sidebar = (props) => {
                     {activeIndex !== null ? (
                         <button onClick={() => {
                             setActiveIndex(null);
-                            setTitle("")
+                            // setTitle("")
                         }} className="text-gray-400 hover:text-gray-200 transition flex items-center">
                             <ChevronLeftIcon className="w-6 h-6"/> {title}
                         </button>
@@ -170,10 +182,12 @@ const Sidebar = (props) => {
                 <div className="border-t border-gray-700 mt-2 pt-2">
                     <div className="flex flex-col space-y-1 text-gray-400 text-xs">
                         <div className="flex items-center gap-2">
-                            <p className="truncate">{hdrs1[0]}</p>
+                            {/* <p className="truncate">{hdrs1[0]}</p> */}
+                            <a href={`mailto:${hdrs1[0]}`} className="text-white no-underline">{hdrs1[0]}</a>
                         </div>
                         <div className="flex items-center gap-2">
-                            <p>{hdrs1[1]}</p>
+                            {/* <p>{hdrs1[1]}</p> */}
+                            <a href={`tel:${hdrs1[1]}`} className="text-white no-underline">{hdrs1[1]}</a>
                         </div>
                     </div>
 
