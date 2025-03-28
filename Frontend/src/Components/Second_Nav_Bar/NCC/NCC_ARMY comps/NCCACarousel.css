@@ -53,7 +53,7 @@
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 24px;
     border-radius: 5px;
 }
 
@@ -112,7 +112,7 @@
         right: auto;
         background: none; /* Remove background */
         color: black; /* Change text color for visibility */
-        font-size: 14px;
+        font-size: 16px;
         max-width: 100%;
         padding: 10px;
         text-align: center; /* Center text */
@@ -126,7 +126,7 @@
     }
 
     .ncc-a-carousel-text {
-        font-size: 12px; /* Slightly smaller text */
+        font-size: 16px; /* Slightly smaller text */
         padding: 8px;
     }
 }

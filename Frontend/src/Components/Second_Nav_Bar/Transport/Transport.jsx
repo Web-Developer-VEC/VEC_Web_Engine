@@ -20,7 +20,10 @@ const Transport = () => {
             {/* Styled Transport Facilities Paragraph */}
             <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0" style={{
                 maxWidth: "900px", 
-                margin: "40px auto", 
+                margin: "40px auto",
+                marginLeft:"20px",
+                textAlign: "justify",
+                marginRight:"20px",
                 padding: "20px",
                 fontSize: "18px", 
                 lineHeight: "1.8", 

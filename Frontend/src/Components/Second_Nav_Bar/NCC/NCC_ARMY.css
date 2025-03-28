@@ -12,7 +12,7 @@
 
 /* Title Styling */
 .NCC_ARMY-title {
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 40px;
   /*color: #2c3e50;*/
@@ -51,7 +51,7 @@
   margin-bottom: 15px;
   padding-left: 25px;
   position: relative;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .NCC_ARMY-aimcontent {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.8;
   white-space: pre-line;
 }
@@ -157,12 +157,13 @@ text-align: center;
 
 /* Common Content Style */
 .NCC_ARMY-content {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 .NCC_ARMY-content-1{
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 1.8;
+  text-align: left;
 }
 /* Animations */
 @keyframes slideInLeft {
@@ -230,7 +231,7 @@ text-align: center;
 }
 
 .NCC_ARMY-profile-position {
-  font-size: 18px;
+  font-size: 16px;
   /*color: #555;*/
   margin-bottom: 15px;
   /*text-decoration: underline orange;*/
@@ -253,24 +254,24 @@ text-align: center;
     }
 
   .NCC_ARMY-title {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .NCC_ARMY-section-title,
   .NCC_ARMY-heading {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
 
   .NCC_ARMY-profile-name {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .NCC_ARMY-profile-position {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .NCC_ARMY-profile-bio {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -305,13 +306,13 @@ text-align: center;
 
   .NCC_ARMY-section-title,
   .NCC_ARMY-heading {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }  
 
   .NCC_ARMY-content,
   .NCC_ARMY-aimcontent,
   .NCC_ARMY-list li {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.9;
   }
 
@@ -396,7 +397,7 @@ text-align: center;
 
   /* Adjusting font size for better readability on small screens */
   .NCC_ARMY-profile-name ,.NCC_ARMY-vision-mission-container{
-    font-size: 18px;
+    font-size: 16px;
     text-align: center; /* Ensuring name is properly centered */
     font-weight: 600; /* Making the name more prominent */
   }
