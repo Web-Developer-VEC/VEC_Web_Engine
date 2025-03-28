@@ -73,6 +73,7 @@ import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboar
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
+import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -170,6 +171,7 @@ const MainContentWrapper = styled.div`
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/proudalumni" drk element={<ProudAlumni />}/>
+                                <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/>
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>

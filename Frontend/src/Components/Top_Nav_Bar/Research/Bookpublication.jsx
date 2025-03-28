@@ -84,12 +84,19 @@ export default function Bookpublication({theme, toggle}) {
 
   return (
    <>
+    <Banner
+             toggle={toggle}
+             theme={theme}
+             backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+             headerText="Book Publication"
+             subHeaderText="Enrich Your Knowledge"
+           />
     
     <div className="Bookpublisher-container">
       <div className="Bookpublisher-content">
             
-            <div className="Bookpublisher-title-container">
-              <h2 >Book publication - Department wise Consolidation   </h2>
+      <div className="Bookpublisher-title-container">
+            <h2 >Book publication - Department wise Consolidation   </h2>
 
             </div>
 
