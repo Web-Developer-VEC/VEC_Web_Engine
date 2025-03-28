@@ -228,3 +228,27 @@
         height: 350px; /* Adjusted iframe height */
     }
 }
+
+
+
+.research-backbutton-container{
+  padding: 0.8rem 1.8rem;
+  background-color: rgb(253, 204, 3);
+  display: inline;
+  margin: 0 0 0 10rem;
+  border-radius: 10px;
+  font-size: 16px;
+  
+}
+
+.research-backbutton-container button {
+  margin-top: 3rem;
+  border-radius: 10px;
+ font-size: 16px;
+}
+
+
+.research-backbutton-container:hover{
+  color: white;
+  background-color: #800000;
+}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Academicresearch.css";
+import './Researchtable.css';
 import Banner from "../../Banner";
+import Researchtable from "./Researchtable";
 
 const courses = [
   "B.E Automobile Engineering",
@@ -20,61 +22,56 @@ const courses = [
 
 export default function Academicresearch({ theme, toggle }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [open, handleOpen] = useState(false);
 
   const handleCourseClick = (course) => {
     setSelectedCourse(selectedCourse === course ? null : course);
   };
 
+
+
+
   return (
-    <>
-      <div>
+    <> 
         <Banner
           toggle={toggle}
           theme={theme}
           backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
           headerText="Academic Research"
           subHeaderText="Enrich Your Knowledge"
-        />
-      </div>
-
-      <div className="research-academicresearch-container">
-        <h1 className="research-academicresearch-title">
-          Academic Research - Year wise Consolidation
-        </h1>
-
-        <div className="course-selection-container">
-          {courses.map((course) => (
-            <div
-              key={course}
-              className={`course-card ${
-                selectedCourse === course ? "expanded" : ""
-              }`}
-              onClick={() => handleCourseClick(course)}
-            >
-              <div className="course-header">
-                <span className="icon">📖</span>
-                <span>{course}</span>
-              </div>
-
-              {/* Expanding Content */}
-              <div
-                className="dropdown-container"
-                style={{
-                  maxHeight: selectedCourse === course ? "150px" : "0",
-                  opacity: selectedCourse === course ? "1" : "0",
-                  padding: selectedCourse === course ? "10px" : "0",
-                }}
-              >
-                <ul>
-                  <li>Internship</li>
-                  <li>Product Development</li>
-                  <li>Start-up</li>
-                </ul>
-              </div>
+          />
+          {open ? (
+            <>
+            <div className="research-backbutton-container">
+            <button  onClick={() => handleOpen(false)} >Back</button>
             </div>
-          ))}
-        </div>
-      </div>
+              <Researchtable />
+            </>
+          ) : (
+
+          <div className="research-academicresearch-container">
+            <h1 className="research-academicresearch-title">
+              Academic Research - Year wise Consolidation
+            </h1>
+
+            <div className="course-selection-container">
+              {courses.map((course) => (
+                <div
+                  key={course}
+                  className={`course-card ${
+                    selectedCourse === course ? "expanded" : ""
+                  }`}
+                  onClick={() => { handleOpen(true);  }}
+                >
+                  <div className="course-header">
+                    <span className="icon">📖</span>
+                    <span>{course}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          )}
     </>
   );
 }
