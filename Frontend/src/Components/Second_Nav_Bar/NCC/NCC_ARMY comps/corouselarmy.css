@@ -52,19 +52,19 @@
 
 /* Title styling */
 .carouselarmy-content h3 {
-    font-size: 18px;
+    font-size: 16px;
     margin: 5px 0;
     flex-grow: 1;
 }
 
 /* Location and date styling */
 .carouselarmy-location {
-    font-size: 14px;
+    font-size: 16px;
     opacity: 0.8;
 }
 
 .carouselarmy-date {
-    font-size: 12px;
+    font-size: 16px;
     background: #800000;
     color: white;
     padding: 5px 10px;

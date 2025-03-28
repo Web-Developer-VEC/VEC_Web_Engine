@@ -8,13 +8,13 @@
   }
   
   .infohostel-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bolder;
     text-align: center;
     margin-bottom: 15px;
     color: #800000;
     padding: 2vh;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   /* Grid Layout */
 .HI-grid {
@@ -43,7 +43,7 @@
 
 /* Card Title */
 .HI-card-title {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 15px;
   font-weight: 600;
   color: #ff9800;
@@ -78,7 +78,7 @@
 .food-table th {
   background-color: #808080;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .food-table tr:nth-child(even) {

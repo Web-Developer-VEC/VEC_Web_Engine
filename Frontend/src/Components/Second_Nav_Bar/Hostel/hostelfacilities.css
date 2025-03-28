@@ -6,7 +6,7 @@
 
 .hostel-head {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 3%;
   color: #800000;
   padding-top: 2.5vh;
@@ -135,14 +135,14 @@
 
   /* Ensure content inside the image appears properly */
   .hostel-fac-item.expanded .content {
-    font-size: 70%;
+    font-size: 100%;
     /* Reduce content size */
     opacity: 1;
     transform: scale(0.9);
     transition: transform 0.3s ease-in-out;
   }
   .hostel-fac-item.expanded .content h2{
-    font-size: 23px;
+    font-size: 24px;
     /* Reduce content size */
     opacity: 1;
     transform: scale(0.9);

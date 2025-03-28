@@ -7,7 +7,7 @@
 
 /* Table Title */
 .NCC-A-table-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 15px;
     /*color: #222;*/
@@ -100,7 +100,7 @@
     }
 
     .NCC-A-ncc-table {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .NCC-A-ncc-table th,
@@ -116,17 +116,17 @@
     }
 
     .NCC-A-ncc-table {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     .NCC-A-table-title {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .NCC-A-ncc-table th,
     .NCC-A-ncc-table td {
         padding: 8px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         white-space: nowrap; /* Prevent text wrapping on small screens */
     }
 }
@@ -138,7 +138,7 @@
     }
 
     .NCC-A-ncc-table {
-        font-size: 0.75rem;
+        font-size: 1rem;
         width: 100%;
     }
 

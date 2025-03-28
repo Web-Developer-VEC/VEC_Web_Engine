@@ -154,7 +154,7 @@
   .NCC-main-button {
     width: 90%; /* Make buttons responsive */
     height: auto; /* Allow height to adjust based on content */
-    font-size: 14px; /* Adjust font size for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
     padding: 10px; /* Reduce padding for better fit */
   }
 }
