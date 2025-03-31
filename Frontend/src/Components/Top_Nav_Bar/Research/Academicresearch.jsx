@@ -28,9 +28,6 @@ export default function Academicresearch({ theme, toggle }) {
     setSelectedCourse(selectedCourse === course ? null : course);
   };
 
-
-
-
   return (
     <> 
         <Banner
@@ -58,9 +55,7 @@ export default function Academicresearch({ theme, toggle }) {
               {courses.map((course) => (
                 <div
                   key={course}
-                  className={`course-card ${
-                    selectedCourse === course ? "expanded" : ""
-                  }`}
+                  className={"course-card"}
                   onClick={() => { handleOpen(true);  }}
                 >
                   <div className="course-header">
