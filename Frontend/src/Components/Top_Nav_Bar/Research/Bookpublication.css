@@ -16,6 +16,8 @@
     text-align: center;
     margin-bottom: 1rem;
     padding: 1rem 0;
+    display: flex;
+    justify-content: center;
   }
   
   .Bookpublisher-title-container h2 {
@@ -56,6 +58,19 @@
     color: blue;
     text-decoration: none;
   }
+
+  .research-book-title {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-left: 5px solid #ffe102;
+    border-right: 5px solid #ffe102;
+    border-radius: 8px;
+    color: #800000;
+    margin-bottom: 30px;
+    width: fit-content;
+}
   
   @media (max-width: 768px) {
     .Bookpublisher-container {
