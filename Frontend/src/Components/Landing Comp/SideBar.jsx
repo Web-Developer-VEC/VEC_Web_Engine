@@ -47,7 +47,7 @@ const Sidebar = (props) => {
 
     const navs = props.navs
     const spHdrs = [{ttl: "Fee Payments", lnk: 'https://easycollege.in/vecengg/college/webpayindex.aspx'},
-         {ttl: "Login", lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'}, {ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/"}]
+         {ttl: "Student Login", lnk: 'https://vecchennai.org/studentlogin/login.php?done=/studentlogin/'}, {ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/"}]
     const hdrs1 = [
         "velammal@velammal.edu.in", "+91 99566 00420"
     ];

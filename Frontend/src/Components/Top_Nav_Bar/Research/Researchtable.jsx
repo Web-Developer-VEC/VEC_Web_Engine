@@ -1,12 +1,6 @@
-import  { React ,useState }  from 'react';
+import  { React }  from 'react';
 import "./Researchtable.css";
 import './Academicresearch.css';
-import Banner from '../../Banner';
-import Academicresearch from './Academicresearch';
-import { useNavigate } from 'react-router-dom';
-
-
-
 
 const Researchtable = () => {
 
