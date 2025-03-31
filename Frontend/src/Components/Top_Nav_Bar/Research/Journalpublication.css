@@ -190,3 +190,15 @@
         height: 400px; /* Adjusted iframe height for mobile */
     }
 }
+
+
+.backbutton{
+    padding: 0.7rem 2rem ;
+    background-color: #e0a800;
+    border-radius: 10px;
+  }
+  
+  .backbutton:hover{
+    background-color: brown;
+    color: white;
+  }

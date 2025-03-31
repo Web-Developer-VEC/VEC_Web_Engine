@@ -1,12 +1,15 @@
 import { useState } from "react";
 import './researchdetails.css'
 
-const Reseachdetails = () => {
+const Reseachdetails = ({ course, data1 }) => {
   const [expandedCard, setExpandedCard] = useState(null);
 
   const toggleExpand = (index) => {
     setExpandedCard(expandedCard === index ? null : index);
   };
+
+  console.log("Ajay",data1);
+  
 const data=[
     {
       "S.No": 1,
@@ -82,9 +85,11 @@ const action="FUNDED_PROPOSALS"
 
   return (
     <div className="Concontainer-res">
+    
       <div className="head-res">
         {/* ✅ Dynamic Category Heading instead of "Title of the Paper" */}
         <h1 className="cards-h1-res">{getCategoryHeading(action)}</h1>
+        <h1>{course}</h1>
       </div>
       <div className="cards-grid-res">
         {data && data.length > 0 ? (

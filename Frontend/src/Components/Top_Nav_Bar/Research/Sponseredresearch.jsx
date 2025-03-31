@@ -2,21 +2,39 @@ import { useEffect, useState } from "react";
 import "./Sponseredresearch.css";
 import Banner from "../../Banner";
 
-const courses = [
-  "B.E Automobile Engineering",
-  "B.E Civil Engineering",
-  "B.E Computer Science and Engineering",
-  "B.E Computer Science and Engineering (Cyber Security)",
-  "B.E Electronics and Communication Engineering",
-  "B.E Electrical and Electronics Engineering",
-  "B.E Electronics and Instrumentation Engineering",
-  "B.E Mechanical Engineering",
-  "B.Tech Artificial Intelligence and Data Science",
-  "B.Tech Information Technology",
-  "M.E Computer Science Engineering",
-  "M.E Power System Engineering",
-  "M.B.A Master of Business Administration",
-];
+const dept = {
+  courses : [
+    "B.E Automobile Engineering",
+    "B.E Civil Engineering",
+    "B.E Computer Science and Engineering",
+    "B.E Computer Science and Engineering (Cyber Security)",
+    "B.E Electronics and Communication Engineering",
+    "B.E Electrical and Electronics Engineering",
+    "B.E Electronics and Instrumentation Engineering",
+    "B.E Mechanical Engineering",
+    "B.Tech Artificial Intelligence and Data Science",
+    "B.Tech Information Technology",
+    "M.E Computer Science Engineering",
+    "M.E Power System Engineering",
+    "M.B.A Master of Business Administration",
+  ],
+
+  dept_id : [
+    "002",
+    "004",
+    "005",
+    "006",
+    "009",
+    "007",
+    "008",
+    "013",
+    "001",
+    "011",
+    "005",
+    "007",
+    "017"
+  ]
+}
 
 export default function Sponseredresearch({theme, toggle}) {
   const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
@@ -77,7 +95,7 @@ export default function Sponseredresearch({theme, toggle}) {
 
         <div className="course-selection-container">
           
-          {courses.map((course) => (
+          {dept.map((course) => (
             <div
               key={course}
               className={`course-card ${
