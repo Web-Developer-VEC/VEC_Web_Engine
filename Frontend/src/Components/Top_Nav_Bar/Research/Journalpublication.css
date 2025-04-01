@@ -193,9 +193,13 @@
 
 
 .backbutton{
-    padding: 0.7rem 2rem ;
-    background-color: #e0a800;
+    padding: 0.3rem 1rem ;
+    background-color: #fdcc03;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
   
   .backbutton:hover{

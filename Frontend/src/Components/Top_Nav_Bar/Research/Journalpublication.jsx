@@ -71,8 +71,6 @@ export default function Journalpublication({theme, toggle}) {
       try {
         const response = await axios.get('/api/journal');
         setJournalPublication(response.data)
-       console.log(journalPublication)
-        
       } catch (error) {
         console.error("Fetching Error:", error);
       }
@@ -94,10 +92,13 @@ export default function Journalpublication({theme, toggle}) {
       {open ? (
 <>
   <div className="ml-[10rem] mt-[2rem]">
-  <button className="backbutton" onClick={()=> {setopen(false); setSelectedCourse(null); setSelectedDept(null)}}>back</button>
+    <button className="backbutton" onClick={()=> {setopen(false); setSelectedCourse(null); setSelectedDept(null)}}>             
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z" />
+      </svg>
+      Back</button>
   </div>
      <Reseachdetails course={selectedCourse} data1 = {journalPublicationid[0]}/>
-
   </>
       ):(
         <div className="research-journal-container">
