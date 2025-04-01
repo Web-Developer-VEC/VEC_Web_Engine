@@ -17,38 +17,40 @@
     text-transform: uppercase;
   }
   
-  /* Cards Grid (Now using FLEX instead of GRID) */
+  /* Cards Grid - Uses CSS Grid */
+.cards-grid-res {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid */
+  gap: 15px;
+  justify-content: center;
+  align-items: start; /* Ensures independent expansion */
+}
+
+/* Individual Card - Expands only when needed */
+.card-res {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Expanded Card */
+.card-res.expanded {
+  grid-column: span 1; /* Ensures expanded cards stay in grid */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .cards-grid-res {
-    display: flex;
-    flex-wrap: wrap;
-    /* flex-direction: column; */
-    gap: 15px;
-    justify-content: space-between;
-    align-items: flex-start; /* Ensures independent card expansion */
+      grid-template-columns: 1fr; /* Single column on smaller screens */
   }
-  
-  /* Individual Card */
-  .card-res {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    word-wrap: break-word;
-    transition: all 0.3s ease-in-out;
-    width: calc(33% - 10px); /* Ensures 3 cards per row */
-    align-self: flex-start; /* Allows cards to expand independently */
-  }
-  
-  /* Ensures cards expand properly */
-  .card-res.expanded {
-    height: auto;
-    overflow: visible;
-  }
+}
   
   /* Card Head */
   .card-head-res {
@@ -125,14 +127,40 @@
     background-color: #e0a800;
   }
   
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .cards-grid-res {
-      flex-direction: column; /* Stacks cards on small screens */
-    }
-    .card-res {
-      width: 100%;
-    }
+  .res-year-button {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 15px; 
+    margin: 20px auto; 
+    width: 100%;
   }
   
+  .res-button {
+    background-color: #fdcc03;
+    color: black; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .res-button:hover {
+    background-color: #800008; 
+    color: white;
+    transform: scale(1.05); 
+  }
+  
+  /* Active Year Button */
+.res-button.active {
+  background-color: #800008;
+  color: white;
+  transform: scale(1.1);
+}
+
 

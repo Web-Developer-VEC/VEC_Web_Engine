@@ -47,17 +47,14 @@ export default function Conferencepublication({theme, toggle}) {
   const [conferenceid , setconferenceid] = useState(null)
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [selectedCourse, setSelectedCourse] = useState(null);
+  
   const handleCourseClick = (course,id) => {
     setcourse(course);
-    setdeptid(id)
-    const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id )
-   setconferenceid(conferencecontent)
-    setSelectedCourse(selectedCourse === course ? null : course);
+    setdeptid(id);
+    // const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id )
+    // setconferenceid(conferencecontent)
+    // setSelectedCourse(selectedCourse === course ? null : course);
     setopen(true);
-  };
-
-  const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
@@ -92,7 +89,7 @@ export default function Conferencepublication({theme, toggle}) {
         <button onClick={()=>{setopen(false); setcourse(null); setdeptid(null)} } className="backbutton"> back </button>
       
       </div>
-      <Reseachdetails course={conference} data1={conferenceid}/>
+      {/* <Reseachdetails course={conference} data1={conferenceid}/> */}
       </>
     ):(
       <div className="research-conference-container">
