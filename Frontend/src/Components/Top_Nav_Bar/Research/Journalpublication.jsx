@@ -39,14 +39,9 @@ const dept = {
 };
 
 export default function Journalpublication({theme, toggle}) {
-  const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
-  const [activeYear, setActiveYear] = useState(null); // Track active button
   const [journalPublication, setJournalPublication] = useState(null);
   const [open,setopen] = useState(false);
   const [journalPublicationid , setjournalPublicationid] = useState(null)
-  console.log("Ajith",journalPublicationid);
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedDept,setSelectedDept] = useState(null);
 
@@ -60,10 +55,6 @@ export default function Journalpublication({theme, toggle}) {
  
     setopen(true);
 
-  };
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
