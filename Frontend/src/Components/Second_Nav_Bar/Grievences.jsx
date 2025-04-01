@@ -203,6 +203,10 @@ Nodal Officer - Scholarship</td>
                 <td className="p-2 border">Level 5</td>
                 <td colSpan="5" className="p-2 border">Principal</td>
               </tr>
+              <tr>
+                <td className="p-3 border" colSpan={4}>Grievance related to PoSH(Prevention of sexual harrassment),<br />Gender issues or  any complaint raised by student</td>
+                <td colSpan="5" className="p-3 border">Dr. Geetha R <br />Asst. Professor, EEE</td>
+              </tr>
             </tbody>
           </table>
         </div>

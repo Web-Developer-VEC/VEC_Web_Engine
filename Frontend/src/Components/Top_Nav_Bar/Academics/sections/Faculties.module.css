@@ -432,6 +432,7 @@
 /* ✅ Phone View: Up to 480px */
 @media (max-width: 480px) {
   .imagegallery {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
