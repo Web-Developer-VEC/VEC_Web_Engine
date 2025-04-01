@@ -38,22 +38,20 @@ const dept = {
 };
 
 export default function Conferencepublication({theme, toggle}) {
-  const [pdfUrl, setPdfUrl] = useState(null); // Default PDF
-  const [activeYear, setActiveYear] = useState(null); // Track active button
   const [conference, setConference] = useState(null);
   const [open,setopen]= useState(false)
   const [course , setcourse]= useState(null);
   const [deptid,setdeptid] = useState(null);
   const [conferenceid , setconferenceid] = useState(null)
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const [selectedCourse, setSelectedCourse] = useState(null);
   
   const handleCourseClick = (course,id) => {
     setcourse(course);
     setdeptid(id);
-    // const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id )
-    // setconferenceid(conferencecontent)
-    // setSelectedCourse(selectedCourse === course ? null : course);
+
+    const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id );
+    
+    setconferenceid(conferencecontent)
+
     setopen(true);
   };
 
@@ -63,13 +61,10 @@ export default function Conferencepublication({theme, toggle}) {
 
         const response = await axios.get('/api/conference')
         setConference(response.data)
-        console.log(response.data)
       }catch(error){
         console.error("Fetching error",error)
       }
     }
-  
-  
     fetchData();
   }, []);
 
@@ -85,11 +80,14 @@ export default function Conferencepublication({theme, toggle}) {
 
     {open ? (
       <>
-      <div className="ml-[3rem] mt-[1rem]">
-        <button onClick={()=>{setopen(false); setcourse(null); setdeptid(null)} } className="backbutton"> back </button>
-      
+      <div className="ml-[10rem] mt-[2rem]">
+        <button className="backbutton" onClick={()=> {setopen(false); setcourse(null); setdeptid(null)}}>             
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z" />
+          </svg>
+          Back</button>
       </div>
-      {/* <Reseachdetails course={conference} data1={conferenceid}/> */}
+      <Reseachdetails course={course} data1={conferenceid[0]}/>
       </>
     ):(
       <div className="research-conference-container">
@@ -102,9 +100,7 @@ export default function Conferencepublication({theme, toggle}) {
           {dept.courses.map((course,id) => (
             <div
               key={course}
-              className={`course-card ${
-                selectedCourse === course ? "expanded" : ""
-              }`}
+              className={`course-card`}
               onClick={() => handleCourseClick(course ,dept.dept_id[id])}
             >
               <div className="course-header">
