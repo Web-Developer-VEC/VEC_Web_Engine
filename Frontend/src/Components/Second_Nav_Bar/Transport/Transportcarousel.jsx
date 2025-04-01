@@ -1,161 +1,118 @@
 import React, { useState, useEffect } from "react";
-import "./Transportcarousel.css";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Transportcarousel = () => {
+const TransportCarousel = () => {
   const items = [
     {
       title: "Bus 1",
       description:
         "Our Ball Badminton Court offers a vibrant space for both recreational and competitive play. Perfect for a fun and engaging experience, this court is ideal for teams looking to challenge each other.",
-      imageUrl: "/sports/ballbadminton.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 1.webp",
     },
     {
       title: "BUS 2",
       description:
         "The Wilma Rudolph Indoor Stadium provides a versatile environment for a wide range of indoor sports. With state-of-the-art facilities, it's the perfect venue for both practice and competition.",
-      imageUrl: "/sports/indoorstadium.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 2.webp",
     },
     {
       title: "BUS 3",
       description:
         "This iconic indoor stadium hosts various sports events and training sessions. With its ample space and excellent infrastructure, it's designed to cater to athletes of all levels.",
-      imageUrl: "/sports/indoorstadium2.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 3.webp",
     },
     {
       title: "BUS 4",
       description:
         "The Volleyball Court at Wilma Rudolph Indoor Stadium is the perfect setting for exciting matches and tournaments. Whether you're a beginner or a pro, this court is designed to elevate your game.",
-      imageUrl: "/sports/volleyball.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 4.webp",
     },
     {
       title: "BUS 5",
       description:
         "Our Fitness Centre is equipped with a wide range of modern equipment to help you reach your fitness goals. Whether you prefer weightlifting, cardio, or group classes, this centre has something for everyone.",
-      imageUrl: "/sports/fitnesscentre.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 5.webp",
     },
     {
       title: "BUS 6",
       description:
         "Kapil Dav Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
-      imageUrl: "/sports/cricketground.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 1.webp",
     },
     {
       title: "BUS 7",
       description:
         "The Kabaddi Court is designed for this fast-paced and action-packed sport. With all the right equipment and a high-quality surface, it offers an ideal setting for both casual and competitive Kabaddi matches.",
-      imageUrl: "/sports/kabaddi.png",
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 2.webp",
     },
     {
       title: "BUS 8",
       description:
         "The Ladies Hostel Gym is a fully equipped space for women to work out and stay fit. Whether you're looking to build strength, improve endurance, or practice yoga, the gym offers a comfortable and private environment.",
-      imageUrl: "/sports/ladiesgym.png",
-    },
+      imageUrl: "/static/images/other_facilities/Transport/Bus View 3.webp",
+    }
   ];
-  
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const [animate, setAnimate] = useState(false);
 
   const showNextItem = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex < items.length - 1 ? prevIndex + 1 : 0
-    );
+    setActiveIndex((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : 0));
   };
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
   const showPreviousItem = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : items.length - 1
-    );
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 37) {
-      showPreviousItem();
-    } else if (e.keyCode === 39) {
-      showNextItem();
-    }
-  };
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    if (scrollPosition >= window.innerHeight * 1.1) {
-      setAnimate(true);
-    }
+    setActiveIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : items.length - 1));
   };
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
-    window.addEventListener("scroll", handleScroll);
+    const interval = setInterval(() => {
+      showNextItem();
+    }, 3000);
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div>
-      <main className={`transport-carousel-section ${animate ? "animate" : ""}`}>
-        <div className="transport-container">
-          <div className="transport-grid">
-            <div className="transport-column-xs-12">
-              <ul className="transport-slider">
-                {items.map((item, index) => (
-                  <li
-                    key={index}
-                    className={`transport-slider-item ${index === activeIndex ? "active" : ""}`}
-                  >
-                    <div className="transport-grid vertical">
-                      <div className="transport-column-xs-12 transport-column-md-2 hide-mobile">
-                        <div className="transport-intro">
-                          <a href="#">
-                            <h1 className="transport-title">
-                              <span className="transport-underline">{item.title}</span>
-                            </h1>
-                          </a>
-                        </div>
-                      </div>
-                      <div className="transport-column-xs-12 transport-column-md-10">
-                        <div className="transport-image-holder">
-                          <img className="transport-sport-img" src={item.imageUrl} alt={item.title} />
-                        </div>
-                        <div className="transport-grid">
-                          <div className="transport-column-xs-12 transport-column-md-9">
-                            <div className="transport-intro show-mobile">
-                              <a href="#">
-                                <h1 className="transport-title">
-                                  <span className="transport-underline">{item.title}</span>
-                                </h1>
-                              </a>
-                            </div>
+    <div className="relative w-full max-w-3xl mx-auto p-4">
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={activeIndex}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5 }}
+      className="relative bg-gradient-to-r from-white to-gray-100 shadow-xl rounded-2xl overflow-hidden" 
+    >
+      <img
+        src={UrlParser(items[activeIndex].imageUrl)}
+        alt={items[activeIndex].title}
+        className="w-full h-64 object-cover rounded-t-2xl"
+      />
+      <div className="p-4 text-black"> {/* Changed text color to black for better contrast */}
+        <h2 className="text-xl font-bold">{items[activeIndex].title}</h2>
+        <p className="mt-2 text-sm">{items[activeIndex].description}</p>
+      </div>
+    </motion.div>
+  </AnimatePresence>
 
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="transport-grid">
-                <div className="transport-column-xs-12">
-                  <div className="transport-controls h-auto">
-                    <button className="transport-previous" onClick={showPreviousItem}>
-                      <span className=""><ChevronLeft className="w-6 h-6  text-gray-700" /></span>
-                    </button>
-                    <button className="transport-next" onClick={showNextItem}>
-                      <span className=""><ChevronRight className="w-6 h-6 text-gray-700" />
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+  <button
+    className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-300"
+    onClick={showPreviousItem}
+  >
+    <ChevronLeft className="w-6 h-6 text-gray-700" />
+  </button>
+  <button
+    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-300"
+    onClick={showNextItem}
+  >
+    <ChevronRight className="w-6 h-6 text-gray-700" />
+  </button>
+</div>
   );
 };
 
-export default Transportcarousel;
+export default TransportCarousel;
