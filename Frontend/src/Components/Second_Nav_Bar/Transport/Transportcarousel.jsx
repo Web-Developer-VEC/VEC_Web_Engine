@@ -7,51 +7,34 @@ const TransportCarousel = () => {
     {
       title: "Bus 1",
       description:
-        "Our Ball Badminton Court offers a vibrant space for both recreational and competitive play. Perfect for a fun and engaging experience, this court is ideal for teams looking to challenge each other.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 1.webp",
+        "",
+      imageUrl: "/static/images/Transport/Bus View 1.webp",
     },
     {
       title: "BUS 2",
       description:
-        "The Wilma Rudolph Indoor Stadium provides a versatile environment for a wide range of indoor sports. With state-of-the-art facilities, it's the perfect venue for both practice and competition.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 2.webp",
+        "",
+      imageUrl: "/static/images/Transport/Bus View 2.webp",
     },
     {
       title: "BUS 3",
       description:
-        "This iconic indoor stadium hosts various sports events and training sessions. With its ample space and excellent infrastructure, it's designed to cater to athletes of all levels.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 3.webp",
+        "",
+      imageUrl: "/static/images/Transport/Bus View 3.webp",
     },
     {
       title: "BUS 4",
       description:
-        "The Volleyball Court at Wilma Rudolph Indoor Stadium is the perfect setting for exciting matches and tournaments. Whether you're a beginner or a pro, this court is designed to elevate your game.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 4.webp",
+        "",
+      imageUrl: "/static/images/Transport/Bus View 4.webp",
     },
     {
       title: "BUS 5",
       description:
-        "Our Fitness Centre is equipped with a wide range of modern equipment to help you reach your fitness goals. Whether you prefer weightlifting, cardio, or group classes, this centre has something for everyone.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 5.webp",
+        "",
+      imageUrl: "/static/images/Transport/Bus View 5.webp",
     },
-    {
-      title: "BUS 6",
-      description:
-        "Kapil Dav Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 1.webp",
-    },
-    {
-      title: "BUS 7",
-      description:
-        "The Kabaddi Court is designed for this fast-paced and action-packed sport. With all the right equipment and a high-quality surface, it offers an ideal setting for both casual and competitive Kabaddi matches.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 2.webp",
-    },
-    {
-      title: "BUS 8",
-      description:
-        "The Ladies Hostel Gym is a fully equipped space for women to work out and stay fit. Whether you're looking to build strength, improve endurance, or practice yoga, the gym offers a comfortable and private environment.",
-      imageUrl: "/static/images/other_facilities/Transport/Bus View 3.webp",
-    }
+
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
