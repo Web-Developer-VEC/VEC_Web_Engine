@@ -12,7 +12,7 @@ const PdfOpener = () => {
     <div style={styles.container}>
       <button
         className="bg-secd dark:bg-drks p-3 mt-6 mb-2 rounded-xl hover:bg-accn dark:hover:bg-blue-700 hover:text-white"
-        onClick={() => window.open(UrlParser('static/pdfs/transport/bus_route.pdf'), "_blank")}
+        onClick={() => window.open(UrlParser('static/pdfs/transport/VELAMMAL_BUS_ROUTES 2024 - 2025.pdf'), "_blank")}
       >
         View Transport Routes
       </button>
