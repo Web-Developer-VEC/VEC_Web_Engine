@@ -10,6 +10,7 @@ module.exports = {
                 'rome': ['Times New Roman', 'ui-sans-serif', 'system-ui'],
                 'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
                 'popp': ['Futura PT', 'ui-sans-serif', 'system-ui'],
+                'tech': ['Kode Mono', 'ui-sans-serif', 'system-ui'],
                 'poppi': ['Poppins', 'ui-sans-serif', 'system-ui']
             },
             colors: {
@@ -40,9 +41,20 @@ module.exports = {
                 'spin-slow': 'spin 3s linear infinite',
             },
             keyframes: {
+                aniGradBg: {
+                    '0%': {backgroundPosition: '100% 100%'},
+                    '90%': {backgroundPosition: '10% 0%'},
+                    '100%': {backgroundPosition: '100% 100%'},
+                },
                 sizeUp: {
                     '0%': {transform: 'scale(0)', zIndex: '100'},
                     '100%': {transform: 'scale(1)', zIndex: '100'},
+                },
+                sizeUpExt: {
+                    '0%': {opacity: '0'},
+                    '10%': {transform: 'scale(1)', opacity: '0.5'},
+                    '50%': {opacity: '1'},
+                    '100%': {transform: 'scale(1.35)'},
                 },
                 lowPetR: {
                     '100%': {transform: 'translateX(-10%) translateY(-17%) rotate(90deg)'}

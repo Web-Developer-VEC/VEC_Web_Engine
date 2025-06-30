@@ -74,6 +74,7 @@ import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel L
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+import Crdt from "./Components/Second_Nav_Bar/Crdt";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -190,6 +191,8 @@ const MainContentWrapper = styled.div`
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
+
+                                <Route path="/credits/:ind" element={<Crdt />} />
 
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
