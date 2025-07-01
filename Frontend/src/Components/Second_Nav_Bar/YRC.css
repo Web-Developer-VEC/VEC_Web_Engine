@@ -19,23 +19,38 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
-  border-left: #fdb515 8px solid;
-  border-right: #fdb515 8px solid;
+  border-left: #fdb515 3px solid;
+  border-right: #fdb515 3px solid;
   font-family:  'Poppins', sans-serif;
 }
 
-/* Center "ABOUT US" Heading with Icon */
 .YRC-heading {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #800000;
   font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centers horizontally */
-  gap: 10px; /* Space between icon and text */
-  font-family:  'Poppins', sans-serif;
-  color:#800000;
+  padding-bottom: 3px;
 }
+
+.underline-text {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #FDCC03;
+}
+
 
 /* Icon Styling */
 .YRC-icon {
@@ -477,7 +492,7 @@
 
 /* Notification header */
 .YRC-notification-header {
-  background-color: navy;
+  background-color: #800000;
   color: white;
   text-align: center;
   font-weight: bold;
