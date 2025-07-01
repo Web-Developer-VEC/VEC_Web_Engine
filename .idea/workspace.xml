@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
+      <change afterPath="$PROJECT_DIR$/.idea/VEC_Final.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/public/img_p.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/public/person.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Points.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Team.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Title.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/Hostel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/Hostel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSS.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/SideNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/SideNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +33,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Forked-Up" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -56,6 +63,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Fork__Ups&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets&quot;,
@@ -64,7 +72,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Leroy\\ReactProjects\\VEC_Final\\Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -129,6 +137,11 @@
       <workItem from="1742309620037" duration="3586000" />
       <workItem from="1742354623768" duration="591000" />
       <workItem from="1742368696034" duration="7290000" />
+      <workItem from="1751004562936" duration="1056000" />
+      <workItem from="1751179405329" duration="1108000" />
+      <workItem from="1751219173596" duration="4227000" />
+      <workItem from="1751253011618" duration="6131000" />
+      <workItem from="1751297112375" duration="12569000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />
