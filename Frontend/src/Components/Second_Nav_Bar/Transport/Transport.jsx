@@ -23,7 +23,7 @@ const Transport = () => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0" style={{
+                <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0 rounded-md" style={{
                     maxWidth: "900px", 
                     // margin: "auto",
                     textAlign: "justify",
@@ -37,11 +37,10 @@ const Transport = () => {
                     // borderLeft: "5px solid #fdb515",  // Yellow highlight border
                     paddingLeft: "20px",
                 }}>
-                    <h2 className="text-secd dark:text-drks border-b-4 border-secd dark:border-drks" style={{
+                    <h2 className="text-secd dark:text-drks border-b-2 border-secd dark:border-drks" style={{
                         fontSize: "24px",
                         fontWeight: "bold",
-                        // color: "#1d1d1d",
-                        // borderBottom: "3px solid #fdb515", // Yellow underline
+                        color: "#800000",
                         display: "inline-block",
                         paddingBottom: "5px",
                         marginBottom: "10px"
