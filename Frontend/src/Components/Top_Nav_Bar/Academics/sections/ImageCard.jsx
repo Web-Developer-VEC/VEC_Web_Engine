@@ -32,7 +32,7 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
     <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
       <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
-      <p>{Designation}</p>
+      <p className="+ text-[#800000]">{Designation}</p>
       <div className={firstTile ? styles.firstTileSocialLinks : styles.socialLinks}>
         {Publon && (
           <a href={Publon} target="_blank" rel="noopener noreferrer">

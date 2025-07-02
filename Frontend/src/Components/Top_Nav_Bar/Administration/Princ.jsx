@@ -113,7 +113,7 @@ const Princ = ({theme, toggle}) => {
 <br />
             {/* Text Content Wrapped Around */}
             <div className="text-justify leading-relaxed max-w-[80%] lg:max-w-[60%] mx-auto">
-              <p className="text-lg lg:text-[24px] font-bold mb-3 font-poppins">
+              <p className="text-lg lg:text-[24px] font-bold mb-3 font-poppins text-[#800000] inline-block border-b-2 border-[#FDCC03] pb-1">
                 From the Principal's Desk
               </p>
               <q className="text-md lg:text-[16px] font-poppins block">{data?.message}</q>

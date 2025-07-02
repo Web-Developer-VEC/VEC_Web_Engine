@@ -23,7 +23,7 @@ function YRCAbout() {
     <div className="YRC-about">
     <div className="YRC-Aboutus">
     <h2 class="YRC-heading">
-  <span class="underline-text">ABOUT US</span>
+  ABOUT US
 </h2>
 
     <p className="YRC-content">

@@ -19,8 +19,8 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: left;
-  border-left: #fdb515 3px solid;
-  border-right: #fdb515 3px solid;
+  border-left: #fdb515 4px solid;
+  border-right: #fdb515 4px solid;
   font-family:  'Poppins', sans-serif;
 }
 
