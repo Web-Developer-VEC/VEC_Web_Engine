@@ -6,6 +6,9 @@ import {useState, useEffect} from "react";
 import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import LIBMemb from "./LIBMemb"; // Adjust path if needed
+import LIBFacl from "./LIBFacl";
+import LIBHod from "./LIBHod";
 
 const LibrarySections = ({faculty, membership, lib}) => {
 
@@ -383,107 +386,92 @@ const LibrarySections = ({faculty, membership, lib}) => {
 );
     }
 
-    function LIBHod() {
-        return (
-            <article className="flex flex-col gap-4 bg-gray-100 shadow-xl p-6 rounded-xl items-center text-center">
-                <div className="w-full md:w-1/5 flex justify-center">
-                    <img className="w-full h-auto" alt="Library Hod" src="/img_1.png" />
-                </div>
+//     function LIBHod() {
+//         return (
+//             <article className="flex flex-col gap-4 bg-gray-100 shadow-xl p-6 rounded-xl items-center text-center">
+//                 <div className="w-full md:w-1/5 flex justify-center">
+//                     <img className="w-full h-auto" alt="Library Hod" src="/img_1.png" />
+//                 </div>
 
-                <div className="flex flex-col px-4">
-                    <h2 className="text-2xl font-semibold">Dr. S. Rajendraprasath, B.Sc., M.A., M.L.I.Sc., M.Phil., Ph.D.</h2>
-    <p className="text-lg text-accn mb-2">
-      Librarian and Head, Department of Library and Information Science
-    </p>
-    <p className="text-xl italic text-justify">
-      VEC’s Central Library is a one of its kind installation that facilitates teaching, learning and research
-      endeavours of our students, scholars and faculty members. It is one of the foremost such libraries in Tamil Nadu
-      higher educational systems. Significant efforts are not just building structure that stores books. It serves more
-      realistically as a space for learning and knowledge exchange with users coming from diverse study and
-      aspirational backgrounds.
-    </p>
-  </div>
-</article>
-        )
-    }
+//                 <div className="flex flex-col px-4">
+//                     <h2 className="text-2xl font-semibold">Dr. S. Rajendraprasath, B.Sc., M.A., M.L.I.Sc., M.Phil., Ph.D.</h2>
+//     <p className="text-lg text-accn mb-2">
+//       Librarian and Head, Department of Library and Information Science
+//     </p>
+//     <p className="text-xl italic text-justify">
+//       VEC’s Central Library is a one of its kind installation that facilitates teaching, learning and research
+//       endeavours of our students, scholars and faculty members. It is one of the foremost such libraries in Tamil Nadu
+//       higher educational systems. Significant efforts are not just building structure that stores books. It serves more
+//       realistically as a space for learning and knowledge exchange with users coming from diverse study and
+//       aspirational backgrounds.
+//     </p>
+//   </div>
+// </article>
+//         )
+//     }
 
-    const LIBFacImageCard = ({ name, photo, Designation, firstTile}) => (
+//     const LIBFacImageCard = ({ name, photo, Designation, firstTile}) => (
     
-      <>
-      <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
-            styles.imageCard + ' w-fit lg:w-[90%]'} rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
-            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]`}>
-        <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
-        <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
-          <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
-          <p>{Designation}</p>
-        </div>
-      </div>
-      </>
-    );
+//       <>
+//       <div className={`${firstTile ? styles.firstTile + ' w-[95%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 
+//             styles.imageCard + ' w-fit lg:w-[90%]'} rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
+//             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]`}>
+//         <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
+//         <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
+//           <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
+//           <p>{Designation}</p>
+//         </div>
+//       </div>
+//       </>
+//     );
 
-    function LIBFacl() {
-        return (
-            <>
-            <div className=" py-16 px-6">
-                <h2 className="text-4xl font-bold text-accn dark:text-drka mb-8 text-center">
-                Faculty & Staff
-                </h2>
+    // function LIBFacl() {
+    //     return (
+    //         <>
+    //         <div className=" py-16 px-6">
+    //             <h2 className="text-4xl font-bold text-accn dark:text-drka mb-8 text-center">
+    //             Faculty & Staff
+    //             </h2>
 
-                {/* <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-                    {faculty?.name?.map((name, index) => (
-                        <motion.div
-                            key={index}
-                            className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
-                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-8 border-[#800000] rounded-xl"
-                            initial={{opacity: 0, y: 30}}
-                            whileInView={{opacity: 1, y: 0}}
-                            transition={{duration: 0.5, delay: index * 0.1}}
-                            viewport={{once: true}}
-                            >
-                            <div className="group relative ">
-                                <img
-                                    src={UrlParser(faculty?.image[index])}
-                                    alt={name}
-                                    className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
-                                    />
-                                <div
-                                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                                    <h3 className="text-xl font-bold text-white text-center px-4">
-                                        {name}
-                                    </h3>
-                                </div>
-                            </div>
+    //             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+    //                 {faculty?.name?.map((name, index) => (
+    //                     <motion.div
+    //                         key={index}
+    //                         className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
+    //                         dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-2 border-[#800000] rounded-xl"
+    //                         initial={{opacity: 0, y: 30}}
+    //                         whileInView={{opacity: 1, y: 0}}
+    //                         transition={{duration: 0.5, delay: index * 0.1}}
+    //                         viewport={{once: true}}
+    //                         >
+    //                         <div className="group relative ">
+    //                             <img
+    //                                 src={UrlParser(faculty?.image[index])}
+    //                                 alt={name}
+    //                                 className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
+    //                                 />
+    //                             <div
+    //                                 className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+    //                                 <h3 className="text-xl font-bold text-white text-center px-4">
+    //                                     {name}
+    //                                 </h3>
+    //                             </div>
+    //                         </div>
 
-                            <div className="p-6 text-center">
-                                <h3 className="text-2xl font-bold">{name}</h3>
-                                <p className="mt-2">{faculty?.educational_qualification[index]}</p>
-                                <p className="text-accn dark:text-drka font-semibold mt-2">
-                                    {faculty?.designation[index]}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div> */}
-
-            <div className={styles.app}>
-                <div className={styles.imagegallery}>
-                    {libFacData.name.map((name, index) => (
-                    <LIBFacImageCard
-                        key={index}
-                        name={name}
-                        photo={libFacData.image_path[index]} // Use the fetched image paths
-                        Designation={libFacData.designation[index]}
-                        Qualification={libFacData.qualification[index]}
-                    />
-                    ))}
-                </div>
-                </div>
-                
-            </div>
-        </>
-        )
-    }
+    //                         <div className="p-6 text-center">
+    //                             <h3 className="text-2xl font-bold">{name}</h3>
+    //                             <p className="mt-2">{faculty?.educational_qualification[index]}</p>
+    //                             <p className="text-accn dark:text-drka font-semibold mt-2">
+    //                                 {faculty?.designation[index]}
+    //                             </p>
+    //                         </div>
+    //                     </motion.div>
+    //                 ))}
+    //             </div>
+    //         </div>
+    //     </>
+    //     )
+    // }
     const getEbookSources = () => {
         return [
           {
@@ -543,7 +531,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
 return (
   <div className="overflow-x-auto mt-10 px-4 sm:px-8 py-10">
     <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
-      Some of Free E-books Download Websites
+      Some of E-books Download Websites
     </h2>
 
     <table className="w-full table-auto border-collapse border border-gray-300 shadow-md text-left">
@@ -599,74 +587,6 @@ return (
         </>
         )
     }
-
-    function LIBMemb() {
-        return (
-            <div className="overflow-auto w-auto p-4 sm:p-6">
-                <h2 className="text-2xl sm:text-3xl font-bold text-center text-accn dark:text-drka mb-4 sm:mb-6">
-                    MEMBERSHIP DETAILS
-                </h2>
-                <motion.div
-                    className="rounded-2xl shadow-lg  mx-auto"
-                    initial={{opacity: 0, y: 30}}
-                    whileInView={{opacity: 1, y: 0}}
-                    transition={{duration: 0.8}}
-                    viewport={{once: true}}
-                >
-                    {/* 🚀 Full-width Scrollable Wrapper for Mobile */}
-                    <div className="overflow-x-auto">
-                        <div className="min-w-[750px] border-r-2">
-                            <table className="w-full border-collapse backdrop-blur-lg shadow-xl overflow-x-auto">
-                                <thead>
-                                <tr className="bg-gray-300 dark:bg-gray-700 text-black text-sm sm:text-base">
-                                    <th className="py-2 px-3 sm:py-3 sm:px-6 text-center">
-                                        S. No
-                                    </th>
-                                    <th className="py-2 px-3 sm:py-3 sm:px-6 text-center">
-                                        Member Details
-                                    </th>
-                                    <th className="py-2 px-3 sm:py-3 sm:px-6 text-center">
-                                        No. of Books
-                                    </th>
-                                    <th className="py-2 px-3 sm:py-3 sm:px-6 text-center">
-                                        Periodical/Back Volume/CD
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {membership?.member_details?.map((member, index) => (
-                                    <motion.tr
-                                        key={member.id}
-                                        className="border-b border-gray-300 transition-all duration-300 bg-prim dark:bg-drkp
-                                                        dark:even:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]"
-                                        initial={{opacity: 0, x: -20}}
-                                        whileInView={{opacity: 1, x: 0}}
-                                        transition={{delay: index * 0.1}}
-                                        viewport={{once: true}}
-                                    >
-                                        <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                                            {index + 1}
-                                        </td>
-                                        <td className="py-3 px-3 sm:py-4 sm:px-6 text-center">
-                                            {member}
-                                        </td>
-                                        <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                                            {membership?.no_of_books?.[index]}
-                                        </td>
-                                        <td className="py-3 px-3 sm:py-4 sm:px-6 text-center font-semibold">
-                                            {membership?.["periodical/back_volumes/cd"]?.[index]}
-                                        </td>
-                                    </motion.tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        )
-    }
-
     function LIBBorw() {
         return (
             <div className="max-w-6xl mx-auto p-6 flex flex-col lg:flex-row items-center gap-12">
@@ -1175,6 +1095,7 @@ return (
         "Staff": <LIBFacl/>,
         "Services": <LIBHigh/>,
         "Advisory committee members": <LIBInstr/>,
+        "Membership Details": <LIBMemb/>,
         "Downloads": <LIBFea/>,
         "Activities": <LIBResc/>,
         "OPAC": <LIBMult/>,
