@@ -111,6 +111,8 @@ function LoginForm() {
     e.preventDefault(); // Prevent page refresh
   
     try {
+      console.log("Reached try block");
+      
       const response = await fetch("/api/login", {
         method: "POST",
         headers: {
@@ -123,6 +125,8 @@ function LoginForm() {
       const data = await response.json();
   
       if (response.ok) {
+        console.log("Response ok");
+        
         setMessage(`Success: ${data.message}`);
         Swal.fire({
           title: "Login Successful",
