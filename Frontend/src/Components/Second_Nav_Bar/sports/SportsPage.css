@@ -36,8 +36,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
     animation: fadeInUp 1s ease-in-out;
-    border-left: 8px solid #fdb515;
-    border-right: 8px solid #fdb515;
+    border-left: 5px solid #fdb515;
   }
   
   .intro-text {
@@ -53,16 +52,14 @@ body {
   
   /* Vision & Mission Section */
   .vision-mission {
-    width: 90%;
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    max-width: 1100px;
-    /*background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 215, 0, 0.1));*/
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
-    border-left: 8px solid #fdb515;
+    border-left: 5px solid #fdb515;
   }
   
   .vision-mission-text {

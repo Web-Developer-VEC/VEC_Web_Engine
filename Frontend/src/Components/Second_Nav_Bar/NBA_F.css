@@ -26,13 +26,15 @@
 
 /* Tile Header */
 .nba-tile-header {
-  font-size: 24px;
+  font-size: 20px;
   color: #800000;
   margin-bottom: 10px;
   border-bottom: 2px solid #FDCC03;
   display: inline-block;
   padding-bottom: 5px;
   font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Tile Text */

@@ -19,7 +19,6 @@ const Alumni = ({ theme, toggle }) => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
   const [alumniData, setAlumniData] = useState(null);
-  console.log('Alumni',alumniData?.alumni_image_path);
   
   
   const content = spcannouncements[0]?.list_of_contents || [];
@@ -179,7 +178,7 @@ useEffect(() => {
           <div
             className="column rounded-xl,theme(colors.secd),transparent_70%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
-                    border-l-4 border-accn dark:border-drka"
+                    border-l-4 border-[#fdcc03] dark:border-drka rounded-md"
           >
             <h2 className="asection-title">Vision</h2>
             <p className="section-content">
@@ -192,7 +191,7 @@ useEffect(() => {
           <div
             className="column rounded-xl ,theme(colors.secd),transparent_70%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
-                    border-l-4 border-accn dark:border-drka"
+                    border-l-4 border-[#fdcc03] dark:border-drka"
           >
             <h2 className="asection-title">Mission</h2>
             <ul className="section-content">

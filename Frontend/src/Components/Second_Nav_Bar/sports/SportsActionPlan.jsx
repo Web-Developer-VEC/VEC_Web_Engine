@@ -3,11 +3,11 @@ import './SportsActionPlan.css'; // Import the updated CSS file for styling
 
 const SportsActionPlan = () => {
   return (
-    <section className="sports-action-plan bg-gray-300 dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_80%)]">
+    <section className="sports-action-plan">
       <div className="section-header">
         <h2 className="text-accn dark:text-drka">Our Action Plan</h2>
         <div className="w-fit ml-5">
-          <ul className="text-justify marker:text-accn dark:marker:taxt-drks">
+          <ul className="text-justify text-black marker:text-black dark:marker:taxt-drks">
             <li>
               We give effective training for the students to develop their
               physical fitness.
@@ -26,11 +26,11 @@ const SportsActionPlan = () => {
 
       <div className="action-content">
         <div className="sports_card training bg-prim dark:bg-drkp">
-          <h3 className="text-[#8B74CB] dark:text-drka">Training Schedule</h3>
+          <h3 className="text-brwn dark:text-drka border-b-2 border-[#FDCC03] w-fit pb-1">Training Schedule</h3>
           <p>Regular practice sessions from 4:15 pm to 6:15 pm.</p>
         </div>
         <div className="sports_card goals-objectives bg-prim dark:bg-drkp">
-          <h3 className="text-[#8B74CB] dark:text-drka">Goals & Objectives</h3>
+          <h3 className="text-brwn dark:text-drka border-b-2 border-[#FDCC03] w-fit pb-1">Goals & Objectives</h3>
           <ul className="text-justify">
             <li>To become champions of champions.</li>
             <li>
@@ -43,7 +43,7 @@ const SportsActionPlan = () => {
         </div>
 
         <div className="sports_card health-awareness bg-prim dark:bg-drkp">
-          <h3 className="text-[#8B74CB] dark:text-drka">
+          <h3 className="text-brwn dark:text-drka border-b-2 border-[#FDCC03] w-fit pb-1">
             Health Awareness & Orientation
           </h3>
           <ul className="text-justify">
@@ -60,7 +60,7 @@ const SportsActionPlan = () => {
         </div>
 
         <div className="sports_card additional-info bg-prim dark:bg-drkp">
-          <h3 className="text-[#8B74CB] dark:text-drka">
+          <h3 className="text-brwn dark:text-drka border-b-2 border-[#FDCC03] w-fit pb-1">
             Facilities & Achievements
           </h3>
           <ul className="text-justify">

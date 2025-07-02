@@ -199,35 +199,6 @@ const LibrarySections = ({faculty, membership, lib}) => {
 
     const Links = [
         {
-            title: "Free E-Books Download Websites",
-            content: [
-                {
-                    name: "University of Pennsylvania",
-                    link: "http://digital.library.upenn.edu/books",
-                },
-                {name: "Project Gutenberg", link: "http://www.gutenberg.org"},
-                {name: "Free e-books", link: "http://www.free-ebooks.net"},
-                {name: "Free Tech Books", link: "http://www.freetechbooks.com"},
-                {name: "Campus Books", link: "http://www.campusbooks.com"},
-                {
-                    name: "University of Virginia e-Book Library",
-                    link: "http://etext.lib.virginia.edu/ebooks/ebooklist.html",
-                },
-                {name: "NAP Open Book", link: "http://www.nap.edu/index.html"},
-                {
-                    name: "Internet Public Library",
-                    link: "http://www.ipl.org/div/books",
-                },
-                {name: "Direct Textbook", link: "http://www.directtextbook.com"},
-                {name: "e-Books", link: "http://e-books.org"},
-                {name: "e-Books Palace", link: "http://www.ebookpalace.com"},
-                {
-                    name: "Electronic Library of Mathematics",
-                    link: "http://www.emis.de/journals/short_index.html",
-                },
-            ],
-        },
-        {
             title: "Anti-Plagiarism Scanner Software",
             content: [
                 {name: "CopyCatch", link: "https://www.copycatchgold.com"},
@@ -513,43 +484,98 @@ const LibrarySections = ({faculty, membership, lib}) => {
         </>
         )
     }
+    const getEbookSources = () => {
+        return [
+          {
+            name: "University of Pennsylvania",
+            url: "http://digital.library.upenn.edu/books"
+          },
+          {
+            name: "Project Gothenburg",
+            url: "http://www.gutenberg.org"
+          },
+          {
+            name: "Free e books",
+            url: "http://www.free-ebooks.net"
+          },
+          {
+            name: "Free Tech books",
+            url: "http://www.freetechbooks.com"
+          },
+          {
+            name: "Campus books",
+            url: "http://www.campusbooks.com"
+          },
+          {
+            name: "University of Virginia; e-book Library",
+            url: "http://etext.lib.virginia.edu/ebooks/ebooklist.html"
+          },
+          {
+            name: "NAP Open Book",
+            url: "http://www.nap.edu/index.html"
+          },
+          {
+            name: "Internet public Library",
+            url: "http://www.ipl.org/div/books"
+          },
+          {
+            name: "Direct Text Book",
+            url: "http://www.directtextbook.com"
+          },
+          {
+            name: "e-books",
+            url: "http://e-books.org"
+          },
+          {
+            name: "e-books Palace",
+            url: "http://www.ebookpalace.com"
+          },
+          {
+            name: "Electronic Library of Mathmatics",
+            url: "http://www.emis.de/journals/short_index.html"
+          }
+        ];
+      };
 
     function LIBFea() {
-        return (
-            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-                {additionalSections.map((section, index) => (
-                    <motion.div
-                        key={index}
-                        className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-       transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
-        dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
-                        initial={{opacity: 0, y: 50}}
-                        whileInView={{opacity: 1, y: 0}}
-                        transition={{duration: 0.8}}
-                        viewport={{once: true}}
-                    >
-                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">
-                            {section.category}
-                        </h2>
-                        <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
-                            {section.items.map((item, i) => (
-                                <motion.li
-                                    key={i}
-                                    className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
-                                    initial={{opacity: 0, x: -20}}
-                                    whileInView={{opacity: 1, x: 0}}
-                                    transition={{delay: i * 0.1}}
-                                    viewport={{once: true}}
-                                >
-                                    <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
-                                    <span className="text-start">{item}</span>
-                                </motion.li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                ))}
-            </div>
-        )
+        
+        const ebookSources = getEbookSources(); // calling the function
+return (
+  <div className="overflow-x-auto mt-10 px-4 sm:px-8 py-10">
+    <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
+      Some of Free E-books Download Websites
+    </h2>
+
+    <table className="w-full table-auto border-collapse border border-gray-300 shadow-md text-left">
+      <thead>
+        <tr className="bg-[#808080] text-white text-base sm:text-lg">
+          <th className="py-3 px-4 border border-gray-300">E-Book Source</th>
+          <th className="py-3 px-4 border border-gray-300">Link</th>
+        </tr>
+      </thead>
+      <tbody className="text-sm sm:text-base">
+        {ebookSources.map((row, index) => (
+          <tr key={index} className="hover:bg-gray-100">
+            <td className="py-3 px-4 border border-gray-300 font-medium text-gray-800">
+              {row.name}
+            </td>
+            <td className="py-3 px-4 border border-gray-300">
+                <a
+                    href={row.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#800000] hover:underline"
+                >
+                    {row.url}
+                </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
     }
 
     function LIBInstr() {
