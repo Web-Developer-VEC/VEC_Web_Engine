@@ -33,6 +33,8 @@
   display: inline-block;
   padding-bottom: 5px;
   font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Tile Text */

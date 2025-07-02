@@ -5,11 +5,6 @@
   border-left: 5px solid #fdb515;
   margin-top: 20px;
   margin-bottom: 20px;
-  /* Left border */
-  border-right: 5px solid #fdb515;
-  /* Right border */
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  /* Added soft shadow */
 }
 .about-hostel:hover{
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -18,7 +13,7 @@
 .hostel-abt-container {
   /* max-width: 1200px; */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
   
 }
 
@@ -32,7 +27,7 @@
   /* About hostel section */
   .about-hostel {
     /*background-color: #ffffff;*/
-    padding: 4rem 0;
+    padding: 3rem 0;
     text-align: center;
   }
   .fade-in{
