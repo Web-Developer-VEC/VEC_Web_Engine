@@ -153,7 +153,7 @@ useEffect(() => {
                   {content?.map((item, index) => (
                       <li className="text-xl mb-2" key={index}>
                           <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                          <a href={links[index]} className="text-black no-underline">{item}</a>
+                          <a href={links[index]} target="_blank" className="text-black no-underline">{item}</a>
                       </li>
                   ))}
               </ul>

@@ -59,7 +59,7 @@
   padding: 25px;
   text-align: left;
   background-color: #ffffff;
-  border-left: 5px solid #ffcc00; /* Yellow left border */
+  border-left: 4px solid #ffcc00; /* Yellow left border */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -71,6 +71,9 @@
   margin-bottom: 15px;
   font-weight: 600;
   color: rgb(128, 0, 0);
+  border-bottom: 3px solid #ffcc00;
+  padding-bottom: 3px;
+  width: fit-content;
 }
 
 /* Card Text */
