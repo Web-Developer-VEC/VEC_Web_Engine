@@ -27,14 +27,14 @@ body{
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: #fff;
   width: 80%;
-  border-left: 6px solid rgb(231, 231, 23);
-  border-right: 6px solid rgb(231, 231, 23);
+  border-left: 5px solid #FDCC03;
 }
 
 .naac-info-panel h2 {
   color: #800000;
   margin-bottom: 10px;
   font-size: 24px;
+  font-weight: bold;
 }
 
 .naac-info-panel p {

@@ -3,11 +3,10 @@
   width: 90%;
   max-width: 1200px;
   margin: 60px auto;
-  /*background-color: #fff;*/
+  background-color: #f9f9f9;
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  /*background: linear-gradient(135deg, #f8e4d3, #f1e0a1);*/
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -66,14 +65,16 @@
 .sports_card li {
   padding-left: 30px;
   position: relative;
+  list-style: none;
 }
 
 .sports_card li::before {
-  content: '✔️';
+  content: '•';
+  font-size: 20px;
   position: absolute;
   left: 0;
-  font-size: 20px;
-  /*color: #ff6600;*/
+  top: 0;
+  line-height: 1;
 }
 
 .sports_card:hover {
@@ -98,9 +99,9 @@
 }
 
 .additional-info li::before {
-  content: '✔️';
+  content: '•';
   font-size: 20px;
-  /*color: #ff6600;*/
+  margin-right: 8px;
 }
 
 
