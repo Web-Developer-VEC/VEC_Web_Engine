@@ -61,10 +61,10 @@ if (!isOnline) {
     ) : (
       <div className="me-page">
         <div className="ME">
-          <h3 className="text-accn dark:text-drka font-bold">M.E. Degree Programme</h3>
+          <h3 className="text-accn dark:text-drka font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">M.E. Degree Programme</h3>
 
         </div>
-        <div className="me-contents bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+        <div className="me-contents bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h3 className="text-accn dark:text-drka Eligibility text-center">
             Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
@@ -84,7 +84,7 @@ if (!isOnline) {
           <p className="description-text mb-2 mt-2"><strong>Government Quota : </strong>Apply through TANCET/TANCA</p>
           <p className="description-text mb-2"><strong>Management Quota : </strong> Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu.</p>
           <div className="me-container">
-            <center><h4 className="text-accn dark:text-drka Eligibility mt-5 font-thin">M.E - Total Intake {pgData.Year}</h4></center>
+            <center><h4 className="text-accn dark:text-drka Eligibility mt-5 font-bold">M.E - Total Intake {pgData.Year}</h4></center>
             <table className="intake-table">
               <thead>
                 <tr>

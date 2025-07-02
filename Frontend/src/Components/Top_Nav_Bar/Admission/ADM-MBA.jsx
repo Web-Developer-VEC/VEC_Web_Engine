@@ -62,11 +62,11 @@ if (!isOnline) {
       ) : (
         <div className="mba-page">
           <div className="MBA">
-            <h3 className="text-accn dark:text-drka ml-4 font-bold">M.B.A Admission</h3>
+            <h3 className="text-accn dark:text-drka ml-4 font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">M.B.A Admission</h3>
           </div>
-          <div className="mba-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+          <div className="mba-container bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+            <div className="text-start text-accn dark:text-drka mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">Eligibility</div>
             <p className="description-text mb-2"><strong>Government Quota : </strong>Apply through TANCET</p>
             <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
             <p className="description-text">
@@ -75,7 +75,7 @@ if (!isOnline) {
 
             <div className="mba-content">
               <center>
-                <h4 className="text-accn dark:text-drka">MBA - Total Intake ({mbaData?.Year})</h4>
+                <h4 className="text-accn dark:text-drka font-bold">MBA - Total Intake ({mbaData?.Year})</h4>
               </center>
               <table className="mba-intake-table">
                 <thead>

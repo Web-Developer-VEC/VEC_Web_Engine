@@ -22,7 +22,7 @@
 
 /* Scrollbar styles */
 .student-tail {
-  background: #e5e7eb;
+  background: #f8f9fa;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }
@@ -48,7 +48,7 @@
 }
 
 .faculty-tail {
-  background: #e5e7eb;
+  background: #f8f9fa;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }
@@ -78,7 +78,7 @@
 .tail-content h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #333;
+  color: #800000;
 }
   
 .download-links-container {
