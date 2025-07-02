@@ -16,11 +16,20 @@ function HostelPass() {
   const [previewURL, setPreviewURL] = useState(null);
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
-  const [place, setPlace] = useState(null);
+  const [place, setPlace] = useState("");
   const [reason, setReason] = useState(null);
   const [existingFilePath, setExistingFilePath] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [parentApproval, setParentApproval] = useState(true)
+  const [selectedFromDateTime,setSelectedFromDateTime]= useState('')
+  const [selectedToDateTime,setSelectedToDateTime]= useState('')
+  const [outpassFromDate,setOutpassFromDate]=useState("")
+  const [secondTime,setSecondTime] = useState('')
+  const [firstTime,setFirstTime]=useState('')
+  const [selectedFromDate,setSelectedFromDate]=useState('')
+  const [selectedFromTime,setSelectedFromTime]= useState("")
+  const [selectedToDate,setSelectedToDate]=useState('')
+  const [selectedToTime,setSelectedToTime]=useState("")
 
   const location = useLocation();
   let passid  = location.state?.passid
@@ -46,13 +55,32 @@ function HostelPass() {
   const handlePassTypeChange = (type) => {
     setPassType(type);
     setShowDocUpload(type === 'od' || type === 'leave');
+
+  setFrom('');              
+  setTo('');        
+  // setFirstTime('')         
+  // setSecondTime('');
+  // setSelectedFromDate('');
+  // setSelectedToDateTime('');
+  // setOutpassFromDate('');
+  setPlace("");
+  setReason(null);
+  setReasonType('');
+  setSelectedFile(null);
+  // setPreviewURL(null);
+  setExistingFilePath('');
   };
 
-  const validateTime = (dateTime, gender) => {
+  const validateTime = (dateTime , gender) => {
+    console.log("Ajith");
+    
+    console.log("Time",dateTime)
+    console.log("Gender",gender);
+    
     const selectedTime = new Date(dateTime);
     const selectedHour = selectedTime.getHours();
     const selectedMinutes = selectedTime.getMinutes();
-  
+    
     if (gender === "Female" && (selectedHour > 18 || (selectedHour === 18 && selectedMinutes > 0)) && passType === 'outpass') {
       alert("Girls are not allowed to select a time after 6:00 PM.");
       return false;
@@ -64,20 +92,67 @@ function HostelPass() {
   };
 
   const handleFromChange = (e) => {
-    const selectedDateTime = e.target.value;
-    if (validateTime(selectedDateTime, studentData?.gender)) {
-      setFrom(selectedDateTime);
+    const  fromDateTime = e.target.value;
+    
+    const outPassFromDate = fromDateTime.split("T")[0]
+    const outPassFromTime = fromDateTime.split('T')[1]
+    setSelectedFromDate(outPassFromDate)
+    setSelectedFromTime(outPassFromTime)
+  
+    
+    if (validateTime(fromDateTime, studentData?.gender)) {
+      // console.log("handlefrom");
+      
+      setFrom(fromDateTime)
     }
   };
 
   const handleToChange = (e) => {
-    const selectedDateTime = e.target.value;
-    if (validateTime(selectedDateTime, studentData?.gender)) {
-      setTo(selectedDateTime);
-    } else {
-      setTo(""); 
+
+
+  const toDateTime = e.target.value;
+    // console.log("Handle time",toDateTime);
+
+    const outPasstoDate = toDateTime.split("T")[0];
+    const outPassToTime = toDateTime.split("T")[1];
+    const toCorrectedDateTime = (`${selectedFromDate} T ${outPassToTime}`);
+    setSelectedToDate(outPasstoDate)
+    setSelectedToTime(outPassToTime)
+    if ((selectedFromDate === outPasstoDate) && passType==="outpass"){
+      setTo(toDateTime);  
+      //  return;
     }
-  };
+    else if ((selectedFromDate !== outPasstoDate) && passType==="outpass" ) {
+      alert("Date should match the 'From' date");
+      setSelectedFromDateTime("")
+      // return;
+    }else if (passType !== "outpass"){
+      setTo(toDateTime)
+      // return;
+    }
+    const fromDate=Date(from)
+    const toDate = Date(to)
+    
+    
+      if (passType === "staypass" && (toDate < fromDate)) {
+        alert("End date & time must be greater than start date & time.");
+        setFrom("");
+        setTo("");
+      }
+
+  // setSecondTime(selectedToDateTime); 
+
+  if (validateTime(toDateTime, studentData?.gender)) {
+    console.log("HandleTo");
+    
+    return;
+  } else {
+   setTo("")
+  }
+
+
+
+};
 
   // Fetch pass details if passid is present
   useEffect(() => {
@@ -513,6 +588,8 @@ const handleUpdatePass = async () => {
     } catch (error) {
       showSweetAlert("Error","❌ Error fetching drafts:","error");
     }
+setFrom("")
+setTo("")
   };
 
 
@@ -597,6 +674,7 @@ const handleUpdatePass = async () => {
                       name="passType"
                       value={type}
                       className="HS-radio"
+                      
                       onChange={() => handlePassTypeChange(type)}
                       required
                     />
@@ -674,9 +752,12 @@ const handleUpdatePass = async () => {
                     <input 
                       type="datetime-local" 
                       className="HS-input" 
+                      onkeydown="return false;"  
                       id='fromDateTime' 
                       value={from} 
                       onChange={handleFromChange}
+                     onKeyDown={(e) => e.preventDefault()} 
+                     onPaste={(e) => e.preventDefault()}
                       required
                     />
                   </div>
@@ -687,7 +768,11 @@ const handleUpdatePass = async () => {
                       className="HS-input" 
                       id='toDateTime' 
                       value={to} 
+                      onkeydown="return false;"  
                       onChange={handleToChange}
+                      onKeyDown={(e) => e.preventDefault()} 
+                      onPaste={(e) => e.preventDefault()} 
+                      min={from}
                       required
                     />
                   </div>
