@@ -11,6 +11,7 @@
     font-weight: bold;
     margin-bottom: 2rem;
     text-align: center;
+    color: #800000;
 }
 
 .department1-grid {
@@ -46,7 +47,7 @@
 .department1-department-link {
     font-size: 1rem;
     font-weight: 500;
-    color: #800000;
+    color: #000000;
     text-decoration: none;
     flex-grow: 1;
 }
