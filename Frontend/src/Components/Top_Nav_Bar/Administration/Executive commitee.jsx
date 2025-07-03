@@ -142,7 +142,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
                 key={name}
                 name={name}
                 icon={iconMapping[name.replace(/[\s'-]/g, "_").toLowerCase()]}
-                onClick={() => handlePdfClick(UrlParser(pdf_path))}
+                // onClick={() => handlePdfClick(UrlParser(pdf_path))}
               />
             ))}
           </div>
