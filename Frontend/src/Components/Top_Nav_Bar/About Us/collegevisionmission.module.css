@@ -25,15 +25,15 @@ body {
   max-width: 750px;
   background: #fff;
   padding: 15px; /* Reduced padding */
-  border-left: 8px solid #fdb515;
-  border-radius: 0 8px 8px 0;
+  border-left: 5px solid #fdb515;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative; /* For yellow border positioning */
   left: -120px;
 }
 
 .visionCard::before, .missionCard::before {
-  content: '';
+  content: 'A';
   position: absolute;
   left: 8px;
   top: 0;
@@ -72,9 +72,11 @@ body {
 .cardTitle {
   font-size: 20px; /* Adjusted font size */
   font-weight: bold;
-  color: #1d1d1d;
+  color: #800000;
   margin: 0;
   text-align: justify;
+  border-bottom: 3px solid #fdb515;
+  padding-bottom: 3px;
 }
 
 /* Card content styling */

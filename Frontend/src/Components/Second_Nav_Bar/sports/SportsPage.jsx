@@ -42,7 +42,8 @@ function SPTIntro() {
 }
 
 function SPTVis() {
-    return (<section className="vision-mission">
+    return (
+    <section className="vision-mission">
         <div className="section-content">
             <h2 className="section-title">Vision & Mission</h2>
             <p className="vision-mission-text">
@@ -52,7 +53,8 @@ function SPTVis() {
                 intellectual growth through fitness, outdoor recreation, and coaching and sports
                 participation. </p>
         </div>
-    </section>);
+    </section>
+    );
 }
 
 const SportsPage = ({theme, toggle}) => {

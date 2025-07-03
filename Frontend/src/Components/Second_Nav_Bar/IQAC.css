@@ -389,6 +389,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s ease;
+  border-left: 4px solid #FDCC03;  
 }
 
 .objectives-card:hover {
@@ -399,8 +400,10 @@
   color: #800000;
   font-size: 24px;
   margin-bottom: 15px;
-  border-bottom: 2px solid #6fffe9;
   padding-bottom: 8px;
+  border-bottom: 2px solid #FDCC03;
+  display: inline-block;
+
 }
 
 .objectives-text {

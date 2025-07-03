@@ -12,11 +12,14 @@ body {
   padding: 0;
 }
 
-.container {
+.place-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
+  width: 90%;
+  align-items: center;
+  margin: auto;
 }
 
 .Placement-App {
@@ -37,16 +40,12 @@ body {
   width: 100%;
   min-height: 100px;
   padding: 20px;
-  border-left: 5px solid #e3c22f;
-  border-right: 5px solid #e3c22f;
-  border-top: none;
-  border-bottom: none;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 10px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .person-image {

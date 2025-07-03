@@ -46,7 +46,10 @@
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 600;
-  color: #ff9800;
+  color: #800000;
+  border-bottom: 3px solid #FDCC03;
+  padding-bottom: 2px;
+  width: fit-content;
 }
 
 /* Card Text */

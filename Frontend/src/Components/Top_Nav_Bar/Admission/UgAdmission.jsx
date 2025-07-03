@@ -95,12 +95,12 @@ if (!isOnline) {
       ) : (
         <div className="Admission">
           <div className="B-E">
-            <h3 className="text-accn dark:text-drka">B.E./B.Tech. Degree Programme</h3>
+            <h3 className="text-accn dark:text-drka border-b-2 pb-2 w-fit border-[#fdcc03]">B.E./B.Tech. Degree Programme</h3>
           </div>
 
-          <div className="ADM-content bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+          <div className="ADM-content bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] ">        
-           <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+           <div className="text-start text-accn dark:text-drka mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">Eligibility</div>
            
             <p className="description-text">
             Candidates seeking admission should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
@@ -118,11 +118,11 @@ if (!isOnline) {
 
 
           <div className="B-E">
-            <h3 className="text-accn dark:text-drka mt-5">Lateral Entry</h3>
+            <h3 className="text-accn dark:text-drka mt-5 border-b-2 pb-2 w-fit border-[#fdcc03]">Lateral Entry</h3>
           </div>
-          <div className="ADM-content lateral-entry bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+          <div className="ADM-content lateral-entry bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"> 
-            <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+            <div className="text-start text-accn dark:text-drka mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">Eligibility</div>
             <p className="description-text">
             Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
             </p>

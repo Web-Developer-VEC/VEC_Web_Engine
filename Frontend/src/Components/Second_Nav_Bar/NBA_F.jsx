@@ -39,7 +39,7 @@ const NBA_F = () => {
           <div className="nba-tile-container">
             <div className="nba-tile">
               <div className="tile-tail"></div>
-              <h3 className="nba-tile-header">About NBA</h3>
+              <h3 className="nba-tile-header">ABOUT NBA</h3>
               <p className="nba-tile-text">
                 The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs.
               </p>

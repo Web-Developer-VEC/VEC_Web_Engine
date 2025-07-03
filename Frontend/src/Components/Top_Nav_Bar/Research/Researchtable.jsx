@@ -32,7 +32,7 @@ const Researchtable = () => {
         <div className="Research-content">
         <div className="Research-title-container">
         <h2 className="Research-content font-poppins">
-           Adacamic Research 
+           Academic Research 
         </h2>
         </div>
    

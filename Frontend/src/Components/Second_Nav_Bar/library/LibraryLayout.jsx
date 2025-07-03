@@ -4,18 +4,20 @@ import LibrarySections from "./Libraryinfra";
 import Banner from '../../Banner'
 import axios from "axios";
 import SideNav from "../SideNav";
+import LIBMemb from "./LIBMemb"; // Adjust path if needed
+import LIBFacl from "./LIBFacl";
+import LIBHod from "./LIBHod";
 
 const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
     const [lib, setLib] = useState("About")
     const navData = {
         "About": <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />,
-        "HOD's message": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Staff": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
+        "HOD's message":<LIBHod lib={lib} />,
+        "Staff":<LIBFacl lib={lib} />,
         "Advisory committee members": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
+        "Membership Details": <LIBMemb lib={lib} />,
         "Collection": {
             "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,

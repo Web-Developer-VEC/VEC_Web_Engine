@@ -145,6 +145,9 @@ body {
   font-weight: bold;
   /*color: #333;*/
   margin-bottom: 20px;
+  color: #800000;
+  border-bottom: 2px solid #FFD700;
+  display: inline-block;  
 }
 
 .ABT_container{

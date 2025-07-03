@@ -89,7 +89,7 @@ if (!isOnline) {
       <div key={index} className="resource-item">
         <center>
           <div className="form-content">
-            <div className="form-regulation dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <div className="form-regulation bg-[#f8f9fa">
               <span className="form-regulation-title">{resource.name}</span>
               <div className="form-buttons">
                 <button
@@ -136,11 +136,11 @@ if (!isOnline) {
       <div className="tails-container">
         <div className="tail student-tail" ref={studentTailRef}>
           <div className="tail-content">
-            <h2>Student Resources</h2>
+            <h2 className="font-bold">Student Resources</h2>
             <div className="download-links-container">
                 {renderResourceLinks(studentResources)}
             </div>
-          </div>
+          </div> 
         </div>
 
         <div className="tail faculty-tail">
