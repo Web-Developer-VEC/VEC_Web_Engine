@@ -43,7 +43,7 @@ const NewTrust = ({theme, toggle}) => {
   subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
 />
 
-      <div className="bg-prim dark:bg-drkp min-h-screen">
+      <div className="bg-prim dark:bg-drkp min-h-screen px-4 pt-0 md:p-8">
 
         <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
         <motion.div
