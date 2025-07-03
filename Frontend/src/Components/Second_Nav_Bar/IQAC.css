@@ -616,3 +616,34 @@
     padding: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .coordinator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .coordinator-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .coordinator-image-container {
+    max-width: 150px;
+    margin-bottom: 1rem;
+  }
+
+  .coordinator-details {
+    width: 100%;
+  }
+
+  .coordinator-email a,
+  .coordinator-phone a {
+    word-break: break-word;
+  }
+}
