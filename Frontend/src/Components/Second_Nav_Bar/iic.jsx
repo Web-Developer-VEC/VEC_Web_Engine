@@ -6,9 +6,9 @@ import Banner from "../Banner"
 import SideNav from "./SideNav";
 
 function IicHome() {
-    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks">
+    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks iic-box">
         <h1 className="text-accn text-[32px]">Home</h1>
-        <h2 className="text-[24px]">About IIC</h2>
+        <h2 className="text-[24px] naac-about">About IIC</h2>
         <p>
             The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The
@@ -24,9 +24,9 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
-        <h1 className="text-accn text-4xl">Establishment of IIC</h1>
+        <h1 className="text-accn text-4xl ">Establishment of IIC</h1>
         <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px]">Major Focus of IIC</h2>
+            <h2 className="text-[30px] iic-establishment">Major Focus of IIC</h2>
             <p>
                 <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
                 prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
@@ -37,7 +37,7 @@ function IicEst() {
         </div>
 
         <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px]">Vision</h2>
+            <h2 className="text-[30px] iic-establishment">Vision</h2>
             <p>
                 To facilitate a conducive environment with the intention of making an innovation to reach the society or
                 industries for the betterment of our country and its citizen through entrepreneurial assets.
@@ -45,7 +45,7 @@ function IicEst() {
         </div>
 
         <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px]">Mission</h2>
+            <h2 className="text-[30px] iic-establishment">Mission</h2>
             <p>
                 To enable student and faculty to establish a start-up to market their innovative products; an enhanced
                 coordination and priority setting across the start-up eco-system; an improved customizable strategy and
@@ -86,7 +86,7 @@ function IicEco() {
     return (<div className="mb-10">
         <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks">
             <h1 className="text-accn text-4xl">I & E Ecosystem</h1>
-            <h2 className="text-[30px]">Functions of IIC</h2>
+            <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
             <p>
                 <br/>• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC
                 in a
@@ -476,7 +476,7 @@ const Iic = ({toggle, theme}) => {
                     </button>
                 ))}
             </div>
-
+            
             <div className={`nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
           height ${selectedYear === "Members" ? "members-section" : ""}`}>
                 {selectedYear === "NIR" ? (
