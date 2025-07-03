@@ -381,3 +381,9 @@
 
 
   }
+
+
+  .HS-input input[readonly] {
+  background-color: white;
+  cursor: pointer;
+}

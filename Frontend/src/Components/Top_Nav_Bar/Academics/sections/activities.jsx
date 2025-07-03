@@ -7,6 +7,11 @@ import LoadComp from "../../../LoadComp";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
+
+  if (Array.isArray(path)) {
+    path = path[0];
+  }
+
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
@@ -61,7 +66,7 @@ const Activities = ({ data }) => {
     setIsModalOpen(false);
   };
 
-  if(!data?.dept_activities) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
     <LoadComp txt={""} />
   </div>
 

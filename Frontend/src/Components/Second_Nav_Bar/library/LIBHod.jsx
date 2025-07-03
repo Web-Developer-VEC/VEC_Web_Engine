@@ -1,0 +1,56 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
+const LIBHod = () => {
+  const [hod, setHod] = useState(null);
+
+  useEffect(() => {
+    const fetchHodData = async () => {
+      try {
+        const res = await axios.get("/api/library");
+        const data = res.data;
+
+        const hodData = data?.HOD || data[0]?.HOD;
+        setHod(hodData);
+        console.log("HoD data loaded:", hodData);
+      } catch (error) {
+        console.error("Error fetching HoD data:", error.message);
+      }
+    };
+
+    fetchHodData();
+  }, []);
+
+  if (!hod) {
+    return (
+      <div className="py-10 text-center text-lg text-gray-600">Loading HoD Data...</div>
+    );
+  }
+
+  return (
+    <article className="flex flex-col gap-4 bg-gray-100 shadow-xl p-6 rounded-xl items-center text-center">
+      <div className="w-full md:w-1/8 flex justify-center">
+        <img
+          className="w-auto h-60"
+          alt="Library HoD"
+          src={UrlParser(hod.image_path)}
+        />
+      </div>
+
+      <div className="flex flex-col px-4">
+        <h2 className="text-2xl font-semibold">{hod.name}</h2>
+        <p className="text-lg text-accn mb-2">{hod.designation}</p>
+        <p className="text-md mb-2">{hod.education_qualification}</p>
+        <p className="text-xl italic text-justify-center">{hod.message}</p>
+      </div>
+    </article>
+  );
+};
+
+export default LIBHod;

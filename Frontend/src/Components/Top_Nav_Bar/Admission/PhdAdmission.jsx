@@ -40,10 +40,10 @@ if (!isOnline) {
       />
       <div class="phd">
         <div className="contain">
-          <div className="p-4 left1 border-l-8 border-secd dark:border-drks rounded-xl
+          <div className="p-4 left1 border-l-4 border-[#fdcc03] dark:border-drks rounded-xl
             bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)]
             dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
-            <h1 className="phd-h1">
+            <h1 className="phd-h1 text-brwn">
               In Velammal Engineering College the following departments are
               recognized research centers of Anna University, Chennai
             </h1>
