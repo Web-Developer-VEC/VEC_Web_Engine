@@ -55,25 +55,27 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    margin-top:10px;
+    margin-top: 30px;
     margin-bottom:10px;
+    width: 100%; 
   }
 
   .naac-info-panel {
     /*background: #e8f4fc;*/
-    /*border-left: 5px solid #3498db;*/
+     border-left: 5px solid #f4a900;
   }
 
   .iqac-info-panel {
     /*background: #fcf3e8;*/
     /*border-left: 5px solid #e67e22;*/
+    border-left:5px solid  #f4a900;
   }
 
   /* Update the functions-info-panel class */
   .functions-info-panel {
     align-items: center;
     margin: 0 auto;
-    width: 90%; /* Reduced from 100% to better center content */
+    width: 100%; /* Reduced from 100% to better center content */
     /*background: #fcf3e8;*/
     /*border-left: 5px solid #8b22e6;*/
     text-align: center; /* Center align the text */
@@ -229,10 +231,11 @@
 
   .nirf-year-button {
     border-radius: 8px;
-    width: 120px;
+    width: auto;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
+    justify-content: center;
     /*border: 2px solid #FDCC03;*/
     /*background-color: #222;*/
     /*color: #fff;*/
@@ -339,6 +342,9 @@
     max-height: 600px;
     overflow-y: auto;
     margin-bottom: 20px;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .iic-faici{
@@ -475,8 +481,20 @@
 }
 
 .nirf-action-button{
-  font-size: 16px;
-}
+    font-size: 16px;
+    margin-block-end: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width:auto;  
+    white-space: nowrap; 
+    padding: 15px;
+     display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    width: 400px; /* Adjust this width as needed to fit two buttons per row */
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the grid within its parent if needed */
+    align-items:center;
+  }
 
 @media screen and (max-width: 1300px){
   .nir-buttons {
@@ -787,4 +805,36 @@
     max-width: 95%;
     font-size: 0.65rem;
   }
+}
+.naac-about{
+      border-bottom: 2px solid #FDCC03;
+      display: inline-block;
+      padding-bottom: 5px;
+}
+.iic-box{
+  margin-top: 50px;
+}
+.iic-establishment{
+  color: #800000;
+  border-bottom: 2px solid #FDCC03;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.iic-eco
+{
+  color: #800000;
+  margin-bottom: 10px;
+}
+.mb-10{
+  margin-top: 20px;
+}
+.nirf-years{
+  display: flex;
+  justify-content: space-evenly; 
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: white; 
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
