@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Eye, Target } from "lucide-react"; // Importing icons
+import { Eye, Target } from "lucide-react"; 
 import "./VisionMission.css";
 import LoadComp from "../../../LoadComp";
 
 const VisionMission = ({ data }) => {
 
-  const [activePO, setActivePO] = useState(null); // Track which PO is active (open)
+  const [activePO, setActivePO] = useState(null); 
   const [activePOS, setActivePOS] = useState(null);
   const [activePOE, setActivePOE] = useState(null);
 
@@ -66,11 +66,11 @@ const VisionMission = ({ data }) => {
             p-3 shadow rounded"
           >
             <div className="d-flex align-items-center mb-3">
-              <Eye size={32} className="me-3" /> {/* Vision Icon */}
-              <h2 className="my-auto">Department Vision</h2>
+              {/* <Eye size={32} className="me-3" />  */}
+              <h2 className="text-brwn border-b-2 border-[#FFD700] w-fit pb-2">Department Vision</h2>
             </div>
             <p>{data?.vision}</p>
-            <blockquote className="vision-quote border-l-4 border-accn dark:border-drka text-accn dark:text-drka">
+            <blockquote className="border-l-4 border-[#FFD700] dark:border-drka text-black dark:text-drka rounded-lg">
               {data?.department_quotes}
             </blockquote>
           </div>
@@ -86,8 +86,8 @@ const VisionMission = ({ data }) => {
             p-3 shadow rounded w-100"
           >
             <div className="d-flex align-items-center mb-3">
-              <Target size={32} className="me-3" /> {/* Mission Icon */}
-              <h2 className="my-auto">Department Mission</h2>
+              {/* <Target size={32} className="me-3" />  */}
+              <h2 className="text-brwn border-b-2 border-[#FFD700] w-fit">Department Mission</h2>
             </div>
             <ul>
               {data?.mission?.map((item, index) => (
@@ -99,13 +99,13 @@ const VisionMission = ({ data }) => {
       </div>
       {/* Program Specific Outcomes (PSOs) */}
         <div className="psos-section mt-5">
-          <h2>Program Educational Outcomes</h2>
+          <h2 className="text-brwn border-b-2 border-[#FFD700] w-fit pb-2">Program Educational Outcomes</h2>
           <div className="accordion" id="psosAccordion">
             
             {data?.program_educational_outcomes?.headings?.map((heading, index) => (
               <div className="POE accordion-item-cir"key={index}>
                 <h2 className="accordion-header" id={`psosHeading${index}`}>
-                  <button className="accordion-buttons" onClick={() => togglePOE(index)}>
+                  <button className="accordion-buttons text-black" onClick={() => togglePOE(index)}>
                     {heading}
                   </button>
                 </h2>
@@ -123,12 +123,12 @@ const VisionMission = ({ data }) => {
         {/* Right Column: Program Outcomes */}
         <div className="col-md-6 mt-10 w-full">
           <div className="pos-section">
-            <h2>Program Outcomes</h2>
+            <h2 className="text-brwn border-b-2 border-[#FFD700] w-fit pb-2">Program Outcomes</h2>
             <div className="accordion grid-container">
               {data?.program_outcomes?.headings?.map((heading, index) => (
                 <div className="accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
                   <h2 className="accordion-header">
-                    <button className="accordion-buttons" onClick={() => togglePO(index)}>
+                    <button className="accordion-buttons text-black" onClick={() => togglePO(index)}>
                       {heading}
                     </button>
                   </h2>
@@ -141,12 +141,12 @@ const VisionMission = ({ data }) => {
           </div>
         </div>
         <div className="psos-section mt-5">
-          <h2>Program Specific Outcomes</h2>
+          <h2 className="text-brwn border-b-2 border-[#FFD700] w-fit pb-2">Program Specific Outcomes</h2>
           <div className="accordion" id="psosAccordion">
             {data?.program_specific_outcomes?.headings?.map((heading, index) => (
               <div className="POE accordion-item-cir bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
                 <h2 className="accordion-header" id={`psosHeading${index}`}>
-                  <button className="accordion-buttons" onClick={() => togglePOS(index)}>
+                  <button className="accordion-buttons text-black" onClick={() => togglePOS(index)}>
                     {heading}
                   </button>
                 </h2>

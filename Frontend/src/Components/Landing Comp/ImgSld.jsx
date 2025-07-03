@@ -94,7 +94,7 @@ const ImgSld = ({load, toggle, theme}) => {
                     </button>
                 </div>
                 <Toggle toggle={toggle} theme={theme}
-                        attr="absolute -top-[30%] lg:-top-[36%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
+                        attr="absolute -top-[25%] lg:-top-[30%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
                         rounded-br-xl"/>
                 {/*<div className='relative flex gap-2  mt-2  px-2 py-2 z-[50]*/}
                 {/*    '>*/}
