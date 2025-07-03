@@ -49,36 +49,36 @@ if (!isOnline) {
 }
 
   const renderTable = (data, title, subtitle) => (
-    <div className="table-container mt-5">
-      <h4 className="text-accn dark:text-drka Eligibility text-center">{title}</h4>
-      <h6 className="text-accn dark:text-drka Eligibility font-thin text-center">{subtitle}</h6>
-      <div className="table-card">
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th className="ugHeader">UG COURSES</th>
-              <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
-              <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
-              <th className="ugHeader">TOTAL INTAKE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, rowIndex) => {
-              const [courseName, courseDetails] = Object.entries(item)[0];
-              return (
-                <tr key={rowIndex} className={""}>
-                  <td className="text-start">{courseName}</td>
-                  <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
-                  <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
-                  <td className="font-light">{courseDetails["Total Intakes"]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+  <div className="table-container mt-5">
+    <h4 className="text-accn dark:text-drka Eligibility text-center">{title}</h4>
+    <h6 className="text-accn dark:text-drka Eligibility font-thin text-center">{subtitle}</h6>
+    <div className="table-card overflow-x-auto">
+      <table className="styled-table min-w-[600px]">
+        <thead>
+          <tr>
+            <th className="ugHeader">UG COURSES</th>
+            <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
+            <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
+            <th className="ugHeader">TOTAL INTAKE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, rowIndex) => {
+            const [courseName, courseDetails] = Object.entries(item)[0];
+            return (
+              <tr key={rowIndex}>
+                <td className="text-start">{courseName}</td>
+                <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
+                <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
+                <td className="font-light">{courseDetails["Total Intakes"]}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
-  );
+  </div>
+);
 
   return (
     <>
