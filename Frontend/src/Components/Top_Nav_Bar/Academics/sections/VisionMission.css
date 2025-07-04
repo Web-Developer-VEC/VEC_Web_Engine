@@ -10,11 +10,12 @@ body {
 
 .main-content {
   padding: 30px;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .section-card ul {
   padding-left: 20px;
-  margin-top: 20px;
   list-style-type: disc;
 }
 
@@ -145,11 +146,18 @@ body {
   font-weight: bold;
   /*color: #333;*/
   margin-bottom: 20px;
+  color: #800000;
+  border-bottom: 2px solid #FFD700;
+  display: inline-block;  
 }
 
-.ABT_container{
+.ABT_container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .about-department-text {
@@ -172,8 +180,10 @@ body {
 
 .about-department-image img {
   /* max-width: 100%; */
-  height: 350px;
-  width: 500px;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: block;
   border-radius: 15px;
   /* Softer, more modern rounded corners */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -192,7 +202,7 @@ body {
 
 .section-card h2 {
   font-size: 24px;
-  color: #000;
+  /* color: #000; */
 }
 
 .section-card p,
@@ -230,10 +240,6 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-}
-
-.my-auto{
-  color: #000;
 }
 
 .dual-outcomes{
@@ -369,7 +375,7 @@ POE accordion-item-circle {
     display: block;
     margin: 10px;
     /* Centers the image */
-    max-width: 100%;
+    width: 90%;
     height: auto;
   }
 

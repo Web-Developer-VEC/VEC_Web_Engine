@@ -34,23 +34,6 @@ const NewTrust = ({theme, toggle}) => {
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-  const managementTeam = [
-    {
-      name: 'Shri. M.V. Muthuramalingam',
-      role: 'Chairman',
-      img: 'static/images/trust/muthuramalingam.webp',
-    },
-    {
-      name: 'Shri. M.V. VelMurugan',
-      role: 'Chief Executive Officer',
-      img: 'static/images/trust/velmurugan.webp',
-    },
-    {
-      name: 'Shri. M.V. VelMurugan',
-      role: 'Deputy CEO',
-      img: 'static/images/trust/deptyceo.webp',
-    },
-  ];
 
   return (
     <>
@@ -60,7 +43,7 @@ const NewTrust = ({theme, toggle}) => {
   subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
 />
 
-      <div className="bg-prim dark:bg-drkp min-h-screen">
+      <div className="bg-prim dark:bg-drkp min-h-screen px-4 pt-0 md:p-8">
 
         <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
         <motion.div
@@ -69,7 +52,7 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+              <h2 className="text-3xl text-brwn font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
               Velammal Educational Trust (VET)
               </h2>
               <p className="text-lg leading-relaxed">
@@ -99,13 +82,9 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+              <h2 className="text-3xl text-brwn font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Strength of the Trust
               </h2>
-              {/* <p className="text-lg leading-relaxed">
-              Inspiration is like a spark. It can light the whole city. One frail lady with strong conviction has motivated thousands of others to have good education and be proud citizens.
-A very humble, rustic lady with rural background and an unassuming attitude was how one described Smt. Velammal when they met her for the first time. But this frail lady, with her conviction and determination inspired the society and transformed it through her devoted son, Shri M.V.Muthuramalingam.
-              </p> */}
               <p className="text-lg leading-relaxed">
               Her Philosophy was quite simple, She used to say, "You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent".              </p>
             </motion.div>

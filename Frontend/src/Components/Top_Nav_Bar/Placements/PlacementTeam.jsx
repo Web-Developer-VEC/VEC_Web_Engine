@@ -14,7 +14,7 @@ function PersonDetail({ person, isImageLeft }) {
   };
   
   return (
-    <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
+    <div className={`person-detail ${isImageLeft ? 'left' : 'right'}`}>
       <img src={UrlParser(person?.photo_path)} alt={person?.name} className="person-image" />
       <div className="person-content">
       <h3 className='placement-head'>{person?.name}</h3>
@@ -34,12 +34,11 @@ function PersonMemberDetail({ person, isImageLeft }) {
   };
   
   return (
-    <div className={`person-detail border-2 border-secd dark:border-drks ${isImageLeft ? 'left' : 'right'}`}>
+    <div className={`person-detail ${isImageLeft ? 'left' : 'right'}`}>
       <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image" />
       <div className="person-content">
         <h3 className='placement-member-head'>{person.name}</h3>
         <h3 className="text-accn dark:text-drka ">{person.designation}</h3>
-        {/* <p>{person.content}</p> */}
       </div>
     </div>
   );
@@ -57,7 +56,6 @@ export const PlacementTeam = ({toggle, theme}) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/api/placementteam`);
-        console.log("HI",response.data);
 
         setPlacementTeam(response.data);
         setLoading(false);
@@ -98,7 +96,7 @@ if (!isOnline) {
     headerText="Placement Team"
     subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
 />
-    <div className='container'>
+    <div className='place-container'>
       <div className="Placement-App" style={{marginTop:'30px'}}>
         {/* Show loading spinner during data fetch */}
         {isLoading ? (

@@ -50,7 +50,7 @@ const SportsHOD = ( { data } ) => {
 
         <br />
 
-        <p className='SportsHODmessage text-xl italic text-justify' >
+        <p className='SportsHODmessage text-xl p-8 text-justify' >
           {data?.message}
         </p>
       </div>

@@ -89,7 +89,7 @@ if (!isOnline) {
       <div key={index} className="resource-item">
         <center>
           <div className="form-content">
-            <div className="form-regulation dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <div className="form-regulation bg-[#f8f9fa">
               <span className="form-regulation-title">{resource.name}</span>
               <div className="form-buttons">
                 <button
@@ -124,7 +124,7 @@ if (!isOnline) {
     <>
       <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-        headerText="All Forms"
+        headerText="Downloads"
         subHeaderText="Streamlining processes with easy access to forms, empowering smooth academic and administrative workflows."
       />
 
@@ -134,20 +134,22 @@ if (!isOnline) {
       </div>
     ) : (
       <div className="tails-container">
-        <div className="tail student-tail" ref={studentTailRef}>
-          <div className="tail-content">
-            <h2>Student Resources</h2>
-            <div className="download-links-container">
-                {renderResourceLinks(studentResources)}
-            </div>
-          </div>
+  <div className="tail student-tail" ref={studentTailRef}>
+  <div className="tail-content flex flex-col h-full">
+    <h2 className="font-bold mb-2">Student Resources</h2>
+    <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full">
+      {renderResourceLinks(studentResources)}
+    </div>
+  </div>
         </div>
 
         <div className="tail faculty-tail">
-          <div className="tail-content">
-            <h2>Faculty Resources</h2>
-            <div className="download-links-container">
-                {renderResourceLinks(facultyResources)}
+          <div className="tail-content flex flex-col h-full relative">
+            <h2 className="font-bold mb-2  z-10 sticky top-0 block sm:static">
+              Faculty Resources
+            </h2>
+            <div className="download-links-container overflow-y-auto overflow-x-hidden">
+              {renderResourceLinks(facultyResources)}
             </div>
           </div>
         </div>

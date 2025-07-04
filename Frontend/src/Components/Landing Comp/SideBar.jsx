@@ -53,6 +53,7 @@ const Sidebar = (props) => {
     ];
 
     const hdrs = [
+        { text: "IQAC", link: "/iqac" },
         { text: "NBA", link: "/nba" },
         { text: "NAAC", link: "/naac" },
         { text: "NIRF", link: "/nirf" },
@@ -139,7 +140,7 @@ const Sidebar = (props) => {
                                                 <h3 className="text-sm font-semibold text-gray-200 my-1">{sub.ttl}</h3>
                                             ) : (
                                                 <Link to={sub.lnk}
-                                                  target="_blank"           
+                                                //   target="_blank"           
                                                     rel="noopener noreferrer"
                                                       className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
                                                       onClick={() => {

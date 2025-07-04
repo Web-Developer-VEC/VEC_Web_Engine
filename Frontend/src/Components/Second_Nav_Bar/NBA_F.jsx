@@ -39,7 +39,7 @@ const NBA_F = () => {
           <div className="nba-tile-container">
             <div className="nba-tile">
               <div className="tile-tail"></div>
-              <h3 className="nba-tile-header">About NBA</h3>
+              <h3 className="nba-tile-header">ABOUT NBA</h3>
               <p className="nba-tile-text">
                 The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs.
               </p>
@@ -53,35 +53,44 @@ const NBA_F = () => {
             </div>
           </div>
         </div>
-        <div className="table-data">
-          <table className="department-table">
-            <thead>
-              <tr>
-                <th>s.no</th>
-                <th>Programs</th>
-                <th>Validity Years</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.department}</td>
-                  <td>
-                    {item.pdfs.map((pdf, index) => (
-                      <li key={index} className="pdf-link">
-                        <a href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`} target="_blank" rel="noopener noreferrer">
-                          {pdf.name}
-                        </a>
-                      </li>
-                    ))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="table-data px-4 md:px-12 lg:px-24">
+  <div className="overflow-x-auto border rounded-lg shadow-md">
+    <table className="min-w-[700px] w-full department-table">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="text-left px-4 py-2">S.No</th>
+          <th className="text-left px-4 py-2">Programs</th>
+          <th className="text-left px-4 py-2">Validity Years</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data?.map((item) => (
+          <tr key={item.id} className="border-t">
+            <td className="px-4 py-2">{item.id}</td>
+            <td className="px-4 py-2">{item.department}</td>
+            <td className="px-4 py-2 w-[70vw]">
+              <ul className="list-disc list-inside">
+                {item.pdfs.map((pdf, index) => (
+                  <li key={index}>
+                    <a
+                      href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brwn no-underline"
+                    >
+                      {pdf.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-        </div>
       </div>
     </>
   );

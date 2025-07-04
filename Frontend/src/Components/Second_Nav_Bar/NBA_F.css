@@ -26,13 +26,15 @@
 
 /* Tile Header */
 .nba-tile-header {
-  font-size: 24px;
+  font-size: 20px;
   color: #800000;
   margin-bottom: 10px;
   border-bottom: 2px solid #FDCC03;
   display: inline-block;
   padding-bottom: 5px;
   font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Tile Text */
@@ -194,3 +196,26 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+
+/* Small phones */
+@media (max-width: 480px) {
+  .nba-tile-header {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nba-tile-header {
+    font-size: 1.2rem;
+  }
+}
+
+/* Laptops and desktops */
+@media (min-width: 769px) {
+  .nba-tile-header {
+    font-size: 1.5rem;
+  }
+}
+

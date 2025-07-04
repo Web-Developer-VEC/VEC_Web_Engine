@@ -68,11 +68,11 @@ if (!isOnline) {
         </div>
       ) : (
         <div className="regulation-container">
-          <h1 className="title">Regulations</h1>
+          <h1 className="title text-brwn">Regulations</h1>
           <div className="regulation-grid">
             {regulationdata?.map((reg, index) => (
               <div key={index} className="regulation-card">
-                <h2 className="regulation-year">Regulation {reg.year}</h2>
+                <h2 className="regulation-year text-brwn text-md border-b-2 pb-2 w-fit border-[#fdcc03]">Regulation {reg.year}</h2>
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
                     <li key={idx}>

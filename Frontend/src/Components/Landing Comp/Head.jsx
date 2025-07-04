@@ -137,23 +137,23 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "Academic Research", sup: [], lnk: "/Academic"},
-                {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch"},
+                {hrd: false, ttl: "Academic Research", sup: [], lnk: "#"},  //Academic
+                {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "#"}, //Sponseredresearch
                 {
                     hrd: false,
                     ttl: "Publication",
                     sup: [
-                        {hrd: false, ttl: "Journal", sup: [], lnk: "/journal"},
-                        {hrd: false, ttl: "Conference", sup: [], lnk: "/conference"},
+                        {hrd: false, ttl: "Journal", sup: [], lnk: "#"}, //journal
+                        {hrd: false, ttl: "Conference", sup: [], lnk: "#"}, //conference
                     ],
-                    lnk: "",
+                    lnk: "#",
                 },
-                {hrd: false, ttl: "Patents", sup: [], lnk: "/patents"},
+                {hrd: false, ttl: "Patents", sup: [], lnk: "/patents"},    //patents
                 {
                     hrd: false,
                     ttl: "Book Publications",
                     sup: [],
-                    lnk: "/Bookpubliction",
+                    lnk: "#",   //Bookpubliction
                 },
             ],
         },
@@ -205,33 +205,38 @@ const Head = () => {
                     className={'flex items-center font-popp group bg-prim dark:bg-drkp text-text dark:text-drkt ' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
-                    <a href="/" className="flex items-center text-decoration-none">
-                        <div className='bg-inherit z-10'>
+                    <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+                        <div className="z-10">
                             <img
-                                src='https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png'
-                                alt='Vec Logo'
-                                className='group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] h-auto'></img>
+                            src="https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png"
+                            alt="VEC Logo"
+                            className="w-[2.5rem] md:w-[3.5rem] h-auto object-contain transition-all duration-300 ease-in-out"
+                            />
                         </div>
-                        <div
-                            className='w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all'>
-                            <span className='font-rome text-[2vmax] text-accn p-0 -mb-[0.75vmax]'>VELAMMAL</span>
-                            <span
-                                className='font-rome text-text dark:text-drkt text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300'>ENGINEERING COLLEGE</span>
-                            <span
-                                className="font-rome text-text dark:text-drkt text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">The Wheel of Knowledge rolls on!</span>
+
+                        <div className="text-center leading-tight mt-1 md:mt-1.5">
+                            <span className="font-rome text-[0.75rem] md:text-[1.2rem] text-[#4B1E1E] font-thin block">
+                            VELAMMAL
+                            </span>
+                            <span className="font-rome text-[0.45rem] md:text-[0.8rem] text-gray-800 dark:text-drkt block tracking-wide">
+                            ENGINEERING COLLEGE
+                            </span>
+                            <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 italic block">
+                            The Wheel of Knowledge rolls on!
+                            </span>
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                        lg:max-w-[17.5vw] max-w-[40%] ml-2 flex">
+                        lg:max-w-[17.5vw] max-w-[60%] ml-2 flex">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear" data-carousel-item="" key={i}>
-                                <img src={nac} className="block max-h-[5vmax] mt-2 h-full w-auto p-1" alt="naac"
+                                <img src={nac} className="block max-h-[5.5vmax] mt-2 h-full w-auto p-1" alt="naac"
                                      key="naac"/>
                             </div>
                         ))}
                     </div>
                     <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.2vmax] max-w-[63.5%]
-                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
+                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition ml-auto'>
                         {navs.map((nvt, ind) => (
                             <div className='group/nav relative transition-all mt-3 rounded-xl' key={ind}>
                                 <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]
@@ -285,7 +290,6 @@ const Head = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* </div> */}
                     </div>
                 </div>
                 <div className='hidden lg:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt

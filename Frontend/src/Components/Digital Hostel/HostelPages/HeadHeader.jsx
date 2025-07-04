@@ -31,23 +31,26 @@ const HostelHeader = () => {
             "flex items-center font-popp group bg-white text-slate-200 transition-all ease-in-out duration-300 w-full h-auto h-20"
           }
         >
-          <a href="/" className="flex items-center text-decoration-none">
-            <div className="bg-inherit z-10">
-              <img
-                src="https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png"
-                alt="Vec Logo"
-                className="group-[.hide]:w-[2.5rem] group-[.hide]:h-[2.5rem] z-10 duration-300 ease-in-out transition-all w-[6.5vmax] h-auto"
-              ></img>
-            </div>
-            <div className="w-fit h-auto grid grid-cols-1 gap-y-0 content-center relative group-[.hide]:-mt-1.5 duration-300 ease-out transition-all">
-              <span className="font-rome text-[2vmax] text-amber-800 p-0 -mb-[0.75vmax]">VELAMMAL</span>
-              <span className="font-rome text-black text-[1vmax] mt-0 p-0 transition-all ease-in-out duration-300">
-                ENGINEERING COLLEGE
-              </span>
-              <span className="font-rome text-black text-[0.7vmax] mt-0 p-0 text-center transition-all ease-in-out duration-300">
-                The Wheel of Knowledge rolls on!
-              </span>
-            </div>
+          <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+              <div className="z-10">
+                  <img
+                  src="https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png"
+                  alt="VEC Logo"
+                  className="w-[2.5rem] md:w-[3.5rem] h-auto object-contain transition-all duration-300 ease-in-out"
+                  />
+              </div>
+
+              <div className="text-center leading-tight mt-1 md:mt-1.5">
+                  <span className="font-rome text-[0.75rem] md:text-[1.2rem] text-[#4B1E1E] font-thin block">
+                  VELAMMAL
+                  </span>
+                  <span className="font-rome text-[0.45rem] md:text-[0.8rem] text-gray-800 dark:text-drkt block tracking-wide">
+                  ENGINEERING COLLEGE
+                  </span>
+                  <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 italic block">
+                  The Wheel of Knowledge rolls on!
+                  </span>
+              </div>
           </a>
 
           {/* Hostel System Title - Now placed directly in the header */}

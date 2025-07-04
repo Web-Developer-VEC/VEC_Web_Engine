@@ -49,7 +49,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                 <div className={styles.visionWrapper}>
                     <div className={`${styles.visionCard} ${styles.card}`}>
                         <div className={styles.cardHeader}>
-                            <Eye size={24} className="text-white me-2" />
+                            {/* <Eye size={24} className="text-white me-2" /> */}
                             <h2 className={styles.cardTitle}>Institute Vision</h2>
                         </div>
                         <p className={styles.cardContent}>
@@ -65,7 +65,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                 <div className={styles.missionWrapper}>
                     <div className={`${styles.missionCard} ${styles.card}`}>
                         <div className={styles.cardHeader}>
-                            <Target size={24} className="text-white me-2" />
+                            {/* <Target size={24} className="text-white me-2" /> */}
                             <h2 className={styles.cardTitle}>Institute Mission</h2>
                         </div>
                         <p className={styles.cardContent}>

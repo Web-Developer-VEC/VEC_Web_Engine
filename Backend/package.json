@@ -18,7 +18,6 @@
     "backend": "file:",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
-    "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -36,6 +35,7 @@
     "uuid": "^11.0.5"
   },
   "devDependencies": {
+    "concurrently": "^9.2.0",
     "nodemon": "^3.1.9"
   }
 }

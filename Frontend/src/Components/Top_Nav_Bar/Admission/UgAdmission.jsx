@@ -49,36 +49,36 @@ if (!isOnline) {
 }
 
   const renderTable = (data, title, subtitle) => (
-    <div className="table-container mt-5">
-      <h4 className="text-accn dark:text-drka Eligibility text-center">{title}</h4>
-      <h6 className="text-accn dark:text-drka Eligibility font-thin text-center">{subtitle}</h6>
-      <div className="table-card">
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th className="ugHeader">UG COURSES</th>
-              <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
-              <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
-              <th className="ugHeader">TOTAL INTAKE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, rowIndex) => {
-              const [courseName, courseDetails] = Object.entries(item)[0];
-              return (
-                <tr key={rowIndex} className={""}>
-                  <td className="text-start">{courseName}</td>
-                  <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
-                  <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
-                  <td className="font-light">{courseDetails["Total Intakes"]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+  <div className="table-container mt-5">
+    <h4 className="text-accn dark:text-drka Eligibility text-center">{title}</h4>
+    <h6 className="text-accn dark:text-drka Eligibility font-thin text-center">{subtitle}</h6>
+    <div className="table-card overflow-x-auto">
+      <table className="styled-table min-w-[600px]">
+        <thead>
+          <tr>
+            <th className="ugHeader">UG COURSES</th>
+            <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
+            <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
+            <th className="ugHeader">TOTAL INTAKE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, rowIndex) => {
+            const [courseName, courseDetails] = Object.entries(item)[0];
+            return (
+              <tr key={rowIndex}>
+                <td className="text-start">{courseName}</td>
+                <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
+                <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
+                <td className="font-light">{courseDetails["Total Intakes"]}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
-  );
+  </div>
+);
 
   return (
     <>
@@ -95,12 +95,12 @@ if (!isOnline) {
       ) : (
         <div className="Admission">
           <div className="B-E">
-            <h3 className="text-accn dark:text-drka">B.E./B.Tech. Degree Programme</h3>
+            <h3 className="text-accn dark:text-drka border-b-2 pb-2 w-fit border-[#fdcc03]">B.E./B.Tech. Degree Programme</h3>
           </div>
 
-          <div className="ADM-content bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+          <div className="ADM-content bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] ">        
-           <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+           <div className="text-start text-accn dark:text-drka mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">Eligibility</div>
            
             <p className="description-text">
             Candidates seeking admission should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
@@ -118,11 +118,11 @@ if (!isOnline) {
 
 
           <div className="B-E">
-            <h3 className="text-accn dark:text-drka mt-5">Lateral Entry</h3>
+            <h3 className="text-accn dark:text-drka mt-5 border-b-2 pb-2 w-fit border-[#fdcc03]">Lateral Entry</h3>
           </div>
-          <div className="ADM-content lateral-entry bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+          <div className="ADM-content lateral-entry bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"> 
-            <div className="text-start text-accn dark:text-drka mb-3 Eligibility">Eligibility</div>
+            <div className="text-start text-accn dark:text-drka mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03]">Eligibility</div>
             <p className="description-text">
             Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
             </p>

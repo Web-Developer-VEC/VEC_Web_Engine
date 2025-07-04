@@ -74,8 +74,8 @@ import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel L
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
-import Crdt from "./Components/Second_Nav_Bar/Crdt";
 import NotFound from "./NotFound";
+import Crdt from "./Components/Credits/Crdt.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */

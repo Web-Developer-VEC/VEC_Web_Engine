@@ -136,7 +136,7 @@ const Programmes = (toggle, theme) => {
                             <h4>{dept.type}</h4>
                             {
                                 dept.values.map((data) => (
-                                    <div className="programmes-name flex items-center" key={data.name}>
+                                    <div className="programmes-name flex items-center " key={data.name}>
                                         <img src="/badge.png" alt="" /><a href={data.lnk}><p>{data.name}</p></a>
                                     </div>
                                 ))

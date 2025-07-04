@@ -126,12 +126,13 @@
   .boys-wardens {
       align-items: flex-end;
       flex-direction: column;
+      
   }
 
   /* Girls Wardens (Left Side) */
   .girls-wardens {
       align-items: flex-start; 
-      flex-direction: column;
+      flex-direction: column;  
   }
 
   .warden-card {

@@ -9,9 +9,12 @@ const Transport = () => {
         <div style={{ paddingBottom: "40px"
             // backgroundColor: "#f8f9fa"
         }}>
-            <div style={{ position: "relative" }}>
-                <Transportvideo />
-            </div>
+       <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px]">
+    <Transportvideo />
+    <div className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded">
+        VEC Transport Facilities
+    </div>
+</div>
             
             <div>
                 <PDF/>
@@ -23,7 +26,7 @@ const Transport = () => {
                 justifyContent: "center",
                 alignItems: "center"
             }}>
-                <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0" style={{
+                <div className="border-l-4 border-secd dark:border-drks ml-2 md:m-0 rounded-md" style={{
                     maxWidth: "900px", 
                     // margin: "auto",
                     textAlign: "justify",
@@ -37,11 +40,10 @@ const Transport = () => {
                     // borderLeft: "5px solid #fdb515",  // Yellow highlight border
                     paddingLeft: "20px",
                 }}>
-                    <h2 className="text-secd dark:text-drks border-b-4 border-secd dark:border-drks" style={{
+                    <h2 className="text-secd dark:text-drks border-b-2 border-secd dark:border-drks" style={{
                         fontSize: "24px",
                         fontWeight: "bold",
-                        // color: "#1d1d1d",
-                        // borderBottom: "3px solid #fdb515", // Yellow underline
+                        color: "#800000",
                         display: "inline-block",
                         paddingBottom: "5px",
                         marginBottom: "10px"

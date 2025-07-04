@@ -68,7 +68,7 @@ const AbtUs = ({ theme, toggle }) => {
                         <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                     </div>
                     
-                    <div className="absolute lg:relative w-[120vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
+                    <div className="absolute lg:relative w-[110vw] h-[40vh] left-[-20vw] top-[20%] lg:left-0 lg:top-10
                         opacity-30 lg:opacity-100">
                         {/* Image 1 */}
                         <div className="absolute w-[40%] h-[65%] right-[15%]">

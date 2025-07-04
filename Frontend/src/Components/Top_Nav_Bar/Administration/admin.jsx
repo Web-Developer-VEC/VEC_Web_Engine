@@ -36,7 +36,7 @@ const Card = ({ image, name, designation }) => {
         <div className="text-red-500">Failed to load image</div>
       )}
 
-      <h3 className="admin-card-name text-accn dark:text-drka mt-2">{name}</h3>
+      <h3 className="admin-card-name text-accn dark:text-drka mt-2 font-poppins text-[#000000]">{name}</h3>
       <p className="admin-card-designation text-gray-600 dark:text-gray-300">{designation}</p>
     </div>
   );
@@ -73,7 +73,7 @@ const AdminCard = ({ image, name, designation }) => {
       )}
 
       <div className="admin-text-content ml-4">
-        <h3 className="admin-card-name text-accn dark:text-drka">{name}</h3>
+        <h3 className="admin-card-name text-accn dark:text-drka font-poppins text-[#000000]">{name}</h3>
         <p className="admin-card-designation text-gray-600 dark:text-gray-300">{designation}</p>
       </div>
     </div>

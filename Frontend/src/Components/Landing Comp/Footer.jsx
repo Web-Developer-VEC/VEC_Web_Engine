@@ -66,7 +66,7 @@ const Footer = forwardRef((props, ref) => {
                     {/* Profile & College Info */}
                     <div>
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
-                        <ul className="space-y-1 text-left lg:text-left">
+                        <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><a href="/abt-us">About Us</a></li>
                             <li><a href="/nba">NBA</a></li>
                             <li><a href="/naac">NAAC</a></li>
@@ -78,7 +78,7 @@ const Footer = forwardRef((props, ref) => {
                     {/* Academics */}
                     <div>
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Academics</h4>
-                        <ul className="space-y-1 text-left lg:text-left">
+                        <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><a href="/departments">Departments</a></li>
                             <li><a href="/programs">Programmes</a></li>
                             <li><a href="/library">Library</a></li>
@@ -92,7 +92,7 @@ const Footer = forwardRef((props, ref) => {
                     {/* Important Links */}
                     <div>
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Important</h4>
-                        <ul className="space-y-1 text-lfrt lg:text-left">
+                        <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank">Student Login</a></li>
                             <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>
                             <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank">Fees Payment</a></li>

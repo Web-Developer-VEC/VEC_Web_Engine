@@ -1,80 +1,107 @@
 /* Container for Management section */
 .text-container h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    /*color: #2c3e50;*/
-    margin-bottom: 30px;
-    /*border-bottom: 2px solid #f39c12;*/
-    padding-bottom: 15px;
-  }
-  
-  /* Management grid container */
-  .management-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-  }
-  
-  /* Row for the first set of cards (Chairman) */
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+/* Management grid container */
+.management-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Row for the first set of cards (Chairman) */
+.management-grid-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+/* Individual card styling */
+.management-card {
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.management-card:hover {
+  transform: scale(1.05);
+}
+
+.management-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+/* Text inside the cards */
+.management-card h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.management-card h6 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.management-card p {
+  font-size: 0.9rem;
+}
+
+/* Image widths for specific management images */
+.management-image-1 {
+  width: 130px;
+}
+
+.management-image-2,
+.management-image-3 {
+  width: 190px;
+}
+
+/* ✅ Mobile View: max-width 768px */
+@media (max-width: 768px) {
   .management-grid-row {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
+    flex-direction: column;  /* Stack cards vertically on mobile */
+    align-items: center;
+    gap: 20px;
   }
-  
-  /* Individual card styling */
+
   .management-card {
-    width: 250px;
-    padding: 20px;
-    /*background-color: #fff;*/
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+    width: 90%;  /* Take most of the screen width */
+    max-width: 320px;  /* Prevent excessive stretching */
   }
-  
-  .management-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .management-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 15px;
-  }
-  
-  /* Text inside the cards */
+
   .management-card h5 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #2c3e50;
+    font-size: 1.1rem;
   }
-  
+
   .management-card h6 {
-    font-size: 1rem;
-    font-weight: normal;
-    /*color: #f39c12;*/
-    margin-bottom: 10px;
+    font-size: 0.95rem;
   }
-  
+
   .management-card p {
-    font-size: 0.9rem;
-    /*color: #7f8c8d;*/
+    font-size: 0.85rem;
   }
 
-  .management-image-1{
-    width: 130px;
+  .management-image-1,
+  .management-image-2,
+  .management-image-3 {
+    width: 50%;  /* Scale images for mobile */
+    max-width: 150px;
   }
-
-  .management-image-2{
-    width: 190px;
-  }
-
-  .management-image-3{
-    width: 190px;
-  }
+}
