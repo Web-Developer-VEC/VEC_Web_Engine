@@ -5,11 +5,14 @@ import PointWaves from "./Crdt_Points";
 import {Canvas} from "@react-three/fiber";
 import Crdt_Title from "./Crdt_Title";
 import {useParams} from "react-router-dom";
+import NotFound from "../../NotFound";
 
 
 const Crdt = () => {
     const { ind } = useParams()
     let sld = useRef(0)
+    const urlPrm = 18 // => /credits/[urlPrm]
+
 
     const callSld = useCallback((val) => {
         sld.current = val
@@ -17,6 +20,7 @@ const Crdt = () => {
     }, [])
 
     return (
+        (ind <= urlPrm) ?
         <main className="relative bg-slate-800 h-[100vh] lg:h-[90vh] w-full overflow-x-hidden"
               style={{
                   backgroundColor: '#1B1B1B',
@@ -29,9 +33,9 @@ const Crdt = () => {
             </Canvas>
             <div className="absolute top-[2vh]">
                 <Crdt_Title ttl={"MEET THE TEAM"} />
-                <Team ani={true} callSld={callSld} ind={+(ind)}/>
+                <Team ani={true} callSld={callSld} ind={+(ind)} urlPrm={urlPrm} />
             </div>
-        </main>
+        </main> : <NotFound />
     )
 }
 

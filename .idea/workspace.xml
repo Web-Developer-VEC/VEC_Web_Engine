@@ -5,19 +5,103 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6186c6c-929b-4753-8d89-db83fe66b046" name="Changes" comment="Forked Up gitignore">
-      <change afterPath="$PROJECT_DIR$/.idea/VEC_Final.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/img_p.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/person.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Points.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Team.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Title.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LIBFacl.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LIBHod.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LIBMemb.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LIBMemb.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Banner.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Banner.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Banner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Banner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/HeadHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/HeadHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/Hostel Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/Hostel Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/StudentDashboard/Outpass.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/StudentDashboard/Outpass.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/StudentDashboard/Outpass.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Digital Hostel/HostelPages/StudentDashboard/Outpass.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/Head.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/ImgSld.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Landing Comp/SideBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Alumni.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Alumni.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Alumni.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Alumni.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Credits/Crdt.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Points.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Credits/Crdt_Points.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Credits/Crdt_Team.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Crdt_Title.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Credits/Crdt_Title.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/InfoHostel.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/InfoHostel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/aboutHost.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/aboutHost.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/aboutHost.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/aboutHost.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/warden.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Hostel/warden.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/IQAC.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/IQAC.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Incub.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Incub.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NBA_F.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NBA_F.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NBA_F.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NBA_F.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSSContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NSSContent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NotificationBox.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/NSS/NotificationBox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Other-Facilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Other-Facilities.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/PDF.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/PDF.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/Transport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/Transport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/TransportVideo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/Transport/TransportVideo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/YRC.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/iic.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryIntro.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/LibraryLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/library/Libraryinfra.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/naac.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/nirf.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/nirf.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsActionPlan.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsActionPlan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsActionPlan.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsActionPlan.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsInfra.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsInfra.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/SportsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/Sportshod.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/Sportshod.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/sports_faculties.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Second_Nav_Bar/sports/sports_faculties.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/AbtUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/AbtUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Management.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Management.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Trust.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Trust.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Trust.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/Trust.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/About Us/collegevisionmission.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/Programmes.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/Programmes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/Programmes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/Programmes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/dapartment1.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/dapartment1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Faculties.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/HeadDepartment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/HeadDepartment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/ImageCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/ImageCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Infrastructure.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/Infrastructure.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/VisionMission.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/VisionMission.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/VisionMission.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/VisionMission.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/activities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Academics/sections/activities.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Dean.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Dean.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Executive commitee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Orgainzation_chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Orgainzation_chart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Organization_chart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Organization_chart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Princ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/Princ.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/admin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Administration/admin.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-M.E.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-M.E.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-MBA.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-MBA.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-MBA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/ADM-MBA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/PhdAdmission.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/PhdAdmission.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/PhdAdmission.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/PhdAdmission.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/UgAdmission.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Admission/UgAdmission.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Regulation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Regulation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Syllabi.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/Syllabi.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/forms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Exams/forms.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/Aboutplacement.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/Aboutplacement.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/PlacementTeam.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/PlacementTeam.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/PlacementTeam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Placements/PlacementTeam.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Research/Researchtable.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Research/Researchtable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Research/Researchtable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Components/Top_Nav_Bar/Research/Researchtable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,22 +144,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Fork__Ups&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Leroy\\ReactProjects\\VEC_Final\\Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Merging Fork__Ups",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Leroy/ReactProjects/CoolVec/Frontend/src/Components/Assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Leroy\\ReactProjects\\VEC_Final\\Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Leroy\ReactProjects\CoolVec\Frontend\src\Components\Assets" />
@@ -141,7 +225,10 @@
       <workItem from="1751179405329" duration="1108000" />
       <workItem from="1751219173596" duration="4227000" />
       <workItem from="1751253011618" duration="6131000" />
-      <workItem from="1751297112375" duration="12569000" />
+      <workItem from="1751297112375" duration="13215000" />
+      <workItem from="1751340683487" duration="1082000" />
+      <workItem from="1751359221787" duration="1244000" />
+      <workItem from="1751600251466" duration="4408000" />
     </task>
     <task id="LOCAL-00001" summary="Final Fork Up of the day">
       <option name="closed" value="true" />

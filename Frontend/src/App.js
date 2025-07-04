@@ -74,6 +74,7 @@ import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel L
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
 
 const GlobalStyle = createGlobalStyle`
@@ -200,7 +201,10 @@ const MainContentWrapper = styled.div`
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
+
+                            {/*  404 - Page not found  */}
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
