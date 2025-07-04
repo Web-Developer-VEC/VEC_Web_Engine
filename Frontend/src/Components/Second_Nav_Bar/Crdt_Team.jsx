@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useCallback, useRef} from "react";
 import Tilt from "react-parallax-tilt";
+import {useNavigate} from "react-router-dom";
 
-const Team = ({ani, callSld, ind}) => {
+const Team = ({ani, callSld, ind, urlPrm}) => {
     const ppl = [
         {
             nme: "Alice Wonderland",
@@ -158,8 +159,8 @@ const Team = ({ani, callSld, ind}) => {
     ];
     const [pause, setPause] = useState(false);
     const [pos, setPos] = useState((ind > ppl.length)? 1: ind);
-    // const [nme, setNme] = useState("")
-    const durToNxt = (ind !== 69)? 10000000: 6900
+    const durToNxt = (ind !== urlPrm)? 10000000: 6900
+    const navigate = useNavigate();
 
     const pos_hdl = useCallback((pvl) => {
         if (pvl !== 0 && pvl <= ppl.length) {
@@ -186,14 +187,12 @@ const Team = ({ani, callSld, ind}) => {
 
     return (
         <div className="cursor-pointer">
-            {(ind !== 69) ?
+            {(ind !== urlPrm) ?
                 <h3 className={"w-screen bg-blue-500/50 py-2 left-0 text-center text-[1.25rem] font-thin text-slate-300"}>
                     You are viewing <b className="font-bold">{ppl[+(ind) - 1].nme}</b>'s customised view
                     <a className="bg-blue-950 text-[1rem] text-white rounded-xl px-2 py-1 ml-4 mb-1"
                        href="./69">Revert ?</a>
                 </h3> : ""}
-            {/*<Ban nam={ppl}/>*/}
-            {/*,fadIn_1s_ease_forwards*/}
             <div
                 className={`${(ani) ? "animate-[Invis_1.5s_ease_forwards] [animation-delay:0s]"
                     : "hidden"} font-comf row-[1/2] col-[1/8] w-screen lg:w-[45vw] z-1 
@@ -230,7 +229,10 @@ const Team = ({ani, callSld, ind}) => {
                     </div>
                 ))}
 
-                <div className={`float-right grid grid-cols-1 size-[32vmax] lg:left-[50vw] top-[30vh] lg:top-[4vh] absolute
+                {/* The Blue Bio box */}
+                {/* To change the x position of box change lg-left-[...] */}
+                {/* Remember to change the title(Crdt_Title) position as well*/}
+                <div className={`float-right grid grid-cols-1 size-[32vmax] lg:left-[55vw] top-[30vh] lg:top-[4vh] absolute
                     bg-[#021526] text-white rounded-2xl [box-shadow:0_2px_5px_rgba(0,0,0,0.2)] h-full w-[80%]
                     before:content-[''] before:absolute before:-bottom-4 before:left-0 before:w-[95%] before:ml-4
                     before:h-12 before:z-[-1] before:blur-xl before:bg-[linear-gradient(to_right,red,blue)]

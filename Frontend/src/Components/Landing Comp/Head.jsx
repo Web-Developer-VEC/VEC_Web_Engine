@@ -343,7 +343,7 @@ const Head = () => {
                         {/* Payment Button */}
                         <button 
                             onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
-                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drkt px-2">
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drka px-2">
                             Fees Payment
                         </button>
 

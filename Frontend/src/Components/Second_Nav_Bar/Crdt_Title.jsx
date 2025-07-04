@@ -42,7 +42,7 @@ const Title = ({ttl}) => {
     }, []);
 
     return (
-        <h1 className="mt-14 z-10 ml-auto lg:ml-[35vw] text-4xl lg:text-5xl text-white font-tech"
+        <h1 className="mt-14 z-10 ml-auto lg:ml-[45vw] text-4xl lg:text-5xl text-white font-tech"
             onMouseOver={hndlTtl}>{tle}</h1>
     )
 }
