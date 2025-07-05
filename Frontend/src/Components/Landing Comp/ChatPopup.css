@@ -1,3 +1,85 @@
+.chat-popup {
+  width: 520px;
+  height: 500px;
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  padding: 15px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 5px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.message.user {
+  text-align: right;
+  color: #333;
+  margin: 5px 0;
+}
+
+.message.assistant {
+  text-align: left;
+  color: #444;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.message a {
+  color: #007bff;
+  text-decoration: none;
+}
+.message a:hover {
+  text-decoration: underline;
+}
+
+.message-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.message-input button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.phone-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phone-input input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 /* Styling for the chat icon */
 .chat-icon {
   position: fixed;
@@ -26,8 +108,8 @@
   position: fixed;
   bottom: 90px;
   right: 20px;
-  width: 320px;
-  height: 450px;
+  width: 520px;
+  height: 470px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -45,11 +127,13 @@
   padding-right: 10px;
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
+    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
 }
 
 /* Hide scrollbar in Webkit browsers */
 .messages::-webkit-scrollbar {
-  width: 5px;
+  display: none;
 }
 
 .messages::-webkit-scrollbar-thumb {
@@ -165,4 +249,11 @@
   border-radius: 5px;
   border: 1px solid red;
   text-align: center;
+}
+
+@media (max-width: 768px){
+  .chat-popup {
+    width: 90vw;
+    /* height: max-content; */
+  }
 }

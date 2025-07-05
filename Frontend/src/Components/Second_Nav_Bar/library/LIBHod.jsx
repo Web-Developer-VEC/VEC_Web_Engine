@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import LoadComp from "../../LoadComp";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -8,6 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
     };
 
 const LIBHod = () => {
+  
   const [hod, setHod] = useState(null);
 
   useEffect(() => {
@@ -26,10 +28,12 @@ const LIBHod = () => {
 
     fetchHodData();
   }, []);
-
+ 
   if (!hod) {
     return (
-      <div className="py-10 text-center text-lg text-gray-600">Loading HoD Data...</div>
+      <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
     );
   }
 

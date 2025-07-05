@@ -11,6 +11,7 @@ import axios from 'axios';
 import SideNav from "../SideNav";
 import Intramural from './intramural';
 import WinnerSlider from './winners_sld';
+import LoadComp from '../../LoadComp';
 
 function SPTIntro() {
     return (<section className="introduction">
@@ -59,7 +60,9 @@ function SPTVis() {
 
 const SportsPage = ({theme, toggle}) => {
     const [sportData, setSportsData] = useState(null);
-    const [spt, setSpt] = useState("Introduction")
+    const [spt, setSpt] = useState("Introduction");
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
     const navData = {
         "Introduction": <SPTIntro/>,
         "Vision & Mission": <SPTVis/>,
@@ -83,7 +86,29 @@ const SportsPage = ({theme, toggle}) => {
             }
         }
         fetchData();
-    }, [])
+    }, []);
+
+        useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
     return (
         <div className=''>
             <Banner theme={theme} toggle={toggle}
@@ -91,22 +116,6 @@ const SportsPage = ({theme, toggle}) => {
                     headerText="Physical Education Department"
                     subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
             />
-
-            {/*<div className="sports-page flex flex-wrap w-screen">*/}
-            {/*    <nav className="basis-full lg:basis-1/5 flex flex-wrap gap-y-2 lg:gap-y-0 gap-x-2 justify-center*/}
-            {/*        lg:grid lg:float-left w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">*/}
-            {/*        {Object.keys(navData).map((itm, ind) => (*/}
-            {/*            <button className={`px-4 py-2 border-2 border-text dark:border-drkt */}
-            {/*              hover:bg-accn/50 dark:hover:bg-drka/50   */}
-            {/*              ${(spt === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}*/}
-            {/*            ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}*/}
-            {/*                    type={"button"} onClick={() => setSpt(itm)}>{itm}</button>*/}
-            {/*        ))}*/}
-            {/*    </nav>*/}
-            {/*    <div className="basis-full lg:basis-4/5">*/}
-            {/*        {navData[spt]}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
             <SideNav sts={spt} setSts={setSpt} navData={navData} cls={"w-screen"} />
         </div>
     );

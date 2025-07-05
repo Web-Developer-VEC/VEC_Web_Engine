@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import "./warden.css";
 import axios from "axios";
+import LoadComp from "../../LoadComp";
 
 export default function Warden() {
 
@@ -15,6 +16,7 @@ export default function Warden() {
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,13 @@ export default function Warden() {
     }
     fetchData()
   }, []);
+   if (!setChief && setChiefDeputy && setGirlsWardens && setBoysWarden) {
+      return (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
+      );
+    }
 
   return (
     <>

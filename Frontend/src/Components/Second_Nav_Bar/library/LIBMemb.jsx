@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import LoadComp from "../../LoadComp";
 
 const LIBMemb = ({ lib }) => {
   const [membership, setMembership] = useState(null);
@@ -27,13 +28,21 @@ const LIBMemb = ({ lib }) => {
   const books = membership?.no_of_books || [];
   const cds = membership?.["periodical/back_volumes/cd"] || [];
 
+   if (!membership) {
+      return (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
+      );
+    }
+
   return (
     <div className="overflow-x-auto px-4 sm:px-8 py-10">
       {isMembership && membership && (
         <>
           <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
-      Membership Details
-    </h2>
+            Membership Details
+          </h2>
           <table className="w-full border border-gray-300 text-center">
             <thead className="bg-gray-200">
               <tr>

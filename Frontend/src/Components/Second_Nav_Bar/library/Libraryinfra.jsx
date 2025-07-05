@@ -9,6 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LIBMemb from "./LIBMemb"; // Adjust path if needed
 import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
+import LoadComp from "../../LoadComp";
 
 const LibrarySections = ({faculty, membership, lib}) => {
 
@@ -696,6 +697,39 @@ return (
     function LIBHigh() {
         return (
             <>
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+                    {additionalSections.map((section, index) => (
+                        <motion.div
+                            key={index}
+                            className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+        transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+            dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
+                            initial={{opacity: 0, y: 50}}
+                            whileInView={{opacity: 1, y: 0}}
+                            transition={{duration: 0.8}}
+                            viewport={{once: true}}
+                        >
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">
+                                {section.category}
+                            </h2>
+                            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
+                                {section.items.map((item, i) => (
+                                    <motion.li
+                                        key={i}
+                                        className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
+                                        initial={{opacity: 0, x: -20}}
+                                        whileInView={{opacity: 1, x: 0}}
+                                        transition={{delay: i * 0.1}}
+                                        viewport={{once: true}}
+                                    >
+                                        <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
+                                        <span className="text-start">{item}</span>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
+                </div>
                 <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
                     <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide mb-8 sm:mb-12">
                         Library Highlights
@@ -752,39 +786,6 @@ return (
                         ))}
                     </div>
                 </div>          
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-                            {additionalSections.map((section, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
-                    dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
-                                    initial={{opacity: 0, y: 50}}
-                                    whileInView={{opacity: 1, y: 0}}
-                                    transition={{duration: 0.8}}
-                                    viewport={{once: true}}
-                                >
-                                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">
-                                        {section.category}
-                                    </h2>
-                                    <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
-                                        {section.items.map((item, i) => (
-                                            <motion.li
-                                                key={i}
-                                                className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
-                                                initial={{opacity: 0, x: -20}}
-                                                whileInView={{opacity: 1, x: 0}}
-                                                transition={{delay: i * 0.1}}
-                                                viewport={{once: true}}
-                                            >
-                                                <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
-                                                <span className="text-start">{item}</span>
-                                            </motion.li>
-                                        ))}
-                                    </ul>
-                                </motion.div>
-                            ))}
-                        </div>
             </>
         )
     }
@@ -1026,15 +1027,24 @@ return (
           ];
         
           return (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
-              {stats.map((stat, index) => (
-                <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                  <span className="text-5xl">{stat.icon}</span>
-                  <Counter value={stat.value} />
-                  <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+
+            <>
+                {stats ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                    {stats?.map((stat, index) => (
+                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                        <span className="text-5xl">{stat.icon}</span>
+                        <Counter value={stat.value} />
+                        <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                        </div>
+                    ))}
+                    </div>
+                ) : (
+                    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+                        <LoadComp />
+                    </div>
+                )}
+            </>
           );
     }
 
@@ -1049,15 +1059,24 @@ return (
         ];
       
         return (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
-            {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                <span className="text-5xl">{stat.icon}</span>
-                <Counter value={stat.value} />
-                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+
+            <>
+                {stats ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                        {stats?.map((stat, index) => (
+                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                            <span className="text-5xl">{stat.icon}</span>
+                            <Counter value={stat.value} />
+                            <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                        </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+                        <LoadComp />
+                    </div>
+                )}
+            </>
         );
       };
 
@@ -1072,15 +1091,23 @@ return (
         ];
       
         return (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
-            {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                <span className="text-5xl">{stat.icon}</span>
-                <Counter value={stat.value} />
-                <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+            <>
+                {stats ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                        {stats?.map((stat, index) => (
+                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                            <span className="text-5xl">{stat.icon}</span>
+                            <Counter value={stat.value} />
+                            <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                        </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+                        <LoadComp />
+                    </div>
+                )}
+            </>
         );
       };
 
@@ -1097,7 +1124,7 @@ return (
         "Advisory committee members": <LIBInstr/>,
         "Membership Details": <LIBMemb/>,
         "Downloads": <LIBFea/>,
-        "Activities": <LIBResc/>,
+        "Library Resources": <LIBResc/>,
         "OPAC": <LIBMult/>,
         "Digital Library & E-Resources": <LIBArvl/>
     }
@@ -1110,8 +1137,6 @@ return (
         <>
             <div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
                 {(Array.isArray(lib)) ? navData[lib[0]][lib[1]] : navData[lib]}
-                {/* Additional Sections */}
-                {/* Additional Sections */}
             </div>
         </>
     );

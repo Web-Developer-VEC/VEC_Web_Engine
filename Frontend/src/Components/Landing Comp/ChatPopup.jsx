@@ -12,6 +12,7 @@ function ChatPopup() {
   const [isPhoneSubmitted, setIsPhoneSubmitted] = useState(false); 
   const [phoneMessage, setPhoneMessages] = useState("");
   const messagesEndRef = useRef(null);
+  const popupRef = useRef(null);
 
   useEffect(() => {
     const storedPhone = sessionStorage.getItem("phoneNumber");
@@ -30,6 +31,19 @@ function ChatPopup() {
     setIsChatOpen(!isChatOpen);
   };
 
+  useEffect(() => {
+  if (isChatOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto"; // Reset when component unmounts
+  };
+}, [isChatOpen]);
+
+
   const handlePhoneSubmit = () => {
     if (phoneNumber.trim() !== "" && phoneNumber.length === 10) {
       sessionStorage.setItem("phoneNumber", phoneNumber);
@@ -39,6 +53,58 @@ function ChatPopup() {
     }
   };
 
+  function formatBotResponse(text) {
+  // Convert markdown-like links to <a> tags
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const formatted = text
+    .replace(linkRegex, `<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>`)
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
+    .replace(/\n/g, "<br/>"); // line breaks
+
+  return formatted;
+}
+
+useEffect(() => {
+  function handleClickOutside(event) {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setIsChatOpen(false);
+    }
+  }
+
+  if (isChatOpen) {
+    document.addEventListener("mousedown", handleClickOutside);
+  } else {
+    document.removeEventListener("mousedown", handleClickOutside);
+  }
+
+  // Cleanup on unmount
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [isChatOpen]);
+
+useEffect(() => {
+  const storedPhone = sessionStorage.getItem("phoneNumber");
+  if (storedPhone) {
+    setPhoneNumber(storedPhone);
+    setIsPhoneSubmitted(true);
+  }
+
+  const storedMessages = localStorage.getItem("chatMessages");
+  if (storedMessages) {
+    setMessages(JSON.parse(storedMessages));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem("chatMessages", JSON.stringify(messages));
+}, [messages]);
+
+const clearChat = () => {
+  setMessages([]);
+  localStorage.removeItem("chatMessages");
+};
+
   const sendMessage = async () => {
 
     if (newMessage.trim() !== "" && phoneNumber) {
@@ -46,7 +112,7 @@ function ChatPopup() {
       setMessages((prev) => [...prev, userMessage]);
 
       try {
-        const response = await axios.post("http://localhost:8080/ask", {
+        const response = await axios.post("/ask", {
           query: newMessage,
           phone: phoneNumber,
         });
@@ -55,7 +121,9 @@ function ChatPopup() {
         let botMessage = { sender: "Assistant", text: "" };
         setMessages((prev) => [...prev, botMessage]);
 
-        let responseText = response.data.response;
+        let responseText = formatBotResponse(response.data.response);
+        // let responseText = response.data.response;
+
         let index = 0;
         const typingEffect = setInterval(() => {
           if (index < responseText.length) {
@@ -65,7 +133,7 @@ function ChatPopup() {
           } else {
             clearInterval(typingEffect);
           }
-        }, 30); // Adjust speed (30ms per letter)
+        }, 30); 
       } catch (error) {
         setMessages((prev) => [
           ...prev,
@@ -86,7 +154,7 @@ function ChatPopup() {
 
       {/* Chat Popup */}
       {isChatOpen && (
-        <div className="chat-popup">
+        <div className="chat-popup" ref={popupRef}>
           <h2 className="mb-2">Chat with us!</h2>
 
           {/* Phone Number Input */}
@@ -110,13 +178,18 @@ function ChatPopup() {
           ) : (
             <>
               {/* Messages Display */}
-              <div className="messages">
+              <div className="messages"
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                onScroll={(e) => e.stopPropagation()}
+              >
                 {messages.map((message, index) => (
                   <div
                     key={index}
                     className={`message ${message.sender.toLowerCase()}`}
                   >
-                    {message.text}
+                    <span dangerouslySetInnerHTML={{ __html: message.text }} />
+                    {/* {message.text} */}
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
