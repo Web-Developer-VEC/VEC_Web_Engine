@@ -41,9 +41,9 @@ const LIBMemb = ({ lib }) => {
       {isMembership && membership && (
         <>
           <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
-            Membership Details
-          </h2>
-          <table className="w-full border border-gray-300 text-center">
+      Membership Details
+    </h2> 
+          <table className="lg:w-full  w-[600px] overflow-scroll membership-table border border-gray-300 text-center">
             <thead className="bg-gray-200">
               <tr>
                 <th className="border p-2">S. No</th>

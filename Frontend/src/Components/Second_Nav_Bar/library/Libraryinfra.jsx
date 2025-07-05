@@ -911,12 +911,14 @@ return (
                 transition-all rounded-2xl text-white dark:text-drkp mb-4
                 ${
                                     openSection === index
-                                        ? "bg-[#2E8B57]" // ✅ Sea Green when active (No hover effect)
+                                        ? "bg-[#FDCC03] text-black" // ✅ Sea Green when active (No hover effect)
                                         : "bg-accn dark:bg-drks"
                                 }`}
                             >
-                                {section.title}
-                                {openSection === index ? <FaChevronUp/> : <FaChevronDown/>}
+
+
+                              <h2 className={`${openSection === index ? "text-black" : "text-white"}`} >    { section.title} </h2> 
+                                {openSection === index ? <FaChevronUp className="color-black text-black"/> : <FaChevronDown/>}
                             </button>
 
                             {openSection === index && (
@@ -952,7 +954,7 @@ return (
                                                         viewport={{once: true}}>
                                                         {tab.map((tada, tin) => (
                                                             <td className="py-3 px-3 sm:py-4 sm:px-6 text-center
-                                                                font-semibold"
+                                                                font-semibold text-black"
                                                                 rowSpan={tabData[0].length + 1 - tab.length}>{tada}
                                                             </td>
                                                         ))}
@@ -969,7 +971,7 @@ return (
                                                         <li key={idx}>
                                                             <a
                                                                 href={item.link}
-                                                                className="text-accn dark:text-drka hover:underline"
+                                                                className="text-black dark:text-drka hover:underline"
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
                                                             >

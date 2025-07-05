@@ -40,7 +40,7 @@ const LIBFacl = () => {
       </h2>
 
       {faculty.description && (
-        <div className="text-center text-lg text-gray-600 w-5xl mx-auto mb-10">
+        <div className="lg:text-center text-justify text-lg text-gray-600 w-5xl mx-auto mb-10">
           {faculty.description}
         </div>
       )}

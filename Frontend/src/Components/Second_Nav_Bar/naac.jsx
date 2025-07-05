@@ -78,7 +78,7 @@ const Naac = ({ toggle, theme }) => {
             transition-all rounded-2xl text-white dark:text-drkp mb-4
             ${
               openSection === index
-                ? "bg-[#2E8B57]" // Active: Sea Green
+                ? "bg-[#ffc70f]" // Active: Sea Green
                 : "bg-accn dark:bg-drks"
             }`}
             >

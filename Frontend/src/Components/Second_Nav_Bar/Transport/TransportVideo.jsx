@@ -43,24 +43,6 @@ const Transportvideo = () => {
                 <source src={Vide} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '80%',
-                    left: 0,
-                    width: '40%',
-                    textAlign: 'center',
-                    color: 'white',
-                    margintop:'30px',
-                    fontSize: '17spx',
-                    transform: 'translateY(-50%)',
-                    background: 'rgba(0, 0, 0, 0.4)',
-                    padding: '20px',
-                    boxSizing: 'border-box'
-                }}
-            >
-                VEC Transport Facilities
-            </div>
 
             {/* Responsive adjustments for mobile view */}
             <style>{`

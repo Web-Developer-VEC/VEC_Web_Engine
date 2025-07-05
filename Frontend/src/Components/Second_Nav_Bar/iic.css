@@ -483,7 +483,7 @@
 .nirf-action-button{
     font-size: 16px;
     margin-block-end: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     width:auto;  
     white-space: nowrap; 
@@ -638,6 +638,13 @@
   }
   .about-section p{
     font-size: 1.rem;
+  }
+  .nirf-years{
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 10px;
+    padding: 10px;
   }
   
   .functions-info-panel {
@@ -838,3 +845,8 @@
   flex-wrap: wrap;
   box-sizing: border-box;
 }
+ /* @media screen and (max-width: 560px){
+  .nirf-year-action{
+    border-radius: 40px;
+  }
+ } */

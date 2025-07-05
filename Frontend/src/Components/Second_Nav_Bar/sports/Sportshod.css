@@ -28,7 +28,12 @@
     
 }
 
-
+@media only screen and (max-width: 600px) {
+  .Sports-HOD{
+    width: 300px;
+    margin-left: -4.5rem;
+  }
+}
 
 .SportsHOD-details h2 {
     text-align: center;

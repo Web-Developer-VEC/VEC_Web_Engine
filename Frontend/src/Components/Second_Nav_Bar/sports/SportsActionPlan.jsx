@@ -6,7 +6,7 @@ const SportsActionPlan = () => {
     <section className="sports-action-plan">
       <div className="section-header">
         <h2 className="text-accn dark:text-drka">Our Action Plan</h2>
-        <div className="w-fit ml-5">
+        <div className="w-fit px-4  sm:ml-5">
           <ul className="text-justify text-black marker:text-black dark:marker:taxt-drks">
             <li>
               We give effective training for the students to develop their

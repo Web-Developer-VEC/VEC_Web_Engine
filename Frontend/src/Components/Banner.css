@@ -84,6 +84,19 @@
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.85);
   }
+
+  .banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Ensures all items align to the left */
+  text-align: left !important; /* Force override any center text */
+}
+.banner-header,
+.banner-subheader {
+  text-align: left !important;
+  width: 100%; /* Optional: Ensures full width if restricted */
+}
+
   
   /* Responsiveness */
 /* Responsiveness */

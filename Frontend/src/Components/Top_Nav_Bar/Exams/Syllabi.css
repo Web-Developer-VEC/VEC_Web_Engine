@@ -19,6 +19,18 @@
   transition: all 0.3s ease-in-out;
 }
 
+
+@media only screen and (max-width: 600px) {
+  .card-syl{
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  .groups{
+    box-shadow: none;
+  }
+}
+
 .course-card {
   width: 100%; /* Full width on mobile */
   transition: transform 0.2s;
@@ -28,6 +40,7 @@
   .course-card {
     width: calc(50% - 0.5rem);
   }
+
 }
 
 @media (min-width: 1024px) {

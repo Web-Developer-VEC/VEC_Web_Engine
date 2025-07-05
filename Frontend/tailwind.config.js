@@ -11,6 +11,7 @@ module.exports = {
                 'comf': ['Comfortaa', 'ui-sans-serif', 'system-ui'],
                 'popp': ['Futura PT', 'ui-sans-serif', 'system-ui'],
                 'tech': ['Kode Mono', 'ui-sans-serif', 'system-ui'],
+                'orbi': ['Orbitron', 'ui-sans-serif', 'system-ui'],
                 'poppi': ['Poppins', 'ui-sans-serif', 'system-ui']
             },
             colors: {

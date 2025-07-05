@@ -196,3 +196,26 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+
+/* Small phones */
+@media (max-width: 480px) {
+  .nba-tile-header {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nba-tile-header {
+    font-size: 1.2rem;
+  }
+}
+
+/* Laptops and desktops */
+@media (min-width: 769px) {
+  .nba-tile-header {
+    font-size: 1.5rem;
+  }
+}
+
