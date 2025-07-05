@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import "./Incub.css";
 import Banner from "../Banner";
 import SideNav from "./SideNav";
+import LoadComp from "../LoadComp";
 
 
 const Incub = () => {
@@ -237,8 +238,30 @@ const Incub = () => {
         window.open("https://forms.google.com/your-form-link", "_blank");
         return null;
     }    
+const [isOnline, setIsOnline] = useState(navigator.onLine);
 
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
     return (
+        
         <>
             <Banner
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
