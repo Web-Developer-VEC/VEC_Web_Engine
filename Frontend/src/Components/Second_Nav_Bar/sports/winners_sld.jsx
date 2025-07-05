@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LoadComp from "../../LoadComp";
 
 const WinnerSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -19,7 +20,9 @@ const WinnerSlider = ({ data }) => {
   }, [isHovered, data?.title?.length]);
   
   if (!data || !data?.title || !data?.image_path) {
-    return <p className="text-center text-red-500">No data available</p>;
+    return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>;
   }
   const handlePrev = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + data?.title?.length) % data?.title?.length);

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import LoadComp from "../../LoadComp";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-
 
 const LIBFacl = () => {
   const [faculty, setFaculty] = useState(null);
@@ -29,13 +29,11 @@ const LIBFacl = () => {
     fetchData();
   }, []);
 
-  if (!faculty) {
-    return (
-      <div className="py-10 text-center text-lg text-gray-600">Loading Faculty Data...</div>
-    );
-  }
-
   return (
+
+    <>
+      {faculty ? (
+
     <div className="py-16 px-6">
       <h2 className="text-4xl font-bold text-accn dark:text-drka mb-4 text-center">
         Faculty & Staff
@@ -82,6 +80,12 @@ const LIBFacl = () => {
         ))}
       </div>
     </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 };
 

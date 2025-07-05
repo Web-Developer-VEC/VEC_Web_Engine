@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import LoadComp from "../../LoadComp";
 
 const LIBMemb = ({ lib }) => {
   const [membership, setMembership] = useState(null);
@@ -26,6 +27,14 @@ const LIBMemb = ({ lib }) => {
   const members = membership?.member_details || [];
   const books = membership?.no_of_books || [];
   const cds = membership?.["periodical/back_volumes/cd"] || [];
+
+   if (!membership) {
+      return (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
+      );
+    }
 
   return (
     <div className="overflow-x-auto px-4 sm:px-8 py-10">

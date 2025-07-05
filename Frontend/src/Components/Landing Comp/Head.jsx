@@ -230,7 +230,7 @@ const Head = () => {
                         lg:max-w-[17.5vw] max-w-[60%] ml-2 flex">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear" data-carousel-item="" key={i}>
-                                <img src={nac} className="block max-h-[5.5vmax] mt-2 h-full w-auto p-1" alt="naac"
+                                <img src={nac} className="block max-h-[5.5vmax] md:max-h-[6.5vmax] mt-2 h-full w-auto p-1" alt="naac"
                                      key="naac"/>
                             </div>
                         ))}

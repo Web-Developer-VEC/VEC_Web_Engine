@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./hostelfacilities.css";
+import LoadComp from "../../LoadComp";
 
 const facilities = [
   {
@@ -48,7 +49,7 @@ export default function HostelFacilities() {
       setExpandedId(expandedId === id ? null : id);
     }
   };
-
+  
   return (
     <div className="facility">
       <h2 className="hostel-head">Our Facilities</h2>

@@ -7,6 +7,7 @@ import SideNav from "../SideNav";
 import LIBMemb from "./LIBMemb"; // Adjust path if needed
 import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
+import LoadComp from "../../LoadComp";
 
 const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
@@ -32,7 +33,7 @@ const LibraryLayout = ({toggle, theme}) => {
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "OPAC": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Activities": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+        "Library Resources": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         "Downloads": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>
@@ -51,6 +52,31 @@ const LibraryLayout = ({toggle, theme}) => {
   
       fetchData();
     }, []);
+
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+    
+    
   return (
     <>
   <Banner theme={theme} toggle={toggle}
@@ -58,7 +84,13 @@ const LibraryLayout = ({toggle, theme}) => {
     headerText="Library"
     subHeaderText="The only thing that you absolutely have to know, is the location of the library."
   />
-        <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} />
+    {libraryData ? (
+      <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} />
+    ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+    )}
     </>
   );
 };

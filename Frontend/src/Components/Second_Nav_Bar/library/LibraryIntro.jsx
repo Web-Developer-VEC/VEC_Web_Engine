@@ -1,5 +1,7 @@
+import { useState,useEffect } from "react";
 import React from "react";
 import {motion} from "framer-motion";
+import LoadComp from "../../LoadComp";
 
 const LibraryIntro = ({about}) => {
   const tiles = [{
@@ -44,6 +46,12 @@ const LibraryIntro = ({about}) => {
 
   return (
     <>
+    {!about ? (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={""} />
+        </div>
+      ) : (
+
       <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10">
           <div className="max-w-7xl self-start basis-full w-full rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
               {/* Text Content */}
@@ -146,6 +154,7 @@ const LibraryIntro = ({about}) => {
                 </div>
             </div>
       </div>
+      )}
       
     </>
   );

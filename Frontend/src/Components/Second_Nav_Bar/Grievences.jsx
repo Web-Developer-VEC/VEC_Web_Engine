@@ -1,7 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// import React, { useState } from "react";
 import Banner from "../Banner";
+import LoadComp from '../LoadComp'
 
 const GrievanceForm = ({ theme, toggle }) => {
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+  
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
@@ -53,6 +71,15 @@ const GrievanceForm = ({ theme, toggle }) => {
     setUserCaptcha('');
     setCaptcha(generateCaptcha());
   };
+  
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
   return (
     <>
@@ -68,7 +95,7 @@ const GrievanceForm = ({ theme, toggle }) => {
 
       <div className="flex justify-center p-6">
         <div className="bg-white p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit">
-          <h2 className="text-[20px] font-bold text-[#800000]">Query/Grievences</h2>
+          <h2 className="text-[20px] font-bold text-[#800000]">Query/Grievances</h2>
           <p className="text-[16px] text-gray-700">Please fill the form.</p>
 
           <form className="mt-2 space-y-4" onSubmit={handleSubmit}>

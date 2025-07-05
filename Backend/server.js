@@ -44,6 +44,9 @@ const superiorAttendanceRoute = require('./Hostel/routes/superiorRoute/attendanc
 const superiorRequestRoute = require('./Hostel/routes/superiorRoute/request');
 const superiorStudentRoute = require('./Hostel/routes/superiorRoute/superiorStudent');
 const superiorWardensProfileRoute = require('./Hostel/routes/superiorRoute/wardensprofile');
+// Chatbot Route file
+const chatBotRoute = require('./Chatbot/routes/chatbot');
+const connectDB = require('./Chatbot/config/db');
 
 dotenv.config();
 
@@ -57,6 +60,7 @@ app.use(session);
 
 // Connect to MongoDB
 connectToDatabase();
+connectDB();
 
 
 // Routes for main college Page
@@ -99,6 +103,8 @@ app.use('/api', superiorAttendanceRoute);
 app.use('/api', superiorRequestRoute);
 app.use('/api', superiorStudentRoute);
 app.use('/api', superiorWardensProfileRoute);
+// Routes for ChatBot
+app.use('/', chatBotRoute);
 
 app.get('/', (req, res) => {
     res.send("Welcome to the Node.js MongoDB API!");

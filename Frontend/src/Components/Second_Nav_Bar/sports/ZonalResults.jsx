@@ -1,8 +1,11 @@
 import React from 'react';
+import LoadComp from '../../LoadComp';
 
 const ZonalResults = ({ data }) => {
   if (!data || !data.Game || !data.Position) {
-    return <p className="text-center text-red-500">No data available</p>;
+    return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>;
   }
 
   // Map the fetched data into an array of objects

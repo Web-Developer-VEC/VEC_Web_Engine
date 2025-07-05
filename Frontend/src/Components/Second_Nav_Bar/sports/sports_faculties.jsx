@@ -2,6 +2,7 @@ import React from 'react';
 import Image from './Imagecard1';
 import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
 import '../sports/Sportshod.css';
+import LoadComp from '../../LoadComp';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -11,7 +12,9 @@ const UrlParser = (path) => {
 
 const Sportsfaculties = ({ data }) => {
   if (!data || !data.name || !data.image_path || !data.designation || !data.qualification) {
-    return <p>Loading...</p>; // Handle case where data is not yet available
+    return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
   }
 
   return (
@@ -35,32 +38,36 @@ const Sportsfaculties = ({ data }) => {
 
 const SportsHOD = ( { data } ) => {
   return (
-    <article className='SportsHOD-container'>
-      <div className='Sports-HOD'>
-         <img src={UrlParser(data?.image_path)} alt="Sports hod" />
-      </div>
-      <br />
-      <div className='SportsHOD-details'>
-       <div className='SportsHODNameAndqualification text-2xl font-semibolt'>
-       <h2 className='SportsHODName'>{data?.name} {data?.qualification} </h2>
-       
-       </div>
-        
-        <h2 className='SportsHODDes'>{data?.designation}</h2>
 
+    <>
+      {data ? (
+      <article className='SportsHOD-container'>
+        <div className='Sports-HOD'>
+          <img src={UrlParser(data?.image_path)} alt="Sports hod" />
+        </div>
         <br />
+        <div className='SportsHOD-details'>
+        <div className='SportsHODNameAndqualification text-2xl font-semibolt'>
+        <h2 className='SportsHODName'>{data?.name} {data?.qualification} </h2>
+        
+        </div>
+          
+          <h2 className='SportsHODDes'>{data?.designation}</h2>
 
-        <p className='SportsHODmessage text-xl p-8 text-justify' >
-          {data?.message}
-        </p>
-      </div>
-    </article>
+          <br />
+
+          <p className='SportsHODmessage text-xl p-8 text-justify' >
+            {data?.message}
+          </p>
+        </div>
+      </article>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 };
 
-
-
-
 export { Sportsfaculties , SportsHOD };
-
-

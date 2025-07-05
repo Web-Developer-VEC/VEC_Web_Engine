@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { SiPublons } from "react-icons/si";
-import { FaGoogleScholar } from "react-icons/fa6";
-import { FaOrcid, FaResearchgate, FaLinkedin } from "react-icons/fa";
+import React from "react";
 import styles from "../../Top_Nav_Bar/Academics/sections/Faculties.module.css";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
