@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./NBA_F.css";
 import Banner from '../Banner';
 import axios from 'axios';
+import LoadComp from '../LoadComp';
 
 const NBA_F = () => {
   const [selectedDept, setSelectedDept] = useState(null);
@@ -26,6 +27,26 @@ const NBA_F = () => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
+
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
+      return () => {
+       window.removeEventListener("online", handleOnline);
+       window.removeEventListener("offline", handleOffline);
+       };
+    },[]);
+   if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+     );
+  }
 
   return (
     <>

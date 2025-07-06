@@ -5,6 +5,7 @@ import Banner from "../Banner";
 import axios from "axios";
 import SideNav from "./SideNav";
 import {FaLink} from "react-icons/fa";
+import LoadComp from "../LoadComp";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -464,7 +465,28 @@ const IQAC = () => {
             </div>
         )
     }
+     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
     return (
         <>
             <Banner
