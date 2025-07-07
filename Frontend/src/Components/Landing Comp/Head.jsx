@@ -96,7 +96,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: UrlParser("static/pdfs/academic_calendar.pdf"), openInNewTab: true, },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
               ],
         },
         {
@@ -137,18 +137,19 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "Academic Research", sup: [], lnk: "#"},  //Academic
+
+                {hrd: false, ttl: "Academic Research", sup: [], lnk: "/Academic"},  //Academic
                 {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch"}, //Sponseredresearch
                 {
                     hrd: false,
                     ttl: "Publication",
                     sup: [
-                        {hrd: false, ttl: "Journal", sup: [], lnk: "#"}, //journal
-                        {hrd: false, ttl: "Conference", sup: [], lnk: "#"}, //conference
+                        {hrd: false, ttl: "Journal", sup: [], lnk: "/journal"}, //journal
+                        {hrd: false, ttl: "Conference", sup: [], lnk: "/conference"}, //conference
                     ],
                     lnk: "#",
                 },
-                {hrd: false, ttl: "Patents", sup: [], lnk: "/patents"},    //patents
+                {hrd: false, ttl: "Patents", sup: [], lnk: "#"},    //patents
                 {
                     hrd: false,
                     ttl: "Book Publications",
