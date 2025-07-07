@@ -7,7 +7,8 @@
 
 .events-title {
     text-align: center;
-    font-size: 2rem;
+    color: #800000;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
 }
@@ -15,7 +16,7 @@
 .events-underline {
     width: 100px;
     height: 4px;
-    background-color: #fdcc03;
+    background-color: #800000;
     margin: 0 auto 20px auto;
 }
 

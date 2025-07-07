@@ -25,18 +25,6 @@
 
 }
 
-/* Adding an underline effect */
-.nss-news-updates::after {
-    content: "";
-    display: block;
-    width: 120px;
-    /* Custom width */
-    height: 3px;
-    background: linear-gradient(to right, #ff6b6b, #ffb347);
-    /* Gradient effect */
-    margin-top: 5px;
-}
-
 /* Notification box styling */
 .nss-notification-box {
     width: 550px;
