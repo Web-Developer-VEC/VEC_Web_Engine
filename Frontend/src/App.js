@@ -48,10 +48,10 @@ import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDet
 import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
-import NBA from "./Components/Second_Nav_Bar/NBA_F.jsx";
+import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
 // import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
-import NAAC from "./Components/Second_Nav_Bar/naac.jsx";
-import NIRF from "./Components/Second_Nav_Bar/nirf.jsx";
+import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
+import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/iic.jsx";
 import Incubation from "./Components/Second_Nav_Bar/InCub.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
@@ -76,6 +76,7 @@ import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx
 import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
+import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 
 const GlobalStyle = createGlobalStyle`
@@ -185,10 +186,11 @@ const MainContentWrapper = styled.div`
                                 <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/>
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
-                                <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
-                                <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/incubation" drk element={<Incubation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>

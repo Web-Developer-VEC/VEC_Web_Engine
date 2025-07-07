@@ -1,3 +1,11 @@
+
+body{
+ max-width: 100%;
+}
+
+
+
+
 .faculty-profile-container {
   max-width: fit-content;
   width: 100%;
@@ -555,15 +563,19 @@
   }
 }
 
+
+.faculty-timeline-table{
+  border-radius: 8px;
+}
+
 .faculty-timeline-table-container{
   @media (min-width:600px){
-     overflow-x: auto;
      margin: 0 auto;
   }
 }
 
 .faculty-timeline-table-container{
-  width: 100%;
+  width: 110%;
 }
 
 .faculty-experience-head-container{
@@ -596,13 +608,13 @@
 } 
 
 
-@media (min-width:450px){
+/* @media (min-width:450px){
   .faculty-timeline-container{
-     overflow-x: auto;
+ 
 
   }
 }
-
+ */
 
 .faculty-timeline-title {
   font-size: 24px;
@@ -973,12 +985,15 @@
   gap: 0.75rem;
 }
 
+
+
 .faculty-tiles-app-tile-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   margin-bottom: 0.5rem;
   word-wrap: break-word;
+  border-radius: 8px;
 }
 
 .faculty-tiles-app-item-icon {
@@ -986,7 +1001,7 @@
   width: 1.5rem; 
   height: 1.5rem;
   margin-right: 0.5rem;
-  /*color: #fdcd33; */
+  /* color: #fdcd33; */
   display: inline-block; 
   vertical-align: middle;
 }

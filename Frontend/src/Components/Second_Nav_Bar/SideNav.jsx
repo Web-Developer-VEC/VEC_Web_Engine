@@ -56,6 +56,7 @@ import {
     FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
+import { Medal, MedalIcon } from "lucide-react";
 
 const SideNav = ({sts, setSts, navData, cls}) => {
     function setIco(ttl) {
@@ -67,6 +68,12 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaBullseye className={sty}/>;
             case "Coordinators":
                 return <FaUserTie className={sty}/>;
+            case "NAAC":
+                return <MedalIcon className={sty}/>;
+            case "NIRF":
+                return <MedalIcon className={sty}/>;
+            case "NBA":
+                return <MedalIcon className={sty}/>;
             case "Code of Ethics":
                 return <FaBalanceScale className={sty}/>;
             case "Strategic Development Plan":
