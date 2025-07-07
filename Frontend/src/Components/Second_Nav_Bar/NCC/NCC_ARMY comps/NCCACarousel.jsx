@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./NCCACarousel.css"; // Import the CSS file
-
+import LoadComp from "../../../LoadComp"
 const NCCACarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
-
+    // const [data , setdata] = useState(null)
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const UrlParser = (path) => {
@@ -27,9 +27,12 @@ const NCCACarousel = ({data}) => {
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev === data?.carousal_images?.length - 1 ? 0 : prev + 1));
     };
-
     return (
-        <div className="ncc-a-carousel-wrap">
+
+
+<>
+        {data ? (
+            <div className="ncc-a-carousel-wrap">
             <div className="ncc-a-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: "transform 0.5s ease-in-out" }}>
                 {data?.carousal_images?.map((slide, index) => (
                     <div className="ncc-a-carousel-slide" key={index}>
@@ -50,13 +53,25 @@ const NCCACarousel = ({data}) => {
             <div className="ncc-a-carousel-dots">
                 {data?.carousal_images?.map((_, index) => (
                     <span
-                        key={index}
-                        className={`ncc-a-dot ${index === currentIndex ? "active" : ""}`}
-                        onClick={() => setCurrentIndex(index)}
+                    key={index}
+                    className={`ncc-a-dot ${index === currentIndex ? "active" : ""}`}
+                    onClick={() => setCurrentIndex(index)}
                     ></span>
                 ))}
             </div>
         </div>
+
+        ):(
+    
+        
+         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+    
+    
+)}
+       
+</>
     );
 };
 

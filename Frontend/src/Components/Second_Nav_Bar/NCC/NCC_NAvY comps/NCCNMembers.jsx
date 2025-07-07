@@ -1,6 +1,8 @@
 import React from "react";
 import "./NCCNMembers.css";
-
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 // const NCCNMembers = () => {
 //   const members = Array.from({ length: 60 }, (_, index) => ({
 //     id: index + 1,
@@ -68,40 +70,111 @@ const  NCCNMembers = () => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
-  const studentCoordinators1 = [
-    {
-      id: 1,
-      role: "Assitant",
-      image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-      name: "Ajay",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 2,
-      role: "Assitant",
-      image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-      name: "Ajith",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 3,
-      role: "Assitant",
-      image: "",
-      name: "Sudha",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 4,
-      role: "Assitant",
-      image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-      name: "Sri",
-      department: "AI&DS",
-      year: 2
+  // const studentCoordinators1 = [
+  //   {
+  //     id: 1,
+  //     role: "Assitant",
+  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
+  //     name: "Ajay",
+  //     department: "AI&DS",
+  //     year: 2
+  //   },
+  //   {
+  //     id: 2,
+  //     role: "Assitant",
+  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
+  //     name: "Ajith",
+  //     department: "AI&DS",
+  //     year: 2
+  //   },
+  //   {
+  //     id: 3,
+  //     role: "Assitant",
+  //     image: "",
+  //     name: "Sudha",
+  //     department: "AI&DS",
+  //     year: 2
+  //   },
+  //   {
+  //     id: 4,
+  //     role: "Assitant",
+  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
+  //     name: "Sri",
+  //     department: "AI&DS",
+  //     year: 2
+  //   }
+  // ]
+
+
+  const [coordinaterImage,setCoordinaterImage]= useState("")
+  const [coordinaterName , setCoordinaterName] = useState("")
+  const [coordinaterMessage ,setCoordinaterMessage] =useState("")
+  const [coordinaterDesignation, setCoordinaterDesignation] = useState("")
+  const [studentCoordinaters,setStudentCoordinaters] = useState([])
+  const [data , setData] = useState()
+  useEffect(()=> {
+    const fetchFacultyCoordinaterData = async () => {
+try{
+
+    const response = await axios.get('/api/ncc_navy');
+
+  if (Array.isArray(response.data) && response.data.length > 0) {
+        const data = response.data[0]; 
+      setCoordinaterImage(data.coordinater.image_path)
+       setCoordinaterName(data.coordinater.name)
+       setCoordinaterMessage(data.coordinater.message)
+       setCoordinaterDesignation(data.coordinater.designation)
+      } else {
+        console.warn("API returned no data or unexpected format", response.data);
+      }
+}catch(error){
+  console.error("Error data fetching ",error)
+}
+    
+
+
     }
-  ]
+fetchFacultyCoordinaterData();
+
+
+const fetchStudentCoordinaterData = async() => {
+
+    try{
+
+    const response = await axios.get('/api/ncc_navy');
+
+  if (Array.isArray(response.data) && response.data.length > 0) {
+      const data = response.data[0]; 
+      const members = data.members
+
+
+      const formatted = members.name.map((name, index) => ({
+        id: index + 1,
+        role: members.rank?.[index] ,
+        regiment_no: members.regiment_no?.[index],
+        image: members.image_path?.[index] ,
+        rank: members.rank?.[index],
+        universityno: members.universityno[index],
+        name: name || "",
+        department: members.department?.[index] ,
+      
+      }));
+
+
+    setStudentCoordinaters(formatted)
+
+      } else {
+        console.warn("API returned no data or unexpected format", response.data);
+      }
+}catch(error){
+  console.error("Error data fetching ",error)
+}
+    
+    }
+fetchStudentCoordinaterData();
+  },[])
+
+
 
   return (
     
@@ -113,17 +186,17 @@ const  NCCNMembers = () => {
       
       <div className="yrc-member-card-1">
         <img
-          src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg"
-          alt="Officer"
+          src={coordinaterImage}
+          alt={coordinaterImage}
           className="yrc-member-image1"
         />
 
         <div className="yrc-member-info1">
           {/* <span className="yrc-platoon">Programme Officer</span> */}
-          <h3>Ramesh Kumar V</h3>
-          <p className="yrc-title">Bachelor of Education</p>
+          <h3>{coordinaterName}</h3>
+          <p className="yrc-title">{coordinaterDesignation}</p>
           <p className="yrc-degree">
-          The Programme Officer for the Youth Red Cross (YRC) is responsible for planning, coordinating, and implementing various YRC activities and initiatives. The role involves engaging with youth volunteers, organizing training sessions, promoting humanitarian values, and ensuring the smooth execution of YRC programs.
+         {coordinaterMessage}
           </p>
         </div>
       </div>
@@ -149,21 +222,18 @@ const  NCCNMembers = () => {
         <div className="yrc-underline3"></div>
       </h2>
       <div className="yrc-members-grid">
-      {studentCoordinators1.map((coordinator) => (
-        <div key={coordinator.id} className="yrc-member-card">
-          <img
-            src={coordinator.image}
-            alt={coordinator.name}
-            className="yrc-member-image"
-          />
-          <div className="yrc-member-info">
-            <h3>{coordinator.name}</h3>
-            <span className="yrc-platoon">{coordinator.role}</span>
-            <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
-            <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
-          </div>
-        </div>
-      ))}
+     {studentCoordinaters.map(student => (
+  <div key={student.id} className="student-card">
+    <img src={student.image} alt={student.name} />
+    <h3>{student.name}</h3>
+    <p>Role: {student.role}</p>
+    <p>regiment no: {student.regiment_no}</p>
+    <p>Rank : {student.rank}</p>
+    <p>University No : {student.universityno}</p>
+    <p>Department: {student.department}</p>
+    <p>Year: {student.year}</p>
+  </div>
+))}
     </div>
 
     </div>

@@ -17,6 +17,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
+const BASE_URL = "http://localhost:5000/";
 
 function YRCAbout() {
   return (
@@ -34,58 +35,6 @@ function YRCAbout() {
   </div>
   );
 }
-
-function YRCNews() {
-  return (
-      <h2>Placeholder</h2>
-  );
-}
-
-function YRCEvt() {
-  return (
-      <h2>Placeholder</h2>
-  );
-}
-
-function YRCAwd() {
-  return (
-      <h2>Placeholder</h2>
-  );
-}
-const NotificationBox1 = () => {
-  const marqueeRef = useRef(null);
-
-  return (
-    <div className="YRC-notification-container">
-      {/* Left-side text */}
-      <div className="YRC-news-updates">
-        Bringing you the latest news & updates 📢
-      </div>
-
-      {/* Right-side notification box */}
-      <div className="YRC-notification-box">
-        <div className="YRC-notification-header">Recent Updates</div>
-        <div className="YRC-notification-content">
-          <marquee
-            ref={marqueeRef}
-            behavior="scroll"
-            direction="up"
-            scrollamount="3"
-            onMouseOver={() => marqueeRef.current && marqueeRef.current.stop()}
-            onMouseOut={() => marqueeRef.current && marqueeRef.current.start()}
-          >
-            <p>1. College Fest 2025 will be held on March 25th.</p>
-            <p>
-              2. We have successfully completed Eco-Nomics 3.0, a 100-day tree
-              plantation initiative by YRC volunteers.
-            </p>
-            <p>3. The annual sports meet is scheduled for April 10th.</p>
-          </marquee>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 
 const carouselItems = [
@@ -184,167 +133,157 @@ const carouselItems = [
   // },
 ];
 
-const CarouselYRC = ({data}) => {
+const CarouselYRC = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-      const [isAutoPlay, setIsAutoPlay] = useState(true);
-  
-      const BASE_URL = process.env.REACT_APP_BASE_URL;
-  
-      const UrlParser = (path) => {
-        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-      };
-  
-      // Auto-slide functionality
-      useEffect(() => {
-          if (isAutoPlay) {
-              const interval = setInterval(() => {
-                  nextSlide();
-              }, 3000);
-              return () => clearInterval(interval);
-          }
-      }, [currentIndex, isAutoPlay]);
-  
-      const prevSlide = () => {
-          setCurrentIndex((prev) => (prev === 0 ? data?.image_path?.length - 1 : prev - 1));
-      };
-  
-      const nextSlide = () => {
-          setCurrentIndex((prev) => (prev === data?.image_path?.length - 1 ? 0 : prev + 1));
-      };
-  
-      return (
-          <div className="nss-carousel-wrap">
-              <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                  {data?.image_path?.map((image, index) => (
-                      <div className="nss-carousel-slide" key={index}>
-                          <img src={UrlParser(image)} alt={data?.image_content[index]} />
-                          <div className="nss-carousel-text">
-                              <h3>{data?.image_content[index]}</h3>
-                              <p>{data?.desc[index]}</p>
-                          </div>
-                      </div>
-                  ))}
-              </div>
-  
-              {/* Navigation Buttons */}
-              <button className="nss-carousel-btn nss-carousel-btn-left" onClick={prevSlide}>&#10094;</button>
-              <button className="nss-carousel-btn nss-carousel-btn-right" onClick={nextSlide}>&#10095;</button>
-  
-              {/* Dots Indicator */}
-              <div className="nss-carousel-dots">
-                  {data?.image_path?.map((_, index) => (
-                      <span
-                          key={index}
-                          className={`nss-dot ${index === currentIndex ? "active" : ""}`}
-                          onClick={() => setCurrentIndex(index)}
-                      ></span>
-                  ))}
-              </div>
-          </div>
-      );
-  // const swiperRef = useRef(null);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const intervalRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (swiperRef.current) {
-  //     swiperRef.current.swiper.navigation.init();
-  //     swiperRef.current.swiper.navigation.update();
-  //   }
-  // }, []);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  // return (
-  //   <div className="carouselyrc-container">
-  //     {/* Title with underline */}
-  //     <h2 className="events-title">Events</h2>
-  //     <div className="events-underline"></div>
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
-  //     <Swiper
-  //       ref={swiperRef}
-  //       modules={[Navigation]}
-  //       spaceBetween={20}
-  //       slidesPerView={4} // Default for large screens
-  //       loop={true}
-  //       navigation={{
-  //         nextEl: ".custom-next",
-  //         prevEl: ".custom-prev",
-  //       }}
-  //       breakpoints={{
-  //         1024: { slidesPerView: 4 }, // Desktop (4 images)
-  //         768: { slidesPerView: 3 }, // Tablets (3 images)
-  //         600: { slidesPerView: 2 }, // Mobile (2 images)
-  //         0: { slidesPerView: 1 }, // Extra small screens (1 image)
-  //       }}
-  //     >
-  //       {carouselItems.map((item, index) => (
-  //         <SwiperSlide key={index}>
-  //           <div className="carouselyrc-card">
-  //             <img
-  //               src={item.image}
-  //               alt={item.title}
-  //               className="carouselyrc-image"
-  //             />
-  //             <div className="carouselyrc-content">
-  //               <h3>{item.title}</h3>
-  //               <p className="carouselyrc-location">{item.location}</p>
-  //               <span className="carouselyrc-date">{item.date}</span>
-  //             </div>
-  //           </div>
-  //         </SwiperSlide>
-  //       ))}
-  //     </Swiper>
+  // Auto slide effect
+  useEffect(() => {
+    if (isAutoPlay && data?.image_path?.length > 0) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) =>
+          prev === data.image_path.length - 1 ? 0 : prev + 1
+        );
+      }, 3000);
 
-  //     {/* Custom Navigation Buttons */}
-  //     <button className="swiper-button-prev custom-prev">
-  //       <FaRegCircleLeft />
-  //     </button>
-  //     <button className="swiper-button-next custom-next">
-  //       <FaRegCircleRight />
-  //     </button>
-  //   </div>
-  // );
-};
-const predefinedData = {
-  title: [
-    "Awards & Recognition 1",
-    "Awards & Recognition 2",
-    "Awards & Recognition 3",
-    "Awards & Recognition 4",
-    "Awards & Recognition 5",
-  ],
-  image_path: [
-    "https://via.placeholder.com/400x300?text=Alumni+1",
-    "https://via.placeholder.com/400x300?text=Alumni+2",
-    "https://via.placeholder.com/400x300?text=Alumni+3",
-    "https://via.placeholder.com/400x300?text=Alumni+4",
-    "https://via.placeholder.com/400x300?text=Alumni+5",
-  ],
+      return () => clearInterval(intervalRef.current);
+    }
+  }, [currentIndex, isAutoPlay, data]);
+
+  // Handle edge case: No data
+  if (!data?.image_path || data.image_path.length === 0) {
+    return <div className="nss-carousel-loading">No event data available.</div>;
+  }
+
+  // Handlers
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? data.image_path.length - 1 : prev - 1
+    );
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === data.image_path.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  return (
+    <div className="nss-carousel-wrap">
+      <div
+        className="nss-carousel-container"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+          display: "flex",
+          transition: "transform 0.5s ease",
+        }}
+      >
+        {data.image_path.map((image, index) => (
+  <div className="nss-carousel-slide" key={index}>
+    <img
+      src={UrlParser(image)}
+      alt={data?.title?.[index]}
+      className="nss-carousel-image"
+    />
+    
+    {/* Overlay Text at Bottom */}
+    <div className="nss-carousel-overlay">
+      <div className="nss-carousel-overlay-left">
+        <h3>{data?.title?.[index]}</h3>
+        <p>{data?.des?.[index]}</p>
+      </div>
+      <div className="nss-carousel-overlay-right">
+        {data?.date?.[index]}
+      </div>
+    </div>
+  </div>
+))}
+
+
+      </div>
+
+      {/* Navigation Buttons */}
+      <button
+        className="nss-carousel-btn nss-carousel-btn-left"
+        onClick={prevSlide}
+      >
+        &#10094;
+      </button>
+      <button
+        className="nss-carousel-btn nss-carousel-btn-right"
+        onClick={nextSlide}
+      >
+        &#10095;
+      </button>
+
+      {/* Dots Indicator */}
+      <div className="nss-carousel-dots">
+        {data.image_path.map((_, index) => (
+          <span
+            key={index}
+            className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(index)}
+          ></span>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-const Awardsnss = () => {
+// const predefinedData = {
+//   title: [
+//     "Awards & Recognition 1",
+//     "Awards & Recognition 2",
+//     "Awards & Recognition 3",
+//     "Awards & Recognition 4",
+//     "Awards & Recognition 5",
+//   ],
+//   image_path: [
+//     "https://via.placeholder.com/400x300?text=Alumni+1",
+//     "https://via.placeholder.com/400x300?text=Alumni+2",
+//     "https://via.placeholder.com/400x300?text=Alumni+3",
+//     "https://via.placeholder.com/400x300?text=Alumni+4",
+//     "https://via.placeholder.com/400x300?text=Alumni+5",
+//   ],
+// };
+
+const Awardsnss = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  // ⏱️ Auto-slide effect
   useEffect(() => {
-    if (isHovered) return; // Stop auto-slide when hovered
+    if (isHovered || data?.title?.length === 0) return;
     const interval = setInterval(() => {
       setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % predefinedData.title.length
+        (prevIndex) => (prevIndex + 1) % data?.title?.length
       );
     }, 3000);
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, data?.title?.length]);
 
   const handlePrev = () => {
     setActiveIndex(
       (prevIndex) =>
-        (prevIndex - 1 + predefinedData.title.length) %
-        predefinedData.title.length
+        (prevIndex - 1 + data?.title?.length) % data?.title?.length
     );
   };
 
   const handleNext = () => {
     setActiveIndex(
-      (prevIndex) => (prevIndex + 1) % predefinedData.title.length
+      (prevIndex) => (prevIndex + 1) % data?.title?.length
     );
+  };
+
+  const parseImage = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   return (
@@ -358,29 +297,34 @@ const Awardsnss = () => {
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {predefinedData.title.map((description, index) => (
+          {data?.title?.map((title, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
               style={{
                 opacity: activeIndex === index ? 1 : 0.5,
-                transition: "opacity 0.5s ease-in-out",
               }}
             >
               <img
-                src={predefinedData.image_path[index]}
-                alt="Awards & Recognition"
+                src={parseImage(data?.image_path[index])}
+                alt={title}
                 className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
               />
-              <div className="p-4 text-center bg-white rounded-b-lg">
+              <div className="p-4 text-center bg-white rounded-b-lg text-justify">
                 <p className="text-lg font-semibold text-gray-800">
-                  {description}
+                  {title}
                 </p>
+                {data?.des[index] && (
+                  <p className="text-sm text-gray-600 mt-2 text-justify">
+                    {data?.des[index]}
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
 
+        {/* Navigation buttons */}
         <button
           onClick={handlePrev}
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
@@ -395,8 +339,9 @@ const Awardsnss = () => {
         </button>
       </div>
 
+      {/* Pagination dots */}
       <div className="flex justify-center space-x-2 mt-4">
-        {predefinedData.title.map((_, index) => (
+        {data?.title.map((_, index) => (
           <button
             key={index}
             className={`w-2.5 h-2.5 rounded-full ${
@@ -409,49 +354,6 @@ const Awardsnss = () => {
     </div>
   );
 };
-
-const YRC = () => {
-  const [staffCoordinator, setStaffCoordinator] = useState(null);
-  const [studentCoordinators, setStudentCoordinators] = useState([]);
-  const [yrcEvent, setYrcEvent] = useState(null);
-  const [yrc, setYrc] = useState("About YRC")
-  const navData = {
-    "About YRC": <YRCAbout/>,
-    "News & Updates": <NotificationBox1 />,
-    "Recent Events": <CarouselYRC/>,
-    "Team & Coordinators": <YRCCoord/>,
-    "Awards & Recognition": <Awardsnss />
-  };
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/yrc"); // Ensure correct API route
-        const data = response.data;
-
-        if (data.length >= 3) {
-          setStaffCoordinator(data[0]); // Staff Coordinator
-          setStudentCoordinators({
-            names: data[1].name,
-            roles: data[1].designation,
-            images: data[1].image_path,
-          });
-          setYrcEvent(data[2]); // Event Data (Carousel)
-        }
-      } catch (err) {
-        console.error("Error Fetching Data:", err.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
 
   const studentCoordinators1 = [
     {
@@ -535,19 +437,22 @@ const YRC = () => {
       image: "https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg",
     },
   ];
-  
-  function YRCCoord() {
-    function getStudentCoordinators() {
-      return Array.from({ length: 10 }, (_, index) => ({
-        id: index + 1,
-        name: `Student Coordinator ${index + 1}`,
-        role: "YRC Student Leader",
-        image: "https://via.placeholder.com/150",
-      }));
-    }
-  
-    const studentCoordinators = getStudentCoordinators();
-  
+
+  function YRCCoord({ student, coor }) {
+    // function getStudentCoordinators() {
+    //   return Array.from({ length: 10 }, (_, index) => ({
+    //     id: index + 1,
+    //     name: `Student Coordinator ${index + 1}`,
+    //     role: "YRC Student Leader",
+    //     image: "https://via.placeholder.com/150",
+    //   }));
+    // }
+
+    // const studentCoordinators = getStudentCoordinators();
+
+    console.log("Ajay", coor);
+    
+
     return (
       
       <div className="yrc-coordinators-container">
@@ -558,54 +463,34 @@ const YRC = () => {
         
         <div className="yrc-member-card-1">
           <img
-            src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg"
+            src={coor?.image_path}
             alt="Officer"
             className="yrc-member-image1"
           />
 
-          <div className="yrc-member-info1">
-            <span className="yrc-platoon">Programme Officer</span>
-            <h3>Ramesh Kumar V</h3>
-            <p className="yrc-title">Bachelor of Education</p>
-            <p className="yrc-degree">
-            The Programme Officer for the Youth Red Cross (YRC) is responsible for planning, coordinating, and implementing various YRC activities and initiatives. The role involves engaging with youth volunteers, organizing training sessions, promoting humanitarian values, and ensuring the smooth execution of YRC programs.
-            </p>
+          <div className="yrc-member-info1 w-500px">
+            <h3>{coor?.name}</h3>
+            <span className="yrc-platoon">{coor?.designation}</span>
           </div>
         </div>
-  
-        
-        {/* {staffCoordinator && (
-          <div className="yrc-member-card">
-            <img
-              src={UrlParser(staffCoordinator.image_path)}
-              alt={staffCoordinator.name}
-              className="yrc-member-image1"
-            />
-            <div className="yrc-member-info2">
-              <span className="yrc-platoon">Faculty Coordinator</span>
-              <h3>{staffCoordinator.name}</h3>
-              <p className="yrc-title">{staffCoordinator.designation}</p>
-            </div>
-          </div>
-        )} */}
-  
+
         <h2 className="yrc-h3">
           STUDENT COORDINATORS
           <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid">
-        {studentCoordinators1.map((coordinator) => (
-          <div key={coordinator.id} className="yrc-member-card">
+        {student?.name?.map((name,i) => (
+          <div key={i} className="yrc-member-card">
             <img
-              src={coordinator.image}
-              alt={coordinator.name}
+              src={student?.image_path[i]}
+              alt={name}
               className="yrc-member-image"
             />
             <div className="yrc-member-info">
-              <h3>{coordinator.name}</h3>
-              <span className="yrc-platoon">{coordinator.role}</span>
-              <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
-              <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
+              <h3>{name}</h3>
+              <span className="yrc-platoon">{student?.designation[i]}</span>
+              {/* <p className="yrc-department"><b>Register Number:</b> {student?.reg_no[i]}</p> */}
+              <p className="yrc-year"><b>Year</b> {student?.year[i]}</p>
             </div>
           </div>
         ))}
@@ -614,19 +499,95 @@ const YRC = () => {
       </div>
     );
   }
-  // Carousel Settings
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+const YRC = () => {
+  const [staffCoordinator, setStaffCoordinator] = useState(null);
+  const [studentCoordinators, setStudentCoordinators] = useState([]);
+  const [yrcEvent, setYrcEvent] = useState(null);
+  const [yrcData, setYrcData] = useState(null);
+  const [yrc, setYrc] = useState("About YRC")
+  
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/yrc"); // Ensure correct API route
+        const data = response.data;
+        console.log(data[0]);
+        setYrcData(data[0])
+        
+        // if (data.length >= 3) {
+          //   setStaffCoordinator(data[0]); // Staff Coordinator
+          
+          //   setStudentCoordinators({
+            //     names: data[1].name,
+            //     roles: data[1].designation,
+            //     images: data[1].image_path,
+            //   });
+            //   setYrcEvent(data[2]); // Event Data (Carousel)
+            
+            // }
+          } catch (err) {
+            console.error("Error Fetching Data:", err.message);
+          }
+        };
+        
+        fetchData();
+      }, []);
+      
+      
+      // Carousel Settings
+      const carouselSettings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+      };
+      
+      const NotificationBox1 = () => {
+        const marqueeRef = useRef(null);
+        const news = yrcData?.news?.updates;
+        
+        
+        return (
+          <div className="YRC-notification-container">
+        <div className="YRC-news-updates">
+          Bringing you the latest news & updates
+        </div>
+        <div className="YRC-notification-box">
+          <div className="YRC-notification-header">Recent Updates</div>
+          <div className="YRC-notification-content">
+            <marquee
+              ref={marqueeRef}
+              behavior="scroll"
+              direction="up"
+              scrollamount="3"
+              onMouseOver={() => marqueeRef.current && marqueeRef.current.stop()}
+              onMouseOut={() => marqueeRef.current && marqueeRef.current.start()}
+              >
+              {news?.length > 0 ? (
+                news?.map((update, index) => (
+                  <p key={index}>{update}</p>
+                  ))
+                  ) : (
+                    <p>No updates available.</p>
+                    )}
+            </marquee>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
   function YRCActs() {
-  return (       <div><h2 className="YRC-heading">YRC ACTIVITIES</h2>
+    return (       <div><h2 className="YRC-heading">YRC ACTIVITIES</h2>
         <div className="YRC-carousel-container">
           <Slider {...carouselSettings}>
             {yrcEvent?.image_path?.map((img, index) => (
@@ -639,13 +600,21 @@ const YRC = () => {
         </div></div>);
 }
 
-  return (
-    <div>
+const navData = {
+  "About YRC": <YRCAbout/>,
+  "News & Updates": <NotificationBox1 />,
+  "Recent Events": <CarouselYRC data={yrcData?.events}/>,
+  "Team & Coordinators": <YRCCoord student={yrcData?.members} coor={yrcData?.coordinater}/>,
+  "Awards & Recognition": <Awardsnss data={yrcData?.awards} />
+};
+
+return (
+  <div>
       <Banner
         backgroundImage="https://kristujayanti.edu.in/studentlife/images/youth-red-cross-banner.jpg"
         headerText="Youth Red Cross (YRC)"
         subHeaderText="Fostering excellence in social service and community well-being."
-      />
+        />
 
       {/*<div className="YRC-container flex flex-wrap mt-2 w-screen">*/}
       {/*  <nav className="basis-full lg:basis-1/5 flex flex-wrap justify-center lg:grid lg:float-left*/}

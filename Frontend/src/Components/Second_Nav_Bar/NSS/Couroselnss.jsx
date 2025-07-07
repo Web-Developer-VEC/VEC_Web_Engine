@@ -5,60 +5,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import "./Couroselnss.css";
+import LoadComp from "../../LoadComp"
 
-const carouselItems = [
-  {
-    image: "https://via.placeholder.com/300",
-    title: "EBSB DRDO Camp",
-    location: "Annai Violet Arts and Science ...",
-    date: "May 9, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Annual Sports Day",
-    location: "Anna University, Chennai",
-    date: "May 9, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Group Photo Session",
-    location: "Anna University, Chennai",
-    date: "May 7, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "CATC cum IGC Firing Sel...",
-    location: "3 (TN) Bn NCC Campus, Kancheep",
-    date: "Apr 8, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "National NCC Camp",
-    location: "Delhi, India",
-    date: "Mar 20, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Republic Day Parade",
-    location: "Rajpath, New Delhi",
-    date: "Jan 26, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "Drill Practice Session",
-    location: "Anna University, Chennai",
-    date: "Feb 10, 2023",
-  },
-  {
-    image: "https://via.placeholder.com/300",
-    title: "NCC Trekking Camp",
-    location: "Himalayas, India",
-    date: "Dec 15, 2022",
-  },
-];
-
-const CarouselNSS = () => {
+const CarouselNSS = ({ data }) => {
   const swiperRef = useRef(null);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -67,41 +23,56 @@ const CarouselNSS = () => {
     }
   }, []);
 
+  const images = data?.image_path || [];
+  const titles = data?.title || [];
+  const dates = data?.date || [];
+
+  if (!images.length) {
+    return (
+      <div className="text-center text-gray-600 mt-10">
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="carouselnss-container">
       {/* Title with underline */}
-      <h2 className="events-title">Events</h2>
-      <div className="events-underline"></div>
+      <h2 className="events-title uppercase">Events</h2>
+      <div className="w-[100px] h-0.5 bg-[#eab308] mx-auto mb-10 mt-1 rounded"></div>
 
       <Swiper
         ref={swiperRef}
         modules={[Navigation]}
         spaceBetween={20}
-        slidesPerView={4} // Default for large screens
+        slidesPerView={4}
         loop={true}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
         breakpoints={{
-          1024: { slidesPerView: 4 }, // Desktop (4 images)
-          768: { slidesPerView: 3 }, // Tablets (3 images)
-          600: { slidesPerView: 2 }, // Mobile (2 images)
-          0: { slidesPerView: 1 }, // Extra small screens (1 image)
+          1024: { slidesPerView: 4 },
+          768: { slidesPerView: 3 },
+          600: { slidesPerView: 2 },
+          0: { slidesPerView: 1 },
         }}
       >
-        {carouselItems.map((item, index) => (
+        {images.map((img, index) => (
           <SwiperSlide key={index}>
             <div className="carouselnss-card">
               <img
-                src={item.image}
-                alt={item.title}
+                src={UrlParser(img)}
+                alt={titles[index] || "NSS Event"}
                 className="carouselnss-image"
               />
               <div className="carouselnss-content">
-                <h3>{item.title}</h3>
-                <p className="carouselnss-location">{item.location}</p>
-                <span className="carouselnss-date">{item.date}</span>
+                <h3>{titles[index]}</h3>
+                {/* You can insert custom text or a field like location if needed */}
+                <p className="carouselnss-location">NSS VEC</p>
+                <span className="carouselnss-date">{dates[index]}</span>
               </div>
             </div>
           </SwiperSlide>

@@ -1,48 +1,57 @@
 import React, { useState, useEffect } from "react";
-
-const predefinedData = {
-  title: [
-    "Distinguished Alumni 1",
-    "Distinguished Alumni 2",
-    "Distinguished Alumni 3",
-    "Distinguished Alumni 4",
-    "Distinguished Alumni 5",
-  ],
-  image_path: [
-    "https://via.placeholder.com/400x300?text=Alumni+1",
-    "https://via.placeholder.com/400x300?text=Alumni+2",
-    "https://via.placeholder.com/400x300?text=Alumni+3",
-    "https://via.placeholder.com/400x300?text=Alumni+4",
-    "https://via.placeholder.com/400x300?text=Alumni+5",
-  ],
-};
+import axios from "axios";
 
 const AlumniSlider1 = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [awardData, setAwardData] = useState([]);
 
   useEffect(() => {
-    if (isHovered) return; // Stop auto-slide when hovered
+    const fetchAwards = async () => {
+      try {
+        const response = await axios.get("/api/ncc_navy");
+
+        if (
+          Array.isArray(response.data) &&
+          response.data.length > 0 &&
+          response.data[0].awards &&
+          response.data[0].awards.image_path
+        ) {
+          const awards = response.data[0].awards;
+
+          // Build array of { image, description }
+          const parsedData = awards.image_path.map((img, i) => ({
+            image: img.startsWith("http")
+              ? img
+              : `${window.location.origin}/${img}`,
+            description: awards.des[i] || "No description",
+          }));
+
+          setAwardData(parsedData);
+        }
+      } catch (error) {
+        console.error("Error fetching award data:", error);
+      }
+    };
+
+    fetchAwards();
+  }, []);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (isHovered || awardData.length === 0) return;
     const interval = setInterval(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % predefinedData.title.length
-      );
+      setActiveIndex((prev) => (prev + 1) % awardData.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, awardData]);
 
   const handlePrev = () => {
-    setActiveIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + predefinedData.title.length) %
-        predefinedData.title.length
-    );
+    setActiveIndex((prev) => (prev - 1 + awardData.length) % awardData.length);
   };
 
   const handleNext = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex + 1) % predefinedData.title.length
-    );
+    setActiveIndex((prev) => (prev + 1) % awardData.length);
   };
 
   return (
@@ -56,7 +65,7 @@ const AlumniSlider1 = () => {
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {predefinedData.title.map((description, index) => (
+          {awardData.map((item, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -66,19 +75,20 @@ const AlumniSlider1 = () => {
               }}
             >
               <img
-                src={predefinedData.image_path[index]}
-                alt="Distinguished Alumni"
+                src={item.image}
+                alt={`Award ${index + 1}`}
                 className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
               />
               <div className="p-4 text-center bg-white rounded-b-lg">
                 <p className="text-lg font-semibold text-gray-800">
-                  {description}
+                  {item.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Prev and Next buttons */}
         <button
           onClick={handlePrev}
           className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
@@ -93,8 +103,9 @@ const AlumniSlider1 = () => {
         </button>
       </div>
 
+      {/* Pagination Dots */}
       <div className="flex justify-center space-x-2 mt-4">
-        {predefinedData.title.map((_, index) => (
+        {awardData.map((_, index) => (
           <button
             key={index}
             className={`w-2.5 h-2.5 rounded-full ${
