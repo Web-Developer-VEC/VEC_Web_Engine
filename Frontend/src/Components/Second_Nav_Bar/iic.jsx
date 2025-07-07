@@ -25,9 +25,10 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
-        <div><h1 className="text-brwn dark:text-drkt text-4xlfont-bold text-center">Establishment of IIC</h1></div>
-        <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
-            <h2 className="text-[30px] iic-establishment text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
+        <div><h1 className="text-accn text-4xl font-bold text-center">Establishment of IIC</h1></div>
+
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
+            <h2 className="text-[30px] iic-establishment">Major Focus of IIC</h2>
             <p>
                 <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
                 prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
@@ -36,7 +37,7 @@ function IicEst() {
                 <br/>
             </p>
         </div>
-            
+
        <div className="flex flex-col lg:flex-row justify-between gap-6">
     {/* Left Panel */}
     <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2">
@@ -56,7 +57,7 @@ function IicEst() {
             planning for pursuing productivity growth and better operational efficiencies and value for the start-up
             companies.
         </p>
-    </div>
+    </div>z
 </div>
 
     </div>);
@@ -149,13 +150,10 @@ function IicCon({iicData}) {
     return (
        <>
        {
-       iicData?( 
-         <h1 className="text-accn text-4xl">Contacts</h1>
-         ):( 
-      <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+       iicData?( <h1 className="text-accn text-4xl">Contacts</h1>):( <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
                     <LoadComp />
-                </div>
-        )}
+                </div>)
+       }
        </>
     );
 }
@@ -169,19 +167,19 @@ const Iic = ({toggle, theme}) => {
         "Home": <IicHome/>,
         "Establishment of IIC": <IicEst/>,
         "Council": {
-            "Faculty": <IicFac/>,
-            "Expert Representation": <IicExp/>,
-            "Student Representation": <IicRep/>
+            "Faculty": <IicHome/>,  //IicFac
+            "Expert Representation": <IicHome/>,    //IicExp
+            "Student Representation": <IicHome/>    //IicExp
         },
-        "Calender": <IicCal/>,
-        "Gallery": <IicGal/>,
+        "Calender": <IicHome/>, //IicCal
+        "Gallery": <IicHome/>,  //IicGal
         "Events": {
-            "IIC 1.0": <IicFir/>,
-            "IIC 2.0": <IicSec/>,
-            "IIC 3.0": <IicThd/>
+            "IIC 1.0": <IicHome/>,  //IicFir
+            "IIC 2.0": <IicHome/>,  //IicSec
+            "IIC 3.0": <IicHome/>   //IicThd
         },
         "I & E Ecosystem": <IicEco/>,
-        "Contact": <IicCon/>
+        "Contact": <IicHome/>   //IicCon
     }
     const [iic, setIic] = useState(Object.keys(navData)[0])
 

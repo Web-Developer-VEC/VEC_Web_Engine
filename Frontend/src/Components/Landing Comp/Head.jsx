@@ -138,7 +138,7 @@ const Head = () => {
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Academic Research", sup: [], lnk: "#"},  //Academic
-                {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "#"}, //Sponseredresearch
+                {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch"}, //Sponseredresearch
                 {
                     hrd: false,
                     ttl: "Publication",

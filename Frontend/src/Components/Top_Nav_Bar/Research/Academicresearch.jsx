@@ -56,7 +56,9 @@ export default function Academicresearch({ theme, toggle }) {
                 <div
                   key={course}
                   className={"course-card"}
-                  onClick={() => { handleOpen(true);  }}
+                  onClick={() => { 
+                    // handleOpen(true); 
+                   }}
                 >
                   <div className="course-header">
                     <span className="icon">📖</span>
