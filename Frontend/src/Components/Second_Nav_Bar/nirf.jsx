@@ -56,8 +56,8 @@ const NIRF = ({ toggle, theme, isLoading }) => {
             Loading...
           </div>
         )}
-        <div className="nirf-intro ">
-          <h1 className="nirf-header ">
+        <div className="nirf-intro dark:bg-drkb border-l-4 border-secd dark:border-drks">
+          <h1 className="nirf-header text-brwn dark:text-drkt">
             NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)
           </h1>
           <p>
@@ -69,18 +69,18 @@ const NIRF = ({ toggle, theme, isLoading }) => {
             institutions and enhance transparency in education standards.
           </p>
         </div>
-        <h2 className="nirf-title">NATIONAL INSTITUTIONAL RANKING FRAMEWORK</h2>
+        <h2 className="nirf-title text-brwn dark:text-drkt">NATIONAL INSTITUTIONAL RANKING FRAMEWORK</h2>
         <div className="nirf-grid">
           {nirfData?.reverse().map((item, index) => (
             <div key={index} className="nirf-year">
-              <h3>NIRF {item.year}</h3>
+              <h3 className="text-text dark:text-drkt">NIRF {item.year}</h3>
               {item.categories.map((category, catIndex) => (
                 <a
                   key={catIndex}
                   href={`${UrlParser(category.link)}#toolbar=0`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="nirf-link"
+                  className="nirf-link dark:text-drka"
                 >
                   {category.name}
                 </a>
@@ -91,7 +91,7 @@ const NIRF = ({ toggle, theme, isLoading }) => {
         <p className="nirf-footer">
           Comments and suggestions are invited from the public to provide
           feedback through 
-          <a href="mailto:feedback.nirf@velammal.edu.in" className="nirf-email"> feedback.nirf@velammal.edu.in
+          <a href="mailto:feedback.nirf@velammal.edu.in" className="nirf-email dark:text-drka"> feedback.nirf@velammal.edu.in
           </a>
         </p>
       </div>

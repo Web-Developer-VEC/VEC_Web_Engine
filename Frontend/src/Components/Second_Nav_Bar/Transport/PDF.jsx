@@ -11,7 +11,7 @@ const PdfOpener = () => {
   return (
     <div style={styles.container}>
       <button
-        className="bg-secd dark:bg-drks p-3 mt-6 mb-2 rounded-xl hover:bg-accn dark:hover:bg-blue-700 hover:text-white"
+        className="bg-secd dark:bg-drks p-3 mt-6 mb-2 rounded-xl hover:bg-accn text-text hover:text-white"
         onClick={() => window.open(UrlParser('static/pdfs/transport/VELAMMAL_BUS_ROUTES 2024 - 25.pdf'), "_blank")}
       >
         View Transport Routes

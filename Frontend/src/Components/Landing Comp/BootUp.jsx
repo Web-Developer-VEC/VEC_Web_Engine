@@ -105,12 +105,12 @@ const Boot = (props) => {
     return (
         <>
             <canvas
-                className={`fixed bg-prim dark:bg-drkp z-[1000] size-full top-0
+                className={`fixed bg-prim dark:bg-drkts z-[1000] size-full top-0
                     ${(isLoaded) ? (!isAuth) ? 'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2.5s]' : 
                     'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' : ''}`}
                 ref={canRf}></canvas>
             <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 ` +
-                `${(isLoaded) ? (!isAuth) ? 'bg-prim dark:bg-drkp text-text dark:text-drkt animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
+                `${(isLoaded) ? (!isAuth) ? 'bg-prim dark:bg-drkts text-text dark:text-drkt animate-[LslideUp_1s_ease_forwards] [animation-delay:2.5s]': 
                     'animate-[fadOut_0.5s_ease-in_forwards] [animation-delay:2s]': `${isAuth}`} ${isAuth}`}>
                 <div className='relative w-[20vmax] h-[20vmax] group/ttl'>
                     <div className='w-full h-full [clip-path:polygon(0_0,100%_0,100%_50%,65%_65%,53%_80%,60%_70%,50%_40%,40%_70%,42%_70%,0_45%)] absolute'>
@@ -128,7 +128,7 @@ const Boot = (props) => {
                              className='relative w-full h-full group duration-300 transition-all'>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className='fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute origin-bottom translate-y-[-5%]'/>
+                                className='fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkts absolute origin-bottom translate-y-[-5%]'/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
                                 className={`fill-orange-600 stroke-orange stroke-1 absolute origin-bottom translate-y-[-5%] 
@@ -141,12 +141,12 @@ const Boot = (props) => {
                                     [clip-path:polygon(0_0,100%_0,100%_50%,50%_50%,50%_100%,0_100%)] duration-300 transition-all`}/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute
+                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkts absolute
                                     origin-bottom translate-y-[-5%] ${(!isAuth) ? 'animate-[midPetR_1s_ease_forwards]': 'animate-[midPetR_0s_ease_forwards]'}
                                     duration-300 transition-all`}/>
                             <path
                                 d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkp absolute 
+                                className={`fill-orange-600 stroke-orange stroke-1 stroke-prim dark:stroke-drkts absolute 
                                     origin-bottom translate-y-[-5%] ${(!isAuth) ? 'animate-[midPetL_1s_ease_forwards]': 'animate-[midPetL_0s_ease_forwards]'}
                                     duration-300 transition-all`}/>
                         </svg>

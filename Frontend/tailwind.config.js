@@ -21,9 +21,11 @@ module.exports = {
                 'text': '#000',
                 'brwn': '#800000',
                 'drkp': '#1A1A1A',
-                'drks': '#004D61',
-                'drka': '#FF6F61',
+                'drks': '#d4af37',
+                'drka': '#70C1FF',
                 'drkt': '#F0F0F0',
+                'drkts': '#212121',
+                'drkb': '#1a202c',
                 'gry' : '#808080'
                 // 'drkp': '#0F0F0F',
                 // 'drks': '#005B41',

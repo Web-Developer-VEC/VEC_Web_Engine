@@ -2,7 +2,8 @@
 h1{
   font-size: 32px;
 }
-.container {
+
+.deancontainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -14,7 +15,6 @@ h1{
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  
 }
 
 .de-box {

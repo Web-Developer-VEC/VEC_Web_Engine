@@ -44,7 +44,7 @@ export default function Warden() {
 
   return (
     <>
-    <h2 className="warden-heading1 mt-10">Wardens</h2>
+    <h2 className="warden-heading1 text-brwn dark:text-drkt mt-10">Wardens</h2>
 
     <div className="tree-container">
       {/* Chief Warden */}
@@ -57,7 +57,7 @@ export default function Warden() {
         <img src={UrlParser(chief?.image_path)} alt={chief?.warden_name} />
         <h3>{chief?.warden_name}</h3>
         <p>{chief?.designation}</p>
-        <a href={`tel:${chief?.phone_number}`}>{chief?.phone_number}</a>
+        <a href={`tel:${chief?.phone_number}`} className="dark:text-drka">{chief?.phone_number}</a>
       </motion.div>
 
       {/* Growing Line */}
@@ -78,7 +78,7 @@ export default function Warden() {
         <img src={UrlParser(chiefDeputy?.image_path)} alt={chiefDeputy?.warden_name} />
         <h3>{chiefDeputy?.warden_name}</h3>
         <p>{chiefDeputy?.designation}</p>
-        <a href={`tel:${chiefDeputy?.phone_number}`}>{chiefDeputy?.phone_number}</a>
+        <a href={`tel:${chiefDeputy?.phone_number}`} className="dark:text-drka">{chiefDeputy?.phone_number}</a>
       </motion.div>
 
       {/* Growing Line */}
@@ -133,7 +133,7 @@ export default function Warden() {
                 <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
                 <h3>{warden?.warden_name}</h3>
                 <p>{warden?.designation}</p>
-                <a href={`tel:${warden?.phone_number}`}>{warden?.phone_number}</a>
+                <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
               </motion.div>
             ))}
 
@@ -154,7 +154,7 @@ export default function Warden() {
                 <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
                 <h3>{warden?.warden_name}</h3>
                 <p>{warden?.designation}</p>
-                <a href={`tel:${warden?.phone_number}`}>{warden?.phone_number}</a>
+                <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
               </motion.div>
             ))}
 

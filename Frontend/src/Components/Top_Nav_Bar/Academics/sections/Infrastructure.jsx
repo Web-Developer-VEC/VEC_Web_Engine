@@ -21,7 +21,7 @@ const Infrastructure = ({ data }) => {
       {data?.infrastructure_images?.length > 0 ? (
         <>
           <section className="infra">
-            <h1 className="infra-head text-accn dark:text-drka border-x-4 border-[#FFD700] rounded-md dark:border-drka">Infrastructure</h1>
+            <h1 className="infra-head text-accn dark:text-drkt font-bold border-x-4 border-[#FFD700] rounded-md dark:border-drks">Infrastructure</h1>
           </section> 
 
           <main className="page-content">

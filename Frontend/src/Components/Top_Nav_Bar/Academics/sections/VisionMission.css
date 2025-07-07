@@ -27,7 +27,7 @@ body {
 
 .section-card {
   /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
-  color: #fff;
+  /* color: #fff; */
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
@@ -146,8 +146,6 @@ body {
   font-weight: bold;
   /*color: #333;*/
   margin-bottom: 20px;
-  color: #800000;
-  border-bottom: 2px solid #FFD700;
   display: inline-block;  
 }
 
@@ -195,7 +193,6 @@ body {
 /* Vision and Mission Section */
 .section-card {
   padding: 30px;
-  background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -229,7 +226,6 @@ ul {
 
 /* General Section Styling */
 .section-card {
-  /*background: linear-gradient(135deg, #f7b731, #e74c3c);*/
   color: #000;
   padding: 30px;
   border-radius: 12px;
@@ -270,10 +266,6 @@ ul {
 
 }
 
-.accordion-header{
-  color: #800000;
-  
-}
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */

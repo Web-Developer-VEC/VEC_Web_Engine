@@ -47,16 +47,18 @@ const HeadDepartment = ({ data }) => {
           <div className={styles.textColumn}>
             <div className={styles.hodInfo}>
               <h2 className={styles.messageHeader + " + text-[#00000]"}>
-                {Name}, <span className={styles.messageHeader2 + " text-black dark:text-drks"}>{Qualification.join(", ")}</span>
+                {Name}, <span className={styles.messageHeader2 + " text-text dark:text-drka"}>{Qualification.join(", ")}</span>
               </h2>
               <p className={styles.hodDesignation}>{designation}</p>
             </div>
 
             <div className={styles.hodMessage + " text-text dark:text-drkt"}>
-              <h3 className={styles.messageTitle + " + text-[#800000] border-b-2 border-secd dark:border-drks"}>HOD's Message</h3>
+              <h3 className={styles.messageTitle + " + text-[#800000] dark:text-drkt border-b-2 border-secd dark:border-drks"}>HOD's Message</h3>
               <p className={styles.messageBody}>{Hod_message}</p>
             </div>
-            <a className={styles.viewMoreButton + " bg-secd dark:bg-drks text-text dark:text-drkt"} href={`/facultyprofile/${uid}`}>View More</a>
+            <a className={styles.viewMoreButton + " bg-secd dark:bg-drks text-text"}
+            //  href={`/facultyprofile/${uid}`}
+             >View More</a>
           </div>
 
           <div className={styles.imageColumn}>

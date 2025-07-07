@@ -3,20 +3,20 @@ import "./InfoHostel.css";
 
 const InfoHostel = () => {
   return (
-    <div className="infohostel-container">
-      <h1 className="infohostel-title">Hostel Information</h1>
+    <div className="infohostel-container bg-prim dark:bg-drkp">
+      <h1 className="infohostel-title text-brwn dark:text-drkt">Hostel Information</h1>
 
       <section className="HI-grid">
-        <div className="HI-card">
-            <h2 className="HI-card-title">Mess Timing</h2>
-            <p className="HI-card-text">
+        <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">
+            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">Mess Timing</h2>
+            <p className="HI-card-text text-text dark:text-drkt">
             Breakfast: 7:00 AM - 9:00 AM <br />
             Lunch: 12:00 PM - 2:00 PM <br />
             Dinner: 7:00 PM - 9:00 PM
             </p>
         </div>
-        <div className="HI-card">
-            <h2 className="HI-card-title">Study Timing</h2>
+        <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">
+            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">Study Timing</h2>
             <p className="HI-card-text">
             Morning Study: 6:00 AM - 8:00 AM <br />
             Evening Study: 6:00 PM - 10:00 PM <br />
@@ -27,7 +27,7 @@ const InfoHostel = () => {
 
         {/* Food Timetable */}
   <section className="food-timetable">
-    <h2 className="infohostel-title">Weekly Food Timetable</h2>
+    <h2 className="infohostel-title text-brwn dark:text-drkt">Weekly Food Timetable</h2>
     <table className="food-table">
       <thead>
         <tr>

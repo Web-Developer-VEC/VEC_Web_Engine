@@ -202,7 +202,7 @@ const Head = () => {
         <>
             <nav className='fixed z-[100] w-full'>
                 <div
-                    className={'flex items-center font-popp group bg-prim dark:bg-drkp text-text dark:text-drkt ' +
+                    className={'flex items-center font-popp group bg-prim dark:bg-drkts text-text dark:text-drkt' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
                     <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
@@ -215,13 +215,13 @@ const Head = () => {
                         </div>
 
                         <div className="text-center leading-tight mt-1 md:mt-1.5">
-                            <span className="font-rome text-[0.75rem] md:text-[1.2rem] text-[#4B1E1E] font-thin block">
+                            <span className="font-rome text-[0.75rem] md:text-[1.2rem] text-[#4B1E1E] dark:text-drks font-thin block">
                             VELAMMAL
                             </span>
                             <span className="font-rome text-[0.45rem] md:text-[0.8rem] text-gray-800 dark:text-drkt block tracking-wide">
                             ENGINEERING COLLEGE
                             </span>
-                            <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 italic block">
+                            <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 dark:text-drks italic block">
                             The Wheel of Knowledge rolls on!
                             </span>
                         </div>
@@ -251,10 +251,10 @@ const Head = () => {
                                     group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
                                         right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit ${nvt.cols > 1 ? 'min-w-[55vw]' : 'w-max'} outline-offset-2
                                         group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}
+                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkts`}
                                      style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
-                                        <div className='group/sub relative w-full bg-prim dark:bg-drkp first:rounded-lg last:rounded-b-lg' key={i}>
+                                        <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
                                             <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                     ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` +
@@ -263,11 +263,11 @@ const Head = () => {
                                                key={sbj.ttl} href={sbj.lnk}
                                                target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
-                                                className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt border-slate-500 border-dashed ' +
+                                                className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ' +
                                                     (sbj.hrd ? 'font-bold border-b-2 text-center' : 'text-left')}>{sbj.ttl}</p>
                                             </a>
                                             {(sbj.sup.length > 0) ? (
-                                                <div className='absolute bg-prim dark:bg-drkp top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden
+                                                <div className='absolute bg-prim dark:bg-drkts top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden
                                                         outline group-hover/sub:outline-secd dark:group-hover/sub:outline-drks hover:max-h-[90vh] outline-transparent
                                                         outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
                                                     {sbj.sup.map((spj, i, {length}) => (
@@ -292,7 +292,7 @@ const Head = () => {
                         ))}
                     </div>
                 </div>
-                <div className='hidden lg:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkt
+                <div className='hidden lg:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkts
                         gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
                         {hdrs.map((hdr, index) => {
                             const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
@@ -324,7 +324,7 @@ const Head = () => {
                                                     group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
                                                     right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
                                                     group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                                    duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkp`}>
+                                                    duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkts`}>
                                         {hdr.sub.map((subItem, i) => (
                                             <a
                                                 key={i}
@@ -336,7 +336,7 @@ const Head = () => {
                                                             ${location.pathname === subItem.lnk ? 'text-brwn font-semibold' : ''}`}
                                                 target='_blank'
                                             >
-                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt'>{subItem.ttl}</p>
+                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts'>{subItem.ttl}</p>
                                             </a>
                                         ))}
                                     </div>
@@ -347,7 +347,7 @@ const Head = () => {
                         {/* Payment Button */}
                         <button 
                             onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
-                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white !dark:text-black dark:bg-drka px-2">
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
                             Fees Payment
                         </button>
 
@@ -357,7 +357,7 @@ const Head = () => {
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}
                                         className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
-                                                    dark:invert mt-1 text-transparent"
+                                                    mt-1 text-transparent"
                                         style={{ animationDelay: `${i * 1.9}s` }} />
                                 </a>
                             ))}

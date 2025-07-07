@@ -22,8 +22,8 @@ const Banner = ({ backgroundImage, headerText, subHeaderText, toggle, theme }) =
           ></motion.div>
 
           {/* Overlay */}
-          <div className="banner-overlay z-[500] right-1 pt-[1.25em] lg:pt-0">
-              {/* <Toggle attr="float-right lg:-top-[0%] mr-24" toggle={toggle} theme={theme} /> */}
+          <div className="banner-overlay z-[500] right-1 pt-[1.25em] lg:pt-4">
+              <Toggle attr="float-right lg:-top-[0%] mr-24" toggle={toggle} theme={theme} />
           </div>
 
           {/* Content with unique layout */}

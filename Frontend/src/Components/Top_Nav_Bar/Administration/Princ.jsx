@@ -78,18 +78,12 @@ const Princ = ({theme, toggle}) => {
           <div className="flex flex-col md:flex md:justify-center lg:flex-row-reverse items-center lg:items-start">
             {/* Image on the right for large screens, centered for tablets */}
             <div className="lg:max-w-sm lg:ml-6 flex-shrink-0 mx-auto">
-            <div className="relative max-h-[25vh] lg:max-h-[45vh] w-auto flex justify-center items-center">
-            {/* Loading Spinner */}
-            {isLoading && !hasError && (
-                <div className="fixed inset-0 flex justify-center items-center bg-gray-100/50">
-                  <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-            )}
+            <div className="relative max-h-[30vh] lg:max-h-[50vh] w-auto flex justify-center items-center">
 
             {/* Image */}
             {!hasError ? (
                 <img
-                    className={`max-h-[25vh] lg:max-h-[45vh] w-auto rounded-xl transition-opacity duration-500 
+                    className={`h-[25vh] lg:h-[45vh] w-auto rounded-xl transition-opacity duration-500 
                                 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                     src={UrlParser(data?.photo_path)}
                     alt="Principal"
@@ -113,7 +107,7 @@ const Princ = ({theme, toggle}) => {
 <br />
             {/* Text Content Wrapped Around */}
             <div className="text-justify leading-relaxed max-w-[95%] lg:max-w-[60%] mx-auto">
-              <p className="text-lg lg:text-[24px] font-bold mb-3 font-poppins text-[#800000] inline-block border-b-2 border-[#FDCC03] pb-1">
+              <p className="text-lg lg:text-[24px] font-bold mb-3 font-poppins text-brwn dark:text-prim inline-block border-b-2 border-[#FDCC03] dark:border-drks pb-1">
                 From the Principal's Desk
               </p>
               <q className="text-md lg:text-[16px] font-poppins block">{data?.message}</q>

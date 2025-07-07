@@ -41,7 +41,6 @@
 
 /* Table Content */
 .placement-percent td {
-  background-color: white;
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -49,12 +48,10 @@
 
 /* Year-wise Container */
 .placement-yearwise {
-  border: 2px solid black;
   width: 94%;
   position: relative;
   left: 3%;
   padding: 2rem 1rem 1rem 1rem;
-  background-color: rgb(255, 255, 255);
   border-radius: 8px;
   margin-top: 2rem;
   text-align: center;
@@ -83,7 +80,6 @@
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease-in-out;
-  background: linear-gradient(45deg, #ffed4d, #ffc107);
   display: inline-block;
   text-align: center;
   min-width: 150px; /* Ensures buttons are the same size */
@@ -195,12 +191,11 @@
   padding: 10px 20px;
 }
 
-.section-title {
+.place-section-title {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
-  color: #800000;
   padding: 10px 0;
 }
 

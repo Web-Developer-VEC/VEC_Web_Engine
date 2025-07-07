@@ -9,7 +9,7 @@ import LoadComp from "../../LoadComp";
 
 const CourseCard = ({ course, onClick }) => (
   <motion.div
-    className="course-card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2 hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
+    className="syllabi-course-card w-full dark:bg-drkts sm:w-1/2 md:w-1/3 lg:w-1/4 p-2 hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_70%)]
       dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)] rounded-xl"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}

@@ -47,10 +47,10 @@ const Collegevisionmission = ({ theme, toggle }) => {
             <div className={styles.visionMissionContainer}>
                 {/* Vision Section (Left) and Photo (Rightmost) */}
                 <div className={styles.visionWrapper}>
-                    <div className={`${styles.visionCard} ${styles.card}`}>
+                    <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
                         <div className={styles.cardHeader}>
                             {/* <Eye size={24} className="text-white me-2" /> */}
-                            <h2 className={styles.cardTitle}>Institute Vision</h2>
+                            <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Vision</h2>
                         </div>
                         <p className={styles.cardContent}>
                             To educate the student community both by theory and practice to fit in with society and to conquer tomorrow’s technology at a global level with human values through our dedicated team.
@@ -63,12 +63,12 @@ const Collegevisionmission = ({ theme, toggle }) => {
 
                 {/* Mission Section (Centered below Vision, increased width) */}
                 <div className={styles.missionWrapper}>
-                    <div className={`${styles.missionCard} ${styles.card}`}>
+                    <div className={`${styles.missionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
                         <div className={styles.cardHeader}>
                             {/* <Target size={24} className="text-white me-2" /> */}
-                            <h2 className={styles.cardTitle}>Institute Mission</h2>
+                            <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Mission</h2>
                         </div>
-                        <p className={styles.cardContent}>
+                        <p className={`${styles.cardContent} text-text dark:text-drkt`}>
                             To provide world-class education in engineering, technology, and management, to foster research & development, to encourage creativity and promote innovation, to build leadership, intrapreneurship, and entrepreneurship and to nurture teamwork and achieve stakeholders’ delight.
                         </p>
                     </div>

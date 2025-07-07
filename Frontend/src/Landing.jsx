@@ -115,7 +115,7 @@ const LandingPage = ({theme, load, toggle}) => {
             <div className='w-max max-w-[100vw] h-fit absolute z-50'>
                 <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
                     <Abt/>
-                    <Announce/>
+                    {/* <Announce/> */}
                     <Event/>
                 </div>
                 <Tracker/>

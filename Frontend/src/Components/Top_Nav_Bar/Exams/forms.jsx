@@ -86,11 +86,11 @@ if (!isOnline) {
 
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
-      <div key={index} className="resource-item">
+      <div key={index} className="resource-item dark:bg-drkts">
         <center>
-          <div className="form-content">
-            <div className="form-regulation bg-[#f8f9fa">
-              <span className="form-regulation-title">{resource.name}</span>
+          <div className="form-content dark:bg-drkts">
+            <div className="form-regulation bg-[#f8f9fa] dark:bg-black">
+              <span className="text-text dark:text-drkt">{resource.name}</span>
               <div className="form-buttons">
                 <button
                   className="form-button view-button bg-secd text-text dark:bg-drks dark:text-drkt
@@ -133,22 +133,22 @@ if (!isOnline) {
         <LoadComp txt={""} />
       </div>
     ) : (
-      <div className="tails-container">
-  <div className="tail student-tail" ref={studentTailRef}>
-  <div className="tail-content flex flex-col h-full">
-    <h2 className="font-bold mb-2">Student Resources</h2>
-    <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full">
-      {renderResourceLinks(studentResources)}
-    </div>
-  </div>
+      <div className="tails-container ">
+        <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
+          <div className="tail-content flex flex-col h-full">
+            <h2 className="font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
+            <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full dark:bg-drkts">
+              {renderResourceLinks(studentResources)}
+            </div>
+          </div>
         </div>
 
-        <div className="tail faculty-tail">
+        <div className="tail faculty-tail dark:bg-black">
           <div className="tail-content flex flex-col h-full relative">
             <h2 className="font-bold mb-2  z-10 sticky top-0 block sm:static">
               Faculty Resources
             </h2>
-            <div className="download-links-container overflow-y-auto overflow-x-hidden">
+            <div className="download-links-container overflow-y-auto overflow-x-hidden dark:bg-drkts">
               {renderResourceLinks(facultyResources)}
             </div>
           </div>

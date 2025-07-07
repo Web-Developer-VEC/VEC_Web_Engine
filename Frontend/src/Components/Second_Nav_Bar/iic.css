@@ -60,17 +60,6 @@
     width: 100%; 
   }
 
-  .naac-info-panel {
-    /*background: #e8f4fc;*/
-     border-left: 5px solid #f4a900;
-  }
-
-  .iqac-info-panel {
-    /*background: #fcf3e8;*/
-    /*border-left: 5px solid #e67e22;*/
-    border-left:5px solid  #f4a900;
-  }
-
   /* Update the functions-info-panel class */
   .functions-info-panel {
     align-items: center;
@@ -262,9 +251,9 @@
     border-radius: 4px;
   }
 
-  .faculty-icc::-webkit-scrollbar-thumb:hover {
+  /* .faculty-icc::-webkit-scrollbar-thumb:hover { */
     /*background: #fdb347;*/
-  }
+  /* } */
 
   .nir-container {
     display: flex;
@@ -359,6 +348,7 @@
     height: 11rem;
     gap: 2rem;
     max-width: 100%; 
+    margin-bottom: 25px;
   }
 
    .iic-left,
@@ -406,7 +396,7 @@
 
   .members-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     padding: 1rem;
   }
@@ -457,14 +447,14 @@
 .carousel-button {
   padding: 0.5rem 1rem;
   font-size: 23px;
-  border: 2px solid var(--accent-color);
+  /* border: 2px solid var(--accent-color); */
   border-radius: 0.5rem;
   background: transparent;
   color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
+/* 
 .carousel-button:hover {
   background: var(--accent-color);
   color: var(--primary-color);
@@ -478,7 +468,7 @@
 .carousel-button.active {
   background: var(--accent-color);
   color: var(--primary-color);
-}
+} */
 
 .nirf-action-button{
     font-size: 16px;
@@ -814,7 +804,6 @@
   }
 }
 .naac-about{
-      border-bottom: 2px solid #FDCC03;
       display: inline-block;
       padding-bottom: 5px;
 }
@@ -822,14 +811,11 @@
   margin-top: 50px;
 }
 .iic-establishment{
-  color: #800000;
-  border-bottom: 2px solid #FDCC03;
   display: inline-block;
   margin-bottom: 10px;
 }
 .iic-eco
 {
-  color: #800000;
   margin-bottom: 10px;
 }
 .mb-10{
@@ -840,8 +826,7 @@
   justify-content: space-evenly; 
   align-items: center;
   width: 100%;
-  padding: 10px 0;
-  background-color: white; 
+  padding: 10px 0; 
   flex-wrap: wrap;
   box-sizing: border-box;
 }

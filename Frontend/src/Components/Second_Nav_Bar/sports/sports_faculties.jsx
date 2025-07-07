@@ -19,7 +19,7 @@ const Sportsfaculties = ({ data }) => {
 
   return (
     <div className={styles.app}>
-      <h2 style={{ color: '#800000' ,marginTop:'30px',marginBottom:'30px'}} >Faculties</h2>
+      <h2 style={{marginTop:'30px',marginBottom:'30px'}} className='text-brwn dark:text-drkt' >Faculties</h2>
       <div className={styles.imagegallery} >
         {data?.name?.map((name, index) => (
           <Image
@@ -48,11 +48,11 @@ const SportsHOD = ( { data } ) => {
         <br />
         <div className='SportsHOD-details'>
         <div className='SportsHODNameAndqualification text-2xl font-semibolt'>
-        <h2 className='SportsHODName'>{data?.name} {data?.qualification} </h2>
+        <h2 className='SportsHODName'>{data?.name} <span className='text-brwn dark:text-drka'>{data?.qualification}</span> </h2>
         
         </div>
           
-          <h2 className='SportsHODDes'>{data?.designation}</h2>
+          <h2 className='SportsHODDes text-brwn dark:text-drka'>{data?.designation}</h2>
 
           <br />
 

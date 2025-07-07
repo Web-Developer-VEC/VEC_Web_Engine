@@ -58,8 +58,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 25px;
   text-align: left;
-  background-color: #ffffff;
-  border-left: 4px solid #ffcc00; /* Yellow left border */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -70,8 +68,6 @@
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 600;
-  color: rgb(128, 0, 0);
-  border-bottom: 3px solid #ffcc00;
   padding-bottom: 3px;
   width: fit-content;
 }
@@ -80,7 +76,6 @@
 .AP-card-text {
   line-height: 1.7;
   font-size: 16px;
-  color: #444;
   text-align: justify;
 }
 
@@ -96,7 +91,6 @@
 
   .AP-card {
     padding: 20px;
-    border-left: 4px solid #ffcc00; /* Slightly thinner border on smaller screens */
   }
 
   .AP-card-title {
@@ -122,7 +116,6 @@
 
   .AP-card {
     padding: 18px;
-    border-left: 4px solid #ffcc00;
   }
 
   .AP-card-title {
@@ -145,7 +138,6 @@
 
   .AP-card {
     padding: 15px;
-    border-left: 3px solid #ffcc00; /* Even thinner border for very small screens */
     
   }
 

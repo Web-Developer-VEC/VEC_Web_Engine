@@ -116,7 +116,7 @@ const facilities = [
 ];
 
 
-export default function OtherFacilities() {
+export default function OtherFacilities({ theme, toggle}) {
   const [activeTab, setActiveTab] = useState(facilities[0].name);
   const [imageIndex, setImageIndex] = useState(0);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -162,18 +162,19 @@ if (!isOnline) {
 
     <> 
     <Banner
+      toggle={toggle} theme={theme}
       backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
       headerText="OTHER FACILITES"
       subHeaderText="Fostering excellence in social service and community well-being."
     />
-    <div className="facilities-container">
+    <div className="facilities-container bg-prim dark:bg-drkp">
 
       {/* Tabs */}
       <div className="tabs-container">
         {facilities.map((facility) => (
           <button
             key={facility.name}
-            className={`tab-button ${activeTab === facility.name ? "active-tab" : ""}`}
+            className={`tab-button ${activeTab === facility.name ? "active-tab" : ""} bg-secd dark:bg-drks text-text`}
             onClick={() => {
               setActiveTab(facility.name);
               setImageIndex(0); // Reset image index when switching tabs
@@ -187,9 +188,9 @@ if (!isOnline) {
       {/* Content Section */}
       <div className="content-container">
         {currentFacility.img_name.length > 1 ? (
-          <h2 className="current-facility">{currentFacility.img_name[imageIndex]}</h2>
+          <h2 className="current-facility text-brwn dark:text-drkt">{currentFacility.img_name[imageIndex]}</h2>
         ) : (
-        <h2 className="current-facility">{currentFacility.img_name}</h2>
+        <h2 className="current-facility text-brwn dark:text-drkt">{currentFacility.img_name}</h2>
         )}
         {currentFacility.content.length > 1 ? (
           <p>{currentFacility.content[imageIndex]}</p>

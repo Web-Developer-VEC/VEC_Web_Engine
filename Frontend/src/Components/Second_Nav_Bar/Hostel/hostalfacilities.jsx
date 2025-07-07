@@ -52,7 +52,7 @@ export default function HostelFacilities() {
   
   return (
     <div className="facility">
-      <h2 className="hostel-head">Our Facilities</h2>
+      <h2 className="hostel-head text-brwn dark:text-drkt">Our Facilities</h2>
       <div className="facilities-wrapper">
         <div className="hostal-fac-container">
           {facilities.map((facility) => (

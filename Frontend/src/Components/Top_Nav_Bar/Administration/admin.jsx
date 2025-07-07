@@ -13,11 +13,11 @@ const Card = ({ image, name, designation }) => {
   return (
     <div className="admin-card border-2 border-secd dark:border-drks relative flex flex-col items-center p-4">
       {/* Loading Spinner */}
-      {isLoading && !hasError && (
+      {/* {isLoading && !hasError && (
         <div className="absolute inset-0 flex justify-center items-center bg-gray-100 dark:bg-gray-800">
           <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
-      )}
+      )} */}
 
       {!hasError ? (
         <img
@@ -36,8 +36,8 @@ const Card = ({ image, name, designation }) => {
         <div className="text-red-500">Failed to load image</div>
       )}
 
-      <h3 className="admin-card-name text-accn dark:text-drka mt-2 font-poppins text-[#000000]">{name}</h3>
-      <p className="admin-card-designation text-gray-600 dark:text-gray-300">{designation}</p>
+      <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-poppins text-[#000000]">{name}</h3>
+      <p className="admin-card-designation text-gray-600 dark:text-drka">{designation}</p>
     </div>
   );
 };
@@ -49,11 +49,11 @@ const AdminCard = ({ image, name, designation }) => {
   return (
     <div className="admin-card-ao border-2 border-secd dark:border-drks relative flex p-4">
       {/* Loading Spinner */}
-      {isLoading && !hasError && (
+      {/* {isLoading && !hasError && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-100/50">
         <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
-      )}
+      )} */}
 
       {!hasError ? (
         <img
@@ -73,8 +73,8 @@ const AdminCard = ({ image, name, designation }) => {
       )}
 
       <div className="admin-text-content ml-4">
-        <h3 className="admin-card-name text-accn dark:text-drka font-poppins text-[#000000]">{name}</h3>
-        <p className="admin-card-designation text-gray-600 dark:text-gray-300">{designation}</p>
+        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins text-[#000000]">{name}</h3>
+        <p className="admin-card-designation text-gray-600 dark:text-drka">{designation}</p>
       </div>
     </div>
   );

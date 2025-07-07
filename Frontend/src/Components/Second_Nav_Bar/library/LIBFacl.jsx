@@ -35,12 +35,12 @@ const LIBFacl = () => {
       {faculty ? (
 
     <div className="py-16 px-6">
-      <h2 className="text-4xl font-bold text-accn dark:text-drka mb-4 text-center">
+      <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-4 text-center">
         Faculty & Staff
       </h2>
 
       {faculty.description && (
-        <div className="lg:text-center text-justify text-lg text-gray-600 w-5xl mx-auto mb-10">
+        <div className="lg:text-center text-justify text-lg text-text dark:text-drkt w-5xl mx-auto mb-10">
           {faculty.description}
         </div>
       )}
@@ -71,7 +71,7 @@ const LIBFacl = () => {
 
             <div className="p-6 text-center">
               <h3 className="text-2xl font-bold">{name}</h3>
-              <p className="mt-2">{faculty?.educational_qualification[index]}</p>
+              <p className="mt-2 text-brwn dark:text-drka">{faculty?.educational_qualification[index]}</p>
               <p className="text-accn dark:text-drka font-semibold mt-2">
                 {faculty?.designation[index]}
               </p>

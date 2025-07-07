@@ -18,13 +18,11 @@ body {
   /* Section Titles */
   .section-title {
     font-size: 40px;
-    /*color: #FFD700;*/
     margin-bottom: 20px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
-    color:#800000
   }
   
   /* Introduction Section */
@@ -36,7 +34,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
     animation: fadeInUp 1s ease-in-out;
-    border-left: 5px solid #fdb515;
+    /* border-left: 5px solid #fdb515; */
   }
   
   .intro-text {
@@ -59,7 +57,6 @@ body {
     padding: 40px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
-    border-left: 5px solid #fdb515;
   }
   
   .vision-mission-text {

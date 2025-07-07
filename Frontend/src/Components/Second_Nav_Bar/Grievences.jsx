@@ -94,33 +94,33 @@ const GrievanceForm = ({ theme, toggle }) => {
       </div>
 
       <div className="flex justify-center p-6">
-        <div className="bg-white p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit">
-          <h2 className="text-[20px] font-bold text-[#800000]">Query/Grievances</h2>
-          <p className="text-[16px] text-gray-700">Please fill the form.</p>
+        <div className="bg-prim dark:bg-drkts p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit">
+          <h2 className="text-[20px] font-bold text-[#800000] dark:text-drkt">Query/Grievances</h2>
+          <p className="text-[16px] text-prim dark:text-drkt">Please fill the form.</p>
 
           <form className="mt-2 space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
                 placeholder="Name"
-                className="p-2 border border-gray-300 rounded w-full"
+                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
               />
               <input
                 type="text"
                 placeholder="Contact Number"
-                className="p-2 border border-gray-300 rounded w-full"
+                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
               />
             </div>
             <input
               type="email"
               placeholder="Email Id"
-              className="p-2 border border-gray-300 rounded w-full"
+              className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <select className="p-2 border border-gray-300 rounded w-full">
+              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full">
                 <option>-- Query about --</option>
                 <option>Admission</option>
                 <option>Hostel</option>
@@ -128,7 +128,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                 <option>Controller of examination</option>
                 <option>Others</option>
               </select>
-              <select className="p-2 border border-gray-300 rounded w-full">
+              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full">
                 <option>-- Select Category --</option>
                 <option>Alumni</option>
                 <option>Student</option>
@@ -139,20 +139,20 @@ const GrievanceForm = ({ theme, toggle }) => {
             </div>
             <textarea
               placeholder="Query/Grievences"
-              className="p-2 border border-gray-300 rounded w-full"
+              className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
               rows="3"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
             ></textarea>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-2 bg-gray-200 text-center text-lg font-bold text-[#800000] rounded">
+              <div className="p-2 bg-gray-200 dark:bg-gray-300 text-center text-lg font-bold text-[#800000] rounded">
                 {captcha}
               </div>
               <input
                 type="text"
                 placeholder="Enter the Captcha"
-                className="p-2 border border-gray-300 rounded w-full"
+                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
                 value={userCaptcha}
                 onChange={(e) => setUserCaptcha(e.target.value)}
                 required
@@ -167,7 +167,7 @@ const GrievanceForm = ({ theme, toggle }) => {
 
       {/* Grievance Table */}
       <div className="p-6">
-        <h2 className="text-center text-xl font-bold text-[#800000] mb-4">Grievance Contact Levels</h2>
+        <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">Grievance Contact Levels</h2>
         <div className="overflow-x-auto">
           <table className="w-full border border-gray-300 text-center">
             <thead className="bg-[#808080] text-white">
@@ -186,7 +186,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                 <td colSpan="5" className="p-2 border">
 Administrative Officer: Dr. V. Jeyabalraja <br></br>Professor, Department of Computer Science and Engineering , ph: 9444464865<br></br> 
 
-<a href="grievance@velammal.edu.in">Email ID: grievence@velammal.edu.in </a>, Online Help desk :<a href="www.velammal.edu.in"> www.velammal.edu.in </a>
+<a href="grievance@velammal.edu.in" className="dark:text-drka">Email ID: grievence@velammal.edu.in </a>, Online Help desk :<a href="www.velammal.edu.in" className="dark:text-drka"> www.velammal.edu.in </a>
 </td>
               </tr>
               <tr>

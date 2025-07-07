@@ -2,7 +2,6 @@
   border-radius: 30px;
   transition: box-shadow 0.3s ease-in-out;
   margin-bottom: 30px;
-  border-left: 5px solid #fdb515;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -31,7 +30,6 @@
     text-align: center;
   }
   .fade-in{
-    color: #800000;
     font-weight: bolder;
   }
   

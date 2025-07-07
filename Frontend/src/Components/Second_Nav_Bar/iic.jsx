@@ -1,15 +1,15 @@
 import {TfiControlBackward, TfiControlForward, TfiControlPause, TfiControlPlay} from "react-icons/tfi";
-import {useEffect, useState, useRef} from "react"
+import {useEffect, useState, useRef, act} from "react"
 import axios from "axios"
 import "./iic.css"
 import Banner from "../Banner"
 import SideNav from "./SideNav";
 
 function IicHome() {
-    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks iic-box">
-        <h1 className="text-accn text-[32px]">Home</h1>
-        <h2 className="text-[24px] naac-about">About IIC</h2>
-        <p>
+    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+        <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
+        <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">About IIC</h2>
+        <p className="text-text dark:text-drkt">
             The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The
             primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with
@@ -24,9 +24,9 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
-        <h1 className="text-accn text-4xl ">Establishment of IIC</h1>
-        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px] iic-establishment">Major Focus of IIC</h2>
+        <h1 className="text-brwn dark:text-drkt text-4xl ">Establishment of IIC</h1>
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h2 className="text-[30px] iic-establishment text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
             <p>
                 <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
                 prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
@@ -36,16 +36,16 @@ function IicEst() {
             </p>
         </div>
 
-        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px] iic-establishment">Vision</h2>
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h2 className="text-[30px] iic-establishment text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
             <p>
                 To facilitate a conducive environment with the intention of making an innovation to reach the society or
                 industries for the betterment of our country and its citizen through entrepreneurial assets.
             </p>
         </div>
 
-        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px] iic-establishment">Mission</h2>
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h2 className="text-[30px] iic-establishment text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Mission</h2>
             <p>
                 To enable student and faculty to establish a start-up to market their innovative products; an enhanced
                 coordination and priority setting across the start-up eco-system; an improved customizable strategy and
@@ -57,35 +57,35 @@ function IicEst() {
 }
 
 function IicExp() {
-    return (        <h1 className="text-accn text-4xl">Expert Representative</h1>
+    return (        <h1 className="text-brwn dark:text-drkt text-4xl mt-2">Expert Representative</h1>
 );
 }
 
 function IicRep() {
     return (
-        <h1 className="text-accn text-4xl">Student Representative</h1>
+        <h1 className="text-brwn dark:text-drkt text-4xl mt-2">Student Representative</h1>
     );
 }
 
 function IicFir() {
-    return (<h1 className="text-accn text-4xl">IIC 1.0</h1>
+    return (<h1 className="text-brwn dark:text-drkt text-4xl mt-2">IIC 1.0</h1>
     );
 }
 
 function IicSec() {
-    return (<h1 className="text-accn text-4xl">IIC 2.0</h1>
+    return (<h1 className="text-brwn dark:text-drkt text-4xl mt-2">IIC 2.0</h1>
     );
 }
 
 function IicThd() {
-    return (<h1 className="text-accn text-4xl">IIC 3.0</h1>
+    return (<h1 className="text-brwn dark:text-drkt text-4xl mt-2">IIC 3.0</h1>
     );
 }
 
 function IicEco() {
     return (<div className="mb-10">
-        <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks">
-            <h1 className="text-accn text-4xl">I & E Ecosystem</h1>
+        <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
             <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
             <p>
                 <br/>• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC
@@ -108,7 +108,7 @@ function IicEco() {
 
 function IicCon() {
     return (
-        <h1 className="text-accn text-4xl">Contacts</h1>
+        <h1 className="text-accn dark:text-drkt mt-2 text-4xl">Contacts</h1>
     );
 }
 
@@ -379,7 +379,7 @@ const Iic = ({toggle, theme}) => {
                         <div className="nir-buttons">
                             {section.buttons.map((button, btnIndex) => (
                                 <div key={btnIndex} className="iic-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
-                  dark:hover:bg-drka rounded-xl border-2 border-accn dark:border-drka">
+                  dark:hover:bg-brwn rounded-xl border-2 border-accn dark:border-drka">
                                     {button.text}
                                 </div>
                             ))}
@@ -399,7 +399,7 @@ const Iic = ({toggle, theme}) => {
                     if (isPlaying) intervalRef.current = loop(); // Resume auto-scroll only if playing
                 }}
             >
-                <h1 className="text-accn text-4xl">Calender</h1>
+                <h1 className="text-accn dark:text-drkt text-4xl">Calender</h1>
                 <h3 className="iic-faici">Facilities And Infrastructure</h3>
                 <div className="gallery">
                     <div className="left iic-left">
@@ -438,9 +438,9 @@ const Iic = ({toggle, theme}) => {
 
     function IicGal() {
         return (<div className="carousel-controls">
-                <h1 className="text-accn text-4xl">Gallery</h1>
+                <h1 className="text-accn dark:text-drkt text-4xl">Gallery</h1>
                 <button
-                    className={`carousel-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
+                    className={`carousel-button bg-secd dark:text-prim dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
                     onClick={movePrev}
                 >
                     <TfiControlBackward/>
@@ -452,7 +452,7 @@ const Iic = ({toggle, theme}) => {
                 {isPlaying ? <TfiControlPause /> : <TfiControlPlay />}
               </button> */}
                 <button
-                    className={`carousel-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
+                    className={`carousel-button bg-secd dark:bg-drks dark:text-prim hover:bg-accn hover:text-prim dark:hover:bg-drka`}
                     onClick={moveNext}
                 >
                     <TfiControlForward/>
@@ -461,16 +461,18 @@ const Iic = ({toggle, theme}) => {
         );
     }
 
+    const [selected , setSelected] = useState(null);
+
     function IicFac() {
         return (<div className="nirf-content">
-            <h1 className="text-accn text-4xl">Faculty</h1>
+            <h1 className="text-accn dark:text-drkt text-4xl">Faculty</h1>
             <div className="nirf-years">
                 {["Certificate", "Events Organized", "Policy", "Members", "NIR", "Other Stuffs"].map((category) => (
                     <button
                         key={category}
-                        className={`nirf-year-button ${selectedYear === category ? "active bg-accn dark:bg-drka text-prim"
+                        className={`nirf-year-button ${selectedYear === category ? "active bg-accn text-prim"
                             : "bg-secd dark:bg-drks text-[2px]"}`}
-                        onClick={() => handleYearClick(category)}
+                        onClick={() => {handleYearClick(category); setSelected(null)}}
                     >
                         {category}
                     </button>
@@ -485,8 +487,9 @@ const Iic = ({toggle, theme}) => {
                     <div className="nirf-year-actions faculty-icc">
                         {selectedYear === "Certificate" &&
                             certificateArray.map((action, index) => (
-                                <div key={index} className=" text-[10px] nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
-                    dark:hover:bg-drka" onClick={() => openPdf("Certificate", action.year)}>
+                                <div key={index} className={`text-[10px] nirf-action-button  ${selected == action.year ? 
+                                    "active bg-accn text-prim" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim"
+                                }`} onClick={() => {openPdf("Certificate", action.year); setSelected(action.year)}}>
                                     {action.year}
                                 </div>
                             ))}
@@ -494,8 +497,10 @@ const Iic = ({toggle, theme}) => {
                             eventsOrganizedArray.map((action, index) => (
                                 <div
                                     key={index}
-                                    className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                                    onClick={() => openPdf("Events Organized", action.year)}
+                                    className={`text-[10px] nirf-action-button  ${selected == action.year ? 
+                                    "active bg-accn text-prim" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim"
+                                }`}
+                                    onClick={() => {openPdf("Events Organized", action.year); setSelected(action.year)}}
                                 >
                                     {action.year}
                                 </div>
@@ -503,8 +508,10 @@ const Iic = ({toggle, theme}) => {
                         {selectedYear === "Policy" &&
                             policyArray.map((action, index) => (
                                 <div key={index}
-                                     className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                                     onClick={() => openPdf("Policy", action.year)}>
+                                     className={`text-[10px] nirf-action-button  ${selected == action.year ? 
+                                    "active bg-accn text-prim" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim"
+                                }`}
+                                     onClick={() => {openPdf("Policy", action.year); setSelected(action.year)}}>
                                     {action.year}
                                 </div>
                             ))}
@@ -514,9 +521,9 @@ const Iic = ({toggle, theme}) => {
                                     <div key={index} className="members dark:bg-drkp">
                                         <img src={member.image || "/placeholder.svg"} alt={member.name}
                                              className="member-image"/>
-                                        <p className="text-secd dark:text-drks">{member.name}</p>
-                                        <h6>{member.designation}</h6>
-                                        <p>{member.keyRole}</p>
+                                        <p className="text-text dark:text-drkt">{member.name}</p>
+                                        <h6 className="text-brwn dark:text-drka">{member.designation}</h6>
+                                        <p className="text-brwn dark:text-drka">{member.keyRole}</p>
                                     </div>
                                 ))}
                             </div>
@@ -524,8 +531,10 @@ const Iic = ({toggle, theme}) => {
                         {selectedYear === "Other Stuffs" &&
                             otherStuffsArray.map((action, index) => (
                                 <div key={index}
-                                     className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                                     onClick={() => openPdf("Other Stuffs", action.year)}>
+                                     className={`text-[10px] nirf-action-button  ${selected == action.year ? 
+                                    "active bg-accn text-prim" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim"
+                                }`}
+                                     onClick={() => {openPdf("Other Stuffs", action.year); setSelected(action.year)}}>
                                     {action.year}
                                 </div>
                             ))}

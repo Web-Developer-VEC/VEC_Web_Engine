@@ -38,7 +38,6 @@ body {
   letter-spacing: 2px;
   /*background: linear-gradient(90deg, #ff8c00, #ffa500);*/
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Year Buttons */
@@ -88,7 +87,6 @@ body {
   justify-content: center;
   padding: 25px;
   border-radius: 20px;
-  background: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
   text-align: center;
@@ -123,7 +121,6 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f0f0f0;
   color: #333;
   border: none;
   border-radius: 5px;
@@ -135,7 +132,6 @@ body {
 }
 
 .RD-back-button:hover {
-  background-color: #e0e0e0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 

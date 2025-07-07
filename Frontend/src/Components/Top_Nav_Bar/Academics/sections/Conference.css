@@ -27,14 +27,13 @@
 }
 
 /* Individual Card */
-.card {
+.conf-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background: #fff;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   word-wrap: break-word;
@@ -44,7 +43,7 @@
 }
 
 /* Ensures cards expand properly */
-.card.expanded {
+.conf-card.expanded {
   height: auto;
   overflow: visible;
 }
@@ -58,7 +57,6 @@
 .card-title {
   font-size: 18px;
   font-weight: bold;
-  color: #333;
   text-transform: uppercase;
 }
 
@@ -111,7 +109,6 @@
   margin-top: auto; /* Keeps button at the bottom */
   padding: 10px;
   width: 100%;
-  background-color: #ffc107;
   border: none;
   cursor: pointer;
   font-weight: bold;
@@ -120,16 +117,12 @@
   transition: background 0.3s ease-in-out;
 }
 
-.view-more-btn:hover {
-  background-color: #e0a800;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .cards-grid {
     flex-direction: column; /* Stacks cards on small screens */
   }
-  .card {
+  .conf-card {
     width: 100%;
   }
 }

@@ -83,19 +83,48 @@ const Research = ({ data }) => {
     {data?.data ? (
       <div className="Rd-page">
         <div className="RD-intro">
-          <h1 className="RD-header bg-gradient-to-r
-          from-accn to-[color-mix(in_srgb,theme(colors.accn)_50%,black)]
-          dark:from-drka dark:to-[color-mix(in_srgb,theme(colors.drka)_50%,black)]">RESEARCH DATA</h1>
+          <h1 className="RD-header text-brwn dark:text-drkt">RESEARCH DATA</h1>
         </div>
 
         {selectedAction ? (
           // Show selected component only
-          <div className="RD-action-content">
-            <button className="RD-back-button" onClick={handleBack}>
-              <FontAwesomeIcon icon={faArrowLeft} /> Back
-            </button>
-            <Conference data={selectedActionData} action={selectedAction} />
-          </div>
+          <>
+            <div className="RD-years-horizontal">
+              {years?.map((year) => (
+                <button
+                  key={year}
+                  className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-brwn" 
+                      : "bg-secd text-text dark:bg-drks"}`}
+                  onClick={() => handleYearClick(year)}
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+
+            <div className="RD-content">
+              <div className="RD-details">
+                <div className="RD-year-actions">
+                  {availableActions.map((action) => (
+                    <div
+                      key={action}
+                      className={`RD-action-button ${selectedAction === action ? "active" : ""}`}
+                      onClick={() => handleActionClick(action)}
+                    >
+                      <FontAwesomeIcon icon={actionIcons[action.replace(/[_-]/g,'')]} style={{ marginRight: "10px" }} />
+                      {action.replace(/_/g, " ")}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </>
+          // <div className="RD-action-content">
+          //   <button className="RD-back-button bg-secd dark:bg-drks hover:bg-brwn hover:text-drkt" onClick={handleBack}>
+          //     <FontAwesomeIcon icon={faArrowLeft} /> Back
+          //   </button>
+          //   <Conference data={selectedActionData} action={selectedAction} />
+          // </div>
         ) : (
           // Show year and action selection
           <>
@@ -103,7 +132,7 @@ const Research = ({ data }) => {
               {years?.map((year) => (
                 <button
                   key={year}
-                  className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-drka" 
+                  className={`RD-year-button ${selectedYear === year ? "active bg-accn text-prim dark:bg-brwn" 
                       : "bg-secd text-text dark:bg-drks"}`}
                   onClick={() => handleYearClick(year)}
                 >

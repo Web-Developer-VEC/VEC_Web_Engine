@@ -6,7 +6,6 @@
 .mou-header h1 {
   text-align: center;
   font-size: 2rem;
-  color: #333;
 }
 
 .mou-details {
@@ -33,14 +32,6 @@
 .mou-table th {
   background-color: #808080;
   color: white;
-}
-
-.mou-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.mou-table tr:hover {
-  background-color: #f1f1f1;
 }
 
 .mou-pdf-link {

@@ -21,12 +21,12 @@ const ZonalResults = ({ data }) => {
 
   return (
     <div className="container3 mx-auto p-4 mb-6">
-      <h1 className="text-3xl sm:text-4xl font-bold text-accn text-center mb-4 sm:mb-6">
+      <h1 className="text-3xl sm:text-4xl font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
         Zonal Results 2024-2025
       </h1>
 
       {/* Desktop/Laptop View */}
-      <div className="hidden sm:block overflow-x-auto bg-white shadow-md rounded-lg">
+      <div className="hidden sm:block overflow-x-auto shadow-md rounded-lg">
         <table className="min-w-full table-auto text-sm sm:text-base">
           <thead>
             <tr className="bg-gray-200">
@@ -73,7 +73,7 @@ const ZonalResults = ({ data }) => {
         </table>
       </div>
       {/* Mobile View */}
-      <div className="sm:hidden bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="sm:hidden shadow-md rounded-lg overflow-hidden">
         <table className="w-full text-xs sm:text-base">
           <thead>
             <tr className="bg-gray-200">

@@ -332,7 +332,6 @@
   .coordinator-card{
     width: 300px; /* Adjust as needed */
     padding: 16px;
-    background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
@@ -384,12 +383,10 @@
 }
 
 .objectives-card {
-  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s ease;
-  border-left: 4px solid #FDCC03;  
 }
 
 .objectives-card:hover {
@@ -397,18 +394,13 @@
 }
 
 .objectives-heading {
-  color: #800000;
   font-size: 24px;
   margin-bottom: 15px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #FDCC03;
   display: inline-block;
-
 }
 
 .objectives-text {
   line-height: 1.6;
-  color: #333;
 }
 
 .objectives-list {
@@ -419,7 +411,6 @@
 .objectives-item {
   margin-bottom: 10px;
   line-height: 1.5;
-  color: #333;
 }
 
 /* Coordinator Section Styles */
@@ -431,7 +422,6 @@
 
 .coordinator-card {
   display: flex;
-  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -462,20 +452,17 @@
 .coordinator-name {
   font-size: 24px;
   font-weight: 600;
-  color: #3a506b;
   margin-bottom: 10px;
 }
 
 .coordinator-designation,
 .coordinator-role {
-  color: #5e6a75;
   margin-bottom: 8px;
 }
 
 .coordinator-email,
 .coordinator-phone {
   margin-top: 5px;
-  color: #333;
 }
 
 /* Gallery Section Styles */
@@ -526,41 +513,6 @@
   margin: 0;
 }
 
-/* Dark Mode Adjustments */
-.dark .objectives-card {
-  background-color: #1a202c;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.dark .objectives-heading {
-  color: #e2e8f0;
-  border-bottom-color: #4a5568;
-}
-
-.dark .objectives-text,
-.dark .objectives-item {
-  color: #cbd5e0;
-}
-
-.dark .coordinator-card {
-  background-color: #1a202c;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.dark .coordinator-name {
-  color: #e2e8f0;
-}
-
-.dark .coordinator-designation,
-.dark .coordinator-role {
-  color: #a0aec0;
-}
-
-.dark .coordinator-email,
-.dark .coordinator-phone {
-  color: #cbd5e0;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .coordinator-card {
@@ -569,7 +521,6 @@
   max-width: 400px; 
   min-width: 280px; 
   padding: 16px;
-  background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   }

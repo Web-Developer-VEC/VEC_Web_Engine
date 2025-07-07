@@ -55,10 +55,10 @@ const WinnerSlider = ({ data }) => {
               <img
                 src={UrlParser(data?.image_path[index])}
                 alt="Winner"
-                className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
+                className="w-full h-80 object-contain rounded-t-lg"
               />
-              <div className="p-4 text-center bg-white rounded-b-lg">
-                <p className="text-lg font-semibold text-gray-800">{description}</p>
+              <div className="p-4 text-center rounded-b-lg">
+                <p className="text-lg font-semibold text-text dark:text-drkt">{description}</p>
               </div>
             </div>
           ))}

@@ -15,9 +15,9 @@ const ImageCard = ({ name, photo, Designation , qualification , firstTile }) => 
         dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]`}>
     <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
-      <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
-      <p>{qualification}</p>
-      <p>{Designation}</p>
+      <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
+      <p className="text-brwn dark:text-drka">{qualification}</p>
+      <p className="text-brwn dark:text-drka">{Designation}</p>
     </div>
   </div>
   </>
