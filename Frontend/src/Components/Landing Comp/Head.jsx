@@ -110,9 +110,10 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 4],
+            cod: [0, 5],
             cols: 1,
             sub: [
+                {hrd: false, ttl: "COE", sup: [], lnk: "/coe"},
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
                 {
                     hrd: false,

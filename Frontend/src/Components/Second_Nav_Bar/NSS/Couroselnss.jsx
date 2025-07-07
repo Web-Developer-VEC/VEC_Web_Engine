@@ -40,7 +40,7 @@ const CarouselNSS = ({ data }) => {
   return (
     <div className="carouselnss-container">
       {/* Title with underline */}
-      <h2 className="events-title uppercase">Events</h2>
+      <h2 className="events-title uppercase text-brwn dark:text-drkt">Events</h2>
       <div className="w-[100px] h-0.5 bg-[#eab308] mx-auto mb-10 mt-1 rounded"></div>
 
       <Swiper
@@ -70,8 +70,7 @@ const CarouselNSS = ({ data }) => {
               />
               <div className="carouselnss-content">
                 <h3>{titles[index]}</h3>
-                {/* You can insert custom text or a field like location if needed */}
-                <p className="carouselnss-location">NSS VEC</p>
+                <p className="carouselnss-location text-brwn dark:text-drka">NSS VEC</p>
                 <span className="carouselnss-date">{dates[index]}</span>
               </div>
             </div>

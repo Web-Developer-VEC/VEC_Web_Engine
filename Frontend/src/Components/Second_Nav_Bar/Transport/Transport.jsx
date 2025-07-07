@@ -35,9 +35,6 @@ const Transport = () => {
         }}>
        <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px]">
     <Transportvideo />
-    <div className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded">
-        VEC Transport Facilities
-    </div>
 </div>
             
             <div>

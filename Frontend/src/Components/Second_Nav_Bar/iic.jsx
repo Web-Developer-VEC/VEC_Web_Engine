@@ -25,10 +25,10 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
-        <div><h1 className="text-accn text-4xl font-bold text-center">Establishment of IIC</h1></div>
+        <div><h1 className="text-brwn dark:text-drkt text-4xl font-bold text-center">Establishment of IIC</h1></div>
 
-        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px] iic-establishment">Major Focus of IIC</h2>
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
             <p>
                 <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
                 prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
@@ -40,8 +40,8 @@ function IicEst() {
 
        <div className="flex flex-col lg:flex-row justify-between gap-6">
     {/* Left Panel */}
-    <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2">
-        <h2 className="text-[30px] iic-establishment">Vision</h2>
+    <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
+        <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
         <p>
             To facilitate a conducive environment with the intention of making an innovation to reach the society or
             industries for the betterment of our country and its citizen through entrepreneurial assets.
@@ -49,8 +49,8 @@ function IicEst() {
     </div>
 
     {/* Right Panel */}
-    <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2">
-        <h2 className="text-[30px] iic-establishment">Mission</h2>
+    <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
+        <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">Mission</h2>
         <p>
             To enable student and faculty to establish a start-up to market their innovative products; an enhanced
             coordination and priority setting across the start-up eco-system; an improved customizable strategy and

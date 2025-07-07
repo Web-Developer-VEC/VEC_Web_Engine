@@ -144,6 +144,20 @@
     /* Adds some spacing */
 }
 
+ .student-coordinators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.student-card {
+  width: 250px;
+  height: fit-content;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+} 
+
 /* Responsive Design */
 @media (max-width: 900px) {
     .membersnavy-members-grid {

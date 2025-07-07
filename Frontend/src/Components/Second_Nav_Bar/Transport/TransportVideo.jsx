@@ -43,11 +43,6 @@ const Transportvideo = () => {
                 <source src={Vide} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-
-            {/* Responsive adjustments for mobile view */}
-            <style>{`
-               
-            `}</style>
         </div>
     );
 };

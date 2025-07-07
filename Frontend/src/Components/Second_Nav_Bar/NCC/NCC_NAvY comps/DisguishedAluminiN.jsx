@@ -77,10 +77,10 @@ const AlumniSlider1 = () => {
               <img
                 src={item.image}
                 alt={`Award ${index + 1}`}
-                className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
+                className="w-full h-80 object-contain rounded-t-lg"
               />
-              <div className="p-4 text-center bg-white rounded-b-lg">
-                <p className="text-lg font-semibold text-gray-800">
+              <div className="p-4 text-center rounded-b-lg">
+                <p className="text-lg font-semibold text-text dark:text-drkt">
                   {item.description}
                 </p>
               </div>

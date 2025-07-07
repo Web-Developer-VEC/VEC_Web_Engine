@@ -7,10 +7,10 @@ const NSSContent = () => {
       <div className="nss-content">
         {/* Left Section - NSS Introduction */}
         <div className="nss-box border-l-4 border-secd dark:border-drks
-          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
-          <h2 class="nss-title text-accn dark:text-drka inline-block border-b-2 border-yellow-500 pb-1">
-  Welcome to the National Service Scheme
-</h2>
+          dark:bg-drkb hover:scale-105 ease-in-out duration-300">
+          <h2 class="nss-title text-accn dark:text-drkt inline-block border-b-2 border-secd dark:text-drks pb-1">
+            Welcome to the National Service Scheme
+          </h2>
 
           <p className="nss-text">
             The National Service Scheme (NSS) is an Indian government-sponsored
@@ -29,8 +29,8 @@ const NSSContent = () => {
 
         {/* Right Section - Objectives */}
         <div className="nss-box border-l-4 border-secd dark:border-drks
-          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 ease-in-out duration-300">
-          <h2 className="nss-title text-accn dark:text-drka inline-block border-b-2 border-yellow-500 pb-1">Our Objectives</h2>
+          dark:bg-drkb hover:scale-105 ease-in-out duration-300">
+          <h2 className="nss-title text-accn dark:text-drkt inline-block border-b-2 border-secd dark:text-drks pb-1">Our Objectives</h2>
           <ul className="nss-list marker:text-accn dark:marker:text-drka">
             <li>To understand the community in which they work.</li>
             <li>To understand themselves in relation to their community.</li>

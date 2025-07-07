@@ -183,18 +183,16 @@
 }
 
 
-/* .student-coordinators {
+ .student-coordinators {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .student-card {
-  width: 200px;
-  height: 500px;
-  padding: 1rem;
-  background: white;
+  width: 250px;
+  height: 400px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-} */
+} 

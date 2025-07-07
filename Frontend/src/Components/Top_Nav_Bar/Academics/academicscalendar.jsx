@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp"
-import "../../Second_Nav_Bar/nirf.css"
+import "../../Second_Nav_Bar/Accredation/nirf.css"
 
 
 const Acadamiccal = ({ toggle, theme, isLoading }) => {
@@ -58,47 +58,6 @@ const Acadamiccal = ({ toggle, theme, isLoading }) => {
           ))}
         </div>
       </div>
-         {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 md:px-20">
-            {calendarData.map((item, index) => (
-              <div key={index} className="space-y-2">
-                <h3 className="text-xl font-semibold text-red-800 border-b-2 border-yellow-500 inline-block pb-1">
-                  {item.year}
-                </h3>
-                <div className="flex flex-col gap-1">
-                  {item.semesters.map((semester, i) => (
-                    <a
-                      key={i}
-                      href={`${UrlParser(semester.link)}#toolbar=0`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      {semester.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div> */}
-
-        {/* <div className="nirf-grid">
-          {nirfData?.reverse().map((item, index) => (
-            <div key={index} className="nirf-year">
-              <h3>NIRF {item.year}</h3>
-              {item.categories.map((category, catIndex) => (
-                <a
-                  key={catIndex}
-                  href={`${UrlParser(category.link)}#toolbar=0`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="nirf-link"
-                >
-                  {category.name}
-                </a>
-              ))}
-            </div>
-          ))}
-        </div> */}
       </div>
     </>
   );

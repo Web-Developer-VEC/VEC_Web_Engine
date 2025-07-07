@@ -6,6 +6,7 @@ import Banner from '../../Banner'
 import SideNav from '../SideNav'
 import LoadComp from '../../LoadComp'
 import { useEffect } from 'react'
+import IQauge from './igauge'
 
 const Accredation = ({toggle,theme}) => {
 
@@ -14,12 +15,9 @@ const Accredation = ({toggle,theme}) => {
     const navData = {
         "NAAC": <Naac/>,
         "NBA": <NBA_F/>,
-        "NIRF":<NIRF/>
+        "NIRF":<NIRF/>,
+        "I GAUGE DIAMOND": <IQauge/>
     };
-
-
-
-
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -49,18 +47,15 @@ if (!isOnline) {
   return <>
 
    <Banner
-                toggle={toggle} theme={theme}
-                backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-                headerText="Accredation"
-                subHeaderText="Accredation"
-            />
+        toggle={toggle} theme={theme}
+        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        headerText="Accredation"
+        subHeaderText="Accredation"
+    />
 
-             <div className="">
-                 {/* <SideNav sts={iqa} setSts={setIqa} navData={navData} cls={""}/> */}
-                            <SideNav  sts={naac} setSts={setNaac} navData={navData} cls={""}/>
-                        </div>
-
-
+    <div className="">
+      <SideNav  sts={naac} setSts={setNaac} navData={navData} cls={""}/>
+    </div>
   </>
 }
 

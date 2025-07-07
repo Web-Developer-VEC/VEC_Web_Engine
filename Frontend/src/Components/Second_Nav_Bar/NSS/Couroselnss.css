@@ -7,7 +7,6 @@
 
 .events-title {
     text-align: center;
-    color: #800000;
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
@@ -22,7 +21,6 @@
 
 /* Ensure all cards have equal height */
 .carouselnss-card {
-    background-color: #f4f4f4;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

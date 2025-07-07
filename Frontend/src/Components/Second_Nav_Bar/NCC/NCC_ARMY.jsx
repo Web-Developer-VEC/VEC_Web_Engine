@@ -1,34 +1,22 @@
 import React, {useEffect, useState} from "react";
 import "./NCC_ARMY.css";
 import NCCACarousel from "./NCC_ARMY comps/NCCACarousel";
-import NCCAtable from "./NCC_ARMY comps/NCCAtable";
 import axios from "axios";
-import NSSCarousel from "../NSS/NSSCarousel";
-import NSSContent from "../NSS/NSSContent";
-import NSSManual from "../NSS/NSSManual";
-import Coordinators from "../NSS/NSSCoordinatiors";
-
 import NCCAMembers from "./NCC_ARMY comps/NCCAMembers";
-import Carouselarmy from "./NCC_ARMY comps/Corouselarmy";
-import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
 import SideNav from "../SideNav";
 import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 
 
 function NCCAbout() {
-
-
-
-  
     return (
       <section
-        className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                border-l-4 border-[#FDB515] px-6 mt-4"
+        className="NCC_ARMY-section bg-prim
+                dark:bg-drkb
+                border-l-4 border-[#FDB515] dark:border-drks px-6 mt-4"
       >
         <h2
-          className="NCC_ARMY-section-title text-accn dark:text-drka
-            border-b-2 border-secd dark:border-drks"
+          className="NCC_ARMY-section-title text-accn dark:text-drkt
+            border-b-2 border-secd dark:border-drks w-fit"
         >
           About NCC
         </h2>
@@ -75,12 +63,12 @@ function NCCObjectives() {
     return (
       <div className="NCC_ARMY-row mt-4">
         <section
-          className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-3"
+          className="NCC_ARMY-section bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-3"
         >
           <h2
-            className="NCC_ARMY-section-title text-accn dark:text-drka
-              border-b-2 border-secd dark:border-drks"
+            className="NCC_ARMY-section-title text-accn dark:text-drkt
+              border-b-2 border-secd dark:border-drks w-fit"
           >
             Objectives of NCC
           </h2>
@@ -114,13 +102,13 @@ function NCCObjectives() {
 function NCCAim() {
     return (
       <div
-        className="NCC_ARMY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+        className="NCC_ARMY-aim-container bg-prim
+                dark:bg-drkb border-l-4 border-secd dark:border-drks px-6"
       >
         <div className="NCC_ARMY-aim">
-          <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+          <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             <img
-              src="./ncc_logo.png"
+              src="https://images.seeklogo.com/logo-png/44/2/ncc-logo-png_seeklogo-440419.png"
               alt="NCC Logo"
               className="NCC_ARMY-icon"
             />
@@ -148,20 +136,20 @@ function NCCMotto() {
     return (
       <div className="NCC_ARMY-motto-pledge-container">
         <div
-          className="NCC_ARMY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+          className="NCC_ARMY-motto bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
         >
-          <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+          <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             MOTTO OF NCC
           </h2>
           <p className="NCC_ARMY-content-1 ">"Unity and Discipline"</p>
         </div>
 
         <div
-          className="NCC_ARMY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+          className="NCC_ARMY-pledge bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
         >
-          <h2 className="NCC_ARMY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+          <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             CARDINALS OF NCC
           </h2>
           <p className="NCC_ARMY-content">
@@ -181,12 +169,12 @@ function NCCPledge() {
   return (
     <div className="NCC_ARMY-row mt-4">
       <section
-        className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+        className="NCC_ARMY-section bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
       >
         <h2
-          className="NCC_ARMY-section-title text-accn dark:text-drka
-              border-b-2 border-secd dark:border-drks"
+          className="NCC_ARMY-section-title text-accn dark:text-drkt
+              border-b-2 border-secd dark:border-drks w-fit"
         >
           Pledge of NCC
         </h2>
@@ -206,7 +194,7 @@ function NCCPledge() {
 }
 function NCCContact() {
     return (
-        <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md text-center">
+        <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
             <h2 className="text-2xl text-brwn font-bold  dark:text-white mb-4">
                 Contact Us
             </h2>
@@ -227,6 +215,7 @@ const NCC_ARMY = () => {
     const [tabel, setTabelValue] = useState({});
     const [curosel, setCarosel] = useState({});
     const [Coordinator, setCoordinator] = useState({});
+    const [armyData,setArmyData] = useState(null);
     const navData = {
       "About NCC Army": (
         <>
@@ -241,7 +230,7 @@ const NCC_ARMY = () => {
       ),
       "Recent Events":   <NCCACarousel data={curosel} />,
       "Team & Coordinators": <NCCAMembers />,
-      "Awards & Recognition" : <AlumniSlider />,
+      "Awards & Recognition" : <AlumniSlider data={armyData?.events} />,
       
       
     };
@@ -260,7 +249,8 @@ const NCC_ARMY = () => {
 
                 setTabelValue(data.Table);
                 setCarosel(data.image);
-                setCoordinator(data.Coordinator)
+                setCoordinator(data.Coordinator);
+                setArmyData(data);
 
             } catch (error) {
                 console.error("Error fetching data", error);
@@ -273,8 +263,8 @@ const NCC_ARMY = () => {
     function NCCProf() {
         return (
             <div
-                className="NCC_ARMY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
+                className="NCC_ARMY-profile-container bg-prim
+                dark:bg-drkb border-l-8 border-r-8 border-[#FDB515] px-6"
             >
                 <div className="NCC_ARMY-profile-photo">
                     <img src={UrlParser(Coordinator?.coordinator_image)} alt={Coordinator?.coordinator_name}/>

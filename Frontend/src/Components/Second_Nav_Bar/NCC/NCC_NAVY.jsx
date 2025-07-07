@@ -17,12 +17,12 @@ import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 function NCCAbout() {
   return (
   <section
-            className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6 "
+            className="NCC_NAVY-section bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6 "
           >
             <h2
-              className="NCC_NAVY-section-title  ext-accn dark:text-drka
-            border-b-2 border-secd dark:border-drks text-[#800000]"
+              className="NCC_NAVY-section-title  ext-accn dark:text-drkt
+            border-b-2 border-secd dark:border-drks w-fit"
             >
               About NCC
             </h2>
@@ -64,12 +64,12 @@ function NCCAbout() {
 function NCCVisMis() {
   return (<div className="NCC_NAVY-row">
             <section
-              className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+              className="NCC_NAVY-section bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
             >
               <h2
-                className="NCC_NAVY-section-title text-accn dark:text-drka
-            border-b-2 border-secd dark:border-drks"
+                className="NCC_NAVY-section-title text-accn dark:text-drkt
+            border-b-2 border-secd dark:border-drks w-fit"
               >
                 Vision
               </h2>
@@ -80,12 +80,12 @@ function NCCVisMis() {
             </section>
 
             <section
-              className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+              className="NCC_NAVY-section bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
             >
               <h2
-                className="NCC_NAVY-section-title text-accn dark:text-drka
-            border-b-2 border-secd dark:border-drks"
+                className="NCC_NAVY-section-title text-accn dark:text-drkt
+            border-b-2 border-secd dark:border-drks w-fit"
               >
                 Mission
               </h2>
@@ -100,13 +100,13 @@ function NCCVisMis() {
 
 function NCCAim() {
   return (<div
-            className="NCC_NAVY-aim-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+            className="NCC_NAVY-aim-container bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
           >
             <div className="NCC_NAVY-aim">
-              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
                 <img
-                  src="./ncc_logo.png"
+                  src="https://images.seeklogo.com/logo-png/44/2/ncc-logo-png_seeklogo-440419.png"
                   alt="NCC Logo"
                   className="NCC_NAVY-icon"
                 />
@@ -131,10 +131,10 @@ function NCCAim() {
 function NCCMotto() {
   return (<div className="NCC_NAVY-motto-pledge-container">
             <div
-              className="NCC_NAVY-motto bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+              className="NCC_NAVY-motto bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
             >
-              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
                 MOTTO OF NCC
               </h2>
               <p className="NCC_NAVY-content">
@@ -146,10 +146,10 @@ function NCCMotto() {
             </div>
 
             <div
-              className="NCC_NAVY-pledge bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6"
+              className="NCC_NAVY-pledge bg-prim
+                dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
             >
-              <h2 className="NCC_NAVY-heading text-accn dark:text-drka border-b-2 border-secd dark:border-drks">
+              <h2 className="NCC_NAVY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
                 NCC PLEDGE
               </h2>
               <p className="NCC_NAVY-content">
@@ -209,15 +209,15 @@ const NCC_NAVY = () => {
 
   function NCCProf() {
   return (<div
-            className="NCC_NAVY-profile-container bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-8 border-r-8 border-[#FDB515] px-6"
+            className="NCC_NAVY-profile-container bg-prim
+                dark:bg-drkb border-l-8 border-r-8 border-[#FDB515] px-6"
           >
             <div className="NCC_NAVY-profile-photo">
               <img src={UrlParser(Coordinator?.coordinator_image)} alt={Coordinator?.coordinator_name} />
             </div>
             <div className="NCC_NAVY-profile-content">
               <h2 className="NCC_NAVY-profile-name">{Coordinator?.coordinator_name}</h2>
-              <h4 className="NCC_NAVY-profile-position text-accn dark:text-drka">
+              <h4 className="NCC_NAVY-profile-position text-accn dark:text-drkt">
                 {Coordinator?.coordinator_designation}
               </h4>
               <p className="NCC_NAVY-profile-bio">
