@@ -166,13 +166,13 @@
 
 .firstTileSocialLinks a {
   font-size: 22px;
-  /*color: #003366;*/
+  /* color: #003366; */
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .firstTileSocialLinks a:hover {
-  /*color: #fdcc03;*/
-  /*transform: scale(1.2);*/
+  /* color: #fdcc03; */
+  transform: scale(1.2);
 }
 
 .socialLinks {
