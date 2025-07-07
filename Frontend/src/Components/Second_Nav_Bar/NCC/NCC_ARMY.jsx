@@ -16,6 +16,10 @@ import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 
 
 function NCCAbout() {
+
+
+
+  
     return (
       <section
         className="NCC_ARMY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
@@ -264,6 +268,7 @@ const NCC_ARMY = () => {
         }
         fetchData()
     }, []);
+    
 
     function NCCProf() {
         return (

@@ -13,8 +13,10 @@ import SideNav from "../SideNav";
 import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 
 
+
 function NCCAbout() {
-  return (<section
+  return (
+  <section
             className="NCC_NAVY-section bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] border-l-4 border-[#FDB515] px-6 "
           >
@@ -195,7 +197,7 @@ const NCC_NAVY = () => {
         const data = responce.data[0];
 
         setTabelValue(data.Table);
-        setCarosel(data.image);
+        setCarosel(data.events);
         setCoordinator(data.Coordinator)
 
       } catch (error) {
