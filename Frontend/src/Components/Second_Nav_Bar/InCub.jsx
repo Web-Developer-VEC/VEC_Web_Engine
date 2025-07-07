@@ -11,12 +11,12 @@ const Incub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
     const navData = {
         "Home": <CubHme/>,
-        "Incubated Startups": <CubStr/>,
-        "MOU's": <CubMou/>,
-        "Student Support Mechanism": <CubMec/>,
-        "Facilities": <CubFcl/>,
-        "Mentor's": <CubMnt/>,
-        "Apply Now": <CubApy/>
+        "Incubated Startups": <CubStr/>,  //CubStr
+        "MOU's": <CubMou/>,               //CubMou
+        "Student Support Mechanism": <CubMec/>, //CubMec
+        "Facilities": <CubFcl/>,          //CubFcl
+        "Mentor's": <CubMnt/>,            //CubMnt
+        "Apply Now": <CubApy/>            //CubApy
     };
 
     // Data for Incubated Startups
