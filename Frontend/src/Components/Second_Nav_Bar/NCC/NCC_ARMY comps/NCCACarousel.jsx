@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./NCCACarousel.css"; // Import the CSS file
 import LoadComp from "../../../LoadComp"
+
 const NCCACarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -60,10 +61,7 @@ const NCCACarousel = ({data}) => {
                 ))}
             </div>
         </div>
-
         ):(
-    
-        
          <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
         </div>

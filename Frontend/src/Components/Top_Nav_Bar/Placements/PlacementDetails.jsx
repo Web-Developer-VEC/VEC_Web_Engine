@@ -79,6 +79,31 @@ export const PlacementDetails = ({ theme, toggle }) => {
                     </div>
                 ) : (
                     <>
+                        {/* Year-wise PDF Reports */}
+                        <div className="placement-yearwise card-plc bg-prim dark:bg-drkts">
+                            <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
+                            <div className="place-Sylgrid">
+                                {placementData?.Year_Wise?.year_pdf.map((year, index) => (
+                                    <button
+                                        key={index}
+                                        className="place-course-button bg-secd dark:bg-drks text-text"
+                                        onClick={() => openModal(UrlParser(placementData?.Year_Wise?.Pdf_path[index]))}
+                                    >
+                                        <div className="place-course">{year}</div>
+                                    </button>
+                                ))}
+                            </div>
+
+                            {showModal && (
+                                <div className="place-modal-overlay" onClick={closeModal}>
+                                    <div className="place-modal-content" onClick={(e) => e.stopPropagation()}>
+                                        <button className="place-close-button" onClick={closeModal}>X</button>
+                                        <iframe src={pdfLink} title="PDF Viewer" className="place-pdf-viewer"></iframe>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        
                         {/* Placement Department-wise Data */}
                         <div className="placement-percent card-plc">
                             <h4 className="place-section-title text-brwn dark:text-drkt">Placement Details in % - Department Wise</h4>
@@ -106,30 +131,6 @@ export const PlacementDetails = ({ theme, toggle }) => {
                             </div>
                         </div>
 
-                        {/* Year-wise PDF Reports */}
-                        <div className="placement-yearwise card-plc bg-prim dark:bg-drkts">
-                            <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
-                            <div className="place-Sylgrid">
-                                {placementData?.Year_Wise?.year_pdf.map((year, index) => (
-                                    <button
-                                        key={index}
-                                        className="place-course-button bg-secd dark:bg-drks text-text"
-                                        onClick={() => openModal(UrlParser(placementData?.Year_Wise?.Pdf_path[index]))}
-                                    >
-                                        <div className="place-course">{year}</div>
-                                    </button>
-                                ))}
-                            </div>
-
-                            {showModal && (
-                                <div className="place-modal-overlay" onClick={closeModal}>
-                                    <div className="place-modal-content" onClick={(e) => e.stopPropagation()}>
-                                        <button className="place-close-button" onClick={closeModal}>X</button>
-                                        <iframe src={pdfLink} title="PDF Viewer" className="place-pdf-viewer"></iframe>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
 
                         {/* Placement Statistics */}
                         <div className="placement-percent card-plc">

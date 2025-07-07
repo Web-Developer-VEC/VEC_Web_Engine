@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./UgAdmission.css";
+import {FaLink} from "react-icons/fa";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 
@@ -110,6 +111,11 @@ if (!isOnline) {
             <p className="description-text">
             Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
             </p>
+            <div className="flex justify-center mt-4">
+              <a href="#" className="dark:text-drka">
+                <FaLink  className={"inline size-5 mr-1 mb-1"}/>link
+              </a>
+            </div>
             <br />
             <p className="description-text ug-GQ"><strong>Government Quota : </strong>Apply through TNEA Counselling</p>
             <p className="description-text ug-MQ"><strong>Management Quota : </strong> Apply through Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
@@ -132,6 +138,11 @@ if (!isOnline) {
             <p className="description-text">
             Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
             </p>
+            <div className="flex justify-center mt-4">
+              <a href="#" className="dark:text-drka">
+                <FaLink  className={"inline size-5 mr-1 mb-1"}/>link
+              </a>
+            </div>
             {renderTable(ug_lateral, `UG COURSES - TOTAL INTAKE ${year}`, "(For Diploma Holders Only)")}
           </div>
         </div>

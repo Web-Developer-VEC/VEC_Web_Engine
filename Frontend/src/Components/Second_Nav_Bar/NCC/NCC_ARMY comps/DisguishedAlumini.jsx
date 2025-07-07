@@ -1,61 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import LoadComp from "../../../LoadComp";
-const predefinedData = {
-  title: [
-    "Distinguished Alumni 1",
-    "Distinguished Alumni 2",
-    "Distinguished Alumni 3",
-    "Distinguished Alumni 4",
-    "Distinguished Alumni 5",
-  ],
-  image_path: [
-    "https://via.placeholder.com/400x300?text=Alumni+1",
-    "https://via.placeholder.com/400x300?text=Alumni+2",
-    "https://via.placeholder.com/400x300?text=Alumni+3",
-    "https://via.placeholder.com/400x300?text=Alumni+4",
-    "https://via.placeholder.com/400x300?text=Alumni+5",
-  ],
-};
 
-const AlumniSlider = () => {
+const AlumniSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [data,setData] = useState(null)
-  
-  useEffect(() => {
 
-    const fetchAwards = async () => {
-      try{
-        const responce =  await axios.get('/api/ncc_army');
-           const data = responce.data[0]; 
-           setData(data)
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-      }catch(error){
-        console.error("Error fetching data ",error)
-      }
-
-    }
-    if (isHovered) return; // Stop auto-slide when hovered
-    const interval = setInterval(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % predefinedData.title.length
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isHovered]);
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   const handlePrev = () => {
     setActiveIndex(
       (prevIndex) =>
-        (prevIndex - 1 + predefinedData.title.length) %
-        predefinedData.title.length
+        (prevIndex - 1 + data?.carousal_title?.length) %
+        data?.carousal_title?.length
     );
   };
 
   const handleNext = () => {
     setActiveIndex(
-      (prevIndex) => (prevIndex + 1) % predefinedData.title.length
+      (prevIndex) => (prevIndex + 1) % data?.carousal_title?.length
     );
   };
 
@@ -73,7 +40,7 @@ const AlumniSlider = () => {
       className="flex transition-transform duration-700 ease-in-out"
       style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
-      {predefinedData.title.map((description, index) => (
+      {data?.carousal_title?.map((description, index) => (
         <div
         key={index}
         className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -83,14 +50,15 @@ const AlumniSlider = () => {
         }}
         >
               <img
-                src={predefinedData.image_path[index]}
+                src={UrlParser(data?.carousal_images[index])}
                 alt="Distinguished Alumni"
-                className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
+                className="w-full h-80 object-contain rounded-t-lg"
                 />
-              <div className="p-4 text-center bg-white rounded-b-lg">
-                <p className="text-lg font-semibold text-gray-800">
+              <div className="p-4 text-center rounded-b-lg">
+                <p className="text-lg font-semibold text-text dark:text-drkt font-bold">
                   {description}
                 </p>
+                <p className="text-text dark:text-drkt">{data?.carousal_description[index]}</p>
               </div>
             </div>
           ))}
@@ -111,7 +79,7 @@ const AlumniSlider = () => {
         </div>
         
         <div className="flex justify-center space-x-2 mt-4">
-        {predefinedData.title.map((_, index) => (
+        {data?.carousal_title?.map((_, index) => (
           <button
           key={index}
           className={`w-2.5 h-2.5 rounded-full ${

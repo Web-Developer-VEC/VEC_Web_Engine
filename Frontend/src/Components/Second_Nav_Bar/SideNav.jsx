@@ -74,6 +74,8 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <MedalIcon className={sty}/>;
             case "NBA":
                 return <MedalIcon className={sty}/>;
+            case "I GAUGE DIAMOND":
+                return <MedalIcon className={sty}/>;
             case "Code of Ethics":
                 return <FaBalanceScale className={sty}/>;
             case "Strategic Development Plan":

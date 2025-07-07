@@ -4,64 +4,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import LoadComp from "../../../LoadComp";
-// const NCCAMembers = () => {
-//   const members = Array.from({ length: 60 }, (_, index) => ({
-//     id: index + 1,
-//     name: `Cadet ${index + 1}`,
-//     degree: "Dept. of Mechanical Engineering",
-//     image: "https://via.placeholder.com/150",
-//     description:
-//       "A dedicated cadet committed to leadership, discipline, and service to the nation.",
-//     platoon: "EME Platoon",
-//   }));
-
-//   return (
-//     <div className="membersarmy-ncca-members-container">
-//       <h2 className="membersarmy-h2">
-//         Meet Our Officer
-//         <div className="membersarmy-underline"></div>
-//       </h2>
-//       <div className="membersarmy-member-card-1">
-//         <img
-//           src="https://via.placeholder.com/150"
-//           alt="Officer"
-//           className="membersarmy-member-image"
-//         />
-//         <div className="membersarmy-member-info">
-//           <span className="membersarmy-platoon">Commanding Officer</span>
-//           <h3>John Doe</h3>
-//           <p className="membersarmy-title">Bachelor of Defense Studies</p>
-//           <p className="membersarmy-degree">
-//             A highly skilled and disciplined officer leading the cadets with
-//             excellence.
-//           </p>
-//         </div>
-//       </div>
-
-//       <h2 className="membersarmy-h2">
-//         Cadet Leaders
-//         <div className="membersarmy-underline"></div>
-//       </h2>
-//       <div className="membersarmy-members-grid">
-//         {members.map((member) => (
-//           <div key={member.id} className="membersarmy-member-card">
-//             <img
-//               src={member.image}
-//               alt={member.name}
-//               className="membersarmy-member-image"
-//             />
-//             <div className="membersarmy-member-info">
-//               <span className="membersarmy-platoon">{member.platoon}</span>
-//               <h3>{member.name}</h3>
-//               <p className="membersarmy-title">Student</p>
-//               <p className="membersarmy-degree">{member.degree}</p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
 
 function NCCAMembers() {
 
@@ -71,7 +13,6 @@ function NCCAMembers() {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
-
 
   const [coordinaterImage, setCoordinaterImage] = useState(null)
   const [coordinaterName , setCoordinaterName] = useState("")
@@ -139,59 +80,43 @@ useEffect(()=> {
     {data ? (
       
       <div className="yrc-coordinators-container">
-      <h2 className="yrc-h2">
-      FACULTY COORDINATOR
-      <div className="yrc-underline2"></div>
-      </h2>
+        <h2 className="yrc-h2 text-brwn dark:text-drkt">
+          FACULTY COORDINATOR
+          <div className="yrc-underline2"></div>
+        </h2>
       
-      <div className="yrc-member-card-1">
-      <img
-      src={coordinaterImage}
-      alt={coordinaterImage}
-      className="yrc-member-image1"
-      />
-      
-      <div className="yrc-member-info1">
-      {/* <span className="yrc-platoon">Programme Officer</span> */}
-      <h3> {coordinaterName} </h3>
-      <p className="yrc-title">{coordinaterDesignation}</p>
-      <p className="yrc-degree">
-      {coordinaterMessage}
-      </p>
-      </div>
-      </div>
-      
-      
-      {/* {staffCoordinator && (
-        <div className="yrc-member-card">
-        <img
-        src={UrlParser(staffCoordinator.image_path)}
-        alt={staffCoordinator.name}
-        className="yrc-member-image1"
-        />
-        <div className="yrc-member-info2">
-        <span className="yrc-platoon">Faculty Coordinator</span>
-        <h3>{staffCoordinator.name}</h3>
-        <p className="yrc-title">{staffCoordinator.designation}</p>
+        <div className="yrc-member-card-1 dark:bg-text">
+          <img
+          src={coordinaterImage}
+          alt={coordinaterImage}
+          className="yrc-member-image1"
+          />
+          
+          <div className="yrc-member-info1">
+            {/* <span className="yrc-platoon">Programme Officer</span> */}
+            <h3> {coordinaterName} </h3>
+            <p className="yrc-title">{coordinaterDesignation}</p>
+            <p className="yrc-degree">
+            {coordinaterMessage}
+          </p>
+          </div>
         </div>
-        </div>
-        )} */}
         
-        <h2 className="yrc-h3">
-        STUDENT COORDINATORS
+        <h2 className="yrc-h3 text-brwn dark:text-drkt">
+            STUDENT COORDINATORS
         <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid">
-        {studentMembers.map((member, index) => (
-          <div className="student-card" key={index}>
-      <img src={UrlParser(member.image)} alt={member.name} />
-      <h3>{member.name}</h3>
-      <h6>{member.regiment_no}</h6>
-      <p>{member.year}</p>
-      <p>{member.rank} - {member.department}</p>
-    </div>
-  ))}
-  </div>
+            {studentMembers.map((member, index) => (
+            <div className="student-card dark:bg-text" key={index}>
+              <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} />
+              <h5 className="text-text dark:text-drkt font-sm mt-4">{member.name}</h5>
+              <p className="text-brwn dark:text-drka">{member.regiment_no}</p>
+              <p className="text-brwn dark:text-drka">{member.year}</p>
+              <p className="text-brwn dark:text-drka">{member.rank} - {member.department}</p>
+            </div>
+        ))}
+        </div>
   
   
     </div>

@@ -15,7 +15,6 @@
     font-size: 26px;
     /* Increased font size */
     font-weight: bold;
-    color: #800000;
     /* Deep navy blue for a professional look */
     flex: 1;
     text-align: left;
@@ -27,9 +26,8 @@
 
 /* Notification box styling */
 .nss-notification-box {
-    width: 550px;
+    width: 750px;
     /* Increased width */
-    background-color: white;
     border-radius: 12px;
     /* Slightly rounded corners */
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
@@ -62,7 +60,6 @@ marquee p {
     margin: 12px 0;
     font-size: 18px;
     /* Larger font for readability */
-    color: #444;
 }
 @media (max-width: 768px){
     .nss-notification-box{

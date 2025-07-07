@@ -3,64 +3,6 @@ import "./NCCNMembers.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-// const NCCNMembers = () => {
-//   const members = Array.from({ length: 60 }, (_, index) => ({
-//     id: index + 1,
-//     name: `Cadet ${index + 1}`,
-//     degree: "Dept. of Mechanical Engineering, Velammal Engineering college",
-//     image: "https://via.placeholder.com/150",
-//     description:
-//       "A dedicated cadet committed to leadership, discipline, and service to the nation.",
-//     platoon: "EME Platoon",
-//   }));
-
-//   return (
-//     <div className="membersnavy-ncca-members-container">
-//       <h2 className="membersnavy-h2">
-//         Meet Our Officer
-//         <div className="membersnavy-underline"></div>
-//       </h2>
-//       <div className="membersnavy-member-card-1">
-//         <img
-//           src="https://via.placeholder.com/150"
-//           alt="Officer"
-//           className="membersnavy-member-image"
-//         />
-//         <div className="membersnavy-member-info">
-//           <span className="membersnavy-platoon">Commanding Officer</span>
-//           <h3>John Doe</h3>
-//           <p className="membersnavy-title">Bachelor of Defense Studies</p>
-//           <p className="membersnavy-degree">
-//             A highly skilled and disciplined officer leading the cadets with
-//             excellence.
-//           </p>
-//         </div>
-//       </div>
-
-//       <h2 className="membersnavy-h2">
-//         Cadet Leaders
-//         <div className="membersnavy-underline"></div>
-//       </h2>
-//       <div className="membersnavy-members-grid">
-//         {members.map((member) => (
-//           <div key={member.id} className="membersnavy-member-card">
-//             <img
-//               src={member.image}
-//               alt={member.name}
-//               className="membersnavy-member-image"
-//             />
-//             <div className="membersnavy-member-info">
-//               <span className="membersnavy-platoon">{member.platoon}</span>
-//               <h3>{member.name}</h3>
-//               <p className="membersnavy-title">Student</p>
-//               <p className="membersnavy-degree">{member.degree}</p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
 
 const  NCCNMembers = () => {
 
@@ -70,42 +12,6 @@ const  NCCNMembers = () => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
-  // const studentCoordinators1 = [
-  //   {
-  //     id: 1,
-  //     role: "Assitant",
-  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-  //     name: "Ajay",
-  //     department: "AI&DS",
-  //     year: 2
-  //   },
-  //   {
-  //     id: 2,
-  //     role: "Assitant",
-  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-  //     name: "Ajith",
-  //     department: "AI&DS",
-  //     year: 2
-  //   },
-  //   {
-  //     id: 3,
-  //     role: "Assitant",
-  //     image: "",
-  //     name: "Sudha",
-  //     department: "AI&DS",
-  //     year: 2
-  //   },
-  //   {
-  //     id: 4,
-  //     role: "Assitant",
-  //     image: "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
-  //     name: "Sri",
-  //     department: "AI&DS",
-  //     year: 2
-  //   }
-  // ]
-
-
   const [coordinaterImage,setCoordinaterImage]= useState("")
   const [coordinaterName , setCoordinaterName] = useState("")
   const [coordinaterMessage ,setCoordinaterMessage] =useState("")
@@ -184,7 +90,7 @@ fetchStudentCoordinaterData();
         <div className="yrc-underline2"></div>
       </h2>
       
-      <div className="yrc-member-card-1">
+      <div className="yrc-member-card-1 dark:bg-text">
         <img
           src={coordinaterImage}
           alt={coordinaterImage}
@@ -194,28 +100,12 @@ fetchStudentCoordinaterData();
         <div className="yrc-member-info1">
           {/* <span className="yrc-platoon">Programme Officer</span> */}
           <h3>{coordinaterName}</h3>
-          <p className="yrc-title">{coordinaterDesignation}</p>
+          <p className="yrc-title text-brwn dark:text-drka">{coordinaterDesignation}</p>
           <p className="yrc-degree">
          {coordinaterMessage}
           </p>
         </div>
       </div>
-
-      
-      {/* {staffCoordinator && (
-        <div className="yrc-member-card">
-          <img
-            src={UrlParser(staffCoordinator.image_path)}
-            alt={staffCoordinator.name}
-            className="yrc-member-image1"
-          />
-          <div className="yrc-member-info2">
-            <span className="yrc-platoon">Faculty Coordinator</span>
-            <h3>{staffCoordinator.name}</h3>
-            <p className="yrc-title">{staffCoordinator.designation}</p>
-          </div>
-        </div>
-      )} */}
 
       <h2 className="yrc-h3">
         STUDENT COORDINATORS
@@ -223,17 +113,18 @@ fetchStudentCoordinaterData();
       </h2>
       <div className="yrc-members-grid">
      {studentCoordinaters.map(student => (
-  <div key={student.id} className="student-card">
-    <img src={student.image} alt={student.name} />
-    <h3>{student.name}</h3>
-    <p>Role: {student.role}</p>
-    <p>regiment no: {student.regiment_no}</p>
-    <p>Rank : {student.rank}</p>
-    <p>University No : {student.universityno}</p>
-    <p>Department: {student.department}</p>
-    <p>Year: {student.year}</p>
-  </div>
-))}
+        <div key={student.id} className="student-card dark:bg-text">
+          <img src={UrlParser(student.image)} className="w-[150px] h-[200px] m-auto" alt={student.name} />
+          <div className="ncc-n-stu-detail p-2 text-left">
+            <h5 className="text-center">{student.name}</h5>
+            <p className="pl-4 text-brwn dark:text-drka">Role: {student.role}</p>
+            <p className="pl-4 text-brwn dark:text-drka">regiment no: {student.regiment_no}</p>
+            <p className="pl-4 text-brwn dark:text-drka">Rank : {student.rank}</p>
+            <p className="pl-4 text-brwn dark:text-drka">University No : {student.universityno}</p>
+            <p className="pl-4 text-brwn dark:text-drka">Department: {student.department}</p>
+          </div>
+        </div>
+      ))}
     </div>
 
     </div>

@@ -78,6 +78,7 @@ import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
 import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -174,6 +175,7 @@ const MainContentWrapper = styled.div`
                                 <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
                                 <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/>

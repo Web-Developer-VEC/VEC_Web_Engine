@@ -34,13 +34,13 @@ const NSSCarousel = ({ data }) => {
   };
 
   if (!images.length) {
-    return <p className="text-center text-gray-500">No event data available.</p>;
+    return <p className="text-center text-text dark:text-drkt">No event data available.</p>;
   }
 
   return (
     <div className="nss-carousel-wrap relative overflow-hidden">
       <div
-        className="nss-carousel-container flex transition-transform duration-500 ease-in-out"
+        className="nss-carousel-container flex transition-transform duration-500 ease-in-out dark:bg-drkts"
         style={{ transform: `translateX(-${currentIndex * 100}%)`, width: `${images.length * 100}%` }}
       >
         {images.map((image, index) => (

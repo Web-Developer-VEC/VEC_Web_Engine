@@ -13,13 +13,13 @@ const NotificationBox = ({ data }) => {
 
       <div className="nss-notification-container">
         {/* Left-side text */}
-        <div className="nss-news-updates ">
+        <div className="nss-news-updates text-brwn dark:text-drkt">
           Bringing you the latest news & updates 
           <div className="w-[500px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
         </div>
 
         {/* Right-side notification box */}
-        <div className="nss-notification-box">
+        <div className="nss-notification-box dark:bg-drkb">
           <div className="nss-notification-header">Recent Updates</div>
           <div className="nss-notification-content">
             {data?.updaates.length > 0 ? (
@@ -32,7 +32,7 @@ const NotificationBox = ({ data }) => {
                 onMouseOut={() => marqueeRef.current?.start()}
               >
                 {data?.updaates.map((item, index) => (
-                  <p key={index}>
+                  <p key={index} className="text-text dark:text-drkt">
                     {index + 1}. {item}
                   </p>
                 ))}
