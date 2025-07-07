@@ -1,5 +1,87 @@
 import React from "react";
 import "./NSSCoordinators.css"; // Import the CSS file
+import LoadComp from "../../LoadComp";
+
+const Coordinators = ({ faculty, students }) => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000/";
+
+  const parseUrl = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  return (
+    <>
+      {faculty && students ? (
+
+    <div className="p-6 bg-white">
+  {/* Faculty Coordinator */}
+  <h2 className="text-1xl md:text-3xl font-bold text-center text-brwn capitalize mb-4">
+    FACULTY COORDINATOR
+    <div className="w-[360px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
+  </h2>
+
+  {faculty && (
+    <div className="flex flex-col md:flex-row items-center gap-6 bg-gray-20 rounded-xl shadow-md p-6 mb-10 w-[500px] mx-auto">
+      {/* Image */}
+      <div className="flex-shrink-0">
+        <img
+          src={parseUrl(faculty.image_path)}
+          alt={faculty.name}
+          className="w-32 h-32 rounded border object-cover "
+        />
+      </div>
+
+      {/* Details */}
+      <div className="text-center md:text-left">
+        <h3 className="text-xl">{faculty.name}</h3>
+        <p className="text-sm text-gray-600">{faculty.designation}</p>
+
+        {faculty.message && faculty.message.trim() !== "" && (
+          <p className="mt-2 text-sm text-gray-700 max-w-2xl">
+            {faculty.message}
+          </p>
+        )}
+      </div>
+    </div>
+  )}
+
+      {/* Student Coordinators */}
+      <h2 className="text-xl md:text-2xl font-bold text-center text-brwn uppercase mb-4">
+        STUDENT COORDINATORS
+        <div className="w-[300px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
+      </h2>
+
+      {students?.name?.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+          {students.name.map((memberName, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-md rounded-xl p-4 flex flex-col items-center text-center"
+            >
+              <img
+                src={parseUrl(students.image_path[index])}
+                alt={memberName}
+                className="w-24 h-24 border rounded object-cover mb-3"
+              />
+              <h3 className="text-lg font-semibold">{memberName}</h3>
+              <span className="text-sm text-gray-500">{students.designation[index]}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Coordinators;
+
+
 
 // const Coordinators = ({faculty, students}) => {
 
@@ -58,114 +140,4 @@ import "./NSSCoordinators.css"; // Import the CSS file
 //   );
 // };
 
-const Coordinators = () => {
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-
-  const studentCoordinators1 = [
-    {
-      id: 1,
-      role: "Assitant",
-      image: "",
-      name: "Ajay",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 2,
-      role: "Assitant",
-      image: "",
-      name: "Ajith",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 3,
-      role: "Assitant",
-      image: "",
-      name: "Sudha",
-      department: "AI&DS",
-      year: 2
-    },
-    {
-      id: 4,
-      role: "Assitant",
-      image: "",
-      name: "Sri",
-      department: "AI&DS",
-      year: 2
-    }
-  ]
-
-  return (
-    
-    <div className="yrc-coordinators-container">
-      <h2 className="yrc-h2">
-        FACULTY COORDINATOR
-        <div className="yrc-underline2"></div>
-      </h2>
-      
-      <div className="yrc-member-card-1">
-        <img
-          src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-600nw-542759665.jpg"
-          alt="Officer"
-          className="yrc-member-image1"
-        />
-
-        <div className="yrc-member-info1">
-          {/* <span className="yrc-platoon">Programme Officer</span> */}
-          <h3>Ramesh Kumar V</h3>
-          <p className="yrc-title">Bachelor of Education</p>
-          <p className="yrc-degree">
-          The Programme Officer for the Youth Red Cross (YRC) is responsible for planning, coordinating, and implementing various YRC activities and initiatives. The role involves engaging with youth volunteers, organizing training sessions, promoting humanitarian values, and ensuring the smooth execution of YRC programs.
-          </p>
-        </div>
-      </div>
-
-      
-      {/* {staffCoordinator && (
-        <div className="yrc-member-card">
-          <img
-            src={UrlParser(staffCoordinator.image_path)}
-            alt={staffCoordinator.name}
-            className="yrc-member-image1"
-          />
-          <div className="yrc-member-info2">
-            <span className="yrc-platoon">Faculty Coordinator</span>
-            <h3>{staffCoordinator.name}</h3>
-            <p className="yrc-title">{staffCoordinator.designation}</p>
-          </div>
-        </div>
-      )} */}
-
-      <h2 className="yrc-h3">
-        STUDENT COORDINATORS
-        <div className="yrc-underline3"></div>
-      </h2>
-      <div className="yrc-members-grid">
-      {studentCoordinators1.map((coordinator) => (
-        <div key={coordinator.id} className="yrc-member-card">
-          <img
-            src={coordinator.image}
-            alt={coordinator.name}
-            className="yrc-member-image"
-          />
-          <div className="yrc-member-info">
-            <h3>{coordinator.name}</h3>
-            <span className="yrc-platoon">{coordinator.role}</span>
-            <p className="yrc-department"><b>Department:</b> {coordinator.department}</p>
-            <p className="yrc-year"><b>Year/Sec:</b> {coordinator.year}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    </div>
-  );
-}
-
-export default Coordinators;

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import NSSCarousel from "./NSSCarousel";
 import NSSContent from "./NSSContent";
 import Banner from "../../Banner";
@@ -9,61 +9,80 @@ import SideNav from "../SideNav";
 import CarouselNSS from "./Couroselnss";
 import Awardsrec from "./AwardsRecognition";
 import NotificationBox from "./NewsUpdates";
-
-function NSSAwd() {
-    return (
-        <h2 className="text-2xl text-accn">Awards</h2>
-    );
-}
+import LoadComp from "../../LoadComp"
 
 const NSS = () => {
-    const [NssData, setNssData] = useState(null);
-    const navData = {
-        "About NSS": (<><NSSContent /></>),
-        "News & Updates": <NotificationBox />,
-        "Recent Events": <NSSCarousel data={NssData && NssData.length > 2 ? NssData[2] : null}/>,
-        "Team & Coordinators": <Coordinators
-            faculty={NssData && NssData.length > 0 ? NssData[0] : null}
-            students={NssData && NssData.length > 1 ? NssData[1] : null}
-        />,
-        "Awards & Recognition": <Awardsrec />
-    };
-    const [nss, setNss] = useState(Object.keys(navData)[0]);
+  const [nssData, setNssData] = useState(null);
+  const [nss, setNss] = useState("About NSS");
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get("/api/nss");
-                setNssData(response.data);
-            } catch (err) {
-                console.error("Error Fetching Data:", err.message);
-            }
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("/api/nss");
+        const data = res.data[0]; 
+        const parsedData = {
+          faculty: data.coordinater,
+          students: data.members,
+          events: data.events,
+          awards: data.awards,
+          news: data.news
         };
+        console.log("Ajay",parsedData);
+        
+        setNssData(parsedData);
+      } catch (err) {
+        console.error("Error fetching NSS data:", err.message);
+      }
+    };
 
-        fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    return (
-        <main className="">
-            <Banner
-                backgroundImage="./nssbanner.jpg"
-                headerText="NATIONAL SERVICE SCHEME (NSS)"
-                subHeaderText="NOT ME BUT YOU."
-            />
-            {/*<nav className="flex flex-wrap gap-y-2 gap-x-2 lg:gap-y-0 justify-center lg:grid lg:float-left*/}
-            {/*    w-screen lg:w-fit lg:max-w-[20vw] text-xl ml-6 my-8">*/}
-            {/*    {Object.keys(navData).map((itm, ind) => (*/}
-            {/*        <button className={`px-4 py-2 border-2 border-text dark:border-drkt */}
-            {/*        hover:bg-accn/50 dark:hover:bg-drka/50   */}
-            {/*        ${(nss === itm)? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold": ""}*/}
-            {/*      ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}*/}
-            {/*        type={"button"} onClick={() => setNss(itm)}>{itm}</button>*/}
-            {/*    ))}*/}
-            {/*</nav>*/}
-            {/*{navData[nss]}*/}
-            <SideNav sts={nss} setSts={setNss} navData={navData} cls={""} />
-        </main>
-    );
+  if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
+  const navData = {
+    "About NSS": <NSSContent />,
+    "News & Updates": <NotificationBox data={nssData?.news} />,
+    "Recent Events": <CarouselNSS data={nssData?.events || null} />,
+    "Team & Coordinators": (<Coordinators faculty={nssData?.faculty} 
+        students={nssData?.students}
+      />
+    ),
+    "Awards & Recognition": <Awardsrec data={nssData?.awards} />
+  };
+
+  return (
+    <main>
+      <Banner
+        backgroundImage="./nssbanner.jpg"
+        headerText="NATIONAL SERVICE SCHEME (NSS)"
+        subHeaderText="NOT ME BUT YOU."
+      />
+      <SideNav sts={nss} setSts={setNss} navData={navData} cls={""} />
+    </main>
+  );
 };
 
 export default NSS;
