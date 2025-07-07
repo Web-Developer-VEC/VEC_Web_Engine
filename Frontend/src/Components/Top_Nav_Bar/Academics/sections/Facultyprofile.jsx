@@ -330,8 +330,8 @@ export const EducationTimeline = ({ data }) => {
   
 <br />
 
-<div className="faculty-timeline-table-container overflow-x-auto md:overflow-x-visible"> 
-    <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0 rounded-lg overflow-hidden ">
+<div className="faculty-timeline-table-container  overflow-x-auto md:overflow-x-none sm-overflow-x-none "> 
+    <table className="faculty-timeline-table w-[1120px] border-2 border-black border-separate border-spacing-0  overflow-hidden">
       <thead className="bg-gry text-white">
         <tr>
           <th className="border border-black p-3">Degree</  th>
@@ -535,10 +535,11 @@ const handleViewMore = () => {
       {visibleItems
         .filter((item) => item.text && Object.keys(item.details).length > 0) // Ensure text and details exist
         .map((item, index) => (
-          <li key={index} className="faculty-tiles-app-tile-item">
-     <div className="w-[0.4%] h-6 bg-black rounded-tl-full rounded-bl-full"></div>
+          <li key={index} className="faculty-tiles-app-tile-item  border-l-4 border-l-yellow-400 pl-6">
+         
+     {/* <div className="w-[0.4%] h-6 bg-yellow-400 rounded-tl-full rounded-bl-full"></div> */}
             <a
-              className="faculty-tiles-app-item-link"
+              className="faculty-tiles-app-item-link border-l-4 border-l-[#FFD700]"
               onClick={(e) => {
                 e.preventDefault();
                 onItemClick(item);

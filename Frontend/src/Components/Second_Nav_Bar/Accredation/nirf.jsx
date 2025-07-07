@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./nirf.css"; // Importing the CSS file
-import Banner from "../Banner";
+import Banner from "../../Banner";
 import axios from "axios";
-import LoadComp from "../LoadComp";
+import LoadComp from "../../LoadComp";
 
 const NIRF = ({ toggle, theme, isLoading }) => {
   const [nirfData, setNirfData] = useState(null);
@@ -65,20 +65,15 @@ const NIRF = ({ toggle, theme, isLoading }) => {
 
   return (
     <>
-      <Banner
-        toggle={toggle}
-        theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-        headerText="NIRF"
-        subHeaderText="The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015."
-      />
       <div className="nirf-page">
-        {isLoading && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
-            Loading...
-          </div>
-        )}
+        {!nirfData  ? (
+         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+        ):(
+
+          <div>
+
         <div className="nirf-intro dark:bg-drkb border-l-4 border-secd dark:border-drks">
           <h1 className="nirf-header text-brwn dark:text-drkt">
             NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)
@@ -99,11 +94,11 @@ const NIRF = ({ toggle, theme, isLoading }) => {
               <h3 className="text-text dark:text-drkt">NIRF {item.year}</h3>
               {item.categories.map((category, catIndex) => (
                 <a
-                  key={catIndex}
-                  href={`${UrlParser(category.link)}#toolbar=0`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="nirf-link dark:text-drka"
+                key={catIndex}
+                href={`${UrlParser(category.link)}#toolbar=0`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nirf-link dark:text-drka"
                 >
                   {category.name}
                 </a>
@@ -118,6 +113,8 @@ const NIRF = ({ toggle, theme, isLoading }) => {
           </a>
         </p>
       </div>
+  )}
+    </div>
     </>
   );
 };

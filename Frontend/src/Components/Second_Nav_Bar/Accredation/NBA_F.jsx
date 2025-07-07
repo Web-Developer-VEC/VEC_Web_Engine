@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./NBA_F.css";
-import Banner from '../Banner';
+import Banner from '../../Banner';
 import axios from 'axios';
-import LoadComp from '../LoadComp';
+import LoadComp from '../../LoadComp';
 
 const NBA_F = ({ theme, toggle }) => {
   const [selectedDept, setSelectedDept] = useState(null);
@@ -50,12 +50,15 @@ const NBA_F = ({ theme, toggle }) => {
 
   return (
     <>
-      <Banner
-        toggle={toggle} theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-        headerText="National Board of Accreditation"
-        subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
-      />
+
+    {!data ? (
+    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+    ): (
+
+
+
       <div className="nba-page">
         <div className="nba-tiles">
           <div className="nba-tile-container">
@@ -77,7 +80,7 @@ const NBA_F = ({ theme, toggle }) => {
         </div>
         <div className="table-data px-4 md:px-12 lg:px-24">
         <div className="overflow-x-auto border rounded-lg shadow-md">
-          <table className=" w-full department-table">
+          <table className=" w-[1000px] department-table">
             <thead className="bg-gray-100">
               <tr>
                 <th className="text-left px-4 py-2 text-text">S.No</th>
@@ -114,6 +117,7 @@ const NBA_F = ({ theme, toggle }) => {
       </div>
 
       </div>
+  )}
     </>
   );
 };
