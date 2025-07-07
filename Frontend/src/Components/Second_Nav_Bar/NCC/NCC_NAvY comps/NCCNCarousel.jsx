@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./NCCNCarousel.css"; // Import the CSS file
-
+import LoadComp  from "../../../LoadComp";
 
 const NCCNCarousel = ({data}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,7 +11,8 @@ const NCCNCarousel = ({data}) => {
     const UrlParser = (path) => {
       return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-
+    console.log("Ajay",data);
+    
     // Auto-slide functionality
     useEffect(() => {
         if (isAutoPlay) {
@@ -23,42 +24,51 @@ const NCCNCarousel = ({data}) => {
     }, [currentIndex, isAutoPlay]);
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? data?.carousal_images?.length - 1 : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? data?.image_path?.length - 1 : prev - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev === data?.carousal_images?.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev === data?.image_path?.length - 1 ? 0 : prev + 1));
     };
 
     return (
-        <div className="ncc-carousel-wrap">
+<>
+        {data  ? (
+            
+            <div className="ncc-carousel-wrap">
             <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {data?.carousal_images?.map((slide, index) => (
+                {data?.image_path?.map((slide, index) => (
                     <div className="ncc-carousel-slide" key={index}>
-                        <img src={UrlParser(slide)} alt={data?.carousal_title[index]} />
+                        <img src={UrlParser(slide)} alt={data?.title[index]} />
                         <div className="ncc-carousel-text">
-                            <h3>{data?.carousal_title[index]}</h3>
-                            <p>{data?.carousal_description[index]}</p>
+                            <h3>{data?.title[index]}</h3>
+                            <p>{data?.des[index]}</p>
                         </div>
                     </div>
                 ))}
             </div>
-
+            
             {/* Navigation Buttons */}
             <button className="ncc-carousel-btn ncc-carousel-btn-left" onClick={prevSlide}>&#10094;</button>
             <button className="ncc-carousel-btn ncc-carousel-btn-right" onClick={nextSlide}>&#10095;</button>
-
+            
             {/* Dots Indicator */}
-            <div className="ncc-carousel-dots">
-                {data?.carousal_images?.map((_, index) => (
+            {/* <div className="ncc-carousel-dots">
+                {data?.image_path?.map((_, index) => (
                     <span
-                        key={index}
-                        className={`ncc-dot ${index === currentIndex ? "active" : ""}`}
-                        onClick={() => setCurrentIndex(index)}
+                    key={index}
+                    className={`ncc-dot ${index === currentIndex ? "active" : ""}`}
+                    onClick={() => setCurrentIndex(index)}
                     ></span>
-                ))}
-            </div>
-        </div>
+                        ))}
+                        </div> */}
+                        </div>
+                    ):(
+            <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+                    )}
+ </>
     );
 };
 

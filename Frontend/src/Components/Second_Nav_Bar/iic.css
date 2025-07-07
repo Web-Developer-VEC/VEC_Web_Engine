@@ -42,13 +42,14 @@
   transform: translateY(-3px);
 }
 
-  .about-section {
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin: 40px 0;
-  }
+.about-section {
+    /* max-width: 800px;               constrain width for readability */
+    margin: 2rem auto;              /* center horizontally with top/bottom spacing */
+    padding: 1rem;                  /* consistent inner padding */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;                    /* spacing between inner sections */
+}
 
   .naac-info-panel, .iqac-info-panel, .function-info-panel {
     padding: 25px;
@@ -113,6 +114,10 @@
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
+.text-accn {
+    padding-top: 3vh;        /* correct spelling: 'padding' */
+    font-weight: bold;       /* correct property for bold text */
+}
 
   .members {
     text-align: center;

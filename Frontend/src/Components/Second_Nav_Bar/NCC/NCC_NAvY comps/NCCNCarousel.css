@@ -37,10 +37,10 @@
     right: 20px;
     background: rgba(0, 0, 0, 0.6);
     color: white;
-    padding: 15px;
+    padding: 13px;
     border-radius: 5px;
     font-size: 16px;
-    max-width: 300px;
+    width: 95%;
 }
 
 /* Carousel Buttons */

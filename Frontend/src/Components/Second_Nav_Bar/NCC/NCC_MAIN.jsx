@@ -5,9 +5,33 @@ import Banner from "../../Banner";
 import NCC_ARMY from "./NCC_ARMY";
 import NCC_NAVY from "./NCC_NAVY";
 import Army from "../../Assets/NccArmy.png";
+import LoadComp from "../../LoadComp"
+import { useEffect } from "react";
 
 const NCCMAIN = ({ toggle, theme }) => {
   const [activePage, setActivePage] = useState("buttons");
+
+        const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+  if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
   return (
     <div>
@@ -76,7 +100,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-2 right-2 lg:left-auto lg:right-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] top-auto bottom-4 px-3 py-2  right-4 lg:left-auto lg:right-3 bg-slate-500   text-black rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
               Back ➡
@@ -95,10 +119,10 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-2 left-2 bg-slate-500 p-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] top-auto bottom-5 right-5  bg-slate-500 px-3 py-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
-              ⬅ Back
+               Back ➡
             </button>
             <NCC_NAVY />
           </motion.div>

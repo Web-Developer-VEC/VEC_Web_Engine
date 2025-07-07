@@ -4,6 +4,7 @@ import axios from "axios";
 import Banner from "../Banner";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { motion } from "framer-motion";
+import LoadComp from "../LoadComp";
 
 const Naac = ({ toggle, theme }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +34,28 @@ const Naac = ({ toggle, theme }) => {
     };
     fetchData();
   }, []);
+      const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
   return (
     <>

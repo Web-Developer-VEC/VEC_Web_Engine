@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./nirf.css"; // Importing the CSS file
 import Banner from "../Banner";
 import axios from "axios";
+import LoadComp from "../LoadComp";
 
 const NIRF = ({ toggle, theme, isLoading }) => {
   const [nirfData, setNirfData] = useState(null);
@@ -39,6 +40,28 @@ const NIRF = ({ toggle, theme, isLoading }) => {
       })),
     }));
   };
+      const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
   return (
     <>
