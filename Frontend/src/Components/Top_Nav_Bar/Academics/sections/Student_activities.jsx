@@ -49,7 +49,7 @@ const ImageCarousel = ({ data }) => {
         <>
           {/* 🔹 Section Heading */}
           <div className="intro-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h1 className="intro-title text-accn dark:text-drka">
+            <h1 className="intro-title text-accn dark:text-drkt">
               <i className="inline-block mr-2 mb-1" /> Student Achievements
             </h1>
             <p className="intro-text-act text-text dark:text-drkt">{data.content}</p>

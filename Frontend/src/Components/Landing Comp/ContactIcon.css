@@ -22,7 +22,6 @@ body {
 }
 
 .click-popup {
-  background: rgb(253, 204, 3);
   color: black;
   padding: 20px;
   position:fixed;
@@ -30,7 +29,6 @@ body {
   /* width: 390px; */
   bottom: 80px; 
   left: 20px; 
-  border-radius: 10px;
   margin-bottom: 15px;
 } 
     

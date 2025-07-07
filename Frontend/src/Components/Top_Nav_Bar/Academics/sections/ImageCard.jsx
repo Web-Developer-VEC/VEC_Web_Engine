@@ -31,40 +31,39 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
 
     <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
     <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
-      <h3 className={styles.facultyName + " text-accn dark:text-drka"}>{name}</h3>
-      <p className="+ text-[#800000]">{Designation}</p>
+      <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
+      <p className="+ text-[#800000] dark:text-drka">{Designation}</p>
       <div className={firstTile ? styles.firstTileSocialLinks : styles.socialLinks}>
         {Publon && (
           <a href={Publon} target="_blank" rel="noopener noreferrer">
-            <SiPublons  className="text-accn dark:text-drks" />
+            <SiPublons  className="text-accn dark:text-drka" />
           </a>
         )}
         {Scholar && (
           <a href={Scholar} target="_blank" rel="noopener noreferrer">
-            <FaGoogleScholar className="text-accn dark:text-drks" />
+            <FaGoogleScholar className="text-accn dark:text-drka" />
           </a>
         )}
         {Orchid && (
           <a href={Orchid} target="_blank" rel="noopener noreferrer">
-            <FaOrcid className="text-accn dark:text-drks" />
+            <FaOrcid className="text-accn dark:text-drka" />
           </a>
         )}
         {Research && (
           <a href={Research} target="_blank" rel="noopener noreferrer">
-            <FaResearchgate className="text-accn dark:text-drks" />
+            <FaResearchgate className="text-accn dark:text-drka" />
           </a>
         )}
         {Linkedin && (
           <a href={Linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="text-accn dark:text-drks" />
+            <FaLinkedin className="text-accn dark:text-drka" />
           </a>
         )}
       </div>
        
       <button
-       onClick={() => navigate(`/facultyprofile/${uid}`)}
-       className={styles.facButton + " bg-accn dark:bg-drks hover:bg-secd hover:text-text " +
-          "dark:hover:bg-drka dark:hover:drkt"}>
+      //  onClick={() => navigate(`/facultyprofile/${uid}`)}
+       className={styles.facButton + " bg-accn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
         View More</button>
     </div>
   </div>

@@ -13,7 +13,7 @@ const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
-const IQAC = () => {
+const IQAC = ({ toggle , theme }) => {
     const [selectedYear, setSelectedYear] = useState("Objectives");
     const [selectedAction, setSelectedAction] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("OVERALL");
@@ -198,15 +198,15 @@ const IQAC = () => {
     const renderObjectivesContent = () => {
         return (
             <div className="objectives-container">
-                <div className="objectives-card">
-                    <h3 className="objectives-heading">About IQAC</h3>
-                    <p className="objectives-text">{iqacData?.objectives?.about}</p>
+                <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                    <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About IQAC</h3>
+                    <p className="objectives-text text-text dark:text-drkt">{iqacData?.objectives?.about}</p>
                 </div>
-                <div className="objectives-card">
-                    <h3 className="objectives-heading">IQAC Objectives</h3>
+                <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                    <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">IQAC Objectives</h3>
                     <ul className="objectives-list">
                         {iqacData?.objectives?.objectives.map((objective, index) => (
-                            <li key={index} className="objectives-item">{objective}</li>
+                            <li key={index} className="objectives-item text-text dark:text-drkt">{objective}</li>
                         ))}
                     </ul>
                 </div>
@@ -218,7 +218,7 @@ const IQAC = () => {
     const renderCoordinatorContent = () => {
         return (
             <div className="coordinator-container flex-wrap">
-                <h2 className="text-[24px] text-center text-accn my-4 basis-full">IQAC Coordinator</h2>
+                <h2 className="text-[24px] text-center text-accn dark:text-drkt my-4 basis-full">IQAC Coordinator</h2>
                 {coordinator && (
                     <div className="coordinator-card ">
                         <div className="coordinator-image-container max-w-[25vmax] h-auto">
@@ -226,11 +226,11 @@ const IQAC = () => {
                                  className="coordinator-image"/>
                         </div>
                         <div className="coordinator-details w-full">
-                            <h3 className="coordinator-name">{coordinator.name}</h3>
-                            <p className="coordinator-designation">{coordinator.designation}</p>
-                            <p className="coordinator-role">{coordinator.keyRole}</p>
-                            <p className="coordinator-email">Email: <a href={`mailto:${coordinator.email}`} className="text-black">{coordinator.email}</a></p>
-                            <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-black">{coordinator.phone}</a></p>
+                            <h3 className="coordinator-name text-text dark:text-drkt">{coordinator.name}</h3>
+                            <p className="coordinator-designation text-brwn dark:text-drka">{coordinator.designation}</p>
+                            <p className="coordinator-role text-brwn dark:text-drka">{coordinator.keyRole}</p>
+                            <p className="coordinator-email">Email: <a href={`mailto:${coordinator.email}`} className="text-drka">{coordinator.email}</a></p>
+                            <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-drka">{coordinator.phone}</a></p>
                         </div>
                     </div>
                 )}
@@ -247,14 +247,14 @@ const IQAC = () => {
     
         return (
             <div className="mr-4">
-                <h2 className="text-2xl text-center my-4">Gallery</h2>
+                <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
                 
                 {/* Category Buttons */}
                 <div className="flex gap-2 justify-center mb-4">
                     {categories.map((category) => (
                         <button
                             key={category}
-                            className={`bg-secd px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
+                            className={`bg-secd dark:bg-drksl px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
                             type="button"
                             onClick={() => setSelectedCategory(category)}
                         >
@@ -298,9 +298,9 @@ const IQAC = () => {
                     <div key={index} className="members dark:bg-drkp">
                         <img src={member.image || "/placeholder.svg"} alt={member.name}
                              className="member-image"/>
-                        <p className="text-secd dark:text-drks">{member.name}</p>
-                        <h6>{member.designation}</h6>
-                        <p>{member.keyRole}</p>
+                        <p className="text-text dark:text-drkt">{member.name}</p>
+                        <h6 className="text-brwn dark:text-drka">{member.designation}</h6>
+                        <p className="text-brwn dark:text-drka">{member.keyRole}</p>
                     </div>
                 ))}
             </div>
@@ -310,10 +310,10 @@ const IQAC = () => {
     function IqaMet() {
         return (
             <div className="flex flex-wrap justify-center text-xl my-4 gap-8">
-                <h2 className={"basis-full text-brwn text-center text-[24px]"}>Minutes of Meetings</h2>
+                <h2 className={"basis-full text-brwn dark:text-drkt text-center text-[24px]"}>Minutes of Meetings</h2>
                 {minutesOfMeetingsArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                         className="hover:underline hover:text-text dark:hover:text-drkt"
+                         className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
                          // onClick={() => openPdf("Minutes of Meetings", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
@@ -326,10 +326,10 @@ const IQAC = () => {
     function IqaAud() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Academic and Administrative Audit</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Academic and Administrative Audit</h2>
                 {academicAdminAuditArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                         className="hover:underline hover:text-text dark:hover:text-drkt"
+                         className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
                          // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
@@ -346,10 +346,10 @@ const IQAC = () => {
     function IqaDev() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Strategic development plan</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Strategic development plan</h2>
                 {strategicPlanArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                       className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
@@ -362,10 +362,10 @@ const IQAC = () => {
     function IqaPra() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn"}>Best Practices</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Best Practices</h2>
                 {bestPracticesArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                       className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
@@ -379,7 +379,7 @@ const IQAC = () => {
         return (
             <div className="flex flex-wrap justify-center my-4">
                 <div
-                    className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                    className={`iqac-action-button ${showethpdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
                     onClick={() => {openPdf("Code of Ethics", "Code of Ethics"); setShowethpdf(true)}}>
                     Code of Ethics
                 </div>
@@ -393,10 +393,10 @@ const IQAC = () => {
     function IqaQar() {
         return (
             <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn"}>AQAR</h2>
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>AQAR</h2>
                 {aqarArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                       className="hover:underline hover:text-text dark:hover:text-drkt"
+                       className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
@@ -410,7 +410,7 @@ const IQAC = () => {
         return (
             <div className="flex flex-wrap justify-center my-4">
                 <div
-                    className="iqac-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                    className={`iqac-action-button ${showisopdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
                     onClick={() => {openPdf("ISO Certificate", "ISO Certificate"); setshowisopdf(true)}}>
                     ISO Certificate
                 </div>
@@ -490,6 +490,7 @@ const IQAC = () => {
     return (
         <>
             <Banner
+                toggle={toggle} theme={theme}
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
                 headerText="IQAC"
                 subHeaderText="IQAC"

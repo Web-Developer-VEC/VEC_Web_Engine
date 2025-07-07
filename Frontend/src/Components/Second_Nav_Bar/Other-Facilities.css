@@ -2,8 +2,6 @@
 .facilities-container {
   padding: 40px;
   text-align: center;
-
-  background-color: white;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -23,8 +21,6 @@
 }
 
 .tab-button {
-  background-color: #FFD700;
-  color: #800000;
   border: 2px solid #800000;
   padding: 10px 15px;
   margin: 5px;
@@ -90,7 +86,6 @@
   padding: 10px;
   font-weight: bold;
   font-size: 30px;
-  color: #800000;
 }
 
 

@@ -170,7 +170,7 @@ const Dean = ({theme, toggle}) => {
         <LoadComp txt={""} />
       </div>
     ) : (
-      <div className="container">
+      <div className="deancontainer">
         <div className="de-container font-poppins">
           {data.map((section, index) => {
             const responsibleDean = deanData.find(
@@ -179,14 +179,16 @@ const Dean = ({theme, toggle}) => {
 
             return (
               <div className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={index}>
-                <h1 className="de-heading text-accn dark:text-drka font-poppins">{section.heading}</h1>
+                <h1 className="de-heading text-accn dark:text-drkt font-poppins">{section.heading}</h1>
                 <div className="de-content">
                   {/* Profiles Section */}
                   {(responsibleDean?.Dean || responsibleDean?.Associate_Dean) && (
                     <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-poppins">
                       {/* Dean Profile */}
                       {responsibleDean?.Dean && (
-                        <div className="font-poppins de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}>
+                        <div className="font-poppins de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks"
+                        //  onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}
+                         >
                           <img
                             src={UrlParser(responsibleDean.Dean_Image)} 
                             alt={responsibleDean.Dean}
@@ -195,14 +197,16 @@ const Dean = ({theme, toggle}) => {
                             <strong>{responsibleDean.Dean}</strong>
                             <br />
                             <span>{responsibleDean.Dean_Type}</span><br />
-                            <span>{responsibleDean.Dean_Designation}</span>
+                            <span className="text-text dark:text-drka">{responsibleDean.Dean_Designation}</span>
                           </div>
                         </div>
                       )}
 
                       {/* Associate Dean Profile */}
                       {responsibleDean?.Associate_Dean && (
-                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}>
+                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" 
+                        // onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}
+                        >
                           <img
                             src={UrlParser(responsibleDean.Associate_Dean_Image)}
                             alt={responsibleDean.Associate_Dean}
@@ -211,21 +215,12 @@ const Dean = ({theme, toggle}) => {
                             <strong>{responsibleDean.Associate_Dean}</strong>
                             <br />
                             <span>{responsibleDean.Ass_Dean_Type}</span><br />
-                            <span>{responsibleDean.Associate_Dean_Designation}</span>
+                            <span className="text-text dark:text-drka">{responsibleDean.Associate_Dean_Designation}</span>
                           </div>
                         </div>
                       )}
                     </div>
                   )}
-                  {/* Roles Section */}
-                  {/*<div className="de-roles-section">*/}
-                  {/*  <h2>Roles and Responsibilities</h2>*/}
-                  {/*  <ul className="de-roles">*/}
-                  {/*    {section.roles.map((role, i) => (*/}
-                  {/*      <li className=" bg-prim dark:bg-drkp before:bg-secd dark:before:bg-drks" key={i}>{role}</li>*/}
-                  {/*    ))}*/}
-                  {/*  </ul>*/}
-                  {/*</div>*/}
                 </div>
               </div>
             );

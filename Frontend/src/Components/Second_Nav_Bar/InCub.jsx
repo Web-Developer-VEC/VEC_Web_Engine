@@ -5,7 +5,7 @@ import SideNav from "./SideNav";
 import LoadComp from "../LoadComp";
 
 
-const Incub = () => {
+const Incub = ( {toggle, theme}) => {
     const [selectedSection, setSelectedSection] = useState("Home");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cub, setCub] = useState("Home")
@@ -88,9 +88,9 @@ const Incub = () => {
     function CubHme() {
         return (
             <div className="ic-home-container">
-                <div className="ic-about-section">
-                    <h2>About Us</h2>
-                    <p className="ic-centered-text">
+                <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                    <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h2>
+                    <p className="ic-centered-text text-text dark:text-drkt">
                         The NAAC conducts assessment and accreditation of Higher Educational Institutions (HEI)
                         such as colleges, universities, or other recognised institutions to derive an understanding
                         of the 'Quality Status' of the institution.
@@ -98,14 +98,14 @@ const Incub = () => {
                 </div>
 
                 <div className="ic-vision-mission-grid">
-                    <div className="ic-vm-card">
-                        <h3>Vision</h3>
+                    <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                        <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Vision</h3>
                         <p>To be a premier institution fostering innovation and entrepreneurship through quality
                             education and industry collaboration</p>
                     </div>
 
-                    <div className="ic-vm-card">
-                        <h3>Mission</h3>
+                    <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                        <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Mission</h3>
                         <ul>
                             <li>Promote innovative thinking among students</li>
                             <li>Facilitate industry-academia partnerships</li>
@@ -124,9 +124,9 @@ const Incub = () => {
                 <table className="ic-data-table">
                     <thead>
                     <tr>
-                        <th className="ic-table-head">SL No</th>
-                        <th className="ic-table-head">Group Name</th>
-                        <th className="ic-table-head">Student Lead Name & Dept.</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Group Name</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Student Lead Name & Dept.</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -149,10 +149,10 @@ const Incub = () => {
                 <table className="ic-data-table">
                     <thead>
                     <tr>
-                        <th className="ic-table-head">SL No</th>
-                        <th className="ic-table-head">Organization</th>
-                        <th className="ic-table-head">Duration</th>
-                        <th className="ic-table-head">Area of Collaboration</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Organization</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Duration</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Area of Collaboration</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -184,7 +184,7 @@ const Incub = () => {
 
     function CubFcl() {
         return (
-            <div className="ic-wrap-h-fit">
+            <div className="ic-wrap-h-fit dark:bg-drkp">
                 <div className="ic-container">
                     {slideData.map((slide, index) => (
                         <div className={`ic-carousel-slide ${index === currentIndex ? "visible" : "hidden"}`} key={index}>
@@ -224,9 +224,9 @@ const Incub = () => {
                             className="ic-mentor-image"
                         />
                         <div className="ic-mentor-details">
-                            <h3>{mentor.name}</h3>
-                            <p className="ic-qualification">{mentor.qualification}</p>
-                            <p className="ic-position">{mentor.position}</p>
+                            <h3 className="text-text dark:text-drkt">{mentor.name}</h3>
+                            <p className="ic-qualification text-brwn dark:text-drka">{mentor.qualification}</p>
+                            <p className="ic-position text-brwn dark:text-drka">{mentor.position}</p>
                         </div>
                     </div>
                 ))}
@@ -264,6 +264,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
         
         <>
             <Banner
+                toggle={toggle} theme={theme}
                 backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
                 headerText="IIC"
                 subHeaderText="Innovation & Incubation Center"

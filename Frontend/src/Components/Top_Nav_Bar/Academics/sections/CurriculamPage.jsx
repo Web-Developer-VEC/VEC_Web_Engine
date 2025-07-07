@@ -43,7 +43,7 @@ const CurriculumPage = ({ data }) => {
                       <div className="options-container">
                         <button 
                         className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
-                          dark:hover:bg-drka"
+                          dark:hover:bg-brwn"
                         onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
                         >
                           <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />

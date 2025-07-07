@@ -85,7 +85,7 @@ const scienceHumanities = [
   { name: "Tamil", icon: <FaLanguage />, link: "/dept/014" },
 ];
 
-const AcademicDepartments = () => {
+const AcademicDepartments = ({ theme , toggle }) => {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -112,42 +112,42 @@ const AcademicDepartments = () => {
   return (
     <>
       <Banner
-        
+        toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="Department"
-        subHeaderText="The NIRF is a comprehensive ranking system launched by the Ministry of Education, Government of India, in 2015."
+        subHeaderText="Each department represents a gateway to discovery, innovation, and personal growth—together forming the academic foundation of our institution."
       />
       <div className="department1-container">
-        <h1 className="department1-heading">UG Courses</h1>
+        <h1 className="department1-heading text-brwn dark:text-prim">UG Departments</h1>
         <div className="department1-grid">
           {ugDepartments.map((dept, index) => (
-            <div key={index} className="department1-department-card">
+            <div key={index} className="department1-department-card bg-prim dark:bg-drkts">
               <span className="department1-icon">{dept.icon}</span>
-              <a href={dept.link} className="department1-department-link">
+              <a href={dept.link} className="department1-department-link text-text dark:text-drkt">
                 {dept.name}
               </a>
             </div>
           ))}
         </div>
 
-        <h1 className="department1-heading">PG Courses</h1>
+        <h1 className="department1-heading text-brwn dark:text-prim">PG Departments</h1>
         <div className="department1-grid">
           {pgDepartments.map((dept, index) => (
             <div key={index} className="department1-department-card">
               <span className="department1-icon">{dept.icon}</span>
-              <a href={dept.link} className="department1-department-link">
+              <a href={dept.link} className="department1-department-link text-text dark:text-drkt">
                 {dept.name}
               </a>
             </div>
           ))}
         </div>
 
-        <h1 className="department1-heading">Science & Humanities</h1>
+        <h1 className="department1-heading text-brwn dark:text-prim">Science & Humanities</h1>
         <div className="department1-grid">
           {scienceHumanities.map((dept, index) => (
             <div key={index} className="department1-department-card">
               <span className="department1-icon">{dept.icon}</span>
-              <a href={dept.link} className="department1-department-link">
+              <a href={dept.link} className="department1-department-link text-text dark:text-drkt">
                 {dept.name}
               </a>
             </div>

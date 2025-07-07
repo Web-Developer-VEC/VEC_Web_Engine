@@ -1,5 +1,5 @@
 import {TfiControlBackward, TfiControlForward, TfiControlPause, TfiControlPlay} from "react-icons/tfi";
-import {useEffect, useState, useRef} from "react"
+import {useEffect, useState, useRef, act} from "react"
 import axios from "axios"
 import "./iic.css"
 import Banner from "../Banner"
@@ -7,10 +7,10 @@ import SideNav from "./SideNav";
 import LoadComp from "../LoadComp";
 
 function IicHome() {
-    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks iic-box">
-        <h1 className="text-accn text-[32px]">Home</h1>
-        <h2 className="text-[24px] naac-about">About IIC</h2>
-        <p>
+    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+        <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
+        <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">About IIC</h2>
+        <p className="text-text dark:text-drkt">
             The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
             systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The
             primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with
@@ -25,10 +25,9 @@ function IicHome() {
 
 function IicEst() {
     return (<div className="about-section">
-        <div><h1 className="text-accn text-4xl font-bold text-center">Establishment of IIC</h1></div>
-
-        <div className="naac-info-panel border-l-4 border-secd dark:border-drks">
-            <h2 className="text-[30px] iic-establishment">Major Focus of IIC</h2>
+        <div><h1 className="text-brwn dark:text-drkt text-4xlfont-bold text-center">Establishment of IIC</h1></div>
+        <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h2 className="text-[30px] iic-establishment text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
             <p>
                 <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
                 prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
@@ -37,7 +36,7 @@ function IicEst() {
                 <br/>
             </p>
         </div>
-
+            
        <div className="flex flex-col lg:flex-row justify-between gap-6">
     {/* Left Panel */}
     <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2">
@@ -124,8 +123,8 @@ function IicThd({iicData}) {
 
 function IicEco() {
     return (<div className="mb-10">
-        <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks">
-            <h1 className="text-accn text-4xl">I & E Ecosystem</h1>
+        <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+            <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
             <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
             <p>
                 <br/>• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC
@@ -150,11 +149,15 @@ function IicCon({iicData}) {
     return (
        <>
        {
-       iicData?( <h1 className="text-accn text-4xl">Contacts</h1>):( <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+       iicData?( 
+         <h1 className="text-accn text-4xl">Contacts</h1>
+         ):( 
+      <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
                     <LoadComp />
-                </div>)
-       }
+                </div>
+        )}
        </>
+
     );
 }
 
@@ -425,7 +428,7 @@ const Iic = ({toggle, theme}) => {
                         <div className="nir-buttons">
                             {section.buttons.map((button, btnIndex) => (
                                 <div key={btnIndex} className="iic-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
-                  dark:hover:bg-drka rounded-xl border-2 border-accn dark:border-drka">
+                  dark:hover:bg-brwn rounded-xl border-2 border-accn dark:border-drka">
                                     {button.text}
                                 </div>
                             ))}
@@ -446,7 +449,7 @@ const Iic = ({toggle, theme}) => {
                     if (isPlaying) intervalRef.current = loop(); // Resume auto-scroll only if playing
                 }}
             >
-                <h1 className="text-accn text-4xl">Calender</h1>
+                <h1 className="text-accn dark:text-drkt text-4xl">Calender</h1>
                 <h3 className="iic-faici">Facilities And Infrastructure</h3>
                 <div className="gallery">
                     <div className="left iic-left">
@@ -495,7 +498,7 @@ const Iic = ({toggle, theme}) => {
                 <div className="carousel-controls">
                 <h1 className="text-accn text-4xl">Gallery</h1>
                 <button
-                    className={`carousel-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
+                    className={`carousel-button bg-secd dark:text-prim dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
                     onClick={movePrev}
                 >
                     <TfiControlBackward/>
@@ -507,7 +510,7 @@ const Iic = ({toggle, theme}) => {
                 {isPlaying ? <TfiControlPause /> : <TfiControlPlay />}
               </button> */}
                 <button
-                    className={`carousel-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka`}
+                    className={`carousel-button bg-secd dark:bg-drks dark:text-prim hover:bg-accn hover:text-prim dark:hover:bg-drka`}
                     onClick={moveNext}
                 >
                     <TfiControlForward/>
@@ -519,6 +522,8 @@ const Iic = ({toggle, theme}) => {
             </>
         );
     }
+
+    const [selected , setSelected] = useState(null);
 
     function IicFac() {
         return (

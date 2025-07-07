@@ -52,7 +52,7 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl text-brwn font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+              <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
               Velammal Educational Trust (VET)
               </h2>
               <p className="text-lg leading-relaxed">
@@ -82,7 +82,7 @@ const NewTrust = ({theme, toggle}) => {
               transition={{ duration: 0.6 }}
               className="text-left text-text dark:text-drkt"
             >
-              <h2 className="text-3xl text-brwn font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+              <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Strength of the Trust
               </h2>
               <p className="text-lg leading-relaxed">
@@ -95,7 +95,7 @@ const NewTrust = ({theme, toggle}) => {
         {/* Section 3 - Management */}
         <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-accn dark:text-drka mb-6">The Management</h2>
+            <h2 className="text-3xl font-bold text-accn dark:text-drkt mb-6">The Management</h2>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
             {/* {managementTeam.map((person, index) => ( */}
@@ -128,7 +128,7 @@ const NewTrust = ({theme, toggle}) => {
                 <img
                   src={UrlParser('static/images/trust/velmurugan.webp')}
                   alt="Shri. M.V. VelMurugan"
-                  className="management-image-2 md:w-40 md:h-40 mr-6 shadow-lg"
+                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>
@@ -147,7 +147,7 @@ const NewTrust = ({theme, toggle}) => {
                 <img
                   src={UrlParser("static/images/trust/deptyceo.webp")}
                   alt="Shri. M.V. VelMurugan"
-                  className="management-image-3 md:w-40 md:h-40 mr-6 shadow-lg"
+                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>

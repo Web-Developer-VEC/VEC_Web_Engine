@@ -49,10 +49,6 @@
     text-align: left;
 }
 
-.Patent-table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
 /* Links inside Table */
 .Patent-table a {
     color: blue;
@@ -64,10 +60,7 @@
     font-weight: bold;
     text-align: center;
     padding: 10px 20px;
-    border-left: 5px solid #ffe102;
-    border-right: 5px solid #ffe102;
     border-radius: 8px;
-    color: #800000;
     margin-bottom: 30px;
     width: fit-content;
 }

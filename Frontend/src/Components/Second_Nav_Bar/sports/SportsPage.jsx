@@ -14,9 +14,10 @@ import WinnerSlider from './winners_sld';
 import LoadComp from '../../LoadComp';
 
 function SPTIntro() {
-    return (<section className="introduction">
+    return (
+    <section className="introduction dark:bg-drkb border-l-4 border-secd dark:border-drks">
         <div className="section-content">
-            <h2 className="section-title">Introduction</h2>
+            <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
             <p className="intro-text">
                 Our College department of physical education is an integral part of our institution right from its
                 inception
@@ -44,9 +45,9 @@ function SPTIntro() {
 
 function SPTVis() {
     return (
-    <section className="vision-mission">
+    <section className="vision-mission border-l-4 border-secd dark:border-drks dark:bg-drkb">
         <div className="section-content">
-            <h2 className="section-title">Vision & Mission</h2>
+            <h2 className="section-title text-brwn dark:text-drkt">Vision & Mission</h2>
             <p className="vision-mission-text">
                 The vision of our department of physical education is physical, mental and Intellectual
                 development of the whole student. For which we create an environment that will focus on

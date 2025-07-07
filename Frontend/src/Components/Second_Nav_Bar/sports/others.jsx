@@ -54,7 +54,7 @@ const Others = ({ data }) => {
     <>
       {data ? (
       <div className="relative w-full max-w-4xl mx-auto ">
-        <h2 className="text-center text-accn text-4xl font-bold mb-4">
+        <h2 className="text-center text-accn dark:text-drkt text-4xl font-bold mb-4">
           Other Achievements
         </h2>
 
@@ -77,10 +77,10 @@ const Others = ({ data }) => {
                     <img
                       src={item.image}
                       alt="Achievement"
-                      className="w-full h-80 object-contain bg-gray-100 rounded-t-lg"
+                      className="w-full h-80 object-contain rounded-t-lg"
                     />
-                    <div className="p-4 text-center bg-white rounded-b-lg">
-                      <p className="text-lg font-semibold text-gray-800">
+                    <div className="p-4 text-center rounded-b-lg">
+                      <p className="text-lg font-semibold text-text dark:text-drkt">
                         {item.text}
                       </p>
                     </div>

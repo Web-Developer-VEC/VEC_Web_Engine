@@ -2,6 +2,22 @@ body, html {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar for all browsers */
+body {
+  overflow: hidden;
+}
+
+/* Optional: if you want to scroll but just hide the scrollbar: */
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
 .navbar {
   background: #fff;
   height: 80px;

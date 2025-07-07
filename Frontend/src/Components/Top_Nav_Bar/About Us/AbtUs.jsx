@@ -64,7 +64,7 @@ const AbtUs = ({ theme, toggle }) => {
                         bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                         
                         <p className='text-3xl text-center font-[Poppins]'>{secTtl}</p>
-                        <p className='text-[20px] font-bold text-accn dark:text-drka text-center font-[Poppins]'>{secSub}</p>
+                        <p className='text-[20px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
                         <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                     </div>
                     
@@ -135,19 +135,19 @@ const AbtUs = ({ theme, toggle }) => {
                 <ul className='pdf-links flex flex-wrap justify-center gap-8' >
                     <li className='text-lg flex items-center gap-'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗AICTE Approval</a>
+                        <a href={UrlParser("static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗University Affiliation</a>
+                        <a href={UrlParser("static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Governing Body</a>
+                        <a href={UrlParser("static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 hover:underline'>🔗Mandatory Disclosures</a>
+                        <a href={UrlParser("static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                     </li>
                 </ul>
             </div>

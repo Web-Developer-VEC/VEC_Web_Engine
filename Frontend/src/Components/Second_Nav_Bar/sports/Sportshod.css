@@ -5,8 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;  
-    justify-content: center; 
-    background-color: rgb(245, 245, 245);
+    justify-content: center;
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
    
@@ -42,11 +41,6 @@
     font-family: 'Poppins', sans-serif;
     line-height: 2rem;
   }
-
-
-.SportsHODDes{
-    color: rgb(77, 0, 0);
-}
 
 .SportsHODDes{
     font-family: 'Poppins', sans-serif;

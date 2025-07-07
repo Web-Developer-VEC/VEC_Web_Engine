@@ -117,7 +117,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
       <div className="alumni-announcement">
         <div className="proud-alumni">
           <div className="app-container h-full">
-            <div className="text-content">
+            <div className="text-content text-[#2d3748] dark:text-[#70C1FF]">
               <h1>Get</h1>
               <h2 style={{ margin: "0 20px" }}>Inspired</h2>
               <h3 style={{ margin: "0 40px" }}>by</h3>
@@ -166,7 +166,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
           <div className="w-100">
               {spcannouncements.map((item) => (
                   <div key={item.title}>
-                      <h2 className="text-3xl text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
+                      <h2 className="text-3xl text-accn dark:text-drkt mt-5 mb-3">{item.title}</h2>
                       <p className="text-xl">{item.content}</p>
                   </div>
               ))}
@@ -175,7 +175,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
                   {content?.map((item, index) => (
                       <li className="text-xl mb-2" key={index}>
                           <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                          <a href={links[index]} target="_blank" className="text-black no-underline">{item}</a>
+                          <a href={links[index]} target="_blank" className="text-text dark:text-prim no-underline cursor-pointer">{item}</a>
                       </li>
                   ))}
               </ul>
@@ -186,7 +186,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
       {/* Static Sections */}
       <div className="alumni-container">
         <section className="alumni-section">
-          <h2 className="asection-title">Alumni Cell Overview</h2>
+          <h2 className="asection-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Alumni Cell Overview</h2>
           <p className="section-content">
             The VEC Alumni Cell fosters relationships between alumni, students,
             and the institution, nurturing lifelong connections and mutual
@@ -198,11 +198,11 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
 
         <section className="alumni-section two-column">
           <div
-            className="column rounded-xl,theme(colors.secd),transparent_70%)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
-                    border-l-4 border-[#fdcc03] dark:border-drka rounded-md"
+            className="column
+                    dark:bg-drkb rounded-lg
+                    border-l-4 border-[#fdcc03] dark:border-drks rounded-md"
           >
-            <h2 className="asection-title">Vision</h2>
+            <h2 className="asection-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
             <p className="section-content">
               To establish a strong, lifelong bond between the institution and
               its alumni, fostering a mutually beneficial relationship that
@@ -211,11 +211,11 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
             </p>
           </div>
           <div
-            className="column rounded-xl ,theme(colors.secd),transparent_70%)]
-                    dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
-                    border-l-4 border-[#fdcc03] dark:border-drka"
+            className="column
+                    dark:bg-drkb rounded-lg
+                    border-l-4 border-[#fdcc03] dark:border-drks"
           >
-            <h2 className="asection-title">Mission</h2>
+            <h2 className="asection-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Mission</h2>
             <ul className="section-content">
               <li>
                 To build a dynamic and engaged alumni network that contributes
@@ -238,9 +238,9 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
           </div>
         </section>
 
-        <section className="alumni-section two-column alumni-objectives">
+        <section className="alumni-section two-column alumni-objectives border-l-4 border-[#fdcc03] dark:border-drks dark:bg-drkb rounded-lg">
           <div className="column">
-            <h2 className="asection-title">Objectives of the Alumni Cell</h2>
+            <h2 className="asection-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Objectives of the Alumni Cell</h2>
             <ul className="section-content">
               <li>
                 Strengthening Alumni Network – To create and maintain a strong

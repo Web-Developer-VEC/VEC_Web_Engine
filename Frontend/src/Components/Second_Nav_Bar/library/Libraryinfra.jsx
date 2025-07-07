@@ -531,7 +531,7 @@ const LibrarySections = ({faculty, membership, lib}) => {
         const ebookSources = getEbookSources(); // calling the function
 return (
   <div className="overflow-x-auto mt-10 px-4 sm:px-8 py-10">
-    <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
+    <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] dark:text-drkt text-center mb-8">
       Some of E-books Download Websites
     </h2>
 
@@ -544,8 +544,8 @@ return (
       </thead>
       <tbody className="text-sm sm:text-base">
         {ebookSources.map((row, index) => (
-          <tr key={index} className="hover:bg-gray-100">
-            <td className="py-3 px-4 border border-gray-300 font-medium text-gray-800">
+          <tr key={index} className="">
+            <td className="py-3 px-4 border border-gray-300 font-medium text-text dark:text-drkt">
               {row.name}
             </td>
             <td className="py-3 px-4 border border-gray-300">
@@ -553,7 +553,7 @@ return (
                     href={row.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#800000] hover:underline"
+                    className="dark:text-drka hover:underline"
                 >
                     {row.url}
                 </a>
@@ -571,10 +571,10 @@ return (
         return (
         <>
         <div className="flex flex-wrap gap-4 justify-center lg:px-0 mt-8">
-                    <p className="basis-full text-2xl font-poppins text-accn font-semibold">LIBRARY ADVISORY COMMITTEE
+                    <p className="basis-full text-2xl font-poppins text-accn dark:text-drkt font-semibold">LIBRARY ADVISORY COMMITTEE
                         MEMBERS</p>
                     {advisors.map((adv, i) => (
-                        <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drka
+                        <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drks
                             bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
                             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                             transition-colors duration-300 ease-in`} key={i}>
@@ -709,14 +709,14 @@ return (
                             transition={{duration: 0.8}}
                             viewport={{once: true}}
                         >
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drka mb-4 sm:mb-6">
+                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drkt mb-4 sm:mb-6">
                                 {section.category}
                             </h2>
                             <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
                                 {section.items.map((item, i) => (
                                     <motion.li
                                         key={i}
-                                        className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drka transition-colors duration-300"
+                                        className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drkt transition-colors duration-300"
                                         initial={{opacity: 0, x: -20}}
                                         whileInView={{opacity: 1, x: 0}}
                                         transition={{delay: i * 0.1}}
@@ -731,7 +731,7 @@ return (
                     ))}
                 </div>
                 <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
-                    <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drka uppercase tracking-wide mb-8 sm:mb-12">
+                    <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drkt uppercase tracking-wide mb-8 sm:mb-12">
                         Library Highlights
                     </h2>
 
@@ -772,7 +772,7 @@ return (
 
                                     <div className="p-5 sm:p-6  min-h-[45vh]  md:min-h-[65vh] ">
                                         <h3
-                                            className="text-xl sm:text-2xl font-bold text-accn dark:text-drka
+                                            className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt
                                             group-hover:text-secd dark:group-hover:text-drks transition-colors"
                                         >
                                             {section.title}
@@ -821,7 +821,7 @@ return (
                         animate={{opacity: 1, y: 0}}
                         transition={{duration: 0.8, delay: 0.3}}
                     >
-                        <h2 className="text-4xl font-bold text-accn dark:text-drka mb-6">
+                        <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-6">
                             MULTIMEDIA LIBRARY
                         </h2>
                         <p className="text-lg leading-relaxed">
@@ -851,7 +851,7 @@ return (
     function LIBArvl() {
         return (
             <div className="py-16 px-6">
-                <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
+                <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-12 text-center">
                     NEW ARRIVALS
                 </h2>
 
@@ -895,7 +895,7 @@ return (
     function LIBResc() {
         return (
             <div className="py-16 px-6">
-                <h2 className="text-4xl font-bold text-accn dark:text-drka mb-12 text-center">
+                <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-12 text-center">
                     Library Resources
                 </h2>
 
@@ -911,7 +911,7 @@ return (
                 transition-all rounded-2xl text-white dark:text-drkp mb-4
                 ${
                                     openSection === index
-                                        ? "bg-[#FDCC03] text-black" // ✅ Sea Green when active (No hover effect)
+                                        ? "bg-[#FDCC03] text-black dark:bg-drks"
                                         : "bg-accn dark:bg-drks"
                                 }`}
                             >
@@ -971,7 +971,7 @@ return (
                                                         <li key={idx}>
                                                             <a
                                                                 href={item.link}
-                                                                className="text-black dark:text-drka hover:underline"
+                                                                className="text-text dark:text-drka hover:underline"
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
                                                             >
@@ -1032,12 +1032,12 @@ return (
 
             <>
                 {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
                     {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
                         <span className="text-5xl">{stat.icon}</span>
                         <Counter value={stat.value} />
-                        <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                        <p className="text-text dark:text-drkt text-lg mt-2">{stat.label}</p>
                         </div>
                     ))}
                     </div>
@@ -1064,12 +1064,12 @@ return (
 
             <>
                 {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
                         {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
                             <span className="text-5xl">{stat.icon}</span>
                             <Counter value={stat.value} />
-                            <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                            <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
                         </div>
                         ))}
                     </div>
@@ -1095,12 +1095,12 @@ return (
         return (
             <>
                 {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gray-100 rounded-lg shadow-lg">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
                         {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
                             <span className="text-5xl">{stat.icon}</span>
                             <Counter value={stat.value} />
-                            <p className="text-gray-600 text-lg mt-2">{stat.label}</p>
+                            <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
                         </div>
                         ))}
                     </div>

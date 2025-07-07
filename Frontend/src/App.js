@@ -81,6 +81,13 @@ const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
     body {
         cursor: url("/cursor.svg") 10 0, auto; /* Custom cursor with defined hotspot */
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+    }
+
+    body::-webkit-scrollbar {
+        display: none; 
     }
 
     button, a, .clickable {

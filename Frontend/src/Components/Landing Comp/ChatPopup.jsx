@@ -84,25 +84,51 @@ useEffect(() => {
 }, [isChatOpen]);
 
 useEffect(() => {
+
+  // Saving with timestamp
+// const now = new Date().getTime();
+// localStorage.setItem("chatMessages", JSON.stringify({
+//   data: messages,
+//   timestamp: now
+// }));
+
+// const item = localStorage.getItem("chatMessages");
+// if (item) {
+//   const { data, timestamp } = JSON.parse(item);
+//   const now = new Date().getTime();
+
+//   // Example: expire after 24 hours
+//   const expiryTime = 24 * 60 * 60 * 1000;
+//   if (now - timestamp < expiryTime) {
+//     setMessages(data);
+//   } else {
+//     localStorage.removeItem("chatMessages");
+//   }
+// }
+
   const storedPhone = sessionStorage.getItem("phoneNumber");
   if (storedPhone) {
     setPhoneNumber(storedPhone);
     setIsPhoneSubmitted(true);
-  }
 
-  const storedMessages = localStorage.getItem("chatMessages");
-  if (storedMessages) {
-    setMessages(JSON.parse(storedMessages));
+    const storedMessages = localStorage.getItem(`chatMessages_${storedPhone}`);
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
   }
 }, []);
 
 useEffect(() => {
-  localStorage.setItem("chatMessages", JSON.stringify(messages));
+  if (phoneNumber) {
+    localStorage.setItem(`chatMessages_${phoneNumber}`, JSON.stringify(messages));
+  }
 }, [messages]);
 
 const clearChat = () => {
-  setMessages([]);
-  localStorage.removeItem("chatMessages");
+  if (phoneNumber) {
+    localStorage.removeItem(`chatMessages_${phoneNumber}`);
+    setMessages([]);
+  }
 };
 
   const sendMessage = async () => {
@@ -148,13 +174,13 @@ const clearChat = () => {
   return (
     <div>
       {/* Chat Icon */}
-      <div className="chat-icon" onClick={toggleChat}>
+      <div className="chat-icon bg-prim border-1 dark:border-prim border-text" onClick={toggleChat}>
         <Lottie loop animationData={require("../Assets/Chatbot.json")} play />
       </div>
 
       {/* Chat Popup */}
       {isChatOpen && (
-        <div className="chat-popup" ref={popupRef}>
+        <div className="chat-popup bg-prim dark:bg-drkb" ref={popupRef}>
           <h2 className="mb-2">Chat with us!</h2>
 
           {/* Phone Number Input */}
@@ -169,8 +195,9 @@ const clearChat = () => {
                 }}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Enter your phone number"
+                className="text-text placeholder:text-text"
               />
-              <button onClick={handlePhoneSubmit}>Submit</button>
+              <button onClick={handlePhoneSubmit} className="bg-brwn">Submit</button>
               {phoneMessage && (
                 <p className="error-message">{phoneMessage}</p>
               )}

@@ -40,12 +40,12 @@ const LIBMemb = ({ lib }) => {
     <div className="overflow-x-auto px-4 sm:px-8 py-10">
       {isMembership && membership && (
         <>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] dark:text-drkt text-center mb-8">
       Membership Details
     </h2> 
           <table className="lg:w-full  w-[600px] overflow-scroll membership-table border border-gray-300 text-center">
-            <thead className="bg-gray-200">
-              <tr>
+            <thead className="bg-[#e5e7eb]">
+              <tr className="text-text">
                 <th className="border p-2">S. No</th>
                 <th className="border p-2">Member Details</th>
                 <th className="border p-2">No. of Books</th>

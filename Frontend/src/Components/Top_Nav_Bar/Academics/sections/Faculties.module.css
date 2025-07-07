@@ -17,7 +17,6 @@
 
 .imagegallery::-webkit-scrollbar {
   display: none;
-  /* Hide scrollbar */
 }
 
 /* First faculty tile - Full width */
@@ -93,7 +92,6 @@
 
 .facultyName {
   font-size: 18px;
-  color: #000000;
   margin-bottom: 8px;
 }
 
@@ -113,7 +111,6 @@
   cursor: pointer;
   width: 110px;
   height: 40px;
-  color: white;
 }
 
 .firstTileFacButton {
@@ -128,10 +125,6 @@
   height: 40px;
 }
 
-.facButton:hover {
-  /*background-color: #fdcc03;*/
-  /*color: #000;*/
-}
 
 .firstTileSocialLinks {
   display: flex;

@@ -58,16 +58,12 @@ const Transport = () => {
                     padding: "20px",
                     fontSize: "18px", 
                     lineHeight: "1.8", 
-                    // color: "#333",
                     fontWeight: "400",
-                    // backgroundColor: "#f8f9fa",
-                    // borderLeft: "5px solid #fdb515",  // Yellow highlight border
                     paddingLeft: "20px",
                 }}>
-                    <h2 className="text-secd dark:text-drks border-b-2 border-secd dark:border-drks" style={{
+                    <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks" style={{
                         fontSize: "24px",
                         fontWeight: "bold",
-                        color: "#800000",
                         display: "inline-block",
                         paddingBottom: "5px",
                         marginBottom: "10px"

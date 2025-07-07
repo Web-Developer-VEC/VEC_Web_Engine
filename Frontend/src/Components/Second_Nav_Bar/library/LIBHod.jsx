@@ -38,7 +38,7 @@ const LIBHod = () => {
   }
 
   return (
-    <article className="flex flex-col gap-4 bg-gray-100 shadow-xl p-6 rounded-xl items-center text-center">
+    <article className="flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center">
       <div className="w-full md:w-1/8 flex justify-center">
         <img
           className="w-auto h-60"
@@ -49,8 +49,8 @@ const LIBHod = () => {
 
       <div className="flex flex-col px-4">
         <h2 className="text-2xl font-semibold">{hod.name}</h2>
-        <p className="text-lg text-accn mb-2">{hod.designation}</p>
-        <p className="text-md mb-2">{hod.education_qualification}</p>
+        <p className="text-lg text-accn dark:text-drka mb-2">{hod.designation}</p>
+        <p className="text-md mb-2 text-brwn dark:text-drka">{hod.education_qualification}</p>
         <p className="text-xl italic text-justify-center">{hod.message}</p>
       </div>
     </article>

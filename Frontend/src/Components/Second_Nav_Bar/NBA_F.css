@@ -18,20 +18,15 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
   text-align: justify;
-  border-left: 4px solid #FDCC03;
   font-family: "Poppins", sans-serif;
 }
 
 /* Tile Header */
 .nba-tile-header {
   font-size: 20px;
-  color: #800000;
   margin-bottom: 10px;
-  border-bottom: 2px solid #FDCC03;
   display: inline-block;
-  padding-bottom: 5px;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
@@ -40,7 +35,6 @@
 /* Tile Text */
 .nba-tile-text {
   font-size: 16px;
-  color: #666;
   font-family: "Poppins", sans-serif;
 }
 
@@ -174,7 +168,6 @@
 }
 
 .department-table {
-  width: 80%;
   border-collapse: collapse;
 }
 

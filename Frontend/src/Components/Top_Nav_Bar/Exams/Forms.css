@@ -22,7 +22,6 @@
 
 /* Scrollbar styles */
 .student-tail {
-  background: #f8f9fa;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }
@@ -48,7 +47,6 @@
 }
 
 .faculty-tail {
-  background: #f8f9fa;
   scrollbar-width: thin;
   scrollbar-color: #a48e8e #ededed;
 }
@@ -78,7 +76,6 @@
 .tail-content h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #800000;
 }
   
 .download-links-container {
@@ -99,43 +96,6 @@
   color: rgba(0, 0, 0, 0.7);
   transform: scale(1.03);
 }
-
-  /* Loading Screen */
-  .loading-screen {
-    position: absolute; /* Position relative to the committee container */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #333;
-    z-index: 10; /* Higher than committee content but lower than header/footer */
-  }
-  
-  /* Spinner */
-  .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    margin-right: 30px;
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
 
 @media (max-width: 1100px) {
   .tails-container {

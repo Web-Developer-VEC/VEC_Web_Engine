@@ -50,7 +50,7 @@ const Faculties = ({ data }) => {
           </div>
         )}
 
-        <h2 className={styles.faculty}>Faculty Members</h2>
+        <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>
         <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
           {facultyArray.slice(1).map((faculty, index) => (
             <ImageCard
@@ -94,7 +94,7 @@ const Faculties = ({ data }) => {
       </div>
       <div className={styles.prefaculty}>
         <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +
-            "dark:bg-drks dark:text-text-drkt dark:hover:bg-drka"}
+            "dark:bg-drks dark:text-text dark:hover:text-drkt dark:hover:bg-brwn"}
                 onClick={() => handleViewClick(url, Name)}> Previous Year Faculties</button>
       </div>
 

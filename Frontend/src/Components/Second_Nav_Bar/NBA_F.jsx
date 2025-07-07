@@ -4,7 +4,7 @@ import Banner from '../Banner';
 import axios from 'axios';
 import LoadComp from '../LoadComp';
 
-const NBA_F = () => {
+const NBA_F = ({ theme, toggle }) => {
   const [selectedDept, setSelectedDept] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
   const [data, setNbaData] = useState(null);
@@ -51,6 +51,7 @@ const NBA_F = () => {
   return (
     <>
       <Banner
+        toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
         headerText="National Board of Accreditation"
         subHeaderText="Promoting academic excellence through accreditation, fostering continuous quality improvement, and empowering institutions to deliver world-class education."
@@ -58,59 +59,59 @@ const NBA_F = () => {
       <div className="nba-page">
         <div className="nba-tiles">
           <div className="nba-tile-container">
-            <div className="nba-tile">
+            <div className="nba-tile border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
               <div className="tile-tail"></div>
-              <h3 className="nba-tile-header">ABOUT NBA</h3>
-              <p className="nba-tile-text">
+              <h3 className="nba-tile-header text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">ABOUT NBA</h3>
+              <p className="nba-tile-text text-text dark:text-drkt">
                 The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India. NBA is responsible for evaluating the quality of technical and professional education programs.
               </p>
             </div>
-            <div className="nba-tile">
+            <div className="nba-tile border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
               <div className="tile-tail"></div>
-              <h3 className="nba-tile-header">Purpose of NBA Accreditation</h3>
-              <p className="nba-tile-text">
+              <h3 className="nba-tile-header text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Purpose of NBA Accreditation</h3>
+              <p className="nba-tile-text text-text dark:text-drkt">
                 The primary goal of NBA accreditation is to assess and ensure that academic programs meet predefined quality standards, thereby promoting continuous improvement in educational institutions.
               </p>
             </div>
           </div>
         </div>
         <div className="table-data px-4 md:px-12 lg:px-24">
-  <div className="overflow-x-auto border rounded-lg shadow-md">
-    <table className="min-w-[700px] w-full department-table">
-      <thead className="bg-gray-100">
-        <tr>
-          <th className="text-left px-4 py-2">S.No</th>
-          <th className="text-left px-4 py-2">Programs</th>
-          <th className="text-left px-4 py-2">Validity Years</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data?.map((item) => (
-          <tr key={item.id} className="border-t">
-            <td className="px-4 py-2">{item.id}</td>
-            <td className="px-4 py-2">{item.department}</td>
-            <td className="px-4 py-2 w-[70vw]">
-              <ul className="list-disc list-inside">
-                {item.pdfs.map((pdf, index) => (
-                  <li key={index}>
-                    <a
-                      href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-brwn no-underline"
-                    >
-                      {pdf.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
+        <div className="overflow-x-auto border rounded-lg shadow-md">
+          <table className=" w-full department-table">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="text-left px-4 py-2 text-text">S.No</th>
+                <th className="text-left px-4 py-2 text-text">Programs</th>
+                <th className="text-left px-4 py-2 text-text">Validity Years</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map((item) => (
+                <tr key={item.id} className="border-t">
+                  <td className="px-4 py-2">{item.id}</td>
+                  <td className="px-4 py-2">{item.department}</td>
+                  <td className="px-4 py-2">
+                    <ul className="list-disc list-inside">
+                      {item.pdfs.map((pdf, index) => (
+                        <li key={index}>
+                          <a
+                            href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-brwn dark:text-drka no-underline"
+                          >
+                            {pdf.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       </div>
     </>

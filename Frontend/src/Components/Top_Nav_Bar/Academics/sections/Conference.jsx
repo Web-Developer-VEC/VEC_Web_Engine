@@ -29,7 +29,6 @@ const Conference = ({ data, action }) => {
   return (
     <div className="Concontainer">
       <div className="head">
-        {/* ✅ Dynamic Category Heading instead of "Title of the Paper" */}
         <h1 className="cards-h1">{getCategoryHeading(action)}</h1>
       </div>
       <div className="cards-grid">
@@ -37,7 +36,7 @@ const Conference = ({ data, action }) => {
           data.map((item, index) => (
             <div
               key={index}
-              className={`card ${expandedCard === index ? "expanded" : ""}`}
+              className={`conf-card ${expandedCard === index ? "expanded" : ""} bg-drkt dark:bg-drkb`}
             >
               {/* ✅ Card Head (Displays Item Title) */}
               <CardHead item={item} />
@@ -47,7 +46,7 @@ const Conference = ({ data, action }) => {
 
               {Object.keys(item).length > 6 && (
                 <button
-                  className="view-more-btn"
+                  className="view-more-btn bg-secd dark:bg-drks"
                   onClick={() => toggleExpand(index)}
                 >
                   {expandedCard === index ? "View Less" : "View More"}
@@ -67,7 +66,7 @@ const Conference = ({ data, action }) => {
 const CardHead = ({ item }) => {
   return (
     <div className="card-head">
-      <h3 className="card-title">
+      <h3 className="card-title text-text dark:text-drkt">
         {item["Title of the Paper"] ||
           item["Title of the Proposal"] ||
           item["Title of the Patent"] ||

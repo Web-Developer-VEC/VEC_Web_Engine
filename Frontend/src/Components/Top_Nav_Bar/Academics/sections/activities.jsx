@@ -96,7 +96,7 @@ const Activities = ({ data }) => {
         <div className={`modal ${isModalOpen ? "open" : ""}`}>
           <div className="bg-prim dark:bg-drkp modal-content-act">
             <span className="close-btn text-text bg-secd dark:bg-drks dark:text-drkt
-              hover:bg-accn hover:text-prim dark:hover:bg-drka" onClick={closeModal}>&times;</span>
+              hover:bg-accn hover:text-prim dark:hover:bg-brwn" onClick={closeModal}>&times;</span>
             <img src={UrlParser(selectedEvent.image_path)} alt="Event" className="modal-image" />
             <h2>{selectedEvent.name_of_event}</h2>
             <p><strong>Date: </strong>{selectedEvent.date}</p>
@@ -138,7 +138,7 @@ const AnimatedCard = ({ event, handleViewMore }) => {
         <h3 className="my-2 text-xl text-accn dark:text-drka">{event.name_of_event}</h3>
         <p className="card-coordinator">Coordinator: {event.coordinator}</p>
         <button onClick={() => handleViewMore(event)} className="activities-view-more-btn mt-3
-          bg-secd text-text dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka">
+          bg-secd text-text dark:text-text dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn">
           View More
         </button>
       </div>

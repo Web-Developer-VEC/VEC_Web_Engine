@@ -5,10 +5,10 @@ import LoadComp from "../../LoadComp";
 
 const LibraryIntro = ({about}) => {
   const tiles = [{
-        hdr: "Vision", cls: "basis-4/5 lg:basis-[49%]",
+        hdr: "Vision", cls: "lg:basis-[49%]",
         cnt: "\"To  enrich  the  knowledge  of  Velammalians  by  providing  dynamic  world  class  learning environment.To  provide  a learning  environment  with  intense  intellectual  inquiry.  To  become  the  most  dynamic  learning  environment  in  the world.  To  advance  with  successful  teaching,  learning  and  research  through  building  a  robust  One  System,  One Library. To transform the library as a place dynamic learning with ease.\""
     }, {
-        hdr: "Mission", cls: "basis-4/5 lg:basis-[49%]",
+        hdr: "Mission", cls: "lg:basis-[49%]",
         cnt: "\"To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources  and services in support of the research, teaching,  and learning needs of  the  college  community  To  maintain  and  improve  collections  and  achieve  efficient  services  in  an environment  of  flat  or  reduced  budgets  for  the  students,  faculty  and  staff.  To  transform  the  information available in the environment into knowledge for students, staff and faculty.\""
     }];
 
@@ -57,7 +57,7 @@ const LibraryIntro = ({about}) => {
               {/* Text Content */}
               <div
                   className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn font-extrabold">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn dark:text-drkt font-extrabold">
                         ABOUT THE LIBRARY
                     </h1>
 
@@ -65,18 +65,18 @@ const LibraryIntro = ({about}) => {
                   <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                       The college library is located in the Bill Gates Block, spanning the Ground and First floors. With
                       a total
-                      area of <span className="font-semibold text-black dark:text-black">{about?.Area}</span>, it is a
+                      area of <span className="font-semibold text-text dark:text-drkt">{about?.Area}</span>, it is a
                       spacious,
                       well-ventilated space. Our library houses over <span
-                      className="font-semibold text-black dark:text-black">
+                      className="font-semibold text-text dark:text-drkt">
             {about?.no_of_books}</span> of books and <span
-                      className="font-semibold text-black dark:text-black">{about?.no_of_titles} titles</span> across
+                      className="font-semibold text-text dark:text-drkt">{about?.no_of_titles} titles</span> across
                       various
                       disciplines.
                   </p>
                   <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                      Additionally, we offer access to <span className="font-semibold text-black dark:text-black">
-            {about?.no_of_journals} Journals</span> and over <span className="font-semibold text-black dark:text-black">
+                      Additionally, we offer access to <span className="font-semibold text-text dark:text-drkt">
+            {about?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
             {about?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
                       Classification Scheme and operates
                       on an Open Access System.
@@ -113,17 +113,17 @@ const LibraryIntro = ({about}) => {
               </div>
           </div>
 
-          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-[45px]">
+          <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-[45px] w-full">
               {tiles.map((tile, index) => (
-                  <div className={`${tile.cls} border-l-4 p-4 border-secd dark:border-drks rounded-xl 
+                  <div className={`${tile.cls} border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
                   bg-gray-100 dark:bg-gray-700`} key={index}>
-                      <p className="text-[#800000] text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-yellow-400 inline-block pb-1">{tile.hdr}</p>
+                      <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">{tile.hdr}</p>
                       <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{parse(tile.cnt)}</p>
                   </div>
               ))}
           </div>    
           <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center text-center w-full">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drka mb-6 sm:mb-10">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drkt mb-6 sm:mb-10">
                     GENERAL INSTRUCTIONS
                 </h2>
                 <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
@@ -147,7 +147,7 @@ const LibraryIntro = ({about}) => {
                     >
                   {index + 1}
                 </span>
-                                <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
+                            <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
                             </div>
                         </motion.div>
                     ))}

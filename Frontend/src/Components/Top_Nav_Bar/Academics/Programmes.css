@@ -3,7 +3,6 @@
     max-width: 90%;
     margin: 40px auto;
     padding: 26px;
-    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: grid;
@@ -13,12 +12,10 @@
 
 .programmes-page h4{
     font-size: 24px;
-    color: #800000;
 } 
 /* Links Styling */
 .programmes-page a {
     text-decoration: none;
-    color: #2980b9;
     font-weight: bold;
     display: block;
     padding: 5px;

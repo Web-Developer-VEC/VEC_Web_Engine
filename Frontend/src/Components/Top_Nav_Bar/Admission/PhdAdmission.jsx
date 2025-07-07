@@ -42,8 +42,8 @@ if (!isOnline) {
         <div className="contain">
           <div className="p-4 left1 border-l-4 border-[#fdcc03] dark:border-drks rounded-xl
             bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)]
-            dark:bg-[color-mix(in_srgb,theme(colors.drks)_10%,black)]">
-            <h1 className="phd-h1 text-brwn">
+            dark:bg-drkb">
+            <h1 className="phd-h1 text-brwn dark:text-drkt">
               In Velammal Engineering College the following departments are
               recognized research centers of Anna University, Chennai
             </h1>
@@ -75,7 +75,7 @@ if (!isOnline) {
               <p>
             <span className="ml-[8px]">
                   (Visit{" "}
-                  <a href="https://cfr.annauniv.edu/research/academics/index.php" target="_blank">
+                  <a href="https://cfr.annauniv.edu/research/academics/index.php" target="_blank" className="dark:text-drka">
                   https://cfr.annauniv.edu/research/academics/index.php
                   </a>
                   )

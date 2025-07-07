@@ -116,7 +116,7 @@ export default function PatentConsolidation({ theme, toggle }) {
       <div className="Patent-container">
         <div className="Patent-content">
           <div className="Patent-title-container">
-            <h2 className="research-patent-title">
+            <h2 className="research-patent-title text-brwn dark:text-drkt border-l-4 border-r-4 border-secd dark:border-drks">
               Patent - Department wise Consolidation
             </h2>
           </div>

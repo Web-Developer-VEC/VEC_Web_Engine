@@ -217,8 +217,7 @@
 
 .sports-item {
   width: 90%;
-  max-width: 400px; /* A reasonable max-width for mobile */
-  background-color: #f9f9f9;
+  max-width: 400px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -245,7 +244,6 @@
 
 .sports-description {
   font-size: 1rem;
-  color: #555;
 }
 
 
@@ -300,7 +298,6 @@
   
   .sports-description {
     font-size: 1rem;
-    color: #555;
   }
   
   .previous,

@@ -81,7 +81,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                     <>
                         {/* Placement Department-wise Data */}
                         <div className="placement-percent card-plc">
-                            <h4 className="section-title">Placement Details in % - Department Wise</h4>
+                            <h4 className="place-section-title text-brwn dark:text-drkt">Placement Details in % - Department Wise</h4>
                             <div className="table-container">
                                 <table>
                                     <thead>
@@ -95,7 +95,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                     <tbody>
                                         {placementData?.Department_wise?.Department.map((department, rowIndex) => (
                                             <tr key={rowIndex} className="table-row">
-                                                <td className="">{department}</td>
+                                                <td className="text-text dark:text-drkt">{department}</td>
                                                 {placementData?.Department_wise?.years.map((year, cellIndex) => (
                                                     <td key={cellIndex}>{placementData?.Department_wise?.[year]?.[rowIndex] || '-'}</td>
                                                 ))}
@@ -107,13 +107,13 @@ export const PlacementDetails = ({ theme, toggle }) => {
                         </div>
 
                         {/* Year-wise PDF Reports */}
-                        <div className="placement-yearwise card-plc">
-                            <h4 >Placement Details Year Wise</h4>
+                        <div className="placement-yearwise card-plc bg-prim dark:bg-drkts">
+                            <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
                             <div className="place-Sylgrid">
                                 {placementData?.Year_Wise?.year_pdf.map((year, index) => (
                                     <button
                                         key={index}
-                                        className="place-course-button"
+                                        className="place-course-button bg-secd dark:bg-drks text-text"
                                         onClick={() => openModal(UrlParser(placementData?.Year_Wise?.Pdf_path[index]))}
                                     >
                                         <div className="place-course">{year}</div>
@@ -133,7 +133,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
 
                         {/* Placement Statistics */}
                         <div className="placement-percent card-plc">
-                            <h4 className="section-title">Placement Statistics</h4>
+                            <h4 className="place-section-title text-brwn dark:text-drkt">Placement Statistics</h4>
                             <div className="table-container">
                                 <table>
                                     <thead>

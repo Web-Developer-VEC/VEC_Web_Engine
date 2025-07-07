@@ -76,8 +76,8 @@ const Naac = ({ toggle, theme }) => {
         )}
 
         <div className="nabout-section">
-          <div className="naac-info-panel">
-            <h2>ABOUT NAAC</h2>
+          <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg">
+            <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
             <p>
               The NAAC conducts assessment and accreditation of Higher
               Educational Institutions (HEI) such as colleges, universities, or
@@ -101,7 +101,7 @@ const Naac = ({ toggle, theme }) => {
             transition-all rounded-2xl text-white dark:text-drkp mb-4
             ${
               openSection === index
-                ? "bg-[#ffc70f]" // Active: Sea Green
+                ? "bg-secd dark:bg-brwn"
                 : "bg-accn dark:bg-drks"
             }`}
             >
@@ -121,7 +121,7 @@ const Naac = ({ toggle, theme }) => {
                     <li key={i}>
                       <a
                         href={`${UrlParser(item.pdfs_path)}#toolbar=0`}
-                        className="text-blue-500 hover:underline"
+                        className="dark:text-drka hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

@@ -3,7 +3,7 @@ import './Programmes.css'
 import React, { useEffect, useState } from 'react'
 import LoadComp from "../../LoadComp";
 
-const Programmes = (toggle, theme) => {
+const Programmes = ({toggle, theme}) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -22,7 +22,7 @@ const Programmes = (toggle, theme) => {
 
     const department = [
         {
-            type: 'UG Courses',
+            type: 'UG Programmes',
             values: [
                 {
                     name: 'B.E. Automobile Engineering',
@@ -67,7 +67,7 @@ const Programmes = (toggle, theme) => {
             ]
         },
         {
-            type: 'PG Courses',
+            type: 'PG Programmes',
             values: [
                 {
                     name: 'M.E. Computer Science Engineering',
@@ -84,7 +84,7 @@ const Programmes = (toggle, theme) => {
             ]
         },
         {
-            type: "Research and Science",
+            type: "PhD-Programmes",
             values: [
                 {
                     name: 'Computer Science and Engineering',
@@ -129,15 +129,15 @@ const Programmes = (toggle, theme) => {
                 headerText="Programmes"
                 subHeaderText="Explore our diverse range of undergraduate and postgraduate programs designed for academic excellence and industry relevance."
             />
-            <div className='programmes-page'>
+            <div className='programmes-page bg-prim dark:bg-drkts'>
                 {
                     department.map((dept) => (
                         <div key={dept.type}>
-                            <h4>{dept.type}</h4>
+                            <h4 className='text-brwn dark:text-prim'>{dept.type}</h4>
                             {
                                 dept.values.map((data) => (
                                     <div className="programmes-name flex items-center " key={data.name}>
-                                        <img src="/badge.png" alt="" /><a href={data.lnk}><p>{data.name}</p></a>
+                                        <img src="/badge.png" alt="" /><a href={data.lnk} className='text=[#2980b9] dark:text-drka'><p>{data.name}</p></a>
                                     </div>
                                 ))
                             }

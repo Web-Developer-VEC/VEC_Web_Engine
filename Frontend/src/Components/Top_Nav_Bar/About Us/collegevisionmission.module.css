@@ -26,9 +26,7 @@ body {
 .visionCard, .missionCard {
   flex: 1;
   max-width: 750px;
-  background: #fff;
   padding: 15px;
-  border-left: 5px solid #fdb515;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -75,17 +73,15 @@ body {
 .cardTitle {
   font-size: 20px;
   font-weight: bold;
-  color: #800000;
   margin: 0;
   text-align: justify;
-  border-bottom: 3px solid #fdb515;
+  /* border-bottom: 3px solid #fdb515; */
   padding-bottom: 3px;
 }
 
 /* Card Content */
 .cardContent {
   font-size: 16px;
-  color: #1d1d1d;
   text-align: justify;
   margin-top: 10px;
 }
@@ -128,7 +124,7 @@ body {
     width: 100%;
     max-width: 100%;
     padding: 15px;
-    border-left: 8px solid #fdb515;
+    /* border-left: 8px solid #fdb515; */
     left: 0; /* Reset left offset */
   }
 
@@ -161,7 +157,6 @@ body {
     width: 100%;
     max-width: 100%;
     padding: 12px;
-    border-left: 6px solid #fdb515;
     left: 0;
   }
 
@@ -181,7 +176,6 @@ body {
 
   .visionCard, .missionCard {
     padding: 10px;
-    border-left: 5px solid #fdb515;
   }
   .missionCard{
     margin: 2vh 0 2vh 0vh;

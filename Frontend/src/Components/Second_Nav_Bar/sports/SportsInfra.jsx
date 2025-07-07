@@ -66,13 +66,13 @@ const SportsInfra = () => {
       {items.map((item, index) => (
         index % 2 === 0 ? (
           <div key={index} className="sports-row">
-            <div className="sports-item">
+            <div className="sports-item border-1 border-black dark:bg-text">
               <img className="sport-img" src={UrlParser(item.imageUrl)} alt={item.title} />
               <h2 className="sports-title">{item.title}</h2>
               <p className="sports-description">{item.description}</p>
             </div>
             {index + 1 < items.length && (
-              <div className="sports-item">
+              <div className="sports-item border-1 border-black dark:bg-text">
                 <img className="sport-img" src={UrlParser(items[index + 1].imageUrl)} alt={items[index + 1].title} />
                 <h2 className="sports-title">{items[index + 1].title}</h2>
                 <p className="sports-description">{items[index + 1].description}</p>
