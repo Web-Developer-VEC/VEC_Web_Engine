@@ -54,7 +54,7 @@ if (!isOnline) {
 
         <div className="org-chart-container">
           <img
-            src={UrlParser('static/images/orgchart/chart.webp')} 
+            src={UrlParser('/static/images/orgchart/chart.webp')} 
             alt="Organization Chart"
             className="org-chart-image"
             onClick={handleOpen}
@@ -76,7 +76,7 @@ if (!isOnline) {
         }}
       >
         <img
-          src={UrlParser('static/images/orgchart/chart.webp')}
+          src={UrlParser('/static/images/orgchart/chart.webp')}
           alt="Organization Chart"
           className="zoomable-image"
           style={{

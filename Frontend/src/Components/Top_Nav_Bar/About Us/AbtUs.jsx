@@ -79,7 +79,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img1 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec1.webp')}
+                                src={UrlParser('/static/images/aboutvec/aboutvec1.webp')}
                                 alt="Banner Image0"
                                 onLoad={() => handleLoad('img1')}
                             />
@@ -94,7 +94,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec2.webp')}
+                                src={UrlParser('/static/images/aboutvec/aboutvec2.webp')}
                                 alt="Banner Image1"
                                 onLoad={() => handleLoad('img2')}
                             />
@@ -109,7 +109,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img3 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('static/images/aboutvec/aboutvec3.webp')}
+                                src={UrlParser('/static/images/aboutvec/aboutvec3.webp')}
                                 alt="Banner Image2"
                                 onLoad={() => handleLoad('img3')}
                             />
@@ -135,19 +135,19 @@ const AbtUs = ({ theme, toggle }) => {
                 <ul className='pdf-links flex flex-wrap justify-center gap-8' >
                     <li className='text-lg flex items-center gap-'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
+                        <a href={UrlParser("/static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
+                        <a href={UrlParser("/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
+                        <a href={UrlParser("/static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
+                        <a href={UrlParser("/static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                     </li>
                 </ul>
             </div>

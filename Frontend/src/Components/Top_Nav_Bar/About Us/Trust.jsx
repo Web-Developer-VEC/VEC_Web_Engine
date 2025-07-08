@@ -70,7 +70,7 @@ const NewTrust = ({theme, toggle}) => {
             >
               <img
                 className="w-64 h-max object-cover transition-transform duration-500 "
-                src={UrlParser('static/images/trust/velammal.webp')}
+                src={UrlParser('/static/images/trust/velammal.webp')}
                 alt="Velammal Trust Banner"
               />
             </motion.div>
@@ -107,7 +107,7 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("static/images/trust/muthuramalingam.webp")}
+                  src={UrlParser("/static/images/trust/muthuramalingam.webp")}
                   alt="Shri. M.V. Muthuramalingam"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
@@ -126,7 +126,7 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser('static/images/trust/velmurugan.webp')}
+                  src={UrlParser('/static/images/trust/velmurugan.webp')}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
@@ -145,7 +145,7 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("static/images/trust/deptyceo.webp")}
+                  src={UrlParser("/static/images/trust/deptyceo.webp")}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
