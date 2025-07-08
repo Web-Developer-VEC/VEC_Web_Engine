@@ -49,11 +49,11 @@ export default function Journalpublication({theme, toggle}) {
     setSelectedCourse(course);
     setSelectedDept(id);  
    
-    const journalcontent = journalPublication.filter(jour_dept => jour_dept.dept_id === id )
+    // const journalcontent = journalPublication.filter(jour_dept => jour_dept.dept_id === id )
     
-    setjournalPublicationid(journalcontent)
+    // setjournalPublicationid(journalcontent)
  
-    setopen(true);
+    // setopen(true);
 
   };
 
@@ -103,7 +103,9 @@ export default function Journalpublication({theme, toggle}) {
             <div
               key={course}
               className={"course-card"}
-              onClick={() => handleCourseClick(course,dept.dept_id[id])}
+              onClick={() => 
+                handleCourseClick(course,dept.dept_id[id])
+              }
             >
               <div className="course-header">
                 <span className="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open course-icon w-10 text-lg text-secd dark:text-drks"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg></span>

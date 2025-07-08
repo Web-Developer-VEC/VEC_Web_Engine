@@ -48,11 +48,11 @@ export default function Conferencepublication({theme, toggle}) {
     setcourse(course);
     setdeptid(id);
 
-    const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id );
+    // const conferencecontent = conference.filter(conference_dept => conference_dept.dept_id === id );
     
-    setconferenceid(conferencecontent)
+    // setconferenceid(conferencecontent)
 
-    setopen(true);
+    // setopen(true);
   };
 
   useEffect(() => {

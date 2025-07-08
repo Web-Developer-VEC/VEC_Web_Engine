@@ -28,7 +28,7 @@ const IQAC = ({ toggle , theme }) => {
         "Coordinators": <IqaCor/>,
         "Members": <IqaMem/>,
         "Minutes of Meetings": <IqaMet/>,
-        "Academic and Administrative Audit": <IqaAud/>,
+        "Academic and Administrative Audit": <IqaObj/>, //IqaAud
         "Gallery": <IqaGal/>,
         "Strategic Development Plan": <IqaDev/>,
         "Best Practices": <IqaPra/>,
@@ -377,16 +377,27 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaEth() {
         return (
-            <div className="flex flex-wrap justify-center my-4">
-                <div
-                    className={`iqac-action-button ${showethpdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
-                    onClick={() => {openPdf("Code of Ethics", "Code of Ethics"); setShowethpdf(true)}}>
-                    Code of Ethics
+            // <div className="flex flex-wrap justify-center my-4">
+            //     <div
+            //         className={`iqac-action-button ${showethpdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
+            //         onClick={() => {openPdf("Code of Ethics", "Code of Ethics"); setShowethpdf(true)}}>
+            //         Code of Ethics
+            //     </div>
+            //     {showethpdf && (
+            //         IqaPdf()
+            //     )}
+            // </div>
+            <div className="nirf-pdf-container iqac-pdf-container">
+                    <h3 className="text-center">Code of Ethics</h3>
+                    <embed
+                        className="embed"
+                        src={UrlParser(iqacData?.codeOfEthics?.path) + "#toolbar=0"
+                        }
+                        type="application/pdf"
+                        width="100%"
+                        height="600px"
+                    />
                 </div>
-                {showethpdf && (
-                    IqaPdf()
-                )}
-            </div>
         );
     }
 
@@ -408,15 +419,16 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaIso() {
         return (
-            <div className="flex flex-wrap justify-center my-4">
-                <div
-                    className={`iqac-action-button ${showisopdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
-                    onClick={() => {openPdf("ISO Certificate", "ISO Certificate"); setshowisopdf(true)}}>
-                    ISO Certificate
-                </div>
-                {showisopdf && (
-                    IqaPdf()
-                )}
+            <div className="nirf-pdf-container iqac-pdf-container">
+                <h3 className="text-center">ISO Certificate</h3>
+                <embed
+                    className="embed"
+                    src={UrlParser(iqacData?.isoCertificate?.path) + "#toolbar=0"
+                    }
+                    type="application/pdf"
+                    width="100%"
+                    height="600px"
+                />
             </div>
         );
     }

@@ -36,34 +36,34 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
       <div className={firstTile ? styles.firstTileSocialLinks : styles.socialLinks}>
         {Publon && (
           <a href={Publon} target="_blank" rel="noopener noreferrer">
-            <SiPublons  className="text-accn dark:text-drka" />
+            <SiPublons  className="text-brwn dark:text-drka" />
           </a>
         )}
         {Scholar && (
           <a href={Scholar} target="_blank" rel="noopener noreferrer">
-            <FaGoogleScholar className="text-accn dark:text-drka" />
+            <FaGoogleScholar className="text-brwn dark:text-drka" />
           </a>
         )}
         {Orchid && (
           <a href={Orchid} target="_blank" rel="noopener noreferrer">
-            <FaOrcid className="text-accn dark:text-drka" />
+            <FaOrcid className="text-brwn dark:text-drka" />
           </a>
         )}
         {Research && (
           <a href={Research} target="_blank" rel="noopener noreferrer">
-            <FaResearchgate className="text-accn dark:text-drka" />
+            <FaResearchgate className="text-brwn dark:text-drka" />
           </a>
         )}
         {Linkedin && (
           <a href={Linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="text-accn dark:text-drka" />
+            <FaLinkedin className="text-brwn dark:text-drka" />
           </a>
         )}
       </div>
        
       <button
       //  onClick={() => navigate(`/facultyprofile/${uid}`)}
-       className={styles.facButton + " bg-accn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
+       className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
         View More</button>
     </div>
   </div>

@@ -77,6 +77,7 @@ import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
 import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
+import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -162,6 +163,7 @@ const MainContentWrapper = styled.div`
                                 <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
                                 <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme}/>}/>
                                 <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
+                                <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
@@ -202,7 +204,7 @@ const MainContentWrapper = styled.div`
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
-                                <Route path="/credits/:ind" element={<Crdt />} />
+                                <Route path="/credits/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
 
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
