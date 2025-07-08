@@ -113,7 +113,9 @@ const AcademicDepartments = ({ theme , toggle }) => {
     <>
       <Banner
         toggle={toggle} theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+
+        backgroundImage="./Banners/academicsbanner.webp"
+
         headerText="Department"
         subHeaderText="Each department represents a gateway to discovery, innovation, and personal growth—together forming the academic foundation of our institution."
       />

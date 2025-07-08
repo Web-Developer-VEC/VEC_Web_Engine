@@ -1,106 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../Banner";
-
-const sections = [
-  {
-    title: "COE",
-    members: [
-      {
-        name: "Dr. A. Coe",
-        title: "Coe",
-        position: "Prof and Head - Civil Engineering",
-        img: "/images/Coer.jpg",
-      },
-    ],
-  },
-  {
-    title: "Deputy COE",
-    members: [
-      {
-        name: "Dr. Coe",
-        title: "Coe",
-        position: "Prof and Head - Information Technology",
-        img: "/images/Coe.jpg",
-      },
-    ],
-  },
-  {
-    title: "COE Staffs",
-    members: [
-      {
-        name: "Dr. Coe",
-        title: "Coe",
-        position: "Prof and Head - Information Technology",
-        img: "/images/Coe.jpg",
-      },
-      {
-        name: "Dr. S. Coe",
-        title: "Associate Coe",
-        position: "Asst Prof and Head - Cyber Security",
-        img: "/images/Coe.jpg",
-      },
-      {
-        name: "Dr. Coe",
-        title: "Coe",
-        position: "Prof and Head - Information Technology",
-        img: "/images/Coe.jpg",
-      },
-      {
-        name: "Dr. S. Coe",
-        title: "Associate Coe",
-        position: "Asst Prof and Head - Cyber Security",
-        img: "/images/Coe.jpg",
-      },
-      {
-        name: "Dr. Coe",
-        title: "Coe",
-        position: "Prof and Head - Information Technology",
-        img: "/images/Coe.jpg",
-      },
-      {
-        name: "Dr. S. Coe",
-        title: "Associate Coe",
-        position: "Asst Prof and Head - Cyber Security",
-        img: "/images/Coe.jpg",
-      },
-    ],
-  },
-];
+import axios from "axios";
 
 const Coe = ({ toggle, theme }) => {
+
+  const [coeData, setCoeData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/coe');
+        const data = response.data;
+        setCoeData(data);
+      } catch (error) {
+        console.error("Error fetching coe data", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Banner toggle={toggle} theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-        headerText="office of controller of examination"
+        backgroundImage="./Banners/examsbanner.webp"
+        headerText="office of controller of examinations"
         subHeaderText="COE"
       />
 
-      <div className="py-10 px-4 md:px-20 bg-gray-50 justify-center">
-        {sections.map((section, idx) => (
+      <div className="py-10 px-4 md:px-20 bg-prim dark:bg-drkp justify-center">
+        {coeData?.map((section, idx) => (
           <div
             key={idx}
-            className="bg-gray-200 w-full md:w-fit  ml-auto mr-auto shadow-md rounded-lg mb-10 p-6 md:p-10"
+            className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] w-full md:w-fit  ml-auto mr-auto shadow-md rounded-lg mb-10 p-6 md:p-10"
           >
-            <h2 className="text-2xl font-bold text-[#800000] text-center mb-6">
+            <h2 className="text-2xl font-bold text-[#800000] dark:text-drkt text-center mb-6">
               {section.title}
             </h2>
             {section.members.length > 1 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
                 {section.members.map((member, index) => (
                   <div
                     key={index}
-                    className="flex bg-white border-[2px] border-yellow-500 rounded-xl p-4 w-[320px] gap-4 items-start"
+                    className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
                   >
                     <img
-                      src={member.img}
+                      src={member.image_path}
                       alt={member.name}
                       className="w-[100px] h-[120px] object-cover rounded"
                     />
                     <div>
-                      <p className="font-bold text-[17px] text-[#222]">{member.name}</p>
-                      <p className="text-sm text-gray-800">{member.title}</p>
-                      <p className="text-sm text-gray-800">{member.position}</p>
+                      <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
+                      <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
+                      <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
                     </div>
                   </div>
                 ))}
@@ -111,17 +63,17 @@ const Coe = ({ toggle, theme }) => {
                 {section.members.map((member, index) => (
                   <div
                     key={index}
-                    className="flex bg-white border-[2px] border-yellow-500 rounded-xl p-4 w-[320px] gap-4 items-start"
+                    className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
                   >
                     <img
                       src={member.img}
                       alt={member.name}
                       className="w-[100px] h-[120px] object-cover rounded"
                     />
-                    <div>
-                      <p className="font-bold text-[17px] text-[#222]">{member.name}</p>
-                      <p className="text-sm text-gray-800">{member.title}</p>
-                      <p className="text-sm text-gray-800">{member.position}</p>
+                    <div className="flex justify-center flex-col">
+                      <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
+                      <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
+                      <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
                     </div>
                   </div>
                 ))}

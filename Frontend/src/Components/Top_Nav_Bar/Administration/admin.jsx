@@ -48,13 +48,6 @@ const AdminCard = ({ image, name, designation }) => {
 
   return (
     <div className="admin-card-ao border-2 border-secd dark:border-drks relative flex p-4">
-      {/* Loading Spinner */}
-      {/* {isLoading && !hasError && (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-100/50">
-        <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-      </div>
-      )} */}
-
       {!hasError ? (
         <img
           src={image}
@@ -72,8 +65,8 @@ const AdminCard = ({ image, name, designation }) => {
         <div className="text-red-500">Failed to load image</div>
       )}
 
-      <div className="admin-text-content ml-4">
-        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins text-[#000000]">{name}</h3>
+      <div className="admin-text-content">
+        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins">{name}</h3>
         <p className="admin-card-designation text-gray-600 dark:text-drka">{designation}</p>
       </div>
     </div>
@@ -133,7 +126,7 @@ const CardPage = ({theme, toggle}) => {
   return (
     <>
     <Banner toggle={toggle} theme={theme}
-      backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+      backgroundImage="./Banners/administrationbanner.webp"
       headerText="Administrative Office"
       subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."
     />
@@ -144,6 +137,12 @@ const CardPage = ({theme, toggle}) => {
       ) : (
         <div className="admin-card-page">
             <div className="ao-container">
+            <AdminCard
+              key={adminData[0]?.id}
+              image={UrlParser(adminData[0]?.photo_path)}
+              name={adminData[0]?.name}
+              designation={adminData[0]?.designation}
+            />
             <AdminCard
               key={adminData[0]?.id}
               image={UrlParser(adminData[0]?.photo_path)}

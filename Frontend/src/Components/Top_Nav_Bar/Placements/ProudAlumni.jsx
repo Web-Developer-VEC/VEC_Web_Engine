@@ -80,7 +80,7 @@ const ProudAlumni = ({ theme, toggle }) => {
       <Banner
         theme={theme}
         toggle={toggle}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        backgroundImage="./Banners/placementbanner.webp"
         headerText="Alumni Cell"
         subHeaderText="Get inspired by our Legacy"
       />

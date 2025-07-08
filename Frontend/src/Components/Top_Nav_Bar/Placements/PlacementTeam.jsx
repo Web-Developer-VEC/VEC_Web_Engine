@@ -92,7 +92,7 @@ if (!isOnline) {
 
     <>
     <Banner toggle={toggle} theme={theme}
-    backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+    backgroundImage="./Banners/placementbanner.webp"
     headerText="Placement Team"
     subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
 />
