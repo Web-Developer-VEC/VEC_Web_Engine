@@ -48,7 +48,7 @@ export default function Academicresearch({ theme, toggle }) {
 
           <div className="research-academicresearch-container">
             <h1 className="research-academicresearch-title text-brwn dark:text-drkt border-l-4 border-r-4 border-secd dark:border-drks">
-              Academic Research - Year wise Consolidation
+              Academic Research
             </h1>
 
             <div className="course-selection-container">

@@ -112,6 +112,12 @@ const facilities = [
     content: ["Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff."],
     images: ["/static/images/other_facilities/Gym/fitnesscenter.webp","/static/images/other_facilities/Gym/gym.webp","/static/images/other_facilities/Gym/ladies_hostel_gym.webp"]
   },
+  { 
+    name: "Temple",
+    img_name: ["Velmurugan Temple"],
+    content: ["Our college features a modern Velmurugan temple to provide better lifestyle for students and staff."],
+    images: [""]
+  },
 
 ];
 

@@ -75,10 +75,10 @@ const TransportCarousel = () => {
         alt={items[activeIndex].title}
         className="w-full h-64 object-cover rounded-t-2xl"
       />
-      <div className="p-4 text-black"> {/* Changed text color to black for better contrast */}
+      {/* <div className="p-4 text-black">
         <h2 className="text-xl font-bold">{items[activeIndex].title}</h2>
         <p className="mt-2 text-sm">{items[activeIndex].description}</p>
-      </div>
+      </div> */}
     </motion.div>
   </AnimatePresence>
 

@@ -139,7 +139,10 @@ async function getDeptActivities(req, res) {
             return dateB - dateA;
         });
 
-        return res.status(200).json(sortedActivities);
+        return res.status(200).json({
+            department_name: departmentData.department_name,
+            activities: sortedActivities,
+        });
 
     } catch (error) {
         console.error("❌ Error fetching department activities:", error);

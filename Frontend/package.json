@@ -41,7 +41,7 @@
     "react-intersection-observer": "^9.14.1",
     "react-lottie-player": "^2.1.0",
     "react-parallax-tilt": "^1.7.299",
-    "react-qr-barcode-scanner": "^2.0.0",
+    "react-qr-barcode-scanner": "^1.0.4",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.2.0",
     "react-scripts": "^5.0.1",

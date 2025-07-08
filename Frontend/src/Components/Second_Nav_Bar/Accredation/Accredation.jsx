@@ -13,10 +13,10 @@ const Accredation = ({toggle,theme}) => {
     const [naac,setNaac] = useState("NAAC")
 
     const navData = {
-        "NAAC": <Naac/>,
-        "NBA": <NBA_F/>,
-        "NIRF":<NIRF/>,
-        "I GAUGE DIAMOND": <IQauge/>
+        "NAAC": <Naac />,
+        "NBA": <NBA_F />,
+        "NIRF":<NIRF />,
+        "QS Rating": <IQauge />
     };
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);

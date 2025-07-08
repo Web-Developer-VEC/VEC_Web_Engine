@@ -3,7 +3,7 @@ import Banner from "../../Banner";
 
 const sections = [
   {
-    title: "Exam cell",
+    title: "COE",
     members: [
       {
         name: "Dr. A. Coe",
@@ -14,7 +14,7 @@ const sections = [
     ],
   },
   {
-    title: "Planning Q-Paper",
+    title: "Deputy COE",
     members: [
       {
         name: "Dr. Coe",
@@ -25,7 +25,7 @@ const sections = [
     ],
   },
   {
-    title: "Develope Q-Paper",
+    title: "COE Staffs",
     members: [
       {
         name: "Dr. Coe",
@@ -72,7 +72,7 @@ const Coe = ({ toggle, theme }) => {
     <>
       <Banner toggle={toggle} theme={theme}
         backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-        headerText="Controller Of Exam"
+        headerText="office of controller of examination"
         subHeaderText="COE"
       />
 
