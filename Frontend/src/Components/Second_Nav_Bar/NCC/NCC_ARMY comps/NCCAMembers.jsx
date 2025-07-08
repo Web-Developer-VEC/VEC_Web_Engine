@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import LoadComp from "../../../LoadComp";
 
-function NCCAMembers() {
+function NCCAMembers({armyFacultyData,armyStudentData}) {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -14,70 +14,11 @@ function NCCAMembers() {
   };
   
 
-  const [coordinaterImage, setCoordinaterImage] = useState(null)
-  const [coordinaterName , setCoordinaterName] = useState("")
-  const [coordinaterMessage ,setCoordinaterMessage] =useState("")
-  const [coordinaterDesignation, setCoordinaterDesignation] = useState("")
-  // student coordinater 
-  const [studentMembers, setStudentMembers] = useState([]);
-  const [data , setData] = useState("")
-useEffect(()=>{
-  const fetchFacultyCoordinatorData = async () => {
-    try{
-       const responce = await axios.get('/api/ncc_army');
-       const data = responce.data[0];
-       setData(data);
-       setCoordinaterImage(data.coordinater.image_path)
-       setCoordinaterName(data.coordinater.name)
-       setCoordinaterMessage(data.coordinater.message)
-       setCoordinaterDesignation(data.coordinater.designation)
-    }catch(error){
-         console.error("Error fetching data", error);
-
-    }
-  
-  }
-
-   fetchFacultyCoordinatorData(); 
-}
-
-,[])
-
-
-useEffect(()=> {
-  const fetchMemberCoordinaterData = async () => {
-
-    try{
-
-      const responce = await axios.get('/api/ncc_army');
-       const data = responce.data[0];
-     
-       const members = data.members;
-     
-      const combinedMembers = members.name.map((name, i) => ({
-               name: name,
-               rank: members.rank[i],
-               regiment_no:members.regiment_no[i],
-               year: members.year[i],
-               department: members.department[i],
-               image: members.image_path[i]
-             }));
-     
-             setStudentMembers(combinedMembers)
-    }catch(error){
-      console.error("Error fetching data ",error)
-    }
-  };
-
-  fetchMemberCoordinaterData();
-
-},[])
-
 // console.log(coordinatorName)
 
   return (
   <>
-    {data ? (
+    {(armyFacultyData && armyStudentData) ? (
       
       <div className="yrc-coordinators-container">
         <h2 className="yrc-h2 text-brwn dark:text-drkt">
@@ -87,17 +28,17 @@ useEffect(()=> {
       
         <div className="yrc-member-card-1 dark:bg-text">
           <img
-          src={coordinaterImage}
-          alt={coordinaterImage}
+          src={armyFacultyData?.image_path}
+          alt={armyFacultyData?.name}
           className="yrc-member-image1"
           />
           
           <div className="yrc-member-info1">
             {/* <span className="yrc-platoon">Programme Officer</span> */}
-            <h3> {coordinaterName} </h3>
-            <p className="yrc-title">{coordinaterDesignation}</p>
+            <h3> {armyFacultyData?.name} </h3>
+            <p className="yrc-title">{armyFacultyData?.designation}</p>
             <p className="yrc-degree">
-            {coordinaterMessage}
+            {armyFacultyData?.message}
           </p>
           </div>
         </div>
@@ -107,7 +48,7 @@ useEffect(()=> {
         <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid">
-            {studentMembers.map((member, index) => (
+            {armyStudentData?.map((member, index) => (
             <div className="student-card dark:bg-text" key={index}>
               <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} />
               <h5 className="text-text dark:text-drkt font-sm mt-4">{member.name}</h5>

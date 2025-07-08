@@ -123,7 +123,7 @@ if (!isOnline) {
   return (
     <>
       <Banner toggle={toggle} theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        backgroundImage="./Banners/examsbanner.webp"
         headerText="Downloads"
         subHeaderText="Streamlining processes with easy access to forms, empowering smooth academic and administrative workflows."
       />

@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 10px;
   }
   
   .admin-page-title {
@@ -37,6 +37,7 @@
   .ao-container {
     display: flex;
     justify-content: center;
+    gap: 6px;
     align-items: center;
     margin-bottom: 30px;
   }

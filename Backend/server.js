@@ -27,6 +27,7 @@ const overallResearchRoutes = require('./Main/routes/overallResearch');
 const grievanceRoutes = require('./Main/routes/grievance');
 const wardenRoutes = require('./Main/routes/wardens');
 const incubationRoutes = require('./Main/routes/incubation');
+const coeRoutes = require('./Main/routes/coe');
 // Importing route files For Hostel Page
 const loginRoute = require('./Hostel/routes/auth');
 const studentRequestRoute = require('./Hostel/routes/studentRoutes/request');
@@ -86,6 +87,7 @@ app.use('/api', overallResearchRoutes);
 app.use('/api', grievanceRoutes);
 app.use('/api', wardenRoutes);
 app.use('/api', incubationRoutes);
+app.use('/api', coeRoutes)
 // Routes For Hostel Page
 app.use('/api', loginRoute);
 app.use('/api', studentRequestRoute);
