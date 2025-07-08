@@ -63,7 +63,7 @@ import LoadComp from "../../../LoadComp";
 //   );
 // };
 
-function NCCAMembers() {
+function NCCAMembers({data , studentdata}) {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -71,69 +71,6 @@ function NCCAMembers() {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
-
-
-  const [coordinaterImage, setCoordinaterImage] = useState(null)
-  const [coordinaterName , setCoordinaterName] = useState("")
-  const [coordinaterMessage ,setCoordinaterMessage] =useState("")
-  const [coordinaterDesignation, setCoordinaterDesignation] = useState("")
-  // student coordinater 
-  const [studentMembers, setStudentMembers] = useState([]);
-  const [data , setData] = useState("")
-useEffect(()=>{
-  const fetchFacultyCoordinatorData = async () => {
-    try{
-       const responce = await axios.get('/api/ncc_army');
-       const data = responce.data[0];
-       setData(data);
-       setCoordinaterImage(data.coordinater.image_path)
-       setCoordinaterName(data.coordinater.name)
-       setCoordinaterMessage(data.coordinater.message)
-       setCoordinaterDesignation(data.coordinater.designation)
-    }catch(error){
-         console.error("Error fetching data", error);
-
-    }
-  
-  }
-
-   fetchFacultyCoordinatorData(); 
-}
-
-,[])
-
-
-useEffect(()=> {
-  const fetchMemberCoordinaterData = async () => {
-
-    try{
-
-      const responce = await axios.get('/api/ncc_army');
-       const data = responce.data[0];
-     
-       const members = data.members;
-     
-      const combinedMembers = members.name.map((name, i) => ({
-               name: name,
-               rank: members.rank[i],
-               regiment_no:members.regiment_no[i],
-               year: members.year[i],
-               department: members.department[i],
-               image: members.image_path[i]
-             }));
-     
-             setStudentMembers(combinedMembers)
-    }catch(error){
-      console.error("Error fetching data ",error)
-    }
-  };
-
-  fetchMemberCoordinaterData();
-
-},[])
-
-// console.log(coordinatorName)
-
   return (
   <>
     {data ? (
@@ -146,43 +83,27 @@ useEffect(()=> {
       
       <div className="yrc-member-card-1">
       <img
-      src={coordinaterImage}
-      alt={coordinaterImage}
+      src={data?.image_path}
+      alt={data?.image_path}
       className="yrc-member-image1"
       />
       
       <div className="yrc-member-info1">
       {/* <span className="yrc-platoon">Programme Officer</span> */}
-      <h3> {coordinaterName} </h3>
-      <p className="yrc-title">{coordinaterDesignation}</p>
+      <h3> {data?.name} </h3>
+      <p className="yrc-title">{data?.designation}</p>
       <p className="yrc-degree">
-      {coordinaterMessage}
+      {data?.message}
       </p>
       </div>
       </div>
-      
-      
-      {/* {staffCoordinator && (
-        <div className="yrc-member-card">
-        <img
-        src={UrlParser(staffCoordinator.image_path)}
-        alt={staffCoordinator.name}
-        className="yrc-member-image1"
-        />
-        <div className="yrc-member-info2">
-        <span className="yrc-platoon">Faculty Coordinator</span>
-        <h3>{staffCoordinator.name}</h3>
-        <p className="yrc-title">{staffCoordinator.designation}</p>
-        </div>
-        </div>
-        )} */}
         
         <h2 className="yrc-h3">
         STUDENT COORDINATORS
         <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid">
-        {studentMembers.map((member, index) => (
+        {studentdata.map((member, index) => (
           <div className="student-card" key={index}>
       <img src={UrlParser(member.image)} alt={member.name} />
       <h3>{member.name}</h3>

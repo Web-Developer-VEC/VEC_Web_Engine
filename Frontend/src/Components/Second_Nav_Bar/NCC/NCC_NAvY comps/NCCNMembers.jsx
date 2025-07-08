@@ -62,7 +62,7 @@ import { useState } from "react";
 //   );
 // };
 
-const  NCCNMembers = () => {
+const  NCCNMembers = ({Navydata,studentData}) => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -112,67 +112,67 @@ const  NCCNMembers = () => {
   const [coordinaterDesignation, setCoordinaterDesignation] = useState("")
   const [studentCoordinaters,setStudentCoordinaters] = useState([])
   const [data , setData] = useState()
-  useEffect(()=> {
-    const fetchFacultyCoordinaterData = async () => {
-try{
+//   useEffect(()=> {
+//     const fetchFacultyCoordinaterData = async () => {
+// try{
 
-    const response = await axios.get('/api/ncc_navy');
+//     const response = await axios.get('/api/ncc_navy');
 
-  if (Array.isArray(response.data) && response.data.length > 0) {
-        const data = response.data[0]; 
-      setCoordinaterImage(data.coordinater.image_path)
-       setCoordinaterName(data.coordinater.name)
-       setCoordinaterMessage(data.coordinater.message)
-       setCoordinaterDesignation(data.coordinater.designation)
-      } else {
-        console.warn("API returned no data or unexpected format", response.data);
-      }
-}catch(error){
-  console.error("Error data fetching ",error)
-}
+//   if (Array.isArray(response.data) && response.data.length > 0) {
+//         const data = response.data[0]; 
+//       setCoordinaterImage(data.coordinater.image_path)
+//        setCoordinaterName(data.coordinater.name)
+//        setCoordinaterMessage(data.coordinater.message)
+//        setCoordinaterDesignation(data.coordinater.designation)
+//       } else {
+//         console.warn("API returned no data or unexpected format", response.data);
+//       }
+// }catch(error){
+//   console.error("Error data fetching ",error)
+// }
     
 
 
-    }
-fetchFacultyCoordinaterData();
+//     }
+// fetchFacultyCoordinaterData();
 
 
-const fetchStudentCoordinaterData = async() => {
+// const fetchStudentCoordinaterData = async() => {
 
-    try{
+//     try{
 
-    const response = await axios.get('/api/ncc_navy');
+//     const response = await axios.get('/api/ncc_navy');
 
-  if (Array.isArray(response.data) && response.data.length > 0) {
-      const data = response.data[0]; 
-      const members = data.members
+//   if (Array.isArray(response.data) && response.data.length > 0) {
+//       const data = response.data[0]; 
+//       const members = data.members
 
 
-      const formatted = members.name.map((name, index) => ({
-        id: index + 1,
-        role: members.rank?.[index] ,
-        regiment_no: members.regiment_no?.[index],
-        image: members.image_path?.[index] ,
-        rank: members.rank?.[index],
-        universityno: members.universityno[index],
-        name: name || "",
-        department: members.department?.[index] ,
+//       const formatted = members.name.map((name, index) => ({
+//         id: index + 1,
+//         role: members.rank?.[index] ,
+//         regiment_no: members.regiment_no?.[index],
+//         image: members.image_path?.[index] ,
+//         rank: members.rank?.[index],
+//         universityno: members.universityno[index],
+//         name: name || "",
+//         department: members.department?.[index] ,
       
-      }));
+//       }));
 
 
-    setStudentCoordinaters(formatted)
+//     setStudentCoordinaters(formatted)
 
-      } else {
-        console.warn("API returned no data or unexpected format", response.data);
-      }
-}catch(error){
-  console.error("Error data fetching ",error)
-}
+//       } else {
+//         console.warn("API returned no data or unexpected format", response.data);
+//       }
+// }catch(error){
+//   console.error("Error data fetching ",error)
+// }
     
-    }
-fetchStudentCoordinaterData();
-  },[])
+//     }
+// fetchStudentCoordinaterData();
+//   },[])
 
 
 
@@ -186,17 +186,17 @@ fetchStudentCoordinaterData();
       
       <div className="yrc-member-card-1">
         <img
-          src={coordinaterImage}
-          alt={coordinaterImage}
+          src={Navydata?.image_path}
+          alt={Navydata?.name}
           className="yrc-member-image1"
         />
 
         <div className="yrc-member-info1">
           {/* <span className="yrc-platoon">Programme Officer</span> */}
-          <h3>{coordinaterName}</h3>
-          <p className="yrc-title">{coordinaterDesignation}</p>
+          <h3>{Navydata?.name}</h3>
+          <p className="yrc-title">{Navydata?.designation}</p>
           <p className="yrc-degree">
-         {coordinaterMessage}
+         {Navydata?.message}
           </p>
         </div>
       </div>
@@ -222,7 +222,7 @@ fetchStudentCoordinaterData();
         <div className="yrc-underline3"></div>
       </h2>
       <div className="yrc-members-grid">
-     {studentCoordinaters.map(student => (
+     {studentData.map(student => (
   <div key={student.id} className="student-card">
     <img src={student.image} alt={student.name} />
     <h3>{student.name}</h3>

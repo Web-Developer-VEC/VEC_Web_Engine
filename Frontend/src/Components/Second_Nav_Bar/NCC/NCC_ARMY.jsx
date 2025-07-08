@@ -224,9 +224,11 @@ function NCCContact() {
 
 
 const NCC_ARMY = () => {
+  // const [data , setData] = useState({})
     const [tabel, setTabelValue] = useState({});
     const [curosel, setCarosel] = useState({});
     const [Coordinator, setCoordinator] = useState({});
+    const [member,setMember] = useState([])
     const navData = {
       "About NCC Army": (
         <>
@@ -240,7 +242,7 @@ const NCC_ARMY = () => {
         </>
       ),
       "Recent Events":   <NCCACarousel data={curosel} />,
-      "Team & Coordinators": <NCCAMembers />,
+      "Team & Coordinators": <NCCAMembers data={Coordinator} studentdata={member} />,
       "Awards & Recognition" : <AlumniSlider />,
       
       
@@ -258,10 +260,25 @@ const NCC_ARMY = () => {
                 const responce = await axios.get('/api/ncc_army');
                 const data = responce.data[0];
 
+                
+                const memberData = data.members
                 setTabelValue(data.Table);
                 setCarosel(data.image);
-                setCoordinator(data.Coordinator)
+                setCoordinator(data.coordinater)
+                
 
+
+                const formattedMembers =  memberData.name.map((name, i) => ({
+                  name,
+                  rank: memberData.rank[i],
+                    regiment_no:  memberData.regiment_no[i],
+                    year:  memberData.year[i],
+                    department: memberData.department[i],
+                    image: memberData.image_path[i]
+                    }));
+
+
+                setMember(formattedMembers)
             } catch (error) {
                 console.error("Error fetching data", error);
             }
