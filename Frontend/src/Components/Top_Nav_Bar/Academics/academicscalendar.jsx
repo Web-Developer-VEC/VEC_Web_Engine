@@ -6,12 +6,6 @@ import "../../Second_Nav_Bar/Accredation/nirf.css"
 
 
 const Acadamiccal = ({ toggle, theme, isLoading }) => {
-  const [calendarData, setCalendarData] = useState([]);
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
 
   const yearRanges = [
     [2025, 2026],
@@ -46,13 +40,13 @@ const Acadamiccal = ({ toggle, theme, isLoading }) => {
         <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {yearRanges.map(([startYear, endYear]) => (
-            <div key={startYear} className="bg-white border p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-red-800 mb-4 inline-block pb-1">
+            <div key={startYear} className="bg-prim dark:bg-drkb border p-6 rounded-lg shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-bold text-brwn dark:text-drkt mb-4 inline-block pb-1">
                 Academic Year {startYear}-{endYear}
               </h3>
               <div className="flex flex-col items-center space-y-2 text-blue-600">
-                <a href={`/calendar/${startYear}-${endYear}/odd`} className="hover:text-blue-800">Odd Sem</a>
-                <a href={`/calendar/${startYear}-${endYear}/even`} className="hover:text-blue-800">Even Sem</a>
+                <a href={`/calendar/${startYear}-${endYear}/odd`} className="hover:text-blue-800 dark:text-drka">Odd Sem</a>
+                <a href={`/calendar/${startYear}-${endYear}/even`} className="hover:text-blue-800 dark:text-drka">Even Sem</a>
               </div>
             </div>
           ))}

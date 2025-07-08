@@ -53,10 +53,10 @@ import {
     FaJournalWhills,
     FaCogs,
     FaDesktop,
-    FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning
+    FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning, 
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
-import { Medal, MedalIcon } from "lucide-react";
+import { Medal, MedalIcon, Trophy } from "lucide-react";
 
 const SideNav = ({sts, setSts, navData, cls}) => {
     function setIco(ttl) {
@@ -69,13 +69,13 @@ const SideNav = ({sts, setSts, navData, cls}) => {
             case "Coordinators":
                 return <FaUserTie className={sty}/>;
             case "NAAC":
-                return <MedalIcon className={sty}/>;
+                return <Trophy className={sty}/>;
             case "NIRF":
-                return <MedalIcon className={sty}/>;
+                return <Trophy className={sty}/>;
             case "NBA":
-                return <MedalIcon className={sty}/>;
-            case "I GAUGE DIAMOND":
-                return <MedalIcon className={sty}/>;
+                return <Trophy className={sty}/>;
+            case "QS Rating":
+                return <Trophy className={sty}/>;
             case "Code of Ethics":
                 return <FaBalanceScale className={sty}/>;
             case "Strategic Development Plan":

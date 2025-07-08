@@ -22,7 +22,7 @@ const Activities = ({ data }) => {
   const [filterOption, setFilterOption] = useState("Recent"); // Default: Recent
 
 
-  const activitiesArray = data ?  Object.values(data) : []; // Convert object to array
+  const activitiesArray = data?.activities ?  Object.values(data?.activities) : []; // Convert object to array
 
   useEffect(() => {
     filterEvents();
@@ -66,7 +66,7 @@ const Activities = ({ data }) => {
     setIsModalOpen(false);
   };
 
-  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+  if(!data?.activities) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
     <LoadComp txt={""} />
   </div>
 

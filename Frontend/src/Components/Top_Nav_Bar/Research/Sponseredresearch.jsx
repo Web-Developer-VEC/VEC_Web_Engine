@@ -47,7 +47,7 @@ const [selectedCourse, setSelectedCourse] = useState(null);
 
           <div className="research-academicresearch-container">
             <h1 className="research-academicresearch-title text-brwn dark:text-drkt border-l-4 border-r-4 border-secd dark:border-drks">
-              Sponser Research - Year wise Consolidation
+              Sponsored Research
             </h1>
 
             <div className="course-selection-container">

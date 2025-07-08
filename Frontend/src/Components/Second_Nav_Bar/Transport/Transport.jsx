@@ -4,8 +4,9 @@ import Transportcarousel from "./Transportcarousel";
 import PDF from "./PDF";
 import Transportvideo from "./TransportVideo";
 import LoadComp from '../../LoadComp'
+import Toggle from "../../Toggle";
 
-const Transport = () => {
+const Transport = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
     useEffect(() => {
@@ -34,8 +35,12 @@ const Transport = () => {
             // backgroundColor: "#f8f9fa"
         }}>
        <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px]">
-    <Transportvideo />
-</div>
+            <Transportvideo/>
+            <Toggle toggle={toggle} theme={theme}
+                attr="absolute top-[10%] lg:top-[1%] left-[0.3%] lg:left-[0.3%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
+                rounded-br-xl"/>
+            <div class="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded">VEC Transport Facilities</div>
+        </div>
             
             <div>
                 <PDF/>

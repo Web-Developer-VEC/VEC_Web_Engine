@@ -111,14 +111,21 @@ if (!isOnline) {
             <p className="description-text">
             Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.
             </p>
+            <br />
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2">GOVERNMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
+            </div>
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through Consortium of Self –Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
+            </div>
             <div className="flex justify-center mt-4">
-              <a href="#" className="dark:text-drka">
-                <FaLink  className={"inline size-5 mr-1 mb-1"}/>link
+              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+              <a href="/static/pdfs/admission/B.E_B.TECH-25-26.pdf" className="dark:text-drka">
+                <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
               </a>
             </div>
-            <br />
-            <p className="description-text ug-GQ"><strong>Government Quota : </strong>Apply through TNEA Counselling</p>
-            <p className="description-text ug-MQ"><strong>Management Quota : </strong> Apply through Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
             {renderTable(ug, `UG COURSES - TOTAL INTAKE ${year}`, "(For First Year Admissions)")}
           </div>
 
@@ -138,9 +145,18 @@ if (!isOnline) {
             <p className="description-text">
             Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
             </p>
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">GOVERNMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
+            </div>
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through Consortium of Self –Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
+            </div>
             <div className="flex justify-center mt-4">
-              <a href="#" className="dark:text-drka">
-                <FaLink  className={"inline size-5 mr-1 mb-1"}/>link
+              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+              <a href="/static/pdfs/admission/B.E_B.TECH-25-26.pdf" className="dark:text-drka">
+                <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
               </a>
             </div>
             {renderTable(ug_lateral, `UG COURSES - TOTAL INTAKE ${year}`, "(For Diploma Holders Only)")}

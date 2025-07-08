@@ -84,7 +84,7 @@ const Programmes = ({toggle, theme}) => {
             ]
         },
         {
-            type: "PhD-Programmes",
+            type: "Ph.D - Programmes",
             values: [
                 {
                     name: 'Computer Science and Engineering',

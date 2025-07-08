@@ -17,7 +17,7 @@ const Footer = forwardRef((props, ref) => {
             <div className="contact-details basis-1/4 ml-4">
                 <h3 className="text-secd dark:text-drks font-bold" style={{padding: "0 20px", margintop: "5px"}}>Contact
                     Address</h3>
-                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College<br></br>Ambattur
+                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College (Autonomous)<br></br>Ambattur
                     Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
                 <p style={{marginTop: "27px"}}>
                     Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href="tel:+914426590758"

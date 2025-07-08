@@ -67,11 +67,17 @@ if (!isOnline) {
           <div className="mba-container bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
-            <p className="description-text mb-2"><strong>Government Quota : </strong>Apply through TANCET</p>
-            <p className="description-text mb-2"><strong>Management Quota : </strong>Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
             <p className="description-text">
             Learners for admission to the first semester of the MBA Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu single window counselling process. The Government of Tamil Nadu releases the updated eligibility criteria for the admission. Admission shall be offered only to candidates who possess the qualification prescribed and the eligibility criteria for the programme.
             </p>
+          <div>
+            <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">GOVERNMENT QUOTA</p>
+            <p className="text-text dark:text-drkt ml-8">MBA : Apply through TANCET/TANCA</p>
+          </div>
+          <div>
+            <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
+            <p className="text-text dark:text-drkt ml-8">MBA : Apply through Common Entrance Test (CET) conducted by the Consortium of Self –Financing Professional, Arts and  Science Colleges in Tamil Nadu</p>
+          </div>
 
             <div className="mba-content">
               <center>

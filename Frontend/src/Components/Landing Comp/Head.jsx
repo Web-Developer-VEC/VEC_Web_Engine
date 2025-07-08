@@ -28,7 +28,7 @@ const Head = () => {
     const nacs = [Naac, Acrd, Nord, Tnea]
     const hdrs = [
         { ttl: "IQAC", lnk: "/iqac" },
-        {ttl:"Accredation",lnk:"/Accredation"},
+        { ttl:"Accredation & Ranking",lnk:"/Accredation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
         { ttl: "Alumni", lnk: "/alumni" },

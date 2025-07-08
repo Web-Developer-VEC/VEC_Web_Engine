@@ -67,7 +67,7 @@ if (!isOnline) {
         <div className="me-contents bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
           <h3 className="text-accn dark:text-drkt Eligibility text-center">
-            Candidates seeking admission to the first semester of the four-semester M.E. Degree Programme:
+            Candidates seeking Admission to the First Semester of the Four-Semester M.E. Degree Programme:
           </h3>
           
           <br></br>
@@ -81,8 +81,14 @@ if (!isOnline) {
           <p className="description-text">
           Any other relevant qualification which is not prescribed against each programme shall be considered for equivalence by the committee constituted for the purpose. Admission to such degrees shall be offered only after obtaining equivalence to such degrees.
           </p>
-          <p className="description-text mb-2 mt-2"><strong>Government Quota : </strong>Apply through TANCET/TANCA</p>
-          <p className="description-text mb-2"><strong>Management Quota : </strong> Apply through Common Entrance Test (CET) conducted by the Consortium of Self-Financing Professional, Arts and Science Colleges in Tamil Nadu.</p>
+          <div>
+            <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">GOVERNMENT QUOTA</p>
+            <p className="text-text dark:text-drkt ml-8">M.E : Apply through TANCET/TANCA</p>
+          </div>
+          <div>
+            <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
+            <p className="text-text dark:text-drkt ml-8">M.E : Apply through Common Entrance Test (CET) conducted by the Consortium of Self –Financing Professional, Arts and  Science Colleges in Tamil Nadu</p>
+          </div>
           <div className="me-container">
             <center><h4 className="text-accn dark:text-drkt Eligibility mt-5 font-bold">M.E - Total Intake {pgData.Year}</h4></center>
             <table className="intake-table">

@@ -186,7 +186,7 @@ const Dean = ({theme, toggle}) => {
                     <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-poppins">
                       {/* Dean Profile */}
                       {responsibleDean?.Dean && (
-                        <div className="font-poppins de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks"
+                        <div className="font-poppins de-profile bg-prim dark:bg-drkp w-full lg:w-[25vw] border-2 border-secd dark:border-drks"
                         //  onClick={() => navigate(`/facultyprofile/${responsibleDean?.Dean_unique_id}`)}
                          >
                           <img
@@ -204,7 +204,7 @@ const Dean = ({theme, toggle}) => {
 
                       {/* Associate Dean Profile */}
                       {responsibleDean?.Associate_Dean && (
-                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[20vw] border-2 border-secd dark:border-drks" 
+                        <div className="de-profile bg-prim dark:bg-drkp w-full lg:w-[25vw] border-2 border-secd dark:border-drks" 
                         // onClick={() => navigate(`/facultyprofile/${responsibleDean?.Associate_dean_unique_id}`)}
                         >
                           <img
