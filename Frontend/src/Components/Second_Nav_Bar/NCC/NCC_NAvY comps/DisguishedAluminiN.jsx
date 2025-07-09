@@ -7,6 +7,12 @@ const AlumniSlider1 = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [awardData, setAwardData] = useState([]);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchAwards = async () => {
       try {
@@ -22,10 +28,8 @@ const AlumniSlider1 = () => {
 
           // Build array of { image, description }
           const parsedData = awards.image_path.map((img, i) => ({
-            image: img.startsWith("http")
-              ? img
-              : `${window.location.origin}/${img}`,
-            description: awards.des[i] || "No description",
+            image: UrlParser(img),
+            description: awards.des[i],
           }));
 
           setAwardData(parsedData);
