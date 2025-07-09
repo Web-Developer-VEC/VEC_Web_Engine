@@ -6,6 +6,12 @@ const Coe = ({ toggle, theme }) => {
 
   const [coeData, setCoeData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,7 +51,7 @@ const Coe = ({ toggle, theme }) => {
                   className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
                 >
                   <img
-                    src={member.image_path}
+                    src={UrlParser(member.image_path)}
                     alt={member.name}
                     className="w-[100px] h-[120px] object-cover rounded"
                   />
@@ -65,7 +71,7 @@ const Coe = ({ toggle, theme }) => {
                     className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
                   >
                     <img
-                      src={member.img}
+                      src={UrlParser(member.image_path)}
                       alt={member.name}
                       className="w-[100px] h-[120px] object-cover rounded"
                     />
