@@ -28,7 +28,7 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
       
         <div className="yrc-member-card-1 dark:bg-text">
           <img
-          src={armyFacultyData?.image_path}
+          src={UrlParser(armyFacultyData?.image_path)}
           alt={armyFacultyData?.name}
           className="yrc-member-image1"
           />
