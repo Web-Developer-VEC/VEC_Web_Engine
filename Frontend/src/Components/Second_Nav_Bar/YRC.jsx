@@ -3,21 +3,18 @@ import Slider from "react-slick";
 import Banner from "../Banner";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./YRC.css";
 import axios from "axios";
-import NCCNCarousel from "./NCC/NCC_NAvY comps/NCCNCarousel";
-import NCCNtable from "./NCC/NCC_NAvY comps/NCCNtable";
 import SideNav from "./SideNav";
-import NSSContent from "./NSS/NSSContent";
-import NSSManual from "./NSS/NSSManual";
-import Coordinators from "./NSS/NSSCoordinatiors";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
-const BASE_URL = "http://localhost:5000/";
+import LoadComp from "../LoadComp"
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
 function YRCAbout() {
   return (
@@ -79,64 +76,72 @@ const CarouselYRC = ({ data }) => {
   };
 
   return (
-    <div className="nss-carousel-wrap">
-      <div
-        className="nss-carousel-container"
-        style={{
-          transform: `translateX(-${currentIndex * 100}%)`,
-          display: "flex",
-          transition: "transform 0.5s ease",
-        }}
-      >
-        {data.image_path.map((image, index) => (
-  <div className="nss-carousel-slide" key={index}>
-    <img
-      src={UrlParser(image)}
-      alt={data?.title?.[index]}
-      className="nss-carousel-image"
-    />
-    
-    {/* Overlay Text at Bottom */}
-    <div className="nss-carousel-overlay">
-      <div className="nss-carousel-overlay-left">
-        <h3>{data?.title?.[index]}</h3>
-        <p>{data?.des?.[index]}</p>
-      </div>
-      <div className="nss-carousel-overlay-right">
-        {data?.date?.[index]}
-      </div>
-    </div>
-  </div>
-))}
-
-
-      </div>
-
-      {/* Navigation Buttons */}
-      <button
-        className="nss-carousel-btn nss-carousel-btn-left"
-        onClick={prevSlide}
-      >
-        &#10094;
-      </button>
-      <button
-        className="nss-carousel-btn nss-carousel-btn-right"
-        onClick={nextSlide}
-      >
-        &#10095;
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="nss-carousel-dots">
-        {data.image_path.map((_, index) => (
-          <span
-            key={index}
-            className={`nss-dot ${index === currentIndex ? "active" : ""}`}
-            onClick={() => setCurrentIndex(index)}
-          ></span>
+    <>
+      {data ? (
+      <div className="nss-carousel-wrap">
+        <div
+          className="nss-carousel-container"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+            display: "flex",
+            transition: "transform 0.5s ease",
+          }}
+        >
+          {data.image_path.map((image, index) => (
+          <div className="nss-carousel-slide" key={index}>
+            <img
+              src={UrlParser(image)}
+              alt={data?.title?.[index]}
+              className="nss-carousel-image"
+            />
+      
+            {/* Overlay Text at Bottom */}
+            <div className="nss-carousel-overlay">
+              <div className="nss-carousel-overlay-left">
+                <h3>{data?.title?.[index]}</h3>
+                <p>{data?.des?.[index]}</p>
+              </div>
+              <div className="nss-carousel-overlay-right">
+                {data?.date?.[index]}
+              </div>
+            </div>
+          </div>
         ))}
+
+
+        </div>
+
+        {/* Navigation Buttons */}
+        <button
+          className="nss-carousel-btn nss-carousel-btn-left"
+          onClick={prevSlide}
+        >
+          &#10094;
+        </button>
+        <button
+          className="nss-carousel-btn nss-carousel-btn-right"
+          onClick={nextSlide}
+        >
+          &#10095;
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="nss-carousel-dots">
+          {data.image_path.map((_, index) => (
+            <span
+              key={index}
+              className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+              onClick={() => setCurrentIndex(index)}
+            ></span>
+          ))}
+        </div>
       </div>
-    </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 };
 
@@ -168,129 +173,139 @@ const Awardsnss = ({ data }) => {
     );
   };
 
-  const parseImage = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
-
   return (
-    <div
-      className="relative w-full max-w-4xl mx-auto mt-5 mb-3"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative overflow-hidden rounded-lg shadow-lg">
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {data?.title?.map((title, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
-              style={{
-                opacity: activeIndex === index ? 1 : 0.5,
-              }}
-            >
-              <img
-                src={parseImage(data?.image_path[index])}
-                alt={title}
-                className="w-full h-80 object-contain rounded-t-lg"
-              />
-              <div className="p-4 text-center rounded-b-lg text-justify">
-                <p className="text-lg font-semibold text-text dark:text-drkt">
-                  {title}
-                </p>
-                {data?.des[index] && (
-                  <p className="text-sm text-text dark:text-drkt mt-2 text-justify">
-                    {data?.des[index]}
+    <>
+      {data ? (
+      <div
+        className="relative w-full max-w-4xl mx-auto mt-5 mb-3"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="relative overflow-hidden rounded-lg shadow-lg">
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {data?.title?.map((title, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
+                style={{
+                  opacity: activeIndex === index ? 1 : 0.5,
+                }}
+              >
+                <img
+                  src={UrlParser(data?.image_path[index])}
+                  alt={title}
+                  className="w-full h-80 object-contain rounded-t-lg"
+                />
+                <div className="p-4 text-center rounded-b-lg text-justify">
+                  <p className="text-lg font-semibold text-text dark:text-drkt">
+                    {title}
                   </p>
-                )}
+                  {data?.des[index] && (
+                    <p className="text-sm text-text dark:text-drkt mt-2 text-justify">
+                      {data?.des[index]}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Navigation buttons */}
+          <button
+            onClick={handlePrev}
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+          >
+            &#10094;
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+          >
+            &#10095;
+          </button>
         </div>
 
-        {/* Navigation buttons */}
-        <button
-          onClick={handlePrev}
-          className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
-        >
-          &#10094;
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
-        >
-          &#10095;
-        </button>
+        {/* Pagination dots */}
+        <div className="flex justify-center space-x-2 mt-4">
+          {data?.title.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2.5 h-2.5 rounded-full ${
+                activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+              } transition-all`}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
       </div>
-
-      {/* Pagination dots */}
-      <div className="flex justify-center space-x-2 mt-4">
-        {data?.title.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2.5 h-2.5 rounded-full ${
-              activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-            } transition-all`}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
-      </div>
-    </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 };
 
   function YRCCoord({ student, coor }) {
     return (
-      
-      <div className="yrc-coordinators-container">
-        <h2 className="yrc-h2 text-brwn dark:text-drkt">
-          FACULTY COORDINATOR
-          <div className="yrc-underline2"></div>
-        </h2>
-        
-        <div className="yrc-member-card-1 dark:bg-text">
-          <img
-            src={coor?.image_path}
-            alt="Officer"
-            className="yrc-member-image1"
-          />
-
-          <div className="yrc-member-info1 w-500px">
-            <h3 className="text-text dark:text-drkt">{coor?.name}</h3>
-            <span className="yrc-platoon text-brwn dark:text-drka">{coor?.designation}</span>
-          </div>
-        </div>
-
-        <h2 className="yrc-h3 text-brwn dark:text-drkt">
-          STUDENT COORDINATORS
-          <div className="yrc-underline3"></div>
-        </h2>
-        <div className="yrc-members-grid">
-        {student?.name?.map((name,i) => (
-          <div key={i} className="yrc-member-card dark:bg-text">
+      <>
+        {student && coor ? (
+        <div className="yrc-coordinators-container">
+          <h2 className="yrc-h2 text-brwn dark:text-drkt">
+            FACULTY COORDINATOR
+            <div className="yrc-underline2"></div>
+          </h2>
+          
+          <div className="yrc-member-card-1 dark:bg-text">
             <img
-              src={student?.image_path[i]}
-              alt={name}
-              className="yrc-member-image"
+              src={coor?.image_path}
+              alt="Officer"
+              className="yrc-member-image1"
             />
-            <div className="yrc-member-info">
-              <h3 className="text-text dark:text-drkt">{name}</h3>
-              <span className="yrc-platoon text-brwn dark:text-drka">{student?.designation[i]}</span>
-              {/* <p className="yrc-department"><b>Register Number:</b> {student?.reg_no[i]}</p> */}
-              <p className="yrc-year text-brwn dark:text-drka"><b>Year</b> {student?.year[i]}</p>
+
+            <div className="yrc-member-info1 w-500px">
+              <h3 className="text-text dark:text-drkt">{coor?.name}</h3>
+              <span className="yrc-platoon text-brwn dark:text-drka">{coor?.designation}</span>
             </div>
           </div>
-        ))}
-      </div>
 
-      </div>
+          <h2 className="yrc-h3 text-brwn dark:text-drkt">
+            STUDENT COORDINATORS
+            <div className="yrc-underline3"></div>
+          </h2>
+          <div className="yrc-members-grid">
+          {student?.name?.map((name,i) => (
+            <div key={i} className="yrc-member-card dark:bg-text">
+              <img
+                src={student?.image_path[i]}
+                alt={name}
+                className="yrc-member-image"
+              />
+              <div className="yrc-member-info">
+                <h3 className="text-text dark:text-drkt">{name}</h3>
+                <span className="yrc-platoon text-brwn dark:text-drka">{student?.designation[i]}</span>
+                {/* <p className="yrc-department"><b>Register Number:</b> {student?.reg_no[i]}</p> */}
+                <p className="yrc-year text-brwn dark:text-drka"><b>Year</b> {student?.year[i]}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        </div>
+        ) : (
+          <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
+        )}
+      </>
+      
     );
   }
 const YRC = () => {
-  const [staffCoordinator, setStaffCoordinator] = useState(null);
-  const [studentCoordinators, setStudentCoordinators] = useState([]);
   const [yrcEvent, setYrcEvent] = useState(null);
   const [yrcData, setYrcData] = useState(null);
   const [yrc, setYrc] = useState("About YRC")
@@ -308,18 +323,6 @@ const YRC = () => {
         const data = response.data;
         console.log(data[0]);
         setYrcData(data[0])
-        
-        // if (data.length >= 3) {
-          //   setStaffCoordinator(data[0]); // Staff Coordinator
-          
-          //   setStudentCoordinators({
-            //     names: data[1].name,
-            //     roles: data[1].designation,
-            //     images: data[1].image_path,
-            //   });
-            //   setYrcEvent(data[2]); // Event Data (Carousel)
-            
-            // }
           } catch (err) {
             console.error("Error Fetching Data:", err.message);
           }
@@ -397,6 +400,29 @@ const navData = {
   "Awards & Recognition": <Awardsnss data={yrcData?.awards} />
 };
 
+const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
 return (
   <div>
       <Banner
@@ -404,21 +430,14 @@ return (
         headerText="Youth Red Cross (YRC)"
         subHeaderText="Fostering excellence in social service and community well-being."
         />
+        {yrcData ? (
+          <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
+        ) : (
+          <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+            <LoadComp />
+          </div>
+        )}
 
-      {/*<div className="YRC-container flex flex-wrap mt-2 w-screen">*/}
-      {/*  <nav className="basis-full lg:basis-1/5 flex flex-wrap justify-center lg:grid lg:float-left*/}
-      {/*        w-screen lg:w-fit lg:max-w-[20vw] text-xl my-8">*/}
-      {/*    {Object.keys(navData).map((itm, ind) => (*/}
-      {/*        <button className={`px-4 py-2 border-2 border-text dark:border-drkt */}
-      {/*            hover:bg-accn/50 dark:hover:bg-drka/50   */}
-      {/*            ${(yrc === itm) ? "bg-accn dark:bg-drka text-prim dark:text-drkp font-semibold" : ""}*/}
-      {/*          ${(ind + 1 === Object.keys(navData).length) ? "" : "lg:border-b-transparent"}`} key={ind}*/}
-      {/*                type={"button"} onClick={() => setYrc(itm)}>{itm}</button>*/}
-      {/*    ))}*/}
-      {/*  </nav>*/}
-      {/*  {navData[yrc]}*/}
-      {/*</div>*/}
-      <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
     </div>
   );
 };

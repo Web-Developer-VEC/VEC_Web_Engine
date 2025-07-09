@@ -3,7 +3,7 @@ import "./NSSCoordinators.css"; // Import the CSS file
 import LoadComp from "../../LoadComp";
 
 const Coordinators = ({ faculty, students }) => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000/";
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const parseUrl = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;

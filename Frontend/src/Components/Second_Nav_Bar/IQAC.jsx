@@ -19,10 +19,7 @@ const IQAC = ({ toggle , theme }) => {
     const [selectedCategory, setSelectedCategory] = useState("OVERALL");
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    const [gal, setGal] = useState("All");
     const [iqa, setIqa] = useState("Objectives");
-    const [showethpdf, setShowethpdf] = useState(false);
-    const [showisopdf, setshowisopdf] = useState(false);
     const navData = {
         "Objectives": <IqaObj/>,
         "Coordinators": <IqaCor/>,
@@ -73,13 +70,13 @@ const IQAC = ({ toggle , theme }) => {
         })) || [];
 
     // Update members array
-    const membersArray =
-        iqacData?.members?.faculty?.map((member) => ({
-            name: member.name,
-            image: UrlParser(member.imagepath),
-            designation: member.designation,
-            keyRole: member.role,
-        })) || [];
+    // const membersArray =
+    //     iqacData?.members?.faculty?.map((member) => ({
+    //         name: member.name,
+    //         image: UrlParser(member.imagepath),
+    //         designation: member.designation,
+    //         keyRole: member.role,
+    //     })) || [];
 
     // Create coordinator object
     const coordinator = iqacData?.members?.coordinator ? {
@@ -292,18 +289,63 @@ const IQAC = ({ toggle , theme }) => {
     }
 
     function IqaMem() {
+
+        const parser = {
+            principle: "Chairperson",
+            deansanddepartmentheads: "Deans and Department Heads",
+            seniorteachers: "Senior Teachers",
+            memberfrommanagement: "Member from Management",
+            localprofessionalsocietychapter: "Local Professional Society Chapter",
+            studentmembers: "Student Members",
+            aluminimembers: "Alumni Members",
+            memberfromemployes: "Member from Employee",
+            memberfromindustry: "Member from Industry",
+            stakeholders: "Stakeholders"
+        };
         return (
-            <div className="members-grid">
-                {membersArray.map((member, index) => (
-                    <div key={index} className="members dark:bg-drkp">
-                        <img src={member.image || "/placeholder.svg"} alt={member.name}
-                             className="member-image"/>
-                        <p className="text-text dark:text-drkt">{member.name}</p>
-                        <h6 className="text-brwn dark:text-drka">{member.designation}</h6>
-                        <p className="text-brwn dark:text-drka">{member.keyRole}</p>
-                    </div>
-                ))}
+        <div className="mt-8 mb-4 px-4">
+            {Object.entries(iqacData?.members?.faculty).map(([groupKey, members]) => (
+            <div key={groupKey} className="mb-10">
+                {/* Group Title */}
+                <h2 className="text-2xl font-semibold font-poppins mb-4 text-center text-accn dark:text-drkt">
+                {parser[groupKey]}
+                </h2>
+
+                {/* Group Members */}
+                <div className="flex flex-wrap gap-4">
+                {members.map((member, i) => {
+                    const isLast = i === members.length - 1;
+                    const isOdd = members.length % 2 !== 0;
+                    return (
+
+                        <div
+                        key={i}
+                        className={ `
+                            ${members.length === 1
+                            ? 'basis-full max-w-xl mx-auto'
+                            : isLast && isOdd
+                                ? 'md:basis-[48%] md:mx-auto' // Center last card on its row
+                                : 'md:basis-[48%]'} 
+                            py-2 px-4 rounded-xl border-l-4 border-secd dark:border-drks
+                            bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                            transition-colors duration-300 ease-in basis=full w-full
+                        `}
+                        >
+                        <p className="text-xl font-poppins">{member.name}</p>
+                        {member.designation && (
+                            <p className="text-sm text-accn dark:text-drka">{member.designation}</p>
+                        )}
+                        {member.role && (
+                            <p className="text-sm text-accn dark:text-drka">{member.role}</p>
+                        )}
+                        </div>
+                    )
+    })}
+                </div>
             </div>
+            ))}
+        </div>
         );
     }
 

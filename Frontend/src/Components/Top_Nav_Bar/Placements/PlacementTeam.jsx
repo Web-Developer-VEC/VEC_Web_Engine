@@ -18,7 +18,7 @@ function PersonDetail({ person, isImageLeft }) {
       <img src={UrlParser(person?.photo_path)} alt={person?.name} className="person-image" />
       <div className="person-content">
       <h3 className='placement-head'>{person?.name}</h3>
-        <h2 className="text-accn dark:text-drka text-[24px]">{person?.designation}</h2>
+        <p className="text-accn dark:text-drka text-[24px]">{person?.designation}</p>
         <p>{person?.content}</p>
       </div>
     </div>
@@ -30,15 +30,15 @@ function PersonMemberDetail({ person, isImageLeft }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
   return (
     <div className={`person-detail ${isImageLeft ? 'left' : 'right'} dark:bg-drkts`}>
-      <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image" />
-      <div className="person-content">
+      <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image-mem" />
+      <div className="person-content-mem">
         <h3 className='placement-member-head'>{person.name}</h3>
-        <h3 className="text-accn dark:text-drka ">{person.designation}</h3>
+        <p className="text-accn dark:text-drka ">{person.designation}</p>
       </div>
     </div>
   );

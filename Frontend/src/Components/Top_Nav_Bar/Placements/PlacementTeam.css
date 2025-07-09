@@ -48,16 +48,27 @@ body {
   /* justify-content: space-between; */
 }
 
+.person-image-mem {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
 .person-image {
   width: 220px;
   height: 220px;
-  /* border-radius: 50%; */
   object-fit: cover;
+}
+
+.person-content-mem {
+  padding: 20px;
+  justify-content: center;
+  margin-left: 30px;
 }
 
 .person-content {
   padding: 20px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .person-content h3 {
@@ -85,11 +96,11 @@ body {
 .placement-members{
   display: flex;
   gap: 20px;
-  width: 100%;
+  width: 70%;
 }
 
 .placement-member-head {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .loading-screen {

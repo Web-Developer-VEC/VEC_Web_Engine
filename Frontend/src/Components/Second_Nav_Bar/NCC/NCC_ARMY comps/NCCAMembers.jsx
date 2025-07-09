@@ -36,10 +36,7 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
           <div className="yrc-member-info1">
             {/* <span className="yrc-platoon">Programme Officer</span> */}
             <h3> {armyFacultyData?.name} </h3>
-            <p className="yrc-title">{armyFacultyData?.designation}</p>
-            <p className="yrc-degree">
-            {armyFacultyData?.message}
-          </p>
+            <p className="yrc-title text-brwn dark:text-drka">{armyFacultyData?.designation}</p>
           </div>
         </div>
         

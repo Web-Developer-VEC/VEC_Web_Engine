@@ -230,6 +230,7 @@ const clearChat = () => {
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type your message here..."
+                  className="text-text placeholder:text-text"
                 />
                 <button onClick={sendMessage}>Send</button>
               </div>

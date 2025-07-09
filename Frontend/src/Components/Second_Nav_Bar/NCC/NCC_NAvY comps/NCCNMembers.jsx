@@ -36,9 +36,6 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
           {/* <span className="yrc-platoon">Programme Officer</span> */}
           <h3>{navyFacultyData?.name}</h3>
           <p className="yrc-title text-brwn dark:text-drka">{navyFacultyData?.designation}</p>
-          <p className="yrc-degree">
-         {navyFacultyData?.message}
-          </p>
         </div>
       </div>
 
