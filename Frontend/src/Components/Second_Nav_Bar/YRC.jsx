@@ -251,6 +251,11 @@ const Awardsnss = ({ data }) => {
 };
 
   function YRCCoord({ student, coor }) {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
     return (
       <>
         {student && coor ? (
@@ -262,7 +267,7 @@ const Awardsnss = ({ data }) => {
           
           <div className="yrc-member-card-1 dark:bg-text">
             <img
-              src={coor?.image_path}
+              src={UrlParser(coor?.image_path)}
               alt="Officer"
               className="yrc-member-image1"
             />
@@ -281,7 +286,7 @@ const Awardsnss = ({ data }) => {
           {student?.name?.map((name,i) => (
             <div key={i} className="yrc-member-card dark:bg-text">
               <img
-                src={student?.image_path[i]}
+                src={UrlParser(student?.image_path[i])}
                 alt={name}
                 className="yrc-member-image"
               />

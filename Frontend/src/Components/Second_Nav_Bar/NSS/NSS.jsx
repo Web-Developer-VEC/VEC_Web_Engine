@@ -70,7 +70,7 @@ const NSS = () => {
         students={nssData?.students}
       />
     ),
-    "Awards & Recognition": <Awardsrec data={nssData?.awards} />
+    // "Awards & Recognition": <Awardsrec data={nssData?.awards} />
   };
 
   return (

@@ -27,7 +27,7 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
       
       <div className="yrc-member-card-1 dark:bg-text">
         <img
-          src={navyFacultyData?.image_path}
+          src={UrlParser(navyFacultyData?.image_path)}
           alt={navyFacultyData?.name}
           className="yrc-member-image1"
           />
