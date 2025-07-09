@@ -85,7 +85,7 @@ const Announcements1 = () => {
                 <div className="main relative md:basis-1/2 lg:basis-1/3 w-full">
                     {spcannouncements.map((item) => (
                         <div key={item.title}>
-                            <h2 className="text-3xl text-accn dark:text-drka">{item.title}</h2>
+                            <h2 className="text-3xl text-accn dark:text-drkt">{item.title}</h2>
                             <p className="text-xl">{item.content}</p>
                         </div>
                     ))}
@@ -94,11 +94,10 @@ const Announcements1 = () => {
                         {content?.map((item, index) => (
                             <li className="text-xl mb-2" key={index}>
                                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                                <a href={links[index]} className="text-black no-underline">{item}</a>
+                                <a href={links[index]} className="text-text dark:text-drkt no-underline">{item}</a>
                             </li>
                         ))}
                     </ul>
-                    {/* <button className="hover:animate-[AnimationName_3s_ease-out_infinite]">Apply Now</button> */}
                 </div>
 
                 {/* Announcements Section */}
@@ -108,8 +107,8 @@ const Announcements1 = () => {
                          onMouseLeave={() => setHovered(false)}>
                         <div className={`card-inner ${flipped ? "flipped" : ""}`}>
                             <div className="card-front bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.secd)_75%,black),theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_50%,white))]
-                                dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drka)_50%,black),theme(colors.drka),color-mix(in_srgb,theme(colors.drka)_50%,white))]">
-                                <h2 className='md:text-3xl text-accn dark:text-drks mb-0'>Announcements</h2>
+                                dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drks)_50%,black),theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_50%,white))]">
+                                <h2 className='md:text-3xl text-accn dark:text-drkt mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i} className='text-xl line-clamp-2'>
@@ -130,10 +129,14 @@ const Announcements1 = () => {
                                         </h4>
                                     ))}
                                 </div>
+                                <button className="absolute flip-btn bottom-0 left-3 text-3xl"
+                                        onClick={handleManualFlip}> &#8617;</button>
+                                <button className="absolute flip-btn bottom-0 right-3 text-3xl"
+                                        onClick={handleManualFlip}> &#8618;</button>
                             </div>
                             <div className="card-back bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.secd)_75%,black),theme(colors.secd),color-mix(in_srgb,theme(colors.secd)_50%,white))]
-                                dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drka)_75%,black),theme(colors.drka),color-mix(in_srgb,theme(colors.drka)_75%,white))]">
-                                <h2 className='text-3xl text-accn dark:text-drks mb-0'>Announcements</h2>
+                                dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drks)_75%,black),theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_75%,white))]">
+                                <h2 className='text-3xl text-accn dark:text-drkt mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i} className='text-xl line-clamp-2'>
@@ -154,15 +157,13 @@ const Announcements1 = () => {
                                         </h4>
                                     ))}
                                 </div>
+                                <button className="absolute flip-btn bottom-0 left-3 text-3xl"
+                                        onClick={handleManualFlip}> &#8617;</button>
+                                <button className="absolute flip-btn bottom-0 right-3 text-3xl"
+                                        onClick={handleManualFlip}> &#8618;</button>
                             </div>
                         </div>
-                        <button className="absolute flip-btn bottom-0 left-3 text-3xl"
-                                onClick={handleManualFlip}> &#8617;</button>
-                        <button className="absolute flip-btn bottom-0 right-3 text-3xl"
-                                onClick={handleManualFlip}> &#8618;</button>
                     </div>
-
-                    {/* Flip Control Buttons */}
                 </div>
             </div>
         </div>

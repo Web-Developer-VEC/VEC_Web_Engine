@@ -5,7 +5,7 @@ import LoadComp from "../../LoadComp"
 import "../../Second_Nav_Bar/Accredation/nirf.css"
 
 
-const Acadamiccal = ({ toggle, theme, isLoading }) => {
+const Acadamiccal = ({ toggle, theme }) => {
 
   const yearRanges = [
     [2025, 2026],
@@ -16,6 +16,29 @@ const Acadamiccal = ({ toggle, theme, isLoading }) => {
     [2020, 2021],
   ];
 
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+      useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
   return (
     <>
       <Banner
@@ -25,14 +48,7 @@ const Acadamiccal = ({ toggle, theme, isLoading }) => {
         headerText="ACADEMIC CALENDAR"
         subHeaderText="Ensuring academic clarity and structured timelines for efficient learning."
       />
-      <div className="nirf-page">
-        {isLoading && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
-            Loading...
-          </div>
-        )}
-      
+      <div className="nirf-page">      
         <h2 className="nirf-title pt-[35px]">ACADEMIC CALENDAR
           <div className="w-[255px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
         </h2>

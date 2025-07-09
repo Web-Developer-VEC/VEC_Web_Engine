@@ -64,8 +64,8 @@ if (!isOnline) {
           <div className="MBA">
             <h3 className="text-accn dark:text-drkt ml-4 font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">M.B.A Admission</h3>
           </div>
-          <div className="mba-container bg-[#f8f9fa]
-                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+          <div className="mba-container bg-[#fffae6]
+                  dark:bg-drkb border-l-4 border-secd dark:border-drks">
             <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
             <p className="description-text">
             Learners for admission to the first semester of the MBA Programme shall be required to have passed an appropriate Under-Graduate Degree Examination of Anna University or equivalent as specified under qualification for admission as per the Tamil Nadu single window counselling process. The Government of Tamil Nadu releases the updated eligibility criteria for the admission. Admission shall be offered only to candidates who possess the qualification prescribed and the eligibility criteria for the programme.

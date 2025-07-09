@@ -64,8 +64,8 @@ if (!isOnline) {
           <h3 className="text-accn dark:text-drkt font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">M.E. Degree Programme</h3>
 
         </div>
-        <div className="me-contents bg-[#f8f9fa]
-                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+        <div className="me-contents bg-[#fffae6]
+                  dark:bg-drkb border-l-4 border-secd dark:border-drks">
           <h3 className="text-accn dark:text-drkt Eligibility text-center">
             Candidates seeking Admission to the First Semester of the Four-Semester M.E. Degree Programme:
           </h3>

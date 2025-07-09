@@ -38,26 +38,25 @@ const Coe = ({ toggle, theme }) => {
               {section.title}
             </h2>
             {section.members.length > 1 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-                {section.members.map((member, index) => (
-                  <div
-                    key={index}
-                    className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
-                  >
-                    <img
-                      src={member.image_path}
-                      alt={member.name}
-                      className="w-[100px] h-[120px] object-cover rounded"
-                    />
-                    <div>
-                      <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
-                      <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
-                      <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
-                    </div>
+            <div className="flex flex-wrap justify-center gap-6">
+              {section.members.map((member, index) => (
+                <div
+                  key={index}
+                  className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start"
+                >
+                  <img
+                    src={member.image_path}
+                    alt={member.name}
+                    className="w-[100px] h-[120px] object-cover rounded"
+                  />
+                  <div>
+                    <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
+                    <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
+                    <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
                   </div>
-                ))}
-              </div>
-              
+                </div>
+              ))}
+            </div>        
             ) : (
               <div className="flex gap-6 justify-center">
                 {section.members.map((member, index) => (

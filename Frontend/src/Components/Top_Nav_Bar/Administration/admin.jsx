@@ -12,13 +12,6 @@ const Card = ({ image, name, designation }) => {
 
   return (
     <div className="admin-card border-2 border-secd dark:border-drks relative flex flex-col items-center p-4">
-      {/* Loading Spinner */}
-      {/* {isLoading && !hasError && (
-        <div className="absolute inset-0 flex justify-center items-center bg-gray-100 dark:bg-gray-800">
-          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )} */}
-
       {!hasError ? (
         <img
           src={image}
@@ -144,14 +137,14 @@ const CardPage = ({theme, toggle}) => {
               designation={adminData[0]?.designation}
             />
             <AdminCard
-              key={adminData[0]?.id}
-              image={UrlParser(adminData[0]?.photo_path)}
-              name={adminData[0]?.name}
-              designation={adminData[0]?.designation}
+              key={adminData[1]?.id}
+              image={UrlParser(adminData[1]?.photo_path)}
+              name={adminData[1]?.name}
+              designation={adminData[1]?.designation}
             />
             </div>
           <div className="admin-card-container">
-            {adminData.slice(1).map((card) => (
+            {adminData.slice(2).map((card) => (
               <Card
                 key={card.id}
                 image={UrlParser(card.photo_path)}

@@ -10,6 +10,7 @@ import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
+import logo from '../Assets/LOGO.png'
 import { sup } from 'framer-motion/m';
 
 const Head = () => {
@@ -208,7 +209,7 @@ const Head = () => {
                     <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
-                            src="https://res.cloudinary.com/meme-topia/image/upload/v1723784096/image-removebg-preview_ciglfw.png"
+                            src={logo}
                             alt="VEC Logo"
                             className="w-[2.5rem] md:w-[3.5rem] h-auto object-contain transition-all duration-300 ease-in-out"
                             />

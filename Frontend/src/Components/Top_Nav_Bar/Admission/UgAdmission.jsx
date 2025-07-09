@@ -14,6 +14,12 @@ const UgAdmission = ({theme, toggle}) => {
   const ug_lateral = ugData?.UG_Lateral || [];
   const year = ugData?.Year
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -99,8 +105,8 @@ if (!isOnline) {
             <h3 className="text-accn dark:text-drkt border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">B.E./B.Tech. Degree Programme</h3>
           </div>
 
-          <div className="ADM-content bg-[#f8f9fa]
-                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] ">        
+          <div className="ADM-content bg-[#fffae6]
+                  dark:bg-drkb border-l-4 border-secd dark:border-drks ">        
            <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
            
             <p className="description-text">
@@ -122,7 +128,7 @@ if (!isOnline) {
             </div>
             <div className="flex justify-center mt-4">
               <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-              <a href="/static/pdfs/admission/B.E_B.TECH-25-26.pdf" className="dark:text-drka">
+              <a href={UrlParser("/static/pdfs/admission/B.E_B.TECH-25-26.pdf")} className="dark:text-drka" target="_blank">
                 <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
               </a>
             </div>
@@ -133,8 +139,8 @@ if (!isOnline) {
           <div className="B-E">
             <h3 className="text-accn dark:text-drkt mt-5 border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Lateral Entry</h3>
           </div>
-          <div className="ADM-content lateral-entry bg-[#f8f9fa]
-                  dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"> 
+          <div className="ADM-content lateral-entry bg-[#fffae6]
+                  dark:bg-drkb border-l-4 border-secd dark:border-drks"> 
             <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
             <p className="description-text">
             Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.
@@ -145,20 +151,6 @@ if (!isOnline) {
             <p className="description-text">
             Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.
             </p>
-            <div>
-              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">GOVERNMENT QUOTA</p>
-              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
-            </div>
-            <div>
-              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
-              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through Consortium of Self –Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
-            </div>
-            <div className="flex justify-center mt-4">
-              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-              <a href="/static/pdfs/admission/B.E_B.TECH-25-26.pdf" className="dark:text-drka">
-                <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
-              </a>
-            </div>
             {renderTable(ug_lateral, `UG COURSES - TOTAL INTAKE ${year}`, "(For Diploma Holders Only)")}
           </div>
         </div>

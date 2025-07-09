@@ -5,6 +5,8 @@ import axios from "axios";
 import NCCAMembers from "./NCC_ARMY comps/NCCAMembers";
 import SideNav from "../SideNav";
 import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
+import LoadComp from "../../LoadComp";
+import logo from '../../Assets/NccArmy.png';
 
 
 function NCCAbout() {
@@ -108,7 +110,7 @@ function NCCAim() {
         <div className="NCC_ARMY-aim">
           <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             <img
-              src="https://images.seeklogo.com/logo-png/44/2/ncc-logo-png_seeklogo-440419.png"
+              src={logo}
               alt="NCC Logo"
               className="NCC_ARMY-icon"
             />
@@ -297,6 +299,28 @@ const NCC_ARMY = () => {
         );
     }
 
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+        useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
     return (
       <>
