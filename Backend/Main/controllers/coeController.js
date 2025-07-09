@@ -3,7 +3,7 @@ const { getDb } = require("../config/db");
 async function getCoeData (req, res) {
     try {
         const db = getDb();
-        const collection = db.collection('COE'); 
+        const collection = db.collection('coe'); 
 
         const coeData = await collection.find({}).toArray();
 
