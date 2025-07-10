@@ -22,10 +22,6 @@ function HostelPass() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [parentApproval, setParentApproval] = useState(true)
   const [selectedFromDateTime,setSelectedFromDateTime]= useState('')
-  const [selectedToDateTime,setSelectedToDateTime]= useState('')
-  const [outpassFromDate,setOutpassFromDate]=useState("")
-  const [secondTime,setSecondTime] = useState('')
-  const [firstTime,setFirstTime]=useState('')
   const [selectedFromDate,setSelectedFromDate]=useState('')
   const [selectedFromTime,setSelectedFromTime]= useState("")
   const [selectedToDate,setSelectedToDate]=useState('')
@@ -43,7 +39,16 @@ function HostelPass() {
 
     if (file) {
       if (file.size > 10 * 1024 * 1024) {
-        alert("❌ File size exceeds 10MB limit.");
+                Swal.fire({
+          title: "Error",
+          text: "❌ File size exceed 10mb limit",
+          icon: "Error",
+          showConfirmButton: false,
+          timer: 1500, // Auto-close in 1.5 sec
+          didClose: () => {
+            Swal.close();
+          },
+        });
         return;
       }
 
@@ -72,20 +77,16 @@ function HostelPass() {
   };
 
   const validateTime = (dateTime , gender) => {
-    console.log("Ajith");
-    
-    console.log("Time",dateTime)
-    console.log("Gender",gender);
     
     const selectedTime = new Date(dateTime);
     const selectedHour = selectedTime.getHours();
     const selectedMinutes = selectedTime.getMinutes();
     
     if (gender === "Female" && (selectedHour > 18 || (selectedHour === 18 && selectedMinutes > 0)) && passType === 'outpass') {
-      alert("Girls are not allowed to select a time after 6:00 PM.");
+      showSweetAlert("Alert!", "Girls are not allowed to select a time after 6:00 PM.", "error" )
       return false;
     } else if (gender === "Male" && (selectedHour > 21 || (selectedHour === 21 && selectedMinutes > 0)) && passType === 'outpass') {
-      alert("Boys are not allowed to select a time after 9:00 PM.");
+      showSweetAlert("Alert!", "Boys are not allowed to select a time after 9:00 PM.", "error" )
       return false;
     }
     return true;
@@ -267,17 +268,17 @@ const handleUpdatePass = async () => {
         location.state.passid = null;
       }
 
-              Swal.fire({
-                title: "Successful",
-                text: `✅ Pass updated successfully!`,
-                icon: "success",
-                timer: 2000,
-                showConfirmButton: false,
-                willClose: () => {
-                  Swal.close();
-                  navigate('/hostel/student/previousrequest');
-                },
-              });
+      Swal.fire({
+        title: "Successful",
+        text: `✅ Pass updated successfully!`,
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+        willClose: () => {
+          Swal.close();
+          navigate('/hostel/student/previousrequest');
+        },
+      });
     } else {
       showSweetAlert("Error!", data.error || "Failed to update pass", "error");
     }
@@ -358,12 +359,13 @@ const handleUpdatePass = async () => {
       if (response.ok) {
         Swal.fire({
           title: "Success",
-          text: "✅ Pass request submitted. Parent approval SMS sent!.",
+          text: "✅ Pass request submitted. Warden notified!.",
           icon: "success",
           showConfirmButton: false,
           timer: 1500, // Auto-close in 1.5 sec
           didClose: () => {
             Swal.close();
+            window.location.reload();
           },
         });
       } else {
@@ -372,12 +374,15 @@ const handleUpdatePass = async () => {
     } catch (error) {
       showSweetAlert("Error!", `Something went wrong! Please try again.`, "error");
     }
+
   };
 
   //Warden approval
   const handleWardenApproval = async () => {
     if (!phone_number_student) {
       alert("Please verify your mobile number first.");
+      
+    
       return;
     }
   
@@ -422,6 +427,7 @@ const handleUpdatePass = async () => {
           timer: 1500, // Auto-close in 1.5 sec
           didClose: () => {
             Swal.close();
+            window.location.reload();
           },
         });
       } else {
@@ -475,12 +481,13 @@ const handleUpdatePass = async () => {
       if (response.ok) {
         Swal.fire({
           title: "Success",
-          text: "✅ Pass request submitted. Superior warden notified.",
+          text: "✅ Pass request submitted. Warden notified!.",
           icon: "success",
           showConfirmButton: false,
           timer: 1500, // Auto-close in 1.5 sec
           didClose: () => {
             Swal.close();
+            window.location.reload();
           },
         });
       } else {
@@ -489,7 +496,6 @@ const handleUpdatePass = async () => {
     } catch (error) {
       showSweetAlert("Error!", `Something went wrong! Please try again.`, "error");
     }
-    
   };
   
   //save draft
@@ -550,7 +556,6 @@ const handleUpdatePass = async () => {
       });
 
       const data = await response.json();
-      console.log("Fetched Drafts:", data);
 
       if (response.ok && data.drafts.length > 0) {
         const firstDraft = data.drafts[0];

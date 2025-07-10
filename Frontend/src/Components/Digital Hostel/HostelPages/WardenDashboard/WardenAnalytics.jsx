@@ -53,7 +53,11 @@ const Dashboard = () => {
     '2': 'Second Year',
     '3': 'Third Year',
     '4': 'Fourth Year',
-    'overall': 'Overall' 
+    '10': 'MBA First Year',
+    '9': 'MBA Second year',
+    '8': 'ME First Year',
+    '7': 'ME Second Year',
+    'overall': 'Overall'
   };
 
   const passTypeParse = {

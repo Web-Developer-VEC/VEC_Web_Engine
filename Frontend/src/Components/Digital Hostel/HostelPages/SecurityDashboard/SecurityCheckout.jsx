@@ -59,7 +59,10 @@ export default function SecurityCheckout() {
     '1': 'First Year', 
     '2': 'Second Year',
     '3': 'Third Year',
-    '4': 'Fourth Year' 
+    '4': 'Fourth Year',
+    '10': 'MBA',
+    '9': 'ME',
+    'overall': 'Overall'
   };
 
   const passTypeParse = {

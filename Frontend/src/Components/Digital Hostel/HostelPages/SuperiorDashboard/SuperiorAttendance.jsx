@@ -12,168 +12,6 @@ import {
 import './SuperiorAttendance.css';
 import axios from 'axios';
 
-const yearData = {
-  first: {
-    totalStudents: 130,
-    presentStudents: 110,
-    absentStudents: 12,
-    mismatchedStudents: 8,
-    vegCount: 80,
-    nonVegCount: 50,
-    boys: {
-      totalStudents: 70,
-      presentStudents: 60,
-      absentStudents: 6,
-      mismatchedStudents: 4,
-      vegCount: 45,
-      nonVegCount: 25
-    },
-    girls: {
-      totalStudents: 60,
-      presentStudents: 50,
-      absentStudents: 6,
-      mismatchedStudents: 4,
-      vegCount: 35,
-      nonVegCount: 25
-    },
-    absentList: [
-      { name: "John Doe", roomNumber: "A-101", gender: "male" },
-      { name: "Jane Smith", roomNumber: "A-102", gender: "female" }
-    ],
-    mismatchedList: [
-      { name: "Alice Johnson", roomNumber: "B-201", issue: "Wrong mess", gender: "female" },
-      { name: "Bob Wilson", roomNumber: "B-202", issue: "Double entry", gender: "male" }
-    ]
-  },
-  second: {
-    totalStudents: 125,
-    presentStudents: 105,
-    absentStudents: 13,
-    mismatchedStudents: 7,
-    vegCount: 70,
-    nonVegCount: 55,
-    boys: {
-      totalStudents: 65,
-      presentStudents: 55,
-      absentStudents: 7,
-      mismatchedStudents: 3,
-      vegCount: 40,
-      nonVegCount: 25
-    },
-    girls: {
-      totalStudents: 60,
-      presentStudents: 50,
-      absentStudents: 6,
-      mismatchedStudents: 4,
-      vegCount: 30,
-      nonVegCount: 30
-    },
-    absentList: [
-      { name: "Mike Johnson", roomNumber: "A-201", gender: "male" },
-      { name: "Sarah Williams", roomNumber: "A-202", gender: "female" }
-    ],
-    mismatchedList: [
-      { name: "Carol Martinez", roomNumber: "B-301", issue: "Wrong mess", gender: "female" },
-      { name: "David Thompson", roomNumber: "B-302", issue: "Double entry", gender: "male" }
-    ]
-  },
-  third: {
-    totalStudents: 120,
-    presentStudents: 98,
-    absentStudents: 15,
-    mismatchedStudents: 7,
-    vegCount: 75,
-    nonVegCount: 45,
-    boys: {
-      totalStudents: 65,
-      presentStudents: 53,
-      absentStudents: 8,
-      mismatchedStudents: 4,
-      vegCount: 40,
-      nonVegCount: 25
-    },
-    girls: {
-      totalStudents: 55,
-      presentStudents: 45,
-      absentStudents: 7,
-      mismatchedStudents: 3,
-      vegCount: 35,
-      nonVegCount: 20
-    },
-    absentList: [
-      { name: "John Doe", roomNumber: "A-101", gender: "male" },
-      { name: "Jane Smith", roomNumber: "A-102", gender: "female" }
-    ],
-    mismatchedList: [
-      { name: "Alice Johnson", roomNumber: "B-201", issue: "Wrong mess", gender: "female" },
-      { name: "Bob Wilson", roomNumber: "B-202", issue: "Double entry", gender: "male" }
-    ]
-  },
-  fourth: {
-    totalStudents: 110,
-    presentStudents: 89,
-    absentStudents: 12,
-    mismatchedStudents: 9,
-    vegCount: 65,
-    nonVegCount: 45,
-    boys: {
-      totalStudents: 60,
-      presentStudents: 48,
-      absentStudents: 7,
-      mismatchedStudents: 5,
-      vegCount: 35,
-      nonVegCount: 25
-    },
-    girls: {
-      totalStudents: 50,
-      presentStudents: 41,
-      absentStudents: 5,
-      mismatchedStudents: 4,
-      vegCount: 30,
-      nonVegCount: 20
-    },
-    absentList: [
-      { name: "Emily Brown", roomNumber: "C-101", gender: "female" },
-      { name: "Michael Davis", roomNumber: "C-102", gender: "male" }
-    ],
-    mismatchedList: [
-      { name: "Sarah Miller", roomNumber: "D-201", issue: "Wrong mess", gender: "female" },
-      { name: "James Wilson", roomNumber: "D-202", issue: "Double entry", gender: "male" }
-    ]
-  },
-  overall: {
-    totalStudents: 485,
-    presentStudents: 402,
-    absentStudents: 52,
-    mismatchedStudents: 31,
-    vegCount: 290,
-    nonVegCount: 195,
-    boys: {
-      totalStudents: 260,
-      presentStudents: 216,
-      absentStudents: 28,
-      mismatchedStudents: 16,
-      vegCount: 160,
-      nonVegCount: 100
-    },
-    girls: {
-      totalStudents: 225,
-      presentStudents: 186,
-      absentStudents: 24,
-      mismatchedStudents: 15,
-      vegCount: 130,
-      nonVegCount: 95
-    },
-    absentList: [
-      { name: "John Doe", roomNumber: "A-101", gender: "male" },
-      { name: "Jane Smith", roomNumber: "A-102", gender: "female" }
-    ],
-    mismatchedList: [
-      { name: "Alice Johnson", roomNumber: "B-201", issue: "Wrong mess", gender: "female" },
-      { name: "Bob Wilson", roomNumber: "B-202", issue: "Double entry", gender: "male" }
-    ]
-  }
-};
 
 function AttendanceDashboard() {
   const [showIframe, setShowIframe] = useState(false);
@@ -226,7 +64,11 @@ function AttendanceDashboard() {
     const yearKey = selectedYear === 'first' ? '1' :
                    selectedYear === 'second' ? '2' :
                    selectedYear === 'third' ? '3' :
-                   selectedYear === 'fourth' ? '4' : 'Overall';
+                   selectedYear === 'fourth' ? '4' :
+                   selectedYear === 'me1' ? '8' :
+                   selectedYear === 'me2' ? '7' :
+                   selectedYear === 'mba1' ? '10' :
+                   selectedYear === 'mba2' ? '9' : 'Overall';
     
     // If "overall" is selected for gender, combine Male and Female data
     if (selectedGender === 'overall') {
@@ -335,6 +177,10 @@ function AttendanceDashboard() {
               <option value="second">Second Year</option>
               <option value="third">Third Year</option>
               <option value="fourth">Fourth Year</option>
+              <option value="me1">ME First Year</option>
+              <option value="me2">ME Second Year</option>
+              <option value="mba1">MBA First Year</option>
+              <option value="mba2">MBA Second Year</option>
             </select>
           </div>
 
