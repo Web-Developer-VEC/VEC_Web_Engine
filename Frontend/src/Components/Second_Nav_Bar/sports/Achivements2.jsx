@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
@@ -11,6 +11,7 @@ import LoadComp from "../../LoadComp"
 
 const Achievements1 = ({ zonaltable , zonewinner , interzone , others , coordinator }) => {
   const [showZone, setShowZone] = useState("");
+  const sectionRef = useRef(null);
 
   const settings = {
     dots: true,
@@ -29,6 +30,15 @@ const Achievements1 = ({ zonaltable , zonewinner , interzone , others , coordina
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+    const handleZoneClick = (zoneType) => {
+      setShowZone(zoneType);
+
+      // Scroll to section after a slight delay to ensure state change is applied
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
   };
 
   return (
@@ -51,39 +61,40 @@ const Achievements1 = ({ zonaltable , zonewinner , interzone , others , coordina
         <div className={styles.sportsAchievementsclass}>
           <button
             className={`${styles.sportsAchievementsbutton} ${showZone === "zone" ? styles.active : ""}`}
-            onClick={() => setShowZone("zone")}
+            onClick={() => handleZoneClick("zone")}
           >
             Zone
           </button>
           <button
             className={`${styles.sportsAchievementsbutton} ${showZone === "interzone" ? styles.active : ""}`}
-            onClick={() => setShowZone("interzone")}
+            onClick={() => handleZoneClick("interzone")}
           >
             Inter Zone
           </button>
           <button
             className={`${styles.sportsAchievementsbutton} ${showZone === "others" ? styles.active : ""}`}
-            onClick={() => setShowZone("others")}
+            onClick={() => handleZoneClick("others")}
           >
             Others
           </button>
         </div>
 
-
-        {showZone === "zone" ? (
-          <div className="sport-zone-container mb-10">
-            <ZonalResults data={zonaltable} />
-            <WinnerSlider data={zonewinner} />
-          </div>
-        ) : showZone === "interzone" ? (
-          <div className="sport-zone-container mb-10">
-            <Achievements data={interzone} />
-          </div>
-        ) : showZone === "others" ? (
-          <div className="sport-zone-container mb-10">
-            <Others data={others} />
-          </div>
-        ) : null}
+        <div ref={sectionRef}>
+          {showZone === "zone" ? (
+            <div className="sport-zone-container mb-10">
+              <ZonalResults data={zonaltable} />
+              <WinnerSlider data={zonewinner} />
+            </div>
+          ) : showZone === "interzone" ? (
+            <div className="sport-zone-container mb-10">
+              <Achievements data={interzone} />
+            </div>
+          ) : showZone === "others" ? (
+            <div className="sport-zone-container mb-10">
+              <Others data={others} />
+            </div>
+          ) : null}
+        </div>
       </>
     ) : (
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>

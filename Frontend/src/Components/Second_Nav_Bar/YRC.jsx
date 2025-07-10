@@ -431,7 +431,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
 return (
   <div>
       <Banner
-        backgroundImage="https://kristujayanti.edu.in/studentlife/images/youth-red-cross-banner.jpg"
+      backgroundImage="./Banners/YRC.webp"
         headerText="Youth Red Cross (YRC)"
         subHeaderText="Fostering excellence in social service and community well-being."
         />

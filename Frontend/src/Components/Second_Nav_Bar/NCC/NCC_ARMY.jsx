@@ -157,7 +157,7 @@ function NCCMotto() {
           <p className="NCC_ARMY-content">
             * Obey with a smile
             <br />
-            * BE punctual
+            * Be punctual
             <br />
             * Work hard and without fuss
             <br />* Make no excuses and tell no lies

@@ -10,7 +10,7 @@ import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
-import logo from '../Assets/LOGO.png'
+import logo from '../Assets/NEWLOGO.png'
 import { sup } from 'framer-motion/m';
 
 const Head = () => {

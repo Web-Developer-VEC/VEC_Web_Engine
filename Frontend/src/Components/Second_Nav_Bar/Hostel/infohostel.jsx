@@ -4,7 +4,7 @@ import "./InfoHostel.css";
 const InfoHostel = () => {
   return (
     <div className="infohostel-container bg-prim dark:bg-drkp">
-      <h1 className="infohostel-title text-brwn dark:text-drkt">Hostel Information</h1>
+      <h1 className="infohostel-title text-brwn dark:text-drkt">Timing Information</h1>
 
       <section className="HI-grid">
         <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">
@@ -27,58 +27,66 @@ const InfoHostel = () => {
 
         {/* Food Timetable */}
   <section className="food-timetable">
-    <h2 className="infohostel-title text-brwn dark:text-drkt">Weekly Food Timetable</h2>
+    <h2 className="infohostel-title text-brwn dark:text-drkt">Menu</h2>
     <table className="food-table">
       <thead>
         <tr>
           <th>Day</th>
           <th>Breakfast</th>
           <th>Lunch</th>
+          <th>Snacks</th>
           <th>Dinner</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Monday</td>
-          <td>Idli & Sambar</td>
-          <td>Rice, Dal, Paneer Curry</td>
-          <td>Chapati, Mixed Veg Curry</td>
+          <td>Pongal, Coconut chutney, Sambar, Vada, Coffee / Milk </td>
+          <td>White Rice, Sambar, Rasam, Poriyal, Pickle, Butter Milk & Appalam </td>
+          <td>Masala Vada, Tea & Milk</td>
+          <td>Parotta, Chicken Curry, Veg Kurma, Cut Fruits,White Rice, Rasam, Milk & Banana</td>
         </tr>
         <tr>
           <td>Tuesday</td>
-          <td>Poori & Aloo Masala</td>
-          <td>Rice, Sambar, Cabbage Fry</td>
-          <td>Roti, Dal Tadka</td>
+          <td>Idly, Kara Chutney, Vada Curry, Coffee / Milk </td>
+          <td>White Rice, Egg Kuzhambu, Rasam, Kootu, Pickle, Curd, Appalam </td>
+          <td>Cream Bun, Tea & Milk</td>
+          <td>Poori, Chana Masala, Curd Rice, Milk & Banana </td>
         </tr>
         <tr>
           <td>Wednesday</td>
-          <td>Dosa & Chutney</td>
-          <td>Rice, Rajma, Curd</td>
-          <td>Pulao, Mixed Curry</td>
+          <td>Onion Utthappam, Coconut Chutney, Sambar, Coffee / Milk </td>
+          <td>Varity Rice, Boiled Egg, Rasam, Poriyal, Pickle, Curd Rice, Appalam & Sweet</td>
+          <td>Mini Samosa, Tea & Milk </td>
+          <td>Rice Kushka, Chicken Thokku, Gobi 65, Milk & Banana</td>
         </tr>
         <tr>
           <td>Thursday</td>
-          <td>Uttapam & Chutney</td>
-          <td>Rice, Sambhar, Aloo Fry</td>
-          <td>Chapati, Chana Masala</td>
+          <td>Rava Kitchedi, Sambar, Coconut Chutney, Bread, Jam , Butter ,Omelet & Coffee / Milk </td>
+          <td>White Rice, Veg Pappu, Poriyal, Pickle, Butter Milk & Appalam</td>
+          <td>Veg Puff, Tea & Milk</td>
+          <td>Veg Pulao, Meal Maker Masala, Curd Rice,Milk & Banana</td>
         </tr>
         <tr>
           <td>Friday</td>
-          <td>Vada & Sambar</td>
-          <td>Rice, Dal, Gobi Fry</td>
-          <td>Jeera Rice, Kurma</td>
+          <td>Veg Dosa, Peanut Chuttney, Sambar, Coffee / milk</td>
+          <td>White Rice, Sambar, Rasam, Poriyal, Pickle, Butter milk, Appalam & Payasam</td>
+          <td>Valaka bajji, Tea & Coffee</td>
+          <td>Chappathi, Egg Curry, White Rice, Rasam, Milk & Banana</td>
         </tr>
         <tr>
           <td>Saturday</td>
-          <td>Upma & Chutney</td>
-          <td>Rice, Rasam, Bhindi Fry</td>
-          <td>Chapati, Mushroom Curry</td>
+          <td>Poori, Chana Masala, Coffee / Milk </td>
+          <td>White Rice, Vathakuzhambu, Rasam, Kootu, Pickle, Curd & Appalam</td>
+          <td>Banana Cake, Tea & Milk</td>
+          <td>Kal Dosa, Sambar, Kara Chutney, Milk & Banana</td>
         </tr>
         <tr>
           <td>Sunday</td>
-          <td>Masala Dosa & Chutney</td>
-          <td>Rice, Dal Makhani, Sweet</td>
-          <td>Fried Rice, Manchurian</td>
+          <td>Bread, Jam, Butter, Omelet, Cucumber Salad, Coffee / Milk</td>
+          <td>Chicken Briyani, Veg Briyani, Onion Raitha, Brinjal Salna, Boiled Egg, Panner Gravy & Ice Cream </td>
+          <td>Veg Cutlet, Tea & Milk</td>
+          <td>Chappathi, Veg Kurma, Milk & Banana</td>
         </tr>
       </tbody>
     </table>

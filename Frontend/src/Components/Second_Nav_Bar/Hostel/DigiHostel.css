@@ -1,0 +1,26 @@
+.Digi-container {
+  padding: 3rem 1rem; /* reduce padding on smaller screens */
+  text-align: justify;
+}
+
+.Digi-content {
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+/* Add responsiveness for small screens */
+@media (max-width: 640px) {
+  .Digi-content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .Digi-container {
+    padding: 2rem 1rem;
+  }
+
+  .Digi-button {
+    width: 40%; /* make button full-width */
+    text-align: center;
+  }
+}

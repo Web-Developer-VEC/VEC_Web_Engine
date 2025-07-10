@@ -54,7 +54,7 @@ const Sidebar = (props) => {
 
     const hdrs = [
         { text: "IQAC", link: "/iqac" },
-        {text:"Accredation",link:"/Accredation"},
+        {text:"Accredation & ranking ",link:"/Accredation"},
         { text: "IIC", link: "/iic" },
         { text: "Incubation Cell", link: "/incubation" },
         { text: "Alumni", link: "/alumni" },
