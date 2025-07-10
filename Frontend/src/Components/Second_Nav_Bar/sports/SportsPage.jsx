@@ -33,7 +33,7 @@ function SPTIntro() {
                 trainer.
             </p>
             <p className="intro-text">
-                Our college students got the 18th consecutive years of overall championship in zone – I competitions.
+                Our college students got the 18th consecutive years of overall championship in Zone – I competitions.
                 This is
                 our pride for our department of physical education. Moreover, our college students participate for Anna
                 university teams, State and National teams. Our students got places in National level sports
@@ -113,7 +113,7 @@ const SportsPage = ({theme, toggle}) => {
     return (
         <div className=''>
             <Banner theme={theme} toggle={toggle}
-                    backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"  // Replace with an image related to sports or fitness
+            backgroundImage="./Banners/sports.webp"
                     headerText="Physical Education Department"
                     subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
             />

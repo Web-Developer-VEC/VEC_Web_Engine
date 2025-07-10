@@ -5,27 +5,27 @@ import LoadComp from "../../LoadComp";
 const facilities = [
   {
     id: 1,
-    title: "Comfortable Rooms",
-    description: "Our rooms are designed for comfort and relaxation, ensuring a good night's sleep.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM7KFDxGz0vjoMnZbtF9Wlx2Vze9b6TQXxZg&s",
+    title: "Girls Hostel",
+    description: "The girls’ hostel ensures safety, comfort, and privacy, with round-the-clock supervision and facilities tailored to students' well-being and convenience.",
+    image: "/static/images/hostel/Girls Hostel Room.webp",
   },
   {
     id: 2,
-    title: "Modern Kitchen",
-    description: "A fully equipped kitchen where you can prepare your favorite meals.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR521-msTuln7iMR8YLB-namJ11KKV-8Vqng&s",
+    title: "Boys Hostel",
+    description: "The boys’ hostel offers a secure and disciplined environment with all necessary facilities, promoting academic focus and healthy social interaction.",
+    image: "/static/images/hostel/Boys Hostel.webp",
   },
   {
     id: 3,
-    title: "Cozy Common Area",
+    title: "Hostel Room",
     description: "A spacious common area for socializing and relaxing with other guests.",
-    image: "https://ugcounselor-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/02/14155408/Velammal-Institute-of-Technology.jpg",
+    image: "/static/images/hostel/Boys Hostel Room.webp",
   },
   {
     id: 4,
-    title: "Lounge Area",
-    description: "A comfortable lounge to unwind and connect with others.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSROIRP2sPDuJfQ6OogQkW7X-JXJNiJcIuWyw&s",
+    title: "Mess",
+    description: "The hostel mess serves hygienic, nutritious, and tasty meals daily, with a rotating menu and options to suit different dietary preferences.",
+    image: "/static/images/hostel/Hostel mess.webp",
   },
 ];
 
@@ -49,6 +49,11 @@ export default function HostelFacilities() {
       setExpandedId(expandedId === id ? null : id);
     }
   };
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
   
   return (
     <div className="facility">
@@ -61,7 +66,7 @@ export default function HostelFacilities() {
               className={`hostel-fac-item ${isMobile && expandedId === facility.id ? "expanded" : ""}`}
               onClick={() => handleExpand(facility.id)}
               style={{
-                backgroundImage: `url(${facility.image})`,
+                backgroundImage: `url(${UrlParser(facility.image)})`,
               }}
             >
               <div className="content bg-gradient-to-t from-[color-mix(in_srgb,theme(colors.accn)_69%,black)]

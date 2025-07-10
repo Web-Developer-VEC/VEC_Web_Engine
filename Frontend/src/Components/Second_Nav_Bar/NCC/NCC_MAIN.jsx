@@ -38,7 +38,7 @@ const NCCMAIN = ({ toggle, theme }) => {
       <Banner
         toggle={toggle}
         theme={theme}
-        backgroundImage="https://kpriet.ac.in/asset/frontend/images/community-services/ncc/header.jpg"
+        backgroundImage="./Banners/NCC.webp"
         headerText="National Cadet Corps (NCC)"
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
       />
@@ -100,7 +100,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-4 px-3 py-2  right-4 lg:left-auto lg:right-3 bg-slate-500   text-black rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] top-auto bottom-4  px-3 py-2 lg:left-40 bg-slate-500   text-black rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
               Back ➡
@@ -119,7 +119,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-5 right-5  bg-slate-500 px-3 py-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] top-auto bottom-5 lg:left-40  bg-slate-500 px-3 py-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
               onClick={() => setActivePage("buttons")}
             >
                Back ➡
