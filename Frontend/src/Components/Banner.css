@@ -53,7 +53,8 @@
   margin: 0;
   text-transform: uppercase;
   color: #ffffff;
-  background: linear-gradient(to right, #ff7f50, #ffd700);
+  background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700);
+  -webkit-text-stroke: 1px #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /* animation: glow 2s infinite alternate; */
@@ -72,7 +73,7 @@
   .banner-underline {
     width: 150px;
     height: 4px;
-    background: linear-gradient(to right, #ff7f50, #ffd700);
+      background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700);
     margin: 20px 0;
     transform-origin: left;
   }
@@ -83,6 +84,7 @@
     font-weight: 300;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
   }
 
   .banner-content {

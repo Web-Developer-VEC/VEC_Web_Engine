@@ -5,6 +5,7 @@ import Sidebar from './SideBar'
 import Nord from '../Assets/1723802229690.png'
 import Naac from '../Assets/1723802229711.png'
 import Acrd from '../Assets/1723802229732.png'
+import iquage from '../Assets/iquage.png'
 import Tnea from '../Assets/TNEA-Code.png'
 import Inta from '../Assets/instagram.png'
 import Fcbk from '../Assets/facebook.png'
@@ -26,7 +27,7 @@ const Head = () => {
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
-    const nacs = [Naac, Acrd, Nord, Tnea]
+    const nacs = [Naac, Acrd, Nord, iquage, Tnea]
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
@@ -225,13 +226,16 @@ const Head = () => {
                             <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 dark:text-drks italic block">
                             The Wheel of Knowledge rolls on!
                             </span>
+                            <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 dark:text-drks italic block">
+                            (An Autonomous Institution)
+                            </span>
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                        lg:max-w-[17.5vw] max-w-[60%] ml-2 flex">
+                         ml-2 flex">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear" data-carousel-item="" key={i}>
-                                <img src={nac} className="block max-h-[5.5vmax] md:max-h-[6.5vmax] mt-2 h-full w-auto p-1" alt="naac"
+                                <img src={nac} className="block mt-2 h-full w-[5vmax] p-1" alt="naac"
                                      key="naac"/>
                             </div>
                         ))}

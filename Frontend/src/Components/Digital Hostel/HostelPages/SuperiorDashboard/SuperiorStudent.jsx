@@ -209,10 +209,8 @@ function SuperiorStudent() {
     '2': 'Second Year',
     '3': 'Third Year',
     '4': 'Fourth Year',
-    '10': 'MBA First Year',
-    '9': 'MBA Second year',
-    '8': 'ME First Year',
-    '7': 'ME Second Year',
+    '10': 'MBA',
+    '9': 'ME',
     'overall': 'Overall'
   };
 

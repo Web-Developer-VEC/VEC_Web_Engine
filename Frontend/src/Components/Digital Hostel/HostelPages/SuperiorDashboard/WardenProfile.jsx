@@ -34,15 +34,25 @@ const WardenProfile = () => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const yearToAlphabet = {
-    '1': 'First Year',
+  // const yearToAlphabet = {
+  //   '1': 'First Year',
+  //   '2': 'Second Year',
+  //   '3': 'Third Year',
+  //   '4': 'Fourth Year',
+  //   'MBA 1': 'MBA First Year',
+  //   'MBA 2': 'MBA Second Year',
+  //   'PG1': 'Postgraduate First Year',
+  //   'PG2': 'Postgraduate Second Year'
+  // };
+
+    const yearToAlphabet = {
+    '1': 'First Year', 
     '2': 'Second Year',
     '3': 'Third Year',
     '4': 'Fourth Year',
-    'MBA 1': 'MBA First Year',
-    'MBA 2': 'MBA Second Year',
-    'PG1': 'Postgraduate First Year',
-    'PG2': 'Postgraduate Second Year'
+    '10': 'MBA',
+    '9': 'ME',
+    'overall': 'Overall'
   };
 
   // Fetch warden details
