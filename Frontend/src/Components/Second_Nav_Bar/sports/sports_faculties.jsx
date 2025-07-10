@@ -48,11 +48,11 @@ const SportsHOD = ( { data } ) => {
         <br />
         <div className='SportsHOD-details'>
         <div className='SportsHODNameAndqualification text-2xl font-semibolt'>
-        <h2 className='SportsHODName'>{data?.name} <span className='text-brwn dark:text-drka'>{data?.qualification}</span> </h2>
-        
+        <h2 className='SportsHODName'>{data?.name}</h2>
+        <p className='text-brwn dark:text-drka text-center text-[24px] mt-1'>{data?.qualification}</p> 
         </div>
           
-          <h2 className='SportsHODDes text-brwn dark:text-drka'>{data?.designation}</h2>
+          <h2 className='SportsHODDes text-brwn dark:text-drka mt-1'>{data?.designation}</h2>
 
           <br />
 

@@ -56,7 +56,7 @@ import {
     FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning, 
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
-import { Medal, MedalIcon, Trophy } from "lucide-react";
+import { Medal, MedalIcon, Shell, Trophy } from "lucide-react";
 
 const SideNav = ({sts, setSts, navData, cls}) => {
     function setIco(ttl) {
@@ -238,6 +238,8 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaHome className={sty}/>;
             case "Hostel Facilities":
                 return <FaBuilding className={sty}/>;
+            case "Digital Hostel":
+                return <Shell className={sty}/>
             default:
                 return <FaThLarge className={sty}/>;
         }

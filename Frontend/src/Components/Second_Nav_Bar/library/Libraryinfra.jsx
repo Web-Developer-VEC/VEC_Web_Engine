@@ -272,23 +272,23 @@ const LibrarySections = ({faculty, membership, lib}) => {
     ];
 
     const advisors = [
-        ["Dr.S.Rajendraprasath", "Librarian/HOD - Secretary"],
-        ["Dr.S.Manju", "Ass.Prof/ECE - Convener"],
-        ["Mrs.V.Selve", "AP-III/EEE"],
-        ["Dr.J.Sathya priya", "Ass.Pro//IT"],
-        ["Mrs.B.Hemalatha", "AP-I/CSE"],
-        ["Mrs.Nandhini", "AP-I/ECE"],
-        ["Mr.Thillaibackiam. M", "AP-I/CIVIL"],
-        ["Mr.Karthikeyan", "AP-II/MECH"],
-        ["Mrs.A.Prema", "AP-II/AI & DS"],
-        ["Mr.Senthamilselvan", "AP-I/AUT"],
-        ["Dr.S.Anusankari", "AP-III/EIE"],
-        ["Ms.Aksaya Dharani", "AP-I/CSE-CS"],
-        ["Mrs.Revathy Pandian", "Ass. Prof -MBA"],
-        ["Mrs.Hamsavalli", "Prof/PHY"],
-        ["Mr.Gopikrishnan", "AP-II/Maths"],
-        ["Mr.Sivaraj", "AP-I//CHE"],
-        ["Mr.Balaji", "AP-II/ENG"]
+        ["Dr. RAJENDRAPRASATH S", "Librarian/HOD - Secretary"],
+        ["Dr. MANJU S", "Ass.Prof - Electronics and Communication Engineering - Convener"],
+        ["Mrs. SELVE V", "Ass.Prof - Electrical and Electronics Engineering"],
+        ["Dr. SATHYA PRIYA J", "Ass.Prof - Information Technology"],
+        ["Mrs. HEMALATHA B", "Ass.Prof -Computer Science Engineering "],
+        ["Mrs. NANDHINI", "Ass.Prof - Electronics and Communication Engineering"],
+        ["Mr. THILLAIBACKIAM M", "Ass.Prof - Civil Engineering"],
+        ["Mr. KARTHIKEYAN", "Ass.Prof - Mechanical Engineering"],
+        ["Mrs. PREMA A", "Ass.Prof - Artificial Intelligence and Data Science"],
+        ["Mr. SENTHAMILSELVAN", "Ass.Prof - Automobile Engineering"],
+        ["Dr. ANUSANKARI S", "Ass.Prof - Electronics Instrumentation Engineering"],
+        ["Ms. AKSAYA DHARANI", "Ass.Prof - Computer Science Engineering - Cyber Security"],
+        ["Mrs. REVATHY PANDIAN", "Ass.Prof - Master of Business Administration"],
+        ["Mrs. HAMSAVALLI", "Prof - Physics"],
+        ["Mr. GOPIKRISHNAN", "Ass.Prof - Mathematics"],
+        ["Mr. SIVARAJ", "Ass.Prof - Chemistry"],
+        ["Mr. BALAJI", "Ass.Prof - English"]
     ]
 
     const tabData = [
@@ -581,7 +581,7 @@ return (
                             {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
                             <p className="text-xl font-poppins">{adv[0]}</p>
                             {/* Removed cmt.nme reference as it doesn't exist in data */}
-                            <p className="text-lg text-accn dark:text-drka">{adv[1]}</p>
+                            <p className="text-sm text-accn dark:text-drka">{adv[1]}</p>
                         </div>
                     ))}
                 </div>
@@ -757,7 +757,7 @@ return (
                                         glare: true,
                                         "max-glare": 0.2,
                                     }}
-                                    className="relative h-[75vh] rounded-2xl shadow-lg overflow-hidden transition-all transform
+                                    className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform
             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
                                 >
                                     <div className="relative overflow-hidden">
@@ -770,7 +770,7 @@ return (
                                             className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
                                     </div>
 
-                                    <div className="p-5 sm:p-6  min-h-[45vh]  md:min-h-[65vh] ">
+                                    <div className="p-5 sm:p-6">
                                         <h3
                                             className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt
                                             group-hover:text-secd dark:group-hover:text-drks transition-colors"

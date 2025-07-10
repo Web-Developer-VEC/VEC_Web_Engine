@@ -40,7 +40,7 @@ const AdminCard = ({ image, name, designation }) => {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="admin-card-ao border-2 border-secd dark:border-drks relative flex p-4">
+    <div className="admin-card-ao border-2 border-secd dark:border-drks relative flex flex-column p-4 w-60 border-2x rounded">
       {!hasError ? (
         <img
           src={image}
@@ -58,9 +58,9 @@ const AdminCard = ({ image, name, designation }) => {
         <div className="text-red-500">Failed to load image</div>
       )}
 
-      <div className="admin-text-content">
-        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins">{name}</h3>
-        <p className="admin-card-designation text-gray-600 dark:text-drka">{designation}</p>
+      <div className="admin-text-content ">
+        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins text-center">{name}</h3>
+        <p className="admin-card-designation text-gray-600 dark:text-drka text-center">{designation}</p>
       </div>
     </div>
   );
@@ -129,7 +129,7 @@ const CardPage = ({theme, toggle}) => {
         </div>
       ) : (
         <div className="admin-card-page">
-            <div className="ao-container">
+            <div className="ao-container flex flex-column gap-4 ">
             <AdminCard
               key={adminData[0]?.id}
               image={UrlParser(adminData[0]?.photo_path)}

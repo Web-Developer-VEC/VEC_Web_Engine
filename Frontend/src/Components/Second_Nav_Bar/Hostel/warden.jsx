@@ -55,7 +55,7 @@ export default function Warden() {
         transition={{ duration: 1 }}
       >
         <img src={UrlParser(chief?.image_path)} alt={chief?.warden_name} />
-        <h3>{chief?.warden_name}</h3>
+        <p>{chief?.warden_name}</p>
         <p>{chief?.designation}</p>
         <a href={`tel:${chief?.phone_number}`} className="dark:text-drka">{chief?.phone_number}</a>
       </motion.div>
@@ -76,7 +76,7 @@ export default function Warden() {
         transition={{ duration: 1 }}
       >
         <img src={UrlParser(chiefDeputy?.image_path)} alt={chiefDeputy?.warden_name} />
-        <h3>{chiefDeputy?.warden_name}</h3>
+        <p>{chiefDeputy?.warden_name}</p>
         <p>{chiefDeputy?.designation}</p>
         <a href={`tel:${chiefDeputy?.phone_number}`} className="dark:text-drka">{chiefDeputy?.phone_number}</a>
       </motion.div>
@@ -131,7 +131,7 @@ export default function Warden() {
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
                 <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
-                <h3>{warden?.warden_name}</h3>
+                <p>{warden?.warden_name}</p>
                 <p>{warden?.designation}</p>
                 <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
               </motion.div>
@@ -152,7 +152,7 @@ export default function Warden() {
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
                 <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
-                <h3>{warden?.warden_name}</h3>
+                <p>{warden?.warden_name}</p>
                 <p>{warden?.designation}</p>
                 <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
               </motion.div>

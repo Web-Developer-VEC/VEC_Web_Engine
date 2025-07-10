@@ -1,48 +1,29 @@
 .about-hostel {
   border-radius: 30px;
   transition: box-shadow 0.3s ease-in-out;
-  margin-bottom: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  padding: 3rem 1rem;
+  text-align: center;
 }
-.about-hostel:hover{
+
+.about-hostel:hover {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
-  
+
 .hostel-abt-container {
-  /* max-width: 1200px; */
-  margin: 0 auto;
-  padding: 0 10px;
-  
+  margin-top: 2rem;
+  width: 100%;
 }
 
-.hostel-img-container{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.hostel-about-para {
+  border-radius: 15px;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
 
-  }
-  
-  /* About hostel section */
-  .about-hostel {
-    /*background-color: #ffffff;*/
-    padding: 3rem 0;
-    text-align: center;
-  }
-  .fade-in{
-    font-weight: bolder;
-  }
-  
-  .about-hostel h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-hostel p {
-    font-size: 1rem;
-    /*color: #666;*/
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
- 
+.hostel-about-image img {
+  margin-top: 1rem;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+}

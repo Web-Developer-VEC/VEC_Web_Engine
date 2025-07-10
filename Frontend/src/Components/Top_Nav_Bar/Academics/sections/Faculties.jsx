@@ -8,8 +8,14 @@ import LoadComp from "../../../LoadComp";
 const Faculties = ({ data }) => {
   console.log("Fac",data);
     const [open, setopen] = useState(null);
+      const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+    
     const Name = 'Previous Year Faculties';
-    const url = '/pdfs/7.3.1-VEC-Institutional-Distinctivenss-2020-21.pdf'
+    const url = data?.previous_faculty_pdf_path
   
   const handleViewClick = (pdfUrl, name) => {
     setopen({ url: pdfUrl, name });
@@ -92,11 +98,14 @@ const Faculties = ({ data }) => {
           </>
         )}
       </div>
-      <div className={styles.prefaculty}>
-        <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +
-            "dark:bg-drks dark:text-text dark:hover:text-drkt dark:hover:bg-brwn"}
-                onClick={() => handleViewClick(url, Name)}> Previous Year Faculties</button>
-      </div>
+      {url ? (
+        <div className={styles.prefaculty}>
+          <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +
+              "dark:bg-drks dark:text-text dark:hover:text-drkt dark:hover:bg-brwn"}
+                  onClick={() => handleViewClick(UrlParser(url), Name)}> Previous Year Faculties</button>
+        </div>
+
+      ) : ( null )}
 
       {open && (
               <div className={styles.pdfmodal}>
