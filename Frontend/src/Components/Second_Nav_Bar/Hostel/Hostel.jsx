@@ -5,10 +5,13 @@ import HostelFacilities from "./hostalfacilities";
 import Warden from "./warden";
 import HostelLogin from "./LoginHost";
 import Admissions from "./AdmissionHost";
+
 // import {useState} from "react";
 import SideNav from "../SideNav";
 import InfoHostel from "./infohostel";
 import LoadComp from '../../LoadComp'
+import DigiHostal from "./DigiHostel";
+import DigiHostel from "./DigiHostel";
 
 export default function HostelPage({toggle, theme}) {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -32,6 +35,7 @@ export default function HostelPage({toggle, theme}) {
         // "Mess Timings": <AboutHostel/>,
         // "Study Hours": <AboutHostel />,
         "General info": <InfoHostel/>,
+        "Digital Hostel ": <DigiHostel/>
         // "Leave": <AboutHostel />
     }
     const [hos, setHos] = useState(Object.keys(navData)[0])
@@ -47,7 +51,7 @@ export default function HostelPage({toggle, theme}) {
   return (
     <>
           <Banner toggle={toggle} theme={theme}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        backgroundImage="./Banners/Hostel.webp"
         headerText="VEC Hostel"
         subHeaderText="A home away from home, where comfort meets community and learning thrives in a peaceful, secure environment"
         />

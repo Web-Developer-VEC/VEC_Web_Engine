@@ -76,7 +76,7 @@ const NSS = () => {
   return (
     <main>
       <Banner
-        backgroundImage="./nssbanner.jpg"
+        backgroundImage="./Banners/NSS.webp"
         headerText="NATIONAL SERVICE SCHEME (NSS)"
         subHeaderText="NOT ME BUT YOU."
       />

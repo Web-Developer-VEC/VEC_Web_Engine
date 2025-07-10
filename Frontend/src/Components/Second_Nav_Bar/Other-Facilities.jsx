@@ -8,7 +8,7 @@ const facilities = [
     name: "Anna Auditorium",
     img_name: ["Anna Auditorium"], 
     content: ["A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500"],
-    images: ["static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"]
+    images: ["/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"]
   },
   { 
     name: "Seminar Hall", 
@@ -116,7 +116,7 @@ const facilities = [
     name: "Temple",
     img_name: ["Velmurugan Temple"],
     content: ["Our college features a modern Velmurugan temple to provide better lifestyle for students and staff."],
-    images: [""]
+    images: ["/static/images/other_facilities/Temple/Temple.webp"]
   },
 
 ];
@@ -169,7 +169,7 @@ if (!isOnline) {
     <> 
     <Banner
       toggle={toggle} theme={theme}
-      backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+      backgroundImage="./Banners/Others.webp"
       headerText="OTHER FACILITES"
       subHeaderText="Fostering excellence in social service and community well-being."
     />
