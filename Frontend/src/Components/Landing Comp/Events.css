@@ -291,7 +291,7 @@
 
   .event-box {
     width: 350px;
-    height: 350px; /* Adjusted for consistency */
+    height: 380px; /* Adjusted for consistency */
   }
 
   .caro-item {
@@ -345,7 +345,7 @@
 
   .event-box {
     width: 300px;
-    height: 330px; /* Adjusted for consistency */
+    height: 350px; /* Adjusted for consistency */
     padding: 15px;
   }
 

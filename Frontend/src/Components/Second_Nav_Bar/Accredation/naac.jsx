@@ -72,7 +72,7 @@ const Naac = ({ toggle, theme }) => {
       <div className="nnaac-page">
        
         <div className="nabout-section">
-          <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg">
+          <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
             <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
             <p>
               The NAAC conducts assessment and accreditation of Higher
