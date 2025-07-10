@@ -204,12 +204,17 @@ function SuperiorStudent() {
     passType: "All"
   });
 
-    const yearToAlphabet = {
-      '1': 'First Year', 
-      '2': 'Second Year',
-      '3': 'Third Year',
-      '4': 'Fourth Year' 
-    };
+  const yearToAlphabet = {
+    '1': 'First Year', 
+    '2': 'Second Year',
+    '3': 'Third Year',
+    '4': 'Fourth Year',
+    '10': 'MBA First Year',
+    '9': 'MBA Second year',
+    '8': 'ME First Year',
+    '7': 'ME Second Year',
+    'overall': 'Overall'
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -487,14 +492,6 @@ function SuperiorStudent() {
               >
                 Girls
               </button>
-              {/* <select onChange={handleYearChange} value={selectedYear} className='custom-select'>
-                <option value="">Increment Student Year</option>
-                <option value="2024-2028">First Year</option>
-                <option value="2023-2027">Second Year</option>
-                <option value="2022-2026">Third Year</option>
-                <option value="2021-2025">Fourth Year</option>
-              </select> */}
-
                 <select onChange={handleYearChange} value={selectedYear} className='custom-select'>
                   <option value="">Increment Student Year</option>
                   {uniqueBatches.map((batch) => (

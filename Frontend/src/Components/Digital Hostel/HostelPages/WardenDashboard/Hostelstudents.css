@@ -98,9 +98,11 @@
   color: #374151;
 }
 
-.details-grid {
-  column-count: 4;
-  column-gap: 1.5rem;
+.details-grid-hos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  align-items: start;
 }
 
 .details-card {
@@ -111,6 +113,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   break-inside: avoid;
   margin-bottom: 1.5rem;
+  /* width: 250px; */
 }
 
 .details-food-indicator {
@@ -162,7 +165,8 @@
 
 .details-admission {
   color: #4b5563;
-  font-size: 0.875rem;
+  font-size: 0.7rem;
+  font-weight: bold;
   margin-bottom: 0.25rem;
 }
 
@@ -348,8 +352,8 @@
     width: 100%;
   }
   
-  .details-grid {
-    column-count: 1;
+  .details-grid-hos {
+    /* column-count: 1; */
   }
 
   .download{
@@ -363,8 +367,8 @@
 
 /* Tablet Responsive Styles */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .details-grid {
-    column-count: 2;
+  .details-grid-hos {
+    /* column-count: 2; */
   }
 
   .details-main {

@@ -5,7 +5,7 @@ async function getFoodCountSuperior (req, res) {
         const db = getDb();
         const studentCollection = db.collection("student_database");
         const genders = ["Male", "Female"];
-        const target_years = [1, 2, 3, 4];
+        const target_years = [1, 2, 3, 4, 7, 8, 9, 10];
         let foodCounts = {};
         for (const gender of genders) {
             foodCounts[gender] = {};

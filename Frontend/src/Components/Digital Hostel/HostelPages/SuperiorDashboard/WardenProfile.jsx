@@ -44,7 +44,6 @@ const WardenProfile = () => {
     'PG1': 'Postgraduate First Year',
     'PG2': 'Postgraduate Second Year'
   };
-  
 
   // Fetch warden details
   useEffect(() => {

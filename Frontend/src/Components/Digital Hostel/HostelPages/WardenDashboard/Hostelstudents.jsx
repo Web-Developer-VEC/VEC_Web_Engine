@@ -18,7 +18,7 @@ function Hostelstudents() {
     transitStatus: "All",
     passType: "All"
   });
-  const [expandedCards, setExpandedCards] = useState(new Set());
+  const [expandedCards, setExpandedCards] = useState(null);
   const [activeNav, setActiveNav] = useState('students');
   const [editingStates, setEditingStates] = useState({});
   const [tempFoodTypes, setTempFoodTypes] = useState({});
@@ -40,7 +40,10 @@ function Hostelstudents() {
     '1': 'First Year', 
     '2': 'Second Year',
     '3': 'Third Year',
-    '4': 'Fourth Year' 
+    '4': 'Fourth Year',
+    '10': 'MBA',
+    '9': 'ME',
+    'overall': 'Overall'
   };
 
   // Mapping Department Codes to Full Names
@@ -55,8 +58,9 @@ function Hostelstudents() {
     "EIE": "EIE",
     "IT": "IT",
     "MECH": "Mechanical",
-    "MBA": "MBA"
+    "MBA": "MBA",
   };
+  
   // Fetching Data for warden student base
   useEffect(() => {
     const fetchData = async () => {
@@ -157,16 +161,20 @@ function Hostelstudents() {
     };
   }, []);
 
+  // const toggleCard = (id) => {
+  //   setExpandedCards(prev => {
+  //     const newSet = new Set(prev);
+  //     if (newSet.has(id)) {
+  //       newSet.delete(id);
+  //     } else {
+  //       newSet.add(id);
+  //     }
+  //     return newSet;
+  //   });
+  // };
+
   const toggleCard = (id) => {
-    setExpandedCards(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
-    });
+    setExpandedCards(prev => (prev === id ? null : id));
   };
 
   const startEditing = (studentId) => {
@@ -452,7 +460,7 @@ function Hostelstudents() {
         </div>
 
         {/* Student Cards Grid */}
-        <div className="details-grid">
+        <div className="details-grid-hos">
           {filteredStudents?.map(student => (
             <div key={student.id} className="details-card">
               <div className="logo">
@@ -473,7 +481,7 @@ function Hostelstudents() {
               </div>
               
               <div className={`details-extended-info ${
-                expandedCards.has(student.id) ? 'details-expanded' : ''
+                expandedCards === student.id ? 'details-expanded' : ''
               }`}>
                 <div className="details-info-grid">
                 <div className="details-info-item">
@@ -601,7 +609,7 @@ function Hostelstudents() {
                 className="details-view-more"
                 onClick={() => toggleCard(student.id)}
               >
-                {expandedCards.has(student.id) ? 'View Less' : 'View More'}
+                {expandedCards == student.id ? 'View Less' : 'View More'}
               </button>
             </div>
           ))}

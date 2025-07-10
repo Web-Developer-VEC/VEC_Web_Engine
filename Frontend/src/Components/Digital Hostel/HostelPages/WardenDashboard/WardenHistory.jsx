@@ -43,11 +43,13 @@ function WardenHistory() {
   };
 
   const yearToAlphabet = {
-    '1': 'First', 
-    '2': 'Second ',
-    '3': 'Third ',
-    '4': 'Fourth ',
-    'overall': 'Overall' 
+    '1': 'First Year', 
+    '2': 'Second Year',
+    '3': 'Third Year',
+    '4': 'Fourth Year',
+    '10': 'MBA',
+    '9': 'ME',
+    'overall': 'Overall'
   };
 
   useEffect(() => {

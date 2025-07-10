@@ -28,8 +28,9 @@ const Head = () => {
 
     const nacs = [Naac, Acrd, Nord, Tnea]
     const hdrs = [
+        { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
-        { ttl:"Accredation & Ranking",lnk:"/Accredation"},
+        { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
         { ttl: "Alumni", lnk: "/alumni" },
@@ -38,7 +39,6 @@ const Head = () => {
         { ttl: "YRC", lnk: "/YRC" },
         { ttl: "Sports", lnk: "/sports" },
         { ttl: "Transport", lnk: "/transport" },
-        { ttl: "Library", lnk: "/library" },
         { ttl: "Hostel", lnk: "/hosLanding" },
         { ttl: "Other Facilities", lnk: "/other-facilities" },
         { ttl: "Help Desk", lnk: "/grievances" },
