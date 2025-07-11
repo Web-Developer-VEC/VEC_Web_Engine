@@ -14,7 +14,7 @@ export default function IQauge() {
 
       <div className="flex justify-center">
         <iframe
-          src={UrlParser("/static/pdfs/a/QS I-GAUGE - VEC Certificate.pdf")}
+          src={UrlParser("/static/pdfs/qs+rating/QS+I-GAUGE+-+VEC+Certificate.pdf")}
           title="Main PDF"
           className="w-[60vw] h-[80vh] border-2 border-gray-300 shadow-md"
           loading="lazy"
@@ -22,7 +22,7 @@ export default function IQauge() {
       </div>
 
       <a
-        href={UrlParser()}
+        href={UrlParser("/static/pdfs/qs+rating/QS+I-GAUGE+-VEC+-+Scorecard.pdf")}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-6 dark:text-drka text-lg underline"

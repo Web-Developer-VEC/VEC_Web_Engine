@@ -92,7 +92,7 @@ export default function Warden() {
       <motion.div
         className="line bg-text dark:bg-drkt horizontal mid-line"
         initial={{ width: 0 }}
-        whileInView={{ width: window.innerWidth > 768 ? 650 : "60vw" }}
+        whileInView={{ width: window.innerWidth < 768 ? "650px" : "42vw" }}
         transition={{ duration: 1, delay: 1.1 }}
       ></motion.div>
 
@@ -125,15 +125,17 @@ export default function Warden() {
             {boysWardens?.male_warden_list?.map((warden, index) => (
               <motion.div 
                 key={index} 
-                className="warden-card"
+                className="warden-card-mem"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
-                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
-                <p>{warden?.warden_name}</p>
-                <p>{warden?.designation}</p>
-                <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
+                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} className="warden-card-img" />
+                <div className="warden-detail">
+                  <p>{warden?.warden_name}</p>
+                  <p>{warden?.designation}</p>
+                  <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
+                </div>
               </motion.div>
             ))}
 
@@ -146,15 +148,17 @@ export default function Warden() {
             {girlsWardens?.female_warden_list?.map((warden, index) => (
               <motion.div 
                 key={index} 
-                className="warden-card"
+                className="warden-card-mem"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 1.3 + index * 0.2 }}
               >
-                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
-                <p>{warden?.warden_name}</p>
-                <p>{warden?.designation}</p>
-                <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
+                <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} className="warden-card-img" />
+                <div className="warden-detail">
+                  <p>{warden?.warden_name}</p>
+                  <p>{warden?.designation}</p>
+                  <a href={`tel:${warden?.phone_number}`} className="dark:text-drka">{warden?.phone_number}</a>
+                </div>
               </motion.div>
             ))}
 

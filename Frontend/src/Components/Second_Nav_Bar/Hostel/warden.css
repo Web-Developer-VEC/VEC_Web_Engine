@@ -8,6 +8,36 @@
   position: relative;
 }
 
+.warden-card-mem {
+  /*background: #fff;*/
+  /*color: #F68220;*/
+  border: 5px solid #800000;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+  width: 450px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+  /* height: 300px; */
+  display: flex;
+}
+
+.warden-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.warden-card-img{
+  width: 150px;
+  height: 200px;
+}
+
 .warden-card {
   /*background: #fff;*/
   /*color: #F68220;*/
@@ -88,6 +118,7 @@
 /* Desktop View - Boys & Girls Side by Side */
 .boys-wardens, .girls-wardens {
   display: flex;
+  flex-direction: column;
   gap: 30px;
 }
 
@@ -137,6 +168,12 @@
 
   .warden-card {
       width: 180px; /* Slightly smaller for mobile */
+  }
+
+  .warden-card-mem {
+      width: 180px; /* Slightly smaller for mobile */
+      flex-direction: column;
+      height: 300px;
   }
 
   .line-container {
