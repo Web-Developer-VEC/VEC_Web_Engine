@@ -1,4 +1,5 @@
 const { getDb } = require('../../config/db');
+const s3 = require('../../config/aws');
 const bcrypt = require('bcrypt');
 
 async function getWardenDetails (req, res) {
@@ -147,7 +148,11 @@ async function addWarden (req, res) {
         const wardenCount = await wardenCollection.countDocuments({ category: "assistant" });
         const unique_id = String(wardenCount + 1).padStart(3, '0');
 
-        let file_path = req.file ? `/storage/images/warden_profile_images/${req.file.filename}` : null;
+        let file_path = null;
+
+        if (req.file) {
+            file_path = await uploadToS3(req.file, req.file.fieldname);
+        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -179,9 +184,19 @@ async function updatewarden (req, res) {
         const db = getDb();
         const wardenCollection = db.collection("warden_database");
 
-        let file_path = null;
+        let file_path = pass_details.file_path;
+
         if (req.file) {
-            file_path = `/Velammal-Engineering-College-Backend/static/images/warden_profile_images/${req.file.filename}`;
+            if (file_path) {
+                const oldKey = file_path.split('.com/')[1];
+                await s3.deleteObject({
+                Bucket: process.env.AWS_S3_NAME,
+                Key: oldKey
+                }).promise();
+                console.log(`🗑️ Deleted old file from S3: ${oldKey}`);
+            }
+
+            file_path = await uploadToS3(req.file, req.file.fieldname);
         }
 
         const { unique_id, ...updateFields } = req.body;

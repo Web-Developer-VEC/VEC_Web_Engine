@@ -32,6 +32,12 @@ function HostelPass() {
 
   const navigate = useNavigate();
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const ReasonTypeMapping =  { od : [ 'Internship','Symposium','Hackathon','Sports','Others'], leave : ['Function','Medical','Exams','Emergency','Ohers'], outpass :['Shopping','Classes','Internship','Medical','Others'], staypass: ['Holiday','Weekend Holiday','Semester Holiday','Festival Holiday','Others']}
 
   const handleFileChange = (event) => {
@@ -720,7 +726,7 @@ setTo("")
                   <br />
                   {existingFilePath && !selectedFile ? (
                     <a
-                      href={existingFilePath}
+                      href={UrlParser(existingFilePath)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="HS-upload-success"

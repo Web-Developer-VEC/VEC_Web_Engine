@@ -219,7 +219,7 @@ const IQAC = ({ toggle , theme }) => {
                 {coordinator && (
                     <div className="coordinator-card ">
                         <div className="coordinator-image-container max-w-[25vmax] h-auto">
-                            <img src={UrlParser(coordinator.imagepath) || "/placeholder.svg"} alt={coordinator.name}
+                            <img src={UrlParser(coordinator.image_path) || "/placeholder.svg"} alt={coordinator.name}
                                  className="coordinator-image"/>
                         </div>
                         <div className="coordinator-details w-full">

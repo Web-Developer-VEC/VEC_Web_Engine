@@ -3,9 +3,11 @@ const { v4: uuidv4 } = require('uuid');
 const { 
     sendParentReachedSMS,
  } = require('../../services/sendSMS');
- const path = require('path');
+const path = require('path');
  const fs = require('fs');
 const { error } = require('console');
+const uploadToS3 = require('../../middleware/uploadTos3Middleware');
+const s3 = require('../../config/aws');
 
 const submitPassParentApproval = async (req, res) => {
     try {
@@ -57,7 +59,12 @@ const submitPassParentApproval = async (req, res) => {
 
         if (activePassCount >= 3) return res.status(400).json({ error: "Maximum 3 active passes per student per day" });
 
-        let file_path = req.file ? `/storage/student_docs/${req.file.filename}` : null;
+        let file_path = null;
+
+        if (req.file) {
+            file_path = await uploadToS3(req.file, req.file.fieldname);
+        }
+
         const pass_id = uuidv4();
 
         const PassData = {
@@ -185,7 +192,11 @@ async function submitPassWardenApproval (req, res) {
             return res.status(400).json({ error: "Maximum of 3 active passes allowed per student for today" });
         }
 
-        let file_path = req.file ? `/storage/student_docs/${req.file.filename}` : null;
+        let file_path = null;
+
+        if (req.file) {
+            file_path = await uploadToS3(req.file, req.file.fieldname);
+        }
 
         const yearInt = parseInt(year, 10);
         const pass_id = uuidv4();
@@ -233,6 +244,7 @@ async function submitPassWardenApproval (req, res) {
         );
 
         await PassCollection.insertOne(PassData);
+        
         res.status(201).json({ message: "Visitor pass submitted and Notified Warden", file_path });
 
     } catch (error) {
@@ -311,7 +323,11 @@ async function submitPassSuperiorWardenApproval (req, res) {
             return res.status(400).json({ error: "Maximum of 3 active passes allowed per student for today" });
         }
 
-        let file_path = req.file ? `/storage/student_docs/${req.file.filename}` : null;
+        let file_path = null;
+
+        if (req.file) {
+            file_path = await uploadToS3(req.file, req.file.fieldname);
+        }
 
         const yearInt = parseInt(year, 10);
         const pass_id = uuidv4();
@@ -426,7 +442,11 @@ async function saveDraftData(req, res) {
             }
         }
 
-        let file_path = req.file ? `/storage/student_docs/${req.file.filename}` : null;
+        let file_path = null;
+
+        if (req.file) {
+            file_path = await uploadToS3(req.file, req.file.fieldname);
+        }
 
         const existingDraft = await DraftsCollection.findOne({ registration_number });
         const yearInt = parseInt(year, 10);
@@ -551,17 +571,19 @@ async function EditPassDetails (req, res) {
             return res.status(404).json({ error: "Pass details not found" });
         }
 
-        let file_path = pass_details.file_path; // Keep old file if no new file is uploaded
+        let file_path = pass_details.file_path; 
 
-        // If a new file is uploaded, replace the old file
         if (req.file) {
-            file_path = req.file ? `/storage/student_docs/${req.file.filename}` : null;
-            
-            // Delete the old file
-            const oldFilePath = path.join(__dirname, pass_details.file_path);
-            if (fs.existsSync(oldFilePath)) {
-                fs.unlinkSync(oldFilePath);
+            if (file_path) {
+                const oldKey = file_path.split('.com/')[1];
+                await s3.deleteObject({
+                Bucket: process.env.AWS_S3_NAME,
+                Key: oldKey
+                }).promise();
+                console.log(`🗑️ Deleted old file from S3: ${oldKey}`);
             }
+
+            file_path = await uploadToS3(req.file, req.file.fieldname);
         }
 
         await passCollection.updateOne(
