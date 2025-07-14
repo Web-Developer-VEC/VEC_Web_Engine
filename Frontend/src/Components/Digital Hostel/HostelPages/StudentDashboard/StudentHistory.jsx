@@ -84,10 +84,11 @@ const StudentHistory = () => {
     navigate('/hostel/student/request', { state: { passid } })
   }
 
-  const downloadImage = (url, filename) => {
+  const downloadImage = (imageUrl, fileName) => {
     const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
+    link.href = imageUrl;
+    link.setAttribute('download', fileName);
+    link.setAttribute('target', '_blank');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -170,9 +171,15 @@ const StudentHistory = () => {
                         </p>
                       </div>
                       <div className="history-info">
-                        <p className="text-secondary">
-                          <strong className="text"><FileText size={16} className="inline mr-1" /> Reason:</strong> {info.reason_for_visit}
-                        </p>
+                          {info.reason_for_visit ? (
+                              <p className="text-secondary">
+                                <strong className="text"><FileText size={16} className="inline mr-1" /> Reason:</strong> {info.reason_for_visit}
+                              </p>
+                          ) : (
+                            <p className="text-secondary">
+                              <strong className="text"><FileText size={16} className="inline mr-1" /> Reason:</strong> {info.reason_type}
+                            </p>
+                          )}
                       </div>
                     </div>
                     <div className="two">
@@ -228,10 +235,18 @@ const StudentHistory = () => {
                   <strong>Destination</strong>
                   {selectedData.place_to_visit}
                 </p>
-                <p>
-                  <strong>Reason</strong>
-                  {selectedData.reason_for_visit}
-                </p>
+                {selectedData.reason_for_visit ? (
+                  <p>
+                    <strong>Reason</strong>
+                    {selectedData.reason_for_visit}
+                  </p>
+
+                ) : (
+                    <p>
+                      <strong>Reason</strong>
+                      {selectedData.reason_type}
+                    </p>
+                )}
                 <p>
                   <strong>Out Date</strong>
                   {formatDate(selectedData.from)}
@@ -242,12 +257,12 @@ const StudentHistory = () => {
                 </p>
               </div>
               <div className="details-column">
-                {/* <p>
+                <p>
                   <strong>Status</strong>
                   <span className={`status ${selectedData.request_completed ? 'completed' : 'pending'}`}>
                     {selectedData.request_completed ? "Completed" : "Pending"}
                   </span>
-                </p> */}
+                </p>
                 <p>
                   <strong>Applied Date</strong>
                   {formatDate(selectedData.request_date_time)}
@@ -264,10 +279,33 @@ const StudentHistory = () => {
             </div>
             
             {selectedData.file_path && (
-              <div className="mt-4">
-                <p className="font-semibold text-blue-800 mb-2">Supporting Document:</p>
-                <img src={UrlParser(selectedData.file_path)} alt="Proof" className="modal-image" />
-              </div>
+            <div className="mt-4">
+              <p className="font-semibold text-blue-800 mb-2">Supporting Document:</p>
+
+              {selectedData.file_path && (
+                (() => {
+                  const fileUrl = UrlParser(selectedData.file_path);
+                  const fileExtension = fileUrl.split('.').pop().toLowerCase();
+
+                  if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(fileExtension)) {
+                    return <img src={fileUrl} alt="Proof" className="modal-image" />;
+                  } else if (fileExtension === 'pdf') {
+                    return (
+                      <iframe
+                        src={fileUrl}
+                        title="PDF Document"
+                        className="w-full h-96 border"
+                      >
+                        This browser does not support PDFs. Please download the PDF to view it:
+                        {/* <a href={fileUrl}>Download PDF</a> */}
+                      </iframe>
+                    );
+                  } else {
+                    return <p>Unsupported file format.</p>;
+                  }
+                })()
+              )}
+            </div>
             )}
             
             {selectedData.qrcode_path && (

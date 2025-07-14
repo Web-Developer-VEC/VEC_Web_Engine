@@ -351,6 +351,9 @@ const handleUpdatePass = async () => {
   
     if (selectedFile) {
       formData.append("file", selectedFile);  // Attach the file
+    } else if (existingFilePath) {
+      // Include the existing file path in the form data
+      formData.append("existingFilePath", existingFilePath);
     }
   
     try {
@@ -414,6 +417,12 @@ const handleUpdatePass = async () => {
     if (selectedFile) {
       formData.append("file", selectedFile);
     }
+
+    else if (existingFilePath) {
+      // Include the existing file path in the form data
+      formData.append("existingFilePath", existingFilePath);
+    }
+
   
     try {
       const response = await fetch("/api/submit_pass_warden_approval", {
@@ -474,6 +483,12 @@ const handleUpdatePass = async () => {
     if (selectedFile) {
       formData.append("file", selectedFile);
     }
+
+    else if (existingFilePath) {
+      // Include the existing file path in the form data
+      formData.append("existingFilePath", existingFilePath);
+    }
+
   
     try {
       const response = await fetch("/api/submit_pass_warden_approval_superior", {
@@ -531,6 +546,11 @@ const handleUpdatePass = async () => {
     // Append the file if it's selected
     if (selectedFile) {
       formData.append("file", selectedFile);
+    }
+
+    else if (existingFilePath) {
+      // Include the existing file path in the form data
+      formData.append("existingFilePath", existingFilePath);
     }
 
     try {

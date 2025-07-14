@@ -1,30 +1,36 @@
 const QRCode = require('qrcode');
+const sharp = require('sharp'); 
 const s3 = require('../config/aws');
-const path = require('path');
 
 async function generateQR(pass_id, registration_number) {
   try {
-    const buffer = await QRCode.toBuffer(pass_id, {
+    const jpegBuffer = await QRCode.toBuffer(pass_id, {
       type: 'jpeg',
       width: 300,
-      errorCorrectionLevel: 'H'
+      errorCorrectionLevel: 'H',
     });
 
-    const filename = `${registration_number}.jpeg`;
+    const webpBuffer = await sharp(jpegBuffer)
+      .webp({ quality: 80 }) 
+      .toBuffer();
+
+    const filename = `${registration_number}.webp`;
     const s3Path = `static/digihostel/qrcodes/${filename}`;
 
     const params = {
       Bucket: process.env.AWS_S3_NAME,
       Key: s3Path,
-      Body: buffer,
-      ContentType: 'image/jpeg',
-      ACL: 'public-read'
+      Body: webpBuffer,
+      ContentType: 'image/webp',
+      ACL: 'public-read',
+      ContentDisposition: 'attachment', 
     };
 
     const s3Result = await s3.upload(params).promise();
     console.log(`✅ QR code uploaded to S3 at: ${s3Result.Location}`);
 
-    return s3Result.Location; 
+    // return s3Result.Location;
+    return `/${s3Path}`
   } catch (error) {
     console.error('❌ Error generating/uploading QR code:', error);
     throw error;

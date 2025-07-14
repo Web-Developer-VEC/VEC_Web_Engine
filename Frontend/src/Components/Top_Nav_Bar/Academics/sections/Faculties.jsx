@@ -6,7 +6,7 @@ import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
 
 const Faculties = ({ data }) => {
-  console.log("Fac",data);
+
     const [open, setopen] = useState(null);
       const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -31,8 +31,15 @@ const Faculties = ({ data }) => {
   </div>
   }
 
-  const facultyArray = data.faculty_members;
-  const SupportingStaffArray = data.suppoting_faculty; 
+  const facultyArray = data.faculty_members?.filter(member => {
+    const idParts = member.unique_id?.split("-");
+    return idParts?.length >= 3 && ["01", "02", "03", "04"].includes(idParts[2]);
+  });
+
+  const SupportingStaffArray = data.faculty_members?.filter(member => {
+    const idParts = member.unique_id?.split("-");
+    return idParts?.length >= 3 && idParts[2] === "05";
+  });
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>

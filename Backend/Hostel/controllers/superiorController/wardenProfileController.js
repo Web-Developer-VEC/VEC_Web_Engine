@@ -1,6 +1,7 @@
 const { getDb } = require('../../config/db');
 const s3 = require('../../config/aws');
 const bcrypt = require('bcrypt');
+const uploadToS3 = require('../../middleware/uploadTos3Middleware');
 
 async function getWardenDetails (req, res) {
     try {
@@ -183,12 +184,30 @@ async function updatewarden (req, res) {
     try {
         const db = getDb();
         const wardenCollection = db.collection("warden_database");
+        
+        const { unique_id, ...updateFields } = req.body;
 
-        let file_path = pass_details.file_path;
+        if (typeof updateFields.secondary_year === 'string') {
+            updateFields.primary_year = JSON.parse(updateFields.secondary_year);
+        }
+
+        if (typeof updateFields.primary_year === 'string') {
+            updateFields.primary_year = JSON.parse(updateFields.primary_year);
+        }
+
+        const existingWarden = await wardenCollection.findOne({ unique_id });
+
+        if (!existingWarden) {
+            return res.status(404).json({ error: "Warden not found" });
+        }
+
+        let older_file_path = existingWarden.image_path;
+        let file_path = null;
 
         if (req.file) {
-            if (file_path) {
-                const oldKey = file_path.split('.com/')[1];
+
+            if (older_file_path) {
+                const oldKey = older_file_path;
                 await s3.deleteObject({
                 Bucket: process.env.AWS_S3_NAME,
                 Key: oldKey
@@ -197,15 +216,11 @@ async function updatewarden (req, res) {
             }
 
             file_path = await uploadToS3(req.file, req.file.fieldname);
+            updateFields.image_path = file_path;
         }
 
-        const { unique_id, ...updateFields } = req.body;
         if (!unique_id) {
             return res.status(400).json({ error: "Warden unique ID is required" });
-        }
-
-        if (file_path) {
-            updateFields.file_path = file_path;
         }
 
         const updateResult = await wardenCollection.updateOne(

@@ -66,7 +66,7 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaEye className={sty}/>;
             case "Objectives":
                 return <FaBullseye className={sty}/>;
-            case "Coordinators":
+            case "Coordinator":
                 return <FaUserTie className={sty}/>;
             case "NAAC":
                 return <Trophy className={sty}/>;

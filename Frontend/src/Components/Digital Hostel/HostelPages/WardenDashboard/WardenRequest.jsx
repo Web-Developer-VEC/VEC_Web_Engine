@@ -169,11 +169,9 @@ function WardenRequest() {
                   {year === 1 ? "First Year" :
                    year === 2 ? "Second Year" :
                    year === 3 ? "Third Year" :
-                   year === 4 ? "Fourth Year" :
-                   year === 7 ? "ME Second Year" :
-                   year === 8 ? "ME First Year" : 
-                   year === 9 ? "MBA First Year" : 
-                   year === 10 ? "MBA Second Year" : year `${year}`}
+                   year === 4 ? "Fourth Year" : 
+                   year === 9 ? "ME" : 
+                   year === 10 ? "MBA" : `year ${year}`}
                 </option>
               ))}
             </select>
@@ -313,7 +311,7 @@ function DetailModal({ record, onClose, onAccept, onDecline, isMedical, setIsMed
   const [showDocument, setShowDocument] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [comment,setComment] = useState(null);
-  console.log(comment);
+  console.log("Record",record.file_path);
   
 
   // Convert "from" and "to" timestamps into date & time formats
@@ -527,22 +525,41 @@ function DetailModal({ record, onClose, onAccept, onDecline, isMedical, setIsMed
           )}
     
           {showDocument && (
-            <div className="AR-document-modal" onClick={handleOverlayClick}> {/* Overlay click handler */}
-              <div className="AR-document-container" onClick={handleModalClick}> {/* Modal click handler */}
-                {/* ... document content */}
+            <div className="AR-document-modal" onClick={handleOverlayClick}>
+              <div className="AR-document-container" onClick={handleModalClick}>
+                
+                {/* Header */}
                 <div className="AR-document-header">
                   <h3 className="AR-document-title">Document Preview</h3>
                   <button onClick={() => setShowDocument(false)} className="AR-close-button">
                     <X className="AR-icon" />
                   </button>
                 </div>
+
+                {/* Dynamic Content */}
                 <div className="AR-document-content">
-                  <iframe
-                    src={UrlParser(record.documentUrl)}
-                    className="AR-document-frame"
-                    title="Document Preview"
-                  />
+                  {(() => {
+                    const fileUrl = UrlParser(record.file_path);
+                    const fileExtension = fileUrl.split('.').pop().toLowerCase();
+
+                    if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(fileExtension)) {
+                      return <img src={fileUrl} alt="Document Preview" className="AR-document-image" />;
+                    } else if (fileExtension === 'pdf') {
+                      return (
+                        <iframe
+                          src={fileUrl}
+                          title="PDF Document"
+                          className="AR-document-frame"
+                        >
+                          Your browser does not support PDF viewing. <a href={fileUrl}>Download PDF</a>
+                        </iframe>
+                      );
+                    } else {
+                      return <p>Unsupported file format.</p>;
+                    }
+                  })()}
                 </div>
+
               </div>
             </div>
           )}
