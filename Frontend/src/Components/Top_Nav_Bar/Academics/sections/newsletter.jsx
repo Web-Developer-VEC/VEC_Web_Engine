@@ -13,6 +13,12 @@ export default function Newsletter({ data }) {
 
   const {  years } = data; 
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   return (
     <div className="news-container">
 
@@ -31,7 +37,7 @@ export default function Newsletter({ data }) {
       {activeYear && (
         <div className={`news-pdf-container ${years[activeYear].length === 2 ? "news-two-pdfs" : "news-one-pdf"}`}>
           {years[activeYear].map((pdf, index) => (
-            <iframe key={index} src={pdf} title={`PDF ${index + 1}`} className="news-pdf-frame"></iframe>
+            <iframe key={index} src={UrlParser(pdf)} title={`PDF ${index + 1}`} className="news-pdf-frame"></iframe>
           ))}
         </div>
       )}

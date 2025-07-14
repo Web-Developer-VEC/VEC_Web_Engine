@@ -3,11 +3,29 @@ import { motion } from 'framer-motion';
 import Banner from '../../Banner';
 import './Trust.css'
 import LoadComp from '../../LoadComp';
+import axios from 'axios';
 
 const NewTrust = ({theme, toggle}) => {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
+  const [AbtTrustData, setAbtTrustData] = useState(null);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const responce = await axios.get('/api/about_us');
+              const data = responce.data[0];
+              setAbtTrustData(data.about_trust)
+              
+            } catch (error) {
+              console.error("Error fetching about us data",error);
+            }
+          }
+          fetchData();
+        }, [])
+        
+        console.log("Ajay",AbtTrustData);
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
       const handleOffline = () => setIsOnline(false);
@@ -56,12 +74,12 @@ const NewTrust = ({theme, toggle}) => {
               Velammal Educational Trust (VET)
               </h2>
               <p className="text-lg leading-relaxed">
-              In the year 1986... Smt.Velammal had sown the seed of social consciousness  in the mind of her son Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, at his impressionable age, which started germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.
+              {AbtTrustData?.Velammal_Educational_Trust[0]}
               </p>
               <p className="mt-4 text-lg leading-relaxed">
-              From a small school at Mugappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Thiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Thiruvanamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella.       
-</p>
-</motion.div>
+              {AbtTrustData?.Velammal_Educational_Trust[1]}
+          </p>
+          </motion.div>
           <div className="mt-10 grid md:grid-cols-2 gap-8 items-center ">
             {/* Image Section */}
             <motion.div
@@ -70,7 +88,7 @@ const NewTrust = ({theme, toggle}) => {
             >
               <img
                 className="w-64 h-max object-cover transition-transform duration-500 "
-                src={UrlParser('/static/images/trust/velammal.webp')}
+                src={UrlParser(AbtTrustData?.velammal?.image_path)}
                 alt="Velammal Trust Banner"
               />
             </motion.div>
@@ -86,7 +104,8 @@ const NewTrust = ({theme, toggle}) => {
                 Strength of the Trust
               </h2>
               <p className="text-lg leading-relaxed">
-              Her Philosophy was quite simple, She used to say, "You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent".              </p>
+              {AbtTrustData?.velammal?.content}
+              </p>
             </motion.div>
           </div>
 
@@ -107,14 +126,14 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("/static/images/trust/muthuramalingam.webp")}
+                  src={UrlParser(AbtTrustData?.image_path[0])}
                   alt="Shri. M.V. Muthuramalingam"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>
-                  <h5 className="text-sm font-bold">Shri. M.V. Muthuramalingam</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">Chairman</h6>
+                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[0]}</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[0]}</h6>
                   <p className="mt-2">Velammal Educational Trust</p>
                 </div>
               </motion.div>
@@ -126,14 +145,14 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser('/static/images/trust/velmurugan.webp')}
+                  src={UrlParser(AbtTrustData?.image_path[1])}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>
-                  <h5 className="text-sm font-bold">Shri. M.V. VelMurugan</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">Chief Executive Officer</h6>
+                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[1]}</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[1]}</h6>
                   <p className="mt-2">Velammal Educational Trust</p>
                 </div>
               </motion.div>
@@ -145,14 +164,14 @@ const NewTrust = ({theme, toggle}) => {
                           hover:shadow-xl transition-shadow duration-300 md:flex"
               >
                 <img
-                  src={UrlParser("/static/images/trust/deptyceo.webp")}
+                  src={UrlParser(AbtTrustData?.image_path[2])}
                   alt="Shri. M.V. VelMurugan"
                   className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                 />
 
                 <div>
-                  <h5 className="text-sm font-bold">Shri. V. Karthik Velmurugan</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">Deputy CEO</h6>
+                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[2]}</h5>
+                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[2]}</h6>
                   <p className="mt-2">Velammal Educational Trust</p>
                 </div>
               </motion.div>

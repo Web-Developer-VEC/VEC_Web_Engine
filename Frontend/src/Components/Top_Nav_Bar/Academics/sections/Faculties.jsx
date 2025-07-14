@@ -105,14 +105,6 @@ const Faculties = ({ data }) => {
           </>
         )}
       </div>
-      {url ? (
-        <div className={styles.prefaculty}>
-          <button className={styles.prefacultybtn + " bg-accn text-prim hover:bg-secd hover:text-text py-2 px-4 " +
-              "dark:bg-drks dark:text-text dark:hover:text-drkt dark:hover:bg-brwn"}
-                  onClick={() => handleViewClick(UrlParser(url), Name)}> Previous Year Faculties</button>
-        </div>
-
-      ) : ( null )}
 
       {open && (
               <div className={styles.pdfmodal}>

@@ -79,6 +79,8 @@ import Crdt from "./Components/Credits/Crdt.jsx";
 import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
+import axios from 'axios';
+
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -105,15 +107,48 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const MainContentWrapper = styled.div`
-    flex: 1;
-    padding-top: 8.69%;
-    `;
-    
-    const App = () => {
+flex: 1;
+padding-top: 8.69%;
+`;
+
+const App = () => {
     const footerRef = useRef(null);
     const location = useLocation();
     const [currentPath, setCurrentPath] = useState(location.pathname);
-        const cookies = new Cookies()
+    const cookies = new Cookies()
+    const [landingData, setLandingData] = useState(null);
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/landing_page_data');
+    
+                setLandingData(responce.data);
+                
+            } catch (error) {
+                console.error("Error fetching thhe landing page Data",error);
+                
+            }
+        }
+    
+        fetchData();
+    }, []);
+    
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+    
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+    
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
     if (cookies.get('theme') === undefined) cookies.set('theme', 'light')
 
 
@@ -221,7 +256,7 @@ const MainContentWrapper = styled.div`
                             </Routes>
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer ref={footerRef} />}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
                     </>
                 </AppContainer>
         </>

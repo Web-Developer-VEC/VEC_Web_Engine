@@ -3,10 +3,26 @@ import styles from "./collegevisionmission.module.css";
 import { Eye, Target } from "lucide-react"; // Importing icons
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import axios from "axios";
 
 const Collegevisionmission = ({ theme, toggle }) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [vmData, setvmData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/about_us');
+                const data = responce.data[0];
+                setvmData(data.vision_and_mission);
+                
+            } catch (error) {
+                console.error("Error fetching about us data",error);
+            }
+        }
+        fetchData();
+    }, [])
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -53,11 +69,11 @@ const Collegevisionmission = ({ theme, toggle }) => {
                             <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Vision</h2>
                         </div>
                         <p className={styles.cardContent}>
-                            To educate the student community both by theory and practice to fit in with society and to conquer tomorrow’s technology at a global level with human values through our dedicated team.
+                            {vmData?.vision}
                         </p>
                     </div>
                     <div className={styles.photo}>
-                        <img src={UrlParser('/static/images/visionandmission/VM.webp')} alt="Vision Photo" className={styles.photoImage} />
+                        <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
                     </div>
                 </div>
 
@@ -69,7 +85,7 @@ const Collegevisionmission = ({ theme, toggle }) => {
                             <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Mission</h2>
                         </div>
                         <p className={`${styles.cardContent} text-text dark:text-drkt`}>
-                            To provide world-class education in engineering, technology, and management, to foster research & development, to encourage creativity and promote innovation, to build leadership, intrapreneurship, and entrepreneurship and to nurture teamwork and achieve stakeholders’ delight.
+                            {vmData?.mission}
                         </p>
                     </div>
                 </div>

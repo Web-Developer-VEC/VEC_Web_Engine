@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
-import styles from './AbtUs.css';
+import axios from 'axios';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -15,6 +15,22 @@ const AbtUs = ({ theme, toggle }) => {
     const handleLoad = (imgKey) => {
         setLoading(prevState => ({ ...prevState, [imgKey]: false }));
     };
+
+    const [AbtUsData, setAbtsUcData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/about_us');
+                const data = responce.data[0]
+                setAbtsUcData(data.about_vec)
+                
+            } catch (error) {
+                console.error("Error fetching about us data",error);
+            }
+        }
+        fetchData();
+    }, [])
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -40,9 +56,6 @@ const AbtUs = ({ theme, toggle }) => {
 
     const secSub = "An Autonomous Institution";
     const secCnt = "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.";
-    const sec2Cnt = "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence.";
-    
-    const lis = [sec2Cnt ];
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -79,7 +92,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img1 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('/static/images/aboutvec/aboutvec1.webp')}
+                                src={UrlParser(AbtUsData?.image_path[0])}
                                 alt="Banner Image0"
                                 onLoad={() => handleLoad('img1')}
                             />
@@ -94,7 +107,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('/static/images/aboutvec/aboutvec2.webp')}
+                                src={UrlParser(AbtUsData?.image_path[1])}
                                 alt="Banner Image1"
                                 onLoad={() => handleLoad('img2')}
                             />
@@ -109,7 +122,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                             )}
                             <img className={`absolute w-full h-full rounded-tl-[3rem] rounded-br-[3rem] transition-opacity duration-500 ${loading.img3 ? 'opacity-0' : 'opacity-100'}`}
-                                src={UrlParser('/static/images/aboutvec/aboutvec3.webp')}
+                                src={UrlParser(AbtUsData?.image_path[2])}
                                 alt="Banner Image2"
                                 onLoad={() => handleLoad('img3')}
                             />
@@ -118,36 +131,36 @@ const AbtUs = ({ theme, toggle }) => {
                 </div>
             </div>
 
-            {lis.map((itm, index) => (
-                <div key={index} className="flex gap-8 my-14 
+            {/* {lis.map((itm, index) => ( */}
+                <div className="flex gap-8 my-14 
                     p-10 transition-all duration-300 ease-in-out">
                     
                     <div className="flex flex-col justify-center px-2 lg:px-12">
                         <p className="text-[16px] lg:text-[16px] text-justify font-[Poppins]
                         leading-relaxed tracking-wide">
-                            {itm}
+                            {AbtUsData?.content}
                         </p>
                     </div>
                 </div>
-            ))}
+            {/* ))} */}
 
             <div className='m-8 p-6'>
                 <ul className='pdf-links flex flex-wrap justify-center gap-8' >
                     <li className='text-lg flex items-center gap-'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("/static/pdfs/about_vec/AICTE_EOA_2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
+                        <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
+                        <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("/static/pdfs/about_vec/4th_Governing_Body_Members.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
+                        <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                     </li>
                     <li className='text-lg flex items-center gap-2'>
                         <FaLink className='text-prim dark:text-drkp' />
-                        <a href={UrlParser("/static/pdfs/about_vec/VEC_Mandatory_Disclosure-2024-2025.pdf")} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
+                        <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                     </li>
                 </ul>
             </div>

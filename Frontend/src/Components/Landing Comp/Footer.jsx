@@ -8,6 +8,10 @@ import facebook from '../Assets/facebook-logo.png';
 
 const Footer = forwardRef((props, ref) => {
     const color = (props.theme === "light") ? "rgb(253,204,3)" : "rgb(255, 87, 34)";
+    const data = props.data;
+
+    console.log("Footer",data);
+    
 
     return (
         <footer id="footer" className="lg:flex flex-wrap footer font-popp
@@ -17,37 +21,34 @@ const Footer = forwardRef((props, ref) => {
             <div className="contact-details basis-1/4 ml-4">
                 <h3 className="text-secd dark:text-drks font-bold" style={{padding: "0 20px", margintop: "5px"}}>Contact
                     Address</h3>
-                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>Velammal Engineering College (Autonomous)<br></br>Ambattur
-                    Red-hills Road, Surapet,<br></br>Chennai – 600 066. Tamil Nadu, India.</p>
+                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>{data?.address[0]}<br></br>{data?.address[1]}<br></br>{data?.address[2]}</p>
                 <p style={{marginTop: "27px"}}>
                     Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href="tel:+914426590758"
-                                style={{textDecoration: "none"}}>044 – 26590758</a>
+                                style={{textDecoration: "none"}}>{data?.phone_number}</a>
                 </p>
                 <p>
-                    Student Affair: <a href="tel:+914426591771" className="text-secd dark:text-drks hover:text-prim font-bold"
-                               style={{textDecoration: "none"}}>044 - 26591771</a>
+                    Student Affair: <a href={`tel:${data?.student_affairs_contact}`} className="text-secd dark:text-drks hover:text-prim font-bold"
+                               style={{textDecoration: "none"}}>{data?.student_affairs_contact  }</a>
                 </p>
-                <p>For Admissions: <a href="tel:+919123547550" className="text-secd dark:text-drks hover:text-prim font-bold"
-                                      style={{textDecoration: "none"}}>9123547550</a> , <a
-                    href="tel:+918939221120" className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
-                    8939221120</a>
+                <p>For Admissions: <a href={`tel:${data?.addmission_contact[0]}`} className="text-secd dark:text-drks hover:text-prim font-bold"
+                                      style={{textDecoration: "none"}}>{data?.addmission_contact[0]}</a> , <a
+                    href={`tel:${data?.addmission_contact[1]}`} className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
+                    {data?.addmission_contact[1]}</a>
                 </p>
                 <div className="logo-container my-2">
-                    <a href="https://www.instagram.com/vec_chennai/" target="_blank" rel="noopener noreferrer">
+                    <a href={data?.instagram} target="_blank" rel="noopener noreferrer">
                         <img src={insta} alt="Insta"/>
                     </a>
-                    <a href="https://www.linkedin.com/school/velammal-engineering-college/" target="_blank" rel="noopener noreferrer">
+                    <a href={data?.linkedin} target="_blank" rel="noopener noreferrer">
                         <img src={linkedin} alt="LinkedIn"/>
                     </a>
-                    <a href="https://x.com/VelammalEnggC" target="_blank" rel="noopener noreferrer">
+                    <a href={data?.twitter} target="_blank" rel="noopener noreferrer">
                         <img src={x} alt="Twitter"/>
                     </a>
-                    <a href="https://www.facebook.com/velammalengineeringcollege" target="_blank" rel="noopener noreferrer">
+                    <a href={data?.facebook} target="_blank" rel="noopener noreferrer">
                         <img src={facebook} alt="Facebook"/>
                     </a>
                 </div>
-                {/*mt-4 lg:mt-[-240px] lg:ml-[375px]">*/}
-                {/*    <iframe className="w-[90%] h-[15%] lg:w-[25vw] lg:h-[30vh] 2xl:h-[20vh] lg:mt-[-15rem]*/}
             </div>
             <div className=" footer-map basis-1/3 h-[45vh] mt-10">
                 <iframe className="px-3 w-full h-full"
