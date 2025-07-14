@@ -2,10 +2,26 @@ import React, { useEffect, useState } from "react";
 import './Management.css';
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import axios from "axios";
 
 function Management({ theme, toggle }) {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    const [AbtUsData, setAbtsUcData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/about_us');
+                const data = responce.data[0];
+                setAbtsUcData(data.Management)
+            } catch (error) {
+                console.error("Error fetching about us data",error);
+            }
+        }
+        fetchData();
+    }, [])
 
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
@@ -52,12 +68,13 @@ function Management({ theme, toggle }) {
 
           <div className="FCP-content-container">
             <div className="FCP-text-container">
-              <p>At Velammal Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.
+              <p>
+              {AbtUsData?.message[0]}
               </p>
             </div>
 
             <div className="FCP-image-container">
-              <img src={UrlParser('/static/images/trust/muthuramalingam.webp')} alt="Founder's Image" className="founder"/>
+              <img src={UrlParser(AbtUsData?.image_path[0])} alt="Founder's Image" className="founder"/>
             </div>
           </div>
         </div>
@@ -69,13 +86,12 @@ function Management({ theme, toggle }) {
 
           <div className="FCP-content-container">
             <div className="FCP-image-container">
-              <img src={UrlParser('/static/images/trust/velmurugan.webp')} alt="CEO's Image" />
+              <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
             </div>
 
             <div className="FCP-text-container">
               <p>
-              At Velammal Engineering College, we empower students to innovate, lead, and excel in a dynamic global environment. Our approach integrates academic rigor with practical insights, fostering critical thinking and adaptability. We are committed to continuous learning and technological advancement, shaping professionals who are prepared for the future. Our institution nurtures a culture of resilience, ethics, and innovation, ensuring every individual thrives. With industry collaborations and experiential learning opportunities, we prepare our students to meet the demands of a competitive world. Join us in our pursuit of transformative education and a future driven by excellence.
-
+              {AbtUsData?.message[1]}
               </p>
             </div>
           </div>
@@ -89,12 +105,12 @@ function Management({ theme, toggle }) {
 
             <div className="FCP-text-container">
               <p>
-              Dear Students, Faculty, and Visitors, <br /><br />
-              It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity.
+              {AbtUsData?.message[2]} <br /><br />
+              {AbtUsData?.message[3]}
               </p>
             </div>
             <div className="FCP-image-container FCP-image-container1">
-              <img src={UrlParser('/static/images/trust/deptyceo.webp')} alt="deputy ceo Image" />
+              <img src={UrlParser(AbtUsData?.image_path[2])} alt="deputy ceo Image" />
             </div>
           </div>
         </div>
@@ -102,5 +118,4 @@ function Management({ theme, toggle }) {
     </>
   );
 }
-
 export default Management;

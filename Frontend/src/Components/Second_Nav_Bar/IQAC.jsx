@@ -82,7 +82,7 @@ const IQAC = ({ toggle , theme }) => {
     // Create coordinator object
     const coordinator = iqacData?.members?.coordinator ? {
         name: iqacData.members.coordinator.name,
-        image: UrlParser(iqacData.members.coordinator.imagepath),
+        image: UrlParser(iqacData.members.coordinator.image_path),
         designation: iqacData.members.coordinator.designation,
         keyRole: iqacData.members.coordinator.role,
         email: iqacData.members.coordinator.email,
@@ -220,7 +220,7 @@ const IQAC = ({ toggle , theme }) => {
                 {coordinator && (
                     <div className="coordinator-card ">
                         <div className="coordinator-image-container max-w-[25vmax] h-auto">
-                            <img src={UrlParser(coordinator.image_path) || "/placeholder.svg"} alt={coordinator.name}
+                            <img src={UrlParser(coordinator.image) || "/placeholder.svg"} alt={coordinator.name}
                                  className="coordinator-image"/>
                         </div>
                         <div className="coordinator-details w-full">
