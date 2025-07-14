@@ -62,15 +62,10 @@ const LIBFacl = () => {
                 alt={name}
                 className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                <h3 className="text-xl font-bold text-white text-center px-4">
-                  {name}
-                </h3>
-              </div>
             </div>
 
             <div className="p-6 text-center">
-              <h3 className="text-2xl font-bold">{name}</h3>
+              <h3 className="text-[18px] font-bold">{name}</h3>
               <p className="mt-2 text-brwn dark:text-drka">{faculty?.educational_qualification[index]}</p>
               <p className="text-accn dark:text-drka font-semibold mt-2">
                 {faculty?.designation[index]}

@@ -168,12 +168,6 @@ const DepartmentPage = ({ theme, toggle }) => {
 
   return (
     <div className={styles.main}>
-      {loading && (
-        <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
-          <LoadComp />
-        </div>
-      )}
-
       {/* Header */}
       <div className={styles.header}>
         <Toggle attr="absolute bottom-0 float-right right-24 size-12" toggle={toggle} theme={theme} />
@@ -182,19 +176,28 @@ const DepartmentPage = ({ theme, toggle }) => {
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
-
-      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
-        {/* Sidebar */}
-        <Sidebar
-          sections={availableSections}
-          activeSection={activeSection}
-          setActiveSection={handleSection}
-        />
-        {/* Main content */}
-        <div ref={contentRef} className="text-text dark:text-drkt" style={{ flex: 1, padding: "20px" }}>
-          {renderSection()}
+      {loading ? (
+        <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
+          <LoadComp />
         </div>
-      </div>
+      ) : (
+        <>
+        
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
+            {/* Sidebar */}
+            <Sidebar
+              sections={availableSections}
+              activeSection={activeSection}
+              setActiveSection={handleSection}
+            />
+            {/* Main content */}
+            <div ref={contentRef} className="text-text dark:text-drkt" style={{ flex: 1, padding: "20px" }}>
+              {renderSection()}
+            </div>
+          </div>
+        </>
+      )}
+
     </div>
   );
 };

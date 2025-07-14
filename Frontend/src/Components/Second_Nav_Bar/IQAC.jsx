@@ -22,16 +22,17 @@ const IQAC = ({ toggle , theme }) => {
     const [iqa, setIqa] = useState("Objectives");
     const navData = {
         "Objectives": <IqaObj/>,
-        "Coordinators": <IqaCor/>,
+        "Coordinator": <IqaCor/>,
         "Members": <IqaMem/>,
         "Minutes of Meetings": <IqaMet/>,
-        "Academic and Administrative Audit": <IqaObj/>, //IqaAud
+        "Academic and Administrative Audit": <IqaAud/>, //IqaAud
         "Gallery": <IqaGal/>,
         "Strategic Development Plan": <IqaDev/>,
         "Best Practices": <IqaPra/>,
+        "Institutional Distinctiveness": <IqaIns/>,
         "Code of Ethics": <IqaEth/>,
         "AQAR": <IqaQar/>,
-        "ISO Certificate": <IqaIso/>
+        "ISO Certificate": <IqaIso/>,
     };
 
     useEffect(() => {
@@ -226,8 +227,8 @@ const IQAC = ({ toggle , theme }) => {
                             <h3 className="coordinator-name text-text dark:text-drkt">{coordinator.name}</h3>
                             <p className="coordinator-designation text-brwn dark:text-drka">{coordinator.designation}</p>
                             <p className="coordinator-role text-brwn dark:text-drka">{coordinator.keyRole}</p>
-                            <p className="coordinator-email">Email: <a href={`mailto:${coordinator.email}`} className="text-drka">{coordinator.email}</a></p>
-                            <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-drka">{coordinator.phone}</a></p>
+                            <p className="coordinator-email">Email: <a className="text-drka">{coordinator.email}</a></p> 
+                            {/* <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-drka">{coordinator.phone}</a></p> */}
                         </div>
                     </div>
                 )}
@@ -367,16 +368,36 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaAud() {
         return (
-            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Academic and Administrative Audit</h2>
-                {academicAdminAuditArray.map((action, index) => (
-                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                         className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
-                         // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
-                    >
-                        <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
-                    </a>
-                ))}
+            // <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
+            //     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Academic and Administrative Audit</h2>
+            //     {academicAdminAuditArray.map((action, index) => (
+            //         <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
+            //              className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
+            //              // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
+            //         >
+            //             <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
+            //         </a>
+            //     ))}
+            // </div>
+            <div className="flex justify-center p-4 w-full">
+                <div className="overflow-x-auto border rounded-lg shadow-md">
+                    <table className=" w-[1000px] department-table">
+                        <thead className="bg-gray-100">
+                        <tr>
+                            <th className="text-left px-4 py-2 text-text">Departments</th>
+                            <th className="text-left px-4 py-2 text-text">Reports</th>
+                            <th className="text-left px-4 py-2 text-text">Minutes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AI & DS</td>
+                                <td>AI & DS</td>
+                                <td>AI & DS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
@@ -387,18 +408,36 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaDev() {
         return (
-            <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Strategic development plan</h2>
-                {strategicPlanArray.map((action, index) => (
-                    <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-                       className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
-                        // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
-                    >
-                        <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
-                    </a>
-                ))}
+            <div className="nirf-pdf-container iqac-pdf-container">
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt mb-4"}>Strategic development plan</h2>
+
+                <embed
+                    className="embed"
+                    src={UrlParser(iqacData?.strategicPlan?.paths[0]) + "#toolbar=0"
+                    }
+                    type="application/pdf"
+                    width="100%"
+                    height="600px"
+                />
             </div>
         );
+    }
+
+    function IqaIns() {
+        return (
+            <div className="nirf-pdf-container iqac-pdf-container">
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Institutional Distinctiveness</h2>
+
+                <embed
+                    className="embed"
+                    src={UrlParser(iqacData?.institutional_distinctiveness?.path) + "#toolbar=0"
+                    }
+                    type="application/pdf"
+                    width="100%"
+                    height="600px"
+                />
+            </div>
+        )
     }
 
     function IqaPra() {
@@ -419,18 +458,8 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaEth() {
         return (
-            // <div className="flex flex-wrap justify-center my-4">
-            //     <div
-            //         className={`iqac-action-button ${showethpdf ? "active bg-brwn text-prim" : "bg-sced dark:bg-drks hover:bg-accn hover:text-prim"}`}
-            //         onClick={() => {openPdf("Code of Ethics", "Code of Ethics"); setShowethpdf(true)}}>
-            //         Code of Ethics
-            //     </div>
-            //     {showethpdf && (
-            //         IqaPdf()
-            //     )}
-            // </div>
             <div className="nirf-pdf-container iqac-pdf-container">
-                    <h3 className="text-center">Code of Ethics</h3>
+                    <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Code of Ethics</h2>
                     <embed
                         className="embed"
                         src={UrlParser(iqacData?.codeOfEthics?.path) + "#toolbar=0"
@@ -462,7 +491,7 @@ const IQAC = ({ toggle , theme }) => {
     function IqaIso() {
         return (
             <div className="nirf-pdf-container iqac-pdf-container">
-                <h3 className="text-center">ISO Certificate</h3>
+                <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>ISO Certificate</h2>
                 <embed
                     className="embed"
                     src={UrlParser(iqacData?.isoCertificate?.path) + "#toolbar=0"

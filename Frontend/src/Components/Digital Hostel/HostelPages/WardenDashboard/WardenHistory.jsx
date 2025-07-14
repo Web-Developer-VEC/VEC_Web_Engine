@@ -146,7 +146,9 @@ function WardenHistory() {
                   {year === 1 ? "First Year" :
                    year === 2 ? "Second Year" :
                    year === 3 ? "Third Year" :
-                   year === 4 ? "Fourth Year" : year `${year}`}
+                   year === 4 ? "Fourth Year" :
+                   year === 10 ? "MBA" :
+                   year === 9 ? "ME" : `year ${year}`}
                 </option>
               ))}
             </select>
@@ -447,7 +449,7 @@ function DetailModal({ record, onClose }) {
                 </div>
                 <div className="AR-document-content">
                   <iframe
-                    src={UrlParser(record.documentUrl)}
+                    src={UrlParser(record.file_path)}
                     className="AR-document-frame"
                     title="Document Preview"
                   />

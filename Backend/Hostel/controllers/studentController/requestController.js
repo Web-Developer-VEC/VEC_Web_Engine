@@ -63,6 +63,8 @@ const submitPassParentApproval = async (req, res) => {
 
         if (req.file) {
             file_path = await uploadToS3(req.file, req.file.fieldname);
+        } else if (req.body.existingFilePath) {
+            file_path = req.body.existingFilePath;
         }
 
         const pass_id = uuidv4();
@@ -196,6 +198,8 @@ async function submitPassWardenApproval (req, res) {
 
         if (req.file) {
             file_path = await uploadToS3(req.file, req.file.fieldname);
+        } else if (req.body.existingFilePath) {
+            file_path = req.body.existingFilePath;
         }
 
         const yearInt = parseInt(year, 10);
@@ -327,6 +331,8 @@ async function submitPassSuperiorWardenApproval (req, res) {
 
         if (req.file) {
             file_path = await uploadToS3(req.file, req.file.fieldname);
+        } else if (req.body.existingFilePath) {
+            file_path = req.body.existingFilePath;
         }
 
         const yearInt = parseInt(year, 10);
@@ -446,6 +452,8 @@ async function saveDraftData(req, res) {
 
         if (req.file) {
             file_path = await uploadToS3(req.file, req.file.fieldname);
+        } else if (req.body.existingFilePath) {
+            file_path = req.body.existingFilePath;
         }
 
         const existingDraft = await DraftsCollection.findOne({ registration_number });
@@ -575,7 +583,7 @@ async function EditPassDetails (req, res) {
 
         if (req.file) {
             if (file_path) {
-                const oldKey = file_path.split('.com/')[1];
+                const oldKey = file_path;
                 await s3.deleteObject({
                 Bucket: process.env.AWS_S3_NAME,
                 Key: oldKey

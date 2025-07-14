@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import "./NBA_F.css";
-import Banner from '../../Banner';
 import axios from 'axios';
 import LoadComp from '../../LoadComp';
 
-const NBA_F = ({ theme, toggle }) => {
-  const [selectedDept, setSelectedDept] = useState(null);
-  const [selectedYear, setSelectedYear] = useState(null);
+const NBA_F = () => {
   const [data, setNbaData] = useState(null);
 
   useEffect(() => {

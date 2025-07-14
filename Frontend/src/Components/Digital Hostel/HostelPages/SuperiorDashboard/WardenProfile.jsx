@@ -75,6 +75,8 @@ const WardenProfile = () => {
         }));  
 
         setWardens(formattedWardens);
+        console.log("Wardens",formattedWardens);
+        
       } catch (err) {
         console.error("Error fetching warden data", err);
       }
@@ -465,7 +467,7 @@ const WardenProfile = () => {
               <div className="form-row">
                 <label>Warden For:</label>
                 <div className="checkbox-container no-border">
-                  {["1", "2", "3", "4", "MBA 1", "MBA 2", "PG1", "PG2"].map((option) => (
+                  {["1", "2", "3", "4", "MBA", "ME"].map((option) => (
                     <div key={option} className="checkbox-item">
                       <input
                         type="checkbox"
@@ -582,7 +584,7 @@ const WardenProfile = () => {
                 <div className="form-row">
                   <label>Select Primary Years:</label>
                   <div className="checkbox-container no-border">
-                    {["1", "2", "3", "4", "MBA 1", "MBA 2", "PG1", "PG2"].map((option) => (
+                    {["1", "2", "3", "4", "MBA", "ME"].map((option) => (
                       <div key={option} className="checkbox-item">
                         <input
                           type="checkbox"

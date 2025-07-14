@@ -116,7 +116,7 @@ const LibraryIntro = ({about}) => {
           <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-[45px] w-full">
               {tiles.map((tile, index) => (
                   <div className={`${tile.cls} border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
-                  bg-gray-100 dark:bg-gray-700`} key={index}>
+                  bg-prim dark:bg-drkb`} key={index}>
                       <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">{tile.hdr}</p>
                       <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{parse(tile.cnt)}</p>
                   </div>

@@ -247,28 +247,28 @@ const LibrarySections = ({faculty, membership, lib}) => {
                 "Magazines & Newspapers: 20",
             ],
         },
-        {
-            title: "Question Bank - UG Courses",
-            content: [
-                "B.E Computer Science & Engineering (CSE)",
-                "B.E Electronics & Communication Engineering (ECE)",
-                "B.E Electrical & Electronics Engineering (EEE)",
-                "B.E Electronics & Instrumentation Engineering (E&I)",
-                "B.Tech Information Technology (IT)",
-                "B.E Mechanical Engineering (MECH)",
-                "B.E Civil Engineering (CIVIL)",
-                "B.E Automobile Engineering (AUTO)",
-                "B.E Artificial Intelligence & Data Science (AI & DS)",
-            ],
-        },
-        {
-            title: "Question Bank - PG Courses",
-            content: [
-                "M.E Computer Science & Engineering (CSE)",
-                "M.E Power Systems Engineering (PSE)",
-                "Master of Business Administration (MBA)",
-            ],
-        },
+        // {
+        //     title: "Question Bank - UG Courses",
+        //     content: [
+        //         "B.E Computer Science & Engineering (CSE)",
+        //         "B.E Electronics & Communication Engineering (ECE)",
+        //         "B.E Electrical & Electronics Engineering (EEE)",
+        //         "B.E Electronics & Instrumentation Engineering (E&I)",
+        //         "B.Tech Information Technology (IT)",
+        //         "B.E Mechanical Engineering (MECH)",
+        //         "B.E Civil Engineering (CIVIL)",
+        //         "B.E Automobile Engineering (AUTO)",
+        //         "B.E Artificial Intelligence & Data Science (AI & DS)",
+        //     ],
+        // },
+        // {
+        //     title: "Question Bank - PG Courses",
+        //     content: [
+        //         "M.E Computer Science & Engineering (CSE)",
+        //         "M.E Power Systems Engineering (PSE)",
+        //         "Master of Business Administration (MBA)",
+        //     ],
+        // },
     ];
 
     const advisors = [
