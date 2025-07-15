@@ -5,7 +5,7 @@ async function getUG (req, res) {
     const collection = db.collection('Intakes');
 
     try {
-        const data = await collection.findOne({}, { projection: { UG: 1, UG_Lateral: 1, _id: 0, Year:1 } });
+        const data = await collection.findOne({}, { projection: { UG: 1, UG_Lateral: 1, _id: 0, Year:1, link: 1 } });
         if (!data) {
             return res.status(404).json({ message: 'No UG and UG_Lateral details found' });
         }

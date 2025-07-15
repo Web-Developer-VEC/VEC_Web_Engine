@@ -24,6 +24,12 @@ const LibraryIntro = ({about}) => {
         "Strict silence must be maintained in the library.",
     ];
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
   function parse(cnt) {
         let lis = [];
         cnt.split("\n").map((mxt) => {
@@ -106,7 +112,7 @@ const LibraryIntro = ({about}) => {
               <div
                   className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-r from-yellow-100 to-white">
                   <img
-                      src="https://img.freepik.com/free-photo/library-with-books_1063-98.jpg?t=st=1739020649~exp=1739024249~hmac=b239448fff3770a7d95c0d620bc0b964bbf2e1cd3267ab85b8af065e14f146d2&w=900"
+                      src={UrlParser("/static/images/library/library_images/Library+front+pic.webp")}
                       className="w-full h-64 sm:h-80 md:h-full object-cover"
                       alt="Library"
                       />

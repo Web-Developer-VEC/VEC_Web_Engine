@@ -60,36 +60,42 @@ const Collegevisionmission = ({ theme, toggle }) => {
                 headerText="Vision & Mission"
                 subHeaderText="Empowering a better tomorrow through innovation and integrity"
             />
-            <div className={styles.visionMissionContainer}>
-                {/* Vision Section (Left) and Photo (Rightmost) */}
-                <div className={styles.visionWrapper}>
-                    <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
-                        <div className={styles.cardHeader}>
-                            {/* <Eye size={24} className="text-white me-2" /> */}
-                            <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Vision</h2>
+            {vmData ? (
+                <div className={styles.visionMissionContainer}>
+                    {/* Vision Section (Left) and Photo (Rightmost) */}
+                    <div className={styles.visionWrapper}>
+                        <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
+                            <div className={styles.cardHeader}>
+                                {/* <Eye size={24} className="text-white me-2" /> */}
+                                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Vision</h2>
+                            </div>
+                            <p className={styles.cardContent}>
+                                {vmData?.vision}
+                            </p>
                         </div>
-                        <p className={styles.cardContent}>
-                            {vmData?.vision}
-                        </p>
+                        <div className={styles.photo}>
+                            <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
+                        </div>
                     </div>
-                    <div className={styles.photo}>
-                        <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
-                    </div>
-                </div>
 
-                {/* Mission Section (Centered below Vision, increased width) */}
-                <div className={styles.missionWrapper}>
-                    <div className={`${styles.missionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
-                        <div className={styles.cardHeader}>
-                            {/* <Target size={24} className="text-white me-2" /> */}
-                            <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Mission</h2>
+                    {/* Mission Section (Centered below Vision, increased width) */}
+                    <div className={styles.missionWrapper}>
+                        <div className={`${styles.missionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
+                            <div className={styles.cardHeader}>
+                                {/* <Target size={24} className="text-white me-2" /> */}
+                                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Mission</h2>
+                            </div>
+                            <p className={`${styles.cardContent} text-text dark:text-drkt`}>
+                                {vmData?.mission}
+                            </p>
                         </div>
-                        <p className={`${styles.cardContent} text-text dark:text-drkt`}>
-                            {vmData?.mission}
-                        </p>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+                    <LoadComp txt={""} />
+                </div>
+            )}
         </div>
     );
 };

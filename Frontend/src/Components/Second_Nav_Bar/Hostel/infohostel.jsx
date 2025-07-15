@@ -1,7 +1,26 @@
 import React from "react";
 import "./InfoHostel.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 const InfoHostel = () => {
+
+    const [HostelData, setHostelUcData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/hostel_menu');
+                const data = responce.data[0];
+                setHostelUcData(data.menu)
+            } catch (error) {
+                console.error("Error fetching about us data",error);
+            }
+        }
+        fetchData();
+    }, [])
+
   return (
     <div className="infohostel-container bg-prim dark:bg-drkp">
       <h1 className="infohostel-title text-brwn dark:text-drkt">Timing Information</h1>
@@ -39,55 +58,17 @@ const InfoHostel = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Monday</td>
-          <td>Pongal, Coconut chutney, Sambar, Vada, Coffee / Milk </td>
-          <td>White Rice, Sambar, Rasam, Poriyal, Pickle, Butter Milk & Appalam </td>
-          <td>Masala Vada, Tea & Milk</td>
-          <td>Parotta, Chicken Curry, Veg Kurma, Cut Fruits,White Rice, Rasam, Milk & Banana</td>
-        </tr>
-        <tr>
-          <td>Tuesday</td>
-          <td>Idly, Kara Chutney, Vada Curry, Coffee / Milk </td>
-          <td>White Rice, Egg Kuzhambu, Rasam, Kootu, Pickle, Curd, Appalam </td>
-          <td>Cream Bun, Tea & Milk</td>
-          <td>Poori, Chana Masala, Curd Rice, Milk & Banana </td>
-        </tr>
-        <tr>
-          <td>Wednesday</td>
-          <td>Onion Utthappam, Coconut Chutney, Sambar, Coffee / Milk </td>
-          <td>Varity Rice, Boiled Egg, Rasam, Poriyal, Pickle, Curd Rice, Appalam & Sweet</td>
-          <td>Mini Samosa, Tea & Milk </td>
-          <td>Rice Kushka, Chicken Thokku, Gobi 65, Milk & Banana</td>
-        </tr>
-        <tr>
-          <td>Thursday</td>
-          <td>Rava Kitchedi, Sambar, Coconut Chutney, Bread, Jam , Butter ,Omelet & Coffee / Milk </td>
-          <td>White Rice, Veg Pappu, Poriyal, Pickle, Butter Milk & Appalam</td>
-          <td>Veg Puff, Tea & Milk</td>
-          <td>Veg Pulao, Meal Maker Masala, Curd Rice,Milk & Banana</td>
-        </tr>
-        <tr>
-          <td>Friday</td>
-          <td>Veg Dosa, Peanut Chuttney, Sambar, Coffee / milk</td>
-          <td>White Rice, Sambar, Rasam, Poriyal, Pickle, Butter milk, Appalam & Payasam</td>
-          <td>Valaka bajji, Tea & Coffee</td>
-          <td>Chappathi, Egg Curry, White Rice, Rasam, Milk & Banana</td>
-        </tr>
-        <tr>
-          <td>Saturday</td>
-          <td>Poori, Chana Masala, Coffee / Milk </td>
-          <td>White Rice, Vathakuzhambu, Rasam, Kootu, Pickle, Curd & Appalam</td>
-          <td>Banana Cake, Tea & Milk</td>
-          <td>Kal Dosa, Sambar, Kara Chutney, Milk & Banana</td>
-        </tr>
-        <tr>
-          <td>Sunday</td>
-          <td>Bread, Jam, Butter, Omelet, Cucumber Salad, Coffee / Milk</td>
-          <td>Chicken Briyani, Veg Briyani, Onion Raitha, Brinjal Salna, Boiled Egg, Panner Gravy & Ice Cream </td>
-          <td>Veg Cutlet, Tea & Milk</td>
-          <td>Chappathi, Veg Kurma, Milk & Banana</td>
-        </tr>
+          {HostelData?.day?.map((day,i) => (
+            <>
+            <tr>
+              <td>{day}</td>
+              <td>{HostelData?.Breakfast[i]}</td>
+              <td>{HostelData?.lunch[i]}</td>
+              <td>{HostelData?.snacks[i]}</td>
+              <td>{HostelData?.dinner[i]}</td>
+            </tr>
+            </>
+          ))}
       </tbody>
     </table>
   </section>

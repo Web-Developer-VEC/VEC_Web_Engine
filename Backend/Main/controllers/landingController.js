@@ -8,7 +8,14 @@ async function getLandingpageData (req, res) {
     if (!config) {
       return res.status(404).json({ error: 'Landing page data not found' });
     }
-    const { _id, ...cleanedConfig } = config;
+
+    const { _id, notifications = [], ...rest } = config;
+    const activeNotifications = notifications.filter(n => n.status === 'active');
+
+    const cleanedConfig = {
+      ...rest,
+      notifications: activeNotifications
+    };
 
     res.json(cleanedConfig);
   } catch (error) {

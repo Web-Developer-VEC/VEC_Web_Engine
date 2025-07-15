@@ -54,7 +54,7 @@ const Programmes = ({toggle, theme}) => {
                 },
                 {
                     name: 'B.E. Mechanical Engineering',
-                    lnk: 'dept/013'
+                    lnk: '/dept/013'
                 },
                 {
                     name: 'B.Tech. Artificial Intelligence and Data Science',
