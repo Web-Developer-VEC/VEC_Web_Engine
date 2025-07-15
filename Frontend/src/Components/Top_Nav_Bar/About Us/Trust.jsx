@@ -55,130 +55,136 @@ const NewTrust = ({theme, toggle}) => {
 
   return (
     <>
-<Banner toggle={toggle} theme={theme}
-  backgroundImage="./Banners/aboutvec.webp"
-  headerText="Velammal Educational Trust"
-  subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
-/>
+      <Banner toggle={toggle} theme={theme}
+        backgroundImage="./Banners/aboutvec.webp"
+        headerText="Velammal Educational Trust"
+        subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
+      />
+      {AbtTrustData ? (
+        <div className="bg-prim dark:bg-drkp min-h-screen px-4 pt-0 md:p-8">
 
-      <div className="bg-prim dark:bg-drkp min-h-screen px-4 pt-0 md:p-8">
-
-        <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
-        <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-left text-text dark:text-drkt"
-            >
-              <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
-              Velammal Educational Trust (VET)
-              </h2>
-              <p className="text-lg leading-relaxed">
-              {AbtTrustData?.Velammal_Educational_Trust[0]}
-              </p>
-              <p className="mt-4 text-lg leading-relaxed">
-              {AbtTrustData?.Velammal_Educational_Trust[1]}
-          </p>
-          </motion.div>
-          <div className="mt-10 grid md:grid-cols-2 gap-8 items-center ">
-            {/* Image Section */}
-            <motion.div
-              whileHover={{  }}
-              className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
-            >
-              <img
-                className="w-64 h-max object-cover transition-transform duration-500 "
-                src={UrlParser(AbtTrustData?.velammal?.image_path)}
-                alt="Velammal Trust Banner"
-              />
+          <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
+          <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-left text-text dark:text-drkt"
+              >
+                <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+                Velammal Educational Trust (VET)
+                </h2>
+                <p className="text-lg leading-relaxed">
+                {AbtTrustData?.Velammal_Educational_Trust[0]}
+                </p>
+                <p className="mt-4 text-lg leading-relaxed">
+                {AbtTrustData?.Velammal_Educational_Trust[1]}
+            </p>
             </motion.div>
+            <div className="mt-10 grid md:grid-cols-2 gap-8 items-center ">
+              {/* Image Section */}
+              <motion.div
+                whileHover={{  }}
+                className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
+              >
+                <img
+                  className="w-64 h-max object-cover transition-transform duration-500 "
+                  src={UrlParser(AbtTrustData?.velammal?.image_path)}
+                  alt="Velammal Trust Banner"
+                />
+              </motion.div>
 
-            {/* Text Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-left text-text dark:text-drkt"
-            >
-              <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
-                Strength of the Trust
-              </h2>
-              <p className="text-lg leading-relaxed">
-              {AbtTrustData?.velammal?.content}
-              </p>
-            </motion.div>
+              {/* Text Section */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-left text-text dark:text-drkt"
+              >
+                <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+                  Strength of the Trust
+                </h2>
+                <p className="text-lg leading-relaxed">
+                {AbtTrustData?.velammal?.content}
+                </p>
+              </motion.div>
+            </div>
+
+
           </div>
+          {/* Section 3 - Management */}
+          <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-accn dark:text-drkt mb-6">The Management</h2>
+            </div>
+            <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
+              {/* {managementTeam.map((person, index) => ( */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                            text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                >
+                  <img
+                    src={UrlParser(AbtTrustData?.image_path[0])}
+                    alt="Shri. M.V. Muthuramalingam"
+                    className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
+                  />
 
+                  <div>
+                    <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[0]}</h5>
+                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[0]}</h6>
+                    <p className="mt-2">Velammal Educational Trust</p>
+                  </div>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                            text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                >
+                  <img
+                    src={UrlParser(AbtTrustData?.image_path[1])}
+                    alt="Shri. M.V. VelMurugan"
+                    className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
+                  />
 
+                  <div>
+                    <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[1]}</h5>
+                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[1]}</h6>
+                    <p className="mt-2">Velammal Educational Trust</p>
+                  </div>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
+                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                            text-text dark:text-drkt p-6 rounded-lg shadow-md 
+                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                >
+                  <img
+                    src={UrlParser(AbtTrustData?.image_path[2])}
+                    alt="Shri. M.V. VelMurugan"
+                    className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
+                  />
+
+                  <div>
+                    <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[2]}</h5>
+                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[2]}</h6>
+                    <p className="mt-2">Velammal Educational Trust</p>
+                  </div>
+                </motion.div>
+              {/* ))} */}
+            </div>
+          </div>
         </div>
-        {/* Section 3 - Management */}
-        <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-accn dark:text-drkt mb-6">The Management</h2>
+      ) : (
+          <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+            <LoadComp txt={""} />
           </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
-            {/* {managementTeam.map((person, index) => ( */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
-                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                          hover:shadow-xl transition-shadow duration-300 md:flex"
-              >
-                <img
-                  src={UrlParser(AbtTrustData?.image_path[0])}
-                  alt="Shri. M.V. Muthuramalingam"
-                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
-                />
+      )}
 
-                <div>
-                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[0]}</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[0]}</h6>
-                  <p className="mt-2">Velammal Educational Trust</p>
-                </div>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
-                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                          hover:shadow-xl transition-shadow duration-300 md:flex"
-              >
-                <img
-                  src={UrlParser(AbtTrustData?.image_path[1])}
-                  alt="Shri. M.V. VelMurugan"
-                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
-                />
-
-                <div>
-                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[1]}</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[1]}</h6>
-                  <p className="mt-2">Velammal Educational Trust</p>
-                </div>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
-                          dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                          text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                          hover:shadow-xl transition-shadow duration-300 md:flex"
-              >
-                <img
-                  src={UrlParser(AbtTrustData?.image_path[2])}
-                  alt="Shri. M.V. VelMurugan"
-                  className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
-                />
-
-                <div>
-                  <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[2]}</h5>
-                  <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[2]}</h6>
-                  <p className="mt-2">Velammal Educational Trust</p>
-                </div>
-              </motion.div>
-            {/* ))} */}
-          </div>
-        </div>
-      </div>
     </>
   );
 };

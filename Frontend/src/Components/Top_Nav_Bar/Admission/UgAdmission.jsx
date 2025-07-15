@@ -128,7 +128,7 @@ if (!isOnline) {
             </div>
             <div className="flex justify-center mt-4">
               <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-              <a href={UrlParser("/static/pdfs/admission/B.E_B.TECH-25-26.pdf")} className="dark:text-drka" target="_blank">
+              <a href={UrlParser(ugData?.link)} className="dark:text-drka" target="_blank">
                 <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
               </a>
             </div>

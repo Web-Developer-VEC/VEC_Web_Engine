@@ -7,37 +7,43 @@ import "../../Second_Nav_Bar/Accredation/nirf.css"
 
 const Acadamiccal = ({ toggle, theme }) => {
 
-  const yearRanges = [
-    [2025, 2026],
-    [2024, 2025],
-    [2023, 2024],
-    [2022, 2023],
-    [2021, 2022],
-    [2020, 2021],
-  ];
-
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [academicCal, setAcademicData] = useState(null);
 
-      useEffect(() => {
-        const handleOnline = () => setIsOnline(true);
-        const handleOffline = () => setIsOnline(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responce = await axios.get('/api/academic-calender');
+        const data = responce.data;
+        setAcademicData(data)
+        
+      } catch (error) {
+        console.error("Error fetching Calender Data",error);
+      }
+    }
+    fetchData();
+  })
 
-        window.addEventListener("online", handleOnline);
-        window.addEventListener("offline", handleOffline);
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
 
-        return () => {
-            window.removeEventListener("online", handleOnline);
-            window.removeEventListener("offline", handleOffline);
-        };
-    }, []);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
-    if (!isOnline) {
-        return (
-          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-            <LoadComp txt={"You are offline"} />
-          </div>
-        );
-    }
+    return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  if (!isOnline) {
+      return (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+          );
+      }
 
   return (
     <>
@@ -54,19 +60,53 @@ const Acadamiccal = ({ toggle, theme }) => {
         </h2>
 
         <div className="max-w-6xl mx-auto px-4 py-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {yearRanges.map(([startYear, endYear]) => (
-            <div key={startYear} className="bg-prim dark:bg-drkb border p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-brwn dark:text-drkt mb-4 inline-block pb-1">
-                Academic Year {startYear}-{endYear}
-              </h3>
-              <div className="flex flex-col items-center space-y-2 text-blue-600">
-                <a href={`/calendar/${startYear}-${endYear}/odd`} className="hover:text-blue-800 dark:text-drka">Odd Sem</a>
-                <a href={`/calendar/${startYear}-${endYear}/even`} className="hover:text-blue-800 dark:text-drka">Even Sem</a>
-              </div>
-            </div>
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            {academicCal?.year?.map((year, i) => {
+              // extract a simplified folder name from "Academic Year 2025-2026"
+              const folderName = year.replace("Academic Year ", "").replace(/\s/g, "");
+
+              // find odd/even paths for this year
+              const oddPath = academicCal.pdf_path.find((path) =>
+                path.includes(folderName) && path.includes("odd")
+              );
+              const evenPath = academicCal.pdf_path.find((path) =>
+                path.includes(folderName) && path.includes("even")
+              );
+
+              return (
+                <div
+                  key={i}
+                  className="bg-prim dark:bg-drkb border p-6 rounded-lg shadow hover:shadow-lg transition"
+                >
+                  <h3 className="text-xl font-bold text-brwn dark:text-drkt mb-4 inline-block pb-1">
+                    {year}
+                  </h3>
+                  <div className="flex flex-col items-center space-y-2 text-blue-600">
+                    {oddPath && (
+                      <a
+                        href={`/${oddPath}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-800 dark:text-drka"
+                      >
+                        Odd Sem
+                      </a>
+                    )}
+                    {evenPath && (
+                      <a
+                        href={`/${evenPath}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-800 dark:text-drka"
+                      >
+                        Even Sem
+                      </a>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
       </div>
       </div>
     </>
