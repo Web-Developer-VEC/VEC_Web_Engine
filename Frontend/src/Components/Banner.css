@@ -53,10 +53,10 @@
   margin: 0;
   text-transform: uppercase;
   color: #ffffff;
-  background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700);
-  -webkit-text-stroke: 1px #ffffff;
+  /* background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700); */
+  /* -webkit-text-stroke: 1px #ffffff;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
   /* animation: glow 2s infinite alternate; */
 }
 
@@ -73,7 +73,9 @@
   .banner-underline {
     width: 150px;
     height: 4px;
-      background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700);
+      /* background: linear-gradient(to right, #4b0000, #8b0000, #c19a6b, #ffd700);
+       */
+    background: #ffffff;
     margin: 20px 0;
     transform-origin: left;
   }

@@ -11,7 +11,6 @@ router.get('/:deptId/syllabus', getSyllabus);
 router.get('/:deptId/infrastructure', getInfrastructure);
 router.get('/:deptId/activities', getDeptActivities);
 router.get('/:deptId/studentachievments', getStuActivities);
-router.get('/:deptId/supportingstaff', getSupportStaff);
 router.get('/:deptId/mous', getMou);
 router.get('/:deptId/research/:year', getRDyear);
 router.get('/:deptId/research', getRD);

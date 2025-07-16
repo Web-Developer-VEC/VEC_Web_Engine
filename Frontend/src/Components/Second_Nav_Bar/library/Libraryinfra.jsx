@@ -3,8 +3,6 @@ import {motion} from "framer-motion";
 import {Tilt} from "react-tilt";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import {useState, useEffect} from "react";
-import styles from '../../Top_Nav_Bar/Academics/sections/Faculties.module.css';
-import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LIBMemb from "./LIBMemb"; // Adjust path if needed
 import LIBFacl from "./LIBFacl";

@@ -171,7 +171,7 @@ const DepartmentPage = ({ theme, toggle }) => {
       {/* Header */}
       <div className={styles.header}>
         <Toggle attr="absolute bottom-0 float-right right-24 size-12" toggle={toggle} theme={theme} />
-        <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp ` || college} alt="Department Header" className={styles.fullWidthImage} />
+        <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>

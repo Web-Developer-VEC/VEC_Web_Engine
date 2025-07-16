@@ -2,10 +2,29 @@ import Banner from '../../Banner'
 import './Programmes.css'
 import React, { useEffect, useState } from 'react'
 import LoadComp from "../../LoadComp";
+import axios from "axios";
 
 const Programmes = ({toggle, theme}) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [programmes, setProgrammes] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/programmes_list');
+
+                const data = responce.data;
+
+                console.log("Ajith",data);
+                
+            } catch (error) {
+                console.error("Error fetching programmes data",error);
+                
+            }
+        }
+        fetchData();
+    })
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);

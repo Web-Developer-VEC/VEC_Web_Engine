@@ -25,7 +25,7 @@ const IQAC = ({ toggle , theme }) => {
         "Coordinator": <IqaCor/>,
         "Members": <IqaMem/>,
         "Minutes of Meetings": <IqaMet/>,
-        "Academic and Administrative Audit": <IqaAud/>, //IqaAud
+        "Academic and Administrative Audit": <IqaAud/>,
         "Gallery": <IqaGal/>,
         "Strategic Development Plan": <IqaDev/>,
         "Best Practices": <IqaPra/>,
@@ -69,15 +69,6 @@ const IQAC = ({ toggle , theme }) => {
             year: name,
             path: UrlParser(iqacData?.policy.pdfpath[index]),
         })) || [];
-
-    // Update members array
-    // const membersArray =
-    //     iqacData?.members?.faculty?.map((member) => ({
-    //         name: member.name,
-    //         image: UrlParser(member.imagepath),
-    //         designation: member.designation,
-    //         keyRole: member.role,
-    //     })) || [];
 
     // Create coordinator object
     const coordinator = iqacData?.members?.coordinator ? {
@@ -193,7 +184,7 @@ const IQAC = ({ toggle , theme }) => {
     };
 
     // Render Objectives content
-    const renderObjectivesContent = () => {
+    const  renderObjectivesContent = () => {
         return (
             <div className="objectives-container">
                 <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
@@ -368,37 +359,47 @@ const IQAC = ({ toggle , theme }) => {
 
     function IqaAud() {
         return (
-            // <div className="flex flex-wrap justify-center  text-xl my-4 gap-8">
-            //     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Academic and Administrative Audit</h2>
-            //     {academicAdminAuditArray.map((action, index) => (
-            //         <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
-            //              className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
-            //              // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
-            //         >
-            //             <FaLink className={"inline size-5 mr-1 mb-1"} />{action.year}
-            //         </a>
-            //     ))}
-            // </div>
-            <div className="flex justify-center p-4 w-full">
-                <div className="overflow-x-auto border rounded-lg shadow-md">
-                    <table className=" w-[1000px] department-table">
-                        <thead className="bg-gray-100">
-                        <tr>
-                            <th className="text-left px-4 py-2 text-text">Departments</th>
-                            <th className="text-left px-4 py-2 text-text">Reports</th>
-                            <th className="text-left px-4 py-2 text-text">Minutes</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            <>
+                <h2 className={"basis-full text-brwn dark:text-drkt text-center text-[24px] mt-[15px]"}>Acedemic and Administrative Audit</h2>
+                <div className="flex justify-center p-4 w-full">
+                    <div className="overflow-x-auto border rounded-lg shadow-md">
+                        <table className=" w-[1000px] department-table">
+                            <thead className="bg-gray-100">
                             <tr>
-                                <td>AI & DS</td>
-                                <td>AI & DS</td>
-                                <td>AI & DS</td>
+                                <th className="text-left px-4 py-2 text-text w-2">S.No</th>
+                                <th className="text-left px-4 py-2 text-text">Departments</th>
+                                <th className="text-left px-4 py-2 text-text">Reports</th>
+                                <th className="text-left px-4 py-2 text-text">Minutes</th>
                             </tr>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {iqacData?.academicAdminAudit?.map((dept,i) => (
+                                    <tr key={i}>
+                                        <td className="text-center w-2">{i+1}</td>
+                                        <td>{dept.department}</td>
+                                        <td>
+                                            <ul classname="reportlist">
+                                                {dept.reports.map((rep,i) => (
+                                                <li ><a href={`${rep.pdfs_path ? UrlParser(rep.pdfs_path) : '#'}`} target={`${rep.pdfs_path ? '_blank' : ''}`}>{rep.name}</a></li> 
+                                                ))}
+
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                {dept.reports.map((min,i) => (
+                                                <li><a href={`${min.pdfs_path ? UrlParser(min.pdfs_path) : '#'}`} target={`${min.pdfs_path ? '_blank' : ''}`}>{min.name}</a></li> 
+                                                ))}
+
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
