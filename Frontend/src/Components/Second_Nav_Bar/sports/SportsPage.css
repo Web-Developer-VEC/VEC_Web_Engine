@@ -87,10 +87,6 @@ body {
     box-sizing: border-box;
   }
   
-  h2, p {
-    margin: 0;
-  }
-  
   /* Adding Subtle Animations */
   @keyframes fadeInUp {
     from {

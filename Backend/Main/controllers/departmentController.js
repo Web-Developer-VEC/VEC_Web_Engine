@@ -142,6 +142,7 @@ async function getDeptActivities(req, res) {
         return res.status(200).json({
             department_name: departmentData.department_name,
             activities: sortedActivities,
+            dept_id: departmentData.dept_id
         });
 
     } catch (error) {
@@ -167,31 +168,6 @@ async function getStuActivities(req, res) {
     } catch (error) {
         console.error("Error fetching student activities:", error);
         res.status(500).json({ error: "Error fetching student activities" });
-    }
-}
-
-// Fetch Support Staff Details  (innu varala)
-async function getSupportStaff(req, res) {
-    const deptId = req.params.deptId;
-    const db = getDb();
-    const collection = db.collection('support_staffs');
-
-    try {
-        const result = await collection.findOne({
-            "supporting_staff.Unique_id": { $regex: `^VEC-${deptId}-` }
-        });
-
-        if (result && result.supporting_staff.length > 0) {
-            const filteredStaff = result.supporting_staff.filter(staff =>
-                staff.Unique_id.startsWith(`VEC-${deptId}-`)
-            );
-            return res.status(200).json(filteredStaff);
-        } else {
-            res.status(404).json({ message: 'No support staff found for the given department ID.' });
-        }
-    } catch (error) {
-        console.error("❌ Error fetching support staff details:", error);
-        res.status(500).json({ error: "Error fetching support staff details" });
     }
 }
 
@@ -314,7 +290,6 @@ module.exports = {
     getSyllabus,
     getDeptActivities,
     getStuActivities,
-    getSupportStaff,
     getMou,
     getRDyear,
     getRD,

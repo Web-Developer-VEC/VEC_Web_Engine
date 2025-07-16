@@ -28,7 +28,6 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.3); /* Darker background */
-  backdrop-filter: blur(10px); /* Stronger blur effect */
   border-radius: 10px; /* Optional: smooth edges */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }

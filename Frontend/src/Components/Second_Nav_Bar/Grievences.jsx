@@ -7,28 +7,54 @@ const GrievanceForm = ({ theme, toggle }) => {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    useEffect(() => {
-        const handleOnline = () => setIsOnline(true);
-        const handleOffline = () => setIsOnline(false);
+  useEffect(() => {
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
 
-        window.addEventListener("online", handleOnline);
-        window.addEventListener("offline", handleOffline);
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
 
-        return () => {
-            window.removeEventListener("online", handleOnline);
-            window.removeEventListener("offline", handleOffline);
-        };
-    }, []);
+      return () => {
+          window.removeEventListener("online", handleOnline);
+          window.removeEventListener("offline", handleOffline);
+      };
+  }, []);
   
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
   const [message, setMessage] = useState("");
   const [captcha, setCaptcha] = useState(generateCaptcha());
   const [userCaptcha, setUserCaptcha] = useState("");
+  const [contact_number, setContactNumber] = useState("");
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [query_about, setQueryAbout] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function generateCaptcha() {
     return Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
+  }
+
+  // Function to validate phone number
+  const phoenCheck = (value) => {
+    const phonePattern = /^[0-9]{10}$/; 
+    if (!phonePattern.test(value)) {
+      setContactNumber(value);
+      alert("Please enter a valid phone number.");
+      return false;
+    }
+    return true;
+  }
+
+  // Function to validate email
+  const emailCheck = (value) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    if (!emailPattern.test(value)) {
+      setEmail(value);
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    return true;
   }
 
   const handleSubmit = async (e) => {
@@ -40,6 +66,15 @@ const GrievanceForm = ({ theme, toggle }) => {
       return;
     }
 
+    // validate phone number
+    if (contact_number && !phoenCheck(contact_number)) {
+      return;
+    }
+    // validate email
+    if (email && !emailCheck(email)) {
+      return;
+    }
+
     try {
       const response = await fetch("/api/get_grevience", {
         method: "POST",
@@ -47,7 +82,7 @@ const GrievanceForm = ({ theme, toggle }) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ email, subject, content }),
+        body: JSON.stringify({ name , email , contact_number , query_about , category , content , original_captcha: captcha, entered_captcha: userCaptcha }),
       });
 
       const data = await response.json();
@@ -66,8 +101,12 @@ const GrievanceForm = ({ theme, toggle }) => {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
     setContent('');
-    setSubject('');
     setEmail('');
+    setUserCaptcha('');
+    setName('');
+    setContactNumber('');
+    setQueryAbout('');
+    setCategory('');
     setUserCaptcha('');
     setCaptcha(generateCaptcha());
   };
@@ -104,11 +143,15 @@ const GrievanceForm = ({ theme, toggle }) => {
                 type="text"
                 placeholder="Name"
                 className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
+                onChange={(e) => setName(e.target.value)}
+                required
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Contact Number"
                 className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
+                onChange={(e) => setContactNumber(e.target.value)}
+                required
               />
             </div>
             <input
@@ -120,7 +163,7 @@ const GrievanceForm = ({ theme, toggle }) => {
               required
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full">
+              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full" onChange={(e) => setQueryAbout(e.target.value)} required>
                 <option>-- Query about --</option>
                 <option>Admission</option>
                 <option>Hostel</option>
@@ -128,7 +171,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                 <option>Controller of examination</option>
                 <option>Others</option>
               </select>
-              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full">
+              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full" onChange={(e) => setCategory(e.target.value)} required>
                 <option>-- Select Category --</option>
                 <option>Alumni</option>
                 <option>Student</option>
