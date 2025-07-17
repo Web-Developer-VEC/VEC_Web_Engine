@@ -61,7 +61,7 @@ const NewTrust = ({theme, toggle}) => {
         subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
       />
       {AbtTrustData ? (
-        <div className="bg-prim dark:bg-drkp min-h-screen px-4 pt-0 md:p-8">
+        <div className="bg-prim dark:bg-drkp min-h-screen px-2 pt-0 md:p-8">
 
           <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
           <motion.div
@@ -73,10 +73,10 @@ const NewTrust = ({theme, toggle}) => {
                 <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Velammal Educational Trust (VET)
                 </h2>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed text-justify">
                 {AbtTrustData?.Velammal_Educational_Trust[0]}
                 </p>
-                <p className="mt-4 text-lg leading-relaxed">
+                <p className="mt-4 text-lg leading-relaxed text-justify">
                 {AbtTrustData?.Velammal_Educational_Trust[1]}
             </p>
             </motion.div>
@@ -103,7 +103,7 @@ const NewTrust = ({theme, toggle}) => {
                 <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                   Strength of the Trust
                 </h2>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed text-justify">
                 {AbtTrustData?.velammal?.content}
                 </p>
               </motion.div>
@@ -112,7 +112,7 @@ const NewTrust = ({theme, toggle}) => {
 
           </div>
           {/* Section 3 - Management */}
-          <div className="mt-16 py-12 px-6 rounded-t-3xl shadow-lg">
+          <div className="mt-16 py-4 px-6 rounded-t-3xl shadow-lg">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-accn dark:text-drkt mb-6">The Management</h2>
             </div>
@@ -123,7 +123,7 @@ const NewTrust = ({theme, toggle}) => {
                   className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
                             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                             text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                            hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
                     src={UrlParser(AbtTrustData?.image_path[0])}
@@ -131,9 +131,9 @@ const NewTrust = ({theme, toggle}) => {
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
 
-                  <div>
+                  <div className='text-center md:text-left mt-2 md:mt-0'>
                     <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[0]}</h5>
-                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[0]}</h6>
+                    <h6 className="text-sm text-brwn dark:text-drka">{AbtTrustData?.The_Management?.designation[0]}</h6>
                     <p className="mt-2">Velammal Educational Trust</p>
                   </div>
                 </motion.div>
@@ -142,7 +142,7 @@ const NewTrust = ({theme, toggle}) => {
                   className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
                             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                             text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                            hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
                     src={UrlParser(AbtTrustData?.image_path[1])}
@@ -150,9 +150,9 @@ const NewTrust = ({theme, toggle}) => {
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
 
-                  <div>
+                  <div className='text-center md:text-left mt-2 md:mt-0'>
                     <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[1]}</h5>
-                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[1]}</h6>
+                    <h6 className="text-sm text-brwn dark:text-drka">{AbtTrustData?.The_Management?.designation[1]}</h6>
                     <p className="mt-2">Velammal Educational Trust</p>
                   </div>
                 </motion.div>
@@ -161,7 +161,7 @@ const NewTrust = ({theme, toggle}) => {
                   className="flex items-center bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
                             dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                             text-text dark:text-drkt p-6 rounded-lg shadow-md 
-                            hover:shadow-xl transition-shadow duration-300 md:flex"
+                            hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
                     src={UrlParser(AbtTrustData?.image_path[2])}
@@ -169,9 +169,9 @@ const NewTrust = ({theme, toggle}) => {
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
 
-                  <div>
+                  <div className='text-center md:text-left mt-2 md:mt-0'>
                     <h5 className="text-sm font-bold">{AbtTrustData?.The_Management?.name[2]}</h5>
-                    <h6 className="text-sm text-accn dark:text-drka">{AbtTrustData?.The_Management?.designation[2]}</h6>
+                    <h6 className="text-sm text-brwn dark:text-drka">{AbtTrustData?.The_Management?.designation[2]}</h6>
                     <p className="mt-2">Velammal Educational Trust</p>
                   </div>
                 </motion.div>

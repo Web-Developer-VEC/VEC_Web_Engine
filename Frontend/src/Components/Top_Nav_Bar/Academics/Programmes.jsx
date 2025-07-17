@@ -15,12 +15,9 @@ const Programmes = ({toggle, theme}) => {
                 const responce = await axios.get('/api/programmes_list');
 
                 const data = responce.data;
-
-                console.log("Ajith",data);
                 
             } catch (error) {
                 console.error("Error fetching programmes data",error);
-                
             }
         }
         fetchData();

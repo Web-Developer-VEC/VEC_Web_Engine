@@ -89,7 +89,12 @@ const GlobalStyle = createGlobalStyle`
         cursor: url("/cursor.svg") 10 0, auto; /* Custom cursor with defined hotspot */
         overflow: auto;
         -ms-overflow-style: none;
-        scrollbar-width: none; 
+        scrollbar-width: none;
+        overflow-x: hidden; 
+    }
+
+    html {
+        overflow-x: hidden;
     }
 
     body::-webkit-scrollbar {

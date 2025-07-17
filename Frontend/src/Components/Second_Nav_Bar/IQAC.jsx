@@ -431,8 +431,7 @@ const IQAC = ({ toggle , theme }) => {
 
                 <embed
                     className="embed"
-                    src={UrlParser(iqacData?.institutional_distinctiveness?.path) + "#toolbar=0"
-                    }
+                    src={UrlParser(iqacData?.institutional_distinctiveness?.path) + "#toolbar=0"}
                     type="application/pdf"
                     width="100%"
                     height="600px"

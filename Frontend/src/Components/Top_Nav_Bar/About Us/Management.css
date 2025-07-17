@@ -45,7 +45,6 @@
 
 /* Image container */
 .FCP-image-container {
-    width: 20%; /* Adjusted size for larger screens */
     padding: 8px;
     display: flex;
     align-items: center;
@@ -83,9 +82,8 @@ h2 {
     font-size: 20px; /* Adjusted h2 size */
 }
 
-.founder {
-    width: 20px;
-    height: 20px;
+.FCP-image-container1 img{
+    height: 250px;
 }
 
 /* Responsive styles */
@@ -186,8 +184,8 @@ h2 {
     }
 
     .FCP-image-container img {
-        width: 50%; /* Ensure images fit their containers */
-        max-height: 180px; /* Further reduce image height for small devices */
+        width: 100%; /* Ensure images fit their containers */
+        height: 100%; /* Further reduce image height for small devices */
     }
 }
 

@@ -47,7 +47,7 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
         <div className="yrc-members-grid">
             {armyStudentData?.map((member, index) => (
             <div className="student-card dark:bg-text" key={index}>
-              <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} />
+              {/* <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} /> */}
               <h5 className="text-text dark:text-drkt font-sm mt-4">{member.name}</h5>
               <p className="text-brwn dark:text-drka">{member.regiment_no}</p>
               <p className="text-brwn dark:text-drka">{member.year}</p>
