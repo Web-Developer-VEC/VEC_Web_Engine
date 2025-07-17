@@ -80,6 +80,7 @@ import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
+import ScrollUp from "./Components/ScrollUp.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -256,6 +257,7 @@ const App = () => {
                             </Routes>
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
+                        <ScrollUp/>
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
                     </>
                 </AppContainer>
