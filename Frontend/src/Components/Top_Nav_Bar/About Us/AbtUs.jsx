@@ -134,7 +134,7 @@ const AbtUs = ({ theme, toggle }) => {
                     </div>
 
                     {/* {lis.map((itm, index) => ( */}
-                        <div className="flex gap-8 my-14 
+                        <div className="flex gap-8 
                             p-10 transition-all duration-300 ease-in-out">
                             
                             <div className="flex flex-col justify-center px-2 lg:px-12">
@@ -146,23 +146,23 @@ const AbtUs = ({ theme, toggle }) => {
                         </div>
                     {/* ))} */}
 
-                    <div className='m-8 p-6'>
-                        <ul className='pdf-links flex flex-wrap justify-center gap-8' >
-                            <li className='text-lg flex items-center gap-'>
+                    <div className='m-2 p-2'>
+                        <ul className='pdf-links grid grid-cols-2 justify-items-start items-center text-left w-full md:grid-cols-1 md:flex flex-wrap justify-center gap-8' >
+                            <li className='text-am md:text-lg flex items-center gap-'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                             </li>
-                            <li className='text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-lg flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
+                                <a href={UrlParser(AbtUsData?.links[1])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                             </li>
-                            <li className='text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-lg flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
+                                <a href={UrlParser(AbtUsData?.links[2])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                             </li>
-                            <li className='text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-lg flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
+                                <a href={UrlParser(AbtUsData?.links[3])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                             </li>
                         </ul>
                     </div>

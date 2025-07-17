@@ -57,11 +57,9 @@ const LandingPage = ({theme, load, toggle}) => {
           </div>
         );
     }
-
-    console.log("Dept data",landingData?.department_banner);
     
     return (
-        <div className="landing-page -mt-[5vmax]">
+        <div className="landing-page -mt-[5vmax] overflow-x-hidden">
             <ImgSld 
                 load={load} toggle={toggle} theme={theme} 
                 lst={landingData?.notifications} 

@@ -129,7 +129,7 @@ const CardPage = ({theme, toggle}) => {
         </div>
       ) : (
         <div className="admin-card-page">
-            <div className="ao-container flex flex-column gap-4 ">
+            <div className="ao-container flex flex-col md:flex-row gap-4 ">
             <AdminCard
               key={adminData[0]?.id}
               image={UrlParser(adminData[0]?.photo_path)}

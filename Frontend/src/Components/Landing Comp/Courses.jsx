@@ -8,19 +8,29 @@ const CourseCarousel = ({ courses }) => {
 
   const navigate = useNavigate();
 
-  const pos_hdl = (pvl) => {
-    if (pvl !== 0 && pvl <= courses?.length) {
-      const videoElement = document.getElementById(`Cor${pvl}`);
-      if (videoElement && videoElement.paused) {
-        // Ensure video is muted before playing
-        videoElement.muted = true;
-        videoElement.play().catch((err) => {
-          console.error("Error playing video:", err);
-        });
+const pos_hdl = (pvl) => {
+  if (pvl !== 0 && pvl <= courses?.length) {
+    // pause all videos first
+    courses.forEach((_, idx) => {
+      const vid = document.getElementById(`Cor${idx + 1}`);
+      if (vid && !vid.paused) {
+        vid.pause();
+        vid.currentTime = 0; // optional: reset to start
       }
-      setPos(pvl);
+    });
+
+    // then play the current one
+    const videoElement = document.getElementById(`Cor${pvl}`);
+    if (videoElement && videoElement.paused) {
+      videoElement.muted = true;
+      videoElement.play().catch((err) => {
+        console.error("Error playing video:", err);
+      });
     }
-  };
+    setPos(pvl);
+  }
+};
+
 
   const handleNext = useCallback(() => {
     if (pos !== courses?.length) pos_hdl(pos + 1);
@@ -36,14 +46,14 @@ const CourseCarousel = ({ courses }) => {
           });
         }
         handleNext();
-      }, 3000);
+      }, 5000);
 
       return () => clearInterval(interval);
     }
   }, [handleNext, pause, pos]);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="grid w-full relative h-fit z-10 lg:py-8">
         <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 h-[300px] items-center
           flex justify-center mb-1"
@@ -73,13 +83,11 @@ const CourseCarousel = ({ courses }) => {
 
               <div className={`relative text-center w-[30vmax] h-[17.5vmax] bg-cover bg-center transition-all duration-[2s]
                 ${(pos === i + 1) ? 'focs' : ''} rounded-[20px] overflow-y-hidden group`} onClick={() => {pos_hdl(i + 1); navigate(cur.redirect_url)}}>
-                <div className="absolute bg-black z-[-10] w-[30vmax] h-[17.5vmax] [transform:rotateY(180deg),translateZ(-10px)]">
-                </div>
+                <div className="absolute bg-black z-[-10] w-[30vmax] h-[17.5vmax] [transform:rotateY(180deg),translateZ(-10px)]"></div>
 
                 <video className="absolute w-full h-fit" id={`Cor${i + 1}`} muted playsInline loop>
-                  <source src={cur.banner_image} />
+                  <source src={`/Courses/${cur.banner_image}`} />
                 </video>
-                {/* <img src={cur.banner_image} alt="" /> */}
 
                 <div className={`${(pos === i + 1) ? "hidden" : "block"} z-[50] w-full h-full bg-[#0000001a] shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-[5px]`}></div>
 

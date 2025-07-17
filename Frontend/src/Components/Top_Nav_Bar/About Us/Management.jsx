@@ -86,7 +86,7 @@ function Management({ theme, toggle }) {
             <h2 className="FCP-section-title text-brwn dark:text-prim">CEO MESSAGE</h2>
 
             <div className="FCP-content-container">
-              <div className="FCP-image-container">
+              <div className="FCP-image-container1">
                 <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
               </div>
 

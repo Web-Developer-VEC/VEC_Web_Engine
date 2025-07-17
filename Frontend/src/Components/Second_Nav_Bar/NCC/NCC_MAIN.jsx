@@ -7,6 +7,7 @@ import NCC_NAVY from "./NCC_NAVY";
 import Army from "../../Assets/NccArmy.png";
 import LoadComp from "../../LoadComp"
 import { useEffect } from "react";
+import { ArrowBigLeft } from "lucide-react";
 
 const NCCMAIN = ({ toggle, theme }) => {
   const [activePage, setActivePage] = useState("buttons");
@@ -100,10 +101,10 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-4  px-3 py-2 lg:left-40 bg-slate-500   text-black rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] md:top-auto bottom-auto md:bottom-4 right-4 top-[48%]  px-3 py-2 lg:left-4 bg-slate-500 text-black rounded-lg hover:bg-secd dark:hover:bg-drks flex w-fit"
               onClick={() => setActivePage("buttons")}
             >
-              Back ➡
+              <ArrowBigLeft/> Back
             </button>
             <NCC_ARMY />
           </motion.div>
@@ -119,10 +120,10 @@ const NCCMAIN = ({ toggle, theme }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              className="fixed z-[500] top-auto bottom-5 lg:left-40  bg-slate-500 px-3 py-2 rounded-lg hover:bg-secd dark:hover:bg-drks"
+              className="fixed z-[500] md:top-auto bottom-auto md:bottom-4 right-4 top-[48%]  px-3 py-2 lg:left-4 bg-slate-500 text-black rounded-lg hover:bg-secd dark:hover:bg-drks flex w-fit"
               onClick={() => setActivePage("buttons")}
             >
-               Back ➡
+              <ArrowBigLeft/> Back
             </button>
             <NCC_NAVY />
           </motion.div>
