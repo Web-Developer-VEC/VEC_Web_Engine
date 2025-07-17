@@ -78,7 +78,7 @@ const LandingPage = ({theme, load, toggle}) => {
                 <div className='bg-prim dark:bg-drkp'>
                     <Samplereact courses={landingData?.department_banner}/>
                     <Contact/>
-                    <Chat/>
+                    {/* <Chat/> */}
                     <Footer theme={theme} data={landingData?.landing_page_details}/>
                 </div>
             </div>

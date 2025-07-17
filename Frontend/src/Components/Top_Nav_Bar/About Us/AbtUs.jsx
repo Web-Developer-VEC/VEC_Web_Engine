@@ -3,6 +3,7 @@ import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
 import axios from 'axios';
+import ScrollUp from '../../ScrollUp';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -70,6 +71,7 @@ const AbtUs = ({ theme, toggle }) => {
                 headerText="About VEC"
                 subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
             />
+            <ScrollUp/>
 
             {AbtUsData ? (
                 <>
