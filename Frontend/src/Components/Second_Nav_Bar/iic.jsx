@@ -5,6 +5,11 @@ import "./iic.css"
 import Banner from "../Banner"
 import SideNav from "./SideNav";
 import LoadComp from "../LoadComp";
+import IICMentee from "./IIC/IICMentee";
+import {IICStudent,IICFaculty,IICExpert} from './IIC/IICFaculty'
+import KamalaBar from './IIC/KamalaBar'
+import IICContact from "./IIC/IICContect";
+
 
 function IicHome() {
     return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
@@ -57,8 +62,11 @@ function IicEst() {
             planning for pursuing productivity growth and better operational efficiencies and value for the start-up
             companies.
         </p>
-    </div>z
+    </div>
 </div>
+    <div>
+         <IicEco/>
+    </div>
 
     </div>);
 }
@@ -167,20 +175,25 @@ const Iic = ({toggle, theme}) => {
         "Home": <IicHome/>,
         "Establishment of IIC": <IicEst/>,
         "Council": {
-            "Faculty": <IicHome/>,  //IicFac
-            "Expert Representation": <IicHome/>,    //IicExp
-            "Student Representation": <IicHome/>    //IicExp
+            "Faculty": <IICFaculty/>,  //IicFac
+            "Expert Representation": <IICExpert/>,    //IicExp
+            "Student Representation": <IICStudent/>    //IicExp
         },
-        "Calender": <IicHome/>, //IicCal
-        "Gallery": <IicHome/>,  //IicGal
-        "Events": {
-            "IIC 1.0": <IicHome/>,  //IicFir
-            "IIC 2.0": <IicHome/>,  //IicSec
-            "IIC 3.0": <IicHome/>   //IicThd
+
+        "Event Organized": {
+            "IIC 3.0": <IicFacEvent/>,  //IicFir
+            "IIC 4.0": <IicFacEvent/>,  //IicSec
+            "IIC 5.0": <IicFacEvent/>, //IicThd
+            'IIC 6.0': <IicFacEvent/>,
+            'IIC 7.0' : < IicFacEvent/>
         },
-        "I & E Ecosystem": <IicEco/>,
-        "Contact": <IicHome/>   //IicCon
-    }
+        "Kapila bar": <KamalaBar/>, 
+        "Mentee":   <IICMentee/>,
+        "Yukti" : <IicFacnir/>,
+        "Certificate":<IicFacCertificate/>,
+        "Policy" : <IicFacPolicy/>,
+        "Contact": <IICContact/> 
+    }   
     const [iic, setIic] = useState(Object.keys(navData)[0])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -520,9 +533,210 @@ const Iic = ({toggle, theme}) => {
         );
     }
 
-    const [selected , setSelected] = useState(null);
+    
 
-    function IicFac() {
+function IicFacnir() {
+  return (
+    <>
+      {iicData ? (
+        <div className="nirf-content mt-4">
+        
+
+          <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
+            <div>
+              {renderNIRContent()}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp />
+        </div>
+      )}
+    </>
+  );
+}
+
+
+
+function IicFacCertificate() {
+  return (
+    <>
+      {iicData ? (
+        <div className="nirf-content mt-4">
+          <h1 className="text-accn text-4xl mb-4">Faculty - Certificate</h1>
+
+          <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
+            <div className="nirf-year-actions faculty-icc">
+              {certificateArray.map((action, index) => {
+                const isActive =
+                  selectedAction &&
+                  selectedAction.category === "Certificate" &&
+                  selectedAction.year === action.year;
+
+                return (
+                  <div
+                    key={index}
+                    className={`text-[10px] nirf-action-button hover:bg-accn hover:text-prim dark:hover:bg-drka
+                      ${
+                        isActive
+                          ? "bg-[#800000] text-white"
+                          : "bg-secd dark:bg-drks"
+                      }`}
+                    onClick={() => openPdf("Certificate", action.year)}
+                  >
+                    {action.year}
+                  </div>
+                );
+              })}
+            </div>
+
+            {selectedAction && selectedAction.category === "Certificate" && (
+              <div className="nirf-pdf-container">
+                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                <embed
+                  className="embed"
+                  src={
+                    certificateArray.find(
+                      (item) => item.year === selectedAction.year
+                    )?.path
+                  }
+                  type="application/pdf"
+                  width="100%"
+                  height="600px"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp />
+        </div>
+      )}
+    </>
+  );
+}
+
+function IicFacEvent() {
+  return (
+    <>
+      {iicData ? (
+        <div className="nirf-content">
+       
+
+          <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
+            <div className="nirf-year-actions faculty-icc">
+              {eventsOrganizedArray.map((action, index) => (
+                <div
+                  key={index}
+                  className={`nirf-action-button cursor-pointer px-3 py-3 rounded-xl text-[16px]
+                    ${
+                      selectedAction?.year === action.year &&
+                      selectedAction?.category === "Events Organized"
+                        ? "bg-accn text-prim"
+                        : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
+                    }`}
+                  onClick={() =>
+                    setSelectedAction({
+                      category: "Events Organized",
+                      year: action.year,
+                    })
+                  }
+                >
+                  {action.year}
+                </div>
+              ))}
+            </div>
+
+            {selectedAction && (
+              <div className="nirf-pdf-container">
+                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                <embed
+                  className="embed"
+                  src={
+                    eventsOrganizedArray.find(
+                      (item) => item.year === selectedAction.year
+                    )?.path
+                  }
+                  type="application/pdf"
+                  width="100%"
+                  height="600px"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp />
+        </div>
+      )}
+    </>
+  );
+}
+
+
+
+
+function IicFacPolicy() {
+  return (
+    <>
+      {iicData ? (
+        <div className="nirf-content mt-4">
+          <h1 className="text-accn text-4xl mb-4">Faculty - Policy</h1>
+
+          <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
+            <div className="nirf-year-actions faculty-icc">
+              {policyArray.map((action, index) => {
+                const isActive =
+                  selectedAction &&
+                  selectedAction.category === "Policy" &&
+                  selectedAction.year === action.year;
+
+                return (
+                  <div
+                    key={index}
+                    className={`text-[10px] nirf-action-button cursor-pointer 
+                      ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"}
+                    `}
+                    onClick={() => openPdf("Policy", action.year)}
+                  >
+                    {action.year}
+                  </div>
+                );
+              })}
+            </div>
+
+            {selectedAction && selectedAction.category === "Policy" && (
+              <div className="nirf-pdf-container">
+                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                <embed
+                  className="embed"
+                  src={
+                    policyArray.find(
+                      (item) => item.year === selectedAction.year
+                    )?.path
+                  }
+                  type="application/pdf"
+                  width="100%"
+                  height="600px"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp />
+        </div>
+      )}
+    </>
+  );
+}
+
+
+function IicFac() {
         return (
 
             <>
@@ -549,13 +763,7 @@ const Iic = ({toggle, theme}) => {
                             renderNIRContent()
                         ) : (
                             <div className="nirf-year-actions faculty-icc">
-                                {selectedYear === "Certificate" &&
-                                    certificateArray.map((action, index) => (
-                                        <div key={index} className=" text-[10px] nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
-                            dark:hover:bg-drka" onClick={() => openPdf("Certificate", action.year)}>
-                                            {action.year}
-                                        </div>
-                                    ))}
+       
                                 {selectedYear === "Events Organized" &&
                                     eventsOrganizedArray.map((action, index) => (
                                         <div
@@ -566,35 +774,9 @@ const Iic = ({toggle, theme}) => {
                                             {action.year}
                                         </div>
                                     ))}
-                                {selectedYear === "Policy" &&
-                                    policyArray.map((action, index) => (
-                                        <div key={index}
-                                            className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                                            onClick={() => openPdf("Policy", action.year)}>
-                                            {action.year}
-                                        </div>
-                                    ))}
-                                {selectedYear === "Members" && (
-                                    <div className="members-grid">
-                                        {membersArray.map((member, index) => (
-                                            <div key={index} className="members dark:bg-drkp">
-                                                <img src={member.image || "/placeholder.svg"} alt={member.name}
-                                                    className="member-image"/>
-                                                <p className="text-secd dark:text-drks">{member.name}</p>
-                                                <h6>{member.designation}</h6>
-                                                <p>{member.keyRole}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                                {selectedYear === "Other Stuffs" &&
-                                    otherStuffsArray.map((action, index) => (
-                                        <div key={index}
-                                            className="nirf-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"
-                                            onClick={() => openPdf("Other Stuffs", action.year)}>
-                                            {action.year}
-                                        </div>
-                                    ))}
+                            
+                     
+
                             </div>
                         )}
 

@@ -1,0 +1,53 @@
+import React, { useState } from "react";
+
+const pdfData = {
+  "KAPILA SCHEME DOCUMENT": "$$$$$$$$$.pdf",
+  "KAPILA MINUTES": "#########.pdf",
+  "KAPILA STATEMENT OF EXPENDITURE": "@@@@@@@@.pdf",
+};
+
+const KapilaPage = () => {
+  const [activePdf, setActivePdf] = useState(null);
+
+  const handleButtonClick = (pdfKey) => {
+    setActivePdf(pdfKey);
+  };
+
+  return (
+    <div className="p-6 mt-4">
+      {/* Horizontal Button Group */}
+      <div className="flex justify-center  gap-8 mb-6">
+        {Object.keys(pdfData).map((key) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => handleButtonClick(key)}
+            className={`px-6 py-3 font-semibold rounded-xl hover:text-white ${
+              activePdf === key ? "bg-[#800000] text-white" : "bg-[#fdcc03] "
+            } hover:bg-[#a00000] transition-all`}
+          >
+            {key}
+          </button>
+        ))}
+      </div>
+
+      {/* Show PDF on click */}
+      {activePdf && (
+        <div className="border p-4  bg-white shadow-lg">
+          <h3 className="text-xl font-bold mb-4 text-center">
+            {activePdf}
+          </h3>
+          <embed
+            src={pdfData[activePdf]}
+            type="application/pdf"
+            width="100%"
+            height="600px"
+            className="border"
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default KapilaPage;

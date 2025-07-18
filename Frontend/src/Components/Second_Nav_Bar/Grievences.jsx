@@ -133,78 +133,157 @@ const GrievanceForm = ({ theme, toggle }) => {
       </div>
 
       <div className="flex justify-center p-6">
-        <div className="bg-prim dark:bg-drkts p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit">
-          <h2 className="text-[20px] font-bold text-[#800000] dark:text-drkt">Query/Grievances</h2>
-          <p className="text-[16px] text-prim dark:text-drkt">Please fill the form.</p>
+        <div className="w-full bg-prim dark:bg-drkts py-12 px-4">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+            {/* Left side: heading + illustration */}
+            <div className="flex flex-col items-start justify-center space-y-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-brwn dark:text-drkt leading-tight">
+                Have a Query or Grievance?
+              </h2>
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                We value your feedback and concerns. Please fill in your details and our
+                team will reach out to you shortly.
+              </p>
+              {/* <img
+                src="/assets/query-illustration.svg"
+                alt="Query Illustration"
+                className="w-64 md:w-80 opacity-90"
+              /> */}
+            </div>
 
-          <form className="mt-2 space-y-4" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                type="number"
-                placeholder="Contact Number"
-                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
-                onChange={(e) => setContactNumber(e.target.value)}
-                required
-              />
-            </div>
-            <input
-              type="email"
-              placeholder="Email Id"
-              className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full" onChange={(e) => setQueryAbout(e.target.value)} required>
-                <option>-- Query about --</option>
-                <option>Admission</option>
-                <option>Hostel</option>
-                <option>Department</option>
-                <option>Controller of examination</option>
-                <option>Others</option>
-              </select>
-              <select className="p-2 border border-gray-300 dark:bg-gray-300 text-text rounded w-full" onChange={(e) => setCategory(e.target.value)} required>
-                <option>-- Select Category --</option>
-                <option>Alumni</option>
-                <option>Student</option>
-                <option>Parent</option>
-                <option>Industry partner</option>
-                <option>Others</option>
-              </select>
-            </div>
-            <textarea
-              placeholder="Query/Grievences"
-              className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
-              rows="3"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-            ></textarea>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-2 bg-gray-200 dark:bg-gray-300 text-center text-lg font-bold text-[#800000] rounded">
-                {captcha}
+            {/* Right side: the form */}
+            <form
+              onSubmit={handleSubmit}
+              className="bg-prim dark:bg-drkp shadow-xl rounded-3xl px-8 py-10 space-y-6 border-t-8 border-brwn dark:border-drks"
+            >
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
+                  placeholder=""
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
               </div>
-              <input
-                type="text"
-                placeholder="Enter the Captcha"
-                className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
-                value={userCaptcha}
-                onChange={(e) => setUserCaptcha(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="bg-[#800000] text-white p-2 rounded w-full">
-              Submit
-            </button>
-          </form>
+
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Contact Number
+                </label>
+                <input
+                  type="number"
+                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
+                  placeholder=""
+                  onChange={(e) => setContactNumber(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col space-y-1">
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    Query About
+                  </label>
+                  <select
+                    className="
+                      p-3 rounded-lg
+                      border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none
+                      bg-prim dark:bg-drkp
+                      text-text dark:text-prim
+                      appearance-none
+                    "
+                    onChange={(e) => setQueryAbout(e.target.value)}
+                    required
+                  >
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Select Query About</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Admission</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Hostel</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Department</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Controller of Examination</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Others</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col space-y-1">
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    Category
+                  </label>
+                  <select
+                    className="
+                    p-3 rounded-lg
+                    border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none
+                    bg-prim dark:bg-drkp
+                    text-text dark:text-prim
+                    appearance-none
+                    "
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                  >
+                    <option value="" className="bg-prim dark:bg-drkts text-text dark:text-prim">Select category</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Alumni</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Student</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Parent</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Industry Partner</option>
+                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Your Message
+                </label>
+                <textarea
+                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
+                  rows="4"
+                  placeholder="Type your query or grievance..."
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+
+              {/* Captcha */}
+              <div className="grid md:grid-cols-2 gap-6 items-center">
+                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">
+                  {captcha}
+                </div>
+                <input
+                  type="text"
+                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
+                  placeholder="Enter Captcha"
+                  value={userCaptcha}
+                  onChange={(e) => setUserCaptcha(e.target.value)}
+                  required
+                />
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="mt-4 w-full py-3 bg-[#800000] hover:bg-[#990000] text-white font-bold rounded-full shadow-md transition-colors duration-200"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 

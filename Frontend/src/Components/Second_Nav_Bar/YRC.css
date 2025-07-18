@@ -214,7 +214,7 @@
   position: relative;
 }
 
-.yrc-h3 {
+.iic-h3 {
   text-align: center;
   font-weight: bold;
   font-size: 24px;
@@ -339,7 +339,7 @@
 }
 
 /* Grid layout for coordinators */
-.yrc-members-grid {
+.iic-members-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Center items horizontally */
