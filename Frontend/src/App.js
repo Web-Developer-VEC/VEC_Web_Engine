@@ -81,6 +81,7 @@ import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.js
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
 import ScrollUp from "./Components/ScrollUp.jsx";
+import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -235,6 +236,7 @@ const App = () => {
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/incubation" drk element={<Incubation toggle={toggle} theme={theme}/>}/>
+                                <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>
