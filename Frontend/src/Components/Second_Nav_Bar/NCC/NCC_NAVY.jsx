@@ -166,7 +166,7 @@ const NCC_NAVY = () => {
   const navData = {
     "About NCC Navy": (
       <>
-
+      
         <NCCAbout />
         <NCCVisMis />
         <NCCAim />
@@ -206,11 +206,13 @@ const NCC_NAVY = () => {
                   rank: memberData.rank[i],
                     regiment_no:  memberData.regiment_no[i],
                     year:  memberData.year[i],
+                    universityno:memberData.universityno[i],
                     department: memberData.department[i],
                     image: memberData.image_path[i]
                     }));
 
-
+                console.log(member.role);
+                
                 setMember(formattedMembers)
 
       } catch (error) {

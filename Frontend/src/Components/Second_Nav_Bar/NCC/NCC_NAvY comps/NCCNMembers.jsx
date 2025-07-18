@@ -49,7 +49,6 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
           {/* <img src={UrlParser(student.image)} className="w-[150px] h-[200px] m-auto" alt={student.name} /> */}
           <div className="ncc-n-stu-detail p-2 text-left">
             <h5 className="text-center">{student.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka">Role: {student.role}</p>
             <p className="pl-4 text-brwn dark:text-drka">regiment no: {student.regiment_no}</p>
             <p className="pl-4 text-brwn dark:text-drka">Rank : {student.rank}</p>
             <p className="pl-4 text-brwn dark:text-drka">University No : {student.universityno}</p>
