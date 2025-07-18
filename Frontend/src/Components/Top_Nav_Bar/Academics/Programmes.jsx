@@ -65,7 +65,7 @@ const Programmes = ({toggle, theme}) => {
                     lnk: '/dept/009'
                 }, 
                 {
-                    name: 'B.E. Electronics and Instrumation Engineering',
+                    name: 'B.E. Electronics and Instrumentation Engineering',
                     lnk: '/dept/008'
                 },
                 {
@@ -90,7 +90,7 @@ const Programmes = ({toggle, theme}) => {
                     lnk: '/dept/005'
                 },
                 {
-                    name: 'M.E. Power System Engineering',
+                    name: 'M.E. Power Systems Engineering',
                     lnk: '/dept/007'
                 },
                 {
