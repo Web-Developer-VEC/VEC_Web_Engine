@@ -49,8 +49,21 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative; /* Ensure box shadow looks natural */
 }
+.description-model {
+  width: fit-content;
+  /*background-color: #f9f9f9; !* Light gray background *!*/
+  padding: 2.5rem 3rem;
+  border-radius: 1.25rem; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Ensure box shadow looks natural */
+}
 
 .description-box:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+.description-model:hover {
   transform: translateY(-10px); /* Lift effect on hover */
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
@@ -215,6 +228,9 @@
     width: 2rem;
     height: 2rem;
   }
+  .dots-container{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -257,13 +273,13 @@
   }
   
   .dots-container {
-    bottom: 1rem;
+    display: none;
   }
   
-  .dot {
+  /* .dot {
     width: 0.8rem;
     height: 0.8rem;
-  }
+  } */
 }
 
 @media (max-width: 480px) {
@@ -309,11 +325,113 @@
   }
 
   .dots-container {
-    bottom: 0.8rem;
+    display: none;
   }
 
-  .dot {
+  /* .dot {
     width: 0.7rem;
     height: 0.7rem;
-  }
+  }  */
+}
+
+ .modal-overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background: rgba(0, 0, 0, 0.75);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 9999;
+            }
+            .modal-content {
+              background: white;
+              padding: 20px;
+              border-radius: 12px;
+              max-width: 90%;
+              max-height: 90%;
+              overflow: auto;
+              position: relative;
+              text-align: center;
+            }
+            .modal-image {
+              max-width: 100%;
+              max-height: 60vh;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            }
+            .modal-title {
+              font-size: 1.5rem;
+              font-weight: bold;
+              margin-bottom: 10px;
+            }
+            .modal-description {
+              font-size: 1rem;
+              color: #444;
+            }
+            .modal-close {
+              position: absolute;
+              top: 10px;
+              right: 15px;
+              background: red;
+              color: white;
+              border: none;
+              border-radius: 50%;
+              font-size: 1.2rem;
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+.know-more-button {
+  background-color: #f7c948;  
+  color: #333;                 
+  border:15px;
+  padding: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  float: right;
+  position: absolute; 
+  right: 0px; /* Adjust as needed */
+  bottom: 1px;
+  width: 100px; 
+  height: auto;
+  z-index: 1000; 
+  border-radius: 20px 2px 2px 2px;
+}
+
+.know-more-button:hover {
+  background-color: #800000; 
+  color: #fff;
+  float: right;
+ 
+}
+.modal-stud{
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width:fit-content;
+    max-width: 90%; 
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.student-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgb(157, 0, 0);
+    color: white;
+    border: 50%;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
