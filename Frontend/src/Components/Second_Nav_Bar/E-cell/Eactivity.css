@@ -1,0 +1,70 @@
+.container {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.year-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  font-size: 16px;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  /* background: white; */
+  z-index: 10;
+  /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+}
+
+.year-links span {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 4px;
+  white-space: nowrap;
+  background: #f8f9fa;
+}
+
+.year-links span:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.year-links span i {
+  margin-right: 5px;
+}
+
+.image-display {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding-bottom: 40px;
+}
+
+.image-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: block;
+  max-height: 70vh;
+  object-fit: contain;
+}

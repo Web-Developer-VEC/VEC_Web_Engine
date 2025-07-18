@@ -34,6 +34,7 @@ const Head = () => {
         { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
+        { ttl: "E-Cell", lnk: "/ecell" },
         { ttl: "Alumni", lnk: "/alumni" },
         { ttl: "NSS", lnk: "/NSS" },
         { ttl: "NCC", lnk: "/NCC" },
