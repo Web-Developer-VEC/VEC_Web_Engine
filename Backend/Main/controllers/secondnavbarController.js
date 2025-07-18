@@ -66,27 +66,44 @@ async function getiic(req, res) {
 }
 
 async function getIqac(req, res) {
-        try {
-            const db = getDb();
-            const collection = db.collection("IQAC");
-    
-            const data = await collection.find({}).toArray();
-    
-            if (!data || data.length === 0) {
-                return res.status(404).json({ message: "No data found" });
-            }
-    
-            res.status(200).json({ data: data });
-        } catch (error) {
-            console.error("❌ Error fetching data:", error);
-            return res.status(500).json({ error: "Internal server error" });
+    try {
+        const db = getDb();
+        const collection = db.collection("IQAC");
+
+        const data = await collection.find({}).toArray();
+
+        if (!data || data.length === 0) {
+            return res.status(404).json({ message: "No data found" });
         }
+
+        res.status(200).json({ data: data });
+    } catch (error) {
+        console.error("❌ Error fetching data:", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
+}
+
+async function getECell (req, res) {
+    const db = getDb();
+    const collection = db.collection('e_cell');
+
+    try {
+        const announcements = await collection.find({}).toArray();
+        if (announcements.length === 0) {
+            return res.status(404).json({ message: 'No E-cell list found' });
+        }
+        res.status(200).json(announcements);
+    } catch (error) {
+        console.error('❌ Error fetching e-cell list:', error);
+        res.status(500).json({ error: 'Error fetching programmes list' });
+    }
+}
 
 module.exports = {
     getNaac,
     getNba,
     getNirf,
     getiic,
-    getIqac
+    getIqac,
+    getECell
 }

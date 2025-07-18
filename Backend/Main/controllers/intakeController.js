@@ -48,8 +48,25 @@ async function getMBA (req, res) {
     }
 }
 
+async function getAdmisionTeam (req, res) {
+    const db = getDb();
+    const collection = db.collection('admission_team');
+
+    try {
+        const admission_team = await collection.find({}).toArray();
+        if (admission_team.length === 0) {
+            return res.status(404).json({ message: 'No admission team data  found' });
+        }
+        res.status(200).json(admission_team);
+    } catch (error) {
+        console.error('❌ Error fetching admission team:', error);
+        res.status(500).json({ error: 'Error fetching admission team' });
+    }
+}
+
 module.exports = { 
     getUG,
     getPG,
-    getMBA
+    getMBA,
+    getAdmisionTeam
 }

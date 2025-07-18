@@ -110,7 +110,7 @@ function Management({ theme, toggle }) {
                 {AbtUsData?.message[3]}
                 </p>
               </div>
-              <div className="FCP-image-container FCP-image-container1">
+              <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[2])} alt="deputy ceo Image" />
               </div>
             </div>
