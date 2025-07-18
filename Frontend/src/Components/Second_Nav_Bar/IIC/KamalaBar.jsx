@@ -1,48 +1,51 @@
 import React, { useState } from "react";
 
 const pdfData = {
-  "KAPILA IMPLEMENTATION COMMITTEE": "$$$$$$$$$.pdf",
-  "KAPILA POLICY AND SCHEME DOCUMENTS": "#########.pdf",
-  "KAPILA ACTIVITY": "@@@@@@@@.pdf",
+  "KAPILA SCHEME DOCUMENT": "$$$$$$$$$.pdf",
+  "KAPILA MINUTES": "#########.pdf",
+  "KAPILA STATEMENT OF EXPENDITURE": "@@@@@@@@.pdf",
 };
 
 const KapilaPage = () => {
-  const [activeSection, setActiveSection] = useState(null);
+  const [activePdf, setActivePdf] = useState(null);
 
-  const toggleSection = (section) => {
-    setActiveSection(prev => (prev === section ? null : section));
+  const handleButtonClick = (pdfKey) => {
+    setActivePdf(pdfKey);
   };
 
   return (
-    <div className="p-4">
-      {Object.keys(pdfData).map((title) => (
-        <div key={title} className="mb-4">
-          {/* Button */}
+    <div className="p-6 mt-4">
+      {/* Horizontal Button Group */}
+      <div className="flex justify-center  gap-8 mb-6">
+        {Object.keys(pdfData).map((key) => (
           <button
-            className="w-full flex justify-between items-center text-white font-bold px-4 py-4 bg-[#800000] text-left text-[20px]"
-            onClick={() => toggleSection(title)}
+            key={key}
+            type="button"
+            onClick={() => handleButtonClick(key)}
+            className={`px-6 py-3 font-semibold rounded-xl hover:text-white ${
+              activePdf === key ? "bg-[#800000] text-white" : "bg-[#fdcc03] "
+            } hover:bg-[#a00000] transition-all`}
           >
-            {title}
-            <span className="text-white text-2xl">
-              {activeSection === title ? "−" : "+"}
-            </span>
+            {key}
           </button>
+        ))}
+      </div>
 
-          {/* PDF Viewer */}
-          {activeSection === title && (
-            <div className="mt-2 border p-4 bg-white shadow">
-              <h3 className="text-xl font-semibold mb-2">{title}</h3>
-              <embed
-                src={pdfData[title]}
-                type="application/pdf"
-                width="100%"
-                height="600px"
-                className="border"
-              />
-            </div>
-          )}
+      {/* Show PDF on click */}
+      {activePdf && (
+        <div className="border p-4  bg-white shadow-lg">
+          <h3 className="text-xl font-bold mb-4 text-center">
+            {activePdf}
+          </h3>
+          <embed
+            src={pdfData[activePdf]}
+            type="application/pdf"
+            width="100%"
+            height="600px"
+            className="border"
+          />
         </div>
-      ))}
+      )}
     </div>
   );
 };
