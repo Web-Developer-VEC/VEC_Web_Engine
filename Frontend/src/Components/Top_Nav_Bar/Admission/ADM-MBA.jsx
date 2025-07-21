@@ -3,6 +3,7 @@ import axios from "axios";
 import "./ADM-MBA.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { FaLink } from "react-icons/fa";
 
 const MBA = ({theme, toggle}) => {
   const [mbaData, setMbaData] = useState(null);
@@ -44,6 +45,12 @@ if (!isOnline) {
     );
 }
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   // Ensure mbaData exists before accessing properties
   const mba = mbaData?.MBA || {};
 
@@ -77,6 +84,12 @@ if (!isOnline) {
           <div>
             <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
             <p className="text-text dark:text-drkt ml-8">MBA : Apply through Common Entrance Test (CET) conducted by the Consortium of Self –Financing Professional, Arts and  Science Colleges in Tamil Nadu</p>
+          </div>
+          <div className="flex justify-center mt-4">
+            <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+            <a href={UrlParser(mbaData?.link)} className="dark:text-drka" target="_blank">
+              <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR MBA- MANAGEMENT QUOTA
+            </a>
           </div>
 
             <div className="mba-content">
