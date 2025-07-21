@@ -185,8 +185,8 @@ body {
 
   .person-image {
     margin-bottom: 15px;
-    width: 160px;
-    height: 160px;
+    /* width: 160px; */
+    /* height: 160px; */
   }
 
   .person-content {
@@ -209,7 +209,7 @@ body {
 @media (max-width: 576px) {
   .person-image {
     width: 140px;
-    height: 140px;
+    height: 250px;
   }
 
   .person-content h2 {

@@ -181,13 +181,14 @@
 }
 
 .form-regulation {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  /* grid-template-columns: 1fr 1fr; */
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 5px;
 }
 
 .form-button {
@@ -271,7 +272,7 @@
   }
 
   .form-regulation {
-    flex-direction: column;
+    /* flex-direction: column; */
     grid-template-columns: 1fr 1fr;
     text-align: center;
     padding: 0.8rem;

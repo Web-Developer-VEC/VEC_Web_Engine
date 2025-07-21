@@ -87,11 +87,13 @@ if (!isOnline) {
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
       <div key={index} className="resource-item dark:bg-drkts">
-        <center>
+        {/* <center> */}
           <div className="form-content dark:bg-drkts">
             <div className="form-regulation bg-[#f8f9fa] dark:bg-black">
-              <span className="text-text dark:text-drkt">{resource.name}</span>
-              <div className="form-buttons">
+              <div className="w-[65%]">
+                <p className="text-text dark:text-drkt">{resource.name}</p>
+              </div>
+              <div className="form-buttons w-[30%]">
                 <button
                   className="form-button view-button bg-secd text-text dark:bg-drks dark:text-drkt
                     hover:bg-accn hover:text-prim dark:hover:bg-drka"
@@ -100,7 +102,7 @@ if (!isOnline) {
                   <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
                   
                 </button>
-                <a
+                <button
                   className="form-button download-button bg-secd text-text dark:bg-drks dark:text-drkt
                     hover:bg-accn hover:text-prim dark:hover:bg-drka"
                   href={resource.download}
@@ -110,12 +112,12 @@ if (!isOnline) {
                 >
                   <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
                  
-                </a>
+                </button>
               </div>
             </div>
           </div>
 
-        </center>
+        {/* </center> */}
       </div>
     ));
   };
@@ -133,27 +135,29 @@ if (!isOnline) {
         <LoadComp txt={""} />
       </div>
     ) : (
-      <div className="tails-container ">
-        <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
-          <div className="tail-content flex flex-col h-full">
-            <h2 className="font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
-            <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full dark:bg-drkts">
-              {renderResourceLinks(studentResources)}
+      <>
+        <div className="tails-container ">
+          <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
+            <div className="tail-content flex flex-col h-full">
+              <h2 className="font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
+              <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full dark:bg-drkts">
+                {renderResourceLinks(studentResources)}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="tail faculty-tail dark:bg-black">
-          <div className="tail-content flex flex-col h-full relative">
-            <h2 className="font-bold mb-2  z-10 sticky top-0 block sm:static">
-              Faculty Resources
-            </h2>
-            <div className="download-links-container overflow-y-auto overflow-x-hidden dark:bg-drkts">
-              {renderResourceLinks(facultyResources)}
+          <div className="tail faculty-tail dark:bg-black">
+            <div className="tail-content flex flex-col h-full relative">
+              <h2 className="font-bold mb-2  z-10 sticky top-0 block sm:static text-brwn dark:text-drkt">
+                Faculty Resources
+              </h2>
+              <div className="download-links-container overflow-y-auto overflow-x-hidden dark:bg-drkts">
+                {renderResourceLinks(facultyResources)}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     )}
 
       {selectedPdf && (

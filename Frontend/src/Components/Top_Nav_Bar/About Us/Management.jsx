@@ -76,6 +76,10 @@ function Management({ theme, toggle }) {
 
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[0])} alt="Founder's Image" className="founder"/>
+                  <div className="flex justify-center items-center flex-col mt-2">
+                    <p className="font-bold">Shri. M.V. Muthuramalingam</p>
+                    <p className="text-brwn dark:text-drka">Chairman</p>
+                  </div>
               </div>
             </div>
           </div>
@@ -88,6 +92,10 @@ function Management({ theme, toggle }) {
             <div className="FCP-content-container">
               <div className="FCP-image-container1">
                 <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
+                  <div className="flex justify-center items-center flex-col mt-2">
+                    <p className="font-bold">Shri. M.V. VelMurugan</p>
+                    <p className="text-brwn dark:text-drka">Chief Executive Officer</p>
+                  </div>
               </div>
 
               <div className="FCP-text-container">
@@ -102,7 +110,7 @@ function Management({ theme, toggle }) {
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <h2 className="FCP-section-title text-brwn dark:text-prim">DEPUTY CEO MESSAGE</h2>
 
-            <div className="FCP-content-container">
+            <div className="FCP-content-container deputy-ceo">
 
               <div className="FCP-text-container">
                 <p>
@@ -112,6 +120,10 @@ function Management({ theme, toggle }) {
               </div>
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[2])} alt="deputy ceo Image" />
+                <div className="flex justify-center items-center flex-col mt-2">
+                  <p className="font-bold">Shri. V. Karthik Velmurugan</p>
+                  <p className="text-brwn dark:text-drka">Deputy CEO</p>
+                </div>
               </div>
             </div>
           </div>

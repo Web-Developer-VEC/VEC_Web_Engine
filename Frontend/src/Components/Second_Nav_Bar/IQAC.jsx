@@ -239,11 +239,11 @@ const IQAC = ({ toggle , theme }) => {
                 <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
                 
                 {/* Category Buttons */}
-                <div className="flex gap-2 justify-center mb-4">
+                <div className="flex flex-wrap gap-2 justify-center mb-4">
                     {categories.map((category) => (
                         <button
                             key={category}
-                            className={`bg-secd dark:bg-drksl px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
+                            className={`bg-secd dark:bg-drks px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
                             type="button"
                             onClick={() => setSelectedCategory(category)}
                         >

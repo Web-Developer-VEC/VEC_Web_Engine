@@ -78,29 +78,28 @@ const Princ = ({theme, toggle}) => {
           <div className="flex flex-col md:flex md:justify-center lg:flex-row-reverse items-center lg:items-start">
             {/* Image on the right for large screens, centered for tablets */}
             <div className="lg:max-w-sm lg:ml-6 flex-shrink-0 mx-auto">
-            <div className="relative max-h-[30vh] lg:max-h-[50vh] w-auto flex justify-center items-center">
+              <div className="relative max-h-[30vh] lg:max-h-[50vh] w-[300px] md:w-[450px] flex justify-center items-center">
 
-            {/* Image */}
-            {!hasError ? (
-                <img
-                    className={`h-[25vh] lg:h-[45vh] w-auto rounded-xl transition-opacity duration-500 
-                                ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-                    src={UrlParser(data?.photo_path)}
-                    alt="Principal"
-                    onLoad={() => setIsLoading(false)}
-                    onError={() => {
-                        setHasError(true);
-                        setIsLoading(false);
-                    }}
-                />
-            ) : (
-                <div className="text-red-500">Image failed to load</div>
-            )}
-        </div>
+                  {/* Image */}
+                  {!hasError ? (
+                      <img
+                          className={`h-[25vh] lg:h-[45vh] w-auto rounded-xl transition-opacity duration-500 
+                                      ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                          src={UrlParser(data?.photo_path)}
+                          alt="Principal"
+                          onLoad={() => setIsLoading(false)}
+                          onError={() => {
+                              setHasError(true);
+                              setIsLoading(false);
+                          }}
+                      />
+                  ) : (
+                      <div className="text-red-500">Image failed to load</div>
+                  )}
+              </div>
               <div className="text-center">
-                <span className="text-2xl font-semibold block font-poppins">{data?.name}</span>
+                <span className="text-2xl font-semibold block font-poppins mt-2">{data?.name}</span>
                 <span className="text-lg font-bold text-accn dark:text-drka block font-poppins">
-                  {/* {data?.qualification} */}
                   <button
                   //  onClick={() => navigate(`/facultyprofile/${uid}`)}
                     className={"p-2 bg-secd dark:bg-drks hover:bg-brwn hover:text-drkt text-text"}>

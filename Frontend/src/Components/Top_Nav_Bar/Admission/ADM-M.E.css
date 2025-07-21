@@ -60,18 +60,6 @@ h1 {
   border: 1px white solid;
 }
 
-.intake-table th {
-  /*background: linear-gradient(45deg, #ffd700, #ffa500);*/
-  /*color: white;*/
-}
-
-.intake-table .even-row {
-  /*background-color: #fff3cd;*/
-}
-
-.intake-table .odd-row {
-  /*background-color: #ffeeba;*/
-}
 .intake-table tr{
   font-weight: bold;
 }
