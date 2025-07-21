@@ -5,6 +5,7 @@ import LoadComp from '../../../LoadComp';
 
 const ImageCarousel = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
   const images = data?.images || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -13,35 +14,46 @@ const ImageCarousel = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  // Reset to first slide when new data arrives
-  useEffect(() => {
-    if (images.length > 0) {
-      setCurrentIndex(0);
+  const handleClick = (image) => {
+    if (image.status) {
+      setSelectedImage(image);
     }
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  useEffect(() => {
+    if (images.length > 0) setCurrentIndex(0);
   }, [images]);
 
-  // Auto-play functionality
-  useEffect(() => {
-    if (images.length === 0) return; // Don't start interval if no images
+ const [isPaused, setIsPaused] = useState(false);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    }, 5000);
+useEffect(() => {
+  if (images.length === 0 || isPaused) return;
 
-    return () => clearInterval(interval);
-  }, [images]); // Restart when images change
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, [images, isPaused])
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  if(!data) return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-    <LoadComp />
-  </div>
+  if (!data)
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
 
   return (
     <div className="carousel-container">
@@ -66,19 +78,71 @@ const ImageCarousel = ({ data }) => {
               }}
             >
               {images.map((item, index) => (
-                <div key={index} className="carousel-slide" style={{ left: `${index * 100}%` }}>
-                  <img
-                    src={UrlParser(item.image_path)}
-                    alt={item.event_name} // Changed from image_content to event_name
-                    className="carousel-image"
-                  />
+                <div
+                  key={index}
+                  className="carousel-slide"
+                  style={{ left: `${index * 100}%` }}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src={UrlParser(item.image_path)}
+                      alt={item.event_name}
+                      className="carousel-image"
+                    />
+                    {item.status && (
+                      <button
+                        className="know-more-button"
+                          onClick={() => {
+                                            handleClick(item);
+                                            setIsPaused(true);
+                                          }}
+                                        >
+                        Know More
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
 
+            {/* 🔹 Modal for Selected Image */}
+            {selectedImage && (
+              <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-stud" onClick={(e) => e.stopPropagation()}>
+                  {/* {selectedImage.image_path && (
+                    <img
+                      src={UrlParser(selectedImage.image_path)}
+                      alt={selectedImage.event_name}
+                      className="modal-image"
+                    />
+                  )} */}
+                  {}
+                  {selectedImage.video_link && (
+                    <>
+                        <h2 className="description-title text-accn dark:text-drka">
+                          {images[currentIndex]?.event_name || "No Title"}
+                        </h2>
+                        <p className="description-text-act">
+                          {images[currentIndex]?.image_content || "No Description"}
+                        </p>
+                      <a
+                        href={selectedImage.video_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="youtube-link"
+                      >
+                        View Full Playllist
+                      </a>
+                    </>
+                  )}
+                  <button onClick={closeModal} className="student-close">X</button>
+                </div>
+              </div>
+            )}
+
             {/* 🔹 Navigation Buttons */}
             <button onClick={prevSlide} className="nav-button prev-button">
-              <ChevronLeft className="nav-icon" /> 
+              <ChevronLeft className="nav-icon" />
             </button>
             <button onClick={nextSlide} className="nav-button next-button">
               <ChevronRight className="nav-icon" />
@@ -98,12 +162,16 @@ const ImageCarousel = ({ data }) => {
 
           {/* 🔹 Image Description Box */}
           <div className="description-box bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className="description-title text-accn dark:text-drka">{images[currentIndex]?.event_name || "No Title"}</h2>
-            <p className="description-text-act">{images[currentIndex]?.image_content || "No Description"}</p>
+            <h2 className="description-title text-accn dark:text-drka">
+              {images[currentIndex]?.event_name || "No Title"}
+            </h2>
+            <p className="description-text-act">
+              {images[currentIndex]?.image_content || "No Description"}
+            </p>
           </div>
         </>
       ) : (
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />
         </div>
       )}

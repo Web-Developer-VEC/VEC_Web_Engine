@@ -34,6 +34,7 @@ const Head = () => {
         { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
+        { ttl: "E-Cell", lnk: "/ecell" },
         { ttl: "Alumni", lnk: "/alumni" },
         { ttl: "NSS", lnk: "/NSS" },
         { ttl: "NCC", lnk: "/NCC" },
@@ -101,13 +102,14 @@ const Head = () => {
         },
         {
             main: "Admission",
-            cod: [0, 4],
+            cod: [0, 5],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
                 {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
                 {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
                 {hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd"},
+                {hrd:false,ttl: "Admission Team",sup:[],lnk:"/admission-team"}
             ],
         },
         {

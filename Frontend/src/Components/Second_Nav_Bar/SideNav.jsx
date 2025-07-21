@@ -70,6 +70,8 @@ const SideNav = ({sts, setSts, navData, cls}) => {
                 return <FaUserTie className={sty}/>;
             case "NAAC":
                 return <Trophy className={sty}/>;
+            case 'AboutEcell':
+                return <Trophy className={sty}/>
             case "NIRF":
                 return <Trophy className={sty}/>;
             case "NBA":

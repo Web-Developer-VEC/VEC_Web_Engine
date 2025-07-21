@@ -80,6 +80,7 @@ import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.js
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
 import ScrollUp from "./Components/ScrollUp.jsx";
+import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
 
@@ -236,6 +237,7 @@ const App = () => {
                                 <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
+                                <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
