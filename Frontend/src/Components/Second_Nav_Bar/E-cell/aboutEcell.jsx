@@ -9,21 +9,46 @@ import Gall from "./Egalary.jsx";
 import style from "./Egalary.css";
 import EnterpreN from "./Enterpreneur.jsx";
 import Activ from "./Eactivity.jsx";
+import axios from "axios";
 
 
 
 const Ecell = ({toggle,theme}) => {
+
+
+    const [home,setHome]=useState({})
+    const [committee,setCommittee]=useState({})
+    const [enterpreneur,setEnterpreneur]=useState({})
+    const [activity,setActivity]=useState({})
+    const [gallery,setGallery]=useState({})
+    useEffect(()=> {
+        const fetchData = async () =>{
+
+            const response = await axios.get('/api/ecell');
+            const data = response.data[0]
+
+            setHome(data.home)
+            setCommittee(data.committee)
+            setEnterpreneur(data.entrepreneur)
+            setActivity(data.activity)
+            setGallery(data.gallery)
+
+
+
+        }
+      fetchData()}
+  ,[])
+
     
 
     const [section, setEcell] = useState("About E-cell")
     
    const navData = {
-        "About E-cell": <Home/>,
-        "Committee":<COMMITE/>,
-        "Enterpreneur":<EnterpreN/>,
-        "Activity":<Activ/>,
-        "Gallery":<Gall/>
-        
+        "About E-cell": <Home home={home}/>,
+        "Committee":<COMMITE committee={committee}/>,
+        "Enterpreneur":<EnterpreN enterpreneur={enterpreneur}/>,
+        "Activity":<Activ activity={activity}/>,
+        "Gallery":<Gall gallery={gallery}/>
     }
 
 

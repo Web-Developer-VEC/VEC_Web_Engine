@@ -254,7 +254,7 @@ const NCC_ARMY = () => {
                 const memberData = data.members
                 setTabelValue(data.Table);
                 setCarosel(data.image);
-                setCoordinator(data.coordinater)
+                setCoordinator(data.coordinater)  
                 
 
 
