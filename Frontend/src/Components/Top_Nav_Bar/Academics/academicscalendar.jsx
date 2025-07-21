@@ -10,6 +10,12 @@ const Acadamiccal = ({ toggle, theme }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [academicCal, setAcademicData] = useState(null);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,7 +90,7 @@ const Acadamiccal = ({ toggle, theme }) => {
                   <div className="flex flex-col items-center space-y-2 text-blue-600">
                     {oddPath && (
                       <a
-                        href={`/${oddPath}`}
+                        href={UrlParser(oddPath)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-blue-800 dark:text-drka"
@@ -94,7 +100,7 @@ const Acadamiccal = ({ toggle, theme }) => {
                     )}
                     {evenPath && (
                       <a
-                        href={`/${evenPath}`}
+                        href={UrlParser(evenPath)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-blue-800 dark:text-drka"

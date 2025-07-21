@@ -56,7 +56,7 @@ const Coe = ({ toggle, theme }) => {
                     className="w-[100px] h-[120px] object-cover rounded"
                   />
                   <div>
-                    <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
+                    <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">{member.name}</p>
                     <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
                     <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
                   </div>
@@ -76,7 +76,7 @@ const Coe = ({ toggle, theme }) => {
                       className="w-[100px] h-[120px] object-cover rounded"
                     />
                     <div className="flex justify-center flex-col">
-                      <p className="font-bold text-[16px] text-text dark:text-drkt">{member.name}</p>
+                      <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">{member.name}</p>
                       <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
                       <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
                     </div>

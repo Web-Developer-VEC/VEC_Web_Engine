@@ -73,7 +73,7 @@ if (!isOnline) {
           {data.map((item, rowIndex) => {
             const [courseName, courseDetails] = Object.entries(item)[0];
             return (
-              <tr key={rowIndex}>
+              <tr key={rowIndex} className="bg-prim dark:bg-text">
                 <td className="text-start">{courseName}</td>
                 <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
                 <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>

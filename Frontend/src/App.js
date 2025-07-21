@@ -52,7 +52,7 @@ import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
 // import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
-import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
 import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
