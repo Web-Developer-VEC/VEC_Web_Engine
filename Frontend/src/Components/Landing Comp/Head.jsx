@@ -44,6 +44,7 @@ const Head = () => {
         { ttl: "Hostel", lnk: "/hosLanding" },
         { ttl: "Other Facilities", lnk: "/other-facilities" },
         { ttl: "Help Desk", lnk: "/grievances" },
+        { ttl:  "Gallery",lnk:"/gallery"},
         {
             ttl: "Login",
             lnk: "#",

@@ -58,6 +58,7 @@ const Sidebar = (props) => {
         { text:"Accreditations & ranking ",link:"/Accredation"},
         { text: "IIC", link: "/iic" },
         { text: "Incubation Cell", link: "/incubation" },
+        { text: "E-Cell", link: "/ecell" },
         { text: "Alumni", link: "/alumni" },
         { text: "NSS", link: "/nss" },
         { text: "NCC", link: "/ncc" },

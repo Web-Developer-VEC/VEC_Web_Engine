@@ -83,6 +83,8 @@ import ScrollUp from "./Components/ScrollUp.jsx";
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
+import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
+import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
 import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
 
@@ -250,6 +252,8 @@ const App = () => {
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
                                 <Route path="/hosLanding" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
+                                <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
+                                <Route path="/gallery-details/:id" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 

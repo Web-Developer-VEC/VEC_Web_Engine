@@ -1,0 +1,93 @@
+.gallery-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2.25rem; /* ~36px */
+  font-weight: 700;   /* bold */
+  color: #800000;        /* dark grey for contrast */
+  margin-bottom: 2rem; /* spacing below title */
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem; /* 16px gap */
+}
+
+.gallery-card {
+  background-color: white;
+  border-radius: 0.75rem; /* 12px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0; /* round top corners */
+  margin-bottom: 0.5rem;
+}
+
+.gallery-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 8px;
+}
+
+.gallery-title-text {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1rem; /* 16px */
+}
+
+.read-more-button {
+  background-color: #fdc34a;
+  color: #000;
+  padding: 10px 16px;
+  font-size: 0.875rem; /* 14px */
+  border: none;
+  border-radius: 0.375rem; /* 6px */
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s;
+  margin-top: auto;
+}
+
+.read-more-button:hover {
+  background-color: #e5b03c;
+}
+
+.gallery-container {
+    padding: 40px 20px;
+    max-width: 100%;
+    /* margin: 0.5rem auto 0; */
+    background-color: #f9f9f9;
+
+}
+.gallery-gri{
+      display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+::-webkit-scrollbar {
+    display: none;
+}
