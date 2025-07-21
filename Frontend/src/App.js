@@ -83,6 +83,7 @@ import ScrollUp from "./Components/ScrollUp.jsx";
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
+import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -197,6 +198,7 @@ const App = () => {
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>

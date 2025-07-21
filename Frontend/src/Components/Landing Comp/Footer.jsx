@@ -35,6 +35,9 @@ const Footer = forwardRef((props, ref) => {
                     href={`tel:${data?.addmission_contact[1]}`} className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
                     {data?.addmission_contact[1]}</a>
                 </p>
+                <div>
+                    <a href="/Term_and_Conditions" target="_blank" rel="noopener noreferrer">Privacy, Terms and Conditions</a>
+                </div>
                 <div className="logo-container my-2">
                     <a href={data?.instagram} target="_blank" rel="noopener noreferrer">
                         <img src={insta} alt="Insta"/>
