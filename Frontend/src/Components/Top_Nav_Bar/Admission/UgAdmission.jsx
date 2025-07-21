@@ -73,7 +73,7 @@ if (!isOnline) {
           {data.map((item, rowIndex) => {
             const [courseName, courseDetails] = Object.entries(item)[0];
             return (
-              <tr key={rowIndex}>
+              <tr key={rowIndex} className="bg-prim dark:bg-text">
                 <td className="text-start">{courseName}</td>
                 <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
                 <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
@@ -121,6 +121,12 @@ if (!isOnline) {
             <div>
               <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2">GOVERNMENT QUOTA</p>
               <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
+            </div>
+             <div className="flex justify-center mt-4">
+              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+              <a href={UrlParser(ugData?.link)} className="dark:text-drka" target="_blank">
+                <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)
+              </a>
             </div>
             <div>
               <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>

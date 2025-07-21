@@ -52,7 +52,7 @@ import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
 // import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
-import IIC from "./Components/Second_Nav_Bar/iic.jsx";
+import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
 import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
@@ -85,6 +85,7 @@ import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
 import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
 import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
+import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -199,6 +200,7 @@ const App = () => {
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>

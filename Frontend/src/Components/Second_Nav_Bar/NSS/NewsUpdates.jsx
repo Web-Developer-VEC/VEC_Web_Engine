@@ -13,9 +13,9 @@ const NotificationBox = ({ data }) => {
 
       <div className="nss-notification-container">
         {/* Left-side text */}
-        <div className="nss-news-updates text-brwn dark:text-drkt">
+        <div className="nss-news-updates text-sm md:text-[16px] ml-auto md:ml-2 text-brwn dark:text-drkt">
           Bringing you the latest news & updates 
-          <div className="w-[500px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
+          <div className="w-[300px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
         </div>
 
         {/* Right-side notification box */}

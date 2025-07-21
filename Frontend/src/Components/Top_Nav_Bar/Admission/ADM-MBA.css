@@ -59,14 +59,6 @@
     border: 1px white solid;
   }
   
-  .mba-intake-table .mba-even-row {
-    /*background-color: #fff3cd;*/
-  }
-  
-  .mba-intake-table .mba-odd-row {
-    /*background-color: #ffeeba;*/
-  }
-  
   .mba-intake-table tr {
     font-weight: bold;
   }
