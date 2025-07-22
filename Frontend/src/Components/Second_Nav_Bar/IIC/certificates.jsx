@@ -56,7 +56,7 @@ export default function IicFacCertificate({data}) {
             {selectedAction && selectedAction.category === "Certificate" && (
 
               <div className="border p-8 mt-20 w-[94%] mx-auto bg-white shadow-lg">
-                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                <h3>{`Viewing: ${selectedAction.name}`}</h3>
                 <embed
 
                   className="embed"
@@ -68,10 +68,8 @@ export default function IicFacCertificate({data}) {
                   type="application/pdf"
                   width="100%"
                   height="600px"
-                /> */}
-                <img src={certificateArray.find(
-                      (item) => item.name === selectedAction.name
-                    )?.path} alt="" />
+                /> 
+              
               </div>
             )}
           </div>
