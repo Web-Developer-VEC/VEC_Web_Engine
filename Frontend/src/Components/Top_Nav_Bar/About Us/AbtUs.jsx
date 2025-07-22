@@ -166,6 +166,10 @@ const AbtUs = ({ theme, toggle }) => {
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[3])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                             </li>
+                             <li className='text-sm md:text-lg flex items-center gap-2'>
+                                <FaLink className='text-prim dark:text-drkp' />
+                                <a href={UrlParser(AbtUsData?.links[4])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Feedback</a>
+                            </li>
                         </ul>
                     </div>
                  </>
