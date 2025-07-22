@@ -1,12 +1,4 @@
-export default function Startup() {
-
-    const startupsData = [
-        {slNo: 1, groupName: "Vivid", leadName: "Mr. Shrinivas S, CSBS", regno: "LLP-AAZ-3585", year: "2021-2022"},
-        {slNo: 2, groupName: "Green M", leadName: "Mr. Andrew Vikas, CSBS", regno: "LLP-AAZ-3586", year: "2021-2022"},
-        {slNo: 3, groupName: "Coarve IT", leadName: "Mr. Jayadevan, Data Science (AMCS)", regno: "LLP-AAZ-3586", year: "2021-2022"},
-        {slNo: 4, groupName: "Farm Far Away", leadName: "Mr. Muruganath", regno: "LLP-AAZ-3586", year: "2021-2022"},
-        {slNo: 5, groupName: "Cataract prediction using transfer learning", leadName: "Ms. Dayalaxmi. S (IT)", regno: "LLP-AAZ-3586", year: "2021-2022"}
-    ];
+export default function Startup({data}) {
 
     return (
         <div className="ic-table-container m-4">
@@ -18,20 +10,46 @@ export default function Startup() {
                     <thead>
                     <tr>
                         <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
-                        <th className="ic-table-head border-2 border-text dark:border-prim">Department</th>
-                        <th className="ic-table-head border-2 border-text dark:border-prim">Name of Venture/Startup</th>
-                        <th className="ic-table-head border-2 border-text dark:border-prim">DPIIT/Start up India Reg No.</th>
-                        <th className="ic-table-head border-2 border-text dark:border-prim">Year of registration</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Startup Name</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Directors</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Type</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Date of Regestration</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Corporate Identity Data</th>
+                        <th className="ic-table-head border-2 border-text dark:border-prim">Udyam Number</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {startupsData.map((startup) => (
+                    {data?.map((startup,i) => (
                         <tr key={startup.slNo}>
-                            <td className="ic-table-data">{startup.slNo}</td>
-                            <td className="ic-table-data">{startup.groupName}</td>
-                            <td className="ic-table-data">{startup.leadName}</td>
-                            <td className="ic-table-data">{startup.regno}</td>
-                            <td className="ic-table-data">{startup.year}</td>
+                            <td className="ic-table-data">{startup.s_no}</td>
+                            <td className="ic-table-data">{startup.start_up_name}</td>
+                            <td className="ic-table-data">
+                                <ul>
+                            {startup.directors.map((dir,i) => (
+                                <li>{dir}</li>
+                            ))}
+                            </ul>
+                            </td>
+                            {startup.type ? (
+                                <td className="ic-table-data">{startup.type}</td>
+                            ) : (
+                                <td className="ic-table-data">-</td>
+                            )}
+                            {startup.date_of_registration ? (
+                                <td className="ic-table-data">{startup.date_of_registration}</td>
+                            ) : (
+                                <td className="ic-table-data">-</td>
+                            )}
+                            {startup.corporate_identity_number ? (
+                                <td className="ic-table-data">{startup.corporate_identity_number}</td>
+                            ) : (
+                                <td className="ic-table-data">-</td>
+                            )}
+                            {startup.udyam_number ? (
+                                <td className="ic-table-data">{startup.udyam_number}</td>
+                            ) : (
+                                <td className="ic-table-data">-</td>
+                            )}
                         </tr>
                     ))}
                     </tbody>

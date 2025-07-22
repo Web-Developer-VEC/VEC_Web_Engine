@@ -31,7 +31,7 @@ export function StatCard({ number, label, color }) {
   );
 }
 
-const data = [
+const data1 = [
   {
     title: "MSME IDEA HACKATHON 5.0",
     stats: [{ number: 223, label: "Received Ideas", color: "bg-blue-700" }],
@@ -60,25 +60,30 @@ const data = [
   }
 ];
 
-export default function Projects() {
+const colors = ["bg-blue-700", "bg-green-600", "bg-green-700", "bg-purple-600"];
+
+export default function Projects({data}) {
   return (
     <div className="min-h-screen bg-prim dark:bg-drkp p-6 font-[Poppins,sans-serif]">
         <div>
             <p className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">Projects</p>
         </div>
       <div className="max-w-6xl mx-auto space-y-10">
-        {data.map((section, i) => (
+        {data?.map((section, i) => (
           <div key={i} className="space-y-4">
             <h2 className="text-center text-lg font-bold">{section.title}</h2>
             <div className="flex flex-wrap justify-center gap-5">
-              {section.stats.map((item, j) => (
-                <StatCard
-                  key={j}
-                  number={item.number}
-                  label={item.label}
-                  color={item.color}
-                />
-              ))}
+              {section.stats.map((item, j) => {
+                const color = colors[j % colors.length];
+                return (
+                  <StatCard
+                    key={j}
+                    number={item.number}
+                    label={item.label}
+                    color={color}
+                  />
+                )
+              })}
             </div>
           </div>
         ))}
