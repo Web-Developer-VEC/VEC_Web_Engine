@@ -259,7 +259,7 @@ const Awardsnss = ({ data }) => {
     return (
       <>
         {student && coor ? (
-        <div className="yrc-coordinators-container">
+        <div className="yrc-coordinators-container flex justify-items-center">
           <h2 className="yrc-h2 text-brwn dark:text-drkt">
             FACULTY COORDINATOR
             <div className="yrc-underline2"></div>
@@ -282,7 +282,7 @@ const Awardsnss = ({ data }) => {
             STUDENT COORDINATORS
             <div className="yrc-underline3"></div>
           </h2>
-          <div className="yrc-members-grid">
+          <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto  justify-items-center justify-content-center align-items-center">
           {student?.name?.map((name,i) => (
             <div key={i} className="yrc-member-card dark:bg-text">
               <img
@@ -290,7 +290,7 @@ const Awardsnss = ({ data }) => {
                 alt={name}
                 className="yrc-member-image"
               />
-              <div className="yrc-member-info">
+              <div className="yrc-member-info">   
                 <h3 className="text-text dark:text-drkt">{name}</h3>
                 <span className="yrc-platoon text-brwn dark:text-drka">{student?.designation[i]}</span>
                 {/* <p className="yrc-department"><b>Register Number:</b> {student?.reg_no[i]}</p> */}
