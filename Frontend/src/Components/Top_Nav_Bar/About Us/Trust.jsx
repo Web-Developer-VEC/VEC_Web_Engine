@@ -84,13 +84,16 @@ const NewTrust = ({theme, toggle}) => {
               {/* Image Section */}
               <motion.div
                 whileHover={{  }}
-                className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg"
+                className="flex justify-center group overflow-hiaccn rounded-2xl saadow-lg flex-col items-center"
               >
                 <img
                   className="w-64 h-max object-cover transition-transform duration-500 "
                   src={UrlParser(AbtTrustData?.velammal?.image_path)}
                   alt="Velammal Trust Banner"
                 />
+                <div className="flex justify-center items-center flex-col mt-2">
+                  <p className="font-bold">THIRUMATHI VELAMMAL</p>
+                </div>
               </motion.div>
 
               {/* Text Section */}

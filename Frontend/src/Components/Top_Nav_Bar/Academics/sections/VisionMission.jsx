@@ -98,65 +98,67 @@ const VisionMission = ({ data }) => {
         </div>
       </div>
       {/* Program Specific Outcomes (PSOs) */}
-        <div className="psos-section mt-5">
-          <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Educational Outcomes</h2>
-          <div className="accordion" id="psosAccordion">
-            
-            {data?.program_educational_outcomes?.headings?.map((heading, index) => (
-              <div className="POE accordion-item-cir bg-prim dark:bg-drkts"key={index}>
-                <h2 className="accordion-header" id={`psosHeading${index}`}>
-                  <button className="accordion-buttons text-text dark:text-drkt" onClick={() => togglePOE(index)}>
-                    {heading}
-                  </button>
-                </h2>
-                <div className={`accordion-body ${activePOE === index ? 'show' : ''}`}>
-                  {data?.program_educational_outcomes?.content[index]}
+
+      {data?.program_educational_outcomes && (
+          <div className="psos-section mt-5">
+            <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Educational Outcomes</h2>
+            <div className="accordion" id="psosAccordion">
+              
+              {data?.program_educational_outcomes?.headings?.map((heading, index) => (
+                <div className="POE accordion-item-cir bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg"key={index}>
+                  <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
+                      {heading}
+                  </h2>
+                  <div className={`accordion-body show`}>
+                    {data?.program_educational_outcomes?.content[index]}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>  
-        </div>
+              ))}
+            </div>  
+          </div>
+      )}
       {/* <div className="dual-outcomes"> */}
 
       {/* </div> */}
 
         {/* Right Column: Program Outcomes */}
-        <div className="col-md-6 mt-10 w-full">
-          <div className="pos-section">
-            <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Outcomes</h2>
-            <div className="accordion grid-container">
-              {data?.program_outcomes?.headings?.map((heading, index) => (
-                <div className="accordion-item-cir text-text dark:text-drkt bg-prim dark:bg-drkts" key={index}>
-                  <h2 className="accordion-header">
-                    <button className="accordion-buttons text-text dark:text-drkt" onClick={() => togglePO(index)}>
+        {data?.program_outcomes && (
+          <div className="col-md-6 mt-10 w-full">
+            <div className="pos-section">
+              <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Outcomes</h2>
+              <div className="accordion grid-container">
+                {data?.program_outcomes?.headings?.map((heading, index) => (
+                  <div className="accordion-item-cir text-text dark:text-drkt bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
+                    <h2 className="accordion-header text-left p-4">
+                        {heading}
+                    </h2>
+                    <div className={`accordion-body text-text dark:text-drkt show`}>
+                      {data?.program_outcomes?.content[index]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {data?.program_specific_outcomes && (
+          <div className="psos-section mt-5">
+            <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Specific Outcomes</h2>
+            <div className="accordion" id="psosAccordion">
+              {data?.program_specific_outcomes?.headings?.map((heading, index) => (
+                <div className="POE accordion-item-cir bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
+                  <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
                       {heading}
-                    </button>
                   </h2>
-                  <div className={`accordion-body text-text dark:text-drkt ${activePO === index ? 'show' : ''}`}>
-                    {data?.program_outcomes?.content[index]}
+                  <div className={`accordion-body show`}>
+                    {data?.program_specific_outcomes.content[index]}
                   </div>
                 </div>
               ))}
-            </div>
+            </div>  
           </div>
-        </div>
-        <div className="psos-section mt-5">
-          <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Specific Outcomes</h2>
-          <div className="accordion" id="psosAccordion">
-            {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-              <div className="POE accordion-item-cir bg-prim dark:bg-drkts" key={index}>
-                <h2 className="accordion-header" id={`psosHeading${index}`}>
-                  <button className="accordion-buttons text-text dark:text-drkt" onClick={() => togglePOS(index)}>
-                    {heading}
-                  </button>
-                </h2>
-                <div className={`accordion-body ${activePOS === index ? 'show' : ''}`}>
-                  {data?.program_specific_outcomes.content[index]}
-                </div>
-              </div>
-            ))}
-          </div>  
-        </div>
+        )}
     </div>
   );
 };
