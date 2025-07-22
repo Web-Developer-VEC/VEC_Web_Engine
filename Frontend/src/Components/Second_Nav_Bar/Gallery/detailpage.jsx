@@ -1,28 +1,78 @@
-export default function Gallerydetails() {
-  const galleryItems = [
-    { id: 1, title: "Image 1", src: "https://tse3.mm.bing.net/th/id/OIP.nyLAzWYdvc-wb9ntq1cU7QHaHa?pid=Api&P=0&h=220https://tse3.mm.bing.net/th/id/OIP.nyLAzWYdvc-wb9ntq1cU7QHaHa?pid=Api&P=0&h=220" },
-    { id: 2, title: "Image 2", src: "https://via.placeholder.com/150" },
-    { id: 3, title: "Image 3", src: "https://tse3.mm.bing.net/th/id/OIP.Nzs2VOi9fkO4yYH3bygC0wHaDt?pid=Api&P=0&h=220" },
-    { id: 4, title: "Image 4", src: "https://wallpaperaccess.com/full/4723250.jpg" },
-    { id: 5, title: "Image 5", src: "https://via.placeholder.com/150" },
-    { id: 6, title: "Image 6", src: "https://via.placeholder.com/150" },
-    { id: 7, title: "Image 3", src: "https://tse3.mm.bing.net/th/id/OIP.Nzs2VOi9fkO4yYH3bygC0wHaDt?pid=Api&P=0&h=220" },
-    { id: 8, title: "Image 4", src: "https://wallpaperaccess.com/full/4723250.jpg" },
-    { id: 9, title: "Image 5", src: "https://via.placeholder.com/150" },
-    { id: 10, title: "Image 6", src: "https://via.placeholder.com/150" },
-  ];
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+// import "./Gallerydetails.css";
 
+export default function Gallerydetails() {
+  const [modalImage, setModalImage] = useState(null);
+
+  const location = useLocation();
+  const [imagePaths, setImagePaths] = useState([]);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
+  useEffect(() => {
+    if (location.state && location.state.imagespath) {
+      setImagePaths(location.state.imagespath);
+    }
+  }, [location.state]);
+
+  // Separate videos and images
+  const videos = imagePaths.filter(imagePaths => imagePaths.includes("youtube.com") || imagePaths.includes("youtu.be"));
+  const images = imagePaths.filter(imagePaths =>
+    /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(imagePaths) || (!imagePaths.includes("youtube"))
+  );
+  
   return (
     <div className="gallery-container">
       <h2 className="gallery-title">Gallery Page</h2>
-      <div className="gallery-gri">
-        {galleryItems.map((item) => (
-          <div key={item.id} className="gallery-item">
-            <img src={item.src} alt={item.title} />
-            <p>{item.title}</p>
-          </div>
-        ))}
+
+      {/* Videos First */}
+      <div className="gallery-videos elementor-widget-wrap">
+        {videos && (
+          <>
+            {videos?.map((item,i) => (
+              <div key={i} className="gallery-item">
+                <div className="video-wrapper elementor-widget-wrap">
+                  <iframe
+                    src={item}
+                    title={"Videos"}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                {/* <p>{item.title}</p> */}
+              </div>
+            ))}
+          </>
+        )}
       </div>
+
+      {/* Images Next */}
+      <div className="gallery-gri">
+        {images && (
+          <>
+            {images?.map((item,i) => (
+              <div key={i} className="gallery-item">
+                <img src={UrlParser(item)} alt={"Images"} onClick={() => setModalImage(UrlParser(item))} />
+                {/* <p>{item.title}</p> */}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+
+      {/* Popup Modal */}
+      {modalImage && (
+        <div className="modal-overlay" onClick={() => setModalImage(null)}>
+          <span className="close-btn" onClick={() => setModalImage(null)}>&times;</span>
+          <img className="modal-image" src={modalImage} alt="Popup" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
     </div>
-  );
+  );  
 }

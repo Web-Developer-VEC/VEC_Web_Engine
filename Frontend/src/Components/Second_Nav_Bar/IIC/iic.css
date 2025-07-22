@@ -114,10 +114,6 @@
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-.text-accn {
-    padding-top: 3vh;        /* correct spelling: 'padding' */
-    font-weight: bold;       /* correct property for bold text */
-}
 
   .members {
     text-align: center;

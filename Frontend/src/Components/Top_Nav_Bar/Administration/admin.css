@@ -17,6 +17,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    height: 350px;
   }
   
   .admin-page-title {
@@ -60,7 +61,7 @@
   
   .admin-card-name {
     font-size: 1rem;
-    margin: 10px 0 5px;
+    margin: 10px -8px 5px;
     /*color: #333;*/
   }
   

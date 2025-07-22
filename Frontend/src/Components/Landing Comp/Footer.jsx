@@ -21,7 +21,7 @@ const Footer = forwardRef((props, ref) => {
             <div className="contact-details basis-1/4 ml-4">
                 <h3 className="text-secd dark:text-drks font-bold" style={{padding: "0 20px", margintop: "5px"}}>Contact
                     Address</h3>
-                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>{data?.address[0]}<br></br>{data?.address[1]}<br></br>{data?.address[2]}</p>
+                <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>{data?.address[0]}<br></br>{data?.address[1]}<br></br>{data?.address[2]}<br></br>{data?.address[3]}</p>
                 <p style={{marginTop: "27px"}}>
                     Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href="tel:+914426590758"
                                 style={{textDecoration: "none"}}>{data?.phone_number}</a>

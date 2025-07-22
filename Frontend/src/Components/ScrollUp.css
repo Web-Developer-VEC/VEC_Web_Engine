@@ -109,7 +109,7 @@
 .popup-form {
   background: #fff;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   padding: 30px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -124,33 +124,63 @@
   text-align: center;
 }
 
-.popup-form input,
-.popup-form select {
+/* Form layout styles */
+.popup-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Full width fields (Name, Email, Phone) */
+.popup-form input[type="text"],
+.popup-form input[type="email"],
+.popup-form input[type="tel"],
+.popup-form input[type="password"] {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 15px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+}
+
+/* Two-column layout for State, City, Program, Course */
+.form-row-1 {
+  display: flex;
+  gap: 15px;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1em;
 }
 
 .popup-form input:focus,
 .popup-form select:focus {
   border-color: #ff8000;
   outline: none;
-}
-
-.popup-form .captcha {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-right: 50px;
+  box-shadow: 0 0 0 2px rgba(255, 142, 58, 0.2);
 }
 
 /* Improved Checkbox Styles */
 .checkbox-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin: 15px 0;
 }
@@ -166,6 +196,7 @@
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
+  margin-top: 3px;
 }
 
 .checkbox-row input[type="checkbox"]:checked {
@@ -193,24 +224,6 @@
   color: #333;
 }
 
-/* Improved Select Dropdown Styles */
-.popup-form select {
-  background-color: white;
-  appearance: none;
-  -webkit-appearance: none;
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 1em;
-}
-
-.popup-form select:focus {
-  box-shadow: 0 0 0 2px rgba(255, 142, 58, 0.2);
-}
-
-.popup-form button:hover {
-  background: #e66f00;
-}
-
 .popup-form .close-btn {
   position: absolute;
   top: 10px;
@@ -231,8 +244,7 @@
 .error {
   color: #e74c3c;
   font-size: 12px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
   display: block;
 }
 
@@ -275,7 +287,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .popup-form {
     padding: 20px;
     max-width: 95%;
@@ -283,6 +295,11 @@
   
   .popup-form h3 {
     font-size: 20px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
   }
   
   .checkbox-row label {
