@@ -1,31 +1,29 @@
 import LoadComp from "../../LoadComp";
 
-export default function IicFacnir({ iicData }) {
+export default function IicFacnir({ data }) {
+  console.log("NIR Data:", data);
 
     // Update NIR sections
     const nirSectionsArray = [
         {
             heading: "Registration Statistics",
             buttons:
-                iicData?.NIR?.["Registration Statistics"]?.name?.map((name, index) => ({
-                    text: `${name}: ${iicData.NIR["Registration Statistics"].count[index]}`,
-                    path: `/pdfs/${name.replace(/\s+/g, "-")}.pdf`,
+                data["Registration Statistics"]?.name?.map((name, index) => ({
+                    text: `${name}: ${data["Registration Statistics"].count[index]}`,
                 })) || [],
         },
         {
             heading: "Innovation Metrics",
             buttons:
-                iicData?.NIR?.["Innovation Metrics"]?.name?.map((name, index) => ({
-                    text: `${name}: ${iicData.NIR["Innovation Metrics"].count[index]}`,
-                    path: `/pdfs/${name.replace(/\s+/g, "-")}.pdf`,
+                data["Innovation Metrics"]?.name?.map((name, index) => ({
+                    text: `${name}: ${data["Innovation Metrics"].count[index]}`,
                 })) || [],
         },
         {
             heading: "Impact Assessment",
             buttons:
-                iicData?.NIR?.["Impact Assessment"]?.name?.map((name, index) => ({
-                    text: `${name}: ${iicData.NIR["Impact Assessment"].count[index]}`,
-                    path: `/pdfs/${name.replace(/\s+/g, "-")}.pdf`,
+                data["Impact Assessment"]?.name?.map((name, index) => ({
+                    text: `${name}: ${data["Impact Assessment"].count[index]}`,
                 })) || [],
         },
     ]
@@ -53,7 +51,7 @@ export default function IicFacnir({ iicData }) {
 
   return (
     <>
-      {iicData ? (
+      {data ? (
         <div className="nirf-content mt-4">
         
 

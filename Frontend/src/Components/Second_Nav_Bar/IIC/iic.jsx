@@ -15,34 +15,30 @@ import IicFacCertificate from "./certificates";
 import IicFacnir from "./nir";
 
 
-function IicHome() {
-    return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+function IicHome({data}) {
+        return (<div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
         <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
         <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">About IIC</h2>
         <p className="text-text dark:text-drkt">
-            The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to
-            systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The
-            primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with
-            new ideas and transform them into prototypes while they are in their formative years.
+           {data?.aboutiic[0]}
             <br/>
-            MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A
-            network of these IICs will be established to promote innovation in the Institutions through multitudinous
-            modes leading to an innovation promotion eco-system in the campuses.
+            {data?.aboutiic[1]}
         </p>
     </div>);
 }
 
-function IicEst() {
+function IicEst({data}) {
+    console.log("esta",data)
+    
     return (<div className="about-section">
         <div><h1 className="text-brwn dark:text-drkt text-4xl font-bold text-center">Establishment of IIC</h1></div>
 
         <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
             <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
             <p>
-                <br/>• To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should
-                prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.
-                <br/>• To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.
-                <br/>• To develop better Cognitive Ability for Technology Students.
+                <br/>• {data?.majorfocus[0]}
+                <br/>• {data?.majorfocus[1]}
+                <br/>• {data?.majorfocus[2]}
                 <br/>
             </p>
         </div>
@@ -52,8 +48,7 @@ function IicEst() {
     <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
         <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
         <p>
-            To facilitate a conducive environment with the intention of making an innovation to reach the society or
-            industries for the betterment of our country and its citizen through entrepreneurial assets.
+           {data?.vission[0]}
         </p>
     </div>
 
@@ -61,38 +56,29 @@ function IicEst() {
     <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
         <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">Mission</h2>
         <p>
-            To enable student and faculty to establish a start-up to market their innovative products; an enhanced
-            coordination and priority setting across the start-up eco-system; an improved customizable strategy and
-            planning for pursuing productivity growth and better operational efficiencies and value for the start-up
-            companies.
+            {data?.mission[0]}
         </p>
     </div>
 </div>
     <div>
-         <IicEco/>
+         <IicEco data={data?.function}/>
     </div>
 
     </div>);
 }
 
-function IicEco() {
+function IicEco({data}) {
     return (<div className="mb-10">
         <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
             <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
             <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
             <p>
-                <br/>• To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC
-                in a
-                time-bound manner.
-                <br/>• To identify and reward innovations and share success stories.
-                <br/>• To organize periodic workshops/ seminars/ interactions with entrepreneurs, investors,
-                professionals
-                and create a mentor pool for student innovators.
-                <br/>• Networking with peers and national entrepreneurship development organizations.
-                <br/>• To create an Institution's Innovation portal to highlight innovative projects carried out by
-                institution's faculty and students.
-                <br/>• To organize Hackathons, idea competitions, mini-challenges etc. with the involvement of
-                industries.
+                <br/>• {data[0]}
+                <br/>• {data[1]}
+                <br/>• {data[2]}
+                <br/>• {data[3]}
+                <br/>• {data[4]}
+                <br/>• {data[5]}
                 <br/>
             </p>
         </div>
@@ -116,29 +102,29 @@ const Iic = ({toggle, theme}) => {
     const rightCardsRef = useRef([])
     const intervalRef = useRef(null);
     const [iicData, setIicData] = useState(null)
+    console.log(iicData)
     const navData = {
-        "Home": <IicHome/>,
-        "Establishment of IIC": <IicEst/>,
+        "Home": <IicHome data={iicData?.home}/>,
+        "Establishment of IIC": <IicEst data={iicData?.establishment}/>,
         "Council": {
-            "Faculty": <IICFaculty/>,  
-            "Expert Representation": <IICExpert/>,    
-            "Student Representation": <IICStudent/>   
+            "Faculty": <IICFaculty data={iicData?.Council.Faculty}/>,  
+            "Expert Representation": <IICExpert data={iicData?.Council.Expert_Representation}/>,    
+            "Student Representation": <IICStudent data={iicData?.Council.Student_Representation}/>   
         },
 
         "Event Organized": {
-            "IIC 3.0": <IicFacEvent title={"IIC 3.0"}/>,  
-            "IIC 4.0": <IicFacEvent title={"IIC 4.0"}/>,  
-            "IIC 5.0": <IicFacEvent title={"IIC 5.0"}/>,
-            'IIC 6.0': <IicFacEvent title={"IIC 6.0"}/>,
-            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"}/>
+            "IIC 3.0": <IicFacEvent title={"IIC 3.0"} data={iicData?.Events["IIC 0.3"]}/>,  
+            "IIC 4.0": <IicFacEvent title={"IIC 4.0"} data={iicData?.Events["IIC 0.4"]}/>,  
+            "IIC 5.0": <IicFacEvent title={"IIC 5.0"} data={iicData?.Events["IIC 0.5"]}/>,
+            'IIC 6.0': <IicFacEvent title={"IIC 6.0"} data={iicData?.Events["IIC 0.6"]}/>,
+            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData?.Events["IIC 0.7"]}/>
         },
-        "Gallery": <IicGal/>,
-        "Kapila bar": <KamalaBar/>, 
-        "Mentee":   <IICMentee/>,
-        "Yukti" : <IicFacnir iicData={iicData}/>,
-        "Certificate":<IicFacCertificate iicData={iicData}/>,
-        "Policy" : <IicFacPolicy iicData={iicData}/>,
-        "Contact": <IICContact/> 
+        "Kapila": <KamalaBar data={iicData?.kapila_bar} />, 
+        "Mentee":   <IICMentee data={iicData?.mentee}/>,
+        "Yukti" : <IicFacnir data={iicData?.yukti}/>,
+        "Certificate":<IicFacCertificate data={iicData?.certificate}/>,
+        "Policy" : <IicFacPolicy data={iicData?.policy}/>,
+        "Contact": <IICContact data={iicData?.contact}/>, 
     }   
     const [iic, setIic] = useState(Object.keys(navData)[0])
 

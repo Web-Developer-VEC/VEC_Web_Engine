@@ -2,7 +2,7 @@ import React from 'react';
 import '../YRC.css';
 import './IICFaculty.css'
 
-function IICFaculty(){
+function IICFaculty({data}){
 
     const iccFacultyData = [
   {
@@ -49,15 +49,12 @@ function IICFaculty(){
       
       </h2>
       <div className="iic-members-grid">
-     {iccFacultyData.map(faculty => (
-       <div key={faculty.id} className="faculty-card dark:bg-text">
+     {data?.map((faculty,i) => (
+       <div key={i} className="faculty-card dark:bg-text">
           {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
           <div className="ncc-n-stu-detail p-2 text-left">
-            <h5 className="text-center  ">{faculty.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Designation : {faculty.designation}</p>
-         
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Position : {faculty.position}</p>
-            <p className="pl-4 text-brwn dark:text-drka  text-[16px]">Affiliation: {faculty.Affiliation}</p>
+            <h5 className="text-center  text-[18px-">{faculty.name}</h5>
+            <p className="pl-4 text-brwn dark:text-drka text-sm">Designation : {faculty.designation}</p>
           </div>
         </div>
       ))}
@@ -73,7 +70,8 @@ function IICFaculty(){
 
 
 
-function IICExpert(){
+function IICExpert({data}){
+  console.log("expert",data)
 
     const iccFacultyData = [
   {
@@ -120,15 +118,13 @@ function IICExpert(){
       
       </h2>
       <div className="iic-members-grid">
-     {iccFacultyData.map(faculty => (
+     {data?.map(faculty => (
        <div key={faculty.id} className="faculty-card dark:bg-text">
           {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
           <div className="ncc-n-stu-detail p-2 text-left">
-            <h5 className="text-center">{faculty.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Designation : {faculty.designation}</p>
+            <h5 className="text-center text-[18px]">{faculty.name}</h5>
+            <p className="pl-4 text-brwn dark:text-drka text-sm">Designation : {faculty.designation}</p>
          
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Position : {faculty.position}</p>
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Affiliation: {faculty.Affiliation}</p>
           </div>
         </div>
       ))}
@@ -142,8 +138,12 @@ function IICExpert(){
 
 
 
-const IICStudent=()=> {
+const IICStudent=({data})=> {
+  console.log("stu",data);
 
+
+  const obj = Object.keys(data);
+  console.log("Obj" , obj)
     const iccFacultyData = [
   {
     id: 1,
@@ -184,24 +184,32 @@ const IICStudent=()=> {
     <>
     <div className='p-8'>
 
-    <h2 className="iic-h3">
+    <h2 className="iic-h3 text-brwn dark:drkt">
        STUDENT REPRESENTATION
       
       </h2>
-      <div className="iic-members-grid">
-     {iccFacultyData.map(faculty => (
-       <div key={faculty.id} className="faculty-card dark:bg-text">
-          {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
-          <div className="ncc-n-stu-detail p-2 text-left">
-            <h5 className="text-center">{faculty.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Designation : {faculty.designation}</p>
-         
-            <p className="pl-4 text-brwn dark:text-drkab text-[16px]">Position : {faculty.position}</p>
-            <p className="pl-4 text-brwn dark:text-drka text-[16px]">Affiliation: {faculty.Affiliation}</p>
-          </div>
+      <div className="iic-stud-grid">
+        {obj?.map((obj,i) => (
+          <>
+            <h2 className='text-3xl font-bold text-brwn dark:text-drkt text-center'>{obj}</h2>
+            <div className='flex flex-wrap gap-[20px]'>
+              {data[obj].map((details,i) => (
+                  <div key={i} className="iic-faculty-card dark:bg-text">
+                      <div className="ncc-n-stu-detail p-2 text-left">
+                        <h5 className="text-center text-[18px]">{details.name}</h5>
+                        <p className="pl-4 text-brwn dark:text-drka text-sm">Responsibility: {details.responsibility}</p>
+                    
+                        <p className="pl-4 text-brwn dark:text-drkab text-sm">Sex: {details.sex}</p>
+                        <p className="pl-4 text-brwn dark:text-drkab text-sm"><span>{details.dept}</span><span>{details.year}</span></p>
+                        <p className="pl-4 text-brwn dark:text-drka text-sm">Phone: {details.phone}</p>
+                        <p className="pl-4 text-brwn dark:text-drka text-sm">Email: {details["mail id"]}</p>
+                      </div>
+                  </div> 
+              ))}
+            </div>
+          </>
+          ))}
         </div>
-      ))}
-    </div>
     </div>
     </>
 

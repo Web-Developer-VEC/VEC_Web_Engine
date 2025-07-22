@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-const pdfData = {
-  "KAPILA SCHEME DOCUMENT": "$$$$$$$$$.pdf",
-  "KAPILA MINUTES": "#########.pdf",
-  "KAPILA STATEMENT OF EXPENDITURE": "@@@@@@@@.pdf",
-};
-
-const KapilaPage = () => {
+const KapilaPage = ({data}) => {
   const [activePdf, setActivePdf] = useState(null);
+  console.log("Kapila",data);
+  
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
 
   const handleButtonClick = (pdfKey) => {
     setActivePdf(pdfKey);
@@ -17,7 +19,7 @@ const KapilaPage = () => {
     <div className="p-6 mt-4">
       {/* Horizontal Button Group */}
       <div className="flex justify-center  gap-8 mb-6">
-        {Object.keys(pdfData).map((key) => (
+        {Object.keys(data).map((key) => (
           <button
             key={key}
             type="button"
@@ -38,7 +40,7 @@ const KapilaPage = () => {
             {activePdf}
           </h3>
           <embed
-            src={pdfData[activePdf]}
+            src={UrlParser(data[activePdf])}
             type="application/pdf"
             width="100%"
             height="600px"

@@ -1,12 +1,4 @@
-export default function Seedmoney () {
-    const startupsData = [
-        {slNo: 1, name: "Vivid", funding: "₹10,00,000",nameOrg: "MSME", year: "2021-2022"},
-        {slNo: 2, name: "Green M", funding: "₹15,00,000",nameOrg: "MSME", year: "2021-2022"},
-        {slNo: 3, name: "Coarve IT", funding: "₹20,00,000",nameOrg: "MSME", year: "2021-2022"},
-        {slNo: 4, name: "Farm Far Away", funding: "₹25,00,000",nameOrg: "MSME", year: "2021-2022"},
-        {slNo: 5, name: "Cataract prediction using transfer learning", funding: "₹30,00,000",nameOrg: "MSME", year: "2021-2022"}
-    ];
-
+export default function Seedmoney ({data}) {
     return (
         <div className="ic-table-container m-4">
             <div>
@@ -24,14 +16,22 @@ export default function Seedmoney () {
                     </tr>
                     </thead>
                     <tbody>
-                    {startupsData.map((startup) => (
-                        <tr key={startup.slNo}>
-                            <td className="ic-table-data">{startup.slNo}</td>
-                            <td className="ic-table-data">{startup.name}</td>
-                            <td className="ic-table-data">{startup.funding}</td>
-                            <td className="ic-table-data">{startup.nameOrg}</td>
-                            <td className="ic-table-data">{startup.year}</td>
-                        </tr>
+                    {data.map((startup, i) => (
+                        <>
+                            {startup.funds.map((fund, index) => (
+                            <tr key={`${startup.slNo}-${index}`}>
+                                {index === 0 ? (
+                                <>
+                                    <td rowSpan={startup.funds.length} className="ic-table-data">{i + 1}</td>
+                                    <td rowSpan={startup.funds.length} className="ic-table-data">{startup.name}</td>
+                                </>
+                                ) : null}
+                                <td className="ic-table-data">{fund.amount_in_rupees}</td>
+                                <td className="ic-table-data">{fund.organization}</td>
+                                <td className="ic-table-data">{fund.year}</td>
+                            </tr>
+                            ))}
+                        </>
                     ))}
                     </tbody>
                 </table>

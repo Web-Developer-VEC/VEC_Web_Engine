@@ -1,8 +1,4 @@
-export default function IicFacEvent({title}) {
-  const eventsData = [
-        {slNo: 1, name: "Innovative Methods of Industrial Automation in Manufacturing Systems", date: "19.08.2021", no_part: "123"},
-    ];
-
+export default function IicFacEvent({title, data}) {
     return (
         <div className="ic-table-container m-4">
             <div>
@@ -19,12 +15,12 @@ export default function IicFacEvent({title}) {
                     </tr>
                     </thead>
                     <tbody>
-                    {eventsData.map((event) => (
+                    {data?.map((event,i) => (
                         <tr key={event.slNo}>
-                            <td className="ic-table-data">{event.slNo}</td>
-                            <td className="ic-table-data">{event.name}</td>
+                            <td className="ic-table-data">{i+1}</td>
+                            <td className="ic-table-data">{event["name of the program"]}</td>
                             <td className="ic-table-data">{event.date}</td>
-                            <td className="ic-table-data">{event.no_part}</td>
+                            <td className="ic-table-data">{event["Number of Participants"]}</td>
                         </tr>
                     ))}
                     </tbody>
