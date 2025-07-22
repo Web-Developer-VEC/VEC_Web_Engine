@@ -10,29 +10,73 @@ import Projects from "./Projects";
 import Seedmoney from "./Seedmoney";
 import Patents from "./Patents";
 import Applynow from "./ApplyNow";
+import axios from "axios";
 
 
 const Incub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
+    const [home, sethome] = useState(null)
+    const [startup, setstartup] = useState(null)
+    const [committee, setcommittee] = useState(null)
+    const [facilities, setfacilities] = useState(null)
+    const [project, setproject] = useState(null)
+    const [patents, setpatents] = useState(null)
+    const [seedmoney, setseedmoney] = useState(null)
+    const [applynow, setapplynow] = useState(null)
     const navData = {
-        "Home": <CubHme/>,
-        "Incubated Startups": <Startup/>, 
-        "Committee": <Committe/>,  
-        "Facilities": <Facilities/>,
-        "Project": <Projects/>,
-        "Patents": <Patents/>,
-        "Seed Money": <Seedmoney/>,
+        "Home": <CubHme data={home}/>,
+        "Incubated Startups": <Startup data={startup}/>, 
+        "Committee": <Committe data={committee}/>,  
+        "Facilities": <Facilities data={facilities}/>,
+        "Project": <Projects data={project}/>,
+        "Patents": <Patents data={patents}/>,
+        "Seed Money": <Seedmoney data={seedmoney}/>,
         "Apply Now": <Applynow/>           
     };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.get('/api/incubation');
+
+                const data = responce.data[0];
+
+                sethome(data.home);
+                setstartup(data.start_up);
+                setseedmoney(data.seed_money);
+                setfacilities(data.facilities);
+                setproject(data.projects);
+                setpatents(data.patent);
+                setcommittee(data.incubation_committee);
+            } catch (error) {
+                console.error("Error fetching incubation data",error);
+            }
+        }
+        fetchData();
+    }, []);
+// const [hari, sethari] =useState(null)
+// useEffect(()=>{
+//     const ajith = async()=>{
+//         try{
+//         const vishal=await axios.get('/api/incumbation');
+//         const data =vishal.data[0];
+//         sethari(data);
+//         }
+//         catch(error){
+//             console.error("hcdc")
+//         }
+
+//        }
+//        ajith();
+// },[]);
 
 
-    function CubHme() {
+    function CubHme({data}) {
         return (
             <div className="ic-home-container">
                 <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
                     <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h2>
                     <p className="ic-centered-text text-text dark:text-drkt">
-                        The objective of the scheme is to promote and support untapped creativity and to promote adoption of latest technologies in MSMEs that seek the validation of their ideas at the proof-of-concept level. The scheme also supports engagement with enablers who will advise such MSMEs in expanding the business by supporting them in design, strategy and execution.
+                        {data?.about_us}
                     </p>
                 </div>
 
@@ -40,10 +84,9 @@ const Incub = ( {toggle, theme}) => {
                     <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
                         <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Activities</h3>
                         <ul>
-                            <li>Recognition of eligible institutions as Host Institute (HI) to act as Business Incubator (BI)</li>
-                            <li>Approval of Ideas of Incubatees submitted through Host Institute (HI)</li>
-                            <li>Assistance for nurturing of Ideas to HI</li>
-                            <li>Assistance towards Capital Support to HI for Plant and Machinery</li>
+                            {data?.activities?.map((adv,i)=>(
+                                <li>{adv}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>

@@ -25,6 +25,7 @@ import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.js
 import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
 import AcademicDepartments from "./Components/Top_Nav_Bar/Academics/Department.jsx";
 import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
+import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Admisiion Pages Imports */
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
@@ -86,6 +87,9 @@ import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
 import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
 import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
 import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
+
+import { Hand } from "lucide-react";
+import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -202,6 +206,8 @@ const App = () => {
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
+                                <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
+                                <Route path="/hr-handbook" drk element={<HR_Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
                                 <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme}/>}/>
@@ -253,7 +259,7 @@ const App = () => {
                                 <Route path="/hosLanding" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
-                                <Route path="/gallery-details/:id" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 

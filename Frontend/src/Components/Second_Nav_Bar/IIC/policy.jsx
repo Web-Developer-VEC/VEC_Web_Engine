@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoadComp from "../../LoadComp";
 
-export default function IicFacPolicy({ iicData }) {
+export default function IicFacPolicy({ data }) {
     const [selectedAction, setSelectedAction] = useState(null)
         const openPdf = (category, year) => {
         setSelectedAction({category, year})
@@ -14,14 +14,14 @@ export default function IicFacPolicy({ iicData }) {
 
 
     const policyArray =
-        iicData?.policy?.name?.map((name, index) => ({
+        data?.name?.map((name, index) => ({
         year: name,
-        path: UrlParser(iicData.policy.pdfpath[index]),
+        path: UrlParser(data.pdf_path[index]),
     })) || []
 
   return (
     <>
-      {iicData ? (
+      {data ? (
         <div className="nirf-content mt-4">
           <h1 className="text-accn text-4xl mb-4">Faculty - Policy</h1>
 

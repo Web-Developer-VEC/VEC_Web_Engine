@@ -162,7 +162,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   if (!availableSections.length) return <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
       <LoadComp txt={""}/>
     </div>
-  if (!isOnline) return <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
+  if (!isOnline) return <div className={" grid grid-cols-1 place-content-center top-13 h-screen"}>
       <LoadComp txt={"You are offline. Please check your internet connection."}/>
     </div>
 
@@ -170,7 +170,7 @@ const DepartmentPage = ({ theme, toggle }) => {
     <div className={styles.main}>
       {/* Header */}
       <div className={styles.header}>
-        <Toggle attr="absolute bottom-0 float-right right-24 size-12" toggle={toggle} theme={theme} />
+        <Toggle attr="absolute top-0  right-0  float-right  z-9999  h-12 w-12 z-[100000]" toggle={toggle} theme={theme} />
         <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>

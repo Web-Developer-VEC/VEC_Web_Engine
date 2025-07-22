@@ -81,15 +81,17 @@ const Head = () => {
         },
         {
             main: "Administration",
-            cod: [0, 5],
+            cod: [0, 7],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Principal", sup: [], lnk: "/principal"},
                 {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: "/dean"},
                 {hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin"},
                 {hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee"},
+                {hrd: false, ttl:"Handbook",sup:[],lnk:"/handbook"},
+                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser("/static/pdfs/handbook/HR-Handbook.pdf") , openInNewTab: true},
                 {hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org"},
-            ],
+            ], 
         },
         {
             main: "Academics",
