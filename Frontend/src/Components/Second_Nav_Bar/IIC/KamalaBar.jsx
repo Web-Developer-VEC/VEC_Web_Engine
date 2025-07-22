@@ -12,9 +12,9 @@ const KapilaPage = () => {
   const handleButtonClick = (pdfKey) => {
     setActivePdf(pdfKey);
   };
-
+  
   return (
-    <div className="p-6 mt-4">
+    <div className="p-6 mt-4 pb-10">
       {/* Horizontal Button Group */}
       <div className="flex justify-center  gap-8 mb-6">
         {Object.keys(pdfData).map((key) => (
@@ -33,7 +33,7 @@ const KapilaPage = () => {
 
       {/* Show PDF on click */}
       {activePdf && (
-        <div className="border p-4  bg-white shadow-lg">
+        <div className="border p-8 mt-20 w-[94%] mx-auto bg-white shadow-lg">
           <h3 className="text-xl font-bold mb-4 text-center">
             {activePdf}
           </h3>
@@ -44,6 +44,7 @@ const KapilaPage = () => {
             height="600px"
             className="border"
           />
+
         </div>
       )}
     </div>
