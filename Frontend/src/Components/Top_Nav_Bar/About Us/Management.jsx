@@ -77,7 +77,7 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[0])} alt="Founder's Image" className="founder"/>
                   <div className="flex justify-center items-center flex-col mt-2">
-                    <p className="font-bold">Shri. M.V. Muthuramalingam</p>
+                    <p className="font-bold">Shri. M.V. MUTHURAMALINGAM</p>
                     <p className="text-brwn dark:text-drka">Chairman</p>
                   </div>
               </div>
@@ -93,7 +93,7 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container1">
                 <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
                   <div className="flex justify-center items-center flex-col mt-2">
-                    <p className="font-bold">Shri. M.V. VelMurugan</p>
+                    <p className="font-bold">Shri. M.V.M. VELMURUGAN</p>
                     <p className="text-brwn dark:text-drka">Chief Executive Officer</p>
                   </div>
               </div>
@@ -121,7 +121,7 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[2])} alt="deputy ceo Image" />
                 <div className="flex justify-center items-center flex-col mt-2">
-                  <p className="font-bold">Shri. V. Karthik Velmurugan</p>
+                  <p className="font-bold">Shri. V. KARTHIK MUTHURAMALINGAM</p>
                   <p className="text-brwn dark:text-drka">Deputy CEO</p>
                 </div>
               </div>

@@ -55,7 +55,7 @@ const Ecell = ({toggle,theme}) => {
     return (
         <>
             <Banner theme={theme} toggle={toggle}
-            backgroundImage={"./Banners/placementbanner.webp"}
+            backgroundImage="./Banners/IIC.webp"
             headerText="E - Cell"
             subHeaderText="Turning Ideas into Action, and Dreams into Enterprises."
         />

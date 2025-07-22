@@ -55,7 +55,7 @@ const Sidebar = (props) => {
     const hdrs = [
         { text: "Library", link: "/library" },
         { text: "IQAC", link: "/iqac" },
-        { text:"Accreditations & ranking ",link:"/Accredation"},
+        { text:"Accred & ranking ",link:"/Accredation"},
         { text: "IIC", link: "/iic" },
         { text: "Incubation Cell", link: "/incubation" },
         { text: "E-Cell", link: "/ecell" },
@@ -67,7 +67,8 @@ const Sidebar = (props) => {
         { text: "Transport", link: "/transport" },
         { text: "Hostel", link: "/hoslanding" },
         { text: "Other Facilities", link: "/other-facilities" },
-         {text: "Help desk", link: '/grievances'}
+         {text: "Help desk", link: '/grievances'},
+         {text: "Gallery", link: '/Gallery'},
       ]
 
 
