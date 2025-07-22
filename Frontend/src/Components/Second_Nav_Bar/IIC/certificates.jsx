@@ -26,7 +26,7 @@ export default function IicFacCertificate({data}) {
     <>
       {data ? (
         <div className="nirf-content mt-4">
-          <h1 className="text-accn text-4xl mb-4">Faculty - Certificate</h1>
+          <h1 className="text-accn text-4xl mb-4">Certificate</h1>
 
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
             <div className="nirf-year-actions faculty-icc">
@@ -39,7 +39,7 @@ export default function IicFacCertificate({data}) {
                 return (
                   <div
                     key={index}
-                    className={`text-[10px] nirf-action-button hover:bg-accn hover:text-prim dark:hover:bg-drka
+                    className={`px-6 py-3 font-semibold rounded-xl nirf-action-button hover:bg-accn hover:text-prim dark:hover:bg-drka
                       ${
                         isActive
                           ? "bg-[#800000] text-white"
@@ -54,9 +54,11 @@ export default function IicFacCertificate({data}) {
             </div>
 
             {selectedAction && selectedAction.category === "Certificate" && (
-              <div className="iic-pdf-container">
-                <h3>{`Viewing: ${selectedAction.name}`}</h3>
-                {/* <embed
+
+              <div className="border p-8 mt-20 w-[94%] mx-auto bg-white shadow-lg">
+                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+                <embed
+
                   className="embed"
                   src={
                     certificateArray.find(

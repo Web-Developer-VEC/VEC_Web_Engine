@@ -19,12 +19,15 @@ export default function IicFacPolicy({ data }) {
         path: UrlParser(data.pdf_path[index]),
     })) || []
 
+  //   function scrollToPDF() {
+  //   document.getElementById("policyPdfViewer").scrollIntoView({ behavior: "smooth" });
+  // }
+
   return (
     <>
       {data ? (
         <div className="nirf-content mt-4">
-          <h1 className="text-accn text-4xl mb-4">Faculty - Policy</h1>
-
+          <h1 className="text-accn text-4xl mb-4">Policy</h1>
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
             <div className="nirf-year-actions faculty-icc">
               {policyArray.map((action, index) => {
@@ -34,21 +37,27 @@ export default function IicFacPolicy({ data }) {
                   selectedAction.year === action.year;
 
                 return (
-                  <div
+                  <button
                     key={index}
-                    className={`text-[10px] nirf-action-button cursor-pointer 
+                    className={`px-6 py-3 font-semibold rounded-xl nirf-action-button cursor-pointer 
                       ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"}
                     `}
-                    onClick={() => openPdf("Policy", action.year)}
+                   onClick={() => {
+                   
+                    openPdf("Policy", action.year);
+                    //  setTimeout(() => {
+                    //   scrollToPDF();
+                    // }, 300);
+                  }}
                   >
                     {action.year}
-                  </div>
+                  </button>
                 );
               })}
             </div>
 
             {selectedAction && selectedAction.category === "Policy" && (
-              <div className="nirf-pdf-container">
+              <div className="border p-8 mt-10 w-[94%] mx-auto bg-white shadow-lg" id="policyPdfViewer">
                 <h3>{`Viewing: ${selectedAction.year}`}</h3>
                 <embed
                   className="embed"
