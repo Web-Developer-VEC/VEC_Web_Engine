@@ -253,7 +253,7 @@ const App = () => {
                                 <Route path="/hosLanding" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
-                                <Route path="/gallery-details/:id" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
