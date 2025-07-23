@@ -210,7 +210,7 @@ const IQAC = ({ toggle , theme }) => {
                 <h2 className="text-[24px] text-center text-accn dark:text-drkt my-4 basis-full">IQAC Coordinator</h2>
                 {coordinator && (
                     <div className="coordinator-card ">
-                        <div className="coordinator-image-container max-w-[25vmax] h-auto">
+                        <div className="coordinator-image-container w-500px h-auto">
                             <img src={UrlParser(coordinator.image) || "/placeholder.svg"} alt={coordinator.name}
                                  className="coordinator-image"/>
                         </div>

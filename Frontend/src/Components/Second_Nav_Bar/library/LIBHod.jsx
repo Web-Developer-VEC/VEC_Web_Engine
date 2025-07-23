@@ -51,7 +51,7 @@ const LIBHod = () => {
         <h2 className="text-2xl font-semibold">{hod.name}</h2>
         <p className="text-lg text-accn dark:text-drka mb-2">{hod.designation}</p>
         <p className="text-md mb-2 text-brwn dark:text-drka">{hod.education_qualification}</p>
-        <p className="text-xl italic text-justify-center">{hod.message}</p>
+        <p className="text-xl text-justify-center">{hod.message}</p>
       </div>
     </article>
   );

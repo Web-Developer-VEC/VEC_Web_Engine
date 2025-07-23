@@ -191,7 +191,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
             The VEC Alumni Cell fosters relationships between alumni, students,
             and the institution, nurturing lifelong connections and mutual
             growth. It plays a crucial role in engaging alumni, leveraging their
-            expertise, and strengthening institutional ties for the benefit of
+            expertise and strengthening institutional ties for the benefit of
             current students and the alma mater.
           </p>
         </section>
@@ -206,7 +206,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
             <p className="section-content">
               To establish a strong, lifelong bond between the institution and
               its alumni, fostering a mutually beneficial relationship that
-              enhances professional growth, knowledge sharing, and institutional
+              enhances professional growth, knowledge sharing and institutional
               development.
             </p>
           </div>
@@ -222,7 +222,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
                 to the academic and career growth of current students.
               </li>
               <li>
-                To facilitate mentorship programs, networking opportunities, and
+                To facilitate mentorship programs, networking opportunities and
                 industry collaborations through alumni involvement.
               </li>
               <li>
@@ -231,7 +231,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
               </li>
               <li>
                 To create a platform for alumni to contribute to institutional
-                growth through knowledge sharing, placements, and corporate
+                growth through knowledge sharing, placements and corporate
                 connections.
               </li>
             </ul>
@@ -244,20 +244,20 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
             <ul className="section-content">
               <li>
                 Strengthening Alumni Network – To create and maintain a strong
-                bond among alumni, faculty, and current students.
+                bond among alumni, faculty and current students.
               </li>
               <li>
                 Mentorship & Career Support – To provide guidance, career
-                counseling, and professional mentorship to students and recent
+                counseling and professional mentorship to students and recent
                 graduates.
               </li>
               <li>
                 Industry Collaboration – To leverage alumni expertise for guest
-                lectures, workshops, internships, and job opportunities.
+                lectures, workshops, internships and job opportunities.
               </li>
               <li>
                 Institutional Growth & Development – To contribute to the
-                institution’s progress through feedback, donations, and
+                institution’s progress through feedback, donations and
                 infrastructure support.
               </li>
               <li>
@@ -266,7 +266,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
               </li>
               <li>
                 Academic & Research Contributions – To support research,
-                knowledge sharing, and industry-academic collaborations.
+                knowledge sharing and industry-academic collaborations.
               </li>
             </ul>
           </div>

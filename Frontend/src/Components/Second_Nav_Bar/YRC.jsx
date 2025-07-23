@@ -282,7 +282,7 @@ const Awardsnss = ({ data }) => {
             STUDENT COORDINATORS
             <div className="yrc-underline3"></div>
           </h2>
-          <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto  justify-items-center justify-content-center align-items-center">
+          <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
           {student?.name?.map((name,i) => (
             <div key={i} className="yrc-member-card dark:bg-text">
               <img

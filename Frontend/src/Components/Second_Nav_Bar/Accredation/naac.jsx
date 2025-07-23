@@ -76,7 +76,7 @@ const Naac = ({ toggle, theme }) => {
             <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
             <p>
               The NAAC conducts assessment and accreditation of Higher
-              Educational Institutions (HEI) such as colleges, universities, or
+              Educational Institutions (HEI) such as colleges, universities or
               other recognised institutions to derive an understanding of the
               ‘Quality Status’ of the institution...
             </p>
