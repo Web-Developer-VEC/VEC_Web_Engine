@@ -80,8 +80,6 @@ import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
-
-import ScrollUp from "./Components/ScrollUp.jsx";
 import SideButton from "./Components/sideButton.jsx";
 
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
