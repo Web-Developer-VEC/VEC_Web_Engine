@@ -89,7 +89,7 @@ const Handbook = ({ theme, toggle }) => {
             <HandbookButton
               key={idx}
               year={year}
-              pdfspath={handBook?.pdfs_path[idx]}
+              pdfspath={`${handBook?.pdfs_path[idx] ? UrlParser(handBook?.pdfs_path[idx]) : '#'}`}
             />
           ))}
         </div>
