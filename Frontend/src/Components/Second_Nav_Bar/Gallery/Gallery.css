@@ -14,6 +14,7 @@
   letter-spacing: 0.5px;
   line-height: 1.2;
   text-transform: capitalize;
+  padding: 20px;
 }
 
 
@@ -109,8 +110,10 @@
     .gallery-item{
         height: 100px;
 
+    } 
+    .gallery-title{
+    margin-top: 20px;
     }
-    /* Adjust side buttons for desktop if they are still fixed */
     .side-buttons-container {
         /* Revert or adjust for desktop view if desired */
         top: 150px; /* Example: adjust top position */
@@ -160,6 +163,12 @@
   padding: 10px;
 }
 
+.gallery-item-video{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .gallery-item img,
 .gallery-item video {
   width: 100%;
@@ -185,8 +194,8 @@
 
 .gallery-videos,
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) */
   gap: 20px;
   margin-bottom: 40px;
 }
@@ -198,7 +207,7 @@
   overflow: hidden;
   text-align: center;
   position: relative; /* For play button positioning */
-  height: 400px;
+  height: 325px;
 }
 
 .gallery-item img,
@@ -207,6 +216,16 @@
   height: 300px; /* Adjust as needed */
   display: block;
   object-fit: cover;
+}
+
+.video-wrapper {
+  width: 450px;  
+}
+
+@media (max-width:768px){
+  .video-wrapper{
+    width:380px;
+  }
 }
 
 .video-thumbnail-wrapper {
@@ -282,5 +301,6 @@
     width: 100%;
     flex-wrap: wrap;
     align-content: flex-start;
+    justify-content: space-evenly;
 }
 

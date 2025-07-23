@@ -369,7 +369,6 @@ const IQAC = ({ toggle , theme }) => {
                                 <th className="text-left px-4 py-2 text-text w-2">S.No</th>
                                 <th className="text-left px-4 py-2 text-text">Departments</th>
                                 <th className="text-left px-4 py-2 text-text">Reports</th>
-                                <th className="text-left px-4 py-2 text-text">Minutes</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -381,14 +380,6 @@ const IQAC = ({ toggle , theme }) => {
                                             <ul classname="reportlist">
                                                 {dept.reports.map((rep,i) => (
                                                 <li ><a href={`${rep.pdfs_path ? UrlParser(rep.pdfs_path) : '#'}`} target={`${rep.pdfs_path ? '_blank' : ''}`}>{rep.name}</a></li> 
-                                                ))}
-
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                {dept.reports.map((min,i) => (
-                                                <li><a href={`${min.pdfs_path ? UrlParser(min.pdfs_path) : '#'}`} target={`${min.pdfs_path ? '_blank' : ''}`}>{min.name}</a></li> 
                                                 ))}
 
                                             </ul>

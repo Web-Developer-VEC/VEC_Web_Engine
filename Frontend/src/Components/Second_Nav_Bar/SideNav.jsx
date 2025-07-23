@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
     FaUserTie,
     FaChalkboardTeacher,
@@ -56,9 +57,10 @@ import {
     FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning, 
 } from "react-icons/fa";
 import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
-import { Medal, MedalIcon, Shell, Trophy } from "lucide-react";
+import { ArrowBigLeft, Medal, MedalIcon, Shell, Trophy } from "lucide-react";
 
-const SideNav = ({sts, setSts, navData, cls}) => {
+const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
+    const navigate = useNavigate();
     function setIco(ttl) {
         const sty = "size-4 group-hover:text-text text-secd dark:text-drks inline mr-1 mb-1"
         switch (ttl) {
@@ -252,9 +254,17 @@ const SideNav = ({sts, setSts, navData, cls}) => {
             <nav className="bg-black pt-4 pb-12 flex gap-y-2 gap-x-2 flex-wrap
                 lg:grid text-md h-full content-start col-start-0 col-span-10 lg:col-span-2
                 transition-all duration-300 ease-in-out">
+                {backButton && (
+                    <button
+                        onClick={() => navigate(-1)} // 👈 go back to previous page
+                        className="px-4 py-2 m-2 text-prim hover:text-text rounded hover:bg-secd dark:bg-drks dark:hover:bg-drks/80 transition-colors w-fit flex "
+                    >
+                        <ArrowBigLeft/> Back
+                    </button>
+                )}
                 {Object.keys(navData).map((itm, ind) => (
                     (Object.keys(navData[itm]).length <= 5 && Object.keys(navData[itm])[0] !== "$$typeof") ?
-                        <label className={`px-4 py-2 border-secd dark:border-drks min-w-1/2 
+                    <label className={`px-4 py-2 border-secd dark:border-drks min-w-1/2 
                             text-prim hover:bg-secd dark:hover:bg-drks hover:text-text dark:hover:text-drkt 
                             has-[:checked]:bg-secd/20 rounded-lg 
                             has-[:checked]:dark:bg-drks has-[:checked]:text-prim has-[:checked]:dark:text-drkp

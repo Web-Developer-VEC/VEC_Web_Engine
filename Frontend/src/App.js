@@ -90,7 +90,10 @@ import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
 import { Hand } from "lucide-react";
 import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
+
 import ScrollFromBottom from "./Components/ScrollFromBottom.jsx";
+import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
 
 
 
@@ -256,6 +259,8 @@ const App = () => {
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
                                 <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/nccnavy" drk element={<NCC_NAVY toggle={toggle} theme={theme}/>}/>
+                                <Route path="/nccarmy" drk element={<NCC_ARMY toggle={toggle} theme={theme}/>}/>
                                 <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/>
