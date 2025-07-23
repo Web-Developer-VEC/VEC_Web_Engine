@@ -8,9 +8,11 @@ import Army from "../../Assets/NccArmy.png";
 import LoadComp from "../../LoadComp"
 import { useEffect } from "react";
 import { ArrowBigLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const NCCMAIN = ({ toggle, theme }) => {
   const [activePage, setActivePage] = useState("buttons");
+  const navigate = useNavigate();
 
         const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -73,7 +75,7 @@ const NCCMAIN = ({ toggle, theme }) => {
             <div className="NCC-main-button-group">
               <button
                 className="NCC-main-button"
-                onClick={() => setActivePage("army")}
+                onClick={() => navigate('/nccarmy')}
               >
                 VEC NCC ARMY <br />
                 [TN] SIG COY NCC
@@ -81,7 +83,7 @@ const NCCMAIN = ({ toggle, theme }) => {
 
               <button
                 className="NCC-main-button"
-                onClick={() => setActivePage("navy")}
+                onClick={() => navigate('/nccnavy')}
               >
                 VEC NCC NAVY <br />
                 [TN] NAVAL TECH UNIT, NCC
@@ -100,12 +102,6 @@ const NCCMAIN = ({ toggle, theme }) => {
             exit={{ x: "100%" }}
             transition={{ duration: 0.5 }}
           >
-            <button
-              className="fixed z-[500] md:top-auto bottom-auto md:bottom-4 right-4 top-[48%]  px-3 py-2 lg:left-4 bg-slate-500 text-black rounded-lg hover:bg-secd dark:hover:bg-drks flex w-fit"
-              onClick={() => setActivePage("buttons")}
-            >
-              <ArrowBigLeft/> Back
-            </button>
             <NCC_ARMY />
           </motion.div>
         )}
@@ -119,12 +115,6 @@ const NCCMAIN = ({ toggle, theme }) => {
             exit={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           >
-            <button
-              className="fixed z-[500] md:top-auto bottom-auto md:bottom-4 right-4 top-[48%]  px-3 py-2 lg:left-4 bg-slate-500 text-black rounded-lg hover:bg-secd dark:hover:bg-drks flex w-fit"
-              onClick={() => setActivePage("buttons")}
-            >
-              <ArrowBigLeft/> Back
-            </button>
             <NCC_NAVY />
           </motion.div>
         )}
