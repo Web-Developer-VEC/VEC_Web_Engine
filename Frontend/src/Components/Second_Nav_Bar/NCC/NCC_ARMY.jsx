@@ -7,6 +7,7 @@ import SideNav from "../SideNav";
 import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 import LoadComp from "../../LoadComp";
 import logo from '../../Assets/NccArmy.png';
+import Banner from "../../Banner";
 
 
 function NCCAbout() {
@@ -213,7 +214,7 @@ function NCCContact() {
 
 
 
-const NCC_ARMY = () => {
+const NCC_ARMY = ({ toggle, theme }) => {
   const [member,setMember]= useState({});
     const [tabel, setTabelValue] = useState({});
     const [curosel, setCarosel] = useState({});
@@ -324,8 +325,16 @@ const NCC_ARMY = () => {
 
     return (
       <>
+
+        <Banner
+          toggle={toggle}
+          theme={theme}
+          backgroundImage="./Banners/NCC.webp"
+          headerText="National Cadet Corps (NCC)"
+          subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+        />
         {/* Main NCC_ARMY Container */}
-        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
+        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" backButton={true}/>
       </>
     );
 };

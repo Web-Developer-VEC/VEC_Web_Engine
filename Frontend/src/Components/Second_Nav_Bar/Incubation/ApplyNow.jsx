@@ -9,6 +9,7 @@ export default function Applynow () {
     const [userCaptcha, setUserCaptcha] = useState("");
     const [contact_number, setContactNumber] = useState("");
     const [name, setName] = useState("");
+    const [loading, setLoading] = useState(false);
 
 function generateCaptcha() {
     return Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
@@ -55,13 +56,14 @@ function generateCaptcha() {
     }
 
     try {
-      const response = await fetch("/api/incubation_apply", {
+      setLoading(true);
+      const response = await fetch("/api/iic_applynow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ name , email , contact_number , content , original_captcha: captcha, entered_captcha: userCaptcha }),
+        body: JSON.stringify({ name , email , phno: contact_number , content }),
       });
 
       const data = await response.json();
@@ -71,11 +73,13 @@ function generateCaptcha() {
         alert("Email sent successfully");
       } else {
         setMessage(`Error: ${data.error || data.message}`);
-        alert(data.message);
+        alert("Ajay",data.message);
       }
     } catch (error) {
       setMessage("Error connecting to the server");
       console.error("Submission Error:", error);
+    } finally {
+      setLoading(false)
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -98,6 +102,7 @@ function generateCaptcha() {
                 type="text"
                 placeholder="Name"
                 className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
+                value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
@@ -105,6 +110,7 @@ function generateCaptcha() {
                 type="number"
                 placeholder="Contact Number"
                 className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
+                value={contact_number}
                 onChange={(e) => setContactNumber(e.target.value)}
                 required
               />
@@ -138,8 +144,14 @@ function generateCaptcha() {
                 required
               />
             </div>
-            <button type="submit" className="bg-[#800000] text-white p-2 rounded w-full">
-              Submit
+            <button
+              type="submit"
+              disabled={loading}
+              className={`p-2 rounded w-full ${
+                loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"
+              }`}
+            >
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>

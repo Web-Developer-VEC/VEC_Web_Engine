@@ -7,6 +7,7 @@ import logo from '../../Assets/NccNavy.png'
 import SideNav from "../SideNav";
 import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 import LoadComp from "../../LoadComp";
+import Banner from "../../Banner";
 
 
 
@@ -158,7 +159,7 @@ function NCCMotto() {
 }
 
 
-const NCC_NAVY = () => {
+const NCC_NAVY = ({ toggle, theme }) => {
   const [member,setMember]= useState({})
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
@@ -270,8 +271,15 @@ const NCC_NAVY = () => {
   return (
 
     <>
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/NCC.webp"
+        headerText="National Cadet Corps (NCC)"
+        subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+      />
       {/* Main NCC_NAVY Container */}
-      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
+      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" backButton={true}/>
     </>
 
   );

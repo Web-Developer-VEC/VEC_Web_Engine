@@ -26,6 +26,22 @@ export default function Gallerydetails() {
     /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(imagePaths) || (!imagePaths.includes("youtube"))
   );
   
+  const getYouTubeEmbedUrl = (url) => {
+    try {
+      const urlObj = new URL(url);
+      if (urlObj.hostname === 'youtu.be') {
+        return `https://www.youtube.com/embed/${urlObj.pathname.slice(1)}`;
+      } else if (urlObj.hostname.includes('youtube.com')) {
+        const videoId = urlObj.searchParams.get('v');
+        return `https://www.youtube.com/embed/${videoId}`;
+      }
+      return url;
+    } catch (e) {
+      console.error("Invalid YouTube URL:", url);
+      return url;
+    }
+  };
+  
   return (
     <div className="gallery-container">
       <h2 className="gallery-title">Gallery Page</h2>
@@ -35,10 +51,10 @@ export default function Gallerydetails() {
         {videos && (
           <>
             {videos?.map((item,i) => (
-              <div key={i} className="gallery-item">
-                <div className="video-wrapper elementor-widget-wrap">
+              <div key={i} className="gallery-item-video">
+                <div className="video-wrapper">
                   <iframe
-                    src={item}
+                    src={getYouTubeEmbedUrl(item)}
                     title={"Videos"}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
