@@ -44,7 +44,7 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
             STUDENT COORDINATORS
         <div className="yrc-underline3"></div>
         </h2>
-        <div className="yrc-members-grid">
+        <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
             {armyStudentData?.map((member, index) => (
             <div className="student-card dark:bg-text" key={index}>
               {/* <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} /> */}
