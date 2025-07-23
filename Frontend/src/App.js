@@ -267,7 +267,7 @@ const App = () => {
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
-                                <Route path="/credits/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
+                                <Route path="/developers/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
 
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
