@@ -12,6 +12,7 @@ import Seedmoney from "./Seedmoney";
 import Patents from "./Patents";
 import Applynow from "./ApplyNow";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Incub = ( {toggle, theme}) => {

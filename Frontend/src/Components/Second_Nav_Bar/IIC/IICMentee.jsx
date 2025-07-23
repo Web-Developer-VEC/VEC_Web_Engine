@@ -10,7 +10,7 @@ import React from 'react';
 const IICMentee = ({data}) => {
   return (
     <div className="p-8">
-      <h6 className="text-[32px] font-bold mb-4 text-center">IIC Mentee Table</h6>
+      <h2 className="text-4xl text-brwn font-bold mb-4 text-center"> Mentee Institution </h2>
 
       <div className="overflow-x-auto border border-black rounded-md">
         <table className="min-w-full table-auto border border-black text-[16px]">

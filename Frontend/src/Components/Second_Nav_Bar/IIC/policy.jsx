@@ -26,10 +26,10 @@ export default function IicFacPolicy({ data }) {
   return (
     <>
       {data ? (
-        <div className="nirf-content mt-4">
-          <h1 className="text-accn text-4xl mb-4">Policy</h1>
+        <div className="nirf-content mt-12">
+          <h1 className="text-accn text-4xl mb-4 font-bold">Policy</h1>
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
-            <div className="nirf-year-actions faculty-icc">
+            <div className="nirf-year-actions flex flex-col mb-20 md:grid md:grid-cols-2 md:gap-8 md:gap-x-16 md:p-4 md:w-fit md:mx-auto">
               {policyArray.map((action, index) => {
                 const isActive =
                   selectedAction &&
@@ -39,7 +39,7 @@ export default function IicFacPolicy({ data }) {
                 return (
                   <button
                     key={index}
-                    className={`px-6 py-3 font-semibold rounded-xl nirf-action-button cursor-pointer 
+                    className={`px-6 py-3  font-semibold rounded-xl nirf-action-button cursor-pointer 
                       ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"}
                     `}
                    onClick={() => {
