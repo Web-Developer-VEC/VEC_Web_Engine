@@ -19,7 +19,7 @@ function SPTIntro() {
         <div className="section-content">
             <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
             <p className="intro-text">
-                Our College department of physical education is an integral part of our institution right from its
+                Our College department of Physical Education is an integral part of our institution right from its
                 inception
                 from the year 2005-2006.
             </p>
@@ -35,7 +35,7 @@ function SPTIntro() {
             <p className="intro-text">
                 Our college students got the 18th consecutive years of overall championship in Zone – I competitions.
                 This is
-                our pride for our department of physical education. Moreover, our college students participate for Anna
+                our pride for our department of Physical Education. Moreover, our college students participate for Anna
                 university teams, State and National teams. Our students got places in National level sports
                 competitions every
                 year. </p>

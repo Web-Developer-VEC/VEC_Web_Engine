@@ -41,7 +41,7 @@
             <ul>
                 <li className='text-sm md:text-lg flex mt-20 items-center gap-2'>
                     <FaLink className='text-prim dark:text-drkp' />
-                    <a href={UrlParser(handBook?.pdfs_path[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗HR Handbook</a>
+                    <a href={`${handBook?.pdfs_path[0] ? UrlParser(handBook?.pdfs_path[0]) : '#'}`} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗HR Handbook</a>
                 </li>
             </ul>
         </>

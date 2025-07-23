@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoadComp from "../../LoadComp";
+import { div } from "framer-motion/m";
 
 export default function IicFacCertificate({data}) {
   console.log("Certificate Data:", data);
@@ -25,11 +26,11 @@ export default function IicFacCertificate({data}) {
   return (
     <>
       {data ? (
-        <div className="nirf-content mt-4">
-          <h1 className="text-accn text-4xl mb-4">Certificate</h1>
+        <div className="nirf-content mt-12">
+          <h2 className="text-accn text-center text-4xl mb-4 font-bold">Certificate</h2>
 
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
-            <div className="nirf-year-actions faculty-icc">
+            <div className="nirf-year-actions faculty-icc flex flex-col md:flex-row text-center">
               {certificateArray.map((action, index) => {
                 const isActive =
                   selectedAction &&
@@ -37,9 +38,10 @@ export default function IicFacCertificate({data}) {
                   selectedAction.name === action.name;
 
                 return (
+                  
                   <div
                     key={index}
-                    className={`px-6 py-3 font-semibold rounded-xl nirf-action-button hover:bg-accn hover:text-prim dark:hover:bg-drka
+                    className={`px-6 py-3 font-semibold text-center rounded-xl hover:bg-accn hover:text-prim dark:hover:bg-drka
                       ${
                         isActive
                           ? "bg-[#800000] text-white"

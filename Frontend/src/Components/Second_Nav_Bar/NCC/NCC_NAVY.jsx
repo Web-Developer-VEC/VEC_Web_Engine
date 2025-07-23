@@ -7,6 +7,7 @@ import logo from '../../Assets/NccNavy.png'
 import SideNav from "../SideNav";
 import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 import LoadComp from "../../LoadComp";
+import Banner from "../../Banner";
 
 
 
@@ -25,7 +26,7 @@ function NCCAbout() {
             <ul className="NCC_NAVY-list">
               <li>
                 National Cadet Corps is a Tri-Services Organization, comprising
-                the Army, Navy, and Air Force, engaged in grooming the youth of
+                the Army, Navy and Air Force, engaged in grooming the youth of
                 the country into disciplined and patriotic citizens.
               </li>
               <li>
@@ -35,13 +36,13 @@ function NCCAbout() {
               <li>
                 The NCC provides opportunities to the youth of the country for
                 their all-round development with a sense of Duty, Commitment,
-                Dedication, Discipline, and Moral Values so that they become
+                Dedication, Discipline and Moral Values so that they become
                 able leaders and useful citizens.
               </li>
               <li>
                 The NCC provides exposure to the cadets in a wide range of
                 activities, with a distinct emphasis on Social Services,
-                Discipline, and Adventure Training.
+                Discipline and Adventure Training.
               </li>
               <li>
                 The NCC is open to all regular students of schools and colleges
@@ -114,7 +115,7 @@ function NCCAim() {
                 current socio-economic scenario of the country.
                 <br />
                 * To develop good qualities like character, commandership,
-                discipline, leadership, secular outlook, and selfless service.
+                discipline, leadership, secular outlook and selfless service.
                 <br />
                 * To create a human resource of trained and motivated youth.
                 <br />* To provide an environment to motivate youth for a career
@@ -136,7 +137,7 @@ function NCCMotto() {
               <p className="NCC_NAVY-content">
                 The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
                 1957. It brings together the youth from different parts of the
-                country, molding them into united, secular, and disciplined
+                country, molding them into united, secular and disciplined
                 citizens.
               </p>
             </div>
@@ -158,7 +159,7 @@ function NCCMotto() {
 }
 
 
-const NCC_NAVY = () => {
+const NCC_NAVY = ({ toggle, theme }) => {
   const [member,setMember]= useState({})
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
@@ -270,8 +271,15 @@ const NCC_NAVY = () => {
   return (
 
     <>
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/NCC.webp"
+        headerText="National Cadet Corps (NCC)"
+        subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+      />
       {/* Main NCC_NAVY Container */}
-      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
+      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" backButton={true}/>
     </>
 
   );

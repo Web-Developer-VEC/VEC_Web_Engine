@@ -43,7 +43,7 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
         STUDENT COORDINATORS
         <div className="yrc-underline3"></div>
       </h2>
-      <div className="yrc-members-grid">
+      <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
      {navyStudentData.map(student => (
         <div key={student.id} className="student-card dark:bg-text">
           {/* <img src={UrlParser(student.image)} className="w-[150px] h-[200px] m-auto" alt={student.name} /> */}

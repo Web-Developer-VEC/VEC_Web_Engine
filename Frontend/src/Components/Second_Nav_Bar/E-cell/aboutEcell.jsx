@@ -57,19 +57,16 @@ const Ecell = ({toggle,theme}) => {
             <Banner theme={theme} toggle={toggle}
             backgroundImage="./Banners/IIC.webp"
             headerText="E - Cell"
-            subHeaderText="Turning Ideas into Action, and Dreams into Enterprises."
+
+            subHeaderText="Turning Ideas into Action and Dreams into Enterprises."
         />
                 <SideNav navData={navData} sts={section} setSts={setEcell}/>
       {/* <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} /> */}
 
-                
-                </>
 
                 
-
+        </>
     )
-    
-
 }
 
 

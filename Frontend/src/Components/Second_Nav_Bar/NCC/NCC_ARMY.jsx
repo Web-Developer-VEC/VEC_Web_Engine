@@ -7,6 +7,7 @@ import SideNav from "../SideNav";
 import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 import LoadComp from "../../LoadComp";
 import logo from '../../Assets/NccArmy.png';
+import Banner from "../../Banner";
 
 
 function NCCAbout() {
@@ -26,14 +27,14 @@ function NCCAbout() {
           <li>
             The VEC NCC Army embodies the motto of the National Cadet Corps
             (NCC) – Unity and Discipline. At Velammal Engineering College, we
-            take immense pride in fostering leadership, discipline, and
+            take immense pride in fostering leadership, discipline and
             patriotism among our cadets. Under the able guidance of our
             Associate NCC Officer (ANO), Captain R. Chezhian, the unit
             consistently strives for excellence in both training and service.
           </li>
           <li>
             Our NCC Army wing provides a structured training program that
-            instills qualities of leadership, teamwork, and social
+            instills qualities of leadership, teamwork and social
             responsibility. The cadets undergo rigorous physical training, drill
             sessions, and weapon training, preparing them to face challenges
             with confidence. Additionally, the unit actively participates in
@@ -43,14 +44,14 @@ function NCCAbout() {
           </li>
           <li>
             The VEC NCC Army also encourages participation in prestigious camps
-            such as the Republic Day Camp (RDC), Thal Sainik Camp (TSC), and
+            such as the Republic Day Camp (RDC), Thal Sainik Camp (TSC) and
             Combined Annual Training Camp (CATC). These experiences help cadets
-            develop resilience, discipline, and camaraderie, essential for
+            develop resilience, discipline and camaraderie, essential for
             personal and professional growth.
           </li>
           <li>
             We are committed to shaping responsible citizens who uphold the
-            values of service, courage, and integrity. Through the unwavering
+            values of service, courage and integrity. Through the unwavering
             dedication of our cadets and the support of our faculty, the VEC NCC
             Army continues to uphold the spirit of the NCC and inspire young
             minds to serve the nation with honor and pride.
@@ -125,7 +126,7 @@ function NCCAim() {
             a Career in the Armed Forces.
             <br />
             * To Develop Character, Comradeship, Discipline, Leadership,
-            Secular Outlook, Spirit of Adventure, and Ideals of Selfless Service
+            Secular Outlook, Spirit of Adventure and Ideals of Selfless Service
             amongst the Youth of the Country.
             <br />
           </p>
@@ -213,7 +214,7 @@ function NCCContact() {
 
 
 
-const NCC_ARMY = () => {
+const NCC_ARMY = ({ toggle, theme }) => {
   const [member,setMember]= useState({});
     const [tabel, setTabelValue] = useState({});
     const [curosel, setCarosel] = useState({});
@@ -324,8 +325,16 @@ const NCC_ARMY = () => {
 
     return (
       <>
+
+        <Banner
+          toggle={toggle}
+          theme={theme}
+          backgroundImage="./Banners/NCC.webp"
+          headerText="National Cadet Corps (NCC)"
+          subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+        />
         {/* Main NCC_ARMY Container */}
-        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" />
+        <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" backButton={true}/>
       </>
     );
 };

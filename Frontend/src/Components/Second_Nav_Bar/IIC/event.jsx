@@ -2,7 +2,7 @@ export default function IicFacEvent({title, data}) {
     return (
         <div className="ic-table-container m-4">
             <div>
-                <p className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">{title}</p>
+                <h2 className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">{title}</h2>
             </div>
             <div className="overflow-x-auto">
                 <table className="ic-data-table">
