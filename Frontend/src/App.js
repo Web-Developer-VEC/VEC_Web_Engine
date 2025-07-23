@@ -80,7 +80,7 @@ import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx
 import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
-import ScrollUp from "./Components/ScrollUp.jsx";
+
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
@@ -90,6 +90,8 @@ import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
 import { Hand } from "lucide-react";
 import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
+import ScrollFromBottom from "./Components/ScrollFromBottom.jsx";
+
 
 
 const GlobalStyle = createGlobalStyle`
@@ -197,8 +199,10 @@ const App = () => {
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
                     {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
                     {/* Conditionally render Head and Footer */}
+                    
+                    
                     <>
-                        {/* <Head/> */}
+                        {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
                         <MainContentWrapper>
                             <Routes>
@@ -276,10 +280,12 @@ const App = () => {
                             {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
+                          
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        <ScrollUp/>
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
+                        {!isHostelRoute && <ScrollFromBottom/>}
+                        
                     </>
                 </AppContainer>
         </>

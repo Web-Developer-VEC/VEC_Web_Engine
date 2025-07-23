@@ -6,6 +6,7 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 
+
 const Naac = ({ toggle, theme }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [openSection, setOpenSection] = useState(null);
@@ -67,8 +68,8 @@ const Naac = ({ toggle, theme }) => {
         </div>
     ):(
 
-      
       <div>
+    
       <div className="nnaac-page">
        
         <div className="nabout-section">

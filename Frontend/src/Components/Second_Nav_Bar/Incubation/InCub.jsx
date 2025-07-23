@@ -11,6 +11,7 @@ import Seedmoney from "./Seedmoney";
 import Patents from "./Patents";
 import Applynow from "./ApplyNow";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Incub = ( {toggle, theme}) => {
@@ -23,9 +24,11 @@ const Incub = ( {toggle, theme}) => {
     const [patents, setpatents] = useState(null)
     const [seedmoney, setseedmoney] = useState(null)
     const [applynow, setapplynow] = useState(null)
+    const navigate = useNavigate();
     const navData = {
         "Home": <CubHme data={home}/>,
         "Incubated Startups": <Startup data={startup}/>, 
+        "E-Cell": navigate('/ecell'),
         "Committee": <Committe data={committee}/>,  
         "Facilities": <Facilities data={facilities}/>,
         "Project": <Projects data={project}/>,

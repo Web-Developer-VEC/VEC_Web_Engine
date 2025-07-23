@@ -9,7 +9,7 @@ function FacilityCard({ image, name, desc }) {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg overflow-hidden transition-shadow">
       <img src={UrlParser(image)} alt={name} className="w-full h-48 object-cover" />
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+        <h3 className="text-lg text-center font-semibold mb-2">{name}</h3>
         {/* <p className="text-sm text-gray-600 dark:text-gray-300">{desc}</p> */}
       </div>
     </div>

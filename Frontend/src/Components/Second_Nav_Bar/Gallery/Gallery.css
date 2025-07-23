@@ -110,11 +110,6 @@
         height: 100px;
 
     }
-
-    h1, h2, h3, h4, h5, h6 {
-        font-size: 2em; /* Larger font size for desktop */
-    }
-
     /* Adjust side buttons for desktop if they are still fixed */
     .side-buttons-container {
         /* Revert or adjust for desktop view if desired */

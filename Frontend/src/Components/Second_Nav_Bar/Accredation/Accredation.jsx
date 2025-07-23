@@ -8,6 +8,7 @@ import LoadComp from '../../LoadComp'
 import { useEffect } from 'react'
 import IQauge from './igauge'
 
+
 const Accredation = ({toggle,theme}) => {
 
     const [naac,setNaac] = useState("NAAC")
