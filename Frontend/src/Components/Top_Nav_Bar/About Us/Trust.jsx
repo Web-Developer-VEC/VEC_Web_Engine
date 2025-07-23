@@ -61,9 +61,12 @@ const NewTrust = ({theme, toggle}) => {
         subHeaderText=" Transforming dreams into reality through a strong foundation of learning, leadership, and innovation."
       />
       {AbtTrustData ? (
-        <div className="bg-prim dark:bg-drkp min-h-screen px-2 pt-0 md:p-8">
+        // <div className="bg-prim dark:bg-drkp min-h-screen px-10 pt-0 md:p-8">
+        <div className="bg-prim dark:bg-drkp min-h-screen pt-0 px-11 md:p-9 lg:px-16">
 
-          <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-6">
+
+
+          <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-2 md:px-8 lg:px-16">
           <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -80,7 +83,7 @@ const NewTrust = ({theme, toggle}) => {
                 {AbtTrustData?.Velammal_Educational_Trust[1]}
             </p>
             </motion.div>
-            <div className="mt-10 grid md:grid-cols-2 gap-8 items-center ">
+            <div className="mt-10 grid md:grid-cols-2 items-center ">
               {/* Image Section */}
               <motion.div
                 whileHover={{  }}
@@ -96,13 +99,17 @@ const NewTrust = ({theme, toggle}) => {
                 </div>
               </motion.div>
 
+
+              <div className="mt-6 md:mt-0 md:pr-10">
+
+
               {/* Text Section */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-left text-text dark:text-drkt"
-              >
+                >
                 <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                   Strength of the Trust
                 </h2>
@@ -110,6 +117,7 @@ const NewTrust = ({theme, toggle}) => {
                 {AbtTrustData?.velammal?.content}
                 </p>
               </motion.div>
+              </div>
             </div>
 
 
