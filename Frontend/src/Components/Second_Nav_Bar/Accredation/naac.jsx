@@ -6,6 +6,7 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 
+
 const Naac = ({ toggle, theme }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [openSection, setOpenSection] = useState(null);
@@ -67,8 +68,8 @@ const Naac = ({ toggle, theme }) => {
         </div>
     ):(
 
-      
       <div>
+    
       <div className="nnaac-page">
        
         <div className="nabout-section">
@@ -76,7 +77,7 @@ const Naac = ({ toggle, theme }) => {
             <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
             <p>
               The NAAC conducts assessment and accreditation of Higher
-              Educational Institutions (HEI) such as colleges, universities, or
+              Educational Institutions (HEI) such as colleges, universities or
               other recognised institutions to derive an understanding of the
               ‘Quality Status’ of the institution...
             </p>

@@ -27,6 +27,7 @@ function IicHome({data}) {
     </div>);
 }
 
+
 function IicEst({data}) {
     console.log("esta",data)
     
@@ -120,7 +121,7 @@ const Iic = ({toggle, theme}) => {
             'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData?.Events["IIC 0.7"]}/>
         },
         "Kapila": <KamalaBar data={iicData?.kapila_bar} />, 
-        "Mentee":   <IICMentee data={iicData?.mentee}/>,
+        "Mentee Institution ":   <IICMentee data={iicData?.mentee}/>,
         "Yukti" : <IicFacnir data={iicData?.yukti}/>,
         "Certificate":<IicFacCertificate data={iicData?.certificate}/>,
         "Policy" : <IicFacPolicy data={iicData?.policy}/>,

@@ -54,7 +54,7 @@ const Intramural = ({ data }) => {
     <>
       {data ? (
       <div className="relative w-full max-w-4xl mx-auto mb-10 mt-10">
-        <h2 className="text-center text-accn dark:text-drkt text-4xl font-bold mb-4">
+        <h2 className="text-center text-accn dark:text-drkt text-3xl font-bold mb-4">
         Intramural Achievements {data?.year}
         </h2>
 

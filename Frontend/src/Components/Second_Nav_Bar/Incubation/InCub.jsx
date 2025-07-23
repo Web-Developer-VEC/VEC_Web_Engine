@@ -14,6 +14,7 @@ import Applynow from "./ApplyNow";
 import axios from "axios";
 
 
+
 const Incub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
     const [home, sethome] = useState(null)

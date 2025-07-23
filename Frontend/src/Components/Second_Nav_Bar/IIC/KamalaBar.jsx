@@ -18,20 +18,20 @@ const KapilaPage = ({data}) => {
   return (
     <div className="p-6 mt-4 pb-10">
       {/* Horizontal Button Group */}
-      <div className="flex justify-center  gap-8 mb-6">
-        {Object.keys(data).map((key) => (
-          <button
-            key={key}
-            type="button"
-            onClick={() => handleButtonClick(key)}
-            className={`px-6 py-3 font-semibold rounded-xl hover:text-white ${
-              activePdf === key ? "bg-[#800000] text-white" : "bg-[#fdcc03] "
-            } hover:bg-[#a00000] transition-all`}
-          >
-            {key}
-          </button>
-        ))}
-      </div>
+    <div className="flex flex-col md:flex-row justify-center gap-8 mb-6">
+  {Object.keys(data).map((key) => (
+    <button
+      key={key}
+      type="button"
+      onClick={() => handleButtonClick(key)}
+      className={`px-6 py-3 font-semibold rounded-xl hover:text-white transition-all
+        ${activePdf === key ? "bg-[#800000] text-white" : "bg-[#fdcc03]"}
+        hover:bg-[#a00000]`}
+    >
+      {key}
+    </button>
+  ))}
+</div>
 
       {/* Show PDF on click */}
       {activePdf && (

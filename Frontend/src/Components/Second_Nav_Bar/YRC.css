@@ -245,7 +245,8 @@
 .yrc-member-card-1 .avatar {
   border-radius: 0; /* Removes circular border */
   width: 150px; /* Adjust width as needed */
-  height: 150px; /* Adjust height as needed */
+  height: 150px;
+  border-radius: 10px; /* Adjust height as needed */
 }
 .yrc-member-card-1:hover {
   transform: scale(1.02);
@@ -379,7 +380,7 @@
   width: 100px;
   height: 100px;
   margin:auto;
-  border-radius: 0%;
+  border-radius: 10px;
   object-fit: cover;
   margin-bottom: 10px;
 }

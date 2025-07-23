@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './ScrollUp.css';
+import './sideButton.css';
 import { FaArrowUp } from 'react-icons/fa';
 
-const ScrollUp = () => {
-  const [visible, setVisible] = useState(false);
+const SideButton = () => {  // Changed from sideButton to SideButton
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -64,13 +63,8 @@ const ScrollUp = () => {
         </div>
       )}
 
-      {visible && (
-        <button className="scroll-up-btn" onClick={scrollToTop}>
-          <FaArrowUp />
-        </button>
-      )}
     </>
   );
 };
 
-export default ScrollUp;
+export default SideButton;
