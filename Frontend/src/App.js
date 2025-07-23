@@ -81,6 +81,7 @@ import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.js
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
 import ScrollUp from "./Components/ScrollUp.jsx";
+import SideButton from "./Components/sideButton.jsx";
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
 import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
@@ -280,6 +281,7 @@ const App = () => {
                         {/* <Footer ref={footerRef}/> */}
                         <ScrollUp/>
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
+                        <SideButton/>
                     </>
                 </AppContainer>
         </>
