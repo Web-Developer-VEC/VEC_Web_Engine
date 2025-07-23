@@ -6,23 +6,6 @@ const SideButton = () => {  // Changed from sideButton to SideButton
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  const toggleVisibility = () => {
-    if (window.scrollY > 200) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
     if (showPopup) {
       // create script
       const script = document.createElement("script");
