@@ -6,6 +6,7 @@ import {Canvas} from "@react-three/fiber";
 import Crdt_Title from "./Crdt_Title";
 import {useParams} from "react-router-dom";
 import NotFound from "../../NotFound";
+import TeamTol from "./team";
 
 
 const Crdt = () => {
@@ -31,7 +32,10 @@ const Crdt = () => {
                     camera={{fov: 75, position: [0, 0, 10]}}>
                 <PointWaves count={2000} speed={0.25} amplitude={30} waveLength={10}/>
             </Canvas>
-            <div className="absolute top-[2vh]">
+            <div className="absolute w-full top-[2vh]">
+              <TeamTol />
+            </div>
+            <div className="relative top-[0.1vh]">
                 <Crdt_Title ttl={"MEET THE TEAM"} />
                 <Team ani={true} callSld={callSld} ind={+(ind)} urlPrm={urlPrm} />
             </div>
