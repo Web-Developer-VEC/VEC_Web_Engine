@@ -9,7 +9,7 @@ const LibraryIntro = ({about}) => {
         cnt: "\"To  enrich  the  knowledge  of  Velammalians  by  providing  dynamic  world  class  learning environment.To  provide  a learning  environment  with  intense  intellectual  inquiry.  To  become  the  most  dynamic  learning  environment  in  the world.  To  advance  with  successful  teaching,  learning  and  research  through  building  a  robust  One  System,  One Library. To transform the library as a place dynamic learning with ease.\""
     }, {
         hdr: "Mission", cls: "lg:basis-[49%]",
-        cnt: "\"To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources  and services in support of the research, teaching,  and learning needs of  the  college  community  To  maintain  and  improve  collections  and  achieve  efficient  services  in  an environment  of  flat  or  reduced  budgets  for  the  students,  faculty  and  staff.  To  transform  the  information available in the environment into knowledge for students, staff and faculty.\""
+        cnt: "\"To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of  the  college  community  to  maintain  and  improve  collections  and  achieve  efficient  services  in  an environment  of  flat  or  reduced  budgets  for  the  students,  faculty  and  staff.  To  transform  the  information available in the environment into knowledge for students, staff and faculty.\""
     }];
 
     const generalInstructions = [

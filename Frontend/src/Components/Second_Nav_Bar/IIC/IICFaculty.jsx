@@ -44,8 +44,8 @@ function IICFaculty({data}){
     <>
     <div className='p-8'>
 
-    <h2 className="iic-h3">
-        FACULTY MEMBERS
+    <h2 className="iic-h3 text-brwn">
+        Faculty Members
       
       </h2>
       <div className="iic-members-grid">
@@ -113,8 +113,8 @@ function IICExpert({data}){
     <>
     <div className='p-8'>
 
-    <h2 className="iic-h3">
-        EXPERT REPRESENTATION
+    <h2 className="iic-h3 text-brwn">
+        Expert Representation 
       
       </h2>
       <div className="iic-members-grid">
@@ -182,10 +182,10 @@ const IICStudent=({data})=> {
 
   return (
     <>
-    <div className='p-8'>
+    <div className='p-2'>
 
     <h2 className="iic-h3 text-brwn dark:drkt">
-       STUDENT REPRESENTATION
+       Student Representation
       
       </h2>
       <div className="iic-stud-grid">

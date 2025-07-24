@@ -330,11 +330,9 @@
     gap: 2rem;
     padding: 2rem;
     max-height: 600px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    justify-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-evenly;
   }
 
   .iic-faici{

@@ -31,13 +31,13 @@ export default function IicFacnir({ data }) {
     const renderNIRContent = () => {
         return (
             <div className="nir-container">
-                <h2>National Innovation Repository (NIR)</h2>
+                <h2 className="text-4xl text-brwn font-bold text-center">Yukthi National Innovation Repository (NIR)</h2>
                 {nirSectionsArray.map((section, index) => (
                     <div key={index} className="nir-section">
                         <h3 className="nir-heading">{section.heading}</h3>
                         <div className="nir-buttons">
                             {section.buttons.map((button, btnIndex) => (
-                                <div key={btnIndex} className="iic-action-button bg-secd dark:bg-drks hover:bg-accn hover:text-prim
+                                <div key={btnIndex} className="iic-action-button bg-secd text-center m-auto dark:bg-drks hover:bg-accn hover:text-prim
                     dark:hover:bg-brwn rounded-xl border-2 border-accn dark:border-drka">
                                     {button.text}
                                 </div>
@@ -60,7 +60,7 @@ export default function IicFacnir({ data }) {
               {renderNIRContent()}
             </div>
           </div>
-        </div>
+        </div>  
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />

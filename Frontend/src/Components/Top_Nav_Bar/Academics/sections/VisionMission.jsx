@@ -99,7 +99,7 @@ const VisionMission = ({ data }) => {
       </div>
       {/* Program Specific Outcomes (PSOs) */}
 
-      {data?.program_educational_outcomes && (
+      {data?.program_educational_outcomes?.headings?.length > 0 && (
           <div className="psos-section mt-5">
             <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Educational Outcomes</h2>
             <div className="accordion" id="psosAccordion">
@@ -122,7 +122,7 @@ const VisionMission = ({ data }) => {
       {/* </div> */}
 
         {/* Right Column: Program Outcomes */}
-        {data?.program_outcomes && (
+        {data?.program_outcomes?.headings?.length > 0 && (
           <div className="col-md-6 mt-10 w-full">
             <div className="pos-section">
               <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Outcomes</h2>
@@ -142,7 +142,7 @@ const VisionMission = ({ data }) => {
           </div>
         )}
 
-        {data?.program_specific_outcomes && (
+        {data?.program_specific_outcomes?.headings?.length > 0 && (
           <div className="psos-section mt-5">
             <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Specific Outcomes</h2>
             <div className="accordion" id="psosAccordion">

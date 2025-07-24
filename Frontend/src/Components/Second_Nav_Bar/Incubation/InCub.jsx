@@ -1,4 +1,5 @@
 import {useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom"
 import "./Incub.css";
 import Banner from "../../Banner";
 import SideNav from "../SideNav";
@@ -13,6 +14,7 @@ import Applynow from "./ApplyNow";
 import axios from "axios";
 
 
+
 const Incub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
     const [home, sethome] = useState(null)
@@ -22,10 +24,17 @@ const Incub = ( {toggle, theme}) => {
     const [project, setproject] = useState(null)
     const [patents, setpatents] = useState(null)
     const [seedmoney, setseedmoney] = useState(null)
-    const [applynow, setapplynow] = useState(null)
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (cub === "E-Cell") {
+            navigate("/ecell");
+        }
+    }, [cub, navigate]);
+
     const navData = {
         "Home": <CubHme data={home}/>,
         "Incubated Startups": <Startup data={startup}/>, 
+        "E-Cell": <></>,
         "Committee": <Committe data={committee}/>,  
         "Facilities": <Facilities data={facilities}/>,
         "Project": <Projects data={project}/>,
@@ -53,22 +62,6 @@ const Incub = ( {toggle, theme}) => {
         }
         fetchData();
     }, []);
-// const [hari, sethari] =useState(null)
-// useEffect(()=>{
-//     const ajith = async()=>{
-//         try{
-//         const vishal=await axios.get('/api/incumbation');
-//         const data =vishal.data[0];
-//         sethari(data);
-//         }
-//         catch(error){
-//             console.error("hcdc")
-//         }
-
-//        }
-//        ajith();
-// },[]);
-
 
     function CubHme({data}) {
         return (

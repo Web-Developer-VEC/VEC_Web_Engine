@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './ScrollUp.css';
+import './sideButton.css';
 import { FaArrowUp } from 'react-icons/fa';
 
-const ScrollUp = () => {
-  const [visible, setVisible] = useState(false);
+const SideButton = () => {  // Changed from sideButton to SideButton
   const [showPopup, setShowPopup] = useState(false);
   const [captcha, setCaptcha] = useState(generateCaptcha());
   const [userCaptcha, setUserCaptcha] = useState("");
-    function generateCaptcha() {
+
+  function generateCaptcha() {
     return Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
   }
   const [formData, setFormData] = useState({
@@ -23,18 +23,6 @@ const ScrollUp = () => {
   });
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [errors, setErrors] = useState({});
-
-  const toggleVisibility = () => {
-    if (window.scrollY > 200) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -105,12 +93,6 @@ const ScrollUp = () => {
       }, 1000);
     }
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-  
 
   return (
     <>
@@ -288,13 +270,8 @@ const ScrollUp = () => {
         </div>
       )}
 
-      {visible && (
-        <button className="scroll-up-btn" onClick={scrollToTop}>
-          <FaArrowUp />
-        </button>
-      )}
     </>
   );
 };
 
-export default ScrollUp;
+export default SideButton;

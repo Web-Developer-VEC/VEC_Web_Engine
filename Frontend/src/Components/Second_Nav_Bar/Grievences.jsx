@@ -76,6 +76,7 @@ const GrievanceForm = ({ theme, toggle }) => {
     }
 
     try {
+      setLoading(true);
       const response = await fetch("/api/get_grevience", {
         method: "POST",
         headers: {
@@ -97,6 +98,8 @@ const GrievanceForm = ({ theme, toggle }) => {
     } catch (error) {
       setMessage("Error connecting to the server");
       console.error("Submission Error:", error);
+    } finally {
+      setLoading(false);
     }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -278,9 +281,12 @@ const GrievanceForm = ({ theme, toggle }) => {
               {/* Submit */}
               <button
                 type="submit"
-                className="mt-4 w-full py-3 bg-[#800000] hover:bg-[#990000] text-white font-bold rounded-full shadow-md transition-colors duration-200"
+                disabled={loading}
+                className={`p-2 rounded w-full ${
+                  loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"
+                }`}
               >
-                Send Message
+                {loading ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>
