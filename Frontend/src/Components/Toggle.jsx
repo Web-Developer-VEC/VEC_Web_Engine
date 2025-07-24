@@ -6,7 +6,7 @@ const Toggle = ({ attr, toggle, theme }) => {
   return (
     <div className={`z-[50] ${attr}`}>
       {/* ✅ Desktop version (visible from sm and above) */}
-      <div className="hidden sm:flex gap-2 mt-2 size-12 px-2 py-2">
+      <div className="hidden md:flex gap-2 mt-2 size-12 px-2 py-2">
         <img className="h-8 w-auto p-1 grayscale-0 dark:grayscale" src={Sun} alt="Dark" />
         <label className="inline-flex items-center cursor-pointer">
           <input
@@ -25,15 +25,15 @@ const Toggle = ({ attr, toggle, theme }) => {
         <img className="h-8 w-auto p-1.5 grayscale dark:grayscale-0" src={Moon} alt="light" />
       </div>
 
-<div className="sm:hidden absolute top-11 right-4 z-[1000]">
-  <button onClick={toggle}>
-    <img
-      src={theme === "light" ? Sun : Moon}
-      alt="Toggle Theme"
-      className="h-10 w-10 z-[100000]"
-    />
-  </button>
-</div>
+      <div className="md:hidden absolute top-11 right-4 z-[1000]">
+        <button onClick={toggle}>
+          <img
+            src={theme === "light" ? Sun : Moon}
+            alt="Toggle Theme"
+            className="h-10 w-10 z-[100000]"
+          />
+        </button>
+      </div>
 
     </div>
   );

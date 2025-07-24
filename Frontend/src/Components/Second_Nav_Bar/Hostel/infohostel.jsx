@@ -31,7 +31,7 @@ const InfoHostel = () => {
             <p className="HI-card-text text-text dark:text-drkt">
             Breakfast: 7:00 AM - 9:00 AM <br />
             Lunch: 12:00 PM - 2:00 PM <br />
-            Dinner: 7:00 PM - 9:00 PM
+            {/* Dinner: 7:00 PM - 9:00 PM */}
             </p>
         </div>
         <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">

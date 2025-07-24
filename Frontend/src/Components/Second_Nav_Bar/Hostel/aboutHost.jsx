@@ -11,8 +11,8 @@
 
   <div className="hostel-abt-container flex flex-col md:flex-row items-center justify-center gap-6">
     <p className="hostel-about-para text-justify border-l-4 border-secd dark:border-drks p-4 rounded-md md:w-1/2 w-full dark:bg-drkb">
-      Our college hostel provides a safe, clean, and welcoming environment that supports students’ a
-      cademic and personal growth. It features spacious, well-ventilated rooms, clean washrooms, uninterrupted 
+      Our college hostel provides a safe, clean, and welcoming environment that supports students’ 
+      academic and personal growth. It features spacious, well-ventilated rooms, clean washrooms, uninterrupted 
       water supply, high-speed internet, and common study and recreation areas. The hostel mess serves fresh, hygienic, 
       and nutritious meals prepared under strict quality standards, catering to both vegetarian and non-vegetarian 
       preferences. Regular menu rotations and feedback systems ensure variety and student satisfaction. The facility is managed 

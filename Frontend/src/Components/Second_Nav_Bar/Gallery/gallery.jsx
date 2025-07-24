@@ -49,9 +49,9 @@ const Gallery = ({ toggle, theme}) => {
   return (
     <>
         <Banner toggle={toggle} theme={theme}
-        backgroundImage="./Banners/IIC.webp"            
-        headerText="Gallery"
-            subHeaderText="Some pics of velammal Engineering Collage"
+          backgroundImage="./Banners/Gallery.webp"            
+          headerText="Gallery"
+          subHeaderText="Some pics of velammal Engineering Collage"
         />
         <div className="gallery-container overflow-y-auto">
           <h1 className="gallery-title">Gallery</h1>
