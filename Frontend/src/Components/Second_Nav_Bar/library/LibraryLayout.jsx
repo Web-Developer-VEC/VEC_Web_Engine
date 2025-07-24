@@ -8,7 +8,6 @@ import LIBMemb from "./LIBMemb"; // Adjust path if needed
 import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
 import LoadComp from "../../LoadComp";
-import Vide from '../../Assets/Lib.mp4';
 
 const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
@@ -81,7 +80,7 @@ const LibraryLayout = ({toggle, theme}) => {
   return (
     <>
   <Banner theme={theme} toggle={toggle}
-  backgroundImage={Vide}
+    backgroundImage={"./Banners/Vid_banner/Lib.mp4"}
     headerText="Library"
     subHeaderText="The only thing that you absolutely have to know, is the location of the library."
     isVideo = {true}

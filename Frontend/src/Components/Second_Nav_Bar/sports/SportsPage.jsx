@@ -3,14 +3,11 @@ import './SportsPage.css'; // Import the CSS file for styling
 import Banner from '../../Banner';
 import SportsActionPlan from './SportsActionPlan';
 import SportsInfra from './SportsInfra';
-import ZonalResults from './ZonalResults';
 import { Sportsfaculties, SportsHOD } from './sports_faculties';
-import Achievements from './achivements';
 import Achievements1 from './Achivements2';
 import axios from 'axios';
 import SideNav from "../SideNav";
 import Intramural from './intramural';
-import WinnerSlider from './winners_sld';
 import LoadComp from '../../LoadComp';
 
 function SPTIntro() {
@@ -113,9 +110,10 @@ const SportsPage = ({theme, toggle}) => {
     return (
         <div className=''>
             <Banner theme={theme} toggle={toggle}
-            backgroundImage="./Banners/sports.webp"
-                    headerText="Physical Education Department"
-                    subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+                backgroundImage="./Banners/Vid_banner/Sports_Video_Banner.mp4"
+                headerText="Physical Education Department"
+                subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+                isVideo = {true}
             />
             <SideNav sts={spt} setSts={setSpt} navData={navData} cls={"w-screen"} />
         </div>
