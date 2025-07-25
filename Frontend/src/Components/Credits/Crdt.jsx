@@ -22,7 +22,7 @@ const Crdt = () => {
 
     return (
         (ind <= urlPrm) ?
-        <main className="relative bg-slate-800 h-[100vh] lg:h-[90vh] w-full overflow-x-hidden"
+        <main className="relative bg-slate-800 w-full overflow-x- overflow-y-none"
               style={{
                   backgroundColor: '#1B1B1B',
                   backgroundImage: 'linear-gradient(315deg, #1B1B1B 0%, #003153 74%)'
@@ -32,10 +32,10 @@ const Crdt = () => {
                     camera={{fov: 75, position: [0, 0, 10]}}>
                 <PointWaves count={2000} speed={0.25} amplitude={30} waveLength={10}/>
             </Canvas>
-            <div className="absolute w-full top-[2vh]">
+            <div className="relative w-full top-[2vh]">
               <TeamTol />
             </div>
-            <div className="relative top-[0.1vh]">
+            <div className="relative top-[0.1vh] h-full">
                 <Crdt_Title ttl={"MEET THE TEAM"} />
                 <Team ani={true} callSld={callSld} ind={+(ind)} urlPrm={urlPrm} />
             </div>
