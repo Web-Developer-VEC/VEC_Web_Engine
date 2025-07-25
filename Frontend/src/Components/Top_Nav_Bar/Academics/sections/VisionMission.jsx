@@ -101,7 +101,7 @@ const VisionMission = ({ data }) => {
 
       {data?.program_educational_outcomes?.headings?.length > 0 && (
           <div className="psos-section mt-5">
-            <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Educational Outcomes</h2>
+            <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Programme Educational Objectives</h2>
             <div className="accordion" id="psosAccordion">
               
               {data?.program_educational_outcomes?.headings?.map((heading, index) => (
