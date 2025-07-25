@@ -5,24 +5,74 @@ import './ContactIcon.css';
 const ContactIcon = () => {
     const [showPopup, setShowPopup] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const footer = document.querySelector('.footer');
-            if (footer) {
-                const footerRect = footer.getBoundingClientRect();
-                const contactIcon = document.querySelector('.contact-icon-container');
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const footer = document.querySelector('.footer');
+    //         const banner = document.querySelector('.landing-banner');
 
-                if (footerRect.top < window.innerHeight) {
-                    contactIcon.style.display = 'none'; // Hide the contact icon when the footer is in view
-                } else {
-                    contactIcon.style.display = 'block'; // Show the contact icon otherwise
-                }
+    //         let shouldShow = true;
+
+    //         if (banner) {
+    //             const bannerRect = banner.getBoundingClientRect();
+    //             // If banner bottom is still below the top of the viewport, user is still in banner
+    //             if (bannerRect.bottom > 0) {
+    //             shouldShow = false;
+    //             }
+    //         }
+
+    //         if (footer) {
+    //             const footerRect = footer.getBoundingClientRect();
+    //             const contactIcon = document.querySelector('.contact-icon-container');
+
+    //             if (footerRect.top < window.innerHeight) {
+    //                 contactIcon.style.display = 'none'; // Hide the contact icon when the footer is in view
+    //             } else {
+    //                 contactIcon.style.display = 'block'; // Show the contact icon otherwise
+    //             }
+    //         }
+    //     };
+
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+
+      useEffect(() => {
+        const handleScroll = () => {
+        const footer = document.querySelector('.footer');
+        const contactIcon = document.querySelector('.contact-icon-container');
+        const banner = document.querySelector('.landing-banner'); // 👈 select your banner section
+
+        let shouldShow = true;
+
+        // 👇 Hide if banner is still covering screen
+        if (banner) {
+            const bannerRect = banner.getBoundingClientRect();
+            // If banner bottom is still below the top of the viewport, user is still in banner
+            if (bannerRect.bottom > 600) {
+                shouldShow = false;
             }
+        }
+
+        // 👇 Hide if footer is in view
+        if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            if (footerRect.top < window.innerHeight) {
+            shouldShow = false;
+            }
+        }
+
+        // Apply visibility
+        if (contactIcon) {
+            contactIcon.style.display = shouldShow ? 'block' : 'none';
+        }
         };
 
         window.addEventListener('scroll', handleScroll);
+        handleScroll(); // run once on mount
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 

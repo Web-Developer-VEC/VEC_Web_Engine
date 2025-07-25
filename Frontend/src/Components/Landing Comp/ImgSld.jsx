@@ -1,10 +1,7 @@
 import React, {useEffect, useRef} from 'react';
-import Vide from '../Assets/stock.mp4';
+// import Vide from '../Assets/stock.mp4';
 import College from '../Assets/Hell.png';
-import Sun from '../Assets/sun.png';
-import Moon from '../Assets/moon.png';
 import Toggle from "../Toggle";
-import axios from 'axios';
 
 const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
     const videoRef = useRef(null);
@@ -20,7 +17,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
 
     const hndlScrll = debounce(() => {
         const pos = window.scrollY;
-        const pos_thresh = 300;
+        const pos_thresh = 600;
 
         if (pos > pos_thresh) {
             // Pause video when scrolled past threshold
@@ -55,16 +52,16 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
     }, [hndlScrll]);
 
     return (
-        <div className=''>
-            <div className="flex h-[30vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
+        <div className='landing-banner'>
+            <div className="flex h-[30vh] md:h-[45vmax] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
                 w-[100vw] pointer-event-none">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef} id='BgVid'
                     playsInline>
-                    <source src={Vide} type='video/mp4'/>
+                    <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
                 </video>
-                <div className="absolute flex gap-3 z-[50] bottom-[50%] left-0 mb-3 ml-3">
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[38%] left-0 mb-3 ml-3">
                     <button onClick={() => window.location.href = `${ph}`}
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
@@ -84,7 +81,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     </button>
                 </div>
                 <Toggle toggle={toggle} theme={theme}
-                        attr="absolute -top-[25%] lg:-top-[30%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
+                        attr="absolute -top-[25%] lg:-top-[19%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
                         rounded-br-xl"/>
                 {/*<div className='relative flex gap-2  mt-2  px-2 py-2 z-[50]*/}
                 {/*    '>*/}

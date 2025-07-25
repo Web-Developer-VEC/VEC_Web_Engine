@@ -41,9 +41,10 @@ const NCCMAIN = ({ toggle, theme }) => {
       <Banner
         toggle={toggle}
         theme={theme}
-        backgroundImage="./Banners/NCC.webp"
+        backgroundImage="./Banners/Vid_banner/NCC_Video_Banner.mp4"
         headerText="National Cadet Corps (NCC)"
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
+        isVideo={true}
       />
 
       <div className="NCC-main-container">

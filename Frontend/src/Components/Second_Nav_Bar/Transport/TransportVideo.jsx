@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import Vide from '../../Assets/Bus.mp4';
 
 const Transportvideo = () => {
     const videoRef = useRef(null);
@@ -40,7 +39,7 @@ const Transportvideo = () => {
                 ref={videoRef}
                 playsInline
             >
-                <source src={Vide} type="video/mp4" />
+                <source src={"./Banners/Vid_banner/Bus.mp4"} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>
