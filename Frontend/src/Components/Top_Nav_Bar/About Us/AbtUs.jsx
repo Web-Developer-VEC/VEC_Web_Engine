@@ -111,11 +111,21 @@ const AbtUs = ({ theme, toggle }) => {
                                                             rounded-full animate-spin"></div>
                                         </div>
                                     )}
-                                    <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
-                                        src={UrlParser(AbtUsData?.image_path[1])}
-                                        alt="Banner Image1"
-                                        onLoad={() => handleLoad('img2')}
-                                    />
+                                   <img
+  className="
+    absolute 
+    w-[80%] h-[80%] 
+    md:w-full md:h-full 
+    rounded-tr-[2rem] md:rounded-tr-[3rem] 
+    rounded-bl-[2rem] md:rounded-bl-[3rem] 
+    transition-opacity duration-500 
+    opacity-100
+  "
+  src={UrlParser(AbtUsData?.image_path[1])}
+  alt="Banner Image1"
+  onLoad={() => handleLoad('img2')}
+/>
+
                                 </div>
 
                                 {/* Image 3 */}
