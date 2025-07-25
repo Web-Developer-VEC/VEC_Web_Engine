@@ -89,14 +89,13 @@ import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
 import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
 import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 
-import { Hand } from "lucide-react";
+import { Hand, Scroll } from "lucide-react";
 import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
 
-import ScrollFromBottom from "./Components/ScrollFromBottom.jsx";
+
 import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
 import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-
-
+import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -208,7 +207,7 @@ const App = () => {
                     <>
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
-                        <MainContentWrapper>
+                        <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
@@ -292,7 +291,7 @@ const App = () => {
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
 
                         <SideButton/>
-
+<ScrollToTopButton />
                     </>
                 </AppContainer>
         </>

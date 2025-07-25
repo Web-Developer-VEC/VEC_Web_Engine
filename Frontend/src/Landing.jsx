@@ -13,6 +13,7 @@ import Contact from './Components/Landing Comp/ContactIcon'
 import Chat from './Components/Landing Comp/ChatPopup'
 import Footer from './Components/Landing Comp/Footer';
 import axios from 'axios';
+import ScrollToTopButton from './Components/ScrollToTopButton';
 
 
 const LandingPage = ({theme, load, toggle}) => {
@@ -80,6 +81,7 @@ const LandingPage = ({theme, load, toggle}) => {
                     <Footer theme={theme} data={landingData?.landing_page_details}/>
                 </div>
             </div>
+            <ScrollToTopButton/>
         </div>
     );
 };
