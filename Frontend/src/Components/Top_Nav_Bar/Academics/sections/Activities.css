@@ -42,7 +42,7 @@ body {
 
 .card-image {
   width: 100%;
-  height: auto; /* Maintain aspect ratio of the image */
+  height: 35vh; /* Maintain aspect ratio of the image */
   object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
