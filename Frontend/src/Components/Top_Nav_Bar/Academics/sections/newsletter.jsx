@@ -11,7 +11,7 @@ export default function Newsletter({ data }) {
     </div>
   }
 
-  const {  years } = data; 
+  const { years } = data; 
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
