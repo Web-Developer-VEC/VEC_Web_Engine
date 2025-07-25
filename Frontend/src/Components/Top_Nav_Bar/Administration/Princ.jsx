@@ -98,10 +98,10 @@ const Princ = ({theme, toggle}) => {
                        <div className="text-center ">
                       <span className="text-2xl font-semibold block font-poppins mt-2">{data?.name}</span>
                       <span className="text-lg font-bold text-accn dark:text-drka block font-poppins">
-                        <button
+                        {/* <button
                   //  onClick={() => navigate(`/facultyprofile/${uid}`)}
                     className={"p-2 bg-secd dark:bg-drks hover:bg-brwn hover:text-drkt text-text"}>
-                    View More</button>
+                    View More</button> */}
                 </span>
               </div>
                     </div>

@@ -1,229 +1,263 @@
 import React, {useState, useEffect, useCallback, useRef} from "react";
 import Tilt from "react-parallax-tilt";
 import {useNavigate} from "react-router-dom";
-import { Github, Linkedin, Instagram, Mail, Globe } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Globe, BadgeCheck } from "lucide-react";
 import { FaRegSmileBeam } from 'react-icons/fa';
 
 const Team = ({ani, callSld, ind, urlPrm}) => {
     const ppl = [
+    {
+        "name": "SAMUEL STEPHEN DEVA PAUL L",
+        "description": "Led a 17-member team to build Velammal Engineering College's official website using the MERN stack. Designed key pages in React, coordinated with college officials for live content, and deployed the site on AWS. Managed GitHub workflows, handled real-world bugs, and drove the project from planning to launch — not just leading, but building side by side with the team.",
+        "roles": ["Project Lead", "Frontend Lead Developer"],
+        "image": "/pilot/Sam.png",
+        "cover_image": "https://www.pngplay.com/wp-content/uploads/12/Sasuke-Uchiha-Background-PNG-Image.png",
+        "socials": [
+        { "type": "linkedin", "link": "https://www.linkedin.com/in/samsdp/" },
+        { "type": "github", "link": "https://github.com/SAMSDP" },
         {
-            nme: "SAMUEL STEPHEN DEVA PAUL L",
-            dsc: "Led a 17-member team to build Velammal Engineering College’s official website using the MERN stack. Designed key pages in React, coordinated with college officials for live content, and deployed the site on AWS. Managed GitHub workflows, handled real-world bugs, and drove the project from planning to launch — not just leading, but building side by side with the team.",
-            rol: "Software Sorceress", img: "/pilot/arjun.png", cov: "https://www.pngplay.com/wp-content/uploads/12/Sasuke-Uchiha-Background-PNG-Image.png",
-            soc: [
-                { type: "linkedin", lnk: "https://www.linkedin.com/in/samsdp/" },
-                { type: "github", lnk: "https://github.com/SAMSDP" },
-                { type: "instagram", lnk: "https://www.instagram.com/stephensam_16?igsh=MTVxdDQyY2VhbnByMQ==" },
-                { type: "mail", lnk: "mailto:samsdpaul150@gmail.com" },
-                { type: "portfolio", lnk: "https://samsdp-portfolio.vercel.app/" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/stephensam_16?igsh=MTVxdDQyY2VhbnByMQ=="
         },
+        { "type": "mail", "link": "mailto:samsdpaul150@gmail.com" },
+        { "type": "portfolio", "link": "https://samsdp-portfolio.vercel.app/" }
+        ]
+    },
+    {
+        "name": "SIDDHARTH MAGESH",
+        "description": "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
+        "roles": ["Backend Lead", "System Architect"],
+        "image": "/pilot/arjun.png",
+        "cover_image": "/pilot/Leroy_1.png",
+        "socials": [
+        { "type": "linkedin", "link": "https://linkedin.com/in/samuel" },
+        { "type": "github", "link": "https://github.com/samuel" },
+        { "type": "instagram", "link": "https://instagram.com/samuel" },
+        { "type": "mail", "link": "mailto:siddharthmagesh007@gmail.com" },
+        { "type": "portfolio", "link": "https://samuel.dev" },
         {
-            nme: "SIDDHARTH MAGESH",
-            dsc: "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
-            rol: "Digital Architect", img: "/pilot/arjun.png", cov: "/pilot/Leroy_1.png",
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:siddharthmagesh007@gmail.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" },
-                { type: "Hugginfface", lnk: "https://huggingface.co/siddharth-magesh"}
-            ]
+            "type": "Hugging Face",
+            "link": "https://huggingface.co/siddharth-magesh"
         },
+        { "type": "Devfolio", "link": "https://devfolio.co/@SiddharthMagesh" }
+        ]
+    },
+    {
+        "name": "Pranesh Kumar V",
+        "description": "Backend wizard by day, bug hunter by night. I wrangle APIs with Node.js, stuff MongoDB with JSONs using Python like it's a sacred ritual, and deploy my creations to the cloud with AWS (because local is too mainstream). I push, pull, and occasionally rage at Git while powering the brains behind our college website. I speak fluent JSON, enjoy long walks through error logs, and believe coffee is just a backend dependency.",
+        "roles": ["Backend Developer", "API Specialist"],
+        "image": "/pilot/Pranesh.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Charlie Chaplin",
-            dsc: "A silent but deadly programmer, Charlie's code speaks volumes. He communicates primarily through well-commented functions and the occasional meme in the team chat. He's known for his ability to fix critical bugs with a single keystroke, often while juggling a cup of coffee and a Rubik's Cube.",
-            rol: "Code Whisperer", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/pranesh-pk-362760250/"
         },
+        { "type": "github", "link": "https://github.com/PraneshPk2005" },
+        { "type": "mail", "link": "praneshvaradharaj@gmail.com" },
+        { "type": "portfolio", "link": "https://praneshpk-portfolio.vercel.app/" }
+        ]
+    },
+    {
+        "name": "SRI HARI M",
+        "description": "Worked as a Frontend Developer on the college website, where I built and maintained multiple responsive pages using React.js and Bootstrap. Translated UI designs into functional, consistent layouts and ensured compatibility across different devices and screen sizes. Collaborated with the backend team to integrate data and features effectively.",
+        "roles": ["Frontend Developer"],
+        "image": "/pilot/srihari.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "https://www.linkedin.com/in/sri-hari22/" },
+        { "type": "github", "link": "https://github.com/SriHari22004" },
+        { "type": "instagram", "link": "https://instagram.com/srihari22__" },
+        { "type": "mail", "link": "srihari22004@gmail.com" }
+        ]
+    },
+    {
+        "name": "MOHAMED YASIR A",
+        "description": "Started off by helping with the initial design phase of the college website, where I worked on wireframes and layout ideas to shape the overall look and feel. Later, I took on the role of a Frontend Developer, building and refining user-facing components to make the site clean, functional, and easy to navigate. I spent a good amount of time handling data collection, organizing files, and processing content to make sure everything stayed consistent and accessible for the team. It was a mix of creative thinking and hands-on work that taught me how important structure and detail are, especially when things scale. Looking back, I feel like I could’ve planned my file organization better early on—it would've saved a lot of time in the long run. But overall, it pushed me to understand both the visual and functional sides of web development more deeply.",
+        "roles": ["Frontend Developer", "UI Planner"],
+        "image": "/pilot/Yasir.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "https://www.linkedin.com/in/mdyasir8055" },
+        { "type": "github", "link": "https://github.com/mdyasir8055" },
+        { "type": "instagram", "link": "https://www.instagram.com/mdyasir_8055" },
+        { "type": "mail", "link": "mdyasir8055@gmail.com" },
+        { "type": "portfolio", "link": "https://mdyasirportfolio.vercel.app/" }
+        ]
+    },
+    {
+        "name": "Vasantha Raja S",
+        "description": "Built sleek, responsive pages with React.js—because static sites are so last season. Crafted pixel-perfect layouts, well-behaved buttons, and smooth user experiences using Tailwind, Bootstrap, and a dash of CSS magic.Teamed up with the backend squad to keep data flowing like butter on a hot dosa. Leveled up my frontend powers and got a real taste of web dev beyond the tutorial zone.",
+        "roles": ["Frontend Developer"],
+        "image": "/pilot/Vasanth.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "linkedin.com/in/vasantharajas123" },
+        { "type": "github", "link": "github.com/Vasanth-Aids" },
         {
-            nme: "Diana Dynamo",
-            dsc: "A powerhouse of productivity, Diana can launch a new feature before breakfast. She believes in the power of caffeine, clean code, and the Oxford comma. Her spirit animal is a cheetah, and her favorite command is 'git push --force' (use with caution!).",
-            rol: "Feature Fiend", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "instagram.com/v_s_n_h_007?igsh=NXk5YzR0dGQ1b2h5"
         },
+        { "type": "mail", "link": "selvamvasath2005@gmail.com" }
+        ]
+    },
+    {
+        "name": "Gokulramanan V",
+        "description": "Gokulramanan developed a RAG-based chatbot from end to end. He transformed raw JSON files into clean, structured text, generated vector embeddings, and integrated them with the LLaMA 3.3 model to enable context-aware responses. He also built backend components, including writing API endpoints and connecting the vector store with the language model, ensuring smooth and intelligent chatbot interactions.",
+        "roles": ["Chatbot Developer", "Backend Developer"],
+        "image": "/pilot/Gokul.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Edward Einstein",
-            dsc: "A theoretical coder with a penchant for pondering the universe and its relation to database schemas. He's often found sketching complex algorithms on napkins during lunch. He once proved that time travel is possible, but only within a local development environment.",
-            rol: "Algorithm Alchemist", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/gokul-v-568641257"
         },
+        { "type": "github", "link": "https://github.com/Feininon" },
+        { "type": "instagram", "link": "https://www.instagram.com/gokuloo3" },
+        { "type": "mail", "link": "gokulramananvec@gmail.com" }
+        ]
+    },
+    {
+        "name": "WAATSON J",
+        "description": "Worked as a Backend Developer for a college website, where I handled everything from building smooth Node.js APIs to writing Python scripts that populated MongoDB with structured data. I kept the backend running efficiently and connected it with the frontend to ensure a seamless experience. It was a hands-on role that taught me a lot about managing data, debugging under pressure, and collaborating with others to bring features to life. Alongside that, I also contributed during the early stages of developing a RAG-based chatbot for the same site. I started by organizing scattered JSON data into meaningful, context-rich sentences and turned them into vector embeddings for efficient retrieval. Using the LLaMA 3.3 model, the chatbot was trained to answer user queries with accuracy, becoming a helpful guide across the college website.",
+        "roles": ["Backend Developer", "Data Engineer"],
+        "image": "/pilot/Watson.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "https://www.linkedin.com/in/waatson-j/" },
+        { "type": "github", "link": "https://github.com/WAATS0N" },
+        { "type": "mail", "link": "waatson.j@gmail.com " }
+        ]
+    },
+    {
+        "name": "SAI VIGNESH RAJ M",
+        "description": "Embarked on a full-stack quest to build a RAG-based chatbot for a college website. Began by wrangling scattered JSON scrolls from across the digital realm, forging them into self-sufficient, context-rich sentences. Enchanted this knowledge into vector embeddings for swift retrieval. Armed with the LLaMA 3.3 model as the conversational engine, the system answered user queries with precision and insight. Navigated challenges of scarce resources and treacherous data pipelines to craft a resilient, lightweight AI companion — purpose-built for guiding users through the vast halls of the college web domain.",
+        "roles": ["Full-Stack Chatbot Developer", "Data Engineer"],
+        "image": "/pilot/Sai.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Fiona Fixit",
-            dsc: "The ultimate troubleshooter, Fiona can debug any problem, no matter how obscure. She has a sixth sense for spotting off-by-one errors and a knack for explaining complex technical concepts to anyone, even her pet goldfish, Bubbles.",
-            rol: "Bug Bounty Hunter", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "http://linkedin.com/in/sai-vignesh-raj-ba5997253/"
         },
+        { "type": "github", "link": "https://github.com/SaiVignesh45" },
         {
-            nme: "George Gigabyte",
-            dsc: "A data wizard who can wrangle terabytes of information like a cowboy wrangles cattle. He believes that every data point has a story to tell, and he's determined to uncover them all, one SQL query at a time. He also makes a mean batch of cookies.",
-            rol: "Data Wrangler", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/m_sai_vignesh/profilecard/?igsh=ZjlyYXV1aG53aDJo"
         },
+        { "type": "mail", "link": "saivignesh1204@gmail.com " }
+        ]
+    },
+    {
+        "name": "Kumar P",
+        "description": "Designed modern, mobile-friendly interfaces using React.js—because plain old static pages just don’t cut it anymore. Focused on fluid layouts, responsive elements, and polished user flows with the help of Tailwind CSS, Bootstrap, and a hint of handcrafted styling. Worked alongside the backend crew to keep everything synced up like a well-oiled engine. From connecting APIs to handling live data, I got hands-on experience with the real challenges of building dynamic web apps. This phase really boosted my frontend confidence and gave me a proper dive into the world of actual development—way past the YouTube tutorial comfort zone.",
+        "roles": ["Frontend Developer"],
+        "image": "/pilot/arjun.png",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "https://linkedin.com/in/kumar-p-75" },
+        { "type": "github", "link": "github.com/kumar7505" },
         {
-            nme: "Hannah Hacker",
-            dsc: "A security expert with a heart of gold, Hannah protects digital assets from the forces of evil. She can crack any password (ethically, of course) and build firewalls that would make a dragon sweat. She also organizes weekly capture-the-flag competitions for her team.",
-            rol: "Cyber Guardian", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/its.kumarhere?igsh=MWYxbDY5ZGMyenFicw=="
         },
+        { "type": "mail", "link": "kumarpers7@gmail.com" }
+        ]
+    },
+    {
+        "name": "Sri Raam V H",
+        "description": "Built and maintained  multiple  React.js pages. From integrating APIs to crafting sleek, responsive UIs with CSS  React, bootstrap tailwind. turned design mockups into functional reality. Obsessed with clean code and smooth UX. Did manual testing and made sure the website is compatible  with different devices.the site worked like a charm on every screen size — even the weirdly tiny ones professors insist on using.",
+        "roles": ["Frontend Developer", "QA Tester"],
+        "image": "/pilot/Sriram.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
+        { "type": "linkedin", "link": "linkedin.com/in/sri-raam-v-h" },
+        { "type": "github", "link": "https://github.com/Sriraam29" },
         {
-            nme: "Ivan Innovator",
-            dsc: "A relentless inventor, Ivan is always pushing the boundaries of what's possible. He dreams of building a self-aware toaster and a robot that can fold laundry. He believes that the only limit is your imagination (and maybe your budget).",
-            rol: "Innovation Inventor", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/sriraam_0029?igsh=dHlpM2RyZzJhcmd3"
         },
+        { "type": "mail", "link": "sriraamhari04@gmail.com " }
+        ]
+    },
+    {
+        "name": "ARJUN V L",
+        "description": "Worked as a Backend Developer for a website, keeping the digital gears turning behind the scenes. Juggled data entry like a wizard and crafted slick Node.js APIs that just worked. Wrote Python scripts to stuff MongoDB with data like a pro. Tied the frontend and backend together like a tech matchmaker. An adventure full of learning, logic, laughs, and the occasional late-night bug battle!",
+        "roles": ["Backend Developer", "Data Entry"],
+        "image": "/pilot/Arjun.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Julia Jester",
-            dsc: "A coding comedian, Julia brings laughter to the digital realm. She writes funny comments in her code and creates error messages that make you smile. She believes that programming should be fun, and she's on a mission to prove it.",
-            rol: "Code Comedian", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/arjun-vanameeganathan-lakshmi-63b820258/"
         },
+        { "type": "github", "link": "https://github.com/vlarjun20" },
         {
-            nme: "Kevin Keyboard",
-            dsc: "A speed typist with a passion for efficiency, Kevin can write code faster than most people can read it. He's a master of keyboard shortcuts and a firm believer in the power of the command line. He also holds the office record for most lines of code written in a single day.",
-            rol: "Rapid Coder", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/w.h.i.t.e_w.o.l.f_20?igsh=cTlnaDRlZGw4bGY3"
         },
+        { "type": "mail", "link": "vlarjun2022@gmail.com " },
+        { "type": "portfolio", "link": " https://arjunportfoli.vercel.app/" }
+        ]
+    },
+    {
+        "name": "SANTHOSH G",
+        "description": "Worked as a Frontend Developer on the college website. Built responsive pages using React.js, Tailwind, CSS, and Bootstrap. Collaborated with the backend team to ensure seamless data integration. Focused on clean, maintainable code and consistent UI design. Ensured full responsiveness across all screen sizes and devices.",
+        "roles": ["Frontend Developer"],
+        "image": "/pilot/Santhosh.webp",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Laura Logic",
-            dsc: "A master of logical thinking, Laura can solve any problem with a clear and concise approach. She's a fan of flowcharts, truth tables, and Venn diagrams. She believes that every problem has a logical solution, if you just break it down into smaller pieces.",
-            rol: "Logic Luminary", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/santhosh-g-81aa75360/"
         },
+        { "type": "github", "link": "https://github.com/Sandysharpo" },
         {
-            nme: "Mike Maestro",
-            dsc: "A conductor of code, Mike orchestrates complex systems with grace and precision. He's a master of design patterns and a believer in the power of modularity. He believes that code should be beautiful, like a symphony.",
-            rol: "Code Conductor", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
         },
+        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        ]
+    },
+    {
+        "name": "Hari Prasath",
+        "description": "Jumped into this project as the go-to guy for all things cloud and backend. Spent most of my time testing cloud platforms, tweaking deployments, and wrestling with configurations until they behaved. Also pitched in as a backend intern—debugging logic, building APIs, and occasionally arguing with the server (spoiler: it rarely listened). Cloud chaos? That was my playground.",
+        "roles": ["Backend Intern", "Cloud Engineer"],
+        "image": "/pilot/arjun.png",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Nancy Navigator",
-            dsc: "A user experience guru, Nancy guides users through the digital landscape with ease. She's a master of usability testing and a believer in the power of empathy. She believes that every user should have a delightful experience.",
-            rol: "UX Navigator", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/santhosh-g-81aa75360/"
         },
+        { "type": "github", "link": "https://github.com/Sandysharpo" },
         {
-            nme: "Oscar Optimist",
-            dsc: "A ray of sunshine in the coding world, Oscar always sees the bright side of things. He believes that every bug is an opportunity to learn and grow. He also organizes weekly team-building activities, like coding karaoke and debugging dodgeball.",
-            rol: "Code Cheerleader", img: "/pilot/arjun.png", cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
         },
+        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        ]
+    },
+    {
+        "name": "Ajith",
+        "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
+        "roles": ["Frontend Intern", "Integration Engineer"],
+        "image": "/pilot/arjun.png",
+        "cover_image": "/person.jpg",
+        "socials": [
         {
-            nme: "Penny Pixel",
-            dsc: "A visual virtuoso, Penny brings digital designs to life with her keen eye for detail. She's a master of CSS and a believer in the power of pixels. She believes that every website should be a work of art.",
-            rol: "Design Diva", img: './pilot/arjun.png', cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "linkedin",
+            "link": "https://www.linkedin.com/in/santhosh-g-81aa75360/"
         },
+        { "type": "github", "link": "https://github.com/Sandysharpo" },
         {
-            nme: "Quentin Query",
-            dsc: "A database detective, Quentin can find any information hidden in the depths of a database. He's a master of SQL and a believer in the power of data. He believes that every question has an answer, if you know where to look.",
-            rol: "Data Detective", img: './pilot/arjun.png', cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
+            "type": "instagram",
+            "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
         },
-        {
-            nme: "Rachel Runtime",
-            dsc: "A performance perfectionist, Rachel optimizes code for maximum efficiency. She's a master of profiling tools and a believer in the power of optimization. She believes that code should be fast and furious.",
-            rol: "Performance Pro", img: './pilot/arjun.png', cov: '/person.jpg',
-            soc: [
-                { type: "linkedin", lnk: "https://linkedin.com/in/samuel" },
-                { type: "github", lnk: "https://github.com/samuel" },
-                { type: "instagram", lnk: "https://instagram.com/samuel" },
-                { type: "mail", lnk: "mailto:samuel@example.com" },
-                { type: "portfolio", lnk: "https://samuel.dev" }
-            ]
-        },
-    ];
+        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        ]
+    }
+    ]
     const [pause, setPause] = useState(false);
     const [pos, setPos] = useState(1);
     const durToNxt = (ind !== urlPrm)? 10000000: 9000
@@ -236,7 +270,8 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
     instagram: <Instagram className="w-5 h-5" />,
     mail: <Mail className="w-5 h-5" />,
     portfolio: <Globe className="w-5 h-5" />,
-    Hugginfface: <FaRegSmileBeam className="w-5 h-5" />
+    "Hugging Face": <FaRegSmileBeam className="w-5 h-5" />,
+    Devfolio: <BadgeCheck className="w-5 h-5"/>
     };
 
     const pos_hdl = useCallback((pvl) => {
@@ -266,7 +301,7 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
         <div className="h-full">
             {(ind !== urlPrm) ?
                 <h3 className={"w-screen bg-blue-500/50 py-2 left-0 text-center text-[1.25rem] font-thin text-slate-300"}>
-                    You are viewing <b className="font-bold">{ppl[+(ind) - 1].nme}</b>'s customised view
+                    You are viewing <b className="font-bold">{ppl[+(ind) - 1].name}</b>'s customised view
                     <a className="bg-blue-950 text-[1rem] text-white rounded-xl px-2 py-1 ml-4 mb-1"
                        href="./69">Revert ?</a>
                 </h3> : ""}
@@ -295,48 +330,51 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
                             <div className="absolute bg-slate-100 z-[-10] max-w-[100%] w-[40vw] lg:w-[17.5vw]
                                 h-[20vmax] lg:h-full rounded-lg
                                 overflow-hidden [transform:rotateY(180deg),translateZ(-10px)]">
-                                <img className={(pos === i + 1) ? 'hidden' : 'h-full rounded-2xl'} src={cur.img}
-                                     alt={"Person"}/>
+                                <img className={(pos === i + 1) ? 'hidden' : ' h-full rounded-2xl'} src={cur.image}
+                                     alt={cur.name}/>
                             </div>
                             <Tilt><img
                                 className={`${(pos === i + 1) ? 'animate-[sizeUpExt_0.3s_ease-in-out_forwards] ' :
-                                    'hidden'} absolute h-[26vmax] -top-8 lg:top-10 origin-bottom`} src={cur.cov}
-                                alt={"P"}/></Tilt>
+                                    'hidden'} absolute h-[26vmax] -top-8 lg:top-10 origin-bottom`} src={cur.cover_image}
+                                alt={cur.name}/></Tilt>
                         </div>
                     </div>
                 ))}
 
-                {/* The Blue Bio box */}
-                {/* To change the x position of box change lg-left-[...] */}
-                {/* Remember to change the title(Crdt_Title) position as well*/}
-                <div className={`float-right grid grid-cols-1 size-[32vmax] lg:left-[55vw] top-[30vh] lg:top-[4vh] absolute
-                    bg-[#021526] text-white rounded-2xl [box-shadow:0_2px_5px_rgba(0,0,0,0.2)] h-full w-[80%]
+                {/* The Blue Bio box - Now with dynamic height */}
+                <div className={`float-right grid grid-cols-1 min-h-[32vmax] w-[50vmax] lg:left-[55vw] top-[30vh] lg:top-[4vh] relative
+                    bg-[#021526] text-white rounded-2xl [box-shadow:0_2px_5px_rgba(0,0,0,0.2)] max-w-[80%]
                     before:content-[''] before:absolute before:-bottom-4 before:left-0 before:w-[95%] before:ml-4
                     before:h-12 before:z-[-1] before:blur-xl before:bg-[linear-gradient(to_right,red,blue)]
                     before:bg-[length:200%_200%] before:animate-[aniGradBg_6.9s_ease_infinite]
                     ${(pause) ? 'before:[animation-play-state:paused]' : 'before:animation-play-state:running'}`}>
                     {ppl.map((cur, i) => (
                         <div className={`${(i === pos - 1) ? "animate-[fadIn_0.4s_ease-in_forwards]" : "hidden"} 
-                            absolute p-8 h-fit`} key={i}>
-                            <p className={"text-2xl lg:text-4xl text-[#6EACDA] mb-4"}>
-                                {cur.nme.split("").map((ltr, i) => (
-                                    <span className={`animate-[bem_0.4s_ease-in_forwards] mb-2`}
+                            p-6 lg:p-8 h-fit w-full overflow-hidden`} key={i}>
+                            <p className={"text-xl lg:text-3xl xl:text-4xl text-[#6EACDA] mb-4 leading-tight break-words"}>
+                                {cur.name.split("").map((ltr, i) => (
+                                    <span key={i} className={`animate-[bem_0.4s_ease-in_forwards] mb-2`}
                                           style={{animationDelay: `${i * 0.08}s`}}>{ltr}</span>
                                 ))}
                             </p>
-                            <p className="bg-[#03346E] px-3 pt-1 rounded-full text-lg w-fit mb-2">{cur.rol}</p>
-                            <p className="text-sm">{cur.dsc}</p>
+                            <div className="flex gap-2">
+                                {cur.roles.map((rol,i) => (
+                                    <p className="bg-[#03346E] px-3 pt-1 rounded-full text-sm lg:text-base w-fit mb-3">{rol}</p>
+                                ))}
+                            </div>
+                            <p className="text-xs lg:text-sm leading-relaxed mb-4 text-gray-200 whitespace-pre-line text-justify">{cur.description}</p>
                             <div className="mt-4">
-                                <div className="grid grid-cols-2 gap-3">
-                                    {cur.soc
-                                    .filter(s => s.type !== "portfolio")
+                                <p>Social Links</p>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-3 justify-center items-center">
+                                    {cur.socials
+                                    .filter(s => s.type !== "portfoli")
                                     .map((s, i) => (
                                         <a
                                         key={i}
-                                        href={s.lnk}
+                                        href={s.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 p-2 rounded hover:bg-gray-700 hover:text-white truncate"
+                                        className="flex items-center gap-1 lg:gap-2 p-1.5 lg:p-2 rounded text-xs lg:text-sm hover:bg-gray-700 hover:text-white truncate transition-colors w-fit"
                                         >
                                         {iconMap[s.type]}
                                         <span className="truncate capitalize">{s.type}</span>
@@ -344,20 +382,20 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
                                     ))}
                                 </div>
 
-                                {cur.soc.find(s => s.type === "portfolio") && (
-                                    <div className="flex justify-center mt-4">
+                                {/* {cur.soc.find(s => s.type === "portfolio") && (
+                                    <div className="flex justify-center mt-3 lg:mt-4">
                                     <a
                                         href={cur.soc.find(s => s.type === "portfolio").lnk}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 p-2 rounded hover:bg-gray-700 hover:text-white"
+                                        className="flex items-center gap-1 lg:gap-2 p-1.5 lg:p-2 rounded text-xs lg:text-sm hover:bg-gray-700 hover:text-white transition-colors"
                                     >
                                         {iconMap["portfolio"]}
                                         <span className="font-semibold">Portfolio</span>
                                     </a>
                                     </div>
-                                )}
-                                </div>
+                                )} */}
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -365,13 +403,12 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             <div className="flex flex-wrap gap-4 justify-center w-screen bg-blue-500/50 mt-80 lg:mt-24 py-2 left-0
                 text-center text-[1.25rem] font-thin text-slate-300">
                 {ppl.map((per, i) => (
-                    <p onClick={() => setPos(i + 1)} className="hover:scale-125
-                        transition-transform">
-                        {per.nme.split(" ")[0]}</p>
+                    <p key={i} onClick={() => setPos(i + 1)} className="hover:scale-125
+                        transition-transform cursor-pointer">
+                        {per.name.split(" ")[0]}</p>
                 ))}
             </div>
         </div>
-        // </div>
     );
 };
 
