@@ -3,6 +3,7 @@ import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
 import axios from 'axios';
+import ScrollToTopButton from '../../ScrollToTopButton';
 
 
 
@@ -111,6 +112,7 @@ const AbtUs = ({ theme, toggle }) => {
                                                             rounded-full animate-spin"></div>
                                         </div>
                                     )}
+
                                    <img
   className="
     absolute 
@@ -125,6 +127,7 @@ const AbtUs = ({ theme, toggle }) => {
   alt="Banner Image1"
   onLoad={() => handleLoad('img2')}
 />
+
 
                                 </div>
 
@@ -189,7 +192,8 @@ const AbtUs = ({ theme, toggle }) => {
                     <LoadComp txt={""} />
                 </div>
             )}
-
+                {/* ✅ Ensure this placement */}
+                <ScrollToTopButton />
         </>
     );
 };
