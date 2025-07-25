@@ -82,8 +82,8 @@ const AbtUs = ({ theme, toggle }) => {
                             <div className="relative grow p-4 font-[Poppins] mt-14 basis-3/4 z-10
                                 bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                                 
-                                <p className='text-3xl text-center font-[Poppins]'>{secTtl}</p>
-                                <p className='text-[20px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
+                                <p className='text-[32px] text-center font-[Poppins]'>{secTtl}</p>
+                                <p className='text-[24px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
                                 <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                             </div>
                             
@@ -156,9 +156,9 @@ transition-opacity duration-500 opacity-100
                         </div>
                     {/* ))} */}
 
-                    <div className='m-2 p-2'>
+                    <div className='m-2 p-2 font-[Poppins]'>
                         <ul className='pdf-links grid grid-cols-2 justify-items-start items-center text-left w-full md:grid-cols-1 md:flex flex-wrap justify-center gap-8' >
-                            <li className='text-am md:text-lg flex items-center gap-'>
+                            <li className='text-am md:text-lg flex items-center gap-2 '>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                             </li>

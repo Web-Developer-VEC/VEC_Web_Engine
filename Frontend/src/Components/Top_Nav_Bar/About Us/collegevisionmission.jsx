@@ -52,7 +52,8 @@ const Collegevisionmission = ({ theme, toggle }) => {
     };
 
     return (
-        <div className={styles.root}>
+        <div className={`${styles.root} font-[Poppins]`}>
+
             <Banner
                 toggle={toggle}
                 theme={theme}
