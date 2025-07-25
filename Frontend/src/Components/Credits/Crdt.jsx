@@ -27,11 +27,10 @@ const Crdt = () => {
                   backgroundColor: '#1B1B1B',
                   backgroundImage: 'linear-gradient(315deg, #1B1B1B 0%, #003153 74%)'
               }}>
-            {/*<Boot isAuth={true} isLoaded={true} theme={"light"}/>*/}
-            <Canvas className={"absolute top-0 h-max"} resize={{scroll: false}}
+            {/* <Canvas className={"absolute top-0 h-max"} resize={{scroll: false}}
                     camera={{fov: 75, position: [0, 0, 10]}}>
                 <PointWaves count={2000} speed={0.25} amplitude={30} waveLength={10}/>
-            </Canvas>
+            </Canvas> */}
             <div className="relative w-full top-[2vh]">
               <TeamTol />
             </div>

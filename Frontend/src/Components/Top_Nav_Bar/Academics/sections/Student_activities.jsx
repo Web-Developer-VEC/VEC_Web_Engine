@@ -109,21 +109,13 @@ useEffect(() => {
             {selectedImage && (
               <div className="modal-overlay" onClick={closeModal}>
                 <div className="modal-stud" onClick={(e) => e.stopPropagation()}>
-                  {/* {selectedImage.image_path && (
-                    <img
-                      src={UrlParser(selectedImage.image_path)}
-                      alt={selectedImage.event_name}
-                      className="modal-image"
-                    />
-                  )} */}
-                  {}
                   {selectedImage.video_link && (
                     <>
-                        <h2 className="description-title text-accn dark:text-drka">
-                          {images[currentIndex]?.event_name || "No Title"}
+                        <h2 className={`description-title text-accn dark:text-drka ${images[currentIndex]?.image_content ? "" : "text-center"}`}>
+                          {images[currentIndex]?.event_name}
                         </h2>
                         <p className="description-text-act">
-                          {images[currentIndex]?.image_content || "No Description"}
+                          {images[currentIndex]?.image_content}
                         </p>
                       <a
                         href={selectedImage.video_link}
@@ -162,11 +154,11 @@ useEffect(() => {
 
           {/* 🔹 Image Description Box */}
           <div className="description-box bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className="description-title text-accn dark:text-drka">
-              {images[currentIndex]?.event_name || "No Title"}
+            <h2 className={`description-title text-accn dark:text-drka ${images[currentIndex]?.image_content ? "" : "text-center"}`}>
+              {images[currentIndex]?.event_name}
             </h2>
             <p className="description-text-act">
-              {images[currentIndex]?.image_content || "No Description"}
+              {images[currentIndex]?.image_content}
             </p>
           </div>
         </>

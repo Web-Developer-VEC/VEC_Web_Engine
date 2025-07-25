@@ -72,7 +72,7 @@ const Sidebar = (props) => {
 
 
     return (
-        <div>
+        <div className="overflow-y-hidden">
             {/* Sidebar Open Button */}
             <button onClick={() => setIsOpen(true)} className={`fixed top-2 right-2 z-50 bg-gray-900 text-white p-2 
             rounded-lg shadow-xl transition-all duration-300 

@@ -39,7 +39,7 @@ const CurriculumPage = ({ data }) => {
                 {data?.regulation?.year?.map((year, index) => (
                   <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
                     <p>
-                      R - {year}
+                      {year}
                       <div className="options-container">
                         <button 
                         className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
