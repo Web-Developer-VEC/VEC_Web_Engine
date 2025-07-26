@@ -164,23 +164,23 @@ const AbtUs = ({ theme, toggle }) => {
 
                     <div className='m-2 p-2 font-[Poppins]'>
                         <ul className='pdf-links grid grid-cols-2 justify-items-start items-center text-left w-full md:grid-cols-1 md:flex flex-wrap justify-center gap-8' >
-                            <li className='text-am md:text-lg flex items-center gap-2 '>
+                            <li className='text-am md:text-[16px] flex items-center gap-2 '>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[1])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[2])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[3])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                             </li>
-                             <li className='text-sm md:text-lg flex items-center gap-2'>
+                             <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[4])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Feedback</a>
                             </li>
