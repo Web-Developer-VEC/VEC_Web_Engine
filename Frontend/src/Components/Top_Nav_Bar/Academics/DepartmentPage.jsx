@@ -170,14 +170,14 @@ const DepartmentPage = ({ theme, toggle }) => {
     <div className={styles.main}>
       {/* Header */}
       <div className={styles.header}>
-        <Toggle attr="absolute top-3 right-0 md:right-20  float-right  z-9999  h-12 w-12 z-[100000]" toggle={toggle} theme={theme} />
+        <Toggle attr="absolute top-3 right-0 md:right-24  float-right  z-9999  h-12 w-12 z-[100000]" toggle={toggle} theme={theme} />
         <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
       {loading ? (
-        <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
+        <div className={"grid grid-cols-1 place-content-center top-14 h-screen"}>
           <LoadComp />
         </div>
       ) : (

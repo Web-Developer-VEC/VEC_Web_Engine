@@ -5,12 +5,12 @@ import { Github, Linkedin, Instagram, Mail, Globe, BadgeCheck } from "lucide-rea
 import { FaRegSmileBeam } from 'react-icons/fa';
 
 const Team = ({ani, callSld, ind, urlPrm}) => {
-    const ppl = [
+const ppl = [
     {
         "name": "SAMUEL STEPHEN DEVA PAUL L",
         "description": "Led a 17-member team to build Velammal Engineering College's official website using the MERN stack. Designed key pages in React, coordinated with college officials for live content, and deployed the site on AWS. Managed GitHub workflows, handled real-world bugs, and drove the project from planning to launch — not just leading, but building side by side with the team.",
-        "roles": ["Project Lead", "Frontend Lead Developer"],
-        "image": "/pilot/Sam.png",
+        "roles": ["Team Lead", "Frontend Lead Developer"],
+        "image": "/pilot/Sam.webp",
         "cover_image": "https://www.pngplay.com/wp-content/uploads/12/Sasuke-Uchiha-Background-PNG-Image.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/samsdp/" },
@@ -24,17 +24,17 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
         ]
     },
     {
-        "name": "SIDDHARTH MAGESH",
+        "name": "SIDDHARTH MAGESH ",
         "description": "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
-        "roles": ["Backend Lead", "System Architect"],
-        "image": "/pilot/arjun.png",
+        "roles": ["Backend Lead Developer", "System Architect"],
+        "image": "/pilot/siddharth.png",
         "cover_image": "/pilot/Leroy_1.png",
         "socials": [
-        { "type": "linkedin", "link": "https://linkedin.com/in/samuel" },
-        { "type": "github", "link": "https://github.com/samuel" },
-        { "type": "instagram", "link": "https://instagram.com/samuel" },
+        { "type": "linkedin", "link": "https://www.linkedin.com/in/siddharth-magesh-76688a246/" },
+        { "type": "github", "link": "https://github.com/Siddharth-magesh" },
+        { "type": "instagram", "link": "https://www.instagram.com/siddharth_magesh?igsh=dzZuNGJwdXB3M3hj " },
         { "type": "mail", "link": "mailto:siddharthmagesh007@gmail.com" },
-        { "type": "portfolio", "link": "https://samuel.dev" },
+        { "type": "portfolio", "link": "https://github.com/Siddharth-magesh/Siddharth-magesh" },
         {
             "type": "Hugging Face",
             "link": "https://huggingface.co/siddharth-magesh"
@@ -43,9 +43,9 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
         ]
     },
     {
-        "name": "Pranesh Kumar V",
+        "name": "PRANESH KUMAR V",
         "description": "Backend wizard by day, bug hunter by night. I wrangle APIs with Node.js, stuff MongoDB with JSONs using Python like it's a sacred ritual, and deploy my creations to the cloud with AWS (because local is too mainstream). I push, pull, and occasionally rage at Git while powering the brains behind our college website. I speak fluent JSON, enjoy long walks through error logs, and believe coffee is just a backend dependency.",
-        "roles": ["Backend Developer", "API Specialist"],
+        "roles": ["Backend Developer", "API Developer"],
         "image": "/pilot/Pranesh.webp",
         "cover_image": "/person.jpg",
         "socials": [
@@ -54,21 +54,21 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "link": "https://www.linkedin.com/in/pranesh-pk-362760250/"
         },
         { "type": "github", "link": "https://github.com/PraneshPk2005" },
-        { "type": "mail", "link": "praneshvaradharaj@gmail.com" },
+        { "type": "mail", "link": "mailto:praneshvaradharaj@gmail.com" },
         { "type": "portfolio", "link": "https://praneshpk-portfolio.vercel.app/" }
         ]
     },
     {
         "name": "SRI HARI M",
         "description": "Worked as a Frontend Developer on the college website, where I built and maintained multiple responsive pages using React.js and Bootstrap. Translated UI designs into functional, consistent layouts and ensured compatibility across different devices and screen sizes. Collaborated with the backend team to integrate data and features effectively.",
-        "roles": ["Frontend Developer"],
+        "roles": ["Frontend Developer", "UI Designer"],
         "image": "/pilot/srihari.webp",
         "cover_image": "/person.jpg",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/sri-hari22/" },
         { "type": "github", "link": "https://github.com/SriHari22004" },
         { "type": "instagram", "link": "https://instagram.com/srihari22__" },
-        { "type": "mail", "link": "srihari22004@gmail.com" }
+        { "type": "mail", "link": "mailto:srihari22004@gmail.com" }
         ]
     },
     {
@@ -81,14 +81,14 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
         { "type": "linkedin", "link": "https://www.linkedin.com/in/mdyasir8055" },
         { "type": "github", "link": "https://github.com/mdyasir8055" },
         { "type": "instagram", "link": "https://www.instagram.com/mdyasir_8055" },
-        { "type": "mail", "link": "mdyasir8055@gmail.com" },
+        { "type": "mail", "link": "mailto:mdyasir8055@gmail.com" },
         { "type": "portfolio", "link": "https://mdyasirportfolio.vercel.app/" }
         ]
     },
     {
-        "name": "Vasantha Raja S",
+        "name": "VASANTHA RAJA S",
         "description": "Built sleek, responsive pages with React.js—because static sites are so last season. Crafted pixel-perfect layouts, well-behaved buttons, and smooth user experiences using Tailwind, Bootstrap, and a dash of CSS magic.Teamed up with the backend squad to keep data flowing like butter on a hot dosa. Leveled up my frontend powers and got a real taste of web dev beyond the tutorial zone.",
-        "roles": ["Frontend Developer"],
+        "roles": ["Frontend Developer","responsive UI Designer"],
         "image": "/pilot/Vasanth.webp",
         "cover_image": "/person.jpg",
         "socials": [
@@ -98,13 +98,13 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "instagram.com/v_s_n_h_007?igsh=NXk5YzR0dGQ1b2h5"
         },
-        { "type": "mail", "link": "selvamvasath2005@gmail.com" }
+        { "type": "mail", "link": "mailto:selvamvasath2005@gmail.com" }
         ]
     },
     {
-        "name": "Gokulramanan V",
+        "name": "GOKULRAMANAN V",
         "description": "Gokulramanan developed a RAG-based chatbot from end to end. He transformed raw JSON files into clean, structured text, generated vector embeddings, and integrated them with the LLaMA 3.3 model to enable context-aware responses. He also built backend components, including writing API endpoints and connecting the vector store with the language model, ensuring smooth and intelligent chatbot interactions.",
-        "roles": ["Chatbot Developer", "Backend Developer"],
+        "roles": ["Backend Developer","Chatbot Developer"],
         "image": "/pilot/Gokul.webp",
         "cover_image": "/person.jpg",
         "socials": [
@@ -114,19 +114,19 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
         },
         { "type": "github", "link": "https://github.com/Feininon" },
         { "type": "instagram", "link": "https://www.instagram.com/gokuloo3" },
-        { "type": "mail", "link": "gokulramananvec@gmail.com" }
+        { "type": "mail", "link": "mailto:gokulramananvec@gmail.com" }
         ]
     },
     {
         "name": "WAATSON J",
         "description": "Worked as a Backend Developer for a college website, where I handled everything from building smooth Node.js APIs to writing Python scripts that populated MongoDB with structured data. I kept the backend running efficiently and connected it with the frontend to ensure a seamless experience. It was a hands-on role that taught me a lot about managing data, debugging under pressure, and collaborating with others to bring features to life. Alongside that, I also contributed during the early stages of developing a RAG-based chatbot for the same site. I started by organizing scattered JSON data into meaningful, context-rich sentences and turned them into vector embeddings for efficient retrieval. Using the LLaMA 3.3 model, the chatbot was trained to answer user queries with accuracy, becoming a helpful guide across the college website.",
-        "roles": ["Backend Developer", "Data Engineer"],
+        "roles": ["Data Engineer","Backend Developer" ],
         "image": "/pilot/Watson.webp",
         "cover_image": "/person.jpg",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/waatson-j/" },
         { "type": "github", "link": "https://github.com/WAATS0N" },
-        { "type": "mail", "link": "waatson.j@gmail.com " }
+        { "type": "mail", "link": "mailto:waatson.j@gmail.com " }
         ]
     },
     {
@@ -145,13 +145,13 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "https://www.instagram.com/m_sai_vignesh/profilecard/?igsh=ZjlyYXV1aG53aDJo"
         },
-        { "type": "mail", "link": "saivignesh1204@gmail.com " }
+        { "type": "mail", "link": "mailto:saivignesh1204@gmail.com " }
         ]
     },
     {
-        "name": "Kumar P",
+        "name": "KUMAR P",
         "description": "Designed modern, mobile-friendly interfaces using React.js—because plain old static pages just don’t cut it anymore. Focused on fluid layouts, responsive elements, and polished user flows with the help of Tailwind CSS, Bootstrap, and a hint of handcrafted styling. Worked alongside the backend crew to keep everything synced up like a well-oiled engine. From connecting APIs to handling live data, I got hands-on experience with the real challenges of building dynamic web apps. This phase really boosted my frontend confidence and gave me a proper dive into the world of actual development—way past the YouTube tutorial comfort zone.",
-        "roles": ["Frontend Developer"],
+        "roles": ["Frontend Developer",""],
         "image": "/pilot/arjun.png",
         "cover_image": "/person.jpg",
         "socials": [
@@ -161,11 +161,11 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "https://www.instagram.com/its.kumarhere?igsh=MWYxbDY5ZGMyenFicw=="
         },
-        { "type": "mail", "link": "kumarpers7@gmail.com" }
+        { "type": "mail", "link": "mailto:kumarpers7@gmail.com" }
         ]
     },
     {
-        "name": "Sri Raam V H",
+        "name": "SRI RAAM V H",
         "description": "Built and maintained  multiple  React.js pages. From integrating APIs to crafting sleek, responsive UIs with CSS  React, bootstrap tailwind. turned design mockups into functional reality. Obsessed with clean code and smooth UX. Did manual testing and made sure the website is compatible  with different devices.the site worked like a charm on every screen size — even the weirdly tiny ones professors insist on using.",
         "roles": ["Frontend Developer", "QA Tester"],
         "image": "/pilot/Sriram.webp",
@@ -177,13 +177,13 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "https://www.instagram.com/sriraam_0029?igsh=dHlpM2RyZzJhcmd3"
         },
-        { "type": "mail", "link": "sriraamhari04@gmail.com " }
+        { "type": "mail", "link": "mailto:sriraamhari04@gmail.com " }
         ]
     },
     {
         "name": "ARJUN V L",
         "description": "Worked as a Backend Developer for a website, keeping the digital gears turning behind the scenes. Juggled data entry like a wizard and crafted slick Node.js APIs that just worked. Wrote Python scripts to stuff MongoDB with data like a pro. Tied the frontend and backend together like a tech matchmaker. An adventure full of learning, logic, laughs, and the occasional late-night bug battle!",
-        "roles": ["Backend Developer", "Data Entry"],
+        "roles": [ "Data Entry","Backend Developer"],
         "image": "/pilot/Arjun.webp",
         "cover_image": "/person.jpg",
         "socials": [
@@ -196,7 +196,7 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "https://www.instagram.com/w.h.i.t.e_w.o.l.f_20?igsh=cTlnaDRlZGw4bGY3"
         },
-        { "type": "mail", "link": "vlarjun2022@gmail.com " },
+        { "type": "mail", "link": "mailto:vlarjun2022@gmail.com " },
         { "type": "portfolio", "link": " https://arjunportfoli.vercel.app/" }
         ]
     },
@@ -216,45 +216,46 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
             "type": "instagram",
             "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
         },
-        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        { "type": "mail", "link": "mailto:santhoshsandy9840l@gmail.com" }
         ]
     },
     {
         "name": "Hari Prasath",
         "description": "Jumped into this project as the go-to guy for all things cloud and backend. Spent most of my time testing cloud platforms, tweaking deployments, and wrestling with configurations until they behaved. Also pitched in as a backend intern—debugging logic, building APIs, and occasionally arguing with the server (spoiler: it rarely listened). Cloud chaos? That was my playground.",
-        "roles": ["Backend Intern", "Cloud Engineer"],
-        "image": "/pilot/arjun.png",
+        "roles": ["Cloud Engineer","Backend Developer" ],
+        "image": "/pilot/hari.png",
         "cover_image": "/person.jpg",
         "socials": [
         {
             "type": "linkedin",
-            "link": "https://www.linkedin.com/in/santhosh-g-81aa75360/"
+            "link": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
         },
-        { "type": "github", "link": "https://github.com/Sandysharpo" },
+        { "type": "github", "link": "https://github.com/4274-hari" },
         {
             "type": "instagram",
-            "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
+            "link": "https://www.instagram.com/_.irah._07?utm_source=qr&igsh=MXQ0dGFpdTk3OGo1Mw==  "
         },
-        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        { "type": "mail", "link": "mailto:hari.velusmy@gmail.com" }
         ]
     },
     {
         "name": "Ajith",
         "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
-        "roles": ["Frontend Intern", "Integration Engineer"],
-        "image": "/pilot/arjun.png",
+        "roles": ["Frontend Developer", "Integration Engineer"],
+        "image": "/pilot/ajith.png",
         "cover_image": "/person.jpg",
         "socials": [
         {
             "type": "linkedin",
-            "link": "https://www.linkedin.com/in/santhosh-g-81aa75360/"
+            "link": "https://www.linkedin.com/in/ajith-g-923b25274/"
         },
-        { "type": "github", "link": "https://github.com/Sandysharpo" },
+        { "type": "github", "link": "https://github.com/Ajith-ajay"
+        },
         {
-            "type": "instagram",
-            "link": "https://www.instagram.com/sandy._.sharp?igsh=MWp0bnljd3JuN29meg== "
+            "type": "portfolio",
+            "link": "https://myprotfoliostu.web.app/"
         },
-        { "type": "mail", "link": "santhoshsandy9840l@gmail.com" }
+        { "type": "mail", "link": "mailto:ajithajay1029@gmail.com" }
         ]
     }
     ]
@@ -330,7 +331,7 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
                             <div className="absolute bg-slate-100 z-[-10] max-w-[100%] w-[40vw] lg:w-[17.5vw]
                                 h-[20vmax] lg:h-full rounded-lg
                                 overflow-hidden [transform:rotateY(180deg),translateZ(-10px)]">
-                                <img className={(pos === i + 1) ? 'hidden' : ' h-full rounded-2xl'} src={cur.image}
+                                <img className={(pos === i + 1) ? 'hidden' : 'blur-sm h-full rounded-2xl'} src={cur.image}
                                      alt={cur.name}/>
                             </div>
                             <Tilt><img
@@ -367,7 +368,6 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
                                 <p>Social Links</p>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-3 justify-center items-center">
                                     {cur.socials
-                                    .filter(s => s.type !== "portfoli")
                                     .map((s, i) => (
                                         <a
                                         key={i}
@@ -381,20 +381,6 @@ const Team = ({ani, callSld, ind, urlPrm}) => {
                                         </a>
                                     ))}
                                 </div>
-
-                                {/* {cur.soc.find(s => s.type === "portfolio") && (
-                                    <div className="flex justify-center mt-3 lg:mt-4">
-                                    <a
-                                        href={cur.soc.find(s => s.type === "portfolio").lnk}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-1 lg:gap-2 p-1.5 lg:p-2 rounded text-xs lg:text-sm hover:bg-gray-700 hover:text-white transition-colors"
-                                    >
-                                        {iconMap["portfolio"]}
-                                        <span className="font-semibold">Portfolio</span>
-                                    </a>
-                                    </div>
-                                )} */}
                             </div>
                         </div>
                     ))}
