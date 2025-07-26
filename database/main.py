@@ -1175,7 +1175,9 @@ def insert_gallery():
     print("gallery data inserted successfully.")
 
     
-
+def create_logs_collection():
+    db.create_collection('logs')
+    print("logs collection created")
 
 
 
@@ -1209,6 +1211,7 @@ insert_admission_team()
 insert_ecell_data()
 insert_handbook_data()
 insert_gallery()
+create_logs_collection()
 # insert_acadamic_research()
 
 def add_hostel_student_database():

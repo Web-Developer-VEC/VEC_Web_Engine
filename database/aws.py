@@ -1169,6 +1169,9 @@ def insert_ecell_data():
 
     print("e_cell data inserted successfully.")
 
+def create_logs_collection():
+    db.create_collection('logs')
+    print("logs collection created")
 
 insert_sports_data()
 insert_library_data()
@@ -1197,6 +1200,7 @@ insert_programmes_list()
 insert_departments_list()
 insert_admission_team()
 insert_ecell_data()
+create_logs_collection()
 # insert_acadamic_research()
 
 def add_hostel_student_database():
