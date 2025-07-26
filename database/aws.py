@@ -1170,8 +1170,20 @@ def insert_ecell_data():
     print("e_cell data inserted successfully.")
 
 def create_logs_collection():
-    db.create_collection('logs')
-    print("logs collection created")
+    collection = db["logs"]   
+    with open('/root/VEC-Backend/docs/logs.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
+
+    print("gallery data inserted successfully.")
+
+def insert_web_team():
+    collection = db['web_team']
+    with open('/root/VEC-Backend/docs/web_team.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
+
+    print("web team data inserted successfully.")
 
 insert_sports_data()
 insert_library_data()
@@ -1201,6 +1213,7 @@ insert_departments_list()
 insert_admission_team()
 insert_ecell_data()
 create_logs_collection()
+insert_web_team()
 # insert_acadamic_research()
 
 def add_hostel_student_database():

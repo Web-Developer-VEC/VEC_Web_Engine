@@ -29,8 +29,8 @@ const regulation = require('./regulation_routes');
 const second_navbar = require('./second_navbar_routes');
 const sport = require('./sport_routes');
 const staff_profile = require('./staff_profile_routes');
-const warden_routes = require('./warden_routes');
-
+const warden = require('./warden_routes');
+const web_team = require('./web_team_routes')
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -59,6 +59,7 @@ router.use('', regulation);
 router.use('', second_navbar);
 router.use('', sport);
 router.use('', staff_profile);
-router.use('', warden_routes);
+router.use('', warden);
+router.use('', web_team);
 
 module.exports = router;
