@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const helmet = require('helmet'); 
-const connectToDatabase = require('./main-backend/config/db')
+const connectToDatabase = require('./main-backend/config/db');
+const securityMiddleware = require('./main-backend/middlewares/helmet_security');
 
 dotenv.config({ quiet : true });
 
@@ -15,7 +15,7 @@ const mainBackendRoutes = require('./main-backend/routes');
 
 app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
 
-app.use(helmet());
+app.use(securityMiddleware);
 // Middleware
 app.use(cors());
 app.use(express.json());
