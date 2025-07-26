@@ -59,14 +59,15 @@ const createRateLimiter = (options = {}) => {
       } catch (err) {
         console.error('[MongoDB Logging Error]', err);
       }
+      const windowMinutes = (options.windowMs || 15 * 60 * 1000) / 60000;
 
       return res.status(options.statusCode || 429).json({
         status: 429,
-        success: false,
-        message: `Too many requests to ${req.originalUrl}. Please try again later.`,
-        ip: clientIp,
-        endpoint: req.originalUrl,
+        message: `You can visit this page again after ${windowMinutes} minute${windowMinutes > 1 ? 's' : ''}.`
+
       });
+
+      
     },
 
     ...options,
