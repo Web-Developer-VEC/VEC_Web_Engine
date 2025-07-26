@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAcademicCalender, getDepartment, getProgrammes } = require('../controllers/acadamic_controllers');
+const { getAcademicCalender, getDepartment, getProgrammes } = require('../controllers/academic_controllers');
 
 const router = express.Router();
 
