@@ -1,8 +1,10 @@
 const express = require('express');
 const { getWrdenData } = require('../controllers/warden_controllers');
+const createRateLimiter = require('../middlewares/ratelimiter');
+const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
 
 const router = express.Router();
 
-router.get('/warden', getWrdenData);
+router.get('/warden', limiter, getWrdenData);
 
 module.exports = router;
