@@ -1,6 +1,6 @@
 [
   {
-    "/api/main-backend/login": {
+    "/api/main-backend/about_us": {
       "lastDay": 0,
       "lastWeek": 0,
       "lastMonth": 0,
@@ -96,7 +96,7 @@
     }
   },
   {
-    "/api/main-backend/register": {
+    "/api/main-backend/acadamic": {
       "lastDay": 0,
       "lastWeek": 0,
       "lastMonth": 0,
@@ -192,7 +192,2503 @@
     }
   },
   {
-    "/api/main-backend/submitForm": {
+    "/api/main-backend/admin": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/allform": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/announcement": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/banner": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/coe": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/committee": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/dean": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/department": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/event": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/extra_curricular_club": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/gallery": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/grievance": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/grievance": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/hostel": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/incubation": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/intake ": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/landing": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/library": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/org_chart": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/overall_research": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/placement": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/principal": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/regulation": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/second_navbar": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/sport": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/staff_profile": {
+      "lastDay": 0,
+      "lastWeek": 0,
+      "lastMonth": 0,
+      "overallCount": 0,
+      "thisYear": {
+        "monthly": {
+          "January": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "February": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "March": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "April": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "May": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "June": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "July": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "August": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "September": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "October": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "November": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          },
+          "December": {
+            "overall_month_count": 0,
+            "week1": 0,
+            "week2": 0,
+            "week3": 0,
+            "week4": 0
+          }
+        }
+      }
+    }
+  },
+  {
+    "/api/main-backend/warden_routes ": {
       "lastDay": 0,
       "lastWeek": 0,
       "lastMonth": 0,
