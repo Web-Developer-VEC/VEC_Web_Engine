@@ -5,11 +5,11 @@ async function hitTracker(req, res, next) {
     const db = getDb();
     const collection = db.collection('hits_logs');
 
-    const endpoint = req.originalUrl.split('?')[0]; // remove query params
+    const endpoint = req.originalUrl.split('?')[0]; 
     const now = moment();
 
-    const month = now.format('MMMM'); // e.g., "July"
-    const week = `week${Math.ceil(now.date() / 7)}`; // e.g., "week3"
+    const month = now.format('MMMM'); 
+    const week = `week${Math.ceil(now.date() / 7)}`; 
     const currentYear = now.year();
 
     try {
@@ -30,10 +30,10 @@ async function hitTracker(req, res, next) {
             
         );
         console.log(`Hit tracked for: ${endpoint}`);
-        
+
     } catch (error) {
         console.error('Error tracking hits:', error);
-        // Optional: log to your error logging service
+        
     }
 
     next();

@@ -3,17 +3,16 @@ const { getDb } = require('../config/db');
 const moment = require('moment');
 
 const scheduleResetCounters = () => {
-  cron.schedule('* * * * *', async () => { // Use '0 0 * * *' in production
+  cron.schedule('0 0 * * *', async () => { 
     const db = getDb();
     const collection = db.collection('hits_logs');
     const now = moment();
 
     const today = now.format('YYYY-MM-DD');
-    const currentDayOfWeek = now.day(); // Sunday = 0
+    const currentDayOfWeek = now.day(); 
     const currentMonth = now.format('MMMM');
     const lastMonth = now.clone().subtract(1, 'month').format('MMMM');
 
-    // Determine the current week of the month (1 to 5)
     const startOfMonth = now.clone().startOf('month');
     const weekNumber = Math.ceil((now.date() + startOfMonth.day()) / 7);
 
@@ -28,19 +27,19 @@ const scheduleResetCounters = () => {
         const lastMonthData = monthly[lastMonth] || {};
         const updatedFields = {
           lastDay,
-          currentDay: 0 // still track today fresh
+          currentDay: 0 
         };
 
-        // 🔁 Last Week Handling
+       
         if (weekNumber > 1) {
           const previousWeekKey = `week${weekNumber - 1}`;
           updatedFields.lastWeek = currentMonthData[previousWeekKey] || 0;
         } else {
-          // If it's week 1 → get week4 of last month
+          
           updatedFields.lastWeek = lastMonthData['week4'] || 0;
         }
 
-        // 🔁 Last Month Handling (on 1st of current month)
+       
         if (now.date() === 1 && lastMonthData) {
           updatedFields.lastMonth = lastMonthData.overall_month_count || 0;
         }
