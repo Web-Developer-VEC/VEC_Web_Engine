@@ -34,7 +34,7 @@ const Coe = ({ toggle, theme }) => {
         subHeaderText="COE"
       />
 
-      <div className="py-10 px-4 md:px-20 bg-prim dark:bg-drkp justify-center">
+      <div className="py-10 px-4 md:px-20 bg-prim dark:bg-drkp justify-center font-[Poppins]">
         {coeData?.map((section, idx) => (
           <div
             key={idx}
