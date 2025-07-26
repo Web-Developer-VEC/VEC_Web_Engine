@@ -1,5 +1,5 @@
 const express = require('express');
-const { getVisionMission, getHODDetails, getStaffDetails, getSyllabus, getInfrastructure, getDeptActivities, getStuActivities, getSupportStaff, getMou, getRD, getRDyear, getslidebar, getNewsLetters } = require('../controllers/department_controllers');
+const { getVisionMission, getHODDetails, getStaffDetails, getSyllabus, getInfrastructure, getDeptActivities, getStuActivities, getMou, getslidebar, getNewsLetters } = require('../controllers/department_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
 const sanitize = require('../middlewares/sanitizers/sanitize_department');
@@ -18,8 +18,6 @@ router.get('/:deptId/infrastructure', limiter, xss, sanitize, getInfrastructure)
 router.get('/:deptId/activities', limiter, xss, sanitize, getDeptActivities);
 router.get('/:deptId/studentachievments', limiter, xss, sanitize, getStuActivities);
 router.get('/:deptId/mous', limiter, xss, sanitize, getMou);
-router.get('/:deptId/research/:year', limiter, xss, sanitize, getRDyear);
-router.get('/:deptId/research', limiter, xss, sanitize, getRD);
 router.get('/:deptId/sidebar' ,limiter, xss, sanitize, getslidebar);
 router.get('/:deptId/newsletter', limiter, xss, sanitize, getNewsLetters);
 
