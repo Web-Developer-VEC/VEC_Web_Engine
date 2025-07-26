@@ -1,4 +1,5 @@
 const { getDb } = require("../config/db");
+const logError = require('../middlewares/logerror');
 
 async function getCoeData (req, res) {
     try {
@@ -14,7 +15,8 @@ async function getCoeData (req, res) {
         res.status(200).json(coeData);
 
     } catch (error) {
-        console.error('❌ Error fetching COE data:', error);
+        console.error('Error fetching COE data:', error);
+        await logError(req, error, 'Error fetching COE', 500);
         res.status(500).json({ error: 'Error fetching COE data' });
     }
 }

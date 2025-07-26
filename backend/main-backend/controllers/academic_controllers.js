@@ -1,4 +1,5 @@
 const { getDb } = require("../config/db");
+const logError = require('../middlewares/logerror');
 
 async function getAcademicCalender (req, res) {
       try {
@@ -14,7 +15,8 @@ async function getAcademicCalender (req, res) {
 
         res.status(200).json(calendar);
       } catch (error) {
-        console.error('❌ Error fetching calendar:', error);
+        console.error('Error fetching calendar:', error);
+        await logError(req, error, 'Error fetching calendar', 500);
         res.status(500).json({ error: 'Internal Server Error' });
       }
 }
@@ -24,14 +26,15 @@ async function getDepartment (req, res) {
     const collection = db.collection('departments_list');
 
     try {
-        const announcements = await collection.find({}).toArray();
-        if (announcements.length === 0) {
-            return res.status(404).json({ message: 'No announcements found' });
+        const departments_list = await collection.find({}).toArray();
+        if (departments_list.length === 0) {
+            return res.status(404).json({ message: 'No departments list found' });
         }
-        res.status(200).json(announcements);
+        res.status(200).json(departments_list);
     } catch (error) {
-        console.error('❌ Error fetching announcements:', error);
-        res.status(500).json({ error: 'Error fetching announcements' });
+        console.error('Error fetching departments list:', error);
+        await logError(req, error, 'Error fetching departments list', 500);
+        res.status(500).json({ error: 'Error fetching departments list' });
     }
 }
 
@@ -40,13 +43,14 @@ async function getProgrammes (req, res) {
     const collection = db.collection('programmes_list');
 
     try {
-        const announcements = await collection.find({}).toArray();
-        if (announcements.length === 0) {
+        const programmes_list = await collection.find({}).toArray();
+        if (programmes_list.length === 0) {
             return res.status(404).json({ message: 'No programmes list found' });
         }
-        res.status(200).json(announcements);
+        res.status(200).json(programmes_list);
     } catch (error) {
-        console.error('❌ Error fetching programmes list:', error);
+        console.error('Error fetching programmes list:', error);
+        await logError(req, error, 'Error fetching programmes list', 500);
         res.status(500).json({ error: 'Error fetching programmes list' });
     }
 }

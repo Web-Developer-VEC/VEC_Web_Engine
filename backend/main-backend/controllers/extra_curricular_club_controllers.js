@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getNssData (req, res) {
     try {
@@ -13,7 +14,8 @@ async function getNssData (req, res) {
         return res.status(200).json(nss_data);
     } catch (error) {
         console.error("Error fetching NSS data:", error);
-        return res.status(500).json({ error: "Internal server error" });
+        await logError(req, error, 'Error fetching NSS Data', 500);
+        return res.status(500).json({ error: "Error fetching NSS Data" });
     } 
 }
 
@@ -29,8 +31,9 @@ async function getYrcData (req, res) {
 
         return res.status(200).json(yrc_data);
     } catch (error) {
-        console.error("Error fetching NSS data:", error);
-        return res.status(500).json({ error: "Internal server error" });
+        console.error("Error fetching YRC data:", error);
+        await logError(req, error, 'Error fetching YRC Data', 500);
+        return res.status(500).json({ error: "Error fetching YRC Data" });
     } 
 }
 
@@ -44,7 +47,8 @@ async function getArmyData (req, res) {
         }
         res.status(200).json(Data);
     } catch (error) {
-        console.error('❌ Error fetching navy data:', error);
+        console.error('Error fetching army data:', error);
+        await logError(req, error, 'Error fetching army Data', 500);
         res.status(500).json({ error: 'Error fetching armydata' });
     }
 }
@@ -59,7 +63,8 @@ async function getNavyData (req, res) {
         }
         res.status(200).json(NAVYData);
     } catch (error) {
-        console.error('❌ Error fetching navy data:', error);
+        console.error('Error fetching navy data:', error);
+        await logError(req, error, 'Error fetching navy Data', 500);
         res.status(500).json({ error: 'Error fetching navy data' });
     }
 }

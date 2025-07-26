@@ -1,4 +1,5 @@
-const { getDb } = require('../config/db')
+const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getLandingpageData (req, res) {
   try {
@@ -20,6 +21,7 @@ async function getLandingpageData (req, res) {
     res.json(cleanedConfig);
   } catch (error) {
     console.error('Error fetching landing page data:', error);
+    await logError(req, error, 'Error in landing data', 500);
     res.status(500).json({ error: 'Internal server error' });
   }
 }

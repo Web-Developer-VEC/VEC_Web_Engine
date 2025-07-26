@@ -1,5 +1,6 @@
 const { getDb } = require('../config/db');
 const nodemailer = require("nodemailer");
+const logError = require('../middlewares/logerror');
 
 async function getNirf (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getNirf (req, res) {
         }
         res.status(200).json(NIRFData);
     } catch (error) {
-        console.error('❌ Error fetching NIRF data:', error);
+        console.error('Error fetching NIRF data:', error);
+        await logError(req, error, 'Error in nirf data', 500);
         res.status(500).json({ error: 'Error fetching NIRF data' });
     }
 }
@@ -26,7 +28,8 @@ async function getNaac (req, res) {
         }
         res.status(200).json(NAACData);
     } catch (error) {
-        console.error('❌ Error fetching NAAC data:', error);
+        console.error('Error fetching NAAC data:', error);
+        await logError(req, error, 'Error in naac data', 500);
         res.status(500).json({ error: 'Error fetching NAAC data' });
     }
 }
@@ -36,13 +39,14 @@ async function getNba (req, res) {
     const collection = db.collection('nba');
 
     try {
-        const alumniData = await collection.find({}).toArray();
-        if (alumniData.length === 0) {
+        const nba = await collection.find({}).toArray();
+        if (nba.length === 0) {
             return res.status(404).json({ message: 'No nba data found' });
         }
-        res.status(200).json(alumniData);
+        res.status(200).json(nba);
     } catch (error) {
-        console.error('❌ Error fetching alumni data:', error);
+        console.error('Error fetching alumni data:', error);
+        await logError(req, error, 'Error in nba data', 500);
         res.status(500).json({ error: 'Error fetching nba data' });
     }
 }
@@ -62,6 +66,7 @@ async function getiic(req, res) {
         return res.status(200).json(data); 
     } catch (error) {
         console.error("Error fetching data:", error);
+        await logError(req, error, 'Error in iic data', 500);
         res.status(500).json({ message: "Internal Server Error" });
     }
 }
@@ -79,7 +84,8 @@ async function getIqac(req, res) {
 
         res.status(200).json({ data: data });
     } catch (error) {
-        console.error("❌ Error fetching data:", error);
+        console.error("Error fetching data:", error);
+        await logError(req, error, 'Error in IQAC data', 500);
         return res.status(500).json({ error: "Internal server error" });
     }
 }
@@ -89,14 +95,15 @@ async function getECell (req, res) {
     const collection = db.collection('e_cell');
 
     try {
-        const announcements = await collection.find({}).toArray();
-        if (announcements.length === 0) {
+        const e_cell = await collection.find({}).toArray();
+        if (e_cell.length === 0) {
             return res.status(404).json({ message: 'No E-cell list found' });
         }
-        res.status(200).json(announcements);
+        res.status(200).json(e_cell);
     } catch (error) {
-        console.error('❌ Error fetching e-cell list:', error);
-        res.status(500).json({ error: 'Error fetching programmes list' });
+        console.error('Error fetching e-cell list:', error);
+        await logError(req, error, 'Error in e cell data', 500);
+        res.status(500).json({ error: 'Error fetching e_cell list' });
     }
 }
 
@@ -146,7 +153,8 @@ async function iicApplyForm (req, res) {
         res.status(201).json({ message: "Incubation Cell Application Data submitted successfully and email notification sent" });
 
     } catch (error) {
-        console.error("❌ Error:", error);
+        console.error("Error:", error);
+        await logError(req, error, 'Error in inccellapp_data data', 500);
         res.status(500).json({ error: "Internal server error" });
     }
 }

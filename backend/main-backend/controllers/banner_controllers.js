@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getBanner (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getBanner (req, res) {
         }
         res.status(200).json(bannersData);
     } catch (error) {
-        console.error('❌ Error fetching banners:', error);
+        console.error('Error fetching banners:', error);
+        await logError(req, error, 'Error fetching banner', 500);
         res.status(500).json({ error: 'Error fetching banners' });
     }
 }

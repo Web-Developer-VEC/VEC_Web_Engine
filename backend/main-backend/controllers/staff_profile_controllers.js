@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getStaffProfile (req, res) {
     try {
@@ -122,6 +123,7 @@ async function getStaffProfile (req, res) {
         
     } catch (error) {
         console.error('Error fetching data from MongoDB:', error);
+        await logError(req, error, 'Error in staff data', 500);
         res.status(500).json({ message: 'Error fetching faculty data' });
     }
 }

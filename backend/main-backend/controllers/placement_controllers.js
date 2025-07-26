@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getPlacementTeam (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getPlacementTeam (req, res) {
         }
         res.status(200).json(placementTeam);
     } catch (error) {
-        console.error('❌ Error fetching placement team data:', error);
+        console.error('Error fetching placement team data:', error);
+        await logError(req, error, 'Error in placement team', 500);
         res.status(500).json({ error: 'Error fetching placement team data' });
     }
 }
@@ -21,14 +23,15 @@ async function getPlacementData (req, res) {
     const collection = db.collection('placements_data');
 
     try {
-        const announcements = await collection.find({}).toArray();
-        if (announcements.length === 0) {
-            return res.status(404).json({ message: 'No announcements found' });
+        const placements_data = await collection.find({}).toArray();
+        if (placements_data.length === 0) {
+            return res.status(404).json({ message: 'No placements data found' });
         }
-        res.status(200).json(announcements);
+        res.status(200).json(placements_data);
     } catch (error) {
-        console.error('❌ Error fetching announcements:', error);
-        res.status(500).json({ error: 'Error fetching announcements' });
+        console.error('Error fetching placements data:', error);
+        await logError(req, error, 'Error in placements data', 500);
+        res.status(500).json({ error: 'Error fetching placements data' });
     }
 }
 

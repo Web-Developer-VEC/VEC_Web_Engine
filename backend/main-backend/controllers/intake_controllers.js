@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getUG (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getUG (req, res) {
         }
         res.status(200).json(data);
     } catch (error) {
-        console.error('❌ Error fetching UG and UG_Lateral details:', error);
+        console.error('Error fetching UG and UG_Lateral details:', error);
+        await logError(req, error, 'Error in Intakes', 500);
         res.status(500).json({ error: 'Error fetching UG and UG_Lateral details' });
     }
 }
@@ -27,7 +29,8 @@ async function getPG (req, res) {
         }
         res.status(200).json(data);
     } catch (error) {
-        console.error('❌ Error fetching PG details:', error);
+        console.error('Error fetching PG details:', error);
+        await logError(req, error, 'Error in Intakes', 500);
         res.status(500).json({ error: 'Error fetching PG details' });
     }
 }
@@ -43,7 +46,8 @@ async function getMBA (req, res) {
         }
         res.status(200).json(data);
     } catch (error) {
-        console.error('❌ Error fetching MBA details:', error);
+        console.error('Error fetching MBA details:', error);
+        await logError(req, error, 'Error in Intakes', 500);
         res.status(500).json({ error: 'Error fetching MBA details' });
     }
 }
@@ -59,7 +63,8 @@ async function getAdmisionTeam (req, res) {
         }
         res.status(200).json(admission_team);
     } catch (error) {
-        console.error('❌ Error fetching admission team:', error);
+        console.error('Error fetching admission team:', error);
+        await logError(req, error, 'Error in admission team', 500);
         res.status(500).json({ error: 'Error fetching admission team' });
     }
 }

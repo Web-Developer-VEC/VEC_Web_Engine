@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getWebTeamData (req, res) {
     const db = getDb();
@@ -12,6 +13,7 @@ async function getWebTeamData (req, res) {
         res.status(200).json(webteamdata);
     } catch (error) {
         console.error('Error fetching web team data:', error);
+        await logError(req, error, 'Error in web team data', 500);
         res.status(500).json({ error: 'Error fetching library data' });
     }
 }

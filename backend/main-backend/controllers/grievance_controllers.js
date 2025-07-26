@@ -1,5 +1,6 @@
 const { getDb } = require('../config/db');
 const nodemailer = require("nodemailer");
+const logError = require('../middlewares/logerror');
 
 async function getGrievance (req, res)  {
     try {
@@ -57,6 +58,7 @@ async function getGrievance (req, res)  {
 
     } catch (error) {
         console.error("Error:", error);
+        await logError(req, error, 'Error in Grievance', 500);
         res.status(500).json({ error: "Internal server error" });
     }
 }

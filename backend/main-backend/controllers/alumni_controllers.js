@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror')
 
 async function getAlumni (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getAlumni (req, res) {
         }
         res.status(200).json(alumniData);
     } catch (error) {
-        console.error('❌ Error fetching alumni data:', error);
+        console.error('Error fetching alumni data:', error);
+        await logError(req, error, 'Error fetching alumni', 500);
         res.status(500).json({ error: 'Error fetching alumni data' });
     }
 }

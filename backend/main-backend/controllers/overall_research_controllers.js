@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getPatent (req, res) {
     try {
@@ -12,7 +13,8 @@ async function getPatent (req, res) {
         res.status(200).json(patentData);
 
     } catch (error) {
-        console.error('❌ Error fetching patent data:', error);
+        console.error('Error fetching patent data:', error);
+        await logError(req, error, 'Error in overall patent', 500);
         res.status(500).json({ error: 'Error fetching patent data' });
     }
 }
@@ -29,7 +31,8 @@ async function getConference (req, res) {
         res.status(200).json(patentData);
 
     } catch (error) {
-        console.error('❌ Error fetching overall conference publication:', error);
+        console.error('Error fetching overall conference publication:', error);
+        await logError(req, error, 'Error in overall conference publication', 500);
         res.status(500).json({ error: 'Error fetching overall conference publication' });
     }
 }
@@ -46,7 +49,8 @@ async function getJournal (req, res) {
         res.status(200).json(patentData);
 
     } catch (error) {
-        console.error('❌ Error fetching overall journal publications:', error);
+        console.error('Error fetching overall journal publications:', error);
+        await logError(req, error, 'Error in overall journal publications', 500);
         res.status(500).json({ error: 'Error fetching overall journal publications' });
     }
 }
@@ -63,7 +67,8 @@ async function getBooks (req, res) {
         res.status(200).json(patentData);
 
     } catch (error) {
-        console.error('❌ Error fetching overall book publication:', error);
+        console.error('Error fetching overall book publication:', error);
+        await logError(req, error, 'Error in overall book publication', 500);
         res.status(500).json({ error: 'Error fetching overall book publication' });
     }
 }

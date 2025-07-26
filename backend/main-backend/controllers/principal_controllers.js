@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getPrincipalData(req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getPrincipalData(req, res) {
         }
         res.status(200).json(principalDetails);
     } catch (error) {
-        console.error("❌ Error fetching principal details:", error);
+        console.error("Error fetching principal details:", error);
+        await logError(req, error, 'Error in principal data', 500);
         res.status(500).json({ error: "Error fetching principal details" });
     }
 }

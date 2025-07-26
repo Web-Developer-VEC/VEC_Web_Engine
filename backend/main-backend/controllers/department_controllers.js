@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 // Fetch Vision & Mission
 async function getVisionMission(req, res) {
@@ -14,8 +15,9 @@ async function getVisionMission(req, res) {
             res.status(404).json({ error: "Department not found" });
         }
     } catch (error) {
-        console.error("❌ Error fetching department data:", error);
-        res.status(500).json({ error: "Error fetching data" });
+        console.error("Error fetching vision and mission data:", error);
+        await logError(req, error, 'Error fetching vision and mission Data', 500);
+        res.status(500).json({ error: "Error fetching vision_and_mission data" });
     }
 }
 
@@ -36,7 +38,8 @@ async function getHODDetails(req, res) {
             res.status(404).json({ error: "HOD not found for this department." });
         }
     } catch (error) {
-        console.error("❌ Error fetching HOD details:", error);
+        console.error("Error fetching HOD details:", error);
+        await logError(req, error, 'Error fetching HOD details', 500);
         res.status(500).json({ error: "Error fetching HOD details" });
     }
 }
@@ -56,7 +59,8 @@ async function getStaffDetails(req, res) {
             res.status(404).json({ message: 'No staff details found for the given department ID.' });
         }
     } catch (error) {
-        console.error("❌ Error fetching staff details:", error);
+        console.error("Error fetching staff details:", error);
+        await logError(req, error, 'Error fetching staff details', 500);
         res.status(500).json({ error: "Error fetching staff details" });
     }
 }
@@ -68,14 +72,15 @@ async function getSyllabus(req, res) {
     const collection = db.collection('curriculum');
 
     try {
-        const departmentData = await collection.findOne({ dept_id: departmentId });
-        if (!departmentData) {
+        const curriculum = await collection.findOne({ dept_id: departmentId });
+        if (!curriculum) {
             return res.status(404).json({ message: "Department not found" });
         }
-        return res.status(200).json(departmentData);
+        return res.status(200).json(curriculum);
 
     } catch (error) {
-        console.error("❌ Error fetching curriculum data:", error);
+        console.error("Error fetching curriculum data:", error);
+        await logError(req, error, 'Error fetching curriculum details', 500);
         res.status(500).json({ error: "Error fetching curriculum data" });
     }
 }
@@ -96,6 +101,7 @@ async function getNewsLetters(req, res) {
         }
     } catch (error) {
         console.error("Error fetching news letter", error);
+        await logError(req, error, 'Error fetching news letter details', 500);
         res.status(500).json({ error: "Error fetching news letter" });
     }
 }
@@ -116,6 +122,7 @@ async function getInfrastructure(req, res) {
         }
     } catch (error) {
         console.error("Error fetching infrastructure details:", error);
+        await logError(req, error, 'Error fetching infrastructure details', 500);
         res.status(500).json({ error: "Error fetching infrastructure details" });
     }
 }
@@ -146,7 +153,8 @@ async function getDeptActivities(req, res) {
         });
 
     } catch (error) {
-        console.error("❌ Error fetching department activities:", error);
+        console.error("Error fetching department activities:", error);
+        await logError(req, error, 'Error fetching department activities details', 500);
         res.status(500).json({ error: "Error fetching department activities" });
     }
 }
@@ -167,6 +175,7 @@ async function getStuActivities(req, res) {
         }
     } catch (error) {
         console.error("Error fetching student activities:", error);
+        await logError(req, error, 'Error fetching student activities details', 500);
         res.status(500).json({ error: "Error fetching student activities" });
     }
 }
@@ -188,13 +197,14 @@ async function getMou(req, res) {
         
         return res.status(200).json(departmentData);
     } catch (error) {
-        console.error("❌ Error fetching MOUs:", error);
+        console.error("Error fetching MOUs:", error);
+        await logError(req, error, 'Error fetching MOUs details', 500);
         res.status(500).json({ error: "Error fetching MOUs" });
     }
 }
 
 
-// Fetch Research Data  (innu varala)
+// Fetch Research Data -- end point not being used 
 async function getRDyear(req, res) {
     const { deptId, year } = req.params;
 
@@ -221,7 +231,8 @@ async function getRDyear(req, res) {
 
         res.status(200).json(yearData);
     } catch (error) {
-        console.error("❌ Error fetching research data:", error);
+        console.error("Error fetching research data:", error);
+        await logError(req, error, 'Error fetching research data details', 500);
         res.status(500).json({ error: "Error fetching research data" });
     }
 }
@@ -237,22 +248,16 @@ async function getRD(req, res) {
     const collection = db.collection('research_data');
 
     try {
-        // Fetch the document for the department
         const result = await collection.findOne({ dept_id: deptId });
 
         if (!result || !result.data ) {
             return res.status(404).json({ message: 'No research data found for the given department' });
         }
         res.status(200).json(result);
-        
-        // const yearData = result.data.data.find(entry => entry.year === year);
-
-        // if (!yearData) {
-        //     return res.status(404).json({ message: 'No research data found for the given year' });
-        // }
 
     } catch (error) {
-        console.error("❌ Error fetching research data:", error);
+        console.error("Error fetching research data:", error);
+        await logError(req, error, 'Error fetching research data', 500);
         res.status(500).json({ error: "Error fetching research data" });
     }
 }
@@ -263,24 +268,18 @@ async function getslidebar (req, res) {
     const deptid = req.params.deptId;
 
     try {
-        // Find the document that matches the given deptid
-        const departmentData = await collection.findOne({ dept_id: deptid });
+        const sidebar = await collection.findOne({ dept_id: deptid });
 
-        // Check if the department exists
-        if (!departmentData) {
+        if (!sidebar) {
             return res.status(404).json({ message: `No data found for deptId: ${deptid}` });
         }
-
-        // Send the matched department data
-        res.status(200).json(departmentData);
+        res.status(200).json(sidebar);
     } catch (error) {
-        console.error('❌ Error fetching department data:', error);
-        res.status(500).json({ error: 'Error fetching department data' });
+        console.error('Error fetching sidebar data:', error);
+        await logError(req, error, 'Error fetching sidebar data', 500);
+        res.status(500).json({ error: 'Error fetching sidebar data' });
     }
 }
-
-
-
 
 module.exports = {
     getVisionMission,

@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getWrdenData (req, res) {
     try {
@@ -14,8 +15,9 @@ async function getWrdenData (req, res) {
         res.status(200).json({ wardens: warden_details });
 
     } catch (error) {
-        console.error("❌ Error fetching data:", error);
-        return res.status(500).json({ error: "Internal server error" });
+        console.error("Error fetching data:", error);
+        await logError(req, error, 'Error in warden profile data', 500);
+        return res.status(500).json({ error: "Error fetching warden profile data" });
     }
 }
 

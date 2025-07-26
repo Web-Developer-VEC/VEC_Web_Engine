@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getLibraryData (req, res) {
     const db = getDb();
@@ -11,7 +12,8 @@ async function getLibraryData (req, res) {
         }
         res.status(200).json(libraryData);
     } catch (error) {
-        console.error('❌ Error fetching library data:', error);
+        console.error('Error fetching library data:', error);
+        await logError(req, error, 'Error in library data', 500);
         res.status(500).json({ error: 'Error fetching library data' });
     }
 }

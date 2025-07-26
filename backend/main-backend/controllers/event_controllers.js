@@ -1,4 +1,5 @@
 const { getDb } = require('../config/db');
+const logError = require('../middlewares/logerror');
 
 async function getEventDetails (req, res){
     const db = getDb();
@@ -18,7 +19,8 @@ async function getEventDetails (req, res){
         res.status(200).json(activeEvents);
 
     } catch (error) {
-        console.error("❌ Error fetching active events:", error);
+        console.error("Error fetching active events:", error);
+        await logError(req, error, 'Error fetching active events Data', 500);
         res.status(500).json({ error: "Error fetching active events" });
     }
 }
