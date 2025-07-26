@@ -1,0 +1,126 @@
+[
+    {
+        "dept_id": "007",
+        "department_name": "Electrical & Electronics Engineering (EEE)",
+        "dept_activities": [
+          {
+            "date": "14.03.2024",
+            "name_of_event": "Job Interview Etiquettes and Overview of Contemporary Workplace Skills",
+            "coordinator": "Ms.B.Kanimozhi Senior Technical Officer, Project Planning, Monitoring and Evaluation CSIR-Central Leather Research Institute ",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path": ["/static/images/dept_activities/007/1.webp"]
+          },
+          {
+            "date": "02.01.2024 to 04.01.2024",
+            "name_of_event": "Circuit Designing",
+            "coordinator": "Mr.Rajkumar, Senior Engineer, EQUAD Engineering",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO":null,
+            "image_path": ["/static/images/dept_activities/007/2.webp"]
+          },
+          {
+            "date": "03.01.2024 to 05.01.2024",
+            "name_of_event": "Let's Wind the Machine with MagNet",
+            "coordinator": "N.Kasirathi, AP/EEE and V.Rengarajan, AP/EEE",
+            "resource_person":null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path": ["/static/images/dept_activities/007/3.webp"]
+          },
+          {
+            "date": "04.01.2024",
+            "name_of_event": "PROXPO 2K24 - Project Exhibition",
+            "coordinator": null,
+            "resource_person":null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path": ["/static/images/dept_activities/007/4.webp"]
+          },
+          {
+            "date": "24.02.2024",
+            "name_of_event": "Recent trends in research and innovation",
+            "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/5.webp"]
+          },
+          {
+            "date": "24.02.2024",
+            "name_of_event": "Faculty interaction with Foreign Professor on recent trends in research and innovation",
+            "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/6.webp"]
+          },
+          {
+            "date": "25.03.2024",
+            "name_of_event": "Cloud Computing in Industrial Growth",
+            "coordinator": "Er.J.Satheesh Bab, Divisional Head, corp. Engg& Projects ",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/7.webp"]
+          },
+          {
+            "date": "23.02.2023",
+            "name_of_event": "Awareness Programm- Intellectual Property Rights(IPR)",
+            "coordinator": null,
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/8.webp"]
+          },
+          {
+            "date": "18.08.2023",
+            "name_of_event": "AIML with Azure MLOPs",
+            "coordinator": "Mr.Kiran Kumar Sabbisetti, Head - Cloud Centreof Excellence Sopra Steria",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/9.webp"]
+          },
+          
+          {
+            "date": "19.08.2023",
+            "name_of_event": "Incubation Visit – Interaction with the founder",
+            "coordinator": "IITM Research park",
+            "resource_person": null,
+            "beneficiaries": "III yr EEE",
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/11.webp"]
+          },
+          {
+            "date": "30.08.2023",
+            "name_of_event": "VEESC Inauguration",
+            "coordinator": "C.B.Thamarai Selvan B.E,M.Tech, MIE Protection & Communication, Assistant Executive Engineer, Tamil Nadu Electricity Board",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/12.webp"]
+          },
+          {
+            "date": "31.08.2023",
+            "name_of_event": "Workshop on Arduino Tools and Techniques",
+            "coordinator": "Dr.D.Sunitha, V.Rengarajan",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/13.webp"]
+          },
+          {
+            "date": "26.11.2022",
+            "name_of_event": "TECHNOLOGY BUSINESS INCUBATOR - 3DPrinted Projects Fabrication",
+            "coordinator": "Veltech Incubation Center",
+            "resource_person": null,
+            "beneficiaries": null,
+            "relevant_PO_PSO": null ,
+            "image_path": ["/static/images/dept_activities/007/14.webp"]
+          }
+        ]
+      }
+    ] 

@@ -1,0 +1,111 @@
+[{
+    "dept_id": "013",
+    "department_name": "Mechancial Engineering (MECH)",
+    "MOUs": [
+      {
+          "S_NO": 1,
+          "ORGANISATION_NAME": "VAIBHAV TECH SERVICES, AMBATTUR, CHENNAI - 600098",
+          "MONTH_AND_YEAR": "19.09.2024",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 2,
+          "ORGANISATION_NAME": "CADD TECH SOLUTIONS, AVADI, CHENNAI - 600054",
+          "MONTH_AND_YEAR": "07.02.2024",
+          "VALIDITY": "2 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 3,
+          "ORGANISATION_NAME": "TRIONE CADD, MOGAPPAIR, CHENNAI - 600037",
+          "MONTH_AND_YEAR": "01.02.2024",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 4,
+          "ORGANISATION_NAME": "GT PRECISION INDUSTRY, CHENNAI - 600058",
+          "MONTH_AND_YEAR": "07.09.2023",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 5,
+          "ORGANISATION_NAME": "SAI KAYRA REFRIGERATION, CHENNAI - 600087",
+          "MONTH_AND_YEAR": "03.08.2022",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 6,
+          "ORGANISATION_NAME": "VOLTRIX MOBILITY PVT. LTD., CHENNAI - 600032",
+          "MONTH_AND_YEAR": "13.06.2022",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 7,
+          "ORGANISATION_NAME": "ETG CAREER LABS PVT. LTD, BENGALURU - 560095",
+          "MONTH_AND_YEAR": "12.04.2022",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 8,
+          "ORGANISATION_NAME": "GARUDA AEROSPACE PRIVATE LIMITED, CHENNAI - 600018",
+          "MONTH_AND_YEAR": "31.12.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 9,
+          "ORGANISATION_NAME": "DINESH ENGINEERING INDUSTRIES, THIRUVALLUR - 602105",
+          "MONTH_AND_YEAR": "23.12.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 10,
+          "ORGANISATION_NAME": "TEAM ENGINEERS, AMBATTUR, CHENNAI - 600098",
+          "MONTH_AND_YEAR": "22.09.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 11,
+          "ORGANISATION_NAME": "KATWORKS ENGINEERING PVT. LTD, CHENNAI - 600053",
+          "MONTH_AND_YEAR": "28.07.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 12,
+          "ORGANISATION_NAME": "VETRI PRESSINGS PRIVATE LIMITED, CHENNAI - 600059",
+          "MONTH_AND_YEAR": "31.03.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 13,
+          "ORGANISATION_NAME": "DIAGONAL CADD PVT. LTD, CHENNAI - 600058",
+          "MONTH_AND_YEAR": "23.10.2019",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      }
+  ]
+  }
+  ]

@@ -1,0 +1,1370 @@
+{  
+    "dept_id":"002",
+    "department_name": "Automobile Engineering (AUTO)",
+    "data":
+    [
+    {
+        "year": "",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Mr.M. Yuvaraj",
+                        "Title of the Proposal": "Solar desalination system",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2017-18",
+                        "Date of Submission": "17.11.2017",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1yfENwZ77--K0BR9ei5B2Ejukc_GFuhVZ/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Mr. P.Thennarasu",
+                        "Title of the Proposal": "Vacumm suspension system",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2017-18",
+                        "Date of Submission": "17.11.2017",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1yfENwZ77--K0BR9ei5B2Ejukc_GFuhVZ/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "M.Senthamilselvan",
+                        "Title of the Proposal": "Generation of Electricity From Automobile Turbocharger",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2018-19",
+                        "Date of Submission": "09.09.2018",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1yfENwZ77--K0BR9ei5B2Ejukc_GFuhVZ/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": "S.Chermadurai",
+                        "Title of the Proposal": "Aerodynamic Drag Reduction In Rear Body Of Heavy Vehicles(Trucks) To Enhance Fuel Savings",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2018-19",
+                        "Date of Submission": "09.09.2018",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1yfENwZ77--K0BR9ei5B2Ejukc_GFuhVZ/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Faculty": "Mr.M. Yuvaraj",
+                        "Title of the Proposal": "Braille Tablet",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2019-20",
+                        "Date of Submission": "24.08.2019",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://docs.google.com/document/d/1ATIDw3-uS-7l3BYIEZa5KRPVE0ZWLYle/edit?usp=sharing&ouid=106960064440916482048&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Faculty": "Mr.M. Yuvaraj",
+                        "Title of the Proposal": "Design of New Ventilation Helmet",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2019-20",
+                        "Date of Submission": "24.08.2019",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://docs.google.com/document/d/1ATIDw3-uS-7l3BYIEZa5KRPVE0ZWLYle/edit?usp=sharing&ouid=106960064440916482048&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Faculty": "Dr.S.Baskarasethupathy",
+                        "Title of the Proposal": "Development of Instant Idly Maker",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2019-20",
+                        "Date of Submission": "24.08.2019",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://docs.google.com/document/d/1ATIDw3-uS-7l3BYIEZa5KRPVE0ZWLYle/edit?usp=sharing&ouid=106960064440916482048&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Faculty": "Dr.S.Baskarasethupathy",
+                        "Title of the Proposal": "Dosa Maker",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2019-20",
+                        "Date of Submission": "24.08.2019",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://docs.google.com/document/d/1ATIDw3-uS-7l3BYIEZa5KRPVE0ZWLYle/edit?usp=sharing&ouid=106960064440916482048&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Faculty": "Dr.V.Chandran",
+                        "Title of the Proposal": "Self sustainable E-Boat",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2019-20",
+                        "Date of Submission": "24.08.2019",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://docs.google.com/document/d/1ATIDw3-uS-7l3BYIEZa5KRPVE0ZWLYle/edit?usp=sharing&ouid=106960064440916482048&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Faculty": "Mr.M. Yuvaraj",
+                        "Title of the Proposal": "Scooter for people with special needs",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2020-21",
+                        "Date of Submission": "11;01;2021",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1anHBAj4htczCNDDp77PUKYN9TOv3Wrh_/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Faculty": "Mr.M. Yuvaraj",
+                        "Title of the Proposal": "Karthavya: Data Acquisition and Processong Techniques",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2020-21",
+                        "Date of Submission": "11;01;2021",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1anHBAj4htczCNDDp77PUKYN9TOv3Wrh_/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Faculty": "Dr.V.Chandran",
+                        "Title of the Proposal": "Self powered bike mobile charger using waste recovery machine",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2020-21",
+                        "Date of Submission": "11;01;2021",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/13-KZXlw_snoYEub9J1rfpjdkYn5ejJe0/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Faculty": "Dr.V.Chandran",
+                        "Title of the Proposal": "Tidy water purifier for domestic purposes",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2021-22",
+                        "Date of Submission": "19.10.2021",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1fC1WajWBAKay1oxS0ckvgmZig_z_foFC/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Faculty": "Dr.M.Senthamil Selvan",
+                        "Title of the Proposal": "Automatic billing machine ingrocery shop",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "2023-24",
+                        "Date of Submission": "12.9.2023",
+                        "Current Status": "Under Progress",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/10AebVR0OBiTt2ExLoJliqRIJurxfJWWc/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                        {
+                            "S.No": 1,
+                            "Name of the Author(s)": "P. Pathmanaban",
+                            "Title of the Paper": "Recent application of imaging techniques for fruit quality assessment",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Trends in Food Science & Technology",
+                            "Month and Year of publication": "2019-07-01 00:00:00",
+                            "ISSN": "0924-2244",
+                            "Doi": "doi.org/10.1016/j.tifs.2019.10.004",
+                            "Colloboration Institute": "Saveetha ",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1ZIejLacPX1uHhb7a1x0Imc0BFocwl5j4/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Author(s)": "P. Pathmanaban",
+                            "Title of the Paper": "Six Sigma Methodologies for Increasing the First Pass Rate of Engines in Manufacturing",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Google  Scolar",
+                            "Name of the Journal": "Journal of Advanced Research in Quality Control & Management",
+                            "Month and Year of publication": "2019-09-01 00:00:00",
+                            "ISSN": "2582-3280",
+                            "Doi": "nil",
+                            "Colloboration Institute": "Saveetha ",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1L_Zdj_wAKFzzOagZBEqRVJsw5o-ZNhHx/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Author(s)": "V Chandran",
+                            "Title of the Paper": "Mechanical Investigation of Crane Hook using AISI 4340 Alloy Steel with Various Proportions of Vanadium",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": " Journal of Automation and Automobile Engineering",
+                            "Month and Year of publication": "2019-11-01 00:00:00",
+                            "ISSN": "2582-3159",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1S7wDF2peGa6zl38Cvrz6eW_G4JKQmKxS/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Author(s)": "V. Chandran",
+                            "Title of the Paper": "Comparative behavior of various nano additives in a DIESEL engine powered by novel Garciniagummi-gutta biodiesel",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Journal of Cleaner Production",
+                            "Month and Year of publication": "2020-01-01 00:00:00",
+                            "ISSN": "1443-2452",
+                            "Doi": "doi.org/10.1016/j.jclepro.2019.118940",
+                            "Colloboration Institute": "SRM ",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1VcYW8emqMc4-eUKmBkYFi0k_VLs82vDF/view?usp=drive_link"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of the Author(s)": "P.Pathmanaban ",
+                            "Title of the Paper": "Testing of Coconut Shell Reinforced Brake PADS",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": "International Journal of Scientific Research and Engineering Development",
+                            "Month and Year of publication": "2020-03-01 00:00:00",
+                            "ISSN": "2581-7175",
+                            "Doi": "nil",
+                            "Colloboration Institute": "Saveetha ",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1_UFfk9sGz5o73twp8UyvbZ9_XknfINYN/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of the Author(s)": "V. Chandran",
+                            "Title of the Paper": "Experimental Investigation on the Effect of Ignition Enhancers in the Blends of Sapota Biodiesel/Diesel Blends on a CRDi Engine",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Energy Fuels",
+                            "Month and Year of publication": "2019-10-01 00:00:00",
+                            "ISSN": "0975-3060",
+                            "Doi": "DOI: 10.1021/acs.energyfuels.9b02521",
+                            "Colloboration Institute": "Jeppiaar",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1geFNXiHJBQrJUQzgLgyUiAkpyb9rcDPZ/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 7,
+                            "Name of the Author(s)": "P.Pathmanaban, S.Chermadurai",
+                            "Title of the Paper": "Application of thermal imaging for detecting cold air leak location in cold storage",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": "Int. J. of advances in applied sciences",
+                            "Month and Year of publication": "2020-12-02 00:00:00",
+                            "ISSN": "2252-8814",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/wp-content/uploads/2022/10/Non-indexed-journals.pdf"
+                        },
+                        {
+                            "S.No": 8,
+                            "Name of the Author(s)": "V.Chandran",
+                            "Title of the Paper": "Performance Evaluation of Mono Suspension Using Neodymium Magnets",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": "Journal of Recent Trends in Mechanics",
+                            "Month and Year of publication": "2020-08-01 00:00:00",
+                            "ISSN": ". 0152-0161",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/wp-content/uploads/2022/10/Non-indexed-journals.pdf"
+                        },
+                        {
+                            "S.No": 9,
+                            "Name of the Author(s)": "V.Chandran",
+                            "Title of the Paper": "Investigation on mechanical characterizes of natural fiber reinforcement polymer composite materials",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Scopus",
+                            "Name of the Journal": "International journal of vehicle structure and systems",
+                            "Month and Year of publication": "2020-09-01 00:00:00",
+                            "ISSN": "0975-3060",
+                            "Doi": "doi: 10.4273/ijvss.12.2.15",
+                            "Colloboration Institute": "SAEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets /files/NAAC/2020-21/Criteria3/3.4.5-SCI-journals-with-index.pdf"
+                        },
+                        {
+                            "S.No": 10,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Feasibility of adding N-Butanol and di isopropyl ether with gasoline on its physico-chemical properties",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Petroleum Science and Technology",
+                            "Month and Year of publication": "2021-09-01 00:00:00",
+                            "ISSN": "1091-6466",
+                            "Doi": "doi.org/10.1080/10916466.2021.2003383",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.3/1-auto.pdf"
+                        },
+                        {
+                            "S.No": 11,
+                            "Name of the Author(s)": "P.Pathmanaban, S.Chermadurai",
+                            "Title of the Paper": "An evaluation of surface temperature distribution under different charging and discharging modes of the lithiumion phosphate battery using Thermal Imaging",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": "YMER Journal",
+                            "Month and Year of publication": "2022-01-01 00:00:00",
+                            "ISSN": "0044-0477",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.5-Indexed/2-auto.pdf"
+                        },
+                        {
+                            "S.No": 12,
+                            "Name of the Author(s)": "V.Chandran",
+                            "Title of the Paper": "Effect of Multi-Objective Optimization for Double Pulse Resistance Spot Welded Joints of Ferritic Stainless Steel",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Scopus",
+                            "Name of the Journal": "YMER Journal",
+                            "Month and Year of publication": "2022-02-01 00:00:00",
+                            "ISSN": "0044-0477",
+                            "Doi": "nil",
+                            "Colloboration Institute": "SAEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.5-Indexed/3-auto.pdf"
+                        },
+                        {
+                            "S.No": 13,
+                            "Name of the Author(s)": "S.Baskara Sethupathy",
+                            "Title of the Paper": "Experimental investigation of performance of variable Compression Ratio engine fueled with pyrolised oil and Bio Alcohols",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Scopus",
+                            "Name of the Journal": "SAE Technical Paper",
+                            "Month and Year of publication": "Mar.2022",
+                            "ISSN": "0148-7191",
+                            "Doi": "doi.org/10.4271/2022-01-0605",
+                            "Colloboration Institute": "CEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.5-Indexed/4-auto.pdf"
+                        },
+                        {
+                            "S.No": 14,
+                            "Name of the Author(s)": "V Chandran, Stanly Wilson louis",
+                            "Title of the Paper": "Mechanical Behavior of GFRP filled with Copper Nano Particles based Composite",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Others",
+                            "Name of the Journal": "Journal of Mechanical and Mechanics Engineering",
+                            "Month and Year of publication": "2021-12-01 00:00:00",
+                            "ISSN": "2581-3722",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.5-Non-Indexed/1-auto-ni.pdf"
+                        },
+                        {
+                            "S.No": 15,
+                            "Name of the Author(s)": "S.BaskaraSethupathy",
+                            "Title of the Paper": "Interlaminar Shear, Bending, and Water Retention Behavior of Nano-SiO2 Filler-Incorporated Dharbai/Glass Fiber-Based Hybrid Composites under Cryogenic Environment",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Adsorption Science & Technology",
+                            "Month and Year of publication": "2022-07-01 00:00:00",
+                            "ISSN": "0263-6174",
+                            "Doi": "https://doi.org/10.1155/2022/3810884",
+                            "Colloboration Institute": "Saveetha School of Engineering",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1G27Rfj6uJK_IsXGVheBVIn2Tj8pO0u0e/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 16,
+                            "Name of the Author(s)": "S.BaskaraSethupathy",
+                            "Title of the Paper": "Effect of Nano TiO2 Filler Addition on Mechanical Properties of Bamboo/Polyester Hybrid Composites and Parameters Optimized Using Grey Taguchi Method",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Adsorption Science & Technology",
+                            "Month and Year of publication": "2022-07-01 00:00:00",
+                            "ISSN": "0263-6174",
+                            "Doi": "https://doi.org/10.1155/2022/6768900",
+                            "Colloboration Institute": "Saveetha School of Engineering",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1BR6PIn1K8Mt3MwNJd9ATnOBWzCaFGrrx/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 17,
+                            "Name of the Author(s)": "P.Pathmanaban,",
+                            "Title of the Paper": "Damage Detection and Classification of Mangoes Based on Thermal Imaging",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "PERIODICO di MINERALOGIA",
+                            "Month and Year of publication": "2022-08-01 00:00:00",
+                            "ISSN": "0369-8963",
+                            "Doi": "nil",
+                            "Colloboration Institute": "Easwari",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1H8maiv2LgUrNQ9BBMXogwJO8sDRfQWPs/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 18,
+                            "Name of the Author(s)": "V.Chandran",
+                            "Title of the Paper": "An Evolutionary Algorithmic Approach for Improving the Success Rate of Selective Assembly through a Novel EAUB Method",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Applied Sciences",
+                            "Month and Year of publication": "2022-09-01 00:00:00",
+                            "ISSN": "2076-3417",
+                            "Doi": "https://doi.org/10.3390/app12178797",
+                            "Colloboration Institute": "Veltech",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/15OmEWvjh2zyeMr0ijcnCPkMCPZKEGWAz/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 19,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Feasibility of adding fusel oil as an oxygenate to gasoline on reducing mpfi engine emissions",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Environmental Engineering and Management Journal",
+                            "Month and Year of publication": "2022-10-01 00:00:00",
+                            "ISSN": "1255-1264",
+                            "Doi": "nil",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1IrlAKrrhCLaiAKBsBvOuzNnKKtFINTvG/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 20,
+                            "Name of the Author(s)": "M.Senthamilelvan",
+                            "Title of the Paper": "Ethanol, Hemp, and Cottonseed Oil Biofuel Injection Completely Eliminates Diesel Fuel in Reactivity-Controlled Compression Ignition Engine",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Journal of Energy Engineering., 2022,",
+                            "Month and Year of publication": "2022-11-01 00:00:00",
+                            "ISSN": "0402-2039",
+                            "Doi": "nil",
+                            "Colloboration Institute": "SSN",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1xSUBXZFRi-6x37UiO5_4Sa7Rk7E0CAvi/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 21,
+                            "Name of the Author(s)": "M.Yuvaraj",
+                            "Title of the Paper": "Influence of nano-coating on the productivity of a double slope solar still",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCOPUS",
+                            "Name of the Journal": "Materials Today: Proceedings",
+                            "Month and Year of publication": "2022-07-01 00:00:00",
+                            "ISSN": "2214-7853",
+                            "Doi": "https://doi.org/10.1016/j.matpr.2022.07.155",
+                            "Colloboration Institute": "Panimalar",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1e0j4gpL_ZYXhtfyxgTea4MueHdbv-_Ng/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 22,
+                            "Name of the Author(s)": "P.Pathmanaban",
+                            "Title of the Paper": "Guava fruit( Psidium guajava ) damage and disease detection using deep convolutional neural networks and thermal imaging",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Imaging Science Journal",
+                            "Month and Year of publication": "2023-01-01 00:00:00",
+                            "ISSN": "1255-1264",
+                            "Doi": "https://doi.org/10.1080/13682199.2022.2163536",
+                            "Colloboration Institute": "Easwari",
+                            "Colloboration agreement Yes / No": "yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1TjaVt_bsOLz_CZJIHf4kOkdNncq_6jKO/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 23,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Prediction of emission and performance of a variable compression ratio SI engine with gasoline/ethanol blend using response surface methodology",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Iranian Journal of Chemistry and Chemical Engineering",
+                            "Month and Year of publication": "2023-02-01 00:00:00",
+                            "ISSN": "1021-9986",
+                            "Doi": "10.30492/IJCCE.2023.563660.5651",
+                            "Colloboration Institute": "Easwari",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://www.ijcce.ac.ir/article_701489.html"
+                        },
+                        {
+                            "S.No": 24,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Reducing gaoline emissions using novel bio based oxygenates: a review",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Emergent materials",
+                            "Month and Year of publication": "2023-02-01 00:00:00",
+                            "ISSN": "1373-2020",
+                            "Doi": "10.30492/IJCCE.2023.563660.5652",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1jxBRpKjn4OoVkWwzbU-wVS2OK6yax-sV/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 25,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Experimental investigation on effect dual oxygenates (ethanol, n-butanol) with gasoline on MPFI engine performance and emission characteristics",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "International Journal of Environmental Science and Technology",
+                            "Month and Year of publication": "2023-03-01 00:00:00",
+                            "ISSN": "1376-2023",
+                            "Doi": "10.1007/s13762-023-04852-6",
+                            "Colloboration Institute": "Easwari",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1jxBRpKjn4OoVkWwzbU-wVS2OK6yax-sV/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 26,
+                            "Name of the Author(s)": "P.Thennarasu",
+                            "Title of the Paper": "Performance optimization of gasoline engine fueled with ethanol/n-butanol/gasoline blends using response surface methodology",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Biofuels",
+                            "Month and Year of publication": "2023-06-01 00:00:00",
+                            "ISSN": "1759-7277",
+                            "Doi": "DOI: 10.1080/17597269.2023.2215631",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "NO",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1KnCXl8YZhpIPqxGuWESo0ZUFaAOlrT4j/view?usp=drive_link"
+                        },
+                        {
+                            "S.No": 27,
+                            "Name of the Author(s)": "P.Pathmanaban",
+                            "Title of the Paper": "Analysis of mango fruit surface temperature using thermal imaging and deep learning",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Int. J. Food Eng",
+                            "Month and Year of publication": "2023-06-01 00:00:00",
+                            "ISSN": "1556-3758",
+                            "Doi": "DOI: 10.1080/15697269.2024.2215632",
+                            "Colloboration Institute": "EEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/13kmZW04pk-tz9Cm2LzTwGuqT9rg8rrv3/view?usp=drive_link"
+                        },
+                        {
+                            "S.No": 28,
+                            "Name of the Author(s)": "V.Chandran",
+                            "Title of the Paper": "Evaluation of mechanical and thermal behavior of ferrous and non-ferrous nano fillers based GFRP composites",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "Scopus",
+                            "Name of the Journal": "Int. J. Vehicle Structures & Systems",
+                            "Month and Year of publication": "2023-08-01 00:00:00",
+                            "ISSN": "0975-3060",
+                            "Doi": "doi:10.4273/ijvss.15.5.14.",
+                            "Colloboration Institute": "SAEC",
+                            "Colloboration agreement Yes / No": "NO",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/17--CFh_TyCftHt5NDoJUdY3UjVxYc61O/view?usp=drive_link"
+                        },
+                        {
+                            "S.No": 29,
+                            "Name of the Author(s)": "M.Yuvaraj",
+                            "Title of the Paper": "Experimental investigation on the effective condenser glass area of solar still hybrid with photovoltaic cells",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Environmental Progress & Sustainable Energy",
+                            "Month and Year of publication": "2024-04-24 00:00:00",
+                            "ISSN": "1944-7450 ",
+                            "Doi": "DOI: 10.1080/15697269.2024.2215632",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "NO",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1q7Fi6Asp-qIl32QPE-xHMeKwXqjyUnjC/view?usp=drive_link"
+                        },
+                        {
+                            "S.No": 30,
+                            "Name of the Author(s)": "M.Senthamilselvan",
+                            "Title of the Paper": "Impacts of pine oil and hydrogen induction with hemp oil\nmethyl ester on dual fuel reactivity controlled compression\nignition combustion in diesel engine",
+                            "SCI/ WoS/ Scopus/ Google Scholar/ UGC Care/Other": "SCI",
+                            "Name of the Journal": "Environmental Progress & Sustainable Energy",
+                            "Month and Year of publication": "2024-05-25 00:00:00",
+                            "ISSN": "1944-7450 ",
+                            "Doi": "DOI: 10.1080/15697269.2024.2215632",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "NO",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1r4jPvTDjlhB0CrWUzE6xRT9MOQCmORS4/view?usp=drive_link"
+                        }
+                    ]
+            },
+            {
+                "PATENT_DETAILS": [
+                        {
+                            "S.No": 1,
+                            "Faculty": "Mr.M.Yuvaraj",
+                            "Title of the Patent": "Solar hybrid desalination system",
+                            "Application Number": "201941031098",
+                            "Date of Filing": "01.08.2019",
+                            "Status": "Granted",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/1YaqmbKhi3NF7y96PQfPzi4raIVj1Uf1n/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 2,
+                            "Faculty": "Dr.S.Baskara Sethupathy",
+                            "Title of the Patent": "Energy Efficient Cooking Device",
+                            "Application Number": "202041017257",
+                            "Date of Filing": "22.04.2020",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/18q2jxUrcvYTRswny9t2FrnpzK0po9dXW/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 4,
+                            "Faculty": "Dr.S.Baskara Sethupathy",
+                            "Title of the Patent": "Automated Dosa Cooking Machine and Methods of cooking Dosa Thereof",
+                            "Application Number": "202141020911",
+                            "Date of Filing": "08.05.2021",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/1uUlusscfa9VdNBWob4EwzCyiSC0X5yGU/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 5,
+                            "Faculty": "Mr.M.Yuvaraj",
+                            "Title of the Patent": "Hand-Held Braile device",
+                            "Application Number": "202141034861",
+                            "Date of Filing": "03.08.2021",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/1eup12KEH62nrbT5iANmJ8Qud0aNYSLWN/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 6,
+                            "Faculty": "Mr.M.Yuvaraj",
+                            "Title of the Patent": "Intelligent head protecting safety helmet",
+                            "Application Number": "202141034855",
+                            "Date of Filing": "03.08.2021",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/1b95FCDPqPQm3E0g3souWd2yn3rTd3IGG/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 7,
+                            "Faculty": "Dr.V.Chandran",
+                            "Title of the Patent": "Self Sustainable Electric Generation Mechanism And Methods Of Operating Boat Thereof",
+                            "Application Number": "202241032368",
+                            "Date of Filing": "6.6.2022",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/1BfaXUYKa0ZKrTxLTKeYF0pUZb-nwviKU/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 8,
+                            "Faculty": "Dr.V.Chandran",
+                            "Title of the Patent": "Detachable Thernoelectric generator and method of generating electricity thereof",
+                            "Application Number": "202341019428",
+                            "Date of Filing": "21.3.2023",
+                            "Status": "Published",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/13gDzmxfzADo849aWrYcnW1KMXag_x1UR/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 9,
+                            "Faculty": "Dr.V.Chandran",
+                            "Title of the Patent": "Mobile Phone cum Power Bank Charger Holder",
+                            "Application Number": "381982-001",
+                            "Date of Filing": "21.3.2023",
+                            "Status": "Design Registered",
+                            "Colloboration Institute": "VEC",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy patent google drive link": "https://drive.google.com/file/d/13GG5mxggnXcFKKJAGvpoxwfCSB3fdE6Y/view?usp=sharing"
+                        }
+                    ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                        {
+                            "S.No": 1,
+                            "Name of Faculty": "Dr.V.Chandran",
+                            "Book/Chapter Title": "Vehicle body Engineering",
+                            "Name of Publisher": "Krishna Hi-tech Publisher",
+                            "ISBN Details": "978-93-91330-83-5",
+                            "Colloboration Institute": "No",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy of Book front page google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2021-22/Criteria3/3.4.4-Book-chapter/1-Auto.pdf"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of Faculty": "V.Chandran",
+                            "Book/Chapter Title": "Power units and Transmission",
+                            "Name of Publisher": "Krishna Hi-tech Publisher",
+                            "ISBN Details": "978-93-9525420-5",
+                            "Colloboration Institute": "No",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy of Book front page google drive link": "https://drive.google.com/file/d/1k-YxvOWjmRI0vqeB8Gd6ixhLV1TuZ6tB/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of Faculty": "V.Chandran",
+                            "Book/Chapter Title": "Hydraulics and Pneumatics",
+                            "Name of Publisher": "Krishna Hi-tech Publisher",
+                            "ISBN Details": "978-93-93808-17-2",
+                            "Colloboration Institute": "No",
+                            "Colloboration agreement Yes / No": "No",
+                            "E copy of Book front page google drive link": "https://drive.google.com/file/d/1rPuorvCGubKbVcodKI8zjGVgEkDvBG81/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of Faculty": "Dr.S.Baskarasethupathy",
+                            "Book/Chapter Title": "Magnetic characteristics of electroplated NiAl/CuO2 composite wires as a function of magnetic field",
+                            "Name of Publisher": "AIP Conference Proceedings",
+                            "ISBN Details": "978-0-7354-4631-1",
+                            "Colloboration Institute": "VIT",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "E copy of Book front page google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/2.Auto2b.pdf"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of Faculty": "Dr.S.Baskarasethupathy",
+                            "Book/Chapter Title": "Sand-casting process parameters influence casting mechanical properties in stainless steel alloys",
+                            "Name of Publisher": "AIP Conference Proceedings",
+                            "ISBN Details": "978-0-7354-4631-1",
+                            "Colloboration Institute": "VIT",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "E copy of Book front page google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/3.Auto3b.pdf"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of Faculty": "Dr.S.Baskarasethupathy",
+                            "Book/Chapter Title": "Recent advancements in aluminum metal matrix composites: A review of processing and application",
+                            "Name of Publisher": "AIP Conference Proceedings",
+                            "ISBN Details": "978-0-7354-4631-1",
+                            "Colloboration Institute": "VIT",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "E copy of Book front page google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/4.Auto4b.pdf"
+                        }
+                    ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                        {
+                            "S.No": 1,
+                            "Name of faculty": "V.Chandran",
+                            "Title of the Paper": "Evaluation of Performance of different Compositions in\nAluminum Hybrid Composites for Disc Brake Plates",
+                            "Name of Conference": "CTSE\u201921",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "SSN",
+                            " Prceedings ISBN": "978-93-6163-043-3",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets /files/NAAC/2020-21/Criteria3/Book-Chapter/1-auto.pdf"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of faculty": "V.Chandran",
+                            "Title of the Paper": "PERFORMANCE ASSESSMENT OF BATTERY IN ELECTRIC VEHILCE SYSTEM USING MODIFIED SUPER CAPACITOR",
+                            "Name of Conference": "NCRDAME'21",
+                            "Type of Conference National / Inter national": "National",
+                            "Organizer": "EEC",
+                            " Prceedings ISBN": "978-93-6163-012-1",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets /files/NAAC/2020-21/Criteria3/Book-Chapter/1-auto.pdf"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of faculty": "M.Srnthmil selvan",
+                            "Title of the Paper": "FABRICATION OF CRUISE CONTROL IN TWO WHEELER",
+                            "Name of Conference": "NCRDAME'22",
+                            "Type of Conference National / Inter national": "National",
+                            "Organizer": "EEC",
+                            " Prceedings ISBN": "978-93-6163-011-0",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets /files/NAAC/2020-21/Criteria3/Book-Chapter/2-auto.pdf"
+                        },
+                        {
+                            "S.No": 1,
+                            "Name of faculty": "P.Pathmanaban",
+                            "Title of the Paper": "Tyre defects detection using deep learning techniques",
+                            "Name of Conference": "NCIRAT\u201923",
+                            "Type of Conference National / Inter national": "National",
+                            "Organizer": "MIT",
+                            " Prceedings ISBN": "978-93-6112-043-7",
+                            "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/19ilgCl29WczUcpLmsEknV4yqzQZh3hyv/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of faculty": "V.Chandran",
+                            "Title of the Paper": "Evaluation of thermal behavior of ferrous and non-ferrous nano fillersbased GRFP composites for automotive gear casing",
+                            "Name of Conference": "NCIRAT\u201923",
+                            "Type of Conference National / Inter national": "National",
+                            "Organizer": "MIT",
+                            " Prceedings ISBN": "978-93-6163-043-9",
+                            "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1XEChKLnqTIcbpZonmabroKy2wAB0f2qy/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of faculty": "V.Chandran",
+                            "Title of the Paper": "Invesigation of mechanical and thermal properties of hybrid composites helmet reinforced with epoxy polymer matrix",
+                            "Name of Conference": "ICRDME'23",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "SAEC",
+                            " Prceedings ISBN": "977-43-6112-021-6",
+                            "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1sNLSsPpicc9VzULpy4y-Y2UdTL1RQ0ZQ/view?usp=share_link"
+                        },
+                        {
+                            "S.No": 1,
+                            "Name of faculty": "M.Yuvaraj",
+                            "Title of the Paper": "Studies on the Effect of Dust Deposition on The Solar Still Cover in the Performance of a Single Slope Passive Desalination System",
+                            "Name of Conference": "International Hybrid mode conference on challenge and new trends in hybrid solar cell technology (ICSCT23)",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "Sri SaiRam Engineering College",
+                            " Prceedings ISBN": "978-93-5914-790-1",
+                            "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/17hzmlnV86LVa--URcKk2Uo5ED3gF-wBK/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of faculty": "Dr.V.Chandran",
+                            "Title of the Paper": "Optimization Of Twin Pulse Resistance Welding Parameters For Astm A0 Stainless Steel Sheets: A Multi-Objective Approach",
+                            "Name of Conference": "International Conference on Sustainable in Materials, Manufacturing and Automation",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "Kalasalingam Academy",
+                            " Prceedings ISBN": "978-93-6163-043-9",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/5.Auto5b.pdf"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of faculty": "Dr.V.Chandran",
+                            "Title of the Paper": "Experimental Investigation On The Effect Of Sea Shell Filler Material Impact On Hybrid Natural Fiber Reinforced Composite Plates",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-8",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/6..Auto6b.pdf"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of faculty": "M, Yuvaraj, D.S. Jemima Chandra, P.Thennarasu, M.Srmthamil selvan",
+                            "Title of the Paper": "Effects Of Dual Fuel Reactivity Controlled Compression Ignition Combustion Of N-Butanol With Diesel And Hemp Oil Biodiesel In Diesel Engine",
+                            "Name of Conference": "3rd International Virtual Conference on \u201cAdvances in Automobile, Manufacturing and Mechanical Engineering",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "EEC Publisher",
+                            " Prceedings ISBN": "978-81-970420-9-6",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/7.Auto7b.pdf"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of faculty": "Dr.V.Chandran",
+                            "Title of the Paper": "Design And Fabrication Of Short Pipes Using Hybrid Composite Material And Investigation Of Mechanical Properties Of The Pipes",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-9",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/8.Auto8b.pdf"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of faculty": "Dr.V.Chandran",
+                            "Title of the Paper": "Design And Fabrication Of Hybrid Composite Material Plates With Additives Material Calculate Mechanical Properties With And Without Additive Material.",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-10",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/9.Auto.9b.pdf"
+                        },
+                        {
+                            "S.No": 7,
+                            "Name of faculty": "M. Yuvaraj",
+                            "Title of the Paper": "Performance Optimization And Structural Analysis Of An Electric Go-Kart Frame Using Ansys",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-11",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/10.Auto10b.pdf"
+                        },
+                        {
+                            "S.No": 8,
+                            "Name of faculty": "Dr. M.Senthamilselvan",
+                            "Title of the Paper": "Design And Development Of Mini Tractor With Solar Roof",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-12",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/11.Auto11b.pdf"
+                        },
+                        {
+                            "S.No": 9,
+                            "Name of faculty": "P. Thennarasu",
+                            "Title of the Paper": "Effect Of Switchable Throttle In Electric Two Wheeler",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-13",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/12.Auto12b.pdf"
+                        },
+                        {
+                            "S.No": 10,
+                            "Name of faculty": "P. Thennarasu",
+                            "Title of the Paper": "\u201cExperimental investigation on Effect of ethanol, n-\nbutanol and unleaded gasoline blends on Multi-Cylinder SI engine Performance and\nEmission Characteristics",
+                            "Name of Conference": "INTERNATIONAL CONFERENCE ON\nINNOVATIONS IN THERMO-FLUID ENGINEERING AND\nSCIENCES [ICITFES-2020]",
+                            "Type of Conference National / Inter national": "International",
+                            "Organizer": "NIT Rourkela",
+                            " Prceedings ISBN": null,
+                            "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1uIv1Bb4Csg_RMoq8FfbasAFVNauCgeP3/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 11,
+                            "Name of faculty": "P. Thennarasu",
+                            "Title of the Paper": "Nano Additives In Combustion And Pollution Control",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-14",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/13.Auto13b.pdf"
+                        },
+                        {
+                            "S.No": 12,
+                            "Name of faculty": "Dr. M, Senthamilselvan, D.S. Jemima Chandra, M.Yuvaraj",
+                            "Title of the Paper": "Nanomaterials And Nanotechnology In Automotive E-Manufacuturing",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-15",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/14..Auto14b.pdf"
+                        },
+                        {
+                            "S.No": 13,
+                            "Name of faculty": "M, Yuvaraj, D.S. Jemima Chandra",
+                            "Title of the Paper": "Nanomaterials And Nanotechnology In Fuel Cell Vehicles",
+                            "Name of Conference": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                            "Type of Conference National / Inter national": "Natiomal",
+                            "Organizer": "VEC Publisher",
+                            " Prceedings ISBN": "978-93-6128-640-16",
+                            "E-Copy of Prceeding google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/criteria3/3.4.4/15.Auto15b.pdf"
+                        }
+                    ]
+            },
+            {
+                "CONSULTANCY": [
+                        {
+                            "S.No": 1,
+                            "Name of the Faculty": "Dr.V.Chandran",
+                            "Title of the Consultancy": "Development of Headlamp Trolley",
+                            "Funding Organisation": "Ashok Leyland",
+                            "Duration": "4 Months ",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Faculty": "Dr.V.Chandran",
+                            "Title of the Consultancy": "Development of Inlet Pipe System for Engine Test Bed",
+                            "Funding Organisation": "Ashok Leyland",
+                            "Duration": "5 Months",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Faculty": "Dr.E.GanapathySundaram",
+                            "Title of the Consultancy": "Study on engine unloading workstation of Neptune engine assembly for improvement of efficiency",
+                            "Funding Organisation": "Ashok Leyland",
+                            "Duration": "3 Months",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Faculty": "Dr.V.Chandran ",
+                            "Title of the Consultancy": "Utilization of Exhaust Waste Heat Energy from Engine test bed for washing process",
+                            "Funding Organisation": "Ashok Leyland",
+                            "Duration": "6 Months",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of the Faculty": "Dr.V.Chandran and Dr.E.Ganapathy Sundaram",
+                            "Title of the Consultancy": "Design of work holding devices",
+                            "Funding Organisation": "Giri Enterprises",
+                            "Duration": "1 Month",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of the Faculty": "P.Thennarasu   and M. Yuvaraj",
+                            "Title of the Consultancy": "Bolt seperator",
+                            "Funding Organisation": "Ashok Leyland",
+                            "Duration": "4 months",
+                            "Fund Received in Rs.": null,
+                            "Request and acceptance communication details": "yes"
+                        }
+                    ]
+            },
+            {
+                "INTERNSHIP": [
+                        {
+                            "S.No": 1,
+                            "Name of the Industry, address": "Polyfit Fabricators Pvt. Ltd., Ambattur, Chennai.",
+                            "Name of the Student": "DAVE YUMNAM",
+                            "Duration": "20.02.2023 - 05.03.2024",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/DaveYumnam.pdf"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Industry, address": "Myoung Shin India Automotive Private Limited, Sriperumbudur, Kancheepuram.",
+                            "Name of the Student": "DHANUSH RAJ P",
+                            "Duration": "10.12.2023 - 26.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/DhanushRaj.pdf"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Industry, address": "Polyfit Fabricators Pvt. Ltd., Ambattur, Chennai.",
+                            "Name of the Student": "KARTHIKEYAN A",
+                            "Duration": "20.02.2023 - 05.03.2024",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Karthikeyan%20.pdf"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Industry, address": "Safe Cargated Container Pvt. Ltd., Gummidipundi.",
+                            "Name of the Student": "KISHORE L",
+                            "Duration": "15.12.2023 - 30.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Kishore%20.pdf"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of the Industry, address": "Polyfit Fabricators Pvt. Ltd., Ambattur, Chennai.",
+                            "Name of the Student": "PARTHASARATHI B",
+                            "Duration": "20.02.2023 - 05.03.2024",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/parthasarathi.pdf"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of the Industry, address": "Myoung Shin India Automotive Private Limited, Sriperumbudur, Kancheepuram.",
+                            "Name of the Student": "RAFIUL MOHAMMED A",
+                            "Duration": "10.12.2023 - 26.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Rafiulmohammad.pdf"
+                        },
+                        {
+                            "S.No": 7,
+                            "Name of the Industry, address": "Autotech Industries (India) Private Limited, Ambattur Industrial Estate, Chennai",
+                            "Name of the Student": "SHANMUGA SUNDHARAM S",
+                            "Duration": "08.12.2023 - 29.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Shanmuga_sundharam.pdf"
+                        },
+                        {
+                            "S.No": 8,
+                            "Name of the Industry, address": "Polyfit Fabricators Pvt. Ltd., Ambattur, Chennai.",
+                            "Name of the Student": "SOLOMON JOEL J",
+                            "Duration": "20.02.2023 - 05.03.2024",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Solomon_Joel.pdf"
+                        },
+                        {
+                            "S.No": 9,
+                            "Name of the Industry, address": "Autotech Industries (India) Private Limited, Ambattur Industrial Estate, Chennai",
+                            "Name of the Student": "SRISUDHARSAN S",
+                            "Duration": "08.12.2023 - 29.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/SriSudharsan.pdf"
+                        },
+                        {
+                            "S.No": 10,
+                            "Name of the Industry, address": "Autotech Industries (India) Private Limited, Ambattur Industrial Estate, Chennai",
+                            "Name of the Student": "SURYA P",
+                            "Duration": "08.12.2023 - 29.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Surya.pdf"
+                        },
+                        {
+                            "S.No": 11,
+                            "Name of the Industry, address": "Autotech Industries (India) Private Limited, Ambattur Industrial Estate, Chennai",
+                            "Name of the Student": "VISHWANAATHAN K",
+                            "Duration": "08.12.2023 - 29.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/vishwanaathan.pdf"
+                        },
+                        {
+                            "S.No": 12,
+                            "Name of the Industry, address": "Safe Cargated Container Pvt. Ltd., Gummidipundi.",
+                            "Name of the Student": "ZAHEER AHAMED D",
+                            "Duration": "15.12.2023 - 30.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/ZaheerAhamed.pdf"
+                        },
+                        {
+                            "S.No": 13,
+                            "Name of the Industry, address": "Safe Cargated Container Pvt. Ltd., Gummidipundi.",
+                            "Name of the Student": "MUGILAN G",
+                            "Duration": "15.12.2023 - 30.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Mugilan%20.pdf"
+                        },
+                        {
+                            "S.No": 14,
+                            "Name of the Industry, address": "Royal Enfield Showroom Company Store, A Unit of Eicher Motors Ltd., Sholinganallur, Chennai.",
+                            "Name of the Student": "NARENDRA R",
+                            "Duration": "07.12.2023 - 23.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Narendra.pdf"
+                        },
+                        {
+                            "S.No": 15,
+                            "Name of the Industry, address": "Autotech Industries (India) Private Limited, Ambattur Industrial Estate, Chennai",
+                            "Name of the Student": "RAHUL R",
+                            "Duration": "08.12.2023 - 29.12.2023",
+                            "Internship proof google drive link": "https://velammal.edu.in/NAAC-assets/files/NAAC/2023-2024/Criteria1/Internship_Auto/Rahul.pdf"
+                        },
+                        {
+                            "S.No": 16,
+                            "Name of the Industry, address": "NSIC, Technical services centre,  guindy Industrial estate, Ekkaduthangal, Chennai-32",
+                            "Name of the Student": "Pradeep Kumar N",
+                            "Duration": "15.3.2021 to 19.3.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/13Etvon_iN8MSWYxz9-7cJ6sklWUIQmDu/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 17,
+                            "Name of the Industry, address": "Petro chemical engineering and technology, CIPET, Guindy, Chennai-32",
+                            "Name of the Student": " A.Santhana Srinivasan",
+                            "Duration": "21.4.2021 to 22.04.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1keqRHCrPflYOebkv305OlqvCmTQ8kfC_/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 18,
+                            "Name of the Industry, address": "Petro chemical engineering and technology, CIPET, Guindy, Chennai-32",
+                            "Name of the Student": "S. Karthick ",
+                            "Duration": "21.4.2021 to 22.04.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1Rd5k8EOk9wZLodzJ6YR-BGx1TEzaG_nD/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 19,
+                            "Name of the Industry, address": "Metropolitan Transport corporation Ltd, Pallavan house, Anna salai, Chennai-2",
+                            "Name of the Student": "\n V Sai Shivaraj\n",
+                            "Duration": "29.3.2021 to 4.04.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1e6JwTIgCd4KTOdB88VMuDsX5LYSsuQ9Y/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 20,
+                            "Name of the Industry, address": "Metropolitan Transport corporation Ltd, Pallavan house, Anna salai, Chennai-2",
+                            "Name of the Student": "S.Pugalendhi\n",
+                            "Duration": "29.3.2021 to 4.04.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1yTXHMb-vEh7qxgp1D2NKIDJN02JO0YEA/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 21,
+                            "Name of the Industry, address": "BOSCH- Automotive aftermarket Bosch Limited, Chennai",
+                            "Name of the Student": "K.Chandru",
+                            "Duration": "6.7.2021 to 11.07.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1pmS3OIDtQ9poSMeo8voKbSDu2-KEd2pl/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 22,
+                            "Name of the Industry, address": "Uniforce Engineers, Sidco Industrial Estate, Thirumudivakkam, Chennai-44",
+                            "Name of the Student": "S.Aakash",
+                            "Duration": "23.3.2021 to 09.0.4.2021",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1u_l-P9wSo-xNq0DTCTJ0GdTcBoZnYvmY/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 23,
+                            "Name of the Industry, address": "Royal Enfield, Dino Motors, Thirumullaivoyal,\n Chennai-62",
+                            "Name of the Student": "R.Adithiyan",
+                            "Duration": "03.06.2019 to 15.06.2019",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1pLtWPKVtP5JHyk3JOFOapLG4VqPKjSKa/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 24,
+                            "Name of the Industry, address": "Royal Enfield, Dino Motors, Thirumullaivoyal,\n Chennai-62",
+                            "Name of the Student": "B.Jagan",
+                            "Duration": "03.06.2019 to 15.06.2019",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1X-mqYfNptusIP95CZWHJZUPgWES4h8k4/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 25,
+                            "Name of the Industry, address": "Renault, Khiviraj Motors, Anna Salai, Chennai-02",
+                            "Name of the Student": "A.Mukesh",
+                            "Duration": "03.06.2019 to 15.06.2019",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1E9jGh7X0kZn7zEbWS1OVQVcSBHtzoYn3/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 26,
+                            "Name of the Industry, address": "Renault, Khiviraj Motors, Anna Salai, Chennai-02",
+                            "Name of the Student": "T.Venkatesh",
+                            "Duration": "03.06.2019 to 15.06.2019",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1xF6nhXk_mDjy4ZU7TeviQHuIhe-NSn0u/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 27,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": "R. Adithyan. ",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1f-xOGHjDOXOn0u83OFSnYfMwyWCHL4nk/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 28,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": " R, Abishek",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1shFkbfrGO9Juk4oMmhwKqgEGpbv03VQP/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 29,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": "B.Jagan,\n",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1gM3y2VwzpGkPJnnTabaIi8Xwx2Dtiriw/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 30,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": "\n A.R. Maheshwar",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1nDxwCADfRscnX8pSxwGxHeJ7ANqFqs-A/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 31,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": "A.Mukesh",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1WynM2ZEW3c2NopyvMwcKb8JRalsepYtc/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 32,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": "A.Musharath Aalam",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1hYn5rq9OnCtn-Ewu2hTXZTFk7ZVOTgDm/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 33,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": " V.B. SureshKumar",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/12H7nx_gldhvO6R7cN4VdUuQourxgurXf/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 34,
+                            "Name of the Industry, address": "Diagonal CADD Centre, AIEMA, Ambattur Industrial Estate, Chennai-58",
+                            "Name of the Student": " Shaik Sameer",
+                            "Duration": "14.2.2020 to 28.2.2020",
+                            "Internship proof google drive link": "https://drive.google.com/file/d/1kJDPvD5bD1HMm_aP45JtBuHqERQoZv5s/view?usp=sharing"
+                        }
+                    ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": [
+                        {
+                            "S.No": 1,
+                            "Name of the Faculty": "M.Yuvaraj",
+                            "Name of the Product": "Solar desalination Kit",
+                            "Team members details": "Sathyan and team",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1sjFwn_0RMwp8hibuRJPQh-GmWHnSNeC3/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Faculty": "Mr.Thennarasu",
+                            "Name of the Product": "Automotive Vacuum Suspension System",
+                            "Team members details": "E.Babu, R.Kannan",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1VDzT76ZC_dF6BexQomuLKii-8zHFXvQr/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Faculty": "Dr.V.Chandran",
+                            "Name of the Product": "E-Boat",
+                            "Team members details": "Pugalendhi, Viswa",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1quA4aYnmYclQ-ID8t-wwBoYJwsTcDrZ_/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Faculty": "Dr.V.Chandran",
+                            "Name of the Product": "Detachable TEG",
+                            "Team members details": "Benny Gabriel,  Sathya Sairam",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1JT03eh1mjm-kgZ_7ETLUqhfuHuESKwTB/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of the Faculty": "S. Baskarasethupathy",
+                            "Name of the Product": "Automated Dosa Making Machine",
+                            "Team members details": "Vigneswaran",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": null
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of the Faculty": "M.Yuvaraj",
+                            "Name of the Product": "Brailee tablet",
+                            "Team members details": "Sathyan ",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": null
+                        },
+                        {
+                            "S.No": 7,
+                            "Name of the Faculty": "S. Baskarasethupathy",
+                            "Name of the Product": "Smart cooking device",
+                            "Team members details": "Vigneswaran",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": null
+                        },
+                        {
+                            "S.No": 8,
+                            "Name of the Faculty": "V.Chandran",
+                            "Name of the Product": "Battery Extinguisher",
+                            "Team members details": "Thirukumaran and team",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "SELF",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1vidT7h5dwvf62RJvbjjeHfP30kTenWLa/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 9,
+                            "Name of the Faculty": "M.Yuvaraj",
+                            "Name of the Product": "Scooter for handicapped people",
+                            "Team members details": "Sathyan and team",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": null
+                        },
+                        {
+                            "S.No": 10,
+                            "Name of the Faculty": "Dr.V.Chandran",
+                            "Name of the Product": "Foldable rain protecting guard for two wheeler",
+                            "Team members details": "Padmesh, Tarun,Yugesh",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "SELF",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1bGszBxV9fqz_JXLTCaJkVd6Z4Qzftelx/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 11,
+                            "Name of the Faculty": "Mr.Thennarasu",
+                            "Name of the Product": "Flexible acelerator on both hand for two wheelers",
+                            "Team members details": "Thirukumaran and team",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "SELF",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1nY22HIUs5di0HUZW_fCLqEj_l1tzA8qu/view?usp=sharing"
+                        },
+                        {
+                            "S.No": 12,
+                            "Name of the Faculty": "Dr.M.Senthanil Selvan",
+                            "Name of the Product": "Generation of Electricity from Automobile Turbo Charger",
+                            "Team members details": "Mukesh, Sivakumar, Pranesh, Dhanush",
+                            "Demo availability status": "Yes",
+                            "Funding agency/Industrial Partners": "DST-IEDC",
+                            "Product image in google drive link": "https://drive.google.com/file/d/1a48VFXOMKX8pCIc4r7OUFju6tDAQgg_t/view?usp=sharing"
+                        }
+                    ]
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": [
+                    {
+                        "S.No": 1,
+                        "Startup Name":"Elakanam Private Limited"
+                    },
+                    {
+                        "S.No": 2,
+                        "Startup Name":"Dharshon Brothers Technology Private Limited"
+                    },
+                    {
+                        "S.No": 3,
+                        "Startup Name":"PP-VAC Engineering Solutions Private Limited"
+                    }
+                ]
+            }
+        ]
+    }
+]
+}

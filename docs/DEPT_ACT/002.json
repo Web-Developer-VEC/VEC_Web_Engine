@@ -1,0 +1,170 @@
+[
+    {
+        "dept_id": "002",
+        "department_name": "Automobile Engineering (AUTO)",
+        "dept_activities": [
+    {
+        "date": "17.02.2025",
+        "name_of_event": "Energy and Fuel Users Association of India (ENFUSE) Professional Society Student Chapter, Saksham 2025",
+        "coordinator": "Dr.M.Senthamil Selvan",
+        "resource_person": "Shri. Shankaran Ramalingam,National President, Enfuse",
+        "beneficiaries": "2nd & 3rd Year students from AME & EEE",
+        "relevant_PO_PSO": "PO6, PO7, PO12 & PSO1",
+        "image_path": ["/static/images/dept_activities/002/1.1.webp","/static/images/dept_activities/002/1.2.webp"]
+    },
+    {
+        "date": "01.03.2024",
+        "name_of_event": "Student Technical National Level Symposium CARAXE 24",
+        "coordinator": "Mr.M.Yuvaraj,Mr.P.Thennarasu",
+        "resource_person": "Mr.ManojVehicle/CAB Architect Volvo",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/2.1.webp"]
+    },
+    {
+        "date": "20.03.2024",
+        "name_of_event": "NationalConference onEmerging Trends in Automotive andMechanical Sciences",
+        "coordinator": "Dr.V.Chandran,Mr.P.Thennarasu",
+        "resource_person": null,
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/3.1.webp","/static/images/dept_activities/002/3.2.webp"]
+    },
+    {
+        "date": "27.01.2024",
+        "name_of_event": "Seminar on  201cGovernment Funding Schemes for Startup 2019s and MSME 2019s 201d",
+        "coordinator": "Mr.P.Thennarasu",
+        "resource_person": "Dr.E.Bhaskaran, Join Director (Engineering),District Industires Centre (D.I.C), Thirupattur, Department of Industries and Commerce, MSME Department, Government of Tamil Nadu.",
+        "beneficiaries": "2nd & 3rd Year students from AME",
+        "relevant_PO_PSO": "PO6, PO7, PO8, PO9, PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/4.1.webp","/static/images/dept_activities/002/4.2.webp"]
+    },
+    {
+        "date": "24.12.2022",
+        "name_of_event": "One Day Hands-on Training Workshop on 'Patent Drafting for KAPILA Scheme'",
+        "coordinator": "Mr.P.Thennarasu",
+        "resource_person": "Dr. A. Balaji Ganesh,Research Dean, Velammal Engineering College.Dr. S. Baskara SethupathyAssociate Research Dean, Velammal Engineering College",
+        "beneficiaries": "2nd & 3rd Year students from AME",
+        "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/5.1.webp"]
+    },
+    {
+        "date": "09.02.2024",
+        "name_of_event": "The Imperative of Model Based development in the Automotive Industry",
+        "coordinator": "Mr.P.Thennarasu",
+        "resource_person": "Mr.Narendaran,Lead Engineering,Bosch Global Software Solution.",
+        "beneficiaries": "2nd & 3rd Year students from AME",
+        "relevant_PO_PSO": "PO5, PO7, PO8, PO9, PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/6.1.web"]
+    },
+    {
+        "date": "23.3.2024",
+        "name_of_event": "Scope of entrepreneurship in supply chain management",
+        "coordinator": "Mr.M.Yuvaraj",
+        "resource_person": "Mr.Nitin Raaj,Manager Product Supply,Procter and Gamble",
+        "beneficiaries": "2nd,3rd & 4th Year students from AME",
+        "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/7.1.webp"]
+    },
+    {
+        "date": "02.3.2024",
+        "name_of_event": "Project Expo",
+        "coordinator": "Mr.M.Yuvaraj",
+        "resource_person": "Mr.Arokiavelu, Joint Editor Motor Vikatan",
+        "beneficiaries": "2nd,3rd & 4th Year students from AME",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/8.1.webp","/static/images/dept_activities/002/8.2.webp"]
+    },
+    {
+        "date": "10.02.2023",
+        "name_of_event": "Virtual Hands-on Training on Automotive Components and Electric Vehicles",
+        "coordinator": "Mr.M.Senthamil Selvan",
+        "resource_person": "Dr.A.RagothamanDivisional Manager  2013 Product Development,Ashik Leyland Technical Centre, VVC.",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/9.1.webp"]
+    },
+    {
+        "date": "14.03.2018",
+        "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2018 (Sponsored by BRNS, Bombay)",
+        "coordinator": "Dr.V.Chandran",
+        "resource_person": "Mr.C.Prakash General Manager  2013 Product Development Ashok Leyland, Ennore Dr.K.S.Sridharan Deputy Chief Mechanical Engineer (Retired)Integral Coach Factory, Chennai",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":[""]
+    },
+    {
+        "date": "10.02.2018",
+        "name_of_event": "Symposium 2018 XLR 8",
+        "coordinator": "Mr.S.Stanly Wilson Louis",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":[""]
+    },
+    {
+        "date": "10.02.2018",
+        "name_of_event": "Dirt Bike",
+        "coordinator": "Mr.S.Stanly Wilson Louis",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/12.1.webp"]
+    },
+    {
+        "date": "18.03.2017",
+        "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2017 Sponsored by ISTE, New Delhi",
+        "coordinator": "Dr.V.Chandran",
+        "resource_person": [""],
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO4, PO6, PO7,  PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/13.1.webp"]
+    },
+    {
+        "date": "04.02.2017",
+        "name_of_event": "Student Symposium XLR8 2017",
+        "coordinator": "Mr.S.Stanly Wilson Louis",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO4, PO6, PO7,  PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/15.1.webp"]
+    },
+    {
+        "date": "09.09.2017",
+        "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+        "coordinator": "Mr.P.Pathmanaban,Mr.F.Aadil ArshadMr.S.Chermadurai",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO":null,
+        "image_path": ["/static/images/dept_activities/002/16.1.webp","/static/images/dept_activities/002/16.2.webp"]
+    },
+    {
+        "date": "24.09.2016",
+        "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+        "coordinator": "Mr.S.Pradeep Kumar,Mr.P.Thennarasu",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/17.1.webp","/static/images/dept_activities/002/17.2.webp"]
+    },
+    {
+        "date": "18.03.2016",
+        "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2016 Sponsored by BRNS, Bombay",
+        "coordinator": "Dr.D.Balaji",
+        "resource_person": "Dr. B.Arivazhagan Scientific Officer  2013E, Materials Technology DivisionIGCAR, Kalpakkam Dr.Anand Gurupatham Senior Manager, Renault Nissan Technology & Business center, Chennai, India",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":[""]
+    },
+    {
+        "date": "23.09.2015",
+        "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+        "coordinator": "Dr.D.Balaji",
+        "resource_person": "NA",
+        "beneficiaries": "External participants",
+        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+        "image_path":["/static/images/dept_activities/002/19.1.webp","/static/images/dept_activities/002/19.2.webp"]
+    }
+]
+}
+]

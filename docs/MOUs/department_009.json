@@ -1,0 +1,97 @@
+[{
+    "dept_id": "009",
+    "department_name": "Electronics and Communication Engineering (ECE)",
+    "MOUs": [
+      {
+          "S_NO": 1,
+          "ORGANISATION_NAME": "UNIQUE Technologies",
+          "MONTH_AND_YEAR": "16.07.2021",
+          "VALIDITY": "2 years ",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED":[]
+      },
+      {
+          "S_NO": 2,
+          "ORGANISATION_NAME": "PANTECH ELEARNING",
+          "MONTH_AND_YEAR": "29.07.2021",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 3,
+          "ORGANISATION_NAME": "LEMA LABS TECHNOLOGIES PVT LTD, THARAMANI, CHENNAI-600113",
+          "MONTH_AND_YEAR": "04.09.2021",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 4,
+          "ORGANISATION_NAME": "AIDELTECZ, PERUNGUDI, CHENNAI-600096",
+          "MONTH_AND_YEAR": "09.10.2021",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 5,
+          "ORGANISATION_NAME": "STEAM TROOPS Innovation Labs Pvt Ltd, West CIT Nagar, Porur, Chennai -600116",
+          "MONTH_AND_YEAR": "05.09.2023",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 6,
+          "ORGANISATION_NAME": "RETECH Solutions Pvt Ltd, No.31, Alagesan Street, West Tambaram, Chennai",
+          "MONTH_AND_YEAR": "29.09.2023",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 7,
+          "ORGANISATION_NAME": "ABE Semiconductor Designs, Level 5, North Block, Thamarai Tech Park, Thiru Vika Industrial Estate, Guindy, Chennai",
+          "MONTH_AND_YEAR": "13.03.2024",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 8,
+          "ORGANISATION_NAME": "Axis Global Institute of Industrial Training, Ekkattuthangal, Chennai – 600 032",
+          "MONTH_AND_YEAR": "10.07.2024",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 9,
+          "ORGANISATION_NAME": "FIIT Formacion Pvt Ltd, No.8, 1st Floor, Kamajar Nagar Main Road, Avadi, Chennai-71",
+          "MONTH_AND_YEAR": "27.09.2024",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 10,
+          "ORGANISATION_NAME": "Airports Authority of India, Chennai International Airport, Chennai - 600 027",
+          "MONTH_AND_YEAR": "05.11.2024",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": null,
+          "PDF_PATH": null,
+          "ACTIVITIES_PLANNED": []
+      }
+  ]
+  }
+  ]

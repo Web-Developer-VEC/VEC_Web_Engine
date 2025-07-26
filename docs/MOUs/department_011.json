@@ -1,0 +1,173 @@
+[{
+    "dept_id": "011",
+    "department_name": "Information Technology (IT)",
+    "MOUs": [
+      {
+        "S_NO": 1,
+        "ORGANISATION_NAME": "Data DNA Technologies",
+        "MONTH_AND_YEAR": "01-11-2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": null,
+        "PDF_PATH":null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 2,
+        "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+        "MONTH_AND_YEAR": "24-02-2023",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 3,
+        "ORGANISATION_NAME": "Tata Elxsi",
+        "MONTH_AND_YEAR": "29-01-2020",
+        "VALIDITY": "11 Months",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 4,
+        "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+        "MONTH_AND_YEAR": "08-09-2023",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 5,
+        "ORGANISATION_NAME": "Karyyoun Innovations LTD",
+        "MONTH_AND_YEAR": "06-09-2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 6,
+        "ORGANISATION_NAME": "SALANG CONSULTANTS PVT LTD",
+        "MONTH_AND_YEAR": "09-09-2021",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 7,
+        "ORGANISATION_NAME": "Sify Technologies",
+        "MONTH_AND_YEAR": "09-08-2024",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 8,
+        "ORGANISATION_NAME": "Hexaware Technologies",
+        "MONTH_AND_YEAR": "12-08-2024",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 9,
+        "ORGANISATION_NAME": "Movate Technologies Private Ltd",
+        "MONTH_AND_YEAR": "04-11-2024",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":10,
+        "ORGANISATION_NAME": "GUVI GREEK NETWORK",
+        "MONTH_AND_YEAR": "22-01-2024",
+        "VALIDITY": "1 Month",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":11,
+        "ORGANISATION_NAME": "ASPIRE SYSTEMS",
+        "MONTH_AND_YEAR": "29-09-2021",
+        "VALIDITY": "1 Year",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 12,
+        "ORGANISATION_NAME": "RED HAT INDIA PRIVATE LTD",
+        "MONTH_AND_YEAR": "03-01-2019",
+        "VALIDITY": "2 Years 1 Month",
+        "LOGO_PATH":null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":13,
+        "ORGANISATION_NAME": "MAZENET SOLUTIONS PRIVATE LTD",
+        "MONTH_AND_YEAR": "26-07-2017",
+        "VALIDITY": "1 Year",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":14,
+        "ORGANISATION_NAME": "PRARAMBHAN ENTERTAINMENT PRIVATE LIMITED",
+        "MONTH_AND_YEAR": "06-02-2017",
+        "VALIDITY": "2 Years 2 Months",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":15,
+        "ORGANISATION_NAME": "LIVE WIRE PRIVATE LTD",
+        "MONTH_AND_YEAR": "04-01-2017",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":16,
+        "ORGANISATION_NAME": "COMPUTER SCIENCE CORPORATION LIMITED",
+        "MONTH_AND_YEAR": "02-07-2015",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":17,
+        "ORGANISATION_NAME": "TATA CONSULTANCY SERVICES LTD",
+        "MONTH_AND_YEAR": "07-05-2015",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":18,
+        "ORGANISATION_NAME": "BACK END SOLUTIONS LTD",
+        "MONTH_AND_YEAR": "10-04-2014",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":19,
+        "ORGANISATION_NAME": "TRANS STELLAR",
+        "MONTH_AND_YEAR": "10-07-2012",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":20,
+        "ORGANISATION_NAME": "KAASHIV INFOTECH",
+        "MONTH_AND_YEAR": "31-01-2011",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":21,
+        "ORGANISATION_NAME": "TRIMINTUS TECHNOLOGIES",
+        "MONTH_AND_YEAR": "14-10-2009",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": null,
+        "ACTIVITIES_PLANNED": []
+      }
+    ]
+  }
+  ]

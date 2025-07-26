@@ -1,0 +1,71 @@
+[
+    {
+        "dept_id": "013",
+        "department_name": "Mechancial Engineering (MECH)",
+        "dept_activities": [
+          {
+            "date": "22/08/2024",
+            "name_of_event": "Guest lecture on Digital Transformation in Mechanical Engineering: Key Skills for the Future",
+            "coordinator": null,
+            "resource_person":"Mr. Saravanan S, Articulate Quality, EDUFIC Solutions",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path":["/static/images/dept_activities/013/1.webp"]
+          },
+          {
+            "date": "31/08/2024",
+            "name_of_event": "Hands on Training on Electric Vehicle Components and Systems",
+            "coordinator": null,
+            "resource_person": "Mr. B Kovarasan, Managing Partner of Trione CADD",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path":["/static/images/dept_activities/013/2.webp"]
+          },
+          {
+            "date": "24/07/2024",
+            "name_of_event": "Applications of Design Software - Mechanical Engineering",
+            "coordinator":null,
+            "resource_person": "Mr. S. Dhanavel, Head-Business & Operations, HEXDOF Engg. Services Pvt. LtD.",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path":["/static/images/dept_activities/013/3.webp"]
+          },
+          {
+            "date": "17/08/2024",
+            "name_of_event": "Higher Studies Awareness Session on Unlocking the GATE Pathways to Career Success and Advanced Studies",
+            "coordinator": null,
+            "resource_person": "Mr. S. M M Trinath, Faculty of ACE Engg. Academy, ACE Engg. Academy.",
+            "beneficiaries":null,
+            "relevant_PO_PSO": null,
+            "image_path": ["/static/images/dept_activities/013/4.webp"]
+          },
+          {
+            "date": "26/08/2023",
+            "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+            "coordinator": null,
+            "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path":["/static/images/dept_activities/013/5.webp"]
+          },
+          {
+            "date": "21/12/2023",
+            "name_of_event": "Workshop on Recent Innovation in Flow Measurement Systems",
+            "coordinator": null,
+            "resource_person": "Mr. T. Ramesh, Project Manager, Toshniwal Industries Private Limited.",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path":[]
+          },
+          {
+            "date": null,
+            "name_of_event": "Workshop on Drone Development Challenge DDC 2024",
+            "coordinator": null,
+            "resource_person": "Dr. R.Rajendiran, Department of Automobile Engineering,College of Engineering & Technology, Kattankulathur.",
+            "beneficiaries": null,
+            "relevant_PO_PSO": null,
+            "image_path": ["/static/images/dept_activities/013/7.webp"]
+          }
+        ]
+    }
+]

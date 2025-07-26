@@ -1,0 +1,160 @@
+[
+  {
+    "landing_page_details": {
+      "email_id": "velammal@velammal.edu.in",
+      "address": [
+        "Velammal Engineering College (Autonomous)",
+        "(Unit of Velammal Educational Trust),",
+        "Ambattur Red-hills Road, Surapet,",
+        "Chennai – 600 066. Tamil Nadu, India."
+      ],
+      "phone_number": "044 26590758",
+      "student_affairs_contact": "044 26591771",
+      "addmission_contact": ["9123547550", "8939221120"],
+      "instagram": "https://www.instagram.com/vec_chennai/",
+      "linkedin": "https://www.linkedin.com/school/velammal-engineering-college/",
+      "twitter": "https://x.com/VelammalEnggC",
+      "facebook": "https://www.facebook.com/velammalengineeringcollege"
+    },
+    "department_banner": [
+      {
+        "department_name": "Automobile Engineering",
+        "dept": "AUTO",
+        "banner_image": "002.mp4",
+        "redirect_url": "/dept/002"
+      },
+      {
+        "department_name": "Civil Engineering",
+        "dept": "CIVIL",
+        "banner_image": "004.mp4",
+        "redirect_url": "/dept/004"
+      },
+      {
+        "department_name": "Computer Science and Engineering",
+        "dept": "CSE",
+        "banner_image": "005.mp4",
+        "redirect_url": "/dept/005"
+      },
+      {
+        "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+        "dept": "CSE-CS",
+        "banner_image": "006.mp4",
+        "redirect_url": "/dept/006"
+      },
+      {
+        "department_name": "Electrical & Electronics Engineering",
+        "dept": "EEE",
+        "banner_image": "007.mp4",
+        "redirect_url": "/dept/007"
+      },
+      {
+        "department_name": "Electronics and Communication Engineering",
+        "dept": "ECE",
+        "banner_image": "009.mp4",
+        "redirect_url": "/dept/009"
+      },
+      {
+        "department_name": "Electronics & Instrumentation Engineering",
+        "dept": "EIE",
+        "banner_image": "008.mp4",
+        "redirect_url": "/dept/008"
+      },
+      {
+        "department_name": "Mechancial Engineering",
+        "dept": "MECH",
+        "banner_image": "013.mp4",
+        "redirect_url": "/dept/013"
+      },
+      {
+        "department_name": "Artificial Intelligence and Data Science",
+        "dept": "AI&DS",
+        "banner_image": "001.mp4",
+        "redirect_url": "/dept/001"
+      },
+      {
+        "department_name": "Information Technology",
+        "dept": "IT",
+        "banner_image": "011.mp4",
+        "redirect_url": "/dept/011"
+      },
+      {
+        "department_name": "Master of Business Administration",
+        "dept": "MBA",
+        "banner_image": "017.mp4",
+        "redirect_url": "/dept/017"
+      }
+    ],
+    "notifications": [
+      {
+        "id": "notif_001",
+        "header": "Highly Qualified Staff",
+        "message": "Over 200 highly qualified staff, with 55% holding doctoral degrees",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_002",
+        "header": "Impressive Infrastructure",
+        "message": "Cutting-edge computers, high-speed internet, state-of-the-art labs, 3000-capacity AC auditorium, seminar halls, etc",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_003",
+        "header": "Fully Digital Modern Campus",
+        "message": "Robust digital learning environment ensures efficient and effective knowledge transfer",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_004",
+        "header": "Industry Connect",
+        "message": "Project-based learning, industry expert teaching, summer internships, conferences, enhancing practical skills",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_005",
+        "header": "Excellent Placement Record",
+        "message": "250+ companies visit annually, ensuring 90%+ consistent placement success for 15+ years.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_006",
+        "header": "Extra and Co-Curricular Activities",
+        "message": "450+ NCC, NSS, YRC volunteers, and cadets, 10+ student clubs.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_007",
+        "header": "Academic Monitoring & Mentoring",
+        "message": "Continuous assessment, personalized support via dedicated mentors enhance student progress.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_008",
+        "header": "Research & Consultancy",
+        "message": "Solved industry problems, patented solutions, and innovated products for development.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_009",
+        "header": "Entrepreneur Cell",
+        "message": "Produced 50+ entrepreneurs in last 3 years, secured ₹2.87Cr DST funds for startup innovation.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_010",
+        "header": "Industry Oriented Curriculum",
+        "message": "Curriculum shaped by industry experts for Industry 4.0, featuring certifications and foreign language training.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      }
+    ]
+  }
+]

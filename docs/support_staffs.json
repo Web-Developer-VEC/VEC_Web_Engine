@@ -1,0 +1,99 @@
+[
+  {
+    "supporting_staff": [
+      {
+        "Name": "Ms. INDUMATHI S",
+        "Image": "/static/images/support_staffs/example.jpg",
+        "Qualification": "M.SC(IT).",
+        "Designation": "Lab Instructor",
+        "dept":"",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": "VEC-013-01-160"
+      },
+      {
+        "Name": "Mr. RAVI KUMAR C",
+        "Image": "/static/images/support_staffs/example.jpg",
+        "Qualification":"M.Sc., M. Phil",
+        "Designation": "Lab Instructor",
+        "dept":"",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": "VEC-013-01-161"
+      },
+      {
+        "Name": "Ms. VIJAYALAKSHMI M",
+        "Image": "/static/images/support_staffs/example.jpg",
+        "Designation": "Lab Instructor",
+        "dept":"011",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": ""
+      },
+      {
+        "Name": "Mr. SURESH V",
+        "Image": "/static/images/support_staffs/example.jpg",
+        "Designation": "Lab Instructor",
+        "dept":"011",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": ""
+      },
+      {
+        "Name": "Mr. KANAGARAJ B",
+        "Image": "/static/images/support_staffs/example.jpg",
+        "Designation": "Lab Instructor",
+        "dept":"011",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": ""
+      },
+      {
+        "Name": "Mrs. DHANALAKSHMI G",
+        "Image": "",
+        "Designation": "Lab Instructor",
+        "dept":"009",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": ""
+      },
+      {
+        "Name": "Mr. SUBRAMANIAN N",
+        "Image": "",
+        "Designation": "Lab Instructor",
+        "dept":"009",
+        "Social_media_links": {
+          "Publon": "",
+          "LinkedIn": "",
+          "GitHub": "",
+          "ResearchGate": ""
+        },
+        "Unique_id": ""
+      }
+    ]
+  }
+] 

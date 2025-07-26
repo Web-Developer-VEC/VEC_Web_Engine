@@ -1,0 +1,304 @@
+[{
+    "dept_id": "001",
+    "department_name": "Artificial Intelligence and Data Science (AI&DS)",
+    "dept_activities": [
+      {
+        "date": "05/03/2024",
+        "name_of_event": "Seminar on Career Opportunity in Data Science with Table and power BI",
+        "coordinator": "Mrs.M.Priya\nMrs. S. Mythili\nMrs.J.Savija",
+        "resource_person": "Mr. Ahamed Khalid,\nHead -Academic Alliances, Imarticus Learning,IIM,Bangalore.",
+        "beneficiaries": "II- and III-YEAR students.",
+        "relevant_PO_PSO": "PSO1, PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/career_oppurtunity.webp"]
+      },
+      {
+        "date": "15/02/2024",
+        "name_of_event": "Seminar on Journey Of Large Language Model(LLM)",
+        "coordinator": "Mrs.A.Prema",
+        "resource_person": "Vasanth.P\nAI-Manager,\nZoho Corporation.",
+        "beneficiaries": "II Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Journey_of_LLM.webp"]
+      },
+      {
+        "date": "2-4-2024",
+        "name_of_event": "AI Tech Expo’24",
+        "coordinator": "Mrs.J.Savija\nMrs.Kavitha",
+        "resource_person": "-",
+        "beneficiaries": "III year Students",
+        "relevant_PO_PSO": "PSO1, PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/AI_Tech_Expo.webp"]
+      },
+      {
+        "date": "28-3-2024",
+        "name_of_event": "Exploring into the Depths of Operating System",
+        "coordinator": "Mrs.P.V.RajaSuganya\nMrs.S.Mythili",
+        "resource_person": "Mrs.K.BalaSaranya\nAssistant Professor,\nCSE Department,\nR.M.D. Engineering College",
+        "beneficiaries": "II Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "06/10/2023",
+        "name_of_event": "Seminar  on Development of IOT Applications",
+        "coordinator": "Mrs. J. Savija\nMrs. S. Mythili",
+        "resource_person": "Mr. Kamala Kannan,\nLead Technical Solution Architect,\nDXC Technology",
+        "beneficiaries": "IV YEAR",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/Development_at_IOT.webp"]
+      },
+      {
+        "date": "06-10-2023",
+        "name_of_event": "Hands- On Workshop On Deep Learning",
+        "coordinator": "Mrs.S.Mythili\nMrs.J.Savija",
+        "resource_person": "Mr. Sibi Chakaravarthy,\nAssociate Professor,\nSchool of Computing,\nVellore Institute of Technology",
+        "beneficiaries": "IV Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Workshop_on_DL.webp"]
+      },
+      {
+        "date": "27-9-2023",
+        "name_of_event": "Hands on training-Big data processing : Hadoop",
+        "coordinator": "Mrs.A.Prema\nMrs.S.Saranya",
+        "resource_person": "Ms.J.Purnima\nSenior Associate\nFord motor company chennai.",
+        "beneficiaries": "IV Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Hadoop.webp"]
+      },
+      {
+        "date": "5-9-2023",
+        "name_of_event": "Workshop on Cloud Enabling Technologies",
+        "coordinator": "Mrs.P.V.RajaSuganya\nMrs.R.Kavitha",
+        "resource_person": "Mr.Shanmuga raja\nCTO,Netstack Technology Solutions.",
+        "beneficiaries": "III Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/Cloud_Enabling_Technologies.webp"]
+      },
+      {
+        "date": "19-8-2023",
+        "name_of_event": "Hands on Workshop on AWS Cloud",
+        "coordinator": "Mrs.R.Kavitha\nMrs.P.V.RajaSuganya",
+        "resource_person": "Mr.Shanmuga raja\nCTO-Netstack Technology Solutions.",
+        "beneficiaries": "IV year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/AWS_Cloud_Workshop.webp"]
+      },
+      {
+        "date": "8-11-2023",
+        "name_of_event": "Collision Resolution Techniques in Hashing.",
+        "coordinator": "Mrs.A.Prema\nMrs.P.V.RajaSuganya",
+        "resource_person": "Mrs.K.BalaSaranya",
+        "beneficiaries": "II Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Collision_Resolution.webp"]
+      },
+      {
+        "date": "6-11-2023",
+        "name_of_event": "Guest lecture on memory management in computer architecture",
+        "coordinator": "Mrs.S.Saranya\nMrs.R.Kavitha",
+        "resource_person": "Dr.A.Arockia Abins",
+        "beneficiaries": "II Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Memory_Management.webp"]
+      },
+      {
+        "date": "20-9-2023",
+        "name_of_event": "Guest Lecture on Genetic programming in Machine Learning",
+        "coordinator": "Mrs.S.Vijayalakshmii\nMrs.Vinisha Gladys Belshi",
+        "resource_person": "Mrs.M.Maheswari\nAssistant Professor \nDMI College of Engineering",
+        "beneficiaries": "III Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/Genetic_Programming_in_ML.webp"]
+      },
+      {
+        "date": "31-8-2023",
+        "name_of_event": "Guest Lecture on Utility of AI in India and abroad",
+        "coordinator": "Mrs.T.Hannah Rose Esther\nMrs.M.Priya\nMrs.P.Nithya",
+        "resource_person": "Dr.V.Balaji.\nAssociate Professor/E&CE,\nMAI-NEFHI College of  Engineering and Technology.",
+        "beneficiaries": "II Year",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/Utility_of_AI.webp"]
+      },
+      {
+        "date": "2-9-2022",
+        "name_of_event": "Seminar on Machine learning and its applications",
+        "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+        "resource_person": "Dr.K.A.Varun Kumar,Asst Professor,SRM institute of science and technology",
+        "beneficiaries": "III Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "20.10.2022",
+        "name_of_event": "Seminar On Artificial Intelligence and its Scope",
+        "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+        "resource_person": "Dr.V.Gowri",
+        "beneficiaries": "II Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "19.11.2022",
+        "name_of_event": "Seminar on Campus to Corporate :Skills to migrate",
+        "coordinator": "Dr.P.Visu",
+        "resource_person": "Mr.S.Johnson,\nProject Manager, Specialist,ISTD and MMA",
+        "beneficiaries": "III,II Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "22-2-2023",
+        "name_of_event": "Seminar on Upgrading Skills to IT Sector.",
+        "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+        "resource_person": "Mr.B.Balu,Product Manager,Zoho Corporation",
+        "beneficiaries": "1st year students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "2.3.2023",
+        "name_of_event": "Seminar on Trends Driving Artificial Intelligence Innovation",
+        "coordinator": "Mrs.Mythili\nMrs.S.Vijayalakshmi\nMrs.Vinisha Gladys Belshi",
+        "resource_person": "Mr.A.Naresh Kumar\nAssistant Professor,Sairam Engineering college",
+        "beneficiaries": "II Year students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "6.3.2022&\n7.3.2022",
+        "name_of_event": "Hands on Workshop on ZIAHUB",
+        "coordinator": "Mrs.R.Kavitha",
+        "resource_person": "Ms.Reena Makwana,Product manager,Zoho Coporation Pvt ltd",
+        "beneficiaries": "III year  Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "22-2-2023",
+        "name_of_event": "Hands on Workshop on working on Live applicatiions",
+        "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+        "resource_person": "Mr.B.Praveen kumar,Software development Engineer,Comcast India.",
+        "beneficiaries": "1st year students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "22-2-2023",
+        "name_of_event": "Workshop on Design Thinking",
+        "coordinator": "Mrs.R.Kavitha & Mrs.RajaSuganya",
+        "resource_person": "Sri.Balaji Aravind.R\nCofounder of Arjun Vision Tech",
+        "beneficiaries": "III Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "1.11.2022&\n2.11.2022",
+        "name_of_event": "Workshop on Artificial Intelligence and deep learning",
+        "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+        "resource_person": "Dr.S.Sibi Chakkaravathy,\nAssociate Professor,VIT,Andhra Pradesh",
+        "beneficiaries": "III,II Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": ["/static/images/dept_activities/001/Workshop _on_DL.webp"]
+      },
+      {
+        "date": "1-4-2023",
+        "name_of_event": "Guest \n Lecture on Webservices",
+        "coordinator": "Mrs.A.Prema\n          &\nMrs.S.Saranya",
+        "resource_person": "Mr.S.Umeshwaran\nSenior Engineer,\nFord Motor Company",
+        "beneficiaries": "III year  students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "28.3-2023",
+        "name_of_event": "Database Exposure in IT",
+        "coordinator": "Mrs.S.Vijayalakshmi\nMrs.J.Vinisha Gladys Belshi\nMrs.S.Mythili",
+        "resource_person": "Ms.Cecilia.I\nObject Storage Service Offering &Autoamtion Manager\nFord Motor Company",
+        "beneficiaries": "II ,III year  students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "20.3.2023",
+        "name_of_event": "Guest lecture on Design and Anlysis of algorithm",
+        "coordinator": "Mrs.RajaSuganya & Mrs.R.Kavitha",
+        "resource_person": "Dr.C.Geetha,\nProfessor/CSE dept\nRMK Engineering college",
+        "beneficiaries": "III,II Year Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "28.11.2022",
+        "name_of_event": "Guest Lecture on Hashing in Data Structures",
+        "coordinator": "Mrs.RajaSuganya&\nR.Kavitha",
+        "resource_person": "Mrs.K.BalaSaranya,\nAssistant Professor,\nR.M.D.Engineering college",
+        "beneficiaries": "II Year students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+        "date": "5-4-2023",
+        "name_of_event": "AI Tech Expo",
+        "coordinator": "Mrs.S.Saranya",
+        "resource_person": "-",
+        "beneficiaries": "All department Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path":["/static/images/dept_activities/001/AI_Tech_Expo.webp"]
+      },
+      {
+        "date": "5-8-2022",
+        "name_of_event": "Technical and Non Technical event -Patronux",
+        "coordinator": "Mrs.RajaSuganya&\nR.Kavitha",
+        "resource_person": "-",
+        "beneficiaries": "All department Students",
+        "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+        "image_path": [""]
+      },
+      {
+    "date": "20-2-2025",
+    "name_of_event": "Workshop On Full-Stack Microservices Bootcamp",
+    "coordinator": "Mrs.A.Prema\n Mrs.S.Deepa\n Mrs.S.Mythili",
+    "resource_person": "Mr. M.J. Niranjan",
+    "beneficiaries": "",
+    "relevant_PO_PSO": "",
+    "image_path": ["/static/images/dept_activities/001/Workshop_FullStack_Microservices_Bootcamp.webp"]
+  },
+  {
+    "date": "",
+    "name_of_event": "Breaking the Clouds: DevOps Meet the Future",
+    "coordinator": "",
+    "resource_person": "Mrs. Sowmitha V",
+    "beneficiaries": "",
+    "relevant_PO_PSO": "",
+    "image_path": ["/static/images/dept_activities/001/Breaking_the_Clouds.webp"]
+  },
+    {
+    "date": "17-03-2025",
+    "name_of_event": "Tech Genesis",
+    "coordinator": "Mrs.A.Prema\nDE.T.HANNAH ROSE ESTHER",
+    "resource_person": "Mr.S.G.GOUTHAM\nMr.G.JAGADISH KUMAR",
+    "beneficiaries": "",
+    "relevant_PO_PSO": "",
+    "image_path": ["/static/images/dept_activities/001/Tech_Genesis.webp"]
+  },
+    {
+    "date": "13-03-2025",
+    "name_of_event": "Database Management Systems-From An Industry Prespective",
+    "coordinator": "Mrs.S.Vijayalakshmi\nMrs.J.Vinisha Gladys Belshi\nMrs.M.Priya",
+    "resource_person": "Mrs.Blessy Jebaraj",
+    "beneficiaries": "",
+    "relevant_PO_PSO": "",
+    "image_path": ["/static/images/dept_activities/001/Database_management.webp"]
+    },
+    {
+    "date": "19-03-2025",
+    "name_of_event": "Data Visualization And Learning Algorithm",
+    "coordinator": "Mrs.S.Vijayalakshmi\nMrs.J.Vinisha Gladys Belshi\nMrs.M.Priya",
+    "resource_person": "Mrs.M.Harini\nMrs.S.Srilekha",
+    "beneficiaries": "",
+    "relevant_PO_PSO": "",
+    "image_path": ["/static/images/dept_activities/001/Data_Visualization_And_Learning_Algorithm.webp"]
+  }
+    ]
+  }
+]

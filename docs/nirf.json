@@ -1,0 +1,22 @@
+[
+  {
+    "year": [2020, 2021, 2022, 2023, 2024, 2025],
+    "content": [
+      ["Overall "],
+      ["Overall "],
+      ["Overall "],
+      ["Overall", "Engineering"],
+      ["Overall", "Engineering", "Innovation"],
+      ["Overall", "Engineering", "Innovation","STG"]]
+    ,
+    "pdf path": [
+     ["/static/pdfs/nirf/NIRF-2020.pdf"],
+     ["/static/pdfs/nirf/NIRF-2021.pdf"],
+      ["/static/pdfs/nirf/NIRF-2022.pdf"],
+       ["/static/pdfs/nirf/NIRF-2023-Overall.pdf", "/static/pdfs/nirf/NIRF-2023-Engineering.pdf"],
+      ["/static/pdfs/nirf/NIRF-2024-Overall.pdf","/static/pdfs/nirf/NIRF-2024-Engineering.pdf","/static/pdfs/nirf/NIRF-2024-Innovation.pdf"],
+       ["/static/pdfs/nirf/NIRF-2025-Overall.pdf", "/static/pdfs/nirf/NIRF-2025-Engineering.pdf","/static/pdfs/nirf/NIRF-2025-Innovation.pdf","/static/pdfs/nirf/NIRF-2025-STG.pdf"]]
+    
+  }
+]
+  

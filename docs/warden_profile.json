@@ -1,0 +1,62 @@
+[
+    { 
+        "warden_name": "Dr. SATISH KUMAR S",
+        "phone_number": "",
+        "image_path": "/static/images/warden_profile_photos/001.webp",
+        "designation": "Chief Warden"
+    },
+    {
+        "warden_name": "THEIVANATHAN G",
+        "phone_number": 9677823118,
+        "image_path": "/static/images/warden_profile_photos/002.webp",
+        "designation": "Deputy Chief Warden"
+    },
+    {
+        "male_warden_list": [
+    {
+        "warden_name": "MATHIVANAN M",
+        "phone_number": 9043857601,
+        "image_path": "/static/images/warden_profile_photos/003.webp",
+        "designation": "Deputy Warden"
+    },
+    {
+        "warden_name": "TEJENDRA BAHADHUR SHAHI S",
+        "phone_number": 8098835544,
+        "image_path": "/static/images/warden_profile_photos/004.webp",
+        "designation": "Deputy Warden"
+    },
+    {
+        "warden_name": "RAVI A",
+        "phone_number": 9445170364,
+        "image_path": "/static/images/warden_profile_photos/005.webp",
+        "designation": "Deputy Warden"
+    }
+
+
+  ]
+},
+{
+  "female_warden_list": [
+    {
+        "warden_name": "MENAGA T",
+        "phone_number": 8220348276,
+        "image_path": "/static/images/warden_profile_photos/006.webp",
+        "designation": "Deputy Warden"
+    },
+    {
+        "warden_name": "SARAL J",
+        "phone_number": 8610743147,
+        "image_path": "/static/images/warden_profile_photos/007.webp",
+        "designation": "Deputy Warden"
+    },
+    {
+        "warden_name": "NITHYA E",
+        "phone_number": 9566943700,
+        "image_path": "/static/images/warden_profile_photos/008.webp",
+        "designation": "Deputy Warden"
+    }
+  ]
+}
+
+
+]

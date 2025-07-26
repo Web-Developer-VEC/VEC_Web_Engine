@@ -1,0 +1,22 @@
+{
+    "name": "Priya Sharma",
+    "registration_number": "113222072001",
+    "password":"$2b$10$JpZsEiEj7l3JwMSsCDCBbOmJ5.UNNouWOJE1BbmGyK.dIqcqAGNiS",
+    "admin_number": "22VEC002",
+    "room_number": "310",
+    "department": "ECE",
+    "gender": "Female",
+    "phone_number_student": "8765432109",
+    "phone_number_parent": "9988776655",
+    "city": "Chennai",
+    "foodtype": "Non-Veg",
+    "year": 2,
+    "profile_photo_path": "/static/hostel/profile_photos/arjun_kumar.jpg",
+    "block_name": "FCBH",
+    "late_count": 1,
+    "QR_path":"/static/student_barcode/113222072094.png",
+    "edit_status":null,
+    "changes":[],
+    "transit_status":false,
+    "batch":"2023-2024"
+}

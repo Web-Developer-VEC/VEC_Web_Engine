@@ -1,0 +1,2985 @@
+{  
+    "dept_id":"013",
+    "department_name": "Mechancial Engineering (MECH)",
+    "data":
+    [
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.J.SathyaPriya,Asso Prof/IT dept  &   Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Title of the Proposal": "Demand Side Management of Household Electricity",
+                        "Name of Funding Agency": "DST-NewGen IEDC",
+                        "Amount in Lakhs": "Rs.2,50,000",
+                        "Project Duration in Yrs": "2 Years",
+                        "Date of Submission": "26.08.2022",
+                        "Current Status": "Ongoing",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1TozyxbwttfQXh_oazUlZDo25-Cwv770s/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.P..Visu, Professor, Dept.of AI & DS  Dr.P.S.Smitha, Associate Professor, Dept.of CSE",
+                        "Title of the Proposal": "Criminator - Criminal Face Detection Tool",
+                        "Name of Funding Agency": "DST-NewGen IEDC",
+                        "Amount in Lakhs": "Rs.2,50,000",
+                        "Project Duration in Yrs": "2 Years",
+                        "Date of Submission": "nil",
+                        "Current Status": "Ongoing",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1X8KutMka4DQeAuigDK7xCpCvUq9ec8Gn/view?usp=share_link"
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr.P.Visu",
+                        "Title of the Paper": "3D Doctor Pancreatic Tumor Detection and Segmentation",
+                        "Scopus/ SCI": "SCOPUS INDEXED",
+                        "Name of the Journal": "NeuroQuantology",
+                        "Month and Year of publication": "Aug-22",
+                        "ISSN": "1303-5150 ",
+                        "Doi": "doi: 10.14704/nq.2022.20.9.NQ44139",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1tUEWE6rP4k25ZqGs8FfwrfJ3mbEpoPVR/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr.P.Visu",
+                        "Title of the Paper": "PREDICTIVE DIAGNOSIS AND IOT-BASED CLASSIFICATION FOR EFFECTIVE MANAGEMENT OF SPONTANEOUS HOMEOPATHIC SYNDROME THROUGH DATA MINING AND MACHINE LEARNING",
+                        "Scopus/ SCI": "SCOPUS INDEXED",
+                        "Name of the Journal": "European chemical bulletin",
+                        "Month and Year of publication": "Jun-23",
+                        "ISSN": "2063-5346",
+                        "Doi": "doi: 10.31838/ecb/2023.12.si6.403",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1eZrrgQy5ftWizxY77jtBnzwHnSA7YK57/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr.P.Visu",
+                        "Title of the Paper": "AN INNOVATION DEVELOPMENT OF DISEASE IDENTIFICATION USING MEDICAL DEEP LEARNING MODEL",
+                        "Scopus/ SCI": "WOS",
+                        "Name of the Journal": "European Journal of Molecular & Clinical Medicine ",
+                        "Month and Year of publication": "Aug-22",
+                        "ISSN": "2515-8260",
+                        "Doi": "https://doi.org/10.48047/ejmcm",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1BQ20TJ1uYeehhMQsEVPDXtw5198kK9KA/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Ms.S.Saranya & Ms.A.Prema",
+                        "Title of the Paper": "A Survey on Step Towards Predictive Analysis in Revolutionizing Learning in Education as well as Industry Sector",
+                        "Scopus/ SCI": "UGC CARE JOURNAL",
+                        "Name of the Journal": "Industrial Engineering Journal",
+                        "Month and Year of publication": "Dec-22",
+                        "ISSN": "0970-2555",
+                        "Doi": "22 Dec 22",
+                        "Colloboration Institute": "-",
+                        "Colloboration agreement Yes / No": "-",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1NaBxWA7c0UYLI-QySZuNsp7Q5Yms9xo_/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Ms.S.Saranya & D.Sharmila Sekar",
+                        "Title of the Paper": "Improving Plant Disease diagnosis using Ensemble Convolutional Neural Networks",
+                        "Scopus/ SCI": "UGC CARE JOURNAL",
+                        "Name of the Journal": "Gradiva Review Journal",
+                        "Month and Year of publication": "Feb-23",
+                        "ISSN": "0363-8057",
+                        "Doi": "10.37897.GRJ.2022.V8I12.22.50770",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1XSwLMzhGDkgBCXT3WUSCWJrO9LZJ0-Ld/view?usp=share_link"
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr.J.SathyaPriya,Asso Prof/IT dept & Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Title of the Patent": "Demand Side Management of Household Electricity",
+                        "Application Number": 202341011303,
+                        "Date of Filing": "20-02-2023",
+                        "Status": "Applied",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1tp-IqWXt5Xez4wysRXt6yWsKsqxWjV1I/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr.P..Visu, Professor, Dept.of AI & DS  Dr.P.S.Smitha, Associate Professor, Dept.of CSE",
+                        "Title of the Patent": "Criminator - Criminal Face Detection Tool",
+                        "Application Number": "202141015523 A",
+                        "Date of Filing": 1609718400000,
+                        "Status": "Applied",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/13WVkHb8WZmm-2wkH35gqjn96Ajv4WpOd/view?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "P.Visu",
+                        "Book/Chapter Title": "A Survey on Power Consumption Indicator Using Machine Learning-Based Approach",
+                        "Name of Publisher": "Lecture Notes in Electrical Engineering - Springer Nature Singapore",
+                        "ISBN Details": "ISBN: 978-981-19-7169-3",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "A Survey on Power Consumption Indicator Using Machine Learning-Based Approach | SpringerLink"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Rajasuganya",
+                        "Book/Chapter Title": "Identification of leaf Disease using Machine learning algorithm-CNN",
+                        "Name of Publisher": "springer",
+                        "ISBN Details": "page no:857-866",
+                        "Colloboration Institute": "inventive computation and information technologies",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1lb0f2tFxQo-3qEwr0oD1cM3_b_nF_j_k/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of Faculty": "Ms.R.Kavitha",
+                        "Book/Chapter Title": "Novel Deep Learning Method for Identification and Categorization of Footpath Defects based on Thermography",
+                        "Name of Publisher": "IEEE Explore ICOSEC Proceedings",
+                        "ISBN Details": "ISBN:978-1-6654-9764-0",
+                        "Colloboration Institute": "no",
+                        "Colloboration agreement Yes / No": "no",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1fkRZuNburuQAPdDiZTw847Lh63wNYWUt/view?usp=share_link "
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": "Ms.P.V.Raja Suganya",
+                        "Title of the Paper": "Identification of Plant Disease using Machine Learning Algorithm",
+                        "Name of Conference": "4th International conference on inventive computation and information technology ",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "RVS Technical Campus, Coimbatore",
+                        "Attach E-Copy of Prceeding": "https://link.springer.com/book/10.1007/978-981-19-3311-0"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": "Ms. Hannah Rose Esther T ",
+                        "Title of the Paper": "Auto correct AI GramBot using RNN",
+                        "Name of Conference": "International Conference on Futuristic Digital Technologies for Sustainable Development ",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "AMET University ",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1ALGQRgAFfQkOKM1YIOYKhtyvtZQ-9wvb/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": "Ms. Hannah Rose Esther T ",
+                        "Title of the Paper": "Novel concept Drift Detection using Fuzzy based drift detector in IOT Data Stream",
+                        "Name of Conference": "International Conference on Futuristic Digital Technologies for Sustainable Development ",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "AMET University ",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1oOM2GUPiIDkzAKx2KjblGjP7TnI2fNvp/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": "S.Saranya",
+                        "Title of the Paper": "Advances in AI for Predicting Surgical Complications: improving patient Outcome through Data Analysis",
+                        "Name of Conference": "8th National Conference on Advanced Computing Technologies NCACT'23",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Dept of CSE, Velammal Engineering College",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/178o_Ar7SDDP-aTJpnKYOzt7vmkk3gtyg/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of faculty": "S.Saranya",
+                        "Title of the Paper": "Cloud Computing on Embedded Systems",
+                        "Name of Conference": "National Conference on Recent Technologies and Computing Sciences ",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Dept of IT, Velammal Engineering College",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1B8fouE3GIZGAL1Jy4zBjCR2WKjbK6rCn/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": "A.Prema",
+                        "Title of the Paper": "Multiple disease Prediction system",
+                        "Name of Conference": "National Conference on Recent Technologies and Computing Sciences-NCRTCS'23",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1TICvxKkdioYy4_TMKpfq8a0eFDybK0YQ/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": "A.Prema",
+                        "Title of the Paper": "Smart Voting System using Face Recognition",
+                        "Name of Conference": "National Conference on Recent Technologies and Computing Sciences-NCRTCS'23",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1SiWt12WqLGtXd8Yylfo_4i5LSh5VmSR1/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": "A.Prema",
+                        "Title of the Paper": "Face Recognition Attendance System",
+                        "Name of Conference": "National Conference on Recent Technologies and Computing Sciences-NCRTCS'23",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1F7CPnY7yzCFEJZ3cddpw1qcZxDnvDa_G/view?usp=share_link"
+                    }
+                ]
+            },
+            {
+                "CONSULTANCY": [
+                    {
+                        "S.No": null,
+                        "Name of the Faculty": "Nil",
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "Attach E-Copy of consultancy": null
+                    }
+                ]
+            },
+            {
+                "INTERNSHIP": [
+                    {
+                        "S.No": 1,
+                        "Name of the Industry, address": "Inversion Consultancy LLP(Foxmula),ECS Layout, Sanjayanagara, Bengaluru, Karnataka 560094",
+                        "Name of the Student": "M.Rakesh",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1bMh-A8VlE7IdIVV2CLXegFbXSuY4CPQ4/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Industry, address": "Knowledge Solutions India,2nd Floor Flat No, Ghanshyam park society, 5, Balkrishna Sakharam Dhole Patil Rd, Pune, Maharashtra 411001",
+                        "Name of the Student": "Sumithra. T",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1ocaLPYBLHvC7c-oXNnAFrqO-AUP4yVn8/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Industry, address": "Muskurahat Foundation,Bungalow no 3, Kondivita Rd, next to Ram mandir, Andheri East, Mumbai, Maharashtra 400059",
+                        "Name of the Student": "Sumithra. T",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1EkeQbmIl7SdTsB8jueGL7_tiWxxrXCWF/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Industry, address": "Pantech Solutions,351,-Brindavan-Street,-Chennai-600017",
+                        "Name of the Student": "Karthikha.SU",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1mhfQFzFnT53bk-nsV3E-fZw6AHj58VBN/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Industry, address": "CaliberFocus Business Solutions Pvt. Ltd.No 29, Sree Narayana Complex, Sarathy Nagar, Velachery, Chennai, Tamil Nadu 600042",
+                        "Name of the Student": "Devi. T",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1EOqcQ4zV-Td9GQYR71jNzoFNvDIVeA86/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Industry, address": "CaliberFocus Business Solutions Pvt. Ltd.No 29, Sree Narayana Complex, Sarathy Nagar, Velachery, Chennai, Tamil Nadu 600043",
+                        "Name of the Student": "Durairaj. M. G.",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/15PwsvTcP4zmd9Oo_sYTjhJB7iesbDKWH/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Industry, address": "CaliberFocus Business Solutions Pvt. Ltd.No 29, Sree Narayana Complex, Sarathy Nagar, Velachery, Chennai, Tamil Nadu 600044",
+                        "Name of the Student": "Joshita. V",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1be-juq9GPwKgfijaT88fS0Ag6EqErcEE/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Industry, address": "CaliberFocus Business Solutions Pvt. Ltd.No 29, Sree Narayana Complex, Sarathy Nagar, Velachery, Chennai, Tamil Nadu 600045",
+                        "Name of the Student": "Ragasree.K",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/16olKuYhK9zW_quOxEaguCL6MYXO49QTJ/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Industry, address": "Onehost Pvt. Ltd.No 29, Sree Narayana Complex, Sarathy Nagar, Velachery, Chennai, Tamil Nadu 600046",
+                        "Name of the Student": "Madhanraj M",
+                        "Duration": "26 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1_cwraRgP6mM80mgycS6QzSx36p3lLWQw/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Industry, address": "DLK Technologies (Android Development),Raahat Plaza, No - 214/215, 2nd Floor, near avm, opposite to Vijaya Hospital, Vadapalani, Chennai, Tamil Nadu 600026",
+                        "Name of the Student": "Arish S",
+                        "Duration": "5 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1Na_Zn9-uTjqc9lOtMMajctWMu8vRmGBJ/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Industry, address": "DLK Technologies (Android Development),Raahat Plaza, No - 214/215, 2nd Floor, near avm, opposite to Vijaya Hospital, Vadapalani, Chennai, Tamil Nadu 600027",
+                        "Name of the Student": "Thamarai kannan.C.N.P",
+                        "Duration": "5 days",
+                        "Request and acceptance communication details": "No",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1exN_tI81pL_PXmpyIKDt-cnuWF4N-WTv/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Industry, address": "Edunet,IBM India Private Limited, Embassy Golf Links, Off Indira Nagar-Koramangala, Intermediate Ring Rd, Embassy Golf Links Business Park, Domlur, Bengaluru, Karnataka 560071 ",
+                        "Name of the Student": "Sam Joshua S",
+                        "Duration": "5 days",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1WKLd_fMQczAwVR6qJJzmpuI4M6Hdg0gF/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Thamarai kannan. C. N. P",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1Qmqc_QgQ67Y76a151QlJFbEHYaSRyqnm/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600035",
+                        "Name of the Student": "Jaison Samuel D",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1U4faGZ8T8mcPmHGo7rhO7i9yb3d2kyrj/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Industry, address": "Edunet,IBM India Private Limited, Embassy Golf Links, Off Indira Nagar-Koramangala, Intermediate Ring Rd, Embassy Golf Links Business Park, Domlur, Bengaluru, Karnataka 560071 ",
+                        "Name of the Student": "Sam Joshua",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1U4faGZ8T8mcPmHGo7rhO7i9yb3d2kyrj/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Vigneshwar B",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1CLVxXMAUe1S6smbfUfXWqfYLYhXu1xbp/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Sharmila Sekar D",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1CsWCKtyMUiGtU0Av1vtm4sGhvoaaZJNo/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Devi T",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/14Ub269pfYS63-eDPjEmDTL6yigbBfVoY/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Joshita. V",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1WRxuApbG_rEl4eIzdxq53dncHCXQTHiC/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "DuraiRaj. M. G",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1_gZCszXoYFJpx1i9woY346Pu_gYaz0hQ/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Manoj D",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1C105-ER7iJrcmVZhQRC8yWl2aRrZPk2R/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of the Industry, address": "Let's grow more,Jhaver Plaza, 1-A, Wing 1 & 2, 4th Floor, Nungambakkam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034",
+                        "Name of the Student": "Mohammed Muthmayeen N",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/18iX1kt6rc6d3kq4h8JdqKKM9jEFMsB5z/view?usp=drivesdk"
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of the Industry, address": "SPI Edge - Dolabs,183, F-Block Basement, Baid Mehta Complex, Little Mount, Saidapet, Chennai, Tamil Nadu 600015",
+                        "Name of the Student": "Madhanraj M",
+                        "Duration": "Ongoing",
+                        "Request and acceptance communication details": "NO",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1_-QuhypSHcvzEgfKNnHnwCqZV93o3QzB/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of the Industry, address": "Aristo creative technologies1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Akilraj N",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1zPmTmexPEQ4Zbh7JcwNGYjaznB2It78i/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Arish S",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1QT6wlv7IxFkt6DDwwchm3tHAFDxItSmF/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Bhuvaneshwaran S",
+                        "Duration": "1month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1Nayy2Oi0-xLSImEEBob9wmavDgKIu0Ih/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Devi T",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1Tv_YL1wlWINn8-HAVCxh7F1-03Xyxj2t/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Divya S R",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1TVVKdbSLdZAlR0jAs5XWRLWuZYG8VP5I/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Durairaj M G",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1-blz8XLqXGe09-klN8ywFC-zx4aB3caM/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Fyzil Kani M Y",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1LoCgKxpbKFsZFQ5AhLaoZbodo_oxeJig/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Harini M",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1mXWABA8grlQhJATpRh8eRI5xAWytRTFL/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Harshitha P",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1Dp1EF79QHZ3mFyMeWK3UTNjgn6IGQ3zF/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Jai Kishan M",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1z6GzqCo0S-Vbc2AwYZkUZg3mKql4kfm3/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of the Industry, address": "Madras Fertilizer Limited, Manali.",
+                        "Name of the Student": "Janani S",
+                        "Duration": "10 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1yDhGAt-HO3z3qWlP85NO3nuKQlJYH7QG/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 35,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Joshita V",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1q_QDZBtk5E3iecVqO8NnShAoiWaE8t5z/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 36,
+                        "Name of the Industry, address": "Codebind technologies, T.nagar, Chennai.",
+                        "Name of the Student": "Karthikha Su",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1wiaVbygsnNmLdyG-f0ysKLzIQfA76lv6/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 37,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Kumaresan A",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1OXL8KHEfvFSlG0rmqOtjWjwi8LB3X4ho/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 38,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Loheswari S A N",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1J8L_RLSczUGHtMcr0c58Dkr66vUZq54x/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 39,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Manoj D",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1hpCP-udTcDiOgSERrsxjK4DyTxy-DODD/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 40,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Mehasree R",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1KXknFUk2X1zINLlxUkWBsw_1QEwrF0Oq/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 41,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Mohammed Muthmayeen N",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1GPL_UWmFvP9MA3g4RPNL91l-KoNwSPKb/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 42,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Nithya Sri D",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1zxeQPyOUgxIYQ6mfWGtXZEu9_4yfTT9l/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 43,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Ragasree K",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1IsTt028WwmcxHyBbi0qMY6eZkwvYWhAh/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 44,
+                        "Name of the Industry, address": "Madras Fertilizer Limited, Manali.",
+                        "Name of the Student": "Ramya G",
+                        "Duration": "10 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1yDhGAt-HO3z3qWlP85NO3nuKQlJYH7QG/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 45,
+                        "Name of the Industry, address": "Madras fertilizer limited, Manali.",
+                        "Name of the Student": "Rooba Sree M",
+                        "Duration": "8days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1yDhGAt-HO3z3qWlP85NO3nuKQlJYH7QG/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 46,
+                        "Name of the Industry, address": "Aristo Creative Technologies 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Sameer Ahamed S",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1t8iZPYKp0W-_lD8-n3p0vvznk0FPRoss/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 47,
+                        "Name of the Industry, address": "ICF Data Centre, ICF Headquarters, Chennai - 600023.",
+                        "Name of the Student": "Sharmila Sekar D",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/19IcaiPqalV0K2zFUiAxH6tUPa9Ri4lsW/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 48,
+                        "Name of the Industry, address": "Aristo Webtek, 1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Snehapriyaa M P",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1OYATwTshS9ah3kf2XA1kYLLyprm2m5d1/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 49,
+                        "Name of the Industry, address": "Madras fertilizer limited",
+                        "Name of the Student": "Subalakshmi A",
+                        "Duration": "28 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1yDhGAt-HO3z3qWlP85NO3nuKQlJYH7QG/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 50,
+                        "Name of the Industry, address": "Aristo webtek,madipakkam",
+                        "Name of the Student": "Sudarsan S",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/14j9I3dh9IQRyN416HXo2U5Kx6gxaRzdI/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 51,
+                        "Name of the Industry, address": "Jeffy Consulting Services, Perumbakkam Chennai.",
+                        "Name of the Student": "Sumithra Lavanya M",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1aBZg_ZMkPCPhE_ryNt_mvSAPNmlEZkWZ/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 52,
+                        "Name of the Industry, address": "Aristo Creative Technologies1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Swetha A",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1CMnwmhe7WqfUCkHgpPIhdGpHFg8kzeTs/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 53,
+                        "Name of the Industry, address": "Aristo Creative Technologies1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600092",
+                        "Name of the Student": "Syed Nafeez Ahmed A",
+                        "Duration": "1 month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1gXww8QIW8Xwnryyqs-7wowBhFI0m-Nfz/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 54,
+                        "Name of the Industry, address": "Aristo Creative Technologies1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Varsha K",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/1LrP97XTwUZRe_ZEf9tZTdSoMe0-3iFzd/view?usp=share_link"
+                    },
+                    {
+                        "S.No": 55,
+                        "Name of the Industry, address": "Aristo Creative Technologies1/485, Karthikeya Puram 3rd St, Karthikeyapuram, Madipakkam, Chennai, Tamil Nadu 600091",
+                        "Name of the Student": "Vigneshwar B",
+                        "Duration": "1 Month",
+                        "Request and acceptance communication details": "Yes",
+                        "Attach Internship proof as link": "https://drive.google.com/file/d/15PToG7U8FtB1CpFq3mNXu7-0rEzEISpc/view?usp=share_link"
+                    }
+                ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.J.SathyaPriya,Asso Prof/IT dept & Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Name of the Product": "Demand Side Management of Household Electricity",
+                        "Team members details": "Dr.J.SathyaPriya,Asso Prof/IT dept, Ms.R.Kavitha,Asst.Prof/AI & DS, 1.M.P.Sneha Priya, Student AI&DS, 2.S.Sam Joshua, Student AI&DS, 3.Mohammad Muthmayeen, Student AI&DS",
+                        "Demo availability status": "yes",
+                        "Funding agency/Industrial Partners": "NEWGEN IEDC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "year": "2023-24",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.J.SathyaPriya, Asso Prof/IT dept  &   Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Title of the Proposal": "Demand Side Management of Household Electricity",
+                        "Name of Funding Agency": "DST-NewGen IEDC",
+                        "Amount in Lakhs": "Rs.2,50,000",
+                        "Project Duration in Yrs": "2 Years",
+                        "Date of Submission": "26.08.2022",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of sanctioned letter google drive link": "https://drive.google.com/file/d/10G-9ThydEohRPm-pUHm58i__sdjJISmy/view?usp=drive_link",
+                        "Image": "https://drive.google.com/drive/folders/1zTCUliMP_uutwEsi-oJRVeng1iIsFTru?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.P..Visu, Professor, Dept.of AI & DS  Dr.P.S.Smitha, Associate Professor, Dept.of CSE",
+                        "Title of the Proposal": "Criminator - Criminal Face Detection Tool",
+                        "Name of Funding Agency": "DST-NewGen IEDC",
+                        "Amount in Lakhs": "Rs.2,50,000",
+                        "Project Duration in Yrs": "2 Years",
+                        "Date of Submission": "14.02.2022",
+                        "Current Status": "Ongoing",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of sanctioned letter google drive link": "https://drive.google.com/file/d/1X8KutMka4DQeAuigDK7xCpCvUq9ec8Gn/view?usp=share_link",
+                        "Image": "https://drive.google.com/drive/folders/1ydwnNgUt09F-oiLeNjfg_UNsaHAsox7e?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Title of the Proposal": "SENTIMENT ANALYSIS OF INCOMING CALLS ON HELP DESK",
+                        "Name of Funding Agency": "Nan Mudhalvan - Niral Thiruvizha",
+                        "Amount in Lakhs": "Rs. 10,000",
+                        "Project Duration in Yrs": "6 Months",
+                        "Date of Submission": "25.06.2024",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of sanctioned letter google drive link": "https://drive.google.com/file/d/1Fn3YgUDqrsOkPJJejnqUaoqEz7dx3k1v/view?usp=drive_link",
+                        "Image": "https://drive.google.com/file/d/13klJnT2YRFbqeendBhVfc90ny0o80cbL/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": "Mrs.A.Prema",
+                        "Title of the Proposal": "AI-Powered Fog and Smoke Detection",
+                        "Name of Funding Agency": "Niral Thiruvizha-Nan mudhalvan",
+                        "Amount in Lakhs": "Rs. 10,000",
+                        "Project Duration in Yrs": "6 Months",
+                        "Date of Submission": "25.06.2024",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of sanctioned letter google drive link": "https://drive.google.com/file/d/1Fn3YgUDqrsOkPJJejnqUaoqEz7dx3k1v/view?usp=drive_link",
+                        "Image": "https://drive.google.com/file/d/1IIlxL R_ggxdREsxCXUbPi3toEQT5CWIk/ view?usp=sharing"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Faculty": "Mrs. J. Savija",
+                        "Title of the Proposal": "Emo Mirror",
+                        "Name of Funding Agency": "TNSCST(Tamilnadu State Council for Science and Technology) ",
+                        "Amount in Lakhs": "Rs. 7500",
+                        "Project Duration in Yrs": "3 Months",
+                        "Date of Submission": "24.10.2024",
+                        "Current Status": "Complted",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": null,
+                        "Name of the Author(s)": null,
+                        "Title of the Paper": null,
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": null,
+                        "Name of the Journal": null,
+                        "Month and Year of publication": null,
+                        "ISSN": null,
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": null
+                    },
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "P Visu ",
+                        "Title of the Paper": "Enhanced EEG classification using adaptive DWT and heuristic-ICA algorithm",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Automatika",
+                        "Month and Year of publication": "Jun 2023",
+                        "ISSN": "1848-3380",
+                        "Doi": "https://doi.org/10.1080/00051144.2023.2220207",
+                        "Colloboration Institute": "Asia Pacific University of Technology & Innovation (APU), Kuala Lumpur, Malaysia;  Adama Science and Technology University, Adama, Ethiopia",
+                        "Colloboration agreement Yes / No": "no",
+                        " E copy of journal papers google drive link": "https://www.tandfonline.com/doi/full/10.1080/00051144.2023.2220207"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "P. Visu",
+                        "Title of the Paper": "CoDet: A novel deep learning pipeline for cotton plant detection and disease identification",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Automatika",
+                        "Month and Year of publication": "Feb 2024",
+                        "ISSN": "1848-3380",
+                        "Doi": "https://doi.org/10.1080/00051144.2024.2317093",
+                        "Colloboration Institute": "Anna University, Chennai, Tamil Nadu, India",
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://www.tandfonline.com/doi/epdf/10.1080/00051144.2024.2317093?needAccess=true"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "M.Priya",
+                        "Title of the Paper": "Digital Medical Assistant using IOT ",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "Journal Of Nambians Studies",
+                        "Month and Year of publication": "Jun 2023",
+                        "ISSN": "2197-5523",
+                        "Doi": "https://doi.org/10.59670/jns.v35i.3660",
+                        "Colloboration Institute": "Vel Tech Multi Tech Dr.Rangarajan Dr.Sakunthala Engineering College, SRM Institute of Science and Technology Chennai Institute of Technology,",
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/14C3z4H8xJrbmLiekSdOZF_IIZzhqMO8M/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "A.Prema",
+                        "Title of the Paper": "Personal Growth and Habit Tracking",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "UGC Care",
+                        "Name of the Journal": "International Journal of science and Management Studies(ijsms)",
+                        "Month and Year of publication": "Feb 2024",
+                        "ISSN": "2581-5946",
+                        "Doi": "DOI: 10.51386/25815946/ijsms-v7i1p115",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "no",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1GHLzCHxbUIfDf3GUqbwRTwJeXdfSjyXq/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "A.Prema",
+                        "Title of the Paper": "A Web Portal for Tracking and Findingh missing Person using Aadhar enabled Biometrics",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Google Scholar",
+                        "Name of the Journal": "IRO Journals",
+                        "Month and Year of publication": "Jan 2024",
+                        "ISSN": "2582-418X",
+                        "Doi": "https://irojournals.com/ itdw/article/view/6/1/4",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "no",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1qdyx3N5vJ4RodEsN9Ajbd_q4I4GmeRrb/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Author(s)": "J. Savija",
+                        "Title of the Paper": "Analysis of Leaf Disease Identification Using Classification Model",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Google Scholar",
+                        "Name of the Journal": "International Journal on Recent and Innovation Trends in Computing and Communication",
+                        "Month and Year of publication": "Feb 2023",
+                        "ISSN": "2321-8169",
+                        "Doi": "https://doi.org/10.1016/j.measen.2022.100643",
+                        "Colloboration Institute": "Panimalar Engineering College, S. A. Engineering College, Saveetha School of Engineering, Saveetha Engineering College, SRM institute of science and technology",
+                        "Colloboration agreement Yes / No": "no",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1k0sXZ9wf-G8f7oipAbeE_ZMe5RbT_sFp/view?usp=drivesdk"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Author(s)": "S.Saranya",
+                        "Title of the Paper": "AI Conversational Specialist: Crafting a Purpose - Driven Chatbot",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "UGC Care",
+                        "Name of the Journal": "International Journal of Science and Management Studies (IJSMS)",
+                        "Month and Year of publication": "Feb 2024",
+                        "ISSN": "2581-5946",
+                        "Doi": "0.51386/25815946/ijsms-v7i1p120",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1WHEeAMxMWcIVUKtosN-ERRay0RRrIZdT/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Author(s)": "S.Saranya",
+                        "Title of the Paper": "Weather Forecast and it's Visualization using Augmented Reality: Mobile App",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "UGC Care",
+                        "Name of the Journal": "International Journal of Scientific Research in Engineering and Management (IJSREM)",
+                        "Month and Year of publication": "Mar 2024",
+                        "ISSN": "2582-3930",
+                        "Doi": "10.55041/IJSREM29086",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1IKo3NB3_VjjrypRp3cbXBDkdZ3U5jbrS/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Hannah Rose Esther T",
+                        "Title of the Patent": "Safeguarding Agriculture with Blockchains and the Internet of Things for Smart Farming",
+                        "Application Number": 202341042508,
+                        "Date of Filing": "25/06/2023",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/16idOfVI4YbkLj4UGBIa0HUi5zbmQUUHL/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr. P. Visu",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "J.Vinisha Gladys Belshi",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "S.Mythili",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "J.Savija",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Faculty": "T. Hannah Rose Esther",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Faculty": "K. Sathish",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Faculty": "P. Nithya",
+                        "Title of the Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
+                        "Application Number": "408172-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1-5cnWDBaIzbex1DVZjNmZq72sSXA6CnB/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Faculty": "Dr. P. Visu",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 7,
+                        "Faculty": "Mrs. A. Prema",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 8,
+                        "Faculty": "Mrs. S. Saranya",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 9,
+                        "Faculty": "Mrs. P. V. Rajasuganya",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 10,
+                        "Faculty": "Mrs. R. Kavitha",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 11,
+                        "Faculty": "Mrs. S. Vijayalakshmi",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 12,
+                        "Faculty": "Mrs. M. Priya",
+                        "Title of the Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
+                        "Application Number": "408173-001",
+                        "Date of Filing": "20/02/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "nil",
+                        "Colloboration agreement Yes / No": "nil",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1kk3J37i_OPV7KBHNViyzFVzgApJegd4j/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 13,
+                        "Faculty": "Dr. P. Visu",
+                        "Title of the Patent": "NETWORK GATEWAY DEVICE",
+                        "Application Number": "400851-001 ",
+                        "Date of Filing": "29/11/2023",
+                        "Status": "published",
+                        "Colloboration Institute": "Velammal Engineering College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1eUKS24egieCA9fpM1HaG5qzcvwrOeVHm/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Dr. P. Visu",
+                        "Book/Chapter Title": "Foundation of Data Science",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-13:978-93-5577-894-9",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1m_ROSSnr0Nv5eMuKRL4Eh_ivC4NOLQP-/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Mrs. P.V. Rajasuganya",
+                        "Book/Chapter Title": "Foundation of Data Science",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-13:978-93-5577-894-9",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1m_ROSSnr0Nv5eMuKRL4Eh_ivC4NOLQP-/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of Faculty": "Mrs. R. Kavitha",
+                        "Book/Chapter Title": "Foundation of Data Science",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-13:978-93-5577-894-9",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1m_ROSSnr0Nv5eMuKRL4Eh_ivC4NOLQP-/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of Faculty": "Mrs.A.Prema",
+                        "Book/Chapter Title": "Object Oriented Programming",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-13:978-93-5577-816-1",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1288DPiYS1_LgU8Z1-RwzJxdRVsRCtxqp/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of Faculty": "Mrs.S. Saranya",
+                        "Book/Chapter Title": "Object Oriented Programming",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-13:978-93-5577-816-1",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1288DPiYS1_LgU8Z1-RwzJxdRVsRCtxqp/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of Faculty": "Mrs.S.Vijayalakshmi",
+                        "Book/Chapter Title": "Exploratory Data Analysis",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-978-93-5577-755-3",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1liOjHSV12CfYzYtpWaV4lAAfpxraJlFr/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of Faculty": "Mrs.J.Vinisha Gladys Belshi",
+                        "Book/Chapter Title": "Exploratory Data Analysis",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-978-93-5577-755-3",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1liOjHSV12CfYzYtpWaV4lAAfpxraJlFr/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of Faculty": "Mrs.S.Mythili",
+                        "Book/Chapter Title": "Exploratory Data Analysis",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-978-93-5577-755-3",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/1liOjHSV12CfYzYtpWaV4lAAfpxraJlFr/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of Faculty": "Mrs. J. Savija",
+                        "Book/Chapter Title": "Introduction to Machine learning",
+                        "Name of Publisher": "Charulatha Publication",
+                        "ISBN Details": "ISBN-978-93-6260-007-3",
+                        "Colloboration Institute": "DMI COLLEGE OF ENGINEERING",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of Book front page google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of Faculty": "Mrs. M Priya",
+                        "Book/Chapter Title": "Parallel Deep Convolution Neural Network (P-DCNN) Prediction of Paddy Crop Disease",
+                        "Name of Publisher": "Springer Singapore",
+                        "ISBN Details": "978-981-97-2031-6",
+                        "Colloboration Institute": "NIL",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": "https://link.springer.com/chapter/10.1007/978-981-97-2031-6_22"
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": "Visu P",
+                        "Title of the Paper": "Storing and securing the FIR using block-chain technology",
+                        "Name of Conference": "ICRAIC2IT",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "NRI Institute of Technology (Autonomous), Pothavarappadu, Vijayawada",
+                        " Prceedings ISBN": "https://doi.org/10.1063/5.0148922",
+                        "E-Copy of Prceeding google drive link": "https://pubs.aip.org/aip/acp/article-abstract/2796/1/050001/2902354/Storing-and-securing-the-FIR-using-block-chain?redirectedFrom=fulltext"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": "Hannah Rose Esther T",
+                        "Title of the Paper": "A Novel Stress Identification based on the Health Aspects of an Individual using Strategical Learning Methodology",
+                        "Name of Conference": "ICAISS 2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "Care College of Engineering",
+                        " Prceedings ISBN": "10.1109/ICAISS58487.2023.10250662",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1_TlPOUrEsVdUeFJmG-sAX-JxF_UOcYaQ/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": "Hannah Rose Esther T",
+                        "Title of the Paper": "Extensive Analysis of IoT Assisted Fake Currency Detection using Novel Learning Scheme",
+                        "Name of Conference": "ICAISS 2024",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "Care College of Engineering",
+                        " Prceedings ISBN": "10.1109/ICAISS58487.2023.10250560",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1mGLXw3jt486Y_l0hE_mfIBfLdFGI6cDM/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": "Hannah Rose Esther T",
+                        "Title of the Paper": "A Logical Evaluation of Systematic Species Identification of Birds based on Audio Signal Assessment Using Learning Metrics",
+                        "Name of Conference": "ACCAI -2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "St. Joseph's College of Engineering, Chennai, India.",
+                        " Prceedings ISBN": "10.1109/ACCAI58221.2023.10199551",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1dg9Gft3udXS_37kTlvaXC9L4DNYiCBYg/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of faculty": "Hannah Rose Esther T",
+                        "Title of the Paper": "Artificial Intelligence enabled Employee Performance Prediction using Comprehensive Learning Metrics ",
+                        "Name of Conference": "ACCAI -2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "St. Joseph's College of Engineering, Chennai, India.",
+                        " Prceedings ISBN": "10.1109/ACCAI58221.2023.10201125",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1a0iC30V9CFQ8TuJ7IUjS9ovTesfeJ7oe/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": "Hannah Rose Esther T",
+                        "Title of the Paper": "Identification of Cardiovascular Disease using ECG Images based on Deep Learning Procedure",
+                        "Name of Conference": "ACCAI -2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "St. Joseph's College of Engineering, Chennai, India.",
+                        " Prceedings ISBN": "10.1109/ACCAI58221.2023.10199201",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1aOrouycjhbXFYxDOMTO0gf1a3e28Ynjb/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": "J.Vinisha Gladys Belshi",
+                        "Title of the Paper": "Empowering Solar energy with advanced IOT based forecasting:A hybrid deep learning model for enhanced efficiency with big data",
+                        "Name of Conference": "ICSCNA 2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "Bharath Niketan Engineering College,Theni,India",
+                        " Prceedings ISBN": "979-8-3503-1398-7",
+                        "E-Copy of Prceeding google drive link": "https://docs.google.com/document/d/1upxUtntwOezgfoqrxIdvLnnl70ms_VRh/edit?usp=drive_link&ouid=113012868717281370287&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": "S.Saranya",
+                        "Title of the Paper": "A Survey on Investigating Emerging Generative Adversarial Multi-Object Scenes Attacks and Their Implications for Vision Language Model Performance",
+                        "Name of Conference": "ICSI 2023",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "Panipat Institue of Technology, Panipat",
+                        " Prceedings ISBN": "accepted ",
+                        "E-Copy of Prceeding google drive link": "https://drive.google.com/file/d/1jJHWPon3AJ4OQrLgBYJwkkzxqaUwtE0h/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of faculty": "P. V. RAJA SUGANYA ",
+                        "Title of the Paper": "Study of lung nodules using CT scan image ",
+                        "Name of Conference": "ISCComm-2023 ",
+                        "Type of Conference National / Inter national": "International ",
+                        "Organizer": "Mangalore Institute of technology and Engineering ",
+                        " Prceedings ISBN": "accepted ",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": "Mrs. S. Saranya",
+                        "Title of the Paper": "Revolutionizing Purpose-Driven Chatbots For Next-Level Conversations",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": "Mrs. Savija J",
+                        "Title of the Paper": "Emo Mirror",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": "Mrs. S. Vijayalakshmi,",
+                        "Title of the Paper": "Bifrost",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of faculty": "Mrs. Mythili s",
+                        "Title of the Paper": "Alert Guard Driver Safety System",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of faculty": "Mrs. R.kavitha",
+                        "Title of the Paper": "Enhancing Human-Robot Interaction: The Chat-Gpt Controlled Eye Blink Robot",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of faculty": "Mrs. Prema",
+                        "Title of the Paper": "Biometric-Based Missing Persons Locator: Harnessing Aadhar For Swift Identification",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of faculty": "Mrs. Vinisha Gladys Belshi",
+                        "Title of the Paper": "Smart Saline Monitoring And Reversal Prevention",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of faculty": "Dr.Visu P",
+                        "Title of the Paper": "Visual Questioner Using Transformer",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of faculty": "Mrs. T. Hannah Rose Esther",
+                        "Title of the Paper": "Augmented Reality Navigator For Monuments",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of faculty": "Mrs. S. Saranya",
+                        "Title of the Paper": "Augmented Reality Weather Forecasting: Enhancing Atmospheric Visualization",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of faculty": "Mrs. Priya M",
+                        "Title of the Paper": "Advanced Vehicle Theft Detection And Identification System Using Computer Vision And Machine Learning",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of faculty": "Mrs. P. Nithiya",
+                        "Title of the Paper": "Summarease",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of faculty": "Mrs. Hannah Rose Esther T",
+                        "Title of the Paper": "Startup Idea Validation",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of faculty": "Mrs. A. Prema",
+                        "Title of the Paper": "Personal Evolution Companion",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of faculty": "Mrs. Kavitha R",
+                        "Title of the Paper": "Demand Side Management For Electric Vehicles Using Smart Grid And Smart Scanner",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of faculty": "Dr. P. Visu",
+                        "Title of the Paper": "Audio-Driven Talking Face Video Generation With Learning-Based Personalized Head Pose",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of faculty": "Mrs. Mythili.s",
+                        "Title of the Paper": "Self-Stabilizing Spoon For Parkinson's Patients",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of faculty": "Mr. Sathish K",
+                        "Title of the Paper": "Automatic Zebra Crossing",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of faculty": "Mrs. M. Priya",
+                        "Title of the Paper": "Farmrent: Empowering Farmers With Equipment Access",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of faculty": "Mrs. Vinisha gladys belshi",
+                        "Title of the Paper": "Auction Web Platform Incorporating Neural Style Transfer Technology",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of faculty": "Mrs. Vijayalakshmi S",
+                        "Title of the Paper": "Screen Time Control For Children",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of faculty": "Mrs. Vijayalakshmi S",
+                        "Title of the Paper": "Centralised Monitoring System For Street Light Fault Detection And Location Tracking",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of faculty": "Mrs. A. Prema",
+                        "Title of the Paper": "AI And ML Based De-Smoking Algorithm",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of faculty": "Mrs. Rajasuganya P V",
+                        "Title of the Paper": "AI Animal Repellent For Village Safety",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of faculty": "Mrs. T. Hannah Rose Esther",
+                        "Title of the Paper": "AI-Based Port Surveillanceand Encroachment Detection",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of faculty": "Mrs. P. Nithiya",
+                        "Title of the Paper": "Automatic Irrigation System For Efficient Water Management",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of faculty": "Mrs. Vinisha gladys belshi J",
+                        "Title of the Paper": "Detection Of Cervical Cancer Stage Wise Using Computer Vision",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of faculty": "Mrs. T. Hannah Rose Esther",
+                        "Title of the Paper": "Helmet Detection On Two-Wheeler Riders",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of faculty": "Mrs. Rajasuganya P V",
+                        "Title of the Paper": "Smart Attendance system using facial recognition",
+                        "Name of Conference": "NCAIBIA '2k24",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN": "978-93-340-3988-7",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 35,
+                        "Name of faculty": "Mrs. J. Savija",
+                        "Title of the Paper": "Intelligent Road Anomaly Detection and Driver Assistance System: Machine Learning Approach for Enhanced Road Safety",
+                        "Name of Conference": "ICOSEC",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "Kongunadu College og Engineering and Technology",
+                        " Prceedings ISBN": "978-1-6654-9764-0",
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 36,
+                        "Name of faculty": "Mrs. J. Savija",
+                        "Title of the Paper": "Recognizing Human Emotions by using Lazy classifier with selected algorithm",
+                        "Name of Conference": "ICSSS",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "Saveetha Engineering College",
+                        " Prceedings ISBN": "979-8-3503-8421-5",
+                        "E-Copy of Prceeding google drive link": null
+                    }
+                ]
+            },
+            {
+                "CONSULTANCY": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    }
+                ]
+            },
+            {
+                "INTERNSHIP": [
+                    {
+                        "S.No": 1,
+                        "Name of the Industry, address": "Futurecalls technology pvt ltd,  67/35, lic colony road, nerkundram pathai, vadapalani, chennai, tamil nadu 600026",
+                        "Name of the Student": "M.FAIZUDEEN",
+                        "Duration": "20 DAYS",
+                        "Request and acceptance communication details": "No",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Industry, address": "Atlanwa private limited  50a, 6th cross st, east balaji nagar, kallikuppam, ambattur, chennai, tamil nadu 600053",
+                        "Name of the Student": "PARNIKA R",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Industry, address": "E-soft it solutions private limited-trichy  145/74, thillai nagar east, thillai nagar, tiruchirappalli, tamil nadu 620017",
+                        "Name of the Student": "VISHAL RAJ T",
+                        "Duration": "15 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Industry, address": "Kani vilas technology and services  1st floor, 3 kaveri 2nd street, parasakthi nagar, madurai - 625012",
+                        "Name of the Student": "APARNA K",
+                        "Duration": "15 Days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "ATHIRAI S",
+                        "Duration": "19days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113.",
+                        "Name of the Student": "DHANUSH.S",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "DHARUNIKHA N",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidal park tharamani chennai",
+                        "Name of the Student": "GOKUL CHANDIRAN R",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, velachery",
+                        "Name of the Student": "ISHWARYA P",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu-600113",
+                        "Name of the Student": "JAGADEESH M",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tansam, tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "JEFFREY TERRANCE DANIEL I",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, velachery",
+                        "Name of the Student": "JERUSHA C.R",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi salai, taramani, chennai-600113 , tamil nadu",
+                        "Name of the Student": "JHANANI N",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park tharamani chennai",
+                        "Name of the Student": "KALAIVANI S",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "KANISHKARAN M",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "KEERTHANA S",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "KEZIA SONA FRANCISCA M A",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "LEKHA.S",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "MADESH PONDURAI S I",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "MADHU SHRI P",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "NAGA ARJUN V",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu, 600113.",
+                        "Name of the Student": "PRABHAKAR V",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "PRANOV L",
+                        "Duration": "16 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "PREETHI VARTHINI A",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "RAHUL A",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "RANJITH KUMAR R",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "SANJAY G",
+                        "Duration": "16 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113.",
+                        "Name of the Student": "SHREERAM T",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "SIVAKSHA SIVAGAMI A.P",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "SUMISHA D",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "SUMITHRA T",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "SWETHA. R",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "TANISHA MUKUNDAN",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai-600113, tamilnadu",
+                        "Name of the Student": "THARUN",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 35,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tamil nadu smart and advanced manufacturing centre, 6th floor c wing north, tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "VARSHA V",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 36,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "VISHWAKUMAR.R.S",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 37,
+                        "Name of the Industry, address": "Global tech computer education  No:66,yes yes arcade complex,3rd floor,ambattur o.t m t h road,ambattur ot, near bharat petrol bunk, chennai, tamil nadu 600053",
+                        "Name of the Student": "ATHIQUR RAASITH",
+                        "Duration": "15 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 38,
+                        "Name of the Industry, address": "Global tech computer education  No.66, yes yes arcade complex, mth road, ambattur ot, chennai -600053",
+                        "Name of the Student": "NAVEEN K M",
+                        "Duration": "15 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 39,
+                        "Name of the Industry, address": "Global tech computer education  No.66, yes yes arcade complex, mth road, ambattur ot, chennai -600053",
+                        "Name of the Student": "SUBASH KRISHNA S",
+                        "Duration": "15 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 40,
+                        "Name of the Industry, address": "Tansam (tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "PRANAV KUMAR.G",
+                        "Duration": "16 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 41,
+                        "Name of the Industry, address": "Oramate technologies  1st floor north wings 2nd street, telephone colony road, ngo colony , chennai \u2013 600 088.",
+                        "Name of the Student": "EBENEZER RHENIUS M",
+                        "Duration": "17 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 42,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "MANO K",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 43,
+                        "Name of the Industry, address": "Oramate solution ends  1st floor north wings 2nd street, telephone colony road, ngo colony , chennai \u2013 600 088.",
+                        "Name of the Student": "BARATH P.R.",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 44,
+                        "Name of the Industry, address": "Oramate solution ends  1st floor north wings, telephone colony 2nd street , behind ngo colony bus depot, adambakkam, chennai, tamil nadu 600088",
+                        "Name of the Student": "CHARAN K",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 45,
+                        "Name of the Industry, address": "Oramate solution ends  1st floor north wings, telephone colony 2nd street , behind ngo colony bus depot, adambakkam, chennai, tamil nadu 600088",
+                        "Name of the Student": "DHANUSHIYA SM",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 46,
+                        "Name of the Industry, address": "Oramate solution ends  #2/51, 1st floor, north wing, 2nd street, telephone colony, ngo colony, adambakkam, chennai - 600088",
+                        "Name of the Student": "GOWTHAM S",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 47,
+                        "Name of the Industry, address": "Vreon tech india private limited  Cisons complex, 4th floor, 125, red cross rd, egmore, chennai, tamil nadu 600008",
+                        "Name of the Student": "JASMINE RENNITA V",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 48,
+                        "Name of the Industry, address": "Oramate solution ends  1st floor north wings, telephone colony 2nd street , behind ngo colony bus depot, adambakkam, chennai, tamil nadu 600088",
+                        "Name of the Student": "KANISHKA B",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 49,
+                        "Name of the Industry, address": "Dlk technologies pvt ltd  Raahat plaza, arcot road, vadapalani, chennai",
+                        "Name of the Student": "K. HARSHA VARDHAN",
+                        "Duration": "18 DAYS",
+                        "Request and acceptance communication details": "No",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 50,
+                        "Name of the Industry, address": "Oramate solution ends  2/51,1st floor north wing, telephone colony 2nd street, ngo colony, adambakkam, chennai- 600088.",
+                        "Name of the Student": "PRAVEEN KUMAR S",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 51,
+                        "Name of the Industry, address": "Vreon tech pvt ltd  No. 150, 4th floor cisons complex, monieth street, egmore, chennai-600008",
+                        "Name of the Student": "PRITHI PRASANNA P",
+                        "Duration": "26 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 52,
+                        "Name of the Industry, address": "Oramate solution ends  2/51, 1st floor north wing, telephone colony 2nd street, ngo colony, adambakkam, chennai - 600 088.",
+                        "Name of the Student": "SANJAY KUMAR K",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 53,
+                        "Name of the Industry, address": "Vreon private limited  No: 150, montieth road, egmore, chennai-600008.",
+                        "Name of the Student": "TRISHA B",
+                        "Duration": "26 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 54,
+                        "Name of the Industry, address": "Oramate solution ends  2/51, 1st floor north wing, telephone colony 2nd street, ngo colony, adambakkam, chennai - 600 088.",
+                        "Name of the Student": "VIJAY.S",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 55,
+                        "Name of the Industry, address": "Oramate solution ends  2/51, 1st floor north wing, telephone colony 2nd street, ngo colony, adambakkam, chennai - 600 088.",
+                        "Name of the Student": "ARIPRASANNA T",
+                        "Duration": "17 days",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 56,
+                        "Name of the Industry, address": "Oramate solution ends  45, marudupandiar rd, kamarajapuram, velacheri lake, velachery, chennai, tamil nadu 600042",
+                        "Name of the Student": "DHANUSH S",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 57,
+                        "Name of the Industry, address": "Oramate company end solution  1st floor north wings, telephone colony 2nd street , behind ngo colony bus depot, adambakkam, chennai, tamil nadu 600088",
+                        "Name of the Student": "A.GANESHWAR",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 58,
+                        "Name of the Industry, address": "Oramate company end solution  2nd floor north wings, telephone colony 2nd street , behind ngo colony bus depot, adambakkam, chennai, tamil nadu 600088",
+                        "Name of the Student": "NIKESH A",
+                        "Duration": "17 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 59,
+                        "Name of the Industry, address": "Tansam(tamilnadu smart and advanced manufacturing centre)  Tidel park, rajiv gandhi it expy, tharamani, chennai, tamil nadu 600113",
+                        "Name of the Student": "RAKESH M",
+                        "Duration": "16 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 60,
+                        "Name of the Industry, address": "Inblue infotech pvt ltd  Masilamani nagar annexe, mangadu, chennai",
+                        "Name of the Student": "SANTHOSH RAJ B",
+                        "Duration": "15 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 61,
+                        "Name of the Industry, address": "Global tech computer education  No.66, yes yes arcade complex, mth road, ambattur ot, chennai -600053",
+                        "Name of the Student": "MANISH G",
+                        "Duration": "15 DAYS",
+                        "Request and acceptance communication details": "Yes",
+                        "Internship proof google drive link": null
+                    }
+                ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.J.SathyaPriya,Asso Prof/IT dept & Ms.R.Kavitha,Asst.Prof/AI & DS",
+                        "Name of the Product": "Demand Side Management of Household Electricity",
+                        "Team members details": "Dr.J.SathyaPriya, Asso Prof/IT dept, Ms.R.Kavitha,Asst.Prof/AI & DS, 1.M.P.Sneha Priya, Student AI&DS, 2.S.Sam Joshua, Student AI&DS, 3.Mohammad Muthmayeen, Student AI&DS",
+                        "Demo availability status": "yes",
+                        "Funding agency/Industrial Partners": "NEWGEN IEDC",
+                        "Product image in google drive link": "https://drive.google.com/file/d/13S2Oy8dp4WyzoJNr5zZpelj_cf82PuXA/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.P..Visu, Professor, HoD/AI & DS & Dr.P.S.Smitha, Associate Professor/CSE",
+                        "Name of the Product": "Criminator - Criminal Face Detection Tool",
+                        "Team members details": "Dr.P..Visu, Professor, AI&DS & Dr.P.S.Smitha, Associate Professor/CSE 1.M.Harish, Student CSE 2.G.Harish, Student CSE",
+                        "Demo availability status": "yes",
+                        "Funding agency/Industrial Partners": "NEWGEN IEDC",
+                        "Product image in google drive link": "https://docs.google.com/document/d/1OD1LTVRh3NFZy-R8oumNwR-urhzz2Zqq/edit?usp=sharing&ouid=108240005846111823847&rtpof=true&sd=true"
+                    }
+                ]
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    },
+    {
+        "year": "2024-25",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": null,
+                        "Title of the Proposal": null,
+                        "Name of Funding Agency": null,
+                        "Amount in Lakhs": null,
+                        "Project Duration in Yrs": null,
+                        "Date of Submission": null,
+                        "Current Status": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": null,
+                        "Title of the Proposal": null,
+                        "Name of Funding Agency": null,
+                        "Amount in Lakhs": null,
+                        "Project Duration in Yrs": null,
+                        "Date of Submission": null,
+                        "Current Status": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": null,
+                        "Title of the Proposal": null,
+                        "Name of Funding Agency": null,
+                        "Amount in Lakhs": null,
+                        "Project Duration in Yrs": null,
+                        "Date of Submission": null,
+                        "Current Status": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": null,
+                        "Title of the Proposal": null,
+                        "Name of Funding Agency": null,
+                        "Amount in Lakhs": null,
+                        "Project Duration in Yrs": null,
+                        "Date of Submission": null,
+                        "Current Status": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": null,
+                        "Name of the Author(s)": null,
+                        "Title of the Paper": null,
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": null,
+                        "Name of the Journal": null,
+                        "Month and Year of publication": null,
+                        "ISSN": null,
+                        "DOI": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": null,
+                        "Journal Proof": null
+                    },
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr. P Visu",
+                        "Title of the Paper": "Air pollution prediction using attention module with CNN - OptBiLSTM",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Global NEST Journal",
+                        "Month and Year of publication": "June 2024 (10-06-2024)",
+                        "ISSN": "0325-2957",
+                        "DOI": "https://doi.org/10.30955/gnj.005823",
+                        "Colloboration Institute": "Vel Tech Multi Tech Dr Rangarajan Dr Sakunthala Engineering College, Dhanalakshmi Srinivasan University Trichy, Saveetha Institute of Medical and Technical Sciences",
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": "https://journal.gnest.org/system/files/2024-08/gnest_05823_final.pdf",
+                        "Journal Proof": "https://drive.google.com/file/d/1qrmbe6iYG75aLCXY9tskxOpxz_H93ObC/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": null,
+                        "Name of the Author(s)": "Dr. P Visu",
+                        "Title of the Paper": "Hybrid deep learning-based skin cancer classification with RPO-SegNet for skin lesion segmentation",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Network-Computation in Neural Systems",
+                        "Month and Year of publication": "Dec 20",
+                        "ISSN": "1361-6536",
+                        "DOI": "https://doi.org/10.1080/0954898X.2024.2428705",
+                        "Colloboration Institute": "School of Computing, Asia Pacific University of Technology & Innovation, Kuala Lumpur, Malaysia",
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": "https://www.tandfonline.com/doi/full/10.1080/0954898X.2024.2428705?src=exp-la",
+                        "Journal Proof": "https://drive.google.com/file/d/1D15xBpETmA5sr8XYoW2aBSmPPJM__Ftb/view?usp=sharing"
+                    },
+                    {
+                        "S.No": null,
+                        "Name of the Author(s)": "Dr. P Visu",
+                        "Title of the Paper": "Advanced Pest Identification Framework Using Deep Learning and Feature Extraction Techniques",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Journal of Electrical Engineering & Technology",
+                        "Month and Year of publication": "Dec 20",
+                        "ISSN": "2093-7423",
+                        "DOI": "https://doi.org/10.1007/s42835-024-02111-3",
+                        "Colloboration Institute": "Anna University, Chennai",
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": "https://link.springer.com/article/10.1007/s42835-024-02111-3",
+                        "Journal Proof": "https://drive.google.com/file/d/11OMxtPCoN4jyMKKS_EVvPrbU3ka-hhbt/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Hannah Rose Esther T",
+                        "Title of the Paper": "Human Detection and Counting using YOLOV4",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "Journal of electrical systems",
+                        "Month and Year of publication": "June 2024",
+                        "ISSN": "1112-5209",
+                        "DOI": "https://doi.org/10.52783/jes.4945",
+                        "Colloboration Institute": "Alpha College of Engineering, R.M.D Engineering College, Dr.Rangarajan Dr.Sakunthala Engineering College",
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": "https://journal.esrgroups.org/jes/article/view/4945",
+                        "Journal Proof": "https://drive.google.com/file/d/1JJaCotBOh7Wh0C4qnxXNwhU7usVpV--L/view?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Mrs.R.Kavitha",
+                        "Title of the Patent": "\u201cELECTRIC VEHICLE CHARGE ADMINISTRATING STATION AND METHOD OF PROCESSING PAYMENT THEREOF\u201d",
+                        "Application Number": 202341011303,
+                        "Date of Filing": "20/02/2023",
+                        "Status": "published",
+                        "Colloboration Institute": "Velammal Engineering College",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1h5BcvsNb0xKi6madVW8zG8SL8C7UBSSN/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Mrs.R.Kavitha",
+                        "Title of the Patent": "Wearable IoT Healthcare Device with Machine Learning for RealTime Health Data Analysis",
+                        "Application Number": 202441045781,
+                        "Date of Filing": "13/06/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "Crescent Institute of Science and Technology,SRM Institute of Science and Technology,Panimalar Engineering College",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1jd5pU6EDOl1CnYmnOqNr2w8176bw_sZa/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "Mrs.P. V. Rajasuganya",
+                        "Title of the Patent": "Wearable IoT Healthcare Device with Machine Learning for RealTime Health Data Analysis",
+                        "Application Number": 202441045781,
+                        "Date of Filing": "13/06/2024",
+                        "Status": "published",
+                        "Colloboration Institute": "Crescent Institute of Science and Technology,SRM Institute of Science and Technology,Panimalar Engineering College",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1jd5pU6EDOl1CnYmnOqNr2w8176bw_sZa/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Faculty": "Mrs. L. Karthika",
+                        "Title of the Patent": "Virtual Reality Based Educational Device",
+                        "Application Number": "424439-001",
+                        "Date of Filing": "24/07/2024",
+                        "Status": "Design Accepted and Published",
+                        "Colloboration Institute": "Ganpat University, Mehsana, Gujarat, Administrative Management College, Bangalore. SRM Institute of Science and Technology, Alabbar School of Management, Raffles University Neemrana, Alwar, Rajasthan",
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1HAoddQdw8j-N3tjPRKF6OKeC_lnk27zC/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 5,
+                        "Faculty": "Dr.P.Visu, Mrs.A.Prema, Mrs.M.Priya",
+                        "Title of the Patent": "IOT-ENABLED ROAD SURFACE MONITORING SYSTEM WITH MACHINE LEARNING-BASED POTHOLE DETECTION",
+                        "Application Number": 202441059170,
+                        "Date of Filing": "06.08.2024",
+                        "Status": "published",
+                        "Colloboration Institute": "GMR Institute Of Technology Andhra Pradesh - 532127",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy patent google drive link": "https://iprsearch.ipindia.gov.in/PublicSearch/PublicationSearch/PatentDetails"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "R. Kavitha",
+                        "Book/Chapter Title": "The Building Blocks of Machine Learning ",
+                        "Name of Publisher": "LAMBERT ACADEMIC PUBLISHING ",
+                        "ISBN Details": 9786208172077,
+                        "Colloboration Institute": "Agni college of Technology and Dr. Mahalingam college of engineering and technology ",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of Book front page google drive link": "https://drive.google.com/file/d/12Rq8z85N3hUhtQa6WKZBCYhwDw4Sep23/view?usp=drivesdk"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "P.Visu",
+                        "Book/Chapter Title": "Project Report Writing",
+                        "Name of Publisher": "Notionpress",
+                        "ISBN Details": "ISBN-13 - 979-8896106395 ",
+                        "Colloboration Institute": "Agni College of Technology ,India",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of Book front page google drive link": "https://notionpress.com/read/project-report-writing"
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of faculty": null,
+                        "Title of the Paper": null,
+                        "Name of Conference": null,
+                        "Type of Conference National / Inter national": null,
+                        "Organizer": null,
+                        " Prceedings ISBN": null,
+                        "E-Copy of Prceeding google drive link": null
+                    }
+                ]
+            },
+            {
+                "CONSULTANCY": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": null,
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": null,
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    }
+                ]
+            },
+            {
+                "INTERNSHIP": [
+                    {
+                        "S.No": 1,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Industry, address": null,
+                        "Name of the Student": null,
+                        "Duration": null,
+                        "Request and acceptance communication details": null,
+                        "Internship proof google drive link": null
+                    }
+                ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": null,
+                        "Name of the Product": null,
+                        "Team members details": null,
+                        "Demo availability status": null,
+                        "Funding agency/Industrial Partners": null,
+                        "Product image in google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": null,
+                        "Name of the Product": null,
+                        "Team members details": null,
+                        "Demo availability status": null,
+                        "Funding agency/Industrial Partners": null,
+                        "Product image in google drive link": null
+                    }
+                ]
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

@@ -1,0 +1,188 @@
+[
+    {
+        "dept_id": "001",
+        "department_name": "Artificial Intelligence and Data Science (AI&DS)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/001/1.webp", "image_name": "DATA SCIENCE LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/2.webp", "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/3.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/4.webp", "image_name": "DATA STRUCTURES LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/5.webp", "image_name": "OBJECT ORIENTED PROGRAMMING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/6.webp", "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/7.webp", "image_name": "DATA SCIENCE AND ANALYTICS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/8.webp", "image_name": "MACHINE LEARNING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/9.webp", "image_name": "DEEP LEARNING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/001/10.webp", "image_name": "PROJECT LABORATORY", "image_content": ""}
+       
+        ]
+    },
+    {
+        "dept_id": "002",
+        "department_name": "Automobile Engineering (AUTO)",
+        "infrastructure_images": [
+    {"image_path": "/static/images/infrastructure/002/1.webp", "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/2.webp", "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/3.webp", "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/4.webp", "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/5.webp", "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/6.webp", "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/7.webp", "image_name": "VEHICLE TESTING LABORATORY-1", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/8.webp", "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/9.webp", "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/10.webp", "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/11.webp", "image_name": "VEHICLE TESTING LABORATORY-2", "image_content": ""}, 
+    {"image_path": "/static/images/infrastructure/002/12.webp", "image_name": "VEHICLE TESTING LABORATORY-3", "image_content": ""}
+    ]
+    },
+    {
+        "dept_id": "003",
+        "department_name": "Chemistry",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/003/1.webp", "image_name": "ENGINEERING CHEMISTRY LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/003/2.webp", "image_name": "ELECTRO CHEMISTRY RESEARCH LABORATORY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "004",
+        "department_name": "Civil Engineering (CIVIL)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/004/1.webp", "image_name": "STRENGTH OF MATERIALS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/004/2.webp", "image_name": "FLUID MECHANICS AND HYDRAULIC MACHINERY LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/004/3.webp", "image_name": "SOIL MECHANICS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/004/4.webp", "image_name": "CONCRETE AND HIGHWAY ENGINEERING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/004/5.webp", "image_name": "SURVEYING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/004/6.webp", "image_name": "ENVIRONMENTAL ENGINEERING LABORATORY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "005",
+        "department_name": "Computer Science & Engineering (CSE)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/005/1.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/005/2.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/005/3.webp", "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/005/4.webp", "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY", "image_content": ""}
+
+        ]
+    },
+    {
+        "dept_id": "006",
+        "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/006/1.webp", "image_name": "CLASS ROOM", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/006/2.webp", "image_name": "LABORATORY FACILITIES", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/006/3.webp", "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY", "image_content":""},
+            {"image_path": "/static/images/infrastructure/006/4.webp", "image_name": "RESEARCH LABORATORY", "image_content":""}
+            
+
+        ]
+    },
+    {
+        "dept_id": "007",
+        "department_name": "Electrical & Electronics Engineering (EEE)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/007/1.webp", "image_name": "WORKSHOP PRACTICE", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/2.webp", "image_name": "ELECTRIC CIRCUITS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/3.webp", "image_name": "ELECTRICAL MACHINES – I & II LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/4.webp", "image_name": "ELECTRONICS LABORATORY LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/6.webp", "image_name": "CONTROL AND INSTRUMENTATION LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/7.webp", "image_name": "MICROPROCESSOR AND MICROCONTROLLER  LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/8.webp", "image_name": "POWER ELECTRONICS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/9.webp", "image_name": "RENEWABLE ENERGY SYSTEMS LABORATORY ", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/10.webp", "image_name": "POWER SYSTEM SIMULATION LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/007/11.webp", "image_name": "RESEARCH LABS", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "008",
+        "department_name": "Electronics & Instrumentation Engineering (EIE)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/008/1.webp", "image_name": "VIRTUAL INSTRUMENTATION CENTRE", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/2.webp", "image_name": "PROCESS CONTROL LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/3.webp", "image_name": "R&D LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/4.webp", "image_name": "DEPARTMENT LIBRARY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/5.webp", "image_name": "MICROPROCESSOR AND MICROCONTROLLER LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/6.webp", "image_name": "CIRCUITS AND DEVICES LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/008/7.webp", "image_name": "INSTRUMENTATION LABORATORY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "009",
+        "department_name": "Electronics and Communication Engineering (ECE)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/009/1.webp", "image_name": "ELECTRONICS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/2.webp", "image_name": "NETWORK LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/3.webp", "image_name": "MICROPROCESSOR LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/4.webp", "image_name": "MICROWAVE & COMMUNICATION LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/5.webp", "image_name": "INTEGRATED CIRCUITS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/6.webp", "image_name": "ADVANCED ELECTRONICS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/009/7.webp", "image_name": "STIMULATION LABORATORY", "image_content": ""}
+            
+        ]
+    },
+    {
+        "dept_id": "010",
+        "department_name": "English",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/010/1.webp", "image_name": "COMMUNICATION SKILLS LABORATORY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "011",
+        "department_name": "Information Technology (IT)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY", "image_content":""},
+            {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "013",
+        "department_name": "Mechancial Engineering (MECH)",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/013/1.webp", "image_name": "ENGINEERING PRACTICE LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/2.webp", "image_name": " THERMAL ENGINEERING LABORATORY ", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/3.webp", "image_name": "HEAT TRANSFER LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/4.webp", "image_name": "MANUFACTURING TECHNOLOGY LABORATORY ", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/5.webp", "image_name": "DYNAMICS LABORATORY ", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/6.webp", "image_name": "METROLOGY AND MEASUREMENTS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/7.webp", "image_name": "MECHATRONICS LABORATORY ", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/8.webp", "image_name": "CAD/CAM LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/9.webp", "image_name": "SIMULATION AND ANALYSIS LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/10.webp", "image_name": "PROJECT LABORATORY-  STIR CASTING", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/11.webp", "image_name": "PROJECT LABORATORY-  DOUBLE ROLL MILL (RUBBER COMPOUNDING MILL)", "image_content":""},
+            {"image_path": "/static/images/infrastructure/013/12.webp", "image_name": "PROJECT LABORATORY-   PLANETARY BALL MILL", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/13.webp", "image_name": "PROJECT LABORATORY-   HYDRAULIC PRESS", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/14.webp", "image_name": "PROJECT LABORATORY-   COMPUTERIZED UNIVERSAL TESTING MACHINE", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/15.webp", "image_name": "PROJECT LABORATORY-   MUFFLE FURNACE", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/013/16.webp", "image_name": "PROJECT LABORATORY-  WIRE CUT EDM", "image_content": ""}
+        ]
+    },  
+    {
+        "dept_id": "015",
+        "department_name": "Physics",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/015/1.webp", "image_name": "ENGINEERING PRACTICE LABORATORY", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/015/2.webp", "image_name": "MATERIALS RESEARCH LABORATARY", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "016",
+        "department_name": "M.E Computer Science Engineering",
+        "infrastructure_images": [
+            {"image_path": "/static/images/infrastructure/016/1.webp", "image_name": "", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/016/2.webp", "image_name": "", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/016/3.webp", "image_name": "", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/016/4.webp", "image_name": "", "image_content": ""},
+            {"image_path": "/static/images/infrastructure/016/5.webp", "image_name": "", "image_content": ""}
+        ]
+    },
+    {
+        "dept_id": "017",
+        "department_name": "Master of Business Administration",
+        "infrastructure_images":[
+            {"image_path": "/static/images/infrastructure/017/1.webp", "image_name": "DATA ANALYSIS AND BUSINESS MODELING LABORATORY","image_content": ""}
+        ]
+    }
+]

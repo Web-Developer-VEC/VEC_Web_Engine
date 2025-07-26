@@ -1,0 +1,112 @@
+[{
+  "departments": [
+    {
+      "id": 1,
+      "department": "B.E. Civil Engineering",
+      "pdfs": [
+        {
+          "name": "2021-2022",
+          "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "department": "B.E. Computer Science and Engineering",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "department": "B.E. Electrical and Electronics Engineering",
+      "pdfs": [
+        {
+          "name": "2021-2022",
+          "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "department": "B.E. Electronics and Communication Engineering",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "department": "B.E. Electrical and Electronics Engineering",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "department": "B.Tech. Information Technology",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "department": "B.E. Mechanical Engineering",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+        },
+        {
+          "name": "2022-2023 to 2024-2025",
+          "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "department": "B.E Automobile Engineering",
+      "pdfs": [
+        {
+          "name": "2019-2020 to 2021-2022",
+          "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+        }
+      ]
+    }
+  ]
+}]

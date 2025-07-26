@@ -1,5 +1,0 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className='relative w-full h-full group duration-300 transition-all'>
-                            <path d="M 46.5 85 C 35 70, 40 62.5, 50 45 C 60 62.5, 65 70, 53.5 85 C 60 70, 55 60, 50 54 C 45 60, 40 70, 46.5 85"
-                                className='fill-orange-600 stroke-orange stroke-1 stroke-white absolute origin-bottom translate-y-[-5%]' />
-                         
-                        </svg>

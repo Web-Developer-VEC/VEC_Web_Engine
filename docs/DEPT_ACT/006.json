@@ -1,0 +1,62 @@
+[
+  {
+      "dept_id": "006",
+      "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+      "dept_activities": [
+        {
+          "date": "17/08/2024",
+          "name_of_event": "A Seminar On A Game World-Introduction to C# ",
+          "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+          "resource_person": "Ms.ManishmaSundarajan – Sr Software Engineer, Light&Wonder",
+          "beneficiaries": "2nd year CSE (Cyber Security )",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO5,PO12,PSO1",
+          "image_path": "/static/images/dept_activities/006/1.webp"
+        },
+        {
+          "date": "24/09/2024",
+          "name_of_event": "A Seminar  on How to Prepare for MSME Idea Hacksthon 4.0 ",
+          "coordinator": "Dr.S.Rajalakshmi",
+          "resource_person": "MSME Idea Hackathon 2.0 & 3.0 Winners",
+          "beneficiaries": "SIH participants",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1",
+          "image_path": "/static/images/dept_activities/006/2.webp"
+        },
+        {
+          "date": "18/02/2025",
+          "name_of_event": "Seminar on Burp Suite: A Cybersecurity Tool ",
+          "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+          "resource_person": "Mr.Karthikeyan , Logitech Product Security",
+          "beneficiaries": "II year CSE (Cyber Security)",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+          "image_path": "/static/images/dept_activities/006/3.webp"
+        },
+        {
+          "date": "20/02/2025",
+          "name_of_event": "Seminar on The  Art of Hacking – Cyber Security ",
+          "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+          "resource_person": "Mr.Sriram Kesavan, Founder, TG CyberLabs",
+          "beneficiaries": "II year CSE (Cyber Security)",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+          "image_path": "/static/images/dept_activities/006/4.webp"
+        },
+        {
+          "date": "27/02/2025",
+          "name_of_event": "  Seminar on  Thick Client Pentesting: Exploiting the Unseen Vulnerabilities",
+          "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+          "resource_person": "Mr.Karthikeyan , Product Security Manager, Logitech",
+          "beneficiaries": "II year CSE (Cyber Security)",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+          "image_path": "/static/images/dept_activities/006/5.webp"
+        }, 
+        {
+          "date": "26/09/2024.",
+          "name_of_event": "Industrial visit (IV) TO RETECH LASERS",
+          "coordinator": "Ms.M.ParveenBanu,Ms.K.AksayaDharani",
+          "resource_person": "RETECH LASER",
+          "beneficiaries": "II year CSE (Cyber Security )",
+          "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1",
+          "image_path": "/static/images/dept_activities/006/6.webp"
+        }
+      ]
+    }
+  ]

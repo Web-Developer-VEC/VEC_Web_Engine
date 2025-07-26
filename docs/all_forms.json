@@ -1,0 +1,62 @@
+[
+    {
+        "students": [
+            {
+                "name": [
+                    "NPTEL Course Registration form for credit transfer",
+                    "Application Form - NPTEL Credit Transfer",
+                    "Application form - CGPA to Percentage Conversion",
+                    "Application Form - Review after Revaluation",
+                    "Application Form - Revaluation (After obtaining Photocopy)",
+                    "Application Form - Photocopy",
+                    "Evaluation Form for Photocopy of answer scripts B.E./B.Tech./M.E./MBA (R2023)",
+                    "B.E.& M.E - Evaluation form for Photocopy of answer script",
+                    "Project Report Format",
+                    "Project Report Specimen",
+                    "Revised Fee Structure for Certificates & Coursework",
+                    "Application Form - Name Correction",
+                    "Application Form - Duplicate Certificate",
+                    "Application Form - Duplicate Hall Ticket",
+                    "Application Form - Withdrawal",
+                    "Application Form - Transcript Certificate"
+                ],
+                "link": [
+                    "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf",
+                    "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf",
+                    "/static/pdfs/all_forms/Application_for_CGPA_to_Percentage_conversion.pdf",
+                    "/static/pdfs/all_forms/Application-Form-Review-after-Revaluation.pdf",
+                    "/static/pdfs/all_forms/Application-Form-Revaluation-After-obtaining-Photocopy.pdf",
+                    "/static/pdfs/all_forms/Application-Form-Photocopy.pdf",
+                    "/static/pdfs/all_forms/MBA-Evaluation-form-for-Photocopy-of-answer-script.pdf",
+                    "/static/pdfs/all_forms/B.E.-M.E-Evaluation-form-for-Photocopy-of-answer-script.pdf",
+                    "/static/pdfs/all_forms/Project-report-format.pdf",
+                    "/static/pdfs/all_forms/Project-Report-specimen.pdf",
+                    "/static/pdfs/all_forms/Fee_Sructure_for_certificates_from_March-2024.pdf",
+                    "/static/pdfs/all_forms/Application-form_Correction-in-Grade-sheet-pdf.pdf",
+                    "/static/pdfs/all_forms/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf",
+                    "/static/pdfs/all_forms/Application-for-Duplicate-Hall-Ticket.pdf",
+                    "/static/pdfs/all_forms/Application-Form-for-Withdrawal.pdf",
+                    "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
+                ]
+            }
+        ],
+        "faculty": [
+            {
+                "name": [
+                    "SEE_QP_Feedback_R2023",
+                    "SEE_QP_Feedback_R2019",
+                    "Self declaration form (Children/Spouse pursuing UG/PG degree in VEC)",
+                    "Exam Duty Alteration Format (For Faculty)",
+                    "Registration Form - Ph.D. Course Work"
+                ],
+                "link": [
+                    "/static/pdfs/all_forms/SEE_QP_Feedback_R2023.pdf",
+                    "/static/pdfs/all_forms/SEE_QP_Feedback_R2019.pdf",
+                    "/static/pdfs/all_forms/Declaration_from_Staff(Children_Spouse_doing_UG_PG_degree_in_VEC).pdf",
+                    "/static/pdfs/all_forms/Duty_alteration_Format_Faculty_Final.pdf",
+                    "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
+                ]
+            }
+        ]
+    }
+]

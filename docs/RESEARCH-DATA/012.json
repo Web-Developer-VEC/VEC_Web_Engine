@@ -1,0 +1,207 @@
+{  
+    "dept_id":"012",
+    "department_name": "Mathematics",
+    "data":
+    [
+        {
+            "year": "2020-21",
+            "docs": [
+
+                {
+                    "JOURNAL_PUBLICATIONS": [
+                        {
+                            "S.No": 1,
+                            "Name of the Author(s)": "Dr.R.Karthik",
+                            "Title of the Paper": "The methodology for communication problem in telecom sector using fuzzy sub monoid and group theory",
+                            "Name of the Journal": "IOP: Journal of Physics(2021)",
+                            "Doi": "https://iopscience.iop.org/article/10.1088/1742-6596/1964/4/042100/pdf",
+                            "Colloboration Institute": "No",
+                            "Colloboration agreement Yes / No": "No"
+                        }
+                        
+                    ]
+                }
+            ]
+        },
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "Fuzzy Inventory Model for Imperfect Items with Price Discount and Penalty maintenance cost",
+                        "Name of the Journal": "Mathematical problems in engineering (Hindawi)",
+                        "Month and Year of publication": "Jan-23",
+                        "ISSN": "1303-5150 ",
+                        "Doi": "https://doi.org/10.1155/2023/1246257",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "Economic orederd Quantity inventory model with Verhults demand under Fuzzy Uncertainty for Geographical market",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Journal of Intelligent & Fuzzy Systems IFS-220832R1",
+                        "Month and Year of publication": "Oct-22",
+                        "Doi": "https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs220832",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1eZrrgQy5ftWizxY77jtBnzwHnSA7YK57/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "Optimization Fuzzy Inventory Lot-size with Scrap and Defective items under inspection policy",
+                        "Name of the Journal": "Soft Computing SOCO-D-22-02841 (jan 2023)",
+                        "Month and Year of publication": "Jan-23",
+                        "Doi": "https://doi.org/10.1007/s00500-022-07804-3",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Dr.P.Gurusamy",
+                        "Title of the Paper": "The Second- and Third-Order Hermitian Toeplitz Determinants for Some Subclasses of Analytic Functions Associated with Exponential Function.",
+                        "Name of the Journal": " Synergies in Analysis, Discrete Mathematics, Soft Computing and Modelling. Forum for Interdisciplinary Mathematics. Springer, Singapore.(book chapter)",
+                        "Month and Year of publication": "Feb-23",
+                        "Doi": "https://doi.org/10.1007/978-981-19-7014-6_1",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "year": "2023-24",
+        "docs": [
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr.R.Karthik",
+                        "Title of the Paper": "A Study on Mathematics Modeling using Fuzzy Logic and Artificial Neural Network for Medical Decision Making System",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "2023 International Conference on Computational Intelligence and Sustainable Engineering Solutions (CISES)",
+                        "Month and Year of publication": "Jul-23",
+                        "Doi": "https://doi.org/10.1109/CISES58720.2023.10183534",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "no"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr.P.Gurusamy",
+                        "Title of the Paper": "Sharp bounds of some coefficient functionals over the class of functions convex in one direction",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "AIP Conference Proceedings",
+                        "Month and Year of publication": "Jul-23",
+                        "Doi": "https://doi.org/10.1063/5.0149373",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "A Multi-Period Optimization Model for Medicine Supply Chains Using Modified Interactive Multi-Objective Fuzzy Programming",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "Supply Chain Analytics ",
+                        "Month and Year of publication": "Nov-23",
+                        "Colloboration Institute": "Vel Tech Multi Tech Dr.Rangarajan Dr.Sakunthala Engineering College, SRM Institute of Science and Technology Chennai Institute of Technology,",
+                        "Colloboration agreement Yes / No": "No"
+                    }
+                ]
+            }          
+        ]
+    },
+    {
+        "year": "2024-25",
+        "docs": [
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No":1,
+                        "Name of the Author(s)":"Dr.R.Karthik",
+                        "Title of the Paper":"An ellipsoid restrictive region-based regularization for regression analysis",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other":"Scopus",
+                        "Name of the Journal":"International Journal of Information Technology",
+                        "Month and Year of publication":"Dec-24",
+                        "ISSN":"2511-2112.",
+                        "DOI":"https://doi.org/10.1007/s41870-024-02282-2",
+                        "Colloboration Institute":"Yes",
+                        "Colloboration agreement Yes / No":"No",
+                        " E copy of journal papers google drive link": "https://drive.google.com/file/d/1_77cii06d9TW-3tC1yrfTYe6nMJJJEvg/view?usp=drive_link"
+                    },
+                    {
+                        "S.No":2,
+                        "Name of the Author(s)": "Dr.P.Gurusamy",
+                        "Title of the Paper": "Lower and upper bounds for the second and third order Hermitian Toeplitz determinants for starlike and convex functions related to lemniscate of Bernoulli",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "Scopus",
+                        "Name of the Journal": "AIP CONFERENCE PROCEEDINGS",
+                        "Month and Year of publication": "Dec-24",
+                        "ISSN": "1551-7616",
+                        "DOI": "https://doi.org/10.1063/5.0210272",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No":"No",
+                        " E copy of journal papers google drive link": "https://pubs.aip.org/aip/acp/article-abstract/3005/1/020011/3325291/Lower-and-upper-bounds-for-the-second-and-third?redirectedFrom=fulltext"
+                    },
+                    {
+                        "S.No":3,
+                        "Name of the Author(s)": "Dr.P.Gurusamy",
+                        "Title of the Paper": "The Fekete–Szegö Functional Associated with the mth Root Transformation Using Conical Domains",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI & Scopus",
+                        "Name of the Journal": "Ukrainian Mathematical",
+                        "Month and Year of publication": "Nov-24",
+                        "ISSN": "00415995, 15739376",
+                        "DOI": "https://doi.org/10.1007/s11253-024-02373-0",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No":"No",
+                        " E copy of journal papers google drive link": "https://link.springer.com/article/10.1007/s11253-024-02373-0"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Dr.P.Gurusamy",
+                        "Title of the Paper": "Initial Coefficient Bounds for Bi-Close-to-Convex Classes of n-Fold-Symmetric Bi-Univalent Functions",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Axioms",
+                        "Month and Year of publication": "Oct-24",
+                        "ISSN": "2075-1680",
+                        "DOI": "https://doi.org/10.3390/axioms13110735",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No":"No",
+                        " E copy of journal papers google drive link": "https://www.mdpi.com/2075-1680/13/11/735"
+                    },
+                    {
+                        "S.No":5,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "Fuzzy decision-making for cost-effective production planning in manufacturing systems",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI & Scopus",
+                        "Name of the Journal": "Engineering Research Express",
+                        "Month and Year of publication": "Aug-24",
+                        "ISSN": "2631-8695",
+                        "DOI": "https://doi.org/10.1088/2631-8695/ad6ad3",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://iopscience.iop.org/article/10.1088/2631-8695/ad6ad3"
+                    },
+                    {
+                        "S.No":6,
+                        "Name of the Author(s)": "Dr.V.Kuppulakshmi",
+                        "Title of the Paper": "Optimum production lot size for a perishable product under exponential demand with partial backordering and rework",
+                        "Name of the Journal": "Spectrum of Mechanical Engineering and Operational Research",
+                        "Month and Year of publication": "Aug-24",
+                        "ISSN": "3042-0288",
+                        "DOI": "https://doi.org/10.31181/smeor11202416",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No": "No",
+                        " E copy of journal papers google drive link": "https://smeor-journal.org/index.php/smeor/article/view/16"
+                    }
+                ]
+            }
+        ]
+    }
+]
+}
+        

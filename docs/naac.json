@@ -1,0 +1,40 @@
+[
+  {
+    "sections": [
+      {
+        "title": "Self Study Reports",
+        "content": [
+          {
+            "title": "Cycle 1 SSR",
+            "pdfs_path": "/static/pdfs/naac/ssr_1.pdf"
+          },
+          {
+            "title": "Cycle 2 SSR",
+            "pdfs_path": "/static/pdfs/naac/ssr_2.pdf"
+          }
+        ]
+      },
+      {
+        "title": "Certificates",
+        "content": [
+          {
+            "title": "Cycle 1 - 2009-2014",
+            "pdfs_path": "/static/pdfs/naac/cycle1_2009-2014.pdf"
+          },
+          {
+            "title": "Cycle 2 - 2016-2021",
+            "pdfs_path": "/static/pdfs/naac/cycle2_2016-2021.pdf"
+          },
+          {
+            "title": "Extended Cycle 2 (2018-2024)",
+            "pdfs_path": "/static/pdfs/naac/extended_cycle2_2018-2024.pdf"
+          },
+          {
+            "title": "Extended Cycle 2 January 2025 till date",
+            "pdfs_path": "/static/pdfs/naac/extended_cycle2_Jan-2025.pdf"
+          }
+        ]
+      }
+    ]
+  }
+]

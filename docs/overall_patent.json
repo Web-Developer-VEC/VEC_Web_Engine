@@ -1,0 +1,942 @@
+[
+    {
+        "dept_id": "000",
+        "patents": [
+            {
+                "name": "VEC-000-02-188",
+                "details": {
+                    "nameofpatent": [
+                        "Sensitive data protection by filly stable Homomorphic encryption in supply chain Finance Novelty - Reference number 202241005988 date 2/2/2022",
+                        "Fully integrated wireless GPS TV remote tracker- Reference no. ` 202241005573 DT.30/1/2022"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Published"],
+                    "date": ["2/2/2022", "30/1/2022"]
+                }
+            },
+            {
+                "name": "VEC-000-04-189",
+                "details": {
+                    "nameofpatent": ["EMPLOYEE PEREFORMANCE EVALUATION AND APPRAISAL CALCULATION USING DATA MINING"],
+                    "patenttype": ["INTERNATIONAL CLASSIFICATION"],
+                    "country": ["INDIA"],
+                    "status": ["PUBLISHED"],
+                    "date": ["2024-09-08"]
+                }
+            },
+            {
+                "name": "VEC-000-04-194",
+                "details": {
+                    "nameofpatent": ["CUSTOMER LOYALTY MANAGEMENT TOOL WITH AI- POWERED PREDICTIVE INSIGHTS"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2025-03-01"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "001",
+        "patents": [
+            {
+                "name": "VEC-001-01-077",
+                "details": {
+                    "nameofpatent": [
+                        "IOT based Agriculture Crop Monitoring System Using Sensors",
+                        "IoT based remote Intellient Healthcare System for the Detection and Prevention of a Patient Health Monitoring",
+                        "A smart application for Multi-Food Recognition using Machine learning",
+                        "Design system of Monitoring and Alert Management of Spy Tracker using artificial intelligence (VSaaS) for IoT",
+                        "System for Water Management Platform for Smart Irrigation using Cloud based- IoT",
+                        "A Novel method- Crop Health Monitoring System Using IoT and Machine Learning"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY", "UTILITY", "UTILITY", "UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA", "INDIA", "INDIA", "INDIA", "Australia"],
+                    "status": ["Published", "Published", "Published", "Published", "Published", "Granted"],
+                    "date": ["16.04.2021", "23.07.2021", "30.07.2021", "11.02.2022", "03.09.2022", "08.12.2021"]
+                }
+            },
+            {
+                "name": "VEC-001-04-056",
+                "details": {
+                    "nameofpatent": ["IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE"],
+                    "patenttype": ["DESIGN PATENT"],
+                    "country": ["INDIA"],
+                    "status": ["PUBLISHED"],
+                    "date": ["20-02-2024"]
+                }
+            },
+            {
+                "name": "VEC-001-04-068",
+                "details": {
+                    "nameofpatent": [
+                        "DESIGN OF AN INTERNET OF THINGS (IOT) BASED SYSTEM FOR SMART HEALTHCARE APPLICATIONS",
+                        "VIRTUAL REALITY BASED EDUCATIONAL DEVICE"
+                    ],
+                    "patenttype": ["UTILITY", "DESIGN"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["Published", "Published"],
+                    "date": ["17.06.2022", "06.09.2024"]
+                }
+            },
+            {
+                "name": "VEC-001-04-074",
+                "details": {
+                    "nameofpatent": [
+                        "Automatic Trash Collecting Mobile Robot for Gated Society",
+                        "Secured Monitoring and Controlling System in Coal Mining using IoT",
+                        "IoT Based Industrial Pollution Measurement Device"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Design"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Published"],
+                    "date": ["25.06.2021", "18.03.2022", "20.02.2024"]
+                }
+            },
+            {
+                "name": "VEC-001-04-075",
+                "details": {
+                    "nameofpatent": ["ELECTRIC VEHICLE CHARGE ADMINISTRATING STATION AND METHOD OF PROCESSING PAYMENT THEREOF"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2024-08-23"]
+                }
+            },
+            {
+                "name": "VEC-001-04-085",
+                "details": {
+                    "nameofpatent": ["Wearable IOT Health Care Device with Machine Learning For Real -Time Health Data Analysis"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["21/6/2024"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "002",
+        "patents": [
+            {
+                "name": "VEC-002-03-167",
+                "details": {
+                    "nameofpatent": [
+                        "Self Sustainable Electric Generation Mechanism And Methods Of Operating Boat Thereof",
+                        "Detachable Thernoelectric generator and method of generating electricity thereof",
+                        "Mobile Phone cum Power Bank Charger Holder"
+                    ],
+                    "patenttype": ["Utility Patent", "Utility Patent", "Design Patent"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Granted"],
+                    "date": ["23.12.2024", "23.12.2024", "23.12.2024"]
+                }
+            },
+            {
+                "name": "VEC-002-04-155",
+                "details": {
+                    "nameofpatent": [
+                        "Solar hybrid desalination system",
+                        "Intelligent Head protective safety helmet",
+                        "Hand Held Braille Device and Methods Translating media and text contents into Braille character thereof"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Granted", "Published", "Published"],
+                    "date": ["", "", ""]
+                }
+            },
+            {
+                "name": "VEC-002-04-160",
+                "details": {
+                    "nameofpatent": ["Ai-Based Wireless Charging Station for Electric Vehicles"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["29.11.2024"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "003",
+        "patents": [
+            {
+                "name": "VEC-003-04-088",
+                "details": {
+                    "nameofpatent": ["MECHANICAL ENERGY STORAGE MACHINE"],
+                    "patenttype": ["DESIGN PATENT"],
+                    "country": ["INDIA"],
+                    "status": ["PUBLISHED"],
+                    "date": ["2024-04-01"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "004",
+        "patents": []
+    },
+    {
+        "dept_id": "005",
+        "patents": [
+            {
+                "name": "VEC-005-03-106",
+                "details": {
+                    "nameofpatent": ["AUTONOMOUS GESTURE CONTROLLED SURVEILLANCEDRONE SYSTEM AND METHODS PROVIDING SAFETY THEREOF"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["INDIA"],
+                    "status": ["Patent Published: 16/12/2022"],
+                    "date": [""]
+                }
+            },
+            {
+                "name": "VEC-005-03-132",
+                "details": {
+                    "nameofpatent": ["Wearable IOT Health care Device with machine learning for real time health data analysis"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["21.06.2024"]
+                }
+            },
+            {
+                "name": "VEC-005-03-139",
+                "details": {
+                    "nameofpatent": [
+                        "Autonomous unmanned aerial vehicle with Vertical take-off and landing mechanism",
+                        "Augmented reality and Internet of Things (IoT) supported warehouse food grains quality monitoring system",
+                        "Portable opto-electronic sensing system for the detection of food freshness"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Granted", "Granted", "FER Submitted"],
+                    "date": ["05.02.2024", "12.03.2024", "10.06.2023"]
+                }
+            },
+            {
+                "name": "VEC-005-04-105",
+                "details": {
+                    "nameofpatent": [
+                        "RFID and NB-IoT Smart Specimen Transport System for Hospital Laboratory",
+                        "Road Traffic Vehicle Detection and Tracking using Deep Learning with Custom-Collected and Public Datasets"
+                    ],
+                    "patenttype": ["UTILITY", "ORDINARY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["Published", "Published"],
+                    "date": ["08.08.2023", "02.01.2024"]
+                }
+            },
+            {
+                "name": "VEC-005-04-107",
+                "details": {
+                    "nameofpatent": [
+                        "STYLUS PEN",
+                        "Machine Learning based Robot for monitoring crop yield"
+                    ],
+                    "patenttype": ["Design Grant", "Design Patent"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Published"],
+                    "date": ["23-01-2024", "2024-12-04 00:00:00"]
+                }
+            },
+            {
+                "name": "VEC-005-04-112",
+                "details": {
+                    "nameofpatent": ["Machine Learning Based Robot For Monitoring Crop Yield"],
+                    "patenttype": [""],
+                    "country": [""],
+                    "status": [""],
+                    "date": [""]
+                }
+            },
+            {
+                "name": "VEC-005-04-122",
+                "details": {
+                    "nameofpatent": ["Sensor stimulated touch responsive frame for non-touch screen laptops"],
+                    "patenttype": [""],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2023-02-21"]
+                }
+            },
+            {
+                "name": "VEC-005-04-123",
+                "details": {
+                    "nameofpatent": ["Detecting and Classifying Malicious Uniform Resource Locations using Advanced Machine Learning"],
+                    "patenttype": [""],
+                    "country": ["INDIA"],
+                    "status": ["Filled"],
+                    "date": [""]
+                }
+            },
+            {
+                "name": "VEC-005-04-125",
+                "details": {
+                    "nameofpatent": ["Sensor stimulated touch responsive frame for non-touch screen laptops"],
+                    "patenttype": ["-"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2023-02-21"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "007",
+        "patents": [
+            {
+                "name": "VEC-007-04-159",
+                "details": {
+                    "nameofpatent": ["AI-BASED PREDICTIVE MAINTENANCE AND EFFICIENCY ENHANCEMENTFOR PHOTOVOLTAIC CELLS IN SMART GRIDS"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["India"],
+                    "status": ["2024-06-21"],
+                    "date": ["2024-06-21"]
+                }
+            },
+            {
+                "name": "VEC-007-04-177",
+                "details": {
+                    "nameofpatent": ["BIO BAG"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["INDIA"],
+                    "status": ["PUBLISHED"],
+                    "date": ["20.12.2024"]
+                }
+            },
+            {
+                "name": "VEC-007-04-184",
+                "details": {
+                    "nameofpatent": ["Electronic Watchdog based Home Safe System"],
+                    "patenttype": ["utility"],
+                    "country": ["india"],
+                    "status": ["published"],
+                    "date": [""]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "008",
+        "patents": [
+            {
+                "name": "VEC-008-01-191",
+                "details": {
+                    "nameofpatent": [
+                        "COMPUTER VISION BASED ASSISTIVE DEVICE WITH DEPTH CAMERA, IMU AND HAPTIC FEEDBACK FOR VISUALLY IMPARED NAVIGATION",
+                        "GAN POWERED SMART MIRROR WITH 3D, SKIN ANALYSIS AND CLOTHING RECOGNITION CAMERAS FOR PERSONALIZED BEAUTY AND FASHION",
+                        "NETWORK GATEWAY DEVICE"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Design"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Granted"],
+                    "date": ["202441101947 / 03/01/2025", "202441101935 / 17/01/2025", "400851-001 / 29/11/2023"]
+                }
+            },
+            {
+                "name": "VEC-008-04-172",
+                "details": {
+                    "nameofpatent": [
+                        "IoT Based Automation For The Purpose of Monitoring Temperature & Vibration in Processes & Preventing Accidents.",
+                        "Radial Pen Plotter"
+                    ],
+                    "patenttype": ["UTILITY", "DESIGN"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED"],
+                    "date": ["2023-09-01", "2024-05-03"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "009",
+        "patents": [
+            {
+                "name": "VEC-009-01-090",
+                "details": {
+                    "nameofpatent": [
+                        "Augmented reality and Internet of Things supported monitoring system",
+                        "Sustainable Package Container And Methods of Improving Shelf-Time Of Food Items There Of"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["Published", "Awaiting complete specification"],
+                    "date": ["2021-05-21 00:00:00", "30.11. 2021"]
+                }
+            },
+            {
+                "name": "VEC-009-01-102",
+                "details": {
+                    "nameofpatent": [
+                        "Augmented reality and Internet of Things supported monitoring system",
+                        "Sustainable Package Container And Methods of Improving Shelf-Time Of Food Items There Of"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["Published", "Awaiting complete specification"],
+                    "date": ["2021-05-21 00:00:00", "30.11. 2021"]
+                }
+            },
+            {
+                "name": "VEC-009-02-089",
+                "details": {
+                    "nameofpatent": [
+                        "SMART WATER NETWORK OPTIMIZATION TECHNIQUES FOR WATER QUALITY MONITORING AND LEAKAGE MANAGEMENT",
+                        "DESIGN SYSTEM OF DIGITAL AND ROBUST CONTROL FOR SUGAR REFINERY USING MACHINE LEARNING",
+                        "5G AND IOT ENABLED VIRTUAL REALITY BASED ENTERTAINMENT AND LEARNING DEVICE",
+                        "INTELLIGENT CHIP CONTROL OXYGEN CONCENTRATOR",
+                        "IOT BASED SYSTEM FOR CLASSIFYING REPTILIAN IMAGES",
+                        "IoT BASED STREET LIGHT CHARGING DEVICE",
+                        "A NOVEL DEVICE TO PREDICT THE PERFORMANCE MEASURE OF SPORTS PERSON USING GAIT ANLYSIS"
+                    ],
+                    "patenttype": ["DESIGN", "DESIGN", "DESIGN", "DESIGN", "DESIGN", "DESIGN", "UTILITY"],
+                    "country": ["INDIA", "INDIA", "INDIA", "INDIA", "INDIA", "INDIA", "INDIA"],
+                    "status": ["APPLIED FOR GRANT", "GRANTED", "REQUEST FOR EXAMINATION", "FER GENERATED", "PUBLISHED", "GRANTED", "REQUEST FOR EXAMINATION"],
+                    "date": ["31.01.2020", "2022-02-25 00:00:00", "01.09.2023", "25.08.23", "12.01.24", "16.05.2024", "01.09.2023"]
+                }
+            },
+            {
+                "name": "VEC-009-03-041",
+                "details": {
+                    "nameofpatent": [
+                        "Autonomous Accident Alert System and methods of informing thereof",
+                        "construction of a user- friendly intelligent sanitary napkin vendor machines in public places",
+                        "IOT based system for classifying reptilian images",
+                        "AI and IOT Based Sprinkler for Automated Agricultural Irrigation",
+                        "Blockchain based medical data storage cloud device"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India", "India"],
+                    "status": ["Published", "Published", "Published", "Filed", "Filed"],
+                    "date": ["2020", "2022", "2023", "2024", "2024"]
+                }
+            },
+            {
+                "name": "VEC-009-03-052",
+                "details": {
+                    "nameofpatent": [
+                        "Wrist Band for Safety Tracker",
+                        "Intelligent Chip Control Oxygen Concentrator",
+                        "A Novel device to predict the performance measure of sports person using GAIT Analysis",
+                        "Remote-Controlled Subaquatic Vehicle for Enhanced Aquarium Inspection and Maintenance"
+                    ],
+                    "patenttype": ["Design", "Design", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India"],
+                    "status": ["Granted", "Granted", "Published", "Patent Filed"],
+                    "date": ["2022-12-12", "2023-06-05", "2023-06-27", "2023-10-04"]
+                }
+            },
+            {
+                "name": "VEC-009-03-058",
+                "details": {
+                    "nameofpatent": [
+                        "Construction of a user-friendly intelligent sanitary napkin vendor machines in public spaces.",
+                        "IoT based system for classifying Reptilian images"
+                    ],
+                    "patenttype": ["Design", "Design"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Published"],
+                    "date": ["30.11.2022", "12.01.2024"]
+                }
+            },
+            {
+                "name": "VEC-009-04-007",
+                "details": {
+                    "nameofpatent": [
+                        "Automated Iris Recognition based Gender Classification Using Neural Network for Cyber security Investigation",
+                        "FPGA Based Remote Smart Speaker For Agriculture System",
+                        "Plant and Soil monitoring using Cloud-based IoT for Smart Agriculture",
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Design Systems of NLP as Spelling Correction for Offline Handwritten Text Recognition using Machine Learning",
+                        "Node Transmission Line Monitoring"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY", "UTILITY", "UTILITY", "UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA", "INDIA", "INDIA", "INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED", "PUBLISHED", "PUBLISHED", "PUBLISHED", "PUBLISHED"],
+                    "date": ["30.07.2021", "30.07.2021", "03.09.2021", "06.05.2022", "09.12.2022", "15.03.2024"]
+                }
+            },
+            {
+                "name": "VEC-009-04-012",
+                "details": {
+                    "nameofpatent": [
+                        "CONSTRUCTION OF A USER-FRIENDLY INTELLIGENT SANITARY NAPKIN VENDOR MACHINES IN PUBLIC PLACES",
+                        "MINIATURIZED T SLOTTED CIRCULAR PATCH ANTENNA FOR THE MONITORING OF THE HEALING OF BONE FRACTURE",
+                        "IOT BASED SYSTEM FOR CLASSIFYING REPTILIAN IMAGES"
+                    ],
+                    "patenttype": ["DESIGN", "DESIGN", "DESIGN"],
+                    "country": ["INDIA", "INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED", "PUBLISHED"],
+                    "date": ["2022-12-09", "2023-09-01", "2024-01-12"]
+                }
+            },
+            {
+                "name": "VEC-009-04-015",
+                "details": {
+                    "nameofpatent": ["AN ANTI-SMUGGLIING SYSTEM FOR TREES IN A FOREST THAT USES A FLEX SENSOR"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["INDIA"],
+                    "status": ["FILED"],
+                    "date": ["13.9.2024"]
+                }
+            },
+            {
+                "name": "VEC-009-04-016",
+                "details": {
+                    "nameofpatent": [
+                        "Plant and Soil Monitoring using Cloud-based IoT for Smart Agriculture.",
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Design systems of NLP as Spelling Correction for Offline Handwritten Text Recognition using machine learning",
+                        "Miniaturized T Slotted Circular Patch Antenna for the monitoring of the healing of bone fracture"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India"],
+                    "status": ["Published", "Published", "Published", "Published"],
+                    "date": ["", "", "", ""]
+                }
+            },
+            {
+                "name": "VEC-009-04-017",
+                "details": {
+                    "nameofpatent": [
+                        "Plant and Soil Monitoring Using Cloud Based IoT For Smart Agriculture",
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Design systems of NLP as Spelling Correction for Offline Handwritten Text Recognition using machine learning",
+                        "Three-Dimensional Obstacle Avoidance and Automatic Manoeuvring System.",
+                        "Miniaturized T slotted circular patch antenna for the monitoring of the healing of bone fracture."
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India", "India"],
+                    "status": ["Published", "Published", "Published", "Published", "Published"],
+                    "date": ["2021-08-25", "2022-05-06", "2022-12-09", "2023-01-06", "2023-09-01"]
+                }
+            },
+            {
+                "name": "VEC-009-04-019",
+                "details": {
+                    "nameofpatent": [
+                        "IOT BASED SYSTEM AND METHOD FOR CLASSIFYING REPTILIAN IMAGES USING IMAGE PROCESSING",
+                        ""
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["FILLED", "FILLED"],
+                    "date": ["", ""]
+                }
+            },
+            {
+                "name": "VEC-009-04-021",
+                "details": {
+                    "nameofpatent": [
+                        "Miniaturized T-slotted circular patch antenna for the monitoring the healing of bone fracture",
+                        "Design systems of NLP as Spelling Correction for Offline Handwritten Text Recognition using machine learning",
+                        "IOT Driven Automated Intelligent system using Eyeball and Gesture Control Smart Wheel chair for disabled person"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Published"],
+                    "date": ["2023-01-09", "2022-09-12", "2022-06-05"]
+                }
+            },
+            {
+                "name": "VEC-009-04-023",
+                "details": {
+                    "nameofpatent": [
+                        "RADIATION OF HP (HIGH-POWER) FAST RISE TIME PULSES BY HYDROGEN SPARK GAP ANTENNA AT A HIGH REPETITION RATE",
+                        "A COGNATIVE IOT SURVEILLANCE FRAMEWORK FOR CROWD BEHAVIOUR ANALYSIS",
+                        "A NOVEL DEVICE TO PREDICT THE PERFORMANCE MEASURE OF SPORTS PERSON USING GAIT ANALYSIS"
+                    ],
+                    "patenttype": ["IPR INDIAN DESIGN PATENT", "IPR INDIAN DESIGN PATENT", "IPR INDIAN DESIGN PATENT"],
+                    "country": ["INDIA", "INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED", "PUBLISHED"],
+                    "date": ["2022-05-13", "2023-01-06", "2023-09-01"]
+                }
+            },
+            {
+                "name": "VEC-009-04-025",
+                "details": {
+                    "nameofpatent": [
+                        "Plant and Soil Monitoring using Cloud-based IoT for Smart Agriculture",
+                        "Blood Glucose Level Prediction for Diabetics Based on Nutrition and Insulin",
+                        "IoT Driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled Person",
+                        "Wrist Band for Safety Tracker",
+                        "Miniaturized T slotted circular patch antenna for the monitoring of the healing of bone fracture"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY", "UTILITY", "UTILITY", "UTILITY"],
+                    "country": ["India", "India", "India", "India", "India"],
+                    "status": ["Published", "Published", "Published", "Published", "Published"],
+                    "date": ["03.09.2021", "17.12.2021", "06.05.2022", "12.12.2022", "01.09.2023"]
+                }
+            },
+            {
+                "name": "VEC-009-04-026",
+                "details": {
+                    "nameofpatent": [
+                        "INTELLIGENT CHIP CONTROL OXYGEN CONCENTRATOR",
+                        "REMOTE-CONTROLLED SUBAQUATIC VEHICLE FOR ENHANCED AQUARIUM INSPECTION AND MAINTENANCE"
+                    ],
+                    "patenttype": ["DESIGN", "UTILITY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "FILED"],
+                    "date": ["05.06.2023", "04.10.2023"]
+                }
+            },
+            {
+                "name": "VEC-009-04-029",
+                "details": {
+                    "nameofpatent": [
+                        "Design systems of NLP as Spelling Correction for Offl ine HandwrittenText Recognition using machine learning",
+                        "Miniaturized T slotted circular patch antenna for the monitoring of the healing of bone fracture"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Published"],
+                    "date": ["2022-12-09", "2023-09-01"]
+                }
+            },
+            {
+                "name": "VEC-009-04-030",
+                "details": {
+                    "nameofpatent": [
+                        "Plant and Soil Monitoring using Cloud-based IoT for Smart Agriculture.",
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Design systems of NLP as Spelling Correction for Offline Handwritten Text Recognition using machine learning",
+                        "Miniaturized T Slotted Circular Patch Antenna for the monitoring of the healing of bone fracture"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India"],
+                    "status": ["Published", "Published", "Published", "Published"],
+                    "date": ["", "", "", ""]
+                }
+            },
+            {
+                "name": "VEC-009-04-031",
+                "details": {
+                    "nameofpatent": [
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Node Transmission Line Monitoring"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED"],
+                    "date": ["06.05.2022", "15.03.2024"]
+                }
+            },
+            {
+                "name": "VEC-009-04-033",
+                "details": {
+                    "nameofpatent": [
+                        "BIKE BLACK BOX - AN AUTONOMOUS BIKE MONITORING SYSTEM",
+                        "Deep Learning based approach for cyber systems",
+                        "Medical Image Processing"
+                    ],
+                    "patenttype": ["Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Filed", "Filed"],
+                    "date": ["", "", ""]
+                }
+            },
+            {
+                "name": "VEC-009-04-054",
+                "details": {
+                    "nameofpatent": [
+                        "Design systems of NLP as Spelling Correction for Offl ine HandwrittenText Recognition using machine learning",
+                        "IoT driven Design Framework of Eyeball and Gesture Control Smart Wheelchair for Disabled person using Machine Learning",
+                        "Energy efficient clustering and sink mobility in heterogeneous"
+                    ],
+                    "patenttype": ["", "", ""],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Published"],
+                    "date": ["2022-12-09 00:00:00", "2022-05-06 00:00:00", "16.6.2023"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "010",
+        "patents": []
+    },
+    {
+        "dept_id": "011",
+        "patents": [
+            {
+                "name": "VEC-011-03-111",
+                "details": {
+                    "nameofpatent": [
+                        "IoT based Smart Lockers with Fingerprint",
+                        "Solar Power CCTV Camera",
+                        "Electric vehicle charge administrating station and method of processing payment thereof",
+                        "Remote Meeting Assistive Device",
+                        "Self-configured and internet of things supported preventive failure alert system",
+                        "Agry-Drone : A Dynamic web based drone driven crop yield estimation model for agriculture farms"
+                    ],
+                    "patenttype": ["Design", "Design", "Utility", "Utility", "Utility", "Utility"],
+                    "country": ["India", "India", "India", "India", "India", "India"],
+                    "status": ["Applied", "Published", "Published", "Published", "FER", "Published"],
+                    "date": ["24.07.2024", "28.03.2024", "23.08.2024", "08.12.2023", "20.02.2023", "28.01.2022"]
+                }
+            },
+            {
+                "name": "VEC-011-04-008",
+                "details": {
+                    "nameofpatent": ["Embedded Machine Learning for Dynamic Adjustment of Insulin Delivery in Artificial Pancreas Systems"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["18.09.2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-036",
+                "details": {
+                    "nameofpatent": ["IoT & MACHINE LEARNING BASED HELTH MONITORING DEVICE"],
+                    "patenttype": ["DESIGN"],
+                    "country": ["INDIA"],
+                    "status": ["GRANTED"],
+                    "date": ["29/06/2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-069",
+                "details": {
+                    "nameofpatent": ["IOT Smart Locking for Door with fingerprint technology"],
+                    "patenttype": ["Design"],
+                    "country": ["India"],
+                    "status": ["Filed"],
+                    "date": ["Filed"]
+                }
+            },
+            {
+                "name": "VEC-011-04-136",
+                "details": {
+                    "nameofpatent": [
+                        "IOT-CONNECTED SMART INHALER FOR ASTHMA AND COPD MONITORING AND TREATMENT",
+                        "IOT BASED SMART LOCKERS WITH FRINGERPRINT"
+                    ],
+                    "patenttype": ["Utility", "Deign Patent"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Applied"],
+                    "date": ["13.09.2024", "24.07.2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-138",
+                "details": {
+                    "nameofpatent": ["Embedded Machine Learning for Dynamic Adjustment of Insulin Delivery in Artificial Pancreas Systems"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["18.09.2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-152",
+                "details": {
+                    "nameofpatent": ["Embedded Machine Learning for Dynamic Adjustment of Insulin Delivery in Artificial Pancreas Systems"],
+                    "patenttype": ["Utility"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["18.09.2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-153",
+                "details": {
+                    "nameofpatent": ["IoT AND MACHINE LEARNING BASED HEALTH MONITORING"],
+                    "patenttype": ["DESIGN"],
+                    "country": ["INDIA"],
+                    "status": ["GRANTED"],
+                    "date": ["29.06.2024"]
+                }
+            },
+            {
+                "name": "VEC-011-04-156",
+                "details": {
+                    "nameofpatent": ["A system and method for predicting seismic event using ML & AI"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2021-07-07"]
+                }
+            },
+            {
+                "name": "VEC-011-04-157",
+                "details": {
+                    "nameofpatent": ["MACHINE LEARNING BASED FOR AUTOMATIC LANE DETECTION IN AUTONOMOUS VEHICLE"],
+                    "patenttype": ["DESIGN"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["2023-12-14"]
+                }
+            },
+            {
+                "name": "VEC-011-04-166",
+                "details": {
+                    "nameofpatent": ["NANOTECHNOLOGY BASED PLANT MONITORING POT"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["INDIA"],
+                    "status": ["FILED"],
+                    "date": ["-"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "012",
+        "patents": []
+    },
+    {
+        "dept_id": "013",
+        "patents": [
+            {
+                "name": "VEC-013-02-027",
+                "details": {
+                    "nameofpatent": ["Artificial Intelligence Embodied Drone and Methods of Spraying Relevant Chemical thereof"],
+                    "patenttype": ["UTILITY"],
+                    "country": ["INDIAN PATENT"],
+                    "status": ["Published"],
+                    "date": ["2024-02-23"]
+                }
+            },
+            {
+                "name": "VEC-013-02-169",
+                "details": {
+                    "nameofpatent": [
+                        "Active-Magneto-rheological radial tool damper for boring operations - In collaboration with Dynamechz Research lab.",
+                        "Nano finishing for cylindrical components using Magneto-Rheological fluid finishing. - In collaboration with Dynamechz Research lab."
+                    ],
+                    "patenttype": ["Utility", "Utility"],
+                    "country": ["India", "India"],
+                    "status": ["Filed", "Filed"],
+                    "date": ["", ""]
+                }
+            },
+            {
+                "name": "VEC-013-03-024",
+                "details": {
+                    "nameofpatent": [
+                        "Biodegradable Container/Bag and methods of preparing Sustainable packaging material",
+                        "Biodegradable Container/Bag and methods of preparing Sustainable packaging material",
+                        "Multi-Layered sustainable packaging material and method of preparation"
+                    ],
+                    "patenttype": ["Utility", "International (Utility)", "Utility"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Complete specification filed"],
+                    "date": ["2023-12-29", "2023-12-28", "2023-06-22"]
+                }
+            },
+            {
+                "name": "VEC-013-04-001",
+                "details": {
+                    "nameofpatent": [
+                        "Autonomous water surface cleaning machine and methods of removing floatable solid waste",
+                        "Automated Ventillator and methods of controlling flow rates thereof",
+                        "Recycling waste textile materials and method of making new textile"
+                    ],
+                    "patenttype": ["UTILITY", "UTILITY", "UTILITY"],
+                    "country": ["INDIA", "INDIA", "INDIA"],
+                    "status": ["GRANTED", "PUBLISHED", "PUBLISHED"],
+                    "date": ["15/03/2024", "2022-10-07 00:00:00", "13/05/2022"]
+                }
+            },
+            {
+                "name": "VEC-013-04-010",
+                "details": {
+                    "nameofpatent": [
+                        "AUTOMATED VENTILATOR AND METHODS OF CONTROLLING FLOW RATES THEREOF",
+                        "Cloth Dryer"
+                    ],
+                    "patenttype": ["Utility", "Design"],
+                    "country": ["India", "India"],
+                    "status": ["Published", "Registered"],
+                    "date": ["2024-02-02", "2023-12-08"]
+                }
+            },
+            {
+                "name": "VEC-013-04-020",
+                "details": {
+                    "nameofpatent": ["DESIGN PATTENT", "DESIGN PATTENT"],
+                    "patenttype": [ "",  ""],
+                    "country": ["INDIA", "INDIA"],
+                    "status": ["PUBLISHED", "PUBLISHED"],
+                    "date": [ "",  ""]
+                }
+            },
+            {
+                "name": "VEC-013-04-022",
+                "details": {
+                    "nameofpatent": [
+                        "Cloth dryer",
+                        "Detection of sludge in critical region"
+                    ],
+                    "patenttype": ["Design", "Patent"],
+                    "country": ["India", "India"],
+                    "status": ["Publised", "Publised"],
+                    "date": ["2024-03-28", "2022-12-23"]
+                }
+            },
+            {
+                "name": "VEC-013-04-028",
+                "details": {
+                    "nameofpatent": ["Design and Analysis of high strength to weight backhoe loaders"],
+                    "patenttype": ["Publication"],
+                    "country": ["India"],
+                    "status": ["Published"],
+                    "date": ["15.03.2024"]
+                }
+            },
+            {
+                "name": "VEC-013-04-044",
+                "details": {
+                    "nameofpatent": ["PORTABLE CAR WASH BRUSH"],
+                    "patenttype": ["DESIGN"],
+                    "country": ["INDIA"],
+                    "status": ["Granted"],
+                    "date": [""]
+                }
+            },
+            {
+                "name": "VEC-013-04-133",
+                "details": {
+                    "nameofpatent": ["1"],
+                    "patenttype": ["DESIGN"],
+                    "country": ["INDIA"],
+                    "status": ["GRANTED"],
+                    "date": ["2024-03-28"]
+                }
+            }
+        ]
+    },
+    {
+        "dept_id": "015",
+        "patents": [
+            {
+                "name": "VEC-015-01-190",
+                "details": {
+                    "nameofpatent": [
+                        "Assembly of Fuel Cell Membrane and Methods of Synthesizing Thereof",
+                        "Temperature-sensitive nanosensors For fuel cells",
+                        "Graphene-based supercapacitor Hybrids"
+                    ],
+                    "patenttype": ["Utility", "Design", "Design"],
+                    "country": ["India", "India", "India"],
+                    "status": ["Published", "Published", "Published"],
+                    "date": ["", "", ""]
+                }
+            },
+            {
+                "name": "VEC-015-04-049",
+                "details": {
+                    "nameofpatent": ["Applied"],
+                    "patenttype": ["Design Patent"],
+                    "country": [""],
+                    "status": [""],
+                    "date": [""]
+                }
+            }
+        ]
+    }
+
+]

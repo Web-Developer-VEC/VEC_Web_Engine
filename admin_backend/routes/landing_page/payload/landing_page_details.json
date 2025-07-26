@@ -1,0 +1,30 @@
+{
+  "admin_payload": {
+    "title": "Changed all Details in Landing Page",
+    "collection": "landing_page_details",
+    "category": "landing_page_details",
+    "type": "update",
+    "metadata": {
+      "email_id": "velammal@velammal.edu.in",
+      "address": ["item1", "item2", "item3"],
+      "phone_number": "1234567890",
+      "student_affairs_contact": "09876543210",
+      "addmission_contact": ["item1", "item2"],
+      "instagram": "velammal_insta",
+      "facebook": "velammal_fb",
+      "twitter": "velammal_twitter",
+      "linkedin": "velammal_linkedin"
+    }
+  },
+  "superior_payload": {
+    "unique_id": "6b162b25-3a79-4cae-83f6-c15a82e1a90a",
+    "reviewed_notes": "Approved Instagram and Address only, i don't like the color of LinkedIn :)",
+    "actions": {
+      "landing_page_details": {
+        "address": "approve",
+        "instagram": "approve",
+        "linkedin": "reject"
+      }
+    }
+  }
+}

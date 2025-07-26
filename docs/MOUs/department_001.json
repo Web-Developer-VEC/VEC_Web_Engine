@@ -1,0 +1,108 @@
+[{
+  "dept_id": "001",
+  "department_name": "Artificial Intelligence and Data Science (AI&DS)",
+  "MOUs": [
+    {
+      "S_NO": 1,
+      "ORGANISATION_NAME": "NET stack Technology Solutions",
+      "MONTH_AND_YEAR": "22-12-2022",
+      "VALIDITY": "Till date",
+      "LOGO_PATH": "/static/images/mous/001/net_stack_technology_solutions.jpg",
+      "PDF_PATH": "manualNss.pdf",
+      "ACTIVITIES_PLANNED": [
+        "AI Research",
+        "Data Science Workshops",
+        "Collaborative Projects"
+      ]
+    },
+    {
+      "S_NO": 2,
+      "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+      "MONTH_AND_YEAR": "22-02-2023",
+      "VALIDITY": "Till date",
+      "LOGO_PATH": "/static/images/mous/001/arjunvision_tech_solutions.jpg",
+      "ACTIVITIES_PLANNED": [
+        "AI Solutions",
+        "Machine Learning Research"
+      ]
+    },
+    {
+      "S_NO": 3,
+      "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
+      "MONTH_AND_YEAR": "23-02-2022",
+      "VALIDITY": "Till date",
+      "LOGO_PATH": "/static/images/mous/001/m/s_tata_elxsi_ltd.jpg",
+      "ACTIVITIES_PLANNED": [
+        "Autonomous Systems",
+        "IoT Projects"
+      ]
+    },
+    {
+      "S_NO": 4,
+      "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+      "MONTH_AND_YEAR": "2023",
+      "VALIDITY": "5 Years",
+      "LOGO_PATH": "/static/images/mous/001/digialert_solutions_private_limited.jpg",
+      "ACTIVITIES_PLANNED": [
+        "Cybersecurity Initiatives",
+        "Cloud Solutions"
+      ]
+    },
+    {
+      "S_NO": 5,
+      "ORGANISATION_NAME": "Aristo Creative Technologies",
+      "MONTH_AND_YEAR": "2022",
+      "VALIDITY": "Till date",
+      "LOGO_PATH": "/static/images/mous/001/aristo_creative_technologies.jpg",
+      "ACTIVITIES_PLANNED": [
+        "Creative AI",
+        "Media and Art Integration"
+      ]
+    },
+    {
+      "S_NO": 6,
+      "ORGANISATION_NAME": "Cognizant Technology Solutions India Private Limited",
+      "MONTH_AND_YEAR": "15-02-2024",
+      "VALIDITY": "Till date",
+      "LOGO_PATH": "/static/images/mous/001/cognizant_technology_solutions_india_private_limited.jpg",
+      "ACTIVITIES_PLANNED": [
+        "AI-enabled Solutions",
+        "Blockchain Research"
+      ]
+    },
+    {
+      "S_NO": 7,
+      "ORGANISATION_NAME": "Sify Technologies",
+      "MONTH_AND_YEAR": "09-08-2024",
+      "VALIDITY": "5 Years",
+      "LOGO_PATH": "/static/images/mous/001/sify_technologies.jpg",
+      "ACTIVITIES_PLANNED": [
+        "Digital Transformation",
+        "Cloud Solutions"
+      ]
+    },
+    {
+      "S_NO": 8,
+      "ORGANISATION_NAME": "Hexaware Technologies",
+      "MONTH_AND_YEAR": "12-08-2024",
+      "VALIDITY": "3 Years",
+      "LOGO_PATH": "/static/images/mous/001/hexaware_technologies.jpg",
+      "ACTIVITIES_PLANNED": [
+        "AI in Finance",
+        "Automation Research"
+      ]
+    },
+    {
+      "S_NO": 9,
+      "ORGANISATION_NAME": "Movate Technologies Private Ltd",
+      "MONTH_AND_YEAR": "04-11-2024",
+      "VALIDITY": "3 Years",
+      "LOGO_PATH": "/static/images/mous/001/movate_technologies_private_ltd.jpg",
+      "ACTIVITIES_PLANNED": [
+        "IT Solutions",
+        "Cloud Computing"
+      ]
+    }
+  ]
+}
+]

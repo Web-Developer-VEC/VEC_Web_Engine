@@ -1,0 +1,76 @@
+[{
+    "Position": "Academics",
+    "Dean": "Dr. JEBAMALAR A",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Prof & Head - Civil Engineering",
+    "Dean_Image": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+    "Associate_Dean": "Dr. AROCKIA JASWIN M",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Prof. Mechanical Engineering.",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_m_arockia_jaswin.webp",
+    "Dean_unique_id": "VEC-001-01-001",
+    "Associate_dean_unique_id": "VEC-001-01-001"
+  },
+  {
+    "Position": "Planning and Development",
+    "Dean": "Dr. JEEVA KATIRAVAN",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Prof & Head - Information Technology",
+    "Dean_Image": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp",
+    "Associate_Dean": "Dr. RAJALAKSHMI S",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Asso Prof & Head - Cyber Security",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_s_rajalakshmi.webp"
+  },
+  {
+    "Position": "Student Development and Welfare",
+    "Dean": "Dr. SHAHIL KIRUPAVATHY S",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Prof & Head - Department of Physics",
+    "Dean_Image": "/static/images/dean_and_associates/dr_s_shahil_kirupavathy.webp",
+    "Associate_Dean": "Dr. GEETHA R",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Asst Prof - Electrical and Electronics Engineering",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_geetha_r.webp"
+  },
+  {
+    "Position": "Faculty Development and Welfare",
+    "Dean": "Dr. MARY JOANS S",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Prof & Head - Electronics and Communication Engineering.",
+    "Dean_Image": "/static/images/dean_and_associates/dr_s_mary_jones.webp"
+  },
+  {
+    "Position": "Research and Development",
+    "Dean": "Dr. MANOHARAN P A",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Research",
+    "Dean_Image": "/static/images/dean_and_associates/dr_manoharan.webp",
+
+    "Associate_Dean": "Dr. BHASKARA SETHUPATHY S",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Prof & Head - Automobile Engineering",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_s_bhaskara_sethupathy.webp"
+  },
+  {
+    "Position": "Accreditations and Ranking",
+    "Dean": "Dr. GANAPATHY SUNDARAM E",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Prof & Head - Mechanical Engineering",
+    "Dean_Image": "/static/images/dean_and_associates/dr_e_ganapathy_sundaram.webp",
+    "Associate_Dean": "Dr. VISU P",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Prof & Head - Artificial Intelligence and Data Science",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_p_visu.webp"
+  },
+  {
+    "Position": "Corporate Relations and Higher Studies",
+    "Dean": "Mr. ARUN RAMASAMY A",
+    "Dean_Type": "Dean",
+    "Dean_Designation": "Head - Trainig & Placements",
+    "Dean_Image": "/static/images/dean_and_associates/mr_arun_ramasamy.webp",
+    "Associate_Dean": "Dr. SURESH KUMAR K",
+    "Ass_Dean_Type": "Associate Dean",
+    "Associate_Dean_Designation": "Prof & Head - Electrical and Electronics Engineering",
+    "Associate_Dean_Image": "/static/images/dean_and_associates/dr_k_suresh_kumar.webp"
+  }]

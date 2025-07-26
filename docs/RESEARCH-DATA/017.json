@@ -1,0 +1,1360 @@
+{  
+    "dept_id":"017",
+    "department_name": "Master of Business Administration (MBA)",
+    "data":
+    [
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": []
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr.D.Revathi., Mrs. UmaDevi",
+                        "Title of the Paper": "Exploring of influencing Vendor Buyer Relationship in Automobile Business Market",
+                        "Scopus/ SCI": "Impact Factor 4.1",
+                        "Name of the Journal": "xIlkogretim Online",
+                        "Month and Year of publication": "Jume-21",
+                        "ISSN": "3366-3373",
+                        "Doi": ": 10.17051/ilkonline.2021.05.368",
+                        "Colloboration Institute": "SRM Valliammai Engg College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.3&permmsgid=msg-a:r-397852009407794820&th=1867cade7aa5ff63&view=att&disp=inline&realattid=f_lefapzq82&zw"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr.D. Revathi",
+                        "Title of the Paper": "Deep Learning -Based Parameterized Framework toInvestigate the Influence of Pedagogical Innovations in Engineering Courses", 
+                        "Scopus/ SCI": "SpringerLink ",
+                        "Name of the Journal": "SpringerLink Part of the Avances in Intelligent System and Computing book series (AISC) ",
+                        "Month and Year of publication": "Aug-21",
+                        "ISSN": "420-425",
+                        "Doi": null,
+                        "Colloboration Institute": "SRM Valliammai Engg College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link":null,
+                        "Journal Proof":"https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.2&permmsgid=msg-a:r-397852009407794820&th=1867cade7aa5ff63&view=att&disp=inline&realattid=f_lefaps4k1&zw"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr.D. Revathi",
+                        "Title of the Paper": "A Deep Learning Model to predict the Industry Readiness ofEngineering Students Community",
+                        "Scopus/ SCI": "ITM Web of Conferences 37, 01017 (2021)",
+                        "Name of the Journal": "ITM WEB Conference",
+                        "Month and Year of publication": "Jul-21",
+                        "ISSN": null,
+                        "Doi": ".org/10.1051/itmconf/20213701017",                        
+                        "Colloboration Institute": "SRM Valliammai Engg College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.4&permmsgid=msg-a:r-397852009407794820&th=1867cade7aa5ff63&view=att&disp=inline&realattid=f_lefaq58p3&zw"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Dr.D. Revathi",
+                        "Title of the Paper": "LEAN MANUFACTURING Vs JUST IN TIME",
+                        "Scopus/ SCI": "IJRMATE",
+                        "Name of the Journal": "International Journal of Advanced Research in Management, Architecture, Technology andEngineering (IJARMATE)",
+                        "Month and Year of publication": "sep-21",
+                        "ISSN": "2454-9762",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://drive.google.com/file/d/1COs_Nkabp_JNnpzYW8LjQrmysBJqtV6a/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Dr.A.Nirmalraj",
+                        "Title of the Paper": "The Influence of Social Media on the adoption and continuous views of health, fitness, Mobile Apps during Covid-19 Pandemic",
+                        "Scopus/ SCI": "UGC Group-i",
+                        "Name of the Journal": "Ethiopian Journal Of Health Development",
+                        "Month and Year of publication": "2022",
+                        "ISSN": "2309-7388",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://doi.org/10.20372/ejhd.v36i1.5061"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Author(s)": "Dr.D. Revathi",
+                        "Title of the Paper": "STI HUB for enhancing qualty of kivelihood Siruniam village,  Sc community of   sholavarsam block, ",
+                        "Scopus/ SCI": "UGC Care ",
+                        "Name of the Journal": "Journal Of Electronics Information Technology Science And Management",
+                        "Month and Year of publication": "Aug-23",
+                        "ISSN": "0258-7982",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Author(s)": "Dr.D. Revathi",
+                        "Title of the Paper": "A study on Social Science and Women entrepreneurship Development",
+                        "Scopus/ SCI": "UGC Care ",
+                        "Name of the Journal": "Journal Of Electronics Information Technology Science And Management",
+                        "Month and Year of publication": "2023",
+                        "ISSN": "0258-7982 ,163-173",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://drive.google.com/file/d/1UD1lujn-Y6ggeYOsm9qnAMvH6M45c9LX/view"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Author(s)": "Dr.A.Nirmalraj",
+                        "Title of the Paper": "Hardcore Culture And Ergophobia Of Employees In Chemical Industry",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "European Chemical Bulletin",
+                        "Month and Year of publication": "2023",
+                        "ISSN": "2063-5346, 2497 – 2508",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://www.eurchembull.com/uploads/paper/fc6a79fca2fc87a6854e5f3a9dc342b6.pdf"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Author(s)": "Dr.A.Nirmalraj",
+                        "Title of the Paper": "Determinants Of Brand Loyalty Among Skin Care Cosmetic Users In Chennai City",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Journal of Pharmaceutical Negative Results",
+                        "Month and Year of publication": "2023",
+                        "ISSN": "2229-7723 , 3188-3194",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://www.pnrjournal.com/index.php/home/article/view/8257/11115"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Author(s)": "Dr.Sundrabalamurugan, Dr.A.Nirmalraj, Nr ArunRamaswamy, Dr.I.Navena NesaKumari",
+                        "Title of the Paper": "AN EXEMPLIFIED STUDY ON THE IMPACT OF SOCIAL MEDIA ON BUSINESS",
+                        "Scopus/ SCI": "UGC Care Group I",
+                        "Name of the Journal": "SOUTH INDIA JOURNAL OF SOCIAL SCIENCES",
+                        "Month and Year of publication": "Jan-Jun-23",
+                        "ISSN": "0972 – 8945",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.2&permmsgid=msg-f:1782066327011186541&th=18bb2be1f3afd76d&view=att&disp=safe&realattid=f_loqss3pb1&zw"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Author(s)": "Dr.J.NavenaNesaKumari, Dr.R.Muzhumathi, Ms.C.Charupreethy, Dr.A.Nirmalraj",
+                        "Title of the Paper": "A STUDY ON GREEN HRM IN CONTEXT WITH 21 ST CENTURY Business Environment ",
+                        "Scopus/ SCI": "UGC Care Group I",
+                        "Name of the Journal": null,
+                        "Month and Year of publication": "Jan-Jun-23",
+                        "ISSN": "0974-0066",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.1&permmsgid=msg-f:1782066327011186541&th=18bb2be1f3afd76d&view=att&disp=safe&realattid=f_loqsrxz50&zw"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Author(s)": "Dr.I.M.Christina Febiule, Dr.D.Revathi",
+                        "Title of the Paper": "Machine Learning -driven Marketing Strategiesin the Mobile Gadget industry for Enchancing Customer Engagement and Sales Optomization",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "NANO TECHNOLOGY ",
+                        "Month and Year of publication": "Jul-24",
+                        "ISSN": "1660-6785",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null,
+                        "Journal Proof":"https://drive.google.com/file/d/13Ec_pXk56BHguSw9WfDdeMsblyWPa_l2/view?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr.D. Revathi",
+                        "Title of the Patent": "Understanding the benefits of performance based budgetting for financial management",
+                        "Application Number": null,
+                        "Date of Filing":null,
+                        "Status": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of patent": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr.R. Muzhumatji.,Dr.J.Navena Nesa kumari",
+                        "Title of the Patent": "Employee pergormance evaluation & Appraisal calculation using Data Mining",
+                        "Application Number": "202441058845A",
+                        "Date of Filing": "03-8-2024",
+                        "Status": "Published on 09.8.24",
+                        "Colloboration Institute": "GRT Instityte of Engg and Technology",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1L11ZzoA4oXBEXCe3yBBgQSl8YR2CRkks/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "Dr.D.Revathi",
+                        "Title of the Patent": "Analysis of Difficulties faced by delvery boy for E-Commerce Product in India",
+                        "Application Number": ".202341063581 A",
+                        "Date of Filing": "21-09-23",
+                        "Status": "Published on 06-10-23",
+                        "Colloboration Institute": "SRM Institute of Science & tECHNOLOGY",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of patent": "https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.1&permmsgid=msg-f:1784687522529258769&th=18c47bd8976dad11&view=att&disp=inline&realattid=f_lpw54tva0&zw"
+                    },
+                    {
+                        "S.No": 4,
+                        "Faculty": "Dr.D.Revathi",
+                        "Title of the Patent": "Impact of Digital Marketing Towards customer Buying Perception and Behaviour in E0Commerce",
+                        "Application Number": "2.02241E+11",
+                        "Date of Filing": "18-11-22",
+                        "Status": "Published on 25-11-22",
+                        "Colloboration Institute": "Vels University of Science , Technology and Advanced Studies",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of patent": "https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.2&permmsgid=msg-f:1784687522529258769&th=18c47bd8976dad11&view=att&disp=inline&realattid=f_lpw55no41&zw"
+                    },
+                    {
+                        "S.No": 5,
+                        "Faculty": "Dr.D.Revathi",
+                        "Title of the Patent": "PROGRAMMING THE SUPPLY CHAIN NETWORK FOR CUSTOMERS WITH UNCERTAIN",
+                        "Application Number": "2.02241E+11",
+                        "Date of Filing": "10-01-20",
+                        "Status": "Published on 24-01-20",
+                        "Colloboration Institute": "SRM Valliammai Engineering and Technology",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1xTwuDXj1pMBeYmWfwyyGLTbYW1CgTCMw/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Dr.D. Revathi",
+                        "Book/Chapter Title": "Constitution of India",
+                        "Name of Publisher": "The Charulatha Publication",
+                        "ISBN Details": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1_jmju9gmgG8wyexPc2DWMSG2-OboCHxO/view?usp=drive_link . https://drive.google.com/file/d/1DYqdIlDEyN7ZVBjeUCtc3WCzYlVjWenW/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Dr.D.Revathi",
+                        "Book/Chapter Title": "Corporate  Accounting",
+                        "Name of Publisher": "The Charulatha Publication",
+                        "ISBN Details": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/185gOJzrwqR3tCCmTEPNEz5ZxOTBdnBqr/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of Faculty": "Dr.D.Revathi",
+                        "Book/Chapter Title": "Finacial Accounting",
+                        "Name of Publisher": "The Charulatha Publication",
+                        "ISBN Details": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1viF6RcyQC44jix0uKU5zU1tp7DuZYD3V/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of Faculty": "Dr,D,Revathi , Mrs.Bapitha Lucin Rani",
+                        "Book/Chapter Title": "Industry 4.0",
+                        "Name of Publisher": "P.K.Publishers &Distributors Delhi -110053",
+                        "ISBN Details": "978-81-19428-780-3",
+                        "Colloboration Institute": "Rajalekshmi Engineering College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of Book front page": "https://mail.google.com/mail/u/0?ui=2&ik=8464cd6071&attid=0.1&permmsgid=msg-a:r5912800717613729953&th=194abb533cded0f3&view=att&disp=inline&realattid=A1F7C401-EF54-42BA-AED9-1BAA3A997A31&zw"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of Faculty": "Dr.I.M.Christinafebiula",
+                        "Book/Chapter Title": "“DEI & CROSS-CULTURAL TRAINING AT WORKPLACE - A LITERATURE REVIEW”",
+                        "Name of Publisher": "Digital Transformation in Commerce, Management and Economics",
+                        "ISBN Details": "978- 9358424546.",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1XF6k6NwZj9FWPvRG5VWkDs37nKC_wxje/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of Faculty": "Dr.J.Navena Nasa Kumari, Dr.Premkular balaraman,Dr.Subulekshmi",
+                        "Book/Chapter Title": "Concept and impact of  Block chain in HRM",
+                        "Name of Publisher": "Scientific internationnal Publishing house",
+                        "ISBN Details": "97-893-6132-969-2",
+                        "Colloboration Institute": "Yes",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1XF6k6NwZj9FWPvRG5VWkDs37nKC_wxje/view?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": []
+            },
+            {
+                "CONSULTANCY": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.A.Nirmal raj",
+                        "Title of the Consultancy": "Effectiveness of Prime Minister employment generation scheme ( PMEGP for KITCO Ltd., Government of Kerala Undertaking",
+                        "Funding Organisation": "KITCO, Kerala Govt.Undertaking",
+                        "Duration": "6 months",
+                        "Fund Received in Rs.": "2,50,000",
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.A.Nirmal raj",
+                        "Title of the Consultancy": "Ad Effectiveness for a new Advertising campaign of Saravana Selvaratnam brand in Chennai cityll",
+                        "Funding Organisation": "Think Big Studios",
+                        "Duration": "6 months",
+                        "Fund Received in Rs.": "75,000",
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Dr.A.Nirmalraj",
+                        "Title of the Consultancy": null,
+                        "Funding Organisation": "Do it solution",
+                        "Duration": null,
+                        "Fund Received in Rs.": "62,750",
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": "Dr.R.S.Lekshmi",
+                        "Title of the Consultancy": "Academiya gap and to provide Shill deveopment programs ncessary to make the students empoyability",
+                        "Funding Organisation": "Innovertz consulting Private LtD",
+                        "Duration": null,
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "E-Copy of consultancy google drive link": "https://drive.google.com/file/d/1pwWR1Y6cYqWMOUZ0Gn6Y5ltnfGdzPTB4/view?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "INTERNSHIP": [
+                    {
+                        "S.No": 1,
+                        "Name of the Industry, address": "Britannia ",
+                        "Name of the Student": "Sivakaran ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Meg_ffi7nfLS0q-7L6vN9tUNDfJc0qdy"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Industry, address": "Sun India Maintenance pvt ltd ",
+                        "Name of the Student": "Suruthi. B",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1p_UqAPxnxqAPUkGxIAXJk4d6PmYK6cnd"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Industry, address": "ITC ltd",
+                        "Name of the Student": "Harish k ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1TWgfU3rFYjzk1KzLI4cXN8xlgnFvzEZW"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Industry, address": "Powertrans mobility limited",
+                        "Name of the Student": "Genefer Joe Navis E",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1WWmm12Dk8DNqHkMvIHKeoRkGAeN-vCEr"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Industry, address": "Britannia Industries",
+                        "Name of the Student": "ROHINTH S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1s3IvSydRN71f7n6RHeLgiSGKnMy1H50-"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Vijayaaravindan G",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1hE2iuEvADeDEc26sVgKFsp1r8FxCgr0a"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Wagishwar R L",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1YH8ZCndjMUFU7STpK0RtffAaBWv4UXl0"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Industry, address": "Indian Bank ",
+                        "Name of the Student": "Atshaya S ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=18-xEqVIjlJKdLS-0U2PKKUGhS94vjGPK"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Industry, address": "Rakon India Pvt Ltd",
+                        "Name of the Student": "BHARATHI S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=12rbIou0Y4IZUMr-JLTIfTrVDnLjxMbdD"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Industry, address": "Beacon Guards and Allied Services ",
+                        "Name of the Student": "KANDA SIRPARAN S ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1krpV3kuUJRXe_n14QsJHvnfZBw5lAGfJ"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Industry, address": "BRITANNIA INDUSTRIES ",
+                        "Name of the Student": "GOWTHAM.M ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=16FtaCX_hKIXzsQHNXMSsQwmiaPwWrB_1"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Industry, address": "ITC Ltd ",
+                        "Name of the Student": "SANTHOSH .V",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1HjDKVtMQvuUOqTFJDPs-wqcljA_9xj0T"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Industry, address": "Indian Bank ",
+                        "Name of the Student": "Swathi R Y ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1EFP2XN-kAZ2m49ftmooWdvnF99djev1a"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Industry, address": "SVS OIL MILLS",
+                        "Name of the Student": "SWATHI MOHANDAS ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1K0mmU6MbI0YuJ5iCOqfhonUP8rrq6N28"
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Abhishek. S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1i9J_9uuD7cJ11_sQJA4gORCDx8VRPIfU"
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Kanica s",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=127dTalmYMJZV9jgYfymzTXk7XbIQg9w3"
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "BRINDHA R",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ybgqMljA8j4JFbKHmqXHFqXjj8W_5hDz"
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Industry, address": "RAKON INDIA PVT LTD",
+                        "Name of the Student": "Jayakanthan K",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=15i-xPKXoEaFPZVPqbkJoanUAo1gffw3m"
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Amaresh S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1OovmQz0YF864RHCnzlUkSkEbBM5GVIW8"
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Industry, address": "State Bank of India ",
+                        "Name of the Student": "Priyadarshini ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1LdqE26LaTBdeheYUSwm4HC7OFek5DfUf"
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of the Industry, address": "Indian bank",
+                        "Name of the Student": "Logeshwari S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1P3tW_fqj9XpFTptMtP6kD-2a8FtVaDP_"
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of the Industry, address": "Brittania",
+                        "Name of the Student": "R.Nalangkilli",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1pPaHFvz7f4h_lVcBCn43hsJtvEl0O_k0"
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Honest Raj I ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1IDX52Gusbal2l6ttgEIjALyhsHpHWwV_"
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Wagishwar R L",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=177whiNP0IfIDFs9glRgUrqYJW8CRBLli"
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of the Industry, address": "Britannia industries",
+                        "Name of the Student": "Parthiban. R",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1f2qySLvPk21I_bgiScIeZu9i28EX511o"
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of the Industry, address": "ITC YUVAN ",
+                        "Name of the Student": "Sridhar P",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1mbDPUBkBdMEpHubVRSQyOA3GoU1jL2Lj"
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Thiyagarajan D ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1qNH6irg-ZHLRGVZdsOEi6JWEQ7lT4_nH"
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Belindra Valavan",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ZeNBoPG3hVHW1KBXmtm5Lx9RvDGFUOOj"
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of the Industry, address": "TVS Sundram fasteners limited ",
+                        "Name of the Student": "JANANI.M ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1PCQ4rJYhZprnvT0dmBDV3u2Jo5lcVXjx"
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of the Industry, address": "Britannia",
+                        "Name of the Student": "Manikandan B",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1OY1LQP_svjkE6or_fLInh4aaJkcBojiy"
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of the Industry, address": "ITC Limited ",
+                        "Name of the Student": "Anamiga Shree S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=14gLWe6KvQxGAMFSOTGYm9B3ASqPGbia2"
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of the Industry, address": "Rakon India Private limited ",
+                        "Name of the Student": "Moonisha S N",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1gqfPr19cGAHI9z-01WOKdxbrD_tTMVUq"
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "M A Shanuja",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1fcweKAcyY4_WuGdAsrclllDGIJC6LjEh"
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of the Industry, address": "Britannia Industries ",
+                        "Name of the Student": "HARISH B",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1bYx2na47QKOjdW7RwPr_ERaUuiVT9nme"
+                    },
+                    {
+                        "S.No": 35,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Aravindh B",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1CZDH3aFK3iIXSTmxqz4YCPMmmICfAchm"
+                    },
+                    {
+                        "S.No": 36,
+                        "Name of the Industry, address": "Britannia ",
+                        "Name of the Student": "HARISH B",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=11LvvlgbBZcdKWNOaQXbg_vJQ85DFOK_0"
+                    },
+                    {
+                        "S.No": 37,
+                        "Name of the Industry, address": "Rakon India Pvt Ltd",
+                        "Name of the Student": "Bharathi S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1kUuZ0zT5F24As6COgcoJN8NiAsB9BQlG"
+                    },
+                    {
+                        "S.No": 38,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "KEERTHANA V",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1jIxvSf02DUEpq0oLmdKH9g-VQcHu39u2"
+                    },
+                    {
+                        "S.No": 39,
+                        "Name of the Industry, address": "Zoho corporation ",
+                        "Name of the Student": "Bhavaani Sri M ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ySu9wjA7bkoFsX9vEKprMRz0mKTG0tFs"
+                    },
+                    {
+                        "S.No": 40,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Fathima Ayisha R ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1J-q_KTSir5V0laJkX-e3UDiRaUJWEyyQ"
+                    },
+                    {
+                        "S.No": 41,
+                        "Name of the Industry, address": "ITC Ltd ",
+                        "Name of the Student": "Vivega S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1D2mV0ZJWHsfowZvmJGUsWcAw7OFuOXvi"
+                    },
+                    {
+                        "S.No": 42,
+                        "Name of the Industry, address": "New Mohana Constructions",
+                        "Name of the Student": "Berwin P",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1-TsgQ6nTThpUUz3jkebyW-aqhGN9PM8v"
+                    },
+                    {
+                        "S.No": 43,
+                        "Name of the Industry, address": "ITC Limited ",
+                        "Name of the Student": "Santhosh Balaji V ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1CYif8vRGz8UTBgCbdFBiLGokdGFbcAYf"
+                    },
+                    {
+                        "S.No": 44,
+                        "Name of the Industry, address": "Elastic Tree marketing solutions ",
+                        "Name of the Student": "Shanthinee A",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1h8ofYLZDlPP_Ko6aUy14C-27P6hsljDs"
+                    },
+                    {
+                        "S.No": 45,
+                        "Name of the Industry, address": "Britannia industries ",
+                        "Name of the Student": "Jebin jose R",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1b6SThXD6VICZT1HyOsYYCL-R_lNpwvtc"
+                    },
+                    {
+                        "S.No": 46,
+                        "Name of the Industry, address": "Britannia",
+                        "Name of the Student": "Alvin Samuel D",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1sqozpbFsmj2H45pXqGNMwiCwO5og8mND"
+                    },
+                    {
+                        "S.No": 47,
+                        "Name of the Industry, address": "State Bank of India ",
+                        "Name of the Student": "Keerthana.j",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1t5as0grdtKQsFjJyUVx1T68JFHEt-rGv"
+                    },
+                    {
+                        "S.No": 48,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "S.Shahinsha banu",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1UdgyaId6XgC6_mVJYBktbu-Hcn4B95d-"
+                    },
+                    {
+                        "S.No": 49,
+                        "Name of the Industry, address": "ITC",
+                        "Name of the Student": "Subhathra ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1kKLbCAUQudJ3H_JVUP3cJBjUSIhp8Qbi"
+                    },
+                    {
+                        "S.No": 50,
+                        "Name of the Industry, address": "Indian bank",
+                        "Name of the Student": "Devayani S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1q0Fa46fX7H8z4I7VMdDLxTBGAqsALWQn"
+                    },
+                    {
+                        "S.No": 51,
+                        "Name of the Industry, address": "Britannia ",
+                        "Name of the Student": "RAMAKRISHNAN K",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=10bIQbBH6KhgYtI6nU9s5DTlX2oPIeNjw"
+                    },
+                    {
+                        "S.No": 52,
+                        "Name of the Industry, address": "ITC Ltd ",
+                        "Name of the Student": "Abinaya. A",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1O-PK6k2DV2ukBtnjHs8GEnr93_sACHGE"
+                    },
+                    {
+                        "S.No": 53,
+                        "Name of the Industry, address": "BRITANNYA",
+                        "Name of the Student": "JOSHUA AMRISH A",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1q2otBuwNdW3t5yJDiO4NyN9S28pkhjzP"
+                    },
+                    {
+                        "S.No": 54,
+                        "Name of the Industry, address": "BRITANNYA",
+                        "Name of the Student": "JOSHUA AMIRSH A",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1NJ9L1wds-wdHZHKu-svMAmMiCvFdCH6S"
+                    },
+                    {
+                        "S.No": 55,
+                        "Name of the Industry, address": "Britannia Industries ",
+                        "Name of the Student": "Saravanan S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=15QebNjs0Ujmi36ESeAftIKsDtjPy4mZ1"
+                    },
+                    {
+                        "S.No": 56,
+                        "Name of the Industry, address": "ITC LIMITED ",
+                        "Name of the Student": "SHYLI NITHYANANDAM ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1UnC1IQy399_cV1nFcxKYxxju2JwccA6J"
+                    },
+                    {
+                        "S.No": 57,
+                        "Name of the Industry, address": "Britannia Industries",
+                        "Name of the Student": "Sivaranjani P",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Jlo_0zYOfCbapZ1rwyKpz68MTNUpOHqu"
+                    },
+                    {
+                        "S.No": 58,
+                        "Name of the Industry, address": "MITSUBA INDIA PRIVATE LTD ",
+                        "Name of the Student": "Harshini J",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1sJttIiW2I3f2Zrff0E1flA-GfWZB3zjK"
+                    },
+                    {
+                        "S.No": 59,
+                        "Name of the Industry, address": "britannia",
+                        "Name of the Student": "RAJESH R",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=15_67MrFafn-X7lTtETrM00BW7mwKB7zm"
+                    },
+                    {
+                        "S.No": 60,
+                        "Name of the Industry, address": "Indian Bank ",
+                        "Name of the Student": "Sneha S",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1r0dBlRB-wAmYJeZeDl4sg4BWSEgezxjn"
+                    },
+                    {
+                        "S.No": 61,
+                        "Name of the Industry, address": "Chennai Central cooperative bank ",
+                        "Name of the Student": "Dhanush Raaj",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1u5JmHZyyRrrHPwQ7PgzBdQFwT9fEgdCv"
+                    },
+                    {
+                        "S.No": 62,
+                        "Name of the Industry, address": "Appin technology ",
+                        "Name of the Student": "Pradeep Rajan P ",
+                        "Duration": "I month",
+                        "Request and acceptance communication details": null,
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=12Ns6L4X5K1M8_FO4nTnS15SWyZlzahOb"
+                    }
+                ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": []
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    },
+    {
+        "year": "2023-24",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": []
+            },
+            {
+                "JOURNAL_PUBLICATIONS": []
+            },
+            {
+                "PATENT_DETAILS": []
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": []
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": []
+            },
+            {
+                "CONSULTANCY": []
+            },
+            {
+                "INTERNSHIP": [
+                    {
+                        "S.No": 1,
+                        "Name of the Industry, address": "A STUDY ON FINANCIAL PRATICES IN SGR LOGISTICS",
+                        "Name of the Student": "GOWRI PRIYA V",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1DyKDDwTc3flnlIwAhDNmBiVX6ZUUkqTH",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=124SkXTeT9GxR1zdldOeoMAVWZdO-ntVV"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Industry, address": "AN ORGANISATION STUDY IN SHRIRAM FINANCE LIMITED ",
+                        "Name of the Student": "SHRIVARSHNI A",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1ZUICTBCdYCjyZGsakkK2uaaNxhm7Hhtq",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1mUhDV1xeUh6BOjw1XdQzCffCJtwRHp4y"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Industry, address": "A STUDY ON MARKETING IN COLAN INFOTECH",
+                        "Name of the Student": "DINESH KUMAR J",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1Xw5L0oacZKOgiNQyi4uUySWMedjz4Zp4",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Trsk3SR5dKCCsHEfUj9vQgECeBWGB_PA"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Industry, address": "Organisational study in Syscare solutions ",
+                        "Name of the Student": "KAAVIYA B",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1VIcwQFanQZ5glZojh8zbp-4vXKT4S9_S",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1tZp2rYVdlQa7zDDNV8_PkzK0scHAWvty"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Industry, address": "A STUDY ON HUMAN RESOURCE PRACTICES IN ADITYA BIRLA CARBON PVT LTD",
+                        "Name of the Student": "AJAY T. S.",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1uhCbtdxZPfFmgfK3Znl-N9-tYX5aCyZn",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1X0LPLWYCmQwXU9cO-PiovzaAjhbbun87"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN SPECTRUM7 TECHNOLOGIES PRIVATE LIMITED ",
+                        "Name of the Student": "BHOOJAA HARINI S ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1EQnE65LTNUuM7d3U51EOT1AuEW3HgxqQ",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ZSYFLEDBVCHY2g5VLciHGO7zMFWoT5se"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Industry, address": "ORGANIZATION STUDY IN PARSERAY LOGISTICS",
+                        "Name of the Student": "KAVYA S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1wDj21Ui2mimoG9UFf2wixZMt0jUBFIa7",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1U1lAuz9BrEXPwzmLkrPoRet_Q9GKLS3m"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Industry, address": "AN ORGANISATIONAL STUDY IN TVS MOBILITY PVT LIMITED - CEMHS ",
+                        "Name of the Student": "VISHAL R",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=160DBey5cNYnAm9rsxKGEfw5x4t_FBs_s",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1e4FtL_QPzmP7k988NW7I46rh3nqEjFpu"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Industry, address": "A Study on Human Resource Practices in Eversendai Constructions Pvt Ltd ",
+                        "Name of the Student": "KARRTHIK K R ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1bTTaFZc5kwGDs1LSknLvFMrt8H6Jo4i_",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ZaKTqPGbAZRqzhYEynTVArGx2Wx9IqPY"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Industry, address": "ORGANIZATION STUDY -PARSERAY LOGISTICS PRIVATE LIMITED",
+                        "Name of the Student": "MANIKKAVALLI V",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1y-mji1ylIBPXQefjc4QOiYHGXvuqzy5n",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Bvk4Q8GGRtJgWeQDuOMUj8xJ3zsvnnaO"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Industry, address": "A STUDY ON OPERATION PRACTICES IN SUPER LOGISTICS PVT LIMITED",
+                        "Name of the Student": "KISHORE G",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1OIjYnRMnSrbviYuDL_0ovr0SZcwRWFaY",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=188vqbEEukfU6TbtklpZ5-GEnunHoiqCc"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Industry, address": "ORGANISATION STUDY ON VEGA INTELLISOFT PVT LTD",
+                        "Name of the Student": "THRIVENI.R ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1TgLY-_eMMv_1ypElrTEr6Mpsb9GkS24q",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1OWqKViWD9HVPGuSyb_kWlPZ7DbDzhhYZ"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Industry, address": "A study on Human Resources  Practices  in Aditya birla carbon  pvt .ltd",
+                        "Name of the Student": "GHATTY BHAVYA  SREE",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1kf0h7lm1-y3pJueWVTnTnh9Q80IG7YKm",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=112ubNjnTT1VVEjz6GuroLNyGsCJ3OfRT"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Industry, address": "ORGANISATIONAL STUDY IN SUPER LOGISTICS",
+                        "Name of the Student": "SARATH N",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1EZ9paY3328IhFQ6G5PYhh5OmOqvoibYx",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1HXZq__Sawg4PtbwD2J563-3t1EgMRcGU"
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Industry, address": "A STUDY ON DIGITAL MARKETING PRACTICES IN SPIRO PRIME TECH  PVT LTD",
+                        "Name of the Student": "SRIKALYAN K",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1rTVmwQH9untc1hQf7MIFSKcUS9GGsZG3",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1jlbZQqaTsEds_e4oy0jvowga4bt7VICg"
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Industry, address": "A STUDY ON FINANCE WITH MARKETING ZOHO CORPORATION PVT LTD ",
+                        "Name of the Student": "JAYANPRASATH.T",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1OPY0k0Qa3ajANmFAhM3SV7ro3gIcMTaI",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1x8DtFIu1jjF_wiCu3s-F4hU-q5EULxQt"
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Industry, address": "A Study on the Marketing Practices in Vilva Networks ",
+                        "Name of the Student": "SRIJA.V",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1Vtelerp-HFEwbtlKhuJLGtWCRNvIMa7B",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Uc7otk86Tcy51qPiGPqHP90Rs0prAUTa"
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN MILLWRIGHT TECHSERV PVT LTD",
+                        "Name of the Student": "NITHYALAKSHMI P",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1ttylfNrryt2akGc8LmvyE4MUCl2DUjr9",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1FkLxCzsWtDfRl0UN-4a1DGgwVQtEWfXS"
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Industry, address": "A STUDY OF FINANCE AND MARKETING ZOHO CORPORATION PVT LTD ",
+                        "Name of the Student": "KARUN NIKHILESH.A",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1RQZ8QYDKVd1trDkErjGaJ04Fyzymexe3",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=16LZ0U6gNunzfMhxEQm2GbEJ5_fN15uMZ"
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Industry, address": "A STUDY ON DIGITAL MARKETING PRACTICES AT LEARNER CIRCLE",
+                        "Name of the Student": "VASANTHAKANNAN D",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1UIQkOyLKFaSXlDkaihJ9YM1KOT8CMVBe",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=19qhDMcy6wTPK-z-hfn1cFzyC0evs0cE2"
+                    },
+                    {
+                        "S.No": 21,
+                        "Name of the Industry, address": "A study on human resources in KCP company pvt ltd ",
+                        "Name of the Student": "KARTHIKEYAN A ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1U71GOR1drfYq3VE7FXhohvobAwKYr1HN",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1QO7d4f2ci6-VaXqNohhtpzBz4l0RBWsA"
+                    },
+                    {
+                        "S.No": 22,
+                        "Name of the Industry, address": "An Organisational Study on Indian Bank Limited ",
+                        "Name of the Student": "SANTHANA LAKSHMI.V",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1akgNDOrbDrRvdpy2KMjl1SCmnNKoilEK",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1bq1C35zlo2X64-ltEAKP8vKbIxnjCyKC"
+                    },
+                    {
+                        "S.No": 23,
+                        "Name of the Industry, address": "A STUDY ON FINANCIAL PRACTICES IN INDIAN BANK ",
+                        "Name of the Student": "THARUN KUMAR L ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=14i_VbzeTWivx9ddbRqLj6ioUPcFfcEfl",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1XQBgtLQWL0OEqvg90Tgy7CN2uA5lzNAb"
+                    },
+                    {
+                        "S.No": 24,
+                        "Name of the Industry, address": "ORGANIZATIONAL  STUDY",
+                        "Name of the Student": "VAISHNAVI D",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1U1Ii6_4R30d3Y1JOcQhHTiunuEWbhYr-",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1eRT4IKyzyRuU6vQqnvUk33pTy0UKtn2f"
+                    },
+                    {
+                        "S.No": 25,
+                        "Name of the Industry, address": "A STUDY ON FINANCIAL PARCTICE IN SKY ARCHITECTURAL SOLUTIONS PVTLTD",
+                        "Name of the Student": "Shanthini R ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1QcJNbwXIL_ik2hHYtdpbLt76dWk5rETg",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1KaLUiJ5Adelayh4U2wecV1bcG4xSm5lw"
+                    },
+                    {
+                        "S.No": 26,
+                        "Name of the Industry, address": "AN ORGANIZATIONAL STUDY IN HOVERNEST PRIVATE LIMITED",
+                        "Name of the Student": "DURGA M S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1W9dA2dbSXhKa4TOJQpa7u4xDuLdAyLP8",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=16-zcAAsZTkqjl91Q-qlYgQ3nEYEi1b7U"
+                    },
+                    {
+                        "S.No": 27,
+                        "Name of the Industry, address": "SUMMER INTERNSHIP",
+                        "Name of the Student": "ARSHAD AHAMED RA",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=187KGzAw6Bf4nRauLKOTLrJ8dHwF5VBKC",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1q2tQ3-h1cqCXRjJf8GjomQjaVgGUmHci"
+                    },
+                    {
+                        "S.No": 28,
+                        "Name of the Industry, address": "ORGANISATIONAL STUDY",
+                        "Name of the Student": "ANGELIN A",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1-G8S3cAHolCaE-kdh-GGCq_jrA0Iyekm",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1BdfDID8K-joSYyJjLwXUr1DaJIOG52uS"
+                    },
+                    {
+                        "S.No": 29,
+                        "Name of the Industry, address": "A STUDY ON FINANCIAL PRACTICES IN SKY ARCHITECTURAL SOLUTIONS PRIVATE LIMITED ",
+                        "Name of the Student": "SUNIL KUMAR. S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1xeZ5nOb_SiSFbCEQaaxXM8UIcPpzfEJk",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1RVmp3zhws0-se5xCUYLLY_WIYr7mZfgD"
+                    },
+                    {
+                        "S.No": 30,
+                        "Name of the Industry, address": "OPTIMISING EMPLOYEE WELFARE, RETENTION AND ENGAGEMENT STRATEGIES ",
+                        "Name of the Student": "Sherine Deliketa J",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1axlDCQvNbQ3x0VXsSb1wc9dlBDy2q2Z6",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1nPlVJ_3Zg9Ksj7HMUam5KMcglbeMg-Mj"
+                    },
+                    {
+                        "S.No": 31,
+                        "Name of the Industry, address": "AN ORGANISATIONAL STUDY IN HOVERNEST PRIVATE LIMITED ",
+                        "Name of the Student": "SORNA VIVEDHITA S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1WwcRXbiYG1AqZsjvb935wGGJ6cL-zBfl",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1awdW3eJYO3t70hMGbi9cGq1PkXFGwB_V"
+                    },
+                    {
+                        "S.No": 32,
+                        "Name of the Industry, address": "A STUDY ON FINANCIAL PRACTICES IN INDIAN BANK",
+                        "Name of the Student": "JAGATH RAMAN V ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1NL65lTdPgQaJ4DeH1fTCFBGOOjNIgmtl",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1xpjVAEf_DLJaVn8_fXgrFJGv97J5tezP"
+                    },
+                    {
+                        "S.No": 33,
+                        "Name of the Industry, address": "SUMMER INTERNSHIP",
+                        "Name of the Student": "KEERTHANA.R",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1eezKL_UHcTvKbf9BXa2CUOkQfaOP4nWS",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=18jPgjYqI1-vEz9RW9RJO3plCqsbzgknZ"
+                    },
+                    {
+                        "S.No": 34,
+                        "Name of the Industry, address": "ORGANIZATION STUDY - SRI SGR LOGISTICS ",
+                        "Name of the Student": "YUVARAJ T C",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1jV6kf4b1z0SSmhuBga-388BYyyzZUMIu",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=13ZclUQ0EGOUx1v7Ye4blK3d8BDsRFbs1"
+                    },
+                    {
+                        "S.No": 35,
+                        "Name of the Industry, address": "A STUDY ON DIGITAL MARKETING PRACTICES AT LEARNER CIRCLE",
+                        "Name of the Student": "AVINASH M",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1YczxQ1UyXvDoBjw3bu9OGBZIh-j5i55S",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1SqdhBq5IhuBcrDDjO_9aZZ2Zr6Kv3DRO"
+                    },
+                    {
+                        "S.No": 36,
+                        "Name of the Industry, address": "OPERATIONAL STUDY ON SJR LOGISTICS ",
+                        "Name of the Student": "JAGAN RAJAN V ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1RWoNMlhlwMmjXFwMToijEYKFpoDre5D0",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1HXePqlhE__73yhn4CJdeFBZul5FVmUHJ"
+                    },
+                    {
+                        "S.No": 37,
+                        "Name of the Industry, address": "Organizational Study in Digital Entertainment Company (DEC)",
+                        "Name of the Student": "PRAVEEN KUMAR T",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1KoTaLZWyytLKG445q1abdV7CAV9cTtlm",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1H7vk4GE0dsfOdx2hFl2W-pKV50QHhYFw"
+                    },
+                    {
+                        "S.No": 38,
+                        "Name of the Industry, address": "A STUDY ON OPTIMIZING RECEIVABLES AND TIMELY COLLECTIONS IN BLUE STAR LTD",
+                        "Name of the Student": "YUKESH RAGHUL R",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1SPkwfEtdSl-2vVa2Zo5ADidk5cxt3goA",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1fxA3yztaomMv_WmeUYsvy4TVC2WImwFl"
+                    },
+                    {
+                        "S.No": 39,
+                        "Name of the Industry, address": "AN ORGANISATIONAL STUDY IN INDIAN BANK",
+                        "Name of the Student": "ABHISHEK V",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1oiO9duqjXc6PeOGRM_1TBasgGQMvsSyc",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ec7EDn7qGmWpTlZqkqqtV4kKRkVFeYlG"
+                    },
+                    {
+                        "S.No": 40,
+                        "Name of the Industry, address": "ORGANISATIONAL STUDY",
+                        "Name of the Student": "NITHYASHREE S ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1e1UJ_eC7dWsfSpb--_1jQFvB5jrnMoaC",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1fnTLs-7ANh1gx85NiGKMJAEOI1fydSFI"
+                    },
+                    {
+                        "S.No": 41,
+                        "Name of the Industry, address": "ORGANIZATION STUDY IN NAGA LIMITED",
+                        "Name of the Student": "PUSHPA SUBIKSHA R",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1otZuPpab3nh0XhfdOs77w6I04aGqkP5e",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ysRtM8JOrLjbsyqRJ7sfcDEsAp5Hixu2"
+                    },
+                    {
+                        "S.No": 42,
+                        "Name of the Industry, address": "A STUDY ON INCOTERMS IN JUAN CARGO AND LOGISTICS",
+                        "Name of the Student": "MARIYA RESMI.P",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1kc6gOnBM8Icp6-o5cAWAwp70q91gOEAz",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=179fQjqbCg57eY69D_YCJY3t39n14yunT"
+                    },
+                    {
+                        "S.No": 43,
+                        "Name of the Industry, address": "A STUDY ON HUMAN RESOURCE PRACTICES IN EVERSENDAI CONSTRUCTIONS PVT LTD",
+                        "Name of the Student": "SAMITHA M",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1nac7HeS2wJK4Qtzxu6JmVrOXYQvIe17-",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Rq206rJEwgC4eTYf6FecJinzm_7ezSVY"
+                    },
+                    {
+                        "S.No": 44,
+                        "Name of the Industry, address": "ORGANIZATION STUDY IN LETSIFY SIGMA4SOLUTIONS PVT LTD",
+                        "Name of the Student": "ABIRAMI S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1BtXBcuYgfXqtMRqwW3HGepiBrvuFi-N6",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1rT5sjwFw0ig1etUl9fkk2JEzV3TtEKdX"
+                    },
+                    {
+                        "S.No": 45,
+                        "Name of the Industry, address": "AN ORGANIZATIONAL STUDY IN SBE UNIQUE RETAIL PVT LTD",
+                        "Name of the Student": "THARUN KUMAR K ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1g08XIgCNTC5hLFZxTh0pa8QNSxV6pdvv",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=10AE2e2YPmRGu2CmQvYHXiIJ5q5FX28_R"
+                    },
+                    {
+                        "S.No": 46,
+                        "Name of the Industry, address": "A STUDY ON HUMAN RESOURCE PRACTICES IN ZOHO CORPORATION",
+                        "Name of the Student": "DEEPALAKSHMI S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1k8e1Gn4W3bs7EEXRBiPNcCNF6-Dlc5Ad",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1qv6_ljzi7UIeqtD0Aaxze8qm-spV0cxh"
+                    },
+                    {
+                        "S.No": 47,
+                        "Name of the Industry, address": "Organisational study",
+                        "Name of the Student": "KAVITHA K ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1QExdLy6n97X0Qnwd1skGIQX39jt-IHse",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1VrNxgnL0bTWzbWOsfRcTCMv5wc84akAk"
+                    },
+                    {
+                        "S.No": 48,
+                        "Name of the Industry, address": "A STUDY ON HUMAN RESOURCE PRACTICES IN ZOHO CORPORATION",
+                        "Name of the Student": "DEEPALAKSHMI S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=18YP8crKrs8pzGNALgqWRIhTwtpJyX_nx",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1lQfcE-gq2A72cwkz-JZ1_Q5zRTyMCBn-"
+                    },
+                    {
+                        "S.No": 49,
+                        "Name of the Industry, address": "A STUDY ON MARKETING PRACTICES ",
+                        "Name of the Student": "BAKYALAKSHMI R ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1pokXbAwqWHr2su73RsbPJwBKnwSgBeZp",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1MD-eRJ4cXlHunYbNJKpXrPnmz1NDinhg"
+                    },
+                    {
+                        "S.No": 50,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN INDIAN BANK",
+                        "Name of the Student": "PAVITHRA K C ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1WJ_r4zFvN45Dgpl6Jr1O4Bz1fUQzJfXK",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1ejC379C-AdgT_5s1pW6-j8qXBQt0nuHo"
+                    },
+                    {
+                        "S.No": 51,
+                        "Name of the Industry, address": "Study on operational practices in super logistics ",
+                        "Name of the Student": "SREERAAM S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1q_eCM3UHfpBzCBM2N6j9Xf4dCjljsjJZ",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1oWq329Uy8_NLR_Mf9HSmwIXAQS2VjPEA"
+                    },
+                    {
+                        "S.No": 52,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN GM TRADERS ",
+                        "Name of the Student": "SAKTHIRAM G ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=16AuZGyXfihYns74ZudnmPnc2s32vkZbA",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=125l3sjXSYooIY2JIJIPxNn1zY6TLIR4f"
+                    },
+                    {
+                        "S.No": 53,
+                        "Name of the Industry, address": "Study on Ambattur clothing limited ",
+                        "Name of the Student": "PAVITHRA.A",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1AhG2Dqj_tJz7haAL_Na7QSpX5G-VArBw",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1kc35FDXuSZyM7iAdpfBLpklx-XugT9CA"
+                    },
+                    {
+                        "S.No": 54,
+                        "Name of the Industry, address": "A STUDY OF OPERATIONAL PRACTICE IN SUPER LOGISTICS PVT LTD ",
+                        "Name of the Student": "ANISH G ASARIYA ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1tIfLM6Vea6-AQbJOB3ZDT-f2LOH-FFZH",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1YWb-91HFDQfegTEVMyZ_vSOzzPRmgxtB"
+                    },
+                    {
+                        "S.No": 55,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN MMM HOSPITAL",
+                        "Name of the Student": "FAMITHA FATHIMA N",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=18n1XhU7E9rw8GwLyh9TaGs9r-Wx11QUI",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1yiGRjRqrg8rJsubmJzi4XxlwGOEiGGSo"
+                    },
+                    {
+                        "S.No": 56,
+                        "Name of the Industry, address": "Organization study with Zf",
+                        "Name of the Student": "KISHORE. S",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1oRBIAn77KsuJrEyQXkTLfgz_xmTVCtU9",
+                        "Attach Internship proof as link": null
+                    },
+                    {
+                        "S.No": 57,
+                        "Name of the Industry, address": "ORGANIZATIONAL STUDY IN SHRIAM FINANCE LIMITED",
+                        "Name of the Student": "POOJITHA I",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1C6BEloFqLfEmd4C4zMzNBCLP-q9SMla4",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=1Ily_v9e1pNyNyyqabOx4l43EsBptSiDx"
+                    },
+                    {
+                        "S.No": 58,
+                        "Name of the Industry, address": "A study on operation practices in super logistics pvt limited ",
+                        "Name of the Student": "RANIL Vikram ",
+                        "Duration": "I Month",
+                        "Request and acceptance communication details": "https://drive.google.com/open?id=1xvEllXGeeLBP--r00rhfdh_z5K3wX5hR",
+                        "Attach Internship proof as link": "https://drive.google.com/open?id=19A5i2i_PVVZFXXjF_z-yQZjasP-k9ZSz"
+                    }
+                ]
+            },
+            {
+                "PRODUCT_DEVELOPMENT": []
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

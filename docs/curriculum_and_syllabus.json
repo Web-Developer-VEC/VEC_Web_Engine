@@ -1,0 +1,37 @@
+{
+  "2023": [
+    {
+      "year": "For the Students admitted from 2023&2024",
+      "department": [
+        "B.E Automobile Engineering",
+        "B.E Civil Engineering",
+        "B.E Computer Science and Engineering",
+        "B.E Computer Science and Engineering (Cyber Security)",
+        "B.E Electronics and Communication Engineering",
+        "B.E Electrical and Electronics Engineering",
+        "B.E Electronics and Instrumentation Engineering",
+        "B.E Mechanical Engineering",
+        "B.Tech Artificial Intelligence and Data Science",
+        "B.Tech Information Technology",
+        "M.E Computer Science and Engineering",
+        "M.E Power Systems Engineering",
+        "MBA - Master of Business Administration"
+      ],
+      "deptid": [
+        "002",
+        "004",
+        "005",
+        "006",
+        "009",
+        "007",
+        "008",
+        "013",
+        "001",
+        "011",
+        "005",
+        "008",
+        "017"
+      ]
+    }
+  ]
+}

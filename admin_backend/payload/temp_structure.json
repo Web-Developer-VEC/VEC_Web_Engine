@@ -1,0 +1,16 @@
+{
+  "unique_id": "6b162b25-3a79-4cae-83f6-c15a82e1a90a",
+  "action_target_id": {},
+  "metadata": {},
+  "original_data": {},
+  "type": "update/add/delete",
+  "collection_name": "collection_name",
+  "category": "sub_category_name_under_collection",
+  "admin_id": "get_from_session",
+  "title": "action_made",
+  "status": "pending/managed",
+  "date": "2025-07-15T01:09:34.673Z",
+  "reviewed_by": "superior_id",
+  "reviewed_notes": "notes",
+  "actions": {}
+}

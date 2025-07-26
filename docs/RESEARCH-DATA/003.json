@@ -1,0 +1,321 @@
+{  
+    "dept_id":"003",
+    "department_name": "Chemistry ",
+    "data":
+    [
+    {
+        "year": "2023-24",
+        "docs": [
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr.Abdul Razak Mohamed Sikkander",
+                        "Title of the Paper": "Synthesis of Zinc Oxide and Lead Nitrate Nanoparticles and their Applications: Comparative Studies of Bacterial and Fungal (E. coli, A. Niger)",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Journal of Applied Organometallic Chemistry",
+                        "Month and Year of publication": "9/1/2023",
+                        "ISSN": "2312-1154 ",
+                        "Doi": "https://doi.org/10.48309/JAOC.2023.415886.1115",
+                        "Colloboration Institute": "National Research Center,North East Frontier Technical University,Thakur College of Engineering.",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/17-xNLgdPOxMbfh2DSII3AgsEUoJuOCON/view?usp=sharing",
+                        "Journal Proof":"https://jaoc.samipubco.com/"
+
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander",
+                        "Title of the Paper": "Appraisal, recent advancement, and impacts of nanomedicine in cardiac asthma",
+                        "Scopus/ SCI": " Scopus",
+                        "Name of the Journal": "Journal of medical pharameutical and allied sciences",
+                        "Month and Year of publication": "10/1/2023",
+                        "ISSN": "2320–7418",
+                        "Doi": "https://doi.org/10.55522/jmpas.V12I5.5214.",
+                        "Colloboration Institute": " GLA University,Indian Institute of Technology, Pathfinder Research and Training Foundation.",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1RLy58ZPx7pYOpL7Svn_9I4IuKHorpVAl/view?usp=sharing",
+                        "Journal Proof":"https://www.jmpas.com/"
+
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr.K.Kavitha",
+                        "Title of the Paper": "Electrochemical detection and isolation of cancer cells using nano-materials based biosensors – A review",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "International Journal of Electrochemical Science ",
+                        "Month and Year of publication": "5/1/2023",
+                        "ISSN": "1452-3981",
+                        "Doi": "https://doi.org/10.1016/j.ijoes.2023.100203",
+                        "Colloboration Institute": "NSaveetha Dental College and Hospitals,",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/10wE-4e06h4cH0EQo3BuLXfm6GUuwvTCj/view?usp=sharing",
+                        "Journal Proof":"http://www.electrochemsci.org/"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Dr.K.Kavitha ",
+                        "Title of the Paper": "Development of Electrochemical Sensor Using Iron (III) Phthalocyanine/Gold Nanoparticle/Graphene Hybrid Film for Highly Selective Determination of Nicotine in Human Salivary Samples",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Biosensors",
+                        "Month and Year of publication": "8/1/2023",
+                        "ISSN": "2079-6374",
+                        "Doi": "https://doi.org/10.3390/bios13090839",
+                        "Colloboration Institute": "Centre for nano biosensor,School of chemical Engineering",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/13TF3IaDlPwDsjqrj5ucgBCA19TJAweiE/view?usp=sharing",
+                        "Journal Proof":"https://www.mdpi.com/journal/biosensors"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Dr.K.Kavitha ",
+                        "Title of the Paper": "Electrodeposition of nickel nanoparticles on graphene/iron (III) phthalocyanine-4,4’,4,”,4’”-tetrasulfonic acid coated electrode for glucose sensing",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Inorganic Chemistry Communications",
+                        "Month and Year of publication": "1/1/2024",
+                        "ISSN": "1387-7003",
+                        "Doi": "https://doi.org/10.1016/j.inoche.2024.112140",
+                        "Colloboration Institute": "Saveetha Dental College and Hospitals,",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/17F4-2VUxcf0AMqT5V7Lzn752Af1x0Swq/view?usp=sharing",
+                        "Journal Proof":"https://www.scimagojr.com/journalsearch.php?q=25267&tip=sid"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Author(s)": "Dr.N.Balamurugapandian ",
+                        "Title of the Paper": "Synthesis, Macro-Dielectric, Electronic μ-Influx,Voltage Controlling and Computational Studies of Novel Aromatic Cyclic AMPF Crystals",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Polycyclic Aromatic Compounds",
+                        "Month and Year of publication": "6/1/2023",
+                        "ISSN": "1387-7003",
+                        "Doi": "10.1080/10406638.2023.2223337",
+                        "Colloboration Institute": "Saveetha school of Engineering",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1VqKKOobVMCvz19WtL39kj_8uyOXC5Np2/view?usp=sharing",
+                        "Journal Proof":"https://www.tandfonline.com/toc/gpol20/current"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Author(s)": "Dr.N.Balamurugapandian  ",
+                        "Title of the Paper": "Synthesis, Characterizations of HDTDHP Macro-Crystals by Experimental-Electrical, Electronic and Computational Structural Proviso for Opto-Computational Structural Proviso for Opto-Electronic and Photonic Utilities",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "ECS Journal of Solid State Science and Technology",
+                        "Month and Year of publication": "10/1/2023",
+                        "ISSN": "2162-8777",
+                        "Doi": "10.1149/2162-8777/acfd5d",
+                        "Colloboration Institute": "Saveetha school of Engineering,Hindustan College of Engineering",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/15Q4st2qeA6_FU-iwdHmoU_PZF_Z1Xmsi/view?usp=sharing",
+                        "Journal Proof":"https://www.electrochem.org/publications/jss"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Author(s)": "Dr.N.Balamurugapandian  ",
+                        "Title of the Paper": "Physio-chemical and biological Characterizations of 4 Bromo – 4'Chloro Benzylidene Aniline μ-crystals for Engineering Utilities",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "ECS Journal of Solid State Science and Technology",
+                        "Month and Year of publication": "4/1/2024",
+                        "ISSN": "2162-8777",
+                        "Doi": "10.1149/2162-8777/ad37d7]",
+                        "Colloboration Institute": "Saveetha school of Engineering,Hindustan College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1H8FhkuzFwWbV8anOV8s4Pof31Uk4Jpi5/view?usp=sharing",
+                        "Journal Proof":"https://www.electrochem.org/publications/jss"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                        "Title of the Paper": "A Review of Diagnostic Nano Stents: Part (I)",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Journal of Chemical Reviews",
+                        "Month and Year of publication": "2/1/2024",
+                        "ISSN": "2312-1287",
+                        "Doi": "https://doi.org/10.48309/JCR.2024.432947.1287",
+                        "Colloboration Institute": "Path finder research and Training Foundatioon",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1bWGjVMgmMsyS_EDKFtvRdCVIUiwcGZDj/view?usp=sharing",
+                        "Journal Proof":"J. Chem. Rev.,"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                        "Title of the Paper": "Appraisal of the Impact of Applying Organometallic Compounds in Cancer Therapy ",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Journal of Applied Organometallic Chemistry",
+                        "Month and Year of publication": "3/1/2024",
+                        "ISSN": "2312-1154",
+                        "Doi": "https://doi.org/10.48309/JAOC.2024.433120.1154",
+                        "Colloboration Institute": "Path finder research and Training Foundatioon, Rmk Engineering College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/11Bmx1C8wfFOj3IwfH_gF-9iy7nQvp0yi/view?usp=sharing",
+                        "Journal Proof":"https://jaoc.samipubco.com/"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                        "Title of the Paper": "The Study Examined the Effectiveness of a Nickel (II) Complex Containing 5-Acetyl-N-(adamantan-2-yl) Thiophene-2- Carboxamide as a Derivative for the Drug Isoniazid in Relation to Bacterial, Cancer and Tuberculosis Activities",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Advanced Journal of Chemistry, Section A",
+                        "Month and Year of publication": "5/1/2024",
+                        "ISSN": "2645-5676",
+                        "Doi": "10.48309/AJCA.2024.443156.1490",
+                        "Colloboration Institute": "Vel Tech Hitech, Rmk Engineering College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1-RDnvJdEDhtMExNxRUMxQ9TlrLGuK9xF/view?usp=sharing",
+                        "Journal Proof":"www.ajchem-a.com"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                        "Title of the Paper": "Electrochemical characteristics of eco-friendly electroless copper nano film deposition using dithiocarbamate derivative",
+                        "Scopus/ SCI": "Scopus",
+                        "Name of the Journal": "Materials Today: Proceedings",
+                        "Month and Year of publication": "7/1/2023",
+                        "ISSN": "2214-7853.",
+                        "Doi": "https://doi.org/10.1016/j.ma",
+                        "Colloboration Institute": "VISTAS, Rmk Engineering College",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1UYL0JYXTCvAbgiGIoQZkWatABHXBdkfk/view?usp=sharing",
+                        "Journal Proof":"https://www.scimagojr.com/journalsearch.php?q=21100370037&tip=sid"
+                    }
+                  
+                ]
+            } 
+        ] 
+    },
+           
+    {
+        "year": "2024-25",
+        "docs": [
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    
+                        {
+                            "S.No": 1,
+                            "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                            "Title of the Paper": "Dramatically with Application of Nanotechnology",
+                            "Scopus/ SCI": "Scopus",
+                            "Name of the Journal": "Biomedical Engineering : Applications Basis and Communications",
+                            "Month and Year of publication": null,
+                            "ISSN": "1793-7132",
+                            "Doi": "https://doi.org/10.4015/S1016237224300037",
+                            "Colloboration Institute": null,
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://www.worldscientific.com/worldscinet/bme",
+                            "Journal Proof":"www.ajchem-a.com"
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Author(s)": "Dr. Abdul Razak Mohamed Sikkander ",
+                            "Title of the Paper": "Safety and Efficacy of Drug-Eluting Stents Improved",
+                            "Scopus/ SCI": "Scopus",
+                            "Name of the Journal": "Advanced Journal of Chemistry, Section A",
+                            "Month and Year of publication": "9/1/2024",
+                            "ISSN": "2645-5676",
+                            "Doi": "https://doi.org/10.48309/ajca.2025.467077.1591",
+                            "Colloboration Institute": "KAHER'S JGMM Medical College Hubli,AmityUniversity",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1maUyoJuQPZCCfJUDeMgOMrHGdjSPTnAU/view?usp=sharing",
+                            "Journal Proof":"https://www.worldscientific.com/worldscinet/bme?srsltid=AfmBOooCjhPJwJbCB7dww"
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Author(s)": "Dr.K.Kavitha  ",
+                            "Title of the Paper": "Applications of chemically modified screen-printed electrodes in food analysis and quality monitoring: a review",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "RSC Advances",
+                            "Month and Year of publication": "8/1/2024",
+                            "ISSN": "2046-2069",
+                            "Doi": "10.1039/d4ra02470b",
+                            "Colloboration Institute": "Saveetha Dental College and Hospitals,",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/199GYvJOnP7bTMnyDNPnPzcnJtGuqWfiS/view?usp=sharing",
+                            "Journal Proof":"https://www.rsc.org/journals-books-databases/about-journals/rsc-advances/"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Author(s)": "Dr.N.Balamurugapandian  ",
+                            "Title of the Paper": "Synthesis, Studies of Shocked Pulse of 50 Scale on 100 Gy Irradiated Zinc Acetate Crystals for Photonic, NLO, Phase-Matching and Electronic Utilities",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "ECS Journal of Solid State Science and Technology,",
+                            "Month and Year of publication": "8/1/2024",
+                            "ISSN": "2162-8777",
+                            "Doi": "10.1149/2162-8777/ad6f42]",
+                            "Colloboration Institute": "A.V.V.M Sri Pushpam College",
+                            "Colloboration agreement Yes / No": "Yes",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1FJelVgYEWDlwW1JxN-o-HRky7B5u4kDl/view?usp=sharing",
+                            "Journal Proof":"https://www.electrochem.org/publications/jss"
+                        }
+                   
+         
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr.V.Anitha",
+                        "Title of the Patent": "Surface Treated Groundnut Shell powder composites: Eco-friendly Alternatives",
+                        "Application Number": "202441069144 A",
+                        "Date of Filing": "12.09.2024",
+                        "Status": "published",
+                        "Colloboration Institute": "St. Joseph’s College of Engineering",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy patent google drive link": "https://docs.google.com/document/d/1zmsxHlyri8d84ic9wUl2iiW2CqqKJZBV/edit?usp=sharing&ouid=115542272868721882757&rtpof=true&sd=true"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr.N.Balamurugapandian",
+                        "Title of the Patent": "Experimental Investigation of Mechanical Properties of Sisal and Jute Fiber Reinforced Composites",
+                        "Application Number": "202441071443 A",
+                        "Date of Filing": "21.09.2024",
+                        "Status": "published",
+                        "Colloboration Institute": "St. Joseph’s College of Engineering",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/19YacUt9LYKNEcuHwXkR_LFCELHhlTgjm/view?usp=sharing"
+                    }
+                 
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Dr.A.Mohamed Sikkander",
+                        "Book/Chapter Title": "Chapter 5-2 - Artificial intelligence's applicability in cardiac imaging",
+                        "Name of Publisher": "ELSEVIER/Advances in Biomedical Informatics",
+                        "ISBN Details": null,
+                        "Colloboration Institute": "School of Electronics and Electrical Engineering, Lovely Professional University, Phagwara, Punjab, India",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy of Book front page google drive link": "https://doi.org/10.1016/B978-0-443-30080-6.00007-9"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Dr.A.Mohamed Sikkander",
+                        "Book/Chapter Title": "Chapter 1-2 - Extensive sequence analysis: revealing genomic knowledge throughout various domains",
+                        "Name of Publisher": "ELSEVIER/Advances in Biomedical Informatics",
+                        "ISBN Details": null,
+                        "Colloboration Institute": "Federal University of Piaui (UFPI), Teresina, Piau穩, Brazil, School of Electronics and Electrical Engineering,                 Lovely Professional University, ",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy of Book front page google drive link": "https://doi.org/10.1016/B978-0-443-30080-6.00006-7"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of Faculty": "Dr.A.Mohamed Sikkander",
+                        "Book/Chapter Title": "Chapter 6-4 - Healthcare applications of computational genomics",
+                        "Name of Publisher": "ELSEVIER/Advances in Biomedical Informatics",
+                        "ISBN Details":null,
+                        "Colloboration Institute": "School of Electronics and Electrical Engineering, Lovely Professional University, Phagwara, Punjab, India+H3:I4+F5:H7",
+                        "Colloboration agreement Yes / No": "Yes",
+                        "E copy of Book front page google drive link": "https://doi.org/10.1016/B978-0-443-30080-6.00012-2+G6G5:H7F5:H7"
+                    }
+                 
+                ]
+            },
+           {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

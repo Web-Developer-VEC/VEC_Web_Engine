@@ -1,0 +1,102 @@
+[
+  {
+      "dept_id": "004",
+      "department_name": "Civil Engineering (CIVIL)",
+      "dept_activities": [
+
+          {
+              "date": "11/03/2024",
+              "name_of_event": "Inauguration of FSI Students Chapter ",
+              "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+              "resource_person":"Dr P B Sakthivel, Structural Consultant Chennai",
+              "beneficiaries": "II ,III & IV Year Students",
+              "relevant_PO_PSO": "PO1 , PO2 , PO3 , PO7 , PO11",
+              "image_path": ["/static/images/dept_activities/004/1.webp"]
+          },
+
+
+          {
+              "date": "12/03/2024",
+              "name_of_event": "Guest Lecture on Intelligence and Innovation",
+              "coordinator": "Mr.T. A. RajhaRajeswaran  &  Mr. K Rajendhiran",
+              "resource_person": " Er R Adhithya,  Research Engineer, Saint Gobain",
+              "beneficiaries": "III & IV Year Students",
+              "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO7 ",
+              "image_path": ["/static/images/dept_activities/004/2.webp"]
+          },  
+
+
+        {
+          "date": "06/03/2024",
+          "name_of_event": "Industrial Visit to STP at Kodungaiyur ",
+          "coordinator":"Mr. M Thillai Backiam&  Mrs. A Surekha",
+          "resource_person": "",
+          "beneficiaries": "III YR STUDENTS",
+          "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO11 ",
+          "image_path": ["/static/images/dept_activities/004/3.webp"]
+        },
+        {
+          "date": "06/03/2024",
+          "name_of_event": "Industrial Visit to STP at Kodungaiyur",
+          "coordinator":"Mr. M Thillai Backiam&  Mrs. A Surekha",
+          "resource_person":"Er R Suresh, Assistant Engineer Buildings Division, Chennai",
+          "beneficiaries":"III YR STUDENTS",
+          "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO11 ",
+          "image_path": ["/static/images/dept_activities/004/4.webp"]
+        },
+
+        {
+          "date": "27/02/2024",
+          "name_of_event": "Guest Lecture on Entrepreneurial Opportunities in Building Waterproofing and Retrofitting",
+          "coordinator":" Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+          "resource_person":"Mr. M C Natarajan &amp; Mr. N Mohammed Althaf",
+          "beneficiaries":"II ,III & IV Yr Students",
+          "relevant_PO_PSO": "PO1 , PO2 , PO4 , PO5,PO7,PO11 ",
+          "image_path": ["/static/images/dept_activities/004/5.webp"]
+        },
+
+        {
+          "date": "31/01/2024",
+          "name_of_event": "Lecture on GREEN BUILDINGS",
+          "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath ",
+          "resource_person": "Er M Neamitha, Assistant Engineering Manager, L & T",
+          "beneficiaries":"II yr and III yr students",
+          "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO8,PO11 ",
+          "image_path": ["/static/images/dept_activities/004/6.webp"]
+        },
+
+
+
+        {
+          "date": "13/10/2023",
+          "name_of_event": "Industrial Visit to iSteel,VIKI INDUSTRIES Pvt. Ltd., Gummidipoondi, Chennai",
+          "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+          "resource_person":"Er Kalaiselvan, AGM Manager",
+          "beneficiaries": "II yr and III yr students",
+          "relevant_PO_PSO": "PO1 , PO2 , PO5 , PO7  , PO11",
+          "image_path": ["/static/images/dept_activities/008/7.webp"]
+        },
+
+        {
+          "date": "25/08/2023",
+          "name_of_event": "Industrial Visit to Thamaraipakkam Anaikkattu",
+          "coordinator":"Dr A Jebamalar &  Dr R Sudharsanan",
+          "resource_person":"",
+          "beneficiaries":"III & IV Yr Students",
+          "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO 6,PO7  , PO12",
+          "image_path": ["/static/images/dept_activities/004/8.webp"]
+        },
+
+        {
+          "date": "02/08/2023",
+          "name_of_event": "Workshop on Industry Connect through Software Skills",
+          "coordinator":"T A Rajha Rajeswaran&  K Rajendhiran",
+          "resource_person":"Er Akbar Ali Khader, CEO & MD, Khaas Group",
+          "beneficiaries": "III & IV Yr Students",
+          "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO 5,PO7, PO8,PO9,PO10,PO11,PO12",
+          "image_path": ["/static/images/dept_activities/008/9.webp"]
+        }
+        
+      ]
+    }
+  ]

@@ -1,3 +1,0 @@
-devServer:{
-    allowedHosts: ['localhost'],
-}

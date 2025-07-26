@@ -1,0 +1,83 @@
+[
+  {
+    "events": [
+      {
+        "start_date": "1 FEB",
+        "end_date": "3 FEB, 2025",
+        "date":"03-02-2025",
+        "title": "AI and Robotics Expo",
+        "department": "Computer Science",
+        "content": "An exhibition showcasing advancements in AI and robotics with live demonstrations and keynote sessions.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://airobotics2025.com",
+        "status": "True"
+      },
+      {
+        "start_date": "15 MAR",
+        "end_date": "16 MAR, 2025",
+        "date":"03-03-2025",
+        "title": "Sustainable Energy Summit",
+        "department": "Electrical Engineering",
+        "content": "A conference discussing innovations in renewable energy and sustainable practices.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://sustainable2025.com",
+        "status": "True"
+      },
+      {
+        "start_date": "10 APR",
+        "end_date": "12 APR, 2025",
+        "date":"03-04-2025",
+        "title": "HealthTech Conference",
+        "department": "Biomedical Engineering",
+        "content": "Exploring the intersection of technology and healthcare with workshops and panel discussions.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://healthtech2025.com",
+        "status": "True"
+      },
+      {
+        "start_date": "5 MAY",
+        "end_date": "7 MAY, 2025",
+        "date":"03-05-2025",
+        "title": "Entrepreneurship Bootcamp",
+        "department": "Business Administration",
+        "content": "An intensive bootcamp for budding entrepreneurs with mentorship sessions and networking opportunities.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://entrepreneurship2025.com",
+        "status": "True"
+      },
+      {
+        "start_date": "1 JUN",
+        "end_date": "3 JUN, 2025",
+        "date":"03-06-2025",
+        "title": "Environmental Awareness Week",
+        "department": "Environmental Science",
+        "content": "A week dedicated to raising awareness about environmental conservation and sustainability.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://environmental2025.com",
+        "status": "True"
+      },
+      {
+        "start_date": "20 JUL",
+        "end_date": "22 JUL, 2025",
+        "date":"03-07-2025",
+        "title": "Blockchain Innovations Forum",
+        "department": "Information Technology",
+        "content": "An event focusing on the latest advancements and applications in blockchain technology.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://blockchain2025.com",
+        "status": "False"
+      },
+      {
+        "start_date": "15 AUG",
+        "end_date": "17 AUG, 2025",
+        "date":"03-08-2025",
+        "title": "Cultural Fest 2025",
+        "department": "Cultural Club",
+        "content": "A vibrant cultural fest featuring music, dance, and art performances from around the globe.",
+        "brochure_path": "/static/pdfs/events/summa.pdf",
+        "website_link": "https://culturalfest2025.com",
+        "status": "True"
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "year":  [
+      "Academic Year 2025-2026",
+      "Academic Year 2024-2025",
+      "Academic Year 2023-2024",
+      "Academic Year 2022-2023"
+    ],
+    "pdf_path": [
+      "/static/pdfs/calendar/2025-2026/odd.pdf",
+      "/static/pdfs/calendar/2024-2025/odd.pdf",
+      "/static/pdfs/calendar/2024-2025/even.pdf",
+      "/static/pdfs/calendar/2023-2024/odd.pdf",
+      "/static/pdfs/calendar/2023-2024/even.pdf",
+      "/static/pdfs/calendar/2022-2023/odd.pdf",
+      "/static/pdfs/calendar/2022-2023/even.pdf"
+    ]
+  }
+]

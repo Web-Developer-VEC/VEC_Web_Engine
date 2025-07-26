@@ -1,0 +1,177 @@
+[
+    {
+        "dept_id": "017",
+        "department_name": "Master of  Business Administration",
+        "dept_activities": [
+            {
+                "date": "28.8.24 - 03.09.25",
+                "name_of_event": "Orientation Programme for I Years - ODYSSEY 24",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "First Year MBA Students (Batch 2024-26)",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "13.09.2024",
+                "name_of_event": "ED Cell Inauguration",
+                "coordinator": null,
+                "resource_person": [
+                    "Dr. S. Bhaskara Sethupathy",
+                    "Mr. M. Yuvaraj"
+                ],
+                "beneficiaries": "MBA Students (Batch 2024-26)",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                   
+                ]
+            },
+            {
+                "date": "14.8.24",
+                "name_of_event": "Panel Discussion on Decoding Union Budget '24",
+                "coordinator": null,
+                "resource_person": [
+                    "Mr. A.K. Narayan",
+                    "Mr. Glenn Roger Carr",
+                    "Mr. S. Sivakumar",
+                    "Mr. Karthikeyan S"
+                ],
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                  
+                ]
+            },
+            {
+                "date": "29.07.24 - 03.08.24",
+                "name_of_event": "Pre-Placement Training",
+                "coordinator": null,
+                "resource_person": "Talent'64, Chennai",
+                "beneficiaries": "II Year MBA Students (Batch 2024-26)",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "10.02.2025 - 12.02.2025",
+                "name_of_event": "Outbound Experiential Learning",
+                "coordinator": "Dr. A. Nirmal Raj",
+                "resource_person": null,
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                   
+                ]
+            },
+            {
+                "date": "08.10.2024",
+                "name_of_event": "Drop Shipping Model Pitching Session",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "MBA Students (Batch 2024-26)",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "16.12.24 - 20.12.24",
+                "name_of_event": "Value Added Course on Power BI",
+                "coordinator": null,
+                "resource_person": "Mr. Parthiban, Bezcoder, Chennai",
+                "beneficiaries": "II Year MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "04.03.24 - 08.03.24",
+                "name_of_event": "Value Added Course on Advanced Business Analysis and Tools using MS Excel",
+                "coordinator": null,
+                "resource_person": "Mr. Sanjay Jamalpur, Excel Professional, Chennai",
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "10.06.23 - 18.06.23",
+                "name_of_event": "Value Added Course on Spreadsheet Analysis",
+                "coordinator": null,
+                "resource_person": "Mr. Sanjay Jamalpur, Excel Professional, Chennai",
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "2024",
+                "name_of_event": "Five Days Profit Challenge",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "MBA Students (Batch 2024-26)",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "2024",
+                "name_of_event": "Communication Battle",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                   
+                ]
+            },
+            {
+                "date": "2024",
+                "name_of_event": "Interview with Entrepreneurs",
+                "coordinator": null,
+                "resource_person": [
+                    "Mr. Padmasingh Isaac",
+                    "Mr. C.K. Ranganathan",
+                    "Mr. Dharaneetharan",
+                    "Mr. Elanga Rangasamy",
+                    "Mr. Mohan",
+                    "Mr. Vijay Kapoor"
+                ],
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "2024",
+                "name_of_event": "Locality Business Consulting",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            },
+            {
+                "date": "2024",
+                "name_of_event": "Intercollegiate Symposium - STEVVE",
+                "coordinator": null,
+                "resource_person": null,
+                "beneficiaries": "MBA Students",
+                "relevant_PO_PSO": null,
+                "image_path": [
+                    
+                ]
+            }
+        ]
+    }
+]

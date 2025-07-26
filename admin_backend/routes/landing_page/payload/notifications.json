@@ -1,0 +1,55 @@
+{
+  "admin_payload": [
+    {
+      "title": "Added New Notification",
+      "type": "add",
+      "existing_id": "",
+      "metadata": {
+        "message": "Computer Science and Business Systems got added "
+      }
+    },
+    {
+      "title": "Modified Notification",
+      "type": "update",
+      "existing_id": "notif_001",
+      "metadata": {
+        "message": "Computer Science and Business Systems will be removed soon"
+      }
+    },
+    {
+      "title": "Deleted Notification",
+      "type": "delete",
+      "existing_id": "notif_001",
+      "metadata": {}
+    }
+  ],
+  "superior_payload": [
+    {
+      "unique_id": "6b162b25-3a79-4cae-83f6-c15a82e1a90a",
+      "reviewed_notes": "Approved to add new notification",
+      "actions": {
+        "notifications": {
+          "message": "approve"
+        }
+      }
+    },
+    {
+      "unique_id": "6b162b25-3a79-4cae-83f6-c15a82e1a90a",
+      "reviewed_notes": "Approved to add modify notification",
+      "actions": {
+        "notifications": {
+          "message": "approve"
+        }
+      }
+    },
+    {
+      "unique_id": "6b162b25-3a79-4cae-83f6-c15a82e1a90a",
+      "reviewed_notes": "Approved to add new notification",
+      "actions": {
+        "notifications": {
+          "delete_notification": "approve"
+        }
+      }
+    }
+  ]
+}
