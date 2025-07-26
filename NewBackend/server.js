@@ -19,7 +19,7 @@ app.use(express.json());
 connectToDatabase();
 
 // Load modular routes
-app.use('/api/main', mainBackendRoutes);
+app.use('/api/main-backend', mainBackendRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
