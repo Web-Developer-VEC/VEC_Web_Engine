@@ -1,9 +1,8 @@
 const express = require('express');
 const { getVisionMission, getHODDetails, getStaffDetails, getSyllabus, getInfrastructure, getDeptActivities, getStuActivities, getSupportStaff, getMou, getRD, getRDyear, getslidebar, getNewsLetters } = require('../controllers/department_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
-
 const xss = require('../middlewares/xss');
-const sanitize = require('../middlewares/sanitize_department');
+const sanitize = require('../middlewares/sanitizers/sanitize_department');
 
 
 const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
