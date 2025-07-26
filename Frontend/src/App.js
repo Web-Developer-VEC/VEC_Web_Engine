@@ -291,7 +291,7 @@ const App = () => {
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
 
                         <SideButton/>
-<ScrollToTopButton />
+                        <ScrollToTopButton />
                     </>
                 </AppContainer>
         </>

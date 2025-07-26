@@ -1,14 +1,12 @@
-.gallery-container {
+.e-gallery-container {
   padding: 20px;
   font-family: sans-serif;
-  background-color: white;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .gallery-title {
   text-align: center;
-  color: #800000;
   font-size: 30px;
   margin-bottom: 20px;
 }

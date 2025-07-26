@@ -10,17 +10,18 @@ import style from "./Egalary.css";
 import EnterpreN from "./Enterpreneur.jsx";
 import Activ from "./Eactivity.jsx";
 import axios from "axios";
+import LoadComp from "../../LoadComp.jsx";
 
 
 
 const Ecell = ({toggle,theme}) => {
-
-
+    const [section, setEcell] = useState("About E-cell")
     const [home,setHome]=useState({})
     const [committee,setCommittee]=useState({})
     const [enterpreneur,setEnterpreneur]=useState({})
     const [activity,setActivity]=useState({})
     const [gallery,setGallery]=useState({})
+
     useEffect(()=> {
         const fetchData = async () =>{
 
@@ -32,16 +33,35 @@ const Ecell = ({toggle,theme}) => {
             setEnterpreneur(data.entrepreneur)
             setActivity(data.activity)
             setGallery(data.gallery)
-
-
-
         }
       fetchData()}
   ,[])
 
-    
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    const [section, setEcell] = useState("About E-cell")
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+     }
+
     
    const navData = {
         "About E-cell": <Home home={home}/>,
@@ -60,11 +80,7 @@ const Ecell = ({toggle,theme}) => {
 
             subHeaderText="Turning Ideas into Action and Dreams into Enterprises."
         />
-                <SideNav navData={navData} sts={section} setSts={setEcell}/>
-      {/* <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} /> */}
-
-
-                
+                <SideNav navData={navData} sts={section} setSts={setEcell} backButton={true}/>
         </>
     )
 }

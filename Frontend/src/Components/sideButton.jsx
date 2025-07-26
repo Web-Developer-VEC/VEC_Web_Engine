@@ -31,8 +31,8 @@ const SideButton = () => {  // Changed from sideButton to SideButton
       {showPopup && (
         <div className="popup-overlay" onClick={() => setShowPopup(false)}>
           <div className="popup-container">
-            <div className="popup-form overflow-y-hidden" onClick={(e) => e.stopPropagation()}>
-              <button className="close-btn" onClick={() => setShowPopup(false)}>×</button>
+            <div className="popup-form bg-prim dark:bg-drkp overflow-y-hidden" onClick={(e) => e.stopPropagation()}>
+              <button className="close-btn bg-prim dark:bg-drkb dark:text-drks" onClick={() => setShowPopup(false)}>×</button>
               <h3>Enquiry Form</h3>
               
               {/* Meritto widget */}
