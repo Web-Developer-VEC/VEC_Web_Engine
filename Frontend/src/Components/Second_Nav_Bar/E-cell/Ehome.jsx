@@ -1,11 +1,14 @@
 import React from "react"
+import LoadComp from "../../LoadComp"
 
 
 
 
 function Home ({home}) {
     return(
-        <div className="ic-home-container">
+        <>
+            {home ? (
+            <div className="ic-home-container">
                 <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
                     <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h3>
                     <p className="ic-centered-text text-text dark:text-drkt">
@@ -31,6 +34,12 @@ function Home ({home}) {
                     </div>
                 </div>
             </div>
+            ) : (
+                <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+                    <LoadComp />
+                </div>
+            )}
+        </>
     )
 }
 
