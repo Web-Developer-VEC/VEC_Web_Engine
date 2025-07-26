@@ -1171,7 +1171,7 @@ def insert_ecell_data():
 
 def create_logs_collection():
     collection = db["logs"]   
-    with open('/root/VEC-Backend/docs/logs.json', "r",encoding="utf-8") as file:
+    with open('/root/VEC-Backend/docs/hit_logs.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 

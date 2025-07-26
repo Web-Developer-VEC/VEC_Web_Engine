@@ -1,20 +1,5 @@
 const rateLimit = require('express-rate-limit');
-const mongoose = require('mongoose');
-
-const logSchema = new mongoose.Schema({
-  _id: String, // fixed _id to use one document
-  logs: [
-    {
-      status: Number,
-      ip: String,
-      endpoint: String,
-      message: String,
-      timestamp: String
-    }
-  ]
-}, { collection: 'logs', versionKey: false });
-
-let LogModel;
+const { getDb } = require('../config/db');
 
 const createRateLimiter = (options = {}) => {
   return rateLimit({
@@ -27,7 +12,7 @@ const createRateLimiter = (options = {}) => {
       req.headers['x-forwarded-for']?.split(',')[0] || req.ip
     ),
 
-    handler: async (req, res, next, options) => {
+    handler: async (req, res, next, opts) => {
       const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
 
       const now = new Date().toLocaleString('en-IN', {
@@ -42,41 +27,33 @@ const createRateLimiter = (options = {}) => {
       });
 
       try {
-        if (mongoose.connection.readyState === 0) {
-          await mongoose.connect('mongodb://localhost:27017/VEC', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-          });
-        }
+        const db = getDb();
+        const logsCollection = db.collection('logs');
 
-        LogModel = mongoose.models.Log || mongoose.model('Log', logSchema);
-
-        // Append new log entry to single document with _id = 'rate_limit_log'
-        await LogModel.updateOne(
+        await logsCollection.updateOne(
           { _id: 'rate_limit_log' },
           {
             $push: {
               logs: {
-                status: options.statusCode || 429,
+                status: opts.statusCode || 429,
                 ip: clientIp,
                 endpoint: req.originalUrl,
-                message: `Rate limit exceeded`,
+                message: 'Rate limit exceeded',
                 timestamp: now,
-              }
-            }
+              },
+            },
           },
-          { upsert: true } // Create the document if it doesn't exist
+          { upsert: true }
         );
 
         console.log(`[RateLimit LOGGED] ${clientIp} -> ${req.originalUrl}`);
-
       } catch (err) {
         console.error('[MongoDB Logging Error]', err);
       }
 
-      const windowMinutes = (options.windowMs || 15 * 60 * 1000) / 60000;
+      const windowMinutes = (opts.windowMs || 15 * 60 * 1000) / 60000;
 
-      return res.status(options.statusCode || 429).json({
+      return res.status(opts.statusCode || 429).json({
         status: 429,
         message: `You can visit this page again after ${windowMinutes} minute${windowMinutes > 1 ? 's' : ''}.`
       });
