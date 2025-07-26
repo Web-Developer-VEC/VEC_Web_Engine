@@ -11,6 +11,10 @@ const port = process.env.PORT || 5000;
 //Loading Main Routes
 const mainBackendRoutes = require('./main-backend/routes');
 
+
+app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
+
+
 // Middleware
 app.use(cors());
 app.use(express.json());
