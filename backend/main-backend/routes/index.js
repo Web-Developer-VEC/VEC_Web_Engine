@@ -31,6 +31,7 @@ const sport = require('./sport_routes');
 const staff_profile = require('./staff_profile_routes');
 const warden = require('./warden_routes');
 const web_team = require('./web_team_routes')
+const log = require('./log_routes')
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -61,5 +62,6 @@ router.use('', sport);
 router.use('', staff_profile);
 router.use('', warden);
 router.use('', web_team);
+router.use('', log);
 
 module.exports = router;

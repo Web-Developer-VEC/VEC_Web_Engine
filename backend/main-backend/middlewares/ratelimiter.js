@@ -1,5 +1,11 @@
 const rateLimit = require('express-rate-limit');
 const { getDb } = require('../config/db');
+const crypto = require('crypto');
+
+// Custom safe IP key generator
+const safeIpKeyGenerator = (ip) => {
+  return crypto.createHash('sha256').update(ip).digest('hex');
+};
 
 const createRateLimiter = (options = {}) => {
   return rateLimit({
@@ -8,12 +14,19 @@ const createRateLimiter = (options = {}) => {
     standardHeaders: true,
     legacyHeaders: false,
 
-    keyGenerator: options.keyGenerator || ((req) =>
-      req.headers['x-forwarded-for']?.split(',')[0] || req.ip
-    ),
+    // Custom key generator
+    keyGenerator: options.keyGenerator || ((req, res) => {
+      if (req.query.apiKey) return req.query.apiKey;
+
+      const realIp =
+        req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip;
+
+      return safeIpKeyGenerator(realIp); // hashed IP
+    }),
 
     handler: async (req, res, next, opts) => {
-      const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
+      const clientIp =
+        req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip;
 
       const now = new Date().toLocaleString('en-IN', {
         timeZone: 'Asia/Kolkata',

@@ -1,9 +1,11 @@
 const express = require('express');
-const cors = require('cors');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
 const scheduleResetCounters = require('./main-backend/middlewares/reset_scheduler');
 const hitTracker = require('./main-backend/middlewares/hit_tracker');
+const helmet = require('./main-backend/middlewares/helmet_security');
+const cors = require('./main-backend/middlewares/cros_security');
+
 
 dotenv.config({ quiet : true });
 
@@ -16,9 +18,9 @@ const mainBackendRoutes = require('./main-backend/routes');
 
 app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
 
-
+app.use(helmet);
+app.use(cors);
 // Middleware
-app.use(cors());
 app.use(express.json());
 // Start scheduled task (reset daily counters at midnight)
 scheduleResetCounters();

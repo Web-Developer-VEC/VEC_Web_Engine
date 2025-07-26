@@ -182,7 +182,7 @@ async function getStuActivities(req, res) {
 
 // Fetch  MOUs Details 
 async function getMou(req, res) {
-    const { deptId } = req.params;
+    const deptId = req.params.deptId;
     const db = getDb();
     const collection = db.collection('MOUs');
 
@@ -200,65 +200,6 @@ async function getMou(req, res) {
         console.error("Error fetching MOUs:", error);
         await logError(req, error, 'Error fetching MOUs details', 500);
         res.status(500).json({ error: "Error fetching MOUs" });
-    }
-}
-
-
-// Fetch Research Data -- end point not being used 
-async function getRDyear(req, res) {
-    const { deptId, year } = req.params;
-
-    if (!deptId || !year) {
-        return res.status(400).json({ error: 'Both dept_id and year are required' });
-    }
-
-    const db = getDb();
-    const collection = db.collection('research_data');
-
-    try {
-        // Fetch the document for the department
-        const result = await collection.findOne({ dept_id: deptId });
-
-        if (!result || !result.data ) {
-            return res.status(404).json({ message: 'No research data found for the given department' });
-        }
-        
-        const yearData = result.data.find(entry => entry.year === year);
-
-        if (!yearData) {
-            return res.status(404).json({ message: 'No research data found for the given year' });
-        }
-
-        res.status(200).json(yearData);
-    } catch (error) {
-        console.error("Error fetching research data:", error);
-        await logError(req, error, 'Error fetching research data details', 500);
-        res.status(500).json({ error: "Error fetching research data" });
-    }
-}
-
-async function getRD(req, res) {
-    const { deptId } = req.params;
-
-    if (!deptId) {
-        return res.status(400).json({ error: 'dept_id required' });
-    }
-
-    const db = getDb();
-    const collection = db.collection('research_data');
-
-    try {
-        const result = await collection.findOne({ dept_id: deptId });
-
-        if (!result || !result.data ) {
-            return res.status(404).json({ message: 'No research data found for the given department' });
-        }
-        res.status(200).json(result);
-
-    } catch (error) {
-        console.error("Error fetching research data:", error);
-        await logError(req, error, 'Error fetching research data', 500);
-        res.status(500).json({ error: "Error fetching research data" });
     }
 }
 
@@ -290,8 +231,6 @@ module.exports = {
     getDeptActivities,
     getStuActivities,
     getMou,
-    getRDyear,
-    getRD,
     getslidebar,
     getNewsLetters
 };

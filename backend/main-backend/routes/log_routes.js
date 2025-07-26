@@ -1,14 +1,14 @@
 const express = require('express');
 
-const { getAbtUs } = require('../controllers/about_us_controllers');
+const { getDatabaseLogs } = require('../controllers/log_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
-
 
 const router = express.Router();
 
 const limiter = createRateLimiter({ max: 2, windowMs:  60 * 1000 });
 
-router.get('/about_us', limiter, xss, getAbtUs);
+// do admin access and rmodify the rate limiter for this
+router.get('/logs', limiter, xss, getDatabaseLogs);
 
 module.exports = router;
