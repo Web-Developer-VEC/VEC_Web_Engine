@@ -34,6 +34,7 @@ const orgChartRoutes = require('./Main/routes/orgChat');
 const hostelRoutes = require('./Main/routes/hostel');
 const academicsRoutes = require('./Main/routes/acadamics');
 const galleryRoutes = require('./Main/routes/gallery');
+const webTeamRoutes = require('./Main/routes/webteam');
 // Importing route files For Hostel Page
 const loginRoute = require('./Hostel/routes/auth');
 const studentRequestRoute = require('./Hostel/routes/studentRoutes/request');
@@ -100,6 +101,7 @@ app.use('/api', orgChartRoutes);
 app.use('/api', hostelRoutes);
 app.use('/api', academicsRoutes);
 app.use('/api', galleryRoutes);
+app.use('/api', webTeamRoutes);
 // Routes For Hostel Page
 app.use('/api', loginRoute);
 app.use('/api', studentRequestRoute);
