@@ -1,4 +1,5 @@
 const express = require('express');
+
 const { getAcademicCalender, getDepartment, getProgrammes } = require('../controllers/acadamic_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });

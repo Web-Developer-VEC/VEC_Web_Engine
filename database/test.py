@@ -11,13 +11,9 @@ db_name = "VEC"
 client = MongoClient(mongo_uri)
 db = client[db_name]
 
-def insert_yrc_data():
-    collection = db["yrc_data"]
-    with open("/VEC-Backend/docs/yrc.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("YRC data inserted successfully.\n")
+def create_logs_collection():
+    db.create_collection('logs')
+    print("logs collection created")
 
     
-insert_yrc_data()
+create_logs_collection()
