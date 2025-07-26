@@ -61,10 +61,10 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
         )}
       </div>
        
-      <button
-      //  onClick={() => navigate(`/facultyprofile/${uid}`)}
-       className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
-        View More</button>
+      {/* <button */}
+        {/* onClick={() => navigate(`/facultyprofile/${uid}`)} */}
+       {/* className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}> */}
+        {/* View More</button> */}
     </div>
   </div>
   </>

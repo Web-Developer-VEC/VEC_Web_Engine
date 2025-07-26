@@ -1,0 +1,17 @@
+name: Block Backend Branch PRs to Main
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  block_backend_pr:
+    runs-on: ubuntu-latest
+    if: github.base_ref == 'main' && github.head_ref == 'backend'
+    steps:
+      - name: Close PR from backend to main
+        uses: peter-evans/close-pull@v3
+        with:
+          comment: |
+            🚫 Pull requests from the `backend` branch to `main` are not allowed.
+            This branch is isolated. Please follow the repo's contribution workflow.
