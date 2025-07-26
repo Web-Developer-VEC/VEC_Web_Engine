@@ -20,7 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "express-rate-limit": "^8.0.1",
+    "express-rate-limit": "^6.11.2",
     "express-session": "^1.18.1",
     "fs": "^0.0.1-security",
     "groq-sdk": "^0.12.0",
