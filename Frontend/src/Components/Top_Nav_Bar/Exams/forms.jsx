@@ -86,7 +86,7 @@ if (!isOnline) {
 
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
-      <div key={index} className="resource-item dark:bg-drkts">
+      <div key={index} className="resource-item dark:bg-drkts font-[Poppins]">
         {/* <center> */}
           <div className="form-content dark:bg-drkts">
             <div className="form-regulation bg-[#f8f9fa] dark:bg-black">
@@ -139,7 +139,7 @@ if (!isOnline) {
         <div className="tails-container ">
           <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
             <div className="tail-content flex flex-col h-full">
-              <h2 className="font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
+              <h2 className="font-[24px] font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
               <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full dark:bg-drkts">
                 {renderResourceLinks(studentResources)}
               </div>

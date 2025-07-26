@@ -1,10 +1,12 @@
 body, html {
   overflow-x: hidden;
+  
 }
 
 /* Hide scrollbar for all browsers */
 body {
   overflow: hidden;
+  
 }
 
 /* Optional: if you want to scroll but just hide the scrollbar: */
