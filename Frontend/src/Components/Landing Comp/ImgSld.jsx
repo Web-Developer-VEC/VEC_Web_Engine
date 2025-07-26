@@ -72,38 +72,81 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
         };
     }, [hndlScrll]);
 
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const onWheel = (e) => {
+        e.preventDefault(); // stop the scroll
+        e.stopPropagation();
+    };
+
+    container.addEventListener('wheel', onWheel, { passive: false }); // must set passive:false for preventDefault to work
+    return () => container.removeEventListener('wheel', onWheel);
+    }, []);
+
+    const toggleRef = useRef(null);
+
+    useEffect(() => {
+    const toggleEl = toggleRef.current;
+    if (!toggleEl) return;
+
+    const handleWheel = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+    // Add the listener with passive:false
+    toggleEl.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+        toggleEl.removeEventListener('wheel', handleWheel);
+    };
+    }, []);
+
+
     return (
         <div className='landing-banner'>
             <div className="flex h-[30vh] md:h-[65vh] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
-                w-[100vw] pointer-event-none">
+                w-[100vw] pointer-events-auto">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef} id='BgVid'
                     playsInline>
                     <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
                 </video>
-                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[50%] left-0 mb-3 ml-3 pointer-events-none md:w-[550px]">
-                    <button onClick={() => window.location.href = `${ph}`}
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
+                    ref={containerRef}
+                >
+                    <button onClick={() => window.location.href = `tel:${ph}`}   onWheel={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault(); // This is what actually blocks scrolling
+                        }}
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
                         bg-[position:0%_100%] text-[1lvh] lg:text-lg text-text dark:text-white bg-gradient-to-l from-secd
                         dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700 w-full
-                        duration-[150ms] ease-in transition-all hover:bg-[position:-100%_100%] pointer-events-none overflow-hidden">
+                        duration-[150ms] ease-in transition-all hover:bg-[position:-100%_100%]  overflow-hidden">
                         {ph}
                     </button>
 
-                    <button onClick={() => window.open(`mailto:${email}`, '_blank')}
+                    <button onClick={() => window.open(`mailto:${email}`, '_blank')}   onWheel={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault(); // This is what actually blocks scrolling
+                        }}
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
                         bg-[position:0%_100%] text-[1lvh] lg:text-lg text-text dark:text-white bg-gradient-to-l from-secd
                         dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700 w-full
-                        duration-[150ms] ease-in transition-all hover:bg-[position:-100%_100%] pointer-events-none overflow-hidden">
+                        duration-[150ms] ease-in transition-all hover:bg-[position:-100%_100%] overflow-hidden">
                         {email}
                     </button>
                 </div>
-                <Toggle toggle={toggle} theme={theme}
-                        attr="absolute -top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
-                        rounded-br-xl"/>
+                <div ref={toggleRef}>
+                    <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
+                </div>
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
                     <div className='relative no-wrap h-[15vmax] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
