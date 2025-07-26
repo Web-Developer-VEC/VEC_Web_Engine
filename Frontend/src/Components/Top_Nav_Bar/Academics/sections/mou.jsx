@@ -20,7 +20,7 @@ const MOU = ({ data }) => {
                     <th>Name of Organisation</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Activities Planned</th>
+                    {/* <th>Activities Planned</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,9 @@ const MOU = ({ data }) => {
                       <td>{detail.ORGANISATION_NAME}</td>
                       <td>{detail.MONTH_AND_YEAR}</td>
                       <td>{detail.VALIDITY}</td>
-                      <td>
+                      {/* <td>
                         {detail.ACTIVITIES_PLANNED.join(", ")}
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
