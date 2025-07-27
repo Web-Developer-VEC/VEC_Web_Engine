@@ -621,12 +621,21 @@ def insert_sidebar_details():
         collection.insert_many(documents)
     print("Sidebar documents inserted successfully\n")
 
-def insert_iic_details():
-    collection= db['iic']
-    with open ("/VEC_WEB_Engine/docs/iic.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("iic documents inserted successfully\n")
+def insert_iic_sections():
+    collection = db["iic"]
+
+    with open("/VEC_WEB_Engine/docs/iic.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("iic sections inserted successfully.")
 
 def insert_dept_activities_details():
     collection = db['department_activities']
@@ -747,7 +756,7 @@ insert_announcements_data()
 insert_special_announcements()
 insert_banners()
 insert_sidebar_details()
-insert_iic_details()
+insert_iic_sections()
 insert_dept_activities_details()
 insert_newsletter()
 insert_admissions_sections()

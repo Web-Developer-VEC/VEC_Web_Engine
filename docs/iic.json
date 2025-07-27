@@ -1,2187 +1,2238 @@
 [
-     {
-    "home":
-         {
-           "aboutiic":[
-                  "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with new ideas and transform them into prototypes while they are in their formative years.",
-                  "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses."
-                ]
-         },
-    
-  
-    "establishment":
-    {
-      "majorfocus":[
-        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
-        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
-        "To develop better Cognitive Ability for Technology Students."
-      ],
-      "vission":[
-        "To facilitate a conducive environment with the intention of making an innovation to reach the society or industries for the betterment of our country and its citizen through entrepreneurial assets."
-      ],
-      "mission":[
-        "To enable student and faculty to establish a start-up to market their innovative products; an enhanced coordination and priority setting across the start-up eco-system; an improved customizable strategy and planning for pursuing productivity growth and better operational efficiencies and value for the start-up companies."
-      ],
-      "function":[
-        "To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC in a time-bound manner.",
-	    "To identify and reward innovations and share success stories.",
-    	"To organize periodic workshops/ seminars/ interactions with entrepreneurs, investors, professionals and create a mentor pool for student innovators.",
-     	"Networking with peers and national entrepreneurship development organizations.",
-        "To create an Institution’s Innovation portal to highlight innovative projects carried out by institution’s faculty and students.",
-        "To organize Hackathons, idea competitions, mini-challenges etc. with the involvement of industries."
-
-      ]
-    
-    },
-   "Council": 
-            {
-    "Faculty": [
-        {
-            "name": "DR. NIRMAL RAJ A",
-            "designation": "President"
-        },
-        {
-            "name": "MR. YUVARAJ M",
-            "designation": "Vice-President"
-        },
-        {
-            "name": "MR. RADHAKRISHNAN K",
-            "designation": "Convener"
-        },
-        {
-            "name": "MRS. PADMA S",
-            "designation": "Innovation Activity Coordinator"
-        },
-        {
-            "name": "MR. RENGARAJAN V",
-            "designation": "Start-up Activity Coordinator"
-        },
-        {
-            "name": "DR. DEEPAK KUMAR M",
-            "designation": "Internship coordinator"
-        },
-        {
-            "name": "MRS. PARVATHY M",
-            "designation": "IPR activity Coordinator"
-        },
-        {
-            "name": "MR. RAJESH",
-            "designation": "Social Media Coordinator"
-        },
-        {
-            "name": "DR. SMITHA P S",
-            "designation": "NIRF Coordinator"
-        },
-        {
-            "name": "MR. RAJENDHIRAN K",
-            "designation": "Technology Transfer Coordinator"
-        },
-        {
-            "name": "DR. LOGANATHAN D",
-            "designation": "Member"
-        },
-        {
-            "name": "DR. PRADEEP KUMAR S",
-            "designation": "Member"
-        },
-        {
-            "name": "MRS. MYTHILI S",
-            "designation": "Member"
-        },
-        {
-            "name": "MRS. SUMATHI S",
-            "designation": "Member"
-        },
-        {
-            "name": "DR. DEEPA N",
-            "designation": "Member"
-        },
-        {
-            "name": "MRS. SUSHANTHI HENRY A",
-            "designation": "Member"
-        },
-        {
-            "name": "MS. DIVYA",
-            "designation": "Member"
-        },
-        {
-            "name": "MS. HERLINZIA C P",
-            "designation": "Member"
-        },
-        {
-            "name": "MRS. DEEPA S",
-            "designation": "Member"
-        },
-        {
-            "name": "MR. PRAMILA",
-            "designation": "Member"
-        },
-        {
-            "name": "MR. VIJAYAKUMAR M",
-            "designation": "Member"
-        },
-        {
-            "name": "DR. KAVIYA M",
-            "designation": "Member"
-        },
-        {
-            "name": "MR. BALAJI A",
-            "designation": "Member"
-        },
-        {
-            "name": "DR. JAYACHANDIRAN M",
-            "designation": "Member"
-        },
-        {
-            "name": "MS. JENIFER HEBZIBA I",
-            "designation": "Member"
-        },
-        {
-            "name": "TARAKESHWARAN S",
-            "designation": "Student President"
-        },
-        {
-            "name": "MOHAMED RAZIN N",
-            "designation": "Student Vice-President"
-        },
-        {
-            "name": "CHARLES S",
-            "designation": "Student Convener"
-        },
-        {
-            "name": "PRAVEEN KUMAR S",
-            "designation": "Public Relation Officer"
-        },
-        {
-            "name": "HARSHINI S",
-            "designation": "Event Coordinator"
-        }
-    ],
-    "Expert_Representation": [
-        {
-            "name": "MR. VIVEAK M PALANIVASAN",
-            "designation": "Industry Expert"
-        },
-        {
-            "name": "DR. MAHESHKUMAR L",
-            "designation": "Incubation Centre"
-        },
-        {
-            "name": "MR. VIJAY RATHAN LINGAA J",
-            "designation": "Patent Expert"
-        }
-    ],
-    "Student_Representation": {
-        "IIC": [
-            {
-                "name": "TARAKESHWARAN S",
-                "mail id": "tarakeshwaran.sampath@gmail.com",
-                "phone": "8870982120",
-                "sex": "Male",
-                "year": "IV Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "MOHAMED RAZIN N",
-                "mail id": "Mdrazinmms@gmail.comm",
-                "phone": "7010743013",
-                "sex": "Male",
-                "year": "IV Year",
-                "dept": "Civil",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "CHARLES S",
-                "mail id": "srcharles2005@gmail.com",
-                "phone": "9159882829",
-                "sex": "Male",
-                "year": "III Year",
-                "dept": "MECH",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "PRAVEEN KUMAR S",
-                "mail id": "s.praveenkumar090705@gmail.com",
-                "phone": "6381509418",
-                "sex": "Male",
-                "year": "IV Year",
-                "dept": "CSE",
-                "responsibility": "Public Relation Officer"
-            },
-            {
-                "name": "PRAJNAVARSHNI",
-                "mail id": "prajnavarshni@gmail.com",
-                "phone": "9677156966",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Event Coordinator"
-            }
-        ],
-        "Entrepreneurship & Start Up Cell": [
-            {
-                "name": "VIDHYALAKSHMI T",
-                "mail id": "vidhyaa15007@gmail.com",
-                "phone": "9444951206",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE-CS",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "DEEPAN A",
-                "mail id": "deepana210@gmail.com",
-                "phone": "9566586223",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "ECE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "PREETHI R",
-                "mail id": "preethi.r26rp@gmail.com",
-                "phone": "8838811543",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "GOWTHAM R",
-                "mail id": "gowrham272006@gmail.com",
-                "phone": "9952676920",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "Civil",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "Social Media": [
-            {
-                "name": "ADITHYAN V G",
-                "mail id": "adithyanvgvec@gmail.com",
-                "phone": "9344779231",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "IT",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "LOHITH V",
-                "mail id": "loarccc@gmail.com",
-                "phone": "9344454826",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "ECE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "MOHAMED IBRAHIM",
-                "mail id": "mohamedibrahimkhan7@gmail.com",
-                "phone": "9342727643",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "CSE-CS",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "AYISHA SIDDIKA J",
-                "mail id": "ayishasiddika73@gmail.com",
-                "phone": "8660097420",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "Document": [
-            {
-                "name": "MONISHA T V",
-                "mail id": "monishavijayakumar04@gmail.com",
-                "phone": "6384757122",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "BUVANESWARI S",
-                "mail id": "sakthibuvana2863@gmail.com",
-                "phone": "6385745874",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "ADHIRA R",
-                "mail id": "adhirasuma@gmail.com",
-                "phone": "9947344210",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "SANTHOSH A",
-                "mail id": "santhoshanandan26@gmail.com",
-                "phone": "9345540057",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "ECE",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "Technology Transfer": [
-            {
-                "name": "TEJASWINI P G",
-                "mail id": "pavalurutejaswini9@gmail.com",
-                "phone": "9962405999",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "SURYA P",
-                "mail id": "suryap03082006@gmail.com",
-                "phone": "8610408474",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "KIRANYA J S",
-                "mail id": "kiranyasuresh858@gmail.com",
-                "phone": "9035502824",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "VARNIKA VALLIAMMAI V",
-                "mail id": "varnikav1502@gmail.com",
-                "phone": "9551245599",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "NIRF Innovation": [
-            {
-                "name": "YUVAREGA S",
-                "mail id": "Yuvare99@gmail.com",
-                "phone": "8110078825",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "MANASHA J",
-                "mail id": "manasha1103@gmail.com",
-                "phone": "9629542489",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "KARTHIKEYAN V",
-                "mail id": "karthikeyanv042006@gmail.com",
-                "phone": "9962047888",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "REVANTH M",
-                "mail id": "revrocker7@gmail.com",
-                "phone": "7200486484",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "MSME & IPR Cell": [
-            {
-                "name": "HARINI M",
-                "mail id": "harinimohan2007@gmail.com",
-                "phone": "8925663769",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "NANDISH K",
-                "mail id": "nandishkumar801@gmail.com",
-                "phone": "7812813656",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "AIDS",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "SANDHIYA S",
-                "mail id": "sandhiyadhiya360@gmail.com",
-                "phone": "8610464304",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "SADHANA R S",
-                "mail id": "rssadhana0487@gmail.com",
-                "phone": "6369767611",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "Internship Cell": [
-            {
-                "name": "GOMAGAN R",
-                "mail id": "",
-                "phone": "6382073132",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "MECH",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "AARIYA K",
-                "mail id": "aariya.k2307@gmail.com",
-                "phone": "6374291986",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "CSE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "DHARANIDHARAN S",
-                "mail id": "dharanisenthilkumar007@gmail.com",
-                "phone": "8754080814",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "MOHAMED NASEEM",
-                "mail id": "mohamadnaseem2k@gmail.com",
-                "phone": "8072404373",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "CSE-CS",
-                "responsibility": "Public Relation Officer"
-            }
-        ],
-        "Innovation Cell": [
-            {
-                "name": "ASISH EMMANUEL K S",
-                "mail id": "aaishemmanuel29@gmail.com",
-                "phone": "6383160566",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "ECE",
-                "responsibility": "Student President"
-            },
-            {
-                "name": "HARITHA A G",
-                "mail id": "harithaagganesh@gmail.com",
-                "phone": "8668095255",
-                "sex": "Female",
-                "year": "II Year",
-                "dept": "EEE",
-                "responsibility": "Student Vice-President"
-            },
-            {
-                "name": "LEO CALVIN E R",
-                "mail id": "leocalvin2310@gmail.com",
-                "phone": "9345040824",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "MECH",
-                "responsibility": "Student Convener"
-            },
-            {
-                "name": "SRI RAGHAV R",
-                "mail id": "sriraghav006@gmail.com",
-                "phone": "8300907695",
-                "sex": "Male",
-                "year": "II Year",
-                "dept": "CSE-CS",
-                "responsibility": "Public Relation Officer"
-            }
+  {
+    "type": "home",
+    "data": [
+      {
+        "about_iic": [
+          "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with new ideas and transform them into prototypes while they are in their formative years.",
+          "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses."
         ]
-    }
-},
-        "Events":
-            {
-                "IIC 0.3":[
-    {
-        "name of the program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+      }
+    ]
+  },
+  {
+    "type": "establishment",
+    "data": [
+      {
+        "category": "majorfocus",
+        "content": [
+          "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
+          "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
+          "To develop better Cognitive Ability for Technology Students."
+        ]
+      },
+      {
+        "category": "vision",
+        "content": [
+          "To facilitate a conducive environment with the intention of making an innovation to reach the society or industries for the betterment of our country and its citizen through entrepreneurial assets."
+        ]
+      },
+      {
+        "category": "mission",
+        "content": [
+          "To enable student and faculty to establish a start-up to market their innovative products; an enhanced coordination and priority setting across the start-up eco-system; an improved customizable strategy and planning for pursuing productivity growth and better operational efficiencies and value for the start-up companies."
+        ]
+      },
+      {
+        "category": "function",
+        "content": [
+          "To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC in a time-bound manner.",
+          "To identify and reward innovations and share success stories.",
+          "To organize periodic workshops/ seminars/ interactions with entrepreneurs, investors, professionals and create a mentor pool for student innovators.",
+          "Networking with peers and national entrepreneurship development organizations.",
+          "To create an Institution’s Innovation portal to highlight innovative projects carried out by institution’s faculty and students.",
+          "To organize Hackathons, idea competitions, mini-challenges etc. with the involvement of industries."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "name": "DR. NIRMAL RAJ A",
+        "designation": "President"
+      },
+      {
+        "name": "MR. YUVARAJ M",
+        "designation": "Vice-President"
+      },
+      {
+        "name": "MR. RADHAKRISHNAN K",
+        "designation": "Convener"
+      },
+      {
+        "name": "MRS. PADMA S",
+        "designation": "Innovation Activity Coordinator"
+      },
+      {
+        "name": "MR. RENGARAJAN V",
+        "designation": "Start-up Activity Coordinator"
+      },
+      {
+        "name": "DR. DEEPAK KUMAR M",
+        "designation": "Internship coordinator"
+      },
+      {
+        "name": "MRS. PARVATHY M",
+        "designation": "IPR activity Coordinator"
+      },
+      {
+        "name": "MR. RAJESH",
+        "designation": "Social Media Coordinator"
+      },
+      {
+        "name": "DR. SMITHA P S",
+        "designation": "NIRF Coordinator"
+      },
+      {
+        "name": "MR. RAJENDHIRAN K",
+        "designation": "Technology Transfer Coordinator"
+      },
+      {
+        "name": "DR. LOGANATHAN D",
+        "designation": "Member"
+      },
+      {
+        "name": "DR. PRADEEP KUMAR S",
+        "designation": "Member"
+      },
+      {
+        "name": "MRS. MYTHILI S",
+        "designation": "Member"
+      },
+      {
+        "name": "MRS. SUMATHI S",
+        "designation": "Member"
+      },
+      {
+        "name": "DR. DEEPA N",
+        "designation": "Member"
+      },
+      {
+        "name": "MRS. SUSHANTHI HENRY A",
+        "designation": "Member"
+      },
+      {
+        "name": "MS. DIVYA",
+        "designation": "Member"
+      },
+      {
+        "name": "MS. HERLINZIA C P",
+        "designation": "Member"
+      },
+      {
+        "name": "MRS. DEEPA S",
+        "designation": "Member"
+      },
+      {
+        "name": "MR. PRAMILA",
+        "designation": "Member"
+      },
+      {
+        "name": "MR. VIJAYAKUMAR M",
+        "designation": "Member"
+      },
+      {
+        "name": "DR. KAVIYA M",
+        "designation": "Member"
+      },
+      {
+        "name": "MR. BALAJI A",
+        "designation": "Member"
+      },
+      {
+        "name": "DR. JAYACHANDIRAN M",
+        "designation": "Member"
+      },
+      {
+        "name": "MS. JENIFER HEBZIBA I",
+        "designation": "Member"
+      },
+      {
+        "name": "TARAKESHWARAN S",
+        "designation": "Student President"
+      },
+      {
+        "name": "MOHAMED RAZIN N",
+        "designation": "Student Vice-President"
+      },
+      {
+        "name": "CHARLES S",
+        "designation": "Student Convener"
+      },
+      {
+        "name": "PRAVEEN KUMAR S",
+        "designation": "Public Relation Officer"
+      },
+      {
+        "name": "HARSHINI S",
+        "designation": "Event Coordinator"
+      }
+    ]
+  },
+  {
+    "type": "expert_representation",
+    "data": [
+      {
+        "name": "MR. VIVEAK M PALANIVASAN",
+        "designation": "Industry Expert"
+      },
+      {
+        "name": "DR. MAHESHKUMAR L",
+        "designation": "Incubation Centre"
+      },
+      {
+        "name": "MR. VIJAY RATHAN LINGAA J",
+        "designation": "Patent Expert"
+      }
+    ]
+  },
+  {
+    "type": "student_representation",
+    "data": [
+      {
+        "category": "iic",
+        "members": [
+          {
+            "name": "TARAKESHWARAN S",
+            "mail id": "tarakeshwaran.sampath@gmail.com",
+            "phone": "8870982120",
+            "sex": "Male",
+            "year": "IV Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "MOHAMED RAZIN N",
+            "mail id": "Mdrazinmms@gmail.comm",
+            "phone": "7010743013",
+            "sex": "Male",
+            "year": "IV Year",
+            "dept": "Civil",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "CHARLES S",
+            "mail id": "srcharles2005@gmail.com",
+            "phone": "9159882829",
+            "sex": "Male",
+            "year": "III Year",
+            "dept": "MECH",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "PRAVEEN KUMAR S",
+            "mail id": "s.praveenkumar090705@gmail.com",
+            "phone": "6381509418",
+            "sex": "Male",
+            "year": "IV Year",
+            "dept": "CSE",
+            "responsibility": "Public Relation Officer"
+          },
+          {
+            "name": "PRAJNAVARSHNI",
+            "mail id": "prajnavarshni@gmail.com",
+            "phone": "9677156966",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Event Coordinator"
+          }
+        ]
+      },
+      {
+        "category": "entrepreneurship_start_up_cell",
+        "members": [
+          {
+            "name": "VIDHYALAKSHMI T",
+            "mail id": "vidhyaa15007@gmail.com",
+            "phone": "9444951206",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE-CS",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "DEEPAN A",
+            "mail id": "deepana210@gmail.com",
+            "phone": "9566586223",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "ECE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "PREETHI R",
+            "mail id": "preethi.r26rp@gmail.com",
+            "phone": "8838811543",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "GOWTHAM R",
+            "mail id": "gowrham272006@gmail.com",
+            "phone": "9952676920",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "Civil",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "social_media",
+        "members": [
+          {
+            "name": "ADITHYAN V G",
+            "mail id": "adithyanvgvec@gmail.com",
+            "phone": "9344779231",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "IT",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "LOHITH V",
+            "mail id": "loarccc@gmail.com",
+            "phone": "9344454826",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "ECE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "MOHAMED IBRAHIM",
+            "mail id": "mohamedibrahimkhan7@gmail.com",
+            "phone": "9342727643",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "CSE-CS",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "AYISHA SIDDIKA J",
+            "mail id": "ayishasiddika73@gmail.com",
+            "phone": "8660097420",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "document",
+        "members": [
+          {
+            "name": "MONISHA T V",
+            "mail id": "monishavijayakumar04@gmail.com",
+            "phone": "6384757122",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "BUVANESWARI S",
+            "mail id": "sakthibuvana2863@gmail.com",
+            "phone": "6385745874",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "ADHIRA R",
+            "mail id": "adhirasuma@gmail.com",
+            "phone": "9947344210",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "SANTHOSH A",
+            "mail id": "santhoshanandan26@gmail.com",
+            "phone": "9345540057",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "ECE",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "technology_transfer",
+        "members": [
+          {
+            "name": "TEJASWINI P G",
+            "mail id": "pavalurutejaswini9@gmail.com",
+            "phone": "9962405999",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "SURYA P",
+            "mail id": "suryap03082006@gmail.com",
+            "phone": "8610408474",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "KIRANYA J S",
+            "mail id": "kiranyasuresh858@gmail.com",
+            "phone": "9035502824",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "VARNIKA VALLIAMMAI V",
+            "mail id": "varnikav1502@gmail.com",
+            "phone": "9551245599",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "nirf_innovation",
+        "members": [
+          {
+            "name": "YUVAREGA S",
+            "mail id": "Yuvare99@gmail.com",
+            "phone": "8110078825",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "MANASHA J",
+            "mail id": "manasha1103@gmail.com",
+            "phone": "9629542489",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "KARTHIKEYAN V",
+            "mail id": "karthikeyanv042006@gmail.com",
+            "phone": "9962047888",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "REVANTH M",
+            "mail id": "revrocker7@gmail.com",
+            "phone": "7200486484",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "msme_irp_cell",
+        "members": [
+          {
+            "name": "HARINI M",
+            "mail id": "harinimohan2007@gmail.com",
+            "phone": "8925663769",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "NANDISH K",
+            "mail id": "nandishkumar801@gmail.com",
+            "phone": "7812813656",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "AIDS",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "SANDHIYA S",
+            "mail id": "sandhiyadhiya360@gmail.com",
+            "phone": "8610464304",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "SADHANA R S",
+            "mail id": "rssadhana0487@gmail.com",
+            "phone": "6369767611",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "internship_cell",
+        "members": [
+          {
+            "name": "GOMAGAN R",
+            "mail id": "",
+            "phone": "6382073132",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "MECH",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "AARIYA K",
+            "mail id": "aariya.k2307@gmail.com",
+            "phone": "6374291986",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "CSE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "DHARANIDHARAN S",
+            "mail id": "dharanisenthilkumar007@gmail.com",
+            "phone": "8754080814",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "MOHAMED NASEEM",
+            "mail id": "mohamadnaseem2k@gmail.com",
+            "phone": "8072404373",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "CSE-CS",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      },
+      {
+        "category": "innovation_cell",
+        "members": [
+          {
+            "name": "ASISH EMMANUEL K S",
+            "mail id": "aaishemmanuel29@gmail.com",
+            "phone": "6383160566",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "ECE",
+            "responsibility": "Student President"
+          },
+          {
+            "name": "HARITHA A G",
+            "mail id": "harithaagganesh@gmail.com",
+            "phone": "8668095255",
+            "sex": "Female",
+            "year": "II Year",
+            "dept": "EEE",
+            "responsibility": "Student Vice-President"
+          },
+          {
+            "name": "LEO CALVIN E R",
+            "mail id": "leocalvin2310@gmail.com",
+            "phone": "9345040824",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "MECH",
+            "responsibility": "Student Convener"
+          },
+          {
+            "name": "SRI RAGHAV R",
+            "mail id": "sriraghav006@gmail.com",
+            "phone": "8300907695",
+            "sex": "Male",
+            "year": "II Year",
+            "dept": "CSE-CS",
+            "responsibility": "Public Relation Officer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "iic3",
+    "data": [
+      {
+        "name_of_the_program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
         "date": "01.06.2020",
-        "Number of Participants": "206"
-    },
-    {
-        "name of the program": "Overcoming Challenges In Business And Life Insights On Startups And Inversment",
+        "number_of_participants": "206"
+      },
+      {
+        "name_of_the_program": "Overcoming Challenges In Business And Life Insights On Startups And Inversment",
         "date": "13.06.2020",
-        "Number of Participants": "157"
-    },
-    {
-        "name of the program": "Engineering The Future",
+        "number_of_participants": "157"
+      },
+      {
+        "name_of_the_program": "Engineering The Future",
         "date": "20.06.2020",
-        "Number of Participants": "74"
-    },
-    {
-        "name of the program": "Entrepreneurship And Family Business",
+        "number_of_participants": "74"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship And Family Business",
         "date": "27.06.2020",
-        "Number of Participants": "776"
-    },
-    {
-        "name of the program": "10 Steps To Become An Entrepreneurship",
+        "number_of_participants": "776"
+      },
+      {
+        "name_of_the_program": "10 Steps To Become An Entrepreneurship",
         "date": "21.06.2020",
-        "Number of Participants": "207"
-    },
-    {
-        "name of the program": "Effectuation - An Entrepreneurial Approach To The Post Covid World",
+        "number_of_participants": "207"
+      },
+      {
+        "name_of_the_program": "Effectuation - An Entrepreneurial Approach To The Post Covid World",
         "date": "06.07.2020",
-        "Number of Participants": "263"
-    },
-    {
-        "name of the program": "Financial Awareness program",
+        "number_of_participants": "263"
+      },
+      {
+        "name_of_the_program": "Financial Awareness program",
         "date": "09.07.2020",
-        "Number of Participants": "191"
-    },
-    {
-        "name of the program": "New Entrepreneur-cum-Enterprise Development Scheme (NEEDS) - A Entrepreneurial Approach to Government Schemes",
+        "number_of_participants": "191"
+      },
+      {
+        "name_of_the_program": "New Entrepreneur-cum-Enterprise Development Scheme (NEEDS) - A Entrepreneurial Approach to Government Schemes",
         "date": "16.08.2020",
-        "Number of Participants": "123"
-    }
-],
-            
-                "IIC 0.4":[
-    {
-        "name of the program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
+        "number_of_participants": "123"
+      }
+    ]
+  },
+  {
+    "type": "iic4",
+    "data": [
+      {
+        "name_of_the_program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
         "date": "19.08.2021",
-        "Number of Participants": "119"
-    },
-    {
-        "name of the program": "World Entrepreneurship Day",
+        "number_of_participants": "119"
+      },
+      {
+        "name_of_the_program": "World Entrepreneurship Day",
         "date": "21.08.2021",
-        "Number of Participants": "103"
-    },
-    {
-        "name of the program": "Start-up Opportunities for Engineers",
+        "number_of_participants": "103"
+      },
+      {
+        "name_of_the_program": "Start-up Opportunities for Engineers",
         "date": "24.08.2021",
-        "Number of Participants": "153"
-    },
-    {
-        "name of the program": "Entrepreneurship & Start-Up Development - MDP",
+        "number_of_participants": "153"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship & Start-Up Development - MDP",
         "date": "25.08.2021",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Entrepreneurship Learning Innovation and Responsibility",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship Learning Innovation and Responsibility",
         "date": "31.08.2021",
-        "Number of Participants": "110"
-    },
-    {
-        "name of the program": "Design Thinking and Product Development",
+        "number_of_participants": "110"
+      },
+      {
+        "name_of_the_program": "Design Thinking and Product Development",
         "date": "03.09.2021",
-        "Number of Participants": "70"
-    },
-    {
-        "name of the program": "Spirit of Entrepreneurship",
+        "number_of_participants": "70"
+      },
+      {
+        "name_of_the_program": "Spirit of Entrepreneurship",
         "date": "09.04.2021",
-        "Number of Participants": "110"
-    },
-    {
-        "name of the program": "Spirit of Entrepreneurship",
+        "number_of_participants": "110"
+      },
+      {
+        "name_of_the_program": "Spirit of Entrepreneurship",
         "date": "13.09.2021",
-        "Number of Participants": "82"
-    },
-    {
-        "name of the program": "VEC entrepreneurship meet successful stories",
+        "number_of_participants": "82"
+      },
+      {
+        "name_of_the_program": "VEC entrepreneurship meet successful stories",
         "date": "18.09.2021",
-        "Number of Participants": "47"
-    },
-    {
-        "name of the program": "Journey as an Entrepreneur",
+        "number_of_participants": "47"
+      },
+      {
+        "name_of_the_program": "Journey as an Entrepreneur",
         "date": "24.09.2021",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "The Role of Banks in the development of entrepreneurship in India",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "The Role of Banks in the development of entrepreneurship in India",
         "date": "25.09.2021",
-        "Number of Participants": "163"
-    },
-    {
-        "name of the program": "Entrepreneurship & Venture Capital",
+        "number_of_participants": "163"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship & Venture Capital",
         "date": "27.9.2021",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "My Story - My Entrepreneurial Journey",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "My Story - My Entrepreneurial Journey",
         "date": "10.02.2021",
-        "Number of Participants": "52"
-    },
-    {
-        "name of the program": "Journey as an Entrepreneur",
+        "number_of_participants": "52"
+      },
+      {
+        "name_of_the_program": "Journey as an Entrepreneur",
         "date": "10.05.2021",
-        "Number of Participants": "112"
-    },
-    {
-        "name of the program": "Innovations in Digital Marketing",
+        "number_of_participants": "112"
+      },
+      {
+        "name_of_the_program": "Innovations in Digital Marketing",
         "date": "21.10.2021",
-        "Number of Participants": "100"
-    },
-    {
-        "name of the program": "Two Days Student development programme on Innovation Development on Artificial Intelligence for Industrial IoT with hands on traning",
+        "number_of_participants": "100"
+      },
+      {
+        "name_of_the_program": "Two Days Student development programme on Innovation Development on Artificial Intelligence for Industrial IoT with hands on traning",
         "date": "30.12.2021",
-        "Number of Participants": "124"
-    },
-    {
-        "name of the program": "Empower yourself as an Entrepreneur",
+        "number_of_participants": "124"
+      },
+      {
+        "name_of_the_program": "Empower yourself as an Entrepreneur",
         "date": "29.09.2021",
-        "Number of Participants": "88"
-    },
-    {
-        "name of the program": "National Energy Conservation Day",
+        "number_of_participants": "88"
+      },
+      {
+        "name_of_the_program": "National Energy Conservation Day",
         "date": "14.12.2021",
-        "Number of Participants": "20"
-    },
-    {
-        "name of the program": "Seminar on energy saving mantras",
+        "number_of_participants": "20"
+      },
+      {
+        "name_of_the_program": "Seminar on energy saving mantras",
         "date": "23.12.2021",
-        "Number of Participants": "20"
-    },
-    {
-        "name of the program": "Faculty awareness program on Entrepreneurship skill, attitude, and behavior development of a successful Entrepreneur - A mentor Approach",
+        "number_of_participants": "20"
+      },
+      {
+        "name_of_the_program": "Faculty awareness program on Entrepreneurship skill, attitude, and behavior development of a successful Entrepreneur - A mentor Approach",
         "date": "22.12.2021",
-        "Number of Participants": "17"
-    },
-    {
-        "name of the program": "Workshop on Entrepreneurship Skill Attitude and Behaviour Development Through Boardroom Games",
+        "number_of_participants": "17"
+      },
+      {
+        "name_of_the_program": "Workshop on Entrepreneurship Skill Attitude and Behaviour Development Through Boardroom Games",
         "date": "09.12.2021",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Workshop on design thinking, critical thinking, and innovation design in digital marketing",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Workshop on design thinking, critical thinking, and innovation design in digital marketing",
         "date": "06.12.2021",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Awareness on KAPILA Scheme and how to make a patent document",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Awareness on KAPILA Scheme and how to make a patent document",
         "date": "21.01.2022",
-        "Number of Participants": "126"
-    },
-    {
-        "name of the program": "Idea Presentation",
+        "number_of_participants": "126"
+      },
+      {
+        "name_of_the_program": "Idea Presentation",
         "date": "27.01.2022",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "BYST Mentor Development Program",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "BYST Mentor Development Program",
         "date": "24.01.2022",
-        "Number of Participants": "54"
-    },
-    {
-        "name of the program": "Seminar on Corporate Management",
+        "number_of_participants": "54"
+      },
+      {
+        "name_of_the_program": "Seminar on Corporate Management",
         "date": "01.12.2022",
-        "Number of Participants": "109"
-    },
-    {
-        "name of the program": "Awareness program on Innovation, Entrepreneurship, IPR & Start",
+        "number_of_participants": "109"
+      },
+      {
+        "name_of_the_program": "Awareness program on Innovation, Entrepreneurship, IPR & Start",
         "date": "11.02.2022",
-        "Number of Participants": "12"
-    },
-    {
-        "name of the program": "VEC Entrepreneurship Awareness Program",
+        "number_of_participants": "12"
+      },
+      {
+        "name_of_the_program": "VEC Entrepreneurship Awareness Program",
         "date": "10.2.2022",
-        "Number of Participants": "36"
-    },
-    {
-        "name of the program": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
+        "number_of_participants": "36"
+      },
+      {
+        "name_of_the_program": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
         "date": "26.02.2022",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Physics QUIZ FOR 1st Year B.E/ B.Tech Students",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Physics QUIZ FOR 1st Year B.E/ B.Tech Students",
         "date": "22.01.2022",
-        "Number of Participants": "179"
-    },
-    {
-        "name of the program": "Poster Making Competition FOR 1st Year B.E/ B.Tech Students",
+        "number_of_participants": "179"
+      },
+      {
+        "name_of_the_program": "Poster Making Competition FOR 1st Year B.E/ B.Tech Students",
         "date": "07.02.2022",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Quiz Programme",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Quiz Programme",
         "date": "11.02.2022",
-        "Number of Participants": "56"
-    },
-    {
-        "name of the program": "Innovation begins at Home",
+        "number_of_participants": "56"
+      },
+      {
+        "name_of_the_program": "Innovation begins at Home",
         "date": "02.12.2022",
-        "Number of Participants": "107"
-    },
-    {
-        "name of the program": "Awareness Program on IPR",
+        "number_of_participants": "107"
+      },
+      {
+        "name_of_the_program": "Awareness Program on IPR",
         "date": "23.02.2022",
-        "Number of Participants": "97"
-    },
-    {
-        "name of the program": "Problems and solutions",
+        "number_of_participants": "97"
+      },
+      {
+        "name_of_the_program": "Problems and solutions",
         "date": "21.02.2022",
-        "Number of Participants": "25"
-    },
-    {
-        "name of the program": "Awareness Program",
+        "number_of_participants": "25"
+      },
+      {
+        "name_of_the_program": "Awareness Program",
         "date": "17.02.2022",
-        "Number of Participants": "26"
-    },
-    {
-        "name of the program": "Virtual seminar on Innovation, IEDC project proposal, IPR and Entrepreneurship",
+        "number_of_participants": "26"
+      },
+      {
+        "name_of_the_program": "Virtual seminar on Innovation, IEDC project proposal, IPR and Entrepreneurship",
         "date": "24.02.2022",
-        "Number of Participants": "118"
-    },
-    {
-        "name of the program": "Managerial Skill and Ethics",
+        "number_of_participants": "118"
+      },
+      {
+        "name_of_the_program": "Managerial Skill and Ethics",
         "date": "16.2.2022",
-        "Number of Participants": "50"
-    },
-    {
-        "name of the program": "5 Days Workshop on Invester Awareness",
+        "number_of_participants": "50"
+      },
+      {
+        "name_of_the_program": "5 Days Workshop on Invester Awareness",
         "date": "21.02.2022",
-        "Number of Participants": "75"
-    },
-    {
-        "name of the program": "Awareness Program on Entrepreneurship and Innovation",
+        "number_of_participants": "75"
+      },
+      {
+        "name_of_the_program": "Awareness Program on Entrepreneurship and Innovation",
         "date": "21.02.2022",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Awareness Program on Innovation and Entrepreneurship",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Awareness Program on Innovation and Entrepreneurship",
         "date": "02.12.2022",
-        "Number of Participants": "53"
-    },
-    {
-        "name of the program": "Field Exposure on AI for Industrial IoT with Hands-on",
+        "number_of_participants": "53"
+      },
+      {
+        "name_of_the_program": "Field Exposure on AI for Industrial IoT with Hands-on",
         "date": "25.02.2022",
-        "Number of Participants": "24"
-    },
-    {
-        "name of the program": "Innovative Idea Competition",
+        "number_of_participants": "24"
+      },
+      {
+        "name_of_the_program": "Innovative Idea Competition",
         "date": "26.02.2022",
-        "Number of Participants": "108"
-    },
-    {
-        "name of the program": "Online International webinar",
+        "number_of_participants": "108"
+      },
+      {
+        "name_of_the_program": "Online International webinar",
         "date": "27.02.2022",
-        "Number of Participants": "74"
-    },
-    {
-        "name of the program": "Awareness to Idea , Innovation and Business Plan",
+        "number_of_participants": "74"
+      },
+      {
+        "name_of_the_program": "Awareness to Idea , Innovation and Business Plan",
         "date": "28.02.2022",
-        "Number of Participants": "51"
-    },
-    {
-        "name of the program": "Science – Fundamentals of Engineering Engineering",
+        "number_of_participants": "51"
+      },
+      {
+        "name_of_the_program": "Science – Fundamentals of Engineering Engineering",
         "date": "28.02.2022",
-        "Number of Participants": "137"
-    },
-    {
-        "name of the program": "Process of Innovation Development and Technology Readness Level(TRL) and Commerilization of LAB Technology and TECH Transfer",
+        "number_of_participants": "137"
+      },
+      {
+        "name_of_the_program": "Process of Innovation Development and Technology Readness Level(TRL) and Commerilization of LAB Technology and TECH Transfer",
         "date": "26.2.2022",
-        "Number of Participants": "72"
-    },
-    {
-        "name of the program": "Webinar on Technopreneurship Development",
+        "number_of_participants": "72"
+      },
+      {
+        "name_of_the_program": "Webinar on Technopreneurship Development",
         "date": "28.2.2022",
-        "Number of Participants": "42"
-    },
-    {
-        "name of the program": "IDEATHON 2022-SIH idea Presentation",
+        "number_of_participants": "42"
+      },
+      {
+        "name_of_the_program": "IDEATHON 2022-SIH idea Presentation",
         "date": "27.01.2022",
-        "Number of Participants": "61"
-    },
-    {
-        "name of the program": "INNOVATION: Online Repository of Proof Of Concepts(PoC) and Way forward Plan",
+        "number_of_participants": "61"
+      },
+      {
+        "name_of_the_program": "INNOVATION: Online Repository of Proof Of Concepts(PoC) and Way forward Plan",
         "date": "26.02.2022",
-        "Number of Participants": "38"
-    },
-    {
-        "name of the program": "Exposure Visit  To  Makers Lab  Centre of Entrepreneurship Development Anna University",
+        "number_of_participants": "38"
+      },
+      {
+        "name_of_the_program": "Exposure Visit  To  Makers Lab  Centre of Entrepreneurship Development Anna University",
         "date": "26.02.2022",
-        "Number of Participants": "26"
-    },
-    {
-        "name of the program": "Technical Model Construct Competition Expo 2022",
+        "number_of_participants": "26"
+      },
+      {
+        "name_of_the_program": "Technical Model Construct Competition Expo 2022",
         "date": "11.3.2022",
-        "Number of Participants": "90"
-    },
-    {
-        "name of the program": "Workshop on Process Design and Development Using Industrial IoT",
+        "number_of_participants": "90"
+      },
+      {
+        "name_of_the_program": "Workshop on Process Design and Development Using Industrial IoT",
         "date": "11.03.2022",
-        "Number of Participants": "31"
-    },
-    {
-        "name of the program": "Workshop on Busines model Canvas BMC",
+        "number_of_participants": "31"
+      },
+      {
+        "name_of_the_program": "Workshop on Busines model Canvas BMC",
         "date": "22.4.2022",
-        "Number of Participants": "30"
-    },
-    {
-        "name of the program": "Workshop on Busines model Canvas BMC",
+        "number_of_participants": "30"
+      },
+      {
+        "name_of_the_program": "Workshop on Busines model Canvas BMC",
         "date": "08.04.2022",
-        "Number of Participants": "37"
-    },
-    {
-        "name of the program": "IPR -Process Design development",
+        "number_of_participants": "37"
+      },
+      {
+        "name_of_the_program": "IPR -Process Design development",
         "date": "25.03.2022",
-        "Number of Participants": "86"
-    },
-    {
-        "name of the program": "Seminar on \"Application of Deep Learning in Digital Communication\"",
+        "number_of_participants": "86"
+      },
+      {
+        "name_of_the_program": "Seminar on \"Application of Deep Learning in Digital Communication\"",
         "date": "26.03.2022",
-        "Number of Participants": "174"
-    },
-    {
-        "name of the program": "Field/Exposure Visit to Technology Transfer Centre @ CMRL, Koyambedu",
+        "number_of_participants": "174"
+      },
+      {
+        "name_of_the_program": "Field/Exposure Visit to Technology Transfer Centre @ CMRL, Koyambedu",
         "date": "29.03.2022",
-        "Number of Participants": "177"
-    },
-    {
-        "name of the program": "Prototype Demo",
+        "number_of_participants": "177"
+      },
+      {
+        "name_of_the_program": "Prototype Demo",
         "date": "09.04.2022",
-        "Number of Participants": "153"
-    },
-    {
-        "name of the program": "How to plan for start-up and legal & Ethical Steps",
+        "number_of_participants": "153"
+      },
+      {
+        "name_of_the_program": "How to plan for start-up and legal & Ethical Steps",
         "date": "09.4.2022",
-        "Number of Participants": "71"
-    },
-    {
-        "name of the program": "Exhibition for school students on innovative projects",
+        "number_of_participants": "71"
+      },
+      {
+        "name_of_the_program": "Exhibition for school students on innovative projects",
         "date": "07.4.2022",
-        "Number of Participants": "395"
-    },
-    {
-        "name of the program": "Exhibition for school students on innovative projects",
+        "number_of_participants": "395"
+      },
+      {
+        "name_of_the_program": "Exhibition for school students on innovative projects",
         "date": "09.4.2022",
-        "Number of Participants": "420"
-    },
-    {
-        "name of the program": "Seminar on Machine Learning Techniques",
+        "number_of_participants": "420"
+      },
+      {
+        "name_of_the_program": "Seminar on Machine Learning Techniques",
         "date": "12.04.2022",
-        "Number of Participants": "115"
-    },
-    {
-        "name of the program": "Mini Project Contest",
+        "number_of_participants": "115"
+      },
+      {
+        "name_of_the_program": "Mini Project Contest",
         "date": "22.04.2022",
-        "Number of Participants": "199"
-    },
-    {
-        "name of the program": "IETE Student's Forum '22",
+        "number_of_participants": "199"
+      },
+      {
+        "name_of_the_program": "IETE Student's Forum '22",
         "date": "26.04.2022",
-        "Number of Participants": "164"
-    },
-    {
-        "name of the program": "Virtual National Conference on Recent Advancements in Communication, Electronics and Signal Processing",
+        "number_of_participants": "164"
+      },
+      {
+        "name_of_the_program": "Virtual National Conference on Recent Advancements in Communication, Electronics and Signal Processing",
         "date": "06.05.2022",
-        "Number of Participants": "244"
-    },
-    {
-        "name of the program": "Demonstration of Innovative Ideas",
+        "number_of_participants": "244"
+      },
+      {
+        "name_of_the_program": "Demonstration of Innovative Ideas",
         "date": "11.05.2022",
-        "Number of Participants": "82"
-    },
-    {
-        "name of the program": "Guest lecture on MEMS & Actuators",
+        "number_of_participants": "82"
+      },
+      {
+        "name_of_the_program": "Guest lecture on MEMS & Actuators",
         "date": "11.05.2022",
-        "Number of Participants": "142"
-    },
-    {
-        "name of the program": "Guest lecture on Applications of Baseband Communication",
+        "number_of_participants": "142"
+      },
+      {
+        "name_of_the_program": "Guest lecture on Applications of Baseband Communication",
         "date": "14.05.2022",
-        "Number of Participants": "174"
-    },
-    {
-        "name of the program": "TECHNOVENT",
+        "number_of_participants": "174"
+      },
+      {
+        "name_of_the_program": "TECHNOVENT",
         "date": "11.05.2022",
-        "Number of Participants": "238"
-    },
-    {
-        "name of the program": "Entrepreneurship – Dreams to Reality (A opportunity to run a own business & Job opportunity in Welkinz)",
+        "number_of_participants": "238"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship – Dreams to Reality (A opportunity to run a own business & Job opportunity in Welkinz)",
         "date": "16.05.2022",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Guest Lecture on Memory Mapping and Interrupts",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on Memory Mapping and Interrupts",
         "date": "14.05.2022",
-        "Number of Participants": "19"
-    },
-    {
-        "name of the program": "How to plan for startup legal and ethical steps",
+        "number_of_participants": "19"
+      },
+      {
+        "name_of_the_program": "How to plan for startup legal and ethical steps",
         "date": "13.04.2022",
-        "Number of Participants": "36"
-    },
-    {
-        "name of the program": "Guest Lecture on Imaging Modalities and Analysis",
+        "number_of_participants": "36"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on Imaging Modalities and Analysis",
         "date": "28.05.2022",
-        "Number of Participants": "37"
-    },
-    {
-        "name of the program": "Poster Presentation Contest for VEC Students (Save Earth)",
+        "number_of_participants": "37"
+      },
+      {
+        "name_of_the_program": "Poster Presentation Contest for VEC Students (Save Earth)",
         "date": "27.04.2022",
-        "Number of Participants": "24"
-    },
-    {
-        "name of the program": "Ways to generate profits from IPR protection",
+        "number_of_participants": "24"
+      },
+      {
+        "name_of_the_program": "Ways to generate profits from IPR protection",
         "date": "29.04.2022",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "My Story - As An Entrepreneur",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "My Story - As An Entrepreneur",
         "date": "22.10.2021",
-        "Number of Participants": "65"
-    }
-],
-        
-                
-                    "IIC 0.5":[
-    {
-        "name of the program": "ENGINEERS' DAY CELEBRATIONS",
+        "number_of_participants": "65"
+      }
+    ]
+  },
+  {
+    "type": "iic5",
+    "data": [
+      {
+        "name_of_the_program": "ENGINEERS' DAY CELEBRATIONS",
         "date": "15-09-2022",
-        "Number of Participants": "82"
-    },
-    {
-        "name of the program": "IWWA Students' Chapter (Indian Water Works Association)",
+        "number_of_participants": "82"
+      },
+      {
+        "name_of_the_program": "IWWA Students' Chapter (Indian Water Works Association)",
         "date": "19-10-2022",
-        "Number of Participants": "81"
-    },
-    {
-        "name of the program": "My Story - Motivational Session by Successful Entrepreneur",
+        "number_of_participants": "81"
+      },
+      {
+        "name_of_the_program": "My Story - Motivational Session by Successful Entrepreneur",
         "date": "21-10-2022",
-        "Number of Participants": "59"
-    },
-    {
-        "name of the program": "My Story - Motivational Session by Successful Entrepreneur",
+        "number_of_participants": "59"
+      },
+      {
+        "name_of_the_program": "My Story - Motivational Session by Successful Entrepreneur",
         "date": "31-10-2022",
-        "Number of Participants": "76"
-    },
-    {
-        "name of the program": "My Story - Motivational Session by Successful Entrepreneur",
+        "number_of_participants": "76"
+      },
+      {
+        "name_of_the_program": "My Story - Motivational Session by Successful Entrepreneur",
         "date": "28-11-2022",
-        "Number of Participants": "31"
-    },
-    {
-        "name of the program": "Unsolved Problems in Engineering",
+        "number_of_participants": "31"
+      },
+      {
+        "name_of_the_program": "Unsolved Problems in Engineering",
         "date": "15-11-2022",
-        "Number of Participants": "791"
-    },
-    {
-        "name of the program": "Future Technology for Entrepreneurship",
+        "number_of_participants": "791"
+      },
+      {
+        "name_of_the_program": "Future Technology for Entrepreneurship",
         "date": "16-11-2022",
-        "Number of Participants": "791"
-    },
-    {
-        "name of the program": "Idea / Patent / Product Development",
+        "number_of_participants": "791"
+      },
+      {
+        "name_of_the_program": "Idea / Patent / Product Development",
         "date": "16-11-2022",
-        "Number of Participants": "248"
-    },
-    {
-        "name of the program": "Goal Setting - Frame work & Strategies",
+        "number_of_participants": "248"
+      },
+      {
+        "name_of_the_program": "Goal Setting - Frame work & Strategies",
         "date": "18-11-2022",
-        "Number of Participants": "245"
-    },
-    {
-        "name of the program": "Demo Day",
+        "number_of_participants": "245"
+      },
+      {
+        "name_of_the_program": "Demo Day",
         "date": "17-11-2022",
-        "Number of Participants": "760"
-    },
-    {
-        "name of the program": "My Story - Motivational Session by Ilakkanam Private Limited",
+        "number_of_participants": "760"
+      },
+      {
+        "name_of_the_program": "My Story - Motivational Session by Ilakkanam Private Limited",
         "date": "29-11-2022",
-        "Number of Participants": "89"
-    },
-    {
-        "name of the program": "Workshop on Patent drafting for kapila scheme",
+        "number_of_participants": "89"
+      },
+      {
+        "name_of_the_program": "Workshop on Patent drafting for kapila scheme",
         "date": "24-12-2022",
-        "Number of Participants": "21"
-    },
-    {
-        "name of the program": "Entrepreneurship and Innovation in Drones as Career Opportunity",
+        "number_of_participants": "21"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship and Innovation in Drones as Career Opportunity",
         "date": "31-10-2022",
-        "Number of Participants": "176"
-    },
-    {
-        "name of the program": "Session on Career Opportunities",
+        "number_of_participants": "176"
+      },
+      {
+        "name_of_the_program": "Session on Career Opportunities",
         "date": "11-04-2022",
-        "Number of Participants": "182"
-    },
-    {
-        "name of the program": "Session on Career Guidance Programme",
+        "number_of_participants": "182"
+      },
+      {
+        "name_of_the_program": "Session on Career Guidance Programme",
         "date": "11-10-2022",
-        "Number of Participants": "160"
-    },
-    {
-        "name of the program": "CADD Software for Electronics",
+        "number_of_participants": "160"
+      },
+      {
+        "name_of_the_program": "CADD Software for Electronics",
         "date": "19-10-2022",
-        "Number of Participants": "141"
-    },
-    {
-        "name of the program": "Entrepreneurship Skill, Attitude and Behaviour Development",
+        "number_of_participants": "141"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship Skill, Attitude and Behaviour Development",
         "date": "15-02-2023",
-        "Number of Participants": "115"
-    },
-    {
-        "name of the program": "Industry 4.0",
+        "number_of_participants": "115"
+      },
+      {
+        "name_of_the_program": "Industry 4.0",
         "date": "25-02-2023",
-        "Number of Participants": "115"
-    },
-    {
-        "name of the program": "My story- Deepta food products",
+        "number_of_participants": "115"
+      },
+      {
+        "name_of_the_program": "My story- Deepta food products",
         "date": "12-02-2022",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "Entrepreneurship Skill, Attitude and Behaviour Development",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship Skill, Attitude and Behaviour Development",
         "date": "14-12-2022",
-        "Number of Participants": "66"
-    },
-    {
-        "name of the program": "National Road Safety Week",
+        "number_of_participants": "66"
+      },
+      {
+        "name_of_the_program": "National Road Safety Week",
         "date": "21-01-2023",
-        "Number of Participants": "69"
-    },
-    {
-        "name of the program": "IEDC Project Expo",
+        "number_of_participants": "69"
+      },
+      {
+        "name_of_the_program": "IEDC Project Expo",
         "date": "02-07-2023",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "Design, Critical Thinking, and innovation Design",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "Design, Critical Thinking, and innovation Design",
         "date": "27-01-2023",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "Mini Project Exhibition-EPIC 2023",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "Mini Project Exhibition-EPIC 2023",
         "date": "28-02-2023",
-        "Number of Participants": "27"
-    },
-    {
-        "name of the program": "Project Presentation Through Yukti",
+        "number_of_participants": "27"
+      },
+      {
+        "name_of_the_program": "Project Presentation Through Yukti",
         "date": "22-02-2023",
-        "Number of Participants": "30"
-    },
-    {
-        "name of the program": "Innovation & Entrepreneurship outreach program in school / community",
+        "number_of_participants": "30"
+      },
+      {
+        "name_of_the_program": "Innovation & Entrepreneurship outreach program in school / community",
         "date": "23-02-2023",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Design Thinking & Critical thinking",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Design Thinking & Critical thinking",
         "date": "15-02-2023",
-        "Number of Participants": "34"
-    },
-    {
-        "name of the program": "Awarness programme on Intellectual Property Rights (IPR)",
+        "number_of_participants": "34"
+      },
+      {
+        "name_of_the_program": "Awarness programme on Intellectual Property Rights (IPR)",
         "date": "14-02-2023",
-        "Number of Participants": "128"
-    },
-    {
-        "name of the program": "How to Ignite your Innovation",
+        "number_of_participants": "128"
+      },
+      {
+        "name_of_the_program": "How to Ignite your Innovation",
         "date": "15-10-2022",
-        "Number of Participants": "42"
-    },
-    {
-        "name of the program": "Innovation & Entrepreneurship In Electrical Vehicles",
+        "number_of_participants": "42"
+      },
+      {
+        "name_of_the_program": "Innovation & Entrepreneurship In Electrical Vehicles",
         "date": "10-02-2023",
-        "Number of Participants": "94"
-    },
-    {
-        "name of the program": "Visit to TANSAM",
+        "number_of_participants": "94"
+      },
+      {
+        "name_of_the_program": "Visit to TANSAM",
         "date": "21-02-2023",
-        "Number of Participants": "38"
-    },
-    {
-        "name of the program": "TBI Visit - Vel Tech",
+        "number_of_participants": "38"
+      },
+      {
+        "name_of_the_program": "TBI Visit - Vel Tech",
         "date": "26-11-2022",
-        "Number of Participants": "56"
-    },
-    {
-        "name of the program": "Career to start-up",
+        "number_of_participants": "56"
+      },
+      {
+        "name_of_the_program": "Career to start-up",
         "date": "23-02-2023",
-        "Number of Participants": "97"
-    },
-    {
-        "name of the program": "National Energy Conservation Day - Energy Awarness",
+        "number_of_participants": "97"
+      },
+      {
+        "name_of_the_program": "National Energy Conservation Day - Energy Awarness",
         "date": "14-12-2022",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "Unleashing innovation: Strategies and Techniques for Driving Growth and Success",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "Unleashing innovation: Strategies and Techniques for Driving Growth and Success",
         "date": "23-01-2023",
-        "Number of Participants": "155"
-    },
-    {
-        "name of the program": "Workshop on Patent Drafting and Searching",
+        "number_of_participants": "155"
+      },
+      {
+        "name_of_the_program": "Workshop on Patent Drafting and Searching",
         "date": "28-01-2023",
-        "Number of Participants": "38"
-    },
-    {
-        "name of the program": "Hackathon (Avant-garde)",
+        "number_of_participants": "38"
+      },
+      {
+        "name_of_the_program": "Hackathon (Avant-garde)",
         "date": "21-03-2023",
-        "Number of Participants": "279"
-    },
-    {
-        "name of the program": "Workshop on Prototype/Process Design and Development",
+        "number_of_participants": "279"
+      },
+      {
+        "name_of_the_program": "Workshop on Prototype/Process Design and Development",
         "date": "21-04-2023",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "Exposure  of Database in IT",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "Exposure  of Database in IT",
         "date": "28-03-2023",
-        "Number of Participants": "107"
-    },
-    {
-        "name of the program": "UAV and Its Applications",
+        "number_of_participants": "107"
+      },
+      {
+        "name_of_the_program": "UAV and Its Applications",
         "date": "03-02-2023",
-        "Number of Participants": "162"
-    },
-    {
-        "name of the program": "Mini Project  Competition",
+        "number_of_participants": "162"
+      },
+      {
+        "name_of_the_program": "Mini Project  Competition",
         "date": "30-03-2023",
-        "Number of Participants": "186"
-    },
-    {
-        "name of the program": "National Conference on Recent Advancements in Communication , Electronics and signal processing",
+        "number_of_participants": "186"
+      },
+      {
+        "name_of_the_program": "National Conference on Recent Advancements in Communication , Electronics and signal processing",
         "date": "04-05-2023",
-        "Number of Participants": "228"
-    },
-    {
-        "name of the program": "IETE Students forum23",
+        "number_of_participants": "228"
+      },
+      {
+        "name_of_the_program": "IETE Students forum23",
         "date": "04-12-2023",
-        "Number of Participants": "21"
-    },
-    {
-        "name of the program": "Role of Sensors and Actuators in Industry",
+        "number_of_participants": "21"
+      },
+      {
+        "name_of_the_program": "Role of Sensors and Actuators in Industry",
         "date": "27-03-2023",
-        "Number of Participants": "176"
-    },
-    {
-        "name of the program": "Idea Presentation in Symposium23",
+        "number_of_participants": "176"
+      },
+      {
+        "name_of_the_program": "Idea Presentation in Symposium23",
         "date": "25-02-2023",
-        "Number of Participants": "31"
-    },
-    {
-        "name of the program": "Supply Chain Management in Global Perspective",
+        "number_of_participants": "31"
+      },
+      {
+        "name_of_the_program": "Supply Chain Management in Global Perspective",
         "date": "04-01-2023",
-        "Number of Participants": "106"
-    },
-    {
-        "name of the program": "Role of IPR in start -up -World intellectual property day",
+        "number_of_participants": "106"
+      },
+      {
+        "name_of_the_program": "Role of IPR in start -up -World intellectual property day",
         "date": "27-04-2023",
-        "Number of Participants": "58"
-    },
-    {
-        "name of the program": "Cloud Computing in Industrial Growth",
+        "number_of_participants": "58"
+      },
+      {
+        "name_of_the_program": "Cloud Computing in Industrial Growth",
         "date": "25-03-2023",
-        "Number of Participants": "110"
-    },
-    {
-        "name of the program": "Workshop on Design Thinking",
+        "number_of_participants": "110"
+      },
+      {
+        "name_of_the_program": "Workshop on Design Thinking",
         "date": "22-02-2023",
-        "Number of Participants": "55"
-    },
-    {
-        "name of the program": "Seminar on Upgrading Skills to IT Sector.",
+        "number_of_participants": "55"
+      },
+      {
+        "name_of_the_program": "Seminar on Upgrading Skills to IT Sector.",
         "date": "22-02-2023",
-        "Number of Participants": "122"
-    },
-    {
-        "name of the program": "Hands on Workshop on working on Live applicatiions",
+        "number_of_participants": "122"
+      },
+      {
+        "name_of_the_program": "Hands on Workshop on working on Live applicatiions",
         "date": "22-02-2023",
-        "Number of Participants": "122"
-    },
-    {
-        "name of the program": "Hands on Workshop on ZIAHUB",
+        "number_of_participants": "122"
+      },
+      {
+        "name_of_the_program": "Hands on Workshop on ZIAHUB",
         "date": "03-06-2023",
-        "Number of Participants": "55"
-    },
-    {
-        "name of the program": "Seminar on Trends Driving Artificial Intelligence Innovation",
+        "number_of_participants": "55"
+      },
+      {
+        "name_of_the_program": "Seminar on Trends Driving Artificial Intelligence Innovation",
         "date": "02-03-2023",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Guest lecture on Design and Anlysis of algorithm",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Guest lecture on Design and Anlysis of algorithm",
         "date": "20-03-2023",
-        "Number of Participants": "116"
-    },
-    {
-        "name of the program": "How to Plan for start-ups  and  Legal ethical  steps",
+        "number_of_participants": "116"
+      },
+      {
+        "name_of_the_program": "How to Plan for start-ups  and  Legal ethical  steps",
         "date": "26-05-2023",
-        "Number of Participants": "63"
-    },
-    {
-        "name of the program": "Webinar on User awareness programme on National Digital Library of India",
+        "number_of_participants": "63"
+      },
+      {
+        "name_of_the_program": "Webinar on User awareness programme on National Digital Library of India",
         "date": "02-06-2022",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Innovation for Entrepreneurs",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Innovation for Entrepreneurs",
         "date": "08-10-2022",
-        "Number of Participants": "71"
-    },
-    {
-        "name of the program": "Business Incubators for Accelerating Start-Ups",
+        "number_of_participants": "71"
+      },
+      {
+        "name_of_the_program": "Business Incubators for Accelerating Start-Ups",
         "date": "26-08-2022",
-        "Number of Participants": "75"
-    },
-    {
-        "name of the program": "Lean Startup & Minimum viable Products/Business",
+        "number_of_participants": "75"
+      },
+      {
+        "name_of_the_program": "Lean Startup & Minimum viable Products/Business",
         "date": "30-08-2022",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Session on Innovation-Converting Innovation into a startup",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Session on Innovation-Converting Innovation into a startup",
         "date": "29-08-2022",
-        "Number of Participants": "29"
-    },
-    {
-        "name of the program": "One day Program on Debate regarding Entreprenuership Day(26.8.2022-offline) Essay Writing and Drawing(27.8.2022-Online)",
+        "number_of_participants": "29"
+      },
+      {
+        "name_of_the_program": "One day Program on Debate regarding Entreprenuership Day(26.8.2022-offline) Essay Writing and Drawing(27.8.2022-Online)",
         "date": "26-08-2022",
-        "Number of Participants": "42"
-    },
-    {
-        "name of the program": "Session on \"Angel Investment/VC Funding Oppertunity for early stage Entreprenrurs\"",
+        "number_of_participants": "42"
+      },
+      {
+        "name_of_the_program": "Session on \"Angel Investment/VC Funding Oppertunity for early stage Entreprenrurs\"",
         "date": "23-08-2022",
-        "Number of Participants": "55"
-    },
-    {
-        "name of the program": "ENTRIX",
+        "number_of_participants": "55"
+      },
+      {
+        "name_of_the_program": "ENTRIX",
         "date": "23-08-2022",
-        "Number of Participants": "130"
-    },
-    {
-        "name of the program": "Session on Converting innovation in to Start Up",
+        "number_of_participants": "130"
+      },
+      {
+        "name_of_the_program": "Session on Converting innovation in to Start Up",
         "date": "30-08-2022",
-        "Number of Participants": "51"
-    },
-    {
-        "name of the program": "How to convert innovation into startup",
+        "number_of_participants": "51"
+      },
+      {
+        "name_of_the_program": "How to convert innovation into startup",
         "date": "31-08-2022",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "Report on A Seminar on \"converting your innovation into a Start-up Procedures and Opportunities\"",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "Report on A Seminar on \"converting your innovation into a Start-up Procedures and Opportunities\"",
         "date": "30-08-2022",
-        "Number of Participants": "90"
-    },
-    {
-        "name of the program": "Field/Exposure Visit to Maker's lab at Annauniversity",
+        "number_of_participants": "90"
+      },
+      {
+        "name_of_the_program": "Field/Exposure Visit to Maker's lab at Annauniversity",
         "date": "08-12-2022",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "Webinar On Innovation Into Startup",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "Webinar On Innovation Into Startup",
         "date": "30-08-2022",
-        "Number of Participants": ""
-    },
-    {
-        "name of the program": "Angel Investment/VC Funding Opportunity for Early Stage Entrepreneurs",
+        "number_of_participants": ""
+      },
+      {
+        "name_of_the_program": "Angel Investment/VC Funding Opportunity for Early Stage Entrepreneurs",
         "date": "23-08-2022",
-        "Number of Participants": "55"
-    },
-    {
-        "name of the program": "Augmented Reality and Virtual Reality",
+        "number_of_participants": "55"
+      },
+      {
+        "name_of_the_program": "Augmented Reality and Virtual Reality",
         "date": "31-10-2022",
-        "Number of Participants": "49"
-    },
-    {
-        "name of the program": "Workshop on UI/UX Design",
+        "number_of_participants": "49"
+      },
+      {
+        "name_of_the_program": "Workshop on UI/UX Design",
         "date": "17-02-2023",
-        "Number of Participants": "63"
-    },
-    {
-        "name of the program": "Software Testing",
+        "number_of_participants": "63"
+      },
+      {
+        "name_of_the_program": "Software Testing",
         "date": "15-04-2023",
-        "Number of Participants": "63"
-    },
-    {
-        "name of the program": "Recent Advances in Digital Signal Processor and their applications",
+        "number_of_participants": "63"
+      },
+      {
+        "name_of_the_program": "Recent Advances in Digital Signal Processor and their applications",
         "date": "24-08-2022",
-        "Number of Participants": "169"
-    },
-    {
-        "name of the program": "Business Incubators for Accelerating Start Ups",
+        "number_of_participants": "169"
+      },
+      {
+        "name_of_the_program": "Business Incubators for Accelerating Start Ups",
         "date": "26-08-2022",
-        "Number of Participants": "70"
-    },
-    {
-        "name of the program": "Design Analysis of Microstrip Antenna Using Ansys HFSS Software",
+        "number_of_participants": "70"
+      },
+      {
+        "name_of_the_program": "Design Analysis of Microstrip Antenna Using Ansys HFSS Software",
         "date": "07-09-2022",
-        "Number of Participants": "114"
-    },
-    {
-        "name of the program": "Seminar on \"CADD software for Electronics\"",
+        "number_of_participants": "114"
+      },
+      {
+        "name_of_the_program": "Seminar on \"CADD software for Electronics\"",
         "date": "19-10-2022",
-        "Number of Participants": "52"
-    },
-    {
-        "name of the program": "Guest Lecture on \"Industrail Application of Data Structures\"",
+        "number_of_participants": "52"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on \"Industrail Application of Data Structures\"",
         "date": "29-10-2022",
-        "Number of Participants": "154"
-    },
-    {
-        "name of the program": "Programming in Java",
+        "number_of_participants": "154"
+      },
+      {
+        "name_of_the_program": "Programming in Java",
         "date": "01-11-2022",
-        "Number of Participants": "52"
-    },
-    {
-        "name of the program": "Inauguration of IETE Students Forum'22,special Seminar on Electronics in Marine field",
+        "number_of_participants": "52"
+      },
+      {
+        "name_of_the_program": "Inauguration of IETE Students Forum'22,special Seminar on Electronics in Marine field",
         "date": "07-11-2022",
-        "Number of Participants": "163"
-    },
-    {
-        "name of the program": "Guest lecture on\" Application of Rectangular Waveguides\"",
+        "number_of_participants": "163"
+      },
+      {
+        "name_of_the_program": "Guest lecture on\" Application of Rectangular Waveguides\"",
         "date": "26-11-2022",
-        "Number of Participants": "168"
-    },
-    {
-        "name of the program": "INTRODUCTION & HANDS ON TRAINING ON KUBERNETES",
+        "number_of_participants": "168"
+      },
+      {
+        "name_of_the_program": "INTRODUCTION & HANDS ON TRAINING ON KUBERNETES",
         "date": "25-08-2022",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "GUEST LECTURE ON Data Visualization and Linear Regression on Big Data",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "GUEST LECTURE ON Data Visualization and Linear Regression on Big Data",
         "date": "03-11-2022",
-        "Number of Participants": "178"
-    },
-    {
-        "name of the program": "Workshop on Scrum Master",
+        "number_of_participants": "178"
+      },
+      {
+        "name_of_the_program": "Workshop on Scrum Master",
         "date": "11-05-2022",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Workshop on Full Stack Programming",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Workshop on Full Stack Programming",
         "date": "11-05-2022",
-        "Number of Participants": "26"
-    }
-],
-                
-
-                "IIC 0.6":[
-    {
-        "name of the program": "Guest-lecture on \"Utility of AI in India and abroad\"",
+        "number_of_participants": "26"
+      }
+    ]
+  },
+  {
+    "type": "iic6",
+    "data": [
+      {
+        "name_of_the_program": "Guest-lecture on \"Utility of AI in India and abroad\"",
         "date": "31.08.2023",
-        "Number of Participants": "124"
-    },
-    {
-        "name of the program": "Team Forge",
+        "number_of_participants": "124"
+      },
+      {
+        "name_of_the_program": "Team Forge",
         "date": "09.10.2023",
-        "Number of Participants": "55"
-    },
-    {
-        "name of the program": "TANSAM VISIT",
+        "number_of_participants": "55"
+      },
+      {
+        "name_of_the_program": "TANSAM VISIT",
         "date": "18.10.2024",
-        "Number of Participants": "69"
-    },
-    {
-        "name of the program": "Panel Discussion - Faculty to Founder",
+        "number_of_participants": "69"
+      },
+      {
+        "name_of_the_program": "Panel Discussion - Faculty to Founder",
         "date": "27.07.2023",
-        "Number of Participants": "12"
-    },
-    {
-        "name of the program": "Seminar - \"Are you ready to Innovate - Meet the scientist\"",
+        "number_of_participants": "12"
+      },
+      {
+        "name_of_the_program": "Seminar - \"Are you ready to Innovate - Meet the scientist\"",
         "date": "12.08.2023",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "5S Concept Implemented Lab Inaguration",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "5S Concept Implemented Lab Inaguration",
         "date": "16.08.2023",
-        "Number of Participants": "45"
-    },
-    {
-        "name of the program": "MSME IDEA PITCHING",
+        "number_of_participants": "45"
+      },
+      {
+        "name_of_the_program": "MSME IDEA PITCHING",
         "date": "26.08.2023",
-        "Number of Participants": "57"
-    },
-    {
-        "name of the program": "Idea Pitching Competition",
+        "number_of_participants": "57"
+      },
+      {
+        "name_of_the_program": "Idea Pitching Competition",
         "date": "05.09.2023",
-        "Number of Participants": "27"
-    },
-    {
-        "name of the program": "Government Funding Schemes for Startup's and MSME's",
+        "number_of_participants": "27"
+      },
+      {
+        "name_of_the_program": "Government Funding Schemes for Startup's and MSME's",
         "date": "27.01.2024",
-        "Number of Participants": "56"
-    },
-    {
-        "name of the program": "Evolutions and Trends in Auto Industries",
+        "number_of_participants": "56"
+      },
+      {
+        "name_of_the_program": "Evolutions and Trends in Auto Industries",
         "date": "29.01.2024",
-        "Number of Participants": "59"
-    },
-    {
-        "name of the program": "Role of Science in Innovation - National Science Day - National Science Day",
+        "number_of_participants": "59"
+      },
+      {
+        "name_of_the_program": "Role of Science in Innovation - National Science Day - National Science Day",
         "date": "28.02.2024",
-        "Number of Participants": "34"
-    },
-    {
-        "name of the program": "Unveiling the Significance and Importants of NPTEL Courses Related to Entrepreneurship, Innovation, Start-up and IPR",
+        "number_of_participants": "34"
+      },
+      {
+        "name_of_the_program": "Unveiling the Significance and Importants of NPTEL Courses Related to Entrepreneurship, Innovation, Start-up and IPR",
         "date": "06.01.2024",
-        "Number of Participants": "35"
-    },
-    {
-        "name of the program": "Unlocking Innovation : The Magic of Multi displinary Collaboration",
+        "number_of_participants": "35"
+      },
+      {
+        "name_of_the_program": "Unlocking Innovation : The Magic of Multi displinary Collaboration",
         "date": "10.10.2023",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Innovation in Mobility : Hybrid in Electric Vehicles with IC engine Expertise",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Innovation in Mobility : Hybrid in Electric Vehicles with IC engine Expertise",
         "date": "15.09.2023",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "The Imperative of Model Based development in the Automotive Industry",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "The Imperative of Model Based development in the Automotive Industry",
         "date": "09.02.2024",
-        "Number of Participants": "35"
-    },
-    {
-        "name of the program": "Entrepreneurship Skill, Attitude and Behaviour Development",
+        "number_of_participants": "35"
+      },
+      {
+        "name_of_the_program": "Entrepreneurship Skill, Attitude and Behaviour Development",
         "date": "10.01.2024",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Innovation Technology Green Buildings",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Innovation Technology Green Buildings",
         "date": "31.01.2024",
-        "Number of Participants": "56"
-    },
-    {
-        "name of the program": "My Story – an Entrepreneur’s Success Story",
+        "number_of_participants": "56"
+      },
+      {
+        "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
         "date": "27.02.2024",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "Organising Innovation and  Entrepreneurship Outreach program",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "Organising Innovation and  Entrepreneurship Outreach program",
         "date": "11.08.2023",
-        "Number of Participants": "67"
-    },
-    {
-        "name of the program": "My Story - Motivational Session by successful innovation",
+        "number_of_participants": "67"
+      },
+      {
+        "name_of_the_program": "My Story - Motivational Session by successful innovation",
         "date": "06.10.2023",
-        "Number of Participants": "59"
-    },
-    {
-        "name of the program": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
+        "number_of_participants": "59"
+      },
+      {
+        "name_of_the_program": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
         "date": "08.02.2024",
-        "Number of Participants": "45"
-    },
-    {
-        "name of the program": "Workshop on Entrepreneurship skill, Attitude & Behaviour Development",
+        "number_of_participants": "45"
+      },
+      {
+        "name_of_the_program": "Workshop on Entrepreneurship skill, Attitude & Behaviour Development",
         "date": "07.02.2024",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Session on Problem solution fit and Product -Market fit",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Session on Problem solution fit and Product -Market fit",
         "date": "20.02.2024",
-        "Number of Participants": "45"
-    },
-    {
-        "name of the program": "Seminar on Entrepreneurship and Innovation",
+        "number_of_participants": "45"
+      },
+      {
+        "name_of_the_program": "Seminar on Entrepreneurship and Innovation",
         "date": "12.02.2024",
-        "Number of Participants": "165"
-    },
-    {
-        "name of the program": "Business model  Presentation",
+        "number_of_participants": "165"
+      },
+      {
+        "name_of_the_program": "Business model  Presentation",
         "date": "17.02.2024",
-        "Number of Participants": "41"
-    },
-    {
-        "name of the program": "Microprocessor and Its Applications in Industry",
+        "number_of_participants": "41"
+      },
+      {
+        "name_of_the_program": "Microprocessor and Its Applications in Industry",
         "date": "17.08.2023",
-        "Number of Participants": "176"
-    },
-    {
-        "name of the program": "Field Exposure visit at Axis Global Automation",
+        "number_of_participants": "176"
+      },
+      {
+        "name_of_the_program": "Field Exposure visit at Axis Global Automation",
         "date": "01.08.2023",
-        "Number of Participants": "177"
-    },
-    {
-        "name of the program": "Business Model Canvass ( BMC)",
+        "number_of_participants": "177"
+      },
+      {
+        "name_of_the_program": "Business Model Canvass ( BMC)",
         "date": "18.08.2023",
-        "Number of Participants": "181"
-    },
-    {
-        "name of the program": "Microwave Amplifier Design and Impedance matching",
+        "number_of_participants": "181"
+      },
+      {
+        "name_of_the_program": "Microwave Amplifier Design and Impedance matching",
         "date": "25.08.2023",
-        "Number of Participants": "172"
-    },
-    {
-        "name of the program": "Design Thinking on Electronic and IoT Product Development",
+        "number_of_participants": "172"
+      },
+      {
+        "name_of_the_program": "Design Thinking on Electronic and IoT Product Development",
         "date": "31.08.2023",
-        "Number of Participants": "180"
-    },
-    {
-        "name of the program": "Session on Motivational Career Guidance Program",
+        "number_of_participants": "180"
+      },
+      {
+        "name_of_the_program": "Session on Motivational Career Guidance Program",
         "date": "28.07.2023",
-        "Number of Participants": "168"
-    },
-    {
-        "name of the program": "Innovative Idea Presentation - Intenal Techfiesta",
+        "number_of_participants": "168"
+      },
+      {
+        "name_of_the_program": "Innovative Idea Presentation - Intenal Techfiesta",
         "date": "15.09.2023",
-        "Number of Participants": "80"
-    },
-    {
-        "name of the program": "Innovative Techniques Of Watershed Segmentation",
+        "number_of_participants": "80"
+      },
+      {
+        "name_of_the_program": "Innovative Techniques Of Watershed Segmentation",
         "date": "22.09.2023",
-        "Number of Participants": "163"
-    },
-    {
-        "name of the program": "IMPLEMENTATION OF INNOVATIVE MACHINE LEARNING AND DEEP LEARNING ALGORITHMS",
+        "number_of_participants": "163"
+      },
+      {
+        "name_of_the_program": "IMPLEMENTATION OF INNOVATIVE MACHINE LEARNING AND DEEP LEARNING ALGORITHMS",
         "date": "29.09.2023",
-        "Number of Participants": "172"
-    },
-    {
-        "name of the program": "Innovative Cellular Technologies- 6G",
+        "number_of_participants": "172"
+      },
+      {
+        "name_of_the_program": "Innovative Cellular Technologies- 6G",
         "date": "04.10.2023",
-        "Number of Participants": "180"
-    },
-    {
-        "name of the program": "IETE Forum'23 - Artificial Intelligence of Things",
+        "number_of_participants": "180"
+      },
+      {
+        "name_of_the_program": "IETE Forum'23 - Artificial Intelligence of Things",
         "date": "06.10.2023",
-        "Number of Participants": "87"
-    },
-    {
-        "name of the program": "Innovative Approaches :  IOT Development and Deployment",
+        "number_of_participants": "87"
+      },
+      {
+        "name_of_the_program": "Innovative Approaches :  IOT Development and Deployment",
         "date": "17.10.2023",
-        "Number of Participants": "162"
-    },
-    {
-        "name of the program": "FDP on Software Tools for Engineering Research",
+        "number_of_participants": "162"
+      },
+      {
+        "name_of_the_program": "FDP on Software Tools for Engineering Research",
         "date": "04.12.2023",
-        "Number of Participants": "21"
-    },
-    {
-        "name of the program": "Innovative Product development using Artificial Intelligence in IoT",
+        "number_of_participants": "21"
+      },
+      {
+        "name_of_the_program": "Innovative Product development using Artificial Intelligence in IoT",
         "date": "25.01.2024",
-        "Number of Participants": ""
-    },
-    {
-        "name of the program": "FDP - MENTORING PROJECTS FOR IMPACT",
+        "number_of_participants": ""
+      },
+      {
+        "name_of_the_program": "FDP - MENTORING PROJECTS FOR IMPACT",
         "date": "12.02.2024",
-        "Number of Participants": "39"
-    },
-    {
-        "name of the program": "Process of Innovation Development,  Technology Readiness Level (TRL) & Tech-Transfer",
+        "number_of_participants": "39"
+      },
+      {
+        "name_of_the_program": "Process of Innovation Development,  Technology Readiness Level (TRL) & Tech-Transfer",
         "date": "23.02.2024",
-        "Number of Participants": "122"
-    },
-    {
-        "name of the program": "Seminar –AIML with Azure MLOPs",
+        "number_of_participants": "122"
+      },
+      {
+        "name_of_the_program": "Seminar –AIML with Azure MLOPs",
         "date": "18.08.2023",
-        "Number of Participants": "83"
-    },
-    {
-        "name of the program": "Incubation Visit -IITM Research Park",
+        "number_of_participants": "83"
+      },
+      {
+        "name_of_the_program": "Incubation Visit -IITM Research Park",
         "date": "19.08.2023",
-        "Number of Participants": "52"
-    },
-    {
-        "name of the program": "Hand’s on Workshop on Arduino –Tools and Techniques",
+        "number_of_participants": "52"
+      },
+      {
+        "name_of_the_program": "Hand’s on Workshop on Arduino –Tools and Techniques",
         "date": "31.08.2023",
-        "Number of Participants": "28"
-    },
-    {
-        "name of the program": "Workshop on process of innovation development and Technology Readiness Level(TRL)",
+        "number_of_participants": "28"
+      },
+      {
+        "name_of_the_program": "Workshop on process of innovation development and Technology Readiness Level(TRL)",
         "date": "16.02.2024",
-        "Number of Participants": "57"
-    },
-    {
-        "name of the program": "SIH Internal Hackathon",
+        "number_of_participants": "57"
+      },
+      {
+        "name_of_the_program": "SIH Internal Hackathon",
         "date": "06.10.2023",
-        "Number of Participants": "48"
-    },
-    {
-        "name of the program": "Employee and Employer Career Planning and Management",
+        "number_of_participants": "48"
+      },
+      {
+        "name_of_the_program": "Employee and Employer Career Planning and Management",
         "date": "03.10.2023",
-        "Number of Participants": ""
-    },
-    {
-        "name of the program": "My Story - Journey as an Entrepreneur",
+        "number_of_participants": ""
+      },
+      {
+        "name_of_the_program": "My Story - Journey as an Entrepreneur",
         "date": "25.10.2023",
-        "Number of Participants": "49"
-    },
-    {
-        "name of the program": "Let's Wind the Machine With MagNet - Latest Innovations",
+        "number_of_participants": "49"
+      },
+      {
+        "name_of_the_program": "Let's Wind the Machine With MagNet - Latest Innovations",
         "date": "03.01.2024",
-        "Number of Participants": "20"
-    },
-    {
-        "name of the program": "Innovative Approach to Industrial Circuit Design",
+        "number_of_participants": "20"
+      },
+      {
+        "name_of_the_program": "Innovative Approach to Industrial Circuit Design",
         "date": "03.01.2024",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Faculty interaction with Foreign Professor on recent trends in research and innovation",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Faculty interaction with Foreign Professor on recent trends in research and innovation",
         "date": "24.02.2024",
-        "Number of Participants": "23"
-    },
-    {
-        "name of the program": "Insight in to innovations in Smart Grid Technologies",
+        "number_of_participants": "23"
+      },
+      {
+        "name_of_the_program": "Insight in to innovations in Smart Grid Technologies",
         "date": "24.02.2025",
-        "Number of Participants": "122"
-    },
-    {
-        "name of the program": "Role of YUKTI in innovation",
+        "number_of_participants": "122"
+      },
+      {
+        "name_of_the_program": "Role of YUKTI in innovation",
         "date": "19.10.2023",
-        "Number of Participants": "21"
-    },
-    {
-        "name of the program": "Innovation and recent technologies in Transmission and distribution system",
+        "number_of_participants": "21"
+      },
+      {
+        "name_of_the_program": "Innovation and recent technologies in Transmission and distribution system",
         "date": "31.10.2023",
-        "Number of Participants": "164"
-    },
-    {
-        "name of the program": "Tamil Nadu Global Investors Meet 2024",
+        "number_of_participants": "164"
+      },
+      {
+        "name_of_the_program": "Tamil Nadu Global Investors Meet 2024",
         "date": "07.01.2024",
-        "Number of Participants": "160"
-    },
-    {
-        "name of the program": "VEL TECH TBI Visit",
+        "number_of_participants": "160"
+      },
+      {
+        "name_of_the_program": "VEL TECH TBI Visit",
         "date": "12.09.2023",
-        "Number of Participants": "62"
-    },
-    {
-        "name of the program": "Development of Entrepreneurial mindset",
+        "number_of_participants": "62"
+      },
+      {
+        "name_of_the_program": "Development of Entrepreneurial mindset",
         "date": "30.08.2023",
-        "Number of Participants": "61"
-    },
-    {
-        "name of the program": "SIH Internal Hackathon",
+        "number_of_participants": "61"
+      },
+      {
+        "name_of_the_program": "SIH Internal Hackathon",
         "date": "16.10.2023",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Guest Lecture on Design Thinking of Full Stack Development",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on Design Thinking of Full Stack Development",
         "date": "22.02.2024",
-        "Number of Participants": "184"
-    },
-    {
-        "name of the program": "Workshop on “Achieving Problem – Solution Fit and Product – Market Fit”",
+        "number_of_participants": "184"
+      },
+      {
+        "name_of_the_program": "Workshop on “Achieving Problem – Solution Fit and Product – Market Fit”",
         "date": "02.12.2024",
-        "Number of Participants": "45"
-    },
-    {
-        "name of the program": "Mastering Scientific Communication and Patenting in the AI Era",
+        "number_of_participants": "45"
+      },
+      {
+        "name_of_the_program": "Mastering Scientific Communication and Patenting in the AI Era",
         "date": "10.10.2023",
-        "Number of Participants": "79"
-    },
-    {
-        "name of the program": "Unleash Your Innovation",
+        "number_of_participants": "79"
+      },
+      {
+        "name_of_the_program": "Unleash Your Innovation",
         "date": "09.01.2024",
-        "Number of Participants": "70"
-    },
-    {
-        "name of the program": "Workshop on Technical Writing – Research Paper, Patent & Funded Project Proposa",
+        "number_of_participants": "70"
+      },
+      {
+        "name_of_the_program": "Workshop on Technical Writing – Research Paper, Patent & Funded Project Proposa",
         "date": "04.07.2023",
-        "Number of Participants": "51"
-    },
-    {
-        "name of the program": "“Awareness Program on MSME IDEA Hackathon (women) 3.0”",
+        "number_of_participants": "51"
+      },
+      {
+        "name_of_the_program": "“Awareness Program on MSME IDEA Hackathon (women) 3.0”",
         "date": "04.07.2023",
-        "Number of Participants": "72"
-    },
-    {
-        "name of the program": "Workshop on Industry Connect through Updating Software Skills",
+        "number_of_participants": "72"
+      },
+      {
+        "name_of_the_program": "Workshop on Industry Connect through Updating Software Skills",
         "date": "02.08.2023",
-        "Number of Participants": "48"
-    },
-    {
-        "name of the program": "Workshop on \"Integrating AI practices: Exploring innovation and communication models\"",
+        "number_of_participants": "48"
+      },
+      {
+        "name_of_the_program": "Workshop on \"Integrating AI practices: Exploring innovation and communication models\"",
         "date": "27.03.2024",
-        "Number of Participants": "104"
-    },
-    {
-        "name of the program": "Workshop on App Development in Flutter",
+        "number_of_participants": "104"
+      },
+      {
+        "name_of_the_program": "Workshop on App Development in Flutter",
         "date": "13.03.2024",
-        "Number of Participants": "52"
-    },
-    {
-        "name of the program": "Workshop on Unleashing The Power of GenAI on Aws Cloud",
+        "number_of_participants": "52"
+      },
+      {
+        "name_of_the_program": "Workshop on Unleashing The Power of GenAI on Aws Cloud",
         "date": "24.02.2024",
-        "Number of Participants": "94"
-    },
-    {
-        "name of the program": "Workshop on IOT Engineer Training",
+        "number_of_participants": "94"
+      },
+      {
+        "name_of_the_program": "Workshop on IOT Engineer Training",
         "date": "21.02.2024",
-        "Number of Participants": "160"
-    },
-    {
-        "name of the program": "Guest Lecture on Research Application in AI & ML",
+        "number_of_participants": "160"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on Research Application in AI & ML",
         "date": "21.02.2024",
-        "Number of Participants": "80"
-    },
-    {
-        "name of the program": "Seminar on introduction to networking Technologies",
+        "number_of_participants": "80"
+      },
+      {
+        "name_of_the_program": "Seminar on introduction to networking Technologies",
         "date": "11.06.2023",
-        "Number of Participants": "63"
-    },
-    {
-        "name of the program": "Expert talk on Innovation in Memory Architecture & I/O Interface",
+        "number_of_participants": "63"
+      },
+      {
+        "name_of_the_program": "Expert talk on Innovation in Memory Architecture & I/O Interface",
         "date": "11.06.2023",
-        "Number of Participants": "188"
-    },
-    {
-        "name of the program": "Seminar on  Industry Expectations from Engineering Graduates",
+        "number_of_participants": "188"
+      },
+      {
+        "name_of_the_program": "Seminar on  Industry Expectations from Engineering Graduates",
         "date": "10.06.2023",
-        "Number of Participants": "188"
-    },
-    {
-        "name of the program": "Expert talk on Memory and Programmable logic device",
+        "number_of_participants": "188"
+      },
+      {
+        "name_of_the_program": "Expert talk on Memory and Programmable logic device",
         "date": "29.09.2023",
-        "Number of Participants": "181"
-    },
-    {
-        "name of the program": "Guest Lecture on Applications of computer Engineering in Data Analytics and Economics",
+        "number_of_participants": "181"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on Applications of computer Engineering in Data Analytics and Economics",
         "date": "26.09.2023",
-        "Number of Participants": "176"
-    },
-    {
-        "name of the program": "workshop on effective firewall security in networking",
+        "number_of_participants": "176"
+      },
+      {
+        "name_of_the_program": "workshop on effective firewall security in networking",
         "date": "15.09.2023",
-        "Number of Participants": "185"
-    },
-    {
-        "name of the program": "workshop on Data Analytics",
+        "number_of_participants": "185"
+      },
+      {
+        "name_of_the_program": "workshop on Data Analytics",
         "date": "09.08.2023",
-        "Number of Participants": "130"
-    },
-    {
-        "name of the program": "Seminar on Cyber Security",
+        "number_of_participants": "130"
+      },
+      {
+        "name_of_the_program": "Seminar on Cyber Security",
         "date": "28.08.2023",
-        "Number of Participants": "91"
-    },
-    {
-        "name of the program": "Workshop on Front End Framework",
+        "number_of_participants": "91"
+      },
+      {
+        "name_of_the_program": "Workshop on Front End Framework",
         "date": "19.08.2023",
-        "Number of Participants": "185"
-    },
-    {
-        "name of the program": "workshop on Full stack development",
+        "number_of_participants": "185"
+      },
+      {
+        "name_of_the_program": "workshop on Full stack development",
         "date": "19.08.2023",
-        "Number of Participants": "133"
-    },
-    {
-        "name of the program": "workshop on embedded system using python",
+        "number_of_participants": "133"
+      },
+      {
+        "name_of_the_program": "workshop on embedded system using python",
         "date": "08.12.2023",
-        "Number of Participants": "185"
-    },
-    {
-        "name of the program": "Workshop on Angular J S",
+        "number_of_participants": "185"
+      },
+      {
+        "name_of_the_program": "Workshop on Angular J S",
         "date": "08.12.2023",
-        "Number of Participants": "185"
-    },
-    {
-        "name of the program": "Advanced Communication Systems using Artificial Intelligence",
+        "number_of_participants": "185"
+      },
+      {
+        "name_of_the_program": "Advanced Communication Systems using Artificial Intelligence",
         "date": "10.09.2023",
-        "Number of Participants": "181"
-    },
-    {
-        "name of the program": "Unicast Routing Algorithm and Protocols in Network Layer",
+        "number_of_participants": "181"
+      },
+      {
+        "name_of_the_program": "Unicast Routing Algorithm and Protocols in Network Layer",
         "date": "03.04.2024",
-        "Number of Participants": "177"
-    },
-    {
-        "name of the program": "Overview on Baseband Communication",
+        "number_of_participants": "177"
+      },
+      {
+        "name_of_the_program": "Overview on Baseband Communication",
         "date": "03.06.2024",
-        "Number of Participants": "181"
-    },
-    {
-        "name of the program": "Guest lecture on memory management in computer architecture",
+        "number_of_participants": "181"
+      },
+      {
+        "name_of_the_program": "Guest lecture on memory management in computer architecture",
         "date": "11.06.2023",
-        "Number of Participants": "122"
-    },
-    {
-        "name of the program": "Hands- On Workshop On Deep Learning",
+        "number_of_participants": "122"
+      },
+      {
+        "name_of_the_program": "Hands- On Workshop On Deep Learning",
         "date": "10.06.2023",
-        "Number of Participants": "53"
-    },
-    {
-        "name of the program": "Hands on training-Big data processing : Hadoop",
+        "number_of_participants": "53"
+      },
+      {
+        "name_of_the_program": "Hands on training-Big data processing : Hadoop",
         "date": "27.09.2023",
-        "Number of Participants": "53"
-    },
-    {
-        "name of the program": "Workshop on Cloud Enabling Technologies",
+        "number_of_participants": "53"
+      },
+      {
+        "name_of_the_program": "Workshop on Cloud Enabling Technologies",
         "date": "09.05.2023",
-        "Number of Participants": "61"
-    },
-    {
-        "name of the program": "Hands on Workshop on AWS Cloud",
+        "number_of_participants": "61"
+      },
+      {
+        "name_of_the_program": "Hands on Workshop on AWS Cloud",
         "date": "19.08.2023",
-        "Number of Participants": "53"
-    },
-    {
-        "name of the program": "Workshop on \"Innovative Technologies in automotive Safety\"",
+        "number_of_participants": "53"
+      },
+      {
+        "name_of_the_program": "Workshop on \"Innovative Technologies in automotive Safety\"",
         "date": "26.08.2023",
-        "Number of Participants": "44"
-    },
-    {
-        "name of the program": "National level workshop on Drone Development Challenge -DDC2024",
+        "number_of_participants": "44"
+      },
+      {
+        "name_of_the_program": "National level workshop on Drone Development Challenge -DDC2024",
         "date": "17.11.2023",
-        "Number of Participants": "84"
-    },
-    {
-        "name of the program": "Business Model Canva Seminar",
+        "number_of_participants": "84"
+      },
+      {
+        "name_of_the_program": "Business Model Canva Seminar",
         "date": "22.12.2023",
-        "Number of Participants": "54"
-    },
-    {
-        "name of the program": "Recent Innovation in Flow Measurement Systems",
+        "number_of_participants": "54"
+      },
+      {
+        "name_of_the_program": "Recent Innovation in Flow Measurement Systems",
         "date": "21.12.2023",
-        "Number of Participants": "100"
-    }
-],
-                "IIC 0.7":[
-    {
-        "name of the program": "My Story – an Entrepreneur’s Success Story",
+        "number_of_participants": "100"
+      }
+    ]
+  },
+  {
+    "type": "iic7",
+    "data": [
+      {
+        "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
         "date": "03.10.2024",
-        "Number of Participants": "45"
-    },
-    {
-        "name of the program": "My Story – an Entrepreneur’s Success Story",
+        "number_of_participants": "45"
+      },
+      {
+        "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
         "date": "07.10.2024",
-        "Number of Participants": "23"
-    },
-    {
-        "name of the program": "Role of Yukti in Innovation",
+        "number_of_participants": "23"
+      },
+      {
+        "name_of_the_program": "Role of Yukti in Innovation",
         "date": "07.11.2024",
-        "Number of Participants": "23"
-    },
-    {
-        "name of the program": "Idea Presentation",
+        "number_of_participants": "23"
+      },
+      {
+        "name_of_the_program": "Idea Presentation",
         "date": "13.11.2024",
-        "Number of Participants": "23"
-    },
-    {
-        "name of the program": "Guest Lecture on \"Innovation and Entrepreneurship: A Pathway to Career Success\"",
+        "number_of_participants": "23"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on \"Innovation and Entrepreneurship: A Pathway to Career Success\"",
         "date": "28.11.2024",
-        "Number of Participants": "65"
-    },
-    {
-        "name of the program": "Special Lecture On \"Home: The Incubator For Innovative Ideas\"",
+        "number_of_participants": "65"
+      },
+      {
+        "name_of_the_program": "Special Lecture On \"Home: The Incubator For Innovative Ideas\"",
         "date": "29.11.2024",
-        "Number of Participants": "63"
-    },
-    {
-        "name of the program": "Poster Presentation",
+        "number_of_participants": "63"
+      },
+      {
+        "name_of_the_program": "Poster Presentation",
         "date": "06.12.2024",
-        "Number of Participants": "90"
-    },
-    {
-        "name of the program": "Quiz Quest- Battle of Brain",
+        "number_of_participants": "90"
+      },
+      {
+        "name_of_the_program": "Quiz Quest- Battle of Brain",
         "date": "09.12.2024",
-        "Number of Participants": "35"
-    },
-    {
-        "name of the program": "MODEL EXPO",
+        "number_of_participants": "35"
+      },
+      {
+        "name_of_the_program": "MODEL EXPO",
         "date": "11.01.2025",
-        "Number of Participants": "40"
-    },
-    {
-        "name of the program": "TECHNOLOGIC",
+        "number_of_participants": "40"
+      },
+      {
+        "name_of_the_program": "TECHNOLOGIC",
         "date": "06.12.2025",
-        "Number of Participants": "38"
-    },
-    {
-        "name of the program": "Basics of Intellectual Property Rights and its Importance for Innovators and Entrepreneurs",
+        "number_of_participants": "38"
+      },
+      {
+        "name_of_the_program": "Basics of Intellectual Property Rights and its Importance for Innovators and Entrepreneurs",
         "date": "27.11.2024",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "Role of Yukti in Innovation",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "Role of Yukti in Innovation",
         "date": "20.11.2024",
-        "Number of Participants": "30"
-    },
-    {
-        "name of the program": "EXPERIMENTAL LEARNING THROUGH HANDS-ON CODING IN JAVA PROGRAMMING TECHNIQUES",
+        "number_of_participants": "30"
+      },
+      {
+        "name_of_the_program": "EXPERIMENTAL LEARNING THROUGH HANDS-ON CODING IN JAVA PROGRAMMING TECHNIQUES",
         "date": "24.09.2024",
-        "Number of Participants": "182"
-    },
-    {
-        "name of the program": "Hands-on Workshop on KNIME Tool- Driving Innovation",
+        "number_of_participants": "182"
+      },
+      {
+        "name_of_the_program": "Hands-on Workshop on KNIME Tool- Driving Innovation",
         "date": "01.02.2025",
-        "Number of Participants": "99"
-    },
-    {
-        "name of the program": "Prototyping and Testing for Electronics UI UX Design",
+        "number_of_participants": "99"
+      },
+      {
+        "name_of_the_program": "Prototyping and Testing for Electronics UI UX Design",
         "date": "03.02.2025",
-        "Number of Participants": "155"
-    },
-    {
-        "name of the program": "Field Visits at Regional Metrological Center: AWS Problem identification",
+        "number_of_participants": "155"
+      },
+      {
+        "name_of_the_program": "Field Visits at Regional Metrological Center: AWS Problem identification",
         "date": "04.02.2025",
-        "Number of Participants": "178"
-    },
-    {
-        "name of the program": "Innovation in Wireless Technology",
+        "number_of_participants": "178"
+      },
+      {
+        "name_of_the_program": "Innovation in Wireless Technology",
         "date": "14.02.2025",
-        "Number of Participants": "155"
-    },
-    {
-        "name of the program": "Field visit to ISRO",
+        "number_of_participants": "155"
+      },
+      {
+        "name_of_the_program": "Field visit to ISRO",
         "date": "04.02.2025",
-        "Number of Participants": "64"
-    },
-    {
-        "name of the program": "Full-Stack Microservices Bootcamp",
+        "number_of_participants": "64"
+      },
+      {
+        "name_of_the_program": "Full-Stack Microservices Bootcamp",
         "date": "20.02.2025",
-        "Number of Participants": "125"
-    },
-    {
-        "name of the program": "Introduction to Design Patent Drafting",
+        "number_of_participants": "125"
+      },
+      {
+        "name_of_the_program": "Introduction to Design Patent Drafting",
         "date": "27.08.2024",
-        "Number of Participants": "15"
-    },
-    {
-        "name of the program": "Innovation & Enterprise :An Industrial Site Exploration to Students - Field Visit Western Thomson Group Pvt Ltd",
+        "number_of_participants": "15"
+      },
+      {
+        "name_of_the_program": "Innovation & Enterprise :An Industrial Site Exploration to Students - Field Visit Western Thomson Group Pvt Ltd",
         "date": "23.09.2024",
-        "Number of Participants": "32"
-    },
-    {
-        "name of the program": "A Startup Perspective for Young Innovators - Field Visit to Hatsun Agro Product Limited",
+        "number_of_participants": "32"
+      },
+      {
+        "name_of_the_program": "A Startup Perspective for Young Innovators - Field Visit to Hatsun Agro Product Limited",
         "date": "06.02.2025",
-        "Number of Participants": "61"
-    },
-    {
-        "name of the program": "Innovation and Modern tool usage :industrial Site Exploration to Students – Field Visit NCTPC",
+        "number_of_participants": "61"
+      },
+      {
+        "name_of_the_program": "Innovation and Modern tool usage :industrial Site Exploration to Students – Field Visit NCTPC",
         "date": "26.02.2025",
-        "Number of Participants": "59"
-    },
-    {
-        "name of the program": "Innovation in partial discharge testing for high voltage insulation integrity",
+        "number_of_participants": "59"
+      },
+      {
+        "name_of_the_program": "Innovation in partial discharge testing for high voltage insulation integrity",
         "date": "26.02.2025",
-        "Number of Participants": "117"
-    },
-    {
-        "name of the program": "My Story – an Entrepreneur’s Success Story",
+        "number_of_participants": "117"
+      },
+      {
+        "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
         "date": "14.09.2024",
-        "Number of Participants": "31"
-    },
-    {
-        "name of the program": "Exposure Visit to Umagine TN 2025",
+        "number_of_participants": "31"
+      },
+      {
+        "name_of_the_program": "Exposure Visit to Umagine TN 2025",
         "date": "10.01.2025",
-        "Number of Participants": "53"
-    },
-    {
-        "name of the program": "Guest Lecture on \"Innovation and Entrepreneurship opportunities in AI and ML\"",
+        "number_of_participants": "53"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on \"Innovation and Entrepreneurship opportunities in AI and ML\"",
         "date": "14.09.2024",
-        "Number of Participants": "31"
-    },
-    {
-        "name of the program": "Creative Project Ideas to Explore",
+        "number_of_participants": "31"
+      },
+      {
+        "name_of_the_program": "Creative Project Ideas to Explore",
         "date": "30.01.2025",
-        "Number of Participants": "57"
-    },
-    {
-        "name of the program": "Guest Lecture on \"Role of YUKTI in Innovation\"",
+        "number_of_participants": "57"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on \"Role of YUKTI in Innovation\"",
         "date": "17.02.2025",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Guest Lecture on \"Role of YUKTI NIR in Innovation\"",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Guest Lecture on \"Role of YUKTI NIR in Innovation\"",
         "date": "12.02.2025",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Workshop in INNOVATION and ENTREPRENEURSHIP",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Workshop in INNOVATION and ENTREPRENEURSHIP",
         "date": "14.02.2025",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Workshop in INNOVATION in CYBER SECURITY APPLICATIONS",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Workshop in INNOVATION in CYBER SECURITY APPLICATIONS",
         "date": "21.02.2025",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Field visit to RETECH",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Field visit to RETECH",
         "date": "20.10.2024",
-        "Number of Participants": "60"
-    },
-    {
-        "name of the program": "Autodesk – India Design Week Day 1 Workshop",
+        "number_of_participants": "60"
+      },
+      {
+        "name_of_the_program": "Autodesk – India Design Week Day 1 Workshop",
         "date": "08.01.2025",
-        "Number of Participants": "80"
-    },
-    {
-        "name of the program": "Teen Blogathon: Express, Engage, Elevate! - A Blog Writing Competition",
+        "number_of_participants": "80"
+      },
+      {
+        "name_of_the_program": "Teen Blogathon: Express, Engage, Elevate! - A Blog Writing Competition",
         "date": "24.02.2025",
-        "Number of Participants": "37"
-    },
-    {
-        "name of the program": "Organizing Innovation & Entrepreneurship Outreach Program",
+        "number_of_participants": "37"
+      },
+      {
+        "name_of_the_program": "Organizing Innovation & Entrepreneurship Outreach Program",
         "date": "18.02.2025",
-        "Number of Participants": "60"
-    }
-]
-},
-        
-    "gallery":
-        {
-        "image path":[
-                    "/static/images/iic/gallery/Incubation 1.webp",
-                    "/static/images/iic/galley/Incubation 2.webp",
-                    "/static/images/iic/gallery/Incubation 3.webp",
-                    "/static/images/iic/gallery/Incubation 4.webp",
-                    "/static/images/iic/gallery/Incubation 5.webp"  
-              ] 
-        },
-     
-  
-        "kapila_bar":
-            {
-                "KAPILA SCHEME DOCUMENT":"/static/pdfs/iic/kapila/kapila Scheme document.pdf",
-                "KAPILA MINUTES":"/static/pdfs/iic/kapila/Committee meeting Minutes.pdf",
-                "KAPILA STATEMENT OF EXPENDITURE":"/static/pdfs/iic/kapila/Statement of Expenditure.pdf"
-                
-            },
-        "mentee":[
-             {
+        "number_of_participants": "60"
+      }
+    ]
+  },
+  {
+    "type": "kapila",
+    "data": [
+      {
+        "name": "KAPILA SCHEME DOCUMENT",
+        "pdf_path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+      },
+      {
+        "name": "KAPILA MINUTES",
+        "pdf_path": "/static/pdfs/iic/kapila/Committee meeting Minutes.pdf"
+      },
+      {
+        "name": "KAPILA STATEMENT OF EXPENDITURE",
+        "pdf_path": "/static/pdfs/iic/kapila/Statement of Expenditure.pdf"
+      }
+    ]
+  },
+  {
+    "type": "mentee",
+    "data": [
+      {
         "mentee_institute": "Soka Ikeda College of Arts And Science For Women",
         "State": "Tamil Nadu",
         "Zone": "Southern/SRO"
-    },
-    {
+      },
+      {
         "mentee_institute": "National College of Pharmacy",
         "State": "Kerala",
         "Zone": "South-West/SWRO"
-    },
-    {
+      },
+      {
         "mentee_institute": "Siuhgad Technical Education Societvs Siuhgad College of Engineering",
         "State": "Maharashtra",
         "Zone": "Western/WRO"
-    },
-    {
+      },
+      {
         "mentee_institute": "Mahaguru Institute of Technology",
         "State": "Kerala",
         "Zone": "South-West/SWRO"
-    },
-    {
+      },
+      {
         "mentee_institute": "Syed Ammal Engineering College",
         "State": "Tamil Nadu",
         "Zone": "Southern/SRO"
-    }
-        ],
-
-        "yukti":{
-            
-    "Registration Statistics": {
-      "name": [
-        "Total Individuals Registered",
-        "Total Ideas Submitted",
-        "Total Innovation Submitted",
-        "Total Startup Submitted"
-       
-      ],
-      "count": [
-        2270,
-        369,
-        412,
-        14
-        
-      ]
-    },
-    "Innovation Metrics": {
-      "name": [
-        "Patents Filed",
-        "Startups Incubated",
-        "Research Publications",
-        "Industry Collaborations",
-        "Funding Received",
-        "Mentorship Hours"
-      ],
-      "count": [
-        45,
-        32,
-        156,
-        28,
-        "₹2.5Cr",
-        1200
-      ]
-    },
-    "Impact Assessment": {
-      "name": [
-        "Student Participation",
-        "Faculty Involvement",
-        "Success Rate",
-        "Industry Adoption",
-        "Community Impact",
-        "Overall Rating"
-      ],
-      "count": [
-        "85%",
-        "92%",
-        "78%",
-        "45%",
-        "High",
-        "4.8/5"
-      ]
-    }
+      }
+    ]
   },
-  
-    
-        "certificate":
-            {
-                "names":[
-                    "2023-2024",
-                    "2022-2023",
-                    "2021-2022"
-                ],
-                "image_path":[
-                    "/static/images/iic/certificate/1.webp",
-                    "/static/images/iic/certificate/2.webp",
-                    "/static/images/iic/certificate/3.webp"
-                ]
-            },
-            "policy": {
-                "name": [
-                "National Innovation Startup Policy",
-                "Tamilnadu Innovation and Startup Policy",
-                "TNMSME Policy",
-                "Velammal Innovation and Startup Policy"
-                ],
-                "pdf_path":[
-                    "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf",
-                    "/static/pdfs/iic/policy/Tamilnadu-Innovation-and-Startup-Policy.pdf",
-                    "/static/pdfs/iic/policy/TNMSMEpolicy.pdf",
-                    "/static/pdfs/iic/policy/Velammal-Innovation-and-Startup-Policy.pdf"
-                ]
-            },
-
-        
-
-        "contact":
-            {
-              "name": "Mr.M.Yuvaraj",
-              "designation": "IIC Convener",
-              "phone": 9750426069,
-              "gmail": "iic@velammal.ed.in"
-
-            }
-        
-    }
-
+  {
+    "type": "yukti",
+    "data": [
+      {
+        "category": "registration_statistics",
+        "content": [
+          {
+            "name": "Total Individuals Registered",
+            "count": "2270"
+          },
+          {
+            "name": "Total Ideas Submitted",
+            "count": "369"
+          },
+          {
+            "name": "Total Innovation Submitted",
+            "count": "412"
+          },
+          {
+            "name": "Total Startup Submitted",
+            "count": "14"
+          }
+        ]
+      },
+      {
+        "category": "innovation_metrics",
+        "content": [
+          { "name": "Patents Filed", "count": 45 },
+          { "name": "Startups Incubated", "count": 32 },
+          { "name": "Research Publications", "count": 156 },
+          { "name": "Industry Collaborations", "count": 28 },
+          { "name": "Funding Received", "count": "₹2.5Cr" },
+          { "name": "Mentorship Hours", "count": 1200 }
+        ]
+      },
+      {
+        "category": "impact_assessment",
+        "content": [
+          { "name": "Student Participation", "count": "85%" },
+          { "name": "Faculty Involvement", "count": "92%" },
+          { "name": "Success Rate", "count": "78%" },
+          { "name": "Industry Adoption", "count": "45%" },
+          { "name": "Community Impact", "count": "High" },
+          { "name": "Overall Rating", "count": "4.8/5" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "certificate",
+    "data": [
+      {
+        "year": "2023-2024",
+        "image_path": "/static/images/iic/certificate/1.webp"
+      },
+      {
+        "year": "2022-2023",
+        "image_path": "/static/images/iic/certificate/2.webp"
+      },
+      {
+        "year": "2021-2022",
+        "image_path": "/static/images/iic/certificate/3.webp"
+      }
+    ]
+  },
+  {
+    "type": "policy",
+    "data": [
+      {
+        "name": "National Innovation Startup Policy",
+        "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+      },
+      {
+        "name": "Tamilnadu Innovation and Startup Policy",
+        "path": "/static/pdfs/iic/policy/Tamilnadu-Innovation-and-Startup-Policy.pdf"
+      },
+      {
+        "name": "TNMSME Policy",
+        "path": "/static/pdfs/iic/policy/TNMSMEpolicy.pdf"
+      },
+      {
+        "name": "Velammal Innovation and Startup Policy",
+        "path": "/static/pdfs/iic/policy/Velammal-Innovation-and-Startup-Policy.pdf"
+      }
+    ]
+  },
+  {
+    "type": "contact",
+    "data": [
+      {
+        "name": "Mr.M.Yuvaraj",
+        "designation": "IIC Convener",
+        "phone": 9750426069,
+        "gmail": "iic@velammal.ed.in"
+      }
+    ]
+  }
 ]

@@ -24,25 +24,24 @@ const ALLOWED_ACCREDITATION_TYPES = [
   'nirf'
 ];
 
-async function getiic(req, res) {
-    const db = getDb();
-    const collection = db.collection('iic');
-    
-    try {
-        
-        const data = await collection.findOne({}); 
-
-        if (!data) {
-            return res.status(404).json({ message: "No data found" });
-        }
-
-        return res.status(200).json(data); 
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        await logError(req, error, 'Error in iic data', 500);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-}
+const ALLOWED_IIC_TYPES = [
+  'home', 
+  'establishment',
+  'faculty',
+  'expert_representation',
+  'student_representation',
+  'iic3',
+  'iic4',
+  'iic5',
+  'iic6',
+  'iic7',
+  'kapila',
+  'mentee',
+  'yukti',
+  'certificate',
+  'policy',
+  'contact'
+];
 
 async function getIqacSection(req, res) {
   try {
@@ -106,6 +105,39 @@ async function getAccreditationSection(req, res) {
   } catch (error) {
     console.error('Error fetching accreditation section:', error);
     await logError(req, error, 'Error fetching accreditation section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getIicSection(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_IIC_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IIC section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('iic');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching IIC section:', error);
+    await logError(req, error, 'Error fetching IIC section', 500);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
@@ -180,10 +212,9 @@ async function iicApplyForm (req, res) {
 }
 
 module.exports = {
-    getiic,
+    getIicSection,
     getIqacSection,
     getECell,
     iicApplyForm,
-    getIqacSection,
     getAccreditationSection
 }
