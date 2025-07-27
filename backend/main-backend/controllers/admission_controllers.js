@@ -26,7 +26,7 @@ async function getAdmissionsSection(req, res) {
 
     const document = await collection.findOne(
       { type },
-      { projection: { _id: 0, type: 1, year: 1, data: 1 } }
+      { projection: { _id: 0, type: 1, data: 1 } }
     );
 
     if (!document) {

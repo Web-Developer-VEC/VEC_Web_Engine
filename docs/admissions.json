@@ -1,8 +1,8 @@
 [
   {
     "type": "ug",
-    "year": "2024-2025",
     "data": {
+      "year": "2024-2025",
       "UG": [
         {
           "B.E Automobile Engineering": {
@@ -146,8 +146,8 @@
   },
   {
     "type": "pg",
-    "year": "2024-2025",
     "data": {
+      "year": "2024-2025",
       "PG": [
         {
           "M.E Computer Science & Engineering": {
@@ -168,8 +168,8 @@
   },
   {
     "type": "mba",
-    "year": "2024-2025",
     "data": {
+      "year": "2024-2025",
       "MBA": {
         "Government Quota Intakes": "60",
         "Management Quota Intakes": "60",
@@ -180,7 +180,6 @@
   },
   {
     "type": "admission_team",
-    "year": "2024-2025",
     "data": [
       {
         "name": "Mrs. SHEEBA K",
@@ -211,8 +210,8 @@
   },
   {
     "type": "phd",
-    "year": "2024-2025",
     "data": {
+      "year": "2024-2025",
       "link": "https://cfr.annauniv.edu/research/academics/index.php"
     }
   }

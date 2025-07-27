@@ -94,7 +94,6 @@ def insert_admissions_sections():
             section_key = section["type"]
             document = {
                 "type": section_key,
-                "year": section["year"],
                 "data": section["data"]
             }
             collection.insert_one(document)
