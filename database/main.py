@@ -614,28 +614,6 @@ def insert_banners():
 
     print("Banner documents inserted successfully.\n")
 
-def insert_NBA_data():
-    collection = db['nba']
-    with open("/VEC_WEB_Engine/docs/nba.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("NBA documents inserted successfully.\n")
-
-def insert_naac_data():
-    collection = db['naac']
-    with open("/VEC_WEB_Engine/docs/naac.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NAAC documents inserted successfully.\n")
-
-def insert_nirf_data():
-    collection = db['nirf']
-    with open("/VEC_WEB_Engine/docs/nirf.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NIRF documents inserted successfully.\n")
-
 def insert_sidebar_details():
     collection= db['sidebar']
     with open ("/VEC_WEB_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
@@ -738,6 +716,23 @@ def insert_iqac_sections():
 
     print("iqac sections inserted successfully.")
 
+def insert_accreditations_and_ranking_sections():
+    collection = db["accreditations_and_ranking"]
+
+    with open("/VEC_WEB_Engine/docs/accreditations_and_ranking.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("accreditations and ranking sections inserted successfully.")
+
+insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
 insert_placement_sections()
 insert_exams_sections()
@@ -751,9 +746,6 @@ insert_events_data()
 insert_announcements_data()
 insert_special_announcements()
 insert_banners()
-insert_NBA_data()
-insert_naac_data()
-insert_nirf_data()
 insert_sidebar_details()
 insert_iic_details()
 insert_dept_activities_details()

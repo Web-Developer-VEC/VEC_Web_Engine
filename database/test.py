@@ -164,7 +164,24 @@ def insert_iqac_sections():
 
     print("iqac sections inserted successfully.")
 
-insert_iqac_sections()
+def insert_accreditations_and_ranking_sections():
+    collection = db["accreditations_and_ranking"]
+
+    with open("/VEC_WEB_Engine/docs/accreditations_and_ranking.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("accreditations and ranking sections inserted successfully.")
+
+insert_accreditations_and_ranking_sections()
+#insert_iqac_sections()
 #insert_library_sections()
 #insert_placement_sections()
 #insert_exams_sections()

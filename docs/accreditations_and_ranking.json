@@ -1,0 +1,282 @@
+[
+  {
+    "type": "naac",
+    "data": [
+      {
+        "title": "Self Study Reports",
+        "content": [
+          {
+            "name": "Cycle 1 SSR",
+            "pdfs_path": "/static/pdfs/naac/ssr_1.pdf"
+          },
+          {
+            "name": "Cycle 2 SSR",
+            "pdfs_path": "/static/pdfs/naac/ssr_2.pdf"
+          }
+        ]
+      },
+      {
+        "title": "Certificates",
+        "content": [
+          {
+            "name": "Cycle 1 - 2009-2014",
+            "pdfs_path": "/static/pdfs/naac/cycle1_2009-2014.pdf"
+          },
+          {
+            "name": "Cycle 2 - 2016-2021",
+            "pdfs_path": "/static/pdfs/naac/cycle2_2016-2021.pdf"
+          },
+          {
+            "name": "Extended Cycle 2 (2018-2024)",
+            "pdfs_path": "/static/pdfs/naac/extended_cycle2_2018-2024.pdf"
+          },
+          {
+            "name": "Extended Cycle 2 January 2025 till date",
+            "pdfs_path": "/static/pdfs/naac/extended_cycle2_Jan-2025.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "nba",
+    "data": [
+      {
+        "id": 1,
+        "department": "B.E. Civil Engineering",
+        "pdfs": [
+          {
+            "name": "2021-2022",
+            "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "department": "B.E. Computer Science and Engineering",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "department": "B.E. Electrical and Electronics Engineering",
+        "pdfs": [
+          {
+            "name": "2021-2022",
+            "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "department": "B.E. Electronics and Communication Engineering",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "department": "B.E. Electrical and Electronics Engineering",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "department": "B.Tech. Information Technology",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "department": "B.E. Mechanical Engineering",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+          },
+          {
+            "name": "2022-2023 to 2024-2025",
+            "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "department": "B.E Automobile Engineering",
+        "pdfs": [
+          {
+            "name": "2019-2020 to 2021-2022",
+            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "nirf",
+    "data": [
+      {
+        "category": "NIRF 2017",
+        "year": "2017",
+        "content": [
+          {
+            "name": "Engineering",
+            "pdf_path": ""
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2018",
+        "year": "2018",
+        "content": [
+          {
+            "name": "Engineering",
+            "pdf_path": ""
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2019",
+        "year": "2019",
+        "content": [
+          {
+            "name": "Engineering",
+            "pdf_path": ""
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2020",
+        "year": "2020",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2020.pdf"
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2021",
+        "year": "2021",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2021.pdf"
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2022",
+        "year": "2022",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2022.pdf"
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2023",
+        "year": "2023",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2023-Overall.pdf"
+          },
+          {
+            "name": "Engineering",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2023-Engineering.pdf"
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2024",
+        "year": "2024",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2024-Overall.pdf"
+          },
+          {
+            "name": "Engineering",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2024-Engineering.pdf"
+          },
+          {
+            "name": "Innovation",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2024-Innovation.pdf"
+          }
+        ]
+      },
+      {
+        "category": "NIRF 2025",
+        "year": "2025",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2025-Overall.pdf"
+          },
+          {
+            "name": "Engineering",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2025-Engineering.pdf"
+          },
+          {
+            "name": "Innovation",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2025-Innovation.pdf"
+          },
+          {
+            "name": "STG",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2025-STG.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "qs_rating",
+    "data": [
+      {
+        "pdf_path": "/static/pdfs/qs+rating/QS+I-GAUGE+-+VEC+Certificate.pdf",
+        "link": "/static/pdfs/qs+rating/QS+I-GAUGE+-VEC+-+Scorecard.pdf"
+      }
+    ]
+  }
+]

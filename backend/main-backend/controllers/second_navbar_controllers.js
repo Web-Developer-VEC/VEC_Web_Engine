@@ -17,54 +17,12 @@ const ALLOWED_IQAC_TYPES = [
   'iso_certificate'
 ];
 
-async function getNirf (req, res) {
-    const db = getDb();
-    const collection = db.collection('nirf');
-    try {
-        const NIRFData = await collection.find({}).toArray();
-        if (NIRFData.length === 0) {
-            return res.status(404).json({ message: 'No NIRF data found' });
-        }
-        res.status(200).json(NIRFData);
-    } catch (error) {
-        console.error('Error fetching NIRF data:', error);
-        await logError(req, error, 'Error in nirf data', 500);
-        res.status(500).json({ error: 'Error fetching NIRF data' });
-    }
-}
-
-async function getNaac (req, res) {
-    const db = getDb();
-    const collection = db.collection('naac');
-    try {
-        const NAACData = await collection.find({}).toArray();
-        if (NAACData.length === 0) {
-            return res.status(404).json({ message: 'No NAAC data found' });
-        }
-        res.status(200).json(NAACData);
-    } catch (error) {
-        console.error('Error fetching NAAC data:', error);
-        await logError(req, error, 'Error in naac data', 500);
-        res.status(500).json({ error: 'Error fetching NAAC data' });
-    }
-}
-
-async function getNba (req, res) {
-    const db = getDb();
-    const collection = db.collection('nba');
-
-    try {
-        const nba = await collection.find({}).toArray();
-        if (nba.length === 0) {
-            return res.status(404).json({ message: 'No nba data found' });
-        }
-        res.status(200).json(nba);
-    } catch (error) {
-        console.error('Error fetching alumni data:', error);
-        await logError(req, error, 'Error in nba data', 500);
-        res.status(500).json({ error: 'Error fetching nba data' });
-    }
-}
+const ALLOWED_ACCREDITATION_TYPES = [
+  'naac',
+  'nba',
+  'qs_rating',
+  'nirf'
+];
 
 async function getiic(req, res) {
     const db = getDb();
@@ -119,8 +77,38 @@ async function getIqacSection(req, res) {
   }
 }
 
-module.exports = { getIqacSection };
+async function getAccreditationSection(req, res) {
+  try {
+    const { type } = req.body;
 
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_ACCREDITATION_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid accreditation/ranking section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('accreditations_and_ranking');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching accreditation section:', error);
+    await logError(req, error, 'Error fetching accreditation section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 async function getECell (req, res) {
     const db = getDb();
@@ -192,11 +180,10 @@ async function iicApplyForm (req, res) {
 }
 
 module.exports = {
-    getNaac,
-    getNba,
-    getNirf,
     getiic,
     getIqacSection,
     getECell,
-    iicApplyForm
+    iicApplyForm,
+    getIqacSection,
+    getAccreditationSection
 }
