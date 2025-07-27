@@ -81,7 +81,7 @@ const Handbook = ({ theme, toggle }) => {
       />
 
       <div className="flex flex-col items-center my-12 px-4">
-        <h2 className="text-3xl font-semibold mb-8 text-brwn dark:text-drkt">
+        <h2 className="text-[32px] font-semibold mb-8 text-brwn dark:text-drkt">
           Handbook
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
