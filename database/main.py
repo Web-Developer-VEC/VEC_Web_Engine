@@ -873,14 +873,21 @@ def insert_sports_data():
 
     print("Sports data inserted successfully.\n")
 
-
-def insert_library_data():
+def insert_library_sections():
     collection = db["library"]
-    with open("/VEC_WEB_Engine/docs/library.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
 
-    print("Library data inserted successfully.\n")
+    with open("/VEC_WEB_Engine/docs/library.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("library sections inserted successfully.")
 
 def insert_nss_data():
     collection = db["nss_data"]
@@ -1060,7 +1067,7 @@ def insert_web_team():
 
 insert_administration_sections()
 insert_sports_data()
-insert_library_data()
+insert_library_sections()
 insert_nss_data()
 insert_yrc_data()
 insert_department_research_data()
