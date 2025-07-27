@@ -1,41 +1,44 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getPlacementTeam (req, res) {
-    const db = getDb();
-    const collection = db.collection('placement_team');
+const ALLOWED_PLACEMENT_TYPES = [
+  'about_placement',
+  'placement_team',
+  'placement_details',
+  'alumini'
+];
 
-    try {
-        const placementTeam = await collection.find({}).toArray();
-        if (placementTeam.length === 0) {
-            return res.status(404).json({ message: 'No placement team data found' });
-        }
-        res.status(200).json(placementTeam);
-    } catch (error) {
-        console.error('Error fetching placement team data:', error);
-        await logError(req, error, 'Error in placement team', 500);
-        res.status(500).json({ error: 'Error fetching placement team data' });
+async function getPlacementsSection(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
     }
-}
 
-async function getPlacementData (req, res) {
-    const db = getDb();
-    const collection = db.collection('placements_data');
-
-    try {
-        const placements_data = await collection.find({}).toArray();
-        if (placements_data.length === 0) {
-            return res.status(404).json({ message: 'No placements data found' });
-        }
-        res.status(200).json(placements_data);
-    } catch (error) {
-        console.error('Error fetching placements data:', error);
-        await logError(req, error, 'Error in placements data', 500);
-        res.status(500).json({ error: 'Error fetching placements data' });
+    if (!ALLOWED_PLACEMENT_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid placement section` });
     }
+
+    const db = getDb();
+    const collection = db.collection('placement');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching placement section:', error);
+    await logError(req, error, 'Error fetching placement section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
-module.exports = {
-    getPlacementData,
-    getPlacementTeam
-}
+module.exports = { getPlacementsSection };

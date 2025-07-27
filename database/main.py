@@ -606,23 +606,6 @@ def insert_announcements_data():
 
     print("Announcements documents inserted successfully.\n")
 
-def placement_team():
-    collection = db["placement_team"]
-    with open('/VEC_WEB_Engine/docs/placement_members.json', 'r',encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print(f"Placement Team Details Inserted\n")
-
-def insert_placement_data():
-
-    collection = db['placements_data']  
-    with open("/VEC_WEB_Engine/docs/placements_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("placement documents inserted successfully.\n")
-
 def insert_banners():
     collection = db['banner']  
     with open("/VEC_WEB_Engine/docs/banner.json", "r",encoding="utf-8") as file:
@@ -723,6 +706,23 @@ def insert_exams_sections():
 
     print("Exam sections inserted successfully.")
 
+def insert_placement_sections():
+    collection = db["placement"]
+
+    with open("/VEC_WEB_Engine/docs/placement.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("placement sections inserted successfully.")
+
+insert_placement_sections()
 insert_exams_sections()
 insert_department_data()
 insert_hod_datas()
@@ -733,8 +733,6 @@ insert_MOUs_data()
 insert_events_data()
 insert_announcements_data()
 insert_special_announcements()
-placement_team()
-insert_placement_data()
 insert_banners()
 insert_NBA_data()
 insert_naac_data()
@@ -935,24 +933,6 @@ def insert_iqac_data():
     
     print("Inserted IQAC data successfully.\n")
 
-
-def insert_alumni_data():
-    collection = db['alumni']
-    with open("/VEC_WEB_Engine/docs/alumni.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted Alumni data. \n")
-
-def insert_about_placement():
-
-    collection = db['about_placement']  
-    with open("/VEC_WEB_Engine/docs/about_placement.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("about placement inserted successfully.")
-
 def insert_about_us():
     collection = db['about_us']
 
@@ -1088,10 +1068,8 @@ insert_warden_hostel_data()
 insert_incubation_data()
 insert_army_data()
 insert_navy_data()
-insert_alumni_data()
 insert_iqac_data()
 insert_academic_calendar()
-insert_about_placement()
 insert_about_us()
 insert_hostel_menu()
 insert_help_desk()

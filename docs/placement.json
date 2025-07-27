@@ -1,0 +1,351 @@
+[
+  {
+    "type": "about_placement",
+    "data": {
+      "Training & Placement Department": [
+        "The Training & Placement Department is committed to bridging the gap between academic learning and industry expectations. Our primary objective is to equip students with the right skills and opportunities to secure engineering jobs and pursue higher education globally.",
+        "Training is seamlessly integrated into the curriculum from the second year onwards, ensuring a structured and progressive learning experience. Our program focuses on technical expertise, equipping students with industry-relevant engineering skills, soft skills and communication, fostering professionalism and leadership, and foreign languages, enhancing global career prospects. This holistic approach prepares students to excel in both placements and higher education opportunities.",
+        "Our industry-aligned methodology includes expert-led sessions, real-world projects, mock interviews, and technical assessments. More than 300+ reputed National and Multinational companies visit our institution for campus recruitment annually. As a result, our graduates consistently secure top placements in reputed engineering firms and excel in competitive exams for higher studies."
+      ],
+      "Our Vision": "Department of Training & Placement aims to educate, advise, and connect students to opportunities for their career growth in order to foster their intellectual, social, and personal transformations.",
+      "Our Mission": "The department focuses on bringing the most relevant professional opportunities for the learners through various initiatives and activities.",
+      "email": "placement@velammal.edu.in",
+      "phone": ["9940127839", "9444008233"]
+    }
+  },
+  {
+    "type": "placement_team",
+    "data": [
+      {
+        "name": "ARUN RAMASWAMI A",
+        "designation": "Head of Placement",
+        "content": "Being a post graduate in Business Administration, he is an expert in using his people skills and networking to design students' careers. Mr. Arun strongly believes that getting a job is just a primitive stage, and students have to scale greater heights and bring laurels to our brand, 'Velammal,' globally. His primary focus is on the learning and development of the students in various employability skills in addition to their academic curriculum. He has consistently produced 90% placement in Velammal Group of Colleges, Chennai & Madurai, and improved the average salary to 4.20 LPA. More than 200+ students every year get more than 6.50 LPA.",
+        "photo_path": "/static/images/placement_members/arun_ramaswami.webp"
+      },
+      {
+        "name": "VAISHNAVI",
+        "designation": "Soft Skills Trainer",
+        "qualification": "M.Sc.,M.B.A.,P.G.D.C.I",
+        "photo_path": "/static/images/placement_members/pariksith_vaishnavi.webp"
+      },
+      {
+        "name": "STELLA SIVANATHAN",
+        "designation": "Soft Skills Trainer",
+        "qualification": "M.S.Psychology",
+        "photo_path": "/static/images/placement_members/stella_sivanathan.webp"
+      }
+    ]
+  },
+  {
+    "type": "placement_details",
+    "data": {
+      "statistics": {
+        "particulars": [
+          "Number of Companies Visited",
+          "Number of Students registered for Placements",
+          "Number of Students Placed",
+          "Total Number of Offers",
+          "Placement Percentage",
+          "Average Salary"
+        ],
+        "years": [
+          {
+            "year": "2015-19",
+            "values": ["328", "785", "719", "989", "91.59", "4.10 LPA"]
+          },
+          {
+            "year": "2016-20",
+            "values": ["227", "722", "655", "871", "90.72", "4.30 LPA"]
+          },
+          {
+            "year": "2017-21",
+            "values": ["233", "620", "589", "897", "95.00", "4.54 LPA"]
+          },
+          {
+            "year": "2018-22",
+            "values": ["250", "665", "643", "1059", "96.69", "4.66 LPA"]
+          },
+          {
+            "year": "2019-23",
+            "values": ["208", "534", "494", "651", "92.51", "6.10 LPA"]
+          },
+          {
+            "year": "2020-24",
+            "values": ["294", "563", "471", "602", "83.66", "6.15 LPA"]
+          }
+        ]
+      },
+      "department_wise": {
+        "departments": [
+          "CSE",
+          "ECE",
+          "EEE",
+          "MECH",
+          "IT",
+          "EIE",
+          "CIVIL",
+          "AUTO",
+          "AI & DS",
+          "Over All"
+        ],
+        "years": [
+          {
+            "year": "2015-19",
+            "values": [
+              "99.22",
+              "92.94",
+              "87.50",
+              "96.67",
+              "95.00",
+              "83.33",
+              "76.67",
+              "71.43",
+              "-",
+              "91.59"
+            ]
+          },
+          {
+            "year": "2016-20",
+            "values": [
+              "98.35",
+              "98.35",
+              "84.38",
+              "76.27",
+              "96.00",
+              "89.00",
+              "88.64",
+              "74.19",
+              "-",
+              "90.72"
+            ]
+          },
+          {
+            "year": "2017-21",
+            "values": [
+              "100",
+              "100",
+              "91.49",
+              "95.00",
+              "100",
+              "90.00",
+              "88.00",
+              "94.44",
+              "-",
+              "95.00"
+            ]
+          },
+          {
+            "year": "2018-22",
+            "values": [
+              "98.73",
+              "97.37",
+              "98.00",
+              "98.48",
+              "98.00",
+              "83.33",
+              "93.10",
+              "88.24",
+              "-",
+              "96.69"
+            ]
+          },
+          {
+            "year": "2019-23",
+            "values": [
+              "90.13",
+              "100",
+              "88.57",
+              "80.21",
+              "90.00",
+              "100",
+              "80.00",
+              "89.00",
+              "-",
+              "92.51"
+            ]
+          },
+          {
+            "year": "2020-24",
+            "values": [
+              "90.85",
+              "77.46",
+              "88.10",
+              "88.33",
+              "75.00",
+              "76.92",
+              "100",
+              "77.78",
+              "82.50",
+              "83.99"
+            ]
+          }
+        ]
+      },
+      "year_wise_pdfs": [
+        {
+          "year": "2023-24",
+          "pdf_path": "/static/pdfs/placement_docs/placements_23-24.pdf"
+        },
+        {
+          "year": "2022-23",
+          "pdf_path": "/static/pdfs/placement_docs/placements_22-23.pdf"
+        },
+        {
+          "year": "2021-22",
+          "pdf_path": "/static/pdfs/placement_docs/placements_21-22.pdf"
+        },
+        {
+          "year": "2020-21",
+          "pdf_path": "/static/pdfs/placement_docs/placements_20-21.pdf"
+        },
+        {
+          "year": "2019-20",
+          "pdf_path": "/static/pdfs/placement_docs/placements_19-20.pdf"
+        },
+        {
+          "year": "2018-19",
+          "pdf_path": "/static/pdfs/placement_docs/placements_18-19.pdf"
+        },
+        {
+          "year": "2017-18",
+          "pdf_path": "/static/pdfs/placement_docs/placements_17-18.pdf"
+        },
+        {
+          "year": "2016-17",
+          "pdf_path": "/static/pdfs/placement_docs/placements_16-17.pdf"
+        },
+        {
+          "year": "2015-16",
+          "pdf_path": "/static/pdfs/placement_docs/placements_15-16.pdf"
+        },
+        {
+          "year": "2014-15",
+          "pdf_path": "/static/pdfs/placement_docs/placements_14-15.pdf"
+        },
+        {
+          "year": "2013-14",
+          "pdf_path": "/static/pdfs/placement_docs/placements_13-14.pdf"
+        },
+        {
+          "year": "2012-13",
+          "pdf_path": "/static/pdfs/placement_docs/placements_12-13.pdf"
+        },
+        {
+          "year": "2011-12",
+          "pdf_path": "/static/pdfs/placement_docs/placements_11-12.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "type": "alumini",
+    "data": [
+      {
+        "alumni_image_path": [
+          "/static/images/alumni/1.webp",
+          "/static/images/alumni/2.webp",
+          "/static/images/alumni/3.webp",
+          "/static/images/alumni/4.webp",
+          "/static/images/alumni/5.webp",
+          "/static/images/alumni/6.webp",
+          "/static/images/alumni/7.webp",
+          "/static/images/alumni/8.webp",
+          "/static/images/alumni/9.webp",
+          "/static/images/alumni/10.webp",
+          "/static/images/alumni/11.webp",
+          "/static/images/alumni/12.webp",
+          "/static/images/alumni/13.webp",
+          "/static/images/alumni/14.webp",
+          "/static/images/alumni/15.webp",
+          "/static/images/alumni/16.webp",
+          "/static/images/alumni/17.webp",
+          "/static/images/alumni/18.webp",
+          "/static/images/alumni/19.webp",
+          "/static/images/alumni/20.webp",
+          "/static/images/alumni/21.webp",
+          "/static/images/alumni/22.webp",
+          "/static/images/alumni/23.webp",
+          "/static/images/alumni/24.webp",
+          "/static/images/alumni/25.webp",
+          "/static/images/alumni/26.webp",
+          "/static/images/alumni/27.webp",
+          "/static/images/alumni/28.webp",
+          "/static/images/alumni/29.webp",
+          "/static/images/alumni/30.webp",
+          "/static/images/alumni/31.webp",
+          "/static/images/alumni/32.webp",
+          "/static/images/alumni/33.webp",
+          "/static/images/alumni/34.webp",
+          "/static/images/alumni/35.webp",
+          "/static/images/alumni/36.webp",
+          "/static/images/alumni/37.webp",
+          "/static/images/alumni/38.webp",
+          "/static/images/alumni/39.webp",
+          "/static/images/alumni/40.webp",
+          "/static/images/alumni/41.webp",
+          "/static/images/alumni/42.webp",
+          "/static/images/alumni/43.webp",
+          "/static/images/alumni/44.webp",
+          "/static/images/alumni/45.webp",
+          "/static/images/alumni/46.webp",
+          "/static/images/alumni/47.webp",
+          "/static/images/alumni/48.webp",
+          "/static/images/alumni/49.webp",
+          "/static/images/alumni/50.webp",
+          "/static/images/alumni/51.webp",
+          "/static/images/alumni/52.webp",
+          "/static/images/alumni/53.webp",
+          "/static/images/alumni/54.webp",
+          "/static/images/alumni/55.webp",
+          "/static/images/alumni/56.webp",
+          "/static/images/alumni/57.webp",
+          "/static/images/alumni/58.webp",
+          "/static/images/alumni/59.webp",
+          "/static/images/alumni/60.webp",
+          "/static/images/alumni/61.webp",
+          "/static/images/alumni/62.webp",
+          "/static/images/alumni/63.webp",
+          "/static/images/alumni/64.webp",
+          "/static/images/alumni/65.webp",
+          "/static/images/alumni/66.webp",
+          "/static/images/alumni/67.webp",
+          "/static/images/alumni/68.webp",
+          "/static/images/alumni/69.webp",
+          "/static/images/alumni/70.webp",
+          "/static/images/alumni/71.webp",
+          "/static/images/alumni/72.webp",
+          "/static/images/alumni/73.webp",
+          "/static/images/alumni/74.webp",
+          "/static/images/alumni/75.webp",
+          "/static/images/alumni/76.webp",
+          "/static/images/alumni/77.webp",
+          "/static/images/alumni/78.webp",
+          "/static/images/alumni/79.webp",
+          "/static/images/alumni/80.webp",
+          "/static/images/alumni/81.webp",
+          "/static/images/alumni/82.webp",
+          "/static/images/alumni/83.webp",
+          "/static/images/alumni/84.webp",
+          "/static/images/alumni/85.webp",
+          "/static/images/alumni/86.webp",
+          "/static/images/alumni/87.webp",
+          "/static/images/alumni/88.webp",
+          "/static/images/alumni/89.webp",
+          "/static/images/alumni/90.webp",
+          "/static/images/alumni/91.webp",
+          "/static/images/alumni/92.webp",
+          "/static/images/alumni/93.webp",
+          "/static/images/alumni/94.webp",
+          "/static/images/alumni/95.webp",
+          "/static/images/alumni/96.webp",
+          "/static/images/alumni/97.webp",
+          "/static/images/alumni/98.webp",
+          "/static/images/alumni/99.webp",
+          "/static/images/alumni/100.webp",
+          "/static/images/alumni/101.webp",
+          "/static/images/alumni/102.webp"
+        ]
+      }
+    ]
+  }
+]
