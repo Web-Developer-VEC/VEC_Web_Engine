@@ -80,7 +80,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                 ) : (
                     <>
                         {/* Year-wise PDF Reports */}
-                        <div className="placement-yearwise card-plc bg-prim dark:bg-drkts">
+                        <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts">
                             <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
                             <div className="place-Sylgrid">
                                 {placementData?.Year_Wise?.year_pdf.map((year, index) => (
@@ -105,7 +105,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                         </div>
                         
                         {/* Placement Department-wise Data */}
-                        <div className="placement-percent card-plc">
+                        <div className="placement-percent font-[poppins] card-plc">
                             <h4 className="place-section-title text-brwn dark:text-drkt">Placement Details in % - Department Wise</h4>
                             <div className="table-container">
                                 <table>
@@ -133,7 +133,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
 
 
                         {/* Placement Statistics */}
-                        <div className="placement-percent card-plc">
+                        <div className="placement-percent font-[poppins] card-plc">
                             <h4 className="place-section-title text-brwn dark:text-drkt">Placement Statistics</h4>
                             <div className="table-container">
                                 <table>

@@ -95,7 +95,7 @@ const StatsGrid = () => {
                             loop
                             animationData={require('../Assets/Active Learners.json')}
                             play
-                            style={{width: 140, height: 140}}
+                            style={{width: 140, height: 185}}
                         />
                         <h2 className="stat-number">{counters.teachers}</h2>
                         <p className="stat-label">Active Learners</p>
@@ -105,7 +105,7 @@ const StatsGrid = () => {
                             loop
                             animationData={require('../Assets/hike.json')}
                             play
-                            style={{width: 140, height: 140}}
+                            style={{width: 140, height:192}}
                         />
                         <h2 className="stat-number">{counters.phdHolders} INR</h2>
                         <p className="stat-label">Highest Salary Offered (LPA)</p>
@@ -116,7 +116,7 @@ const StatsGrid = () => {
                             loop
                             animationData={require('../Assets/Hiring Partners.json')}
                             play
-                            style={{width: 140, height: 140}}
+                            style={{width: 140, height: 192}}
                         />
                         <h2 className="stat-number">{counters.students}+</h2>
                         <p className="stat-label">Hiring Partners</p>
@@ -126,7 +126,7 @@ const StatsGrid = () => {
                             loop
                             animationData={require('../Assets/salary.json')}
                             play
-                            style={{width: 140, height: 140}}
+                            style={{width: 140, height: 210}}
                         />
                         <h2 className="stat-number">{counters.placement}%</h2>
                         <p className="stat-label">Average Salary Hike</p>
