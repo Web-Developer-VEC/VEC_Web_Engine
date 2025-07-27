@@ -750,7 +750,23 @@ def insert_admissions_sections():
 
     print("Admission sections inserted successfully.")
 
+def insert_exams_sections():
+    collection = db["exams"]
 
+    with open("/VEC_WEB_Engine/docs/exams.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("Exam sections inserted successfully.")
+
+insert_exams_sections()
 insert_department_data()
 insert_hod_datas()
 insert_infrastructure_data()
