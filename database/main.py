@@ -783,12 +783,21 @@ department_mapping = {
     "Placement":"021"
 }
 
-def insert_incubation_data():
-    collection= db['incubation']
-    with open ("/VEC_WEB_Engine/docs/incubation.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("Incubation documents inserted successfully. \n")
+def insert_incubations_sections():
+    collection = db["incubation"]
+
+    with open("/VEC_WEB_Engine/docs/incubation.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("incubation sections inserted successfully.")
     
 def insert_army_data():
     collection = db['army']
@@ -1082,7 +1091,7 @@ insert_nss_data()
 insert_yrc_data()
 insert_department_research_data()
 insert_warden_hostel_data()
-insert_incubation_data()
+insert_incubations_sections()
 insert_army_data()
 insert_navy_data()
 insert_academic_calendar()

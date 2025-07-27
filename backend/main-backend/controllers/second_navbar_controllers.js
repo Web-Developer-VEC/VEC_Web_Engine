@@ -43,6 +43,16 @@ const ALLOWED_IIC_TYPES = [
   'contact'
 ];
 
+const ALLOWED_INCUBATION_TYPES = [
+  'home',
+  'start_up',
+  'incubation_committee',
+  'facilities',
+  'projects',
+  'patent',
+  'seed_money'
+];
+
 async function getIqacSection(req, res) {
   try {
     const { type } = req.body;
@@ -142,6 +152,39 @@ async function getIicSection(req, res) {
   }
 }
 
+async function getIncubationSection(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_INCUBATION_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid Incubation section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('incubation');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching Incubation section:', error);
+    await logError(req, error, 'Error fetching Incubation section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
 async function getECell (req, res) {
     const db = getDb();
     const collection = db.collection('e_cell');
@@ -216,5 +259,6 @@ module.exports = {
     getIqacSection,
     getECell,
     iicApplyForm,
-    getAccreditationSection
+    getAccreditationSection,
+    getIncubationSection
 }
