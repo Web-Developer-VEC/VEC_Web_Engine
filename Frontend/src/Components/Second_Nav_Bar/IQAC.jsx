@@ -219,7 +219,6 @@ const IQAC = ({ toggle , theme }) => {
                             <p className="coordinator-designation text-brwn dark:text-drka">{coordinator.designation}</p>
                             <p className="coordinator-role text-brwn dark:text-drka">{coordinator.keyRole}</p>
                             <p className="coordinator-email">Email: <a className="text-drka">{coordinator.email}</a></p> 
-                            {/* <p className="coordinator-phone">Phone: <a href={`tel:${coordinator.phone}`} className="text-drka">{coordinator.phone}</a></p> */}
                         </div>
                     </div>
                 )}
@@ -364,7 +363,7 @@ const IQAC = ({ toggle , theme }) => {
                 <div className="flex justify-center p-4 w-full">
                     <div className="overflow-x-auto border rounded-lg shadow-md">
                         <table className=" w-[1000px] department-table">
-                            <thead className="bg-gray-100">
+                            <thead className="bg-gry">
                             <tr>
                                 <th className="text-left px-4 py-2 text-text w-2">S.No</th>
                                 <th className="text-left px-4 py-2 text-text">Departments</th>
@@ -565,7 +564,7 @@ const IQAC = ({ toggle , theme }) => {
         <>
             <Banner
                 toggle={toggle} theme={theme}
-                backgroundImage="./Banners/IQAC.webp"
+                backgroundImage="./Banners/IQAC_Banner.webp"
                 headerText="IQAC"
                 subHeaderText="IQAC"
             />

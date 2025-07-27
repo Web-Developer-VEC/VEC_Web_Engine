@@ -3,6 +3,7 @@ import { FaLink } from 'react-icons/fa';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
 import axios from 'axios';
+import ScrollToTopButton from '../../ScrollToTopButton';
 
 
 
@@ -81,8 +82,8 @@ const AbtUs = ({ theme, toggle }) => {
                             <div className="relative grow p-4 font-[Poppins] mt-14 basis-3/4 z-10
                                 bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                                 
-                                <p className='text-3xl text-center font-[Poppins]'>{secTtl}</p>
-                                <p className='text-[20px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
+                                <p className='text-[32px] text-center font-[Poppins]'>{secTtl}</p>
+                                <p className='text-[24px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
                                 <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                             </div>
                             
@@ -111,11 +112,23 @@ const AbtUs = ({ theme, toggle }) => {
                                                             rounded-full animate-spin"></div>
                                         </div>
                                     )}
-                                    <img className={`absolute w-full h-full rounded-tr-[3rem] rounded-bl-[3rem] transition-opacity duration-500 ${loading.img2 ? 'opacity-0' : 'opacity-100'}`}
-                                        src={UrlParser(AbtUsData?.image_path[1])}
-                                        alt="Banner Image1"
-                                        onLoad={() => handleLoad('img2')}
-                                    />
+
+                                   <img
+  className="
+    absolute 
+    w-[80%] h-[80%] 
+    md:w-full md:h-full 
+    rounded-tr-[2rem] md:rounded-tr-[3rem] 
+    rounded-bl-[2rem] md:rounded-bl-[3rem] 
+    transition-opacity duration-500 
+    opacity-100
+  "
+  src={UrlParser(AbtUsData?.image_path[1])}
+  alt="Banner Image1"
+  onLoad={() => handleLoad('img2')}
+/>
+
+
                                 </div>
 
                                 {/* Image 3 */}
@@ -149,25 +162,25 @@ const AbtUs = ({ theme, toggle }) => {
                         </div>
                     {/* ))} */}
 
-                    <div className='m-2 p-2'>
+                    <div className='m-2 p-2 font-[Poppins]'>
                         <ul className='pdf-links grid grid-cols-2 justify-items-start items-center text-left w-full md:grid-cols-1 md:flex flex-wrap justify-center gap-8' >
-                            <li className='text-am md:text-lg flex items-center gap-'>
+                            <li className='text-am md:text-[16px] flex items-center gap-2 '>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[1])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[2])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
                             </li>
-                            <li className='text-sm md:text-lg flex items-center gap-2'>
+                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[3])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
                             </li>
-                             <li className='text-sm md:text-lg flex items-center gap-2'>
+                             <li className='text-sm md:text-[16px] flex items-center gap-2'>
                                 <FaLink className='text-prim dark:text-drkp' />
                                 <a href={UrlParser(AbtUsData?.links[4])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Feedback</a>
                             </li>
@@ -179,7 +192,8 @@ const AbtUs = ({ theme, toggle }) => {
                     <LoadComp txt={""} />
                 </div>
             )}
-
+                {/* ✅ Ensure this placement */}
+                <ScrollToTopButton />
         </>
     );
 };

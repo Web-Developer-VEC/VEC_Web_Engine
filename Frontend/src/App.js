@@ -9,6 +9,7 @@ import Boot from "./Components/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
 import Head from "./Components/Landing Comp/Head.jsx";
 import Footer from "./Components/Landing Comp/Footer.jsx";
+import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 /* AboutUs Pages Imports */
 import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
 import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
@@ -20,21 +21,25 @@ import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
 import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
 import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
 import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
+import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
+import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Academics Pages Imports */
 import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
 import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
 import AcademicDepartments from "./Components/Top_Nav_Bar/Academics/Department.jsx";
 import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
-import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
+import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 /* Admisiion Pages Imports */
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
 import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
 import PHD from "./Components/Top_Nav_Bar/Admission/PhdAdmission.jsx";
+import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
 /* Exams Pages Imports */
 import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
 import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
+import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
 import Sponsres from "./Components/Top_Nav_Bar/Research/Sponseredresearch.jsx";
@@ -50,7 +55,6 @@ import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
-// import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
@@ -65,6 +69,14 @@ import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
+import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
+import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
+import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
+import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
+import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
+import WebTeam from "./Components/Second_Nav_Bar/Club/web Team/webteam.jsx";
 // Digital Hostel
 import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
 import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
@@ -74,29 +86,13 @@ import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel L
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
 import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+// other stuffs
 import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
-import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
-import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
-import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
 import SideButton from "./Components/sideButton.jsx";
-
-import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
-import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
-import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
-import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
-import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
-
-import { Hand } from "lucide-react";
-import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
-
-import ScrollFromBottom from "./Components/ScrollFromBottom.jsx";
-import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-
-
+import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
+import RateLimitReach from "./ratelimit.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -208,7 +204,7 @@ const App = () => {
                     <>
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
-                        <MainContentWrapper>
+                        <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
@@ -271,6 +267,7 @@ const App = () => {
                                 <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
                                 <Route path="/developers/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
@@ -283,8 +280,10 @@ const App = () => {
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
                                 <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
 
-                            {/*  404 - Page not found  */}
+                                {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
+                                {/* Rate limit page */}
+                                <Route path="/ratelimit" element={<RateLimitReach />} />
                             </Routes>
                           
                         </MainContentWrapper>
@@ -292,7 +291,7 @@ const App = () => {
                         {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
 
                         <SideButton/>
-
+                        <ScrollToTopButton />
                     </>
                 </AppContainer>
         </>
