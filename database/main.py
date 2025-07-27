@@ -581,14 +581,6 @@ def insert_MOUs_data():
     
     print("All MOU documents have been inserted successfully.\n")
 
-def insert_curriculum_data():
-    collection = db['curriculum']
-    with open("/VEC_WEB_Engine/docs/curriculum.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Cirrculum documents inserted successfully.\n")
-
 def insert_events_data():
     collection = db['events']  
     with open("/VEC_WEB_Engine/docs/events.json", "r",encoding="utf-8") as file:
@@ -613,14 +605,6 @@ def insert_announcements_data():
         collection.insert_many(documents)
 
     print("Announcements documents inserted successfully.\n")
-
-def insert_regulation_data():
-    collection = db['regulation']  
-    with open("/VEC_WEB_Engine/docs/regulation.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("regulation documents inserted successfully.\n")
 
 def placement_team():
     collection = db["placement_team"]
@@ -655,15 +639,6 @@ def insert_banners():
         collection.insert_many(documents)
 
     print("Banner documents inserted successfully.\n")
-
-def insert_all_forms_data():
-
-    collection = db['all_forms']  
-    with open("/VEC_WEB_Engine/docs/all_forms.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("all_forms documents inserted successfully.\n")
 
 def insert_NBA_data():
     collection = db['nba']
@@ -725,15 +700,6 @@ def insert_newsletter():
         collection.insert_many(documents)
     print("newsletter inserted successfully \n")
 
-
-def insert_COE_data():
-    collection = db['coe']
-    with open("/VEC_WEB_Engine/docs/coe.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("COE documents inserted successfully.\n")
-
 def insert_admissions_sections():
     collection = db["admissions"]
 
@@ -773,15 +739,12 @@ insert_infrastructure_data()
 insert_student_activities_data()
 insert_support_staff_data()
 insert_MOUs_data()
-insert_curriculum_data()
 insert_events_data()
 insert_announcements_data()
 insert_special_announcements()
 placement_team()
-insert_regulation_data()
 insert_placement_data()
 insert_curriculum_and_syllabus_data()
-insert_all_forms_data()
 insert_banners()
 insert_NBA_data()
 insert_naac_data()
@@ -790,7 +753,6 @@ insert_sidebar_details()
 insert_iic_details()
 insert_dept_activities_details()
 insert_newsletter()
-insert_COE_data()
 insert_admissions_sections()
 
 department_mapping = {
