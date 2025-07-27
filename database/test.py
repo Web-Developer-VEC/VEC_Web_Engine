@@ -148,7 +148,24 @@ def insert_library_sections():
 
     print("library sections inserted successfully.")
 
-insert_library_sections()
+def insert_iqac_sections():
+    collection = db["iqac"]
+
+    with open("/VEC_WEB_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("iqac sections inserted successfully.")
+
+insert_iqac_sections()
+#insert_library_sections()
 #insert_placement_sections()
 #insert_exams_sections()
 #insert_admissions_sections()

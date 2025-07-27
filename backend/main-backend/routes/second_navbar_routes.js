@@ -1,5 +1,5 @@
 const express = require('express');
-const { getNaac, getNba, getNirf, getiic, getIqac, getECell, iicApplyForm } = require('../controllers/second_navbar_controllers');
+const { getNaac, getNba, getNirf, getiic, getIqacSection, getECell, iicApplyForm } = require('../controllers/second_navbar_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
 const sanitize = require('../middlewares/sanitizers/sanitize_second_navbar');
@@ -11,7 +11,7 @@ router.get('/naac', limiter, xss, getNaac);
 router.get('/nba', limiter, xss, getNba);
 router.get('/nirf', limiter, xss, getNirf);
 router.get('/iic', limiter, xss, getiic);
-router.get('/iqac', limiter, xss, getIqac);
+router.post('/iqac', limiter, xss, getIqacSection);
 router.get('/ecell', limiter, xss, getECell);
 router.post('/iic_applynow', limiter, xss, sanitize, iicApplyForm);
 

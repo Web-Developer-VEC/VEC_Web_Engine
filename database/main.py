@@ -722,6 +722,23 @@ def insert_placement_sections():
 
     print("placement sections inserted successfully.")
 
+def insert_iqac_sections():
+    collection = db["iqac"]
+
+    with open("/VEC_WEB_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("iqac sections inserted successfully.")
+
+insert_iqac_sections()
 insert_placement_sections()
 insert_exams_sections()
 insert_department_data()
@@ -932,14 +949,6 @@ def insert_warden_hostel_data():
     
     print("Inserted warden profile data. \n")
 
-def insert_iqac_data():
-    collection = db['IQAC']
-    with open("/VEC_WEB_Engine/docs/IQAC.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted IQAC data successfully.\n")
-
 def insert_about_us():
     collection = db['about_us']
 
@@ -1075,7 +1084,6 @@ insert_warden_hostel_data()
 insert_incubation_data()
 insert_army_data()
 insert_navy_data()
-insert_iqac_data()
 insert_academic_calendar()
 insert_about_us()
 insert_hostel_menu()

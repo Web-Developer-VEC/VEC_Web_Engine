@@ -1,251 +1,7 @@
 [
-  { 
-    "members": {
-      "faculty" : {
-        "principle": [
-          {
-            "name": "Dr. SATISH KUMAR S",
-            "designation": "Chairperson",
-            "role": "Principal, Velammal Engineering College",
-            "imagepath": "/static/images/principal_data/principal_photo.webp"
-          }
-        ],
-        "memberfromemployes":
-      [{
-          "name": "Mr. RAGHURAMAN KRISHNAMOORTHY",
-          "designation": "Associate Vice President Cognizant",
-          "role": "",
-          "imagepath": ""
-        }],
-        "stakeholders":
-        [{
-          "name": "Dr. THIRUVENKADAM S",
-          "designation": "Professor/EEE, VIT, Vellore Campus",
-          "role": "",
-          "imagepath": ""
-        }],
-        "alumnimembers": [{
-          "name": "Mr. ARUNRAJ M",
-          "designation": "Google India, Senior Software Engineer",
-          "role": "Information Technology 2010 Batch",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. KUGHAN E",
-          "designation": "Chargebee, Senior Software Engineer",
-          "role": "Computer Science and Engineering 2017 Batch",
-          "imagepath": ""
-        }
-      ],
-      "memberfromindustry":
-      [{
-          "name": "Mr. ARAVIND RAMESH",
-          "designation": "Managing Director, Vetri Pressing Pvt. Limited",
-          "role": "",
-          "imagepath": ""
-        }],
-        "memberfrommanagement":
-      [{
-          "name": "Mr. KUMAR R",
-          "designation": "AVP(Finance),Velammal Educational Trust",
-          "role": "",
-          "imagepath": ""
-        }
-
-      ],
-      "deansanddepartmentheads": [
-          {
-          "name": "Dr. JEBAMALAR A",
-          "designation": "Professor & Head, Department of Civil Engineering,",
-          "role": " Dean, Academics",
-          "imagepath": "/static/images/dean_and_associates/dr_a_jebamalar.webp"
-        },
-        {
-          "name": "Dr. MARY JOANS S",
-          "designation": "Professor & Head, Department of Electronics and Communication Engineering,",
-          "role": "Dean, Faculty Development and Welfare",
-          "imagepath": "/static/images/dean_and_associates/dr_s_mary_jones.webp"
-        },
-        {
-          "name": "Dr. JEEVAA KATIRAVAN",
-          "designation": "Professor & Head, Department of Information Technology,",
-          "role": "Dean, Planning and Development",
-          "imagepath": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
-        },
-        {
-          "name": "Dr. GANAPATHY SUNDARAM E",
-          "designation": "Professor & Head, Department of Mechanical Engineering,",
-          "role": "Dean, Accreditations and Ranking",
-          "imagepath": "/static/images/dean_and_associates/dr_e_ganapathy_sundaram.webp"
-        },
-        {
-          "name": "Dr. BALAJI GANESH A",
-          "designation": "Professor & Head, Department of Computer Science and Engineering,",
-          "role": "Dean, Research & Development",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. SHAHIL KIRUPAVATHY S",
-          "designation": "Professor & Head, Department of Physics,",
-          "role": "Dean, Student Development and welfare",
-          "imagepath": "/static/images/dean_and_associates/dr_s_shahil_kirupavathy.webp"
-        },
-        {
-          "name": "Mr. ARUN RAMASWAMI A",
-          "designation": "",
-          "role": "Dean, Corporate relations and Higher Studies",
-          "imagepath": "/static/images/dean_and_associates/mr_arun_ramasamy.webp"
-        },
-        {
-          "name": "Dr. SRINATH S",
-          "designation": "",
-          "role": "Controller of Examination",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. VISU P",
-          "designation": "Professor & Head, Department of Artificial Intelligence and Data Science",
-          "role": "Associate Dean, Accrediations and Ranking",
-          "imagepath": "/static/images/dean_and_associates/dr_p_visu.webp"
-        },
-        {
-          "name": "Dr. BASKARA SETHUPATHY S",
-          "designation": "Professor & Head, Department of Automobile Engineering",
-          "role": "Associate Dean, Research & Development",
-          "imagepath": "/static/images/dean_and_associates/dr_s_bhaskara_sethupathy.webp"
-        },
-        {
-          "name": "Dr. MURUGESHWARI B",
-          "designation": "Professor & Head, Department of Computer Science and Engineering ",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. SURESHKUMAR K",
-          "designation": "Professor & Head, Department of Electrical and Electronics Engineering",
-          "role": "",
-          "imagepath": "/static/images/dean_and_associates/dr_k_suresh_kumar.webp"
-        },
-        {
-          "name": "Dr. BRIJET Z",
-          "designation": "Professor & Head, Department of Electronics and Instrumentation Engineering ",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. NIRMALRAJ A",
-          "designation": "Professor & Head, Department of Master of Business Administration",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. BASKARAN V",
-          "designation": "Head, Department of English",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. MOHAMED SIKKANDER A",
-          "designation": "Assoc. Professor & Head, Department of Chemistry",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. RAJESWARAN S",
-          "designation": "Professor & Head, Deptartment of Mathematics",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. MUTHIAH M.M",
-          "designation": "Head, Department of Tamil",
-          "role": "",
-          "imagepath": ""
-        }
-      ],
-      "seniorteachers":[
-        {
-          "name": "Dr. AROKIA JASWIN M",
-          "designation": "Professor, Department of Mechanical Engineering",
-          "role": "Associate Dean, Academics",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. MANJU S",
-          "designation": "Assistant Professor, Department of Electronics and Communication Engineering",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. DAYAKAR C.V",
-          "designation": "Assistant Professor, Department of Electronics and Instrumentation Engineering",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. GEETHA R",
-          "designation": "Assistant Professor, Department of Electrical and Electronics Engineering",
-          "role": "Associate Dean,Student Development and welfare",
-          "imagepath": ""
-        },
-        {
-          "name": "Dr. RAJALAKSHMI S",
-          "designation": "Asso Professor, Department of Computer Science and Engineering",
-          "role": "Associate Dean, Planning and Development",
-          "imagepath": ""
-        }
-      ],
-      
-      "localprofessionalsocietychapter":
-      [{
-          "name": "Mr. RAJHA RAJESWARAN T.A",
-          "designation": "Assistant Professor, Department of Civil Engineering",
-          "role": "Secretary-chennai Centre, ACCE(I) Association of Consulting civil Engineers(India)",
-          "imagepath": ""
-        }
-      ],
-       "studentmembers": [{
-          "name": "Ms. NIHARIKA B",
-          "designation": "Final Year student, Artificial Intelligence and Data Science",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. KARPAGAVINAYAGAM A.L",
-          "designation": "Final Year student, Information Technology",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. RANJANA D",
-          "designation": "Final Year student, Electronics and Communication Engineering",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. ABINAND P",
-          "designation": "Final Year student, Computer Science and Engineering",
-          "role": "",
-          "imagepath": ""
-        },
-        {
-          "name": "Mr. GIFTSON A.S",
-          "designation": "Final Year student, Mechanical Engineering",
-          "role": "",
-          "imagepath": ""
-        }
-        ]       
-      },
-       "coordinator": {
-      "name": "Dr. GUNASUNDARI S",
-      "designation": "Coordinator",
-      "role": "Professor, Dept of Computer Science and Engineering",
-      "email": "gunasundari@velammal.edu.in",
-      "phone": "+91 8754509510",
-      "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp"
-    }
-    },
-    "objectives": {
+  {
+    "type": "objectives",
+    "data": {
       "about": "The Internal Quality Assurance Cell (IQAC) was established in 2004 as per the guidelines of the National Assessment and Accreditation Council (NAAC). The IQAC is responsible for developing, implementing, and continuously improving the quality systems within the institution.",
       "objectives": [
         "To develop a system for conscious, consistent and catalytic action to improve the academic and administrative performance of the institution.",
@@ -253,220 +9,557 @@
         "To provide a sound basis for decision-making to improve institutional functioning.",
         "To act as a dynamic system for quality changes in higher education."
       ]
-    },
-    "minutesOfMeetings": {
-      "years": ["2020-2021 (ODD)", "2020-2021 (EVEN)",
-      "2021-2022 (ODD)", "2021-2022 (EVEN)",
-      "2022-2023 (ODD)", "2022-2023 (EVEN)",
-      "2023-2024 (ODD)", "2023-2024 (EVEN)",
-      "2024-2025 (ODD)"],
-      "paths": [
-        "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2021-2022.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2022-2023.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2022-2023.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2023-2024.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2023-2024.pdf",
-        "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2024-2025.pdf"
-      ]
-    },
-    "academicAdminAudit": [
-    
-    {
-      "department": "B.E. Automobile Engineering",
-      "reports": [
-          {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Civil Engineering",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/004/Academic and Adminstrative Audit Report AY 2022-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/004/Academic and Administrative Audit Report AY 2023-24.pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Computer Science & Engineering",
-      "reports": [
-          {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/005/22-23 signed one.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/005/Academic and Administrative Audit Report upload.pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Computer Science and Engineering (CYBER SECURITY)",
-      "reports": [
-  
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/006/Administrative audit 2023 24.pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Electronics and Communication Engineering",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative Report _ 22-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative   Report_23-24.pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Electrical & Electronics Engineering",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/007/EEE_Academic and Administrative Audit Report -2022-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/007/EEE_Academic Audit and Administrative  Report_2023-24.pdf"
-        }
-      ]
-
-    },
-    {
-      "department": "B.E. Electronics & Instrumentation Engineering",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/008/ACADEMIC AUDIT _ EIE _ 2022 - 2023.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/008/ACADEMIC AND ADMINISTRATIVE AUDIT REPORT _ EIE _ 2023 -2024.pdf"
-        }
-      ]
-    },
-    {
-      "department": "B.E. Mechancial Engineering",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2022-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2023-24.pdf"
-        }
-      ]
-    },
-    {"department": "B.Tech. Artificial Intelligence and Data Science",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -22-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -23- 24.pdf"
-        }
-      ]
-
-    },
-    {
-      "department": "B.Tech. Information Technology",
-      "reports": [
-        {
-          "name": "2022-2023",
-          "pdfs_path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report 22-23.pdf"
-        },
-        {
-          "name": "2023-2024",
-          "pdfs_path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report A.Y.2023-24.pdf"
-        }
-      ]
     }
-  ],
-    "gallery": {
-      "OVERALL":[ 
-      "/static/images/iqac/23-24_first_meeting/1.webp",
-      "/static/images/iqac/23-24_first_meeting/2.webp",
-      "/static/images/iqac/23-24_second_meeting/1.webp",
-      "/static/images/iqac/23-24_second_meeting/2.webp", 
-      "/static/images/iqac/24-25_first_meeting/1.webp",
-      "/static/images/iqac/24-25_first_meeting/2.webp",
-      "/static/images/iqac/24-25_second_meeting/1.webp",
-      "/static/images/iqac/24-25_second_meeting/2.webp"
-    ],
-      "23-24 FIRST MEETING": [
-        "/static/images/iqac/23-24_first_meeting/1.webp",
-        "/static/images/iqac/23-24_first_meeting/2.webp"
-      ],
-       "23-24 SECOND MEETING": [
-        "/static/images/iqac/23-24_second_meeting/1.webp",
-        "/static/images/iqac/23-24_second_meeting/2.webp"
-      ],
-      "24-25 FIRST MEETING":  [
-        "/static/images/iqac/24-25_first_meeting/1.webp",
-        "/static/images/iqac/24-25_first_meeting/2.webp"
-      ],
-      "24-25 SECOND MEETING":  [
-        "/static/images/iqac/24-25_second_meeting/1.webp",
-        "/static/images/iqac/24-25_second_meeting/2.webp"
-      ]
-    },
-    "strategicPlan": {
-      "years": ["2024-29"],
-      "paths": [
-        "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
-      ]
-    },
-    "bestPractices": {
-      "years": ["2019-20", "2020-21", "2021-22", "2022-23", "2023-24"],
-      "paths": [
-        "/static/pdfs/iqac/best_practices_2019-2020.pdf",
-        "/static/pdfs/iqac/best_practices_2020-2021.pdf",
-        "/static/pdfs/iqac/best_practices_2021-2022.pdf",
-        "/static/pdfs/iqac/best_practices_2022-2023.pdf",
-        "/static/pdfs/iqac/best_practices_2023-2024.pdf"
-      ]
-    },
-    "institutional_distinctiveness":{
-      "path": 
-        "/static/pdfs/iqac/VEC-Institutional-Distinctivenss.pdf"
-    },
-    "codeOfEthics": {
-      "path": "/static/pdfs/iqac/code_of_ethics.pdf"
-    },
-    "aqar": {
-      "years": ["2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24"],
-      "paths": [
-        "/static/pdfs/iqac/AQAR_2018-2019.pdf",
-        "/static/pdfs/iqac/AQAR_2019-2020.pdf",
-        "/static/pdfs/iqac/AQAR_2020-2021.pdf",
-        "/static/pdfs/iqac/AQAR_2021-2022.pdf",
-        "/static/pdfs/iqac/AQAR_2022-2023.pdf",
-        "/static/pdfs/iqac/AQAR_2023-2024.pdf"
-      ]
-    },
-    "isoCertificate": {
-      "path": "/static/pdfs/iqac/iso_certificate.pdf"
+  },
+  {
+    "type": "coordinator",
+    "data": {
+      "name": "Dr. GUNASUNDARI S",
+      "designation": "Coordinator",
+      "role": "Professor, Dept of Computer Science and Engineering",
+      "email": "gunasundari@velammal.edu.in",
+      "phone": "+91 8754509510",
+      "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp"
     }
+  },
+  {
+    "type": "members",
+    "data": [
+      {
+        "category": "Chairperson",
+        "members": [
+          {
+            "name": "Dr. SATISH KUMAR S",
+            "designation": "Chairperson",
+            "role": "Principal, Velammal Engineering College",
+            "imagepath": "/static/images/principal_data/principal_photo.webp"
+          }
+        ]
+      },
+      {
+        "category": "memberfromemployee",
+        "members": [
+          {
+            "name": "Mr. RAGHURAMAN KRISHNAMOORTHY",
+            "designation": "Associate Vice President Cognizant",
+            "role": "",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "stakeholders",
+        "members": [
+          {
+            "name": "Dr. THIRUVENKADAM S",
+            "designation": "Professor/EEE, VIT, Vellore Campus",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. ARUNRAJ M",
+            "designation": "Google India, Senior Software Engineer",
+            "role": "Information Technology 2010 Batch",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. KUGHAN E",
+            "designation": "Chargebee, Senior Software Engineer",
+            "role": "Computer Science and Engineering 2017 Batch",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "memberfromindustry",
+        "members": [
+          {
+            "name": "Mr. ARAVIND RAMESH",
+            "designation": "Managing Director, Vetri Pressing Pvt. Limited",
+            "role": "",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "memberfrommanagement",
+        "members": [
+          {
+            "name": "Mr. KUMAR R",
+            "designation": "AVP(Finance),Velammal Educational Trust",
+            "role": "",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "deansanddepartmentheads",
+        "members": [
+          {
+            "name": "Dr. JEBAMALAR A",
+            "designation": "Professor & Head, Department of Civil Engineering,",
+            "role": " Dean, Academics",
+            "imagepath": "/static/images/dean_and_associates/dr_a_jebamalar.webp"
+          },
+          {
+            "name": "Dr. MARY JOANS S",
+            "designation": "Professor & Head, Department of Electronics and Communication Engineering,",
+            "role": "Dean, Faculty Development and Welfare",
+            "imagepath": "/static/images/dean_and_associates/dr_s_mary_jones.webp"
+          },
+          {
+            "name": "Dr. JEEVAA KATIRAVAN",
+            "designation": "Professor & Head, Department of Information Technology,",
+            "role": "Dean, Planning and Development",
+            "imagepath": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
+          },
+          {
+            "name": "Dr. GANAPATHY SUNDARAM E",
+            "designation": "Professor & Head, Department of Mechanical Engineering,",
+            "role": "Dean, Accreditations and Ranking",
+            "imagepath": "/static/images/dean_and_associates/dr_e_ganapathy_sundaram.webp"
+          },
+          {
+            "name": "Dr. BALAJI GANESH A",
+            "designation": "Professor & Head, Department of Computer Science and Engineering,",
+            "role": "Dean, Research & Development",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. SHAHIL KIRUPAVATHY S",
+            "designation": "Professor & Head, Department of Physics,",
+            "role": "Dean, Student Development and welfare",
+            "imagepath": "/static/images/dean_and_associates/dr_s_shahil_kirupavathy.webp"
+          },
+          {
+            "name": "Mr. ARUN RAMASWAMI A",
+            "designation": "",
+            "role": "Dean, Corporate relations and Higher Studies",
+            "imagepath": "/static/images/dean_and_associates/mr_arun_ramasamy.webp"
+          },
+          {
+            "name": "Dr. SRINATH S",
+            "designation": "",
+            "role": "Controller of Examination",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. VISU P",
+            "designation": "Professor & Head, Department of Artificial Intelligence and Data Science",
+            "role": "Associate Dean, Accrediations and Ranking",
+            "imagepath": "/static/images/dean_and_associates/dr_p_visu.webp"
+          },
+          {
+            "name": "Dr. BASKARA SETHUPATHY S",
+            "designation": "Professor & Head, Department of Automobile Engineering",
+            "role": "Associate Dean, Research & Development",
+            "imagepath": "/static/images/dean_and_associates/dr_s_bhaskara_sethupathy.webp"
+          },
+          {
+            "name": "Dr. MURUGESHWARI B",
+            "designation": "Professor & Head, Department of Computer Science and Engineering ",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. SURESHKUMAR K",
+            "designation": "Professor & Head, Department of Electrical and Electronics Engineering",
+            "role": "",
+            "imagepath": "/static/images/dean_and_associates/dr_k_suresh_kumar.webp"
+          },
+          {
+            "name": "Dr. BRIJET Z",
+            "designation": "Professor & Head, Department of Electronics and Instrumentation Engineering ",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. NIRMALRAJ A",
+            "designation": "Professor & Head, Department of Master of Business Administration",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. BASKARAN V",
+            "designation": "Head, Department of English",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. MOHAMED SIKKANDER A",
+            "designation": "Assoc. Professor & Head, Department of Chemistry",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. RAJESWARAN S",
+            "designation": "Professor & Head, Deptartment of Mathematics",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. MUTHIAH M.M",
+            "designation": "Head, Department of Tamil",
+            "role": "",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "seniorteachers",
+        "members": [
+          {
+            "name": "Dr. AROKIA JASWIN M",
+            "designation": "Professor, Department of Mechanical Engineering",
+            "role": "Associate Dean, Academics",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. MANJU S",
+            "designation": "Assistant Professor, Department of Electronics and Communication Engineering",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. DAYAKAR C.V",
+            "designation": "Assistant Professor, Department of Electronics and Instrumentation Engineering",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. GEETHA R",
+            "designation": "Assistant Professor, Department of Electrical and Electronics Engineering",
+            "role": "Associate Dean,Student Development and welfare",
+            "imagepath": ""
+          },
+          {
+            "name": "Dr. RAJALAKSHMI S",
+            "designation": "Asso Professor, Department of Computer Science and Engineering",
+            "role": "Associate Dean, Planning and Development",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "localprofessionalsocietychapter",
+        "members": [
+          {
+            "name": "Mr. RAJHA RAJESWARAN T.A",
+            "designation": "Assistant Professor, Department of Civil Engineering",
+            "role": "Secretary-chennai Centre, ACCE(I) Association of Consulting civil Engineers(India)",
+            "imagepath": ""
+          }
+        ]
+      },
+      {
+        "category": "localprofessionalsocietychapter",
+        "members": [
+          {
+            "name": "Ms. NIHARIKA B",
+            "designation": "Final Year student, Artificial Intelligence and Data Science",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. KARPAGAVINAYAGAM A.L",
+            "designation": "Final Year student, Information Technology",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. RANJANA D",
+            "designation": "Final Year student, Electronics and Communication Engineering",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. ABINAND P",
+            "designation": "Final Year student, Computer Science and Engineering",
+            "role": "",
+            "imagepath": ""
+          },
+          {
+            "name": "Mr. GIFTSON A.S",
+            "designation": "Final Year student, Mechanical Engineering",
+            "role": "",
+            "imagepath": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "minutes_of_meetings",
+    "data": [
+      {
+        "year": "2020-2021 (ODD)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
+      },
+      {
+        "year": "2020-2021 (EVEN)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf"
+      },
+      {
+        "year": "2021-2022 (ODD)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2021-2022.pdf"
+      },
+      {
+        "year": "2021-2022 (EVEN)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf"
+      },
+      {
+        "year": "2022-2023 (ODD)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2022-2023.pdf"
+      },
+      {
+        "year": "2022-2023 (EVEN)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2022-2023.pdf"
+      },
+      {
+        "year": "2023-2024 (ODD)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2023-2024.pdf"
+      },
+      {
+        "year": "2023-2024 (EVEN)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2023-2024.pdf"
+      },
+      {
+        "year": "2024-2025 (ODD)",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2024-2025.pdf"
+      }
+    ]
+  },
+  {
+    "type": "academic_admin_audit",
+    "data": [
+      {
+        "department_name": "B.E. Automobile Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf"
+      },
+      {
+        "department_name": "B.E. Automobile Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
+      },
+      {
+        "department_name": "B.E. Civil Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/004/Academic and Adminstrative Audit Report AY 2022-23.pdf"
+      },
+      {
+        "department_name": "B.E. Civil Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/004/Academic and Administrative Audit Report AY 2023-24.pdf"
+      },
+      {
+        "department_name": "B.E. Computer Science & Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/005/22-23 signed one.pdf"
+      },
+      {
+        "department_name": "B.E. Computer Science & Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/005/Academic and Administrative Audit Report upload.pdf"
+      },
+      {
+        "department_name": "B.E. Computer Science and Engineering (CYBER SECURITY)",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/006/Administrative audit 2023 24.pdf"
+      },
+      {
+        "department_name": "B.E. Electronics and Communication Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative Report _ 22-23.pdf"
+      },
+      {
+        "department_name": "B.E. Electronics and Communication Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative   Report_23-24.pdf"
+      },
+      {
+        "department_name": "B.E. Electrical & Electronics Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/007/EEE_Academic and Administrative Audit Report -2022-23.pdf"
+      },
+      {
+        "department_name": "B.E. Electrical & Electronics Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/007/EEE_Academic Audit and Administrative  Report_2023-24.pdf"
+      },
+      {
+        "department_name": "B.E. Electronics & Instrumentation Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/008/ACADEMIC AUDIT _ EIE _ 2022 - 2023.pdf"
+      },
+      {
+        "department_name": "B.E. Electronics & Instrumentation Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/008/ACADEMIC AND ADMINISTRATIVE AUDIT REPORT _ EIE _ 2023 -2024.pdf"
+      },
+      {
+        "department_name": "B.E. Mechancial Engineering",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2022-23.pdf"
+      },
+      {
+        "department_name": "B.E. Mechancial Engineering",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2023-24.pdf"
+      },
+      {
+        "department_name": "B.Tech. Artificial Intelligence and Data Science",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -22-23.pdf"
+      },
+      {
+        "department_name": "B.Tech. Artificial Intelligence and Data Science",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -23- 24.pdf"
+      },
+      {
+        "department_name": "B.Tech. Information Technology",
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report 22-23.pdf"
+      },
+      {
+        "department_name": "B.Tech. Information Technology",
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report A.Y.2023-24.pdf"
+      }
+    ]
+  },
+  {
+    "type": "gallery",
+    "data": [
+      {
+        "category": "OVERALL",
+        "paths": [
+          "/static/images/iqac/23-24_first_meeting/1.webp",
+          "/static/images/iqac/23-24_first_meeting/2.webp",
+          "/static/images/iqac/23-24_second_meeting/1.webp",
+          "/static/images/iqac/23-24_second_meeting/2.webp",
+          "/static/images/iqac/24-25_first_meeting/1.webp",
+          "/static/images/iqac/24-25_first_meeting/2.webp",
+          "/static/images/iqac/24-25_second_meeting/1.webp",
+          "/static/images/iqac/24-25_second_meeting/2.webp"
+        ]
+      },
+      {
+        "category": "23-24 FIRST MEETING",
+        "paths": [
+          "/static/images/iqac/23-24_first_meeting/1.webp",
+          "/static/images/iqac/23-24_first_meeting/2.webp"
+        ]
+      },
+      {
+        "category": "23-24 SECOND MEETING",
+        "paths": [
+          "/static/images/iqac/23-24_second_meeting/1.webp",
+          "/static/images/iqac/23-24_second_meeting/2.webp"
+        ]
+      },
+      {
+        "category": "24-25 FIRST MEETING",
+        "paths": [
+          "/static/images/iqac/24-25_first_meeting/1.webp",
+          "/static/images/iqac/24-25_first_meeting/2.webp"
+        ]
+      },
+      {
+        "category": "24-25 SECOND MEETING",
+        "paths": [
+          "/static/images/iqac/24-25_second_meeting/1.webp",
+          "/static/images/iqac/24-25_second_meeting/2.webp"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "strategic_plan",
+    "data": [
+      {
+        "years": "2024-29",
+        "paths": "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
+      }
+    ]
+  },
+  {
+    "type": "best_practices",
+    "data": [
+      {
+        "year": "2019-20",
+        "path": "/static/pdfs/iqac/best_practices_2019-2020.pdf"
+      },
+      {
+        "year": "2020-21",
+        "path": "/static/pdfs/iqac/best_practices_2020-2021.pdf"
+      },
+      {
+        "year": "2021-22",
+        "path": "/static/pdfs/iqac/best_practices_2021-2022.pdf"
+      },
+      {
+        "year": "2022-23",
+        "path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
+      },
+      {
+        "year": "2023-24",
+        "path": "/static/pdfs/iqac/best_practices_2023-2024.pdf"
+      }
+    ]
+  },
+  {
+    "type": "institutional_distinctiveness",
+    "data": [
+      {
+        "path": "/static/pdfs/iqac/VEC-Institutional-Distinctivenss.pdf"
+      }
+    ]
+  },
+  {
+    "type": "code_of_ethics",
+    "data": [
+      {
+        "path": "/static/pdfs/iqac/code_of_ethics.pdf"
+      }
+    ]
+  },
+  {
+    "type": "aqar",
+    "data": [
+      {
+        "year": "2018-19",
+        "path": "/static/pdfs/iqac/AQAR_2018-2019.pdf"
+      },
+      {
+        "year": "2019-20",
+        "path": "/static/pdfs/iqac/AQAR_2019-2020.pdf"
+      },
+      {
+        "year": "2020-21",
+        "path": "/static/pdfs/iqac/AQAR_2020-2021.pdf"
+      },
+      {
+        "year": "2021-22",
+        "path": "/static/pdfs/iqac/AQAR_2021-2022.pdf"
+      },
+      {
+        "year": "2022-23",
+        "path": "/static/pdfs/iqac/AQAR_2022-2023.pdf"
+      },
+      {
+        "year": "2023-24",
+        "path": "/static/pdfs/iqac/AQAR_2023-2024.pdf"
+      }
+    ]
+  },
+  {
+    "type": "iso_certificate",
+    "data": [
+      {
+        "path": "/static/pdfs/iqac/iso_certificate.pdf"
+      }
+    ]
   }
 ]
