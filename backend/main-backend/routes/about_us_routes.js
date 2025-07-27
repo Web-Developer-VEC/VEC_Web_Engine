@@ -9,6 +9,6 @@ const router = express.Router();
 
 const limiter = createRateLimiter({ max: 20, windowMs:  60 * 1000 });
 
-router.get('/about_us', limiter, xss, getAboutUs);
+router.post('/about_us', limiter, xss, getAboutUs);
 
 module.exports = router;
