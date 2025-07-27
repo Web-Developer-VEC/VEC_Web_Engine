@@ -67,7 +67,7 @@ def insert_about_us():
         collection.insert_many(documents)
     print("about_us documents inserted successfully.\n")
 
-#insert_about_us()
-insert_academic_calendar()
-insert_programmes_list()
-insert_departments_list()
+insert_about_us()
+#insert_academic_calendar()
+#insert_programmes_list()
+#insert_departments_list()
