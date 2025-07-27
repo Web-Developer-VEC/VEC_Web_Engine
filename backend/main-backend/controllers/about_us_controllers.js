@@ -1,21 +1,36 @@
-const { getDb } = require('../config/db')
+const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getAbtUs (req, res) {
-    const db = getDb()
-    const collection = db.collection('about_us');
+// GET /about_us - Fetch all structured About Us data
+async function getAboutUs(req, res) {
+    const database = getDb();
+    const aboutUsCollection = database.collection('about_us');
 
     try {
-        const about_us = await collection.find({}).toArray();
-        if (about_us.length === 0) {
-            return res.status(404).json({ message: 'No about us found' });
+        const aboutUsDocuments = await aboutUsCollection
+            .find({})
+            .project({ _id: 0, section: 1, content: 1 })
+            .toArray();
+
+        if (aboutUsDocuments.length === 0) {
+            return res.status(404).json({ message: 'No About Us data found' });
         }
-        res.status(200).json(about_us);
+
+        const structuredResponse = {};
+        for (const document of aboutUsDocuments) {
+            structuredResponse[document.section] = document.content;
+        }
+
+        return res.status(200).json({
+            message: 'About Us data fetched successfully',
+            data: structuredResponse
+        });
+
     } catch (error) {
-        console.error('Error fetching about_us:', error);
-        await logError(req, error, 'Error fetching about us', 500);
-        res.status(500).json({ error: 'Error fetching about us' });
+        console.error('Error fetching About Us content:', error);
+        await logError(req, error, 'Error fetching About Us content', 500);
+        return res.status(500).json({ error: 'Internal server error while fetching About Us content' });
     }
 }
 
-module.exports = { getAbtUs }
+module.exports = { getAboutUs };

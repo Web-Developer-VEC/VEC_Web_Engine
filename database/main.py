@@ -1062,14 +1062,22 @@ def insert_about_placement():
     print("about placement inserted successfully.")
 
 def insert_about_us():
+    collection = db['about_us']
 
-    collection = db['about_us']  
-    with open("/VEC_WEB_Engine/docs/about_us.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
+    with open("/VEC_WEB_Engine/docs/about_us.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+        top_level = data[0]
+
+        documents = []
+        for key, value in top_level.items():
+            documents.append({
+                "_id": key,
+                "section": key,
+                "content": value
+            })
+
         collection.insert_many(documents)
-
     print("about_us documents inserted successfully.\n")
-
 
 def insert_organization_chart():
 
