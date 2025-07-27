@@ -1,42 +1,41 @@
 const { getDb } = require("../config/db");
 const logError = require("../middlewares/logerror");
 
+const allowedTypes = new Set([
+  'academic_calendar',
+  'programmes_list',
+  'departments_list'
+]);
+
+// POST /academics - fetch specific academic data
 async function getAcademicsData(req, res) {
+  const { type } = req.body;
+
+  if (!type || !allowedTypes.has(type)) {
+    return res.status(400).json({ message: 'Invalid or missing academic data type' });
+  }
+
   try {
     const db = getDb();
     const collection = db.collection('academics');
 
-    const requiredTypes = ['academic_calendar', 'programmes_list', 'departments_list'];
-    const documents = await collection.find({ type: { $in: requiredTypes } }).toArray();
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
 
-    const response = {
-      academic_calendar: null,
-      programmes_list: [],
-      departments_list: [],
-    };
-
-    for (const document of documents) {
-      switch (document.type) {
-        case 'academic_calendar':
-          response.academic_calendar = document.data;
-          break;
-        case 'programmes_list':
-          response.programmes_list = document.data;
-          break;
-        case 'departments_list':
-          response.departments_list = document.data;
-          break;
-      }
+    if (!document) {
+      return res.status(404).json({ message: `Academic data for '${type}' not found` });
     }
 
-    if (!response.academic_calendar || response.programmes_list.length === 0 || response.departments_list.length === 0) {
-      return res.status(404).json({ message: 'Some academic data not found' });
-    }
+    return res.status(200).json({
+      message: `${type} data fetched successfully`,
+      data: document
+    });
 
-    return res.status(200).json(response);
   } catch (error) {
-    console.error('Error fetching academics data:', error);
-    await logError(req, error, 'Error fetching academics data', 500);
+    console.error(`Error fetching academic data for type '${req.body.type}':`, error);
+    await logError(req, error, `Error fetching academic data for type '${req.body.type}'`, 500);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }

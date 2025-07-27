@@ -9,6 +9,6 @@ const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
 
 const router = express.Router();
 
-router.get('/academics', limiter, xss, getAcademicsData);
+router.post('/academics', limiter, xss, getAcademicsData);
 
 module.exports = router; 
