@@ -1,333 +1,469 @@
-[{
-  "coordinater": {
-      "name": "Captain CHEZHIAN R",
-      "designation": "NCC Army Coordinator",
-      "image_path": "/static/images/ncc/army/chairman.webp",
-      "message":" "
-  },
-  "members": {
-    "name": [
-      "AKASH G",
-      "GOKULAKRISHNAN M",
-      "JACOBGIDEONRAJ R",
-      "JITVAN S",
-      "MUTHU KUMARAN A",
-      "NAVEN A",
-      "NAVEEN KUMAR T",
-      "SURYA DEVU V",
-      "THARUN P",
-      "VIMALKANTH B",
-      "VINEETH N",
-      "AARTHI K K",
-      "KEERTHANA B",
-      "RAKSHAA P",
-      "SUBHA SREE M",
-      "AKASHBABU K",
-      "CHARLES S",
-      "CHITHIRAI SELVAN G",
-      "ESAKKIRAJAN G",
-      "INNDHAR M",
-      "KATHIRVELS",
-      "LOKESH THAMBIRAN R",
-      "NISHANTH V",
-      "SADIK ALI K",
-      "UTHAYA KUMAR S",
-      "ABINAYA V",
-      "RUTHRA S",
-      "SAI DHARSHINI D",
-      "BALAJI S",
-      "BHARATH S",
-      "GOWTHAM R",
-      "HARESH R",
-      "JEEVESH G",
-      "LAKSHMIPRASAD P",
-      "MUTHUKUMAR A",
-      "NANDISH K",
-      "POZHILAZHAGAN E",
-      "PRANAV S",
-      "ROHAN B",
-      "SATHEESHWARAN G",
-      "SERRENKUMAR D",
-      "SUGAVANESHWARAN M",
-      "CHARUMATHI S",
-      "DEEKSHANA K",
-      "PREETHA N",
-      "PRIYADHARSHINI M",
-      "SAHANA P",
-      "SHENBAGAM R",
-      "SREENIDHI B V",
-      "SRILEKHA G"
-    ],
-    "regiment_no": [
-      "TN22SDA614501",
-      "TN22SDA614503",
-      "TN22SDA614505",
-      "TN22SDA614506",
-      "TN22SDA614507",
-      "TN22SDA614508",
-      "TN22SDA614509",
-      "TN22SDA614510",
-      "TN22SDA614511",
-      "TN22SDA614512",
-      "TN22SDA614513",
-      "TN22SWA614514",
-      "TN22SWA614521",
-      "TN22SWA614523",
-      "TN22SWA614525",
-      "TN23SDA614501",
-      "TN23SDA614502",
-      "TN23SDA614503",
-      "TN23SDA032153",
-      "TN23SDA032164",
-      "TN23SDA614507",
-      "TN23SDA614508",
-      "TN23SDA614509",
-      "TN23SDA614511",
-      "TN23SDA614512",
-      "TN23SWA614516",
-      "TN23SWA614523",
-      "TN23SWA614524",
-      "TN2024SDIA6930199",
-      "TN2024SDIA6930200",
-      "TN2024SDIA6930201",
-      "TN2024SDIA6930202",
-      "TN2024SDIA6930203",
-      "TN2024SDIA6930204",
-      "TN2024SDIA6930205",
-      "TN2024SDIA6930206",
-      "TN2024SDIA6930207",
-      "TN2024SDIA6930208",
-      "TN2024SDIA6930209",
-      "TN2024SDIA6930210",
-      "TN2024SDIA6930211",
-      "TN2024SDIA6930212",
-      "TN2024SWIA6930213",
-      "TN2024SWIA6930214",
-      "TN2024SWIA6930215",
-      "TN2024SWIA6930216",
-      "TN2024SWIA6930217",
-      "TN2024SWIA6930218",
-      "TN2024SWIA6930219",
-      "TN2024SWIA6930220"
-    ],
-    "rank": [
-      "CPL",
-      "SGT",
-      "SCUO",
-      "CPL",
-      "CPL",
-      "CPL",
-      "CQMS",
-      "CSM",
-      "CPL",
-      "SGT",
-      "SGT",
-      "SGT",
-      "CPL",
-      "CUO",
-      "CUO",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "L/CPL",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT",
-      "CDT"
-    ],
-    "year": [
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "III",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "II",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I",
-      "I"
-    ],
-    "department": [
-      "ECE/C",
-      "EEE",
-      "MECH/A",
-      "ECE/C",
-      "IT/B",
-      "MECH/B",
-      "ECE/C",
-      "AUTO",
-      "MECH/B",
-      "ECE/C",
-      "CSE/B",
-      "IT/A",
-      "EEE",
-      "ECE/A",
-      "CSE/A",
-      "CIVIL",
-      "MECH",
-      "AUTO",
-      "MECH",
-      "CSE/C",
-      "ECE/A",
-      "MECH",
-      "MECH",
-      "AI&DS/A",
-      "MECH",
-      "AI&DS/B",
-      "EIE/A",
-      "ECE/C",
-      "MECH/A",
-      "ECE/D",
-      "CIVIL/A",
-      "CIVIL/A",
-      "ECE/C",
-      "ECE/A",
-      "EEE/A",
-      "AIDS/B",
-      "CSE/D",
-      "ECE/A",
-      "MECH/A",
-      "MECH/A",
-      "EEE/A",
-      "MECH/A",
-      "ECE/A",
-      "IT/B",
-      "ECE/B",
-      "AIDS/B",
-      "AIDS/B",
-      "CSE/C",
-      "ECE/A",
-      "AIDS/A"
-    ],
-    "image_path": [
-      "static/images/ncc/army/members1.webp",
-      "static/images/ncc/army/members2.webp",
-      "static/images/ncc/army/members3.webp",
-      "static/images/ncc/army/members4.webp",
-      "static/images/ncc/army/members5.webp",
-      "static/images/ncc/army/members6.webp",
-      "static/images/ncc/army/members7.webp",
-      "static/images/ncc/army/members8.webp",
-      "static/images/ncc/army/members9.webp",
-      "static/images/ncc/army/members10.webp",
-      "static/images/ncc/army/members11.webp",
-      "static/images/ncc/army/members12.webp",
-      "static/images/ncc/army/members13.webp",
-      "static/images/ncc/army/members14.webp",
-      "static/images/ncc/army/members15.webp",
-      "static/images/ncc/army/members16.webp",
-      "static/images/ncc/army/members17.webp",
-      "static/images/ncc/army/members18.webp",
-      "static/images/ncc/army/members19.webp",
-      "static/images/ncc/army/members20.webp",
-      "static/images/ncc/army/members21.webp",
-      "static/images/ncc/army/members22.webp",
-      "static/images/ncc/army/members23.webp",
-      "static/images/ncc/army/members24.webp",
-      "static/images/ncc/army/members25.webp",
-      "static/images/ncc/army/members26.webp",
-      "static/images/ncc/army/members27.webp",
-      "static/images/ncc/army/members28.webp",
-      "static/images/ncc/army/members29.webp",
-      "static/images/ncc/army/members30.webp",
-      "static/images/ncc/army/members31.webp",
-      "static/images/ncc/army/members32.webp",
-      "static/images/ncc/army/members33.webp",
-      "static/images/ncc/army/members34.webp",
-      "static/images/ncc/army/members35.webp",
-      "static/images/ncc/army/members36.webp",
-      "static/images/ncc/army/members37.webp",
-      "static/images/ncc/army/members38.webp",
-      "static/images/ncc/army/members39.webp",
-      "static/images/ncc/army/members40.webp",
-      "static/images/ncc/army/members41.webp",
-      "static/images/ncc/army/members42.webp",
-      "static/images/ncc/army/members43.webp",
-      "static/images/ncc/army/members44.webp",
-      "static/images/ncc/army/members45.webp",
-      "static/images/ncc/army/members46.webp",
-      "static/images/ncc/army/members47.webp",
-      "static/images/ncc/army/members48.webp",
-      "static/images/ncc/army/members49.webp",
-      "static/images/ncc/army/members50.webp"
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about_us": [
+          "The VEC NCC Army embodies the motto of the National Cadet Corps (NCC) – Unity and Discipline. At Velammal Engineering College, we take immense pride in fostering leadership, discipline and patriotism among our cadets. Under the able guidance of our Associate NCC Officer (ANO), Captain R. Chezhian, the unit consistently strives for excellence in both training and service.",
+          "Our NCC Army wing provides a structured training program that instills qualities of leadership, teamwork and social responsibility. The cadets undergo rigorous physical training, drill sessions, and weapon training, preparing them to face challenges with confidence. Additionally, the unit actively participates in various social service activities, including environmental campaigns, disaster relief efforts, and blood donation camps, contributing to the welfare of society.",
+          "The VEC NCC Army also encourages participation in prestigious camps such as the Republic Day Camp (RDC), Thal Sainik Camp (TSC) and Combined Annual Training Camp (CATC). These experiences help cadets develop resilience, discipline and camaraderie, essential for personal and professional growth.",
+          "We are committed to shaping responsible citizens who uphold the values of service, courage and integrity. Through the unwavering dedication of our cadets and the support of our faculty, the VEC NCC Army continues to uphold the spirit of the NCC and inspire young minds to serve the nation with honor and pride."
+        ],
+        "objectives": [
+          "To fulfill the requirements expected in the latest socio-economic scenario in India.",
+          "To develop character, discipline, comradeship, secular outlook, ideals of selfless services and adventure spirits amongst large numbers of young citizens.",
+          "To create a pool of trained, organized and motivated youth with various leadership qualities in every walk of their life and serve the Nation irrespective of the career they choose.",
+          "To provide a sound environment conducive towards motivating large numbers of young people of India to join armed forces."
+        ],
+        "aim": [
+          "To Create a Human Resource of Organized, Trained and Motivated Youth, To Provide Leadership in all Walks of life and be Always Available for the Service of the Nation.",
+          "To Provide a Suitable Environment to Motivate the Youth to Take Up a Career in the Armed Forces.",
+          "To Develop Character, Comradeship, Discipline, Leadership, Secular Outlook, Spirit of Adventure and Ideals of Selfless Service amongst the Youth of the Country."
+        ],
+        "motto": "Unity and Discipline",
+        "cardinals": [
+          "Obey with a smile",
+          "Be punctual",
+          "Work hard and without fuss",
+          "Make no excuses and tell no lies"
+        ],
+        "pledge": [
+          "WE THE CADETS OF THE NATIONAL CADET CORPS,",
+          "DO SOLEMNLY PLEDGE THAT WE SHALL ALWAYS UPHOLD THE UNITY OF INDIA.",
+          "WE RESOLVE TO BE DISCIPLINED AND RESPONSIBLE CITIZENS OF OUR NATION.",
+          "WE SHALL UNDERTAKE POSITIVE COMMUNITY SERVICE IN THE SPIRIT OF SELFLESSNESS",
+          "AND CONCERN FOR OUR FELLOW BEINGS."
+        ],
+        "contact_address": "VEC NCC Army Room (Next to Electronic Practices Lab) Anna Auditorium, Velammal Engineering College, Surapet,Chennai - 600 066"
+      }
     ]
   },
-  "events": {
-    "image_path":[],
-    "title": [],
-    "des": []
+  {
+    "type": "events",
+    "data": []
   },
-  "awards": {
-    "title":[],
-    "image_path": [],
-      "des": []
+  {
+    "type": "team",
+    "data": [
+      {
+        "category": "faculty_coordinators",
+        "members": [
+          {
+            "name": "Captain CHEZHIAN R",
+            "designation": "NCC Army Coordinator",
+            "image_path": "/static/images/ncc/army/chairman.webp"
+          }
+        ]
+      },
+      {
+        "category": "student_coordinators",
+        "members": [
+          {
+            "name": "AKASH G",
+            "regiment_no": "TN22SDA614501",
+            "rank": "CPL",
+            "year": "III",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members1.webp"
+          },
+          {
+            "name": "GOKULAKRISHNAN M",
+            "regiment_no": "TN22SDA614503",
+            "rank": "SGT",
+            "year": "III",
+            "department": "EEE",
+            "image_path": "static/images/ncc/army/members2.webp"
+          },
+          {
+            "name": "JACOBGIDEONRAJ R",
+            "regiment_no": "TN22SDA614505",
+            "rank": "SCUO",
+            "year": "III",
+            "department": "MECH/A",
+            "image_path": "static/images/ncc/army/members3.webp"
+          },
+          {
+            "name": "JITVAN S",
+            "regiment_no": "TN22SDA614506",
+            "rank": "CPL",
+            "year": "III",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members4.webp"
+          },
+          {
+            "name": "MUTHU KUMARAN A",
+            "regiment_no": "TN22SDA614507",
+            "rank": "CPL",
+            "year": "III",
+            "department": "IT/B",
+            "image_path": "static/images/ncc/army/members5.webp"
+          },
+          {
+            "name": "NAVEN A",
+            "regiment_no": "TN22SDA614508",
+            "rank": "CPL",
+            "year": "III",
+            "department": "MECH/B",
+            "image_path": "static/images/ncc/army/members6.webp"
+          },
+          {
+            "name": "NAVEEN KUMAR T",
+            "regiment_no": "TN22SDA614509",
+            "rank": "CQMS",
+            "year": "III",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members7.webp"
+          },
+          {
+            "name": "SURYA DEVU V",
+            "regiment_no": "TN22SDA614510",
+            "rank": "CSM",
+            "year": "III",
+            "department": "AUTO",
+            "image_path": "static/images/ncc/army/members8.webp"
+          },
+          {
+            "name": "THARUN P",
+            "regiment_no": "TN22SDA614511",
+            "rank": "CPL",
+            "year": "III",
+            "department": "MECH/B",
+            "image_path": "static/images/ncc/army/members9.webp"
+          },
+          {
+            "name": "VIMALKANTH B",
+            "regiment_no": "TN22SDA614512",
+            "rank": "SGT",
+            "year": "III",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members10.webp"
+          },
+          {
+            "name": "VINEETH N",
+            "regiment_no": "TN22SDA614513",
+            "rank": "SGT",
+            "year": "III",
+            "department": "CSE/B",
+            "image_path": "static/images/ncc/army/members11.webp"
+          },
+          {
+            "name": "AARTHI K K",
+            "regiment_no": "TN22SWA614514",
+            "rank": "SGT",
+            "year": "III",
+            "department": "IT/A",
+            "image_path": "static/images/ncc/army/members12.webp"
+          },
+          {
+            "name": "KEERTHANA B",
+            "regiment_no": "TN22SWA614521",
+            "rank": "CPL",
+            "year": "III",
+            "department": "EEE",
+            "image_path": "static/images/ncc/army/members13.webp"
+          },
+          {
+            "name": "RAKSHAA P",
+            "regiment_no": "TN22SWA614523",
+            "rank": "CUO",
+            "year": "III",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members14.webp"
+          },
+          {
+            "name": "SUBHA SREE M",
+            "regiment_no": "TN22SWA614525",
+            "rank": "CUO",
+            "year": "III",
+            "department": "CSE/A",
+            "image_path": "static/images/ncc/army/members15.webp"
+          },
+          {
+            "name": "AKASHBABU K",
+            "regiment_no": "TN23SDA614501",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "CIVIL",
+            "image_path": "static/images/ncc/army/members16.webp"
+          },
+          {
+            "name": "CHARLES S",
+            "regiment_no": "TN23SDA614502",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "MECH",
+            "image_path": "static/images/ncc/army/members17.webp"
+          },
+          {
+            "name": "CHITHIRAI SELVAN G",
+            "regiment_no": "TN23SDA614503",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "AUTO",
+            "image_path": "static/images/ncc/army/members18.webp"
+          },
+          {
+            "name": "ESAKKIRAJAN G",
+            "regiment_no": "TN23SDA032153",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "MECH",
+            "image_path": "static/images/ncc/army/members19.webp"
+          },
+          {
+            "name": "INNDHAR M",
+            "regiment_no": "TN23SDA032164",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "CSE/C",
+            "image_path": "static/images/ncc/army/members20.webp"
+          },
+          {
+            "name": "KATHIRVELS",
+            "regiment_no": "TN23SDA614507",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members21.webp"
+          },
+          {
+            "name": "LOKESH THAMBIRAN R",
+            "regiment_no": "TN23SDA614508",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "MECH",
+            "image_path": "static/images/ncc/army/members22.webp"
+          },
+          {
+            "name": "NISHANTH V",
+            "regiment_no": "TN23SDA614509",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "MECH",
+            "image_path": "static/images/ncc/army/members23.webp"
+          },
+          {
+            "name": "SADIK ALI K",
+            "regiment_no": "TN23SDA614511",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "AI&DS/A",
+            "image_path": "static/images/ncc/army/members24.webp"
+          },
+          {
+            "name": "UTHAYA KUMAR S",
+            "regiment_no": "TN23SDA614512",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "MECH",
+            "image_path": "static/images/ncc/army/members25.webp"
+          },
+          {
+            "name": "ABINAYA V",
+            "regiment_no": "TN23SWA614516",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "AI&DS/B",
+            "image_path": "static/images/ncc/army/members26.webp"
+          },
+          {
+            "name": "RUTHRA S",
+            "regiment_no": "TN23SWA614523",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "EIE/A",
+            "image_path": "static/images/ncc/army/members27.webp"
+          },
+          {
+            "name": "SAI DHARSHINI D",
+            "regiment_no": "TN23SWA614524",
+            "rank": "L/CPL",
+            "year": "II",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members28.webp"
+          },
+          {
+            "name": "BALAJI S",
+            "regiment_no": "TN2024SDIA6930199",
+            "rank": "CDT",
+            "year": "I",
+            "department": "MECH/A",
+            "image_path": "static/images/ncc/army/members29.webp"
+          },
+          {
+            "name": "BHARATH S",
+            "regiment_no": "TN2024SDIA6930200",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/D",
+            "image_path": "static/images/ncc/army/members30.webp"
+          },
+          {
+            "name": "GOWTHAM R",
+            "regiment_no": "TN2024SDIA6930201",
+            "rank": "CDT",
+            "year": "I",
+            "department": "CIVIL/A",
+            "image_path": "static/images/ncc/army/members31.webp"
+          },
+          {
+            "name": "HARESH R",
+            "regiment_no": "TN2024SDIA6930202",
+            "rank": "CDT",
+            "year": "I",
+            "department": "CIVIL/A",
+            "image_path": "static/images/ncc/army/members32.webp"
+          },
+          {
+            "name": "JEEVESH G",
+            "regiment_no": "TN2024SDIA6930203",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/C",
+            "image_path": "static/images/ncc/army/members33.webp"
+          },
+          {
+            "name": "LAKSHMIPRASAD P",
+            "regiment_no": "TN2024SDIA6930204",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members34.webp"
+          },
+          {
+            "name": "MUTHUKUMAR A",
+            "regiment_no": "TN2024SDIA6930205",
+            "rank": "CDT",
+            "year": "I",
+            "department": "EEE/A",
+            "image_path": "static/images/ncc/army/members35.webp"
+          },
+          {
+            "name": "NANDISH K",
+            "regiment_no": "TN2024SDIA6930206",
+            "rank": "CDT",
+            "year": "I",
+            "department": "AIDS/B",
+            "image_path": "static/images/ncc/army/members36.webp"
+          },
+          {
+            "name": "POZHILAZHAGAN E",
+            "regiment_no": "TN2024SDIA6930207",
+            "rank": "CDT",
+            "year": "I",
+            "department": "CSE/D",
+            "image_path": "static/images/ncc/army/members37.webp"
+          },
+          {
+            "name": "PRANAV S",
+            "regiment_no": "TN2024SDIA6930208",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members38.webp"
+          },
+          {
+            "name": "ROHAN B",
+            "regiment_no": "TN2024SDIA6930209",
+            "rank": "CDT",
+            "year": "I",
+            "department": "MECH/A",
+            "image_path": "static/images/ncc/army/members39.webp"
+          },
+          {
+            "name": "SATHEESHWARAN G",
+            "regiment_no": "TN2024SDIA6930210",
+            "rank": "CDT",
+            "year": "I",
+            "department": "MECH/A",
+            "image_path": "static/images/ncc/army/members40.webp"
+          },
+          {
+            "name": "SERRENKUMAR D",
+            "regiment_no": "TN2024SDIA6930211",
+            "rank": "CDT",
+            "year": "I",
+            "department": "EEE/A",
+            "image_path": "static/images/ncc/army/members41.webp"
+          },
+          {
+            "name": "SUGAVANESHWARAN M",
+            "regiment_no": "TN2024SDIA6930212",
+            "rank": "CDT",
+            "year": "I",
+            "department": "MECH/A",
+            "image_path": "static/images/ncc/army/members42.webp"
+          },
+          {
+            "name": "CHARUMATHI S",
+            "regiment_no": "TN2024SWIA6930213",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members43.webp"
+          },
+          {
+            "name": "DEEKSHANA K",
+            "regiment_no": "TN2024SWIA6930214",
+            "rank": "CDT",
+            "year": "I",
+            "department": "IT/B",
+            "image_path": "static/images/ncc/army/members44.webp"
+          },
+          {
+            "name": "PREETHA N",
+            "regiment_no": "TN2024SWIA6930215",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/B",
+            "image_path": "static/images/ncc/army/members45.webp"
+          },
+          {
+            "name": "PRIYADHARSHINI M",
+            "regiment_no": "TN2024SWIA6930216",
+            "rank": "CDT",
+            "year": "I",
+            "department": "AIDS/B",
+            "image_path": "static/images/ncc/army/members46.webp"
+          },
+          {
+            "name": "SAHANA P",
+            "regiment_no": "TN2024SWIA6930217",
+            "rank": "CDT",
+            "year": "I",
+            "department": "AIDS/B",
+            "image_path": "static/images/ncc/army/members47.webp"
+          },
+          {
+            "name": "SHENBAGAM R",
+            "regiment_no": "TN2024SWIA6930218",
+            "rank": "CDT",
+            "year": "I",
+            "department": "CSE/C",
+            "image_path": "static/images/ncc/army/members48.webp"
+          },
+          {
+            "name": "SREENIDHI B V",
+            "regiment_no": "TN2024SWIA6930219",
+            "rank": "CDT",
+            "year": "I",
+            "department": "ECE/A",
+            "image_path": "static/images/ncc/army/members49.webp"
+          },
+          {
+            "name": "SRILEKHA G",
+            "regiment_no": "TN2024SWIA6930220",
+            "rank": "CDT",
+            "year": "I",
+            "department": "AIDS/A",
+            "image_path": "static/images/ncc/army/members50.webp"
+          }
+        ]
+      }
+    ]
   },
-  "news": {"updates": []}
-}]
+  {
+    "type": "awards",
+    "data": []
+  }
+]

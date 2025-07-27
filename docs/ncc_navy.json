@@ -1,582 +1,849 @@
-[{
-  "coordinater": {
-      "name": "Sub. LT DHANALAKSHMI R",
-      "designation": "NCC Navy Coordinator",
-      "image_path": "/static/images/ncc/navy/chairman.webp",
-      "message":" " 
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about_us": [
+          "National Cadet Corps is a Tri-Services Organization, comprising the Army, Navy and Air Force, engaged in grooming the youth of the country into disciplined and patriotic citizens.",
+          "The National Cadet Corps (NCC) is a youth development movement. It has enormous potential for nation-building.",
+          "The NCC provides opportunities to the youth of the country for their all-round development with a sense of Duty, Commitment, Dedication, Discipline and Moral Values so that they become able leaders and useful citizens.",
+          "The NCC provides exposure to the cadets in a wide range of activities, with a distinct emphasis on Social Services, Discipline and Adventure Training.",
+          "The NCC is open to all regular students of schools and colleges on a voluntary basis all over India.",
+          "The cadets have no liability for active military service once they complete their course but are given preference over normal candidates during selections based on the achievements in the corps."
+        ],
+        "vision": "Empower volunteer youth to become potential leaders and responsible citizens of the country.",
+        "mission": "To develop leadership and character qualities, mold discipline and nurture social integration and cohesion through multi-faceted programs conducted in a military environment.",
+        "aim": [
+          "The ‘Aims’ of the NCC laid out in 1988 have stood the test of time and continue to meet the requirements expected of it in the current socio-economic scenario of the country.",
+          "To develop good qualities like character, commandership, discipline, leadership, secular outlook and selfless service.",
+          "To create a human resource of trained and motivated youth.",
+          "To provide an environment to motivate youth for a career in the Armed Forces."
+        ],
+        "motto": "The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec 1957. It brings together the youth from different parts of the country, molding them into united, secular and disciplined citizens.",
+        "pledge": "We, the cadets of the National Cadet Corps, do solemnly pledge that we shall always uphold the unity of India. We resolve to be disciplined and responsible citizens of our nation."
+      }
+    ]
   },
-  "members": {
-  "name": [
-    "ADITHYA JAISWAL",
-    "MANOJ K",
-    "PUGAZHENDI B",
-    "RAJATH RAJ A",
-    "ROHAN RAGAVENDRA G",
-    "ROSHIN ROBIN",
-    "SANJAI D",
-    "SHALIM UDDIN MD",
-    "THARUN S",
-    "BHARATHI S",
-    "ROSHINI G",
-    "SRIMATHI G",
-    "DINESHWARAN S",
-    "DRAVID A",
-    "HARISH J",
-    "MANIKANDAN K",
-    "REONSLY KC",
-    "AMULYA AS",
-    "BHARATHI D",
-    "GARPAKAVALLI A",
-    "MADHUMEETHA D",
-    "ROHINI V",
-    "SANJANA SWATHI D",
-    "BALASUBARAMANIAN.S",
-    "HARIDEEPAK P",
-    "HARIHARAN S",
-    "MONISH G",
-    "PIRAVEEN P",
-    "RUTHRESH DR",
-    "UDHAYAKUMAR T",
-    "SIVAPATHIESWARAN S",
-    "THAMARAI SELVAN",
-    "YOGESH RAM M",
-    "AKSHAYA KARTHIKAYINI V",
-    "NARMATHA M",
-    "PRIYA M",
-    "ASHWIN R",
-    "ARUN KUMAR V",
-    "CHANDRA PRAKESH L",
-    "DEVAGIRI B",
-    "HARISH KUMAR R",
-    "HARISH",
-    "HARSHA VARDHAN P V",
-    "JABEZ IMMANUEL V",
-    "JEFFY D MARTIN",
-    "MARINA JOHN JERIN J",
-    "NAVANEETH S",
-    "PRASAD S",
-    "REJIN R",
-    "RAGUL KANNAN J",
-    "THINAKAR K",
-    "VISHWA B",
-    "VIGNESH BABU M",
-    "YUVARAJ S",
-    "AKSHAYA A",
-    "HIMAVATHI R",
-    "PRAVINDHIYA SRI D",
-    "PAVITHRA J",
-    "SHIVANI KG",
-    "SHOBITA M",
-    "SRINITHI KARTHICK"
-  ],
-  "regiment_no": [
-    "TN/21/SDN/928502",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/928526",
-    "TN/21/SDN/92852",
-    "TN/21/SDN/928524",
-    "TN/21/SWN/928526",
-    "TN/21/SWN/928529",
-    "TN/21/SWN/928531",
-    "TN/22/SDN/928501",
-    "TN/22/SDN/928502",
-    "TN/22/SDN/928503",
-    "TN/22/SDN/928504",
-    "TN/22/SDN/928510",
-    "TN/22/SWN/928516",
-    "TN/22/SWN/928517",
-    "TN/22/SWN/928519",
-    "TN/22/SWN/928522",
-    "TN/22/SWN/928524",
-    "TN/22/SWN/928529",
-    "TN/23/SDN/928501",
-    "TN/23/SDN/928502",
-    "TN/23/SDN/928503",
-    "TN/23/SDN/928505",
-    "TN/23/SDN/928507",
-    "TN/23/SDN/928513",
-    "TN/23/SDN/928514",
-    "TN/23/SDN/928515",
-    "TN/23/SDN/928516",
-    "TN/23/SDN/928517",
-    "TN/23/SWN/928518",
-    "TN/23/SWN/928521",
-    "TN/23/SWN/928523",
-    "TN/24/SDN/928501",
-    "TN/24/SDN/928502",
-    "TN/24/SDN/928503",
-    "TN/24/SDN/928504",
-    "TN/24/SDN/928505",
-    "TN/24/SDN/928506",
-    "TN/24/SDN/928507",
-    "TN/24/SDN/928508",
-    "TN/24/SDN/928509",
-    "TN/24/SDN/928510",
-    "TN/24/SDN/928511",
-    "TN/24/SDN/928512",
-    "TN/24/SDN/928513",
-    "TN/24/SDN/928514",
-    "TN/24/SDN/928515",
-    "TN/24/SDN/928516",
-    "TN/24/SDN/928517",
-    "TN/24/SDN/928518",
-    "TN/24/SWN/928519",
-    "TN/24/SWN/928520",
-    "TN/24/SWN/928521",
-    "TN/24/SWN/928522",
-    "TN/24/SWN/928523",
-    "TN/24/SWN/928524",
-    "TN/24/SWN/928525"
-  ],
-  "rank": [
-    "LC",
-    "CC",
-    "POC",
-    "NCI",
-    "NCI",
-    "LC",
-    "NCI",
-    "LC",
-    "POC",
-    "LC",
-    "LC",
-    "LC",
-    "LC",
-    "LC",
-    "POC",
-    "POC",
-    "POC",
-    "NCI",
-    "LC",
-    "LC",
-    "LC",
-    "LC",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCI",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII",
-    "NCII"
-  ],
-  "year": [],
-  "universityno": [
-    "113221031008",
-    "113221081041",
-    "113220031101",
-    "113221081053",
-    "113221041107",
-    "113221081109",
-    "113221081059",
-    "113221081066",
-    "113221041148",
-    "113221031027",
-    "113221051038",
-    "113221021027",
-    "113222011004",
-    "113222072023",
-    "113222071027",
-    "113222071027",
-    "113222031113",
-    "113222072006",
-    "113222031025",
-    "113222072027",
-    "113222072054",
-    "113222072081",
-    "113222041134",
-    "113223032010",
-    "113223072037",
-    "113223041041",
-    "113223051027",
-    "113223032037",
-    "113223081038",
-    "113223031220",
-    "113223051050",
-    "113223081044",
-    "113223031242",
-    "113223072009",
-    "113223051029",
-    "113223061018",
-    "113224041017",
-    "113224081005",
-    "113224014027",
-    "113224051008",
-    "113224081011",
-    "113224051013",
-    "113224081012",
-    "113224041065",
-    "113224071042",
-    "113224061020",
-    "113224081028",
-    "113224081032",
-    "113224081037",
-    "113224041147",
-    "113224031218",
-    "113224061030",
-    "113224071112",
-    "113224051051",
-    "113224041004",
-    "113224031068",
-    "113224071071",
-    "113224011009",
-    "113224031193",
-    "113224041189",
-    "113224031200"
-  ],
-  "department": [
-    "CSE",
-    "MECH",
-    "CSE",
-    "MECH",
-    "ECE",
-    "ECE",
-    "MECH",
-    "MECH",
-    "ECE",
-    "ECE",
-    "EEE",
-    "CIVIL",
-    "AUTO",
-    "AI & DS",
-    "IT",
-    "MECH",
-    "CSE",
-    "AI & DS",
-    "CSE",
-    "AI & DS",
-    "ECE",
-    "AI & DS",
-    "ECE",
-    "CSE (CS)",
-    "AI & DS",
-    "EEE",
-    "EEE",
-    "CSE (CS)",
-    "MECH",
-    "CSE",
-    "EEE",
-    "MECH",
-    "CSE",
-    "AI & DS",
-    "EEE",
-    "EIE",
-    "null",
-    "null",
-    "ECE",
-    "EEE",
-    "MECH",
-    "EEE",
-    "MECH",
-    "ECE",
-    "null",
-    "null",
-    "MECH",
-    "MECH",
-    "MECH",
-    "null",
-    "CSE",
-    "EIE",
-    "IT",
-    "EEE",
-    "ECE",
-    "CSE",
-    "IT",
-    "AUTO",
-    "CSE",
-    "null",
-    "CSE"
-  ],
-  "image_path": [ "static/images/ncc/navy/members01.webp",
-                  "static/images/ncc/navy/members02.webp",
-                  "static/images/ncc/navy/members03.webp",
-                  "static/images/ncc/navy/members04.webp",
-                  "static/images/ncc/navy/members05.webp",
-                  "static/images/ncc/navy/members06.webp",
-                  "static/images/ncc/navy/members07.webp",
-                  "static/images/ncc/navy/members08.webp",
-                  "static/images/ncc/navy/members09.webp",
-                  "static/images/ncc/navy/members10.webp",
-                  "static/images/ncc/navy/members11.webp",
-                  "static/images/ncc/navy/members12.webp",
-                  "static/images/ncc/navy/members13.webp",
-                  "static/images/ncc/navy/members14.webp",
-                  "static/images/ncc/navy/members15.webp",
-                  "static/images/ncc/navy/members16.webp",
-                  "static/images/ncc/navy/members17.webp",
-                  "static/images/ncc/navy/members18.webp",
-                  "static/images/ncc/navy/members19.webp",
-                  "static/images/ncc/navy/members20.webp",
-                  "static/images/ncc/navy/members21.webp",
-                  "static/images/ncc/navy/members22.webp",
-                  "static/images/ncc/navy/members23.webp",
-                  "static/images/ncc/navy/members24.webp",
-                  "static/images/ncc/navy/members25.webp",
-                  "static/images/ncc/navy/members26.webp",
-                  "static/images/ncc/navy/members27.webp",
-                  "static/images/ncc/navy/members28.webp",
-                  "static/images/ncc/navy/members29.webp",
-                  "static/images/ncc/navy/members30.webp",
-                  "static/images/ncc/navy/members31.webp",
-                  "static/images/ncc/navy/members32.webp",
-                  "static/images/ncc/navy/members33.webp",
-                  "static/images/ncc/navy/members34.webp",
-                  "static/images/ncc/navy/members35.webp",
-                  "static/images/ncc/navy/members36.webp",
-                  "static/images/ncc/navy/members37.webp",
-                  "static/images/ncc/navy/members38.webp",
-                  "static/images/ncc/navy/members39.webp",
-                  "static/images/ncc/navy/members40.webp",
-                  "static/images/ncc/navy/members41.webp",
-                  "static/images/ncc/navy/members42.webp",
-                  "static/images/ncc/navy/members43.webp",
-                  "static/images/ncc/navy/members44.webp",
-                  "static/images/ncc/navy/members45.webp",
-                  "static/images/ncc/navy/members46.webp",
-                  "static/images/ncc/navy/members47.webp",
-                  "static/images/ncc/navy/members48.webp",
-                  "static/images/ncc/navy/members49.webp",
-                  "static/images/ncc/navy/members50.webp",
-                  "static/images/ncc/navy/members51.webp",
-                  "static/images/ncc/navy/members52.webp",
-                  "static/images/ncc/navy/members53.webp",
-                  "static/images/ncc/navy/members54.webp",
-                  "static/images/ncc/navy/members55.webp",
-                  "static/images/ncc/navy/members56.webp",
-                  "static/images/ncc/navy/members57.webp",
-                  "static/images/ncc/navy/members58.webp",
-                  "static/images/ncc/navy/members59.webp",
-                  "static/images/ncc/navy/members60.webp"
-                ]
+  {
+    "type": "events",
+    "data": [
+      {
+        "image_path": "static/images/ncc/navy/events01.webp",
+        "title": "INTERNATIONAL YOGA DAY 2018",
+        "description": "30 Cadets participated in YOGA DAY event on 21st JUNE 2018. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events02.webp",
+        "title": "Independence Day Parade 2018",
+        "description": "The Principal Hoisted the National Flag and the Cadets did March Past Ceremony along with Cultural Programs. VENUE: Velammal Engineering College"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events03.webp",
+        "title": "NTAC- Naval Technical Attachment Camp 2018",
+        "description": "17(III&II)year Cadets attended the camp. Technical trends in Indian Navy was taught. VENUE: INS Shivaji,Lonawala"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events04.webp",
+        "title": "Trekking Camp 2018",
+        "description": "(5) I year cadets attended the camp. VENUE: Tirupathi- AP"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events05.webp",
+        "title": "Social Awareness Activities",
+        "description": "25 Cadets participated in the various Social Awareness Events VENUE: Velammal Engineering College"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events06.webp",
+        "title": "International Coastal Cleanup Day 2018",
+        "description": "15 Cadets participated in the event. VENUE: ECR Beach"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events07.webp",
+        "title": "Rowing Simulator Trg (Boat Pulling Trg)",
+        "description": "24 (III&II) Year Cadets participated in the event. VENUE: Anna University Campus"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events08.webp",
+        "title": "70th NCC DAY, Navy Day & Flag Day Celebrations",
+        "description": "45 Cadets participated in the event (19/12/2018). VENUE: Velammal Engineering College"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events09.webp",
+        "title": "CATC- Combined Annual Training Camp 2019",
+        "description": "23(II&III) Cadets attended the camp. VENUE: Sathyabama University"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events10.webp",
+        "title": "Republic Day Celebration 2019",
+        "description": "All the Navy, Army Cadets and Students made the day with flag hoisting,drill,Sequence and followed by culturals"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events11.webp",
+        "title": "CADO FIESTA",
+        "description": "23 cadets participated in the event held at Ambedkar Law College, Tharamani"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events12.webp",
+        "title": "RDC LAUNCH",
+        "description": "Cadet NC I Yashmitha got selected to the Prestigious RDC- DELHI and also received a Best Cadet Award in the Selection Camps held from 27th Aug 2018 to 26 Jan 2019."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events13.webp",
+        "title": "ANO TRAINING",
+        "description": "ANO attended training at OTA GWAILOR"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events14.webp",
+        "title": "RDC FELICITATION",
+        "description": "1 SW attended Republic Day Camp DELHI"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events15.webp",
+        "title": "44th Women's day celebration",
+        "description": "8 SW + 1 ANO participated in the event held at kalavanarar Angam Chennai"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events16.webp",
+        "title": "WORLD WATER CONSERVATION DAY",
+        "description": "24 cadets attended in the event at Velammal engineering clg"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events17.webp",
+        "title": "INTERNATIONAL DAY AGAINST DRUG ABUSE & ILLICIT TRAFFIC",
+        "description": "25 cadets participated in this event held at Velammal engineering clg"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events18.webp",
+        "title": "INDEPENDENCE DAY",
+        "description": "25 cadets took part in Independence Day Parade held in VEC campus"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events19.webp",
+        "title": "NAVAL TECHNICAL ATTACHMENT CAMP (NTAC)",
+        "description": "21 cadets attended this camp held in INS VALSURA"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events20.webp",
+        "title": "INTERNATIONAL YOGA DAY",
+        "description": "All cadets involved in spreading awareness about yoga."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events21.webp",
+        "title": "ALL INDIA NAU SAINIK CAMP",
+        "description": "24 SDs + 12SWs representing Tamil Nadu at Vishakapatinam among which 2 cadets from our college"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events22.webp",
+        "title": "71ST NCC DAY CELEBRATIONS",
+        "description": "15 cadets attended the event held at kalaivanar arangam."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events23.webp",
+        "title": "COMBINED ANNUAL TRAINING CAMP",
+        "description": "21 cadets attended and took part in various events."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events24.webp",
+        "title": "REPUBLIC DAY CAMP",
+        "description": "1 SD cadet from our college representing Tamil Nadu at Delhi."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events25.webp",
+        "title": "MARINA REPUBLIC DAY CELEBRATION CAMP",
+        "description": "2 SDs + 2 SWs took part in Marina Republic Day parade"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events26.webp",
+        "title": "REPUBLIC DAY CELEBRATION",
+        "description": "20 cadets participated in Republic Day Parade held at the Campus of Velammal Engineering College"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events27.webp",
+        "title": "CADO FIESTA",
+        "description": "30 cadets participated in the event held at Ambedkar Law University."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events28.webp",
+        "title": "B CERT EXAMINATION",
+        "description": "13 cadets wrote their Bcert examinations at Anna University"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events29.webp",
+        "title": "OCEAN SAILING",
+        "description": "3 SDs participated in sailing expedition"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events30.webp",
+        "title": "C CERT EXAMINATION",
+        "description": "12 cadets gave their C cert examination"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events31.webp",
+        "title": "RDC, NSC, MRDC FELICITATION",
+        "description": "29 cadets took part in the felicitation and the cadets with National achievements were awarded by Dr. N Duraipandian (Principal)"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events32.webp",
+        "title": "BEST CADET & BEST ANO AWARDS",
+        "description": "1 ANO + 2 cadets were awarded."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events33.webp",
+        "title": "WATER CONSERVATION DAY",
+        "description": "24 cadets participated in the event held at VEC campus"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events34.webp",
+        "title": "VIRTUAL INTERNATIONAL YOGA DAY CELEBRATION",
+        "description": "21 cadets plus ANO participated in the event held through online"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events35.webp",
+        "title": "TREE PLANTATION",
+        "description": "21 cadets plus ANO participated in the event held through online"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events36.webp",
+        "title": "KARGIL VIJAY DIWAS QUIZ COMPETITIONS",
+        "description": "1 ANO + 221 cadets plus ANO participated in the online held by Jeppiar engineering college and our cadets were awarded"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events37.webp",
+        "title": "INDEPENDENCE DAY SPECIAL WEBINAR",
+        "description": "21 cadets , ANO of various colleges and 80+ participants participated through webinar"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events38.webp",
+        "title": "WEBINAR ON FIT INDIA",
+        "description": "21 cadets , ANO of various colleges and 50+ participants participated through webinar"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events39.webp",
+        "title": "PLOG RUN",
+        "description": "21 cadets participated in the event held at neighbour hood"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events40.webp",
+        "title": "WEBINAR ON NEW EDUCATION POLICY",
+        "description": "Cadets and ANO of various colleges participated in the virtual awareness program"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events41.webp",
+        "title": "CREATING AWARENESS ON PERSONAL HYGENE DAY",
+        "description": "8 SDs participated in this event held through online"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events42.webp",
+        "title": "CLEANLINESS DRIVE",
+        "description": "8 SDs participated in this event held in neighbour hood"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events43.webp",
+        "title": "AWARENESS OVER ANTI CORRUPTION",
+        "description": "21 cadets plus ANO participated in this event held through online"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events44.webp",
+        "title": "WEBINAR ON HOW TO SPREAD GREENERY",
+        "description": "21 cadets plus ANO and students from various colleges and NGOs participated in this event held through online"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events45.webp",
+        "title": "OVERSEAS DEPLOYMENT CAMP",
+        "description": "2 SD cadets from our college represented INDIA's NCC in Four Foreign Countries."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events46.webp",
+        "title": "B CERT EXAMINATION",
+        "description": "6 SDs participated in the exam held at anna university"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events47.webp",
+        "title": "C CERT EXAMINATION",
+        "description": "13 cadets participated in the exam held at Secretariat office"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events48.webp",
+        "title": "EBSB PHASE 7 CAMP",
+        "description": "3 SD cadets took part in EBSB Phase 7 camp held between various Directorates."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events49.webp",
+        "title": "TREE PLANTATION DRIVE",
+        "description": "42 cadets participated and over 500 sapling are being planted as a tradition till date."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events50.webp",
+        "title": "AWARENESS WEBINAR ON COVID 19",
+        "description": "40 cadets along with ANO and chief guest Dr as speaker participated in the Webinar session and spread the awareness about covid 19"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events51.webp",
+        "title": "AWARENESS WEBINAR ON YOGA",
+        "description": "40 cadets plus ANO celebrated yoga day discussing the importance of yoga through webinar."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events52.webp",
+        "title": "PLOG RUN",
+        "description": "7 cadets participated in the Plog Run event and Rally creating awareness among public with cadets of various Institutions across Chennai"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events53.webp",
+        "title": "SWARNIM VIJAY VARSH",
+        "description": "5 cadets attended the air show at IAF station Tambaram"
+      },
+      {
+        "image_path": "static/images/ncc/navy/events54.webp",
+        "title": "INDEPENDENCE DAY CELEBRATION",
+        "description": "All the cadets plus ex cadets plus ANO celebrated 75 th independence day at the campus of VEC."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events55.webp",
+        "title": "EBSB PHASE 8",
+        "description": "1 SW cadet took part in EBSB Phase 8 camp held between two Directorates."
+      },
+      {
+        "image_path": "static/images/ncc/navy/events56.webp",
+        "title": "ROWING SIMULATOR TRAINING",
+        "description": "12 cadets Participated in the event conducted at anna university."
+      }
+    ]
   },
-  "events": {
-      "image_path":["static/images/ncc/navy/events01.webp",
-                    "static/images/ncc/navy/events02.webp",
-                    "static/images/ncc/navy/events03.webp",
-                    "static/images/ncc/navy/events04.webp",
-                    "static/images/ncc/navy/events05.webp",
-                    "static/images/ncc/navy/events06.webp",
-                    "static/images/ncc/navy/events07.webp",
-                    "static/images/ncc/navy/events08.webp",
-                    "static/images/ncc/navy/events09.webp",
-                    "static/images/ncc/navy/events10.webp",
-                    "static/images/ncc/navy/events11.webp",
-                    "static/images/ncc/navy/events12.webp",
-                    "static/images/ncc/navy/events13.webp",
-                    "static/images/ncc/navy/events14.webp",
-                    "static/images/ncc/navy/events15.webp",
-                    "static/images/ncc/navy/events16.webp",
-                    "static/images/ncc/navy/events17.webp",
-                    "static/images/ncc/navy/events18.webp",
-                    "static/images/ncc/navy/events19.webp",
-                    "static/images/ncc/navy/events20.webp",
-                    "static/images/ncc/navy/events21.webp",
-                    "static/images/ncc/navy/events22.webp",
-                    "static/images/ncc/navy/events23.webp",
-                    "static/images/ncc/navy/events24.webp",
-                    "static/images/ncc/navy/events25.webp",
-                    "static/images/ncc/navy/events26.webp",
-                    "static/images/ncc/navy/events27.webp",
-                    "static/images/ncc/navy/events28.webp",
-                    "static/images/ncc/navy/events29.webp",
-                    "static/images/ncc/navy/events30.webp",
-                    "static/images/ncc/navy/events31.webp",
-                    "static/images/ncc/navy/events32.webp",
-                    "static/images/ncc/navy/events33.webp",
-                    "static/images/ncc/navy/events34.webp",
-                    "static/images/ncc/navy/events35.webp",
-                    "static/images/ncc/navy/events36.webp",
-                    "static/images/ncc/navy/events37.webp",
-                    "static/images/ncc/navy/events38.webp",
-                    "static/images/ncc/navy/events39.webp",
-                    "static/images/ncc/navy/events40.webp",
-                    "static/images/ncc/navy/events41.webp",
-                    "static/images/ncc/navy/events42.webp",
-                    "static/images/ncc/navy/events43.webp",
-                    "static/images/ncc/navy/events44.webp",
-                    "static/images/ncc/navy/events45.webp",
-                    "static/images/ncc/navy/events46.webp",
-                    "static/images/ncc/navy/events47.webp",
-                    "static/images/ncc/navy/events48.webp",
-                    "static/images/ncc/navy/events49.webp",
-                    "static/images/ncc/navy/events50.webp",
-                    "static/images/ncc/navy/events51.webp",
-                    "static/images/ncc/navy/events52.webp",
-                    "static/images/ncc/navy/events53.webp",
-                    "static/images/ncc/navy/events54.webp",
-                    "static/images/ncc/navy/events55.webp"
-      ],
-      "title": ["INTERNATIONAL YOGA DAY 2018",
-                "Independence Day Parade 2018",
-                "NTAC- Naval Technical Attachment Camp 2018",
-                "Trekking Camp 2018",
-                "Social Awareness Activities",
-                "International Coastal Cleanup Day 2018",
-                "Rowing Simulator Trg (Boat Pulling Trg)",
-                "70th NCC DAY, Navy Day & Flag Day Celebrations",
-                "CATC- Combined Annual Training Camp 2019",
-                "Republic Day Celebration 2019",
-                "CADO FIESTA",
-                "RDC LAUNCH",
-                "ANO TRAINING",
-                "RDC FELICITATION",
-                "44th Women's day celebration",
-                "WORLD WATER CONSERVATION DAY",
-                "INTERNATIONAL DAY AGAINST DRUG ABUSE & ILLICIT TRAFFIC",
-                "INDEPENDENCE DAY",
-                "NAVAL TECHNICAL ATTACHMENT CAMP (NTAC)",
-                "INTERNATIONAL YOGA DAY",
-                "ALL INDIA NAU SAINIK CAMP",
-                "71ST NCC DAY CELEBRATIONS",
-                "COMBINED ANNUAL TRAINING CAMP",
-                "REPUBLIC DAY CAMP",
-                "MARINA REPUBLIC DAY CELEBRATION CAMP",
-                "REPUBLIC DAY CELEBRATION",
-                "CADO FIESTA",
-                "B CERT EXAMINATION",
-                "OCEAN SAILING",
-                "C CERT EXAMINATION",
-                "RDC, NSC, MRDC FELICITATION",
-                "BEST CADET & BEST ANO AWARDS",
-                "WATER CONSERVATION DAY",
-                "VIRTUAL INTERNATIONAL YOGA DAY CELEBRATION",
-                "TREE PLANTATION",
-                "KARGIL VIJAY DIWAS QUIZ COMPETITIONS",
-                "INDEPENDENCE DAY SPECIAL WEBINAR",
-                "WEBINAR ON FIT INDIA",
-                "PLOG RUN",
-                "WEBINAR ON NEW EDUCATION POLICY",
-                "CREATING AWARENESS ON PERSONAL HYGENE DAY",
-                "CLEANLINESS DRIVE",
-                "AWARENESS OVER ANTI CORRUPTION",
-                "WEBINAR ON HOW TO SPREAD GREENERY",
-                "OVERSEAS DEPLOYMENT CAMP",
-                "B CERT EXAMINATION",
-                "C CERT EXAMINATION",
-                "EBSB PHASE 7 CAMP",
-                "TREE PLANTATION DRIVE",
-                "AWARENESS WEBINAR ON COVID 19",
-                "AWARENESS WEBINAR ON YOGA",
-                "PLOG RUN",
-                "SWARNIM VIJAY VARSH",
-                "INDEPENDENCE DAY CELEBRATION",
-                "EBSB PHASE 8",
-                "ROWING SIMULATOR TRAINING"
-      ],
-      "des": ["30 Cadets participated in YOGA DAY event on 21st JUNE 2018. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
-              "The Principal Hoisted the National Flag  and the Cadets did March Past Ceremony along with Cultural Programs. VENUE: Velammal Engineering College",
-              "17(III&II)year Cadets attended the camp. Technical trends in Indian Navynwas taught. VENUE: INS Shivaji,Lonawala",
-              "(5) I year cadets attended the camp. VENUE: Tirupathi- AP",
-              "25 Cadets participated in the various Social Awareness Events VENUE: Velammal Engineering College",
-              "15 Cadets participated in the event. VENUE: ECR Beach",
-              "24 (III&II) Year Cadets participated in the event. VENUE: Anna University Campus",
-              "45 Cadets participated in the event (19/12/2018). VENUE: Velammal Engineering College",
-              "23(II&III) Cadets attended the camp. VENUE: Sathyabama University",
-              "All the Navy, Army Cadets and Students made the day with flag hoisting,drill,Sequence and followed by culturals",
-              "23 cadets participated in the event held at Ambedkar Law College, Tharamani",
-              "Cadet NC I Yashmitha got selected to the Prestigious RDC- DELHI and also received a Best Cadet Award in the Selection Camps held from 27th Aug 2018 to 26 Jan 2019.",
-              "ANO attended training at OTA GWAILOR",
-              "1 SW attended Republic Day Camp DELHI",
-              "8 SW + 1 ANO participated in the event held at kalavanarar Angam Chennai",
-              "24 cadets attended in the event at Velammal engineering clg",
-              "25 cadets participated in this event held at Velammal engineering clg",
-              "25 cadets took part in Independence Day Parade held in VEC campus",
-              "21 cadets attended this camp held in INS VALSURA",
-              "All cadets involved in spreading awareness about yoga.",
-              "24 SDs + 12SWs representing Tamil Nadu at Vishakapatinam among which 2 cadets from our college",
-              "15 cadets attended the event held at kalaivanar arangam.",
-              "21 cadets attended and took part in various events.",
-              "1 SD cadet from our college representing Tamil Nadu at Delhi.",
-              "2 SDs + 2 SWs took part in Marina Republic Day parade",
-              "20 cadets participated in Republic Day Parade held at the Campus of Velammal Engineering College",
-              "30 cadets participated in the event held at Ambedkar Law University.",
-              "13 cadets wrote their Bcert examinations at Anna University",
-              "3 SDs participated in sailing expedition",
-              "12 cadets gave their C cert examination",
-              "29 cadets took part in the felicitation and the cadets with National achievements were awarded by Dr. N Duraipandian (Principal)",
-              "1 ANO + 2 cadets were awarded.",
-              "24 cadets participated in the event held at VEC campus",
-              "21 cadets plus ANO participated in the event held through online",
-              "21 cadets plus ANO participated in the event held through online",
-              "1 ANO + 221 cadets plus ANO participated in the online held by Jeppiar engineering college and our cadets were awarded",
-              "21 cadets , ANO of various colleges and 80+ participants participated through webinar",
-              "21 cadets , ANO of various colleges and 50+ participants participated through webinar",
-              "21 cadets participated in the event held at neighbour hood",
-              "Cadets and ANO of various colleges participated in the virtual awareness program",
-              "8 SDs participated in this event held through online",
-              "8 SDs participated in this event held in neighbour hood ",
-              "21 cadets plus ANO participated in this event held through online",
-              "21 cadets plus ANO and students from various colleges and NGOs participated in this event held through online",
-              "2 SD cadets from our college represented INDIA’s NCC in Four Foreign Countries.",
-              "6 SDs participated in the exam held at anna university",
-              "13 cadets participated in the exam held at Secretariat office",
-              "3 SD cadets took part in EBSB Phase 7 camp held between various Directorates.",
-              "42 cadets participated and over 500 sapling are being planted as a tradition till date.",
-              "40 cadets along with ANO and chief guest Dr as speaker participated in the Webinar session and spread the awareness about covid 19",
-              "40 cadets plus ANO celebrated yoga day discussing the importance of yoga through webinar.",
-              "7 cadets participated in the Plog Run event and Rally creating awareness among public with cadets of various Institutions across Chennai",
-              "5 cadets attended the air show at IAF station Tambaram",
-              "All the cadets plus ex cadets plus ANO celebrated 75 th independence day at the campus of VEC.",
-              "1 SW cadet took part in EBSB Phase 8 camp held between two Directorates.",
-              "12 cadets Participated in the event conducted at anna university."           
-            ]
+  {
+    "type": "team",
+    "data": [
+      {
+        "category": "faculty_coordinatores",
+        "members": [
+          {
+            "name": "Sub. LT DHANALAKSHMI R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+        ]
+      },
+      {
+        "category": "student_coordinatores",
+        "members": [
+          {
+            "name": "ADITHYA JAISWAL",
+            "regiment_no": "TN/21/SDN/928502",
+            "rank": "LC",
+            "universityno": "113221031008",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members01.webp"
+          },
+          {
+            "name": "MANOJ K",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "CC",
+            "universityno": "113221081041",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members02.webp"
+          },
+          {
+            "name": "PUGAZHENDI B",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "POC",
+            "universityno": "113220031101",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members03.webp"
+          },
+          {
+            "name": "RAJATH RAJ A",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "NCI",
+            "universityno": "113221081053",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members04.webp"
+          },
+          {
+            "name": "ROHAN RAGAVENDRA G",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "NCI",
+            "universityno": "113221041107",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members05.webp"
+          },
+          {
+            "name": "ROSHIN ROBIN",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "LC",
+            "universityno": "113221081109",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members06.webp"
+          },
+          {
+            "name": "SANJAI D",
+            "regiment_no": "TN/21/SDN/928526",
+            "rank": "NCI",
+            "universityno": "113221081059",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members07.webp"
+          },
+          {
+            "name": "SHALIM UDDIN MD",
+            "regiment_no": "TN/21/SDN/92852",
+            "rank": "LC",
+            "universityno": "113221081066",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members08.webp"
+          },
+          {
+            "name": "THARUN S",
+            "regiment_no": "TN/21/SDN/928524",
+            "rank": "POC",
+            "universityno": "113221041148",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members09.webp"
+          },
+          {
+            "name": "BHARATHI S",
+            "regiment_no": "TN/21/SWN/928526",
+            "rank": "LC",
+            "universityno": "113221031027",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members10.webp"
+          },
+          {
+            "name": "ROSHINI G",
+            "regiment_no": "TN/21/SWN/928529",
+            "rank": "LC",
+            "universityno": "113221051038",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members11.webp"
+          },
+          {
+            "name": "SRIMATHI G",
+            "regiment_no": "TN/21/SWN/928531",
+            "rank": "LC",
+            "universityno": "113221021027",
+            "department": "CIVIL",
+            "image_path": "static/images/ncc/navy/members12.webp"
+          },
+          {
+            "name": "DINESHWARAN S",
+            "regiment_no": "TN/22/SDN/928501",
+            "rank": "LC",
+            "universityno": "113222011004",
+            "department": "AUTO",
+            "image_path": "static/images/ncc/navy/members13.webp"
+          },
+          {
+            "name": "DRAVID A",
+            "regiment_no": "TN/22/SDN/928502",
+            "rank": "LC",
+            "universityno": "113222072023",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members14.webp"
+          },
+          {
+            "name": "HARISH J",
+            "regiment_no": "TN/22/SDN/928503",
+            "rank": "POC",
+            "universityno": "113222071027",
+            "department": "IT",
+            "image_path": "static/images/ncc/navy/members15.webp"
+          },
+          {
+            "name": "MANIKANDAN K",
+            "regiment_no": "TN/22/SDN/928504",
+            "rank": "POC",
+            "universityno": "113222071027",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members16.webp"
+          },
+          {
+            "name": "REONSLY KC",
+            "regiment_no": "TN/22/SDN/928510",
+            "rank": "POC",
+            "universityno": "113222031113",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members17.webp"
+          },
+          {
+            "name": "AMULYA AS",
+            "regiment_no": "TN/22/SWN/928516",
+            "rank": "NCI",
+            "universityno": "113222072006",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members18.webp"
+          },
+          {
+            "name": "BHARATHI D",
+            "regiment_no": "TN/22/SWN/928517",
+            "rank": "LC",
+            "universityno": "113222031025",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members19.webp"
+          },
+          {
+            "name": "GARPAKAVALLI A",
+            "regiment_no": "TN/22/SWN/928519",
+            "rank": "LC",
+            "universityno": "113222072027",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members20.webp"
+          },
+          {
+            "name": "MADHUMEETHA D",
+            "regiment_no": "TN/22/SWN/928522",
+            "rank": "LC",
+            "universityno": "113222072054",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members21.webp"
+          },
+          {
+            "name": "ROHINI V",
+            "regiment_no": "TN/22/SWN/928524",
+            "rank": "LC",
+            "universityno": "113222072081",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members22.webp"
+          },
+          {
+            "name": "SANJANA SWATHI D",
+            "regiment_no": "TN/22/SWN/928529",
+            "rank": "NCI",
+            "universityno": "113222041134",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members23.webp"
+          },
+          {
+            "name": "BALASUBARAMANIAN.S",
+            "regiment_no": "TN/23/SDN/928501",
+            "rank": "NCI",
+            "universityno": "113223032010",
+            "department": "CSE (CS)",
+            "image_path": "static/images/ncc/navy/members24.webp"
+          },
+          {
+            "name": "HARIDEEPAK P",
+            "regiment_no": "TN/23/SDN/928502",
+            "rank": "NCI",
+            "universityno": "113223072037",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members25.webp"
+          },
+          {
+            "name": "HARIHARAN S",
+            "regiment_no": "TN/23/SDN/928503",
+            "rank": "NCI",
+            "universityno": "113223041041",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members26.webp"
+          },
+          {
+            "name": "MONISH G",
+            "regiment_no": "TN/23/SDN/928505",
+            "rank": "NCI",
+            "universityno": "113223051027",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members27.webp"
+          },
+          {
+            "name": "PIRAVEEN P",
+            "regiment_no": "TN/23/SDN/928507",
+            "rank": "NCI",
+            "universityno": "113223032037",
+            "department": "CSE (CS)",
+            "image_path": "static/images/ncc/navy/members28.webp"
+          },
+          {
+            "name": "RUTHRESH DR",
+            "regiment_no": "TN/23/SDN/928513",
+            "rank": "NCI",
+            "universityno": "113223081038",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members29.webp"
+          },
+          {
+            "name": "UDHAYAKUMAR T",
+            "regiment_no": "TN/23/SDN/928514",
+            "rank": "NCI",
+            "universityno": "113223031220",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members30.webp"
+          },
+          {
+            "name": "SIVAPATHIESWARAN S",
+            "regiment_no": "TN/23/SDN/928515",
+            "rank": "NCI",
+            "universityno": "113223051050",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members31.webp"
+          },
+          {
+            "name": "THAMARAI SELVAN",
+            "regiment_no": "TN/23/SDN/928516",
+            "rank": "NCI",
+            "universityno": "113223081044",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members32.webp"
+          },
+          {
+            "name": "YOGESH RAM M",
+            "regiment_no": "TN/23/SDN/928517",
+            "rank": "NCI",
+            "universityno": "113223031242",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members33.webp"
+          },
+          {
+            "name": "AKSHAYA KARTHIKAYINI V",
+            "regiment_no": "TN/23/SWN/928518",
+            "rank": "NCI",
+            "universityno": "113223072009",
+            "department": "AI & DS",
+            "image_path": "static/images/ncc/navy/members34.webp"
+          },
+          {
+            "name": "NARMATHA M",
+            "regiment_no": "TN/23/SWN/928521",
+            "rank": "NCI",
+            "universityno": "113223051029",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members35.webp"
+          },
+          {
+            "name": "PRIYA M",
+            "regiment_no": "TN/23/SWN/928523",
+            "rank": "NCI",
+            "universityno": "113223061018",
+            "department": "EIE",
+            "image_path": "static/images/ncc/navy/members36.webp"
+          },
+          {
+            "name": "ASHWIN R",
+            "regiment_no": "TN/24/SDN/928501",
+            "rank": "NCII",
+            "universityno": "113224041017",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members37.webp"
+          },
+          {
+            "name": "ARUN KUMAR V",
+            "regiment_no": "TN/24/SDN/928502",
+            "rank": "NCII",
+            "universityno": "113224081005",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members38.webp"
+          },
+          {
+            "name": "CHANDRA PRAKESH L",
+            "regiment_no": "TN/24/SDN/928503",
+            "rank": "NCII",
+            "universityno": "113224014027",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members39.webp"
+          },
+          {
+            "name": "DEVAGIRI B",
+            "regiment_no": "TN/24/SDN/928504",
+            "rank": "NCII",
+            "universityno": "113224051008",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members40.webp"
+          },
+          {
+            "name": "HARISH KUMAR R",
+            "regiment_no": "TN/24/SDN/928505",
+            "rank": "NCII",
+            "universityno": "113224081011",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members41.webp"
+          },
+          {
+            "name": "HARISH",
+            "regiment_no": "TN/24/SDN/928506",
+            "rank": "NCII",
+            "universityno": "113224051013",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members42.webp"
+          },
+          {
+            "name": "HARSHA VARDHAN P V",
+            "regiment_no": "TN/24/SDN/928507",
+            "rank": "NCII",
+            "universityno": "113224081012",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members43.webp"
+          },
+          {
+            "name": "JABEZ IMMANUEL V",
+            "regiment_no": "TN/24/SDN/928508",
+            "rank": "NCII",
+            "universityno": "113224041065",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members44.webp"
+          },
+          {
+            "name": "JEFFY D MARTIN",
+            "regiment_no": "TN/24/SDN/928509",
+            "rank": "NCII",
+            "universityno": "113224071042",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members45.webp"
+          },
+          {
+            "name": "MARINA JOHN JERIN J",
+            "regiment_no": "TN/24/SDN/928510",
+            "rank": "NCII",
+            "universityno": "113224061020",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members46.webp"
+          },
+          {
+            "name": "NAVANEETH S",
+            "regiment_no": "TN/24/SDN/928511",
+            "rank": "NCII",
+            "universityno": "113224081028",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members47.webp"
+          },
+          {
+            "name": "PRASAD S",
+            "regiment_no": "TN/24/SDN/928512",
+            "rank": "NCII",
+            "universityno": "113224081032",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members48.webp"
+          },
+          {
+            "name": "REJIN R",
+            "regiment_no": "TN/24/SDN/928513",
+            "rank": "NCII",
+            "universityno": "113224081037",
+            "department": "MECH",
+            "image_path": "static/images/ncc/navy/members49.webp"
+          },
+          {
+            "name": "RAGUL KANNAN J",
+            "regiment_no": "TN/24/SDN/928514",
+            "rank": "NCII",
+            "universityno": "113224041147",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members50.webp"
+          },
+          {
+            "name": "THINAKAR K",
+            "regiment_no": "TN/24/SDN/928515",
+            "rank": "NCII",
+            "universityno": "113224031218",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members51.webp"
+          },
+          {
+            "name": "VISHWA B",
+            "regiment_no": "TN/24/SDN/928516",
+            "rank": "NCII",
+            "universityno": "113224061030",
+            "department": "EIE",
+            "image_path": "static/images/ncc/navy/members52.webp"
+          },
+          {
+            "name": "VIGNESH BABU M",
+            "regiment_no": "TN/24/SDN/928517",
+            "rank": "NCII",
+            "universityno": "113224071112",
+            "department": "IT",
+            "image_path": "static/images/ncc/navy/members53.webp"
+          },
+          {
+            "name": "YUVARAJ S",
+            "regiment_no": "TN/24/SDN/928518",
+            "rank": "NCII",
+            "universityno": "113224051051",
+            "department": "EEE",
+            "image_path": "static/images/ncc/navy/members54.webp"
+          },
+          {
+            "name": "AKSHAYA A",
+            "regiment_no": "TN/24/SWN/928519",
+            "rank": "NCII",
+            "universityno": "113224041004",
+            "department": "ECE",
+            "image_path": "static/images/ncc/navy/members55.webp"
+          },
+          {
+            "name": "HIMAVATHI R",
+            "regiment_no": "TN/24/SWN/928520",
+            "rank": "NCII",
+            "universityno": "113224031068",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members56.webp"
+          },
+          {
+            "name": "PRAVINDHIYA SRI D",
+            "regiment_no": "TN/24/SWN/928521",
+            "rank": "NCII",
+            "universityno": "113224071071",
+            "department": "IT",
+            "image_path": "static/images/ncc/navy/members57.webp"
+          },
+          {
+            "name": "PAVITHRA J",
+            "regiment_no": "TN/24/SWN/928522",
+            "rank": "NCII",
+            "universityno": "113224011009",
+            "department": "AUTO",
+            "image_path": "static/images/ncc/navy/members58.webp"
+          },
+          {
+            "name": "SHIVANI KG",
+            "regiment_no": "TN/24/SWN/928523",
+            "rank": "NCII",
+            "universityno": "113224031193",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members59.webp"
+          },
+          {
+            "name": "SHOBITA M",
+            "regiment_no": "TN/24/SWN/928524",
+            "rank": "NCII",
+            "universityno": "113224041189",
+            "department": "null",
+            "image_path": "static/images/ncc/navy/members60.webp"
+          },
+          {
+            "name": "SRINITHI KARTHICK",
+            "regiment_no": "TN/24/SWN/928525",
+            "rank": "NCII",
+            "universityno": "113224031200",
+            "department": "CSE",
+            "image_path": "static/images/ncc/navy/members60.webp"
+          }
+        ]
+      }
+    ]
   },
-  "awards": {
-    "title":[],
-      "image_path": ["static/images/ncc/navy/stud_achieve01.webp",
-                     "static/images/ncc/navy/stud_achieve02.webp",
-                     "static/images/ncc/navy/stud_achieve03.webp",
-                     "static/images/ncc/navy/stud_achieve04.webp",
-                     "static/images/ncc/navy/stud_achieve05.webp",
-                     "static/images/ncc/navy/stud_achieve06.webp"
-
-      ],
-      "des": ["LT. S.K. Rishivardhan Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA",
-              "S.LT Nithin B, Dept. of Mechanical Engineering has been shortlisted in Short Service Commission tech entry organised by Indian Navy, and posed at INA as a commissioned officer on 28/06/2024",
-              "LC G Roshini, (Dept. of EEE) Marched in the MRDC, the Chief Ministers Rally",
-              "LC G Roshini, (Dept. of EEE) receiving DDG commendation during the MRDC Felicitation, Madras B Group",
-              "VEC NCC Naval Wing cadet NC II S Dineshwaran has secured the Silver Medal in the Indian Coast Guard (ICG) Marathon Competition held at Island Ground Chennai",
-              "NCC Naval Wing Cadet, NC I ManikandanK ,Deparment of Mechanical Engineering (III Year Cadet) is selected in the All India NauSainik Camp 2024 (AINSC 2024)"
-      ]
-  },
-  "news": {
-      "updates": [
-
-      ]
+  {
+    "type": "awards",
+    "data": [
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve01.webp",
+        "description": "LT. S.K. Rishivardhan Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
+      },
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve02.webp",
+        "description": "S.LT Nithin B, Dept. of Mechanical Engineering has been shortlisted in Short Service Commission tech entry organised by Indian Navy, and posed at INA as a commissioned officer on 28/06/2024"
+      },
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve03.webp",
+        "description": "LC G Roshini, (Dept. of EEE) Marched in the MRDC, the Chief Ministers Rally"
+      },
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve04.webp",
+        "description": "LC G Roshini, (Dept. of EEE) receiving DDG commendation during the MRDC Felicitation, Madras B Group"
+      },
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve05.webp",
+        "description": "VEC NCC Naval Wing cadet NC II S Dineshwaran has secured the Silver Medal in the Indian Coast Guard (ICG) Marathon Competition held at Island Ground Chennai"
+      },
+      {
+        "image_path": "static/images/ncc/navy/stud_achieve06.webp",
+        "description": "NCC Naval Wing Cadet, NC I ManikandanK ,Deparment of Mechanical Engineering (III Year Cadet) is selected in the All India NauSainik Camp 2024 (AINSC 2024)"
+      }
+    ]
   }
-}]
+]

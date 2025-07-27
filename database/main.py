@@ -757,6 +757,40 @@ def insert_ecell_sections():
 
     print("e cell sections inserted successfully.")
 
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
+
+def insert_other_facilities_sections():
+    collection = db["other_facilities"]
+
+    with open("/VEC_WEB_Engine/docs/other_facilities.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("other facilities sections inserted successfully.")
+
+insert_other_facilities_sections()
+insert_transport_sections()
 insert_ecell_sections()
 insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
@@ -816,20 +850,6 @@ def insert_incubations_sections():
 
     print("incubation sections inserted successfully.")
     
-def insert_army_data():
-    collection = db['army']
-    with open("/VEC_WEB_Engine/docs/ncc_army.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("armydocuments inserted successfully. \n")
-
-def insert_navy_data():
-    collection = db['navy']
-    with open("/VEC_WEB_Engine/docs/ncc_navy.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NCC(NAVY) documents inserted successfully. \n")
-
 def insert_faculty_data(folder_path):
     department_name=None
     with open(r"/VEC_WEB_Engine/docs/prev_faculty.json","r",encoding="utf-8") as file:
@@ -909,14 +929,6 @@ insert_faculty_data(folder_path=r"/VEC_WEB_Engine/docs/STAFF-DATA/")
 
 # SPORTS DATA INSERTIONS
 
-def insert_sports_data():
-    collection = db["sports_data"]
-    with open("/VEC_WEB_Engine/docs/sports_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Sports data inserted successfully.\n")
-
 def insert_library_sections():
     collection = db["library"]
 
@@ -933,21 +945,9 @@ def insert_library_sections():
 
     print("library sections inserted successfully.")
 
-def insert_nss_data():
-    collection = db["nss_data"]
-    with open("/VEC_WEB_Engine/docs/nss.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
 
-    print("NSS data inserted successfully.\n")
 
-def insert_yrc_data():
-    collection = db["yrc_data"]
-    with open("/VEC_WEB_Engine/docs/yrc.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
 
-    print("YRC data inserted successfully.\n")
 
 
 def insert_department_research_data():
@@ -993,16 +993,6 @@ def insert_about_us():
 
         collection.insert_many(documents)
     print("about_us documents inserted successfully.\n")
-
-def insert_hostel_menu():
-
-    collection = db['hostel_menu']  
-    with open("/VEC_WEB_Engine/docs/hostel_menu.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("hostel_menu documents inserted successfully.\n")
-
 
 def insert_help_desk():
 
@@ -1093,19 +1083,133 @@ def insert_web_team():
 
     print("web team data inserted successfully.")
 
+
+def insert_hostel_sections():
+    collection = db["hostel_details"]
+
+    with open("/VEC_WEB_Engine/docs/hostel.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("hostel facilities sections inserted successfully.")
+
+def insert_ncc_army_sections():
+    collection = db["ncc_army"]
+
+    with open("/VEC_WEB_Engine/docs/ncc_army.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc army sections inserted successfully.")
+
+def insert_ncc_navy_sections():
+    collection = db["ncc_navy"]
+
+    with open("/VEC_WEB_Engine/docs/ncc_navy.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc navy sections inserted successfully.")
+
+def insert_nss_sections():
+    collection = db["nss"]
+
+    with open("/VEC_WEB_Engine/docs/nss.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("nss sections inserted successfully.")
+
+def insert_sports_sections():
+    collection = db["sports"]
+
+    with open("/VEC_WEB_Engine/docs/sports_data.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("sports sections inserted successfully.")
+
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
+
+def insert_yrc_sections():
+    collection = db["yrc"]
+
+    with open("/VEC_WEB_Engine/docs/yrc.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("yrc sections inserted successfully.")
+
+insert_sports_sections()
+insert_nss_sections()
+insert_ncc_navy_sections()
+insert_ncc_army_sections()
+insert_hostel_sections()
+insert_transport_sections()
+insert_yrc_sections()
 insert_administration_sections()
-insert_sports_data()
 insert_library_sections()
-insert_nss_data()
-insert_yrc_data()
 insert_department_research_data()
 insert_warden_hostel_data()
 insert_incubations_sections()
-insert_army_data()
-insert_navy_data()
 insert_academic_calendar()
 insert_about_us()
-insert_hostel_menu()
 insert_help_desk()
 insert_landing_page_details()
 insert_programmes_list()

@@ -1,105 +1,209 @@
-[{
-    "coordinater": {
-        "name": "Dr. KARTHICK R",
-        "designation": "Programme Officer",
-        "image_path": "/static/images/nss/1.webp",
-        "message": ""
-    },
-    "members": {
-"name": [
-  "KAVIAYA SHREE",
-  "LALITH KANAN",
-  "VINOTH KUMAR",
-  "DAYANITHA",
-  "SANJAY KUMAR",
-  "SUBASHINI",
-  "RAHUL KUMARARAN",
-  "SHARAVANTH KUMAR",
-  "SWEDHA",
-  "MUKESH",
-  "MONOVA DANIEL"
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about": [
+          "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India.",
+          "Popularly known as NSS, the scheme was launched in Gandhiji's Centenary year, 1969. Aimed at developing students' personality through community service. The motto of NSS is 'Not Me, But You'."
         ],
-        "image_path": ["/static/images/nss/2.webp", "/static/images/nss/3.webp", "/static/images/nss/4.webp", "/static/images/nss/5.webp", "/static/images/nss/6.webp", "/static/images/nss/7.webp", "/static/images/nss/8.webp", "/static/images/nss/  .webp", "/static/images/nss/10.webp", "/static/images/nss/11.webp", "/static/images/nss/12.webp"       
-        ], 
-        "designation":["GCO & Mech & Auto coordinator", "VCO & CSE coordinator", "ECE coordinator", "IT coordinator", "Civil, Cyber, EIE department coordinator", "EEE coordinator", "AI&DS coordinator", "Poster Team Head", "Newsletter Team Head", "Technical Team Head", "Website & Camera Handling Team Head"]
-    },
-    "events": {
-        "image_path":[
-            "/static/images/nss/event/anbagam.webp",
-            "/static/images/nss/event/republic day.webp",
-            "/static/images/nss/event/rally.webp",
-            "/static/images/nss/event/eye camp.webp",
-            "/static/images/nss/event/road safety.webp",
-            "/static/images/nss/event/aram.webp",
-            "/static/images/nss/event/vanam padaipu.webp",
-            "/static/images/nss/event/ignite.webp",
-            "/static/images/nss/event/nss day.webp",
-            "/static/images/nss/event/thooimai nagaram.webp",
-            "/static/images/nss/event/debris.webp",
-            "/static/images/nss/event/mental health wellness.webp",
-            "/static/images/nss/event/nss rec.webp",
-            "/static/images/nss/event/beach event.webp",
-            "/static/images/nss/event/blood camp.webp",
-            "/static/images/nss/event/park cleaning event.webp",
-            "/static/images/nss/event/special camp.webp",
-            "/static/images/nss/event/women awarness.webp",
-            "/static/images/nss/event/women safety.webp"
-
-        ],
-        "title": [ "Anbagam",
-        "Republic Day",
-        "Vigilance Rally",
-        "Eye Camp",
-        "Road Safety Awarness",
-        "Aram Pongal Event",
-        "Vanam Padaipu",
-        "Ignite",
-        "NSS Day",
-        "Thooimai Nagaram",
-        "Debris",
-        "Mental Health Wellness",
-        "Recruitment'24 Event",
-        "Beach Event",
-        "Blood Camp",
-        "Park Cleaning Event",
-        "Special Camp",
-        "Women Awarness",
-        "Women Safety Awarness"
-
-
-        ],
-        "date": ["22nd December 2024",
-        "26th January 2025",
-        "29th October 2024",
-        "11th December 2024",
-        "30th January 2025",
-        "12th January 2025",
-        "15th December 2024",
-        "21st November 2024",
-        "20th September 2024",
-        "8th December 2024",
-        "04th to 5th September 2024 ",
-        "24th October 2024",
-        "24th October 2024",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "05th February 2025"
-
+        "objectives": [
+          "To understand the community in which they work.",
+          "To understand themselves in relation to their community.",
+          "To identify the needs and problems of the community and involve them in problem-solving.",
+          "To develop among themselves a sense of social and civic responsibility.",
+          "To utilize their knowledge in finding practical solutions to community problems.",
+          "To gain skills in mobilizing community participation.",
+          "To acquire leadership qualities and democratic attitudes.",
+          "To develop the capacity to meet emergencies and natural disasters.",
+          "To practice national integration and social harmony."
         ]
-    },
-    "awards": {
-        "image_path": [],
-        "des": []
-    },
-    "news": {
-        "updaates": ["Blood Donation and Eye Check-Up Camps: In February 2019, the nss unit, in collaboration with the Youth Red Cross (YRC), organized blood donation and eye check-up camps, partnering with multiple hospitals to facilitate these health services",
-        "Environmental Awareness Campaigns: The nss volunteers have participated in campaigns such as 'Lifestyle for Environment (LiFE),'' emphasizing sustainable living practices. ",
-        "Health and Safety Programs: The nss unit has conducted various health campaigns, including eye camps, first aid awareness programs, and COVID-19 care awareness initiatives.",
-        "Community Engagement Activities: Volunteers have engaged in activities such as lake cleaning, orphanage and old age home visits, drug prevention awareness programs, mental health awareness, fire safety awareness, and campaigns against child marriage."
-
+      }
+    ]
+  },
+  {
+    "type": "news_updates",
+    "data": [
+      "Blood Donation and Eye Check-Up Camps: In February 2019, the nss unit, in collaboration with the Youth Red Cross (YRC), organized blood donation and eye check-up camps, partnering with multiple hospitals to facilitate these health services",
+      "Environmental Awareness Campaigns: The nss volunteers have participated in campaigns such as 'Lifestyle for Environment (LiFE),'' emphasizing sustainable living practices. ",
+      "Health and Safety Programs: The nss unit has conducted various health campaigns, including eye camps, first aid awareness programs, and COVID-19 care awareness initiatives.",
+      "Community Engagement Activities: Volunteers have engaged in activities such as lake cleaning, orphanage and old age home visits, drug prevention awareness programs, mental health awareness, fire safety awareness, and campaigns against child marriage."
+    ]
+  },
+  {
+    "type": "events",
+    "data": [
+      {
+        "title": "Anbagam",
+        "date": "22nd December 2024",
+        "image_path": "/static/images/nss/event/anbagam.webp"
+      },
+      {
+        "title": "Republic Day",
+        "date": "26th January 2025",
+        "image_path": "/static/images/nss/event/republic day.webp"
+      },
+      {
+        "title": "Vigilance Rally",
+        "date": "29th October 2024",
+        "image_path": "/static/images/nss/event/rally.webp"
+      },
+      {
+        "title": "Eye Camp",
+        "date": "11th December 2024",
+        "image_path": "/static/images/nss/event/eye camp.webp"
+      },
+      {
+        "title": "Road Safety Awarness",
+        "date": "30th January 2025",
+        "image_path": "/static/images/nss/event/road safety.webp"
+      },
+      {
+        "title": "Aram Pongal Event",
+        "date": "12th January 2025",
+        "image_path": "/static/images/nss/event/aram.webp"
+      },
+      {
+        "title": "Vanam Padaipu",
+        "date": "15th December 2024",
+        "image_path": "/static/images/nss/event/vanam padaipu.webp"
+      },
+      {
+        "title": "Ignite",
+        "date": "21st November 2024",
+        "image_path": "/static/images/nss/event/ignite.webp"
+      },
+      {
+        "title": "NSS Day",
+        "date": "20th September 2024",
+        "image_path": "/static/images/nss/event/nss day.webp"
+      },
+      {
+        "title": "Thooimai Nagaram",
+        "date": "8th December 2024",
+        "image_path": "/static/images/nss/event/thooimai nagaram.webp"
+      },
+      {
+        "title": "Debris",
+        "date": "04th to 5th September 2024",
+        "image_path": "/static/images/nss/event/debris.webp"
+      },
+      {
+        "title": "Mental Health Wellness",
+        "date": "24th October 2024",
+        "image_path": "/static/images/nss/event/mental health wellness.webp"
+      },
+      {
+        "title": "Recruitment'24 Event",
+        "date": "24th October 2024",
+        "image_path": "/static/images/nss/event/nss rec.webp"
+      },
+      {
+        "title": "Beach Event",
+        "date": "",
+        "image_path": "/static/images/nss/event/beach event.webp"
+      },
+      {
+        "title": "Blood Camp",
+        "date": "",
+        "image_path": "/static/images/nss/event/blood camp.webp"
+      },
+      {
+        "title": "Park Cleaning Event",
+        "date": "",
+        "image_path": "/static/images/nss/event/park cleaning event.webp"
+      },
+      {
+        "title": "Special Camp",
+        "date": "",
+        "image_path": "/static/images/nss/event/special camp.webp"
+      },
+      {
+        "title": "Women Awarness",
+        "date": "",
+        "image_path": "/static/images/nss/event/women awarness.webp"
+      },
+      {
+        "title": "Women Safety Awarness",
+        "date": "05th February 2025",
+        "image_path": "/static/images/nss/event/women safety.webp"
+      }
+    ]
+  },
+  {
+    "type": "team",
+    "data": [
+      {
+        "category": "faculty_coordinater",
+        "members": [
+          {
+            "name": "Dr. KARTHICK R",
+            "designation": "Programme Officer",
+            "image_path": "/static/images/nss/1.webp",
+            "message": ""
+          }
         ]
-    }
-}]
+      },
+      {
+        "category": "student_coordinater",
+        "members": [
+          {
+            "name": "KAVIAYA SHREE",
+            "designation": "GCO & Mech & Auto coordinator",
+            "image_path": "/static/images/nss/2.webp"
+          },
+          {
+            "name": "LALITH KANAN",
+            "designation": "VCO & CSE coordinator",
+            "image_path": "/static/images/nss/3.webp"
+          },
+          {
+            "name": "VINOTH KUMAR",
+            "designation": "ECE coordinator",
+            "image_path": "/static/images/nss/4.webp"
+          },
+          {
+            "name": "DAYANITHA",
+            "designation": "IT coordinator",
+            "image_path": "/static/images/nss/5.webp"
+          },
+          {
+            "name": "SANJAY KUMAR",
+            "designation": "Civil, Cyber, EIE department coordinator",
+            "image_path": "/static/images/nss/6.webp"
+          },
+          {
+            "name": "SUBASHINI",
+            "designation": "EEE coordinator",
+            "image_path": "/static/images/nss/7.webp"
+          },
+          {
+            "name": "RAHUL KUMARARAN",
+            "designation": "AI&DS coordinator",
+            "image_path": "/static/images/nss/8.webp"
+          },
+          {
+            "name": "SHARAVANTH KUMAR",
+            "designation": "Poster Team Head",
+            "image_path": "/static/images/nss/  .webp"
+          },
+          {
+            "name": "SWEDHA",
+            "designation": "Newsletter Team Head",
+            "image_path": "/static/images/nss/10.webp"
+          },
+          {
+            "name": "MUKESH",
+            "designation": "Technical Team Head",
+            "image_path": "/static/images/nss/11.webp"
+          },
+          {
+            "name": "MONOVA DANIEL",
+            "designation": "Website & Camera Handling Team Head",
+            "image_path": "/static/images/nss/12.webp"
+          }
+        ]
+      }
+    ]
+  }
+]

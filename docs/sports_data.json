@@ -1,232 +1,467 @@
-[{
-  "zonal_table": {
-    "Game": [
-      "Badminton(M)",
-      "Badminton(W)",
-      "Chess(M)",
-      "Table Tennis(W)",
-      "Table Tennis(M)",
-      "Basketball(M)",
-      "Basketball(W)",
-      "HOCKEY(M)",
-      "Kho-Kho(M)",
-      "FootBall(M)",
-      "Kabaddi(M)",
-      "Volleyball(M)"
-    ],
-    "Position": [
-      "Winner",
-      "Runner",
-      "Winner",
-      "Winner",
-      "Winner",
-      "Runner",
-      "Runner",
-      "Third",
-      "Runner",
-      "Third",
-      "Winner",
-      "Third"
+[
+  {
+    "type": "introduction",
+    "data": [
+      "Our College department of Physical Education is an integral part of our institution right from its inception from the year 2005-2006.",
+      "We are now having 3 faculty members, including a Head of the department. In which we have one doctorate in physical education. We engage the students both morning and evening for sports activities and make them to participate in Inter collegiate tournaments. We have one big Indoor stadium and one multi Gym with Fitness trainer.",
+      "Our college students got the 18th consecutive years of overall championship in Zone – I competitions. This is our pride for our department of Physical Education. Moreover, our college students participate for Anna university teams, State and National teams. Our students got places in National level sports competitions every year."
     ]
   },
-  "zone_winner": {
-    "title": [
-      "Anna University Zonal Badminton (M) Third Place Match held at VEC",
-      "Anna University Zonal Badminton (W) Runner Match held at VEC",
-      "Anna University Zonal Chess (M) Winner Match held at AMS Engg College",
-      "Anna University Zonal Table Tennis (W) Winner Match held at SAEC",
-      "Anna University Zonal Table Tennis (M) Winner Match held at SAEC",
-      "Anna University Zonal Basketball (M) Runner Match held at RMKEC",
-      "Anna University Zonal Basketball (W) Runner Match held at RMKEC",
-      "Anna University Zonal Hockey (M) Third Place Match held at VEC",
-      "Anna University Zonal Kho Kho (M) Runner Match held at PRATHYUSHA",
-      "Anna University Zonal Football (M) Third Place Match held at VIT",
-      "Anna University Zonal Kabaddi (M) Winner Match held at VEC",
-      "Anna University Zonal Volleyball (M) Third Place Match held at RMKEC",
-      "ANNA UNIVERSITY ZONAL CHESS MEN AND WOMEN WINNER MATCH HELD AT SRIRAM ENGG COLLEGE ON 22.09.23",
-      "ANNA UNIVERSITY ZONAL TABLE TENNIS MEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 26.09.23",
-      "ANNA UNIVERSITY ZONAL BADMINTON WOMEN RUNNER MATCH HELD AT VEC ENGG COLLEGE ON 04.10.23",
-      "ANNA UNIVERSITY ZONAL HOCKEY MEN WINNER MATCH HELD AT GRT ENGG COLLEGE ON 12.10.23",
-      "ANNA UNIVERSITY ZONAL FOOTBALL MEN WINNER MATCH HELD AT VEL TECH ENGG COLLEGE ON 11.10.23",
-      "ANNA UNIVERSITY ZONAL VOLLEYBALL MEN THIRD MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 27&28.10.23",
-      "ANNA UNIVERSITY ZONAL CRICKET MEN THIRD MATCH HELD AT VEL TECH ENGG COLLEGE",
-      "ANNA UNIVERSITY ZONAL BASKETBALL WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 02.11.23",
-      "ANNA UNIVERSITY ZONAL BALLBADMINTON WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 07.11.23",
-      "ANNA UNIVERSITY ZONAL ATHLETICS WOMEN OVERALL RUNNER MATCH HELD AT GRT ENGG COLLEGE ON 24, 25.11.23",
-      "ANNA UNIVERSITY ZONAL HANDBALL MEN RUNNER MATCH HELD AT ST.PETERS ENGG COLLEGE AVADI ON 11.03.2024",
-      "ANNA UNIVERSITY ZONAL KHO KHO MEN WINNER MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 16.03.24"
-    ],
-    "image_path": [
-      "/static/images/sports/zonal/zonal_badminton_m_3.webp",
-      "/static/images/sports/zonal/zonal_badminton_w_2.webp",
-      "/static/images/sports/zonal/zonal_chess_m_1.webp",
-      "/static/images/sports/zonal/zonal_tabletennis_w_1.webp",
-      "/static/images/sports/zonal/zonal_tabletennis_m_1.webp",
-      "/static/images/sports/zonal/zonal_basketball_m_2.webp",
-      "/static/images/sports/zonal/zonal_basketball_w_2.webp",
-      "/static/images/sports/zonal/zonal_hockey_m_3.webp",
-      "/static/images/sports/zonal/zonal_khokho_m_2.webp",
-      "/static/images/sports/zonal/zonal_football_m_3.webp",
-      "/static/images/sports/zonal/zonal_kabaddi_m_1.webp",
-      "/static/images/sports/zonal/zonal_volleyball_m_3.webp",
-      "/static/images/sports/zonal/zonal_chess_m&w_1_23.webp",
-      "/static/images/sports/zonal/zonal_tabletennis_m_2_23.webp",
-      "/static/images/sports/zonal/zonal_badminton__w_2_23.webp",
-      "/static/images/sports/zonal/zonal_hockey_m_1_23.webp",
-      "/static/images/sports/zonal/zonal_football_m_1_23.webp",
-      "/static/images/sports/zonal/zonal_volleyball_m_3_23.webp",
-      "/static/images/sports/zonal/zonal_cricket_m_3_23.webp",
-      "/static/images/sports/zonal/zonal_basketball_w_2_23.webp",
-      "/static/images/sports/zonal/zonal_ballbadminton_w_2_23.webp",
-      "/static/images/sports/zonal/zonal_athletics_overall_2_23.webp",
-      "/static/images/sports/zonal/zonal_handball_m_2_23.webp",
-      "/static/images/sports/zonal/zonal_khokho_m_1_23.webp"
+  {
+    "type": "vision",
+    "data": [
+      "The vision of our department of physical education is physical, mental and Intellectual development of the whole student. For which we create an environment that will focus on students’ attitude towards physical activity. And provide opportunities for personal and intellectual growth through fitness, outdoor recreation, and coaching and sports participation."
     ]
   },
-  "HOD": {
-    "name": "Dr.RAMESH KANNAN P",
-    "designation": "Head - Department of Physical Education",
-    "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
-    "message": "Sports play an important role in every human being’s day-to-day life and bring people together irrespective of their age, gender and nationality. Our department of Physical Education is marching towards fulfilling CEO Sir Vision as a reality. Young achievers in various sports have won prizes and medals at various state, National and international level events. Our goal is to increase the participation of our teams in various competitions and win medals and bring laurels to the College and the country.",
-    "image_path": "/static/images/sports/hod/Rameshkannan.webp"
-  },
-  "faculty": {
-    "name": [
-      "Ms.JAYANTHI K",
-      "Mr.SRINIVASAN S"
-    ],
-    "image_path": [
-      "/static/images/sports/faculty/Jayanthi.webp",
-      "/static/images/sports/faculty/Srinivasan.webp"
-    ],
-    "designation": [
-      "Asst.Physical Director",
-      "Asst.Physical Director"
-    ],
-    "qualification": [
-      "M.P.Ed., M.Phil.",
-      "M.P.Ed., M.Phil."
+  {
+    "type": "hod",
+    "data": [
+      {
+        "name": "Dr.RAMESH KANNAN P",
+        "designation": "Head - Department of Physical Education",
+        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+        "message": "Sports play an important role in every human being’s day-to-day life and bring people together irrespective of their age, gender and nationality. Our department of Physical Education is marching towards fulfilling CEO Sir Vision as a reality. Young achievers in various sports have won prizes and medals at various state, National and international level events. Our goal is to increase the participation of our teams in various competitions and win medals and bring laurels to the College and the country.",
+        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
+      }
     ]
   },
-  "interzone": {
-    "image_path": [
-      "/static/images/sports/interzonal/interzonal_boxing_w_1_23.webp",
-      "/static/images/sports/interzonal/interzonal_softball_m_23.webp",
-      "/static/images/sports/interzonal/interzonal_taekwondo_m_1_23.webp",
-      "/static/images/sports/interzonal/interzonal_taekwondo_m_1_ajith.webp",
-      "/static/images/sports/interzonal/interzonal_bestphysique_m_1.webp",
-      "/static/images/sports/interzonal/interzonal_boxing_w_1.webp",
-      "/static/images/sports/interzonal/interzonal_powerlifting_m_2.webp",
-      "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
-    ],
-    "title": [
-      "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secured a Gold medal and qualified to represent Anna University in the All India Inter-University Boxing Tournament to be held at Chandigarh University, Mohali.",
-      "Congratulations to our students J. Nitish Kumar of 1st year B.TECH IT and R. Rohit Valavan of 1st Year CSE for participating in the All India Inter-University Championship held at Bangalore University from 13/05/24 to 18/05/24.",
-      "Our college student S.R.Rupak of BE.EIE II year secured gold medals in three events of Anna university Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23",
-      "Our college student G.Ajith of B.Tech.AI&DS I year secured Gold medal in Individual event of Anna University Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23.",
-      "Our Velammal Engg College Dept of MECH IV YR Student Mr.G.Yashwanth Kumar secured Gold medal in Anna University Inter Zone Best Physique men Tournament held @ Paavai Engineering College, Namakkal on 22/12/24",
-      "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Guru Kashi University Bathinda.",
-      "Our Velammal Engg College Dept of AI&DS III YR Student Mr.Diyaneshwar won Silver medal under 93kg men Anna University Inter Zone Powerlifting Tournament held @ Paavai Engineering College, Namakkal.",
-      "Our College students S.R.Rupak of III year EIE Secure Gold Medal in inter zone Competition and qualified for represent Anna University All India Inter University Taekwondo tournament."
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "name": "Ms.JAYANTHI K",
+        "qualification": "M.P.Ed., M.Phil.",
+        "designation": "Asst.Physical Director",
+        "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+      },
+      {
+        "name": "Mr.SRINIVASAN S",
+        "qualification": "M.P.Ed., M.Phil.",
+        "designation": "Asst.Physical Director",
+        "image_path": "/static/images/sports/faculty/Srinivasan.webp"
+      }
     ]
   },
-  "others": {
-    "image_path": [
-      "/static/images/sports/others/others_bfi_talenthunt_1.webp",
-      "/static/images/sports/others/others_fencing_m.webp",
-      "/static/images/sports/others/others_kheloindia_boxing_w.webp",
-      "/static/images/sports/others/others_kheloindia_boxing_w_3_23.webp",
-      "/static/images/sports/others/others_kumite_m_2_23.webp",
-      "/static/images/sports/others/others_taekwondo_w.webp",
-      "/static/images/sports/others/others_teakwondo_overall_m_23.webp",
-      "/static/images/sports/others/others_Jr_Mr_Tamilnadu.webp"
-    ],
-    "title":[
-      "Our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold in BFI talent Hunt Boxing tournament held at Bangalore.",
-      "Mr.Vijeya Venkatathri (Fencing) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-      "Mr.Vijeya Venkatathri (Fencing) and Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-      "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and  qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-      "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and  qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-      "Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-      "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and  qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-      "Our College Student G.Yashwanth Kumar of IV Mech secure Silver medal in Jr.Mr.Tamilnadu competition held at Rajalakshmi Engg College and got selected for Jr.India competition going to participate Chhattisgarh. And also he selected to Anna University team for Participate All India Best Physiqe competition held at Kerala."
+  {
+    "type": "action_plan",
+    "data": [
+      {
+        "training": "Regular practice sessions from 4:15 pm to 6:15 pm.",
+        "goals": [
+          "To become champions of champions.",
+          "To attract a greater number of students for sports participation.",
+          "To create awareness to the students about the good physique."
+        ],
+        "health": [
+          "To give awareness to the importance of regular food habits.",
+          "To insist the importance and benefits of the blood donation.",
+          "To instruct the knowledge about First-Aid and its importance.",
+          "Counselling the students, when needed.",
+          "To have a cordial relationship with students and staffs."
+        ],
+        "facilities": [
+          "Above said facilities are available in our college to inculcate sports activities among admitted students.",
+          "Over all champions in Anna University Zone 1 Sports Competition for 18 consecutive years (2003 -2021).",
+          "We conduct many tournaments zonal and Inter zonal level.",
+          "Also conducted State Level “Velammal Trophy” (Volley Ball & Cricket).",
+          "Regularly used to organize: Tamil Nādu State Men and Women Senior National Coaching Camp”.",
+          "Providing Sports Facilities for Corporate Sector like Tata Communication, Pure Chemicals to name a few.",
+          "Providing Sports facilities to Government Sector like Fire Service, Prison Department staff."
+        ]
+      }
     ]
   },
-  "interamural": {
-    "image_path":[
-      "/static/images/sports/intramural/basketball_boys_winner.webp",
-      "/static/images/sports/intramural/basketball_boys_runner.webp",
-      "/static/images/sports/intramural/basketball_girls_winner.webp",
-      "/static/images/sports/intramural/basketball_girls_runner.webp",
-      "/static/images/sports/intramural/batminton_boys_winner.webp",
-      "/static/images/sports/intramural/batminton_boys_runner.webp",
-      "/static/images/sports/intramural/batminton_girls_winner.webp",
-      "/static/images/sports/intramural/batminton_girls_runner.webp",
-      "/static/images/sports/intramural/chess_boys_winner.webp",
-      "/static/images/sports/intramural/chess_boys_runner.webp",
-      "/static/images/sports/intramural/chess_girls_winner.webp",
-      "/static/images/sports/intramural/chess_girls_runner.webp",
-      "/static/images/sports/intramural/football_boys_winner.webp",
-      "/static/images/sports/intramural/football_boys_runner.webp",
-      "/static/images/sports/intramural/tabletennis_boys_winner.webp",
-      "/static/images/sports/intramural/tabletennis_boys_runner.webp",
-      "/static/images/sports/intramural/tabletennis_girls_winner.webp",
-      "/static/images/sports/intramural/tabletennis_girls_runner.webp",
-      "/static/images/sports/intramural/tennis_boys_winner.webp",
-      "/static/images/sports/intramural/tennis_boys_runner.webp",
-      "/static/images/sports/intramural/volleyball_boys_winner.webp",
-      "/static/images/sports/intramural/volleyball_boys_runner.webp",
-      "/static/images/sports/intramural/volleyball_girls_winner.webp",
-      "/static/images/sports/intramural/volleyball_girls_runner.webp"
-    ],
-    "title":[
-      "Boys Basketball Winner IT Department",
-      "Boys Basketball Runner CSE Department",
-      "Girls Basketball Winner ECE Department",
-      "Girls Basketball Runner AI&DS Department",
-      "Boys Badminton Winner EEE Department",
-      "Boys Badminton Runner ECE Department",
-      "Girls Badminton Winner CSE Department",
-      "Girls Badminton Runner ECE Department",
-      "Boys Chess Winner AI&DS Department",
-      "Boys Chess Runner CSE Department",
-      "Girls Chess Winner ECE Department",
-      "Girls Chess Runner AI&DS Department",
-      "Boys Football Winner AI&DS Department",
-      "Boys Football Runner MECH Department",
-      "Boys Table Tennis Winner MECH Department",
-      "Boys Table Tennis Runner AI&DS Department",
-      "Girls Table Tennis Winner MECH Department",
-      "Girls Table Tennis Runner CSE Department",
-      "Boys Tennis Winner CIVIL Department",
-      "Boys Tennis Runner EEE Department",
-      "Boys Volleyball Winner IT Department",
-      "Boys Volleyball Runner CIVIL Department",
-      "Girls Volleybaall Winner ECE Department",
-      "Girls Volleyball Runner EEE Department"
-    ],
-    "year":"2024-25"
-  },
-  "coordinator": {
-    "zone": "1",
-    "year": "2024-25",
-    "image": [
-      "/static/images/sports/coordinates/coordinates_1.webp",
-      "/static/images/sports/coordinates/coordinates_2.webp",
-      "/static/images/sports/coordinates/coordinates_3.webp",
-      "/static/images/sports/coordinates/coordinates_4.webp"
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "title": "WILMA RUDOLPH INDOOR STADIUM",
+        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment for a wide range of indoor sports. With state-of-the-art facilities, it's the perfect venue for both practice and competition.",
+        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
+      },
+      {
+        "title": "WILMA RUDOLPH VOLLEYBALL COURT",
+        "description": "The Volleyball Court at Wilma Rudolph Indoor Stadium is the perfect setting for exciting matches and tournaments. Whether you're a beginner or a pro, this court is designed to elevate your game.",
+        "image_path": "/static/images/sports/infrastructure/Indoor Volleyball Court.webp"
+      },
+      {
+        "title": "FITNESS CENTRE",
+        "description": "Our Fitness Centre is equipped with a wide range of modern equipment to help you reach your fitness goals. Whether you prefer weightlifting, cardio, or group classes, this centre has something for everyone.",
+        "image_path": "/static/images/sports/infrastructure/fitnesscenter.webp"
+      },
+      {
+        "title": "KAPIL DEV CRICKET GROUND",
+        "description": "Kapil Dev Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
+        "image_path": "/static/images/sports/infrastructure/Kapil Dev Cricket Ground.webp"
+      },
+      {
+        "title": "KABADDI COURT",
+        "description": "The Kabaddi Court is designed for this fast-paced and action-packed sport. With all the right equipment and a high-quality surface, it offers an ideal setting for both casual and competitive Kabaddi matches.",
+        "image_path": "/static/images/sports/infrastructure/Kabaddi Court.webp"
+      },
+      {
+        "title": "LADIES HOSTEL GYM",
+        "description": "The Ladies Hostel Gym is a fully equipped space for women to work out and stay fit. Whether you're looking to build strength, improve endurance, or practice yoga, the gym offers a comfortable and private environment.",
+        "image_path": "/static/images/sports/infrastructure/ladies_hostel_gym.webp"
+      }
     ]
   },
-  "Infrastructure": {
-    "image_path": [
-      "/static/images/sports/infrastructure/fitnesscenter.webp",
-      "/static/images/sports/infrastructure/gym.webp",
-      "/static/images/sports/infrastructure/Indoor Stadium.webp",
-      "/static/images/sports/infrastructure/Indoor Volleyball Court.webp",
-      "/static/images/sports/infrastructure/Kabaddi Court.webp",
-      "/static/images/sports/infrastructure/Kapil Dev Cricket Ground.webp",
-      "/static/images/sports/infrastructure/Ladies Hostel Gym.webp"
+  {
+    "type": "achivements",
+    "data": [
+      {
+        "category": "zonal_table",
+        "content": [
+          {
+            "game": "Badminton(M)",
+            "position": "Winner"
+          },
+          {
+            "game": "Badminton(W)",
+            "position": "Runner"
+          },
+          {
+            "game": "Chess(M)",
+            "position": "Winner"
+          },
+          {
+            "game": "Table Tennis(W)",
+            "position": "Winner"
+          },
+          {
+            "game": "Table Tennis(M)",
+            "position": "Winner"
+          },
+          {
+            "game": "Basketball(M)",
+            "position": "Runner"
+          },
+          {
+            "game": "Basketball(W)",
+            "position": "Runner"
+          },
+          {
+            "game": "HOCKEY(M)",
+            "position": "Third"
+          },
+          {
+            "game": "Kho-Kho(M)",
+            "position": "Runner"
+          },
+          {
+            "game": "FootBall(M)",
+            "position": "Third"
+          },
+          {
+            "game": "Kabaddi(M)",
+            "position": "Winner"
+          },
+          {
+            "game": "Volleyball(M)",
+            "position": "Third"
+          }
+        ]
+      },
+      {
+        "category": "zone_winner",
+        "content": [
+          {
+            "title": "Anna University Zonal Badminton (M) Third Place Match held at VEC",
+            "image_path": "/static/images/sports/zonal/zonal_badminton_m_3.webp"
+          },
+          {
+            "title": "Anna University Zonal Badminton (W) Runner Match held at VEC",
+            "image_path": "/static/images/sports/zonal/zonal_badminton_w_2.webp"
+          },
+          {
+            "title": "Anna University Zonal Chess (M) Winner Match held at AMS Engg College",
+            "image_path": "/static/images/sports/zonal/zonal_chess_m_1.webp"
+          },
+          {
+            "title": "Anna University Zonal Table Tennis (W) Winner Match held at SAEC",
+            "image_path": "/static/images/sports/zonal/zonal_tabletennis_w_1.webp"
+          },
+          {
+            "title": "Anna University Zonal Table Tennis (M) Winner Match held at SAEC",
+            "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_1.webp"
+          },
+          {
+            "title": "Anna University Zonal Basketball (M) Runner Match held at RMKEC",
+            "image_path": "/static/images/sports/zonal/zonal_basketball_m_2.webp"
+          },
+          {
+            "title": "Anna University Zonal Basketball (W) Runner Match held at RMKEC",
+            "image_path": "/static/images/sports/zonal/zonal_basketball_w_2.webp"
+          },
+          {
+            "title": "Anna University Zonal Hockey (M) Third Place Match held at VEC",
+            "image_path": "/static/images/sports/zonal/zonal_hockey_m_3.webp"
+          },
+          {
+            "title": "Anna University Zonal Kho Kho (M) Runner Match held at PRATHYUSHA",
+            "image_path": "/static/images/sports/zonal/zonal_khokho_m_2.webp"
+          },
+          {
+            "title": "Anna University Zonal Football (M) Third Place Match held at VIT",
+            "image_path": "/static/images/sports/zonal/zonal_football_m_3.webp"
+          },
+          {
+            "title": "Anna University Zonal Kabaddi (M) Winner Match held at VEC",
+            "image_path": "/static/images/sports/zonal/zonal_kabaddi_m_1.webp"
+          },
+          {
+            "title": "Anna University Zonal Volleyball (M) Third Place Match held at RMKEC",
+            "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL CHESS MEN AND WOMEN WINNER MATCH HELD AT SRIRAM ENGG COLLEGE ON 22.09.23",
+            "image_path": "/static/images/sports/zonal/zonal_chess_m&w_1_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL TABLE TENNIS MEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 26.09.23",
+            "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN RUNNER MATCH HELD AT VEC ENGG COLLEGE ON 04.10.23",
+            "image_path": "/static/images/sports/zonal/zonal_badminton__w_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL HOCKEY MEN WINNER MATCH HELD AT GRT ENGG COLLEGE ON 12.10.23",
+            "image_path": "/static/images/sports/zonal/zonal_hockey_m_1_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL FOOTBALL MEN WINNER MATCH HELD AT VEL TECH ENGG COLLEGE ON 11.10.23",
+            "image_path": "/static/images/sports/zonal/zonal_football_m_1_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL VOLLEYBALL MEN THIRD MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 27&28.10.23",
+            "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL CRICKET MEN THIRD MATCH HELD AT VEL TECH ENGG COLLEGE",
+            "image_path": "/static/images/sports/zonal/zonal_cricket_m_3_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL BASKETBALL WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 02.11.23",
+            "image_path": "/static/images/sports/zonal/zonal_basketball_w_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL BALLBADMINTON WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 07.11.23",
+            "image_path": "/static/images/sports/zonal/zonal_ballbadminton_w_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL ATHLETICS WOMEN OVERALL RUNNER MATCH HELD AT GRT ENGG COLLEGE ON 24, 25.11.23",
+            "image_path": "/static/images/sports/zonal/zonal_athletics_overall_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL HANDBALL MEN RUNNER MATCH HELD AT ST.PETERS ENGG COLLEGE AVADI ON 11.03.2024",
+            "image_path": "/static/images/sports/zonal/zonal_handball_m_2_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL KHO KHO MEN WINNER MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 16.03.24",
+            "image_path": "/static/images/sports/zonal/zonal_khokho_m_1_23.webp"
+          }
+        ]
+      },
+      {
+        "category": "interzonal_achievements",
+        "content": [
+          {
+            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secured a Gold medal and qualified to represent Anna University in the All India Inter-University Boxing Tournament to be held at Chandigarh University, Mohali.",
+            "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1_23.webp"
+          },
+          {
+            "title": "Congratulations to our students J. Nitish Kumar of 1st year B.TECH IT and R. Rohit Valavan of 1st Year CSE for participating in the All India Inter-University Championship held at Bangalore University from 13/05/24 to 18/05/24.",
+            "image_path": "/static/images/sports/interzonal/interzonal_softball_m_23.webp"
+          },
+          {
+            "title": "Our college student S.R.Rupak of BE.EIE II year secured gold medals in three events of Anna university Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23",
+            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_23.webp"
+          },
+          {
+            "title": "Our college student G.Ajith of B.Tech.AI&DS I year secured Gold medal in Individual event of Anna University Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23.",
+            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_ajith.webp"
+          },
+          {
+            "title": "Our Velammal Engg College Dept of MECH IV YR Student Mr.G.Yashwanth Kumar secured Gold medal in Anna University Inter Zone Best Physique men Tournament held @ Paavai Engineering College, Namakkal on 22/12/24",
+            "image_path": "/static/images/sports/interzonal/interzonal_bestphysique_m_1.webp"
+          },
+          {
+            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Guru Kashi University Bathinda.",
+            "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1.webp"
+          },
+          {
+            "title": "Our Velammal Engg College Dept of AI&DS III YR Student Mr.Diyaneshwar won Silver medal under 93kg men Anna University Inter Zone Powerlifting Tournament held @ Paavai Engineering College, Namakkal.",
+            "image_path": "/static/images/sports/interzonal/interzonal_powerlifting_m_2.webp"
+          },
+          {
+            "title": "Our College students S.R.Rupak of III year EIE Secure Gold Medal in inter zone Competition and qualified for represent Anna University All India Inter University Taekwondo tournament.",
+            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
+          }
+        ]
+      },
+      {
+        "category": "others",
+        "content": [
+          {
+            "title": "Our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold in BFI talent Hunt Boxing tournament held at Bangalore.",
+            "image_path": "/static/images/sports/others/others_bfi_talenthunt_1.webp"
+          },
+          {
+            "title": "Mr.Vijeya Venkatathri (Fencing) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
+            "image_path": "/static/images/sports/others/others_fencing_m.webp"
+          },
+          {
+            "title": "Mr.Vijeya Venkatathri (Fencing) and Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
+            "image_path": "/static/images/sports/others/others_kheloindia_boxing_w.webp"
+          },
+          {
+            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+            "image_path": "/static/images/sports/others/others_kheloindia_boxing_w_3_23.webp"
+          },
+          {
+            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+            "image_path": "/static/images/sports/others/others_kumite_m_2_23.webp"
+          },
+          {
+            "title": "Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
+            "image_path": "/static/images/sports/others/others_taekwondo_w.webp"
+          },
+          {
+            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+            "image_path": "/static/images/sports/others/others_teakwondo_overall_m_23.webp"
+          },
+          {
+            "title": "Our College Student G.Yashwanth Kumar of IV Mech secure Silver medal in Jr.Mr.Tamilnadu competition held at Rajalakshmi Engg College and got selected for Jr.India competition going to participate Chhattisgarh. And also he selected to Anna University team for Participate All India Best Physiqe competition held at Kerala.",
+            "image_path": "/static/images/sports/others/others_Jr_Mr_Tamilnadu.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "intramural",
+    "data": [
+      {
+        "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+        "title": "Boys Basketball Winner IT Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/basketball_boys_runner.webp",
+        "title": "Boys Basketball Runner CSE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/basketball_girls_winner.webp",
+        "title": "Girls Basketball Winner ECE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/basketball_girls_runner.webp",
+        "title": "Girls Basketball Runner AI&DS Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/batminton_boys_winner.webp",
+        "title": "Boys Badminton Winner EEE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/batminton_boys_runner.webp",
+        "title": "Boys Badminton Runner ECE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/batminton_girls_winner.webp",
+        "title": "Girls Badminton Winner CSE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/batminton_girls_runner.webp",
+        "title": "Girls Badminton Runner ECE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/chess_boys_winner.webp",
+        "title": "Boys Chess Winner AI&DS Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/chess_boys_runner.webp",
+        "title": "Boys Chess Runner CSE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/chess_girls_winner.webp",
+        "title": "Girls Chess Winner ECE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/chess_girls_runner.webp",
+        "title": "Girls Chess Runner AI&DS Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/football_boys_winner.webp",
+        "title": "Boys Football Winner AI&DS Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/football_boys_runner.webp",
+        "title": "Boys Football Runner MECH Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tabletennis_boys_winner.webp",
+        "title": "Boys Table Tennis Winner MECH Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tabletennis_boys_runner.webp",
+        "title": "Boys Table Tennis Runner AI&DS Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tabletennis_girls_winner.webp",
+        "title": "Girls Table Tennis Winner MECH Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tabletennis_girls_runner.webp",
+        "title": "Girls Table Tennis Runner CSE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tennis_boys_winner.webp",
+        "title": "Boys Tennis Winner CIVIL Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/tennis_boys_runner.webp",
+        "title": "Boys Tennis Runner EEE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/volleyball_boys_winner.webp",
+        "title": "Boys Volleyball Winner IT Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/volleyball_boys_runner.webp",
+        "title": "Boys Volleyball Runner CIVIL Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/volleyball_girls_winner.webp",
+        "title": "Girls Volleybaall Winner ECE Department",
+        "year": "2024-25"
+      },
+      {
+        "image_path": "/static/images/sports/intramural/volleyball_girls_runner.webp",
+        "title": "Girls Volleyball Runner EEE Department",
+        "year": "2024-25"
+      }
     ]
   }
-}
 ]

@@ -1,0 +1,182 @@
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about_us": "Our college hostel provides a safe, clean, and welcoming environment that supports students’ academic and personal growth. It features spacious, well-ventilated rooms, clean washrooms, uninterrupted water supply, high-speed internet, and common study and recreation areas. The hostel mess serves fresh, hygienic, and nutritious meals prepared under strict quality standards, catering to both vegetarian and non-vegetarian preferences. Regular menu rotations and feedback systems ensure variety and student satisfaction. The facility is managed by experienced wardens and support staff, with 24/7 security to ensure safety. The hostel promotes discipline, responsibility, and a sense of community, making it a true home away from home.",
+        "image_path": "/static/images/hostel/landing.webp"
+      }
+    ]
+  },
+  {
+    "type": "hostel_facilities",
+    "data": [
+      {
+        "title": "Girls Hostel",
+        "description": "The girls’ hostel ensures safety, comfort, and privacy, with round-the-clock supervision and facilities tailored to students' well-being and convenience.",
+        "image_path": "/static/images/hostel/girls_hostel.webp"
+      },
+      {
+        "title": "Boys Hostel",
+        "description": "The boys’ hostel offers a secure and disciplined environment with all necessary facilities, promoting academic focus and healthy social interaction.",
+        "image_path": "/static/images/hostel/boys_hostel.webp"
+      },
+      {
+        "title": "Hostel Room",
+        "description": "A spacious common area for socializing and relaxing with other guests.",
+        "image_path": "/static/images/hostel/hostel_room.webp"
+      },
+      {
+        "title": "Mess",
+        "description": "The hostel mess serves hygienic, nutritious, and tasty meals daily, with a rotating menu and options to suit different dietary preferences.",
+        "image_path": "/static/images/hostel/mess.webp"
+      }
+    ]
+  },
+  {
+    "type": "warden",
+    "data": [
+      {
+        "category": "warden",
+        "members": [
+          {
+            "warden_name": "Dr. SATISH KUMAR S",
+            "phone_number": "",
+            "image_path": "/static/images/warden_profile_photos/001.webp",
+            "designation": "Chief Warden"
+          },
+          {
+            "warden_name": "THEIVANATHAN G",
+            "phone_number": 9677823118,
+            "image_path": "/static/images/warden_profile_photos/002.webp",
+            "designation": "Deputy Chief Warden"
+          }
+        ]
+      },
+      {
+        "category": "male_warden",
+        "members": [
+          {
+            "warden_name": "MATHIVANAN M",
+            "phone_number": 9043857601,
+            "image_path": "/static/images/warden_profile_photos/003.webp",
+            "designation": "Deputy Warden"
+          },
+          {
+            "warden_name": "TEJENDRA BAHADHUR SHAHI S",
+            "phone_number": 8098835544,
+            "image_path": "/static/images/warden_profile_photos/004.webp",
+            "designation": "Deputy Warden"
+          },
+          {
+            "warden_name": "RAVI A",
+            "phone_number": 9445170364,
+            "image_path": "/static/images/warden_profile_photos/005.webp",
+            "designation": "Deputy Warden"
+          }
+        ]
+      },
+      {
+        "category": "female_warden",
+        "members": [
+          {
+            "warden_name": "MENAGA T",
+            "phone_number": 8220348276,
+            "image_path": "/static/images/warden_profile_photos/006.webp",
+            "designation": "Deputy Warden"
+          },
+          {
+            "warden_name": "SARAL J",
+            "phone_number": 8610743147,
+            "image_path": "/static/images/warden_profile_photos/007.webp",
+            "designation": "Deputy Warden"
+          },
+          {
+            "warden_name": "NITHYA E",
+            "phone_number": 9566943700,
+            "image_path": "/static/images/warden_profile_photos/008.webp",
+            "designation": "Deputy Warden"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "general_info",
+    "data": [
+      {
+        "category": "timings",
+        "content": [
+          {
+            "section": "mess timings",
+            "breakfast": "7:00 AM - 9:00 AM",
+            "lunch": "12:00 PM - 2:00 PM",
+            "dinner": "7:00 PM - 8:00 PM"
+          },
+          {
+            "section": "study timings",
+            "breakfast": "6:00 AM - 8:00 AM",
+            "lunch": "1:00 PM - 6:00 PM",
+            "dinner": "10:30 PM - 12:00 AM"
+          }
+        ]
+      },
+      {
+        "category": "menu",
+        "content": [
+          {
+            "hostel_menu": [
+              {
+                "day": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "Breakfast": [
+                  "Pongal, Coconut chutney, Sambar, Vada, Coffee / Milk",
+                  "Idly, Kara Chutney, Vada Curry, Coffee / Milk",
+                  "Onion Utthappam, Coconut Chutney, Sambar, Coffee / Milk",
+                  "Rava Kitchedi, Sambar, Coconut Chutney, Bread, Jam, Butter, Omelet & Coffee / Milk",
+                  "Veg Dosa, Peanut Chuttney, Sambar, Coffee / milk",
+                  "Poori, Chana Masala, Coffee / Milk",
+                  "Bread, Jam, Butter, Omelet, Cucumber Salad, Coffee / Milk"
+                ],
+                "lunch": [
+                  "White Rice, Sambar, Rasam, Poriyal, Pickle, Butter Milk & Appalam",
+                  "White Rice, Egg Kuzhambu, Rasam, Kootu, Pickle, Curd, Appalam",
+                  "Varity Rice, Boiled Egg, Rasam, Poriyal, Pickle, Curd Rice, Appalam & Sweet",
+                  "White Rice, Veg Pappu, Poriyal, Pickle, Butter Milk & Appalam",
+                  "White Rice, Sambar, Rasam, Poriyal, Pickle, Butter milk, Appalam & Payasam",
+                  "White Rice, Vathakuzhambu, Rasam, Kootu, Pickle, Curd & Appalam",
+                  "Chicken Briyani, Veg Briyani, Onion Raitha, Brinjal Salna, Boiled Egg, Panner Gravy & Ice Cream"
+                ],
+                "snacks": [
+                  "Masala Vada, Tea & Milk",
+                  "Cream Bun, Tea & Milk",
+                  "Mini Samosa, Tea & Milk",
+                  "Veg Puff, Tea & Milk",
+                  "Valaka bajji, Tea & Coffee",
+                  "Banana Cake, Tea & Milk",
+                  "Veg Cutlet, Tea & Milk"
+                ],
+                "dinner": [
+                  "Parotta, Chicken Curry, Veg Kurma, Cut Fruits, White Rice, Rasam, Milk & Banana",
+                  "Poori, Chana Masala, Curd Rice, Milk & Banana",
+                  "Rice Kushka, Chicken Thokku, Gobi 65, Milk & Banana",
+                  "Veg Pulao, Meal Maker Masala, Curd Rice, Milk & Banana",
+                  "Chappathi, Egg Curry, White Rice, Rasam, Milk & Banana",
+                  "Kal Dosa, Sambar, Kara Chutney, Milk & Banana",
+                  "Chappathi, Veg Kurma, Milk & Banana"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

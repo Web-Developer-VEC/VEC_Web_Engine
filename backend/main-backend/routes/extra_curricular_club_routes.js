@@ -7,12 +7,10 @@ const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
 
 const router = express();
 
-router.get('/ncc_army', limiter, xss, getArmyData);
-router.get('/ncc_navy', limiter, xss, getNavyData);
-router.get('/nss', limiter, xss, getNssData);
-router.get('/yrc', limiter, xss, getYrcData);
-
-
+router.post('/ncc_army', limiter, xss, getArmyData);
+router.post('/ncc_navy', limiter, xss, getNavyData);
+router.post('/nss', limiter, xss, getNssData);
+router.post('/yrc', limiter, xss, getYrcData);
 
 module.exports = router;
 

@@ -1,21 +1,48 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getSportsData(req,res) {
-    const db = getDb();
-    const collection = db.collection('sports_data');
+const ALLOWED_SPORTS_TYPES = [
+  'introduction',
+  'vision',
+  'hod',
+  'faculty',
+  'action_plan',
+  'infrastructure',
+  'achivements',
+  'intramural'
+];
 
-    try {
-        const sports_data = await collection.find({}).toArray();
-        if (sports_data.length === 0) {
-            return res.status(404).json({ message: 'No Sports data found' });
-        }
-        res.status(200).json(sports_data);
-    } catch (error) {
-        console.error('Error fetching Sports data:', error);
-        await logError(req, error, 'Error in sports data', 500);
-        res.status(500).json({ error: 'Error fetching Sports data' });
+async function getSportsData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
     }
+
+    if (!ALLOWED_SPORTS_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IQAC section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('sports');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching sports section:', error);
+    await logError(req, error, 'Error fetching sports section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 module.exports = { getSportsData }

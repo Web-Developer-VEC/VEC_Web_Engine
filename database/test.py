@@ -228,7 +228,144 @@ def insert_ecell_sections():
 
     print("e cell sections inserted successfully.")
 
-insert_ecell_sections()
+def insert_other_facilities_sections():
+    collection = db["other_facilities"]
+
+    with open("/VEC_WEB_Engine/docs/other_facilities.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("other facilities sections inserted successfully.")
+
+def insert_hostel_sections():
+    collection = db["hostel_details"]
+
+    with open("/VEC_WEB_Engine/docs/hostel.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("hostel facilities sections inserted successfully.")
+
+def insert_ncc_army_sections():
+    collection = db["ncc_army"]
+
+    with open("/VEC_WEB_Engine/docs/ncc_army.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc army sections inserted successfully.")
+
+def insert_ncc_navy_sections():
+    collection = db["ncc_navy"]
+
+    with open("/VEC_WEB_Engine/docs/ncc_navy.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc navy sections inserted successfully.")
+
+def insert_nss_sections():
+    collection = db["nss"]
+
+    with open("/VEC_WEB_Engine/docs/nss.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("nss sections inserted successfully.")
+
+def insert_sports_sections():
+    collection = db["sports"]
+
+    with open("/VEC_WEB_Engine/docs/sports_data.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("sports sections inserted successfully.")
+
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
+
+def insert_yrc_sections():
+    collection = db["yrc"]
+
+    with open("/VEC_WEB_Engine/docs/yrc.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("yrc sections inserted successfully.")
+
+insert_sports_sections()
+insert_nss_sections()
+insert_ncc_navy_sections()
+insert_ncc_army_sections()
+insert_hostel_sections()
+insert_transport_sections()
+insert_yrc_sections()
+#insert_other_facilities_sections()
+#insert_transport_sections()
+#insert_ecell_sections()
 #insert_incubations_sections()
 #insert_iic_sections()
 #insert_accreditations_and_ranking_sections()

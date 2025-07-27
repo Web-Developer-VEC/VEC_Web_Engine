@@ -1,77 +1,170 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getNssData (req, res) {
-    try {
-        const db = getDb();
-        const nssCollection = db.collection("nss_data");
-        const nss_data = await nssCollection.find({}).toArray();
+const ALLOWED_NCC_ARMY_TYPES = [
+  'about',
+  'events',
+  'team',
+  'awards'
+];
 
-        if (nss_data.length === 0) {
-            return res.status(204).send();
-        }
+const ALLOWED_NCC_NAVY_TYPES = [
+  'about',
+  'events',
+  'team',
+  'awards'
+];
 
-        return res.status(200).json(nss_data);
-    } catch (error) {
-        console.error("Error fetching NSS data:", error);
-        await logError(req, error, 'Error fetching NSS Data', 500);
-        return res.status(500).json({ error: "Error fetching NSS Data" });
-    } 
-}
+const ALLOWED_NSS_TYPES = [
+  'about',
+  'news_updates',
+  'events',
+  'team'
+];
 
-async function getYrcData (req, res) {
-    try {
-        const db = getDb();
-        const yrcCollection = db.collection("yrc_data");
-        const yrc_data = await yrcCollection.find({}).toArray();
+const ALLOWED_YRC_TYPES = [
+  'about',
+  'news_updates',
+  'events',
+  'team',
+  'awards'
+];
 
-        if (yrc_data.length === 0) {
-            return res.status(204).send();
-        }
+async function getArmyData(req, res) {
+  try {
+    const { type } = req.body;
 
-        return res.status(200).json(yrc_data);
-    } catch (error) {
-        console.error("Error fetching YRC data:", error);
-        await logError(req, error, 'Error fetching YRC Data', 500);
-        return res.status(500).json({ error: "Error fetching YRC Data" });
-    } 
-}
-
-async function getArmyData (req, res) {
-    const db = getDb();
-    const collection = db.collection('army');
-    try {
-        const Data = await collection.find({}).toArray();
-        if (Data.length === 0) {
-            return res.status(404).json({ message: 'No navy data found' });
-        }
-        res.status(200).json(Data);
-    } catch (error) {
-        console.error('Error fetching army data:', error);
-        await logError(req, error, 'Error fetching army Data', 500);
-        res.status(500).json({ error: 'Error fetching armydata' });
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
     }
-}
 
-async function getNavyData (req, res) {
-    const db = getDb();
-    const collection = db.collection('navy');
-    try {
-        const NAVYData = await collection.find({}).toArray();
-        if (NAVYData.length === 0) {
-            return res.status(404).json({ message: 'No navy data found' });
-        }
-        res.status(200).json(NAVYData);
-    } catch (error) {
-        console.error('Error fetching navy data:', error);
-        await logError(req, error, 'Error fetching navy Data', 500);
-        res.status(500).json({ error: 'Error fetching navy data' });
+    if (!ALLOWED_NCC_ARMY_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IQAC section` });
     }
+
+    const db = getDb();
+    const collection = db.collection('ncc_army');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching ncc army section:', error);
+    await logError(req, error, 'Error fetching ncc army section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
-module.exports = {
-    getNssData,
-    getYrcData,
+async function getNavyData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_NCC_NAVY_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IQAC section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('ncc_navy');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching ncc navy section:', error);
+    await logError(req, error, 'Error fetching ncc navy section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getNssData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_NSS_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IQAC section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('nss');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching nss section:', error);
+    await logError(req, error, 'Error fetching nss section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getYrcData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_YRC_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid IQAC section` });
+    }
+
+    const db = getDb();
+    const collection = db.collection('yrc');
+
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching yrc section:', error);
+    await logError(req, error, 'Error fetching yrc section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = { 
+    getArmyData,
     getNavyData,
-    getArmyData
-}
+    getNssData,
+    getYrcData
+ }
