@@ -614,31 +614,6 @@ def insert_announcements_data():
 
     print("Announcements documents inserted successfully.\n")
 
-def principal_data():
-    collection = db["principal_data"]
-    with open("/VEC_WEB_Engine/docs/principal_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Principals documents inserted successfully.\n")
-
-def insert_admin_office_data():
-    collection = db['admin_office']  
-    with open("/VEC_WEB_Engine/docs/admin_office.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("admin office documents inserted successfully.\n")
-
-def insert_committee_data():
-
-    collection = db['committee']  
-    with open("/VEC_WEB_Engine/docs/committee.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Committee documents inserted successfully.\n")
-
 def insert_regulation_data():
     collection = db['regulation']  
     with open("/VEC_WEB_Engine/docs/regulation.json", "r",encoding="utf-8") as file:
@@ -662,14 +637,6 @@ def insert_intake_data():
     collection.insert_many(documents)
 
     print("Intake data inserted successfully.\n")
-
-def insert_dean_and_associates_data():    
-    collection = db["dean_and_associates"]        
-    with open('/VEC_WEB_Engine/docs/dean_and_associates.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("dean_and_associates data inserted successfully.\n")
 
 def insert_placement_data():
 
@@ -787,14 +754,10 @@ insert_curriculum_data()
 insert_events_data()
 insert_announcements_data()
 insert_special_announcements()
-principal_data()
-insert_admin_office_data()
 placement_team()
 insert_regulation_data()
 insert_intake_data()
-insert_committee_data()
 insert_placement_data()
-insert_dean_and_associates_data()
 insert_curriculum_and_syllabus_data()
 insert_all_forms_data()
 insert_banners()
@@ -1079,16 +1042,6 @@ def insert_about_us():
         collection.insert_many(documents)
     print("about_us documents inserted successfully.\n")
 
-def insert_organization_chart():
-
-    collection = db['organization_chart']  
-    with open("/VEC_WEB_Engine/docs/organization_chart.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-
-    print("organization chart json documents inserted successfully.\n")
-
-
 def insert_hostel_menu():
 
     collection = db['hostel_menu']  
@@ -1108,6 +1061,21 @@ def insert_help_desk():
 
     print("help_desk documents inserted successfully.\n")
 
+def insert_administration_sections():
+    collection = db["administration"]
+
+    with open("/VEC_WEB_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+        admin_data = json.load(file)
+
+        for section in admin_data:
+            section_key = list(section.keys())[0]
+            document = {
+                "type": section_key,
+                "data": section[section_key]
+            }
+            collection.insert_one(document)
+
+    print("Administration sections inserted successfully.")
 
 def insert_landing_page_details():
 
@@ -1170,16 +1138,6 @@ def insert_ecell_data():
 
     print("e_cell data inserted successfully.")
 
-
-def insert_handbook_data():    
-    collection = db["handbook"]        
-    with open('/VEC_WEB_Engine/docs/handbook.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("Handbook data inserted successfully.")
-
-
 def insert_gallery():
     collection = db["gallery"]   
     with open('/VEC_WEB_Engine/docs/gallery.json', "r",encoding="utf-8") as file:
@@ -1200,7 +1158,7 @@ def insert_web_team():
 
     print("web team data inserted successfully.")
 
-
+insert_administration_sections()
 insert_sports_data()
 insert_library_data()
 insert_nss_data()
@@ -1220,7 +1178,6 @@ insert_overall_journal_publications()
 insert_academic_calendar()
 insert_about_placement()
 insert_about_us()
-insert_organization_chart()
 insert_hostel_menu()
 insert_help_desk()
 insert_landing_page_details()
@@ -1228,7 +1185,6 @@ insert_programmes_list()
 insert_departments_list()
 insert_admission_team()
 insert_ecell_data()
-insert_handbook_data()
 insert_gallery()
 create_logs_collection()
 insert_web_team()

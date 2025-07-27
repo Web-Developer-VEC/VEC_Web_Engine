@@ -67,7 +67,27 @@ def insert_about_us():
         collection.insert_many(documents)
     print("about_us documents inserted successfully.\n")
 
-insert_about_us()
+
+def insert_administration_sections():
+    collection = db["administration"]
+
+    with open("/VEC_WEB_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+        admin_data = json.load(file)
+
+        for section in admin_data:
+            section_key = list(section.keys())[0]
+            document = {
+                "type": section_key,
+                "data": section[section_key]
+            }
+            collection.insert_one(document)
+
+    print("Administration sections inserted successfully.")
+
+insert_administration_sections()
+
+
+#insert_about_us()
 #insert_academic_calendar()
 #insert_programmes_list()
 #insert_departments_list()

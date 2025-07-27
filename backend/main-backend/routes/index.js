@@ -4,6 +4,7 @@ const router = express.Router();
 
 const about_us = require('./about_us_routes');
 const acadamic = require('./academic_routes');
+const administration = require('./administration_routes');
 const admin = require('./admin_routes');
 const allform = require('./allform_routes');
 const announcement = require('./announcement_routes');
@@ -35,6 +36,7 @@ const log = require('./log_routes')
 
 router.use('', about_us);
 router.use('', acadamic);
+router.use('', administration);
 router.use('', admin);
 router.use('', allform);
 router.use('', announcement);
