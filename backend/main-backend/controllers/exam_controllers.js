@@ -4,7 +4,7 @@ const logError = require('../middlewares/logerror');
 const ALLOWED_TYPES = [
   'COE',
   'regulation',
-  'curriculum',
+  'exam_curriculum',
   'all_forms'
 ];
 

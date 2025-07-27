@@ -623,15 +623,6 @@ def insert_placement_data():
 
     print("placement documents inserted successfully.\n")
 
-def insert_curriculum_and_syllabus_data():
-
-    collection = db['curriculum_and_syllabus']  
-    with open("/VEC_WEB_Engine/docs/curriculum_and_syllabus.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-
-    print("curriculum_And_syllabus documents inserted successfully.\n")
-
 def insert_banners():
     collection = db['banner']  
     with open("/VEC_WEB_Engine/docs/banner.json", "r",encoding="utf-8") as file:
@@ -744,7 +735,6 @@ insert_announcements_data()
 insert_special_announcements()
 placement_team()
 insert_placement_data()
-insert_curriculum_and_syllabus_data()
 insert_banners()
 insert_NBA_data()
 insert_naac_data()
