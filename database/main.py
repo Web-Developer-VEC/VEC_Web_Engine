@@ -1089,17 +1089,6 @@ def insert_organization_chart():
     print("organization chart json documents inserted successfully.\n")
 
 
-def insert_academic_calender():
-
-    collection = db['academic_calender']  
-    with open("/VEC_WEB_Engine/docs/academic_calender.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("academic calender inserted successfully.")
-
-
-
 def insert_hostel_menu():
 
     collection = db['hostel_menu']  
@@ -1129,23 +1118,40 @@ def insert_landing_page_details():
 
     print("insert_landing_page_details documents inserted successfully.\n")
 
+def insert_academic_calendar():
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/academic_calender.json", "r", encoding="utf-8") as file:
+        calendar_data = json.load(file)
+        document = {
+            "type": "academic_calendar",
+            "data": calendar_data
+        }
+        collection.insert_one(document)
+    print("Academic calendar inserted successfully.")
+
+
 def insert_programmes_list():
-
-    collection = db['programmes_list']  
-    with open("/VEC_WEB_Engine/docs/programmes_list.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/programmes_list.json", "r", encoding="utf-8") as file:
+        programmes_data = json.load(file)
+        document = {
+            "type": "programmes_list",
+            "data": programmes_data
+        }
+        collection.insert_one(document)
     print("Programmes list inserted successfully.")
 
+
 def insert_departments_list():
-
-    collection = db['departments_list']  
-    with open("/VEC_WEB_Engine/docs/departments_list.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("departments list inserted successfully.")
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/departments_list.json", "r", encoding="utf-8") as file:
+        departments_data = json.load(file)
+        document = {
+            "type": "departments_list",
+            "data": departments_data
+        }
+        collection.insert_one(document)
+    print("Departments list inserted successfully.")
 
 def insert_admission_team():    
     collection = db["admission_team"]        
@@ -1211,7 +1217,7 @@ insert_overall_book_publication()
 insert_overall_conference_publication()
 insert_overall_patent()
 insert_overall_journal_publications()
-insert_academic_calender()
+insert_academic_calendar()
 insert_about_placement()
 insert_about_us()
 insert_organization_chart()

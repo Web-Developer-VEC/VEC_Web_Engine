@@ -1,58 +1,44 @@
 const { getDb } = require("../config/db");
-const logError = require('../middlewares/logerror');
+const logError = require("../middlewares/logerror");
 
-async function getAcademicCalender (req, res) {
-      try {
-        const db = getDb();
-        const collection = db.collection('academic_calender');
+async function getAcademicsData(req, res) {
+  try {
+    const db = getDb();
+    const collection = db.collection('academics');
 
-        // Fetch the calendar document
-        const calendar = await collection.findOne();
+    const requiredTypes = ['academic_calendar', 'programmes_list', 'departments_list'];
+    const documents = await collection.find({ type: { $in: requiredTypes } }).toArray();
 
-        if (!calendar || !calendar.year || calendar.year.length === 0) {
-          return res.status(404).json({ message: 'No calendar data found' });
-        }
+    const response = {
+      academic_calendar: null,
+      programmes_list: [],
+      departments_list: [],
+    };
 
-        res.status(200).json(calendar);
-      } catch (error) {
-        console.error('Error fetching calendar:', error);
-        await logError(req, error, 'Error fetching calendar', 500);
-        res.status(500).json({ error: 'Internal Server Error' });
+    for (const document of documents) {
+      switch (document.type) {
+        case 'academic_calendar':
+          response.academic_calendar = document.data;
+          break;
+        case 'programmes_list':
+          response.programmes_list = document.data;
+          break;
+        case 'departments_list':
+          response.departments_list = document.data;
+          break;
       }
-}
-
-async function getDepartment (req, res) {
-    const db = getDb();
-    const collection = db.collection('departments_list');
-
-    try {
-        const departments_list = await collection.find({}).toArray();
-        if (departments_list.length === 0) {
-            return res.status(404).json({ message: 'No departments list found' });
-        }
-        res.status(200).json(departments_list);
-    } catch (error) {
-        console.error('Error fetching departments list:', error);
-        await logError(req, error, 'Error fetching departments list', 500);
-        res.status(500).json({ error: 'Error fetching departments list' });
     }
-}
 
-async function getProgrammes (req, res) {
-    const db = getDb();
-    const collection = db.collection('programmes_list');
-
-    try {
-        const programmes_list = await collection.find({}).toArray();
-        if (programmes_list.length === 0) {
-            return res.status(404).json({ message: 'No programmes list found' });
-        }
-        res.status(200).json(programmes_list);
-    } catch (error) {
-        console.error('Error fetching programmes list:', error);
-        await logError(req, error, 'Error fetching programmes list', 500);
-        res.status(500).json({ error: 'Error fetching programmes list' });
+    if (!response.academic_calendar || response.programmes_list.length === 0 || response.departments_list.length === 0) {
+      return res.status(404).json({ message: 'Some academic data not found' });
     }
+
+    return res.status(200).json(response);
+  } catch (error) {
+    console.error('Error fetching academics data:', error);
+    await logError(req, error, 'Error fetching academics data', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
-module.exports = { getAcademicCalender, getDepartment, getProgrammes }
+module.exports = { getAcademicsData };

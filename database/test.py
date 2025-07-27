@@ -11,6 +11,44 @@ db_name = "VEC"
 client = MongoClient(mongo_uri)
 db = client[db_name]
 
+import json
+from pymongo import MongoClient
+
+def insert_academic_calendar():
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/academic_calender.json", "r", encoding="utf-8") as file:
+        calendar_data = json.load(file)
+        document = {
+            "type": "academic_calendar",
+            "data": calendar_data
+        }
+        collection.insert_one(document)
+    print("Academic calendar inserted successfully.")
+
+
+def insert_programmes_list():
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/programmes_list.json", "r", encoding="utf-8") as file:
+        programmes_data = json.load(file)
+        document = {
+            "type": "programmes_list",
+            "data": programmes_data
+        }
+        collection.insert_one(document)
+    print("Programmes list inserted successfully.")
+
+
+def insert_departments_list():
+    collection = db['academics']
+    with open("/VEC_WEB_Engine/docs/departments_list.json", "r", encoding="utf-8") as file:
+        departments_data = json.load(file)
+        document = {
+            "type": "departments_list",
+            "data": departments_data
+        }
+        collection.insert_one(document)
+    print("Departments list inserted successfully.")
+
 def insert_about_us():
     collection = db['about_us']
 
@@ -29,4 +67,7 @@ def insert_about_us():
         collection.insert_many(documents)
     print("about_us documents inserted successfully.\n")
 
-insert_about_us()
+#insert_about_us()
+insert_academic_calendar()
+insert_programmes_list()
+insert_departments_list()
