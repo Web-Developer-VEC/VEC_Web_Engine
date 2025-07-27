@@ -1,11 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
-const scheduleResetCounters = require('./main-backend/middlewares/reset_scheduler');
-const hitTracker = require('./main-backend/middlewares/hit_tracker');
 const helmet = require('./main-backend/middlewares/helmet_security');
 const cors = require('./main-backend/middlewares/cros_security');
-
+const scheduleResetCounters = require('./main-backend/middlewares/schedulers/reset_hit_counters');
+const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
+const hitTracker = require('./main-backend/middlewares/hit_tracker')
 
 dotenv.config({ quiet : true });
 
@@ -24,7 +24,7 @@ app.use(cors);
 app.use(express.json());
 // Start scheduled task (reset daily counters at midnight)
 scheduleResetCounters();
-
+scheduleMongoHealthCheck();
 
 // Connect to DBs
 connectToDatabase();
