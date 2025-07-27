@@ -741,6 +741,23 @@ def insert_accreditations_and_ranking_sections():
 
     print("accreditations and ranking sections inserted successfully.")
 
+def insert_ecell_sections():
+    collection = db["ecell"]
+
+    with open("/VEC_WEB_Engine/docs/e_cell.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("e cell sections inserted successfully.")
+
+insert_ecell_sections()
 insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
 insert_placement_sections()
@@ -1056,14 +1073,6 @@ def insert_departments_list():
         collection.insert_one(document)
     print("Departments list inserted successfully.")
 
-def insert_ecell_data():
-    collection = db["e_cell"]
-    with open("/VEC_WEB_Engine/docs/e_cell.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("e_cell data inserted successfully.")
-
 def insert_gallery():
     collection = db["gallery"]   
     with open('/VEC_WEB_Engine/docs/gallery.json', "r",encoding="utf-8") as file:
@@ -1101,7 +1110,6 @@ insert_help_desk()
 insert_landing_page_details()
 insert_programmes_list()
 insert_departments_list()
-insert_ecell_data()
 insert_gallery()
 create_logs_collection()
 insert_web_team()

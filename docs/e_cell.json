@@ -1,359 +1,507 @@
-[{
-
-    "home": {
-    "about":["LemonIvy started in 2008 to nurture spirit of entrepreneurship among fellow students. Velammal Engineering College is one of the 500 member institutions of the National Entrepreneurship Network (NEN-supported by Wadhwani Foundation) across the country. LemonIvy aims at making the student members aware of the different start-up terminologies and also give them the confidence to start their own business venture with the available resources. With the same kind of spark, zeal and out-of-the box thinking to go a long way in spreading the spirit of entrepreneurship."],
-      "vision": ["To train our members, so as to face the challenges provided by the real world by exposing them to real world problems and also give them theoretical background and to inspire them to attain their dreams."],
-      "mission": ["To make each and every member achieve his entrepreneurial dreams by providing",
-                 "A platform for expressing their views.",
-                 "An atmosphere where idea generation is made possible.",
-                 "An interaction with the real world to get overall exposure."
-                ]
-    },
-    "committee": {
-      "entrepreneur_men": {
-        "name": [
-            "Dr.A.NIRMAL RAJ",
-          "Mr.M.YUVARAJ",
-          "Mr.K.RAJENDHIRAN",
-          "Mr.RAJESH",
-          "Mr.K.RADHAKRISHNAN",
-          "Mr.V.RENGARAJAN",
-          "Mrs.PADMA",
-          "Mr.K.R.MOHANRAJ",
-          "Dr.S.PRADEEP KUMAR",
-          "Mrs.S.MYTHILI",
-          "Mr.PRAMILA",
-          "Ms.SUDHARANI",
-          "VIDHYALAKHMI T",
-          "DEEPAN A",
-          "PREETHI R",
-          "GOWTHAM R"
-        ],
-        "position": [
-          "Head",
-          "Overall Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Department Coordinator",
-          "Member",
-          "Student President",
-          "Student Vice-President",
-          "Student Convener",
-          "Public Relation Officer"
-        ],
-        "affiliation": [
-          "Head - Dept. of Master of Business Administration",
-          "Assistant Professor, Department of Automobile",
-          "Assistant Professor, Department of Civil",
-          "Assistant Professor, Department of CSE",
-          "Assistant Professor, Department of ECE",
-          "Assistant Professor, Department of EEE",
-          "Assistant Professor, Department of E&I",
-          "Assistant Professor, Department of IT",
-          "Assistant Professor, Department of Mechanical",
-          "Assistant Professor, Department of AI&DS",
-          "Assistant Professor, CSE-CS department",
-          "Assistant Professor, MBA department",
-          "Student - CSE-CS",
-          "Student - ECE",
-          "Student - EEE",
-          "Student - Civil"
-        ]
-      },
-      "entrepreneur_women": {
-        "name": [
-         "Dr.A.NIRMAL RAJ",
-          "Mr.M.YUVARAJ",
-          "Mrs.S.MYTHILI",
-          "MONISHA TV",
-          "BUVANESWARI S",
-          "R ADHIRA",
-          "AYISHA SIDDIKA J"
-        ],
-        "position": [
-          "Head",
-          "Overall Coordinator",
-          "Cell In-charge",
-          "Student President",
-          "Student Vice-President",
-          "Student President",
-          "Public Relation Officer"
-        ],
-        "affiliation": [
-          "Head - Dept. of Master of Business Administration",
-          "Assistant Professor, Department of Automobile",
-          "Assistant Professor, Department of AI&DS",
-          "Student - CSE",
-          "Student - CSE",
-          "Student - CSE",
-          "Student - CSE"
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about": "LemonIvy started in 2008 to nurture spirit of entrepreneurship among fellow students. Velammal Engineering College is one of the 500 member institutions of the National Entrepreneurship Network (NEN-supported by Wadhwani Foundation) across the country. LemonIvy aims at making the student members aware of the different start-up terminologies and also give them the confidence to start their own business venture with the available resources. With the same kind of spark, zeal and out-of-the box thinking to go a long way in spreading the spirit of entrepreneurship.",
+        "vision": "To train our members, so as to face the challenges provided by the real world by exposing them to real world problems and also give them theoretical background and to inspire them to attain their dreams.",
+        "mission": [
+          "To make each and every member achieve his entrepreneurial dreams by providing",
+          "A platform for expressing their views.",
+          "An atmosphere where idea generation is made possible.",
+          "An interaction with the real world to get overall exposure."
         ]
       }
-    },
-    "entrepreneur":{
-      "name": [
-      "SRINIVASAN R",
-      "THILAGAN M",
-      "HARISH KUMAR M G",
-      "VIJAYA PRABAKARAN J S",
-      "NIRANJAN RAJ J",
-      "KARTHICK R C",
-      "REVANTH",
-      "ARAVINDAN K",
-      "RAJ THILAK K",
-      "RAMKUMAR M",
-      "GANESH K",
-      "ARAVIND KARTHIK V",
-      "VISHNU PRASADH S",
-      "SANTHOSH KUMAR S",
-      "BABU ELANCHEZHIAN P",
-      "KARTHIKEYAN P",
-      "SATISH KUMAR V",
-      "MOHAMMED A",
-      "NANDHA KUMAR",
-      "SARATH KUMAR",
-      "SANTHOSH S",
-      "SHARGURU M",
-      "THIRUMANI T",
-      "KARTHICK G",
-      "KRISHNASAMY S",
-      "GOKUL PRASATH S",
-      "DHIRAJ KUMAR B",
-      "PALANIRAJAN M",
-      "JEEVA SHYAM R",
-      "HARI PRAKASH ATHINARAYANAN",
-      "ARSHADH AHMED S M",
-      "RAJESH KUMAR G",
-      "VIGNESH M",
-      "MANOJ MAHESHWAR",
-      "NAVIN KUMAR D",
-      "YASVANT PRASAS P",
-      "ARISH RAJAN M",
-      "RAHUL KANNA S",
-      "FAHIM",
-      "BHUVANESH J",
-      "VIJAY MANIKANDAN S",
-      "SAIDEEPESH M R",
-      "PRATHAP S",
-      "SANTHOSH T",
-      "KHALID SAIFULLAH K",
-      "RAGHURAM SK",
-      "SUMAN S",
-      "RAGAVENDIRAN",
-      "SANDEEP",
-      "GUNASEELAN V",
-      "JOMON K R",
-      "KUNGUMAROHITH S",
-      "KARTHIK MUTHURAMALINGAM V",
-      "SHAIK SAMEER",
-      "DANIEL DURAIRAJ S",
-      "DEVIKA NAIR",
-      "DHANUSH",
-      "HARINI",
-      "S PRAVEEN KUMAR",
-      "MURALI KRISHNAN M",
-      "NAVEEN SRIVATHSAN K",
-      "VAMSI KRISHNA",
-      "ALBIN",
-      "VALATHURU NIRANJAN",
-      "ROSHAN M",
-      "EMMANUEL JOSHUA J",
-      "SUBASHREE",
-      "VINUNITHI",
-      "HARISH",
-      "THAMIL ANBAN K S",
-      "ELTON SHALIN NEETHIMAN",
-      "MANIKANDAN R",
-      "SUBASH SR",
-      "DHEENADHAYALAN"
-    ],
-    "Business_name": [
-      "BrickBus",
-      "Tamilan Spares,Namakkal, Tamilnadu Automobile Spare parts Supplier",
-      "Bubblez care",
-      "Golden motors,Chennai. Automobile Spare parts Supplier",
-      "Niranjan Travels, Namakal, Tamilnadu Logistic Service.",
-      "BUILD FOLIOS",
-      "SHREE VENKATESWARA TRANSPORT",
-      "Dr. Back Mattresses, Chennai Trading",
-      "Mr.Mechanic (service Station)",
-      "M7 Enterprises, Chennai",
-      "K.Ganesh Transports",
-      "MatteBox Studios",
-      "PRASADH CONSTRUCTION & CONSULTANT",
-      "Santhosh Ply woods and Hardwares",
-      "Rook customs",
-      "Durga Hardwares and Electricals",
-      "Sri Siva Electrics and Harwares",
-      "MAAK ENTERPRISES",
-      "eG Innovation",
-      "Flashore Technology LLP",
-      "Amman Traders",
-      "Murugan Essence Mart",
-      "Glowing Leaf Interiors",
-      "Selvamtraders",
-      "Selvam Enterprises",
-      "Siva Trailor Works",
-      "Balaji Pawn Broker And Jwellers",
-      "Natarajansupermarket",
-      "AERO EMBED TECHNOLOGIES PVT LTD",
-      "AERO EMBED TECHNOLOGIES PVT LTD",
-      "VENURA ENTERPRISES",
-      "Crown U",
-      "M/S Vignesh & Co",
-      "Zedtribe Private Limited",
-      "National Woods Kodungaiyur",
-      "Crusers Techon Private Limited",
-      "CREOTODO Pvt Ltd",
-      "Sakthi E-Bikes",
-      "IQRA Paints",
-      "THAENVEEDU",
-      "COWBOYZ",
-      "Rukmani Contractor Contractor",
-      "Best Automobiles,",
-      "SB MOTORS (AUTHORISIED TVS DEALER)",
-      "TITAN WORLD – DHARMAPURI",
-      "Jedlik Motors Private Limited",
-      "Sri Garundachalam steel industry",
-      "HEPTRE TECHWORKS PRIVATE LIMITED",
-      "SANDAS DIGITAL LTD.",
-      "VGM Builders",
-      "S R Construction",
-      "AndavarBluemetal",
-      "Pills and Tonics",
-      "Sunbam Technologies",
-      "Swap Inc",
-      "Preez Fashion India",
-      "STAR BUILDERS",
-      "HYPERLYNX INFOTECH",
-      "VBIND INNOVATION PRIVATE LIMITED, CHENNAI",
-      "INBLUE INFOTECH (OPC) PRIVATE LIMITED",
-      "Naveen & CO",
-      "MADRAS GOLI SODA",
-      "ARCSYS LIMITED",
-      "ARYA PRODUCTIONS",
-      "Roshan Refractory",
-      "12 OX Enterprises",
-      "JAYASREE CHEM EXIM PVT LTD",
-      "CRITTER GRAPHIX",
-      "ONEHOST PRIVATE LTD.",
-      "SHARP Pumps",
-      "CRITTER GRAPHIX",
-      "Ayapakkam Chess Academy",
-      "SSR Engineering Solution Pvt Ltsd",
-      "THIRUMURUGAN WOODWORKS"
-    ],
-    "year": [
-      "2012-2016",
-      "2012-2016",
-      "2012-2016",
-      "2012-2016",
-      "2012-2016",
-      "2013-2017",
-      "2013-2017",
-      "2013-2017",
-      "2013-2017",
-      "2013-2017",
-      "2013-2017",
-      "2013-2017",
-      "2014-2018",
-      "2014-2018",
-      "2014-2018",
-      "2014-2018",
-      "2014-2018",
-      "2014-2018",
-      "2017-2018",
-      "2017-2018",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2015-2019",
-      "2018-2019",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2016-2020",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2017-2021",
-      "2020-2021",
-      "2018-2022",
-      "2021-2022",
-      "2018-2022",
-      "2018-2022",
-      "2021-2022",
-      "2019-2023",
-      "2019-2023",
-      "2019-2023",
-      "2019-2023",
-      "2022-2023",
-      "2020-2024",
-      "2020-2024",
-      "2020-2024",
-      "2020-2024",
-      "2020-2024",
-      "2020-2024",
-      "2023-2024"
     ]
-    },
-    "activity": {
-      "pdfs_path": [
-        "/static/pdfs/e_cell/2015-2016.pdf",
-        "/static/pdfs/e_cell/2016-2017.pdf",
-        "/static/pdfs/e_cell/2017-2018.pdf",
-        "/static/pdfs/e_cell/2018-2019.pdf",
-        "/static/pdfs/e_cell/2019-2020.pdf",
-        "/static/pdfs/e_cell/2020-2021, 2021-2022.pdf",
-        "/static/pdfs/e_cell/2022-2023 back.pdf",
-        "/static/pdfs/e_cell/2022-2023.pdf",
-        "/static/pdfs/e_cell/2023-2024.pdf",
-        "/static/pdfs/e_cell/2024-2025 ecell.pdf"
-      ]
-    },
-    "gallery": {
-      "image_path": [
-        "/static/images/e_cell/1.webp",
-        "/static/images/e_cell/2.webp",
-        "/static/images/e_cell/3.webp",
-        "/static/images/e_cell/4.webp",
-        "/static/images/e_cell/6.webp",
-        "/static/images/e_cell/5.webp",
-        "/static/images/e_cell/7.webp",
-        "/static/images/e_cell/8.webp",
-        "/static/images/e_cell/9.webp",
-        "/static/images/e_cell/10.webp"
-      ]
-    }
+  },
+  {
+    "type": "committee",
+    "data": [
+      {
+        "name": "Dr.A.NIRMAL RAJ",
+        "position": "Head",
+        "affiliation": "Head - Dept. of Master of Business Administration"
+      },
+      {
+        "name": "Mr.M.YUVARAJ",
+        "position": "Overall Coordinator",
+        "affiliation": "Assistant Professor, Department of Automobile"
+      },
+      {
+        "name": "Mr.K.RAJENDHIRAN",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of Civil"
+      },
+      {
+        "name": "Mr.RAJESH",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of CSE"
+      },
+      {
+        "name": "Mr.K.RADHAKRISHNAN",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of ECE"
+      },
+      {
+        "name": "Mr.V.RENGARAJAN",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of EEE"
+      },
+      {
+        "name": "Mrs.PADMA",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of E&I"
+      },
+      {
+        "name": "Mr.K.R.MOHANRAJ",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of IT"
+      },
+      {
+        "name": "Dr.S.PRADEEP KUMAR",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of Mechanical"
+      },
+      {
+        "name": "Mrs.S.MYTHILI",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, Department of AI&DS"
+      },
+      {
+        "name": "Mr.PRAMILA",
+        "position": "Department Coordinator",
+        "affiliation": "Assistant Professor, CSE-CS department"
+      },
+      {
+        "name": "Ms.SUDHARANI",
+        "position": "Member",
+        "affiliation": "Assistant Professor, MBA department"
+      },
+      {
+        "name": "VIDHYALAKHMI T",
+        "position": "Student President",
+        "affiliation": "Student - CSE-CS"
+      },
+      {
+        "name": "DEEPAN A",
+        "position": "Student Vice-President",
+        "affiliation": "Student - ECE"
+      },
+      {
+        "name": "PREETHI R",
+        "position": "Student Convener",
+        "affiliation": "Student - EEE"
+      },
+      {
+        "name": "GOWTHAM R",
+        "position": "Public Relation Officer",
+        "affiliation": "Student - Civil"
+      }
+    ]
+  },
+  {
+    "type": "enterpreneur",
+    "data": [
+      {
+        "name": "SRINIVASAN R",
+        "business_name": "BrickBus",
+        "year": "2012-2016"
+      },
+      {
+        "name": "THILAGAN M",
+        "business_name": "Tamilan Spares, Namakkal, Tamilnadu Automobile Spare parts Supplier",
+        "year": "2012-2016"
+      },
+      {
+        "name": "HARISH KUMAR M G",
+        "business_name": "Bubblez care",
+        "year": "2012-2016"
+      },
+      {
+        "name": "VIJAYA PRABAKARAN J S",
+        "business_name": "Golden motors, Chennai. Automobile Spare parts Supplier",
+        "year": "2012-2016"
+      },
+      {
+        "name": "NIRANJAN RAJ J",
+        "business_name": "Niranjan Travels, Namakal, Tamilnadu Logistic Service.",
+        "year": "2012-2016"
+      },
+      {
+        "name": "KARTHICK R C",
+        "business_name": "BUILD FOLIOS",
+        "year": "2013-2017"
+      },
+      {
+        "name": "REVANTH",
+        "business_name": "SHREE VENKATESWARA TRANSPORT",
+        "year": "2013-2017"
+      },
+      {
+        "name": "ARAVINDAN K",
+        "business_name": "Dr. Back Mattresses, Chennai Trading",
+        "year": "2013-2017"
+      },
+      {
+        "name": "RAJ THILAK K",
+        "business_name": "Mr.Mechanic (service Station)",
+        "year": "2013-2017"
+      },
+      {
+        "name": "RAMKUMAR M",
+        "business_name": "M7 Enterprises, Chennai",
+        "year": "2013-2017"
+      },
+      {
+        "name": "GANESH K",
+        "business_name": "K.Ganesh Transports",
+        "year": "2013-2017"
+      },
+      {
+        "name": "ARAVIND KARTHIK V",
+        "business_name": "MatteBox Studios",
+        "year": "2013-2017"
+      },
+      {
+        "name": "VISHNU PRASADH S",
+        "business_name": "PRASADH CONSTRUCTION & CONSULTANT",
+        "year": "2014-2018"
+      },
+      {
+        "name": "SANTHOSH KUMAR S",
+        "business_name": "Santhosh Ply woods and Hardwares",
+        "year": "2014-2018"
+      },
+      {
+        "name": "BABU ELANCHEZHIAN P",
+        "business_name": "Rook customs",
+        "year": "2014-2018"
+      },
+      {
+        "name": "KARTHIKEYAN P",
+        "business_name": "Durga Hardwares and Electricals",
+        "year": "2014-2018"
+      },
+      {
+        "name": "SATISH KUMAR V",
+        "business_name": "Sri Siva Electrics and Harwares",
+        "year": "2014-2018"
+      },
+      {
+        "name": "MOHAMMED A",
+        "business_name": "MAAK ENTERPRISES",
+        "year": "2014-2018"
+      },
+      {
+        "name": "NANDHA KUMAR",
+        "business_name": "eG Innovation",
+        "year": "2017-2018"
+      },
+      {
+        "name": "SARATH KUMAR",
+        "business_name": "Flashore Technology LLP",
+        "year": "2017-2018"
+      },
+      {
+        "name": "SANTHOSH S",
+        "business_name": "Amman Traders",
+        "year": "2015-2019"
+      },
+      {
+        "name": "SHARGURU M",
+        "business_name": "Murugan Essence Mart",
+        "year": "2015-2019"
+      },
+      {
+        "name": "THIRUMANI T",
+        "business_name": "Glowing Leaf Interiors",
+        "year": "2015-2019"
+      },
+      {
+        "name": "KARTHICK G",
+        "business_name": "Selvamtraders",
+        "year": "2015-2019"
+      },
+      {
+        "name": "KRISHNASAMY S",
+        "business_name": "Selvam Enterprises",
+        "year": "2015-2019"
+      },
+      {
+        "name": "GOKUL PRASATH S",
+        "business_name": "Siva Trailor Works",
+        "year": "2015-2019"
+      },
+      {
+        "name": "DHIRAJ KUMAR B",
+        "business_name": "Balaji Pawn Broker And Jwellers",
+        "year": "2015-2019"
+      },
+      {
+        "name": "PALANIRAJAN M",
+        "business_name": "Natarajansupermarket",
+        "year": "2015-2019"
+      },
+      {
+        "name": "JEEVA SHYAM R",
+        "business_name": "AERO EMBED TECHNOLOGIES PVT LTD",
+        "year": "2015-2019"
+      },
+      {
+        "name": "HARI PRAKASH ATHINARAYANAN",
+        "business_name": "AERO EMBED TECHNOLOGIES PVT LTD",
+        "year": "2015-2019"
+      },
+      {
+        "name": "ARSHADH AHMED S M",
+        "business_name": "VENURA ENTERPRISES",
+        "year": "2015-2019"
+      },
+      {
+        "name": "RAJESH KUMAR G",
+        "business_name": "Crown U",
+        "year": "2015-2019"
+      },
+      {
+        "name": "VIGNESH M",
+        "business_name": "M/S Vignesh & Co",
+        "year": "2015-2019"
+      },
+      {
+        "name": "MANOJ MAHESHWAR",
+        "business_name": "Zedtribe Private Limited",
+        "year": "2015-2019"
+      },
+      {
+        "name": "NAVIN KUMAR D",
+        "business_name": "National Woods Kodungaiyur",
+        "year": "2015-2019"
+      },
+      {
+        "name": "YASVANT PRASAS P",
+        "business_name": "Crusers Techon Private Limited",
+        "year": "2015-2019"
+      },
+      {
+        "name": "ARISH RAJAN M",
+        "business_name": "CREOTODO Pvt Ltd",
+        "year": "2015-2019"
+      },
+      {
+        "name": "RAHUL KANNA S",
+        "business_name": "Sakthi E-Bikes",
+        "year": "2018-2019"
+      },
+      {
+        "name": "FAHIM",
+        "business_name": "IQRA Paints",
+        "year": "2016-2020"
+      },
+      {
+        "name": "BHUVANESH J",
+        "business_name": "THAENVEEDU",
+        "year": "2016-2020"
+      },
+      {
+        "name": "VIJAY MANIKANDAN S",
+        "business_name": "COWBOYZ",
+        "year": "2016-2020"
+      },
+      {
+        "name": "SAIDEEPESH M R",
+        "business_name": "Rukmani Contractor Contractor",
+        "year": "2016-2020"
+      },
+      {
+        "name": "PRATHAP S",
+        "business_name": "Best Automobiles,",
+        "year": "2016-2020"
+      },
+      {
+        "name": "SANTHOSH T",
+        "business_name": "SB MOTORS (AUTHORISIED TVS DEALER)",
+        "year": "2016-2020"
+      },
+      {
+        "name": "KHALID SAIFULLAH K",
+        "business_name": "TITAN WORLD – DHARMAPURI",
+        "year": "2016-2020"
+      },
+      {
+        "name": "RAGHURAM SK",
+        "business_name": "Jedlik Motors Private Limited",
+        "year": "2016-2020"
+      },
+      {
+        "name": "SUMAN S",
+        "business_name": "Sri Garundachalam steel industry",
+        "year": "2017-2021"
+      },
+      {
+        "name": "RAGAVENDIRAN",
+        "business_name": "HEPTRE TECHWORKS PRIVATE LIMITED",
+        "year": "2017-2021"
+      },
+      {
+        "name": "SANDEEP",
+        "business_name": "SANDAS DIGITAL LTD.",
+        "year": "2017-2021"
+      },
+      {
+        "name": "GUNASEELAN V",
+        "business_name": "VGM Builders",
+        "year": "2017-2021"
+      },
+      {
+        "name": "JOMON K R",
+        "business_name": "S R Construction",
+        "year": "2017-2021"
+      },
+      {
+        "name": "KUNGUMAROHITH S",
+        "business_name": "AndavarBluemetal",
+        "year": "2017-2021"
+      },
+      {
+        "name": "KARTHIK MUTHURAMALINGAM V",
+        "business_name": "Pills and Tonics",
+        "year": "2017-2021"
+      },
+      {
+        "name": "SHAIK SAMEER",
+        "business_name": "Sunbam Technologies",
+        "year": "2017-2021"
+      },
+      {
+        "name": "DANIEL DURAIRAJ S",
+        "business_name": "Swap Inc",
+        "year": "2017-2021"
+      },
+      {
+        "name": "DEVIKA NAIR",
+        "business_name": "Preez Fashion India",
+        "year": "2020-2021"
+      },
+      {
+        "name": "DHANUSH",
+        "business_name": "STAR BUILDERS",
+        "year": "2018-2022"
+      },
+      {
+        "name": "HARINI",
+        "business_name": "HYPERLYNX INFOTECH",
+        "year": "2021-2022"
+      },
+      {
+        "name": "S PRAVEEN KUMAR",
+        "business_name": "VBIND INNOVATION PRIVATE LIMITED, CHENNAI",
+        "year": "2018-2022"
+      },
+      {
+        "name": "MURALI KRISHNAN M",
+        "business_name": "INBLUE INFOTECH (OPC) PRIVATE LIMITED",
+        "year": "2018-2022"
+      },
+      {
+        "name": "NAVEEN SRIVATHSAN K",
+        "business_name": "Naveen & CO",
+        "year": "2021-2022"
+      },
+      {
+        "name": "VAMSI KRISHNA",
+        "business_name": "MADRAS GOLI SODA",
+        "year": "2019-2023"
+      },
+      {
+        "name": "ALBIN",
+        "business_name": "ARCSYS LIMITED",
+        "year": "2019-2023"
+      },
+      {
+        "name": "VALATHURU NIRANJAN",
+        "business_name": "ARYA PRODUCTIONS",
+        "year": "2019-2023"
+      },
+      {
+        "name": "ROSHAN M",
+        "business_name": "Roshan Refractory",
+        "year": "2019-2023"
+      },
+      {
+        "name": "EMMANUEL JOSHUA J",
+        "business_name": "12 OX Enterprises",
+        "year": "2022-2023"
+      },
+      {
+        "name": "SUBASHREE",
+        "business_name": "JAYASREE CHEM EXIM PVT LTD",
+        "year": "2020-2024"
+      },
+      {
+        "name": "VINUNITHI",
+        "business_name": "CRITTER GRAPHIX",
+        "year": "2020-2024"
+      },
+      {
+        "name": "HARISH",
+        "business_name": "ONEHOST PRIVATE LTD.",
+        "year": "2020-2024"
+      },
+      {
+        "name": "THAMIL ANBAN K S",
+        "business_name": "SHARP Pumps",
+        "year": "2020-2024"
+      },
+      {
+        "name": "ELTON SHALIN NEETHIMAN",
+        "business_name": "CRITTER GRAPHIX",
+        "year": "2020-2024"
+      },
+      {
+        "name": "MANIKANDAN R",
+        "business_name": "Ayapakkam Chess Academy",
+        "year": "2020-2024"
+      },
+      {
+        "name": "SUBASH SR",
+        "business_name": "SSR Engineering Solution Pvt Ltsd",
+        "year": "2020-2024"
+      },
+      {
+        "name": "DHEENADHAYALAN",
+        "business_name": "THIRUMURUGAN WOODWORKS",
+        "year": "2023-2024"
+      }
+    ]
+  },
+  {
+    "type": "activity",
+    "data": [
+      "/static/pdfs/e_cell/2015-2016.pdf",
+      "/static/pdfs/e_cell/2016-2017.pdf",
+      "/static/pdfs/e_cell/2017-2018.pdf",
+      "/static/pdfs/e_cell/2018-2019.pdf",
+      "/static/pdfs/e_cell/2019-2020.pdf",
+      "/static/pdfs/e_cell/2020-2021, 2021-2022.pdf",
+      "/static/pdfs/e_cell/2022-2023 back.pdf",
+      "/static/pdfs/e_cell/2022-2023.pdf",
+      "/static/pdfs/e_cell/2023-2024.pdf",
+      "/static/pdfs/e_cell/2024-2025 ecell.pdf"
+    ]
+  },
+  {
+    "type": "gallery",
+    "data": [
+      "/static/images/e_cell/1.webp",
+      "/static/images/e_cell/2.webp",
+      "/static/images/e_cell/3.webp",
+      "/static/images/e_cell/4.webp",
+      "/static/images/e_cell/6.webp",
+      "/static/images/e_cell/5.webp",
+      "/static/images/e_cell/7.webp",
+      "/static/images/e_cell/8.webp",
+      "/static/images/e_cell/9.webp",
+      "/static/images/e_cell/10.webp"
+    ]
   }
-
 ]

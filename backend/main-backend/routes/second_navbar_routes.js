@@ -1,5 +1,5 @@
 const express = require('express');
-const { getIicSection, getIqacSection, getECell, iicApplyForm , getAccreditationSection, getIncubationSection } = require('../controllers/second_navbar_controllers');
+const { getIicSection, getIqacSection, getECellSection, iicApplyForm , getAccreditationSection, getIncubationSection } = require('../controllers/second_navbar_controllers');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
 const sanitize = require('../middlewares/sanitizers/sanitize_second_navbar');
@@ -11,7 +11,7 @@ router.post('/accreditation', limiter, xss, getAccreditationSection);
 router.post('/iic', limiter, xss, getIicSection);
 router.post('/iqac', limiter, xss, getIqacSection);
 router.post('/incubation', limiter, xss, getIncubationSection);
-router.get('/ecell', limiter, xss, getECell);
+router.post('/ecell', limiter, xss, getECellSection);
 router.post('/iic_applynow', limiter, xss, sanitize, iicApplyForm);
 
 module.exports = router;

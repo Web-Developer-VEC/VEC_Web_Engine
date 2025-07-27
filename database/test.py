@@ -212,8 +212,24 @@ def insert_incubations_sections():
 
     print("incubation sections inserted successfully.")
 
-insert_incubations_sections()
+def insert_ecell_sections():
+    collection = db["ecell"]
 
+    with open("/VEC_WEB_Engine/docs/e_cell.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("e cell sections inserted successfully.")
+
+insert_ecell_sections()
+#insert_incubations_sections()
 #insert_iic_sections()
 #insert_accreditations_and_ranking_sections()
 #insert_iqac_sections()
