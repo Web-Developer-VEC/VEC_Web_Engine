@@ -334,98 +334,80 @@
     "data": [
       {
         "department_name": "B.E. Automobile Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf"
-      },
-      {
-        "department_name": "B.E. Automobile Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
-      },
-      {
-        "department_name": "B.E. Civil Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/004/Academic and Adminstrative Audit Report AY 2022-23.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf",
+          "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
+        ]
       },
       {
         "department_name": "B.E. Civil Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/004/Academic and Administrative Audit Report AY 2023-24.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/004/Academic and Adminstrative Audit Report AY 2022-23.pdf",
+          "/static/pdfs/iqac/aaa/004/Academic and Administrative Audit Report AY 2023-24.pdf"
+        ]
       },
       {
         "department_name": "B.E. Computer Science & Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/005/22-23 signed one.pdf"
-      },
-      {
-        "department_name": "B.E. Computer Science & Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/005/Academic and Administrative Audit Report upload.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/005/22-23 signed one.pdf",
+          "/static/pdfs/iqac/aaa/005/Academic and Administrative Audit Report upload.pdf"
+        ]
       },
       {
         "department_name": "B.E. Computer Science and Engineering (CYBER SECURITY)",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/006/Administrative audit 2023 24.pdf"
+        "year": ["2023-2024"],
+        "path": ["/static/pdfs/iqac/aaa/006/Administrative audit 2023 24.pdf"]
       },
       {
         "department_name": "B.E. Electronics and Communication Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative Report _ 22-23.pdf"
-      },
-      {
-        "department_name": "B.E. Electronics and Communication Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative   Report_23-24.pdf"
-      },
-      {
-        "department_name": "B.E. Electrical & Electronics Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/007/EEE_Academic and Administrative Audit Report -2022-23.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative Report _ 22-23.pdf",
+          "/static/pdfs/iqac/aaa/009/ECE Academic and Administrative   Report_23-24.pdf"
+        ]
       },
       {
         "department_name": "B.E. Electrical & Electronics Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/007/EEE_Academic Audit and Administrative  Report_2023-24.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/007/EEE_Academic and Administrative Audit Report -2022-23.pdf",
+          "/static/pdfs/iqac/aaa/007/EEE_Academic Audit and Administrative  Report_2023-24.pdf"
+        ]
       },
       {
         "department_name": "B.E. Electronics & Instrumentation Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/008/ACADEMIC AUDIT _ EIE _ 2022 - 2023.pdf"
-      },
-      {
-        "department_name": "B.E. Electronics & Instrumentation Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/008/ACADEMIC AND ADMINISTRATIVE AUDIT REPORT _ EIE _ 2023 -2024.pdf"
-      },
-      {
-        "department_name": "B.E. Mechancial Engineering",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2022-23.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/008/ACADEMIC AUDIT _ EIE _ 2022 - 2023.pdf",
+          "/static/pdfs/iqac/aaa/008/ACADEMIC AND ADMINISTRATIVE AUDIT REPORT _ EIE _ 2023 -2024.pdf"
+        ]
       },
       {
         "department_name": "B.E. Mechancial Engineering",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2023-24.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2022-23.pdf",
+          "/static/pdfs/iqac/aaa/013/Mech - Academic_and_Administrative_Audit_Report A.Y.2023-24.pdf"
+        ]
       },
       {
         "department_name": "B.Tech. Artificial Intelligence and Data Science",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -22-23.pdf"
-      },
-      {
-        "department_name": "B.Tech. Artificial Intelligence and Data Science",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -23- 24.pdf"
-      },
-      {
-        "department_name": "B.Tech. Information Technology",
-        "year": "2022-2023",
-        "path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report 22-23.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -22-23.pdf",
+          "/static/pdfs/iqac/aaa/001/Academic and Administrative Audit Report -23- 24.pdf"
+        ]
       },
       {
         "department_name": "B.Tech. Information Technology",
-        "year": "2023-2024",
-        "path": "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report A.Y.2023-24.pdf"
+        "year": ["2022-2023", "2023-2024"],
+        "path": [
+          "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report 22-23.pdf",
+          "/static/pdfs/iqac/aaa/011/IT - Academic and Administrative Audit Report A.Y.2023-24.pdf"
+        ]
       }
     ]
   },
