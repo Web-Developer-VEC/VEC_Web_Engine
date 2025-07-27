@@ -13,6 +13,9 @@
     color: #333;
     z-index: 10;
   }
+  .princ-tex{
+      font-family: 'Poppins', sans-serif;
+  }
   
   /* Spinner with Image */
   .spinner {

@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import Vide from '../Assets/stock.mp4';
 import College from '../Assets/Hell.png';
 import Toggle from "../Toggle";
 

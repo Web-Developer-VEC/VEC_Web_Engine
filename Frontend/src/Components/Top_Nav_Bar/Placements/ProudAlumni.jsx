@@ -85,11 +85,11 @@ const ProudAlumni = ({ theme, toggle }) => {
         subHeaderText="Get inspired by our Legacy"
       />
 
-      <div className="alumni-announcement">
+      <div className="alumni-announcement font-[poppins]">
         {/* Flipbook Section */}
         <div className="pproud-alumni">
           <div className="papp-container">
-            <div className="ptext-content">
+            <div className="ptext-content ">
               <h1>Get</h1>
               <h2 style={{ margin: "0 20px" }}>Inspired</h2>
               <h3 style={{ margin: "0 40px" }}>by</h3>
@@ -144,14 +144,14 @@ const ProudAlumni = ({ theme, toggle }) => {
           <div className="main pr-10 pl-10 w-1/2">
               {spcannouncements.map((item) => (
                   <div key={item.title}>
-                      <h2 className="text-[24px] text-accn dark:text-drka mt-5 mb-3">{item.title}</h2>
-                      <p className="text-xl">{item.content}</p>
+                      <h2 className="text-[24px] text-accn dark:text-drka mt-5 mb-3 font-[poppins]">{item.title}</h2>
+                      <p className="text-[24px] font-[poppins]">{item.content}</p>
                   </div>
               ))}
               <br/>
               <ul className="list-none">
                   {content?.map((item, index) => (
-                      <li className="text-xl mb-2" key={index}>
+                      <li className="text-16 font-[poppins] mb-2" key={index}>
                           <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
                           <a href={links[index]} className="text-black no-underline">{item}</a>
                       </li>
@@ -162,9 +162,9 @@ const ProudAlumni = ({ theme, toggle }) => {
       </div>
 
       {/* Static Content Sections */}
-      <div className="palumni-container">
+      <div className="palumni-container font-[poppins]">
         <section className="palumni-section">
-          <h2 className="pasection-title">Alumni Cell Overview</h2>
+          <h2 className="pasection-title font-[poppins]">Alumni Cell Overview</h2>
           <p className="psection-content">
             The VEC Alumni Cell fosters relationships between alumni, students,
             and the institution, nurturing lifelong connections and mutual
@@ -174,14 +174,14 @@ const ProudAlumni = ({ theme, toggle }) => {
           </p>
         </section>
 
-        <section className="palumni-section two-column">
+        <section className="palumni-section two-column font-[poppins]">
           <div
             className="column rounded-xl,theme(colors.secd),transparent_70%)]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
                     border-l-4 border-accn dark:border-drka"
           >
-            <h2 className="pasection-title">Vision</h2>
-            <p className="psection-content">
+            <h2 className="pasection-title text-[24px] font-[poppins]">Vision</h2>
+            <p className="psection-content font-[poppins] text-[16px]">
               To establish a strong, lifelong bond between the institution and
               its alumni, fostering a mutually beneficial relationship that
               enhances professional growth, knowledge sharing, and
@@ -189,12 +189,12 @@ const ProudAlumni = ({ theme, toggle }) => {
             </p>
           </div>
           <div
-            className="column rounded-xl ,theme(colors.secd),transparent_70%)]
+            className="column rounded-xl ,theme(colors.secd),transparent_70%)] font-[poppins]
                     dark:bg-[color-mix(in_srgb,theme(colors.drks),transparent_70%)]
                     border-l-4 border-accn dark:border-drka"
           >
-            <h2 className="pasection-title">Mission</h2>
-            <ul className="psection-content">
+            <h2 className="pasection-title font-[poppins]">Mission</h2>
+            <ul className="psection-content font-[poppins]">
               <li>
                 To build a dynamic and engaged alumni network that contributes
                 to the academic and career growth of current students.
@@ -216,10 +216,10 @@ const ProudAlumni = ({ theme, toggle }) => {
           </div>
         </section>
 
-        <section className="palumni-section two-column palumni-objectives">
+        <section className="palumni-section two-column palumni-objectives font-[poppins]">
           <div className="pcolumn">
-            <h2 className="pasection-title">Objectives of the Alumni Cell</h2>
-            <ul className="psection-content">
+            <h2 className="pasection-title font-[poppins]">Objectives of the Alumni Cell</h2>
+            <ul className="psection-content font-[poppins]">
               <li>
                 Strengthening Alumni Network – To create and maintain a strong
                 bond among alumni, faculty, and current students.
