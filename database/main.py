@@ -14,8 +14,8 @@ mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
 collection_name = "staff_details"
 
-file_path = r"/VEC-Backend/docs/CSV/VEC_Faculty_Details.csv"
-base_save_dir = r"/VEC-Backend/static/staff_scholar_details/"
+file_path = r"/VEC_WEB_Engine/docs/CSV/VEC_Faculty_Details.csv"
+base_save_dir = r"/VEC_WEB_Engine/static/staff_scholar_details/"
 
 client = MongoClient(mongo_uri)
 db = client[db_name]
@@ -117,7 +117,7 @@ def generate_unique_id(index, department, designation):
     return f"VEC-{department_id}-{designation_id}-{unique_id}"
 
 
-#df = df.head(1) #Remove this line to deactivate Test settings
+df = df.head(1) #Remove this line to deactivate Test settings
 
 df['unique_id'] = [
     generate_unique_id(i, df.at[i, 'Department Name'], df.at[i, 'Designation'])
@@ -530,7 +530,7 @@ with ThreadPoolExecutor(max_workers=8) as executor:
 
 def insert_department_data():
     collection = db["vision_and_mission"]
-    with open("/VEC-Backend/docs/department_data.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/department_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -538,7 +538,7 @@ def insert_department_data():
 
 def insert_hod_datas():
     collection = db['HODS']
-    with open("/VEC-Backend/docs/hods.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/hods.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -546,7 +546,7 @@ def insert_hod_datas():
 
 def insert_infrastructure_data():
     collection = db["infrastructure"]
-    with open("/VEC-Backend/docs/infrastructure.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/infrastructure.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -554,7 +554,7 @@ def insert_infrastructure_data():
 
 def insert_student_activities_data():
     collection = db['student_activities'] 
-    with open("/VEC-Backend/docs/student_activities.json", "r", encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/student_activities.json", "r", encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -562,7 +562,7 @@ def insert_student_activities_data():
 
 def insert_support_staff_data():
     collection = db['support_staffs'] 
-    with open("/VEC-Backend/docs/support_staffs.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/support_staffs.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -570,7 +570,7 @@ def insert_support_staff_data():
 
 def insert_MOUs_data():
     collection = db['MOUs']
-    folder_path = "/VEC-Backend/docs/MOUs/"
+    folder_path = "/VEC_WEB_Engine/docs/MOUs/"
     for filename in os.listdir(folder_path):
         if filename.endswith(".json"):
             file_path = os.path.join(folder_path,filename)
@@ -583,7 +583,7 @@ def insert_MOUs_data():
 
 def insert_curriculum_data():
     collection = db['curriculum']
-    with open("/VEC-Backend/docs/curriculum.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/curriculum.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -591,7 +591,7 @@ def insert_curriculum_data():
 
 def insert_events_data():
     collection = db['events']  
-    with open("/VEC-Backend/docs/events.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/events.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -599,7 +599,7 @@ def insert_events_data():
 
 def insert_special_announcements():
     collection = db['special_announcement']  
-    with open("/VEC-Backend/docs/special_announcements.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/special_announcements.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -608,7 +608,7 @@ def insert_special_announcements():
 def insert_announcements_data():
    
     collection = db['announcements']  
-    with open("/VEC-Backend/docs/announcements.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/announcements.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -616,7 +616,7 @@ def insert_announcements_data():
 
 def principal_data():
     collection = db["principal_data"]
-    with open("/VEC-Backend/docs/principal_data.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/principal_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -624,7 +624,7 @@ def principal_data():
 
 def insert_admin_office_data():
     collection = db['admin_office']  
-    with open("/VEC-Backend/docs/admin_office.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/admin_office.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -633,7 +633,7 @@ def insert_admin_office_data():
 def insert_committee_data():
 
     collection = db['committee']  
-    with open("/VEC-Backend/docs/committee.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/committee.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -641,7 +641,7 @@ def insert_committee_data():
 
 def insert_regulation_data():
     collection = db['regulation']  
-    with open("/VEC-Backend/docs/regulation.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/regulation.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -649,7 +649,7 @@ def insert_regulation_data():
 
 def placement_team():
     collection = db["placement_team"]
-    with open('/VEC-Backend/docs/placement_members.json', 'r',encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/placement_members.json', 'r',encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -657,7 +657,7 @@ def placement_team():
 
 def insert_intake_data():    
     collection = db["Intakes"]        
-    with open('/VEC-Backend/docs/intakes.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/intakes.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -665,7 +665,7 @@ def insert_intake_data():
 
 def insert_dean_and_associates_data():    
     collection = db["dean_and_associates"]        
-    with open('/VEC-Backend/docs/dean_and_associates.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/dean_and_associates.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -674,7 +674,7 @@ def insert_dean_and_associates_data():
 def insert_placement_data():
 
     collection = db['placements_data']  
-    with open("/VEC-Backend/docs/placements_data.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/placements_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -683,7 +683,7 @@ def insert_placement_data():
 def insert_curriculum_and_syllabus_data():
 
     collection = db['curriculum_and_syllabus']  
-    with open("/VEC-Backend/docs/curriculum_and_syllabus.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/curriculum_and_syllabus.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_one(documents)
 
@@ -691,7 +691,7 @@ def insert_curriculum_and_syllabus_data():
 
 def insert_banners():
     collection = db['banner']  
-    with open("/VEC-Backend/docs/banner.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/banner.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -700,7 +700,7 @@ def insert_banners():
 def insert_all_forms_data():
 
     collection = db['all_forms']  
-    with open("/VEC-Backend/docs/all_forms.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/all_forms.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -708,7 +708,7 @@ def insert_all_forms_data():
 
 def insert_NBA_data():
     collection = db['nba']
-    with open("/VEC-Backend/docs/nba.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/nba.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -716,35 +716,35 @@ def insert_NBA_data():
 
 def insert_naac_data():
     collection = db['naac']
-    with open("/VEC-Backend/docs/naac.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/naac.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     print("NAAC documents inserted successfully.\n")
 
 def insert_nirf_data():
     collection = db['nirf']
-    with open("/VEC-Backend/docs/nirf.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/nirf.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     print("NIRF documents inserted successfully.\n")
 
 def insert_sidebar_details():
     collection= db['sidebar']
-    with open ("/VEC-Backend/docs/sidebar.json","r",encoding="utf-8") as file:
+    with open ("/VEC_WEB_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("Sidebar documents inserted successfully\n")
 
 def insert_iic_details():
     collection= db['iic']
-    with open ("/VEC-Backend/docs/iic.json","r",encoding="utf-8") as file:
+    with open ("/VEC_WEB_Engine/docs/iic.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("iic documents inserted successfully\n")
 
 def insert_dept_activities_details():
     collection = db['department_activities']
-    directory = "/VEC-Backend/docs/DEPT_ACT/"
+    directory = "/VEC_WEB_Engine/docs/DEPT_ACT/"
     for filename in os.listdir(directory):
         if filename.endswith(".json"):  
             file_path = os.path.join(directory, filename)
@@ -761,7 +761,7 @@ def insert_dept_activities_details():
 
 def insert_newsletter():
     collection= db['news_letter']
-    with open ("/VEC-Backend/docs/news_letter.json","r",encoding="utf-8") as file:
+    with open ("/VEC_WEB_Engine/docs/news_letter.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("newsletter inserted successfully \n")
@@ -769,7 +769,7 @@ def insert_newsletter():
 
 def insert_COE_data():
     collection = db['coe']
-    with open("/VEC-Backend/docs/coe.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/coe.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -831,28 +831,28 @@ department_mapping = {
 
 def insert_incubation_data():
     collection= db['incubation']
-    with open ("/VEC-Backend/docs/incubation.json","r",encoding="utf-8") as file:
+    with open ("/VEC_WEB_Engine/docs/incubation.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("Incubation documents inserted successfully. \n")
     
 def insert_army_data():
     collection = db['army']
-    with open("/VEC-Backend/docs/ncc_army.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/ncc_army.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     print("armydocuments inserted successfully. \n")
 
 def insert_navy_data():
     collection = db['navy']
-    with open("/VEC-Backend/docs/ncc_navy.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/ncc_navy.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     print("NCC(NAVY) documents inserted successfully. \n")
 
 def insert_faculty_data(folder_path):
     department_name=None
-    with open(r"/VEC-Backend/docs/prev_faculty.json","r",encoding="utf-8") as file:
+    with open(r"/VEC_WEB_Engine/docs/prev_faculty.json","r",encoding="utf-8") as file:
         data=json.load(file)
     try:
         collection = db['faculty_data']
@@ -925,13 +925,13 @@ def insert_faculty_data(folder_path):
     print("Faculty Data Insertion Done\n")
     return
 
-insert_faculty_data(folder_path=r"/VEC-Backend/docs/STAFF-DATA/")
+insert_faculty_data(folder_path=r"/VEC_WEB_Engine/docs/STAFF-DATA/")
 
 # SPORTS DATA INSERTIONS
 
 def insert_sports_data():
     collection = db["sports_data"]
-    with open("/VEC-Backend/docs/sports_data.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/sports_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -940,7 +940,7 @@ def insert_sports_data():
 
 def insert_library_data():
     collection = db["library"]
-    with open("/VEC-Backend/docs/library.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/library.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -948,7 +948,7 @@ def insert_library_data():
 
 def insert_nss_data():
     collection = db["nss_data"]
-    with open("/VEC-Backend/docs/nss.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/nss.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -956,7 +956,7 @@ def insert_nss_data():
 
 def insert_yrc_data():
     collection = db["yrc_data"]
-    with open("/VEC-Backend/docs/yrc.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/yrc.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -965,7 +965,7 @@ def insert_yrc_data():
 
 def insert_overall_department_research():
     collection = db['overall_research']
-    with open("/VEC-Backend/docs/overall_research_data.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/overall_research_data.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_one(documents)
     
@@ -974,7 +974,7 @@ def insert_overall_department_research():
 
 def insert_overall_book_publication():
     collection = db['overall_book_publication']
-    with open("/VEC-Backend/docs/overall_book_publication.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/overall_book_publication.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -982,7 +982,7 @@ def insert_overall_book_publication():
 
 def insert_overall_conference_publication():
     collection = db['overall_conference_publication']
-    with open("/VEC-Backend/docs/overall_conference_publication.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/overall_conference_publication.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -990,7 +990,7 @@ def insert_overall_conference_publication():
 
 def insert_overall_patent():
     collection = db['overall_patent']
-    with open("/VEC-Backend/docs/overall_patent.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/overall_patent.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -999,7 +999,7 @@ def insert_overall_patent():
 
 def insert_overall_journal_publications():
     collection = db['overall_journal_publications']
-    with open("/VEC-Backend/docs/overall_journal_publications.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/overall_journal_publications.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -1012,7 +1012,7 @@ def insert_overall_journal_publications():
 def insert_department_research_data():
     collection = db['research_data']
     
-    folder_path = "/VEC-Backend/docs/RESEARCH-DATA"
+    folder_path = "/VEC_WEB_Engine/docs/RESEARCH-DATA"
     
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
@@ -1029,7 +1029,7 @@ def insert_department_research_data():
 
 def insert_warden_hostel_data():
     collection = db['warden_profile']
-    with open("/VEC-Backend/docs/warden_profile.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/warden_profile.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -1037,7 +1037,7 @@ def insert_warden_hostel_data():
 
 def insert_iqac_data():
     collection = db['IQAC']
-    with open("/VEC-Backend/docs/IQAC.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/IQAC.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -1046,7 +1046,7 @@ def insert_iqac_data():
 
 def insert_alumni_data():
     collection = db['alumni']
-    with open("/VEC-Backend/docs/alumni.json","r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/alumni.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -1055,7 +1055,7 @@ def insert_alumni_data():
 def insert_about_placement():
 
     collection = db['about_placement']  
-    with open("/VEC-Backend/docs/about_placement.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/about_placement.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1064,7 +1064,7 @@ def insert_about_placement():
 def insert_about_us():
 
     collection = db['about_us']  
-    with open("/VEC-Backend/docs/about_us.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/about_us.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1074,7 +1074,7 @@ def insert_about_us():
 def insert_organization_chart():
 
     collection = db['organization_chart']  
-    with open("/VEC-Backend/docs/organization_chart.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/organization_chart.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_one(documents)
 
@@ -1084,7 +1084,7 @@ def insert_organization_chart():
 def insert_academic_calender():
 
     collection = db['academic_calender']  
-    with open("/VEC-Backend/docs/academic_calender.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/academic_calender.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1095,7 +1095,7 @@ def insert_academic_calender():
 def insert_hostel_menu():
 
     collection = db['hostel_menu']  
-    with open("/VEC-Backend/docs/hostel_menu.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/hostel_menu.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1105,7 +1105,7 @@ def insert_hostel_menu():
 def insert_help_desk():
 
     collection = db['help_desk']  
-    with open("/VEC-Backend/docs/help_desk.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/help_desk.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1115,7 +1115,7 @@ def insert_help_desk():
 def insert_landing_page_details():
 
     collection = db['landing_page_details']  
-    with open("/VEC-Backend/docs/landing_page_details.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/landing_page_details.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1124,7 +1124,7 @@ def insert_landing_page_details():
 def insert_programmes_list():
 
     collection = db['programmes_list']  
-    with open("/VEC-Backend/docs/programmes_list.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/programmes_list.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1133,7 +1133,7 @@ def insert_programmes_list():
 def insert_departments_list():
 
     collection = db['departments_list']  
-    with open("/VEC-Backend/docs/departments_list.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/departments_list.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1141,7 +1141,7 @@ def insert_departments_list():
 
 def insert_admission_team():    
     collection = db["admission_team"]        
-    with open('/VEC-Backend/docs/admission_team.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/admission_team.json', "r",encoding="utf-8") as file:
      documents = json.load(file)
      collection.insert_many(documents)
 
@@ -1150,7 +1150,7 @@ def insert_admission_team():
     
 def insert_ecell_data():
     collection = db["e_cell"]
-    with open("/VEC-Backend/docs/e_cell.json", "r",encoding="utf-8") as file:
+    with open("/VEC_WEB_Engine/docs/e_cell.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -1159,7 +1159,7 @@ def insert_ecell_data():
 
 def insert_handbook_data():    
     collection = db["handbook"]        
-    with open('/VEC-Backend/docs/handbook.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/handbook.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -1168,24 +1168,19 @@ def insert_handbook_data():
 
 def insert_gallery():
     collection = db["gallery"]   
-    with open('/VEC-Backend/docs/gallery.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/gallery.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
     print("gallery data inserted successfully.")
 
-    
 def create_logs_collection():
-    collection = db["logs"]   
-    with open('/VEC-Backend/docs/hit_logs.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("gallery data inserted successfully.")
+    db.create_collection('logs')
+    print("logs collection created successfully.")
 
 def insert_web_team():
     collection = db['web_team']
-    with open('/VEC-Backend/docs/web_team.json', "r",encoding="utf-8") as file:
+    with open('/VEC_WEB_Engine/docs/web_team.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -1227,8 +1222,8 @@ insert_web_team()
 
 def add_hostel_student_database():
     collection = db["student_database"]
-    storage_dir = r"/VEC-Backend/docs/CSV"
-    image_dir = r"/VEC-Backend/static/student_database"
+    storage_dir = r"/VEC_WEB_Engine/docs/CSV"
+    image_dir = r"/VEC_WEB_Engine/static/student_database"
     os.makedirs(storage_dir, exist_ok=True)  
     os.makedirs(image_dir, exist_ok=True)  
 

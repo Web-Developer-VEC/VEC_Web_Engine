@@ -1170,12 +1170,8 @@ def insert_ecell_data():
     print("e_cell data inserted successfully.")
 
 def create_logs_collection():
-    collection = db["logs"]   
-    with open('/root/VEC-Backend/docs/hit_logs.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("gallery data inserted successfully.")
+    db.create_collection('logs')
+    print("logs collection created successfully.")
 
 def insert_web_team():
     collection = db['web_team']
