@@ -1,0 +1,219 @@
+[
+  {
+    "type": "ug",
+    "year": "2024-2025",
+    "data": {
+      "UG": [
+        {
+          "B.E Automobile Engineering": {
+            "Government Quota Intakes": "20",
+            "Management Quota Intakes": "10",
+            "Total Intakes": "30"
+          }
+        },
+        {
+          "B.E Civil Engineering": {
+            "Government Quota Intakes": "20",
+            "Management Quota Intakes": "10",
+            "Total Intakes": "30"
+          }
+        },
+        {
+          "B.E Computer Science & Engineering": {
+            "Government Quota Intakes": "156",
+            "Management Quota Intakes": "84",
+            "Total Intakes": "240"
+          }
+        },
+        {
+          "B.E Computer Science & Engineering (Cyber Security)": {
+            "Government Quota Intakes": "39",
+            "Management Quota Intakes": "21",
+            "Total Intakes": "60"
+          }
+        },
+        {
+          "B.E Electronics and Communication Engineering": {
+            "Government Quota Intakes": "156",
+            "Management Quota Intakes": "84",
+            "Total Intakes": "240"
+          }
+        },
+        {
+          "B.E Electrical and Electronics Engineering": {
+            "Government Quota Intakes": "39",
+            "Management Quota Intakes": "21",
+            "Total Intakes": "60"
+          }
+        },
+        {
+          "B.E Electronics & Instrumentation Engineering": {
+            "Government Quota Intakes": "20",
+            "Management Quota Intakes": "10",
+            "Total Intakes": "30"
+          }
+        },
+        {
+          "B.E Mechanical Engineering": {
+            "Government Quota Intakes": "39",
+            "Management Quota Intakes": "21",
+            "Total Intakes": "60"
+          }
+        },
+        {
+          "B.Tech Artificial Intelligence & Data Science": {
+            "Government Quota Intakes": "78",
+            "Management Quota Intakes": "42",
+            "Total Intakes": "120"
+          }
+        },
+        {
+          "B.Tech Information Technology": {
+            "Government Quota Intakes": "78",
+            "Management Quota Intakes": "42",
+            "Total Intakes": "120"
+          }
+        }
+      ],
+      "UG_Lateral": [
+        {
+          "B.E Computer Science & Engineering": {
+            "Government Quota Intakes": "16",
+            "Management Quota Intakes": "08",
+            "Total Intakes": "24"
+          }
+        },
+        {
+          "B.E Electronics and Communication Engineering": {
+            "Government Quota Intakes": "16",
+            "Management Quota Intakes": "08",
+            "Total Intakes": "24"
+          }
+        },
+        {
+          "B.E Electrical and Electronics Engineering": {
+            "Government Quota Intakes": "04",
+            "Management Quota Intakes": "02",
+            "Total Intakes": "06"
+          }
+        },
+        {
+          "B.E Mechanical Engineering": {
+            "Government Quota Intakes": "04",
+            "Management Quota Intakes": "02",
+            "Total Intakes": "06"
+          }
+        },
+        {
+          "B.Tech Information Technology": {
+            "Government Quota Intakes": "08",
+            "Management Quota Intakes": "04",
+            "Total Intakes": "12"
+          }
+        },
+        {
+          "B.E Civil Engineering": {
+            "Government Quota Intakes": "02",
+            "Management Quota Intakes": "01",
+            "Total Intakes": "03"
+          }
+        },
+        {
+          "B.E Electronics & Instrumentation Engineering": {
+            "Government Quota Intakes": "02",
+            "Management Quota Intakes": "01",
+            "Total Intakes": "03"
+          }
+        },
+        {
+          "B.E Automobile Engineering": {
+            "Government Quota Intakes": "02",
+            "Management Quota Intakes": "01",
+            "Total Intakes": "03"
+          }
+        },
+        {
+          "B.Tech Artificial Intelligence & Data Science": {
+            "Government Quota Intakes": "08",
+            "Management Quota Intakes": "04",
+            "Total Intakes": "12"
+          }
+        }
+      ],
+      "BE_Management_link": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf",
+      "BE_Government_link": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+    }
+  },
+  {
+    "type": "pg",
+    "year": "2024-2025",
+    "data": {
+      "PG": [
+        {
+          "M.E Computer Science & Engineering": {
+            "Government Quota Intakes": "03",
+            "Management Quota Intakes": "03",
+            "Total Intakes": "06"
+          }
+        },
+        {
+          "M.E Power System Engineering": {
+            "Government Quota Intakes": "03",
+            "Management Quota Intakes": "03",
+            "Total Intakes": "06"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "type": "mba",
+    "year": "2024-2025",
+    "data": {
+      "MBA": {
+        "Government Quota Intakes": "60",
+        "Management Quota Intakes": "60",
+        "Total Intakes": "120"
+      },
+      "MBA_Management_link": "/static/pdfs/admission/MQ-MBA-2025.pdf"
+    }
+  },
+  {
+    "type": "admission_team",
+    "year": "2024-2025",
+    "data": [
+      {
+        "name": "Mrs. SHEEBA K",
+        "designation": "senior Student admission councellor",
+        "photo_path": "/static/images/admin_office/Sheeba.webp"
+      },
+      {
+        "name": "Mrs. JENEFER ASHA JEYARANI M",
+        "designation": "Student Admission Counseller",
+        "photo_path": "/static/images/admin_office/Jenefer.webp"
+      },
+      {
+        "name": "Ms. SRIVIDHYA C",
+        "designation": "Admission councellor",
+        "photo_path": "/static/images/admin_office/Srividhya.webp"
+      },
+      {
+        "name": "Mrs. NIVETHITHA N",
+        "designation": "Office Co-Ordinator",
+        "photo_path": "/static/images/admin_office/Nivethitha.webp"
+      },
+      {
+        "name": "Mrs. Muthulakshmi",
+        "designation": "Office Co-Ordinator",
+        "photo_path": "/static/images/admin_office/Muthulakshmi.webp"
+      }
+    ]
+  },
+  {
+    "type": "phd",
+    "year": "2024-2025",
+    "data": {
+      "link": "https://cfr.annauniv.edu/research/academics/index.php"
+    }
+  }
+]

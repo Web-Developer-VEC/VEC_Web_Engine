@@ -84,9 +84,25 @@ def insert_administration_sections():
 
     print("Administration sections inserted successfully.")
 
-insert_administration_sections()
+def insert_admissions_sections():
+    collection = db["admissions"]
 
+    with open("/VEC_WEB_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
+        admissions_data = json.load(file)
 
+        for section in admissions_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "year": section["year"],
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("Admission sections inserted successfully.")
+
+insert_admissions_sections()
+#insert_administration_sections()
 #insert_about_us()
 #insert_academic_calendar()
 #insert_programmes_list()

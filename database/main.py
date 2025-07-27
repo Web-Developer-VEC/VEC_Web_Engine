@@ -630,14 +630,6 @@ def placement_team():
 
     print(f"Placement Team Details Inserted\n")
 
-def insert_intake_data():    
-    collection = db["Intakes"]        
-    with open('/VEC_WEB_Engine/docs/intakes.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("Intake data inserted successfully.\n")
-
 def insert_placement_data():
 
     collection = db['placements_data']  
@@ -742,6 +734,22 @@ def insert_COE_data():
 
     print("COE documents inserted successfully.\n")
 
+def insert_admissions_sections():
+    collection = db["admissions"]
+
+    with open("/VEC_WEB_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
+        admissions_data = json.load(file)
+
+        for section in admissions_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "year": section["year"],
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("Admission sections inserted successfully.")
 
 
 insert_department_data()
@@ -756,7 +764,6 @@ insert_announcements_data()
 insert_special_announcements()
 placement_team()
 insert_regulation_data()
-insert_intake_data()
 insert_placement_data()
 insert_curriculum_and_syllabus_data()
 insert_all_forms_data()
@@ -769,6 +776,7 @@ insert_iic_details()
 insert_dept_activities_details()
 insert_newsletter()
 insert_COE_data()
+insert_admissions_sections()
 
 department_mapping = {
     "Artificial Intelligence and Data Science": "001",
@@ -1121,15 +1129,6 @@ def insert_departments_list():
         collection.insert_one(document)
     print("Departments list inserted successfully.")
 
-def insert_admission_team():    
-    collection = db["admission_team"]        
-    with open('/VEC_WEB_Engine/docs/admission_team.json', "r",encoding="utf-8") as file:
-     documents = json.load(file)
-     collection.insert_many(documents)
-
-    print("admission team data data inserted successfully.")
-
-    
 def insert_ecell_data():
     collection = db["e_cell"]
     with open("/VEC_WEB_Engine/docs/e_cell.json", "r",encoding="utf-8") as file:
@@ -1183,7 +1182,6 @@ insert_help_desk()
 insert_landing_page_details()
 insert_programmes_list()
 insert_departments_list()
-insert_admission_team()
 insert_ecell_data()
 insert_gallery()
 create_logs_collection()
