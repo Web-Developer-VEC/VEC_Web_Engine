@@ -23,16 +23,30 @@ async function getPlacementsSection(req, res) {
     const db = getDb();
     const collection = db.collection('placement');
 
-    const document = await collection.findOne(
-      { type },
-      { projection: { _id: 0, type: 1, data: 1 } }
-    );
+    const projection = { _id: 0, type: 1, data: 1 };
 
-    if (!document) {
+    // Fetch main placement document
+    const mainDoc = await collection.findOne({ type }, { projection });
+
+    if (!mainDoc) {
       return res.status(404).json({ message: `Section '${type}' not found` });
     }
 
-    return res.status(200).json(document);
+    // If alumini, attach special_announcement from a separate collection
+    if (type === 'alumini') {
+      const specialAnnouncementCollection = db.collection('special_announcement');
+
+      const specialAnnouncement = await specialAnnouncementCollection.findOne(
+        {},
+        { projection: { _id: 0 } }  // Include everything except _id
+      );
+
+      if (specialAnnouncement) {
+        mainDoc.special_announcement = specialAnnouncement;
+      }
+    }
+
+    return res.status(200).json(mainDoc);
 
   } catch (error) {
     console.error('Error fetching placement section:', error);
