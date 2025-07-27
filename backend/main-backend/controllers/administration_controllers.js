@@ -1,28 +1,47 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getAdministrationSections(req, res) {
+const ALLOWED_TYPES = [
+  'dean_and_association',
+  'admin_office',
+  'committee',
+  'HandBook',
+  'HRHandBook',
+  'organization_chart',
+  'principal'
+];
+
+async function getAdministrationSection(req, res) {
   try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid administration section` });
+    }
+
     const db = getDb();
     const collection = db.collection('administration');
 
-    const documents = await collection.find({}, { projection: { _id: 0, type: 1, data: 1 } }).toArray();
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
 
-    if (!documents.length) {
-      return res.status(404).json({ message: 'No administration sections found' });
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
     }
 
-    const response = {};
-    for (const doc of documents) {
-      response[doc.type] = doc.data;
-    }
+    return res.status(200).json(document);
 
-    return res.status(200).json(response);
   } catch (error) {
-    console.error('Error fetching administration sections:', error);
-    await logError(req, error, 'Error fetching administration sections', 500);
+    console.error('Error fetching administration section:', error);
+    await logError(req, error, 'Error fetching administration section', 500);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
-module.exports = { getAdministrationSections };
+module.exports = { getAdministrationSection };
