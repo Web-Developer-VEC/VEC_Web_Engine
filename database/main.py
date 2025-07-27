@@ -911,52 +911,6 @@ def insert_yrc_data():
     print("YRC data inserted successfully.\n")
 
 
-def insert_overall_department_research():
-    collection = db['overall_research']
-    with open("/VEC_WEB_Engine/docs/overall_research_data.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-    
-    print("Inserted overall research data.\n")
-
-
-def insert_overall_book_publication():
-    collection = db['overall_book_publication']
-    with open("/VEC_WEB_Engine/docs/overall_book_publication.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall book publication.\n")
-
-def insert_overall_conference_publication():
-    collection = db['overall_conference_publication']
-    with open("/VEC_WEB_Engine/docs/overall_conference_publication.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall conference publication.\n")
-
-def insert_overall_patent():
-    collection = db['overall_patent']
-    with open("/VEC_WEB_Engine/docs/overall_patent.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall patent.\n")
-
-
-def insert_overall_journal_publications():
-    collection = db['overall_journal_publications']
-    with open("/VEC_WEB_Engine/docs/overall_journal_publications.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall journal publications.\n")
-
-
-
-
-
 def insert_department_research_data():
     collection = db['research_data']
     
@@ -1139,7 +1093,6 @@ insert_sports_data()
 insert_library_data()
 insert_nss_data()
 insert_yrc_data()
-insert_overall_department_research()
 insert_department_research_data()
 insert_warden_hostel_data()
 insert_incubation_data()
@@ -1147,10 +1100,6 @@ insert_army_data()
 insert_navy_data()
 insert_alumni_data()
 insert_iqac_data()
-insert_overall_book_publication()
-insert_overall_conference_publication()
-insert_overall_patent()
-insert_overall_journal_publications()
 insert_academic_calendar()
 insert_about_placement()
 insert_about_us()
