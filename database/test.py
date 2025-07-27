@@ -132,8 +132,24 @@ def insert_placement_sections():
 
     print("placement sections inserted successfully.")
 
-insert_placement_sections()
+def insert_library_sections():
+    collection = db["library"]
 
+    with open("/VEC_WEB_Engine/docs/library.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("library sections inserted successfully.")
+
+insert_library_sections()
+#insert_placement_sections()
 #insert_exams_sections()
 #insert_admissions_sections()
 #insert_administration_sections()
