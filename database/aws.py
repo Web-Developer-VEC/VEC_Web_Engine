@@ -9,12 +9,13 @@ import bcrypt
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+#Hostel Student Test Settings is Turned On Till Now at line 1126
 mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
 collection_name = "staff_details"
 
-file_path = r"/root/VEC-Backend/docs/CSV/VEC_Faculty_Details.csv"
-base_save_dir = r"/root/VEC-Backend/static/staff_scholar_details/"
+file_path = r"/root/VEC_WEB_Engine/docs/CSV/VEC_Faculty_Details.csv"
+base_save_dir = r"/root/VEC_WEB_Engine/static/staff_scholar_details/"
 
 client = MongoClient(mongo_uri)
 db = client[db_name]
@@ -67,7 +68,7 @@ department_mapping = {
     "Tamil": "014",
     "Physics": "015",
     "Master Of Computer Science": "016",
-    "Master Of Business Administration": "017",
+    "Master of Business Admin": "017",
     "Physical Education":"020",
     "Placement":"021"
 }
@@ -89,7 +90,7 @@ department_mapping1 = {
     "Tamil": "014",
     "Physics": "015",
     "Master Of Computer Science": "016",
-    "Master Of Business Administration": "017",
+    "Master of Business Admin": "017",
     "Physical Education":"020",
     "Placement":"021"
 }
@@ -116,7 +117,7 @@ def generate_unique_id(index, department, designation):
     return f"VEC-{department_id}-{designation_id}-{unique_id}"
 
 
-#df = df.head(1) #Remove this line to deactivate Test settings
+df = df.head(1) #Remove this line to deactivate Test settings
 
 df['unique_id'] = [
     generate_unique_id(i, df.at[i, 'Department Name'], df.at[i, 'Designation'])
@@ -127,7 +128,6 @@ def get_image_path(unique_id):
     return f"/static/images/staff_profile_images/{unique_id}.webp"
 
 df['Photo'] = df['unique_id'].apply(get_image_path)
-
 
 def extract_file_id(url):
     if url and isinstance(url, str) and "id=" in url:
@@ -185,11 +185,11 @@ def insert_educational_qualifications_per_faculty(unique_id):
             {"$set": educational_data}
         )
 
-        print(f"Update result: {result.modified_count} document(s) updated.")
+        print(f"Update result: {result.modified_count} document(s) updated.\n")
         if result.modified_count > 0:
-            print(f"Educational qualifications added for {unique_id}.")
+            print(f"Educational qualifications added for {unique_id}.\n")
         else:
-            print(f"No changes made for {unique_id}.")
+            print(f"No changes made for {unique_id}.\n")
     except Exception as e:
         print(f"Error inserting educational qualifications for {unique_id}: {e}")
 
@@ -219,25 +219,25 @@ def insert_experience(unique_id):
                 {"unique_id": unique_id},
                 {"$set": experience_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Experience data updated for {unique_id}.")
+                print(f"Experience data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             experience_data["unique_id"] = unique_id
             collection.insert_one(experience_data)
-            print(f"Experience data added for {unique_id}.")
+            print(f"Experience data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting experience data for {unique_id}: {e}")
+        print(f"Error inserting experience data for {unique_id}: {e}\n")
 
 def insert_projects(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     projects_file_path = os.path.join(folder_path, "PROJECTS.csv")
 
     if not os.path.exists(projects_file_path):
-        print(f"Projects file not found for {unique_id}. Skipping.")
+        print(f"Projects file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -258,25 +258,25 @@ def insert_projects(unique_id):
                 {"unique_id": unique_id},
                 {"$set": projects_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Projects data updated for {unique_id}.")
+                print(f"Projects data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             projects_data["unique_id"] = unique_id
             collection.insert_one(projects_data)
-            print(f"Projects data added for {unique_id}.")
+            print(f"Projects data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting projects data for {unique_id}: {e}")
+        print(f"Error inserting projects data for {unique_id}: {e}\n")
 
 def insert_patents(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     patents_file_path = os.path.join(folder_path, "PATENTS.csv")
 
     if not os.path.exists(patents_file_path):
-        print(f"Patents file not found for {unique_id}. Skipping.")
+        print(f"Patents file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -297,25 +297,25 @@ def insert_patents(unique_id):
                 {"unique_id": unique_id},
                 {"$set": patents_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Patents data updated for {unique_id}.")
+                print(f"Patents data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             patents_data["unique_id"] = unique_id
             collection.insert_one(patents_data)
-            print(f"Patents data added for {unique_id}.")
+            print(f"Patents data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting patents data for {unique_id}: {e}")
+        print(f"Error inserting patents data for {unique_id}: {e}\n")
 
 def insert_journal_publications(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     journal_publications_file_path = os.path.join(folder_path, "JOURNAL-PUBLICATIONS.csv")
 
     if not os.path.exists(journal_publications_file_path):
-        print(f"Journal publications file not found for {unique_id}. Skipping.")
+        print(f"Journal publications file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -336,25 +336,25 @@ def insert_journal_publications(unique_id):
                 {"unique_id": unique_id},
                 {"$set": journal_publications_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Journal publications data updated for {unique_id}.")
+                print(f"Journal publications data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             journal_publications_data["unique_id"] = unique_id
             collection.insert_one(journal_publications_data)
-            print(f"Journal publications data added for {unique_id}.")
+            print(f"Journal publications data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting journal publications data for {unique_id}: {e}")
+        print(f"Error inserting journal publications data for {unique_id}: {e}\n")
 
 def insert_conference_publications(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     conference_publications_file_path = os.path.join(folder_path, "CONFERENCE-PUBLICATIONS.csv")
 
     if not os.path.exists(conference_publications_file_path):
-        print(f"Conference publications file not found for {unique_id}. Skipping.")
+        print(f"Conference publications file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -375,25 +375,25 @@ def insert_conference_publications(unique_id):
                 {"unique_id": unique_id},
                 {"$set": conference_publications_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Conference publications data updated for {unique_id}.")
+                print(f"Conference publications data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             conference_publications_data["unique_id"] = unique_id
             collection.insert_one(conference_publications_data)
-            print(f"Conference publications data added for {unique_id}.")
+            print(f"Conference publications data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting conference publications data for {unique_id}: {e}")
+        print(f"Error inserting conference publications data for {unique_id}: {e}\n")
 
 def insert_book_publications(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     book_publications_file_path = os.path.join(folder_path, "BOOK-PUBLICATIONS.csv")
 
     if not os.path.exists(book_publications_file_path):
-        print(f"Book publications file not found for {unique_id}. Skipping.")
+        print(f"Book publications file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -414,25 +414,25 @@ def insert_book_publications(unique_id):
                 {"unique_id": unique_id},
                 {"$set": book_publications_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Book publications data updated for {unique_id}.")
+                print(f"Book publications data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             book_publications_data["unique_id"] = unique_id
             collection.insert_one(book_publications_data)
-            print(f"Book publications data added for {unique_id}.")
+            print(f"Book publications data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting book publications data for {unique_id}: {e}")
+        print(f"Error inserting book publications data for {unique_id}: {e}\n")
 
 def insert_research_scholars(unique_id):
     folder_path = os.path.join(base_save_dir, unique_id)
     research_scholars_file_path = os.path.join(folder_path, "RESEARCH SCHOLARS.csv")
 
     if not os.path.exists(research_scholars_file_path):
-        print(f"Research scholars file not found for {unique_id}. Skipping.")
+        print(f"Research scholars file not found for {unique_id}. Skipping.\n")
         return
 
     try:
@@ -453,35 +453,35 @@ def insert_research_scholars(unique_id):
                 {"unique_id": unique_id},
                 {"$set": research_scholars_data}
             )
-            print(f"Update result: {result.modified_count} document(s) updated.")
+            print(f"Update result: {result.modified_count} document(s) updated.\n")
             if result.modified_count > 0:
-                print(f"Research scholars data updated for {unique_id}.")
+                print(f"Research scholars data updated for {unique_id}.\n")
             else:
-                print(f"No changes made for {unique_id}.")
+                print(f"No changes made for {unique_id}.\n")
         else:
             research_scholars_data["unique_id"] = unique_id
             collection.insert_one(research_scholars_data)
-            print(f"Research scholars data added for {unique_id}.")
+            print(f"Research scholars data added for {unique_id}.\n")
         
     except Exception as e:
-        print(f"Error inserting research scholars data for {unique_id}: {e}")
+        print(f"Error inserting research scholars data for {unique_id}: {e}\n")
 
 data = df.to_dict(orient="records")
 try:
     collection.insert_many(data)
-    print(f"Successfully inserted {len(data)} documents into the '{collection_name}' collection.")
+    print(f"Successfully inserted {len(data)} documents into the '{collection_name}' collection.\n")
 except Exception as e:
-    print(f"Error inserting initial data: {e}")
+    print(f"Error inserting initial data: {e}\n")
 
 '''for _, row in df.iterrows():
     faculty_unique_id = row['unique_id']
     file_url = row.get('Upload Your Excel File Here', None)
     
     if not file_url:
-        print(f"No file URL provided for {faculty_unique_id}. Skipping download.")
+        print(f"No file URL provided for {faculty_unique_id}. Skipping download.\n")
         continue
     
-    print(f"Processing educational qualifications for {faculty_unique_id} with file URL: {file_url}")
+    print(f"Processing educational qualifications for {faculty_unique_id} with file URL: {file_url}\n")
     
     download_and_save_faculty_data(faculty_unique_id, file_url)
     
@@ -494,7 +494,7 @@ except Exception as e:
     insert_journal_publications(faculty_unique_id)
     insert_research_scholars(faculty_unique_id)
 
-    print(f"Completed processing data for {faculty_unique_id}.")'''
+    print(f"Completed processing data for {faculty_unique_id}.\n")'''
 
 def process_faculty_data(row):
     faculty_unique_id = row['unique_id']
@@ -530,47 +530,47 @@ with ThreadPoolExecutor(max_workers=8) as executor:
 
 def insert_department_data():
     collection = db["vision_and_mission"]
-    with open("/root/VEC-Backend/docs/department_data.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/department_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("Department documents inserted successfully.")
+    print("Department documents inserted successfully.\n")
 
 def insert_hod_datas():
     collection = db['HODS']
-    with open("/root/VEC-Backend/docs/hods.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/hods.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("HOD documents inserted successfully.")
+    print("HOD documents inserted successfully.\n")
 
 def insert_infrastructure_data():
     collection = db["infrastructure"]
-    with open("/root/VEC-Backend/docs/infrastructure.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/infrastructure.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("Infrastructure documents inserted successfully.")
+    print("Infrastructure documents inserted successfully.\n")
 
 def insert_student_activities_data():
     collection = db['student_activities'] 
-    with open("/root/VEC-Backend/docs/student_activities.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/student_activities.json", "r", encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
-    print("Student documents inserted successfully.")
+    print("Student documents inserted successfully.\n")
 
 def insert_support_staff_data():
     collection = db['support_staffs'] 
-    with open("/root/VEC-Backend/docs/support_staffs.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/support_staffs.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
-    print("Support staffs documents inserted successfully.")
+    print("Support staffs documents inserted successfully.\n")
 
 def insert_MOUs_data():
     collection = db['MOUs']
-    folder_path = "/root/VEC-Backend/docs/MOUs/"
+    folder_path = "/root/VEC_WEB_Engine/docs/MOUs/"
     for filename in os.listdir(folder_path):
         if filename.endswith(".json"):
             file_path = os.path.join(folder_path,filename)
@@ -579,172 +579,67 @@ def insert_MOUs_data():
                 documents = json.load(file)
                 collection.insert_many(documents)
     
-    print("All MOU documents have been inserted successfully.")
-
-def insert_curriculum_data():
-    collection = db['curriculum']
-    with open("/root/VEC-Backend/docs/curriculum.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Cirrculum documents inserted successfully.")
+    print("All MOU documents have been inserted successfully.\n")
 
 def insert_events_data():
     collection = db['events']  
-    with open("/root/VEC-Backend/docs/events.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/events.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("Events documents inserted successfully.")
+    print("Events documents inserted successfully.\n")
 
 def insert_special_announcements():
     collection = db['special_announcement']  
-    with open("/root/VEC-Backend/docs/special_announcements.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/special_announcements.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("special_announcements documents inserted successfully.")
+    print("special_announcements documents inserted successfully.\n")
 
 def insert_announcements_data():
    
     collection = db['announcements']  
-    with open("/root/VEC-Backend/docs/announcements.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/announcements.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("Announcements documents inserted successfully.")
-
-def principal_data():
-    collection = db["principal_data"]
-    with open("/root/VEC-Backend/docs/principal_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Principals documents inserted successfully.")
-
-def insert_admin_office_data():
-    collection = db['admin_office']  
-    with open("/root/VEC-Backend/docs/admin_office.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("admin office documents inserted successfully.")
-
-def insert_committee_data():
-
-    collection = db['committee']  
-    with open("/root/VEC-Backend/docs/committee.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Committee documents inserted successfully.")
-
-def insert_regulation_data():
-    collection = db['regulation']  
-    with open("/root/VEC-Backend/docs/regulation.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("regulation documents inserted successfully.")
-
-def placement_team():
-    collection = db["placement_team"]
-    with open('/root/VEC-Backend/docs/placement_members.json', 'r',encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print(f"Placement Team Details Inserted")
-
-def insert_intake_data():    
-    collection = db["Intakes"]        
-    with open('/root/VEC-Backend/docs/intakes.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("Intake data inserted successfully.")
-
-def insert_dean_and_associates_data():    
-    collection = db["dean_and_associates"]        
-    with open('/root/VEC-Backend/docs/dean_and_associates.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("dean_and_associates data inserted successfully.")
-
-def insert_placement_data():
-
-    collection = db['placements_data']  
-    with open("/root/VEC-Backend/docs/placements_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("placement documents inserted successfully.")
-
-def insert_curriculum_and_syllabus_data():
-
-    collection = db['curriculum_and_syllabus']  
-    with open("/root/VEC-Backend/docs/curriculum_and_syllabus.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-
-    print("curriculum_And_syllabus documents inserted successfully.")
+    print("Announcements documents inserted successfully.\n")
 
 def insert_banners():
     collection = db['banner']  
-    with open("/root/VEC-Backend/docs/banner.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/banner.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
-    print("Banner documents inserted successfully.")
-
-def insert_all_forms_data():
-
-    collection = db['all_forms']  
-    with open("/root/VEC-Backend/docs/all_forms.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("all_forms documents inserted successfully.")
-
-def insert_NBA_data():
-    collection = db['nba']
-    with open("/root/VEC-Backend/docs/nba.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("NBA documents inserted successfully.")
-
-def insert_naac_data():
-    collection = db['naac']
-    with open("/root/VEC-Backend/docs/naac.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NAAC documents inserted successfully.")
-
-def insert_nirf_data():
-    collection = db['nirf']
-    with open("/root/VEC-Backend/docs/nirf.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NIRF documents inserted successfully.")
+    print("Banner documents inserted successfully.\n")
 
 def insert_sidebar_details():
     collection= db['sidebar']
-    with open ("/root/VEC-Backend/docs/sidebar.json","r",encoding="utf-8") as file:
+    with open ("/root/VEC_WEB_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
-    print("Sidebar documents inserted successfully")
+    print("Sidebar documents inserted successfully\n")
 
-def insert_iic_details():
-    collection= db['iic']
-    with open ("/root/VEC-Backend/docs/iic.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("iic documents inserted successfully")
+def insert_iic_sections():
+    collection = db["iic"]
+
+    with open("/root/VEC_WEB_Engine/docs/iic.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("iic sections inserted successfully.")
 
 def insert_dept_activities_details():
     collection = db['department_activities']
-    directory = "/root/VEC-Backend/docs/DEPT_ACT/"
+    directory = "/root/VEC_WEB_Engine/docs/DEPT_ACT/"
     for filename in os.listdir(directory):
         if filename.endswith(".json"):  
             file_path = os.path.join(directory, filename)
@@ -761,69 +656,195 @@ def insert_dept_activities_details():
 
 def insert_newsletter():
     collection= db['news_letter']
-    with open ("/root/VEC-Backend/docs/news_letter.json","r",encoding="utf-8") as file:
+    with open ("/root/VEC_WEB_Engine/docs/news_letter.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
-    print("newsletter inserted successfully")
+    print("newsletter inserted successfully \n")
 
+def insert_admissions_sections():
+    collection = db["admissions"]
 
+    with open("/root/VEC_WEB_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
+        admissions_data = json.load(file)
 
-def insert_COE_data():
-    collection = db['coe']
-    with open("/root/VEC-Backend/docs/coe.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
+        for section in admissions_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
 
-    print("COE documents inserted successfully.\n")
+    print("Admission sections inserted successfully.")
 
-def insert_handbook_data():    
-    collection = db["handbook"]        
-    with open('/root/VEC-Backend/docs/handbook.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
+def insert_exams_sections():
+    collection = db["exams"]
 
-    print("Handbook data inserted successfully.")
+    with open("/root/VEC_WEB_Engine/docs/exams.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
 
-def insert_gallery():
-    collection = db["gallery"]   
-    with open('/root/VEC-Backend/docs/gallery.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
 
-    print("gallery data inserted successfully.")
+    print("Exam sections inserted successfully.")
 
+def insert_placement_sections():
+    collection = db["placement"]
 
+    with open("/root/VEC_WEB_Engine/docs/placement.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("placement sections inserted successfully.")
+
+def insert_iqac_sections():
+    collection = db["iqac"]
+
+    with open("/root/VEC_WEB_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("iqac sections inserted successfully.")
+
+def insert_accreditations_and_ranking_sections():
+    collection = db["accreditations_and_ranking"]
+
+    with open("/root/VEC_WEB_Engine/docs/accreditations_and_ranking.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("accreditations and ranking sections inserted successfully.")
+
+def insert_ecell_sections():
+    collection = db["ecell"]
+
+    with open("/root/VEC_WEB_Engine/docs/e_cell.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("e cell sections inserted successfully.")
+
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/root/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
+
+def insert_other_facilities_sections():
+    collection = db["other_facilities"]
+
+    with open("/root/VEC_WEB_Engine/docs/other_facilities.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("other facilities sections inserted successfully.")
+
+def insert_gallery_sections():
+    collection = db["gallery"]
+
+    with open("/root/VEC_WEB_Engine/docs/gallery.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("gallery sections inserted successfully.")
+
+def insert_academics_sections():
+    collection = db["academics"]
+
+    with open("/root/VEC_WEB_Engine/docs/academics.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("academics sections inserted successfully.")
+
+insert_academics_sections()
+insert_gallery_sections()
+insert_other_facilities_sections()
+insert_transport_sections()
+insert_ecell_sections()
+insert_accreditations_and_ranking_sections()
+insert_iqac_sections()
+insert_placement_sections()
+insert_exams_sections()
 insert_department_data()
 insert_hod_datas()
 insert_infrastructure_data()
 insert_student_activities_data()
 insert_support_staff_data()
 insert_MOUs_data()
-insert_curriculum_data()
 insert_events_data()
 insert_announcements_data()
 insert_special_announcements()
-principal_data()
-insert_admin_office_data()
-placement_team()
-insert_regulation_data()
-insert_intake_data()
-insert_committee_data()
-insert_placement_data()
-insert_dean_and_associates_data()
-insert_curriculum_and_syllabus_data()
-insert_all_forms_data()
 insert_banners()
-insert_NBA_data()
-insert_naac_data()
-insert_nirf_data()
 insert_sidebar_details()
-insert_iic_details()
+insert_iic_sections()
 insert_dept_activities_details()
 insert_newsletter()
-insert_COE_data()
-insert_handbook_data()
-insert_gallery()
+insert_admissions_sections()
 
 department_mapping = {
     "Artificial Intelligence and Data Science": "001",
@@ -840,38 +861,37 @@ department_mapping = {
     "Mathematics": "012",
     "Mechancial Engineering": "013",
     "Tamil": "014",
-    "Physics": "015"
+    "Physics": "015",
+    "Master Of Computer Science": "016",
+    "Master of Business Admin": "017",
+    "Physical Education":"020",
+    "Placement":"021"
 }
 
-def insert_incubation_data():
-    collection= db['incubation']
-    with open ("/root/VEC-Backend/docs/incubation.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("Incubation documents inserted successfully")
+def insert_incubations_sections():
+    collection = db["incubation"]
+
+    with open("/root/VEC_WEB_Engine/docs/incubation.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("incubation sections inserted successfully.")
     
-def insert_army_data():
-    collection = db['army']
-    with open("/root/VEC-Backend/docs/ncc_army.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("armydocuments inserted successfully.")
-
-def insert_navy_data():
-    collection = db['navy']
-    with open("/root/VEC-Backend/docs/ncc_navy.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    print("NCC(NAVY) documents inserted successfully.")
-
 def insert_faculty_data(folder_path):
     department_name=None
-    with open(r"/root/VEC-Backend/docs/prev_faculty.json","r",encoding="utf-8") as file:
+    with open(r"/root/VEC_WEB_Engine/docs/prev_faculty.json","r",encoding="utf-8") as file:
         data=json.load(file)
     try:
         collection = db['faculty_data']
         if not os.path.exists(folder_path):
-            print(f"Error: Folder path '{folder_path}' does not exist.")
+            print(f"Error: Folder path '{folder_path}' does not exist. \n")
             return
 
         for file_name in os.listdir(folder_path):
@@ -884,7 +904,7 @@ def insert_faculty_data(folder_path):
                 try:
                     df = pd.read_excel(file_path)
                 except Exception as e:
-                    print(f"Error reading Excel file '{file_name}': {e}")
+                    print(f"Error reading Excel file '{file_name}': {e}\n")
                     continue
                 required_columns = [
                     "Name", "Designation", "Photo", "Google Scholar Profile",
@@ -893,7 +913,7 @@ def insert_faculty_data(folder_path):
                 ]
                 missing_columns = [col for col in required_columns if col not in df.columns]
                 if missing_columns:
-                    print(f"Error: Missing columns in '{file_name}': {missing_columns}")
+                    print(f"Error: Missing columns in '{file_name}': {missing_columns}\n")
                     continue 
 
                 faculty_list = []
@@ -915,7 +935,7 @@ def insert_faculty_data(folder_path):
                         }
                         faculty_list.append(faculty_data)
                     except Exception as e:
-                        print(f"Error processing row {index} in '{file_name}': {e}")
+                        print(f"Error processing row {index} in '{file_name}': {e}\n")
                 for name, id in department_mapping1.items() :
                     if id==dept_id:
                         department_name=name
@@ -930,106 +950,40 @@ def insert_faculty_data(folder_path):
                     try:
                         collection.insert_one(department_document)
                     except Exception as e:
-                        print(f"Error inserting document for '{dept_id}' into MongoDB: {e}")
+                        print(f"Error inserting document for '{dept_id}' into MongoDB: {e}\n")
                 else:
-                    print(f"No valid faculty data to insert for '{file_name}'.")
+                    print(f"No valid faculty data to insert for '{file_name}'.\n")
     except Exception as e:
-        print(f"Unexpected error: {e}")
+        print(f"Unexpected error: {e}\n")
 
-    print("Faculty Data Insertion Done")
+    print("Faculty Data Insertion Done\n")
     return
 
-insert_faculty_data(folder_path=r"/root/VEC-Backend/docs/STAFF-DATA/")
+insert_faculty_data(folder_path=r"/root/VEC_WEB_Engine/docs/STAFF-DATA/")
 
 # SPORTS DATA INSERTIONS
 
-def insert_sports_data():
-    collection = db["sports_data"]
-    with open("/root/VEC-Backend/docs/sports_data.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Sports data inserted successfully.")
-
-
-def insert_library_data():
+def insert_library_sections():
     collection = db["library"]
-    with open("/root/VEC-Backend/docs/library.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
 
-    print("Library data inserted successfully.")
+    with open("/root/VEC_WEB_Engine/docs/library.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
 
-def insert_nss_data():
-    collection = db["nss_data"]
-    with open("/root/VEC-Backend/docs/nss.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
 
-    print("NSS data inserted successfully.")
-
-
-def insert_yrc_data():
-    collection = db["yrc_data"]
-    with open("/root/VEC-Backend/docs/yrc.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("YRC data inserted successfully.")
-
-def insert_overall_department_research():
-    collection = db['overall_research']
-    with open("/root/VEC-Backend/docs/overall_research_data.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-    
-    print("inserted overall research data")
-
-def insert_overall_book_publication():
-    collection = db['overall_book_publication']
-    with open("/root/VEC-Backend/docs/overall_book_publication.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall book publication.\n")
-
-def insert_overall_conference_publication():
-    collection = db['overall_conference_publication']
-    with open("/root/VEC-Backend/docs/overall_conference_publication.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall conference publication.\n")
-
-def insert_overall_patent():
-    collection = db['overall_patent']
-    with open("/root/VEC-Backend/docs/overall_patent.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall patent.\n")
-
-def insert_overall_journal_publications():
-    collection = db['overall_journal_publications']
-    with open("/root/VEC-Backend/docs/overall_journal_publications.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted overall journal publications.\n")
-
-# def insert_acadamic_research():
-#     collection = db['overall_research']
-#     with open("/root/VEC-Backend/docs/acadamic_research.json","r",encoding="utf-8") as file:
-#         documents = json.load(file)
-#         collection.insert_one(documents)
-    
-#     print("Inserted acadamaic research.\n")
+    print("library sections inserted successfully.")
 
 
 def insert_department_research_data():
     collection = db['research_data']
     
-    folder_path = "/root/VEC-Backend/docs/RESEARCH-DATA"
+    folder_path = "/root/VEC_WEB_Engine/docs/RESEARCH-DATA"
     
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
@@ -1042,132 +996,66 @@ def insert_department_research_data():
             except Exception as e:
                 print(f"Error inserting {file_name}: {e}")
     
-    print("All available Department Research documents inserted successfully.")
+    print("All available Department Research documents inserted successfully.\n")
 
 def insert_warden_hostel_data():
     collection = db['warden_profile']
-    with open("/root/VEC-Backend/docs/warden_profile.json","r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/warden_profile.json","r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
-    print("inserted warden profile data")
-
-def insert_alumni_data():
-    collection = db['alumni']
-    with open("/root/VEC-Backend/docs/alumni.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted Alumni data. \n")
-
-def insert_iqac_data():
-    collection = db['IQAC']
-    with open("/root/VEC-Backend/docs/IQAC.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("inserted IQAC data")
-
-def insert_academic_calender():
-
-    collection = db['academic_calender']  
-    with open("/root/VEC-Backend/docs/academic_calender.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("academic calender inserted successfully.")
-
-def insert_about_placement():
-
-    collection = db['about_placement']  
-    with open("/root/VEC-Backend/docs/about_placement.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("about placement inserted successfully.")
+    print("Inserted warden profile data. \n")
 
 def insert_about_us():
+    collection = db['about_us']
 
-    collection = db['about_us']  
-    with open("/root/VEC-Backend/docs/about_us.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
+    with open("/root/VEC_WEB_Engine/docs/about_us.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+        top_level = data[0]
+
+        documents = []
+        for key, value in top_level.items():
+            documents.append({
+                "_id": key,
+                "section": key,
+                "content": value
+            })
+
         collection.insert_many(documents)
-
     print("about_us documents inserted successfully.\n")
-
-
-def insert_organization_chart():
-
-    collection = db['organization_chart']  
-    with open("/root/VEC-Backend/docs/organization_chart.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_one(documents)
-
-    print("organization chart json documents inserted successfully.\n")
-
-
-
-def insert_hostel_menu():
-
-    collection = db['hostel_menu']  
-    with open("/root/VEC-Backend/docs/hostel_menu.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("hostel_menu documents inserted successfully.\n")
 
 def insert_help_desk():
 
     collection = db['help_desk']  
-    with open("/root/VEC-Backend/docs/help_desk.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_WEB_Engine/docs/help_desk.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
     print("help_desk documents inserted successfully.\n")
 
+def insert_administration_sections():
+    collection = db["administration"]
 
-def insert_landing_page_details():
+    with open("/root/VEC_WEB_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+        admin_data = json.load(file)
 
-    collection = db['landing_page_details']  
-    with open("/root/VEC-Backend/docs/landing_page_details.json", "r",encoding="utf-8") as file:
+        for section in admin_data:
+            section_key = list(section.keys())[0]
+            document = {
+                "type": section_key,
+                "data": section[section_key]
+            }
+            collection.insert_one(document)
+
+    print("Administration sections inserted successfully.")
+
+def insert_gallery():
+    collection = db["gallery"]   
+    with open('/root/VEC_WEB_Engine/docs/gallery.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
-        collection.insert_many(documents)
+    collection.insert_many(documents)
 
-    print("insert_landing_page_details documents inserted successfully.\n")
-
-def insert_programmes_list():
-
-    collection = db['programmes_list']  
-    with open("/root/VEC-Backend/docs/programmes_list.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Programmes list inserted successfully.")
-
-def insert_departments_list():
-
-    collection = db['departments_list']  
-    with open("/root/VEC-Backend/docs/departments_list.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("departments list inserted successfully.")
-
-def insert_admission_team():    
-    collection = db["admission_team"]        
-    with open('/root/VEC-Backend/docs/admission_team.json', "r",encoding="utf-8") as file:
-     documents = json.load(file)
-     collection.insert_many(documents)
-
-    print("admission team data data inserted successfully.")
-
-def insert_ecell_data():
-    collection = db["e_cell"]
-    with open("/root/VEC-Backend/docs/e_cell.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("e_cell data inserted successfully.")
+    print("gallery data inserted successfully.")
 
 def create_logs_collection():
     db.create_collection('logs')
@@ -1175,54 +1063,172 @@ def create_logs_collection():
 
 def insert_web_team():
     collection = db['web_team']
-    with open('/root/VEC-Backend/docs/web_team.json', "r",encoding="utf-8") as file:
+    with open('/root/VEC_WEB_Engine/docs/web_team.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
     print("web team data inserted successfully.")
 
-insert_sports_data()
-insert_library_data()
-insert_nss_data()
-insert_yrc_data()
-insert_overall_department_research()
-insert_department_research_data()
+
+def insert_hostel_sections():
+    collection = db["hostel_details"]
+
+    with open("/root/VEC_WEB_Engine/docs/hostel.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("hostel facilities sections inserted successfully.")
+
+def insert_ncc_army_sections():
+    collection = db["ncc_army"]
+
+    with open("/root/VEC_WEB_Engine/docs/ncc_army.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc army sections inserted successfully.")
+
+def insert_ncc_navy_sections():
+    collection = db["ncc_navy"]
+
+    with open("/root/VEC_WEB_Engine/docs/ncc_navy.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("ncc navy sections inserted successfully.")
+
+def insert_nss_sections():
+    collection = db["nss"]
+
+    with open("/root/VEC_WEB_Engine/docs/nss.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("nss sections inserted successfully.")
+
+def insert_sports_sections():
+    collection = db["sports"]
+
+    with open("/root/VEC_WEB_Engine/docs/sports_data.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("sports sections inserted successfully.")
+
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/root/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
+
+def insert_yrc_sections():
+    collection = db["yrc"]
+
+    with open("/root/VEC_WEB_Engine/docs/yrc.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("yrc sections inserted successfully.")
+
+def insert_landing_page_sections():
+    collection = db["landing_page_details"]
+
+    with open("/root/VEC_WEB_Engine/docs/landing_page_details.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("landing page sections inserted successfully.")
+
+insert_landing_page_sections()
+insert_sports_sections()
+insert_nss_sections()
+insert_ncc_navy_sections()
+insert_ncc_army_sections()
+insert_hostel_sections()
+insert_transport_sections()
+insert_yrc_sections()
+insert_administration_sections()
+insert_library_sections()
+#insert_department_research_data()
 insert_warden_hostel_data()
-insert_incubation_data()
-insert_army_data()
-insert_navy_data()
-insert_alumni_data()
-insert_iqac_data()
-insert_overall_book_publication()
-insert_overall_conference_publication()
-insert_overall_patent()
-insert_overall_journal_publications()
-insert_academic_calender()
-insert_about_placement()
+insert_incubations_sections()
 insert_about_us()
-insert_organization_chart()
-insert_hostel_menu()
 insert_help_desk()
-insert_landing_page_details()
-insert_programmes_list()
-insert_departments_list()
-insert_admission_team()
-insert_ecell_data()
+insert_gallery()
 create_logs_collection()
 insert_web_team()
 # insert_acadamic_research()
 
 def add_hostel_student_database():
     collection = db["student_database"]
-    storage_dir = r"/root/VEC-Backend/docs/CSV"
-    image_dir = r"/root/VEC-Backend/static/student_database"
+    storage_dir = r"/root/VEC_WEB_Engine/docs/CSV"
+    image_dir = r"/root/VEC_WEB_Engine/static/student_database"
     os.makedirs(storage_dir, exist_ok=True)  
     os.makedirs(image_dir, exist_ok=True)  
 
     csv_file_path = os.path.join(storage_dir, "VEC_Hostel_Students.csv")
 
     df = pd.read_csv(csv_file_path)
-    df = df.head(1)
+    df = df.head(1) #comment this line for getting the full student database in
 
     df.columns = df.columns.str.strip()
 
@@ -1249,7 +1255,7 @@ def add_hostel_student_database():
                 with open(image_path, "wb") as file:
                     for chunk in response.iter_content(1024):
                         file.write(chunk)
-                print(f"✅ Downloaded profile photo for {reg_number}")
+                print(f"Downloaded profile photo for {reg_number}")
                 return f"/static/images/student_profile_photos/{reg_number}.jpeg"
             else:
                 print(f"❌ Failed to download image for {reg_number} (HTTP {response.status_code})")
@@ -1304,9 +1310,8 @@ def add_hostel_student_database():
 
     if students:
         collection.insert_many(students)
-        print(f"✅ Successfully inserted {len(students)} students into MongoDB!")
+        print(f"Successfully inserted {len(students)} students into MongoDB!")
     else:
         print("⚠️ No student data to insert.")
 
-#add_hostel_student_database()
-
+add_hostel_student_database()
