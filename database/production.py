@@ -1158,6 +1158,15 @@ def insert_landing_page_sections():
 
     print("landing page sections inserted successfully.")
 
+def insert_research_data():
+    collection = db['research_data']
+    with open('/VEC_WEB_Engine/docs/research_data.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
+
+    print("Research data inserted successfully.")
+
+
 insert_landing_page_sections()
 insert_sports_sections()
 insert_nss_sections()
@@ -1174,6 +1183,7 @@ insert_about_us()
 insert_help_desk()
 create_logs_collection()
 insert_web_team()
+insert_research_data()
 # insert_acadamic_research()
 
 '''def add_hostel_student_database():
