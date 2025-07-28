@@ -1,12 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_HOSTEL_TYPES = [
-  'about',
-  'hostel_facilities',
-  'warden',
-  'general_info'
-];
+const ALLOWED_HOSTEL_TYPES = require('../models/hostel_models');
 
 async function getHostelDetails(req, res) {
   try {

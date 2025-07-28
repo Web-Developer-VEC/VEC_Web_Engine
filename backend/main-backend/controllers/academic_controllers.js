@@ -1,11 +1,6 @@
 const { getDb } = require("../config/db");
 const logError = require("../middlewares/logerror");
-
-const allowedTypes = new Set([
-  'academic_calendar',
-  'programmes_list',
-  'departments_list'
-]);
+const allowedTypes = require('../models/academic_models');
 
 async function getAcademicsData(req, res) {
   try {

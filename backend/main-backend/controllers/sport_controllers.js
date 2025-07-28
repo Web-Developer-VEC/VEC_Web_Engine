@@ -1,16 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_SPORTS_TYPES = [
-  'introduction',
-  'vision',
-  'hod',
-  'faculty',
-  'action_plan',
-  'infrastructure',
-  'achivements',
-  'intramural'
-];
+const ALLOWED_SPORTS_TYPES = require('../models/sport_models');
 
 async function getSportsData(req, res) {
   try {

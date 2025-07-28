@@ -1,15 +1,7 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
+const ALLOWED_TYPES = require('../models/administration_models');
 
-const ALLOWED_TYPES = [
-  'dean_and_association',
-  'admin_office',
-  'committee',
-  'HandBook',
-  'HRHandBook',
-  'organization_chart',
-  'principal'
-];
 
 async function getAdministrationSection(req, res) {
   try {

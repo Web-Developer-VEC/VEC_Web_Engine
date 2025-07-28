@@ -1,12 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_TYPES = [
-  'COE',
-  'regulation',
-  'exam_curriculum',
-  'all_forms'
-];
+const ALLOWED_TYPES = require('../models/exam_models');
 
 async function getExamsSection(req, res) {
   try {
