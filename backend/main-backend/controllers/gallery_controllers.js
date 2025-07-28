@@ -1,9 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_TYPES = [
-  'gallery'
-];
+const ALLOWED_TYPES = require('../models/gallery_models');
 
 async function getGalleryData(req, res) {
   try {
