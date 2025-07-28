@@ -4,16 +4,11 @@ import LoadComp from "../../LoadComp";
 
 export default function ImageGallery({ activity }) {
   const [selectedPdf, setSelectedPdf] = useState(null);
-
-  const pdfMap = {};
-
-  activity?.pdfs_path?.forEach((path) => {
-    const fileName = path.split("/").pop().replace(".pdf", ""); // eg: 2020-2021, 2021-2022
-    pdfMap[fileName] = path;
-  });
+  console.log("Act",activity);
+  
 
   const handleClick = (year) => {
-    setSelectedPdf(pdfMap[year]);
+    setSelectedPdf(year);
   };
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -22,14 +17,22 @@ export default function ImageGallery({ activity }) {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+if (!Array.isArray(activity)) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+}
+
   return (
     <>
       {activity ? (
       <div className="dark:bg-drkp">
         <div className="year-links">
-          {Object.keys(pdfMap).map((year) => (
-            <span key={year} onClick={() => handleClick(year)}>
-              <i className="fa fa-link" /> {year}
+          {activity?.map((year) => (
+            <span key={year.year} onClick={() => handleClick(year.pdf_path)}>
+              <i className="fa fa-link" /> {year.year}
             </span>
           ))}
         </div>

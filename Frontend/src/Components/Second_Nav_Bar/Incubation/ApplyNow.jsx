@@ -57,7 +57,7 @@ function generateCaptcha() {
 
     try {
       setLoading(true);
-      const response = await fetch("/api/iic_applynow", {
+      const response = await fetch("/api/main-backend/iic_applynow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,6 @@ function generateCaptcha() {
         alert("Email sent successfully");
       } else {
         setMessage(`Error: ${data.error || data.message}`);
-        alert("Ajay",data.message);
       }
     } catch (error) {
       setMessage("Error connecting to the server");

@@ -70,49 +70,48 @@ function IICExpert({data}){
   )
 }
 
-const IICStudent=({data})=> {
-  const obj = Object.keys(data);
+const IICStudent = ({ data }) => {
+
+  console.log("Stu",data);
+  
+  if (!Array.isArray(data) || data.length === 0) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
 
   return (
-    <>
-    {data ? (
-      <div className='p-2'>
+    <div className="p-2">
+      <h2 className="iic-h3 text-brwn dark:text-drkt">Student Representation</h2>
+      
+      {Array.isArray(data) && data?.map((categoryBlock, idx) => (
+        <div key={idx}>
+          <h2 className="text-3xl font-bold text-brwn dark:text-drkt text-center capitalize my-4">
+            {categoryBlock?.category}
+          </h2>
 
-      <h2 className="iic-h3 text-brwn dark:text-drkt">
-        Student Representation
-        
-        </h2>
-        <div className="iic-stud-grid">
-          {obj?.map((obj,i) => (
-            <>
-              <h2 className='text-3xl font-bold text-brwn dark:text-drkt text-center'>{obj}</h2>
-              <div className='flex flex-wrap gap-[20px]'>
-                {data[obj].map((details,i) => (
-                    <div key={i} className="iic-faculty-card dark:bg-text">
-                        <div className="ncc-n-stu-detail p-2 text-left">
-                          <h5 className="text-center text-[18px]">{details.name}</h5>
-                          <p className="pl-4 text-brwn dark:text-drka text-sm">Responsibility: {details.responsibility}</p>
-                      
-                          <p className="pl-4 text-brwn dark:text-drka text-sm">Sex: {details.sex}</p>
-                          <p className="pl-4 text-brwn dark:text-drka text-sm"><span>{details.dept}{" - "}</span><span>{details.year}</span></p>
-                          <p className="pl-4 text-brwn dark:text-drka text-sm">Phone: {details.phone}</p>
-                          <p className="pl-4 text-brwn dark:text-drka text-sm">Email: {details["mail id"]}</p>
-                        </div>
-                    </div> 
-                ))}
+          <div className="flex flex-wrap gap-[20px] justify-center">
+            {categoryBlock?.members?.map((details, i) => (
+              <div key={i} className="iic-faculty-card dark:bg-text">
+                <div className="ncc-n-stu-detail p-2 text-left">
+                  <h5 className="text-center text-[18px] font-semibold">{details?.name}</h5>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm">Responsibility: {details?.responsibility}</p>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm">Sex: {details?.sex}</p>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm">
+                    {details?.dept} - {details?.year}
+                  </p>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm">Phone: {details?.phone}</p>
+                  {/* <p className="pl-4 text-brwn dark:text-drka text-sm">Email: {details["mail id"]}</p> */}
+                </div>
               </div>
-            </>
             ))}
           </div>
-      </div>
-    ) : (
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-    )}
-    </>
-
-  )
-}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export {IICExpert,IICFaculty,IICStudent};

@@ -13,11 +13,11 @@ export default function IicFacPolicy({ data }) {
     };
 
 
-    const policyArray =
-        data?.name?.map((name, index) => ({
-        year: name,
-        path: UrlParser(data.pdf_path[index]),
-    })) || []
+    const policyArray = Array.isArray(data) ? 
+        data?.map((name, index) => ({
+        year: name?.name,
+        path: UrlParser(name?.path),
+    })) : []
 
   return (
     <>

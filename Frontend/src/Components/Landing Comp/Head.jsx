@@ -137,32 +137,32 @@ const Head = () => {
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
             ],
         },
-        {
-            main: "Research",
-            cod: [0, 5],
-            cols: 1,
-            sub: [
+        // {
+        //     main: "Research",
+        //     cod: [0, 5],
+        //     cols: 1,
+        //     sub: [
 
-                {hrd: false, ttl: "Academic Research", sup: [], lnk: "/Academic"},  //Academic
-                {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch"}, //Sponseredresearch
-                {
-                    hrd: false,
-                    ttl: "Publication",
-                    sup: [
-                        {hrd: false, ttl: "Journal", sup: [], lnk: "/journal"}, //journal
-                        {hrd: false, ttl: "Conference", sup: [], lnk: "/conference"}, //conference
-                    ],
-                    lnk: "#",
-                },
-                {hrd: false, ttl: "Patents", sup: [], lnk: "#"},    //patents
-                {
-                    hrd: false,
-                    ttl: "Book Publications",
-                    sup: [],
-                    lnk: "#",   //Bookpubliction
-                },
-            ],
-        },
+        //         {hrd: false, ttl: "Academic Research", sup: [], lnk: "/Academic"},  //Academic
+        //         {hrd: false, ttl: "Sponsored Research", sup: [], lnk: "/Sponseredresearch"}, //Sponseredresearch
+        //         {
+        //             hrd: false,
+        //             ttl: "Publication",
+        //             sup: [
+        //                 {hrd: false, ttl: "Journal", sup: [], lnk: "/journal"}, //journal
+        //                 {hrd: false, ttl: "Conference", sup: [], lnk: "/conference"}, //conference
+        //             ],
+        //             lnk: "#",
+        //         },
+        //         {hrd: false, ttl: "Patents", sup: [], lnk: "#"},    //patents
+        //         {
+        //             hrd: false,
+        //             ttl: "Book Publications",
+        //             sup: [],
+        //             lnk: "#",   //Bookpubliction
+        //         },
+        //     ],
+        // },
         {
             main: "Placement",
             cod: [0, 4],

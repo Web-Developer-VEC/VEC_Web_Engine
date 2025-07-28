@@ -53,7 +53,7 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
     );
 }
 
-function Carousel() {
+function Carousel({ data }) {
     const x = useMotionValue(0);
     const lastScrollTime = useRef(Date.now());
     const isHovered = useRef(false);
@@ -64,7 +64,7 @@ function Carousel() {
     const SCROLL_INTERVAL = 16;
 
     // Duplicate events to ensure smooth looping
-    const duplicatedEvents = [...events, ...events, ...events];
+    const duplicatedEvents = [...data, ...data, ...data];
     const TOTAL_WIDTH = duplicatedEvents.length * CARD_WIDTH;
 
     const wrappedX = useTransform(x, (value) => {
@@ -100,19 +100,6 @@ function Carousel() {
     const handleHoverEnd = () => {
         isHovered.current = false;
     };
-
-    // Fetch events
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`/api/events`);
-                setEvents(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error.message);
-            }
-        };
-        fetchData();
-    }, []);
 
     return (
         <div className="event-carousel-wrapper">

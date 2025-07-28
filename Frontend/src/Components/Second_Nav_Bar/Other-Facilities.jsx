@@ -124,28 +124,59 @@ import axios from 'axios'
 // ];
 
 
-export default function OtherFacilities({ theme, toggle}) {
+
+export default function OtherFacilities({ theme, toggle }) {
+  const [activeTab, setActiveTab] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [otherFacData,setOtherFacData] = useState([])
-  const [activeTab, setActiveTab] = useState("");
-  const [loading,setLoading] = useState()
-  
-  const currentFacility = otherFacData.find((facility) => facility.name === activeTab);
+  const [otherFacilities, setOtherFacilities] = useState(null);
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-  
+
+  const getSafe = (value, index) => {
+    return Array.isArray(value) ? value[index] || value[0] : value;
+  };
+
+  const currentFacility = otherFacilities?.find(
+    (facility) => facility?.title === activeTab
+  );
+
   const nextImage = () => {
-    setImageIndex((prevIndex) => (prevIndex + 1) % currentFacility.images.length);
+    if (!currentFacility) return;
+    const images = Array.isArray(currentFacility.image_path)
+      ? currentFacility.image_path
+      : [currentFacility.image_path];
+    setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const prevImage = () => {
-    setImageIndex((prevIndex) => (prevIndex - 1 + currentFacility.images.length) % currentFacility.images.length);
+    if (!currentFacility) return;
+    const images = Array.isArray(currentFacility.image_path)
+      ? currentFacility.image_path
+      : [currentFacility.image_path];
+    setImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("/api/main-backend/other_facilities", {
+          type: "other_facilities",
+        });
+        const data = response.data.data;
+        setOtherFacilities(data);
+        setActiveTab(data[0]?.title || null);
+      } catch (error) {
+        console.error("Error fetching Other facilities", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -155,91 +186,89 @@ export default function OtherFacilities({ theme, toggle}) {
     window.addEventListener("offline", handleOffline);
 
     return () => {
-        window.removeEventListener("online", handleOnline);
-        window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
     };
-}, []);
-
-
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.post('/api/main-backend/other_facilities', {
-        type: "other_facilities"
-      });
-
-      const data = response.data.data;
-      setOtherFacData(data);
+  }, []);
 
 
 
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-      setLoading(true);
-    }
-  };
+  if (!isOnline) {
 
-  fetchData();
-}, []);
-
-
-if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp txt={"You are offline"} />
       </div>
     );
-}
+  }
+
+  if (!otherFacilities || !currentFacility) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={""} />
+      </div>
+    );
+  }
+
+  const images = Array.isArray(currentFacility.image_path)
+    ? currentFacility.image_path
+    : [currentFacility.image_path];
 
   return (
+    <>
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/Others.webp"
+        headerText="OTHER FACILITES"
+        subHeaderText="Fostering excellence in social service and community well-being."
+      />
+      <div className="facilities-container bg-prim dark:bg-drkp">
+        {/* Tabs */}
+        <div className="tabs-container">
+          {otherFacilities?.map((facility) => (
+            <button
+              key={facility?.title}
+              className={`tab-button ${
+                activeTab === facility?.title ? "active-tab" : ""
+              } bg-secd dark:bg-drks text-text`}
+              onClick={() => {
+                setActiveTab(facility?.title);
+                setImageIndex(0);
+              }}
+            >
+              {facility?.title}
+            </button>
+          ))}
+        </div>
 
-    <> 
-    <Banner
-      toggle={toggle} theme={theme}
-      backgroundImage="./Banners/Others.webp"
-      headerText="OTHER FACILITES"
-      subHeaderText="Fostering excellence in social service and community well-being."
-    />
-    <div className="facilities-container bg-prim dark:bg-drkp">
-
-      {/* Tabs */}
-      <div className="tabs-container">
-        {Array.isArray(otherFacData) && otherFacData?.map((facility) => (
-          <button
-            key={facility.name}
-            className={`tab-button ${activeTab === facility.name ? "active-tab" : ""} bg-secd dark:bg-drks text-text`}
-            onClick={() => {
-              setActiveTab(facility.name);
-              setImageIndex(0); // Reset image index when switching tabs
-            }}
-          >
-            {facility.name}
-          </button>
-        ))}
+        {/* Content Section */}
+        <div className="content-container">
+          <h2 className="current-facility text-brwn dark:text-drkt">
+            {getSafe(currentFacility.name, imageIndex)}
+          </h2>
+          <p>{getSafe(currentFacility.description, imageIndex)}</p>
+          {/* Image Carousel */}
+          <div className="carousel">
+            {images.length > 1 && (
+              <button className="prev" onClick={prevImage}>
+                ❮
+              </button>
+            )}
+            <img
+              src={UrlParser(images[imageIndex])}
+              alt={activeTab}
+              className="carousel-img"
+            />
+            {images.length > 1 && (
+              <button className="next" onClick={nextImage}>
+                ❯
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Content Section */}
-      <div className="content-container">
-        {currentFacility?.image_path.length > 1 ? (
-          <h2 className="current-facility text-brwn dark:text-drkt">{currentFacility?.img_path[imageIndex]}</h2>
-        ) : (
-        <h2 className="current-facility text-brwn dark:text-drkt">{currentFacility?.img_path}</h2>
-        )}
-        {currentFacility.content.length > 1 ? (
-          <p>{currentFacility.content[imageIndex]}</p>
-        ) : (
-          <p>{currentFacility.content}</p>
-        )}
-
-        {/* Image Carousel */}
-        <div className="carousel">
-          <button className="prev" onClick={prevImage}>❮</button>
-          <img src={UrlParser(currentFacility.images[imageIndex])} alt={activeTab} className="carousel-img" />
-          <button className="next" onClick={nextImage}>❯</button>
-        </div>
-    </div>
-    </div>
     </>
   );
 }

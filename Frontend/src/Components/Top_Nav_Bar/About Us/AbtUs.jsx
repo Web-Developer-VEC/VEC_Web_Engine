@@ -24,9 +24,15 @@ const AbtUs = ({ theme, toggle }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responce = await axios.get('/api/about_us');
-                const data = responce.data[0]
-                setAbtsUcData(data.about_vec)
+                const responce = await axios.post('/api/main-backend/about_us',
+                    {
+                        section: "about_vec"
+                    }
+                );
+                const data = responce.data.data.content
+
+
+                setAbtsUcData(data)
                 
             } catch (error) {
                 console.error("Error fetching about us data",error);
@@ -68,7 +74,6 @@ const AbtUs = ({ theme, toggle }) => {
 
     return (
         <>
-        
             <Banner toggle={toggle} theme={theme}
                 backgroundImage="./Banners/aboutvec.webp"
                 headerText="About VEC"
@@ -114,21 +119,19 @@ const AbtUs = ({ theme, toggle }) => {
                                     )}
 
                                    <img
-  className="
-    absolute 
-    w-[80%] h-[80%] 
-    md:w-full md:h-full 
-    rounded-tr-[2rem] md:rounded-tr-[3rem] 
-    rounded-bl-[2rem] md:rounded-bl-[3rem] 
-    transition-opacity duration-500 
-    opacity-100
-  "
-  src={UrlParser(AbtUsData?.image_path[1])}
-  alt="Banner Image1"
-  onLoad={() => handleLoad('img2')}
-/>
-
-
+                                        className="
+                                            absolute 
+                                            w-[80%] h-[80%] 
+                                            md:w-full md:h-full 
+                                            rounded-tr-[2rem] md:rounded-tr-[3rem] 
+                                            rounded-bl-[2rem] md:rounded-bl-[3rem] 
+                                            transition-opacity duration-500 
+                                            opacity-100
+                                        "
+                                        src={UrlParser(AbtUsData?.image_path[1])}
+                                        alt="Banner Image1"
+                                        onLoad={() => handleLoad('img2')}
+                                        />
                                 </div>
 
                                 {/* Image 3 */}

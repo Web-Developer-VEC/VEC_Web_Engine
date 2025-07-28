@@ -24,6 +24,14 @@ export default function EnterpreN({ enterpreneur }) {
     }
   };
 
+  if (!Array.isArray(enterpreneur)) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
+
   return (
     <>
       {enterpreneur ? (
@@ -39,14 +47,14 @@ export default function EnterpreN({ enterpreneur }) {
               </tr>
             </thead>
             <tbody>
-              {enterpreneur?.Business_name
-                ?.slice(startIndex, endIndex) // 👉 show only current page rows
-                .map((bus, index) => (
+              {enterpreneur
+                ?.slice(startIndex, endIndex)
+                .map((data, index) => (
                   <tr key={startIndex + index}>
                     <td>{startIndex + index + 1}</td>
-                    <td>{enterpreneur?.name[startIndex + index]}</td>
-                    <td>{enterpreneur?.year[startIndex + index]}</td>
-                    <td className="text-left">{bus}</td>
+                    <td>{data?.name}</td>
+                    <td>{data?.year}</td>
+                    <td className="text-left">{data?.business_name}</td>
                   </tr>
                 ))}
             </tbody>

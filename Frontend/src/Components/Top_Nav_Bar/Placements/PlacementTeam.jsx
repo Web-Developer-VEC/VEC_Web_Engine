@@ -48,16 +48,19 @@ export const PlacementTeam = ({toggle, theme}) => {
 
   const [PlacementTeam, setPlacementTeam] = useState([]);
   const [isLoading,setLoading] = useState(true);
-  const content = PlacementTeam[0]?.placement_team || [];
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/placementteam`);
+        const response = await axios.post(`/api/main-backend/placement`,
+          {
+            type: "placement_team"
+          }
+        );
 
-        setPlacementTeam(response.data);
+        setPlacementTeam(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -105,10 +108,10 @@ if (!isOnline) {
           </div>
           ) : (
             <>
-              <PersonDetail key={content[0]?.name} person={content[0]} />
+              <PersonDetail key={PlacementTeam[0]?.name} person={PlacementTeam[0]} />
 
             <div className="placement-members">
-              {content.slice(1).map((person, index) => (
+              {PlacementTeam.slice(1).map((person, index) => (
                 <PersonMemberDetail key={person.name} person={person} isImageLeft={index % 2 === 0} />
               ))}
             </div>

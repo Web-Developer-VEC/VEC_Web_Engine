@@ -7,22 +7,22 @@ export default function IicFacnir({ data }) {
         {
             heading: "Registration Statistics",
             buttons:
-                data["Registration Statistics"]?.name?.map((name, index) => ({
-                    text: `${name}: ${data["Registration Statistics"].count[index]}`,
+                data[0]?.content?.map((name, index) => ({
+                    text: `${name.name}: ${name.count}`,
                 })) || [],
         },
         {
             heading: "Innovation Metrics",
             buttons:
-                data["Innovation Metrics"]?.name?.map((name, index) => ({
-                    text: `${name}: ${data["Innovation Metrics"].count[index]}`,
+                data[1]?.content?.map((name, index) => ({
+                    text: `${name.name}: ${name.count}`,
                 })) || [],
         },
         {
             heading: "Impact Assessment",
             buttons:
-                data["Impact Assessment"]?.name?.map((name, index) => ({
-                    text: `${name}: ${data["Impact Assessment"].count[index]}`,
+                data[2]?.content?.map((name, index) => ({
+                    text: `${name.name}: ${name.count}`,
                 })) || [],
         },
     ]
