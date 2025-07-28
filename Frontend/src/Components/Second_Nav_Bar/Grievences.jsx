@@ -129,8 +129,8 @@ const GrievanceForm = ({ theme, toggle }) => {
         <Banner
           toggle={toggle}
           theme={theme}
-          backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
-          headerText="Grievance Form"
+          backgroundImage="./Banners/Grievances_Banner.webp"
+          headerText="Help Desk"
           subHeaderText="Raise your concerns here"
         />
       </div>

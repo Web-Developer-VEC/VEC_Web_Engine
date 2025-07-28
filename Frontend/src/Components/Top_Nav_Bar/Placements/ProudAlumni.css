@@ -49,18 +49,20 @@ border-left: 5px solid #800000;
 .pasection-title {
   font-size: 24px;/* Slightly larger for prominence */
   font-weight: bold;
+  font-family: "poppins";
   color:#800000;
   margin-bottom: 20px; /* More space below title */
 }
 .pasection-title h2{
   font-size: 24px;
+  font-family: "poppins";
 }
 
 /* Section content styling */
 .psection-content {
   font-size: 16px;
   margin:1px solid #800000; /* Slightly larger for readability */
- 
+  font-family: "poppins";
   text-align: justify;
   
 }
@@ -74,6 +76,7 @@ border-left: 5px solid #800000;
 
 .psection-content li {
   margin-bottom: 15px; /* Increased spacing between list items */
+  font-family: "poppins";
 }
 
 /* Responsive design */
@@ -136,6 +139,7 @@ border-left: 5px solid #800000;
   }
 }
 li{
+
   font-size: 16px;
 }
 

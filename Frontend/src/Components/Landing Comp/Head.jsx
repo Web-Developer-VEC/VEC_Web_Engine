@@ -373,7 +373,7 @@ const Head = () => {
                         </div>
                     </div>
                 <div
-                    className='block lg:hidden h-fit'>
+                    className='block lg:hidden h-fit overflow-y-hidden'>
                     <Sidebar navs={navs} Sz="tny p-0"/></div>
             </nav>
         </>

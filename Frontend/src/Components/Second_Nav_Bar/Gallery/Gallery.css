@@ -1,15 +1,13 @@
 .gallery-container {
   padding: 40px 20px;
   max-width: 100%;
-  background-color: #f9f9f9;
   margin-bottom: 10px;
 }
 
 .gallery-title {
   text-align: center;
   font-size: 2.25rem; /* ~36px */
-  font-weight: 700;   /* bold */
-  color: #800000;        /* dark grey for contrast */
+  font-weight: 700;  
   margin-bottom: 2rem; /* spacing below title */
   letter-spacing: 0.5px;
   line-height: 1.2;
@@ -25,7 +23,6 @@
 }
 
 .gallery-card {
-  background-color: white;
   border-radius: 0.75rem; /* 12px */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -56,12 +53,10 @@
 .gallery-title-text {
   font-size: 1.125rem; /* 18px */
   font-weight: 600;
-  color: #800000;
   margin-bottom: 1rem; /* 16px */
 }
 
 .read-more-button {
-  background-color: #fdc34a;
   color: #000;
   padding: 10px 16px;
   font-size: 0.875rem; /* 14px */
@@ -81,7 +76,6 @@
     padding: 40px 20px;
     max-width: 100%;
     /* margin: 0.5rem auto 0; */
-    background-color: #f9f9f9;
 
 }
 .gallery-gri{
@@ -145,7 +139,6 @@
   text-align: center;
   margin-bottom: 30px;
   font-size: 2rem;
-  color: #800000;
 }
 
 .gallery-grid {
@@ -155,7 +148,6 @@
 }
 
 .gallery-item {
-  background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -180,7 +172,6 @@
 .gallery-item p {
   margin-top: 10px;
   font-weight: 500;
-  color: #555;
 }
 /* Gallerydetails.css */
 
@@ -201,7 +192,6 @@
 }
 
 .gallery-item {
-  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;

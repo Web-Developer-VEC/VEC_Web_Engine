@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Eactivity.css";
+import LoadComp from "../../LoadComp";
 
 export default function ImageGallery({ activity }) {
   const [selectedPdf, setSelectedPdf] = useState(null);
@@ -22,27 +23,35 @@ export default function ImageGallery({ activity }) {
   };
 
   return (
-    <div className="container">
-      <div className="year-links">
-        {Object.keys(pdfMap).map((year) => (
-          <span key={year} onClick={() => handleClick(year)}>
-            <i className="fa fa-link" /> {year}
-          </span>
-        ))}
-      </div>
+    <>
+      {activity ? (
+      <div className="dark:bg-drkp">
+        <div className="year-links">
+          {Object.keys(pdfMap).map((year) => (
+            <span key={year} onClick={() => handleClick(year)}>
+              <i className="fa fa-link" /> {year}
+            </span>
+          ))}
+        </div>
 
-      <div className="image-display" id="displayed-image">
-        {selectedPdf && (
-          <div className="image-container">
-            <iframe
-              src={UrlParser(selectedPdf)}
-              title="Activity PDF"
-              width="100%"
-              height="600px"
-            ></iframe>
-          </div>
-        )}
+        <div className="image-display" id="displayed-image">
+          {selectedPdf && (
+            <div className="image-container">
+              <iframe
+                src={UrlParser(selectedPdf)}
+                title="Activity PDF"
+                width="100%"
+                height="600px"
+              ></iframe>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 }

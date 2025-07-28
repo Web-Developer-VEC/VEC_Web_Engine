@@ -36,7 +36,7 @@ const Footer = forwardRef((props, ref) => {
                     {data?.addmission_contact[1]}</a>
                 </p>
                 <div>
-                    <a href="/Term_and_Conditions" target="_blank" rel="noopener noreferrer">Privacy, Terms and Conditions</a>
+                    <a href="./Term_and_Conditions" target="_blank" rel="noopener noreferrer" className="text-secd dark:text-drks ml-5">Privacy, Terms and Conditions</a>
                 </div>
                 <div className="logo-container my-2">
                     <a href={data?.instagram} target="_blank" rel="noopener noreferrer">
@@ -106,6 +106,7 @@ const Footer = forwardRef((props, ref) => {
                     </div>
                 </div>
             </div>
+            <a href="./webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-xl mt-4 font-medium m-auto cursor-pointer">@ Web Team VEC</a>
         </footer>
     );
 });
