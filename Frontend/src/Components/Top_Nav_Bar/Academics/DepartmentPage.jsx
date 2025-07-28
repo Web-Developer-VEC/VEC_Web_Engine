@@ -78,7 +78,7 @@ const DepartmentPage = ({ theme, toggle }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
+        const response = await axios.get(`/api/main-backend/${deptID}/${activeSection.toLowerCase()}`);
         setSectionData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -104,7 +104,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await axios.get(`/api/${deptID}/sidebar`);
+        const response = await axios.get(`/api/main-backend/${deptID}/sidebar`);
         const validSections = response.data.content
           .filter((section) => section.hascontent)
           .map((section) => section.id);

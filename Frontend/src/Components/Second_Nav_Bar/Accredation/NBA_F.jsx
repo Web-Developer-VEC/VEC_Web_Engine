@@ -3,20 +3,7 @@ import "./NBA_F.css";
 import axios from 'axios';
 import LoadComp from '../../LoadComp';
 
-const NBA_F = () => {
-  const [data, setNbaData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/nba');
-        setNbaData(response.data[0].departments);
-      } catch (error) {
-        console.error("Error fetching NBA Data", error);
-      }
-    };
-    fetchData();
-  }, []);
+const NBA_F = ({ data }) => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -53,9 +40,6 @@ const NBA_F = () => {
           <LoadComp />
         </div>
     ): (
-
-
-
       <div className="nba-page">
         <div className="nba-tiles">
           <div className="nba-tile-container">
@@ -86,28 +70,32 @@ const NBA_F = () => {
               </tr>
             </thead>
             <tbody>
-              {data?.map((item) => (
-                <tr key={item.id} className="border-t">
-                  <td className="px-4 py-2">{item.id}</td>
-                  <td className="px-4 py-2">{item.department}</td>
-                  <td className="px-4 py-2">
-                    <ul className="list-disc list-inside">
-                      {item.pdfs.map((pdf, index) => (
-                        <li key={index}>
-                          <a
-                            href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-brwn dark:text-drka no-underline"
-                          >
-                            {pdf.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-              ))}
+              {Array.isArray(data) && (
+                <>
+                  {data?.map((item) => (
+                    <tr key={item.id} className="border-t">
+                      <td className="px-4 py-2">{item.id}</td>
+                      <td className="px-4 py-2">{item.department}</td>
+                      <td className="px-4 py-2">
+                        <ul className="list-disc list-inside">
+                          {Array.isArray(item.pdfs) && item.pdfs.map((pdf, index) => (
+                            <li key={index}>
+                              <a
+                                href={`${UrlParser(pdf.pdfs_path)}#toolbar=0`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brwn dark:text-drka no-underline"
+                              >
+                                {pdf.name}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              )}
             </tbody>
           </table>
         </div>

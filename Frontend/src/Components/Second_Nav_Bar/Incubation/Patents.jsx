@@ -10,7 +10,7 @@ export default function Patents({ data }) {
   const endIndex = startIndex + rowsPerPage;
   const currentData = data?.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(data?.length / rowsPerPage);
 
   const handlePrev = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -19,6 +19,14 @@ export default function Patents({ data }) {
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
+
+  if (!Array.isArray(data)) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -41,24 +49,24 @@ export default function Patents({ data }) {
                 </tr>
               </thead>
               <tbody>
-                {currentData?.map((startup, i) => (
+                {Array.isArray(currentData) && currentData?.map((startup, i) => (
                   <tr key={startIndex + i}>
-                    <td className="ic-table-data">{startup["Sl. No."]}</td>
-                    <td className="ic-table-data">{startup["Patent Application No."]}</td>
+                    <td className="ic-table-data">{startup?.Sl_No}</td>
+                    <td className="ic-table-data">{startup?.Patent_Application_No}</td>
                     <td className="ic-table-data">
-                      {startup["Status of Patent (Published / Granted)"]}
+                      {startup?.Status_of_Patent}
                     </td>
                     <td className="ic-table-data text-left">
-                        {startup["Inventor/s Name"].map((div,i)=>(
+                        {startup?.Inventor_Name?.map((div,i)=>(
                             <l>
                                 {div}
                             </l>
                         ))}
                     </td>
-                    <td className="ic-table-data">{startup["Title of the Patent"]}</td>
-                    <td className="ic-table-data">{startup["Applicant/s Name"]}</td>
+                    <td className="ic-table-data">{startup?.Title_of_the_Patent}</td>
+                    <td className="ic-table-data">{startup?.Applicant_Name}</td>
                     <td className="ic-table-data">
-                      {startup["Patent Filed Date (DD/MM/YYYY) "]}
+                      {startup?.Patent_Filed_Date}
                     </td>
                   </tr>
                 ))}

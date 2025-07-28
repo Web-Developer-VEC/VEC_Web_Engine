@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./NCCACarousel.css"; // Import the CSS file
 import LoadComp from "../../../LoadComp"
 
-const NCCACarousel = ({data}) => {
+const NCCACarousel = ({data1}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(true);
-    // const [data , setdata] = useState(null)
+    // const [data1 , setdata1] = useState(null)
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const UrlParser = (path) => {
@@ -22,25 +22,25 @@ const NCCACarousel = ({data}) => {
     }, [currentIndex, isAutoPlay]);
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? data?.carousal_images?.length - 1 : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? data1?.carousal_images?.length - 1 : prev - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev === data?.carousal_images?.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev === data1?.carousal_images?.length - 1 ? 0 : prev + 1));
     };
     return (
 
 
 <>
-        {data ? (
+        {data1 ? (
             <div className="ncc-a-carousel-wrap">
             <div className="ncc-a-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: "transform 0.5s ease-in-out" }}>
-                {data?.carousal_images?.map((slide, index) => (
+                {data1?.carousal_images?.map((slide, index) => (
                     <div className="ncc-a-carousel-slide" key={index}>
-                        <img src={UrlParser(slide)} alt={data?.carousal_title[index]} />
+                        <img src={UrlParser(slide)} alt={data1?.carousal_title[index]} />
                         <div className="ncc-a-carousel-text">
-                            <h3>{data?.carousal_title[index]}</h3>
-                            <p>{data?.carousal_description[index]}</p>
+                            <h3>{data1?.carousal_title[index]}</h3>
+                            <p>{data1?.carousal_description[index]}</p>
                         </div>
                     </div>
                 ))}
@@ -52,7 +52,7 @@ const NCCACarousel = ({data}) => {
 
             {/* Dots Indicator */}
             <div className="ncc-a-carousel-dots">
-                {data?.carousal_images?.map((_, index) => (
+                {data1?.carousal_images?.map((_, index) => (
                     <span
                     key={index}
                     className={`ncc-a-dot ${index === currentIndex ? "active" : ""}`}

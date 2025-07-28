@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useRef} from "react";
-import {TfiControlBackward, TfiControlForward, TfiControlPause, TfiControlPlay} from "react-icons/tfi";
 import "./IQAC.css";
 import Banner from "../Banner";
 import axios from "axios";
@@ -10,7 +9,13 @@ import LoadComp from "../LoadComp";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    // Return empty string if path is not a string
+    if (typeof path !== 'string') return '';
+    
+    // Handle cases where path might be empty or undefined
+    if (!path) return '';
+    
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
 const IQAC = ({ toggle , theme }) => {
@@ -36,11 +41,31 @@ const IQAC = ({ toggle , theme }) => {
     };
 
     useEffect(() => {
+
+        const typeMatch = {
+            "Objectives": "objectives",
+            "Coordinator": "coordinator",
+            "Members": "members",
+            "Minutes of Meetings": "minutes_of_meetings",
+            "Academic and Administrative Audit": "academic_admin_audit",
+            "Gallery": "gallery",
+            "Strategic Development Plan": "strategic_plan",
+            "Best Practices": "best_practices",
+            "Institutional Distinctiveness": "institutional_distinctiveness",
+            "Code of Ethics": "code_of_ethics",
+            "AQAR": "aqar",
+            "ISO Certificate": "iso_certificate"
+        }
         // Simulate fetching data from a local source
         const fetchData = async () => {
             try {
-                const response = await axios.get('/api/iqac');
-                setIqacData(response.data.data[0]);
+                const response = await axios.post('/api/main-backend/iqac',
+                    {
+                        type: typeMatch[iqa]
+                    }
+                );
+                setIqacData(response.data.data);
+                
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data", error);
@@ -49,7 +74,7 @@ const IQAC = ({ toggle , theme }) => {
         };
 
         fetchData();
-    }, []);
+    }, [iqa]);
 
     // Update certificate, events, and policy arrays
     const certificateArray =
@@ -71,13 +96,13 @@ const IQAC = ({ toggle , theme }) => {
         })) || [];
 
     // Create coordinator object
-    const coordinator = iqacData?.members?.coordinator ? {
-        name: iqacData.members.coordinator.name,
-        image: UrlParser(iqacData.members.coordinator.image_path),
-        designation: iqacData.members.coordinator.designation,
-        keyRole: iqacData.members.coordinator.role,
-        email: iqacData.members.coordinator.email,
-        phone: iqacData.members.coordinator.phone
+    const coordinator = iqacData ? {
+        name: iqacData?.name,
+        image: UrlParser(iqacData?.image_path),
+        designation: iqacData?.designation,
+        keyRole: iqacData?.role,
+        email: iqacData?.email,
+        phone: iqacData?.phone
     } : null;
 
     // Update NIR sections
@@ -116,11 +141,12 @@ const IQAC = ({ toggle , theme }) => {
         })) || [];
 
     // Create new arrays for the added features
-    const minutesOfMeetingsArray =
-        iqacData?.minutesOfMeetings?.years?.map((year, index) => ({
-            year,
-            path: UrlParser(iqacData.minutesOfMeetings.paths[index]),
-        })) || [];
+    const minutesOfMeetingsArray = Array.isArray(iqacData)
+        ? iqacData?.map((year) => ({
+            year: year.year,
+            path: UrlParser(year.path),
+            }))
+        : [];
 
     const academicAdminAuditArray =
         iqacData?.academicAdminAudit?.years?.map((year, index) => ({
@@ -140,18 +166,20 @@ const IQAC = ({ toggle , theme }) => {
             path: UrlParser(iqacData.strategicPlan.paths[index]),
         })) || [];
 
-    const bestPracticesArray =
-        iqacData?.bestPractices?.years?.map((year, index) => ({
-            year,
-            path: UrlParser(iqacData.bestPractices.paths[index]),
-        })) || [];
+    const bestPracticesArray = Array.isArray(iqacData)
+        ? iqacData?.map((year) => ({
+            year: year.year,
+            path: UrlParser(year.path),
+            }))
+        : [];
 
 
-    const aqarArray =
-        iqacData?.aqar?.years?.map((year, index) => ({
-            year,
-            path: UrlParser(iqacData.aqar.paths[index]),
-        })) || [];
+    const aqarArray = Array.isArray(iqacData)
+        ? iqacData?.map((year) => ({
+            year: year.year,
+            path: UrlParser(year.path),
+            }))
+        : [];
 
     const openPdf = (category, year) => {
         setSelectedAction({category, year});
@@ -189,12 +217,12 @@ const IQAC = ({ toggle , theme }) => {
             <div className="objectives-container">
                 <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
                     <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About IQAC</h3>
-                    <p className="objectives-text text-text dark:text-drkt">{iqacData?.objectives?.about}</p>
+                    <p className="objectives-text text-text dark:text-drkt">{iqacData?.about}</p>
                 </div>
                 <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
                     <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">IQAC Objectives</h3>
                     <ul className="objectives-list">
-                        {iqacData?.objectives?.objectives.map((objective, index) => (
+                        {iqacData?.objectives?.map((objective, index) => (
                             <li key={index} className="objectives-item text-text dark:text-drkt">{objective}</li>
                         ))}
                     </ul>
@@ -228,47 +256,55 @@ const IQAC = ({ toggle , theme }) => {
 
     // Render Gallery content
     const renderGalleryContent = () => {
+    // Assuming iqacData.gallery is your array
+    const galleryData = iqacData || [];
+    console.log(galleryData);
+    
 
-        const galleryData = iqacData?.gallery;
+    // Extract all categories
+    const categories = galleryData.map(item => item.category);
+    console.log(categories);
     
-        const categories = Object.keys(galleryData);
+
+    // Find the object matching the selectedCategory
+    const selectedItem = galleryData.find(item => item.category === selectedCategory);
+    console.log(selectedItem);
     
-        return (
-            <div className="mr-4">
-                <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
-                
-                {/* Category Buttons */}
-                <div className="flex flex-wrap gap-2 justify-center mb-4">
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            className={`bg-secd dark:bg-drks px-4 text-lg font-semibold rounded-lg ${selectedCategory === category ? "gallery-selected text-white" : "bg-secd"}`}
-                            type="button"
-                            onClick={() => setSelectedCategory(category)}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-    
-                {/* Image Gallery */}
-                <div className="columns-xs mb-12">
-                    {galleryData[selectedCategory].map((imagePath, index) => (
-                        <img
-                            key={imagePath}
-                            src={UrlParser(imagePath)}
-                            alt={`Gallery Image ${index + 1}`}
-                            className={`size-0 block box-border m-2 ${
-                                selectedCategory === "OVERALL" || galleryData[selectedCategory].includes(imagePath)
-                                    ? "animate-[fadBorn_1s_ease_forwards]"
-                                    : "animate-[fadKill_1s_ease_forwards]"
-                            }`}
-                            style={{ animationDelay: `${100 * index}ms` }}
-                        />
-                    ))}
-                </div>
+
+    return (
+        <div className="mr-4">
+            <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
+
+            <div className="flex flex-wrap gap-2 justify-center mb-4">
+                {categories.map((category) => (
+                <button
+                    key={category}
+                    className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
+                    selectedCategory === category
+                        ? "bg-accn text-white"
+                        : "bg-secd dark:bg-drks"
+                    }`}
+                    type="button"
+                    onClick={() => setSelectedCategory(category)}
+                >
+                    {category}
+                </button>
+                ))}
             </div>
-        );
+
+            <div className="columns-xs mb-12">
+                {selectedItem?.paths?.map((imagePath, index) => (
+                <img
+                    key={imagePath}
+                    src={UrlParser(imagePath)}
+                    alt={`Gallery Image ${index + 1}`}
+                    className={`size-0 block box-border m-2 animate-[fadBorn_1s_ease_forwards]`}
+                    style={{ animationDelay: `${100 * index}ms` }}
+                />
+                ))}
+            </div>
+        </div>
+    );
     };
 
     function IqaObj() {
@@ -280,63 +316,77 @@ const IQAC = ({ toggle , theme }) => {
     }
 
     function IqaMem() {
-
         const parser = {
-            principle: "Chairperson",
+            chairperson: "Chairperson",
             deansanddepartmentheads: "Deans and Department Heads",
             seniorteachers: "Senior Teachers",
             memberfrommanagement: "Member from Management",
             localprofessionalsocietychapter: "Local Professional Society Chapter",
             studentmembers: "Student Members",
             aluminimembers: "Alumni Members",
-            memberfromemployes: "Member from Employee",
+            memberfromemployee: "Member from Employee",
             memberfromindustry: "Member from Industry",
-            stakeholders: "Stakeholders"
+            stakeholders: "Stakeholders",
         };
+
         return (
-        <div className="mt-8 mb-4 px-4">
-            {Object.entries(iqacData?.members?.faculty).map(([groupKey, members]) => (
-            <div key={groupKey} className="mb-10">
-                {/* Group Title */}
-                <h2 className="text-2xl font-semibold font-poppins mb-4 text-center text-accn dark:text-drkt">
-                {parser[groupKey]}
-                </h2>
-
-                {/* Group Members */}
-                <div className="flex flex-wrap gap-4">
-                {members.map((member, i) => {
-                    const isLast = i === members.length - 1;
-                    const isOdd = members.length % 2 !== 0;
-                    return (
-
-                        <div
-                        key={i}
-                        className={ `
-                            ${members.length === 1
-                            ? 'basis-full max-w-xl mx-auto'
-                            : isLast && isOdd
-                                ? 'md:basis-[48%] md:mx-auto' // Center last card on its row
-                                : 'md:basis-[48%]'} 
-                            py-2 px-4 rounded-xl border-l-4 border-secd dark:border-drks
-                            bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
-                            dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
-                            transition-colors duration-300 ease-in basis=full w-full
-                        `}
-                        >
-                        <p className="text-xl font-poppins">{member.name}</p>
-                        {member.designation && (
-                            <p className="text-sm text-accn dark:text-drka">{member.designation}</p>
-                        )}
-                        {member.role && (
-                            <p className="text-sm text-accn dark:text-drka">{member.role}</p>
-                        )}
-                        </div>
-                    )
-    })}
-                </div>
+            <div className="mt-8 mb-4 px-4">
+                {Array.isArray(iqacData) && (
+                    <>
+                        {iqacData?.map((group, idx) => {
+                            const title = parser[group.category?.toLowerCase()] || group.category;
+                            return (
+                            <div key={idx} className="mb-10">
+                                {/* Group Title */}
+                                <h2 className="text-2xl font-semibold font-poppins mb-4 text-center text-accn dark:text-drkt">
+                                    {title}
+                                </h2>
+            
+                                {/* Members */}
+                                <div className="flex flex-wrap gap-4">
+                                {group.members?.map((member, i) => {
+                                    const isLast = i === group.members.length - 1;
+                                    const isOdd = group.members.length % 2 !== 0;
+            
+                                    return (
+                                    <div
+                                        key={i}
+                                        className={`
+                                        ${
+                                            group.members.length === 1
+                                            ? "basis-full max-w-xl mx-auto"
+                                            : isLast && isOdd
+                                            ? "md:basis-[48%] md:mx-auto"
+                                            : "md:basis-[48%]"
+                                        } 
+                                        py-2 px-4 rounded-xl border-l-4 border-secd dark:border-drks
+                                        bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
+                                        dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
+                                        transition-colors duration-300 ease-in basis=full w-full
+                                        `}
+                                    >
+                                        <p className="text-xl font-poppins">{member.name}</p>
+                                        {member.designation && (
+                                            <p className="text-sm text-accn dark:text-drka">
+                                                {member.designation}
+                                            </p>
+                                        )}
+                                        {member.role && (
+                                            <p className="text-sm text-accn dark:text-drka">
+                                                {member.role}
+                                            </p>
+                                        )}
+                                    </div>
+                                    );
+                                })}
+                                </div>
+                            </div>
+                            );
+                        })}
+                    
+                    </>
+                )}
             </div>
-            ))}
-        </div>
         );
     }
 
@@ -359,36 +409,47 @@ const IQAC = ({ toggle , theme }) => {
     function IqaAud() {
         return (
             <>
-                <h2 className={"basis-full text-brwn dark:text-drkt text-center text-[24px] mt-[15px]"}>Acedemic and Administrative Audit</h2>
-                <div className="flex justify-center p-4 w-full">
-                    <div className="overflow-x-auto border rounded-lg shadow-md">
-                        <table className=" w-[1000px] department-table">
-                            <thead className="bg-gry">
-                            <tr>
-                                <th className="text-left px-4 py-2 text-text w-2">S.No</th>
-                                <th className="text-left px-4 py-2 text-text">Departments</th>
-                                <th className="text-left px-4 py-2 text-text">Reports</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                {iqacData?.academicAdminAudit?.map((dept,i) => (
-                                    <tr key={i}>
-                                        <td className="text-center w-2">{i+1}</td>
-                                        <td>{dept.department}</td>
-                                        <td>
-                                            <ul classname="reportlist">
-                                                {dept.reports.map((rep,i) => (
-                                                <li ><a href={`${rep.pdfs_path ? UrlParser(rep.pdfs_path) : '#'}`} target={`${rep.pdfs_path ? '_blank' : ''}`}>{rep.name}</a></li> 
-                                                ))}
-
-                                            </ul>
-                                        </td>
-                                    </tr>
+            <h2 className="basis-full text-brwn dark:text-drkt text-center text-[24px] mt-[15px]">
+                Academic and Administrative Audit
+            </h2>
+            <div className="flex justify-center p-4 w-full">
+                <div className="overflow-x-auto border rounded-lg shadow-md">
+                <table className="w-[1000px] department-table">
+                    <thead className="bg-gry">
+                    <tr>
+                        <th className="text-left px-4 py-2 text-text w-2">S.No</th>
+                        <th className="text-left px-4 py-2 text-text">Departments</th>
+                        <th className="text-left px-4 py-2 text-text">Reports</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Array.isArray(iqacData) &&
+                        iqacData?.map((dept, deptIndex) => (
+                        <tr key={deptIndex}>
+                            <td className="text-center w-2">{deptIndex + 1}</td>
+                            <td>{dept?.department_name}</td>
+                            <td>
+                            <ul className="reportlist">
+                                {dept?.path?.map((rep, repIndex) => (
+                                <li key={repIndex}>
+                                    <a
+                                    href={rep || "#"}
+                                    target={rep ? "_blank" : ""}
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 underline"
+                                    >
+                                    {dept?.year[repIndex]}
+                                    </a>
+                                </li>
                                 ))}
-                            </tbody>
-                        </table>
-                    </div>
+                            </ul>
+                            </td>
+                        </tr>
+                        ))}
+                    </tbody>
+                </table>
                 </div>
+            </div>
             </>
         );
     }
@@ -404,7 +465,7 @@ const IQAC = ({ toggle , theme }) => {
 
                 <embed
                     className="embed"
-                    src={UrlParser(iqacData?.strategicPlan?.paths[0]) + "#toolbar=0"
+                    src={UrlParser(iqacData[0]?.paths) + "#toolbar=0"
                     }
                     type="application/pdf"
                     width="100%"
@@ -421,7 +482,7 @@ const IQAC = ({ toggle , theme }) => {
 
                 <embed
                     className="embed"
-                    src={UrlParser(iqacData?.institutional_distinctiveness?.path) + "#toolbar=0"}
+                    src={UrlParser(iqacData[0]?.path) + "#toolbar=0"}
                     type="application/pdf"
                     width="100%"
                     height="600px"
@@ -452,8 +513,7 @@ const IQAC = ({ toggle , theme }) => {
                     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Code of Ethics</h2>
                     <embed
                         className="embed"
-                        src={UrlParser(iqacData?.codeOfEthics?.path) + "#toolbar=0"
-                        }
+                        src={UrlParser(iqacData[0]?.path) + "#toolbar=0"}
                         type="application/pdf"
                         width="100%"
                         height="600px"
@@ -469,7 +529,6 @@ const IQAC = ({ toggle , theme }) => {
                 {aqarArray.map((action, index) => (
                     <a key={index} href={`${action.path}#toolbar=0`} target="_blank" rel="noopener noreferrer"
                        className="hover:underline hover:text-text dark:hover:text-drkt dark:text-drka"
-                        // onClick={() => openPdf("Academic and Administrative Audit", action.year)}
                     >
                         <FaLink className={"inline size-5 mr-1 mb-1"}/>{action.year}
                     </a>
@@ -484,7 +543,7 @@ const IQAC = ({ toggle , theme }) => {
                 <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>ISO Certificate</h2>
                 <embed
                     className="embed"
-                    src={UrlParser(iqacData?.isoCertificate?.path) + "#toolbar=0"
+                    src={UrlParser(iqacData[0]?.path) + "#toolbar=0"
                     }
                     type="application/pdf"
                     width="100%"
