@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const logError = require('../middlewares/logerror');
 
 async function submitFeedback(req, res) {
-  const { err_sub, err_page, err_desrp } = req.body;
+  const { err_sub, err_page, err_descrp } = req.body;
 
   // Basic validation
   if (!err_sub || typeof err_sub !== 'string' || err_sub.trim() === '') {
@@ -12,7 +12,7 @@ async function submitFeedback(req, res) {
   if (!err_page || typeof err_page !== 'string' || err_page.trim() === '') {
     return res.status(400).json({ message: 'Page is required' });
   }
-  if (!err_desrp || typeof err_desrp !== 'string' || err_desrp.trim() === '') {
+  if (!err_descrp || typeof err_descrp !== 'string' || err_descrp.trim() === '') {
     return res.status(400).json({ message: 'Description is required' });
   }
 
@@ -34,7 +34,7 @@ async function submitFeedback(req, res) {
   const feedbackDoc = {
     subject: err_sub,
     page: err_page,
-    description: err_desrp,
+    description: err_descrp,
     submittedAt: istDateTime
   };
 
@@ -47,19 +47,19 @@ async function submitFeedback(req, res) {
       secure: true,
       auth: {
         user: process.env.BASE_EMAIL, // ✅ Sender email
-        pass: process.env.PASSWORD // ✅ App password for sender
+        pass: process.env.BASE_EMAIL_PASSWORD // ✅ App password for sender
       }
     });
 
     const mailOptions = {
       from: `"VEC Feedback Bot" <${process.env.BASE_EMAIL}>`, // ✅ Sender name and email
-      to: process.env.TARGET_EMAIL, // ✅ Receiver email
+      to: process.env.FEEDBACK_TARGET_EMAIL, // ✅ Receiver email
       subject: `🛠 New Feedback: ${err_sub}`,
       html: `
         <h3>📝 New Feedback Submitted</h3>
         <p><strong>Subject:</strong> ${err_sub}</p>
         <p><strong>Page:</strong> ${err_page}</p>
-        <p><strong>Description:</strong> ${err_desrp}</p>
+        <p><strong>Description:</strong> ${err_descrp}</p>
         <p><strong>Submitted At (IST):</strong> ${istDateTime}</p>
       `
     };
