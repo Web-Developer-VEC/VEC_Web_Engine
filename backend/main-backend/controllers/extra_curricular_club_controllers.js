@@ -5,7 +5,7 @@ const {
   ALLOWED_NCC_NAVY_TYPES,
   ALLOWED_NSS_TYPES,
   ALLOWED_YRC_TYPES
-} = require('../models/allowed_types');
+} = require('../models/extra_curricular_club_models');
 
 async function getArmyData(req, res) {
   try {
