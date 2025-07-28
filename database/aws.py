@@ -2,11 +2,7 @@ import os
 import requests
 import pandas as pd
 from pymongo import MongoClient
-from docx import Document
 import json
-import shutil
-import bcrypt
-import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #Hostel Student Test Settings is Turned On Till Now at line 1126
@@ -581,39 +577,6 @@ def insert_MOUs_data():
     
     print("All MOU documents have been inserted successfully.\n")
 
-def insert_events_data():
-    collection = db['events']  
-    with open("/root/VEC_WEB_Engine/docs/events.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Events documents inserted successfully.\n")
-
-def insert_special_announcements():
-    collection = db['special_announcement']  
-    with open("/root/VEC_WEB_Engine/docs/special_announcements.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("special_announcements documents inserted successfully.\n")
-
-def insert_announcements_data():
-   
-    collection = db['announcements']  
-    with open("/root/VEC_WEB_Engine/docs/announcements.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Announcements documents inserted successfully.\n")
-
-def insert_banners():
-    collection = db['banner']  
-    with open("/root/VEC_WEB_Engine/docs/banner.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Banner documents inserted successfully.\n")
-
 def insert_sidebar_details():
     collection= db['sidebar']
     with open ("/root/VEC_WEB_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
@@ -836,10 +799,6 @@ insert_infrastructure_data()
 insert_student_activities_data()
 insert_support_staff_data()
 insert_MOUs_data()
-insert_events_data()
-insert_announcements_data()
-insert_special_announcements()
-insert_banners()
 insert_sidebar_details()
 insert_iic_sections()
 insert_dept_activities_details()
@@ -998,14 +957,6 @@ def insert_department_research_data():
     
     print("All available Department Research documents inserted successfully.\n")
 
-def insert_warden_hostel_data():
-    collection = db['warden_profile']
-    with open("/root/VEC_WEB_Engine/docs/warden_profile.json","r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Inserted warden profile data. \n")
-
 def insert_about_us():
     collection = db['about_us']
 
@@ -1048,14 +999,6 @@ def insert_administration_sections():
             collection.insert_one(document)
 
     print("Administration sections inserted successfully.")
-
-def insert_gallery():
-    collection = db["gallery"]   
-    with open('/root/VEC_WEB_Engine/docs/gallery.json', "r",encoding="utf-8") as file:
-        documents = json.load(file)
-    collection.insert_many(documents)
-
-    print("gallery data inserted successfully.")
 
 def create_logs_collection():
     db.create_collection('logs')
@@ -1209,16 +1152,14 @@ insert_yrc_sections()
 insert_administration_sections()
 insert_library_sections()
 #insert_department_research_data()
-insert_warden_hostel_data()
 insert_incubations_sections()
 insert_about_us()
 insert_help_desk()
-insert_gallery()
 create_logs_collection()
 insert_web_team()
 # insert_acadamic_research()
 
-def add_hostel_student_database():
+'''def add_hostel_student_database():
     collection = db["student_database"]
     storage_dir = r"/root/VEC_WEB_Engine/docs/CSV"
     image_dir = r"/root/VEC_WEB_Engine/static/student_database"
@@ -1312,6 +1253,6 @@ def add_hostel_student_database():
         collection.insert_many(students)
         print(f"Successfully inserted {len(students)} students into MongoDB!")
     else:
-        print("⚠️ No student data to insert.")
+        print("⚠️ No student data to insert.")'''
 
-add_hostel_student_database()
+#add_hostel_student_database()
