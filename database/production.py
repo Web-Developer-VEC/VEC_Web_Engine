@@ -2,11 +2,7 @@ import os
 import requests
 import pandas as pd
 from pymongo import MongoClient
-from docx import Document
 import json
-import shutil
-import bcrypt
-import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #Hostel Student Test Settings is Turned On Till Now at line 1126

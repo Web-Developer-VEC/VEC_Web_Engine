@@ -155,36 +155,6 @@
     "type": "nirf",
     "data": [
       {
-        "category": "NIRF 2017",
-        "year": "2017",
-        "content": [
-          {
-            "name": "Engineering",
-            "pdf_path": ""
-          }
-        ]
-      },
-      {
-        "category": "NIRF 2018",
-        "year": "2018",
-        "content": [
-          {
-            "name": "Engineering",
-            "pdf_path": ""
-          }
-        ]
-      },
-      {
-        "category": "NIRF 2019",
-        "year": "2019",
-        "content": [
-          {
-            "name": "Engineering",
-            "pdf_path": ""
-          }
-        ]
-      },
-      {
         "category": "NIRF 2020",
         "year": "2020",
         "content": [

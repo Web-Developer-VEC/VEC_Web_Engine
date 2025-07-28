@@ -182,106 +182,29 @@
     "data": [
       {
         "unique_id": "announcement_1",
-        "announcement_name": "Revaluation Application for 2nd years",
-        "pdf_path": "/static/pdfs/announcement/revaluation_2nd.pdf",
+        "announcement_name": "SEE May 2025_R2023_B.E./B.Tech. (For the batch 2023-2027)",
+        "pdf_path": "https://velammal.edu.in/wp-content/uploads/2025/04/SEE_May_2025_R2023_B.E.B.Tech.-(For_the_batches_2023-2027).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
         "unique_id": "announcement_2",
-        "announcement_name": "Revaluation Application for 3rd years",
-        "pdf_path": "/static/pdfs/announcement/revaluation_3rd.pdf",
-        "date": "2025-07-28",
+        "announcement_name": " Rescheduled_date_for_exam_dated_04-04-2025",
+        "pdf_path": "https://velammal.edu.in/wp-content/uploads/2025/04/Rescheduled_date_for_exam_dated_04-04-2025.pdf",
+        "date": "2025-04-04",
         "status": "active"
       },
       {
         "unique_id": "announcement_3",
-        "announcement_name": "Revaluation Application for MBA",
-        "pdf_path": "/static/pdfs/announcement/revaluation_mba.pdf",
+        "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2021-2025 & 2022-2026)",
+        "pdf_path": "https://velammal.edu.in/wp-content/uploads/2024/05/SEE_May_2025_R2019(For-the-batches_2021-2025_and_2022-2026).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
         "unique_id": "announcement_4",
-        "announcement_name": "Culturals",
-        "pdf_path": "/static/pdfs/announcement/culturals.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_5",
-        "announcement_name": "B.E/B.Tech Admissions open for 1st years",
-        "pdf_path": "/static/pdfs/announcement/admission_1st.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_6",
-        "announcement_name": "ECE Symposium",
-        "pdf_path": "/static/pdfs/announcement/ece_symposium.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_7",
-        "announcement_name": "EEE Symposium",
-        "pdf_path": "/static/pdfs/announcement/eee_symposium.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_8",
-        "announcement_name": "CSE Symposium",
-        "pdf_path": "/static/pdfs/announcement/cse_symposium.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_9",
-        "announcement_name": "AI&DS Symposium",
-        "pdf_path": "/static/pdfs/announcement/aids_symposium.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_10",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_11",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_12",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_13",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_14",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_15",
-        "announcement_name": "Workshop Invitation",
-        "pdf_path": "/static/pdfs/announcement/workshop.pdf",
+        "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2019-2023 & 2020-2024)",
+        "pdf_path": "https://velammal.edu.in/wp-content/uploads/2024/05/SEE_May_2025_R2019(For-the-batches_2019-2023_and_2020-2024).pdf",
         "date": "2025-07-28",
         "status": "active"
       }
