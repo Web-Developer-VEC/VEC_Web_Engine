@@ -20,6 +20,7 @@ const sport = require('./sport_routes');
 const web_team = require('./web_team_routes')
 const log = require('./log_routes')
 const feedback = require('./feedback_routes');
+const research = require('./research_routes')
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -39,5 +40,6 @@ router.use('', sport);
 router.use('', web_team);
 router.use('', log);
 router.use('', feedback);
+router.use('', research )
 
 module.exports = router;

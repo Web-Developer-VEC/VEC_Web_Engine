@@ -10,20 +10,12 @@ db = client[db_name]
 import json
 from pymongo import MongoClient
 
-def insert_web_team():
-    collection = db["web_team"]
+def insert_research_data():
+    collection = db['research_data']
+    with open('/VEC_WEB_Engine/docs/research_data.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
 
-    with open("/VEC_WEB_Engine/docs/web_team.json", "r", encoding="utf-8") as file:
-        exams_data = json.load(file)
+    print("Research data inserted successfully.")
 
-        for section in exams_data:
-            section_key = section["type"]
-            document = {
-                "type": section_key,
-                "data": section["data"]
-            }
-            collection.insert_one(document)
-
-    print("web team sections inserted successfully.")
-
-insert_web_team()
+insert_research_data()
