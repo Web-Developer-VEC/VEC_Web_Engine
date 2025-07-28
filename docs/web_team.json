@@ -1,338 +1,358 @@
 [
   {
-    "copilot": {
-      "message": "Hello everyone this is co pilot team",
-      "members": [
-        {
-          "name": "HARI PRASATH",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "DINESH PRABAKERAN",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "KISAN",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "V CASH",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "DEEPAK",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "VISHALL",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "SATHISH",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "KIRUBA",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "DAKSHAN",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "PRAVEEN",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "SUDHAKAR",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
-        },
-        {
-          "name": "AJITH",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "",
-          "social": {
-            "github": "",
-            "linkedin": "",
-            "portfolio": "",
-            "email": ""
-          }
+    "type": "pilot",
+    "data": [
+      {
+        "category": "team_descripition",
+        "content": {
+          "message": "Hello everyone this is pilot team"
         }
-      ]
-    },
-    "pilot": {
-      "message": "Hello everyone this is pilot team",
-      "members": [
-        {
-          "name": "SAMUEL STEPHEN DEVA PAUL L",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Sam.webp",
-          "social": {
-            "github": "https://github.com/SAMSDP",
-            "linkedin": "https://www.linkedin.com/in/samsdp/",
-            "portfolio": "https://samsdp-portfolio.vercel.app/",
-            "email": "samsdpaul150@gmail.com"
+      },
+      {
+        "category": "members",
+        "content": [
+          {
+            "name": "SAMUEL STEPHEN DEVA PAUL L",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Sam.webp",
+            "social": {
+              "github": "https://github.com/SAMSDP",
+              "linkedin": "https://www.linkedin.com/in/samsdp/",
+              "portfolio": "https://samsdp-portfolio.vercel.app/",
+              "email": "samsdpaul150@gmail.com"
+            }
+          },
+          {
+            "name": "SIDDHARTH MAGESH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/siddharth.png",
+            "social": {
+              "github": "https://github.com/Siddharth-magesh",
+              "linkedin": "https://www.linkedin.com/in/siddharth-magesh-76688a246/",
+              "portfolio": "https://github.com/Siddharth-magesh/Siddharth-magesh",
+              "email": "siddharthmagesh007@gmail.com"
+            }
+          },
+          {
+            "name": "PRANESH KUMAR V",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Pranesh.webp",
+            "social": {
+              "github": "https://github.com/PraneshPk2005",
+              "linkedin": "https://www.linkedin.com/in/pranesh-pk-362760250/",
+              "portfolio": "https://praneshpk-portfolio.vercel.app/",
+              "email": "praneshvaradharaj@gmail.com"
+            }
+          },
+          {
+            "name": "SRI HARI M",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/srihari.webp",
+            "social": {
+              "github": "https://github.com/SriHari22004",
+              "linkedin": "https://www.linkedin.com/in/sri-hari22/",
+              "portfolio": "",
+              "email": "srihari22004@gmail.com"
+            }
+          },
+          {
+            "name": "MOHAMED YASIR A",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Yasir.webp",
+            "social": {
+              "github": "https://github.com/mdyasir8055",
+              "linkedin": "https://www.linkedin.com/in/mdyasir8055",
+              "portfolio": "https://mdyasirportfolio.vercel.app/",
+              "email": "mdyasir8055@gmail.com"
+            }
+          },
+          {
+            "name": "VASANTHA RAJA S",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Vasanth.webp",
+            "social": {
+              "github": "https://github.com/Vasanth-Aids",
+              "linkedin": "https://linkedin.com/in/vasantharajas123",
+              "portfolio": "",
+              "email": "selvamvasath2005@gmail.com"
+            }
+          },
+          {
+            "name": "GOKULRAMANAN V",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Gokul.webp",
+            "social": {
+              "github": "https://github.com/Feininon",
+              "linkedin": "https://www.linkedin.com/in/gokul-v-568641257",
+              "portfolio": "",
+              "email": "gokulramananvec@gmail.com"
+            }
+          },
+          {
+            "name": "WAATSON J",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Watson.webp",
+            "social": {
+              "github": "https://github.com/WAATS0N",
+              "linkedin": "https://www.linkedin.com/in/waatson-j/",
+              "portfolio": "",
+              "email": "waatson.j@gmail.com"
+            }
+          },
+          {
+            "name": "SAI VIGNESH RAJ M",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Sai.webp",
+            "social": {
+              "github": "https://github.com/SaiVignesh45",
+              "linkedin": "http://linkedin.com/in/sai-vignesh-raj-ba5997253/",
+              "portfolio": "",
+              "email": "saivignesh1204@gmail.com"
+            }
+          },
+          {
+            "name": "KUMAR P",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/arjun.png",
+            "social": {
+              "github": "https://github.com/kumar7505",
+              "linkedin": "https://linkedin.com/in/kumar-p-75",
+              "portfolio": "",
+              "email": "kumarpers7@gmail.com"
+            }
+          },
+          {
+            "name": "SRI RAAM V H",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Sriram.webp",
+            "social": {
+              "github": "https://github.com/Sriraam29",
+              "linkedin": "https://linkedin.com/in/sri-raam-v-h",
+              "portfolio": "",
+              "email": "sriraamhari04@gmail.com"
+            }
+          },
+          {
+            "name": "ARJUN V L",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Arjun.webp",
+            "social": {
+              "github": "https://github.com/vlarjun20",
+              "linkedin": "https://www.linkedin.com/in/arjun-vanameeganathan-lakshmi-63b820258/",
+              "portfolio": "https://arjunportfoli.vercel.app/",
+              "email": "vlarjun2022@gmail.com"
+            }
+          },
+          {
+            "name": "SANTHOSH G",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/Santhosh.webp",
+            "social": {
+              "github": "https://github.com/Sandysharpo",
+              "linkedin": "https://www.linkedin.com/in/santhosh-g-81aa75360/",
+              "portfolio": "",
+              "email": "santhoshsandy9840l@gmail.com"
+            }
+          },
+          {
+            "name": "Hari Prasath",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/hari.png",
+            "social": {
+              "github": "https://github.com/4274-hari",
+              "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "portfolio": "",
+              "email": "hari.velusmy@gmail.com"
+            }
+          },
+          {
+            "name": "Ajith",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "/pilot/ajith.png",
+            "social": {
+              "github": "https://github.com/Ajith-ajay",
+              "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
+              "portfolio": "https://myprotfoliostu.web.app/",
+              "email": "ajithajay1029@gmail.com"
+            }
           }
-        },
-        {
-          "name": "SIDDHARTH MAGESH",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/siddharth.png",
-          "social": {
-            "github": "https://github.com/Siddharth-magesh",
-            "linkedin": "https://www.linkedin.com/in/siddharth-magesh-76688a246/",
-            "portfolio": "https://github.com/Siddharth-magesh/Siddharth-magesh",
-            "email": "siddharthmagesh007@gmail.com"
-          }
-        },
-        {
-          "name": "PRANESH KUMAR V",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Pranesh.webp",
-          "social": {
-            "github": "https://github.com/PraneshPk2005",
-            "linkedin": "https://www.linkedin.com/in/pranesh-pk-362760250/",
-            "portfolio": "https://praneshpk-portfolio.vercel.app/",
-            "email": "praneshvaradharaj@gmail.com"
-          }
-        },
-        {
-          "name": "SRI HARI M",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/srihari.webp",
-          "social": {
-            "github": "https://github.com/SriHari22004",
-            "linkedin": "https://www.linkedin.com/in/sri-hari22/",
-            "portfolio": "",
-            "email": "srihari22004@gmail.com"
-          }
-        },
-        {
-          "name": "MOHAMED YASIR A",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Yasir.webp",
-          "social": {
-            "github": "https://github.com/mdyasir8055",
-            "linkedin": "https://www.linkedin.com/in/mdyasir8055",
-            "portfolio": "https://mdyasirportfolio.vercel.app/",
-            "email": "mdyasir8055@gmail.com"
-          }
-        },
-        {
-          "name": "VASANTHA RAJA S",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Vasanth.webp",
-          "social": {
-            "github": "https://github.com/Vasanth-Aids",
-            "linkedin": "https://linkedin.com/in/vasantharajas123",
-            "portfolio": "",
-            "email": "selvamvasath2005@gmail.com"
-          }
-        },
-        {
-          "name": "GOKULRAMANAN V",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Gokul.webp",
-          "social": {
-            "github": "https://github.com/Feininon",
-            "linkedin": "https://www.linkedin.com/in/gokul-v-568641257",
-            "portfolio": "",
-            "email": "gokulramananvec@gmail.com"
-          }
-        },
-        {
-          "name": "WAATSON J",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Watson.webp",
-          "social": {
-            "github": "https://github.com/WAATS0N",
-            "linkedin": "https://www.linkedin.com/in/waatson-j/",
-            "portfolio": "",
-            "email": "waatson.j@gmail.com"
-          }
-        },
-        {
-          "name": "SAI VIGNESH RAJ M",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Sai.webp",
-          "social": {
-            "github": "https://github.com/SaiVignesh45",
-            "linkedin": "http://linkedin.com/in/sai-vignesh-raj-ba5997253/",
-            "portfolio": "",
-            "email": "saivignesh1204@gmail.com"
-          }
-        },
-        {
-          "name": "KUMAR P",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/arjun.png",
-          "social": {
-            "github": "https://github.com/kumar7505",
-            "linkedin": "https://linkedin.com/in/kumar-p-75",
-            "portfolio": "",
-            "email": "kumarpers7@gmail.com"
-          }
-        },
-        {
-          "name": "SRI RAAM V H",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Sriram.webp",
-          "social": {
-            "github": "https://github.com/Sriraam29",
-            "linkedin": "https://linkedin.com/in/sri-raam-v-h",
-            "portfolio": "",
-            "email": "sriraamhari04@gmail.com"
-          }
-        },
-        {
-          "name": "ARJUN V L",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Arjun.webp",
-          "social": {
-            "github": "https://github.com/vlarjun20",
-            "linkedin": "https://www.linkedin.com/in/arjun-vanameeganathan-lakshmi-63b820258/",
-            "portfolio": "https://arjunportfoli.vercel.app/",
-            "email": "vlarjun2022@gmail.com"
-          }
-        },
-        {
-          "name": "SANTHOSH G",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/Santhosh.webp",
-          "social": {
-            "github": "https://github.com/Sandysharpo",
-            "linkedin": "https://www.linkedin.com/in/santhosh-g-81aa75360/",
-            "portfolio": "",
-            "email": "santhoshsandy9840l@gmail.com"
-          }
-        },
-        {
-          "name": "Hari Prasath",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/hari.png",
-          "social": {
-            "github": "https://github.com/4274-hari",
-            "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-            "portfolio": "",
-            "email": "hari.velusmy@gmail.com"
-          }
-        },
-        {
-          "name": "Ajith",
-          "year": "Third Year",
-          "department": "AI&DS",
-          "image": "/pilot/ajith.png",
-          "social": {
-            "github": "https://github.com/Ajith-ajay",
-            "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
-            "portfolio": "https://myprotfoliostu.web.app/",
-            "email": "ajithajay1029@gmail.com"
-          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "copilot",
+    "data": [
+      {
+        "category": "team_descripition",
+        "content": {
+          "message": "Hello everyone this is pilot team"
         }
-      ]
-    }
+      },
+      {
+        "category": "members",
+        "content": [
+          {
+            "name": "HARI PRASATH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "DINESH PRABAKERAN",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "KISAN",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "V CASH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "DEEPAK",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "VISHALL",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "SATHISH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "KIRUBA",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "DAKSHAN",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "PRAVEEN",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "SUDHAKAR",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          },
+          {
+            "name": "AJITH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "",
+              "linkedin": "",
+              "portfolio": "",
+              "email": ""
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
