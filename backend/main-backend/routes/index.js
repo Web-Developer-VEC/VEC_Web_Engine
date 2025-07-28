@@ -8,10 +8,7 @@ const administration = require('./administration_routes');
 const admission = require('./admission_routes');
 const exam = require('./exam_routes');
 const placement = require('./placement_routes');
-const announcement = require('./announcement_routes');
-const banner = require('./banner_routes');
 const department = require('./department_routes');
-const event = require('./event_routes');
 const extra_curricular_club = require('./extra_curricular_club_routes');
 const gallery = require('./gallery_routes');
 const grievance = require('./grievance_routes');
@@ -24,6 +21,7 @@ const staff_profile = require('./staff_profile_routes');
 const warden = require('./warden_routes');
 const web_team = require('./web_team_routes')
 const log = require('./log_routes')
+const feedback = require('./feedback_routes');
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -31,10 +29,7 @@ router.use('', administration);
 router.use('', admission);
 router.use('', exam);
 router.use('', placement);
-router.use('', announcement);
-router.use('', banner);
 router.use('', department);
-router.use('', event);
 router.use('', extra_curricular_club);
 router.use('', gallery);
 router.use('', grievance);
@@ -47,5 +42,6 @@ router.use('', staff_profile);
 router.use('', warden);
 router.use('', web_team);
 router.use('', log);
+router.use('', feedback);
 
 module.exports = router;
