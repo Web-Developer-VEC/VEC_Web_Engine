@@ -565,7 +565,7 @@ const IQAC = ({ toggle , theme }) => {
         <>
             <Banner
                 toggle={toggle} theme={theme}
-                backgroundImage="./Banners/IQAC.webp"
+                backgroundImage="./Banners/IQAC_Banner.webp"
                 headerText="IQAC"
                 subHeaderText="IQAC"
             />

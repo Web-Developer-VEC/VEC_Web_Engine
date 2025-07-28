@@ -274,8 +274,8 @@ const NCC_NAVY = ({ toggle, theme }) => {
       <Banner
         toggle={toggle}
         theme={theme}
-        backgroundImage="./Banners/Vid_banner/NCC_Video_Banner.mp4"
-        headerText="National Cadet Corps (NCC)"
+        backgroundImage="./Banners/Vid_banner/NCC_Navy_Banner.mp4"
+        headerText="National Cadet Corps (Navy)"
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
         isVideo={true}
       />
