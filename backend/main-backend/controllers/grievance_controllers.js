@@ -27,16 +27,18 @@ async function getGrievance (req, res)  {
         };
         await grevienceCollection.insertOne(grevienceData);
         const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
-                user: process.env.BASE_EMAIL,
-                pass: process.env.PASSWORD
+                user: process.env.GRIEVANCE_BASE_EMAIL,
+                pass: process.env.GRIEVANCE_EMAIL_PASSWORD
             }
         });
 
         const mailOptions = {
-            from: process.env.BASE_EMAIL,
-            to: process.env.TARGET_EMAIL,
+            from: process.env.GRIEVANCE_BASE_EMAIL,
+            to: process.env.GRIEVANCE_TARGET_EMAIL,
             subject: `New Grievance Submitted: ${category}`,
             text:
             `A new grievance has been submitted with the following details:

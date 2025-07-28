@@ -12,8 +12,11 @@ module.exports = function validateGrievance(req, res, next) {
     content,
   } = req.body;
 
-  // Helper: Check for NoSQL injection symbols
-  const hasNoSQLInjection = (value) => typeof value === 'string' && /[\$\.]/.test(value);
+  // Helper: General NoSQL injection check (for strings)
+  const hasNoSQLInjection = (value) =>
+    typeof value === 'string' && /[\$]/.test(value); // only $ is risky here
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // 1. Validate & sanitize name
   if (typeof name !== 'string' || hasNoSQLInjection(name) || name.trim().length < 2) {
@@ -22,8 +25,11 @@ module.exports = function validateGrievance(req, res, next) {
   req.body.name = sanitizeHtml(name.trim());
 
   // 2. Validate & sanitize email
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (typeof email !== 'string' || !emailPattern.test(email) || hasNoSQLInjection(email)) {
+  if (
+    typeof email !== 'string' ||
+    !emailPattern.test(email.trim()) ||
+    hasNoSQLInjection(email) // use the general one here as we fixed it
+  ) {
     return res.status(400).json({ error: 'Invalid email' });
   }
   req.body.email = sanitizeHtml(email.trim());
@@ -46,7 +52,7 @@ module.exports = function validateGrievance(req, res, next) {
     return res.status(400).json({ error: 'Invalid query_about value' });
   }
 
-  // 6. Captcha validation - just ensure they are strings and not malicious
+  // 6. Captcha validation
   if (
     typeof original_captcha !== 'string' ||
     typeof entered_captcha !== 'string' ||
