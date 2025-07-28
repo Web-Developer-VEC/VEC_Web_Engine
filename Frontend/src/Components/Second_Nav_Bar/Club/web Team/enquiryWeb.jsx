@@ -1,46 +1,44 @@
 import { useState } from "react";
 
 export default function EnquiryWeb() {
-  // State variables for form fields
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [err_page, setPage] = useState("");
+  const [err_sub, setErrSub] = useState("");
+  const [err_descrp, setErrDescrp] = useState("");
 
-  // Submit handler
+  // const errorDescriptions = {
+  //   page_load: "The page failed to load. Please check your network or try again later.",
+  //   form_submit: "Form submission failed. Ensure all fields are correctly filled.",
+  //   login_problem: "Trouble logging in. Please verify your credentials or reset your password.",
+  //   api_error: "API failed to fetch data. Possibly due to server downtime or configuration issues.",
+  //   js_error: "A JavaScript error prevented interaction. Try refreshing or checking browser console.",
+  //   page_error: "A general page error occurred. Please report this with additional info.",
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare data
     const enquiryData = {
-      fullName,
-      email,
-      phone,
-      message,
+     
+      err_page,
+      err_sub,
+      err_descrp,
     };
 
     console.log("Submitting enquiry:", enquiryData);
 
     try {
-      // Example POST API call
       const res = await fetch("/api/webTeamForm", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(enquiryData),
       });
 
       if (res.ok) {
-        // Handle success
         alert("Enquiry submitted successfully!");
-        // Optionally clear form
-        setFullName("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
+        setPage("");
+        setErrSub("");
+        setErrDescrp("");
       } else {
-        // Handle error
         alert("Failed to submit enquiry. Please try again later.");
       }
     } catch (error) {
@@ -56,54 +54,52 @@ export default function EnquiryWeb() {
           Enquiry Now
         </h2>
         <p className="text-center text-gray-600 mb-8">
-          Have a question or need more information about Velammal Engineering College?  
+          Have a question or need more information about the recent issue you faced?
           Fill out this form and our team will get back to you.
         </p>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
-          {/* Name */}
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="Enter your full name"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brwn transition-all"
-            />
-          </div>
+         
 
-          {/* Email */}
+          {/* Error Subject Dropdown */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+            <label className="block text-gray-700 font-semibold mb-2">Error Subject</label>
+            <select
+              value={err_sub}
+              onChange={(e) => setErrSub(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brwn transition-all"
-            />
-          </div>
-
-          {/* Phone */}
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Phone Number</label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter your phone number"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brwn transition-all"
-            />
+              required
+            >
+              <option value="">-- Select Error --</option>
+              <option value="page_load">Page didn’t load</option>
+              <option value="form_submit">Can’t submit a form</option>
+              <option value="login_problem">Login problem</option>
+              <option value="api_error">Something didn’t load (API error)</option>
+              <option value="js_error">Button or feature not working (JavaScript error)</option>
+            </select>
           </div>
 
 
-          {/* Message */}
+          {/* Textarea for Error Description */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2">Page Error Happened</label>
+          <input
+            type="text"
+            value={err_page}
+            onChange={(e) => setPage(e.target.value)}
+            placeholder="Type the error details here..."
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brwn transition-all"
+            required
+          />
+        </div>
+
+
+          {/* General Message */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">Your Message / Enquiry</label>
+            <label className="block text-gray-700 font-semibold mb-2">Error Description</label>
             <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={err_descrp}
+              onChange={(e) => setErrDescrp(e.target.value)}
               placeholder="Type your message here..."
               rows="4"
               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brwn transition-all"
