@@ -4,7 +4,7 @@ const createRateLimiter = require('../middlewares/ratelimiter');
 
 const xss = require('../middlewares/xss');
 
-const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
+const limiter = createRateLimiter({ max: 60, windowMs: 10 * 60 * 1000 });
 
 const router = express.Router();
 

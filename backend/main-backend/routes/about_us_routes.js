@@ -8,7 +8,7 @@ const nosql = require('../middlewares/sanitizers/nosql_injection');
 
 const router = express.Router();
 
-const limiter = createRateLimiter({ max: 20, windowMs:  60 * 1000 });
+const limiter = createRateLimiter({ max: 80, windowMs: 10* 60 * 1000 });
 
 router.post('/about_us', limiter, xss, nosql, getAboutUs);
 

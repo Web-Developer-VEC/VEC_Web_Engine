@@ -6,7 +6,7 @@ const sanitize = require('../middlewares/sanitizers/sanitize_grievance');
 const nosql = require('../middlewares/sanitizers/nosql_injection');
 
 
-const limiter = createRateLimiter({ max: 20, windowMs: 5 * 60 * 1000 });
+const limiter = createRateLimiter({ max: 20, windowMs: 10 * 60 * 1000 });
 
 const router = express();
 
