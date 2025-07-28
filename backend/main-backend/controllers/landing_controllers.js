@@ -1,15 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_TYPES = [
-  'page_details',
-  'banner',
-  'department_banner',
-  'notifications',
-  'announcements',
-  'special_announcements',
-  'events'
-];
+const ALLOWED_TYPES = require('../models/landing_models');
 
 async function getLandingpageData(req, res) {
   try {

@@ -1,14 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const allowedSections = new Set([
-  'about_vec',
-  'about_trust',
-  'vision_and_mission',
-  'Management',
-  'contact_us'
-]);
-
+const allowedSections = require('../models/about_us_models');
 // POST /about_us - Fetch a specific section from About Us
 async function getAboutUs(req, res) {
   const { section } = req.body;

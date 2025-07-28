@@ -1,12 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_PLACEMENT_TYPES = [
-  'about_placement',
-  'placement_team',
-  'placement_details',
-  'alumini'
-];
+const ALLOWED_PLACEMENT_TYPES = require('../models/placement_models');
 
 async function getPlacementsSection(req, res) {
   try {

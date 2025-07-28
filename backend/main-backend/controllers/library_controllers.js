@@ -1,18 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_TYPES = [
-  'about_the_library',
-  'HOD',
-  'Faculty_Staff',
-  'advisors',
-  'membership_details',
-  'Collection',
-  'library_services',
-  'digital_libraries',
-  'library_resources',
-  'Ebook_Sources'
-];
+const ALLOWED_TYPES = require('../models/library_models');
 
 async function getLibrarySection(req, res) {
   try {

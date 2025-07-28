@@ -1,13 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-
-const ALLOWED_TYPES = [
-  'ug',
-  'pg',
-  'mba',
-  'admission_team',
-  'phd'
-];
+const ALLOWED_TYPES = require("../models/admission_models");
 
 async function getAdmissionsSection(req, res) {
   try {
