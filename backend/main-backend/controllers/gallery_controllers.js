@@ -1,23 +1,42 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getGalleryData (req, res) {
-    const db = getDb()
+const ALLOWED_TYPES = [
+  'gallery'
+];
+
+async function getGalleryData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!ALLOWED_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid admissions section` });
+    }
+
+    const db = getDb();
     const collection = db.collection('gallery');
 
-    try {
-        const galleryData = await collection.find({}).toArray();
-        if (galleryData.length === 0) {
-            return res.status(404).json({ message: 'No gallery data found' });
-        }   
-        res.status(200).json(galleryData);
-    } catch (error) {
-        console.error('Error fetching gallery data:', error);
-        await logError(req, error, 'Error fetching gallery Data', 500);
-        res.status(500).json({ error: 'Error fetching gallery data' });
-    }
-}
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
 
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
+  } catch (error) {
+    console.error('Error fetching gallery section:', error);
+    await logError(req, error, 'Error fetching gallery section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 module.exports = {
     getGalleryData
 }

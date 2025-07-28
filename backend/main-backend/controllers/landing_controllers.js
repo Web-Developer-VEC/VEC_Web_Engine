@@ -1,28 +1,46 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 
-async function getLandingpageData (req, res) {
-  try {
-    const db = getDb();
-    const config = await db.collection('landing_page_details').findOne({});
+const ALLOWED_TYPES = [
+  'page_details',
+  'banner',
+  'department_banner',
+  'notifications',
+  'announcements',
+  'special_announcements',
+  'events'
+];
 
-    if (!config) {
-      return res.status(404).json({ error: 'Landing page data not found' });
+async function getLandingpageData(req, res) {
+  try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
     }
 
-    const { _id, notifications = [], ...rest } = config;
-    const activeNotifications = notifications.filter(n => n.status === 'active');
+    if (!ALLOWED_TYPES.includes(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid admissions section` });
+    }
 
-    const cleanedConfig = {
-      ...rest,
-      notifications: activeNotifications
-    };
+    const db = getDb();
+    const collection = db.collection('landing_page_details');
 
-    res.json(cleanedConfig);
+    const document = await collection.findOne(
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
+    );
+
+    if (!document) {
+      return res.status(404).json({ message: `Section '${type}' not found` });
+    }
+
+    return res.status(200).json(document);
+
   } catch (error) {
-    console.error('Error fetching landing page data:', error);
-    await logError(req, error, 'Error in landing data', 500);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error fetching landing page section:', error);
+    await logError(req, error, 'Error fetching landing page section', 500);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 

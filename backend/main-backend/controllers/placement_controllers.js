@@ -25,20 +25,19 @@ async function getPlacementsSection(req, res) {
 
     const projection = { _id: 0, type: 1, data: 1 };
 
-    // Fetch main placement document
     const mainDoc = await collection.findOne({ type }, { projection });
 
     if (!mainDoc) {
       return res.status(404).json({ message: `Section '${type}' not found` });
     }
 
-    // If alumini, attach special_announcement from a separate collection
     if (type === 'alumini') {
-      const specialAnnouncementCollection = db.collection('special_announcement');
+      const specialAnnouncementCollection = db.collection('landing_page_details');
+      const type = 'special_announcements';
 
       const specialAnnouncement = await specialAnnouncementCollection.findOne(
-        {},
-        { projection: { _id: 0 } }  // Include everything except _id
+        { type },
+        { projection: { _id: 0, data: 1 } }
       );
 
       if (specialAnnouncement) {

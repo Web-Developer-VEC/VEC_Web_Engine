@@ -7,15 +7,18 @@ const allowedTypes = new Set([
   'departments_list'
 ]);
 
-// POST /academics - fetch specific academic data
 async function getAcademicsData(req, res) {
-  const { type } = req.body;
-
-  if (!type || !allowedTypes.has(type)) {
-    return res.status(400).json({ message: 'Invalid or missing academic data type' });
-  }
-
   try {
+    const { type } = req.body;
+
+    if (!type || typeof type !== 'string') {
+      return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
+    }
+
+    if (!allowedTypes.has(type)) {
+      return res.status(400).json({ error: `"${type}" is not a valid admissions section` });
+    }
+
     const db = getDb();
     const collection = db.collection('academics');
 
@@ -25,17 +28,14 @@ async function getAcademicsData(req, res) {
     );
 
     if (!document) {
-      return res.status(404).json({ message: `Academic data for '${type}' not found` });
+      return res.status(404).json({ message: `Section '${type}' not found` });
     }
 
-    return res.status(200).json({
-      message: `${type} data fetched successfully`,
-      data: document
-    });
+    return res.status(200).json(document);
 
   } catch (error) {
-    console.error(`Error fetching academic data for type '${req.body.type}':`, error);
-    await logError(req, error, `Error fetching academic data for type '${req.body.type}'`, 500);
+    console.error('Error fetching academics section:', error);
+    await logError(req, error, 'Error fetching academics section', 500);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }

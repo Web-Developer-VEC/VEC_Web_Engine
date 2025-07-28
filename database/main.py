@@ -789,6 +789,40 @@ def insert_other_facilities_sections():
 
     print("other facilities sections inserted successfully.")
 
+def insert_gallery_sections():
+    collection = db["gallery"]
+
+    with open("/VEC_WEB_Engine/docs/gallery.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("gallery sections inserted successfully.")
+
+def insert_academics_sections():
+    collection = db["academics"]
+
+    with open("/VEC_WEB_Engine/docs/academics.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("academics sections inserted successfully.")
+
+insert_academics_sections()
+insert_gallery_sections()
 insert_other_facilities_sections()
 insert_transport_sections()
 insert_ecell_sections()
@@ -946,10 +980,6 @@ def insert_library_sections():
     print("library sections inserted successfully.")
 
 
-
-
-
-
 def insert_department_research_data():
     collection = db['research_data']
     
@@ -1018,50 +1048,6 @@ def insert_administration_sections():
             collection.insert_one(document)
 
     print("Administration sections inserted successfully.")
-
-def insert_landing_page_details():
-
-    collection = db['landing_page_details']  
-    with open("/VEC_WEB_Engine/docs/landing_page_details.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("insert_landing_page_details documents inserted successfully.\n")
-
-def insert_academic_calendar():
-    collection = db['academics']
-    with open("/VEC_WEB_Engine/docs/academic_calender.json", "r", encoding="utf-8") as file:
-        calendar_data = json.load(file)
-        document = {
-            "type": "academic_calendar",
-            "data": calendar_data
-        }
-        collection.insert_one(document)
-    print("Academic calendar inserted successfully.")
-
-
-def insert_programmes_list():
-    collection = db['academics']
-    with open("/VEC_WEB_Engine/docs/programmes_list.json", "r", encoding="utf-8") as file:
-        programmes_data = json.load(file)
-        document = {
-            "type": "programmes_list",
-            "data": programmes_data
-        }
-        collection.insert_one(document)
-    print("Programmes list inserted successfully.")
-
-
-def insert_departments_list():
-    collection = db['academics']
-    with open("/VEC_WEB_Engine/docs/departments_list.json", "r", encoding="utf-8") as file:
-        departments_data = json.load(file)
-        document = {
-            "type": "departments_list",
-            "data": departments_data
-        }
-        collection.insert_one(document)
-    print("Departments list inserted successfully.")
 
 def insert_gallery():
     collection = db["gallery"]   
@@ -1196,6 +1182,23 @@ def insert_yrc_sections():
 
     print("yrc sections inserted successfully.")
 
+def insert_landing_page_sections():
+    collection = db["landing_page_details"]
+
+    with open("/VEC_WEB_Engine/docs/landing_page_details.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("landing page sections inserted successfully.")
+
+insert_landing_page_sections()
 insert_sports_sections()
 insert_nss_sections()
 insert_ncc_navy_sections()
@@ -1205,15 +1208,11 @@ insert_transport_sections()
 insert_yrc_sections()
 insert_administration_sections()
 insert_library_sections()
-insert_department_research_data()
+#insert_department_research_data()
 insert_warden_hostel_data()
 insert_incubations_sections()
-insert_academic_calendar()
 insert_about_us()
 insert_help_desk()
-insert_landing_page_details()
-insert_programmes_list()
-insert_departments_list()
 insert_gallery()
 create_logs_collection()
 insert_web_team()
