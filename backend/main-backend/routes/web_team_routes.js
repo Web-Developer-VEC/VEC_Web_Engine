@@ -8,5 +8,5 @@ const limiter = createRateLimiter({ max: 60, windowMs: 10 * 60 * 1000 });
 
 const router = express.Router();
 
-router.get('/web_team', limiter, xss, getWebTeamData);
+router.post('/web_team', limiter, xss, getWebTeamData);
 module.exports = router

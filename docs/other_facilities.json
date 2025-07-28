@@ -3,11 +3,13 @@
     "type": "other_facilities",
     "data": [
       {
+        "title": "Anna Auditorium",
         "name": "Anna Auditorium",
         "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
         "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
       },
       {
+        "title": "Seminar Halls",
         "name": [
           "Vivekananda Hall",
           "Placement Seminar Hall",
@@ -28,6 +30,7 @@
         ]
       },
       {
+        "title": "On-Campus Medical Facility",
         "name": "On-Campus Medical Facility",
         "description": "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
         "image_path": [
@@ -39,6 +42,7 @@
         ]
       },
       {
+        "title": "Reprographic facility",
         "name": "Reprographic facility",
         "description": "The college has reprographic facility available for students which functions from 8:30 AM to 6:00 PM. It is located opposite to BILL GATES BLOCK in the Velammal Engineering College.",
         "image_path": [
@@ -47,6 +51,7 @@
         ]
       },
       {
+        "title": "Store",
         "name": "Store",
         "description": "A well-stocked store providing essential academic supplies, stationery, and other student requirements.",
         "image_path": [
@@ -55,6 +60,7 @@
         ]
       },
       {
+        "title": "Sewage Treatment Plant",
         "name": "Sewage Treatment Plant",
         "description": "The Sewage Treatment Plant is designed for a capacity of 2,00,000 LITRES/DAYTreatment Scheme for the Existing Plant The plant operates 24x7 with regular maintenance, utilizing a three-stage treatment process: Primary Treatment: Bar screening and sedimentation in a Primary Clarifier. Secondary Treatment: Activated Sludge Process with four aeration tanks and a circular clarifier. Tertiary Treatment: Final polishing using Sand & Activated Carbon Filters for removing solids, color, and odor.Additionally, the plant includes sludge drying beds and treated water storage for efficient waste management.",
         "image_path": [
@@ -64,6 +70,7 @@
         ]
       },
       {
+        "title": "RO (Reverse Osmosis)",
         "name": "RO (Reverse Osmosis)",
         "description": "The RO plant in the campus is designed for a Capacity of 5000L/hr. The treated water is pumped using the Pneumatic pumping system and distributed for drinking purpose in the campus. Regular maintenance of the plant is done and water tested to confirm that the quality meets BIS ( IS 10500:2012) standards.",
         "image_path": [
@@ -72,6 +79,7 @@
         ]
       },
       {
+        "title": "Solar Power",
         "name": "Solar Power",
         "description": "Based on the various measures taken by both state and central Govt policies as a promotional measure of enhancing the installed capacity of the Solar Power plants across T.N. M/s. Velammal Educational trust established a 10 MW Solar P.N power plant at Manjalkudi Village TiruppuvanamTaluk, Sivagangai District. The plant was commissioned on 19.03.2019",
         "image_path": [
@@ -80,6 +88,7 @@
         ]
       },
       {
+        "title": "Student Counseling Services",
         "name": "Student Counseling Services",
         "description": "Our college provides a full-time qualified Student Counselor to support students' academic, emotional, and personal well-being, ensuring a healthy and positive learning environment.",
         "image_path": [
@@ -88,6 +97,7 @@
         ]
       },
       {
+        "title": "Transport",
         "name": "Transport",
         "description": "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
         "image_path": [
@@ -99,6 +109,7 @@
         ]
       },
       {
+        "title": "High-Speed Internet Facility",
         "name": "High-Speed Internet Facility",
         "description": "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
         "image_path": [
@@ -109,16 +120,19 @@
         ]
       },
       {
+        "title": "Group Insurance Policy",
         "name": "Group Insurance Policy",
         "description": "Our institution provides a comprehensive Group Insurance Policy through United India Insurance covering:Teaching & Non-Teaching Staff: 433 members Students: 3,522 members This initiative ensures financial security and support for our faculty, staff, and students.",
         "image_path": "/static/images/other_facilities/Group Insurance Policy/RSA 1.webp"
       },
       {
+        "title": "Faculty Accommodation",
         "name": "Faculty Accommodation",
         "description": "Velammal Engineering College has faculty quarters with 16 single-bedroom houses and 16 two-bedroom houses, providing comfortable and convenient housing for faculty members. Thesequarters are well-maintained and provide a peaceful comfortable living environment, allowing faculty to reside on campus while focusing on their job. The setup allows faculty to easily access the college's resources and engage in campus events.",
         "image_path": "/static/images/other_facilities/Faculty Accomodation/Faculty Accomodation 1.webp"
       },
       {
+        "title": "Spacious Food Canteen",
         "name": "Spacious Food Canteen",
         "description": "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
         "image_path": [
@@ -128,6 +142,7 @@
         ]
       },
       {
+        "title": "Fire Extinguisher",
         "name": "Fire Extinguisher",
         "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
         "image_path": [
@@ -140,6 +155,7 @@
         ]
       },
       {
+        "title": "Power Backup",
         "name": "Power Backup",
         "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
         "image_path": [
@@ -152,6 +168,7 @@
         ]
       },
       {
+        "title": "Surveillance & Security",
         "name": "Surveillance & Security",
         "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
         "image_path": [
@@ -164,6 +181,7 @@
         ]
       },
       {
+        "title": "Gym Facility",
         "name": "Gym Facility",
         "description": "Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff.",
         "image_path": [
@@ -173,6 +191,7 @@
         ]
       },
       {
+        "title": "Temple",
         "name": "Temple",
         "description": "Our college features a modern Velmurugan temple to provide better lifestyle for students and staff.",
         "image_path": "/static/images/other_facilities/Temple/Temple.webp"
