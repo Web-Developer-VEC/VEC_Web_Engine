@@ -63,7 +63,7 @@ const LibraryIntro = ({about}) => {
               {/* Text Content */}
               <div
                   className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn dark:text-drkt font-extrabold">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl text-brwn dark:text-drkt font-extrabold">
                         ABOUT THE LIBRARY
                     </h1>
 
