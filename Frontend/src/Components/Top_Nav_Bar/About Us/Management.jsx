@@ -13,9 +13,13 @@ function Management({ theme, toggle }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responce = await axios.get('/api/about_us');
-                const data = responce.data[0];
-                setAbtsUcData(data.Management)
+                const responce = await axios.post('/api/main-backend/about_us',
+                  {
+                    section: "Management"
+                  }
+                );
+                const data = responce.data.data.content;
+                setAbtsUcData(data)
             } catch (error) {
                 console.error("Error fetching about us data",error);
             }
@@ -77,8 +81,8 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[0])} alt="Founder's Image" className="founder"/>
                   <div className="flex justify-center items-center flex-col mt-2">
-                    <p className="font-bold">Shri. M.V. MUTHURAMALINGAM</p>
-                    <p className="text-brwn dark:text-drka">Chairman</p>
+                    <p className="font-bold">{AbtUsData?.name[0]}</p>
+                    <p className="text-brwn dark:text-drka">{AbtUsData?.designation[0]}</p>
                   </div>
               </div>
             </div>
@@ -93,8 +97,8 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container1">
                 <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
                   <div className="flex justify-center items-center flex-col mt-2">
-                    <p className="font-bold">Shri. M.V.M. VELMURUGAN</p>
-                    <p className="text-brwn dark:text-drka">Chief Executive Officer</p>
+                    <p className="font-bold">{AbtUsData?.name[1]}</p>
+                    <p className="text-brwn dark:text-drka">{AbtUsData?.designation[1]}</p>
                   </div>
               </div>
 
@@ -121,8 +125,8 @@ function Management({ theme, toggle }) {
               <div className="FCP-image-container">
                 <img src={UrlParser(AbtUsData?.image_path[2])} alt="deputy ceo Image" />
                 <div className="flex justify-center items-center flex-col mt-2">
-                  <p className="font-bold">Shri. V. KARTHIK MUTHURAMALINGAM</p>
-                  <p className="text-brwn dark:text-drka">Deputy CEO</p>
+                  <p className="font-bold">{AbtUsData?.name[2]}</p>
+                  <p className="text-brwn dark:text-drka">{AbtUsData?.designation[2]}</p>
                 </div>
               </div>
             </div>

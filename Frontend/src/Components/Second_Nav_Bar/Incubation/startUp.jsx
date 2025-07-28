@@ -23,16 +23,20 @@ export default function Startup({data}) {
                             </tr>
                             </thead>
                             <tbody>
-                            {data?.map((startup,i) => (
-                                <tr key={startup.slNo}>
+                            {Array.isArray(data) && data?.map((startup,i) => (
+                                <tr key={i}>
                                     <td className="ic-table-data">{startup.s_no}</td>
                                     <td className="ic-table-data">{startup.start_up_name}</td>
                                     <td className="ic-table-data">
                                         <ul>
-                                    {startup.directors.map((dir,i) => (
-                                        <li>{dir}</li>
-                                    ))}
-                                    </ul>
+                                            {Array.isArray(startup.directors) && startup.directors.length > 0 ? (
+                                            startup.directors.map((dir, i) => (
+                                                <li key={i}>{dir}</li>
+                                            ))
+                                            ) : (
+                                            <li>-</li>
+                                            )}
+                                        </ul>
                                     </td>
                                     {startup.type ? (
                                         <td className="ic-table-data">{startup.type}</td>

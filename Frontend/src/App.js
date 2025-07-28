@@ -93,6 +93,7 @@ import axios from 'axios';
 import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
+import LoadComp from "./Components/LoadComp.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -140,9 +141,13 @@ const App = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responce = await axios.get('/api/landing_page_data');
+                const responce = await axios.post('/api/main-backend/landing_page_data',
+                    {
+                        type: "page_details"
+                    }
+                );
     
-                setLandingData(responce.data);
+                setLandingData(responce.data.data[0]);
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
@@ -189,6 +194,14 @@ const App = () => {
     useEffect(() => {
         setCurrentPath(location.pathname); // Update state when route changes
     }, [location]);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
 
     const isHostelRoute = currentPath.startsWith("/hostel")
 
@@ -288,7 +301,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData?.data?.[0]}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />

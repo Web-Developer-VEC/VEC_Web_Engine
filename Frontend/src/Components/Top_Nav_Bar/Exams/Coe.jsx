@@ -15,8 +15,12 @@ const Coe = ({ toggle, theme }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/coe');
-        const data = response.data;
+        const response = await axios.post('/api/main-backend/exam',
+          {
+            type: "COE"
+          }
+        );
+        const data = response.data.data;
         setCoeData(data);
       } catch (error) {
         console.error("Error fetching coe data", error);

@@ -19,9 +19,13 @@ const REGULATION = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/regulation');
+        const response = await axios.post('/api/main-backend/exam',
+          {
+            type: "regulation"
+          }
+        );
 
-        setRegulationData(response.data);
+        setRegulationData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error Fetching Regulation data");
