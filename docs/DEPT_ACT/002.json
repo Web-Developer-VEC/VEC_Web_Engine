@@ -55,7 +55,7 @@
         "resource_person": "Mr.Narendaran,Lead Engineering,Bosch Global Software Solution.",
         "beneficiaries": "2nd & 3rd Year students from AME",
         "relevant_PO_PSO": "PO5, PO7, PO8, PO9, PO12 & PSO1",
-        "image_path":["/static/images/dept_activities/002/6.1.web"]
+        "image_path":["/static/images/dept_activities/002/6.1.webp"]
     },
     {
         "date": "23.3.2024",
@@ -83,24 +83,6 @@
         "beneficiaries": "External participants",
         "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
         "image_path":["/static/images/dept_activities/002/9.1.webp"]
-    },
-    {
-        "date": "14.03.2018",
-        "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2018 (Sponsored by BRNS, Bombay)",
-        "coordinator": "Dr.V.Chandran",
-        "resource_person": "Mr.C.Prakash General Manager  2013 Product Development Ashok Leyland, Ennore Dr.K.S.Sridharan Deputy Chief Mechanical Engineer (Retired)Integral Coach Factory, Chennai",
-        "beneficiaries": "External participants",
-        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-        "image_path":[""]
-    },
-    {
-        "date": "10.02.2018",
-        "name_of_event": "Symposium 2018 XLR 8",
-        "coordinator": "Mr.S.Stanly Wilson Louis",
-        "resource_person": "NA",
-        "beneficiaries": "External participants",
-        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-        "image_path":[""]
     },
     {
         "date": "10.02.2018",
@@ -146,15 +128,6 @@
         "beneficiaries": "External participants",
         "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
         "image_path":["/static/images/dept_activities/002/17.1.webp","/static/images/dept_activities/002/17.2.webp"]
-    },
-    {
-        "date": "18.03.2016",
-        "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2016 Sponsored by BRNS, Bombay",
-        "coordinator": "Dr.D.Balaji",
-        "resource_person": "Dr. B.Arivazhagan Scientific Officer  2013E, Materials Technology DivisionIGCAR, Kalpakkam Dr.Anand Gurupatham Senior Manager, Renault Nissan Technology & Business center, Chennai, India",
-        "beneficiaries": "External participants",
-        "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-        "image_path":[""]
     },
     {
         "date": "23.09.2015",
