@@ -21,6 +21,7 @@ const staff_profile = require('./staff_profile_routes');
 const warden = require('./warden_routes');
 const web_team = require('./web_team_routes')
 const log = require('./log_routes')
+const feedback = require('./feedback_routes');
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -41,5 +42,6 @@ router.use('', staff_profile);
 router.use('', warden);
 router.use('', web_team);
 router.use('', log);
+router.use('', feedback);
 
 module.exports = router;
