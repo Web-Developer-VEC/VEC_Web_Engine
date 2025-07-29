@@ -34,7 +34,6 @@ const Transport = ({ theme, toggle }) => {
             ) 
             settransportData(response.data.data);
             setLoading(false)
-            console.log(response.data);
           }  catch (error) {
                     console.error("Error fetching data:", error.message)
                     setLoading(false)

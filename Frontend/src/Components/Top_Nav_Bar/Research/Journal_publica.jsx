@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
-import axios from 'axios'
+import axios from "axios";
 
-export default function Consultancy({ theme, toggle }) {
-  const [acadamicRes,setAcadamicRes] = useState(null);
+
+export default function Journal({ theme, toggle }) {
+  const [journal,setJournal] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
@@ -17,21 +18,20 @@ export default function Consultancy({ theme, toggle }) {
       try {
         const response = await axios.post('/api/main-backend/research',
           {
-            type: "Consultancy"
+            type: "Journal Publication"
           }
         )
 
         const data = response.data.data;
 
-        setAcadamicRes(data)
-        
+        setJournal(data);
       } catch (error) {
-        console.error('Error fetching Academic research data',error)
+        console.error("Error fetchong Data",error);
       }
     }
-
-    fetchData()
+    fetchData();
   }, [])
+
 
   return (
     <>
@@ -45,12 +45,12 @@ export default function Consultancy({ theme, toggle }) {
 
    
         <div className="">
-          <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-            Consultancy
+          <h1 className="research-academicresearch-title text-4xl  text-brwn dark:text-drkt dark:border-drks">
+            Journal Publications 
           </h1>
 
           <div className="course-selection-container p-12">
-            {acadamicRes?.map((course) => (
+            {journal?.map((course) => (
             
                  <div
                    
@@ -62,7 +62,7 @@ export default function Consultancy({ theme, toggle }) {
                       }
                     }}
                   >
-                   {course.year}
+                   {course?.year}
                   </div>
           
             ))}

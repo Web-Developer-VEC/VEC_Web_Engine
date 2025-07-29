@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
-import axios from 'axios'
+import axios from "axios";
 
-export default function Consultancy({ theme, toggle }) {
-  const [acadamicRes,setAcadamicRes] = useState(null);
+export default function BookChapter({ theme, toggle }) {
+  const [bookChapter, setBookChapter] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
@@ -17,20 +17,18 @@ export default function Consultancy({ theme, toggle }) {
       try {
         const response = await axios.post('/api/main-backend/research',
           {
-            type: "Consultancy"
+            type: "Books and Book chapters"
           }
         )
 
         const data = response.data.data;
 
-        setAcadamicRes(data)
-        
+        setBookChapter(data)
       } catch (error) {
-        console.error('Error fetching Academic research data',error)
+        console.error('Error fetching Books data',error);
       }
     }
-
-    fetchData()
+    fetchData();
   }, [])
 
   return (
@@ -43,14 +41,13 @@ export default function Consultancy({ theme, toggle }) {
         subHeaderText="Enrich Your Knowledge"
       />
 
-   
         <div className="">
           <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-            Consultancy
+           Books and Book chapters
           </h1>
 
           <div className="course-selection-container p-12">
-            {acadamicRes?.map((course) => (
+            {bookChapter?.map((course) => (
             
                  <div
                    
@@ -62,13 +59,13 @@ export default function Consultancy({ theme, toggle }) {
                       }
                     }}
                   >
-                   {course.year}
+                   {course?.year}
                   </div>
           
             ))}
           </div>
         </div>
-  
+
     </>
   );
 }

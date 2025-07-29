@@ -58,7 +58,6 @@ const AcademicDepartments = ({ theme , toggle }) => {
           }
         );
         const data = responce.data.data;
-        console.log(data);
         
         setDepartments(data)
         

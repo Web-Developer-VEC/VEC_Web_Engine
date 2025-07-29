@@ -20,10 +20,6 @@ const Alumni = ({ theme, toggle }) => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
   const [alumniData, setAlumniData] = useState(null);
-  console.log("Alumini",alumniData);
-  console.log("Ann",spcannouncements);
-  
-  
   
   const content = spcannouncements?.list_of_contents || [];
   const links = spcannouncements?.list_of_links || [];
