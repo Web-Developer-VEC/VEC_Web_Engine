@@ -21,10 +21,14 @@ const Princ = ({theme, toggle}) => {
     // Fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/principal');
+        const response = await axios.post('/api/main-backend/administration',
+          {
+            type: "principal"
+          }
+        );
 
-        const result = response.data
-        setData(result.principal);
+        const result = response.data.data
+        setData(result);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -111,7 +115,7 @@ const Princ = ({theme, toggle}) => {
               </div>
              
             </div>
-<br />
+            <br />
             {/* Text Content Wrapped Around */}
             <div className="text-justify leading-relaxed max-w-[95%] lg:max-w-[60%] mx-auto">
               <p className=" princ-tex text-lg lg:text-[24px] font-[poppins] font-bold mb-3 mt-2 text-brwn dark:text-prim inline-block border-b-2 border-[#FDCC03] dark:border-drks pb-1">

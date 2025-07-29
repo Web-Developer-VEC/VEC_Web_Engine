@@ -15,145 +15,206 @@ import IicFacCertificate from "./certificates";
 import IicFacnir from "./nir";
 
 
-function IicHome({data}) {
+function IicHome({ data }) {
+  if (!Array.isArray(data) || data.length === 0 || !data[0]?.about_iic) {
     return (
-        <>
-            {data ? (
-                <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
-                    <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
-                    <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">About IIC</h2>
-                    <p className="text-text dark:text-drkt">
-                    {data?.aboutiic[0]}
-                        <br/>
-                        {data?.aboutiic[1]}
-                    </p>
-                </div>
-            ): (
-                <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-                    <LoadComp />
-                </div>
-            )}
-        </>
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
     );
+  }
+
+  const aboutArray = data[0]?.about_iic || [];
+
+  return (
+    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+      <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
+      <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
+        About IIC
+      </h2>
+      <div className="text-text dark:text-drkt">
+        {aboutArray?.map((paragraph, index) => (
+          <p key={index} className="mb-2">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
 }
 
+const getCategory = (dataArray, categoryName) => {
+  return dataArray.find(item => item.category === categoryName)?.content || [];
+};
 
-function IicEst({data}) {
+
+function IicEst({ data }) {
+  if (!Array.isArray(data) || data.length === 0) {
     return (
-        <>
-            {data ? (
-                <div className="about-section">
-                    <div><h1 className="text-brwn dark:text-drkt text-4xl font-bold text-center">Establishment of IIC</h1></div>
-
-                    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
-                        <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Major Focus of IIC</h2>
-                        <p>
-                            <br/>• {data?.majorfocus[0]}
-                            <br/>• {data?.majorfocus[1]}
-                            <br/>• {data?.majorfocus[2]}
-                            <br/>
-                        </p>
-                    </div>
-
-                <div className="flex flex-col lg:flex-row justify-between gap-6">
-                        {/* Left Panel */}
-                        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-                            <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
-                            <p>
-                            {data?.vission[0]}
-                            </p>
-                        </div>
-
-                        {/* Right Panel */}
-                        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-                            <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">Mission</h2>
-                            <p>
-                                {data?.mission[0]}
-                            </p>
-                        </div>
-                    </div>
-                    <div>
-                        <IicEco data={data?.function}/>
-                    </div>
-                </div>
-            ) : (
-                <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-                    <LoadComp />
-                </div>
-            )}
-        </>
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
     );
+  }
+
+  // get content dynamically by category
+  const majorFocus = getCategory(data, "majorfocus");
+  const vision = getCategory(data, "vision");
+  const mission = getCategory(data, "mission");
+  const functions = getCategory(data, "function");
+
+  return (
+    <div className="about-section">
+      <div>
+        <h1 className="text-brwn dark:text-drkt text-4xl font-bold text-center">
+          Establishment of IIC
+        </h1>
+      </div>
+
+      <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+        <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
+          Major Focus of IIC
+        </h2>
+        <p>
+          {majorFocus.map((point, i) => (
+            <span key={i}>
+              <br />• {point}
+            </span>
+          ))}
+        </p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row justify-between gap-6">
+        {/* Vision */}
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
+          <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
+            Vision
+          </h2>
+          <p>{vision[0]}</p>
+        </div>
+
+        {/* Mission */}
+        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
+          <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">
+            Mission
+          </h2>
+          <p>{mission[0]}</p>
+        </div>
+      </div>
+
+      {/* I&E Ecosystem */}
+      <div>
+        <IicEco data={functions} />
+      </div>
+    </div>
+  );
 }
 
-function IicEco({data}) {
+function IicEco({ data }) {
+  if (!Array.isArray(data) || data.length === 0) {
     return (
-        <>
-            {data ? (
-                <div className="mb-10">
-                    <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
-                        <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
-                        <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
-                        <p>
-                            <br/>• {data[0]}
-                            <br/>• {data[1]}
-                            <br/>• {data[2]}
-                            <br/>• {data[3]}
-                            <br/>• {data[4]}
-                            <br/>• {data[5]}
-                            <br/>
-                        </p>
-                    </div>
-                </div>
-            ) : (
-                <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-                    <LoadComp />
-                </div>
-            )}
-        </>
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
     );
+  }
+
+  return (
+    <div className="mb-10">
+      <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+        <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
+        <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
+        <p>
+          {data?.map((point, i) => (
+            <span key={i}>
+              <br />• {point}
+            </span>
+          ))}
+        </p>
+      </div>
+    </div>
+  );
 }
+
 
 const Iic = ({toggle, theme}) => {
     const [iicData, setIicData] = useState(null)
     const navData = {
-        "Home": <IicHome data={iicData?.home}/>,
-        "Establishment of IIC": <IicEst data={iicData?.establishment}/>,
+        "Home": <IicHome data={iicData}/>,
+        "Establishment of IIC": <IicEst data={iicData}/>,
         "Council": {
-            "Faculty": <IICFaculty data={iicData?.Council.Faculty}/>,  
-            "Expert Representation": <IICExpert data={iicData?.Council.Expert_Representation}/>,    
-            "Student Representation": <IICStudent data={iicData?.Council.Student_Representation}/>   
+            "Faculty": <IICFaculty data={iicData}/>,  
+            "Expert Representation": <IICExpert data={iicData}/>,    
+            "Student Representation": <IICStudent data={iicData}/>   
         },
 
         "Event Organized": {
-            "IIC 3.0": <IicFacEvent title={"IIC 3.0"} data={iicData?.Events["IIC 0.3"]}/>,  
-            "IIC 4.0": <IicFacEvent title={"IIC 4.0"} data={iicData?.Events["IIC 0.4"]}/>,  
-            "IIC 5.0": <IicFacEvent title={"IIC 5.0"} data={iicData?.Events["IIC 0.5"]}/>,
-            'IIC 6.0': <IicFacEvent title={"IIC 6.0"} data={iicData?.Events["IIC 0.6"]}/>,
-            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData?.Events["IIC 0.7"]}/>
+            "IIC 3.0": <IicFacEvent title={"IIC 3.0"} data={iicData}/>,  
+            "IIC 4.0": <IicFacEvent title={"IIC 4.0"} data={iicData}/>,  
+            "IIC 5.0": <IicFacEvent title={"IIC 5.0"} data={iicData}/>,
+            'IIC 6.0': <IicFacEvent title={"IIC 6.0"} data={iicData}/>,
+            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData}/>
         },
-        "Kapila": <KamalaBar data={iicData?.kapila_bar} />, 
-        "Mentee Institution ":   <IICMentee data={iicData?.mentee}/>,
-        "Yukti" : <IicFacnir data={iicData?.yukti}/>,
-        "Certificate":<IicFacCertificate data={iicData?.certificate}/>,
-        "Policy" : <IicFacPolicy data={iicData?.policy}/>,
-        "Contact": <IICContact data={iicData?.contact}/>, 
+        "Kapila": <KamalaBar data={iicData} />, 
+        "Mentee Institution ":   <IICMentee data={iicData}/>,
+        "Yukti" : <IicFacnir data={iicData}/>,
+        "Certificate":<IicFacCertificate data={iicData}/>,
+        "Policy" : <IicFacPolicy data={iicData}/>,
+        "Contact": <IICContact data={iicData}/>, 
     }   
     const [iic, setIic] = useState(Object.keys(navData)[0]);
     const [isLoading, setLoading] = useState(true)
+    console.log(iic);
+    
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`/api/iic`)
-                setIicData(response.data)
-                setLoading(false)
-            } catch (error) {
-                console.error("Error fetching data:", error.message)
-                setLoading(true)
-            }
+  useEffect(() => {
+    const typeMatch = {
+      "Home": "home",
+      "Establishment of IIC": "establishment",
+      "Faculty": "faculty",
+      "Expert Representation": "expert_representation",
+      "Student Representation": "student_representation",
+      "IIC 3.0": "iic3",
+      "IIC 4.0": "iic4",
+      "IIC 5.0": "iic5",
+      "IIC 6.0": "iic6",
+      "IIC 7.0": "iic7",
+      "Kapila": "kapila",
+      "Mentee Institution ": "mentee",
+      "Yukti": "yukti",
+      "Certificate": "certificate",
+      "Policy": "policy",
+      "Contact": "contact"
+    };
+
+    const fetchData = async () => {
+      try {
+        const key = Array.isArray(iic) ? iic[iic.length - 1] : iic;
+        const type = typeMatch[key];
+        console.log(type);
+        
+
+        if (!type) {
+          console.warn(`No match for key "${key}"`);
+          return;
         }
-        fetchData()
-    }, []);
+
+        const response = await axios.post(`/api/main-backend/iic`, {
+          type: type
+        });
+
+        setIicData(response.data.data);
+        console.log("IIC", response.data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+        setLoading(true);
+      }
+    };
+
+  fetchData();
+}, [iic]);
+
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 

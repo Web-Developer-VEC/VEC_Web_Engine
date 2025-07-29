@@ -79,8 +79,12 @@ export default function ADMteam({ theme, toggle }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/admission-team`);
-        setadmissionteamData(response.data);
+        const response = await axios.post(`/api/main-backend/admission`,
+          {
+            type: "admission_team"
+          }
+        );
+        setadmissionteamData(response.data.data);
         console.log("Admission team",response.data);
         
         setLoading(false);

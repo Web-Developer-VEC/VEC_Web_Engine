@@ -22,10 +22,11 @@ const CarouselNSS = ({ data }) => {
       swiperRef.current.swiper.navigation.update();
     }
   }, []);
+  
 
-  const images = data?.image_path || [];
-  const titles = data?.title || [];
-  const dates = data?.date || [];
+  const images = data?.map((item) => UrlParser(item?.image_path) || []);
+  const titles = data?.map((item, i) => item?.title|| []);
+  const dates = data?.map((item, i) => item?.date|| []);
 
   if (!images.length) {
     return (
@@ -60,11 +61,11 @@ const CarouselNSS = ({ data }) => {
           0: { slidesPerView: 1 },
         }}
       >
-        {images.map((img, index) => (
+        {data.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="carouselnss-card">
               <img
-                src={UrlParser(img)}
+                src={images[index]}
                 alt={titles[index] || "NSS Event"}
                 className="carouselnss-image"
               />

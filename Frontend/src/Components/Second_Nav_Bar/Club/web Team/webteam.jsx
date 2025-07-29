@@ -47,8 +47,8 @@ const ProfileCard = ({ member }) => {
         <div className="relative mx-auto w-32 h-32 mb-6">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
           <img
-            src={member.image}
-            alt={member.name}
+            src={member?.image}
+            alt={member?.name}
             width={128}
             height={128}
             className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-lg transition-transform duration-500 group-hover:scale-105"
@@ -58,19 +58,19 @@ const ProfileCard = ({ member }) => {
         {/* Member Info */}
         <div className="text-center mb-0">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-            {member.name}
+            {member?.name}
           </h3>
           <div className="space-y-1">
             <p className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
-              {member.year}
+              {member?.year}
             </p>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">{member.department}</p>
+            <p className="text-gray-600 dark:text-gray-300 font-medium">{member?.department}</p>
           </div>
         </div>
 
         {/* Social Links */}
         <div className="flex justify-center space-x-3">
-          {Object.entries(member.social).map(([platform, url]) => (
+          {Object.entries(member?.social)?.map(([platform, url]) => (
             <div key={platform} className="transform transition-transform duration-300 hover:scale-110">
               <SocialIcon type={platform} url={url} />
             </div>
@@ -87,6 +87,14 @@ const ProfileCard = ({ member }) => {
 function WebUI({ title, data }) {
 
     console.log("Data",data);
+
+    let des;
+    let members;
+
+    if (data) {
+      des = data[0]?.content;
+      members = data[1]?.content;
+    }
     
     return (
         <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 h-fit">
@@ -108,9 +116,9 @@ function WebUI({ title, data }) {
             {/* Team Grid */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-                {data?.members?.map((member, index) => (
+                {members?.map((member, index) => (
                     <div
-                    key={member.id}
+                    key={index}
                     className="animate-fade-in-up"
                     style={{
                         animationDelay: `${index * 150}ms`,
@@ -129,7 +137,7 @@ function WebUI({ title, data }) {
                 <div className="text-center">
                     <h2 className="text-2xl font-bold text-brwn dark:text-drkt mb-4">Want to Know about Our Team?</h2>
                     <p className="text-black mb-8 max-w-2xl mx-auto">
-                    {data?.message}
+                    {des?.message}
                     </p>
                 </div>
                 </div>
@@ -162,24 +170,32 @@ export default function Webteam({ toggle, theme }) {
 
     const navData = {
         "Enquiry Now": <EnquiryWeb/>,
-        "Pilot": <WebUI title={"Pilot"} data={webdata?.pilot}/>,
-        "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata?.copilot}/>,
+        "Pilot": <WebUI title={"Pilot"} data={webdata}/>,
+        "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata}/>,
     };
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const tab = params.get("tab");
         if (tab === "enquiry") {
-        setWebtab("Enquiry Now");
+          setWebtab("Enquiry Now");
         }
     }, [location.search]);
 
     useEffect(() => {
         const fetchData = async () => {
+          const typeMap = {
+            "Pilot": "pilot",
+            "Co-Pilot": "copilot"
+          }
             try {
-                const response = await axios.get('/api/web_team');
+                const response = await axios.post('/api/main-backend/web_team',
+                  {
+                    type: typeMap[webtab]
+                  }
+                );
     
-                const data = response.data[0];
+                const data = response.data.data;
     
                 setWebData(data);
             } catch (error) {
@@ -187,7 +203,7 @@ export default function Webteam({ toggle, theme }) {
             }
         }
         fetchData();
-    }, [])
+    }, [webtab])
 
   return (
      <>

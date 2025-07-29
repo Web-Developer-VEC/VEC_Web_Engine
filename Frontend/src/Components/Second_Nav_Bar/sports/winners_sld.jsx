@@ -19,17 +19,17 @@ const WinnerSlider = ({ data }) => {
     return () => clearInterval(interval);
   }, [isHovered, data?.title?.length]);
   
-  if (!data || !data?.title || !data?.image_path) {
+  if (!data) {
     return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
             <LoadComp />
           </div>;
   }
   const handlePrev = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + data?.title?.length) % data?.title?.length);
+    setActiveIndex((prevIndex) => (prevIndex - 1 + data?.length) % data?.length);
   };
 
   const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % data?.title?.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % data?.length);
   };
 
   return (
@@ -43,7 +43,7 @@ const WinnerSlider = ({ data }) => {
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {data?.title?.map((description, index) => (
+          {data?.map((description, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -53,12 +53,12 @@ const WinnerSlider = ({ data }) => {
               }}
             >
               <img
-                src={UrlParser(data?.image_path[index])}
+                src={UrlParser(description?.image_path)}
                 alt="Winner"
                 className="w-full h-80 object-contain rounded-t-lg"
               />
               <div className="p-4 text-center rounded-b-lg">
-                <p className="text-lg font-semibold text-text dark:text-drkt">{description}</p>
+                <p className="text-lg font-semibold text-text dark:text-drkt">{description?.title}</p>
               </div>
             </div>
           ))}

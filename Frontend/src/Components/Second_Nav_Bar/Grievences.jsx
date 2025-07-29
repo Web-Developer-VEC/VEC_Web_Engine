@@ -77,7 +77,7 @@ const GrievanceForm = ({ theme, toggle }) => {
 
     try {
       setLoading(true);
-      const response = await fetch("/api/get_grevience", {
+      const response = await fetch("/api/main-backend/get_grievance", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

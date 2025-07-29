@@ -14,8 +14,12 @@ const ME = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/pg`);
-        setpgData(response.data);
+        const response = await axios.post(`/api/main-backend/admission`,
+          {
+            type: "pg"
+          }
+        );
+        setpgData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -48,11 +52,11 @@ if (!isOnline) {
 
   return (
     <>
-<Banner toggle={toggle} theme={theme}
-  backgroundImage="./Banners/admissionbanner.webp"
-  headerText="ME Admission"
-  subHeaderText="Shaping future engineers through advanced learning, research, and transformative opportunities."
-/>
+    <Banner toggle={toggle} theme={theme}
+      backgroundImage="./Banners/admissionbanner.webp"
+      headerText="ME Admission"
+      subHeaderText="Shaping future engineers through advanced learning, research, and transformative opportunities."
+    />
 
     {isLoading ? (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -90,7 +94,7 @@ if (!isOnline) {
             <p className="text-text dark:text-drkt ml-8">M.E : Apply through Common Entrance Test (CET) conducted by the Consortium of Self –Financing Professional, Arts and  Science Colleges in Tamil Nadu</p>
           </div>
           <div className="me-container">
-            <center><h4 className="text-accn dark:text-drkt Eligibility mt-5 font-bold">M.E - Total Intake {pgData.Year}</h4></center>
+            <center><h4 className="text-accn dark:text-drkt Eligibility mt-5 font-bold">M.E - Total Intake {pgData.year}</h4></center>
             <table className="intake-table">
               <thead>
                 <tr>

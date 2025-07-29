@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadComp from "../../../LoadComp";
 
-const AlumniSlider1 = () => {
+const AlumniSlider1 = ({data}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [awardData, setAwardData] = useState([]);
@@ -13,50 +13,50 @@ const AlumniSlider1 = () => {
       return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  useEffect(() => {
-    const fetchAwards = async () => {
-      try {
-        const response = await axios.get("/api/ncc_navy");
+  // useEffect(() => {
+  //   const fetchAwards = async () => {
+  //     try {
+  //       const response = await axios.get("/api/ncc_navy");
 
-        if (
-          Array.isArray(response.data) &&
-          response.data.length > 0 &&
-          response.data[0].awards &&
-          response.data[0].awards.image_path
-        ) {
-          const awards = response.data[0].awards;
+  //       if (
+  //         Array.isArray(response.data) &&
+  //         response.data.length > 0 &&
+  //         response.data[0].awards &&
+  //         response.data[0].awards.image_path
+  //       ) {
+  //         const awards = response.data?.awards;
 
-          // Build array of { image, description }
-          const parsedData = awards.image_path.map((img, i) => ({
-            image: UrlParser(img),
-            description: awards.des[i],
-          }));
+  //         // Build array of { image, description }
+  //         const parsedData = awards.image_path.map((img, i) => ({
+  //           image: UrlParser(img),
+  //           description: awards.des[i],
+  //         }));
 
-          setAwardData(parsedData);
-        }
-      } catch (error) {
-        console.error("Error fetching award data:", error);
-      }
-    };
+  //         setAwardData(parsedData);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching award data:", error);
+  //     }
+  //   };
 
-    fetchAwards();
-  }, []);
+  //   fetchAwards();
+  // }, []);
 
   // Auto-slide functionality
   useEffect(() => {
-    if (isHovered || awardData.length === 0) return;
+    if (isHovered || data.length === 0) return;
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % awardData.length);
+      setActiveIndex((prev) => (prev + 1) % data.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [isHovered, awardData]);
+  }, [isHovered, data]);
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + awardData.length) % awardData.length);
+    setActiveIndex((prev) => (prev - 1 + data?.length) % data?.length);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % awardData.length);
+    setActiveIndex((prev) => (prev + 1) % data?.length);
   };
 
   return (
@@ -72,7 +72,7 @@ const AlumniSlider1 = () => {
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            {awardData.map((item, index) => (
+            {data?.map((item, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -82,13 +82,13 @@ const AlumniSlider1 = () => {
                 }}
               >
                 <img
-                  src={item.image}
+                  src={item?.image_path}
                   alt={`Award ${index + 1}`}
                   className="w-full h-80 object-contain rounded-t-lg"
                 />
                 <div className="p-4 text-center rounded-b-lg">
                   <p className="text-lg font-semibold text-text dark:text-drkt">
-                    {item.description}
+                    {item?.description}
                   </p>
                 </div>
               </div>
@@ -112,7 +112,7 @@ const AlumniSlider1 = () => {
 
         {/* Pagination Dots */}
         <div className="flex justify-center space-x-2 mt-4">
-          {awardData.map((_, index) => (
+          {data?.map((_, index) => (
             <button
               key={index}
               className={`w-2.5 h-2.5 rounded-full ${

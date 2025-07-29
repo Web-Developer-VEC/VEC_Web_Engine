@@ -35,6 +35,13 @@ export function StatCard({ number, label, color }) {
 const colors = ["bg-blue-700", "bg-green-600", "bg-green-700", "bg-purple-600"];
 
 export default function Projects({data}) {
+  if (!Array.isArray(data)) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
   return (
     <>
       {data ? (
@@ -45,9 +52,9 @@ export default function Projects({data}) {
         <div className="max-w-6xl mx-auto space-y-10">
           {data?.map((section, i) => (
             <div key={i} className="space-y-4">
-              <h2 className="text-center text-lg font-bold">{section.title}</h2>
+              <h2 className="text-center text-lg font-bold">{section?.title}</h2>
               <div className="flex flex-wrap justify-center gap-5">
-                {section.stats.map((item, j) => {
+                {section?.stats?.map((item, j) => {
                   const color = colors[j % colors.length];
                   return (
                     <StatCard
