@@ -78,7 +78,7 @@ const NBA_F = () => {
         <div className="table-data px-4 md:px-12 lg:px-24">
         <div className="overflow-x-auto border rounded-lg shadow-md">
           <table className=" w-[1000px] department-table">
-            <thead className="bg-gray-100">
+            <thead className="bg-gry">
               <tr>
                 <th className="text-left px-4 py-2 text-text">S.No</th>
                 <th className="text-left px-4 py-2 text-text">Programs</th>

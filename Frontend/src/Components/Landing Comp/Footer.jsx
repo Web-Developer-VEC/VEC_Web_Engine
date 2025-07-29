@@ -106,7 +106,7 @@ const Footer = forwardRef((props, ref) => {
                     </div>
                 </div>
             </div>
-            <a href="./webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-xl mt-4 font-medium m-auto">@ Web Team VEC</a>
+            <a href="./webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-xl mt-4 font-medium m-auto cursor-pointer">@ Web Team VEC</a>
         </footer>
     );
 });

@@ -65,25 +65,33 @@ const Incub = ( {toggle, theme}) => {
 
     function CubHme({data}) {
         return (
-            <div className="ic-home-container">
-                <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
-                    <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h2>
-                    <p className="ic-centered-text text-text dark:text-drkt">
-                        {data?.about_us}
-                    </p>
-                </div>
+            <>
+                {data ? (
+                    <div className="ic-home-container">
+                        <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                            <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h2>
+                            <p className="ic-centered-text text-text dark:text-drkt">
+                                {data?.about_us}
+                            </p>
+                        </div>
 
-                <div className="ic-vision-mission-grid">
-                    <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
-                        <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Activities</h3>
-                        <ul>
-                            {data?.activities?.map((adv,i)=>(
-                                <li>{adv}</li>
-                            ))}
-                        </ul>
+                        <div className="ic-vision-mission-grid">
+                            <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+                                <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Activities</h3>
+                                <ul>
+                                    {data?.activities?.map((adv,i)=>(
+                                        <li>{adv}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                ) : (
+                    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+                        <LoadComp />
+                    </div>
+                )}
+            </>
         );
     } 
 
