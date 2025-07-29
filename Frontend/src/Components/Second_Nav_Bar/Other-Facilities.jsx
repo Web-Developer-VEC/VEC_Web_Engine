@@ -69,13 +69,16 @@ export default function OtherFacilities({ theme, toggle }) {
     };
   }, []);
 
+
   if (!isOnline) {
+
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp txt={"You are offline"} />
       </div>
     );
   }
+
 
   if (!otherFacilities || !currentFacility) {
     return (
@@ -117,6 +120,7 @@ export default function OtherFacilities({ theme, toggle }) {
           ))}
         </div>
 
+
         {/* Content Section */}
         <div className="content-container">
           <h2 className="current-facility text-brwn dark:text-drkt">
@@ -144,6 +148,7 @@ export default function OtherFacilities({ theme, toggle }) {
           </div>
         </div>
       </div>
+
     </>
   );
 }
