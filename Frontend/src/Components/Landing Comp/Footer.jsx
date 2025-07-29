@@ -9,10 +9,6 @@ import facebook from '../Assets/facebook-logo.png';
 const Footer = forwardRef((props, ref) => {
     const color = (props.theme === "light") ? "rgb(253,204,3)" : "rgb(255, 87, 34)";
     const data = props.data;
-
-    console.log("Footer",data);
-    
-
     return (
         <footer id="footer" className="lg:flex flex-wrap footer font-popp
             bg-[linear-gradient(111deg,theme(colors.secd)_0%,theme(colors.secd)_3%,theme(colors.text)_3%,theme(colors.text)_90%,theme(colors.secd)_90%,theme(colors.secd)_100%)]

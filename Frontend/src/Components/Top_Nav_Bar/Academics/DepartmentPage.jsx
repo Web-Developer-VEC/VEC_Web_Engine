@@ -125,12 +125,6 @@ const DepartmentPage = ({ theme, toggle }) => {
   }, [deptID, location.state?.activeSection]);
 
   const renderSection = () => {
-    // if (activeSection === "Syllabus") {
-    //   console.log("Rendering CurriculumPage with data:", sectionData); // Debugging
-    //   return <CurriculumPage theme={theme} toggle={toggle} data={sectionData} />;
-    // }
-
-    console.log(`Render ${activeSection}`);
     switch (activeSection) {
       case "HeadDepartment":
         return <HeadDepartment data={sectionData} />;

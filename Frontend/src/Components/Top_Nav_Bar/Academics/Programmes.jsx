@@ -18,9 +18,7 @@ const Programmes = ({toggle, theme}) => {
                     }
                 );
 
-                const data = responce.data.data
-                console.log("Program",data);
-                
+                const data = responce.data.data;                
                 
                 setProgrammes(data);
                 
