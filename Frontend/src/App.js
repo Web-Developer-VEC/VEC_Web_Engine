@@ -306,7 +306,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.data?.[0]}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />
