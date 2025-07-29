@@ -92,7 +92,6 @@ import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/LoadComp.jsx";
-
 import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
 import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
@@ -317,7 +316,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.data?.[0]}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />
