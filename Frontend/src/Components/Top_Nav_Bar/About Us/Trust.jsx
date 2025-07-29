@@ -14,9 +14,11 @@ const NewTrust = ({theme, toggle}) => {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const responce = await axios.get('/api/about_us');
-              const data = responce.data[0];
-              setAbtTrustData(data.about_trust)
+              const responce = await axios.post('/api/main-backend/about_us',{
+                section: "about_trust"
+              });
+              const data = responce.data.data.content;
+              setAbtTrustData(data)
               
             } catch (error) {
               console.error("Error fetching about us data",error);
@@ -63,9 +65,6 @@ const NewTrust = ({theme, toggle}) => {
       {AbtTrustData ? (
         // <div className="bg-prim dark:bg-drkp min-h-screen px-10 pt-0 md:p-8">
         <div className="bg-prim dark:bg-drkp min-h-screen pt-0 px-11 md:p-9 lg:px-16 font-[Poppins]">
-
-
-
           <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-2 md:px-8 lg:px-16">
           <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -95,7 +94,7 @@ const NewTrust = ({theme, toggle}) => {
                   alt="Velammal Trust Banner"
                 />
                 <div className="flex justify-center items-center flex-col mt-2">
-                  <p className="font-bold font-[Poppins]">THIRUMATHI VELAMMAL</p>
+                  <p className="font-bold font-[Poppins]">{AbtTrustData?.velammal?.name}</p>
                 </div>
               </motion.div>
 
@@ -137,7 +136,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[0])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[0])}
                     alt="Shri. M.V. Muthuramalingam"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
@@ -156,7 +155,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[1])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[1])}
                     alt="Shri. M.V. VelMurugan"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
@@ -175,7 +174,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[2])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[2])}
                     alt="Shri. M.V. VelMurugan"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />

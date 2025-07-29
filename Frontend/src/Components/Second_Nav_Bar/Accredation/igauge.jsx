@@ -1,6 +1,6 @@
 import { FaLink } from "react-icons/fa";
 
-export default function IQauge() {
+export default function IQauge({ data }) {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -14,7 +14,7 @@ export default function IQauge() {
 
       <div className="flex justify-center">
         <iframe
-          src={UrlParser("/static/pdfs/qs+rating/QS+I-GAUGE+-+VEC+Certificate.pdf")}
+          src={UrlParser(data[0]?.pdf_path)}
           title="Main PDF"
           className="w-[60vw] h-[80vh] border-2 border-gray-300 shadow-md"
           loading="lazy"
@@ -22,7 +22,7 @@ export default function IQauge() {
       </div>
 
       <a
-        href={UrlParser("/static/pdfs/qs+rating/QS+I-GAUGE+-VEC+-+Scorecard.pdf")}
+        href={UrlParser(data[0]?.link)}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-6 dark:text-drka text-lg underline"

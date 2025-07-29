@@ -1,0 +1,92 @@
+.errorlog-page {
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+}
+
+h2 {
+  margin: 0 0 12px;
+}
+
+.search {
+  width: 280px;
+  max-width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.search:focus {
+  border-color: #3b82f6;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.log-table thead th {
+  text-align: left;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 6px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.log-table tbody td {
+  padding: 8px 6px;
+  vertical-align: top;
+  border-top: 1px solid #f1f5f9;
+}
+
+.log-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 24px 0;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.pager button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.pager button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.name-error{
+    text-align: center;
+    font-size: 30px;
+    color: #800000;
+    margin-top: 20px;
+}

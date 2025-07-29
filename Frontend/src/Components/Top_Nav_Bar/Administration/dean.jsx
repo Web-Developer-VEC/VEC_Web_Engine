@@ -45,9 +45,13 @@ const Dean = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/deanandassociates`);
+        const response = await axios.post(`/api/main-backend/administration`,
+          {
+            type: "dean_and_association"
+          }
+        );
 
-        setDeanData(response.data);
+        setDeanData(response.data.data);
         setloading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);

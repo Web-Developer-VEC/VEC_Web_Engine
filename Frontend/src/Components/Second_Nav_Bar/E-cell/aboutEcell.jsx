@@ -15,27 +15,30 @@ import LoadComp from "../../LoadComp.jsx";
 
 
 const Ecell = ({toggle,theme}) => {
-    const [section, setEcell] = useState("About E-cell")
-    const [home,setHome]=useState({})
-    const [committee,setCommittee]=useState({})
-    const [enterpreneur,setEnterpreneur]=useState({})
-    const [activity,setActivity]=useState({})
-    const [gallery,setGallery]=useState({})
+    const [section, setEcell] = useState("About E-cell");
+    const [ecell,setEcellData] = useState(null);
 
     useEffect(()=> {
+        const typeMap = {
+            "About E-cell": "about",
+            "Committee": "committee",
+            "Enterpreneur": "enterpreneur",
+            "Activity": "activity",
+            "Gallery": "gallery"
+        }
         const fetchData = async () =>{
 
-            const response = await axios.get('/api/ecell');
-            const data = response.data[0]
+            const response = await axios.post('/api/main-backend/ecell',
+                {
+                    type: typeMap[section]
+                }
+            );
+            const data = response.data.data
 
-            setHome(data.home)
-            setCommittee(data.committee)
-            setEnterpreneur(data.entrepreneur)
-            setActivity(data.activity)
-            setGallery(data.gallery)
+            setEcellData(data)
         }
-      fetchData()}
-  ,[])
+      fetchData()
+    },[section])
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -64,11 +67,11 @@ const Ecell = ({toggle,theme}) => {
 
     
    const navData = {
-        "About E-cell": <Home home={home}/>,
-        "Committee":<COMMITE committee={committee}/>,
-        "Enterpreneur":<EnterpreN enterpreneur={enterpreneur}/>,
-        "Activity":<Activ activity={activity}/>,
-        "Gallery":<Gall gallery={gallery}/>
+        "About E-cell": <Home home={ecell}/>,
+        "Committee":<COMMITE committee={ecell}/>,
+        "Enterpreneur":<EnterpreN enterpreneur={ecell}/>,
+        "Activity":<Activ activity={ecell}/>,
+        "Gallery":<Gall gallery={ecell}/>
     }
 
 
@@ -77,10 +80,9 @@ const Ecell = ({toggle,theme}) => {
             <Banner theme={theme} toggle={toggle}
             backgroundImage="./Banners/IIC.webp"
             headerText="E - Cell"
-
             subHeaderText="Turning Ideas into Action and Dreams into Enterprises."
         />
-                <SideNav navData={navData} sts={section} setSts={setEcell} backButton={true}/>
+            <SideNav navData={navData} sts={section} setSts={setEcell} backButton={true}/>
         </>
     )
 }
