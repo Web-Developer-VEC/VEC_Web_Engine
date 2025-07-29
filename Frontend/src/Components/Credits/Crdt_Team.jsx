@@ -10,8 +10,8 @@ const ppl = [
         "name": "SAMUEL STEPHEN DEVA PAUL L",
         "description": "Led a 17-member team to build Velammal Engineering College's official website using the MERN stack. Designed key pages in React, coordinated with college officials for live content, and deployed the site on AWS. Managed GitHub workflows, handled real-world bugs, and drove the project from planning to launch — not just leading, but building side by side with the team.",
         "roles": ["Team Lead", "Frontend Lead Developer"],
-        "image": "/pilot/Sam.webp",
-        "cover_image": "https://www.pngplay.com/wp-content/uploads/12/Sasuke-Uchiha-Background-PNG-Image.png",
+        "image": "/static/images/web_team/developers/Sam 2.webp",
+        "cover_image": "/static/images/web_team/developers/Sam 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/samsdp/" },
         { "type": "github", "link": "https://github.com/SAMSDP" },
@@ -27,8 +27,8 @@ const ppl = [
         "name": "SIDDHARTH MAGESH ",
         "description": "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
         "roles": ["Backend Lead Developer", "System Architect"],
-        "image": "/pilot/siddharth.png",
-        "cover_image": "/pilot/Leroy_1.png",
+        "image": "/static/images/web_team/developers/Sid 2.webp",
+        "cover_image": "/static/images/web_team/developers/Sid 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/siddharth-magesh-76688a246/" },
         { "type": "github", "link": "https://github.com/Siddharth-magesh" },
@@ -46,8 +46,8 @@ const ppl = [
         "name": "PRANESH KUMAR V",
         "description": "Backend wizard by day, bug hunter by night. I wrangle APIs with Node.js, stuff MongoDB with JSONs using Python like it's a sacred ritual, and deploy my creations to the cloud with AWS (because local is too mainstream). I push, pull, and occasionally rage at Git while powering the brains behind our college website. I speak fluent JSON, enjoy long walks through error logs, and believe coffee is just a backend dependency.",
         "roles": ["Backend Developer", "API Developer"],
-        "image": "/pilot/Pranesh.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Pranesh 2.webp",
+        "cover_image": "/static/images/web_team/developers/pranesh 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -59,11 +59,27 @@ const ppl = [
         ]
     },
     {
+        "name": "Leroy Jeslyn",
+        "description": "I was a Frontend Developer for the VEC website, where i built sleek, responsive pages using Tailwind and React. I was also behind some of the cool animated CSS stuff: that boot-up page animations, the smooth slide-in gradients, and interactive 3D Department Carousel. And I totally hooked up the dark mode toggle for the VEC website. You're welcome.",
+        "roles": ["Frontend Developer","UI Designer"],
+        "image": "/static/images/web_team/developers/Leroy 2.webp",
+        "cover_image": "/static/images/web_team/developers/Leroy 1.png",
+        "socials": [
+        {
+            "type": "linkedin",
+            "link": " https://www.linkedin.com/in/leroy-jeslyn-a653a2246/"
+        },
+        { "type": "github", "link": "https://github.com/Shadow-Knight503" },
+         { "type": "instagram", "link": " https://www.instagram.com/_shadow_knight_503?igsh=NjhiZTY4aDF3eGh0" },
+        { "type": "mail", "link": "mailto:leroyjeslyn@gmail.com" },
+        ]
+    },
+    {
         "name": "SRI HARI M",
         "description": "Worked as a Frontend Developer on the college website, where I built and maintained multiple responsive pages using React.js and Bootstrap. Translated UI designs into functional, consistent layouts and ensured compatibility across different devices and screen sizes. Collaborated with the backend team to integrate data and features effectively.",
         "roles": ["Frontend Developer", "UI Designer"],
-        "image": "/pilot/srihari.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Srihari 2.webp",
+        "cover_image": "/static/images/web_team/developers/Srihari 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/sri-hari22/" },
         { "type": "github", "link": "https://github.com/SriHari22004" },
@@ -72,11 +88,24 @@ const ppl = [
         ]
     },
     {
+        "name": "RAGESHWARAN HR",
+        "description": "Showcased course details, departments, events, and contact info—designed clean, responsive landing pages using React.js and Tailwind CSS. Developed reusable UI components, ensured mobile responsiveness, and brought smooth user experience to life.",
+        "roles": ["Frontend Developer"],
+        "image": "/static/images/web_team/developers/Rageshwaran 2.webp",
+        "cover_image": "/static/images/web_team/developers/Rageshwaran 1.png",
+        "socials": [
+        { "type": "linkedin", "link": " https://www.linkedin.com/in/rageshwaranhr" },
+        { "type": "github", "link": "https://github.com/Rageshwaran-HR" },
+        { "type": "instagram", "link": " https://www.instagram.com/varnorawork" },
+        { "type": "mail", "link": "mailto:rageshwaranhr@gmail.com " }
+        ]
+    },
+    {
         "name": "MOHAMED YASIR A",
         "description": "Started off by helping with the initial design phase of the college website, where I worked on wireframes and layout ideas to shape the overall look and feel. Later, I took on the role of a Frontend Developer, building and refining user-facing components to make the site clean, functional, and easy to navigate. I spent a good amount of time handling data collection, organizing files, and processing content to make sure everything stayed consistent and accessible for the team. It was a mix of creative thinking and hands-on work that taught me how important structure and detail are, especially when things scale. Looking back, I feel like I could’ve planned my file organization better early on—it would've saved a lot of time in the long run. But overall, it pushed me to understand both the visual and functional sides of web development more deeply.",
         "roles": ["Frontend Developer", "UI Planner"],
-        "image": "/pilot/Yasir.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Yasir 2.webp",
+        "cover_image": "/static/images/web_team/developers/Yasir 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/mdyasir8055" },
         { "type": "github", "link": "https://github.com/mdyasir8055" },
@@ -89,8 +118,8 @@ const ppl = [
         "name": "VASANTHA RAJA S",
         "description": "Built sleek, responsive pages with React.js—because static sites are so last season. Crafted pixel-perfect layouts, well-behaved buttons, and smooth user experiences using Tailwind, Bootstrap, and a dash of CSS magic.Teamed up with the backend squad to keep data flowing like butter on a hot dosa. Leveled up my frontend powers and got a real taste of web dev beyond the tutorial zone.",
         "roles": ["Frontend Developer","responsive UI Designer"],
-        "image": "/pilot/Vasanth.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Vasanth 2.webp",
+        "cover_image": "/static/images/web_team/developers/VasanthRaja 1.png",
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/vasantharajas123" },
         { "type": "github", "link": "github.com/Vasanth-Aids" },
@@ -105,8 +134,8 @@ const ppl = [
         "name": "GOKULRAMANAN V",
         "description": "Gokulramanan developed a RAG-based chatbot from end to end. He transformed raw JSON files into clean, structured text, generated vector embeddings, and integrated them with the LLaMA 3.3 model to enable context-aware responses. He also built backend components, including writing API endpoints and connecting the vector store with the language model, ensuring smooth and intelligent chatbot interactions.",
         "roles": ["Backend Developer","Chatbot Developer"],
-        "image": "/pilot/Gokul.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Gokul 2.webp",
+        "cover_image": "/static/images/web_team/developers/Gokul 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -121,8 +150,8 @@ const ppl = [
         "name": "WAATSON J",
         "description": "Worked as a Backend Developer for a college website, where I handled everything from building smooth Node.js APIs to writing Python scripts that populated MongoDB with structured data. I kept the backend running efficiently and connected it with the frontend to ensure a seamless experience. It was a hands-on role that taught me a lot about managing data, debugging under pressure, and collaborating with others to bring features to life. Alongside that, I also contributed during the early stages of developing a RAG-based chatbot for the same site. I started by organizing scattered JSON data into meaningful, context-rich sentences and turned them into vector embeddings for efficient retrieval. Using the LLaMA 3.3 model, the chatbot was trained to answer user queries with accuracy, becoming a helpful guide across the college website.",
         "roles": ["Data Engineer","Backend Developer" ],
-        "image": "/pilot/Watson.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Watson 2.webp",
+        "cover_image": "/static/images/web_team/developers/Watson 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/waatson-j/" },
         { "type": "github", "link": "https://github.com/WAATS0N" },
@@ -133,8 +162,8 @@ const ppl = [
         "name": "SAI VIGNESH RAJ M",
         "description": "Embarked on a full-stack quest to build a RAG-based chatbot for a college website. Began by wrangling scattered JSON scrolls from across the digital realm, forging them into self-sufficient, context-rich sentences. Enchanted this knowledge into vector embeddings for swift retrieval. Armed with the LLaMA 3.3 model as the conversational engine, the system answered user queries with precision and insight. Navigated challenges of scarce resources and treacherous data pipelines to craft a resilient, lightweight AI companion — purpose-built for guiding users through the vast halls of the college web domain.",
         "roles": ["Full-Stack Chatbot Developer", "Data Engineer"],
-        "image": "/pilot/Sai.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Sai 2.webp",
+        "cover_image": "/static/images/web_team/developers/Sai 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -152,8 +181,8 @@ const ppl = [
         "name": "KUMAR P",
         "description": "Designed modern, mobile-friendly interfaces using React.js—because plain old static pages just don’t cut it anymore. Focused on fluid layouts, responsive elements, and polished user flows with the help of Tailwind CSS, Bootstrap, and a hint of handcrafted styling. Worked alongside the backend crew to keep everything synced up like a well-oiled engine. From connecting APIs to handling live data, I got hands-on experience with the real challenges of building dynamic web apps. This phase really boosted my frontend confidence and gave me a proper dive into the world of actual development—way past the YouTube tutorial comfort zone.",
         "roles": ["Frontend Developer",""],
-        "image": "/pilot/arjun.png",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Kumar 2.webp",
+        "cover_image": "/static/images/web_team/developers/Kumar 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://linkedin.com/in/kumar-p-75" },
         { "type": "github", "link": "github.com/kumar7505" },
@@ -168,8 +197,8 @@ const ppl = [
         "name": "SRI RAAM V H",
         "description": "Built and maintained  multiple  React.js pages. From integrating APIs to crafting sleek, responsive UIs with CSS  React, bootstrap tailwind. turned design mockups into functional reality. Obsessed with clean code and smooth UX. Did manual testing and made sure the website is compatible  with different devices.the site worked like a charm on every screen size — even the weirdly tiny ones professors insist on using.",
         "roles": ["Frontend Developer", "QA Tester"],
-        "image": "/pilot/Sriram.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/sriraam 2.webp",
+        "cover_image": "/static/images/web_team/developers/Sriraam 1.png",
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/sri-raam-v-h" },
         { "type": "github", "link": "https://github.com/Sriraam29" },
@@ -184,8 +213,8 @@ const ppl = [
         "name": "ARJUN V L",
         "description": "Worked as a Backend Developer for a website, keeping the digital gears turning behind the scenes. Juggled data entry like a wizard and crafted slick Node.js APIs that just worked. Wrote Python scripts to stuff MongoDB with data like a pro. Tied the frontend and backend together like a tech matchmaker. An adventure full of learning, logic, laughs, and the occasional late-night bug battle!",
         "roles": [ "Data Entry","Backend Developer"],
-        "image": "/pilot/Arjun.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Arjun 2.webp",
+        "cover_image": "/static/images/web_team/developers/Sam 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -204,8 +233,8 @@ const ppl = [
         "name": "SANTHOSH G",
         "description": "Worked as a Frontend Developer on the college website. Built responsive pages using React.js, Tailwind, CSS, and Bootstrap. Collaborated with the backend team to ensure seamless data integration. Focused on clean, maintainable code and consistent UI design. Ensured full responsiveness across all screen sizes and devices.",
         "roles": ["Frontend Developer"],
-        "image": "/pilot/Santhosh.webp",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Santhosh 2.webp",
+        "cover_image": "/static/images/web_team/developers/Santhosh 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -223,8 +252,8 @@ const ppl = [
         "name": "Hari Prasath",
         "description": "Jumped into this project as the go-to guy for all things cloud and backend. Spent most of my time testing cloud platforms, tweaking deployments, and wrestling with configurations until they behaved. Also pitched in as a backend intern—debugging logic, building APIs, and occasionally arguing with the server (spoiler: it rarely listened). Cloud chaos? That was my playground.",
         "roles": ["Cloud Engineer","Backend Developer" ],
-        "image": "/pilot/hari.png",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Hari 2.webp",
+        "cover_image": "/static/images/web_team/developers/Hari 1.png",
         "socials": [
         {
             "type": "linkedin",
@@ -242,8 +271,8 @@ const ppl = [
         "name": "Ajith",
         "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
         "roles": ["Frontend Developer", "Integration Engineer"],
-        "image": "/pilot/ajith.png",
-        "cover_image": "/person.jpg",
+        "image": "/static/images/web_team/developers/Ajith 2.webpg",
+        "cover_image": "/static/images/web_team/developers/Ajith 1.png",
         "socials": [
         {
             "type": "linkedin",
