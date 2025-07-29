@@ -10,81 +10,89 @@ import SideNav from "../SideNav";
 import Intramural from './intramural';
 import LoadComp from '../../LoadComp';
 
-function SPTIntro() {
-    return (
-    <section className="introduction dark:bg-drkb border-l-4 border-secd dark:border-drks">
-        <div className="section-content">
-            <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
-            <p className="intro-text">
-                Our College department of Physical Education is an integral part of our institution right from its
-                inception
-                from the year 2005-2006.
-            </p>
-            <p className="intro-text">
-                We are now having 3 faculty members, including a Head of the department. In which we have one doctorate
-                in
-                physical education. We engage the students both morning and evening for sports activities and make them
-                to
-                participate in Inter collegiate tournaments. We have one big Indoor stadium and one multi Gym with
-                Fitness
-                trainer.
-            </p>
-            <p className="intro-text">
-                Our college students got the 18th consecutive years of overall championship in Zone – I competitions.
-                This is
-                our pride for our department of Physical Education. Moreover, our college students participate for Anna
-                university teams, State and National teams. Our students got places in National level sports
-                competitions every
-                year. </p>
-        </div>
-    </section>);
-}
+const SPTIntro = ({ data }) => {
+  if (!Array.isArray(data)) return null;
 
-function SPTVis() {
-    return (
-    <section className="vision-mission border-l-4 border-secd dark:border-drks dark:bg-drkb">
-        <div className="section-content">
-            <h2 className="section-title text-brwn dark:text-drkt">Vision & Mission</h2>
-            <p className="vision-mission-text">
-                The vision of our department of physical education is physical, mental and Intellectual
-                development of the whole student. For which we create an environment that will focus on
-                students’ attitude towards physical activity. And provide opportunities for personal and
-                intellectual growth through fitness, outdoor recreation, and coaching and sports
-                participation. </p>
-        </div>
+  return (
+    <section className="introduction dark:bg-drkb border-l-4 border-secd dark:border-drks">
+      <div className="section-content">
+        <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
+        {data.map((para, idx) => (
+          <p className="intro-text" key={idx}>
+            {typeof para === "string" ? para : JSON.stringify(para)}
+          </p>
+        ))}
+      </div>
     </section>
-    );
-}
+  );
+};
+
+const SPTVis = ({ data }) => {
+  let paraArray = [];
+
+  if (data?.type === "vision" && Array.isArray(data.data)) {
+    paraArray = data.data;
+  } else if (Array.isArray(data)) {
+    paraArray = data;
+  }
+
+  if (!Array.isArray(paraArray)) return null;
+
+  return (
+    <section className="vision-mission border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="section-content">
+        <h2 className="section-title text-brwn dark:text-drkt">Vision & Mission</h2>
+        {paraArray.map((para, index) => (
+          <p className="vision-mission-text" key={index}>
+            {typeof para === "string" ? para : JSON.stringify(para)}
+          </p>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const SportsPage = ({theme, toggle}) => {
     const [sportData, setSportsData] = useState(null);
+    const [facultyData, setFacultyData] = useState([]);
     const [spt, setSpt] = useState("Introduction");
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
     const navData = {
-        "Introduction": <SPTIntro/>,
-        "Vision & Mission": <SPTVis/>,
-        "HOD's message": <SportsHOD data={sportData?.HOD}/>,
-        "Faculty": <Sportsfaculties data={sportData?.faculty}/>,
-        "Action Plan": <SportsActionPlan/>,
-        "Infrastructure": <SportsInfra/>,
-        "Achievements": <Achievements1 zonaltable={sportData?.zonal_table} zonewinner={sportData?.zone_winner} interzone={sportData?.interzone} others={sportData?.others} coordinator={sportData?.coordinator}/>,
-        "Intra Mural": <Intramural data={sportData?.interamural}/>,
+        "Introduction": <SPTIntro data={sportData}/>,
+        "Vision & Mission": <SPTVis data={sportData}/>,
+        "HOD's message": <SportsHOD data={sportData}/>,
+        "Faculty": <Sportsfaculties data={sportData}/>,
+        "Action Plan": <SportsActionPlan data={sportData}/>,
+        "Infrastructure": <SportsInfra data={sportData}/>,
+        "Achievements": <Achievements1 data={sportData}/>,
+        "Intra Mural": <Intramural data={sportData}/>,
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.get('/api/sportsdata');
-                setSportsData(responce.data[0]);
-                console.log("Responce", responce.data[0].HOD);
-
-            } catch (err) {
-                console.error("Error Fetching data", err.message);
-            }
+        const typeMap = {
+            "Introduction": "introduction",
+            "Vision & Mission": "vision",
+            "HOD's message": "hod",
+            "Faculty": "faculty",
+            "Action Plan": "action_plan",
+            "Infrastructure": "infrastructure",
+            "Achievements": "achivements",
+            "Intra Mural": "intramural"
         }
-        fetchData();
-    }, []);
+        const fetchData = async () => {
+            setSportsData(null); // <- Reset to avoid mismatch
+        try {
+            const response = await axios.post('/api/main-backend/sportsdata', {
+                type: typeMap[spt]
+            });
+            setSportsData(response.data.data);
+        } catch (err) {
+            console.error("Failed to fetch sports data:", err);
+        }
+        }
+      fetchData()
+    },[spt])
 
         useEffect(() => {
         const handleOnline = () => setIsOnline(true);
