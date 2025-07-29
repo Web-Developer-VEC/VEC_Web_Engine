@@ -32,11 +32,15 @@ const Handbook = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.get('/api/handbook');
+        const response = await axios.post('/api/main-backend/administration',
+          {
+            type: "HandBook"
+          }
+        );
 
-        const data = response.data[0];
+        const data = response.data.data;
 
-        sethandbook(data.HB)
+        sethandbook(data)
         
       } catch (error) {
         console.error("Error fetching handbook data", error);
@@ -79,21 +83,27 @@ const Handbook = ({ theme, toggle }) => {
         headerText="Handbook"
         subHeaderText="Comprehensive manual for students and staff"
       />
-
-      <div className="flex flex-col items-center my-12 px-4">
-        <h2 className="text-3xl font-semibold mb-8 text-brwn dark:text-drkt">
-          Handbook
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
-          {handBook?.Years?.map((year, idx) => (
-            <HandbookButton
-              key={idx}
-              year={year}
-              pdfspath={`${handBook?.pdfs_path[idx] ? UrlParser(handBook?.pdfs_path[idx]) : '#'}`}
-            />
-          ))}
+      {handBook ? (
+          <div className="flex flex-col items-center my-12 px-4">
+            <h2 className="text-[32px] font-semibold mb-8 text-brwn dark:text-drkt">
+              Handbook
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
+              {handBook?.Years?.map((year, idx) => (
+                <HandbookButton
+                  key={idx}
+                  year={year}
+                  pdfspath={`${handBook?.pdfs_path[idx] ? UrlParser(handBook?.pdfs_path[idx]) : '#'}`}
+                />
+              ))}
+            </div>
+          </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={""} />
         </div>
-      </div>
+      )}
+
     </>
   );
 };

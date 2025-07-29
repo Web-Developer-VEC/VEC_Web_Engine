@@ -14,9 +14,11 @@ const NewTrust = ({theme, toggle}) => {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const responce = await axios.get('/api/about_us');
-              const data = responce.data[0];
-              setAbtTrustData(data.about_trust)
+              const responce = await axios.post('/api/main-backend/about_us',{
+                section: "about_trust"
+              });
+              const data = responce.data.data.content;
+              setAbtTrustData(data)
               
             } catch (error) {
               console.error("Error fetching about us data",error);
@@ -62,10 +64,7 @@ const NewTrust = ({theme, toggle}) => {
       />
       {AbtTrustData ? (
         // <div className="bg-prim dark:bg-drkp min-h-screen px-10 pt-0 md:p-8">
-        <div className="bg-prim dark:bg-drkp min-h-screen pt-0 px-11 md:p-9 lg:px-16">
-
-
-
+        <div className="bg-prim dark:bg-drkp min-h-screen pt-0 px-11 md:p-9 lg:px-16 font-[Poppins]">
           <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-2 md:px-8 lg:px-16">
           <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -73,13 +72,13 @@ const NewTrust = ({theme, toggle}) => {
                 transition={{ duration: 0.6 }}
                 className="text-left text-text dark:text-drkt"
               >
-                <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+                <h2 className="text-[32px] text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                 Velammal Educational Trust (VET)
                 </h2>
-                <p className="text-lg leading-relaxed text-justify">
+                <p className="text-[16px] leading-relaxed text-justify">
                 {AbtTrustData?.Velammal_Educational_Trust[0]}
                 </p>
-                <p className="mt-4 text-lg leading-relaxed text-justify">
+                <p className="mt-4 text-[16px] leading-relaxed text-justify">
                 {AbtTrustData?.Velammal_Educational_Trust[1]}
             </p>
             </motion.div>
@@ -95,7 +94,7 @@ const NewTrust = ({theme, toggle}) => {
                   alt="Velammal Trust Banner"
                 />
                 <div className="flex justify-center items-center flex-col mt-2">
-                  <p className="font-bold">THIRUMATHI VELAMMAL</p>
+                  <p className="font-bold font-[Poppins]">{AbtTrustData?.velammal?.name}</p>
                 </div>
               </motion.div>
 
@@ -110,10 +109,10 @@ const NewTrust = ({theme, toggle}) => {
                 transition={{ duration: 0.6 }}
                 className="text-left text-text dark:text-drkt"
                 >
-                <h2 className="text-3xl text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
+                <h2 className="text-[24px] text-brwn dark:text-drkt font-bold mb-4 border-b-4 border-secd dark:border-drks inline-block pb-2">
                   Strength of the Trust
                 </h2>
-                <p className="text-lg leading-relaxed text-justify">
+                <p className="text-[16px] leading-relaxed text-justify">
                 {AbtTrustData?.velammal?.content}
                 </p>
               </motion.div>
@@ -125,7 +124,7 @@ const NewTrust = ({theme, toggle}) => {
           {/* Section 3 - Management */}
           <div className="mt-16 py-4 px-6 rounded-t-3xl shadow-lg">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-accn dark:text-drkt mb-6">The Management</h2>
+              <h2 className="text-[24px] font-bold text-accn dark:text-drkt mb-6">The Management</h2>
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
               {/* {managementTeam.map((person, index) => ( */}
@@ -137,7 +136,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[0])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[0])}
                     alt="Shri. M.V. Muthuramalingam"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
@@ -156,7 +155,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[1])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[1])}
                     alt="Shri. M.V. VelMurugan"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />
@@ -175,7 +174,7 @@ const NewTrust = ({theme, toggle}) => {
                             hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row"
                 >
                   <img
-                    src={UrlParser(AbtTrustData?.image_path[2])}
+                    src={UrlParser(AbtTrustData?.The_Management?.image_path[2])}
                     alt="Shri. M.V. VelMurugan"
                     className="management-image-1 md:w-40 md:h-40 mr-6 shadow-lg"
                   />

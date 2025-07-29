@@ -20,8 +20,12 @@ export const PlacementDetails = ({ theme, toggle }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/placementsdata`);
-                setPlacementData(response.data[0]?.Placement_Details || null);
+                const response = await axios.post(`/api/main-backend/placement`,
+                    {
+                        type: "placement_details"   
+                    }
+                );
+                setPlacementData(response.data?.data || null);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
@@ -80,16 +84,16 @@ export const PlacementDetails = ({ theme, toggle }) => {
                 ) : (
                     <>
                         {/* Year-wise PDF Reports */}
-                        <div className="placement-yearwise card-plc bg-prim dark:bg-drkts">
+                        <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts">
                             <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
                             <div className="place-Sylgrid">
-                                {placementData?.Year_Wise?.year_pdf.map((year, index) => (
+                                {placementData?.year_wise_pdfs?.map((year, index) => (
                                     <button
                                         key={index}
                                         className="place-course-button bg-secd dark:bg-drks text-text"
-                                        onClick={() => openModal(UrlParser(placementData?.Year_Wise?.Pdf_path[index]))}
+                                        onClick={() => openModal(UrlParser(year.pdf_path))}
                                     >
-                                        <div className="place-course">{year}</div>
+                                        <div className="place-course">{year.year}</div>
                                     </button>
                                 ))}
                             </div>
@@ -105,59 +109,73 @@ export const PlacementDetails = ({ theme, toggle }) => {
                         </div>
                         
                         {/* Placement Department-wise Data */}
-                        <div className="placement-percent card-plc">
-                            <h4 className="place-section-title text-brwn dark:text-drkt">Placement Details in % - Department Wise</h4>
-                            <div className="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th className="table-header">DEPARTMENT</th>
-                                            {placementData?.Department_wise?.years?.map((year, index) => (
-                                                <th className="table-header" key={index}>{year}</th>
-                                            ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {placementData?.Department_wise?.Department.map((department, rowIndex) => (
-                                            <tr key={rowIndex} className="table-row">
-                                                <td className="text-text dark:text-drkt">{department}</td>
-                                                {placementData?.Department_wise?.years.map((year, cellIndex) => (
-                                                    <td key={cellIndex}>{placementData?.Department_wise?.[year]?.[rowIndex] || '-'}</td>
-                                                ))}
-                                            </tr>
+                        <div className="placement-percent font-[poppins] card-plc">
+                            <h4 className="place-section-title text-brwn dark:text-drkt">
+                                Placement Details in % - Department Wise
+                            </h4>
+                            <div className="table-container overflow-x-auto">
+                                <table className="min-w-full border-collapse">
+                                <thead>
+                                    <tr>
+                                    <th className="table-header">DEPARTMENT</th>
+                                    {placementData?.department_wise?.years?.map((yearObj, index) => (
+                                        <th className="table-header" key={index}>
+                                        {yearObj.year}
+                                        </th>
+                                    ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {placementData?.department_wise?.departments?.map((deptName, rowIndex) => (
+                                    <tr key={rowIndex} className="table-row">
+                                        <td className="text-text dark:text-drkt">{deptName}</td>
+                                        {placementData?.department_wise?.years?.map((yearObj, colIndex) => (
+                                        <td key={colIndex} className="text-center">
+                                            {yearObj.values[rowIndex] !== "-" ? yearObj.values[rowIndex] : "-"}
+                                        </td>
                                         ))}
-                                    </tbody>
+                                    </tr>
+                                    ))}
+                                </tbody>
                                 </table>
                             </div>
-                        </div>
+                            </div>
 
 
                         {/* Placement Statistics */}
-                        <div className="placement-percent card-plc">
-                            <h4 className="place-section-title text-brwn dark:text-drkt">Placement Statistics</h4>
+                        <div className="placement-percent font-[poppins] card-plc">
+                            <h4 className="place-section-title text-brwn dark:text-drkt">
+                                Placement Statistics
+                            </h4>
                             <div className="table-container">
                                 <table>
-                                    <thead>
-                                        <tr>
-                                            <th className="table-header">PARTICULARS</th>
-                                            {placementData?.Statistics?.years?.map((year, index) => (
-                                                <th className="table-header" key={index}>{year}</th>
-                                            ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {placementData?.Statistics?.particulars.map((particular, rowIndex) => (
-                                            <tr key={rowIndex} className="table-row">
-                                                <td className="">{particular}</td>
-                                                {placementData?.Statistics?.years.map((year, cellIndex) => (
-                                                    <td key={cellIndex}>{placementData?.Statistics?.[year]?.[rowIndex] || '-'}</td>
-                                                ))}
-                                            </tr>
+                                <thead>
+                                    <tr>
+                                    <th className="table-header">PARTICULARS</th>
+                                    {placementData?.statistics?.years?.map((yearObj, index) => (
+                                        <th className="table-header" key={index}>
+                                        {yearObj.year}
+                                        </th>
+                                    ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {placementData?.statistics?.particulars?.map((particular, rowIndex) => (
+                                    <tr key={rowIndex} className="table-row">
+                                        <td className="">{particular}</td>
+                                        {placementData?.statistics?.years?.map((yearObj, colIndex) => (
+                                        <td key={colIndex}>
+                                            {yearObj.values[rowIndex] !== undefined
+                                            ? yearObj.values[rowIndex]
+                                            : "-"}
+                                        </td>
                                         ))}
-                                    </tbody>
+                                    </tr>
+                                    ))}
+                                </tbody>
                                 </table>
                             </div>
-                        </div>                  
+                            </div>                  
                     </>
                 )}
 

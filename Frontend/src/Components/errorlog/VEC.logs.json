@@ -1,0 +1,147 @@
+[{
+  "_id": "rate_limit_log",
+  "logs": [
+    {
+      "status": 429,
+      "ip": "::1",
+      "endpoint": "/api/main-backend/web_team",
+      "message": "Rate limit exceeded",
+      "timestamp": "26/07/2025, 18:37:36"
+    },
+    {
+      "status": 429,
+      "ip": "::1",
+      "endpoint": "/api/main-backend/web_team",
+      "message": "Rate limit exceeded",
+      "timestamp": "26/07/2025, 18:38:24"
+    },
+    {
+      "status": 429,
+      "ip": "::1",
+      "endpoint": "/api/main-backend/web_team",
+      "message": "Rate limit exceeded",
+      "timestamp": "26/07/2025, 18:39:14"
+    },
+    {
+      "status": 429,
+      "ip": "::1",
+      "endpoint": "/api/main-backend/web_team",
+      "message": "Rate limit exceeded",
+      "timestamp": "26/07/2025, 18:39:20"
+    }
+  ]
+},
+{
+  "_id": "error_log",
+  "logs": [
+    {
+      "status": 500,
+      "message": "Error fetching announcements",
+      "error": "ReferenceError: error is not defined\n    at getAbtUs (D:\\VEC_Web_Engine\\backend\\main-backend\\controllers\\about_us_controllers.js:13:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "endpoint": "/api/main-backend/about_us",
+      "method": "GET",
+      "ip": "::1",
+      "timestamp": "26/07/2025, 18:55:41"
+    },
+    {
+      "status": 500,
+      "message": "Error fetching announcements",
+      "error": "ReferenceError: error is not defined\n    at getAbtUs (D:\\VEC_Web_Engine\\backend\\main-backend\\controllers\\about_us_controllers.js:13:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "endpoint": "/api/main-backend/about_us",
+      "method": "GET",
+      "ip": "::1",
+      "timestamp": "26/07/2025, 18:57:20"
+    },
+    {
+      "status": 500,
+      "message": "Error fetching announcements",
+      "error": "ReferenceError: error is not defined\n    at getAbtUs (D:\\VEC_Web_Engine\\backend\\main-backend\\controllers\\about_us_controllers.js:13:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "endpoint": "/api/main-backend/about_us",
+      "method": "GET",
+      "ip": "::1",
+      "timestamp": "26/07/2025, 18:57:51"
+    },
+    {
+      "status": 500,
+      "message": "Error fetching announcements",
+      "error": "ReferenceError: collection is not defined\n    at getAbtUs (D:\\VEC_Web_Engine\\backend\\main-backend\\controllers\\about_us_controllers.js:9:31)\n    at Layer.handle [as handle_request] (D:\\VEC_Web_Engine\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\VEC_Web_Engine\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at D:\\VEC_Web_Engine\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs:864:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async D:\\VEC_Web_Engine\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs:747:5",
+      "endpoint": "/api/main-backend/about_us",
+      "method": "GET",
+      "ip": "::1",
+      "timestamp": "26/07/2025, 18:59:45"
+    }
+  ]
+},
+{
+  "_id": "mongo_health_log",
+  "logs": [
+    {
+      "host": "LAPTOP-IM8JSLT0",
+      "version": "8.0.0",
+      "uptime": 874201,
+      "connections": {
+        "current": 23,
+        "available": 999977,
+        "totalCreated": 258,
+        "rejected": 0,
+        "active": 3,
+        "threaded": 23,
+        "exhaustIsMaster": 0,
+        "exhaustHello": 2,
+        "awaitingTopologyChanges": 2,
+        "loadBalanced": 0
+      },
+      "mem": {
+        "bits": 64,
+        "resident": 43,
+        "virtual": 4858,
+        "supported": true,
+        "secureAllocByteCount": 0,
+        "secureAllocBytesInPages": 0
+      },
+      "opcounters": {
+        "insert": 2,
+        "query": 1860,
+        "update": 92,
+        "delete": 0,
+        "getmore": 0,
+        "command": 9848
+      },
+      "timestamp": "26/07/2025, 20:10:42"
+    },
+    {
+      "host": "LAPTOP-IM8JSLT0",
+      "version": "8.0.0",
+      "uptime": 874267,
+      "connections": {
+        "current": 23,
+        "available": 999977,
+        "totalCreated": 261,
+        "rejected": 0,
+        "active": 3,
+        "threaded": 23,
+        "exhaustIsMaster": 0,
+        "exhaustHello": 2,
+        "awaitingTopologyChanges": 2,
+        "loadBalanced": 0
+      },
+      "mem": {
+        "bits": 64,
+        "resident": 44,
+        "virtual": 4858,
+        "supported": true,
+        "secureAllocByteCount": 0,
+        "secureAllocBytesInPages": 0
+      },
+      "opcounters": {
+        "insert": 2,
+        "query": 1865,
+        "update": 94,
+        "delete": 0,
+        "getmore": 0,
+        "command": 9878
+      },
+      "timestamp": "26/07/2025, 20:11:48"
+    }
+  ]
+}]

@@ -13,21 +13,17 @@ export default function IicFacPolicy({ data }) {
     };
 
 
-    const policyArray =
-        data?.name?.map((name, index) => ({
-        year: name,
-        path: UrlParser(data.pdf_path[index]),
-    })) || []
-
-  //   function scrollToPDF() {
-  //   document.getElementById("policyPdfViewer").scrollIntoView({ behavior: "smooth" });
-  // }
+    const policyArray = Array.isArray(data) ? 
+        data?.map((name, index) => ({
+        year: name?.name,
+        path: UrlParser(name?.path),
+    })) : []
 
   return (
     <>
       {data ? (
         <div className="nirf-content mt-12">
-          <h1 className="text-accn text-4xl mb-4 font-bold">Policy</h1>
+          <h1 className="text-accn dark:text-drkt text-4xl mb-4 font-bold">Policy</h1>
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
             <div className="nirf-year-actions flex flex-col mb-20 md:grid md:grid-cols-2 md:gap-8 md:gap-x-16 md:p-4 md:w-fit md:mx-auto">
               {policyArray.map((action, index) => {
@@ -40,14 +36,11 @@ export default function IicFacPolicy({ data }) {
                   <button
                     key={index}
                     className={`px-6 py-3  font-semibold rounded-xl nirf-action-button cursor-pointer 
-                      ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-drka"}
+                      ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-cewn"}
                     `}
                    onClick={() => {
                    
                     openPdf("Policy", action.year);
-                    //  setTimeout(() => {
-                    //   scrollToPDF();
-                    // }, 300);
                   }}
                   >
                     {action.year}
@@ -57,8 +50,8 @@ export default function IicFacPolicy({ data }) {
             </div>
 
             {selectedAction && selectedAction.category === "Policy" && (
-              <div className="border p-8 mt-10 w-[94%] mx-auto bg-white shadow-lg" id="policyPdfViewer">
-                <h3>{`Viewing: ${selectedAction.year}`}</h3>
+              <div className="border p-8 mt-10 w-[94%] mx-auto bg-prim dark:bg-drkp shadow-lg" id="policyPdfViewer">
+                <h3 className="text-text dark:text-prim text-center mb-2">{`Viewing: ${selectedAction.year}`}</h3>
                 <embed
                   className="embed"
                   src={

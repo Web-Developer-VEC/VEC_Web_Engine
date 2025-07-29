@@ -76,6 +76,8 @@
 .tail-content h2 {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 24px;
+  font-family: poppins;
 }
   
 .download-links-container {
@@ -90,6 +92,7 @@
   color: black !important;
   text-decoration: none;
   transition: transform 0.3s ease-in;
+  font-family: poppins;
 }
 
 .resource-item:hover {

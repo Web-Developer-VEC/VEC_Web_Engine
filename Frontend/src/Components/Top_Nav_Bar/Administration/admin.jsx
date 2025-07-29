@@ -29,8 +29,8 @@ const Card = ({ image, name, designation }) => {
         <div className="text-red-500">Failed to load image</div>
       )}
 
-      <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-poppins text-[#000000]">{name}</h3>
-      <p className="admin-card-designation text-gray-600 dark:text-drka">{designation}</p>
+      <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-[poppins] text-[#000000]">{name}</h3>
+      <p className="admin-card-designation  font-[poppins] text-gray-600 dark:text-drka">{designation}</p>
     </div>
   );
 };
@@ -59,8 +59,8 @@ const AdminCard = ({ image, name, designation }) => {
       )}
 
       <div className="admin-text-content ">
-        <h3 className="admin-card-name text-accn dark:text-drkt font-poppins text-center">{name}</h3>
-        <p className="admin-card-designation text-gray-600 dark:text-drka text-center">{designation}</p>
+        <h3 className="admin-card-name text-accn dark:text-drkt font-[poppins] text-center">{name}</h3>
+        <p className="admin-card-designation font-[poppins] text-gray-600 dark:text-drka text-center">{designation}</p>
       </div>
     </div>
   );
@@ -82,9 +82,13 @@ const CardPage = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/adminoffice`);
-
-        setadminData(response.data);
+        const response = await axios.post(`/api/main-backend/administration`,
+          {
+            type: "admin_office"
+          }
+        );
+        
+        setadminData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);

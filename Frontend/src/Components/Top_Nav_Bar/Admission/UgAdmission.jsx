@@ -12,7 +12,7 @@ const UgAdmission = ({theme, toggle}) => {
 
   const ug = ugData?.UG || []; 
   const ug_lateral = ugData?.UG_Lateral || [];
-  const year = ugData?.Year
+  const year = ugData?.year  
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -23,8 +23,12 @@ const UgAdmission = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/ug`);
-        setUgData(response.data);
+        const response = await axios.post(`/api/main-backend/admission`,
+          {
+            type: "ug"
+          }
+        );
+        setUgData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -124,7 +128,7 @@ if (!isOnline) {
             </div>
              <div className="flex justify-center mt-4">
               <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-              <a href={UrlParser(ugData?.link)} className="dark:text-drka" target="_blank">
+              <a href={UrlParser(ugData?.BE_Government_link)} className="dark:text-drka" target="_blank">
                 <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)
               </a>
             </div>
@@ -134,7 +138,7 @@ if (!isOnline) {
             </div>
             <div className="flex justify-center mt-4">
               <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-              <a href={UrlParser(ugData?.link)} className="dark:text-drka" target="_blank">
+              <a href={UrlParser(ugData?.BE_Management_link)} className="dark:text-drka" target="_blank">
                 <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA
               </a>
             </div>

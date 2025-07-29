@@ -19,9 +19,13 @@ const REGULATION = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/regulation');
+        const response = await axios.post('/api/main-backend/exam',
+          {
+            type: "regulation"
+          }
+        );
 
-        setRegulationData(response.data);
+        setRegulationData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error Fetching Regulation data");
@@ -75,11 +79,22 @@ if (!isOnline) {
                 <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Regulation {reg.year}</h2>
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
-                    <li key={idx}>
-                      <a href={UrlParser(link.pdf_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drka">
-                        {link.name}
+                  <li key={idx}>
+                    {link?.pdf_path ? (
+                      <a
+                        href={UrlParser(link?.pdf_path)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="dark:text-drka font-[Poppins] hover:underline text-blue-600"
+                      >
+                        {link?.name}
                       </a>
-                    </li>
+                    ) : (
+                      <span className="text-text datk:text-drkt font-[Poppins]">
+                        {link?.name}
+                      </span>
+                    )}
+                  </li>
                   ))}
                 </ul>
               </div>

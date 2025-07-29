@@ -72,8 +72,12 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/committee`);
-        const formattedData = response.data.map((item) => ({
+        const response = await axios.post(`/api/main-backend/administration`,
+          {
+            type: "committee"
+          }
+        );
+        const formattedData = response.data.data.map((item) => ({
           ...item,
           name: item.name
             .split("_") // Split the name by underscores
@@ -128,7 +132,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   subHeaderText="Leading the way to success with visionary strategies, collaborative efforts, and decisive action."
 />
 {isLoading ? (
-  <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+  <div className="h-screen flex items-center  justify-center md:mt-[10%] md:block">
     <LoadComp txt={""} />
   </div>
 ) : (
@@ -136,7 +140,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
       {/* Committee Page Content */}
       <div className="committee-container">
         {/* Committee Content */}
-          <div className="committee-buttons-grid">
+          <div className="committee-buttons-grid font-[poppins]">
             {committieeData.map(({ name, pdf_path }) => (
               <CommitteeButton
                 key={name}

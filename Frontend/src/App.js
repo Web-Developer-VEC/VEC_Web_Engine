@@ -9,6 +9,7 @@ import Boot from "./Components/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
 import Head from "./Components/Landing Comp/Head.jsx";
 import Footer from "./Components/Landing Comp/Footer.jsx";
+import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
 /* AboutUs Pages Imports */
 import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
 import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
@@ -20,28 +21,30 @@ import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
 import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
 import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
 import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
+import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
+import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Academics Pages Imports */
 import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
 import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
 import AcademicDepartments from "./Components/Top_Nav_Bar/Academics/Department.jsx";
 import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
-import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
+import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
 /* Admisiion Pages Imports */
 import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
 import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
 import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
 import PHD from "./Components/Top_Nav_Bar/Admission/PhdAdmission.jsx";
+import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
 /* Exams Pages Imports */
 import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
 import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
+import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-import Sponsres from "./Components/Top_Nav_Bar/Research/Sponseredresearch.jsx";
-import JounalPub from "./Components/Top_Nav_Bar/Research/Journalpublication.jsx";
-import ConfPub from "./Components/Top_Nav_Bar/Research/Conferencepublication.jsx";
-import Patentsres from "./Components/Top_Nav_Bar/Research/Patent.jsx";
-import Bookres from "./Components/Top_Nav_Bar/Research/Bookpublication.jsx";
+
+import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
+
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
@@ -50,7 +53,6 @@ import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
-// import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
 import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
@@ -65,6 +67,14 @@ import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
 import Login from "./Components/Second_Nav_Bar/Login.jsx";
 import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
 import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
+import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
+import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
+import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
+import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
+import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
+import WebTeam from "./Components/Second_Nav_Bar/Club/web Team/webteam.jsx";
 // Digital Hostel
 import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
 import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
@@ -73,29 +83,21 @@ import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboar
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+// import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+// other stuffs
 import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
-import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
-import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
-import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 import axios from 'axios';
 import SideButton from "./Components/sideButton.jsx";
-
-import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
-import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
-import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
-import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
-import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
-
-import { Hand, Scroll } from "lucide-react";
-import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
-
-
-import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
+import RateLimitReach from "./ratelimit.jsx";
+import LoadComp from "./Components/LoadComp.jsx";
+import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
+import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
+import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
+import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
+import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -143,9 +145,13 @@ const App = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responce = await axios.get('/api/landing_page_data');
+                const responce = await axios.post('/api/main-backend/landing_page_data',
+                    {
+                        type: "page_details"
+                    }
+                );
     
-                setLandingData(responce.data);
+                setLandingData(responce.data.data[0]);
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
@@ -193,6 +199,14 @@ const App = () => {
         setCurrentPath(location.pathname); // Update state when route changes
     }, [location]);
 
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+    }
+
     const isHostelRoute = currentPath.startsWith("/hostel")
 
     return (
@@ -237,18 +251,26 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
-                                <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/>
-                                <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/proudalumni" drk element={<ProudAlumni />}/>
-                                <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/>
+                                {/* <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/> */}
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
+
+
+                                <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
+
+                                
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
@@ -270,6 +292,7 @@ const App = () => {
                                 <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
                                 <Route path="/developers/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
@@ -282,16 +305,21 @@ const App = () => {
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
                                 <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
 
-                            {/*  404 - Page not found  */}
+                                <Route path="/errorlog" element={<ErrorLogPage />} />
+
+                                {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
+                                {/* Rate limit page */}
+                                <Route path="/ratelimit" element={<RateLimitReach />} />
+                                <Route path="/hit_logs" element={<HitLogs />} />
                             </Routes>
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.landing_page_details}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
 
                         <SideButton/>
-<ScrollToTopButton />
+                        <ScrollToTopButton />
                     </>
                 </AppContainer>
         </>

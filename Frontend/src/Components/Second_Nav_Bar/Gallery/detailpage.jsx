@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import LoadComp from "../../LoadComp";
 // import "./Gallerydetails.css";
 
 export default function Gallerydetails() {
@@ -43,52 +44,60 @@ export default function Gallerydetails() {
   };
   
   return (
-    <div className="gallery-container">
-      <h2 className="gallery-title">Gallery Page</h2>
+    <>
+      {(videos && images) ? (
+        <div className="gallery-container">
+          <h2 className="gallery-title">Gallery Page</h2>
 
-      {/* Videos First */}
-      <div className="gallery-videos elementor-widget-wrap">
-        {videos && (
-          <>
-            {videos?.map((item,i) => (
-              <div key={i} className="gallery-item-video">
-                <div className="video-wrapper">
-                  <iframe
-                    src={getYouTubeEmbedUrl(item)}
-                    title={"Videos"}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                {/* <p>{item.title}</p> */}
-              </div>
-            ))}
-          </>
-        )}
-      </div>
+          {/* Videos First */}
+          <div className="gallery-videos elementor-widget-wrap">
+            {videos && (
+              <>
+                {videos?.map((item,i) => (
+                  <div key={i} className="gallery-item-video">
+                    <div className="video-wrapper">
+                      <iframe
+                        src={getYouTubeEmbedUrl(item)}
+                        title={"Videos"}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                    {/* <p>{item.title}</p> */}
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
 
-      {/* Images Next */}
-      <div className="gallery-gri">
-        {images && (
-          <>
-            {images?.map((item,i) => (
-              <div key={i} className="gallery-item">
-                <img src={UrlParser(item)} alt={"Images"} onClick={() => setModalImage(UrlParser(item))} />
-                {/* <p>{item.title}</p> */}
-              </div>
-            ))}
-          </>
-        )}
-      </div>
+          {/* Images Next */}
+          <div className="gallery-gri">
+            {images && (
+              <>
+                {images?.map((item,i) => (
+                  <div key={i} className="gallery-item">
+                    <img src={UrlParser(item)} alt={"Images"} onClick={() => setModalImage(UrlParser(item))} />
+                    {/* <p>{item.title}</p> */}
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
 
-      {/* Popup Modal */}
-      {modalImage && (
-        <div className="modal-overlay" onClick={() => setModalImage(null)}>
-          <span className="close-btn" onClick={() => setModalImage(null)}>&times;</span>
-          <img className="modal-image" src={modalImage} alt="Popup" onClick={(e) => e.stopPropagation()} />
+          {/* Popup Modal */}
+          {modalImage && (
+            <div className="modal-overlay" onClick={() => setModalImage(null)}>
+              <span className="close-btn" onClick={() => setModalImage(null)}>&times;</span>
+              <img className="modal-image" src={modalImage} alt="Popup" onClick={(e) => e.stopPropagation()} />
+            </div>
+          )}
         </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
       )}
-    </div>
+    </>
   );  
 }

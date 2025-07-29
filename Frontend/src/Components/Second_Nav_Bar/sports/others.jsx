@@ -21,6 +21,7 @@ const Others = ({ data }) => {
 
     const formattedData = data?.map((image, index) => ({
       id: index + 1,
+
       text: image?.title || "No Title", // Fallback for undefined values
       image: UrlParser(image?.image_path),
     }));

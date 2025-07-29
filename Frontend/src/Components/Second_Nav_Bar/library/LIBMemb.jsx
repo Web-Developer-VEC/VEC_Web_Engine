@@ -2,33 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LoadComp from "../../LoadComp";
 
-const LIBMemb = ({ lib }) => {
-  const [membership, setMembership] = useState(null);
+const LIBMemb = ({ data }) => {
+  const members = data?.member_details || [];
+  const books = data?.no_of_books || [];
+  const cds = data?.periodical_back_volumes_cd || [];
 
-  const isMembership = lib === "Membership Details";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("/api/library");
-        const data = res.data;
-
-        // If the response is an array, use data[0]
-        const membershipData = data?.membership_details || data[0]?.membership_details;
-        setMembership(membershipData);
-      } catch (error) {
-        console.error("Error fetching membership data:", error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const members = membership?.member_details || [];
-  const books = membership?.no_of_books || [];
-  const cds = membership?.["periodical/back_volumes/cd"] || [];
-
-   if (!membership) {
+   if (!data) {
       return (
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
             <LoadComp />
@@ -38,7 +17,7 @@ const LIBMemb = ({ lib }) => {
 
   return (
     <div className="overflow-x-auto px-4 sm:px-8 py-10">
-      {isMembership && membership && (
+      {data && (
         <>
           <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] dark:text-drkt text-center mb-8">
             Membership Details

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LoadComp from "../../LoadComp";
 
 export default function Patents({ data }) {
   const rowsPerPage = 20;
@@ -9,7 +10,7 @@ export default function Patents({ data }) {
   const endIndex = startIndex + rowsPerPage;
   const currentData = data?.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const totalPages = Math.ceil(data?.length / rowsPerPage);
 
   const handlePrev = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -19,70 +20,86 @@ export default function Patents({ data }) {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  return (
-    <div className="ic-table-container m-4">
-      <div>
-        <p className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">Patents</p>
+  if (!Array.isArray(data)) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
       </div>
-      <div className="overflow-x-auto">
-        <table className="ic-data-table">
-          <thead>
-            <tr>
-              <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Patent Application No</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Status of Patent</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Inventor's Name</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Title of the Patent</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Applicant's Name</th>
-              <th className="ic-table-head border-2 border-text dark:border-prim">Published date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentData?.map((startup, i) => (
-              <tr key={startIndex + i}>
-                <td className="ic-table-data">{startup["Sl. No."]}</td>
-                <td className="ic-table-data">{startup["Patent Application No."]}</td>
-                <td className="ic-table-data">
-                  {startup["Status of Patent (Published / Granted)"]}
-                </td>
-                <td className="ic-table-data text-left">
-                    {startup["Inventor/s Name"].map((div,i)=>(
-                        <l>
-                            {div}
-                        </l>
-                    ))}
-                </td>
-                <td className="ic-table-data">{startup["Title of the Patent"]}</td>
-                <td className="ic-table-data">{startup["Applicant/s Name"]}</td>
-                <td className="ic-table-data">
-                  {startup["Patent Filed Date (DD/MM/YYYY) "]}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    );
+  }
 
-      {/* Pagination Controls */}
-      <div className="flex justify-center items-center gap-4 mt-4">
-        <button
-          onClick={handlePrev}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
-    </div>
+  return (
+    <>
+      {data ? (
+        <div className="ic-table-container m-4">
+          <div>
+            <p className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">Patents</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="ic-data-table">
+              <thead>
+                <tr>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Patent Application No</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Status of Patent</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Inventor's Name</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Title of the Patent</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Applicant's Name</th>
+                  <th className="ic-table-head border-2 border-text dark:border-prim">Published date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.isArray(currentData) && currentData?.map((startup, i) => (
+                  <tr key={startIndex + i}>
+                    <td className="ic-table-data">{startup?.Sl_No}</td>
+                    <td className="ic-table-data">{startup?.Patent_Application_No}</td>
+                    <td className="ic-table-data">
+                      {startup?.Status_of_Patent}
+                    </td>
+                    <td className="ic-table-data text-left">
+                        {startup?.Inventor_Name?.map((div,i)=>(
+                            <l>
+                                {div}
+                            </l>
+                        ))}
+                    </td>
+                    <td className="ic-table-data">{startup?.Title_of_the_Patent}</td>
+                    <td className="ic-table-data">{startup?.Applicant_Name}</td>
+                    <td className="ic-table-data">
+                      {startup?.Patent_Filed_Date}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center items-center gap-4 mt-4">
+            <button
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+          <LoadComp />
+        </div>
+      )}
+    </>
   );
 }

@@ -23,9 +23,13 @@ const Forms = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/allforms`);
-        const data = response.data[0]; // Assuming API returns an array with one object
-
+        const response = await axios.post(`/api/main-backend/exam`,
+          {
+            type: "all_forms"
+          }
+        );
+        const data = response.data.data[0];
+        
         if (data) {
           const students = data.students[0];
           const faculty = data.faculty[0];
@@ -86,7 +90,7 @@ if (!isOnline) {
 
   const renderResourceLinks = (resources) => {
     return resources.map((resource, index) => (
-      <div key={index} className="resource-item dark:bg-drkts">
+      <div key={index} className="resource-item dark:bg-drkts font-[Poppins]">
         {/* <center> */}
           <div className="form-content dark:bg-drkts">
             <div className="form-regulation bg-[#f8f9fa] dark:bg-black">
@@ -139,7 +143,7 @@ if (!isOnline) {
         <div className="tails-container ">
           <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
             <div className="tail-content flex flex-col h-full">
-              <h2 className="font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
+              <h2 className="font-[24px] font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
               <div className="flex-grow overflow-y-auto overflow-x-hidden pr-2 h-full dark:bg-drkts">
                 {renderResourceLinks(studentResources)}
               </div>

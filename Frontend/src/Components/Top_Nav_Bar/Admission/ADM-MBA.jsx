@@ -13,8 +13,12 @@ const MBA = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/mba`);
-        setMbaData(response.data);
+        const response = await axios.post(`/api/main-backend/admission`,
+          {
+            type: "mba"
+          }
+        );
+        setMbaData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -69,7 +73,7 @@ if (!isOnline) {
       ) : (
         <div className="mba-page">
           <div className="MBA">
-            <h3 className="text-accn dark:text-drkt ml-4 font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">M.B.A Admission</h3>
+            <h3 className="text-accn dark:text-drkt ml-4 font-bold  pb-2 w-fit  dark:border-drks text-[32px]">M.B.A Admission</h3>
           </div>
           <div className="mba-container bg-[#fffae6]
                   dark:bg-drkb border-l-4 border-secd dark:border-drks">
@@ -87,14 +91,14 @@ if (!isOnline) {
           </div>
           <div className="flex justify-center mt-4">
             <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-            <a href={UrlParser(mbaData?.link)} className="dark:text-drka" target="_blank">
+            <a href={UrlParser(mbaData?.MBA_Management_link)} className="dark:text-drka" target="_blank">
               <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR MBA- MANAGEMENT QUOTA
             </a>
           </div>
 
             <div className="mba-content">
               <center>
-                <h4 className="text-accn dark:text-drkt font-bold">MBA - Total Intake ({mbaData?.Year})</h4>
+                <h4 className="text-accn dark:text-drkt font-bold">MBA - Total Intake ({mbaData?.year})</h4>
               </center>
               <table className="mba-intake-table">
                 <thead>

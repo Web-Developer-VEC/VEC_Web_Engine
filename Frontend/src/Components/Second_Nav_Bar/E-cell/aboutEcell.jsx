@@ -10,45 +10,68 @@ import style from "./Egalary.css";
 import EnterpreN from "./Enterpreneur.jsx";
 import Activ from "./Eactivity.jsx";
 import axios from "axios";
+import LoadComp from "../../LoadComp.jsx";
 
 
 
 const Ecell = ({toggle,theme}) => {
+    const [section, setEcell] = useState("About E-cell");
+    const [ecell,setEcellData] = useState(null);
 
-
-    const [home,setHome]=useState({})
-    const [committee,setCommittee]=useState({})
-    const [enterpreneur,setEnterpreneur]=useState({})
-    const [activity,setActivity]=useState({})
-    const [gallery,setGallery]=useState({})
     useEffect(()=> {
+        const typeMap = {
+            "About E-cell": "about",
+            "Committee": "committee",
+            "Enterpreneur": "enterpreneur",
+            "Activity": "activity",
+            "Gallery": "gallery"
+        }
         const fetchData = async () =>{
 
-            const response = await axios.get('/api/ecell');
-            const data = response.data[0]
+            const response = await axios.post('/api/main-backend/ecell',
+                {
+                    type: typeMap[section]
+                }
+            );
+            const data = response.data.data
 
-            setHome(data.home)
-            setCommittee(data.committee)
-            setEnterpreneur(data.entrepreneur)
-            setActivity(data.activity)
-            setGallery(data.gallery)
-
-
-
+            setEcellData(data)
         }
-      fetchData()}
-  ,[])
+      fetchData()
+    },[section])
 
-    
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    const [section, setEcell] = useState("About E-cell")
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+     }
+
     
    const navData = {
-        "About E-cell": <Home home={home}/>,
-        "Committee":<COMMITE committee={committee}/>,
-        "Enterpreneur":<EnterpreN enterpreneur={enterpreneur}/>,
-        "Activity":<Activ activity={activity}/>,
-        "Gallery":<Gall gallery={gallery}/>
+        "About E-cell": <Home home={ecell}/>,
+        "Committee":<COMMITE committee={ecell}/>,
+        "Enterpreneur":<EnterpreN enterpreneur={ecell}/>,
+        "Activity":<Activ activity={ecell}/>,
+        "Gallery":<Gall gallery={ecell}/>
     }
 
 
@@ -57,14 +80,9 @@ const Ecell = ({toggle,theme}) => {
             <Banner theme={theme} toggle={toggle}
             backgroundImage="./Banners/IIC.webp"
             headerText="E - Cell"
-
             subHeaderText="Turning Ideas into Action and Dreams into Enterprises."
         />
-                <SideNav navData={navData} sts={section} setSts={setEcell}/>
-      {/* <SideNav sts={lib} setSts={setLib} navData={navData} cls={""} /> */}
-
-
-                
+            <SideNav navData={navData} sts={section} setSts={setEcell} backButton={true}/>
         </>
     )
 }

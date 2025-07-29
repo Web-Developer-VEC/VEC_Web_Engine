@@ -52,8 +52,14 @@ function Syllabus({theme, toggle}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/curriculumandsyllabus`);
-        setCurriculumData(response.data);
+        const response = await axios.post(`/api/main-backend/exam`,
+          {
+            type: "exam_curriculum"
+          }
+        );
+        setCurriculumData(response.data.data[0]);
+        console.log(response.data.data);
+        
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -90,12 +96,12 @@ if (!isOnline) {
     });
   };
 
-  const renderSection = (data, year) => (
-    <motion.div key={year} variants={itemVariants} className="w-full">
+  const renderSection = (data) => (
+    <motion.div variants={itemVariants} className="w-full">
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
           <div className="course-grid flex flex-wrap -m-2">
-            {data.department.map((course, courseIndex) => (
+            {data?.department?.map((course, courseIndex) => (
               <CourseCard
                 key={courseIndex}
                 course={course}
@@ -122,16 +128,17 @@ if (!isOnline) {
               <LoadComp txt={""} />
             </div>
           ) : (
-            curriculumData.map((yearData, index) => {
-              const year = Object.keys(yearData)[0];
-              if (year === "_id") return null;
-              if (year === "Verticals" || year === "01") {
-                return yearData[year].map((verticalData, vIndex) =>
-                  renderSection(verticalData, `${year}-${vIndex}`)
-                );
-              }
-              return renderSection(yearData[year][0], year);
-            })
+            // curriculumData?.map((yearData, index) => {
+            //   const year = Object.keys(yearData)[0];
+            //   if (year === "_id") return null;
+            //   if (year === "Verticals" || year === "01") {
+            //     return yearData[year]?.map((verticalData, vIndex) =>
+            //       renderSection(verticalData, `${year}-${vIndex}`)
+            //     );
+            //   }
+            //   return renderSection(yearData[year][0], year);
+            // })
+            renderSection(curriculumData)
           )}
         </motion.div>
       </div>

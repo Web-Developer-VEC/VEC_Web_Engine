@@ -78,7 +78,7 @@ const DepartmentPage = ({ theme, toggle }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`/api/${deptID}/${activeSection.toLowerCase()}`);
+        const response = await axios.get(`/api/main-backend/${deptID}/${activeSection.toLowerCase()}`);
         setSectionData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -104,7 +104,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await axios.get(`/api/${deptID}/sidebar`);
+        const response = await axios.get(`/api/main-backend/${deptID}/sidebar`);
         const validSections = response.data.content
           .filter((section) => section.hascontent)
           .map((section) => section.id);
@@ -170,14 +170,14 @@ const DepartmentPage = ({ theme, toggle }) => {
     <div className={styles.main}>
       {/* Header */}
       <div className={styles.header}>
-        <Toggle attr="absolute top-3 right-0 md:right-20  float-right  z-9999  h-12 w-12 z-[100000]" toggle={toggle} theme={theme} />
+        <Toggle attr="absolute top-3 right-0 md:right-24  float-right  z-9999  h-12 w-12 z-[100000]" toggle={toggle} theme={theme} />
         <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
           <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
         </div>
       </div>
       {loading ? (
-        <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
+        <div className={"grid grid-cols-1 place-content-center top-14 h-screen"}>
           <LoadComp />
         </div>
       ) : (

@@ -6,7 +6,10 @@ import ZonalResults from "./ZonalResults";
 import WinnerSlider from "./winners_sld";
 import Achievements from "./achivements";
 import Others from "./others";
+
 import Slider from "react-slick";
+
+
 import LoadComp from "../../LoadComp";
 
 const Achievements1 = ({ data }) => {
@@ -19,6 +22,7 @@ const Achievements1 = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+
   const settings = {
   dots: true,
   infinite: true,
@@ -29,6 +33,7 @@ const Achievements1 = ({ data }) => {
   autoplaySpeed: 3500,
   arrows: true,
 };
+
 
 
   const handleZoneClick = (zoneType) => {
@@ -43,16 +48,19 @@ const Achievements1 = ({ data }) => {
   const zoneWinnerData = data?.find((item) => item.category === "zone_winner")?.content || [];
   const interZonalData = data?.find((item) => item.category === "interzonal_achievements")?.content || [];
   const othersData = data?.find((item) => item.category === "others")?.content || [];
+
   const coordinator = data?.find((item) => item.category === "coordinator")?.content;
 
   console.log("Coor",coordinator);
   
 
 
+
   return (
     <>
       {data ? (
         <>
+
           {coordinator && (
             <div className={`${styles.achievementsContainer}`}>
               <h2 className={styles.sportscoordinator}>Anna University Zone {coordinator?.zone}</h2>

@@ -4,25 +4,6 @@ import {motion} from "framer-motion";
 import LoadComp from "../../LoadComp";
 
 const LibraryIntro = ({about}) => {
-  const tiles = [{
-        hdr: "Vision", cls: "lg:basis-[49%]",
-        cnt: "\"To  enrich  the  knowledge  of  Velammalians  by  providing  dynamic  world  class  learning environment.To  provide  a learning  environment  with  intense  intellectual  inquiry.  To  become  the  most  dynamic  learning  environment  in  the world.  To  advance  with  successful  teaching,  learning  and  research  through  building  a  robust  One  System,  One Library. To transform the library as a place dynamic learning with ease.\""
-    }, {
-        hdr: "Mission", cls: "lg:basis-[49%]",
-        cnt: "\"To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of  the  college  community  to  maintain  and  improve  collections  and  achieve  efficient  services  in  an environment  of  flat  or  reduced  budgets  for  the  students,  faculty  and  staff.  To  transform  the  information available in the environment into knowledge for students, staff and faculty.\""
-    }];
-
-    const generalInstructions = [
-        "Students can obtain membership cards by showing their ID cards with barcodes.",
-        "Members should sign in at the entrance to accept library rules.",
-        "Two renewals per book are allowed unless reserved by others.",
-        "Users should verify book conditions before borrowing.",
-        "Books must be returned on or before the due date.",
-        "Late returns will incur overdue charges as per rules.",
-        "Users should collect a receipt for any fines paid.",
-        "Members can suggest new books to the librarian.",
-        "Strict silence must be maintained in the library.",
-    ];
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -63,7 +44,7 @@ const LibraryIntro = ({about}) => {
               {/* Text Content */}
               <div
                   className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 space-y-4 sm:space-y-6 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl text-brwn dark:text-drkt font-extrabold">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl text-brwn dark:text-drkt font-extrabold">
                         ABOUT THE LIBRARY
                     </h1>
 
@@ -75,7 +56,7 @@ const LibraryIntro = ({about}) => {
                       spacious,
                       well-ventilated space. Our library houses over <span
                       className="font-semibold text-text dark:text-drkt">
-            {about?.no_of_books}</span> of books and <span
+                    {about?.no_of_books}</span> of books and <span
                       className="font-semibold text-text dark:text-drkt">{about?.no_of_titles} titles</span> across
                       various
                       disciplines.
@@ -120,20 +101,23 @@ const LibraryIntro = ({about}) => {
           </div>
 
           <div className="flex flex-wrap gap-x-4 gap-y-4 justify-center mt-[45px] w-full">
-              {tiles.map((tile, index) => (
-                  <div className={`${tile.cls} border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
-                  bg-prim dark:bg-drkb`} key={index}>
-                      <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">{tile.hdr}</p>
-                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{parse(tile.cnt)}</p>
+                  <div className={`lg:basis-[49%] border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
+                  bg-prim dark:bg-drkb`} >
+                      <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">Vision</p>
+                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about?.vision}</p>
                   </div>
-              ))}
+                  <div className={`lg:basis-[49%] border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
+                  bg-prim dark:bg-drkb`} >
+                      <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">Mission</p>
+                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about?.mission}</p>
+                  </div>
           </div>    
           <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center text-center w-full">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drkt mb-6 sm:mb-10">
                     GENERAL INSTRUCTIONS
                 </h2>
                 <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-                    {generalInstructions.map((instruction, index) => (
+                    {about?.general_instructions?.map((instruction, index) => (
                         <motion.div
                         key={index}
                         className="relative dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
@@ -146,13 +130,13 @@ const LibraryIntro = ({about}) => {
                         viewport={{once: true}}
                         >
                             <div className="flex items-center space-x-3 sm:space-x-4">
-                <span
-                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
-                    bg-[#800000] text-white dark:bg-[#800000] dark:text-white font-bold rounded-full text-sm sm:text-lg
-                    transition-transform duration-500"
-                    >
-                  {index + 1}
-                </span>
+                                <span
+                                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
+                                    bg-[#800000] text-white dark:bg-[#800000] dark:text-white font-bold rounded-full text-sm sm:text-lg
+                                    transition-transform duration-500"
+                                    >
+                                {index + 1}
+                                </span>
                             <p className="text-sm sm:text-base md:text-lg">{instruction}</p>
                             </div>
                         </motion.div>
