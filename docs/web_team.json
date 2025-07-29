@@ -5,7 +5,7 @@
       {
         "category": "team_descripition",
         "content": {
-          "message": "Hello everyone this is pilot team"
+          "message": "We are the founding force behind Velammal Engineering College’s official website—the Pilot Batch of the VEC Web Development Team. As the first-ever team to take on this initiative, our 17-member squad laid the groundwork for the college’s digital presence using the MERN stack, GitHub collaboration, and AWS deployment. From full-stack architecture and responsive UI design to backend APIs, we built it all from scratch while working closely with college officials. Our legacy now continues with the Co-Pilot Batch, whom we’ve onboarded and mentored to maintain and evolve the platform. Our efforts laid a strong, scalable foundation for the batches to come."
         }
       },
       {
@@ -201,7 +201,7 @@
       {
         "category": "team_descripition",
         "content": {
-          "message": "Hello everyone this is co pilot team"
+          "message": "We are the Co-Pilot Batch of the Velammal Engineering College Web Development Team—handpicked, mentored, and guided by the founding Pilot Batch. Tasked with carrying forward the digital legacy, we ensure the website stays updated, optimized, and scalable. While the foundation was laid by our seniors, we’ve taken charge of feature enhancements, content management, performance improvements, and bug fixes using the same professional tech stack—MERN, GitHub, and AWS. Bridging the present with the future, we’re not just maintaining the system—we're evolving it."
         }
       },
       {
@@ -209,6 +209,18 @@
         "content": [
           {
             "name": "HARI PRASATH",
+            "year": "Third Year",
+            "department": "AI&DS",
+            "image": "",
+            "social": {
+              "github": "https://github.com/4274-hari",
+              "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "portfolio": "",
+              "email": "hari.velusmy@gmail.com"
+            }
+          },
+          {
+            "name": "AJITH",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "",
@@ -329,18 +341,6 @@
           },
           {
             "name": "SUDHAKAR",
-            "year": "Third Year",
-            "department": "AI&DS",
-            "image": "",
-            "social": {
-              "github": "",
-              "linkedin": "",
-              "portfolio": "",
-              "email": ""
-            }
-          },
-          {
-            "name": "AJITH",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "",
