@@ -4,7 +4,7 @@ export default function TeamTol() {
       <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg">
         {/* 👉 Replace the src below with your team image */}
         <img
-          src="https://www.thevintagenews.com/wp-content/uploads/sites/65/2017/09/108-640x335.jpg"
+          src="/static/images/web_team/pilot.webp"
           alt="Our Team"
           className="w-full object-cover"
         />
