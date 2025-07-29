@@ -126,7 +126,6 @@ export default function OtherFacilities({ theme, toggle }) {
             {getSafe(currentFacility.name, imageIndex)}
           </h2>
           <p>{getSafe(currentFacility.description, imageIndex)}</p>
-
           {/* Image Carousel */}
           <div className="carousel">
             {images.length > 1 && (
