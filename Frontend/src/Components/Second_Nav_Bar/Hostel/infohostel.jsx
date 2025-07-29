@@ -37,9 +37,9 @@ const InfoHostel = ({ hostelData }) => {
         ))}
       </section>
 
-
       <section className="food-timetable">
         <h2 className="infohostel-title text-brwn dark:text-drkt">{data2.category}</h2>
+
 
         <table className="food-table">
           <thead>
