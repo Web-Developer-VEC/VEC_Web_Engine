@@ -332,11 +332,10 @@
             "image_path": "/static/images/sports/others/others_Jr_Mr_Tamilnadu.webp"
           }
         ]
-      }
-    ]
-  },
-  {"type" : "achievements",
-  "data":{
+      },
+        {
+  "category" : "achievements",
+  "content":{
     "zone":"1",
     "year": "2024-25",
    "image_path" : [
@@ -348,7 +347,10 @@
   }
    
 
+  }
+    ]
   },
+ 
   {
     "type": "intramural",
     "data": [
