@@ -104,15 +104,15 @@
         "links": [
           {
             "name": "UG - B.E / B.Tech",
-            "pdf_path": "/static/pdfs/regulation_docs/2019(A)_be.pdf"
+            "pdf_path": "/static/pdfs/regulation_docs/2019A_be.pdf"
           },
           {
             "name": "PG - ME",
-            "pdf_path": "/static/pdfs/regulation_docs/2019(A)_be.pdf"
+            "pdf_path": "/static/pdfs/regulation_docs/2019A_me.pdf"
           },
           {
             "name": "PG - MBA",
-            "pdf_path": "/static/pdfs/regulation_docs/2019(A)_be.pdf"
+            "pdf_path": ""
           }
         ]
       },
@@ -125,11 +125,11 @@
           },
           {
             "name": "PG - ME",
-            "pdf_path": "/static/pdfs/regulation_docs/2019_be.pdf"
+            "pdf_path": ""
           },
           {
             "name": "PG - MBA",
-            "pdf_path": "/static/pdfs/regulation_docs/2019_be.pdf"
+            "pdf_path": "/static/pdfs/regulation_docs/2019_mba.pdf"
           }
         ]
       }
