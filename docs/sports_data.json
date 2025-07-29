@@ -308,10 +308,6 @@
             "image_path": "/static/images/sports/others/others_bfi_talenthunt_1.webp"
           },
           {
-            "title": "Mr.Vijeya Venkatathri (Fencing) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-            "image_path": "/static/images/sports/others/others_fencing_m.webp"
-          },
-          {
             "title": "Mr.Vijeya Venkatathri (Fencing) and Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
             "image_path": "/static/images/sports/others/others_kheloindia_boxing_w.webp"
           },
@@ -339,6 +335,16 @@
       }
     ]
   },
+  {"type" : "achievements",
+    "zone":"1",
+    "year": "2024-25",
+   "image_path" : [
+    "static/images/sports/coordinates/coordinates_1.webp",
+  
+   "static/images/sports/coordinates/coordinates_2.webp",
+"static/images/sports/coordinates/coordinates_3.webp",
+  "static/images/sports/coordinates/coordinates_4.webp"
+   ] },
   {
     "type": "intramural",
     "data": [

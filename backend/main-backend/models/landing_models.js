@@ -1,4 +1,4 @@
-const ALLOWED_TYPES = [
+const landing_data = [
   'page_details',
   'banner',
   'department_banner',
@@ -8,4 +8,9 @@ const ALLOWED_TYPES = [
   'events'
 ];
 
-module.exports = ALLOWED_TYPES;
+const page_details ='page_details'
+
+module.exports = {
+  landing_data,
+  page_details
+};
