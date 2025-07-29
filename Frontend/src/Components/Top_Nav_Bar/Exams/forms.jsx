@@ -23,9 +23,13 @@ const Forms = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/allforms`);
-        const data = response.data[0]; // Assuming API returns an array with one object
-
+        const response = await axios.post(`/api/main-backend/exam`,
+          {
+            type: "all_forms"
+          }
+        );
+        const data = response.data.data[0];
+        
         if (data) {
           const students = data.students[0];
           const faculty = data.faculty[0];

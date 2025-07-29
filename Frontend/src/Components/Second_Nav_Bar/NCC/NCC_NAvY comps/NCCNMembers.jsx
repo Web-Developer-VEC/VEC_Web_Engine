@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import LoadComp from "../../../LoadComp";
-const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
+const  NCCNMembers = ({data}) => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -12,10 +12,16 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
   };
+  let stud = [];
+  let coor = null;
+ if (Array.isArray(data) && data.length >= 2) {
+  coor = data[0]?.members?.[0] || null;
+  stud = Array.isArray(data[1]?.members) ? data[1].members : [];
+}
   
   return (
     <>
-    {(navyFacultyData && navyStudentData )
+    {(coor && stud )
       
       ?(
         
@@ -27,15 +33,15 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
       
       <div className="yrc-member-card-1 dark:bg-text">
         <img
-          src={UrlParser(navyFacultyData?.image_path)}
-          alt={navyFacultyData?.name}
+          src={UrlParser(coor?.image_path)}
+          alt={coor?.name}
           className="yrc-member-image1"
           />
 
         <div className="yrc-member-info1">
           {/* <span className="yrc-platoon">Programme Officer</span> */}
-          <h3>{navyFacultyData?.name}</h3>
-          <p className="yrc-title text-brwn dark:text-drka">{navyFacultyData?.designation}</p>
+          <h3>{coor?.name}</h3>
+          <p className="yrc-title text-brwn dark:text-drka">{coor?.designation}</p>
         </div>
       </div>
 
@@ -44,15 +50,15 @@ const  NCCNMembers = ({navyFacultyData,navyStudentData}) => {
         <div className="yrc-underline3"></div>
       </h2>
       <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
-     {navyStudentData.map(student => (
-        <div key={student.id} className="student-card dark:bg-text">
+     {stud?.map((item,i) => (
+        <div key={i} className="student-card dark:bg-text">
           {/* <img src={UrlParser(student.image)} className="w-[150px] h-[200px] m-auto" alt={student.name} /> */}
           <div className="ncc-n-stu-detail p-2 text-left">
-            <h5 className="text-center">{student.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka">regiment no: {student.regiment_no}</p>
-            <p className="pl-4 text-brwn dark:text-drka">Rank : {student.rank}</p>
-            <p className="pl-4 text-brwn dark:text-drka">University No : {student.universityno}</p>
-            <p className="pl-4 text-brwn dark:text-drka">Department: {student.department}</p>
+            <h5 className="text-center">{item?.name}</h5>
+            <p className="pl-4 text-brwn dark:text-drka">regiment no: {item?.regiment_no}</p>
+            <p className="pl-4 text-brwn dark:text-drka">Rank : {item?.rank}</p>
+            <p className="pl-4 text-brwn dark:text-drka">University No : {item?.universityno}</p>
+            <p className="pl-4 text-brwn dark:text-drka">Department: {item?.department}</p>
           </div>
         </div>
       ))}

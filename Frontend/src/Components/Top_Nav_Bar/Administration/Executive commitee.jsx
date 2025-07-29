@@ -72,8 +72,12 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/committee`);
-        const formattedData = response.data.map((item) => ({
+        const response = await axios.post(`/api/main-backend/administration`,
+          {
+            type: "committee"
+          }
+        );
+        const formattedData = response.data.data.map((item) => ({
           ...item,
           name: item.name
             .split("_") // Split the name by underscores

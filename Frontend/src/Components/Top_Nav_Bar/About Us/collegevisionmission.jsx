@@ -13,9 +13,13 @@ const Collegevisionmission = ({ theme, toggle }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responce = await axios.get('/api/about_us');
-                const data = responce.data[0];
-                setvmData(data.vision_and_mission);
+                const responce = await axios.post('/api/main-backend/about_us',
+                    {
+                        section: "vision_and_mission"
+                    }
+                );
+                const data = responce.data.data.content;
+                setvmData(data);
                 
             } catch (error) {
                 console.error("Error fetching about us data",error);

@@ -7,10 +7,8 @@ import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 
 
-const Naac = ({ toggle, theme }) => {
-  const [isLoading, setIsLoading] = useState(true);
+const Naac = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
-  const [naacData, setNaacData] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -21,21 +19,8 @@ const Naac = ({ toggle, theme }) => {
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/api/naac`);
-        setNaacData(response.data[0].sections)
-        
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
     
-      }
-    };
-    fetchData();
-  }, []);
-      const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -61,7 +46,7 @@ const Naac = ({ toggle, theme }) => {
   return (
     <>
     
-    {!naacData ? (
+    {!data ? (
 
       <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
@@ -87,7 +72,7 @@ const Naac = ({ toggle, theme }) => {
 
       {/* Dropdown Sections */}
       <div className="max-w-4xl mx-auto space-y-6 mb-6 px-4 font-poppi">
-        {naacData?.map((section, index) => (
+        {data?.map((section, index) => (
           <div
           key={index}
           className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
@@ -122,7 +107,7 @@ const Naac = ({ toggle, theme }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         >
-                        {item.title}
+                        {item.name}
                       </a>
                     </li>
                   ))}

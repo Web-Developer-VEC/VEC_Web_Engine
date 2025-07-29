@@ -4,76 +4,75 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
-const InfoHostel = () => {
+const InfoHostel = ({ hostelData }) => {
+  const [HostelData, setHostelUcData] = useState(null);
 
-    const [HostelData, setHostelUcData] = useState(null);
+  const data = hostelData?.[0];
+  const data2 = hostelData?.[1];
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.get('/api/hostel_menu');
-                const data = responce.data[0];
-                setHostelUcData(data.menu)
-            } catch (error) {
-                console.error("Error fetching about us data",error);
-            }
-        }
-        fetchData();
-    }, [])
+  if (!data || !data2 || !data.content || !data2.content) {
+    return <div>Loading...</div>; // Or fallback UI
+  }
 
   return (
     <div className="infohostel-container bg-prim dark:bg-drkp">
-      <h1 className="infohostel-title text-brwn dark:text-drkt">Timing Information</h1>
+      <h1 className="infohostel-title text-brwn dark:text-drkt">{data.category}</h1>
 
       <section className="HI-grid">
-        <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">
-            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">Mess Timing</h2>
+        {data.content.map((item, index) => (
+          <div
+            key={index}
+            className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks"
+          >
+            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">
+              {item.section}
+            </h2>
             <p className="HI-card-text text-text dark:text-drkt">
-            Breakfast: 7:00 AM - 9:00 AM <br />
-            Lunch: 12:00 PM - 2:00 PM <br />
-            {/* Dinner: 7:00 PM - 9:00 PM */}
-            </p>
-        </div>
-        <div className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks">
-            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">Study Timing</h2>
-            <p className="HI-card-text">
-            Morning Study: 6:00 AM - 8:00 AM <br />
-            Evening Study: 6:00 PM - 10:00 PM <br />
-            Night Study: 10:30 PM - 12:00 AM
-            </p>
-        </div>
-        </section>
 
-        {/* Food Timetable */}
-  <section className="food-timetable">
-    <h2 className="infohostel-title text-brwn dark:text-drkt">Menu</h2>
-    <table className="food-table">
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Breakfast</th>
-          <th>Lunch</th>
-          <th>Snacks</th>
-          <th>Dinner</th>
-        </tr>
-      </thead>
-      <tbody>
-          {HostelData?.day?.map((day,i) => (
-            <>
+              {item.breakfast}<br />
+              {item.lunch}<br />
+              {item.dinner}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      <section className="food-timetable">
+        <h2 className="infohostel-title text-brwn dark:text-drkt">{data2.category}</h2>
+
+
+        <table className="food-table">
+          <thead>
             <tr>
-              <td>{day}</td>
-              <td>{HostelData?.Breakfast[i]}</td>
-              <td>{HostelData?.lunch[i]}</td>
-              <td>{HostelData?.snacks[i]}</td>
-              <td>{HostelData?.dinner[i]}</td>
+              <th>Day</th>
+              {Object.keys(data2.content[0]?.hostel_menu[0] || {})
+                .filter(key => key !== "day")
+                .map((mealKey, index) => (
+                  <th key={index}>
+                    {mealKey.charAt(0).toUpperCase() + mealKey.slice(1)}
+                  </th>
+                ))}
             </tr>
-            </>
-          ))}
-      </tbody>
-    </table>
-  </section>
+          </thead>
+          <tbody>
+            {data2.content[0]?.hostel_menu[0]?.day?.map((day, i) => (
+              <tr key={i}>
+                <td>{day}</td>
+                {Object.keys(data2.content[0].hostel_menu[0])
+                  .filter(key => key !== "day")
+                  .map((mealKey, j) => (
+                    <td key={j}>
+                      {data2.content[0].hostel_menu[0][mealKey][i]}
+                    </td>
+                  ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };
+
 
 export default InfoHostel;

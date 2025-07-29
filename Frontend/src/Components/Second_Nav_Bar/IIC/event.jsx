@@ -22,9 +22,9 @@ export default function IicFacEvent({title, data}) {
                         {data?.map((event,i) => (
                             <tr key={event.slNo}>
                                 <td className="ic-table-data">{i+1}</td>
-                                <td className="ic-table-data">{event["name of the program"]}</td>
+                                <td className="ic-table-data">{event.name_of_the_program}</td>
                                 <td className="ic-table-data">{event.date}</td>
-                                <td className="ic-table-data">{event["Number of Participants"]}</td>
+                                <td className="ic-table-data">{event.number_of_participants}</td>
                             </tr>
                         ))}
                         </tbody>

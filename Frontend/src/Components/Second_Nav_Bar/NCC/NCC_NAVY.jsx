@@ -11,7 +11,7 @@ import Banner from "../../Banner";
 
 
 
-function NCCAbout() {
+function NCCAbout({data}) {
   return (
   <section
             className="NCC_NAVY-section bg-prim
@@ -24,41 +24,20 @@ function NCCAbout() {
               About NCC
             </h2>
             <ul className="NCC_NAVY-list">
-              <li>
-                National Cadet Corps is a Tri-Services Organization, comprising
-                the Army, Navy and Air Force, engaged in grooming the youth of
-                the country into disciplined and patriotic citizens.
-              </li>
-              <li>
-                The National Cadet Corps (NCC) is a youth development movement.
-                It has enormous potential for nation-building.
-              </li>
-              <li>
-                The NCC provides opportunities to the youth of the country for
-                their all-round development with a sense of Duty, Commitment,
-                Dedication, Discipline and Moral Values so that they become
-                able leaders and useful citizens.
-              </li>
-              <li>
-                The NCC provides exposure to the cadets in a wide range of
-                activities, with a distinct emphasis on Social Services,
-                Discipline and Adventure Training.
-              </li>
-              <li>
-                The NCC is open to all regular students of schools and colleges
-                on a voluntary basis all over India.
-              </li>
-              <li>
-                The cadets have no liability for active military service once
-                they complete their course but are given preference over normal
-                candidates during selections based on the achievements in the
-                corps.
-              </li>
+              {data?.map((item,i) => (
+              <>
+                {item?.about_us?.map((content,i) => (
+                  <li>
+                    {content}
+                  </li>
+                ))}
+              </>
+            ))}
             </ul>
           </section>);
 }
 
-function NCCVisMis() {
+function NCCVisMis({data}) {
   return (<div className="NCC_NAVY-row">
             <section
               className="NCC_NAVY-section bg-prim
@@ -71,8 +50,7 @@ function NCCVisMis() {
                 Vision
               </h2>
               <p className="NCC_NAVY-content">
-                Empower volunteer youth to become potential leaders and
-                responsible citizens of the country.
+                {Array.isArray(data) && data[0]?.vision}
               </p>
             </section>
 
@@ -87,15 +65,13 @@ function NCCVisMis() {
                 Mission
               </h2>
               <p className="NCC_NAVY-content">
-                To develop leadership and character qualities, mold discipline
-                and nurture social integration and cohesion through
-                multi-faceted programs conducted in a military environment.
+                {Array.isArray(data) && data[0]?.mission}
               </p>
             </section>
           </div>);
 }
 
-function NCCAim() {
+function NCCAim({data}) {
   return (<div
             className="NCC_NAVY-aim-container bg-prim
                 dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
@@ -110,22 +86,21 @@ function NCCAim() {
                 AIM of NCC
               </h2>
               <p className="NCC_NAVY-aimcontent">
-                • The ‘Aims’ of the NCC laid out in 1988 have stood the test of
-                time and continue to meet the requirements expected of it in the
-                current socio-economic scenario of the country.
-                <br />
-                * To develop good qualities like character, commandership,
-                discipline, leadership, secular outlook and selfless service.
-                <br />
-                * To create a human resource of trained and motivated youth.
-                <br />* To provide an environment to motivate youth for a career
-                in the Armed Forces.
+                {data?.map((item,i) => (
+                  <>
+                    {item?.aim?.map((content,i) => (
+                      <li>
+                        {content}
+                      </li>
+                    ))}
+                  </>
+                ))}
               </p>
             </div>
           </div>);
 }
 
-function NCCMotto() {
+function NCCMotto({data}) {
   return (<div className="NCC_NAVY-motto-pledge-container">
             <div
               className="NCC_NAVY-motto bg-prim
@@ -135,10 +110,7 @@ function NCCMotto() {
                 MOTTO OF NCC
               </h2>
               <p className="NCC_NAVY-content">
-                The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec
-                1957. It brings together the youth from different parts of the
-                country, molding them into united, secular and disciplined
-                citizens.
+                {Array.isArray(data) && data[0]?.motto}
               </p>
             </div>
 
@@ -150,9 +122,7 @@ function NCCMotto() {
                 NCC PLEDGE
               </h2>
               <p className="NCC_NAVY-content">
-                We, the cadets of the National Cadet Corps, do solemnly pledge
-                that we shall always uphold the unity of India. We resolve to be
-                disciplined and responsible citizens of our nation.
+                {Array.isArray(data) && data[0]?.pledge}
               </p>
             </div>
           </div>);
@@ -164,23 +134,24 @@ const NCC_NAVY = ({ toggle, theme }) => {
   const [tabel,setTabelValue] = useState({});
   const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
+  const [ncc_navy, setnavy] = useState("About NCC Navy");
+  const [navydata, setnavdata] = useState(null);
   const navData = {
     "About NCC Navy": (
       <>
       
-        <NCCAbout />
-        <NCCVisMis />
-        <NCCAim />
-        <NCCMotto />
+        <NCCAbout data={navydata}/>
+        <NCCVisMis data={navydata}/>
+        <NCCAim data={navydata}/>
+        <NCCMotto data={navydata}/>
         {/* <NCCNCarousel data={curosel} /> */}
       </>
     ),
-    "Recent Events": <NCCNCarousel data={curosel} />,
-   "Team & Coordinators": <NCCNMembers navyFacultyData={Coordinator} navyStudentData={member}/>,
-    "Awards & Recognition": <AlumniSlider1 />,
+    "Recent Events": <NCCNCarousel data={navydata}/>,
+    "Team & Coordinators": <NCCNMembers data={navydata}/>,
+    "Awards & Recognition": <AlumniSlider1 data={navydata}/>,
     
   };
-  const [ncc, setNcc] = useState(Object.keys(navData)[0]);
 
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -190,39 +161,27 @@ const NCC_NAVY = ({ toggle, theme }) => {
   };
 
   useEffect(()=>{
-    const fetchData = async ()=>{
-      try {
-        const responce = await axios.get('/api/ncc_navy');
-        const data = responce.data[0];
-
-        const memberData = data.members
-
-        setTabelValue(data.Table);
-        setCarosel(data.events);
-        setCoordinator(data.coordinater)
-
-
-         const formattedMembers =  memberData.name.map((name, i) => ({
-                  name,
-                  rank: memberData.rank[i],
-                    regiment_no:  memberData.regiment_no[i],
-                    year:  memberData.year[i],
-                    universityno:memberData.universityno[i],
-                    department: memberData.department[i],
-                    image: memberData.image_path[i]
-                    }));
-
-                console.log(member.role);
-                
-                setMember(formattedMembers)
-
-      } catch (error) {
-        console.error("Error fetching data",error);  
-      }
+    const typeMatch = {
+        "About NCC Navy": "about",
+        "Recent Events": "events",
+        "Team & Coordinators": "team",
+        "Awards & Recognition" : "awards"
+    }
+    const fetchData = async () => {
+        try {
+            const response = await axios.post('/api/main-backend/ncc_navy',
+                {
+                    type: typeMatch[ncc_navy]
+                }
+            )
+            setnavdata(response.data.data)
+            console.log("ncc_navy",response.data.data)
+        } catch (error) {
+            console.error("Error fetching data:", error.message)
+        }
     }
     fetchData()
-  },[]);
-
+  }, [ncc_navy]);
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
@@ -280,7 +239,7 @@ const NCC_NAVY = ({ toggle, theme }) => {
         isVideo={true}
       />
       {/* Main NCC_NAVY Container */}
-      <SideNav sts={ncc} setSts={setNcc} navData={navData} cls="" backButton={true}/>
+      <SideNav sts={ncc_navy} setSts={setnavy} navData={navData} cls="" backButton={true}/>
     </>
 
   );
