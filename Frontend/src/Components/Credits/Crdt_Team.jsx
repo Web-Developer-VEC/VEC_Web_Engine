@@ -28,7 +28,8 @@ const ppl = [
         "description": "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
         "roles": ["Backend Lead Developer", "System Architect"],
         "image": "/static/images/web_team/developers/Sid 2.webp",
-        "cover_image": "/static/images/web_team/developers/Sid 1.png",
+
+        "cover_image": "/static/images/web_team/developers/sid 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/siddharth-magesh-76688a246/" },
         { "type": "github", "link": "https://github.com/Siddharth-magesh" },
@@ -47,7 +48,8 @@ const ppl = [
         "description": "Backend wizard by day, bug hunter by night. I wrangle APIs with Node.js, stuff MongoDB with JSONs using Python like it's a sacred ritual, and deploy my creations to the cloud with AWS (because local is too mainstream). I push, pull, and occasionally rage at Git while powering the brains behind our college website. I speak fluent JSON, enjoy long walks through error logs, and believe coffee is just a backend dependency.",
         "roles": ["Backend Developer", "API Developer"],
         "image": "/static/images/web_team/developers/Pranesh 2.webp",
-        "cover_image": "/static/images/web_team/developers/pranesh 1.png",
+        "cover_image": "/static/images/web_team/developers/Pranesh 1.png",
+
         "socials": [
         {
             "type": "linkedin",
@@ -119,7 +121,8 @@ const ppl = [
         "description": "Built sleek, responsive pages with React.js—because static sites are so last season. Crafted pixel-perfect layouts, well-behaved buttons, and smooth user experiences using Tailwind, Bootstrap, and a dash of CSS magic.Teamed up with the backend squad to keep data flowing like butter on a hot dosa. Leveled up my frontend powers and got a real taste of web dev beyond the tutorial zone.",
         "roles": ["Frontend Developer","responsive UI Designer"],
         "image": "/static/images/web_team/developers/Vasanth 2.webp",
-        "cover_image": "/static/images/web_team/developers/VasanthRaja 1.png",
+        "cover_image": "/static/images/web_team/developers/VasanthaRaja 1.png",
+
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/vasantharajas123" },
         { "type": "github", "link": "github.com/Vasanth-Aids" },
@@ -197,7 +200,9 @@ const ppl = [
         "name": "SRI RAAM V H",
         "description": "Built and maintained  multiple  React.js pages. From integrating APIs to crafting sleek, responsive UIs with CSS  React, bootstrap tailwind. turned design mockups into functional reality. Obsessed with clean code and smooth UX. Did manual testing and made sure the website is compatible  with different devices.the site worked like a charm on every screen size — even the weirdly tiny ones professors insist on using.",
         "roles": ["Frontend Developer", "QA Tester"],
-        "image": "/static/images/web_team/developers/sriraam 2.webp",
+
+        "image": "/static/images/web_team/developers/Sriram 2.webp",
+
         "cover_image": "/static/images/web_team/developers/Sriraam 1.png",
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/sri-raam-v-h" },
@@ -214,7 +219,9 @@ const ppl = [
         "description": "Worked as a Backend Developer for a website, keeping the digital gears turning behind the scenes. Juggled data entry like a wizard and crafted slick Node.js APIs that just worked. Wrote Python scripts to stuff MongoDB with data like a pro. Tied the frontend and backend together like a tech matchmaker. An adventure full of learning, logic, laughs, and the occasional late-night bug battle!",
         "roles": [ "Data Entry","Backend Developer"],
         "image": "/static/images/web_team/developers/Arjun 2.webp",
-        "cover_image": "/static/images/web_team/developers/Sam 1.png",
+
+        "cover_image": "/static/images/web_team/developers/Arjun 1.png",
+
         "socials": [
         {
             "type": "linkedin",
@@ -271,7 +278,9 @@ const ppl = [
         "name": "Ajith",
         "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
         "roles": ["Frontend Developer", "Integration Engineer"],
-        "image": "/static/images/web_team/developers/Ajith 2.webpg",
+
+        "image": "/static/images/web_team/developers/Ajith 2.webp",
+
         "cover_image": "/static/images/web_team/developers/Ajith 1.png",
         "socials": [
         {
@@ -293,6 +302,12 @@ const ppl = [
     const durToNxt = (ind !== urlPrm)? 10000000: 9000
     const navigate = useNavigate();
 
+
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
     const iconMap = {
     github: <Github className="w-5 h-5" />,
@@ -357,15 +372,15 @@ const ppl = [
                             mb-48 transition-all duration-[2s] ${(pos === i + 1) ? 'focs' : ''} rounded-2xl
                             group my-auto transition-transform`}
                              onClick={() => pos_hdl(i + 1)}>
-                            <div className="absolute bg-slate-100 z-[-10] max-w-[100%] w-[40vw] lg:w-[17.5vw]
+                            <div className="absolute bg-[#fccb06] z-[-10] max-w-[100%] w-[40vw] lg:w-[17.5vw]
                                 h-[20vmax] lg:h-full rounded-lg
                                 overflow-hidden [transform:rotateY(180deg),translateZ(-10px)]">
-                                <img className={(pos === i + 1) ? 'hidden' : 'blur-sm h-full rounded-2xl'} src={cur.image}
+                                <img className={(pos === i + 1) ? 'hidden' : 'blur-sm h-full rounded-2xl'} src={UrlParser(cur.image)}
                                      alt={cur.name}/>
                             </div>
                             <Tilt><img
                                 className={`${(pos === i + 1) ? 'animate-[sizeUpExt_0.3s_ease-in-out_forwards] ' :
-                                    'hidden'} absolute h-[26vmax] -top-8 lg:top-10 origin-bottom`} src={cur.cover_image}
+                                    'hidden'} absolute h-[26vmax] -top-8  lg:top-10 origin-bottom`} src={UrlParser(cur.cover_image)}
                                 alt={cur.name}/></Tilt>
                         </div>
                     </div>
