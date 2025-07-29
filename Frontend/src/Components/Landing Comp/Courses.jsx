@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 const CourseCarousel = ({ courses }) => {
   const [pos, setPos] = useState(3);
   const [pause, setPause] = useState(false);
+  console.log("Cou",courses);
+  
 
   const navigate = useNavigate();
 

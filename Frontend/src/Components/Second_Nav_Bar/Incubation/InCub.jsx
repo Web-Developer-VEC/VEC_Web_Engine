@@ -17,13 +17,7 @@ import axios from "axios";
 
 const Incub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
-    const [home, sethome] = useState(null)
-    const [startup, setstartup] = useState(null)
-    const [committee, setcommittee] = useState(null)
-    const [facilities, setfacilities] = useState(null)
-    const [project, setproject] = useState(null)
-    const [patents, setpatents] = useState(null)
-    const [seedmoney, setseedmoney] = useState(null)
+    const [incubation,setIncubation] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
         if (cub === "E-Cell") {
@@ -32,38 +26,49 @@ const Incub = ( {toggle, theme}) => {
     }, [cub, navigate]);
 
     const navData = {
-        "Home": <CubHme data={home}/>,
-        "Incubated Startups": <Startup data={startup}/>, 
+        "Home": <CubHme data={incubation}/>,
+        "Incubated Startups": <Startup data={incubation}/>, 
         "E-Cell": <></>,
-        "Committee": <Committe data={committee}/>,  
-        "Facilities": <Facilities data={facilities}/>,
-        "Project": <Projects data={project}/>,
-        "Patents": <Patents data={patents}/>,
-        "Seed Money": <Seedmoney data={seedmoney}/>,
+        "Committee": <Committe data={incubation}/>,  
+        "Facilities": <Facilities data={incubation}/>,
+        "Project": <Projects data={incubation}/>,
+        "Patents": <Patents data={incubation}/>,
+        "Seed Money": <Seedmoney data={incubation}/>,
         "Apply Now": <Applynow/>           
     };
     useEffect(() => {
         const fetchData = async () => {
+            const typeMatch = {
+                "Home": "home",
+                "Incubated Startups": "start_up",
+                "Committee": "incubation_committee",
+                "Facilities": "facilities",
+                "Project": "projects",
+                "Patents": "patent",
+                "Seed Money": "seed_money"
+            }
             try {
-                const responce = await axios.get('/api/incubation');
+                const responce = await axios.post('/api/main-backend/incubation',
+                    {
+                        type : typeMatch[cub]
+                    }
+                );
 
-                const data = responce.data[0];
+                const data = responce.data.data;
 
-                sethome(data.home);
-                setstartup(data.start_up);
-                setseedmoney(data.seed_money);
-                setfacilities(data.facilities);
-                setproject(data.projects);
-                setpatents(data.patent);
-                setcommittee(data.incubation_committee);
+                setIncubation(data);
             } catch (error) {
                 console.error("Error fetching incubation data",error);
             }
         }
         fetchData();
-    }, []);
+    }, [cub]);
 
     function CubHme({data}) {
+        let home
+        if (data) {
+            home = data[0]
+        }
         return (
             <>
                 {data ? (
@@ -71,7 +76,7 @@ const Incub = ( {toggle, theme}) => {
                         <div className="ic-about-section dark:bg-drkb border-l-4 border-secd dark:border-drks">
                             <h2 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About Us</h2>
                             <p className="ic-centered-text text-text dark:text-drkt">
-                                {data?.about_us}
+                                {home?.about_us}
                             </p>
                         </div>
 
@@ -79,7 +84,7 @@ const Incub = ( {toggle, theme}) => {
                             <div className="ic-vm-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
                                 <h3 className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">Activities</h3>
                                 <ul>
-                                    {data?.activities?.map((adv,i)=>(
+                                    {home?.activities?.map((adv,i)=>(
                                         <li>{adv}</li>
                                     ))}
                                 </ul>

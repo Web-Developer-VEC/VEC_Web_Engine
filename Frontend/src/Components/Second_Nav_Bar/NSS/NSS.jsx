@@ -29,30 +29,28 @@ const NSS = () => {
             window.removeEventListener("offline", handleOffline);
         };
     }, []);
-
-
   useEffect(() => {
+    const typeMatch = {
+        "About NSS": "about",
+        "News & Updates": "news_updates",
+        "Recent Events": "events",
+        "Team & Coordinators": "team"
+    }
     const fetchData = async () => {
-      try {
-        const res = await axios.get("/api/nss");
-        const data = res.data[0]; 
-        const parsedData = {
-          faculty: data.coordinater,
-          students: data.members,
-          events: data.events,
-          awards: data.awards,
-          news: data.news
-        };
-        console.log("Ajay",parsedData);
-        
-        setNssData(parsedData);
-      } catch (err) {
-        console.error("Error fetching NSS data:", err.message);
-      }
-    };
-
-    fetchData();
-  }, []);
+        try {
+            const response = await axios.post('/api/main-backend/nss',
+                {
+                    type: typeMatch[nss]
+                }
+            )
+            setNssData(response.data.data)
+            console.log("nss",response.data.data)
+        } catch (error) {
+            console.error("Error fetching data:", error.message)
+        }
+    }
+    fetchData()
+}, [nss]);
 
   if (!isOnline) {
         return (
@@ -63,11 +61,11 @@ const NSS = () => {
     }
 
   const navData = {
-    "About NSS": <NSSContent />,
-    "News & Updates": <NotificationBox data={nssData?.news} />,
-    "Recent Events": <CarouselNSS data={nssData?.events || null} />,
-    "Team & Coordinators": (<Coordinators faculty={nssData?.faculty} 
-        students={nssData?.students}
+    "About NSS": <NSSContent data={nssData}/>,
+    "News & Updates": <NotificationBox data={nssData} />,
+    "Recent Events": <CarouselNSS data={nssData} />,
+    "Team & Coordinators": (<Coordinators data={nssData} 
+        // students={nssData?.students}
       />
     ),
     // "Awards & Recognition": <Awardsrec data={nssData?.awards} />

@@ -82,9 +82,13 @@ const CardPage = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/adminoffice`);
-
-        setadminData(response.data);
+        const response = await axios.post(`/api/main-backend/administration`,
+          {
+            type: "admin_office"
+          }
+        );
+        
+        setadminData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);

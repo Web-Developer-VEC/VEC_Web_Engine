@@ -13,12 +13,11 @@ const LibraryLayout = ({toggle, theme}) => {
     const [libraryData, setLibraryData] = useState(null);
     const [lib, setLib] = useState("About")
     const navData = {
-        "About": <LibraryIntro about={libraryData ? libraryData["about_the_library"] : null} />,
-        "HOD's message":<LIBHod lib={lib} />,
-        "Staff":<LIBFacl lib={lib} />,
-        "Advisory committee members": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Membership Details": <LIBMemb lib={lib} />,
+        "About": <LibraryIntro about={libraryData} />,
+        "HOD's message":<LIBHod lib={lib} data={libraryData} />,
+        "Staff":<LIBFacl lib={lib} faculty={libraryData}/>,
+        "Advisory committee members": <LibrarySections data={libraryData} lib={lib}/>,
+        "Membership Details": <LIBMemb lib={lib} data={libraryData} />,
         "Collection": {
             "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
@@ -27,31 +26,47 @@ const LibraryLayout = ({toggle, theme}) => {
             "Newspapers": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
         },
-        "Services": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Digital Library & E-Resources": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "OPAC": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Library Resources": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-        "Downloads": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>
+        "Services": <LibrarySections data={libraryData} lib={lib}/>,
+        "Digital Library & E-Resources": <LibrarySections data={libraryData} lib={lib}/>,
+        "OPAC": <LibrarySections  lib={lib}/>,
+        "Library Resources": <LibrarySections data={libraryData} lib={lib}/>,
+        "Downloads": <LibrarySections data={libraryData} lib={lib}/>
     };
-  
+    
     useEffect(() => {
+      console.log("Inside the useeffect");
+      
       const fetchData = async () => {
+        
+        const typeMap = {
+          "About": "about_the_library",
+          "HOD's message": "HOD",
+          "Staff": "Faculty_Staff",
+          "Advisory committee members": "advisors",
+          "Membership Details": "membership_details",
+          "Services": "library_services",
+          "Digital Library & E-Resources": "digital_libraries",
+          "Library Resources": "library_resources",
+          "Downloads": "Ebook_Sources"
+        }
+        
         try {
-          const response = await axios.get("/api/library");
-          const data = response.data;
-          setLibraryData(data[0]); // Assuming the API returns an array
+          const response = await axios.post("/api/main-backend/library",
+            {
+              type: typeMap[lib]
+            }
+          );
+          const data = response.data.data;
+          console.log("library",data);
+          
+          setLibraryData(data);
         } catch (err) {
           console.error("Error Fetching Data:", err.message);
         }
       };
   
       fetchData();
-    }, []);
+    }, [lib]);
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 

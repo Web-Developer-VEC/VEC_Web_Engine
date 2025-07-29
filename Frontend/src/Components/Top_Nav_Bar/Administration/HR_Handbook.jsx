@@ -16,14 +16,18 @@
     useEffect(() => {
         const fetchdata = async () => {
             try {
-            const response = await axios.get('/api/handbook');
+            const response = await axios.post('/api/main-backend/administration',
+                {
+                    type: "HRHandBook"
+                }
+            );
 
-            const data = response.data[1];
+            const data = response.data.data;
 
             console.log(data);
             
 
-            sethandbook(data.HRHB)
+            sethandbook(data)
             
             } catch (error) {
             console.error("Error fetching handbook data", error);

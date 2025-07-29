@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import LoadComp from "../../../LoadComp";
 
-const AlumniSlider = ({ data }) => {
+const AlumniSlider = ({ data1 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -15,20 +15,20 @@ const AlumniSlider = ({ data }) => {
   const handlePrev = () => {
     setActiveIndex(
       (prevIndex) =>
-        (prevIndex - 1 + data?.carousal_title?.length) %
-        data?.carousal_title?.length
+        (prevIndex - 1 + data1?.carousal_title?.length) %
+        data1?.carousal_title?.length
     );
   };
 
   const handleNext = () => {
     setActiveIndex(
-      (prevIndex) => (prevIndex + 1) % data?.carousal_title?.length
+      (prevIndex) => (prevIndex + 1) % data1?.carousal_title?.length
     );
   };
 
   return (
 <>
-    {data ? (
+    {data1 ? (
       
       <div
       className="relative w-full max-w-4xl mx-auto mt-5"
@@ -40,7 +40,7 @@ const AlumniSlider = ({ data }) => {
       className="flex transition-transform duration-700 ease-in-out"
       style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
-      {data?.carousal_title?.map((description, index) => (
+      {data1?.carousal_title?.map((description, index) => (
         <div
         key={index}
         className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
@@ -50,7 +50,7 @@ const AlumniSlider = ({ data }) => {
         }}
         >
               <img
-                src={UrlParser(data?.carousal_images[index])}
+                src={UrlParser(data1?.carousal_images[index])}
                 alt="Distinguished Alumni"
                 className="w-full h-80 object-contain rounded-t-lg"
                 />
@@ -58,7 +58,7 @@ const AlumniSlider = ({ data }) => {
                 <p className="text-lg font-semibold text-text dark:text-drkt font-bold">
                   {description}
                 </p>
-                <p className="text-text dark:text-drkt">{data?.carousal_description[index]}</p>
+                <p className="text-text dark:text-drkt">{data1?.carousal_description[index]}</p>
               </div>
             </div>
           ))}
@@ -79,7 +79,7 @@ const AlumniSlider = ({ data }) => {
         </div>
         
         <div className="flex justify-center space-x-2 mt-4">
-        {data?.carousal_title?.map((_, index) => (
+        {data1?.carousal_title?.map((_, index) => (
           <button
           key={index}
           className={`w-2.5 h-2.5 rounded-full ${
@@ -90,7 +90,7 @@ const AlumniSlider = ({ data }) => {
           ))}
           </div>
           </div>
-        ): (
+        ) : (
           <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
         </div>

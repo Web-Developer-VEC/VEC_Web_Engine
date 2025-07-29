@@ -5,21 +5,26 @@ import axios from "axios";
 import { useState } from "react";
 import LoadComp from "../../../LoadComp";
 
-function NCCAMembers({armyFacultyData,armyStudentData}) {
+function NCCAMembers({data}) {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+  let stud = [];
+  let coor = null;
+ if (Array.isArray(data) && data.length >= 2) {
+  coor = data[0]?.members?.[0] || null;
+  stud = Array.isArray(data[1]?.members) ? data[1].members : [];
+}
   
 
 // console.log(coordinatorName)
 
   return (
   <>
-    {(armyFacultyData && armyStudentData) ? (
-      
+    {(coor && stud) ? (
       <div className="yrc-coordinators-container">
         <h2 className="yrc-h2 text-brwn dark:text-drkt">
           FACULTY COORDINATOR
@@ -28,15 +33,15 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
       
         <div className="yrc-member-card-1 dark:bg-text">
           <img
-          src={UrlParser(armyFacultyData?.image_path)}
-          alt={armyFacultyData?.name}
+          src={UrlParser(coor?.image_path)}
+          alt={coor?.name}
           className="yrc-member-image1"
           />
           
           <div className="yrc-member-info1">
             {/* <span className="yrc-platoon">Programme Officer</span> */}
-            <h3> {armyFacultyData?.name} </h3>
-            <p className="yrc-title text-brwn dark:text-drka">{armyFacultyData?.designation}</p>
+            <h3> {coor?.name} </h3>
+            <p className="yrc-title text-brwn dark:text-drka">{coor?.designation}</p>
           </div>
         </div>
         
@@ -45,13 +50,13 @@ function NCCAMembers({armyFacultyData,armyStudentData}) {
         <div className="yrc-underline3"></div>
         </h2>
         <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
-            {armyStudentData?.map((member, index) => (
+            {stud?.map((member, index) => (
             <div className="student-card dark:bg-text" key={index}>
               {/* <img src={UrlParser(member.image)} className="w-[150px] h-[200px] m-auto" alt={member.name} /> */}
-              <h5 className="text-text dark:text-drkt font-sm mt-4">{member.name}</h5>
-              <p className="text-brwn dark:text-drka">{member.regiment_no}</p>
-              <p className="text-brwn dark:text-drka">{member.year}</p>
-              <p className="text-brwn dark:text-drka">{member.rank} - {member.department}</p>
+              <h5 className="text-text dark:text-drkt font-sm mt-4">{member?.name}</h5>
+              <p className="text-brwn dark:text-drka">{member?.regiment_no}</p>
+              <p className="text-brwn dark:text-drka">{member?.year}</p>
+              <p className="text-brwn dark:text-drka">{member?.rank} - {member?.department}</p>
             </div>
         ))}
         </div>

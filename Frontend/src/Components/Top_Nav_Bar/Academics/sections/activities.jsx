@@ -97,7 +97,7 @@ const Activities = ({ data }) => {
           <div className="bg-prim dark:bg-drkp modal-content-act">
             <span className="close-btn text-text bg-secd dark:bg-drks dark:text-drkt
               hover:bg-accn hover:text-prim dark:hover:bg-brwn" onClick={closeModal}>&times;</span>
-            <img src={UrlParser(selectedEvent.image_path)} alt="Event" className="modal-image" />
+            <img src={UrlParser(selectedEvent.image_path) || './placeholder.webp'} alt="Event" className="modal-image" />
             <h2>{selectedEvent.name_of_event}</h2>
             <p><strong>Date: </strong>{selectedEvent.date}</p>
             <p><strong>Coordinator: </strong>{selectedEvent.coordinator}</p>
@@ -132,7 +132,7 @@ const AnimatedCard = ({ event, handleViewMore }) => {
       bg-[color-mix(in_srgb,theme(colors.prim)_80%,black)]
       dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" variants={cardVariants}
       initial="hidden" animate={controls}>
-      <img src={UrlParser(event.image_path)} alt="Event" className="card-image" />
+      <img src={UrlParser(event.image_path) || './placeholder.webp'} alt="Event" className="card-image" />
       <div className="card-details">
         <p className="card-date">{event.date}</p>
         <h3 className="my-2 text-xl text-accn dark:text-drka">{event.name_of_event}</h3>

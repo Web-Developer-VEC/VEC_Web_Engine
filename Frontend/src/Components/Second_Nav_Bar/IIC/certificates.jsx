@@ -15,11 +15,11 @@ export default function IicFacCertificate({data}) {
     }
     
 
-    const certificateArray =
-    data?.names?.map((name, index) => ({
-        name,
-        path: UrlParser(data?.image_path[index]),
-    })) || []
+    const certificateArray = Array.isArray(data) ?
+    data?.map((name, index) => ({
+        name: name?.year,
+        path: UrlParser(name?.image_path),
+    })) : []
 
     console.log("Certificate Array:", certificateArray);
     

@@ -24,11 +24,11 @@ const NCCNCarousel = ({data}) => {
     }, [currentIndex, isAutoPlay]);
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? data?.image_path?.length - 1 : prev - 1));
+        setCurrentIndex((prev) => (prev === 0 ? data?.length - 1 : prev - 1));
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev === data?.image_path?.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((prev) => (prev === data?.length - 1 ? 0 : prev + 1));
     };
 
     return (
@@ -37,12 +37,12 @@ const NCCNCarousel = ({data}) => {
             
             <div className="ncc-carousel-wrap">
             <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {data?.image_path?.map((slide, index) => (
+                {data?.map((slide, index) => (
                     <div className="ncc-carousel-slide" key={index}>
-                        <img src={UrlParser(slide)} alt={data?.title[index]} />
+                        <img src={UrlParser(slide?.image_path)} alt={slide?.title} />
                         <div className="ncc-carousel-text">
-                            <h3>{data?.title[index]}</h3>
-                            <p>{data?.des[index]}</p>
+                            <h3>{slide?.title}</h3>
+                            <p>{slide?.description}</p>
                         </div>
                     </div>
                 ))}

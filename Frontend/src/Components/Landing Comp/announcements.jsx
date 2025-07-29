@@ -4,14 +4,18 @@ import "./announcements.css";
 import img1 from "../Assets/hostel.png";
 import star from "../Assets/championship.gif";
 
-const Announcements1 = () => {
+const Announcements1 = ({ anno, spc}) => {
+
+    console.log("Anno",anno);
+    console.log("Spc",spc)
+    
     const [announcements, setAnnouncements] = useState([]);
     const [spcannouncements, setSpcAnnouncements] = useState([]);
     const [flipped, setFlipped] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const content = spcannouncements[0]?.list_of_contents || [];
-    const links = spcannouncements[0]?.list_of_links || [];
+    const content = spc[0]?.list_of_contents || [];
+    const links = spc[0]?.list_of_links || [];
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -83,7 +87,7 @@ const Announcements1 = () => {
                 </div>
 
                 <div className="main relative md:basis-1/2 lg:basis-1/3 w-full">
-                    {spcannouncements.map((item) => (
+                    {spc?.map((item) => (
                         <div key={item.title}>
                             <h2 className="text-3xl text-accn dark:text-drkt">{item.title}</h2>
                             <p className="text-xl">{item.content}</p>
@@ -112,18 +116,18 @@ const Announcements1 = () => {
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i} className='text-xl line-clamp-2'>
-                                            {announcements[(currentIndex + i) % announcements.length] && (
+                                            {anno?.[(currentIndex + i) % anno?.length] && (
                                                 <a
                                                 href={UrlParser(
-                                                    announcements[(currentIndex + i) % announcements.length].pdf_path ||
-                                                    announcements[(currentIndex + i) % announcements.length].link
+                                                    anno?.[(currentIndex + i) % anno?.length].pdf_path ||
+                                                    anno?.[(currentIndex + i) % anno?.length].link
                                                   )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-black hover:underline no-underline"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
-                                                    {announcements[(currentIndex + i) % announcements.length].announcement_name}
+                                                    {anno?.[(currentIndex + i) % anno?.length].announcement_name}
                                                 </a>
                                             )}
                                         </h4>
@@ -140,18 +144,18 @@ const Announcements1 = () => {
                                 <div className="contentAnn w-full">
                                     {Array.from({length: 7}).map((_, i) => (
                                         <h4 key={i} className='text-xl line-clamp-2'>
-                                            {announcements[(currentIndex + i) % announcements.length] && (
+                                            {anno?.[(currentIndex + i) % anno?.length] && (
                                                 <a
                                                     href={UrlParser(
-                                                        announcements[(currentIndex + i) % announcements.length].pdf_path ||
-                                                        announcements[(currentIndex + i) % announcements.length].link
+                                                        anno?.[(currentIndex + i) % anno?.length].pdf_path ||
+                                                        anno?.[(currentIndex + i) % anno?.length].link
                                                     )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-black hover:underline no-underline"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
-                                                    {announcements[(currentIndex + i) % announcements.length].announcement_name}
+                                                    {anno?.[(currentIndex + i) % anno?.length].announcement_name}
                                                 </a>
                                             )}
                                         </h4>

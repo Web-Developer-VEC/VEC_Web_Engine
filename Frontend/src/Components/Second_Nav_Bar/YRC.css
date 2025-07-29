@@ -196,6 +196,44 @@
   margin: 5px auto;
   border-radius: 5px;
 }
+.scroll-container {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 10s linear infinite;
+}
+
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.news-item {
+  font-size: 18px;        /* Smaller font */
+  line-height: 1.4;       /* Better spacing */
+  padding: 12px 12px;      /* Slightly tighter padding */
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+
+/* Keyframe for vertical scrolling */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 
 /* Section Headings */
 .yrc-h1 {

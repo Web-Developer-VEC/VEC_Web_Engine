@@ -20,34 +20,30 @@ const Alumni = ({ theme, toggle }) => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
   const [alumniData, setAlumniData] = useState(null);
+  console.log("Alumini",alumniData);
+  console.log("Ann",spcannouncements);
   
   
-  const content = spcannouncements[0]?.list_of_contents || [];
-  const links = spcannouncements[0]?.list_of_links || [];
-
-  useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`/api/specialannouncements`);
-            setSpcAnnouncements(response.data);
-        } catch (error) {
-            console.error("Error fetching data:", error.message);
-        }
-    };
-    fetchData();
-}, []);
+  
+  const content = spcannouncements?.list_of_contents || [];
+  const links = spcannouncements?.list_of_links || [];
 
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.get('/api/alumni');
-      setAlumniData(response.data[0]);
+      const response = await axios.post('/api/main-backend/placement',
+        {
+          type: "alumini"
+        }
+      );
+      setAlumniData(response.data.data[0]);
+      setSpcAnnouncements(response.data.special_announcement.data[0]);
     } catch (error) {
       console.error("Error fetching alumni data",error);
     }
   }
   fetchData();
-})
+},[])
 
 const handleNext = useCallback(() => {
   if (!isFlipping && currentPage < alumniData?.alumni_image_path.length - 1) {
@@ -164,12 +160,10 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
 
         {/* Announcement section for alumni */}
           <div className="w-100">
-              {spcannouncements.map((item) => (
-                  <div key={item.title}>
-                      <h2 className="text-3xl text-accn dark:text-drkt mt-5 mb-3">{item.title}</h2>
-                      <p className="text-xl">{item.content}</p>
+                  <div>
+                      <h2 className="text-3xl text-accn dark:text-drkt mt-5 mb-3">{spcannouncements?.title}</h2>
+                      <p className="text-xl">{spcannouncements?.content}</p>
                   </div>
-              ))}
               <br/>
               <ul className="list-none">
                   {content?.map((item, index) => (

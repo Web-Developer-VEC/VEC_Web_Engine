@@ -18,8 +18,12 @@ const CollegeOrgChart = ({theme, toggle}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responce = await axios.get('/api/organization_chart');
-        const data = responce.data[0];
+        const responce = await axios.post('/api/main-backend/administration',
+          {
+            type: "organization_chart"
+          }
+        );
+        const data = responce.data.data;
         setOrgData(data.image_path);
       } catch (error) {
         console.error("Error fetching organization chart Linnk",error);

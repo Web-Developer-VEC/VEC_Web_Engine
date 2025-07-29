@@ -1,6 +1,13 @@
 import LoadComp from "../../LoadComp";
 
 export default function Seedmoney ({data}) {
+    if (!Array.isArray(data)) {
+        return (
+            <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+                <LoadComp />
+            </div>
+        );
+    }
     return (
         <>
             {data ? (
@@ -20,9 +27,9 @@ export default function Seedmoney ({data}) {
                             </tr>
                             </thead>
                             <tbody>
-                            {data.map((startup, i) => (
+                            {Array.isArray(data) && data?.map((startup, i) => (
                                 <>
-                                    {startup.funds.map((fund, index) => (
+                                    {startup?.funds?.map((fund, index) => (
                                     <tr key={`${startup.slNo}-${index}`}>
                                         {index === 0 ? (
                                         <>

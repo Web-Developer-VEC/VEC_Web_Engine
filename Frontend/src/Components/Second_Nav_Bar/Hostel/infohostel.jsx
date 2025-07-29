@@ -28,6 +28,7 @@ const InfoHostel = ({ hostelData }) => {
               {item.section}
             </h2>
             <p className="HI-card-text text-text dark:text-drkt">
+
               {item.breakfast}<br />
               {item.lunch}<br />
               {item.dinner}
@@ -38,6 +39,7 @@ const InfoHostel = ({ hostelData }) => {
 
       <section className="food-timetable">
         <h2 className="infohostel-title text-brwn dark:text-drkt">{data2.category}</h2>
+
 
         <table className="food-table">
           <thead>
