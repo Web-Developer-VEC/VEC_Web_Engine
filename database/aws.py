@@ -1142,8 +1142,8 @@ def insert_landing_page_sections():
     print("landing page sections inserted successfully.")
 
 def insert_research_data():
-    collection = db['research_data']
-    with open('/root/VEC_WEB_Engine/docs/research_data.json', "r",encoding="utf-8") as file:
+    collection = db['research']
+    with open('/root/VEC_WEB_Engine/docs/research.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 

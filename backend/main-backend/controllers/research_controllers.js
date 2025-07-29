@@ -15,7 +15,7 @@ async function getResearchSection(req, res) {
     }
 
     const db = getDb();
-    const collection = db.collection('research_data');
+    const collection = db.collection('research');
 
     const document = await collection.findOne(
       { type },

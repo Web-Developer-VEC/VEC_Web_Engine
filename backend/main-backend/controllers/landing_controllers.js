@@ -35,14 +35,14 @@ async function getLandingpageData(req, res) {
       );
 
       if (!document) {
-        return res.status(404).json({ message: Section '${type}' not found });
+        return res.status(404).json({ message: `Section '${type}' not found `});
       }
 
       return res.status(200).json(document);
     }
 
     // Invalid type
-    return res.status(400).json({ error: "${type}" is not a valid landing page section });
+    return res.status(400).json({ error: `"${type}" is not a valid landing page section` });
 
   } catch (error) {
     console.error('Error fetching landing page section:', error);
