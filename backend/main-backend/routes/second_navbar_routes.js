@@ -3,7 +3,7 @@ const { getIicSection, getIqacSection, getECellSection, iicApplyForm , getAccred
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
 const nosql  = require('../middlewares/sanitizers/nosql_injection');
-const sanitize = require('../middlewares/sanitizers/sanitize_second_navbar');
+const sanitize_iic = require('../middlewares/sanitizers/sanitize_iicapplynow');
 
 const limiter = createRateLimiter({ max: 800, windowMs: 10 * 60 * 1000 });
 
@@ -16,6 +16,6 @@ router.post('/incubation', limiter, xss, nosql, getIncubationSection);
 router.post('/ecell', limiter, xss, nosql, getECellSection);
 router.post('/transport', limiter, xss,nosql, getTransportSection);
 router.post('/other_facilities', limiter, xss,nosql, getOtherFacilitiesSection);
-router.post('/iic_applynow', limiter, xss, sanitize,nosql, iicApplyForm);
+router.post('/iic_applynow', limiter, xss,sanitize_iic, iicApplyForm);
 
 module.exports = router;

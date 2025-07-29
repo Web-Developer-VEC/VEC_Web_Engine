@@ -245,15 +245,13 @@ async function iicApplyForm (req, res) {
     try {
         const db = getDb();
         const inccellappCollection = db.collection("inccellapp_data");
-        const {name,phno,email,content} = req.body;
+        const {name,phno,email,content,original_captcha, entered_captcha} = req.body;
 
         console.log(name,phno,email,content);
         
        
 
-        if (!name || !phno || !email || !content) {
-            return res.status(400).json({ error: "All fields are required" });
-        }
+
         const inccellapp_data = {
             name,
             phno,
@@ -266,7 +264,7 @@ async function iicApplyForm (req, res) {
             service: "gmail",
             auth: {
                 user: process.env.BASE_EMAIL,
-                pass: process.env.PASSWORD
+                pass: process.env.BASE_EMAIL_PASSWORD
             }
         });
 
