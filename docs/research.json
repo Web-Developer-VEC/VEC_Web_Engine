@@ -3,7 +3,7 @@
         "type":"Journal Publication",
         "data":[
             {
-                "year":"2021 - 2022",
+                "year":"2021-2022",
                 "pdf_path":"/static/pdfs/overall_research/2021-22 - Journal Publication.pdf"
             },
             {
@@ -14,6 +14,11 @@
                 "year":"2023-2024",
                 "pdf_path":"/static/pdfs/overall_research/2023-2024/2023-24 - Journal Publication.pdf"
 
+            },
+            {
+                "year":"2024-2025",
+                "pdf_path":""
+
             }
         ]
       },
@@ -21,7 +26,7 @@
         "type":"Funded Projects",
         "data":[
             {
-                "year":"2021 - 2022",
+                "year":"2021-2022",
                 "pdf_path":"/static/pdfs/overall_research/2021-2022/2021-22 - Funded Projects.pdf"
             },
             {
@@ -32,6 +37,11 @@
                 "year":"2023-2024",
                 "pdf_path":"/static/pdfs/overall_research/2023-2024/2023-24 - Funded Projects.pdf"
 
+            },
+            {
+                "year":"2024-2025",
+                "pdf_path":""
+
             }
         ]
       },
@@ -39,7 +49,7 @@
         "type":"Consultancy",
         "data":[
             {
-                "year":"2021 - 2022",
+                "year":"2021-2022",
                 "pdf_path":"/static/pdfs/overall_research/2021-2022/2021 -22  Consultancy.pdf"
             },
             {
@@ -50,6 +60,11 @@
                 "year":"2023-2024",
                 "pdf_path":"/static/pdfs/overall_research/2023-2024/2023 -24 Consultancy.pdf"
 
+            },
+            {
+                "year":"2024-2025",
+                "pdf_path":""
+
             }
         ]
       },
@@ -57,7 +72,7 @@
         "type":"Books and Book chapters",
         "data":[
             {
-                "year":"2021 - 2022",
+                "year":"2021-2022",
                 "pdf_path":"/static/pdfs/overall_research/2021-2022/2021 - 22- Books & Book chapters.pdf"
             },
             {
@@ -67,6 +82,11 @@
             {
                 "year":"2023-2024",
                 "pdf_path":"/static/pdfs/overall_research/2023-2024/2023- 24 Books & Book chapters.pdf"
+
+            },
+            {
+                "year":"2024-2025",
+                "pdf_path":""
 
             }
         ]
