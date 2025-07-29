@@ -10,8 +10,8 @@ mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
 collection_name = "staff_details"
 
-file_path = r"/root/VEC_WEB_Engine/docs/CSV/VEC_Faculty_Details.csv"
-base_save_dir = r"/root/VEC_WEB_Engine/static/staff_scholar_details/"
+file_path = r"/root/VEC_Web_Engine/docs/CSV/VEC_Faculty_Details.csv"
+base_save_dir = r"/root/VEC_Web_Engine/static/staff_scholar_details/"
 
 client = MongoClient(mongo_uri)
 db = client[db_name]
@@ -526,7 +526,7 @@ with ThreadPoolExecutor(max_workers=8) as executor:
 
 def insert_department_data():
     collection = db["vision_and_mission"]
-    with open("/root/VEC_WEB_Engine/docs/department_data.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/department_data.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -534,7 +534,7 @@ def insert_department_data():
 
 def insert_hod_datas():
     collection = db['HODS']
-    with open("/root/VEC_WEB_Engine/docs/hods.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/hods.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -542,7 +542,7 @@ def insert_hod_datas():
 
 def insert_infrastructure_data():
     collection = db["infrastructure"]
-    with open("/root/VEC_WEB_Engine/docs/infrastructure.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/infrastructure.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -550,7 +550,7 @@ def insert_infrastructure_data():
 
 def insert_student_activities_data():
     collection = db['student_activities'] 
-    with open("/root/VEC_WEB_Engine/docs/student_activities.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/student_activities.json", "r", encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -558,7 +558,7 @@ def insert_student_activities_data():
 
 def insert_support_staff_data():
     collection = db['support_staffs'] 
-    with open("/root/VEC_WEB_Engine/docs/support_staffs.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/support_staffs.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
     
@@ -566,7 +566,7 @@ def insert_support_staff_data():
 
 def insert_MOUs_data():
     collection = db['MOUs']
-    folder_path = "/root/VEC_WEB_Engine/docs/MOUs/"
+    folder_path = "/root/VEC_Web_Engine/docs/MOUs/"
     for filename in os.listdir(folder_path):
         if filename.endswith(".json"):
             file_path = os.path.join(folder_path,filename)
@@ -579,7 +579,7 @@ def insert_MOUs_data():
 
 def insert_sidebar_details():
     collection= db['sidebar']
-    with open ("/root/VEC_WEB_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
+    with open ("/root/VEC_Web_Engine/docs/sidebar.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("Sidebar documents inserted successfully\n")
@@ -587,7 +587,7 @@ def insert_sidebar_details():
 def insert_iic_sections():
     collection = db["iic"]
 
-    with open("/root/VEC_WEB_Engine/docs/iic.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/iic.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -602,7 +602,7 @@ def insert_iic_sections():
 
 def insert_dept_activities_details():
     collection = db['department_activities']
-    directory = "/root/VEC_WEB_Engine/docs/DEPT_ACT/"
+    directory = "/root/VEC_Web_Engine/docs/DEPT_ACT/"
     for filename in os.listdir(directory):
         if filename.endswith(".json"):  
             file_path = os.path.join(directory, filename)
@@ -619,7 +619,7 @@ def insert_dept_activities_details():
 
 def insert_newsletter():
     collection= db['news_letter']
-    with open ("/root/VEC_WEB_Engine/docs/news_letter.json","r",encoding="utf-8") as file:
+    with open ("/root/VEC_Web_Engine/docs/news_letter.json","r",encoding="utf-8") as file:
         documents= json.load(file)
         collection.insert_many(documents)
     print("newsletter inserted successfully \n")
@@ -627,7 +627,7 @@ def insert_newsletter():
 def insert_admissions_sections():
     collection = db["admissions"]
 
-    with open("/root/VEC_WEB_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
         admissions_data = json.load(file)
 
         for section in admissions_data:
@@ -643,7 +643,7 @@ def insert_admissions_sections():
 def insert_exams_sections():
     collection = db["exams"]
 
-    with open("/root/VEC_WEB_Engine/docs/exams.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/exams.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -659,7 +659,7 @@ def insert_exams_sections():
 def insert_placement_sections():
     collection = db["placement"]
 
-    with open("/root/VEC_WEB_Engine/docs/placement.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/placement.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -675,7 +675,7 @@ def insert_placement_sections():
 def insert_iqac_sections():
     collection = db["iqac"]
 
-    with open("/root/VEC_WEB_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -691,7 +691,7 @@ def insert_iqac_sections():
 def insert_accreditations_and_ranking_sections():
     collection = db["accreditations_and_ranking"]
 
-    with open("/root/VEC_WEB_Engine/docs/accreditations_and_ranking.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/accreditations_and_ranking.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -707,7 +707,7 @@ def insert_accreditations_and_ranking_sections():
 def insert_ecell_sections():
     collection = db["ecell"]
 
-    with open("/root/VEC_WEB_Engine/docs/e_cell.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/e_cell.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -723,7 +723,7 @@ def insert_ecell_sections():
 def insert_transport_sections():
     collection = db["transport"]
 
-    with open("/root/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/transport.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -739,7 +739,7 @@ def insert_transport_sections():
 def insert_other_facilities_sections():
     collection = db["other_facilities"]
 
-    with open("/root/VEC_WEB_Engine/docs/other_facilities.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/other_facilities.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -755,7 +755,7 @@ def insert_other_facilities_sections():
 def insert_gallery_sections():
     collection = db["gallery"]
 
-    with open("/root/VEC_WEB_Engine/docs/gallery.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/gallery.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -771,7 +771,7 @@ def insert_gallery_sections():
 def insert_academics_sections():
     collection = db["academics"]
 
-    with open("/root/VEC_WEB_Engine/docs/academics.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/academics.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -830,7 +830,7 @@ department_mapping = {
 def insert_incubations_sections():
     collection = db["incubation"]
 
-    with open("/root/VEC_WEB_Engine/docs/incubation.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/incubation.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -845,7 +845,7 @@ def insert_incubations_sections():
     
 def insert_faculty_data(folder_path):
     department_name=None
-    with open(r"/root/VEC_WEB_Engine/docs/prev_faculty.json","r",encoding="utf-8") as file:
+    with open(r"/root/VEC_Web_Engine/docs/prev_faculty.json","r",encoding="utf-8") as file:
         data=json.load(file)
     try:
         collection = db['faculty_data']
@@ -918,14 +918,14 @@ def insert_faculty_data(folder_path):
     print("Faculty Data Insertion Done\n")
     return
 
-insert_faculty_data(folder_path=r"/root/VEC_WEB_Engine/docs/STAFF-DATA/")
+insert_faculty_data(folder_path=r"/root/VEC_Web_Engine/docs/STAFF-DATA/")
 
 # SPORTS DATA INSERTIONS
 
 def insert_library_sections():
     collection = db["library"]
 
-    with open("/root/VEC_WEB_Engine/docs/library.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/library.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -942,7 +942,7 @@ def insert_library_sections():
 def insert_department_research_data():
     collection = db['research_data']
     
-    folder_path = "/root/VEC_WEB_Engine/docs/RESEARCH-DATA"
+    folder_path = "/root/VEC_Web_Engine/docs/RESEARCH-DATA"
     
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
@@ -960,7 +960,7 @@ def insert_department_research_data():
 def insert_about_us():
     collection = db['about_us']
 
-    with open("/root/VEC_WEB_Engine/docs/about_us.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/about_us.json", "r", encoding="utf-8") as file:
         data = json.load(file)
         top_level = data[0]
 
@@ -978,7 +978,7 @@ def insert_about_us():
 def insert_help_desk():
 
     collection = db['help_desk']  
-    with open("/root/VEC_WEB_Engine/docs/help_desk.json", "r",encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/help_desk.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
@@ -987,7 +987,7 @@ def insert_help_desk():
 def insert_administration_sections():
     collection = db["administration"]
 
-    with open("/root/VEC_WEB_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
         admin_data = json.load(file)
 
         for section in admin_data:
@@ -1006,7 +1006,7 @@ def create_logs_collection():
 
 def insert_web_team():
     collection = db['web_team']
-    with open('/root/VEC_WEB_Engine/docs/web_team.json', "r",encoding="utf-8") as file:
+    with open('/root/VEC_Web_Engine/docs/web_team.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -1016,7 +1016,7 @@ def insert_web_team():
 def insert_hostel_sections():
     collection = db["hostel_details"]
 
-    with open("/root/VEC_WEB_Engine/docs/hostel.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/hostel.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1032,7 +1032,7 @@ def insert_hostel_sections():
 def insert_ncc_army_sections():
     collection = db["ncc_army"]
 
-    with open("/root/VEC_WEB_Engine/docs/ncc_army.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/ncc_army.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1048,7 +1048,7 @@ def insert_ncc_army_sections():
 def insert_ncc_navy_sections():
     collection = db["ncc_navy"]
 
-    with open("/root/VEC_WEB_Engine/docs/ncc_navy.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/ncc_navy.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1064,7 +1064,7 @@ def insert_ncc_navy_sections():
 def insert_nss_sections():
     collection = db["nss"]
 
-    with open("/root/VEC_WEB_Engine/docs/nss.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/nss.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1080,7 +1080,7 @@ def insert_nss_sections():
 def insert_sports_sections():
     collection = db["sports"]
 
-    with open("/root/VEC_WEB_Engine/docs/sports_data.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/sports_data.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1096,7 +1096,7 @@ def insert_sports_sections():
 def insert_transport_sections():
     collection = db["transport"]
 
-    with open("/root/VEC_WEB_Engine/docs/transport.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/transport.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1112,7 +1112,7 @@ def insert_transport_sections():
 def insert_yrc_sections():
     collection = db["yrc"]
 
-    with open("/root/VEC_WEB_Engine/docs/yrc.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/yrc.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1128,7 +1128,7 @@ def insert_yrc_sections():
 def insert_landing_page_sections():
     collection = db["landing_page_details"]
 
-    with open("/root/VEC_WEB_Engine/docs/landing_page_details.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/landing_page_details.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
@@ -1143,7 +1143,7 @@ def insert_landing_page_sections():
 
 def insert_research_data():
     collection = db['research']
-    with open('/root/VEC_WEB_Engine/docs/research.json', "r",encoding="utf-8") as file:
+    with open('/root/VEC_Web_Engine/docs/research.json', "r",encoding="utf-8") as file:
         documents = json.load(file)
     collection.insert_many(documents)
 
@@ -1170,8 +1170,8 @@ insert_research_data()
 
 '''def add_hostel_student_database():
     collection = db["student_database"]
-    storage_dir = r"/root/VEC_WEB_Engine/docs/CSV"
-    image_dir = r"/root/VEC_WEB_Engine/static/student_database"
+    storage_dir = r"/root/VEC_Web_Engine/docs/CSV"
+    image_dir = r"/root/VEC_Web_Engine/static/student_database"
     os.makedirs(storage_dir, exist_ok=True)  
     os.makedirs(image_dir, exist_ok=True)  
 

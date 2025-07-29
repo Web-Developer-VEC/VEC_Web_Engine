@@ -339,10 +339,10 @@
     "zone":"1",
     "year": "2024-25",
    "image_path" : [
-   "static/images/sports/coordinates/coordinates_1.webp", 
-   "static/images/sports/coordinates/coordinates_2.webp",
-   "static/images/sports/coordinates/coordinates_3.webp",
-   "static/images/sports/coordinates/coordinates_4.webp"
+   "/static/images/sports/coordinates/coordinates_1.webp", 
+   "/static/images/sports/coordinates/coordinates_2.webp",
+   "/static/images/sports/coordinates/coordinates_3.webp",
+   "/static/images/sports/coordinates/coordinates_4.webp"
    ] 
   }
    
