@@ -24,8 +24,6 @@ export default function EnquiryWeb() {
       err_descrp,
     };
 
-    console.log("Submitting enquiry:", enquiryData);
-
     try {
       const res = await fetch("/api/webTeamForm", {
         method: "POST",
