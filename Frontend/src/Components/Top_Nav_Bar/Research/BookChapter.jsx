@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Academicresearch.css";
+// import './Researchtable.css';
 import Banner from "../../Banner";
+// import Researchtable from "./Researchtable";
 import { Link } from "react-router-dom";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid"; // FIXED
 
@@ -12,7 +14,7 @@ const courses = [
   "2007",
 ];
 
-export default function Consultancy({ theme, toggle }) {
+export default function BookChapter({ theme, toggle }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [open, handleOpen] = useState(false);
 
@@ -30,10 +32,12 @@ export default function Consultancy({ theme, toggle }) {
         subHeaderText="Enrich Your Knowledge"
       />
 
-   
+ 
+      
+  
         <div className="">
           <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-            Consultancy
+           Books and Book chapters
           </h1>
 
           <div className="course-selection-container p-12">
@@ -50,7 +54,7 @@ export default function Consultancy({ theme, toggle }) {
             ))}
           </div>
         </div>
-  
+
     </>
   );
 }
