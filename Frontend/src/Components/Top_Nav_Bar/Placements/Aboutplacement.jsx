@@ -19,8 +19,6 @@ const Aboutplacement = ({ theme, toggle }) => {
         const data = responce.data.data;
 
         setPlacementData(data);
-
-        console.log(data);
         
       } catch (error) {
         console.error("error fetching Placement Data",error);

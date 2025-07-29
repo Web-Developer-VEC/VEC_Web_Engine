@@ -71,8 +71,6 @@ function IICExpert({data}){
 }
 
 const IICStudent = ({ data }) => {
-
-  console.log("Stu",data);
   
   if (!Array.isArray(data) || data.length === 0) {
     return (

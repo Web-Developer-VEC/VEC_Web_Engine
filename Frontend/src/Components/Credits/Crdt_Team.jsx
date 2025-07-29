@@ -28,6 +28,7 @@ const ppl = [
         "description": "Served as the initial head honcho of the backend for this website... basically lived in the land of APIs, databases, and caffeine. Designed the entire database architecture and system layout like a grown-up LEGO set. Built scalable endpoints, wrangled all kinds of raw data, and processed it through custom modules crafted to tame the chaos.\n Handled server-side logic like a backend wizard... optimizing performance, integrating chatbot features (yes, it talks!), and ensuring everything stayed secure and reliable. If something broke at 3AM, chances are it was already being fixed... or lovingly yelled at through the console.",
         "roles": ["Backend Lead Developer", "System Architect"],
         "image": "/static/images/web_team/developers/Sid 2.webp",
+
         "cover_image": "/static/images/web_team/developers/sid 1.png",
         "socials": [
         { "type": "linkedin", "link": "https://www.linkedin.com/in/siddharth-magesh-76688a246/" },
@@ -48,6 +49,7 @@ const ppl = [
         "roles": ["Backend Developer", "API Developer"],
         "image": "/static/images/web_team/developers/Pranesh 2.webp",
         "cover_image": "/static/images/web_team/developers/Pranesh 1.png",
+
         "socials": [
         {
             "type": "linkedin",
@@ -120,6 +122,7 @@ const ppl = [
         "roles": ["Frontend Developer","responsive UI Designer"],
         "image": "/static/images/web_team/developers/Vasanth 2.webp",
         "cover_image": "/static/images/web_team/developers/VasanthaRaja 1.png",
+
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/vasantharajas123" },
         { "type": "github", "link": "github.com/Vasanth-Aids" },
@@ -197,7 +200,9 @@ const ppl = [
         "name": "SRI RAAM V H",
         "description": "Built and maintained  multiple  React.js pages. From integrating APIs to crafting sleek, responsive UIs with CSS  React, bootstrap tailwind. turned design mockups into functional reality. Obsessed with clean code and smooth UX. Did manual testing and made sure the website is compatible  with different devices.the site worked like a charm on every screen size — even the weirdly tiny ones professors insist on using.",
         "roles": ["Frontend Developer", "QA Tester"],
+
         "image": "/static/images/web_team/developers/Sriram 2.webp",
+
         "cover_image": "/static/images/web_team/developers/Sriraam 1.png",
         "socials": [
         { "type": "linkedin", "link": "linkedin.com/in/sri-raam-v-h" },
@@ -214,7 +219,9 @@ const ppl = [
         "description": "Worked as a Backend Developer for a website, keeping the digital gears turning behind the scenes. Juggled data entry like a wizard and crafted slick Node.js APIs that just worked. Wrote Python scripts to stuff MongoDB with data like a pro. Tied the frontend and backend together like a tech matchmaker. An adventure full of learning, logic, laughs, and the occasional late-night bug battle!",
         "roles": [ "Data Entry","Backend Developer"],
         "image": "/static/images/web_team/developers/Arjun 2.webp",
+
         "cover_image": "/static/images/web_team/developers/Arjun 1.png",
+
         "socials": [
         {
             "type": "linkedin",
@@ -271,7 +278,9 @@ const ppl = [
         "name": "Ajith",
         "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
         "roles": ["Frontend Developer", "Integration Engineer"],
+
         "image": "/static/images/web_team/developers/Ajith 2.webp",
+
         "cover_image": "/static/images/web_team/developers/Ajith 1.png",
         "socials": [
         {

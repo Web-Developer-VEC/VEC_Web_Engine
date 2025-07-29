@@ -5,12 +5,6 @@ import img1 from "../Assets/hostel.png";
 import star from "../Assets/championship.gif";
 
 const Announcements1 = ({ anno, spc}) => {
-
-    console.log("Anno",anno);
-    console.log("Spc",spc)
-    
-    const [announcements, setAnnouncements] = useState([]);
-    const [spcannouncements, setSpcAnnouncements] = useState([]);
     const [flipped, setFlipped] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,31 +16,6 @@ const Announcements1 = ({ anno, spc}) => {
     const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-    // Fetching Special Announcements
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`/api/specialannouncements`);
-                setSpcAnnouncements(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error.message);
-            }
-        };
-        fetchData();
-    }, []);
-
-    // Fetching General Announcements
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`/api/announcements`);
-                setAnnouncements(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error.message);
-            }
-        };
-        fetchData();
-    }, []);
 
     useEffect(() => {
         let flipInterval;
@@ -58,7 +27,7 @@ const Announcements1 = ({ anno, spc}) => {
             }, 6250); // Flip every 6250 ms
 
             indexUpdateInterval = setInterval(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 8) % announcements.length);
+                setCurrentIndex((prevIndex) => (prevIndex + 8) % anno?.length);
             }, 12700); // Update index every 12700 ms
         }
 
@@ -66,7 +35,7 @@ const Announcements1 = ({ anno, spc}) => {
             clearInterval(flipInterval);
             clearInterval(indexUpdateInterval);
         };
-    }, [hovered, announcements.length]);
+    }, [hovered, anno?.length]);
 
     // Manual Flip Function
     const handleManualFlip = () => {
@@ -98,7 +67,7 @@ const Announcements1 = ({ anno, spc}) => {
                         {content?.map((item, index) => (
                             <li className="text-xl mb-2" key={index}>
                                 <img className="inline h-10 w-10 mr-2" src={star} alt="Trophy"/>
-                                <a href={links[index]} className="text-text dark:text-drkt no-underline">{item}</a>
+                                <a href={links[index]} className="text-text dark:text-drkt no-underline" target="_blank">{item}</a>
                             </li>
                         ))}
                     </ul>
@@ -114,8 +83,8 @@ const Announcements1 = ({ anno, spc}) => {
                                 dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drks)_50%,black),theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_50%,white))]">
                                 <h2 className='md:text-3xl text-accn dark:text-drkt mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
-                                    {Array.from({length: 7}).map((_, i) => (
-                                        <h4 key={i} className='text-xl line-clamp-2'>
+                                    {Array.from({length: 4}).map((_, i) => (
+                                        <p key={i} className='text-[18px] line-clamp-2 font-medium'>
                                             {anno?.[(currentIndex + i) % anno?.length] && (
                                                 <a
                                                 href={UrlParser(
@@ -124,13 +93,13 @@ const Announcements1 = ({ anno, spc}) => {
                                                   )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-black hover:underline no-underline"
+                                                    className="text-black hover:underline no-underline mt-2"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
                                                     {anno?.[(currentIndex + i) % anno?.length].announcement_name}
                                                 </a>
                                             )}
-                                        </h4>
+                                        </p>
                                     ))}
                                 </div>
                                 <button className="absolute flip-btn bottom-0 left-3 text-3xl"
@@ -142,8 +111,8 @@ const Announcements1 = ({ anno, spc}) => {
                                 dark:bg-[linear-gradient(290deg,color-mix(in_srgb,theme(colors.drks)_75%,black),theme(colors.drks),color-mix(in_srgb,theme(colors.drks)_75%,white))]">
                                 <h2 className='text-3xl text-accn dark:text-drkt mb-0'>Announcements</h2>
                                 <div className="contentAnn w-full">
-                                    {Array.from({length: 7}).map((_, i) => (
-                                        <h4 key={i} className='text-xl line-clamp-2'>
+                                    {Array.from({length: 4}).map((_, i) => (
+                                        <p key={i} className='text-[18px] line-clamp-2 font-medium'>
                                             {anno?.[(currentIndex + i) % anno?.length] && (
                                                 <a
                                                     href={UrlParser(
@@ -152,13 +121,13 @@ const Announcements1 = ({ anno, spc}) => {
                                                     )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-black hover:underline no-underline"
+                                                    className="text-black hover:underline no-underline mt-2"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
                                                     {anno?.[(currentIndex + i) % anno?.length].announcement_name}
                                                 </a>
                                             )}
-                                        </h4>
+                                        </p>
                                     ))}
                                 </div>
                                 <button className="absolute flip-btn bottom-0 left-3 text-3xl"

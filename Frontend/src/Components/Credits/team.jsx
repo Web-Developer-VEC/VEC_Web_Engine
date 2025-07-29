@@ -10,7 +10,9 @@ export default function TeamTol() {
       <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg">
         {/* 👉 Replace the src below with your team image */}
         <img
+
           src={UrlParser("/static/images/web_team/pilot_team.webp")}
+
           alt="Our Team"
           className="w-full h-full object-cover"
         />
