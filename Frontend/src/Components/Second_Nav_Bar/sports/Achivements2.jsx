@@ -6,6 +6,10 @@ import ZonalResults from "./ZonalResults";
 import WinnerSlider from "./winners_sld";
 import Achievements from "./achivements";
 import Others from "./others";
+
+import Slider from "react-slick";
+
+
 import LoadComp from "../../LoadComp";
 
 const Achievements1 = ({ data }) => {
@@ -17,6 +21,20 @@ const Achievements1 = ({ data }) => {
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+
+
+  const settings = {
+  dots: true,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3500,
+  arrows: true,
+};
+
+
 
   const handleZoneClick = (zoneType) => {
     setShowZone(zoneType);
@@ -31,10 +49,36 @@ const Achievements1 = ({ data }) => {
   const interZonalData = data?.find((item) => item.category === "interzonal_achievements")?.content || [];
   const othersData = data?.find((item) => item.category === "others")?.content || [];
 
+  const coordinator = data?.find((item) => item.category === "coordinator")?.content;
+
+  console.log("Coor",coordinator);
+  
+
+
+
   return (
     <>
       {data ? (
         <>
+
+          {coordinator && (
+            <div className={`${styles.achievementsContainer}`}>
+              <h2 className={styles.sportscoordinator}>Anna University Zone {coordinator?.zone}</h2>
+              <p className={styles.coordinatordes}>Co-ordinating Centre {coordinator?.year}</p>
+
+              <Slider
+                {...settings}
+                className="[&_.slick-prev]:text-xs [&_.slick-next]:text-xs [&_.slick-prev]:w-6 [&_.slick-next]:w-6"
+              >
+                {coordinator?.image_path?.map((item, index) => (
+                  <div key={index} className={styles.slide}>
+                    <img src={UrlParser(item)} alt={`Coordinator ${index + 1}`} className={styles.image_path  } />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          )}
+
           <div className={styles.sportsAchievementsclass}>
             <button
               className={`${styles.sportsAchievementsbutton} ${showZone === "zone" ? styles.active : ""}`}
