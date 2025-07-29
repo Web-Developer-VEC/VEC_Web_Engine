@@ -58,7 +58,6 @@ function Syllabus({theme, toggle}) {
           }
         );
         setCurriculumData(response.data.data[0]);
-        console.log(response.data.data);
         
         setLoading(false);
       } catch (error) {

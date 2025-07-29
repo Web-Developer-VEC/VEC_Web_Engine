@@ -258,18 +258,12 @@ const IQAC = ({ toggle , theme }) => {
     const renderGalleryContent = () => {
     // Assuming iqacData.gallery is your array
     const galleryData = iqacData || [];
-    console.log(galleryData);
-    
 
     // Extract all categories
     const categories = galleryData.map(item => item.category);
-    console.log(categories);
-    
 
     // Find the object matching the selectedCategory
     const selectedItem = galleryData.find(item => item.category === selectedCategory);
-    console.log(selectedItem);
-    
 
     return (
         <div className="mr-4">

@@ -3,8 +3,6 @@ import styles from "./Achievements.module.css";
 import LoadComp from "../../LoadComp";
 
 const Intramural = ({ data }) => {
-  console.log("Spo",data);
-  
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [achievements, setAchievements] = useState([]);
