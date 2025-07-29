@@ -73,7 +73,7 @@ if (!isOnline) {
       ) : (
         <div className="mba-page">
           <div className="MBA">
-            <h3 className="text-accn dark:text-drkt ml-4 font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">M.B.A Admission</h3>
+            <h3 className="text-accn dark:text-drkt ml-4 font-bold  pb-2 w-fit  dark:border-drks text-[32px]">M.B.A Admission</h3>
           </div>
           <div className="mba-container bg-[#fffae6]
                   dark:bg-drkb border-l-4 border-secd dark:border-drks">

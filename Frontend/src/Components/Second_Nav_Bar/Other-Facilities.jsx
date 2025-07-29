@@ -69,7 +69,9 @@ export default function OtherFacilities({ theme, toggle }) {
     };
   }, []);
 
+
   if (!isOnline) {
+
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp txt={"You are offline"} />
@@ -116,6 +118,7 @@ export default function OtherFacilities({ theme, toggle }) {
             </button>
           ))}
         </div>
+
 
         {/* Content Section */}
         <div className="content-container">

@@ -14,15 +14,15 @@ const Others = ({ data }) => {
   };
 
   useEffect(() => {
-    if (!data || !data.image_path || !data.title) {
+    if (!data) {
       setAchievements([]); // Ensure `achievements` is always an array
       return;
     }
 
-    const formattedData = data.image_path.map((image, index) => ({
+    const formattedData = data?.map((image, index) => ({
       id: index + 1,
-      text: data.title?.[index] || "No Title", // Fallback for undefined values
-      image: UrlParser(image),
+      text: image?.title?.[index] || "No Title", // Fallback for undefined values
+      image: UrlParser(image?.image_path),
     }));
 
     setAchievements(formattedData);
@@ -68,20 +68,20 @@ const Others = ({ data }) => {
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${activeIndex * 100}%)` }}
               >
-                {achievements.map((item, index) => (
+                {achievements?.map((item, index) => (
                   <div
                     key={item.id}
                     className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
                     style={{ opacity: activeIndex === index ? 1 : 0.5 }}
                   >
                     <img
-                      src={item.image}
+                      src={item?.image}
                       alt="Achievement"
                       className="w-full h-80 object-contain rounded-t-lg"
                     />
                     <div className="p-4 text-center rounded-b-lg">
                       <p className="text-lg font-semibold text-text dark:text-drkt">
-                        {item.text}
+                        {item?.text}
                       </p>
                     </div>
                   </div>

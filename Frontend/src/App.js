@@ -94,6 +94,8 @@ import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/LoadComp.jsx";
+import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
+import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -293,10 +295,13 @@ const App = () => {
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
                                 <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
 
+                                <Route path="/errorlog" element={<ErrorLogPage />} />
+
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
+                                <Route path="/hit_logs" element={<HitLogs />} />
                             </Routes>
                           
                         </MainContentWrapper>
