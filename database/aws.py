@@ -675,7 +675,7 @@ def insert_placement_sections():
 def insert_iqac_sections():
     collection = db["iqac"]
 
-    with open("/root/VEC_Web_Engine/docs/iqac.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/IQAC.json", "r", encoding="utf-8") as file:
         exams_data = json.load(file)
 
         for section in exams_data:
