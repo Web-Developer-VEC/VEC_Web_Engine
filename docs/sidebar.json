@@ -12,7 +12,7 @@
       {"id": "StudentAchievments", "hascontent": true},
       {"id": "Infrastructure", "hascontent": true},
       {"id": "Mous", "hascontent": true},
-      {"id": "Research", "hascontent": true}
+      {"id": "Research", "hascontent": false}
     ]
   },
   {
@@ -44,7 +44,7 @@
       {"id": "StudentAchievments", "hascontent": false},
       {"id": "Infrastructure", "hascontent": true},
       {"id": "Mous", "hascontent": false},
-      {"id": "Research", "hascontent": true}
+      {"id": "Research", "hascontent": false}
     ]
   },
   {
@@ -76,7 +76,7 @@
       {"id": "StudentAchievments", "hascontent": true},
       {"id": "Infrastructure", "hascontent":true},
       {"id": "Mous", "hascontent": false},
-      {"id": "Research", "hascontent": true}
+      {"id": "Research", "hascontent": false}
     ]
   },
   
@@ -109,7 +109,7 @@
         {"id": "StudentAchievments", "hascontent": true},
         {"id": "Infrastructure", "hascontent": true},
         {"id": "Mous", "hascontent": false},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
     {
@@ -141,7 +141,7 @@
         {"id": "StudentAchievments", "hascontent": true},
         {"id": "Infrastructure", "hascontent": true},
         {"id": "Mous", "hascontent": true},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
     {
@@ -157,7 +157,7 @@
         {"id": "StudentAchievments", "hascontent": false},
         {"id": "Infrastructure", "hascontent": true},
         {"id": "Mous", "hascontent": false},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
     {
@@ -173,7 +173,7 @@
         {"id": "StudentAchievments", "hascontent": true},
         {"id": "Infrastructure", "hascontent": true},
         {"id": "Mous", "hascontent": true},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
     {
@@ -189,7 +189,7 @@
         {"id": "StudentAchievments", "hascontent": false},
         {"id": "Infrastructure", "hascontent": false},
         {"id": "Mous", "hascontent": false},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
     {
@@ -237,7 +237,7 @@
         {"id": "StudentAchievments", "hascontent": false},
         {"id": "Infrastructure", "hascontent": true},
         {"id": "Mous", "hascontent": false},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     },
 
@@ -272,7 +272,7 @@
         {"id": "StudentAchievments", "hascontent": true},
         {"id": "Infrastructure", "hascontent": false},
         {"id": "Mous", "hascontent": true},
-        {"id": "Research", "hascontent": true}
+        {"id": "Research", "hascontent": false}
       ]
     }
 ]
