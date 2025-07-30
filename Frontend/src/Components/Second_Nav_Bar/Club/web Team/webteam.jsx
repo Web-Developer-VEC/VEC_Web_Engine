@@ -211,7 +211,7 @@ export default function Webteam({ toggle, theme }) {
             toggle={toggle} theme={theme}
             backgroundImage="./Banners/Accreditations_Ranking.webp"
             headerText="Web Team"
-            subHeaderText="Website developed by these idiot"
+            subHeaderText="Meet Our Team"
         />
     
         <div className="">
