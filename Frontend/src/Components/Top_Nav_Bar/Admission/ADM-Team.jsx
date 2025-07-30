@@ -85,7 +85,6 @@ export default function ADMteam({ theme, toggle }) {
           }
         );
         setadmissionteamData(response.data.data);
-        console.log("Admission team",response.data);
         
         setLoading(false);
       } catch (error) {

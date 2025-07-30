@@ -63,7 +63,7 @@ function generateCaptcha() {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ name , email , phno: contact_number , content }),
+        body: JSON.stringify({ name , email , phno: contact_number , content, original_captcha: captcha.toString(), entered_captcha: userCaptcha.toString() }),
       });
 
       const data = await response.json();

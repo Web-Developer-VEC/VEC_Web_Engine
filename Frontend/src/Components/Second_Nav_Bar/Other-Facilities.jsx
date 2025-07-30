@@ -79,7 +79,6 @@ export default function OtherFacilities({ theme, toggle }) {
     );
   }
 
-
   if (!otherFacilities || !currentFacility) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -127,7 +126,6 @@ export default function OtherFacilities({ theme, toggle }) {
             {getSafe(currentFacility.name, imageIndex)}
           </h2>
           <p>{getSafe(currentFacility.description, imageIndex)}</p>
-
           {/* Image Carousel */}
           <div className="carousel">
             {images.length > 1 && (
@@ -148,7 +146,6 @@ export default function OtherFacilities({ theme, toggle }) {
           </div>
         </div>
       </div>
-
     </>
   );
 }

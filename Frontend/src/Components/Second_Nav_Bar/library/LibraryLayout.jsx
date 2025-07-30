@@ -34,8 +34,6 @@ const LibraryLayout = ({toggle, theme}) => {
     };
     
     useEffect(() => {
-      console.log("Inside the useeffect");
-      
       const fetchData = async () => {
         
         const typeMap = {
@@ -57,8 +55,6 @@ const LibraryLayout = ({toggle, theme}) => {
             }
           );
           const data = response.data.data;
-          console.log("library",data);
-          
           setLibraryData(data);
         } catch (err) {
           console.error("Error Fetching Data:", err.message);

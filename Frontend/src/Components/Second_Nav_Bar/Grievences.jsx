@@ -74,7 +74,7 @@ const GrievanceForm = ({ theme, toggle }) => {
     if (email && !emailCheck(email)) {
       return;
     }
-
+    
     try {
       setLoading(true);
       const response = await fetch("/api/main-backend/get_grievance", {
@@ -83,7 +83,7 @@ const GrievanceForm = ({ theme, toggle }) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ name , email , contact_number , query_about , category , content , original_captcha: captcha, entered_captcha: userCaptcha }),
+        body: JSON.stringify({ name , email , contact_number , query_about , category , content , original_captcha: captcha.toString(), entered_captcha: userCaptcha.toString() }),
       });
 
       const data = await response.json();
@@ -168,6 +168,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
                   placeholder=""
                   onChange={(e) => setName(e.target.value)}
+                  value={name}
                   required
                 />
               </div>
@@ -181,6 +182,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
                   placeholder=""
                   onChange={(e) => setContactNumber(e.target.value)}
+                  value={contact_number}
                   required
                 />
               </div>
@@ -213,6 +215,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                       appearance-none
                     "
                     onChange={(e) => setQueryAbout(e.target.value)}
+                    value={query_about}
                     required
                   >
                     <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Select Query About</option>
@@ -237,6 +240,7 @@ const GrievanceForm = ({ theme, toggle }) => {
                     appearance-none
                     "
                     onChange={(e) => setCategory(e.target.value)}
+                    value={category}
                     required
                   >
                     <option value="" className="bg-prim dark:bg-drkts text-text dark:text-prim">Select category</option>
