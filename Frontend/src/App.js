@@ -92,13 +92,13 @@ import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/LoadComp.jsx";
-
-import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
-import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
 import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
 import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
 import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
+
+import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
+import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */

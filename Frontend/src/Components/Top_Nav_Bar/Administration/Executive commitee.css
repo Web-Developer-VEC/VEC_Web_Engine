@@ -15,7 +15,7 @@ body {
 .executive-committee-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full height of the screen */
+  height: auto; /* Full height of the screen */
 }
 
 /* Buttons Section */

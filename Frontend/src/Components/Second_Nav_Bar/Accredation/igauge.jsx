@@ -1,7 +1,7 @@
 import { FaLink } from "react-icons/fa";
+import "./igauge.css";
 
-export default function IQauge({ data }) {
-
+export default function IQGauge({ data }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
@@ -12,13 +12,15 @@ export default function IQauge({ data }) {
     <div className="text-center py-10 dark:bg-drkp">
       <h1 className="text-2xl font-bold text-brwn dark:text-drkt mb-8">QS I QUAGE</h1>
 
-      <div className="flex justify-center">
-        <iframe
-          src={UrlParser(data[0]?.pdf_path)}
-          title="Main PDF"
-          className="w-[60vw] h-[80vh] border-2 border-gray-300 shadow-md"
-          loading="lazy"
-        />
+      <div className="w-full flex justify-center px-2 overflow-x-auto">
+        <div className="iframe-wrapper">
+          <iframe
+            src={UrlParser(data[0]?.pdf_path)}
+            title="Main PDF"
+            className="responsive-iframe"
+            loading="lazy"
+          />
+        </div>
       </div>
 
       <a
@@ -27,7 +29,7 @@ export default function IQauge({ data }) {
         rel="noopener noreferrer"
         className="inline-block mt-6 dark:text-drka text-lg underline"
       >
-        <FaLink className={"inline size-5 mr-1 mb-1"} />
+        <FaLink className="inline size-5 mr-1 mb-1" />
         I QUAGE Score
       </a>
     </div>

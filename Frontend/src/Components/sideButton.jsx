@@ -20,7 +20,6 @@ const SideButton = () => {  // Changed from sideButton to SideButton
       };
     }
   }, [showPopup]);
-  
 
   return (
     <>
