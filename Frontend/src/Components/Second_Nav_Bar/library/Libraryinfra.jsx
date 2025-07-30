@@ -131,7 +131,7 @@ const LibrarySections = ({data, lib}) => {
 
             {/* ✅ Second div: Library Highlights (Image_Gallery) */}
             {imageGallery && (
-                <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6">
+                <div className="h-auto py-12 sm:py-16 px-4 sm:px-6">
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drkt uppercase tracking-wide mb-8 sm:mb-12">
                     Library Highlights
                 </h2>
@@ -512,7 +512,7 @@ const LibrarySections = ({data, lib}) => {
 
     return (
         <>
-            <div className="min-h-screen p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
+            <div className="h-auto p-3 md:p-6 lg:p-10 space-y-8 md:space-y-12 lg:space-y-16">
                 {(Array.isArray(lib)) ? navData[lib[0]][lib[1]] : navData[lib]}
             </div>
         </>

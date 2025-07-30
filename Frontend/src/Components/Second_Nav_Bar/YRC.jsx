@@ -86,7 +86,7 @@ const YRC = () => {
 function YRCAbout({data}) {
   return (
     <div className="YRC-about mt-4">
-      <div className="YRC-Aboutus border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="YRC-Aboutus border-l-4 border-secd mx-auto dark:border-drks dark:bg-drkb">
         <h2 class="YRC-heading text-brwn dark:text-drkt">
           ABOUT US
         </h2>

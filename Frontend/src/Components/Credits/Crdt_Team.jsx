@@ -61,7 +61,7 @@ const ppl = [
         ]
     },
     {
-        "name": "Leroy Jeslyn",
+        "name": "LEROY JESLYN",
         "description": "I was a Frontend Developer for the VEC website, where i built sleek, responsive pages using Tailwind and React. I was also behind some of the cool animated CSS stuff: that boot-up page animations, the smooth slide-in gradients, and interactive 3D Department Carousel. And I totally hooked up the dark mode toggle for the VEC website. You're welcome.",
         "roles": ["Frontend Developer","UI Designer"],
         "image": "/static/images/web_team/developers/Leroy 2.webp",
@@ -119,7 +119,7 @@ const ppl = [
     {
         "name": "VASANTHA RAJA S",
         "description": "Built sleek, responsive pages with React.js—because static sites are so last season. Crafted pixel-perfect layouts, well-behaved buttons, and smooth user experiences using Tailwind, Bootstrap, and a dash of CSS magic.Teamed up with the backend squad to keep data flowing like butter on a hot dosa. Leveled up my frontend powers and got a real taste of web dev beyond the tutorial zone.",
-        "roles": ["Frontend Developer","responsive UI Designer"],
+        "roles": ["Frontend Developer","Responsive UI Designer"],
         "image": "/static/images/web_team/developers/Vasanth 2.webp",
         "cover_image": "/static/images/web_team/developers/VasanthaRaja 1.png",
 
@@ -256,7 +256,7 @@ const ppl = [
         ]
     },
     {
-        "name": "Hari Prasath",
+        "name": "HARI PRASATH",
         "description": "Jumped into this project as the go-to guy for all things cloud and backend. Spent most of my time testing cloud platforms, tweaking deployments, and wrestling with configurations until they behaved. Also pitched in as a backend intern—debugging logic, building APIs, and occasionally arguing with the server (spoiler: it rarely listened). Cloud chaos? That was my playground.",
         "roles": ["Cloud Engineer","Backend Developer" ],
         "image": "/static/images/web_team/developers/Hari 2.webp",
@@ -275,7 +275,7 @@ const ppl = [
         ]
     },
     {
-        "name": "Ajith",
+        "name": "AJITH G",
         "description": "Took the reins on the frontend and made sure everything looked smooth, sharp, and ran across screens like butter. From crafting layouts to perfecting styles, I made pages not just work—but work everywhere. Also moonlighted as the integration engineer, connecting frontend to backend like a tech therapist. If it moved and looked good, I probably styled it.",
         "roles": ["Frontend Developer", "Integration Engineer"],
 
