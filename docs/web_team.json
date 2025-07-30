@@ -13,8 +13,9 @@
         "content": [
           {
             "name": "SAMUEL STEPHEN DEVA PAUL L",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Team Lead","Frontend Lead Developer"],
             "image": "/pilot/Sam.webp",
             "social": {
               "github": "https://github.com/SAMSDP",
@@ -25,8 +26,9 @@
           },
           {
             "name": "SIDDHARTH MAGESH",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Backend Lead Developer","System Architect"],
             "image": "/pilot/siddharth.png",
             "social": {
               "github": "https://github.com/Siddharth-magesh",
@@ -37,8 +39,9 @@
           },
           {
             "name": "PRANESH KUMAR V",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Backend Developer","API Developer"],
             "image": "/pilot/Pranesh.webp",
             "social": {
               "github": "https://github.com/PraneshPk2005",
@@ -49,8 +52,9 @@
           },
           {
             "name": "SRI HARI M",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer","UI Designer"],
             "image": "/pilot/srihari.webp",
             "social": {
               "github": "https://github.com/SriHari22004",
@@ -61,8 +65,9 @@
           },
           {
             "name": "MOHAMED YASIR A",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer","UI Planner"],
             "image": "/pilot/Yasir.webp",
             "social": {
               "github": "https://github.com/mdyasir8055",
@@ -73,8 +78,9 @@
           },
           {
             "name": "VASANTHA RAJA S",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer","Responsive UI Designer"],
             "image": "/pilot/Vasanth.webp",
             "social": {
               "github": "https://github.com/Vasanth-Aids",
@@ -85,8 +91,9 @@
           },
           {
             "name": "GOKULRAMANAN V",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Backend Developer","Chatbot Developer"],
             "image": "/pilot/Gokul.webp",
             "social": {
               "github": "https://github.com/Feininon",
@@ -97,8 +104,9 @@
           },
           {
             "name": "WAATSON J",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Data Engineer","Backend Developer"],
             "image": "/pilot/Watson.webp",
             "social": {
               "github": "https://github.com/WAATS0N",
@@ -109,8 +117,9 @@
           },
           {
             "name": "SAI VIGNESH RAJ M",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Full-Stack Chatbot Developer","Data Engineer"],
             "image": "/pilot/Sai.webp",
             "social": {
               "github": "https://github.com/SaiVignesh45",
@@ -121,8 +130,9 @@
           },
           {
             "name": "KUMAR P",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer",""],
             "image": "/pilot/arjun.png",
             "social": {
               "github": "https://github.com/kumar7505",
@@ -133,8 +143,9 @@
           },
           {
             "name": "SRI RAAM V H",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer","QA Tester"],
             "image": "/pilot/Sriram.webp",
             "social": {
               "github": "https://github.com/Sriraam29",
@@ -145,8 +156,9 @@
           },
           {
             "name": "ARJUN V L",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Data Entry","Backend Developer"],
             "image": "/pilot/Arjun.webp",
             "social": {
               "github": "https://github.com/vlarjun20",
@@ -157,8 +169,9 @@
           },
           {
             "name": "SANTHOSH G",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer",""],
             "image": "/pilot/Santhosh.webp",
             "social": {
               "github": "https://github.com/Sandysharpo",
@@ -171,6 +184,7 @@
             "name": "Hari Prasath",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":["Cloud Engineer","Backend Developer"],
             "image": "/pilot/hari.png",
             "social": {
               "github": "https://github.com/4274-hari",
@@ -183,6 +197,7 @@
             "name": "Ajith",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":["Frontend Developer","Integration Engineer"],
             "image": "/pilot/ajith.png",
             "social": {
               "github": "https://github.com/Ajith-ajay",
@@ -211,6 +226,7 @@
             "name": "HARI PRASATH",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "https://github.com/4274-hari",
@@ -223,6 +239,7 @@
             "name": "AJITH",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -235,6 +252,7 @@
             "name": "DINESH PRABAKERAN",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -247,6 +265,7 @@
             "name": "KISAN",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "https://github.com/Kishanamz",
@@ -259,6 +278,7 @@
             "name": "V CASH",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -271,6 +291,7 @@
             "name": "DEEPAK",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "https://github.com/Deepak-S-github",
@@ -283,6 +304,7 @@
             "name": "VISHALL",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -295,6 +317,7 @@
             "name": "SATHISH",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -307,6 +330,7 @@
             "name": "KIRUBA",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -319,6 +343,7 @@
             "name": "DAKSHAN",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -331,6 +356,7 @@
             "name": "PRAVEEN",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
@@ -343,6 +369,7 @@
             "name": "SUDHAKAR",
             "year": "Third Year",
             "department": "AI&DS",
+            "designation":"",
             "image": "",
             "social": {
               "github": "",
