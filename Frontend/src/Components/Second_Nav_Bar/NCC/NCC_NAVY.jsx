@@ -9,8 +9,6 @@ import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 import LoadComp from "../../LoadComp";
 import Banner from "../../Banner";
 
-
-
 function NCCAbout({data}) {
   return (
   <section
@@ -175,7 +173,6 @@ const NCC_NAVY = ({ toggle, theme }) => {
                 }
             )
             setnavdata(response.data.data)
-            console.log("ncc_navy",response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
         }

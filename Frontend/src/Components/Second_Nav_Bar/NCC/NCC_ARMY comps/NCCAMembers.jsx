@@ -18,9 +18,6 @@ function NCCAMembers({data}) {
   coor = data[0]?.members?.[0] || null;
   stud = Array.isArray(data[1]?.members) ? data[1].members : [];
 }
-  
-
-// console.log(coordinatorName)
 
   return (
   <>

@@ -23,10 +23,6 @@
             );
 
             const data = response.data.data;
-
-            console.log(data);
-            
-
             sethandbook(data)
             
             } catch (error) {

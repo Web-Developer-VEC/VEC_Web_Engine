@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios"; 
 import Transportcarousel from "./Transportcarousel";
 import PDF from "./PDF";
 import Transportvideo from "./TransportVideo";
@@ -8,6 +8,8 @@ import Toggle from "../../Toggle";
 
 const Transport = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [transportData, settransportData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -20,6 +22,26 @@ const Transport = ({ theme, toggle }) => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
         };
+    }, []);
+    
+      useEffect(() => {
+        const fetchData = async () => {
+          try{
+            const response = await axios.post('/api/main-backend/transport',
+              {
+                type: "transport"
+              }
+            ) 
+            settransportData(response.data.data);
+            setLoading(false)
+          }  catch (error) {
+                    console.error("Error fetching data:", error.message)
+                    setLoading(false)
+          }
+        };
+        
+      fetchData();
+    
     }, []);
 
     if (!isOnline) {
@@ -43,7 +65,7 @@ const Transport = ({ theme, toggle }) => {
         </div>
             
             <div>
-                <PDF/>
+                {transportData?.[0]?.route && ( <PDF pdfRoute={transportData[0].route} /> )}
             </div>
             
             {/* Styled Transport Facilities Paragraph */}
@@ -86,7 +108,7 @@ const Transport = ({ theme, toggle }) => {
                 justifyContent: "center", 
                 marginTop: "40px" 
             }}>
-                <Transportcarousel/>
+                <Transportcarousel items={transportData} loading={loading}/>
             </div>
 
         </div>

@@ -11,7 +11,6 @@ const NCCNCarousel = ({data}) => {
     const UrlParser = (path) => {
       return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-    console.log("Ajay",data);
     
     // Auto-slide functionality
     useEffect(() => {

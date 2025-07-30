@@ -42,11 +42,9 @@ import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-import Sponsres from "./Components/Top_Nav_Bar/Research/Sponseredresearch.jsx";
-import JounalPub from "./Components/Top_Nav_Bar/Research/Journalpublication.jsx";
-import ConfPub from "./Components/Top_Nav_Bar/Research/Conferencepublication.jsx";
-import Patentsres from "./Components/Top_Nav_Bar/Research/Patent.jsx";
-import Bookres from "./Components/Top_Nav_Bar/Research/Bookpublication.jsx";
+
+import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
+
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
@@ -85,7 +83,7 @@ import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboar
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
+// import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 // other stuffs
 import NotFound from "./NotFound";
 import Crdt from "./Components/Credits/Crdt.jsx";
@@ -94,9 +92,12 @@ import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/LoadComp.jsx";
-
 import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
 import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
+import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
+import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
+import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -250,18 +251,26 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
-                                <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/>
-                                <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/proudalumni" drk element={<ProudAlumni />}/>
-                                <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/>
+                                {/* <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/> */}
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
+
+
+                                <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
+
+                                
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
@@ -307,7 +316,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.data?.[0]}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />

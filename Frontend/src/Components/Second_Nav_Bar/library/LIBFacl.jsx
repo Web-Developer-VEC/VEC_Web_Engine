@@ -8,8 +8,6 @@ const UrlParser = (path) => {
 };
 
 const LIBFacl = ({faculty}) => {
-  console.log("AA",faculty);
-  
   return (
 
     <>

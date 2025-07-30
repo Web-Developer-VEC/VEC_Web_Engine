@@ -2,17 +2,17 @@ import React from 'react';
 import LoadComp from '../../LoadComp';
 
 const ZonalResults = ({ data }) => {
-  if (!data || !data.Game || !data.Position) {
+  if (!data) {
     return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
             <LoadComp />
           </div>;
   }
 
   // Map the fetched data into an array of objects
-  const results = data.Game.map((game, index) => ({
-    game,
-    position: data.Position[index],
-  }));
+  const results = Array.isArray(data) ? data?.map((game, index) => ({
+    game: game?.game,
+    position: game?.position,
+  })) : [];
 
   const resultPairs = [];
   for (let i = 0; i < results.length; i += 2) {
@@ -37,11 +37,11 @@ const ZonalResults = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-          {resultPairs.map((pair, index) => (
+          {resultPairs?.map((pair, index) => (
               <React.Fragment key={index}>
                 <tr className="border-t border-gray-200 hidden sm:table-row">
-                  <td className="py-3 px-4 text-left">{pair[0].game}</td>
-                  <td className="py-3 px-4 text-left">{pair[0].position}</td>
+                  <td className="py-3 px-4 text-left">{pair[0]?.game}</td>
+                  <td className="py-3 px-4 text-left">{pair[0]?.position}</td>
                   <td className="py-3 px-4 text-left">{pair[1]?.game}</td>
                   <td className="py-3 px-4 text-left">{pair[1]?.position}</td>
                 </tr>
@@ -49,21 +49,21 @@ const ZonalResults = ({ data }) => {
                 {/* Mobile Layout - Smaller & Stacked */}
                 <tr className="border-t border-gray-200 sm:hidden text-xs">
                   <td className="py-2 px-3 font-semibold">Game</td>
-                  <td className="py-2 px-3 text-left">{pair[0].game}</td>
+                  <td className="py-2 px-3 text-left">{pair[0]?.game}</td>
                 </tr>
                 <tr className="border-t border-gray-200 sm:hidden text-xs">
                   <td className="py-2 px-3 font-semibold">Position</td>
-                  <td className="py-2 px-3 text-left">{pair[0].position}</td>
+                  <td className="py-2 px-3 text-left">{pair[0]?.position}</td>
                 </tr>
                 {pair[1] && (
                   <>
                     <tr className="border-t border-gray-200 sm:hidden text-xs">
                       <td className="py-2 px-3 font-semibold">Game</td>
-                      <td className="py-2 px-3 text-left">{pair[1].game}</td>
+                      <td className="py-2 px-3 text-left">{pair[1]?.game}</td>
                     </tr>
                     <tr className="border-t border-gray-200 sm:hidden text-xs">
                       <td className="py-2 px-3 font-semibold">Position</td>
-                      <td className="py-2 px-3 text-left">{pair[1].position}</td>
+                      <td className="py-2 px-3 text-left">{pair[1]?.position}</td>
                     </tr>
                   </>
                 )}
@@ -82,10 +82,10 @@ const ZonalResults = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {results.map((item, index) => (
+            {results?.map((item, index) => (
               <tr key={index} className="border-t border-gray-200">
-                <td className="py-2 px-3 text-left">{item.game}</td>
-                <td className="py-2 px-3 text-left">{item.position}</td>
+                <td className="py-2 px-3 text-left">{item?.game}</td>
+                <td className="py-2 px-3 text-left">{item?.position}</td>
               </tr>
             ))}
           </tbody>

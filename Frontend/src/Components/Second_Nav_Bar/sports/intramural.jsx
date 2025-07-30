@@ -14,15 +14,15 @@ const Intramural = ({ data }) => {
   };
 
   useEffect(() => {
-    if (!data || !data.image_path || !data.title) {
+    if (!data) {
       setAchievements([]); // Ensure `achievements` is always an array
       return;
     }
 
-    const formattedData = data.image_path.map((image, index) => ({
+    const formattedData = data?.map((image, index) => ({
       id: index + 1,
-      text: data.title?.[index] || "No Title", // Fallback for undefined values
-      image: UrlParser(image),
+      text: image?.title || "No Title", // Fallback for undefined values
+      image: UrlParser(image?.image_path),
     }));
 
     setAchievements(formattedData);

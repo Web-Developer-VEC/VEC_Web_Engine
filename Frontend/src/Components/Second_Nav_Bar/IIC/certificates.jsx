@@ -3,7 +3,6 @@ import LoadComp from "../../LoadComp";
 import { div } from "framer-motion/m";
 
 export default function IicFacCertificate({data}) {
-  console.log("Certificate Data:", data);
     const [selectedAction, setSelectedAction] = useState(null)
         const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,8 +19,6 @@ export default function IicFacCertificate({data}) {
         name: name?.year,
         path: UrlParser(name?.image_path),
     })) : []
-
-    console.log("Certificate Array:", certificateArray);
     
   return (
     <>

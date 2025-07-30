@@ -95,7 +95,6 @@ const Boot = (props) => {
 
         const fnldl = setTimeout(() => {
             cancelAnimationFrame(trn)
-            console.log("Stopped")
         }, (!isAuth) ? 3500: 2500);
 
         return () => clearTimeout(srtdl, fnldl);
