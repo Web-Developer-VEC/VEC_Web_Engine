@@ -10,12 +10,12 @@ db = client[db_name]
 import json
 from pymongo import MongoClient
 
-def insert_research_data():
-    collection = db['research_data']
-    with open('/VEC_WEB_Engine/docs/research_data.json', "r",encoding="utf-8") as file:
+def insert_curriculum_data():
+    collection = db['curriculum']
+    with open("/VEC-Backend/docs/curriculum.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
-    collection.insert_many(documents)
+        collection.insert_many(documents)
 
-    print("Research data inserted successfully.")
+    print("Curriculum documents inserted successfully.\n")
 
-insert_research_data()
+insert_curriculum_data()
