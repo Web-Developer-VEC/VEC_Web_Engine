@@ -79,13 +79,14 @@ if (!isOnline) {
                 <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Regulation {reg.year}</h2>
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
+
                   <li key={idx}>
                     {link?.pdf_path ? (
                       <a
                         href={UrlParser(link?.pdf_path)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="dark:text-drka font-[Poppins] hover:underline text-blue-600"
+                        className="dark:text-drkt font-[Poppins] hover:underline text-blue-600"
                       >
                         {link?.name}
                       </a>

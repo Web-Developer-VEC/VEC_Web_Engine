@@ -63,7 +63,7 @@ const NewTrust = ({theme, toggle}) => {
       />
       {AbtTrustData ? (
         // <div className="bg-prim dark:bg-drkp min-h-screen px-10 pt-0 md:p-8">
-        <div className="bg-prim dark:bg-drkp min-h-screen pt-0 px-11 md:p-9 lg:px-16 font-[Poppins]">
+        <div className="bg-prim dark:bg-drkp min-h-screen-0 pt-0 px-11 md:p-9 lg:px-16 font-[Poppins]">
           <div className="mt-12 container1 text-text dark:text-drkt mx-auto px-2 md:px-8 lg:px-16">
           <motion.div
                 initial={{ opacity: 0, x: 50 }}
