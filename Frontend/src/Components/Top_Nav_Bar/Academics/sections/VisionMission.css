@@ -23,7 +23,7 @@ body {
   }
 
   .accordion {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     width: 100%;
     height: auto;
@@ -42,7 +42,7 @@ body {
     text-align: left;
   }
 
-  .POE.accordion-item-cir {
+  .POE .accordion-item-cir {
     width: 100%;
   }
 
@@ -328,22 +328,19 @@ body {
 
 @media (max-width:1024px){
   .accordion{
-    height: 20rem;
+    /* height: 20rem; */
     width: 100%;
   }
 }
 .accordion{
   gap: 20px;
   align-items: start;
-
-
 }
 
 .grid-container {
   /* display: grid; */
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
   gap: 20px; /* Spacing between items */
-  width: 73vw;
+  /* width: 73vw; */
   align-items: start;
 }
 
@@ -352,16 +349,16 @@ body {
   opacity: 1;
   transform: translateY(0);
   animation: slideDown 0.5s ease-out;
-  margin-top: -5vh;
+  /* margin-top: -5vh; */
   text-align: left;
 }
 .accordion-item-cir {
   width: 100%; /* Ensure proper spacing */
   
 }
-POE accordion-item-circle {
-  width: 100%; /* Ensure proper spacing */
-} 
+  .POE .accordion-item-cir {
+    width: 100%;
+  }
 /* Responsive Design for Tablets */
 @media (max-width: 1024px) {
   .committee-buttons-grid {
@@ -390,9 +387,9 @@ POE accordion-item-circle {
 
 @media (max-width:1024px){
   .about-dept{
-  display: flex;
-  flex-direction: column;
-}
+    display: flex;
+    flex-direction: column;
+  }
 }
 @media (max-width: 768px) {
   .main-content {
@@ -463,7 +460,7 @@ POE accordion-item-circle {
   }
 
   .accordion{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
   }
 

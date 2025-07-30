@@ -93,10 +93,10 @@ useEffect(() => {
                       <button
                         className="know-more-button"
                           onClick={() => {
-                                            handleClick(item);
-                                            setIsPaused(true);
-                                          }}
-                                        >
+                            handleClick(item);
+                            setIsPaused(true);
+                          }}
+                        >
                         Know More
                       </button>
                     )}
