@@ -9,7 +9,7 @@ module.exports = function validateDeptId(req, res, next) {
   if (!isValidFormat || !isInRange || hasMongoSpecialChars) {
     return res.status(400).json({ error: 'Invalid Department ID' });
   }
-
+  console.log("sanitize department");
   // Optionally normalize: Keep as string like "001"
   req.params.deptId = deptId;
 
