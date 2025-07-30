@@ -34,26 +34,30 @@ const VisionMission = ({ data }) => {
     <div className="main-content">
       {/* About the Department Section */}
       <section className="about-department">
-        <div className="ABT_container">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="about-department-text">
-                <h2 className="text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1">About the Department</h2>
-                <p>{data?.about_department}</p>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="about-department-image">
-                <img
-                  src={UrlParser(data?.department_image)}
-                  alt={data?.department_name}
-                  className="img-fluid rounded"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className=" about-desktop flex flex-col md:flex-row items-start gap-6">
+
+    {/* Text Card on the left */}
+    <div className="section-card w-full md:w-1/2 border-l-4 border-[#FFD700] dark:border-drks bg-white dark:bg-[linear-gradient(135deg,theme(colors.drkb),color-mix(in_srgb,theme(colors.drkb)_85%,white))] p-4 shadow rounded-md">
+      <div className="about-department-text">
+        <h2 className="text-brwn dark:text-prim border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">
+          About the Department
+        </h2>
+        <p className="text-text dark:text-drkt">{data?.about_department}</p>
+      </div>
+    </div>
+
+    {/* Image on the right */}
+    <div className="w-full md:w-1/2 flex justify-center">
+      <img
+        src={UrlParser(data?.department_image)}
+        alt={data?.department_name}
+        className="img-fluid rounded shadow max-w-full h-auto"
+      />
+    </div>
+
+  </div>
+</section>
+
 
       <div className="row g-6">
         {/* Vision Section */}

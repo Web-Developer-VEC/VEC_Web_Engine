@@ -21,29 +21,6 @@ const SideButton = () => {  // Changed from sideButton to SideButton
     }
   }, [showPopup]);
 
-  //   useEffect(() => {
-  //   const loadScript = () => {
-  //     const existing = document.querySelector("#meritto-script");
-  //     if (!existing) {
-  //       const script = document.createElement("script");
-  //       script.src = "https://widgets.in6.nopaperforms.com/emwgts.js";
-  //       script.async = true;
-  //       script.id = "meritto-script";
-  //       document.body.appendChild(script);
-  //     }
-  //   };
-
-  //   if (document.readyState === "complete") {
-  //     loadScript();
-  //   } else {
-  //     window.addEventListener("load", loadScript);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("load", loadScript);
-  //   };
-  // }, []);
-
   return (
     <>
       <a href="https://admission.velammal.edu.in/" target="_blank" rel="noopener noreferrer" className="appluBtn appluBtn_right vertcalview-1"> APPLY NOW </a>
