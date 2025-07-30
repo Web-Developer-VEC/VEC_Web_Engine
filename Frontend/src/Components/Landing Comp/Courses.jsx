@@ -54,8 +54,8 @@ const pos_hdl = (pvl) => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="grid w-full relative h-fit z-10 lg:py-8">
-        <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 h-[300px] items-center
+      <div className="grid w-full relative h-fit md:h-[30vh] lg:h-[60vh] z-10 lg:py-8">
+        <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 lg:h-[300px] md:h-[400px] h-[300px] items-center
           flex justify-center mb-1"
           style={{ transformStyle: 'preserve-3d', perspective: '600px' }}>
 
