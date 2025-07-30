@@ -1,450 +1,495 @@
-/* General Styling */
-.container {
-  display: flex;
-  flex-direction: column;
-  font: 400 24px "Times New Roman", -apple-system, Roboto, Helvetica, sans-serif;
-}
-
-/* Header */
-.header {
-  position: relative;
-  width: 100%; /* Ensure header takes full width of the screen */
-  height: 25vh; /* Or use your desired height */
-}
-
-.fullWidthImage {
-  width: 100%; /* Make the image span full width */
-  height: 100%; /* Ensure the image fills the header height */
-  object-fit: cover; /* Cover the area without distorting the image */
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* Ensure the overlay spans the full width */
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.3); /* Darker background */
-  border-radius: 10px; /* Optional: smooth edges */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
-.overlayText {
-  font-size: 38px;
-  color: #ffffff;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-align: center;
-  text-transform: uppercase; /* All caps for more modern look */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Light shadow for better contrast */
-  max-width: 80%;
-  line-height: 1.4;
-}
-
-/* Layout */
-.layout {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 300px;
-  background: #1c1c1f;
-  color: white;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar ul li {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center; /* Ensure icon and text are aligned horizontally */
-}
-
-.sidebar ul li button {
-  font-size: 16px;
-  /*color: #ffffff;*/
-  text-decoration: none;
-  padding: 10px;
-  display: flex;
-  align-items: center; /* Align icon and text horizontally */
-  border: none;
-  /*background: transparent;*/
-  border-radius: 8px;
-  width: 100%;
-  transition: color 0.3s ease, background 0.3s ease;
-}
-
-.icon {
-  font-size: 20px;
-  margin-right: 10px;
-  /*color: #fdcc03; !* Default icon color *!*/
-  transition: color 0.3s ease; /* Smooth color transition */
-}
-
-/* Content */
-.messageContent {
-  flex: 1;
-  display: flex;
-  gap: 20px;
-}
-
-.textColumn {
-  flex: 2;
-  padding-top: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  /* background: #f9f9f9; */
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.hodMessage {
-  padding-top: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  /*background: #ffffff;*/
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  line-height: 1.8;
-}
-
-.messageBody {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 15px;
-  /*color: #333;*/
-  text-align: justify;
-}
-
-.messageBody:first-of-type {
-  margin-top: 0;
-}
-
-.hodMessage h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  /*color: #1b1b23;*/
-  /*border-bottom: 2px solid #fdcc03;*/
-  display: inline-block;
-}
-
-.hodInfo {
-  margin-bottom: 20px;
-}
-
-.messageHeader {
-  font-size: 32px;
-  /*color: #fdcc03;*/
-  margin: 0;
-}
-
-.messageHeader2 {
-  font-size: 28px;
-  /*color: #000;*/
-  margin-left: 8px;
-}
-
-.hodDesignation {
-  font-size: 20px;
-  /*color: #555;*/
-}
-
-.messageTitle {
-  font-size: 28px;
-  margin-top: 20px;
-  /*color: #1b1b23;*/
-  /*border-bottom: 2px solid #fdcc03;*/
-  display: inline-block;
-}
-
-.messageBody {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-top: 10px;
-  /*color: #333;*/
-}
-
-/* HOD Image */
-.imageColumn {
-  /* flex: 1; */
-  text-align: center;
-  width: 35vw;
-}
-
-.hodImage {
-  /* max-width: 100%; */
-  border-radius: 10px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* View More Button */
-.viewMoreButton {
-  display: block;
-  margin: 20px auto;
-  padding: 12px 20px;
-  /*background: #fdcc03;*/
-  /*color: #000;*/
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-  width: fit-content;
-  text-decoration: none;
-}
-
-.viewMoreButton:hover {
-  background: #800000;
-  color: white;
-}
-
-
-.socialLinks {
-  margin-top: 15px;
-  display: flex; /* Use flexbox to align the links in a row */
-  justify-content: center; /* Center the links horizontally */
-  align-items: center;
-  height: 35px;
-}
-
-.socialLink {
-  margin: 0 10px; /* Space between icons */
-  font-size: 24px;
-  /*color: #003366;*/
-}
-
-.socialLink:hover {
-  /*color: #fdcc03;*/
-}
-
-  /* Loading Screen */
-  .loadingscreen {
-    position: sticky; /* Position relative to the committee container */
-    /*top: 0;*/
-    left: 0;
-    width: 100%;
-    /*height: 100%;*/
-    background-color: white; /* White background with opacity */
-    /*display: flex;*/
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #333;
-    z-index: 100;
-  }
-  
-  /* Spinner */
-  .spinner {
-    width: 80px;
-    height: 80px;
-    background: url('../../Assets/LOGO.png') no-repeat center;
-    background-size: contain;
-    animation: spin 2s linear infinite;
-    border: none;  /* Ensure no border */
-    outline: none; /* Remove any outline */
-    box-shadow: none; /* Remove any box-shadow */
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-/* Mobile View (max-width: 768px) */
-@media (max-width: 768px) {
+  /* General Styling */
   .container {
-    flex-direction: column; /* Stack content and sidebar vertically */
-  }
-
-  .sidebar {
-    width: 100%;
-  }
-
-  .messageContent {
-    flex-direction: column;
-  }
-
-  .textColumn,
-  .imageColumn {
-    width: 100%;
-  }
-
-  .textColumn{
-    padding: 20px;
-    order: 1;
-  }
-
-  .overlayText {
-    font-size: 32px;
-  }
-
-  .messageHeader {
-    font-size: 28px;
-  }
-
-  .messageHeader2 {
-    font-size: 22px;
-  }
-
-  .messageTitle {
-    font-size: 24px;
-  }
-
-  .messageBody {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .hodImage{
-    width: 300px;
-    /* margin-left: 5%; */
-  }
-
-  .imageColumn{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
+    font: 400 24px "Times New Roman", -apple-system, Roboto, Helvetica, sans-serif;
   }
 
-  .header {
-    height: 20vh;
-    
-  }
-
-  .sidebar {
-    padding: 15px;
-  }
-
-  .sidebar ul li button {
-    font-size: 14px;
-  }
-
+@media (max-width: 1024px) {
   .messageContent {
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
   }
 
-  .overlayText {
-    font-size: 26px;
-    letter-spacing: 2px;
+  .imageColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    order: 1;
+    width: 100%;
+    margin-bottom: 20px;
   }
 
-  .messageHeader {
-    font-size: 22px;
-  }
-
-  .messageHeader2 {
-    font-size: 18px;
-  }
-
-  .hodDesignation {
-    font-size: 16px;
-  }
-
-  .messageTitle {
-    font-size: 20px;
-  }
-
-  .messageBody {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .hodMessage h3 {
-    font-size: 18px;
+  .hodImage {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
   }
 
   .socialLinks {
-    font-size: 16px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
   }
 
-  .viewMoreButton {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  .sidebar ul li {
-    margin-bottom: 12px;
-  }
-
-  .sidebar ul li .icon {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    height: 15vh;
-    margin-top: 6%;
-  }
-  .overlayText {
-    font-size: 22px;
-    letter-spacing: 1px;
-  }
-
-  .sidebar {
-    padding: 10px;
-  }
-
-  .sidebar ul li button {
-    font-size: 12px;
-  }
-
-  .sidebar ul li .icon {
-    font-size: 16px;
-  }
-
-  .messageHeader {
+  .socialLink {
     font-size: 20px;
   }
 
-  .messageHeader2 {
-    font-size: 16px;
+  .textColumn {
+    width: 100%;
+    order: 2;
+    text-align: center;
+  }
+}
+
+
+
+  /* Header */
+  .header {
+    position: relative;
+    width: 100%; /* Ensure header takes full width of the screen */
+    height: 25vh; /* Or use your desired height */
   }
 
-  .hodDesignation {
-    font-size: 14px;
+  .fullWidthImage {
+    width: 100%; /* Make the image span full width */
+    height: 100%; /* Ensure the image fills the header height */
+    object-fit: cover; /* Cover the area without distorting the image */
   }
 
-  .messageTitle {
-    font-size: 18px;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure the overlay spans the full width */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3); /* Darker background */
+    border-radius: 10px; /* Optional: smooth edges */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
 
-  .messageBody {
-    font-size: 12px;
+  .overlayText {
+    font-size: 38px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase; /* All caps for more modern look */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Light shadow for better contrast */
+    max-width: 80%;
     line-height: 1.4;
   }
 
-  .viewMoreButton {
-    padding: 6px 12px;
-    font-size: 12px;
+  /* Layout */
+  .layout {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
   }
 
-  .hodImage{
+  /* Sidebar */
+  .sidebar {
     width: 300px;
+    background: #1c1c1f;
+    color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   }
-}
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar ul li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Ensure icon and text are aligned horizontally */
+  }
+
+  .sidebar ul li button {
+    font-size: 16px;
+    /*color: #ffffff;*/
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    align-items: center; /* Align icon and text horizontally */
+    border: none;
+    /*background: transparent;*/
+    border-radius: 8px;
+    width: 100%;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+    /*color: #fdcc03; !* Default icon color *!*/
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+
+  /* Content */
+  .messageContent {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+  }
+
+  .textColumn {
+    flex: 2;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    /* background: #f9f9f9; */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .hodMessage {
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    /*background: #ffffff;*/
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+  }
+
+  .messageBody {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    /*color: #333;*/
+    text-align: justify;
+  }
+
+  .messageBody:first-of-type {
+    margin-top: 0;
+  }
+
+  .hodMessage h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    /*color: #1b1b23;*/
+    /*border-bottom: 2px solid #fdcc03;*/
+    display: inline-block;
+  }
+
+  .hodInfo {
+    margin-bottom: 20px;
+  }
+
+  .messageHeader {
+    font-size: 32px;
+    /*color: #fdcc03;*/
+    margin: 0;
+  }
+
+  .messageHeader2 {
+    font-size: 28px;
+    /*color: #000;*/
+    margin-left: 8px;
+  }
+
+  .hodDesignation {
+    font-size: 20px;
+    /*color: #555;*/
+  }
+
+  .messageTitle {
+    font-size: 28px;
+    margin-top: 20px;
+    /*color: #1b1b23;*/
+    /*border-bottom: 2px solid #fdcc03;*/
+    display: inline-block;
+  }
+
+  .messageBody {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 10px;
+    /*color: #333;*/
+  }
+
+  /* HOD Image */
+  .imageColumn {
+    /* flex: 1; */
+    text-align: center;
+    width: 35vw;
+  }
+
+  .hodImage {
+    /* max-width: 100%; */
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* View More Button */
+  .viewMoreButton {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    /*background: #fdcc03;*/
+    /*color: #000;*/
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .viewMoreButton:hover {
+    background: #800000;
+    color: white;
+  }
+
+
+  .socialLinks {
+    margin-top: 15px;
+    display: flex; /* Use flexbox to align the links in a row */
+    justify-content: center; /* Center the links horizontally */
+    align-items: center;
+    height: 35px;
+  }
+
+  .socialLink {
+    margin: 0 10px; /* Space between icons */
+    font-size: 24px;
+    /*color: #003366;*/
+  }
+
+  .socialLink:hover {
+    /*color: #fdcc03;*/
+  }
+
+    /* Loading Screen */
+    .loadingscreen {
+      position: sticky; /* Position relative to the committee container */
+      /*top: 0;*/
+      left: 0;
+      width: 100%;
+      /*height: 100%;*/
+      background-color: white; /* White background with opacity */
+      /*display: flex;*/
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: #333;
+      z-index: 100;
+    }
+    
+    /* Spinner */
+    .spinner {
+      width: 80px;
+      height: 80px;
+      background: url('../../Assets/LOGO.png') no-repeat center;
+      background-size: contain;
+      animation: spin 2s linear infinite;
+      border: none;  /* Ensure no border */
+      outline: none; /* Remove any outline */
+      box-shadow: none; /* Remove any box-shadow */
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+  /* Mobile View (max-width: 768px) */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack content and sidebar vertically */
+    }
+
+    .sidebar {
+      width: 100%;
+    }
+
+    .messageContent {
+      flex-direction: column-reverse;
+    }
+
+    .textColumn,
+    .imageColumn {
+      width: 100%;
+    }
+
+    .textColumn{
+      padding: 20px;
+      order: 1;
+    }
+
+    .overlayText {
+      font-size: 32px;
+    }
+
+    .messageHeader {
+      font-size: 28px;
+    }
+
+    .messageHeader2 {
+      font-size: 22px;
+    }
+
+    .messageTitle {
+      font-size: 24px;
+    }
+
+    .messageBody {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .hodImage{
+      width: 300px;
+      /* margin-left: 5%; */
+    }
+
+    .imageColumn{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .header {
+      height: 20vh;
+      
+    }
+
+    .sidebar {
+      padding: 15px;
+    }
+
+    .sidebar ul li button {
+      font-size: 14px;
+    }
+
+    .messageContent {
+      gap: 10px;
+    }
+
+    .overlayText {
+      font-size: 26px;
+      letter-spacing: 2px;
+    }
+
+    .messageHeader {
+      font-size: 22px;
+    }
+
+    .messageHeader2 {
+      font-size: 18px;
+    }
+
+    .hodDesignation {
+      font-size: 16px;
+    }
+
+    .messageTitle {
+      font-size: 20px;
+    }
+
+    .messageBody {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hodMessage h3 {
+      font-size: 18px;
+    }
+
+    .socialLinks {
+      font-size: 16px;
+    }
+
+    .viewMoreButton {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 12px;
+    }
+
+    .sidebar ul li .icon {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      height: 15vh;
+      margin-top: 6%;
+    }
+    .overlayText {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    .sidebar {
+      padding: 10px;
+    }
+
+    .sidebar ul li button {
+      font-size: 12px;
+    }
+
+    .sidebar ul li .icon {
+      font-size: 16px;
+    }
+
+    .messageHeader {
+      font-size: 20px;
+    }
+
+    .messageHeader2 {
+      font-size: 16px;
+    }
+
+    .hodDesignation {
+      font-size: 14px;
+    }
+
+    .messageTitle {
+      font-size: 18px;
+    }
+
+    .messageBody {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .viewMoreButton {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .hodImage{
+      width: 300px;
+    }
+  }

@@ -139,7 +139,7 @@ const Head = () => {
         },
         {
             main: "Research",
-            cod: [0, 4],
+            cod: [0, 5],
             cols: 1,
             sub: [
 
@@ -147,6 +147,7 @@ const Head = () => {
                 {hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal"}, //Sponseredresearch
                 {hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded"}, //Sponseredresearch
                 {hrd: false, ttl: "Books and Book Chapters", sup: [], lnk: "/Book_Chapter"} //Sponseredresearch
+                
             ]
         },
         {
