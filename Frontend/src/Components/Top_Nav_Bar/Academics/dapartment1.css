@@ -6,6 +6,11 @@
     margin: 0 auto;
 }
 
+
+@media (max-width:1024px){
+    
+}
+
 .department1-heading {
     font-size: 2rem;
     font-weight: bold;

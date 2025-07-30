@@ -8,6 +8,74 @@ body {
   width: 100%;
 }
 
+@media (max-width: 1024px) {
+ .about-desktop{
+  display: flex;
+  flex-direction: column-reverse;
+ }
+
+  .about-container {
+    width: 100%;
+  }
+
+  .about-department-image {
+    text-align: center;
+  }
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+
+  .grid-container {
+    display: flex;              /* Switch from grid to flex */
+    flex-direction: column;     /* Stack vertically */
+    width: 100% !important;     /* Fix width issue */
+    gap: 20px;
+  }
+
+  .accordion-body.show {
+    margin-top: 0.5rem;
+    text-align: left;
+  }
+
+  .POE.accordion-item-cir {
+    width: 100%;
+  }
+
+  .section-card {
+    width: 100%;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .about-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.5rem; /* Optional: space between image and text */
+  }
+
+  .about-container .col-md-6 {
+    width: 100%;
+  }
+
+  .about-department-image {
+    text-align: center; /* Optional: center image on mobile */
+  }
+}
+
+
+@media  (max-width:1024) {
+   .about-container{
+    display: flex;
+    flex-direction: column;
+   }
+}
 .main-content {
   padding: 30px;
   max-width: 100vw;
@@ -165,7 +233,10 @@ body {
   text-align: justify;
 }
 
-
+.about-dept-container{
+   width: 100vh;
+   
+}
 .about-department-text h2 {
   text-align: left;
 }
@@ -254,9 +325,17 @@ body {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+@media (max-width:1024px){
+  .accordion{
+    height: 20rem;
+    width: 100%;
+  }
+}
 .accordion{
   gap: 20px;
   align-items: start;
+
 
 }
 
@@ -297,6 +376,24 @@ POE accordion-item-circle {
 }
 
 /* Responsive Design for Small Tablets and Mobile */
+
+.about-dept{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border-left: 4px solid #fdcc03;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-left: 10px;
+}
+
+@media (max-width:1024px){
+  .about-dept{
+  display: flex;
+  flex-direction: column;
+}
+}
 @media (max-width: 768px) {
   .main-content {
     padding: 10px;
@@ -338,7 +435,7 @@ POE accordion-item-circle {
   }
 
   .about-department-text {
-    max-width: 100%;
+
     padding: 0 15px;
   }
 
