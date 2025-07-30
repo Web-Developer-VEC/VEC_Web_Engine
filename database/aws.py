@@ -821,6 +821,15 @@ def insert_academics_sections():
 
     print("academics sections inserted successfully.")
 
+def insert_curriculum_data():
+    collection = db['curriculum']
+    with open("/root/VEC-Backend/docs/curriculum.json", "r",encoding="utf-8") as file:
+        documents = json.load(file)
+        collection.insert_many(documents)
+
+    print("Cirrculum documents inserted successfully.\n")
+
+insert_curriculum_data()
 insert_academics_sections()
 insert_gallery_sections()
 insert_other_facilities_sections()
