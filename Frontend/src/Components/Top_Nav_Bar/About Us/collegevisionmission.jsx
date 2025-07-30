@@ -68,6 +68,9 @@ const Collegevisionmission = ({ theme, toggle }) => {
             {vmData ? (
                 <div className={styles.visionMissionContainer}>
                     {/* Vision Section (Left) and Photo (Rightmost) */}
+                        <div className={styles.photo}>
+                            <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
+                        </div>
                     <div className={styles.visionWrapper}>
                         <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
                             <div className={styles.cardHeader}>
@@ -77,9 +80,6 @@ const Collegevisionmission = ({ theme, toggle }) => {
                             <p className={styles.cardContent}>
                                 {vmData?.vision}
                             </p>
-                        </div>
-                        <div className={styles.photo}>
-                            <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
                         </div>
                     </div>
 
