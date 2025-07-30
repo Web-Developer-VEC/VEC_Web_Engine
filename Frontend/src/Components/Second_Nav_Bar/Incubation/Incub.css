@@ -238,7 +238,7 @@
     flex-direction: column;
     /* align-items: center; */
     justify-content: center;
-    min-height: 60vh;
+    height: auto;
     padding: 16px;
     padding-bottom: 35px;
 }
