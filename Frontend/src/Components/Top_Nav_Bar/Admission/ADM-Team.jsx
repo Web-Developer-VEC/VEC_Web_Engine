@@ -85,7 +85,6 @@ export default function ADMteam({ theme, toggle }) {
           }
         );
         setadmissionteamData(response.data.data);
-        console.log("Admission team",response.data);
         
         setLoading(false);
       } catch (error) {
@@ -132,7 +131,7 @@ export default function ADMteam({ theme, toggle }) {
           <LoadComp txt="" />
         </div>
       ) : (
-        <div className="flex flex-col items-center py-6 min-h-screen bg-prim dark:bg-drkp">
+        <div className="regulation-container flex flex-col items-center ">
           {/* Top two Admin cards */}
           <div className="flex flex-col md:flex-row gap-6 mb-8">
             {admissionteamData[0] && (

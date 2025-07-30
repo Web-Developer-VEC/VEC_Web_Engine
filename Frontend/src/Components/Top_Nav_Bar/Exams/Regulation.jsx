@@ -80,7 +80,7 @@ if (!isOnline) {
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
                     <li key={idx}>
-                      <a href={UrlParser(link.pdf_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drka font-[Poppins]">
+                      <a href={UrlParser(link.pdf_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drkt font-[Poppins]">
                         {link.name}
                       </a>
                     </li>

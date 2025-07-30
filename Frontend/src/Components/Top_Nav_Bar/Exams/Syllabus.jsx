@@ -58,7 +58,6 @@ function Syllabus({theme, toggle}) {
           }
         );
         setCurriculumData(response.data.data[0]);
-        console.log(response.data.data);
         
         setLoading(false);
       } catch (error) {
@@ -121,7 +120,7 @@ if (!isOnline) {
         headerText="Course & Syllabus"
         subHeaderText="Empowering students through structured learning and academic excellence"
       />
-      <div className="min-h-screen mt-2 px-4 sm:px-8">
+      <div className="min-h-[10vh] mt-2 mb-0 pb-0 px-4 sm:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-6">
           {isLoading ? (
             <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
