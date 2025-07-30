@@ -12,7 +12,7 @@ from pymongo import MongoClient
 
 def insert_curriculum_data():
     collection = db['curriculum']
-    with open("/VEC-Backend/docs/curriculum.json", "r",encoding="utf-8") as file:
+    with open("/VEC_Web_Engine/docs/curriculum.json", "r",encoding="utf-8") as file:
         documents = json.load(file)
         collection.insert_many(documents)
 
