@@ -111,7 +111,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
 
     return (
         <div className='landing-banner'>
-            <div className="flex h-[30vh] md:h-[65vh] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
+            <div className="flex h-[30vh] md:h-[25vh] lg:h-[65vh] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
                 w-[100vw] pointer-events-auto">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
@@ -119,7 +119,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     playsInline>
                     <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
                 </video>
-                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] lg:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
                     ref={containerRef}
                 >
                     <button onClick={() => window.location.href = `tel:${ph}`}   onWheel={(e) => {
@@ -149,9 +149,9 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                 <div ref={toggleRef}>
                     <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
                 </div>
-                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 -right-5 lg:right-[1vmax]
+                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
-                    <div className='relative no-wrap h-[15vmax] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
+                    <div className='relative no-wrap h-[15vh] md:h-[10vmax] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
                         {displayItems?.map((elm, i) => (
                             <p
                                 key={i}
