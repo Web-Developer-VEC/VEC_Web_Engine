@@ -26,8 +26,7 @@ const NewTrust = ({theme, toggle}) => {
           }
           fetchData();
         }, [])
-        
-        console.log("Ajay",AbtTrustData);
+    
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
       const handleOffline = () => setIsOnline(false);

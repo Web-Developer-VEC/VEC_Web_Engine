@@ -6,7 +6,6 @@ const NSSContent = ({data}) => {
   if (Array.isArray(data)) {
     content = data[0];
   }
-  console.log(content)
   return (
     <div className="nss-container">
       <div className="nss-content">

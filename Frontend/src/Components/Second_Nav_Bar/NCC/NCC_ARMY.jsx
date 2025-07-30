@@ -225,7 +225,6 @@ const NCC_ARMY = ({ toggle, theme }) => {
                 }
             )
             setarmydata(response.data.data)
-            console.log("ncc_army",response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
         }

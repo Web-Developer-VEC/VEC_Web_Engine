@@ -763,8 +763,7 @@ const Facultyprofile = ({theme, toggle}) => {
     const fetchData = async () => {
       try {
         setError(null);
-        const response = await axios.get(`/api/staffprofile/${uid}`);   //${uid}
-        console.log("Deatils",response.data);
+        const response = await axios.get(`/api/staffprofile/${uid}`);
         
         setProfileData(response.data);
         setLoading(false);

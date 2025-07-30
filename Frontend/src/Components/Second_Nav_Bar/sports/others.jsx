@@ -21,7 +21,8 @@ const Others = ({ data }) => {
 
     const formattedData = data?.map((image, index) => ({
       id: index + 1,
-      text: image?.title?.[index] || "No Title", // Fallback for undefined values
+
+      text: image?.title || "No Title", // Fallback for undefined values
       image: UrlParser(image?.image_path),
     }));
 
@@ -79,11 +80,12 @@ const Others = ({ data }) => {
                       alt="Achievement"
                       className="w-full h-80 object-contain rounded-t-lg"
                     />
-                    <div className="p-4 text-center rounded-b-lg">
+                    <div className="p-4 h-32 flex items-center justify-center text-center rounded-b-lg">
                       <p className="text-lg font-semibold text-text dark:text-drkt">
                         {item?.text}
                       </p>
                     </div>
+
                   </div>
                 ))}
               </div>
