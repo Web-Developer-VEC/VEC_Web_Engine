@@ -370,7 +370,37 @@ def insert_academics_sections():
 
     print("academics sections inserted successfully.")
 
-insert_academics_sections()
+def insert_department_sections():
+    base_path = "/VEC_WEB_Engine/docs/Dept"
+    
+    for dept_num in range(1, 18):  
+        dept_id = f"{dept_num:03d}"
+        file_path = os.path.join(base_path, f"{dept_id}.json")
+        
+        if not os.path.isfile(file_path):
+            print(f"File not found: {file_path}")
+            continue
+
+        with open(file_path, "r", encoding="utf-8") as file:
+            try:
+                sections = json.load(file)
+            except json.JSONDecodeError as e:
+                print(f"Failed to decode JSON for {dept_id}.json: {e}")
+                continue
+
+            collection = db[dept_id]
+
+            for section in sections:
+                document = {
+                    "type": section["type"],
+                    "data": section["data"]
+                }
+                collection.insert_one(document)
+
+            print(f"Inserted sections for department {dept_id}")
+
+insert_department_sections()
+#insert_academics_sections()
 #insert_gallery_sections()    
 #insert_landing_page_sections()
 #insert_sports_sections()
