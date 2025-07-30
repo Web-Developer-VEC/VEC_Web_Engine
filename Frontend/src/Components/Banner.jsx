@@ -58,8 +58,8 @@ const Banner = ({
       )}
 
       {/* Overlay */}
-      <div className="banner-overlay absolute z-10 right-1 pt-[60px] lg:pt-4">
-        <Toggle attr="float-right lg:-top-[0%] mr-24" toggle={toggle} theme={theme} />
+      <div className="banner-overlay absolute z-10 right-1 pt-[20px] md:pt-[50px] lg:pt-4">
+        <Toggle attr="float-right mr-12 md:mr-16 mt-2" toggle={toggle} theme={theme} />
       </div>
 
       {/* Content */}

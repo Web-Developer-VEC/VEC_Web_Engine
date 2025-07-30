@@ -147,7 +147,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     </button>
                 </div>
                 <div ref={toggleRef}>
-                    <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
+                    <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[24%] md:-top-[28%] lg:-top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
                 </div>
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>

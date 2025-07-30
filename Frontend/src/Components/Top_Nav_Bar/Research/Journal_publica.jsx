@@ -1,26 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Academicresearch.css";
-// import './Researchtable.css';
 import Banner from "../../Banner";
-// import Researchtable from "./Researchtable";
-import { Link } from "react-router-dom";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid"; // FIXED
+import axios from "axios";
 
-const courses = [
-  "2020",
-  "2014",
-  "2005",
-  "2006",
-  "2007",
-];
 
 export default function Journal({ theme, toggle }) {
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [open, handleOpen] = useState(false);
+  const [journal,setJournal] = useState(null);
 
-  const handleCourseClick = (course) => {
-    setSelectedCourse(selectedCourse === course ? null : course);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('/api/main-backend/research',
+          {
+            type: "Journal Publication"
+          }
+        )
+
+        const data = response.data.data;
+
+        setJournal(data);
+      } catch (error) {
+        console.error("Error fetchong Data",error);
+      }
+    }
+    fetchData();
+  }, [])
+
 
   return (
     <>
@@ -39,14 +50,19 @@ export default function Journal({ theme, toggle }) {
           </h1>
 
           <div className="course-selection-container p-12">
-            {courses.map((course) => (
+            {journal?.map((course) => (
             
                  <div
                    
                     className={`px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn`}
-                
+                    onClick={() => {
+                      const url = course?.pdf_path;
+                      if (url) {
+                        window.open(UrlParser(url), "_blank");
+                      }
+                    }}
                   >
-                   {course}
+                   {course?.year}
                   </div>
           
             ))}

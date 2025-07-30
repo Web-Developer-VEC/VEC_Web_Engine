@@ -47,7 +47,7 @@ const VisionMission = ({ data }) => {
     </div>
 
     {/* Image on the right */}
-    <div className="w-full md:w-1/2 flex justify-center">
+    <div className="w-full lg:w-1/2 md:w-full flex justify-center">
       <img
         src={UrlParser(data?.department_image)}
         alt={data?.department_name}
@@ -109,7 +109,7 @@ const VisionMission = ({ data }) => {
             <div className="accordion" id="psosAccordion">
               
               {data?.program_educational_outcomes?.headings?.map((heading, index) => (
-                <div className="POE accordion-item-cir bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg"key={index}>
+                <div className="POE accordion-item-cir bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg"key={index}>
                   <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
                       {heading}
                   </h2>
@@ -127,12 +127,12 @@ const VisionMission = ({ data }) => {
 
         {/* Right Column: Program Outcomes */}
         {data?.program_outcomes?.headings?.length > 0 && (
-          <div className="col-md-6 mt-10 w-full">
+          <div className="psos-section mt-5">
             <div className="pos-section">
               <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Outcomes</h2>
-              <div className="accordion grid-container">
+              <div className="accordion">
                 {data?.program_outcomes?.headings?.map((heading, index) => (
-                  <div className="accordion-item-cir text-text dark:text-drkt bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
+                  <div className="POE accordion-item-cir text-text dark:text-drkt bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
                     <h2 className="accordion-header text-left p-4">
                         {heading}
                     </h2>
@@ -151,7 +151,7 @@ const VisionMission = ({ data }) => {
             <h2 className="text-brwn dark:text-drkt border-b-2 border-[#FFD700] dark:border-drks w-fit pb-2">Program Specific Outcomes</h2>
             <div className="accordion" id="psosAccordion">
               {data?.program_specific_outcomes?.headings?.map((heading, index) => (
-                <div className="POE accordion-item-cir bg-prim dark:bg-drkts border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
+                <div className="POE accordion-item-cir bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
                   <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
                       {heading}
                   </h2>
