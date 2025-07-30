@@ -164,8 +164,6 @@ const Iic = ({toggle, theme}) => {
     }   
     const [iic, setIic] = useState(Object.keys(navData)[0]);
     const [isLoading, setLoading] = useState(true)
-    console.log(iic);
-    
 
   useEffect(() => {
     const typeMatch = {
@@ -191,8 +189,6 @@ const Iic = ({toggle, theme}) => {
       try {
         const key = Array.isArray(iic) ? iic[iic.length - 1] : iic;
         const type = typeMatch[key];
-        console.log(type);
-        
 
         if (!type) {
           console.warn(`No match for key "${key}"`);
@@ -204,7 +200,6 @@ const Iic = ({toggle, theme}) => {
         });
 
         setIicData(response.data.data);
-        console.log("IIC", response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);

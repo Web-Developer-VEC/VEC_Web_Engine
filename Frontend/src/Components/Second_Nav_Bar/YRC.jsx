@@ -50,7 +50,6 @@ const YRC = () => {
                 }
             )
             setYrcData(response.data.data)
-            console.log("yrc",response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
         }
@@ -87,7 +86,7 @@ const YRC = () => {
 function YRCAbout({data}) {
   return (
     <div className="YRC-about mt-4">
-      <div className="YRC-Aboutus border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="YRC-Aboutus border-l-4 border-secd mx-auto dark:border-drks dark:bg-drkb">
         <h2 class="YRC-heading text-brwn dark:text-drkt">
           ABOUT US
         </h2>
@@ -313,7 +312,6 @@ const Awardsnss = ({ data }) => {
 };
 
   function YRCCoord({ data }) {
-    console.log('hello',data)
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
@@ -326,10 +324,6 @@ const Awardsnss = ({ data }) => {
   if (Array.isArray(data) && data.length >= 2) {
     coor = data[0]?.members?.[0] || null;
     stud = Array.isArray(data[1]?.members) ? data[1].members : [];
-    console.log("DATA:", data);
-    console.log("COORDINATOR:", coor);
-    console.log("STUDENTS:", stud);
-
   }
   return (
     <>
@@ -391,36 +385,10 @@ const Awardsnss = ({ data }) => {
       )}
     </>
   );
-}
-  
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("/api/yrc"); // Ensure correct API route
-  //       const data = response.data;
-  //       console.log(data[0]);
-  //       setYrcData(data[0])
-  //         } catch (err) {
-  //           console.error("Error Fetching Data:", err.message);
-  //         }
-  //       };
-        
-  //       fetchData();
-  //     }, []);
+}     
+    
       
-      
-      // Carousel Settings
-      const carouselSettings = {
-        dots: true,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-      };
-      
-      const NotificationBox1 = ({ data }) => {
+const NotificationBox1 = ({ data }) => {
   return (
     <div className="YRC-notification-container">
       <div className="YRC-news-updates">Bringing you the latest news & updates</div>

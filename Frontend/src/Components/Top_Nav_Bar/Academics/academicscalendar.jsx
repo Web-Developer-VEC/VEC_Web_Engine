@@ -25,7 +25,6 @@ const Acadamiccal = ({ toggle, theme }) => {
           }
         );
         const data = responce.data.data;
-        console.log(data);
         
         setAcademicData(data)
         

@@ -189,5 +189,6 @@ export default function Webteam({ toggle, theme }) {
         <SideNav sts={webtab} setSts={setWebtab} navData={navData} cls={""} />
       </div>
     </>
+
   )
 }

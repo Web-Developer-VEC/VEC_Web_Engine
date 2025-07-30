@@ -369,3 +369,15 @@ h2{
       font-size: 14px;
     }
   }
+@media (min-device-width: 360px) and (max-device-width: 768px) and (min-width: 768px) {
+  .app-container {
+    display: block; /* This removes flex */
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    align-items: unset;
+    justify-content: unset;
+  }
+}
+
+

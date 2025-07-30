@@ -45,7 +45,7 @@ export default function Projects({data}) {
   return (
     <>
       {data ? (
-      <div className="min-h-screen bg-prim dark:bg-drkp p-6 font-[Poppins,sans-serif]">
+      <div className="h-auto bg-prim dark:bg-drkp p-6 font-[Poppins,sans-serif]">
           <div>
               <p className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">Projects</p>
           </div>

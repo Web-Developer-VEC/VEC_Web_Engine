@@ -6,9 +6,6 @@ import axios from "axios"
 const CourseCarousel = ({ courses }) => {
   const [pos, setPos] = useState(3);
   const [pause, setPause] = useState(false);
-  console.log("Cou",courses);
-  
-
   const navigate = useNavigate();
 
 const pos_hdl = (pvl) => {

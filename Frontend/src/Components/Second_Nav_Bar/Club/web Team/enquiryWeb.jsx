@@ -4,6 +4,8 @@ export default function EnquiryWeb() {
   const [err_page, setPage] = useState("");
   const [err_sub, setErrSub] = useState("");
   const [err_descrp, setErrDescrp] = useState("");
+  const [loading,setLoading] = useState(false);
+  const [message,setMessage] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,26 +16,48 @@ export default function EnquiryWeb() {
       err_descrp,
     };
 
-    try {
-      const res = await fetch("/api/webTeamForm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(enquiryData),
-      });
+  // const errorDescriptions = {
+  //   page_load: "The page failed to load. Please check your network or try again later.",
+  //   form_submit: "Form submission failed. Ensure all fields are correctly filled.",
+  //   login_problem: "Trouble logging in. Please verify your credentials or reset your password.",
+  //   api_error: "API failed to fetch data. Possibly due to server downtime or configuration issues.",
+  //   js_error: "A JavaScript error prevented interaction. Try refreshing or checking browser console.",
+  //   page_error: "A general page error occurred. Please report this with additional info.",
+  // };
 
-      if (res.ok) {
-        alert("Enquiry submitted successfully!");
-        setPage("");
-        setErrSub("");
-        setErrDescrp("");
-      } else {
-        alert("Failed to submit enquiry. Please try again later.");
-      }
-    } catch (error) {
-      console.error("Error submitting enquiry:", error);
-      alert("An error occurred. Please try again.");
+  try {
+    setLoading(true);
+    const response = await fetch("/api/main-backend/submit_feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        err_sub,
+        err_page,
+        err_descrp
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMessage("✅ Feedback submitted successfully.");
+      alert("Email sent successfully");
+      // Clear form fields
+      setErrSub("");
+      setPage("");
+      setErrDescrp("");
+    } else {
+      setMessage(`❌ Error: ${data.message || data.error}`);
     }
-  };
+  } catch (error) {
+    console.error("Feedback submission error:", error);
+    setMessage("❌ Failed to connect to the server.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-gray-900 dark:to-gray-950 py-10 px-4 sm:px-6">
@@ -99,9 +123,10 @@ export default function EnquiryWeb() {
           {/* Submit Button */}
           <button
             type="submit"
+
             className="w-full bg-gradient-to-r from-brwn to-secd text-white font-bold py-3 px-6 rounded-xl shadow-md hover:from-brwn hover:to-brwn focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all text-sm sm:text-base"
           >
-            Submit Enquiry
+            {loading ? "Submitting..." : "Submit Enquiry"}
           </button>
         </form>
       </div>

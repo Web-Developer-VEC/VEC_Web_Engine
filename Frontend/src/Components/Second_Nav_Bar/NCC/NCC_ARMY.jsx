@@ -198,9 +198,9 @@ const NCC_ARMY = ({ toggle, theme }) => {
           <NCCContact data={ncc_army}/>
         </>
       ),
-      "Recent Events":   <NCCACarousel data={ncc_army} />,
+      // "Recent Events":   <NCCACarousel data={ncc_army} />,
       "Team & Coordinators": <NCCAMembers data={ncc_army}/>,
-      "Awards & Recognition" : <AlumniSlider data={ncc_army} />,
+      // "Awards & Recognition" : <AlumniSlider data={ncc_army} />,
       
       
     };
@@ -225,7 +225,6 @@ const NCC_ARMY = ({ toggle, theme }) => {
                 }
             )
             setarmydata(response.data.data)
-            console.log("ncc_army",response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
         }

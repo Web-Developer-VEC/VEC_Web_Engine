@@ -1,37 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
-import axios from 'axios'
+import { Link } from "react-router-dom";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid"; // FIXED
+
+const courses = [
+  "2020",
+  "2014",
+  "2005",
+  "2006",
+  "2007",
+];
 
 export default function Consultancy({ theme, toggle }) {
-  const [acadamicRes,setAcadamicRes] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [open, handleOpen] = useState(false);
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const handleCourseClick = (course) => {
+    setSelectedCourse(selectedCourse === course ? null : course);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post('/api/main-backend/research',
-          {
-            type: "Consultancy"
-          }
-        )
-
-        const data = response.data.data;
-
-        setAcadamicRes(data)
-        
-      } catch (error) {
-        console.error('Error fetching Academic research data',error)
-      }
-    }
-
-    fetchData()
-  }, [])
 
   return (
     <>
@@ -50,19 +37,14 @@ export default function Consultancy({ theme, toggle }) {
           </h1>
 
           <div className="course-selection-container p-12">
-            {acadamicRes?.map((course) => (
+            {courses.map((course) => (
             
                  <div
                    
                     className={`px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn`}
-                    onClick={() => {
-                      const url = course?.pdf_path;
-                      if (url) {
-                        window.open(UrlParser(url), "_blank");
-                      }
-                    }}
+                
                   >
-                   {course.year}
+                   {course}
                   </div>
           
             ))}

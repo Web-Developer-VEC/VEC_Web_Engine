@@ -38,9 +38,22 @@
     }
 }
 
-@media screen and (max-width: 330px){
+
+
+
+
+@media (max-width:768px){
     .programmes-page{    
-        max-width: 97%;
-        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+       
+    }
+}
+
+
+@media (max-width:1024px){
+    .programmes-page{    
+        display: flex;
+       
     }
 }

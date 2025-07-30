@@ -31,6 +31,7 @@ const Accredation = ({toggle,theme}) => {
           )
 
           const data = response.data.data;
+          console.log("Acc",data);
 
           setAccData(data);
           
