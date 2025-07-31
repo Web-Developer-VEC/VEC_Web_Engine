@@ -3,10 +3,12 @@ import "./Aboutplacement.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Aboutplacement = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [placementData, setPlacementData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +24,9 @@ const Aboutplacement = ({ theme, toggle }) => {
         
       } catch (error) {
         console.error("error fetching Placement Data",error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
     fetchData();

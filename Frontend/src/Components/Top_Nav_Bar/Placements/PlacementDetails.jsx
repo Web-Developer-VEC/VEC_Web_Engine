@@ -3,6 +3,7 @@ import axios from "axios";
 import './PlacementDetails.css';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
+import { useNavigate } from "react-router";
 
 export const PlacementDetails = ({ theme, toggle }) => {
     const [showModal, setShowModal] = useState(false);
@@ -10,6 +11,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
     const [placementData, setPlacementData] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const navigate = useNavigate();
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -29,6 +31,9 @@ export const PlacementDetails = ({ theme, toggle }) => {
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
+                 if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
                 setLoading(true);
             }
         };

@@ -3,12 +3,14 @@ import "./Regulation.css";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
 
 const REGULATION = ({ theme, toggle }) => {
-
+  
   const [regulationdata, setRegulationData] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setLoading] = useState(true);
+  const navigate = useNavigate();
   
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -29,6 +31,9 @@ const REGULATION = ({ theme, toggle }) => {
         setLoading(false);
       } catch (error) {
         console.error("Error Fetching Regulation data");
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     }
