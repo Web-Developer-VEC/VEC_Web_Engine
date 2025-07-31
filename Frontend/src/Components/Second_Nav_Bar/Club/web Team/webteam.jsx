@@ -53,13 +53,17 @@ const ProfileCard = ({ member }) => {
 
           {/* Member Info */}
           <div className="text-center space-y-2">
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-blue-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+        
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-blue-300 group-hover:text-brwn dark:group-hover:text-blue-400 transition-colors duration-300">
               {member?.name}
             </h3>
-            <p className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
+            <p  className=" font-medium text-[16px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block" >{member?.club_designation}</p>
+           
+            {/* <p className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
               {member?.year}
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 font-medium">{member?.department}</p>
+            </p> */}
+            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.year}  </p>
+            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.department} </p>
           </div>
         </div>
 
@@ -85,8 +89,8 @@ function WebUI({ title, data }) {
     <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 min-h-screen">
       {/* Header Section */}
       <div className="text-center py-6 px-4">
-        <h1 className="text-[28px] sm:text-[32px] font-bold text-black dark:text-white mt-6">
-          Meet Our <span className="bg-gradient-to-r from-brwn to-drka bg-clip-text text-transparent">Amazing {title} Batch</span>
+        <h1 className="text-[28px] sm:text-[32px] font-bold text-brwn dark:text-white mt-6">
+          Meet Our Amazing Batch
         </h1>
       </div>
 
