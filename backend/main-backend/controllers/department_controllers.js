@@ -222,6 +222,25 @@ async function getslidebar (req, res) {
     }
 }
 
+async function getDepartmentResearch (req, res) {
+    const db = getDb();
+    const collection = db.collection('department_research');
+    const deptid = req.params.deptId;
+
+    try {
+        const department_research = await collection.findOne({ dept_id: deptid });
+
+        if (!department_research) {
+            return res.status(404).json({ message: `No data found for deptId: ${deptid}` });
+        }
+        res.status(200).json(department_research);
+    } catch (error) {
+        console.error('Error fetching department research data:', error);
+        await logError(req, error, 'Error fetching department research data', 500);
+        res.status(500).json({ error: 'Error fetching department research data' });
+    }
+}
+
 module.exports = {
     getVisionMission,
     getHODDetails,
@@ -232,5 +251,6 @@ module.exports = {
     getStuActivities,
     getMou,
     getslidebar,
-    getNewsLetters
+    getNewsLetters,
+    getDepartmentResearch
 };
