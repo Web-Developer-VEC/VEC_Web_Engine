@@ -50,9 +50,6 @@ import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.j
 import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
-import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
-import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
-import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
@@ -81,10 +78,8 @@ import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboar
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-// import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 // other stuffs
 import NotFound from "./NotFound";
-import Crdt from "./Components/Credits/Crdt.jsx";
 import axios from 'axios';
 import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
@@ -258,28 +253,18 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                {/* <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
-                                {/* <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/> */}
-                                {/* <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/> */}
-                                {/* <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
-
-                                <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
-
 
                                 <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
-
                                 
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
-                                <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
-                                <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
@@ -300,9 +285,6 @@ const App = () => {
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
-
-                                <Route path="/developers" element={<Crdt toggle={toggle} theme={theme}/>} />
-
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
