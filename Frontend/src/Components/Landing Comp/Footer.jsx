@@ -109,7 +109,7 @@ const Footer = forwardRef((props, ref) => {
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center w-full">
-                <a href="/webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-xl mt-4 font-medium m-auto cursor-pointer">© WebOps VEC Chennai</a>
+                <a href="/webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-md mt-4 font-medium m-auto cursor-pointer">© WebOps VEC Chennai</a>
                 <p>Velammal Engineering College, Chennai</p>
             </div>
         </footer>

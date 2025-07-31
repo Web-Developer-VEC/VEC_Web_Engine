@@ -3,12 +3,14 @@ import "./Other-Facilities.css";
 import Banner from "../Banner";
 import LoadComp from "../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 export default function OtherFacilities({ theme, toggle }) {
   const [activeTab, setActiveTab] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [otherFacilities, setOtherFacilities] = useState(null);
+  const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -51,6 +53,9 @@ export default function OtherFacilities({ theme, toggle }) {
         setActiveTab(data[0]?.title || null);
       } catch (error) {
         console.error("Error fetching Other facilities", error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();

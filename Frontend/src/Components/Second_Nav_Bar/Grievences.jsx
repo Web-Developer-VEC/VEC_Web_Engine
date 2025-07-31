@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 // import React, { useState } from "react";
 import Banner from "../Banner";
 import LoadComp from '../LoadComp'
+import { useNavigate } from "react-router";
 
 const GrievanceForm = ({ theme, toggle }) => {
-
+  
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
 
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
@@ -97,6 +99,9 @@ const GrievanceForm = ({ theme, toggle }) => {
       }
     } catch (error) {
       setMessage("Error connecting to the server");
+      if (error.response.data.status === 429) {
+        navigate('/ratelimit', { state: { msg: error.response.data.message}})
+       }
       console.error("Submission Error:", error);
     } finally {
       setLoading(false);

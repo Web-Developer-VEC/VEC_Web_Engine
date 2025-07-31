@@ -8,6 +8,7 @@ import SideNav from "../SideNav";
 import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 import LoadComp from "../../LoadComp";
 import Banner from "../../Banner";
+import { useNavigate } from "react-router";
 
 function NCCAbout({data}) {
   return (
@@ -134,6 +135,7 @@ const NCC_NAVY = ({ toggle, theme }) => {
   const [ Coordinator, setCoordinator] = useState({});
   const [ncc_navy, setnavy] = useState("About NCC Navy");
   const [navydata, setnavdata] = useState(null);
+  const navigate = useNavigate();
   const navData = {
     "About NCC Navy": (
       <>
@@ -175,6 +177,9 @@ const NCC_NAVY = ({ toggle, theme }) => {
             setnavdata(response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
+             if (error.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: error.response.data.message}})
+              }
         }
     }
     fetchData()

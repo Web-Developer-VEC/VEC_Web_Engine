@@ -36,6 +36,7 @@ const Dean = ({theme, toggle}) => {
   const navigate = useNavigate();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
+
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
@@ -55,6 +56,9 @@ const Dean = ({theme, toggle}) => {
         setloading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+         if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
         setloading(true);
       } 
     };
