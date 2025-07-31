@@ -184,27 +184,27 @@
       {
         "name": "Mrs. SHEEBA K",
         "designation": "senior Student admission councellor",
-        "photo_path": "/static/images/admin_office/Sheeba.webp"
+        "photo_path": "/static/images/admission_team/Sheeba_joseph.webp"
       },
       {
         "name": "Mrs. JENEFER ASHA JEYARANI M",
         "designation": "Student Admission Counseller",
-        "photo_path": "/static/images/admin_office/Jenefer.webp"
+        "photo_path": "/static/images/admission_team/Jenefer.webp"
       },
       {
         "name": "Ms. SRIVIDHYA C",
         "designation": "Admission councellor",
-        "photo_path": "/static/images/admin_office/Srividhya.webp"
+        "photo_path": "/static/images/admission_team/Srividhya.webp"
       },
       {
         "name": "Mrs. NIVETHITHA N",
         "designation": "Office Co-Ordinator",
-        "photo_path": "/static/images/admin_office/Nivethitha.webp"
+        "photo_path": "/static/images/admission_team/Nivethitha.webp"
       },
       {
         "name": "Mrs. Muthulakshmi",
         "designation": "Office Co-Ordinator",
-        "photo_path": "/static/images/admin_office/Muthulakshmi.webp"
+        "photo_path": "/static/images/admission_team/Muthulakshmi.webp"
       }
     ]
   },

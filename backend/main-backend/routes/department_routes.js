@@ -20,6 +20,6 @@ router.get('/:deptId/studentachievments', limiter, xss, sanitize, getStuActiviti
 router.get('/:deptId/mous', limiter, xss, sanitize, getMou);
 router.get('/:deptId/sidebar' ,limiter, xss, sanitize, getslidebar);
 router.get('/:deptId/newsletter', limiter, xss, sanitize, getNewsLetters);
-router.get('/:deptId/department_research',limiter, xss, sanitize, getDepartmentResearch);
+router.get('/:deptId/research',limiter, xss, sanitize, getDepartmentResearch);
 
 module.exports = router;

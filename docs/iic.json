@@ -192,7 +192,7 @@
     "type": "student_representation",
     "data": [
       {
-        "category": "iic",
+        "category": "IIC",
         "members": [
           {
             "name": "TARAKESHWARAN S",
@@ -242,7 +242,7 @@
         ]
       },
       {
-        "category": "entrepreneurship_start_up_cell",
+        "category": "Entrepreneurship Start Up Cell",
         "members": [
           {
             "name": "VIDHYALAKSHMI T",
@@ -283,7 +283,7 @@
         ]
       },
       {
-        "category": "social_media",
+        "category": "Social Media",
         "members": [
           {
             "name": "ADITHYAN V G",
@@ -324,7 +324,7 @@
         ]
       },
       {
-        "category": "document",
+        "category": "Document",
         "members": [
           {
             "name": "MONISHA T V",
@@ -365,7 +365,7 @@
         ]
       },
       {
-        "category": "technology_transfer",
+        "category": "Technology Transfer",
         "members": [
           {
             "name": "TEJASWINI P G",
@@ -406,7 +406,7 @@
         ]
       },
       {
-        "category": "nirf_innovation",
+        "category": "NIRF Innovation",
         "members": [
           {
             "name": "YUVAREGA S",
@@ -447,7 +447,7 @@
         ]
       },
       {
-        "category": "msme_irp_cell",
+        "category": "MSME IRP Cell",
         "members": [
           {
             "name": "HARINI M",
@@ -488,7 +488,7 @@
         ]
       },
       {
-        "category": "internship_cell",
+        "category": "Internship Cell",
         "members": [
           {
             "name": "GOMAGAN R",
@@ -529,7 +529,7 @@
         ]
       },
       {
-        "category": "innovation_cell",
+        "category": "Innovation Cell",
         "members": [
           {
             "name": "ASISH EMMANUEL K S",

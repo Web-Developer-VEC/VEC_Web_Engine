@@ -54,24 +54,9 @@
         "image_path": "/static/images/nss/event/eye camp.webp"
       },
       {
-        "title": "Road Safety Awarness",
-        "date": "30th January 2025",
-        "image_path": "/static/images/nss/event/road safety.webp"
-      },
-      {
-        "title": "Aram Pongal Event",
-        "date": "12th January 2025",
-        "image_path": "/static/images/nss/event/aram.webp"
-      },
-      {
         "title": "Vanam Padaipu",
         "date": "15th December 2024",
         "image_path": "/static/images/nss/event/vanam padaipu.webp"
-      },
-      {
-        "title": "Ignite",
-        "date": "21st November 2024",
-        "image_path": "/static/images/nss/event/ignite.webp"
       },
       {
         "title": "NSS Day",
@@ -92,41 +77,6 @@
         "title": "Mental Health Wellness",
         "date": "24th October 2024",
         "image_path": "/static/images/nss/event/mental health wellness.webp"
-      },
-      {
-        "title": "Recruitment'24 Event",
-        "date": "24th October 2024",
-        "image_path": "/static/images/nss/event/nss rec.webp"
-      },
-      {
-        "title": "Beach Event",
-        "date": "",
-        "image_path": "/static/images/nss/event/beach event.webp"
-      },
-      {
-        "title": "Blood Camp",
-        "date": "",
-        "image_path": "/static/images/nss/event/blood camp.webp"
-      },
-      {
-        "title": "Park Cleaning Event",
-        "date": "",
-        "image_path": "/static/images/nss/event/park cleaning event.webp"
-      },
-      {
-        "title": "Special Camp",
-        "date": "",
-        "image_path": "/static/images/nss/event/special camp.webp"
-      },
-      {
-        "title": "Women Awarness",
-        "date": "",
-        "image_path": "/static/images/nss/event/women awarness.webp"
-      },
-      {
-        "title": "Women Safety Awarness",
-        "date": "05th February 2025",
-        "image_path": "/static/images/nss/event/women safety.webp"
       }
     ]
   },
@@ -185,7 +135,7 @@
           {
             "name": "SHARAVANTH KUMAR",
             "designation": "Poster Team Head",
-            "image_path": "/static/images/nss/  .webp"
+            "image_path": "/static/images/nss/9.webp"
           },
           {
             "name": "SWEDHA",
