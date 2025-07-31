@@ -5,6 +5,8 @@ import axios from "axios";
 import SideNav from "./SideNav";
 import {FaLink} from "react-icons/fa";
 import LoadComp from "../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,6 +27,7 @@ const IQAC = ({ toggle , theme }) => {
     const [iqacData, setIqacData] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [iqa, setIqa] = useState("Objectives");
+      const navigate = useNavigate();
     const navData = {
         "Objectives": <IqaObj/>,
         "Coordinator": <IqaCor/>,
@@ -69,6 +72,9 @@ const IQAC = ({ toggle , theme }) => {
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching data", error);
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                } 
             }
 
         };
