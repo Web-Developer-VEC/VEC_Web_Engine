@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 export default function Funded({ theme, toggle }) {
   const [funded,setFunded] = useState(null);
+    const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
@@ -25,7 +28,10 @@ export default function Funded({ theme, toggle }) {
 
         setFunded(data);
       } catch (error) {
-        console.error('Error fetching Funded data',error)
+        console.error('Error fetching Funded data',error);
+         if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
       }
     }
     fetchData();

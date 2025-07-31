@@ -5,11 +5,14 @@ import PDF from "./PDF";
 import Transportvideo from "./TransportVideo";
 import LoadComp from '../../LoadComp'
 import Toggle from "../../Toggle";
+import { useNavigate } from "react-router";
+
 
 const Transport = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [transportData, settransportData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -35,7 +38,10 @@ const Transport = ({ theme, toggle }) => {
             settransportData(response.data.data);
             setLoading(false)
           }  catch (error) {
-                    console.error("Error fetching data:", error.message)
+                    console.error("Error fetching data:", error.message);
+                     if (error.response.data.status === 429) {
+                        navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                    } 
                     setLoading(false)
           }
         };

@@ -4,7 +4,9 @@ import Banner from "../../../Banner"
 import SideNav from "../../SideNav"
 import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 
 const SocialIcon = ({ type, url }) => {
   const getIcon = () => {
@@ -141,7 +143,8 @@ function WebUI({ title, data }) {
 export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot")
   const [webdata, setWebData] = useState(null)
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
@@ -170,7 +173,10 @@ export default function Webteam({ toggle, theme }) {
         const data = response.data.data
         setWebData(data)
       } catch (error) {
-        console.error("Error fetching Web Team data", error)
+        console.error("Error fetching Web Team data", error);
+         if (error.response.data.status === 429) {
+            navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            } 
       }
     }
     fetchData()

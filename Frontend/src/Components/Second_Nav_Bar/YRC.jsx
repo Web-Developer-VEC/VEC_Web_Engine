@@ -8,7 +8,9 @@ import axios from "axios";
 import SideNav from "./SideNav";
 import "swiper/css";
 import "swiper/css/navigation";
-import LoadComp from "../LoadComp"
+import LoadComp from "../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -18,7 +20,8 @@ const UrlParser = (path) => {
 const YRC = () => {
   // const [yrcEvent, setYrcEvent] = useState(null);
   const [yrcData, setYrcData] = useState(null);
-  const [yrc, setYrc] = useState("About YRC")
+  const [yrc, setYrc] = useState("About YRC");
+  const navigate = useNavigate();
   
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
@@ -51,7 +54,10 @@ const YRC = () => {
             )
             setYrcData(response.data.data)
         } catch (error) {
-            console.error("Error fetching data:", error.message)
+            console.error("Error fetching data:", error.message);
+             if (error.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: error.response.data.message}})
+              } 
         }
     }
     fetchData()
