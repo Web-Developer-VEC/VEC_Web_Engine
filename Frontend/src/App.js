@@ -296,7 +296,7 @@ const App = () => {
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
-                                <Route path="/developers/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
+                                <Route path="/developers" element={<Crdt toggle={toggle} theme={theme}/>} />
 
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
@@ -317,7 +317,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData?.data?.[0]}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />

@@ -11,7 +11,7 @@ import Awardsrec from "./AwardsRecognition";
 import NotificationBox from "./NewsUpdates";
 import LoadComp from "../../LoadComp"
 
-const NSS = () => {
+const NSS = ({ toggle, theme}) => {
   const [nssData, setNssData] = useState(null);
   const [nss, setNss] = useState("About NSS");
 
@@ -76,6 +76,7 @@ const NSS = () => {
         backgroundImage="./Banners/NSS.webp"
         headerText="NATIONAL SERVICE SCHEME (NSS)"
         subHeaderText="NOT ME BUT YOU."
+        toggle={toggle} theme={theme}
       />
       <SideNav sts={nss} setSts={setNss} navData={navData} cls={""} />
     </main>

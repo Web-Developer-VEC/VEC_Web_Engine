@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import { Github, Linkedin, Instagram, Mail, Globe, BadgeCheck } from "lucide-react";
 import { FaRegSmileBeam } from 'react-icons/fa';
 
-const Team = ({ani, callSld, ind, urlPrm}) => {
+const Team = ({ani, callSld}) => {
 const ppl = [
     {
         "name": "SAMUEL STEPHEN DEVA PAUL L",
@@ -104,7 +104,7 @@ const ppl = [
     },
     {
         "name": "MOHAMED YASIR A",
-        "description": "Started off by helping with the initial design phase of the college website, where I worked on wireframes and layout ideas to shape the overall look and feel. Later, I took on the role of a Frontend Developer, building and refining user-facing components to make the site clean, functional, and easy to navigate. I spent a good amount of time handling data collection, organizing files, and processing content to make sure everything stayed consistent and accessible for the team. It was a mix of creative thinking and hands-on work that taught me how important structure and detail are, especially when things scale. Looking back, I feel like I could’ve planned my file organization better early on—it would've saved a lot of time in the long run. But overall, it pushed me to understand both the visual and functional sides of web development more deeply.",
+        "description": "Started off by helping with the initial design phase of the college website, where I worked on wireframes and layout ideas to shape the overall look and feel. Later, I took on the role of a Frontend Developer, building and refining user-facing components to make the site clean, functional, and easy to navigate. I spent a good amount of time handling data collection, organizing files, and processing content to make sure everything stayed consistent and accessible for the team. It was a mix of creative thinking and hands-on work that taught me how important structure and detail are, especially when things scale. Looking back, I feel like I could've planned my file organization better early on—it would've saved a lot of time in the long run. But overall, it pushed me to understand both the visual and functional sides of web development more deeply.",
         "roles": ["Frontend Developer", "UI Planner"],
         "image": "/static/images/web_team/developers/Yasir 2.webp",
         "cover_image": "/static/images/web_team/developers/Yasir 1.png",
@@ -182,7 +182,7 @@ const ppl = [
     },
     {
         "name": "KUMAR P",
-        "description": "Designed modern, mobile-friendly interfaces using React.js—because plain old static pages just don’t cut it anymore. Focused on fluid layouts, responsive elements, and polished user flows with the help of Tailwind CSS, Bootstrap, and a hint of handcrafted styling. Worked alongside the backend crew to keep everything synced up like a well-oiled engine. From connecting APIs to handling live data, I got hands-on experience with the real challenges of building dynamic web apps. This phase really boosted my frontend confidence and gave me a proper dive into the world of actual development—way past the YouTube tutorial comfort zone.",
+        "description": "Designed modern, mobile-friendly interfaces using React.js—because plain old static pages just don't cut it anymore. Focused on fluid layouts, responsive elements, and polished user flows with the help of Tailwind CSS, Bootstrap, and a hint of handcrafted styling. Worked alongside the backend crew to keep everything synced up like a well-oiled engine. From connecting APIs to handling live data, I got hands-on experience with the real challenges of building dynamic web apps. This phase really boosted my frontend confidence and gave me a proper dive into the world of actual development—way past the YouTube tutorial comfort zone.",
         "roles": ["Frontend Developer",""],
         "image": "/static/images/web_team/developers/Kumar 2.webp",
         "cover_image": "/static/images/web_team/developers/Kumar 1.png",
@@ -299,24 +299,24 @@ const ppl = [
     ]
     const [pause, setPause] = useState(false);
     const [pos, setPos] = useState(1);
-    const durToNxt = (ind !== urlPrm)? 10000000: 9000
+    const durToNxt = 9000
     const navigate = useNavigate();
 
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+    const UrlParser = (path) => {
+        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
 
     const iconMap = {
-    github: <Github className="w-5 h-5" />,
-    linkedin: <Linkedin className="w-5 h-5" />,
-    instagram: <Instagram className="w-5 h-5" />,
-    mail: <Mail className="w-5 h-5" />,
-    portfolio: <Globe className="w-5 h-5" />,
-    "Hugging Face": <FaRegSmileBeam className="w-5 h-5" />,
-    Devfolio: <BadgeCheck className="w-5 h-5"/>
+    github: <Github className="w-4 h-4 sm:w-5 sm:h-5" />,
+    linkedin: <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />,
+    instagram: <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />,
+    mail: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />,
+    portfolio: <Globe className="w-4 h-4 sm:w-5 sm:h-5" />,
+    "Hugging Face": <FaRegSmileBeam className="w-4 h-4 sm:w-5 sm:h-5" />,
+    Devfolio: <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5"/>
     };
 
     const pos_hdl = useCallback((pvl) => {
@@ -343,20 +343,18 @@ const ppl = [
     }, [durToNxt, handleNext, pause, pos]);
 
     return (
-        <div className="h-full">
-            {(ind !== urlPrm) ?
-                <h3 className={"w-screen bg-blue-500/50 py-2 left-0 text-center text-[1.25rem] font-thin text-slate-300"}>
-                    You are viewing <b className="font-bold">{ppl[+(ind) - 1].name}</b>'s customised view
-                    <a className="bg-blue-950 text-[1rem] text-white rounded-xl px-2 py-1 ml-4 mb-1"
-                       href="./69">Revert ?</a>
-                </h3> : ""}
+        <div className="h-auto overflow-hidden">
+            {/* Main 3D Carousel Container */}
             <div
                 className={`${(ani) ? "animate-[Invis_1.5s_ease_forwards] [animation-delay:0s]"
-                    : "hidden"} font-comf row-[1/2] col-[1/8] w-screen lg:w-[45vw] z-1 
-                h-[500px] items-center flex justify-center mb-1 lg:left-[18vw] lg:top-[5vh]`}
+                    : "hidden"} font-comf relative w-full min-h-[100vh] sm:min-h-[120vh] lg:min-h-[80vh] 
+                    flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 lg:px-8`}
                 style={{transformStyle: 'preserve-3d', perspective: '600px'}}>
 
-                {ppl.map((cur, i) => (
+                {/* 3D Carousel Cards */}
+                <div className="relative w-full lg:w-[45vw] h-[300px] sm:h-[400px] lg:h-[500px] 
+                    flex items-center justify-center lg:mr-8">
+                    {ppl.map((cur, i) => (
                     <div key={i} className={`group cursor-pointer absolute transition-all duration-[0.25s] ease
                         hover:[transform:rotateY(90deg)] mb-[12vh] lg:mb-0 ${(pos - 5 < i && i < pos + 3) ?
                         'animate-[fadIn_0.1s_ease-in_forwards]' :
@@ -371,7 +369,7 @@ const ppl = [
                         <div className={`relative text-center w-[16.9vmax] h-[26vmax] 
                             mb-48 transition-all duration-[2s] ${(pos === i + 1) ? 'focs' : ''} rounded-2xl
                             group my-auto transition-transform`}
-                             onClick={() => pos_hdl(i + 1)}>
+                                onClick={() => pos_hdl(i + 1)}  >
                             <div className="absolute bg-[#fccb06] z-[-10] max-w-[100%] w-[40vw] lg:w-[17.5vw]
                                 h-[20vmax] lg:h-full rounded-lg
                                 overflow-hidden [transform:rotateY(180deg),translateZ(-10px)]">
@@ -380,64 +378,108 @@ const ppl = [
                             </div>
                             <Tilt><img
                                 className={`${(pos === i + 1) ? 'animate-[sizeUpExt_0.3s_ease-in-out_forwards] ' :
-                                    'hidden'} absolute h-[26vmax] -top-8  lg:top-10 origin-bottom`} src={UrlParser(cur.cover_image)}
+                                    'hidden'} absolute h-[26vmax] top-10  lg:top-10 origin-bottom`} src={UrlParser(cur.cover_image)}
                                 alt={cur.name}/></Tilt>
                         </div>
                     </div>
-                ))}
+                    ))}
+                </div>
 
-                {/* The Blue Bio box - Now with dynamic height */}
-                <div className={`float-right grid grid-cols-1 min-h-[32vmax] w-[50vmax] lg:left-[55vw] top-[30vh] lg:top-[4vh] relative
-                    bg-[#021526] text-white rounded-2xl [box-shadow:0_2px_5px_rgba(0,0,0,0.2)] max-w-[80%]
+                {/* Bio Information Box */}
+                <div className={`w-full max-w-[90vw] sm:max-w-[80vw] lg:max-w-[50vmax] lg:w-[50vmax] 
+                    min-h-[400px] sm:min-h-[450px] lg:min-h-[32vmax] 
+                    bg-[#021526] text-white rounded-2xl [box-shadow:0_2px_5px_rgba(0,0,0,0.2)] 
                     before:content-[''] before:absolute before:-bottom-4 before:left-0 before:w-[95%] before:ml-4
                     before:h-12 before:z-[-1] before:blur-xl before:bg-[linear-gradient(to_right,red,blue)]
                     before:bg-[length:200%_200%] before:animate-[aniGradBg_6.9s_ease_infinite]
-                    ${(pause) ? 'before:[animation-play-state:paused]' : 'before:animation-play-state:running'}`}>
+                    ${(pause) ? 'before:[animation-play-state:paused]' : 'before:animation-play-state:running'}
+                    relative`}>
                     {ppl.map((cur, i) => (
                         <div className={`${(i === pos - 1) ? "animate-[fadIn_0.4s_ease-in_forwards]" : "hidden"} 
-                            p-6 lg:p-8 h-fit w-full overflow-hidden`} key={i}>
-                            <p className={"text-xl lg:text-3xl xl:text-4xl text-[#6EACDA] mb-4 leading-tight break-words"}>
+                            p-4 sm:p-6 lg:p-8 h-fit w-full overflow-hidden`} key={i}>
+                            
+                            {/* Name with animated letters */}
+                            <p className={"text-lg sm:text-xl lg:text-3xl xl:text-4xl text-[#6EACDA] mb-3 sm:mb-4 leading-tight break-words"}>
                                 {cur.name.split("").map((ltr, i) => (
                                     <span key={i} className={`animate-[bem_0.4s_ease-in_forwards] mb-2`}
                                           style={{animationDelay: `${i * 0.08}s`}}>{ltr}</span>
                                 ))}
                             </p>
-                            <div className="flex gap-2">
-                                {cur.roles.map((rol,i) => (
-                                    <p className="bg-[#03346E] px-3 pt-1 rounded-full text-sm lg:text-base w-fit mb-3">{rol}</p>
+                            
+                            {/* Roles */}
+                            <div className="flex flex-wrap gap-1 sm:gap-2 mb-3">
+                                {cur.roles.map((rol, i) => (
+                                    <p key={i} className="bg-[#03346E] px-2 sm:px-3 py-1 rounded-full 
+                                        text-xs sm:text-sm lg:text-base w-fit">{rol}</p>
                                 ))}
                             </div>
-                            <p className="text-xs lg:text-sm leading-relaxed mb-4 text-gray-200 whitespace-pre-line text-justify">{cur.description}</p>
-                            <div className="mt-4">
-                                <p>Social Links</p>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 lg:gap-3 justify-center items-center">
-                                    {cur.socials
-                                    .map((s, i) => (
+                            
+                            {/* Description */}
+                            <p className="text-xs sm:text-sm lg:text-sm leading-relaxed mb-3 sm:mb-4 
+                                text-gray-200 whitespace-pre-line text-justify 
+                                max-h-[200px] sm:max-h-[250px] overflow-y-auto custom-scrollbar">
+                                {cur.description}
+                            </p>
+                            
+                            {/* Social Links */}
+                            <div className="mt-3 sm:mt-4">
+                                <p className="text-sm sm:text-base mb-2">Social Links</p>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 sm:gap-2 lg:gap-3">
+                                    {cur.socials.map((s, i) => (
                                         <a
-                                        key={i}
-                                        href={s.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-1 lg:gap-2 p-1.5 lg:p-2 rounded text-xs lg:text-sm hover:bg-gray-700 hover:text-white truncate transition-colors w-fit"
+                                            key={i}
+                                            href={s.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-1 sm:gap-2 p-1 sm:p-1.5 lg:p-2 
+                                            rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white 
+                                            truncate transition-colors w-fit active:scale-95"
                                         >
-                                        {iconMap[s.type]}
-                                        <span className="truncate capitalize">{s.type}</span>
+                                            {iconMap[s.type]}
+                                            <span className="truncate capitalize">{s.type}</span>
                                         </a>
                                     ))}
                                 </div>
                             </div>
                         </div>
                     ))}
+                    {/* Touch Navigation Indicators for Mobile */}
+                    <div className="flex justify-center gap-2 mt-4 pb-4 lg:hidden">
+                        <button 
+                            onClick={() => pos > 1 ? pos_hdl(pos - 1) : pos_hdl(ppl.length)}
+                            className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm active:scale-95"
+                        >
+                            ← Prev
+                        </button>
+                        <span className="flex items-center px-3 py-2 text-slate-300 text-sm">
+                            {pos} / {ppl.length}
+                        </span>
+                        <button 
+                            onClick={() => pos < ppl.length ? pos_hdl(pos + 1) : pos_hdl(1)}
+                            className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm active:scale-95"
+                        >
+                            Next →
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className="flex flex-wrap gap-4 justify-center w-screen bg-blue-500/50 mt-80 lg:mt-24 py-2 left-0
-                text-center text-[1.25rem] font-thin text-slate-300">
+
+            {/* Navigation Bar */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 lg:gap-4 justify-center w-full 
+                bg-blue-500/50 mt-4 sm:mt-8 lg:mt-24 py-3 sm:py-4 
+                text-center text-sm sm:text-base lg:text-[1.25rem] font-thin text-slate-300 
+                px-4 overflow-x-auto">
                 {ppl.map((per, i) => (
-                    <p key={i} onClick={() => setPos(i + 1)} className="hover:scale-125
-                        transition-transform cursor-pointer">
-                        {per.name.split(" ")[0]}</p>
+                    <p key={i} 
+                       onClick={() => setPos(i + 1)} 
+                       className={`hover:scale-110 sm:hover:scale-125 transition-transform cursor-pointer 
+                           whitespace-nowrap px-2 py-1 rounded hover:bg-blue-600/30 active:scale-95
+                           ${pos === i + 1 ? 'text-white bg-blue-600/50' : ''}`}>
+                        {per.name.split(" ")[0]}
+                    </p>
                 ))}
             </div>
+
         </div>
     );
 };
