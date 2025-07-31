@@ -6,6 +6,12 @@ import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
 import { useNavigate } from "react-router";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
+
 
 const SocialIcon = ({ type, url }) => {
   const getIcon = () => {
@@ -64,7 +70,7 @@ const ProfileCard = ({ member }) => {
           {/* Circular Image */}
           <div className="relative w-28 h-28 md:w-32 md:h-32">
             <img
-              src={member?.image}
+              src={UrlParser(member?.image)}
               alt={member?.name}
               className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-md transition-transform duration-500 group-hover:scale-105 dark:brightness-75"
             />
