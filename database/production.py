@@ -1173,10 +1173,16 @@ def insert_curriculum_data():
 
     print("Curriculum documents inserted successfully.\n")
 
+def insert_department_research_data():
+    collection = db['department_research']
+    with open('/VEC_Web_Engine/docs/department_research.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
 
+    print("department research data inserted successfully.")
 
+insert_department_research_data()
 insert_curriculum_data()
-
 insert_landing_page_sections()
 insert_sports_sections()
 insert_nss_sections()
@@ -1187,7 +1193,6 @@ insert_transport_sections()
 insert_yrc_sections()
 insert_administration_sections()
 insert_library_sections()
-#insert_department_research_data()
 insert_incubations_sections()
 insert_about_us()
 insert_help_desk()

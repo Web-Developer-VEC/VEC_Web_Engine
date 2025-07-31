@@ -1,0 +1,187 @@
+[
+  {
+    "dept_id": "001",
+    "dept_name": "Artificial Intelligence and Data Science",
+    "22-23": [
+      {
+        "name": "Book",
+        "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
+      },
+      {
+        "name": "Funded Proposal",
+        "pdf_path": "/static/pdfs/research/001/2223/Funded Proposals 22-23.pdf"
+      },
+      {
+        "name": "Journal Publications",
+        "pdf_path": "/static/pdfs/research/001/2223/Journal Publications 22-23.pdf"
+      },
+      {
+        "name": "International and National Conferences",
+        "pdf_path": "/static/pdfs/research/001/2223/International and National Conferences 22-23.pdf"
+      },
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/001/2223/Internship 22-23.pdf"
+      },
+      {
+        "name": "Patent",
+        "pdf_path": "/static/pdfs/research/001/2223/Patent Details 22-23.pdf"
+      }
+    ],
+    "23-24": [
+      {
+        "name": "Book",
+        "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
+      },
+      {
+        "name": "Funded Proposal",
+        "pdf_path": "/static/pdfs/research/001/2324/Funded Proposals 23-24.pdf"
+      },
+      {
+        "name": "Journal Publications",
+        "pdf_path": "/static/pdfs/research/001/2324/Journal Publications 23-24.pdf"
+      },
+      {
+        "name": "International and National Conferences",
+        "pdf_path": "/static/pdfs/research/001/2324/International and National Conferences 23-24.pdf"
+      },
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/001/2324/Internship 23-24.pdf"
+      },
+      {
+        "name": "Patent",
+        "pdf_path": "/static/pdfs/research/001/2324/Patent Details 23-24.pdf"
+      }
+    ],
+    "24-25": [
+      {
+        "name": "Book",
+        "pdf_path": "/static/pdfs/research/001/2425/Books & Book Chapters 24-25.pdf"
+      },
+      {
+        "name": "Product Development",
+        "pdf_path": "/static/pdfs/research/001/2425/Product Development 24-25.pdf"
+      },
+      {
+        "name": "Journal Publications",
+        "pdf_path": "/static/pdfs/research/001/2425/Journal Publications 24-25.pdf"
+      },
+      {
+        "name": "International and National Conferences",
+        "pdf_path": "/static/pdfs/research/001/2425/International and National Conferences 24-25.pdf"
+      },
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/001/2425/Internship 24-25.pdf"
+      },
+      {
+        "name": "Patent",
+        "pdf_path": "/static/pdfs/research/001/2425/Patent Details 24-25.pdf"
+      }
+    ]
+  },
+
+  {
+    "dept_id": "005",
+    "dept_name": "Computer Science and Engineering",
+    "22-23": [
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/005/2223/internship.pdf"
+      },
+      {
+        "name": "Conference Consolidation",
+        "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
+      },
+      {
+        "name": "Book And Book Chapter NBA",
+        "pdf_path": "/static/pdfs/research/005/2223/BOOK AND BOOK CHAPTER NBA 22-23.pdf"
+      },
+      {
+        "name": "Consultancy",
+        "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
+      },
+      {
+        "name": "CSE Quality Publication",
+        "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
+      },
+      {
+        "name": "Patent NBA Academic",
+        "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
+      },
+      {
+        "name": "Product Development",
+        "pdf_path": "/static/pdfs/research/005/2223/product development 2022-23.pdf"
+      },
+      {
+        "name": "Research Consolidation",
+        "pdf_path": "/static/pdfs/research/005/2223/Research consolidation 22-23.pdf"
+      }
+    ],
+    "23-24": [
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/005/2324/2023-2024 internship.pdf"
+      },
+      {
+        "name": "Book And Book Chapter NBA ",
+        "pdf_path": "/static/pdfs/research/005/2324/BOOK AND BOOK CHAPTER NBA 23-24.pdf"
+      },
+      {
+        "name": "Conference",
+        "pdf_path": "/static/pdfs/research/005/2324/conf 2023-2024.pdf"
+      },
+      {
+        "name": "Consultancy",
+        "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
+      },
+      {
+        "name": "CSE Quality Publication",
+        "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
+      },
+      {
+        "name": "Patent NBA Academic",
+        "pdf_path": "/static/pdfs/research/005/2324/Patent nba academic year wise 2023-2024.pdf"
+      },
+      {
+        "name": "Product Development",
+        "pdf_path": "/static/pdfs/research/005/2324/product development 2023-24.pdf"
+      },
+      {
+        "name": "Research Consolidation",
+        "pdf_path": "/static/pdfs/research/005/2324/Research consolidation 23-24.pdf"
+      }
+    ],
+    "2024-2025": [
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/005/2425/2024-2025 internship.pdf"
+      },
+      {
+        "name": "Book And Book Chapter NBA ",
+        "pdf_path": "/static/pdfs/research/005/2425/BOOK AND BOOK CHAPTER NBA 24-25.pdf"
+      },
+      {
+        "name": "Conference",
+        "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
+      },
+      {
+        "name": "CSE Quality Publication",
+        "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
+      },
+      {
+        "name": "Patent NBA Academic ",
+        "pdf_path": "/static/pdfs/research/005/2425/Patent nba academic year wise 2024-2025.pdf"
+      },
+      {
+        "name": "Product Development",
+        "pdf_path": "/static/pdfs/research/005/2425/Product development 24-25.pdf"
+      },
+      {
+        "name": "Research Consolidation",
+        "pdf_path": "/static/pdfs/research/005/2425/Research consolidation 24-25.pdf"
+      }
+    ]
+  }
+]
