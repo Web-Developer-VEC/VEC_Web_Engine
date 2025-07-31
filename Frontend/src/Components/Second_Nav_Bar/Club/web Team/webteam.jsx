@@ -45,7 +45,7 @@ const SocialIcon = ({ type, url }) => {
 
 const StaffCard = ({ member }) => {
   return (
-    <div className="bg-prim dark:bg-drkp rounded-2xl shadow-md p-4 md:flex gap-10 w-[80vw] md:w-[40vw] lg:w-[30vw] items-center text-center border border-gray-100 dark:border-gray-700 ">
+    <div className="bg-prim dark:bg-drkp rounded-2xl shadow-md p-4 md:flex justify-between w-[80vw] md:w-[40vw] lg:w-[30vw] items-center text-center border border-gray-100 dark:border-gray-700 ">
       <div className="w-28 h-28 md:w-32 md:h-32 mb-4 ml-[30%] md:ml-0 lg:ml-0">
         <img
           src={UrlParser(member?.image)}
@@ -53,7 +53,7 @@ const StaffCard = ({ member }) => {
           className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow"
         />
       </div>
-      <div>
+      <div className="w-full md:w-[15vw]">
         <h3 className="text-lg font-bold text-gray-900 dark:text-blue-300">{member?.name}</h3>
         <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">{member?.club_designation}</p>
       </div>
