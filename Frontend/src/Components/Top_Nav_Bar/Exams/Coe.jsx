@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Banner from "../../Banner";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Coe = ({ toggle, theme }) => {
-
+  
   const [coeData, setCoeData] = useState(null);
-
+  const navigate = useNavigate();
+  
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
@@ -24,6 +26,9 @@ const Coe = ({ toggle, theme }) => {
         setCoeData(data);
       } catch (error) {
         console.error("Error fetching coe data", error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
 

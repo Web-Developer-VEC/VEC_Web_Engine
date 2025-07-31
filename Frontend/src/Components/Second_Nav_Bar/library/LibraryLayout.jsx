@@ -8,10 +8,12 @@ import LIBMemb from "./LIBMemb"; // Adjust path if needed
 import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
 
 const LibraryLayout = ({toggle, theme}) => {
-    const [libraryData, setLibraryData] = useState(null);
+  const [libraryData, setLibraryData] = useState(null);
     const [lib, setLib] = useState("About")
+    const navigate = useNavigate();
     const navData = {
         "About": <LibraryIntro about={libraryData} />,
         "HOD's message":<LIBHod lib={lib} data={libraryData} />,
@@ -19,7 +21,7 @@ const LibraryLayout = ({toggle, theme}) => {
         "Advisory committee members": <LibrarySections data={libraryData} lib={lib}/>,
         "Membership Details": <LIBMemb lib={lib} data={libraryData} />,
         "Collection": {
-            "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
+          "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
             "Journals": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
               membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
@@ -58,6 +60,9 @@ const LibraryLayout = ({toggle, theme}) => {
           setLibraryData(data);
         } catch (err) {
           console.error("Error Fetching Data:", err.message);
+          if (err.response.data.status === 429) {
+            navigate('/ratelimit', { state: { msg: err.response.data.message}})
+          }
         }
       };
   
