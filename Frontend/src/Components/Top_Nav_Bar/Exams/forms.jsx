@@ -140,7 +140,9 @@ if (!isOnline) {
       </div>
     ) : (
       <>
-        <div className="tails-container ">
+        <div className="flex flex-wrap justify-center gap-8 px-4 py-2 sm:py-4">
+
+
           <div className="tail student-tail dark:bg-black" ref={studentTailRef}>
             <div className="tail-content flex flex-col h-full">
               <h2 className="font-[24px] font-bold mb-2 text-brwn dark:text-drkt">Student Resources</h2>
