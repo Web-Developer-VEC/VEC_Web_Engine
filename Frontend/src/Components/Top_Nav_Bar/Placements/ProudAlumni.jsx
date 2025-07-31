@@ -3,6 +3,7 @@ import Banner from "../../Banner";
 import "./ProudAlumni.css";
 import axios from "axios";
 import star from '../../Assets/championship.gif'
+import { useNavigate } from "react-router";
 
 const ProudAlumni = ({ theme, toggle }) => {
   // Data for the flipbook images
@@ -11,8 +12,8 @@ const ProudAlumni = ({ theme, toggle }) => {
       alumni: {
         students: Array.from({ length: 103 }, (_, i) => ({
           photo: `./cropped_pages/page_${i + 1}.jpg`,
-
-        
+          
+          
         })),
       },
     },
@@ -27,6 +28,7 @@ const ProudAlumni = ({ theme, toggle }) => {
   
   const content = spcannouncements[0]?.list_of_contents || [];
   const links = spcannouncements[0]?.list_of_links || [];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +37,9 @@ const ProudAlumni = ({ theme, toggle }) => {
             setSpcAnnouncements(response.data);
         } catch (error) {
             console.error("Error fetching data:", error.message);
+            if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
     };
     fetchData();

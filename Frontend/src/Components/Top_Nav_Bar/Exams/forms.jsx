@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Forms.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
 
 const Forms = ({theme, toggle}) => {
   const studentTailRef = useRef(null);
@@ -13,6 +14,7 @@ const Forms = ({theme, toggle}) => {
   const [isLoading, setLoading] = useState(true);
   const [selectedPdf, setSelectedPdf] = useState(null); // State for modal
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -52,6 +54,9 @@ const Forms = ({theme, toggle}) => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     };

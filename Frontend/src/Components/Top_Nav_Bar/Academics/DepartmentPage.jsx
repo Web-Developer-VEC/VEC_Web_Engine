@@ -17,11 +17,13 @@ import styles from "./HeadDepartment.module.css";
 import college from "../../Assets/college.jpeg";
 import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
 
 const DepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
   const location = useLocation();
-
+  const navigate = useNavigate();
+  
   // Initialize activeSection based on location.state or a default value
   const [activeSection, setActiveSection] = useState(
     location.state?.activeSection || "Vision&Mission"
@@ -73,7 +75,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   // Fetch data for the active section
   useEffect(() => {
     if (!activeSection) return;
-
+    
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -83,6 +85,9 @@ const DepartmentPage = ({ theme, toggle }) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setError("Failed to fetch data.");
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       } finally {
         setLoading(false);
       }
@@ -117,6 +122,9 @@ const DepartmentPage = ({ theme, toggle }) => {
         }
       } catch (error) {
         console.error("Error fetching sections:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setError("Failed to fetch sections.");
       }
     };

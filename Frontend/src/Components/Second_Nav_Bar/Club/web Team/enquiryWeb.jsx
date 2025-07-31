@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 export default function EnquiryWeb() {
   const [err_page, setPage] = useState("");
   const [err_sub, setErrSub] = useState("");
   const [err_descrp, setErrDescrp] = useState("");
   const [loading,setLoading] = useState(false);
-  const [message,setMessage] = useState(null)
+  const [message,setMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,6 +56,9 @@ export default function EnquiryWeb() {
     }
   } catch (error) {
     console.error("Feedback submission error:", error);
+     if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
     setMessage("❌ Failed to connect to the server.");
   } finally {
     setLoading(false);

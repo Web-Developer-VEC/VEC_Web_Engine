@@ -3,12 +3,15 @@ import './Management.css';
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
+  
 
 function Management({ theme, toggle }) {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
     const [AbtUsData, setAbtsUcData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,6 +25,9 @@ function Management({ theme, toggle }) {
                 setAbtsUcData(data)
             } catch (error) {
                 console.error("Error fetching about us data",error);
+                if (error.response.data.status === 429) {
+                   navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
         fetchData();

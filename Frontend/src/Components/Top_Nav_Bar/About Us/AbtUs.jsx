@@ -4,11 +4,11 @@ import Banner from '../../Banner';
 import LoadComp from '../../LoadComp'
 import axios from 'axios';
 import ScrollToTopButton from '../../ScrollToTopButton';
-
-
+import { useNavigate } from "react-router";
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const navigate = useNavigate();
     const [loading, setLoading] = useState({
         img1: true,
         img2: true,
@@ -36,6 +36,9 @@ const AbtUs = ({ theme, toggle }) => {
                 
             } catch (error) {
                 console.error("Error fetching about us data",error);
+                 if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
         fetchData();

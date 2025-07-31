@@ -9,6 +9,7 @@ import axios from 'axios';
 import SideNav from "../SideNav";
 import Intramural from './intramural';
 import LoadComp from '../../LoadComp';
+import { useNavigate } from "react-router";
 
 const SPTIntro = ({ data }) => {
   if (!Array.isArray(data)) return null;
@@ -57,6 +58,7 @@ const SportsPage = ({theme, toggle}) => {
     const [facultyData, setFacultyData] = useState([]);
     const [spt, setSpt] = useState("Introduction");
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const navigate = useNavigate();
 
     const navData = {
         "Introduction": <SPTIntro data={sportData}/>,
@@ -89,6 +91,9 @@ const SportsPage = ({theme, toggle}) => {
             setSportsData(response.data.data);
         } catch (err) {
             console.error("Failed to fetch sports data:", err);
+             if (err.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: err.response.data.message}})
+              }
         }
         }
       fetchData()

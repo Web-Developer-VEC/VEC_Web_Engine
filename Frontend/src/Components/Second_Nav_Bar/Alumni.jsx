@@ -4,6 +4,8 @@ import "./Alumni.css";
 import axios from "axios";
 import star from "../Assets/championship.gif";
 import LoadComp from "../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const Alumni = ({ theme, toggle }) => {
 
@@ -20,7 +22,7 @@ const Alumni = ({ theme, toggle }) => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
   const [alumniData, setAlumniData] = useState(null);
-  
+  const navigate = useNavigate();
   const content = spcannouncements?.list_of_contents || [];
   const links = spcannouncements?.list_of_links || [];
 
@@ -36,6 +38,9 @@ useEffect(() => {
       setSpcAnnouncements(response.data.special_announcement.data[0]);
     } catch (error) {
       console.error("Error fetching alumni data",error);
+       if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
     }
   }
   fetchData();

@@ -3,14 +3,15 @@ import axios from "axios";
 import './PlacementTeam.css';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
+import { useNavigate } from "react-router";
 
 
 function PersonDetail({ person, isImageLeft }) {
-
+  
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
-  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
   return (
@@ -49,6 +50,7 @@ export const PlacementTeam = ({toggle, theme}) => {
   const [PlacementTeam, setPlacementTeam] = useState([]);
   const [isLoading,setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -64,6 +66,9 @@ export const PlacementTeam = ({toggle, theme}) => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       } 
     };
