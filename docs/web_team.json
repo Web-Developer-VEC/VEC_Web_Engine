@@ -13,7 +13,7 @@
         "content": [
           {
             "name": "SAMUEL STEPHEN DEVA PAUL L",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Chairman",
             "image": "/static/images/web_team/pilot_batch/Sam.webp",
@@ -26,7 +26,7 @@
           },
           {
             "name": "SIDDHARTH MAGESH",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Vice Chairman",
             "image": "/static/images/web_team/pilot_batch/Sid.webp",
@@ -39,7 +39,7 @@
           },
           {
             "name": "PRANESH KUMAR V",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Backend - Tech Head",
             "image": "/static/images/web_team/pilot_batch/Pranesh.webp",
@@ -52,7 +52,7 @@
           },
           {
             "name": "LEROY JESLYN ",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "CSE",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Leroy.webp",
@@ -65,7 +65,7 @@
           },
           {
             "name": "SRI HARI M",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend - Tech Head",
             "image": "/static/images/web_team/pilot_batch/Srihari.webp",
@@ -78,7 +78,7 @@
           },
           {
             "name": "RAGESHWARAN HR",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "CSE",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Rageshwaran.webp",
@@ -91,7 +91,7 @@
           },
           {
             "name": "MOHAMED YASIR A",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Yasir.webp",
@@ -104,7 +104,7 @@
           },
           {
             "name": "VASANTHA RAJA S",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Vasanth.webp",
@@ -117,7 +117,7 @@
           },
           {
             "name": "GOKULRAMANAN V",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Data Handiling - Tech Head",
             "image": "/static/images/web_team/pilot_batch/Gokul.webp",
@@ -130,7 +130,7 @@
           },
           {
             "name": "WAATSON J",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Backend Engineer",
             "image": "/static/images/web_team/pilot_batch/Watson.webp",
@@ -143,7 +143,7 @@
           },
           {
             "name": "SAI VIGNESH RAJ M",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Backend Engineer",
             "image": "/static/images/web_team/pilot_batch/Sai.webp",
@@ -156,7 +156,7 @@
           },
           {
             "name": "KUMAR P",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Arjun.webp",
@@ -169,7 +169,7 @@
           },
           {
             "name": "SRI RAAM V H",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Sriram.webp",
@@ -182,7 +182,7 @@
           },
           {
             "name": "ARJUN V L",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Cloud Engineer - Tech Head",
             "image": "/static/images/web_team/pilot_batch/Arjun.webp",
@@ -195,7 +195,7 @@
           },
           {
             "name": "SANTHOSH G",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/pilot_batch/Santhosh.webp",
@@ -208,7 +208,7 @@
           },
           {
             "name": "HARIPRASATH V" ,
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Cloud Engineer - Intern",
             "image": "/static/images/web_team/pilot_batch/Hari.webp",
@@ -221,7 +221,7 @@
           },
           {
             "name": "AJITH G",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer - Intern",
             "image": "/static/images/web_team/pilot_batch/Ajith.webp",
@@ -234,10 +234,10 @@
           },
           {
             "name": "NIHARIKA B",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Media Systems - Engineer",
-            "image": "/static/images/web_team/copilot_batch/Niharika B.webp",
+            "image": "/static/images/web_team/pilot_batch/Niharika B.webp",
             "social": {
               "github": "https://github.com/Ni-hari-ka",
               "linkedin": "https://www.linkedin.com/in/niharika-b-85963b257/",
@@ -248,10 +248,10 @@
           },
           {
             "name": "PRAVEEN SRI RAM M",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Media Systems - Engineer",
-            "image": "/static/images/web_team/copilot_batch/Praveen Sriram.webp",
+            "image": "/static/images/web_team/pilot_batch/Praveen Sriram.webp",
             "social": {
               "github": "https://github.com/Praveen220605",
               "linkedin": "https://www.linkedin.com/in/praveen-sri-ram-m-9094b7301",
@@ -262,10 +262,10 @@
           },
           {
             "name": "MOHAMMED HAJEE J",
-            "year": "Final Year",
+            "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Media Systems - Head",
-            "image": "/static/images/web_team/copilot_batch/Mohammed Hajee J.webp",
+            "image": "/static/images/web_team/pilot_batch/Mohammed Hajee J.webp",
             "social": {
               "github": "https://github.com/Mdhajee",
               "linkedin": "https://www.linkedin.com/in/mohammed-hajee-1a5519255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
@@ -275,6 +275,21 @@
             }
           }
         ]
+      },
+     {
+        "content": [
+          {
+            "name": "Mr RAJAGOPALAN B",
+            "image": "/static/images/web_team/rajagopalan.webp",
+            "club_designation": "AVP Product Development"
+          },
+          {
+            "name": "Dr. VISU P",
+            "image": "/static/images/web_team/visu.webp",
+            "club_designation": "Professor & Head, Dept of Artificial Intelligence and Data Science"
+          }
+        ],
+        "category": "staff"
       }
     ]
   },
@@ -292,10 +307,10 @@
         "content": [
           {
             "name": "HARI PRASATH V",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Vice Chairman",
-            "image": "/static/images/web_team/copilot_batch/HARI PRASATH.webp",
+            "image": "/static/images/web_team/copilot_batch/Hari.webp",
             "social": {
               "github": "https://github.com/4274-hari",
               "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -305,10 +320,10 @@
           },
           {
             "name": "AJITH G",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend-Tech Head",
-            "image": "/static/images/web_team/copilot_batch/AJITH.webp",
+            "image": "/static/images/web_team/copilot_batch/Ajith.webp",
             "social": {
               "github": "",
               "linkedin": "",
@@ -318,7 +333,7 @@
           },
            {
             "name": "DEEPAK S",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Cloud Engineer-Tech Head",
             "image": "/static/images/web_team/copilot_batch/DEEPAK.webp",
@@ -331,7 +346,7 @@
           },
           {
             "name": "DINESH PRABAKERAN T",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Data Handiling-Tech Head",
             "image": "/static/images/web_team/copilot_batch/DINESH PRABAKERAN.webp",
@@ -344,7 +359,7 @@
           },
           {
             "name": "KISHAN G",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Backend Engineer",
             "image": "/static/images/web_team/copilot_batch/KISHAN G.webp",
@@ -357,7 +372,7 @@
           },
           {
             "name": "SAI VIKAASH RK",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Backend Engineer",
             "image": "/static/images/web_team/copilot_batch/SAI VIKAASH RK.webp",
@@ -370,7 +385,7 @@
           },
           {
             "name": "VISHALL K",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Backend-Tech Head",
             "image": "/static/images/web_team/copilot_batch/VISHALL.webp",
@@ -383,7 +398,7 @@
           },
           {
             "name": "SATHISH R",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/copilot_batch/SATHISH.webp",
@@ -396,7 +411,7 @@
           },
           {
             "name": "KIRUBA A",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/copilot_batch/KIRUBA.webp",
@@ -409,7 +424,7 @@
           },
           {
             "name": "DAKSHAN B",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/copilot_batch/DAKSHAN.webp",
@@ -422,7 +437,7 @@
           },
           {
             "name": "PRAVEEN D",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/copilot_batch/PRAVEEN.webp",
@@ -435,7 +450,7 @@
           },
           {
             "name": "SUDHAKAR S",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Engineer",
             "image": "/static/images/web_team/copilot_batch/SUDHAKAR.webp",
@@ -448,7 +463,7 @@
           },
           {
             "name": "DHARMESH B",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Media Systems - Head",
             "image": "/static/images/web_team/copilot_batch/DHARMESH.webp",
@@ -462,7 +477,7 @@
           },
           {
             "name": "KAVSHICK K S",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Media Systems - Engineer",
             "image": "/static/images/web_team/copilot_batch/KAVSHICK.webp",
@@ -476,7 +491,7 @@
           },
           {
             "name": "SANTHOSH KUMAR V",
-            "year": "Third Year",
+            "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Media Systems - Engineer",
             "image": "/static/images/web_team/copilot_batch/SANTHOSH KUMAR.webp",
@@ -487,9 +502,23 @@
               "email": "smiliesanthosh01@gmail.com",
               "instagram":"https://www.instagram.com/santhoxh._06/profilecard/?igsh=MXBuc25oM3d4cXlscg=="
             }
-          }
-          
+          }       
         ]
+      },
+     {
+        "content": [
+          {
+            "name": "Mr RAJAGOPALAN B",
+            "image": "/static/images/web_team/rajagopalan.webp",
+            "club_designation": "AVP Product Development"
+          },
+          {
+            "name": "Dr. VISU P",
+            "image": "/static/images/web_team/visu.webp",
+            "club_designation": "Professor & Head, Dept of Artificial Intelligence and Data Science"
+          }
+        ],
+        "category": "staff"
       }
     ]
   }
