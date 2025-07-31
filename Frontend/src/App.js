@@ -99,6 +99,9 @@ import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
 import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
 import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import { useNavigate } from "react-router";
+
+
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -141,7 +144,8 @@ const App = () => {
     const cookies = new Cookies()
     const [landingData, setLandingData] = useState(null);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-    
+     const navigate = useNavigate();
+
     
     useEffect(() => {
         const fetchData = async () => {
@@ -156,7 +160,9 @@ const App = () => {
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
-                
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
     

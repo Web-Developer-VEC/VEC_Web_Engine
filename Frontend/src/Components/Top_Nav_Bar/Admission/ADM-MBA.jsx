@@ -4,11 +4,15 @@ import "./ADM-MBA.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { FaLink } from "react-icons/fa";
+import { useNavigate } from "react-router";
+  
 
 const MBA = ({theme, toggle}) => {
   const [mbaData, setMbaData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +27,9 @@ const MBA = ({theme, toggle}) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(true);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();
