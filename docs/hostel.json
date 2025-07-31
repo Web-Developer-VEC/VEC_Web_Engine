@@ -105,7 +105,7 @@
     "type": "general_info",
     "data": [
       {
-        "category": "timings",
+        "category": "Timings",
         "content": [
           {
             "section": "mess timings",
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "category": "menu",
+        "category": "Menu",
         "content": [
           {
             "hostel_menu": [
