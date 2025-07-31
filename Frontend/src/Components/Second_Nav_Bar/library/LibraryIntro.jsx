@@ -112,7 +112,7 @@ const LibraryIntro = ({about}) => {
                       <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about?.mission}</p>
                   </div>
           </div>    
-          <div className="min-h-screen py-10 px-4 sm:px-6 flex flex-col items-center text-center w-full">
+          <div className="h-auto py-10 px-4 sm:px-6 flex flex-col items-center text-center w-full">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-accn dark:text-drkt mb-6 sm:mb-10">
                     GENERAL INSTRUCTIONS
                 </h2>
