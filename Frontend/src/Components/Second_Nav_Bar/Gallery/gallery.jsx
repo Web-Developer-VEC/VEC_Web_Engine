@@ -30,6 +30,9 @@ const Gallery = ({ toggle, theme}) => {
         setGallery(data);
       } catch (error) {
         console.error("Error fetching gallery data",error);
+         if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
     

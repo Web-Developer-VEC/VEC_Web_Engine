@@ -8,12 +8,13 @@ import LoadComp from '../../LoadComp'
 import { useEffect } from 'react'
 import IQauge from './igauge'
 import axios from 'axios'
-
-
+import { useNavigate } from "react-router";
+  
 const Accredation = ({toggle,theme}) => {
 
     const [naac,setNaac] = useState("NAAC");
     const [accdata, setAccData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -36,6 +37,9 @@ const Accredation = ({toggle,theme}) => {
           
         } catch (error) {
           console.error("Error Fetching Accredation Data",error);
+            if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
       }
       fetchData();
@@ -63,8 +67,6 @@ const Accredation = ({toggle,theme}) => {
         };
     }, []);
 
-
-
     if (!isOnline) {
         return (
           <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -87,7 +89,6 @@ const Accredation = ({toggle,theme}) => {
     </div>
   </>
 }
-
 
 
 export default Accredation
