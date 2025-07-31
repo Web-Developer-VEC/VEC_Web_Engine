@@ -13,7 +13,7 @@
         "content": [
           {
             "name": "SAMUEL STEPHEN DEVA PAUL L",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Sam.webp",
             "social": {
@@ -25,7 +25,7 @@
           },
           {
             "name": "SIDDHARTH MAGESH",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/siddharth.png",
             "social": {
@@ -37,7 +37,7 @@
           },
           {
             "name": "PRANESH KUMAR V",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Pranesh.webp",
             "social": {
@@ -49,7 +49,7 @@
           },
           {
             "name": "SRI HARI M",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/srihari.webp",
             "social": {
@@ -61,7 +61,7 @@
           },
           {
             "name": "MOHAMED YASIR A",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Yasir.webp",
             "social": {
@@ -73,7 +73,7 @@
           },
           {
             "name": "VASANTHA RAJA S",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Vasanth.webp",
             "social": {
@@ -85,7 +85,7 @@
           },
           {
             "name": "GOKULRAMANAN V",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Gokul.webp",
             "social": {
@@ -97,7 +97,7 @@
           },
           {
             "name": "WAATSON J",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Watson.webp",
             "social": {
@@ -109,7 +109,7 @@
           },
           {
             "name": "SAI VIGNESH RAJ M",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Sai.webp",
             "social": {
@@ -121,7 +121,7 @@
           },
           {
             "name": "KUMAR P",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/arjun.png",
             "social": {
@@ -133,7 +133,7 @@
           },
           {
             "name": "SRI RAAM V H",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Sriram.webp",
             "social": {
@@ -145,7 +145,7 @@
           },
           {
             "name": "ARJUN V L",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Arjun.webp",
             "social": {
@@ -157,7 +157,7 @@
           },
           {
             "name": "SANTHOSH G",
-            "year": "Third Year",
+            "year": "Final Year",
             "department": "AI&DS",
             "image": "/pilot/Santhosh.webp",
             "social": {
@@ -168,7 +168,7 @@
             }
           },
           {
-            "name": "Hari Prasath",
+            "name": "HARIPRASATH V",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "/pilot/hari.png",
@@ -180,7 +180,7 @@
             }
           },
           {
-            "name": "Ajith",
+            "name": "AJITH G",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "/pilot/ajith.png",
@@ -220,7 +220,7 @@
             }
           },
           {
-            "name": "AJITH",
+            "name": "AJITH G",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "",
@@ -237,14 +237,14 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/dinesh26072006",
+              "linkedin": "https://www.linkedin.com/in/dinesh-prabakaran-491659306/",
               "portfolio": "",
-              "email": ""
+              "email": "dineshprabakaran2509@gmail.com"
             }
           },
           {
-            "name": "KISAN",
+            "name": "KISHAN G",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "",
@@ -256,27 +256,15 @@
             }
           },
           {
-            "name": "V CASH",
+            "name": "SAI VIKAASH RK",
             "year": "Third Year",
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/vcash-21",
+              "linkedin": "www.linkedin.com/in/sai-vikaash-r-k-069372306",
               "portfolio": "",
-              "email": ""
-            }
-          },
-          {
-            "name": "DEEPAK",
-            "year": "Third Year",
-            "department": "AI&DS",
-            "image": "",
-            "social": {
-              "github": "https://github.com/Deepak-S-github",
-              "linkedin": "https://www.linkedin.com/in/deepak-saminathan/",
-              "portfolio": "https://deepakportfolio-0607.web.app/",
-              "email": "deepakofficial0103@gmail.com"
+              "email": "saivikaash@gmail.com"
             }
           },
           {
@@ -297,10 +285,10 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/Sathishkumar-290705/",
+              "linkedin": "https://www.linkedin.com/in/sathish-kumar-9001b02b6/",
               "portfolio": "",
-              "email": ""
+              "email": "sathishkumar290705@gmail.com"
             }
           },
           {
@@ -309,10 +297,10 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/kiruba326",
+              "linkedin": "https://www.linkedin.com/in/kirubanandham-a-82ab9b301/",
               "portfolio": "",
-              "email": ""
+              "email": "a.kirubanandham4420062gmail.com"
             }
           },
           {
@@ -321,10 +309,10 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/dakshan-18",
+              "linkedin": "https://www.linkedin.com/in/dakshan-b-1b9401329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
               "portfolio": "",
-              "email": ""
+              "email": "dakshan195@gmail.com"
             }
           },
           {
@@ -333,10 +321,10 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
-              "portfolio": "",
-              "email": ""
+              "github": "https://github.com/praveen0309d",
+              "linkedin": "https://www.linkedin.com/in/praveen-d-52181a2ba/",
+              "portfolio": "https://my-portfolio-praveen-001.vercel.app/",
+              "email": "praveen002006@gmail.com"
             }
           },
           {
@@ -345,8 +333,8 @@
             "department": "AI&DS",
             "image": "",
             "social": {
-              "github": "",
-              "linkedin": "",
+              "github": "https://github.com/sandysantho01",
+              "linkedin": "https://www.linkedin.com/in/santhosh-kumar-04654b2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
               "portfolio": "",
               "email": ""
             }
