@@ -250,7 +250,7 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
     }
 
     return (
-        <div className={cls + " grid w-screen grid-cols-10 -mt-10 lg:-mt-2 *:px-2"}>
+        <div className={cls + " grid w-screen grid-cols-10 -mt-10 md:-mt-4 lg:-mt-2 *:px-2"}>
             <nav className="bg-black pt-4 pb-12 flex gap-y-2 gap-x-2 flex-wrap
                 lg:grid text-md h-full content-start col-start-0 col-span-10 lg:col-span-2
                 transition-all duration-300 ease-in-out">

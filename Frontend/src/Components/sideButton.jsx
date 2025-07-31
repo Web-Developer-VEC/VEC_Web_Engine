@@ -5,44 +5,21 @@ import { FaArrowUp } from 'react-icons/fa';
 const SideButton = () => {  // Changed from sideButton to SideButton
   const [showPopup, setShowPopup] = useState(false);
 
-  // useEffect(() => {
-  //   if (showPopup) {
-  //     // create script
-  //     const script = document.createElement("script");
-  //     script.type = "text/javascript";
-  //     script.async = true;
-  //     script.src = "https://widgets.in6.nopaperforms.com/emwgts.js";
-  //     document.body.appendChild(script);
+  useEffect(() => {
+    if (showPopup) {
+      // create script
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src = "https://widgets.in6.nopaperforms.com/emwgts.js";
+      document.body.appendChild(script);
 
-  //     // optional cleanup
-  //     return () => {
-  //       document.body.removeChild(script);
-  //     };
-  //   }
-  // }, [showPopup]);
-
-    useEffect(() => {
-    const loadScript = () => {
-      const existing = document.querySelector("#meritto-script");
-      if (!existing) {
-        const script = document.createElement("script");
-        script.src = "https://widgets.in6.nopaperforms.com/emwgts.js";
-        script.async = true;
-        script.id = "meritto-script";
-        document.body.appendChild(script);
-      }
-    };
-
-    if (document.readyState === "complete") {
-      loadScript();
-    } else {
-      window.addEventListener("load", loadScript);
+      // optional cleanup
+      return () => {
+        document.body.removeChild(script);
+      };
     }
-
-    return () => {
-      window.removeEventListener("load", loadScript);
-    };
-  }, []);
+  }, [showPopup]);
 
   return (
     <>

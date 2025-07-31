@@ -43,7 +43,7 @@ export default function BookChapter({ theme, toggle }) {
 
         <div className="">
           <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-           Books and Book chapters
+           Books & Book chapters
           </h1>
 
           <div className="course-selection-container p-12">

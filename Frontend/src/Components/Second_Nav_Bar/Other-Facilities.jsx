@@ -79,6 +79,7 @@ export default function OtherFacilities({ theme, toggle }) {
     );
   }
 
+
   if (!otherFacilities || !currentFacility) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -146,6 +147,7 @@ export default function OtherFacilities({ theme, toggle }) {
           </div>
         </div>
       </div>
+
     </>
   );
 }
