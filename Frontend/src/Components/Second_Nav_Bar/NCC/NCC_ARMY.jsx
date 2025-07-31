@@ -8,10 +8,11 @@ import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 import LoadComp from "../../LoadComp";
 import logo from '../../Assets/NccArmy.png';
 import Banner from "../../Banner";
+import { useNavigate } from "react-router";
 
 
 function NCCAbout({data}) {
-    return (
+  return (
       <section
         className="NCC_ARMY-section bg-prim
                 dark:bg-drkb
@@ -115,7 +116,7 @@ function NCCMotto({data}) {
         <div
           className="NCC_ARMY-pledge bg-prim
                 dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
-        >
+                >
           <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             CARDINALS OF NCC
           </h2>
@@ -144,8 +145,8 @@ function NCCPledge({data}) {
       >
         <h2
           className="NCC_ARMY-section-title text-accn dark:text-drkt
-              border-b-2 border-secd dark:border-drks w-fit"
-        >
+          border-b-2 border-secd dark:border-drks w-fit"
+          >
           Pledge of NCC
         </h2>
         <p className="NCC_ARMY-content text-lg leading-7 text-center font-semibold">
@@ -165,7 +166,7 @@ function NCCPledge({data}) {
 }
 function NCCContact({data}) {
     return (
-        <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
+      <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
             <h2 className="text-2xl text-brwn font-bold  dark:text-white mb-4">
                 Contact Us
             </h2>
@@ -186,6 +187,7 @@ const NCC_ARMY = ({ toggle, theme }) => {
   //   const [armyData,setArmyData] = useState(null);
   const [ncc_army, setarmydata] = useState(null);
   const [army, setnccarmy] = useState("About NCC Army")
+  const navigate = useNavigate();
     const navData = {
       "About NCC Army": (
         <>
@@ -227,6 +229,9 @@ const NCC_ARMY = ({ toggle, theme }) => {
             setarmydata(response.data.data)
         } catch (error) {
             console.error("Error fetching data:", error.message)
+             if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
     }
     fetchData()
