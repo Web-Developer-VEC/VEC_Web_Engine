@@ -51,11 +51,6 @@ const Achievements1 = ({ data }) => {
 
   const coordinator = data?.find((item) => item.category === "coordinator")?.content;
 
-  console.log("Coor",coordinator);
-  
-
-
-
   return (
     <>
       {data ? (

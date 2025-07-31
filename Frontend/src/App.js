@@ -92,8 +92,6 @@ import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/LoadComp.jsx";
-// import ErrorLogPage from "./Components/errorlog/errorlog.jsx";   
-// import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
 import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
 import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
@@ -298,7 +296,7 @@ const App = () => {
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
 
-                                <Route path="/developers/:ind" element={<Crdt toggle={toggle} theme={theme}/>} />
+                                <Route path="/developers" element={<Crdt toggle={toggle} theme={theme}/>} />
 
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
