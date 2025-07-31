@@ -4,12 +4,14 @@ import { Eye, Target } from "lucide-react"; // Importing icons
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Collegevisionmission = ({ theme, toggle }) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [vmData, setvmData] = useState(null);
-
+    const navigate = useNavigate();
+ 
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,6 +25,9 @@ const Collegevisionmission = ({ theme, toggle }) => {
                 
             } catch (error) {
                 console.error("Error fetching about us data",error);
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
         fetchData();

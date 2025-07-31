@@ -11,12 +11,15 @@ import EnterpreN from "./Enterpreneur.jsx";
 import Activ from "./Eactivity.jsx";
 import axios from "axios";
 import LoadComp from "../../LoadComp.jsx";
+import { useNavigate } from "react-router";
 
 
 
 const Ecell = ({toggle,theme}) => {
     const [section, setEcell] = useState("About E-cell");
     const [ecell,setEcellData] = useState(null);
+    const navigate = useNavigate();
+
 
     useEffect(()=> {
         const typeMap = {
@@ -27,15 +30,23 @@ const Ecell = ({toggle,theme}) => {
             "Gallery": "gallery"
         }
         const fetchData = async () =>{
+            try {
+                const response = await axios.post('/api/main-backend/ecell',
+                    {
+                        type: typeMap[section]
+                    }
+                );
+                const data = response.data.data
+    
+                setEcellData(data)
+                
+            } catch (error) {
+                console.error("Error fetching ecell data");
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
+            }
 
-            const response = await axios.post('/api/main-backend/ecell',
-                {
-                    type: typeMap[section]
-                }
-            );
-            const data = response.data.data
-
-            setEcellData(data)
         }
       fetchData()
     },[section])

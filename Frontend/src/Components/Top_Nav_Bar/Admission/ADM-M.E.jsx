@@ -3,6 +3,8 @@ import axios from "axios";
 import "./ADM-M.E.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const ME = ({theme, toggle}) => {
 
@@ -10,6 +12,8 @@ const ME = ({theme, toggle}) => {
   const [isLoading, setLoading] = useState(true);
   const pg = pgData?.PG || [];
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +28,9 @@ const ME = ({theme, toggle}) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(true); // Ensure loading ends even on error
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();
