@@ -62,25 +62,28 @@ const Faculties = ({ data }) => {
             />
           </div>
         )}
-
-        <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>
-        <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
-          {facultyArray.slice(1).map((faculty, index) => (
-            <ImageCard
-              key={faculty.unique_id || index}
-              name={faculty.name}
-              photo={faculty.photo}
-              Designation={faculty.designation}
-              Scholar={faculty.profiles.google_scholar}
-              Research={faculty.profiles.research_gate}
-              Orchid={faculty.profiles.orchid}
-              Publon={faculty.profiles.publon}
-              Scopus={faculty.profiles.scopus}
-              Linkedin={faculty.profiles.linkedin}
-              uid={faculty.unique_id}
-            />
-          ))}
-        </div>
+        {facultyArray?.length > 1 && (
+          <>
+            <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>
+            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
+              {facultyArray.slice(1).map((faculty, index) => (
+                <ImageCard
+                  key={faculty.unique_id || index}
+                  name={faculty.name}
+                  photo={faculty.photo}
+                  Designation={faculty.designation}
+                  Scholar={faculty.profiles.google_scholar}
+                  Research={faculty.profiles.research_gate}
+                  Orchid={faculty.profiles.orchid}
+                  Publon={faculty.profiles.publon}
+                  Scopus={faculty.profiles.scopus}
+                  Linkedin={faculty.profiles.linkedin}
+                  uid={faculty.unique_id}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         {SupportingStaffArray?.length > 0 && (
           <>

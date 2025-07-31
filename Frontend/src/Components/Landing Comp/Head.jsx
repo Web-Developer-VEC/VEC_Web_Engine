@@ -232,7 +232,7 @@ const Head = () => {
                     </div>
                     <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(0.65rem, 0.85vw, 1rem)] 
                     max-w-[63.5%]
-                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition ml-auto'>
+                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
                             <div className='group/nav relative transition-all mt-3 rounded-xl grow min-w-0' key={ind}>
                                 <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]

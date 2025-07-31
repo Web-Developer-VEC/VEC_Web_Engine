@@ -257,7 +257,7 @@ const ppl = [
     },
     {
         "name": "HARI PRASATH",
-        "description": "Jumped into this project as the go-to guy for all things cloud and backend. Spent most of my time testing cloud platforms, tweaking deployments, and wrestling with configurations until they behaved. Also pitched in as a backend intern—debugging logic, building APIs, and occasionally arguing with the server (spoiler: it rarely listened). Cloud chaos? That was my playground.",
+        "description": "On the backend, I built and debugged APIs, handled server logic, and made sure the app talked smoothly to the database. Whether it was dealing with broken pipelines, weird server behavior, or setting up scalable infrastructure, I was deep in it. Argued with the server more than once—still not sure who won.Cloud chaos, backend bugs, infra issues? That was my zone.",
         "roles": ["Cloud Engineer","Backend Developer" ],
         "image": "/static/images/web_team/developers/Hari 2.webp",
         "cover_image": "/static/images/web_team/developers/Hari 1.png",
