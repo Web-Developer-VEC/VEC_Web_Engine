@@ -14,12 +14,13 @@ import Chat from './Components/Landing Comp/ChatPopup'
 import Footer from './Components/Landing Comp/Footer';
 import axios from 'axios';
 import ScrollToTopButton from './Components/ScrollToTopButton';
+import { useNavigate } from "react-router";
 
 
 const LandingPage = ({theme, load, toggle}) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+    const navigate = useNavigate();
     const [pageDetails, setPageDetails] = useState(null);
     const [bannerData, setBannerData] = useState([]);
     const [departmentBanner, setDepartmentBanner] = useState([]);
@@ -66,6 +67,9 @@ const LandingPage = ({theme, load, toggle}) => {
             });
         } catch (error) {
             console.error("API error:", error);
+            if (error.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
         };
 

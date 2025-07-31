@@ -21,7 +21,6 @@ import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
 import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
 import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
 import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
-import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
 import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Academics Pages Imports */
 import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
@@ -49,7 +48,6 @@ import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
 import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
-import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
 import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
@@ -99,6 +97,11 @@ import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
 import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
 import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import { useNavigate } from "react-router";
+import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
+import DynamicTitle from "./Header.jsx";
+
+
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -141,7 +144,8 @@ const App = () => {
     const cookies = new Cookies()
     const [landingData, setLandingData] = useState(null);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-    
+     const navigate = useNavigate();
+
     
     useEffect(() => {
         const fetchData = async () => {
@@ -156,7 +160,9 @@ const App = () => {
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
-                
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
     
@@ -223,13 +229,13 @@ const App = () => {
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
                         <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
+                            <DynamicTitle/>
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
-                                <Route path="/hr-handbook" drk element={<HR_Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
                                 <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme}/>}/>
@@ -260,8 +266,6 @@ const App = () => {
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
-                                <Route path="/proudalumni" drk element={<ProudAlumni />}/>
-                                {/* <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/> */}
 
                                 <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
 
@@ -295,6 +299,7 @@ const App = () => {
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
+                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
 
                                 <Route path="/developers" element={<Crdt toggle={toggle} theme={theme}/>} />
 

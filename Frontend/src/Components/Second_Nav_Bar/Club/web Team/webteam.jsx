@@ -4,7 +4,8 @@ import Banner from "../../../Banner"
 import SideNav from "../../SideNav"
 import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
-import { useLocation } from "react-router-dom"
+import { useNavigate } from "react-router";
+
 
 const SocialIcon = ({ type, url }) => {
   const getIcon = () => {
@@ -118,7 +119,7 @@ function WebUI({ title, data }) {
           <h2 className="text-xl md:text-2xl font-bold text-brwn dark:text-blue-300 mb-2">
             Want to Know about Our Team?
           </h2>
-          <p className="text-black dark:text-gray-300">{des?.message}</p>
+          <p className="text-text dark:text-prim">{des?.message}</p>
         </div>
       </div>
 
@@ -145,21 +146,13 @@ function WebUI({ title, data }) {
 export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot")
   const [webdata, setWebData] = useState(null)
-  const location = useLocation()
+  const navigate = useNavigate();
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
-    Pilot: <WebUI title={"Pilot"} data={webdata} />,
+    "Pilot": <WebUI title={"Pilot"} data={webdata} />,
     "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata} />,
   }
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const tab = params.get("tab")
-    if (tab === "enquiry") {
-      setWebtab("Enquiry Now")
-    }
-  }, [location.search])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -174,7 +167,10 @@ export default function Webteam({ toggle, theme }) {
         const data = response.data.data
         setWebData(data)
       } catch (error) {
-        console.error("Error fetching Web Team data", error)
+        console.error("Error fetching Web Team data", error);
+         if (error.response.data.status === 429) {
+            navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            } 
       }
     }
     fetchData()
@@ -185,8 +181,8 @@ export default function Webteam({ toggle, theme }) {
       <Banner
         toggle={toggle}
         theme={theme}
-        backgroundImage="./Banners/Accreditations_Ranking.webp"
-        headerText="Web Team"
+        backgroundImage="./Banners/Web_Team_Banner_Updated.webp"
+        headerText="WebOps"
         subHeaderText="Meet Our Team"
       />
       <div>

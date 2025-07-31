@@ -40,7 +40,7 @@ export default function Warden({ hostelData}) {
 
   return (
     <>
-      <h2 className="warden-heading1 text-brwn text-3xl font-bold  dark:text-drkt mt-10 uppercase">Wardens</h2>
+      <h2 className="warden-heading1 text-brwn text-3xl font-bold  dark:text-drkt mt-10">Wardens</h2>
 
       {/* Chief and Deputy */}
       <div className="warden-top-column">
@@ -57,7 +57,7 @@ export default function Warden({ hostelData}) {
       </div>
 
       {/* Boys Wardens */}
-      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10 uppercase">Boys Warden</h2>
+      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10">Boys Warden</h2>
       <div className="warden-row">
         {boysWardens.map((warden, index) => (
           <div key={index} className="warden-card-flex">
@@ -72,7 +72,7 @@ export default function Warden({ hostelData}) {
       </div>
 
       {/* Girls Wardens */}
-      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10 uppercase">Girls Warden</h2>
+      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10">Girls Warden</h2>
       <div className="warden-row">
         {girlsWardens.map((warden, index) => (
           <div key={index} className="warden-card-flex">

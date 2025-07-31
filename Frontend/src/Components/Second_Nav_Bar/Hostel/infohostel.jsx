@@ -1,17 +1,17 @@
 import React from "react";
 import "./InfoHostel.css";
-import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
+import LoadComp from "../../LoadComp";
 
 const InfoHostel = ({ hostelData }) => {
-  const [HostelData, setHostelUcData] = useState(null);
-
   const data = hostelData?.[0];
   const data2 = hostelData?.[1];
 
   if (!data || !data2 || !data.content || !data2.content) {
-    return <div>Loading...</div>; // Or fallback UI
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    ) 
   }
 
   return (

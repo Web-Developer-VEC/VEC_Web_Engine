@@ -222,23 +222,24 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex">
+                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
-                            <div className="duration-200 self-center ease-linear" data-carousel-item="" key={i}>
-                                <img src={nac} className="block mt-2 h-full w-[5vmax] p-1" alt="naac"
+                            <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
+                                <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
                                      key="naac"/>
                             </div>
                         ))}
                     </div>
-                    <div className='lg:flex flex-wrap hidden right-0 justify-end grow text-[1.2vmax] max-w-[63.5%]
-                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition ml-auto'>
+                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(0.65rem, 0.85vw, 1rem)] 
+                    max-w-[63.5%]
+                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
-                            <div className='group/nav relative transition-all mt-3 rounded-xl' key={ind}>
+                            <div className='group/nav relative transition-all mt-3 rounded-xl grow min-w-0' key={ind}>
                                 <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]
                                         hover:bg-[position:100%_0%] text-transparent
                                         bg-gradient-to-l from-secd dark:from-drks from-50% via-text dark:via-drkt via-50% 
                                         to-text dark:to-drkt to-90% bg-clip-text bg-[position:0%_0%] bg-[length:200%_100%]
-                                        hover:ease-out hover:duration-700 ease-in-out duration-300`}>{nvt.main}
+                                        hover:ease-out hover:duration-700 ease-in-out duration-300 truncate `}>{nvt.main}
                                     <ChevronDownIcon
                                         className='size-[1.3vmax] mb-1 ml-1 inline text-text dark:text-drkt'></ChevronDownIcon>
                                 </p>
@@ -287,7 +288,7 @@ const Head = () => {
                         ))}
                     </div>
                 </div>
-                <div className='hidden lg:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkts
+                <div className='hidden xl:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkts
                         gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
                         {hdrs.map((hdr, index) => {
                             const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
@@ -359,7 +360,7 @@ const Head = () => {
                         </div>
                     </div>
                 <div
-                    className='block lg:hidden h-fit overflow-y-hidden'>
+                    className='block xl:hidden h-fit overflow-y-hidden'>
                     <Sidebar navs={navs} Sz="tny p-0"/></div>
             </nav>
         </>

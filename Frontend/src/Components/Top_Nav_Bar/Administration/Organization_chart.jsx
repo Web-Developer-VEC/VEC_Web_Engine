@@ -3,6 +3,7 @@ import './Orgainzation_chart.css'; // Ensure the CSS file includes necessary sty
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 
 const CollegeOrgChart = ({theme, toggle}) => {
@@ -10,8 +11,8 @@ const CollegeOrgChart = ({theme, toggle}) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [orgChart, setOrgData] = useState(null);
   
-  const [isOpen,setIsOpen] = useState(false)
-  
+  const [isOpen,setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
@@ -27,7 +28,9 @@ const CollegeOrgChart = ({theme, toggle}) => {
         setOrgData(data.image_path);
       } catch (error) {
         console.error("Error fetching organization chart Linnk",error);
-        
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
       }
     }
 

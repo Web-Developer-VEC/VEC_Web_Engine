@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+ 
 
 const Card = ({ image, name, designation }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,6 +74,8 @@ export default function ADMteam({ theme, toggle }) {
   const [admissionteamData, setadmissionteamData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+   const navigate = useNavigate();
+ 
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
@@ -90,6 +94,9 @@ export default function ADMteam({ theme, toggle }) {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(true);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();
