@@ -59,6 +59,9 @@ const Incub = ( {toggle, theme}) => {
                 setIncubation(data);
             } catch (error) {
                 console.error("Error fetching incubation data",error);
+                 if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+               }
             }
         }
         fetchData();
