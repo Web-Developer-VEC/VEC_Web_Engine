@@ -1,9 +1,9 @@
-    import React, { useEffect, useState } from 'react'
-    import Banner from '../../Banner'
-    import { FaLink } from 'react-icons/fa'
-    import axios from 'axios';
-
-    const HR_Handbook = ({toggle,theme}) => {
+import React, { useEffect, useState } from 'react'
+import Banner from '../../Banner'
+import { FaLink } from 'react-icons/fa'
+import axios from 'axios';
+import { useNavigate } from "react-router";
+const HR_Handbook = ({toggle,theme}) => {
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     
@@ -12,6 +12,7 @@
     };
 
     const [handBook, sethandbook] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchdata = async () => {
@@ -27,6 +28,9 @@
             
             } catch (error) {
             console.error("Error fetching handbook data", error);
+             if (error.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: error.response.data.message}})
+             } 
             
             }
         }

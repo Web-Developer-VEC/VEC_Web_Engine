@@ -3,11 +3,13 @@ import './Programmes.css'
 import React, { useEffect, useState } from 'react'
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Programmes = ({toggle, theme}) => {
-
+    
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [programmes, setProgrammes] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +26,9 @@ const Programmes = ({toggle, theme}) => {
                 
             } catch (error) {
                 console.error("Error fetching programmes data",error);
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
         }
         fetchData();

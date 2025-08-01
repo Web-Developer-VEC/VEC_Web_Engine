@@ -13,6 +13,7 @@ import IicFacEvent from "./event";
 import IicFacPolicy from "./policy";
 import IicFacCertificate from "./certificates";
 import IicFacnir from "./nir";
+import { useNavigate } from "react-router";
 
 
 function IicHome({ data }) {
@@ -138,7 +139,8 @@ function IicEco({ data }) {
 
 
 const Iic = ({toggle, theme}) => {
-    const [iicData, setIicData] = useState(null)
+  const [iicData, setIicData] = useState(null)
+  const navigate = useNavigate();
     const navData = {
         "Home": <IicHome data={iicData}/>,
         "Establishment of IIC": <IicEst data={iicData}/>,
@@ -203,6 +205,9 @@ const Iic = ({toggle, theme}) => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     };

@@ -62,6 +62,9 @@ function Syllabus({theme, toggle}) {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     };

@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import Banner from "../../Banner";
 import axios from'axios';
-import LoadComp from "../../LoadComp"
+import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -28,6 +30,7 @@ const Handbook = ({ theme, toggle }) => {
 
   const [handBook, sethandbook] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -44,6 +47,9 @@ const Handbook = ({ theme, toggle }) => {
         
       } catch (error) {
         console.error("Error fetching handbook data", error);
+         if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
         
       }
     }

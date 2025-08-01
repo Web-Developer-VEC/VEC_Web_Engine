@@ -22,11 +22,14 @@ import LoadComp from "../../LoadComp";
 import "./dapartment1.css";
 import Banner from "../../Banner";
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 const AcademicDepartments = ({ theme , toggle }) => {
-
+  
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [departments,setDepartments] = useState(null);
+  const navigate = useNavigate();
 
   const iconMap = {
   "Automobile": <FaCar />,
@@ -63,6 +66,9 @@ const AcademicDepartments = ({ theme , toggle }) => {
         
       } catch (error) {
         console.error("error fetching Department List Data",error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
     fetchData();

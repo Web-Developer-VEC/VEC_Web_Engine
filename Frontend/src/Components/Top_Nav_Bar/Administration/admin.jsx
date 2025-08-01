@@ -4,11 +4,14 @@ import axios from "axios";
 import "./admin.css"; // Import the CSS file for styling
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+
 
 // Card component
 const Card = ({ image, name, designation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  
 
   return (
     <div className="admin-card border-2 border-secd dark:border-drks relative flex flex-col items-center p-4">
@@ -38,7 +41,6 @@ const Card = ({ image, name, designation }) => {
 const AdminCard = ({ image, name, designation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
   return (
     <div className="admin-card-ao border-2 border-secd dark:border-drks relative flex flex-column p-4 w-60 border-2x rounded">
       {!hasError ? (
@@ -72,6 +74,7 @@ const CardPage = ({theme, toggle}) => {
   const [adminData, setadminData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -92,6 +95,9 @@ const CardPage = ({theme, toggle}) => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+         if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+              } 
         setLoading(true);
       } 
     };
