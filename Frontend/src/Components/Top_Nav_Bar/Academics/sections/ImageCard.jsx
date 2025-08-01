@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import { SiPublons } from "react-icons/si";
-import { FaGoogleScholar } from "react-icons/fa6";
-import { FaOrcid, FaResearchgate, FaLinkedin } from "react-icons/fa";
+import { FaOrcid, FaResearchgate, FaLinkedin, FaBook } from "react-icons/fa";
 import styles from "./Faculties.module.css";
+import { FaGoogleScholar } from "react-icons/fa6";
 
 
 
@@ -15,12 +15,8 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
   };
 
   const navigate = useNavigate()
-
   return  (
-
   <>
-
-
 <div 
   className={`rounded-lg bg-[color-mix(in_srgb,theme(colors.prim)_85%,black)] 
               dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
@@ -57,6 +53,11 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
         {Linkedin && (
           <a href={Linkedin} target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="text-brwn dark:text-drka" />
+          </a>
+        )}
+        {Scopus && (
+          <a href={Scopus} target="_blank" rel="noopener noreferrer">
+            <FaBook className="text-brwn dark:text-drka" />
           </a>
         )}
       </div>

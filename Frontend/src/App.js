@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import {createGlobalStyle} from "styled-components";
 import Cookies from "universal-cookie";
+import useGoogleAnalytics from "./useAnalytics.js";
 /* Landing Page Imports */
 import Boot from "./Components/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
@@ -41,9 +42,7 @@ import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-
 import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
-
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
@@ -139,7 +138,8 @@ const App = () => {
     const cookies = new Cookies()
     const [landingData, setLandingData] = useState(null);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-     const navigate = useNavigate();
+    const navigate = useNavigate();
+    useGoogleAnalytics();
 
     
     useEffect(() => {
