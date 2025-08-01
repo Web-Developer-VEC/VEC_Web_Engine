@@ -110,8 +110,8 @@ const Announcements1 = ({ anno, spc }) => {
                                             {anno?.[(currentIndex + i) % anno?.length] && (
                                                 <a
                                                     href={UrlParser(
-                                                        anno?.[(currentIndex + i) % anno?.length].pdf_path ||
-                                                        anno?.[(currentIndex + i) % anno?.length].link
+                                                        anno?.[(currentIndex + i) % anno?.length]?.pdf_path ||
+                                                        anno?.[(currentIndex + i) % anno?.length]?.link
                                                     )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
