@@ -86,7 +86,7 @@ const IICStudent = ({ data }) => {
       
       {Array.isArray(data) && data?.map((categoryBlock, idx) => (
         <div key={idx}>
-          <h2 className="text-3xl font-bold text-brwn dark:text-drkt text-center capitalize my-4">
+          <h2 className="text-3xl font-bold text-brwn dark:text-drkt text-center my-4">
             {categoryBlock?.category}
           </h2>
 

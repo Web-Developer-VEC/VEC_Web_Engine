@@ -4,8 +4,13 @@ import Banner from "../../../Banner"
 import SideNav from "../../SideNav"
 import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
-import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
 
 
 const SocialIcon = ({ type, url }) => {
@@ -38,6 +43,24 @@ const SocialIcon = ({ type, url }) => {
   )
 }
 
+const StaffCard = ({ member }) => {
+  return (
+    <div className="bg-prim dark:bg-drkp rounded-2xl shadow-md p-4 md:flex justify-between w-[80vw] md:w-[40vw] lg:w-[30vw] items-center text-center border border-gray-100 dark:border-gray-700 ">
+      <div className="w-28 h-28 md:w-32 md:h-32 mb-4 ml-[30%] md:ml-0 lg:ml-0">
+        <img
+          src={UrlParser(member?.image)}
+          alt={member?.name}
+          className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow"
+        />
+      </div>
+      <div className="w-full md:w-[15vw]">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-blue-300">{member?.name}</h3>
+        <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">{member?.club_designation}</p>
+      </div>
+    </div>
+  )
+}
+
 const ProfileCard = ({ member }) => {
   return (
     <div className="group relative bg-prine dark:bg-[#1c1f26] rounded-2xl shadow-lg dark:shadow-md hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700 h-full">
@@ -47,7 +70,7 @@ const ProfileCard = ({ member }) => {
           {/* Circular Image */}
           <div className="relative w-28 h-28 md:w-32 md:h-32">
             <img
-              src={member?.image}
+              src={UrlParser(member?.image)}
               alt={member?.name}
               className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-md transition-transform duration-500 group-hover:scale-105 dark:brightness-75"
             />
@@ -81,10 +104,11 @@ const ProfileCard = ({ member }) => {
 }
 
 function WebUI({ title, data }) {
-  let des, members
+  let des, members, staff
   if (data) {
     des = data[0]?.content
     members = data[1]?.content
+    staff = data[2]?.content
   }
 
   return (
@@ -92,11 +116,31 @@ function WebUI({ title, data }) {
       {/* Header Section */}
       <div className="text-center py-6 px-4">
         <h1 className="text-[28px] sm:text-[32px] font-bold text-brwn dark:text-white mt-6">
-          Meet Our Amazing Batch
+          Meet Our Amazing {title} Batch 
         </h1>
       </div>
 
       {/* Team Grid */}
+      {/* Staff Cards Section */}
+      {staff && staff.length > 0 && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+            {staff.map((member, index) => (
+              <div
+                key={index}
+                className="animate-fade-in-up"
+                style={{
+                  animationDelay: `${index * 150}ms`,
+                  animationFillMode: "both",
+                }}
+              >
+                <StaffCard member={member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {members?.map((member, index) => (
@@ -120,7 +164,7 @@ function WebUI({ title, data }) {
           <h2 className="text-xl md:text-2xl font-bold text-brwn dark:text-blue-300 mb-2">
             Want to Know about Our Team?
           </h2>
-          <p className="text-black dark:text-gray-300">{des?.message}</p>
+          <p className="text-text dark:text-prim">{des?.message}</p>
         </div>
       </div>
 
@@ -147,22 +191,13 @@ function WebUI({ title, data }) {
 export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot")
   const [webdata, setWebData] = useState(null)
-  const location = useLocation();
   const navigate = useNavigate();
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
-    Pilot: <WebUI title={"Pilot"} data={webdata} />,
+    "Pilot": <WebUI title={"Pilot"} data={webdata} />,
     "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata} />,
   }
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const tab = params.get("tab")
-    if (tab === "enquiry") {
-      setWebtab("Enquiry Now")
-    }
-  }, [location.search])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -191,8 +226,8 @@ export default function Webteam({ toggle, theme }) {
       <Banner
         toggle={toggle}
         theme={theme}
-        backgroundImage="./Banners/Accreditations_Ranking.webp"
-        headerText="Web Team"
+        backgroundImage="./Banners/Web_Team_Banner_Updated.webp"
+        headerText="WebOps"
         subHeaderText="Meet Our Team"
       />
       <div>

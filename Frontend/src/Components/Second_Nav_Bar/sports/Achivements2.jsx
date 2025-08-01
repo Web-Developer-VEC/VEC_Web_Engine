@@ -67,7 +67,7 @@ const Achievements1 = ({ data }) => {
               >
                 {coordinator?.image_path?.map((item, index) => (
                   <div key={index} className={styles.slide}>
-                    <img src={UrlParser(item)} alt={`Coordinator ${index + 1}`} className={styles.image_path  } />
+                    <img src={UrlParser(item)} alt={`Coordinator ${index + 1}`} className={"m-auto"} />
                   </div>
                 ))}
               </Slider>

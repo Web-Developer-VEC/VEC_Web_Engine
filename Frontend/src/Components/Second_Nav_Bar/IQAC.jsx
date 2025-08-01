@@ -263,20 +263,24 @@ const IQAC = ({ toggle , theme }) => {
     // Render Gallery content
     const renderGalleryContent = () => {
     // Assuming iqacData.gallery is your array
-    const galleryData = iqacData || [];
+    let galleryData;
+
+    if (iqacData) {
+        galleryData = iqacData || [];
+    }
 
     // Extract all categories
-    const categories = galleryData.map(item => item.category);
+    const categories = Array.isArray(galleryData) && galleryData?.map(item => item?.category);
 
     // Find the object matching the selectedCategory
-    const selectedItem = galleryData.find(item => item.category === selectedCategory);
+    const selectedItem = Array.isArray(galleryData) && galleryData?.find(item => item?.category === selectedCategory);
 
     return (
         <div className="mr-4">
             <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
 
             <div className="flex flex-wrap gap-2 justify-center mb-4">
-                {categories.map((category) => (
+                {Array.isArray(categories) && categories?.map((category) => (
                 <button
                     key={category}
                     className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
@@ -293,7 +297,7 @@ const IQAC = ({ toggle , theme }) => {
             </div>
 
             <div className="columns-xs mb-12">
-                {selectedItem?.paths?.map((imagePath, index) => (
+                {Array.isArray(selectedItem?.paths) && selectedItem?.paths?.map((imagePath, index) => (
                 <img
                     key={imagePath}
                     src={UrlParser(imagePath)}
@@ -430,13 +434,13 @@ const IQAC = ({ toggle , theme }) => {
                             <td>{dept?.department_name}</td>
                             <td>
                             <ul className="reportlist">
-                                {dept?.path?.map((rep, repIndex) => (
+                                {Array.isArray(dept?.path) && dept?.path?.map((rep, repIndex) => (
                                 <li key={repIndex}>
                                     <a
-                                    href={rep || "#"}
-                                    target={rep ? "_blank" : ""}
-                                    rel="noopener noreferrer"
-                                    className="text-blue-600 underline"
+                                        href={UrlParser(rep) || "#"}
+                                        target={rep ? "_blank" : ""}
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 underline"
                                     >
                                     {dept?.year[repIndex]}
                                     </a>
