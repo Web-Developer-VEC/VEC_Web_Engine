@@ -18,7 +18,7 @@ const HandbookButton = ({ year, pdfspath }) => (
   href={UrlParser(pdfspath)}
   target="_blank"
     className="flex items-center justify-center gap-2 px-6 py-4 
-               rounded-lg bg-white dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium
+               rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium
                hover:bg-yellow-600 shadow-md transition-all duration-200 no-underline cursor-pointer"
     >
     <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
@@ -94,7 +94,7 @@ const Handbook = ({ theme, toggle }) => {
             <h2 className="text-[32px] font-semibold mb-8 text-brwn dark:text-drkt">
               Handbook
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 justify-center items-center">
               {handBook?.Years?.map((year, idx) => (
                 <HandbookButton
                   key={idx}

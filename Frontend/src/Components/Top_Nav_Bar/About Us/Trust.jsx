@@ -130,7 +130,7 @@ const NewTrust = ({theme, toggle}) => {
             <div className="text-center">
               <h2 className="text-[24px] font-bold text-accn dark:text-drkt mb-6">The Management</h2>
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
+            <div className="grid xl:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
               {/* {managementTeam.map((person, index) => ( */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
