@@ -158,7 +158,7 @@ const Iic = ({toggle, theme}) => {
             'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData}/>
         },
         "Kapila": <KamalaBar data={iicData} />, 
-        "Mentee Institution ":   <IICMentee data={iicData}/>,
+        "Mentee Institution":   <IICMentee data={iicData}/>,
         "Yukti" : <IicFacnir data={iicData}/>,
         "Certificate":<IicFacCertificate data={iicData}/>,
         "Policy" : <IicFacPolicy data={iicData}/>,
@@ -180,7 +180,7 @@ const Iic = ({toggle, theme}) => {
       "IIC 6.0": "iic6",
       "IIC 7.0": "iic7",
       "Kapila": "kapila",
-      "Mentee Institution ": "mentee",
+      "Mentee Institution": "mentee",
       "Yukti": "yukti",
       "Certificate": "certificate",
       "Policy": "policy",

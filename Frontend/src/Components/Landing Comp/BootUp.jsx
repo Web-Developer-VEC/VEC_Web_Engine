@@ -10,6 +10,17 @@ const Boot = (props) => {
 
     const canRf = useRef(null)
     let ani
+    
+    const [forceHide, setForceHide] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setForceHide(true);
+        }, 4000); // 4s max boot screen
+
+        return () => clearTimeout(timeout);
+    }, []); 
+
 
     useEffect(() => {
         const canva = canRf.current
@@ -105,7 +116,7 @@ const Boot = (props) => {
         <>
             <canvas
                 className={`fixed bg-prim dark:bg-drkts z-[1000] size-full top-0
-                    ${(isLoaded) ? (!isAuth) ? 'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2.5s]' : 
+                    ${(isLoaded || forceHide) ? (!isAuth) ? 'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2.5s]' : 
                     'animate-[fadOut_0.5s_ease_forwards] [animation-delay:2s]' : ''}`}
                 ref={canRf}></canvas>
             <div className={`flex flex-col justify-center items-center fixed w-full h-full z-[1000] top-0 ` +
