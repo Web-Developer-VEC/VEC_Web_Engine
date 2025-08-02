@@ -28,7 +28,7 @@ function IicHome({ data }) {
   const aboutArray = data[0]?.about_iic || [];
 
   return (
-    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto">
       <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
       <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
         About IIC

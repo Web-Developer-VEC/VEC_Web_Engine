@@ -119,7 +119,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     playsInline>
                     <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
                 </video>
-                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] lg:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] lg:bottom-[35%] xl:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
                     ref={containerRef}
                 >
                     <button onClick={() => window.location.href = `tel:${ph}`}   onWheel={(e) => {
@@ -147,7 +147,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     </button>
                 </div>
                 <div ref={toggleRef}>
-                    <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[24%] md:-top-[28%] lg:-top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
+                    <Toggle toggle={toggle} theme={theme} attr={"absolute -top-[24%] md:-top-[28%] lg:-top-[17%] xl:-top-[27%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px] rounded-br-xl"} />
                 </div>
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>

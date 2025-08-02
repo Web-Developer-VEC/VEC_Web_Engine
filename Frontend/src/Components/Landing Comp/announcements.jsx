@@ -75,7 +75,7 @@ const Announcements1 = ({ anno, spc }) => {
                          onMouseEnter={() => setHovered(true)}
                          onMouseLeave={() => setHovered(false)}>
                         <div className={`card-inner ${flipped ? "flipped" : ""}`}>
-                            <div className="card-front">
+                            <div className="card-front overflow-y-auto">
                                 <h2 className="card-title">Announcements</h2>
                                 <div className="announcements-content">
                                     {Array.from({length: 4}).map((_, i) => (
@@ -88,7 +88,7 @@ const Announcements1 = ({ anno, spc }) => {
                                                     )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="announcement-link"
+                                                    className="announcement-link text-left"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
                                                     {anno?.[(currentIndex + i) % anno?.length].announcement_name}
@@ -102,7 +102,7 @@ const Announcements1 = ({ anno, spc }) => {
                                     <button className="flip-btn" onClick={handleManualFlip}> ↺</button>
                                 </div>
                             </div>
-                            <div className="card-back">
+                            <div className="card-back overflow-y-auto">
                                 <h2 className="card-title">Announcements</h2>
                                 <div className="announcements-content">
                                     {Array.from({length: 4}).map((_, i) => (
@@ -115,7 +115,7 @@ const Announcements1 = ({ anno, spc }) => {
                                                     )}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="announcement-link"
+                                                    className="announcement-link text-left"
                                                 >
                                                     <i className="fa-solid fa-right-to-bracket mr-1"></i>
                                                     {anno?.[(currentIndex + i) % anno?.length].announcement_name}
