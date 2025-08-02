@@ -197,6 +197,16 @@ const App = () => {
         setTheme(cookies.get('theme'))
     })
 
+    const [showBoot, setShowBoot] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setShowBoot(false);
+        }, 4000); // or when isLoaded is true
+
+        return () => clearTimeout(timeout);
+    }, [loaded]);
+
     useEffect(() => {
         setCurrentPath(location.pathname); // Update state when route changes
     }, [location]);
@@ -216,7 +226,7 @@ const App = () => {
             <GlobalStyle/>
             {/* The rest of the routes */}
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
-                    {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
+                    {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
                     {/* Conditionally render Head and Footer */}
                     
                     

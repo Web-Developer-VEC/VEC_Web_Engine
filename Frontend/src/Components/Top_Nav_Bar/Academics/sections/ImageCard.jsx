@@ -30,6 +30,11 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
       <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
       <p className="+ text-[#800000] dark:text-drka">{Designation}</p>
       <div className={firstTile ? styles.firstTileSocialLinks : styles.socialLinks}>
+        {Linkedin && (
+          <a href={Linkedin} target="_blank" rel="noopener noreferrer">
+            <FaLinkedin className="text-brwn dark:text-drka" />
+          </a>
+        )}
         {Publon && (
           <a href={Publon} target="_blank" rel="noopener noreferrer">
             <SiPublons  className="text-brwn dark:text-drka" />
@@ -48,11 +53,6 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
         {Research && (
           <a href={Research} target="_blank" rel="noopener noreferrer">
             <FaResearchgate className="text-brwn dark:text-drka" />
-          </a>
-        )}
-        {Linkedin && (
-          <a href={Linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="text-brwn dark:text-drka" />
           </a>
         )}
         {Scopus && (
