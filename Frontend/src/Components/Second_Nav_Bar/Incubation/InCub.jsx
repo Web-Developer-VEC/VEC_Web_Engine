@@ -37,6 +37,7 @@ const Incub = ( {toggle, theme}) => {
         "Apply Now": <Applynow/>           
     };
     useEffect(() => {
+        setIncubation(null);
         const fetchData = async () => {
             const typeMatch = {
                 "Home": "home",
@@ -48,6 +49,7 @@ const Incub = ( {toggle, theme}) => {
                 "Seed Money": "seed_money"
             }
             try {
+                setIncubation(null);
                 const responce = await axios.post('/api/main-backend/incubation',
                     {
                         type : typeMatch[cub]

@@ -2,7 +2,7 @@ import React from "react";
 
 const LoadComp = ({ txt }) => {
     return (
-        <div className='relative w-[10vmax] h-[10vmax] self-center justify-self-center  group/ttl'>
+        <div className='relative w-[10vmax] h-[10vmax] self-center justify-self-center m-auto group/ttl'>
             <div
                 className='w-full h-full [clip-path:polygon(0_0,100%_0,100%_50%,65%_65%,53%_80%,60%_70%,50%_40%,40%_70%,42%_70%,0_45%)] absolute'>
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox='0 0 500 500'

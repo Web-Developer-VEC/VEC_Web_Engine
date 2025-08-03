@@ -230,7 +230,7 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(0.65rem, 0.85vw, 1rem)] 
+                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
                     max-w-[63.5%]
                         w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
