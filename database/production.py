@@ -113,7 +113,7 @@ def generate_unique_id(index, department, designation):
     return f"VEC-{department_id}-{designation_id}-{unique_id}"
 
 
-df = df.head(1) #Remove this line to deactivate Test settings
+#df = df.head(1) #Remove this line to deactivate Test settings
 
 df['unique_id'] = [
     generate_unique_id(i, df.at[i, 'Department Name'], df.at[i, 'Designation'])

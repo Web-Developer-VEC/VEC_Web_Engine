@@ -25,3 +25,5 @@ def insert_administration_sections():
             collection.insert_one(document)
 
     print("Administration sections inserted successfully.")
+
+insert_administration_sections()

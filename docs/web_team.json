@@ -15,7 +15,7 @@
             "name": "SAMUEL STEPHEN DEVA PAUL L",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Chairman",
+            "club_designation":"Team Lead , Frontend Lead Developer",
             "image": "/static/images/web_team/pilot_batch/Sam.webp",
             "social": {
               "github": "https://github.com/SAMSDP",
@@ -28,7 +28,7 @@
             "name": "SIDDHARTH MAGESH",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Vice Chairman",
+            "club_designation":"Backend Lead Developer , System Architect",
             "image": "/static/images/web_team/pilot_batch/Sid.webp",
             "social": {
               "github": "https://github.com/Siddharth-magesh",
@@ -41,7 +41,7 @@
             "name": "PRANESH KUMAR V",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Backend - Tech Head",
+            "club_designation":"Backend Developer , API Developer",
             "image": "/static/images/web_team/pilot_batch/Pranesh.webp",
             "social": {
               "github": "https://github.com/PraneshPk2005",
@@ -54,7 +54,7 @@
             "name": "LEROY JESLYN ",
             "year": "Batch 2022 - 2026",
             "department": "CSE",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , UI Designer",
             "image": "/static/images/web_team/pilot_batch/Leroy.webp",
             "social": {
               "github": "https://github.com/Shadow-Knight503",
@@ -67,7 +67,7 @@
             "name": "SRI HARI M",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend - Tech Head",
+            "club_designation":"Frontend Developer , UI Designer",
             "image": "/static/images/web_team/pilot_batch/Srihari.webp",
             "social": {
               "github": "https://github.com/SriHari22004",
@@ -80,7 +80,7 @@
             "name": "RAGESHWARAN HR",
             "year": "Batch 2022 - 2026",
             "department": "CSE",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer",
             "image": "/static/images/web_team/pilot_batch/Rageshwaran.webp",
             "social": {
               "github": "https://github.com/SAMSDP",
@@ -93,7 +93,7 @@
             "name": "MOHAMED YASIR A",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , UI Planner",
             "image": "/static/images/web_team/pilot_batch/Yasir.webp",
             "social": {
               "github": "https://github.com/mdyasir8055",
@@ -106,7 +106,7 @@
             "name": "VASANTHA RAJA S",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , Responsive UI Designer",
             "image": "/static/images/web_team/pilot_batch/Vasanth.webp",
             "social": {
               "github": "https://github.com/Vasanth-Aids",
@@ -119,7 +119,7 @@
             "name": "GOKULRAMANAN V",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Data Handiling - Tech Head",
+            "club_designation":"Backend Developer , Chatbot Developer",
             "image": "/static/images/web_team/pilot_batch/Gokul.webp",
             "social": {
               "github": "https://github.com/Feininon",
@@ -132,7 +132,7 @@
             "name": "WAATSON J",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Backend Engineer",
+            "club_designation":"Data Engineer , Backend Developer",
             "image": "/static/images/web_team/pilot_batch/Watson.webp",
             "social": {
               "github": "https://github.com/WAATS0N",
@@ -145,7 +145,7 @@
             "name": "SAI VIGNESH RAJ M",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Backend Engineer",
+            "club_designation":"Full-Stack Chatbot Developer , Data Engineer",
             "image": "/static/images/web_team/pilot_batch/Sai.webp",
             "social": {
               "github": "https://github.com/SaiVignesh45",
@@ -158,7 +158,7 @@
             "name": "KUMAR P",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer",
             "image": "/static/images/web_team/pilot_batch/Arjun.webp",
             "social": {
               "github": "https://github.com/kumar7505",
@@ -171,7 +171,7 @@
             "name": "SRI RAAM V H",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , QA Tester",
             "image": "/static/images/web_team/pilot_batch/Sriram.webp",
             "social": {
               "github": "https://github.com/Sriraam29",
@@ -184,7 +184,7 @@
             "name": "ARJUN V L",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Cloud Engineer - Tech Head",
+            "club_designation":"Data Entry , Backend Developer",
             "image": "/static/images/web_team/pilot_batch/Arjun.webp",
             "social": {
               "github": "https://github.com/vlarjun20",
@@ -197,7 +197,7 @@
             "name": "SANTHOSH G",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer",
             "image": "/static/images/web_team/pilot_batch/Santhosh.webp",
             "social": {
               "github": "https://github.com/Sandysharpo",
@@ -210,7 +210,7 @@
             "name": "HARIPRASATH V" ,
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Cloud Engineer - Intern",
+            "club_designation":"Cloud Engineer , Backend Developer",
             "image": "/static/images/web_team/pilot_batch/Hari.webp",
             "social": {
               "github": "https://github.com/4274-hari",
@@ -223,13 +223,27 @@
             "name": "AJITH G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer - Intern",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/pilot_batch/Ajith.webp",
             "social": {
               "github": "https://github.com/Ajith-ajay",
               "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
               "portfolio": "https://myprotfoliostu.web.app/",
               "email": "ajithajay1029@gmail.com"
+            }
+          },
+          {
+            "name": "MOHAMMED HAJEE J",
+            "year": "Batch 2022 - 2026",
+            "department": "AI",
+            "club_designation":"Media Systems - Head",
+            "image": "/static/images/web_team/pilot_batch/Mohammed Hajee J.webp",
+            "social": {
+              "github": "https://github.com/Mdhajee",
+              "linkedin": "https://www.linkedin.com/in/mohammed-hajee-1a5519255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+              "portfolio": "",
+              "email": "mohammedhajee909@gmail.com",
+              "instagram":"https://www.instagram.com/_md.hj.14_?igsh=d29udGY5Z3c5MThw&utm_source=qr"
             }
           },
           {
@@ -258,20 +272,6 @@
               "portfolio": "",
               "email": "praveensriram22@gmail.com",
               "instagram":"https://www.instagram.com/praveen___2206?igsh=MXJzYnBpdXNwaTdjZQ=="
-            }
-          },
-          {
-            "name": "MOHAMMED HAJEE J",
-            "year": "Batch 2022 - 2026",
-            "department": "AI",
-            "club_designation":"Media Systems - Head",
-            "image": "/static/images/web_team/pilot_batch/Mohammed Hajee J.webp",
-            "social": {
-              "github": "https://github.com/Mdhajee",
-              "linkedin": "https://www.linkedin.com/in/mohammed-hajee-1a5519255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-              "portfolio": "",
-              "email": "mohammedhajee909@gmail.com",
-              "instagram":"https://www.instagram.com/_md.hj.14_?igsh=d29udGY5Z3c5MThw&utm_source=qr"
             }
           }
         ]
@@ -309,7 +309,7 @@
             "name": "HARI PRASATH V",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Vice Chairman",
+            "club_designation":"Team Lead , Backend Lead Developer , Cloud Lead Developer",
             "image": "/static/images/web_team/copilot_batch/Hari.webp",
             "social": {
               "github": "https://github.com/4274-hari",
@@ -322,7 +322,7 @@
             "name": "AJITH G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend-Tech Head",
+            "club_designation":"Frontend Lead Developer , System Architect , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/Ajith.webp",
             "social": {
               "github": "",
@@ -335,7 +335,7 @@
             "name": "DEEPAK S",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Cloud Engineer-Tech Head",
+            "club_designation":"Cloud Engineer , Backend Developer",
             "image": "/static/images/web_team/copilot_batch/DEEPAK.webp",
             "social": {
               "github": "https://github.com/Deepak-S-github",
@@ -348,7 +348,7 @@
             "name": "DINESH PRABAKERAN T",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Data Handiling-Tech Head",
+            "club_designation":"Backend Developer , API Developer",
             "image": "/static/images/web_team/copilot_batch/DINESH PRABAKERAN.webp",
             "social": {
               "github": "https://github.com/dinesh26072006",
@@ -361,7 +361,7 @@
             "name": "KISHAN G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Backend Engineer",
+            "club_designation":"Data Engineer , Backend Developer",
             "image": "/static/images/web_team/copilot_batch/KISHAN G.webp",
             "social": {
               "github": "https://github.com/Kishanamz",
@@ -374,7 +374,7 @@
             "name": "SAI VIKAASH RK",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Backend Engineer",
+            "club_designation":"Data Engineer , Backend Developer",
             "image": "/static/images/web_team/copilot_batch/SAI VIKAASH RK.webp",
             "social": {
               "github": "https://github.com/vcash-21",
@@ -387,7 +387,7 @@
             "name": "VISHALL K",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Backend-Tech Head",
+            "club_designation":"Backend Developer , API Developer",
             "image": "/static/images/web_team/copilot_batch/VISHALL.webp",
             "social": {
               "github": "",
@@ -400,7 +400,7 @@
             "name": "SATHISH R",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/SATHISH.webp",
             "social": {
               "github": "https://github.com/Sathishkumar-290705/",
@@ -413,7 +413,7 @@
             "name": "KIRUBA A",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , QA Tester",
             "image": "/static/images/web_team/copilot_batch/KIRUBA.webp",
             "social": {
               "github": "https://github.com/kiruba326",
@@ -426,7 +426,7 @@
             "name": "DAKSHAN B",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/DAKSHAN.webp",
             "social": {
               "github": "https://github.com/dakshan-18",
@@ -439,7 +439,7 @@
             "name": "PRAVEEN D",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , UI Designer",
             "image": "/static/images/web_team/copilot_batch/PRAVEEN.webp",
             "social": {
               "github": "https://github.com/praveen0309d",
@@ -452,7 +452,7 @@
             "name": "SUDHAKAR S",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Engineer",
+            "club_designation":"Frontend Developer , UI Designer",
             "image": "/static/images/web_team/copilot_batch/SUDHAKAR.webp",
             "social": {
               "github": "https://github.com/Sudhakar-21",
