@@ -46,11 +46,15 @@
         "department": "B.E. Civil Engineering",
         "pdfs": [
           {
-            "name": "2021 - 2022",
+            "name": "2018 - 21",
+            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+          },
+          {
+            "name": "2021 - 22",
             "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -60,11 +64,11 @@
         "department": "B.E. Computer Science and Engineering",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -74,11 +78,15 @@
         "department": "B.E. Electrical and Electronics Engineering",
         "pdfs": [
           {
-            "name": "2021 - 2022",
+            "name": "2018 - 21",
+            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+          },
+          {
+            "name": "2021 - 22",
             "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -88,25 +96,25 @@
         "department": "B.E. Electronics and Communication Engineering",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
       {
         "id": 5,
-        "department": "B.E. Electrical and Electronics Engineering",
+        "department": "B.E. Electrical and Instrumentation Engineering",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -116,11 +124,11 @@
         "department": "B.Tech. Information Technology",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
@@ -130,11 +138,11 @@
         "department": "B.E. Mechanical Engineering",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
-            "name": "2022 - 2025",
+            "name": "2022 - 25",
             "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
@@ -144,7 +152,7 @@
         "department": "B.E Automobile Engineering",
         "pdfs": [
           {
-            "name": "2019 - 2022",
+            "name": "2019 - 22",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
         ]

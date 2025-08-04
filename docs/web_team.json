@@ -325,10 +325,10 @@
             "club_designation":"Frontend Lead Developer , System Architect , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/Ajith.webp",
             "social": {
-              "github": "",
-              "linkedin": "",
-              "portfolio": "",
-              "email": ""
+              "github": "https://github.com/Ajith-ajay",
+              "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
+              "portfolio": "https://myprotfoliostu.web.app/",
+              "email": "ajithajay1029@gmail.com"
             }
           },
            {
@@ -397,7 +397,7 @@
             }
           },
           {
-            "name": "SATHISH R",
+            "name": "SATHISH KUMAR R",
             "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Developer , Integration Engineer",
@@ -410,7 +410,7 @@
             }
           },
           {
-            "name": "KIRUBA A",
+            "name": "KIRUBANANDHAM A",
             "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Developer , QA Tester",

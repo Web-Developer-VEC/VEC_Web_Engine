@@ -478,43 +478,43 @@
     "type": "activity",
     "data": [
       {
-        "year": "2015-2016",
+        "year": "2015 - 16",
         "pdf_path": "/static/pdfs/e_cell/2015-2016.pdf"
       },
       {
-        "year": "2016-2017",
+        "year": "2016 - 17",
         "pdf_path": "/static/pdfs/e_cell/2016-2017.pdf"
       },
       {
-        "year": "2017-2018",
+        "year": "2017 - 18",
         "pdf_path": "/static/pdfs/e_cell/2017-2018.pdf"
       },
       {
-        "year": "2018-2019",
+        "year": "2018 - 19",
         "pdf_path": "/static/pdfs/e_cell/2018-2019.pdf"
       },
       {
-        "year": "2019-2020",
+        "year": "2019 - 20",
         "pdf_path": "/static/pdfs/e_cell/2019-2020.pdf"
       },
       {
-        "year": "2020-2021, 2021-2022",
+        "year": "2020 - 22",
         "pdf_path": "/static/pdfs/e_cell/2020-2021, 2021-2022.pdf"
       },
       {
-        "year": "2022-2023 back",
+        "year": "2022 - 23",
         "pdf_path": "/static/pdfs/e_cell/2022-2023 back.pdf"
       },
       {
-        "year": "2022-2023",
+        "year": "2022 - 23",
         "pdf_path": "/static/pdfs/e_cell/2022-2023.pdf"
       },
       {
-        "year": "2023-2024",
+        "year": "2023 - 24",
         "pdf_path": "/static/pdfs/e_cell/2023-2024.pdf"
       },
       {
-        "year": "2024-2025 ecell",
+        "year": "2024 - 25 ",
         "pdf_path": "/static/pdfs/e_cell/2024-2025 ecell.pdf"
       }
     ]
