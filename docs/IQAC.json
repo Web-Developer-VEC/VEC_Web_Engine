@@ -37,7 +37,7 @@
         ]
       },
       {
-        "category": "memberfromemployee",
+        "category": "Member from Employer",
         "members": [
           {
             "name": "Mr. RAGHURAMAN KRISHNAMOORTHY",
@@ -292,40 +292,58 @@
     "type": "minutes_of_meetings",
     "data": [
       {
-        "year": "2020-2021 (ODD)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
+        "year": "2020-2021",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf",
+        "type": "ODD",
+        "conducted_on":"08.06.2020"
       },
       {
-        "year": "2020-2021 (EVEN)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf"
+        "year": "2020-2021",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf",
+        "type": "EVEN",
+        "conducted_on":"05.01.2021"
       },
       {
-        "year": "2021-2022 (ODD)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2021-2022.pdf"
+        "year": "2021-2022",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2021-2022.pdf",
+        "type": "ODD",
+        "conducted_on":"27.08.2021"
       },
       {
-        "year": "2021-2022 (EVEN)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf"
+        "year": "2021-2022",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf",
+        "type": "EVEN",
+        "conducted_on":"18.02.2022"
       },
       {
-        "year": "2022-2023 (ODD)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2022-2023.pdf"
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2022-2023.pdf",
+        "type": "ODD",
+        "conducted_on":"17.09.2022"
       },
       {
-        "year": "2022-2023 (EVEN)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2022-2023.pdf"
+        "year": "2022-2023",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2022-2023.pdf",
+        "type": "EVEN",
+        "conducted_on":"11.02.2023"
       },
       {
-        "year": "2023-2024 (ODD)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2023-2024.pdf"
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2023-2024.pdf",
+        "type": "ODD",
+        "conducted_on":"12.08.2023"
       },
       {
-        "year": "2023-2024 (EVEN)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2023-2024.pdf"
+        "year": "2023-2024",
+        "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2023-2024.pdf",
+        "type": "EVEN",
+        "conducted_on":"24.02.2024"
       },
       {
-        "year": "2024-2025 (ODD)",
-        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2024-2025.pdf"
+        "year": "2024-2025",
+        "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2024-2025.pdf",
+        "type": "ODD",
+        "conducted_on":"17.08.2024"
       }
     ]
   },
@@ -471,22 +489,27 @@
     "data": [
       {
         "year": "2019-20",
+        "title":["Research- NewGen IEDC","Activity Based Learning"],
         "path": "/static/pdfs/iqac/best_practices_2019-2020.pdf"
       },
       {
         "year": "2020-21",
+        "title":["Teaching Pedagogy","Online Campus Training and  Placement"],
         "path": "/static/pdfs/iqac/best_practices_2020-2021.pdf"
       },
       {
         "year": "2021-22",
+        "title":["Promoting Innovation in Education","Promoting Patent, Entrepreneur, and Start up"],
         "path": "/static/pdfs/iqac/best_practices_2021-2022.pdf"
       },
       {
         "year": "2022-23",
+        "title":["Promoting Innovation on Research & Development","Promoting Outreach Activities in Social service"],
         "path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
       },
       {
         "year": "2023-24",
+        "title":["Incubator and Promoting Startup","Institutional Management Software for academics"],
         "path": "/static/pdfs/iqac/best_practices_2023-2024.pdf"
       }
     ]

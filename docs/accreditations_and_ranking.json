@@ -46,11 +46,11 @@
         "department": "B.E. Civil Engineering",
         "pdfs": [
           {
-            "name": "2021-2022",
+            "name": "2021 - 2022",
             "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -60,11 +60,11 @@
         "department": "B.E. Computer Science and Engineering",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -74,11 +74,11 @@
         "department": "B.E. Electrical and Electronics Engineering",
         "pdfs": [
           {
-            "name": "2021-2022",
+            "name": "2021 - 2022",
             "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -88,11 +88,11 @@
         "department": "B.E. Electronics and Communication Engineering",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -102,11 +102,11 @@
         "department": "B.E. Electrical and Electronics Engineering",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
@@ -116,11 +116,11 @@
         "department": "B.Tech. Information Technology",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
@@ -130,11 +130,11 @@
         "department": "B.E. Mechanical Engineering",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
-            "name": "2022-2023 to 2024-2025",
+            "name": "2022 - 2025",
             "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
@@ -144,7 +144,7 @@
         "department": "B.E Automobile Engineering",
         "pdfs": [
           {
-            "name": "2019-2020 to 2021-2022",
+            "name": "2019 - 2022",
             "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
         ]
@@ -233,7 +233,7 @@
             "pdf_path": "/static/pdfs/nirf/NIRF-2025-Innovation.pdf"
           },
           {
-            "name": "STG",
+            "name": "SDG",
             "pdf_path": "/static/pdfs/nirf/NIRF-2025-STG.pdf"
           }
         ]
@@ -244,8 +244,7 @@
     "type": "qs_rating",
     "data": [
       {
-        "pdf_path": "/static/pdfs/qs+rating/QS+I-GAUGE+-+VEC+Certificate.pdf",
-        "link": "/static/pdfs/qs+rating/QS+I-GAUGE+-VEC+-+Scorecard.pdf"
+        "pdf_path": "/static/pdfs/qs+rating/QS+I-GAUGE+-+VEC+Certificate.pdf"
       }
     ]
   }
