@@ -16,7 +16,7 @@ const SPTIntro = ({ data }) => {
 
   return (
     <>
-    {data ? (
+    {!data ? (
       <div className="flex justify-center items-center min-h-screen">
         <LoadComp />
       </div>
@@ -49,7 +49,7 @@ const SPTVis = ({ data }) => {
 
   return (
     <>
-    {data ? (
+    {!data ? (
             <div className="flex justify-center items-center min-h-screen">
               <LoadComp />
             </div>
