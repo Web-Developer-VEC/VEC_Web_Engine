@@ -15,16 +15,24 @@ const SPTIntro = ({ data }) => {
   if (!Array.isArray(data)) return null;
 
   return (
-    <section className="introduction dark:bg-drkb border-l-4 border-secd dark:border-drks">
-      <div className="section-content">
-        <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
-        {data.map((para, idx) => (
-          <p className="intro-text" key={idx}>
-            {typeof para === "string" ? para : JSON.stringify(para)}
-          </p>
-        ))}
+    <>
+    {data ? (
+      <div className="flex justify-center items-center min-h-screen">
+        <LoadComp />
       </div>
-    </section>
+    ) : (
+      <section className="introduction dark:bg-drkb border-l-4 border-secd dark:border-drks">
+        <div className="section-content">
+          <h2 className="section-title text-brwn dark:text-drkt">Introduction</h2>
+          {data.map((para, idx) => (
+            <p className="intro-text" key={idx}>
+              {typeof para === "string" ? para : JSON.stringify(para)}
+            </p>
+          ))}
+        </div>
+      </section>
+    )}
+    </>
   );
 };
 
@@ -40,22 +48,29 @@ const SPTVis = ({ data }) => {
   if (!Array.isArray(paraArray)) return null;
 
   return (
-    <section className="vision-mission border-l-4 border-secd dark:border-drks dark:bg-drkb">
-      <div className="section-content">
-        <h2 className="section-title text-brwn dark:text-drkt">Vision & Mission</h2>
-        {paraArray.map((para, index) => (
-          <p className="vision-mission-text" key={index}>
-            {typeof para === "string" ? para : JSON.stringify(para)}
-          </p>
-        ))}
-      </div>
-    </section>
+    <>
+    {data ? (
+            <div className="flex justify-center items-center min-h-screen">
+              <LoadComp />
+            </div>
+    ) : (
+      <section className="vision-mission border-l-4 border-secd dark:border-drks dark:bg-drkb">
+        <div className="section-content">
+          <h2 className="section-title text-brwn dark:text-drkt">Vision & Mission</h2>
+          {paraArray.map((para, index) => (
+            <p className="vision-mission-text" key={index}>
+              {typeof para === "string" ? para : JSON.stringify(para)}
+            </p>
+          ))}
+        </div>
+      </section>
+    )}
+    </>
   );
 };
 
 const SportsPage = ({theme, toggle}) => {
     const [sportData, setSportsData] = useState(null);
-    const [facultyData, setFacultyData] = useState([]);
     const [spt, setSpt] = useState("Introduction");
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const navigate = useNavigate();

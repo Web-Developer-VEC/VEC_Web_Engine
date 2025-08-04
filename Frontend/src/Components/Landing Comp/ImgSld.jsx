@@ -151,7 +151,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                 </div>
                 <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax]
                     pointer-events-none overflow-hidden'>
-                    <div className='relative no-wrap h-[15vh] md:h-[10vmax] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
+                    <div className='relative no-wrap h-[15vh] md:h-[30vh] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
                         {displayItems?.map((elm, i) => (
                             <p
                                 key={i}
@@ -174,7 +174,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     </div>
                 </div>
 
-                <img alt="Hell on earth" src={College} className={`h-[100vh] w-auto bg-cover bottom-0 fixed z-0`}/>
+                <img alt="Hell on earth" src={College} className={`h-[100vh] w-[100vw] bg-cover bottom-0 fixed z-0`}/>
             </div>
         </div>
     );
