@@ -16,9 +16,9 @@ export default function Committe ({data}) {
                                     <div className="ncc-n-stu-detail p-2 text-left">
                                         <h5 className="text-center">{faculty.name}</h5>
                                         {faculty.Designation && (
-                                            <p className="pl-4 text-brwn dark:text-drka text-[14px]">Designation : {faculty.Designation}</p>
+                                            <p className="pl-4 text-brwn dark:text-drka text-[14px]">{faculty.Designation}</p>
                                         )}
-                                        <p className="pl-4 text-brwn dark:text-drka text-[14px]">Position : {faculty.position}</p>
+                                        <p className="pl-4 text-brwn dark:text-drka text-[14px]">{faculty.position}</p>
                                     </div>
                                 </div>
                             ))}
