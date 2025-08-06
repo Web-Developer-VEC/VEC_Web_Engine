@@ -27,35 +27,37 @@ const CurriculumPage = ({ data }) => {
 
   return (
     <div className="containers mt-5">
-      {data?.regulation?.year?.length > 0 ? (
+      {data?.regulation?.length > 0 ? (
         <>       
           <div className="row">
             {/* Left Column: Curriculum and PSOs */}
             <div className="col-md-6">
-              <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-                <h2 className="text-start-car">Curriculum & Syllabus</h2>
-    
-                {/* Regulation Rows */}
-                {data?.regulation?.year?.map((year, index) => (
-                  <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
-                    <p>
-                      {year}
-                      <div className="options-container">
-                        <button 
-                        className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
-                          dark:hover:bg-brwn"
-                        onClick={() => handleViewClick(data.regulation.pdf_path[index],year)}
-                        >
-                          <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
-    
-                          View
-                        
-                        </button>
-                      </div>
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {data?.regulation?.map((req,i) => (
+                <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={i}>
+                  <h2 className="text-start-car">{req?.name}</h2>
+      
+                  {/* Regulation Rows */}
+                  {req?.year?.map((year, index) => (
+                    <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
+                      <p>
+                        {year}
+                        <div className="options-container">
+                          <button 
+                          className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
+                            dark:hover:bg-brwn"
+                          onClick={() => handleViewClick(req?.pdf_path[index],year)}
+                          >
+                            <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
+      
+                            View
+                          
+                          </button>
+                        </div>
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ))}
     
             </div>
           </div>
