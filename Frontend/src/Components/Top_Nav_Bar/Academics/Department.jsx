@@ -113,7 +113,7 @@ const AcademicDepartments = ({ theme , toggle }) => {
                   <h1 className="department1-heading text-brwn dark:text-prim">
                     {categoryObj?.category}
                   </h1>
-                  <div className="department1-grid">
+                  <div className="department1-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                     {categoryObj?.content?.map((dept, i) => {
                       // Find icon
                       const matchedKey = Object.keys(iconMap).find((key) =>

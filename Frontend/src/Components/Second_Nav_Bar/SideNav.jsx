@@ -9,7 +9,6 @@ import {
     FaGraduationCap,
     FaUsers,
     FaHandshake,
-    FaFlask,
     FaEye,
     FaNewspaper,
     FaThLarge,
@@ -54,10 +53,21 @@ import {
     FaJournalWhills,
     FaCogs,
     FaDesktop,
-    FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning, 
+    FaSearch, FaDownload, FaClock, FaBookOpen, FaSignOutAlt, FaRunning,
+    FaIdBadge,
+    FaUniversity,
+    FaFileContract,
+    FaLightbulb,
+    FaUserCog,
+    FaFolderOpen,
+    FaCoins,
+    FaUserAstronaut,
+    FaClipboardList,
+    FaEnvelopeOpenText, 
 } from "react-icons/fa";
-import styles from "../Top_Nav_Bar/Academics/HeadDepartment.module.css";
-import { ArrowBigLeft, Medal, MedalIcon, Shell, Trophy } from "lucide-react";
+import { ArrowBigLeft, BrainCircuit, CalendarClock, Shell, Trophy, UserCog } from "lucide-react";
+import { FingerPrintIcon } from "@heroicons/react/24/solid";
+import { FaUserGear } from "react-icons/fa6";
 
 const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
     const navigate = useNavigate();
@@ -72,8 +82,6 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
                 return <FaUserTie className={sty}/>;
             case "NAAC":
                 return <Trophy className={sty}/>;
-            case 'AboutEcell':
-                return <Trophy className={sty}/>
             case "NIRF":
                 return <Trophy className={sty}/>;
             case "NBA":
@@ -112,11 +120,17 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
                 return <FaUserGraduate className={sty}/>;
             case "Calender":
                 return <FaCalendarAlt className={sty}/>;
-            case "IIC 1.0":
-                return <FaAward className={sty}/>;
-            case "IIC 2.0":
-                return <FaTrophy className={sty}/>;
+            case "IIC 4.0":
+                return <FaStar className={sty}/>;
+            case "IIC 5.0":
+                return <FaStar className={sty}/>;
             case "IIC 3.0":
+                return <FaStar className={sty}/>;
+            case "IIC 7.0":
+                return <FaStar className={sty}/>;
+            case "IIC 8.0":
+                return <FaStar className={sty}/>;
+            case "IIC 6.0":
                 return <FaStar className={sty}/>;
             case "I & E Ecosystem":
                 return <FaNetworkWired className={sty}/>;
@@ -147,6 +161,8 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
             case "About NCC Navy":
                 return <FaAnchor className={sty}/>;
             case "About":
+                return <FaInfoCircle className={sty}/>;
+            case "About E-cell":
                 return <FaInfoCircle className={sty}/>;
             case "Activities":
                 return <FaTasks className={sty}/>;
@@ -244,6 +260,42 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
                 return <FaBuilding className={sty}/>;
             case "Digital Hostel":
                 return <Shell className={sty}/>
+            case "Membership Details":
+                return <FaIdBadge className={sty}/>
+            case "Institutional Distinctiveness":
+                return <FaUniversity className={sty}/>
+            case "Event Organized":
+                return <CalendarClock className={sty}/>
+            case "Policy":
+                return <FaFileContract className={sty}/>
+            case "Certificate":
+                return <FaCertificate className={sty}/>
+            case "Kapila":
+                return <FaLightbulb className={sty}/>
+            case "Mentee Institution":
+                return <FaChalkboardTeacher className={sty}/>
+            case "Yukti":
+                return <BrainCircuit className={sty}/>
+            case "Committee":
+                return <FaUserCog className={sty}/>
+            case "Project":
+                return <FaFolderOpen className={sty}/>
+            case "Patents":
+                return <FingerPrintIcon className={sty}/>
+            case "Seed Money":
+                return <FaCoins className={sty}/>
+            case "E-Cell":
+                return <FaUserTie className={sty}/>
+            case "Enterpreneur":
+                return <FaUserAstronaut className={sty}/>
+            case "Activity":
+                return <FaClipboardList className={sty}/>
+            case "Enquiry Now":
+                return <FaEnvelopeOpenText className={sty}/>
+            case "Pilot":
+                return <UserCog className={sty}/>
+            case "Co-Pilot":
+                return <FaUserGear className={sty}/>
             default:
                 return <FaThLarge className={sty}/>;
         }

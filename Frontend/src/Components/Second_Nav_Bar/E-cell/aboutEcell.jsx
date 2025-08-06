@@ -31,6 +31,7 @@ const Ecell = ({toggle,theme}) => {
         }
         const fetchData = async () =>{
             try {
+                setEcellData(null);
                 const response = await axios.post('/api/main-backend/ecell',
                     {
                         type: typeMap[section]

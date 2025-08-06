@@ -298,7 +298,6 @@
 .ic-startups-table , .ic-table-head,
 .ic-startups-table , .ic-table-data {
     padding: 1rem;
-    text-align: left;
     border-bottom: 1px solid #eee;
 }
 
@@ -325,7 +324,6 @@
 }
 .ic-table-head , .ic-table-data{
     padding: 15px;
-    text-align: center;
     width:fit-content;
 }
 
