@@ -23,7 +23,7 @@ export default function IQGauge({ data }) {
         </div>
       </div>
 
-      <a
+      {/* <a
         href={UrlParser(data[0]?.link)}
         target="_blank"
         rel="noopener noreferrer"
@@ -31,7 +31,7 @@ export default function IQGauge({ data }) {
       >
         <FaLink className="inline size-5 mr-1 mb-1" />
         I QUAGE Score
-      </a>
+      </a> */}
     </div>
   );
 }

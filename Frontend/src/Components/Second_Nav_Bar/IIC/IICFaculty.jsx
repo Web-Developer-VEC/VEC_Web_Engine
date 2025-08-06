@@ -16,7 +16,7 @@ function IICFaculty({data}){
                 {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
                 <div className="ncc-n-stu-detail p-2 text-left">
                   <h5 className="text-center  text-[18px-">{faculty.name}</h5>
-                  <p className="pl-4 text-brwn dark:text-drka text-sm">Designation : {faculty.designation}</p>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm">{faculty.designation}</p>
                 </div>
               </div>
             ))}
@@ -30,11 +30,6 @@ function IICFaculty({data}){
     </>
   )
 }
-
-
-
-
-
 
 function IICExpert({data}){
 
@@ -53,8 +48,7 @@ function IICExpert({data}){
             {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
             <div className="ncc-n-stu-detail p-2 text-left">
               <h5 className="text-center text-[18px]">{faculty.name}</h5>
-              <p className="pl-4 text-brwn dark:text-drka text-sm">Designation : {faculty.designation}</p>
-          
+              <p className="pl-4 text-brwn dark:text-drka text-sm">{faculty.designation}</p>
             </div>
           </div>
         ))}

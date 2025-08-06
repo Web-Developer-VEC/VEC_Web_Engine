@@ -222,7 +222,7 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
+                         ml-2 flex xl:w-[25vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"

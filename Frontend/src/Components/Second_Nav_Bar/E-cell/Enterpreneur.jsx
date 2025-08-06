@@ -52,8 +52,8 @@ export default function EnterpreN({ enterpreneur }) {
                 .map((data, index) => (
                   <tr key={startIndex + index}>
                     <td>{startIndex + index + 1}</td>
-                    <td>{data?.name}</td>
-                    <td>{data?.year}</td>
+                    <td className="text-left">{data?.name}</td>
+                    <td className="text-center">{data?.year}</td>
                     <td className="text-left">{data?.business_name}</td>
                   </tr>
                 ))}

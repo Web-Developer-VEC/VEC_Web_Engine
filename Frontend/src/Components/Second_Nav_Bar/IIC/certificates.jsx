@@ -24,7 +24,7 @@ export default function IicFacCertificate({data}) {
     <>
       {data ? (
         <div className="nirf-content mt-12">
-          <h2 className="text-accn dark:text-drkt text-center text-4xl mb-4 font-bold">Certificate</h2>
+          <h2 className="text-accn dark:text-drkt text-center text-4xl mb-4 font-bold">IIC Certificate</h2>
 
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
             <div className="nirf-year-actions faculty-icc flex flex-col md:flex-row text-center">
