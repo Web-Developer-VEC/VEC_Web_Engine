@@ -159,7 +159,7 @@
             "year": "Batch 2022 - 2026",
             "department": "AI",
             "club_designation":"Frontend Developer",
-            "image": "/static/images/web_team/pilot_batch/Arjun.webp",
+            "image": "/static/images/web_team/pilot_batch/Kumar.webp",
             "social": {
               "github": "https://github.com/kumar7505",
               "linkedin": "https://linkedin.com/in/kumar-p-75",
@@ -223,7 +223,7 @@
             "name": "AJITH G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Developer , Integration Engineer",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/pilot_batch/Ajith.webp",
             "social": {
               "github": "https://github.com/Ajith-ajay",
@@ -243,7 +243,7 @@
               "linkedin": "https://www.linkedin.com/in/mohammed-hajee-1a5519255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
               "portfolio": "",
               "email": "mohammedhajee909@gmail.com",
-              "instagram":"https://www.instagram.com/_md.hj.14_?igsh=d29udGY5Z3c5MThw&utm_source=qr"
+              "instagram":"https://www.instagram.com/md.hj.14?igsh=d29udGY5Z3c5MThw&utm_source=qr"
             }
           },
           {
@@ -310,7 +310,7 @@
             "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Team Lead , Backend Lead Developer , Cloud Lead Developer",
-            "image": "/static/images/web_team/copilot_batch/Hari.webp",
+            "image": "/static/images/web_team/copilot_batch/HARI PRASATH.webp",
             "social": {
               "github": "https://github.com/4274-hari",
               "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -322,13 +322,13 @@
             "name": "AJITH G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Lead Developer , System Architect , Integration Engineer",
-            "image": "/static/images/web_team/copilot_batch/Ajith.webp",
+            "club_designation":"Frontend Lead Developer , System Architect , Integration Engineer",
+            "image": "/static/images/web_team/copilot_batch/AJITH.webp",
             "social": {
-              "github": "",
-              "linkedin": "",
-              "portfolio": "",
-              "email": ""
+              "github": "https://github.com/Ajith-ajay",
+              "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
+              "portfolio": "https://myprotfoliostu.web.app/",
+              "email": "ajithajay1029@gmail.com"
             }
           },
            {
@@ -349,7 +349,7 @@
             "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Backend Developer , API Developer",
-            "image": "/static/images/web_team/copilot_batch/DINESH PRABAKERAN.webp",
+            "image": "/static/images/web_team/copilot_batch/DINESH PRABAKARAN.webp",
             "social": {
               "github": "https://github.com/dinesh26072006",
               "linkedin": "https://www.linkedin.com/in/dinesh-prabakaran-491659306/",
@@ -397,10 +397,10 @@
             }
           },
           {
-            "name": "SATHISH R",
+            "name": "SATHISH KUMAR R",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Developer , Integration Engineer",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/SATHISH.webp",
             "social": {
               "github": "https://github.com/Sathishkumar-290705/",
@@ -410,7 +410,7 @@
             }
           },
           {
-            "name": "KIRUBA A",
+            "name": "KIRUBANANDHAM A",
             "year": "Batch 2023  - 2027",
             "department": "AI",
             "club_designation":"Frontend Developer , QA Tester",
@@ -426,7 +426,7 @@
             "name": "DAKSHAN B",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Developer , Integration Engineer",
+            "club_designation":"Frontend Developer , Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/DAKSHAN.webp",
             "social": {
               "github": "https://github.com/dakshan-18",
