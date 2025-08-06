@@ -93,21 +93,18 @@ function Management({ theme, toggle }) {
               </div>
             </div>
           </div>
-
           {/* CEO Message Section */}
           <div className="FCP-message-section FCP-ceo-section bg-[#f8f9fa]
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <h2 className="FCP-section-title text-brwn dark:text-prim">CEO MESSAGE</h2>
-
             <div className="FCP-content-container">
               <div className="FCP-image-container1">
-                <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" />
+                <img src={UrlParser(AbtUsData?.image_path[1])} alt="CEO's Image" className="ceo-image" />
                   <div className="flex justify-center items-center flex-col mt-2">
                     <p className="font-bold">{AbtUsData?.name[1]}</p>
                     <p className="text-brwn dark:text-drka">{AbtUsData?.designation[1]}</p>
                   </div>
               </div>
-
               <div className="FCP-text-container">
                 <p>
                 {AbtUsData?.message[1]}
@@ -120,7 +117,7 @@ function Management({ theme, toggle }) {
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <h2 className="FCP-section-title text-brwn dark:text-prim">DEPUTY CEO MESSAGE</h2>
 
-            <div className="FCP-content-container deputy-ceo">
+            <div className="FCP-content-container-1 deputy-ceo">
 
               <div className="FCP-text-container">
                 <p>
