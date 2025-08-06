@@ -5,10 +5,13 @@ import linkedin from '../Assets/linkedin-logo.png';
 import youtube from '../Assets/youtube.png';
 import x from '../Assets/X-logo.png';
 import facebook from '../Assets/facebook-logo.png';
+import { useNavigate } from "react-router-dom";
+import { section } from "framer-motion/m";
 
 const Footer = forwardRef((props, ref) => {
     const color = (props.theme === "light") ? "rgb(253,204,3)" : "rgb(255, 87, 34)";
     const data = props.data;
+    const navigate = useNavigate();
     return (
         <footer id="footer" className="lg:flex flex-wrap footer font-popp
             bg-[linear-gradient(111deg,theme(colors.secd)_0%,theme(colors.secd)_3%,theme(colors.text)_3%,theme(colors.text)_90%,theme(colors.secd)_90%,theme(colors.secd)_100%)]
@@ -74,9 +77,26 @@ const Footer = forwardRef((props, ref) => {
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
                         <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><a href="/abt-us">About Us</a></li>
-                            <li><a href="/nba">NBA</a></li>
-                            <li><a href="/naac">NAAC</a></li>
-                            <li><a href="/nirf">NIRF</a></li>
+                            <li><a onClick={() => {
+                                navigate('/Accredation',
+                                    { state: {section: "NBA"}}
+                                )
+                            }}>NBA</a></li>
+                            <li><a onClick={() => {
+                                navigate('/Accredation',
+                                    { state: {section: "NAAC"}}
+                                )
+                            }}>NAAC</a></li>
+                            <li><a onClick={() => {
+                                navigate('/Accredation',
+                                    { state: {section: "NIRF"}}
+                                )
+                            }}>NIRF</a></li>
+                            <li><a onClick={() => {
+                                navigate('/Accredation',
+                                    { state: {section: "QS Rating"}}
+                                )
+                            }}>QS Rating</a></li>
                             <li><a href="/iic">IIC</a></li>
                         </ul>
                     </div>
