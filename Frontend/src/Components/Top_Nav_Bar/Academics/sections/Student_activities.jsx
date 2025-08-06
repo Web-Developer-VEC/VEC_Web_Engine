@@ -139,17 +139,6 @@ useEffect(() => {
             <button onClick={nextSlide} className="nav-button next-button">
               <ChevronRight className="nav-icon" />
             </button>
-
-            {/* 🔹 Dots for Navigation */}
-            <div className="dots-container">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`dot ${index === currentIndex ? 'active' : ''}`}
-                />
-              ))}
-            </div>
           </div>
 
           {/* 🔹 Image Description Box */}

@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import {createGlobalStyle} from "styled-components";
 import Cookies from "universal-cookie";
+import useGoogleAnalytics from "./useAnalytics.js";
 /* Landing Page Imports */
 import Boot from "./Components/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
@@ -21,7 +22,6 @@ import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
 import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
 import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
 import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
-import HR_Handbook from "./Components/Top_Nav_Bar/Administration/HR_Handbook.jsx";
 import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Academics Pages Imports */
 import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
@@ -42,19 +42,13 @@ import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-
 import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
-
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
 import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
-import ProudAlumni from "./Components/Top_Nav_Bar/Placements/ProudAlumni.jsx";
 /* Second_Nav_Bar Pages Imports */
 import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
-import NBA from "./Components/Second_Nav_Bar/Accredation/NBA_F.jsx";
-import NAAC from "./Components/Second_Nav_Bar/Accredation/naac.jsx";
-import NIRF from "./Components/Second_Nav_Bar/Accredation/nirf.jsx";
 import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
 import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
@@ -83,10 +77,8 @@ import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboar
 import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
 import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-// import Researchtable from "./Components/Top_Nav_Bar/Research/Researchtable.jsx";
 // other stuffs
 import NotFound from "./NotFound";
-import Crdt from "./Components/Credits/Crdt.jsx";
 import axios from 'axios';
 import SideButton from "./Components/sideButton.jsx";
 import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
@@ -100,6 +92,8 @@ import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
 import HitLogs from './Components/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
+import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
+import DynamicTitle from "./Header.jsx";
 
 
 
@@ -144,7 +138,8 @@ const App = () => {
     const cookies = new Cookies()
     const [landingData, setLandingData] = useState(null);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-     const navigate = useNavigate();
+    const navigate = useNavigate();
+    useGoogleAnalytics();
 
     
     useEffect(() => {
@@ -202,6 +197,16 @@ const App = () => {
         setTheme(cookies.get('theme'))
     })
 
+    const [showBoot, setShowBoot] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setShowBoot(false);
+        }, 4000); // or when isLoaded is true
+
+        return () => clearTimeout(timeout);
+    }, [loaded]);
+
     useEffect(() => {
         setCurrentPath(location.pathname); // Update state when route changes
     }, [location]);
@@ -221,7 +226,7 @@ const App = () => {
             <GlobalStyle/>
             {/* The rest of the routes */}
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
-                    {window.location.pathname === "/" && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
+                    {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
                     {/* Conditionally render Head and Footer */}
                     
                     
@@ -229,13 +234,13 @@ const App = () => {
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
                         <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
+                            <DynamicTitle/>
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
-                                <Route path="/hr-handbook" drk element={<HR_Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
                                 <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme}/>}/>
@@ -258,30 +263,18 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                {/* <Route path="/Sponseredresearch" drk element={<Sponsres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
-                                {/* <Route path="/conference" drk element={<ConfPub toggle={toggle} theme={theme}/>}/> */}
-                                {/* <Route path="/patents" drk element={<Patentsres toggle={toggle} theme={theme}/>}/> */}
-                                {/* <Route path="/Bookpubliction" drk element={<Bookres toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
-                                <Route path="/proudalumni" drk element={<ProudAlumni />}/>
-                                {/* <Route path="/acadamicresearchtable" drk element={<Researchtable/> }/> */}
-
-                                <Route path="/nba" drk element={<NBA toggle={toggle} theme={theme}/>}/>
-
 
                                 <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
-
                                 
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
-                                <Route path="/naac" drk element={<NAAC toggle={toggle} theme={theme}/>}/> 
-                                <Route path="/nirf" drk element={<NIRF toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
@@ -301,9 +294,7 @@ const App = () => {
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path='/login' drk element={<Login/>}/>
-
-                                <Route path="/developers" element={<Crdt toggle={toggle} theme={theme}/>} />
-
+                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />

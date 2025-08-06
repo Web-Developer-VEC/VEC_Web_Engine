@@ -34,10 +34,10 @@ const SportsActionPlan = () => {
         <div className="w-fit px-4 sm:ml-5">
           <ul className="text-justify text-text dark:text-drkt marker:text-text dark:marker:text-drks">
             <li className='text-text dark:text-drkt'>
-              We give effective training for the students to develop their physical fitness.
+              Our Department give effective training for the students to develop their physical fitness.
             </li>
             <li className='text-text dark:text-drkt'>
-              We provide efficient coaching system for the students to their sports performance.
+              Our Department provide efficient coaching system for the students to their sports performance.
             </li>
             <li className='text-text dark:text-drkt'>
               To engage the students for a greater number of participations to develop their match experience.

@@ -32,7 +32,7 @@ const Programmes = ({toggle, theme}) => {
             }
         }
         fetchData();
-    })
+    }, [])
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);

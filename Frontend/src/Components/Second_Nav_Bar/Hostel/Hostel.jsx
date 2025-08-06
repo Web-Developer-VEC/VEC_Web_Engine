@@ -11,6 +11,8 @@ import SideNav from "../SideNav";
 import InfoHostel from "./infohostel";
 import LoadComp from '../../LoadComp'
 import DigiHostal from "./DigiHostel";
+import { useNavigate } from "react-router";
+
 
 export default function HostelPage({toggle, theme}) {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -39,7 +41,8 @@ export default function HostelPage({toggle, theme}) {
         // "Digital Hostel ": <DigiHostel/>
         // "Leave": <AboutHostel />
     }
-  const [hos, setHos] = useState(Object.keys(navData)[0])
+  const [hos, setHos] = useState(Object.keys(navData)[0]);
+    const navigate = useNavigate();
 
 useEffect(() => {
   const typeMatch = {
@@ -60,6 +63,9 @@ useEffect(() => {
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
+       if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+          } 
       setLoading(true);
     }
   };

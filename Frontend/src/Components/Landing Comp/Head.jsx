@@ -222,7 +222,7 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
+                         ml-2 flex xl:w-[25vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
@@ -230,9 +230,9 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(0.65rem, 0.85vw, 1rem)] 
+                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
                     max-w-[63.5%]
-                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition ml-auto'>
+                        w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
                             <div className='group/nav relative transition-all mt-3 rounded-xl grow min-w-0' key={ind}>
                                 <p className={`align-middle group-[.hide]:top-1 self-center w-fit p-[0.75vmin]

@@ -85,10 +85,10 @@ if (!isOnline) {
             const [courseName, courseDetails] = Object.entries(item)[0];
             return (
               <tr key={rowIndex} className="bg-prim dark:bg-text">
-                <td className="text-start">{courseName}</td>
-                <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
-                <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
-                <td className="font-light">{courseDetails["Total Intakes"]}</td>
+                <td className="text-start text-center">{courseName}</td>
+                <td className="font-light text-center">{courseDetails["Government Quota Intakes"]}</td>
+                <td className="font-light text-center">{courseDetails["Management Quota Intakes"]}</td>
+                <td className="font-light text-center">{courseDetails["Total Intakes"]}</td>
               </tr>
             );
           })}

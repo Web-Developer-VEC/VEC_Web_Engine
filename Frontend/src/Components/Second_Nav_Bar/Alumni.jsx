@@ -17,7 +17,6 @@ const Alumni = ({ theme, toggle }) => {
 
   // State for flipbook functionality
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [flipDirection, setFlipDirection] = useState("");
   const [isFlipping, setIsFlipping] = useState(false);
   const [spcannouncements, setSpcAnnouncements] = useState([]);
@@ -105,7 +104,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
       <Banner
         theme={theme}
         toggle={toggle}
-        backgroundImage="https://png.pngtree.com/thumb_back/fh260/background/20220620/pngtree-mountainous-road-with-the-word-mission-inscribed-vision-visionary-way-photo-image_31857844.jpg"
+        backgroundImage="/Banners/Alumini_banner.webp"
         headerText="Alumni Cell"
         subHeaderText="Get inspired by our Legacy"
       />
@@ -113,7 +112,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
       {/* Flipbook Section - Placed directly below the Banner */}
       <div className="alumni-announcement">
         <div className="proud-alumni">
-          <div className="app-container h-full">
+          <div className="app-container h-full m-auto">
             <div className="text-content text-[#2d3748] dark:text-[#70C1FF]">
               <h1>Get</h1>
               <h2 style={{ margin: "0 20px" }}>Inspired</h2>
@@ -121,7 +120,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
               <h1 style={{ margin: "0 21px" }}>Our Legacy</h1>
             </div>
 
-            <div className="flipbook">
+            <div className="flipbook m-auto">
               <div className="pages">
                 <div
                   className={`page ${
