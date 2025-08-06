@@ -10,20 +10,77 @@ db = client[db_name]
 import json
 from pymongo import MongoClient
 
-def insert_administration_sections():
-    collection = db["administration"]
 
-    with open("/root/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
-        admin_data = json.load(file)
+def insert_admissions_sections():
+    collection = db["admissions"]
 
-        for section in admin_data:
-            section_key = list(section.keys())[0]
+    with open("/root/VEC_Web_Engine/docs/admissions.json", "r", encoding="utf-8") as file:
+        admissions_data = json.load(file)
+
+        for section in admissions_data:
+            section_key = section["type"]
             document = {
                 "type": section_key,
-                "data": section[section_key]
+                "data": section["data"]
             }
             collection.insert_one(document)
 
-    print("Administration sections inserted successfully.")
+    print("Admission sections inserted successfully.")
 
-insert_administration_sections()
+def insert_curriculum_data():
+    collection = db['curriculum']
+    with open("/root/VEC_Web_Engine/docs/curriculum.json", "r",encoding="utf-8") as file:
+        documents = json.load(file)
+        collection.insert_many(documents)
+
+    print("Curriculum documents inserted successfully.\n")
+
+
+def insert_landing_page_sections():
+    collection = db["landing_page_details"]
+
+    with open("/root/VEC_Web_Engine/docs/landing_page_details.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("landing page sections inserted successfully.")
+
+
+def insert_placement_sections():
+    collection = db["placement"]
+
+    with open("/root/VEC_Web_Engine/docs/placement.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("placement sections inserted successfully.")
+
+def insert_web_team():
+    collection = db['web_team']
+    with open('/root/VEC_Web_Engine/docs/web_team.json', "r",encoding="utf-8") as file:
+        documents = json.load(file)
+    collection.insert_many(documents)
+
+    print("web team data inserted successfully.")
+
+
+
+insert_web_team()
+insert_placement_sections()
+insert_landing_page_sections()
+insert_curriculum_data()
+insert_admissions_sections()
