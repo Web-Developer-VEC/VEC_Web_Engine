@@ -64,3 +64,94 @@
   text-decoration: none;
   font-size: 0.9rem;
 }
+.warden-heading1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Dark mode for heading is already handled via className in JSX */
+
+/* Top section layout */
+.warden-top-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Rows */
+.warden-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.warden-section-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  /* Already handled with Tailwind dark:text-drkt in JSX */
+}
+
+/* Card Styles */
+.warden-card-flex {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0c471;
+  border-radius: 10px;
+  padding: 15px 20px;
+  background: #f9f9f9;
+  width: 300px;
+  height: 150px;
+  gap: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode support for card */
+.dark .warden-card-flex {
+  background: #1f2937; /* Tailwind's gray-800 */
+  border-color: #facc15; /* Tailwind's yellow-400 */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Image */
+.warden-card-flex img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Info block */
+.warden-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Text inside card */
+.warden-info p {
+  margin: 0;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Dark mode text */
+.dark .warden-info p {
+  color: #e5e7eb; /* Tailwind's gray-200 */
+}
+
+.warden-info a {
+  color: #7c3aed; /* Tailwind's violet-600 */
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* Dark mode link */
+.dark .warden-info a {
+  color: #a78bfa; /* Tailwind's violet-400 */
+}
