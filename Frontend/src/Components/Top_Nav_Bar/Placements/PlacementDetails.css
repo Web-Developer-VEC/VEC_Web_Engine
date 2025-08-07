@@ -290,6 +290,10 @@
     margin-bottom: 12px;
     padding: 5px 0;
   } 
+  .place-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
 }
 
 /* Fade-in Animation */
@@ -301,5 +305,73 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .place-modal-content {
+    width: 80%;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .place-modal-content {
+    width: 60%;
+    max-width: 900px;
+  }
+}
+/* Base styles for small mobile devices (portrait phones) */
+/* .place-modal-content {
+  width: 95%;
+  max-width: 350px;
+  height: 80vh;
+} */
+
+/* Large phones in landscape or bigger mobile screens */
+@media (min-width: 480px) {
+  .place-modal-content {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+/* Portrait tablets and larger smartphones */
+@media (min-width: 576px) {
+  .place-modal-content {
+    width: 85%;
+    max-width: 500px;
+  }
+}
+
+/* Tablets in portrait mode (~768px) */
+@media (min-width: 768px) {
+  .place-modal-content {
+    width: 80%;
+    max-width: 600px;
+  }
+}
+
+/* Tablets in landscape or small laptops (~992px) */
+@media (min-width: 992px) {
+  .place-modal-content {
+    width: 70%;
+    max-width: 800px;
+  }
+}
+
+/* Laptops and regular desktops (~1200px) */
+@media (min-width: 1200px) {
+  .place-modal-content {
+    width: 60%;
+    max-width: 1000px;
+  }
+}
+
+/* Extra-wide large desktops (~1440px+) */
+@media (min-width: 1440px) {
+  .place-modal-content {
+    width: 50%;
+    max-width: 1200px;
   }
 }

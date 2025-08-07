@@ -15,7 +15,7 @@ const NSSContent = ({data}) => {
           <h2 class="nss-title text-accn dark:text-drkt inline-block border-b-2 border-secd dark:text-drks pb-1">
             Welcome to the National Service Scheme
           </h2>
-          <p className="nss-text">
+          <p className="nss-list marker:text-accn dark:marker:text-drka">
              {content?.about?.map((item, index) => (
             <p key={index}>
               <li>
