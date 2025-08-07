@@ -74,9 +74,9 @@ const LibrarySections = ({data, lib}) => {
                                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                                 transition-colors duration-300 ease-in`} key={i}>
                                 {/* Fixed typo: cmt.nme to cmt.pos since data only has pos */}
-                                <p className="text-xl font-poppi">{adv.name}</p>
+                                <p className="text-xl font-poppi max-sm:text-base">{adv.name}</p>
                                 {/* Removed cmt.nme reference as it doesn't exist in data */}
-                                <p className="text-sm text-accn dark:text-drka font-poppi">{adv.designation}</p>
+                                <p className="text-sm text-accn dark:text-drka font-poppi max-sm:text-xs">{adv.designation}</p>
                             </div>
                         ))}
                     </div>
@@ -86,7 +86,7 @@ const LibrarySections = ({data, lib}) => {
     }
 
     function LIBHigh({ data }) {
-        if (!Array.isArray(data)) return null;
+        if (!data || !Array.isArray(data)) return null;
 
         // separate normal sections and image gallery
         const normalSections = data.filter(sec => sec.category !== "Image_Gallery");
@@ -111,7 +111,7 @@ const LibrarySections = ({data, lib}) => {
                     {section.category}
                     </h2>
                     <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
-                    {section.items.map((item, i) => (
+                    {Array.isArray(section.items) && section.items.map((item, i) => (
                         <motion.li
                         key={i}
                         className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drkt transition-colors duration-300"
@@ -130,62 +130,58 @@ const LibrarySections = ({data, lib}) => {
             </div>
 
             {/* ✅ Second div: Library Highlights (Image_Gallery) */}
-            {imageGallery && (
-                <div className="h-auto py-12 sm:py-16 px-4 sm:px-6">
+            {Array.isArray(imageGallery?.items) && imageGallery.items.length > 0 && (
+            <div className="h-auto py-12 sm:py-16 px-4 sm:px-6">
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drkt uppercase tracking-wide mb-8 sm:mb-12">
-                    Library Highlights
+                Library Highlights
                 </h2>
 
                 <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                    {imageGallery.items.map((section, index) => (
+                {imageGallery.items.map((section, index) => (
                     <motion.div
-                        key={index}
-                        className="relative group"
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{
+                    key={index}
+                    className="relative group"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
                         duration: 0.6,
                         delay: index * 0.15,
                         ease: "easeOut",
-                        }}
-                        viewport={{ once: true }}
+                    }}
+                    viewport={{ once: true }}
                     >
-                        <Tilt
+                    <Tilt
                         options={{
-                            max: 15,
-                            scale: 1.05,
-                            speed: 400,
-                            glare: true,
-                            "max-glare": 0.2,
+                        max: 15,
+                        scale: 1.05,
+                        speed: 400,
+                        glare: true,
+                        "max-glare": 0.2,
                         }}
-                        className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform
-                                    dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
-                        >
+                        className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
+                    >
                         <div className="relative overflow-hidden">
-                            <img
+                        <img
                             src={UrlParser(section.image)}
                             alt={section.title}
                             className="w-full h-56 sm:h-60 object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
+                        />
+                        <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
                         </div>
 
                         <div className="p-5 sm:p-6">
-                            <h3
-                            className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt
-                                        group-hover:text-secd dark:group-hover:text-drks transition-colors"
-                            >
+                        <h3 className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt group-hover:text-secd dark:group-hover:text-drks transition-colors">
                             {section.title}
-                            </h3>
-                            <p className="mt-2 sm:mt-3 leading-relaxed">
+                        </h3>
+                        <p className="mt-2 sm:mt-3 leading-relaxed">
                             {section.description}
-                            </p>
+                        </p>
                         </div>
-                        </Tilt>
+                    </Tilt>
                     </motion.div>
-                    ))}
+                ))}
                 </div>
-                </div>
+            </div>
             )}
             </>
         );
@@ -313,16 +309,16 @@ const LibrarySections = ({data, lib}) => {
                                     className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
                                 >
                                     <button
-                                        onClick={() => toggleSection(index)}
-                                        className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
-                        transition-all rounded-2xl text-white dark:text-drkp mb-4
-                        ${
-                                            openSection === index
-                                                ? "bg-[#FDCC03] text-black dark:bg-drks"
-                                                : "bg-accn dark:bg-drks"
+                                    onClick={() => toggleSection(index)}
+                                    className={`w-full flex justify-between items-center 
+                                        text-base sm:text-lg px-6 py-4 font-semibold
+                                        transition-all rounded-2xl text-white dark:text-drkp mb-4
+                                        ${
+                                        openSection === index
+                                            ? "bg-[#FDCC03] text-black dark:bg-drks"
+                                            : "bg-accn dark:bg-drks"
                                         }`}
                                     >
-
 
                                     <h2 className={`${openSection === index ? "text-black" : "text-white"}`} >    { section.title} </h2> 
                                         {openSection === index ? <FaChevronUp className="color-black text-black"/> : <FaChevronDown/>}
