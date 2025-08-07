@@ -162,6 +162,21 @@ h2 {
     .FCP-founder-section .FCP-content-container-1 {
         flex-direction: column-reverse;
     }
+
+     .FCP-image-container1 img {
+        width: 40%;
+        margin:auto;
+        align-items: center;
+        max-width: 250px; /* Adjust size as needed */
+        height: auto;
+    }
+     .FCP-image-container img {
+        width: 40%;
+        margin:auto;
+        align-items: center;
+        max-width: 250px; /* Adjust size as needed */
+        height: auto;
+    }
 }
 
 /* Landscape mode adjustments */
@@ -183,8 +198,16 @@ h2 {
     }
 
     .FCP-image-container img {
-        width: 50%; /* Ensure images scale */
+        width: 100%; /* Ensure images scale */
         max-height: 250px; /* Control image height on landscape mode */
+    }
+    .FCP-image-container1{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .FCP-image-container1 img{
+        width: 40%;
     }
 }
 
@@ -255,6 +278,7 @@ h2 {
 }
 
 @media (max-width: 1024px) {
+
     .FCP-content-container {
         display: flex;
         /* flex-direction: column; */
