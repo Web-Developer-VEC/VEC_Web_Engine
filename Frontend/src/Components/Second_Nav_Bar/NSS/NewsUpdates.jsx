@@ -14,9 +14,9 @@ const NotificationBox = ({ data }) => {
   return (
     <div className="nss-notification-container">
       {/* Heading */}
-      <div className="nss-news-updates text-sm md:text-[16px] ml-auto md:ml-2 text-brwn dark:text-drkt">
-        Bringing you the latest news & updates
-        <div className="w-[300px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
+      <div>
+      <div className="nss-news-updates text-sm md:text-[16px] ml-auto md:ml-0 text-brwn dark:text-drkt">Bringing you the latest news & updates</div>
+      <div className="w-[280px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
       </div>
 
       {/* Scrolling Box */}

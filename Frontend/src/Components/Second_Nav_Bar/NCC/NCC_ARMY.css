@@ -2,6 +2,14 @@
 .NCC_ARMY-container {
   margin: 0 auto;
 }
+.Ncc_Army-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  /*color: #444;*/
+  font-size: 16px;
+  line-height: 1.7;
+  font-family:  'Poppins', sans-serif;
+}
 
 /* Content Wrapper */
 .NCC_ARMY-content-wrapper {
@@ -43,11 +51,7 @@
   /*animation: slideInRight 1s ease-out;*/
 }
 
-/* List Styling */
-.NCC_ARMY-list {
-  list-style: none;
-  padding-left: 0;
-}
+
 
 .NCC_ARMY-list li {
   margin-bottom: 15px;
@@ -110,12 +114,6 @@
   margin-right: 15px;
 }
 
-.NCC_ARMY-aimcontent {
-  font-size: 16px;
-  line-height: 1.8;
-  white-space: pre-line;
-  font-family:  'Poppins', sans-serif;
-}
 
 /* Vision & Mission Section */
 .NCC_ARMY-vision-mission-container {

@@ -4,6 +4,21 @@ Coordinators Section
   text-align: center;
   margin: 50px auto;
 }
+.nss-member-card-1{
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+  width: 700px;
+  margin: 20px 20px;
+  margin-top: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 20px;
+}
 
 /* Main Heading */
 .NSS-section-heading {
@@ -55,6 +70,11 @@ Coordinators Section
   .NSS-id-card {
     width: calc(50% - 20px); 
   }
+  .nss-member-card-1{
+    width: 280px;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 /* Mobile View: 1 card per row */
@@ -63,7 +83,7 @@ Coordinators Section
     width: 100%; 
   }
 }
-.NSS-id-card-staff {
+/* .NSS-id-card-staff {
   display: flex;
   align-items: center;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -72,8 +92,7 @@ Coordinators Section
   width: 700px;
   max-width: 900px;
   margin: auto;
-
-}
+} */
 @media (max-width: 1024px) {
   .NSS-id-card-staff {
     max-width: 90%;

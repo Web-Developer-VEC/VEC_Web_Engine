@@ -24,7 +24,8 @@ function NCCAbout({data}) {
         >
           About NCC
         </h2>
-        <ul className="NCC_ARMY-list">
+        {/* <ul className="NCC_ARMY-list"> */}
+        <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
           {data?.map((item,i) => (
             <>
             {item?.about_us?.map((content,i) => (
@@ -53,7 +54,7 @@ function NCCObjectives({data}) {
           >
             Objectives of NCC
           </h2>
-          <ul className="NCC_ARMY-list list-disc pl-5 ">
+          <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
              {data?.map((item,i) => (
               <>
               {item?.objectives?.map((content,i) => (
@@ -84,7 +85,7 @@ function NCCAim({data}) {
             />
             AIM of NCC
           </h2>
-          <p className="NCC_ARMY-aimcontent">
+          <p className="Ncc_Army-list marker:text-accn dark:marker:text-drka"> 
             {data?.map((item,i) => (
               <>
                 {item?.aim?.map((content,i) => (
@@ -120,7 +121,7 @@ function NCCMotto({data}) {
           <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
             CARDINALS OF NCC
           </h2>
-          <p className="NCC_ARMY-content">
+          <p className="Ncc_Army-list marker:text-accn dark:marker:text-drka">{/* NCC_ARMY-content  */}
             {data?.map((item,i) => (
               <>
                 {item?.cardinals?.map((content,i) => (
@@ -149,7 +150,7 @@ function NCCPledge({data}) {
           >
           Pledge of NCC
         </h2>
-        <p className="NCC_ARMY-content text-lg leading-7 text-center font-semibold">
+        <p className=" Ncc_Army-list marker:text-accn dark:marker:text-drka ">{/* NCC_ARMY-content text-lg leading-7 text-center font-semibold */}
           {data?.map((item,i) => (
               <>
                 {item?.pledge?.map((content,i) => (
