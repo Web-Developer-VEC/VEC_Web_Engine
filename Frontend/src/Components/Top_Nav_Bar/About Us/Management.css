@@ -33,6 +33,13 @@
     align-items: center;
     justify-content: space-between;
 }
+.FCP-content-container-1 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
 
 /* Text container */
 .FCP-text-container {
@@ -77,6 +84,9 @@
 .FCP-ceo-section .FCP-content-container {
     gap: 12px; /* Reduce spacing */
 }
+.FCP-ceo-section .FCP-content-container-1 {
+    gap: 12px; /* Reduce spacing */
+}
 
 /* Heading 2 tag styling */
 h2 {
@@ -93,6 +103,10 @@ h2 {
         flex-direction: column;
         align-items: center;
     }
+    .FCP-content-container-1 {
+        flex-direction: column;
+        align-items: center;
+    }
 
     .FCP-image-container {
         width: 80%;
@@ -106,6 +120,9 @@ h2 {
 
     /* Reverse order for founder section on tablets and below */
     .FCP-founder-section .FCP-content-container {
+        flex-direction: column-reverse;
+    }
+    .FCP-founder-section .FCP-content-container-1 {
         flex-direction: column-reverse;
     }
 }
@@ -142,11 +159,17 @@ h2 {
     .FCP-founder-section .FCP-content-container {
         flex-direction: column-reverse;
     }
+    .FCP-founder-section .FCP-content-container-1 {
+        flex-direction: column-reverse;
+    }
 }
 
 /* Landscape mode adjustments */
 @media (max-width: 1024px) and (orientation: landscape) {
     .FCP-content-container {
+        flex-direction: row;
+    }
+    .FCP-content-container-1 {
         flex-direction: row;
     }
 
@@ -206,6 +229,12 @@ h2 {
         align-items: center;
         text-align: center;
     }
+    .FCP-content-container-1 {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        text-align: center;
+    }
 
     .FCP-image-container1 {
         order: -1; /* Moves the image above the text */
@@ -232,6 +261,12 @@ h2 {
         align-items: center;
         text-align: center;
     }
+    .FCP-content-container-1 {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
 
     .FCP-image-container1 {
         order: -1; /* Moves the image above the text */
@@ -243,10 +278,28 @@ h2 {
     }
 
     .FCP-image-container1 img {
-        width: 50%;
+        width: 100%;
         margin:auto;
         align-items: center;
-        max-width: 250px; /* Adjust size as needed */
+        max-width: 300px; /* Adjust size as needed */
         height: auto;
     }
 }
+
+/* for mac 13 pro non retina */
+@media screen and (width: 1440px) {
+    .FCP-image-container1  {
+        width: 400px;
+        max-width: 400px; /* Adjust size as needed */
+        height: auto;
+    }   
+
+     .FCP-image-container{
+        width: 400px;
+        margin:auto;
+        align-items: center;
+        max-width: 400px; /* Adjust size as needed */
+        height: auto;
+    }
+}
+

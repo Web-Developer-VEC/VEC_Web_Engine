@@ -120,7 +120,7 @@ function Management({ theme, toggle }) {
                   dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
             <h2 className="FCP-section-title text-brwn dark:text-prim">DEPUTY CEO MESSAGE</h2>
 
-            <div className="FCP-content-container deputy-ceo">
+            <div className="FCP-content-container-1 deputy-ceo">
 
               <div className="FCP-text-container">
                 <p>
