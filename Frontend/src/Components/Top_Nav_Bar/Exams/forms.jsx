@@ -100,7 +100,7 @@ if (!isOnline) {
           <div className="form-content dark:bg-drkts">
             <div className="form-regulation bg-[#f8f9fa] dark:bg-black">
               <div className="w-[65%]">
-                <p className="text-text dark:text-drkt">{resource.name}</p>
+                <p className="text-text dark:text-drkt break-words whitespace-normal sm:text-left text-center text-sm">{resource.name}</p>
               </div>
               <div className="form-buttons w-[30%]">
                 <button
