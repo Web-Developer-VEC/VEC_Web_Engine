@@ -17,7 +17,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
-const YRC = () => {
+const YRC = ({toggle,theme}) => {
   // const [yrcEvent, setYrcEvent] = useState(null);
   const [yrcData, setYrcData] = useState(null);
   const [yrc, setYrc] = useState("About YRC");
@@ -77,6 +77,7 @@ const YRC = () => {
         backgroundImage="./Banners/YRC.webp"
           headerText="Youth Red Cross (YRC)"
           subHeaderText="Fostering excellence in social service and community well-being."
+          toggle={toggle} theme={theme}
           />
           {yrcData ? (
             <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
@@ -397,7 +398,10 @@ const Awardsnss = ({ data }) => {
 const NotificationBox1 = ({ data }) => {
   return (
     <div className="YRC-notification-container">
-      <div className="YRC-news-updates">Bringing you the latest news & updates</div>
+      <div>
+      <div className="yrc-news-updates text-sm md:text-[16px] ml-auto md:ml-0 text-brwn dark:text-drkt">Bringing you the latest news & updates</div>
+      <div className="w-[280px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
+      </div>
 
       <div className="YRC-notification-box">
         <div className="YRC-notification-header">Recent Updates</div>
