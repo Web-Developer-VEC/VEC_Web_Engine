@@ -4,11 +4,15 @@ import "./ADM-MBA.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { FaLink } from "react-icons/fa";
+import { useNavigate } from "react-router";
+  
 
 const MBA = ({theme, toggle}) => {
   const [mbaData, setMbaData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +27,9 @@ const MBA = ({theme, toggle}) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(true);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();
@@ -84,6 +91,12 @@ if (!isOnline) {
           <div>
             <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">GOVERNMENT QUOTA</p>
             <p className="text-text dark:text-drkt ml-8">MBA : Apply through TANCET/TANCA</p>
+          </div>
+          <div className="flex justify-center mt-4">
+            <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+            <a href={UrlParser(mbaData?.MBA_Government_link)} className="dark:text-drka" target="_blank">
+              <FaLink  className={"inline size-5 mr-1 mb-1"}/>* FIRST YEAR MBA -Government Quota ( Through TANCET 2025 )
+            </a>
           </div>
           <div>
             <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>

@@ -13,6 +13,7 @@ import IicFacEvent from "./event";
 import IicFacPolicy from "./policy";
 import IicFacCertificate from "./certificates";
 import IicFacnir from "./nir";
+import { useNavigate } from "react-router";
 
 
 function IicHome({ data }) {
@@ -27,7 +28,7 @@ function IicHome({ data }) {
   const aboutArray = data[0]?.about_iic || [];
 
   return (
-    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box">
+    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto">
       <h1 className="text-accn dark:text-drkt text-[32px]">Home</h1>
       <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
         About IIC
@@ -138,7 +139,8 @@ function IicEco({ data }) {
 
 
 const Iic = ({toggle, theme}) => {
-    const [iicData, setIicData] = useState(null)
+  const [iicData, setIicData] = useState(null)
+  const navigate = useNavigate();
     const navData = {
         "Home": <IicHome data={iicData}/>,
         "Establishment of IIC": <IicEst data={iicData}/>,
@@ -156,7 +158,7 @@ const Iic = ({toggle, theme}) => {
             'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData}/>
         },
         "Kapila": <KamalaBar data={iicData} />, 
-        "Mentee Institution ":   <IICMentee data={iicData}/>,
+        "Mentee Institution":   <IICMentee data={iicData}/>,
         "Yukti" : <IicFacnir data={iicData}/>,
         "Certificate":<IicFacCertificate data={iicData}/>,
         "Policy" : <IicFacPolicy data={iicData}/>,
@@ -178,7 +180,7 @@ const Iic = ({toggle, theme}) => {
       "IIC 6.0": "iic6",
       "IIC 7.0": "iic7",
       "Kapila": "kapila",
-      "Mentee Institution ": "mentee",
+      "Mentee Institution": "mentee",
       "Yukti": "yukti",
       "Certificate": "certificate",
       "Policy": "policy",
@@ -203,6 +205,9 @@ const Iic = ({toggle, theme}) => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     };

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 
 const CourseCarousel = ({ courses }) => {
-  const [pos, setPos] = useState(3);
+  let [pos, setPos] = useState(1);
   const [pause, setPause] = useState(false);
   const navigate = useNavigate();
 
@@ -54,8 +54,8 @@ const pos_hdl = (pvl) => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="grid w-full relative h-fit z-10 lg:py-8">
-        <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 h-[300px] items-center
+      <div className="grid w-full relative h-fit md:h-[30vh] lg:h-[60vh] z-10 lg:py-8">
+        <div className="font-comf row-[1/2] col-[1/8] w-screen z-1 lg:h-[300px] md:h-[400px] h-[300px] items-center
           flex justify-center mb-1"
           style={{ transformStyle: 'preserve-3d', perspective: '600px' }}>
 
@@ -69,7 +69,7 @@ const pos_hdl = (pvl) => {
               dark:bg-[color-mix(in_srgb,theme(colors.drka)_70%,black)]"
             // style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos - 1)}>
-            <ChevronLeftIcon className="size-max text-white"></ChevronLeftIcon>
+            <ChevronLeftIcon className="w-[2vmax] h-[2vmax] text-white m-auto"></ChevronLeftIcon>
           </button>
 
           {courses?.map((cur, i) => (
@@ -111,7 +111,7 @@ const pos_hdl = (pvl) => {
             dark:bg-[color-mix(in_srgb,theme(colors.drka)_70%,black)]"
             // style={{ outlineColor: `${rdb[pos - 1].clr}`, backgroundColor: `${rdb[pos - 1].clr}` }}
             onClick={() => pos_hdl(pos + 1)}>
-            <ChevronRightIcon className="size-max text-white"></ChevronRightIcon>
+            <ChevronRightIcon className="w-[2vmax] h-[2vmax] text-white m-auto"></ChevronRightIcon>
           </button>
         </div>
 

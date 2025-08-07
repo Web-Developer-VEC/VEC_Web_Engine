@@ -6,6 +6,8 @@ import { faUniversity, faBuilding, faUsers, faChartLine, faCogs, faLaptop, faGra
 import "./Executive commitee.css"; 
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+
 
 // Button Component
 const CommitteeButton = ({ name, onClick, icon }) => (
@@ -34,6 +36,7 @@ const ExecutiveCommittee = ({theme, toggle}) => {
   const [committieeData, setCommittieeData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
   
   // Mapping committee names to icons
   const iconMapping = {
@@ -88,6 +91,9 @@ const ExecutiveCommittee = ({theme, toggle}) => {
         setIsLoading(false); // Data has finished loading
       } catch (error) {
         console.error("Error fetching data:", error.message);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+           } 
         setIsLoading(true); // Even if an error occurs, stop the loading state
       } 
     };

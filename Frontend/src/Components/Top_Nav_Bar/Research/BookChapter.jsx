@@ -1,26 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Academicresearch.css";
-// import './Researchtable.css';
 import Banner from "../../Banner";
-// import Researchtable from "./Researchtable";
-import { Link } from "react-router-dom";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid"; // FIXED
+import axios from "axios";
+import { useNavigate } from "react-router";
 
-const courses = [
-  "2020",
-  "2014",
-  "2005",
-  "2006",
-  "2007",
-];
 
 export default function BookChapter({ theme, toggle }) {
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [open, handleOpen] = useState(false);
+  const [bookChapter, setBookChapter] = useState(null);
+  const navigate = useNavigate();
 
-  const handleCourseClick = (course) => {
-    setSelectedCourse(selectedCourse === course ? null : course);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('/api/main-backend/research',
+          {
+            type: "Books and Book chapters"
+          }
+        )
+
+        const data = response.data.data;
+
+        setBookChapter(data)
+      } catch (error) {
+        console.error('Error fetching Books data',error);
+         if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
+      }
+    }
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -32,23 +47,25 @@ export default function BookChapter({ theme, toggle }) {
         subHeaderText="Enrich Your Knowledge"
       />
 
- 
-      
-  
         <div className="">
           <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-           Books and Book chapters
+           Books & Book chapters
           </h1>
 
           <div className="course-selection-container p-12">
-            {courses.map((course) => (
+            {bookChapter?.map((course) => (
             
                  <div
                    
                     className={`px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn`}
-                
+                    onClick={() => {
+                      const url = course?.pdf_path;
+                      if (url) {
+                        window.open(UrlParser(url), "_blank");
+                      }
+                    }}
                   >
-                   {course}
+                   {course?.year}
                   </div>
           
             ))}

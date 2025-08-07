@@ -22,11 +22,14 @@ import LoadComp from "../../LoadComp";
 import "./dapartment1.css";
 import Banner from "../../Banner";
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 const AcademicDepartments = ({ theme , toggle }) => {
-
+  
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [departments,setDepartments] = useState(null);
+  const navigate = useNavigate();
 
   const iconMap = {
   "Automobile": <FaCar />,
@@ -63,6 +66,9 @@ const AcademicDepartments = ({ theme , toggle }) => {
         
       } catch (error) {
         console.error("error fetching Department List Data",error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
     fetchData();
@@ -107,7 +113,7 @@ const AcademicDepartments = ({ theme , toggle }) => {
                   <h1 className="department1-heading text-brwn dark:text-prim">
                     {categoryObj?.category}
                   </h1>
-                  <div className="department1-grid">
+                  <div className="department1-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                     {categoryObj?.content?.map((dept, i) => {
                       // Find icon
                       const matchedKey = Object.keys(iconMap).find((key) =>

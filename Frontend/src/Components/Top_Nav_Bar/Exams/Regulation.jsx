@@ -3,12 +3,14 @@ import "./Regulation.css";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
 
 const REGULATION = ({ theme, toggle }) => {
-
+  
   const [regulationdata, setRegulationData] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setLoading] = useState(true);
+  const navigate = useNavigate();
   
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -29,6 +31,9 @@ const REGULATION = ({ theme, toggle }) => {
         setLoading(false);
       } catch (error) {
         console.error("Error Fetching Regulation data");
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
         setLoading(true);
       }
     }
@@ -79,11 +84,22 @@ if (!isOnline) {
                 <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Regulation {reg.year}</h2>
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
-                    <li key={idx}>
-                      <a href={UrlParser(link.pdf_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drka font-[Poppins]">
-                        {link.name}
+                  <li key={idx}>
+                    {link?.pdf_path ? (
+                      <a
+                        href={UrlParser(link?.pdf_path)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="dark:text-drka font-[Poppins] hover:underline text-blue-600"
+                      >
+                        {link?.name}
                       </a>
-                    </li>
+                    ) : (
+                      <span className="text-text datk:text-drkt font-[Poppins]">
+                        {link?.name}
+                      </span>
+                    )}
+                  </li>
                   ))}
                 </ul>
               </div>

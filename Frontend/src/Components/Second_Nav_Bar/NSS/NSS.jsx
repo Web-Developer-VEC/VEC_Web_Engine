@@ -10,14 +10,16 @@ import CarouselNSS from "./Couroselnss";
 import Awardsrec from "./AwardsRecognition";
 import NotificationBox from "./NewsUpdates";
 import LoadComp from "../../LoadComp"
+import { useNavigate } from "react-router";
 
-const NSS = () => {
+const NSS = ({ toggle, theme}) => {
   const [nssData, setNssData] = useState(null);
   const [nss, setNss] = useState("About NSS");
+  const navigate = useNavigate();
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    useEffect(() => {
+  useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
 
@@ -45,7 +47,10 @@ const NSS = () => {
             )
             setNssData(response.data.data)
         } catch (error) {
-            console.error("Error fetching data:", error.message)
+          console.error("Error fetching data:", error.message);
+           if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
     }
     fetchData()
@@ -76,6 +81,7 @@ const NSS = () => {
         backgroundImage="./Banners/NSS.webp"
         headerText="NATIONAL SERVICE SCHEME (NSS)"
         subHeaderText="NOT ME BUT YOU."
+        toggle={toggle} theme={theme}
       />
       <SideNav sts={nss} setSts={setNss} navData={navData} cls={""} />
     </main>

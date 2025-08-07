@@ -8,12 +8,27 @@ import LoadComp from '../../LoadComp'
 import { useEffect } from 'react'
 import IQauge from './igauge'
 import axios from 'axios'
-
-
+import { useLocation, useNavigate } from "react-router";
+  
 const Accredation = ({toggle,theme}) => {
 
+    const location = useLocation();
     const [naac,setNaac] = useState("NAAC");
     const [accdata, setAccData] = useState(null);
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (location.state?.section) {
+        setNaac(location.state?.section);
+      }
+    }, [location.state]);
+
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // or 'auto' for instant scroll
+      });
+    }, [naac]);
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -31,12 +46,14 @@ const Accredation = ({toggle,theme}) => {
           )
 
           const data = response.data.data;
-          console.log("Acc",data);
 
           setAccData(data);
           
         } catch (error) {
           console.error("Error Fetching Accredation Data",error);
+            if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
         }
       }
       fetchData();
@@ -64,8 +81,6 @@ const Accredation = ({toggle,theme}) => {
         };
     }, []);
 
-
-
     if (!isOnline) {
         return (
           <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -88,7 +103,6 @@ const Accredation = ({toggle,theme}) => {
     </div>
   </>
 }
-
 
 
 export default Accredation

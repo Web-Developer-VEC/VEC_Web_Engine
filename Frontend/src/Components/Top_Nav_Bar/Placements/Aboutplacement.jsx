@@ -3,10 +3,12 @@ import "./Aboutplacement.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Aboutplacement = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [placementData, setPlacementData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +24,9 @@ const Aboutplacement = ({ theme, toggle }) => {
         
       } catch (error) {
         console.error("error fetching Placement Data",error);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     }
     fetchData();
@@ -65,9 +70,9 @@ if (!isOnline) {
           <div className="AP-card bg-drkt dark:bg-drkb border-l-4 border-secd dark:border-drks">
             <h2 className="AP-card-title title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">Training & Placement Department</h2>
             <p className="AP-card-text font-[poppins]">
-            {placementData?.Training_Placement_Department[0]}<br />
-            {placementData?.Training_Placement_Department[1]}<br />
-            {placementData?.Training_Placement_Department[2]}
+            {placementData?.Training_Placement_Department?.[0]}<br />
+            {placementData?.Training_Placement_Department?.[1]}<br />
+            {placementData?.Training_Placement_Department?.[2]}
             </p>
           </div>
         </section>
@@ -94,7 +99,7 @@ if (!isOnline) {
                 <h2 className="AP-card-title title text-brwn dark:text-drkt border-b-2 border-secd font-[poppins] dark:border-drks">Contact Placement Cell</h2> <br />
                 <h3 className="AP-contact-name font-[poppins] ">Head of Placement and Training</h3> <br />
                 <p><strong>✉️Email:</strong><a href={`mailto:${placementData?.email}`} className="text-text font-[poppins] dark:text-drkt">{" "}{placementData?.email}</a></p> <br />
-                <p><strong>📞Phone:</strong> <a href={`tel:${placementData?.phone[0]}`} className="text-text font-[poppins] dark:text-drkt">{" "}{placementData?.phone[0]}</a> / <a href={`tel:${placementData?.phone[1]}`} className="text-text font-[poppins] dark:text-drkt">{placementData?.phone[1]}</a></p>
+                <p><strong>📞Phone:</strong> <a href={`tel:${placementData?.phone?.[0]}`} className="text-text font-[poppins] dark:text-drkt">{" "}{placementData?.phone?.[0]}</a> / <a href={`tel:${placementData?.phone?.[1]}`} className="text-text font-[poppins] dark:text-drkt">{placementData?.phone?.[1]}</a></p>
               </div>
             </section>
         </section>

@@ -22,9 +22,14 @@ export default function Gallerydetails() {
   }, [location.state]);
 
   // Separate videos and images
-  const videos = imagePaths.filter(imagePaths => imagePaths.includes("youtube.com") || imagePaths.includes("youtu.be"));
-  const images = imagePaths.filter(imagePaths =>
-    /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(imagePaths) || (!imagePaths.includes("youtube"))
+  const videos = imagePaths.filter(path =>
+    path.includes("youtube.com") || path.includes("youtu.be")
+  );
+
+  const images = imagePaths.filter(path =>
+    /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(path) &&
+    !path.includes("youtube.com") &&
+    !path.includes("youtu.be")
   );
   
   const getYouTubeEmbedUrl = (url) => {

@@ -1,29 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 export default function EnquiryWeb() {
   const [err_page, setPage] = useState("");
   const [err_sub, setErrSub] = useState("");
   const [err_descrp, setErrDescrp] = useState("");
   const [loading,setLoading] = useState(false);
-  const [message,setMessage] = useState(null)
+  const [message,setMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const enquiryData = {
-      err_page,
-      err_sub,
-      err_descrp,
-    };
-
-  // const errorDescriptions = {
-  //   page_load: "The page failed to load. Please check your network or try again later.",
-  //   form_submit: "Form submission failed. Ensure all fields are correctly filled.",
-  //   login_problem: "Trouble logging in. Please verify your credentials or reset your password.",
-  //   api_error: "API failed to fetch data. Possibly due to server downtime or configuration issues.",
-  //   js_error: "A JavaScript error prevented interaction. Try refreshing or checking browser console.",
-  //   page_error: "A general page error occurred. Please report this with additional info.",
-  // };
 
   try {
     setLoading(true);
@@ -53,6 +42,9 @@ export default function EnquiryWeb() {
     }
   } catch (error) {
     console.error("Feedback submission error:", error);
+     if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        } 
     setMessage("❌ Failed to connect to the server.");
   } finally {
     setLoading(false);

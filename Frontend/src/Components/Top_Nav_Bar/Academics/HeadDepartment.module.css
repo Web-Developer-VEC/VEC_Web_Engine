@@ -54,7 +54,6 @@
   .header {
     position: relative;
     width: 100%; /* Ensure header takes full width of the screen */
-    height: 25vh; /* Or use your desired height */
   }
 
   .fullWidthImage {
@@ -377,7 +376,7 @@
     }
 
     .header {
-      height: 20vh;
+      /* height: 20vh; */
       
     }
 

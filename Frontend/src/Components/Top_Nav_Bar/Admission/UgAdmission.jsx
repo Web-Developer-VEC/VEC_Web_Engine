@@ -4,11 +4,15 @@ import "./UgAdmission.css";
 import {FaLink} from "react-icons/fa";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
+import { useNavigate } from "react-router";
+
 
 const UgAdmission = ({theme, toggle}) => {
   const [ugData, setUgData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const navigate = useNavigate();
+ 
 
   const ug = ugData?.UG || []; 
   const ug_lateral = ugData?.UG_Lateral || [];
@@ -33,6 +37,9 @@ const UgAdmission = ({theme, toggle}) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(true);
+        if (error.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message}})
+        }
       }
     };
     fetchData();
@@ -78,10 +85,10 @@ if (!isOnline) {
             const [courseName, courseDetails] = Object.entries(item)[0];
             return (
               <tr key={rowIndex} className="bg-prim dark:bg-text">
-                <td className="text-start">{courseName}</td>
-                <td className="font-light">{courseDetails["Government Quota Intakes"]}</td>
-                <td className="font-light">{courseDetails["Management Quota Intakes"]}</td>
-                <td className="font-light">{courseDetails["Total Intakes"]}</td>
+                <td className="text-start text-center">{courseName}</td>
+                <td className="font-light text-center">{courseDetails["Government Quota Intakes"]}</td>
+                <td className="font-light text-center">{courseDetails["Management Quota Intakes"]}</td>
+                <td className="font-light text-center">{courseDetails["Total Intakes"]}</td>
               </tr>
             );
           })}

@@ -4,11 +4,13 @@ import Banner from '../../Banner';
 import './Trust.css'
 import LoadComp from '../../LoadComp';
 import axios from 'axios';
+import { useNavigate } from "react-router";
+  
 
 const NewTrust = ({theme, toggle}) => {
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+  const navigate = useNavigate();
   const [AbtTrustData, setAbtTrustData] = useState(null);
 
   useEffect(() => {
@@ -22,6 +24,9 @@ const NewTrust = ({theme, toggle}) => {
               
             } catch (error) {
               console.error("Error fetching about us data",error);
+              if (error.response.data.status === 429) {
+                navigate('/ratelimit', { state: { msg: error.response.data.message}})
+                }
             }
           }
           fetchData();
@@ -125,7 +130,7 @@ const NewTrust = ({theme, toggle}) => {
             <div className="text-center">
               <h2 className="text-[24px] font-bold text-accn dark:text-drkt mb-6">The Management</h2>
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
+            <div className="grid xl:grid-cols-3 md:grid-cols-1 gap-10 justify-evenly">
               {/* {managementTeam.map((person, index) => ( */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}

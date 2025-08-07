@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
 import axios from 'axios';
+import { useNavigate } from "react-router";
 
 const Princ = ({theme, toggle}) => {
   const [data, setData] = useState(null); // State to store fetched data
@@ -16,6 +17,7 @@ const Princ = ({theme, toggle}) => {
   const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from the API
@@ -33,7 +35,10 @@ const Princ = ({theme, toggle}) => {
       } catch (err) {
         setError(err.message);
         console.error("Error fetching the Principal data",err);
-        
+        console.log("Rate",err.response.data);
+        if (err.response.data.status === 429) {
+          navigate('/ratelimit', { state: { msg: err.response.data.message}})
+        }
         setLoading(true);
       }
     };
