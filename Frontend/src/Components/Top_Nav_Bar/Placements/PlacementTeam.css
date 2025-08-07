@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* justify-content: center; */
   width: 90%;
   align-items: center;
@@ -140,8 +140,8 @@ body {
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   .person-image {
-    width: 180px;
-    height: 180px;
+    width: 300px;
+    height: 190px;
   }
 
   .person-content h2 {
@@ -230,8 +230,8 @@ body {
   }
 
   .person-image {
-    width: 160px;
-    height: 160px;
+    width: 190px;
+    height: 300px;
   }
 
   .person-content {
