@@ -9,7 +9,7 @@ const titleMap = {
   "/trust": "Velammal Educational Trust",
   "/handbook": "Handbook - VEC",
   "/v_m": "VEC Vision & Mission",
-  "/management": "Management VEc",
+  "/management": "Management VEC",
   "/principal": "Principal VEC",
   "/dean": "Dean VEC ",
   "/admin": "Administration VEC",
