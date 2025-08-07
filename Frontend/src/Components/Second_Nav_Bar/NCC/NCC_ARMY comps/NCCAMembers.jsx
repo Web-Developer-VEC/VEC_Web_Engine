@@ -42,7 +42,7 @@ function NCCAMembers({data}) {
           </div>
         </div>
         
-        <h2 className="yrc-h3 text-brwn dark:text-drkt">
+        <h2 className="yrc-h3 text-brwn dark:text-drkt text-center">
             STUDENT COORDINATORS
         <div className="yrc-underline3"></div>
         </h2>

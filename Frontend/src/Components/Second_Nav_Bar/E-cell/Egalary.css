@@ -35,3 +35,24 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 1024px) {
+  /* Tablet and medium screens */
+  .gallery-images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mobile phones */
+  .gallery-images {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large desktops */
+  .gallery-images {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
