@@ -16,7 +16,7 @@ const InfoHostel = ({ hostelData }) => {
 
   return (
     <div className="infohostel-container bg-prim dark:bg-drkp">
-      <h1 className="infohostel-title text-brwn dark:text-drkt">{data.category}</h1>
+      <h1 className="infohostel-title text-brwn dark:text-drkt capitalize">{data.category}</h1>
 
       <section className="HI-grid">
         {data.content.map((item, index) => (
@@ -24,7 +24,7 @@ const InfoHostel = ({ hostelData }) => {
             key={index}
             className="HI-card bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks"
           >
-            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks">
+            <h2 className="HI-card-title text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks capitalize">
               {item.section}
             </h2>
             <p className="HI-card-text text-text dark:text-drkt">
@@ -38,7 +38,7 @@ const InfoHostel = ({ hostelData }) => {
       </section>
 
       <section className="food-timetable">
-        <h2 className="infohostel-title text-brwn dark:text-drkt">{data2.category}</h2>
+        <h2 className="infohostel-title text-brwn dark:text-drkt capitalize">{data2.category}</h2>
 
 
         <table className="food-table">
