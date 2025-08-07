@@ -8,13 +8,27 @@ import LoadComp from '../../LoadComp'
 import { useEffect } from 'react'
 import IQauge from './igauge'
 import axios from 'axios'
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
   
 const Accredation = ({toggle,theme}) => {
 
+    const location = useLocation();
     const [naac,setNaac] = useState("NAAC");
     const [accdata, setAccData] = useState(null);
     const navigate = useNavigate();
+    useEffect(() => {
+      if (location.state?.section) {
+        setNaac(location.state?.section);
+      }
+    }, [location.state]);
+
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // or 'auto' for instant scroll
+      });
+    }, [naac]);
+
 
     useEffect(() => {
       const fetchData = async () => {

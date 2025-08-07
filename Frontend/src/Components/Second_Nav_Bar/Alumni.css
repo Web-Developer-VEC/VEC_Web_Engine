@@ -22,7 +22,7 @@
     
     padding: 25px; /* Increased padding for a spacious feel */
     /*border-left: 12px solid #fdb515; !* Slightly wider yellow border for prominence *!*/
-    border-radius: 0 12px 12px 0; /* Larger radius for a softer look */
+    border-radius: 12px 12px 12px 12px; /* Larger radius for a softer look */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
     position: relative;
    
@@ -102,7 +102,7 @@ h2{
         min-width: 100%;
         padding: 15px; /* Reduced padding on mobile */
         /*border-left: 10px solid #fdb515; !* Slightly smaller border on mobile *!*/
-        border-radius: 0 8px 8px 0; /* Smaller radius on mobile */
+        border-radius: 8px 8px 8px 8px; /* Smaller radius on mobile */
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Reduced shadow on mobile */
         
     }
