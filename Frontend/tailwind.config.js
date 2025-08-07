@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: 'class',
     content: [
         "./src/**/*.{js,jsx,ts,tsx}",
     ],
@@ -128,6 +129,13 @@ module.exports = {
                 }
             },
         },
+        screens: {
+            sm: '640px',
+            md: '768px',
+            lg: '1200px',
+            xl: '1400px', // change from default 1280px
+            '2xl':'1536px',
+        } 
     },
     plugins: [],
 }
