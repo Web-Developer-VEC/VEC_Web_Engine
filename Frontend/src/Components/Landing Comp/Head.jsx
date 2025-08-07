@@ -12,7 +12,6 @@ import Fcbk from '../Assets/facebook.png'
 import Twtr from '../Assets/twitter.png'
 import Lknd from '../Assets/linkedin.png'
 import logo from '../Assets/NEWLOGO.png'
-import { sup } from 'framer-motion/m';
 
 const Head = () => {
     const navigate = useNavigate();
@@ -243,12 +242,15 @@ const Head = () => {
                                     <ChevronDownIcon
                                         className='size-[1.3vmax] mb-1 ml-1 inline text-text dark:text-drkt'></ChevronDownIcon>
                                 </p>
-                                <div className={`grid grid-flow-row content-center rounded-lg outline 
-                                    group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
-                                        right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit ${nvt.cols > 1 ? 'min-w-[55vw]' : 'w-max'} outline-offset-2
-                                        group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
-                                        duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkts`}
-                                     style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
+                                <div className={`grid grid-flow-row content-center rounded-lg outline outline-offset-2
+                                    group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent
+                                    ${nvt.cols > 1 ? 'min-w-[55vw]' : 'w-max'}
+                                    right-0 top-10 z-[500] absolute
+                                    group-hover/nav:[clip-path:polygon(-2%_-2%,102%_-2%,102%_102%,-2%_102%)]
+                                    [clip-path:polygon(0_0,100%_0,100%_0,0_0)]
+                                    duration-500 ease-in transition-[th]
+                                    bg-prim dark:bg-drkts`}
+                                    style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
                                         <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
                                             <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
@@ -352,7 +354,7 @@ const Head = () => {
                             {socls.map((socl, i) => (
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}
-                                        className="w-fit h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
+                                        className="h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
                                                     mt-1 text-transparent"
                                         style={{ animationDelay: `${i * 1.9}s` }} />
                                 </a>
