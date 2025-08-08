@@ -112,20 +112,21 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
     return (
         <div className='landing-banner'>
             <div className="flex h-[30vh] md:h-[25vh] lg:h-[65vh] top-[15vmax] bg-center relative justify-items-stretch bg-transparent
-                w-[100vw] pointer-events-auto">
+                w-[100vw] pointer-events-auto ">
                 <video
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef} id='BgVid'
                     playsInline>
                     <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
                 </video>
-                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] lg:bottom-[35%] xl:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto"
+                <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] lg:bottom-[35%] xl:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto "
                     ref={containerRef}
                 >
                     <button onClick={() => window.location.href = `tel:${ph}`}   onWheel={(e) => {
                             e.stopPropagation();
                             e.preventDefault(); // This is what actually blocks scrolling
                         }}
+
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
                         bg-[position:0%_100%] text-[1lvh] lg:text-lg text-text dark:text-white bg-gradient-to-l from-secd
