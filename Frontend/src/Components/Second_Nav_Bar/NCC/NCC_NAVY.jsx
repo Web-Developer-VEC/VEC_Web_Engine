@@ -22,7 +22,7 @@ function NCCAbout({data}) {
             >
               About NCC
             </h2>
-            <ul className="NCC_NAVY-list">
+            <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
               {data?.map((item,i) => (
               <>
                 {item?.about_us?.map((content,i) => (
@@ -84,7 +84,7 @@ function NCCAim({data}) {
                 />
                 AIM of NCC
               </h2>
-              <p className="NCC_NAVY-aimcontent">
+              <p className=" Ncc_Army-list marker:text-accn dark:marker:text-drka">  {/* NCC_NAVY-aimcontent */}
                 {data?.map((item,i) => (
                   <>
                     {item?.aim?.map((content,i) => (

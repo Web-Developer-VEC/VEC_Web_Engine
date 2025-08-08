@@ -33,6 +33,13 @@
     align-items: center;
     justify-content: space-between;
 }
+.FCP-content-container-1 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
 
 /* Text container */
 .FCP-text-container {
@@ -77,6 +84,9 @@
 .FCP-ceo-section .FCP-content-container {
     gap: 12px; /* Reduce spacing */
 }
+.FCP-ceo-section .FCP-content-container-1 {
+    gap: 12px; /* Reduce spacing */
+}
 
 /* Heading 2 tag styling */
 h2 {
@@ -93,6 +103,10 @@ h2 {
         flex-direction: column;
         align-items: center;
     }
+    .FCP-content-container-1 {
+        flex-direction: column;
+        align-items: center;
+    }
 
     .FCP-image-container {
         width: 80%;
@@ -106,6 +120,9 @@ h2 {
 
     /* Reverse order for founder section on tablets and below */
     .FCP-founder-section .FCP-content-container {
+        flex-direction: column-reverse;
+    }
+    .FCP-founder-section .FCP-content-container-1 {
         flex-direction: column-reverse;
     }
 }
@@ -142,11 +159,32 @@ h2 {
     .FCP-founder-section .FCP-content-container {
         flex-direction: column-reverse;
     }
+    .FCP-founder-section .FCP-content-container-1 {
+        flex-direction: column-reverse;
+    }
+
+     .FCP-image-container1 img {
+        width: 40%;
+        margin:auto;
+        align-items: center;
+        max-width: 250px; /* Adjust size as needed */
+        height: auto;
+    }
+     .FCP-image-container img {
+        width: 40%;
+        margin:auto;
+        align-items: center;
+        max-width: 250px; /* Adjust size as needed */
+        height: auto;
+    }
 }
 
 /* Landscape mode adjustments */
 @media (max-width: 1024px) and (orientation: landscape) {
     .FCP-content-container {
+        flex-direction: row;
+    }
+    .FCP-content-container-1 {
         flex-direction: row;
     }
 
@@ -160,8 +198,16 @@ h2 {
     }
 
     .FCP-image-container img {
-        width: 50%; /* Ensure images scale */
+        width: 100%; /* Ensure images scale */
         max-height: 250px; /* Control image height on landscape mode */
+    }
+    .FCP-image-container1{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .FCP-image-container1 img{
+        width: 40%;
     }
 }
 
@@ -206,27 +252,7 @@ h2 {
         align-items: center;
         text-align: center;
     }
-
-    .FCP-image-container1 {
-        order: -1; /* Moves the image above the text */
-        margin-bottom: 15px;
-    }
-
-    .FCP-text-container {
-        width: 100%;
-    }
-
-    .FCP-image-container1 img {
-        width: 50%;
-        margin:auto;
-        align-items: center;
-        max-width: 250px; /* Adjust size as needed */
-        height: auto;
-    }
-}
-
-@media (max-width: 1024px) {
-    .FCP-content-container {
+    .FCP-content-container-1 {
         display: flex;
         /* flex-direction: column; */
         align-items: center;
@@ -250,3 +276,54 @@ h2 {
         height: auto;
     }
 }
+
+@media (max-width: 1024px) {
+
+    .FCP-content-container {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        text-align: center;
+    }
+    .FCP-content-container-1 {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+
+    .FCP-image-container1 {
+        order: -1; /* Moves the image above the text */
+        margin-bottom: 15px;
+    }
+
+    .FCP-text-container {
+        width: 100%;
+    }
+
+    .FCP-image-container1 img {
+        width: 100%;
+        margin:auto;
+        align-items: center;
+        max-width: 300px; /* Adjust size as needed */
+        height: auto;
+    }
+}
+
+/* for mac 13 pro non retina */
+@media screen and (width: 1440px) {
+    .FCP-image-container1  {
+        width: 400px;
+        max-width: 400px; /* Adjust size as needed */
+        height: auto;
+    }   
+
+     .FCP-image-container{
+        width: 400px;
+        margin:auto;
+        align-items: center;
+        max-width: 400px; /* Adjust size as needed */
+        height: auto;
+    }
+}
+

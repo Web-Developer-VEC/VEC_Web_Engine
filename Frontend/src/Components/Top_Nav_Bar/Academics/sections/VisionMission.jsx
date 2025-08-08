@@ -110,7 +110,7 @@ const VisionMission = ({ data }) => {
               
               {data?.program_educational_outcomes?.headings?.map((heading, index) => (
                 <div className="POE accordion-item-cir bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg"key={index}>
-                  <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
+                  <h2 className="accordion-header text-left pl-2 pt-4" id={`psosHeading${index}`}>
                       {heading}
                   </h2>
                   <div className={`accordion-body show`}>
@@ -133,7 +133,7 @@ const VisionMission = ({ data }) => {
               <div className="accordion">
                 {data?.program_outcomes?.headings?.map((heading, index) => (
                   <div className="POE accordion-item-cir text-text dark:text-drkt bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
-                    <h2 className="accordion-header text-left p-4">
+                    <h2 className="accordion-header text-left pl-2 pt-4">
                         {heading}
                     </h2>
                     <div className={`accordion-body text-text dark:text-drkt show`}>
@@ -152,7 +152,7 @@ const VisionMission = ({ data }) => {
             <div className="accordion" id="psosAccordion">
               {data?.program_specific_outcomes?.headings?.map((heading, index) => (
                 <div className="POE accordion-item-cir bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg" key={index}>
-                  <h2 className="accordion-header text-left p-4" id={`psosHeading${index}`}>
+                  <h2 className="accordion-header text-left pl-2 pt-4" id={`psosHeading${index}`}>
                       {heading}
                   </h2>
                   <div className={`accordion-body show`}>
