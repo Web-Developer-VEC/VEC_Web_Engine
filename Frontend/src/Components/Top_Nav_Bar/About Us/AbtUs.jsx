@@ -91,7 +91,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                                 
                                 <p className='text-[32px] text-center font-[Poppins]'>{secTtl}</p>
-                                <p className='text-[24px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
+                                <p className='text-[24px] font-bold text-accn dark:text-drkt  text-center font-[Poppins]'>{secSub}</p>
                                 <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                             </div>
                             
@@ -169,28 +169,28 @@ const AbtUs = ({ theme, toggle }) => {
                     {/* ))} */}
 
                     <div className='m-2 p-2 font-[Poppins]'>
-                        <ul className='pdf-links grid grid-cols-2 justify-items-start items-center text-left w-full md:grid-cols-1 md:flex flex-wrap justify-center gap-8' >
-                            <li className='text-am md:text-[16px] flex items-center gap-2 '>
-                                <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[0])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Approval</a>
-                            </li>
-                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
-                                <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[1])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗University Affiliation</a>
-                            </li>
-                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
-                                <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[2])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Governing Body</a>
-                            </li>
-                            <li className='text-sm md:text-[16px] flex items-center gap-2'>
-                                <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[3])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗Mandatory Disclosures</a>
-                            </li>
-                             <li className='text-sm md:text-[16px] flex items-center gap-2'>
-                                <FaLink className='text-prim dark:text-drkp' />
-                                <a href={UrlParser(AbtUsData?.links[4])} target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-drka hover:underline'>🔗AICTE Feedback</a>
-                            </li>
-                        </ul>
+                       <div className='pdf-links grid grid-cols-1 md:grid-cols-1 md:flex flex-wrap justify-center gap-6 w-fit mx-auto text-left'>
+                        {[
+                            "AICTE Approval",
+                            "University Affiliation",
+                            "Governing Body",
+                            "Mandatory Disclosures",
+                            "AICTE Feedback"
+                        ].map((label, index) => (
+                            <div
+                            key={index}
+                            onClick={() => {
+                                const url = AbtUsData?.links[index];
+                                window.open(UrlParser(url), "_blank");
+                            }}
+                            className=' cursor-pointer  md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text-drka hover:text-drkt'
+                            >
+                           {label}
+                        </div>
+                        ))}
+                        </div>
+
+
                     </div>
                  </>
             ) : (
