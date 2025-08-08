@@ -13,6 +13,7 @@ export default function EnquiryWeb() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
   try {
     setLoading(true);
     const response = await fetch("/api/main-backend/submit_feedback", {

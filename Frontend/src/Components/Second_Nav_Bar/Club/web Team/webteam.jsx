@@ -70,7 +70,9 @@ const ProfileCard = ({ member }) => {
           {/* Circular Image */}
           <div className="relative w-28 h-28 md:w-32 md:h-32">
             <img
+
               src={UrlParser(member?.image)}
+
               alt={member?.name}
               className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-md transition-transform duration-500 group-hover:scale-105 dark:brightness-75"
             />
@@ -78,7 +80,7 @@ const ProfileCard = ({ member }) => {
 
           {/* Member Info */}
           <div className="text-center space-y-2">
-        
+
             <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-blue-300 group-hover:text-brwn dark:group-hover:text-blue-400 transition-colors duration-300">
               {member?.name}
             </h3>
@@ -104,6 +106,7 @@ const ProfileCard = ({ member }) => {
 }
 
 function WebUI({ title, data }) {
+
   let des, members, staff
   if (data) {
     des = data[0]?.content

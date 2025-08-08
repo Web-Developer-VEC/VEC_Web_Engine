@@ -111,7 +111,7 @@ const AlumniSlider1 = ({data}) => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center space-x-2 mt-4">
+        <div className="flex justify-center space-x-2 mt-4 mb-4">
           {data?.map((_, index) => (
             <button
               key={index}

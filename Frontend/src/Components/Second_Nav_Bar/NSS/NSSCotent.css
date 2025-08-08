@@ -35,14 +35,14 @@
   }
   
   /* Paragraph Text */
-  .nss-text {
-    font-size: 16px;
+  /* .nss-text { */
+    /* font-size: 16px; */
     /*color: #444;*/
-    line-height: 1.7;
-    margin-bottom: 10px;
-    font-family:  'Poppins', sans-serif;
+    /* line-height: 1.7; */
+    /* margin-bottom: 10px; */
+    /* font-family:  'Poppins', sans-serif; */
 
-  }
+  /* } */
   
   /* Highlighted Text */
   .nss-highlight {
@@ -58,7 +58,6 @@
     font-size: 16px;
     line-height: 1.7;
     font-family:  'Poppins', sans-serif;
-
   }
   
   /* Responsive */

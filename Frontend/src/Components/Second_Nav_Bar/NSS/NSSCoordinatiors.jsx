@@ -24,7 +24,7 @@ const Coordinators = ({data}) => {
             <div className="w-[360px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center gap-6 bg-gray-20 rounded-xl shadow-md p-6 mb-10 w-[500px] mx-auto dark:bg-text">
+          <div className="nss-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4">
             <div className="flex-shrink-0">
               <img
                 src={parseUrl(coor?.image_path)}
