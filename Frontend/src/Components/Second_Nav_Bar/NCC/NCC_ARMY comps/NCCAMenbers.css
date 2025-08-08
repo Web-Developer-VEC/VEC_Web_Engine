@@ -5,6 +5,15 @@
     font-family: Arial, sans-serif;
 }
 
+.ncca-coordinators-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .membersarmy-h2 {
     font-size: 24px;
     font-weight: bold;

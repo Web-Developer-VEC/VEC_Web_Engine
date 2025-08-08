@@ -4,14 +4,16 @@ Coordinators Section
   text-align: center;
   margin: 50px auto;
 }
+
 .nss-member-card-1{
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight:bolder;
   display: flex;
   align-items: center;
   padding: 30px;
   gap: 20px;
-  width: 700px;
+  width: 400px;
   margin: 20px 20px;
   margin-top: 20px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;

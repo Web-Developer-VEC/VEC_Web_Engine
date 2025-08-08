@@ -42,7 +42,7 @@ const CarouselNSS = ({ data }) => {
     <div className="carouselnss-container">
       {/* Title with underline */}
       <h2 className="events-title uppercase text-brwn dark:text-drkt">Events</h2>
-      <div className="w-[100px] h-0.5 bg-[#eab308] mx-auto mb-10 mt-1 rounded"></div>
+      <div className="w-[60px] h-0.5 bg-[#eab308] mx-auto mb-10 mt-1 rounded"></div>
 
       <Swiper
         ref={swiperRef}
