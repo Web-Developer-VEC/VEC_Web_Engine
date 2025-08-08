@@ -37,67 +37,67 @@
       {
         "department_name": "Automobile Engineering",
         "dept": "AUTO",
-        "banner_image": "002.mp4",
+        "banner_image": "002.webm",
         "redirect_url": "/dept/002"
       },
       {
         "department_name": "Civil Engineering",
         "dept": "CIVIL",
-        "banner_image": "004.mp4",
+        "banner_image": "004.webm",
         "redirect_url": "/dept/004"
       },
       {
         "department_name": "Computer Science and Engineering",
         "dept": "CSE",
-        "banner_image": "005.mp4",
+        "banner_image": "005.webm",
         "redirect_url": "/dept/005"
       },
       {
         "department_name": "Computer Science and Engineering (CYBER SECURITY)",
         "dept": "CSE-CS",
-        "banner_image": "006.mp4",
+        "banner_image": "006.webm",
         "redirect_url": "/dept/006"
       },
       {
         "department_name": "Electrical & Electronics Engineering",
         "dept": "EEE",
-        "banner_image": "007.mp4",
+        "banner_image": "007.webm",
         "redirect_url": "/dept/007"
       },
       {
         "department_name": "Electronics and Communication Engineering",
         "dept": "ECE",
-        "banner_image": "009.mp4",
+        "banner_image": "009.webm",
         "redirect_url": "/dept/009"
       },
       {
         "department_name": "Electronics & Instrumentation Engineering",
         "dept": "EIE",
-        "banner_image": "008.mp4",
+        "banner_image": "008.webm",
         "redirect_url": "/dept/008"
       },
       {
         "department_name": "Mechancial Engineering",
         "dept": "MECH",
-        "banner_image": "013.mp4",
+        "banner_image": "013.webm",
         "redirect_url": "/dept/013"
       },
       {
         "department_name": "Artificial Intelligence and Data Science",
         "dept": "AI&DS",
-        "banner_image": "001.mp4",
+        "banner_image": "001.webm",
         "redirect_url": "/dept/001"
       },
       {
         "department_name": "Information Technology",
         "dept": "IT",
-        "banner_image": "011.mp4",
+        "banner_image": "011.webm",
         "redirect_url": "/dept/011"
       },
       {
         "department_name": "Master of Business Administration",
         "dept": "MBA",
-        "banner_image": "017.mp4",
+        "banner_image": "017.webm",
         "redirect_url": "/dept/017"
       }
     ]

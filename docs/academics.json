@@ -129,7 +129,7 @@
     "type": "departments_list",
     "data": [
       {
-        "category": "PG Programmes",
+        "category": "UG Programmes",
         "content": [
           { "name": "B.E. Automobile Engineering", "link": "/dept/002" },
           { "name": "B.E. Civil Engineering", "link": "/dept/004" },

@@ -33,6 +33,12 @@
         "designation": "Soft Skills Trainer",
         "qualification": "M.S.Psychology",
         "photo_path": "/static/images/placement_members/deepa_rajesh.webp"
+      },
+      {
+        "name": "CHANDARPRENA",
+        "designation": "Aptitude Trainer",
+        "qualification": "M.S.Psychology",
+        "photo_path": "/static/images/placement_members/chandarprena.webp"
       }
     ]
   },

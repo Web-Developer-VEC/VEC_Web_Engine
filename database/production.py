@@ -556,13 +556,6 @@ def insert_student_activities_data():
     
     print("Student documents inserted successfully.\n")
 
-def insert_support_staff_data():
-    collection = db['support_staffs'] 
-    with open("/VEC_Web_Engine/docs/support_staffs.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-    
-    print("Support staffs documents inserted successfully.\n")
 
 def insert_MOUs_data():
     collection = db['MOUs']
@@ -813,7 +806,6 @@ insert_department_data()
 insert_hod_datas()
 insert_infrastructure_data()
 insert_student_activities_data()
-insert_support_staff_data()
 insert_MOUs_data()
 insert_sidebar_details()
 insert_iic_sections()

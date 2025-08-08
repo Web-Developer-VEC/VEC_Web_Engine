@@ -3,7 +3,7 @@
     "dept_id": "001",
     "department_name": "Artificial Intelligence and Data Science (AI&DS)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -19,7 +19,7 @@
     "dept_id": "002",
     "department_name": "Automobile Engineering (AUTO)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -34,7 +34,7 @@
     "dept_id": "003",
     "department_name": "Chemistry ",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023"],
       "pdf_path": ["/static/pdfs/curriculum/003/reg_23.pdf"]
     }]
@@ -43,7 +43,7 @@
     "dept_id": "004",
     "department_name": "Civil Engineering",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -59,7 +59,7 @@
     "department_name": "Computer Science & Engineering (CSE) ",
     "regulation": [
       {
-        "head": "Curriculum & Syllabus - UG",
+        "name": "Curriculum & Syllabus - UG",
         "year" :[
 
         "R - 2019 A (Students admitted during 2021 and 2022)",
@@ -72,7 +72,7 @@
 
       },
       {
-        "head": "Curriculum & Syllabus - PG",
+        "name": "Curriculum & Syllabus - PG",
         "year" :[
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -88,7 +88,7 @@
     "dept_id": "006",
     "department_name": "Computer Science and Engineering (CYBER SECURITY)   ",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023"],
       "pdf_path": ["/static/pdfs/curriculum/006/reg_23.pdf"]
     }]
@@ -97,7 +97,7 @@
     "dept_id": "007",
     "department_name": "Electrical & Electronics Engineering  (EEE)",
     "regulation": [{
-      "head":"Curriculum & Syllabus - UG",
+      "name":"Curriculum & Syllabus - UG",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "head":"Curriculum & Syllabus - PG",
+      "name":"Curriculum & Syllabus - PG",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -124,7 +124,7 @@
     "dept_id": "008",
     "department_name": "Electronics & Instrumentation Engineering (EIE)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -139,7 +139,7 @@
     "dept_id": "009",
     "department_name": "Electronics and Communication Engineering (ECE)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -162,7 +162,7 @@
     "dept_id": "011",
     "department_name": "Information Technology (IT)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -185,7 +185,7 @@
     "dept_id": "013",
     "department_name": "Mechancial Engineering (MECH)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -200,7 +200,7 @@
     "dept_id": "014",
     "department_name": "Tamil",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023 (I)", "R - 2023 (II)"],
       "pdf_path": [
         "/static/pdfs/curriculum/014/reg_23_1.pdf",
@@ -212,7 +212,7 @@
     "dept_id": "015",
     "department_name": "Physics",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 1st semester",
         "R - 2023 for electronics engineer",
@@ -233,7 +233,7 @@
     "dept_id": "017",
     "department_name": "Master of Business Administration (MBA)",
     "regulation": [{
-      "head":"Curriculum & Syllabus",
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"

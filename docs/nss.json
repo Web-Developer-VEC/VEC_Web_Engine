@@ -44,6 +44,11 @@
         "image_path": "/static/images/nss/event/republic day.webp"
       },
       {
+        "title": "Ignite'24",
+        "date": "20th November 2024",
+        "image_path": "/static/images/nss/event/ignite24.webp"
+      },
+      {
         "title": "Vigilance Rally",
         "date": "29th October 2024",
         "image_path": "/static/images/nss/event/rally.webp"
@@ -87,7 +92,7 @@
         "category": "faculty_coordinater",
         "members": [
           {
-            "name": "Dr. KARTHICK R",
+            "name": "Dr. KARTHIK R",
             "designation": "Programme Officer",
             "image_path": "/static/images/nss/1.webp",
             "message": ""
@@ -98,57 +103,57 @@
         "category": "student_coordinater",
         "members": [
           {
-            "name": "KAVIAYA SHREE",
+            "name": "KAVIYASHREE S K",
             "designation": "GCO & Mech & Auto coordinator",
             "image_path": "/static/images/nss/2.webp"
           },
           {
-            "name": "LALITH KANAN",
+            "name": "LALITH KANNAN M",
             "designation": "VCO & CSE coordinator",
             "image_path": "/static/images/nss/3.webp"
           },
           {
-            "name": "VINOTH KUMAR",
+            "name": "VINOTH M",
             "designation": "ECE coordinator",
             "image_path": "/static/images/nss/4.webp"
           },
           {
-            "name": "DAYANITHA",
+            "name": "DAYANITHA S R",
             "designation": "IT coordinator",
             "image_path": "/static/images/nss/5.webp"
           },
           {
-            "name": "SANJAY KUMAR",
+            "name": "SANJAI KUMAR G",
             "designation": "Civil, Cyber, EIE department coordinator",
             "image_path": "/static/images/nss/6.webp"
           },
           {
-            "name": "SUBASHINI",
+            "name": "SUBASHINI G",
             "designation": "EEE coordinator",
             "image_path": "/static/images/nss/7.webp"
           },
           {
-            "name": "RAHUL KUMARARAN",
+            "name": "RAHUL KUMARAN R",
             "designation": "AI&DS coordinator",
             "image_path": "/static/images/nss/8.webp"
           },
           {
-            "name": "SHARAVANTH KUMAR",
+            "name": "SHRAVANTH KUMAR V",
             "designation": "Poster Team Head",
             "image_path": "/static/images/nss/9.webp"
           },
           {
-            "name": "SWEDHA",
+            "name": "SWEDHA P S",
             "designation": "Newsletter Team Head",
             "image_path": "/static/images/nss/10.webp"
           },
           {
-            "name": "MUKESH",
+            "name": "MUKESH M",
             "designation": "Technical Team Head",
             "image_path": "/static/images/nss/11.webp"
           },
           {
-            "name": "MONOVA DANIEL",
+            "name": "MONOVA DANIEL J",
             "designation": "Website & Camera Handling Team Head",
             "image_path": "/static/images/nss/12.webp"
           }
