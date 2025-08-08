@@ -19,10 +19,10 @@ const Coordinators = ({data}) => {
       {stud?.length > 0 && coor ? (
         <div className="p-6">
           {/* Faculty Coordinator */}
-          <h2 className="text-1xl md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-4">
+          <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-1">
             FACULTY COORDINATOR
-            <div className="w-[360px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
           </h2>
+
 
           <div className="nss-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4">
             <div className="flex-shrink-0">
@@ -33,18 +33,19 @@ const Coordinators = ({data}) => {
               />
             </div>
 
-            <div className="text-center md:text-left">
-              <h3 className="text-xl">{coor?.name}</h3>
-              <p className="text-sm text-brwn dark:text-drka">
+            <div className="text-center md:text-left ">
+              <h3 className="text-text dark:text-drkt text-xl font-semibold">
+                {coor?.name}
+              </h3>
+              <p className="text- center text-sm text-brwn dark:text-drka">
                 {coor?.designation}
               </p>
             </div>
           </div>
 
           {/* Student Coordinators */}
-          <h2 className="text-xl md:text-2xl font-bold text-center text-brwn dark:text-drkt uppercase mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-center text-brwn dark:text-drkt uppercase mb-1">
             STUDENT COORDINATORS
-            <div className="w-[300px] h-0.5 bg-[#eab308] mx-auto mt-1 rounded"></div>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">

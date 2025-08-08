@@ -262,7 +262,7 @@ const Awardsnss = ({ data }) => {
                   <img
                     src={UrlParser(item?.image_path)}
                     alt={item?.title}
-                    className="w-full h-80 object-cover rounded-t-lg"
+                    className="w-full h-80 md:h-96 object-cover rounded-t-lg mx-auto"
                   />
                   <div className="p-4 text-center rounded-b-lg text-justify">
                     <p className="text-lg font-semibold text-text dark:text-drkt">
@@ -337,19 +337,18 @@ const Awardsnss = ({ data }) => {
       {coor?.name && Array.isArray(stud) && stud.length > 0 ? (
         <div className="yrc-coordinators-container flex flex-col items-center px-4">
           {/* Faculty Coordinator */}
-          <h2 className="yrc-h2 text-brwn dark:text-drkt text-center mt-6">
+          <h2 className="text-lg md:text-4xl font-bold text-center text-brwn dark:text-drkt capitalize mb-1">
             FACULTY COORDINATOR
-            <div className="yrc-underline2 mx-auto mt-1 w-[300px] h-[2px] bg-yellow-400 rounded"></div>
           </h2>
 
-          <div className="yrc-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4">
+          <div className="yrc-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6">
             <img
               src={UrlParser(coor?.image_path)}
               alt={coor?.name}
               className="yrc-member-image1 w-32 h-32 object-cover rounded border"
             />
-            <div className="yrc-member-info1 text-center md:text-left">
-              <h3 className="text-text dark:text-drkt text-xl font-semibold">
+            <div className="yrc-member-info1 md:text-left">
+              <h3 className="text-text dark:text-drkt text-xl ">
                 {coor?.name}
               </h3>
               <span className="yrc-platoon text-brwn dark:text-drka">
@@ -359,12 +358,11 @@ const Awardsnss = ({ data }) => {
           </div>
 
           {/* Student Coordinators */}
-          <h2 className="yrc-h3 text-brwn dark:text-drkt text-center mt-10">
+          <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-1">
             STUDENT COORDINATORS
-            <div className="yrc-underline3 mx-auto mt-1 w-[300px] h-[2px] bg-yellow-400 rounded"></div>
           </h2>
 
-          <div className="yrc-members-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+          <div className="yrc-members-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 mb-2">
             {stud.map((student, i) => (
               <div key={i} className="yrc-member-card dark:bg-text p-4 rounded shadow text-center">
                 <img

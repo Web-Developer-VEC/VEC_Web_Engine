@@ -31,8 +31,8 @@ const SportsActionPlan = () => {
     <section className="sports-action-plan dark:bg-drkb">
       <div className="section-header">
         <h2 className="text-accn dark:text-drkt">Our Action Plan</h2>
-        <div className="w-fit px-4 sm:ml-5">
-          <ul className="text-justify text-text dark:text-drkt marker:text-text dark:marker:text-drks">
+        <div className="w-fit sm:ml-5">
+          <ul className="text-base md:text-text text-left dark:text-drkt marker:text-text dark:marker:text-drks">
             <li className='text-text dark:text-drkt'>
               Our Department give effective training for the students to develop their physical fitness.
             </li>
@@ -80,7 +80,7 @@ const SportsActionPlan = () => {
           <h3 className="text-brwn dark:text-drkt border-b-2 border-[#FDCC03] dark:border-drks w-fit pb-1">
             Facilities & Achievements
           </h3>
-          <ul className="text-justify">
+          <ul className="text-left text-sm md:text-xl text-justify">
             {actionData?.facilities?.map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}
