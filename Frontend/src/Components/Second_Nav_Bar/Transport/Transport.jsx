@@ -62,20 +62,20 @@ const Transport = ({ theme, toggle }) => {
         <div style={{ paddingBottom: "40px"
             // backgroundColor: "#f8f9fa"
         }}>
-       <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px]">
+       <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px] font-[poppins]">
             <Transportvideo/>
             <Toggle toggle={toggle} theme={theme}
                 attr="absolute top-[10%] lg:top-[1%] left-[0.3%] lg:left-[0.3%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
                 rounded-br-xl"/>
-            <div class="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded">VEC Transport Facilities</div>
+            <div class="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded font-[poppins]">VEC Transport Facilities</div>
         </div>
             
-            <div>
+            <div className="font-[poppins]">
                 {transportData?.[0]?.route && ( <PDF pdfRoute={transportData[0].route} /> )}
             </div>
             
             {/* Styled Transport Facilities Paragraph */}
-            <div className="transport-wrapper" style={{
+            <div className="transport-wrapper font-[poppins]" style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center"
@@ -100,7 +100,7 @@ const Transport = ({ theme, toggle }) => {
                     }}>
                         TRANSPORT FACILITIES
                     </h2>
-                    <p>
+                    <p >
                         Our college provides top-notch transport facilities with a fleet of renowned and brand-new buses, ensuring safe, comfortable, and efficient travel for students and staff.  
                         The buses are well-maintained, air-conditioned, and equipped with modern amenities. Covering multiple routes across the city and nearby areas, our transport system guarantees punctuality and convenience.  
                         With experienced drivers and regular maintenance checks, we prioritize the safety and ease of commuting for all.
