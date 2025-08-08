@@ -34,7 +34,7 @@ const CurriculumPage = ({ data }) => {
             <div className="col-md-6">
               {data?.regulation?.map((req,i) => (
                 <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={i}>
-                  <h2 className="text-start-car">{req?.name}</h2>
+                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">{req?.name}</h2>
       
                   {/* Regulation Rows */}
                   {req?.year?.map((year, index) => (
