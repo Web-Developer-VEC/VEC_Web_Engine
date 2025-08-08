@@ -1,7 +1,7 @@
 [
   {
     "dept_id": "001",
-    "dept_name": "Artificial Intelligence and Data Science",
+    "department_name": "Artificial Intelligence and Data Science",
     "2022 - 2023": [
       {
         "name": "Book",
@@ -84,11 +84,11 @@
 
   {
     "dept_id": "005",
-    "dept_name": "Computer Science and Engineering",
+    "department_name": "Computer Science and Engineering",
     "2022 - 2023": [
       {
         "name": "Internship",
-        "pdf_path": "/static/pdfs/research/005/2223/internship.pdf"
+        "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
         "name": "Conference Consolidation",

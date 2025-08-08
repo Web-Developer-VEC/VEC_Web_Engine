@@ -175,36 +175,37 @@
         "Management Quota Intakes": "60",
         "Total Intakes": "120"
       },
-      "MBA_Management_link": "/static/pdfs/admission/MQ-MBA-2025.pdf"
+      "MBA_Management_link": "/static/pdfs/admission/MQ-MBA-2025.pdf",
+      "MBA_Government_link": "/static/pdfs/admission/GQ-MBA-2025.pdf"
     }
   },
   {
     "type": "admission_team",
     "data": [
       {
-        "name": "Mrs. SHEEBA K",
-        "designation": "senior Student admission councellor",
-        "photo_path": "/static/images/admin_office/Sheeba.webp"
+        "name": "Mrs. SHEEBA JOSEPH",
+        "designation": "Senior Student Admission Counselor",
+        "photo_path": "/static/images/admission_team/Sheeba_joseph.webp"
       },
       {
         "name": "Mrs. JENEFER ASHA JEYARANI M",
-        "designation": "Student Admission Counseller",
-        "photo_path": "/static/images/admin_office/Jenefer.webp"
+        "designation": "Student Admission Counselor",
+        "photo_path": "/static/images/admission_team/Jenefer.webp"
       },
       {
         "name": "Ms. SRIVIDHYA C",
-        "designation": "Admission councellor",
-        "photo_path": "/static/images/admin_office/Srividhya.webp"
+        "designation": "Admission Co-Ordinator",
+        "photo_path": "/static/images/admission_team/Srividhya.webp"
+      },
+      {
+        "name": "Mrs. Muthulakshmi",
+        "designation": "Admission Co-Ordinator",
+        "photo_path": "/static/images/admission_team/Muthulakshmi.webp"
       },
       {
         "name": "Mrs. NIVETHITHA N",
         "designation": "Office Co-Ordinator",
-        "photo_path": "/static/images/admin_office/Nivethitha.webp"
-      },
-      {
-        "name": "Mrs. Muthulakshmi",
-        "designation": "Office Co-Ordinator",
-        "photo_path": "/static/images/admin_office/Muthulakshmi.webp"
+        "photo_path": "/static/images/admission_team/Nivethitha.webp"
       }
     ]
   },

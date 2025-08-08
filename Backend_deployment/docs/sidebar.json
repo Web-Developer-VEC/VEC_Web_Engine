@@ -76,7 +76,7 @@
       { "id": "StudentAchievments", "hascontent": true },
       { "id": "Infrastructure", "hascontent": true },
       { "id": "Mous", "hascontent": false },
-      { "id": "Research", "hascontent": false }
+      { "id": "Research", "hascontent": true }
     ]
   },
 

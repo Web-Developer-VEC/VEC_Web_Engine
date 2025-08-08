@@ -2,7 +2,8 @@
   {
     "dept_id": "001",
     "department_name": "Artificial Intelligence and Data Science (AI&DS)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -12,11 +13,13 @@
         "/static/pdfs/curriculum/001/reg_23.pdf"
       ]
     }
+  ]
   },
   {
     "dept_id": "002",
     "department_name": "Automobile Engineering (AUTO)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -25,20 +28,22 @@
         "/static/pdfs/curriculum/002/reg_21.pdf",
         "/static/pdfs/curriculum/002/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "003",
     "department_name": "Chemistry ",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023"],
       "pdf_path": ["/static/pdfs/curriculum/003/reg_23.pdf"]
-    }
+    }]
   },
   {
     "dept_id": "004",
     "department_name": "Civil Engineering",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -47,13 +52,16 @@
         "/static/pdfs/curriculum/004/reg_21.pdf",
         "/static/pdfs/curriculum/004/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "005",
     "department_name": "Computer Science & Engineering (CSE) ",
-    "regulation": {
-      "year": [
+    "regulation": [
+      {
+        "name": "Curriculum & Syllabus - UG",
+        "year" :[
+
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
       ],
@@ -61,20 +69,35 @@
         "/static/pdfs/curriculum/005/reg_21.pdf",
         "/static/pdfs/curriculum/005/reg_23.pdf"
       ]
-    }
-  },
+
+      },
+      {
+        "name": "Curriculum & Syllabus - PG",
+        "year" :[
+        "R - 2019 A (Students admitted during 2021 and 2022)",
+        "R - 2023"
+      ],
+      "pdf_path": [
+        "/static/pdfs/curriculum/005/pg_reg_21.pdf",
+        "/static/pdfs/curriculum/005/pg_reg_23.pdf"
+      ]
+      }
+   ]
+},
   {
     "dept_id": "006",
     "department_name": "Computer Science and Engineering (CYBER SECURITY)   ",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023"],
       "pdf_path": ["/static/pdfs/curriculum/006/reg_23.pdf"]
-    }
+    }]
   },
   {
     "dept_id": "007",
     "department_name": "Electrical & Electronics Engineering  (EEE)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus - UG",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -83,12 +106,25 @@
         "/static/pdfs/curriculum/007/reg_21.pdf",
         "/static/pdfs/curriculum/007/reg_23.pdf"
       ]
+    },
+    {
+      "name":"Curriculum & Syllabus - PG",
+      "year": [
+        "R - 2019 A (Students admitted during 2021 and 2022)",
+        "R - 2023"
+      ],
+      "pdf_path": [
+        "/static/pdfs/curriculum/007/pg_reg_21.pdf",
+        "/static/pdfs/curriculum/007/pg_reg_23.pdf"
+      ]
     }
+  ]
   },
   {
     "dept_id": "008",
     "department_name": "Electronics & Instrumentation Engineering (EIE)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -97,12 +133,13 @@
         "/static/pdfs/curriculum/008/reg_21.pdf",
         "/static/pdfs/curriculum/008/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "009",
     "department_name": "Electronics and Communication Engineering (ECE)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -111,7 +148,7 @@
         "/static/pdfs/curriculum/009/reg_21.pdf",
         "/static/pdfs/curriculum/009/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "010",
@@ -124,7 +161,8 @@
   {
     "dept_id": "011",
     "department_name": "Information Technology (IT)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -133,7 +171,7 @@
         "/static/pdfs/curriculum/011/reg_19_2.pdf",
         "/static/pdfs/curriculum/011/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "012",
@@ -146,7 +184,8 @@
   {
     "dept_id": "013",
     "department_name": "Mechancial Engineering (MECH)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -155,23 +194,25 @@
         "/static/pdfs/curriculum/013/reg_21.pdf",
         "/static/pdfs/curriculum/013/reg_23.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "014",
     "department_name": "Tamil",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": ["R - 2023 (I)", "R - 2023 (II)"],
       "pdf_path": [
         "/static/pdfs/curriculum/014/reg_23_1.pdf",
         "/static/pdfs/curriculum/014/reg_23_2.pdf"
       ]
-    }
+    }]
   },
   {
     "dept_id": "015",
     "department_name": "Physics",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 1st semester",
         "R - 2023 for electronics engineer",
@@ -186,26 +227,13 @@
         "/static/pdfs/curriculum/015/reg_civil_engineers.pdf",
         "/static/pdfs/curriculum/015/reg_computer_engineers.pdf"
       ]
-    }
-  },
-  {
-    "dept_id": "016",
-    "department_name": "M.E Computer Science Engineering",
-    "regulation": {
-      "year": [
-        "R - 2019 A (Students admitted during 2021 and 2022)",
-        "R - 2023"
-      ],
-      "pdf_path": [
-        "/static/pdfs/curriculum/016/me_cse_21.pdf",
-        "/static/pdfs/curriculum/016/me_cse_23.pdf"
-      ]
-    }
+    }]
   },
   {
     "dept_id": "017",
     "department_name": "Master of Business Administration (MBA)",
-    "regulation": {
+    "regulation": [{
+      "name":"Curriculum & Syllabus",
       "year": [
         "R - 2019 A (Students admitted during 2021 and 2022)",
         "R - 2023"
@@ -214,20 +242,6 @@
         "/static/pdfs/curriculum/017/mba_21.pdf",
         "/static/pdfs/curriculum/017/mba_23.pdf"
       ]
-    }
-  },
-  {
-    "dept_id": "018",
-    "department_name": "M.E Power Systems",
-    "regulation": {
-      "year": [
-        "R - 2019 A (Students admitted during 2021 and 2022)",
-        "R - 2023"
-      ],
-      "pdf_path": [
-        "/static/pdfs/curriculum/018/power_21.pdf",
-        "/static/pdfs/curriculum/018/power_23.pdf"
-      ]
-    }
+    }]
   }
 ]
