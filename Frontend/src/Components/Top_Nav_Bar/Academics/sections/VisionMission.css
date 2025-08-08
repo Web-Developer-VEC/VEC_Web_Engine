@@ -38,7 +38,6 @@ body {
   }
 
   .accordion-body.show {
-    margin-top: 0.5rem;
     text-align: left;
   }
 
@@ -466,9 +465,6 @@ body {
 
   .grid-container{
     width: 85vw;
-  }
-  .accordion-body.show {
-    margin-top: 0.5%;
   }
 }
 
