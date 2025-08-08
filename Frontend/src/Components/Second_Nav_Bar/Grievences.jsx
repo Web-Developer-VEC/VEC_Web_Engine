@@ -140,7 +140,7 @@ const GrievanceForm = ({ theme, toggle }) => {
         />
       </div>
 
-      <div className="flex justify-center p-6">
+      <div className="flex justify-center p-6 font-[poppins]">
         <div className="w-full bg-prim dark:bg-drkts py-12 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
             {/* Left side: heading + illustration */}

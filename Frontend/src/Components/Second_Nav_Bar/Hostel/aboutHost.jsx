@@ -21,7 +21,7 @@ import LoadComp from "../../LoadComp";
         <section className="about-hostel w-full max-w-7xl mx-auto p-4">
           <h2 className="about-hostel-heading text-center text-3xl font-bold mb-4 text-brwn dark:text-drkt">About Our Hostel</h2>
 
-          <div className="hostel-abt-container flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="hostel-abt-container flex flex-col md:flex-row items-center justify-center gap-6 font-[poppins]">
             <p className="hostel-about-para text-justify border-l-4 border-secd dark:border-drks p-4 rounded-md md:w-1/2 w-full dark:bg-drkb">
               {data?.about_us}
             </p>

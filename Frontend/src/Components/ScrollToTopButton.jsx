@@ -36,7 +36,7 @@ const ScrollToTopButton = () => {
         <button
           onClick={scrollToTop}
           className="
-            fixed bottom-6 right-6 z-[9999]
+            fixed bottom-6 right-6 z-[99]
             p-3 rounded-full
             bg-prim dark:bg-drkp border-1 border-prim text-orange-500
             shadow-md hover:shadow-xl
