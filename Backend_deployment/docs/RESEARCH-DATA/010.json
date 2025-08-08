@@ -1,0 +1,246 @@
+{  
+    "dept_id":"010",
+    "department_name": "English ",
+    "data":
+    [
+    {
+        "year": "2023-24",
+        "docs": [
+           
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Ms. S.SUGAPRIYA",
+                        "Title of the Paper": "SENSE OF BELONGING AND AFFINITY IN ROHINTON MISTRY’S FAMILY MATTERS",
+                        "Scopus/ SCI": "UGC",
+                        "Name of the Journal": "RABINDRA BHARATI JOURNAL OF PHILOSOPHY",
+                        "Month and Year of publication": "July 2023",
+                        "ISSN": "ISSN : 0973-0087",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1Dwwd11dOFVDXXros6cvCEOAMhoTPJTek/view?usp=drive_link"
+
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr. M. Vinothkumar",
+                        "Title of the Paper": "A Study of Techno- Nationalism, an Emerging Trend in the 21st Century India",
+                        "Scopus/ SCI": "UGC",
+                        "Name of the Journal": "International Journal of Humanities and Education Development",
+                        "Month and Year of publication": "Jan 2024",
+                        "ISSN": "2581-8651",
+                        "Doi": "https://doi.org/10.22161/jhed.6.1.5",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1-e3xkiqD8hg4W8kA6_5O7PFdyPWeq1WO/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr. M. Vinothkumar",
+                        "Title of the Paper": "An Analysis on Domestic Violence, Depression and Surge of Anger During the COVID-19 Outbreak in India",
+                        "Scopus/ SCI": "UGC",
+                        "Name of the Journal": "International Journal of English Literature and Social Sciences",
+                        "Month and Year of publication": "Jan 2024",
+                        "ISSN": "2456-7620",
+                        "Doi": "https://dx.doi.org/10.22161/ijels.91.8",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1kytzFW3Z2WGHA2_kv0TnTyL8YC0nsPb7/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Mr. A. Balaji",
+                        "Title of the Paper": "The Cultual and Religious Melieu in Gita Mehta's Raj",
+                        "Scopus/ SCI": "UGC",
+                        "Name of the Journal": "Aadhunik Sahitya",
+                        "Month and Year of publication": "Dec 2023",
+                        "ISSN": "2277-7083",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Ms. S.SUGAPRIYA",
+                        "Title of the Paper": "The Survivors of Old Age in Chitra Baneerjee Divaharuni's 'Mrs. Dutta Writes a Letter' from The Unknown Errors of Our Lives",
+                        "Scopus/ SCI": "UGC",
+                        "Name of the Journal": "Mukt Shabd Journal",
+                        "Month and Year of publication": "Dec 2023",
+                        "ISSN": "2347-3150",
+                        "Doi": "10.0014.MSJ.2023",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of all journal papers link": null
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Ms.S.Sugaprriya",
+                        "Book/Chapter Title": "Exploring the Role of Self-Motivation in Second Language Acquisition: A Task-Based Learning Perspective",
+                        "Name of Publisher": "Innovation Online Training Academy",
+                        "ISBN Details": "978-93-93622-70-9",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Mr.A.Balaji",
+                        "Book/Chapter Title": "Evolving Concepts: Language ad Literature",
+                        "Name of Publisher": "Innovation Online Training Academy",
+                        "ISBN Details": "978-93-93622-70-9",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": null
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": "Ms. S. Sugapriya",
+                        "Title of the Paper": "The Autumn of Our Lives: The Portrayal of Old Age in Indian Silver Literature",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature ",
+                        "Type of Conference National / Inter national": "International conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": "Mr. A.Balaji",
+                        "Title of the Paper": "Silent Voices, Bold Truths: Gita Mehta’s Novels and the Reimagined Image of Indian Womanhood",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International Conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN ",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": "Ms. J. Latha",
+                        "Title of the Paper": "Mataphor of Escape and Healing in selected novels of Toni Morrison",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International Conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": "Dr. M. Vinothkumar",
+                        "Title of the Paper": "A Semiotic Reading of the Novel and Analysis of Icon, Index, and Symbol, in Water by Ashokamithran",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International Conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/12NXxoXrXmFvLUUwtkMdOeegsKqt3BMvd/view?usp=drive_link"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of faculty": "Mr. V. Anand",
+                        "Title of the Paper": "A Man of Resilience: A Critical Study On Mahesh Elkunchwar's Play “An Actor Exits",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International Conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": "Ms. G. M. Archana",
+                        "Title of the Paper": "Cultural Clash and Identity in Kamala Markandeya's novel Nector and the seive",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International Conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": "Mr. Kirubakaran Amalraj",
+                        "Title of the Paper": "Unveiling the Ecological Crisis in Margaret Atwood's Surfacing",
+                        "Name of Conference": "Cultural Diverssity and Social Reality in Contemporary Literature",
+                        "Type of Conference National / Inter national": "International conference",
+                        "Organizer": "Department of English, Thiruvalluvar University, Vellore, TN",
+                        "Attach E-Copy of Prceeding": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "year": "2024-25",
+        "docs": [
+             {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Ms.G. M. Archana",
+                        "Title of the Paper": "Self- Help Books and their Importance in Today's World: The Key to Success",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other":"Scopus",
+                        "Name of the Journal":"African Journal of Bio Medical Research",
+                        "Month and Year of publication":"Nov 2024",
+                        "ISSN":"5792-5796",
+                        "Doi":"https://doi.org/10.53555/AJBR.v273S.3427",
+                        "Colloboration Institute":"No",
+                        "Colloboration agreement Yes / No":"No",
+                        " E copy of journal papers google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Mrs. J.LATHA",
+                        "Title of the Paper": "TRAUMA OF SLAVERY: AN INDELIBLE MARK ON THE ERA IN TONI MORRISON’S BELOVED AND A MERCY",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "UGC",
+                        "Name of the Journal": "Indian Literature Sahitya Akademi Bimonthly Journal",
+                        "Month and Year of publication": "Dec 2024",
+                        "ISSN": "0019-5804",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Ms.G. M. Archana",
+                        "Title of the Paper": "STRESS MANAGEMENT, WORK AND FAMILY BALANCE - RIGHT APPROACHES TO TACKLE FAMILY LIFE AND WORK",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "International Peer Reviewed",
+                        "Name of the Journal": "International Journal of Interdisciplinary Research in Arts and Humanities",
+                        "Month and Year of publication": "Dec 2024",
+                        "ISSN": "2456-3145",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        " E copy of journal papers google drive link":null
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Ms.S.Sugaprriya",
+                        "Book/Chapter Title": "Exploring the Role of Self-Motivation in Second Language Acquisition: A Task-Based Learning Perspective",
+                        "Name of Publisher": "Innovation Online Training Academy",
+                        "ISBN Details": "978-93-93622-70-9",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Mr.A.Balaji",
+                        "Book/Chapter Title": "Evolving Concepts: Language ad Literature",
+                        "Name of Publisher": "Innovation Online Training Academy",
+                        "ISBN Details": "978-93-93622-70-9",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "E copy of Book front page google drive link": null
+                    }
+                ]
+            }
+        ]
+    }]
+}
+           

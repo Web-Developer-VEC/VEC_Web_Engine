@@ -1,0 +1,32 @@
+[{
+    "dept_id": "008",
+    "department_name": "Electronics & Instrumentation Engineering (EIE)",
+    "MOUs": [
+      {
+        "S_NO": 1,
+        "ORGANISATION_NAME": "SREE TECHNOLOGIES",
+        "MONTH_AND_YEAR": "",
+        "VALIDITY": "Life Time",
+        "LOGO_PATH": "",
+        "PDF_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 2,
+        "ORGANISATION_NAME": "ENSOLT PRIVATE LIMITED",
+        "MONTH_AND_YEAR": "",
+        "VALIDITY": "Life Time",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 3,
+        "ORGANISATION_NAME": "YASHIKA INDUSTRIES",
+        "MONTH_AND_YEAR": "",
+        "VALIDITY": "Life Time",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }
+    ]
+  }
+  ]

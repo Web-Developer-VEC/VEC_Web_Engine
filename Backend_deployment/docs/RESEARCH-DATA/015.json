@@ -1,0 +1,747 @@
+{  
+    "dept_id":"015",
+    "department_name": "Physics",
+    "data":
+    [
+        {
+            "year": "2021-22",
+            "docs": [
+                {
+                    "JOURNAL_PUBLICATIONS": [
+                        {
+                            "S.No": 1,
+                            "Name of the Author(s)": "Dr. S. Shahil Kirupavathy",
+                            "Title of the Paper": "Investigations on the capacitive behaviour of hydrothermally synthesised cadmium meta niobate incorporated reduced graphene oxide hybrid nanocomposite electrode material",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Journal of Materials Science: Materials in Electronics",
+                            "Month and Year of publication": "04-Jan-22",
+                            "ISSN": "1573-482X",
+                            "Doi": "https://doi.org/10.1007/s10854-021-07450-9",
+                            "Colloboration Institute": "Nil",
+                            "Colloboration agreement Yes / No": "No",
+                            "Attach E copy of all journal papers link": null,
+                            "Journal Proof": null
+                        },
+                        {
+                            "S.No": 2,
+                            "Name of the Author(s)": "Dr. S. Shahil Kirupavathy",
+                            "Title of the Paper": "Structure, hirshfeld surface studies, optical and mechanical analysis on a third-order nonlinear optical crystal 2-amino-6-methylpyridin-1-ium 2-chloro-4-nitrobenzoate (2A6M2C4N)",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Optical Materials",
+                            "Month and Year of publication": "30 October 2021",
+                            "ISSN": "1873-1252",
+                            "Doi": "https://doi.org/10.1016/j.optmat.2021.111731",
+                            "Colloboration Institute": "Nil",
+                            "Colloboration agreement Yes / No": "No",
+                            "Attach E copy of all journal papers link": null,
+                            "Journal Proof": null
+                        },
+                        {
+                            "S.No": 3,
+                            "Name of the Author(s)": "Dr. S. Shahil Kirupavathy",
+                            "Title of the Paper": "Growth and characterisation of a third order nonlinear optical crystal 4-Dimethylamino pyridinium p-bromophenolate",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Journal of molecular structure",
+                            "Month and Year of publication": "12-Aug-21",
+                            "ISSN": "0022-2860",
+                            "Doi": "https://doi.org/10.1016/j.molstruc.2020.129078",
+                            "Colloboration Institute": "nil",
+                            "Colloboration agreement Yes / No": "nil",
+                            "Attach E copy of all journal papers link": null,
+                            "Journal Proof": "https://www.sciencedirect.com/science/article/abs/pii/S0022286020314009"
+                        },
+                        {
+                            "S.No": 4,
+                            "Name of the Author(s)": "Dr. J. Arumugam",
+                            "Title of the Paper": "Improved Ag doped Bi2S3 nanowire-based photodiode: fabrication and performance",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Materials Letters",
+                            "Month and Year of publication": "01-Nov-21",
+                            "ISSN": "0167-577X",
+                            "Doi": "https://doi.org/10.1016/j.matlet.2021.130403",
+                            "Colloboration Institute": "Nil",
+                            "Colloboration agreement Yes / No": "No",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/13r6yMyYVqDGauXy9FWmCs84NzIojPBXH/view?usp=sharing",
+                            "Journal Proof": "https://www.sciencedirect.com/science/article/abs/pii/S0167577X21011009"
+                        },
+                        {
+                            "S.No": 5,
+                            "Name of the Author(s)": "Dr. J. Arumugam",
+                            "Title of the Paper": "Role of surfactant in tailoring the properties of Bi2S3 nanoparticles for photocatalytic degradation of methylene blue dye",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Journal of Materials Science: Materials in Electronics",
+                            "Month and Year of publication": "13-Oct-21",
+                            "ISSN": "1573-482X",
+                            "Doi": "https://doi.org/10.1007/s10854-021-07007-w",
+                            "Colloboration Institute": "Nil",
+                            "Colloboration agreement Yes / No": "no",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1u0dGjULU1BduB4hrGHxzEFWZ0-pQxly8/view?usp=sharing",
+                            "Journal Proof": "https://link.springer.com/article/10.1007/s10854-021-07007-w"
+                        },
+                        {
+                            "S.No": 6,
+                            "Name of the Author(s)": "Dr. J. Arumugam",
+                            "Title of the Paper": "Exploring and fine tuning the properties of one dimensional Bi2S3 nanorods",
+                            "Scopus/ SCI": "SCI",
+                            "Name of the Journal": "Journal of Alloys and Compounds",
+                            "Month and Year of publication": "14-Jan-22",
+                            "ISSN": "0925-8388",
+                            "Doi": "https://doi.org/10.1016/j.jallcom.2022.163785",
+                            "Colloboration Institute": "Nil",
+                            "Colloboration agreement Yes / No": "No",
+                            "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1kVgY2WfxRp3DzO0dDC-f0moA1sMx-CBb/view?usp=sharing",
+                            "Journal Proof": "https://www.sciencedirect.com/science/article/abs/pii/S0925838822001761"
+                        }
+                    ]
+                }
+            ]
+        },
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr. V. Ramesh Kumar, Dr. J. Arumugam",
+                        "Title of the Proposal": "Nature inspired Solar panel",
+                        "Name of Funding Agency": "DST-IEDC",
+                        "Amount in Lakhs": "2,50,000",
+                        "Project Duration in Yrs": "1 year",
+                        "Date of Submission": "11.06.22",
+                        "Current Status": "Ongoing",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of sanctioned letter": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr. S. Shahil Kirupavathy(P.I), Dr. T. A. Revathy (Co-P.I)",
+                        "Title of the Proposal": "Design and fabrication of rGO encapsulated nanostructured fastcharging supercapacitor for e-vehicle application",
+                        "Name of Funding Agency": "DST-SERB-CRG",
+                        "Amount in Lakhs": "30,61,052",
+                        "Project Duration in Yrs": "3 Years",
+                        "Date of Submission": "20.3.2023",
+                        "Current Status": "preliminary scrutiny",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of sanctioned letter": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Dr. V. Ramesh Kumar(P.I)",
+                        "Title of the Proposal": "Investigation on nonlinear excitations in Bose-Einstein condensates via electromagnetically induced transparency",
+                        "Name of Funding Agency": "DST-SERB-CRG",
+                        "Amount in Lakhs": "21,52,366",
+                        "Project Duration in Yrs": "3 Years",
+                        "Date of Submission": "13.3.2023",
+                        "Current Status": "preliminary scrutiny",
+                        "Colloboration Institute": "-",
+                        "Colloboration agreement Yes / No": "-",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1PsrkhEF5oEs9Wsrc4_Uzj1hYVJK6iACC/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": "Dr. V. Ramesh Kumar(Co-P.I)",
+                        "Title of the Proposal": "Self Charging Power storage system",
+                        "Name of Funding Agency": "DST-SERB-CRG",
+                        "Amount in Lakhs": "29,00,000",
+                        "Project Duration in Yrs": "3 Years",
+                        "Date of Submission": "13.3.2023",
+                        "Current Status": "Review",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Faculty": "Dr. T. A. Revathy (P.I), Dr. S. Shahil Kirupavathy(Co-P.I)",
+                        "Title of the Proposal": "Design strategies on noble metal free heterogeneous catalyst for PEM fuel cell",
+                        "Name of Funding Agency": "CSIR -Aspire",
+                        "Amount in Lakhs": "35,00,000",
+                        "Project Duration in Yrs": "3 years",
+                        "Date of Submission": "29-04-2023",
+                        "Current Status": "submitted",
+                        "Colloboration Institute": "NO",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Faculty": "Dr. J. Arumugam",
+                        "Title of the Proposal": "Development of Carbon-Based Perovskite Solar Cells Utilizing Rare Earth Doped MAPbX₃ Perovskite",
+                        "Name of Funding Agency": "DSR-SERB-EEQ",
+                        "Amount in Lakhs": "49,74,477",
+                        "Project Duration in Yrs": "3 Years",
+                        "Date of Submission": "30-Jun-2022",
+                        "Current Status": "submitted",
+                        "Colloboration Institute": "No",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": null
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "V. Ramesh Kumar",
+                        "Title of the Paper": "Bright and dark soliton of probe and couple laser beam in an electromagnetically induced transparency",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Physics Letter A",
+                        "Month and Year of publication": "June 2022",
+                        "ISSN": "0375-9601",
+                        "Doi": "https://doi.org/10.1016/j.physleta.2022.128280",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1uo3RVu_iJYvd7MPIxBhxx0w6CjDisfre/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr. S. shahil Kirupavathy",
+                        "Title of the Paper": "Synthesis, growth, structure, experimental and theoretical characterisation on a novel second order nonlinear optical single crystal: Piperidin-1-ium 2-chloro-4-nitrobenzoate (P2CNB)",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Materials Science : Materials Electronics",
+                        "Month and Year of publication": "March 23",
+                        "ISSN": "0957-4522",
+                        "Doi": "https://doi.org/10.1007/s10854-023-10209-z",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of all journal papers link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Dr. S. shahil Kirupavathy",
+                        "Title of the Paper": "Synthesis, crystal growth, thermal, density functional theory, linear and nonlinear optical properties of 3-Aminopyridinium-2-chloro-4-nitrobenzoate single crystal",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Molecular Structure",
+                        "Month and Year of publication": "accepted for publication",
+                        "ISSN": null,
+                        "Doi": "https://doi.org/10.1016/j.molstruc.2023.135696",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/file/d/1O_ogxFSNn7wyhTnWTxNBWA7lsu1-cXZX/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Dr. T. A. Revathy",
+                        "Title of the Paper": "Carbonaceous nanocomposites Decorated with of Pd-Co alloy as catalyst for Hydrogen Evolution Reaction",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of alloys and Compound",
+                        "Month and Year of publication": "Submitted",
+                        "ISSN": "0925-8388",
+                        "Doi": null,
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of all journal papers link": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Dr. V.Ramesh Kumar",
+                        "Title of the Paper": "Nonautonomous solitons in an inhomogenous electromagnetically induced transparency",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Physics Letter A",
+                        "Month and Year of publication": "Submitted",
+                        "ISSN": "0375-9601",
+                        "Doi": null,
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of all journal papers link": null
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr. S. Shahil Kirupavathy, Dr. T. A. Revathy",
+                        "Title of the Patent": "Design of grapheme based supercapacitor hybrids",
+                        "Application Number": "382098-001",
+                        "Date of Filing": "22/03/23",
+                        "Status": "waiting for techincal examination",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of patent": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr. T. A. Revathy, Dr. S. Shahil Kirupavathy, Dr. T. Sivaranjani",
+                        "Title of the Patent": "Temperature Senstive nanosensor for fuel cell",
+                        "Application Number": "382097-001",
+                        "Date of Filing": "22/03/23",
+                        "Status": "waiting for techincal examination",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of patent": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "Dr. V. Ramesh Kumar, Dr. J. Arumugam",
+                        "Title of the Patent": "Nature Inspired solar panel",
+                        "Application Number": "388466-001",
+                        "Date of Filing": "16-06-2023",
+                        "Status": "Patent filed",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1CBR9pia-bjr77F8CfEQCx8IWmQ2ASTHp/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Faculty": "Dr. V. Ramesh Kumar, Dr. S. Shahil Kirupavathy",
+                        "Title of the Patent": "Hybrid SolarCNT loaded vertical wind turbine",
+                        "Application Number": null,
+                        "Date of Filing": null,
+                        "Status": "Under preparation for Technical patent",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "Nil",
+                        "Attach E copy of patent": null
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": "Dr. V. Ramesh Kumar",
+                        "Title of the Paper": "Hybrid solar-CNT turbine harvesting energy from solar, heat and wind",
+                        "Name of Conference": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "Type of Conference National / Inter national": "National",
+                        "Organizer": "Department of Mechanical Engineering, Velammal Engineering College (Autonomous), Chennai 66",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": "Dr. T. A. Revathy",
+                        "Title of the Paper": "Synthesis and catalytic behaviour of Graphene supported Palladium -Nickel alloy catalyst",
+                        "Name of Conference": "2nd International Virtual conference (ICMSN 23)",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "Department of Physics, St. Joseph college of Arts and science for Women",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": "Dr. J. Arumugam",
+                        "Title of the Paper": "One dimensional Bi2S3 nanorods synthesized by solvothermal approach for photocatalytic application",
+                        "Name of Conference": "2nd International Virtual conference (ICMSN 23)",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "Department of Physics, St. Joseph college of Arts and science for Women",
+                        "Attach E-Copy of Prceeding": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": "Dr. J. Arumugam",
+                        "Title of the Paper": "Effect of doping Cd and Zn on the properties of Bi2S3 nanoparticles",
+                        "Name of Conference": "International webinar on advanced nanomaterials for emerging applications (IWANEA-2023)",
+                        "Type of Conference National / Inter national": "International",
+                        "Organizer": "Department of Physics, Periyar University, Salem",
+                        "Attach E-Copy of Prceeding": null
+                    }
+                ]
+            },
+            {
+                "CONSULTANCY": []
+            },
+            {
+                "PRODUCT_DEVELOPMENT": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr. S. Shahil Kirupavathy, Dr. T. A. Revathy ",
+                        "Name of the Product": "Pd based PEM fuel cell",
+                        "Team members details": "Dr. S. Shahil Kirupavathy, Dr. T. A. Revathy, Ananth Sai sankar V, Sathiyan A R",
+                        "Demo availability status": "yes",
+                        "Funding agency/Industrial Partners": "DST- IEDC"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "year": "2023-24",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS":[
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr. J. Arumugam",
+                        "Title of the Proposal": "fabrication of europium doped solar cell",
+                        "Name of Funding Agency": "DST SERB EEQ",
+                        "Amount in Lakhs": "48,81,196",
+                        "Project Duration in Yrs": "3",
+                        "Date of Submission": "13/6/20203",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.T. A.Revathy",
+                        "Title of the Proposal": "fuel cell fabrication",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "8-7-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Dr. S.Shahil kirupavathy",
+                        "Title of the Proposal": "super capacitor",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "10-7-3023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Faculty": "Dr. V. Ramesh Kumar",
+                        "Title of the Proposal": "Solar wind turbine",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "11-7-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VCET, Madurai",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Faculty": "Dr. M. Jayachandiran",
+                        "Title of the Proposal": "Fabrication of WLEDs",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "2",
+                        "Date of Submission": "11-7-23",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Faculty": "Dr. J. Arumugam",
+                        "Title of the Proposal": "Design and development of carbon based lanthunum doped persokite Nanostructures towards solar cells application",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "11-07-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Faculty": "G. Hamsavalli",
+                        "Title of the Proposal": "Exploration of Spirobrassinin derivatives for antiproliferative activity towards lung cancer using quantum computational approach",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15 L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "10-07-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Faculty": "Moses V G Isaiah",
+                        "Title of the Proposal": "Power Electronics",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "11-07-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Faculty": "D. Anitha Jennifer",
+                        "Title of the Proposal": "sugar monitoring",
+                        "Name of Funding Agency": "MSME",
+                        "Amount in Lakhs": "15L",
+                        "Project Duration in Yrs": "1",
+                        "Date of Submission": "03-08-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Faculty": "Dr. T. A. Revathy",
+                        "Title of the Proposal": "Design of noble metal free heterogeneous catalyst for water splitting",
+                        "Name of Funding Agency": "TNSCST",
+                        "Amount in Lakhs": "5L",
+                        "Project Duration in Yrs": "2",
+                        "Date of Submission": "16.08.2023",
+                        "Current Status": "proposal submitted",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Faculty": "Dr. T. A. Revathy",
+                        "Title of the Proposal": "Design strategies on noble metal free heterogeneous catalyst for PEM fuel cell",
+                        "Name of Funding Agency": "CSIR- Aspire",
+                        "Amount in Lakhs": "17L",
+                        "Project Duration in Yrs": "3",
+                        "Date of Submission": "29-04-2023",
+                        "Current Status": "Rejected",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Faculty": "Dr. S.Shahil kirupavathy, Dr. T. A. Revathy",
+                        "Title of the Proposal": "High performance rGO encapsulated nanostructures for fast charging E-vechicle supercapacitors",
+                        "Name of Funding Agency": "cheif minister",
+                        "Amount in Lakhs": "40L",
+                        "Project Duration in Yrs": "3",
+                        "Date of Submission": "18.07.2024",
+                        "Current Status": "proposal submitted",
+                        "Colloboration Institute": "VEC",
+                        "Colloboration agreement Yes / No": null,
+                        "E copy of sanctioned letter google drive link": null,
+                        "Image": null
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "Dr. T. A. Revathy",
+                        "Title of the Paper": "Carbonaceous nanocomposites decorated with Pd-Co alloy as catalyst for hydrogen evolution reaction",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Ionics",
+                        "Month and Year of publication": "Nov 2023",
+                        "ISSN": "0947-7047",
+                        "Doi": "https://link.springer.com/article/10.1007/s11581-023-05266-7",
+                        "Colloboration Institute": "1. Department of Nuclear Physics, University of Madras, Guindy Campus, Chennai, 600025, India, 2. Department of Physics, Velammal Engineering College, Surapet, Chennai, 3.PG Department of Physics, Dwaraka Doss Goverdhan Doss Vaishnav College, Chennai, 600106, India, 4. Department of Materials Science, University of Madras, Guindy Campus, Chennai, 60002, Department of Physical Sciences, Eastern New Mexico University, Portales, NM, 88130-7400, USA",
+                        "Colloboration agreement Yes / No": "no",
+                        "E copy of journal papers google drive link": "https://link.springer.com/journal/11581",
+                        "Journal Proof": "https://drive.google.com/file/d/1IF2Do542RULkBRZb442tqS93jX5pXeds/view"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Dr.B Sivatharani",
+                        "Title of the Paper": "Plenteous stationary wave patterns for (2+ 1) dimensional fokas system",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Physica Scripta",
+                        "Month and Year of publication": "12-10-2023",
+                        "ISSN": "1402-4896",
+                        "Doi": "DOI 10.1088/1402-4896/acfea6",
+                        "Colloboration Institute": "1.KCG College of Technology, Karapakkam, Chennai—600097, Tamil Nadu, India, 2. Saveetha School of Engineering, Saveetha Institute of Medical and Technical Sciences, Thandalam, Chennai, 602105, Tamil Nadu, India, 3. Jerusalem College of Engineering, Pallikaranai, Chennai—600100, Tamil Nadu, India",
+                        "Colloboration agreement Yes / No": "no",
+                        "E copy of journal papers google drive link": "https://drive.google.com/file/d/1nC9oUWzvnyefl1KV06vvMjxgLJLW1YGw/view?usp=sharing",
+                        "Journal Proof": "https://drive.google.com/file/d/1nC9oUWzvnyefl1KV06vvMjxgLJLW1YGw/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Velammal Engineering College",
+                        "Title of the Patent": "Assembly of Fuel Cell Membrane and Methods of Synthesizing Thereof",
+                        "Application Number": "202241022256",
+                        "Date of Filing": "14th April 2022",
+                        "Status": "Published 2023",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy patent google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr. T. A. Revathy, Dr. S. Shahil Kirupavathy, Dr.T. Sivaranjani",
+                        "Title of the Patent": "Temperature-sensitive nanosensors For fuel cells",
+                        "Application Number": "382097-001",
+                        "Date of Filing": "22/03/2023",
+                        "Status": "Published",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy patent google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "Dr. S. Shahil Kirupavathy, Dr. T. A. Revathy",
+                        "Title of the Patent": "Graphene-based supercapacitor Hybrids",
+                        "Application Number": "382098-001",
+                        "Date of Filing": "22/03/2023",
+                        "Status": "Published",
+                        "Colloboration Institute": "Nil",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy patent google drive link": null
+                    }
+                ]
+                    
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": []
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": []
+            },
+            {
+                "CONSULTANCY": []
+            },
+            {
+                "INTERNSHIP": []
+            },
+            {
+                "PRODUCT_DEVELOPMENT": []
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    },
+    {
+        "year": "2024-25",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": []
+            },
+            {
+                "JOURNAL_PUBLICATIONS":[
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "J. Arumugam",
+                        "Title of the Paper": "A facile one-step route to synthesize of novel porous reduced graphene oxide@ nickel sulfide (rGO@ Ni3S2) core shell nanostructures for high-performance supercapacitor electrodes",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Diamond and Related Materials",
+                        "Month and Year of publication": "1-11-2024",
+                        "ISSN": "0925-9635",
+                        "DOI": "https://doi.org/10.1016/j.diamond.2024.111614",
+                        "Colloboration Institute": "1. Saveetha University, Chennai 602105, 2. Periyar University, Centre for PG & Research Studies, Dharmapuri 635205, 3. College of Science, King Saud University, P. O. Box 2455, Riyadh 11451, Saudi Arabia, 4. LEREESI, Laboratory, HNS-RE2SD, Batna, Algeria",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of journal papers google drive link": "https://drive.google.com/file/d/1pv0Kf9er_Civ3IOPIhFAaIV-wrXYGMQ1/view?usp=sharing",
+                        "Journal Proof": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Jayachandhiran Arumugam, Amal George, P. Saravanan Subramani Rahul, Alphonse Dhayal Raj, Mohammed F. Albeshr, Savarenathan Johnsundaram, Thangaswamy Selvankumar, Duraisamy Karthika, Jothi Vinoth Kumar",
+                        "Title of the Paper": "Fabrication of one-dimensional Zn-doped Bi2S3 nanorods for photodiode applications",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Luminescence",
+                        "Month and Year of publication": "4 September 2024",
+                        "ISSN": "1522-7243",
+                        "DOI": "https://doi.org/10.1002/bio.4901",
+                        "Colloboration Institute": "1. Sacred Heart College (Autonomous), Tirupattur. 2. St. Joseph's College of Engineering, Chennai, Tamil Nadu, 3. College of Sciences, King Saud University, Riyadh, Saudi Arabia 4. Saveetha Institute of Medical and Technical Sciences, Saveetha University, Chennai, Tamil Nadu, India 5. Agni College of Technology, Thazhambur, Tamil Nadu, India 6. BioNanocomposite Research Center, Department of Food and Nutrition, Kyung Hee University, Seoul, Republic of Korea",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of journal papers google drive link": "https://drive.google.com/file/d/1eg5k76Oqoom7XnT_-RsZmXy70KE0oVvN/view?usp=sharing",
+                        "Journal Proof": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Subramani Karthikeyan, Ponnusamy Sasikumar, Jayachandhiran Arumugam, Mohamad Abd E Abbas Subramanian Nithiyanantham",
+                        "Title of the Paper": "Morphological and optical investigation of Ce doped La2O3 nanoparticles for photocatalytic applications",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Vietnam Academy of Science and Technology and Wiley-VCH GmbH.",
+                        "Month and Year of publication": "24 October 2024",
+                        "ISSN": "2572-8288",
+                        "DOI": "https://doi.org/10.1002/vjch.202400105",
+                        "Colloboration Institute": "1. Periyar University Centre for PG & Research Studies, Dharmapuri, Tamil Nadu, India 2. Department of Physics, Saveetha School of Engineering, SIMATS, Thandalam, Chennai, Tamil Nadu, India 3. Electrical Engineering Department, College of Engineering, King Khalid University, Abha, Saudi Arabia 4. P.G & Research Department of Physics, Thiru. Vi. Ka. Govt. Arts College, Thiruvarur, Tamil Nadu, India",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of journal papers google drive link": "https://drive.google.com/file/d/1TZ1SmV9dESL9Thxz6RLemajvWx6IfPmD/view?usp=sharing",
+                        "Journal Proof": null
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "M. Divya Bharathi, M. Jayachandiran, V. Viswanathan, Paavai Era, F. Mary Anjalin, RO.MU. Jauhar, Waseem Sharaf Saeed",
+                        "Title of the Paper": "Realizing the triangular pyramid molecular geometry and tetrahedral coordination of a solution grown lithium 4-methyl-3-nitrobenzoate dihydrate crystals for optical limiting applications",
+                        "SCI/ WoS/ Scopus/ Google scholar/ UGC Care/Other": "SCI",
+                        "Name of the Journal": "Journal of Molecular Structure",
+                        "Month and Year of publication": "7 December 2024",
+                        "ISSN": "141050",
+                        "DOI": "https://doi.org/10.1016/j.molstruc.2024.141050",
+                        "Colloboration Institute": "a Department of Physics, Easwari Engineering College, Chennai 600089, India c Prof. GNR Centre of Excellence in Structural Biology and Drug Discovery, SRM Institute of Science and Technology, Kattankulathur, Chennai 603203, India d Department of Physics, Saveetha School of Engineering, SIMATS, Saveetha University, Chennai 602105, India e Restorative Dental Sciences Department, College of Dentistry, King Saud University, Riyadh 11545, Saudi Arabia",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy of journal papers google drive link": "https://www.sciencedirect.com/science/article/abs/pii/S0022286024035567",
+                        "Journal Proof": null
+                    }
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr.M.Jayachandiran",
+                        "Title of the Patent": "High Performance Quenching Miniature Heater",
+                        "Application Number": "428637-001",
+                        "Date of Filing": "05-08-2024",
+                        "Status": "Under Review",
+                        "Colloboration Institute": "Department of Physics, Easwari Engineering College, Chennai 600089, India",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy patent google drive link": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr. J. Arumugam",
+                        "Title of the Patent": "High Performance Quenching Miniature Heater",
+                        "Application Number": "428637-001",
+                        "Date of Filing": "05-08-2024",
+                        "Status": "Under Review",
+                        "Colloboration Institute": "Department of Physics, Easwari Engineering College, Chennai 600089, India",
+                        "Colloboration agreement Yes / No": "No",
+                        "E copy patent google drive link": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Faculty": "Dr. J. Arumugam",
+                        "Title of the Patent": "DUAL-MODE SOLAR PANEL",
+                        "Application Number": "426471-001",
+                        "Date of Filing": "11-08-2024",
+                        "Status": "Published",
+                        "Colloboration Institute": "velammal engineering college",
+                        "Colloboration agreement Yes / No": "no",
+                        "E copy patent google drive link": "https://drive.google.com/file/d/1ix9W19W7WNxwRLaPIkldO5GddAxvClZw/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": []
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": []
+            },
+            {
+                "CONSULTANCY": []
+            },
+            {
+                "INTERNSHIP": []
+            },
+            {
+                "PRODUCT_DEVELOPMENT": []
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

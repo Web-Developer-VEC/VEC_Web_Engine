@@ -1,0 +1,164 @@
+[
+    {
+    "dept_id": "005",
+    "department_name": "Computer Science & Engineering (CSE)",
+    "MOUs": [
+        {
+            "unique_id": "overall",
+            "docs": [
+                {
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "TechNova Solutions",
+                    "MONTH_AND_YEAR": "05-02-2023",
+                    "VALIDITY": "3 Years",
+                    "LOGO_PATH": "/static/images/mous/005/technova_solutions.jpg",
+                    "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 2,
+                    "ORGANISATION_NAME": "CodeGenix",
+                    "MONTH_AND_YEAR": "10-10-2024",
+                    "VALIDITY": "5 Years",
+                    "LOGO_PATH": "/static/images/mous/005/codegenix.jpg",
+                    "ACTIVITIES_PLANNED": []
+                }
+            ]
+        },
+        {
+            "unique_id": 2022,
+            "docs": [
+                {
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "NET stack Technology Solutions",
+                    "MONTH_AND_YEAR": "22-12-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/net_stack_technology_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 2,
+                    "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+                    "MONTH_AND_YEAR": "22-02-2023",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/arjunvision_tech_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 3,
+                    "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
+                    "MONTH_AND_YEAR": "23-02-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/m/s_tata_elxsi_ltd.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 4,
+                    "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+                    "MONTH_AND_YEAR": "2023",
+                    "VALIDITY": "5 Years",
+                    "LOGO_PATH": "/static/images/mous/005/digialert_solutions_private_limited.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 5,
+                    "ORGANISATION_NAME": "Aristo Creative Technologies",
+                    "MONTH_AND_YEAR": "2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/aristo_creative_technologies.jpg",
+        "ACTIVITIES_PLANNED": []
+                }
+            ]
+        },
+        {
+            "unique_id": 2023,
+            "docs": [
+                {
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "NET stack Technology Solutions",
+                    "MONTH_AND_YEAR": "22-12-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/net_stack_technology_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 2,
+                    "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+                    "MONTH_AND_YEAR": "22-02-2023",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/arjunvision_tech_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 3,
+                    "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
+                    "MONTH_AND_YEAR": "23-02-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/m/s_tata_elxsi_ltd.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 4,
+                    "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+                    "MONTH_AND_YEAR": "2023",
+                    "VALIDITY": "5 Years",
+                    "LOGO_PATH": "/static/images/mous/005/digialert_solutions_private_limited.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 5,
+                    "ORGANISATION_NAME": "Aristo Creative Technologies",
+                    "MONTH_AND_YEAR": "2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/aristo_creative_technologies.jpg",
+        "ACTIVITIES_PLANNED": []
+                }
+            ]
+        },
+        {
+            "unique_id": 2024,
+            "docs": [
+                {
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "NET stack Technology Solutions",
+                    "MONTH_AND_YEAR": "22-12-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/net_stack_technology_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 2,
+                    "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+                    "MONTH_AND_YEAR": "22-02-2023",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/arjunvision_tech_solutions.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 3,
+                    "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
+                    "MONTH_AND_YEAR": "23-02-2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/m/s_tata_elxsi_ltd.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 4,
+                    "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+                    "MONTH_AND_YEAR": "2023",
+                    "VALIDITY": "5 Years",
+                    "LOGO_PATH": "/static/images/mous/005/digialert_solutions_private_limited.jpg",
+        "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 5,
+                    "ORGANISATION_NAME": "Aristo Creative Technologies",
+                    "MONTH_AND_YEAR": "2022",
+                    "VALIDITY": "Till date",
+                    "LOGO_PATH": "/static/images/mous/005/aristo_creative_technologies.jpg",
+        "ACTIVITIES_PLANNED": []
+                }
+            ]
+        }
+    ]
+}
+]

@@ -1,0 +1,143 @@
+[
+  {
+    "type": "about",
+    "data": [
+      {
+        "about_us": "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
+      }
+    ]
+  },
+  {
+    "type": "news_updates",
+    "data": [
+      "1. College Fest 2025 will be held on March 25th.",
+      "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
+      "3. The annual sports meet is scheduled for April 10th."
+    ]
+  },
+  {
+    "type": "events",
+    "data": [
+      {
+        "image_path": "/static/images/yrc/event/eco_bloom.webp",
+        "title": "Eco Bloom",
+        "description": "The YOUTH RED CROSS VELAMMAL ENGINEERING COLLEGE, Surapet, Chennai organised an event, ECO BLOOM PLANTATION at VELAMMAL ENGINEERING COLLEGE, SURAPET, on 31st of January 2025. The plantation event started at 1:00 pm, focused on planting trees to enhance the college environment. Participants gathered to contribute to a greener campus, promoting sustainability and improving air quality. The initiative aimed to raise awareness about environmental issues while beautifying the surroundings.",
+        "date": "31-01-2025"
+      },
+      {
+        "image_path": "/static/images/yrc/event/Aalaya_parisutham.webp",
+        "title": "Aalaya parisutham",
+        "description": "The YOUTH RED CROSS of Velammal Engineering College, Surapet, Chennai, organized an event ALAYA PARISUTHAM on January 5, 2025, to clean and maintain the premises of SRI VEMBULI AMMAN TEMPLE. The event took place at 8 a.m. The aim of this event is to clean the temple and make sure to prevent our heritage and culture. This is also showcase our unity among our volunteers.",
+        "date": "05-01-2025"
+      },
+      {
+        "image_path": "/static/images/yrc/event/Twinkles_of_Hope.webp",
+        "title": "Twinkles of Hope",
+        "description": "The YOUTH RED CROSS OF VELAMMAL ENGINEERING COLLEGE, Surapet, Chennai Organised an event TWINKLES OF HOPE at HOPE CHARITABLE TRUST for the christmas celebration on 22 December 2024. It's a home for special children where we spend the day peacefully with the childrens. The event took 10.00 AM to 12.00 AM, focusing on the Christmas celebration with physically challenged children.",
+        "date": "22-12-2024"
+      },
+      {
+        "image_path": "/static/images/yrc/event/CLEAN_SHORE.webp",
+        "title": "CLEAN SHORE",
+        "description": "The YOUTH RED CROSS of Velammal Engineering College, Surapet, Chennai, Organized the event CLEAN SHORE on February 16, 2025. This event was conducted in collaboration with SWOTT NGO at PUZHAL DAM. The event took place from 6.30 AM to 9.00 AM, focusing on the development of Puzhal lake into a tourist spot. The motive of our task is to clean the pathway weeds (plants) and plastic waste from the lake's shore side road.",
+        "date": "16-02-2025"
+      },
+      {
+        "image_path": "/static/images/yrc/event/shield_yourself.webp",
+        "title": "Shield yourself",
+        "description": "The YOUTH RED CROSS of Velammal Engineering College, Surapet, Chennai, conducted an self-defense program, Shield yourself, on January 10,2025, at Indoor stadium of Velammal Engineering college. The program aimed to empower students with essential self-defence skills for safety and well being. The objective of a Shield Yourself program for college students is typically to empower students with skills and knowledge to ensure their personal safety and confidence in challenging situations.",
+        "date": "10-01-2025"
+      }
+    ]
+  },
+  {
+    "type": "team",
+    "data": [
+      {
+        "category": "faculty_coordinator",
+        "members": [
+          {
+            "name": "Dr. V.Ramesh Kumar",
+            "designation": "Programme Officer",
+            "image_path": "/static/images/yrc/head.webp"
+          }
+        ]
+      },
+      {
+        "category": "student_coordinator",
+        "members": [
+          {
+            "name": "Praveen Hari S",
+            "designation": "Chairman",
+            "year": "III",
+            "image_path": "/static/images/yrc/PRAVEEN HARI S.webp"
+          },
+          {
+            "name": "Neena V",
+            "designation": "Vice Chairman",
+            "year": "III",
+            "image_path": "/static/images/yrc/NEENA V.webp"
+          },
+          {
+            "name": "Aram Valartha Nayaki K",
+            "designation": "Secretary",
+            "year": "III",
+            "image_path": "/static/images/yrc/Aram.webp"
+          },
+          {
+            "name": "Logesh G",
+            "designation": "Treasurer",
+            "year": "III",
+            "image_path": "/static/images/yrc/LOGESH G.webp"
+          },
+          {
+            "name": "Siddharth Magesh",
+            "designation": "Tech Head",
+            "year": "III",
+            "image_path": "/static/images/yrc/SIDDHARTH M.webp"
+          },
+          {
+            "name": "Tarakeshwaran S",
+            "designation": "Tech Head",
+            "year": "III",
+            "image_path": "/static/images/yrc/TARAKESHWARAN S.webp"
+          },
+          {
+            "name": "Mithun Raj S",
+            "designation": "Non-Tech Head",
+            "year": "III",
+            "image_path": "/static/images/yrc/MITHUN RAJ S.webp"
+          },
+          {
+            "name": "Jothi Lakshmi",
+            "designation": "Non-Tech Head",
+            "year": "III",
+            "image_path": "/static/images/yrc/Jothi Lakshmi.webp"
+          },
+          {
+            "name": "Akshaya S",
+            "designation": "Joint Secretary",
+            "year": "II",
+            "image_path": "/static/images/yrc/AKSHAYA S.webp"
+          },
+          {
+            "name": "Dakshan B",
+            "designation": "Joint Secretary",
+            "year": "II",
+            "image_path": "/static/images/yrc/DAKSHAN B.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "awards",
+    "data": [
+      {
+        "title": "The Best Team-THE BRIDGE PROJECT",
+        "image_path": "/static/images/yrc/award/THE_BRIDGE_PROJECT.webp",
+        "description": "The Youth Red Cross (YRC) of Velammal Engineering College was honored with the prestigious Best Team Award for its outstanding humanitarian efforts and social service initiatives. The award for Batch 23-24 was presented by Mr. Velu Karthikeyan, Vice Chairman of the Bar Council of Tamil Nadu and Puducherry, while Batch 21-22 was recognized by Justices J. Sathya Narayana Prasad and D. Bharatha Chakravarthy from the High Court of Madras. This recognition celebrates YRC's dedication to community service, environmental initiatives, and youth empowerment through volunteering, disaster relief, blood donation drives, and leadership development, inspiring future generations to serve society."
+      }
+    ]
+  }
+]

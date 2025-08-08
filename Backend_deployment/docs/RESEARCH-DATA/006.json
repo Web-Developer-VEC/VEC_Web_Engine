@@ -1,0 +1,41 @@
+{  
+    "dept_id":"006",
+    "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+    "data":
+    [
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "Dr.S.Rajalakshmi",
+                        "Title of the Patent": "GAN Powered smart mirror with 3D skin analysis and clothing recognition cameras for Personaliized bearuty and fashion",
+                        "Application Number": 202441101935,
+                        "Date of Filing": "12/23/2024",
+                        "Status": "Published",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of patent": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "Dr.S.Rajalakshmi",
+                        "Title of the Patent": "Autonomous Drone Robot System for search and Rescue operations in Hazardous environment",
+                        "Application Number": "202441101936",
+                        "Date of Filing": "12/23/2024",
+                        "Status": "Published",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": null,
+                        "Attach E copy of patent": null
+                    }
+                ]
+            },
+           {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

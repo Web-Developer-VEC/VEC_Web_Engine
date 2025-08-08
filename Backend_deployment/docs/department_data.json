@@ -1,0 +1,753 @@
+[
+    {
+        "dept_id": "001",
+        "department_name": "Artificial Intelligence and Data Science (AI&DS)",
+        "department_image": "/static/images/department_data/aids.webp",
+        "department_quotes": "",
+        "vision": "To achieve value based education and bring idealistic, ethical engineers to meet the thriving trends and technology in the field of Artificial Intelligence and Data Science",
+        "mission": [
+            "To engage students with the core competence to solve real world problems using Artificial Intelligence.",
+            "To enlighten students into technically proficient engineers through innovation in Data Science.",
+            "To involve students with industry collaboration, career guidance and leadership skills.",
+            "To mould students as ethical professionals to bring morals to individual and society."
+        ],
+        "about_department": ["Department of Artificial Intelligence aims to produce computing graduates with high potency, apply, design and develop systems to pertain and to integrate both software and hardware devices, utilize modern approaches in programming and problem solving techniques."," The Department was established in the year 2020 with the main objective of providing quality education in the field of Engineering and Technology."," It is recognized as nodal center under Anna University. The Department has proved to be a center of excellence in Academic, Sponsored research and Continuing Education Programme."],
+        "newsletter_path": "/static/pdfs/dapartment_data/aids_newsletter.pdf",
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs.",
+                "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1 ","PEO 2"],
+	        "content":[
+                "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs.",
+                "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+            ]
+        }
+    },
+    {
+        "dept_id": "002",
+        "department_name": "Automobile Engineering (AUTO)",
+        "department_image": "/static/images/department_data/auto.webp",
+        "department_quotes": "",
+        "vision": "To send forth into the world competitive graduates by providing knowledge through both theoretical learning and practical exposure to latest technologies in the field of automobile engineering and inculcating in them a thirst for lifelong learning.",
+        "mission": [
+            "Maintaining state of art laboratory facilities to train the students with latest technology, to cater to industrial needs. ",
+            "To create awareness on the importance of research activities   among the students.",
+            "To encourage creativity and innovation.",
+            "To produce young engineers with an ability to boldly face their future challenges.",
+            "To identify the top class R&D and academic institution in the field of automobile engineering and establish links with them for   the mutual transfer of knowledge."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/auto.pdf",
+        "about_department": ["The department Automobile Engineering was established in the year 2012 with NBA & NAAC accreditations and ISO certification. The focus is to consistently pursue in providing innovative and quality training to the talented and dedicated students, to empower them in engineering the development of national economy, specialized in transport sector. The department has well qualified and well experienced faculty members to meet the present-day curriculum requirements both in theory and practical."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Design and develop the automotive system and its components with due considerations of society impact and sustainability. ",
+                "Analyze the performance of automotive system using modeling, simulation and testing. "
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "Graduates will have successful career in Automobile / Allied Industries and/ or Academics.",
+                "Graduates will excel in Higher education / Entrepreneurship.",
+                " Graduates will work as part of team / lead a team, use ethical attitudes in their profession and solve engineering issues in the broader social context through life-long learning."
+            ]
+        }
+    },
+    {
+        "dept_id": "003",
+        "department_name": "Chemistry ",
+        "department_image": "/static/images/department_data/chem.webp",
+        "department_quotes": "",
+        "vision": "To be a world-renowned department of chemistry, known for its superior teaching, research, and innovation, and to cultivate a community of critical and creative thinkers capable of tackling the intricate chemical and environmental problems of the twenty-first century.",
+        "mission": [
+            "Offer graduate and undergraduate programs that give students a solid grounding in engineering chemistry, encompassing critical thinking, practical skills, and theoretical understanding. ",
+            "Carry out state-of-the-art engineering chemical research with an emphasis on innovative materials, environmental remediation, and sustainable energy.",
+            "Offer knowledge and tools to help government organizations, business associates, and local communities deal with urgent chemical and environmental issues.",
+            "Encourage our staff, instructors, and students to have an innovative, entrepreneurial, and leadership mindset."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/chem.pdf",
+        "about_department": ["The Chemistry department is a fascinating field that combines principles from chemistry and engineering to develop innovative solutions for various industries.  Development of new materials with specific properties for applications in energy, aerospace, biomedical, and other fields.Research on sustainable energy sources, energy storage, and environmental remediation technologies.Design and optimization of chemical processes for large-scale production of chemicals, fuels, and pharmaceuticals. Development of corrosion-resistant materials and coatings for various industries."],
+        "program_outcomes": {
+                "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+                "content": [
+                        "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                        "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                        "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                        "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                        "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                        "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                        "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                        "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                        "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                        "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                        "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                        "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":[],
+	        "content":[]
+        },
+        "program_educational_outcomes": {
+            "headings":[],
+	        "content":[]
+        }
+    },
+    {
+        "dept_id": "004",
+        "department_name": "Civil Engineering (CIVIL)",
+        "department_image": "/static/images/department_data/civil.webp",
+        "department_quotes": "",
+        "vision": "Department of Civil Engineering aims to transform the students, through theory and practice, into competitive civil engineers, who will provide smart solutions for the futuristic sustainable development of the nation with human values.",
+        "mission": [
+            "To transform the students into industry ready civil engineering graduates.",
+            "To inculcate a spirit of learning for pursuing higher studies with global outreach.",
+            "To promote research in civil engineering to achieve sustainability.",
+            "To facilitate conducive environment for entrepreneurship development.",
+            "To provide industry and society based solutions through innovation and creativity"
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/civil.pdf",
+        "about_department": ["Civil Engineering, the Mother of all Engineering Disciplines, its Sons and Daughters, the Young Civil Engineers are the Nation Builders for sustaining Civilization anywhere in the World and Universe.Starting from 2007, Department of Civil Engineering joined in contributing towards nation building through our Graduate Civil Engineers.","The B.E. Civil Engineering program of VEC is continuously accredited by NBA since 2015. So far 32 graduates from the Department have been placed in State and Central Government jobs (IRS, IOCL, Revenue, Police, PWD, Highways, Water Resources, Buildings, CMDA, Local Administration...) and also in many other countries like UK, USA, Canada, Singapore, Dubai, Australia, etc. in various roles and positions.","To achieve this, the Department is equipped with sophisticated laboratories and field oriented teaching and training. About 85% of students are placed in Core & IT companies (45+ Core Companies & 20+ IT companies). Around 200+ Students opted for higher studies in India & Foreign Universities through GATE, GRE & GMAT. Currently under Autonomous mode, the curriculum is further enriched to facilitate student community to reach greater heights and zeniths."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Plan, design and implement smart and sustainable infrastructure.",
+                "Provide solutions for the social needs and challenges by applying modern tools and techniques."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3","PEO 4"],
+	        "content":[
+                "Will be able to achieve greater heights in higher studies/research/profession.",
+                "Will have knowledge to provide feasible solutions for real world civil engineering projects.",
+                "Will have a passion for start-ups,entrepreneurship and ability to work in team/individual setup.",
+                "Will progress in lifelong learning with the consideration of human and ethical values for the betterment of society."
+            ]
+        }
+    }, 
+   {
+        "dept_id": "005",
+        "department_name": "Computer Science & Engineering (CSE)",
+        "department_image": "/static/images/department_data/cse.webp",
+        "department_quotes": "",
+        "vision": "To provide quality education aimed at cultivating exceptionally skilled technologists and entrepreneurs with a global footprint, supported by strong ethical values, and inventive thinking in the field of Computer Science and Engineering, tailored to fulfill both industrial demands and societal aspirations",
+        "mission": [
+            "To focus on delivering education that is both affordable and of high quality, ensuring that it aligns with current industry needs. ",
+            "To strive for excellence in teaching and learning processes by integrating strong ethical values, inventive thinking, and a focus on entrepreneurship.",
+            "To create an environment that encourages innovation supports multidisciplinary research endeavors, and cultivates professionals focused on research excellence in Computer Science and Engineering. ",
+            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/cse.pdf",
+        "about_department": ["Established in 1995, the Department of Computer Science and Engineering at our institution has been dedicated to providing high-quality education to 240 students. Our mission is to equip young minds with the knowledge and skills necessary to excel in the field of IT and drive organizational success.To achieve this, we offer a comprehensive curriculum that incorporates the latest technologies, collaborative projects, research associations, and hands-on training through semester-long internships and live industry problem-solving. Our program also features flexible electives, open electives, honors, and minor degrees, promoting an interdisciplinary approach that prepares students to thrive in a rapidly evolving tech landscape."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Proficient in designing and implementing computing solutions, and use the fundamental knowledge of algorithms, networking Principles, web design, cloud computing, and data analytics to identify research gaps and pioneer innovative solutions",
+                "Ability to refine ethical approaches for addressing environmental and social issues, while enhancing interdisciplinary project management skills using IT tools to meet industry and societal demands effectively."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3","PEO 4","PEO 5"],
+	        "content":[
+                "Graduates should have the ability to analyze engineering problems through strong foundation in Mathematical, Scientific and Engineering fundamentals.",
+                "Graduates should have the ability to demonstrate the core competency in solving real time problems, through design and implementation, analyzing the evaluations and making appropriate decisions.",
+                "Graduates should have the ability to harness new Computing Technologies through Self-directed studies and Professional development.",
+                "Graduates should have the ability to excel as a Professional or an Entrepreneur through Technical Communication skills, Team Building, Inter personal relationship and Leadership qualities.",
+                "Graduates should have the ability to apply modern computing technology for the development of the society and ethical values with integrity."
+            ]
+        }
+    },
+    {
+        "dept_id": "006",
+        "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+        "department_image": "/static/images/department_data/cyber.webp",
+        "department_quotes": "",
+        "vision": "To be a center of excellence in cyber security education, research, and innovation—empowering professionals to safeguard digital assets and contribute to a secure cyber world through ethical practices and the adoption of cutting-edge technologies.",
+        "mission": [
+            "To equip students with high-quality education and training in cyber security, fostering technical expertise and encouraging innovative research to address global cyber threats.",
+            "To nurture technically proficient engineers by raising awareness of the importance of securing digital infrastructure, promoting cyber security best practices, and empowering them to contribute to national and international cyber security initiatives.",
+            "To foster industry collaboration, enhance career readiness, and develop leadership skills among students.",
+            "To develop ethical cyber security professionals who contribute positively to society through responsible and impactful cyber security practices"
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/cyber.pdf",
+        "about_department": ["The Computer Science and Engineering (Cyber Security) course is a specialized branch of CSE that focuses on securing digital systems, networks, and data from cyber threats. It combines core computer science principles with specialized knowledge in Cyber Security. This program provides a strong foundation in computer science along with in-depth training in Cyber Security techniques, Ethical hacking, Cryptography, and Network Security. The curriculum is designed to equip students with skills to detect, prevent, and respond to cyber threats. It is a highly specialized and rewarding field with excellent career prospects. With Cyber threats increasing worldwide, there is a huge demand for skilled Cyber Security professionals. By combining technical expertise, ethical hacking skills, and knowledge of cyber laws, students can build a successful career in Cyber Security."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Ability to understand, analyse and develop computer programs in the areas related to networking, cryptography, web development and database management by adhering software development life cycle.",
+                "Graduate students will be able to develop data, resource, and asset protection strategies for organizations, processes, peoples, and individuals through Cyber security-centric skills."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "Graduates will demonstrate a comprehensive understanding of cyber security principles, concepts, and practices.",
+                "Graduates will progress in their careers by upholding ethical standards, demonstrating professional responsibility, and adhering to legal and regulatory frameworks in the field of cyber security.",
+                "Graduates will excel as industry professionals or entrepreneurs by leveraging effective communication, teamwork, interpersonal skills, and leadership qualities."
+              ]
+              
+        }
+    },
+    {
+        "dept_id": "007",
+        "department_name": "Electrical & Electronics Engineering (EEE)",
+        "department_image": "/static/images/department_data/eee.webp",
+        "department_quotes": "",
+        "vision": "Imparting high quality education and grooming of competent Electrical and Electronics Engineers to cater to the global needs of Academics, Industry and Society",
+        "mission": [
+            "To impart knowledge, skills and attitudes for developing engineers to compete at global level with dedication, determination and distinction.",
+            "To motivate creativity, kindle innovation and build leadership.",
+            "To promote self-learning and teamwork and to make them industry ready graduates.",
+            "To involve the faculty and students in research and consultancy for the benefit of institute, industry and society."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/eee.pdf",
+        "about_department": ["The department of Electrical and Electronics Engineering at Velammal Engineering College with its rich and traditional academic ambiance targets both the theory and the practical applications of engineering and technology to handle global challenges of the present and future scenarios.","The department is celebrating 25 years of academic excellence since 1995. All the departmental activities are NBA Accredited since 2002 and also ISO certified.","With academic autonomy, it offers variety of courses across a wide spectrum of specialized topics in UG, PG and PhD level under choice-based credit system in concurrence with the modern technological advancements and industrial requirements."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Graduates will have the ability to design, simulate and control the Electrical and Electronics circuits using the concepts of power and control engineering.",
+                "Graduates will have the ability to identify, analyze the problems and innovate ideas by adapting the concepts of Power electronics, Recent trends in power systems and Drives systems in Electrical Engineering to provide solutions to existing/novel problems."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "Have successful technical and professional careers in their chosen fields such as Circuit theory, Field theory, Control theory and Computational platforms.",
+                "Engross in lifelong process of learning to keep themselves abreast of new developments in the field of Electronics and their applications in power engineering.",
+                "Able to succeed with effective communication and teamwork skills for multidisciplinary approach and to relate engineering issues to broader social context."
+              ]
+              
+        }
+    },
+    {
+        "dept_id": "008",
+        "department_name": "Electronics & Instrumentation Engineering (EIE)",
+        "department_image": "/static/images/department_data/eie.webp",
+        "department_quotes": "",
+        "vision": "To impart knowledge base and skill sets in the field of Electronics and Instrumentation by providing quality education and learning ambience for academic and research activities, leading to be a global competitor and preferred partner by the industry.",
+        "mission": [
+            "To provide students with strong foundation in electronics, instrumentation and control engineering.",
+            "To enhance the core competency, leadership and managerial skills of the students to cater the industrial needs.",
+            "To cultivate adaption of ethics, morality and healthy practices in professional life towards serving the society at large",
+            "To facilitate graduate with Entrepreneurship skills.",
+            "To encourage faculty members and students to engage themselves in multidisciplinary research endeavors and keep abreast of current trends through continuing education."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/eie.pdf",
+        "about_department": ["Department of Electronics & Instrumentation Engineering is an advanced branch which deals with the application of existing scientific knowledge in electronics, instrumentation, measurements, control and automation of processes."," Started in the year 2002, the department of Electronics and Instrumentation Engineering is running a four year under graduate program accredited by NBA.","From inception, the department has grown in leaps and bounds with the state of art of infrastructure and lab facilities.","The program provides an opportunity to learn the technical skills thereby enhancing their technical competency and leadership qualities.","The graduates are having wide scope to get career opportunities in major process, energy, oil and natural gas industries as well as research opportunities in highly ranked institutes and universities within and outside the country."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2","PSO 3"],
+	        "content":[
+                "Develop mathematical models of the industrial process and provide solutions for industrial automation systems ",
+                "Design, implement, test and analyses embedded based instrumentation systems for monitoring and control.",
+                "Empower the students to work on research platforms and instill entrepreneurship skills to work on a large industrial scale. "
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "Graduates will lead a successful career in the field of Instrumentation / Automation industries or allied industries or research or business organization.",
+                "Graduates will be able to adapt latest technological developments in the global scenario.",
+                "Graduates will exhibit professionalism and ethical attitude towards issues in the society at large."
+            ]
+        }
+    },
+    {
+        "dept_id": "009",
+        "department_name": "Electronics and Communication Engineering (ECE)",
+        "department_image": "/static/images/department_data/ece.webp",
+        "department_quotes": "",
+        "vision": "To impart technical knowledge and skills to create resourceful Electronics and Communication Engineering graduates with innovation and research to meet industry and societal needs.",
+        "mission": [
+            "To provide an ideal learning environment through futuristic and flexible curriculum with innovative teaching and learning methods.",
+            "To foster cutting edge research with ethical values.",
+            "To promote technical and entrepreneurship skills to provide socially relevant and sustainable solutions with innovation.",
+            "To nurture leadership through teamwork."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/ece.pdf",
+        "about_department": [ "We are proud to be honoured as the recipient of “National Employability Award 2021” for being among the top 10% colleges in India that excelled in AMCAT 21. Also we have received “Best ISF Award” from IETE for two consecutive years.Several Govt. initiatives have Telecommunication infrastructure as the backbone which is an opportunity to work with Government as a stakeholder in research.Industry 4.0 requires Smart Factories which depend on Machine to Machine Communication thus improving placement prospects for ECE students.An Electronics and Communication Engineer can work in Robotics, Drones,Design of Gadgets, Machine Automation, Aviation and Avionics, Consumer Electronics, Communications, Control and Automation, Telecommunication,Computer Application, Health Care diagnostic equipment manufacturing Our facultyare dedicated to creating a diverse and inclusive environment for our students. The Department endorses with pride of having National Level Accreditations like NBA, NAAC and ISO Certifications. Also it is permanently affiliated to Anna University, with Autonomous Status.It has optimum blend of faculty strength which includes 9 Doctorates with an average experience of 15 years."],
+
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":["Be proficient and employment ready with career development skills in both software and hardware through Industry oriented mini & major projects, internship, industry visits, seminars and workshops to ethically serve the needs of the society.",
+                        "Develop hardware / software for components / systems for applications in Signal processing, VLSI, Communication, Networking, Computer-based Systems and/or pursue Higher Studies / Research with a strong base in Electronics and Communication Engineering."
+                    ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":["Be highly competent with in-depth knowledge in the Electronics and Communication Engineering to have a successful career in Core / IT / Research / Entrepreneurship.",
+                        "Design and Develop comprehensive and multi-disciplinary projects which require teamwork, leadership and ethical values taking into consideration legal, social, environmental and economic issues.",
+                        "Analyze and implement solutions in Electronics and Communication Engineering and adapt to changes in technology by continuous learning."
+                    ]
+        }
+    },
+    {
+        "dept_id": "010",
+        "department_name": "English ",
+        "department_image": "/static/images/department_data/eng.webp",
+        "department_quotes": "",
+        "vision": "To empower engineering students with effective communication skills, critical thinking, and creative expression, enabling them to excel as global professionals, innovators, and leaders, while fostering a culture of linguistic excellence, intellectual curiosity, and lifelong learning.”",
+        "mission": [
+            "To develop engineering students' communication, critical thinking, and soft skills through innovative teaching, mentoring, and assessment methods, enabling them to articulate ideas, collaborate effectively, and succeed in their academic, professional, and personal pursuits."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/eng.pdf",
+        "about_department": ["The Department of English has been in a dynamic existence since the inception of the college equipping the budding engineers with commendable communication skills in order to meet the ever growing demands of industry, business, public and private organizations as well as academic and human services. The Department boasts of practical curricula with a high degree of professional relevance, enabling students to face real time challenges. The faculty of the department are known for their committed teaching, individualized explorative bent of mind and close mentoring. We are delighted to extend our academic support to the institution in all its recognitions."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":[],
+	        "content":[]
+        },
+        "program_educational_outcomes": {
+            "headings":[],
+	        "content":[]
+        }
+    },
+    {
+        "dept_id": "011",
+        "department_name": "Information Technology (IT)",
+        "department_image": "/static/images/department_data/it.webp",
+        "department_quotes": "",
+        "vision": "Empowering innovation through cutting-edge technology solutions, transforming learning experiences with digital excellence, driving operational efficiency through strategic IT initiatives, and securing a dynamic digital future.",
+        "mission": [
+            "To continuously research, develop, and implement innovative technology solutions that empower academic and administrative excellence, fostering a culture of creativity and problem-solving.",
+            "o seamlessly integrate digital technologies into every facet of the learning experience, from classrooms to online platforms, ensuring accessibility, engagement, and effectiveness in education.",
+            "To engage with the wider community, including alumni, local businesses, and societal stakeholders, to promote digital literacy, foster technology adoption, and contribute to the socio-economic development.",
+            "To cultivate a dynamic environment that encourages continual growth, entrepreneurial   spirit, cohesive teamwork, exemplary professionalism, and leadership with a strong sense of social responsibility."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/it.pdf",
+        "about_department": ["Department of Artificial Intelligence aims to produce computing graduates with high potency, apply, design and develop systems to pertain and to integrate both software and hardware devices, utilize modern approaches in programming and problem solving techniques."," The Department was established in the year 2020 with the main objective of providing quality education in the field of Engineering and Technology."," It is recognized as nodal center under Anna University. The Department has proved to be a center of excellence in Academic, Sponsored research and Continuing Education Programme."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "To utilize cutting-edge techniques, programming languages, and the latest Information Technology tools and platforms for solving real time applications to meet out the societal and industrial needs.",
+                "To design and develop fruitful service utilities and products for various aspects of technological needs involving different domains"
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "To proactively recognize industry and societal challenges, devising impactful solutions that promote the welfare of both sectors with professional ethics.",
+                "To embrace technological evolution by discovering and implementing innovative ideas with leadership qualities to propel continuous learning.",
+                "To advance professional careers through collaborative research and advanced studies, ensuring excellence with integrity."
+              ]
+              
+        }
+    },
+    {
+        "dept_id": "012",
+        "department_name": "Mathematics",
+        "department_image": "/static/images/department_data/math.webp",
+        "department_quotes": "",
+        "vision": "To promote a deep understanding and appreciation of mathematics among engineering students, empowering them to become innovative problem-solvers, critical thinkers and leaders in their fields.",
+        "mission": [
+                "To develop students' competencies in a dynamic learning environment and related disciplines, cultivating problem-solving, leadership and collaboration skills. ",
+                "To provide a strong academic foundation that empowers students to pursue advanced studies and achieve success in leading industries." 
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/math.pdf",
+        "about_department": ["Since 1995, the department continues to provide mathematical skill and analytical thinking to all engineering and science graduates of this institution. Our aim is primarily on teaching and evenly on research also. The department has the faculty strength of 18 members includes 6 doctorates and 5 pursuing having an average teaching experience of 15 years. The department also trains engineering students in strong mathematical background to enhance and apply their skills to find solutions to their field specific problems. The department is a recognized nodal Centre for research under Anna University, Chennai.."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":[],
+	        "content":[]
+        },
+        "program_educational_outcomes": {
+            "headings":[],
+	        "content":[]
+        }
+    },
+    {
+        "dept_id": "013",
+        "department_name": "Mechanical Engineering (MECH)",
+        "department_image": "/static/images/department_data/mech.webp",
+        "department_quotes": "",
+        "vision": "Producing competent Mechanical Engineers by imparting quality education blended with human values, as potential contributors to the industrial development of the nation leading to the well being of the future generation.",
+        "mission": [
+            "Imparting quality education to the students in core areas with moral values through our dedicated team.",
+            "Promoting research and development by giving hands on experience of state of the art facilities.",
+            "Providing platform for the students to explore their innovative and creative skills.",
+            "Promoting activities to cultivate the spirit of entrepreneurship to the students.",
+            "Empowering the students in organizing events to gain experience in team work and leadership qualities.",
+            "Preparing the students for their role as Engineers in society with an awareness of ethical, environmental, economic, safety and quality issues"
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/mech.pdf",
+        "about_department": ["Mechanical Engineering is the only branch of engineering that can fit into any kind of industries, is the oldest engineering disciplines and an extremely diverse profession. Mechanical engineers are inherently multi-disciplinary and having wide range of career choices. Manufacturing has emerged as one of the high growth sectors in India.  Government aims to create 100 million new jobs in the sector in near future.The Department of Mechanical Engineering at Velammal Engineering College, Chennai started its journey in the year 1999. We have a strong undergraduate program in mechanical engineering. The Department has a distinguished record in both teaching and research. The Department is committed to provide knowledge creation, innovation and research among the students to meet challenges in Mechanical Engineering Field.  Minor degree in the area of Electric vehicle Technology and Data Science, and honours degree in the area of Robotics and Automation are offered to Mechanical Engineering Students.The department is accredited by National Board of Accreditation (NBA), New Delhi is recognized as the Nodal Research Centre by Anna University, Chennai.  Our Alumni play key role in different industrial, academic and Government organizations. The department providing value based holistic development for each student."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Graduates will have an ability to identify, formulate and analyze the problems related to design, manufacturing, thermal and materials engineering",
+                "Graduates will have an ability to implement/use appropriate techniques, programming skills, and latest/recent computer aided engineering tools/packages for modelling, simulation and analysis of mechanical engineering problems."
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+	        "content":[
+                "Successful profession in Mechanical or allied Industries or Research/Academics or business enterprise.",
+                "Attitudes and abilities of leaders to adapt to the changing global scenario.",
+                "Good professional personality and ethical values to lead as good human beings, responsible citizens and competent professionals."
+              ]
+              
+        }
+    },
+    {
+        "dept_id": "014",
+        "department_name": "தமிழ்த்துறை",
+        "department_image": "/static/images/department_data/tamil.webp",
+        "department_quotes": "",
+        "vision": "தமிழரின் பண்பாட்டு விழுமியங்களைக் கற்று வாழ்நாள் முழுவதும் பயன்படுத்துதல். பொறியியல் துறைகளில் தமிழரின் அறிவியல் மற்றும் தொழில்நுட்பச் சிந்தனைகளை ஆய்ந்து மரபார்ந்த புத்தாக்கங்களைப் படைத்தல் ஆகிய இரு இலக்குகளைத் தமிழ்த்துறை தொலைநோக்காகக் கொண்டுள்ளது.",
+        "mission": [
+            "தமிழரின் வளமான பாரம்பரிய பண்பாட்டுக் கூறுகளைத் தெரிந்து கொள்ளச் செய்தல்.",
+            "பொறியியல் தொழில்நுட்பக் கூறுகளை அறிந்து கொள்ளச் செய்தல்.",
+            "மொழித்திறன் மற்றும் படைப்பாற்றலை வளர்த்தல்.",
+           "சமூகத்திற்குப் பயனளிக்கும் வகையில் ஒழுக்கமும் ஆளுமைத்திறனும் உடையவர்களாக உருவாக்குதல்." 
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/tamil.pdf",
+        "about_department": ["தமிழர்களின் வளமான பண்பாடு, கலை, கலாச்சாரம், இலக்கியம், அறிவியல் சிந்தனைகள், பொறியியல் தொழில்நுட்பத் தகவல்கள் முதலானவற்றை மாணவர்கள் கற்கும் நோக்கில் ‘தமிழர் மரபு’ மற்றும் தமிழர் தொழில்நுட்பம்’ ஆகிய இரண்டு தனித்துவமான பாடங்களைக் கற்பிப்பதனை நோக்கமாகக் கொண்டு 2023 ஆம் ஆண்டு முதல் தமிழ்த்துறை இயங்கிவருகிறது."," மேலும் இத்துறை, மாணவர்கள் மொழி, ஆளுமைத்திறன், புதுமை படைத்தல், வாழ்வியல் அறநெறி மற்றும் பண்பாட்டு மாண்புகளைப் பெற்று, சமூகத்தோடு கூடி வாழ வழிகாட்டுகிறது."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":[],
+	        "content":[]
+        },
+        "program_educational_outcomes": {
+            "headings":[],
+	        "content":[]
+        }
+    },
+    {
+        "dept_id": "015",
+        "department_name": "Physics",
+        "department_image": "/static/images/department_data/physics.webp",
+        "department_quotes": "",
+        "vision": "To provide knowledge of Physics in all areas of life through transfer of fundamental technology and to do more research work.”",
+        "mission": [
+            "To offer an education of the highest quality in the field of Engineering Physics to students to do research in the field of Materials science, Nanotechnology & Environmental Engineering expose to experimental as well as theoretical bases."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/physics.pdf",
+        "about_department": ["Department of Physics is a place for learning, fundamental research, innovation, discovery and expression. This department supports the young minds to follow their passion, explore technology, create curiosity and take up scientific challenges across the various engineering discipline. This is one of the sprawling and leading academic and research-based department. Department of Physics is recognized as Nodal Research Centre by Anna University for offering research program (Ph.D). Faculty members of Department of Physics have received Research projects worth Rs. 142 Lakhs from various funding agencies."],
+        "program_outcomes": {
+            "headings":["PO 1: Engineering knowledge","PO 2: Problem analysis","PO 3: Design/development of solutions","PO 4: Conduct investigations of complex problems","PO 5: Modern tool usage","PO 6: The engineer and society","PO 7: Environment and sustainability","PO 8: Ethics","PO 9: Individual and team work","PO 10: Communication","PO 11: Project management and finance","PO 12: Life-long learning"],
+            "content": [
+                    "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems.",
+                    "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences.",
+                    "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations.",
+                    "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions.",
+                    "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations.",
+                    "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice.",
+                    "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development.",
+                    "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice.",
+                    "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings.",
+                    "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions.",
+                    "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments.",
+                    "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":[],
+	        "content":[]
+        },
+        "program_educational_outcomes": {
+            "headings":[],
+	        "content":[]
+        }
+    },
+    {
+        "dept_id": "016",
+        "department_name": "M.E Computer Science Engineering",
+        "department_image": "/static/images/department_data/mecse.webp",
+        "department_quotes": "",
+        "vision": "To provide quality education aimed at cultivating exceptionally skilled technologists and entrepreneurs with a global footprint, supported by strong ethical values, and inventive thinking in the field of Computer Science and Engineering, tailored to fulfill both industrial demands and societal aspirations",
+        "mission": [
+            "To focus on delivering education that is both affordable and of high quality, ensuring that it aligns with current industry needs. ",
+            "To strive for excellence in teaching and learning processes by integrating strong ethical values, inventive thinking, and a focus on entrepreneurship.",
+            "To create an environment that encourages innovation supports multidisciplinary research endeavors, and cultivates professionals focused on research excellence in Computer Science and Engineering. ",
+            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/me_cse.pdf",
+        "about_department": ["Computer Science and Engineering plays a vital role in helping organizations to achieve profitable results and keep competitive forces in check. Keeping this objective in mind, young mindsets are educated here with full academic rigor to convert them into effective IT professionals. The de-partment is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics, professionalism and so. Regular classes of the latest technologies are being conducted for stu-dents. On a continuous basis, students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan Do Check Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants. The industry inputs are taken into consideration in each and every course. The Curriculum has features like Industry con-nect, research associations, semester-long internship, live industry problem-solving, electives, open elective, honors and minor degree to support an interdisciplinary approach."],
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Design and develop the automotive system and its components with due considerations of society impact and sustainability. ",
+                "Analyze the performance of automotive system using modeling, simulation and testing. "
+            ]
+        },
+        "program_educational_outcome":
+        {
+            "headings":["PEO 1","PEO 2","PEO 3"],
+            "content":[
+                "Graduates will have successful career in Automobile / Allied Industries and/or Academics.",
+                "Graduates will excel in Higher education/Entrepreneurship.",
+                "Graduates will work as part of team/lead a team, use ethical attitudes. in their profession and solve engineering issues in the broader social context through life-long learning"
+            ]
+        }
+    
+    
+    
+    },
+    {
+        "dept_id": "017",
+        "department_name": "Master of Business Administration (MBA)",
+        "department_image": "/static/images/department_data/mba.webp",
+        "department_quotes": "",
+        "vision": "Educate with Global Exposure, enhance research knowledge and Energize entrepreneurial spirit.",
+        "mission": [
+            "To become a world class institution of higher learning renowned for its excellence in management and for its commitment to the holistic development of the individual and society by creating a novel approach to students through education and industry practice by encouraging value-based knowledge, thus creating a good will to the future generation of our country."
+        ],
+        "newsletter_path": "/static/pdfs/newsletter/mba.pdf",
+        "about_department": ["The Department of Management Sciences (DoMS) is committed to nurturing learners into Champions, Mindful Leaders, Entrepreneurial Managers, and Innovators. With this vision, inspired by the ideology of its founder, DoMS was established in 2007."," The department is on a transformative journey to become a B-School of excellence, embracing modern learning methodologies and an outcome-based approach.", "It has implemented a choice-based credit system, a case discussion courtyard, and a hybrid learning model that integrates Bloom's taxonomy on knowledge levels."],
+        "program_outcomes": {
+            "headings":["PO 1","PO 2","PO 3","PO 4","PO 5","PO 6","PO 7","PO 8","PO 9"],
+            "content": [
+                    "Apply knowledge of management theories and practices to solve business problems.",
+                    "Foster Analytical and critical thinking abilities for data-based decision making.",
+                    "Develop Value based Leadership ability.",
+                    "Understand, analyze and communicate global, economic, legal, and ethical aspects of business.",
+                    "Lead themselves and others in the achievement of organizational goals, contributing effectively to a team environment.",
+                    "Take up challenging assignments.",
+                    "Understand one’s own ability to set achievable targets and complete them.",
+                    "Nurture one’s own entrepreneurial ambitions and be innovative at workplace.",
+                    "Pursue lifelong learning."
+                ]
+        },
+        "program_specific_outcomes": {
+            "headings":["PSO 1","PSO 2"],
+	        "content":[
+                "Students should explore practical application of the management concept and to become professional managers",
+                "Students should have a strong analytical foundation in key functional areas and continously learn,improvise,adapt,energize,excel and grow"
+            ]
+        },
+        "program_educational_outcomes": {
+            "headings":["PEO 1","PEO 2","PEO 3","PEO 4","PEO 5"],
+	        "content":[
+                "To have a thorough understanding of the core aspects of the business.",
+                "To provide the learners with the management tools to identify, analyze and create business opportunities as well as solve business problems.",
+                "To prepare them to have a holistic approach towards management functions.",
+                "To motivate them for continuous learning.",
+                "To inspire and make them practice ethical standards in business."
+              ]
+              
+        }
+    }
+]

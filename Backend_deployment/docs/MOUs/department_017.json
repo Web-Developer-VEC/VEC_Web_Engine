@@ -1,0 +1,20 @@
+[
+    {
+    "dept_id": "017",
+    "department_name": "Master of Business Administration (MBA)",
+    "MOUs": [
+        {
+                
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "Imarticus Learning",
+                    "MONTH_AND_YEAR": "03-02-2023",
+                    "VALIDITY": null,
+                    "LOGO_PATH": "/static/images/mous/017/imarticus.jpg",
+        "ACTIVITIES_PLANNED": []
+                
+            
+        }
+      
+    ]
+}
+]

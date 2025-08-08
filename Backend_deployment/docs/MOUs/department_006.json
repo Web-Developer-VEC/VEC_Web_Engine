@@ -1,0 +1,24 @@
+[{
+    "dept_id": "006",
+    "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+    "MOUs": [
+      {
+        "S_NO": 1,
+        "ORGANISATION_NAME": "TechGreech Cyberlabs Private Limited",
+        "MONTH_AND_YEAR": "",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "PDF_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 2,
+        "ORGANISATION_NAME": "Azefox Innovations",
+        "MONTH_AND_YEAR": "",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }
+    ]
+  }
+  ]

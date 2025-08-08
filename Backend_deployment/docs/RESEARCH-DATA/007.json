@@ -1,0 +1,602 @@
+{  
+    "dept_id":"007",
+    "department_name": "Electrical & Electronics Engineering (EEE)",
+    "data":
+    [
+    {
+        "year": "2022-23",
+        "docs": [
+            {
+                "FUNDED_PROPOSALS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Dr.M.Arun Bhaskar",
+                        "Title of the Proposal": "Skill and personality development cell (SDPC)",
+                        "Name of Funding Agency": "AICTE",
+                        "Amount in Lakhs": "Rs.11.26 Laksh",
+                        "Project Duration in Yrs": "3 years",
+                        "Date of Submission": "3rd march 2020",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": "https://drive.google.com/file/d/1bhv8PLxfpy5chZOZgh6ptFp0A-Vl5rBy/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Dr.S.Srinath",
+                        "Title of the Proposal": "RPS-Digital Optimal Feedback Control for Universal Power Quality Compensator File No. 20/RIFD/RPS(POLICY-III)121/2012-2013",
+                        "Name of Funding Agency": "AICTE-RPS ",
+                        "Amount in Lakhs": "Rs.9.50L ",
+                        "Project Duration in Yrs": "4 years",
+                        "Date of Submission": "10th october 2012",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Dr.R.Umamaheshwari",
+                        "Title of the Proposal": "Improved Grid Interactive Inverter For Harnessing Maximum PV Power Even UnderDeprived Conditions(SP/YO/049/2016)",
+                        "Name of Funding Agency": "DST-SEED  ",
+                        "Amount in Lakhs": "Rs.20.93L ",
+                        "Project Duration in Yrs": "3 Years",
+                        "Date of Submission": "15th August 2016",
+                        "Current Status": "Completed",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of sanctioned letter": null
+                    }
+                ]
+            },
+            {
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "S.No": 1,
+                        "Name of the Author(s)": "V.Rengarajan",
+                        "Title of the Paper": "Optimizing energy management in electric vehicles with hybrid battery systems using the GTOA-DRCNN method",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Energy Storage",
+                        "Month and Year of publication": "10/1/2024",
+                        "ISSN": "2352-152X ",
+                        "Doi": "https://doi.org/10.1016/j.est.2024.113352",
+                        "Colloboration Institute": "Rajalakshmi Engineering College",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://www.sciencedirect.com/science/article/abs/pii/S2352152X24029384?via%3Dihub"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Author(s)": "Parimala Arumugam, Srinath Subbaraman, and Kannan Chandrasekaran",
+                        "Title of the Paper": "Symmetric and Asymmetric Crisscross Augumented ladder Multilevel Inverter with fuzzy Logic Controller Optimization",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Symmetry",
+                        "Month and Year of publication": "7/1/2023",
+                        "ISSN": "2073-8994",
+                        "Doi": "https://doi.org/10.3390/sym15071366",
+                        "Colloboration Institute": "Arunai Engineering College",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://www.mdpi.com/2073-8994/15/7/1366"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of the Author(s)": "Srinivasan Kullapadayachi Govindaraju, Raghuraman Sivalingam, Sidhartha Panda, Preeti Ranjan Sahu, ",
+                        "Title of the Paper": "Frequency Control of Power System with Distribution Sources by Adaptive Type 2 Fuzzy PID Controller",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Electric Power Components and Systems ",
+                        "Month and Year of publication": "6/1/2023",
+                        "ISSN": "1532-5008",
+                        "Doi": "https://doi.org/10.1080/15325008.2023.2227169",
+                        "Colloboration Institute": "Burla University",
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://www.tandfonline.com/author/Kullapadayachi+Govindaraju%2C+Srinivasan"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of the Author(s)": "Mr. V. Jagadeesh Babu, Dr. R. Umamaheswari",
+                        "Title of the Paper": "Performane Evaluation and Environmental Impact of Decolourated Mythelene Blue in Industrial Effluent Using Pulsed  Field – An AOP Technique",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Environmental Protection and Ecology",
+                        "Month and Year of publication": "9/1/2023",
+                        "ISSN": "2148-8347",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of all journal papers link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=pK6RxpMAAAAJ&citation_for_view=pK6RxpMAAAAJ:qjMakFHDy7sC"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of the Author(s)": "Mr. V. Jagadeesh Babu, Dr. R. Umamaheswari",
+                        "Title of the Paper": "Effective discharge method of pulsed energy in industrial effluents by DBD and EHPD technique",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "International Journal of Hydrogen Energy",
+                        "Month and Year of publication": "3/1/2024",
+                        "ISSN": "0360-3199",
+                        "Doi": "https://doi.org/10.1016/j.ijhydene.2024.03.114",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://www.sciencedirect.com/science/article/abs/pii/S0360319924009467?via%3Dihub"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of the Author(s)": "Mr. V. Jagadeesh Babu, Dr. R. Umamaheswari",
+                        "Title of the Paper": "De-colorization of MB dye solution using high voltage pulsed discharge for aquatic life system improvement",
+                        "Scopus/ SCI": "UGC care",
+                        "Name of the Journal": "Indian Hydrobiology",
+                        "Month and Year of publication": "12/1/2024",
+                        "ISSN": "0971-6548",
+                        "Doi": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=pK6RxpMAAAAJ&citation_for_view=pK6RxpMAAAAJ:zYLM7Y9cAGgC"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of the Author(s)": "G. Arunsankar, G. Angala Parameswari",
+                        "Title of the Paper": "Energy management of smart grid equipped by an Internet of Things (IoT) configuration: A DDFAT methodology",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Energy And Engineering",
+                        "Month and Year of publication": "8/1/2022",
+                        "ISSN": "0958-305X, 2048-4070",
+                        "Doi": "10.1177/0958305X221117519",
+                        "Colloboration Institute": "Gogan School of business and management",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://journals.sagepub.com/doi/abs/10.1177/0958305X221117519"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of the Author(s)": "Vidhya K, Krishnamoorthi K",
+                        "Title of the Paper": "A hybrid technique for optimal power quality enhancement in grid-connected photovoltaic interleaved inverter",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Energy And Engineering",
+                        "Month and Year of publication": "12/1/2022",
+                        "ISSN": "0958-305X",
+                        "Doi": "10.1177/0958305X221140574",
+                        "Colloboration Institute": "Sona Collage of Technology",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://journals.sagepub.com/doi/abs/10.1177/0958305X221140574?journalCode=eaea"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of the Author(s)": "Lijo Jacob Varghese,U. Arun Kumar,D. Sunitha",
+                        "Title of the Paper": "Solar PV and Wind Energy Based Reconfigurable Microgrid for Optimal Load Dispatch",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Electrical Engineering & Technology",
+                        "Month and Year of publication": "1/1/2023",
+                        "ISSN": "19750102",
+                        "Doi": "10.1007/s42835-023-01392-4",
+                        "Colloboration Institute": "Sri krishna college of technology",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://link.springer.com/article/10.1007/s42835-023-01392-4"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of the Author(s)": "K.Naresh,Srinath Subbaraman",
+                        "Title of the Paper": "Analysis of Power Quality for Distribution Networks Using Active Compensator",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Intelligent Automation And Soft Computing",
+                        "Month and Year of publication": "3/1/2023",
+                        "ISSN": "2326-005X",
+                        "Doi": "10.32604/iasc.2023.031713",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://www.techscience.com/iasc/v36n3/51883"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of the Author(s)": "Muthukumar Kandasamy, Renugadevi Thangavel, Thamaraiselvi Arumugam, Sureshkumar Kumaravel, Sakthivel Aruchamy, Wook-Won Kim, Zong Woo Geem",
+                        "Title of the Paper": "Strategic incorporation of DSTATCOM and distributed generations in balanced and unbalanced radial power distribution networks considering time varying loads",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Energy Reports",
+                        "Month and Year of publication": "3/1/2023",
+                        "ISSN": "2352-4847",
+                        "Doi": "10.1016/j.egyr.2023.03.076",
+                        "Colloboration Institute": "Sastra deemed university",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://www.sciencedirect.com/science/article/pii/S235248472300313X"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of the Author(s)": "P. Rathnavel, C. Murukesh, R.  Umamaheswari",
+                        "Title of the Paper": "Fabrication of a novel rGO encapsulated nickel cobalt chalcogenide electro catalyst as an efficient counter electrode to boost efficiency of dye-sensitized solar cells",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Journal of Materials Science: Materials in Electronics",
+                        "Month and Year of publication": "4/1/2023",
+                        "ISSN": "0957-4522",
+                        "Doi": "10.1007/s10854-023-10402-0",
+                        "Colloboration Institute": "Sri Sai Ram institute of technology",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://link.springer.com/article/10.1007/s10854-023-10402-0"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of the Author(s)": "JoyalIsacSankar, Srinath Subbaraman",
+                        "Title of the Paper": "JoyalIsacSankar, Srinath Subbaraman",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "Electric Power Components and Systems",
+                        "Month and Year of publication": "5/1/2023",
+                        "ISSN": "1532-5016",
+                        "Doi": "10.1080/15325008.2023.2210575",
+                        "Colloboration Institute":"Saveetha engineering college",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://www.tandfonline.com/doi/abs/10.1080/15325008.2023.2210575"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of the Author(s)": "Angala Parameswari G,Habeebullah Sait H",
+                        "Title of the Paper": "Low voltage ride through enhancement in DFIG based WECS by hybrid method",
+                        "Scopus/ SCI": "SCI",
+                        "Name of the Journal": "International Journal of Electronics",
+                        "Month and Year of publication": "12/1/2021",
+                        "ISSN": "ISSN1362-3060 /2021",
+                        "Doi": " https://doi.org/10.1080/00207217.2021.2001857",
+                        "Colloboration Institute": "Anna university, BITS campus",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://www.tandfonline.com/doi/full/10.1080/00207217.2021.2001857"
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of the Author(s)": "Y. Alexander Jeevanantham,  S.Srinath",
+                        "Title of the Paper": "ANN Based Reduced Switch Multilevel Inverter in UPQC for Power Quality Improvemente",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Intelligent Automation & Soft Computing",
+                        "Month and Year of publication": "11/3/2021",
+                        "ISSN": "ISSN 2326-005X",
+                        "Doi": "DOI:10.32604/iasc.2022.022907",
+                        "Colloboration Institute": "RMK engineering college",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "RMK engineering college"
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of the Author(s)": "S. Baskaran, Raghuraman Sivalingam",
+                        "Title of the Paper": "Optimized Control of Single Phase Reboost Luo Converter Fed Grid-Connected PV System",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Intelligent Automation & Soft Computing",
+                        "Month and Year of publication": "7/14/1905",
+                        "ISSN": "ISSN 2326-005X",
+                        "Doi": "DOI:10.32604/iasc.2022.023093",
+                        "Colloboration Institute": "Jeppiar Engineering College",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/drive/u/1/folders/1AkFwOLV94uwAfUAAmQ03th-wmeUod5ji"
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of the Author(s)": "D. Jancy ,M. Karthikeyan",
+                        "Title of the Paper": "Single Line-To-Ground Fault Protection Scheme for Radial Distribution System",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Springer Proceedings in Energy",
+                        "Month and Year of publication": "2021",
+                        "ISSN": "ISSN 978-981-16-0669-4",
+                        "Doi": "https://doi.org/10.1016/j.ijhydene.2024.03.114",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/drive/u/1/folders/1mFSPwLcxkNZhoeM71ykaGUnwiThODoRm"
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of the Author(s)": "M.Karthikeyan R.Rengaraj",
+                        "Title of the Paper": "An Integrated approach for Fault Detection, Classification and Location in Medium Voltage Underground Cables",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Artificial Intelligence Applications in Electrical Transmission and Distribution Systems Protection",
+                        "Month and Year of publication": "2022",
+                        "ISSN": "ISSN9780367552343",
+                        "Doi": "10.1201/9780367552374-6",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://drive.google.com/drive/u/1/folders/1mFSPwLcxkNZhoeM71ykaGUnwiThODoRm"
+                    },
+                    {
+                        "S.No": 19,
+                        "Name of the Author(s)": "JeyarajJency Joseph, Rajasekaran Meenal, Francis Thomas Josh, Prawin Angel Michael, Vinoth Kumar, Krishnamoorthy, Giriprasad Chandran, Selve ",
+                        "Title of the Paper": "Weather Observation and Forecasting using Radio Sonde",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "Telkomnika Telecommunication Computing Electronics And Control",
+                        "Month and Year of publication": "12/1/2022",
+                        "ISSN": "1693-6930",
+                        "Doi": "10.12928/TELKOMNIKA.v20I6.24247",
+                        "Colloboration Institute": "Karunya institute of technology and science",
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://telkomnika.uad.ac.id/index.php/TELKOMNIKA/article/view/24247/11514"
+                    },
+                    {
+                        "S.No": 20,
+                        "Name of the Author(s)": "G. Kodeeswara Kumaran, P. Rajesh, Sureshkumar Kumaravel, G. Irusapparajan",
+                        "Title of the Paper": "Two-area Power System Stability Analysis by Frequency Controller with UPFC Synchronization and Energy Storage Systems by Optimization Approach ",
+                        "Scopus/ SCI": "SCOPUS",
+                        "Name of the Journal": "International Review of Applied Sciences and Engineering",
+                        "Month and Year of publication": "2/1/2023",
+                        "ISSN": "20620810",
+                        "Doi": "10.1556/1848.2022.00538 © 2022",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "NO",
+                        "Attach E copy of all journal papers link": "https://akjournals.com/view/journals/1848/14/2/article-p270.xml"
+                    }
+                
+                ]
+            },
+            {
+                "PATENT_DETAILS": [
+                    {
+                        "S.No": 1,
+                        "Faculty": "V.Rengarajan",
+                        "Title of the Patent": "Electronic watchdog based burglary alert systems",
+                        "Application Number": "E-2/2953/2022/CHE",
+                        "Date of Filing": "04.07.2022",
+                        "Status": "published",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1_0H0FeREMUplNK1CIKOKTME2UmN7CVBh/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Faculty": "V. Jagadeesh Babu",
+                        "Title of the Patent": "Banana step based sustainable bio bag ",
+                        "Application Number": "202541005494A",
+                        "Date of Filing": "23.01.2025",
+                        "Status": "published",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of patent": "https://drive.google.com/file/d/1_FxKfl5ns7uriU6_SD4Kca1i7A9dfuI3/view?usp=sharing"
+                    }
+                ]
+            },
+            {
+                "BOOK___BOOK_CHAPTERS": [
+                    {
+                        "S.No": 1,
+                        "Name of Faculty": "Dr.S.Raghuraman",
+                        "Book/Chapter Title": "IETE sponsored National Conference on Innovative Research in Electrical, Electronics and Communication Engineering (ELECTROX’23)",
+                        "Name of Publisher": "Karpagam Institute of Technolony",
+                        "ISBN Details": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of Faculty": "Mrs.V.Selve",
+                        "Book/Chapter Title": "Multidisciplinary Research in Technology and Management (MRTM-2023)",
+                        "Name of Publisher": "New Horizon College of Engineering",
+                        "ISBN Details": null,
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": null
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of Faculty": "R. Umamaheswari ",
+                        "Book/Chapter Title": "Computational methods and deep learning for ophthalmology",
+                        "Name of Publisher": "Academic press (Elsevier)",
+                        "ISBN Details":"9780323954143",
+                        "Colloboration Institute": null,
+                        "Colloboration agreement Yes / No": "No",
+                        "Attach E copy of Book front page": "https://drive.google.com/file/d/1tOFNpcBy8OIvdS4aHY1KZWBLryG7H3sc/view?usp=sharing "
+                    }
+                ]
+            },
+            {
+                "INTERNATIONAL___NATIONAL_CONFERENCES": [
+                    {
+                        "S.No": 1,
+                        "Name of faculty": "V. Jagadeesh Babu ",
+                        "Title of the Paper": "ELECTRIC VEHICLE CHARGER WITH POWER QUALITY CONDITIONER",
+                        "Name of Conference": "ETAMS-2024 ",
+                        "Type of Conference National / Inter national": "978-93-6128-640-10",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN":"978-93-6128-640-10",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/19hB29ojH7npn1vbKcpo3PDldZL7cOx3i/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of faculty": "Dr.S.Raghuraman ",
+                        "Title of the Paper": "CONVENIENT CAR PARKING SLOT RESERVATION AND PAYMENT THROUGH ONLINE",
+                        "Name of Conference": "ETAMS-2024 ",
+                        "Type of Conference National / Inter national": "978-93-6128-640-10",
+                        "Organizer": "Velammal Engineering College ",
+                        " Prceedings ISBN":"978-93-6128-640-10",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/19hB29ojH7npn1vbKcpo3PDldZL7cOx3i/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 3,
+                        "Name of faculty": "Mrs.V.Selve ",
+                        "Title of the Paper": "EFFECTIVENESS OF AUTOMATIC SMART DUSTBIN COMPARED WITH CONVENTIONAL BIN",
+                        "Name of Conference": "ETAMS-2024 ",
+                        "Type of Conference National / Inter national": "978-93-6128-640-10 ",
+                        "Organizer": "Velammal Engineering College ",
+                        " Prceedings ISBN":"978-93-6128-640-10",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/19hB29ojH7npn1vbKcpo3PDldZL7cOx3i/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 4,
+                        "Name of faculty": "Dr.D.Sunitha",
+                        "Title of the Paper": "REGENERATIVE BRAKING CONTROLLER FOR ELECTRIC VECHILE",
+                        "Name of Conference": "ETAMS-2024",
+                        "Type of Conference National / Inter national": "978-93-6128-640-10",
+                        "Organizer": "Velammal Engineering College",
+                        " Prceedings ISBN":"978-93-6128-640-10",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/19hB29ojH7npn1vbKcpo3PDldZL7cOx3i/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 5,
+                        "Name of faculty": "Dr.K.SURESH KUMAR",
+                        "Title of the Paper": "SMART METERING SYSTEM",
+                        "Name of Conference": "ICCII 2024 ",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 6,
+                        "Name of faculty": "Dr.S.Raghuraman",
+                        "Title of the Paper": "DUAL MOTOR CONTROLLED WHEELCHAIR FOR DISABLED AND AGED PEOPLE",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 7,
+                        "Name of faculty": "V. Jagadeesh Babu",
+                        "Title of the Paper": " POWER QUALITY CONDITIONER FOR ELECTRIC VEHICLE CHARGER",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 8,
+                        "Name of faculty": "Mrs.V.Selve",
+                        "Title of the Paper": "SMART REACTING DEVICE FOR ROAD ACCIDENT PREVENTION AND INTIMATION MODULE",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 9,
+                        "Name of faculty": "Mrs.K.Vidhya",
+                        "Title of the Paper": "WASTE MANAGEMENT SYSTEM",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 10,
+                        "Name of faculty": "Dr.D.Sunitha",
+                        "Title of the Paper": "SADVANCED FOOTSTEP POWER GENERATION SYSTEM USING RFID FOR CHARGING",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 11,
+                        "Name of faculty": "N.Kasirathi",
+                        "Title of the Paper": "WINDOW CLEANING ROBOT",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 12,
+                        "Name of faculty": "Dr.Geetha",
+                        "Title of the Paper": "WEARABLE SENSORS FOR SPORTS BIOMECHANICS APPLICATION",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 13,
+                        "Name of faculty": "N.kasirathi",
+                        "Title of the Paper": "FT based neumarical relay",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 14,
+                        "Name of faculty": "T.Mathumathi",
+                        "Title of the Paper": "HARMONICS REDUCTION IN GRID THROUGH PV SYSTEM INTEGRATION WITH STATCOM",
+                        "Name of Conference": "ICCII 2024",
+                        "Type of Conference National / Inter national": "978-81-967851-7-8",
+                        "Organizer": "Velammal Institute of Technology",
+                        " Prceedings ISBN":"978-81-967851-7-8",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1cEo7GYuUoAnF6WQpxyZN68xmpekqofc5/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 15,
+                        "Name of faculty": "Dr.D.Sunitha",
+                        "Title of the Paper": "Deep voice detection using neural network",
+                        "Name of Conference": "EMPOWER 2024",
+                        "Type of Conference National / Inter national": "9788-196-686994",
+                        "Organizer": "SRM University, Ramapuram campus",
+                        " Prceedings ISBN":"9788-196-686994",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1LZssB6_pNN5VWcdr_PmLUPSl15NozUmA/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 16,
+                        "Name of faculty": "Mrs.N.Kasirathi",
+                        "Title of the Paper": "Smart Monitering and control of Electrical Appliance",
+                        "Name of Conference": "EMPOWER 2024",
+                        "Type of Conference National / Inter national": "9788-196-686994",
+                        "Organizer": "SRM University, Ramapuram campus",
+                        " Prceedings ISBN":"9788-196-686994",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1LZssB6_pNN5VWcdr_PmLUPSl15NozUmA/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 17,
+                        "Name of faculty": "Mr.V. Rengarajan",
+                        "Title of the Paper": "FT based neumarical relay",
+                        "Name of Conference": "EMPOWER 2025",
+                        "Type of Conference National / Inter national": "9788-196-686995",
+                        "Organizer": "SRM University, Ramapuram campus",
+                        " Prceedings ISBN":"9788-196-686995",
+                        "Attach E-Copy of Prceeding": "https://drive.google.com/file/d/1LZssB6_pNN5VWcdr_PmLUPSl15NozUmA/view?usp=sharing"
+                    },
+                    {
+                        "S.No": 18,
+                        "Name of faculty": "Mrs. M. Vijayalakshmi",
+                        "Title of the Paper": "Hardware Setup Investigation of Transferrable Solar Home-based Lighting System using IoT",
+                        "Name of Conference": "ICICT 2025",
+                        "Type of Conference National / Inter national": "979-8-3503-5929-9",
+                        "Organizer": "Amrita school of engineering ",
+                        " Prceedings ISBN":"979-8-3503-5929-9",
+                        "Attach E-Copy of Prceeding": "https://ieeexplore.ieee.org/document/10545009"
+                    }
+                   
+                ]
+            },
+            {
+                "CONSULTANCY": [
+                    {
+                        "S.No": 1,
+                        "Name of the Faculty": "Mr. V.Rengarajan",
+                        "Title of the Consultancy":"Lototo consulting –audit of various energy",
+                        "Funding Organisation": "Ashok Leyland",
+                        "Duration": "1 year",
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "Attach E-Copy of consultancy": null
+                    },
+                    {
+                        "S.No": 2,
+                        "Name of the Faculty": "Mr.V.Jagadeesh Babu",
+                        "Title of the Consultancy":"Power extraction from speed bumps",
+                        "Funding Organisation": "Ashok Leyland",
+                        "Duration": "1 year",
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "Attach E-Copy of consultancy": null
+                    }, 
+                    {
+                        "S.No": 3,
+                        "Name of the Faculty": "Dr.M.Karthikeyan",
+                        "Title of the Consultancy":"load test on universal motors",
+                        "Funding Organisation": "Preethi Industries",
+                        "Duration": "2 year",
+                        "Fund Received in Rs.": null,
+                        "Request and acceptance communication details": null,
+                        "Attach E-Copy of consultancy": null
+                    }
+                ]
+            },
+            {
+                "START-UP___TECHNOLOGY_TRANSFER": []
+            }
+        ]
+    }
+]
+}

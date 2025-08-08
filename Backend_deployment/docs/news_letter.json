@@ -1,0 +1,117 @@
+[
+  {
+    "dept_id": "004",
+    "years": {
+      "2020": [
+        "/static/pdfs/newsletter/004/2020.pdf "
+      ],
+      "2021": [
+        "/static/pdfs/newsletter/004/2021.pdf"
+      ],
+      "2022": [
+        "/static/pdfs/newsletter/004/2022.pdf"
+      ],
+      "2023": [
+        "/static/pdfs/newsletter/004/2023.pdf"
+      ]
+    }
+  },
+  {
+    "dept_id": "005",
+    "years": {
+      "2022": [
+        "/static/pdfs/newsletter/005/2022.pdf "
+      ],
+      "2023": [
+        "/static/pdfs/newsletter/005/2023.pdf",
+        "/static/pdfs/newsletter/005/VEEVACS_23.pdf"
+      ],
+      "2024": [
+        "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
+        "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
+      ]
+    }
+  },
+  {
+    "dept_id": "009",
+    "years": {
+      "2024": [
+        "/static/pdfs/newsletter/009/2024.pdf "
+      ]
+    }
+  },
+  {
+    "dept_id": "007",
+    "years": {
+      "2022-2023 (ODD)": [
+        "/static/pdfs/newsletter/007/2022-2023_odd.pdf "
+      ],
+      "2022-2023 (EVEN)": [
+        "/static/pdfs/newsletter/007/2022-2023_even.pdf"
+      ],
+      "2023-2024 (ODD)": [
+        "/static/pdfs/newsletter/007/2023-2024_odd.pdf"
+      ],
+      "2023-2024 (EVEN)": [
+        "/static/pdfs/newsletter/007/2023-2024_even.pdf"
+      ]
+    }
+  },
+  {
+    "dept_id": "011",
+    "years": {
+      "2013 - 2014": [
+        "/static/pdfs/newsletter/011/2013 14.pdf "
+      ],
+      "2014 - 2015": [
+        "/static/pdfs/newsletter/011/2014 15.pdf"
+      ],
+      "2015 - 2016": [
+        "/static/pdfs/newsletter/011/2015 16.pdf"
+      ],
+      "2016 - 2017": [
+        "/static/pdfs/newsletter/011/2016 17.pdf"
+      ],
+      "2017 - 2018": [
+        "/static/pdfs/newsletter/011/2017 18.pdf "
+      ],
+      "2018 - 2019": [
+        "/static/pdfs/newsletter/011/2018 19.pdf "
+      ],
+      "2019 - 2020": [
+        "/static/pdfs/newsletter/011/2019 20.pdf"
+      ],
+      "2020 - 2021": [
+        "/static/pdfs/newsletter/011/2020 21.pdf"
+      ],
+      "2021 - 2022": [
+        "/static/pdfs/newsletter/011/2021 22.pdf"
+      ],
+      "2022 - 2023": [
+        "/static/pdfs/newsletter/011/2022 23.pdf "
+      ],
+      "2023 - 2024": [
+        "/static/pdfs/newsletter/011/2023 24.pdf"
+      ],
+      "2024 - 2025": [
+        "/static/pdfs/newsletter/011/2024 25.pdf"
+      ]
+    }   
+  },
+  {
+    "dept_id": "013",
+    "years": {
+      "2022": [
+        "/static/pdfs/newsletter/013/DECEMBER 2022.pdf",
+        "/static/pdfs/newsletter/013/JUNE 2022.pdf"
+      ],
+      "2023": [
+         "/static/pdfs/newsletter/013/JUNE 2023.pdf",
+          "/static/pdfs/newsletter/013/DECEMBER 2023.pdf"
+      ],
+      "2024": [
+        "/static/pdfs/newsletter/013/JUNE 2024.pdf"
+     ]
+    }
+  }
+ ]
