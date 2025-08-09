@@ -977,7 +977,7 @@ def insert_help_desk():
 def insert_administration_sections():
     collection = db["administration"]
 
-    with open("/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
         admin_data = json.load(file)
 
         for section in admin_data:
