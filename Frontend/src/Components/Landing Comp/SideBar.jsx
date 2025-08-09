@@ -20,31 +20,17 @@ const Sidebar = (props) => {
         }
     }, [isOpen, activeIndex]);
 
-useEffect(() => {
-    if (isOpen) {
-        document.body.style.overflow = "hidden";
-        document.documentElement.style.overflow = "hidden"; // Lock html too
-        document.body.style.height = "100%";
-        document.documentElement.style.height = "100%";
-
-        // Prevent mobile touch scroll
-        const preventScroll = (e) => e.preventDefault();
-        document.addEventListener("touchmove", preventScroll, { passive: false });
-
-        return () => {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto";
-            document.body.style.height = "";
-            document.documentElement.style.height = "";
-            document.removeEventListener("touchmove", preventScroll);
+        }
+    
+        return () => {
+            document.body.style.overflow = "auto"; // Cleanup when component unmounts
         };
-    } else {
-        document.body.style.overflow = "auto";
-        document.documentElement.style.overflow = "auto";
-        document.body.style.height = "";
-        document.documentElement.style.height = "";
-    }
-}, [isOpen]);
+    }, [isOpen]);    
 
     const navigate = useNavigate();
     const socls = [
