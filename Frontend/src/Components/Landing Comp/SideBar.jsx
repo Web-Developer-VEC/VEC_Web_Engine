@@ -20,18 +20,18 @@ const Sidebar = (props) => {
         }
     }, [isOpen, activeIndex]);
 
-
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden"; // Lock html too
-            document.body.style.height = "100%";
-            document.documentElement.style.height = "100%";
-
         } else {
             document.body.style.overflow = "auto";
         }
-    }, [isOpen]);
+    
+        return () => {
+            document.body.style.overflow = "auto"; // Cleanup when component unmounts
+        };
+    }, [isOpen]);    
+
     const navigate = useNavigate();
     const socls = [
         {
