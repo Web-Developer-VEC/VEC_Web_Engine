@@ -20,7 +20,7 @@ def insert_about_us():
         for section in about_data:
             section_type = section["type"]
             document = {
-                "section": section_type,
+                "type": section_type,
                 "data": section["data"]
             }
             collection.insert_one(document)

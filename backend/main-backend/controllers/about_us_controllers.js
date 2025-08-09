@@ -3,9 +3,11 @@ const logError = require('../middlewares/logerror');
 const allowedSections = require('../models/about_us_models');
 // POST /about_us - Fetch a specific section from About Us
 async function getAboutUs(req, res) {
-  const { section } = req.body;
+  const { type } = req.body;
 
-  if (!section || !allowedSections.has(section)) {
+  console.log(type);
+
+  if (!type || !allowedSections.has(type)) {
     return res.status(400).json({ message: 'Invalid or missing section' });
   }
 
@@ -14,22 +16,19 @@ async function getAboutUs(req, res) {
 
   try {
     const document = await aboutUsCollection.findOne(
-      { section },
-      { projection: { _id: 0, section: 1, content: 1 } }
+      { type },
+      { projection: { _id: 0, type: 1, data: 1 } }
     );
 
     if (!document) {
-      return res.status(404).json({ message: `Section '${section}' not found` });
+      return res.status(404).json({ message: `Section '${type}' not found` });
     }
+    console.log(`Fetched section: ${type}`, document);
 
-    return res.status(200).json({
-      message: `'${section}' content fetched successfully`,
-      data: document
-    });
-
+    return res.status(200).json( document );
   } catch (error) {
-    console.error(`Error fetching About Us section '${section}':`, error);
-    await logError(req, error, `Error fetching About Us section '${section}'`, 500);
+    console.error(`Error fetching About Us section '${type}':`, error);
+    await logError(req, error, `Error fetching About Us section '${type}'`, 500);
     return res.status(500).json({ error: 'Internal server error while fetching About Us content' });
   }
 }
