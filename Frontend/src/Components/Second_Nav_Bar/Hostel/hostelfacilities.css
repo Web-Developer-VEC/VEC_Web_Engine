@@ -1,171 +1,126 @@
+/* hostelfacilities.css */
+
+/* Base styles */
 .facility {
-  position: relative;
-  overflow: hidden;
-  transition: min-height 0.5s ease-in-out;
+  width: 100%;
+  padding: 3rem 1rem;
+  color: #800000;
 }
 
 .hostel-head {
-  text-align: center;
   font-size: 2rem;
-  margin-bottom: 3%;
-  padding-top: 2.5vh;
-  margin-bottom: 2.5vh;
-  font-weight: bolder;
-  padding-bottom: 2.5vh;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #800000;
+}
+
+.dark .hostel-head {
+  color: #f3f3f3;
 }
 
 .facilities-wrapper {
-  width: 100%;
-  transition: all 0.5s ease-in-out;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Grid container */
 .hostal-fac-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: auto;
-  gap: 10px;
-  position: relative;
-  margin-bottom: 2vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
 }
 
+/* Facility item */
 .hostel-fac-item {
-  flex: 0 0 120px;
-  height: 450px;
-  border-radius: 0.5rem;
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-  box-shadow: 1px 5px 15px #3e370e;
-  position: relative;
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.dark .hostel-fac-item {
+  background: #2d2d2d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Image container */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.loading-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  transition: opacity 0.3s ease;
+}
+
+.dark .loading-placeholder {
+  background: #3d3d3d;
+}
+
+.facility-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  color: rgb(255, 255, 255);
+  /* transition: opacity 0.5s ease; */
 }
 
-/* 🔹 Hover Effect (Desktop Only) */
-@media (min-width: 769px) {
-  .hostel-fac-item:hover {
-    flex: 0 0 600px;
-    /*box-shadow: 1px 3px 15px #FDCC03;*/
-    transform: translateY(-30px);
-  }
-
-  .hostel-fac-item:hover .content {
-    opacity: 1;
-    transform: translateY(0%);
-    visibility: visible;
-  }
+/* Text content */
+.text-content {
+  padding: 1.5rem;
+  font-family: poppins, sans-serif;
 }
 
-/* 🔹 Content Animation */
-.hostel-fac-item .content {
-  font-size: 1.5rem;
-  /*color: #fff;*/
+.text-content h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.dark .text-content h2 {
+  color: #f3f3f3;
+}
+
+.text-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.dark .text-content p {
+  color: #ccc;
+}
+
+/* Loading container */
+.loading-container {
+  height: 100vh;
   display: flex;
   align-items: center;
-  padding: 15px;
-  opacity: 0;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
-  /*background: linear-gradient(0deg, rgba(253, 204, 3, 0.7) 0%, rgba(255, 255, 255, 0) 25%);*/
-  transform: translateY(100%);
-  transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
-  visibility: hidden;
-}
-.hostel-fac-item .content h2{
-  font-size: 2rem;
-  color: #fff;
+  justify-content: center;
 }
 
-
-/* Hover Effect on Desktop, Click Effect on Mobile */
-.hostel-fac-item:hover .content,
-.hostel-fac-item.expanded .content {
-  opacity: 1;
-  transform: translateY(0%);
-  visibility: visible;
-}
-
-/* 🔹 Click Expansion (Mobile Only) */
+/* Mobile expanded state */
 @media (max-width: 768px) {
-  .hostal-fac-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 85%;
-    gap: 8px;
-    margin: 0 auto;
-    /* Centers the container */
-    padding: 20px;
-    padding-bottom: 25px;
-    position: relative;
-  }
-
-  .hostel-fac-item {
-    width: 100%;
-    height: 180px;
-    /* Maintain proper mobile height */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    /* Default rounded corners */
-    z-index: 1;
-    /* Ensure all images remain in normal flow */
-  }
-
-  /* Expanded Image - Grows from its original position */
   .hostel-fac-item.expanded {
-    width: 125%;
-    /* Slightly larger */
-    height: 220px;
-    /* Slight increase in size */
-    transform: scale(1.2);
-    /* Smooth zoom */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    /* More rounded look when expanded */
-    z-index: 10;
-    /* Bring expanded image to front */
+    grid-column: 1 / -1;
   }
-
-  /* Ensure content inside the image appears properly */
-  .hostel-fac-item.expanded .content {
-    font-size: 100%;
-    /* Reduce content size */
-    opacity: 1;
-    transform: scale(0.9);
-    transition: transform 0.3s ease-in-out;
-  }
-  .hostel-fac-item.expanded .content h2{
-    font-size: 24px;
-    /* Reduce content size */
-    opacity: 1;
-    transform: scale(0.9);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  /* Other images remain visible */
-  .hostel-fac-item:not(.expanded) {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  /* Hide content on hover for mobile */
-  .hostel-fac-item:hover .content {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(100%);
-  }
-
-  /* Ensure content appears when clicked */
-  .hostel-fac-item.expanded .content {
-    opacity: 1 !important;
-    transform: translateY(0%) scale(0.9) !important;
-    visibility: visible !important;
-    text-align: center;
+  
+  .hostal-fac-container {
+    grid-template-columns: 1fr;
   }
 }

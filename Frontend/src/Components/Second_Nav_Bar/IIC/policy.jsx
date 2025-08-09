@@ -35,7 +35,7 @@ export default function IicFacPolicy({ data }) {
                 return (
                   <button
                     key={index}
-                    className={`px-6 py-3  font-semibold rounded-xl nirf-action-button cursor-pointer 
+                    className={`px-6 py-3  font-semibold rounded-xl nirf-action-button cursor-pointer w-100
                       ${isActive ? "bg-[#800000] text-white" : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-cewn"}
                     `}
                    onClick={() => {
