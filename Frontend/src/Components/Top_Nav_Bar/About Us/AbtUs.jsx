@@ -163,7 +163,8 @@ const AbtUs = ({ theme, toggle }) => {
                                         if (window.innerWidth <= 600) {
                                             window.open(UrlParser(url), "_blank");
                                         } else {
-                                            setSelectedPdf({ url: UrlParser(url), name: label });
+                                            // setSelectedPdf({ url: UrlParser(url), name: label });
+                                            window.open(UrlParser(url), "_blank");
                                         }
                                     }}
                                     className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text-drka hover:text-drkt'
