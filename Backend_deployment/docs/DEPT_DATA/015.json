@@ -350,15 +350,27 @@
   "category": "curriculum",
   "content": [
     {
-      "heading": "Curriculum & Syllabus - UG",
+      "heading": "Curriculum & Syllabus ",
       "syallbus": [
         {
-          "year": "R - 2019 A (Students admitted during 2021 and 2022)",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
+          "year": "R - 1st semester",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_1_23.pdf"
         },
-        {
-          "year": "R - 2023",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_23.pdf"
+         {
+          "year": "R - 2023 for electronics engineer",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_electronics_engineering.pdf"
+        },
+         {
+          "year": "R - 2023 for materials science",
+          "pdf_path":"/static/pdfs/curriculum/015/reg_material_science.pdf"
+        },
+         {
+          "year":  "R - 2023 for civil engineers",
+          "pdf_path":"/static/pdfs/curriculum/015/reg_civil_engineers.pdf"
+        },
+         {
+          "year":  "R - 2023 for computer engineers",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_computer_engineers.pdf"
         }
       ]
     },

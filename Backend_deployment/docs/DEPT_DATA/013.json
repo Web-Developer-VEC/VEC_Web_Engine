@@ -528,12 +528,8 @@
         ]
       },
       {
-        "category": "curriculam",
-        "content": [
-          {
-            "department_id": "013",
-            "department_name": "Mechanical Engineering (MECH)",
-            "regulation": [
+        "category": "curriculum",
+        "content":  [
                {
               "head":"Curriculum & Syllabus - UG",
               "data":[
@@ -548,8 +544,7 @@
             ]
           }
         ]
-          }
-        ]
+
       }
     ]
   },

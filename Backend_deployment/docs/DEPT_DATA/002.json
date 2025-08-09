@@ -314,11 +314,7 @@
       },
       {
         "category": "curriculum",
-        "content": [
-          {
-            "department_id": "002",
-            "department_name": "Automobile Engineering (AUTO)",
-            "regulation": [
+        "content":  [
               {
                 "heading":"Curriculum & Syllabus",
                 "syllabus":[
@@ -334,8 +330,6 @@
               }
             ]
           }
-        ]
-      }
     ]
     },
   {

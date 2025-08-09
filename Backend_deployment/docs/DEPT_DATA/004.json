@@ -145,12 +145,12 @@
         [
            {
             "dept_id":"004",
-            "Name": "Dr. JEBAMALAR A",
+            "name": "Dr. JEBAMALAR A",
             "department_name": "Civil Engineering (CIVIL)",
-            "Unique_id": "VEC-004-01-145",
-            "Qualification": ["M.E.", "Ph.D"],
-            "Hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
-            "Image": "/static/images/hods/civil.webp",
+            "unique_id": "VEC-004-01-145",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
+            "hod_image": "/static/images/hods/civil.webp",
             "designation": "Professor & Head, Dept of Civil Engineering",
             "Social_media_links": 
                 {
@@ -184,12 +184,12 @@
         "category": "head_of_department",
         "members": [ {
             "dept_id":"004",
-            "Name": "Dr. JEBAMALAR A",
+            "name": "Dr. JEBAMALAR A",
             "department_name": "Civil Engineering (CIVIL)",
-            "Unique_id": "VEC-004-01-145",
-            "Qualification": ["M.E.", "Ph.D"],
-            "Hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
-            "Image": "/static/images/hods/civil.webp",
+            "unique_id": "VEC-004-01-145",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
+            "hod_image": "/static/images/hods/civil.webp",
             "designation": "Professor & Head, Dept of Civil Engineering",
             "Social_media_links": 
                 {
@@ -326,16 +326,10 @@
             "dept_id": "004"
           }
         ]
-      }
-    ]
-    },
-    {
+      },
+      {
         "category": "curriculum",
         "content": [
-          {
-            "department_id": "004",
-            "department_name": "Civil Engineering (CIVIL)",
-            "regulation": [
               {
                 "heading":"Curriculum & Syllabus",
                 "syllabus":[
@@ -350,9 +344,9 @@
               ]
               }
             ]
-          }
-        ]
-      },
+      }
+    ]
+  },
   {
     "type": "newsletter",
     "data": 
@@ -398,7 +392,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/civil.webp",
             "name": "Civil Engineering (CIVIL)",
             "dept_id": "004"
           }

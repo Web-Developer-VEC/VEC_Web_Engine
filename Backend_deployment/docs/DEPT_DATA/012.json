@@ -462,23 +462,8 @@
         ]
       },
       {
-        "category": "curriculam",
-        "content": [
-          {
-            "department_id": "012",
-            "department_name": "Mathematics ",
-            "regulation": [
-              {
-                "year": "",
-                "pdf_path": ""
-              },
-              {
-                "year": "",
-                "pdf_path": ""
-              }
-            ]
-          }
-        ]
+        "category": "curriculum",
+        "content": []
       }
     ]
   },

@@ -7,8 +7,8 @@
         "content": [
           {
             "about_the_department_image_path": "/static/images/department_data/cse.webp",
-            "name": "Computer Science & Engineering (CSE)",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },
@@ -149,15 +149,13 @@
         "content": [
            {
             "header": "PO 1",
-            "content":"Proficient in designing and implementing computing solutions, and use the fundamental knowledge of algorithms, networking Principles, web design, cloud computing, and data analytics to identify research gaps and pioneer innovative solutions"
-
+            "content":"Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
 
                 
           },
           {
             "header": "PO 2",
-            "content": "Ability to refine ethical approaches for addressing environmental and social issues, while enhancing interdisciplinary project management skills using IT tools to meet industry and societal demands effectively."
-
+            "content":"Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
 
 
           }
@@ -172,8 +170,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science & Engineering (CSE)",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },
@@ -183,7 +181,7 @@
           {
             "department_id": "005",
             "name": "Dr. MURUGESWARI B",
-            "department_name": "Computer Science & Engineering (CSE) ",
+            "department_name": "M.E. Computer Science Engineering ",
             "unique_id": "VEC-005-01-120",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message":["The department is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics; professionalism and students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan-Do-Check-Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants."],
@@ -210,8 +208,8 @@
         "content": [
           {
             "banner_image_path": "/static/images/department_data/cse.webp",
-            "name": "Computer Science & Engineering (CSE) ",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering ",
+            "dept_id": "016"
           }
         ]
       },
@@ -822,8 +820,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science & Engineering (CSE)",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },
@@ -831,7 +829,7 @@
         "category": "curriculum",
         "content": [
           {
-            "heading": "Curriculum & Syllabus - UG",
+            "head": "Curriculum & Syllabus - UG",
             "syllabus": [
             
                    {
@@ -873,8 +871,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name":"Computer Science & Engineering (CSE) ",
-            "dept_id": "005"
+            "name":"M.E. Computer Science Engineering ",
+            "dept_id": "016"
           }
         ]
       },
@@ -882,18 +880,18 @@
   "category": "newsletter",
   "content":[
        {
-      "year":"2022",
-      "pdf_path":["/static/pdfs/newsletter/005/2022.pdf"]
+      "years":"2022",
+      "pdf_path":"/static/pdfs/newsletter/005/2022.pdf"
        },
        {
-      "year":"2023",
+      "years":"2023",
       "pdf_path":[
         "/static/pdfs/newsletter/005/2023.pdf",
         "/static/pdfs/newsletter/005/VEEVACS_23.pdf"
                  ]
        },
        {
-      "year":"2024",
+      "years":"2024",
       "pdf_path": [
         "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
         "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
@@ -910,8 +908,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science & Engineering (CSE) ",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering ",
+            "dept_id": "016"
           }
         ]
       },
@@ -1058,8 +1056,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science Engineering ",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering ",
+            "dept_id": "016"
           }
         ]
       },
@@ -1072,7 +1070,7 @@
       {
         "category": "student_achievements_details",
         "images":[
-    
+    [
     {
         "image_path": "/static/images/student_activities/005/1.webp",
         "event_name": "Code Debugging",
@@ -1109,7 +1107,7 @@
         "image_content": "Kamilhaasan A, Abinand P and Fahrudeen M has won first place in Techathon - AI/ML Challenge at IIT Madras Shaastra",
         "date": "2024-09-28"
     }
-
+]
 ]
       }
     ]
@@ -1121,8 +1119,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science Engineering",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },
@@ -1164,8 +1162,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science Engineering",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },
@@ -1183,8 +1181,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Computer Science Engineering",
-            "dept_id": "005"
+            "name": "M.E. Computer Science Engineering",
+            "dept_id": "016"
           }
         ]
       },

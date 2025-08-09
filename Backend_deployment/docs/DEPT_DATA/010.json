@@ -347,13 +347,8 @@
         ]
       },
       {
-        "category": "curriculam",
+        "category": "curriculum",
         "content": [
-          {
-            "department_id": "010",
-            "department_name": "English",
-            "regulation": []
-          }
         ]
       }
     ]

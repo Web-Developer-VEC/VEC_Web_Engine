@@ -6,7 +6,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "about_the_department_image_path": "/static/images/department_data/cyber.webp",
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
@@ -126,7 +126,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -168,7 +168,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -197,7 +197,6 @@
       {
         "category": "teaching_staff",
         "members": [
-          [
             {
               "name": "Ms. AKSAYA DHARANI K",
               "designation": "Assistant Professor",
@@ -288,7 +287,6 @@
               "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
               "resume_pdf": ""
             }
-          ]
         ]
       },
       {
@@ -320,32 +318,26 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
         ]
       },
       {
-        "category": "curriculam",
+        "category": "curriculum",
         "content": [
           {
-            "department_id": "006",
-            "department_name": "Computer Science and Engineering (CYBER SECURITY)",
-            "regulation": [
+            "heading":"Curriculum & Syllabus",
+            "syllabus": [
               {
-                "head": "curriculum & syllabus",
-                "data": [
-                  {
-                    "year": "R - 2023",
-                    "pdf_path": "/static/pdfs/curriculum/006/reg_23.pdf"
-                  }
+                "year": "R - 2023",
+                "pdf_path":"/static/pdfs/curriculum/006/reg_23.pdf"
+              }
                 ]
               }
             ]
           }
-        ]
-      }
     ]
   },
   {
@@ -355,7 +347,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -370,7 +362,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -380,7 +372,8 @@
         "category": "department_activities",
         "content": [
           {
-            "2025": [
+            "year":"2025",
+            "activities": [
               {
                 "date": "18/02/2025",
                 "name_of_event": "Seminar on Burp Suite: A Cybersecurity Tool ",
@@ -411,7 +404,8 @@
             ]
           },
           {
-            "2024": [
+            "year":"2024",
+            "activities": [
               {
                 "date": "17/08/2024",
                 "name_of_event": "A Seminar On A Game World-Introduction to C# ",
@@ -443,7 +437,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -487,7 +481,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -527,7 +521,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }
@@ -564,7 +558,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/cyber.webp",
+            
             "name": "Computer Science and Engineering (CYBER SECURITY)",
             "dept_id": "006"
           }

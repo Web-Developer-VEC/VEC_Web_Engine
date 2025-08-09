@@ -258,8 +258,8 @@
     "designation": "Assistant Professor",
     "unique_id": "VEC-001-04-086",
     "socialmedia_links": {
-      "linkedin": "Nil",
-      "googlescholar": "Nil",
+      "linkedin": "",
+      "googlescholar": "",
       "researchgate": "",
       "orchidprofile": "0009-0002-6089-3480",
       "publonprofile": "",
@@ -274,7 +274,7 @@
     "unique_id": "VEC-001-04-087",
     "socialmedia_links": {
       "linkedin": "mythilisomu",
-      "googlescholar": "nil",
+      "googlescholar": "",
       "researchgate": "",
       "orchidprofile": "",
       "publonprofile": "",
@@ -518,11 +518,7 @@
       },
       {
         "category": "curriculum",
-        "content": [
-          {
-            "department_id": "001",
-            "department_name": "Artificial Intelligence and Data Science (AI&DS)",
-            "regulation": [
+        "content":[
               {
                 "heading":"Curriculum & Syllabus",
                 "syllabus":[
@@ -537,8 +533,7 @@
               ]
               }
             ]
-          }
-        ]
+          
       }
     ]
   },

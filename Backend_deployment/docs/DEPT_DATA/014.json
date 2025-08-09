@@ -165,22 +165,7 @@
       },
       {
         "category": "teaching_staff",
-        "members": [
-           {
-             "name": "Mr. MUTHIAH M M",
-            "designation": "Assistant Professor & Head",
-            "unique_id": "VEC-014-01-180",
-            "socialmedia_links":{
-              "LinkedIn": "www.linkedin.com/in/muthiah-m-m-190398355",
-              "Google Scholar": "https://scholar.google.com/citations?hl=en&amp;user=1INaLmkAAAAJ",
-              "Research Gate":"",
-              "Orchid Profile": "",
-              "Publon": "",
-              "Scopus": ""
-            },
-            "image_path":"/static/images/profile_photos/014/VEC-014-01-180.webp",
-            "resume_pdf":""
-          }]
+        "members": []
         },
       {
         "category": "non_teaching_staff",
@@ -204,11 +189,6 @@
       {
         "category": "curriculam",
         "content": [
-          {
-            "name": "தமிழ்த்துறை",
-            "dept_id": "014",
-            "regulation": []
-          }
         ]
       }
     ]

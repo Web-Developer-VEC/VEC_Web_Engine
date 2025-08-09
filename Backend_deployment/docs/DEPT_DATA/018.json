@@ -6,10 +6,9 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
             "about_the_department_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -128,9 +127,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -138,7 +136,7 @@
         "category": "hod_details",
         "content": [
           {
-            "department_id": "007",
+            "department_id": "018",
             "name": "Dr. SURESH KUMAR K",
             "department_name": "Electrical & Electronics Engineering (EEE)",
             "unique_id": "VEC-007-01-125",
@@ -170,9 +168,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -455,9 +452,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -465,7 +461,7 @@
         "category": "curriculum",
         "content": [
         {
-          "heading": "Curriculum & Syllabus - UG",
+          "heading": "curriculum & syllabus - UG",
           "syllabus": [
             {
               "year": "R - 2019 A (Students admitted during 2021 and 2022)",
@@ -478,7 +474,7 @@
           ]
         },
         {
-          "heading": "Curriculum & Syllabus - PG",
+          "heading": "curriculum & syllabus - PG",
           "syllabus": [
             {
               "year": "R - 2019 A (Students admitted during 2021 and 2022)",
@@ -501,9 +497,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -537,9 +532,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -715,9 +709,9 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+      
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -783,9 +777,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -853,9 +846,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       },
@@ -882,9 +874,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "banner_image_path": "/static/images/department_data/eee.webp",
-            "name": "Electrical & Electronics Engineering (EEE)",
-            "dept_id": "007"
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
           }
         ]
       }

@@ -125,12 +125,12 @@
         [
            {
                 "dept_id":"003",
-                "Name": "Dr. MOHAMED SIKKANDER A",
+                "name": "Dr. MOHAMED SIKKANDER A",
                 "department_name": "Chemistry",
                 "Unique_id": "VEC-003-01-110",
                 "Qualification": ["M.Sc.","B.Ed.","M.Phil.","Ph.D"],
-                "Hod_message": ["As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"],
-                "Image": "/static/images/hods/chem.webp",
+                "hod_message": ["As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"],
+                "hod_image": "/static/images/hods/chem.webp",
                 "designation": "Associate Professor & Head",
                 "Social_media_links": 
                 {
@@ -232,7 +232,7 @@
               "googlescholar": "https://scholar.google.com/citations?user=DcavHoIAAAAJ&hl=en",
               "researchgate": "https://www.researchgate.net/profile/Anitha-Vigneswaran-2",
               "orchidprofile": "https://orcid.org/0000-0002-8178-4390",
-              "publonprofile": "nil",
+              "publonprofile": "",
               "scopus": "https://www.webofscience.com/wos/author/record/AGO-1917-2022"
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-108.webp",
@@ -374,11 +374,7 @@
       },
       {
         "category": "curriculum",
-        "content": [
-          {
-            "department_id": "003",
-            "department_name": "Chemistry",
-            "regulation": [
+        "content":[
               {
                 "heading":"Curriculum & Syllabus",
                 "syllabus":[
@@ -390,8 +386,7 @@
               }
             ]
           }
-        ]
-      }
+        
     ]
   },
   {
