@@ -1,21 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const PdfOpener = ( {pdfRoute} ) => {
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
 
-  const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+const PdfOpener = ({ pdfRoute }) => {
+  const [selectedPdf, setSelectedPdf] = useState(null);
+
+  const openPdf = () => {
+    const url = UrlParser(pdfRoute) + "#toolbar=0";
+    if (window.innerWidth >= 1024) {
+      setSelectedPdf({ url, name: "Transport Routes" });
+    } else {
+      window.open(url, "_blank");
+    }
   };
+
+  const closeModal = () => setSelectedPdf(null);
 
   return (
     <div style={styles.container}>
       <button
         className="bg-secd dark:bg-drks p-3 mt-6 mb-2 rounded-xl hover:bg-accn text-text hover:text-white"
-        onClick={() => window.open(UrlParser(pdfRoute), "_blank")}
+        onClick={openPdf}
       >
         View Transport Routes
       </button>
+
+      {/* Modal */}
+      {selectedPdf && (
+        <div className="pdf-modal">
+          <div className="pdf-modal-content">
+            <button className="pdf-close-button" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2>{selectedPdf.name}</h2>
+            <iframe
+              src={selectedPdf.url}
+              title={selectedPdf.name}
+              className="pdf-iframe"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -26,59 +57,6 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-  },
-  button: {
-    padding: "12px 24px",
-    fontSize: "16px",
-    backgroundColor: "#ffeb3b", // Yellow color
-    color: "#000", // Black text for better contrast
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    marginBottom: "20px",
-    transition: "background-color 0.3s",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-    ":hover": {
-      backgroundColor: "#fdd835", // Darker yellow on hover
-    },
-  },
-  pdfContainer: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    backgroundColor: "white",
-    width: "90%",
-    maxWidth: "800px",
-  },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "16px",
-    borderBottom: "1px solid #eee",
-  },
-  title: {
-    margin: 0,
-    fontSize: "18px",
-    color: "#333",
-  },
-  closeButton: {
-    background: "none",
-    border: "none",
-    fontSize: "24px",
-    cursor: "pointer",
-    color: "#666",
-    padding: "0 8px",
-    ":hover": {
-      color: "#333",
-    },
-  },
-  embed: {
-    width: "100%",
-    height: "75vh",
-    minHeight: "500px",
-    border: "none",
-    borderRadius: "0 0 8px 8px",
   },
 };
 

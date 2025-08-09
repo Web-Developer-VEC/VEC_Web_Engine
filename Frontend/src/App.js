@@ -40,6 +40,7 @@ import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
 import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
 import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
+import Verticals from "./Components/Top_Nav_Bar/Exams/verticals.jsx"
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
 import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
@@ -89,8 +90,8 @@ import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
 import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
 import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
-import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
-import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import ErrorLogPage from "./Components/Developer_stuffs/errorlog/errorlog.jsx";
+import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
 import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
@@ -227,9 +228,7 @@ const App = () => {
             {/* The rest of the routes */}
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
                     {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
-                    {/* Conditionally render Head and Footer */}
-                    
-                    
+                    {/* Conditionally render Head and Footer */}  
                     <>
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
@@ -263,6 +262,7 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
+                                <Route path="/verticals" drk element={<Verticals toggle={toggle} theme={theme}/>}/>
                                 <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>

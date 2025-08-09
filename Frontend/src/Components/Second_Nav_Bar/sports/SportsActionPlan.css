@@ -88,14 +88,14 @@
 .sports_card.training {
   grid-column: span 2;  /* This will make the sports_card span across two columns in the grid */
 }
-.additional-info ul {
+/* .additional-info ul {
   padding-left: 20px;
-}
+} */
 
-.additional-info li {
+/* .additional-info li {
   font-size: 18px;
   line-height: 1.6;
-}
+} */
 
 .additional-info li::before {
   content: '•';

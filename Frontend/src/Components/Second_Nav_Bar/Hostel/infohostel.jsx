@@ -15,7 +15,7 @@ const InfoHostel = ({ hostelData }) => {
   }
 
   return (
-    <div className="infohostel-container bg-prim dark:bg-drkp">
+    <div className="infohostel-container bg-prim dark:bg-drkp font-[poppins]">
       <h1 className="infohostel-title text-brwn dark:text-drkt capitalize">{data.category}</h1>
 
       <section className="HI-grid">

@@ -3,6 +3,9 @@ import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
 import axios from 'axios';
 import { useNavigate } from "react-router";
+import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from 'react-icons/fa';
+import { SiPublons } from 'react-icons/si';
+import { FaGoogleScholar } from 'react-icons/fa6';
 
 const Princ = ({theme, toggle}) => {
   const [data, setData] = useState(null); // State to store fetched data
@@ -32,6 +35,7 @@ const Princ = ({theme, toggle}) => {
         const result = response.data.data
         setData(result);
         setLoading(false);
+        console.log(result)
       } catch (err) {
         setError(err.message);
         console.error("Error fetching the Principal data",err);
@@ -92,7 +96,6 @@ const Princ = ({theme, toggle}) => {
                   {/* Image */}
                   {!hasError ? (
                     <div >
-
                       <img
                           className={`h-[25vh] lg:h-[45vh] w-auto rounded-xl transition-opacity duration-500 
                             ${isLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -104,8 +107,46 @@ const Princ = ({theme, toggle}) => {
                               setIsLoading(false);
                             }}
                             />
-                       <div className="text-center ">
+                      <div className="text-center ">
                       <span className="text-2xl font-semibold block font-poppins mt-2">{data?.name}</span>
+                      <div className="socialLinks flex flex-row gap-3 justify-center mt-4 text-xl">
+                              
+                          <a
+                            href={data?.social_links["LinkedIn Profile"]}
+                            className="socialLink text-accn dark:text-drka hover:text-secd dark:hover:text-drks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaLinkedin />
+                          </a>
+                                 
+                          <a
+                            href={data?.social_links["Google Scholar Profile"]}
+                            className="socialLink text-accn dark:text-drka hover:text-secd dark:hover:text-drks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaGoogleScholar />
+                          </a>
+            
+                          <a
+                            href={data?.social_links[ "Research Gate"]}
+                            className="socialLink text-accn dark:text-drka hover:text-secd dark:hover:text-drks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaResearchgate />
+                          </a>
+                      
+                          <a
+                            href={data?.social_links[ "Scopus Author Profile"]}
+                            className="socialLink text-accn dark:text-drka hover:text-secd dark:hover:text-drks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaBook />
+                          </a>
+                      </div>
                       <span className="text-lg font-bold text-accn dark:text-drka block font-poppins">
                         {/* <button
                   //  onClick={() => navigate(`/facultyprofile/${uid}`)}
@@ -136,3 +177,15 @@ const Princ = ({theme, toggle}) => {
 };
 
 export default Princ;
+                        
+              
+                      
+                  
+                
+                            
+                             
+                                    
+                             
+                           
+                              
+                                

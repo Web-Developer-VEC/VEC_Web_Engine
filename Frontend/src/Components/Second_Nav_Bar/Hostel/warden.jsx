@@ -40,10 +40,10 @@ export default function Warden({ hostelData}) {
 
   return (
     <>
-      <h2 className="warden-heading1 text-brwn text-3xl font-bold  dark:text-drkt mt-10">Wardens</h2>
+      <h2 className="warden-heading1 text-brwn text-3xl font-bold  dark:text-drkt mt-10 font-[poppins]">Wardens</h2>
 
       {/* Chief and Deputy */}
-      <div className="warden-top-column">
+      <div className="warden-top-column font-[poppins]">
         {[chief, chiefDeputy].map((warden, index) => (
           <div key={index} className="warden-card-flex">
             <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
@@ -57,8 +57,8 @@ export default function Warden({ hostelData}) {
       </div>
 
       {/* Boys Wardens */}
-      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10">Boys Warden</h2>
-      <div className="warden-row">
+      <h2 className="warden-section-title text-brwn dark:text-drkt mt-10 font-[poppins]">Boys Warden</h2>
+      <div className="warden-row font-[poppins]">
         {boysWardens.map((warden, index) => (
           <div key={index} className="warden-card-flex">
             <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
@@ -73,7 +73,7 @@ export default function Warden({ hostelData}) {
 
       {/* Girls Wardens */}
       <h2 className="warden-section-title text-brwn dark:text-drkt mt-10">Girls Warden</h2>
-      <div className="warden-row">
+      <div className="warden-row font-[poppins]">
         {girlsWardens.map((warden, index) => (
           <div key={index} className="warden-card-flex">
             <img src={UrlParser(warden?.image_path)} alt={warden?.warden_name} />
