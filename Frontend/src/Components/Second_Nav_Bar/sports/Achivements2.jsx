@@ -74,26 +74,32 @@ const Achievements1 = ({ data }) => {
             </div>
           )}
 
-          <div className={styles.sportsAchievementsclass}>
-            <button
-              className={`${styles.sportsAchievementsbutton} ${showZone === "zone" ? styles.active : ""}`}
-              onClick={() => handleZoneClick("zone")}
-            >
-              Zone
-            </button>
-            <button
-              className={`${styles.sportsAchievementsbutton} ${showZone === "interzone" ? styles.active : ""}`}
-              onClick={() => handleZoneClick("interzone")}
-            >
-              Inter Zone
-            </button>
-            <button
-              className={`${styles.sportsAchievementsbutton} ${showZone === "others" ? styles.active : ""}`}
-              onClick={() => handleZoneClick("others")}
-            >
-              Others
-            </button>
-          </div>
+          <div className="flex flex-wrap gap-6 justify-center items-center mb-6">
+  <button
+    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "zone" ? "ring-2 ring-black" : ""
+    }`}
+    onClick={() => handleZoneClick("zone")}
+  >
+    Zone
+  </button>
+  <button
+    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "interzone" ? "ring-2 ring-black" : ""
+    }`}
+    onClick={() => handleZoneClick("interzone")}
+  >
+    Inter Zone
+  </button>
+  <button
+    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "others" ? "ring-2 ring-black" : ""
+    }`}
+    onClick={() => handleZoneClick("others")}
+  >
+    Others
+  </button>
+</div>
 
           <div ref={sectionRef}>
             {showZone === "zone" ? (
