@@ -183,12 +183,12 @@
             "hod_image": "/static/images/hods/auto.webp",
             "designation": "Professor & Head, Dept of Automobile Engineering",
             "Social_media_links": {
-                "LinkedIn": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-                "Google Scholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
-                "Research Gate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
-                "Orchid Profile": "",
-                "Publon": "",
-                "Scopus": ""
+                "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+                "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
+                "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
             },
           
             "image_path":"/static/images/hods/auto.webp",
@@ -320,8 +320,8 @@
             "department_name": "Automobile Engineering (AUTO)",
             "regulation": [
               {
-                "head":"Curriculum & Syllabus",
-                "data":[
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
                 {
                   "year": "R - 2023",
                   "pdf_path": "/static/pdfs/curriculum/002/reg_23.pdf"
@@ -370,8 +370,8 @@
         "category": "department_activities",
         "content": [
             {
-           "2025": 
-           [
+           "year":"2025", 
+           "activities":[
                 {
                 "date": "17.02.2025",
                 "name_of_event": "Energy and Fuel Users Association of India (ENFUSE) Professional Society Student Chapter, Saksham 2025",
@@ -384,8 +384,8 @@
             ]
         },
         {
-            "2024":
-            [
+           "year":"2024",
+            "activities":[
                 {
                 "date": "01.03.2024",
                 "name_of_event": "Student Technical National Level Symposium CARAXE 24",
@@ -443,8 +443,8 @@
             ]
         },
         {
-            "2023":
-            [
+           "year":"2023",
+            "activities":[
                 {
                 "date": "10.02.2023",
                 "name_of_event": "Virtual Hands-on Training on Automotive Components and Electric Vehicles",
@@ -457,8 +457,8 @@
             ]
         },
         {
-           "2022": 
-            [
+          "year":"2022", 
+            "activities":[
                 {
                 "date": "24.12.2022",
                 "name_of_event": "One Day Hands-on Training Workshop on 'Patent Drafting for KAPILA Scheme'",
@@ -471,8 +471,8 @@
             ]
         },
         {
-           "2018": 
-            [
+          "year":"2018", 
+            "activities":[
                 {
                 "date": "10.02.2018",
                 "name_of_event": "Dirt Bike",
@@ -485,8 +485,8 @@
             ]
         },
         {
-            "2017":
-            [
+          "year":"2017",
+            "activities":[
                 {
                 "date": "18.03.2017",
                 "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2017 Sponsored by ISTE, New Delhi",
@@ -517,8 +517,8 @@
             ]        
         },
         {
-            "2016":
-            [
+          "year":"2016",
+           "activities": [
                 {
                 "date": "24.09.2016",
                 "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
@@ -531,8 +531,8 @@
             ]
         },
         {
-            "2015":
-            [
+          "year":"2015",
+          "activities":  [
                 {
                 "date": "23.09.2015",
                 "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",

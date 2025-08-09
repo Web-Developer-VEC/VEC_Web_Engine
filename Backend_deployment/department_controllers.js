@@ -38,6 +38,7 @@ async function getDepartmentSection(req, res) {
     return res.status(200).json(document);
 
   } catch (error) {
+    console.log("here1");
     console.error('Error fetching department section:', error);
     await logError(req, error, 'Error fetching department section', 500);
     return res.status(500).json({ error: 'Internal Server Error' });

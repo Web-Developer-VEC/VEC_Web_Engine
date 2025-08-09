@@ -134,13 +134,13 @@
                 "designation": "Associate Professor & Head",
                 "Social_media_links": 
                 {
-                    "LinkedIn": "www.linkedin.com/in/dr-abdul-razak-mohamed-sikkander-51485246",
-                    "Google Scholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
-                    "Scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
-                    "Orchid":"https://orcid.org/0000-0002-8458-7448",
-                    "Research Gate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
-                    "Publon": "https://www.webofscience.com/wos/author/record/21718142",
-                    "Sciprofiles":"https://sciprofiles.com/profile/16397"
+                    "linkedin": "www.linkedin.com/in/dr-abdul-razak-mohamed-sikkander-51485246",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
+                    "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
+                    "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+                    "sciprofiles":"https://sciprofiles.com/profile/16397"
                 }
             }
         ]
@@ -173,13 +173,13 @@
         "designation": "Associate Professor & Head",
         "Social_media_links": 
           {
-            "LinkedIn": "www.linkedin.com/in/dr-abdul-razak-mohamed-sikkander-51485246",
-            "Google Scholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
-            "Scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
-            "Orchid":"https://orcid.org/0000-0002-8458-7448",
-            "Research Gate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
-            "Publon": "https://www.webofscience.com/wos/author/record/21718142",
-            "Sciprofiles":"https://sciprofiles.com/profile/16397"
+            "linkedin": "www.linkedin.com/in/dr-abdul-razak-mohamed-sikkander-51485246",
+            "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+            "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
+            "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
+            "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+            "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+            "sciprofiles":"https://sciprofiles.com/profile/16397"
           },
           
           "image_path":"/static/images/hods/chem.webp",
@@ -380,8 +380,8 @@
             "department_name": "Chemistry",
             "regulation": [
               {
-                "head":"Curriculum & Syllabus",
-                "data":[
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
                 {
                   "year": "R - 2023",
                   "pdf_path": "/static/pdfs/curriculum/003/reg_23.pdf"

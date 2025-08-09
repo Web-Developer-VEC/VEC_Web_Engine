@@ -1,6 +1,7 @@
 const express = require('express');
 const createRateLimiter = require('../middlewares/ratelimiter');
 const xss = require('../middlewares/xss');
+const sanitize = require('../middlewares/sanitizers/sanitize_department');
 const {getDepartmentSection } = require('../controllers/department_controllers');
 
 

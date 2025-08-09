@@ -351,9 +351,8 @@
         "category": "curriculum",
         "content": [
           {
-            "department_id": "017",
-            "department_name": "Master of Business Administration (MBA)",
-            "regulation": [
+            "heading":"curriculum & syllabus",
+            "syllabus": [
               {
                 "year": "R - 2019 A (Students admitted during 2021 and 2022)",
                 "pdf_path": "/static/pdfs/curriculum/017/mba_21.pdf"

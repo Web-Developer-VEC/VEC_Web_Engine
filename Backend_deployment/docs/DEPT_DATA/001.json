@@ -146,12 +146,12 @@
             "hod_image": "/static/images/hods/aids.webp",
             "designation": "Professor & Head, Dept of Artificial Intelligence and Data Science",
             "Social_media_links": {
-              "LinkedIn": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
-              "Google Scholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
-              "Research Gate": "https://www.researchgate.net/profile/Pandu-Visu",
-              "Orchid Profile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
-              "Publon": "https://www.webofscience.com/wos/author/record/21718142",
-              "Scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
+              "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+              "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+              "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+              "scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
             }
           }
         ]
@@ -178,12 +178,12 @@
             "designation":"Professor & Head, Dept of Artificial Intelligence and Data Science",
             "unique_id":"VEC-001-01-077",
             "socialmedia_links":{
-            "LinkedIn": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
-            "Google Scholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
-            "Research Gate": "https://www.researchgate.net/profile/Pandu-Visu",
-            "Orchid Profile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
-            "Publon": "https://www.webofscience.com/wos/author/record/21718142",
-            "Scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
+            "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+            "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+            "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+            "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
+            "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+            "scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
         },
             "image_path":"/static/images/hods/aids.webp",
             "resume_pdf":""
@@ -524,8 +524,8 @@
             "department_name": "Artificial Intelligence and Data Science (AI&DS)",
             "regulation": [
               {
-                "head":"Curriculum & Syllabus",
-                "data":[
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
                 {
                   "year": "R - 2023",
                   "pdf_path": "/static/pdfs/curriculum/001/reg_23.pdf"
@@ -574,8 +574,8 @@
         "category": "department_activities",
         "content": [
             {
-           "2025": 
-           [
+           "year":"2025", 
+           "activities":[
                 {
                 "date": "20-2-2025",
                 "name_of_event": "Workshop On Full-Stack Microservices Bootcamp",
@@ -615,8 +615,8 @@
             ]
         },
         {
-            "2024":
-            [
+            "year":"2024",
+           "activities": [
                 {
                 "date": "05/03/2024",
                 "name_of_event": "Seminar on Career Opportunity in Data Science with Table and power BI",
@@ -647,8 +647,8 @@
             ]
         },
         {
-            "2023":
-            [
+           "year": "2023",
+            "activities":[
                 {
                 "date": "06/10/2023",
                 "name_of_event": "Seminar on Development of IOT Applications",
@@ -724,8 +724,8 @@
             ]
         },
         {
-           "2022": 
-            [
+          "year": "2022", 
+            "activities":[
                 {
                 "date": "1.11.2022&\n2.11.2022",
                 "name_of_event": "Workshop on Artificial Intelligence and deep learning",
@@ -1061,7 +1061,7 @@
       }
     ]
   },
-  {
+{
     "type": "research",
     "data": [
       {
@@ -1078,33 +1078,37 @@
         "content":
         [
           {
-            "2022 - 2023": [
-      {
-        "name": "Book",
-        "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
-      },
-      {
-        "name": "Funded Proposal",
-        "pdf_path": "/static/pdfs/research/001/2223/Funded Proposals 22-23.pdf"
-      },
-      {
-        "name": "Journal Publications",
-        "pdf_path": "/static/pdfs/research/001/2223/Journal Publications 22-23.pdf"
-      },
-      {
-        "name": "International and National Conferences",
-        "pdf_path": "/static/pdfs/research/001/2223/International and National Conferences 22-23.pdf"
-      },
-      {
-        "name": "Internship",
-        "pdf_path": "/static/pdfs/research/001/2223/Internship 22-23.pdf"
-      },
-      {
-        "name": "Patent",
-        "pdf_path": "/static/pdfs/research/001/2223/Patent Details 22-23.pdf"
-      }
-    ],
-    "2023 - 2024": [
+            "year": "2022 - 2023",
+            "research": [
+              {
+                "name": "Book",
+                "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
+              },
+              {
+                "name": "Funded Proposal",
+                "pdf_path": "/static/pdfs/research/001/2223/Funded Proposals 22-23.pdf"
+              },
+              {
+                "name": "Journal Publications",
+                "pdf_path": "/static/pdfs/research/001/2223/Journal Publications 22-23.pdf"
+              },
+              {
+                "name": "International and National Conferences",
+                "pdf_path": "/static/pdfs/research/001/2223/International and National Conferences 22-23.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/research/001/2223/Internship 22-23.pdf"
+              },
+              {
+                "name": "Patent",
+                "pdf_path": "/static/pdfs/research/001/2223/Patent Details 22-23.pdf"
+              }
+    ]
+  },
+  {
+    "year": "2023 - 2024",
+    "research": [
       {
         "name": "Book",
         "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
@@ -1129,8 +1133,11 @@
         "name": "Patent",
         "pdf_path": "/static/pdfs/research/001/2324/Patent Details 23-24.pdf"
       }
-    ],
-    "2024 - 2025": [
+    ]
+  },
+  {
+    "year": "2024 - 2025",
+    "research": [
       {
         "name": "Book",
         "pdf_path": "/static/pdfs/research/001/2425/Books & Book Chapters 24-25.pdf"

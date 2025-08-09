@@ -154,13 +154,13 @@
             "designation": "Professor & Head, Dept of Civil Engineering",
             "Social_media_links": 
                 {
-                    "LinkedIn": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-                    "Google Scholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
-                    "Scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
-                    "Orchid":"",
-                    "Research Gate":"",
-                    "Publon": "",
-                    "Sciprofiles":""
+                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+                    "orchidprofile":"",
+                    "researchgate":"",
+                    "publonprofile": "",
+                    "sciprofiles":""
                 }
             }
         ]
@@ -193,13 +193,13 @@
             "designation": "Professor & Head, Dept of Civil Engineering",
             "Social_media_links": 
                 {
-                    "LinkedIn": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-                    "Google Scholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
-                    "Scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
-                    "Orchid":"",
-                    "Research Gate":"",
-                    "Publon": "",
-                    "Sciprofiles":""
+                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+                    "orchidprofile":"",
+                    "researchgate":"",
+                    "publonprofile": "",
+                    "sciprofiles":""
                 },
           
             "image_path":"/static/images/hods/civil.webp",
@@ -337,8 +337,8 @@
             "department_name": "Civil Engineering (CIVIL)",
             "regulation": [
               {
-                "head":"Curriculum & Syllabus",
-                "data":[
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
                 {
                   "year": "R - 2023",
                   "pdf_path": "/static/pdfs/curriculum/004/reg_23.pdf"
@@ -355,7 +355,8 @@
       },
   {
     "type": "newsletter",
-    "data": [
+    "data": 
+    [
       {
         "category": "banner_name_and_image",
         "content": [
@@ -368,15 +369,25 @@
       {
         "category":"newsletter",
         "content":
-      {
-        "years":
+        [
         {
-            "2020":["/static/pdfs/newsletter/004/2020.pdf"],
-            "2021":["/static/pdfs/newsletter/004/2021.pdf"],
-            "2022":["/static/pdfs/newsletter/004/2022.pdf"],
-            "2023":["/static/pdfs/newsletter/004/2023.pdf"]
+           "year": "2020",
+           "pdf_path":["/static/pdfs/newsletter/004/2020.pdf"]
+        },
+        {
+            "year":"2021",
+            "pdf_path":["/static/pdfs/newsletter/004/2021.pdf"]
+        },
+        {
+
+            "year":"2022",
+            "pdf_path":["/static/pdfs/newsletter/004/2022.pdf"]
+        },
+        {
+            "year":"2023",
+            "pdf_path":["/static/pdfs/newsletter/004/2023.pdf"]
         }
-      }
+        ]
       }
     ]
   },
@@ -396,8 +407,9 @@
       {
         "category": "department_activities",
         "content": [
-            {
-                "2024":
+         {
+                "year":"2024",
+                "activities": 
                 [
                     {
                         "date": "11/03/2024",
@@ -461,8 +473,8 @@
                 ]
             },
             {
-                "2023":
-                [
+              "year": "2023",
+               "activities": [
                     {
                         "date": "13/10/2023",
                         "name_of_event": "Industrial Visit to iSteel,VIKI INDUSTRIES Pvt. Ltd., Gummidipoondi, Chennai",

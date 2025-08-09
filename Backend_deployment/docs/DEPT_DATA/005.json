@@ -829,12 +829,9 @@
         "category": "curriculum",
         "content": [
           {
-            "department_id": "005",
-            "department_name": "Computer Science & Engineering (CSE)",
-            "regulation": [
-              {
-                 "head":"Curriculum & Syllabus - UG",
-                 "data":[
+            "head": "Curriculum & Syllabus - UG",
+            "syllabus": [
+            
                    {
                     "year": "R - 2019 A (Students admitted during 2021 and 2022)",
                     "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
@@ -847,8 +844,8 @@
                  ]
               },
               {
-                 "head":"Curriculum & Syllabus - pg",
-                 "data":[
+                 "heading":"Curriculum & Syllabus - pg",
+                 "syllabus":[
                    {
                     "year":"R - 2019 A (Students admitted during 2021 and 2022)",
                     "pdf_path":"/static/pdfs/curriculum/005/pg_reg_21.pdf"
@@ -865,9 +862,8 @@
             ]
           }
         ]
-      }
-    ]
-  },
+      },
+
  {
     "type": "newsletter",
     "data": [
@@ -882,24 +878,29 @@
       },
      {
   "category": "newsletter",
-  "content": {
-    "years": {
-      "2022": [
-        "/static/pdfs/newsletter/005/2022.pdf"
-      ],
-      "2023": [
+  "content":[
+       {
+      "years":"2022",
+      "pdf_path":"/static/pdfs/newsletter/005/2022.pdf"
+       },
+       {
+      "years":"2023",
+      "pdf_path":[
         "/static/pdfs/newsletter/005/2023.pdf",
         "/static/pdfs/newsletter/005/VEEVACS_23.pdf"
-      ],
-      "2024": [
+                 ]
+       },
+       {
+      "years":"2024",
+      "pdf_path": [
         "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
         "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
       ]
     }
-  }
+  ]
 }
     ]
-  },
+},
   {
     "type": "activities",
     "data": [
@@ -916,87 +917,99 @@
         "category": "department_activities",
         "content": [
             {
-    "date": "29/08/2024",
-    "name_of_event": "Workshop on SIH PROJECT DEVELOPMENT",
-    "coordinator": "",
-    "resource_person": "Mr.Gladwin,GenAI Engineer at PAL Genie",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "19/08/2024",
-    "name_of_event": "Workshop on PROTOTYPE / PROCESS DESIGN AND DEVELOPMENT",
-    "coordinator": "",
-    "resource_person": "Dr.A.Lakshmi Sangeetha,Associate Professor,Velammal Engineering College",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "14/09/2024",
-    "name_of_event": "Workshop on GRAPHICS AND VISUAL MEDIA",
-    "coordinator": "",
-    "resource_person": "Ms.P.Sathyakala Specialist Graphic Designer, 2adpro Media solutions private limited",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "20/08/2024",
-    "name_of_event": "Seminar on INNOVATIVE IDEA PRESENTATION",
-    "coordinator": "",
-    "resource_person": "S.S.Sivakumar Senior Manager,Managed Services",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "07/08/2024",
-    "name_of_event": "Workshop on Generative AI",
-    "coordinator": "",
-    "resource_person": "Mr.Harish Babu,Manager NXTWAVE",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "23/09/2024",
-    "name_of_event": "Workshop on CLOUD COMPUTING AND DEVOPS",
-    "coordinator": "",
-    "resource_person": "Mr.Arun Kumar.M Cloud Engineer, Presidio",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "18/09/2024-19/09/2024",
-    "name_of_event": "Training on HOW TO MASTER PROBLEM SOLVING, CRITICAL THINKING AND EFFICIENT CODING",
-    "coordinator": "",
-    "resource_person": "Mr.Parthipan Muthuramalingam, Director, Bezcoder Academy",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "18/07/2024",
-    "name_of_event": "Technical Training on CLOUD COMPUTING AND AWS",
-    "coordinator": "",
-    "resource_person": "Mr.Paris Kapoor, System Architect, FeOS Technologies",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "06/02/2025",
-    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
-    "coordinator": "",
-    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
+              "year":"2024",
+              "activities":[
+                {
+          "date": "29/08/2024",
+        "name_of_event": "Workshop on SIH PROJECT DEVELOPMENT",
+        "coordinator": "",
+        "resource_person": "Mr.Gladwin,GenAI Engineer at PAL Genie",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "19/08/2024",
+        "name_of_event": "Workshop on PROTOTYPE / PROCESS DESIGN AND DEVELOPMENT",
+        "coordinator": "",
+        "resource_person": "Dr.A.Lakshmi Sangeetha,Associate Professor,Velammal Engineering College",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "14/09/2024",
+        "name_of_event": "Workshop on GRAPHICS AND VISUAL MEDIA",
+        "coordinator": "",
+        "resource_person": "Ms.P.Sathyakala Specialist Graphic Designer, 2adpro Media solutions private limited",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "20/08/2024",
+        "name_of_event": "Seminar on INNOVATIVE IDEA PRESENTATION",
+        "coordinator": "",
+        "resource_person": "S.S.Sivakumar Senior Manager,Managed Services",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "07/08/2024",
+        "name_of_event": "Workshop on Generative AI",
+        "coordinator": "",
+        "resource_person": "Mr.Harish Babu,Manager NXTWAVE",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "23/09/2024",
+        "name_of_event": "Workshop on CLOUD COMPUTING AND DEVOPS",
+        "coordinator": "",
+        "resource_person": "Mr.Arun Kumar.M Cloud Engineer, Presidio",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "18/09/2024-19/09/2024",
+        "name_of_event": "Training on HOW TO MASTER PROBLEM SOLVING, CRITICAL THINKING AND EFFICIENT CODING",
+        "coordinator": "",
+        "resource_person": "Mr.Parthipan Muthuramalingam, Director, Bezcoder Academy",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "18/07/2024",
+        "name_of_event": "Technical Training on CLOUD COMPUTING AND AWS",
+        "coordinator": "",
+        "resource_person": "Mr.Paris Kapoor, System Architect, FeOS Technologies",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "05/07/2024",
+        "name_of_event": "Workshop on WEB DEVELOPMENT",
+        "coordinator": "",
+        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+      {
+        "date": "01/07/2024",
+        "name_of_event": "Workshop on DATA SCIENCE AND MACHINE LEARNING",
+        "coordinator": "",
+        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
+        "beneficiaries": "CSE",
+        "relevant_PO_PSO": "",
+        "image_path": ""
+      },
+       {
     "date": "16/09/2024",
     "name_of_event": "Visited an Industry RETECH SOLUTIONS PVT.LTD",
     "coordinator": "",
@@ -1014,10 +1027,28 @@
     "relevant_PO_PSO": "",
     "image_path": ""
   }
+              ]
+            },
+            {
+              "year":"2025",
+              "activities":[  
+  {
+    "date": "06/02/2025",
+    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
+    "coordinator": "",
+    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
+    "beneficiaries": "CSE",
+    "relevant_PO_PSO": "",
+    "image_path": ""
+  }
+ 
          ]
       }
     ]
-  },
+
+  }
+]
+},
   {
     "type": "student_achievements",
     "data": [
@@ -1159,7 +1190,8 @@
         "category": "department_research",
         "content":[
           {
-            "2022 - 2023": [
+            "year":"2022 - 2023",
+            "research": [
       {
         "name": "Internship",
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
@@ -1192,8 +1224,11 @@
         "name": "Research Consolidation",
         "pdf_path": "/static/pdfs/research/005/2223/Research consolidation 22-23.pdf"
       }
-    ],
-    "2023 - 2024": [
+    ]
+  },
+  {
+    "year": "2023 - 2024",
+    "research": [
       {
         "name": "Internship",
         "pdf_path": "/static/pdfs/research/005/2324/2023-2024 internship.pdf"
@@ -1226,8 +1261,11 @@
         "name": "Research Consolidation",
         "pdf_path": "/static/pdfs/research/005/2324/Research consolidation 23-24.pdf"
       }
-    ],
-    "2024 - 2025": [
+    ]
+  },
+  {
+    "year": "2024 - 2025",
+    "research": [
       {
         "name": "Internship",
         "pdf_path": "/static/pdfs/research/005/2425/2024-2025 internship.pdf"
