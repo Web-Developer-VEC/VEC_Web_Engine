@@ -26,7 +26,8 @@ deptMap = {
     "014":  "TAMIL_014",
     "015":  "PHYSICS_015",
     "016":  "MECSE_016",
-    "017":  "MBA_017"
+    "017":  "MBA_017",
+    "018":  "PS_018"
 }
 
 def insert_department_data_sections():
