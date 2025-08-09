@@ -39,4 +39,36 @@
     }
   }
   
+@media (max-width: 1024px){
 
+  /* .socialLinks {
+    margin-top: 12px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    gap: 12px;
+  } */
+
+  .socialLink {
+    font-size: 20px;
+  }
+}
+
+.socialLinks{
+  display: flex;
+  flex-direction: row;
+}
+
+/* 
+ @media (max-width: 768px){
+      .socialLinks {
+      font-size: 16px;
+    }
+
+ } */
+
+.socialLink {
+    margin: 0 10px; /* Space between icons */
+    font-size: 24px;
+    /*color: #003366;*/
+  }

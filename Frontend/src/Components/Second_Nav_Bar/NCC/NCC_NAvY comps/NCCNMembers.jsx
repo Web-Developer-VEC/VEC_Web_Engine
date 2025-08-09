@@ -26,7 +26,7 @@ const  NCCNMembers = ({data}) => {
       ?(
         
         <div className="yrc-coordinators-container">
-      <h2 className="yrc-h2 text-brwn dark:text-drkt ">
+      <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-4">
         FACULTY COORDINATOR 
         <div className="yrc-underline2"></div>
       </h2>
@@ -45,9 +45,8 @@ const  NCCNMembers = ({data}) => {
         </div>
       </div>
 
-        <h2 className="yrc-h3 text-brwn dark:text-drkt text-center">
+        <h2 className="text-lg md:text-2xl font-bold text-center text-brwn dark:text-drkt capitalize mb-4">
             STUDENT COORDINATORS
-        <div className="yrc-underline3"></div>
         </h2>
       <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
      {stud?.map((item,i) => (

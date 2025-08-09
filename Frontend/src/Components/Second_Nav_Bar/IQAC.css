@@ -455,6 +455,8 @@
   object-fit: cover;
   border-radius: 10px;
   max-height: 400px;
+  justify-content: center;
+  align-items: center;
 }
 
 .coordinator-details {

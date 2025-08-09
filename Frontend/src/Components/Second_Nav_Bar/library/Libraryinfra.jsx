@@ -221,19 +221,19 @@ const LibrarySections = ({data, lib}) => {
                         <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-6">
                             MULTIMEDIA LIBRARY
                         </h2>
-                        <p className="text-lg leading-relaxed">
+                        <p className="text-lg leading-relaxed text-justify">
                             A separate Multimedia Library is provided to utilize CD-ROMs,
                             Online Journals, and NPTEL courses. It offers internet browsing,
                             enabling students and faculty to access multidisciplinary video
                             learning materials.
                         </p>
-                        <p className="mt-4 text-lg leading-relaxed">
+                        <p className="mt-4 text-lg leading-relaxed text-justify">
                             Our college is a proud member of <strong>DELNET</strong>,
                             promoting resource sharing among libraries. We provide access to
                             online journals like IEEE Transactions, ASME Proceedings, and more
                             for research activities.
                         </p>
-                        <p className="mt-4 text-lg leading-relaxed">
+                        <p className="mt-4 text-lg leading-relaxed text-justify">
                             The <strong>National Digital Library of India</strong> integrates
                             global digital libraries under a single portal. It supports
                             academic disciplines in multiple languages, making knowledge
