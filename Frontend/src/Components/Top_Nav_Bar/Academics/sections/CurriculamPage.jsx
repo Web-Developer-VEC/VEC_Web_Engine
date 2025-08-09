@@ -6,7 +6,7 @@ import LoadComp from '../../../LoadComp';
 
 const CurriculumPage = ({ data }) => {
   const [selectedRegulation, setSelectedRegulation] = useState(null);
-  const curriculam = data?.find((item) => item.category === "curriculam")?.content || [];
+  const curriculam = data?.find((item) => item.category === "curriculum")?.content || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
