@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./nirf.css";
 import LoadComp from "../../LoadComp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const NIRF = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -10,6 +12,7 @@ const NIRF = ({ data }) => {
   };
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [selectedPdf, setSelectedPdf] = useState(null);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -24,7 +27,21 @@ const NIRF = ({ data }) => {
     };
   }, []);
 
-  // show offline message
+  const handlePdfClick = (cat) => {
+    if (window.innerWidth >= 768) {
+      setSelectedPdf({
+        url: `${UrlParser(cat.pdf_path)}#toolbar=0`,
+        name: cat.name,
+      });
+    } else {
+      window.open(`${UrlParser(cat.pdf_path)}#toolbar=0`, "_blank");
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedPdf(null);
+  };
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -33,7 +50,6 @@ const NIRF = ({ data }) => {
     );
   }
 
-  // if data is not yet available
   if (!data || data.length === 0) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -63,29 +79,25 @@ const NIRF = ({ data }) => {
       </h2>
 
       <div className="nirf-grid">
-        {Array.isArray(data) && (
-          <>
-            {data
-              ?.slice() // make a copy so original prop is not mutated
-              ?.reverse()
-              ?.map((item, index) => (
-                <div key={index} className="nirf-year">
-                  <h3 className="text-text dark:text-drkt">NIRF {item?.year}</h3>
-                  {item?.content?.map((cat, catIndex) => (
-                    <a
-                      key={catIndex}
-                      href={`${UrlParser(cat?.pdf_path)}#toolbar=0`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="nirf-link dark:text-drka"
-                    >
-                      {cat?.name}
-                    </a>
-                  ))}
-                </div>
-              ))}
-          </>
-        )}
+        {Array.isArray(data) &&
+          data
+            ?.slice()
+            ?.reverse()
+            ?.map((item, index) => (
+              <div key={index} className="nirf-year">
+                <h3 className="text-text dark:text-drkt">NIRF {item?.year}</h3>
+                {item?.content?.map((cat, catIndex) => (
+                  <button
+                    key={catIndex}
+                    onClick={() => handlePdfClick(cat)}
+                    className="nirf-link text-blue-600 dark:text-drka cursor-pointer bg-transparent border-none p-0"
+                    type="button"
+                  >
+                    {cat?.name}
+                  </button>
+                ))}
+              </div>
+            ))}
       </div>
 
       <p className="nirf-footer">
@@ -98,6 +110,23 @@ const NIRF = ({ data }) => {
           feedback.nirf@velammal.edu.in
         </a>
       </p>
+
+      {/* PDF Modal */}
+      {selectedPdf && (
+        <div className="pdf-modal">
+          <div className="pdf-modal-content">
+            <button className="pdf-close-button" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2>{selectedPdf.name}</h2>
+            <iframe
+              src={selectedPdf.url}
+              title={selectedPdf.name}
+              className="pdf-iframe"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

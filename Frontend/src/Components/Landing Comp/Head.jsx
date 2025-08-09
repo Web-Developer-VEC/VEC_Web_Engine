@@ -115,10 +115,9 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 5],
+            cod: [0, 6],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "COE", sup: [], lnk: "/coe"},
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
                 {
                     hrd: false,
@@ -128,12 +127,19 @@ const Head = () => {
                 },
                 {
                     hrd: false,
+                    ttl: "Verticals",
+                    sup: [],
+                    lnk: "/verticals",
+                },
+                {
+                    hrd: false,
                     ttl: "Student Verification",
                     sup: [],
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
+                {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
             ],
         },
         {
@@ -159,9 +165,9 @@ const Head = () => {
                     sup: [],
                     lnk: "/abtplace",
                 },
-                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
                 {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
                 {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
+                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
             ],
         },
     ];
