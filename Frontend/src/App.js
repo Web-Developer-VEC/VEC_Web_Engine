@@ -227,9 +227,7 @@ const App = () => {
             {/* The rest of the routes */}
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
                     {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
-                    {/* Conditionally render Head and Footer */}
-                    
-                    
+                    {/* Conditionally render Head and Footer */}  
                     <>
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
