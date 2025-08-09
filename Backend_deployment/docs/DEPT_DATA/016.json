@@ -188,12 +188,12 @@
             "hod_image": "/static/images/hods/cse.webp",
             "designation": "Professor & Head, Department of Computer Science and Engineering.",
             "Social_media_links": {
-              "LinkedIn": "https://www.linkedin.com/in/k-nagarajan/",
-              "Google Scholar": "https://scholar.google.com/citations?user=kNagarajan&hl=en",
-              "Research Gate": "",
-              "Orchid Profile":"",
-              "Publon": "",
-              "Scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
+              "linkedin": "https://www.linkedin.com/in/k-nagarajan/",
+              "googlescholar": "https://scholar.google.com/citations?user=kNagarajan&hl=en",
+              "researchgate": "",
+              "orchidprofile":"",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             }
           }
         ]
@@ -220,12 +220,12 @@
         "designation": "Professor & Head",
         "unique_id": "VEC-005-01-120",
         "socialmedia_links":{
-              "LinkedIn": "https://www.linkedin.com/in/k-nagarajan/",
-              "Google Scholar": "https://scholar.google.com/citations?user=kNagarajan&hl=en",
-              "Research Gate": "",
-              "Orchid Profile":"",
-              "Publon": "",
-              "Scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
+              "linkedin": "https://www.linkedin.com/in/k-nagarajan/",
+              "googlescholar": "https://scholar.google.com/citations?user=kNagarajan&hl=en",
+              "researchgate": "",
+              "orchidprofile":"",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             },
             "image_path":"/static/images/profile_photos/005/VEC-005-01-120.webp",
             "resume_pdf":""
@@ -829,10 +829,10 @@
         "category": "curriculum",
         "content": [
           {
-            "head": "Curriculum & Syllabus - UG",
+            "heading": "Curriculum & Syllabus - UG",
             "syllabus": [
-            
-                   {
+                  
+                  {
                     "year": "R - 2019 A (Students admitted during 2021 and 2022)",
                     "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
                   },

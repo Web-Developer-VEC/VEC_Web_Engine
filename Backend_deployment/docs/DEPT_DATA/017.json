@@ -145,12 +145,12 @@
             "hod_image": "/static/images/hods/mba.webp",
             "designation": "Professor & Head, Dept of Master of Business Administration",
             "Social_media_links": {
-              "LinkedIn": "https://in.linkedin.com/in/nirmal-raj-a-a8201419",
-              "Google Scholar": "https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
-              "Research Gate": "https://www.researchgate.net/profile/Nirmal-Amal-Raj",
-              "Orchid Profile":"https://orcid.org/0009-0001-6856-7412",
-              "Publon": "",
-              "Scopus":  "https://www.scopus.com/authid/detail.uri?authorId=59511587500"
+              "linkedin": "https://in.linkedin.com/in/nirmal-raj-a-a8201419",
+              "googlescholar": "https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Nirmal-Amal-Raj",
+              "orchidprofile":"https://orcid.org/0009-0001-6856-7412",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=59511587500"
             }
           }
         ]
@@ -413,9 +413,7 @@
       },
       {
         "category": "student_achievements_content",
-        "content": [
-          ""
-        ]
+        "content": []
       },
       {
         "category": "student_achievements_details",
@@ -752,7 +750,7 @@
              "S_NO": 1,
             "ORGANISATION_NAME": "Imarticus Learning",
             "MONTH_AND_YEAR": "03-02-2023",
-            "VALIDITY": null,
+            "VALIDITY": "",
             "LOGO_PATH": "/static/images/mous/017/imarticus.jpg",
             "ACTIVITIES_PLANNED": []
           }

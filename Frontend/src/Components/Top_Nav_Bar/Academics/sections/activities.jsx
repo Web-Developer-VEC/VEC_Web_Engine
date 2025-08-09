@@ -3,6 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Activities.css";
 import LoadComp from "../../../LoadComp";
+import { X } from "lucide-react";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -91,19 +92,31 @@ const Activities = ({ data }) => {
               hover:bg-accn hover:text-prim dark:hover:bg-brwn"
               onClick={closeModal}
             >
-              &times;
+              <X />
             </span>
             <img
               src={UrlParser(selectedEvent?.image_path) || "./placeholder.webp"}
               alt="Event"
               className="modal-image"
             />
-            <h2>{selectedEvent?.name_of_event}</h2>
-            <p><strong>Date:</strong> {selectedEvent?.date}</p>
-            <p><strong>Coordinator:</strong> {selectedEvent?.coordinator}</p>
-            <p><strong>Resource Person:</strong> {selectedEvent?.resource_person}</p>
-            <p><strong>Beneficiaries:</strong> {selectedEvent?.beneficiaries}</p>
-            <p><strong>Relevant PO, PSO:</strong> {selectedEvent?.relevant_PO_PSO}</p>
+            {selectedEvent?.name_of_event && (
+              <h2 className="text-[18px]">{selectedEvent?.name_of_event}</h2>
+            )}
+            {selectedEvent?.date && (
+              <p><strong>Date:</strong> {selectedEvent?.date}</p>
+            )}
+            {selectedEvent?.coordinator && (
+              <p><strong>Coordinator:</strong> {selectedEvent?.coordinator}</p>
+            )}
+            {selectedEvent?.resource_person && (
+              <p><strong>Resource Person:</strong> {selectedEvent?.resource_person}</p>
+            )}
+            {selectedEvent?.beneficiaries && (
+              <p><strong>Beneficiaries:</strong> {selectedEvent?.beneficiaries}</p>
+            )}
+            {selectedEvent?.relevant_PO_PSO && (
+              <p><strong>Relevant PO, PSO:</strong> {selectedEvent?.relevant_PO_PSO}</p>
+            )}
           </div>
         </div>
       )}
@@ -145,7 +158,9 @@ const AnimatedCard = ({ event, handleViewMore }) => {
         <h3 className="my-2 text-xl text-accn dark:text-drka">
           {event.name_of_event}
         </h3>
-        <p className="card-coordinator">Coordinator: {event.coordinator}</p>
+        {event?.coordinator && (
+          <p className="card-coordinator">Coordinator: {event.coordinator}</p>
+        )}
         <button
           onClick={() => handleViewMore(event)}
           className="activities-view-more-btn mt-3

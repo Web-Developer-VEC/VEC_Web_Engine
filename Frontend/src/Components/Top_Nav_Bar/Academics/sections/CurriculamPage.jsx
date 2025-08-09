@@ -14,8 +14,12 @@ const CurriculumPage = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const handleViewClick = (regulation,year) => {
-    setSelectedRegulation([regulation,year]);
+  const handleViewClick = (pdfUrl, name) => {
+    if (window.innerWidth <= 1024) {
+      window.open(UrlParser(pdfUrl), "_blank");
+    } else {
+      setSelectedRegulation([pdfUrl, name]);
+    }
   };
 
   const closeModal = () => {
@@ -69,7 +73,7 @@ const CurriculumPage = ({ data }) => {
                         onClick={closeModal}>
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <h2 className="mb-4">Regulation {selectedRegulation[1]}</h2>
+                <h2 className="mb-4 text-[16px]">Regulation : {selectedRegulation[1]}</h2>
                 <iframe
                   src={UrlParser(selectedRegulation[0])}
                   title={selectedRegulation[1]}

@@ -139,15 +139,15 @@
             "unique_id": "VEC-015-01-191",
             "qualification": ["M.Sc.", "M. Phil."," Ph.D"],
             "hod_message":["A good education is the foundation for a better future. In VEC we ensure that every student entrusted to us will receive wholistic development and also support to unearth all the potentials found in them. The students who come to this beautiful campus enter the world as successful Engineers."],
-            "hod_image": "/static/images/hods/physics.webp",
+            "hod_image": "/static/images/hods/phy.webp",
             "designation":  "Professor & Head, Department of Physics",
             "Social_media_links": {
-              "LinkedIn":  "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
-              "Google Scholar":"https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
-              "Research Gate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
-              "Orchid Profile":"https://orcid.org/0000-0001-8764-8843",
-              "Publon": "",
-              "Scopus":  "https://www.scopus.com/authid/detail.uri?authorId=6508212683"      
+              "linkedin":  "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
+              "googlescholar":"https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
+              "researchgate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
+              "orchidprofile":"https://orcid.org/0000-0001-8764-8843",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
                 }
           }
         ]
@@ -175,12 +175,12 @@
         "designation": "Professor & head",
         "unique_id": "VEC-015-01-191",
         "socialmedia_links": {
-          "LinkedIn": "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
-          "Google Scholar": "https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
-          "Research Gate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
-          "Orchid Profile": "https://orcid.org/0000-0001-8764-8843",
-          "Publon": "",
-          "Scopus": "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
+          "linkedin": "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
+          "googlescholar": "https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
+          "researchgate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
+          "orchidprofile": "https://orcid.org/0000-0001-8764-8843",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-01-191.webp",
         "resume_pdf": ""
@@ -351,7 +351,7 @@
   "content": [
     {
       "heading": "Curriculum & Syllabus ",
-      "syallbus": [
+      "syllabus": [
         {
           "year": "R - 1st semester",
           "pdf_path": "/static/pdfs/curriculum/015/reg_1_23.pdf"
@@ -376,7 +376,7 @@
     },
     {
       "heading": "Curriculum & Syllabus - PG",
-      "syallbus": [
+      "syllabus": [
         {
           "year": "R - 2019 A (Students admitted during 2021 and 2022)",
           "pdf_path": "/static/pdfs/curriculum/005/pg_reg_21.pdf"

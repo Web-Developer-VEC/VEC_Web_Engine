@@ -147,12 +147,12 @@
             "hod_image": "/static/images/hods/mech.webp",
             "designation": "Professor & Head,Department of Mechanical Engineering",
             "Social_media_links": {
-             "LinkedIn": "linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204",
-              "Google Scholar": "https://scholar.google.com/citations?user=PrLAIusAAAAJ&hl=en",
-              "Research Gate":"https://www.researchgate.net/scientific-contributions/E-Ganapathy-Sundaram-2069766762",
-              "Orchid Profile": "",
-              "Publon": "",
-              "Scopus": ""
+             "linkedin": "linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204",
+              "googlescholar": "https://scholar.google.com/citations?user=PrLAIusAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/scientific-contributions/E-Ganapathy-Sundaram-2069766762",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             }
           }
         ]
@@ -531,8 +531,8 @@
         "category": "curriculum",
         "content":  [
                {
-              "head":"Curriculum & Syllabus - UG",
-              "data":[
+              "heading":"Curriculum & Syllabus - UG",
+              "syllabus":[
               {
                 "year":"R - 2019 A (Students admitted during 2021 and 2022)",
                 "pdf_path":  "/static/pdfs/curriculum/013/reg_21.pdf"
@@ -562,26 +562,28 @@
       },
       {
         "category":"newsletter",
-        "content":
-      {
-        "years":
-         {
-            "2022":
-             [
-                 "/static/pdfs/newsletter/013/DECEMBER 2022.pdf",
-                 "/static/pdfs/newsletter/013/JUNE 2022.pdf"
-             ],
-            "2023": 
-            [
-                "/static/pdfs/newsletter/013/JUNE 2023.pdf",
-                "/static/pdfs/newsletter/013/DECEMBER 2023.pdf"
-            ],
-           "2024":
-            [
+        "content": [
+          {
+            "year": "2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/DECEMBER 2022.pdf",
+              "/static/pdfs/newsletter/013/JUNE 2022.pdf"
+            ]
+          },
+          {
+            "year": "2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/JUNE 2023.pdf",
+              "/static/pdfs/newsletter/013/DECEMBER 2023.pdf"
+            ]
+          },
+          {
+            "year": "2024",
+            "pdf_path": [
               "/static/pdfs/newsletter/013/JUNE 2024.pdf"
             ]
-         }
-      }
+          }
+        ]
       }
     ]
   },
@@ -601,7 +603,8 @@
         "category": "department_activities",
         "content": [
           {
-            "2024":[
+            "year": "2024",
+            "activities":[
                  {
             "date": "22/08/2024",
             "name_of_event": "Guest lecture on Digital Transformation in Mechanical Engineering: Key Skills for the Future",
@@ -650,7 +653,8 @@
           ]
          },
           {
-            "2023":[
+            "year": "2023",
+            "activities":[
                 {
             "date": "26/08/2023",
             "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
