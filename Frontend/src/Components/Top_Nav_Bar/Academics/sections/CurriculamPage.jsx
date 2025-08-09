@@ -6,6 +6,7 @@ import LoadComp from '../../../LoadComp';
 
 const CurriculumPage = ({ data }) => {
   const [selectedRegulation, setSelectedRegulation] = useState(null);
+  const curriculam = data?.find((item) => item.category === "curriculam")?.content || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -27,25 +28,25 @@ const CurriculumPage = ({ data }) => {
 
   return (
     <div className="containers mt-5">
-      {data?.regulation?.length > 0 ? (
-        <>       
+      {curriculam?.length > 0 ? (
+        <>
           <div className="row">
             {/* Left Column: Curriculum and PSOs */}
             <div className="col-md-6">
-              {data?.regulation?.map((req,i) => (
+              {curriculam?.map((req,i) => (
                 <div className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]" key={i}>
-                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">{req?.name}</h2>
+                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">{req?.heading}</h2>
       
                   {/* Regulation Rows */}
-                  {req?.year?.map((year, index) => (
-                    <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={year}>
+                  {req?.syllabus?.map((data, index) => (
+                    <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={index}>
                       <p>
-                        {year}
+                        {data?.year}
                         <div className="options-container">
                           <button 
                           className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
                             dark:hover:bg-brwn"
-                          onClick={() => handleViewClick(req?.pdf_path[index],year)}
+                          onClick={() => handleViewClick(data?.pdf_path, data?.year)}
                           >
                             <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
       

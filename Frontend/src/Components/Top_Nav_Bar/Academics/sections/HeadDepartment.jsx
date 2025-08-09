@@ -9,34 +9,23 @@ import LoadComp from "../../../LoadComp";
 
 
 const HeadDepartment = ({ data }) => {
-  const [departmentData, setDepartmentData] = useState(null);
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  useEffect(() => {
-    // Simulating fetching data from the database (replace with actual API call)
-    if (data) {
-      setDepartmentData(data);
-    }
-  }, [data]);
-
-  if (!departmentData) {
-    return 
-  }
+  const hod_details = data?.find((item) => item.category === "hod_details")?.content || [];
 
   const {
-    Name = departmentData?.Name,
-    uid = departmentData?.Unique_id,
-    Qualification = [departmentData?.Qualification],
-    designation = departmentData?.designation,
-    Hod_message = departmentData?.Hod_message,
-    Image = departmentData?.Image, // Provide a default path if needed
-    Social_media_links = {},
-  } = departmentData;
+    Name = hod_details?.[0]?.name,
+    uid = hod_details?.[0]?.unique_id,
+    Qualification = [hod_details?.[0]?.qualification],
+    designation = hod_details?.[0]?.designation,
+    Hod_message = hod_details?.[0]?.hod_message,
+    Image = hod_details?.[0]?.hod_image, // Provide a default path if needed
+    Social_media_links = hod_details?.[0]?.Social_media_links || {},
+  } = hod_details || {};
 
   return (
     <>

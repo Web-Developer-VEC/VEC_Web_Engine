@@ -44,4 +44,23 @@ async function getDepartmentSection(req, res) {
   }
 }
 
-module.exports = { getDepartmentSection };
+async function getsidebar (req, res) {
+    const db = getDb();
+    const collection = db.collection('sidebar');
+    const deptid = req.params.deptId;
+
+    try {
+        const sidebar = await collection.findOne({ dept_id: deptid });
+
+        if (!sidebar) {
+            return res.status(404).json({ message: `No data found for deptId: ${deptid}` });
+        }
+        res.status(200).json(sidebar);
+    } catch (error) {
+        console.error('Error fetching sidebar data:', error);
+        await logError(req, error, 'Error fetching sidebar data', 500);
+        res.status(500).json({ error: 'Error fetching sidebar data' });
+    }
+}
+
+module.exports = { getDepartmentSection, getsidebar };
