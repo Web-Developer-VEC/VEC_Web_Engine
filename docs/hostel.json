@@ -13,12 +13,12 @@
     "data": [
       {
         "title": "Girls Hostel",
-        "description": "The girls’ hostel ensures safety, comfort, and privacy, with round-the-clock supervision and facilities tailored to students' well-being and convenience.",
+        "description": "The girl's hostel ensures safety, comfort, and privacy, with round-the-clock supervision and facilities tailored to student's well-being and convenience.",
         "image_path": "/static/images/hostel/Girls Hostel Room.webp"
       },
       {
         "title": "Boys Hostel",
-        "description": "The boys’ hostel offers a secure and disciplined environment with all necessary facilities, promoting academic focus and healthy social interaction.",
+        "description": "The boy's hostel offers a secure and disciplined environment with all necessary facilities, promoting academic focus and healthy social interaction.",
         "image_path": "/static/images/hostel/Boys Hostel.webp"
       },
       {

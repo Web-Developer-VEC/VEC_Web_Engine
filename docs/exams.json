@@ -25,14 +25,19 @@
         ]
       },
       {
-        "title": "COE Staffs",
+        "title": "Co-ordinator – Internal Examinations",
         "members": [
           {
             "name": "Dr. GURUSAMY P",
             "qualification": "M.Sc.,M.Phil.,B.Ed.,Ph.D",
             "position": "Co-ordinator – Internal Examinations",
             "image_path": "/static/images/coe/gurusamy.webp"
-          },
+          }
+        ]
+      },
+      {
+        "title": "COE Staffs",
+        "members": [
           {
             "name": "Mrs. MANJULA U",
             "qualification": "B.Com",

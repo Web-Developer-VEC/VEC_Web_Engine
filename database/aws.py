@@ -949,22 +949,20 @@ def insert_department_research_data():
     print("All available Department Research documents inserted successfully.\n")
 
 def insert_about_us():
-    collection = db['about_us']
+    collection = db["about_us"]
 
     with open("/root/VEC_Web_Engine/docs/about_us.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
-        top_level = data[0]
+        about_data = json.load(file)
 
-        documents = []
-        for key, value in top_level.items():
-            documents.append({
-                "_id": key,
-                "section": key,
-                "content": value
-            })
+        for section in about_data:
+            section_type = section["type"]
+            document = {
+                "type": section_type,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
 
-        collection.insert_many(documents)
-    print("about_us documents inserted successfully.\n")
+    print("about_us sections inserted successfully.")
 
 def insert_help_desk():
 
@@ -975,17 +973,18 @@ def insert_help_desk():
 
     print("help_desk documents inserted successfully.\n")
 
+
 def insert_administration_sections():
     collection = db["administration"]
 
-    with open("/root/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
+    with open("/VEC_Web_Engine/docs/administration.json", "r", encoding="utf-8") as file:
         admin_data = json.load(file)
 
         for section in admin_data:
-            section_key = list(section.keys())[0]
+            section_type = section["type"]
             document = {
-                "type": section_key,
-                "data": section[section_key]
+                "type": section_type,
+                "data": section["data"]
             }
             collection.insert_one(document)
 
