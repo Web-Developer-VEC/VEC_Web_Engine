@@ -127,12 +127,6 @@ const Head = () => {
                 },
                 {
                     hrd: false,
-                    ttl: "Verticals",
-                    sup: [],
-                    lnk: "/verticals",
-                },
-                {
-                    hrd: false,
                     ttl: "Student Verification",
                     sup: [],
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
