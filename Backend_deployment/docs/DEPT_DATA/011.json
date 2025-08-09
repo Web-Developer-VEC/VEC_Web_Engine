@@ -145,12 +145,12 @@
             "hod_image": "/static/images/hods/it.webp",
             "designation":"Professor & Head, Dept of Information Technology",
             "Social_media_links": {
-            "linkedin": "https://www.linkedin.com/in/dr-jeevaa-katiravan-936b16104/",
-            "googlescholar": "https://scholar.google.co.in/citations?user=dtYzUpAAAAAJ&hl=en",
-            "researchgate": "https://www.researchgate.net/profile/Jeevaa-Katiravan",
-            "publonprofile": "https://www.scopus.com/authid/detail.uri?authorId=37023505600",
-            "orchidprofile": "https://orcid.org/0009-0004-1897-1451",
-            "publon": ""
+              "linkedin": "https://www.linkedin.com/in/dr-jeevaa-katiravan-936b16104/",
+              "googlescholar": "https://scholar.google.co.in/citations?user=dtYzUpAAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Jeevaa-Katiravan",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37023505600",
+              "orchidprofile": "https://orcid.org/0009-0004-1897-1451",
+              "publonprofile": ""
             }
           }
         ]
@@ -164,8 +164,8 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name": "Mechanical Engineering (MECH)",
-            "dept_id": "013"
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
           }
         ]
       },
@@ -1031,9 +1031,18 @@
             {"image_path": "/static/images/student_activities/011/9.webp", "image_content": "Abdul Kareem Faridh of II IT won Third Prize in paper presentation in PRECISION+ 2022 conducted by Department of Electronics and Instrumentation Engineering at B.S.Abdur Rahman crescent Institute of science & ", "event_name": "PRECISION+ 2022", "date": "2022-05-10"},
             {"image_path": "/static/images/student_activities/011/10.webp", "image_content": "Abdul Kareem Faridh of III IT won Third Prize in paper presentation in PINNACLE  2K23 conducted by Department of Information Technology at Easwari Engineering College  ", "event_name": "PINNACLE  2K23", "date": "2023-03-25"},
             {"image_path": "/static/images/student_activities/011/11.webp", "image_content": "Siddharth V, Harish Kumar M, Hariharan B, Nishanth Niruban M won 2nd prize in a paper presentation in Sairam Institute of Technology on 19.09.2024", "event_name": "Paper Presentation", "date": ""},
-            {"image_path": "/static/images/student_activities/011/11.webp", "image_content": "Syed Athaullah.R, Sindhuja.M, Jayashree.R and Thirulok Mugilan won 1st place in paper expo held at Adhi College of Engineering conducted on 20.09.2024.", "event_name": "Paper Expo", "date": ""},
-            {"image_path": "", "image_content": "", "event_name": "", "date": ""}
-
+            {"image_path": "/static/images/student_activities/011/12.webp", "image_content": "Syed Athaullah.R, Sindhuja.M, Jayashree.R and Thirulok Mugilan won 1st place in paper expo held at Adhi College of Engineering conducted on 20.09.2024.", "event_name": "Paper Expo", "date": ""},
+            {"image_path": "/static/images/student_activities/011/15.webp", "image_content": "As part of Department Social Responsibility, IT organized an Computer program for Eleventh standard students of Govt.schools (Uppiliraja Govt.Hr.Sec.School(21/01/2017) and Lakshmipuram Govt.Hr.Sec.School(28/01/2017)", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/16.webp", "image_content": "Mr.Dharani, IT, participated in  NTAC - Naval Technical Attachment camp at INS Shivaji , Mumbai  training and Industrial visit for naval engineering and mechanical base", "event_name": "NTAC - Naval Technical Attachment camp", "date": ""},
+            {"image_path": "/static/images/student_activities/011/17.webp", "image_content": "Mr. SGT Bharani R , IT, Overall championship trophy won by TamilNadu, Pondicherry & Andaman Nicobar directorate at EBSB camp (National level camp)", "event_name": "National level camp", "date": ""},
+            {"image_path": "/static/images/student_activities/011/18.webp", "image_content": "Ms. Hemalatha,  IT Participated in Republic day camp during President house visit", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/19.webp", "image_content": "Our student Mr.Vishmudev II yr IT attended Naval Technical Attachment camp in INS-Valsura(Naval Base) in Gujarat on Aug 20 to Sep 02-2019", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/20.webp", "image_content": "Our Students Mr.Jaya Shiva Shankaran IV yr IT, Mr.Sudhakar III yr IT have participated in Anna University zone I Kho Kho Tournament held at Prathyusha Engineering College, Chennai and won Winner(Men) Award", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/21.webp", "image_content": "Our Students Ashwini III yr IT, Akshaya I yr IT, Mohana Priya I yr IT have participated in Anna University Zonal Athletic Meet 2018-19 held at GRT Engineering College, Thiruthani and won over all Runner up award(Women)", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/22.webp", "image_content": "Anna University - zone -1 tournament 2021- Basket Ball winners TrophyReceived by III year IT students on march 16th'2021", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/23.webp", "image_content": "Mr. Anand V from III yr IT received “Best Project Award” at St.Xavier Institute of Technology Project Exhibition and received a cash price of about Rs.7000", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/24.webp", "image_content": "Best Student Project Award on 27-12-2013. Dr.N Duraipandian(Principal-VEC), Mr. T.S.Rangarajan TCS, Ms.Pavithra(IT final year Student) who is receiving the Best Project Award", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/25.webp", "image_content": "IV year IT student S Kaviya received Best Student award by TCS", "event_name": "", "date": ""}
         ]
       }
     ]
@@ -1053,12 +1062,11 @@
       {
         "category": "infrastructure_images",
         "content": [
-            {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY", "image_content":""},
-            {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
-            {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY", "image_content": ""},
-            {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""}
-          
-  ]
+          {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY", "image_content":""},
+          {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
+          {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY", "image_content": ""},
+          {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""}
+        ]
       }
     ]
   },
@@ -1077,7 +1085,7 @@
       {
         "category": "mous_details",
         "content": [
-                {
+        {
         "S_NO": 1,
         "ORGANISATION_NAME": "Data DNA Technologies",
         "MONTH_AND_YEAR": "01-11-2022",

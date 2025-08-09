@@ -169,7 +169,7 @@
       { "id": "Faculties", "hascontent": true },
       { "id": "Syllabus", "hascontent": true },
       { "id": "NewsLetter", "hascontent": true },
-      { "id": "Activities", "hascontent": false },
+      { "id": "Activities", "hascontent": true },
       { "id": "StudentAchievments", "hascontent": true },
       { "id": "Infrastructure", "hascontent": true },
       { "id": "Mous", "hascontent": true },
@@ -240,10 +240,9 @@
       { "id": "Research", "hascontent": false }
     ]
   },
-
   {
     "dept_id": "016",
-    "department_name": "ME Computer Science & Engineering (ME CSE)",
+    "department_name": "M.E. Computer Science & Engineering (ME CSE)",
     "content": [
       { "id": "Vision&Mission", "hascontent": true },
       { "id": "HeadDepartment", "hascontent": true },
@@ -257,7 +256,6 @@
       { "id": "Research", "hascontent": false }
     ]
   },
-
   {
     "dept_id": "017",
     "department_name": "Master of Business Administration (MBA)",
@@ -271,6 +269,22 @@
       { "id": "StudentAchievments", "hascontent": true },
       { "id": "Infrastructure", "hascontent": false },
       { "id": "Mous", "hascontent": true },
+      { "id": "Research", "hascontent": false }
+    ]
+  },
+  {
+    "dept_id": "018",
+    "department_name": "M.E. Power Systems Engineering (ME PSE)",
+    "content": [
+      { "id": "Vision&Mission", "hascontent": true },
+      { "id": "HeadDepartment", "hascontent": true },
+      { "id": "Faculties", "hascontent": true },
+      { "id": "Syllabus", "hascontent": true },
+      { "id": "NewsLetter", "hascontent": true },
+      { "id": "Activities", "hascontent": true },
+      { "id": "StudentAchievments", "hascontent": true },
+      { "id": "Infrastructure", "hascontent": true },
+      { "id": "Mous", "hascontent": false },
       { "id": "Research", "hascontent": false }
     ]
   }

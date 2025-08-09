@@ -57,7 +57,7 @@ const HeadDepartment = ({ data }) => {
               <p>No image available</p>
             )}
             <div className={styles.socialLinks}>
-            {Social_media_links['LinkedIn'] && (
+            {Social_media_links['linkedin'] && (
                 <a
                   href={Social_media_links['LinkedIn']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
@@ -67,9 +67,9 @@ const HeadDepartment = ({ data }) => {
                   <FaLinkedin />
                 </a>
               )}
-              {Social_media_links['Publon'] && (
+              {Social_media_links['publonprofile'] && (
                 <a
-                  href={Social_media_links['Publon']}
+                  href={Social_media_links['publonprofile']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -77,9 +77,9 @@ const HeadDepartment = ({ data }) => {
                   <SiPublons />
                 </a>
               )}
-              {Social_media_links['Google Scholar'] && (
+              {Social_media_links['googlescholar'] && (
                 <a
-                  href={Social_media_links['Google Scholar']}
+                  href={Social_media_links['googlescholar']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -87,9 +87,9 @@ const HeadDepartment = ({ data }) => {
                   <FaGoogleScholar />
                 </a>
               )}
-              {Social_media_links['Orchid Profile'] && (
+              {Social_media_links['orchidprofile'] && (
                 <a
-                  href={Social_media_links['Orchid Profile']}
+                  href={Social_media_links['orchidprofile']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -97,9 +97,9 @@ const HeadDepartment = ({ data }) => {
                   <FaOrcid />
                 </a>
               )}
-              {Social_media_links['Research Gate'] && (
+              {Social_media_links['researchgate'] && (
                 <a
-                  href={Social_media_links['Research Gate']}
+                  href={Social_media_links['researchgate']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -107,9 +107,9 @@ const HeadDepartment = ({ data }) => {
                   <FaResearchgate />
                 </a>
               )}
-              {Social_media_links['Scopus'] && (
+              {Social_media_links['scopus'] && (
                 <a
-                  href={Social_media_links['Scopus']}
+                  href={Social_media_links['scopus']}
                   className={styles.socialLink + " text-accn dark:text-drka hover:text-secd dark:hover:text-drks"}
                   target="_blank"
                   rel="noopener noreferrer"
