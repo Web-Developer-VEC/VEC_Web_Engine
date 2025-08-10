@@ -4,7 +4,7 @@
     "department_name": "Artificial Intelligence and Data Science",
     "2022 - 2023": [
       {
-        "name": "Book",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
       },
       {
@@ -30,7 +30,7 @@
     ],
     "2023 - 2024": [
       {
-        "name": "Book",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
       },
       {
@@ -56,7 +56,7 @@
     ],
     "2024 - 2025": [
       {
-        "name": "Book",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/001/2425/Books & Book Chapters 24-25.pdf"
       },
       {
@@ -91,11 +91,11 @@
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
-        "name": "Conference Consolidation",
+        "name": "Conference",
         "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/005/2223/BOOK AND BOOK CHAPTER NBA 22-23.pdf"
       },
       {
@@ -103,11 +103,11 @@
         "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publications",
         "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
       },
       {
-        "name": "Patent NBA Academic",
+        "name": "Patents",
         "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
       },
       {
@@ -115,7 +115,7 @@
         "pdf_path": "/static/pdfs/research/005/2223/product development 2022-23.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": "Research",
         "pdf_path": "/static/pdfs/research/005/2223/Research consolidation 22-23.pdf"
       }
     ],
@@ -125,7 +125,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/2023-2024 internship.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA ",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/005/2324/BOOK AND BOOK CHAPTER NBA 23-24.pdf"
       },
       {
@@ -137,11 +137,11 @@
         "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publications",
         "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
       },
       {
-        "name": "Patent NBA Academic",
+        "name": "Patents",
         "pdf_path": "/static/pdfs/research/005/2324/Patent nba academic year wise 2023-2024.pdf"
       },
       {
@@ -149,7 +149,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/product development 2023-24.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": "Research",
         "pdf_path": "/static/pdfs/research/005/2324/Research consolidation 23-24.pdf"
       }
     ],
@@ -159,7 +159,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/2024-2025 internship.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA ",
+        "name": "Book and Book Chapters",
         "pdf_path": "/static/pdfs/research/005/2425/BOOK AND BOOK CHAPTER NBA 24-25.pdf"
       },
       {
@@ -167,11 +167,11 @@
         "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publications",
         "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
       },
       {
-        "name": "Patent NBA Academic ",
+        "name": "Patents",
         "pdf_path": "/static/pdfs/research/005/2425/Patent nba academic year wise 2024-2025.pdf"
       },
       {
@@ -179,7 +179,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/Product development 24-25.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": "Research",
         "pdf_path": "/static/pdfs/research/005/2425/Research consolidation 24-25.pdf"
       }
     ]
