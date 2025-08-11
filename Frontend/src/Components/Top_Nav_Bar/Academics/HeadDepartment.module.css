@@ -141,6 +141,8 @@
   .messageContent {
     flex: 1;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
   }
 
@@ -271,9 +273,9 @@
     /*color: #003366;*/
   }
 
-  /* .socialLink:hover { */
+  .socialLink:hover {
     /*color: #fdcc03;*/
-  /* } */
+  }
 
     /* Loading Screen */
     .loadingscreen {
@@ -375,10 +377,10 @@
       flex-direction: column;
     }
 
-    /* .header { */
+    .header {
       /* height: 20vh; */
       
-    /* } */
+    }
 
     .sidebar {
       padding: 15px;

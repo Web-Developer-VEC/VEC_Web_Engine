@@ -15,23 +15,24 @@ import LoadComp from "../../../LoadComp";
 
 const Research = ({ data }) => {
   const [yearData, setYearData] = useState([]);
+  const department_research = data?.find((item) => item.category === "department_research")?.content || [];
   
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-  
-  const years = Object.keys(data || {}).filter(
-    (key) => key !== "_id" && key !== "dept_id" && key !== "department_name"
-  );
-  const [selectedYear, setSelectedYear] = useState(years?.[0]);
+
+  const [selectedYear, setSelectedYear] = useState(department_research?.[0]?.year);
 
   useEffect(() => {
-    if (data && selectedYear && data[selectedYear]) {
-      setYearData(data[selectedYear]);
+    if (data && selectedYear) {
+      const filteredData = department_research?.find(item => item.year === selectedYear);
+      setYearData(filteredData);
     }
-  }, [selectedYear, data]);
+  }, [selectedYear]);
+
+  console.log(yearData);
 
   const actionIcons = {
     "Book": faBook,
@@ -61,16 +62,16 @@ const Research = ({ data }) => {
 
       {/* Year Buttons */}
       <div className="RD-years-horizontal">
-        {years?.map((year) => (
+        {department_research?.map((res,i) => (
           <button
-            key={year}
-            className={`RD-year-button ${selectedYear === year
+            key={i}
+            className={`RD-year-button ${selectedYear === res?.year
               ? "active bg-accn text-prim dark:bg-brwn"
               : "bg-secd text-text dark:bg-drks"
               }`}
-            onClick={() => handleYearClick(year)}
+            onClick={() => handleYearClick(res?.year)}
           >
-            {year}
+            {res?.year}
           </button>
         ))}
       </div>
@@ -79,7 +80,7 @@ const Research = ({ data }) => {
       <div className="RD-content">
         <div className="RD-details">
           <div className="RD-year-actions">
-            {Array.isArray(yearData) && yearData?.map((item, index) => (
+            {Array.isArray(yearData?.research) && yearData?.research?.map((item, index) => (
               <div
                 key={index}
                 className="RD-action-button"
