@@ -18,10 +18,10 @@ function Management({ theme, toggle }) {
             try {
                 const responce = await axios.post('/api/main-backend/about_us',
                   {
-                    section: "Management"
+                    type: "Management"
                   }
                 );
-                const data = responce.data.data.content;
+                const data = responce.data.data;
                 setAbtsUcData(data)
             } catch (error) {
                 console.error("Error fetching about us data",error);
