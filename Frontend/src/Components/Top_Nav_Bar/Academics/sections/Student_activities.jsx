@@ -61,11 +61,11 @@ useEffect(() => {
       {student_achievements_details?.length > 0 ? (
         <>
           {/* 🔹 Section Heading */}
+          <h1 className="intro-title text-accn dark:text-drkt">
+            <i className="inline-block mr-2 mb-1" /> Student Achievements
+          </h1>
           {student_achievements_content?.length > 0 && (
             <div className="intro-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-              <h1 className="intro-title text-accn dark:text-drkt">
-                <i className="inline-block mr-2 mb-1" /> Student Achievements
-              </h1>
               <p className="intro-text-act text-text dark:text-drkt">{student_achievements_content?.[0]}</p>
             </div>   
           )}
