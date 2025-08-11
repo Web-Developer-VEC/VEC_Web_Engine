@@ -17,10 +17,10 @@ const Collegevisionmission = ({ theme, toggle }) => {
             try {
                 const responce = await axios.post('/api/main-backend/about_us',
                     {
-                        section: "vision_and_mission"
+                        type: "vision_and_mission"
                     }
                 );
-                const data = responce.data.data.content;
+                const data = responce.data.data;
                 setvmData(data);
                 
             } catch (error) {

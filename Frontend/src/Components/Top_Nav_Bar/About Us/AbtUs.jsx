@@ -25,9 +25,9 @@ const AbtUs = ({ theme, toggle }) => {
         const fetchData = async () => {
             try {
                 const responce = await axios.post('/api/main-backend/about_us', {
-                    section: "about_vec"
+                    type: "about_vec"
                 });
-                const data = responce.data.data.content;
+                const data = responce.data.data;
                 setAbtsUcData(data);
             } catch (error) {
                 console.error("Error fetching about us data", error);
@@ -163,7 +163,8 @@ const AbtUs = ({ theme, toggle }) => {
                                         if (window.innerWidth <= 600) {
                                             window.open(UrlParser(url), "_blank");
                                         } else {
-                                            setSelectedPdf({ url: UrlParser(url), name: label });
+                                            // setSelectedPdf({ url: UrlParser(url), name: label });
+                                            window.open(UrlParser(url), "_blank");
                                         }
                                     }}
                                     className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text-drka hover:text-drkt'

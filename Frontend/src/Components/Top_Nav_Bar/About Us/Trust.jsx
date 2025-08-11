@@ -17,9 +17,9 @@ const NewTrust = ({theme, toggle}) => {
       const fetchData = async () => {
           try {
               const responce = await axios.post('/api/main-backend/about_us',{
-                section: "about_trust"
+                type: "about_trust"
               });
-              const data = responce.data.data.content;
+              const data = responce.data.data;
               setAbtTrustData(data)
               
             } catch (error) {
