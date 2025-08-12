@@ -167,7 +167,7 @@ const AbtUs = ({ theme, toggle }) => {
                                             window.open(UrlParser(url), "_blank");
                                         }
                                     }}
-                                    className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text-drka hover:text-drkt'
+                                    className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'
                                 >
                                     {label}
                                 </div>
