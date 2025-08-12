@@ -86,8 +86,13 @@ if (!isOnline) {
 }
 
   const handleViewClick = (pdfUrl, name) => {
+  if (window.innerWidth <= 1024) {
+    window.open(pdfUrl, "_blank");
+  } else {
     setSelectedPdf({ url: pdfUrl, name });
-  };
+  }
+};
+
 
   const closeModal = () => {
     setSelectedPdf(null);
@@ -102,16 +107,16 @@ if (!isOnline) {
               <div className="w-[65%]">
                 <p className="text-text dark:text-drkt break-words whitespace-normal sm:text-left text-center text-sm">{resource.name}</p>
               </div>
-              <div className="form-buttons w-[30%]">
+              <div className="form-buttons">
                 <button
                   className="form-button view-button bg-secd text-text dark:bg-drks dark:text-drkt
                     hover:bg-accn hover:text-prim dark:hover:bg-drka"
                   onClick={() => handleViewClick(resource.url, resource.name)}
                 >
                   <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
-                  
+
                 </button>
-                <button
+                {/* <button
                   className="form-button download-button bg-secd text-text dark:bg-drks dark:text-drkt
                     hover:bg-accn hover:text-prim dark:hover:bg-drka"
                   href={resource.download}
@@ -121,7 +126,7 @@ if (!isOnline) {
                 >
                   <FontAwesomeIcon icon={faDownload} style={{ marginRight: "5px" }} />
                  
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

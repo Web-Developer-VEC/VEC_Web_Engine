@@ -97,7 +97,7 @@ body {
 .placement-members{
   display: flex;
   gap: 20px;
-  width: 70%;
+  width: 100%;
 }
 
 .placement-member-head {

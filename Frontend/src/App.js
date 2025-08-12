@@ -89,8 +89,8 @@ import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
 import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
 import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 
-import ErrorLogPage from "./Components/errorlog/errorlog.jsx";
-import HitLogs from './Components/AnalyticsDashboard/HitLogs';
+import ErrorLogPage from "./Components/Developer_stuffs/errorlog/errorlog.jsx";
+import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
 import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
@@ -227,9 +227,7 @@ const App = () => {
             {/* The rest of the routes */}
                     <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
                     {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
-                    {/* Conditionally render Head and Footer */}
-                    
-                    
+                    {/* Conditionally render Head and Footer */}  
                     <>
                         {/* <Head/> */} 
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}

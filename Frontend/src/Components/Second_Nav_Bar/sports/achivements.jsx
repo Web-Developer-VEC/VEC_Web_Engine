@@ -55,7 +55,7 @@ const Achievements = ({ data }) => {
   <>
     {data ? (
       <div className="relative w-full max-w-4xl mx-auto ">
-        <h2 className="text-center text-accn dark:text-drkt text-4xl font-bold mb-4">
+        <h2 className="text-center text-accn dark:text-drkt md:text-4xl text-2xl  font-bold mb-4">
           Achievements
         </h2>
 

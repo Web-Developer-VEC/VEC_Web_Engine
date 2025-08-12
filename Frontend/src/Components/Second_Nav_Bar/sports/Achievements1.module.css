@@ -59,6 +59,15 @@
   letter-spacing: 2px;
 }
 
+@media (max-width: 768px) {
+  .sportscoordinator {
+    font-size: 1rem;
+  }
+  .coordinatordes {
+    font-size: 0.8rem;
+  }
+}
+
 .coordinatordes{
   color: white;
   font-size: 1.5rem;
@@ -124,7 +133,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.sportsAchievementsbutton {
+/* .sportsAchievementsbutton {
   background-color: #ffcc00;
   color: rgb(6, 1, 1);
   border: none;
@@ -135,7 +144,7 @@
   border-radius: 6px;
   transition: background-color 0.3s ease-in-out, transform 0.2s;
   
-}
+} */
 
 .sportsAchievementsbutton:hover {
   background-color: #800000;
