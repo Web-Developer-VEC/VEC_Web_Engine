@@ -36,7 +36,7 @@ useEffect(() => {
 
   const interval = setInterval(() => {
     setCurrentIndex((prev) => (prev === student_achievements_details?.length - 1 ? 0 : prev + 1));
-  }, 5000);
+  }, 8000);
 
   return () => clearInterval(interval);
 }, [student_achievements_details, isPaused])
