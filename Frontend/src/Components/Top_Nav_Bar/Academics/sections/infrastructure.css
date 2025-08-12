@@ -272,3 +272,16 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+@media(max-width: 1024px) {
+.page-content{
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+}

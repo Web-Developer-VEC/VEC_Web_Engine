@@ -26,7 +26,7 @@ const VisionMission = ({ data }) => {
   const banner_details = data?.find((item) => item.category === "banner_name_and_image")?.content || [];
 
   return (
-    <div className="main-content">
+    <div className="main-content font-[Poppins]">
       {/* About the Department Section */}
       <section className="about-department">
         <div className=" about-desktop flex flex-col md:flex-row items-center  gap-6">

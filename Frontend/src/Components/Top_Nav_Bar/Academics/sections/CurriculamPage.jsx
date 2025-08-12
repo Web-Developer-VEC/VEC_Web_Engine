@@ -45,7 +45,7 @@ const CurriculumPage = ({ data }) => {
                   {req?.syllabus?.map((data, index) => (
                     <div className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks" key={index}>
                       <p>
-                        {data?.year}
+                        <div className="R-years">{data?.year}</div>
                         <div className="options-container">
                           <button 
                           className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
