@@ -151,7 +151,7 @@
               "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
               "orchidprofile": "https://orcid.org/0000-0001-8020-1678",
               "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
-              "scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
             }
           }
         ]
@@ -183,7 +183,7 @@
             "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
             "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
             "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
-            "scopus": "https://www.scopus.com/results/results.uri?src=s&sort=plf-f&st1=VISU&st2=P&nlo=1&nlr=20&nls=count-f&sid=de56d96861725e0547809c9ac4a37743&sot=anl&sdt=aut&sl=29&s=AU-ID%28%22Visu%2c+P.%22+35744043700%29&cl=t&offset=1&ss=plf-f&ws=r-f&ps=plf-f&cs=r-f&origin=resultslist&zone=queryBar"
+            "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
         },
             "image_path":"/static/images/profile_photos/001/VEC-001-01-077.webp",
             "resume_pdf":""

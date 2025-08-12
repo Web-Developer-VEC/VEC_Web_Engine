@@ -19,7 +19,7 @@ const mainBackendRoutes = require('./main-backend/routes');
 app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
 
 app.use(helmet);
-app.use(cors);
+//app.use(cors);
 // Middleware
 app.use(express.json());
 // Start scheduled task (reset daily counters at midnight)
