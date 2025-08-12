@@ -149,8 +149,8 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":
         return <ImageCarousel data={sectionData} />;
-      case "EventOrg":
-        return <EventOrg data={sectionData} />;
+      // case "EventOrg":
+      //   return <EventOrg data={sectionData} />;
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":

@@ -18,7 +18,7 @@ const LIBFacl = ({faculty}) => {
 
         <div className="py-16 px-6">
           <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-4 text-center">
-            Faculty & Staff
+            Staff
           </h2>
 
           {faculty?.description && (
@@ -31,18 +31,18 @@ const LIBFacl = ({faculty}) => {
             {faculty?.map((fac, index) => (
               <motion.div
                 key={index}
-                className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform
-                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-2 border-[#800000]"
+                className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform bg-[#d9d9d9]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] hover:scale-105 border-2 "
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="group relative">
+                <div className="">
                   <img
                     src={UrlParser(fac.image)}
                     alt={fac.name}
-                    className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
+                    className="w-[55%] mt-4 h-44 m-auto object-cover filter brightness-90  rounded-xl group-hover:brightness-100 transition-all"
                   />
                 </div>
 
