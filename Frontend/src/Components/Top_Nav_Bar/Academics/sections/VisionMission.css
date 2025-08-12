@@ -532,11 +532,12 @@ body {
   }
 
   .section-card p,
-  .section-card ul {
-    font-size: 16px;
+  .section-card ul,
+  .section-card li,
+  .accordion-body.show {
+    font-size: 14px;
     line-height: 1.5;
   }
-
   .vision-quote {
     font-size: 24px;
   }

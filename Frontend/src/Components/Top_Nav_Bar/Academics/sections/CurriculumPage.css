@@ -235,8 +235,13 @@
 /* Media Queries for responsive design */
 @media (max-width:1024px){
   .content-section{
-    width: 70vw;
+    width: 54vw;
   }
+    .R-years
+  {
+    width: 35vw;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -268,6 +273,10 @@
   .psos-section h2,
   .pos-section h2 {
     font-size: 20px;
+  }
+  .R-years
+  {
+    width: 50vw;
   }
 }
 

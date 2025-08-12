@@ -46,6 +46,10 @@
     order: 2;
     text-align: center;
   }
+  .fullWidthImage
+  {
+    margin-top: 4vh;
+  }
 }
 
 
@@ -144,6 +148,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    font-family: poppins, sans-serif;
   }
 
   .textColumn {
@@ -273,9 +278,9 @@
     /*color: #003366;*/
   }
 
-  .socialLink:hover {
+  /* .socialLink:hover { */
     /*color: #fdcc03;*/
-  }
+  /* } */
 
     /* Loading Screen */
     .loadingscreen {
@@ -377,10 +382,10 @@
       flex-direction: column;
     }
 
-    .header {
+    /* .header { */
       /* height: 20vh; */
       
-    }
+    /* } */
 
     .sidebar {
       padding: 15px;
@@ -448,7 +453,8 @@
       margin-top: 6%;
     }
     .overlayText {
-      font-size: 22px;
+      padding-top: 2vh;
+      font-size: 20px;
       letter-spacing: 1px;
     }
 
@@ -481,7 +487,8 @@
     }
 
     .messageBody {
-      font-size: 12px;
+      font-size: 14
+      px;
       line-height: 1.4;
     }
 

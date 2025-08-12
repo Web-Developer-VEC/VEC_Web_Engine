@@ -87,7 +87,7 @@ const AbtUs = ({ theme, toggle }) => {
                         <div className='flex relative w-full max-h-[100vh]'>
                             <div className="relative grow p-4 font-[Poppins] mt-14 basis-3/4 z-10 bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
                                 <p className='text-[32px] text-center font-[Poppins]'>{secTtl}</p>
-                                <p className='text-[24px] font-bold text-accn dark:text-drkt text-center font-[Poppins]'>{secSub}</p>
+                                <p className='text-[24px] font-bold text-accn dark:text-drkt  text-center font-[Poppins]'>{secSub}</p>
                                 <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
                             </div>
 
@@ -167,7 +167,7 @@ const AbtUs = ({ theme, toggle }) => {
                                             window.open(UrlParser(url), "_blank");
                                         }
                                     }}
-                                    className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text-drka hover:text-drkt'
+                                    className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'
                                 >
                                     {label}
                                 </div>

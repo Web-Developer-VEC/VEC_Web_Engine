@@ -30,7 +30,11 @@ const MOU = ({ data }) => {
                       <td>{index + 1}</td>
                       <td>{detail?.ORGANISATION_NAME}</td>
                       <td>{detail?.MONTH_AND_YEAR}</td>
-                      <td>{detail?.VALIDITY}</td>
+                      {detail?.VALIDITY ? (
+                        <td>{detail?.VALIDITY}</td>
+                      ) : (
+                        <td className="text-center">-</td>
+                      )}
                       {/* <td>
                         {detail.ACTIVITIES_PLANNED.join(", ")}
                       </td> */}
