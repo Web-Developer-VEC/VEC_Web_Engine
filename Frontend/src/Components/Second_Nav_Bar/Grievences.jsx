@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../Banner";
 import LoadComp from '../LoadComp'
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const GrievanceForm = ({ theme, toggle }) => {
   
@@ -33,11 +34,41 @@ const GrievanceForm = ({ theme, toggle }) => {
   const [query_about, setQueryAbout] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [grievanceData, setGrievanceData] = useState(null); 
+
+  useEffect(() => {
+    const fetchGrievanceData = async () => {
+      try {
+        const res = await axios.post("/api/main-backend/help_desk", {
+          type: "Help desk"
+        });
+        const data = res.data.data;
+        console.log(res.data);
+        
+        setGrievanceData(data);
+      } catch (err) {
+        console.error("Error fetching grievance table:", err);
+      }
+    };
+    fetchGrievanceData();
+  }, []);
+
+  const section = grievanceData?.find((item) => item.category === "section & level")?.content || [];
+  const level1  = grievanceData?.find((item) => item.category === "level1")?.content || [];
+  const level2  = grievanceData?.find((item) => item.category === "level2")?.content || [];
+  const level3  = grievanceData?.find((item) => item.category === "level3")?.content || [];
+  const level4  = grievanceData?.find((item) => item.category === "level4")?.content || [];
+  const level5  = grievanceData?.find((item) => item.category === "level5")?.content || [];
+  const another = grievanceData?.find((item) => item.category === "another")?.content || [];
+
+  if (!grievanceData || grievanceData.length === 0) {
+  return <p>Loading grievance table...</p>;
+}
+
   function generateCaptcha() {
-    return Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
+    return Math.floor(1000 + Math.random() * 9000); 
   }
 
-  // Function to validate phone number
   const phoenCheck = (value) => {
     const phonePattern = /^[0-9]{10}$/; 
     if (!phonePattern.test(value)) {
@@ -48,7 +79,6 @@ const GrievanceForm = ({ theme, toggle }) => {
     return true;
   }
 
-  // Function to validate email
   const emailCheck = (value) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     if (!emailPattern.test(value)) {
@@ -68,11 +98,9 @@ const GrievanceForm = ({ theme, toggle }) => {
       return;
     }
 
-    // validate phone number
     if (contact_number && !phoenCheck(contact_number)) {
       return;
     }
-    // validate email
     if (email && !emailCheck(email)) {
       return;
     }
@@ -99,9 +127,9 @@ const GrievanceForm = ({ theme, toggle }) => {
       }
     } catch (error) {
       setMessage("Error connecting to the server");
-      if (error.response.data.status === 429) {
+      if (error.response?.data?.status === 429) {
         navigate('/ratelimit', { state: { msg: error.response.data.message}})
-       }
+      }
       console.error("Submission Error:", error);
     } finally {
       setLoading(false);
@@ -143,7 +171,7 @@ const GrievanceForm = ({ theme, toggle }) => {
       <div className="flex justify-center p-6 font-[poppins]">
         <div className="w-full bg-prim dark:bg-drkts py-12 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-            {/* Left side: heading + illustration */}
+            {/* Left side */}
             <div className="flex flex-col items-start justify-center space-y-6">
               <h2 className="text-3xl md:text-4xl font-extrabold text-brwn dark:text-drkt leading-tight">
                 Have a Query or Grievance?
@@ -152,232 +180,161 @@ const GrievanceForm = ({ theme, toggle }) => {
                 We value your feedback and concerns. Please fill in your details and our
                 team will reach out to you shortly.
               </p>
-              {/* <img
-                src="/assets/query-illustration.svg"
-                alt="Query Illustration"
-                className="w-64 md:w-80 opacity-90"
-              /> */}
             </div>
 
-            {/* Right side: the form */}
             <form
               onSubmit={handleSubmit}
               className="bg-prim dark:bg-drkp shadow-xl rounded-3xl px-8 py-10 space-y-6 border-t-8 border-brwn dark:border-drks"
             >
+              
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
-                  placeholder=""
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
-                  required
-                />
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Full Name</label>
+                <input type="text" className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim" onChange={(e) => setName(e.target.value)} value={name} required />
               </div>
 
+              
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Contact Number
-                </label>
-                <input
-                  type="number"
-                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
-                  placeholder=""
-                  onChange={(e) => setContactNumber(e.target.value)}
-                  value={contact_number}
-                  required
-                />
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Contact Number</label>
+                <input type="number" className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim" onChange={(e) => setContactNumber(e.target.value)} value={contact_number} required />
               </div>
 
+              
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
+                <input type="email" className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                    Query About
-                  </label>
-                  <select
-                    className="
-                      p-3 rounded-lg
-                      border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none
-                      bg-prim dark:bg-drkp
-                      text-text dark:text-prim
-                      appearance-none
-                    "
-                    onChange={(e) => setQueryAbout(e.target.value)}
-                    value={query_about}
-                    required
-                  >
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Select Query About</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Admission</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Hostel</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Department</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Controller of Examination</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Others</option>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Query About</label>
+                  <select className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none" onChange={(e) => setQueryAbout(e.target.value)} value={query_about} required>
+                    <option>Select Query About</option>
+                    <option>Admission</option>
+                    <option>Hostel</option>
+                    <option>Department</option>
+                    <option>Controller of Examination</option>
+                    <option>Others</option>
                   </select>
                 </div>
-
+                
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                    Category
-                  </label>
-                  <select
-                    className="
-                    p-3 rounded-lg
-                    border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none
-                    bg-prim dark:bg-drkp
-                    text-text dark:text-prim
-                    appearance-none
-                    "
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={category}
-                    required
-                  >
-                    <option value="" className="bg-prim dark:bg-drkts text-text dark:text-prim">Select category</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Alumni</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Student</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Parent</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Industry Partner</option>
-                    <option className="bg-prim dark:bg-drkts text-text dark:text-prim">Others</option>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Category</label>
+                  <select className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none" onChange={(e) => setCategory(e.target.value)} value={category} required>
+                    <option value="">Select category</option>
+                    <option>Alumni</option>
+                    <option>Student</option>
+                    <option>Parent</option>
+                    <option>Industry Partner</option>
+                    <option>Others</option>
                   </select>
                 </div>
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Your Message
-                </label>
-                <textarea
-                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
-                  rows="4"
-                  placeholder="Type your query or grievance..."
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  required
-                ></textarea>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Your Message</label>
+                <textarea className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim" rows="4" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
               </div>
 
-              {/* Captcha */}
               <div className="grid md:grid-cols-2 gap-6 items-center">
-                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">
-                  {captcha}
-                </div>
-                <input
-                  type="text"
-                  className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
-                  placeholder="Enter Captcha"
-                  value={userCaptcha}
-                  onChange={(e) => setUserCaptcha(e.target.value)}
-                  required
-                />
+                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">{captcha}</div>
+                <input type="text" className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim" placeholder="Enter Captcha" value={userCaptcha} onChange={(e) => setUserCaptcha(e.target.value)} required />
               </div>
 
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={loading}
-                className={`p-2 rounded w-full ${
-                  loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"
-                }`}
-              >
-                {loading ? "Submitting..." : "Submit"}
-              </button>
+              <button type="submit" disabled={loading} className={`p-2 rounded w-full ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"}`}>{loading ? "Submitting..." : "Submit"}</button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Grievance Table */}
       <div className="p-6">
-        <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">Grievance Contact Levels</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full border border-gray-300 text-center">
-            <thead className="bg-[#808080] text-white">
-              <tr>
-                <th className="p-2 border">Section & Level</th>
-                <th className="p-2 border">Admission</th>
-                <th className="p-2 border">Hostel</th>
-                <th className="p-2 border">Department</th>
-                <th className="p-2 border">Controller of Examinations</th>
-                <th className="p-2 border">Scholarship</th>
-              </tr>
-            </thead>
-            <tbody>
+  <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">
+    Grievance Contact Levels
+  </h2>
+  <div className="overflow-x-auto">
+    {grievanceData && grievanceData.length > 0 ? (
+      <table className="w-full border border-gray-300 text-center">
+        <thead className="bg-[#808080] text-white">
+          <tr>
+            <th className="p-2 border">Section & Level</th>
+            {section.map((header, idx) => (
+              <th key={idx} className="p-2 border">{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          
+          {level1 && (
             <tr>
-                <td className="p-2 border">Level 1</td>
-                <td colSpan="5" className="p-2 border">
-Administrative Officer: Dr. V. Jeyabalraja <br></br>Professor, Department of Computer Science and Engineering , ph: 9444464865<br></br> 
+              <td className="p-2 border">Level 1</td>
+              <td colSpan={section.length} className="p-2 border">
+                {level1.Administrative_Officer} <br />
+                ph: {level1.ph || "-"} <br />
+                <a
+                  href={`mailto:${level1.email_id || ""}`}
+                  className="dark:text-drka"
+                >
+                  Email ID: {level1.email_id}
+                </a>
+                , Online Help desk:{" "}
+                <a
+                  href={`https://${level1.Online_Help_desk || ""}`}
+                  className="dark:text-drka"
+                >
+                  {level1.Online_Help_desk}
+                </a>
+              </td>
+            </tr>
+          )}
 
-<a href="grievance@velammal.edu.in" className="dark:text-drka">Email ID: grievence@velammal.edu.in </a>, Online Help desk :<a href="www.velammal.edu.in" className="dark:text-drka"> www.velammal.edu.in </a>
-</td>
-              </tr>
-              <tr>
-                <td className="p-2 border">Level 2</td>
-                <td className="p-2 border">	Ms. Jenefer Asha Jeyarani<br></br>
-                Admission Counsellor</td>
-                <td className="p-2 border">Ms. Menaka<br></br>
-                Dy. Warden<br></br> Girls Hostel</td>
-                <td className="p-2 border">Class Advisor of<br></br> Department<br></br> Concerned</td>
-                <td className="p-2 border">	Dr. P. Gurusamy<br></br>
-                Asst. Professor, Maths & <br></br>Exam Cell Coordinator</td>
-                <td className="p-2 border">Ms. N. Niveditha<br></br>
-                Scholarship Office</td>
-              </tr>
-              <tr>
-                <td className="p-2 border">Level 3</td>
-                <td className="p-2 border">Dr. S. Shahil Kirupavathy<br></br>
-                Professor & Head, Physics & <br></br>Nodal Officer - TNEA</td>
-                <td className="p-2 border">Mr. Mathivanan<br></br>
-                Dy. Warden<br></br> Boys Hostel</td>
-                <td className="p-2 border">Academic <br></br>Coordinator of<br></br> Department<br></br> Concerned</td>
-                <td className="p-2 border">Dr. A. Angala Parameswari<br></br>
-                Asst. Professor, EEE & <br></br>Dy. COE</td>
-                <td className="p-2 border">
-	Mr. B. Prakash Kumar<br></br>
-Nodal Officer - Scholarship</td>
-              </tr>
-              <tr>
-                <td className="p-2 border">Level 4</td>
-                <td className="p-2 border">Ms. S. Kalyani<br></br>
-                PA to Principal</td>
-                <td className="p-2 border">Mr. Theivanathan<br></br>
-                Asst. Professor, ECE & <br></br>Dy.Chief Warden (Hostels)</td>
-                <td className="p-2 border">	HoD of <br></br>Department<br></br> Concerned</td>
-                <td className="p-2 border">	Dr. S. Srinath<br></br>
-                Professor, EEE & COE</td>
-                <td className="p-2 border">Ms. S. Kalyani<br></br>
-                PA to Principal</td>
-              </tr>
-              <tr>
-                <td className="p-2 border">Level 5</td>
-                <td colSpan="5" className="p-2 border">Principal</td>
-              </tr>
-              <tr>
-                <td className="p-3 border" colSpan={4}>Grievance related to PoSH(Prevention of sexual harrassment),<br />Gender issues or  any complaint raised by student</td>
-                <td colSpan="5" className="p-3 border">Dr. Geetha R <br />Asst. Professor, EEE</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+          {[level2, level3, level4].map((level, idx) => (
+            <tr key={idx}>
+              <td className="p-2 border">Level {idx + 2}</td>
+              {section.map((sec, i) => {
+                const key = sec.toLowerCase().replace(/\s|&/g, '');
+                return (
+                  <td key={i} className="p-2 border">
+                    {level[key] || "-"}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+
+          {level5 && level5.length > 0 && (
+            <tr>
+              <td className="p-2 border">Level 5</td>
+              <td colSpan={section.length} className="p-2 border">
+                {level5[0]}
+              </td>
+            </tr>
+          )}
+
+          {another && another.length > 0 && (
+            <tr>
+              <td
+                className="p-3 border"
+                colSpan={Math.ceil(section.length / 2) + 1}
+              >
+                {another[0]}
+              </td>
+              <td
+                colSpan={Math.floor(section.length / 2)}
+                className="p-3 border"
+              >
+                {another[1]}
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    ) : (
+      <p className="text-center text-gray-500">Loading grievance table...</p>
+    )}
+  </div>
+</div>
+
     </>
   );
 };
 
 export default GrievanceForm;
-
