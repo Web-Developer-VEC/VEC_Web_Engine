@@ -21,29 +21,28 @@ const LibraryLayout = ({toggle, theme}) => {
         "Advisory committee members": <LibrarySections data={libraryData} lib={lib}/>,
         "Membership Details": <LIBMemb lib={lib} data={libraryData} />,
         "Collection": {
-          "Books": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-            "Journals": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
-            "Newspapers": <LibrarySections faculty={libraryData ? libraryData["faculty & Staff"] : null}
-              membership={libraryData ? libraryData["membership_details"] : null} lib={lib}/>,
+          "Books": <LibrarySections data={libraryData} lib={lib}/>,
+            "Journals": <LibrarySections data={libraryData} lib={lib}/>,
         },
         "Services": <LibrarySections data={libraryData} lib={lib}/>,
         "Digital Library & E-Resources": <LibrarySections data={libraryData} lib={lib}/>,
-        "OPAC": <LibrarySections  lib={lib}/>,
+        "Multimedia": <LibrarySections  lib={lib}/>,
         "Library Resources": <LibrarySections data={libraryData} lib={lib}/>,
         "Downloads": <LibrarySections data={libraryData} lib={lib}/>
     };
+
+    
     
     useEffect(() => {
       const fetchData = async () => {
-        
         const typeMap = {
           "About": "about_the_library",
           "HOD's message": "HOD",
           "Staff": "Faculty_Staff",
           "Advisory committee members": "advisors",
           "Membership Details": "membership_details",
+          "Books":"books",
+          "Journals":"journal",
           "Services": "library_services",
           "Digital Library & E-Resources": "digital_libraries",
           "Library Resources": "library_resources",
@@ -51,13 +50,17 @@ const LibraryLayout = ({toggle, theme}) => {
         }
         
         try {
+           const key = Array.isArray(lib) ? lib[lib.length - 1] : lib;
+          const type = typeMap[key]
           const response = await axios.post("/api/main-backend/library",
             {
-              type: typeMap[lib]
+              type: type
             }
           );
           const data = response.data.data;
           setLibraryData(data);
+          // console.log(data);
+          
         } catch (err) {
           console.error("Error Fetching Data:", err.message);
           if (err.response.data.status === 429) {
