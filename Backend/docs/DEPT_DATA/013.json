@@ -203,7 +203,7 @@
               "researchgate":"https://www.researchgate.net/profile/S-Satishkumar",
               "orchidprofile":"",
               "publonprofile":"",
-              "scopus":"https://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=satish+Kumar&st2=s&nlo=1&nlr=20&nls=count-f&sid=ca5287c422edd6e5dec91a734cd442d3&sot=anl&sdt=aut&sl=37&s=AU-ID%28%22Satish+Kumar%2C+S.%22+13806246500%29&txGid=5b7b5fd8edbb8c1267c2088b4cd16803&sessionSearchId=ca5287c422edd6e5dec91a734cd442d3&limit=10"
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=13806246500"
             },
             "image_path":"/static/images/profile_photos/013/VEC-013-02-200.webp",
             "resume_pdf":""
@@ -215,7 +215,7 @@
               "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/dr-arockia-jaswin-45962224?originalSubdomain=in",
               "googlescholar": "https://scholar.google.com/citations?user=MI_lw40AAAAJ&hl=en",
-              "researchgate": "https://www.researchgate.net/?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImxvZ2luIiwicGFnZSI6Il9kaXJlY3QifX0%3D",
+              "researchgate": "",
               "orchidprofile": "https://orcid.org/0000-0001-9601-1342",
               "publonprofile": "https://www.webofscience.com/wos/author/record/GOV-4047-2022",
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36468002200"
@@ -232,7 +232,7 @@
                "googlescholar": "https://scholar.google.com/citations?user=t_iu9IkAAAAJ&hl=en",
                "researchgate": "https://www.researchgate.net/profile/Suresh-Sugumar-3",
                "orchidprofile": "https://orcid.org/0000-0002-6462-5806",
-               "publonprofile": "https://www.webofscience.com/wos/author/recordGOV-4240-2022",
+               "publonprofile": "",
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204060327"
                },
                "image_path": "/static/images/profile_photos/013/VEC-013-03-024.webp",
@@ -274,7 +274,7 @@
       "designation": "Assistant Professor",
       "unique_id": "VEC-013-04-028",
       "socialmedia_links": {
-        "linkedin": "https://www.linkedin.com/news/story/iphone-16-launches-without-key-ai-6150772/",
+        "linkedin": "",
         "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=4vvKUoYAAAAJ",
         "researchgate": "https://www.researchgate.net/profile/Frank-Gladson",
         "orchidprofile": "https://orcid.org/0000-0001-9460-3686",
@@ -305,7 +305,7 @@
       "unique_id": "VEC-013-04-004",
       "socialmedia_links": {
         "linkedin": "https://www.linkedin.com/in/geetha-rajamani-9ba9972a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        "googlescholar": "https://scholar.google.co.in/citations?user=L3gW2jYAAAAJ&hl=en",
+        "googlescholar": "",
         "researchgate": "https://www.researchgate.net/profile/Geetha-Rajamani",
         "orchidprofile": "",
         "publonprofile": "",
