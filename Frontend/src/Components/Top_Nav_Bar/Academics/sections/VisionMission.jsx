@@ -42,7 +42,7 @@ const VisionMission = ({ data }) => {
           </div>
 
           {/* Image on the right */}
-          <div className="w-full lg:w-1/2 md:w-full flex justify-center">
+          <div className="w-full flex justify-center">
             <img
               src={UrlParser(banner_details?.[0]?.about_the_department_image_path)}
               alt={banner_details?.[0]?.name}
