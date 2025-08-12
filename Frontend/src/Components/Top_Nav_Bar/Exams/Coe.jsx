@@ -57,7 +57,7 @@ const Coe = ({ toggle, theme }) => {
             {coeData[0].members.map((member, index) => (
               <div
                 key={index}
-                className="flex bg-prim dark:bg-text w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start mx-auto"
+                className="flex bg-prim dark:bg-text  md:w-[430px] border-[2px] border-yellow-500 rounded-xl p-4 gap-4 items-start mx-auto"
               >
                 <img
                   src={UrlParser(member.image_path)}
