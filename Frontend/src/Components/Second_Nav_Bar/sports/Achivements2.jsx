@@ -76,24 +76,24 @@ const Achievements1 = ({ data }) => {
 
           <div className="flex flex-wrap gap-6 justify-center items-center mb-6">
   <button
-    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
-      showZone === "zone" ? "ring-2 ring-black" : ""
+    className={`text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "zone" ? "bg-brwn text-white" : "bg-secd  text-black"
     }`}
     onClick={() => handleZoneClick("zone")}
   >
     Zone
   </button>
   <button
-    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
-      showZone === "interzone" ? "ring-2 ring-black" : ""
+    className={`text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "interzone" ? "bg-brwn text-white" : "bg-secd  text-black"
     }`}
     onClick={() => handleZoneClick("interzone")}
   >
     Inter Zone
   </button>
   <button
-    className={`bg-yellow-400 text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
-      showZone === "others" ? "ring-2 ring-black" : ""
+    className={`text-black font-bold rounded-md transition duration-300 ease-in-out transform px-4 py-2 text-sm md:px-6 md:py-3 md:text-base ${
+      showZone === "others" ? "bg-brwn text-white" : "bg-secd  text-black"
     }`}
     onClick={() => handleZoneClick("others")}
   >

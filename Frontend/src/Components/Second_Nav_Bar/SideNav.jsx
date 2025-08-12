@@ -230,7 +230,7 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
                 return <FaCogs className={sty}/>;
             case "Digital Library & E-Resources":
                 return <FaDesktop className={sty}/>;
-            case "OPAC":
+            case "Multimedia":
                 return <FaSearch className={sty}/>;
             case "Collection":
                 return <FaColumns className={sty}/>;
