@@ -164,10 +164,10 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                                 bg-[#0000001a] backdrop-blur-[0px] text-white text-[125%]`}
                                 style={{ animationDelay: `${i * 8}s` }}
                             >
-                                <span className="font-bold text-secd dark:text-drka block text-[12px] md:text-2xl tabport:text-[16px] leading-tight">
+                                <span className="font-bold text-secd dark:text-drka block text-[12px] md:text-2xl tabport:text-[16px] xl:text-[24px] leading-tight">
                                     {elm.header}
                                 </span>
-                                <span className="text-[10px] md:text-[16px] tabport:text-[10px] leading-snug">
+                                <span className="text-[10px] md:text-[16px] tabport:text-[10px] xl:text-[20px] leading-snug">
                                     {elm.message}
                                 </span>
                             </p>
