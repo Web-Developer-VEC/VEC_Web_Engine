@@ -9,6 +9,7 @@ import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
+import { Object3D } from "three";
 
 const LibrarySections = ({data, lib}) => {
 
@@ -389,28 +390,31 @@ const LibrarySections = ({data, lib}) => {
       };
       
     
-    const LIBbookdetails = () => {
+    const LIBbookdetails = ({data}) => {
         const stats = [
-            { label: "Number of Books", value: 111494, icon: "📘" },
-            { label: "Text Books", value: 98896, icon: "📖" },
-            { label: "Reference Books", value: 12598, icon: "🔍" },
-            { label: "World Bank Repository Book", value: 253, icon: "🌍" },
-            { label: "Current Periodicals", value: 124, icon: "👥" },
-            { label: "Book Bank", value: 1571, icon: "🏛" }
+            {  icon: "📘" },
+            {  icon: "👥" },
+            {  icon: "🏛" }
           ];
+
+          console.log(data);
+          
         
           return (
 
             <>
-                {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
-                    {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                        <span className="text-5xl">{stat.icon}</span>
-                        <Counter value={stat.value} />
-                        <p className="text-text dark:text-drkt text-lg mt-2">{stat.label}</p>
+                {data?.length >0  ? (
+                    <div className="grid grid-cols-1 items-center mt-12 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
+                    {Object.entries(data[0])?.map(([key,value], index) => {
+                        const icons = stats[index] || {}
+                        return(
+                            <div key={index} className="flex flex-col  bg-prim dark:bg-text h-[16rem] justify-center items-center p-2 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                        <span className="text-5xl">{icons.icon}</span>
+                        <Counter value={value} />
+                        <p className="text-text dark:text-drkt text-lg mt-2">{key}</p>
                         </div>
-                    ))}
+                        )
+                    })}
                     </div>
                 ) : (
                     <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
@@ -421,28 +425,31 @@ const LibrarySections = ({data, lib}) => {
           );
     }
 
-    const LIBjournalsdetails = () => {
+    const LIBjournalsdetails = ({data}) => {
         const stats = [
-          { label: "Total Journals", value: 5423, icon: "📚" },
-          { label: "National Journals", value: 2145, icon: "🇮🇳" },
-          { label: "International Journals", value: 3278, icon: "🌎" },
-          { label: "E-Journals", value: 456, icon: "💻" },
-          { label: "Subscribed Journals", value: 789, icon: "📜" },
-          { label: "Archived Journals", value: 1123, icon: "📂" }
+          { icon: "📚" },
+          {  icon: "🇮🇳" },
+          {  icon: "🌎" },
+          {  icon: "💻" },
+       
         ];
+      console.log(data);
       
         return (
 
             <>
-                {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
-                        {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                            <span className="text-5xl">{stat.icon}</span>
-                            <Counter value={stat.value} />
-                            <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
-                        </div>
-                        ))}
+                {data?.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 mt-8 md:grid-cols-2 place-items-center gap-8 p-8 bg-prim dark:bg-drkp rounded-lg shadow-lg">
+                {Object.entries(data[0])?.map(([key,value], index) => {
+                    const icons = stats[index] || {}
+                        return(
+                            <div key={index} className="flex flex-col w-[32rem] h-[14rem] justify-center items-center bg-prim dark:bg-text p-2 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+                            <span className="text-5xl">{icons.icon}</span>
+                            <Counter value={value} />
+                            <p className="text-text dark:text-prim text-lg mt-2">{key}</p>
+                            </div>
+                        )
+                      })}
                     </div>
                 ) : (
                     <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
@@ -453,43 +460,42 @@ const LibrarySections = ({data, lib}) => {
         );
       };
 
-      const LIBnewspaperdetails = () => {
-        const stats = [
-          { label: "Total Newspapers", value: 325, icon: "📰" },
-          { label: "Daily Newspapers", value: 120, icon: "📆" },
-          { label: "Weekly Newspapers", value: 85, icon: "📅" },
-          { label: "Monthly Newspapers", value: 60, icon: "🗞" },
-          { label: "Archived Newspapers", value: 45, icon: "📂" },
-          { label: "Digital Newspapers", value: 15, icon: "💻" }
-        ];
+    //   const LIBnewspaperdetails = () => {
+    //     const stats = [
+    //       { label: "Total Newspapers", value: 325, icon: "📰" },
+    //       { label: "Daily Newspapers", value: 120, icon: "📆" },
+    //       { label: "Weekly Newspapers", value: 85, icon: "📅" },
+    //       { label: "Monthly Newspapers", value: 60, icon: "🗞" },
+    //       { label: "Archived Newspapers", value: 45, icon: "📂" },
+    //       { label: "Digital Newspapers", value: 15, icon: "💻" }
+    //     ];
       
-        return (
-            <>
-                {stats ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
-                        {stats?.map((stat, index) => (
-                        <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-                            <span className="text-5xl">{stat.icon}</span>
-                            <Counter value={stat.value} />
-                            <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
-                        </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-                        <LoadComp />
-                    </div>
-                )}
-            </>
-        );
-      };
+    //     return (
+    //         <>
+    //             {stats ? (
+    //                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
+    //                     {stats?.map((stat, index) => (
+    //                     <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+    //                         <span className="text-5xl">{stat.icon}</span>
+    //                         <Counter value={stat.value} />
+    //                         <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
+    //                     </div>
+    //                     ))}
+    //                 </div>
+    //             ) : (
+    //                 <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    //                     <LoadComp />
+    //                 </div>
+    //             )}
+    //         </>
+    //     );
+    //   };
 
     const [openSection, setOpenSection] = useState(null);
     const navData = {
         "Collection": {
-            "Books": <LIBbookdetails />,
-            "Journals": <LIBjournalsdetails />,
-            "Newspapers": <LIBnewspaperdetails />
+            "Books": <LIBbookdetails data={data} />,
+            "Journals": <LIBjournalsdetails data={data}/>
         },
         "HOD's message": <LIBHod/>,
         "Staff": <LIBFacl/>,
@@ -498,7 +504,7 @@ const LibrarySections = ({data, lib}) => {
         "Membership Details": <LIBMemb data={data}/>,
         "Downloads": <LIBFea data={data}/>,
         "Library Resources": <LIBResc data={data}/>,
-        "OPAC": <LIBMult/>,
+        "Multimedia": <LIBMult/>,
         "Digital Library & E-Resources": <LIBArvl data={data}/>
     }
 
