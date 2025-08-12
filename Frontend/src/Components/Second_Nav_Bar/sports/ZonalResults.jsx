@@ -21,7 +21,7 @@ const ZonalResults = ({ data }) => {
 
   return (
     <div className="container3 mx-auto p-4 mb-6">
-      <h1 className="text-3xl sm:text-4xl font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
+      <h1 className="md:text-4xl text-2xl  font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
         Zonal Results 2024-2025
       </h1>
 

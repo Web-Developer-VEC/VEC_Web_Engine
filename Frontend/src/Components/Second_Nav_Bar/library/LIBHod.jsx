@@ -26,7 +26,7 @@ const LIBHod = ({data}) => {
       </div>
 
       <div className="flex flex-col px-4">
-        <h2 className="text-2xl font-semibold">{data.name}</h2>
+        <h2 className="text-2xl font-semibold" style={{ fontSize: '1.4rem' }}>{data.name}</h2>
         <p className="text-lg text-accn dark:text-drka mb-2">{data.designation}</p>
         <p className="text-md mb-2 text-brwn dark:text-drka">{data.education_qualification}</p>
         <p className="text-xl sm:text-justify-center text-justify">{data.message}</p>

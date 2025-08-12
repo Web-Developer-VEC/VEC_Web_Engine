@@ -25,7 +25,7 @@ function NCCAbout({data}) {
           About NCC
         </h2>
         {/* <ul className="NCC_ARMY-list"> */}
-        <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
+        <ul className="Ncc_Army-list text-justify marker:text-accn dark:marker:text-drka">
           {data?.map((item,i) => (
             <>
             {item?.about_us?.map((content,i) => (
@@ -167,7 +167,7 @@ function NCCPledge({data}) {
 }
 function NCCContact({data}) {
     return (
-      <div className="max-w-lg mx-auto p-6 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
+      <div className="max-w-lg mx-auto p-6 mb-4 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
             <h2 className="text-2xl text-brwn font-bold  dark:text-white mb-4">
                 Contact Us
             </h2>

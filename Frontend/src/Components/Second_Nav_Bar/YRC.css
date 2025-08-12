@@ -272,7 +272,7 @@
   align-items: center;
   padding: 20px;
   gap: 20px;
-  width: 600px;
+  width: 500px;
   margin: 20px 20px;
   margin-top: 20px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -311,7 +311,6 @@
 
 .yrc-member-info1 {
   flex: 1;
-  text-align: left;
   font-family:  'Poppins', sans-serif;
 
 }

@@ -55,7 +55,7 @@ const Others = ({ data }) => {
     <>
       {data ? (
       <div className="relative w-full max-w-4xl mx-auto ">
-        <h2 className="text-center text-accn dark:text-drkt text-4xl font-bold mb-4">
+        <h2 className="text-center text-accn dark:text-drkt md:text-4xl text-2xl font-bold mb-4">
           Other Achievements
         </h2>
 
@@ -78,43 +78,43 @@ const Others = ({ data }) => {
                     <img
                       src={item?.image}
                       alt="Achievement"
-                      className="w-full h-80 object-contain rounded-t-lg"
+                      className="w-full h-60 md:h-80 object-contain rounded-t-lg"
                     />
-                    <div className="p-4 h-32 flex items-center justify-center text-center rounded-b-lg">
-                      <p className="text-lg font-semibold text-text dark:text-drkt">
+
+                    <div className="p-2 md:p-4 h-fit flex items-center justify-center text-center rounded-b-lg">
+                      <p className="text-sm md:text-lg font-medium md:font-semibold text-text dark:text-drkt">
                         {item?.text}
                       </p>
                     </div>
-
                   </div>
                 ))}
               </div>
 
               <button
                 onClick={handlePrev}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+                className="absolute top-1/2 left-1 md:left-2 transform -translate-y-1/2 bg-gray-800 text-white p-1 md:p-2 rounded-full hover:bg-gray-700 transition-all"
               >
                 &#10094;
               </button>
               <button
                 onClick={handleNext}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+                className="absolute top-1/2 right-1 md:right-2 transform -translate-y-1/2 bg-gray-800 text-white p-1 md:p-2 rounded-full hover:bg-gray-700 transition-all"
               >
                 &#10095;
               </button>
             </div>
 
-            <div className="flex justify-center space-x-2 mt-4">
-              {achievements.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                  } transition-all`}
-                  onClick={() => setActiveIndex(index)}
-                />
-              ))}
-            </div>
+            <div className="flex justify-center space-x-1 md:space-x-2 mt-2 md:mt-4">
+                {achievements.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full ${
+                      activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+                    } transition-all`}
+                    onClick={() => setActiveIndex(index)}
+                  />
+                ))}
+              </div>
           </div>
         ) : (
           <p className="text-center text-gray-500">No achievements available</p>

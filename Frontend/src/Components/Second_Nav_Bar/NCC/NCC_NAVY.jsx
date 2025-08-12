@@ -17,8 +17,7 @@ function NCCAbout({data}) {
                 dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6 "
           >
             <h2
-              className="NCC_NAVY-section-title  ext-accn dark:text-drkt
-            border-b-2 border-secd dark:border-drks w-fit"
+              className="NCC_NAVY-section-title text-brwn  text-justify text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit"
             >
               About NCC
             </h2>
@@ -43,8 +42,7 @@ function NCCVisMis({data}) {
                 dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6"
             >
               <h2
-                className="NCC_NAVY-section-title text-accn dark:text-drkt
-            border-b-2 border-secd dark:border-drks w-fit"
+                className="NCC_NAVY-section-title text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit"
               >
                 Vision
               </h2>
