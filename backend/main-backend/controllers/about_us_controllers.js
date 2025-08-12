@@ -23,13 +23,12 @@ async function getAboutUs(req, res) {
     if (!document) {
       return res.status(404).json({ message: `Section '${type}' not found` });
     }
-    console.log(`Fetched section: ${type}`, document);
 
     return res.status(200).json( document );
-  } catch (error) {
-    console.error(`Error fetching About Us section '${type}':`, error);
-    await logError(req, error, `Error fetching About Us section '${type}'`, 500);
-    return res.status(500).json({ error: 'Internal server error while fetching About Us content' });
+  } 
+  catch (error) {
+  await logError(req, error, `Error fetching About Us section '${type}'`, 500);
+  return res.status(500).json({ error: 'Internal server error while fetching About Us content' });
   }
 }
 
