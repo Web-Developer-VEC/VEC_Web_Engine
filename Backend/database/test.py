@@ -7,8 +7,6 @@ db_name = "TEST"
 client = MongoClient(mongo_uri)
 db = client[db_name]
 
-
-
 deptMap = {
     "001":  "AIDS_001",
     "002":  "AUTO_002",

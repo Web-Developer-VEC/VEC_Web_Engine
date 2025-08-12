@@ -247,6 +247,7 @@
         "website_link": "",
         "status": "True"
       },
+     
       {
         "start_date": "18 JUL",
         "end_date": "18 JUL, 2025",
@@ -311,6 +312,39 @@
         "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
         "brochure_path": "/static/images/events/noctivus.webp",
         "website_link": "http://www.noctivus.pro/",
+        "status": "True"
+      },
+       {
+        "start_date":"09 AUG",
+        "end_date": "09 AUG, 2025",
+        "date": "09-08-2025",
+        "title": "CLOUDSCAPE",
+        "department": "Computer Science Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/cloudscape.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"09 AUG",
+        "end_date": "09 AUG, 2025",
+        "date": "09-08-2025",
+        "title": "Mastering of Fundamentals of Application Penetration Testing",
+        "department": "Computer Science Engineering (Cyber Security)",
+        "content": "",
+        "brochure_path": "/static/images/events/mfapt.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"09 AUG",
+        "end_date": "09 AUG, 2025",
+        "date": "09-08-2025",
+        "title": "Debate Competition - 'Clash of Gears'",
+        "department": "Computer Science Engineering (Cyber Security)",
+        "content": "",
+        "brochure_path": "/static/images/events/dccog.webp",
+        "website_link": "",
         "status": "True"
       }
     ]
