@@ -3,9 +3,9 @@
     "type": "about_the_library",
     "data": {
       "Area": "24000 sq.ft",
-      "no_of_books": "77525 Volumes",
-      "no_of_titles": "25156",
-      "no_of_journals": "174 National and International",
+      "no_of_books": "78070  Volumes",
+      "no_of_titles": "25271 ",
+      "no_of_journals": "180  National and International",
       "no_of_online_journals": "9517",
       "vision": "To enrich the knowledge of Velammalians by providing dynamic world class learning environment.To provide a learning environment with intense intellectual inquiry. To become the most dynamic learning environment in the world. To advance with successful teaching, learning and research through building a robust One System, One Library. To transform the library as a place dynamic learning with ease.",
       "mission": "To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of the college community to maintain and improve collections and achieve efficient services in an environment of flat or reduced budgets for the students, faculty and staff. To transform the information available in the environment into knowledge for students, staff and faculty.",
@@ -42,7 +42,7 @@
         "image": "/static/images/library/faculty/Senthivel T.webp"
       },
       {
-        "name": "KUMARAVEL P",
+        "name": "KUMARAVEL P (B.A)",
         "designation": "Library Assistant",
         "educational_qualification": "B.A",
         "image": "/static/images/library/faculty/Kumaravel P.webp"
@@ -196,11 +196,11 @@
         "Magazine And NewsPapers"
       ],
       "Total": [
-        "78378",
-        "25373",
-        "",
-        "",
-        "",
+        "78070",
+        "25271",
+        "1818",
+        "984",
+        "4373",
         "180",
         "87",
         "93",
@@ -209,7 +209,7 @@
         "2768",
         "3986",
         "9517",
-        ""
+        "10"
       ]
     }
   },
@@ -316,10 +316,8 @@
       {
         "title": "Anti-Plagiarism Scanner Software",
         "content": [
-          { "name": "CopyCatch", "link": "https://www.copycatchgold.com" },
           { "name": "TurnItOut", "link": "https://www.turnitout.com" },
 
-          { "name": "Plagiarism.com", "link": "https://www.plagiarism.com" },
           { "name": "Copyscape", "link": "https://www.copyscape.com" },
           {
             "name": "CodeMatch (CodeSuite)",
@@ -347,18 +345,20 @@
       {
         "title": "Our Collections",
         "content": [
-          "Total Books: 77,525",
-          "Total Titles: 25,156",
-          "General Bank Books: 1,818",
+          "No of Books: 78070",
+          "No of Titles: 25271",
+          "General Bank Books: 1818",
           "SC/ST Book Bank Books: 984",
-          "e-Books: 155",
-          "Journals: 162 (75 International, 87 National)",
-          "CDs: 3,930",
-          "Video Cassettes: 127",
-          "Journal Back Volumes: 2,768",
-          "Student Project Reports: 3,192",
-          "Online Journals Package: 9,517",
-          "Magazines & Newspapers: 20"
+          "e-Books: 4373",
+          "Journals: 180 ",
+          "Internationa: 87",
+          "National: 93 ",
+          "CD's: 3930 ",
+          "Video Cassettes:127",
+          "Journal Back Volumes: 2768",
+          "Student Project Report: 3896 ",
+          "Online Journals Package: 9517",
+          "Magazine And Newspapers: 10 "
         ]
       }
     ]
@@ -391,5 +391,26 @@
         "url": "http://www.emis.de/journals/short_index.html"
       }
     ]
+  },
+  {
+    "type":"books",
+    "data":
+      {
+        "Number of Books":"78070",
+        "Total Number of Journals ":"180",
+        "General book bank":"2802"       
+      }
+    
+  },
+  {
+    "type": "journal",
+    "data": 
+      {
+        "Total Journals":"180",
+        "National Journals":"93",
+        "International Journals":"87",
+        "E-Journals":"1480" 
+      }
+    
   }
 ]

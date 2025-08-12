@@ -4,6 +4,8 @@ const ALLOWED_TYPES = [
   'Faculty_Staff',
   'advisors',
   'membership_details',
+  'books',
+  'journal',
   'Collection',
   'library_services',
   'digital_libraries',

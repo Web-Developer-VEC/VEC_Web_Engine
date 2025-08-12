@@ -223,11 +223,11 @@
         "unique_id": "VEC-005-01-120",
         "socialmedia_links":{
               "linkedin": "https://www.linkedin.com/in/murugeshwari-balasubramanian-043659102/",
-              "googlescholar": "",
+              "googlescholar": "https://scholar.google.com/citations?user=kNagarajan&hl=en",
               "researchgate": "",
               "orchidprofile":"",
               "publonprofile": "",
-              "scopus":  ""
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             },
             "image_path":"/static/images/profile_photos/005/VEC-005-01-120.webp",
             "resume_pdf":""
@@ -237,7 +237,7 @@
   {
     "category": "teaching_staff",
     "members": [
-      {
+            {
         "name": "Dr. JEYABALARAJA V",
         "designation": "Professor & AO",
         "unique_id": "VEC-005-02-199",

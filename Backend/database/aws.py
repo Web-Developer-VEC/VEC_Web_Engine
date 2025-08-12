@@ -511,15 +511,7 @@ def insert_research_data():
 
     print("Research data inserted successfully.")
 
-def insert_curriculum_data():
-    collection = db['curriculum']
-    with open("/root/VEC_Web_Engine/docs/curriculum.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
-
-    print("Curriculum documents inserted successfully.\n")
-
-insert_curriculum_data()
+create_logs_collection()
 insert_landing_page_sections()
 insert_sports_sections()
 insert_nss_sections()
