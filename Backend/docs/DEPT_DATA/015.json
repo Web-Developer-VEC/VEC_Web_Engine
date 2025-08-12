@@ -1,0 +1,509 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/physics.webp",
+            "name": " Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+                     "Department of Physics is a place for learning, fundamental research, innovation, discovery and expression. This department supports the young minds to follow their passion, explore technology, create curiosity and take up scientific challenges across the various engineering discipline. This is one of the sprawling and leading academic and research-based department. Department of Physics is recognized as Nodal Research Centre by Anna University for offering research program (Ph.D). Faculty members of Department of Physics have received Research projects worth Rs. 142 Lakhs from various funding agencies."          ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+                    "To provide knowledge of Physics in all areas of life through transfer of fundamental technology and to do more research work." 
+  ]
+   },
+      {
+        "category": "department_mission",
+        "content": [
+            "To offer an education of the highest quality in the field of Engineering Physics to students to do research in the field of Materials science, Nanotechnology & Environmental Engineering expose to experimental as well as theoretical bases." 
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": []
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content":"Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+
+                
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content":"Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+
+                
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content":"Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+
+                
+          },
+          {
+            "header":"PO 4: Conduct investigations of complex problems",
+            "content":"Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+
+                
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content":"Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+
+                
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content":"Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+
+                
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content":"Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+
+                
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content":"Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+
+                
+          },
+          {
+            "header":"PO 9: Individual and team work",
+            "content":"Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+
+                
+          },
+          {
+            "header": "PO 10: Communication",
+            "content":"Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+
+
+                
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content":"Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+
+                
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content":"Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+
+                
+          }
+         ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [ ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "015",
+            "name":"Dr. SHAHIL KIRUPAVATHY S",
+            "department_name": "Physics ",
+            "unique_id": "VEC-015-01-191",
+            "qualification": ["M.Sc.", "M. Phil."," Ph.D"],
+            "hod_message":["A good education is the foundation for a better future. In VEC we ensure that every student entrusted to us will receive wholistic development and also support to unearth all the potentials found in them. The students who come to this beautiful campus enter the world as successful Engineers."],
+            "hod_image": "/static/images/hods/phy.webp",
+            "designation":  "Professor & Head, Dept of Physics",
+            "Social_media_links": {
+              "linkedin":  "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
+              "googlescholar":"https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
+              "researchgate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
+              "orchidprofile":"https://orcid.org/0000-0001-8764-8843",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
+                }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/physics.webp",
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+    "category": "head_of_department",
+    "members": [
+      {
+        "name": "Dr. SHAHIL KIRUPAVATHY S",
+        "designation": "Professor & head",
+        "unique_id": "VEC-015-01-191",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
+          "googlescholar": "https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
+          "researchgate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
+          "orchidprofile": "https://orcid.org/0000-0001-8764-8843",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-01-191.webp",
+        "resume_pdf": ""
+      }]
+      },
+      
+  {
+    "category": "teaching_staff",
+    "members": [
+      {
+        "name": "Dr. RAMESH KUMAR V",
+        "designation": "Associate Professor",
+        "unique_id": "VEC-015-03-193",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/dr-v-ramesh-kumar-vaduganathan-383a3522/?originalSubdomain=in",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=mmRjxoIAAAAJ",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0003-4302-6131",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-03-193.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. HAMSAVALLI G",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-091",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/hamsavalli-g-322069204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-091.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mr. MOSES ISAIAH V G",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-192",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/moses-isaiah-47b68332a/",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=2&user=S-bt3OoAAAAJ",
+          "researchgate": "https://www.researchgate.net/profile/Moses-V-G-Isaiah?ev=hdr_xprf",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-192.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. REVATHY T A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-527",
+        "socialmedia_links": {
+          "linkedin": "https://in.linkedin.com/in/revathy-t-a-726bb5175",
+          "googlescholar": "https://scholar.google.co.in/citations?user=0ZaDW38AAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Revathy-T-A",
+          "orchidprofile": "https://orcid.org/0009-0009-3888-9451",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/MEK-9464-2025",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-527.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. ARUMUGAM J",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-201",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/dr-arumugam-j-8912a7101/",
+          "googlescholar": "https://scholar.google.com/citations?user=LhooRSoAAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Arumugam_Jayachandhiran",
+          "orchidprofile": "https://orcid.org/0000-0002-3567-4473",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189235655"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-201.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. JAYACHANDIRAN M",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-049",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/jai-chandiran-4124b161/",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=KMk68FUAAAAJ",
+          "researchgate": "https://www.researchgate.net/profile/Mr-Jayachandiran",
+          "orchidprofile": "https://orcid.org/0000-0003-3059-9520",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57185644700"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-049.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. ANITHA JENNIFER D",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-200",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.co.in/citations?hl=en&user=02j5uIsAAAAJ&scilu=&scisig=AJY4_hMAAAAAZvoqni4DSLTRwPgytCas9jWH5rc&gmla=ALUCkoU0UKJQa-ObNK0tq_7xMeqAP2FMW34ei8LE5qOi6k8QOsggmF87Oqz6y8-QxOkoPieEvKpY1JOW97F-Pdr0i6pWxnoD7P25PEc&sciund=9598116635219421236",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-200.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. SIVATHARANI B",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-078",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/sivatharani-boomiraja-54401b28b/",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=oew0jxQAAAAJ",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0003-3741-6678",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57710931100"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-078.webp",
+        "resume_pdf": ""
+      }
+    ]
+  },
+  {
+    "category": "non_teaching_staff",
+    "members": [
+      {
+        "name": "Mr. RAVI KUMAR C",
+        "designation": "Lab Instructor",
+        "unique_id": "VEC-015-05-011",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-05-011.webp",
+        "resume_pdf": ""
+      }
+    ]
+  }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+  "category": "curriculum",
+  "content": [
+    {
+      "heading": "Curriculum & Syllabus ",
+      "syllabus": [
+        {
+          "year": "R - 1st semester",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_1_23.pdf"
+        },
+         {
+          "year": "R - 2023 for electronics engineer",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_electronics_engineering.pdf"
+        },
+         {
+          "year": "R - 2023 for materials science",
+          "pdf_path":"/static/pdfs/curriculum/015/reg_material_science.pdf"
+        },
+         {
+          "year":  "R - 2023 for civil engineers",
+          "pdf_path":"/static/pdfs/curriculum/015/reg_civil_engineers.pdf"
+        },
+         {
+          "year":  "R - 2023 for computer engineers",
+          "pdf_path": "/static/pdfs/curriculum/015/reg_computer_engineers.pdf"
+        }
+      ]
+    }
+  ]
+}
+    ]
+  },
+ {
+  "type": "newsletter",
+  "data": [
+    {
+      "category": "banner_name_and_image",
+      "content": [
+        {
+          "banner_image_path": "/static/images/department_data/physics.webp",
+          "name": "Physics",
+          "dept_id": "005"
+        }
+      ]
+    },
+    {
+      "category": "newsletter",
+      "content": []
+    }
+  ]
+},
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics ",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      },
+      {
+        "category": "student_achievements_details",
+        "images":[]
+      }
+    ]
+  },
+ {
+  "type": "infrastructure",
+  "data": [
+    {
+      "category": "banner_name_and_image",
+      "content": [
+        {
+          "banner_image_path": "/static/images/department_data/physics.webp",
+          "name": "Physics",
+          "dept_id": "015"
+        }
+      ]
+    },
+    {
+      "category": "infrastructure_images",
+      "content": [
+        {
+          "image_path": "/static/images/infrastructure/015/1.webp",
+          "image_name": "ENGINEERING PRACTICE LABORATORY",
+          "image_content": ""
+        },
+        {
+          "image_path": "/static/images/infrastructure/015/2.webp",
+          "image_name": "MATERIALS RESEARCH LABORATARY",
+          "image_content": ""
+        }
+      ]
+    }
+  ]
+},
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": 
+        []
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "department_research",
+        "content":[]
+      }
+    ]
+  }
+
+
+]

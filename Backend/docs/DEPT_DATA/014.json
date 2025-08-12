@@ -1,0 +1,295 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/tamil.webp",
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "தமிழர்களின் வளமான பண்பாடு, கலை, கலாச்சாரம், இலக்கியம், அறிவியல் சிந்தனைகள், பொறியியல் தொழில்நுட்பத் தகவல்கள் முதலானவற்றை மாணவர்கள் கற்கும் நோக்கில் ‘தமிழர் மரபு’ மற்றும் தமிழர் தொழில்நுட்பம்’ ஆகிய இரண்டு தனித்துவமான பாடங்களைக் கற்பிப்பதனை நோக்கமாகக் கொண்டு 2023 ஆம் ஆண்டு முதல் தமிழ்த்துறை இயங்கிவருகிறது."," மேலும் இத்துறை, மாணவர்கள் மொழி, ஆளுமைத்திறன், புதுமை படைத்தல், வாழ்வியல் அறநெறி மற்றும் பண்பாட்டு மாண்புகளைப் பெற்று, சமூகத்தோடு கூடி வாழ வழிகாட்டுகிறது."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+         "தமிழரின் பண்பாட்டு விழுமியங்களைக் கற்று வாழ்நாள் முழுவதும் பயன்படுத்துதல். பொறியியல் துறைகளில் தமிழரின் அறிவியல் மற்றும் தொழில்நுட்பச் சிந்தனைகளை ஆய்ந்து மரபார்ந்த புத்தாக்கங்களைப் படைத்தல் ஆகிய இரு இலக்குகளைத் தமிழ்த்துறை தொலைநோக்காகக் கொண்டுள்ளது."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+            "தமிழரின் வளமான பாரம்பரிய பண்பாட்டுக் கூறுகளைத் தெரிந்து கொள்ளச் செய்தல்.",
+            "பொறியியல் தொழில்நுட்பக் கூறுகளை அறிந்து கொள்ளச் செய்தல்.",
+            "மொழித்திறன் மற்றும் படைப்பாற்றலை வளர்த்தல்.",
+           "சமூகத்திற்குப் பயனளிக்கும் வகையில் ஒழுக்கமும் ஆளுமைத்திறனும் உடையவர்களாக உருவாக்குதல்." ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": []
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1:Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2:Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3:Design/development of solutions",
+            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4:Conduct investigations of complex problems",
+            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5:Modern tool usage",
+            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6:The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7:Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8:Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9:Individual and team work",
+            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10:Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11:Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12:Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "014",
+            "name": "திரு. முத்தையா மு.மு",
+            "department_name": "தமிழ்த்துறை",
+            "unique_id": "VEC-014-01-180",
+            "qualification": ["M.A.", "M.Phil"],
+            "hod_message": ["இன்றைய நவீன தொழில்நுட்ப உலகில் அருந்தமிழ், அறிவியல் தமிழாய், கணினித்தமிழாய் காலமாற்றத்திற்கேற்ப தன்னைப் புதுப்பித்து என்றும் கன்னித்தமிழாய்த் திகழ்கிறது. செம்மொழித் தமிழின் வளமான இலக்கண இலக்கியங்களில், இல்லாதன இல்லை எனும்படி பல்துறை சார்ந்த கருத்துகளைப் பண்டைத் தமிழர்கள் பொதிந்து வைத்துள்ளனர்."," அத்தரவுகள் யாவும் நவீன பொறியியல் துறைகளில் புத்தாக்கம் படைக்கத் துணைபுரிவனவாகும். ஒரு நிறுவனம் அல்லது சமூகத்தின் உயர்வு என்பது எத்தனை பேர் உள்ளார்கள் என்பதைவிட எத்தகு திறனுடையவராக உள்ளார்கள் என்பதைப் பொறுத்தே அமைகிறது ஆகவே மாணவர்கள் ஒழுக்கநெறியும், பல்திறனும் பெற்று அறவழியில் செயலாற்றி சமூகத்தில் சிறந்து விளங்க தமிழின் பண்பாட்டு விழுமியங்கள் பெரும்பங்காற்றும். போட்டித் தேர்வுகளுக்கும், ஊடகம், மொழிபெயர்ப்பு, கலைச்சொல்லாக்கம், தொல்லியல் என விரியும் தமிழின் பல்துறைகளிலும் பணிவாய்ப்புகள் பெறவும் தமிழைக் கற்பது பேருதவி புரியும் என்பது உறுதி.","நம் முன்னோரின் அடிபற்றி புதுமைகள் படைப்போம்!"],
+            "hod_image": "/static/images/hods/tamil.webp",
+            "designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/muthiah-m-m-190398355/",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [{
+             "name": "திரு. முத்தையா மு.மு",
+            "designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
+            "unique_id": "VEC-014-01-180",
+            "socialmedia_links":{
+              "linkedin": "https://www.linkedin.com/in/muthiah-m-m-190398355/",
+              "googlescholar": "",
+              "researchgate":"",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path":"/static/images/profile_photos/014/VEC-014-01-180.webp",
+            "resume_pdf":""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": []
+        },
+      {
+        "category": "non_teaching_staff",
+        "members": []
+      }
+      
+    ]
+  },
+   {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+           "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "curriculam",
+        "content": [
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": []
+      }]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+           "name": "தமிழ்த்துறை",
+            "dept_id": "014"
+          }
+        ]
+      }
+    ]
+  }
+]

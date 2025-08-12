@@ -1,0 +1,247 @@
+[
+  {
+    "type": "COE",
+    "data": [
+      {
+        "title": "COE",
+        "members": [
+          {
+            "name": "Dr. SRINATH S",
+            "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
+            "position": "Controller of Examinations",
+            "image_path": "/static/images/coe/srinath.webp"
+          }
+        ]
+      },
+      {
+        "title": "Deputy COE",
+        "members": [
+          {
+            "name": "Dr. ANGALA PARAMESWARI G",
+            "qualification": "M.E., Ph.D",
+            "position": "Deputy Controller of Examinations",
+            "image_path": "/static/images/coe/angala.webp"
+          }
+        ]
+      },
+      {
+        "title": "Co-ordinator – Internal Examinations",
+        "members": [
+          {
+            "name": "Dr. GURUSAMY P",
+            "qualification": "M.Sc.,M.Phil.,B.Ed.,Ph.D",
+            "position": "Co-ordinator – Internal Examinations",
+            "image_path": "/static/images/coe/gurusamy.webp"
+          }
+        ]
+      },
+      {
+        "title": "COE Staffs",
+        "members": [
+          {
+            "name": "Mrs. MANJULA U",
+            "qualification": "B.Com",
+            "position": "Data Entry Operator",
+            "image_path": "/static/images/coe/manjula.webp"
+          },
+          {
+            "name": "Mr. VIJAYAKALIDASAN R",
+            "qualification": "DECE",
+            "position": "Technical Assistant",
+            "image_path": "/static/images/coe/vijayakalidasan.webp"
+          },
+          {
+            "name": "Mrs. SHUNMUGA SUNDARI B",
+            "qualification": "B.Sc",
+            "position": "Data Entry Operator",
+            "image_path": "/static/images/coe/shunmuga.webp"
+          },
+          {
+            "name": "Mrs. MEENAKSHI P",
+            "qualification": "B.C.A",
+            "position": "Data Entry Operator",
+            "image_path": "/static/images/coe/meenakshi.webp"
+          },
+          {
+            "name": "Mrs. HEMALATHA R",
+            "qualification": "M.A",
+            "position": "Data Entry Operator",
+            "image_path": "/static/images/coe/hemalatha.webp"
+          },
+          {
+            "name": "Mr. SURIYAPRAKASH A",
+            "qualification": "B.Sc",
+            "position": "Data Entry Operator",
+            "image_path": "/static/images/coe/suriyaprakash.webp"
+          },
+          {
+            "name": "Mrs. INDHUMATHI G",
+            "qualification": "",
+            "position": "Office Assistant",
+            "image_path": "/static/images/coe/indhumathi.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "regulation",
+    "data": [
+      {
+        "year": "2023",
+        "links": [
+          {
+            "name": "UG - B.E / B.Tech",
+            "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+          },
+          {
+            "name": "PG - ME",
+            "pdf_path": "/static/pdfs/regulation_docs/2023_me.pdf"
+          },
+          {
+            "name": "PG - MBA",
+            "pdf_path": "/static/pdfs/regulation_docs/2023_mba.pdf"
+          }
+        ]
+      },
+      {
+        "year": "2019(A)",
+        "links": [
+          {
+            "name": "UG - B.E / B.Tech",
+            "pdf_path": "/static/pdfs/regulation_docs/2019A_be.pdf"
+          },
+          {
+            "name": "PG - ME",
+            "pdf_path": "/static/pdfs/regulation_docs/2019A_me.pdf"
+          },
+          {
+            "name": "PG - MBA",
+            "pdf_path": "/static/pdfs/regulation_docs/2019A_mba.pdf"
+          }
+        ]
+      },
+      {
+        "year": "2019",
+        "links": [
+          {
+            "name": "UG - B.E / B.Tech",
+            "pdf_path": "/static/pdfs/regulation_docs/2019_be.pdf"
+          },
+          {
+            "name": "PG - ME",
+            "pdf_path": ""
+          },
+          {
+            "name": "PG - MBA",
+            "pdf_path": "/static/pdfs/regulation_docs/2019_mba.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "exam_curriculum",
+    "data": [
+      {
+        "year_number": "2023",
+        "year": "For the Students admitted from 2023&2024",
+        "department": [
+          "B.E Automobile Engineering",
+          "B.E Civil Engineering",
+          "B.E Computer Science and Engineering",
+          "B.E Computer Science and Engineering (Cyber Security)",
+          "B.E Electronics and Communication Engineering",
+          "B.E Electrical and Electronics Engineering",
+          "B.E Electronics and Instrumentation Engineering",
+          "B.E Mechanical Engineering",
+          "B.Tech Artificial Intelligence and Data Science",
+          "B.Tech Information Technology",
+          "M.E Computer Science and Engineering",
+          "M.E Power Systems Engineering",
+          "MBA - Master of Business Administration"
+        ],
+        "deptid": [
+          "002",
+          "004",
+          "005",
+          "006",
+          "009",
+          "007",
+          "008",
+          "013",
+          "001",
+          "011",
+          "005",
+          "008",
+          "017"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "all_forms",
+    "data": [
+      {
+        "students": [
+          {
+            "name": [
+              "NPTEL Course Registration form for credit transfer",
+              "Application Form - NPTEL Credit Transfer",
+              "Application form - CGPA to Percentage Conversion",
+              "Application Form - Review after Revaluation",
+              "Application Form - Revaluation (After obtaining Photocopy)",
+              "Application Form - Photocopy",
+              "Evaluation Form for Photocopy of answer scripts B.E./B.Tech./M.E./MBA (R2023)",
+              "B.E.& M.E - Evaluation form for Photocopy of answer script",
+              "Project Report Format",
+              "Project Report Specimen",
+              "Revised Fee Structure for Certificates & Coursework",
+              "Application Form - Name Correction",
+              "Application Form - Duplicate Certificate",
+              "Application Form - Duplicate Hall Ticket",
+              "Application Form - Withdrawal",
+              "Application Form - Transcript Certificate"
+            ],
+            "link": [
+              "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf",
+              "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf",
+              "/static/pdfs/all_forms/Application_for_CGPA_to_Percentage_conversion.pdf",
+              "/static/pdfs/all_forms/Application-Form-Review-after-Revaluation.pdf",
+              "/static/pdfs/all_forms/Application-Form-Revaluation-After-obtaining-Photocopy.pdf",
+              "/static/pdfs/all_forms/Application-Form-Photocopy.pdf",
+              "/static/pdfs/all_forms/MBA-Evaluation-form-for-Photocopy-of-answer-script.pdf",
+              "/static/pdfs/all_forms/B.E.-M.E-Evaluation-form-for-Photocopy-of-answer-script.pdf",
+              "/static/pdfs/all_forms/Project-report-format.pdf",
+              "/static/pdfs/all_forms/Project-Report-specimen.pdf",
+              "/static/pdfs/all_forms/Fee_Sructure_for_certificates_from_March-2024.pdf",
+              "/static/pdfs/all_forms/Application-form_Correction-in-Grade-sheet-pdf.pdf",
+              "/static/pdfs/all_forms/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf",
+              "/static/pdfs/all_forms/Application-for-Duplicate-Hall-Ticket.pdf",
+              "/static/pdfs/all_forms/Application-Form-for-Withdrawal.pdf",
+              "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
+            ]
+          }
+        ],
+        "faculty": [
+          {
+            "name": [
+              "SEE_QP_Feedback_R2023",
+              "SEE_QP_Feedback_R2019",
+              "Self declaration form (Children/Spouse pursuing UG/PG degree in VEC)",
+              "Exam Duty Alteration Format (For Faculty)",
+              "Registration Form - Ph.D. Course Work"
+            ],
+            "link": [
+              "/static/pdfs/all_forms/SEE_QP_Feedback_R2023.pdf",
+              "/static/pdfs/all_forms/SEE_QP_Feedback_R2019.pdf",
+              "/static/pdfs/all_forms/Declaration_from_Staff(Children_Spouse_doing_UG_PG_degree_in_VEC).pdf",
+              "/static/pdfs/all_forms/Duty_alteration_Format_Faculty_Final.pdf",
+              "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

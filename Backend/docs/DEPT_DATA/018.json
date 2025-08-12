@@ -1,0 +1,875 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/eee.webp",
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "The department of Electrical and Electronics Engineering at Velammal Engineering College with its rich and traditional academic ambiance targets both the theory and the practical applications of engineering and technology to handle global challenges of the present and future scenarios.",
+          "The department is celebrating 25 years of academic excellence since 1995. All the departmental activities are NBA Accredited since 2002 and also ISO certified.",
+          "With academic autonomy, it offers variety of courses across a wide spectrum of specialized topics in UG, PG and PhD level under choice-based credit system in concurrence with the modern technological advancements and industrial requirements."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "Imparting high quality education and grooming of competent Electrical and Electronics Engineers to cater to the global needs of Academics, Industry and Society"
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+          "To impart knowledge, skills and attitudes for developing engineers to compete at global level with dedication, determination and distinction.",
+          "To motivate creativity, kindle innovation and build leadership.",
+          "To promote self-learning and teamwork and to make them industry ready graduates.",
+          "To involve the faculty and students in research and consultancy for the benefit of institute, industry and society."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Have successful technical and professional careers in their chosen fields such as Circuit theory, Field theory, Control theory and Computational platforms."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Engross in lifelong process of learning to keep themselves abreast of new developments in the field of Electronics and their applications in power engineering."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Able to succeed with effective communication and teamwork skills for multidisciplinary approach and to relate engineering issues to broader social context."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1:Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2:Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3:Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4:Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5:Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6:The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7:Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8:Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9:Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10:Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11:Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12:Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Graduates will have the ability to design, simulate and control the Electrical and Electronics circuits using the concepts of power and control engineering."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Graduates will have the ability to identify, analyze the problems and innovate ideas by adapting the concepts of Power electronics, Recent trends in power systems and Drives systems in Electrical Engineering to provide solutions to existing/novel problems."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "018",
+            "name": "Dr. SURESH KUMAR K",
+            "department_name": "Electrical & Electronics Engineering (EEE)",
+            "unique_id": "VEC-007-01-125",
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
+            "hod_message": [
+              "In the era of engineering and technology, the role of electrical student engineers is not only to pursue academic excellence but also to motivate and empower to be lifelong learners, critical thinkers, and productive members of an ever-changing global society. In this direction, the department provides an excellent environment for our students and faculties to work with zeal and enthusiasm with an aim to give their best. The department also provides facilities to carry out research in the emerging technology areas. The commitment and passion for learning and teaching by the students as well as faculties will definitely lead our future budding engineers to be industry ready."
+            ],
+            "hod_image": "/static/images/hods/eee.webp",
+            "designation": "Associate Professor & Head, Dept of Electrical & Electronics Engineering (EEE) ",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
+              "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
+              "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-4823-3597",
+              "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [
+          {
+            "name": "Dr. SURESHKUMAR K",
+            "designation": "Associate Professor & Head in Charge",
+            "unique_id": "VEC-007-03-500",
+            "socialmedia_links":  {
+              "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
+              "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
+              "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-4823-3597",
+              "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf"
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-03-500.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+            {
+              "name": "Dr. SRINATH S",
+              "designation": "Professor & COE",
+              "unique_id": "VEC-007-02-165",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/srinath-subbaraman-9b10b723/",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/0000-0002-9953-9932",
+                "publonprofile": "https://www.webofscience.com/wos/author/record/N-5572-2019",
+                "scopus": "https://tinyurl.com/743phucx"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. GEETHA R",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-185",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/geetha-raman-86a635203/",
+                "googlescholar": "https://scholar.google.com/citations?user=z5gJDvwAAAAJ&hl=en",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. RAGHURAMAN S",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-109",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/raghu-raman-sivalingam-930020125/",
+                "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=raghuraman+sivalingam&oq=ra",
+                "researchgate": "https://www.researchgate.net/profile/Raghuraman-Sivalingam",
+                "orchidprofile": "https://orcid.org/0000-0001-6140-8913",
+                "publonprofile": "https://www.webofscience.com/wos/author/record/1114935",
+                "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. SELVE V",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-149",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "https://scholar.google.com/citations?hl=en&user=7bJB7R8AAAAJ",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-7783-9221",
+                "publonprofile": "https://publons.com/wos-op/researcher/5362541/selve-v/",
+                "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. ANGALAPARAMESWARI G",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-164",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/angala-parameswari-g-asst-professor-iii-0aa210345/",
+                "googlescholar": "https://scholar.google.com/citations?user=QJgd7cYAAAAJ&hl=en",
+                "researchgate": "https://www.researchgate.net/profile/Angala-Gandhinathan",
+                "orchidprofile": "https://orcid.org/0000-0001-7046-0078",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. SUNITHA D",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-159",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/dr-sunitha-senthil-38b05961/",
+                "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=2ZsplucAAAAJ",
+                "researchgate": "https://www.researchgate.net/scientific-contributions/D-Sunitha-2096230154",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-6054-841X",
+                "publonprofile": "https://publons.com/wos-op/account/unified-auth/",
+                "scopus": "https://www.scopus.com/home.uri"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. VIDHYA K",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-178",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/vidhya-k-695143204/",
+                "googlescholar": "https://scholar.google.com/citations?hl=en&user=6KRDyYEAAAAJ",
+                "researchgate": "https://www.researchgate.net/profile/Vidhya-Kumar-4?ev=hdr_xprf",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-3072-5200",
+                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5520-2025",
+                "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. KASIRATHI N",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-187",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/kasirathi-n-698393353/",
+                "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=kasirathi&btnG=",
+                "researchgate": "https://www.researchgate.net/profile/Kasirathi-Natarajan?ev=hdr_xprf",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mr. JAGADEESH BABU V",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-117",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/jagadeesh-babu-jagababu007-35390365/",
+                "googlescholar": "https://scholar.google.com/citations?user=pK6RxpMAAAAJ&hl=en",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0003-3278-1166",
+                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5255-2025",
+                "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mr. RENGARAJAN V",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-184",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/rengarajan-v-58281464/",
+                "googlescholar": "https://scholar.google.com/citations?user=iU1IeMsAAAAJ&hl=en",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/0009-0004-5418-3946",
+                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5720-2025",
+                "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. VIJAYALAKSHMI M",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-502",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/viji-lakshmi-70b667353",
+                "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=8VaZJUAAAAJ",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-1230-9118",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. DEVIKA B",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-501",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/b-devika-087814353/",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0006-3420-0686",
+                "publonprofile": "",
+                "scopus": "https://www.scopus.com/home.uri"
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
+              "resume_pdf": ""
+            }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [
+          {
+            "name": "Mr. GNANASEKAR R",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-007-05-008",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-05-008.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. RAJENDRAN.P",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-007-05-009",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-05-009.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. RANGARAJAN K",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-007-05-010",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-05-010.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SELVAKUMAR.P",
+            "designation": "Lab Assistant",
+            "unique_id": "VEC-007-05-019",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-05-019.webp",
+            "resume_pdf": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+        {
+          "heading": "curriculum & syllabus - UG",
+          "syllabus": [
+            {
+              "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+              "pdf_path": "/static/pdfs/curriculum/007/reg_21.pdf"
+            },
+            {
+              "year": "R - 2023",
+              "pdf_path": "/static/pdfs/curriculum/007/reg_23.pdf"
+            }
+          ]
+        },
+        {
+          "heading": "curriculum & syllabus - PG",
+          "syllabus": [
+            {
+              "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_21.pdf"
+            },
+            {
+              "year": "R - 2023",
+              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_23.pdf"
+            }
+          ]
+        }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "newsletter",
+        "content": [
+          {
+            "year": "2023-2024",
+            "pdf_path":[ "/static/pdfs/newsletter/007/2023-2024_odd.pdf", "/static/pdfs/newsletter/007/2023-2024_even.pdf"]
+          },
+          {
+            "year": "2022-2023",
+            "pdf_path": ["/static/pdfs/newsletter/007/2022-2023_odd.pdf", "/static/pdfs/newsletter/007/2022-2023_even.pdf"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year":"2024",
+            "activities": [
+              {
+                "date": "14.03.2024",
+                "name_of_event": "Job Interview Etiquettes and Overview of Contemporary Workplace Skills",
+                "coordinator": "Ms.B.Kanimozhi Senior Technical Officer, Project Planning, Monitoring and Evaluation CSIR-Central Leather Research Institute ",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/1.webp"
+                ]
+              },
+              {
+                "date": "02.01.2024 to 04.01.2024",
+                "name_of_event": "Circuit Designing",
+                "coordinator": "Mr.Rajkumar, Senior Engineer, EQUAD Engineering",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/2.webp"
+                ]
+              },
+              {
+                "date": "03.01.2024 to 05.01.2024",
+                "name_of_event": "Let's Wind the Machine with MagNet",
+                "coordinator": "N.Kasirathi, AP/EEE and V.Rengarajan, AP/EEE",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/3.webp"
+                ]
+              },
+              {
+                "date": "04.01.2024",
+                "name_of_event": "PROXPO 2K24 - Project Exhibition",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/4.webp"
+                ]
+              },
+              {
+                "date": "24.02.2024",
+                "name_of_event": "Recent trends in research and innovation",
+                "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/5.webp"
+                ]
+              },
+              {
+                "date": "24.02.2024",
+                "name_of_event": "Faculty interaction with Foreign Professor on recent trends in research and innovation",
+                "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/6.webp"
+                ]
+              },
+              {
+                "date": "25.03.2024",
+                "name_of_event": "Cloud Computing in Industrial Growth",
+                "coordinator": "Er.J.Satheesh Bab, Divisional Head, corp. Engg& Projects ",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/7.webp"
+                ]
+              }
+            ]
+          },
+          {
+            "year": "2023",
+            "activities": [
+              {
+                "date": "23.02.2023",
+                "name_of_event": "Awareness Programm- Intellectual Property Rights(IPR)",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/8.webp"
+                ]
+              },
+              {
+                "date": "18.08.2023",
+                "name_of_event": "AIML with Azure MLOPs",
+                "coordinator": "Mr.Kiran Kumar Sabbisetti, Head - Cloud Centreof Excellence Sopra Steria",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/9.webp"
+                ]
+              },
+              {
+                "date": "19.08.2023",
+                "name_of_event": "Incubation Visit – Interaction with the founder",
+                "coordinator": "IITM Research park",
+                "resource_person": "",
+                "beneficiaries": "III yr EEE",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/11.webp"
+                ]
+              },
+              {
+                "date": "30.08.2023",
+                "name_of_event": "VEESC Inauguration",
+                "coordinator": "C.B.Thamarai Selvan B.E,M.Tech, MIE Protection & Communication, Assistant Executive Engineer, Tamil Nadu Electricity Board",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/12.webp"
+                ]
+              },
+              {
+                "date": "31.08.2023",
+                "name_of_event": "Workshop on Arduino Tools and Techniques",
+                "coordinator": "Dr.D.Sunitha, V.Rengarajan",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/13.webp"
+                ]
+              }
+            ]
+          },
+          {
+            "year": "2022",
+            "activities": [
+              {
+                "date": "26.11.2022",
+                "name_of_event": "TECHNOLOGY BUSINESS INCUBATOR - 3DPrinted Projects Fabrication",
+                "coordinator": "Veltech Incubation Center",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/007/14.webp"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+      
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+          "The students of the EEE department have consistently demonstrated their technical prowess by actively participating in various competitions, including project expos, paper presentations, circuit design challenges, and robotics competitions at inter-college and university levels. Their innovative research and problem-solving abilities have earned them recognition at prestigious technical symposiums and conferences. Notably, our students have presented papers on emerging technologies such as Smart Grids, Renewable Energy Systems, Electric Vehicles, and Industrial Automation, showcasing their expertise and dedication to the field. Their achievements reflect the department’s strong emphasis on academic excellence, research, and hands-on learning, inspiring future engineers to push the boundaries of innovation."
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/007/1.webp",
+            "event_name": "SAEINDIA Electric Two Weeler Design Competition",
+            "image_content": "LakshmanRaj of EEE  won 1st prize in SAEINDIA Electric Two Weeler Design Competition -2023 and received Rs10,000 Cheque",
+            "date": "2023-07-23"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/2.webp",
+            "event_name": "National Level Symposium VERSIO 22",
+            "image_content": "Best Paper Award titled 'Smart Assistance With Motion Detecting Sensor received by S Devi Priya,M Pavithraa  & A P Sritharani at National Level Symposium VERSIO 22, SRM Ramapuram Campus",
+            "date": "2022"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/3.webp",
+            "event_name": "National Level Symposium Impulse 22",
+            "image_content": "Won 2nd  Prize in Paper Presentation titled “Smart Celling System” by Gayathri B M at National Level Symposium, Impulse 22 held  at Chennai Institute Of Technology",
+            "date": "2022"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/4.webp",
+            "event_name": "National Level Symposium INSTRUBLITZ 22",
+            "image_content": "Won 3rd Prize in paper presentation event titled, 'Solar Charging Electric Vehicle' by T Thakshana  & M Siddharth at National Level Symposium INSTRUBLITZ 22 held at SRM Eswari Engineering College.",
+            "date": "2022"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/5.webp",
+            "event_name": "National Level Symposium GENERIX 22",
+            "image_content": "Won 1st prize in paper presentation titled 'Gesture based door control system using SOC FPGA' by Joan Daniel A & Sugunesan R at National Level Symposium GENERIX 22, R.M.D Engineering College ",
+            "date": "2022"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/6.webp",
+            "event_name": "Gnista 22",
+            "image_content": "Won 2nd Prize in paper presentation titled  “Power Transformer Differential Protection Based on Current and Voltage Ratio” by Jayashree M & Harini R  Gnista 22 TJS Engineering College.",
+            "date": "2022"
+          },
+          {
+            "image_path": "/static/images/student_activities/007/7.webp",
+            "event_name": "IIT Madra's Carbon Zero Challenge",
+            "image_content": "Mr. Sachin gets the award along with Scarpify Ecotech Pvt Ltd team at IIT Madra's Carbon Zero Challenge",
+            "date": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/007/1.webp",
+            "image_name": "WORKSHOP PRACTICE",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/2.webp",
+            "image_name": "ELECTRIC CIRCUITS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/3.webp",
+            "image_name": "ELECTRICAL MACHINES – I & II LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/4.webp",
+            "image_name": "ELECTRONICS LABORATORY LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/6.webp",
+            "image_name": "CONTROL AND INSTRUMENTATION LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/7.webp",
+            "image_name": "MICROPROCESSOR AND MICROCONTROLLER  LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/8.webp",
+            "image_name": "POWER ELECTRONICS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/9.webp",
+            "image_name": "RENEWABLE ENERGY SYSTEMS LABORATORY ",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/10.webp",
+            "image_name": "POWER SYSTEM SIMULATION LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/007/11.webp",
+            "image_name": "RESEARCH LABS",
+            "image_content": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            "S_NO": 1,
+            "ORGANISATION_NAME": "",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "M.E. Power Systems Engineering",
+            "dept_id": "018"
+          }
+        ]
+      }
+    ]
+  }
+]

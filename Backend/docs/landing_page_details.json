@@ -1,0 +1,318 @@
+[
+  {
+    "type": "page_details",
+    "data": [
+      {
+        "email": "velammal@velammal.edu.in",
+        "address": [
+          "Velammal Engineering College (Autonomous)",
+          "(Unit of Velammal Educational Trust),",
+          "Ambattur Red-hills Road, Surapet,",
+          "Chennai – 600 066. Tamil Nadu, India."
+        ],
+        "phone_number": "044 26590758",
+        "student_affairs_contact": "044 26591771",
+        "addmission_contact": ["9123547550", "8939221120"],
+        "instagram": "https://www.instagram.com/vec_chennai/",
+        "linkedin": "https://www.linkedin.com/school/velammal-engineering-college/",
+        "twitter": "https://x.com/VelammalEnggC",
+        "facebook": "https://www.facebook.com/velammalengineeringcollege"
+      }
+    ]
+  },
+  {
+    "type": "banner",
+    "data": [
+      {
+        "Active_Learners": "34500",
+        "Average_Salary_Hike": "52%",
+        "Highest_Salary_Offered": "25 INR",
+        "Hiring_Partners": "300+"
+      }
+    ]
+  },
+  {
+    "type": "department_banner",
+    "data": [
+      {
+        "department_name": "Automobile Engineering",
+        "dept": "AUTO",
+        "banner_image": "002.webm",
+        "redirect_url": "/dept/002"
+      },
+      {
+        "department_name": "Civil Engineering",
+        "dept": "CIVIL",
+        "banner_image": "004.webm",
+        "redirect_url": "/dept/004"
+      },
+      {
+        "department_name": "Computer Science and Engineering",
+        "dept": "CSE",
+        "banner_image": "005.webm",
+        "redirect_url": "/dept/005"
+      },
+      {
+        "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+        "dept": "CSE-CS",
+        "banner_image": "006.webm",
+        "redirect_url": "/dept/006"
+      },
+      {
+        "department_name": "Electrical & Electronics Engineering",
+        "dept": "EEE",
+        "banner_image": "007.webm",
+        "redirect_url": "/dept/007"
+      },
+      {
+        "department_name": "Electronics and Communication Engineering",
+        "dept": "ECE",
+        "banner_image": "009.webm",
+        "redirect_url": "/dept/009"
+      },
+      {
+        "department_name": "Electronics & Instrumentation Engineering",
+        "dept": "EIE",
+        "banner_image": "008.webm",
+        "redirect_url": "/dept/008"
+      },
+      {
+        "department_name": "Mechancial Engineering",
+        "dept": "MECH",
+        "banner_image": "013.webm",
+        "redirect_url": "/dept/013"
+      },
+      {
+        "department_name": "Artificial Intelligence and Data Science",
+        "dept": "AI&DS",
+        "banner_image": "001.webm",
+        "redirect_url": "/dept/001"
+      },
+      {
+        "department_name": "Information Technology",
+        "dept": "IT",
+        "banner_image": "011.webm",
+        "redirect_url": "/dept/011"
+      },
+      {
+        "department_name": "Master of Business Administration",
+        "dept": "MBA",
+        "banner_image": "017.webm",
+        "redirect_url": "/dept/017"
+      }
+    ]
+  },
+  {
+    "type": "notifications",
+    "data": [
+      {
+        "id": "notif_001",
+        "header": "Highly Qualified Staff",
+        "message": "Over 200 highly qualified staff, with 55% holding doctoral degrees",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_002",
+        "header": "Impressive Infrastructure",
+        "message": "Cutting-edge computers, high-speed internet, state-of-the-art labs, 3000-capacity AC auditorium, seminar halls, etc",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_003",
+        "header": "Fully Digital Modern Campus",
+        "message": "Robust digital learning environment ensures efficient and effective knowledge transfer",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_004",
+        "header": "Industry Connect",
+        "message": "Project-based learning, industry expert teaching, summer internships, conferences, enhancing practical skills",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_005",
+        "header": "Excellent Placement Record",
+        "message": "250+ companies visit annually, ensuring 90%+ consistent placement success for 15+ years.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_006",
+        "header": "Extra and Co-Curricular Activities",
+        "message": "450+ NCC, NSS, YRC volunteers, and cadets, 10+ student clubs.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_007",
+        "header": "Academic Monitoring & Mentoring",
+        "message": "Continuous assessment, personalized support via dedicated mentors enhance student progress.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_008",
+        "header": "Research & Consultancy",
+        "message": "Solved industry problems, patented solutions, and innovated products for development.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_009",
+        "header": "Entrepreneur Cell",
+        "message": "Produced 50+ entrepreneurs in last 3 years, secured ₹2.87Cr DST funds for startup innovation.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      },
+      {
+        "id": "notif_010",
+        "header": "Industry Oriented Curriculum",
+        "message": "Curriculum shaped by industry experts for Industry 4.0, featuring certifications and foreign language training.",
+        "status": "active",
+        "created_at": "2025-07-25T08:20:00Z"
+      }
+    ]
+  },
+  {
+    "type": "announcements",
+    "data": [
+      {
+        "unique_id": "announcement_1",
+        "announcement_name": "SEE May 2025_R2023_B.E./B.Tech. (For the batch 2023-2027)",
+        "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2023_B.E.B.Tech.-(For_the_batches_2023-2027).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_2",
+        "announcement_name": " Rescheduled_date_for_exam_dated_04-04-2025",
+        "pdf_path": "/static/pdfs/announcements/Rescheduled_date_for_exam_dated_04-04-2025.pdf",
+        "date": "2025-04-04",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_3",
+        "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2021-2025 & 2022-2026)",
+        "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2019(For-the-batches_2021-2025_and_2022-2026).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_4",
+        "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2019-2023 & 2020-2024)",
+        "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2019(For-the-batches_2019-2023_and_2020-2024).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      }
+    ]
+  },
+  {
+    "type": "special_announcements",
+    "data": [
+      {
+        "title": "Nominations are invited from alumini for this year 2025",
+        "content": "Brain be agile, where they will be appreciated. We recognize ourgreat minds cultivated by Velammal who leaps above and beyond in their domain and inspire the young hearts to grow agile by awarding them in these following categories.",
+        "list_of_contents": [
+          "Placement Icon Award",
+          "Emerging Entrepreneur Award",
+          "Path Breaker Award",
+          "Optimal pursuer Award",
+          "Humanitarian Award"
+        ],
+        "list_of_links": [
+          "https://docs.google.com/forms/d/e/1FAIpQLSeE7HuWIO8IKZCds9yWoczTmnEDj-BOCcwECAK0V163DY1CAw/viewform?vc=0&c=0&w=1&flr=0",
+          "https://docs.google.com/forms/d/e/1FAIpQLScHI8hXutr0Z-gAWd-PEEvk2cMDtpbhDwrfBXQ0oFNSYvCx5w/viewform?vc=0&c=0&w=1&flr=0",
+          "https://docs.google.com/forms/d/e/1FAIpQLScjLiVQJ-mf5nR4epofh7A4BoVvAUalt8zKivSM3bU66_i-VQ/viewform?vc=0&c=0&w=1&flr=0",
+          "https://docs.google.com/forms/d/e/1FAIpQLSesrerOBVQa50iyDH19RTeNBkYud3MZJgWJscQvr0Oa-3ihUg/viewform?vc=0&c=0&w=1&flr=0",
+          "https://docs.google.com/forms/d/e/1FAIpQLSes17JYKJifNfQGsHxSyoIi7d5YrKm4NGZpN6rT_A_Pvxim7w/viewform?vc=0&c=0&w=1&flr=0"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "events",
+    "data": [
+      {
+        "start_date": "16 JUL",
+        "end_date": "22 JUL, 2025",
+        "date": "16-07-2025",
+        "title": "PySpark",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
+        "brochure_path": "/static/images/events/PySpark.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "18 JUL",
+        "end_date": "18 JUL, 2025",
+        "date": "18-07-2025",
+        "title": "Empowering Smart Grids: THe Innovative Role of Power Electronics",
+        "department": "Electrical & Electronics Engineering",
+        "content": "A power-packed guest lecture on Smart Grids and Power Electronics—discover how innovation is electrifying the future of energy!",
+        "brochure_path": "/static/images/events/Smart_Grids.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "25 JUL",
+        "end_date": "25 JUL, 2025",
+        "date": "25-07-2025",
+        "title": "Math Quiz",
+        "department": "Mathematics",
+        "content": "Celebrate excellence and test your math skills! Join us for the 2024–25 prize distribution and a fun Math Quiz for II-year students.",
+        "brochure_path": "/static/images/events/M_Quiz.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "25 JUL",
+        "end_date": "25 JUL, 2025",
+        "date": "25-07-2025",
+        "title": "Server-Side Scripting - Node.JS",
+        "department": "Computer Science & Engineering",
+        "content": "Level up your backend skills! Don't miss the expert talk on Server-Side Scripting with Node.js for III-year CSE students.",
+        "brochure_path": "/static/images/events/NodeJs.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "28 JUL",
+        "end_date": "28 JUL, 2025",
+        "date": "28-07-2025",
+        "title": "10 Steps to Become a Successful Entrepreneur",
+        "department": "Automobile Engineering",
+        "content": "Dreaming of your own startup? Learn 10 steps to become a successful entrepreneur with expert guidance and funding insights.",
+        "brochure_path": "/static/images/events/Successful_Entrepreneur.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "30 JUL",
+        "end_date": "30 JUL, 2025",
+        "date": "30-07-2025",
+        "title": "Innovation/Prototype Validation - Converting Innovation into a Start-up",
+        "department": "Electronics & Communication Engineering",
+        "content": "Got an idea? Learn how to turn it into a real business in our Innovation/Prototype to Start-up session by an ECE alumnus from Accenture.",
+        "brochure_path": "/static/images/events/Innovation_2_startup.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "2 AUG",
+        "end_date": "2 AUG, 2025",
+        "date": "02-08-2025",
+        "title": "NOCTIVUS",
+        "department": "Computer Science Engineering (Cyber Security)",
+        "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
+        "brochure_path": "/static/images/events/noctivus.webp",
+        "website_link": "http://www.noctivus.pro/",
+        "status": "True"
+      }
+    ]
+  }
+]

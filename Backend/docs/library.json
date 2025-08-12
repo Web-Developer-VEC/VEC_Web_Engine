@@ -1,0 +1,395 @@
+[
+  {
+    "type": "about_the_library",
+    "data": {
+      "Area": "24000 sq.ft",
+      "no_of_books": "77525 Volumes",
+      "no_of_titles": "25156",
+      "no_of_journals": "174 National and International",
+      "no_of_online_journals": "9517",
+      "vision": "To enrich the knowledge of Velammalians by providing dynamic world class learning environment.To provide a learning environment with intense intellectual inquiry. To become the most dynamic learning environment in the world. To advance with successful teaching, learning and research through building a robust One System, One Library. To transform the library as a place dynamic learning with ease.",
+      "mission": "To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of the college community to maintain and improve collections and achieve efficient services in an environment of flat or reduced budgets for the students, faculty and staff. To transform the information available in the environment into knowledge for students, staff and faculty.",
+      "general_instructions": [
+        "Students can obtain membership cards by showing their ID cards with barcodes.",
+        "Members should sign in at the entrance to accept library rules.",
+        "Two renewals per book are allowed unless reserved by others.",
+        "Users should verify book conditions before borrowing.",
+        "Books must be returned on or before the due date.",
+        "Late returns will incur overdue charges as per rules.",
+        "Users should collect a receipt for any fines paid.",
+        "Members can suggest new books to the librarian.",
+        "Strict silence must be maintained in the library."
+      ]
+    }
+  },
+  {
+    "type": "HOD",
+    "data": {
+      "name": "Dr. RAJENDRAPRASATH S",
+      "image_path": "/static/images/library/hod/Rajendra Prasath S.webp",
+      "designation": "Librarian/HOD",
+      "education_qualification": "B.Sc., M.A., M.L.I.Sc., M.phil., Ph.D",
+      "message": "VEC’s Central Library is a one of it’s kind installation that facilitates teaching, learning and research endeavours of our students, scholars and faculty members. It is one of the formost such libraries in Tamil Nadu higher educational systems. significant efforts are not just building structure that stores books. It serves more realistically as a space for learning and knowledge exchange with users coming from diverse study and aspirational backgrounds."
+    }
+  },
+  {
+    "type": "Faculty_Staff",
+    "data": [
+      {
+        "name": "SENTHIVEL T",
+        "designation": "Library Assistant",
+        "educational_qualification": "M.A., M.L.I.Sc",
+        "image": "/static/images/library/faculty/Senthivel T.webp"
+      },
+      {
+        "name": "KUMARAVEL P",
+        "designation": "Library Assistant",
+        "educational_qualification": "B.A",
+        "image": "/static/images/library/faculty/Kumaravel P.webp"
+      },
+      {
+        "name": "PANCHAVARNAM M",
+        "designation": "Library Assistant",
+        "educational_qualification": "B.Com",
+        "image": "/static/images/library/faculty/Panchavarnam M.webp"
+      },
+      {
+        "name": "UDAYAKAL P",
+        "designation": "Library Assistant",
+        "educational_qualification": "B.A., B.L.I.Sc",
+        "image": "/static/images/library/faculty/Udayakkal P.webp"
+      }
+    ],
+    "description": "Our faculties are true professionals who have the capacity to raise incisive, difficult and sometimes uncomfortable questions that become potential GAME CHANGER. Our Faculty members consider teaching and training of new generation of graduate students as their highest calling."
+  },
+  {
+    "type": "advisors",
+    "data": [
+      {
+        "name": "Dr. RAJENDRAPRASATH S",
+        "designation": "Librarian/HOD - Secretary"
+      },
+      {
+        "name": "Dr. MANJU S",
+        "designation": "Ass.Prof - Electronics and Communication Engineering - Convener"
+      },
+      {
+        "name": "Mrs. SELVE V",
+        "designation": "Ass.Prof - Electrical and Electronics Engineering"
+      },
+      {
+        "name": "Dr. SATHYA PRIYA J",
+        "designation": "Ass.Prof - Information Technology"
+      },
+      {
+        "name": "Mrs. HEMALATHA B",
+        "designation": "Ass.Prof - Computer Science Engineering"
+      },
+      {
+        "name": "Mrs. NANDHINI",
+        "designation": "Ass.Prof - Electronics and Communication Engineering"
+      },
+      {
+        "name": "Mr. THILLAIBACKIAM M",
+        "designation": "Ass.Prof - Civil Engineering"
+      },
+      {
+        "name": "Mr. KARTHIKEYAN",
+        "designation": "Ass.Prof - Mechanical Engineering"
+      },
+      {
+        "name": "Mrs. PREMA A",
+        "designation": "Ass.Prof - Artificial Intelligence and Data Science"
+      },
+      {
+        "name": "Mr. SENTHAMILSELVAN",
+        "designation": "Ass.Prof - Automobile Engineering"
+      },
+      {
+        "name": "Dr. ANUSANKARI S",
+        "designation": "Ass.Prof - Electronics Instrumentation Engineering"
+      },
+      {
+        "name": "Ms. AKSAYA DHARANI",
+        "designation": "Ass.Prof - Computer Science Engineering - Cyber Security"
+      },
+      {
+        "name": "Mrs. REVATHY PANDIAN",
+        "designation": "Ass.Prof - Master of Business Administration"
+      },
+      {
+        "name": "Mrs. HAMSAVALLI",
+        "designation": "Prof - Physics"
+      },
+      {
+        "name": "Mr. GOPIKRISHNAN",
+        "designation": "Ass.Prof - Mathematics"
+      },
+      {
+        "name": "Mr. SIVARAJ",
+        "designation": "Ass.Prof - Chemistry"
+      },
+      {
+        "name": "Mr. BALAJI",
+        "designation": "Ass.Prof - English"
+      }
+    ]
+  },
+  {
+    "type": "membership_details",
+    "data": {
+      "member_details": [
+        "Professors, Associate Professors and Assistant Professors",
+        "JRF/Research Scholars",
+        "UG Students",
+        "PG Students",
+        "Skilled Non-Teaching Staff"
+      ],
+      "no_of_books": ["8", "6", "6", "6", "3"],
+      "periodical_back_volumes_cd": ["1", "1", "1", "1", "1"]
+    }
+  },
+  {
+    "type": "Collection",
+    "data": {
+      "Free_EBooks_Download_Websites": [
+        "University of Pennsylvania",
+        "Project Gutenberg",
+        "Free e-books",
+        "Free Tech Books",
+        "Campus Books",
+        "University of Virginia e-Book Library",
+        "NAP Open Book",
+        "Internet Public Library",
+        "Direct Textbook",
+        "e-Books",
+        "e-Books Palace",
+        "Electronic Library of Mathematics"
+      ],
+      "Anti_Plagiarism_Scanner_Software": [
+        "CopyCatch",
+        "TurnItOut",
+        "Eve",
+        "Plagiarism.com",
+        "Copyscape",
+        "CodeMatch (CodeSuite)",
+        "ArticleChecker",
+        "PlagiarismDetect.com",
+        "Duplichecker",
+        "Small SEO Tools",
+        "ScanMyEssay & Viper & WCopyFind"
+      ],
+      "Our_Collections": [
+        "no_of_books",
+        "no_of_titles",
+        "General Bank Books",
+        "SC/ST Book Bank Books",
+        "e-Books",
+        "Journals",
+        "International",
+        "National",
+        "CD's",
+        "Video Cassettes",
+        "Journal Back Volumes",
+        "Student Project Reports",
+        "Online Journals Package",
+        "Magazine And NewsPapers"
+      ],
+      "Total": [
+        "78378",
+        "25373",
+        "",
+        "",
+        "",
+        "180",
+        "87",
+        "93",
+        "3930",
+        "127",
+        "2768",
+        "3986",
+        "9517",
+        ""
+      ]
+    }
+  },
+  {
+    "type": "library_services",
+    "data": [
+      {
+        "category": "SERVICES",
+        "items": [
+          "Reference service",
+          "Reservation Service",
+          "Online Public Access Catalogue (OPAC)",
+          "Internet Service",
+          "Reprographic Service",
+          "Job Opportunity Display",
+          "Books exhibition",
+          "SDI service",
+          "Technical Film shows",
+          "Current awareness Service"
+        ]
+      },
+      {
+        "category": "FACILITIES",
+        "items": [
+          "Inter Library Network",
+          "OPAC (On-line Public Access Catalogue)",
+          "Book Bank (SC/ST)",
+          "General Book Bank",
+          "Career Guidance Sections",
+          "Reading Halls for Reference",
+          "Web Based Library Information",
+          "E-Resources Access"
+        ]
+      },
+      {
+        "category": "E-RESOURCES",
+        "items": ["E-Journals", "E-books", "DELNET", "NPTEL", "NDL"]
+      },
+      {
+        "category": "Image_Gallery",
+        "items": [
+          {
+            "title": "REPROGRAPHY SECTION",
+            "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+            "image": "/static/images/library/library_images/REPROGRAPHY SECTION.webp"
+          },
+          {
+            "title": "STACK ROOM WITH READING HALL",
+            "description": "A well-equipped, multi-storied stock room with modern book stacks for easy access. Books are classified using the Universal Decimal Classification, and an Open Access System is followed.",
+            "image": "/static/images/library/library_images/STACK ROOM WITH READING HALL.webp"
+          },
+          {
+            "title": "READING HALL",
+            "description": "Designed to provide a wonderful reading atmosphere with comfortable tables and chairs for 250 users. Students can bring books and journals from stacks for reference work.",
+            "image": "/static/images/library/library_images/Common.webp"
+          },
+          {
+            "title": "PERIODICAL SECTION",
+            "description": "Contains technical and non-technical journals of national and international origins. Latest issues are displayed outside, while back volumes are stored for reference.",
+            "image": "/static/images/library/library_images/PERIODICAL SECTION.webp"
+          },
+          {
+            "title": "REFERENCE SECTION",
+            "description": "Holds about 5000 reference books on Engineering, Science, Humanities, English, Encyclopedias & Dictionaries, including a collection of rare books.",
+            "image": "/static/images/library/library_images/REFERENCE SECTION.webp"
+          },
+          {
+            "title": "PROJECT REPORT & BACK VOLUMES",
+            "description": "The Library houses 2768 journal back volumes covering Engineering, Science, Humanities and Business, along with 3192 student project reports.",
+            "image": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "digital_libraries",
+    "data": [
+      {
+        "title": "NEW ARRIVALS - BOOKS/PERIODICALS",
+        "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
+        "image": "/static/images/library/library_images/New Arrivals.webp"
+      },
+      {
+        "title": "IEEE STUDENT BRANCH LIBRARY",
+        "description": "The IEEE student branch is highly active, providing access to 50+ IEEE journals and transactions. All students and staff can reference these materials.",
+        "image": "/static/images/library/library_images/Multimedia Library 1.webp"
+      },
+      {
+        "title": "INTERNET / CD BROWSING",
+        "description": "Apart from internet access in the computer lab, the library offers four computers for internet and CD browsing.",
+        "image": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
+      },
+      {
+        "title": "AUDIO VIDEO SECTION",
+        "description": "The library contains audio cassettes, video tapes, and CDs to enhance communication skills, subject knowledge, and competitive exam preparation.",
+        "image": "/static/images/library/library_images/Multimedia Library 2.webp"
+      }
+    ]
+  },
+  {
+    "type": "library_resources",
+    "data": [
+      {
+        "title": "Anti-Plagiarism Scanner Software",
+        "content": [
+          { "name": "CopyCatch", "link": "https://www.copycatchgold.com" },
+          { "name": "TurnItOut", "link": "https://www.turnitout.com" },
+
+          { "name": "Plagiarism.com", "link": "https://www.plagiarism.com" },
+          { "name": "Copyscape", "link": "https://www.copyscape.com" },
+          {
+            "name": "CodeMatch (CodeSuite)",
+            "link": "https://www.zeidmanconsulting.com/CodeSuite.htm"
+          },
+          {
+            "name": "ArticleChecker",
+            "link": "https://www.articlechecker.com"
+          },
+          {
+            "name": "PlagiarismDetect.com",
+            "link": "https://www.plagiarismdetect.com"
+          },
+          { "name": "Duplichecker", "link": "https://www.duplichecker.com" },
+          {
+            "name": "Small SEO Tools",
+            "link": "https://smallseotools.com/plagiarism-checker/"
+          },
+          {
+            "name": "ScanMyEssay & Viper & WCopyFind",
+            "link": "https://www.scanmyessay.com/"
+          }
+        ]
+      },
+      {
+        "title": "Our Collections",
+        "content": [
+          "Total Books: 77,525",
+          "Total Titles: 25,156",
+          "General Bank Books: 1,818",
+          "SC/ST Book Bank Books: 984",
+          "e-Books: 155",
+          "Journals: 162 (75 International, 87 National)",
+          "CDs: 3,930",
+          "Video Cassettes: 127",
+          "Journal Back Volumes: 2,768",
+          "Student Project Reports: 3,192",
+          "Online Journals Package: 9,517",
+          "Magazines & Newspapers: 20"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Ebook_Sources",
+    "data": [
+      {
+        "name": "University of Pennsylvania",
+        "url": "http://digital.library.upenn.edu/books"
+      },
+      { "name": "Project Gothenburg", "url": "http://www.gutenberg.org" },
+      { "name": "Free e books", "url": "http://www.free-ebooks.net" },
+      { "name": "Free Tech books", "url": "http://www.freetechbooks.com" },
+      { "name": "Campus books", "url": "http://www.campusbooks.com" },
+      {
+        "name": "University of Virginia; e-book Library",
+        "url": "http://etext.lib.virginia.edu/ebooks/ebooklist.html"
+      },
+      { "name": "NAP Open Book", "url": "http://www.nap.edu/index.html" },
+      {
+        "name": "Internet public Library",
+        "url": "http://www.ipl.org/div/books"
+      },
+      { "name": "Direct Text Book", "url": "http://www.directtextbook.com" },
+      { "name": "e-books", "url": "http://e-books.org" },
+      { "name": "e-books Palace", "url": "http://www.ebookpalace.com" },
+      {
+        "name": "Electronic Library of Mathmatics",
+        "url": "http://www.emis.de/journals/short_index.html"
+      }
+    ]
+  }
+]

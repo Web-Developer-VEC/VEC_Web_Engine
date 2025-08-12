@@ -1,0 +1,864 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": 
+        [
+          "The department Automobile Engineering was established in the year 2012 with NBA & NAAC accreditations and ISO certification. The focus is to consistently pursue in providing innovative and quality training to the talented and dedicated students, to empower them in engineering the development of national economy, specialized in transport sector. The department has well qualified and well experienced faculty members to meet the present-day curriculum requirements both in theory and practical."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To send forth into the world competitive graduates by providing knowledge through both theoretical learning and practical exposure to latest technologies in the field of automobile engineering and inculcating in them a thirst for lifelong learning."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content":[
+            "Maintaining state of art laboratory facilities to train the students with latest technology, to cater to industrial needs.",
+            "To create awareness on the importance of research activities   among the students.",
+            "To encourage creativity and innovation.",
+            "To produce young engineers with an ability to boldly face their future challenges.",
+            "To identify the top class R&D and academic institution in the field of automobile engineering and establish links with them for   the mutual transfer of knowledge."
+            ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Graduates will have successful career in Automobile / Allied Industries and/ or Academics."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Graduates will excel in Higher education / Entrepreneurship."
+          },
+          {
+            "header":"PEO 3",
+            "content":"Graduates will work as part of team / lead a team, use ethical attitudes in their profession and solve engineering issues in the broader social context through life-long learning."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1:Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2:Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3:Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4:Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5:Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6:The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7:Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8:Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9:Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10:Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11:Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12:Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Design and develop the automotive system and its components with due considerations of society impact and sustainability."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Analyze the performance of automotive system using modeling, simulation and testing."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+           "department_id": "002",
+            "name": "Dr. BASKARA SETHUPATHY S",
+        "department_name": "Automobile Engineering (AUTO)",
+        "unique_id": "VEC-002-01-102",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
+            "hod_image": "/static/images/hods/auto.webp",
+            "designation": "Professor & Head, Dept of Automobile Engineering",
+           "Social_media_links": {
+                "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+                "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
+                "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [ 
+        {
+        "name": "Dr. BASKARA SETHUPATHY S",
+        "unique_id": "VEC-002-01-102",
+        "designation": "Professor & Head",
+            "socialmedia_links": {
+                 "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+                 "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
+                "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+            },
+          
+            "image_path":"/static/images/profile_photos/002/VEC-002-01-102.webp",
+            "resume_pdf":""
+          }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": 
+        [
+  {
+    "name": "Dr. CHANDRAN V",
+    "designation": "Associate Professor",
+    "unique_id": "VEC-002-03-168",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/dr-v-chandran-velu-b54505117/?originalSubdomain=in",
+      "googlescholar": "",
+      "researchgate": "https://www.researchgate.net/profile/V-Chandran?ev=hdr_xprf",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Dr. THENNARASU P",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-002-04-155",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=0zYqQyAAAAAJ",
+      "researchgate": "https://www.researchgate.net/profile/Thennarasu-Palani-3?ev=hdr_xprf",
+      "orchidprofile": "https://orcid.org/0000-0001-8729-4571?lang=en",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mr. YUVARAJ M",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-002-04-160",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
+      "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
+      "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
+      "orchidprofile": "https://orcid.org/0000-0003-2986-5369?lang=en",
+      "publonprofile": "https://www.webofscience.com/wos/author/record/AEE-7608-2022",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mr. DINESHBABU D",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-002-04-010",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/dineshbabu-d-463108128/",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=BNZQRpIAAAAJ",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/002/VEC-002-04-010.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Dr. SENTHAMIL SELVAN M",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-002-04-167",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/dr-senthamil-selvan-murugan-01811166",
+      "googlescholar": "https://scholar.google.com/citations?user=yDeX6gQAAAAJ&hl=en",
+      "researchgate": "https://www.researchgate.net/profile/Senthamil-Murugan",
+      "orchidprofile": "https://orcid.org/0000-0002-3674-5798?lang=en",
+      "publonprofile": "https://www.webofscience.com/wos/author/record/LKL-3897-2024",
+      "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
+    },
+    "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
+    "resume_pdf": ""
+  }
+]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": 
+        [
+          {
+            "name": "Mr. BHARANI KUMAR M",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-002-05-002",
+            "socialmedia_links": 
+              {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+            "image_path": "/static/images/profile_photos/002/VEC-002-05-002.webp",
+            "resume_pdf": ""
+        }
+      ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content":  [
+              {
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "pdf_path": "/static/pdfs/curriculum/002/reg_23.pdf"
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/002/reg_21.pdf"
+                }
+              ]
+              }
+            ]
+          }
+    ]
+    },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+            {
+           "year":"2025", 
+           "activities":[
+                {
+                "date": "17.02.2025",
+                "name_of_event": "Energy and Fuel Users Association of India (ENFUSE) Professional Society Student Chapter, Saksham 2025",
+                "coordinator": "Dr.M.Senthamil Selvan",
+                "resource_person": "Shri. Shankaran Ramalingam,National President, Enfuse",
+                "beneficiaries": "2nd & 3rd Year students from AME & EEE",
+                "relevant_PO_PSO": "PO6, PO7, PO12 & PSO1",
+                "image_path": ["/static/images/dept_activities/002/1.1.webp","/static/images/dept_activities/002/1.2.webp"]
+                }
+            ]
+        },
+        {
+           "year":"2024",
+            "activities":[
+                {
+                "date": "01.03.2024",
+                "name_of_event": "Student Technical National Level Symposium CARAXE 24",
+                "coordinator": "Mr.M.Yuvaraj,Mr.P.Thennarasu",
+                "resource_person": "Mr.ManojVehicle/CAB Architect Volvo",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/2.1.webp"]
+                },
+                {
+                "date": "20.03.2024",
+                "name_of_event": "NationalConference onEmerging Trends in Automotive andMechanical Sciences",
+                "coordinator": "Dr.V.Chandran,Mr.P.Thennarasu",
+                "resource_person": "",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/3.1.webp","/static/images/dept_activities/002/3.2.webp"]
+                },
+                {
+                "date": "27.01.2024",
+                "name_of_event": "Seminar on  201cGovernment Funding Schemes for Startup 2019s and MSME 2019s 201d",
+                "coordinator": "Mr.P.Thennarasu",
+                "resource_person": "Dr.E.Bhaskaran, Join Director (Engineering),District Industires Centre (D.I.C), Thirupattur, Department of Industries and Commerce, MSME Department, Government of Tamil Nadu.",
+                "beneficiaries": "2nd & 3rd Year students from AME",
+                "relevant_PO_PSO": "PO6, PO7, PO8, PO9, PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/4.1.webp","/static/images/dept_activities/002/4.2.webp"]
+                },
+                {
+                "date": "09.02.2024",
+                "name_of_event": "The Imperative of Model Based development in the Automotive Industry",
+                "coordinator": "Mr.P.Thennarasu",
+                "resource_person": "Mr.Narendaran,Lead Engineering,Bosch Global Software Solution.",
+                "beneficiaries": "2nd & 3rd Year students from AME",
+                "relevant_PO_PSO": "PO5, PO7, PO8, PO9, PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/6.1.webp"]
+                },
+                {
+                "date": "23.3.2024",
+                "name_of_event": "Scope of entrepreneurship in supply chain management",
+                "coordinator": "Mr.M.Yuvaraj",
+                "resource_person": "Mr.Nitin Raaj,Manager Product Supply,Procter and Gamble",
+                "beneficiaries": "2nd,3rd & 4th Year students from AME",
+                "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/7.1.webp"]
+                },
+                {
+                "date": "02.3.2024",
+                "name_of_event": "Project Expo",
+                "coordinator": "Mr.M.Yuvaraj",
+                "resource_person": "Mr.Arokiavelu, Joint Editor Motor Vikatan",
+                "beneficiaries": "2nd,3rd & 4th Year students from AME",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/8.1.webp","/static/images/dept_activities/002/8.2.webp"]
+                }
+            ]
+        },
+        {
+           "year":"2023",
+            "activities":[
+                {
+                "date": "10.02.2023",
+                "name_of_event": "Virtual Hands-on Training on Automotive Components and Electric Vehicles",
+                "coordinator": "Mr.M.Senthamil Selvan",
+                "resource_person": "Dr.A.RagothamanDivisional Manager  2013 Product Development,Ashik Leyland Technical Centre, VVC.",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/9.1.webp"]
+                }
+            ]
+        },
+        {
+          "year":"2022", 
+            "activities":[
+                {
+                "date": "24.12.2022",
+                "name_of_event": "One Day Hands-on Training Workshop on 'Patent Drafting for KAPILA Scheme'",
+                "coordinator": "Mr.P.Thennarasu",
+                "resource_person": "Dr. A. Balaji Ganesh,Research Dean, Velammal Engineering College.Dr. S. Baskara SethupathyAssociate Research Dean, Velammal Engineering College",
+                "beneficiaries": "2nd & 3rd Year students from AME",
+                "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/5.1.webp"]
+                }
+            ]
+        },
+        {
+          "year":"2018", 
+            "activities":[
+                {
+                "date": "10.02.2018",
+                "name_of_event": "Dirt Bike",
+                "coordinator": "Mr.S.Stanly Wilson Louis",
+                "resource_person": "NA",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/12.1.webp"]
+                }
+            ]
+        },
+        {
+          "year":"2017",
+            "activities":[
+                {
+                "date": "18.03.2017",
+                "name_of_event": "National Conference on Emerging Research and Advances in Mechanical Sciences ERAMS 2017 Sponsored by ISTE, New Delhi",
+                "coordinator": "Dr.V.Chandran",
+                "resource_person": [""],
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO4, PO6, PO7,  PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/13.1.webp"]
+                },
+                {
+                "date": "04.02.2017",
+                "name_of_event": "Student Symposium XLR8 2017",
+                "coordinator": "Mr.S.Stanly Wilson Louis",
+                "resource_person": "NA",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO4, PO6, PO7,  PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/15.1.webp"]
+                },
+                {
+                "date": "09.09.2017",
+                "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+                "coordinator": "Mr.P.Pathmanaban,Mr.F.Aadil ArshadMr.S.Chermadurai",
+                "resource_person": "NA",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO":"",
+                "image_path": ["/static/images/dept_activities/002/16.1.webp","/static/images/dept_activities/002/16.2.webp"]
+                }
+            ]        
+        },
+        {
+          "year":"2016",
+           "activities": [
+                {
+                "date": "24.09.2016",
+                "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+                "coordinator": "Mr.S.Pradeep Kumar,Mr.P.Thennarasu",
+                "resource_person": "NA",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/17.1.webp","/static/images/dept_activities/002/17.2.webp"]
+                }
+            ]
+        },
+        {
+          "year":"2015",
+          "activities":  [
+                {
+                "date": "23.09.2015",
+                "name_of_event": "National level workshop on Virtual hands-on training in automobile engine and components",
+                "coordinator": "Dr.D.Balaji",
+                "resource_person": "NA",
+                "beneficiaries": "External participants",
+                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
+                "image_path":["/static/images/dept_activities/002/19.1.webp","/static/images/dept_activities/002/19.2.webp"]
+                }
+            ]
+        }
+
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": 
+    [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": 
+        []
+      },
+      {
+        "category": "student_achievements_details",
+        "images": 
+        [
+            {
+            "image_path": "/static/images/student_activities/002/1.webp",
+            "event_name": "Supra 2015",
+            "image_content": "In 2015, our students showcased their engineering skills and innovation by participating in the SUPRA SAEINDIA event, a national-level competition where budding engineers design, build, and race a Formula-style vehicle. This hands-on experience provided our students with valuable exposure to vehicle dynamics, powertrain optimization, and design validation, fostering technical expertise and teamwork. Their participation in SUPRA 2015 reflects our commitment to nurturing industry-ready engineers equipped with practical knowledge and a passion for automotive excellence.",
+            "date": "2015-07-15"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/2.webp",
+            "event_name": "International Go-Kart Championship",
+            "image_content": "Our department is proud to highlight the outstanding participation of our students in the International Go-Kart Championship (IGC) 2015, held at Lovely Professional University, Punjab. This prestigious event provided a platform for young engineers to design, fabricate, and race their own Go-Karts, applying their technical knowledge and innovative thinking. Our students demonstrated exceptional skills in vehicle design, powertrain integration, and performance optimization, competing against teams from across the country.",
+            "date": "2015-03-26"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/3.webp",
+            "event_name": "ATV Student Grand Prix -2K17",
+            "image_content": "Our department is thrilled to celebrate the remarkable achievement of our students in the ATV Student Grand Prix - 2K17, where they showcased their engineering expertise and innovation. Competing against top teams, our students designed and built an All-Terrain Vehicle (ATV), demonstrating excellence in vehicle dynamics, suspension, and powertrain optimization. Their dedication and technical prowess were recognized with the prestigious Best Design Award, a testament to their creativity, problem-solving skills, and teamwork. This achievement reflects our institute's commitment to fostering hands-on learning and preparing industry-ready engineers equipped with real-world experience.",
+            "date": "2017-02-04"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/4.webp",
+            "event_name": "SAE BAJA 2018",
+            "image_content": "Our department proudly celebrates the outstanding achievement of our students in SAE BAJA 2018, where they secured third place for Best Design. This prestigious competition challenged students to design, build, and race an All-Terrain Vehicle (ATV) capable of withstanding rugged terrains and extreme conditions. Our team demonstrated exceptional skills in vehicle engineering, innovation, and design optimization, earning them national recognition. This remarkable accomplishment highlights their dedication, teamwork, and technical expertise, reinforcing our institute's commitment to practical learning and excellence in automotive engineering.",
+            "date": "2018-01-24"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/5.webp",
+            "event_name": "Yoga Competition - 2018",
+            "image_content": "Our department takes immense pride in congratulating Mr. T.V. Sreesh for his outstanding achievement in the National Yoga Competition - 2018, where he secured the prestigious Gold Medal. His dedication, discipline, and exceptional skills in yoga have brought great honor to our institution. This remarkable accomplishment showcases his commitment to physical and mental well-being, inspiring fellow students to strive for excellence in both academics and extracurricular activities. We applaud his success and wish him continued achievements in the future.",
+            "date": "2018"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/6.webp",
+            "event_name": "SAEISS - Bicycle Design Challenge 2024",
+            "image_content": "Our department is proud to announce that our students achieved an outstanding milestone in the SAEISS Bicycle Design Challenge 2024, securing 3rd place in Best Dynamic Performance. This prestigious competition challenged teams to design and develop an innovative, high-performance bicycle with a focus on efficiency, aerodynamics, and sustainability. Our students demonstrated exceptional engineering skills, creativity, and teamwork, excelling in dynamic performance tests. This achievement highlights their dedication to practical learning and innovation, reinforcing our institute's commitment to fostering future-ready engineers.",
+            "date": "2024-02-25"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/7.webp",
+            "event_name": "University first rank",
+            "image_content": "Our department is immensely proud to congratulate B. Hariganesh for securing the University First Rank and winning the Gold Medal in Automobile Engineering for the batch of 2017-2021. His outstanding academic performance, dedication, and passion for automotive engineering have brought great honor to our institution. This remarkable achievement reflects his hard work and commitment to excellence, serving as an inspiration for future students.",
+            "date": "2021"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/8.webp",
+            "event_name": "SAE - Foundation Section Award 2023 - 2024",
+            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for receiving the prestigious SAE - Foundation Section Award 2023-2024 under the Kalpana Chawla category. This esteemed recognition honors her exceptional academic performance, technical expertise, and contributions to the field of automotive engineering. Her achievement is a testament to her dedication, hard work, and passion for innovation. We celebrate her success and look forward to witnessing her future accomplishments in the industry.",
+            "date": "2024-12-21"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/9.webp",
+            "event_name": "SAEISS - Electric Two Wheeler Design Competition",
+            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, showcasing their expertise in sustainable mobility and innovative vehicle design. This competition provided a platform to develop an electric two-wheeler with a focus on efficiency, performance, and eco-friendly technology. Our team demonstrated exceptional skills in battery technology, powertrain integration, and aerodynamic design, gaining valuable hands-on experience in the evolving field of electric vehicles. Their participation reflects our institute's commitment to fostering innovation and industry-relevant learning in the field of automobile engineering.",
+            "date": "2025-01-25"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/10.webp",
+            "event_name": "Smart India Hackathon 2024",
+            "image_content": "Our department is proud to announce that our students successfully participated in the Smart India Hackathon 2024 Grand Finale, a prestigious national-level innovation challenge. Competing against top teams from across the country, our students showcased their problem-solving abilities, technical expertise, and creativity in developing innovative solutions for real-world challenges. Their participation in this esteemed event reflects their dedication to research, innovation, and technological advancement, reinforcing our institute's commitment to fostering future-ready engineers equipped with industry-relevant skills.",
+            "date": "2024-12-11"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/11.webp",
+            "event_name": "MSME, Idea Hackathon 3.0",
+            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for securing a grant of ₹10.1 Lakhs from MSME Idea Hackathon 3.0 for her innovative project of Automatic billing machine in grocery shop. This prestigious funding recognizes her exceptional creativity, technical expertise, and entrepreneurial spirit in developing groundbreaking solutions in the automotive sector. Her achievement is a testament to her dedication and problem-solving skills, bringing pride to our institution. We celebrate her success and look forward to witnessing her future contributions to the industry.",
+            "date": "2024-03-14"
+            },
+            {
+            "image_path": "/static/images/student_activities/002/12.webp",
+            "event_name": "SAEISS - Electric Two-Wheeler Design Competition",
+            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, demonstrating their innovation and technical expertise in the field of sustainable mobility. This competition provided them with a platform to design and develop an efficient electric two-wheeler, focusing on battery technology, power management, aerodynamics, and performance optimization. Their participation highlights their dedication to cutting-edge automotive advancements and reinforces our institute's commitment to fostering future engineers equipped with industry-relevant skills in electric vehicle technology.",
+            "date": "2024-02-17"
+            }
+        ]
+    }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": 
+        [
+            {
+            "image_path": "/static/images/infrastructure/002/1.webp",
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/2.webp",
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/3.webp",
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/4.webp",
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/5.webp",
+            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/6.webp",
+            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/7.webp",
+            "image_name": "VEHICLE TESTING LABORATORY-1",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/8.webp",
+            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/9.webp",
+            "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/10.webp",
+            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/11.webp",
+            "image_name": "VEHICLE TESTING LABORATORY-2",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/002/12.webp",
+            "image_name": "VEHICLE TESTING LABORATORY-3",
+            "image_content": ""
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/auto.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+        "S_NO": 1,
+        "ORGANISATION_NAME": "Sify Technologies Limited",
+        "MONTH_AND_YEAR": "09.08.2024",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 2,
+        "ORGANISATION_NAME": "Hexaware Technologies Limited",
+        "MONTH_AND_YEAR": "12.08.2024",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 3,
+        "ORGANISATION_NAME": "Movate Technologies Private Limited",
+        "MONTH_AND_YEAR": "04.11.2024",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 4,
+        "ORGANISATION_NAME": "Akash Industries",
+        "MONTH_AND_YEAR": "23.11.2022",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 5,
+        "ORGANISATION_NAME": "V Ramakrishna Polytechnic College",
+        "MONTH_AND_YEAR": "06.09.2022",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 6,
+        "ORGANISATION_NAME": "E-Way Electric",
+        "MONTH_AND_YEAR": "31.05.2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 7,
+        "ORGANISATION_NAME": "Kathir Sudhir Automation India Pvt. Ltd",
+        "MONTH_AND_YEAR": "24.05.2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 8,
+        "ORGANISATION_NAME": "Sunbam Technologies",
+        "MONTH_AND_YEAR": "02.04.2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 9,
+        "ORGANISATION_NAME": "TATA ELXSI Limited",
+        "MONTH_AND_YEAR": "23.02.2022",
+        "VALIDITY": "1 Year",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 10,
+        "ORGANISATION_NAME": "Diaganol CADD",
+        "MONTH_AND_YEAR": "23.10.2019",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 11,
+        "ORGANISATION_NAME": "Preethi Kitchen Appliances Pvt. Ltd.",
+        "MONTH_AND_YEAR": "09.01.2019",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 12,
+        "ORGANISATION_NAME": "Tamilnadu Dr. J. Jayalalitha Fisheries University",
+        "MONTH_AND_YEAR": "24.12.2018",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    },
+    {
+        "S_NO": 13,
+        "ORGANISATION_NAME": "ProCAE",
+        "MONTH_AND_YEAR": "01.02.2018",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+    }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Automobile Engieering (AUTO)",
+            "dept_id": "002"
+          }
+        ]
+      }
+    ]
+  }
+]

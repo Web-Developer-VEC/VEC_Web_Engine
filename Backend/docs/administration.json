@@ -1,0 +1,310 @@
+[
+  {
+    "type": "principal",
+    "data": {
+      "name": "Dr. SATISH KUMAR S",
+      "qualification": "M.E. ,Ph.D",
+      "message": "VEC is one of the leading technical institutions delivering quality education in Tamil Nadu. The strengths of VEC are its proven teaching and learning ecosystem, research and knowledge creation culture and industry collaborations. We help students acquire the knowledge and skills required to become competent and excel in the broader field of Engineering, Technology and Business Administration. We keep our curricula up to date with the latest technological breakthroughs and industry best practises and provide a vibrant intellectual environment for students by fostering critical, reflective, and conceptual thinking, with the purpose of enriching their education and preparing them industry ready through innovative teaching methods..",
+      "photo_path": "/static/images/principal_data/principal_photo.webp",
+      "social_links": {
+        "LinkedIn Profile": "https://www.linkedin.com/in/satishchennai/?originalSubdomain=in",
+        "Google Scholar Profile": "https://scholar.google.com/citations?user=nqRRK20AAAAJ&hl=en",
+        "Research Gate": "https://www.researchgate.net/profile/S-Satishkumar",
+        "Scopus Author Profile": "https://www.scopus.com/results/results.uri?sort=plf-f&src=s&st1=satish+Kumar&st2=s&nlo=1&nlr=20&nls=count-f&sid=ca5287c422edd6e5dec91a734cd442d3&sot=anl&sdt=aut&sl=37&s=AU-ID%28%22Satish+Kumar%2C+S.%22+13806246500%29&txGid=5b7b5fd8edbb8c1267c2088b4cd16803&sessionSearchId=ca5287c422edd6e5dec91a734cd442d3&limit=10"
+      }
+    }
+  },
+  {
+    "type": "dean_and_association",
+    "data": [
+      {
+        "Position": "Academics",
+        "Dean": "Dr. JEBAMALAR A",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Prof & Head - Civil Engineering",
+        "Dean_Image": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+        "Associate_Dean": "Dr. AROCKIA JASWIN M",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Prof. Mechanical Engineering.",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_m_arockia_jaswin.webp",
+        "Dean_unique_id": "VEC-001-01-001",
+        "Associate_dean_unique_id": "VEC-001-01-001"
+      },
+      {
+        "Position": "Planning and Development",
+        "Dean": "Dr. JEEVA KATIRAVAN",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Prof & Head - Information Technology",
+        "Dean_Image": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp",
+        "Associate_Dean": "Dr. RAJALAKSHMI S",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Asso Prof & Head - Cyber Security",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_s_rajalakshmi.webp"
+      },
+      {
+        "Position": "Student Development and Welfare",
+        "Dean": "Dr. SHAHIL KIRUPAVATHY S",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Prof & Head - Department of Physics",
+        "Dean_Image": "/static/images/dean_and_associates/dr_s_shahil_kirupavathy.webp",
+        "Associate_Dean": "Dr. GEETHA R",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Asst Prof - Electrical and Electronics Engineering",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_geetha_r.webp"
+      },
+      {
+        "Position": "Faculty Development and Welfare",
+        "Dean": "Dr. MARY JOANS S",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Prof & Head - Electronics and Communication Engineering.",
+        "Dean_Image": "/static/images/dean_and_associates/dr_s_mary_jones.webp"
+      },
+      {
+        "Position": "Research and Development",
+        "Dean": "Dr. MANOHARAN P A",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Research",
+        "Dean_Image": "/static/images/dean_and_associates/dr_manoharan.webp",
+        "Associate_Dean": "Dr. BHASKARA SETHUPATHY S",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Prof & Head - Automobile Engineering",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_s_bhaskara_sethupathy.webp"
+      },
+      {
+        "Position": "Accreditations and Ranking",
+        "Dean": "Dr. GANAPATHY SUNDARAM E",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Prof & Head - Mechanical Engineering",
+        "Dean_Image": "/static/images/dean_and_associates/dr_e_ganapathy_sundaram.webp",
+        "Associate_Dean": "Dr. VISU P",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Prof & Head - Artificial Intelligence and Data Science",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_p_visu.webp"
+      },
+      {
+        "Position": "Corporate Relations and Higher Studies",
+        "Dean": "Mr. ARUN RAMASAMY A",
+        "Dean_Type": "Dean",
+        "Dean_Designation": "Head - Trainig & Placements",
+        "Dean_Image": "/static/images/dean_and_associates/mr_arun_ramasamy.webp",
+        "Associate_Dean": "Dr. SURESH KUMAR K",
+        "Ass_Dean_Type": "Associate Dean",
+        "Associate_Dean_Designation": "Prof & Head - Electrical and Electronics Engineering",
+        "Associate_Dean_Image": "/static/images/dean_and_associates/dr_k_suresh_kumar.webp"
+      }
+    ]
+  },
+  {
+    "type": "admin_office",
+    "data": [
+      {
+        "name": "DR. JEYABALRAJ V",
+        "designation": "Administrative Officer & Professor, CSE  ",
+        "photo_path": "/static/images/admin_office/Jeyabalraj.webp"
+      },
+      {
+        "name": "Mr. BHUVANESHWARAN U",
+        "designation": "General Manager",
+        "photo_path": "/static/images/admin_office/bhuvaneshwaran.webp"
+      },
+      {
+        "name": "Mr. PRAKASH KUMAR B",
+        "designation": "Office Superintendent",
+        "photo_path": "/static/images/admin_office/Prakash.webp"
+      },
+      {
+        "name": "Mrs. ESTHER FLORA HEMAPRIYA E",
+        "designation": "Manager – HR",
+        "photo_path": "/static/images/admin_office/Esther.webp"
+      },
+      {
+        "name": "Mr. THAMIZH E",
+        "designation": "Student Counseller",
+        "photo_path": "/static/images/admin_office/thamizh.webp"
+      },
+      {
+        "name": "Mrs. KALYANI S",
+        "designation": "PA to Principal",
+        "photo_path": "/static/images/admin_office/Kalyani.webp"
+      },
+      {
+        "name": "Mrs. SHEEBA K",
+        "designation": "Student Affairs",
+        "photo_path": "/static/images/admin_office/Sheeba.webp"
+      },
+      {
+        "name": "Mrs. RAJALAKSHMI M",
+        "designation": "Cashier",
+        "photo_path": "/static/images/admin_office/Rajalakshmi.webp"
+      },
+      {
+        "name": "Mrs. KALPANA M",
+        "designation": "Receptionist",
+        "photo_path": "/static/images/admin_office/Kalpana.webp"
+      },
+      {
+        "name": "Mrs. VITHYA R",
+        "designation": "Accountant Assistant",
+        "photo_path": "/static/images/admin_office/Vithya.webp"
+      },
+      {
+        "name": "Mr. MURUGANANTHAM C",
+        "designation": "Clerk",
+        "photo_path": "/static/images/admin_office/Muruganantham.webp"
+      },
+      {
+        "name": "Mr. KARTHIKEYAN N",
+        "designation": "Office Assistant",
+        "photo_path": "/static/images/admin_office/Karthikeyan.webp"
+      },
+      {
+        "name": "Mrs. THAVAMANI T",
+        "designation": "Office Assistant",
+        "photo_path": "/static/images/admin_office/Thavamani.webp"
+      },
+      {
+        "name": "Mrs. LAKSHMI R",
+        "designation": "Office Assistant",
+        "photo_path": "/static/images/admin_office/Lakshmi.webp"
+      }
+    ]
+  },
+  {
+    "type": "committee",
+    "data": [
+      {
+        "name": "academic_council",
+        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+      },
+      {
+        "name": "governing_body",
+        "pdf_path": "/static/pdfs/committee/governing_body.pdf"
+      },
+      {
+        "name": "finance_committee",
+        "pdf_path": "/static/pdfs/committee/finance_committee.pdf"
+      },
+      {
+        "name": "research_committee",
+        "pdf_path": "/static/pdfs/committee/research_committee.pdf"
+      },
+      {
+        "name": "internal_quality_assurance_cell",
+        "pdf_path": "/static/pdfs/committee/internal_quality_assurance_cell.pdf"
+      },
+      {
+        "name": "planning_and_monitoring_committee",
+        "pdf_path": "/static/pdfs/committee/planning_and_monitoring_committee.pdf"
+      },
+      {
+        "name": "anti-ragging_committee",
+        "pdf_path": "/static/pdfs/committee/anti-ragging_committee.pdf"
+      },
+      {
+        "name": "anti-ragging_squad",
+        "pdf_path": "/static/pdfs/committee/anti-ragging_squad.pdf"
+      },
+      {
+        "name": "discipline_and_welfare_committee",
+        "pdf_path": "/static/pdfs/committee/discipline_and_welfare_committee.pdf"
+      },
+      {
+        "name": "grievance_redressal_committee",
+        "pdf_path": "/static/pdfs/committee/grievance_redressal_committee.pdf"
+      },
+      {
+        "name": "scst_committee",
+        "pdf_path": "/static/pdfs/committee/scst_committee.pdf"
+      },
+      {
+        "name": "internal_complaint_committee",
+        "pdf_path": "/static/pdfs/committee/internal_complaint_committee.pdf"
+      },
+      {
+        "name": "gender_issues_committee",
+        "pdf_path": "/static/pdfs/committee/gender_issues_committee.pdf"
+      },
+      {
+        "name": "institute_industry_interaction_cell",
+        "pdf_path": "/static/pdfs/committee/institute_industry_interaction_cell.pdf"
+      },
+      {
+        "name": "nirf_innovation_cell",
+        "pdf_path": "/static/pdfs/committee/nirf_innovation_cell.pdf"
+      },
+      {
+        "name": "institution's_innovation_council",
+        "pdf_path": "/static/pdfs/committee/institution's_innovation_council.pdf"
+      },
+      {
+        "name": "social_media_cell",
+        "pdf_path": "/static/pdfs/committee/social_media_cell.pdf"
+      },
+      {
+        "name": "lemonivy-vec_enterpreneurship_cell",
+        "pdf_path": "/static/pdfs/committee/lemonivy-vec_enterpreneurship_cell.pdf"
+      },
+      {
+        "name": "women_enterpreneurship_cell",
+        "pdf_path": "/static/pdfs/committee/women_enterpreneurship_cell.pdf"
+      },
+      {
+        "name": "intelluctual_property_rights_cell",
+        "pdf_path": "/static/pdfs/committee/intelluctual_property_rights_cell.pdf"
+      },
+      {
+        "name": "innovation_cell",
+        "pdf_path": "/static/pdfs/committee/innovation_cell.pdf"
+      },
+      {
+        "name": "start-up_cell",
+        "pdf_path": "/static/pdfs/committee/start-up_cell.pdf"
+      },
+      {
+        "name": "technology_transfer_cell",
+        "pdf_path": "/static/pdfs/committee/technology_transfer_cell.pdf"
+      },
+      {
+        "name": "internship_cell",
+        "pdf_path": "/static/pdfs/committee/internship_cell.pdf"
+      }
+    ]
+  },
+  {
+    "type": "HandBook",
+    "data": {
+      "Years": [
+        "2018-2019",
+        "2019-2020",
+        "2020-2021",
+        "2021-2022",
+        "2022-2023",
+        "2023-2024",
+        "2024-2025",
+        "2025-2026"
+      ],
+      "pdfs_path": [
+        "/static/pdfs/handbook/Handbook-18-19.pdf",
+        "/static/pdfs/handbook/Handbook-19-20.pdf",
+        "/static/pdfs/handbook/Handbook-20-21.pdf",
+        "/static/pdfs/handbook/Handbook-21-22.pdf",
+        "/static/pdfs/handbook/HandBook-22-23.pdf",
+        "/static/pdfs/handbook/HandBook-23-24.pdf",
+        "/static/pdfs/handbook/Revised_New_Hand_Book_24-25.pdf",
+        ""
+      ]
+    }
+  },
+  {
+    "type": "HRHandBook",
+    "data": {
+      "pdfs_path": ["/static/pdfs/handbook/HR-Handbook.pdf"]
+    }
+  },
+  {
+    "type": "organization_chart",
+    "data": {
+      "image_path": "/static/images/orgchart/chart.webp"
+    }
+  }
+]

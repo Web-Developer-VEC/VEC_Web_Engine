@@ -1,0 +1,479 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/eng.webp",
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "The Department of English has been in a dynamic existence since the inception of the college equipping the budding engineers with commendable communication skills in order to meet the ever growing demands of industry, business, public and private organizations as well as academic and human services. The Department boasts of practical curricula with a high degree of professional relevance, enabling students to face real time challenges. The faculty of the department are known for their committed teaching, individualized explorative bent of mind and close mentoring. We are delighted to extend our academic support to the institution in all its recognitions."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+        "To empower engineering students with effective communication skills, critical thinking, and creative expression, enabling them to excel as global professionals, innovators, and leaders, while fostering a culture of linguistic excellence, intellectual curiosity, and lifelong learning.”"
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+           "To develop engineering students' communication, critical thinking, and soft skills through innovative teaching, mentoring, and assessment methods, enabling them to articulate ideas, collaborate effectively, and succeed in their academic, professional, and personal pursuits."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": []
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1:Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2:Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3:Design/development of solutions",
+            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4:Conduct investigations of complex problems",
+            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5:Modern tool usage",
+            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6:The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7:Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8:Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9:Individual and team work",
+            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10:Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11:Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12:Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "010",
+            "name": "Mr. BASKARAN V",
+            "department_name": "English",
+            "unique_id": "VEC-010-01-140",  
+            "qualification": ["M.A.", "M.Phil"],
+            "hod_message": [
+             "He plays a pivotal role in steering the department towards its designated goals. His qualification includes M.A, M. Phil, and he has been teaching English for the past 32 years. If the USP of the department is the application of technology in teaching and training, he is the motivator. With his knowledge of grammar and polite demeanour he has been instrumental in fostering a conducive learning environment, encouraging both faculty and students to embrace innovative methods while maintaining a strong foundation in language proficiency."
+            ],
+            "hod_image": "/static/images/hods/eng.webp",
+            "designation": "Assistant Professor & Head, Dept of English",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publon": "",
+              "scopus": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [ {
+        "name": "Mr. BASKARAN V",
+        "designation": "Assistant Professor & Head",
+        "unique_id": "VEC-010-04-154",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
+        "resume_pdf": ""
+      }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [{
+        "name": "Ms. SUGAPRIYA S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-150",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/sukhapriya-shreesughapriya-7813a260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=VMd6SjMAAAAJ",
+          "researchgate": "https://www.researchgate.net/profile/Sugapriya-Sadhasivam?ev=hdr_xprf",
+          "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0009-7106-817X",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mr. BALAJI A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-151",
+        "socialmedia_links": {
+          "linkedin": "https://in.linkedin.com/in/balaji-alagurajan-43390536",
+          "googlescholar": "https://scholar.google.com/citations?user=UK0X27YAAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Balaji-Alagurajan",
+          "orchidprofile": "https://orcid.org/0009-0001-5203-3985",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. DHANALAKSHMI R",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-171",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/dhanalakshmi-rangarao-english-ap-i-vec-74221a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. LATHA J",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-148",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/latha-jayapathy-11b6952ba/",
+          "googlescholar": "https://scholar.google.com/citations?user=wumZNXkAAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Latha-Jayapathy?ev=hdr_xprf",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. VINOTHKUMAR M",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-057",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/m-vinoth-kumar-45bba7168?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+          "googlescholar": "https://scholar.google.com/citations?user=oIYjsvUAAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Vinothkumar-Mohan-2?ev=hdr_xprf",
+          "orchidprofile": "https://orcid.org/0009-0005-6008-3201",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-057.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mr. ANAND V",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-065",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/anand-vijayan-59a37b306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=ANAND+V+(PC2133005013003)",
+          "researchgate": "https://www.researchgate.net/profile/Anand-Vijayan-8",
+          "orchidprofile": "https://orcid.org/0009-0008-2898-0510",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. ARCHANA G M",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-146",
+        "socialmedia_links": {
+          "linkedin": "http://www.linkedin.com/in/archana-g-m-govindasamy-murugesan-12128832b",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=vlQOgNAAAAAJ",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Dr. DEEPIKA A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-604",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. RHODAS DAISY D",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-605",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
+        "resume_pdf": ""
+      },
+      {
+        "name": "Mrs. GNANESHWARI R",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-606",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
+        "resume_pdf": ""
+      }]
+          },
+          {
+            "category": "non_teaching_staff",
+            "members": [{
+        "name": "Mrs. INDUMATHI S",
+        "designation": "Lab Instructor",
+        "unique_id": "VEC-010-05-631",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-05-631.webp",
+        "resume_pdf": ""
+      }]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category":"newsletter",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": []
+       }
+    ]
+    },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+         {"image_path": "/static/images/student_activities/010/1.webp", "image_content": "Description of Image 10_1", "event_name": "Event 10_1", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/2.webp", "image_content": "Description of Image 10_2", "event_name": "Event 10_2", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/3.webp", "image_content": "Description of Image 10_3", "event_name": "Event 10_3", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/4.webp", "image_content": "Description of Image 10_4", "event_name": "Event 10_4", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/5.webp", "image_content": "Description of Image 10_5", "event_name": "Event 10_5", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/6.webp", "image_content": "Description of Image 10_6", "event_name": "Event 10_6", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/7.webp", "image_content": "Description of Image 10_7", "event_name": "Event 10_7", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/8.webp", "image_content": "Description of Image 10_8", "event_name": "Event 10_8", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/9.webp", "image_content": "Description of Image 10_9", "event_name": "Event 10_9", "date": "YYYY-MM-DD"},
+            {"image_path": "/static/images/student_activities/010/10.webp", "image_content": "Description of Image 10_10", "event_name": "Event 10_10", "date": "YYYY-MM-DD"}
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+             {"image_path": "/static/images/infrastructure/010/1.webp", "image_name": "COMMUNICATION SKILLS LABORATORY", "image_content": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "English",
+            "dept_id": "010"
+          }
+        ]
+      }
+    ]
+  }
+]

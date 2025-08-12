@@ -1,0 +1,23 @@
+[
+    {
+        "section & level":["Admission","Hostel","Department","Controller of Examinations","Scholarship"],
+        "level1":[
+            {
+                "Administrative Officer":"Dr. V. Jeyabalraja Professor, Department of Computer Science and Engineering",
+                "ph":"9444464865",
+                "email id":"grievence@velammal.edu.in",
+                "Online Help desk":"www.velammal.edu.in"
+            }
+        ],
+        "level2":["Ms. Jenefer Asha Jeyarani Admission Counsellor","Ms. Menaka Dy. Warden Girls Hostel","Class Advisor of Department Concerned","Dr. P. Gurusamy Asst. Professor, Maths & Exam Cell Coordinator","Ms. N. Niveditha Scholarship Office"
+        ],
+        "level3":["Dr. S. Shahil Kirupavathy Professor & Head, Physics & Nodal Officer - TNEA","Mr. Mathivanan Dy. Warden Boys Hostel ","Academic Coordinator of Department Concerned","Dr. A. Angala Parameswari Asst. Professor, EEE & Dy. COE","Mr. B. Prakash Kumar Nodal Officer - Scholarship"
+        ],
+        "level4":["Ms. S. Kalyani PA to Principal","Mr. Theivanathan Asst. Professor, ECE & Dy.Chief Warden (Hostels)","HoD of Department Concerned","Dr. S. Srinath Professor, EEE & COE","Ms. S. Kalyani PA to Principal"
+        ],
+        "level5":["Principal"
+        ],
+        "another":["Grievance related to PoSH(Prevention of sexual harrassment), Gender issues or any complaint raised by student","Dr. Geetha R Asst. Professor, EEE"
+        ]
+    }
+]

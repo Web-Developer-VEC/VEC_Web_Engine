@@ -1,0 +1,488 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/chem.webp",
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": 
+        [
+          "The Chemistry department is a fascinating field that combines principles from chemistry and engineering to develop innovative solutions for various industries.  Development of new materials with specific properties for applications in energy, aerospace, biomedical, and other fields.Research on sustainable energy sources, energy storage, and environmental remediation technologies.Design and optimization of chemical processes for large-scale production of chemicals, fuels, and pharmaceuticals. Development of corrosion-resistant materials and coatings for various industries."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To be a world-renowned department of chemistry, known for its superior teaching, research, and innovation, and to cultivate a community of critical and creative thinkers capable of tackling the intricate chemical and environmental problems of the twenty-first century."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content":[
+            "Offer graduate and undergraduate programs that give students a solid grounding in engineering chemistry, encompassing critical thinking, practical skills, and theoretical understanding. ",
+            "Carry out state-of-the-art engineering chemical research with an emphasis on innovative materials, environmental remediation, and sustainable energy.",
+            "Offer knowledge and tools to help government organizations, business associates, and local communities deal with urgent chemical and environmental issues.",
+            "Encourage our staff, instructors, and students to have an innovative, entrepreneurial, and leadership mindset."
+            ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": []
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1:Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2:Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3:Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4:Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5:Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6:The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7:Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8:Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9:Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10:Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11:Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12:Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": 
+        [
+           {
+                "dept_id":"003",
+                "name": "Dr. MOHAMED SIKKANDER A",
+                "department_name": "Chemistry",
+                "unique_id": "VEC-003-01-110",
+                "qualification": ["M.Sc.","B.Ed.","M.Phil.","Ph.D"],
+                "hod_message": ["As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"],
+                "hod_image": "/static/images/hods/chem.webp",
+                "designation": "Associate Professor & Head , Dept of Chemistry",
+                "Social_media_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
+                    "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
+                    "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/AAY-3579-2021",
+                    "sciprofiles":"https://sciprofiles.com/profile/16397"
+                }
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [ {
+        "name": "Dr. MOHAMED SIKKANDER A",
+        "designation": "Associate Professor & Head",
+        "unique_id": "VEC-003-01-110",
+        "socialmedia_links": 
+          {
+            "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
+            "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+            "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
+            "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
+            "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+            "publonprofile": "https://www.webofscience.com/wos/author/record/AAY-3579-2021",
+            "sciprofiles":"https://sciprofiles.com/profile/16397"
+          },
+          
+          "image_path":"/static/images/profile_photos/003/VEC-003-01-173.webp",
+          "resume_pdf":""
+          }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": 
+        [
+          {
+            "name": "Dr. KAVITHA K",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-088",
+            "socialmedia_links": 
+              {
+                "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
+                "googlescholar": "https://g.co/kgs/pXiMkTe",
+                "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
+                "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
+                "publonprofile": "",
+                "scopus": ""
+              },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. RAMA NACHIAR R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-119",
+            "socialmedia_links": 
+              {
+                "linkedin": "https://www.linkedin.com/in/rama-nachiar-8003ba241/?originalSubdomain=in",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-119.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. ANITHA V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-108",
+            "socialmedia_links": 
+            {
+              "linkedin": "https://in.linkedin.com/in/anitha-vigneshwaran-6364761b0",
+              "googlescholar": "https://scholar.google.com/citations?user=DcavHoIAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Anitha-Vigneswaran-2",
+              "orchidprofile": "https://orcid.org/0000-0002-8178-4390",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/AGO-1917-2022",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-108.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SASIKALA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-104",
+            "socialmedia_links": 
+            {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/Sasikala-Sakkaravarthy",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-104.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SIVARAJ C",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-142",
+            "socialmedia_links": 
+            {
+              "linkedin": "https://www.linkedin.com/in/siva-raj-575a1032b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people%3BSSJGIiJsTYiq8fjxVgZs7A%3D%3D",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-142.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. NIRUBAN BALU T",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-143",
+            "socialmedia_links": 
+            {
+              "linkedin": "https://in.linkedin.com/in/niruban-balu-270275242",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-143.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. BALAMURUGAPANDIAN N",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-083",
+            "socialmedia_links": 
+            {
+              "linkedin": "https://in.linkedin.com/in/balamurugapandian-n-999b80a7",
+              "googlescholar": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://scholar.google.com/citations%3Fuser%3DQ3eloVMAAAAJ%26hl%3Den&ved=2ahUKEwj84crUsNiIAxX0yzgGHYPdHQIQFnoECBsQAQ&usg=AOvVaw2QWgTNvtazIV1qsgX6jZAh",
+              "researchgate": "https://www.researchgate.net/profile/N-Balamurugapandian",
+              "orchidprofile": "https://orcid.org/0000-0002-3824-6140",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/AES-2149-2022",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56648027400"
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-083.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. KAVIYA M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-079",
+            "socialmedia_links": 
+            {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=HFXOLX4AAAAJ",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-079.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. MOUNICA A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-003-04-626",
+            "socialmedia_links": 
+            {
+              "linkedin": "http://linkedin.com/in/dr-mounica-arangasamy-8a00a8206",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=wqMW5o0AAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Mounica-Arangasamy",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-626.webp",
+            "resume_pdf": ""
+          }
+      ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": 
+        [
+          {
+            "name": "Mr. KUMAR V",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-003-05-003",
+            "socialmedia_links": 
+            {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-05-003.webp",
+            "resume_pdf": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content":[
+              {
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "pdf_path": "/static/pdfs/curriculum/003/reg_23.pdf"
+                }
+              ]
+              }
+            ]
+          }
+        
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": 
+    [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": 
+        [
+            {
+            "image_path": "/static/images/infrastructure/003/1.webp",
+            "image_name": "ENGINEERING CHEMISTRY LABORATORY",
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/003/2.webp",
+            "image_name": "ELECTRO CHEMISTRY RESEARCH LABORATORY",
+            "image_content": ""
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content":[]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
+          }
+        ]
+      }
+    ]
+  }
+]
