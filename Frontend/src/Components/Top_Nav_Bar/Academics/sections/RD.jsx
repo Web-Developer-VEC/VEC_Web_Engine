@@ -32,8 +32,6 @@ const Research = ({ data }) => {
     }
   }, [selectedYear]);
 
-  console.log(yearData);
-
   const actionIcons = {
     "Book": faBook,
     "Funded Proposal": faFileAlt,

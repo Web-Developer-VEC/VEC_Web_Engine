@@ -18,6 +18,7 @@ import college from "../../Assets/college.jpeg";
 import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
+import EventOrg from "./sections/event";
 
 const DepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
@@ -89,6 +90,7 @@ const DepartmentPage = ({ theme, toggle }) => {
         "Mous": "mous",
         "Research": "research",
         "NewsLetter": "newsletter",
+        "Event Organizer": "eventorg"
       }
 
       const deptidmap = {
@@ -191,6 +193,8 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Research data={sectionData} />;
       case "NewsLetter":
         return <Newsletter data={sectionData} />;
+      case "Event Organizer":
+        return <EventOrg data={sectionData} />;
       default:
         return <VisionMission data={sectionData} />;
     }

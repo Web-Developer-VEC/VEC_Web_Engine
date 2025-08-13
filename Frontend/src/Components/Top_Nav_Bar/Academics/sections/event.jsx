@@ -15,23 +15,23 @@ import LoadComp from "../../../LoadComp";
 
 const EventOrg = ({ data }) => {
   const [yearData, setYearData] = useState([]);
-  
+  const department_eventorg = data?.find((item) => item.category === "department_event")?.content || [];
+  console.log(department_eventorg);
+
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-  
-  const years = Object.keys(data || {}).filter(
-    (key) => key !== "_id" && key !== "dept_id" && key !== "department_name"
-  );
-  const [selectedYear, setSelectedYear] = useState(years?.[0]);
+
+  const [selectedYear, setSelectedYear] = useState(department_eventorg?.[0]?.year);
 
   useEffect(() => {
-    if (data && selectedYear && data[selectedYear]) {
-      setYearData(data[selectedYear]);
+    if (data && selectedYear) {
+      const filteredData = department_eventorg?.find(item => item.year === selectedYear);
+      setYearData(filteredData);
     }
-  }, [selectedYear, data]);
+  }, [selectedYear]);
 
   const actionIcons = {
     "Book": faBook,
@@ -56,21 +56,21 @@ const EventOrg = ({ data }) => {
   return data ? (
     <div className="Rd-page">
       <div className="event-intro flex justify-center">
-        <h1 className="event-header text-brwn dark:text-drkt">Event Organizer</h1>
+        <h1 className="event-header text-brwn dark:text-drkt">Department Activities</h1>
       </div>
 
       {/* Year Buttons */}
       <div className="event-years-horizontal">
-        {years?.map((year) => (
+        {department_eventorg?.map((res,i) => (
           <button
-            key={year}
-            className={`event-year-button ${selectedYear === year
+            key={i}
+            className={`event-year-button ${selectedYear === res?.year
               ? "active bg-accn text-prim dark:bg-brwn"
               : "bg-secd text-text dark:bg-drks"
               }`}
-            onClick={() => handleYearClick(year)}
+            onClick={() => handleYearClick(res?.year)}
           >
-            {year}
+            {res?.year}
           </button>
         ))}
       </div>
@@ -78,7 +78,7 @@ const EventOrg = ({ data }) => {
       <div className="event-content">
         <div className="event-details">
           <div className="event-year-actions">
-            {Array.isArray(yearData) && yearData?.map((item, index) => (
+            {Array.isArray(yearData?.research) && yearData?.research?.map((item, index) => (
               <div
                 key={index}
                 className="event-action-button"

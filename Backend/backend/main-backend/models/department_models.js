@@ -8,7 +8,8 @@ const ALLOWED_TYPES = [
   'student_achievements',
   'infrastructure',
   'mous',
-  'research'
+  'research',
+  'eventorg'
 ];
 
 const ALLOWED_DEPARTMENTS = [
