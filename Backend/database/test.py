@@ -29,7 +29,7 @@ deptMap = {
 }
 
 def insert_department_data_sections():
-    base_path = "/VEC_Web_Engine/Backend_Deployment/docs/DEPT_DATA/"
+    base_path = "/VEC_Web_Engine/Backend/docs/DEPT_DATA/"
     for dept_id, collection_name in deptMap.items():
         file_path = f"{base_path}{dept_id}.json"
         collection = db[collection_name]
