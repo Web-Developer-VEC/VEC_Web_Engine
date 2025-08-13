@@ -10,7 +10,6 @@ const LibraryIntro = ({about}) => {
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-  console.log(about);
   
   function parse(cnt) {
         let lis = [];
@@ -57,25 +56,15 @@ const LibraryIntro = ({about}) => {
                       spacious,
                       well-ventilated space. Our library houses over <span
                       className="font-semibold text-text dark:text-drkt">
-<<<<<<< Updated upstream
                     {about[0]?.no_of_books}</span> of books and <span
                       className="font-semibold text-text dark:text-drkt">{about[0]?.no_of_titles} titles</span> across
-=======
-                    {about?.no_of_books}</span> of books and <span
-                      className="font-semibold text-text  dark:text-drkt">{about?.no_of_titles} titles</span> across
->>>>>>> Stashed changes
                       various
                       disciplines.
                   </p>
                   <p className="text-sm sm:text-base text-justify md:text-lg leading-relaxed">
                       Additionally, we offer access to <span className="font-semibold text-text dark:text-drkt">
-<<<<<<< Updated upstream
-            {about[0]?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
-            {about[0]?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
-=======
-                    {about?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
-                    {about?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
->>>>>>> Stashed changes
+                        {about[0]?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
+                        {about[0]?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
                       Classification Scheme and operates
                       on an Open Access System.
                   </p>
