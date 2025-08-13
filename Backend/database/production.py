@@ -348,14 +348,17 @@ def insert_about_us():
 
     print("about_us sections inserted successfully.")
 
-def insert_help_desk():
+def insert_help_desk_sections():
+    collection = db["help_desk"]
 
-    collection = db['help_desk']  
-    with open("/VEC_Web_Engine/Backend/docs/help_desk.json", "r",encoding="utf-8") as file:
-        documents = json.load(file)
-        collection.insert_many(documents)
+    with open("/VEC_Web_Engine/help_desknew.json", "r", encoding="utf-8") as file:
+        help_desk_data = json.load(file)
 
-    print("help_desk documents inserted successfully.\n")
+        
+        collection.insert_many(help_desk_data)
+
+    print("Help desk sections inserted successfully.")
+
 
 
 def insert_administration_sections():
@@ -524,6 +527,7 @@ def insert_research_data():
     print("Research data inserted successfully.")
 
 
+insert_help_desk_sections()
 insert_landing_page_sections()
 insert_sports_sections()
 insert_nss_sections()
@@ -536,7 +540,7 @@ insert_administration_sections()
 insert_library_sections()
 insert_incubations_sections()
 insert_about_us()
-insert_help_desk()
+
 #create_logs_collection()
 insert_web_team()
 insert_research_data()

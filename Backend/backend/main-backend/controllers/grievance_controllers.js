@@ -65,4 +65,31 @@ async function getGrievance (req, res)  {
     }
 }
 
-module.exports = { getGrievance }
+async function getHelpDesk (req, res) {
+    console.log("AJith")
+  try {
+    const { type } = req.body;
+
+    if (!type) {
+      return res.status(400).json({ message: 'Type is required in request body' });
+    }
+
+    const db = getDb();
+    const collection = db.collection('help_desk');
+
+    // Find by type
+    const result = await collection.findOne({ type: type });
+
+    if (!result) {
+      return res.status(404).json({ message: 'No record found for the given type' });
+    }
+
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error fetching data by type:', error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+}
+
+
+module.exports = { getGrievance ,getHelpDesk};
