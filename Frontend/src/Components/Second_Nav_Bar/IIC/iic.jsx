@@ -148,7 +148,7 @@ const Iic = ({toggle, theme}) => {
         "Home": <IicHome data={iicData}/>,
         "Establishment of IIC": <IicEst data={iicData}/>,
         "Council": {
-            "Faculty": <IICFaculty data={iicData}/>,  
+            "Faculty": <IICFaculty data={iicData}/>,    
             "Expert Representation": <IICExpert data={iicData}/>,    
             "Student Representation": <IICStudent data={iicData}/>   
         },
@@ -190,6 +190,7 @@ const Iic = ({toggle, theme}) => {
       "Contact": "contact"
     };
 
+    
     const fetchData = async () => {
       try {
         const key = Array.isArray(iic) ? iic[iic.length - 1] : iic;
