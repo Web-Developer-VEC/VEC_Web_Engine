@@ -1,7 +1,8 @@
 [
   {
     "type": "about_the_library",
-    "data": {
+    "data": [
+      {
       "Area": "24000 sq.ft",
       "no_of_books": "78070  Volumes",
       "no_of_titles": "25271 ",
@@ -21,16 +22,19 @@
         "Strict silence must be maintained in the library."
       ]
     }
+  ]
   },
   {
     "type": "HOD",
-    "data": {
+    "data": [
+      {
       "name": "Dr. RAJENDRAPRASATH S",
       "image_path": "/static/images/library/hod/Rajendra Prasath S.webp",
       "designation": "Librarian/HOD",
       "education_qualification": "B.Sc., M.A., M.L.I.Sc., M.phil., Ph.D",
       "message": "VEC’s Central Library is a one of it’s kind installation that facilitates teaching, learning and research endeavours of our students, scholars and faculty members. It is one of the formost such libraries in Tamil Nadu higher educational systems. significant efforts are not just building structure that stores books. It serves more realistically as a space for learning and knowledge exchange with users coming from diverse study and aspirational backgrounds."
     }
+  ]
   },
   {
     "type": "Faculty_Staff",
@@ -218,7 +222,7 @@
     "data": [
       {
         "category": "SERVICES",
-        "items": [
+        "content": [
           "Reference service",
           "Reservation Service",
           "Online Public Access Catalogue (OPAC)",
@@ -233,7 +237,7 @@
       },
       {
         "category": "FACILITIES",
-        "items": [
+        "content": [
           "Inter Library Network",
           "OPAC (On-line Public Access Catalogue)",
           "Book Bank (SC/ST)",
@@ -246,11 +250,11 @@
       },
       {
         "category": "E-RESOURCES",
-        "items": ["E-Journals", "E-books", "DELNET", "NPTEL", "NDL"]
+        "content": ["E-Journals", "E-books", "DELNET", "NPTEL", "NDL"]
       },
       {
         "category": "Image_Gallery",
-        "items": [
+        "content": [
           {
             "title": "REPROGRAPHY SECTION",
             "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
@@ -314,7 +318,7 @@
     "type": "library_resources",
     "data": [
       {
-        "title": "Anti-Plagiarism Scanner Software",
+        "category": "Anti-Plagiarism Scanner Software",
         "content": [
           { "name": "TurnItOut", "link": "https://www.turnitout.com" },
 
@@ -343,7 +347,7 @@
         ]
       },
       {
-        "title": "Our Collections",
+        "category": "Our Collections",
         "content": [
           "No of Books: 78070",
           "No of Titles: 25271",
@@ -394,23 +398,23 @@
   },
   {
     "type":"books",
-    "data":
+    "data":[
       {
         "Number of Books":"78070",
         "Total Number of Journals ":"180",
         "General book bank":"2802"       
       }
-    
+    ]
   },
   {
     "type": "journal",
-    "data": 
+    "data": [
       {
         "Total Journals":"180",
         "National Journals":"93",
         "International Journals":"87",
         "E-Journals":"1480" 
       }
-    
+]
   }
 ]
