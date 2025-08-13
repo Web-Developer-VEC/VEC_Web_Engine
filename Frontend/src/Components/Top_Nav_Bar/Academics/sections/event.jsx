@@ -55,16 +55,16 @@ const EventOrg = ({ data }) => {
 
   return data ? (
     <div className="Rd-page">
-      <div className="event-intro flex justify-center">
-        <h1 className="event-header text-brwn dark:text-drkt">Department Activities</h1>
+      <div className="deptevent-intro flex justify-center">
+        <h1 className="deptevent-header text-brwn dark:text-drkt">Department Activities</h1>
       </div>
 
       {/* Year Buttons */}
-      <div className="event-years-horizontal">
+      <div className="deptevent-years-horizontal">
         {department_eventorg?.map((res,i) => (
           <button
             key={i}
-            className={`event-year-button ${selectedYear === res?.year
+            className={`deptevent-year-button ${selectedYear === res?.year
               ? "active bg-accn text-prim dark:bg-brwn"
               : "bg-secd text-text dark:bg-drks"
               }`}
@@ -75,13 +75,13 @@ const EventOrg = ({ data }) => {
         ))}
       </div>
 
-      <div className="event-content">
-        <div className="event-details">
-          <div className="event-year-actions">
+      <div className="deptevent-content">
+        <div className="deptevent-details">
+          <div className="deptevent-year-actions">
             {Array.isArray(yearData?.research) && yearData?.research?.map((item, index) => (
               <div
                 key={index}
-                className="event-action-button"
+                className="deptevent-action-button"
                 onClick={() => handlePdfOpen(item?.pdf_path)}
               >
                 <FontAwesomeIcon
