@@ -40,7 +40,7 @@ const LIBFacl = ({faculty}) => {
               >
                 <div className="">
                   <img
-                    src={UrlParser(fac.image)}
+                    src={UrlParser(fac?.image)}
                     alt={fac.name}
                     className="w-[55%] mt-4 h-44 m-auto object-cover filter brightness-90  rounded-xl group-hover:brightness-100 transition-all"
                   />
