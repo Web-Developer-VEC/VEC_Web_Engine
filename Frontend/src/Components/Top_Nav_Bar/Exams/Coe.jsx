@@ -52,7 +52,7 @@ const Coe = ({ toggle, theme }) => {
             className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] w-full md:w-fit ml-auto mr-auto shadow-md rounded-lg mb-10 p-6 md:p-10"
           >
             <h2 className="text-2xl font-bold text-[#800000] dark:text-drkt text-center mb-6">
-              {coeData[0].title}
+              {coeData[0].category}
             </h2>
             {coeData[0].members.map((member, index) => (
               <div
@@ -88,7 +88,7 @@ const Coe = ({ toggle, theme }) => {
                 className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] w-full md:w-[48%] max-w-[520px] shadow-md rounded-lg p-6 md:p-8"
               >
                 <h2 className="text-xl font-bold text-[#800000] dark:text-drkt text-center mb-4 whitespace-nowrap">
-                  {section.title}
+                  {section.category}
                 </h2>
                 {section.members.map((member, index) => (
                   <div
@@ -124,7 +124,7 @@ const Coe = ({ toggle, theme }) => {
             className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] w-full md:w-fit ml-auto mr-auto shadow-md rounded-lg mb-10 p-6 md:p-10"
           >
             <h2 className="text-2xl font-bold text-[#800000] dark:text-drkt text-center mb-6">
-              {section.title}
+              {section.category}
             </h2>
             {section.members.length > 1 ? (
               <div className="flex flex-wrap justify-center gap-4 md:gap-6 px-2 md:px-0">

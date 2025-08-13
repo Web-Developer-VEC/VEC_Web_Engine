@@ -50,29 +50,39 @@ const LibraryIntro = ({about}) => {
                     </h1>
 
 
-                  <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-sm sm:text-base text-justify md:text-lg leading-relaxed">
                       The college library is located in the Bill Gates Block, spanning the Ground and First floors. With
                       a total
                       area of <span className="font-semibold text-text dark:text-drkt">{about[0]?.Area}</span>, it is a
                       spacious,
                       well-ventilated space. Our library houses over <span
                       className="font-semibold text-text dark:text-drkt">
+<<<<<<< Updated upstream
                     {about[0]?.no_of_books}</span> of books and <span
                       className="font-semibold text-text dark:text-drkt">{about[0]?.no_of_titles} titles</span> across
+=======
+                    {about?.no_of_books}</span> of books and <span
+                      className="font-semibold text-text  dark:text-drkt">{about?.no_of_titles} titles</span> across
+>>>>>>> Stashed changes
                       various
                       disciplines.
                   </p>
-                  <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-sm sm:text-base text-justify md:text-lg leading-relaxed">
                       Additionally, we offer access to <span className="font-semibold text-text dark:text-drkt">
+<<<<<<< Updated upstream
             {about[0]?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
             {about[0]?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
+=======
+                    {about?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
+                    {about?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
+>>>>>>> Stashed changes
                       Classification Scheme and operates
                       on an Open Access System.
                   </p>
 
                   {/* Library Timings */}
                   <div className="bg-prim dark:bg-drkp p-3 sm:p-5 rounded-xl border border-yellow-100">
-                      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Library Timings</h2>
+                      <h2 className="text-lg sm:text-xl font-bold text-brwn mb-2 sm:mb-4">Library Timings</h2>
                       <ul className="space-y-1 text-xs sm:text-sm md:text-lg">
                           <li className="flex items-center space-x-2">
                               <span className="w-2 h-2 bg-secd dark:bg-drks rounded-full"></span>
