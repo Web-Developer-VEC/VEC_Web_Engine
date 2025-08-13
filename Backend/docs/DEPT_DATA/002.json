@@ -140,7 +140,7 @@
            "department_id": "002",
             "name": "Dr. BASKARA SETHUPATHY S",
         "department_name": "Automobile Engineering (AUTO)",
-        "unique_id": "VEC-002-01-102",
+        "unique_id": "VEC-002-01-567",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
             "hod_image": "/static/images/hods/auto.webp",
@@ -176,7 +176,7 @@
         "members": [ 
         {
         "name": "Dr. BASKARA SETHUPATHY S",
-        "unique_id": "VEC-002-01-102",
+        "unique_id": "VEC-002-01-567",
         "designation": "Professor & Head",
             "socialmedia_links": {
                  "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
@@ -187,7 +187,7 @@
                 "scopus": ""
             },
           
-            "image_path":"/static/images/profile_photos/002/VEC-002-01-102.webp",
+            "image_path":"/static/images/profile_photos/002/VEC-002-01-567.webp",
             "resume_pdf":""
           }]
       },

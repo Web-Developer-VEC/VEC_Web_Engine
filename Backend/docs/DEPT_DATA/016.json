@@ -848,14 +848,15 @@
               {
                  "heading":"Curriculum & Syllabus - PG",
                  "syllabus":[
-                   {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/005/pg_reg_21.pdf"
-                  },
                   {
                     "year": "R - 2023",
                     "pdf_path":"/static/pdfs/curriculum/005/pg_reg_23.pdf"
+                  },
+                  {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/005/pg_reg_21.pdf"
                   }
+                  
 
                  ]
               }
