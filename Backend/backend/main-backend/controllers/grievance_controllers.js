@@ -66,7 +66,6 @@ async function getGrievance (req, res)  {
 }
 
 async function getHelpDesk (req, res) {
-    console.log("AJith")
   try {
     const { type } = req.body;
 

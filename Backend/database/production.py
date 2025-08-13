@@ -351,7 +351,7 @@ def insert_about_us():
 def insert_help_desk_sections():
     collection = db["help_desk"]
 
-    with open("/VEC_Web_Engine/help_desknew.json", "r", encoding="utf-8") as file:
+    with open("/VEC_Web_Engine/help_desk.json", "r", encoding="utf-8") as file:
         help_desk_data = json.load(file)
 
         
