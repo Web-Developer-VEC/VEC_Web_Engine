@@ -18,7 +18,7 @@ const HandbookButton = ({ year, pdfspath, onOpen }) => (
     onClick={() => onOpen(year, pdfspath)}
     className="flex items-center justify-center gap-2 px-6 py-4 
                rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium
-               hover:bg-yellow-600 shadow-md transition-all duration-200 no-underline cursor-pointer"
+               hover:bg-yellow-100 shadow-md transition-all duration-200 no-underline cursor-pointer"
   >
     <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
     {year}

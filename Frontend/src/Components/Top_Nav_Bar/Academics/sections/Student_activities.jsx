@@ -35,7 +35,7 @@ useEffect(() => {
 
   const interval = setInterval(() => {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  }, 5000);
+  }, 8000);
 
   return () => clearInterval(interval);
 }, [images, isPaused])
