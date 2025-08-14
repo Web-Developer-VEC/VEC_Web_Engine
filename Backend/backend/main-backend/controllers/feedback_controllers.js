@@ -46,21 +46,23 @@ async function submitFeedback(req, res) {
       port: 465,
       secure: true,
       auth: {
-        user: process.env.BASE_EMAIL, // ✅ Sender email
-        pass: process.env.BASE_EMAIL_PASSWORD // ✅ App password for sender
+        user: process.env.BASE_EMAIL, 
+        pass: process.env.BASE_EMAIL_PASSWORD 
       }
     });
 
     const mailOptions = {
-      from: `"VEC Feedback Bot" <${process.env.BASE_EMAIL}>`, // ✅ Sender name and email
-      to: process.env.FEEDBACK_TARGET_EMAIL, // ✅ Receiver email
-      subject: `🛠 New Feedback: ${err_sub}`,
+      from: `"VEC Feedback Bot" <${process.env.BASE_EMAIL}>`, 
+      to: process.env.FEEDBACK_TARGET_EMAIL, 
+      subject: `New Feedback: ${err_sub}`,
       html: `
-        <h3>📝 New Feedback Submitted</h3>
-        <p><strong>Subject:</strong> ${err_sub}</p>
-        <p><strong>Page:</strong> ${err_page}</p>
-        <p><strong>Description:</strong> ${err_descrp}</p>
-        <p><strong>Submitted At (IST):</strong> ${istDateTime}</p>
+        <div style="max-width:600px;margin:0 auto;padding:24px;background:#fff;border:1px solid #e0e0e0;font-family:'Segoe UI',Arial,sans-serif;color:#222;">
+          <h2 style="font-weight:700;margin-bottom:16px;border-bottom:1px solid #e0e0e0;padding-bottom:8px;">New Feedback Submitted</h2>
+          <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Subject:</span> ${err_sub}</p>
+          <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Page:</span> ${err_page}</p>
+          <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Description:</span> ${err_descrp}</p>
+          <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Submitted At (IST):</span> ${istDateTime}</p>
+        </div>
       `
     };
 

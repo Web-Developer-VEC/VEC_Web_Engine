@@ -1,6 +1,6 @@
 const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
-const ALLOWED_TYPES = require('../models/landing_models');
+const ALLOWED_TYPES = require('../models/landing/landing_models');
 
 function parseEventDate(dateStr) {
   const [day, month, year] = dateStr.split('-');

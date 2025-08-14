@@ -1,7 +1,7 @@
-const { getDb } = require('../config/db');
-const logError = require('../middlewares/logerror');
+const { getDb } = require("../config/db");
+const logError = require("../middlewares/logerror");
 
-function placement_Middleware(allowedTypes,collectionname) {
+function Middleware(allowedtypes,collectionname) {
   return async function (req, res, next) {
     try {
     const { type } = req.body;
@@ -9,8 +9,7 @@ function placement_Middleware(allowedTypes,collectionname) {
     if (!type || typeof type !== 'string') {
       return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
     }
-
-    if (!allowedTypes.has(type)) {
+    if (!allowedtypes.has(type)) {
       return res.status(400).json({ error:` "${type}" is not a valid admissions section `});//
     }
     const db = getDb();
@@ -24,19 +23,6 @@ function placement_Middleware(allowedTypes,collectionname) {
     if (!document) {
       return res.status(404).json({ message:` Section '${type}' not found` });
     }
-    if (type === 'alumini') {
-      const specialAnnouncementCollection = db.collection('landing_page_details');
-      const type = 'special_announcements';
-
-      const specialAnnouncement = await specialAnnouncementCollection.findOne(
-        { type },
-        { projection: { _id: 0, data: 1 } }
-      );
-
-      if (specialAnnouncement) {
-        mainDoc.special_announcement = specialAnnouncement;
-      }
-    }
 
     return res.status(200).json(document);
     next();
@@ -48,4 +34,5 @@ function placement_Middleware(allowedTypes,collectionname) {
   }
 }
 }
-module.exports=placement_Middleware;
+
+module.exports = Middleware;

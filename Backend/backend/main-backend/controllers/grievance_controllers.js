@@ -40,19 +40,18 @@ async function getGrievance (req, res)  {
             from: process.env.GRIEVANCE_BASE_EMAIL,
             to: process.env.GRIEVANCE_TARGET_EMAIL,
             subject: `New Grievance Submitted: ${category}`,
-            text:
-            `A new grievance has been submitted with the following details:
-
-            Name: ${name}
-            Email: ${email}
-            Contact Number: ${contact_number}
-            Query About: ${query_about}
-            Category: ${category}
-
-            Message:
-            ${content}
-
-            Please review and address this grievance as soon as possible.`
+            html: `
+              <div style="max-width:600px;margin:0 auto;padding:24px;background:#fff;border:1px solid #e0e0e0;font-family:'Segoe UI',Arial,sans-serif;color:#222;">
+                <h2 style="font-weight:700;margin-bottom:16px;border-bottom:1px solid #e0e0e0;padding-bottom:8px;">New Grievance Submitted</h2>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Name:</span> ${name}</p>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Email:</span> ${email}</p>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Contact Number:</span> ${contact_number}</p>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Query About:</span> ${query_about}</p>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Category:</span> ${category}</p>
+                <p style="font-size:16px;margin:12px 0;"><span style="font-weight:600;">Message:</span><br>${content}</p>
+                <p style="font-size:15px;margin-top:24px;">Please review and address this grievance as soon as possible.</p>
+              </div>
+            `
         };
         await transporter.sendMail(mailOptions);
 

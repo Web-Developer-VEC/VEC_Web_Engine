@@ -5,8 +5,7 @@ const cors = require('cors');
 // Define trusted frontend origins (adjust as per actual domains)
 const allowedOrigins = [
   'https://yourcollegefrontend.com', //add that local link for access and need to test this out, if it doesnt work, comment it
-  'http://localhost:5000',
-  'http://localhost:3000'
+  'http://localhost:5000'
 ];
 
 const corsOptions = {
