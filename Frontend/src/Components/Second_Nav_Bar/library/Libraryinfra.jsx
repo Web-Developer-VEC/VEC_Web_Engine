@@ -90,8 +90,8 @@ const LibrarySections = ({data, lib}) => {
         if (!data || !Array.isArray(data)) return null;
 
         // separate normal sections and image gallery
-        const normalSections = data.filter(sec => sec.category !== "Image_Gallery");
-        const imageGallery = data.find(sec => sec.category === "Image_Gallery");
+        const normalSections = data.filter(sec => sec.category !== "Image_Gallery" || []);
+        const imageGallery = data.find(sec => sec.category === "Image_Gallery" ||[]);
 
         return (
             <>
@@ -423,7 +423,6 @@ const LibrarySections = ({data, lib}) => {
             {  icon: "🏛" }
           ];
 
-          console.log(data);
           
         
           return (

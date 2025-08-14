@@ -3,9 +3,9 @@ import axios from "axios";
 import LoadComp from "../../LoadComp";
 
 const LIBMemb = ({ data }) => {
-  const members = data?.member_details || [];
-  const books = data?.no_of_books || [];
-  const cds = data?.periodical_back_volumes_cd || [];
+  const members = data.find(sec => sec.category === "Member Details")?.content ||[];
+  const books = data.find(sec => sec.category === "no_of_books")?.content ||[];
+  const cds = data.find(sec => sec.category === "periodical_back_volumes_cd")?.content ||[];
 
    if (!data) {
       return (
@@ -33,12 +33,12 @@ const LIBMemb = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {members.map((member, idx) => (
+            {members?.map((member, idx) => (
               <tr key={idx}>
                 <td className="border p-2">{idx + 1}</td>
                 <td className="border p-2">{member}</td>
-                <td className="border p-2">{books[idx]}</td>
-                <td className="border p-2">{cds[idx]}</td>
+                <td className="border p-2">{books?.[idx]}</td>
+                <td className="border p-2">{cds?.[idx]}</td>
               </tr>
             ))}
           </tbody>
