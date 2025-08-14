@@ -75,7 +75,7 @@ function IicEst({ data }) {
         </h1>
       </div>
 
-      <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="naac-info-panel-icc border-l-4 border-secd dark:border-drks dark:bg-drkb">
         <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
           Major Focus of IIC
         </h2>

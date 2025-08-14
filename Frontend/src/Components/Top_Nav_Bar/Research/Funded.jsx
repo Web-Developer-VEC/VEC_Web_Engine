@@ -22,8 +22,20 @@ export default function Funded({ theme, toggle }) {
     setSelectedPdf(null);
   };
 
-  // Detect if device is desktop
-  const isDesktop = () => window.innerWidth >= 1024;
+    const handlePdfClick = (course) => {
+    if (!course?.pdf_path || course.pdf_path.trim() === "") {
+      return; 
+    }
+
+    const url = UrlParser(course.pdf_path);
+    const pdfData = { url, name: course?.year };
+
+    if (window.innerWidth >= 1024) {
+      setSelectedPdf(pdfData);
+    } else {
+      window.open(url, "_blank");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,23 +75,12 @@ export default function Funded({ theme, toggle }) {
 
         <div className="course-selection-container p-12">
           {funded?.map((course, index) => {
-            const pdfUrl = UrlParser(course?.pdf_path);
+            const pdfUrl = course?.pdf_path ? UrlParser(course?.pdf_path) : '#';
             return (
               <div
                 key={index}
                 className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-                onClick={() => {
-                  if (pdfUrl) {
-                    if (isDesktop()) {
-                      setSelectedPdf({
-                        name: course?.year,
-                        url: pdfUrl,
-                      });
-                    } else {
-                      window.open(pdfUrl, "_blank");
-                    }
-                  }
-                }}
+                onClick={() => handlePdfClick(course)}
               >
                 {course?.year}
               </div>

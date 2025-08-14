@@ -138,18 +138,18 @@ const App = () => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const navigate = useNavigate();
     useGoogleAnalytics();
-
+    const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const responce = await axios.post('/api/main-backend/landing_page_data',
                     {
-                        type: "page_details"
+                        type: "landing_data"
                     }
                 );
     
-                setLandingData(responce.data.data[0]);
+                setLandingData(responce.data.data);
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
@@ -232,9 +232,9 @@ const App = () => {
                         <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                             <DynamicTitle/>
                             <Routes>
-                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
+                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData}/>}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
@@ -308,7 +308,7 @@ const App = () => {
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={footer?.[0]}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />
