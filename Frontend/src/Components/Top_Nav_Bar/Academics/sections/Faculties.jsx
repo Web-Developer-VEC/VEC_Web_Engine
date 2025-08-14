@@ -7,125 +7,81 @@ import LoadComp from "../../../LoadComp";
 
 const Faculties = ({ data }) => {
 
-    const [open, setopen] = useState(null);
-      const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-    const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-    };
-    
-    const Name = 'Previous Year Faculties';
-    const url = data?.previous_faculty_pdf_path
-  
-  const handleViewClick = (pdfUrl, name) => {
-    setopen({ url: pdfUrl, name });
-  };
-  
-  const closeModal = () => {
-    setopen(null);
-  };
-  
-  if (!data || !Array.isArray(data.faculty_members)) {
+  if (!data || !Array.isArray(data)) {
     return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
       <LoadComp />
   </div>
   }
 
-  const facultyArray = data.faculty_members?.filter(member => {
-    const idParts = member.unique_id?.split("-");
-    return idParts?.length >= 3 && ["01", "02", "03", "04"].includes(idParts[2]);
-  });
-
-  const SupportingStaffArray = data.faculty_members?.filter(member => {
-    const idParts = member.unique_id?.split("-");
-    return idParts?.length >= 3 && idParts[2] === "05";
-  });
+  const hod_details = data?.find((item) => item.category === "head_of_department")?.members || [];
+  const teaching_staff_details = data?.find((item) => item.category === "teaching_staff")?.members || [];
+  const non_teaching_staff_details = data?.find((item) => item.category === "non_teaching_staff")?.members || [];
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>
       <div className={styles.imageGallery + " w-full"}>
-        {facultyArray.length > 0 && (
           <div className={styles.fullWidthTile}>
             <ImageCard
-              key={facultyArray[0].unique_id || 0}
-              name={facultyArray[0].name}
-              photo={facultyArray[0].photo}
-              Designation={facultyArray[0].designation}
-              Scholar={facultyArray[0].profiles.google_scholar}
-              Research={facultyArray[0].profiles.research_gate}
-              Orchid={facultyArray[0].profiles.orchid}
-              Publon={facultyArray[0].profiles.publon}
-              Scopus={facultyArray[0].profiles.scopus}
-              Linkedin={facultyArray[0].profiles.linkedin}
+              key={hod_details?.[0]?.unique_id || 0}
+              name={hod_details?.[0]?.name}
+              photo={hod_details?.[0]?.image_path}
+              Designation={hod_details?.[0]?.designation}
+              Scholar={hod_details?.[0]?.socialmedia_links?.googlescholar}
+              Research={hod_details?.[0]?.socialmedia_links?.researchgate}
+              Orchid={hod_details?.[0]?.socialmedia_links?.orchidprofile}
+              Publon={hod_details?.[0]?.socialmedia_links?.publonprofile}
+              Scopus={hod_details?.[0]?.socialmedia_links?.scopus}
+              Linkedin={hod_details?.[0]?.socialmedia_links?.linkedin}
               firstTile={true}
-              uid={facultyArray[0].unique_id}
+              uid={hod_details?.[0]?.unique_id}
             />
           </div>
-        )}
-        {facultyArray?.length > 1 && (
-          <>
-            <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>
-            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
-              {facultyArray.slice(1).map((faculty, index) => (
-                <ImageCard
-                  key={faculty.unique_id || index}
-                  name={faculty.name}
-                  photo={faculty.photo}
-                  Designation={faculty.designation}
-                  Scholar={faculty.profiles.google_scholar}
-                  Research={faculty.profiles.research_gate}
-                  Orchid={faculty.profiles.orchid}
-                  Publon={faculty.profiles.publon}
-                  Scopus={faculty.profiles.scopus}
-                  Linkedin={faculty.profiles.linkedin}
-                  uid={faculty.unique_id}
-                />
-              ))}
-            </div>
-          </>
-        )}
-
-        {SupportingStaffArray?.length > 0 && (
-          <>
-            <h2 className={styles.faculty}>Non Teaching Staff</h2> 
-            <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4 bg-black-100'}>
-              {SupportingStaffArray?.map((faculty, index) => (
-                <ImageCard
-                  key={faculty.unique_id || index}
-                  name={faculty.name}
-                  photo={faculty.photo}
-                  Designation={faculty.designation}
-                  Scholar={faculty.profiles.google_scholar}
-                  Research={faculty.profiles.research_gate}
-                  Orchid={faculty.profiles.orchid}
-                  Publon={faculty.profiles.publon}
-                  Scopus={faculty.profiles.scopus}
-                  Linkedin={faculty.profiles.linkedin}
-                  uid={faculty.unique_id}
-                />
-              ))}
-            </div>       
-          </>
-        )}
-      </div>
-
-      {open && (
-              <div className={styles.pdfmodal}>
-                <div className={styles.pdfmodalcontent + " bg-prim dark:bg-drkp"}>
-                  <button className={styles.pdfclosebutton + " text-text bg-secd dark:bg-drks dark:text-drkt " +
-                      "hover:bg-accn hover:text-prim dark:hover:bg-drka"} onClick={closeModal}>
-                    <FontAwesomeIcon icon={faTimes} />
-                  </button>
-                  <h2 className={styles.facultyModalHeader}>{open.name}</h2>
-                  <iframe
-                    src={open.url}
-                    title={open.name}
-                    className={styles.pdfiframe}
-                  ></iframe>
-                </div>
+          {teaching_staff_details?.length > 0 && (
+            <>
+              <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>
+              <div className={styles.gridContainer + ' grid grid-cols-2 md:grid-cols-4'}>
+                {teaching_staff_details?.map((faculty, index) => (
+                  <ImageCard
+                    key={faculty?.unique_id || index}
+                    name={faculty?.name}
+                    photo={faculty?.image_path}
+                    Designation={faculty?.designation}
+                    Scholar={faculty?.socialmedia_links?.googlescholar}
+                    Research={faculty?.socialmedia_links?.researchgate}
+                    Orchid={faculty?.socialmedia_links?.orchidprofile}
+                    Publon={faculty?.socialmedia_links?.publonprofile}
+                    Scopus={faculty?.socialmedia_links?.scopus}
+                    Linkedin={faculty?.socialmedia_links?.linkedin}
+                    uid={faculty?.unique_id}
+                  />
+                ))}
               </div>
-            )}
-        </div>
+            </>
+          )}
+          {non_teaching_staff_details?.length > 0 && (
+            <>
+              <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Non Teaching Staff</h2>
+              <div className={`${styles.gridContainer} grid grid-cols-2 md:grid-cols-4 bg-black-100`}>
+                {non_teaching_staff_details?.map((faculty, index) => (
+                  <ImageCard
+                    key={faculty?.unique_id || index}
+                    name={faculty?.name}
+                    photo={faculty?.image_path}
+                    Designation={faculty?.designation}
+                    Scholar={faculty?.socialmedia_links?.googlescholar}
+                    Research={faculty?.socialmedia_links?.researchgate}
+                    Orchid={faculty?.socialmedia_links?.orchidprofile}
+                    Publon={faculty?.socialmedia_links?.publonprofile}
+                    Scopus={faculty?.socialmedia_links?.scopus}
+                    Linkedin={faculty?.socialmedia_links?.linkedin}
+                    uid={faculty?.unique_id}
+                  />
+                ))}
+              </div>       
+            </>
+          )}
+      </div>
+    </div>
   );
 };
 

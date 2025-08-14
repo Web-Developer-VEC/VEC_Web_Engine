@@ -1,0 +1,762 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "about_the_department_image_path": "/static/images/department_data/eie.webp",
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "Department of Electronics & Instrumentation Engineering is an advanced branch which deals with the application of existing scientific knowledge in electronics, instrumentation, measurements, control and automation of processes.",
+          " Started in the year 2002, the department of Electronics and Instrumentation Engineering is running a four year under graduate program accredited by NBA.",
+          "From inception, the department has grown in leaps and bounds with the state of art of infrastructure and lab facilities.",
+          "The program provides an opportunity to learn the technical skills thereby enhancing their technical competency and leadership qualities.",
+          "The graduates are having wide scope to get career opportunities in major process, energy, oil and natural gas industries as well as research opportunities in highly ranked institutes and universities within and outside the country."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To impart knowledge base and skill sets in the field of Electronics and Instrumentation by providing quality education and learning ambience for academic and research activities, leading to be a global competitor and preferred partner by the industry."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+          "To provide students with strong foundation in electronics, instrumentation and control engineering.",
+          "To enhance the core competency, leadership and managerial skills of the students to cater the industrial needs.",
+          "To cultivate adaption of ethics, morality and healthy practices in professional life towards serving the society at large",
+          "To facilitate graduate with Entrepreneurship skills.",
+          "To encourage faculty members and students to engage themselves in multidisciplinary research endeavors and keep abreast of current trends through continuing education."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Graduates will lead a successful career in the field of Instrumentation / Automation industries or allied industries or research or business organization."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Graduates will be able to adapt latest technological developments in the global scenario."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Graduates will exhibit professionalism and ethical attitude towards issues in the society at large."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Develop mathematical models of the industrial process and provide solutions for industrial automation systems "
+          },
+          {
+            "header": "PSO 2",
+            "content": "Design, implement, test and analyses embedded based instrumentation systems for monitoring and control."
+          },
+          {
+            "header": "PSO 3",
+            "content": "Empower the students to work on research platforms and instill entrepreneurship skills to work on a large industrial scale. "
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "008",
+            "name": "Dr. Brijet Z",
+            "department_name": "Electronics & Instrumentation Engineering (EIE)",
+            "unique_id": "VEC-008-01-130",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": [
+              "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
+            ],
+            "hod_image": "/static/images/hods/eie.webp",
+            "designation": "Professor & Head, Dept of Electronics & Instrumentation Engineering (EIE)",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/brijet-z-952880203",
+              "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=brijetz&oq=brijetz",
+              "researchgate": "https://www.researchgate.net/publications/create?publicationType=article",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56168883600"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [
+          {
+            "name": "Dr. BRIJET Z",
+            "designation": "Professor & Head",
+            "unique_id": "VEC-008-01-191",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/brijet-z-952880203",
+              "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=brijetz&oq=brijetz",
+              "researchgate": "https://www.researchgate.net/publications/create?publicationType=articlehttps://www.researchgate.net/publications/create?publicationType=article",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56168883600"
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-01-191.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+          {
+            "name": "Mr.DAYAKAR C V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-008-04-174",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-174.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. ANUSANKARI S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-008-04-128",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/anusankari-s-54964292",
+              "googlescholar": "https://scholar.google.co.in/citations?user=sBpqpIQAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Anusankari-Sivashanker-2/interest",
+              "orchidprofile": "https://orcid.org/0009-0007-0395-436X",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193494173"
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-128.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. SIVARAJ S N",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-008-04-172",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/s-n-sivaraj/",
+              "googlescholar": "https://scholar.google.com/citations?user=csVfv3AAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/S-N-Sivaraj-Pillai?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0000-0002-9965-1975",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. PADMA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-008-04-072",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/padma-s-905b15203/",
+              "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=GpWIfAQAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Spadma-Subramanian?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-072.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. JAYABHARATHI C",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-008-04-011",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/jaya-bharathi-a976a3121/",
+              "googlescholar": "https://scholar.google.com/citations?user=qjKU6soAAAAJ&hl=en&oi=sra",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-011.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [
+          {
+            "name": "Mr. VENKATESAN A",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-008-05-006",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-05-006.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr.GOKUL RAJ J",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-008-05-007",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-05-007.webp",
+            "resume_pdf": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/008/reg_21.pdf"
+              },
+              {
+                "year": "R - 2023",
+                "pdf_path": "/static/pdfs/curriculum/008/reg_23.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year":"2024",
+            "activities": [
+              {
+                "date": "4/7/2024",
+                "name_of_event": "EPIC'24 ",
+                "coordinator": "Dr. ANUSANKARI S",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/006/1.webp",
+                  "/static/images/dept_activities/008/2.webp"
+                ]
+              },
+              {
+                "date": "03 /08 /2024",
+                "name_of_event": "MEACON 2K24 -2.0 ",
+                "coordinator": "Dr. ANUSANKARI S",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/008/19.webp",
+                  "/static/images/dept_activities/008/15.webp",
+                  "/static/images/dept_activities/008/16.webp",
+                  "/static/images/dept_activities/008/17.webp",
+                  "/static/images/dept_activities/008/18.webp"
+                ]
+              }
+            ]
+          },
+          {
+            "year":"2023",
+            "activities": [
+              {
+                "date": "28/02/2023",
+                "name_of_event": "EPIC 2023 ",
+                "coordinator": "Mrs. PADMA S",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": [
+                  "/static/images/dept_activities/008/1.webp",
+                  "/static/images/dept_activities/008/2.webp",
+                  "/static/images/dept_activities/008/3.webp"
+                ]
+              },
+              {
+                "date": "25/03/2023",
+                "name_of_event": "SEMINAR ON ARTIFICIAL INTELLIGENCE IN AUTOMATION",
+                "coordinator": "Mr. RAJNARAIN B",
+                "resource_person": "",
+                "beneficiaries": "II & III Year Students",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/006/3.webp"]
+              },
+              {
+                "date": "10/01/2023",
+                "name_of_event": "MOU signed with YASHIKA INDUSTRIES",
+                "coordinator": "Dr. BRIJET Z",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/4.webp"]
+              },
+              {
+                "date": "3/4/2023",
+                "name_of_event": "WEBINAR ON “BEST RESEARCH AND INNOVATION PRACTICES",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/20.webp"]
+              },
+              {
+                "date": "6/4/2023",
+                "name_of_event": "SEMINAR ON AUTOMATION IN MANUFACTURING AND PROCESS INDUSTRIES",
+                "coordinator": "Mr. RAJNARAIN B",
+                "resource_person": "",
+                "beneficiaries": "II yr and III yr students",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/7.webp"]
+              },
+              {
+                "date": "18/04/2023",
+                "name_of_event": "INDUSTRIAL VISIT:RENAULT NISSAN AUTOMOTIVE INDIA PRIVATE LTD.,",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "III YR STUDENTS",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/21.webp"]
+              }
+            ]
+          },
+          {
+            "year":"2021",
+            "activities" :[
+              {
+                "date": "24/11/2021",
+                "name_of_event": "FIRST YEAR ORIENTATION PROGRAM FOR BATCH (2021 -2025)",
+                "coordinator": "Dr. BRIJET Z",
+                "resource_person": "",
+                "beneficiaries": "III YR STUDENTS",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/9.webp"]
+              }
+            ]
+          },
+          {
+            "year":"2020",
+            "activities": [
+              {
+                "date": "15/02/2020",
+                "name_of_event": "MEACON '20",
+                "coordinator": "Mrs. PADMA S",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/10.webp"]
+              },
+              {
+                "date": "11/01/2020",
+                "name_of_event": "EPIC'20",
+                "coordinator": "Dr. KANDASAMY K V",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/11.webp"]
+              }
+            ]
+          },
+          {
+            "year":"2019",
+            "activities" :[
+              {
+                "date": "29/03/2019",
+                "name_of_event": "National Conference on Trends in Instrumentation and Automation NCTIA-2019",
+                "coordinator": "Dr. RAVI V R",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/12.webp"]
+              },
+              {
+                "date": "11/01/19 - 12/01/19",
+                "name_of_event": "TWO DAY WORKSHOP ON SKILL APPROACH TO INDUSTRIAL CIRCUIT",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/13.webp"]
+              },
+              {
+                "date": "09/01/19",
+                "name_of_event": "ONE DAY SEMINAR ON Application of PLC-SCADA in Industrial Automation ",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/008/14.webp"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/008/1.webp",
+            "event_name": "EDII's Hackathon-2024  ",
+            "image_content": "Priya V, Anushaa J and Sivapriya B of Final year Electronics and Instrumentation Engineering students  have won 1st Runner up Position in EDII's Hackathon-2024  and received the Cash Prize of Rs. 25,000  from Honourable MSME Minister, Mr. Anbarasan at Anna University",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/2.webp",
+            "event_name": "NATIONAL ENTREPRENEURSHIP CONCLAVE 2.0",
+            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE 41ST POSITION (TOP 50) OUT OF 170 TEAMS AND WON CASH AWARD OF RS. 5,000/- AT  NATIONAL ENTREPRENEURSHIP CONCLAVE 2.0BY LEAD COLLEGE OF MANAGEMENT, DHONI, PALAKKAD, KERALA",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/3.webp",
+            "event_name": "Computational Intelligence and Industry 5.0",
+            "image_content": "Anushaa J, Chandrika Devi V, Priya V  of III YR EIE presented a paper in International Conference on “Computational Intelligence and Industry 5.0” conducted by Velammal Institute of Technology in the title “Integrated Non-Invasive Continuous Blood Glucose, SPO2 and BPM Monitoring” and won best paper Award",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/4.webp",
+            "event_name": "Zone -I Tournament ",
+            "image_content": "KARTHIKEYAN R and RUPAK S R  of II YEAR EIE are in  Kho Kho men Team who won Zone -I Tournament held at Prathyusha Engineering college, Thiruvallur",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/5.webp",
+            "event_name": "Paper Presentation",
+            "image_content": "DINESH KUMAR J, PRIYA V, PRATHEEP S of III YR EIE won First Prize with cash award of Rs. 1500/- in paper presentation held at Madras Institute of Technology ",
+            "date": "2024-03-16"
+          },
+          {
+            "image_path": "/static/images/student_activities/008/6.webp",
+            "event_name": "Innomasters'24 Business Model Event ",
+            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE won 1st prize with cash award of Rs 25,000  in the Innomasters'24 Business Model Event conducted by vel tech University, Avadi",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/7.webp",
+            "event_name": "MODEL PRESENTATION ",
+            "image_content": "PRIYA V, MALINI R, ANUSAHAA J OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN MODEL PRESENTATION CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM ",
+            "date": "2023-11-04"
+          },
+          {
+            "image_path": "/static/images/student_activities/008/8.webp",
+            "event_name": "STARTUP SHOWCASE ",
+            "image_content": "PRIYA V AND MALINI R OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN STARTUP SHOWCASE CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM ",
+            "date": "2023-11-04"
+          },
+          {
+            "image_path": "/static/images/student_activities/008/9.webp",
+            "event_name": "PAPER PRESENTATION ",
+            "image_content": "CHANDRIKA DEVI V AND PRIYA V OF III YEAR WON SECOND PRIZE WITH CASH AWARD OF RS. 2,000/-   IN PAPER PRESENTATION CONDUCTED BY ST. JOSEPH'S INSTITUTE OF TECHNOLOGY ",
+            "date": "2023--08-05"
+          },
+          {
+            "image_path": "/static/images/student_activities/008/10.webp",
+            "event_name": "ZONALS FOOTBALL MATCH ",
+            "image_content": "ENITH AUSTIN OF III YR WON ANNA UNIVERSITY ZONALS FOOTBALL MATCH AT VEL TECH HIGH TECH, AVADI ",
+            "date": "2023-10-11"
+          },
+          {
+            "image_path": "/static/images/student_activities/008/11.webp",
+            "event_name": "INTERZONAL TAEKWONDO TOURNAMENT ",
+            "image_content": "RUPAK OF II YR WON GOLD MEDAL IN INTERZONAL TAEKWONDO TOURNAMENT AND GOT SELECTED TO NATIONALS ",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/008/12.webp",
+            "event_name": "Indian International Science Festival IISF-2021",
+            "image_content": "Mr. S. PraveenKumar of Final year EIE Student won 2nd prize in the event Indian International Science Festival IISF-2021, held at Goa",
+            "date": "2021-12-12"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/008/1.webp",
+            "image_name": "VIRTUAL INSTRUMENTATION CENTRE",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/2.webp",
+            "image_name": "PROCESS CONTROL LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/3.webp",
+            "image_name": "R&D LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/4.webp",
+            "image_name": "DEPARTMENT LIBRARY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/5.webp",
+            "image_name": "MICROPROCESSOR AND MICROCONTROLLER LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/6.webp",
+            "image_name": "CIRCUITS AND DEVICES LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/008/7.webp",
+            "image_name": "INSTRUMENTATION LABORATORY",
+            "image_content": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            "S_NO": 1,
+            "ORGANISATION_NAME": "SREE TECHNOLOGIES",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "Life Time",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 2,
+            "ORGANISATION_NAME": "ENSOLT PRIVATE LIMITED",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "Life Time",
+            "LOGO_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 3,
+            "ORGANISATION_NAME": "YASHIKA INDUSTRIES",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "Life Time",
+            "LOGO_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Electronics & Instrumentation Engineering (EIE)",
+            "dept_id": "008"
+          }
+        ]
+      }
+    ]
+  }
+]

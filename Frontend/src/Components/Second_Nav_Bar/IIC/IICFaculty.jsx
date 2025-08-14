@@ -1,5 +1,5 @@
 import React from 'react';
-import '../YRC.css';
+import '../yrc/YRC.css';
 import './IICFaculty.css'
 import LoadComp from '../../LoadComp';
 

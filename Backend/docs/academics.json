@@ -1,0 +1,190 @@
+[
+  {
+    "type": "academic_calendar",
+    "data": [
+      {
+        "year": "Academic Year 2022-2023",
+        "pdf_path": [
+          "/static/pdfs/calendar/2022-2023/odd.pdf",
+          "/static/pdfs/calendar/2022-2023/even.pdf"
+        ]
+      },
+      {
+        "year": "Academic Year 2023-2024",
+        "pdf_path": [
+          "/static/pdfs/calendar/2023-2024/odd.pdf",
+          "/static/pdfs/calendar/2023-2024/even.pdf"
+        ]
+      },
+      {
+        "year": "Academic Year 2024-2025",
+        "pdf_path": [
+          "/static/pdfs/calendar/2024-2025/odd.pdf",
+          "/static/pdfs/calendar/2024-2025/even.pdf"
+        ]
+      },
+      {
+        "year": "Academic Year 2025-2026",
+        "pdf_path": ["/static/pdfs/calendar/2025-2026/odd.pdf"]
+      }
+    ]
+  },
+  {
+    "type": "programmes_list",
+    "data": [
+      {
+        "category": "UG Programmes",
+        "content": [
+          {
+            "name": "B.E. Automobile Engineering",
+            "link": "/dept/002"
+          },
+          {
+            "name": "B.E. Civil Engineering",
+            "link": "/dept/004"
+          },
+          {
+            "name": "B.E. Computer Science and Engineering",
+            "link": "/dept/005"
+          },
+          {
+            "name": "B.E. Computer Science and Engineering (Cyber Security)",
+            "link": "/dept/006"
+          },
+          {
+            "name": "B.E. Electrical and Electronics Engineering",
+            "link": "/dept/007"
+          },
+          {
+            "name": "B.E. Electronics and Communication Engineering",
+            "link": "/dept/009"
+          },
+          {
+            "name": "B.E. Electronics and Instrumentation Engineering",
+            "link": "/dept/008"
+          },
+          {
+            "name": "B.E. Mechanical Engineering",
+            "link": "/dept/013"
+          },
+          {
+            "name": "B.Tech. Artificial Intelligence and Data Science",
+            "link": "/dept/001"
+          },
+          {
+            "name": "B.Tech. Information Technology",
+            "link": "/dept/011"
+          }
+        ]
+      },
+      {
+        "category": "PG Programmes",
+        "content": [
+          {
+            "name": "M.E. Computer Science Engineering",
+            "link": "/dept/016"
+          },
+          {
+            "name": "M.E. Power Systems Engineering",
+            "link": "/dept/018"
+          },
+          {
+            "name": "M.B.A Master of Business Administration",
+            "link": "/dept/017"
+          }
+        ]
+      },
+      {
+        "category": "Ph.D - Programmes",
+        "content": [
+          {
+            "name": "Computer Science and Engineering",
+            "link": "/dept/005"
+          },
+          {
+            "name": "Electrical and Electronics Engineering",
+            "link": "/dept/007"
+          },
+          {
+            "name": "Electronics and Communication Engineering",
+            "link": "/dept/009"
+          },
+          {
+            "name": "Information Technology",
+            "link": "/dept/011"
+          },
+          {
+            "name": "Mechanical Engineering",
+            "link": "/dept/013"
+          },
+          {
+            "name": "Physics",
+            "link": "/dept/015"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "departments_list",
+    "data": [
+      {
+        "category": "UG Programmes",
+        "content": [
+          { "name": "B.E. Automobile Engineering", "link": "/dept/002" },
+          { "name": "B.E. Civil Engineering", "link": "/dept/004" },
+          {
+            "name": "B.E. Computer Science and Engineering",
+            "link": "/dept/005"
+          },
+          {
+            "name": "B.E. Computer Science and Engineering (Cyber Security)",
+            "link": "/dept/006"
+          },
+          {
+            "name": "B.E. Electrical and Electronics Engineering",
+            "link": "/dept/007"
+          },
+          {
+            "name": "B.E. Electronics and Communication Engineering",
+            "link": "/dept/009"
+          },
+          {
+            "name": "B.E. Electronics and Instrumentation Engineering",
+            "link": "/dept/008"
+          },
+          { "name": "B.E. Mechanical Engineering", "link": "/dept/013" },
+          {
+            "name": "B.Tech. Artificial Intelligence and Data Science",
+            "link": "/dept/001"
+          },
+          { "name": "B.Tech. Information Technology", "link": "/dept/011" }
+        ]
+      },
+      {
+        "category": "PG Programmes",
+        "content": [
+          {
+            "name": "M.E. Computer Science & Engineering",
+            "link": "/dept/005"
+          },
+          { "name": "M.E. Power System Engineering", "link": "/dept/007" },
+          {
+            "name": "M.B.A. Master of Business Administration",
+            "link": "/dept/017"
+          }
+        ]
+      },
+      {
+        "category": "Science & Humanities",
+        "content": [
+          { "name": "Chemistry", "link": "/dept/003" },
+          { "name": "English", "link": "/dept/010" },
+          { "name": "Mathematics", "link": "/dept/012" },
+          { "name": "Physics", "link": "/dept/015" },
+          { "name": "Tamil", "link": "/dept/014" }
+        ]
+      }
+    ]
+  }
+]
