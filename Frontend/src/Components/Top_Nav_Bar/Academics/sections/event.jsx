@@ -16,7 +16,6 @@ import LoadComp from "../../../LoadComp";
 const EventOrg = ({ data }) => {
   const [yearData, setYearData] = useState([]);
   const department_eventorg = data?.find((item) => item.category === "department_event")?.content || [];
-  console.log(department_eventorg);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
