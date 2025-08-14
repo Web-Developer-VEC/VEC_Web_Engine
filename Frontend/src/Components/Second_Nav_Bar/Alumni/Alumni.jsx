@@ -1,9 +1,9 @@
 import React, { useState,useEffect,useCallback} from "react";
-import Banner from "../Banner";
+import Banner from "../../Banner";
 import "./Alumni.css";
 import axios from "axios";
-import star from "../Assets/championship.gif";
-import LoadComp from "../LoadComp";
+import star from "../../Assets/championship.gif";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
 

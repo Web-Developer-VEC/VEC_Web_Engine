@@ -678,6 +678,10 @@
   .iic-card {
     padding: 0.75rem;
   }
+  .naac-info-panel{
+    width: 88% !important;
+    margin-bottom: 3vh !important;
+  }
 }
 
 @media screen and (max-width: 430px){

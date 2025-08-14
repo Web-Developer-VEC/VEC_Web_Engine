@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
-import Banner from "../Banner";
+import Banner from "../../Banner";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "./YRC.css";
 import axios from "axios";
-import SideNav from "./SideNav";
+import SideNav from "../SideNav";
 import "swiper/css";
 import "swiper/css/navigation";
-import LoadComp from "../LoadComp";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
 

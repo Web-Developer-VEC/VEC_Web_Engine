@@ -141,81 +141,102 @@
   },
   {
     "type": "membership_details",
-    "data": {
-      "member_details": [
-        "Professors, Associate Professors and Assistant Professors",
-        "JRF/Research Scholars",
-        "UG Students",
-        "PG Students",
-        "Skilled Non-Teaching Staff"
-      ],
-      "no_of_books": ["8", "6", "6", "6", "3"],
-      "periodical_back_volumes_cd": ["1", "1", "1", "1", "1"]
-    }
+    "data": [
+      {
+        "category": "Member Details",
+        "content": [
+          "Professors, Associate Professors and Assistant Professors",
+          "JRF/Research Scholars",
+          "UG Students",
+          "PG Students",
+          "Skilled Non-Teaching Staff"
+        ]
+      },
+      {
+        "category": "no_of_books",
+        "content": ["8", "6", "6", "6", "3"]
+      },
+      {
+        "category": "periodical_back_volumes_cd",
+        "content": ["1", "1", "1", "1", "1"]
+      }
+    ]
   },
   {
     "type": "Collection",
-    "data": {
-      "Free_EBooks_Download_Websites": [
-        "University of Pennsylvania",
-        "Project Gutenberg",
-        "Free e-books",
-        "Free Tech Books",
-        "Campus Books",
-        "University of Virginia e-Book Library",
-        "NAP Open Book",
-        "Internet Public Library",
-        "Direct Textbook",
-        "e-Books",
-        "e-Books Palace",
-        "Electronic Library of Mathematics"
-      ],
-      "Anti_Plagiarism_Scanner_Software": [
-        "CopyCatch",
-        "TurnItOut",
-        "Eve",
-        "Plagiarism.com",
-        "Copyscape",
-        "CodeMatch (CodeSuite)",
-        "ArticleChecker",
-        "PlagiarismDetect.com",
-        "Duplichecker",
-        "Small SEO Tools",
-        "ScanMyEssay & Viper & WCopyFind"
-      ],
-      "Our_Collections": [
-        "no_of_books",
-        "no_of_titles",
-        "General Bank Books",
-        "SC/ST Book Bank Books",
-        "e-Books",
-        "Journals",
-        "International",
-        "National",
-        "CD's",
-        "Video Cassettes",
-        "Journal Back Volumes",
-        "Student Project Reports",
-        "Online Journals Package",
-        "Magazine And NewsPapers"
-      ],
-      "Total": [
-        "78070",
-        "25271",
-        "1818",
-        "984",
-        "4373",
-        "180",
-        "87",
-        "93",
-        "3930",
-        "127",
-        "2768",
-        "3986",
-        "9517",
-        "10"
+      "data": [
+        {
+          "category": "Free EBooks Download Websites",
+          "content" : [
+            "University of Pennsylvania",
+            "Project Gutenberg",
+            "Free e-books",
+            "Free Tech Books",
+            "Campus Books",
+            "University of Virginia e-Book Library",
+            "NAP Open Book",
+            "Internet Public Library",
+            "Direct Textbook",
+            "e-Books",
+            "e-Books Palace",
+            "Electronic Library of Mathematics"
+          ]
+        },
+        {
+          "category":"Anti Plagiarism Scanner Software",
+          "content": [
+            "CopyCatch",
+            "TurnItOut",
+            "Eve",
+            "Plagiarism.com",
+            "Copyscape",
+            "CodeMatch (CodeSuite)",
+            "ArticleChecker",
+            "PlagiarismDetect.com",
+            "Duplichecker",
+            "Small SEO Tools",
+            "ScanMyEssay & Viper & WCopyFind"
+          ]
+        },
+        {
+          "category": "Our Collections",
+          "content": [
+            "no_of_books",
+            "no_of_titles",
+            "General Bank Books",
+            "SC/ST Book Bank Books",
+            "e-Books",
+            "Journals",
+            "International",
+            "National",
+            "CD's",
+            "Video Cassettes",
+            "Journal Back Volumes",
+            "Student Project Reports",
+            "Online Journals Package",
+            "Magazine And NewsPapers"
+          ]
+        },
+        {
+          "category": "Total",
+          "content": [
+            "78070",
+            "25271",
+            "1818",
+            "984",
+            "4373",
+            "180",
+            "87",
+            "93",
+            "3930",
+            "127",
+            "2768",
+            "3986",
+            "9517",
+            "10"
+          ]
+        }
       ]
-    }
   },
   {
     "type": "library_services",

@@ -16,7 +16,7 @@ const LIBHod = ({data}) => {
   }
 
   return (
-    <article className="flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center">
+    <article className="flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins]">
       <div className="w-full md:w-1/8 flex justify-center">
         <img
           className="w-auto h-60"
@@ -29,7 +29,7 @@ const LIBHod = ({data}) => {
         <h2 className="text-2xl font-semibold" style={{ fontSize: '1.4rem' }}>{data.name}</h2>
         <p className="text-lg text-accn dark:text-drka mb-2">{data.designation}</p>
         <p className="text-md mb-2 text-brwn dark:text-drka">{data.education_qualification}</p>
-        <p className="text-xl sm:text-justify-center text-justify">{data.message}</p>
+        <p className="text-sm text-lg sm:text-justify-center text-justify">{data.message}</p>
       </div>
     </article>
   );

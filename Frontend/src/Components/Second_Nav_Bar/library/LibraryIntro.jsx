@@ -39,7 +39,7 @@ const LibraryIntro = ({about}) => {
         </div>
       ) : (
 
-      <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10">
+      <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10 font-[Poppins]">
           <div className="max-w-7xl self-start basis-full w-full rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
               {/* Text Content */}
               <div

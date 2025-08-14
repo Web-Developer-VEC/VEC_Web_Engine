@@ -16,7 +16,7 @@ const LIBFacl = ({faculty}) => {
       
           {faculty ? (
 
-        <div className="py-16 px-6">
+        <div className="py-16 px-6 font-[Poppins]">
           <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-4 text-center">
             Staff
           </h2>

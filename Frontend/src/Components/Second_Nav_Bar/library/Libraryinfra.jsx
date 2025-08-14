@@ -24,7 +24,7 @@ const LibrarySections = ({data, lib}) => {
         return (
         <>
             {Array.isArray(data) && (
-            <div className="overflow-x-auto mt-10 px-4 sm:px-8 py-10">
+            <div className="overflow-x-auto mt-10 px-4 sm:px-8 py-10 font-[Poppins]">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] dark:text-drkt text-center mb-8">
                 Some of E-books Download Websites
                 </h2>
@@ -70,7 +70,7 @@ const LibrarySections = ({data, lib}) => {
                         <p className="basis-full text-2xl font-poppins text-accn dark:text-drkt font-semibold">LIBRARY ADVISORY COMMITTEE
                             MEMBERS</p>
                         {data?.map((adv, i) => (
-                            <div className={`basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drks
+                            <div className={`md:basis-2/5 grow py-2 px-4 rounded-xl hover:border-l-4 border-secd dark:border-drks
                                 bg-[color-mix(in_srgb,theme(colors.prim)_95%,black)]
                                 dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] 
                                 transition-colors duration-300 ease-in`} key={i}>

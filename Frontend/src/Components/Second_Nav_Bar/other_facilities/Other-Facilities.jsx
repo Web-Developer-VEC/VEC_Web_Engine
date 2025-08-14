@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Other-Facilities.css";
-import Banner from "../Banner";
-import LoadComp from "../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import axios from "axios";
 import { useNavigate } from "react-router";
 

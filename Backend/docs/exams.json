@@ -3,7 +3,7 @@
     "type": "COE",
     "data": [
       {
-        "title": "COE",
+        "category": "COE",
         "members": [
           {
             "name": "Dr. SRINATH S",
@@ -14,7 +14,7 @@
         ]
       },
       {
-        "title": "Deputy COE",
+        "category": "Deputy COE",
         "members": [
           {
             "name": "Dr. ANGALA PARAMESWARI G",
@@ -25,7 +25,7 @@
         ]
       },
       {
-        "title": "Co-ordinator – Internal Examinations",
+        "category": "Co-ordinator – Internal Examinations",
         "members": [
           {
             "name": "Dr. GURUSAMY P",
@@ -36,7 +36,7 @@
         ]
       },
       {
-        "title": "COE Staffs",
+        "category": "COE Staffs",
         "members": [
           {
             "name": "Mrs. MANJULA U",

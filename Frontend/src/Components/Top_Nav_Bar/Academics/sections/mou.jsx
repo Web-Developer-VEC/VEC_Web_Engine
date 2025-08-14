@@ -9,7 +9,7 @@ const MOU = ({ data }) => {
       {mous_details?.length > 0 ? (
         <>       
           <div className="mou-header">
-            <h1 className="text-accn dark:text-drkt">Memorandum of Understanding (MOU)</h1>
+            <h1 className="text-accn dark:text-drkt font-bold">Memorandum of Understanding (MOU)</h1>
           </div>
 
           <div className="mou-details">

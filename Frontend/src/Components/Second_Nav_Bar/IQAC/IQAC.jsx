@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useRef} from "react";
 import "./IQAC.css";
-import Banner from "../Banner";
+import Banner from "../../Banner";
 import axios from "axios";
-import SideNav from "./SideNav";
-import LoadComp from "../LoadComp";
+import SideNav from "../SideNav";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
 
