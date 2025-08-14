@@ -169,7 +169,7 @@
       { "id": "Faculties", "hascontent": true },
       { "id": "Syllabus", "hascontent": true },
       { "id": "NewsLetter", "hascontent": true },
-      { "id": "Activities", "hascontent": false },
+      { "id": "Activities", "hascontent": true },
       { "id": "StudentAchievments", "hascontent": true },
       { "id": "Infrastructure", "hascontent": true },
       { "id": "Mous", "hascontent": true },
