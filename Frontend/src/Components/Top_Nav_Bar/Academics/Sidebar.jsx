@@ -11,7 +11,9 @@ import {
   FaFlask,
   FaEye,
   FaNewspaper,
+  FaCalendarAlt
 } from "react-icons/fa";
+import { MdEvent } from "react-icons/md";
 import styles from "./HeadDepartment.module.css";
 
 const iconMap = {
@@ -23,6 +25,7 @@ const iconMap = {
     "Activities": <FaTasks className={styles.icon + " text-secd dark:text-drks"} />,
     "StudentAchievments": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
     "SupportingStaff": <FaUsers className={styles.icon + " text-secd dark:text-drks"} />,
+    // "EventOrg": <MdEvent className={styles.icon + " text-secd dark:text-drks"} />,
     "Mous": <FaHandshake className={styles.icon + " text-secd dark:text-drks"} />,
     "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />,
     "NewsLetter": <FaNewspaper className={styles.icon + " text-secd dark:text-drks"} />,
@@ -36,6 +39,7 @@ const displayNameMap = {
   "Syllabus": "Curriculum & Syllabus",
   "Infrastructure": "Infrastructure",
   "Activities": "Department Activities",
+  "EventOrg":"Event Organizer",
   "StudentAchievments": "Student Achievements",
   "SupportingStaff": "Supporting Staff",
   "Mous": "MOUs",

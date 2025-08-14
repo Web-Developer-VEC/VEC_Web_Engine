@@ -12,6 +12,7 @@ import ImageCarousel from "./sections/Student_activities";
 import CurriculumPage from "./sections/CurriculamPage";
 import MOU from "./sections/mou";
 import Research from "./sections/RD";
+import EventOrg from "./sections/event";
 import Conference from "./sections/Conference";
 import styles from "./HeadDepartment.module.css";
 import college from "../../Assets/college.jpeg";
@@ -187,6 +188,8 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":
         return <ImageCarousel data={sectionData} />;
+      // case "EventOrg":
+      //   return <EventOrg data={sectionData} />;
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
