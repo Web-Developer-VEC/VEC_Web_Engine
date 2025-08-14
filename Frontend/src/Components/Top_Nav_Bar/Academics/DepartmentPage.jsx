@@ -19,7 +19,6 @@ import college from "../../Assets/college.jpeg";
 import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import EventOrg from "./sections/event";
 
 const DepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
@@ -188,8 +187,6 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":
         return <ImageCarousel data={sectionData} />;
-      // case "EventOrg":
-      //   return <EventOrg data={sectionData} />;
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
