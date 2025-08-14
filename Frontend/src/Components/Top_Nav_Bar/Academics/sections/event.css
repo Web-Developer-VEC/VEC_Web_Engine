@@ -13,7 +13,7 @@ body {
 }
 
 /* Page Container */
-.event-page {
+.deptevent-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +23,13 @@ body {
 }
 
 /* Intro Section */
-.event-intro {
+.deptevent-intro {
   text-align: center;
   margin-bottom: 40px;
   animation: fadeIn 1s ease-in-out;
 }
 
-.event-header {
+.deptevent-header {
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
@@ -42,7 +42,7 @@ body {
 }
 
 /* Year Buttons */
-.event-years-horizontal {
+.deptevent-years-horizontal {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -50,7 +50,7 @@ body {
   margin-top: 30px;
 }
 
-.event-year-button {
+.deptevent-year-button {
   padding: 12px 30px;
   font-size: 1rem;
   font-weight: 600;
@@ -61,19 +61,19 @@ body {
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
-.event-year-button.active {
+.deptevent-year-button.active {
   /*background: linear-gradient(135deg, #fca225, #cbb811);*/
   transform: scale(1.1);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.event-year-button:hover {
+.deptevent-year-button:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Actions Section */
-.event-year-actions {
+.deptevent-year-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
@@ -81,7 +81,7 @@ body {
   width: 100%;
 }
 
-.event-action-button {
+.deptevent-action-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,31 +94,31 @@ body {
   border: 2px solid transparent;
 }
 
-.event-action-button:hover {
+.deptevent-action-button:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
   border-color: #fca225;
 }
 
-.event-action-button svg {
+.deptevent-action-button svg {
   font-size: 2.5rem;
   color: #cbb811; /* Icon color */
   margin-bottom: 12px;
 }
 
-.event-action-button span {
+.deptevent-action-button span {
   font-size: 1rem;
   font-weight: 600;
   color: #333;
 }
 
 /* Add subtle animation for hovering */
-.event-action-button:hover svg {
+.deptevent-action-button:hover svg {
   transform: rotate(20deg);
   transition: transform 0.3s ease;
 }
 
-.event-back-button {
+.deptevent-back-button {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
@@ -132,16 +132,16 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.event-back-button:hover {
+.deptevent-back-button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.event-back-button:active {
+.deptevent-back-button:active {
   transform: translateY(1px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.event-back-button .fa-arrow-left {
+.deptevent-back-button .fa-arrow-left {
   margin-right: 8px;
 }
 
@@ -159,12 +159,12 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .event-year-actions {
+  .deptevent-year-actions {
     grid-template-columns: 1fr;
     gap: 15px;
   }
 
-  .event-year-button {
+  .deptevent-year-button {
     font-size: 1rem;
     padding: 10px 20px;
   }

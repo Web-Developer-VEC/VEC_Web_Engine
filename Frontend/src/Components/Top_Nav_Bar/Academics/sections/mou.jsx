@@ -3,12 +3,13 @@ import "./mou.css";
 import LoadComp from "../../../LoadComp";
 
 const MOU = ({ data }) => {
+  const mous_details = data?.find((item) => item.category === "mous_details")?.content || [];
   return (
     <div className="mou-page">
-      {data?.MOUs?.length > 0 ? (
+      {mous_details?.length > 0 ? (
         <>       
           <div className="mou-header">
-            <h1 className="text-accn dark:text-drkt">Memorandum of Understanding (MOU)</h1>
+            <h1 className="text-accn dark:text-drkt font-bold">Memorandum of Understanding (MOU)</h1>
           </div>
 
           <div className="mou-details">
@@ -24,12 +25,16 @@ const MOU = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.MOUs?.map((detail, index) => (
+                  {mous_details?.map((detail, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{detail.ORGANISATION_NAME}</td>
-                      <td>{detail.MONTH_AND_YEAR}</td>
-                      <td>{detail.VALIDITY}</td>
+                      <td>{detail?.ORGANISATION_NAME}</td>
+                      <td>{detail?.MONTH_AND_YEAR}</td>
+                      {detail?.VALIDITY ? (
+                        <td>{detail?.VALIDITY}</td>
+                      ) : (
+                        <td className="text-center">-</td>
+                      )}
                       {/* <td>
                         {detail.ACTIVITIES_PLANNED.join(", ")}
                       </td> */}
