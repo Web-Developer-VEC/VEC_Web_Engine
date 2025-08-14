@@ -34,7 +34,7 @@ function placement_Middleware(allowedTypes,collectionname) {
       );
 
       if (specialAnnouncement) {
-        mainDoc.special_announcement = specialAnnouncement;
+        document.special_announcement = specialAnnouncement;
       }
     }
 
