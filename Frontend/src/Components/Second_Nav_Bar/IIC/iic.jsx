@@ -30,8 +30,8 @@ function IicHome({ data }) {
 
   return (
     <div>
-      <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 ">Home</h1>
-    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto">
+      <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 font-bold">Home</h1>
+    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto text-sm md:text-base">
       <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
         About IIC
       </h2>
@@ -75,7 +75,7 @@ function IicEst({ data }) {
         </h1>
       </div>
 
-      <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="naac-info-panel-icc border-l-4 border-secd dark:border-drks dark:bg-drkb">
         <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
           Major Focus of IIC
         </h2>

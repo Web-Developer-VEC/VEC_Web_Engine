@@ -1,0 +1,1044 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/mech.webp",
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "Mechanical Engineering is the only branch of engineering that can fit into any kind of industries, is the oldest engineering disciplines and an extremely diverse profession. Mechanical engineers are inherently multi-disciplinary and having wide range of career choices. Manufacturing has emerged as one of the high growth sectors in India.  Government aims to create 100 million new jobs in the sector in near future.The Department of Mechanical Engineering at Velammal Engineering College, Chennai started its journey in the year 1999. We have a strong undergraduate program in mechanical engineering. The Department has a distinguished record in both teaching and research. The Department is committed to provide knowledge creation, innovation and research among the students to meet challenges in Mechanical Engineering Field.  Minor degree in the area of Electric vehicle Technology and Data Science, and honours degree in the area of Robotics and Automation are offered to Mechanical Engineering Students.The department is accredited by National Board of Accreditation (NBA), New Delhi is recognized as the Nodal Research Centre by Anna University, Chennai.  Our Alumni play key role in different industrial, academic and Government organizations. The department providing value based holistic development for each student."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+         "Producing competent Mechanical Engineers by imparting quality education blended with human values, as potential contributors to the industrial development of the nation leading to the well being of the future generation."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+            "Imparting quality education to the students in core areas with moral values through our dedicated team.",
+            "Promoting research and development by giving hands on experience of state of the art facilities.",
+            "Providing platform for the students to explore their innovative and creative skills.",
+            "Promoting activities to cultivate the spirit of entrepreneurship to the students.",
+            "Empowering the students in organizing events to gain experience in team work and leadership qualities.",
+            "Preparing the students for their role as Engineers in society with an awareness of ethical, environmental, economic, safety and quality issues"
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content":"Successful profession in Mechanical or allied Industries or Research/Academics or business enterprise."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Attitudes and abilities of leaders to adapt to the changing global scenario."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Good professional personality and ethical values to lead as good human beings, responsible citizens and competent professionals."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content":  "Graduates will have an ability to identify, formulate and analyze the problems related to design, manufacturing, thermal and materials engineering"
+          },
+          {
+            "header": "PSO 2",
+            "content": "Graduates will have an ability to implement/use appropriate techniques, programming skills, and latest/recent computer aided engineering tools/packages for modelling, simulation and analysis of mechanical engineering problems."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechancial Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "013",
+            "name": "Dr. GANAPATHY SUNDARAM E",
+            "department_name": "Mechancial Engineering (MECH)",
+            "unique_id": "VEC-013-01-160",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": [
+              "The department of Mechanical Engineering is designed to facilitate for teaching and research in the area of Thermal and Energy, Design and Manufacturing, Material Science, Mechatronics, Industrial automation and Industrial Engineering. A highly skilled, well qualified and motivated team of 20 faculty members, including 10 Doctorates and 9 are pursuing Doctorate, imparts quality education to students and support them to reach greater heights. Faculty members support the students to do various industrial projects, innovative projects carried out through funds received from various government agencies like DST New Gen IEDC, Tamilnadu State Council for Science and Technology, Indian Society for Refrigeration and Air Conditioning etc. A separate project lab facility is established to support the students to get various hands on skill, carryout different project work in the curriculum and support to participate various student’s events. The department regularly organizes events to promote higher studies and entrepreneurship among the students. The department also offering Honours and minor degree to students in emerging thrust areas."
+            ],
+            "hod_image": "/static/images/hods/mech.webp",
+            "designation": "Professor & Head, Dept of Mechanical Engineering",
+            "Social_media_links": {
+             "linkedin": "https://www.linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204/?originalSubdomain=in",
+              "googlescholar": "https://scholar.google.com/citations?user=PrLAIusAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/scientific-contributions/E-Ganapathy-Sundaram-2069766762",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [{
+            "name":"Dr. GANAPATHY SUNDARAM E",
+            "designation":"Professor & Head",
+            "unique_id":"VEC-013-01-203",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204/?originalSubdomain=in",
+              "googlescholar":"https://scholar.google.com/citations?user=PrLAIusAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/scientific-contributions/E-Ganapathy-Sundaram-2069766762",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/013/VEC-013-01-203.webp",
+            "resume_pdf":""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+            {
+            "name":"Dr. SATISH KUMAR S",
+            "designation":"Professor & Principal",
+            "unique_id":"VEC-013-02-200",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/satishchennai/?originalSubdomain=in",
+              "googlescholar":"https://scholar.google.com/citations?user=nqRRK20AAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/S-Satishkumar",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=13806246500"
+            },
+            "image_path":"/static/images/profile_photos/013/VEC-013-02-200.webp",
+            "resume_pdf":""
+          },
+            {
+               "name": "Dr. AROCKIA JASWIN M",
+               "designation": "Professor",
+               "unique_id": "VEC-013-02-027",
+              "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-arockia-jaswin-45962224?originalSubdomain=in",
+              "googlescholar": "https://scholar.google.com/citations?user=MI_lw40AAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0000-0001-9601-1342",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/GOV-4047-2022",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36468002200"
+              },
+              "image_path": "/static/images/profile_photos/013/VEC-013-02-027.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Dr. SURESH S",
+              "designation": "Associate Professor",
+              "unique_id": "VEC-013-03-024",
+              "socialmedia_links": {
+               "linkedin": "https://www.linkedin.com/in/suresh-sugumar-b7959274",
+               "googlescholar": "https://scholar.google.com/citations?user=t_iu9IkAAAAJ&hl=en",
+               "researchgate": "https://www.researchgate.net/profile/Suresh-Sugumar-3",
+               "orchidprofile": "https://orcid.org/0000-0002-6462-5806",
+               "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204060327"
+               },
+               "image_path": "/static/images/profile_photos/013/VEC-013-03-024.webp",
+               "resume_pdf": ""
+              },
+              {
+              "name": "Dr. KARTHICK M",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-013-04-198",
+              "socialmedia_links": {
+               "linkedin": "https://www.linkedin.com/in/karthick-m-ap-iii-mechanical-86330a282/",
+               "googlescholar": " https://scholar.google.com/citations?user=WPNgCKEAAAAJ",
+               "researchgate": "",
+               "orchidprofile": "",
+               "publonprofile": "",
+              "scopus": ""
+               },
+               "image_path": "/static/images/profile_photos/013/VEC-013-04-198.webp",
+               "resume_pdf": ""
+
+              },
+              {
+              "name":"Dr. CHINNASAMY SUBRAMANIAN S",
+              "designation":"Assistant Professor",
+              "unique_id":"VEC-013-04-133",
+              "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar":"https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
+              "orchidprofile":"https://orcid.org/0000-0002-2447-5807",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
+            "resume_pdf":""
+          },
+          {
+      "name": "Mr. FRANK GLADSON T S",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-028",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=4vvKUoYAAAAJ",
+        "researchgate": "https://www.researchgate.net/profile/Frank-Gladson",
+        "orchidprofile": "https://orcid.org/0000-0001-9460-3686",
+        "publonprofile": "",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191980691"
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-028.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. CHEZHIAN R",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-202",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/chezhian-r-664275146/",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-202.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Dr. GEETHA R",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-004",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/geetha-rajamani-9ba9972a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "googlescholar": "",
+        "researchgate": "https://www.researchgate.net/profile/Geetha-Rajamani",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57210626865"
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-004.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Dr. DEEPAK KUMAR M",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-001",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/deepak-kumar-murugan-a20569a4/",
+        "googlescholar": "https://scholar.google.com/citations?user=qSci3AEAAAAJ&hl=en",
+        "researchgate": "",
+        "orchidprofile": "https://orcid.org/0000-0003-3884-3778",
+        "publonprofile": "",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56297082000"
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-001.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. KARTHIKEYAN M",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-103",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/karthikeyan-m-2bbb3864/",
+        "googlescholar": "https://scholar.google.com/citations?hl=en&user=SgpuYdgAAAAJ&view_op=list_works&authuser=1&sortby=pubdate",
+        "researchgate": "https://www.researchgate.net/profile/Karthikeyan-Mahalingam",
+        "orchidprofile": " https://orcid.org/0009-0007-4504-2852",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-103.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Dr. PRADEEP KUMAR S",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-020",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/pradeep-kumar-s-629a8494/",
+        "googlescholar": "https://scholar.google.com/citations?hl=en&user=jrE_JAwAAAAJ&view_op=list_works&gmla=ALUCkoWFGeljBhr8qkQK9UHXUV5aiNb-CPeF1lk53AIcLChccm9-ZNO5Jx0Ba6kFsAkmebiGr8YRlxFP27b4ozq3",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-020.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Dr. LOGANATHAN D",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-044",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/dr-loganathan-duraiswamy-6b193161/?originalSubdomain=in",
+        "googlescholar": "https://scholar.google.com/citations?hl=en&user=e5rg52EAAAAJ",
+        "researchgate": "",
+        "orchidprofile": "https://orcid.org/0000-0001-6365-3162",
+        "publonprofile": "https://www.webofscience.com/wos/author/record/IUM-9440-2023",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56319193800"
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-044.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. ELVIN R P",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-204",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "https://scholar.google.com/citations?user=X2qEj8wAAAAJ&hl=en",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "https://www.webofscience.com/wos/author/record/GRY-6498-2022",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-204.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. JOHN LEONARD A",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-680",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-680.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Dr. SIVASANKAR D",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-084",
+      "socialmedia_links": {
+        "linkedin": "https://in.linkedin.com/in/dr-sivasankar-d-a8833447",
+        "googlescholar": "https://scholar.google.com/citations?user=N30j06EAAAAJ&hl=en",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-084.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. SHANKARANARAYANAN S",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-022",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/shankaranarayanan-556618138",
+        "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=3&user=EF5IZ9QAAAAJ",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-022.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. SARAVANAN M",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-003",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/saravanan-mathialagan-769901122/?originalSubdomain=in",
+        "googlescholar": "https://scholar.google.com/citations?user=O6ABDp8AAAAJ&hl=en",
+        "researchgate": "https://www.researchgate.net/profile/Saravanan-Mathi",
+        "orchidprofile": "https://orcid.org/0000-0003-2384-3361",
+        "publonprofile": "https://www.webofscience.com/wos/author/record/LIC-4857-2024",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57669626800"
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-003.webp",
+      "resume_pdf": ""
+    }]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [ {
+      "name": "Mr. PRASAD J",
+      "designation": "Lab Instructor",
+      "unique_id": "VEC-013-05-012",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-05-012.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. CHANDRAMOULLI P",
+      "designation": "Lab Instructor",
+      "unique_id": "VEC-013-05-013",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-05-013.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. ANANDAN A",
+      "designation": "Lab Instructor",
+      "unique_id": "VEC-013-05-014",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-05-014.webp",
+      "resume_pdf": ""
+    },
+    {
+      "name": "Mr. ARUMUGAM B",
+      "designation": "Lab Instructor",
+      "unique_id": "VEC-013-05-015",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-05-015.webp",
+      "resume_pdf": ""
+    }]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content":  [
+               {
+              "heading":"Curriculum & Syllabus - UG",
+              "syllabus":[
+              {
+                "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path":  "/static/pdfs/curriculum/013/reg_21.pdf"
+              },
+              {
+                "year": "R - 2023",
+                "pdf_path": "/static/pdfs/curriculum/013/reg_23.pdf"
+              }
+            ]
+          }
+        ]
+
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category":"newsletter",
+        "content": [
+          {
+            "year": "2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/DECEMBER 2022.pdf",
+              "/static/pdfs/newsletter/013/JUNE 2022.pdf"
+            ]
+          },
+          {
+            "year": "2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/JUNE 2023.pdf",
+              "/static/pdfs/newsletter/013/DECEMBER 2023.pdf"
+            ]
+          },
+          {
+            "year": "2024",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/JUNE 2024.pdf"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year": "2024",
+            "activities":[
+                 {
+            "date": "22/08/2024",
+            "name_of_event": "Guest lecture on Digital Transformation in Mechanical Engineering: Key Skills for the Future",
+            "coordinator": "",
+            "resource_person":"Mr. Saravanan S, Articulate Quality, EDUFIC Solutions",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/1.webp"]
+          },
+          {
+            "date": "31/08/2024",
+            "name_of_event": "Hands on Training on Electric Vehicle Components and Systems",
+            "coordinator": "",
+            "resource_person": "Mr. B Kovarasan, Managing Partner of Trione CADD",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/2.webp"]
+          },
+          {
+            "date": "24/07/2024",
+            "name_of_event": "Applications of Design Software - Mechanical Engineering",
+            "coordinator":"",
+            "resource_person": "Mr. S. Dhanavel, Head-Business & Operations, HEXDOF Engg. Services Pvt. LtD.",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/3.webp"]
+          },
+          {
+            "date": "17/08/2024",
+            "name_of_event": "Higher Studies Awareness Session on Unlocking the GATE Pathways to Career Success and Advanced Studies",
+            "coordinator": "",
+            "resource_person": "Mr. S. M M Trinath, Faculty of ACE Engg. Academy, ACE Engg. Academy.",
+            "beneficiaries":"",
+            "relevant_PO_PSO": "",
+            "image_path": ["/static/images/dept_activities/013/4.webp"]
+          },
+          {
+            "date": "",
+            "name_of_event": "Workshop on Drone Development Challenge DDC 2024",
+            "coordinator": "",
+            "resource_person": "Dr. R.Rajendiran, Department of Automobile Engineering,College of Engineering & Technology, Kattankulathur.",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path": ["/static/images/dept_activities/013/7.webp"]
+          }
+          ]
+         },
+          {
+            "year": "2023",
+            "activities":[
+                {
+            "date": "26/08/2023",
+            "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+            "coordinator": "",
+            "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/5.webp"]
+          }
+          ]
+         }
+
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+          "Students' achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. From excelling in academics and securing top grades to showcasing talent in sports, arts, and extracurricular activities, their accomplishments reflect a well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while community service projects demonstrate their commitment to making a positive impact. These achievements not only inspire their peers but also pave the way for future opportunities, building confidence and a strong foundation for lifelong success."
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+           "image_path": "/static/images/student_activities/013/1.webp",
+           "event_name": "Anna University Inter Zone Best Physique men Tournament", 
+           "image_content": "Final Year Student Mr.G.Yashwanth Kumar secured Gold medal in Anna University Inter Zone Best Physique men Tournament held @ Paavai Engineering College, Namakkal ", 
+           "date": "2024-12-21"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/2.webp", 
+            "event_name": "TECHNOXIAN ’24", 
+            "image_content": "Final year and third year students were participated in Maze Solver Challenge and Drone Racing (FPV) Challenge of TechnoXian World Cup 2024 (Technical event competition) held at Noida Stadium Complex, Noida, India ", 
+            "date": "2024-02-24"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/3.webp", 
+           "event_name": "ICT Academy design competition 2024",
+           "image_content": "Final year students M.Ganesh and K.Indirakumar design was recognized as Top 15 designs from 200 participants at ICT design competition. 200 students from 72 engineering colleges, 16 states were participated in this 24 hours design challenge.",  
+           "date": "2024-07-26"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/4.webp", 
+            "event_name": "International Okinawa Goji-Rru karate open championship", 
+            "image_content": "Indira kumar.K of Third year student won 1st prize in kumite and 2nd prize in kata in International Okinawa Goji-Rru karate open championship held at Coimbatore ", 
+            "date": "2023-10-15"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/5.webp",
+            "event_name":  "National level Tech-fest Invente'23",
+            "image_content": "Gokul B of Final year student has participated in National level tech-fest Invente'23, organized by SSN College of Engineering & Shiv Nadar Univerisy, Chennai and won first prize & cash of Rs.2,500/- in Paper Presentation event.",
+            "date":"2023-10-05"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/6.webp", 
+           "event_name": "State Level Power Lifters Championship", 
+           "image_content": "Ajay T.K. of third year student has participated in the State Level Power Lifters Championship and secured fourth place in the 6.5 kg weight class. The event was organised by Aarogreen Fitness & Chengai Kanchi Power Lifter Association.", 
+           "date": "2023-10-01"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/7.webp", 
+           "event_name": "Anna University Zonal Table Tennis tournament",
+           "image_content": " Srinivas of Final year and Saravanaraj of third year students have participated in Anna University Zonal Table Tennis tournament and secured Runner up position. The match was held at S.A Engineering College, Chennai ",
+           "date": "2023-09-26"
+          },
+          {
+          "image_path": "/static/images/student_activities/013/8.webp", 
+          "event_name": "National Level Technical Symposium", 
+          "image_content": "Gokul B, Suresh K, & Muthuraja of Final year students have participated in National Level Technical Symposium (TORQ 2k23), organized by Loyola College of Engineering and Technology, Chennai on and won First prize and the cash of Rs.2,000/- in EV racing event.", 
+          "date": "2023-09-16"
+          },
+          {
+          "image_path": "/static/images/student_activities/013/9.webp", 
+          "event_name": "National Electric Tractor Design Championship", 
+          "image_content": "Final year students have participated in National Electric Tractor Design Championship (NETDC-23) held at Bannari Amman Institute of Technology, Sathyamangalam and won 3rd place in Business plan event",
+          "date": "2023-08-18"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/10.webp", 
+            "event_name": "Shivamogga 4th open International karate championship", 
+           "image_content": "Indira kumar K of Third year student has participated in Shivamogga 4th open International karate championship held at Shimoga city, Karnataka. He secured First place in Both (kumite and kata) category Above 18 Years.", 
+           "date": "2023-08-05"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/11.webp", 
+             "event_name": "National Level Electric Two-Wheeler Design Competition 2023",
+            "image_content": "Students have won the Best Innovation Award in the prestigious National Level Electric Two-Wheeler Design Competition 2023 organized by SAEINDIA Southern Section conducted at Rajalakshmi Engineering college, Chennai and earned them a cash prize of Rs 10,000.",
+             "date": "2023-07-22"
+          },
+          {
+          "image_path": "/static/images/student_activities/013/12.webp", 
+             "event_name": "EK Bharat Shreshtha Bharat camp",
+          "image_content": "Sriram R of third year student has got runner-up in EK Bharat Shreshtha Bharat camp held at JAKLI RC, Srinagar ",  
+          "date": "2023-02-26"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/13.webp", 
+           "event_name": "National Level Student Convention 2022-2023", 
+           "image_content": " Srivarshan, Rupesh kanna and Thirumal R of third year  students secured third position in CAD modelling in the National Level Student Convention 2022-2023 Organised by SAEISS held at SRM Easwari Engineering College, Chennai.", 
+           "date": "2023-06-18"
+          },
+          {
+          "image_path": "/static/images/student_activities/013/14.webp", 
+           "event_name": "SAE - Bi Cycle design competition 2023", 
+          "image_content": "SAE - Bi Cycle design competition was held at PSNA College of Engineering and Technology, Dindigul. Our students Team CYCLONE won the second prize for Best Dynamic Performance award with the cash prize of Rs.8,000/-.", 
+          "date": "2023-04-01"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/15.webp", 
+             "event_name": "Table tennis (Doubles) - CM Trophy",
+            "image_content": "Third year student Saravana Raj.S won Gold medal in Table tennis (Doubles) - CM Trophy 2022-23.",  
+            "date": "2023-02-07"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/16.webp", 
+           "event_name": "National Design Challenge on Innovative design of Mobile Kiosk for Fish vending", 
+           "image_content": "Ananth Sai Shankar V of final year student received the Certificate of Merit from Shri Jatindra Nath Swain, I.A.S., Secretary, Department of Fisheries, Ministry of  Fisheries, Animal Husbandry & Dairying, Government of India under the category “National Design Challenge on Innovative design of Mobile Kiosk for Fish vending” conducted by CII. Felicitation ceremony was held at Gulmohar Hall, Habitat Centre, Delhi.", 
+           "date": "2022-10-27"
+          },
+          {
+           "image_path": "/static/images/student_activities/013/17.webp", 
+           "event_name": "Electric Two Wheeler Design Competition 2022", 
+           "image_content": "SAEISS design competition organized by Dr. G. Padmanabham Memorial Electric Two Wheeler Design Competition 2022 held at SRM University, Ramapuram.  Our students named as Team infinity secured best Maneuverability award in the competition and received a cash prize of Rs. 7,500/-.",
+            "date": "2022-10-17"
+          },
+          {
+            "image_path": "/static/images/student_activities/013/18.webp", 
+              "event_name": "Accenture Innovation Challenge 2021",
+            "image_content": "A Student from along with other Department students participated in the Accenture Innovation Challenge 2021, a National level competition in which 2,800 innovative ideas from over 10,000 students were presented and our team secured grand prize winner (Overall first) and received Rs 1 lakh cash prize and Apple IMac.", 
+             "date": "2021-11-24"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+  {
+    "image_path": "/static/images/infrastructure/013/1.webp",
+    "image_name": "ENGINEERING PRACTICE LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/2.webp",
+    "image_name": "THERMAL ENGINEERING LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/3.webp",
+    "image_name": "HEAT TRANSFER LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/4.webp",
+    "image_name": "MANUFACTURING TECHNOLOGY LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/5.webp",
+    "image_name": "DYNAMICS LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/6.webp",
+    "image_name": "METROLOGY AND MEASUREMENTS LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/7.webp",
+    "image_name": "MECHATRONICS LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/8.webp",
+    "image_name": "CAD/CAM LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/9.webp",
+    "image_name": "SIMULATION AND ANALYSIS LABORATORY",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/10.webp",
+    "image_name": "PROJECT LABORATORY - STIR CASTING",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/11.webp",
+    "image_name": "PROJECT LABORATORY - DOUBLE ROLL MILL (RUBBER COMPOUNDING MILL)",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/12.webp",
+    "image_name": "PROJECT LABORATORY - PLANETARY BALL MILL",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/13.webp",
+    "image_name": "PROJECT LABORATORY - HYDRAULIC PRESS",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/14.webp",
+    "image_name": "PROJECT LABORATORY - COMPUTERIZED UNIVERSAL TESTING MACHINE",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/15.webp",
+    "image_name": "PROJECT LABORATORY - MUFFLE FURNACE",
+    "image_content": ""
+  },
+  {
+    "image_path": "/static/images/infrastructure/013/16.webp",
+    "image_name": "PROJECT LABORATORY - WIRE CUT EDM",
+    "image_content": ""
+  }
+          
+  ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+               {
+          "S_NO": 1,
+          "ORGANISATION_NAME": "VAIBHAV TECH SERVICES, AMBATTUR, CHENNAI - 600098",
+          "MONTH_AND_YEAR": "19.09.2024",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 2,
+          "ORGANISATION_NAME": "CADD TECH SOLUTIONS, AVADI, CHENNAI - 600054",
+          "MONTH_AND_YEAR": "07.02.2024",
+          "VALIDITY": "2 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 3,
+          "ORGANISATION_NAME": "TRIONE CADD, MOGAPPAIR, CHENNAI - 600037",
+          "MONTH_AND_YEAR": "01.02.2024",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 4,
+          "ORGANISATION_NAME": "GT PRECISION INDUSTRY, CHENNAI - 600058",
+          "MONTH_AND_YEAR": "07.09.2023",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 5,
+          "ORGANISATION_NAME": "SAI KAYRA REFRIGERATION, CHENNAI - 600087",
+          "MONTH_AND_YEAR": "03.08.2022",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 6,
+          "ORGANISATION_NAME": "VOLTRIX MOBILITY PVT. LTD., CHENNAI - 600032",
+          "MONTH_AND_YEAR": "13.06.2022",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 7,
+          "ORGANISATION_NAME": "ETG CAREER LABS PVT. LTD, BENGALURU - 560095",
+          "MONTH_AND_YEAR": "12.04.2022",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 8,
+          "ORGANISATION_NAME": "GARUDA AEROSPACE PRIVATE LIMITED, CHENNAI - 600018",
+          "MONTH_AND_YEAR": "31.12.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 9,
+          "ORGANISATION_NAME": "DINESH ENGINEERING INDUSTRIES, THIRUVALLUR - 602105",
+          "MONTH_AND_YEAR": "23.12.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 10,
+          "ORGANISATION_NAME": "TEAM ENGINEERS, AMBATTUR, CHENNAI - 600098",
+          "MONTH_AND_YEAR": "22.09.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 11,
+          "ORGANISATION_NAME": "KATWORKS ENGINEERING PVT. LTD, CHENNAI - 600053",
+          "MONTH_AND_YEAR": "28.07.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 12,
+          "ORGANISATION_NAME": "VETRI PRESSINGS PRIVATE LIMITED, CHENNAI - 600059",
+          "MONTH_AND_YEAR": "31.03.2021",
+          "VALIDITY": "3 Years",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      },
+      {
+          "S_NO": 13,
+          "ORGANISATION_NAME": "DIAGONAL CADD PVT. LTD, CHENNAI - 600058",
+          "MONTH_AND_YEAR": "23.10.2019",
+          "VALIDITY": "Till date",
+          "LOGO_PATH": "",
+          "ACTIVITIES_PLANNED": []
+      }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      }
+    ]
+  }
+]

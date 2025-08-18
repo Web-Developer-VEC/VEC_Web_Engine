@@ -1,0 +1,1272 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/it.webp",
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "The Department of Information Technology, established in the year 1999, has grown into a hub of academic and professional excellence, offering a strong blend of theoretical knowledge and practical exposure. With a mission to provide quality education and nurture IT excellence, the department not only focuses on creating skilled technocrats but also aims to develop responsible citizens who can contribute positively to society and industry. Accredited by NBA for its commitment to effective teaching and digital innovation, the department ensures students are equipped with the latest skills and knowledge to meet industry demands. Strong industry linkages through MoUs with Tata Elxsi, Movate, Sify Technologies, and Arjun Vision, among others, support our goal of producing company-ready graduates. Top recruiters like Zoho, Ford, Fleet Studio and Multi Coreware have offered placements with packages up to 14 LPA, maintaining a consistent placement record of 80%. Students are encouraged to participate in hackathons, paper presentations, and technical competitions, often bringing home awards and recognition. With 100% pass results and zero backlogs in recent years, our students set a benchmark in academic success. Faculty members actively publish research and guide student projects aligned with the Sustainable Development Goals, making the department a vibrant center for learning, innovation, and growth."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+         "Empowering innovation through cutting-edge technology solutions, transforming learning experiences with digital excellence, driving operational efficiency through strategic IT initiatives, and securing a dynamic digital future."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+            "To continuously research, develop, and implement innovative technology solutions that empower academic and administrative excellence, fostering a culture of creativity and problem-solving.",
+            "To seamlessly integrate digital technologies into every facet of the learning experience, from classrooms to online platforms, ensuring accessibility, engagement, and effectiveness in education.",
+            "To engage with the wider community, including alumni, local businesses, and societal stakeholders, to promote digital literacy, foster technology adoption, and contribute to the socio-economic development.",
+            "To cultivate a dynamic environment that encourages continual growth, entrepreneurial spirit, cohesive teamwork, exemplary professionalism, and leadership with a strong sense of social responsibility."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content":"To proactively recognize industry and societal challenges, devising impactful solutions that promote the welfare of both sectors with professional ethics."
+          },
+          {
+            "header": "PEO 2",
+            "content": "To embrace technological evolution by discovering and implementing innovative ideas with leadership qualities to propel continuous learning."
+          },
+          {
+            "header": "PEO 3",
+            "content": "To advance professional careers through collaborative research and advanced studies, ensuring excellence with integrity."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content":  "To utilize cutting-edge techniques, programming languages, and the latest Information Technology tools and platforms for solving real time applications to meet out the societal and industrial needs."
+          },
+          {
+            "header": "PSO 2",
+            "content": "To design and develop fruitful service utilities and products for various aspects of technological needs involving different domains"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "011",
+            "name": "Dr. JEEVAA KATIRAVAN",
+            "department_name":"Information Technology (IT)",
+            "unique_id": "VEC-012-01-096",
+            "qualification":["M.Tech.", "Ph.D."],
+            "hod_message": [
+              "As the Head of the Department of Information Technology, it gives me immense pleasure to share that our field continues to redefine the way the world connects, learns, and evolves. With a strong foundation in education, diverse skill sets, and hands-on experience in cutting-edge technologies, students are empowered to thrive in a competitive and ever-changing digital landscape. For those passionate about developing innovative solutions and eager to engage with real-time technologies, the B.Tech. Information Technology program serves as an ideal platform to transform aspirations into impactful careers. Our future-ready curriculum, combined with valuable industry exposure, equips students to seize emerging opportunities and contribute meaningfully to the tech-driven world. On behalf of our esteemed institution, I, Dr. Jeevaa Katiravan, warmly welcome you to join hands with us in nurturing a future that is innovative, empowered, and filled with possibilities."
+            ],
+            "hod_image": "/static/images/hods/it.webp",
+            "designation":"Professor & Head, Dept of Information Technology",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-jeevaa-katiravan-936b16104/",
+              "googlescholar": "https://scholar.google.co.in/citations?user=dtYzUpAAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Jeevaa-Katiravan",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37023505600",
+              "orchidprofile": "https://orcid.org/0009-0004-1897-1451",
+              "publonprofile": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [  
+        {
+          "name": "Dr. JEEVAA KATIRAVAN",
+          "designation": "Professor & Head",
+          "unique_id": "VEC-011-01-525",
+          "socialmedia_links": {
+            "linkedin": "https://www.linkedin.com/in/dr-jeevaa-katiravan-936b16104/",
+            "googlescholar": "https://scholar.google.co.in/citations?user=dtYzUpAAAAAJ&hl=en",
+            "researchgate": "https://www.researchgate.net/profile/Jeevaa-Katiravan",
+            "orchidprofile": "https://orcid.org/0009-0004-1897-1451",
+            "publonprofile": "",
+            "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37023505600"
+          },
+          "image_path": "/static/images/profile_photos/011/VEC-011-01-525.webp",
+          "resume_pdf": ""
+        }
+      ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+          {
+            "name":"Dr. SATHYA PRIYA J",
+            "designation":"Professor",
+            "unique_id":"VEC-011-03-111",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/dr-j-sathya-priya-59b93b153/",
+              "googlescholar":"https://scholar.google.co.in/citations?user=WKcgjnQAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Sathya-Priya-Jaganathan",
+              "orchidprofile":"https://orcid.org/0000-0003-4755-8098",
+              "publonprofile":"",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=55787204800"
+            },
+            "image_path":"/static/images/profile_photos/011/VEC-011-03-111.webp",
+            "resume_pdf":""
+          },
+          {
+            "name":"Dr. NALAYINI C M",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-011-04-156",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/dr-nalayini-c-m-asst-professor-157383277",
+              "googlescholar":"https://scholar.google.com/citations?user=J7rcvBAAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Nalayini-C-M",
+              "orchidprofile":"https://orcid.org/0000-0002-3138-8584",
+              "publonprofile":"https://www.webofscience.com/wos/author/record/KEE-8788-2024",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=57202685350"
+            },
+            "image_path":"/static/images/profile_photos/011/VEC-011-04-156.webp",
+            "resume_pdf":""
+          },
+          {
+            "name":"Mr. MOHAN RAJ K R",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-011-04-564",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/%E2%99%A5mohan-raj%E2%99%A5-953b0a16/",
+              "googlescholar":"https://scholar.google.com/citations?user=KKZLOyMAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Mohan-Raj-K-R/research",
+              "orchidprofile":"https://orcid.org/0000-0002-2995-6394",
+              "publonprofile":"",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=58682372900"
+            },
+            "image_path":"/static/images/profile_photos/011/VEC-011-04-564.webp",
+            "resume_pdf":""
+          },
+          {
+            "name": "Mrs. SUBBULAKSHMI V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-136",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/subbulakshmi-it-ap-i-5988a034a/",
+              "googlescholar": "https://scholar.google.com/citations?user=_u5UmX8AAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Subbulakshmi-Vanuvamalai?ev=hdr_xprf ",
+              "orchidprofile": "https://orcid.org/0009-0001-2843-7496",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-136.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. PRIYADHARSHINI S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-126",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/priyadharshini-s-it-ap-ii-b03721316?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbj8uFMiJQ7GFRCzem6GkGw%3D%3D",
+              "googlescholar": "https://scholar.google.com/citations?user=K0cWlM0AAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0004-5885-2238",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-126.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SATHYABAMA A R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-036",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?user=uGT-RDsAAAAJ&hl=en&oi=ao",
+              "researchgate": "https://www.researchgate.net/profile/Sathyabama-A-R",
+              "orchidprofile": "https://orcid.org/0000-0003-4297-3532",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57215654661"
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-036.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. RAJ KUMAR S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-161",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/raj-kumar-90378584/?trk=public_profile_browsemap_mini-profile_title&originalSubdomain=in",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/Rajkumar-Srinivasan-3",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-161.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. VIMALA IMOGEN P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-166",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/vimala-imogen-207261272/",
+              "googlescholar": "https://scholar.google.com/citations?user=OkDS79AAAAAJ&hl=en&authuser=2",
+              "researchgate": "https://www.researchgate.net/profile/Vimala-Imogen?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-166.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. REVATHY S P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-069",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/revathy-velu-38420267/",
+              "googlescholar": "https://scholar.google.com/citations?user=fGUpeFYAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Revathy-S-P",
+              "orchidprofile": "https://orcid.org/0009-0004-1247-8244",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-069.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. VINODHINI S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-152",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/vinodhini-s-b220312b7/",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/S-Vinodhini-Dhananjeyan",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-152.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. PREETHI G",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-138",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/preethi-g-b07625203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=bIW_e5sAAAAJ&scilu=&scisig=ADIE8skAAAAAZ1E_2v1tRW3NaIup6176RU2mah0&gmla=AL3_zij_t5k4PLlLNoxtNH-8AAhbUNvV3lkIgnW2rQuNQxynCwRvno4NARZVG7mxHqWyLyU8WPTC7tBozNTf346WtBpoG5z8kMgIfZAvlMWu&sciund=12712290102968375920",
+              "researchgate": "https://www.researchgate.net/profile/Preethi-Gunasekaran-2/research",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-138.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SOWMIYA M N",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-163",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/sowmiya-nagarathinam-a96a95277?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNFZ7iSp7SJWKHxq1SIcltQ%3D%3D",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=soLGHDcAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Sowmiya-M-N",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-163.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. ABINAYA S P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-162",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/abinaya-palani-3b9027191?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bw3xSpyH5R3%2BmRxuIXc7v9g%3D%3D",
+              "googlescholar": "https://scholar.google.com/citations?user=AUOPJG8AAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Abinaya-S-P?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-162.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. PARVATHY M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-526",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/parvathy-ganesh-10b2a82b4/",
+              "googlescholar": "https://scholar.google.com/citations?user=-3PU8h0AAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Parvathy-Manickavasagam?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-01-526.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SATHYA V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-018",
+            "socialmedia_links": {
+              "linkedin": "http://www.linkedin.com/in/sathya-velusamy-18a669256",
+              "googlescholar": "https://scholar.google.com/citations?user=8cKDJ_IAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0002-6924-3767",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58824349500"
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-018.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. RANGINI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-157",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rangini-m-2a9aa4319",
+              "googlescholar": "https://scholar.google.com/citations?user=g2M-I-8AAAAJ&hl=en&oi=ao",
+              "researchgate": "https://www.webofscience.com/wos/author/record/HGC-7275-2022",
+              "orchidprofile": "https://orcid.org/0000-0001-8262-3815",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55792600800"
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-157.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SANTHANA ARUMUGA SANKARI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-607",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0002-1759-264X",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-607.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. MALATHI V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-608",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/malathi-raj-aaa537125",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=8v9YarEAAAAJ&view_op=list_works&gmla=AH8HC4zaP3DGGOrevHE6FzF7zlJlZRA9jG00CZHtbrKRNvGq2VAzhGrr7pzKWmC727BrhJsea17efe4pBl2wz7Dj",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0002-7715-6663",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-608.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. HERLINZIA C P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-609",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0008-5497-4640",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-609.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [ {
+    "name": "Mrs. VIJAYA LAKSHMI R",
+    "designation": "Lab Instructor",
+    "unique_id": "VEC-011-05-016",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/011/VEC-011-05-016.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mr. SURESH V",
+    "designation": "Lab Instructor",
+    "unique_id": "VEC-011-05-017",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/011/VEC-011-05-017.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mr. KANAGARAJ B",
+    "designation": "Lab Instructor",
+    "unique_id": "VEC-011-05-018",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/011/VEC-011-05-018.webp",
+    "resume_pdf": ""
+  }]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+        {
+          "heading":"Curriculum & Syllabus - UG",
+          "syllabus": [
+            {
+              "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+              "pdf_path":  "/static/pdfs/curriculum/011/reg_19_2.pdf"
+            },
+            {
+              "year": "R - 2023",
+              "pdf_path":  "/static/pdfs/curriculum/011/reg_23.pdf"
+            }
+          ]
+        }
+      ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category":"newsletter",
+        "content": [
+          {
+            "year": "2023 - 2024",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2023 24.pdf"
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2022 23.pdf"
+            ]
+          },
+          {
+            "year": "2021 - 2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2021 22.pdf"
+            ]
+          },
+          {
+            "year": "2020 - 2021",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2020 21.pdf"
+            ]
+          },
+          {
+            "year": "2019 - 2020",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2019 20.pdf"
+            ]
+          },
+          {
+            "year": "2018 - 2019",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2018 19.pdf"
+            ]
+          },
+          {
+            "year": "2017 - 2018",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2017 18.pdf"
+            ]
+          },
+          {
+            "year": "2016 - 2017",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2016 17.pdf"
+            ]
+          },
+          {
+            "year": "2015 - 2016",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2015 16.pdf"
+            ]
+          },
+          {
+            "year": "2014 - 2015",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2014 15.pdf"
+            ]
+          },
+          {
+            "year": "2013 - 2014",
+            "pdf_path": [
+              "/static/pdfs/newsletter/011/2013 14.pdf"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year": "2024",
+            "activities": [
+              {
+                "date": "28.03.2024",
+                "name_of_event": "Explore OS Innovation through Virtualization and Relevant cases",
+                "coordinator": "Mrs.Sathyabama A R, Mrs.Parvathy M",
+                "resource_person": "Mrs K Bala Saranya, Assistant Professor, R.M.D Engineering College",
+                "beneficiaries": "II Year Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/exlore_os.webp"
+                ]
+              },
+              {
+                "date": "05.03.2024",
+                "name_of_event": "Career Opportunity in Data Science with Tableau and Power BI",
+                "coordinator": "Dr.Jeevaa Katiravan",
+                "resource_person": "Mr.R.Ahamed Khalid, Senior Vice President, Head-Academic Alliance",
+                "beneficiaries": "II Year Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/career_opportunity.webp"
+                ]
+              },
+              {
+                "date": "22.02.2024",
+                "name_of_event": "Design Thinking on Full Stack Development",
+                "coordinator": "Mr.K.R.MohanRaj, Mr.RajKumar S",
+                "resource_person": "Mr.Rajavasanthan, Tech Enthusiast, Entrepreneur, Mentor Grids and Guides Each One and Teach One",
+                "beneficiaries": "II Year and III Year students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/design_thinking_on_full_stack.webp"
+                ]
+              },
+              {
+                "date": "20.02.2024",
+                "name_of_event": "Unleashing Creativity and Growth through Study abroad Experiences",
+                "coordinator": "Mrs.Preetih G, Mrs.Vinodhini S",
+                "resource_person": "Ms.Bindu Mary, Head of Operations Tamilnadu, AECC India Private Limited",
+                "beneficiaries": "II Year and III Year students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
+                "image_path": [
+                  "/static/images/dept_activities/011/unleashing_creativity.webp"
+                ]
+              },
+              {
+                "date": "15.02.2024",
+                "name_of_event": "Unfolding innovative Opportunities in Overseas Education",
+                "coordinator": "Mrs.Parvathy M, Mrs. Revathy S P",
+                "resource_person": "Mr.Sabarinath Vijayakumar,Director of Partnerships – India, Heriot Watt University",
+                "beneficiaries": "II Year and III Year students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
+                "image_path": [
+                  "/static/images/dept_activities/011/unfolding_innovative_opportunities.webp"
+                ]
+              },
+              {
+                "date": "10.02.2024",
+                "name_of_event": "Symposium events",
+                "coordinator": "Mr.Mohan Raj K R, Mrs.Sathyabama A R",
+                "resource_person": "Mr. M.Ganesh Thirunavukkarasu, Regional Head, Academic Interface Programme @TCS",
+                "beneficiaries": "External Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO10",
+                "image_path": [
+                  "/static/images/dept_activities/011/symposium_events.webp"
+                ]
+              }
+            ]
+          },
+          {
+            "year": "2023",
+            "activities": [
+              {
+                "date": "06.11.2023 to 11.11.2023",
+                "name_of_event": "Research Challenges and Opportunities in Information Technology",
+                "coordinator": "Dr.Sathya  Priya J, Mrs.Revathy S P,  Mrs.Parvathy M",
+                "resource_person": "",
+                "beneficiaries": "Internal & External Faculty members",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
+                "image_path": [
+                  "/static/images/dept_activities/011/research_challenges_and_opportunities.webp"
+                ]
+              },
+              {
+                "date": "01.11.2023",
+                "name_of_event": "Big Data Tools and Technologies",
+                "coordinator": "Ms.M.N.Sowmiya, Mrs.S.P.Abinaya, Mrs.S.Vinodhini",
+                "resource_person": "Mrs.Vinoja M, Senior Software Engineer, HCL Tech",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
+                "image_path": [
+                  "/static/images/dept_activities/011/big_data_tools_and_technologies.webp"
+                ]
+              },
+              {
+                "date": "09.10.2023",
+                "name_of_event": "Cloudify Your Future",
+                "coordinator": "Ms.M.N.Sowmiya, Mrs.S.P.Abinaya, Mrs.S.Vinodhini",
+                "resource_person": "",
+                "beneficiaries": "IV year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9, PO10",
+                "image_path": [
+                  "/static/images/dept_activities/011/cloudify_your_future.webp"
+                ]
+              },
+              {
+                "date": "04.10.2023",
+                "name_of_event": "Mastering the Arts of Software Testing",
+                "coordinator": "Mrs.S.Vinodhini, Mrs.P.Vimala Imogen",
+                "resource_person": "Mrs.Sindhu Sivaraman, Senior Test Specialist, IBM India Private Limited.",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/mastering_the_arts_of_software_testing.webp"
+                ]
+              },
+              {
+                "date": "14.09.2023",
+                "name_of_event": "Python for Industry: A Deep Dive into OOP",
+                "coordinator": "Mrs.S.P.Revathy, Mrs.S.Vinodhini",
+                "resource_person": "Mr.Darvin Rajesh J, Gold Coast IT Solutions, Chennai",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/python_for_industry.webp"
+                ]
+              },
+              {
+                "date": "07.09.2023",
+                "name_of_event": "AWS Cloud",
+                "coordinator": "Mrs.T.Thivya, Ms.M.N.Sowmiya, Mrs.S.P.Abinaya",
+                "resource_person": "Mr.Shanmuga Raja Rajeswaran, CTO – Netstack Technology Solutions",
+                "beneficiaries": "III Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/aws_cloud.webp"
+                ]
+              },
+              {
+                "date": "30.08.2023",
+                "name_of_event": "Development of Entrepreneurial Mindset",
+                "coordinator": "Mrs.M.Parvathy",
+                "resource_person": "Dr.A.Nirmal Raj, Professor & Head, Department of Management Studies.",
+                "beneficiaries": "III Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO11",
+                "image_path": [
+                  "/static/images/dept_activities/011/development_of_entrepreneurial_mindset.webp"
+                ]
+              },
+              {
+                "date": "30.08.2023",
+                "name_of_event": "Unveiling the wonders of Data Science",
+                "coordinator": "Mrs.C.M.Nalayini, Mrs.A.R.Sathyabama",
+                "resource_person": "Mr.A.Vignesh Kumaran, Pantech E-Learning Team Lead",
+                "beneficiaries": "III Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/unveiling_the_wonders_of_data_science.webp"
+                ]
+              },
+              {
+                "date": "04.08.23 to 06.08.23",
+                "name_of_event": "Code the Node and Way to Cloud",
+                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
+                "resource_person": "Mr.D.Aravind, Senior Programmer, CDW Private Limited.",
+                "beneficiaries": "III Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/code_the_node_and_way_to_cloud.webp"
+                ]
+              },
+              {
+                "date": "12.07.2023 to 14.07.2023",
+                "name_of_event": "Exploring Block Chain: From Concept to Application",
+                "coordinator": "Mrs.Sathyabama A R,  Mrs.Vimala Imogen, Mrs.Preethi G",
+                "resource_person": "Dr.Sangeetha G, Associate Professor, Dept of AI&DS, RMK College of Engineering & Technology,  Mrs.Nalayini C M, Assistant Professor, Dept of IT, Velammal Engineering College, Dr.Nirmala G, Associate Professor, RMD Engineering College, Mrs.Rajeswari P, Assistant Professor, RMD Engineering College, Dr.Anasuya Threse, Founder & Director, Biniworld Innovations Private Limited.",
+                "beneficiaries": "II Year & III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6",
+                "image_path": [
+                  "/static/images/dept_activities/011/exploring_block_chain.webp"
+                ]
+              },
+              {
+                "date": "15.04.2023",
+                "name_of_event": "Software Testing",
+                "coordinator": "Mr.K.R.MohanRaj Mr.S.Rajkumar",
+                "resource_person": "Ms.Padmavathi, Software Testing, Amazon",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/software_testing.webp"
+                ]
+              },
+              {
+                "date": "11.04.2023",
+                "name_of_event": "National Conference on Recent Technologies and Computing Sciences",
+                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
+                "resource_person": "Dr. Bhavani R, Professor, Departement of CSE, Saveetha School of Engineering",
+                "beneficiaries": "Students, Faculty and Research Scholars",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO10, PO11",
+                "image_path": [
+                  "/static/images/dept_activities/011/national_conference_on_recent_technologies_and_computing_sciences.webp"
+                ]
+              },
+              {
+                "date": "20.03.2023 to 27.03.2023",
+                "name_of_event": "FDP on Exploring Research in Information and Communication Engineering",
+                "coordinator": "Mrs.J.SathyaPriya, Mrs.Thivya, Mrs.Revathy",
+                "resource_person": "Dr.V.Gowri, Dr.Angayarkanni S A, Dr.Parameshwari M, Dr.Raja Ratna S, Dr.Rajesh Babu, Dr.Kalaivani A,  Mr.Vadivelan T, Mrs.GangaDevi G, Mrs.Sathya R, Mrs.PadmaPriya K.",
+                "beneficiaries": "Internal and External Faculty members",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
+                "image_path": [
+                  "/static/images/dept_activities/011/fdp_on_exploring_research_in_information_and_communication_engineering.webp"
+                ]
+              },
+              {
+                "date": "20.03.2023",
+                "name_of_event": "Guest Lecture on Design and Analysis of Algorithm",
+                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
+                "resource_person": "Dr.C.Geetha, Professor-CSE, RMK Engineering College",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/guest_lecture_on_design_and_analysis_of_algorithm.webp"
+                ]
+              },
+              {
+                "date": "17.03.2023",
+                "name_of_event": "Seminar on R Programming tools for Statistical Analysis",
+                "coordinator": "Mrs.G.Preethi, Mrs.S.Vinodhini",
+                "resource_person": "Mrs.M.Shanmuga Priya, AP,Sairam Institute of Technology",
+                "beneficiaries": "III Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/seminar_on_r_programming_tools_for_statistical_analysis.webp"
+                ]
+              },
+              {
+                "date": "17.02.2023",
+                "name_of_event": "Guest Lecture on UI/UX Design",
+                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
+                "resource_person": "Mr.Sri Balaji Aravind, Co-Founder, arjun Vision Tech Solution",
+                "beneficiaries": "II Year IT students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/guest_lecture_on_ui_ux_design.webp"
+                ]
+              }
+            ]
+          },
+          {
+            "year": "2022",
+            "activities": [
+              {
+                "date": "16.11.2022",
+                "name_of_event": "Webinar on Statistics Using R Programming",
+                "coordinator": "Dr.J.Sathya Priya",
+                "resource_person": "Dr.N.Deepa, Associate Professor, Saveetha School of Engineering.",
+                "beneficiaries": "II Year students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/webinar_on_statistics_using_r_programming.webp"
+                ]
+              },
+              {
+                "date": "31.10.2022 to 04.11.2022",
+                "name_of_event": "Workshop on Augmented Reality and Virtual Reality",
+                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
+                "resource_person": "Mr.Ankith Sreenath & Mr.Prashanth Gupta, Instructor, Incage Technologies.",
+                "beneficiaries": "External Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/workshop_on_augmented_reality_and_virtual_reality.webp"
+                ]
+              },
+              {
+                "date": "15.10.2022",
+                "name_of_event": "Webinar on Packet Analyzer using Network Tools",
+                "coordinator": "Mrs.C.M.Nalayini, Mrs.A.R.Sathyabama",
+                "resource_person": "Mr.S.Suresh Kumar, KNET Solutions, Pallikaranai.",
+                "beneficiaries": "III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/webinar_on_packet_analyzer_using_network_tools.webp"
+                ]
+              },
+              {
+                "date": "30.09.2022",
+                "name_of_event": "Webinar on Mobile Application Development",
+                "coordinator": "Mrs.G.Preethi, Mrs.Vimala Imogen",
+                "resource_person": "Mr.Ajay Gowtham, UIUX Designer, Experience.com",
+                "beneficiaries": "III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/webinar_on_mobile_application_development.webp"
+                ]
+              },
+              {
+                "date": "22.09.2022",
+                "name_of_event": "Webinar on JAVA Programming",
+                "coordinator": "Mrs.S.P.Revathy, Mrs.S.Vinodhini",
+                "resource_person": "Mr.Moses Antony, Senior Architect, Chennai Development Centre.",
+                "beneficiaries": "III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/webinar_on_java_programming.webp"
+                ]
+              },
+              {
+                "date": "09.09.2022",
+                "name_of_event": "Seminar on Emerging world with IOT Innovation",
+                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
+                "resource_person": "Mr.D.Arun,CEO, Karyyoun Innovations Private Limited.",
+                "beneficiaries": "III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
+                "image_path": [
+                  "/static/images/dept_activities/011/seminar_on_emerging_world_with_iot_innovation.webp"
+                ]
+              },
+              {
+                "date": "27.07.2022",
+                "name_of_event": "Quiz Competition on DBMS",
+                "coordinator": "Mrs.C.M.Nalayini",
+                "resource_person": "",
+                "beneficiaries": "III Year IT Students",
+                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
+                "image_path": [
+                  "/static/images/dept_activities/011/quiz_competition_on_dbms.webp"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+          "The students of the IT department have showcased their excellence by actively participating in various technical events, including paper presentations, hackathons, and coding competitions at Inter college and University levels. Their innovative research and problem-solving skills have earned them accolades in prestigious symposiums and conferences. Notably, our students have presented papers on emerging technologies such as Artificial Intelligence, Blockchain, and Cybersecurity, demonstrating their expertise and commitment to advancements in the field. Their achievements reflect the department’s emphasis on academic excellence, research, and continuous learning, inspiring future batches to strive for greater success."
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+         "images": [
+            {"image_path": "/static/images/student_activities/011/1.webp", "image_content": "Subathra and Udayaravina of III IT won Second  prize (Cash Prize of Rs.22000) in Idea Incubators (Paper Presentation) in the event IDEA INCUBATORS conducted by Department of Spatial Informatics  at Saveetha Engineering College Description of Image 11_1", "event_name": "IDEA INCUBATORS ", "date": "2024-01-24"},
+            {"image_path": "/static/images/student_activities/011/2.webp", "image_content": "Harish Ragav of II year IT B Section won first prize (Cash Prize of Rs.5000) in Research Showcase (Paper Presentation) in the event CISBOSSIUM'24 conducted by Department of Computer Science and Business System at R.M.K Engineering college ", "event_name": "CISBOSSIUM'24", "date": "2024-02-05"},
+            {"image_path": "/static/images/student_activities/011/3.webp", "image_content": "Sesha Janani and Pratippa of III IT won Second Prize in Paper Presentation in PISTOBOLTZ'24 conducted by Department of Production Technology at Madras Institute of Technology ", "event_name": "PISTOBOLTZ'24", "date": "2024-03-16"},
+            {"image_path": "/static/images/student_activities/011/4.webp", "image_content": "Vishnupriya and Srimathi of III IT won First Prize in Paper Presentation in TRIDENT'24 conducted by Department of Mechanical and Mechatronics  at Velammal Institute of technology ", "event_name": "TRIDENT'24", "date": "2024-02-23"},
+            {"image_path": "/static/images/student_activities/011/5.webp", "image_content": "Nivedha of III IT won Second  Prize in Group Discussion, Shivani and Dhivyabharathi participated  in TRIDENT'24 conducted by Department of Mechanical and Mechatronics  at Velammal Institute of technology ", "event_name": "TRIDENT'24 ", "date": "2024-02-23"},
+            {"image_path": "/static/images/student_activities/011/7.webp", "image_content": "Dharmaseelan, Vidyasagar,Abdul Afshith  of III IT won First  Prize in Techtangle Event  in PINNACLE'24 conducted by Department of Information Technology at SRM Easwari Engineering College ", "event_name": "PINNACLE'24", "date": "2024-02-23"},
+            {"image_path": "/static/images/student_activities/011/8.webp", "image_content": "Vedavalli and Sruthinila of III Year IT won First Prize in paper presentation in SLICE V23 conducted by Department of Electronics and Communication Engineering at Loyala Icam Nungambakkam  ", "event_name": "SLICE V23 ", "date": "2023-09-16"},
+            {"image_path": "/static/images/student_activities/011/6.webp", "image_content": "Vedavalli and Sruthinila of III Year IT won First Prize in paper presentation in HACKERZ conducted by Department of Computer Science and Engineering(Cyber Security) at Chennai Institute Of Technology ", "event_name": "HACKERZ", "date": "2023-09-19"},
+            {"image_path": "/static/images/student_activities/011/9.webp", "image_content": "Abdul Kareem Faridh of II IT won Third Prize in paper presentation in PRECISION+ 2022 conducted by Department of Electronics and Instrumentation Engineering at B.S.Abdur Rahman crescent Institute of science & ", "event_name": "PRECISION+ 2022", "date": "2022-05-10"},
+            {"image_path": "/static/images/student_activities/011/10.webp", "image_content": "Abdul Kareem Faridh of III IT won Third Prize in paper presentation in PINNACLE  2K23 conducted by Department of Information Technology at Easwari Engineering College  ", "event_name": "PINNACLE  2K23", "date": "2023-03-25"},
+            {"image_path": "/static/images/student_activities/011/11.webp", "image_content": "Siddharth V, Harish Kumar M, Hariharan B, Nishanth Niruban M won 2nd prize in a paper presentation in Sairam Institute of Technology on 19.09.2024", "event_name": "Paper Presentation", "date": ""},
+            {"image_path": "/static/images/student_activities/011/12.webp", "image_content": "Syed Athaullah.R, Sindhuja.M, Jayashree.R and Thirulok Mugilan won 1st place in paper expo held at Adhi College of Engineering conducted on 20.09.2024.", "event_name": "Paper Expo", "date": ""},
+            {"image_path": "/static/images/student_activities/011/13.webp", "image_content": "As part of Department Social Responsibility, IT organized an Computer program for Eleventh standard students of Govt.schools (Uppiliraja Govt.Hr.Sec.School(21/01/2017) and Lakshmipuram Govt.Hr.Sec.School(28/01/2017)", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/14.webp", "image_content": "Mr.Dharani, IT, participated in  NTAC - Naval Technical Attachment camp at INS Shivaji , Mumbai  training and Industrial visit for naval engineering and mechanical base", "event_name": "NTAC - Naval Technical Attachment camp", "date": ""},
+            {"image_path": "/static/images/student_activities/011/15.webp", "image_content": "Mr. SGT Bharani R , IT, Overall championship trophy won by TamilNadu, Pondicherry & Andaman Nicobar directorate at EBSB camp (National level camp)", "event_name": "National level camp", "date": ""},
+            {"image_path": "/static/images/student_activities/011/16.webp", "image_content": "Ms. Hemalatha,  IT Participated in Republic day camp during President house visit", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/17.webp", "image_content": "Our student Mr.Vishmudev II yr IT attended Naval Technical Attachment camp in INS-Valsura(Naval Base) in Gujarat on Aug 20 to Sep 02-2019", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/18.webp", "image_content": "Our Students Mr.Jaya Shiva Shankaran IV yr IT, Mr.Sudhakar III yr IT have participated in Anna University zone I Kho Kho Tournament held at Prathyusha Engineering College, Chennai and won Winner(Men) Award", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/19.webp", "image_content": "Our Students Ashwini III yr IT, Akshaya I yr IT, Mohana Priya I yr IT have participated in Anna University Zonal Athletic Meet 2018-19 held at GRT Engineering College, Thiruthani and won over all Runner up award(Women)", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/20.webp", "image_content": "Anna University - zone -1 tournament 2021- Basket Ball winners TrophyReceived by III year IT students on march 16th'2021", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/21.webp", "image_content": "Mr. Anand V from III yr IT received “Best Project Award” at St.Xavier Institute of Technology Project Exhibition and received a cash price of about Rs.7000", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/22.webp", "image_content": "Best Student Project Award on 27-12-2013. Dr.N Duraipandian(Principal-VEC), Mr. T.S.Rangarajan TCS, Ms.Pavithra(IT final year Student) who is receiving the Best Project Award", "event_name": "", "date": ""},
+            {"image_path": "/static/images/student_activities/011/23.webp", "image_content": "IV year IT student S Kaviya received Best Student award by TCS", "event_name": "", "date": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY", "image_content":""},
+          {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
+          {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY", "image_content": ""},
+          {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+        {
+        "S_NO": 1,
+        "ORGANISATION_NAME": "Data DNA Technologies",
+        "MONTH_AND_YEAR": "01-11-2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "PDF_PATH":"",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 2,
+        "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+        "MONTH_AND_YEAR": "24-02-2023",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 3,
+        "ORGANISATION_NAME": "Tata Elxsi",
+        "MONTH_AND_YEAR": "29-01-2020",
+        "VALIDITY": "11 Months",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 4,
+        "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+        "MONTH_AND_YEAR": "08-09-2023",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 5,
+        "ORGANISATION_NAME": "Karyyoun Innovations LTD",
+        "MONTH_AND_YEAR": "06-09-2022",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 6,
+        "ORGANISATION_NAME": "SALANG CONSULTANTS PVT LTD",
+        "MONTH_AND_YEAR": "09-09-2021",
+        "VALIDITY": "Till date",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 7,
+        "ORGANISATION_NAME": "Sify Technologies",
+        "MONTH_AND_YEAR": "09-08-2024",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 8,
+        "ORGANISATION_NAME": "Hexaware Technologies",
+        "MONTH_AND_YEAR": "12-08-2024",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 9,
+        "ORGANISATION_NAME": "Movate Technologies Private Ltd",
+        "MONTH_AND_YEAR": "04-11-2024",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":10,
+        "ORGANISATION_NAME": "GUVI GREEK NETWORK",
+        "MONTH_AND_YEAR": "22-01-2024",
+        "VALIDITY": "1 Month",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":11,
+        "ORGANISATION_NAME": "ASPIRE SYSTEMS",
+        "MONTH_AND_YEAR": "29-09-2021",
+        "VALIDITY": "1 Year",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO": 12,
+        "ORGANISATION_NAME": "RED HAT INDIA PRIVATE LTD",
+        "MONTH_AND_YEAR": "03-01-2019",
+        "VALIDITY": "2 Years 1 Month",
+        "LOGO_PATH":"",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":13,
+        "ORGANISATION_NAME": "MAZENET SOLUTIONS PRIVATE LTD",
+        "MONTH_AND_YEAR": "26-07-2017",
+        "VALIDITY": "1 Year",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":14,
+        "ORGANISATION_NAME": "PRARAMBHAN ENTERTAINMENT PRIVATE LIMITED",
+        "MONTH_AND_YEAR": "06-02-2017",
+        "VALIDITY": "2 Years 2 Months",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":15,
+        "ORGANISATION_NAME": "LIVE WIRE PRIVATE LTD",
+        "MONTH_AND_YEAR": "04-01-2017",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":16,
+        "ORGANISATION_NAME": "COMPUTER SCIENCE CORPORATION LIMITED",
+        "MONTH_AND_YEAR": "02-07-2015",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":17,
+        "ORGANISATION_NAME": "TATA CONSULTANCY SERVICES LTD",
+        "MONTH_AND_YEAR": "07-05-2015",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      },
+      {
+        "S_NO":18,
+        "ORGANISATION_NAME": "BACK END SOLUTIONS LTD",
+        "MONTH_AND_YEAR": "10-04-2014",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":19,
+        "ORGANISATION_NAME": "TRANS STELLAR",
+        "MONTH_AND_YEAR": "10-07-2012",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":20,
+        "ORGANISATION_NAME": "KAASHIV INFOTECH",
+        "MONTH_AND_YEAR": "31-01-2011",
+        "VALIDITY": "5 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }, {
+        "S_NO":21,
+        "ORGANISATION_NAME": "TRIMINTUS TECHNOLOGIES",
+        "MONTH_AND_YEAR": "14-10-2009",
+        "VALIDITY": "3 Years",
+        "LOGO_PATH": "",
+        "ACTIVITIES_PLANNED": []
+      }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Information Technology (IT)",
+            "dept_id": "011"
+          }
+        ]
+      }
+    ]
+  }
+]

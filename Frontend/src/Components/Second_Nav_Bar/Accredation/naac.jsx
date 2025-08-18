@@ -72,7 +72,7 @@ const Naac = ({ data }) => {
             <div className="nabout-section">
               <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
                 <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
-                <p>
+                <p className="text-sm md:text-base">
                   The NAAC conducts assessment and accreditation of Higher
                   Educational Institutions (HEI) such as colleges, universities
                   or other recognised institutions to derive an understanding of
@@ -115,7 +115,7 @@ const Naac = ({ data }) => {
                         <li key={i}>
                           <button
                             onClick={() => handlePdfClick(item)}
-                            className="text-blue-600 dark:text-drka hover:underline cursor-pointer bg-transparent border-none p-0 font-inherit"
+                            className="text-blue-600 dark:text-drka hover:underline cursor-pointer bg-transparent border-none p-0 font-inherit text-sm md:text-base"
                           >
                             {item.name}
                           </button>

@@ -44,15 +44,15 @@ export default function Journal({ theme, toggle }) {
   }, []);
 
   const handlePdfClick = (course) => {
-    const url = UrlParser(course?.pdf_path);
-    if (!url) return;
+    if (!course?.pdf_path || course.pdf_path.trim() === "") {
+      return; 
+    }
 
-    // Check screen size — if desktop, open modal; else open in new tab
+    const url = UrlParser(course.pdf_path);
+    const pdfData = { url, name: course?.year };
+
     if (window.innerWidth >= 1024) {
-      setSelectedPdf({
-        name: course?.year || "PDF Document",
-        url: url,
-      });
+      setSelectedPdf(pdfData);
     } else {
       window.open(url, "_blank");
     }

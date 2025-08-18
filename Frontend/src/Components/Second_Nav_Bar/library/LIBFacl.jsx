@@ -16,7 +16,7 @@ const LIBFacl = ({faculty}) => {
       
           {faculty ? (
 
-        <div className="py-16 px-6">
+        <div className="py-16 px-6 font-[Poppins]">
           <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-4 text-center">
             Staff
           </h2>
@@ -40,7 +40,7 @@ const LIBFacl = ({faculty}) => {
               >
                 <div className="">
                   <img
-                    src={UrlParser(fac.image)}
+                    src={UrlParser(fac?.image)}
                     alt={fac.name}
                     className="w-[55%] mt-4 h-44 m-auto object-cover filter brightness-90  rounded-xl group-hover:brightness-100 transition-all"
                   />

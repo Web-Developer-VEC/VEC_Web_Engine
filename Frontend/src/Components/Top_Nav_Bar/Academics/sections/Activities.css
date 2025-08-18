@@ -163,7 +163,7 @@ body {
   border: none;
   border-radius: 50%;
   /*color: #000;*/
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -205,12 +205,17 @@ body {
     grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
     gap: 15px;
     padding: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
   }
 
   /* Card styling adjustments */
   .card_act {
     transform: none; /* Remove animation offset for smaller screens */
     animation: none;
+
   }
 
   .card-title {

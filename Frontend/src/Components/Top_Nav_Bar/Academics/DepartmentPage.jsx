@@ -37,6 +37,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const banner_details = sectionData?.find((item) => item.category === "banner_name_and_image")?.content || [];
 
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
@@ -78,11 +79,48 @@ const DepartmentPage = ({ theme, toggle }) => {
     if (!activeSection) return;
     
     const fetchData = async () => {
+      const maptype = {
+        "HeadDepartment": "hod",
+        "Vision&Mission": "vision_and_mission",
+        "Faculties": "faculty",
+        "Activities": "activities",
+        "Syllabus": "curriculum_and_syllabus",
+        "Infrastructure": "infrastructure",
+        "StudentAchievments": "student_achievements",
+        "Mous": "mous",
+        "Research": "research",
+        "NewsLetter": "newsletter",
+        "Event Organizer": "eventorg"
+      }
+
+      const deptidmap = {
+        "001":  "AIDS_001",
+        "002":  "AUTO_002",
+        "003":  "CHEMISTRY_003",
+        "004":  "CIVIL_004",
+        "005":  "CSE_005",
+        "006":  "CSECS_006",
+        "007":  "EEE_007",
+        "008":  "EIE_008",
+        "009":  "ECE_009",
+        "010":  "ENGLISH_010",
+        "011":  "IT_011",
+        "012":  "MATHS_012",
+        "013":  "MECH_013",
+        "014":  "TAMIL_014",
+        "015":  "PHYSICS_015",
+        "016":  "MECSE_016",
+        "017":  "MBA_017",
+        "018":  "PS_018"
+      }
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`/api/main-backend/${deptID}/${activeSection.toLowerCase()}`);
-        setSectionData(response.data);
+        const response = await axios.post(`/api/main-backend/department`, {
+          type: maptype[activeSection],
+          department_id: deptidmap[deptID]
+        });
+        setSectionData(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setError("Failed to fetch data.");
@@ -149,16 +187,14 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":
         return <ImageCarousel data={sectionData} />;
-      // case "EventOrg":
-      //   return <EventOrg data={sectionData} />;
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
         return <Research data={sectionData} />;
-      case "Conference":
-        return <Conference data={sectionData} />;
       case "NewsLetter":
         return <Newsletter data={sectionData} />;
+      case "Event Organizer":
+        return <EventOrg data={sectionData} />;
       default:
         return <VisionMission data={sectionData} />;
     }
@@ -176,9 +212,9 @@ const DepartmentPage = ({ theme, toggle }) => {
       {/* Header */}
       <div className={`${styles.header} h-[20vh] md:h-[13vh] lg:h-[25vh]`}>
         <Toggle attr="absolute -top-2 md:top-12 lg:top-4 right-10 md:right-20 float-right z-[100000]" toggle={toggle} theme={theme} />
-        <img src={`/Banners/Dept_banner/${sectionData?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
+        <img src={`/Banners/Dept_banner/${banner_details?.[0]?.dept_id}.webp`} alt="Department Header" className={styles.fullWidthImage} />
         <div className={styles.overlay}>
-          <h1 className={styles.overlayText}>{sectionData?.department_name}</h1>
+          <h1 className={styles.overlayText}>{banner_details?.[0]?.name}</h1>
         </div>
       </div>
       {loading ? (
