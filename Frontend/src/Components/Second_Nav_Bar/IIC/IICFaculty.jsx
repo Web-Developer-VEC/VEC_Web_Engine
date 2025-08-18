@@ -90,11 +90,11 @@ const IICStudent = ({ data }) => {
                 <div className="ncc-n-stu-detail p-2 text-left">
                   <h5 className="text-center text-[18px] font-semibold">{details?.name}</h5>
                   <p className="pl-4 text-brwn dark:text-drka text-sm">Responsibility: {details?.responsibility}</p>
-                  <p className="pl-4 text-brwn dark:text-drka text-sm">Sex: {details?.sex}</p>
+                  {/* <p className="pl-4 text-brwn dark:text-drka text-sm">Sex: {details?.sex}</p> */}
                   <p className="pl-4 text-brwn dark:text-drka text-sm">
                     {details?.dept} - {details?.year}
                   </p>
-                  <p className="pl-4 text-brwn dark:text-drka text-sm">Phone: {details?.phone}</p>
+                  {/* <p className="pl-4 text-brwn dark:text-drka text-sm">Phone: {details?.phone}</p> */}
                   {/* <p className="pl-4 text-brwn dark:text-drka text-sm">Email: {details["mail id"]}</p> */}
                 </div>
               </div>
