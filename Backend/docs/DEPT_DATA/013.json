@@ -686,7 +686,87 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": []
+        "content": [
+          {
+            "year":"2022-2023",
+            "content":[
+              {
+                "name":"Dynamics of Machines -  Working model demonstrations",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines -  Working model demonstrations.pdf"
+               },
+               {
+                "name":"Dynamics of Machines- Model Demonstrations",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines- Model Demonstrations.pdf"        
+
+               },
+               {
+                "name":"Heat & Mass Transfer - Active Learning",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Heat & Mass Transfer - Active Learning.pdf"       
+
+               },
+               {
+                "name":"Strength of Materials -Demonstration",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Strength of Materials -Demonstration.pdf"       
+
+               }
+          ]
+            
+          },
+           {
+            "year":"2023-2024",
+            "content":[
+              {
+                "name":"Introduction to Inernet of Things -Experimental Learning",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Introduction to Inernet of Things -Experimental Learning.pdf"
+               },
+               {
+                "name":"Manufacturing Automation -Case study",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Manufacturing Automation -Case study.pdf"        
+
+               },
+               {
+                "name":"Power Plant Engineering Real life Examples",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Power Plant Engineering Real life Examples.pdf"       
+
+               },
+               {
+                "name":"Solar Energy Conversion - Demonstration & Analysis",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Solar Energy Conversion - Demonstration & Analysis.pdf"       
+
+               }
+          ]
+            
+          },
+          {
+            "year":"2024-2025",
+            "content":[
+              {
+                "name":"Engineering Ethics - Feel-Think-Wonder",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2024-25/Engineering Ethics - Feel-Think-Wonder.pdf"
+               },
+               {
+                "name":"Hydraulics and Pnuematics Flipped Classroom",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2024-25/Hydraulics and Pnuematics Flipped Classroom.pdf"        
+
+               },
+               {
+                "name":"Power Plant Engineering- Real life Examples",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2024-25/Power Plant Engineering- Real life Examples.pdf"       
+
+               },
+               {
+                "name":"Solar Distillation – Demonstration & Analysis",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2024-25/Solar Distillation – Demonstration & Analysis.pdf"       
+
+               },
+               {
+                "name":"Strength of materials for mechanical engineers - Practical Demonstrationn",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2024-25/Strength of materials for mechanical engineers - Practical Demonstrationn.pdf"       
+
+               }
+          ]        
+          }
+        ]
       }
     ]
   },
