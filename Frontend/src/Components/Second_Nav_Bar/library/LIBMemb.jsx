@@ -3,9 +3,9 @@ import axios from "axios";
 import LoadComp from "../../LoadComp";
 
 const LIBMemb = ({ data }) => {
-  const members = data?.member_details || [];
-  const books = data?.no_of_books || [];
-  const cds = data?.periodical_back_volumes_cd || [];
+  const members = data.find(sec => sec.category === "Member Details")?.content ||[];
+  const books = data.find(sec => sec.category === "no_of_books")?.content ||[];
+  const cds = data.find(sec => sec.category === "periodical_back_volumes_cd")?.content ||[];
 
    if (!data) {
       return (
@@ -16,14 +16,14 @@ const LIBMemb = ({ data }) => {
     }
 
   return (
-    <div className="block overflow-x-auto px-4 sm:px-8 py-10">
+    <div className="block overflow-x-auto px-4 sm:px-8 py-10 font-[Poppins]">
   {data && (
     <>
       <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] dark:text-drkt text-center mb-8">
         Membership Details
       </h2> 
       <div className="flex justify-center md:justify-start">
-        <table className="lg:w-full w-[600px] mx-auto membership-table border border-gray-300 text-center">
+        <table className="lg:w-full w-[600px] mx-auto membership-table border border-gray-300 text-center text-sm">
           <thead className="bg-[#e5e7eb]">
             <tr className="text-text">
               <th className="border p-2">S. No</th>
@@ -33,12 +33,12 @@ const LIBMemb = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {members.map((member, idx) => (
+            {members?.map((member, idx) => (
               <tr key={idx}>
                 <td className="border p-2">{idx + 1}</td>
                 <td className="border p-2">{member}</td>
-                <td className="border p-2">{books[idx]}</td>
-                <td className="border p-2">{cds[idx]}</td>
+                <td className="border p-2">{books?.[idx]}</td>
+                <td className="border p-2">{cds?.[idx]}</td>
               </tr>
             ))}
           </tbody>

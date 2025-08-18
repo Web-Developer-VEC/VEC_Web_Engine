@@ -12,69 +12,20 @@ import Samplereact from './Components/Landing Comp/Courses';
 import Contact from './Components/Landing Comp/ContactIcon'
 import Chat from './Components/Landing Comp/ChatPopup'
 import Footer from './Components/Landing Comp/Footer';
-import axios from 'axios';
 import ScrollToTopButton from './Components/ScrollToTopButton';
-import { useNavigate } from "react-router";
 
 
-const LandingPage = ({theme, load, toggle}) => {
+const LandingPage = ({theme, load, toggle, pageData}) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-    const navigate = useNavigate();
-    const [pageDetails, setPageDetails] = useState(null);
-    const [bannerData, setBannerData] = useState([]);
-    const [departmentBanner, setDepartmentBanner] = useState([]);
-    const [notifications, setNotifications] = useState([]);
-    const [announcements, setAnnouncements] = useState([]);
-    const [specialAnnouncements, setSpecialAnnouncements] = useState([]);
-    const [events, setEvents] = useState([]);    
 
-    useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const res = await axios.post("/api/main-backend/landing_page_data", {
-            type: "landing_data"
-            });
-
-            const rawData = res.data?.data;
-
-            rawData.forEach((item) => {
-            switch (item.type) {
-                case "page_details":
-                    setPageDetails(item.data[0]); // only 1 object inside
-                    break;
-                case "banner":
-                    setBannerData(item.data);
-                    break;
-                case "department_banner":
-                    setDepartmentBanner(item.data);
-                    break;
-                case "notifications":
-                    setNotifications(item.data);
-                    break;
-                case "announcements":
-                    setAnnouncements(item.data);
-                    break;
-                case "special_announcements":
-                    setSpecialAnnouncements(item.data);
-                    break;
-                case "events":
-                    setEvents(item.data);
-                    break;
-                default:
-                    console.warn("Unhandled type:", item.type);
-            }
-            });
-        } catch (error) {
-            console.error("API error:", error);
-            if (error.response.data.status === 429) {
-                navigate('/ratelimit', { state: { msg: error.response.data.message}})
-            }
-        }
-        };
-
-        fetchData();
-    }, []);
+    const pageDetails = pageData?.find((item) => item.type === "page_details")?.data || [];
+    const bannerData = pageData?.find((item) => item.type === "banner")?.data || [];
+    const departmentBanner = pageData?.find((item) => item.type === "department_banner")?.data || [];
+    const notifications = pageData?.find((item) => item.type === "notifications")?.data || [];
+    const announcements = pageData?.find((item) => item.type === "announcements")?.data || [];
+    const specialAnnouncements = pageData?.find((item) => item.type === "special_announcements")?.data || [];
+    const events = pageData?.find((item) => item.type === "events")?.data || [];
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -103,8 +54,8 @@ const LandingPage = ({theme, load, toggle}) => {
             <ImgSld 
                 load={load} toggle={toggle} theme={theme} 
                 lst={notifications} 
-                ph={pageDetails?.phone_number}
-                email={pageDetails?.email}
+                ph={pageDetails[0]?.phone_number}
+                email={pageDetails[0]?.email}
             />
             <div className='w-max max-w-[100vw] h-fit absolute z-50'>
                 <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
@@ -117,7 +68,7 @@ const LandingPage = ({theme, load, toggle}) => {
                     <Samplereact courses={departmentBanner}/>
                     <Contact/>
                     {/* <Chat/> */}
-                    <Footer theme={theme} data={pageDetails}/>
+                    <Footer theme={theme} data={pageDetails[0]}/>
                 </div>
             </div>
             <ScrollToTopButton/>

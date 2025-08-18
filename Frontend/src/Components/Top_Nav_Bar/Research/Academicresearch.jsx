@@ -40,17 +40,19 @@ export default function Consultancy({ theme, toggle }) {
   }, [navigate]);
 
   const openPdf = (course) => {
-    const url = UrlParser(course?.pdf_path);
-    if (!url) return;
+    if (!course?.pdf_path || course.pdf_path.trim() === "") {
+      return; 
+    }
 
-    // Desktop: open modal, Mobile: open in new tab
+    const url = UrlParser(course.pdf_path);
+    const pdfData = { url, name: course?.year };
+
     if (window.innerWidth >= 1024) {
-      setSelectedPdf({ name: course.year, url });
+      setSelectedPdf(pdfData);
     } else {
       window.open(url, "_blank");
     }
   };
-
   const closeModal = () => {
     setSelectedPdf(null);
   };

@@ -42,8 +42,13 @@ export default function BookChapter({ theme, toggle }) {
   }, [navigate]);
 
   const handlePdfClick = (course) => {
-    const url = UrlParser(course?.pdf_path);
+    if (!course?.pdf_path || course.pdf_path.trim() === "") {
+      return; 
+    }
+
+    const url = UrlParser(course.pdf_path);
     const pdfData = { url, name: course?.year };
+
     if (window.innerWidth >= 1024) {
       setSelectedPdf(pdfData);
     } else {

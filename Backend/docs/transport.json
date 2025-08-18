@@ -1,0 +1,17 @@
+[
+  {
+    "type": "transport",
+    "data": [
+      {
+        "route": "/static/pdfs/transport/VELAMMAL_BUS_ROUTES 2024 - 25.pdf",
+        "image_path": [
+          "/static/images/Transport/Bus View 1.webp",
+          "/static/images/Transport/Bus View 2.webp",
+          "/static/images/Transport/Bus View 3.webp",
+          "/static/images/Transport/Bus View 4.webp",
+          "/static/images/Transport/Bus View 5.webp"
+        ]
+      }
+    ]
+  }
+]

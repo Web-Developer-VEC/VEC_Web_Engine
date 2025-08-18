@@ -1,0 +1,553 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "about_the_department_image_path": "/static/images/department_data/cyber.webp",
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "The Computer Science and Engineering (Cyber Security) course is a specialized branch of CSE that focuses on securing digital systems, networks, and data from cyber threats. It combines core computer science principles with specialized knowledge in Cyber Security. This program provides a strong foundation in computer science along with in-depth training in Cyber Security techniques, Ethical hacking, Cryptography, and Network Security. The curriculum is designed to equip students with skills to detect, prevent, and respond to cyber threats. It is a highly specialized and rewarding field with excellent career prospects. With Cyber threats increasing worldwide, there is a huge demand for skilled Cyber Security professionals. By combining technical expertise, ethical hacking skills, and knowledge of cyber laws, students can build a successful career in Cyber Security."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To be a center of excellence in cyber security education, research, and innovation—empowering professionals to safeguard digital assets and contribute to a secure cyber world through ethical practices and the adoption of cutting-edge technologies."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+          "To equip students with high-quality education and training in cyber security, fostering technical expertise and encouraging innovative research to address global cyber threats.",
+          "To nurture technically proficient engineers by raising awareness of the importance of securing digital infrastructure, promoting cyber security best practices, and empowering them to contribute to national and international cyber security initiatives.",
+          "To foster industry collaboration, enhance career readiness, and develop leadership skills among students.",
+          "To develop ethical cyber security professionals who contribute positively to society through responsible and impactful cyber security practices"
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Graduates will demonstrate a comprehensive understanding of cyber security principles, concepts, and practices."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Graduates will progress in their careers by upholding ethical standards, demonstrating professional responsibility, and adhering to legal and regulatory frameworks in the field of cyber security."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Graduates will excel as industry professionals or entrepreneurs by leveraging effective communication, teamwork, interpersonal skills, and leadership qualities."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Ability to understand, analyse and develop computer programs in the areas related to networking, cryptography, web development and database management by adhering software development life cycle."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Graduate students will be able to develop data, resource, and asset protection strategies for organizations, processes, peoples, and individuals through Cyber security-centric skills."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "006",
+            "name": "Dr. Rajalakshmi S",
+            "department_name": "Computer Science and Engineering (CYBER SECURITY)",
+            "unique_id": "VEC-006-01-135",
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
+            "hod_message": [
+              "It is my privilege to lead a dedicated team that works tirelessly to provide cutting-edge education and hands-on experience in the field of Cyber Security. Our curriculum focuses on key areas like network security, ethical hacking, and data protection, preparing students to tackle the challenges of a rapidly evolving digital world. With a strong emphasis on practical learning, industry collaboration, and innovation, we aim to equip our students with the skills necessary to secure the digital future."
+            ],
+            "hod_image": "/static/images/hods/cyber.webp",
+            "designation": "Associate Professor & Head, Dept of CSE(Cyber Security)",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
+              "googlescholar": "https://scholar.google.com/citations?user=vQoy5VEAAAAJ&hl=en",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200",
+              "orchidprofile": "https://orcid.org/0000-0002-2963-9057",
+              "researchgate": "https://www.researchgate.net/profile/S-Rajalakshmi-2"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [
+          {
+            "name": "Dr. RAJALAKSHMI S\n",
+            "designation": "Associate Professor & Head",
+            "unique_id": "VEC-006-03-039",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
+              "googlescholar": "https://scholar.google.com/citations?user=vQoy5VEAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/S-Rajalakshmi-2",
+              "orchidprofile": "https://orcid.org/0000-0002-2963-9057",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
+            },
+            "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+            {
+              "name": "Ms. AKSAYA DHARANI K",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-035",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "https://www.researchgate.net/profile/Aksaya-Dharani?ev=hdr_xprf",
+                "orchidprofile": "https://orcid.org/0009-0008-4404-8248?lang=en",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-035.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. PARVEEN BANU M",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-034",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/parveenbanu-iqbal-bb990934b/",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "https://orcid.org/0009-0007-4097-7253?lang=en",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-034.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. RUBA ARUMUGAM",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-641",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-641.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. PRAISEWIN C",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-642",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-642.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. NIRANJANA DEVI J",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-643",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-643.webp",
+              "resume_pdf": ""
+            },
+            {
+              "name": "Mrs. PRAMILA K",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-644",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
+              "resume_pdf": ""
+            }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": []
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+          {
+            "heading":"Curriculum & Syllabus",
+            "syllabus": [
+              {
+                "year": "R - 2023",
+                "pdf_path":"/static/pdfs/curriculum/006/reg_23.pdf"
+              }
+                ]
+              }
+            ]
+          }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year":"2025",
+            "activities": [
+              {
+                "date": "18/02/2025",
+                "name_of_event": "Seminar on Burp Suite: A Cybersecurity Tool ",
+                "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+                "resource_person": "Mr.Karthikeyan , Logitech Product Security",
+                "beneficiaries": "II year CSE (Cyber Security)",
+                "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+                "image_path": "/static/images/dept_activities/006/3.webp"
+              },
+              {
+                "date": "20/02/2025",
+                "name_of_event": "Seminar on The  Art of Hacking – Cyber Security ",
+                "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+                "resource_person": "Mr.Sriram Kesavan, Founder, TG CyberLabs",
+                "beneficiaries": "II year CSE (Cyber Security)",
+                "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+                "image_path": "/static/images/dept_activities/006/4.webp"
+              },
+              {
+                "date": "27/02/2025",
+                "name_of_event": "  Seminar on  Thick Client Pentesting: Exploiting the Unseen Vulnerabilities",
+                "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+                "resource_person": "Mr.Karthikeyan , Product Security Manager, Logitech",
+                "beneficiaries": "II year CSE (Cyber Security)",
+                "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1,PSO2",
+                "image_path": "/static/images/dept_activities/006/5.webp"
+              }
+            ]
+          },
+          {
+            "year":"2024",
+            "activities": [
+              {
+                "date": "17/08/2024",
+                "name_of_event": "A Seminar On A Game World-Introduction to C# ",
+                "coordinator": "Ms.M.ParveenBanu, Ms.K.AksayaDharani",
+                "resource_person": "Ms.ManishmaSundarajan – Sr Software Engineer, Light&Wonder",
+                "beneficiaries": "2nd year CSE (Cyber Security )",
+                "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO5,PO12,PSO1",
+                "image_path": "/static/images/dept_activities/006/1.webp"
+              },
+              {
+                "date": "24/09/2024",
+                "name_of_event": "A Seminar  on How to Prepare for MSME Idea Hacksthon 4.0 ",
+                "coordinator": "Dr.S.Rajalakshmi",
+                "resource_person": "MSME Idea Hackathon 2.0 & 3.0 Winners",
+                "beneficiaries": "SIH participants",
+                "relevant_PO_PSO": "PO1,PO2,PO3,PO4,PO12,PSO1",
+                "image_path": "/static/images/dept_activities/006/2.webp"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+          "Student’s achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. Excelling in academics and securing top grades showcase their commitment to learning, while their talent in sports, arts, and extracurricular activities reflects well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while involvement in community service projects demonstrates their commitment to making a positive impact. These accomplishments not only inspire their peers but also open doors to future opportunities, building confidence and laying a strong foundation for lifelong success."
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/006/1.webp",
+            "event_name": "South India Championship at Hyderabad in powerlifting",
+            "image_content": "II year Student ABISHEK PAUL JOSHUA VS Won Gold Medal and Overall Championship in power lifting held by South India Championship at Hyderabad in powerlifting on the academic year   2024-2025 , he was awarded with a medal and a trophy",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/006/2.webp",
+            "event_name": "National Powerlifting Championship",
+            "image_content": "II year Student ABISHEK PAUL JOSHUA VS Won bronze Medal in National Powerlifting Championship  organized by Chhattisgarh Power Lifting Association  at Chhattisgarh on the academic year   2024-2025 ",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/006/3.webp",
+            "event_name": "Hyperledger India Chapter Student Society Technial Quiz",
+            "image_content": "II year student GURUPRASANTH M and ADARSH AG Won FIRST AND SECOND price in technical quiz held on 21 January 2025 organized by Hyperledger India Chapter Student Society Chapter- VEC : Blockchain Club ",
+            "date": "2025-01-21"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/006/1.webp",
+            "image_name": "CLASS ROOM",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/006/2.webp",
+            "image_name": "LABORATORY FACILITIES",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/006/3.webp",
+            "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/006/4.webp",
+            "image_name": "RESEARCH LABORATORY",
+            "image_content": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            "S_NO": 1,
+            "ORGANISATION_NAME": "TechGreech Cyberlabs Private Limited",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 2,
+            "ORGANISATION_NAME": "Azefox Innovations",
+            "MONTH_AND_YEAR": "",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            
+            "name": "Computer Science and Engineering (CYBER SECURITY)",
+            "dept_id": "006"
+          }
+        ]
+      }
+    ]
+  }
+]

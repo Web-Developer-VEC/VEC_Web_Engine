@@ -6,7 +6,8 @@ import LoadComp from '../../../LoadComp';
 const ImageCarousel = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
-  const images = data?.images || [];
+  const student_achievements_content = data?.find((item) => item.category === "student_achievements_content")?.content || [];
+  const student_achievements_details = data?.find((item) => item.category === "student_achievements_details")?.images || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,27 +26,27 @@ const ImageCarousel = ({ data }) => {
   };
 
   useEffect(() => {
-    if (images.length > 0) setCurrentIndex(0);
-  }, [images]);
+    if (student_achievements_details?.length > 0) setCurrentIndex(0);
+  }, [student_achievements_details]);
 
  const [isPaused, setIsPaused] = useState(false);
 
 useEffect(() => {
-  if (images.length === 0 || isPaused) return;
+  if (student_achievements_details?.length === 0 || isPaused) return;
 
   const interval = setInterval(() => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === student_achievements_details?.length - 1 ? 0 : prev + 1));
   }, 8000);
 
   return () => clearInterval(interval);
-}, [images, isPaused])
+}, [student_achievements_details, isPaused])
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === student_achievements_details?.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? student_achievements_details?.length - 1 : prev - 1));
   };
 
   if (!data)
@@ -56,16 +57,18 @@ useEffect(() => {
     );
 
   return (
-    <div className="carousel-container">
-      {images.length > 0 ? (
+    <div className="carousel-container font-[Poppins]">
+      {student_achievements_details?.length > 0 ? (
         <>
           {/* 🔹 Section Heading */}
-          <div className="intro-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h1 className="intro-title text-accn dark:text-drkt">
-              <i className="inline-block mr-2 mb-1" /> Student Achievements
-            </h1>
-            <p className="intro-text-act text-text dark:text-drkt">{data.content}</p>
-          </div>
+          <h1 className="intro-title text-accn dark:text-drkt font-[Poppins]">
+             Student Achievements
+          </h1>
+          {student_achievements_content?.length > 0 && (
+            <div className="intro-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] font-[Poppins]">
+              <p className="intro-text-act text-text dark:text-drkt">{student_achievements_content?.[0]}</p>
+            </div>   
+          )}
 
           {/* 🔹 Carousel Wrapper */}
           <div className="carousel-wrapper">
@@ -77,7 +80,7 @@ useEffect(() => {
                 transition: 'transform 0.3s ease',
               }}
             >
-              {images.map((item, index) => (
+              {student_achievements_details?.map((item, index) => (
                 <div
                   key={index}
                   className="carousel-slide"
@@ -85,11 +88,11 @@ useEffect(() => {
                 >
                   <div className="image-wrapper">
                     <img
-                      src={UrlParser(item.image_path)}
-                      alt={item.event_name}
+                      src={UrlParser(item?.image_path)}
+                      alt={item?.event_name}
                       className="carousel-image"
                     />
-                    {item.status && (
+                    {item?.status && (
                       <button
                         className="know-more-button"
                           onClick={() => {
@@ -109,16 +112,16 @@ useEffect(() => {
             {selectedImage && (
               <div className="modal-overlay" onClick={closeModal}>
                 <div className="modal-stud" onClick={(e) => e.stopPropagation()}>
-                  {selectedImage.video_link && (
+                  {selectedImage?.video_link && (
                     <>
-                        <h2 className={`description-title text-accn dark:text-drka ${images[currentIndex]?.image_content ? "" : "text-center"}`}>
-                          {images[currentIndex]?.event_name}
+                        <h2 className={`description-title text-accn dark:text-drka ${student_achievements_details[currentIndex]?.image_content ? "" : "text-center"}`}>
+                          {student_achievements_details[currentIndex]?.event_name}
                         </h2>
                         <p className="description-text-act">
-                          {images[currentIndex]?.image_content}
+                          {student_achievements_details[currentIndex]?.image_content}
                         </p>
                       <a
-                        href={selectedImage.video_link}
+                        href={selectedImage?.video_link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="youtube-link"
@@ -143,11 +146,11 @@ useEffect(() => {
 
           {/* 🔹 Image Description Box */}
           <div className="description-box bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]">
-            <h2 className={`description-title text-accn dark:text-drka ${images[currentIndex]?.image_content ? "" : "text-center"}`}>
-              {images[currentIndex]?.event_name}
+            <h2 className={`description-title text-accn dark:text-drka ${student_achievements_details?.[currentIndex]?.image_content ? "" : "text-center"}`}>
+              {student_achievements_details?.[currentIndex]?.event_name}
             </h2>
             <p className="description-text-act">
-              {images[currentIndex]?.image_content}
+              {student_achievements_details?.[currentIndex]?.image_content}
             </p>
           </div>
         </>

@@ -83,7 +83,6 @@ body {
 
 .section-card ul {
   padding-left: 20px;
-  list-style-type: disc;
 }
 
 .section-card li {
@@ -266,6 +265,7 @@ body {
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .section-card h2 {
@@ -532,11 +532,12 @@ body {
   }
 
   .section-card p,
-  .section-card ul {
-    font-size: 16px;
+  .section-card ul,
+  .section-card li,
+  .accordion-body.show {
+    font-size: 14px;
     line-height: 1.5;
   }
-
   .vision-quote {
     font-size: 24px;
   }

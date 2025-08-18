@@ -10,7 +10,7 @@ const LibraryIntro = ({about}) => {
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
-
+  
   function parse(cnt) {
         let lis = [];
         cnt.split("\n").map((mxt) => {
@@ -39,7 +39,7 @@ const LibraryIntro = ({about}) => {
         </div>
       ) : (
 
-      <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10">
+      <div className="min-h-screen flex flex-wrap items-center justify-start px-3 sm:px-5 md:px-10 py-6 sm:py-10 font-[Poppins]">
           <div className="max-w-7xl self-start basis-full w-full rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
               {/* Text Content */}
               <div
@@ -49,29 +49,29 @@ const LibraryIntro = ({about}) => {
                     </h1>
 
 
-                  <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-sm sm:text-base text-justify md:text-lg leading-relaxed">
                       The college library is located in the Bill Gates Block, spanning the Ground and First floors. With
                       a total
-                      area of <span className="font-semibold text-text dark:text-drkt">{about?.Area}</span>, it is a
+                      area of <span className="font-semibold text-text dark:text-drkt">{about[0]?.Area}</span>, it is a
                       spacious,
                       well-ventilated space. Our library houses over <span
                       className="font-semibold text-text dark:text-drkt">
-                    {about?.no_of_books}</span> of books and <span
-                      className="font-semibold text-text dark:text-drkt">{about?.no_of_titles} titles</span> across
+                    {about[0]?.no_of_books}</span> of books and <span
+                      className="font-semibold text-text dark:text-drkt">{about[0]?.no_of_titles} titles</span> across
                       various
                       disciplines.
                   </p>
-                  <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-sm sm:text-base text-justify md:text-lg leading-relaxed">
                       Additionally, we offer access to <span className="font-semibold text-text dark:text-drkt">
-            {about?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
-            {about?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
+                        {about[0]?.no_of_journals} Journals</span> and over <span className="font-semibold text-text dark:text-drkt">
+                        {about[0]?.no_of_online_journals} online journals</span>. The library follows the Universal Decimal
                       Classification Scheme and operates
                       on an Open Access System.
                   </p>
 
                   {/* Library Timings */}
                   <div className="bg-prim dark:bg-drkp p-3 sm:p-5 rounded-xl border border-yellow-100">
-                      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Library Timings</h2>
+                      <h2 className="text-lg sm:text-xl font-bold text-brwn mb-2 sm:mb-4">Library Timings</h2>
                       <ul className="space-y-1 text-xs sm:text-sm md:text-lg">
                           <li className="flex items-center space-x-2">
                               <span className="w-2 h-2 bg-secd dark:bg-drks rounded-full"></span>
@@ -104,12 +104,12 @@ const LibraryIntro = ({about}) => {
                   <div className={`lg:basis-[49%] border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
                   bg-prim dark:bg-drkb`} >
                       <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">Vision</p>
-                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about?.vision}</p>
+                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about[0]?.vision}</p>
                   </div>
                   <div className={`lg:basis-[49%] border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full
                   bg-prim dark:bg-drkb`} >
                       <p className="text-[#800000] dark:text-drkt text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd dark:border-drks inline-block pb-1">Mission</p>
-                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about?.mission}</p>
+                      <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-poppins text-justify">{about[0]?.mission}</p>
                   </div>
           </div>    
           <div className="h-auto py-10 px-4 sm:px-6 flex flex-col items-center text-center w-full">
@@ -117,7 +117,7 @@ const LibraryIntro = ({about}) => {
                     GENERAL INSTRUCTIONS
                 </h2>
                 <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-                    {about?.general_instructions?.map((instruction, index) => (
+                    {about[0]?.general_instructions?.map((instruction, index) => (
                         <motion.div
                         key={index}
                         className="relative dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
