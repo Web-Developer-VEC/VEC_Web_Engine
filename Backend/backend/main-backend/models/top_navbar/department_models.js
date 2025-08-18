@@ -5,6 +5,7 @@ const allowedtypes = new Set([
   'curriculum_and_syllabus',
   'newsletter',
   'activities',
+  'pedagogy',
   'student_achievements',
   'infrastructure',
   'mous',

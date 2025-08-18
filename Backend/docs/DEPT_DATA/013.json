@@ -21,7 +21,7 @@
       {
         "category": "department_vision",
         "content": [
-         "Producing competent Mechanical Engineers by imparting quality education blended with human values, as potential contributors to the industrial development of the nation leading to the well being of the future generation."
+         "Producing competent Mechanical Engineers by imparting quality education blended with human values, as potential contributors to the industrial development of the nation leading to the well-being of the future generation."
         ]
       },
       {
@@ -40,7 +40,7 @@
         "content": [
           {
             "header": "PEO 1",
-            "content":"Successful profession in Mechanical or allied Industries or Research/Academics or business enterprise."
+            "content":"Successful profession in Mechanical or allied Industries or Research /Academics or business enterprise."
           },
           {
             "header": "PEO 2",
@@ -668,6 +668,25 @@
          }
 
         ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/mech.webp",
+            "name": "Mechanical Engineering (MECH)",
+            "dept_id": "013"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
       }
     ]
   },

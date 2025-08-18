@@ -416,6 +416,25 @@
     ]
   },
   {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/physics.webp",
+            "name": " Physics",
+            "dept_id": "015"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
+      }
+    ]
+  },
+  {
     "type": "student_achievements",
     "data": [
       {

@@ -24,16 +24,16 @@
       {
         "category": "department_vision",
         "content": [
-          "To achieve value based education and bring idealistic, ethical engineers to meet the thriving trends and technology in the field of Artificial Intelligence and Data Science"
+          "To develop AI & Data Science professionals with strong ethical values, innovative thinking, and research acumen, enabling them to address global challenges and drive technological advancements in the industry."
         ]
       },
       {
         "category": "department_mission",
         "content": [
-            "To engage students with the core competence to solve real world problems using Artificial Intelligence.",
-            "To enlighten students into technically proficient engineers through innovation in Data Science.",
-            "To involve students with industry collaboration, career guidance and leadership skills.",
-            "To mould students as ethical professionals to bring morals to individual and society."
+            "To equip students with core competencies to solve real-world problems using Artificial Intelligence.",
+            "To nurture technically proficient engineers through innovation and research in Data Science.",
+            "To foster industry collaboration, career readiness, and leadership skills among students.",
+            "To develop ethical professionals who contribute positively to society through responsible AI and Data Science applications."
         ]
       },
       {
@@ -733,6 +733,31 @@
            ]
             }
 
+        ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": 
+        [
+          {
+            "name":"",
+            "pdf_path":""
+          }
         ]
       }
     ]

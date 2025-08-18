@@ -346,6 +346,39 @@
         "brochure_path": "/static/images/events/dccog.webp",
         "website_link": "",
         "status": "True"
+      },
+       {
+        "start_date":"18 AUG",
+        "end_date": "22 AUG, 2025",
+        "date": "18-08-2025",
+        "title": "Essentials of Artificial Intelligence and Machine Learning",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/eaiml.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"19 AUG",
+        "end_date": "19 AUG, 2025",
+        "date": "19-08-2025",
+        "title": "3D - ANIMATION",
+        "department": "Computer Science Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/3D.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"22 AUG",
+        "end_date": "22 AUG, 2025",
+        "date": "22-08-2025",
+        "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
+        "department": "Electrical & Electronics Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/GOITSEI.webp",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }

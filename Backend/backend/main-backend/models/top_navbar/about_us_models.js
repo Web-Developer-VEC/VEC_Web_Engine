@@ -3,7 +3,8 @@ const allowedtypes = new Set([
   'about_trust',
   'vision_and_mission',
   'Management',
-  'contact_us'
+  'contact_us',
+  'AISHE'
 ]);
 
 module.exports = allowedtypes;
