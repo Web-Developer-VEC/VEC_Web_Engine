@@ -189,6 +189,10 @@
       },
       "year_wise_pdfs": [
         {
+          "year": "*2024-25",
+          "pdf_path": "/static/pdfs/placement_docs/placements_24-25.pdf"
+        },
+        {
           "year": "2023-24",
           "pdf_path": "/static/pdfs/placement_docs/placements_23-24.pdf"
         },
