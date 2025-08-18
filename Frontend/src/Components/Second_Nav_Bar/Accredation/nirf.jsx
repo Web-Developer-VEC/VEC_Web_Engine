@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./nirf.css";
 import LoadComp from "../../LoadComp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const NIRF = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -12,7 +10,6 @@ const NIRF = ({ data }) => {
   };
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [selectedPdf, setSelectedPdf] = useState(null);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -28,18 +25,9 @@ const NIRF = ({ data }) => {
   }, []);
 
   const handlePdfClick = (cat) => {
-    if (window.innerWidth >= 768) {
-      setSelectedPdf({
-        url: `${UrlParser(cat.pdf_path)}#toolbar=0`,
-        name: cat.name,
-      });
-    } else {
-      window.open(`${UrlParser(cat.pdf_path)}#toolbar=0`, "_blank");
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedPdf(null);
+    if (!cat?.pdf_path) return;
+    const url = `${UrlParser(cat.pdf_path)}#toolbar=0`;
+    window.open(url, "_blank"); // Always open in new tab
   };
 
   if (!isOnline) {
@@ -110,23 +98,6 @@ const NIRF = ({ data }) => {
           feedback.nirf@velammal.edu.in
         </a>
       </p>
-
-      {/* PDF Modal */}
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
