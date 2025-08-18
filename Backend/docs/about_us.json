@@ -82,5 +82,71 @@
       "Student Affair": "044 - 26591771",
       "For Admissions": "9123547550 , 8939221120"
     }
-  }
+  },
+  {
+    "type": "AISHE",
+    "data": 
+      [
+          {
+            "year":"2021-2022",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+          },
+           {
+            "year":"2022-2023",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+          },
+           {
+            "year":"2023-2024",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+            }
+ ]
+}
 ]
