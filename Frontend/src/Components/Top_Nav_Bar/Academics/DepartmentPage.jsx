@@ -10,6 +10,7 @@ import Newsletter from "./sections/newsletter";
 import Faculties from "./sections/Faculties";
 import ImageCarousel from "./sections/Student_activities";
 import CurriculumPage from "./sections/CurriculamPage";
+import Pedagogy from "./sections/Pedagogy";
 import MOU from "./sections/mou";
 import Research from "./sections/RD";
 import EventOrg from "./sections/event";
@@ -84,6 +85,7 @@ const DepartmentPage = ({ theme, toggle }) => {
         "Vision&Mission": "vision_and_mission",
         "Faculties": "faculty",
         "Activities": "activities",
+        "Pedagogy": "pedagogy",
         "Syllabus": "curriculum_and_syllabus",
         "Infrastructure": "infrastructure",
         "StudentAchievments": "student_achievements",
@@ -181,6 +183,8 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Faculties data={sectionData} />;
       case "Activities":
         return <Activities data={sectionData} />;
+      case "Pedagogy":
+        return <Pedagogy data={sectionData} />;
       case "Syllabus":
         return <CurriculumPage data={sectionData} />;
       case "Infrastructure":
@@ -190,7 +194,7 @@ const DepartmentPage = ({ theme, toggle }) => {
       case "Mous":
         return <MOU data={sectionData} />;
       case "Research":
-        return <Research data={sectionData} />;
+        return <Research data={sectionData} />; 
       case "NewsLetter":
         return <Newsletter data={sectionData} />;
       case "Event Organizer":
