@@ -35,7 +35,7 @@ deptMap = {
 }
 
 def insert_department_data_sections():
-    base_path = "/VEC_Web_Engine/docs/DEPT_DATA/"
+    base_path = "/root/VEC_Web_Engine/Backend/docs/DEPT_DATA/"
     for dept_id, collection_name in deptMap.items():
         file_path = f"{base_path}{dept_id}.json"
         collection = db[collection_name]
@@ -339,7 +339,7 @@ def insert_about_us():
 def insert_help_desk_sections():
     collection = db["help_desk"]
 
-    with open("/root/VEC_Web_Engine/Backend/help_desk.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/Backend/docs/help_desk.json", "r", encoding="utf-8") as file:
         help_desk_data = json.load(file)
 
         
@@ -515,7 +515,7 @@ def insert_research_data():
 
     print("Research data inserted successfully.")
 
-create_logs_collection()
+#create_logs_collection()
 insert_help_desk_sections()
 insert_landing_page_sections()
 insert_sports_sections()
