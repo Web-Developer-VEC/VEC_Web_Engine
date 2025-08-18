@@ -16,15 +16,13 @@
       {
         "category": "about_the_department",
         "content": [
-          "The department of Electrical and Electronics Engineering at Velammal Engineering College with its rich and traditional academic ambiance targets both the theory and the practical applications of engineering and technology to handle global challenges of the present and future scenarios.",
-          "The department is celebrating 25 years of academic excellence since 1995. All the departmental activities are NBA Accredited since 2002 and also ISO certified.",
-          "With academic autonomy, it offers variety of courses across a wide spectrum of specialized topics in UG, PG and PhD level under choice-based credit system in concurrence with the modern technological advancements and industrial requirements."
+          "The Department of Electrical and Electronics Engineering at Velammal Engineering College, established in 1995, has a proud legacy of 25 years of academic excellence. It blends strong theoretical foundations with practical applications to prepare students for global challenges. Accredited by the National Board of Accreditation (NBA) since 2002 and ISO certified, the department maintains the highest quality standards. With academic autonomy, it designs innovative, industry-relevant curricula and offers programs at the UG, PG, and PhD levels under the Choice-Based Credit System (CBCS). Covering a wide spectrum of modern technological domains, its courses are closely aligned with evolving industrial requirements and advancements. Highly qualified faculty members foster excellence in teaching, research, and innovation, ensuring the holistic development of students. The department remains committed to producing competent and responsible engineers capable of contributing to society and industry at a global scale."
         ]
       },
       {
         "category": "department_vision",
         "content": [
-          "Imparting high quality education and grooming of competent Electrical and Electronics Engineers to cater to the global needs of Academics, Industry and Society"
+          "Imparting high quality education and grooming of competent Electrical and Electronics Engineers to cater to the global needs of Academics, Industry and Society."
         ]
       },
       {
@@ -150,12 +148,13 @@
               "In the era of engineering and technology, the role of electrical student engineers is not only to pursue academic excellence but also to motivate and empower to be lifelong learners, critical thinkers, and productive members of an ever-changing global society. In this direction, the department provides an excellent environment for our students and faculties to work with zeal and enthusiasm with an aim to give their best. The department also provides facilities to carry out research in the emerging technology areas. The commitment and passion for learning and teaching by the students as well as faculties will definitely lead our future budding engineers to be industry ready."
             ],
             "hod_image": "/static/images/hods/eee.webp",
-            "designation": "Associate Professor & Head",
+            "designation": "Professor & Head",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
               "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
               "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar",
               "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-4823-3597",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/JKH-6279-2023",
               "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf"
             }
           }
@@ -181,14 +180,14 @@
         "members": [
           {
             "name": "Dr. SURESHKUMAR K",
-            "designation": "Associate Professor & Head in Charge",
+            "designation": "Professor & Head",
             "unique_id": "VEC-007-03-500",
             "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
               "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
               "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf",
               "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-4823-3597",
-              "publonprofile": "",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/JKH-6279-2023",
               "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-03-500.webp",
@@ -697,6 +696,25 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/eee.webp",
+            "name": "Electrical & Electronics Engineering (EEE)",
+            "dept_id": "007"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
       }
     ]
   },
