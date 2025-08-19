@@ -580,7 +580,8 @@
           {
             "year": "2024",
             "pdf_path": [
-              "/static/pdfs/newsletter/013/JUNE 2024.pdf"
+              "/static/pdfs/newsletter/013/JUNE 2024.pdf",
+              "/static/pdfs/newsletter/013/DECEMBER 2024.pdf"
             ]
           }
         ]
@@ -686,57 +687,7 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": [
-          {
-            "year":"2022-2023",
-            "content":[
-              {
-                "name":"Dynamics of Machines -  Working model demonstrations",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines -  Working model demonstrations.pdf"
-               },
-               {
-                "name":"Dynamics of Machines- Model Demonstrations",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines- Model Demonstrations.pdf"        
-
-               },
-               {
-                "name":"Heat & Mass Transfer - Active Learning",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Heat & Mass Transfer - Active Learning.pdf"       
-
-               },
-               {
-                "name":"Strength of Materials -Demonstration",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Strength of Materials -Demonstration.pdf"       
-
-               }
-          ]
-            
-          },
-           {
-            "year":"2023-2024",
-            "content":[
-              {
-                "name":"Introduction to Inernet of Things -Experimental Learning",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Introduction to Inernet of Things -Experimental Learning.pdf"
-               },
-               {
-                "name":"Manufacturing Automation -Case study",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Manufacturing Automation -Case study.pdf"        
-
-               },
-               {
-                "name":"Power Plant Engineering Real life Examples",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Power Plant Engineering Real life Examples.pdf"       
-
-               },
-               {
-                "name":"Solar Energy Conversion - Demonstration & Analysis",
-                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Solar Energy Conversion - Demonstration & Analysis.pdf"       
-
-               }
-          ]
-            
-          },
+        "content": [         
           {
             "year":"2024-2025",
             "content":[
@@ -765,6 +716,56 @@
 
                }
           ]        
+          },
+           {
+            "year":"2023-2024",
+            "content":[
+              {
+                "name":"Introduction to Inernet of Things -Experimental Learning",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Introduction to Inernet of Things -Experimental Learning.pdf"
+               },
+               {
+                "name":"Manufacturing Automation -Case study",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Manufacturing Automation -Case study.pdf"        
+
+               },
+               {
+                "name":"Power Plant Engineering Real life Examples",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Power Plant Engineering Real life Examples.pdf"       
+
+               },
+               {
+                "name":"Solar Energy Conversion - Demonstration & Analysis",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2023-24/Solar Energy Conversion - Demonstration & Analysis.pdf"       
+
+               }
+          ]
+            
+          },
+          {
+            "year":"2022-2023",
+            "content":[
+              {
+                "name":"Dynamics of Machines -  Working model demonstrations",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines -  Working model demonstrations.pdf"
+               },
+               {
+                "name":"Dynamics of Machines- Model Demonstrations",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Dynamics of Machines- Model Demonstrations.pdf"        
+
+               },
+               {
+                "name":"Heat & Mass Transfer - Active Learning",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Heat & Mass Transfer - Active Learning.pdf"       
+
+               },
+               {
+                "name":"Strength of Materials -Demonstration",
+                "pdf_path":"/static/pdfs/Pedagogy/013/2022-23/Strength of Materials -Demonstration.pdf"       
+
+               }
+          ]
+            
           }
         ]
       }
