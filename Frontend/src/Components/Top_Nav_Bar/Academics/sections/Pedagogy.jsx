@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './pedagogy.css';
 
 const Pedagogy = ({ data }) => {
   const [activeYear, setActiveYear] = useState(null);
@@ -31,7 +32,7 @@ const Pedagogy = ({ data }) => {
   return (
     <>
       {pedagogyContent?.length > 0 ? (
-        <div className="p-6 mt-4 pb-10">
+        <div className="p-6 mt-4 pb-10 font-[poppins]">
           {/* Year buttons */}
           <div className="flex flex-wrap justify-center gap-6 mb-6">
             {pedagogyContent.map((yearItem) => (
@@ -54,19 +55,19 @@ const Pedagogy = ({ data }) => {
 
           {/* PDF Buttons */}
           {activeYear && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 place-items-center">
+            <div className="grid grid-cols-1 font-[poppins] sm:grid-cols-2  gap-4 mt-8 place-items-center">
               {activeContent.map((pdfItem, idx) => (
                 <div
                   key={idx}
                   className={`w-full ${
                     isOdd && idx === activeContent.length - 1
-                      ? "col-span-2 flex justify-center"
+                      ? "sm:col-span-1 md:col-span-2 flex justify-center"
                       : ""
                   }`}
                 >
                   <button
                     onClick={() => handlePdfClick(pdfItem.pdf_path)}
-                    className="w-[500px] h-[70px] px-5 py-2 rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
+                    className="w-[500px] pdgbtn  h-[70px] py-2 px-5  rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
                   >
                     {pdfItem.name}
                   </button>
