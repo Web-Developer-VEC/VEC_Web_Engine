@@ -57,12 +57,13 @@ const AbtYear = ({ toggle, theme }) => {
       return <p style={{ textAlign: "center" }}>No data available for {selectedYear}</p>;
     }
     return (
-      <div style={{ padding: "2rem", textAlign: "center" }}>
-        <h1 className="yr-title">{yearData.year}</h1>
+      <div className="mt:[15px] py-[10px] h-[400px]"> 
+      <div style={{  textAlign: "center" }}>
+        <h1 className="yr-title mt-[30px] font-[poppins]">{yearData.year}</h1>
         <div className="btn-yr text-black">
           {yearData.content.map((entry, index) => (
             <button
-              className="button-yr "
+              className="button-yr font-[poppins] "
               key={index}
               onClick={() => openInNewTab(entry.pdf_path)}
             >
@@ -70,6 +71,7 @@ const AbtYear = ({ toggle, theme }) => {
             </button>
           ))}
         </div>
+      </div>
       </div>
     );
   };
