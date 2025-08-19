@@ -1,59 +1,83 @@
-import axios from "axios";
-import { React, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-const Pedagogy = ({data}) => {
-  const [activeButtonName, setActiveButtonName] = useState(null);
-  const [pedagogyData, setPedagogyData] = useState([]);
+const Pedagogy = ({ data }) => {
+  const [activeYear, setActiveYear] = useState(null);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const handleButtonClick = (pdfItem) => {
-    setActiveButtonName(pdfItem.name);
-    if (pdfItem.pdf_path) {
-      window.open(UrlParser(pdfItem.pdf_path), '_blank');
+  const pedagogyCategory = data.find(
+    (item) => item.category === "Pedagogy Initiatives"
+  );
+  const pedagogyContent = pedagogyCategory ? pedagogyCategory.content : [];
+
+  const handleYearClick = (year) => {
+    setActiveYear(activeYear === year ? null : year); // toggle active year
+  };
+
+  const handlePdfClick = (pdfPath) => {
+    if (pdfPath) {
+      window.open(UrlParser(pdfPath), "_blank");
     }
   };
-  console.log(data);
-  
-  // Get the "Pedagogy Initiatives" content
-  const pedagogyCategory = data.find(item => item.category === "Pedagogy Initiatives");
-  const pedagogyContent = pedagogyCategory ? pedagogyCategory.content : [];
+
+  // ✅ These two lines were missing:
+  const activeContent =
+    pedagogyContent.find((item) => item.year === activeYear)?.content || [];
+  const isOdd = activeContent.length % 2 === 1;
 
   return (
     <>
-      {data?.length > 0 ? (
+      {pedagogyContent?.length > 0 ? (
         <div className="p-6 mt-4 pb-10">
-          <div className="flex flex-col md:flex-row justify-center gap-8 mb-6">
-            {pedagogyContent?.map((item, index) => (
+          {/* Year buttons */}
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {pedagogyContent.map((yearItem) => (
               <button
-                key={item.name || index}
+                key={yearItem.year}
                 type="button"
-                onClick={() => handleButtonClick(item)}
-                className={`px-6 py-3 font-semibold rounded-xl hover:text-white transition-all
-                  ${activeButtonName === item?.name ?"bg-[#800000] text-white" : "bg-secd dark:bg-drks"
-      } 
-                   hover:bg-[#a00000]`}
-                disabled={!item.pdf_path}
+                onClick={() => handleYearClick(yearItem.year)}
+                className={`px-6 py-3  font-semibold rounded-xl transition-all hover:text-prim
+                  ${
+                    activeYear === yearItem.year
+                      ? "bg-[#800000] text-prim"
+                      : "bg-[#fdcc03] text-text"
+                  }
+                  hover:bg-[#800000] hover:text-white`}
               >
-                {item?.name}
+                {yearItem.year}
               </button>
             ))}
           </div>
 
-          {!activeButtonName && (
-            <div className="text-center text-gray-700 dark:text-gray-300 mt-20">
-              {/* Click a button to open the Pedagogy PDF. */}
+          {/* PDF Buttons */}
+          {activeYear && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 place-items-center">
+              {activeContent.map((pdfItem, idx) => (
+                <div
+                  key={idx}
+                  className={`w-full ${
+                    isOdd && idx === activeContent.length - 1
+                      ? "col-span-2 flex justify-center"
+                      : ""
+                  }`}
+                >
+                  <button
+                    onClick={() => handlePdfClick(pdfItem.pdf_path)}
+                    className="w-[500px] h-[70px] px-5 py-2 rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
+                  >
+                    {pdfItem.name}
+                  </button>
+                </div>
+              ))}
             </div>
           )}
         </div>
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-          {/* You can show a loading component here */}
+          {/* Optionally add a loader or fallback message here */}
         </div>
       )}
     </>
@@ -61,3 +85,4 @@ const Pedagogy = ({data}) => {
 };
 
 export default Pedagogy;
+
