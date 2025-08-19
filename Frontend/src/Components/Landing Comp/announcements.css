@@ -4,15 +4,13 @@
     padding: 1.25rem;
     width: 100%;
     box-sizing: border-box;
-    z-index: 1; /* Ensure it stays above other components */
-    /* height: fit-content; */
+    z-index: 1;
 }
 
 .announcement-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* height: 50vh; */
     gap: 1rem;
 }
 
@@ -121,7 +119,7 @@
 .announcements-card {
     width: 100%;
     padding: 1rem 0;
-    margin-bottom: 2rem; /* Added margin to prevent hiding */
+    margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -145,35 +143,50 @@
 .card-container {
     position: relative;
     width: 100%;
-    height: 100%;
     min-height: 300px;
-    z-index: 2; /* Ensure card stays above other elements */
+    z-index: 2;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: auto; /* Auto height */
     transition: transform 0.6s;
     transform-style: preserve-3d;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .card-inner.flipped {
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front, 
+.card-back {
     position: absolute;
     width: 100%;
-    height: 320px;
+    min-height: 300px; /* Flexible height */
     backface-visibility: hidden;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     border-radius: 10px;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .card-front, .card-back {
+        min-height: 250px;
+        padding: 1rem;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+    .card-front, .card-back {
+        min-height: 200px;
+        padding: 0.75rem;
+    }
 }
 
 .card-front {
@@ -198,7 +211,7 @@
 
 .announcements-content {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: visible;  /* ✅ Removed scrolling */
     padding: 0.5rem 0;
 }
 
@@ -252,12 +265,12 @@
 /* Mobile-specific fixes */
 @media (max-width: 767px) {
     .college-image {
-        max-height: 50vh; /* Further reduced height for mobile */
+        max-height: 50vh;
     }
     
     .announcements-card {
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+        /* margin-top: 1rem; */
+        margin-bottom: 4rem;
     }
     
     .card-container {
