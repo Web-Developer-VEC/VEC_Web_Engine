@@ -148,18 +148,15 @@
         "category": "program_specific_outcomes",
         "content": [
            {
-            "header": "PO 1",
+            "header": "PSO 1",
             "content":"Proficient in designing and implementing computing solutions, and use the fundamental knowledge of algorithms, networking Principles, web design, cloud computing, and data analytics to identify research gaps and pioneer innovative solutions"
 
 
                 
           },
           {
-            "header": "PO 2",
+            "header": "PSO 2",
             "content": "Ability to refine ethical approaches for addressing environmental and social issues, while enhancing interdisciplinary project management skills using IT tools to meet industry and societal demands effectively."
-
-
-
           }
         ]
       }
