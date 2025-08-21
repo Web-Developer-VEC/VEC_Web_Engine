@@ -386,6 +386,17 @@
         "brochure_path": "/static/images/events/GOITSEI.webp",
         "website_link": "",
         "status": "True"
+      },
+       {
+        "start_date":"20 AUG",
+        "end_date": "20 AUG, 2025",
+        "date": "20-08-2025",
+        "title": "DESTINY 29 – I Year Inauguration Ceremony",
+        "department": "DESTINY 29",
+        "content": "",
+        "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }
