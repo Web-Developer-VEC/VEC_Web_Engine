@@ -604,9 +604,42 @@
         "category": "department_activities",
         "content": [
           {
+            "year": "2025",
+            "activities":
+            [
+              {
+            "date": "08/01/2025",
+            "name_of_event": "Autodesk – India Design Week Day 1 Workshop",
+            "coordinator": "",
+            "resource_person":"Mr. S. Abhinesh, Technical Trainer, ICT Academy.",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/11.webp"]
+              },
+              {
+            "date": "06/02/2025",
+            "name_of_event": "SAE INDIA TIER –  I Events Rules and Regulations - Discussion",
+            "coordinator": "",
+            "resource_person":"Mr. R. Pathmanaban & Mr. S. Chinnasamy Subramanian, SAE faculty Coordinators, VEC",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/12.webp"]
+              }
+            ]
+         },
+         {
             "year": "2024",
             "activities":[
-                 {
+          {
+            "date": "27/08/2024",
+            "name_of_event": "Guest Lecture on The Most Innovative NDT Techniques in Oil and Gas",
+            "coordinator": "",
+            "resource_person":" Mr. Selvin Immanuel M, Course Coordinator, SIS Institute of NDT., Mr. Johnson M, Technical Coordinator, SIS Institute of NDT",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/9.webp"]
+          },
+          {
             "date": "22/08/2024",
             "name_of_event": "Guest lecture on Digital Transformation in Mechanical Engineering: Key Skills for the Future",
             "coordinator": "",
@@ -650,22 +683,128 @@
             "beneficiaries": "",
             "relevant_PO_PSO": "",
             "image_path": ["/static/images/dept_activities/013/7.webp"]
+          },
+          {
+            "date": "14/08/2024",
+            "name_of_event": "Guest Lecture on Role of YUKTHI in Innovations",
+            "coordinator": "",
+            "resource_person": "Mr. V. Rengarajan, Start-up Coordinator, IIC/ Velammal Engineering College",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path": ["/static/images/dept_activities/013/8.webp"]
+          },
+          {
+            "date": "12/02/2024",
+            "name_of_event": "WORKSHOP ON Achieving Problem – Solution Fit and Product – Market Fit",
+            "coordinator": "",
+            "resource_person": "Mr. Vivek M Palanivasan, Founder & CEO, Voltrix Mobility",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path": ["/static/images/dept_activities/013/10.webp"]
           }
           ]
          },
           {
             "year": "2023",
-            "activities":[
-                {
-            "date": "26/08/2023",
-            "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+            "activities":
+            [
+              {
+                "date": "26/08/2023",
+                "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+                "coordinator": "",
+                "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/5.webp"]
+              },
+              {
+                "date": "10/10/2023",
+                "name_of_event": "Value Added Course on Techarticulate:  Mastering Scientific Communication and Patenting in the AI Era",
+                "coordinator": "",
+                "resource_person":"Dr. A. Balaji Ganesh, Dean (R&D), Patent Agent, Velammal Engineering College, Director ,IP Ever, Director , Emsensing Technologies & Startup TN Mentor. , Dr. M. Arokiya Jaswin, Professor, Department of Mechanical Engineering, VEC. , Dr. M. Deepak Kumar, Asst. Prof., Department of Mechanical Engineering, VEC. , Mr. M. Yuvraj, Founder, Ilakkanam Pvt. Ltd. , Mr. P. Thennarasu, Co- Founder, Ilakkanam Pvt. Ltd.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/13.webp"]
+              },
+              {
+                "date": "11/10/2023",
+                "name_of_event": "BUSINESS MODEL COMPETITION",
+                "coordinator": "",
+                "resource_person":"Mr. M. Yuvaraj, Founder, Ilakkanam Pvt. LtD., Mr. P. Thennarasu, Co – Founder, Ilakkanam Pvt. LtD.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/14.webp"]
+              },
+              {
+                "date": "21/12/2023",
+                "name_of_event": "Workshop on Recent Innovation in Flow Measurement Systems",
+                "coordinator": "",
+                "resource_person":"Mr. T. Ramesh, Project Manager, Toshniwal Industries Private Limited.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/15.webp"]
+              },
+              {
+                "date": "09/02/2023",
+                "name_of_event": "SAE INDIA TIER – I Group Discussion Event",
+                "coordinator": "",
+                "resource_person":"Mr. D. Loganathan, AP/ VEC and Mr. V. Gopi, AP/ VEC",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/16.webp"]
+              },
+              {
+                "date": "27/01/2023",
+                "name_of_event": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
+                "coordinator": "",
+                "resource_person":"Mr. Vivek M Palanisvasan, Founder & CEO",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/17.webp"]
+              },
+              {
+                "date": "07/02/2023",
+                "name_of_event": "Industry Showcase Project Expo",
+                "coordinator": "",
+                "resource_person":"Mr. Ram Prasad, Innovation Expert, Senior Manager, Kone Elevators",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/18.webp"]
+              },
+              {
+                "date": "07/02/2023",
+                "name_of_event": "SAE INDIA TIER –  I Auto Quiz Event",
+                "coordinator": "",
+                "resource_person":"Mr. S.Chinnasamy, SAE Faculty coordinator, VEC",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/19.webp"]
+              },
+              {
+                "date": "21/04/2023",
+                "name_of_event": "Workshop on Prototype & Process Design and Development",
+                "coordinator": "",
+                "resource_person":"Mr. V. Magesh (Budding Entrepreneur & Proud Alumni, VEC +)",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/20.webp"]
+              }
+            ]
+          },
+          {
+            "year": "2022",
+            "activities":
+            [
+              {
+            "date": "30/08/2022",
+            "name_of_event": "Seminar on Converting your Innovation into a Startup Procedures and Opportunities",
             "coordinator": "",
-            "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
+            "resource_person":"Mr. Ramesh Chari (Designated Partner, RUA Consulting Services)",
             "beneficiaries": "",
             "relevant_PO_PSO": "",
-            "image_path":["/static/images/dept_activities/013/5.webp"]
-          }
-          ]
+            "image_path":["/static/images/dept_activities/013/21.webp"]
+              }
+            ]
          }
 
         ]
