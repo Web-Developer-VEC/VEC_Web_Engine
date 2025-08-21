@@ -1,0 +1,796 @@
+ [
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/mba.webp",
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+            "The Department of Management Sciences (DoMS) is committed to nurturing learners into Champions, Mindful Leaders, Entrepreneurial Managers, and Innovators. With this vision, inspired by the ideology of its founder, DoMS was established in 2007."," The department is on a transformative journey to become a B-School of excellence, embracing modern learning methodologies and an outcome-based approach.", "It has implemented a choice-based credit system, a case discussion courtyard, and a hybrid learning model that integrates Bloom's taxonomy on knowledge levels."      
+          ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+            "Educate with Global Exposure, enhance research knowledge and Energize entrepreneurial spirit."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+                     "To become a world class institution of higher learning renowned for its excellence in management and for its commitment to the holistic development of the individual and society by creating a novel approach to students through education and industry practice by encouraging value-based knowledge, thus creating a good will to the future generation of our country."
+
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "To have a thorough understanding of the core aspects of the business."
+
+          },
+          {
+            "header": "PEO 2",
+            "content":"To provide the learners with the management tools to identify, analyze and create business opportunities as well as solve business problems."
+
+          },
+          {
+            "header": "PEO 3",
+            "content":"To prepare them to have a holistic approach towards management functions."
+
+
+          },
+          {
+            "header": "PEO 4",
+            "content":"To motivate them for continuous learning."
+
+
+          },
+          {
+            "header": "PEO 5",
+            "content":"To inspire and make them practice ethical standards in business."
+
+
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1",
+            "content":  "Apply knowledge of management theories and practices to solve business problems."
+          },
+          {
+            "header": "PO 2",
+            "content": "Foster Analytical and critical thinking abilities for data-based decision making."
+          },
+          {
+            "header": "PO 3",
+            "content": "Develop Value based Leadership ability."
+          },
+          {
+            "header": "PO 4",
+            "content": "Understand, analyze and communicate global, economic, legal, and ethical aspects of business."
+          },
+          {
+            "header": "PO 5",
+            "content": "Lead themselves and others in the achievement of organizational goals, contributing effectively to a team environment."
+          },
+          {
+            "header": "PO 6",
+            "content": "Take up challenging assignments."
+          },
+          {
+            "header": "PO 7",
+            "content":"Understand one’s own ability to set achievable targets and complete them."
+          },
+          {
+            "header": "PO 8",
+            "content": "Nurture one’s own entrepreneurial ambitions and be innovative at workplace."
+          },
+          {
+            "header": "PO 9",
+            "content":  "Pursue lifelong learning."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Students should explore practical application of the management concept and to become professional managers"
+          },
+          {
+            "header": "PSO 2",
+            "content": "Students should have a strong analytical foundation in key functional areas and continously learn,improvise,adapt,energize,excel and grow"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "017",
+            "name": "Dr. NIRMALRAJ A",
+            "department_name": "Master of Business Administration (MBA) ",
+            "unique_id": "VEC-017-01-181",
+            "qualification": ["B.Com.", "MBA.", "Ph.D"],
+            "hod_message":["At VEC, we provide our learners—who come from diverse backgrounds—with ample opportunities for academic exploration and holistic development."," We recognize the growing need for business leaders who are well-versed in business principles, technology, and managerial skills. Therefore, our program offers a comprehensive overview of essential business concepts and industry-relevant technical practices, equipping learners with the knowledge and expertise required to excel in today's dynamic business landscape."],
+            "hod_image": "/static/images/hods/mba.webp",
+            "designation": "Professor & Head, Dept of Master of Business Administration",
+            "Social_media_links": {
+              "linkedin": "https://in.linkedin.com/in/nirmal-raj-a-a8201419",
+              "googlescholar": "https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Nirmal-Amal-Raj",
+              "orchidprofile":"https://orcid.org/0009-0001-6856-7412",
+              "publonprofile": "",
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=59511587500"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/mba.webp",
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [{
+            "name":"Dr. NIRMALRAJ A",
+            "designation":"Professor & Head",
+            "unique_id":"VEC-017-01-205",
+            "socialmedia_links":{
+              "linkedin":"https://in.linkedin.com/in/nirmal-raj-a-a8201419",
+              "googlescholar":"https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Nirmal-Amal-Raj",
+              "orchidprofile":"https://orcid.org/0009-0001-6856-7412",
+              "publonprofile":"",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=59511587500"
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-01-205.webp",
+            "resume_pdf":""
+          }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+          {
+            "name":"Dr. KERINAB BEENU G H",
+            "designation":"Professor",
+            "unique_id":"VEC-017-02-188",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/dr-beenu-george-stanley-466727154",
+              "googlescholar":"https://scholar.google.com/citations?hl=en&user=RU-1t5MAAAAJ",
+              "researchgate":"https://www.researchgate.net/profile/Ghkerinab-Beenu",
+              "orchidprofile":"https://orcid.org/0000-0001-5759-0089",
+              "publonprofile":"https://www.webofscience.com/wos/author/record/AGC-8119-2022",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-02-188.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Dr. REVATHI D",
+            "designation":"Associate Professor",
+            "unique_id":"VEC-017-03-175",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-03-175.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Dr. MUZHUMATHI R",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-176",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"https://scholar.google.com/citations?user=prcFVwEAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Muzhumathi-Rameshkumar.",
+              "orchidprofile":"https://orcid.org/0009-0008-3513-9527",
+              "publonprofile":"",
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=59510864400"
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-176.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Dr. NAVENA NESA KUMARI J",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-189",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"https://scholar.google.com/citations?hl=en&user=DH7RRb0AAAAJ&view_op=list_works",
+              "researchgate":"https://www.researchgate.net/profile/J-Kumari?ev=hdr_xprf",
+              "orchidprofile":"https://orcid.org/0000-0001-8324-4964?lang=en",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-189.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Dr. NAFEZA E ",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-632",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-632.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Mr. CHAKKARAVARTHY KUMARESAN R",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-633",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-633.webp",
+            "resume_pdf":""
+          },
+            {
+            "name":"Mrs. JENIFER HEPZIBA I",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-179",
+            "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/jenifer-hebziba-a9549964",
+              "googlescholar":"https://scholar.google.co.in/citations?hl=en&authuser=1&user=Peap7EEAAAAJ",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-179.webp",
+            "resume_pdf":""
+          },
+           {
+            "name":"Mrs. JAIASHI J",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-181",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"https://scholar.google.com/citations?hl=en&user=rYRLGuUAAAAJ&view_op=list_works",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-181.webp",
+            "resume_pdf":""
+          },
+          
+           {
+            "name":"Mrs. SUDHA RANI P",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-634",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-634.webp",
+            "resume_pdf":""
+          }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": []
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+          {
+            "heading":"curriculum & syllabus",
+            "syllabus": [
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/017/mba_21.pdf"
+              },
+              {
+                "year": "R - 2023",
+                "pdf_path":"/static/pdfs/curriculum/017/mba_23.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [ ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/mba.webp",
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      },
+      {
+        "category": "student_achievements_details",
+        "images":[
+    {
+        "image_path": "/static/images/student_activities/017/1.webp",
+        "event_name": "Five Days Profit Challenge",
+        "image_content": "",
+        "date": "2024-09-18"
+    },
+    {
+        "image_path": "/static/images/student_activities/017/2.webp",
+        "event_name": "Five Days Profit Challenge",
+        "image_content": "",
+        "date": "2024-09-18"
+    },
+    {
+        "image_path": "/static/images/student_activities/017/3.webp",
+        "event_name": "Five Days Profit Challenge",
+        "image_content": "",
+        "date": "2024-09-18"
+    },
+    {
+        "image_path": "/static/images/student_activities/017/4.webp",
+        "event_name": "Five Days Profit Challenge",
+        "image_content": "",
+        "date": "2024-09-18"
+    },
+    {
+        "image_path": "/static/images/student_activities/017/5.webp",
+        "event_name": "Intra Collegiate Event Communication Battle",
+        "image_content": "Communication battle was conducted to induce the various talents and managerial skills of the students of MBA.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/6.webp",
+        "event_name": "Intra Collegiate Event Communication Battle",
+        "image_content": "Communication battle was conducted to induce the various talents and managerial skills of the students of MBA.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/7.webp",
+        "event_name": "OBT-Out Bound Training",
+        "image_content": "Students have participated in OBT at Pegasus Institute at Mambakkam.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/8.webp",
+        "event_name": "OBT-Out Bound Training",
+        "image_content": "Students have participated in OBT at Pegasus Institute at Mambakkam.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/9.webp",
+        "event_name": "OBT-Out Bound Training",
+        "image_content": "Students have participated in OBT at Pegasus Institute at Mambakkam.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/10.webp",
+        "event_name": "OBT-Out Bound Training",
+        "image_content": "Students have participated in OBT at Pegasus Institute at Mambakkam.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/11.webp",
+        "event_name": "Intreview with The Entrepreneur",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/12.webp",
+        "event_name": "Intreview with The Entrepreneur",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/13.webp",
+        "event_name": "Intreview with The Entrepreneur",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/14.webp",
+        "event_name": "LOCALITY BUSINESS CONSULTANCY",
+        "image_content": "LOCALITY BUSINEESS CONSULTANCY is a students activity that was assigned to the students for their welfare and exposure on consultation.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/15.webp",
+        "event_name": "LOCALITY BUSINESS CONSULTANCY",
+        "image_content": "LOCALITY BUSINEESS CONSULTANCY is a students activity that was assigned to the students for their welfare and exposure on consultation.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/16.webp",
+        "event_name": "LOCALITY BUSINESS CONSULTANCY",
+        "image_content": "LOCALITY BUSINEESS CONSULTANCY is a students activity that was assigned to the students for their welfare and exposure on consultation.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/17.webp",
+        "event_name": "LOCALITY BUSINESS CONSULTANCY",
+        "image_content": "LOCALITY BUSINEESS CONSULTANCY is a students activity that was assigned to the students for their welfare and exposure on consultation.",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/18.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/19.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/20.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/21.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/22.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/23.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/24.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/25.webp",
+        "event_name": "Drop Shipping Model For Students",
+        "image_content": "Students were motivated to adopt a drop shipping model and was asked to do a business of their choice",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/26.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/27.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/28.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/29.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/30.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/31.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/32.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/33.webp",
+        "event_name": "STEVVE",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/34.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/35.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/36.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/37.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/38.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/39.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/40.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/41.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/42.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/43.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/44.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/45.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/46.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    },
+    {
+        "image_path": "/static/images/student_activities/017/47.webp",
+        "event_name": "International workshop on social enterpreneurship",
+        "image_content": "",
+        "date": ""
+    }
+]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/mba.webp",
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/017/1.webp",
+            "image_name": "DATA ANALYSIS AND BUSINESS MODELING LABORATORY",
+            "image_content": ""
+          }
+          
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            
+             "S_NO": 1,
+            "ORGANISATION_NAME": "Imarticus Learning",
+            "MONTH_AND_YEAR": "03-02-2023",
+            "VALIDITY": "",
+            "LOGO_PATH": "/static/images/mous/017/imarticus.jpg",
+            "ACTIVITIES_PLANNED": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Master of Business Administration (MBA)",
+            "dept_id": "017"
+          }
+        ]
+      }
+    ]
+  }
+
+
+]

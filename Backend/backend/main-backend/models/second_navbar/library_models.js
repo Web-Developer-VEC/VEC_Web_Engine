@@ -1,0 +1,15 @@
+const allowedtypes = new Set([
+  'about_the_library',
+  'HOD',
+  'Faculty_Staff',
+  'advisors',
+  'membership_details',
+  'books',
+  'journal',
+  'library_services',
+  'digital_libraries',
+  'library_resources',
+  'Ebook_Sources'
+]);
+
+module.exports=allowedtypes;

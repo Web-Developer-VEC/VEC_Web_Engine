@@ -5,10 +5,14 @@ import LoadComp from '../../LoadComp'
 import axios from 'axios';
 import ScrollToTopButton from '../../ScrollToTopButton';
 import { useNavigate } from "react-router";
+import AbtYear from './Abtyear';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const navigate = useNavigate();
+    const openInNewTab = (url) => {
+    window.open(url, "_blank");
+  };
     const [loading, setLoading] = useState({
         img1: true,
         img2: true,
@@ -148,7 +152,7 @@ const AbtUs = ({ theme, toggle }) => {
                         </div>
                     </div>
 
-                    <div className='m-2 p-2 font-[Poppins]'>
+                        <div className='m-2 p-2 font-[Poppins]'>
                         <div className='pdf-links grid grid-cols-1 md:grid-cols-1 md:flex flex-wrap justify-center gap-6 w-fit mx-auto text-left'>
                             {[
                                 "AICTE Approval",
@@ -156,7 +160,7 @@ const AbtUs = ({ theme, toggle }) => {
                                 "Governing Body",
                                 "Mandatory Disclosures",
                             ].map((label, index) => (
-                                <div
+                           <div
                                     key={index}
                                     onClick={() => {
                                         const url = AbtUsData?.links[index];
@@ -171,9 +175,12 @@ const AbtUs = ({ theme, toggle }) => {
                                 >
                                     {label}
                                 </div>
-                            ))}
+                        ))}
+                        <button
+                        onClick={() => navigate("/abt-yr")} 
+                        className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'>AISHE</button>
                         </div>
-                    </div>
+                        </div>
                 </>
             ) : (
                 <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">

@@ -1,0 +1,72 @@
+[
+    {
+        "type":"Help desk",
+        "data":
+        [
+            {
+                "category":"section & level",
+                "content":["Admission","Hostel","Department","Controller of Examinations","Scholarship"]
+            },
+            {
+                "category":"level1",
+                "content":
+                {
+                    "Administrative_Officer":"Dr. V. Jeyabalraja Professor, Department of Computer Science and Engineering",
+                    "ph":"9444464865",
+                    "email_id":"grievence@velammal.edu.in",
+                    "Online_Help_desk":"www.velammal.edu.in"
+                }
+            },
+            {
+                "category":"level2",
+                "content":
+                {
+                    "admission":"Ms. Jenefer Asha Jeyarani Admission Counsellor",
+                    "hostel":"Ms. Menaka Dy. Warden Girls Hostel",
+                    "department":"Class Advisor of Department Concerned",
+                    "controllerofexaminations":"Dr. P. Gurusamy Asst. Professor, Maths & Exam Cell Coordinator",
+                    "scholarship":"Ms. N. Niveditha Scholarship Office"
+                }
+
+            },
+            {
+                "category":"level3",
+                "content":
+                {
+                    "admission":"Dr. S. Shahil Kirupavathy Professor & Head, Physics & Nodal Officer - TNEA",
+                    "hostel":"Mr. Mathivanan Dy. Warden Boys Hostel",
+                    "department":"Academic Coordinator of Department Concerned",
+                    "controllerofexaminations":"Dr. A. Angala Parameswari Asst. Professor, EEE & Dy. COE",
+                    "scholarship":"Mr. B. Prakash Kumar Nodal Officer - Scholarship"
+                }
+
+            },
+            {
+                "category":"level4",
+                "content":
+                {
+                    "admission":"Ms. S. Kalyani PA to Principal",
+                    "hostel":"Mr. Theivanathan Asst. Professor, ECE & Dy.Chief Warden (Hostels)",
+                    "department":"HoD of Department Concerned",
+                    "controllerofexaminations":"Dr. S. Srinath Professor, EEE & COE",
+                    "scholarship":"Ms. S. Kalyani PA to Principal"
+                }
+
+            },
+            {
+                "category":"level5",
+                "content":["Principal"]
+
+            },
+            {
+                "category":"another",
+                "content":
+                [
+                   "Grievance related to PoSH(Prevention of sexual harrassment), Gender issues or any complaint raised by student",
+                   "Dr. Geetha R Asst. Professor, EEE"
+            ]
+
+            }
+        ]
+    }
+]

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import "./Academicresearch.css"; // Your existing CSS including .pdf-modal styles
+import "./Academicresearch.css"; 
 import Banner from "../../Banner";
 import axios from "axios";
-import "./Funded.css"
+import "./Funded.css";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function Funded({ theme, toggle }) {
   const [funded, setFunded] = useState(null);
-  const [selectedPdf, setSelectedPdf] = useState(null); // For modal PDF
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -18,12 +15,12 @@ export default function Funded({ theme, toggle }) {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const closeModal = () => {
-    setSelectedPdf(null);
-  };
+  const handlePdfClick = (course) => {
+    if (!course?.pdf_path || course.pdf_path.trim() === "") return;
 
-  // Detect if device is desktop
-  const isDesktop = () => window.innerWidth >= 1024;
+    const url = UrlParser(course.pdf_path);
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,54 +53,23 @@ export default function Funded({ theme, toggle }) {
         subHeaderText="Enrich Your Knowledge"
       />
 
-      <div className="">
+      <div>
         <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
           Funded Projects
         </h1>
 
         <div className="course-selection-container p-12">
-          {funded?.map((course, index) => {
-            const pdfUrl = UrlParser(course?.pdf_path);
-            return (
-              <div
-                key={index}
-                className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-                onClick={() => {
-                  if (pdfUrl) {
-                    if (isDesktop()) {
-                      setSelectedPdf({
-                        name: course?.year,
-                        url: pdfUrl,
-                      });
-                    } else {
-                      window.open(pdfUrl, "_blank");
-                    }
-                  }
-                }}
-              >
-                {course?.year}
-              </div>
-            );
-          })}
+          {funded?.map((course, index) => (
+            <div
+              key={index}
+              className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
+              onClick={() => handlePdfClick(course)}
+            >
+              {course?.year}
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* Modal */}
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
-          </div>
-        </div>
-      )}
     </>
   );
 }

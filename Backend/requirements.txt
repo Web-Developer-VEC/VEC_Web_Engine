@@ -1,0 +1,7 @@
+openpyxl
+pymongo
+pandas
+python-docx
+xlrd
+requests
+bcrypt

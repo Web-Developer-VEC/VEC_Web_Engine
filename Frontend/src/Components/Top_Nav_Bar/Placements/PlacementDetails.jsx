@@ -101,6 +101,8 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                         <div className="place-course">{year.year}</div>
                                     </button>
                                 ))}
+
+                            
                             </div>
 
                             {showModal && (
@@ -111,6 +113,10 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                     </div>
                                 </div>
                             )}
+
+                            <div className='pt-8 ml-8  flex justify-start'>
+                                ★ - Placement is still in progress 
+                            </div>
                         </div>
                         
                         {/* Placement Department-wise Data */}

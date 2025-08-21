@@ -1,0 +1,1191 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": 
+        [
+          " Department of Artificial Intelligence aims to produce computing graduates with high potency, apply, design and develop systems to pertain and to integrate both software and hardware devices, utilize modern approaches in programming and problem solving techniques.",
+          " The Department was established in the year 2020 with the main objective of providing quality education in the field of Engineering and Technology.",
+          " It is recognized as nodal center under Anna University. The Department has proved to be a center of excellence in Academic, Sponsored research and Continuing Education Programme."     
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To develop AI & Data Science professionals with strong ethical values, innovative thinking, and research acumen, enabling them to address global challenges and drive technological advancements in the industry."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+            "To equip students with core competencies to solve real-world problems using Artificial Intelligence.",
+            "To nurture technically proficient engineers through innovation and research in Data Science.",
+            "To foster industry collaboration, career readiness, and leadership skills among students.",
+            "To develop ethical professionals who contribute positively to society through responsible AI and Data Science applications."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "001",
+            "name": "Dr. VISU P",
+            "department_name": "Artificial Intelligence and Data Science (AI&DS) ",
+            "unique_id": "VEC-001-01-077",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": [
+              "I feel privileged to lead a team of talented and experienced faculty members. AI & DS is the most conspicuous technology transforming the facet of industry and mankind. This course is specially designed to enable students to build intelligent machines, software, or applications with a cutting-edge combination of Machine Learning, Deep Learning, Analytics, and Visualization technologies.",
+              "Our department aims to produce skilled professionals in the domain of AI and DS and enable them to excel professionally. It also provides state-of-the-art laboratory facilities to the students to get better practical exposure and strong ties with industry, research organizations, and the community at large."
+            ],
+            "hod_image": "/static/images/hods/aids.webp",
+            "designation": "Professor & Head, Dept of Artificial Intelligence and Data Science",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+              "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+              "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+              "orchidprofile": "https://orcid.org/0000-0001-8020-1678",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [{
+            "name":"Dr. VISU P",
+            "designation":"Professor & Head",
+            "unique_id":"VEC-001-01-077",
+            "socialmedia_links":{
+            "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+            "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+            "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+            "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
+            "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+            "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
+        },
+            "image_path":"/static/images/profile_photos/001/VEC-001-01-077.webp",
+            "resume_pdf":""
+          }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": 
+        [
+  {
+    "name": "Mrs. PREMA A",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-080",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. RAJASUGANYA P V",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-085",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/rajasuganya-pv-1a8baa203/",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=VyAc3CUAAAAJ",
+      "researchgate": "",
+      "orchidprofile": "https://orcid.org/0009-0007-0136-5270?lang=en",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-085.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. KAVITHA R",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-075",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/kavitha-r-2940958a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59188506100"
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-075.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Dr. HANNAH ROSE ESTHER T",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-060",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/hannah-rose-3a037132b/",
+      "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=97zWPAYAAAAJ",
+      "researchgate": "https://www.researchgate.net/profile/Hannah-Esther-T",
+      "orchidprofile": "https://orcid.org/0000-0002-3648-1315?lang=en",
+      "publonprofile": "https://www.webofscience.com/wos/author/record/JDW-7411-2023",
+      "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58565594400"
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-060.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. VIJAYALAKSHMI S",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-086",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "https://orcid.org/0009-0002-6089-3480?lang=en",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-086.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. MYTHILI S",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-087",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-087.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. PRIYA M",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-095",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/priya-manoharan-45a88232b/",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-095.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mr. SATHISH K",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-056",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/sathish-k-a1b694101?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "googlescholar": "https://scholar.google.com/citations?user=fS-k-YYAAAAJ&hl=en",
+      "researchgate": "",
+      "orchidprofile": "https://orcid.org/0009-0004-9349-4595?lang=en",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-056.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. DEEPA S",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-063",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/deepa-santhanam-53615132b",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=VTfr5bIAAAAJ&authuser=1&scilu=&scisig=AJY4_hMAAAAAZvJL0N4c2ABv_DJa003kQS27dYw&gmla=ALUCkoWakzMFfuzGLaf1xz8mz1PSRXIDTiGHkgbV5L71ewOjRS4U2MlMdeR6VVhI6MUNnCouYeLo6pS_FYSpY6EcwX9ooixn-X1bAKsg4tg&sciund=1483249734394795239",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-063.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. KARTHIKA L",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-068",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/karthika-l-077595253/",
+      "googlescholar": "https://scholar.google.com/citations?user=_LCpHnMAAAAJ&hl=en",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-068.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. JONCY J",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-055",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/joncy-j-719a9a81?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=ALUCkoX59rXtYYTW-pyMab60KZdjFvgcXSeLOiSqucU9wcc_1pTvrsVq3LLR0cJAITVdLwjbgEoWn0vr6cjmqg&user=nUes5HIAAAAJ",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-055.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. MIZPAH QUEENY R",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-059",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-059.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Ms. SWETHA R",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-094",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/swetha-raju-4268381a0/",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=Cos-0isAAAAJ&scilu=&scisig=AJY4_hMAAAAAZvTt6zb0U8w65xkPiXa95kTvAnU&gmla=ALUCkoW-7v09YTuOhfGWI_gIjagS6iuEs4VOdqS9wA_Pp8kkLcvUZZDt4qOEGqCr_C1kfjXpPseuxeiv-wTlwWoLseavVzt_eqoI_Qj5ChnX&sciund=4015425886573017390",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-094.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. MANIMEGALAI L",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-067",
+    "socialmedia_links": {
+      "linkedin": "https://www.linkedin.com/in/manimegalai-nithyanandam-a1b14b32b/",
+      "googlescholar": "https://scholar.google.com/citations?hl=en&user=ql7Q-w4AAAAJ&view_op=list_works&gmla=ALUCkoVZ-qAuRamMDz1bla6tmvYXSzMAgleesdeoGqDbt4SQgKDd2_mEkLjyTOrtnkSCJka5eQGpFaTx2MxL2jUiuDrDaQqjAY6khBU0XmZAunkhQsHmu58jMlKeGqnt_Z4UxTQB9Ckd",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-067.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. JARIYA BEGUM A R",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-623",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. TAMIL SELVI V",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-622",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-622.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Ms. RASHMI P",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-621",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-621.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. KAVITHA R",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-624",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-624.webp",
+    "resume_pdf": ""
+  },
+  {
+    "name": "Mrs. RAMYA P",
+    "designation": "Assistant Professor",
+    "unique_id": "VEC-001-04-625",
+    "socialmedia_links": {
+      "linkedin": "",
+      "googlescholar": "",
+      "researchgate": "",
+      "orchidprofile": "",
+      "publonprofile": "",
+      "scopus": ""
+    },
+    "image_path": "/static/images/profile_photos/001/VEC-001-04-625.webp",
+    "resume_pdf": ""
+  }
+]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": 
+        [
+          {
+            "name": "Mr. THAMARAI SELVAN P",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-001-05-001",
+            "socialmedia_links": 
+            {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/001/VEC-001-05-001.webp",
+            "resume_pdf": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content":[
+              {
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "pdf_path": "/static/pdfs/curriculum/001/reg_23.pdf"
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/001/reg_21.pdf"
+                }
+              ]
+              }
+            ]
+          
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+            {
+           "year":"2025", 
+           "activities":[
+                {
+                "date": "20-2-2025",
+                "name_of_event": "Workshop On Full-Stack Microservices Bootcamp",
+                "coordinator": "Mrs.A.Prema\n Mrs.S.Deepa\n Mrs.S.Mythili",
+                "resource_person": "Mr. M.J. Niranjan",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/001/Workshop_FullStack_Microservices_Bootcamp.webp"]
+                },
+                {
+                "date": "17-03-2025",
+                "name_of_event": "Tech Genesis",
+                "coordinator": "Mrs.A.Prema\nDE.T.HANNAH ROSE ESTHER",
+                "resource_person": "Mr.S.G.GOUTHAM\nMr.G.JAGADISH KUMAR",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/001/Tech_Genesis.webp"]
+                },
+                {
+                "date": "13-03-2025",
+                "name_of_event": "Database Management Systems-From An Industry Prespective",
+                "coordinator": "Mrs.S.Vijayalakshmi\nMrs.J.Vinisha Gladys Belshi\nMrs.M.Priya",
+                "resource_person": "Mrs.Blessy Jebaraj",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/001/Database_management.webp"]
+                },
+                {
+                "date": "19-03-2025",
+                "name_of_event": "Data Visualization And Learning Algorithm",
+                "coordinator": "Mrs.S.Vijayalakshmi\nMrs.J.Vinisha Gladys Belshi\nMrs.M.Priya",
+                "resource_person": "Mrs.M.Harini\nMrs.S.Srilekha",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/001/Data_Visualization_And_Learning_Algorithm.webp"]
+                }
+            ]
+        },
+        {
+            "year":"2024",
+           "activities": [
+                {
+                "date": "05/03/2024",
+                "name_of_event": "Seminar on Career Opportunity in Data Science with Table and power BI",
+                "coordinator": "Mrs.M.Priya\nMrs. S. Mythili\nMrs.J.Savija",
+                "resource_person": "Mr. Ahamed Khalid,\nHead -Academic Alliances, Imarticus Learning,IIM,Bangalore.",
+                "beneficiaries": "II- and III-YEAR students.",
+                "relevant_PO_PSO": "PSO1, PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/career_oppurtunity.webp"]
+                },
+                {
+                "date": "15/02/2024",
+                "name_of_event": "Seminar on Journey Of Large Language Model(LLM)",
+                "coordinator": "Mrs.A.Prema",
+                "resource_person": "Vasanth.P\nAI-Manager,\nZoho Corporation.",
+                "beneficiaries": "II Year Students",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path":["/static/images/dept_activities/001/Journey_of_LLM.webp"]
+                },
+                {
+                "date": "02/04/2024",
+                "name_of_event": "AI Tech Expo’24",
+                "coordinator": "Mrs.J.Savija\nMrs.Kavitha",
+                "resource_person": "-",
+                "beneficiaries": "III year Students",
+                "relevant_PO_PSO": "PSO1, PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/AI_Tech_Expo.webp"]
+                }
+            ]
+        },
+        {
+           "year": "2023",
+            "activities":[
+                {
+                "date": "06/10/2023",
+                "name_of_event": "Seminar on Development of IOT Applications",
+                "coordinator": "Mrs. J. Savija\nMrs. S. Mythili",
+                "resource_person": "Mr. Kamala Kannan,\nLead Technical Solution Architect,\nDXC Technology",
+                "beneficiaries": "IV YEAR",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/Development_at_IOT.webp"]
+                },
+                {
+                "date": "27/09/2023",
+                "name_of_event": "Hands on training-Big data processing : Hadoop",
+                "coordinator": "Mrs.A.Prema\nMrs.S.Saranya",
+                "resource_person": "Ms.J.Purnima\nSenior Associate\nFord motor company chennai.",
+                "beneficiaries": "IV Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path":["/static/images/dept_activities/001/Hadoop.webp"]
+                },
+                {
+                "date": "05/09/2023",
+                "name_of_event": "Workshop on Cloud Enabling Technologies",
+                "coordinator": "Mrs.P.V.RajaSuganya\nMrs.R.Kavitha",
+                "resource_person": "Mr.Shanmuga raja\nCTO,Netstack Technology Solutions.",
+                "beneficiaries": "III Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/Cloud_Enabling_Technologies.webp"]
+                },
+                {
+                "date": "19/08/2023",
+                "name_of_event": "Hands on Workshop on AWS Cloud",
+                "coordinator": "Mrs.R.Kavitha\nMrs.P.V.RajaSuganya",
+                "resource_person": "Mr.Shanmuga raja\nCTO-Netstack Technology Solutions.",
+                "beneficiaries": "IV year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/AWS_Cloud_Workshop.webp"]
+                },
+                {
+                "date": "08/11/2023",
+                "name_of_event": "Collision Resolution Techniques in Hashing.",
+                "coordinator": "Mrs.A.Prema\nMrs.P.V.RajaSuganya",
+                "resource_person": "Mrs.K.BalaSaranya",
+                "beneficiaries": "II Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path":["/static/images/dept_activities/001/Collision_Resolution.webp"]
+                },
+                {
+                "date": "06/11/2023",
+                "name_of_event": "Guest lecture on memory management in computer architecture",
+                "coordinator": "Mrs.S.Saranya\nMrs.R.Kavitha",
+                "resource_person": "Dr.A.Arockia Abins",
+                "beneficiaries": "II Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path":["/static/images/dept_activities/001/Memory_Management.webp"]
+                },
+                {
+                "date": "20/09/2023",
+                "name_of_event": "Guest Lecture on Genetic programming in Machine Learning",
+                "coordinator": "Mrs.S.Vijayalakshmii\nMrs.Vinisha Gladys Belshi",
+                "resource_person": "Mrs.M.Maheswari\nAssistant Professor\nDMI College of Engineering",
+                "beneficiaries": "III Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/Genetic_Programming_in_ML.webp"]
+                },
+                {
+                "date": "31/08/2023",
+                "name_of_event": "Guest Lecture on Utility of AI in India and abroad",
+                "coordinator": "Mrs.T.Hannah Rose Esther\nMrs.M.Priya\nMrs.P.Nithya",
+                "resource_person": "Dr.V.Balaji.\nAssociate Professor/E&CE,\nMAI-NEFHI College of Engineering and Technology.",
+                "beneficiaries": "II Year",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path":["/static/images/dept_activities/001/Utility_of_AI.webp"]
+                }
+            ]
+        },
+        {
+          "year": "2022", 
+            "activities":[
+                {
+                "date": "1.11.2022&\n2.11.2022",
+                "name_of_event": "Workshop on Artificial Intelligence and deep learning",
+                "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
+                "resource_person": "Dr.S.Sibi Chakkaravathy,\nAssociate Professor,VIT,Andhra Pradesh",
+                "beneficiaries": "III,II Year Students",
+                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+                "image_path": ["/static/images/dept_activities/001/Workshop _on_DL.webp"]
+                }
+           ]
+            }
+
+        ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": 
+        [
+          {
+            "name":"",
+            "pdf_path":""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": [
+          "Students' achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. From excelling in academics and securing top grades to showcasing talent in sports, arts, and extracurricular activities, their accomplishments reflect a well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while community service projects demonstrate their commitment to making a positive impact. These achievements not only inspire their peers but also pave the way for future opportunities, building confidence and a strong foundation for lifelong success."
+        ]
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/001/1.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "III year students of the AI&DS department won second prize in the paper presentation held at Saveetha Engineering College on 23.08.24. Paper Title: 'Are Women Safe in India?",
+            "date": "2024-08-23"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/2.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "III year students of our department won second prize in the paper presentation held at Saveetha Engineering College on 23.08.24. Paper Title: 'Preventing Fake Social Media Profiles and Reporting",
+            "date": "2024-08-23"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/3.webp",
+            "event_name": "Paper Presentation (1st Prize)",
+            "image_content": "III year students, Vasantha Raja and Roshan Varghese, won 1st prize in the Paper Presentation held at Saveetha Engineering College on 27/8/2024. They were awarded a trophy and a cash prize of Rs.1000.",
+            "date": "2024-08-27"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/4.webp",
+            "event_name": "IPL Auction Event",
+            "image_content": "II year student Tharun. M participated in the IPL Auction event conducted by the Mechanical Department of Velammal Engineering College and won First place with a prize of Rs.1500",
+            "date": "2024-08-24"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/5.webp",
+            "event_name": "Technoxian World Cup Participation",
+            "image_content": "AI&DS Department student T. Vishal Raj of Final year participated in the Maze Solver Challenge of Technoxian World Cup 2024, held at Noida Stadium Complex, Noida from 24th-27th August 2024.",
+            "date": "2024-08-24"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/6.webp",
+            "event_name": "Football Tournament",
+            "image_content": "AI&DS Department student Lokharajan of III year won third place in the football tournament conducted by Velammal Institute of Technology.",
+            "date": "2024-09-01"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/7.webp",
+            "event_name": "CM Trophy Basketball Match",
+            "image_content": "AI&DS Department student Mugunthan Balaji from II year achieved Runner-up in the CM Trophy basketball match conducted at __________________.",
+            "date": "2024-09-05"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/8.webp",
+            "event_name": "INNOTHON-24 Hackathon",
+            "image_content": "AI&DS Department students Pranesh Kumar, Siddarth, Sriram, Arjun, and Mohamed Yasir won First Place in the Hackathon (INNOTHON-24) conducted by KCG College of Engineering and won a cash prize of Rs.25000 on 21-9-2024.",
+            "date": "2024-09-21"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/9.webp",
+            "event_name": "Zonal Level Volleyball Tournament",
+            "image_content": "AI&DS Department II year student Thamizhvendhan won 3rd place in the Zonal level volleyball tournament conducted by RMK Engineering College on 26-9-2024.",
+            "date": "2024-09-26"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/10.webp",
+            "event_name": "Zonal Level Basketball Tournament",
+            "image_content": "AI&DS Department II year student Mugunthan Balaji won 2nd place in the Zonal level basketball tournament conducted by RMK Engineering College on 26-9-2024.",
+            "date": "2024-09-26"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/11.webp",
+            "event_name": "Tamilnadu Powerlifting Championship",
+            "image_content": "AI&DS department Student Mr.Dhiyaneshwar won 1st place in the Tamilnadu power lifting championship conducted by Thiruvarur District Powerlifting Association on 27-9-2024",
+            "date": "2024-09-27"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/12.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "Madhumitha B, III Year Student won 2nd prize and a cash award of Rs.500 in paper presentation (Paper Pitch) on 15-3-2025 at the technical symposium conducted by New Prince Shri Engineering College.",
+            "date": "2025-03-15"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/13.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "Madhumitha B, III Year Student won 2nd prize and a cash award of Rs.1000 in paper presentation on 14-3-2025 at the technical symposium conducted by Veltech Multitech College.",
+            "date": "2025-03-14"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/14.webp",
+            "event_name": "Hackathon (Winner)",
+            "image_content": "Trisha and Jasmine of final year AI&DS won Rs.10000 in a hackathon conducted by Sona College of Technology – Salem on 14-3-2025.",
+            "date": "2025-03-14"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/15.webp",
+            "event_name": "Intramural Football Match",
+            "image_content": "AI&DS dept boys won first place in Football match at the Intramural Competition held on 7-3-2025 at VEC.",
+            "date": "2025-03-07"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/16.webp",
+            "event_name": "Spidy grooves- Tunes and Tales",
+            "image_content": "Monisha and Deekshitha of II B won FIRST PRIZE in Spidy Grooves - Tunes and Tales (Non-Tech event) at the Symposium held in Sri Sai Ram Institute of Technology on 12-3-2025.",
+            "date": "2025-03-12"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/17.webp",
+            "event_name": "Powerlifting (2nd Prize)",
+            "image_content": "III Year Student Dhiyaneshwar won 2nd place under 93kg men Powerlifting held at Pavai Engineering College on 21-12-2025.",
+            "date": "2025-12-21"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/18.webp",
+            "event_name": "Paper Presentation (1st Prize)",
+            "image_content": "Nithyashrie G and Nivedhitha of II B won FIRST PRIZE in paper presentation held in Sri Sai Ram Institute of Technology on 12-3-2025. They were awarded with certificates and a cash prize of Rs.1000.",
+            "date": "2025-03-12"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/19.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "Sathya Ruba and Devika of 2nd Year won 2nd prize in paper presentation conducted by Jeppiar Institute of Technology on 21-2-2025. Cash prize awarded.",
+            "date": "2025-02-21"
+          },
+          {
+            "image_path": "/static/images/student_activities/001/20.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "Samyuktha, Shunmugapriya, and NithyaSri of second year won 2nd prize in the paper presentation conducted by Jeppiaar Institute of Technology on 21-2-2025. Cash prize awarded.",
+            "date": "2025-02-21"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/001/1.webp",
+            "image_name": "DATA SCIENCE LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/2.webp",
+            "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/3.webp",
+            "image_name": "PROGRAMMING LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/4.webp",
+            "image_name": "DATA STRUCTURES LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/5.webp",
+            "image_name": "OBJECT ORIENTED PROGRAMMING LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/6.webp",
+            "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/7.webp",
+            "image_name": "DATA SCIENCE AND ANALYTICS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/8.webp",
+            "image_name": "MACHINE LEARNING LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/9.webp",
+            "image_name": "DEEP LEARNING LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/001/10.webp",
+            "image_name": "PROJECT LABORATORY",
+            "image_content": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/aids.webp",
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            "S_NO": 1,
+            "ORGANISATION_NAME": "NET stack Technology Solutions",
+            "MONTH_AND_YEAR": "22-12-2022",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "/static/images/mous/001/net_stack_technology_solutions.jpg",
+            "PDF_PATH": "manualNss.pdf",
+            "ACTIVITIES_PLANNED": [
+              "AI Research",
+              "Data Science Workshops",
+              "Collaborative Projects"
+            ]
+          },
+          {
+            "S_NO": 2,
+            "ORGANISATION_NAME": "ArjunVision Tech Solutions",
+            "MONTH_AND_YEAR": "22-02-2023",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "/static/images/mous/001/arjunvision_tech_solutions.jpg",
+            "ACTIVITIES_PLANNED": ["AI Solutions", "Machine Learning Research"]
+          },
+          {
+            "S_NO": 3,
+            "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
+            "MONTH_AND_YEAR": "23-02-2022",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "/static/images/mous/001/m/s_tata_elxsi_ltd.jpg",
+            "ACTIVITIES_PLANNED": ["Autonomous Systems", "IoT Projects"]
+          },
+          {
+            "S_NO": 4,
+            "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
+            "MONTH_AND_YEAR": "2023",
+            "VALIDITY": "5 Years",
+            "LOGO_PATH": "/static/images/mous/001/digialert_solutions_private_limited.jpg",
+            "ACTIVITIES_PLANNED": [
+              "Cybersecurity Initiatives",
+              "Cloud Solutions"
+            ]
+          },
+          {
+            "S_NO": 5,
+            "ORGANISATION_NAME": "Aristo Creative Technologies",
+            "MONTH_AND_YEAR": "2022",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "/static/images/mous/001/aristo_creative_technologies.jpg",
+            "ACTIVITIES_PLANNED": ["Creative AI", "Media and Art Integration"]
+          },
+          {
+            "S_NO": 6,
+            "ORGANISATION_NAME": "Cognizant Technology Solutions India Private Limited",
+            "MONTH_AND_YEAR": "15-02-2024",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "/static/images/mous/001/cognizant_technology_solutions_india_private_limited.jpg",
+            "ACTIVITIES_PLANNED": [
+              "AI-enabled Solutions",
+              "Blockchain Research"
+            ]
+          },
+          {
+            "S_NO": 7,
+            "ORGANISATION_NAME": "Sify Technologies",
+            "MONTH_AND_YEAR": "09-08-2024",
+            "VALIDITY": "5 Years",
+            "LOGO_PATH": "/static/images/mous/001/sify_technologies.jpg",
+            "ACTIVITIES_PLANNED": ["Digital Transformation", "Cloud Solutions"]
+          },
+          {
+            "S_NO": 8,
+            "ORGANISATION_NAME": "Hexaware Technologies",
+            "MONTH_AND_YEAR": "12-08-2024",
+            "VALIDITY": "3 Years",
+            "LOGO_PATH": "/static/images/mous/001/hexaware_technologies.jpg",
+            "ACTIVITIES_PLANNED": ["AI in Finance", "Automation Research"]
+          },
+          {
+            "S_NO": 9,
+            "ORGANISATION_NAME": "Movate Technologies Private Ltd",
+            "MONTH_AND_YEAR": "04-11-2024",
+            "VALIDITY": "3 Years",
+            "LOGO_PATH": "/static/images/mous/001/movate_technologies_private_ltd.jpg",
+            "ACTIVITIES_PLANNED": ["IT Solutions", "Cloud Computing"]
+          }
+        ]
+      }
+    ]
+  },
+{
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Artificial Intelligence and Data Science (AI&DS)",
+            "dept_id": "001"  
+          }
+        ]
+      },
+      {
+        "category":"department_research",
+        "content":
+        [
+          {
+            "year": "2022 - 2023",
+            "research": [
+              {
+                "name": "Book",
+                "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
+              },
+              {
+                "name": "Funded Proposal",
+                "pdf_path": "/static/pdfs/research/001/2223/Funded Proposals 22-23.pdf"
+              },
+              {
+                "name": "Journal Publications",
+                "pdf_path": "/static/pdfs/research/001/2223/Journal Publications 22-23.pdf"
+              },
+              {
+                "name": "International and National Conferences",
+                "pdf_path": "/static/pdfs/research/001/2223/International and National Conferences 22-23.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/research/001/2223/Internship 22-23.pdf"
+              },
+              {
+                "name": "Patent",
+                "pdf_path": "/static/pdfs/research/001/2223/Patent Details 22-23.pdf"
+              }
+    ]
+  },
+  {
+    "year": "2023 - 2024",
+    "research": [
+      {
+        "name": "Book",
+        "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
+      },
+      {
+        "name": "Funded Proposal",
+        "pdf_path": "/static/pdfs/research/001/2324/Funded Proposals 23-24.pdf"
+      },
+      {
+        "name": "Journal Publications",
+        "pdf_path": "/static/pdfs/research/001/2324/Journal Publications 23-24.pdf"
+      },
+      {
+        "name": "International and National Conferences",
+        "pdf_path": "/static/pdfs/research/001/2324/International and National Conferences 23-24.pdf"
+      },
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/001/2324/Internship 23-24.pdf"
+      },
+      {
+        "name": "Patent",
+        "pdf_path": "/static/pdfs/research/001/2324/Patent Details 23-24.pdf"
+      }
+    ]
+  },
+  {
+    "year": "2024 - 2025",
+    "research": [
+      {
+        "name": "Book",
+        "pdf_path": "/static/pdfs/research/001/2425/Books & Book Chapters 24-25.pdf"
+      },
+      {
+        "name": "Product Development",
+        "pdf_path": "/static/pdfs/research/001/2425/Product Development 24-25.pdf"
+      },
+      {
+        "name": "Journal Publications",
+        "pdf_path": "/static/pdfs/research/001/2425/Journal Publications 24-25.pdf"
+      },
+      {
+        "name": "International and National Conferences",
+        "pdf_path": "/static/pdfs/research/001/2425/International and National Conferences 24-25.pdf"
+      },
+      {
+        "name": "Internship",
+        "pdf_path": "/static/pdfs/research/001/2425/Internship 24-25.pdf"
+      },
+      {
+        "name": "Patent",
+        "pdf_path": "/static/pdfs/research/001/2425/Patent Details 24-25.pdf"
+      }
+    ]
+          }
+        ]
+      }
+    ]
+  }
+]

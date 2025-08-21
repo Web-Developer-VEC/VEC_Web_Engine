@@ -1,6 +1,6 @@
 .app {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: poppins, sans-serif;
   /*background-color: #f9f9f9;*/
   /*padding: 20px;*/
 }
@@ -334,8 +334,8 @@
 
   .gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     justify-content: center;
   }
 

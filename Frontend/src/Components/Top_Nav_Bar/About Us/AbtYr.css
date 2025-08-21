@@ -1,0 +1,103 @@
+.yr-title {
+    color: brown;
+}
+
+.button-yr {
+    padding: 10px 20px;
+    background-color: rgb(253, 194, 0);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    white-space: nowrap; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-yr:hover {
+    background-color: #800000;
+    color: white;
+}
+
+.btn-yr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: nowrap;         
+    padding-bottom: 10px;
+}
+
+.btn-yr::-webkit-scrollbar {
+    height: 6px;
+}
+.btn-yr::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.btn-yr::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+@media (max-width: 1024px) {
+    .button-yr {
+        font-size: 15.5px;
+        padding: 9px 18px;
+    }
+    .btn-yr {
+        gap: 18px;
+        width: auto;
+        /* display: flex; */
+        /* flex-direction: column; */
+    }
+}
+
+@media (max-width: 768px) {
+    .button-yr {
+        font-size: 15px;
+        padding: 8px 16px;
+    }
+    .btn-yr {
+        gap: 15px;
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .button-yr {
+        font-size: 14.5px;
+        padding: 7px 14px;
+    }
+    .btn-yr {
+        gap: 12px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .button-yr {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    .btn-yr {
+        gap: 10px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .button-yr {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    .btn-yr {
+        gap: 8px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Academicresearch.css";
 import Banner from "../../Banner";
-import "./BookChapter.css"
+import "./BookChapter.css";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function BookChapter({ theme, toggle }) {
   const [bookChapter, setBookChapter] = useState(null);
-  const [selectedPdf, setSelectedPdf] = useState(null);
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -17,8 +14,6 @@ export default function BookChapter({ theme, toggle }) {
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
-  const closeModal = () => setSelectedPdf(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,13 +37,10 @@ export default function BookChapter({ theme, toggle }) {
   }, [navigate]);
 
   const handlePdfClick = (course) => {
-    const url = UrlParser(course?.pdf_path);
-    const pdfData = { url, name: course?.year };
-    if (window.innerWidth >= 1024) {
-      setSelectedPdf(pdfData);
-    } else {
-      window.open(url, "_blank");
-    }
+    if (!course?.pdf_path || course.pdf_path.trim() === "") return;
+
+    const url = UrlParser(course.pdf_path);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -78,23 +70,6 @@ export default function BookChapter({ theme, toggle }) {
           ))}
         </div>
       </div>
-
-      {/* PDF Modal */}
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
-          </div>
-        </div>
-      )}
     </>
   );
 }
