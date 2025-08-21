@@ -656,7 +656,7 @@ marquee p {
 
 
 /* Carousel Wrapper */
-.nss-carousel-wrap {
+.yrc-carousel-wrap {
     margin: 50px auto;
     width: 80%;
     max-width: 1200px;
@@ -666,13 +666,13 @@ marquee p {
 }
 
 /* Carousel Inner Container */
-.nss-carousel-container {
+.yrc-carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
 /* Individual Slide */
-.nss-carousel-slide {
+.yrc-carousel-slide {
     min-width: 100%;
     transition: 0.5s;
     position: relative;
@@ -680,7 +680,7 @@ marquee p {
 }
 
 /* Image Styling */
-.nss-carousel-slide img {
+.yrc-carousel-slide img {
     width: 100%;
     height: 500px;
     object-fit: cover;
@@ -747,14 +747,14 @@ marquee p {
     background: #fdb515;
 }
 
-.nss-carousel-slide {
+.yrc-carousel-slide {
   position: relative;
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
 }
 
-.nss-carousel-image {
+.yrc-carousel-image {
   width: 100%;
   height: 450px;
   object-fit:cover;
@@ -1255,4 +1255,53 @@ marquee p {
   .yrc-degree {
     font-size: 13px;
   }
+}
+
+
+.nss-carousel-content {
+  position: relative;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: justify;
+  width: auto;
+  
+}
+
+.nss-carousel-content-left {
+  flex: 1;
+}
+
+.nss-carousel-content-left h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.nss-carousel-content-left p {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.nss-carousel-content-right {
+  position: absolute;
+  right: 15px;
+  /* bottom: -10px; */
+  top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background: #ffc107;
+  border-radius: 5px;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+
 }
