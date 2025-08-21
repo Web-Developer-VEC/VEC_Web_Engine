@@ -153,69 +153,69 @@ const nextSlide = () => {
   return (
     <>
       {data ? (
-      <div className="nss-carousel-wrap">
-        <div
-          className="nss-carousel-container"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-            display: "flex",
-            transition: "transform 0.5s ease",
-          }}
-        >
-          {data?.map((image, index) => (
-          <div className="nss-carousel-slide" key={index}>
-            <img
-              src={UrlParser(image?.image_path)}
-              alt={image?.title}
-              className="nss-carousel-image"
-            />
-      
-            {/* Overlay Text at Bottom */}
-            <div className="nss-carousel-overlay">
-              <div className="nss-carousel-overlay-left">
+  <div className="nss-carousel-wrap">
+    <div
+      className="nss-carousel-container"
+      style={{
+        transform: `translateX(-${currentIndex * 100}%)`,
+        display: "flex",
+        transition: "transform 0.5s ease",
+      }}
+    >
+      {data?.map((image, index) => (
+        <div className="nss-carousel-slide" key={index}>
+          {/* Image */}
+          <img
+            src={UrlParser(image?.image_path)}
+            alt={image?.title}
+            className="nss-carousel-image"
+          />
+
+          {/* Text Below Image */}
+                <div className="nss-carousel-content">
+                <div className="nss-carousel-content-left">
                 <h3>{image?.title}</h3>
                 <p>{image?.description}</p>
-              </div>
-              <div className="nss-carousel-overlay-right">
-                {image?.date}
-              </div>
+                </div>
+                <div className="nss-carousel-content-right">
+                 {image?.date}
+               </div>
             </div>
-          </div>
-        ))}
-
-
         </div>
+      ))}
+    </div>
 
-        {/* Navigation Buttons */}
-        <button
-          className="nss-carousel-btn nss-carousel-btn-left"
-          onClick={prevSlide}
-        >
-          &#10094;
-        </button>
-        <button
-          className="nss-carousel-btn nss-carousel-btn-right"
-          onClick={nextSlide}
-        >
-          &#10095;
-        </button>
+    {/* Navigation Buttons */}
+    <button
+      className="nss-carousel-btn nss-carousel-btn-left"
+      onClick={prevSlide}
+    >
+      &#10094;
+    </button>
+    <button
+      className="nss-carousel-btn nss-carousel-btn-right"
+      onClick={nextSlide}
+    >
+      &#10095;
+    </button>
 
-        {/* Dots Indicator */}
-        <div className="nss-carousel-dots">
-          {data?.map((_, index) => (
-            <span
-              key={index}
-              className={`nss-dot ${index === currentIndex ? "active" : ""}`}
-              onClick={() => setCurrentIndex(index)}
-            ></span>
-          ))}
-        </div>
-      </div>
-      ) : (
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-      )}
+    {/* Dots Indicator */}
+    <div className="nss-carousel-dots">
+      {data?.map((_, index) => (
+        <span
+          key={index}
+          className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+          onClick={() => setCurrentIndex(index)}
+        ></span>
+      ))}
+    </div>
+  </div>
+) : (
+  <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+    <LoadComp />
+  </div>
+)}
+
     </>
   );
 };
