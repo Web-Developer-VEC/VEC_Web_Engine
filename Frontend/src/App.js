@@ -297,15 +297,15 @@ const App = () => {
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
-
+                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
+                                <Route path="/hit_logs" element={<HitLogs />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
-                                <Route path="/hit_logs" element={<HitLogs />} />
                             </Routes>
                           
                         </MainContentWrapper>
