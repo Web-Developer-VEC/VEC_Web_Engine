@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 import Banner from "../../Banner";
 import axios from "axios";
-import "./Handbook.css"
+import "./Handbook.css";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
@@ -28,7 +28,6 @@ const HandbookButton = ({ year, pdfspath, onOpen }) => (
 const Handbook = ({ theme, toggle }) => {
   const [handBook, setHandbook] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [selectedPdf, setSelectedPdf] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const Handbook = ({ theme, toggle }) => {
     };
 
     fetchdata();
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -66,17 +65,11 @@ const Handbook = ({ theme, toggle }) => {
     };
   }, []);
 
+  // Always open PDF in new tab
   const handleOpenPDF = (year, pdfUrl) => {
-    const isMobile = window.innerWidth < 1024;
-    if (isMobile) {
-      window.open(pdfUrl, "_blank");
-    } else {
-      setSelectedPdf({ name: year, url: pdfUrl });
+    if (pdfUrl && pdfUrl !== "#") {
+      window.open(pdfUrl, "_blank", "noopener,noreferrer");
     }
-  };
-
-  const closeModal = () => {
-    setSelectedPdf(null);
   };
 
   if (!isOnline) {
@@ -119,22 +112,6 @@ const Handbook = ({ theme, toggle }) => {
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
           <LoadComp txt={""} />
-        </div>
-      )}
-
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2 className="mb-4 font-semibold text-lg">{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
-          </div>
         </div>
       )}
     </>

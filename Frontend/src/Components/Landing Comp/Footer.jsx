@@ -77,6 +77,7 @@ const Footer = forwardRef((props, ref) => {
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
                         <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><Link to="/abt-us">About Us</Link></li>
+                            <li><Link to="/abt-yr">AISHE</Link></li>
                             <li><Link to="/Accredation" state={{ section: "NBA" }}>NBA</Link></li>
                             <li><Link to="/Accredation" state={{ section: "NAAC" }}>NAAC</Link></li>
                             <li><Link to="/Accredation" state={{ section: "NIRF" }}>NIRF</Link></li>

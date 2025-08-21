@@ -182,27 +182,34 @@
     "data": [
       {
         "unique_id": "announcement_1",
+        "announcement_name": "Review after Revaluation - SEE May 2025 (I to VI Sem. Reg. & Arr.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Review after_Reval_SEE May 2025 (VI to I Sem.).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_2",
         "announcement_name": "SEE May 2025_R2023_B.E./B.Tech. (For the batch 2023-2027)",
         "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2023_B.E.B.Tech.-(For_the_batches_2023-2027).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_2",
+        "unique_id": "announcement_3",
         "announcement_name": " Rescheduled_date_for_exam_dated_04-04-2025",
         "pdf_path": "/static/pdfs/announcements/Rescheduled_date_for_exam_dated_04-04-2025.pdf",
         "date": "2025-04-04",
         "status": "active"
       },
       {
-        "unique_id": "announcement_3",
+        "unique_id": "announcement_4",
         "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2021-2025 & 2022-2026)",
         "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2019(For-the-batches_2021-2025_and_2022-2026).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_5",
         "announcement_name": "SEE May 2025_R2019._B.E./B.Tech. (For the batches 2019-2023 & 2020-2024)",
         "pdf_path": "/static/pdfs/announcements/SEE_May_2025_R2019(For-the-batches_2019-2023_and_2020-2024).pdf",
         "date": "2025-07-28",
@@ -344,6 +351,50 @@
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
         "brochure_path": "/static/images/events/dccog.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"18 AUG",
+        "end_date": "22 AUG, 2025",
+        "date": "18-08-2025",
+        "title": "Essentials of Artificial Intelligence and Machine Learning",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/eaiml.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"19 AUG",
+        "end_date": "19 AUG, 2025",
+        "date": "19-08-2025",
+        "title": "3D - ANIMATION",
+        "department": "Computer Science Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/3D.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"22 AUG",
+        "end_date": "22 AUG, 2025",
+        "date": "22-08-2025",
+        "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
+        "department": "Electrical & Electronics Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/GOITSEI.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"20 AUG",
+        "end_date": "20 AUG, 2025",
+        "date": "20-08-2025",
+        "title": "DESTINY 29 – I Year Inauguration Ceremony",
+        "department": "DESTINY 29",
+        "content": "",
+        "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
         "website_link": "",
         "status": "True"
       }

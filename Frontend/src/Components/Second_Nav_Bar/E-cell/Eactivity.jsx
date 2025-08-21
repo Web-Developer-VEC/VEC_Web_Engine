@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Eactivity.css";
 import LoadComp from "../../LoadComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -10,14 +10,13 @@ const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
-const EcellActivity = ({ year, pdfspath, onClick }) => (
+const EcellActivity = ({ year, pdfspath }) => (
   <button
-    onClick={onClick}
-   className="flex items-center justify-center gap-2 px-6 py-4 
+    onClick={() => window.open(pdfspath, "_blank")}
+    className="flex items-center justify-center gap-2 px-6 py-4 
            rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-secd text-text dark:text-prim text-lg font-medium
            hover:bg-yellow-600 shadow-md transition-all duration-200 no-underline cursor-pointer
            bg-transparent"
-
     type="button"
   >
     <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
@@ -26,8 +25,6 @@ const EcellActivity = ({ year, pdfspath, onClick }) => (
 );
 
 export default function ImageGallery({ activity }) {
-  const [selectedPdf, setSelectedPdf] = useState(null);
-
   if (!Array.isArray(activity)) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -35,21 +32,6 @@ export default function ImageGallery({ activity }) {
       </div>
     );
   }
-
-  const handlePdfClick = (yearObj) => {
-    if (window.innerWidth >= 1024) {
-      setSelectedPdf({
-        url: UrlParser(yearObj?.pdf_path),
-        name: yearObj?.year,
-      });
-    } else {
-      window.open(UrlParser(yearObj?.pdf_path), "_blank");
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedPdf(null);
-  };
 
   return (
     <>
@@ -64,7 +46,6 @@ export default function ImageGallery({ activity }) {
                 key={idx}
                 year={yearObj?.year}
                 pdfspath={UrlParser(yearObj?.pdf_path)}
-                onClick={() => handlePdfClick(yearObj)}
               />
             ))}
           </div>
@@ -72,23 +53,6 @@ export default function ImageGallery({ activity }) {
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
           <LoadComp txt={""} />
-        </div>
-      )}
-
-      {/* PDF Modal */}
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            />
-          </div>
         </div>
       )}
     </>

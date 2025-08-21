@@ -16,6 +16,7 @@ import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
 import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
 import Collegevisionmission from "./Components/Top_Nav_Bar/About Us/collegevisionmission.jsx";
 import Management from "./Components/Top_Nav_Bar/About Us/Management.jsx";
+import AbtYear from "./Components/Top_Nav_Bar/About Us/Abtyear.jsx";
 /* Administration Pages Imports */
 import Princ from "./Components/Top_Nav_Bar/Administration/Princ.jsx";
 import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
@@ -234,6 +235,7 @@ const App = () => {
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData}/>}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
+                                <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>

@@ -659,6 +659,25 @@
 ]
 
   },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/math.webp",
+            "name": "Mathematics",
+            "dept_id": "012"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
+      }
+    ]
+  },
 
   {
     "type": "student_achievements",
@@ -674,7 +693,8 @@
       },
       {
         "category": "student_achievements_content",
-        "content": []},
+        "content": []
+      },
       {
         "category": "student_achievements_details",
         "images": []
