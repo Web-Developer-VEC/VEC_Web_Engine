@@ -1,8 +1,8 @@
-const { getDb } = require('../config/db')
+const { getlogDb } = require('../config/db')
 const logError = require('../middlewares/logerror');
 
 async function getDatabaseLogs (req, res) {
-    const db = getDb()
+    const db = getlogDb()
     const collection = db.collection('logs');
 
     try {

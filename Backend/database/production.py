@@ -10,6 +10,7 @@ mongo_uri = "mongodb://localhost:27017/"
 db_name = "DBTEST"
 client = MongoClient(mongo_uri)
 db = client[db_name]
+logsdb = client["LOGS_VEC"]
 
 
 deptMap = {
@@ -377,9 +378,6 @@ def insert_administration_sections():
 
     print("Administration sections inserted successfully.")
 
-def create_logs_collection():
-    db.create_collection('logs')
-    print("logs collection created successfully.")
 
 def insert_web_team():
     collection = db['web_team']
@@ -540,10 +538,16 @@ insert_administration_sections()
 insert_library_sections()
 insert_incubations_sections()
 insert_about_us()
-
-#create_logs_collection()
 insert_web_team()
 insert_research_data()
+
+
+#logs creation in seperate db
+def create_logs_collection():
+    logsdb.create_collection('logs')
+    print("\n logs collection created successfully.")
+
+create_logs_collection()
 
 '''def add_hostel_student_database():
     collection = db["student_database"]
