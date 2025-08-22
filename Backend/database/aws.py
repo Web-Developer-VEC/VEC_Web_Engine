@@ -10,6 +10,7 @@ mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
 client = MongoClient(mongo_uri)
 db = client[db_name]
+logsdb = client["LOGS_VEC"]
 
 
 
@@ -366,9 +367,6 @@ def insert_administration_sections():
 
     print("Administration sections inserted successfully.")
 
-def create_logs_collection():
-    db.create_collection('logs')
-    print("logs collection created successfully.")
 
 def insert_web_team():
     collection = db['web_team']
@@ -515,7 +513,7 @@ def insert_research_data():
 
     print("Research data inserted successfully.")
 
-#create_logs_collection()
+
 insert_help_desk_sections()
 insert_landing_page_sections()
 insert_sports_sections()
@@ -531,6 +529,13 @@ insert_incubations_sections()
 insert_about_us()
 insert_web_team()
 insert_research_data()
+
+#logs creation in seperate db
+def create_logs_collection():
+    logsdb.create_collection('logs')
+    print("\n logs collection created successfully.")
+
+create_logs_collection()
 
 '''def add_hostel_student_database():
     collection = db["student_database"]
