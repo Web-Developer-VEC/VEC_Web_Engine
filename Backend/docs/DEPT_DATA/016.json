@@ -179,7 +179,7 @@
         "content": [
           {
             "department_id": "005",
-            "name": "Dr. MURUGESWARI B",
+            "name": "Dr. MURUGESHWARI B",
             "department_name": "Computer Science & Engineering (CSE) ",
             "unique_id": "VEC-005-01-120",
             "qualification": ["M.E.", "Ph.D"],
@@ -280,7 +280,7 @@
         "resume_pdf": ""
       },
       {
-        "name": "Dr. PRITTOPAUL P",
+        "name": "Dr. PRITTO PAUL P",
         "designation": "Associate Professor",
         "unique_id": "VEC-005-03-147",
         "socialmedia_links": {
@@ -446,7 +446,7 @@
         "resume_pdf": ""
       },
       {
-        "name": "Mrs. DAYA FLORANCE D",
+        "name": "Mrs. DAYAFLORANCE D",
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-131",
         "socialmedia_links": {
@@ -508,31 +508,33 @@
       {
         "name": "Mrs. BHARATHI SHRI C",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-101",
+        "unique_id": "VEC-005-04-122",
         "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
+          "linkedin": "https://www.linkedin.com/in/k-mohana-914094122/",
+          "googlescholar": "",
+          "researchgate": "https://www.researchgate.net/profile/Mohanambal-Karuppuchetty",
+          "orchidprofile": "https://orcid.org/0000-0002-6068-5844",
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
         "resume_pdf": ""
       },
+
       {
         "name": "Mrs. KAYALVIZHI S",
+
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-130",
+        "unique_id": "VEC-005-04-112",
         "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/kayal-vizhi-04794332b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "",
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=vVTxR6cAAAAJ",
           "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0007-7387-8307",
+          "orchidprofile": "",
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-112.webp",
         "resume_pdf": ""
       },
       {
@@ -1504,7 +1506,8 @@
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
-        "name": "Conference ",
+
+        "name": "Conference",
         "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
       },
       {
@@ -1516,11 +1519,13 @@
         "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
       },
       {
-        "name": "Quality Publication",
+
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
       },
       {
-        "name": "Patent ",
+        "name": "Patent",
+
         "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
       },
       {
@@ -1553,7 +1558,9 @@
         "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
       },
       {
-        "name": "Quality Publication",
+
+        "name": "Publication",
+        
         "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
       },
       {
@@ -1586,7 +1593,8 @@
         "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
       },
       {
-        "name": " Quality Publication",
+
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
       },
       {

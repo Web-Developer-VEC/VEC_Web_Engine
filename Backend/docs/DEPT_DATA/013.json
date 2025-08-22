@@ -655,10 +655,98 @@
          },
           {
             "year": "2023",
-            "activities":[
-                {
-            "date": "26/08/2023",
-            "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+            "activities":
+            [
+              {
+                "date": "26/08/2023",
+                "name_of_event": "WORKSHOP ON INNOVATIVE TECHNOLOGIES IN AUTOMOTIVE SAFETY",
+                "coordinator": "",
+                "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/5.webp"]
+              },
+              {
+                "date": "10/10/2023",
+                "name_of_event": "Value Added Course on Techarticulate:  Mastering Scientific Communication and Patenting in the AI Era",
+                "coordinator": "",
+                "resource_person":"Dr. A. Balaji Ganesh, Dean (R&D), Patent Agent, Velammal Engineering College, Director ,IP Ever, Director , Emsensing Technologies & Startup TN Mentor. , Dr. M. Arokiya Jaswin, Professor, Department of Mechanical Engineering, VEC. , Dr. M. Deepak Kumar, Asst. Prof., Department of Mechanical Engineering, VEC. , Mr. M. Yuvraj, Founder, Ilakkanam Pvt. Ltd. , Mr. P. Thennarasu, Co- Founder, Ilakkanam Pvt. Ltd.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/13.webp"]
+              },
+              {
+                "date": "11/10/2023",
+                "name_of_event": "BUSINESS MODEL COMPETITION",
+                "coordinator": "",
+                "resource_person":"Mr. M. Yuvaraj, Founder, Ilakkanam Pvt. LtD., Mr. P. Thennarasu, Co – Founder, Ilakkanam Pvt. LtD.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/14.webp"]
+              },
+              {
+                "date": "21/12/2023",
+                "name_of_event": "Workshop on Recent Innovation in Flow Measurement Systems",
+                "coordinator": "",
+                "resource_person":"Mr. T. Ramesh, Project Manager, Toshniwal Industries Private Limited.",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/15.webp"]
+              },
+              {
+                "date": "09/02/2023",
+                "name_of_event": "SAE INDIA TIER – I Group Discussion Event",
+                "coordinator": "",
+                "resource_person":"Mr. D. Loganathan, AP/ VEC and Mr. V. Gopi, AP/ VEC",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/16.webp"]
+              },
+              {
+                "date": "27/01/2023",
+                "name_of_event": "Workshop on Design Thinking, Critical Thinking and Innovation Design",
+                "coordinator": "",
+                "resource_person":"Mr. Vivek M Palanisvasan, Founder & CEO",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/17.webp"]
+              },
+              {
+                "date": "07/02/2023",
+                "name_of_event": "Industry Showcase Project Expo",
+                "coordinator": "",
+                "resource_person":"Mr. Ram Prasad, Innovation Expert, Senior Manager, Kone Elevators",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/18.webp"]
+              },
+              {
+                "date": "07/02/2023",
+                "name_of_event": "SAE INDIA TIER –  I Auto Quiz Event",
+                "coordinator": "",
+                "resource_person":"Mr. S.Chinnasamy, SAE Faculty coordinator, VEC",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/19.webp"]
+              },
+              {
+                "date": "21/04/2023",
+                "name_of_event": "Workshop on Prototype & Process Design and Development",
+                "coordinator": "",
+                "resource_person":"Mr. V. Magesh (Budding Entrepreneur & Proud Alumni, VEC )",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path":["/static/images/dept_activities/013/20.webp"]
+              }
+            ]
+          },
+          {
+            "year": "2022",
+            "activities":
+            [
+              {
+            "date": "30/08/2022",
+            "name_of_event": "Seminar on Converting your Innovation into a Startup Procedures and Opportunities",
             "coordinator": "",
             "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
             "beneficiaries": "",
