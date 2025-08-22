@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
-  const [expanded, setExpanded] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/main-backend/logs"); 
 
-        // Mongo backend usually returns { data: [...] } OR just [...]
-        const data = response.data.data || response.data;
+        const data = response.data;
 
         if (Array.isArray(data)) {
           setHitData(data);
@@ -23,24 +19,13 @@ const HitLogs = () => {
           setHitData([]);
         }
       } catch (error) {
-        // console.error("Error fetching hit logs", error);
-        // if (error.response?.status === 429) {
-        //   navigate("/ratelimit", {
-        //     state: { msg: error.response.data.message },
-        //   });
-        }
-      // }
+        console.error("Error fetching hit log data:", error);
+      }
     };
 
     fetchData();
-  }, [navigate]);
+  }, []);
 
-  const toggleExpand = (index) => {
-    setExpanded((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
   const endpointNames = {
     "/favicon.ico": "Favicon",
     "/logo192.png": "React Logo",
