@@ -52,7 +52,7 @@ const NIRF = ({ data }) => {
         <h1 className="nirf-header text-brwn dark:text-drkt">
           NATIONAL INSTITUTIONAL RANKING FRAMEWORK (NIRF)
         </h1>
-        <p>
+        <p className="text-justify">
           The NIRF is a comprehensive ranking system launched by the Ministry of
           Education, Government of India, in 2015. It provides a structured
           methodology to rank higher education institutions across India based
