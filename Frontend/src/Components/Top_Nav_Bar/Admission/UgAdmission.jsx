@@ -15,6 +15,8 @@ const UgAdmission = ({ theme, toggle }) => {
   const ug = ugData?.UG || [];
   const ug_lateral = ugData?.UG_Lateral || [];
   const year = ugData?.year;
+  const BE_Government = ugData?.BE_Government || {};
+  const BE_Management = ugData?.BE_Management || {};
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -162,13 +164,13 @@ const UgAdmission = ({ theme, toggle }) => {
                 className="text-blue-600 dark:text-drka"
                 onClick={() =>
                   handlePdfClick(
-                    "FIRST YEAR B.E/B.Tech – Government Quota",
-                    UrlParser(ugData?.BE_Government_link)
+                    BE_Government?.BE_Government_link_name,
+                    UrlParser(BE_Government?.BE_Government_link)
                   )
                 }
               >
-                <FaLink className="inline size-5 mr-1 mb-1" />* FIRST YEAR
-                B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)
+                <FaLink className="inline size-5 mr-1 mb-1" />
+                 {BE_Government?.BE_Government_link_name}
               </button>
             </div>
             <div>
@@ -186,14 +188,14 @@ const UgAdmission = ({ theme, toggle }) => {
               <button
                 onClick={() =>
                   handlePdfClick(
-                    "FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
-                    UrlParser(ugData?.BE_Management_link)
+                      BE_Management?.BE_Management_link_name,
+                      UrlParser(BE_Management?.BE_Management_link)
                   )
                 }
                 className="text-blue-600 dark:text-drka"
               >
                 <FaLink className="inline size-5 mr-1 mb-1" />* FIRST YEAR
-                B.E/B.TECH – MANAGEMENT QUOTA
+               {BE_Management?.BE_Management_link_name}
               </button>
             </div>
             {renderTable(
