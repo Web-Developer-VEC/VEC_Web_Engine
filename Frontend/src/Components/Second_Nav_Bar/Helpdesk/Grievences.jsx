@@ -169,7 +169,7 @@ const GrievanceForm = ({ theme, toggle }) => {
       </div>
 
       <div className="flex justify-center p-6 font-[poppins]">
-        <div className="w-full bg-prim dark:bg-drkts py-12 px-4">
+        <div className="bg-prim dark:bg-drkts py-12 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
             {/* Left side */}
             <div className="flex flex-col items-start justify-center space-y-6">
@@ -247,91 +247,91 @@ const GrievanceForm = ({ theme, toggle }) => {
       </div>
 
       <div className="p-6">
-  <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">
-    Grievance Contact Levels
-  </h2>
-  <div className="overflow-x-auto">
-    {grievanceData && grievanceData.length > 0 ? (
-      <table className="w-full border border-gray-300 text-center">
-        <thead className="bg-[#808080] text-white">
-          <tr>
-            <th className="p-2 border">Section & Level</th>
-            {section.map((header, idx) => (
-              <th key={idx} className="p-2 border">{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          
-          {level1 && (
-            <tr>
-              <td className="p-2 border">Level 1</td>
-              <td colSpan={section.length} className="p-2 border">
-                {level1.Administrative_Officer} <br />
-                ph: {level1.ph || "-"} <br />
-                <a
-                  href={`mailto:${level1.email_id || ""}`}
-                  className="dark:text-drka"
-                >
-                  Email ID: {level1.email_id}
-                </a>
-                , Online Help desk:{" "}
-                <a
-                  href={`https://${level1.Online_Help_desk || ""}`}
-                  className="dark:text-drka"
-                >
-                  {level1.Online_Help_desk}
-                </a>
-              </td>
-            </tr>
-          )}
+        <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">
+          Grievance Contact Levels
+        </h2>
+        <div className="overflow-x-auto">
+          {grievanceData && grievanceData.length > 0 ? (
+            <table className="w-full border border-gray-300 text-center">
+              <thead className="bg-[#808080] text-white">
+                <tr>
+                  <th className="p-2 border">Section & Level</th>
+                  {section.map((header, idx) => (
+                    <th key={idx} className="p-2 border">{header}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                
+                {level1 && (
+                  <tr>
+                    <td className="p-2 border">Level 1</td>
+                    <td colSpan={section.length} className="p-2 border">
+                      {level1.Administrative_Officer} <br />
+                      ph: {level1.ph || "-"} <br />
+                      <a
+                        href={`mailto:${level1.email_id || ""}`}
+                        className="dark:text-drka"
+                      >
+                        Email ID: {level1.email_id}
+                      </a>
+                      , Online Help desk:{" "}
+                      <a
+                        href={`https://${level1.Online_Help_desk || ""}`}
+                        className="dark:text-drka"
+                      >
+                        {level1.Online_Help_desk}
+                      </a>
+                    </td>
+                  </tr>
+                )}
 
-          {[level2, level3, level4].map((level, idx) => (
-            <tr key={idx}>
-              <td className="p-2 border">Level {idx + 2}</td>
-              {section.map((sec, i) => {
-                const key = sec.toLowerCase().replace(/\s|&/g, '');
-                return (
-                  <td key={i} className="p-2 border">
-                    {level[key] || "-"}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
+                {[level2, level3, level4].map((level, idx) => (
+                  <tr key={idx}>
+                    <td className="p-2 border">Level {idx + 2}</td>
+                    {section.map((sec, i) => {
+                      const key = sec.toLowerCase().replace(/\s|&/g, '');
+                      return (
+                        <td key={i} className="p-2 border">
+                          {level[key] || "-"}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
 
-          {level5 && level5.length > 0 && (
-            <tr>
-              <td className="p-2 border">Level 5</td>
-              <td colSpan={section.length} className="p-2 border">
-                {level5[0]}
-              </td>
-            </tr>
-          )}
+                {level5 && level5.length > 0 && (
+                  <tr>
+                    <td className="p-2 border">Level 5</td>
+                    <td colSpan={section.length} className="p-2 border">
+                      {level5[0]}
+                    </td>
+                  </tr>
+                )}
 
-          {another && another.length > 0 && (
-            <tr>
-              <td
-                className="p-3 border"
-                colSpan={Math.ceil(section.length / 2) + 1}
-              >
-                {another[0]}
-              </td>
-              <td
-                colSpan={Math.floor(section.length / 2)}
-                className="p-3 border"
-              >
-                {another[1]}
-              </td>
-            </tr>
+                {another && another.length > 0 && (
+                  <tr>
+                    <td
+                      className="p-3 border"
+                      colSpan={Math.ceil(section.length / 2) + 1}
+                    >
+                      {another[0]}
+                    </td>
+                    <td
+                      colSpan={Math.floor(section.length / 2)}
+                      className="p-3 border"
+                    >
+                      {another[1]}
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          ) : (
+            <p className="text-center text-gray-500">Loading grievance table...</p>
           )}
-        </tbody>
-      </table>
-    ) : (
-      <p className="text-center text-gray-500">Loading grievance table...</p>
-    )}
-  </div>
-</div>
+        </div>
+      </div>
 
     </>
   );

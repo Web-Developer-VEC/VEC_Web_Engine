@@ -263,6 +263,7 @@
 .sports-title {
   font-size: 1.4rem;
   margin: 10px 0;
+  transition: color 0.3s ease;
 }
 
 .sports-description {
@@ -283,6 +284,10 @@
     min-width: 45%;
     max-width: 48%;
     margin: 10px;
+  }
+  .sports-item:hover .sports-title {
+    color: #800000;
+    transition: color 0.3s ease;
   }
 }
 
@@ -318,6 +323,10 @@
   .sports-title {
     font-size: 1.5rem;
   }
+  .sports-item:hover .sports-title {
+    color: #800000;
+    transition: color 0.3s ease;
+  }
   
   .sports-description {
     font-size: 1rem;
@@ -344,4 +353,21 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.sports-item:hover .sports-title {
+  color: #800000;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .sports-item:hover .sports-title {
+    color: #800000; 
+  }
+}
+
+@media (max-width: 480px) {
+  .sports-item:hover .sports-title {
+    color: #800000; 
+  }
 }
