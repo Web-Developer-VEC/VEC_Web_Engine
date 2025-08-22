@@ -5,6 +5,7 @@ import LoadComp from "../../LoadComp";
 
 export default function Gallerydetails() {
   const [modalImage, setModalImage] = useState(null);
+  const [pagetitle,setPageTitle] = useState(null)
 
   const location = useLocation();
   const [imagePaths, setImagePaths] = useState([]);
@@ -18,6 +19,7 @@ export default function Gallerydetails() {
   useEffect(() => {
     if (location.state && location.state.imagespath) {
       setImagePaths(location.state.imagespath);
+      setPageTitle(location.state.title);
     }
   }, [location.state]);
 
@@ -52,7 +54,7 @@ export default function Gallerydetails() {
     <>
       {(videos && images) ? (
         <div className="gallery-container">
-          <h2 className="gallery-title">Gallery Page</h2>
+          <h2 className="gallery-title">{pagetitle}</h2>
 
           {/* Videos First */}
           <div className="gallery-videos elementor-widget-wrap">
