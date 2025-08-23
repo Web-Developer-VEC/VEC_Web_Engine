@@ -203,6 +203,21 @@
         "category": "teaching_staff",
         "members": [
           {
+            "name": "Dr. SIVARAJ S N",
+            "designation": "Associate Professor",
+            "unique_id": "VEC-008-04-172",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/s-n-sivaraj/",
+              "googlescholar": "https://scholar.google.com/citations?user=csVfv3AAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/S-N-Sivaraj-Pillai?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0000-0002-9965-1975",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
+            },
+            "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
+            "resume_pdf": ""
+          },
+          {
             "name": "Mr.DAYAKAR C V",
             "designation": "Assistant Professor",
             "unique_id": "VEC-008-04-174",
@@ -230,21 +245,6 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193494173"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-128.webp",
-            "resume_pdf": ""
-          },
-          {
-            "name": "Dr. SIVARAJ S N",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-008-04-172",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/s-n-sivaraj/",
-              "googlescholar": "https://scholar.google.com/citations?user=csVfv3AAAAAJ&hl=en",
-              "researchgate": "https://www.researchgate.net/profile/S-N-Sivaraj-Pillai?ev=hdr_xprf",
-              "orchidprofile": "https://orcid.org/0000-0002-9965-1975",
-              "publonprofile": "",
-              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
-            },
-            "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
             "resume_pdf": ""
           },
           {
