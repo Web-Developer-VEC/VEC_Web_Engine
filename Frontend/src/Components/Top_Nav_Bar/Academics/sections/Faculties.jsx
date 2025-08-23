@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
@@ -13,14 +10,21 @@ const Faculties = ({ data }) => {
   </div>
   }
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   const hod_details = data?.find((item) => item.category === "head_of_department")?.members || [];
   const teaching_staff_details = data?.find((item) => item.category === "teaching_staff")?.members || [];
   const non_teaching_staff_details = data?.find((item) => item.category === "non_teaching_staff")?.members || [];
+  const faculty_pdf_path = data?.find((item) => item.category === "faculty_pdf_path")?.content[0] || "";
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>
       <div className={styles.imageGallery + " w-full"}>
-          <div className={styles.fullWidthTile}>
+          <div className={`${styles.fullWidthTile} relative`}>
             <ImageCard
               key={hod_details?.[0]?.unique_id || 0}
               name={hod_details?.[0]?.name}
@@ -35,6 +39,21 @@ const Faculties = ({ data }) => {
               firstTile={true}
               uid={hod_details?.[0]?.unique_id}
             />
+            <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
+              <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"  
+              onClick={() => {
+                  if (faculty_pdf_path && faculty_pdf_path.trim() !== "") {
+                    const url = UrlParser(faculty_pdf_path);
+                    if (url) {
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }
+                  }
+                  // else: do nothing
+                }}
+                >
+                  Faculties List
+                </button>
+            </div>
           </div>
           {teaching_staff_details?.length > 0 && (
             <>
