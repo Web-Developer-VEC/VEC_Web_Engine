@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
@@ -35,6 +32,9 @@ const Faculties = ({ data }) => {
               firstTile={true}
               uid={hod_details?.[0]?.unique_id}
             />
+            <div className="absolute">
+              <button>Faculty Details</button>
+            </div>
           </div>
           {teaching_staff_details?.length > 0 && (
             <>
