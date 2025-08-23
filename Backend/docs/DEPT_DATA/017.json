@@ -171,6 +171,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/017.pdf"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [{
             "name":"Dr. NIRMALRAJ A",

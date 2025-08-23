@@ -145,6 +145,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/010.pdf"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [ {
         "name": "Mr. BASKARAN V",

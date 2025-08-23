@@ -148,6 +148,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/012.pdf"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [
       {
