@@ -147,7 +147,9 @@
       {
         "category": "faculty_pdf_path",
         "content": [
+
           "/static/pdfs/faculty_list/014.pdf"
+
         ]
       },
       {
