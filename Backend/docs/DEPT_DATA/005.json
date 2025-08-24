@@ -941,8 +941,24 @@
       {
         "category": "department_activities",
         "content": [
+          
             {
-              "year":"2024",
+              "year":"2024 - 2025",
+              "activities":[  
+          {
+    "date": "06/02/2025",
+    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
+    "coordinator": "",
+    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
+    "beneficiaries": "CSE",
+    "relevant_PO_PSO": "",
+    "image_path": "/static/images/dept_activities/005/3.webp"
+           }
+ 
+         ]
+      },
+            {
+              "year":"2023 - 2024",
               "activities":[
                 {
           "date": "29/08/2024",
@@ -1053,22 +1069,7 @@
     "image_path": ""
   }
               ]
-            },
-            {
-              "year":"2025",
-              "activities":[  
-  {
-    "date": "06/02/2025",
-    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
-    "coordinator": "",
-    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  }
- 
-         ]
-      }
+            }
     ]
 
   }

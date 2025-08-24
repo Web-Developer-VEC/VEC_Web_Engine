@@ -51,7 +51,7 @@ const Faculties = ({ data }) => {
                   // else: do nothing
                 }}
                 >
-                  Faculties List
+                  Faculty List
                 </button>
             </div>
           </div>
