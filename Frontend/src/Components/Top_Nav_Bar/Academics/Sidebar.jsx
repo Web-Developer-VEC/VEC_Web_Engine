@@ -26,11 +26,9 @@ const iconMap = {
   "Pedagogy": <FaBook className={styles.icon + " text-secd dark:text-drks"} />,
   "StudentAchievments": <FaGraduationCap className={styles.icon + " text-secd dark:text-drks"} />,
   "SupportingStaff": <FaUsers className={styles.icon + " text-secd dark:text-drks"} />,
-  // "EventOrg": <MdEvent className={styles.icon + " text-secd dark:text-drks"} />,
   "Mous": <FaHandshake className={styles.icon + " text-secd dark:text-drks"} />,
   "Research": <FaFlask className={styles.icon + " text-secd dark:text-drks"} />,
   "NewsLetter": <FaNewspaper className={styles.icon + " text-secd dark:text-drks"} />,
-  "Event Organizer": <FaNewspaper className={styles.icon + " text-secd dark:text-drks"} />
 };
 
 const displayNameMap = {
@@ -47,7 +45,6 @@ const displayNameMap = {
   "Mous": "MOUs",
   "Research": "Research & Innovations", 
   "NewsLetter": "News Letters",
-  "Event Organizer": "Event Organizer"
 };
 
 const Sidebar = ({ sections, activeSection, setActiveSection }) => {

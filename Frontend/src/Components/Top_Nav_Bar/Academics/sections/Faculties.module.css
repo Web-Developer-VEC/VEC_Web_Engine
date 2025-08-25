@@ -109,7 +109,7 @@
   /*color: #ffffff;*/
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
-  width: 110px;
+  width: fit-content;
   height: 40px;
 }
 
@@ -412,7 +412,7 @@
   }
 
   .facButton {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .pdfiframe {
