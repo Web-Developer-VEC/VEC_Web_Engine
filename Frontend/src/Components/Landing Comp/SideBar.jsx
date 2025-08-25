@@ -138,15 +138,22 @@ const Sidebar = (props) => {
                                             {sub.hrd ? (
                                                 <h3 className="text-sm font-semibold text-gray-200 my-1">{sub.ttl}</h3>
                                             ) : (
-                                                <Link to={sub.lnk}
-                                                //   target="_blank"           
+                                                <Link
+                                                    to={sub.lnk}
                                                     rel="noopener noreferrer"
-                                                      className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
-                                                      onClick={() => {
-                                                          setIsOpen(false);
-                                                      }}>
+                                                    className="block text-gray-400 hover:text-white transition-all py-2 px-3 rounded-md bg-gray-800/50 hover:bg-gray-700 backdrop-blur-md shadow-sm border border-gray-700/30"
+                                                    onClick={(e) => {
+                                                        e.preventDefault(); // stop default Link navigation
+                                                        if (sub.lnk.startsWith("http")) {
+                                                        window.open(sub.lnk, "_blank"); // external link
+                                                        } else {
+                                                        navigate(sub.lnk); // internal navigation
+                                                        }
+                                                        setIsOpen(false);
+                                                    }}
+                                                    >
                                                     {sub.ttl}
-                                                </Link>
+                                                    </Link>
                                             )}
                                         </motion.li>
                                         : <div className="my-4">
