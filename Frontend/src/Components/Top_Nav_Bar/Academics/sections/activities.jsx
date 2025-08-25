@@ -52,7 +52,7 @@ const Activities = ({ data }) => {
   return (
     <>
       {/* 🔹 Year Filter Buttons */}
-      <div className="year-filter flex justify-center gap-2 my-4">
+      <div className="year-filter flex flex-wrap justify-center gap-2 my-4">
         {years?.map((year) => (
           <button
             key={year}

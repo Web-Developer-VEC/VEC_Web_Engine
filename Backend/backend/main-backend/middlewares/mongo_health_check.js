@@ -1,9 +1,9 @@
 // middleware/mongoHealthCheck.js
-const { getDb } = require('../config/db');
+const { getlogDb } = require('../config/db');
 
 async function mongoHealthCheck() {
-  const db = getDb();
-  const collection = db.collection('logs');
+  const db = getlogDb();
+  const collection = db.collection('mongolog');
 
   const now = new Date().toLocaleString('en-IN', {
     timeZone: 'Asia/Kolkata',
