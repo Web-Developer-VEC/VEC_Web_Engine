@@ -1,9 +1,9 @@
 // middleware/logError.js
-const { getDb } = require('../config/db');
+const { getlogDb } = require('../config/db');
 
 const logError = async (req, error, message = 'Unhandled error', status = 500) => {
-  const db = getDb();
-  const collection = db.collection('logs');
+  const db = getlogDb();
+  const collection = db.collection('errorlog');
 
   const now = new Date().toLocaleString('en-IN', {
     timeZone: 'Asia/Kolkata',

@@ -137,23 +137,23 @@
         "category": "hod_details",
         "content": [
           {
-           "department_id": "002",
+            "department_id": "002",
             "name": "Dr. BASKARA SETHUPATHY S",
-        "department_name": "Automobile Engineering (AUTO)",
-        "unique_id": "VEC-002-01-567",
+            "department_name": "Automobile Engineering (AUTO)",
+            "unique_id": "VEC-002-01-567",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
             "hod_image": "/static/images/hods/auto.webp",
             "designation": "Professor & Head, Dept of Automobile Engineering",
-           "Social_media_links": {
-                "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-                "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
-                "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
-                "orchidprofile": "",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+              "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
+              "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
+              "orchidprofile": "",
                 "publonprofile": "",
                 "scopus": ""
+              }
             }
-          }
         ]
       }
     ]
@@ -169,6 +169,12 @@
             "name": "Automobile Engieering (AUTO)",
             "dept_id": "002"
           }
+        ]
+      },
+      {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/002.pdf"
         ]
       },
       {
@@ -360,7 +366,7 @@
         "category": "department_activities",
         "content": [
             {
-           "year":"2025", 
+           "year":"2024 - 2025", 
            "activities":[
                 {
                 "date": "17.02.2025",
@@ -374,7 +380,7 @@
             ]
         },
         {
-           "year":"2024",
+           "year":"2023 - 2024",
             "activities":[
                 {
                 "date": "01.03.2024",
@@ -433,7 +439,7 @@
             ]
         },
         {
-           "year":"2023",
+           "year":"2022 - 2023",
             "activities":[
                 {
                 "date": "10.02.2023",
@@ -447,7 +453,7 @@
             ]
         },
         {
-          "year":"2022", 
+          "year":"2021 - 2022", 
             "activities":[
                 {
                 "date": "24.12.2022",
@@ -461,7 +467,7 @@
             ]
         },
         {
-          "year":"2018", 
+          "year":"2017 - 2018", 
             "activities":[
                 {
                 "date": "10.02.2018",
@@ -475,7 +481,7 @@
             ]
         },
         {
-          "year":"2017",
+          "year":"2016 - 2017",
             "activities":[
                 {
                 "date": "18.03.2017",
@@ -507,7 +513,7 @@
             ]        
         },
         {
-          "year":"2016",
+          "year":"2015 - 2016",
            "activities": [
                 {
                 "date": "24.09.2016",
@@ -521,7 +527,7 @@
             ]
         },
         {
-          "year":"2015",
+          "year":"2014 - 2015",
           "activities":  [
                 {
                 "date": "23.09.2015",

@@ -176,6 +176,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/007.pdf"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [
           {
@@ -215,7 +221,7 @@
             },
             {
               "name": "Dr. GEETHA R",
-              "designation": "Assistant Professor",
+              "designation": "Associate Professor",
               "unique_id": "VEC-007-04-185",
               "socialmedia_links": {
                 "linkedin": "https://www.linkedin.com/in/geetha-raman-86a635203/",
@@ -230,7 +236,7 @@
             },
             {
               "name": "Dr. RAGHURAMAN S",
-              "designation": "Assistant Professor",
+              "designation": "Associate Professor",
               "unique_id": "VEC-007-04-109",
               "socialmedia_links": {
                 "linkedin": "https://www.linkedin.com/in/raghu-raman-sivalingam-930020125/",
@@ -538,7 +544,7 @@
         "category": "department_activities",
         "content": [
           {
-            "year":"2024",
+            "year":"2023 - 2024",
             "activities": [
               {
                 "date": "14.03.2024",
@@ -620,7 +626,7 @@
             ]
           },
           {
-            "year": "2023",
+            "year": "2022 - 2023",
             "activities": [
               {
                 "date": "23.02.2023",
@@ -680,7 +686,7 @@
             ]
           },
           {
-            "year": "2022",
+            "year": "2021 - 2022",
             "activities": [
               {
                 "date": "26.11.2022",

@@ -162,7 +162,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
           <div className="w-100">
                   <div>
                       <h2 className="text-3xl text-accn dark:text-drkt mt-5 mb-3">{spcannouncements?.title}</h2>
-                      <p className="text-xl">{spcannouncements?.content}</p>
+                      <p className="text-xl text-justify">{spcannouncements?.content}</p>
                   </div>
               <br/>
               <ul className="list-none">

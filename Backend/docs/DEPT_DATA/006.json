@@ -175,6 +175,14 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+
+          "/static/pdfs/faculty_list/006.pdf"
+
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [
           {
@@ -356,7 +364,7 @@
         "category": "department_activities",
         "content": [
           {
-            "year":"2025",
+            "year":"2024 - 2025",
             "activities": [
               {
                 "date": "18/02/2025",
@@ -388,7 +396,7 @@
             ]
           },
           {
-            "year":"2024",
+            "year":"2023 - 2024",
             "activities": [
               {
                 "date": "17/08/2024",

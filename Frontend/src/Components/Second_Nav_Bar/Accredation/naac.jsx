@@ -58,7 +58,7 @@ const Naac = ({ data }) => {
             <div className="nabout-section">
               <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
                 <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
-                <p className="text-sm md:text-base">
+                <p className="text-sm md:text-base text-justify">
                   The NAAC conducts assessment and accreditation of Higher
                   Educational Institutions (HEI) such as colleges, universities
                   or other recognised institutions to derive an understanding of
