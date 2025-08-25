@@ -612,6 +612,40 @@
           {
 
             "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
@@ -636,6 +670,40 @@
          },
          {
             "year": "2023 - 2024",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
 
             "activities":[
                  {
@@ -687,6 +755,40 @@
          },
           {
             "year": "2022 - 2023",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
@@ -774,6 +876,40 @@
           },
           {
             "year": "2021 - 2022",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
