@@ -1,0 +1,152 @@
+[
+  {
+    "type": "about_vec",
+    "data": {
+      "content": [
+        "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.",
+        "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence."
+      ],
+      "image_path": [
+        "/static/images/aboutvec/aboutvec1.webp",
+        "/static/images/aboutvec/aboutvec2.webp",
+        "/static/images/aboutvec/aboutvec3.webp"
+      ],
+      "links": [
+        "uploads/2025/07/EOA_Report_2025-2026.pdf",
+        "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
+        "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
+        "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+      ]
+    }
+  },
+  {
+    "type": "about_trust",
+    "data": {
+      "velammal": {
+        "image_path": "/static/images/trust/velammal.webp",
+        "content": "Her Philosophy was quite simple, She used to say,\"You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent.\""
+      },
+      "The_Management": {
+        "name": [
+          "Shri. M.V. MUTHURAMALINGAM",
+          "Shri. M.V.M. VELMURUGAN",
+          "Shri. V. KARTHIK MUTHURAMALINGAM"
+        ],
+        "designation": ["Chairman", "Chief Executive Officer", "Deputy CEO"],
+        "image_path": [
+          "/static/images/trust/muthuramalingam1.webp",
+          "/static/images/trust/velmurugan1.webp",
+          "/static/images/trust/deptyceo1.webp"
+        ]
+      },
+      "Velammal_Educational_Trust": [
+        "In the year 1986... Smt.Velammal had sown the seed of social consciousness in the mind of her son Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, at his impressionable age, which started germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.",
+        "From a small school at Mogappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Tiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Tiruvannamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella."
+      ]
+    }
+  },
+  {
+    "type": "vision_and_mission",
+    "data": {
+      "vision": "To educate the student community both by theory and practice to fit in with society and to conquer tomorrow’s technology at a global level with human values through our dedicated team.",
+      "mission": "To provide world-class education in engineering, technology and management to foster research & development, to encourage creativity and promote innovation, to build leadership, intrapreneurship and entrepreneurship to nurture teamwork and achieve stakeholder’s delight.",
+      "image_path": "/static/images/visionandmission/VM.webp"
+    }
+  },
+  {
+    "type": "Management",
+    "data": {
+      "message": [
+        "At Velammal Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.",
+        "At Velammal Engineering College, we empower students to innovate, lead, and excel in a dynamic global environment. Our approach integrates academic rigor with practical insights, fostering critical thinking and adaptability. We are committed to continuous learning and technological advancement, shaping professionals who are prepared for the future. Our institution nurtures a culture of resilience, ethics, and innovation, ensuring every individual thrives. With industry collaborations and experiential learning opportunities, we prepare our students to meet the demands of a competitive world. Join us in our pursuit of transformative education and a future driven by excellence.",
+        "Dear Students, Faculty, and Visitors,",
+        "It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity."
+      ],
+      "image_path": [
+        "/static/images/trust/muthuramalingam2.webp",
+        "/static/images/trust/velmurugan2.webp",
+        "/static/images/trust/deptyceo2.webp"
+      ],
+      "designation": ["Chairman", "Chief Executive Officer", "Deputy CEO"],
+      "name": [
+        "Shri. M.V. MUTHURAMALINGAM",
+        "Shri. M.V.M. VELMURUGAN",
+        "Shri. V. KARTHIK MUTHURAMALINGAM"
+      ]
+    }
+  },
+  {
+    "type": "contact_us",
+    "data": {
+      "contact": "044 – 26590758",
+      "Student Affair": "044 - 26591771",
+      "For Admissions": "9123547550 , 8939221120"
+    }
+  },
+  {
+    "type": "AISHE",
+    "data": 
+      [
+          {
+            "year":"2021-2022",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+          },
+           {
+            "year":"2022-2023",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+          },
+           {
+            "year":"2023-2024",
+            "content":[
+              {
+                "name":"Certificate",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
+               },
+               {
+                "name":"Data Capture Format",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "        
+
+               },
+               {
+                "name":"Teaching Staff Details",
+                "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"       
+
+               }
+          ]
+            
+            }
+ ]
+}
+]

@@ -30,14 +30,14 @@ function IicHome({ data }) {
 
   return (
     <div>
-      <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 ">Home</h1>
-    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto">
+      <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 font-bold">Home</h1>
+    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto text-sm md:text-base">
       <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
         About IIC
       </h2>
       <div className="text-text dark:text-drkt">
         {aboutArray?.map((paragraph, index) => (
-          <p key={index} className="mb-2">
+          <p key={index} className="mb-2 text-justify">
             {paragraph}
           </p>
         ))}
@@ -75,11 +75,11 @@ function IicEst({ data }) {
         </h1>
       </div>
 
-      <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
+      <div className="naac-info-panel-icc border-l-4 border-secd dark:border-drks dark:bg-drkb">
         <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
           Major Focus of IIC
         </h2>
-        <p>
+        <p className="text-justify">
           {majorFocus.map((point, i) => (
             <span key={i}>
               <br />• {point}
@@ -128,7 +128,7 @@ function IicEco({ data }) {
       <div className="card-plc functions-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb">
         <h1 className="text-accn dark:text-drkt text-4xl">I & E Ecosystem</h1>
         <h2 className="text-[30px] iic-eco">Functions of IIC</h2>
-        <p>
+        <p className="text-justify">
           {data?.map((point, i) => (
             <span key={i}>
               <br />• {point}

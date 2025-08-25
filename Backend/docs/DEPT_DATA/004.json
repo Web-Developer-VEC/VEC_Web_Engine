@@ -1,0 +1,758 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": 
+        [
+          "Civil Engineering, the Mother of all Engineering Disciplines, its Sons and Daughters, the Young Civil Engineers are the Nation Builders for sustaining Civilization anywhere in the World and Universe.Starting from 2007, Department of Civil Engineering joined in contributing towards nation building through our Graduate Civil Engineers.","The B.E. Civil Engineering program of VEC is continuously accredited by NBA since 2015. So far 32 graduates from the Department have been placed in State and Central Government jobs (IRS, IOCL, Revenue, Police, PWD, Highways, Water Resources, Buildings, CMDA, Local Administration...) and also in many other countries like UK, USA, Canada, Singapore, Dubai, Australia, etc. in various roles and positions.","To achieve this, the Department is equipped with sophisticated laboratories and field oriented teaching and training. About 85% of students are placed in Core & IT companies (45+ Core Companies & 20+ IT companies). Around 200+ Students opted for higher studies in India & Foreign Universities through GATE, GRE & GMAT. Currently under Autonomous mode, the curriculum is further enriched to facilitate student community to reach greater heights and zeniths."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "Department of Civil Engineering aims to transform the students, through theory and practice, into competitive civil engineers, who will provide smart solutions for the futuristic sustainable development of the nation with human values."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content":[
+            "To transform the students into industry ready civil engineering graduates.",
+            "To inculcate a spirit of learning for pursuing higher studies with global outreach.",
+            "To promote research in civil engineering to achieve sustainability.",
+            "To facilitate conducive environment for entrepreneurship development.",
+            "To provide industry and society based solutions through innovation and creativity"
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": 
+        [
+            {
+                "header": "PEO 1",
+                "content":"Will be able to achieve greater heights in higher studies/research/profession."
+            },
+            {
+                "header": "PEO 2",
+                "content":"Will have knowledge to provide feasible solutions for real world civil engineering projects."
+            },
+            {
+                "header": "PEO 3",
+                "content":"Will have a passion for start-ups,entrepreneurship and ability to work in team/individual setup."
+            },
+            {
+                "header": "PEO 4",
+                "content":"Will progress in lifelong learning with the consideration of human and ethical values for the betterment of society."
+            }
+
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Plan, design and implement smart and sustainable infrastructure."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Provide solutions for the social needs and challenges by applying modern tools and techniques."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": 
+        [
+           {
+            "department_id":"004",
+            "name": "Dr. JEBAMALAR A",
+            "department_name": "Civil Engineering (CIVIL)",
+            "unique_id": "VEC-004-01-145",
+            "qualification": ["M.E.", "Ph.D"],
+            "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
+            "hod_image": "/static/images/profile_photos/004/VEC-004-01-145.webp",
+            "designation": "Professor & Head, Dept of Civil Engineering",
+            "Social_media_links": 
+            {
+              "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+              "orchidprofile":"",
+              "researchgate":"",
+              "publonprofile": "",
+              "sciprofiles":""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/004.pdf"
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [ {
+            "name": "Dr. JEBAMALAR A",
+            "designation": "Professor & Head",
+            "unique_id": "VEC-004-01-145",
+            "socialmedia_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+                    "orchidprofile":"",
+                    "researchgate":"",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400"
+                },
+          
+            "image_path":"/static/images/profile_photos/004/VEC-004-01-145.webp",
+            "resume_pdf":""
+          }]
+      },
+      {
+        "category": "teaching_staff",
+        "members": 
+        [
+          
+            {
+                "name": "Dr. REVATHEE T",
+                "designation": "Associate Professor",
+                "unique_id": "VEC-004-03-082",
+                "socialmedia_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/dr-revathee-thothathri-86129057/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en?authuser%3D&authuser=1&user=4iGLe88AAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Revathee-Thothathri?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0009-0005-4891-8229",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
+                "resume_pdf": ""
+            },
+            {
+                "name": "Mr. RAJHARASEHWARAN T A",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-066",
+                "socialmedia_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/rajha-rajeswaran-t-a-5649744b/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=z1BuZYcAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Rajha-Rajeswaran-Rajha",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
+                "resume_pdf": ""
+            },
+            {
+                "name": "Mr. RAJENDHIRAN K",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-061",
+                "socialmedia_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/rajendhiran-krishnamurthy-a7a1181ba",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/Krajendhiran-Arul",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
+                "resume_pdf": ""
+            },
+            {
+                "name": "Mrs. FRIEDA F S",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-601",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
+                "resume_pdf": ""
+            },
+            {
+                "name": "Mrs. PAVEENA A",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-602",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
+                "resume_pdf": ""
+            },
+            {
+                "name": "Mr. SELVAPRASANTH P",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-603",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
+                "resume_pdf": ""
+            }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": []
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+              {
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "pdf_path": "/static/pdfs/curriculum/004/reg_23.pdf"
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/004/reg_21.pdf"
+                }
+              ]
+              }
+            ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": 
+    [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name":"Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category":"newsletter",
+        "content":
+        [
+        {
+           "year": "2020",
+           "pdf_path":["/static/pdfs/newsletter/004/2020.pdf"]
+        },
+        {
+            "year":"2021",
+            "pdf_path":["/static/pdfs/newsletter/004/2021.pdf"]
+        },
+        {
+
+            "year":"2022",
+            "pdf_path":["/static/pdfs/newsletter/004/2022.pdf"]
+        },
+        {
+            "year":"2023",
+            "pdf_path":["/static/pdfs/newsletter/004/2023.pdf"]
+        }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+         {
+                "year":"2023 - 2024",
+                "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
+                "activities": 
+                [
+                    {
+                        "date": "11/03/2024",
+                        "name_of_event": "Inauguration of FSI Students Chapter ",
+                        "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+                        "resource_person":"Dr P B Sakthivel, Structural Consultant Chennai",
+                        "beneficiaries": "II ,III & IV Year Students",
+                        "relevant_PO_PSO": "PO1 , PO2 , PO3 , PO7 , PO11",
+                        "image_path": ["/static/images/dept_activities/004/1.webp"]
+
+                    },
+                    {
+                        "date": "12/03/2024",
+                        "name_of_event": "Guest Lecture on Intelligence and Innovation",
+                        "coordinator": "Mr.T. A. RajhaRajeswaran  &  Mr. K Rajendhiran",
+                        "resource_person": " Er R Adhithya,  Research Engineer, Saint Gobain",
+                        "beneficiaries": "III & IV Year Students",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO7 ",
+                        "image_path": ["/static/images/dept_activities/004/2.webp"]
+                    },  
+
+
+                    {
+                        "date": "06/03/2024",
+                        "name_of_event": "Industrial Visit to STP at Kodungaiyur ",
+                        "coordinator":"Mr. M Thillai Backiam&  Mrs. A Surekha",
+                        "resource_person": "",
+                        "beneficiaries": "III YR STUDENTS",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO11 ",
+                        "image_path": ["/static/images/dept_activities/004/3.webp"]
+                    },
+                    {
+                        "date": "06/03/2024",
+                        "name_of_event": "Industrial Visit to STP at Kodungaiyur",
+                        "coordinator":"Mr. M Thillai Backiam&  Mrs. A Surekha",
+                        "resource_person":"Er R Suresh, Assistant Engineer Buildings Division, Chennai",
+                        "beneficiaries":"III YR STUDENTS",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO11 ",
+                        "image_path": ["/static/images/dept_activities/004/4.webp"]
+                    },
+
+                    {
+                        "date": "27/02/2024",
+                        "name_of_event": "Guest Lecture on Entrepreneurial Opportunities in Building Waterproofing and Retrofitting",
+                        "coordinator":" Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+                        "resource_person":"Mr. M C Natarajan &amp; Mr. N Mohammed Althaf",
+                        "beneficiaries":"II ,III & IV Yr Students",
+                        "relevant_PO_PSO": "PO1 , PO2 , PO4 , PO5,PO7,PO11 ",
+                        "image_path": ["/static/images/dept_activities/004/5.webp"]
+                    },
+
+                    {
+                        "date": "31/01/2024",
+                        "name_of_event": "Lecture on GREEN BUILDINGS",
+                        "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath ",
+                        "resource_person": "Er M Neamitha, Assistant Engineering Manager, L & T",
+                        "beneficiaries":"II yr and III yr students",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO5,PO6,PO7,PO8,PO11 ",
+                        "image_path": ["/static/images/dept_activities/004/6.webp"]
+                    }
+                ]
+            },
+            {
+              "year": "2022 - 2023",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
+               "activities": [
+                    {
+                        "date": "13/10/2023",
+                        "name_of_event": "Industrial Visit to iSteel,VIKI INDUSTRIES Pvt. Ltd., Gummidipoondi, Chennai",
+                        "coordinator":"Mr.T. A. RajhaRajeswaran  &  Mr.S. Gopinath",
+                        "resource_person":"Er Kalaiselvan, AGM Manager",
+                        "beneficiaries": "II yr and III yr students",
+                        "relevant_PO_PSO": "PO1 , PO2 , PO5 , PO7  , PO11",
+                        "image_path": ["/static/images/dept_activities/008/7.webp"]
+                    },
+
+                    {
+                        "date": "25/08/2023",
+                        "name_of_event": "Industrial Visit to Thamaraipakkam Anaikkattu",
+                        "coordinator":"Dr A Jebamalar &  Dr R Sudharsanan",
+                        "resource_person":"",
+                        "beneficiaries":"III & IV Yr Students",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO 6,PO7  , PO12",
+                        "image_path": ["/static/images/dept_activities/004/8.webp"]
+                    },
+
+                    {
+                        "date": "02/08/2023",
+                        "name_of_event": "Workshop on Industry Connect through Software Skills",
+                        "coordinator":"T A Rajha Rajeswaran&  K Rajendhiran",
+                        "resource_person":"Er Akbar Ali Khader, CEO & MD, Khaas Group",
+                        "beneficiaries": "III & IV Yr Students",
+                        "relevant_PO_PSO":"PO1 , PO2 , PO3 , PO 5,PO7, PO8,PO9,PO10,PO11,PO12",
+                        "image_path": ["/static/images/dept_activities/008/9.webp"]
+                    }                    
+                ]
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": 
+    [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      },
+      {
+        "category": "student_achievements_details",
+        "images": 
+        [
+            {
+            "image_path": "/static/images/student_activities/004/1.webp", 
+            "event_name": "Anna University   Civilization - 2024 - Overall Championship ", 
+            "image_content": "VEC Civil Engineering Department won the Overall Championship of Civilization - a national level technical symposium conducted by College of Engineering, Guindy, Anna University consecutively for 7 years.", 
+            "date": "2024"
+            },
+            {
+            "image_path": "/static/images/student_activities/004/2.webp", 
+            "event_name": "ANNA UNIVERSITY   CIVILIZATION - 2022 - OVERALL CHAMPIONSHIP (Students Won Anna University Civilization Overall Championship Trophy for the last 7 consecutive years)", 
+            "image_content": "Our Students were awarded 4 funded projects through IEDC for innovative project and products", 
+            "date": "2022"
+            },
+            {
+            "image_path": "/static/images/student_activities/004/3.webp", 
+            "event_name": "Overall Trophy in Inter-collegiate symposium conducted by Dayanand Sagar College of Engineering and Technology,Bengaluru,2022 ", 
+            "image_content": "Our Students were awarded 5 Final Year funded projects by TNSCST for modern project works", 
+            "date": "2022"
+            },
+            {
+            "image_path": "/static/images/student_activities/004/4.webp", 
+            "event_name": "First Prize in BAI Oratorical Competition 2021", 
+            "image_content": "Our Students have been winning prizes every year since 2016 in the BAI - builders’ Association of India Oratory Competition.", 
+            "date": "2021"
+            }
+        ]
+    }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": 
+        [
+            {
+            "image_path": "/static/images/infrastructure/004/1.webp", 
+            "image_name": "STRENGTH OF MATERIALS LABORATORY", 
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/004/2.webp", 
+            "image_name": "FLUID MECHANICS AND HYDRAULIC MACHINERY LABORATORY", 
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/004/3.webp", 
+            "image_name": "SOIL MECHANICS LABORATORY", 
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/004/4.webp", 
+            "image_name": "CONCRETE AND HIGHWAY ENGINEERING LABORATORY", 
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/004/5.webp", 
+            "image_name": "SURVEYING LABORATORY", 
+            "image_content": ""
+            },
+            {
+            "image_path": "/static/images/infrastructure/004/6.webp",
+            "image_name": "ENVIRONMENTAL ENGINEERING LABORATORY", 
+            "image_content": ""
+            }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": 
+        [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content":
+            [
+                {             
+                    "S_NO": 1,
+                    "ORGANISATION_NAME": "ETA Geospatial Solutions",
+                    "MONTH_AND_YEAR": "18-12-2024 to 17-12-2029",
+                    "VALIDITY": "5 years",
+                    "LOGO_PATH": "/static/images/mous/004/eta_geospatial_solutions.jpg",
+                    "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 2,
+                    "ORGANISATION_NAME": "GBL Ganesan Builders PVT.Limited",
+                    "MONTH_AND_YEAR": "05-04-2023 to 04-04-2026",
+                    "VALIDITY": "3 years",
+                    "LOGO_PATH": "/static/images/mous/004/gbl_ganesan_builders_pvt_limited.jpg",
+                    "ACTIVITIES_PLANNED": []
+                },
+                {
+                    "S_NO": 3,
+                    "ORGANISATION_NAME": "CMTI Construction Management Training Institute",
+                    "MONTH_AND_YEAR": "15-04-2021 to 14-04-2026",
+                    "VALIDITY": "5 years",
+                    "LOGO_PATH": "/static/images/mous/004/cmti_construvtion_management_training_institute.jpg",
+                    "ACTIVITIES_PLANNED": []
+                }
+
+            ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/civil.webp",
+            "name": "Civil Engineering (CIVIL)",
+            "dept_id": "004"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -5,7 +5,7 @@ import linkedin from '../Assets/linkedin-logo.png';
 import youtube from '../Assets/youtube.png';
 import x from '../Assets/X-logo.png';
 import facebook from '../Assets/facebook-logo.png';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { section } from "framer-motion/m";
 
 const Footer = forwardRef((props, ref) => {
@@ -76,28 +76,13 @@ const Footer = forwardRef((props, ref) => {
                     <div>
                         <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
                         <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
-                            <li><a href="/abt-us">About Us</a></li>
-                            <li><a onClick={() => {
-                                navigate('/Accredation',
-                                    { state: {section: "NBA"}}
-                                )
-                            }}>NBA</a></li>
-                            <li><a onClick={() => {
-                                navigate('/Accredation',
-                                    { state: {section: "NAAC"}}
-                                )
-                            }}>NAAC</a></li>
-                            <li><a onClick={() => {
-                                navigate('/Accredation',
-                                    { state: {section: "NIRF"}}
-                                )
-                            }}>NIRF</a></li>
-                            <li><a onClick={() => {
-                                navigate('/Accredation',
-                                    { state: {section: "QS Rating"}}
-                                )
-                            }}>QS Rating</a></li>
-                            <li><a href="/iic">IIC</a></li>
+                            <li><Link to="/abt-us">About Us</Link></li>
+                            <li><Link to="/abt-yr">AISHE</Link></li>
+                            <li><Link to="/Accredation" state={{ section: "NBA" }}>NBA</Link></li>
+                            <li><Link to="/Accredation" state={{ section: "NAAC" }}>NAAC</Link></li>
+                            <li><Link to="/Accredation" state={{ section: "NIRF" }}>NIRF</Link></li>
+                            <li><Link to="/Accredation" state={{ section: "QS Rating" }}>QS Rating</Link></li>
+                            <li><Link to="/iic">IIC</Link></li>
                         </ul>
                     </div>
 

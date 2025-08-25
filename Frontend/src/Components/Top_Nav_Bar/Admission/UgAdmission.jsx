@@ -5,19 +5,18 @@ import { FaLink } from "react-icons/fa";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const UgAdmission = ({ theme, toggle }) => {
   const [ugData, setUgData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [selectedPdf, setSelectedPdf] = useState(null);
   const navigate = useNavigate();
 
   const ug = ugData?.UG || [];
   const ug_lateral = ugData?.UG_Lateral || [];
   const year = ugData?.year;
+  const BE_Government = ugData?.BE_Government || {};
+  const BE_Management = ugData?.BE_Management || {};
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -67,16 +66,11 @@ const UgAdmission = ({ theme, toggle }) => {
     );
   }
 
+  // Always open PDF in new tab
   const handlePdfClick = (name, url) => {
-    if (window.innerWidth >= 1024) {
-      setSelectedPdf({ name, url });
-    } else {
-      window.open(url, "_blank");
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
     }
-  };
-
-  const closeModal = () => {
-    setSelectedPdf(null);
   };
 
   const renderTable = (data, title, subtitle) => (
@@ -167,17 +161,16 @@ const UgAdmission = ({ theme, toggle }) => {
                 INFORMATION TO…..
               </p>
               <button
-              className="text-blue-600 dark:text-drka"
+                className="text-blue-600 dark:text-drka"
                 onClick={() =>
                   handlePdfClick(
-                    "FIRST YEAR B.E/B.Tech – Government Quota",
-                    UrlParser(ugData?.BE_Government_link)
+                    BE_Government?.BE_Government_link_name,
+                    UrlParser(BE_Government?.BE_Government_link)
                   )
                 }
-                
               >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR
-                B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)
+                <FaLink className="inline size-5 mr-1 mb-1" />
+                 {BE_Government?.BE_Government_link_name}
               </button>
             </div>
             <div>
@@ -195,14 +188,14 @@ const UgAdmission = ({ theme, toggle }) => {
               <button
                 onClick={() =>
                   handlePdfClick(
-                    "FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
-                    UrlParser(ugData?.BE_Management_link)
+                      BE_Management?.BE_Management_link_name,
+                      UrlParser(BE_Management?.BE_Management_link)
                   )
                 }
                 className="text-blue-600 dark:text-drka"
               >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR
-                B.E/B.TECH – MANAGEMENT QUOTA
+                <FaLink className="inline size-5 mr-1 mb-1" />* FIRST YEAR
+               {BE_Management?.BE_Management_link_name}
               </button>
             </div>
             {renderTable(
@@ -235,22 +228,6 @@ const UgAdmission = ({ theme, toggle }) => {
               `UG COURSES - TOTAL INTAKE ${year}`,
               "(For Diploma Holders Only)"
             )}
-          </div>
-        </div>
-      )}
-
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
           </div>
         </div>
       )}

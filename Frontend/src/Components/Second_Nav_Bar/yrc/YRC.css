@@ -1,0 +1,1307 @@
+/* Main Container */
+.YRC-container {
+  width: 90%;
+  margin: 50px auto;
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  display: flex;
+  /*gap: 30px;*/
+}
+
+/* About Us - Large Rectangle */
+.YRC-Aboutus {
+  /*width: 85%;*/
+  padding: 30px;
+  border-radius: 10px;
+  /*background: #ffffff;*/
+  /*border-left: 5px solid #d1b91b;*/
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+  font-family:  'Poppins', sans-serif;
+}
+
+.YRC-heading {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+}
+
+.underline-text {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #FDCC03;
+}
+
+
+/* Icon Styling */
+.YRC-icon {
+  width: 70px;  /* Adjust size */
+  height: 70px;
+  border-radius: 50%; /* Circular shape */
+}
+
+/* Content */
+.YRC-content {
+  font-size: 16px;
+  line-height: 1.7;
+  /*color: #444;*/
+}
+
+/* Mission & Vision Section */
+.YRC-mission-vision-container {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  gap: 20px;
+}
+
+.YRC-mission, .YRC-vision {
+  width: 50%;
+  padding: 30px;
+  border-radius: 10px;
+  /*background: #ffffff;*/
+  /*border-left: 5px solid #d1b91b;*/
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+}
+
+.YRC-mission:hover, .YRC-vision:hover {
+  transform: scale(1.02);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Container */
+.YRC-carousel-container {
+  /*width: 85%;*/
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* Individual Slide */
+.YRC-carousel-slide {
+  position: relative;
+  text-align: center;
+}
+
+/* Image Styling */
+.YRC-carousel-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Image Hover Effect */
+.YRC-carousel-slide:hover .YRC-carousel-image {
+  transform: scale(1.01);
+}
+
+/* Carousel Text (Overlay) */
+.YRC-carousel-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 80%;
+  text-align: center;
+}
+
+/* Slick Dots (Pagination) */
+.slick-dots {
+  bottom: -30px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #ff0000 !important;
+  opacity: 0.6;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff0000 !important;
+  opacity: 1;
+}
+
+/* Carousel Arrows */
+.YRC-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.YRC-carousel-prev {
+  left: 10px;
+}
+
+.YRC-carousel-next {
+  right: 10px;
+}
+
+.YRC-carousel-arrow:hover {
+  background: rgba(255, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/* Overall Container */
+.yrc-coordinators-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.YRC-about{
+  margin: 10px;
+}
+.yrc-underline3 {
+  width: 270px;
+  height: 2px;
+  background-color: #eab308;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+.scroll-container {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 10s linear infinite;
+}
+
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.news-item {
+  font-size: 18px;        /* Smaller font */
+  line-height: 1.4;       /* Better spacing */
+  padding: 12px 12px;      /* Slightly tighter padding */
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+
+/* Keyframe for vertical scrolling */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+/* Section Headings */
+.yrc-h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  position: relative;
+}
+
+.yrc-h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  position: relative;
+}
+
+.iic-h3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  font-family:  'Poppins', sans-serif;
+
+}
+
+
+/* Officer Card */
+.yrc-member-card-1 {
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  width: 500px;
+  margin: 20px 20px;
+  margin-top: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+}
+
+.yrc-member-card-1 img, 
+.yrc-member-card-1 .avatar {
+  border-radius: 0; /* Removes circular border */
+  width: 150px; /* Adjust width as needed */
+  height: 150px;
+  border-radius: 10px; /* Adjust height as needed */
+}
+.yrc-member-card-1:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yrc-member-image1 {
+  display: block;
+  width: 500px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yrc-member-image2 {
+  display: block;
+  align-content: center;
+  margin-left: 25%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yrc-member-info1 {
+  flex: 1;
+  font-family:  'Poppins', sans-serif;
+
+}
+
+.yrc-member-info2 {
+  flex: 1;
+  text-align: center;
+  font-family:  'Poppins', sans-serif;
+}
+
+/* Faculty Coordinator Card */
+.yrc-faculty-card {
+  background: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.yrc-faculty-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yrc-faculty-image {
+  width: 120px;
+  height: 120px;
+  border-color: #555;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yrc-faculty-info {
+  flex: 1;
+  text-align: left;
+}
+
+.yrc-faculty-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.yrc-faculty-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.yrc-faculty-description {
+  font-size: 14px;
+}
+
+/* General container styles */
+.yrc-coordinators-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Grid layout for coordinators */
+.iic-members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  gap: 20px;
+  padding: 20px;
+  font-family:  'Poppins', sans-serif;
+}
+.YRC-news-updates {
+    /* Increased font size */
+    font-weight: bold;
+    /* Deep navy blue for a professional look */
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    position: relative;
+    font-family:  'Poppins', sans-serif;
+}
+
+/* Ensure the last row is centered if it has only two items */
+.yrc-member-card {
+  flex: 1 1 calc(25% - 20px); /* Adjust for 4 columns */
+  width: 500px;
+  max-width: 250px;
+}
+
+
+/* Individual Coordinator Card */
+.yrc-member-card {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  align-items: center;
+  max-width: 260px;
+}
+
+/* Hover effect for better UI */
+.yrc-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile image inside the card */
+.yrc-member-image {
+  width: 100px;
+  height: 100px;
+  margin:auto;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Name and role styling */
+.yrc-member-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.yrc-platoon {
+  font-size: 14px;
+}
+
+/* Department and year/section styling */
+.yrc-department,
+.yrc-year {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Faculty Coordinator Card Styling */
+.faculty-coordinator-card {
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.faculty-coordinator-card h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.faculty-coordinator-card p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Container to align elements */
+.YRC-notification-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 10px;
+  font-family:  'Poppins', sans-serif;
+  font-size: 24px;
+}
+
+/* Left-side text styling */
+.YRC-news-updates {
+  font-size: 26px;
+  /* Increased font size */
+  font-weight: bold;
+  /* Deep navy blue for a professional look */
+  flex: 1;
+  text-align: left;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* Adding an underline effect */
+.YRC-news-updates::after {
+  content: "";
+  display: block;
+  width: 513px;
+  /* Custom width */
+  height: 2px;
+  background:#eab308;
+  /* Gradient effect */
+  margin-top: 5px;
+}
+
+/* Notification box styling */
+.YRC-notification-box {
+  width: 550px;
+  /* Increased width */
+  border-radius: 12px;
+  /* Slightly rounded corners */
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+/* Notification header */
+.YRC-notification-header {
+  background-color: #800000;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  /* Slightly larger header */
+  padding: 12px;
+}
+
+/* Notification content area */
+.YRC-notification-content {
+  height: 200px;
+  /* Increased height */
+  padding: 12px;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+/* Styling for the scrolling text */
+marquee p {
+  margin: 12px 0;
+  font-size: 18px;
+  /* Larger font for readability */
+  color: #444;
+  font-size: 16px;
+}
+
+.carouselyrc-container {
+  width: 90%;
+  margin: auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+.events-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.events-underline {
+  width: 100px;
+  height: 4px;
+  background-color: #fdcc03;
+  margin: 0 auto 20px auto;
+}
+
+/* Ensure all cards have equal height */
+.carouselyrc-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Make sure images are uniform */
+.carouselyrc-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Ensure content area is flexible to fill the card */
+.carouselyrc-content {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Title styling */
+.carouselyrc-content h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  flex-grow: 1;
+}
+
+/* Location and date styling */
+.carouselyrc-location {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.carouselyrc-date {
+  font-size: 12px;
+  background: #800000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Swiper Navigation Buttons */
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background-color: #1c2833;
+  color: white !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, background-color 0.3s;
+  z-index: 100;
+  cursor: pointer;
+}
+
+/* Remove default Swiper navigation arrows */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Correct positioning */
+.custom-prev {
+  left: -10px;
+}
+
+.custom-next {
+  right: -10px;
+}
+
+
+/* Carousel Wrapper */
+.yrc-carousel-wrap {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Carousel Inner Container */
+.yrc-carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Slide */
+.yrc-carousel-slide {
+    min-width: 100%;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image Styling */
+.yrc-carousel-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Text Overlay */
+.nss-carousel-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    max-width: 300px;
+}
+
+/* Carousel Buttons */
+.nss-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.nss-carousel-btn-left {
+    left: 10px;
+}
+
+.nss-carousel-btn-right {
+    right: 10px;
+}
+
+/* Hover Effects */
+.nss-carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots Indicator */
+.nss-carousel-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.nss-dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nss-dot.active {
+    background: #fdb515;
+}
+
+.yrc-carousel-slide {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.yrc-carousel-image {
+  width: 100%;
+  height: 450px;
+  object-fit:cover;
+  border-radius: 10px;
+}
+
+/* Overlay text bar */
+.nss-carousel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 0 0 10px 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nss-carousel-overlay-left {
+  max-width: 80%;
+}
+
+.nss-carousel-overlay-left h3 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+}
+
+.nss-carousel-overlay-left p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.nss-carousel-overlay-right {
+  align-self: flex-end;
+  background: #ffc107;
+  color: #000;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .custom-prev {
+    left: -30px;
+  }
+  .YRC-about{
+    margin: 10px;
+  }
+
+  .custom-next {
+    right: -30px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+    top: 65%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .carouselyrc-image {
+    height: 180px;
+  }
+  .YRC-about{
+    margin: 10px;
+  }
+  .carouselyrc-card {
+    min-height: 280px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carouselyrc-card {
+    min-height: 280px;
+  }
+
+  .carouselyrc-image {
+    height: 140px;
+  }
+
+  .custom-prev,
+  .custom-next {
+    width: 35px;
+    height: 35px;
+    top: 65%;
+  }
+
+  .custom-prev {
+    left: 1px;
+  }
+
+  .custom-next {
+    right: 1px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .yrc-student-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .yrc-staff-card, .yrc-officer-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .YRC-notification-box{
+      width: 375px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    .yrc-profile-pic, .yrc-officer-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+}
+/* 📌 Tablets (Max-width: 1024px) */
+@media (max-width: 1200px) {
+  /* About Us, Mission & Vision */
+  .YRC-Aboutus, .YRC-mission-vision-container {
+    width: 90%;
+  }
+  .YRC-notification-box{
+    width: 375px;
+    margin: 10px;
+  }
+  .YRC-mission-vision-container {
+    gap: 20px;
+  }
+
+  .YRC-mission, .YRC-vision {
+    width: 100%;
+  }
+
+  /* Coordinators */
+  .YRC-coordinators-section {
+    width: 90%;
+  }
+
+  /* Student Coordinators - 3 per row */
+  .YRC-student-coordinators {
+    grid-template-columns: repeat(3, 1fr);
+  
+  }
+
+  /* Carousel */
+  .YRC-carousel-container {
+    width: 90%;
+  }
+
+  .YRC-carousel-image {
+    height: 350px;
+  }
+}
+@media (max-width: 860px){
+  .YRC-student-coordinators {
+    gap:5px;
+    margin: 5px;
+  }
+}
+
+/* 📌 Mobile Screens (Max-width: 768px) */
+@media (max-width: 830px) {
+  /* About Us, Mission & Vision */
+  .YRC-Aboutus, .YRC-mission-vision-container {
+    width: 95%;
+    padding: 20px;
+  }
+  .YRC-notification-box{
+    width: 375px;
+    margin: 10px;
+  }
+
+  .YRC-mission-vision-container {
+    flex-direction: column; /* Stack Mission & Vision vertically */
+    gap: 15px;
+  }
+
+  .YRC-mission, .YRC-vision {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Coordinators */
+  .YRC-coordinators-section {
+    width: 95%;
+  }
+
+  /* Faculty Coordinator */
+  .YRC-faculty-coordinator {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ID Cards - 2 per row */
+  .YRC-student-coordinators {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .YRC-id-card {
+    width: 100%;
+    max-width: 260px; /* Prevents too much stretching */
+  }
+
+  /* Carousel */
+  .YRC-carousel-container {
+    width: 95%;
+  }
+
+  .YRC-carousel-image {
+    height: 300px;
+  }
+
+  .YRC-carousel-text {
+    font-size: 14px;
+    padding: 8px;
+    width: 90%;
+  }
+}
+
+/* 📌For Team & Coordinators */
+@media screen and (max-width: 768px) {
+  .yrc-student-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  .yrc-staff-card, .yrc-officer-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .yrc-profile-pic, .yrc-officer-image {
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+
+  .yrc-student-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: auto;
+  }
+
+  .yrc-student-image {
+      width: 100%;
+      height: auto;
+  }
+
+  .yrc-student-info {
+      width: 100%;
+      padding: 10px;
+  }
+}
+
+/* 📌 Small Mobile Screens (Max-width: 480px) */
+@media (max-width: 480px) {
+  /* General Fix: Reduce Overall Spacing */
+  .YRC-container {
+    width: 95%; 
+    gap: 20px; /* Reduce gap */
+  }
+
+  /* About Us */
+  .YRC-Aboutus {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;/* Smaller text */
+  }
+
+  /* Mission & Vision */
+  .YRC-mission-vision-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px; /* Reduce space between boxes */
+  }
+
+  .YRC-mission, .YRC-vision {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px; /* Smaller text */
+  }
+
+  /* Coordinators */
+  .YRC-coordinators-section {
+    width: 100%;
+  }
+
+  /* Student Coordinators - Center the ID Cards */
+  .YRC-student-coordinators {
+    display: flex; 
+    flex-direction: column; /* Stack them vertically */
+    align-items: center; /* Center align */
+    gap: 15px;
+  }
+  
+
+  .YRC-id-card {
+    width: 90%;
+    max-width: 220px; /* Set a max width for better fit */
+    padding: 15px;
+    text-align: center; /* Ensure text is centered */
+  }
+
+  .YRC-id-card {
+    width: 90%;
+    max-width: 220px; /* Smaller max size */
+    padding: 15px;
+  }
+
+  .YRC-profile-pic {
+    width: 100px;
+    height: 120px;
+  }
+
+  /* Reduce text size */
+  .YRC-name {
+    font-size: 18px;
+  }
+
+  .YRC-role {
+    font-size: 14px;
+  }
+
+  /* Carousel */
+  .YRC-carousel-container {
+    width: 100%;
+  }
+
+  .YRC-carousel-image {
+    height: 220px; /* Reduce height */
+  }
+
+  .YRC-carousel-text {
+    font-size: 12px;
+    padding: 5px;
+    width: 90%;
+  }
+
+  /* Carousel Arrows */
+  .YRC-carousel-arrow {
+    padding: 8px;
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .yrc-student-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+}
+
+/* For Members Tile */
+@media (max-width: 1024px) {
+  .yrc-member-card {
+    flex: 1 1 calc(33.33% - 20px); /* Adjust for 3 columns */
+  }
+}
+
+@media (max-width: 768px) {
+  .yrc-member-card {
+    flex: 1 1 calc(50% - 20px); /* Adjust for 2 columns */
+  }
+}
+
+@media (max-width: 480px) {
+  .yrc-member-card {
+    flex: 1 1 100%; /* Single column on small screens */
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .yrc-members-grid {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 15px;
+  }
+
+  .yrc-member-card {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .yrc-member-info h3 {
+    font-size: 16px;
+  }
+
+  .faculty-coordinator-card {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .yrc-coordinators-container {
+    padding: 10px;
+  }
+
+  .yrc-member-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .yrc-member-info h3 {
+    font-size: 14px;
+  }
+
+  .yrc-platoon,
+  .yrc-department,
+  .yrc-year {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1500px){
+  .YRC-student-coordinators {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .yrc-member-card-1 {
+    width: 90%; /* Full width with some margin */
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  .yrc-member-image1 {
+    width: 90px;
+    height: 90px;
+  }
+
+  .yrc-title {
+    font-size: 14px;
+  }
+
+  .yrc-degree {
+    font-size: 12px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .yrc-member-card-1 {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  .yrc-member-image1 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .yrc-title {
+    font-size: 13px;
+  }
+
+  .yrc-degree {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .yrc-member-card-1 {
+    width: 280px;
+    flex-direction: column; 
+    justify-content: center;/* Slightly smaller */
+  }
+
+  .yrc-member-image1 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .yrc-title {
+    font-size: 15px;
+  }
+
+  .yrc-degree {
+    font-size: 13px;
+  }
+}
+
+
+.nss-carousel-content {
+  position: relative;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: justify;
+  width: auto;
+  
+}
+
+.nss-carousel-content-left {
+  flex: 1;
+}
+
+.nss-carousel-content-left h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.nss-carousel-content-left p {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.nss-carousel-content-right {
+  position: absolute;
+  right: 15px;
+  /* bottom: -10px; */
+  top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background: #ffc107;
+  border-radius: 5px;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}

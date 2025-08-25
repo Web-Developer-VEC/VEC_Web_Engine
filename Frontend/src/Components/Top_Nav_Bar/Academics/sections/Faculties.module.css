@@ -1,6 +1,6 @@
 .app {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: poppins, sans-serif;
   /*background-color: #f9f9f9;*/
   /*padding: 20px;*/
 }
@@ -109,7 +109,7 @@
   /*color: #ffffff;*/
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
-  width: 110px;
+  width: fit-content;
   height: 40px;
 }
 
@@ -334,8 +334,8 @@
 
   .gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     justify-content: center;
   }
 
@@ -412,7 +412,7 @@
   }
 
   .facButton {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .pdfiframe {

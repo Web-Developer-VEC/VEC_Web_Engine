@@ -1,0 +1,1179 @@
+[
+  {
+    "type": "vision_and_mission",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "about_the_department_image_path": "/static/images/department_data/ece.webp",
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "about_the_department",
+        "content": [
+          "We are proud to be honoured as the recipient of “National Employability Award 2021” for being among the top 10% colleges in India that excelled in AMCAT 21. Also we have received “Best ISF Award” from IETE for two consecutive years.Several Govt. initiatives have Telecommunication infrastructure as the backbone which is an opportunity to work with Government as a stakeholder in research.Industry 4.0 requires Smart Factories which depend on Machine to Machine Communication thus improving placement prospects for ECE students.An Electronics and Communication Engineer can work in Robotics, Drones,Design of Gadgets, Machine Automation, Aviation and Avionics, Consumer Electronics, Communications, Control and Automation, Telecommunication,Computer Application, Health Care diagnostic equipment manufacturing Our facultyare dedicated to creating a diverse and inclusive environment for our students. The Department endorses with pride of having National Level Accreditations like NBA, NAAC and ISO Certifications. Also it is permanently affiliated to Anna University, with Autonomous Status.It has optimum blend of faculty strength which includes 9 Doctorates with an average experience of 15 years."
+        ]
+      },
+      {
+        "category": "department_vision",
+        "content": [
+          "To impart technical knowledge and skills to create resourceful Electronics and Communication Engineering graduates with innovation and research to meet industry and societal needs."
+        ]
+      },
+      {
+        "category": "department_mission",
+        "content": [
+          "To provide an ideal learning environment through futuristic and flexible curriculum with innovative teaching and learning methods.",
+          "To foster cutting edge research with ethical values.",
+          "To promote technical and entrepreneurship skills to provide socially relevant and sustainable solutions with innovation.",
+          "To nurture leadership through teamwork."
+        ]
+      },
+      {
+        "category": "programme_educational_objectives",
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Be highly competent with in-depth knowledge in the Electronics and Communication Engineering to have a successful career in Core / IT / Research / Entrepreneurship."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Design and Develop comprehensive and multi-disciplinary projects which require teamwork, leadership and ethical values taking into consideration legal, social, environmental and economic issues."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Analyze and implement solutions in Electronics and Communication Engineering and adapt to changes in technology by continuous learning."
+          }
+        ]
+      },
+      {
+        "category": "program_outcomes",
+        "content": [
+          {
+            "header": "PO 1: Engineering knowledge",
+            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+          },
+          {
+            "header": "PO 2: Problem analysis",
+            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+          },
+          {
+            "header": "PO 3: Design/development of solutions",
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+          },
+          {
+            "header": "PO 4: Conduct investigations of complex problems",
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+          },
+          {
+            "header": "PO 5: Modern tool usage",
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+          },
+          {
+            "header": "PO 6: The engineer and society",
+            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+          },
+          {
+            "header": "PO 7: Environment and sustainability",
+            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+          },
+          {
+            "header": "PO 8: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+          },
+          {
+            "header": "PO 9: Individual and team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+          },
+          {
+            "header": "PO 10: Communication",
+            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+          },
+          {
+            "header": "PO 11: Project management and finance",
+            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
+          },
+          {
+            "header": "PO 12: Life-long learning",
+            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+          }
+        ]
+      },
+      {
+        "category": "program_specific_outcomes",
+        "content": [
+          {
+            "header": "PSO 1",
+            "content": "Be proficient and employment ready with career development skills in both software and hardware through Industry oriented mini & major projects, internship, industry visits, seminars and workshops to ethically serve the needs of the society."
+          },
+          {
+            "header": "PSO 2",
+            "content": "Develop hardware / software for components / systems for applications in Signal processing, VLSI, Communication, Networking, Computer-based Systems and/or pursue Higher Studies / Research with a strong base in Electronics and Communication Engineering."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hod",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "hod_details",
+        "content": [
+          {
+            "department_id": "009",
+            "name": "Dr. MARY JOANS S",
+            "department_name": "Electronics and Communication Engineering (ECE)",
+            "unique_id": "VEC-009-01-090",
+            "qualification": ["M.E.","Ph.D"],
+            "hod_message": [
+              "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
+            ],
+            "hod_image": "/static/images/hods/ece.webp",
+            "designation": "Professor & Head, Dept of Electronics and Communication Engineering (ECE)",
+            "Social_media_links": {
+              "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Mary-Joans",
+              "orchidprofile": "https://orcid.org/0009-0008-2908-5438",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54917116200"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/009.pdf"
+        ]
+      },
+      {
+        "category": "head_of_department",
+        "members": [
+          {
+            "name": "Dr. MARY JOANS S",
+            "designation": "Professor & Head",
+            "unique_id": "VEC-009-01-102",
+            "socialmedia_links": {
+              "linkedin": "", 
+              "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Mary-Joans",
+              "orchidprofile": "https://orcid.org/0009-0008-2908-5438",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=54917116200"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-01-102.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "teaching_staff",
+        "members": [
+          {
+            "name": "Dr. LEENA JASMINE J S",
+            "designation": "Professor",
+            "unique_id": "VEC-009-02-089",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/leena-jasmine-14a064204/",
+              "googlescholar": "https://scholar.google.com/citations?pli=1&authuser=1&user=g2kv1R8AAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Leena-Jasmine-J-s",
+              "orchidprofile": "https://orcid.org/0000-0001-5652-0927",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/31825811",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55942398400"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-02-089.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. MURUKESH C",
+            "designation": "Professor",
+            "unique_id": "VEC-009-03-052",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/murukesh-chinnasamy-77460841/",
+              "googlescholar": "https://scholar.google.com/citations?user=i1oq6kYAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/lab/Murukesh-Chinnasamy-Lab",
+              "orchidprofile": "https://orcid.org/0000-0002-0034-9400",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=52663908300"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-03-052.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. THILAGAM K",
+            "designation": "Associate Professor",
+            "unique_id": "VEC-009-03-041",
+            "socialmedia_links": {
+              "linkedin": "http://linkedin.com/in/thilagam-kalivarathan-86664919b",
+              "googlescholar": "https://scholar.google.com/citations?user=Ex8vx68AAAAJ&hl=en&oi=ao",
+              "researchgate": "https://www.researchgate.net/profile/Drkthilagam_Kalivarathan",
+              "orchidprofile": "https://orcid.org/0000-0001-7842-4223",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56041205200"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-03-041.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. MANJU S",
+            "designation": "Associate Professor",
+            "unique_id": "VEC-009-03-012",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/manjus-pradeep-2b8a66279",
+              "googlescholar": "https://tinyurl.com/bdh7f6pe",
+              "researchgate": "https://www.researchgate.net/profile/Manju-Sundararajan-2",
+              "orchidprofile": "https://orcid.org/0000-0002-5428-2918",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/ITV-9795-2023",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57212789772"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-03-012.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. PONNRAJAKUMARI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-021",
+            "socialmedia_links": {
+              "linkedin": "http://www.linkedin.com/in/ponnrajakumari-m-137331204/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=yc195xQAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Ponnrajakumari-Mahalingam",
+              "orchidprofile": "https://orcid.org/0000-0002-7090-8191",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-021.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. LAVANYA K",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-029",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/lavanya-senthilkumar-14370697?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0004-8790-0876",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-029.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. MAGESH V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-007",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=XwbeC78AAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Magesh-Vallem",
+              "orchidprofile": "https://orcid.org/0000-0002-9279-2396",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/ITW-0053-2023",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57326320600"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-007.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SARAVANAN V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-031",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.co.in/citations?user=ZamITy0AAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-031.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SUMATHI S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-005",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/sumathi-manoharan-5b4882203/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=qANCqqMAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0000-0003-4447-4999",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/LIC-4996-2024?",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-005.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SARUPRIYA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-054",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/saru-priya-322ba0192?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "https://scholar.google.co.in/citations?hl=en&authuser=1&user=XdH2PQwAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Saru-Priya-2",
+              "orchidprofile": "https://orcid.org/0009-0004-3115-0359",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57534544300"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-054.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. GANGADURAI E",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-017",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/gangadurai-elumalai-75aa1311b",
+              "googlescholar": "https://scholar.google.com/citations?hl=en?authuser%3D1&pli=1&authuser=1&user=3XHtIicAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Gangadurai-Elumalai",
+              "orchidprofile": "https://orcid.org/0009-0003-8733-0714",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/ABP-5442-2022",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-017.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SUBRAMANIAN G",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-016",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/subramanian-g-738217a8?trk=contact-info",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=kxLxY_YAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Subramanian-Ganapathy-2",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0001-7163-2684",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/LIF-5328-2024",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-016.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. THEIVANATHAN G",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-025",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/theivanathan-g-23b45b324/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=1&gmla=ALUCkoU11Z1fnX51BjvvxlMwyUylGiSF_Tg9_9YvcLKw367xHoUX2NhcfJzNYtsJY-uX9DA-EU0GNvsnhOXdFxdcB7dMUnzzmjZ9ZhdUjG4I&user=lqyzpJIAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Theivanathan-Govindan-2",
+              "orchidprofile": "https://orcid.org/0000-0001-9503-1333",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/55790454",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57899335200"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-025.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SANDHYA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-675",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-675.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. RADHAKRISHNAN K",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-026",
+            "socialmedia_links": {
+              "linkedin": "https://in.linkedin.com/in/radhakrishnan-k-9a4795aa",
+              "googlescholar": "https://scholar.google.com/citations?user=1UxyHg8AAAAJ&hl=en&authuser=3",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0003-3606-0806",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-026.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. DOLLY IRENE J",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-023",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dolly-irene-934384148/",
+              "googlescholar": "https://scholar.google.com/citations?user=0LDFS7wAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0000-4747-7939",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56916032700"
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-023.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. DEEPA N",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-019",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/deepa-natarajan-ph-d-0b382635/",
+              "googlescholar": "https://scholar.google.com/citations?user=BMRAkukAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-019.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. KAVITHA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-032",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/kavitha-s-301621107",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-032.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SESHAIAH M A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-135",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-135.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SUJATHA R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-014",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/sujatha-r-bab235326/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BBcrXSaxmTrajCGDYcEn1mQ%3D%3D",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-014.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. NANDHINI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-015",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/nandhini-m-8838b3129",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=ALUCkoVGmdzJc5l1Vus0FIw_pVKAkTlgAfdY--_5n-NpK1AJWAclNmmYp88ZW_5-rK9TfBS5UXM9f6N9K7ig93anRx5d&user=mbV23owAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-015.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. RENUKA P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-009",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/renuka-p-8ba86797",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=xj_Q2HUAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-009.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. SUGANTHI S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-653",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-653.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Dr. VINODHINI R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-657",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-657.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. RAMYA T",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-658",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-658.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. MANIMEGALAI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-659",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-659.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. ARUL THILAGAVATHI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-654",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-654.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. SUSANNA P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-656",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-656.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. PRAVEENA V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-655",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-655.webp",
+            "resume_pdf": ""
+          }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [
+          {
+            "name": "Mrs. DHANALAKSHMI G",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-009-05-004",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-05-004.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mr. SUBRAMANIAN N",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-009-05-005",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-05-005.webp",
+            "resume_pdf": ""
+          },
+          {
+            "name": "Mrs. RAJESWARI T",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-009-05-006",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-05-006.webp",
+            "resume_pdf": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "curriculum_and_syllabus",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/009/reg_21.pdf"
+              },
+              {
+                "year": "R - 2023",
+                "pdf_path": "/static/pdfs/curriculum/009/reg_23.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "newsletter",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "newsletter",
+        "content": [
+        {
+          "year":"2024" ,
+          "pdf_path":[ "/static/pdfs/newsletter/009/2024.pdf "]
+        }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "activities",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "department_activities",
+        "content": [
+          {
+            "year":"2023 - 2024",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
+            "activities":[
+              {
+                "date": "25.01.24",
+                "name_of_event": "ELECTROWIZ’24",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/1.webp"]
+              },
+              {
+                "date": "25.01.2024",
+                "name_of_event": "Workshop on Artificial Intelligence for IoT",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/2.webp"]
+              },
+              {
+                "date": "01.02.2024 & 02.02.24",
+                "name_of_event": "Industrial Visit to Retech lasers, Chennai ",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/3.webp"]
+              },
+              {
+                "date": "05.03.2024",
+                "name_of_event": "Project Expo-INVENTRONIX’24 ",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/4.webp"]
+              },
+              {
+                "date": "",
+                "name_of_event": "IETE Students Forum’24 Events",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/5.webp"]
+              },
+              {
+                "date": "07.03.2024 ",
+                "name_of_event": "Technical Turncoat, Start-up Idea Poster Presentation ",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/6.webp"]
+              },
+              {
+                "date": "12.3.2024 ",
+                "name_of_event": "Clusters and Warehouse Scale Computers",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/7.webp"]
+              },
+              {
+                "date": "20.3.2024",
+                "name_of_event": "Insights on VLSI ",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/8.webp"]
+              },
+              {
+                "date": "13.03.2024",
+                "name_of_event": "National Conference RACES’24",
+                "coordinator": "",
+                "resource_person": "",
+                "beneficiaries": "",
+                "relevant_PO_PSO": "",
+                "image_path": ["/static/images/dept_activities/009/9.webp"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "pedagogy",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "banner_image_path": "/static/images/department_data/ece.webp",
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "Pedagogy Initiatives",
+        "content": []
+      }
+    ]
+  },
+  {
+    "type": "student_achievements",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "student_achievements_content",
+        "content": []
+      },
+      {
+        "category": "student_achievements_details",
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/009/1.webp",
+            "event_name": "RAISEathon",
+            "image_content": "Raj Kisan ,Santhosh M, Vijay A, Shalini Agnes Mary A  won 1st place and a cash prize of 300000lakhs in RAISEathon",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/2.webp",
+            "event_name": "omega 24",
+            "image_content": "Raj Kisan  Santhosh M Monisha  Vijay A Shalini Agnes Mary A won First place  in hackathon and second price in paper presentation in Hindustan College omega 24 Symposium",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/3.webp",
+            "event_name": "Essay competition",
+            "image_content": "Saravana kumar won 3rd place in Essay competition conducted by Govt of India",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/4.webp",
+            "event_name": " paper presentation",
+            "image_content": "Anshul , Dinesh Kumar , Santhosh S , Yeswanth Bala  won  2nd place in paper presentation held at DR.MGR University.",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/5.webp",
+            "event_name": " paper presentation",
+            "image_content": "Jeevath , Praveen ,Sivaram, Elumalai won  2nd place in paper presentation held at sri sairam Institute of Technology.",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/6.webp",
+            "event_name": "Paper Presentation",
+            "image_content": " Lincy J.M ,Vijaythri  won 3rd place in paper presentation held at DR.MGR University",
+            "date": ""
+          },
+          {
+            "image_path": "/static/images/student_activities/009/7.webp",
+            "event_name": "Clue crackers",
+            "image_content": "Jerin S, Arvind Krishnan K,Siva Ram.P  won 3rd Clue crackers event held at St.Joseph Institute of technology.",
+            "date": "YYYY-MM-DD"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/8.webp",
+            "event_name": "the 34th DAE All India Essay Contest ",
+            "image_content": "Mr.R.SARAVANAKUMAR, B.E.ECE, II-YEAR (2nd from left) is the only student participated from Tamilnadu and won III- Prize. He received a cash award of Rs.15,000/- with Free Travel, Boarding and Accommodation Allowances for his essay on “Nuclear Power-Secured Energy Source towards Atmanirbhar Bharat” at the 34th DAE All India Essay Contest on “Nuclear Science and Technology” during the Celebration of 75 Years of Independence, organized by the Department of Atomic Energy, Government of India, from 26.10.2022 to 31.10.2022 at Mumbai. ",
+            "date": "2022-10-26"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/9.webp",
+            "event_name": "KLA Hackathon ",
+            "image_content": "Ms.Shreenidhi. G (2nd Prize) (2nd from left) and Naveena. R (special mention) (1st from left) of III year ECE students Won 2 awards in KLA Hackathon 2023 and received cash prize of Rs 20,000 totally.",
+            "date": "YYYY-MM-DD"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/10.webp",
+            "event_name": "Mobile Kiosk for Fish vending",
+            "image_content": "Mr. Yokesh J – (2022-23) ( 6th from left) received the Certificate of Merit from Shri Jatindra Nath Swain, I.A.S., Secretary, Department of Fisheries, Ministry of  Fisheries, Animal Husbandry & Dairying, Government of Indiaunder the category  “National Design Challenge on Innovative design of Mobile Kiosk for Fish vending” conducted by CII. Felicitation ceremony was held on 27.10.2022 at   Gulmohar Hall,  Habitat Centre, Delhi.",
+            "date": "2022-10-27"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/11.webp",
+            "event_name": "Accenture Innovation Challenge ",
+            "image_content": "Faheem Jina, Yokesh and Harini  of our  IV year ECE students won the Finals in  Accenture Innovation Challenge Competition 2021 and each received Apple iMac worth of Rs 2.5 lakhs",
+            "date": "YYYY-MM-DD"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/12.webp",
+            "event_name": "National Hackathon",
+            "image_content": "ECE Dept students have received Finalist Medals and Certificates in the KAVACH-2023.  National Hackathon organized by MoE's Innovation Cell, Govt. of India",
+            "date": "YYYY-MM-DD"
+          },
+          {
+            "image_path": "/static/images/student_activities/009/13.webp",
+            "event_name": "Smart India Hackathon",
+            "image_content": "Present ECE III Yr Students Sowmya and Bowman team participated in Smart India Hackathon grand finale held at Andhra Pradesh in 2022",
+            "date": "YYYY-MM-DD"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "infrastructure",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "infrastructure_images",
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/009/1.webp",
+            "image_name": "ELECTRONICS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/2.webp",
+            "image_name": "NETWORK LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/3.webp",
+            "image_name": "MICROPROCESSOR LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/4.webp",
+            "image_name": "MICROWAVE & COMMUNICATION LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/5.webp",
+            "image_name": "INTEGRATED CIRCUITS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/6.webp",
+            "image_name": "ADVANCED ELECTRONICS LABORATORY",
+            "image_content": ""
+          },
+          {
+            "image_path": "/static/images/infrastructure/009/7.webp",
+            "image_name": "STIMULATION LABORATORY",
+            "image_content": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mous",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      },
+      {
+        "category": "mous_details",
+        "content": [
+          {
+            "S_NO": 1,
+            "ORGANISATION_NAME": "UNIQUE Technologies",
+            "MONTH_AND_YEAR": "16.07.2021",
+            "VALIDITY": "2 years ",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 2,
+            "ORGANISATION_NAME": "PANTECH ELEARNING",
+            "MONTH_AND_YEAR": "29.07.2021",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 3,
+            "ORGANISATION_NAME": "LEMA LABS TECHNOLOGIES PVT LTD, THARAMANI, CHENNAI-600113",
+            "MONTH_AND_YEAR": "04.09.2021",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 4,
+            "ORGANISATION_NAME": "AIDELTECZ, PERUNGUDI, CHENNAI-600096",
+            "MONTH_AND_YEAR": "09.10.2021",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 5,
+            "ORGANISATION_NAME": "STEAM TROOPS Innovation Labs Pvt Ltd, West CIT Nagar, Porur, Chennai -600116",
+            "MONTH_AND_YEAR": "05.09.2023",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 6,
+            "ORGANISATION_NAME": "RETECH Solutions Pvt Ltd, No.31, Alagesan Street, West Tambaram, Chennai",
+            "MONTH_AND_YEAR": "29.09.2023",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 7,
+            "ORGANISATION_NAME": "ABE Semiconductor Designs, Level 5, North Block, Thamarai Tech Park, Thiru Vika Industrial Estate, Guindy, Chennai",
+            "MONTH_AND_YEAR": "13.03.2024",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 8,
+            "ORGANISATION_NAME": "Axis Global Institute of Industrial Training, Ekkattuthangal, Chennai – 600 032",
+            "MONTH_AND_YEAR": "10.07.2024",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 9,
+            "ORGANISATION_NAME": "FIIT Formacion Pvt Ltd, No.8, 1st Floor, Kamajar Nagar Main Road, Avadi, Chennai-71",
+            "MONTH_AND_YEAR": "27.09.2024",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          },
+          {
+            "S_NO": 10,
+            "ORGANISATION_NAME": "Airports Authority of India, Chennai International Airport, Chennai - 600 027",
+            "MONTH_AND_YEAR": "05.11.2024",
+            "VALIDITY": "Till date",
+            "LOGO_PATH": "",
+            "PDF_PATH": "",
+            "ACTIVITIES_PLANNED": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "research",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "dept_id": "009"
+          }
+        ]
+      }
+    ]
+  }
+]

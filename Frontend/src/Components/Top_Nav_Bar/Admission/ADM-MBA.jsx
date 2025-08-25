@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ADM-MBA.css";
 import { FaLink } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
@@ -12,7 +10,6 @@ const MBA = ({ theme, toggle }) => {
   const [mbaData, setMbaData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [selectedPdf, setSelectedPdf] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,18 +61,13 @@ const MBA = ({ theme, toggle }) => {
   };
 
   const mba = mbaData?.MBA || {};
+  const year = mbaData?.year;
+  const MBA_Government = mbaData?.MBA_Government || {};
+  const MBA_Management = mbaData?.MBA_Management || {};
 
-  const handlePdfOpen = (name, url) => {
-    if (window.innerWidth >= 1024) {
-      // Desktop - open modal
-      setSelectedPdf({ name, url });
-    } else {
-      // Mobile/tablet - open in new tab
-      window.open(url, "_blank");
-    }
+  const handlePdfOpen = (url) => {
+    window.open(url, "_blank");
   };
-
-  const closeModal = () => setSelectedPdf(null);
 
   return (
     <>
@@ -127,17 +119,17 @@ const MBA = ({ theme, toggle }) => {
                 INFORMATION TO…..
               </p>
               <button
-                onClick={() =>
-                  handlePdfOpen(
-                    "FIRST YEAR MBA - Government Quota",
-                    UrlParser(mbaData?.MBA_Government_link)
-                  )
-                }
-                className="text-blue-600 dark:text-drka"
-              >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR MBA
-                - Government Quota (Through TANCET 2025)
-              </button>
+                  className="text-blue-600 dark:text-drka"
+                  onClick={() =>
+                    handlePdfOpen(
+                      // MBA_Government?.MBA_Government_link_name,
+                      UrlParser(MBA_Government?.MBA_Government_link)
+                    )
+                  }
+                >
+                  <FaLink className="inline size-5 mr-1 mb-1" />
+                    {MBA_Government?.MBA_Government_link_name}
+                </button>
             </div>
 
             {/* Management Quota */}
@@ -155,18 +147,18 @@ const MBA = ({ theme, toggle }) => {
               <p className="text-text dark:text-drkt font-bold mr-8">
                 INFORMATION TO…..
               </p>
-              <button
-                onClick={() =>
-                  handlePdfOpen(
-                    "FIRST YEAR MBA - Management Quota",
-                    UrlParser(mbaData?.MBA_Management_link)
-                  )
-                }
-                className="text-blue-600 dark:text-drka"
-              >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR MBA
-                - MANAGEMENT QUOTA
-              </button>
+                   <button
+                              className="text-blue-600 dark:text-drka"
+                              onClick={() =>
+                                handlePdfOpen(
+                                  // MBA_Management?.MBA_Management_link_name,
+                                  UrlParser(MBA_Management?.MBA_Management_link)
+                                )
+                              }
+                            >
+                              <FaLink className="inline size-5 mr-1 mb-1" />
+                               {MBA_Management?.MBA_Management_link_name}
+                            </button>
             </div>
 
             {/* Intake Table */}
@@ -201,23 +193,6 @@ const MBA = ({ theme, toggle }) => {
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* PDF Modal - Only for Desktop */}
-      {selectedPdf && (
-        <div className="pdf-modal">
-          <div className="pdf-modal-content">
-            <button className="pdf-close-button" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2>{selectedPdf.name}</h2>
-            <iframe
-              src={selectedPdf.url}
-              title={selectedPdf.name}
-              className="pdf-iframe"
-            ></iframe>
           </div>
         </div>
       )}

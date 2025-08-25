@@ -16,6 +16,7 @@ import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
 import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
 import Collegevisionmission from "./Components/Top_Nav_Bar/About Us/collegevisionmission.jsx";
 import Management from "./Components/Top_Nav_Bar/About Us/Management.jsx";
+import AbtYear from "./Components/Top_Nav_Bar/About Us/Abtyear.jsx";
 /* Administration Pages Imports */
 import Princ from "./Components/Top_Nav_Bar/Administration/Princ.jsx";
 import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
@@ -42,25 +43,23 @@ import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-import JounalPub from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
 import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
 /* Second_Nav_Bar Pages Imports */
-import IQAC from "./Components/Second_Nav_Bar/IQAC.jsx";
+import IQAC from "./Components/Second_Nav_Bar/IQAC/IQAC.jsx";
 import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
-import Alumni from "./Components/Second_Nav_Bar/Alumni.jsx";
+import Alumni from "./Components/Second_Nav_Bar/Alumni/Alumni.jsx";
 import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
 import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
-import YRC from "./Components/Second_Nav_Bar/YRC.jsx";
+import YRC from "./Components/Second_Nav_Bar/yrc/YRC.jsx";
 import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
 import Transport from "./Components/Second_Nav_Bar/Transport/Transport.jsx"
 import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
 import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
-import Login from "./Components/Second_Nav_Bar/Login.jsx";
-import OtherFacilities from "./Components/Second_Nav_Bar/Other-Facilities.jsx";
-import GrievanceForm from "./Components/Second_Nav_Bar/Grievences.jsx";
+import OtherFacilities from "./Components/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
+import GrievanceForm from "./Components/Second_Nav_Bar/Helpdesk/Grievences.jsx";
 import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
 import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
 import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
@@ -140,18 +139,18 @@ const App = () => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const navigate = useNavigate();
     useGoogleAnalytics();
-
+    const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const responce = await axios.post('/api/main-backend/landing_page_data',
                     {
-                        type: "page_details"
+                        type: "landing_data"
                     }
                 );
     
-                setLandingData(responce.data.data[0]);
+                setLandingData(responce.data.data);
                 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data",error);
@@ -234,9 +233,10 @@ const App = () => {
                         <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                             <DynamicTitle/>
                             <Routes>
-                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} />}/>
+                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData}/>}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/> }/>
+                                <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
                                 <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
@@ -261,7 +261,6 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                <Route path="/journal" drk element={<JounalPub toggle={toggle} theme={theme}/>}/>
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
@@ -291,7 +290,6 @@ const App = () => {
                                 <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
-                                <Route path='/login' drk element={<Login/>}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
@@ -299,20 +297,20 @@ const App = () => {
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
-
+                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
+                                <Route path="/hit_logs" element={<HitLogs />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
-                                <Route path="/hit_logs" element={<HitLogs />} />
                             </Routes>
                           
                         </MainContentWrapper>
                         {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={landingData}/>}
+                        {!isHostelRoute && <Footer theme={theme} data={footer?.[0]}/>}
 
                         <SideButton/>
                         <ScrollToTopButton />

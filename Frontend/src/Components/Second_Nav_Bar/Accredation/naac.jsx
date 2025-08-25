@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./naac.css";
-import axios from "axios";
 import Banner from "../../Banner";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Naac = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
-  const [selectedPdf, setSelectedPdf] = useState(null);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -21,8 +18,6 @@ const Naac = ({ data }) => {
   const toggleSection = (index) => {
     setOpenSection(openSection === index ? null : index);
   };
-
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -38,18 +33,9 @@ const Naac = ({ data }) => {
   }, []);
 
   const handlePdfClick = (pdf) => {
-    if (window.innerWidth >= 1024) {
-      setSelectedPdf({
-        url: `${UrlParser(pdf.pdfs_path)}#toolbar=0`,
-        name: pdf.name,
-      });
-    } else {
-      window.open(`${UrlParser(pdf.pdfs_path)}#toolbar=0`, "_blank");
-    }
-  };
-
-  const closeModal = () => {
-    setSelectedPdf(null);
+    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") return;
+    const url = `${UrlParser(pdf.pdfs_path)}#toolbar=0`;
+    window.open(url, "_blank"); // always new tab
   };
 
   if (!isOnline) {
@@ -72,7 +58,7 @@ const Naac = ({ data }) => {
             <div className="nabout-section">
               <div className="naac-info-panel border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
                 <h2 className="text-brwn dark:text-drkt">ABOUT NAAC</h2>
-                <p>
+                <p className="text-sm md:text-base text-justify">
                   The NAAC conducts assessment and accreditation of Higher
                   Educational Institutions (HEI) such as colleges, universities
                   or other recognised institutions to derive an understanding of
@@ -115,7 +101,7 @@ const Naac = ({ data }) => {
                         <li key={i}>
                           <button
                             onClick={() => handlePdfClick(item)}
-                            className="text-blue-600 dark:text-drka hover:underline cursor-pointer bg-transparent border-none p-0 font-inherit"
+                            className="text-blue-600 dark:text-drka hover:underline cursor-pointer bg-transparent border-none p-0 font-inherit text-sm md:text-base"
                           >
                             {item.name}
                           </button>
@@ -127,23 +113,6 @@ const Naac = ({ data }) => {
               </div>
             ))}
           </div>
-
-          {/* PDF Modal */}
-          {selectedPdf && (
-            <div className="pdf-modal">
-              <div className="pdf-modal-content">
-                <button className="pdf-close-button" onClick={closeModal}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <h2>{selectedPdf.name}</h2>
-                <iframe
-                  src={selectedPdf.url}
-                  title={selectedPdf.name}
-                  className="pdf-iframe"
-                ></iframe>
-              </div>
-            </div>
-          )}
         </div>
       )}
     </>

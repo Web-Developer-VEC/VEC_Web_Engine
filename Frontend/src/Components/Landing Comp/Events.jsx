@@ -39,16 +39,16 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
                             <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
                         </div>
                         <div className="event-row links">
-                            {event.brochure_path && 
-                            <a href={UrlParser(event.brochure_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drka">
-                                Brochure
-                            </a>
-                            }
-                            {event.website_link && 
-                            <a href={UrlParser(event.website_link)} target="_blank" rel="noopener noreferrer" className="dark:text-drka">
-                                Website
-                            </a>
-                            }
+                            {event.brochure_path && (
+                                <a href={UrlParser(event.brochure_path)} target="_blank" rel="noopener noreferrer" className="dark:text-drka">
+                                    Brochure
+                                </a>
+                            )}
+                            {event.website_link && (
+                                <a href={UrlParser(event.website_link)} target="_blank" rel="noopener noreferrer" className="dark:text-drka">
+                                    Website
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ function Carousel({ data }) {
     const SCROLL_INTERVAL = 16;
 
     // Duplicate events to ensure smooth looping
-    const duplicatedEvents = [...data, ...data, ...data];
+    const duplicatedEvents = [...data, ...data, ...data,...data,...data,...data,...data,...data,...data,...data];
     const TOTAL_WIDTH = duplicatedEvents.length * CARD_WIDTH;
 
     const wrappedX = useTransform(x, (value) => {
