@@ -427,6 +427,7 @@
       },
        {
         "name": "Mrs. MOHANAMBAL K",
+
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-122",
         "socialmedia_links": {
@@ -440,38 +441,10 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
         "resume_pdf": ""
       },
-       {
-        "name": "Mrs. AARTHI K C",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-129",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/aarthi-kc-537a61153/",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=ZzvYS60AAAAJ&view_op=list_works&authuser=1&gmla=ALUCkoWcdDEY5yRVftp74JiyrBGSfxU9hNztzfCA5pi1CZqluIQOZCwsJplvNDlUdKTCrXO_ExHMoIz2BuY3jGZS",
-          "researchgate": "https://www.researchgate.net/profile/Aarthi-K-C",
-          "orchidprofile": "https://orcid.org/0009-0004-7938-3346",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
-        "resume_pdf": ""
-      },
+
       {
-        "name": "Mrs. DAYAFLORANCE D",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-131",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/daya-florance-9045a8245/",
-          "googlescholar": "https://scholar.google.com/citations?user=5eRQlkQAAAAJ&hl=en&oi=ao",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0000-0001-7873-3122",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/GPC-6688-2022",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57118226100"
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-131.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. ROHINI C",
+        "name": "Mrs. KAYALVIZHI S",
+
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-112",
         "socialmedia_links": {
@@ -485,66 +458,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-112.webp",
         "resume_pdf": ""
       },
-       {
-        "name": "Mrs. JAYANTHI A",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-116",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?user=mktAFoYAAAAJ&hl=en",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0000-0003-4949-2125",
-          "publonprofile": "https://publons.com/researcher/5266705/jayanthi-a/",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-116.webp",
-        "resume_pdf": ""
-      },
-       {
-        "name": "Mrs. AMINTA SABATINI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-113",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/aminta-sabatini-447a74a7/",
-          "googlescholar": "https://scholar.google.co.in/citations?user=jwRm_nwAAAAJ&hl=en&authuser=1",
-          "researchgate": "https://www.researchgate.net/profile/Aminta-Sabatini",
-          "orchidprofile": "https://orcid.org/0009-0003-1188-2598",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. BHARATHI SHRI C",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-101",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. KAYALVIZHI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-130",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/kayal-vizhi-04794332b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0007-7387-8307",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
-        "resume_pdf": ""
-      },
+
       {
         "name": "Mrs. SRUTHI NATH C",
         "designation": "Assistant Professor",
@@ -944,6 +858,40 @@
           
             {
               "year":"2024 - 2025",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
               "activities":[  
           {
     "date": "06/02/2025",
@@ -959,6 +907,40 @@
       },
             {
               "year":"2023 - 2024",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
               "activities":[
                 {
           "date": "29/08/2024",
@@ -1516,7 +1498,7 @@
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
-        "name": "Conference",
+
         "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
       },
       {
@@ -1528,11 +1510,7 @@
         "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
       },
       {
-        "name": "Publication",
-        "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
-      },
-      {
-        "name": "Patent",
+
         "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
       },
       {
@@ -1565,7 +1543,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
       },
       {
-        "name": "Publication",
+
         "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
       },
       {
@@ -1598,7 +1576,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
       },
       {
-        "name": "Publication",
+
         "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
       },
       {

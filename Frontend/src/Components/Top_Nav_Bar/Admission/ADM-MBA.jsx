@@ -61,6 +61,9 @@ const MBA = ({ theme, toggle }) => {
   };
 
   const mba = mbaData?.MBA || {};
+  const year = mbaData?.year;
+  const MBA_Government = mbaData?.MBA_Government || {};
+  const MBA_Management = mbaData?.MBA_Management || {};
 
   const handlePdfOpen = (url) => {
     window.open(url, "_blank");
@@ -116,14 +119,17 @@ const MBA = ({ theme, toggle }) => {
                 INFORMATION TO…..
               </p>
               <button
-                onClick={() =>
-                  handlePdfOpen(UrlParser(mbaData?.MBA_Government_link))
-                }
-                className="text-blue-600 dark:text-drka"
-              >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR MBA
-                - Government Quota (Through TANCET 2025)
-              </button>
+                  className="text-blue-600 dark:text-drka"
+                  onClick={() =>
+                    handlePdfOpen(
+                      // MBA_Government?.MBA_Government_link_name,
+                      UrlParser(MBA_Government?.MBA_Government_link)
+                    )
+                  }
+                >
+                  <FaLink className="inline size-5 mr-1 mb-1" />
+                    {MBA_Government?.MBA_Government_link_name}
+                </button>
             </div>
 
             {/* Management Quota */}
@@ -141,15 +147,18 @@ const MBA = ({ theme, toggle }) => {
               <p className="text-text dark:text-drkt font-bold mr-8">
                 INFORMATION TO…..
               </p>
-              <button
-                onClick={() =>
-                  handlePdfOpen(UrlParser(mbaData?.MBA_Management_link))
-                }
-                className="text-blue-600 dark:text-drka"
-              >
-                <FaLink className={"inline size-5 mr-1 mb-1"} />* FIRST YEAR MBA
-                - MANAGEMENT QUOTA
-              </button>
+                   <button
+                              className="text-blue-600 dark:text-drka"
+                              onClick={() =>
+                                handlePdfOpen(
+                                  // MBA_Management?.MBA_Management_link_name,
+                                  UrlParser(MBA_Management?.MBA_Management_link)
+                                )
+                              }
+                            >
+                              <FaLink className="inline size-5 mr-1 mb-1" />
+                               {MBA_Management?.MBA_Management_link_name}
+                            </button>
             </div>
 
             {/* Intake Table */}
