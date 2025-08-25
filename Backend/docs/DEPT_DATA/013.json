@@ -610,7 +610,42 @@
         "category": "department_activities",
         "content": [
           {
+
             "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
@@ -635,17 +670,43 @@
          },
          {
             "year": "2023 - 2024",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
+
             "activities":[
-          {
-            "date": "27/08/2024",
-            "name_of_event": "Guest Lecture on The Most Innovative NDT Techniques in Oil and Gas",
-            "coordinator": "",
-            "resource_person":" Mr. Selvin Immanuel M, Course Coordinator, SIS Institute of NDT., Mr. Johnson M, Technical Coordinator, SIS Institute of NDT",
-            "beneficiaries": "",
-            "relevant_PO_PSO": "",
-            "image_path":["/static/images/dept_activities/013/9.webp"]
-          },
-          {
+                 {
             "date": "22/08/2024",
             "name_of_event": "Guest lecture on Digital Transformation in Mechanical Engineering: Key Skills for the Future",
             "coordinator": "",
@@ -689,29 +750,45 @@
             "beneficiaries": "",
             "relevant_PO_PSO": "",
             "image_path": ["/static/images/dept_activities/013/7.webp"]
-          },
-          {
-            "date": "14/08/2024",
-            "name_of_event": "Guest Lecture on Role of YUKTHI in Innovations",
-            "coordinator": "",
-            "resource_person": "Mr. V. Rengarajan, Start-up Coordinator, IIC/ Velammal Engineering College",
-            "beneficiaries": "",
-            "relevant_PO_PSO": "",
-            "image_path": ["/static/images/dept_activities/013/8.webp"]
-          },
-          {
-            "date": "12/02/2024",
-            "name_of_event": "WORKSHOP ON Achieving Problem – Solution Fit and Product – Market Fit",
-            "coordinator": "",
-            "resource_person": "Mr. Vivek M Palanivasan, Founder & CEO, Voltrix Mobility",
-            "beneficiaries": "",
-            "relevant_PO_PSO": "",
-            "image_path": ["/static/images/dept_activities/013/10.webp"]
           }
           ]
          },
           {
             "year": "2022 - 2023",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
@@ -799,18 +876,52 @@
           },
           {
             "year": "2021 - 2022",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities":
             [
               {
             "date": "30/08/2022",
             "name_of_event": "Seminar on Converting your Innovation into a Startup Procedures and Opportunities",
             "coordinator": "",
-            "resource_person":"Mr. Ramesh Chari (Designated Partner, RUA Consulting Services)",
+            "resource_person":"Mr. B Kovarasan, Managing Partner of Trione CADD",
             "beneficiaries": "",
             "relevant_PO_PSO": "",
-            "image_path":["/static/images/dept_activities/013/21.webp"]
-              }
-            ]
+            "image_path":["/static/images/dept_activities/013/5.webp"]
+          }
+          ]
          }
 
         ]
