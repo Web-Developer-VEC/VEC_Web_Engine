@@ -547,7 +547,7 @@ def create_logs_collection():
     logsdb.create_collection('logs')
     print("\n logs collection created successfully.")
 
-create_logs_collection()
+#create_logs_collection()
 
 '''def add_hostel_student_database():
     collection = db["student_database"]

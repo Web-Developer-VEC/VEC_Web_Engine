@@ -172,6 +172,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/013.pdf"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [{
             "name":"Dr. GANAPATHY SUNDARAM E",
@@ -604,7 +610,33 @@
         "category": "department_activities",
         "content": [
           {
-            "year": "2024",
+
+            "year": "2024 - 2025",
+            "activities":
+            [
+              {
+            "date": "08/01/2025",
+            "name_of_event": "Autodesk – India Design Week Day 1 Workshop",
+            "coordinator": "",
+            "resource_person":"Mr. S. Abhinesh, Technical Trainer, ICT Academy.",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/11.webp"]
+              },
+              {
+            "date": "06/02/2025",
+            "name_of_event": "SAE INDIA TIER –  I Events Rules and Regulations - Discussion",
+            "coordinator": "",
+            "resource_person":"Mr. R. Pathmanaban & Mr. S. Chinnasamy Subramanian, SAE faculty Coordinators, VEC",
+            "beneficiaries": "",
+            "relevant_PO_PSO": "",
+            "image_path":["/static/images/dept_activities/013/12.webp"]
+              }
+            ]
+         },
+         {
+            "year": "2023 - 2024",
+
             "activities":[
                  {
             "date": "22/08/2024",
@@ -654,7 +686,7 @@
           ]
          },
           {
-            "year": "2023",
+            "year": "2022 - 2023",
             "activities":
             [
               {
@@ -741,7 +773,7 @@
             ]
           },
           {
-            "year": "2022",
+            "year": "2021 - 2022",
             "activities":
             [
               {

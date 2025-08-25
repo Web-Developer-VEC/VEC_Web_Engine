@@ -114,7 +114,7 @@
         "content": 
         [
            {
-                "dept_id":"003",
+             "dept_id":"003",
                 "name": "Dr. MOHAMED SIKKANDER A",
                 "department_name": "Chemistry",
                 "unique_id": "VEC-003-01-110",
@@ -124,31 +124,37 @@
                 "designation": "Associate Professor & Head , Dept of Chemistry",
                 "Social_media_links": 
                 {
-                    "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
-                    "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
-                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
-                    "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
-                    "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
-                    "publonprofile": "https://www.webofscience.com/wos/author/record/AAY-3579-2021",
-                    "sciprofiles":"https://sciprofiles.com/profile/16397"
+                  "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
+                  "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+                  "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706",
+                  "orchidprofile":"https://orcid.org/0000-0002-8458-7448",
+                  "researchgate":"https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+                  "publonprofile": "https://www.webofscience.com/wos/author/record/AAY-3579-2021",
+                  "sciprofiles":"https://sciprofiles.com/profile/16397"
                 }
-            }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "faculty",
-    "data": [
-      {
-        "category": "banner_name_and_image",
-        "content": [
-          {
-            "name": "Chemistry",
-            "dept_id": "003"
+              }
+            ]
           }
         ]
       },
+      {
+        "type": "faculty",
+        "data": [
+          {
+            "category": "banner_name_and_image",
+            "content": [
+              {
+                "name": "Chemistry",
+                "dept_id": "003"
+              }
+            ]
+          },
+          {
+            "category": "faculty_pdf_path",
+            "content": [
+              "/static/pdfs/faculty_list/003.pdf"
+            ]
+          },
       {
         "category": "head_of_department",
         "members": [ {

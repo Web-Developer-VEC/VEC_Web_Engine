@@ -213,6 +213,12 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/"
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [{
         "name": "Dr. MURUGESHWARI B",
