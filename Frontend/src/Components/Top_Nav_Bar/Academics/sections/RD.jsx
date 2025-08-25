@@ -55,7 +55,7 @@ const Research = ({ data }) => {
   return data ? (
     <div className="Rd-page">
       <div className="RD-intro">
-        <h1 className="RD-header text-brwn dark:text-drkt">RESEARCH DATA</h1>
+        <h1 className="RD-header text-brwn dark:text-drkt font-[Poppins]">RESEARCH DATA</h1>
       </div>
 
       {/* Year Buttons */}
