@@ -184,7 +184,8 @@
             "department_id": "005",
             "name": "Dr. MURUGESHWARI B",
             "department_name": "Computer Science & Engineering (CSE) ",
-            "unique_id": "VEC-005-01-120",
+            "unique_id": "VEC-005-01-120",      
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message":["The department is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics; professionalism and students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan-Do-Check-Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants."],
             "hod_image": "/static/images/hods/cse.webp",
@@ -237,7 +238,7 @@
               "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             },
             "image_path":"/static/images/profile_photos/005/VEC-005-01-120.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf"
           }]
       },
       
@@ -257,7 +258,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-02-199.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-02-199.pdf"
       },
       {
         "name": "Dr. GUNASUNDARI S",
@@ -272,7 +273,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35753254100"
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-106.pdf"
       },
       {
         "name": "Dr. SMITHA P S",
@@ -287,7 +288,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-132.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-132.pdf"
       },
       {
         "name": "Dr. PRITTO PAUL P",
@@ -302,7 +303,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-147.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-147.pdf"
       },
       {
         "name": "Dr. USHA M",
@@ -317,12 +318,12 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-137.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-137.pdf"
       },
       {
         "name": "Dr. RAJESWARI A",
         "designation": "Associate Professor",
-        "unique_id": "VEC-005-04-110",
+        "unique_id": "VEC-005-03-110",
         "socialmedia_links": {
           "linkedin": "http://linkedin.com/in/rajeswari-bhuvaneswaran-700281217",
           "googlescholar": "https://scholar.google.com/citations?user=fORIRQ8AAAAJ&hl=en",
@@ -332,7 +333,7 @@
           "scopus":""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-110.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-110.pdf"
       },
       {
         "name": "Mrs. SUBASHINI T",
@@ -347,7 +348,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-144.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-144.pdf"
       },
       {
         "name": "Mrs. HEMALATHA B",
@@ -362,7 +363,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-141.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-141.pdf"
       },
        {
         "name": "Dr. SRIDEVI S",
@@ -377,7 +378,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-100.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-100.pdf"
       },
       {
         "name": "Dr. AMIRTHAVALLI R",
@@ -392,7 +393,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-140.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-140.pdf"
       },
      
       {
@@ -423,11 +424,10 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-720.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-720.pdf"
       },
        {
         "name": "Mrs. MOHANAMBAL K",
-
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-122",
         "socialmedia_links": {
@@ -439,12 +439,40 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-122.pdf"
       },
-
+       {
+        "name": "Mrs. AARTHI K C",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-129",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/aarthi-kc-537a61153/",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=ZzvYS60AAAAJ&view_op=list_works&authuser=1&gmla=ALUCkoWcdDEY5yRVftp74JiyrBGSfxU9hNztzfCA5pi1CZqluIQOZCwsJplvNDlUdKTCrXO_ExHMoIz2BuY3jGZS",
+          "researchgate": "https://www.researchgate.net/profile/Aarthi-K-C",
+          "orchidprofile": "https://orcid.org/0009-0004-7938-3346",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-129.pdf"
+      },
       {
-        "name": "Mrs. KAYALVIZHI S",
-
+        "name": "Mrs. DAYAFLORANCE D",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-131",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/daya-florance-9045a8245/",
+          "googlescholar": "https://scholar.google.com/citations?user=5eRQlkQAAAAJ&hl=en&oi=ao",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0001-7873-3122",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/GPC-6688-2022",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57118226100"
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-131.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-131.pdf"
+      },
+      {
+        "name": "Mrs. ROHINI C",
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-112",
         "socialmedia_links": {
@@ -456,9 +484,68 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-112.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-112.pdf"
       },
-
+       {
+        "name": "Mrs. JAYANTHI A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-116",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?user=mktAFoYAAAAJ&hl=en",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0003-4949-2125",
+          "publonprofile": "https://publons.com/researcher/5266705/jayanthi-a/",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-116.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-116.pdf"
+      },
+       {
+        "name": "Mrs. AMINTA SABATINI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-113",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/aminta-sabatini-447a74a7/",
+          "googlescholar": "https://scholar.google.co.in/citations?user=jwRm_nwAAAAJ&hl=en&authuser=1",
+          "researchgate": "https://www.researchgate.net/profile/Aminta-Sabatini",
+          "orchidprofile": "https://orcid.org/0009-0003-1188-2598",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-113.pdf"
+      },
+      {
+        "name": "Mrs. BHARATHI SHRI C",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-101",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-101.pdf"
+      },
+      {
+        "name": "Mrs. KAYALVIZHI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-130",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/kayal-vizhi-04794332b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0007-7387-8307",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-130.pdf"
+      },
       {
         "name": "Mrs. SRUTHI NATH C",
         "designation": "Assistant Professor",
@@ -472,7 +559,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-120.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-120.pdf"
       },
       {
         "name": "Mr. AKHIL NAIR R",
@@ -487,7 +574,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-105.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-105.pdf"
       },
       {
         "name": "Mr. JEYA MOHAN H",
@@ -502,7 +589,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-107.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-107.pdf"
       },
       {
         "name": "Mrs. SARANYA P",
@@ -517,7 +604,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-121.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-121.pdf"
       },
       {
         "name": "Mrs. BAMA S",
@@ -532,7 +619,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-124.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-124.pdf"
       },
       {
         "name": "Mrs. CHITRA R",
@@ -547,7 +634,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-123.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-123.pdf"
       },
       {
         "name": "Mrs. SAKTHI D",
@@ -562,7 +649,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-127.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-127.pdf"
       },
       {
         "name": "Mr. RAJESH T",
@@ -577,7 +664,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-134.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-134.pdf"
       },
       {
         "name": "Mrs. SHYAMALA DEVI G G",
@@ -592,7 +679,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-098.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-098.pdf"
       },
       {
         "name": "Mrs. GEETHA S",
@@ -607,7 +694,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-612.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-612.pdf"
       },
       {
         "name": "Mrs. NISHA P M C",
@@ -652,7 +739,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-615.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-615.pdf"
       },
       {
         "name": "Ms. NIRANJINI S",
@@ -720,7 +807,7 @@
         "resume_pdf": ""
       },
       {
-        "name": "Mrs. SASI KALA.B",
+        "name": "Mrs. SASI KALA B",
         "designation": "Lab Instructor",
         "unique_id": "VEC-005-05-021",
         "socialmedia_links": {
@@ -1498,7 +1585,7 @@
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
-
+        "name": "Conference",
         "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
       },
       {
@@ -1510,7 +1597,11 @@
         "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
       },
       {
-
+        "name": "Publication",
+        "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
+      },
+      {
+        "name": "Patent",
         "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
       },
       {
@@ -1543,7 +1634,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
       },
       {
-
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
       },
       {
@@ -1576,7 +1667,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
       },
       {
-
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
       },
       {

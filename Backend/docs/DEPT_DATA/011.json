@@ -137,7 +137,8 @@
             "department_id": "011",
             "name": "Dr. JEEVAA KATIRAVAN",
             "department_name":"Information Technology (IT)",
-            "unique_id": "VEC-012-01-096",
+            "unique_id": "VEC-011-01-525",
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-01-525.pdf",
             "qualification":["M.Tech.", "Ph.D."],
             "hod_message": [
               "As the Head of the Department of Information Technology, it gives me immense pleasure to share that our field continues to redefine the way the world connects, learns, and evolves. With a strong foundation in education, diverse skill sets, and hands-on experience in cutting-edge technologies, students are empowered to thrive in a competitive and ever-changing digital landscape. For those passionate about developing innovative solutions and eager to engage with real-time technologies, the B.Tech. Information Technology program serves as an ideal platform to transform aspirations into impactful careers. Our future-ready curriculum, combined with valuable industry exposure, equips students to seize emerging opportunities and contribute meaningfully to the tech-driven world. On behalf of our esteemed institution, I, Dr. Jeevaa Katiravan, warmly welcome you to join hands with us in nurturing a future that is innovative, empowered, and filled with possibilities."
@@ -191,7 +192,7 @@
             "scopus": "https://www.scopus.com/authid/detail.uri?authorId=37023505600"
           },
           "image_path": "/static/images/profile_photos/011/VEC-011-01-525.webp",
-          "resume_pdf": ""
+          "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-01-525.pdf"
         }
       ]
       },
@@ -211,7 +212,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=55787204800"
             },
             "image_path":"/static/images/profile_photos/011/VEC-011-03-111.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/011/VEC-011-03-111.pdf"
           },
           {
             "name":"Dr. NALAYINI C M",
@@ -226,7 +227,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=57202685350"
             },
             "image_path":"/static/images/profile_photos/011/VEC-011-04-156.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/011/VEC-011-04-156.pdf"
           },
           {
             "name":"Mr. MOHAN RAJ K R",
@@ -241,7 +242,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=58682372900"
             },
             "image_path":"/static/images/profile_photos/011/VEC-011-04-564.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/011/VEC-011-04-564.pdf"
           },
           {
             "name": "Mrs. SUBBULAKSHMI V",
@@ -256,7 +257,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-136.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-136.pdf"
           },
           {
             "name": "Mrs. PRIYADHARSHINI S",
@@ -271,7 +272,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-126.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-126.pdf"
           },
           {
             "name": "Mrs. SATHYABAMA A R",
@@ -286,7 +287,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57215654661"
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-036.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-036.pdf"
           },
           {
             "name": "Mr. RAJ KUMAR S",
@@ -301,7 +302,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-161.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-161.pdf"
           },
           {
             "name": "Mrs. VIMALA IMOGEN P",
@@ -316,7 +317,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-166.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/"
           },
           {
             "name": "Mrs. REVATHY S P",
@@ -331,7 +332,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-069.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-069.pdf"
           },
           {
             "name": "Mrs. VINODHINI S",
@@ -346,7 +347,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-152.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-152.pdf"
           },
           {
             "name": "Mrs. PREETHI G",
@@ -361,7 +362,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-138.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-138.pdf"
           },
           {
             "name": "Mrs. SOWMIYA M N",
