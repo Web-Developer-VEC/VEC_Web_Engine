@@ -54,7 +54,7 @@ export default function Gallerydetails() {
     <>
       {(videos && images) ? (
         <div className="gallery-container">
-          <h2 className="gallery-title">{pagetitle}</h2>
+          <h2 className="gallery-title text-brwn dark:text-drkt">{pagetitle}</h2>
 
           {/* Videos First */}
           <div className="gallery-videos elementor-widget-wrap">

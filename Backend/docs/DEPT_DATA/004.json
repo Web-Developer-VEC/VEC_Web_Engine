@@ -153,16 +153,16 @@
             "hod_image": "/static/images/profile_photos/004/VEC-004-01-145.webp",
             "designation": "Professor & Head, Dept of Civil Engineering",
             "Social_media_links": 
-                {
-                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
-                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
-                    "orchidprofile":"",
-                    "researchgate":"",
-                    "publonprofile": "",
-                    "sciprofiles":""
-                }
+            {
+              "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+              "orchidprofile":"",
+              "researchgate":"",
+              "publonprofile": "",
+              "sciprofiles":""
             }
+          }
         ]
       }
     ]
@@ -178,6 +178,12 @@
             "name": "Civil Engineering (CIVIL)",
             "dept_id": "004"
           }
+        ]
+      },
+      {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/004.pdf"
         ]
       },
       {
@@ -395,7 +401,7 @@
         "category": "department_activities",
         "content": [
          {
-                "year":"2024",
+                "year":"2023 - 2024",
                 "activities": 
                 [
                     {
@@ -460,7 +466,7 @@
                 ]
             },
             {
-              "year": "2023",
+              "year": "2022 - 2023",
                "activities": [
                     {
                         "date": "13/10/2023",
