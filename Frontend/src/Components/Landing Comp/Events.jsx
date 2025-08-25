@@ -68,7 +68,7 @@ function Carousel({ data }) {
     const SCROLL_INTERVAL = 16;
 
     // Duplicate events to ensure smooth looping
-    const duplicatedEvents = [...data, ...data, ...data];
+    const duplicatedEvents = [...data, ...data, ...data,...data,...data,...data,...data,...data,...data,...data];
     const TOTAL_WIDTH = duplicatedEvents.length * CARD_WIDTH;
 
     const wrappedX = useTransform(x, (value) => {

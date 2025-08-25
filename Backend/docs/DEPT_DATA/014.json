@@ -145,6 +145,14 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+
+          "/static/pdfs/faculty_list/014.pdf"
+
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [{
              "name": "திரு. முத்தையா மு.மு",

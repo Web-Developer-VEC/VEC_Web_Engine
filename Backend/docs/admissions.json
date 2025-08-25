@@ -140,8 +140,15 @@
           }
         }
       ],
-      "BE_Management_link": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf",
+
+      "BE_Government":{
+      "BE_Government_link_name":"* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
       "BE_Government_link": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+      },
+      "BE_Management":{
+      "BE_Management_link_name":"* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
+      "BE_Management_link": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"    
+      }
     }
   },
   {
@@ -175,8 +182,15 @@
         "Management Quota Intakes": "60",
         "Total Intakes": "120"
       },
-      "MBA_Management_link": "/static/pdfs/admission/MQ-MBA-2025.pdf",
+
+      "MBA_Management":{
+        "MBA_Management_link_name":"* FIRST YEAR MBA - MANAGEMENT QUOTA",
+        "MBA_Management_link": "/static/pdfs/admission/MQ-MBA-2025.pdf"
+      },
+      "MBA_Government":{
+      "MBA_Government_link_name":"* FIRST YEAR MBA - Government Quota (Through TANCET 2025)",
       "MBA_Government_link": "/static/pdfs/admission/GQ-MBA-2025.pdf"
+      }
     }
   },
   {
