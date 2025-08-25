@@ -148,6 +148,8 @@
             "name": "Dr. JEBAMALAR A",
             "department_name": "Civil Engineering (CIVIL)",
             "unique_id": "VEC-004-01-145",
+            
+            "resume_pdf":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
             "hod_image": "/static/images/profile_photos/004/VEC-004-01-145.webp",
@@ -203,7 +205,7 @@
                 },
           
             "image_path":"/static/images/profile_photos/004/VEC-004-01-145.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf"
           }]
       },
       {
@@ -225,7 +227,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
             },
             {
                 "name": "Mr. RAJHARASEHWARAN T A",
@@ -241,7 +243,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-066.pdf"
             },
             {
                 "name": "Mr. RAJENDHIRAN K",
@@ -257,7 +259,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
             },
             {
                 "name": "Mrs. FRIEDA F S",
@@ -273,10 +275,10 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-601.pdf"
             },
             {
-                "name": "Mrs. PAVEENA A",
+                "name": "Mrs. PRAVEENA A",
                 "designation": "Assistant Professor",
                 "unique_id": "VEC-004-04-602",
                 "socialmedia_links": 
@@ -289,7 +291,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
             },
             {
                 "name": "Mr. SELVAPRASANTH P",
@@ -305,7 +307,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
-                "resume_pdf": ""
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
             }
         ]
       },

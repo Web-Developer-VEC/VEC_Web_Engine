@@ -149,6 +149,7 @@
             "name": "Dr. Brijet Z",
             "department_name": "Electronics & Instrumentation Engineering (EIE)",
             "unique_id": "VEC-008-01-130",
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-01-191.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": [
               "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
@@ -201,7 +202,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56168883600"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-01-191.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-01-191.pdf"
           }
         ]
       },
@@ -221,7 +222,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-172.pdf"
           },
           {
             "name": "Mr.DAYAKAR C V",
@@ -236,7 +237,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-174.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-174.pdf"
           },
           {
             "name": "Dr. ANUSANKARI S",
@@ -251,7 +252,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193494173"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-128.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-128.pdf"
           },
           {
             "name": "Mrs. PADMA S",
@@ -266,7 +267,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-072.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-072.pdf"
           },
           {
             "name": "Mrs. JAYABHARATHI C",
@@ -281,7 +282,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-011.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-011.pdf"
           }
         ]
       },
@@ -391,7 +392,7 @@
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activity/008/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
