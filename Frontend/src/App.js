@@ -43,6 +43,7 @@ import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
 import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
 import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
+import Policies from "./Components/Top_Nav_Bar/Research/policy.jsx";
 /* Placements Pages Imports */
 import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
 import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
@@ -267,6 +268,7 @@ const App = () => {
 
                                 <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
+                                <Route path="/policies" drk element={<Policies toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
                                 
