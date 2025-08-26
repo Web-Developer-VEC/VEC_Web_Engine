@@ -920,7 +920,13 @@
         "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
         "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
       ]
-    }
+    },
+     {
+      "year":"2025",
+      "pdf_path":[
+       "/static/pdfs/newsletter/005/Newsletter 2025.pdf",
+       "/static/pdfs/newsletter/005/Tech Times Magazine MAY 2025.pdf"]
+       }
   ]
 }
     ]
