@@ -299,7 +299,11 @@ const Head = () => {
                                 // Single button (no submenu)
                                 <button
                                     key={index}
-                                    onClick={() => hdr.lnk.startsWith('http') ? window.location.href = hdr.lnk : navigate(hdr.lnk)}
+                                    onClick={() => 
+                                        hdr.lnk.startsWith('http')
+                                            ? window.open(hdr.lnk, '_blank', 'noopener,noreferrer')
+                                            : navigate(hdr.lnk)
+                                    }
                                     className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}
                                 >
                                     {hdr.ttl}

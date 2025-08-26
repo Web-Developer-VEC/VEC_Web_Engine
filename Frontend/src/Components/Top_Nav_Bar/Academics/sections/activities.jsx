@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import "./Activities.css";
 import LoadComp from "../../../LoadComp";
 import { X } from "lucide-react";
+import Activitiestile from "./activitiestile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -33,6 +34,7 @@ const Activities = ({ data }) => {
     (item) => item.year === selectedYear
   );
   const activitiesArray = selectedYearData?.activities || [];
+  const activitiesTileArray = selectedYearData?.activities_tile || [];
 
   const handleViewMore = (event) => {
     setSelectedEvent(event);
@@ -51,13 +53,18 @@ const Activities = ({ data }) => {
 
   return (
     <>
+
+      <div className="deptevent-intro flex justify-center">
+        <h1 className="deptevent-header text-brwn dark:text-drkt text-[Poppins] text-[16px] md:text-[24px]">Department Activities</h1>
+      </div>
+
       {/* 🔹 Year Filter Buttons */}
       <div className="year-filter flex flex-wrap justify-center gap-2 my-4">
         {years?.map((year) => (
           <button
             key={year}
             onClick={() => setSelectedYear(year)}
-            className={`px-4 py-2 rounded ${
+            className={`px-4 py-2 rounded deptevent-year-button ${
               selectedYear === year
                 ? "bg-accn text-prim"
                 : "bg-secd text-text dark:bg-drks"
@@ -68,9 +75,14 @@ const Activities = ({ data }) => {
         ))}
       </div>
 
+      {/* Activities Tile card Section */}
+      {activitiesTileArray?.length > 0 && (
+        <Activitiestile data={activitiesTileArray} />
+      )} 
+
       {/* 🔹 Activities Display */}
       <div className="activities-container">
-        {activitiesArray.length > 0 ? (
+        {activitiesArray.length > 0 && (
           activitiesArray.map((event, index) => (
             <AnimatedCard
               key={index}
@@ -78,8 +90,6 @@ const Activities = ({ data }) => {
               handleViewMore={handleViewMore}
             />
           ))
-        ) : (
-          <p>No events available for {selectedYear}.</p>
         )}
       </div>
 

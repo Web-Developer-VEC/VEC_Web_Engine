@@ -21,6 +21,9 @@ const Faculties = ({ data }) => {
   const non_teaching_staff_details = data?.find((item) => item.category === "non_teaching_staff")?.members || [];
   const faculty_pdf_path = data?.find((item) => item.category === "faculty_pdf_path")?.content[0] || "";
 
+  console.log(faculty_pdf_path)
+  
+
   return (
     <div className={styles.app + " p-0 md:p-12"}>
       <div className={styles.imageGallery + " w-full"}>
@@ -38,6 +41,8 @@ const Faculties = ({ data }) => {
               Linkedin={hod_details?.[0]?.socialmedia_links?.linkedin}
               firstTile={true}
               uid={hod_details?.[0]?.unique_id}
+              profile={hod_details?.[0]?.resume_pdf}
+                   
             />
             <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
               <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"  
@@ -48,7 +53,6 @@ const Faculties = ({ data }) => {
                       window.open(url, "_blank", "noopener,noreferrer");
                     }
                   }
-                  // else: do nothing
                 }}
                 >
                   Faculty List
@@ -72,6 +76,7 @@ const Faculties = ({ data }) => {
                     Scopus={faculty?.socialmedia_links?.scopus}
                     Linkedin={faculty?.socialmedia_links?.linkedin}
                     uid={faculty?.unique_id}
+                    profile={faculty?.resume_pdf}
                   />
                 ))}
               </div>
@@ -94,6 +99,7 @@ const Faculties = ({ data }) => {
                     Scopus={faculty?.socialmedia_links?.scopus}
                     Linkedin={faculty?.socialmedia_links?.linkedin}
                     uid={faculty?.unique_id}
+                    profile={faculty?.resume_pdf}
                   />
                 ))}
               </div>       
