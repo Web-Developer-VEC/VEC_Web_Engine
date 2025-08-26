@@ -129,7 +129,7 @@
       { "id": "Syllabus", "hascontent": true },
       { "id": "NewsLetter", "hascontent": false },
       { "id": "Activities", "hascontent": true },
-      { "id": "Pedagogy", "hascontent": false },
+      { "id": "Pedagogy", "hascontent": true },
       { "id": "StudentAchievments", "hascontent": true },
       { "id": "Infrastructure", "hascontent": true },
       { "id": "Mous", "hascontent": true },

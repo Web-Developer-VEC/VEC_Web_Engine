@@ -149,6 +149,7 @@
             "name": "Dr. Brijet Z",
             "department_name": "Electronics & Instrumentation Engineering (EIE)",
             "unique_id": "VEC-008-01-130",
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-01-191.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": [
               "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
@@ -201,7 +202,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56168883600"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-01-191.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-01-191.pdf"
           }
         ]
       },
@@ -221,7 +222,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-172.pdf"
           },
           {
             "name": "Mr.DAYAKAR C V",
@@ -251,7 +252,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193494173"
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-128.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-128.pdf"
           },
           {
             "name": "Mrs. PADMA S",
@@ -266,7 +267,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-072.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-072.pdf"
           },
           {
             "name": "Mrs. JAYABHARATHI C",
@@ -281,7 +282,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-011.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-011.pdf"
           }
         ]
       },
@@ -387,7 +388,78 @@
         "category": "department_activities",
         "content": [
           {
+            "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Symposium.pdf"
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Add-On Course.pdf"
+              }
+            ]
+          },
+          {
             "year":"2023 - 2024",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/008/2023-2024/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/008/2023-2024/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/008/2023-2024/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/008/2023-2024/Add-On Course.pdf"
+              }
+            ],
             "activities": [
               {
                 "date": "4/7/2024",
@@ -420,6 +492,40 @@
           },
           {
             "year":"2022 - 2023",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Add-On Course.pdf"
+              }
+      ],
             "activities": [
               {
                 "date": "28/02/2023",
@@ -483,6 +589,40 @@
           },
           {
             "year":"2020 - 2021",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities" :[
               {
                 "date": "24/11/2021",
@@ -497,6 +637,40 @@
           },
           {
             "year":"2019 - 2020",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
             "activities": [
               {
                 "date": "15/02/2020",
@@ -520,6 +694,40 @@
           },
           {
             "year":"2018 - 2019",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+            ],
             "activities" :[
               {
                 "date": "29/03/2019",
@@ -569,7 +777,35 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": []
+        "content": [
+          {
+            "year": "2024 - 2025",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/008/2024-2025/Pedagogy Initiatives-2024-25.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2023 - 2024",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/008/2023-2024/Pedagogy Initiatives 2023-24.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/008/2022-2023/Pedagogy Initiatives-2022-23.pdf"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

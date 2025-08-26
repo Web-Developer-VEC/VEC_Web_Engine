@@ -109,7 +109,7 @@
   /*color: #ffffff;*/
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
-  width: 110px;
+  width: fit-content;
   height: 40px;
 }
 
@@ -129,7 +129,7 @@
 .firstTileSocialLinks {
   display: flex;
   gap: 15px;
-  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .firstTileContent {
@@ -161,7 +161,7 @@
   display: flex;
   gap: 15px;
   margin-top: 10px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 
 .firstTileSocialLinks a {
@@ -412,7 +412,7 @@
   }
 
   .facButton {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .pdfiframe {

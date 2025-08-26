@@ -20,6 +20,7 @@ body {
   padding: 50px 20px;
   max-width: 1200px;
   margin: auto;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
 /* Intro Section */
@@ -31,13 +32,14 @@ body {
 
 .RD-header {
   font-size: 2rem;
-  font-weight: 800;
+  /* font-weight: 800; */
   /*color: #222;*/
   text-transform: uppercase;
   margin-bottom: 20px;
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
   /*background: linear-gradient(90deg, #ff8c00, #ffa500);*/
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text; */
+    /* font-weight: 800; */
 }
 
 /* Year Buttons */
@@ -78,6 +80,7 @@ body {
   gap: 25px;
   margin-top: 50px;
   width: 100%;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
 .RD-action-button {

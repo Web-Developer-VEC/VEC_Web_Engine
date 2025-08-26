@@ -13,10 +13,7 @@ import CurriculumPage from "./sections/CurriculamPage";
 import Pedagogy from "./sections/Pedagogy";
 import MOU from "./sections/mou";
 import Research from "./sections/RD";
-import EventOrg from "./sections/event";
-import Conference from "./sections/Conference";
 import styles from "./HeadDepartment.module.css";
-import college from "../../Assets/college.jpeg";
 import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
@@ -197,8 +194,6 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <Research data={sectionData} />; 
       case "NewsLetter":
         return <Newsletter data={sectionData} />;
-      case "Event Organizer":
-        return <EventOrg data={sectionData} />;
       default:
         return <VisionMission data={sectionData} />;
     }
