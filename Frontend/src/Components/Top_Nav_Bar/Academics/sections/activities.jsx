@@ -82,7 +82,7 @@ const Activities = ({ data }) => {
 
       {/* 🔹 Activities Display */}
       <div className="activities-container">
-        {activitiesArray.length > 0 ? (
+        {activitiesArray.length > 0 && (
           activitiesArray.map((event, index) => (
             <AnimatedCard
               key={index}
@@ -90,8 +90,6 @@ const Activities = ({ data }) => {
               handleViewMore={handleViewMore}
             />
           ))
-        ) : (
-          <p>No events available for {selectedYear}.</p>
         )}
       </div>
 
