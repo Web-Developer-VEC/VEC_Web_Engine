@@ -370,6 +370,22 @@
               "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
               "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-502.pdf"
             },
+             
+            {
+              "name": "Mrs. MATHUMATHI T",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-100",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-100.webp",
+              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-100.pdf"
+            },
             {
               "name": "Mrs. DEVIKA B",
               "designation": "Teaching Assistant",
@@ -383,8 +399,9 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-501.pdf"
             }
+           
         ]
       },
       {

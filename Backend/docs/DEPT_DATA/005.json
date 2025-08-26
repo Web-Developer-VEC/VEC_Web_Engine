@@ -407,7 +407,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-611.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-611.pdf"
       },
       {
         "name": "Dr. ALMELU S",
@@ -707,7 +707,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-613.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-613.pdf"
       },
       {
         "name": "Mrs. SANTHIYA R",
@@ -722,7 +722,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-616.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-616.pdf"
       },
       {
         "name": "Ms. SUSHANTHI A",
@@ -752,7 +752,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-614.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-614.pdf"
       },
       {
         "name": "Mr. HARI KRISHNAN M",
@@ -767,7 +767,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-617.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-617.pdf"
       },
        {
         "name": "Mrs. DHIVYA S",
@@ -782,7 +782,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-699.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-699.pdf"
       }
      
     ]
