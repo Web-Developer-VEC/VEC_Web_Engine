@@ -184,7 +184,8 @@
             "department_id": "005",
             "name": "Dr. MURUGESHWARI B",
             "department_name": "Computer Science & Engineering (CSE) ",
-            "unique_id": "VEC-005-01-120",
+            "unique_id": "VEC-005-01-120",      
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message":["The department is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics; professionalism and students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan-Do-Check-Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants."],
             "hod_image": "/static/images/hods/cse.webp",
@@ -237,7 +238,7 @@
               "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             },
             "image_path":"/static/images/profile_photos/005/VEC-005-01-120.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf"
           }]
       },
       
@@ -257,7 +258,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-02-199.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-02-199.pdf"
       },
       {
         "name": "Dr. GUNASUNDARI S",
@@ -272,7 +273,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35753254100"
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-106.pdf"
       },
       {
         "name": "Dr. SMITHA P S",
@@ -287,7 +288,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-132.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-132.pdf"
       },
       {
         "name": "Dr. PRITTO PAUL P",
@@ -302,7 +303,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-147.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-147.pdf"
       },
       {
         "name": "Dr. USHA M",
@@ -317,12 +318,12 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-137.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-137.pdf"
       },
       {
         "name": "Dr. RAJESWARI A",
         "designation": "Associate Professor",
-        "unique_id": "VEC-005-04-110",
+        "unique_id": "VEC-005-03-110",
         "socialmedia_links": {
           "linkedin": "http://linkedin.com/in/rajeswari-bhuvaneswaran-700281217",
           "googlescholar": "https://scholar.google.com/citations?user=fORIRQ8AAAAJ&hl=en",
@@ -332,7 +333,7 @@
           "scopus":""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-110.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-110.pdf"
       },
       {
         "name": "Mrs. SUBASHINI T",
@@ -347,7 +348,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-144.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-144.pdf"
       },
       {
         "name": "Mrs. HEMALATHA B",
@@ -362,7 +363,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-141.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-141.pdf"
       },
        {
         "name": "Dr. SRIDEVI S",
@@ -377,7 +378,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-100.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-100.pdf"
       },
       {
         "name": "Dr. AMIRTHAVALLI R",
@@ -392,7 +393,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-140.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-140.pdf"
       },
      
       {
@@ -423,7 +424,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-720.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-720.pdf"
       },
        {
         "name": "Mrs. MOHANAMBAL K",
@@ -438,7 +439,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-122.pdf"
       },
        {
         "name": "Mrs. AARTHI K C",
@@ -453,7 +454,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-129.pdf"
       },
       {
         "name": "Mrs. DAYAFLORANCE D",
@@ -468,7 +469,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57118226100"
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-131.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-131.pdf"
       },
       {
         "name": "Mrs. ROHINI C",
@@ -483,7 +484,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-112.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-112.pdf"
       },
        {
         "name": "Mrs. JAYANTHI A",
@@ -498,7 +499,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-116.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-116.pdf"
       },
        {
         "name": "Mrs. AMINTA SABATINI S",
@@ -513,7 +514,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-113.pdf"
       },
       {
         "name": "Mrs. BHARATHI SHRI C",
@@ -528,7 +529,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-101.pdf"
       },
       {
         "name": "Mrs. KAYALVIZHI S",
@@ -543,7 +544,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-130.pdf"
       },
       {
         "name": "Mrs. SRUTHI NATH C",
@@ -558,7 +559,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-120.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-120.pdf"
       },
       {
         "name": "Mr. AKHIL NAIR R",
@@ -573,7 +574,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-105.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-105.pdf"
       },
       {
         "name": "Mr. JEYA MOHAN H",
@@ -588,7 +589,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-107.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-107.pdf"
       },
       {
         "name": "Mrs. SARANYA P",
@@ -603,7 +604,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-121.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-121.pdf"
       },
       {
         "name": "Mrs. BAMA S",
@@ -618,7 +619,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-124.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-124.pdf"
       },
       {
         "name": "Mrs. CHITRA R",
@@ -633,7 +634,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-123.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-123.pdf"
       },
       {
         "name": "Mrs. SAKTHI D",
@@ -648,7 +649,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-127.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-127.pdf"
       },
       {
         "name": "Mr. RAJESH T",
@@ -663,7 +664,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-134.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-134.pdf"
       },
       {
         "name": "Mrs. SHYAMALA DEVI G G",
@@ -678,7 +679,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-098.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-098.pdf"
       },
       {
         "name": "Mrs. GEETHA S",
@@ -693,7 +694,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-612.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-612.pdf"
       },
       {
         "name": "Mrs. NISHA P M C",
@@ -738,7 +739,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-615.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-615.pdf"
       },
       {
         "name": "Ms. NIRANJINI S",
@@ -806,7 +807,7 @@
         "resume_pdf": ""
       },
       {
-        "name": "Mrs. SASI KALA.B",
+        "name": "Mrs. SASI KALA B",
         "designation": "Lab Instructor",
         "unique_id": "VEC-005-05-021",
         "socialmedia_links": {
@@ -944,6 +945,40 @@
           
             {
               "year":"2024 - 2025",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
               "activities":[  
           {
     "date": "06/02/2025",
@@ -959,6 +994,40 @@
       },
             {
               "year":"2023 - 2024",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
               "activities":[
                 {
           "date": "29/08/2024",

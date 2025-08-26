@@ -25,6 +25,7 @@ const HeadDepartment = ({ data }) => {
     Hod_message = hod_details?.[0]?.hod_message,
     Image = hod_details?.[0]?.hod_image, // Provide a default path if needed
     Social_media_links = hod_details?.[0]?.Social_media_links || {},
+    resume = hod_details?.[0]?.resume_pdf
   } = hod_details || {};
 
   return (
@@ -46,6 +47,9 @@ const HeadDepartment = ({ data }) => {
               <p className={styles.messageBody}>{Hod_message}</p>
             </div>
             {/* <a className={styles.viewMoreButton + " bg-secd dark:bg-drks text-text"}
+            href={resume ? UrlParser(resume) : "#"}
+            target="_blank"
+            rel="noopener noreferrer"
             //  href={`/facultyprofile/${uid}`}
              >View More</a> */}
           </div>

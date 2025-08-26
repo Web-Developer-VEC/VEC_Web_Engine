@@ -397,6 +397,28 @@
         "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
         "website_link": "",
         "status": "True"
+      },
+       {
+        "start_date":"19 AUG",
+        "end_date": "19 AUG, 2025",
+        "date": "19-08-2025",
+        "title": "Career guidance - Need for skill Development",
+        "department": "Electrical & Instrumentation Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/CG.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"25 AUG",
+        "end_date": "25 AUG, 2025",
+        "date": "25-08-2025",
+        "title": "Smart Healthcare Revolution",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/SHR.webp",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }
