@@ -978,15 +978,6 @@
               }
       ],
               "activities":[  
-          {
-    "date": "06/02/2025",
-    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
-    "coordinator": "",
-    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": "/static/images/dept_activities/005/3.webp"
-           }
  
          ]
       },
@@ -1027,114 +1018,6 @@
               }
       ],
               "activities":[
-                {
-          "date": "29/08/2024",
-        "name_of_event": "Workshop on SIH PROJECT DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Gladwin,GenAI Engineer at PAL Genie",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "19/08/2024",
-        "name_of_event": "Workshop on PROTOTYPE / PROCESS DESIGN AND DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Dr.A.Lakshmi Sangeetha,Associate Professor,Velammal Engineering College",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "14/09/2024",
-        "name_of_event": "Workshop on GRAPHICS AND VISUAL MEDIA",
-        "coordinator": "",
-        "resource_person": "Ms.P.Sathyakala Specialist Graphic Designer, 2adpro Media solutions private limited",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "20/08/2024",
-        "name_of_event": "Seminar on INNOVATIVE IDEA PRESENTATION",
-        "coordinator": "",
-        "resource_person": "S.S.Sivakumar Senior Manager,Managed Services",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "07/08/2024",
-        "name_of_event": "Workshop on Generative AI",
-        "coordinator": "",
-        "resource_person": "Mr.Harish Babu,Manager NXTWAVE",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "23/09/2024",
-        "name_of_event": "Workshop on CLOUD COMPUTING AND DEVOPS",
-        "coordinator": "",
-        "resource_person": "Mr.Arun Kumar.M Cloud Engineer, Presidio",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/09/2024-19/09/2024",
-        "name_of_event": "Training on HOW TO MASTER PROBLEM SOLVING, CRITICAL THINKING AND EFFICIENT CODING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthipan Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/07/2024",
-        "name_of_event": "Technical Training on CLOUD COMPUTING AND AWS",
-        "coordinator": "",
-        "resource_person": "Mr.Paris Kapoor, System Architect, FeOS Technologies",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "05/07/2024",
-        "name_of_event": "Workshop on WEB DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "01/07/2024",
-        "name_of_event": "Workshop on DATA SCIENCE AND MACHINE LEARNING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-       {
-    "date": "16/09/2024",
-    "name_of_event": "Visited an Industry RETECH SOLUTIONS PVT.LTD",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "2nd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "30/08/2024",
-    "name_of_event": "Visited an Industry WIPRO",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "3rd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  }
               ]
             }
     ]
