@@ -1,5 +1,5 @@
 const rateLimit = require('express-rate-limit');
-const { getDb } = require('../config/db');
+const { getlogDb } = require('../config/db');
 const crypto = require('crypto');
 
 // Custom safe IP key generator
@@ -40,8 +40,8 @@ const createRateLimiter = (options = {}) => {
       });
 
       try {
-        const db = getDb();
-        const logsCollection = db.collection('logs');
+        const db = getlogDb();
+        const logsCollection = db.collection('ratelog');
 
         await logsCollection.updateOne(
           { _id: 'rate_limit_log' },
