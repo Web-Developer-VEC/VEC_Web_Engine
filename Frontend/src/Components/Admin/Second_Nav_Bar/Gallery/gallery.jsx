@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Gallery.css";
-import Banner from "../../../Banner";
+import Banner from "../../Banner";
 import axios from "axios";
-import LoadComp from "../../../LoadComp";
+import LoadComp from "../../LoadComp";
 import { Plus, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
