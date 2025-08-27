@@ -9,6 +9,6 @@ const router = express.Router();
 const limiter = createRateLimiter({ max: 5, windowMs: 10* 60 * 1000 });
 
 // do admin access and rmodify the rate limiter for this
-router.get('/logs', limiter, xss, getDatabaseLogs);
+router.get('/logs/:type', limiter, xss, getDatabaseLogs);
 
 module.exports = router;

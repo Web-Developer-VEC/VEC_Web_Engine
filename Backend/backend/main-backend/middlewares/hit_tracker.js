@@ -3,7 +3,7 @@ const moment = require('moment');
 
 async function hitTracker(req, res, next) {
     const db = getlogDb();
-    const collection = db.collection('logs');
+    const collection = db.collection('hitlog');
 
     const endpoint = req.originalUrl.split('?')[0]; 
     const now = moment();

@@ -535,7 +535,7 @@ def create_logs_collection():
     logsdb.create_collection('logs')
     print("\n logs collection created successfully.")
 
-create_logs_collection()
+#create_logs_collection() #Remove the comment to call the function if Logs DB needed in AWS newly
 
 '''def add_hostel_student_database():
     collection = db["student_database"]
