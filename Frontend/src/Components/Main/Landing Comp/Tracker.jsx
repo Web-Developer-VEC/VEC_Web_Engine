@@ -83,7 +83,7 @@ const StatsGrid = ({ data }) => {
                     <div className="stat-item basis-1/2 lg:basis-1/4 lg:px-2">
                         <Lottie className="mx-auto"
                             loop
-                            animationData={require('../Assets/Active Learners.json')}
+                            animationData={require('../../Assets/Active Learners.json')}
                             play
                             style={{width: 140, height: 185}}
                         />
@@ -93,7 +93,7 @@ const StatsGrid = ({ data }) => {
                     <div className="stat-item basis-1/2 lg:basis-1/4">
                         <Lottie className="mx-auto"
                             loop
-                            animationData={require('../Assets/hike.json')}
+                            animationData={require('../../Assets/hike.json')}
                             play
                             style={{width: 140, height:192}}
                         />
@@ -104,7 +104,7 @@ const StatsGrid = ({ data }) => {
                     <div className="stat-item basis-1/2 lg:basis-1/4">
                         <Lottie className="mx-auto"
                             loop
-                            animationData={require('../Assets/Hiring Partners.json')}
+                            animationData={require('../../Assets/Hiring Partners.json')}
                             play
                             style={{width: 140, height: 192}}
                         />
@@ -114,7 +114,7 @@ const StatsGrid = ({ data }) => {
                     <div className="stat-item basis-1/2 lg:basis-1/4">
                         <Lottie className="mx-auto" 
                             loop
-                            animationData={require('../Assets/salary.json')}
+                            animationData={require('../../Assets/salary.json')}
                             play
                             style={{width: 140, height: 210}}
                         />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./announcements.css";
-import img1 from "../Assets/hostel.png";
-import star from "../Assets/championship.gif";
+import img1 from "../../Assets/hostel.png";
+import star from "../../Assets/championship.gif";
 
 const Announcements1 = ({ anno, spc }) => {
     const [flipped, setFlipped] = useState(false);

@@ -3,7 +3,7 @@ import "./NCC_NAVY.css";
 import NCCNCarousel from "./NCC_NAvY comps/NCCNCarousel";
 import axios from "axios";
 import NCCNMembers from "./NCC_NAvY comps/NCCNMembers";
-import logo from '../../Assets/NccNavy.png'
+import logo from '../../../Assets/NccNavy.png'
 import SideNav from "../SideNav";
 import AlumniSlider1 from "./NCC_NAvY comps/DisguishedAluminiN";
 import LoadComp from "../../LoadComp";

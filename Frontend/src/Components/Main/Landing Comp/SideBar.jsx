@@ -2,10 +2,10 @@ import {useState, useEffect} from "react";
 import {Bars3Icon, XMarkIcon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 import {Link, useNavigate} from "react-router-dom";
 import {motion} from "framer-motion";
-import Inta from '../Assets/instagram.png'
-import Fcbk from '../Assets/facebook.png'
-import Twtr from '../Assets/twitter.png'
-import Lknd from '../Assets/linkedin.png'
+import Inta from '../../Assets/instagram.png'
+import Fcbk from '../../Assets/facebook.png'
+import Twtr from '../../Assets/twitter.png'
+import Lknd from '../../Assets/linkedin.png'
 import {sup} from "framer-motion/m";
 
 // Import Framer Motion // Import Framer Motion

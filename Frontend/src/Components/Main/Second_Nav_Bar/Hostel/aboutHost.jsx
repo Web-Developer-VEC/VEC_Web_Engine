@@ -1,5 +1,4 @@
-  import "./aboutHost.css"
-  import hostel from'../../Assets/hostel.jpg';
+import "./aboutHost.css"
 import LoadComp from "../../LoadComp";
 
 

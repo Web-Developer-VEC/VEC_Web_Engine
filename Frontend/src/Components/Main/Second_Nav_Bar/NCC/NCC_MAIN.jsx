@@ -4,7 +4,7 @@ import "./NCC_MAIN.css"; // Import the separate CSS file
 import Banner from "../../Banner";
 import NCC_ARMY from "./NCC_ARMY";
 import NCC_NAVY from "./NCC_NAVY";
-import Army from "../../Assets/NccArmy.png";
+import Army from "../../../Assets/NccArmy.png";
 import LoadComp from "../../LoadComp"
 import { useEffect } from "react";
 import { ArrowBigLeft } from "lucide-react";

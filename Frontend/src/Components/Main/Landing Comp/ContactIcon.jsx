@@ -4,40 +4,6 @@ import './ContactIcon.css';
 
 const ContactIcon = () => {
     const [showPopup, setShowPopup] = useState(false);
-
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const footer = document.querySelector('.footer');
-    //         const banner = document.querySelector('.landing-banner');
-
-    //         let shouldShow = true;
-
-    //         if (banner) {
-    //             const bannerRect = banner.getBoundingClientRect();
-    //             // If banner bottom is still below the top of the viewport, user is still in banner
-    //             if (bannerRect.bottom > 0) {
-    //             shouldShow = false;
-    //             }
-    //         }
-
-    //         if (footer) {
-    //             const footerRect = footer.getBoundingClientRect();
-    //             const contactIcon = document.querySelector('.contact-icon-container');
-
-    //             if (footerRect.top < window.innerHeight) {
-    //                 contactIcon.style.display = 'none'; // Hide the contact icon when the footer is in view
-    //             } else {
-    //                 contactIcon.style.display = 'block'; // Show the contact icon otherwise
-    //             }
-    //         }
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
-
       useEffect(() => {
         const handleScroll = () => {
         const footer = document.querySelector('.footer');
@@ -85,7 +51,7 @@ const ContactIcon = () => {
             <div onClick={handleClick}> {/* Click event added here */}
                 <Lottie
                   loop
-                  animationData={require('../Assets/Call.json')}
+                  animationData={require('../../Assets/Call.json')}
                   play
                   style={{ width: 80, height: 80 }} // Add cursor pointer for better UX
                 />

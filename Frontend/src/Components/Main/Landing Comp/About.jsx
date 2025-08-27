@@ -1,6 +1,6 @@
 import React from 'react'
 import "./About.css";
-import Tree from "../Assets/announce.png";
+import Tree from "../../Assets/announce.png";
 
 const About = () => {
     return (

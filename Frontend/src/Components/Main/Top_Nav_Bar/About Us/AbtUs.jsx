@@ -177,8 +177,8 @@ const AbtUs = ({ theme, toggle }) => {
                                 </div>
                         ))}
                         <button
-                        onClick={() => navigate("/abt-yr")} 
-                        className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'>AISHE</button>
+                            onClick={() => navigate("/abt-yr")} 
+                            className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'>AISHE</button>
                         </div>
                         </div>
                 </>
