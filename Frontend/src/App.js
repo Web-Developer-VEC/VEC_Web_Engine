@@ -305,7 +305,7 @@ const App = () => {
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
-
+                                
                                 {/* Admin page route */}
                                 <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/>
