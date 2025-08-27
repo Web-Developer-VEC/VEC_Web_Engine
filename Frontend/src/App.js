@@ -93,6 +93,10 @@ import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
 import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
+// Admin stuffs
+import Admingallerydetails from "./Components/Admin/Second_Nav_Bar/Gallery/detailpage.jsx";
+import Admingallery from "./Components/Admin/Second_Nav_Bar/Gallery/gallery.jsx";
+import AdminTransport from "./Components/Admin/Second_Nav_Bar/Transport/Transport.jsx";
 
 
 
@@ -301,6 +305,11 @@ const App = () => {
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+                                
+                                {/* Admin page route */}
+                                <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_transport" drk element={<AdminTransport toggle={toggle} theme={theme}/>}/>
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
