@@ -46,7 +46,11 @@ const HeadDepartment = ({ data }) => {
               <h3 className={styles.messageTitle + " + text-[#800000] dark:text-drkt border-b-2 border-secd dark:border-drks"}>HOD's Message</h3>
               <p className={styles.messageBody}>{Hod_message}</p>
             </div>
+<<<<<<< HEAD
             <a className={styles.viewMoreButton + " bg-secd dark:bg-drks text-text"}
+=======
+            {/* <a className={styles.viewMoreButton + " bg-secd dark:bg-drks text-text"}
+>>>>>>> origin/main
             href={resume ? UrlParser(resume) : "#"}
             target="_blank"
             rel="noopener noreferrer"

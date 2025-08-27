@@ -138,6 +138,7 @@
             "name": "Dr. MARY JOANS S",
             "department_name": "Electronics and Communication Engineering (ECE)",
             "unique_id": "VEC-009-01-090",
+            "resume_pdf": "",
             "qualification": ["M.E.","Ph.D"],
             "hod_message": [
               "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
@@ -209,7 +210,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55942398400"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-02-089.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-02-089.pdf"
           },
           {
             "name": "Dr. MURUKESH C",
@@ -224,7 +225,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=52663908300"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-03-052.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-03-052.pdf"
           },
           {
             "name": "Dr. THILAGAM K",
@@ -239,7 +240,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56041205200"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-03-041.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-03-041.pdf"
           },
           {
             "name": "Dr. MANJU S",
@@ -254,7 +255,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57212789772"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-03-012.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-03-012.pdf"
           },
           {
             "name": "Dr. PONNRAJAKUMARI M",
@@ -269,7 +270,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-021.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-021.pdf"
           },
           {
             "name": "Dr. LAVANYA K",
@@ -284,7 +285,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-029.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-029.pdf"
           },
           {
             "name": "Dr. MAGESH V",
@@ -299,7 +300,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57326320600"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-007.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-007.pdf"
           },
           {
             "name": "Mr. SARAVANAN V",
@@ -314,7 +315,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-031.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-031.pdf"
           },
           {
             "name": "Mrs. SUMATHI S",
@@ -329,7 +330,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-005.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-005.pdf"
           },
           {
             "name": "Mrs. SARUPRIYA S",
@@ -344,7 +345,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57534544300"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-054.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-054.pdf"
           },
           {
             "name": "Mr. GANGADURAI E",
@@ -359,7 +360,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-017.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-017.pdf"
           },
           {
             "name": "Mr. SUBRAMANIAN G",
@@ -374,7 +375,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-016.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-016.pdf"
           },
           {
             "name": "Mr. THEIVANATHAN G",
@@ -389,7 +390,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57899335200"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-025.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-025.pdf"
           },
           {
             "name": "Mrs. SANDHYA S",
@@ -404,7 +405,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-675.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-675.pdf"
           },
           {
             "name": "Mr. RADHAKRISHNAN K",
@@ -419,7 +420,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-026.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-026.pdf"
           },
           {
             "name": "Mrs. DOLLY IRENE J",
@@ -434,7 +435,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56916032700"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-023.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-023.pdf"
           },
           {
             "name": "Dr. DEEPA N",
@@ -449,7 +450,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-019.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-019.pdf"
           },
           {
             "name": "Mrs. KAVITHA S",
@@ -464,7 +465,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-032.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-032.pdf"
           },
           {
             "name": "Mr. SESHAIAH M A",
@@ -479,7 +480,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-135.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-135.pdf"
           },
           {
             "name": "Mrs. SUJATHA R",
@@ -494,7 +495,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-014.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-014.pdf"
           },
           {
             "name": "Mrs. NANDHINI M",
@@ -509,7 +510,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-015.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-015.pdf"
           },
           {
             "name": "Mrs. RENUKA P",
@@ -524,7 +525,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-009.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-009.pdf"
           },
           {
             "name": "Dr. SUGANTHI S",
@@ -539,7 +540,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-653.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-653.pdf"
           },
           {
             "name": "Dr. VINODHINI R",
@@ -554,7 +555,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-657.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-657.pdf"
           },
           {
             "name": "Mrs. RAMYA T",
@@ -569,7 +570,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-658.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-658.pdf"
           },
           {
             "name": "Mrs. MANIMEGALAI M",
@@ -584,7 +585,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-659.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-659.pdf"
           },
           {
             "name": "Mrs. ARUL THILAGAVATHI M",
@@ -599,7 +600,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-654.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-654.pdf"
           },
           {
             "name": "Mrs. SUSANNA P",
@@ -614,7 +615,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-656.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-656.pdf"
           },
           {
             "name": "Mrs. PRAVEENA V",
@@ -629,7 +630,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-655.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/009/VEC-009-04-655.pdf"
           }
         ]
       },

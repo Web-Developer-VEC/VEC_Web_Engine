@@ -115,7 +115,8 @@
             "department_id": "012",
             "name": "Dr. RAJESWARAN S",
             "department_name": "Mathematics ",
-            "unique_id": "VEC-012-01-096",
+            "unique_id": "VEC-012-01-096",         
+            "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-01-096.pdf",
             "qualification": ["M.Sc.", "M.Phil.", "Ph.D"],
             "hod_message": [
                 "The Department of Mathematics at VEC is highly focused on imparting quality education and supports the core departments in teaching mathematics for both UG and PG students in their quest for mathematical thinking. Mathematics is one which unifies all branches of science and technology and it reflects the spirit of rationality and plays a very significant role in shaping the career of an engineering student to meet the global challenges, making Engineers to develop mathematical thoughts and applying it to solve complex engineering problems, designing mathematical models to meet the requirements"
@@ -169,7 +170,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56049208900"
       },
       "unique_id": "VEC-012-01-096",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-01-096.pdf"
       }]
       },
       {
@@ -188,7 +189,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56622876800"
       },
       "unique_id": "VEC-012-04-115",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-115.pdf"
     },
     {
       "name": "Dr. SHANMUGAPRIYAN S",
@@ -218,7 +219,7 @@
         "scopus": ""
       },
       "unique_id": "VEC-012-04-047",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-047.pdf"
     },
     {
       "name": "Mr. BALU M S",
@@ -233,7 +234,7 @@
         "scopus": ""
       },
       "unique_id": "VEC-012-04-037",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-037.pdf"
     },
     {
       "name": "Mr. MANOKARAN P",
@@ -248,7 +249,7 @@
         "scopus": ""
       },
       "unique_id": "VEC-012-04-076",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-076.pdf"
     },
     {
       "name": "Dr. KARTHIK R",
@@ -263,7 +264,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57203209564"
       },
       "unique_id": "VEC-012-04-048",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-048.pdf"
     },
     {
       "name": "Mr. GOPIKRISHNAN S",
@@ -278,7 +279,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-043.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-043.pdf"
     },
     {
       "name": "Mr. JANARDHANAN K",
@@ -293,7 +294,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-062.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-062.pdf"
     },
     {
       "name": "Mr. VENKATESAN J",
@@ -308,7 +309,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-042.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-042.pdf"
     },
     {
       "name": "Ms. HEMA C",
@@ -323,7 +324,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-051.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-051.pdf"
     },
     {
       "name": "Dr. KUPPULAKSHMI V",
@@ -338,7 +339,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57226449495"
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-071.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-071.pdf"
     },
     {
       "name": "Dr. ISWARYA M",
@@ -353,7 +354,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-653.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-653.pdf"
     },
     {
       "name": "Mr. VIJAYAKUMAR M",
@@ -368,7 +369,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57225399308&origin=recordpage"
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-040.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-040.pdf"
     },
     {
       "name": "Mr. ANTONY GNANA ARAVIND A",
@@ -383,7 +384,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-046.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-046.pdf"
     },
     {
       "name": "Mrs. JERLIN SHEEBA D",
@@ -398,7 +399,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-045.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-045.pdf"
     },
     {
       "name": "Mr. MUTHUVEL S",
@@ -413,7 +414,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58165763400"
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-050.webp",
-      "resume_pdf": ""
+      "resume_pdf": "/static/pdfs/faculty_profile/012/VEC-012-04-050.pdf"
     },
     {
       "name": "Mrs. NISHA DEVI N",

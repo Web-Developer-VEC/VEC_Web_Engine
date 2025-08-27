@@ -117,7 +117,9 @@
              "dept_id":"003",
                 "name": "Dr. MOHAMED SIKKANDER A",
                 "department_name": "Chemistry",
-                "unique_id": "VEC-003-01-110",
+                "unique_id": "VEC-003-01-173",
+                
+          "resume_pdf":"/static/pdfs/faculty_profile/003/VEC-003-01-173.pdf",
                 "qualification": ["M.Sc.","B.Ed.","M.Phil.","Ph.D"],
                 "hod_message": ["As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"],
                 "hod_image": "/static/images/hods/chem.webp",
@@ -160,7 +162,7 @@
         "members": [ {
         "name": "Dr. MOHAMED SIKKANDER A",
         "designation": "Associate Professor & Head",
-        "unique_id": "VEC-003-01-110",
+        "unique_id": "VEC-003-01-173",
         "socialmedia_links": 
           {
             "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
@@ -173,7 +175,7 @@
           },
           
           "image_path":"/static/images/profile_photos/003/VEC-003-01-173.webp",
-          "resume_pdf":""
+          "resume_pdf":"/static/pdfs/faculty_profile/003/VEC-003-01-173.pdf"
           }]
       },
       {
@@ -194,7 +196,7 @@
                 "scopus": ""
               },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-088.pdf"
           },
           {
             "name": "Mrs. RAMA NACHIAR R",
@@ -210,7 +212,7 @@
                 "scopus": ""
               },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-119.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-119.pdf"
           },
           {
             "name": "Dr. ANITHA V",
@@ -226,7 +228,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-108.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-108.pdf"
           },
           {
             "name": "Mrs. SASIKALA S",
@@ -242,7 +244,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-104.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-104.pdf"
           },
           {
             "name": "Mr. SIVARAJ C",
@@ -258,7 +260,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-142.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-142.pdf"
           },
           {
             "name": "Mr. NIRUBAN BALU T",
@@ -274,7 +276,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-143.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-143.pdf"
           },
           {
             "name": "Dr. BALAMURUGAPANDIAN N",
@@ -290,7 +292,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56648027400"
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-083.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-083.pdf"
           },
           {
             "name": "Dr. KAVIYA M",
@@ -306,7 +308,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-079.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-079.pdf"
           },
           {
             "name": "Mrs. MOUNICA A",
@@ -322,7 +324,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-626.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/003/VEC-003-04-626.pdf"
           }
       ]
       },
@@ -407,44 +409,7 @@
       },
       {
         "category": "department_activities",
-        "content": [
-          {
-            "activities_tile": [
-              {
-                "name": "Guest Lecture",
-                "pdf_path": ""
-              },
-              {
-                "name": "Seminar",
-                "pdf_path": ""
-              },
-              {
-                "name": "Workshop",
-                "pdf_path": ""
-              },
-              {
-                "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
-              },
-              {
-                "name": "Internship",
-                "pdf_path": ""
-              },
-              {
-                "name": "Symposium",
-                "pdf_path": ""
-              },
-               {
-                "name": "Conference",
-                "pdf_path": ""
-              },
-              {
-                "name": "Valued Added Course",
-                "pdf_path": ""
-              }
-      ]
-          }
-        ]
+        "content": []
       }
     ]
   },

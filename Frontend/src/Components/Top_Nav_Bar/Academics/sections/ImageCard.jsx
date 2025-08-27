@@ -29,8 +29,8 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
       <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
         <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
         <p className="+ text-[#800000] dark:text-drka">{Designation}</p>
-        {(Linkedin || Publon || Scholar || Orchid || Research || Scopus) &&(
-          <div className={firstTile ? styles.firstTileSocialLinks : styles.socialLinks}>
+       
+          <div className={`${firstTile ? styles.firstTileSocialLinks : styles.socialLinks} h-[10px]`}>
             {Linkedin && (
               <a href={Linkedin} target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="text-brwn dark:text-drka" />
@@ -62,8 +62,11 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
               </a>
             )}
           </div>
-        )}
         
+<<<<<<< HEAD
+=======
+        
+>>>>>>> origin/main
         <button
           // onClick={() => navigate(`/facultyprofile/${uid}`)}
           onClick={() => {
