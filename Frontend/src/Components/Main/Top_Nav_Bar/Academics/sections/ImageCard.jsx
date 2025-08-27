@@ -63,7 +63,6 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
             )}
           </div>
         
-        
         <button
           // onClick={() => navigate(`/facultyprofile/${uid}`)}
           onClick={() => {

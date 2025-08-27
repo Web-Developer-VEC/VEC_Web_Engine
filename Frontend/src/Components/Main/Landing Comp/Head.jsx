@@ -2,16 +2,16 @@
 import {useLocation, useNavigate} from 'react-router-dom';
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
 import Sidebar from './SideBar'
-import Nord from '../Assets/1723802229690.png'
-import Naac from '../Assets/1723802229711.png'
-import Acrd from '../Assets/1723802229732.png'
-import iquage from '../Assets/iquage.png'
-import Tnea from '../Assets/TNEA-Code.png'
-import Inta from '../Assets/instagram.png'
-import Fcbk from '../Assets/facebook.png'
-import Twtr from '../Assets/twitter.png'
-import Lknd from '../Assets/linkedin.png'
-import logo from '../Assets/NEWLOGO.png'
+import Nord from '../../Assets/1723802229690.png'
+import Naac from '../../Assets/1723802229711.png'
+import Acrd from '../../Assets/1723802229732.png'
+import iquage from '../../Assets/iquage.png'
+import Tnea from '../../Assets/TNEA-Code.png'
+import Inta from '../../Assets/instagram.png'
+import Fcbk from '../../Assets/facebook.png'
+import Twtr from '../../Assets/twitter.png'
+import Lknd from '../../Assets/linkedin.png'
+import logo from '../../Assets/NEWLOGO.png'
 
 const Head = () => {
     const navigate = useNavigate();

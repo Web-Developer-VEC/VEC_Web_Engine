@@ -13,8 +13,8 @@ import { GoProjectRoadmap } from "react-icons/go";
 import { MdCoPresent } from "react-icons/md";
 import '../sections/Facultyprofile.css'
 import { useParams } from 'react-router-dom';
-import Sun from "../../../Assets/sun.png";
-import Moon from "../../../Assets/moon.png";
+import Sun from "../../../../Assets/sun.png";
+import Moon from "../../../../Assets/moon.png";
 
 
   

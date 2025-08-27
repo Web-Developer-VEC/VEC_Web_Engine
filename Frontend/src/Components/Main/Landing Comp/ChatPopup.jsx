@@ -84,28 +84,6 @@ useEffect(() => {
 }, [isChatOpen]);
 
 useEffect(() => {
-
-  // Saving with timestamp
-// const now = new Date().getTime();
-// localStorage.setItem("chatMessages", JSON.stringify({
-//   data: messages,
-//   timestamp: now
-// }));
-
-// const item = localStorage.getItem("chatMessages");
-// if (item) {
-//   const { data, timestamp } = JSON.parse(item);
-//   const now = new Date().getTime();
-
-//   // Example: expire after 24 hours
-//   const expiryTime = 24 * 60 * 60 * 1000;
-//   if (now - timestamp < expiryTime) {
-//     setMessages(data);
-//   } else {
-//     localStorage.removeItem("chatMessages");
-//   }
-// }
-
   const storedPhone = sessionStorage.getItem("phoneNumber");
   if (storedPhone) {
     setPhoneNumber(storedPhone);
@@ -175,7 +153,7 @@ const clearChat = () => {
     <div>
       {/* Chat Icon */}
       <div className="chat-icon bg-prim border-1 dark:border-prim border-text" onClick={toggleChat}>
-        <Lottie loop animationData={require("../Assets/Chatbot.json")} play />
+        <Lottie loop animationData={require("../../Assets/Chatbot.json")} play />
       </div>
 
       {/* Chat Popup */}

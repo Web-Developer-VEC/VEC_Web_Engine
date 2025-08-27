@@ -6,7 +6,7 @@ import NCCAMembers from "./NCC_ARMY comps/NCCAMembers";
 import SideNav from "../SideNav";
 import AlumniSlider from "./NCC_ARMY comps/DisguishedAlumini";
 import LoadComp from "../../LoadComp";
-import logo from '../../Assets/NccArmy.png';
+import logo from '../../../Assets/NccArmy.png';
 import Banner from "../../Banner";
 import { useNavigate } from "react-router";
 

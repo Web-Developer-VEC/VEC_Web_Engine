@@ -1,10 +1,9 @@
 import React, {forwardRef} from "react";//+
 import "./Footer.css"; // Add your custom CSS for styling
-import insta from '../Assets/insta-logo.png';
-import linkedin from '../Assets/linkedin-logo.png';
-import youtube from '../Assets/youtube.png';
-import x from '../Assets/X-logo.png';
-import facebook from '../Assets/facebook-logo.png';
+import insta from '../../Assets/insta-logo.png';
+import linkedin from '../../Assets/linkedin-logo.png';
+import x from '../../Assets/X-logo.png';
+import facebook from '../../Assets/facebook-logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { section } from "framer-motion/m";
 

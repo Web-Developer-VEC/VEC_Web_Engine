@@ -1,6 +1,6 @@
 import React from "react";
-import Sun from "./Assets/sun.png";
-import Moon from "./Assets/moon.png";
+import Sun from "../Assets/sun.png";
+import Moon from "../Assets/moon.png";
 
 const Toggle = ({ attr, toggle, theme }) => {
   return (

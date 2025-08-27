@@ -1,7 +1,7 @@
 
 import React, {useEffect, useRef, useState} from 'react';
 
-import College from '../Assets/Hell.png';
+import College from '../../Assets/Hell.png';
 import Toggle from "../Toggle";
 
 const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
