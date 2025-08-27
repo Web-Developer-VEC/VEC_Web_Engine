@@ -3,8 +3,8 @@ import axios from "axios";
 import Transportcarousel from "./Transportcarousel";
 import PDF from "./PDF";
 import Transportvideo from "./TransportVideo";
-import LoadComp from '../../../LoadComp'
-import Toggle from "../../../Toggle";
+import LoadComp from '../../LoadComp'
+import Toggle from "../../Toggle";
 import { useNavigate } from "react-router";
 import { ArrowDown, FileEdit, Send } from "lucide-react"; // icon
 import { ToastContainer, toast } from "react-toastify";
