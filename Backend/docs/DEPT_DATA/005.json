@@ -29,7 +29,8 @@
             "To focus on delivering education that is both affordable and of high quality, ensuring that it aligns with current industry needs. ",
             "To strive for excellence in teaching and learning processes by integrating strong ethical values, inventive thinking, and a focus on entrepreneurship.",
             "To create an environment that encourages innovation supports multidisciplinary research endeavors, and cultivates professionals focused on research excellence in Computer Science and Engineering. ",
-            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations."
+            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations.",
+            "To build strategic partnerships with industry to encourage collaborative innovation, facilitate knowledge exchange, and align educational efforts with real-world demands."
         ]
       },
       {
@@ -157,9 +158,6 @@
           {
             "header": "PSO 2",
             "content": "Ability to refine ethical approaches for addressing environmental and social issues, while enhancing interdisciplinary project management skills using IT tools to meet industry and societal demands effectively."
-
-
-
           }
         ]
       }
@@ -182,9 +180,10 @@
         "content": [
           {
             "department_id": "005",
-            "name": "Dr. MURUGESWARI B",
+            "name": "Dr. MURUGESHWARI B",
             "department_name": "Computer Science & Engineering (CSE) ",
-            "unique_id": "VEC-005-01-120",
+            "unique_id": "VEC-005-01-120",      
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message":["The department is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics; professionalism and students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan-Do-Check-Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants."],
             "hod_image": "/static/images/hods/cse.webp",
@@ -216,6 +215,13 @@
         ]
       },
       {
+        "category": "faculty_pdf_path",
+        "content": [
+          "/static/pdfs/faculty_list/005.pdf"
+
+        ]
+      },
+      {
         "category": "head_of_department",
         "members": [{
         "name": "Dr. MURUGESHWARI B",
@@ -230,7 +236,7 @@
               "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=56140900400"
             },
             "image_path":"/static/images/profile_photos/005/VEC-005-01-120.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf"
           }]
       },
       
@@ -239,7 +245,7 @@
     "members": [
             {
         "name": "Dr. JEYABALARAJA V",
-        "designation": "Professor & AO",
+        "designation": "Professor",
         "unique_id": "VEC-005-02-199",
         "socialmedia_links": {
           "linkedin": "https://www.linkedin.com/in/dr-v-jeyabalaraja-cse-professor-078105355/",
@@ -250,7 +256,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-02-199.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-02-199.pdf"
       },
       {
         "name": "Dr. GUNASUNDARI S",
@@ -265,7 +271,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35753254100"
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-106.pdf"
       },
       {
         "name": "Dr. SMITHA P S",
@@ -280,10 +286,10 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-132.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-132.pdf"
       },
       {
-        "name": "Dr. PRITTOPAUL P",
+        "name": "Dr. PRITTO PAUL P",
         "designation": "Associate Professor",
         "unique_id": "VEC-005-03-147",
         "socialmedia_links": {
@@ -295,7 +301,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-147.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-147.pdf"
       },
       {
         "name": "Dr. USHA M",
@@ -310,12 +316,12 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-137.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-137.pdf"
       },
       {
         "name": "Dr. RAJESWARI A",
         "designation": "Associate Professor",
-        "unique_id": "VEC-005-04-110",
+        "unique_id": "VEC-005-03-110",
         "socialmedia_links": {
           "linkedin": "http://linkedin.com/in/rajeswari-bhuvaneswaran-700281217",
           "googlescholar": "https://scholar.google.com/citations?user=fORIRQ8AAAAJ&hl=en",
@@ -325,7 +331,7 @@
           "scopus":""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-03-110.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-03-110.pdf"
       },
       {
         "name": "Mrs. SUBASHINI T",
@@ -340,7 +346,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-144.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-144.pdf"
       },
       {
         "name": "Mrs. HEMALATHA B",
@@ -355,7 +361,22 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-141.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-141.pdf"
+      },
+       {
+        "name": "Dr. SRIDEVI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-100",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?user=opc_6zIAAAAJ&hl=en",
+          "researchgate": "https://www.researchgate.net/profile/Sridevi-Selvaraj-2",
+          "orchidprofile": "https://orcid.org/0000-0002-4062-5887",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/LIF-2717-2024",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-100.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-100.pdf"
       },
       {
         "name": "Dr. AMIRTHAVALLI R",
@@ -370,23 +391,9 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-140.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-140.pdf"
       },
-      {
-        "name": "Dr. SRIDEVI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-100",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?user=opc_6zIAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Sridevi-Selvaraj-2",
-          "orchidprofile": "https://orcid.org/0000-0002-4062-5887",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/LIF-2717-2024",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-100.webp",
-        "resume_pdf": ""
-      },
+     
       {
         "name": "Dr. KAVITHA M",
         "designation": "Assistant Professor",
@@ -400,7 +407,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-611.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-611.pdf"
       },
       {
         "name": "Dr. ALMELU S",
@@ -415,84 +422,9 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-720.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-720.pdf"
       },
-      {
-        "name": "Mrs. BHARATHI SHRI C",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-101",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. SARANYA P",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-121",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=dCIJJIwAAAAJ&view_op=list_works&sortby=title&gmla=ALUCkoXe_uEKMOd_A5QWpytUqyYUvOr5C_gB7cNcMIPgKeB8gvqGsb8N50vwoGUsx6TELUH2X4Vy-bbPsKs-sURTLywotC0XfFm8TPcS3lI&sciund=10124714559873199203",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-121.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. DAYA FLORANCE D",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-131",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/daya-florance-9045a8245/",
-          "googlescholar": "https://scholar.google.com/citations?user=5eRQlkQAAAAJ&hl=en&oi=ao",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0000-0001-7873-3122",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/GPC-6688-2022",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57118226100"
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-131.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. KAYALVIZHI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-130",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/kayal-vizhi-04794332b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0007-7387-8307",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. JAYANTHI A",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-116",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?user=mktAFoYAAAAJ&hl=en",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0000-0003-4949-2125",
-          "publonprofile": "https://publons.com/researcher/5266705/jayanthi-a/",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-116.webp",
-        "resume_pdf": ""
-      },
-      {
+       {
         "name": "Mrs. MOHANAMBAL K",
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-122",
@@ -505,37 +437,37 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-122.pdf"
+      },
+       {
+        "name": "Mrs. AARTHI K C",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-129",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/aarthi-kc-537a61153/",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=ZzvYS60AAAAJ&view_op=list_works&authuser=1&gmla=ALUCkoWcdDEY5yRVftp74JiyrBGSfxU9hNztzfCA5pi1CZqluIQOZCwsJplvNDlUdKTCrXO_ExHMoIz2BuY3jGZS",
+          "researchgate": "https://www.researchgate.net/profile/Aarthi-K-C",
+          "orchidprofile": "https://orcid.org/0009-0004-7938-3346",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-129.pdf"
       },
       {
-        "name": "Mrs. SRUTHI NATH C",
+        "name": "Mrs. DAYAFLORANCE D",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-120",
+        "unique_id": "VEC-005-04-131",
         "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/sruthi-nath-c-14b6b732b/",
-          "googlescholar": "",
+          "linkedin": "https://www.linkedin.com/in/daya-florance-9045a8245/",
+          "googlescholar": "https://scholar.google.com/citations?user=5eRQlkQAAAAJ&hl=en&oi=ao",
           "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
+          "orchidprofile": "https://orcid.org/0000-0001-7873-3122",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/GPC-6688-2022",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57118226100"
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-120.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. AMINTA SABATINI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-113",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/aminta-sabatini-447a74a7/",
-          "googlescholar": "https://scholar.google.co.in/citations?user=jwRm_nwAAAAJ&hl=en&authuser=1",
-          "researchgate": "https://www.researchgate.net/profile/Aminta-Sabatini",
-          "orchidprofile": "https://orcid.org/0009-0003-1188-2598",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
-        "resume_pdf": ""
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-131.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-131.pdf"
       },
       {
         "name": "Mrs. ROHINI C",
@@ -550,22 +482,82 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-112.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-112.pdf"
       },
-      {
-        "name": "Mrs. AARTHI K C",
+       {
+        "name": "Mrs. JAYANTHI A",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-129",
+        "unique_id": "VEC-005-04-116",
         "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/aarthi-kc-537a61153/",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=ZzvYS60AAAAJ&view_op=list_works&authuser=1&gmla=ALUCkoWcdDEY5yRVftp74JiyrBGSfxU9hNztzfCA5pi1CZqluIQOZCwsJplvNDlUdKTCrXO_ExHMoIz2BuY3jGZS",
-          "researchgate": "https://www.researchgate.net/profile/Aarthi-K-C",
-          "orchidprofile": "https://orcid.org/0009-0004-7938-3346",
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?user=mktAFoYAAAAJ&hl=en",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0003-4949-2125",
+          "publonprofile": "https://publons.com/researcher/5266705/jayanthi-a/",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-116.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-116.pdf"
+      },
+       {
+        "name": "Mrs. AMINTA SABATINI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-113",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/aminta-sabatini-447a74a7/",
+          "googlescholar": "https://scholar.google.co.in/citations?user=jwRm_nwAAAAJ&hl=en&authuser=1",
+          "researchgate": "https://www.researchgate.net/profile/Aminta-Sabatini",
+          "orchidprofile": "https://orcid.org/0009-0003-1188-2598",
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
-        "resume_pdf": ""
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-113.pdf"
+      },
+      {
+        "name": "Mrs. BHARATHI SHRI C",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-101",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-101.pdf"
+      },
+      {
+        "name": "Mrs. KAYALVIZHI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-130",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/kayal-vizhi-04794332b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0007-7387-8307",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-130.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-130.pdf"
+      },
+      {
+        "name": "Mrs. SRUTHI NATH C",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-120",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/sruthi-nath-c-14b6b732b/",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-120.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-120.pdf"
       },
       {
         "name": "Mr. AKHIL NAIR R",
@@ -580,7 +572,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-105.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-105.pdf"
       },
       {
         "name": "Mr. JEYA MOHAN H",
@@ -595,37 +587,22 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-107.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-107.pdf"
       },
       {
-        "name": "Mrs. CHITRA R",
+        "name": "Mrs. SARANYA P",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-123",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/chitra-rajendran-46b50245/",
-          "googlescholar": "https://scholar.google.co.in/citations?hl=en&user=83MJSQ0AAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/Chitra-Rajendran",
-          "orchidprofile": "https://orcid.org/0000-0002-2220-8887",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-123.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Mrs. SAKTHI D",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-127",
+        "unique_id": "VEC-005-04-121",
         "socialmedia_links": {
           "linkedin": "",
-          "googlescholar": "",
+          "googlescholar": "https://scholar.google.com/citations?hl=en&user=dCIJJIwAAAAJ&view_op=list_works&sortby=title&gmla=ALUCkoXe_uEKMOd_A5QWpytUqyYUvOr5C_gB7cNcMIPgKeB8gvqGsb8N50vwoGUsx6TELUH2X4Vy-bbPsKs-sURTLywotC0XfFm8TPcS3lI&sciund=10124714559873199203",
           "researchgate": "",
           "orchidprofile": "",
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-127.webp",
-        "resume_pdf": ""
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-121.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-121.pdf"
       },
       {
         "name": "Mrs. BAMA S",
@@ -640,12 +617,27 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-124.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-124.pdf"
       },
       {
-        "name": "Mrs. SHYAMALA DEVI G G",
+        "name": "Mrs. CHITRA R",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-098",
+        "unique_id": "VEC-005-04-123",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/chitra-rajendran-46b50245/",
+          "googlescholar": "https://scholar.google.co.in/citations?hl=en&user=83MJSQ0AAAAJ",
+          "researchgate": "https://www.researchgate.net/profile/Chitra-Rajendran",
+          "orchidprofile": "https://orcid.org/0000-0002-2220-8887",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-123.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-123.pdf"
+      },
+      {
+        "name": "Mrs. SAKTHI D",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-127",
         "socialmedia_links": {
           "linkedin": "",
           "googlescholar": "",
@@ -654,8 +646,8 @@
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-098.webp",
-        "resume_pdf": ""
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-127.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-127.pdf"
       },
       {
         "name": "Mr. RAJESH T",
@@ -670,7 +662,22 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-134.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-134.pdf"
+      },
+      {
+        "name": "Mrs. SHYAMALA DEVI G G",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-098",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-098.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-098.pdf"
       },
       {
         "name": "Mrs. GEETHA S",
@@ -685,7 +692,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-612.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-612.pdf"
       },
       {
         "name": "Mrs. NISHA P M C",
@@ -700,37 +707,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-613.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Ms. NIRANJINI S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-614",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-614.webp",
-        "resume_pdf": ""
-      },
-      {
-        "name": "Ms. SUSHANTHI A",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-615",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-615.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-613.pdf"
       },
       {
         "name": "Mrs. SANTHIYA R",
@@ -745,7 +722,37 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-616.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-616.pdf"
+      },
+      {
+        "name": "Ms. SUSHANTHI A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-615",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-615.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-615.pdf"
+      },
+      {
+        "name": "Ms. NIRANJINI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-614",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-614.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-614.pdf"
       },
       {
         "name": "Mr. HARI KRISHNAN M",
@@ -760,7 +767,22 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-617.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-617.pdf"
+      },
+       {
+        "name": "Mrs. DHIVYA S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-699",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-699.webp",
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-699.pdf"
       }
      
     ]
@@ -783,7 +805,7 @@
         "resume_pdf": ""
       },
       {
-        "name": "Mrs. SASI KALA.B",
+        "name": "Mrs. SASI KALA B",
         "designation": "Lab Instructor",
         "unique_id": "VEC-005-05-021",
         "socialmedia_links": {
@@ -898,7 +920,13 @@
         "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
         "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
       ]
-    }
+    },
+     {
+      "year":"2025",
+      "pdf_path":[
+       "/static/pdfs/newsletter/005/Newsletter 2025.pdf",
+       "/static/pdfs/newsletter/005/Tech Times Magazine MAY 2025.pdf"]
+       }
   ]
 }
     ]
@@ -918,134 +946,86 @@
       {
         "category": "department_activities",
         "content": [
+          
             {
-              "year":"2024",
-              "activities":[
-                {
-          "date": "29/08/2024",
-        "name_of_event": "Workshop on SIH PROJECT DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Gladwin,GenAI Engineer at PAL Genie",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "19/08/2024",
-        "name_of_event": "Workshop on PROTOTYPE / PROCESS DESIGN AND DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Dr.A.Lakshmi Sangeetha,Associate Professor,Velammal Engineering College",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "14/09/2024",
-        "name_of_event": "Workshop on GRAPHICS AND VISUAL MEDIA",
-        "coordinator": "",
-        "resource_person": "Ms.P.Sathyakala Specialist Graphic Designer, 2adpro Media solutions private limited",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "20/08/2024",
-        "name_of_event": "Seminar on INNOVATIVE IDEA PRESENTATION",
-        "coordinator": "",
-        "resource_person": "S.S.Sivakumar Senior Manager,Managed Services",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "07/08/2024",
-        "name_of_event": "Workshop on Generative AI",
-        "coordinator": "",
-        "resource_person": "Mr.Harish Babu,Manager NXTWAVE",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "23/09/2024",
-        "name_of_event": "Workshop on CLOUD COMPUTING AND DEVOPS",
-        "coordinator": "",
-        "resource_person": "Mr.Arun Kumar.M Cloud Engineer, Presidio",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/09/2024-19/09/2024",
-        "name_of_event": "Training on HOW TO MASTER PROBLEM SOLVING, CRITICAL THINKING AND EFFICIENT CODING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthipan Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/07/2024",
-        "name_of_event": "Technical Training on CLOUD COMPUTING AND AWS",
-        "coordinator": "",
-        "resource_person": "Mr.Paris Kapoor, System Architect, FeOS Technologies",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "05/07/2024",
-        "name_of_event": "Workshop on WEB DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "01/07/2024",
-        "name_of_event": "Workshop on DATA SCIENCE AND MACHINE LEARNING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-       {
-    "date": "16/09/2024",
-    "name_of_event": "Visited an Industry RETECH SOLUTIONS PVT.LTD",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "2nd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "30/08/2024",
-    "name_of_event": "Visited an Industry WIPRO",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "3rd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  }
-              ]
-            },
-            {
-              "year":"2025",
+              "year":"2024 - 2025",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
               "activities":[  
-  {
-    "date": "06/02/2025",
-    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
-    "coordinator": "",
-    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  }
  
          ]
-      }
+      },
+            {
+              "year":"2023 - 2024",
+              "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ],
+              "activities":[
+              ]
+            }
     ]
 
   }
@@ -1125,6 +1105,48 @@
         "event_name": "Techathon",
         "image_content": "Kamilhaasan A, Abinand P and Fahrudeen M has won first place in Techathon - AI/ML Challenge at IIT Madras Shaastra",
         "date": "2024-09-28"
+    },
+     {
+        "image_path": "/static/images/student_activities/005/7.webp",
+        "event_name": "Smart India Hackathon ",
+        "image_content": "Kuldeep L, Gladwin, Priyadharshini P, Priyadharshini M, Kirupalakshmi, and Karthikeyan of IV-year CSE students won the Smart India Hackathon 2023 under the SIH senior software edition category and received Rs 1 Lakhs, Finale conducted at Amity University, Noida from 19.12.2023  &  20.12.2023",
+        "date": "2023-12-19 "
+    },
+     {
+        "image_path": "/static/images/student_activities/005/8.webp",
+        "event_name": "Smart India Hackathon ",
+        "image_content": "First prize and Received Cash Award of 1Lakh in Smart India Hackathon held at SONA College of Technology from 25.08.2022 to 26.08.2022. Team Members : Kirupalakshmi G, Priyadharshini P, Kuldeep L, Gladwin I, Karthikeyan K, Priyadharshini M",
+        "date": "2022-08-25  "
+    },
+     {
+        "image_path": "/static/images/student_activities/005/9.webp",
+        "event_name": "Tech for Education and inclusivity Hackathon ",
+        "image_content": "Won First place with a cash award of 15000 in Tech for Education and inclusivity Hackathon KLA-Perungudi (Company) from 25.02.2023 to 26.02.2023. Team Members: Anusree P, Poonam Singh & Team",
+        "date": "2023-02-25 "
+    },
+     {
+        "image_path": "/static/images/student_activities/005/10.webp",
+        "event_name": "Tech for Education and inclusivity Hackathon ",
+        "image_content": "Won Second place with a cash award of 10000 in Tech for Education and inclusivity Hackathon KLA-Perungudi (Company) from 25.02.2023 to 26.02.2023. Team Members: NithyaLakshmy C R & Team",
+        "date": "2023-02-25 "
+    },
+     {
+        "image_path": "/static/images/student_activities/005/11.webp",
+        "event_name": "Basket ball Match ",
+        "image_content": "Intramural 23-24 Basket ball Runners",
+        "date": ""
+    },
+     {
+        "image_path": "/static/images/student_activities/005/12.webp",
+        "event_name": "Football Match ",
+        "image_content": "Intramural 23-24 Football Runners",
+        "date": ""
+    },
+     {
+        "image_path": "/static/images/student_activities/005/13.webp",
+        "event_name": "Badminton Match",
+        "image_content": "Intramural Badminton Match Winners",
+        "date": ""
     }
 
 ]
@@ -1166,6 +1188,41 @@
         "image_path": "/static/images/infrastructure/005/4.webp",
         "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY",
         "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/5.webp",
+        "image_name": "OPERATING SYSTEM LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/6.webp",
+        "image_name": "NETWORKING LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/7.webp",
+        "image_name": "MULTIMEDIA LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/8.webp",
+        "image_name": "COMPUTING LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/9.webp",
+        "image_name": "OPTO ELECTRONIC SENSOR LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/10.webp",
+        "image_name": "ELECTRONIC SYSTEM DESIGN LABORATORY",
+        "image_content": ""
+    },
+    {
+        "image_path": "/static/images/infrastructure/005/11.webp",
+        "image_name": "IOT LABORATORY",
+        "image_content": ""
     }
 
 
@@ -1189,7 +1246,206 @@
       {
         "category": "mous_details",
         "content": 
-        []
+        [
+  {
+    "S_NO": 1,
+    "ORGANISATION_NAME": "Ajeya Infosol Private Ltd",
+    "MONTH_AND_YEAR": "07-09-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 2,
+    "ORGANISATION_NAME": "Futurecalls Technologies Private Ltd",
+    "MONTH_AND_YEAR": "08-09-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 3,
+    "ORGANISATION_NAME": "Salang Consultants Private Ltd",
+    "MONTH_AND_YEAR": "09-09-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 4,
+    "ORGANISATION_NAME": "MIT Square Services Private Limited, India",
+    "MONTH_AND_YEAR": "16-09-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 5,
+    "ORGANISATION_NAME": "Techfruits Solutions Private Limited",
+    "MONTH_AND_YEAR": "25-10-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 6,
+    "ORGANISATION_NAME": "Vectra Technosoft Private Limited",
+    "MONTH_AND_YEAR": "09-12-2021",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 7,
+    "ORGANISATION_NAME": "Heptre Techworks Private Limited",
+    "MONTH_AND_YEAR": "07-01-2022",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 8,
+    "ORGANISATION_NAME": "Silicon Harvest Private Limited",
+    "MONTH_AND_YEAR": "13-01-2022",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 9,
+    "ORGANISATION_NAME": "Tata Elxsi",
+    "MONTH_AND_YEAR": "23-02-2022",
+    "VALIDITY": "23-02-2024",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 10,
+    "ORGANISATION_NAME": "Arjun Vision Tech Solution Pvt. Ltd",
+    "MONTH_AND_YEAR": "24-02-2023",
+    "VALIDITY": "24-02-2026",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 11,
+    "ORGANISATION_NAME": "First Language Technologies Private Limited",
+    "MONTH_AND_YEAR": "23-11-2022",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 12,
+    "ORGANISATION_NAME": "One Host Private Limited",
+    "MONTH_AND_YEAR": "14-10-2022",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 13,
+    "ORGANISATION_NAME": "M/S Edge Matrix Multinational Coorporation ,Delaware",
+    "MONTH_AND_YEAR": "17-06-2023",
+    "VALIDITY": "17-06-2026",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 14,
+    "ORGANISATION_NAME": "DigiALERT Solution Private Limited",
+    "MONTH_AND_YEAR": "12-09-2023",
+    "VALIDITY": "12-09-2028",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 15,
+    "ORGANISATION_NAME": "Imarticus Learning",
+    "MONTH_AND_YEAR": "14-09-2023",
+    "VALIDITY": "14-09-2026",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 16,
+    "ORGANISATION_NAME": "Chase Technologies",
+    "MONTH_AND_YEAR": "30-11-2023",
+    "VALIDITY": "30-11-2026",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 17,
+    "ORGANISATION_NAME": "FeOS Technologies Private Limited",
+    "MONTH_AND_YEAR": "10-01-2024",
+    "VALIDITY": "10-01-2027",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  { 
+    "S_NO": 18,
+    "ORGANISATION_NAME": "IBM Clouds-DigiLab",
+    "MONTH_AND_YEAR": "13-02-2024",
+    "VALIDITY": "13-02-2025",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 19,
+    "ORGANISATION_NAME": "Reccsar Private Limited,Madurai",
+    "MONTH_AND_YEAR": "15-07-2024",
+    "VALIDITY": "16-07-2027",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 20,
+    "ORGANISATION_NAME": "Vish Gyana Technology Solutions,Chennai",
+    "MONTH_AND_YEAR": "19-08-2024",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 21,
+    "ORGANISATION_NAME": "Eagle Hitech Softclou Private Limited",
+    "MONTH_AND_YEAR": "17-12-2024",
+    "VALIDITY": "17-12-2029",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  },
+  {
+    "S_NO": 22,
+    "ORGANISATION_NAME": "Hyperlynx Infotech Private Limited",
+    "MONTH_AND_YEAR": "27-02-2025",
+    "VALIDITY": "Till Date",
+    "LOGO_PATH": "",
+    "PDF_PATH": "",
+    "ACTIVITIES_PLANNED": []
+  }
+]
       }
     ]
   },
@@ -1216,11 +1472,11 @@
         "pdf_path": "/static/pdfs/research/005/2223/2022-2023 internship.pdf"
       },
       {
-        "name": "Conference Consolidation",
+        "name": "Conference",
         "pdf_path": "/static/pdfs/research/005/2223/2022-23 conference consolidation print.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA",
+        "name": "Book And Book Chapter ",
         "pdf_path": "/static/pdfs/research/005/2223/BOOK AND BOOK CHAPTER NBA 22-23.pdf"
       },
       {
@@ -1228,11 +1484,11 @@
         "pdf_path": "/static/pdfs/research/005/2223/Consultancy 22-23.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2223/CSE quality publication 2022-2023.pdf"
       },
       {
-        "name": "Patent NBA Academic",
+        "name": "Patent",
         "pdf_path": "/static/pdfs/research/005/2223/Patent nba academic year wise 2022-2023.pdf"
       },
       {
@@ -1240,7 +1496,7 @@
         "pdf_path": "/static/pdfs/research/005/2223/product development 2022-23.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": " Sponsored Research ",
         "pdf_path": "/static/pdfs/research/005/2223/Research consolidation 22-23.pdf"
       }
     ]
@@ -1253,7 +1509,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/2023-2024 internship.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA ",
+        "name": "Book And Book Chapter  ",
         "pdf_path": "/static/pdfs/research/005/2324/BOOK AND BOOK CHAPTER NBA 23-24.pdf"
       },
       {
@@ -1265,11 +1521,11 @@
         "pdf_path": "/static/pdfs/research/005/2324/Consultancy 23-24.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2324/CSE quality publication 2023-2024.pdf"
       },
       {
-        "name": "Patent NBA Academic",
+        "name": "Patent",
         "pdf_path": "/static/pdfs/research/005/2324/Patent nba academic year wise 2023-2024.pdf"
       },
       {
@@ -1277,7 +1533,7 @@
         "pdf_path": "/static/pdfs/research/005/2324/product development 2023-24.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": " Sponsored Research ",
         "pdf_path": "/static/pdfs/research/005/2324/Research consolidation 23-24.pdf"
       }
     ]
@@ -1290,7 +1546,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/2024-2025 internship.pdf"
       },
       {
-        "name": "Book And Book Chapter NBA ",
+        "name": "Book And Book Chapter  ",
         "pdf_path": "/static/pdfs/research/005/2425/BOOK AND BOOK CHAPTER NBA 24-25.pdf"
       },
       {
@@ -1298,11 +1554,11 @@
         "pdf_path": "/static/pdfs/research/005/2425/conf 2024-2025.pdf"
       },
       {
-        "name": "CSE Quality Publication",
+        "name": "Publication",
         "pdf_path": "/static/pdfs/research/005/2425/CSE quality publication 2024-2025.pdf"
       },
       {
-        "name": "Patent NBA Academic ",
+        "name": "Patent  ",
         "pdf_path": "/static/pdfs/research/005/2425/Patent nba academic year wise 2024-2025.pdf"
       },
       {
@@ -1310,7 +1566,7 @@
         "pdf_path": "/static/pdfs/research/005/2425/Product development 24-25.pdf"
       },
       {
-        "name": "Research Consolidation",
+        "name": " Sponsored Research ",
         "pdf_path": "/static/pdfs/research/005/2425/Research consolidation 24-25.pdf"
       }
     ]

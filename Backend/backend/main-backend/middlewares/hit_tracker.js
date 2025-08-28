@@ -1,9 +1,9 @@
-const { getDb } = require('../config/db');
+const { getlogDb } = require('../config/db');
 const moment = require('moment');
 
 async function hitTracker(req, res, next) {
-    const db = getDb();
-    const collection = db.collection('logs');
+    const db = getlogDb();
+    const collection = db.collection('hitlog');
 
     const endpoint = req.originalUrl.split('?')[0]; 
     const now = moment();

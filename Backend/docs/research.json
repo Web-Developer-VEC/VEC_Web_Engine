@@ -90,5 +90,23 @@
 
             }
         ]
+      },
+      {
+        "type":"Policy",
+        "data":[
+            {
+                "name":"Innovation and Startup Policy",
+                "pdf_path":"/static/pdfs/overall_research/Innovation and Startup Policy.pdf"
+            },
+            {
+                "name":"Research Policy",
+                "pdf_path":"/static/pdfs/overall_research/Research Policy.pdf"
+            },
+            {
+                "name":"IPR Policy",
+                "pdf_path":"/static/pdfs/overall_research/IPR Policy.pdf"
+
+            }
+        ]
       }
 ]

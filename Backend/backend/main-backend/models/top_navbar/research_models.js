@@ -2,7 +2,8 @@ const allowedtypes = new Set([
   "Journal Publication",
   "Funded Projects",
   "Consultancy",
-  "Books and Book chapters"
+  "Books and Book chapters",
+  "Policy"
 ]);
 
 module.exports = allowedtypes;

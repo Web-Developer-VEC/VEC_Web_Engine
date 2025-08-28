@@ -6,68 +6,69 @@ import {createGlobalStyle} from "styled-components";
 import Cookies from "universal-cookie";
 import useGoogleAnalytics from "./useAnalytics.js";
 /* Landing Page Imports */
-import Boot from "./Components/Landing Comp/BootUp";
+import Boot from "./Components/Main/Landing Comp/BootUp";
 import LandingPage from "./Landing.jsx";
-import Head from "./Components/Landing Comp/Head.jsx";
-import Footer from "./Components/Landing Comp/Footer.jsx";
-import TermsandCon from "./Components/Landing Comp/Terms_and_Con_.jsx";
+import Head from "./Components/Main/Landing Comp/Head.jsx";
+import Footer from "./Components/Main/Landing Comp/Footer.jsx";
+import TermsandCon from "./Components/Main/Landing Comp/Terms_and_Con_.jsx";
 /* AboutUs Pages Imports */
-import AbtUs from "./Components/Top_Nav_Bar/About Us/AbtUs.jsx";
-import Trust from "./Components/Top_Nav_Bar/About Us/Trust.jsx";
-import Collegevisionmission from "./Components/Top_Nav_Bar/About Us/collegevisionmission.jsx";
-import Management from "./Components/Top_Nav_Bar/About Us/Management.jsx";
-import AbtYear from "./Components/Top_Nav_Bar/About Us/Abtyear.jsx";
+import AbtUs from "./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx";
+import Collegevisionmission from "./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx";
+import Management from "./Components/Main/Top_Nav_Bar/About Us/Management.jsx";
+import NewTrust from "./Components/Main/Top_Nav_Bar/About Us/Trust.jsx";
+import AbtYear from "./Components/Main/Top_Nav_Bar/About Us/Abtyear.jsx";
 /* Administration Pages Imports */
-import Princ from "./Components/Top_Nav_Bar/Administration/Princ.jsx";
-import Dean from "./Components/Top_Nav_Bar/Administration/dean.jsx";
-import CardPage from "./Components/Top_Nav_Bar/Administration/admin.jsx";
-import ExecutiveCommittee from "./Components/Top_Nav_Bar/Administration/Executive commitee.jsx";
-import CollegeOrgChart from "./Components/Top_Nav_Bar/Administration/Organization_chart.jsx";
-import Handbook from "./Components/Top_Nav_Bar/Administration/Handbook.jsx";
+import Princ from "./Components/Main/Top_Nav_Bar/Administration/Princ.jsx";
+import Dean from "./Components/Main/Top_Nav_Bar/Administration/dean.jsx";
+import CardPage from "./Components/Main/Top_Nav_Bar/Administration/admin.jsx";
+import ExecutiveCommittee from "./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx";
+import CollegeOrgChart from "./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx";
+import Handbook from "./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx";
 /* Academics Pages Imports */
-import DepartmentPage from "./Components/Top_Nav_Bar/Academics/DepartmentPage.jsx";
-import Facultyprofile from './Components/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx'
-import AcademicDepartments from "./Components/Top_Nav_Bar/Academics/Department.jsx";
-import Programmes from "./Components/Top_Nav_Bar/Academics/Programmes.jsx";
-import Acadamiccal from "./Components/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import DepartmentPage from "./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx";
+import AcademicDepartments from "./Components/Main/Top_Nav_Bar/Academics/Department.jsx";
+import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
+import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import Facultyprofile from "./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx";
 /* Admisiion Pages Imports */
-import UgAdmission from "./Components/Top_Nav_Bar/Admission/UgAdmission.jsx";
-import ME from "./Components/Top_Nav_Bar/Admission/ADM-M.E.jsx";
-import MBA from "./Components/Top_Nav_Bar/Admission/ADM-MBA.jsx";
-import PHD from "./Components/Top_Nav_Bar/Admission/PhdAdmission.jsx";
-import ADMteam from "./Components/Top_Nav_Bar/Admission/ADM-Team.jsx";
+import UgAdmission from "./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx";
+import ME from "./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx";
+import MBA from "./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx";
+import PhdAdmission from "./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx";
+import ADMteam from "./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx";
 /* Exams Pages Imports */
-import REGULATION from "./Components/Top_Nav_Bar/Exams/Regulation.jsx";
-import Syllabus from "./Components/Top_Nav_Bar/Exams/Syllabus.jsx";
-import Forms from "./Components/Top_Nav_Bar/Exams/forms.jsx";
-import Coe from "./Components/Top_Nav_Bar/Exams/Coe.jsx";
+import REGULATION from "./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx";
+import Syllabus from "./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx";
+import Forms from "./Components/Main/Top_Nav_Bar/Exams/forms.jsx";
+import Coe from "./Components/Main/Top_Nav_Bar/Exams/Coe.jsx";
 /* Research Pages Import */
-import Academres from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
+import Academres from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
+import Policies from "./Components/Main/Top_Nav_Bar/Research/policy.jsx";
 /* Placements Pages Imports */
-import Aboutplacement from "./Components/Top_Nav_Bar/Placements/Aboutplacement.jsx";
-import {PlacementTeam} from "./Components/Top_Nav_Bar/Placements/PlacementTeam.jsx";
-import {PlacementDetails} from "./Components/Top_Nav_Bar/Placements/PlacementDetails.jsx";
+import Aboutplacement from "./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx";
+import {PlacementTeam} from "./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx";
+import {PlacementDetails} from "./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx";
 /* Second_Nav_Bar Pages Imports */
-import IQAC from "./Components/Second_Nav_Bar/IQAC/IQAC.jsx";
-import IIC from "./Components/Second_Nav_Bar/IIC/iic.jsx";
-import Alumni from "./Components/Second_Nav_Bar/Alumni/Alumni.jsx";
-import NSS from "./Components/Second_Nav_Bar/NSS/NSS.jsx";
-import NCC from "./Components/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
-import YRC from "./Components/Second_Nav_Bar/yrc/YRC.jsx";
-import SportsPage from "./Components/Second_Nav_Bar/sports/SportsPage.jsx";
-import Transport from "./Components/Second_Nav_Bar/Transport/Transport.jsx"
-import Library from "./Components/Second_Nav_Bar/library/LibraryLayout.jsx"
-import Hostel from "./Components/Second_Nav_Bar/Hostel/Hostel.jsx";
-import OtherFacilities from "./Components/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
-import GrievanceForm from "./Components/Second_Nav_Bar/Helpdesk/Grievences.jsx";
-import NCC_NAVY from "./Components/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import NCC_ARMY from "./Components/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-import Ecell from "./Components/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import Incub from "./Components/Second_Nav_Bar/Incubation/InCub.jsx";
-import Gallery from "./Components/Second_Nav_Bar/Gallery/gallery.jsx";
-import Gallerydetails from "./Components/Second_Nav_Bar/Gallery/detailpage.jsx";
-import Accredation from "./Components/Second_Nav_Bar/Accredation/Accredation.jsx";
-import WebTeam from "./Components/Second_Nav_Bar/Club/web Team/webteam.jsx";
+import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
+import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
+import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
+import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
+import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import Alumni from "./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx";
+import NSS from "./Components/Main/Second_Nav_Bar/NSS/NSS.jsx";
+import NCC from "./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
+import YRC from "./Components/Main/Second_Nav_Bar/yrc/YRC.jsx";
+import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
+import Transport from "./Components/Main/Second_Nav_Bar/Transport/Transport.jsx"
+import Library from "./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"
+import OtherFacilities from "./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
+import GrievanceForm from "./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx";
+import NCC_NAVY from "./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import NCC_ARMY from "./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
+import HostelPage from "./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx";
+import Gallery from "./Components/Main/Second_Nav_Bar/Gallery/gallery.jsx";
+import Gallerydetails from "./Components/Main/Second_Nav_Bar/Gallery/detailpage.jsx";
+import WebTeam from "./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx";
 // Digital Hostel
 import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
 import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
@@ -79,21 +80,24 @@ import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx
 // other stuffs
 import NotFound from "./NotFound";
 import axios from 'axios';
-import SideButton from "./Components/sideButton.jsx";
-import ScrollToTopButton from "./Components/ScrollToTopButton.jsx";
+import SideButton from "./Components/Main/sideButton.jsx";
+import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
-import LoadComp from "./Components/LoadComp.jsx";
-import Consultancy from "./Components/Top_Nav_Bar/Research/Academicresearch.jsx";
-import BookChapter from "./Components/Top_Nav_Bar/Research/BookChapter.jsx";
-import Funded from "./Components/Top_Nav_Bar/Research/Funded.jsx";
-import Journal from "./Components/Top_Nav_Bar/Research/Journal_publica.jsx";
+import LoadComp from "./Components/Main/LoadComp.jsx";
+import Consultancy from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
+import BookChapter from "./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx";
+import Funded from "./Components/Main/Top_Nav_Bar/Research/Funded.jsx";
+import Journal from "./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx";
 
 import ErrorLogPage from "./Components/Developer_stuffs/errorlog/errorlog.jsx";
 import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
-import EnquiryWeb from "./Components/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
+import EnquiryWeb from "./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
-
+// Admin stuffs
+import Admingallerydetails from "./Components/Admin/Second_Nav_Bar/Gallery/detailpage.jsx";
+import Admingallery from "./Components/Admin/Second_Nav_Bar/Gallery/gallery.jsx";
+import AdminTransport from "./Components/Admin/Second_Nav_Bar/Transport/Transport.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -237,7 +241,7 @@ const App = () => {
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
                                 <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
-                                <Route path="/trust" drk element={<Trust toggle={toggle} theme={theme}/>}/>
+                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme}/>}/>
                                 <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
                                 <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
@@ -254,7 +258,7 @@ const App = () => {
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
                                 <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
-                                <Route path="/phd" drk element={<PHD toggle={toggle} theme={theme}/>}/>
+                                <Route path="/phd" drk element={<PhdAdmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/admission-team" drk element={<ADMteam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
@@ -267,12 +271,13 @@ const App = () => {
 
                                 <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
+                                <Route path="/policies" drk element={<Policies toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
                                 
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
-                                <Route path="/iic" drk element={<IIC toggle={toggle} theme={theme}/>}/> 
+                                <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
@@ -284,7 +289,7 @@ const App = () => {
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/>
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
-                                <Route path="/hosLanding" drk element={<Hostel toggle={toggle} theme={theme}/>}/>
+                                <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
@@ -297,15 +302,20 @@ const App = () => {
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>\
-
+                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
+                                <Route path="/hit_logs" element={<HitLogs />} />
+                                
+                                {/* Admin page route */}
+                                <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_transport" drk element={<AdminTransport toggle={toggle} theme={theme}/>}/>
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
-                                <Route path="/hit_logs" element={<HitLogs />} />
                             </Routes>
                           
                         </MainContentWrapper>
