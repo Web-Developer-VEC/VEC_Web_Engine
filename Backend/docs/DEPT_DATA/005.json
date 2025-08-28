@@ -1088,12 +1088,32 @@
             "year": "VEC CSE YOUTUBE CHANNEL",
             "content": [
               {
-                "name": "Problem Solving using C Programming",
-                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAryidIKPVw7Ga0nAyOTXxfn&si=lZXcVat40ZkE1YCf"
+                "name": "Multimedia and Animation",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+              },
+              {
+                "name": "Cloud Computing and Virtualization",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqFOy-xKsFEarP7CsFTOYXV&si=88JATA3YOQ8Hg4PX"
               },
               {
                 "name": "Problem Solving using python Programming",
                 "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAoTbgK6z9g92FLqqjDJ3cH3&si=CXkpqIQokj3vRJwI"
+              },
+              {
+                "name": "Design Analysis of Algorithm",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApDR8L4jXauEM5fq93Dhv9A&si=dZFfhkT_4qN2b8WX"
+              },
+              {
+                "name": "Foundations of Data Science",
+                "pdf_path": "https://www.youtube.com/playlist?list=PLodrFpDKbzAq1-xI7GETR3C0ikGLKux-j"
+              },
+              {
+                "name": "Database Management System",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArqI7wNqBB7nHzxt0eI8uBV&si=JVItlExjuwz90zPM"
+              },
+              {
+                "name": "Problem Solving using C Programming",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAryidIKPVw7Ga0nAyOTXxfn&si=lZXcVat40ZkE1YCf"
               },
               {
                 "name": "Compiler Design",
@@ -1108,10 +1128,6 @@
                 "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqBzOEOhuCGR05wXnjd6zz4&si=LcoaOZ6WgVK8RRnR"
               },
               {
-                "name": "Design Analysis of Algorithm",
-                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApDR8L4jXauEM5fq93Dhv9A&si=dZFfhkT_4qN2b8WX"
-              },
-              {
                 "name": "Software Project Management",
                 "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqsQHX_04knvRzVs8ayKaws&si=e-V7BUuXquaxJlYr"
               },
@@ -1124,20 +1140,8 @@
                 "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApZ8ux0veTyV0mrfGcsq_Bc&si=V-3Ag7zRUYvFFW6z"
               },
               {
-                "name": "Cloud Computing and Virtualization",
-                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqFOy-xKsFEarP7CsFTOYXV&si=88JATA3YOQ8Hg4PX"
-              },
-              {
-                "name": "Database Management System",
-                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArqI7wNqBB7nHzxt0eI8uBV&si=JVItlExjuwz90zPM"
-              },
-              {
                 "name": "Data Structures",
                 "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArKuNUxVAYDUe7Hq4Ylm3-Z&si=z7N1TnYa9brKtqGm"
-              },
-              {
-                "name": "Multimedia and Animation",
-                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
               }
             ]
           },

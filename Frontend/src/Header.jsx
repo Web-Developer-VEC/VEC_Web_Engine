@@ -50,7 +50,7 @@ const titleMap = {
   "/library": "VEC Library",
   "/hosLanding": "VEC Hostel",
   "/other-facilities": "Other Facilities VEC",
-  "/Gallery": "VEC Gallery",
+  "/gallery": "VEC Gallery",
   "/gallery-details": "VEC Gallery Details",
   "/grievances": "Grievance Form VEC",
   "/webteam": "WebOps VEC",
