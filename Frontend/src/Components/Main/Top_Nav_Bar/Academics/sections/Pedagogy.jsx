@@ -55,19 +55,15 @@ const Pedagogy = ({ data }) => {
 
           {/* PDF Buttons */}
           {activeYear && (
-            <div className="grid grid-cols-1 font-[poppins] sm:grid-cols-2  gap-4 mt-8 place-items-center">
+            <div className="grid grid-cols-1 font-[poppins] sm:grid-cols-3 content-center gap-10 mt-8 place-items-center">
               {activeContent.map((pdfItem, idx) => (
                 <div
                   key={idx}
-                  className={`w-full ${
-                    isOdd && idx === activeContent.length - 1
-                      ? "sm:col-span-1 md:col-span-2 flex justify-center"
-                      : ""
-                  }`}
+                  className={`w-full`}
                 >
                   <button
                     onClick={() => handlePdfClick(pdfItem.pdf_path)}
-                    className="w-[500px] pdgbtn  h-[70px] py-2 px-5  rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
+                    className="w-[300px] pdgbtn  h-[70px] py-2 px-5  rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
                   >
                     {pdfItem.name}
                   </button>

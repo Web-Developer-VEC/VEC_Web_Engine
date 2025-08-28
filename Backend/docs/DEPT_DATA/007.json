@@ -562,11 +562,49 @@
         "category": "department_activities",
         "content": [
           {
+            "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Workshop.pdf"
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/007/2024-2025/Value Added Course.pdf"
+              }
+            ],
+            "activities": []
+          },
+          {
             "year":"2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -574,11 +612,11 @@
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -594,9 +632,9 @@
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Value Added Course.pdf"
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "14.03.2024",
@@ -680,9 +718,9 @@
           {
             "year": "2022 - 2023",
             "activities_tile": [
-              {
+               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -690,11 +728,11 @@
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -710,9 +748,9 @@
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Value Added Course.pdf"
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "23.02.2023",
@@ -806,7 +844,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "26.11.2022",
