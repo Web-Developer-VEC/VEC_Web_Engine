@@ -137,7 +137,8 @@
             "department_id": "001",
             "name": "Dr. VISU P",
             "department_name": "Artificial Intelligence and Data Science (AI&DS) ",
-            "unique_id": "VEC-001-01-077",
+            "unique_id": "VEC-001-01-077",         
+            "resume_pdf":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": [
               "I feel privileged to lead a team of talented and experienced faculty members. AI & DS is the most conspicuous technology transforming the facet of industry and mankind. This course is specially designed to enable students to build intelligent machines, software, or applications with a cutting-edge combination of Machine Learning, Deep Learning, Analytics, and Visualization technologies.",
@@ -192,7 +193,7 @@
             "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
         },
             "image_path":"/static/images/profile_photos/001/VEC-001-01-077.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
           }]
       },
       {
@@ -212,7 +213,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-080.pdf"
   },
   {
     "name": "Mrs. RAJASUGANYA P V",
@@ -227,7 +228,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-085.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-085.pdf"
   },
   {
     "name": "Mrs. KAVITHA R",
@@ -242,7 +243,7 @@
       "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59188506100"
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-075.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-075.pdf"
   },
   {
     "name": "Dr. HANNAH ROSE ESTHER T",
@@ -257,7 +258,7 @@
       "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58565594400"
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-060.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-060.pdf"
   },
   {
     "name": "Mrs. VIJAYALAKSHMI S",
@@ -272,7 +273,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-086.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-086.pdf"
   },
   {
     "name": "Mrs. MYTHILI S",
@@ -287,7 +288,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-087.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-087.pdf"
   },
   {
     "name": "Mrs. PRIYA M",
@@ -302,7 +303,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-095.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-095.pdf"
   },
   {
     "name": "Mr. SATHISH K",
@@ -317,7 +318,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-056.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-056.pdf"
   },
   {
     "name": "Mrs. DEEPA S",
@@ -332,7 +333,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-063.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-063.pdf"
   },
   {
     "name": "Mrs. KARTHIKA L",
@@ -347,7 +348,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-068.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-068.pdf"
   },
   {
     "name": "Mrs. JONCY J",
@@ -362,7 +363,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-055.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-055.pdf"
   },
   {
     "name": "Mrs. MIZPAH QUEENY R",
@@ -377,7 +378,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-059.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-059.pdf"
   },
   {
     "name": "Ms. SWETHA R",
@@ -392,7 +393,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-094.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-094.pdf"
   },
   {
     "name": "Mrs. MANIMEGALAI L",
@@ -407,7 +408,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-067.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-067.pdf"
   },
   {
     "name": "Mrs. JARIYA BEGUM A R",
@@ -422,7 +423,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
   },
   {
     "name": "Mrs. TAMIL SELVI V",
@@ -437,7 +438,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-622.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-622.pdf"
   },
   {
     "name": "Ms. RASHMI P",
@@ -452,7 +453,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-621.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-621.pdf"
   },
   {
     "name": "Mrs. KAVITHA R",
@@ -467,7 +468,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-624.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-624.pdf"
   },
   {
     "name": "Mrs. RAMYA P",
@@ -482,7 +483,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-625.webp",
-    "resume_pdf": ""
+    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-625.pdf"
   }
 ]
       },
@@ -576,7 +577,7 @@
         "content": [
             {
            "year":"2024 - 2025", 
-             "activities_tile": [
+           "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -827,7 +828,7 @@
             ]
         },
         {
-          "year": "2021 - 2022",
+          "year": "2021 - 2022", 
           "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -861,7 +862,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ], 
+      ],
             "activities":[
                 {
                 "date": "1.11.2022&\n2.11.2022",

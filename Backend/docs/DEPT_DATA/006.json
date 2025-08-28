@@ -139,7 +139,8 @@
             "department_id": "006",
             "name": "Dr. Rajalakshmi S",
             "department_name": "Computer Science and Engineering (CYBER SECURITY)",
-            "unique_id": "VEC-006-01-135",
+            "unique_id": "VEC-006-03-039",
+            "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf",
             "qualification": [
               "M.E.",
               "Ph.D"
@@ -198,7 +199,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
             },
             "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf"
           }
         ]
       },
@@ -218,7 +219,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-035.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-035.pdf"
             },
             {
               "name": "Mrs. PARVEEN BANU M",
@@ -233,7 +234,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-034.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-034.pdf"
             },
             {
               "name": "Mrs. RUBA ARUMUGAM",
@@ -248,7 +249,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-641.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-641.pdf"
             },
             {
               "name": "Mrs. PRAISEWIN C",
@@ -263,7 +264,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-642.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-642.pdf"
             },
             {
               "name": "Mrs. NIRANJANA DEVI J",
@@ -278,7 +279,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-643.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-643.pdf"
             },
             {
               "name": "Mrs. PRAMILA K",
@@ -293,7 +294,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-644.pdf"
             }
         ]
       },

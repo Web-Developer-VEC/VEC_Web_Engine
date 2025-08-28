@@ -137,6 +137,7 @@
             "name":"Dr. SHAHIL KIRUPAVATHY S",
             "department_name": "Physics ",
             "unique_id": "VEC-015-01-191",
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-01-191.pdf",
             "qualification": ["M.Sc.", "M. Phil."," Ph.D"],
             "hod_message":["A good education is the foundation for a better future. In VEC we ensure that every student entrusted to us will receive wholistic development and also support to unearth all the potentials found in them. The students who come to this beautiful campus enter the world as successful Engineers."],
             "hod_image": "/static/images/hods/phy.webp",
@@ -189,7 +190,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-01-191.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-01-191.pdf"
       }]
       },
       
@@ -209,7 +210,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-03-193.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-03-193.pdf"
       },
       {
         "name": "Mrs. HAMSAVALLI G",
@@ -224,7 +225,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-091.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-091.pdf"
       },
       {
         "name": "Mr. MOSES ISAIAH V G",
@@ -239,7 +240,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-192.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-192.pdf"
       },
       {
         "name": "Dr. REVATHY T A",
@@ -254,7 +255,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-527.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-527.pdf"
       },
       {
         "name": "Dr. ARUMUGAM J",
@@ -269,7 +270,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189235655"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-201.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-201.pdf"
       },
       {
         "name": "Dr. JAYACHANDIRAN M",
@@ -284,7 +285,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57185644700"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-049.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-049.pdf"
       },
       {
         "name": "Mrs. ANITHA JENNIFER D",
@@ -299,7 +300,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-200.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-200.pdf"
       },
       {
         "name": "Dr. SIVATHARANI B",
@@ -314,7 +315,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57710931100"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-078.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/015/VEC-015-04-078.pdf"
       }
     ]
   },
