@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "universal-cookie";
-import LoadComp from './Components/LoadComp';
-import Boot from './Components/Landing Comp/BootUp';
-import ImgSld from './Components/Landing Comp/ImgSld';
-import Abt from './Components/Landing Comp/About';
-import Announce from './Components/Landing Comp/announcements';
-import Event from './Components/Landing Comp/Events';
-import Tracker from './Components/Landing Comp/Tracker';
-import Samplereact from './Components/Landing Comp/Courses';
-import Contact from './Components/Landing Comp/ContactIcon'
-import Chat from './Components/Landing Comp/ChatPopup'
-import Footer from './Components/Landing Comp/Footer';
-import ScrollToTopButton from './Components/ScrollToTopButton';
+import LoadComp from './Components/Main/LoadComp';
+import Boot from './Components/Main/Landing Comp/BootUp';
+import ImgSld from './Components/Main/Landing Comp/ImgSld';
+import Abt from './Components/Main/Landing Comp/About';
+import Announce from './Components/Main/Landing Comp/announcements';
+import Event from './Components/Main/Landing Comp/Events';
+import Tracker from './Components/Main/Landing Comp/Tracker';
+import Samplereact from './Components/Main/Landing Comp/Courses';
+import Contact from './Components/Main/Landing Comp/ContactIcon'
+import Chat from './Components/Main/Landing Comp/ChatPopup'
+import Footer from './Components/Main/Landing Comp/Footer';
+import ScrollToTopButton from './Components/Main/ScrollToTopButton';
 
 
 const LandingPage = ({theme, load, toggle, pageData}) => {

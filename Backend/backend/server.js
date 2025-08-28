@@ -14,6 +14,7 @@ const port = process.env.PORT || 5000;
 
 //Loading Main Routes
 const mainBackendRoutes = require('./main-backend/routes/landing');
+const adminBackendRoutes = require('./admin-backend/routes/index');
 
 
 app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
@@ -33,6 +34,7 @@ app.use(hitTracker);
 
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
+app.use('/api/admin-backend', adminBackendRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
