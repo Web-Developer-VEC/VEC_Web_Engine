@@ -308,6 +308,22 @@
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
                 "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
+            },
+            {
+                "name": "Mrs. SUREKHA A",
+                "designation": "Teaching Assistant",
+                "unique_id": "VEC-004-04-100",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
+                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
             }
         ]
       },
