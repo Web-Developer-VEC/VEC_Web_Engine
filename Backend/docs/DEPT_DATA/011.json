@@ -1168,6 +1168,10 @@
               {
                 "name": "Pedagogy Initiatives",
                 "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Pedagogy Initiatives 2024-2025.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Instructive Material.pdf"
               }
             ]
           },
@@ -1177,6 +1181,10 @@
               {
                 "name": "Pedagogy Initiatives",
                 "pdf_path": "/static/pdfs/Pedagogy/011/2023-2024/Pedagogy Initiatives 2023-2024.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2023-2024/Instructive Material.pdf"
               }
             ]
           },
@@ -1186,6 +1194,10 @@
               {
                 "name": "Pedagogy Initiatives",
                 "pdf_path": "/static/pdfs/Pedagogy/011/2022-2023/Pedagogy Initiatives 2022-2023.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2022-2023/Instructive Material.pdf"
               }
             ]
           }
