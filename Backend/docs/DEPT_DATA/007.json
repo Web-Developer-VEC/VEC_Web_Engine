@@ -370,6 +370,22 @@
               "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
               "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-502.pdf"
             },
+             
+            {
+              "name": "Mrs. MATHUMATHI T",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-007-04-100",
+              "socialmedia_links": {
+                "linkedin": "",
+                "googlescholar": "",
+                "researchgate": "",
+                "orchidprofile": "",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/007/VEC-007-04-100.webp",
+              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-100.pdf"
+            },
             {
               "name": "Mrs. DEVIKA B",
               "designation": "Teaching Assistant",
@@ -383,8 +399,9 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
-              "resume_pdf": ""
+              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-501.pdf"
             }
+           
         ]
       },
       {
@@ -545,11 +562,49 @@
         "category": "department_activities",
         "content": [
           {
+            "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Workshop.pdf"
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/007/2024-2025/Value Added Course.pdf"
+              }
+            ],
+            "activities": []
+          },
+          {
             "year":"2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -557,11 +612,11 @@
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -577,9 +632,9 @@
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Value Added Course.pdf"
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "14.03.2024",
@@ -663,9 +718,9 @@
           {
             "year": "2022 - 2023",
             "activities_tile": [
-              {
+               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -673,11 +728,11 @@
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -693,9 +748,9 @@
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Value Added Course.pdf"
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "23.02.2023",
@@ -789,7 +844,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
+            ],
             "activities": [
               {
                 "date": "26.11.2022",

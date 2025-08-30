@@ -237,7 +237,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/008/VEC-008-04-174.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/008/VEC-008-04-174.pdf"
           },
           {
             "name": "Dr. ANUSANKARI S",
@@ -632,129 +632,6 @@
                 "beneficiaries": "III YR STUDENTS",
                 "relevant_PO_PSO": "",
                 "image_path": ["/static/images/dept_activities/008/9.webp"]
-              }
-            ]
-          },
-          {
-            "year":"2019 - 2020",
-            "activities_tile": [
-              {
-                "name": "Guest Lecture",
-                "pdf_path": ""
-              },
-              {
-                "name": "Seminar",
-                "pdf_path": ""
-              },
-              {
-                "name": "Workshop",
-                "pdf_path": ""
-              },
-              {
-                "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
-              },
-              {
-                "name": "Internship",
-                "pdf_path": ""
-              },
-              {
-                "name": "Symposium",
-                "pdf_path": ""
-              },
-               {
-                "name": "Conference",
-                "pdf_path": ""
-              },
-              {
-                "name": "Valued Added Course",
-                "pdf_path": ""
-              }
-      ],
-            "activities": [
-              {
-                "date": "15/02/2020",
-                "name_of_event": "MEACON '20",
-                "coordinator": "Mrs. PADMA S",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/10.webp"]
-              },
-              {
-                "date": "11/01/2020",
-                "name_of_event": "EPIC'20",
-                "coordinator": "Dr. KANDASAMY K V",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/11.webp"]
-              }
-            ]
-          },
-          {
-            "year":"2018 - 2019",
-            "activities_tile": [
-              {
-                "name": "Guest Lecture",
-                "pdf_path": ""
-              },
-              {
-                "name": "Seminar",
-                "pdf_path": ""
-              },
-              {
-                "name": "Workshop",
-                "pdf_path": ""
-              },
-              {
-                "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
-              },
-              {
-                "name": "Internship",
-                "pdf_path": ""
-              },
-              {
-                "name": "Symposium",
-                "pdf_path": ""
-              },
-               {
-                "name": "Conference",
-                "pdf_path": ""
-              },
-              {
-                "name": "Valued Added Course",
-                "pdf_path": ""
-              }
-            ],
-            "activities" :[
-              {
-                "date": "29/03/2019",
-                "name_of_event": "National Conference on Trends in Instrumentation and Automation NCTIA-2019",
-                "coordinator": "Dr. RAVI V R",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/12.webp"]
-              },
-              {
-                "date": "11/01/19 - 12/01/19",
-                "name_of_event": "TWO DAY WORKSHOP ON SKILL APPROACH TO INDUSTRIAL CIRCUIT",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/13.webp"]
-              },
-              {
-                "date": "09/01/19",
-                "name_of_event": "ONE DAY SEMINAR ON Application of PLC-SCADA in Industrial Automation ",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/14.webp"]
               }
             ]
           }
