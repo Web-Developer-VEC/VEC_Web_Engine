@@ -2,34 +2,31 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 const mongoUri = process.env.MONGO_URI;
-const dbName = process.env.DB_NAME;
+const dbName = process.env.ADMIN_DB_NAME;
 const logsdbname =  process.env.LOGS_DB_NAME;
 
-async function connectToDatabase() {
+async function connectToAdminDatabase() {
     const client = new MongoClient(mongoUri);
 
     try {
         await client.connect();
-        console.log("Connected to MongoDB");
-        db = client.db(dbName);
-        logdb = client.db(logsdbname)
-        console.log(`Connected to database: ${dbName}`);
-        console.log(`Connected to database: ${logsdbname}`);
+        admindb = client.db(dbName);
+        logdb = client.db(logsdbname);
+        console.log(`Connected to Admin database: ${dbName}`);
     } catch (error) {
         console.error("MongoDB connection error:", error.message);
         process.exit(1);
     }
 }
 
-// Function to get the DB instance
-function getDb() {
-    if (!db) {
-        throw new Error('Database not initialized. Call connectToDatabase first.');
+// Function to get the AdminDB instance
+function getAdminDb() {
+    if (!admindb) {
+        throw new Error('Database not initialized. Call connectToAdminDatabase first.');
     }
-    return db;
+    return admindb;
 }
 
-// Function to get the DB instance
 function getlogDb() {
     if (!logdb) {
         throw new Error('Database not initialized. Call connectToDatabase first.');
@@ -37,6 +34,6 @@ function getlogDb() {
     return logdb;
 }
 
-module.exports = connectToDatabase;
-module.exports.getDb = getDb;
+module.exports = connectToAdminDatabase;
+module.exports.getAdminDb = getAdminDb;
 module.exports.getlogDb = getlogDb;

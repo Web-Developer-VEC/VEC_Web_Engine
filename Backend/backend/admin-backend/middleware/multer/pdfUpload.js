@@ -13,9 +13,7 @@ const storage = multer.diskStorage({
     cb(null, uploadPath);
   },
   filename: function (req, file, cb) {
-    const ext = path.extname(file.originalname);
-    const fileName = file.originalname.replace(/\s+/g, "_"); // keep original name but safe
-    cb(null, fileName); // "VELAMMAL_BUS_ROUTES_2024-25.pdf"
+    cb(null, fileName); 
   }
 });
 
