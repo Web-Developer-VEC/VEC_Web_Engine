@@ -1,115 +1,63 @@
-const { getDb } = require("../config/db");
-const path = require('path');
-const fs = require('fs');
-
-async function insertData(req, res) {
+async function insertData(req, res, tempDoc, mainCollection) {
   try {
-    const db = getDb();
-    const { type } = req.body;
+    const { collection_type, category, filePaths } = tempDoc;
 
-    const categories = Array.isArray(req.body.categories)
-      ? req.body.categories
-      : [req.body.categories];
-
-    // Parse links
-    let links = req.body.links;
-    if (typeof links === "string") {
-      try {
-        links = JSON.parse(links);
-      } catch {
-        links = links.split(',');
-      }
-    }
-    if (!Array.isArray(links)) links = [links];
-
-    if (!type || !categories.length || !req.files?.length) {
-      return res
-        .status(400)
-        .json({ error: "type, categories, and files are required" });
+    if (!collection_type || !category || !filePaths) {
+      return res.status(400).json({ error: "collection_type, category, and filePaths are required" });
     }
 
-    const collection = db.collection("gallery");
-    let existingDoc = await collection.findOne({ type });
-
-    // Group files by category
-    const filesGroupedByCategory = {};
-    req.files.forEach((file, index) => {
-      const category = categories[index];
-      if (!filesGroupedByCategory[category]) filesGroupedByCategory[category] = [];
-      filesGroupedByCategory[category].push(file);
-    });
+    // 🔹 In mainCollection, field name is "type"
+    const existingDoc = await mainCollection.findOne({ type: collection_type });
 
     if (!existingDoc) {
-      existingDoc = { type, data: [] };
-    }
-
-    for (const [category, files] of Object.entries(filesGroupedByCategory)) {
-      const categoryIndex = existingDoc.data.findIndex((c) => c.category === category);
-      let existingImages = [];
-
-      if (categoryIndex !== -1) {
-        existingImages = existingDoc.data[categoryIndex].image_path || [];
-      }
-
-      // Separate images vs links
-      const existingImageFiles = existingImages.filter((item) => {
-        // crude check: if it looks like a file path, not a link
-        return /\.(jpg|jpeg|png|gif|webp)$/i.test(item);
-      });
-      const existingLinks = existingImages.filter((item) => !existingImageFiles.includes(item));
-
-      let counter = existingImageFiles.length;
-
-      const renamedImages = files.map((file) => {
-        const ext = path.extname(file.originalname);
-        counter++;
-        const newFileName = `${category}_${counter}${ext}`;
-        const categoryDir = path.join(__dirname, `../../uploads/${category}`);
-        fs.mkdirSync(categoryDir, { recursive: true });
-
-        // Move from temp to correct folder
-        const newPath = path.join(categoryDir, newFileName);
-        fs.renameSync(file.path, newPath);
-
-        return `/uploads/${category}/${newFileName}`;
-      });
-
-      if (categoryIndex === -1) {
-        existingDoc.data.push({
+      // Create new document with type + category + images
+      await mainCollection.insertOne({
+        type: collection_type,
+        data: [{
           category,
-          image_path: [...renamedImages, ...links],
-        });
-      } else {
-        existingDoc.data[categoryIndex].image_path = Array.from(
-          new Set([...existingImageFiles, ...renamedImages, ...existingLinks, ...links])
-        );
-      }
+          image_path: Array.isArray(filePaths) ? filePaths : [filePaths]
+        }]
+      });
+      return res.json({ message: "New type and category created successfully" });
     }
 
-    await collection.updateOne(
-      { type },
-      { $set: { data: existingDoc.data } },
-      { upsert: true }
+    // 🔹 Find category inside existing data
+    const categoryIndex = existingDoc.data.findIndex(c => c.category === category);
+
+    if (categoryIndex === -1) {
+      // New category inside same type
+      existingDoc.data.push({
+        category,
+        image_path: Array.isArray(filePaths) ? filePaths : [filePaths]
+      });
+    } else {
+      // Append new images without duplicates
+      const existingImages = existingDoc.data[categoryIndex].image_path || [];
+      const newImages = Array.isArray(filePaths) ? filePaths : [filePaths];
+      existingDoc.data[categoryIndex].image_path = Array.from(new Set([...existingImages, ...newImages]));
+    }
+
+    await mainCollection.updateOne(
+      { type: collection_type },
+      { $set: { data: existingDoc.data } }
     );
 
-    res.json({ message: "Images inserted successfully" });
+    res.json({ message: "Image(s) inserted successfully" });
   } catch (error) {
-    console.error("Error inserting data:", error);
     res.status(500).json({ error: error.message });
   }
 }
 
-async function deleteData(req, res) {
+
+async function deleteData(req, res, tempDoc, mainCollection) {
   try {
-    const db = getDb();
-    const { type, category, image_path } = req.body;
-    
-    if (!type || !category || !image_path) {
-      return res.status(400).json({ error: "type, category, and image_path are required" });
+    const { collection_type, category, filePaths } = tempDoc;
+
+    if (!collection_type || !category || !filePaths) {
+      return res.status(400).json({ error: "collection_type, category, and filePaths are required" });
     }
 
-    const collection = db.collection("gallery");
-    const existingDoc = await collection.findOne({ type });
+    const existingDoc = await mainCollection.findOne({ type: collection_type });
     if (!existingDoc) return res.status(404).json({ error: "Type not found" });
 
     const categoryIndex = existingDoc.data.findIndex(c => c.category === category);
@@ -117,20 +65,15 @@ async function deleteData(req, res) {
       return res.status(404).json({ error: "Category not found" });
     }
 
-    const removeImages = Array.isArray(image_path) ? image_path : [image_path];
+    // Remove selected images
+    const removeImages = Array.isArray(filePaths) ? filePaths : [filePaths];
     existingDoc.data[categoryIndex].image_path =
-      existingDoc.data[categoryIndex].image_path.filter(img => !removeImages.includes(img));
-    
-    for (const img of removeImages) {
-      if (!img.includes("youtube.com") && !img.includes("youtu.be")) {
-        const filePath = path.join(__dirname, `../../${img}`);
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath);
-        }
-      }
-    }
+      (existingDoc.data[categoryIndex].image_path || []).filter(img => !removeImages.includes(img));
 
-    await collection.updateOne({ type }, { $set: { data: existingDoc.data } });
+    await mainCollection.updateOne(
+      { type: collection_type },
+      { $set: { data: existingDoc.data } }
+    );
 
     res.json({ message: "Image(s) deleted successfully" });
   } catch (error) {
@@ -138,4 +81,35 @@ async function deleteData(req, res) {
   }
 }
 
-module.exports = { insertData, deleteData };
+async function handleTempAction(req, res) {
+  try {
+    const tempDoc = req.tempDoc;              // ✅ from handleTempApproval
+    const mainCollection = req.mainCollection; 
+    console.log(tempDoc.status)
+
+    if (tempDoc.status !== "approved") {
+      return res.status(400).json({ error: "Action not approved yet" });
+    }
+
+    switch (tempDoc.action) {
+      case "insert":
+        await insertData(req, res, tempDoc, mainCollection);
+        break;
+      case "delete":
+        await deleteData(req, res, tempDoc, mainCollection);
+        break;
+      default:
+        return res.status(400).json({ error: "Invalid action" });
+    }
+
+    // ✅ send success response once
+    return res.json({ message: `Action '${tempDoc.action}' executed successfully` });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Server error", details: error.message });
+  }
+}
+
+module.exports= {handleTempAction};
+
+

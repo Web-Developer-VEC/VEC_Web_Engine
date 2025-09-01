@@ -87,7 +87,7 @@ const Admingallery = ({ toggle, theme }) => {
 
     setNewGalleries((prev) => [
       ...prev,
-      { category: newGalleryData.category, files: newGalleryData.files, links: newGalleryData.youtubeUrl, action: categoryExists ? "Edited" : "Added",}
+      { category: newGalleryData.category, files: newGalleryData.files, links: newGalleryData.youtubeUrl, action: categoryExists ? "insert" : "update",}
     ]);
 
     setNewTitle("");
@@ -115,13 +115,13 @@ const Admingallery = ({ toggle, theme }) => {
         // Use structured keys so backend can group them
         formData.append("files", renamedFile);
         formData.append("categories", galleryItem.category);
-        // formData.append("links", galleryItem.links)
+        formData.append("action", galleryItem.action);
       });
 
       formData.append("links", JSON.stringify(galleryItem.links));
     });
 
-    fetch("/api/admin-backend/gallery/insert", {
+    fetch(`/api/admin-backend/${"gallery"}/temp`, {
       method: "POST",
       body: formData,
     })
@@ -360,9 +360,8 @@ const Admingallery = ({ toggle, theme }) => {
                     {newGallery.map((g, i) => (
                       <tr key={i}>
                         <td className="py-1">
-                          {g.action === "Added" && <span className="text-green-600">+ Added</span>}
-                          {g.action === "Edited" && <span className="text-blue-600">✎ Edited</span>}
-                          {g.action === "Deleted" && <span className="text-red-600">🗑 Deleted</span>}
+                          {g.action === "insert" && <span className="text-green-600">+ Added</span>}
+                          {g.action === "update" && <span className="text-blue-600">✎ Edited</span>}
                         </td>
                         <td className="py-1">{g.category}</td>
                         <td className="py-1">{g.files.length} images{g.links.length > 0 ? `, ${g.links.length} links` : ""}</td>

@@ -1,9 +1,9 @@
 const path = require("path");
-const { getDb } = require("../config/db");
+const { getAdminDb } = require("../config/db");
 
 const uploadTransportPdf = async (req, res) => {
   try {
-    const db = getDb();
+    const db = getAdminDb();
     const { type } = req.body; // e.g. type: "transport"
 
     if (!req.file) {

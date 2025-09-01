@@ -1,5 +1,5 @@
 const express = require("express");
-const uploadPdf = require("../middleware/pdfUpload");
+const uploadPdf = require("../middleware/multer/pdfUpload");
 const { uploadTransportPdf } = require("../controllers/transport_controller");
 const router = express.Router();
 
