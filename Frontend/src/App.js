@@ -287,7 +287,7 @@ const App = () => {
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
                                 <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
-                                <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
+                                <Route path="/gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
