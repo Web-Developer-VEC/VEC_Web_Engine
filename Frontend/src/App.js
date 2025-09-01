@@ -98,7 +98,11 @@ import DynamicTitle from "./Header.jsx";
 import Admingallerydetails from "./Components/Admin/Second_Nav_Bar/Gallery/detailpage.jsx";
 import Admingallery from "./Components/Admin/Second_Nav_Bar/Gallery/gallery.jsx";
 import AdminTransport from "./Components/Admin/Second_Nav_Bar/Transport/Transport.jsx";
-
+import AdminDashboard from "./Components/Admin/Superier/adminDash.jsx";
+import AdminApprovalPage from "./Components/Admin/Superier/admin-approval-page.jsx";
+import AuthPage from "./Components/Admin/Auth/auth.jsx";
+import { routeConfig } from "./routeConfig.js";
+import { getRouteElement } from "./getRouteElement.js";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -222,7 +226,10 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel")
+    const isHostelRoute = currentPath.startsWith("/hostel");
+
+
+    const session = JSON.parse(sessionStorage.getItem("userSession")); 
 
     return (
         <>
@@ -287,12 +294,12 @@ const App = () => {
                                 <Route path="/nccarmy" drk element={<NCC_ARMY toggle={toggle} theme={theme}/>}/>
                                 <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
-                                <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
                                 <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
-                                <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
-                                <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
@@ -311,6 +318,19 @@ const App = () => {
                                 <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/>
                                 <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/>
                                 <Route path="/admin_transport" drk element={<AdminTransport toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/admin_dash" drk element={<AdminDashboard toggle={toggle} theme={theme}/>}/> */}
+                                <Route path="/admin_approval" drk element={<AdminApprovalPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme}/>}/>
+
+                                {/* Admin based route */}
+                                {Object.keys(routeConfig).map((path) => (
+                                    <Route
+                                    key={path}
+                                    path={path}
+                                    drk
+                                    element={getRouteElement(path, session, toggle, theme)}
+                                    />
+                                ))}
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />

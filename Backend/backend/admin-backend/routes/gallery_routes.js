@@ -1,9 +1,9 @@
 const express = require("express");
-const { insertData, deleteData } = require("../controllers/gallery_controllers");
+const { handleTempAction } = require("../controllers/gallery_controllers");
+const{handleTempApproval} = require("../middleware/approve_middleware");
 const router = express.Router();
-const upload = require('../middleware/uploads');
 
-router.post("/gallery/insert", upload.array("files"), insertData);
-router.delete("/gallery/delete", deleteData);
+router.post("/:collectionName/dinesh", handleTempApproval, handleTempAction);
+
 
 module.exports = router;
