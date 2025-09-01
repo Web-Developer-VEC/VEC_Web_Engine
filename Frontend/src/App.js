@@ -104,7 +104,6 @@ import AuthPage from "./Components/Admin/Auth/auth.jsx";
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
 
-
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
     body {
