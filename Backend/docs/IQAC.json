@@ -529,7 +529,7 @@
     "type": "institutional_distinctiveness",
     "data": [
       {
-        "path": "/static/pdfs/iqac/VEC-Institutional-Distinctivenss.pdf"
+        "paths": "/static/pdfs/iqac/VEC-Institutional-Distinctivenss.pdf"
       }
     ]
   },
@@ -537,7 +537,7 @@
     "type": "code_of_ethics",
     "data": [
       {
-        "path": "/static/pdfs/iqac/code_of_ethics.pdf"
+        "paths": "/static/pdfs/iqac/code_of_ethics.pdf"
       }
     ]
   },
@@ -574,7 +574,7 @@
     "type": "iso_certificate",
     "data": [
       {
-        "path": "/static/pdfs/iqac/iso_certificate.pdf"
+        "paths": "/static/pdfs/iqac/iso_certificate.pdf"
       }
     ]
   }
