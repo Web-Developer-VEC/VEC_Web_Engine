@@ -1,4 +1,5 @@
 const express = require('express');
+
 const {signup, login} = require('../controllers/admin_controllers');
 // const createRateLimiter = require('../../middlewares/ratelimiter');
 // const xss = require('../../middlewares/xss');
@@ -12,5 +13,6 @@ const router = express.Router();
 
 router.post('/signup',signup);
 router.post('/login', login);
+
 
 module.exports = router;

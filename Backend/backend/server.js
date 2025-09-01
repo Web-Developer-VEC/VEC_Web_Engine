@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
 const connectToAdminDatabase = require("./admin-backend/config/db")
 const helmet = require('./main-backend/middlewares/helmet_security');
-const cors = require('./main-backend/middlewares/cros_security');
+// const cors = require('./main-backend/middlewares/cros_security');
+const cors = require('cors');
 const scheduleResetCounters = require('./main-backend/middlewares/schedulers/reset_hit_counters');
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker');
@@ -27,8 +28,15 @@ app.use(helmet);
 // Middleware
 app.use(express.json());
 
+
+app.use(cors({
+  origin: "http://localhost:3000", // your React app
+  credentials: true               // allow cookies/auth headers
+}));
+
 app.use(session({
-  secret: process.env.SESSION_SECRET ,
+  secret: process.env.JWT_KEY || "your-secret-key",
+
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({

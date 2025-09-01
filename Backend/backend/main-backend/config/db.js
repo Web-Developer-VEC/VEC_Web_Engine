@@ -22,7 +22,7 @@ async function connectToDatabase() {
 }
 
 // Function to get the DB instance
-function getDb() {
+function getMainDb() {
     if (!db) {
         throw new Error('Database not initialized. Call connectToDatabase first.');
     }
@@ -38,5 +38,5 @@ function getlogDb() {
 }
 
 module.exports = connectToDatabase;
-module.exports.getDb = getDb;
+module.exports.getDb = getMainDb;
 module.exports.getlogDb = getlogDb;

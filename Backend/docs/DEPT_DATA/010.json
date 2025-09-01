@@ -112,7 +112,8 @@
             "department_id": "010",
             "name": "Mr. BASKARAN V",
             "department_name": "English",
-            "unique_id": "VEC-010-01-140",  
+            "unique_id": "VEC-010-01-140", 
+            "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf", 
             "qualification": ["M.A.", "M.Phil"],
             "hod_message": [
              "He plays a pivotal role in steering the department towards its designated goals. His qualification includes M.A, M. Phil, and he has been teaching English for the past 32 years. If the USP of the department is the application of technology in teaching and training, he is the motivator. With his knowledge of grammar and polite demeanour he has been instrumental in fostering a conducive learning environment, encouraging both faculty and students to embrace innovative methods while maintaining a strong foundation in language proficiency."
@@ -165,7 +166,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf"
       }]
       },
       {
@@ -183,7 +184,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-150.pdf"
       },
       {
         "name": "Mr. BALAJI A",
@@ -198,7 +199,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-151.pdf"
       },
       {
         "name": "Mrs. DHANALAKSHMI R",
@@ -213,7 +214,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-171.pdf"
       },
       {
         "name": "Mrs. LATHA J",
@@ -228,7 +229,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
       },
       {
         "name": "Dr. VINOTHKUMAR M",
@@ -243,7 +244,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-057.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-057.pdf"
       },
       {
         "name": "Mr. ANAND V",
@@ -258,7 +259,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-065.pdf"
       },
       {
         "name": "Mrs. ARCHANA G M",
@@ -273,7 +274,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-146.pdf"
       },
       {
         "name": "Dr. DEEPIKA A",
@@ -288,7 +289,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-604.pdf"
       },
       {
         "name": "Mrs. RHODAS DAISY D",
@@ -303,7 +304,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-605.pdf"
       },
       {
         "name": "Mrs. GNANESHWARI R",
@@ -318,7 +319,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
       }]
           },
           {
@@ -392,7 +393,44 @@
       },
       {
         "category": "department_activities",
-        "content": []
+        "content": [
+          {
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ]
+          }
+        ]
        }
     ]
     },

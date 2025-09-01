@@ -1,6 +1,8 @@
+
 const AdminModel = require("../models/admin_models");
 const { hashPassword, comparePassword } = require("../middlewares/bcrypt");
 const { generateToken } = require("../middlewares/jwt");
+
 
 // 🔹 Signup Controller
 async function signup(req, res) {
@@ -62,13 +64,17 @@ async function login(req, res) {
         // 🔹 Send response with data 
         res.json({
             message: "Login successful",
+
             token,
             admin: {
+
                 id: admin._id,
                 name: admin.name,
                 email: admin.email,
-                role: admin.role,
+
                 phone_no: admin.phone_no
+   allowedRoutes: ["/gallery", "/admin_dash", "/transport"]
+
             }
         });
     } catch (err) {

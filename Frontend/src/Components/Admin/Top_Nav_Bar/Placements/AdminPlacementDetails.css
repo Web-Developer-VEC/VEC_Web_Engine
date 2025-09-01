@@ -1,0 +1,719 @@
+/* Card Styling */
+.card-plc {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Placement Section Styling */
+.placement-percent {
+  margin: 3rem;
+  padding: 1rem;
+  align-items: center;
+  border: none;
+  overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+/* Responsive Table */
+.placement-percent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 10px;
+  min-width: 600px; /* Ensures table remains visible on smaller screens */
+}
+/* Wrap table inside a scrollable container */
+.table-container{
+  max-width: 1000px;
+}
+
+
+/* Table Heading */
+.placement-percent th {
+  background-color: #808080;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px #ddd solid;
+}
+
+/* Table Content */
+.placement-percent td th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Year-wise Container */
+.placement-yearwise {
+  width: 94%;
+  position: relative;
+  left: 3%;
+  padding: 2rem 1rem 1rem 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Capsule Heading */
+.placement-yearwise h4 {
+  position: absolute;
+  top: -20px;
+  left: 35px;
+  background-color: rgb(251, 231, 82);
+  padding: 5px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+/* Standard Button Styling */
+.place-course-button {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  text-align: center;
+  min-width: 150px; /* Ensures buttons are the same size */
+}
+
+.place-course-button:hover {
+  background: linear-gradient(45deg, #800000, #b30000);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Two-Year Buttons Side by Side in Mobile View */
+.placement-yearwise .year-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* General Popup Styling */
+.place-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.place-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  height: 80%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated Popup Entrance */
+.place-modal-overlay.show .place-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Close Button */
+.place-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #800000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.place-close-button:hover {
+  background: darkred;
+}
+
+/* Popup Header */
+.place-popup-header {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Popup Text */
+.place-popup-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* PDF Viewer */
+.place-pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Grid Layout for Courses */
+.place-Sylgrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Syllabus Header */
+.place-syllabus-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 40px;
+  padding: 10px 20px;
+}
+
+.place-section-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .place-Sylgrid {
+    /* Adjust layout for tablets */
+  }
+  .section-title {
+    font-size: 22px; /* Slightly smaller */
+    margin-bottom: 18px;
+    padding: 8px 0;
+  }
+  .placement-percent{
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .placement-percent {
+    overflow-x: auto;
+  }
+  .placement-yearwise h4 {
+    left: 25px;
+  }
+
+  .placement-percent{
+    width: 90%;
+    margin-left:1.2rem ;
+  }
+
+  .placement-percent table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .placement-yearwise {
+    width: 90%;
+    left: 0;
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+  }
+
+  /* Ensure two buttons are always in one row */
+  .placement-yearwise .year-buttons {
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+
+  /* Adjust button size for uniformity */
+  .place-course-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    min-width: 130px;
+  }
+
+  .place-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .place-modal-close {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .section-title {
+    font-size: 20px; /* Adjust for smaller screens */
+    margin-bottom: 15px;
+    padding: 6px 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Buttons still in a row */
+  .placement-yearwise .year-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .place-course-button {
+    font-size: 16px;
+    padding: 8px 16px;
+    min-width: 120px;
+  }
+  .section-title {
+    font-size: 18px; /* Even smaller for compact view */
+    margin-bottom: 12px;
+    padding: 5px 0;
+  } 
+  .place-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .place-modal-content {
+    width: 80%;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .place-modal-content {
+    width: 60%;
+    max-width: 900px;
+  }
+}
+/* Base styles for small mobile devices (portrait phones) */
+/* .place-modal-content {
+  width: 95%;
+  max-width: 350px;
+  height: 80vh;
+} */
+
+/* Large phones in landscape or bigger mobile screens */
+@media (min-width: 480px) {
+  .place-modal-content {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+/* Portrait tablets and larger smartphones */
+@media (min-width: 576px) {
+  .place-modal-content {
+    width: 85%;
+    max-width: 500px;
+  }
+}
+
+/* Tablets in portrait mode (~768px) */
+@media (min-width: 768px) {
+  .place-modal-content {
+    width: 80%;
+    max-width: 600px;
+  }
+}
+
+/* Tablets in landscape or small laptops (~992px) */
+@media (min-width: 992px) {
+  .place-modal-content {
+    width: 70%;
+    max-width: 800px;
+  }
+}
+
+/* Laptops and regular desktops (~1200px) */
+@media (min-width: 1200px) {
+  .place-modal-content {
+    width: 60%;
+    max-width: 1000px;
+  }
+}
+
+/* Extra-wide large desktops (~1440px+) */
+@media (min-width: 1440px) {
+  .place-modal-content {
+    width: 50%;
+    max-width: 1200px;
+  }
+}
+.popup2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  margin-top: 10px;
+}
+
+.popup2-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+}
+
+.popup2-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+/* Table border styling */
+.placement-percent table {
+  border: 1px solid #ddd;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 10px;
+  min-width: 600px;
+}
+
+/* Table cells with borders */
+.placement-percent th, 
+.placement-percent td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Dark mode support for borders */
+.dark .placement-percent table,
+.dark .placement-percent th, 
+.dark .placement-percent td {
+  border-color: #4a5568; /* A gray that works well in dark mode */
+}
+
+/* Table header styling with theme colors */
+.table-header {
+  background-color: #808080;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+}
+
+.dark .table-header {
+  background-color: #4a5568;
+  color: #e2e8f0;
+  border-color: #718096;
+}
+
+/* Save Changes Popup Styles */
+.changes-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.change-category {
+  margin-bottom: 15px;
+}
+
+.change-category h4 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.change-category ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.change-category li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.dark .change-category h4 {
+  color: #e2e8f0;
+}
+
+.dark .changes-container {
+  border-color: #4a5568;
+  background-color: #2d3748;
+}
+
+/* Button Styles */
+.edit-btn-t, .cancel-btn-t, .save-btn,.request-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  margin: 0 5px;
+  margin-right: 15px;
+}
+.delete-btn-editt{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: -10px;
+    padding-bottom: -10px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    margin: 0 5px;
+    margin-right: 15px;
+    background: red;
+    color: white;
+}
+.delete-btn-editt:hover{
+  background: #800000;
+}
+
+.edit-btn-t {
+  background-color: #fdcc03;
+  color: white;
+}
+
+.edit-btn-t:hover {
+  background-color: #2563eb;
+}
+
+.cancel-btn-t {
+  background-color: #800000;
+  color: white;
+}
+
+.cancel-btn-t:hover {
+  background-color: #800000;
+}
+
+.save-btn {
+  background-color: #10b981;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #059669;
+}
+
+.delete-btn-t {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.delete-btn-t:hover {
+  background-color: #800000;
+}
+
+.request-btn-1 {
+  background-color: #fdcc03;
+  color: white;
+}
+
+.request-btn-1:hover {
+  background-color: #800000;
+}
+
+.save-all-btn {
+  background-color: #10b981;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 16px;
+}
+
+.save-all-btn:hover {
+  background-color: #059669;
+  transform: scale(1.05);
+}
+
+.save-all-wrapper-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Dark mode button adjustments */
+.dark .edit-btn-t {
+  background-color: #fdcc03;
+}
+
+.dark .cancel-btn-t {
+  background-color: #dc2626;
+}
+
+.dark .save-btn {
+  background-color: #059669;
+}
+
+.dark .delete-btn-t {
+  background-color: #d97706;
+}
+
+.dark .request-btn {
+  background-color: #7c3aed;
+}
+
+.dark .save-all-btn {
+  background-color: #059669;
+}
+
+.note-pop{
+  color: red;
+  text-align: justify;
+}
+
+
+/* Page View Button Styles */
+.page-view-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.page-view-btn2, .exit-page-view-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  margin: 0 5px;
+  margin-right: 15px;
+}
+
+.page-view-btn2 {
+  background-color: #fdcc03;
+  color: #000;
+}
+
+.page-view-btn2:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+.exit-page-view-btn {
+  background-color: #800000;
+  color: white;
+}
+
+.exit-page-view-btn:hover {
+  background-color: #990000;
+  transform: scale(1.05);
+}
+
+/* Request Button Styles */
+.request-btn-1 {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  margin: 0 5px;
+  margin-right: 15px;
+
+}
+.request-button-cntnr{
+  display: flex;
+  justify-content: center; 
+  margin-top: 20px;  
+}
+
+.request-btn:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+/* Dark mode support */
+.dark .page-view-btn {
+  background-color: #fdcc03;
+  color: #000;
+}
+
+.dark .exit-page-view-btn {
+  background-color: #990000;
+  color: white;
+}
+
+.dark .request-btn {
+  background-color: #fdcc03;
+  color: #000;
+}
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}

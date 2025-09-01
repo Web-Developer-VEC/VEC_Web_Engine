@@ -8,6 +8,7 @@ async function insertData(req, res, tempDoc, mainCollection) {
 
     const filePaths = meta_data[filePaths];
 
+
     // 🔹 In mainCollection, field name is "type"
     const existingDoc = await mainCollection.findOne({ type: collection_type });
 
@@ -59,6 +60,7 @@ async function deleteData(req, res, tempDoc, mainCollection) {
       return res.status(400).json({ error: "collection_type, category, and filePaths are required" });
     }
     const filePaths = meta_data[image_path];
+
 
     const existingDoc = await mainCollection.findOne({ type: collection_type });
     if (!existingDoc) return res.status(404).json({ error: "Type not found" });

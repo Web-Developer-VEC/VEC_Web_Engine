@@ -1,3 +1,4 @@
+
 // ------------------- INSERT -------------------
 async function insertData(req, res, tempDoc, mainCollection) {
   try {
@@ -47,10 +48,12 @@ async function insertData(req, res, tempDoc, mainCollection) {
             newItem[key] = Array.isArray(meta_data[key])
               ? meta_data[key]
               : [meta_data[key]];
+
           }
         });
         return newItem;
       });
+
 
       // persist changes in MongoDB
       await mainCollection.updateOne(
@@ -95,6 +98,7 @@ async function insertData(req, res, tempDoc, mainCollection) {
           { type: collection_type },
           { $push: { data: meta_data } }
         );
+
       }
       return res.json({ message: `Insert successful for ${type}` });
     }
@@ -127,6 +131,7 @@ async function insertData(req, res, tempDoc, mainCollection) {
           type: collection_type,
           data: [{ category, members: [meta_data] }],
         });
+
       }
 
       return res.json({ message: "Insert successful for Team" });
@@ -140,6 +145,7 @@ async function insertData(req, res, tempDoc, mainCollection) {
 }
 
 // ------------------- UPDATE -------------------
+
 async function updateData(req, res, tempDoc, mainCollection) {
   try {
     // Extract file paths
@@ -264,6 +270,7 @@ async function updateData(req, res, tempDoc, mainCollection) {
         { type: collection_type },
         { $set: { data: doc.data } }
       );
+
       return res.json({ message: "Update successful for Team" });
     }
 
@@ -273,6 +280,7 @@ async function updateData(req, res, tempDoc, mainCollection) {
     res.status(500).json({ error: "Server error", details: error.message });
   }
 }
+
 
 // // ------------------- DELETE -------------------
 async function deleteData(req, res, tempDoc, mainCollection) {
@@ -376,6 +384,7 @@ async function deleteData(req, res, tempDoc, mainCollection) {
         { type: collection_type },
         { $set: { data: doc.data } }
       );
+
       return res.json({ message: "Delete successful for Team" });
     }
 
@@ -389,12 +398,14 @@ async function deleteData(req, res, tempDoc, mainCollection) {
 // ------------------- ROUTE HANDLER -------------------
 async function handleTempAction(req, res) {
   try {
+
     const tempDoc = req.tempDoc; // ✅ from handleTempApproval
     const mainCollection = req.mainCollection;
 
     if (tempDoc.status !== "approved") {
       return res.status(400).json({ error: "Action not approved yet" });
     }
+
     switch (tempDoc.action) {
       case "insert":
         await insertData(req, res, tempDoc, mainCollection);
@@ -416,6 +427,7 @@ async function handleTempAction(req, res) {
     return res
       .status(500)
       .json({ error: "Server error", details: error.message });
+
   }
 }
 
