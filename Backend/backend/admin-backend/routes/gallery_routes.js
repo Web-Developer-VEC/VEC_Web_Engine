@@ -1,9 +1,11 @@
 const express = require("express");
 const { handleTempAction } = require("../controllers/gallery_controllers");
-const{handleTempApproval} = require("../middleware/approve_middleware");
+
+const{handleTempApproval} = require("../middlewares/approve_middleware");
 const router = express.Router();
 
-router.post("/:collectionName/dinesh", handleTempApproval, handleTempAction);
+router.post("/gallery/galleryadmin", handleTempApproval, handleTempAction);
+
 
 
 module.exports = router;

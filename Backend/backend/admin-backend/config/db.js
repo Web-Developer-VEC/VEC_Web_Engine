@@ -11,6 +11,7 @@ async function connectToAdminDatabase() {
     try {
         await client.connect();
         admindb = client.db(dbName);
+
         logdb = client.db(logsdbname);
         console.log(`Connected to Admin database: ${dbName}`);
     } catch (error) {
@@ -19,12 +20,14 @@ async function connectToAdminDatabase() {
     }
 }
 
+
 // Function to get the AdminDB instance
 function getAdminDb() {
     if (!admindb) {
         throw new Error('Database not initialized. Call connectToAdminDatabase first.');
     }
     return admindb;
+
 }
 
 function getlogDb() {

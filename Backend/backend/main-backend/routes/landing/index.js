@@ -7,6 +7,7 @@ const acadamic = require('../top_navbar/academic_routes');
 const accrediation = require ('../second_navbar/accreditation_routes');
 const administration = require('../top_navbar/administration_routes');
 const admission = require('../top_navbar/admission_routes');
+
 const ecell = require('../second_navbar/ecell_routes');
 const iic_form = require('../second_navbar/iic_form_routes');
 const iic = require('../second_navbar/iic_routes');

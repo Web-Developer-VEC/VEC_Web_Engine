@@ -28,6 +28,7 @@ app.use(helmet);
 // Middleware
 app.use(express.json());
 
+
 app.use(cors({
   origin: "http://localhost:3000", // your React app
   credentials: true               // allow cookies/auth headers
@@ -35,6 +36,7 @@ app.use(cors({
 
 app.use(session({
   secret: process.env.JWT_KEY || "your-secret-key",
+
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
