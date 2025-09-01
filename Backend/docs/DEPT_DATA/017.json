@@ -139,7 +139,8 @@
             "department_id": "017",
             "name": "Dr. NIRMALRAJ A",
             "department_name": "Master of Business Administration (MBA) ",
-            "unique_id": "VEC-017-01-181",
+            "unique_id": "VEC-017-01-205",
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-01-205.pdf",
             "qualification": ["B.Com.", "MBA.", "Ph.D"],
             "hod_message":["At VEC, we provide our learners—who come from diverse backgrounds—with ample opportunities for academic exploration and holistic development."," We recognize the growing need for business leaders who are well-versed in business principles, technology, and managerial skills. Therefore, our program offers a comprehensive overview of essential business concepts and industry-relevant technical practices, equipping learners with the knowledge and expertise required to excel in today's dynamic business landscape."],
             "hod_image": "/static/images/hods/mba.webp",
@@ -173,7 +174,7 @@
       {
         "category": "faculty_pdf_path",
         "content": [
-          ""
+          "/static/pdfs/faculty_list/017.pdf"
         ]
       },
       {
@@ -191,7 +192,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=59511587500"
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-01-205.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-01-205.pdf"
           }]
       },
       {
@@ -210,7 +211,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-02-188.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-02-188.pdf"
           },
             {
             "name":"Dr. REVATHI D",
@@ -225,7 +226,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-03-175.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-03-175.pdf"
           },
             {
             "name":"Dr. MUZHUMATHI R",
@@ -240,7 +241,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=59510864400"
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-176.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-176.pdf"
           },
             {
             "name":"Dr. NAVENA NESA KUMARI J",
@@ -255,7 +256,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-189.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-189.pdf"
           },
             {
             "name":"Dr. NAFEZA E ",
@@ -270,7 +271,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-632.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-632.pdf"
           },
             {
             "name":"Mr. CHAKKARAVARTHY KUMARESAN R",
@@ -285,7 +286,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-633.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-633.pdf"
           },
             {
             "name":"Mrs. JENIFER HEPZIBA I",
@@ -300,7 +301,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-179.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-179.pdf"
           },
            {
             "name":"Mrs. JAIASHI J",
@@ -315,7 +316,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-181.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-181.pdf"
           },
           
            {
@@ -331,7 +332,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-634.webp",
-            "resume_pdf":""
+            "resume_pdf":"/static/pdfs/faculty_profile/017/VEC-017-04-634.pdf"
           }
         ]
       },
@@ -401,7 +402,44 @@
       },
       {
         "category": "department_activities",
-        "content": [ ]
+        "content": [
+          {
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": ""
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": ""
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": ""
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+      ]
+          }
+         ]
       }
     ]
   },
