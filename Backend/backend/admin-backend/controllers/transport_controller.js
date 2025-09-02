@@ -37,7 +37,5 @@ const uploadTransportPdf = async (req, res) => {
 };
 
 
-async function handleTempaction(params) {
-  
-}
+module.exports = { uploadTransportPdf };
 
