@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
-const connectToAdminDatabase = require("./admin-backend/config/db")
+const {connectToAdminDatabase} = require("./admin-backend/config/db")
 const helmet = require('./main-backend/middlewares/helmet_security');
 // const cors = require('./main-backend/middlewares/cros_security');
 const cors = require('cors');

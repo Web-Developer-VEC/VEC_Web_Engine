@@ -3,10 +3,9 @@ const { getAdminDb } = require("../config/db");
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
-    const collectionName = req.params.collectionName;
-    const tempCollection = db.collection(collectionName);
-
+    
     const {
+      collectionName,
       collection_type,
       action,
       meta_data,
@@ -14,9 +13,10 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       category,
       title,
     } = req.body;
+    const tempCollection = db.collection(collectionName);
 
-    if (!collection_type || !action || !title) {
-      return res.status(400).json({ error: "type, action and title required" });
+    if (!collection_type || !action || !title || !collectionName) {
+      return res.status(400).json({ error: "type, action and title and collectionname required" });
     }
 
   

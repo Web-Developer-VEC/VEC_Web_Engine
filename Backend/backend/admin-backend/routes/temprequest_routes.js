@@ -1,9 +1,10 @@
 const express = require("express");
-const authMiddleware = require('../middleware/auth_middleware')
+const { getTempRequests } = require("../middlewares/temprequest_middleware");
+
 
 
 const router = express.Router();
 
-router.get('/:collectionName/request',authMiddleware);
+router.get('/request',getTempRequests);
 
 module.exports=router;

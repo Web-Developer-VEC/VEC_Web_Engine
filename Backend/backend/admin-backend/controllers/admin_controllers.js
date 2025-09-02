@@ -1,21 +1,25 @@
-const AdminModel = require("../models/admin_models");
+// const AdminModel = require("../models/admin_models");
 const { hashPassword, comparePassword } = require("../middlewares/bcrypt");
 const { generateToken } = require("../middlewares/jwt");
+const {getAdminDb} = require("../config/db");
 
 // 🔹 Signup Controller
+
 async function signup(req, res) {
+    const db = getAdminDb();
+    const collection = db.collection("admins");
     try {
         const { name, role, email, password, phone_no } = req.body;
 
         // check if exists
-        const existingAdmin = await AdminModel.findByEmail(email);
+        const existingAdmin = await collection.findOne({email});
         if (existingAdmin) {
             return res.status(400).json({ message: "Admin already exists" });
         }
 
         // hash and save
         const hashedPassword = await hashPassword(password);
-        await AdminModel.createAdmin({
+        await collection.insertOne({
             name,
             role,
             email,
@@ -31,11 +35,13 @@ async function signup(req, res) {
 
 // 🔹 Login Controller (with session)
 async function login(req, res) {
+    const db = getAdminDb();
+    const collection = db.collection("admins");
     try {
         
         const { email, password } = req.body;
 
-        const admin = await AdminModel.findByEmail(email);
+        const admin = await collection.findOne({email});
         
         if (!admin) {
             return res.status(404).json({ message: "Admin not found" });

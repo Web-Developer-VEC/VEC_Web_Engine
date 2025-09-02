@@ -2,7 +2,9 @@
 // ------------------- INSERT -------------------
 async function insertData(req, res, tempDoc, mainCollection) {
   try {
-    const { collection_type, meta_data, category } = tempDoc;
+    let { collection_type, meta_data, category } = tempDoc;
+
+    meta_data = JSON.parse(meta_data);
 
     if (!collection_type || !meta_data)
       return res.status(400).json({ error: "Type and newData required" });
@@ -144,7 +146,10 @@ async function insertData(req, res, tempDoc, mainCollection) {
 async function updateData(req, res, tempDoc, mainCollection) {
   try {
     // Extract file paths
-    const { collection_type, meta_data, original_data, category } = tempDoc;
+    let { collection_type, meta_data, original_data, category } = tempDoc;
+
+    meta_data = JSON.parse(meta_data);
+    original_data=JSON.parse(original_data);
 
     if (!collection_type || !meta_data || !original_data)
       return res
@@ -278,7 +283,9 @@ async function updateData(req, res, tempDoc, mainCollection) {
 // // ------------------- DELETE -------------------
 async function deleteData(req, res, tempDoc, mainCollection) {
   try {
-    const { collection_type, meta_data, category } = tempDoc;
+    let { collection_type, meta_data, category } = tempDoc;
+
+     meta_data = JSON.parse(meta_data);
 
     if (!collection_type || !meta_data)
       return res.status(400).json({ error: "Type and data required" });

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const {getTempCompleted} = require('../middlewares/approve_middleware') ;
+const {getTempCompleted} = require('../middlewares/tempcomplete_middleware') ;
 
-router.get('/:collectionName/completed',getTempCompleted);
+router.get('/completed',getTempCompleted);
 
 module.exports = router;

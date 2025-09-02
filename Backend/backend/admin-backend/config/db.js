@@ -4,13 +4,15 @@ require('dotenv').config();
 const mongoUri = process.env.MONGO_URI;
 const dbName = process.env.ADMIN_DB_NAME;
 const logsdbname =  process.env.LOGS_DB_NAME;
+let admindb; 
+let logdb;
 
 async function connectToAdminDatabase() {
     const client = new MongoClient(mongoUri);
 
     try {
         await client.connect();
-        AdminDb = client.db(dbName);
+        admindb = client.db(dbName);
 
         logdb = client.db(logsdbname);
         console.log(`Connected to Admin database: ${dbName}`);
@@ -21,11 +23,13 @@ async function connectToAdminDatabase() {
 }
 
 
+// Function to get the AdminDB instance
 function getAdminDb() {
-    if (!AdminDb) {
+    if (!admindb) {
         throw new Error('Database not initialized. Call connectToAdminDatabase first.');
     }
-    return AdminDb;
+    return admindb;
+
 }
 
 function getlogDb() {
@@ -35,6 +39,4 @@ function getlogDb() {
     return logdb;
 }
 
-module.exports = connectToAdminDatabase;
-module.exports.getAdminDb = getAdminDb;
-module.exports.getlogDb = getlogDb;
+module.exports = {connectToAdminDatabase,getAdminDb,getlogDb}
