@@ -143,103 +143,160 @@
   {
     "type": "exam_curriculum",
     "data": [
-      {
-        "year_number": "2023",
-        "year": "For the Students admitted from 2023&2024",
-        "department": [
-          "B.E Automobile Engineering",
-          "B.E Civil Engineering",
-          "B.E Computer Science and Engineering",
-          "B.E Computer Science and Engineering (Cyber Security)",
-          "B.E Electronics and Communication Engineering",
-          "B.E Electrical and Electronics Engineering",
-          "B.E Electronics and Instrumentation Engineering",
-          "B.E Mechanical Engineering",
-          "B.Tech Artificial Intelligence and Data Science",
-          "B.Tech Information Technology",
-          "M.E Computer Science and Engineering",
-          "M.E Power Systems Engineering",
-          "MBA - Master of Business Administration"
-        ],
-        "deptid": [
-          "002",
-          "004",
-          "005",
-          "006",
-          "009",
-          "007",
-          "008",
-          "013",
-          "001",
-          "011",
-          "005",
-          "008",
-          "017"
+        {
+          "department": "B.E Automobile Engineering",
+          "deptid": "002"
+        },
+        {
+          "department": "B.E Civil Engineering",
+          "deptid": "004"
+        },
+        {
+          "department": "B.E Computer Science and Engineering",
+          "deptid": "005"
+        },
+        {
+          "department": "B.E Computer Science and Engineering (Cyber Security)",
+          "deptid": "006"
+        },
+        {
+          "department": "B.E Electronics and Communication Engineering",
+          "deptid": "009"
+        },
+        {
+          "department": "B.E Electrical and Electronics Engineering",
+          "deptid": "007"
+        },
+        {
+          "department": "B.E Electronics and Instrumentation Engineering",
+          "deptid": "008"
+        },
+        {
+          "department": "B.E Mechanical Engineering",
+          "deptid": "013"
+        },
+        {
+          "department": "B.Tech Artificial Intelligence and Data Science",
+          "deptid": "001"
+        },
+        {
+          "department": "B.Tech Information Technology",
+          "deptid": "011"
+        },
+        {
+          "department": "M.E Computer Science and Engineering",
+          "deptid": "005"
+        },
+        {
+          "department": "M.E Power Systems Engineering",
+          "deptid": "008"
+        },
+        {
+          "department": "MBA - Master of Business Administration",
+          "deptid": "017"
+        }
         ]
-      }
-    ]
-  },
-  {
+      },
+      {
     "type": "all_forms",
     "data": [
       {
-        "students": [
+        "category": "student",
+        "content": [
           {
-            "name": [
-              "NPTEL Course Registration form for credit transfer",
-              "Application Form - NPTEL Credit Transfer",
-              "Application form - CGPA to Percentage Conversion",
-              "Application Form - Review after Revaluation",
-              "Application Form - Revaluation (After obtaining Photocopy)",
-              "Application Form - Photocopy",
-              "Evaluation Form for Photocopy of answer scripts B.E./B.Tech./M.E./MBA (R2023)",
-              "B.E.& M.E - Evaluation form for Photocopy of answer script",
-              "Project Report Format",
-              "Project Report Specimen",
-              "Revised Fee Structure for Certificates & Coursework",
-              "Application Form - Name Correction",
-              "Application Form - Duplicate Certificate",
-              "Application Form - Duplicate Hall Ticket",
-              "Application Form - Withdrawal",
-              "Application Form - Transcript Certificate"
-            ],
-            "link": [
-              "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf",
-              "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf",
-              "/static/pdfs/all_forms/Application_for_CGPA_to_Percentage_conversion.pdf",
-              "/static/pdfs/all_forms/Application-Form-Review-after-Revaluation.pdf",
-              "/static/pdfs/all_forms/Application-Form-Revaluation-After-obtaining-Photocopy.pdf",
-              "/static/pdfs/all_forms/Application-Form-Photocopy.pdf",
-              "/static/pdfs/all_forms/MBA-Evaluation-form-for-Photocopy-of-answer-script.pdf",
-              "/static/pdfs/all_forms/B.E.-M.E-Evaluation-form-for-Photocopy-of-answer-script.pdf",
-              "/static/pdfs/all_forms/Project-report-format.pdf",
-              "/static/pdfs/all_forms/Project-Report-specimen.pdf",
-              "/static/pdfs/all_forms/Fee_Sructure_for_certificates_from_March-2024.pdf",
-              "/static/pdfs/all_forms/Application-form_Correction-in-Grade-sheet-pdf.pdf",
-              "/static/pdfs/all_forms/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf",
-              "/static/pdfs/all_forms/Application-for-Duplicate-Hall-Ticket.pdf",
-              "/static/pdfs/all_forms/Application-Form-for-Withdrawal.pdf",
-              "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
-            ]
-          }
-        ],
-        "faculty": [
+            "name": "NPTEL Course Registration form for credit transfer",
+            "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+          },
+           {
+            "name": "Application Form - NPTEL Credit Transfer",
+            "pdf_path": "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf"
+          },
           {
-            "name": [
-              "SEE_QP_Feedback_R2023",
-              "SEE_QP_Feedback_R2019",
-              "Self declaration form (Children/Spouse pursuing UG/PG degree in VEC)",
-              "Exam Duty Alteration Format (For Faculty)",
-              "Registration Form - Ph.D. Course Work"
-            ],
-            "link": [
-              "/static/pdfs/all_forms/SEE_QP_Feedback_R2023.pdf",
-              "/static/pdfs/all_forms/SEE_QP_Feedback_R2019.pdf",
-              "/static/pdfs/all_forms/Declaration_from_Staff(Children_Spouse_doing_UG_PG_degree_in_VEC).pdf",
-              "/static/pdfs/all_forms/Duty_alteration_Format_Faculty_Final.pdf",
-              "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
-            ]
+            "name": "Application form - CGPA to Percentage Conversion",
+            "pdf_path": "/static/pdfs/all_forms/Application_for_CGPA_to_Percentage_conversion.pdf"
+          },
+          {
+            "name": "Application Form - Review after Revaluation",
+            "pdf_path": "/static/pdfs/all_forms/Application-Form-Review-after-Revaluation.pdf"
+          },
+          {
+            "name": "Application Form - Revaluation (After obtaining Photocopy)",
+            "pdf_path": "/static/pdfs/all_forms/Application-Form-Revaluation-After-obtaining-Photocopy.pdf"
+          },
+          {
+            "name": "Application Form - Photocopy",
+            "pdf_path": "/static/pdfs/all_forms/Application-Form-Photocopy.pdf"
+          },
+          {
+            "name": "Evaluation Form for Photocopy of answer scripts B.E./B.Tech./M.E./MBA (R2023)",
+            "pdf_path": "/static/pdfs/all_forms/MBA-Evaluation-form-for-Photocopy-of-answer-script.pdf"
+          },
+          {
+            "name": "B.E.& M.E - Evaluation form for Photocopy of answer script",
+            "pdf_path": "/static/pdfs/all_forms/B.E.-M.E-Evaluation-form-for-Photocopy-of-answer-script.pdf"
+          },
+          {
+            "name": "Project Report Format",
+            "pdf_path": "/static/pdfs/all_forms/Project-report-format.pdf"
+          },
+          {
+            "name": "Project Report Specimen",
+            "pdf_path": "/static/pdfs/all_forms/Project-Report-specimen.pdf"
+          },
+          {
+            "name": "Revised Fee Structure for Certificates & Coursework",
+            "pdf_path": "/static/pdfs/all_forms/Fee_Sructure_for_certificates_from_March-2024.pdf"
+          },
+          {
+            "name": "Application Form - Name Correction",
+            "pdf_path": "/static/pdfs/all_forms/Application-form_Correction-in-Grade-sheet-pdf.pdf"
+          },
+          {
+            "name": "Application Form - Duplicate Certificate",
+            "pdf_path": "/static/pdfs/all_forms/Application-form_Duplicate-Grade-Sheet-LossDamage.pdf"
+          },
+          {
+            "name": "Application Form - Duplicate Hall Ticket",
+            "pdf_path": "/static/pdfs/all_forms/Application-for-Duplicate-Hall-Ticket.pdf"
+          },
+          {
+            "name": "Application Form - Withdrawal",
+            "pdf_path": "/static/pdfs/all_forms/Application-Form-for-Withdrawal.pdf"
+          },
+          {
+            "name": "Application Form - Transcript Certificate",
+            "pdf_path": "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
           }
+        ]
+      },
+      {
+        "category": "faculty",
+        "content": [
+          {
+            "name": "SEE_QP_Feedback_R2023",
+            "pdf_path": "/static/pdfs/all_forms/SEE_QP_Feedback_R2023.pdf"
+          },
+          {
+            "name": "SEE_QP_Feedback_R2019",
+            "pdf_path": "/static/pdfs/all_forms/SEE_QP_Feedback_R2019.pdf"
+          },
+          {
+            "name": "Self declaration form (Children/Spouse pursuing UG/PG degree in VEC)",
+            "pdf_path": "/static/pdfs/all_forms/Declaration_from_Staff(Children_Spouse_doing_UG_PG_degree_in_VEC).pdf"
+          },
+          {
+            "name": "Exam Duty Alteration Format (For Faculty)",
+            "pdf_path": "/static/pdfs/all_forms/Duty_alteration_Format_Faculty_Final.pdf"
+          },
+          {
+            "name": "Registration Form - Ph.D. Course Work",
+            "pdf_path": "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
+          },
+          {
+            "name": "CIE Audit Report Format",
+            "pdf_path": "/static/pdfs/all_forms/Exam (CIE) Audit Report Format (Revised).pdf"
+          }
+
         ]
       }
     ]

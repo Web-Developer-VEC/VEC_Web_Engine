@@ -148,18 +148,18 @@ export default function ADMteam({ theme, toggle }) {
                 designation={admissionteamData[0]?.designation}
               />
             )}
-            {admissionteamData[1] && (
+            {/* {admissionteamData[1] && (
               <AdminCard
                 image={UrlParser(admissionteamData[1]?.photo_path)}
                 name={admissionteamData[1]?.name}
                 designation={admissionteamData[1]?.designation}
               />
-            )}
+            )} */}
           </div>
 
           {/* Rest of the cards */}
           <div className="flex flex-wrap justify-center gap-6">
-            {admissionteamData.slice(2).map((card) => (
+            {admissionteamData.slice(1).map((card) => (
               <Card
                 key={card.id}
                 image={UrlParser(card.photo_path)}

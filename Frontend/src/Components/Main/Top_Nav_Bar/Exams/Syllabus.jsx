@@ -57,7 +57,7 @@ function Syllabus({theme, toggle}) {
             type: "exam_curriculum"
           }
         );
-        setCurriculumData(response.data.data[0]);
+        setCurriculumData(response.data.data);
         
         setLoading(false);
       } catch (error) {
@@ -103,11 +103,11 @@ if (!isOnline) {
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
           <div className="course-grid flex flex-wrap -m-2">
-            {data?.department?.map((course, courseIndex) => (
+            {data?.map((course, courseIndex) => (
               <CourseCard
                 key={courseIndex}
-                course={course}
-                onClick={() => handleDepartmentClick(data.deptid[courseIndex])}
+                course={course?.department}
+                onClick={() => handleDepartmentClick(course?.deptId)}
               />
             ))}
           </div>
@@ -130,16 +130,6 @@ if (!isOnline) {
               <LoadComp txt={""} />
             </div>
           ) : (
-            // curriculumData?.map((yearData, index) => {
-            //   const year = Object.keys(yearData)[0];
-            //   if (year === "_id") return null;
-            //   if (year === "Verticals" || year === "01") {
-            //     return yearData[year]?.map((verticalData, vIndex) =>
-            //       renderSection(verticalData, `${year}-${vIndex}`)
-            //     );
-            //   }
-            //   return renderSection(yearData[year][0], year);
-            // })
             renderSection(curriculumData)
           )}
         </motion.div>
