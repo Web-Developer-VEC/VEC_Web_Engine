@@ -291,7 +291,12 @@
           {
             "name": "Registration Form - Ph.D. Course Work",
             "pdf_path": "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
+          },
+          {
+            "name": "CIE Audit Report Format",
+            "pdf_path": "/static/pdfs/all_forms/Exam (CIE) Audit Report Format (Revised).pdf"
           }
+
         ]
       }
     ]
