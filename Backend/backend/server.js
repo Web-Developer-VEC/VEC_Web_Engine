@@ -29,7 +29,7 @@ scheduleMongoHealthCheck();
 // Connect to DBs
 connectToDatabase();
 //Global Middleware to track hits for all endpoints
-app.use(hitTracker);
+// app.use(hitTracker);
 
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
