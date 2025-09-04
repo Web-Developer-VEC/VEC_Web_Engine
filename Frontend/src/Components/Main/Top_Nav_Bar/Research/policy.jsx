@@ -4,7 +4,7 @@ import "./policy.css";
 import Banner from "../../Banner";
 import { useNavigate } from "react-router-dom";
 
-export default function Policies({ theme, toggle }) {               
+export default function Policies(theme, toggle) {               
   const [policies, setPolicies] = useState(null);
   const navigate = useNavigate();
     const BASE_URL = process.env.REACT_APP_BASE_URL;
