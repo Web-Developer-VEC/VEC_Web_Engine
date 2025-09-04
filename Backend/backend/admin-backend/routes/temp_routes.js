@@ -13,7 +13,6 @@ router.get('/:collectionName/completed',getTempCompleted);
 router.post('/:collectionName/temp',authMiddleware,upload.array('files'),storeTempMiddleware);
 
 
-
 router.get('/request',getTempRequests);
 
 module.exports=router;

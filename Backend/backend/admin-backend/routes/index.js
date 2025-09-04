@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 // const administrationadmin = require('./administration_routes');
 const galleryadmin = require('./gallery_routes');
-
 const clubadmin = require('./club_routes');
 const temp = require('./temp_routes');
 const admin = require('./admin_routes');

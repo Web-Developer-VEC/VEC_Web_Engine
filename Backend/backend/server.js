@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
-const connectToAdminDatabase = require("./admin-backend/config/db")
 const helmet = require('./main-backend/middlewares/helmet_security');
 // const cors = require('./main-backend/middlewares/cros_security');
 const cors = require('cors');
@@ -55,7 +54,6 @@ scheduleMongoHealthCheck();
 
 // Connect to DBs
 connectToDatabase();
-connectToAdminDatabase();
 //Global Middleware to track hits for all endpoints
 app.use(hitTracker);
 
