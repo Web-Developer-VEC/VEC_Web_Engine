@@ -272,28 +272,40 @@
   },
   {
     "type": "HandBook",
-    "data": {
-      "Years": [
-        "2018-2019",
-        "2019-2020",
-        "2020-2021",
-        "2021-2022",
-        "2022-2023",
-        "2023-2024",
-        "2024-2025",
-        "2025-2026"
-      ],
-      "pdfs_path": [
-        "/static/pdfs/handbook/Handbook-18-19.pdf",
-        "/static/pdfs/handbook/Handbook-19-20.pdf",
-        "/static/pdfs/handbook/Handbook-20-21.pdf",
-        "/static/pdfs/handbook/Handbook-21-22.pdf",
-        "/static/pdfs/handbook/HandBook-22-23.pdf",
-        "/static/pdfs/handbook/HandBook-23-24.pdf",
-        "/static/pdfs/handbook/Revised_New_Hand_Book_24-25.pdf",
-        "/static/pdfs/handbook/Handbook-25-26.pdf"
-      ]
-    }
+    "data": [
+      {
+        "year": "2018-2019",
+        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+      },
+      {
+        "year": "2019-2020",
+        "pdf_path": "/static/pdfs/handbook/Handbook-19-20.pdf"
+      },
+      {
+        "year": "2020-2021",
+        "pdf_path": "/static/pdfs/handbook/Handbook-20-21.pdf"
+      },
+      {
+        "year": "2021-2022",
+        "pdf_path": "/static/pdfs/handbook/Handbook-21-22.pdf"
+      },
+      {
+        "year": "2022-2023",
+        "pdf_path": "/static/pdfs/handbook/HandBook-22-23.pdf"
+      },
+      {
+        "year": "2023-2024",
+        "pdf_path": "/static/pdfs/handbook/HandBook-23-24.pdf"
+      },
+      {
+        "year": "2024-2025",
+        "pdf_path": "/static/pdfs/handbook/Revised_New_Hand_Book_24-25.pdf"
+      },
+      {
+        "year": "2025-2026",
+        "pdf_path": "/static/pdfs/handbook/Handbook-25-26.pdf"
+      }
+    ]
   },
   {
     "type": "HRHandBook",

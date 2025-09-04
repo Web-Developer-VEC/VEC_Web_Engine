@@ -95,13 +95,13 @@ const Handbook = ({ theme, toggle }) => {
             Handbook
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 justify-center items-center">
-            {handBook?.Years?.map((year, idx) => (
+            {handBook?.map((year, idx) => (
               <HandbookButton
                 key={idx}
-                year={year}
+                year={year?.year}
                 pdfspath={
-                  handBook?.pdfs_path[idx]
-                    ? UrlParser(handBook?.pdfs_path[idx])
+                  year?.pdf_path
+                    ? UrlParser(year?.pdf_path)
                     : "#"
                 }
                 onOpen={handleOpenPDF}

@@ -3,7 +3,7 @@
     "type": "naac",
     "data": [
       {
-        "title": "Self Study Reports",
+        "category": "Self Study Reports",
         "content": [
           {
             "name": "Cycle 1 SSR",
@@ -16,7 +16,7 @@
         ]
       },
       {
-        "title": "Certificates",
+        "category": "Certificates",
         "content": [
           {
             "name": "Cycle 1 - 2009-2014",
