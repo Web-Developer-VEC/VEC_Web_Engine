@@ -39,7 +39,7 @@ export function LoginForm() {
       sessionStorage.setItem("userSession", JSON.stringify(data.admin));
 
       setTimeout(() => {
-        navigate('/admin_dash');
+        navigate('/');
       }, 1000)
 
       setSuccess("Login successful! Redirecting...")
@@ -130,7 +130,7 @@ export function LoginForm() {
       <div className="text-center text-sm text-slate-500">
         <p>Need help accessing your account?</p>
         <button type="button" className="text-[#fdcc03] hover:text-[#800000] transition-colors font-medium">
-          Contact IT Support
+          Contact WebOps Support
         </button>
       </div>
     </form>
