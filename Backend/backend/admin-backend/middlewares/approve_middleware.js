@@ -33,7 +33,7 @@ async function handleTempApproval(req, res, next) {
       return next();
     }
 
-    if (status === "reject") {
+    if (status === "rejected") {
       await tempCollection.updateOne(
         { _id: new ObjectId(id) },
         { $set: { status: "rejected" } }

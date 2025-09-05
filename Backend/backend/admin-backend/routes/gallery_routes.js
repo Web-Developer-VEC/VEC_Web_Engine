@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post(
   "/galleryadmin",
-  checkRole(["super_admin", "gallery_admin"]), 
+  checkRole(["super_admin"]), 
   handleTempApproval,
   handleTempAction
 );
