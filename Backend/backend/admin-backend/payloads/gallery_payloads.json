@@ -23,6 +23,15 @@
 {
   "collectionName": "gallery",
   "collection_type": "gallery",
+  "action": "delete",
+  "title": "deletion of category in gallery",
+  "category": "Hira 2025",
+  "meta_data": {},
+  "original_data": null
+},
+{
+  "collectionName": "gallery",
+  "collection_type": "gallery",
   "action": "insert",
   "title": "insertion of gallery",
   "category":"Destiny 28",
