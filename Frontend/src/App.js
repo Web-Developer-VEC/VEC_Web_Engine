@@ -103,6 +103,7 @@ import AdminApprovalPage from "./Components/Admin/Superier/admin-approval-page.j
 import AuthPage from "./Components/Admin/Auth/auth.jsx";
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
+import AdminIQAC from "./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -283,7 +284,7 @@ const App = () => {
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
                                 
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
-                                <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
                                 <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
@@ -315,12 +316,13 @@ const App = () => {
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 
                                 {/* Admin page route */}
-                                <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/>
-                                <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/>
-                                <Route path="/admin_transport" drk element={<AdminTransport toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/admin_gallery" drk element={<Admingallery toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/admin_gallery-details" drk element={<Admingallerydetails toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/admin_transport" drk element={<AdminTransport toggle={toggle} theme={theme}/>}/> */}
                                 {/* <Route path="/admin_dash" drk element={<AdminDashboard toggle={toggle} theme={theme}/>}/> */}
-                                <Route path="/admin_approval" drk element={<AdminApprovalPage toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/admin_approval" drk element={<AdminApprovalPage toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/admin_iqac" drk element={<AdminIQAC toggle={toggle} theme={theme}/>}/> */}
 
                                 {/* Admin based route */}
                                 {Object.keys(routeConfig).map((path) => (
