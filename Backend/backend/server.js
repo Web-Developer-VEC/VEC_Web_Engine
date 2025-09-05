@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
-const connectToAdminDatabase = require("./admin-backend/config/db")
 const helmet = require('./main-backend/middlewares/helmet_security');
 // const cors = require('./main-backend/middlewares/cros_security');
 const cors = require('cors');
@@ -28,6 +27,7 @@ app.use(helmet);
 // Middleware
 app.use(express.json());
 
+
 app.use(cors({
   origin: "http://localhost:3000", // your React app
   credentials: true               // allow cookies/auth headers
@@ -35,6 +35,7 @@ app.use(cors({
 
 app.use(session({
   secret: process.env.JWT_KEY || "your-secret-key",
+
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
@@ -53,7 +54,6 @@ scheduleMongoHealthCheck();
 
 // Connect to DBs
 connectToDatabase();
-connectToAdminDatabase();
 //Global Middleware to track hits for all endpoints
 app.use(hitTracker);
 

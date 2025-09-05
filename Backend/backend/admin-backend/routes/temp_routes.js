@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const {getTempCompleted,getTempRequests} = require('../middleware/approve_middleware') ;
-const authMiddleware = require('../middleware/auth_middleware')
-const upload = require('../middleware/multer')
-const storeTempMiddleware = require('../middleware/tempstore_middleware');
 
-router.get('/:collectionName/completed',getTempCompleted);
-
-
-router.post('/:collectionName/temp',authMiddleware,upload.array('files'),storeTempMiddleware);
+const authMiddleware = require('../middlewares/auth_middleware')
+const {getTempRequests} = require('../middlewares/temprequest_middleware')
+const upload = require('../middlewares/multer')
+const storeTempMiddleware = require('../middlewares/tempstore_middleware');
+const { checkRoleByCollection } = require("../middlewares/role_middleware");
 
 
+router.post('/:collectionName/temp',authMiddleware,upload.array('files'),checkRoleByCollection(),storeTempMiddleware);
 
 router.get('/request',getTempRequests);
 
