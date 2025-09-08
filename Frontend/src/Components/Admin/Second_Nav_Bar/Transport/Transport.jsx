@@ -72,23 +72,45 @@ const AdminTransport = ({ theme, toggle }) => {
         }
     };
     
-    const handleConfirmRequest = () => {
+    const handleConfirmRequest = async () => {
+        const meta_data = {
+            route: selectedPdf.file
+        };
+
+        const original_data = {
+            route: transportData[0].route
+        }
+
+        const title = "Transport Route pdf change"
         try {
             const formData = new FormData();
-            formData.append("pdf", selectedPdf.file);
-            formData.append("type", "transport");
-            const res = axios.post("/api/admin-backend/transport", formData)
+            formData.append("files", selectedPdf.file);
+            formData.append("collection_type", "transport");
+            formData.append("action", "update");
+            formData.append("meta_data", JSON.stringify(meta_data));
+            formData.append("original_data", JSON.stringify(original_data));
+            formData.append("title", title);
+            const res = await axios.post(
+                `http://localhost:5000/api/admin-backend/transport/temp`,
+                formData,
+                {
+                    headers: { "Content-Type": "multipart/form-data" },
+                    withCredentials: true // if using cookies/auth
+                }
+            );
 
             if (res.ok) {
                 alert("Request submitted");
-                console.log(res);
             }
+            console.log(res);
+            
+            toast.success("Request submitted successfully!");
         } catch (error) {
+            toast.error("Request not submitted successfully!");
             console.error("Error sending request", error);
         }
         setConfirmPopup(false);
         setSelectedPdf(null);
-        toast.success("Request submitted successfully!");
     }
 
     const oldpath = transportData[0]?.route.split("/");

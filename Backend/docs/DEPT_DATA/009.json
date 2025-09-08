@@ -733,10 +733,22 @@
       {
         "category": "newsletter",
         "content": [
-        {
-          "year":"2024" ,
-          "pdf_path":[ "/static/pdfs/newsletter/009/2024.pdf "]
-        }
+          {
+            "year":"2025" ,
+            "pdf_path":[ "/static/pdfs/newsletter/009/2025.pdf" ]
+          },
+          {
+            "year":"2024" ,
+            "pdf_path":[ "/static/pdfs/newsletter/009/2024.pdf" ]
+          },
+          {
+            "year":"2023" ,
+            "pdf_path":[ "/static/pdfs/newsletter/009/2023.pdf" ]
+          },
+          {
+            "year":"2022" ,
+            "pdf_path":[ "/static/pdfs/newsletter/009/2022.pdf" ]
+          }
         ]
       }
     ]
@@ -757,41 +769,79 @@
         "category": "department_activities",
         "content": [
           {
+            "year": "2024 - 2025",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Workshop.pdf"
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Symposium.pdf"
+              },
+               {
+                "name": "Conference",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Conference.pdf"
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Value Added Course.pdf"
+              }
+            ],
+            "activities": []
+          },
+          {
             "year":"2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Seminar.pdf"
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Internship.pdf"
               },
               {
                 "name": "Symposium",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Symposium.pdf"
               },
                {
                 "name": "Conference",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Conference.pdf"
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Value Added Course.pdf"
               }
-      ],
+            ],
             "activities":[
               {
                 "date": "25.01.24",
@@ -875,6 +925,44 @@
                 "image_path": ["/static/images/dept_activities/009/9.webp"]
               }
             ]
+          },
+          {
+            "year": "2022 - 2023",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path":"/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": ""
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Symposium.pdf"
+              },
+               {
+                "name": "Conference",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Conference.pdf"
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Value Added Course.pdf"
+              }
+            ],
+            "activities": []
           }
         ]
       }
@@ -895,7 +983,35 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": []
+        "content": [
+                    {
+            "year": "2024 - 2025",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/009/2024-2025/pedagogical Initiatives 2024-25.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2023 - 2024",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/009/2023-2024/pedagogical Initiatives 2023-24.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/009/2022-2023/pedagogical Initiatives 2022-2023.pdf"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
