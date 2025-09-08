@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 // Use your own secret key in production (store in env variables)
 const JWT_SECRET = process.env.JWT_SECRET; 

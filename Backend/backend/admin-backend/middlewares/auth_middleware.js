@@ -1,4 +1,4 @@
-const { getAdminDb } = require("../config/db");
+const { getAdminDb } = require("../../main-backend/config/db");
 
 async function authMiddleware(req, res, next) {
   try {
@@ -22,5 +22,6 @@ async function authMiddleware(req, res, next) {
     return res.status(500).json({ error: "Server error" });
   }
 }
+
 
 module.exports = authMiddleware;
