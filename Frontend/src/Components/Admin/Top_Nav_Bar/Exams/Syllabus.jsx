@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Send } from "lucide-react";
 import "./Syllabi.css";
 import Banner from "../../Banner";
 import { useNavigate } from "react-router-dom";
 import LoadComp from "../../LoadComp";
+import { FaUserEdit } from "react-icons/fa";
+import { div } from "framer-motion/m";
 
 const CourseCard = ({ course, onClick }) => (
   <motion.div
@@ -41,11 +43,16 @@ const itemVariants = {
   },
 };
 
-function Syllabus({theme, toggle}) {
+
+
+
+
+
+const  AdminSyllabus = ({theme, toggle})=> {
   const [curriculumData, setCurriculumData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+  const [isContentEditable,setIsContentEditable] =  useState(true)
   const navigate = useNavigate();
 
 
@@ -57,7 +64,7 @@ function Syllabus({theme, toggle}) {
             type: "exam_curriculum"
           }
         );
-        setCurriculumData(response.data.data);
+        setCurriculumData(response.data.data[0]);
         
         setLoading(false);
       } catch (error) {
@@ -103,11 +110,11 @@ if (!isOnline) {
       <div className="groups rounded-lg overflow-hidden p-5 shadow-md bg-prim dark:bg-drkp">
         <div className="card-syl p-6 sm:p-8">
           <div className="course-grid flex flex-wrap -m-2">
-            {data?.map((course, courseIndex) => (
+            {data?.department?.map((course, courseIndex) => (
               <CourseCard
                 key={courseIndex}
-                course={course?.department}
-                onClick={() => handleDepartmentClick(course?.deptId)}
+                course={course}
+                onClick={() => handleDepartmentClick(data.deptid[courseIndex])}
               />
             ))}
           </div>
@@ -123,29 +130,62 @@ if (!isOnline) {
         headerText="Course & Syllabus"
         subHeaderText="Empowering students through structured learning and academic excellence"
       />
-      <div className="min-h-[10vh] mt-2 mb-0 pb-0 px-4 sm:px-8">
+
+{
+  isContentEditable ? (
+      <div>
+
+       <button className="flex items-center  bg-secd px-3 py-2 z-40 rounded text-text  ml-auto mr-20 my-4"  
+          onClick={(e)=>setIsContentEditable(false)}>
+              <FaUserEdit className="mr-2"  /> Edit 
+       </button>
+      <div className="min-h-[10vh] mt-10 mb-0 pb-0 px-4 sm:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-6">
           {isLoading ? (
             <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
               <LoadComp txt={""} />
             </div>
           ) : (
-            // curriculumData?.map((yearData, index) => {
-            //   const year = Object.keys(yearData)[0];
-            //   if (year === "_id") return null;
-            //   if (year === "Verticals" || year === "01") {
-            //     return yearData[year]?.map((verticalData, vIndex) =>
-            //       renderSection(verticalData, `${year}-${vIndex}`)
-            //     );
-            //   }
-            //   return renderSection(yearData[year][0], year);
-            // })
-            renderSection(curriculumData)
-          )}
+            
+              <>
+              { renderSection(curriculumData)}           
+               </>
+           
+              
+              )}
         </motion.div>
+        </div>
       </div>
+  ):(
+      <div>
+      <div className="min-h-[10vh] mt-14 mb-0 pb-0 px-4 sm:px-8">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-6">
+          {isLoading ? (
+            <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+              <LoadComp txt={""} />
+            </div>
+          ) : (
+               <>
+              { renderSection(curriculumData)}           
+               </>
+              )}
+         <div className="flex gap-4 justify-end pr-8 my-8 mr-10">
+          <button className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded " >
+            <FaUserEdit className="mr-2" /> Back to edit 
+          </button>
+          <button className="flex items-center bg-green-500 text-text hover:text-prim hover:bg-green-600 px-3 py-2 rounded" >
+           <Send className="mr-2" />
+           Request     
+          </button>
+        </div>
+        </motion.div>
+        </div>
+      </div>
+  )
+}
+      
     </>
   );
 }
 
-export default Syllabus;
+export default AdminSyllabus;
