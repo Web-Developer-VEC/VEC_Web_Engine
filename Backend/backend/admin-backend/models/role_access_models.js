@@ -1,7 +1,8 @@
 // roleAccess.js
 const roleAccessMap = {
   gallery: ["super_admin", "gallery_admin"],
-  help_desk:["super_admin"]
+  help_desk:["super_admin"],
+  other_facilities:["super_admin"]
   // add more collection → roles here
 };
 
