@@ -4,12 +4,8 @@ const { updateData } = require("./other_facilities_update_controllers");
 
 async function handleTempAction(req, res) {
   try {
-    const tempDoc = req.tempDoc;              
-    const mainCollection = req.mainCollection; 
 
-    if (tempDoc.status !== "approved") {
-      return res.status(400).json({ error: "Action not approved yet" });
-    }
+    const { tempDoc, mainCollection, tempCollection } = req;
 
     let result;
     switch (tempDoc.action) {
@@ -27,6 +23,12 @@ async function handleTempAction(req, res) {
         return res.status(400).json({ error: "Invalid action" });
     }
 
+   // ✅ Only set approved if the controller succeeded
+    await tempCollection.updateOne(
+      { _id: tempDoc._id },
+      { $set: { status: "approved" } }
+    );
+
     return res.json({
       success: true,
       action: tempDoc.action,
@@ -34,8 +36,11 @@ async function handleTempAction(req, res) {
     });
   } catch (error) {
     console.error(error);
+
+    // ❌ Do not change status (stays pending if controller failed)
     return res.status(500).json({ success: false, error: error.message });
   }
 }
+
 
 module.exports = { handleTempAction };

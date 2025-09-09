@@ -1,6 +1,5 @@
 const { ObjectId } = require("mongodb");
-const { getAdminDb } = require("../../main-backend/config/db");
-const { getDb } = require("../../main-backend/config/db");
+const { getAdminDb, getDb } = require("../../main-backend/config/db");
 
 async function handleTempApproval(req, res, next) {
   try {
@@ -20,17 +19,18 @@ async function handleTempApproval(req, res, next) {
       return res.status(404).json({ error: "No request found with this ID" });
     }
 
+    // ✅ Only allow processing if still pending
+    if (tempDoc.status !== "pending") {
+      return res.status(400).json({ error: "Request already processed" });
+    }
+
     if (status === "approved") {
-      await tempCollection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: { status: "approved" } }
-      );
-
-      req.tempDoc = { ...tempDoc, status: "approved" };
-      const DB = getDb();
-      req.mainCollection = DB.collection(collectionName);
-
-      return next();
+      // pass along without updating status yet
+      req.tempDoc = tempDoc;
+      req.collectionName = collectionName;
+      req.tempCollection = tempCollection;
+      req.mainCollection = getDb().collection(collectionName);
+      return next(); // goes to controller
     }
 
     if (status === "rejected") {
@@ -41,7 +41,7 @@ async function handleTempApproval(req, res, next) {
       return res.json({ message: "Request rejected successfully" });
     }
 
-    return res.status(400).json({ error: "Invalid action" });
+    return res.status(400).json({ error: "Invalid action, must be approved or rejected" });
   } catch (error) {
     console.error(error);
     return res

@@ -1,39 +1,39 @@
-// ------------------- ROUTE HANDLER -------------------
-const{ insertData } = require("../hostel_controllers/hostel_insert_controller")
-const{ updateData } = require("../hostel_controllers/hostel_update_controller")
-const{ deleteData } = require("../hostel_controllers/hostel_delete_controller")
 async function handleTempAction(req, res) {
+  const { tempDoc, mainCollection, tempCollection } = req;
+
   try {
-
-    const tempDoc = req.tempDoc; // ✅ from handleTempApproval
-    const mainCollection = req.mainCollection;
-
-    if (tempDoc.status !== "approved") {
-      return res.status(400).json({ error: "Action not approved yet" });
-    }
+    let result;
 
     switch (tempDoc.action) {
       case "insert":
-        await insertData(req, res, tempDoc, mainCollection);
+        result = await insertData(tempDoc, mainCollection);
         break;
       case "update":
-        await updateData(req, res, tempDoc, mainCollection);
+        result = await updateData(tempDoc, mainCollection);
         break;
       case "delete":
-        await deleteData(req, res, tempDoc, mainCollection);
+        result = await deleteData(tempDoc, mainCollection);
         break;
       default:
         return res.status(400).json({ error: "Invalid action" });
     }
 
-    // ✅ send success response once
-    // return res.json({ message: `Action '${tempDoc.action}' executed successfully` });s
+    // ✅ Only set approved if the controller succeeded
+    await tempCollection.updateOne(
+      { _id: tempDoc._id },
+      { $set: { status: "approved" } }
+    );
+
+    return res.json({
+      success: true,
+      action: tempDoc.action,
+      ...result,
+    });
   } catch (error) {
     console.error(error);
-    return res
-      .status(500)
-      .json({ error: "Server error", details: error.message });
 
+    // ❌ Do not change status (remains pending)
+    return res.status(500).json({ success: false, error: error.message });
   }
 }
 

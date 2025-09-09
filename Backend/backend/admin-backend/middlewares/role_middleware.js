@@ -7,15 +7,32 @@ function checkRoleByCollection() {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    const { collectionName } = req.params;
-    const allowedRoles = roleAccessMap[collectionName];
+    let docs = req.body;
 
-    if (!allowedRoles) {
-      return res.status(400).json({ error: "Invalid collection name or no roles set" });
+    // ✅ Normalize: always work with an array
+    if (!Array.isArray(docs)) {
+      docs = [docs];
     }
 
-    if (!allowedRoles.includes(admin.role)) {
-      return res.status(403).json({ error: "Access Denied: Your role is not allowed to make changes in this page" });
+    // ✅ Validate each doc’s collectionName
+    for (const doc of docs) {
+      const { collectionName } = doc;
+
+      if (!collectionName) {
+        return res.status(400).json({ error: "collectionName is required in each document" });
+      }
+
+      const allowedRoles = roleAccessMap[collectionName];
+
+      if (!allowedRoles) {
+        return res.status(400).json({ error: `Invalid collection name (${collectionName}) or no roles set` });
+      }
+
+      if (!allowedRoles.includes(admin.role)) {
+        return res.status(403).json({
+          error: `Access Denied: Your role (${admin.role}) is not allowed to make changes in ${collectionName}`,
+        });
+      }
     }
 
     next();
@@ -36,7 +53,5 @@ function checkRole(allowedRoles) {
     next();
   };
 }
-
-
 
 module.exports = { checkRole, checkRoleByCollection };
