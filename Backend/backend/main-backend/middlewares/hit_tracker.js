@@ -1,7 +1,33 @@
 const { getlogDb } = require('../config/db');
 const moment = require('moment');
 
+const recentHits = new Map();
+
+function shouldTrack(clientIp, endpoint) {
+   
+    if (endpoint.includes('/landing_page_data')) {
+        if (recentHits.has(`${clientIp}-landing`)) {
+            return false; 
+        }
+        recentHits.set(`${clientIp}-landing`, true);
+        return true;
+    }
+    return true; 
+}
 async function hitTracker(req, res, next) {
+
+   if (
+    req.originalUrl === '/favicon.ico' ||
+    req.originalUrl.endsWith('.png') ||
+    req.originalUrl.endsWith('.jpg') ||
+    req.originalUrl.endsWith('.jpeg') ||
+    req.originalUrl.endsWith('.gif') ||
+    req.originalUrl.endsWith('.css') ||
+    req.originalUrl.endsWith('.js')
+) {
+    return next();
+}
+
     const db = getlogDb();
     const collection = db.collection('hitlog');
 
