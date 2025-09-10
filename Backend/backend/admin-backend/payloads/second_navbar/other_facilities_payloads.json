@@ -1,0 +1,105 @@
+[
+  {
+    "collectionName": "other_facilities",
+    "collection_type": "other_facilities",
+    "action": "insert",
+    "title": "insertion of other facility",
+    "category": "Anna Auditorium",
+    "meta_data": {
+      "name": "Anna Auditorium",
+      "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
+      "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
+    },
+    "original_data": null
+  },
+
+  {
+    "collectionName": "other_facilities",
+    "collection_type": "other_facilities",
+    "action": "update",
+    "title": "updation of other facility",
+    "category": "Anna Auditorium",
+    "meta_data": {
+      "name": "Anna Auditorium",
+      "description": "Updated description: auditorium renovated with advanced lighting and sound system",
+      "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 2.webp"
+    },
+    "original_data": {
+      "name": "Anna Auditorium",
+      "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
+      "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
+    }
+  },
+
+  {
+    "collectionName": "other_facilities",
+    "collection_type": "other_facilities",
+    "action": "update",
+    "title": "updation of seminar halls",
+    "category": "Seminar Halls",
+    "meta_data": {
+      "name": [
+        "Vivekananda Hall",
+        "Placement Seminar Hall",
+        "Sarojini Naidu Seminar Hall",
+        "Billgate Seminar Hall"
+      ],
+      "description": [
+        "Previous description of Vivekananda Hall (before update)",
+        "Previous description of Placement Seminar Hall (before update)",
+        "Previous description of Sarojini Naidu Seminar Hall (before update)",
+        "Previous description of Billgate Seminar Hall (before update)"
+      ],
+      "image_path": [
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp"
+      ]
+    },
+    "original_data": {
+      "name": [
+        "Vivekananda Hall",
+        "Placement Seminar Hall",
+        "Sarojini Naidu Seminar Hall",
+        "Billgate Seminar Hall"
+      ],
+      "description": [
+         "Vivekananda Hall is an air-conditioned venue equipped with state-of-the-art facilities and can accommodate approximately 300 people",
+          "Placement Seminar Hall is an air-conditioned venue equipped with state-of-the-art facilities and can accommodate approximately 120 people",
+          "Sarojini Naidu Seminar Hall is an air-conditioned venue equipped with state-of-the-art facilities and can accommodate approximately 150 people",
+          "Billgate Seminar Hall is an air-conditioned venue equipped with state-of-the-art facilities and can accommodate approximately 50 people"
+      ],
+      "image_path": [
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp",
+        "/static/images/other_facilities/Seminar Halls/Vivehananda Seminar Hall.webp"
+      ]
+    }
+  },
+
+  {
+    "collectionName": "other_facilities",
+    "collection_type": "other_facilities",
+    "action": "delete",
+    "title": "deletion of other facility",
+    "category": "Anna Auditorium",
+    "meta_data": {
+      "name": "Anna Auditorium",
+      "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
+      "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
+    },
+    "original_data": null
+  },
+
+  {
+    "collectionName": "other_facilities",
+    "collection_type": "other_facilities",
+    "action": "delete",
+    "title": "deletion of other facility",
+    "category": "Anna Auditorium",
+    "meta_data": {},
+    "original_data": null
+  }
+]

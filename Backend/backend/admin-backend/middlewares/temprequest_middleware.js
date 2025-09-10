@@ -1,5 +1,4 @@
 const { getAdminDb } = require("../../main-backend/config/db");
-
 const req_collection = require("../models/request_models");
 async function getTempRequests(req, res) {
   try {

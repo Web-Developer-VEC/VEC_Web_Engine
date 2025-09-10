@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 // const administrationadmin = require('./administration_routes');
+const transportadmin = require('./second_navbar/transport_routes');
+const otherfacilitiesadmin = require('./second_navbar/other_facilities_routes')
 const galleryadmin = require('./second_navbar/gallery_routes');
 const helpdeskadmin = require('./second_navbar/help_desk_routes');
 const tempstore = require('./temp_routes');
@@ -15,6 +17,8 @@ const yrcadmin = require('./second_navbar/yrc_routes');
 
 
 // router.use('',administrationadmin);
+router.use('',transportadmin);
+router.use('',otherfacilitiesadmin);
 router.use('',galleryadmin);
 router.use('',helpdeskadmin);
 router.use('',tempstore);

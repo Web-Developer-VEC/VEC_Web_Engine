@@ -451,7 +451,7 @@ const IQAC = ({ toggle , theme }) => {
 
                     <embed
                         className="embed"
-                        src={UrlParser(iqacData[0]?.path) + "#toolbar=0"}
+                        src={UrlParser(iqacData[0]?.paths) + "#toolbar=0"}
                         type="application/pdf"
                         width="100%"
                         height="600px"
@@ -530,7 +530,7 @@ const IQAC = ({ toggle , theme }) => {
                     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Code of Ethics</h2>
                     <embed
                         className="embed"
-                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.path) + "#toolbar=0"}
+                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.paths) + "#toolbar=0"}
                         type="application/pdf"
                         width="100%"
                         height="600px"
@@ -603,7 +603,7 @@ const IQAC = ({ toggle , theme }) => {
                     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>ISO Certificate</h2>
                     <embed
                         className="embed"
-                        src={UrlParser(iqacData[0]?.path) + "#toolbar=0"
+                        src={UrlParser(iqacData[0]?.paths) + "#toolbar=0"
                         }
                         type="application/pdf"
                         width="100%"
