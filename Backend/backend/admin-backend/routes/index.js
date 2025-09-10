@@ -6,6 +6,7 @@ const transportadmin = require('./second_navbar/transport_routes');
 const otherfacilitiesadmin = require('./second_navbar/other_facilities_routes')
 const galleryadmin = require('./second_navbar/gallery_routes');
 const helpdeskadmin = require('./second_navbar/help_desk_routes');
+const hosteladmin = require('./second_navbar/hostel_routes');
 const tempstore = require('./temp_routes');
 const admin = require('./admin_routes');
 const armyadmin = require('./second_navbar/ncc_army_routes');
@@ -17,6 +18,7 @@ const yrcadmin = require('./second_navbar/yrc_routes');
 
 
 // router.use('',administrationadmin);
+router.use('',hosteladmin)
 router.use('',transportadmin);
 router.use('',otherfacilitiesadmin);
 router.use('',galleryadmin);
