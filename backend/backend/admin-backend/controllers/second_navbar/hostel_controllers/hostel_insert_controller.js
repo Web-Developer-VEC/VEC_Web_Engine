@@ -1,10 +1,10 @@
-// ------------------- INSERT -------------------
-async function insertData(req, res, tempDoc, mainCollection) {
+async function insertData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, category } = tempDoc;
 
-    if (!collection_type || !meta_data)
-      return res.status(400).json({ error: "Type and newData required" });
+    if (!collection_type || !meta_data) {
+      throw new Error("Type and newData required");
+    }
 
     if (tempDoc.meta_data?.filePaths) {
       tempDoc.meta_data.image_path = tempDoc.meta_data.filePaths;
@@ -54,10 +54,11 @@ async function insertData(req, res, tempDoc, mainCollection) {
         { $set: { data: updatedData } }
       );
 
-      return res.json({
+      return {
+        success: true,
         message: "About data updated successfully",
         data: updatedData,
-      });
+      };
     }
 
     // ---------- HOSTEL FACILITIES ----------
@@ -73,15 +74,15 @@ async function insertData(req, res, tempDoc, mainCollection) {
           { $push: { data: meta_data } }
         );
       }
-      return res.json({
+      return {
+        success: true,
         message: "Hostel facilities inserted successfully",
-      });
+      };
     }
 
     // ---------- WARDEN ----------
     if (collection_type === "warden") {
-      if (!category)
-        return res.status(400).json({ error: "Category required for warden" });
+      if (!category) throw new Error("Category required for warden");
 
       if (doc) {
         const categoryExists = doc.data.find((c) => c.category === category);
@@ -104,71 +105,65 @@ async function insertData(req, res, tempDoc, mainCollection) {
         });
       }
 
-      return res.json({ message: "Warden data inserted successfully" });
+      return { success: true, message: "Warden data inserted successfully" };
     }
 
     // ---------- GENERAL INFO ----------
     if (collection_type === "general_info") {
-  if (!category)
-    return res
-      .status(400)
-      .json({ error: "Category required for general_info" });
+      if (!category) throw new Error("Category required for general_info");
 
-  if (doc) {
-    const categoryExists = doc.data.find((c) => c.category === category);
+      if (doc) {
+        const categoryExists = doc.data.find((c) => c.category === category);
 
-    if (categoryExists) {
-      // ✅ Special handling for Menu
-      if (category === "Menu") {
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          {
-            $push: {
-              "data.$.content.0.hostel_menu.0.day": {
-                $each: meta_data.day || []
-              },
-              "data.$.content.0.hostel_menu.0.Breakfast": {
-                $each: meta_data.Breakfast || []
-              },
-              "data.$.content.0.hostel_menu.0.lunch": {
-                $each: meta_data.lunch || []
-              },
-              "data.$.content.0.hostel_menu.0.snacks": {
-                $each: meta_data.snacks || []
-              },
-              "data.$.content.0.hostel_menu.0.dinner": {
-                $each: meta_data.dinner || []
+        if (categoryExists) {
+          if (category === "Menu") {
+            await mainCollection.updateOne(
+              { type: collection_type, "data.category": category },
+              {
+                $push: {
+                  "data.$.content.0.hostel_menu.0.day": {
+                    $each: meta_data.day || [],
+                  },
+                  "data.$.content.0.hostel_menu.0.Breakfast": {
+                    $each: meta_data.Breakfast || [],
+                  },
+                  "data.$.content.0.hostel_menu.0.lunch": {
+                    $each: meta_data.lunch || [],
+                  },
+                  "data.$.content.0.hostel_menu.0.snacks": {
+                    $each: meta_data.snacks || [],
+                  },
+                  "data.$.content.0.hostel_menu.0.dinner": {
+                    $each: meta_data.dinner || [],
+                  },
+                },
               }
-            }
+            );
+          } else {
+            await mainCollection.updateOne(
+              { type: collection_type, "data.category": category },
+              { $push: { "data.$.content": meta_data } }
+            );
           }
-        );
+        } else {
+          await mainCollection.updateOne(
+            { type: collection_type },
+            { $push: { data: { category, content: [meta_data] } } }
+          );
+        }
       } else {
-        // ✅ Default insert for other categories
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $push: { "data.$.content": meta_data } }
-        );
+        await mainCollection.insertOne({
+          type: collection_type,
+          data: [{ category, content: [meta_data] }],
+        });
       }
-    } else {
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $push: { data: { category, content: [meta_data] } } }
-      );
-    }
-  } else {
-    await mainCollection.insertOne({
-      type: collection_type,
-      data: [{ category, content: [meta_data] }],
-    });
-  }
 
-  return res.json({ message: "General info inserted successfully" });
-}}
-  
-  catch (error) {
+      return { success: true, message: "General info inserted successfully" };
+    }
+
+    throw new Error("Invalid collection type");
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server error", details: error.message });
+    throw error; // ❌ no res.json, just throw
   }
 }
-
-module.exports = { insertData};

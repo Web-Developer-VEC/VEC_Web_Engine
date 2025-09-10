@@ -8,7 +8,7 @@ const storeTempMiddleware = require('../middlewares/tempstore_middleware');
 const { checkRoleByCollection } = require("../middlewares/role_middleware");
 
 
-router.post('/:collectionName/temp',authMiddleware,upload.array('files'),checkRoleByCollection(),storeTempMiddleware);
+router.post('/temp',authMiddleware,upload.array('files'),checkRoleByCollection(),storeTempMiddleware);
 
 router.get('/request',getTempRequests);
 
