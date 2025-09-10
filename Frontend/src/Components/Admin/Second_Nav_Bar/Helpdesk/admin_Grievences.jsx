@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Banner from "../../../Banner";
-import LoadComp from "../../../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { CircleX, PlusCircle, SquarePen, Trash2, SaveAll } from "lucide-react";
+import { SaveAll, SquarePen, CircleX, Send } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./admin_Grievences.css";
 
 const AdminGrievanceForm = ({ theme, toggle }) => {
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const navigate = useNavigate();
 
-  // connectivity
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
-  useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
-
-  // page/local ui
-  const [loading, setLoading] = useState(false);
-  const [editHdesk, setEditHdesk] = useState(false);
-
-  // form state
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
@@ -35,26 +21,42 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [query_about, setQueryAbout] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [gredit, setgrEdit] = useState(false);
+  const [savedOnce, setSavedOnce] = useState(false);
 
-  // grievance data from backend
+  // States for admin functionality
   const [grievanceData, setGrievanceData] = useState(null);
+  const [editableData, setEditableData] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [changeList, setChangeList] = useState([]);
+  const [grData, setGrData] = useState(null);
 
-  // normalized, editable table pieces
-  const [section, setSection] = useState([]);          // headers shown as columns
-  const [levels, setLevels] = useState([]);            // Level 2..N rows (editable)
-  const [level1, setLevel1] = useState(null);          // Level 1 object (separate layout)
-  const [showLevel1, setShowLevel1] = useState(true);  // allow deleting level1 visually
-  const [another, setAnother] = useState([]);          // extra row content (unchanged here)
+  // Online/offline detection
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
 
-  // fetch data
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  // Fetch grievance data
   useEffect(() => {
     const fetchGrievanceData = async () => {
       try {
         const res = await axios.post("/api/main-backend/help_desk", {
           type: "Help desk",
         });
-        const data = res.data?.data || [];
+        const data = res.data.data;
         setGrievanceData(data);
+        setEditableData(data); // Initialize editableData with fetched data
+        setGrData(data); // Save original data for comparison
       } catch (err) {
         console.error("Error fetching grievance table:", err);
       }
@@ -62,55 +64,32 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     fetchGrievanceData();
   }, []);
 
-  // when grievanceData is ready, normalize into editable state
-  useEffect(() => {
-    if (!grievanceData) return;
+  // Check if data is loaded before accessing its properties
+  const section =
+    grievanceData?.find((item) => item.category === "section & level")
+      ?.content || [];
+  const level1 =
+    grievanceData?.find((item) => item.category === "level1")?.content || {};
+  const level2 =
+    grievanceData?.find((item) => item.category === "level2")?.content || {};
+  const level3 =
+    grievanceData?.find((item) => item.category === "level3")?.content || {};
+  const level4 =
+    grievanceData?.find((item) => item.category === "level4")?.content || {};
+  const level5 =
+    grievanceData?.find((item) => item.category === "level5")?.content || [];
+  const another =
+    grievanceData?.find((item) => item.category === "another")?.content || [];
 
-    const sec =
-      grievanceData.find((it) => it.category === "section & level")?.content || [];
-
-    const l1 =
-      grievanceData.find((it) => it.category === "level1")?.content || null;
-
-    const l2 =
-      grievanceData.find((it) => it.category === "level2")?.content || {};
-    const l3 =
-      grievanceData.find((it) => it.category === "level3")?.content || {};
-    const l4 =
-      grievanceData.find((it) => it.category === "level4")?.content || {};
-        const l5  = grievanceData?.find((item) => item.category === "level5")?.content || [];
-
-    const an =
-      grievanceData.find((it) => it.category === "another")?.content || [];
-
-    const normKey = (h) => h.toLowerCase().replace(/\s|&/g, "");
-
-    const makeRow = (srcObj) => {
-      const row = {};
-      sec.forEach((h) => {
-        const k = normKey(h);
-        row[k] = srcObj?.[k] ?? "";
-      });
-      return row;
-    };
-
-    setSection(sec);
-    setLevel1(l1);
-    setAnother(an);
-    // start with level2..4 as editable rows
-    setLevels([makeRow(l2), makeRow(l3), makeRow(l4)]);
-    setShowLevel1(true);
-  }, [grievanceData]);
-
+  // Functions for public form
   function generateCaptcha() {
     return Math.floor(1000 + Math.random() * 9000);
   }
 
-  // validation
-  const phoenCheck = (value) => {
+  const phoneCheck = (value) => {
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(value)) {
-      alert("Please enter a valid phone number.");
+      alert("Please enter a valid 10-digit phone number.");
       return false;
     }
     return true;
@@ -125,7 +104,6 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     return true;
   };
 
-  // form submit (unchanged backend)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -134,14 +112,17 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
       setCaptcha(generateCaptcha());
       return;
     }
-    if (contact_number && !phoenCheck(contact_number)) return;
+
+    if (contact_number && !phoneCheck(contact_number)) return;
     if (email && !emailCheck(email)) return;
 
     try {
       setLoading(true);
       const response = await fetch("/api/main-backend/get_grievance", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         credentials: "include",
         body: JSON.stringify({
           name,
@@ -166,59 +147,154 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
       }
     } catch (error) {
       setMessage("Error connecting to the server");
-      if (error?.response?.data?.status === 429) {
-        navigate("/ratelimit", { state: { msg: error.response.data.message } });
-      }
       console.error("Submission Error:", error);
     } finally {
       setLoading(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setContent("");
+      setEmail("");
+      setUserCaptcha("");
+      setName("");
+      setContactNumber("");
+      setQueryAbout("");
+      setCategory("");
+      setCaptcha(generateCaptcha());
     }
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setContent("");
-    setEmail("");
-    setUserCaptcha("");
-    setName("");
-    setContactNumber("");
-    setQueryAbout("");
-    setCategory("");
-    setUserCaptcha("");
-    setCaptcha(generateCaptcha());
   };
 
-  // ====== TABLE EDITING API (FRONTEND ONLY) ======
-
-  // change a specific cell in Level 2..N rows
-  const handleChange = (rowIndex, key, value) => {
-    setLevels((prev) =>
-      prev.map((row, idx) => (idx === rowIndex ? { ...row, [key]: value } : row))
-    );
+  // Admin functions
+  const handleEditChange = (category, field, value, index = null) => {
+    const newData = editableData.map((item) => {
+      if (item.category === category) {
+        let newContent;
+        if (Array.isArray(item.content)) {
+          newContent = [...item.content];
+          if (index !== null) {
+            newContent[index] = value;
+          }
+        } else {
+          newContent = { ...item.content, [field]: value };
+        }
+        return { ...item, content: newContent };
+      }
+      return item;
+    });
+    setEditableData(newData);
   };
 
-  // add a new row after Level 4 => becomes Level 5 (and so on)
-  const handleAddRow = () => {
-    const normKey = (h) => h.toLowerCase().replace(/\s|&/g, "");
-    const blank = {};
-    section.forEach((h) => (blank[normKey(h)] = ""));
-    setLevels((prev) => [...prev, blank]);
+  const handleSaveClick = () => {
+    if (!validateMandatoryFields()) {
+    toast.error("All fields are mandatory!");
+    return;    }                 
+    setSavedOnce(true);
+    const changes = [];
+
+    editableData.forEach((editableItem) => {
+      const originalItem = grievanceData.find(
+        (item) => item.category === editableItem.category
+      );
+
+      if (originalItem) {
+        const originalContent = originalItem.content;
+        const editableContent = editableItem.content;
+
+        // Check for changes in content
+        if (JSON.stringify(editableContent) !== JSON.stringify(originalContent)) {
+          let action = "";
+          let details = {};
+
+          if (Array.isArray(editableContent)) {
+            action = `Edited content for ${editableItem.category}`;
+            details = { from: originalContent, to: editableContent };
+          } else {
+            const changedFields = Object.keys(editableContent).filter(
+              (key) => editableContent[key] !== originalContent[key]
+            );
+
+            if (changedFields.length > 0) {
+              action = `Edited fields in ${editableItem.category}`;
+              details = changedFields.reduce((acc, field) => {
+                acc[field] = {
+                  from: originalContent[field],
+                  to: editableContent[field],
+                };
+                return acc;
+              }, {});
+            }
+          }
+
+          if (action) {
+            changes.push({
+              category: editableItem.category,
+              action,
+              details,
+              originalContent: originalContent, // Store the entire original content for undo
+            });
+          }
+        }
+      }
+    });
+
+    setChangeList(changes);
+    setgrEdit(false);
+    toast.success("Changes saved locally! Click 'Request changes' to submit.");
+  };
+  const validateMandatoryFields = () => {
+  for (let item of editableData) {
+    if (Array.isArray(item.content)) {
+      for (let val of item.content) {
+        if (!val || val.toString().trim() === "") return false;
+      }
+    } else {
+      for (let key in item.content) {
+        if (!item.content[key] || item.content[key].toString().trim() === "")
+          return false;
+      }
+    }
+  }
+  return true;
+};
+
+
+  const handleUndoChange = (idx) => {
+    const newList = [...changeList];
+    const undoneChange = newList.splice(idx, 1)[0]; // Use splice to remove and get the item
+    setChangeList(newList);
+
+    // Revert the editable data to its state before the change
+    setEditableData((prevData) => {
+      return prevData.map((item) => {
+        if (item.category === undoneChange.category) {
+          // Use the stored original content to revert
+          return { ...item, content: undoneChange.originalContent };
+        }
+        return item;
+      });
+    });
   };
 
-  // delete full Level 1 row (as requested)
-  const handleDeleteLevel1 = () => {
-    setShowLevel1(false);
+  const handleFinalRequest = async () => {
+    if (changeList.length === 0) {
+      toast.error("No changes to submit!");
+      return;
+    }
+    try {
+      await axios.post("/api/admin/request-changes", {
+        changes: changeList,
+        data: editableData,
+      });
+      toast.success("Request submitted for approval!");
+      setChangeList([]);
+      setShowPopup(false);
+      setSavedOnce(false);
+      // Reset the original data to the new saved data
+      setGrievanceData(editableData);
+    } catch (err) {
+      toast.error("Failed to submit request!");
+    }
   };
 
-  // delete a Level 2..N row by index in `levels`
-  const handleDeleteRow = (rowIndex) => {
-    setLevels((prev) => prev.filter((_, idx) => idx !== rowIndex));
-  };
-
-  // save (for now just exit edit mode; backend integration later)
-  const handleSave = () => {
-    setEditHdesk(false);
-    // If needed later: map `levels` back into the original grievanceData shape
-  };
-
+  // Loading states
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -227,29 +303,43 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     );
   }
 
+  if (!grievanceData || !editableData || grievanceData.length === 0) {
+    return <p>Loading grievance table...</p>;
+  }
+
+  // Helper functions to get content from editableData
+  const getEditableContent = (category) => {
+    return editableData?.find((item) => item.category === category)?.content;
+  };
+
+  const editableSection = getEditableContent("section & level") || [];
+  const editableLevel1 = getEditableContent("level1") || {};
+  const editableLevel2 = getEditableContent("level2") || {};
+  const editableLevel3 = getEditableContent("level3") || {};
+  const editableLevel4 = getEditableContent("level4") || {};
+  const editableLevel5 = getEditableContent("level5") || [];
+  const editableAnother = getEditableContent("another") || [];
+
   return (
     <>
-      <div>
-        <Banner
-          toggle={toggle}
-          theme={theme}
-          backgroundImage="./Banners/Grievances_Banner.webp"
-          headerText="Help Desk"
-          subHeaderText="Raise your concerns here"
-        />
-      </div>
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/Grievances_Banner.webp"
+        headerText="Help Desk"
+        subHeaderText="Raise your concerns here"
+      />
 
-      {/* FORM */}
       <div className="flex justify-center p-6 font-[poppins]">
-        <div className="w-full bg-prim dark:bg-drkts py-12 px-4">
+        <div className="bg-prim dark:bg-drkts py-12 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+            {/* Left side */}
             <div className="flex flex-col items-start justify-center space-y-6">
               <h2 className="text-3xl md:text-4xl font-extrabold text-brwn dark:text-drkt leading-tight">
                 Have a Query or Grievance?
               </h2>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                We value your feedback and concerns. Please fill in your details and our
-                team will reach out to you shortly.
+                We value your feedback and concerns. Please fill in your details and our team will reach out to you shortly.
               </p>
             </div>
 
@@ -258,9 +348,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               className="bg-prim dark:bg-drkp shadow-xl rounded-3xl px-8 py-10 space-y-6 border-t-8 border-brwn dark:border-drks"
             >
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Full Name
-                </label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Full Name</label>
                 <input
                   type="text"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -271,9 +359,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Contact Number
-                </label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Contact Number</label>
                 <input
                   type="number"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -284,9 +370,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Email Address
-                </label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
                 <input
                   type="email"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -298,9 +382,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                    Query About
-                  </label>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Query About</label>
                   <select
                     className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none"
                     onChange={(e) => setQueryAbout(e.target.value)}
@@ -317,9 +399,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
                 </div>
 
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                    Category
-                  </label>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Category</label>
                   <select
                     className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none"
                     onChange={(e) => setCategory(e.target.value)}
@@ -337,9 +417,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  Your Message
-                </label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Your Message</label>
                 <textarea
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
                   rows="4"
@@ -350,9 +428,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 items-center">
-                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">
-                  {captcha}
-                </div>
+                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">{captcha}</div>
                 <input
                   type="text"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -366,9 +442,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`p-2 rounded w-full ${
-                  loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"
-                }`}
+                className={`p-2 rounded w-full ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"}`}
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>
@@ -377,170 +451,244 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
         </div>
       </div>
 
-      {/* ADMIN CONTROLS */}
-      <div className="admin-controls-ug flex justify-end mb-2 gap-2">
-        <button
-          className="admin-edit-ug flex gap-1 items-center"
-          onClick={() => setEditHdesk((prev) => !prev)}
-        >
-          {editHdesk ? (
-            <>
-              <CircleX /> Cancel
-            </>
-          ) : (
-            <>
-              <SquarePen /> Edit
-            </>
-          )}
-        </button>
-
-        
-      </div>
-
-      {/* TABLE */}
+      {/* Grievance Table */}
       <div className="p-6">
         <h2 className="text-center text-xl font-bold text-[#800000] dark:text-drkt mb-4">
           Grievance Contact Levels
         </h2>
 
+        <div className="admin-controls-gr flex justify-end mb-2">
+          <button
+            className="admin-edit-gr  flex gap-1 items-center"
+            onClick={() => {
+              setgrEdit(!gredit);
+              setSavedOnce(false); // Reset saved status on edit/cancel
+              setChangeList([]); // Clear pending changes
+              setEditableData(grievanceData); // Reset data to original on cancel
+            }}
+          >
+            {gredit ? <><CircleX size={18} /> Cancel</> : <><SquarePen size={18} /> Edit</>}
+          </button>
+        </div>
+
         <div className="overflow-x-auto">
-          {section.length === 0 && !level1 && levels.length === 0 ? (
-            <p className="text-center text-gray-500">Loading grievance table...</p>
-          ) : (
-            <table className="w-full border border-gray-300 text-center">
-              <thead className="bg-[#808080] text-white">
-                <tr>
-                  <th className="p-2 border">Section & Level</th>
-                  {section.map((header, idx) => (
-                    <th key={idx} className="p-2 border">
-                      {header}
-                    </th>
-                  ))}
-                  {editHdesk && <th className="p-2 border">Actions</th>}
-                </tr>
-              </thead>
+        {grievanceData && grievanceData.length > 0 ? (
+          <table className="w-full border border-gray-300 text-center">
+            <thead className="bg-[#808080] text-white">
+              <tr>
+                <th className="p-2 border">Section & Level</th>
+                {section.map((header, idx) => (
+                  <th key={idx} className="p-2 border">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {/* Level 1 */}
+              <tr>
+                <td className="p-2 border">Level 1</td>
+                <td colSpan={editableSection.length} className="p-2 border text-center">
+                  {gredit ? (
+                    <div className="flex flex-col gap-2">
+                      <input
+                        type="text"
+                        value={editableLevel1.Administrative_Officer}
+                        onChange={(e) => handleEditChange("level1", "Administrative_Officer", e.target.value)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                        placeholder="Administrative Officer"
+                        required
+                      />
+                      <input
+                        type="text"
+                        value={editableLevel1.ph}
+                        onChange={(e) => handleEditChange("level1", "ph", e.target.value)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                        placeholder="Phone Number"
+                        required
+                      />
+                      <input
+                        type="text"
+                        value={editableLevel1.email_id}
+                        onChange={(e) => handleEditChange("level1", "email_id", e.target.value)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                        placeholder="Email ID"
+                      />
+                      <input
+                        type="text"
+                        value={editableLevel1.Online_Help_desk}
+                        onChange={(e) => handleEditChange("level1", "Online_Help_desk", e.target.value)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                        placeholder="Online Help Desk"
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <span>{editableLevel1.Administrative_Officer}</span><br />
+                      <span>ph: {editableLevel1.ph || "-"}</span><br />
+                      <a href={`mailto:${editableLevel1.email_id}`} className="dark:text-drka">
+                        Email ID: {editableLevel1.email_id || "-"}
+                      </a>
+                      <span>, Online Help desk: </span>
+                      <a href={`https://${editableLevel1.Online_Help_desk}`} className="dark:text-drka">
+                        {editableLevel1.Online_Help_desk || "-"}
+                      </a>
+                    </>
+                  )}
+                </td>
+              </tr>
 
-              <tbody>
-                {/* Level 1 (special layout) */}
-                {showLevel1 && level1 && (
-                  <tr>
-                    <td className="p-2 border">Level 1</td>
-                    <td colSpan={section.length} className="p-2 border">
-                      {level1.Administrative_Officer} <br />
-                      ph: {level1.ph || "-"} <br />
-                      <a
-                        href={`mailto:${level1.email_id || ""}`}
-                        className="dark:text-drka"
-                      >
-                        {level1.email_id}
-                      </a>
-                      <br />
-                      Online Help desk:{" "}
-                      <a
-                        href={`https://${level1.Online_Help_desk || ""}`}
-                        className="dark:text-drka"
-                      >
-                        {level1.Online_Help_desk}
-                      </a>
-                    </td>
-                    {editHdesk && (
-                      <td className="p-2 border">
-                        <button
-                          onClick={handleDeleteLevel1}
-                          className="text-red-500"
-                          title="Delete Level 1"
-                        >
-                          <Trash2 size={16} />
-                        </button>
+              {/* Levels 2, 3, 4 */}
+              {[
+                { level: "level2", data: editableLevel2 },
+                { level: "level3", data: editableLevel3 },
+                { level: "level4", data: editableLevel4 },
+              ].map((levelItem, idx) => (
+                <tr key={idx}>
+                  <td className="p-2 border">Level {idx + 2}</td>
+                  {editableSection.map((sec, i) => {
+                    const key = sec.toLowerCase().replace(/\s|&/g, "");
+                    return (
+                      <td key={i} className="p-2 border">
+                        {gredit ? (
+                          <input
+                            type="text"
+                            value={levelItem.data[key] || ""}
+                            onChange={(e) => handleEditChange(levelItem.level, key, e.target.value)}
+                            className="w-full text-center bg-transparent border-b-2 border-gray-300 focus:border-[#800000]"
+                          />
+                        ) : (
+                          levelItem.data[key] || "-"
+                        )}
                       </td>
+                    );
+                  })}
+                </tr>
+              ))}
+
+              {/* Level 5 */}
+              {editableLevel5 && (
+                <tr>
+                  <td className="p-2 border">Level 5</td>
+                  <td colSpan={editableSection.length} className="p-2 border">
+                    {gredit ? (
+                      <textarea
+                        value={editableLevel5[0] || ""}
+                        onChange={(e) => handleEditChange("level5", null, e.target.value, 0)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                        rows="2"
+                      />
+                    ) : (
+                      editableLevel5[0]
                     )}
-                  </tr>
-                )}
+                  </td>
+                </tr>
+              )}
 
-                {/* Levels 2..N (editable) */}
-                {levels.map((levelRow, idx) => {
-                  const labelLevel = idx + 2; // Level numbering starts at 2
-                  return (
-                    <tr key={`lvl-${idx}`}>
-                      <td className="p-2 border">Level {labelLevel}</td>
-
-                      {section.map((sec, i) => {
-                        const key = sec.toLowerCase().replace(/\s|&/g, "");
-                        return (
-                          <td key={i} className="p-2 border">
-                            {editHdesk ? (
-                              <input
-                                type="text"
-                                className="w-full p-1 border rounded"
-                                value={levelRow[key] ?? ""}
-                                onChange={(e) =>
-                                  handleChange(idx, key, e.target.value)
-                                }
-                              />
-                            ) : (
-                              levelRow[key] || "-"
-                            )}
-                          </td>
-                        );
-                      })}
-
-                      {editHdesk && (
-                        <td className="p-2 border">
-                          <button
-                            onClick={() => handleDeleteRow(idx)}
-                            title={`Delete Level ${labelLevel}`}
-                            className="text-red-500"
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                        </td>
-                      )}
-                    </tr>
-                  );
-                })}
-                
-
-                {/* Optional "another" row preserved */}
-                {another && another.length > 0 && (
-                  <tr>
-                    <td
-                      className="p-3 border"
-                      colSpan={Math.ceil(section.length / 2) + 1}
-                    >
-                      {another[0]}
-                    </td>
-                    <td
-                      colSpan={Math.floor(section.length / 2)}
-                      className="p-3 border"
-                    >
-                      {another[1]}
-                    </td>
-                    {editHdesk && <td className="p-2 border"></td>}
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          )}
-        </div>
-        <div className="admin-controls-ug flex justify-end mb-2 gap-2">
-        {editHdesk && (
-          <>
-            <button
-              className="admin-edit-ug active flex gap-1 items-center jus"
-              onClick={handleAddRow}
-            >
-              <PlusCircle size={16} /> Add
-            </button>
-            <button
-              className="admin-edit-ug active flex gap-1 items-center"
-              onClick={handleSave}
-            >
-              <SaveAll size={16} /> Save
-            </button>
-          </>
+              {/* Another section */}
+              {editableAnother && editableAnother.length > 0 && (
+                <tr>
+                  <td className="p-3 border" colSpan={Math.ceil(editableSection.length / 2) + 1}>
+                    {gredit ? (
+                      <textarea
+                        value={editableAnother[0] || ""}
+                        onChange={(e) => handleEditChange("another", null, e.target.value, 0)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                        rows="2"
+                      />
+                    ) : (
+                      editableAnother[0]
+                    )}
+                  </td>
+                  <td colSpan={Math.floor(editableSection.length / 2)} className="p-3 border">
+                    {gredit ? (
+                      <textarea
+                        value={editableAnother[1] || ""}
+                        onChange={(e) => handleEditChange("another", null, e.target.value, 1)}
+                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                        rows="2"
+                      />
+                    ) : (
+                      editableAnother[1]
+                    )}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        ) : (
+          <p>Loading grievance table...</p>
         )}
-        </div>
       </div>
+
+              {gredit && (
+                <div className="admin-controls flex flex-col items-end gap-2 mt-4">
+                  <button className="admin-edit-gr active flex items-center gap-1" onClick={handleSaveClick}>
+                    <SaveAll size={16} />
+                    <span className="btn-text">Save</span>
+                  </button>
+                </div>
+              )}
+
+              {!gredit && savedOnce && (
+                <div className="admin-controls flex justify-end mt-4">
+                  <button className="admin-edit-gr flex gap-1 items-center" onClick={() => setShowPopup(true)}>
+                    <Send size={18} /> Request changes
+                  </button>
+                </div>
+              )}
+
+              <ToastContainer position="bottom-right" autoClose={3000} />
+            </div>
+
+            {/* Modal */}
+            {showPopup && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-[500px]">
+                  <h2 className="text-lg font-semibold mb-4">Final Request for the Changes</h2>
+                  <p className="text-red-600 mb-4">
+                    <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
+                  </p>
+
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2">Action</th>
+                        <th className="text-left p-2">Section/Category</th>
+                        <th className="text-left p-2">Undo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {changeList.length === 0 ? (
+                        <tr>
+                          <td className="p-2" colSpan={3}>No pending changes.</td>
+                        </tr>
+                      ) : (
+                        changeList.map((req, idx) => (
+                          <tr key={idx} className="border-b">
+                            <td className="p-2">{req.action}</td>
+                            <td className="p-2 capitalize">{req.category}</td>
+                            <td className="p-2">
+                              <button className="nss-btn nss-btn-undo flex items-center gap-1" onClick={() => handleUndoChange(idx)}>
+                                <CircleX size={16} className="text-red-500 hover:text-red-700" />
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+
+            <div className="flex justify-end gap-3 mt-4">
+              <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={() => setShowPopup(false)}>Cancel</button>
+              <button
+                className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center"
+                onClick={handleFinalRequest}
+              >
+                Final Request
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
