@@ -317,7 +317,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-166.webp",
-            "resume_pdf": "/static/pdfs/faculty_profile/011/"
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-166.pdf"
           },
           {
             "name": "Mrs. REVATHY S P",
@@ -392,7 +392,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-162.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-162.pdf"
           },
           {
             "name": "Mrs. PARVATHY M",
@@ -407,7 +407,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-01-526.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-01-526.pdf"
           },
           {
             "name": "Mrs. SATHYA V",
@@ -422,7 +422,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58824349500"
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-018.webp",
-            "resume_pdf": ""
+            "resume_pdf": "static/pdfs/faculty_profile/011/VEC-011-04-018.pdf"
           },
           {
             "name": "Mrs. RANGINI M",
@@ -437,7 +437,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55792600800"
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-157.webp",
-            "resume_pdf": ""
+            "resume_pdf": "/static/pdfs/faculty_profile/011/VEC-011-04-157.pdf"
           },
           {
             "name": "Mrs. SANTHANA ARUMUGA SANKARI M",
@@ -669,27 +669,27 @@
         "category": "department_activities",
         "content": [
           {
-            "year": "2023 - 2024",
+            "year": "2024 - 2025",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Seminar.pdf"
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Internship.pdf"
               },
               {
                 "name": "Symposium",
@@ -701,7 +701,45 @@
               },
               {
                 "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Add-On Course.pdf"
+              }
+      ],
+            "activities": []
+          },
+          {
+            "year": "2023 - 2024",
+            "activities_tile": [
+              {
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Workshop.pdf"
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Internship.pdf"
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Symposium.pdf"
+              },
+               {
+                "name": "Conference",
                 "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Add-On Course.pdf"
               }
       ],
             "activities": [
@@ -778,23 +816,23 @@
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Seminar.pdf"
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Internship.pdf"
               },
               {
                 "name": "Symposium",
@@ -802,11 +840,11 @@
               },
                {
                 "name": "Conference",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Conference.pdf"
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Add-On Course.pdf"
               }
       ],
             "activities": [
@@ -1009,7 +1047,7 @@
               },
               {
                 "name": "Internship",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2021-2022/Internship.pdf"
               },
               {
                 "name": "Symposium",
@@ -1021,7 +1059,7 @@
               },
               {
                 "name": "Valued Added Course",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/011/2021-2022/Add-On Course.pdf"
               }
       ],
             "activities": [
@@ -1123,7 +1161,47 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": []
+        "content": [
+          {
+            "year": "2024 - 2025",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Pedagogy Initiatives 2024-2025.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Instructive Material.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2023 - 2024",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2023-2024/Pedagogy Initiatives 2023-2024.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2023-2024/Instructive Material.pdf"
+              }
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "content": [
+              {
+                "name": "Pedagogy Initiatives",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2022-2023/Pedagogy Initiatives 2022-2023.pdf"
+              },
+              {
+                "name": "Instructional Material",
+                "pdf_path": "/static/pdfs/Pedagogy/011/2022-2023/Instructive Material.pdf"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

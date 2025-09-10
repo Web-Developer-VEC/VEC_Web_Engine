@@ -29,7 +29,8 @@
             "To focus on delivering education that is both affordable and of high quality, ensuring that it aligns with current industry needs. ",
             "To strive for excellence in teaching and learning processes by integrating strong ethical values, inventive thinking, and a focus on entrepreneurship.",
             "To create an environment that encourages innovation supports multidisciplinary research endeavors, and cultivates professionals focused on research excellence in Computer Science and Engineering. ",
-            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations."
+            "To enhance educational outcomes by nurturing entrepreneurship, integrating project-based learning, and aligning educational efforts with both industrial demands and societal aspirations.",
+            "To build strategic partnerships with industry to encourage collaborative innovation, facilitate knowledge exchange, and align educational efforts with real-world demands."
         ]
       },
       {
@@ -157,9 +158,6 @@
           {
             "header": "PSO 2",
             "content": "Ability to refine ethical approaches for addressing environmental and social issues, while enhancing interdisciplinary project management skills using IT tools to meet industry and societal demands effectively."
-
-
-
           }
         ]
       }
@@ -409,7 +407,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-611.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-611.pdf"
       },
       {
         "name": "Dr. ALMELU S",
@@ -709,7 +707,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-613.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-613.pdf"
       },
       {
         "name": "Mrs. SANTHIYA R",
@@ -724,7 +722,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-616.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-616.pdf"
       },
       {
         "name": "Ms. SUSHANTHI A",
@@ -754,7 +752,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-614.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-614.pdf"
       },
       {
         "name": "Mr. HARI KRISHNAN M",
@@ -769,7 +767,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-617.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-617.pdf"
       },
        {
         "name": "Mrs. DHIVYA S",
@@ -784,7 +782,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-699.webp",
-        "resume_pdf": ""
+        "resume_pdf": "/static/pdfs/faculty_profile/005/VEC-005-04-699.pdf"
       }
      
     ]
@@ -922,7 +920,13 @@
         "/static/pdfs/newsletter/005/VEEVACS12_2024.pdf",
         "/static/pdfs/newsletter/005/VEEVACS13_2024.pdf"
       ]
-    }
+    },
+     {
+      "year":"2025",
+      "pdf_path":[
+       "/static/pdfs/newsletter/005/Newsletter 2025.pdf",
+       "/static/pdfs/newsletter/005/Tech Times Magazine MAY 2025.pdf"]
+       }
   ]
 }
     ]
@@ -948,19 +952,19 @@
               "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Seminar.pdf"
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -980,15 +984,6 @@
               }
       ],
               "activities":[  
-          {
-    "date": "06/02/2025",
-    "name_of_event": "Seminar on STUDY OVERSEAS: UNLOCK GLOBAL OPPORTUNITIES",
-    "coordinator": "",
-    "resource_person": "Mr. Vamsi Valluru, Director, VIISV EDUCATION PRIVATE Ltd",
-    "beneficiaries": "CSE",
-    "relevant_PO_PSO": "",
-    "image_path": "/static/images/dept_activities/005/3.webp"
-           }
  
          ]
       },
@@ -997,19 +992,19 @@
               "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Seminar.pdf"
               },
               {
                 "name": "Workshop",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Workshop.pdf"
               },
               {
                 "name": "Industrial Visit/ In-Plant Training ",
-                "pdf_path": ""
+                "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Industrial Visit.pdf"
               },
               {
                 "name": "Internship",
@@ -1027,117 +1022,46 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-              "activities":[
+            ],
+              "activities":[]
+            },
+            {
+              "year": "2022 - 2023",
+              "activities_tile": [
                 {
-          "date": "29/08/2024",
-        "name_of_event": "Workshop on SIH PROJECT DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Gladwin,GenAI Engineer at PAL Genie",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "19/08/2024",
-        "name_of_event": "Workshop on PROTOTYPE / PROCESS DESIGN AND DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Dr.A.Lakshmi Sangeetha,Associate Professor,Velammal Engineering College",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "14/09/2024",
-        "name_of_event": "Workshop on GRAPHICS AND VISUAL MEDIA",
-        "coordinator": "",
-        "resource_person": "Ms.P.Sathyakala Specialist Graphic Designer, 2adpro Media solutions private limited",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "20/08/2024",
-        "name_of_event": "Seminar on INNOVATIVE IDEA PRESENTATION",
-        "coordinator": "",
-        "resource_person": "S.S.Sivakumar Senior Manager,Managed Services",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "07/08/2024",
-        "name_of_event": "Workshop on Generative AI",
-        "coordinator": "",
-        "resource_person": "Mr.Harish Babu,Manager NXTWAVE",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "23/09/2024",
-        "name_of_event": "Workshop on CLOUD COMPUTING AND DEVOPS",
-        "coordinator": "",
-        "resource_person": "Mr.Arun Kumar.M Cloud Engineer, Presidio",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/09/2024-19/09/2024",
-        "name_of_event": "Training on HOW TO MASTER PROBLEM SOLVING, CRITICAL THINKING AND EFFICIENT CODING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthipan Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "18/07/2024",
-        "name_of_event": "Technical Training on CLOUD COMPUTING AND AWS",
-        "coordinator": "",
-        "resource_person": "Mr.Paris Kapoor, System Architect, FeOS Technologies",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "05/07/2024",
-        "name_of_event": "Workshop on WEB DEVELOPMENT",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-      {
-        "date": "01/07/2024",
-        "name_of_event": "Workshop on DATA SCIENCE AND MACHINE LEARNING",
-        "coordinator": "",
-        "resource_person": "Mr.Parthiban Muthuramalingam, Director, Bezcoder Academy",
-        "beneficiaries": "CSE",
-        "relevant_PO_PSO": "",
-        "image_path": ""
-      },
-       {
-    "date": "16/09/2024",
-    "name_of_event": "Visited an Industry RETECH SOLUTIONS PVT.LTD",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "2nd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  },
-  {
-    "date": "30/08/2024",
-    "name_of_event": "Visited an Industry WIPRO",
-    "coordinator": "",
-    "resource_person": "",
-    "beneficiaries": "3rd Year Students From CSE",
-    "relevant_PO_PSO": "",
-    "image_path": ""
-  }
-              ]
+                "name": "Guest Lecture",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
+              },
+              {
+                "name": "Seminar",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Seminar.pdf"
+              },
+              {
+                "name": "Workshop",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Workshop.pdf"
+              },
+              {
+                "name": "Industrial Visit/ In-Plant Training ",
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Industrial Visit.pdf"
+              },
+              {
+                "name": "Internship",
+                "pdf_path": ""
+              },
+              {
+                "name": "Symposium",
+                "pdf_path": ""
+              },
+               {
+                "name": "Conference",
+                "pdf_path": ""
+              },
+              {
+                "name": "Valued Added Course",
+                "pdf_path": ""
+              }
+              ],
+              "activities": []
             }
     ]
 
@@ -1159,7 +1083,162 @@
       },
       {
         "category": "Pedagogy Initiatives",
-        "content": []
+        "content": [
+          {
+            "year": "VEC CSE YOUTUBE CHANNEL",
+            "content": [
+              {
+                "name": "Multimedia and Animation",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+              },
+              {
+                "name": "Cloud Computing and Virtualization",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqFOy-xKsFEarP7CsFTOYXV&si=88JATA3YOQ8Hg4PX"
+              },
+              {
+                "name": "Problem Solving using python Programming",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAoTbgK6z9g92FLqqjDJ3cH3&si=CXkpqIQokj3vRJwI"
+              },
+              {
+                "name": "Design Analysis of Algorithm",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApDR8L4jXauEM5fq93Dhv9A&si=dZFfhkT_4qN2b8WX"
+              },
+              {
+                "name": "Foundations of Data Science",
+                "pdf_path": "https://www.youtube.com/playlist?list=PLodrFpDKbzAq1-xI7GETR3C0ikGLKux-j"
+              },
+              {
+                "name": "Database Management System",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArqI7wNqBB7nHzxt0eI8uBV&si=JVItlExjuwz90zPM"
+              },
+              {
+                "name": "Problem Solving using C Programming",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAryidIKPVw7Ga0nAyOTXxfn&si=lZXcVat40ZkE1YCf"
+              },
+              {
+                "name": "Compiler Design",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArep06cRMRsysPYmYaZKXEm&si=Zqc7rOR8uiZOUdZ1"
+              },
+              {
+                "name": "Mobile Computing",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArdgSYi602XiavlM8CwAwX8&si=zU01eClu8wo63j0c"
+              },
+              {
+                "name": "Professional Ethics",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqBzOEOhuCGR05wXnjd6zz4&si=LcoaOZ6WgVK8RRnR"
+              },
+              {
+                "name": "Software Project Management",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzAqsQHX_04knvRzVs8ayKaws&si=e-V7BUuXquaxJlYr"
+              },
+              {
+                "name": "Information storage and Retrieval Techniques",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApLrYzk-UzzYdXKTLITiVkl&si=pnRp8T6y_DCarftR"
+              },
+              {
+                "name": "Artificial Intelligence",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzApZ8ux0veTyV0mrfGcsq_Bc&si=V-3Ag7zRUYvFFW6z"
+              },
+              {
+                "name": "Data Structures",
+                "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArKuNUxVAYDUe7Hq4Ylm3-Z&si=z7N1TnYa9brKtqGm"
+              }
+            ]
+          },
+          {
+        "year": "SLIDESHARE - CSE DEPARTMENT",
+        "content": [
+          {
+            "name":"Computer Architecture",
+            "pdf_path":"https://www.slideshare.net/slideshow/introduction-to-computer-architecture-unit-1/273994513"
+          },
+          {
+            "name":"Internet Programming",
+            "pdf_path":"https://www.slideshare.net/slideshow/internet-programming-unit1-web-essential/274005086"
+          },
+          {
+            "name":"Object Oriented Software Engineering",
+            "pdf_path":"https://www.slideshare.net/slideshow/cascading-style-sheets-250149020/250149020"
+          },
+          {
+            "name":"Data structure/ Design analysis of algorithm",
+            "pdf_path":"https://www.slideshare.net/slideshow/binary-search-tree-250138237/250138237"
+          },
+          {
+            "name":"Database and Managment System",
+            "pdf_path":"https://www.slideshare.net/slideshow/dbms-managing-information-systems-introduction/274006489"
+          },
+          {
+            "name":"Computer Networks",
+            "pdf_path":"https://www.slideshare.net/slideshow/computer-networks-basics-introduction-pptx/274008256"
+          },
+          {
+            "name":"Cloud Computing and Virtualization",
+            "pdf_path":"https://www.slideshare.net/slideshow/nist-cloud-computing-reference-architecture-pptx/273988964"
+          },
+          {
+            "name":"Cryptography and Network Security",
+            "pdf_path":"https://www.slideshare.net/slideshow/aes-encryption-decryption-in-crptography-pptx/274005381"
+          },
+          {
+            "name":"Artificial Intelligence",
+            "pdf_path":"https://www.slideshare.net/slideshow/problem-solving-by-searching-and-optimization/273981372"
+          },
+          {
+            "name":"Software Testing",
+            "pdf_path":"https://www.slideshare.net/slideshow/unit-i-19cs408t-software-testing-notes/274004207"
+          },
+          {
+            "name":"Big Data Analysis",
+            "pdf_path":"https://www.slideshare.net/slideshow/task-abstraction-in-big-data-analytics-pptx/273994904"
+          },
+          {
+            "name":"Software Project and Management",
+            "pdf_path":"https://www.slideshare.net/slideshow/software-project-management-intro-ss1-pptx/274005307"
+          },
+          {
+            "name":"Information Storage and Retrieval Techniques",
+            "pdf_path":"https://www.slideshare.net/slideshow/jm-information-retrieval-techniques-unit-i/273994064"
+          },
+          {
+            "name":"Human Computer Interaction and Design",
+            "pdf_path":"https://www.slideshare.net/slideshow/unit-i-human-computer-interaction-introduction/274007802"
+          },
+          {
+            "name":"Python Programming",
+            "pdf_path":"https://www.slideshare.net/slideshow/control-structures2_ppt_control-flow-statements/273989425"
+          },
+          {
+            "name":"Operating System",
+            "pdf_path":"https://www.slideshare.net/slideshow/operating-system-engineering-syllabus-ppt/273996966"
+          },
+          {
+            "name":"Mobile Computing",
+            "pdf_path":"https://www.slideshare.net/slideshow/mobile-computing-wireless-telecommunication-systems/273996407"
+          },
+          {
+            "name":"Data Science",
+            "pdf_path":"https://www.slideshare.net/slideshow/unit-1-introduction-to-data-science-pptx/273994672"
+          },
+          {
+            "name":"Full Stack Programming",
+            "pdf_path":"https://www.slideshare.net/slideshow/mongodb-is-a-document-database-it-stores-data-in-a-type-of-json-format-called-bson/273989525"
+          },
+          {
+            "name":"Computer Graphics",
+            "pdf_path":"https://www.slideshare.net/slideshow/introduction-to-multimedia-_-unit-01/282149660"
+          },
+          {
+            "name":"Object Oriented Programming",
+            "pdf_path":"https://www.slideshare.net/slideshow/overview-of-object-oriented-programming-using-c/274004937"
+          },
+          {
+            "name":"C and C++",
+            "pdf_path":"https://www.slideshare.net/slideshow/programming-for-problem-solving-in-c-and-c-pptx/274005232"
+          }
+        ]
+      }
+        ]
       }
     ]
   },

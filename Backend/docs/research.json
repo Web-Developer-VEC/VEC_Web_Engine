@@ -3,10 +3,6 @@
         "type":"Journal Publication",
         "data":[
             {
-                "year":"2021-2022",
-                "pdf_path":"/static/pdfs/overall_research/2021-2022/2021-22 - Journal Publication.pdf"
-            },
-            {
                 "year":"2022-2023",
                 "pdf_path":"/static/pdfs/overall_research/2022-2023/2022-23 - Journal Publication.pdf"
             },
@@ -27,20 +23,20 @@
         "data":[
             {
                 "year":"2021-2022",
-                "pdf_path":"/static/pdfs/overall_research/2021-2022/2021-22 - Funded Projects.pdf"
+                "pdf_path":""
             },
             {
                 "year":"2022-2023",
-                "pdf_path":"/static/pdfs/overall_research/2022-2023/2022-23 - Funded Projects.pdf"
+                "pdf_path":""
             },
             {
                 "year":"2023-2024",
-                "pdf_path":"/static/pdfs/overall_research/2023-2024/2023-24 - Funded Projects.pdf"
+                "pdf_path":""
 
             },
             {
                 "year":"2024-2025",
-                "pdf_path":"/static/pdfs/overall_research/2024-2025/2024-25 - Funded Projects.pdf"
+                "pdf_path":""
 
             }
         ]
@@ -87,6 +83,24 @@
             {
                 "year":"2024-2025",
                 "pdf_path":""
+
+            }
+        ]
+      },
+      {
+        "type":"Policy",
+        "data":[
+            {
+                "name":"Innovation and Startup Policy",
+                "pdf_path":"/static/pdfs/overall_research/Innovation and Startup Policy.pdf"
+            },
+            {
+                "name":"Research Policy",
+                "pdf_path":"/static/pdfs/overall_research/Research Policy.pdf"
+            },
+            {
+                "name":"IPR Policy",
+                "pdf_path":"/static/pdfs/overall_research/IPR Policy.pdf"
 
             }
         ]
