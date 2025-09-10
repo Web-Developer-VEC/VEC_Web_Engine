@@ -4,7 +4,7 @@ import "./Gallery.css";
 import Banner from "../../Banner";
 import axios from "axios";
 import LoadComp from "../../LoadComp";
-import { Plus, Send, X } from "lucide-react";
+import { Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,6 +23,8 @@ const Admingallery = ({ toggle, theme }) => {
   const [newGallery,setNewGalleries] = useState([]);
   const [confirmpopup,setConfirmPopup] = useState(false);
   const [newLinks, setNewLinks] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState(null);
   const [linkInput, setLinkInput] = useState("");
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -87,7 +89,7 @@ const Admingallery = ({ toggle, theme }) => {
 
     setNewGalleries((prev) => [
       ...prev,
-      { category: newGalleryData.category, files: newGalleryData.files, links: newGalleryData.youtubeUrl, action: categoryExists ? "insert" : "update",}
+      { category: newGalleryData.category, files: newGalleryData.files, links: newGalleryData.youtubeUrl, action: !categoryExists ? "insert" : "update",}
     ]);
 
     setNewTitle("");
@@ -103,25 +105,60 @@ const Admingallery = ({ toggle, theme }) => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("type", "gallery");
+    const payload = newGallery.map((galleryItem) => {
+      const imagePaths = [];
 
-    newGallery.forEach((galleryItem, galleryIndex) => {
-      galleryItem.files.forEach((file, fileIndex) => {
-        const extension = file.name.split(".").pop();
-        const newFileName = `${galleryItem.category}_${fileIndex + 1}.${extension}`;
-        const renamedFile = new File([file], newFileName, { type: file.type });
+      if (galleryItem.files?.length) {
+        galleryItem.files.forEach((f) => {
+          imagePaths.push(
+            `/static/images/gallery/${galleryItem.category
+              .toLowerCase()
+              .replace(/\s+/g, "_")}/${f.name}`
+          );
+        });
+      }
 
-        // Use structured keys so backend can group them
-        formData.append("files", renamedFile);
-        formData.append("categories", galleryItem.category);
-        formData.append("action", galleryItem.action);
-      });
+      if (galleryItem.image_path?.length) {
+        imagePaths.push(...galleryItem.image_path);
+      }
 
-      formData.append("links", JSON.stringify(galleryItem.links));
+      if (galleryItem.links?.length) {
+        imagePaths.push(...galleryItem.links);
+      }
+
+      const metaData = {
+        category: galleryItem.category,
+        image_path: imagePaths,
+      };
+
+      return {
+        collectionName: "gallery",
+        collection_type: "gallery",
+        action: galleryItem.action,
+        title:
+          galleryItem.action === "insert"
+            ? "insertion of gallery"
+            : galleryItem.action === "delete"
+            ? "deletion of gallery"
+            : "update of gallery",
+        category: galleryItem.category,
+        meta_data: metaData,
+        original_data: null,
+      };
     });
 
-    fetch(`/api/admin-backend/${"gallery"}/temp`, {
+    // Build FormData
+    const formData = new FormData();
+    formData.append("docs", JSON.stringify(payload)); // all metadata in one field
+
+    // Attach all files separately
+    newGallery.forEach((galleryItem, i) => {
+      galleryItem.files?.forEach((file) => {
+        formData.append("files", file);
+      });
+    });
+
+    fetch(`/api/admin-backend/gallery/temp`, {
       method: "POST",
       body: formData,
     })
@@ -130,12 +167,30 @@ const Admingallery = ({ toggle, theme }) => {
         console.log("Gallery uploaded:", data);
         setConfirmPopup(false);
         setNewGalleries([]);
-        toast.success("Request submitted successfully!");
+        toast.success(`${data.message}`);
       })
       .catch((err) => {
         console.error("Upload failed", err);
+        toast.error("Request failed.");
       });
   };
+    
+    const confirmDelete = () => {
+      setGallery(gallery.filter((g) => g !== deleteTarget));
+      setNewGalleries((prev) => [
+        ...prev,
+        {
+          category: deleteTarget.category,
+          files: [],
+          links: [],
+          action: "delete",
+        },
+      ]);
+      setShowDeleteModal(false);
+      toast.success(
+        `The ${deleteTarget.category} deleted successfully! Click "Request" to confirm.`
+      );
+    };
 
   if (!isOnline) {
     return (
@@ -173,12 +228,22 @@ const Admingallery = ({ toggle, theme }) => {
                                         <button
                       className="read-more-button bg-secd dark:bg-drks"
                       onClick={() =>
-                        navigate(`/admin_gallery-details`, {
+                        navigate(`/gallery_details`, {
                           state: { imagespath: img?.image_path, title: img?.category },
                         })
                       }
                     >
                       Read More
+                    </button>
+                    {/* Delete Icon */}
+                    <button
+                      onClick={() => {
+                        setDeleteTarget(img);
+                        setShowDeleteModal(true);
+                      }}
+                      className="absolute top-2 right-2 p-2 bg-red-600 rounded-full hover:bg-red-800"
+                    >
+                      <Trash2 size={18} color="white" />
                     </button>
                   </div>
                 </div>
@@ -192,11 +257,13 @@ const Admingallery = ({ toggle, theme }) => {
                 <Plus size={40} color="gray" />
               </div>
             </div>
-            <div className="p-6 flex justify-end">
-              <button className="p-[12px] bg-secd dark:drks cursor-pointer border rounded-[12px] flex gap-[10px] justify-center"
-                      onClick={() => setConfirmPopup(true)}
-              ><Send/>Request</button>
-            </div>
+            {newGallery.length > 0 && (
+              <div className="p-6 flex justify-end">
+                <button className="p-[12px] bg-secd dark:drks cursor-pointer border rounded-[12px] flex gap-[10px] justify-center"
+                        onClick={() => setConfirmPopup(true)}
+                ><Send/>Request</button>
+              </div>
+            )}
             <ToastContainer position="bottom-right" autoClose={3000} />
           </div>
         </>
@@ -246,6 +313,7 @@ const Admingallery = ({ toggle, theme }) => {
               type="file"
               multiple
               className="mb-3"
+              accept="image/*"
               onChange={(e) => setNewPhotos([...e.target.files])}
             />
 
@@ -330,6 +398,35 @@ const Admingallery = ({ toggle, theme }) => {
           </div>
         </div>
       )}
+
+      {/* Delete Confirm Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]" onClick={() => { setDeleteTarget(null); setShowDeleteModal(false)}}>
+          <div className="bg-white p-6 rounded-xl w-[350px]" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-lg font-bold mb-4 text-black">Confirm Delete</h2>
+            <p className="text-sm text-red-500 dark:text-red-300 mb-4">
+              Are you sure you want to delete category "
+              {deleteTarget?.category}" with all photos ?
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-4 py-2 rounded bg-red-600 hover:bg-red-800 text-white"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirm request pop up model */}
       {confirmpopup && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
@@ -362,6 +459,7 @@ const Admingallery = ({ toggle, theme }) => {
                         <td className="py-1">
                           {g.action === "insert" && <span className="text-green-600">+ Added</span>}
                           {g.action === "update" && <span className="text-blue-600">✎ Edited</span>}
+                          {g.action === "delete" && <span className="text-blue-600"><Trash2/> Delete</span>}
                         </td>
                         <td className="py-1">{g.category}</td>
                         <td className="py-1">{g.files.length} images{g.links.length > 0 ? `, ${g.links.length} links` : ""}</td>

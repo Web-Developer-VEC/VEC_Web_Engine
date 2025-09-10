@@ -9,12 +9,14 @@ import AdminIQAC from "./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx";
 import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
 import LandingPage from "./Landing";
 import NotFound from "./NotFound";
+import AdminApprovalPage from "./Components/Admin/Superier/admin-approval-page.jsx";
 
 export const routeConfig = {
   "/gallery": { normal: Gallery, admin: Admingallery },
   "/transport": { normal: Transport, admin: AdminTransport },
   "/gallery_details": { normal: Gallerydetails, admin: Admingallerydetails},
   "/admin_dash": { normal: NotFound, admin: AdminDashboard},
+  "/admin_approval": { normal: NotFound, admin: AdminApprovalPage},
   "/iqac": { normal: IQAC, admin: AdminIQAC },
   "/": {normal: LandingPage, admin: LandingPage}
 };

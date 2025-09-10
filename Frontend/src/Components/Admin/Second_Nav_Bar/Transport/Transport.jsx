@@ -73,47 +73,54 @@ const AdminTransport = ({ theme, toggle }) => {
     };
     
     const handleConfirmRequest = async () => {
-        const meta_data = {
-            route: selectedPdf.file
-        };
+        if (!selectedPdf) return;
 
-        const original_data = {
-            route: transportData[0].route
-        }
+        const oldPath = transportData[0]?.pdf_path;
 
-        const title = "Transport Route pdf change"
+        const newFilePath = `/static/pdfs/transport/${selectedPdf.file.name}`;
+
+        const payload = [
+            {
+            collectionName: "transport",
+            collection_type: "transport",
+            action: "update",
+            title: "Updation of transport Route pdf",
+            category: null,
+            meta_data: {
+                pdf_path: newFilePath,
+            },
+            original_data: {
+                pdf_path: oldPath,
+            },
+            },
+        ];
+
         try {
             const formData = new FormData();
+            formData.append("docs", JSON.stringify(payload));
             formData.append("files", selectedPdf.file);
-            formData.append("collection_type", "transport");
-            formData.append("action", "update");
-            formData.append("meta_data", JSON.stringify(meta_data));
-            formData.append("original_data", JSON.stringify(original_data));
-            formData.append("title", title);
+            console.log(payload);
+            
+
             const res = await axios.post(
-                `http://localhost:5000/api/admin-backend/transport/temp`,
+                `/api/admin-backend/transport/temp`,
                 formData,
-                {
-                    headers: { "Content-Type": "multipart/form-data" },
-                    withCredentials: true // if using cookies/auth
-                }
+            {
+                headers: { "Content-Type": "multipart/form-data" },
+                withCredentials: true, // if using cookies/auth
+            }
             );
 
-            if (res.ok) {
-                alert("Request submitted");
-            }
-            console.log(res);
-            
-            toast.success("Request submitted successfully!");
+            toast.success(res.data.message || "Request submitted successfully!");
+            setConfirmPopup(false);
+            setSelectedPdf(null);
         } catch (error) {
             toast.error("Request not submitted successfully!");
             console.error("Error sending request", error);
         }
-        setConfirmPopup(false);
-        setSelectedPdf(null);
-    }
+    };
 
-    const oldpath = transportData[0]?.route.split("/");
+    const oldpath = transportData[0]?.pdf_path.split("/");
     
 
     return (
@@ -130,8 +137,8 @@ const AdminTransport = ({ theme, toggle }) => {
             
             <div className="font-[poppins] flex flex-col items-center mt-6">
                 {/* PDF Display */}
-                { (selectedPdf || transportData?.[0]?.route) && (
-                    <PDF pdfRoute={selectedPdf ? selectedPdf.fileURL : transportData[0].route} />
+                { (selectedPdf || transportData?.[0]?.pdf_path) && (
+                    <PDF pdfRoute={selectedPdf ? selectedPdf.fileURL : transportData[0].pdf_path} />
                 )}
 
                 {/* Replace PDF Button */}

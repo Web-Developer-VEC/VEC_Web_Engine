@@ -5,24 +5,8 @@ module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
 
-    let docs = [];
-
-    // Case 1: form-data with "data" key
-    if (req.body.data) {
-      try {
-        const parsed = JSON.parse(req.body.data);
-        docs = Array.isArray(parsed) ? parsed : [parsed];
-      } catch (e) {
-        return res.status(400).json({
-          success: false,
-          error: "Invalid JSON in 'data'",
-          details: e.message,
-        });
-      }
-    } else {
-      // Case 2: raw JSON (application/json)
-      docs = Array.isArray(req.body) ? req.body : [req.body];
-    }
+    // const docs = Array.isArray(req.body) ? req.body : [req.body];
+    let docs = req.body.docs ? JSON.parse(req.body.docs) : [];
 
     if (docs.length === 0) {
       return res.status(400).json({
