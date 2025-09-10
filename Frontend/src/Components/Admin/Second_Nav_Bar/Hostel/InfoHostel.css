@@ -1,0 +1,178 @@
+.infohostel-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.infohostel-title {
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 2vh;
+  font-size: 2rem;
+}
+
+/* Grid Layout */
+.HI-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.HI-contact-name {
+  font-size: 16px;
+}
+
+/* Card Style */
+.HI-card {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Card Title */
+.HI-card-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  padding-bottom: 2px;
+  width: fit-content;
+}
+
+/* Card Text */
+.HI-card-text {
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* Food Timetable Section */
+.food-timetable {
+  margin-top: 30px;
+}
+
+/* Table Styling */
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.food-table th,
+.food-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.food-table th {
+  background-color: #808080;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Editable field styles */
+.text-input {
+  border: 1px dashed #cbd5e0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.edit-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #3182ce;
+}
+
+.edit-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.save-button {
+  background-color: #38a169;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-button {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .infohostel-container {
+    padding: 15px;
+  }
+
+  .infohostel-title {
+    font-size: 24px;
+  }
+
+  .HI-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .HI-card {
+    width: 100%;
+  }
+
+  .food-table {
+    width: 100%;
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .food-table th,
+  .food-table td {
+    padding: 8px;
+  }
+
+  .edit-controls {
+    flex-direction: column;
+  }
+  
+  .text-input {
+    font-size: 14px;
+  }
+}

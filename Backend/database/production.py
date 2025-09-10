@@ -181,21 +181,6 @@ def insert_ecell_sections():
 
     print("e cell sections inserted successfully.")
 
-def insert_transport_sections():
-    collection = db["transport"]
-
-    with open("/VEC_Web_Engine/Backend/docs/transport.json", "r", encoding="utf-8") as file:
-        exams_data = json.load(file)
-
-        for section in exams_data:
-            section_key = section["type"]
-            document = {
-                "type": section_key,
-                "data": section["data"]
-            }
-            collection.insert_one(document)
-
-    print("transport sections inserted successfully.")
 
 def insert_other_facilities_sections():
     collection = db["other_facilities"]
@@ -267,7 +252,6 @@ insert_web_team()
 insert_academics_sections()
 insert_gallery_sections()
 insert_other_facilities_sections()
-insert_transport_sections()
 insert_ecell_sections()
 insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
