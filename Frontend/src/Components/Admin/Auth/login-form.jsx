@@ -45,6 +45,7 @@ export function LoginForm() {
       setSuccess("Login successful! Redirecting...")
     } catch (err) {
       setError(err.message)
+      console.error("Error login",err);
     } finally {
       setLoading(false)
     }

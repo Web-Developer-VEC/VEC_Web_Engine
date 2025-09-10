@@ -151,62 +151,75 @@ const IQAC = ({ toggle , theme }) => {
 
     // Render Gallery content
     const renderGalleryContent = () => {
-    // Assuming iqacData.gallery is your array
-    let galleryData;
+        let galleryData = [];
 
-    if (iqacData) {
-        galleryData = iqacData || [];
+        if (Array.isArray(iqacData)) {
+        galleryData = iqacData;
+        } else if (iqacData && typeof iqacData === "object") {
+        // if it's a single object, wrap it in an array
+        galleryData = [iqacData];
+        }
+
+        // Create the "OVERALL" category dynamically
+        const overallPaths = Array.isArray(galleryData)
+            ? galleryData.flatMap(item => item?.paths || [])
+            : [];
+        const galleryWithOverall = [
+            { category: "OVERALL", paths: overallPaths },
+            ...galleryData
+        ];
+
+        // Extract all categories
+        const categories = galleryWithOverall.map(item => item?.category);
+
+        // Find the object matching the selectedCategory
+        const selectedItem = galleryWithOverall.find(item => item?.category === selectedCategory);
+
+        return (
+            <>
+                {!iqacData ? (
+                    <div className="flex justify-center items-center min-h-screen">
+                        <LoadComp />
+                    </div>
+                ) : (
+                    <div className="mr-4">
+                        <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
+
+                        {/* Category Buttons */}
+                        <div className="flex flex-wrap gap-2 justify-center mb-4">
+                            {categories.map((category) => (
+                                <button
+                                    key={category}
+                                    className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
+                                        selectedCategory === category
+                                            ? "bg-accn text-white"
+                                            : "bg-secd dark:bg-drks"
+                                    }`}
+                                    type="button"
+                                    onClick={() => setSelectedCategory(category)}
+                                >
+                                    {category}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Images */}
+                        <div className="columns-xs mb-12">
+                            {selectedItem?.paths?.map((imagePath, index) => (
+                                <img
+                                    key={imagePath}
+                                    src={UrlParser(imagePath)}
+                                    alt={`Gallery Image ${index + 1}`}
+                                    className="size-0 block box-border m-2 animate-[fadBorn_1s_ease_forwards]"
+                                    style={{ animationDelay: `${100 * index}ms` }}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </>
+        );
     }
-
-    // Extract all categories
-    const categories = Array.isArray(galleryData) && galleryData?.map(item => item?.category);
-
-    // Find the object matching the selectedCategory
-    const selectedItem = Array.isArray(galleryData) && galleryData?.find(item => item?.category === selectedCategory);
-
-    return (
-        <>
-            {!iqacData ? (
-                <div className="flex justify-center items-center min-h-screen">
-                    <LoadComp />
-                </div>
-            ) : (
-                <div className="mr-4">
-                    <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
-        
-                    <div className="flex flex-wrap gap-2 justify-center mb-4">
-                        {Array.isArray(categories) && categories?.map((category) => (
-                        <button
-                            key={category}
-                            className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
-                            selectedCategory === category
-                                ? "bg-accn text-white"
-                                : "bg-secd dark:bg-drks"
-                            }`}
-                            type="button"
-                            onClick={() => setSelectedCategory(category)}
-                        >
-                            {category}
-                        </button>
-                        ))}
-                    </div>
-        
-                    <div className="columns-xs mb-12">
-                        {Array.isArray(selectedItem?.paths) && selectedItem?.paths?.map((imagePath, index) => (
-                        <img
-                            key={imagePath}
-                            src={UrlParser(imagePath)}
-                            alt={`Gallery Image ${index + 1}`}
-                            className={`size-0 block box-border m-2 animate-[fadBorn_1s_ease_forwards]`}
-                            style={{ animationDelay: `${100 * index}ms` }}
-                        />
-                        ))}
-                    </div>
-                </div>
-            )}
-        </>
-    );
-    };
 
     function IqaObj() {
         return renderObjectivesContent();

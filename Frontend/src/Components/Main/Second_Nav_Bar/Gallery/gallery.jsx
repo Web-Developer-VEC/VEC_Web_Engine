@@ -40,7 +40,7 @@ const Gallery = ({ toggle, theme}) => {
   },[])
 
   const handleReadMore = (images, tit) => {
-    navigate(`/gallery-details`, { state: { imagespath: images, title: tit }});
+    navigate(`/gallery_details`, { state: { imagespath: images, title: tit }});
 
   };
 

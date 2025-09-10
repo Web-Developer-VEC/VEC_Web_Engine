@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { ChevronDown, ChevronUp, Check, X, Plus, Edit, Trash2, Calendar, User, Trophy } from "lucide-react"
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function AdminApprovalPage() {
   const [expandedSections, setExpandedSections] = useState({
@@ -10,20 +8,10 @@ export default function AdminApprovalPage() {
     delete: false,
   })
 
-  const [itemApprovals, setItemApprovals] = useState({});
-  const [requests, setrequests] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state && location.state.request) {
-      console.log((location.state.request));
-      setrequests(location.state.request);
-      
-    }
-  }, [location.state])
+  const [itemApprovals, setItemApprovals] = useState({})
 
   // Sample requests data - any one of these will be passed to the component
-  const requests1 = [
+  const requests = [
     {
       id: 1,
       title: "Sports: Tournament Update",
@@ -111,7 +99,7 @@ export default function AdminApprovalPage() {
   ]
 
   // For demo, using the first request. In real app, this would be passed as props
-  const requestData = requests1[2]
+  const requestData = requests[1]
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({
@@ -128,22 +116,20 @@ export default function AdminApprovalPage() {
     }))
   }
 
-  const handleBulkAction = (action) => {
-    const newApprovals = {}
-    ;["add", "edit", "delete"].forEach((section) => {
-      if (requestData.data[section]) {
-        requestData.data[section].forEach((_, index) => {
-          const key = `${section}-${index}`
-          newApprovals[key] = action === "accept"
-        })
-      }
-    })
-    setItemApprovals(newApprovals)
-  }
-
   const getApprovalStatus = (section, index) => {
     const key = `${section}-${index}`
     return itemApprovals[key]
+  }
+
+  const handleSubmitReview = () => {
+    // Prepare the review data
+    const review = {
+      requestId: requestData.id,
+      approvals: itemApprovals,
+    }
+    console.log("Submitting review:", review)
+    // Here you would typically send this data to the backend API
+    alert("Review submitted! Check console for details.")
   }
 
   const getSectionIcon = (section) => {
@@ -198,7 +184,7 @@ export default function AdminApprovalPage() {
 
   const renderAddItems = () => (
     <div className="space-y-3">
-      {requests?.data?.insert?.map((item, index) => (
+      {requestData.data.add.map((item, index) => (
         <div key={index} className="bg-white p-4 rounded-lg border border-green-200">
           <div className="flex justify-between items-start">
             <div className="flex-1 space-y-2">{renderDataFields(item)}</div>
@@ -232,7 +218,7 @@ export default function AdminApprovalPage() {
 
   const renderEditItems = () => (
     <div className="space-y-3">
-      {requests?.data?.update?.map((item, index) => (
+      {requestData.data.edit.map((item, index) => (
         <div key={index} className="bg-white p-4 rounded-lg border border-orange-200">
           <div className="flex justify-between items-start">
             <div className="flex-1">
@@ -342,7 +328,7 @@ export default function AdminApprovalPage() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 text-center mb-4">{requests?.collection}</h1>
+          <h1 className="text-2xl font-bold text-gray-900 text-center mb-4">{requestData.title}</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div className="text-center md:text-left">
               <span className="text-gray-600 font-medium">Requested by: </span>
@@ -354,16 +340,16 @@ export default function AdminApprovalPage() {
                 <span className="text-gray-900">{requestData.reason}</span>
               </div>
             )}
-            {requests?.createdAt && (
+            {requestData.created_at && (
               <div className="text-center md:text-left text-gray-500">
                 <span className="font-medium">Created: </span>
-                {formatDate(requests?.createdAt)}
+                {formatDate(requestData.created_at)}
               </div>
             )}
-            {requests?.collection_type && (
+            {requestData.section && (
               <div className="text-center md:text-right">
                 <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium uppercase">
-                  {requests?.collection_type}
+                  {requestData.section}
                 </span>
               </div>
             )}
@@ -373,7 +359,7 @@ export default function AdminApprovalPage() {
         {/* Action Sections */}
         <div className="space-y-4">
           {/* Additions Section */}
-          {requests?.data?.insert && requests?.data?.insert?.length > 0 && (
+          {requestData.data.add && requestData.data.add.length > 0 && (
             <div className={`bg-white rounded-lg shadow-sm border-l-4 ${getSectionColor("add")}`}>
               <button
                 onClick={() => toggleSection("add")}
@@ -381,7 +367,7 @@ export default function AdminApprovalPage() {
               >
                 <div className="flex items-center gap-3">
                   {getSectionIcon("add")}
-                  <span className="font-medium text-gray-900">Additions ({requests?.data?.insert?.length})</span>
+                  <span className="font-medium text-gray-900">Additions ({requestData.data.add.length})</span>
                 </div>
                 {expandedSections.add ? (
                   <ChevronUp className="w-5 h-5 text-gray-400" />
@@ -394,7 +380,7 @@ export default function AdminApprovalPage() {
           )}
 
           {/* Modifications Section */}
-          {requests.data.update && requests.data.update.length > 0 && (
+          {requestData.data.edit && requestData.data.edit.length > 0 && (
             <div className={`bg-white rounded-lg shadow-sm border-l-4 ${getSectionColor("edit")}`}>
               <button
                 onClick={() => toggleSection("edit")}
@@ -415,7 +401,7 @@ export default function AdminApprovalPage() {
           )}
 
           {/* Deletions Section */}
-          {requests.data.delete && requests.data.delete.length > 0 && (
+          {requestData.data.delete && requestData.data.delete.length > 0 && (
             <div className={`bg-white rounded-lg shadow-sm border-l-4 ${getSectionColor("delete")}`}>
               <button
                 onClick={() => toggleSection("delete")}
@@ -436,21 +422,11 @@ export default function AdminApprovalPage() {
           )}
         </div>
 
-        {/* Bulk Action Buttons */}
-        <div className="flex gap-4 justify-center mt-8">
-          <button
-            onClick={() => handleBulkAction("reject")}
-            className="px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2"
-          >
-            <X className="w-4 h-4" />
-            Reject All
-          </button>
-          <button
-            onClick={() => handleBulkAction("accept")}
-            className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
-          >
-            <Check className="w-4 h-4" />
-            Accept All
+        {/* Final submit Button */}
+
+        <div className="mt-8 text-center">
+          <button onClick={handleSubmitReview} className="mt-6 bg-secd text-text py-3 rounded-lg font-medium hover:bg-brwn p-2 hover:text-drkt transition-colors">
+            Submit Review
           </button>
         </div>
       </div>

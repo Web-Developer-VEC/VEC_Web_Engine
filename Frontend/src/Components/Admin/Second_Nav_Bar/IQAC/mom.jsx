@@ -1,6 +1,8 @@
 import { Edit, Trash2, Plus, Save, Send, ArrowDown, Upload, Replace } from 'lucide-react';
 import LoadComp from "../../LoadComp";
 import React, {useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function IqaMet({ iqacData }) {
@@ -8,6 +10,8 @@ export default function IqaMet({ iqacData }) {
     const [hasChanges, setHasChanges] = useState(false);
     const [editingRow, setEditingRow] = useState(null);
     const [showRequestModal, setShowRequestModal] = useState(false);
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [indexToDelete, setIndexToDelete] = useState(null);
     const [changes, setChanges] = useState([]);
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -28,6 +32,12 @@ export default function IqaMet({ iqacData }) {
             setEditableData([...iqacData]);
         }
     }, [iqacData]);
+
+    const confirmDelete = () => {
+        handleDelete(indexToDelete);
+        setDeleteConfirm(false);
+        setIndexToDelete(null);
+    }
 
     // Handle input changes
     const handleInputChange = (index, field, value) => {
@@ -54,19 +64,6 @@ export default function IqaMet({ iqacData }) {
                 action: iqacData[index] ? 'edit' : 'add',
                 changes: { [field]: { old: iqacData[index]?.[field], new: value } }
             }]);
-        }
-    };
-
-    const [uploadedFiles, setUploadedFiles] = useState({});
-
-    const handleFileUpload = (index, file) => {
-        if (file && file.type === 'application/pdf') {
-            const fileURL = URL.createObjectURL(file);
-            setUploadedFiles(prev => ({
-                ...prev,
-                [index]: { file, fileURL }
-            }));
-            handleInputChange(index, 'path', file.name);
         }
     };
 
@@ -102,31 +99,15 @@ export default function IqaMet({ iqacData }) {
         setHasChanges(true);
     };
 
-    // Save changes temporarily
-    const handleSave = () => {
-        setEditingRow(null);
-        // Here you would typically save to a temporary state or local storage
-        console.log('Changes saved temporarily:', editableData);
-    };
-
     // Handle request confirmation
     const handleRequestConfirm = () => {
         // Here you would send the request to the backend
         console.log('Final request submitted:', editableData, changes);
+        toast.success("Request submitted successfully!");
         setShowRequestModal(false);
         setHasChanges(false);
         setChanges([]);
         // Reset or update UI as needed
-    };
-
-    // Cancel editing
-    const handleCancelEdit = () => {
-        setEditingRow(null);
-        if (iqacData && Array.isArray(iqacData)) {
-            setEditableData([...iqacData]);
-        }
-        setHasChanges(false);
-        setChanges([]);
     };
 
     // Convert "dd.MM.yyyy" → "yyyy-MM-dd"
@@ -258,7 +239,7 @@ export default function IqaMet({ iqacData }) {
                                                                 <Edit size={16} />
                                                             </button>
                                                             <button
-                                                                onClick={() => handleDelete(index)}
+                                                                onClick={() => {setDeleteConfirm(true); setIndexToDelete(index);}}
                                                                 className="p-1 text-red-600 hover:bg-red-100 rounded"
                                                                 title="Delete"
                                                             >
@@ -298,6 +279,7 @@ export default function IqaMet({ iqacData }) {
                             </button>
                         )}
                     </div>
+                    <ToastContainer position="bottom-right" autoClose={3000} />
                 </>
             )}
 
@@ -372,6 +354,32 @@ export default function IqaMet({ iqacData }) {
                             </button>
                         </div>
                     </div>
+                </div>
+            )}
+
+            {/* Delete confirmation popup */}
+            {deleteConfirm && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+                <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
+                    <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+                    <p className="text-sm mb-4 text-center">
+                        Are you sure you want to delete this member?
+                    </p>
+                    <div className="flex justify-center gap-3">
+                    <button
+                        onClick={() => setDeleteConfirm(null)}
+                        className="px-4 py-2 bg-gray-400 text-white rounded"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={confirmDelete}
+                        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    >
+                        Delete
+                    </button>
+                    </div>
+                </div>
                 </div>
             )}
         </>
