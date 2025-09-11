@@ -51,7 +51,7 @@ const AbtYear = ({ toggle, theme }) => {
 
   // Dynamically render year content
   const renderYearContent = (selectedYear) => {
-    const yearData = aboutYearData.find((item) => item.year === selectedYear);
+    const yearData = aboutYearData.find((item) => item.category === selectedYear);
 
     if (!yearData) {
       return <p style={{ textAlign: "center" }}>No data available for {selectedYear}</p>;
@@ -59,7 +59,7 @@ const AbtYear = ({ toggle, theme }) => {
     return (
       <div className="mt:[15px] py-[10px] h-[400px]"> 
       <div style={{  textAlign: "center" }}>
-        <h1 className="yr-title mt-[30px] font-[poppins]">{yearData.year}</h1>
+        <h1 className="yr-title mt-[30px] font-[poppins]">{yearData.category}</h1>
         <div className="btn-yr text-black">
           {yearData.content.map((entry, index) => (
             <button
