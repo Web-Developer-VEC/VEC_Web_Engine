@@ -7,7 +7,8 @@ function checkRoleByCollection() {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    let docs = req.body;
+    // let docs = req.body;
+    let docs = req.body.docs ? JSON.parse(req.body.docs) : [];
 
     // ✅ Normalize: always work with an array
     if (!Array.isArray(docs)) {
@@ -49,7 +50,7 @@ function checkRole(allowedRoles) {
     if (!allowedRoles.includes(admin.role)) {
       return res.status(403).json({ error: "Access Denied: Your role is not allowed to make changes in this page" });
     }
-
+    
     next();
   };
 }

@@ -5,8 +5,8 @@ module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
 
-    // const docs = Array.isArray(req.body) ? req.body : [req.body];
-    let docs = req.body.docs ? JSON.parse(req.body.docs) : [];
+    //const docs = Array.isArray(req.body) ? req.body : [req.body]; // Hari
+    let docs = req.body.docs ? JSON.parse(req.body.docs) : [];  // Ajith 
 
     if (docs.length === 0) {
       return res.status(400).json({

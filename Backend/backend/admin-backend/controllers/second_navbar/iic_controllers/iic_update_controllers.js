@@ -21,18 +21,24 @@ async function updateData(tempDoc, mainCollection) {
     });
 
     // 3️⃣ Define type categories
-    const singleDocTypes = ["about_the_library", "books", "journal", "HOD"];
+    const singleDocTypes = ["home", "contact"];
     const multiDocTypes = [
-      "Faculty_Staff",
-      "advisors",
-      "Ebook_Sources",
-      "digital_libraries",
+      "faculty",
+      "expert_representation",
+      "iic3",
+      "iic4",
+      "iic5",
+      "iic6",
+      "iic7",
+      "kapila",
+      "mentee",
+      "certificate",
+      "policy",
     ];
     const categoryBasedTypes = [
-      "membership_details",
-      "Collection",
-      "library_services",
-      "library_resources",
+      "establishment",
+      "student_representation",
+      "yukti",
     ];
 
     // 4️⃣ Single-doc types → overwrite entire data array
@@ -55,7 +61,7 @@ async function updateData(tempDoc, mainCollection) {
       if (!categoryExists) throw new Error(`Category ${category} not found`);
 
       const content = categoryExists.content;
-
+      const members = categoryExists.members;
       // Case A: Array of strings
       if (Array.isArray(content) && typeof content[0] === "string") {
         if (!original_data) throw new Error("original_data required");
@@ -80,30 +86,40 @@ async function updateData(tempDoc, mainCollection) {
         // );
 
         await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $set: { "data.$.content": metaArray } }
+          { type: collection_type, "data.category": category }, // ✅ find by type + category
+          { $set: { "data.$.content": metaArray } } // ✅ update the matching category
         );
       }
 
       // Case B: Array of objects → match by title
-      else if (Array.isArray(content) && content[0]?.title) {
-        if (!original_data) throw new Error("original_data required");
+      else if (
+        (Array.isArray(content) && content.length > 0) ||
+        (Array.isArray(members) && members.length > 0)
+      ) {
+        if (!original_data) {
+          return res.status(400).json({ message: "original_data required" });
+        }
 
-        const originalArray = Array.isArray(original_data)
-          ? original_data
-          : [original_data];
-        const metaArray = Array.isArray(meta_data) ? meta_data : [meta_data];
+        // Compare by keys instead of JSON.stringify
+        const isEqual = (obj1, obj2) =>
+          Object.keys(obj1).every((key) => obj2[key] === obj1[key]);
 
-        const updated = content.map((item) => {
-          const index = originalArray.findIndex(
-            (od) => od.title === item.title
-          );
-          return index !== -1 ? { ...item, ...metaArray[index] } : item;
-        });
+        const updatedArray = (
+          collection_type === "student_representation" ? members : content
+        ).map((item) =>
+          isEqual(item, original_data) ? { ...item, ...meta_data } : item
+        );
+        const upd = Array.isArray(updatedArray) ? updatedArray : updatedArray;
+        const updateField =
+          collection_type === "student_representation"
+            ? "data.$[elem].members"
+            : "data.$[elem].content";
+
+
 
         await mainCollection.updateOne(
           { type: collection_type },
-          { $set: { "data.$[elem].content": updated } },
+          { $set: { [updateField]: upd } },
           { arrayFilters: [{ "elem.category": category }] }
         );
       }
@@ -130,23 +146,19 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       const updatedData = doc.data.map((item) => {
-        if (
-          (item._id &&
-            original_data._id &&
-            item._id.toString() === original_data._id.toString()) ||
-          JSON.stringify(item) === JSON.stringify(original_data)
-        ) {
+        // Compare object equality
+        if (JSON.stringify(item) === JSON.stringify(original_data)) {
           return { ...item, ...meta_data };
         }
         return item;
       });
-
       await mainCollection.updateOne(
         { type: collection_type },
         { $set: { data: updatedData } }
       );
 
       return {
+        status:200,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -156,7 +168,7 @@ async function updateData(tempDoc, mainCollection) {
     throw new Error("No matching case found");
   } catch (error) {
     console.error("Error updating data:", error);
-    throw error; // ❌ Pass error up to handleTempAction
+    throw new Error("Internal server error");
   }
 }
 
