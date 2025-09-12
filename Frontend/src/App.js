@@ -296,7 +296,7 @@ const App = () => {
                                 <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 {/* <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/> */}
-                                <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/> */}
                                 {/* <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 {/* <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/> */}
