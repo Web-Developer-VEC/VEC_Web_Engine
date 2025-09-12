@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ADM-M.E.css";
-import Banner from "../../../Banner";
-import LoadComp from "../../../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import {
   SaveAll,
