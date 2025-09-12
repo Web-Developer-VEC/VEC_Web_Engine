@@ -48,6 +48,8 @@ import HostelPage from "./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx";
 import AdminHostelPage from "./Components/Admin/Second_Nav_Bar/Hostel/Hostel.jsx";
 import GrievanceForm from "./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx";
 import AdminGrievanceForm from "./Components/Admin/Second_Nav_Bar/Helpdesk/admin_Grievences.jsx";
+import LibraryLayout from "./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx";
+import AdminLibraryLayout from "./Components/Admin/Second_Nav_Bar/library/LibraryLayout.jsx";
 
 export const routeConfig = {
 
@@ -86,6 +88,7 @@ export const routeConfig = {
   "/place-dep": { normal: PlacementDetails, admin: AdminPlacementDetails },
 
   // Second Nav Bar Routes
+  "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
   "/transport": { normal: Transport, admin: AdminTransport },
   "/hosLanding": { normal: HostelPage, admin: AdminHostelPage },
