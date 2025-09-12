@@ -10,7 +10,7 @@ const { deleteData } = require("../../controllers/second_navbar/library_controll
 const { updateData } = require("../../controllers/second_navbar/library_controllers/library_update_controllers");
 
 router.post("/libraryadmin",
-    checkRole(["library_admin"]),
+    checkRole(["super_admin"]),
     handleTempApproval,
     handleTempAction( insertData, deleteData, updateData )
     ); 
