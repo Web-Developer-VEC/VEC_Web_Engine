@@ -99,7 +99,7 @@ const Admingallery = ({ toggle, theme }) => {
     alert("Gallery image added successfully");
   };
 
-  const handleConfirmRequest = () => {
+  const handleConfirmRequest = async () => {
     if (newGallery.length === 0) {
       alert("No new galleries to upload.");
       return;
@@ -158,21 +158,24 @@ const Admingallery = ({ toggle, theme }) => {
       });
     });
 
-    fetch(`/api/admin-backend/gallery/temp`, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Gallery uploaded:", data);
-        setConfirmPopup(false);
-        setNewGalleries([]);
-        toast.success(`${data.message}`);
+    console.log(payload);
+    
+    try {
+      const res = await fetch(`/api/admin-backend/temp`, {
+        method: "POST",
+        body: formData,
       })
-      .catch((err) => {
-        console.error("Upload failed", err);
-        toast.error("Request failed.");
-      });
+
+      const data = await res.json();
+      console.log("Gallery uploaded:", data);
+      setConfirmPopup(false);
+      setNewGalleries([]);
+      toast.success(`${data.message}`);
+      
+    } catch (error) {
+      console.error("Upload failed", error);
+      toast.error("Request failed.");
+    }
   };
     
     const confirmDelete = () => {

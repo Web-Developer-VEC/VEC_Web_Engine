@@ -173,7 +173,7 @@ export default function Admingallerydetails() {
     });
 
     try {
-      const res = await fetch(`/api/admin-backend/gallery/temp`, {
+      const res = await fetch(`/api/admin-backend/temp`, {
         method: "POST",
         body: formData,
       });

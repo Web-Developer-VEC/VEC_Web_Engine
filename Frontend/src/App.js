@@ -263,25 +263,25 @@ const App = () => {
                                 <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
-                                <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
-                                <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
-                                <Route path="/phd" drk element={<PhdAdmission toggle={toggle} theme={theme}/>}/>
-                                <Route path="/admission-team" drk element={<ADMteam toggle={toggle} theme={theme}/>}/>
-                                <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
+                                <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/phd" drk element={<PhdAdmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admission-team" drk element={<ADMteam toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
-                                <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
-                                <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
+                                <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
-                                <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/> */}
 
-                                <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
                                 <Route path="/policies" drk element={<Policies toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/> */}
                                 
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 {/* <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/> */}
@@ -297,11 +297,11 @@ const App = () => {
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 {/* <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
-                                <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
                                 {/* <Route path="/Gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/> */}
                                 {/* <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/> */}
-                                <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                {/* <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/> */}
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
