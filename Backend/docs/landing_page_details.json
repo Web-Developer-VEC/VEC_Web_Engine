@@ -254,7 +254,7 @@
         "website_link": "",
         "status": "True"
       },
-     
+
       {
         "start_date": "18 JUL",
         "end_date": "18 JUL, 2025",
@@ -321,8 +321,8 @@
         "website_link": "http://www.noctivus.pro/",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "CLOUDSCAPE",
@@ -332,8 +332,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "Mastering of Fundamentals of Application Penetration Testing",
@@ -343,8 +343,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "Debate Competition - 'Clash of Gears'",
@@ -354,8 +354,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"18 AUG",
+      {
+        "start_date": "18 AUG",
         "end_date": "22 AUG, 2025",
         "date": "18-08-2025",
         "title": "Essentials of Artificial Intelligence and Machine Learning",
@@ -365,8 +365,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"19 AUG",
+      {
+        "start_date": "19 AUG",
         "end_date": "19 AUG, 2025",
         "date": "19-08-2025",
         "title": "3D - ANIMATION",
@@ -376,8 +376,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"22 AUG",
+      {
+        "start_date": "22 AUG",
         "end_date": "22 AUG, 2025",
         "date": "22-08-2025",
         "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
@@ -387,8 +387,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"20 AUG",
+      {
+        "start_date": "20 AUG",
         "end_date": "20 AUG, 2025",
         "date": "20-08-2025",
         "title": "DESTINY 29 – I Year Inauguration Ceremony",
@@ -398,8 +398,8 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"19 AUG",
+      {
+        "start_date": "19 AUG",
         "end_date": "19 AUG, 2025",
         "date": "19-08-2025",
         "title": "Career guidance - Need for skill Development",
@@ -409,14 +409,69 @@
         "website_link": "",
         "status": "True"
       },
-       {
-        "start_date":"25 AUG",
+      {
+        "start_date": "25 AUG",
         "end_date": "25 AUG, 2025",
         "date": "25-08-2025",
         "title": "Smart Healthcare Revolution",
         "department": "Electronics & Communication Engineering",
         "content": "",
         "brochure_path": "/static/images/events/SHR.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "10 SEP",
+        "end_date": "10 SEP, 2025",
+        "date": "10-09-2025",
+        "title": "Network Layer Protocol - IP and Mobile IP",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/NLPI.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Digital Twin Technology",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/TWIN.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "22 SEPT, 2025",
+        "end_date": "22 SEPT, 2025",
+        "date": "22-09-2025",
+        "title": "Scalathon",
+        "department": "Computer Science & Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/SCALATHON.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Building Real Time Systems using Data Structure and Java Programming",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/DATA STRUCTURE.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "From Idea to Device: A Hands-on Journey into IoT",
+        "department": "Artificial Intelligence and Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/JOURNEY.webp",
         "website_link": "",
         "status": "True"
       }
