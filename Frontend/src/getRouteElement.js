@@ -11,7 +11,7 @@ export const getRouteElement = (path, session, toggle, theme) => {
   if (!session) return <NormalComp toggle={toggle} theme={theme} />;
 
   // Session and allowed
-  if (session.allowedRoutes.includes(path)) {
+  if (session.routes.includes(path)) {
     return AdminComp 
       ? <AdminComp toggle={toggle} theme={theme} />
       : <NormalComp toggle={toggle} theme={theme} />;

@@ -1,24 +1,31 @@
 const { getAdminDb } = require("../../main-backend/config/db");
 
-
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
 
-    //const docs = Array.isArray(req.body) ? req.body : [req.body]; // Hari
-    let docs = req.body.docs ? JSON.parse(req.body.docs) : [];  // Ajith 
+    // 🔹 Parse docs flexibly
+    let docs = [];
+    try {
+      if (typeof req.body.docs === "string") {
+        docs = JSON.parse(req.body.docs);
+      } else if (Array.isArray(req.body.docs)) {
+        docs = req.body.docs;
+      } else if (req.body.docs && typeof req.body.docs === "object") {
+        docs = [req.body.docs];
+      }
+    } catch (e) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid JSON format in docs",
+      });
+    }
 
-    if (docs.length === 0) {
+    if (!docs || docs.length === 0) {
       return res.status(400).json({
         success: false,
         error: "No documents provided",
       });
-    }
-
-    if (docs.length === 0) {
-      return res
-        .status(400)
-        .json({ success: false, error: "No documents provided" });
     }
 
     const adminMeta = {
@@ -27,13 +34,14 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       role: req.session.admin.role,
     };
 
+    // 🔹 Use S3 key instead of path
     let fileMeta = { image_path: [], pdf_path: [] };
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
         if (file.mimetype.startsWith("image/")) {
-          fileMeta.image_path.push(file.path.replace("temp", ""));
+          fileMeta.image_path.push(`/${file.key}`); // ✅ S3 key
         } else if (file.mimetype === "application/pdf") {
-          fileMeta.pdf_path.push(file.path.replace("temp", ""));
+          fileMeta.pdf_path.push(`/${file.key}`);
         }
       }
     }
@@ -73,6 +81,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       };
     });
 
+    // 🔹 Group by collection
     const groupedByCollection = tempDocs.reduce((acc, doc) => {
       if (!acc[doc.collection]) acc[doc.collection] = [];
       acc[doc.collection].push(doc);
@@ -82,10 +91,11 @@ module.exports = async function storeTempMiddleware(req, res, next) {
     let totalInserted = 0;
     let insertedResults = {};
 
-    for (const [collectionName, groupDocs] of Object.entries(
-      groupedByCollection
-    )) {
+    for (const [collectionName, groupDocs] of Object.entries(groupedByCollection)) {
       const tempCollection = db.collection(collectionName);
+
+      console.log(`📌 Inserting ${groupDocs.length} docs into collection: ${collectionName}`);
+
       if (groupDocs.length === 1) {
         const result = await tempCollection.insertOne(groupDocs[0]);
         totalInserted += 1;
@@ -99,14 +109,12 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
     return res.json({
       success: true,
-      message: `Stored ${totalInserted} request(s) across ${
-        Object.keys(groupedByCollection).length
-      } collection(s) for admin approval`,
+      message: `Stored ${totalInserted} request(s) across ${Object.keys(groupedByCollection).length} collection(s) for admin approval`,
       insertedCount: totalInserted,
       insertedIds: insertedResults,
     });
   } catch (err) {
-    console.error(err);
+    console.error("❌ TempStore Error:", err);
     return res.status(500).json({
       success: false,
       error: "Server error",
