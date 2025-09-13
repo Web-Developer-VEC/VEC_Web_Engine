@@ -1,0 +1,141 @@
+/* ✅ Undo button */
+.nss-btn-undo {
+  background-color: #fde68a;   /* soft amber/yellow */
+  color: #92400e;              /* dark amber text */
+  border: 1px solid #fcd34d;   /* border for definition */
+}
+
+.nss-btn-undo:hover {
+  background-color: #fcd34d;   /* brighter amber */
+  color: #78350f;              /* darker amber text */
+  transform: scale(1.05);
+}
+
+.nss-btn-undo:active {
+  background-color: #fbbf24;   /* pressed state */
+  transform: scale(0.97);
+}
+
+/* Button Base */
+.nss-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.nss-btn svg {
+  font-size: 14px;
+}
+
+/* Edit Button (Yellow) */
+.nss-btn-edit,.nss-btn-add {
+  background: #facc15;
+  color: #1f2937;
+}
+.nss-btn-edit:hover {
+  background: #eab308;
+}
+
+/* Cancel Button (Brown) */
+.nss-btn-cancel {
+  background: #92400e;
+  color: white;
+}
+.nss-btn-cancel:hover {
+  background: #78350f;
+}
+
+/* Request Button (Green) */
+.nss-btn-request {
+  background: #22c55e;
+  color: white;
+}
+.nss-btn-request:hover {
+  background: #16a34a;
+}
+.nss-btn-request:disabled {
+  background: #9ca3af;
+  color: #e5e7eb;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* Container Styles */
+.nss-container {
+    /*background-color: #f8f9fa;*/
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Content Grid */
+  .nss-content {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 2vh 0vh 2vh 0vh;
+  }
+  
+  /* NSS Box */
+  .nss-box {
+    /*background: white;*/
+    padding: 20px;
+    /*border-left: 5px solid #fdb515;*/
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titles */
+  .nss-title {
+    font-size: 22px;
+    font-weight: bold;
+    /*color: #1d1d1d;*/
+    /*border-bottom: 3px solid #fdb515;*/
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  
+  /* Paragraph Text */
+  /* .nss-text { */
+    /* font-size: 16px; */
+    /*color: #444;*/
+    /* line-height: 1.7; */
+    /* margin-bottom: 10px; */
+    /* font-family:  'Poppins', sans-serif; */
+
+  /* } */
+  
+  /* Highlighted Text */
+  .nss-highlight {
+    /*color: #1d1d1d;*/
+    font-weight: bold;
+  }
+  
+  /* List Styling */
+  .nss-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    /*color: #444;*/
+    font-size: 16px;
+    line-height: 1.7;
+    font-family:  'Poppins', sans-serif;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nss-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
