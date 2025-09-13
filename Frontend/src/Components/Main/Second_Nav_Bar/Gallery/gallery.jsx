@@ -91,7 +91,7 @@ const Gallery = ({ toggle, theme}) => {
                         className="read-more-button bg-secd dark:bg-drks"
                         onClick={() => handleReadMore(img?.image_path, img?.category)}
                       >
-                        Read More
+                        View More
                       </button>
                     </div>
                   </div>
