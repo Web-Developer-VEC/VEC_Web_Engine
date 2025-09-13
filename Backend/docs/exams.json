@@ -88,7 +88,7 @@
     "type": "regulation",
     "data": [
       {
-        "year": "2023",
+        "category": "Regulation 2023",
         "links": [
           {
             "name": "UG - B.E / B.Tech",
@@ -105,7 +105,7 @@
         ]
       },
       {
-        "year": "2019(A)",
+        "category": "Regulation 2019(A)",
         "links": [
           {
             "name": "UG - B.E / B.Tech",
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "year": "2019",
+        "category": "Regulation 2019",
         "links": [
           {
             "name": "UG - B.E / B.Tech",
@@ -291,12 +291,7 @@
           {
             "name": "Registration Form - Ph.D. Course Work",
             "pdf_path": "/static/pdfs/all_forms/Registration-Form-Ph.D.-Coursework-updated-19-04-2023.pdf"
-          },
-          {
-            "name": "CIE Audit Report Format",
-            "pdf_path": "/static/pdfs/all_forms/Exam (CIE) Audit Report Format (Revised).pdf"
           }
-
         ]
       }
     ]

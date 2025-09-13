@@ -87,7 +87,7 @@
     "type": "AISHE",
     "data": [
       {
-        "year":"2021-2022",
+        "category":"2021-2022",
         "content":[
           {
             "name":"Certificate",
@@ -106,7 +106,7 @@
         
       },
         {
-        "year":"2022-2023",
+        "category":"2022-2023",
         "content":[
           {
             "name":"Certificate",
@@ -126,7 +126,7 @@
         
       },
         {
-        "year":"2023-2024",
+        "category":"2023-2024",
         "content":[
           {
             "name":"Certificate",
@@ -146,7 +146,7 @@
         
         },
         {
-          "year": "2024-2025",
+          "category": "2024-2025",
           "content": [
             {
               "name": "Certificate",
