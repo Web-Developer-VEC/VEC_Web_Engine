@@ -1,0 +1,195 @@
+[   
+    {
+      "action":"insert",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"about",
+      "meta_data": 
+      {
+        "mission": "To promote collaboration with industries()."
+      }
+
+    },
+    {
+      "action":"insert",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"committee",
+      "meta_data": 
+       {
+            "name": "Dr.A.LEO DAS",
+            "position": "Head",
+            "affiliation": "Head - Dept. of Thuganomics"
+       }
+    },
+    {
+        "action":"insert",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"enterpreneur",
+        "meta_data": 
+        {
+            "name": "Kishan",
+            "business_name": "Scorpio Pvt Ltd",
+            "year": "2019-2023"
+        }
+    },
+    {
+        "action":"insert",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"activity",
+        "meta_data": 
+        {
+            "year": "2028 - 29",
+            "pdf_path": "/static/pdfs/e_cell/2028-2029.pdf"
+        }
+    },
+    {
+        "action":"insert",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"gallery",
+        "meta_data": 
+        {
+            "image_path": "/static/images/e_cell/10.webp"
+        }
+    },
+    {
+      "action":"update",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"about",
+      "original_data": 
+      {
+        "mission": "To promote collaboration with industries()."
+      },
+      "meta_data":
+      { 
+            "mission":"To promote collaboration with industries."
+      }
+
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"committee",
+        "original_data": 
+        {
+            "name":"Dr.A.LEO DAS",
+            "position":"Head",
+            "affiliation":"Head - Dept. of Thuganomics"
+        },
+        "meta_data": 
+        {
+            "position": "Head of Department"
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"enterpreneur",
+        "original_data": 
+        {
+            "name": "Kishan",
+            "business_name": "Scorpio Pvt Ltd",
+            "year": "2019-2023"
+        },
+        "meta_data": 
+        {
+            "business_name": "Dass & Co"
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"activity",
+        "original_data": 
+        {
+            "year":"2028 - 29",
+            "pdf_path":"/static/pdfs/e_cell/2028-2029.pdf"
+        },
+        "meta_data": 
+        {
+            "pdf_path": "/static/pdfs/e_cell/2028-2029-updated.pdf"
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"gallery",
+        "original_data": 
+        {
+            "image_path": "/static/images/e_cell/10.webp"
+        },
+        "meta_data": 
+        {
+            "image_path": "/static/images/e_cell/10new.webp"
+        }    
+  
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"about",
+      "meta_data":
+      { 
+            "mission":"To promote collaboration with industries."
+      }
+
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"committee",
+      "meta_data": 
+       {
+        "name": "Dr.A.LEO DAS",
+        "position": "Head",
+        "affiliation": "Head - Dept. of Thuganomics"
+       }
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"enterpreneur",
+      "meta_data": 
+      {
+        "name": "Kishan",
+        "business_name": "Dass & Co",
+        "year": "2019-2023"
+      }
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"activity",
+      "meta_data": 
+      {
+        "year": "2028 - 29",
+        "pdf_path": "/static/pdfs/e_cell/2028-2029-updated.pdf"
+      }
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"gallery",
+      "meta_data": 
+      {
+        "image_path": "/static/images/e_cell/10new.webp"
+      }
+
+    }
+
+
+
+]

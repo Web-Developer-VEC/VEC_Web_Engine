@@ -260,6 +260,14 @@
           {
             "title": "ANNA UNIVERSITY ZONAL KHO KHO MEN WINNER MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 16.03.24",
             "image_path": "/static/images/sports/zonal/zonal_khokho_m_1_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL BADMINTON MEN RUNNER – VELAMMAL ENGG COLLEGE MATCH HELD ON 08.09.25.",
+            "image_path": "/static/images/sports/zonal/zonal_badminton_m_3_23.webp"
+          },
+          {
+            "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN THIRD PLACE – VELAMMAL ENGG COLLEGE MATCH HELD ON 09.09.25.",
+            "image_path": "/static/images/sports/zonal/zonal_badminton_w_2_23.webp"
           }
         ]
       },
@@ -333,24 +341,22 @@
           }
         ]
       },
-        {
-  "category" : "coordinator",
-  "content":{
-    "zone":"1",
-    "year": "2024-25",
-   "image_path" : [
-   "/static/images/sports/coordinates/coordinates_1.webp", 
-   "/static/images/sports/coordinates/coordinates_2.webp",
-   "/static/images/sports/coordinates/coordinates_3.webp",
-   "/static/images/sports/coordinates/coordinates_4.webp"
-   ] 
-  }
-   
-
-  }
+      {
+        "category": "coordinator",
+        "content": {
+          "zone": "1",
+          "year": "2024-25",
+          "image_path": [
+            "/static/images/sports/coordinates/coordinates_1.webp",
+            "/static/images/sports/coordinates/coordinates_2.webp",
+            "/static/images/sports/coordinates/coordinates_3.webp",
+            "/static/images/sports/coordinates/coordinates_4.webp"
+          ]
+        }
+      }
     ]
   },
- 
+
   {
     "type": "intramural",
     "data": [

@@ -42,7 +42,7 @@ const Faculties = ({ data }) => {
               firstTile={true}
               uid={hod_details?.[0]?.unique_id}
               profile={hod_details?.[0]?.resume_pdf}
-                   
+              isViewmore={true}
             />
             <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
               <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"  
@@ -77,6 +77,7 @@ const Faculties = ({ data }) => {
                     Linkedin={faculty?.socialmedia_links?.linkedin}
                     uid={faculty?.unique_id}
                     profile={faculty?.resume_pdf}
+                    isViewmore={true}
                   />
                 ))}
               </div>
@@ -100,6 +101,7 @@ const Faculties = ({ data }) => {
                     Linkedin={faculty?.socialmedia_links?.linkedin}
                     uid={faculty?.unique_id}
                     profile={faculty?.resume_pdf}
+                    isViewmore={false}
                   />
                 ))}
               </div>       

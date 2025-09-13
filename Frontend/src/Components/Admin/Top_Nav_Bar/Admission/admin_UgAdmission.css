@@ -1,0 +1,306 @@
+/* General Styles */
+.Admission {
+    padding: 3rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+}
+
+.ugHeader {
+    background-color: rgb(206, 206, 206);
+}
+
+.B-E h3, .Admission h5 {
+    font-size: 32px;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.Eligibility {
+    margin-top: 5px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.ADM-content {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.description-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Table Styles */
+.table-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.table-card {
+    border-radius: 10px;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); */
+}
+
+.styled-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+
+}
+/* Table Header Styling */
+.styled-table th {
+    background-color: #808080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px white solid;
+}
+
+.styled-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #cccccc;
+
+}
+
+.styled-table td {
+    height: 50px;
+    font-size: 16px;
+}
+
+.styled-table th {
+    font-size: 18px;
+}
+
+/* .admin-edit-ug {
+  display: inline-flex;
+  flex-direction: left;
+  align-items: center;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #000; /* Text color for Edit */
+  /* background-color: #fdcc03; Default Edit color */
+
+.admin-edit-ug .icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.admin-edit-ug.active {
+  background-color: #800000; /* Save color */
+  color: #ffffff; /* Text color for Save */
+}
+
+.admin-edit-ug.active .edit-icon {
+  display: none; /* Hide pencil icon when saving */
+}
+
+.admin-edit-ug.active .save-icon {
+  display: inline-block;
+}
+.admin-nlugin{
+     border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width:400px;
+
+}
+                    
+.admin-ugin{
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width: 120px;
+}
+.admin-nugin{
+    border: 4px solid #1c1c1c;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width:1000px;
+  align-items: auto;
+
+}
+/* Lateral Entry Section */
+.lateral-entry {
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.admin-controls-ug{
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  padding: 20px;
+  
+}
+.admin-edit-ug{
+  padding: 10px 18px;
+  border: none;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  height: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: rgb(0, 0, 0);
+  display: flex;
+  width:auto;
+  background-color: #fdcc03;
+}
+
+.edit-icon {
+  /* width: 1.25rem;             /* 20px */
+  /* height: 1.25rem;           neutral-600 */ 
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+
+/* Loading Screen */
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #333;
+    z-index: 10;
+}
+
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    margin-right: 30px;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1024px) {
+    .Admission { padding: 2.5rem; }
+    .ADM-content { padding: 1.5rem; }
+    .description-text { font-size: 16px; }
+    .styled-table th, .styled-table td { padding: 10px; }
+}
+
+@media (max-width: 768px) {
+    .Admission { padding: 2rem; }
+    .B-E h3 { font-size: 32px; }
+    .ADM-content { padding: 1.2rem; }
+    .description-text { font-size: 15px; }
+    .table-container { overflow-x: auto; }
+    .styled-table th, .styled-table td { padding: 8px; font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+    .Admission { padding: 1.5rem; }
+    .B-E h3 { font-size: 32px; }
+    .ADM-content { padding: 1rem; }
+    .description-text { font-size: 14px; }
+    .styled-table th, .styled-table td { padding: 6px; font-size: 14px; }
+}
+.admin-ugtit{
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.admin-nlugin{
+     border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width:400px;
+
+}
+.admin-govtlugin{
+     border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width:650px;
+
+}
+.admin-ugnewin{
+   border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width: 600px;;
+  display: flex;
+  ;
+}
+
+.admin-ugin{
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width: 120px;
+}
+.admin-nugin{
+    border: 4px solid #1c1c1c;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
+  transition: all 0.3s ease;
+  width:1000px;
+  align-items: auto;
+
+}

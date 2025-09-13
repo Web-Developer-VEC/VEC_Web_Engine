@@ -72,26 +72,58 @@ const AdminTransport = ({ theme, toggle }) => {
         }
     };
     
-    const handleConfirmRequest = () => {
+    const handleConfirmRequest = async () => {
+        if (!selectedPdf) return;
+
+        const oldPath = transportData[0]?.pdf_path;
+
+        const newFilePath = `/static/pdfs/transport/${selectedPdf.file.name}`;
+
+        const payload = [
+            {
+            collectionName: "transport",
+            collection_type: "transport",
+            action: "update",
+            title: "Updation of transport Route pdf",
+            category: null,
+            meta_data: {
+                pdf_path: newFilePath,
+            },
+            original_data: {
+                pdf_path: oldPath,
+            },
+            },
+        ];
+
         try {
             const formData = new FormData();
-            formData.append("pdf", selectedPdf.file);
-            formData.append("type", "transport");
-            const res = axios.post("/api/admin-backend/transport", formData)
+            formData.append("docs", JSON.stringify(payload));
+            formData.append("files", selectedPdf.file);
+            console.log(payload);
+            
 
-            if (res.ok) {
-                alert("Request submitted");
-                console.log(res);
+            const res = await axios.post(
+                `/api/admin-backend/transport/temp`,
+                formData,
+            {
+                headers: { "Content-Type": "multipart/form-data" },
+                withCredentials: true, // if using cookies/auth
             }
+            );
+
+            toast.success(res.data.message || "Request submitted successfully!");
+            setConfirmPopup(false);
+            setSelectedPdf(null);
         } catch (error) {
+            toast.error("Request not submitted successfully!");
             console.error("Error sending request", error);
         }
-        setConfirmPopup(false);
-        setSelectedPdf(null);
-        toast.success("Request submitted successfully!");
-    }
+    };
 
-    const oldpath = transportData[0]?.route.split("/");
+    const oldpath = transportData[0]?.pdf_path
+  ? transportData[0].pdf_path.split("/")
+  : [];
+
     
 
     return (
@@ -108,8 +140,8 @@ const AdminTransport = ({ theme, toggle }) => {
             
             <div className="font-[poppins] flex flex-col items-center mt-6">
                 {/* PDF Display */}
-                { (selectedPdf || transportData?.[0]?.route) && (
-                    <PDF pdfRoute={selectedPdf ? selectedPdf.fileURL : transportData[0].route} />
+                { (selectedPdf || transportData?.[0]?.pdf_path) && (
+                    <PDF pdfRoute={selectedPdf ? selectedPdf.fileURL : transportData[0].pdf_path} />
                 )}
 
                 {/* Replace PDF Button */}

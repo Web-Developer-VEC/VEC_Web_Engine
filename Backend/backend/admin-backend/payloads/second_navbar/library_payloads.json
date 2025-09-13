@@ -1,0 +1,190 @@
+[{
+  "collection": "library",
+  "collection_type": "about_the_library",
+  "action": "insert",
+  "title": "update about library",
+  "meta_data": {
+    "Area": "25000 sq.ft",
+    "no_of_books": "80000 Volumes",
+    "vision": "Updated vision of library",
+    "mission": "Updated mission of library",
+    "general_instructions": [
+      "Instruction 1",
+      "Instruction 2"
+    ]
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "Faculty_Staff",
+  "action": "insert",
+  "title": "Add new faculty",
+  "meta_data": {
+    "name": "Dinesh T",
+    "designation": "Library Assistant",
+    "educational_qualification": "M.A., M.L.I.Sc",
+    "image": "/static/images/library/faculty/Dinesh T.webp"
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "Faculty_Staff",
+  "action": "update",
+  "title": "Update faculty info",
+  "meta_data": {
+    "name": "Dinesh T",
+    "designation": "Senior Library Assistant",
+    "educational_qualification": "M.A., M.L.I.Sc",
+    "image": "/static/images/library/faculty/Dinesh T.webp"
+  },
+  "original_data": {
+    "name": "Dinesh T",
+    "designation": "Library Assistant",
+    "educational_qualification": "M.A., M.L.I.Sc",
+    "image": "/static/images/library/faculty/Dinesh T.webp"
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "Faculty_Staff",
+  "action": "delete",
+  "title": "Delete faculty",
+  "category": null,
+  "meta_data": {
+    "name": "Dinesh T",
+    "designation": "Senior Library Assistant",
+    "educational_qualification": "M.A., M.L.I.Sc",
+    "image": "/static/images/library/faculty/Dinesh T.webp"
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "about_the_library",
+  "action": "update",
+  "title": "update about library",
+  "meta_data": {
+    "Area": "26000 sq.ft",
+    "no_of_books": "81000 Volumes",
+    "vision": "New vision text",
+    "mission": "New mission text"
+  },
+  "original_data": {
+    "Area": "24000 sq.ft",
+    "no_of_books": "78070  Volumes",
+    "no_of_titles": "25271 ",
+    "no_of_journals": "180  National and International",
+    "no_of_online_journals": "9517",
+    "vision": "To enrich the knowledge of Velammalians by providing dynamic world class learning environment.To provide a learning environment with intense intellectual inquiry. To become the most dynamic learning environment in the world. To advance with successful teaching, learning and research through building a robust One System, One Library. To transform the library as a place dynamic learning with ease.",
+    "mission": "To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of the college community to maintain and improve collections and achieve efficient services in an environment of flat or reduced budgets for the students, faculty and staff. To transform the information available in the environment into knowledge for students, staff and faculty.",
+    "general_instructions": [
+      "Students can obtain membership cards by showing their ID cards with barcodes.",
+      "Members should sign in at the entrance to accept library rules.",
+      "Two renewals per book are allowed unless reserved by others.",
+      "Users should verify book conditions before borrowing.",
+      "Books must be returned on or before the due date.",
+      "Late returns will incur overdue charges as per rules.",
+      "Users should collect a receipt for any fines paid.",
+      "Members can suggest new books to the librarian.",
+      "Strict silence must be maintained in the library."
+    ]
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "about_the_library",
+  "action": "delete",
+  "title": "delete about library",
+  "meta_data": {
+    "Area": "25000 sq.ft",
+    "no_of_books": "80000 Volumes",
+    "vision": "Updated vision of library",
+    "mission": "Updated mission of library",
+    "general_instructions": [
+      "Instruction 1",
+      "Instruction 2"
+    ]
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "membership_details",
+  "action": "update",
+  "title": "Update member types",
+  "category": "Member Details",
+  "meta_data": {
+    "content": [
+      "Undergraduate Students",
+      "Postgraduate Students"
+    ]
+  },
+  "original_data": {
+    "content": [
+      "UG Students",
+      "PG Students"
+    ]
+  }
+},
+{
+  
+  "collection": "library",
+  "collection_type": "membership_details",
+  "action": "insert",
+  "title": "insert member types",
+  "category": "Member Details",
+  "meta_data": {
+    "content": [
+      "Undergraduate Students",
+      "Postgraduate Students",
+      "ug"
+    ]
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "membership_details",
+  "action": "delete",
+  "title": "insert member types",
+  "category": "Member Details",
+  "meta_data": {}
+},
+{
+  "collection": "library",
+  "collection_type": "library_services",
+  "action": "insert",
+  "title": "insertion of gallery",
+  "category": "Image_Gallery",
+  "meta_data": {
+    "title": "dinesh",
+    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+    "image": "/static/images/library/library_images/dinesh.webp"
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "library_services",
+  "action": "update",
+  "title": "update of gallery",
+  "category": "Image_Gallery",
+  "meta_data": {
+    "title": "hari",
+    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+    "image": "/static/images/library/library_images/hari.webp"
+  },
+  "original_data": {
+    "title": "dinesh",
+    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+    "image": "/static/images/library/library_images/dinesh.webp"
+  }
+},
+{
+  "collection": "library",
+  "collection_type": "library_services",
+  "action": "delete",
+  "title": "delete of gallery",
+  "category": "Image_Gallery",
+  "meta_data": {
+    "title": "hari",
+    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+    "image": "/static/images/library/library_images/hari.webp"
+  }
+}]
