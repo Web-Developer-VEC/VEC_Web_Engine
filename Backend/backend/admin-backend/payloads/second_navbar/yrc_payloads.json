@@ -1,0 +1,163 @@
+[
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "about",
+    "action": "insert",
+    "title": "Add about IIC",
+    "meta_data": {
+        "about_us":[ "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals.",
+        "hello everyone"]
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "about",
+    "action": "update",
+    "title": "update about ",
+    "original_data": {
+        "about_us":[ "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals.",
+        "hello everyone"]
+      },
+    "meta_data":{
+        "about_us":"The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "news_updates",
+    "action": "insert",
+    "title": "Add news",
+    "meta_data": [
+      "1. College Fest 2025 will be held on March 25th.",
+      "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
+      "3. The annual sports meet is scheduled for April 10th.",
+      "hello everyone"
+    ]
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "news_updates",
+    "action": "update",
+    "title": "update news",
+    "original_data":  [
+      "1. College Fest 2025 will be held on March 25th.",
+      "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
+      "3. The annual sports meet is scheduled for April 10th.",
+      "hello everyone"
+    ],
+    "meta_data":  [
+      "1. College Fest 2025 will be held on March 25th.",
+      "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
+      "3. The annual sports meet is scheduled for April 10th."
+    ]
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "events",
+    "action": "insert",
+    "title": "Add events",
+    "meta_data": {
+        "image_path": "static/images/ncc/navy/events09.webp",
+        "title": "INTERNATIONAL dinesh DAY 2015",
+        "description": "30 Cadets participated in dinesh DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
+        "date": "30-09-2025"
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "events",
+    "action": "update",
+    "title": "update in events",
+    "original_data": {
+        "image_path": "static/images/ncc/navy/events09.webp",
+        "title": "INTERNATIONAL dinesh DAY 2015",
+        "description": "30 Cadets participated in dinesh DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
+        "date": "30-09-2025"
+      },
+      "meta_data": {
+        "image_path": "static/images/ncc/navy/events09.webp",
+        "title": "INTERNATIONAL hari DAY 2015",
+        "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
+        "date": "30-09-2025"
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "events",
+    "action": "delete",
+    "title": "delete events",
+    "meta_data": {
+        "image_path": "static/images/ncc/navy/events09.webp",
+        "title": "INTERNATIONAL hari DAY 2015",
+        "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
+        "date": "30-09-2025"
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "insert",
+    "category": "faculty_coordinators",
+    "title": "Add Faculty Member",
+    "meta_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "update",
+    "category": "faculty_coordinators",
+    "title": "update Faculty Member",
+    "original_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          },
+    "meta_data": {
+            "name": "Sub. LT hari R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "awards",
+    "action": "insert",
+    "title": "insert awards",
+    "meta_data": {
+      "title":"hello",
+        "image_path": "static/images/ncc/navy/stud.webp",
+        "description": "LT. S.K. dinesh Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "awards",
+    "action": "update",
+    "title": "update awards",
+    "meta_data":  {
+      "title":"hello everyone",
+        "image_path": "static/images/ncc/navy/stud.webp",
+        "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
+      },
+    "original_data":  {
+      "title":"hello",
+        "image_path": "static/images/ncc/navy/stud.webp",
+        "description": "LT. S.K. dinesh Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
+      }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "awards",
+    "action": "delete",
+    "title": "delete awards",
+    "meta_data": {
+      "title":"hello everyone",
+        "image_path": "static/images/ncc/navy/stud.webp",
+        "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
+      }
+  }
+]

@@ -10,19 +10,19 @@ const upload = multer({
     key: (req, file, cb) => {
       let collectionName = "default";
 
-      // ✅ Extract collectionName from req.body.docs (stringified JSON)
-      if (req.body.docs) {
-        try {
-          const docs = JSON.parse(req.body.docs);
-          if (Array.isArray(docs) && docs[0]?.collectionName) {
+      try {
+        if (req.body && req.body.docs) {
+          let docs = JSON.parse(req.body.docs);
+          if (!Array.isArray(docs)) docs = [docs];
+          if (docs[0]?.collectionName) {
             collectionName = docs[0].collectionName;
           }
-        } catch (err) {
-          console.error("Failed to parse docs in multer:", err);
         }
+      } catch (err) {
+        console.error("❌ Failed to parse docs in multer:", err);
       }
 
-      // ✅ Decide folder based on file type
+      // folder by type
       let folder = "";
       if (file.mimetype.startsWith("image/")) {
         folder = `temp/images/${collectionName}/`;
@@ -32,7 +32,6 @@ const upload = multer({
         return cb(new Error("Only images and PDFs are allowed"), false);
       }
 
-      // ✅ Unique filename
       const uniqueName =
         Date.now() +
         "-" +
@@ -45,7 +44,10 @@ const upload = multer({
 
   // ✅ Restrict file types
   fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith("image/") || file.mimetype === "application/pdf") {
+    if (
+      file.mimetype.startsWith("image/") ||
+      file.mimetype === "application/pdf"
+    ) {
       cb(null, true);
     } else {
       cb(new Error("Only images and PDFs are allowed"), false);
