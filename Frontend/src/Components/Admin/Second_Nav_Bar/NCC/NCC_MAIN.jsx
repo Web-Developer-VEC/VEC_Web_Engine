@@ -76,7 +76,7 @@ const AdminNCCMAIN = ({ toggle, theme }) => {
             <div className="NCC-main-button-group">
               <button
                 className="NCC-main-button"
-                onClick={() => navigate('/admin_nccarmy')}
+                onClick={() => navigate('/nccarmy')}
               >
                 VEC NCC ARMY <br />
                 [TN] SIG COY NCC
@@ -84,7 +84,7 @@ const AdminNCCMAIN = ({ toggle, theme }) => {
 
               <button
                 className="NCC-main-button"
-                onClick={() => navigate('/admin_nccnavy')}
+                onClick={() => navigate('/nccnavy')}
               >
                 VEC NCC NAVY <br />
                 [TN] NAVAL TECH UNIT, NCC

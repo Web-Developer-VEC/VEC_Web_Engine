@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadComp from '../../LoadComp';
 
-const ZonalResults = ({ data }) => {
+const ZonalResults = ({ data, year }) => {
   if (!data) {
     return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
             <LoadComp />
@@ -22,7 +22,7 @@ const ZonalResults = ({ data }) => {
   return (
     <div className="container3 mx-auto p-4 mb-6">
       <h1 className="md:text-4xl text-2xl  font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
-        Zonal Results 2024-2025
+        Zonal Results {year}
       </h1>
 
       {/* Desktop/Laptop View */}

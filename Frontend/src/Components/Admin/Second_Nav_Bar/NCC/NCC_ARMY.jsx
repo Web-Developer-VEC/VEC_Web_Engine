@@ -200,7 +200,7 @@ function NCCContact({ data, isEditing, onChange }) {
 }
 
 /* ------------ Main Admin Component ------------ */
-const NCC_ARMY = ({ toggle, theme }) => {
+const AdminNCC_ARMY = ({ toggle, theme }) => {
   const [ncc_army, setarmydata] = useState(null);
   const [army, setnccarmy] = useState("About NCC Army");
   const [isEditing, setIsEditing] = useState(false);
@@ -659,8 +659,8 @@ const NCC_ARMY = ({ toggle, theme }) => {
                 }}
                 disabled={changes.length === 0}
                 >
-                                              <FontAwesomeIcon icon={faPaperPlane} /> Request
-                                            </button>
+                <FontAwesomeIcon icon={faPaperPlane} /> Request
+              </button>
             </div>
           </div>
         </div>
@@ -669,4 +669,4 @@ const NCC_ARMY = ({ toggle, theme }) => {
   );
 };
 
-export default NCC_ARMY;
+export default AdminNCC_ARMY;

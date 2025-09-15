@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faPlus, faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
-import Banner from "../../../Banner";
+import Banner from "../../Banner";
 import axios from "axios";
 import "./Handbook.css";
-import LoadComp from "../../../LoadComp";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaPaperPlane } from "react-icons/fa";
 import { MdUndo } from "react-icons/md";

@@ -2,8 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./admin.css";
-import Banner from "../../../Banner";
-import LoadComp from "../../../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaPlus, FaTrash, FaPaperPlane } from "react-icons/fa";
 import { MdUndo } from "react-icons/md";
