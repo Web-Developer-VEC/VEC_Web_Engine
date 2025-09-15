@@ -12,7 +12,7 @@ import NotificationBox from "./NewsUpdates";
 import LoadComp from "../../LoadComp"
 import { useNavigate } from "react-router";
 
-const Admin_NSS = ({ toggle, theme}) => {
+const AdminNSS = ({ toggle, theme}) => {
   const [nssData, setNssData] = useState(null);
   const [nss, setNss] = useState("About NSS");
   const navigate = useNavigate();
@@ -88,4 +88,4 @@ const Admin_NSS = ({ toggle, theme}) => {
   );
 };
 
-export default Admin_NSS;
+export default AdminNSS;

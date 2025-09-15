@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Banner from '../../../Banner';
-import LoadComp from '../../../LoadComp';
+import Banner from '../../Banner';
+import LoadComp from '../../LoadComp';
 import axios from 'axios';
 import { useNavigate } from "react-router";
 import { FaPaperPlane, FaBook, FaLinkedin, FaResearchgate } from 'react-icons/fa';
