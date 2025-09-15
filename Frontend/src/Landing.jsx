@@ -66,7 +66,7 @@ const LandingPage = ({theme, load, toggle, pageData}) => {
                 <Tracker data={bannerData}/>
                 <div className='bg-prim dark:bg-drkp'>
                     <Samplereact courses={departmentBanner}/>
-                    <Contact/>
+                    <Contact data={pageDetails[0]}/>
                     {/* <Chat/> */}
                     <Footer theme={theme} data={pageDetails[0]}/>
                 </div>
