@@ -69,6 +69,10 @@ import YRC from "./Components/Main/Second_Nav_Bar/yrc/YRC.jsx";
 import AdminYrc from "./Components/Admin/Second_Nav_Bar/yrc/YRC.jsx";
 import AdminProfilePage from "./Components/Admin/Admin/adminProfile.jsx";
 // import AdminLandingPage from "./AdminLanding.jsx";
+import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import AdminAcadamiccal from "./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
+import AdminAccredation from "./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx";
 
 export const routeConfig = {
 
@@ -87,6 +91,7 @@ export const routeConfig = {
   "/handbook": { normal: Handbook, admin: AdminHandbook },
   
   // Academics Routes
+  "acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -119,6 +124,7 @@ export const routeConfig = {
 
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
+  "/Accredation": { normal: Accredation, admin: AdminAccredation },
   "/NSS": { normal: NSS, admin: AdminNSS },
   "/NCC": { normal: NCCMAIN, admin: AdminNCCMAIN },
   "/nccnavy": { normal: NCC_NAVY, admin: AdminNCC_NAVY },

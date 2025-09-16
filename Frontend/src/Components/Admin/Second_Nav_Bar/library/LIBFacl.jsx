@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Pencil, Save, Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,10 +20,11 @@ const LIBFacl = ({ faculty }) => {
   const [tempList, setTempList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   const [showRequestBtn, setShowRequestBtn] = useState(false);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [facultyToDelete, setFacultyToDelete] = useState(null);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
+
+  const [selectedForDelete, setSelectedForDelete] = useState([]);
+  const [showBulkDeleteConfirm, setShowBulkDeleteConfirm] = useState(false);
 
   useEffect(() => {
     if (Array.isArray(faculty)) {
@@ -32,7 +33,6 @@ const LIBFacl = ({ faculty }) => {
     }
   }, [faculty]);
 
-  // update text field while editing
   const handleChange = (index, field, value) => {
     setTempList((prev) =>
       prev.map((f, i) => (i === index ? { ...f, [field]: value } : f))
@@ -40,9 +40,8 @@ const LIBFacl = ({ faculty }) => {
     setHasChanges(true);
   };
 
-  // handle image upload
   const handleImageChange = (index, file) => {
-    const imageURL = URL.createObjectURL(file); // temporary preview
+    const imageURL = URL.createObjectURL(file);
     setTempList((prev) =>
       prev.map((f, i) => (i === index ? { ...f, image: imageURL } : f))
     );
@@ -50,35 +49,28 @@ const LIBFacl = ({ faculty }) => {
   };
 
   const handleEdit = () => {
-    setTempList(JSON.parse(JSON.stringify(facultyList))); // deep copy
+    setTempList(JSON.parse(JSON.stringify(facultyList)));
     setIsEditing(true);
     setHasChanges(false);
   };
 
   const handleSave = () => {
-    // validation: no empty fields
     for (let f of tempList) {
-      if (
-        !f.name ||
-        !f.educational_qualification ||
-        !f.designation ||
-        !f.image
-      ) {
-        toast.warning("All fields are required for every faculty!");
-        return;
+      if (!f.name || !f.educational_qualification || !f.designation || !f.image) {
+        return; // no toast, just prevent saving
       }
     }
     setFacultyList(tempList);
     setIsEditing(false);
-    setShowRequestBtn(true); // ✅ Show request button after save
+    setShowRequestBtn(true);
     setHasChanges(false);
-    toast.success("Changes saved successfully!");
+    setSelectedForDelete([]);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     setHasChanges(false);
-    toast.info("Changes reverted");
+    setSelectedForDelete([]);
   };
 
   const handleAddNewBox = () => {
@@ -92,75 +84,63 @@ const LIBFacl = ({ faculty }) => {
     setHasChanges(true);
   };
 
-  const handleDelete = (fac) => {
-    setFacultyToDelete(fac);
-    setShowDeleteConfirm(true);
-  };
-
-  const confirmDelete = () => {
-    setTempList((prev) => prev.filter((f) => f !== facultyToDelete));
-    setShowDeleteConfirm(false);
-    setFacultyToDelete(null);
-    setHasChanges(true);
-    toast.error("Faculty deleted");
-  };
-
   const handleRequestConfirm = () => {
-    console.log("Changes requested:", facultyList);
-    toast.success("Request submitted successfully!"); // ✅ success toast
-    setShowRequestBtn(false); // hide button after request
+    toast.success("Request submitted successfully!");
+    setShowRequestBtn(false);
     setShowRequestModal(false);
-    setOriginalList(facultyList); // reset baseline after request
+    setOriginalList(facultyList);
   };
 
-  // ✅ Compute changes for summary
+  const handleDiscardChanges = () => {
+    setFacultyList(originalList);
+    setShowRequestBtn(false);
+  };
+
   const getChanges = () => {
     const changes = [];
 
-    // detect added
     facultyList.forEach((f) => {
       if (!originalList.find((o) => o.name === f.name)) {
         changes.push({ action: "Added", data: f });
       }
     });
 
-    // detect deleted
     originalList.forEach((o) => {
       if (!facultyList.find((f) => f.name === o.name)) {
         changes.push({ action: "Deleted", data: o });
       }
     });
 
-    // detect edited
     facultyList.forEach((f) => {
       const old = originalList.find((o) => o.name === f.name);
-      if (old) {
-        const fieldChanges = {};
-        if (f.name !== old.name) {
-          fieldChanges.name = { old: old.name, new: f.name };
-        }
-        if (f.educational_qualification !== old.educational_qualification) {
-          fieldChanges.educational_qualification = {
-            old: old.educational_qualification,
-            new: f.educational_qualification,
-          };
-        }
-        if (f.designation !== old.designation) {
-          fieldChanges.designation = {
-            old: old.designation,
-            new: f.designation,
-          };
-        }
-        if (f.image !== old.image) {
-          fieldChanges.image = { old: old.image, new: f.image };
-        }
-        if (Object.keys(fieldChanges).length > 0) {
-          changes.push({ action: "Edited", data: f, fields: fieldChanges });
-        }
+      if (old && JSON.stringify(f) !== JSON.stringify(old)) {
+        changes.push({ action: "Edited", data: f });
       }
     });
 
     return changes;
+  };
+
+  // ✅ New function to revert individual changes
+  const handleRevertChange = (change) => {
+    if (change.action === "Added") {
+      // remove newly added faculty
+      setFacultyList((prev) => prev.filter((f) => f.name !== change.data.name));
+    } else if (change.action === "Deleted") {
+      // restore deleted faculty
+      const original = originalList.find((o) => o.name === change.data.name);
+      if (original) {
+        setFacultyList((prev) => [...prev, original]);
+      }
+    } else if (change.action === "Edited") {
+      // revert edited faculty
+      const original = originalList.find((o) => o.name === change.data.name);
+      if (original) {
+        setFacultyList((prev) =>
+          prev.map((f) => (f.name === change.data.name ? original : f))
+        );
+      }
+    }
   };
 
   return (
@@ -169,43 +149,22 @@ const LIBFacl = ({ faculty }) => {
 
       {Array.isArray(facultyList) ? (
         <div className="relative py-16 px-6 font-[Poppins]">
-          {/* Header with Edit / Save / Cancel */}
+          {/* Header */}
           <div className="flex items-center justify-center mb-4 relative">
-            {/* Staff Heading */}
             <h2 className="text-4xl font-bold text-accn dark:text-drkt text-center w-full">
               Staff
             </h2>
-
-            {/* Buttons on the right */}
-            <div className="absolute right-0 flex gap-3">
-              {!isEditing ? (
+            <div className="absolute right-4 flex gap-3">
+              {!isEditing && (
                 <button
-                  className="px-6 py-2 rounded-md bg-[#FDCC03] text-black shadow-md hover:bg-[#e6b800] transition"
+                  className="flex items-center gap-2 px-6 py-2 rounded-md bg-[#FDCC03] text-text shadow-md hover:bg-[#800000] transition hover:text-prim"
                   onClick={handleEdit}
                 >
-                  Edit
+                  <Pencil size={18} /> Edit
                 </button>
-              ) : (
-                <>
-                  {hasChanges && (
-                    <button
-                      className="px-6 py-2 rounded-md bg-yellow-500 text-black shadow-md hover:bg-yellow-400 transition"
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
-                  )}
-                  <button
-                    className="px-6 py-2 rounded-md bg-gray-400 text-white shadow-md hover:bg-gray-500 transition"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </button>
-                </>
               )}
             </div>
           </div>
-
 
           {/* Faculty Grid */}
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -219,14 +178,21 @@ const LIBFacl = ({ faculty }) => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                {/* Delete Button (only in edit mode) */}
                 {isEditing && (
-                  <button
-                    className="absolute top-2 right-2 text-red-500 hover:text-red-700"
-                    onClick={() => handleDelete(fac)}
-                  >
-                    <Trash2 size={20} />
-                  </button>
+                  <input
+                    type="checkbox"
+                    className="absolute top-2 right-2 w-5 h-5"
+                    checked={selectedForDelete.includes(fac)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedForDelete((prev) => [...prev, fac]);
+                      } else {
+                        setSelectedForDelete((prev) =>
+                          prev.filter((f) => f !== fac)
+                        );
+                      }
+                    }}
+                  />
                 )}
 
                 <div className="flex flex-col items-center">
@@ -235,8 +201,6 @@ const LIBFacl = ({ faculty }) => {
                     alt={fac.name}
                     className="w-[55%] mt-4 h-44 m-auto object-cover filter brightness-90 rounded-xl"
                   />
-
-                  {/* Image upload (only in edit mode) */}
                   {isEditing && (
                     <div className="mt-3">
                       <input
@@ -250,8 +214,8 @@ const LIBFacl = ({ faculty }) => {
                       />
                       <label
                         htmlFor={`file-upload-${index}`}
-                        className="px-6 py-2 bg-accn text-white rounded-md shadow-md cursor-pointer 
-                        hover:bg-opacity-90 transition text-sm font-semibold"
+                        className="px-6 py-2 text-text rounded-md shadow-md cursor-pointer 
+                        bg-[#fdcc03] transition  hover:bg-[#800000] hover:text-prim"
                       >
                         Upload Image
                       </label>
@@ -260,7 +224,6 @@ const LIBFacl = ({ faculty }) => {
                 </div>
 
                 <div className="p-6 text-center">
-                  {/* Name field */}
                   {isEditing ? (
                     <input
                       type="text"
@@ -274,7 +237,6 @@ const LIBFacl = ({ faculty }) => {
                     <h3 className="text-[18px] font-bold">{fac.name}</h3>
                   )}
 
-                  {/* Qualification field */}
                   {isEditing ? (
                     <input
                       type="text"
@@ -294,7 +256,6 @@ const LIBFacl = ({ faculty }) => {
                     </p>
                   )}
 
-                  {/* Designation field */}
                   {isEditing ? (
                     <input
                       type="text"
@@ -313,7 +274,6 @@ const LIBFacl = ({ faculty }) => {
               </motion.div>
             ))}
 
-            {/* ➕ Add New Faculty Box (only in edit mode) */}
             {isEditing && (
               <motion.div
                 className="relative rounded-2xl shadow-lg overflow-hidden transform transition-transform 
@@ -329,14 +289,50 @@ const LIBFacl = ({ faculty }) => {
             )}
           </div>
 
-          {/* Request Button (appears only after Save) */}
-          {showRequestBtn && !isEditing && (
-            <div className="mt-8 flex justify-center">
+          {isEditing && selectedForDelete.length > 0 && (
+            <div className="w-full flex justify-center mt-6">
               <button
-                className="px-8 py-3 bg-yellow-500 text-black  rounded-lg shadow-md hover:bg-yellow-400 transition"
+                onClick={() => setShowBulkDeleteConfirm(true)}
+                className="px-8 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition"
+              >
+                Delete Selected ({selectedForDelete.length})
+              </button>
+            </div>
+          )}
+
+          {isEditing && (
+            <div className="w-full flex justify-end mt-6 gap-4">
+              <button
+                className="px-6 py-2 rounded-md bg-gray-400 text-white shadow-md hover:bg-gray-500 transition"
+                onClick={handleCancel}
+              >
+                Cancel
+              </button>
+              {hasChanges && (
+                <button
+                  className="flex items-center gap-2 px-6 py-2 rounded-md bg-[#fdcc03] text-text shadow-md hover:bg-[#800000] transition hover:text-prim"
+                  onClick={handleSave}
+                >
+                  <Save size={18} /> Save
+                </button>
+              )}
+              
+            </div>
+          )}
+
+          {showRequestBtn && !isEditing && (
+            <div className="w-full flex justify-end mt-6 gap-4">
+              <button
+                className="px-6 py-2 rounded-md bg-gray-400 text-white shadow-md hover:bg-gray-500 transition"
+                onClick={handleDiscardChanges}
+              >
+                Discard Changes
+              </button>
+              <button
+                className="flex items-center gap-2 px-6 py-2 bg-[#fdcc03] text-text rounded-lg shadow-md hover:bg-[#800000] transition hover:text-prim"
                 onClick={() => setShowRequestModal(true)}
               >
-                Request
+                <Send size={18} /> Request
               </button>
             </div>
           )}
@@ -347,8 +343,8 @@ const LIBFacl = ({ faculty }) => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
-      {showDeleteConfirm && facultyToDelete && (
+      {/* Bulk Delete Modal */}
+      {showBulkDeleteConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -361,17 +357,27 @@ const LIBFacl = ({ faculty }) => {
             </h3>
             <p className="mb-6">
               Are you sure you want to delete{" "}
-              <span className="font-semibold">{facultyToDelete.name}</span>?
+              <span className="font-semibold">
+                {selectedForDelete.length}
+              </span>{" "}
+              selected faculty member(s)?
             </p>
             <div className="flex justify-center space-x-4">
               <button
-                onClick={confirmDelete}
+                onClick={() => {
+                  setTempList((prev) =>
+                    prev.filter((f) => !selectedForDelete.includes(f))
+                  );
+                  setSelectedForDelete([]);
+                  setShowBulkDeleteConfirm(false);
+                  setHasChanges(true);
+                }}
                 className="px-6 py-2 bg-red-600 text-white rounded-md shadow hover:bg-red-700 transition"
               >
                 Delete
               </button>
               <button
-                onClick={() => setShowDeleteConfirm(false)}
+                onClick={() => setShowBulkDeleteConfirm(false)}
                 className="px-6 py-2 bg-gray-400 text-white rounded-md shadow hover:bg-gray-500 transition"
               >
                 Cancel
@@ -382,98 +388,84 @@ const LIBFacl = ({ faculty }) => {
       )}
 
       {/* Final Request Modal */}
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
-            {/* Title */}
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Final Request for the Changes
-            </h2>
+{showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+    <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+      <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+        Request
+      </h2>
+      <p className="text-sm text-red-500 mb-4">
+        Note: Your changes will stay pending until approved by the superior admin.
+        Once approved will go live.
+      </p>
 
-            {/* Note */}
-            <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior
-              admin. Once approved, they will be applied automatically to the live
-              site.
-            </p>
+      <div className="max-h-[250px] overflow-y-auto mb-4">
+        <table className="w-full text-center text-text dark:text-drkt border">
+          <thead>
+            <tr className="bg-gray-200 dark:bg-drka">
+              <th className="py-1">Action</th>
+              <th className="py-1">Section</th>
+              <th className="py-1 text-center">Changes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {getChanges().map((change, idx) => (
+              <tr key={idx} className="border-t">
+                {/* Action */}
+                <td
+                  className={`py-1 ${
+                    change.action === "Added"
+                      ? "text-green-600"
+                      : change.action === "Deleted"
+                      ? "text-red-600"
+                      : "text-blue-600"
+                  }`}
+                >
+                  {change.action}
+                </td>
 
-            {/* Summary */}
-            <div className="max-h-[250px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt border">
-                <thead>
-                  <tr className="bg-gray-200 dark:bg-drka">
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {getChanges().map((change, idx) => (
-                    <tr key={idx} className="border-t">
-                      <td
-                        className={`py-1 ${
-                          change.action === "Added"
-                            ? "text-green-600"
-                            : change.action === "Deleted"
-                            ? "text-red-600"
-                            : "text-blue-600"
-                        }`}
-                      >
-                        {change.action}
-                      </td>
-                      <td className="py-1">Library Faculty</td>
-                      <td className="py-1 text-[12px] flex flex-col items-start gap-1">
-                        {/* Added */}
-                        {change.action === "Added" && (
-                          <span>
-                            New Faculty: <b>{change.data.name}</b>
-                          </span>
-                        )}
+                {/* Section */}
+                <td className="py-1">
+                  {change.section || "Library Faculty"}
+                </td>
 
-                        {/* Deleted */}
-                        {change.action === "Deleted" && (
-                          <span>
-                            Removed Faculty: <b>{change.data.name}</b>
-                          </span>
-                        )}
+                {/* Faculty Name + X button */}
+                <td className="py-1 text-[12px]">
+                  <div className="flex items-center justify-center gap-2">
+                    <span>{change.data?.name || "Unnamed Faculty"}</span>
+                    <button
+                      onClick={() => handleRevertChange(change)}
+                      className="text-red-500 hover:text-red-700 font-bold"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-                        {/* Edited */}
-                        {change.action === "Edited" &&
-                          Object.entries(change.fields).map(([field, val], i) => (
-                            <span key={i}>
-                              <b>{change.data.name}</b> → {field} changed:{" "}
-                              <span className="line-through text-gray-500">
-                                {val.old}
-                              </span>{" "}
-                              →{" "}
-                              <span className="text-green-600">{val.new}</span>
-                            </span>
-                          ))}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* Footer */}
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleRequestConfirm}
+          className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+        >
+          Final Request
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
-            {/* Action Buttons */}
-            <div className="flex justify-end gap-2">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
-              >
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };
