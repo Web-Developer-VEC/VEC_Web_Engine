@@ -10,7 +10,7 @@ import IQauge from './igauge'
 import axios from 'axios'
 import { useLocation, useNavigate } from "react-router";
   
-const Accredation = ({toggle,theme}) => {
+const AdminAccredation = ({toggle,theme}) => {
 
     const location = useLocation();
     const [naac,setNaac] = useState("NAAC");
@@ -105,4 +105,4 @@ const Accredation = ({toggle,theme}) => {
 }
 
 
-export default Accredation
+export default AdminAccredation
