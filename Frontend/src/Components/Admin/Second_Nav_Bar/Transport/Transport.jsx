@@ -103,7 +103,7 @@ const AdminTransport = ({ theme, toggle }) => {
             
 
             const res = await axios.post(
-                `/api/admin-backend/transport/temp`,
+                `/api/admin-backend/temp`,
                 formData,
             {
                 headers: { "Content-Type": "multipart/form-data" },
@@ -120,7 +120,10 @@ const AdminTransport = ({ theme, toggle }) => {
         }
     };
 
-    const oldpath = transportData[0]?.pdf_path.split("/");
+    const oldpath = transportData[0]?.pdf_path
+  ? transportData[0].pdf_path.split("/")
+  : [];
+
     
 
     return (

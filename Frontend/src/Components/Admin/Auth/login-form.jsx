@@ -38,9 +38,11 @@ export function LoginForm() {
 
       sessionStorage.setItem("userSession", JSON.stringify(data.admin));
 
+      const redirectPath = data.admin.role === "super_admin" ? "/admin_dash" : "/admin_profile";
+      
       setTimeout(() => {
-        navigate('/');
-      }, 1000)
+        navigate(redirectPath);
+      }, 1000);
 
       setSuccess("Login successful! Redirecting...")
     } catch (err) {

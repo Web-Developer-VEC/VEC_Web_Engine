@@ -3,6 +3,9 @@ const roleAccessMap = {
 
   //Top Nav Bar
   research : ["research_admin","super_admin"],
+  exams : ["super_admin", "exam_admin"],
+  about_us:["super_admin"],
+  placement:["super_admin"],
 
   //Second Nav Bar
   gallery: ["super_admin", "gallery_admin"],
@@ -12,9 +15,13 @@ const roleAccessMap = {
   library:["library_admin","super_admin"],
   iic : ["iic_admin","super_admin"],  
   transport : ["super_admin"],
-  ecell : ["incubation_admin","super_admin"]
- 
+  ecell : ["incubation_admin","super_admin"],
+  ncc_navy : ["ncc_navy_admin","super_admin"],
+  ncc_army : ["ncc_army_admin","super_admin"],
+  nss : ["nss_admin","super_admin"],
+  yrc : ["yrc_admin","super_admin"],
+  incubation : ["incubation_admin","super_admin"]
   
-};
+};  
 
 module.exports = roleAccessMap;
