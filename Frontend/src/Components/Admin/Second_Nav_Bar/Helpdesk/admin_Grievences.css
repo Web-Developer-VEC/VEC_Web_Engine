@@ -1,0 +1,161 @@
+/* General Styles */
+.min-h-screen {
+    min-height: 50vh;
+  }
+  
+  .bg-yellow-100 {
+    background-color: #fff9db;
+  }
+  
+  /* .flex {
+    display: flex;
+  }
+   */
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .p-6 {
+    padding: 1.5rem;
+  }
+  
+  /* Form Container */
+  .bg-white {
+    background-color: white;
+  }
+  
+  .p-8 {
+    padding: 2rem;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  /* .w-full {
+    width: 100%;
+  } */
+  
+  .max-w-2xl {
+    max-width: 42rem;
+  }
+  
+  /* Typography */
+  .text{
+    font-size: 20px;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .text {
+    color: #800000;
+  }
+  
+  .text{
+    font-size: 16px;
+  }
+  
+  .text-gray-700 {
+    color: #4a4a4a;
+  }
+  
+  /* Form Inputs */
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .border {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d5db;
+  }
+  
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  
+  /* Form Layout */
+  /* .grid {
+    display: grid;
+  } */
+/*   
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  } */
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  /* Captcha */
+  .bg-gray-200 {
+    background-color: #e5e7eb;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  
+  /* Submit Button */
+  .bg {
+    background-color: #800000;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  .admin-edit-gr{
+  padding: 10px 18px;
+  border: none;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  height: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: rgb(0, 0, 0);
+  display: flex;
+  width:auto;
+  background-color: #fdcc03;
+}
+.admin-controls-gr{
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  padding: 20px;
+  
+}
+.admin-edit-gr .icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.admin-edit-gr.active {
+  background-color: #800000; /* Save color */
+  color: #ffffff; /* Text color for Save */
+}
+
+.admin-edit-gr.active .edit-icon {
+  display: none; /* Hide pencil icon when saving */
+}
+
+.admin-edit-gr.active .save-icon {
+  display: inline-block;
+}

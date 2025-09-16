@@ -1,0 +1,563 @@
+[
+  {
+    "collectionName": "iic",
+    "collection_type": "home",
+    "action": "insert",
+    "title": "Insert about_iic",
+    "meta_data": {
+      "about_iic": [
+        "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
+        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
+        "IICs are established to promote innovation in institutions through multiple modes."
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "home",
+    "action": "update",
+    "title": "Update about_iic",
+    "meta_data": {
+      "about_iic": [
+        "Updated: The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
+        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
+        "IICs are established to promote innovation in institutions through multiple modes."
+      ]
+    },
+    "original_data": {
+      "about_iic": [
+        "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
+        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
+        "IICs are established to promote innovation in institutions through multiple modes."
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "home",
+    "action": "delete",
+    "title": "Delete about_iic",
+    "meta_data": {
+      "about_iic": [
+        "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
+        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
+        "IICs are established to promote innovation in institutions through multiple modes."
+      ]
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "insert",
+    "title": "Insert majorfocus - establishment",
+    "category": "majorfocus",
+    "meta_data": {
+      "content": [
+        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
+        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
+        "To develop better Cognitive Ability for Technology Students."
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "update",
+    "title": "Update majorfocus - establishment",
+    "category": "majorfocus",
+    "meta_data": {
+      "content": [
+        "Updated: To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
+        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
+        "To develop better Cognitive Ability for Technology Students.",
+        "To create a robust Innovation Pipeline."
+      ]
+    },
+    "original_data": {
+      "content": [
+        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
+        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
+        "To develop better Cognitive Ability for Technology Students."
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "delete",
+    "title": "Delete majorfocus - establishment",
+    "category": "majorfocus",
+    "meta_data": {
+      "content": [
+        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
+        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
+        "To develop better Cognitive Ability for Technology Students."
+      ]
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "faculty",
+    "action": "insert",
+    "title": "Insert DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "faculty",
+    "action": "update",
+    "title": "Update DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President (updated)"
+    },
+    "original_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "faculty",
+    "action": "delete",
+    "title": "Delete DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President"
+    }
+  }
+    ,
+  {
+    "collectionName": "iic",
+    "collection_type": "iic3",
+    "action": "insert",
+    "title": "Insert 5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+    "meta_data": {
+      "name_of_the_program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+      "date": "01.06.2020",
+      "number_of_participants": "206"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic3",
+    "action": "update",
+    "title": "Update 5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+    "meta_data": {
+      "name_of_the_program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+      "date": "01.06.2020",
+      "number_of_participants": "207"
+    },
+    "original_data": {
+      "name_of_the_program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+      "date": "01.06.2020",
+      "number_of_participants": "206"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic3",
+    "action": "delete",
+    "title": "Delete 5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+    "meta_data": {
+      "name_of_the_program": "5 Absolutely Doable Steps To Kickstart Your Career And Become Rich",
+      "date": "01.06.2020",
+      "number_of_participants": "206"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "iic4",
+    "action": "insert",
+    "title": "Insert Innovative Methods of Industrial Automation in Manufacturing Systems",
+    "meta_data": {
+      "name_of_the_program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
+      "date": "19.08.2021",
+      "number_of_participants": "119"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic4",
+    "action": "update",
+    "title": "Update Innovative Methods of Industrial Automation in Manufacturing Systems",
+    "meta_data": {
+      "name_of_the_program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
+      "date": "19.08.2021",
+      "number_of_participants": "120"
+    },
+    "original_data": {
+      "name_of_the_program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
+      "date": "19.08.2021",
+      "number_of_participants": "119"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic4",
+    "action": "delete",
+    "title": "Delete Innovative Methods of Industrial Automation in Manufacturing Systems",
+    "meta_data": {
+      "name_of_the_program": "Innovative Methods of Industrial Automation in Manufacturing Systems",
+      "date": "19.08.2021",
+      "number_of_participants": "119"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "iic5",
+    "action": "insert",
+    "title": "Insert ENGINEERS' DAY CELEBRATIONS",
+    "meta_data": {
+      "name_of_the_program": "ENGINEERS' DAY CELEBRATIONS",
+      "date": "15-09-2022",
+      "number_of_participants": "82"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic5",
+    "action": "update",
+    "title": "Update ENGINEERS' DAY CELEBRATIONS",
+    "meta_data": {
+      "name_of_the_program": "ENGINEERS' DAY CELEBRATIONS",
+      "date": "15-09-2022",
+      "number_of_participants": "83"
+    },
+    "original_data": {
+      "name_of_the_program": "ENGINEERS' DAY CELEBRATIONS",
+      "date": "15-09-2022",
+      "number_of_participants": "82"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic5",
+    "action": "delete",
+    "title": "Delete ENGINEERS' DAY CELEBRATIONS",
+    "meta_data": {
+      "name_of_the_program": "ENGINEERS' DAY CELEBRATIONS",
+      "date": "15-09-2022",
+      "number_of_participants": "82"
+    }
+  }
+  ,
+  {
+    "collectionName": "iic",
+    "collection_type": "iic6",
+    "action": "insert",
+    "title": "Insert Guest-lecture on \"Utility of AI in India and abroad\"",
+    "meta_data": {
+      "name_of_the_program": "Guest-lecture on \"Utility of AI in India and abroad\"",
+      "date": "31.08.2023",
+      "number_of_participants": "124"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic6",
+    "action": "update",
+    "title": "Update Guest-lecture on \"Utility of AI in India and abroad\"",
+    "meta_data": {
+      "name_of_the_program": "Guest-lecture on \"Utility of AI in India and abroad\"",
+      "date": "31.08.2023",
+      "number_of_participants": "125"
+    },
+    "original_data": {
+      "name_of_the_program": "Guest-lecture on \"Utility of AI in India and abroad\"",
+      "date": "31.08.2023",
+      "number_of_participants": "124"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic6",
+    "action": "delete",
+    "title": "Delete Guest-lecture on \"Utility of AI in India and abroad\"",
+    "meta_data": {
+      "name_of_the_program": "Guest-lecture on \"Utility of AI in India and abroad\"",
+      "date": "31.08.2023",
+      "number_of_participants": "124"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "iic7",
+    "action": "insert",
+    "title": "Insert My Story – an Entrepreneur’s Success Story",
+    "meta_data": {
+      "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
+      "date": "03.10.2024",
+      "number_of_participants": "45"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic7",
+    "action": "update",
+    "title": "Update My Story – an Entrepreneur’s Success Story",
+    "meta_data": {
+      "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
+      "date": "03.10.2024",
+      "number_of_participants": "46"
+    },
+    "original_data": {
+      "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
+      "date": "03.10.2024",
+      "number_of_participants": "45"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "iic7",
+    "action": "delete",
+    "title": "Delete My Story – an Entrepreneur’s Success Story",
+    "meta_data": {
+      "name_of_the_program": "My Story – an Entrepreneur’s Success Story",
+      "date": "03.10.2024",
+      "number_of_participants": "45"
+    }
+  }
+  ,
+  {
+    "collectionName": "iic",
+    "collection_type": "kapila",
+    "action": "insert",
+    "title": "Insert kapila item",
+    "meta_data": {
+      "name": "KAPILA Scheme Document",
+      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "kapila",
+    "action": "update",
+    "title": "Update kapila item",
+    "meta_data": {
+      "name": "KAPILA Scheme Document (updated)",
+      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+    },
+    "original_data": {
+      "name": "KAPILA Scheme Document",
+      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "kapila",
+    "action": "delete",
+    "title": "Delete kapila item",
+    "meta_data": {
+      "name": "KAPILA Scheme Document",
+      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "mentee",
+    "action": "insert",
+    "title": "Insert mentee item",
+    "meta_data": {
+      "mentee_institute": "Soka Ikeda College of Arts And Science For Women",
+      "State": "Tamil Nadu",
+      "Zone": "Southern/SRO"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "mentee",
+    "action": "update",
+    "title": "Update mentee item",
+    "meta_data": {
+      "mentee_institute": "Soka Ikeda College of Arts And Science For Women (updated)",
+      "State": "Tamil Nadu",
+      "Zone": "Southern/SRO"
+    },
+    "original_data": {
+      "mentee_institute": "Soka Ikeda College of Arts And Science For Women",
+      "State": "Tamil Nadu",
+      "Zone": "Southern/SRO"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "mentee",
+    "action": "delete",
+    "title": "Delete mentee item",
+    "meta_data": {
+      "mentee_institute": "Soka Ikeda College of Arts And Science For Women",
+      "State": "Tamil Nadu",
+      "Zone": "Southern/SRO"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "yukti",
+    "action": "insert",
+    "title": "Insert yukti registration_statistics",
+    "category": "registration_statistics",
+    "meta_data": {
+      "content": [
+        { "name": "Total Individuals Registered", "count": "2270" },
+        { "name": "Total Ideas Submitted", "count": "369" }
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "yukti",
+    "action": "update",
+    "title": "Update yukti registration_statistics",
+    "category": "registration_statistics",
+    "meta_data": {
+      "content": [
+        { "name": "Total Individuals Registered", "count": "2271" },
+        { "name": "Total Ideas Submitted", "count": "369" }
+      ]
+    },
+    "original_data": {
+      "content": [
+        { "name": "Total Individuals Registered", "count": "2270" },
+        { "name": "Total Ideas Submitted", "count": "369" }
+      ]
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "yukti",
+    "action": "delete",
+    "title": "Delete yukti registration_statistics",
+    "category": "registration_statistics",
+    "meta_data": {
+      "content": [
+        { "name": "Total Individuals Registered", "count": "2270" },
+        { "name": "Total Ideas Submitted", "count": "369" }
+      ]
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "certificate",
+    "action": "insert",
+    "title": "Insert certificate item",
+    "meta_data": {
+      "year": "2023-2024",
+      "image_path": "/static/images/iic/certificate/1.webp"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "certificate",
+    "action": "update",
+    "title": "Update certificate item",
+    "meta_data": {
+      "year": "2023-2024",
+      "image_path": "/static/images/iic/certificate/1.webp",
+      "note": "Updated layout"
+    },
+    "original_data": {
+      "year": "2023-2024",
+      "image_path": "/static/images/iic/certificate/1.webp"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "certificate",
+    "action": "delete",
+    "title": "Delete certificate item",
+    "meta_data": {
+      "year": "2023-2024",
+      "image_path": "/static/images/iic/certificate/1.webp"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "policy",
+    "action": "insert",
+    "title": "Insert policy item",
+    "meta_data": {
+      "name": "National Innovation Startup Policy",
+      "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "policy",
+    "action": "update",
+    "title": "Update policy item",
+    "meta_data": {
+      "name": "National Innovation Startup Policy (updated)",
+      "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+    },
+    "original_data": {
+      "name": "National Innovation Startup Policy",
+      "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "policy",
+    "action": "delete",
+    "title": "Delete policy item",
+    "meta_data": {
+      "name": "National Innovation Startup Policy",
+      "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+    }
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "contact",
+    "action": "insert",
+    "title": "Insert contact item",
+    "meta_data": {
+      "name": "Mr.M.Yuvaraj",
+      "designation": "IIC Convener",
+      "phone": 9750426069,
+      "gmail": "iic@velammal.ed.in"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "contact",
+    "action": "update",
+    "title": "Update contact item",
+    "meta_data": {
+      "name": "Mr.M.Yuvaraj",
+      "designation": "IIC Convener (updated)",
+      "phone": 9750426069,
+      "gmail": "iic@velammal.ed.in"
+    },
+    "original_data": {
+      "name": "Mr.M.Yuvaraj",
+      "designation": "IIC Convener",
+      "phone": 9750426069,
+      "gmail": "iic@velammal.ed.in"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "contact",
+    "action": "delete",
+    "title": "Delete contact item",
+    "meta_data": {
+      "name": "Mr.M.Yuvaraj",
+      "designation": "IIC Convener",
+      "phone": 9750426069,
+      "gmail": "iic@velammal.ed.in"
+    }
+  }
+]

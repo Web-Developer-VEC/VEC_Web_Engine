@@ -167,3 +167,6 @@ async function insertData(tempDoc, mainCollection) {
     throw error; // ❌ no res.json, just throw
   }
 }
+
+
+module.exports = { insertData };

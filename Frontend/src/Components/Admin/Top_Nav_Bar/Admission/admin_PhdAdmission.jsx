@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./AdminPhdadmission.css";
 import point from "../../../Assets/points.png";
 import { GiConvergenceTarget } from "react-icons/gi";
-import Banner from "../../../Banner";
-import LoadComp from "../../../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
- 
-
 
 const AdminPhdAdmission = ({theme, toggle}) => {
 

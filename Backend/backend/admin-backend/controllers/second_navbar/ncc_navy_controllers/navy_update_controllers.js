@@ -1,140 +1,156 @@
-
-// ------------------- UPDATE -------------------
-async function updateData(req, res, tempDoc, mainCollection) {
+async function updateData( tempDoc, mainCollection) {
   try {
-    // Extract file paths
-    let { collection_type, meta_data, original_data, category } = tempDoc;
+    const { collection_type, meta_data, category, original_data } = tempDoc;
 
-    meta_data = JSON.parse(meta_data);
-    original_data=JSON.parse(original_data);
-
-    if (!collection_type || !meta_data || !original_data)
-      return res
-        .status(400)
-        .json({ error: "Type and newData and originaldata required" });
-    if (tempDoc.meta_data?.filePaths) {
-      tempDoc.meta_data.image_path = tempDoc.meta_data.filePaths;
-      delete tempDoc.meta_data.filePaths;
+    // 1️⃣ Validate required fields
+    if (!collection_type || !meta_data) {
+      throw new Error("collection_type and meta_data are required");
     }
 
+    // 2️⃣ Fetch the document for this collection_type
     const doc = await mainCollection.findOne({ type: collection_type });
-    if (!doc) return res.status(404).json({ error: "Type not found" });
+    if (!doc) throw new Error("Document not found");
+    if (!doc.data) throw new Error("Document has no data field");
 
-    // ---------- ABOUT ----------
-    if (collection_type === "about") {
-      let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data]; // normalize to array
+    // Debug
+    console.log("🔎 Incoming update request:", {
+      collection_type,
+      category,
+      original_data,
+      meta_data,
+    });
 
-      updatedData = updatedData.map((item) => {
-        let newItem = { ...item };
+    // 3️⃣ Define type categories
+    const singleDocTypes = ["about"];
+    const multiDocTypes = ["events", "awards"];
+    const categoryBasedTypes = ["team"];
 
-        Object.keys(meta_data).forEach((key) => {
-          if (newItem.hasOwnProperty(key)) {
-            if (Array.isArray(newItem[key])) {
-              // 🔄 Replace matching old value with new value
-              newItem[key] = newItem[key].map((val) =>
-                val === original_data[key] ? meta_data[key] : val
-              );
-
-              // optional: if old value not found, add it
-              if (!newItem[key].includes(meta_data[key])) {
-                newItem[key].push(meta_data[key]);
-              }
-            } else {
-              // if it's a string, just overwrite directly
-              if (newItem[key] === original_data[key]) {
-                newItem[key] = meta_data[key];
-              }
-            }
-          } else {
-            // if key doesn't exist, add it fresh
-            newItem[key] = Array.isArray(meta_data[key])
-              ? meta_data[key]
-              : [meta_data[key]];
-          }
-        });
-
-        return newItem;
-      });
-
-      // persist changes in MongoDB
+    // 4️⃣ Single-doc types → overwrite entire data array
+    if (singleDocTypes.includes(collection_type)) {
       await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: updatedData } }
+        { type: collection_type },
+        { $set: { data: [meta_data] } }
       );
-
-      return res.json({
-        message: "About data updated successfully",
-        data: updatedData,
-      });
+      return {
+       
+        message: `Updated successfully for ${collection_type}`,
+        data: meta_data,
+      };
     }
 
-    //newsupdate for nss and yrc
+    // 5️⃣ Category-based
+    if (categoryBasedTypes.includes(collection_type)) {
+      if (!category)
+        throw new Error("category is required");
 
-    if (collection_type === "news_updates") {
-      if (!existingData || !newData) {
-        return res
-          .status(400)
-          .json({ error: "existingData and newData required" });
+      const categoryExists = doc.data.find((c) => c.category === category);
+      if (!categoryExists)
+        throw new Error(`Category ${category} not found`);
+
+      const content = categoryExists.members;
+
+      // Case A: Array of strings
+      if (Array.isArray(content) && typeof content[0] === "string") {
+        if (!original_data)
+          return { status: 400, message: "original_data required" };
+
+        // Unwrap { content: [...] } if present
+        const originalArray = Array.isArray(original_data?.content)
+          ? original_data.content
+          : Array.isArray(original_data)
+          ? original_data
+          : [original_data];
+
+        const metaArray = Array.isArray(meta_data?.content)
+          ? meta_data.content
+          : Array.isArray(meta_data)
+          ? meta_data
+          : [meta_data];
+
+        const updated = content.map((item) =>
+          originalArray.includes(item)
+            ? metaArray[originalArray.indexOf(item)] || item
+            : item
+        );
+
+        await mainCollection.updateOne(
+          { type: collection_type, "data.category": category }, // ✅ find by type + category
+          { $set: { "data.$.members": updated } } // ✅ update the matching category
+        );
       }
 
-      const updatedData = doc.data.map((item) =>
-        item === original_data ? meta_data : item
-      );
+      // Case B: Array of objects → match by name
+      else if (Array.isArray(content) && content[0]?.name) {
+        if (!original_data)
+          throw new Error("original_data required");
+
+        const originalArray = Array.isArray(original_data)
+          ? original_data
+          : [original_data];
+        const metaArray = Array.isArray(meta_data) ? meta_data : [meta_data];
+
+        const updated = content.map((item) => {
+          const index = originalArray.findIndex(
+            (od) => od.name === item.name
+          );
+          return index !== -1 ? { ...item, ...metaArray[index] } : item;
+        });
+
+        await mainCollection.updateOne(
+          { type: collection_type },
+          { $set: { "data.$[elem].members": updated } },
+          { arrayFilters: [{ "elem.category": category }] }
+        );
+      }
+
+      // Case C: Single object → overwrite
+      else {
+        await mainCollection.updateOne(
+          { type: collection_type },
+          { $set: { "data.$[elem].members": meta_data } },
+          { arrayFilters: [{ "elem.category": category }] }
+        );
+      }
+
+      return {
+       
+        message: `Updated successfully in ${collection_type} - category ${category}`,
+        data: meta_data,
+      };
+    }
+
+    // 6️⃣ Multi-document types → array of objects without category
+    if (multiDocTypes.includes(collection_type)) {
+      if (!original_data) {
+        throw new Error("original_data is required for multi-doc updates");
+      }
+
+      const updatedData = doc.data.map((item) => {
+        // Compare object equality
+        if (JSON.stringify(item) === JSON.stringify(original_data)) {
+          return { ...item, ...meta_data };
+        }
+        return item;
+      });
 
       await mainCollection.updateOne(
-        { type: "news_updates" },
+        { type: collection_type },
         { $set: { data: updatedData } }
       );
 
-      return res.json({
-        message: "News update modified successfully",
-        data: updatedData,
-      });
-    }
-
-    // ---------- AWARDS / EVENTS ----------
-    if (["awards", "events"].includes(collection_type)) {
-      const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
-      );
-      if (index === -1)
-        return res.status(404).json({ error: "Matching object not found" });
-      doc.data[index] = { ...doc.data[index], ...meta_data };
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $set: { data: doc.data } }
-      );
-      return res.json({ message: `Update successful for ${collection_type}` });
-    }
-
-    // ---------- TEAM ----------
-    if (collection_type === "team") {
-      if (!category)
-        return res.status(400).json({ error: "Category required for team" });
-      const catIndex = doc.data.findIndex((c) => c.category === category);
-      if (catIndex === -1)
-        return res.status(404).json({ error: "Category not found" });
-      const memberIndex = doc.data[catIndex].members.findIndex((m) =>
-        Object.keys(original_data).every((k) => m[k] === original_data[k])
-      );
-      if (memberIndex === -1)
-        return res.status(404).json({ error: "Member not found" });
-      doc.data[catIndex].members[memberIndex] = {
-        ...doc.data[catIndex].members[memberIndex],
-        ...meta_data,
+      return {
+       
+        message: `Updated successfully for ${collection_type}`,
+        data: meta_data,
       };
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $set: { data: doc.data } }
-      );
-      return res.json({ message: "Update successful for Team" });
     }
 
-    return res.status(400).json({ error: "Invalid type" });
+    // 7️⃣ No matching case found
+    throw new Error("No matching case found");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error", details: error.message });
+    console.error("Error updating data:", error);
+    throw new Error("Internal server error");
   }
 }
 
-module.exports = { updateData };    
+module.exports = { updateData };

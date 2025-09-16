@@ -7,9 +7,24 @@ function checkRoleByCollection() {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    let docs = req.body;
+    let docs = [];
 
-    // ✅ Normalize: always work with an array
+    try {
+      // ✅ Handle docs in different formats
+      if (typeof req.body.docs === "string") {
+        docs = JSON.parse(req.body.docs); // frontend sent stringified JSON
+      } else if (Array.isArray(req.body.docs)) {
+        docs = req.body.docs; // already array
+      } else if (req.body.docs && typeof req.body.docs === "object") {
+        docs = [req.body.docs]; // single object
+      } else {
+        return res.status(400).json({ error: "docs must be provided (object or array)" });
+      }
+    } catch (err) {
+      return res.status(400).json({ error: "Invalid JSON format for docs" });
+    }
+
+    // ✅ Normalize to array
     if (!Array.isArray(docs)) {
       docs = [docs];
     }
@@ -23,7 +38,6 @@ function checkRoleByCollection() {
       }
 
       const allowedRoles = roleAccessMap[collectionName];
-
       if (!allowedRoles) {
         return res.status(400).json({ error: `Invalid collection name (${collectionName}) or no roles set` });
       }

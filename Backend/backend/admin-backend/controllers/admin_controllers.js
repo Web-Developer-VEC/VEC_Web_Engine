@@ -1,11 +1,11 @@
-// const AdminModel = require("../models/admin_models");
 const { hashPassword, comparePassword } = require("../middlewares/bcrypt");
 const { generateToken } = require("../middlewares/jwt");
 const { getAdminDb } = require("../../main-backend/config/db");
+const { roleRoutes } = require("../models/role_response_models"); 
 
+// 🔹 Signup
 async function signup(req, res) {
   try {
-    // 🔹 Signup Controller
     const db = getAdminDb();
     const collection = db.collection("admins");
 
@@ -17,14 +17,20 @@ async function signup(req, res) {
       return res.status(400).json({ message: "Admin already exists" });
     }
 
-    // hash and save
+    // hash password
     const hashedPassword = await hashPassword(password);
+
+    // assign routes based on role
+    const routes = roleRoutes[role] || [];
+
+    // save admin
     await collection.insertOne({
       name,
       role,
       email,
       password: hashedPassword,
       phone_no,
+      routes,
     });
 
     res.status(201).json({ message: "Signup successful" });
@@ -33,18 +39,15 @@ async function signup(req, res) {
   }
 }
 
-// 🔹 Login Controller (with session)
+// 🔹 Login
 async function login(req, res) {
   try {
-
-    // 🔹 Signup Controller
     const db = getAdminDb();
     const collection = db.collection("admins");
-    
+
     const { email, password } = req.body;
 
     const admin = await collection.findOne({ email });
-
     if (!admin) {
       return res.status(404).json({ message: "Admin not found" });
     }
@@ -60,17 +63,17 @@ async function login(req, res) {
       role: admin.role,
     });
 
-    // 🔹 Server-side session
+    // attach session
     req.session.admin = {
       id: admin._id,
       name: admin.name,
       email: admin.email,
       role: admin.role,
       phone_no: admin.phone_no,
+      routes: admin.routes || roleRoutes[admin.role] || [],
       token,
     };
 
-    // 🔹 Send response with data
     res.json({
       message: "Login successful",
       token,
@@ -80,6 +83,7 @@ async function login(req, res) {
         email: admin.email,
         role: admin.role,
         phone_no: admin.phone_no,
+        routes: admin.routes || roleRoutes[admin.role] || [],
       },
     });
   } catch (err) {

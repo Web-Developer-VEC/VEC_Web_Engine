@@ -1,117 +1,109 @@
-
-// // ------------------- DELETE -------------------
-async function deleteData(req, res, tempDoc, mainCollection) {
+async function deleteData( tempDoc, mainCollection) {
   try {
-    let { collection_type, meta_data, category } = tempDoc;
+    const { collection_type, category, meta_data } = tempDoc;
 
-     meta_data = JSON.parse(meta_data);
+    if (!collection_type)
+      throw new Error("collection_type is required");
 
-    if (!collection_type || !meta_data)
-      return res.status(400).json({ error: "Type and data required" });
+    const singleDocTypes = ["about"];
+    const multiDocTypes = [];
+    const categoryBasedTypes = ["team"];
 
-    const doc = await mainCollection.findOne({ type: collection_type });
-    if (!doc) return res.status(404).json({ error: "Type not found" });
-
-    // ---------- ABOUT ----------
-    if (collection_type === "about") {
-      let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data]; // normalize to array
-
-      updatedData = updatedData.map((item) => {
-        let newItem = { ...item };
-
-        if (meta_data) {
-          Object.keys(meta_data).forEach((key) => {
-            if (newItem.hasOwnProperty(key)) {
-              if (Array.isArray(newItem[key])) {
-                // remove matching values
-                newItem[key] = newItem[key].filter(
-                  (val) => val !== meta_data[key]
-                );
-
-                // if array becomes empty → remove the key
-                if (newItem[key].length === 0) {
-                  delete newItem[key];
-                }
-              } else {
-                // remove field if value matches
-                if (newItem[key] === meta_data[key]) {
-                  delete newItem[key];
-                }
-              }
-            }
-          });
-        }
-
-        return newItem;
-      });
-
+    // 1️⃣ Single-doc → clear all data
+    if (singleDocTypes.includes(collection_type)) {
       await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: updatedData } }
+        { type: collection_type },
+        { $set: { data: [] } }
       );
-
-      const freshDoc = await mainCollection.findOne({ type: "about" });
-      return res.json({
-        message: "About data deleted successfully",
-        data: freshDoc.data,
-      });
+      return {
+        message: `Deleted entire document for ${collection_type}`,
+      };
     }
 
-    //newsupdates for nss and yrc
+    // 2️⃣ Multi-doc → delete item by unique key or full object
+    if (multiDocTypes.includes(collection_type)) {
+      if (!meta_data || Object.keys(meta_data).length === 0)
+        throw new Error("meta_data required to delete specific item");
 
-    if (collection_type === "news_updates") {
-      if (!meta_data) {
-        return res.status(400).json({ error: "deleteData required" });
+      await mainCollection.updateOne(
+        { type: collection_type },
+        { $pull: { data: meta_data } }
+      );
+      return {
+       
+        message: `Deleted one document from ${collection_type}`,
+        deleted: meta_data,
+      };
+    }
+
+    // 3️⃣ Category-based
+    if (categoryBasedTypes.includes(collection_type)) {
+      if (!category)
+        throw new Error("category is required");
+
+      const doc = await mainCollection.findOne({ type: collection_type });
+      const categoryExists = doc?.data?.find((c) => c.category === category);
+      if (!categoryExists)
+        throw new Error(`Category ${category} not found`);
+
+      const content = categoryExists.members;
+
+      if (
+        !meta_data ||
+        (typeof meta_data === "object" &&
+          !Array.isArray(meta_data) &&
+          Object.keys(meta_data).length === 0) ||
+        (Array.isArray(meta_data) && meta_data.length === 0) ||
+        (meta_data.content && meta_data.content.length === 0)
+      ) {
+        // Delete entire category
+        await mainCollection.updateOne(
+          { type: collection_type },
+          { $pull: { data: { category } } }
+        );
+      }
+      //   else if (Array.isArray(content) && typeof content[0] === "string") {
+      //     // Delete string items
+      //     const itemsToDelete = Array.isArray(meta_data.content)
+      //       ? meta_data.content
+      //       : [meta_data];
+      //     await mainCollection.updateOne(
+      //       { type: collection_type, "data.category": category },
+      //       { $pull: { "data.$.content": { $in: itemsToDelete } } }
+      //     );
+      //   }
+      else if (Array.isArray(content) && typeof content[0] === "object") {
+        // Delete object(s) by name (or other unique key)
+        const itemsToDelete = Array.isArray(meta_data.content)
+          ? meta_data.content
+          : [meta_data];
+
+        const titlesToDelete = itemsToDelete.map((item) => item.name);
+
+        await mainCollection.updateOne(
+          { type: collection_type, "data.category": category },
+          { $pull: { "data.$.members": { name: { $in: titlesToDelete } } } }
+        );
+      } else {
+        // Fallback: clear content
+        await mainCollection.updateOne(
+          { type: collection_type, "data.category": category },
+          { $set: { "data.$.members": [] } }
+        );
       }
 
-      const updatedData = doc.data.filter((item) => item !== meta_data);
-
-      await mainCollection.updateOne(
-        { type: "news_updates" },
-        { $set: { data: updatedData } }
-      );
-
-      return res.json({
-        message: "News update deleted successfully",
-        data: updatedData,
-      });
+      return {
+       
+        message: `Delete successful for ${collection_type} - category ${category}`,
+        data: meta_data,
+      };
     }
 
-    // ---------- AWARDS / EVENTS ----------
-    if (["awards", "events"].includes(collection_type)) {
-      doc.data = doc.data.filter(
-        (item) => !Object.keys(meta_data).every((k) => item[k] === meta_data[k])
-      );
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $set: { data: doc.data } }
-      );
-      return res.json({ message: `Delete successful for ${collection_type}` });
-    }
-
-    // ---------- TEAM ----------
-    if (collection_type === "team") {
-      if (!category)
-        return res.status(400).json({ error: "Category required for team" });
-      const catIndex = doc.data.findIndex((c) => c.category === category);
-      if (catIndex === -1)
-        return res.status(404).json({ error: "Category not found" });
-      doc.data[catIndex].members = doc.data[catIndex].members.filter(
-        (m) => !Object.keys(meta_data).every((k) => m[k] === meta_data[k])
-      );
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $set: { data: doc.data } }
-      );
-      return res.json({ message: "Delete successful for Team" });
-    }
-
-    return res.status(400).json({ error: "Invalid type" });
+    throw new Error("Invalid delete request");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error", details: error.message });
+    console.error("Error deleting data:", error);
+    throw new Error("Internal server error");
   }
 }
 
-
-module.exports = { deleteData };    
+module.exports = { deleteData };
