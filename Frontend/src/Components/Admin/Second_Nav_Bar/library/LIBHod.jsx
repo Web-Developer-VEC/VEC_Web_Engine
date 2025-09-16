@@ -2,7 +2,7 @@ import LoadComp from "../../LoadComp";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Pencil } from "lucide-react";
+import { Pencil, Save, Send } from "lucide-react";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -16,12 +16,11 @@ const LIBHod = ({ data }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const [showDiscardModal, setShowDiscardModal] = useState(false); // ✅ new discard confirmation modal
+  const [showDiscardModal, setShowDiscardModal] = useState(false);
 
-  const [changes, setChanges] = useState([]);
-  const [hasChanges, setHasChanges] = useState(false);
   const [formData, setFormData] = useState({ ...data?.[0] });
   const [originalData, setOriginalData] = useState({ ...data?.[0] });
+  const [editBackup, setEditBackup] = useState(null); // ✅ backup for current edit session
 
   useEffect(() => {
     if (data?.[0]) {
@@ -30,23 +29,16 @@ const LIBHod = ({ data }) => {
     }
   }, [data]);
 
-  // ✅ detect changes live
-  useEffect(() => {
-    if (!originalData || !formData) {
-      setHasChanges(false);
-      return;
-    }
-    const diff = Object.keys(formData).some(
-      (key) => formData[key] !== originalData[key]
-    );
-    setHasChanges(diff);
-  }, [formData, originalData]);
+  // ✅ detect if changed compared to original
+  const isChanged =
+    JSON.stringify(formData) !== JSON.stringify(originalData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ get changed fields
   const detectChanges = () => {
     const diff = [];
     if (!originalData) return diff;
@@ -63,23 +55,23 @@ const LIBHod = ({ data }) => {
     return diff;
   };
 
-  // ✅ Discard changes & reset UI
-  const handleDiscardChanges = () => {
-    setFormData({ ...originalData }); // revert to original values
-    setIsEditing(false);              
-    setShowRequest(false);            
-    setShowDiscardModal(false); // close modal
-    toast.info("Changes discarded");
+  // ✅ discard full changes (after Save, before Request)
+  const handleDiscardConfirm = () => {
+    setFormData({ ...originalData });
+    setIsEditing(false);
+    setShowRequest(false);
+    setShowDiscardModal(false);
+    toast.info("❌ Changes discarded");
   };
 
-  // ✅ Confirm request & reset UI
+  // ✅ confirm final request
   const handleRequestConfirm = () => {
     console.log("Final request submitted with data:", formData);
-    setOriginalData({ ...formData }); // commit changes
+    setOriginalData({ ...formData }); // commit
     setShowRequestModal(false);
-    setShowRequest(false); 
-    setIsEditing(false);   
-    toast.success("Request submitted successfully!");
+    setShowRequest(false);
+    setIsEditing(false);
+    toast.success("✅ Request submitted successfully!");
   };
 
   if (!data) {
@@ -92,21 +84,20 @@ const LIBHod = ({ data }) => {
 
   return (
     <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins]">
-      {/* Toast container */}
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* ✅ Edit Button */}
-      {!isEditing && !showRequest && (
+      {!isEditing && (
         <div className="absolute top-7 right-10">
           <button
             onClick={() => {
+              setEditBackup(formData); // backup current data
               setIsEditing(true);
-              setFormData({ ...data?.[0] });
             }}
             className="flex items-center gap-2 px-4 py-2 
-                       bg-[#FDCC03] text-black font-medium 
+                       bg-[#FDCC03] text-text font-medium 
                        rounded-xl shadow-md 
-                       hover:bg-yellow-500 hover:shadow-lg 
+                       hover:bg-[#800000] hover:shadow-lg hover:text-prim
                        active:scale-95 transition-all duration-200"
           >
             <Pencil size={18} />
@@ -124,9 +115,7 @@ const LIBHod = ({ data }) => {
               alt="Library HoD"
               src={UrlParser(formData?.image_path)}
             />
-
-            {/* ✅ Upload Button styled with label */}
-            <label className="bg-blue-500 text-white px-3 py-1 rounded cursor-pointer mt-2">
+            <label className="bg-[#FDCC03] text-text px-3 py-1 rounded cursor-pointer mt-2 hover:bg-[#800000] hover:text-prim">
               Upload
               <input
                 type="file"
@@ -136,7 +125,10 @@ const LIBHod = ({ data }) => {
                   const file = e.target.files[0];
                   if (file) {
                     const previewUrl = URL.createObjectURL(file);
-                    setFormData((prev) => ({ ...prev, image_path: previewUrl }));
+                    setFormData((prev) => ({
+                      ...prev,
+                      image_path: previewUrl,
+                    }));
                   }
                 }}
               />
@@ -219,38 +211,30 @@ const LIBHod = ({ data }) => {
           {isEditing ? (
             <>
               <button
-                onClick={() => setShowDiscardModal(true)} // ✅ open confirm modal
+                onClick={() => {
+                  setFormData(editBackup); // restore this session only
+                  setIsEditing(false);
+                }}
                 className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
               >
                 Cancel
               </button>
 
-              {hasChanges && (
+              {isChanged && (
                 <button
                   onClick={() => {
-                    let missing = [];
-                    if (!formData?.name?.trim()) missing.push("Name");
-                    if (!formData?.designation?.trim()) missing.push("Designation");
-                    if (!formData?.education_qualification?.trim())
-                      missing.push("Educational Qualification");
-                    if (!formData?.message?.trim()) missing.push("Message");
-                    if (!formData?.image_path?.trim()) missing.push("Image");
-
-                    if (missing.length > 0) {
-                      toast.error(
-                        `⚠️ Please fill the following field(s): ${missing.join(", ")}`
-                      );
+                    const diff = detectChanges();
+                    if (diff.length === 0) {
+                      toast.error("⚠️ No changes detected.");
                       return;
                     }
-
-                    const diff = detectChanges();
-                    setChanges(diff);
                     setIsEditing(false);
                     setShowRequest(true);
                   }}
-                  className="px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow hover:bg-yellow-500 transition"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-text rounded-lg shadow-md hover:bg-[#800000] transition hover:text-prim"
                 >
-                  Save
+                  <Save size={18} />
+                  <span>Save</span>
                 </button>
               )}
             </>
@@ -258,19 +242,18 @@ const LIBHod = ({ data }) => {
             showRequest && (
               <div className="flex gap-3 mt-4">
                 <button
-                  onClick={() => setShowDiscardModal(true)} // ✅ open confirm modal
+                  onClick={() => setShowDiscardModal(true)}
                   className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded-lg shadow font-medium transition"
                 >
                   Discard Changes
                 </button>
                 <button
                   onClick={() => setShowRequestModal(true)}
-                  className="bg-[#FDCC03] hover:bg-yellow-500 text-black px-4 py-2 rounded-lg shadow font-medium transition"
+                  className="flex items-center gap-2 bg-[#FDCC03] hover:bg-[#800000] text-text px-4 py-2 rounded-lg shadow-md font-medium transition hover:text-prim"
                 >
-                  Request
+                  <Send size={18} />
+                  <span>Request</span>
                 </button>
-
-                
               </div>
             )
           )}
@@ -283,7 +266,8 @@ const LIBHod = ({ data }) => {
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[400px]">
             <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
             <p className="text-sm text-gray-600 dark:text-drkt mb-6">
-              Are you sure you want to discard all your changes? This action cannot be undone.
+              Are you sure you want to discard all your changes? This action
+              cannot be undone.
             </p>
             <div className="flex justify-end gap-2">
               <button
@@ -293,7 +277,7 @@ const LIBHod = ({ data }) => {
                 No, Keep Editing
               </button>
               <button
-                onClick={handleDiscardChanges}
+                onClick={handleDiscardConfirm}
                 className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
               >
                 Yes, Discard
@@ -306,42 +290,63 @@ const LIBHod = ({ data }) => {
       {/* ✅ Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[650px]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Request
             </h2>
             <p className="text-sm text-red-600 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
-              Once approved, they will be applied automatically to the live site.
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved will go on live.
             </p>
 
-            <table className="w-full text-center text-sm text-text dark:text-drkt border">
-              <thead className="bg-gray-100 dark:bg-gray-800">
+            <table className="w-full text-sm text-text dark:text-drkt border">
+              <thead className="bg-gray-100 dark:bg-gray-800 text-center">
                 <tr>
                   <th className="py-2 border">Action</th>
                   <th className="py-2 border">Section</th>
+                  <th className="py-2 border">Changes</th>
                 </tr>
               </thead>
               <tbody>
-                {changes.length > 0 && (
-                  <tr className="border">
+                {detectChanges().map((change, index) => (
+                  <tr key={index} className="border text-center">
                     <td className="py-2 text-blue-600 font-semibold">Edited</td>
-                    <td className="py-2">Library HoD</td>
+                    <td className="py-2">{change.field}</td>
+                    <td className="py-2 flex items-center justify-center gap-2">
+                      <span className="line-through text-gray-500">
+                        {change.oldValue || "-"}
+                      </span>
+                      →
+                      <span className="text-green-600 font-medium">
+                        {change.newValue || "-"}
+                      </span>
+                      <button
+                        onClick={() => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            [change.field]: originalData[change.field],
+                          }));
+                        }}
+                        className="text-red-500 hover:text-red-700 font-bold"
+                      >
+                        ✕
+                      </button>
+                    </td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
 
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-white"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-yellow-500 text-black "
+                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-[#800000] text-text font-medium hover:text-prim"
               >
                 Final Request
               </button>

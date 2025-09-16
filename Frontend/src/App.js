@@ -262,7 +262,7 @@ const App = () => {
                                 <Route path="/clg-org" drk element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
                                 <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme}/>}/>
                                 <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
-                                <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
+                                {/* <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} /> */}
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>

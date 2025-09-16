@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .pdgbtn {
+        width: 100%;
+        max-width: 30px;
+        margin: 0 auto;
+    }
+}
+@media  (max-width: 1024px) {
+    .pdgbtn {
+        width: 100%;
+        max-width: 325px;
+        margin: 0 auto;
+    }
+}
