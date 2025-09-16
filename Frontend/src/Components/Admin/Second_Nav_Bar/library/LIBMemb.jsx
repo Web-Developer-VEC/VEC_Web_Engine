@@ -1,84 +1,205 @@
 import React, { useState, useEffect } from "react";
-import { Pencil, Trash2, Save, ArrowDown, Plus } from "lucide-react";
+import { Pencil, Plus, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
 
+const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+
 const LIBMemb = ({ data }) => {
-  const members = data.find(sec => sec.category === "Member Details")?.content || [];
-  const books = data.find(sec => sec.category === "no_of_books")?.content || [];
-  const cds = data.find(sec => sec.category === "periodical_back_volumes_cd")?.content || [];
+  const members = data.find((sec) => sec.category === "Member Details")?.content || [];
+  const books = data.find((sec) => sec.category === "no_of_books")?.content || [];
+  const cds = data.find((sec) => sec.category === "periodical_back_volumes_cd")?.content || [];
 
   const [rows, setRows] = useState([]);
+  const [committedRows, setCommittedRows] = useState([]);
+  const [pendingRows, setPendingRows] = useState(null);
+
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
 
   useEffect(() => {
     const merged = members.map((m, idx) => ({
-      member: m,
-      book: books[idx],
-      cd: cds[idx],
+      member: m || "",
+      book: books[idx] || "",
+      cd: cds[idx] || "",
+      checked: false,
     }));
-    setRows(merged);
+    const copy = deepCopy(merged);
+    setCommittedRows(copy);
+    setRows(deepCopy(copy));
+    setPendingRows(null);
+    setIsEditing(false);
+    setIsDirty(false);
+    setIsSaved(false);
   }, [data]);
 
-  const [editRow, setEditRow] = useState(null);
-  const [editedValues, setEditedValues] = useState({});
-  const [deleteIndex, setDeleteIndex] = useState(null);
-
-  // For request flow
-  const [showRequestButton, setShowRequestButton] = useState(false);
-  const [showRequestModal, setShowRequestModal] = useState(false);
-  const [changeSummary, setChangeSummary] = useState(null);
-
-  const handleEdit = (idx) => {
-    setEditRow(idx);
-    setEditedValues(rows[idx]);
+  const handleStartEdit = () => {
+    // Load pendingRows if exist; otherwise, load committedRows
+    if (pendingRows) {
+      setRows(deepCopy(pendingRows));
+    } else {
+      setRows(deepCopy(committedRows));
+    }
+    setIsEditing(true);
+    setIsDirty(false);
+    setIsSaved(false);
   };
 
-  const handleSave = (idx) => {
-    // ✅ Validation: show warning if any field is empty
-    if (!editedValues.member || !editedValues.book || !editedValues.cd) {
-      toast.warning("⚠️ All fields are required!");
-      return;
+  const handleChange = (e, idx, field) => {
+    let value = e.target.value;
+
+    // Only allow numbers for book and cd fields
+    if (field === "book" || field === "cd") {
+      value = value.replace(/\D/g, ""); // remove non-digit characters
     }
 
-    const oldRow = rows[idx];
-    const updated = [...rows];
-    updated[idx] = editedValues;
+    const updated = rows.map((r, i) => (i === idx ? { ...r, [field]: value } : r));
     setRows(updated);
-    setEditRow(null);
-
-    // Save the changes summary for modal
-    setChangeSummary({ old: oldRow, new: editedValues, index: idx + 1 });
-    setShowRequestButton(true);
-  };
-
-  const confirmDelete = () => {
-    const updated = rows.filter((_, i) => i !== deleteIndex);
-    setRows(updated);
-    setDeleteIndex(null);
-  };
-
-  const handleChange = (e, field) => {
-    setEditedValues({ ...editedValues, [field]: e.target.value });
-  };
-
-  const handleRequestConfirm = () => {
-    console.log("Final Request Submitted:", changeSummary);
-    setShowRequestModal(false);
-    setShowRequestButton(false);
+    setIsDirty(true);
   };
 
   const handleAddRow = () => {
-    const newRow = { member: "", book: "", cd: "" };
-    const updated = [...rows, newRow];
-    setRows(updated);
-    setEditRow(updated.length - 1); // put the last row in edit mode
-    setEditedValues(newRow);
+    setRows((prev) => [
+      ...prev.map((r) => ({ ...r })),
+      { member: "", book: "", cd: "", checked: false },
+    ]);
+    setIsDirty(true);
   };
+
+  const confirmDelete = () => {
+    const updated = rows.filter((r) => !r.checked).map((r) => ({ ...r }));
+    setRows(updated);
+    setShowDeleteConfirm(false);
+    setIsDirty(true);
+  };
+
+  const handleCancel = () => {
+    // Revert current session changes
+    if (pendingRows) {
+      setRows(deepCopy(pendingRows));
+    } else {
+      setRows(deepCopy(committedRows));
+    }
+
+    setIsEditing(false);
+    setIsDirty(false);
+
+    // Keep the "Discard & Request" buttons if pendingRows exist
+    if (pendingRows) {
+      setIsSaved(true);
+    } else {
+      setIsSaved(false);
+    }
+  };
+
+  const handleSave = () => {
+    const pending = deepCopy(rows);
+    setPendingRows(pending);
+    setIsEditing(false);
+    setIsDirty(false);
+    setIsSaved(true); // Show Discard & Request buttons
+  };
+
+  const handleDiscard = () => {
+    setRows(deepCopy(committedRows));
+    setPendingRows(null);
+    setIsSaved(false);
+    setIsDirty(false);
+  };
+
+  const handleRequest = () => {
+    setShowRequestModal(true);
+  };
+
+  const handleFinalRequestConfirm = () => {
+    if (!pendingRows) return;
+    // Finalize pending changes
+    setCommittedRows(deepCopy(pendingRows));
+    setRows(deepCopy(pendingRows));
+    setPendingRows(null);
+    setIsSaved(false);
+    setShowRequestModal(false);
+    toast.success("Final request submitted!");
+  };
+
+  const revertChange = (rowIndex) => {
+    if (!pendingRows) return;
+
+    const reverted = deepCopy(pendingRows);
+
+    if (!committedRows[rowIndex] && reverted[rowIndex]) {
+      reverted.splice(rowIndex, 1);
+    } else if (committedRows[rowIndex] && !reverted[rowIndex]) {
+      reverted.splice(rowIndex, 0, deepCopy(committedRows[rowIndex]));
+    } else if (committedRows[rowIndex] && reverted[rowIndex]) {
+      reverted[rowIndex] = deepCopy(committedRows[rowIndex]);
+    }
+
+    setPendingRows(reverted);
+    setRows(deepCopy(reverted));
+
+    const hasDiff =
+      reverted.length !== committedRows.length ||
+      reverted.some((r, i) => {
+        const c = committedRows[i] || {};
+        return r.member !== c.member || r.book !== c.book || r.cd !== c.cd;
+      });
+
+    if (!hasDiff) {
+      setPendingRows(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+    }
+  };
+
+  const getChanges = () => {
+    if (!pendingRows) return [];
+    const changes = [];
+    const maxLen = Math.max(committedRows.length, pendingRows.length);
+
+    for (let i = 0; i < maxLen; i++) {
+      const oldRow = committedRows[i];
+      const newRow = pendingRows[i];
+
+      if (oldRow && !newRow) {
+        changes.push({
+          action: "Deleted",
+          section: "Membership Details",
+          changes: `Row ${i + 1}`,
+          rowIndex: i,
+        });
+      } else if (!oldRow && newRow) {
+        changes.push({
+          action: "Added",
+          section: "Membership Details",
+          changes: `Row ${i + 1}`,
+          rowIndex: i,
+        });
+      } else if (oldRow && newRow) {
+        if (oldRow.member !== newRow.member || oldRow.book !== newRow.book || oldRow.cd !== newRow.cd) {
+          changes.push({
+            action: "Edited",
+            section: "Membership Details",
+            changes: `Row ${i + 1}`,
+            rowIndex: i,
+          });
+        }
+      }
+    }
+    return changes;
+  };
+
+  const changes = getChanges();
+
+  const hasChecked = rows.some((r) => r.checked);
 
   if (!data) {
     return (
-      <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp />
       </div>
     );
@@ -88,9 +209,23 @@ const LIBMemb = ({ data }) => {
     <div className="block overflow-x-auto px-4 sm:px-8 py-10 font-[Poppins] relative">
       {rows.length > 0 && (
         <>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#800000] text-center mb-8">
-            Membership Details
-          </h2>
+          {/* Header */}
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#800000]">
+              Membership Details
+            </h2>
+            {!isEditing && (
+              <button
+                onClick={handleStartEdit}
+                className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              >
+                <Pencil size={18} />
+                Edit
+              </button>
+            )}
+          </div>
+
+          {/* Table */}
           <div className="flex justify-center md:justify-start">
             <table className="lg:w-full w-[600px] mx-auto border border-gray-300 text-center text-sm relative">
               <thead className="bg-gray-200">
@@ -99,118 +234,206 @@ const LIBMemb = ({ data }) => {
                   <th className="border p-2">Member Details</th>
                   <th className="border p-2">No. of Books</th>
                   <th className="border p-2">Periodical / Back Volume / CD</th>
-                  <th className="border p-2">Actions</th>
+                  {isEditing && <th className="border p-2">Check</th>}
                 </tr>
               </thead>
               <tbody>
                 {rows.map((row, idx) => (
                   <tr key={idx}>
                     <td className="border p-2">{idx + 1}</td>
-
                     <td className="border p-2">
-                      {editRow === idx ? (
+                      {isEditing ? (
                         <input
                           className="border p-1 w-full"
-                          value={editedValues.member}
-                          onChange={(e) => handleChange(e, "member")}
+                          value={row.member}
+                          onChange={(e) => handleChange(e, idx, "member")}
                         />
                       ) : (
                         row.member
                       )}
                     </td>
-
                     <td className="border p-2">
-                      {editRow === idx ? (
+                      {isEditing ? (
                         <input
+                          type="number"
+                          min="0"
                           className="border p-1 w-full"
-                          value={editedValues.book}
-                          onChange={(e) => handleChange(e, "book")}
+                          value={row.book}
+                          onChange={(e) => handleChange(e, idx, "book")}
                         />
                       ) : (
                         row.book
                       )}
                     </td>
-
                     <td className="border p-2">
-                      {editRow === idx ? (
+                      {isEditing ? (
                         <input
+                          type="number"
+                          min="0"
                           className="border p-1 w-full"
-                          value={editedValues.cd}
-                          onChange={(e) => handleChange(e, "cd")}
+                          value={row.cd}
+                          onChange={(e) => handleChange(e, idx, "cd")}
                         />
                       ) : (
                         row.cd
                       )}
                     </td>
-
-                    <td className="border p-2">
-                      {editRow === idx ? (
-                        <button
-                          onClick={() => handleSave(idx)}
-                          className="text-green-600"
-                        >
-                          <Save />
-                        </button>
-                      ) : (
-                        <>
-                          <button
-                            onClick={() => handleEdit(idx)}
-                            className="text-blue-600 mr-2"
-                          >
-                            
-                          </button>
-                          <button
-                            onClick={() => setDeleteIndex(idx)}
-                            className="text-red-600"
-                          >
-                            <Trash2 />
-                          </button>
-                        </>
-                      )}
-                    </td>
+                    {isEditing && (
+                      <td className="border p-2">
+                        <input
+                          type="checkbox"
+                          checked={row.checked || false}
+                          onChange={(e) => {
+                            const updated = [...rows];
+                            updated[idx].checked = e.target.checked;
+                            setRows(updated);
+                          }}
+                        />
+                      </td>
+                    )}
                   </tr>
                 ))}
-
-                {/* Add Row Button Row */}
-                <tr>
-                  <td colSpan="5" className="border p-2 text-center">
-                    <button
-                      onClick={handleAddRow}
-                      className="flex items-center justify-center gap-2 px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 mx-auto"
-                    >
-                      <Plus size={18} /> Add Row
-                    </button>
-                  </td>
-                </tr>
+                {isEditing && (
+                  <tr>
+                    <td colSpan="5" className="border p-2 text-center">
+                      <button
+                        onClick={handleAddRow}
+                        className="flex items-center justify-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] mx-auto hover:text-prim"
+                      >
+                        <Plus size={18} /> Add Row
+                      </button>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
 
-          {/* Request Button */}
-          {showRequestButton && (
+          {/* Footer Buttons */}
+          {isEditing && (
+            <div className="flex justify-end gap-3 mt-6">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+              >
+                Cancel
+              </button>
+              {isDirty && (
+                <button
+                  onClick={handleSave}
+                  className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                >
+                  <Save size={18} /> Save
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Delete Button */}
+          {isEditing && hasChecked && (
             <div className="flex justify-center mt-6">
               <button
-                onClick={() => setShowRequestModal(true)}
-                className="px-6 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500"
+                onClick={() => setShowDeleteConfirm(true)}
+                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
-                Request
+                Delete Selected
               </button>
             </div>
           )}
 
-          {/* Delete Confirmation Popup */}
-          {deleteIndex !== null && (
+          {/* Discard & Request Buttons */}
+          {!isEditing && isSaved && changes.length > 0 && (
+            <div className="flex justify-end gap-3 mt-6">
+              <button
+                onClick={handleDiscard}
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+              >
+                Discard Changes
+              </button>
+              <button
+                onClick={handleRequest}
+                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+              >
+                <Send size={18} /> Request
+              </button>
+            </div>
+          )}
+
+          {showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+    <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Request</h2>
+      <p className="text-sm text-red-500 mb-4">
+        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+      </p>
+
+      {changes.length > 0 ? (
+        <table className="w-full text-center text-sm border">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="border p-2">Action</th>
+              <th className="border p-2">Section</th>
+              <th className="border p-2">Changes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Render only rows that have changes */}
+            {changes.map((ch, i) => (
+              <tr key={i}>
+                <td className="border p-2 text-blue-600">{ch.action}</td>
+                <td className="border p-2">{ch.section}</td>
+                <td className="border p-2 flex items-center justify-center gap-2">
+                  {ch.changes}
+                  <button
+                    onClick={() => revertChange(ch.rowIndex)}
+                    className="ml-2 p-1 rounded hover:bg-gray-100"
+                    title="Revert this change"
+                  >
+                    <X size={16} className="text-red-500" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="text-gray-600">No changes detected.</p>
+      )}
+
+      <div className="flex justify-end gap-2 mt-6">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+        >
+          Cancel
+        </button>
+        {changes.length > 0 && (
+          <button
+            onClick={handleFinalRequestConfirm}
+            className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+          >
+            Final Request
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
+
+          {/* Delete Confirmation */}
+          {showDeleteConfirm && (
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
                             bg-white p-6 rounded-lg shadow-lg border z-50 w-[90%] max-w-md">
               <h3 className="text-lg font-semibold mb-4 text-gray-800">
                 Confirm Delete
               </h3>
               <p className="text-gray-600 mb-6">
-                Are you sure you want to delete this row?
+                Are you sure you want to delete selected rows?
               </p>
               <div className="flex justify-end gap-3">
                 <button
-                  onClick={() => setDeleteIndex(null)}
+                  onClick={() => setShowDeleteConfirm(false)}
                   className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
                 >
                   Cancel
@@ -225,62 +448,6 @@ const LIBMemb = ({ data }) => {
             </div>
           )}
 
-          {/* Request Modal */}
-          {showRequestModal && (
-            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-              <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[530px]">
-                <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-drkt">
-                  Final Request for the Changes
-                </h2>
-                <p className="text-sm text-red-500 mb-4">
-                  Note: Your changes will stay pending until approved by the superior admin. 
-                  Once approved, they will be applied automatically to the live site.
-                </p>
-
-                {changeSummary && (
-                  <div className="max-h-[200px] overflow-y-auto mb-4">
-                    <table className="w-full text-center text-gray-800 dark:text-drkt text-sm">
-                      <thead>
-                        <tr>
-                          <th className="py-1">Action</th>
-                          <th className="py-1">Row</th>
-                          <th className="py-1 text-center">Changes</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td className="py-1 text-blue-600">Edited</td>
-                          <td className="py-1">Row {changeSummary.index}</td>
-                          <td className="py-1 text-[12px] flex flex-col items-center">
-                            <span>{changeSummary.old.member} | {changeSummary.old.book} | {changeSummary.old.cd}</span>
-                            <ArrowDown className="my-1" />
-                            <span>{changeSummary.new.member} | {changeSummary.new.book} | {changeSummary.new.cd}</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-
-                <div className="flex justify-end gap-2">
-                  <button
-                    onClick={() => setShowRequestModal(false)}
-                    className="px-4 py-2 rounded bg-gray-400 text-white"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleRequestConfirm}
-                    className="px-4 py-2 rounded bg-[#800000] text-white hover:bg-[#a00000]"
-                  >
-                    Final Request
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Toasts */}
           <ToastContainer position="bottom-right" autoClose={2000} />
         </>
       )}
