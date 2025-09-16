@@ -9,6 +9,11 @@ module.exports = async function storeTempMiddleware(req, res, next) {
     try {
       if (typeof req.body.docs === "string") {
         docs = JSON.parse(req.body.docs);
+        {
+          if (!Array.isArray(docs)) {
+            docs = [docs]; // 👈 wrap single object into array
+          }
+        }
       } else if (Array.isArray(req.body.docs)) {
         docs = req.body.docs;
       } else if (req.body.docs && typeof req.body.docs === "object") {
@@ -71,7 +76,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         category: category || null,
         meta_data: {
           ...(meta_data || {}),
-          ...(fileMeta.image_path.length ? { image_path: fileMeta.image_path } : {}),
+          ...(fileMeta.image_path.length
+            ? { image_path: fileMeta.image_path }
+            : {}),
           ...(fileMeta.pdf_path.length ? { pdf_path: fileMeta.pdf_path } : {}),
         },
         original_data: original_data || null,
@@ -91,10 +98,14 @@ module.exports = async function storeTempMiddleware(req, res, next) {
     let totalInserted = 0;
     let insertedResults = {};
 
-    for (const [collectionName, groupDocs] of Object.entries(groupedByCollection)) {
+    for (const [collectionName, groupDocs] of Object.entries(
+      groupedByCollection
+    )) {
       const tempCollection = db.collection(collectionName);
 
-      console.log(`📌 Inserting ${groupDocs.length} docs into collection: ${collectionName}`);
+      console.log(
+        `📌 Inserting ${groupDocs.length} docs into collection: ${collectionName}`
+      );
 
       if (groupDocs.length === 1) {
         const result = await tempCollection.insertOne(groupDocs[0]);
@@ -109,7 +120,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
     return res.json({
       success: true,
-      message: `Stored ${totalInserted} request(s) across ${Object.keys(groupedByCollection).length} collection(s) for admin approval`,
+      message: `Stored ${totalInserted} request(s) across ${
+        Object.keys(groupedByCollection).length
+      } collection(s) for admin approval`,
       insertedCount: totalInserted,
       insertedIds: insertedResults,
     });

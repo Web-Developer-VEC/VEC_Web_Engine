@@ -1,0 +1,19 @@
+.iframe-wrapper {
+  width: 100%;
+  max-width: 607px;
+}
+
+.responsive-iframe {
+  width: 100%;
+  height: calc(607px * 1.41); /* Preserving 607x857 ratio */
+  border: 1px solid #d1d5db;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Reduce iframe height on smaller screens */
+@media (max-width: 768px) {
+  .responsive-iframe {
+    height: auto;
+    aspect-ratio: 607 / 857;
+  }
+}

@@ -45,6 +45,7 @@ const Achievements1 = ({ data }) => {
 
   // ✅ Separate categories
   const zonalTableData = data?.find((item) => item.category === "zonal_table")?.content || [];
+  const zonalTableYear = data?.find((item) => item.category === "zonal_table")?.year || "";
   const zoneWinnerData = data?.find((item) => item.category === "zone_winner")?.content || [];
   const interZonalData = data?.find((item) => item.category === "interzonal_achievements")?.content || [];
   const othersData = data?.find((item) => item.category === "others")?.content || [];
@@ -104,7 +105,7 @@ const Achievements1 = ({ data }) => {
           <div ref={sectionRef}>
             {showZone === "zone" ? (
               <div className="sport-zone-container mb-10">
-                <ZonalResults data={zonalTableData} />
+                <ZonalResults data={zonalTableData} year={zonalTableYear} />
                 <WinnerSlider data={zoneWinnerData} />
               </div>
             ) : showZone === "interzone" ? (

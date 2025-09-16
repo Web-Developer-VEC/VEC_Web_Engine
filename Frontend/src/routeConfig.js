@@ -7,7 +7,6 @@ import Gallery from "./Components/Main/Second_Nav_Bar/Gallery/gallery";
 import Transport from "./Components/Main/Second_Nav_Bar/Transport/Transport";
 import AdminIQAC from "./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx";
 import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
-import LandingPage from "./Landing";
 import NotFound from "./NotFound";
 import AdminApprovalPage from "./Components/Admin/Superier/admin-approval-page.jsx";
 import Consultancy from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
@@ -50,17 +49,49 @@ import GrievanceForm from "./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.
 import AdminGrievanceForm from "./Components/Admin/Second_Nav_Bar/Helpdesk/admin_Grievences.jsx";
 import LibraryLayout from "./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx";
 import AdminLibraryLayout from "./Components/Admin/Second_Nav_Bar/library/LibraryLayout.jsx";
+import AdminPrinc from "./Components/Admin/Top_Nav_Bar/Administration/Princ.jsx";
+import AdminDean from "./Components/Admin/Top_Nav_Bar/Administration/dean.jsx";
+import AdminCardPage from "./Components/Admin/Top_Nav_Bar/Administration/admin.jsx";
+import AdminHandbook from "./Components/Admin/Top_Nav_Bar/Administration/Handbook.jsx";
+import Princ from "./Components/Main/Top_Nav_Bar/Administration/Princ.jsx";
+import Dean from "./Components/Main/Top_Nav_Bar/Administration/dean.jsx";
+import CardPage from "./Components/Main/Top_Nav_Bar/Administration/admin.jsx";
+import Handbook from "./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx";
+import NCCMAIN from "./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
+import AdminNSS from "./Components/Admin/Second_Nav_Bar/NSS/NSS.jsx";
+import NSS from "./Components/Main/Second_Nav_Bar/NSS/NSS.jsx";
+import AdminNCCMAIN from "./Components/Admin/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
+import NCC_NAVY from "./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import AdminNCC_NAVY from "./Components/Admin/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
+import NCC_ARMY from "./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
+import AdminNCC_ARMY from "./Components/Admin/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
+import YRC from "./Components/Main/Second_Nav_Bar/yrc/YRC.jsx";
+import AdminYrc from "./Components/Admin/Second_Nav_Bar/yrc/YRC.jsx";
+import AdminProfilePage from "./Components/Admin/Admin/adminProfile.jsx";
+// import AdminLandingPage from "./AdminLanding.jsx";
+import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import AdminAcadamiccal from "./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx";
+import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
+import AdminAccredation from "./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx";
 
 export const routeConfig = {
 
   // Landing Page Route
-  "/": { normal: LandingPage, admin: LandingPage },
+  // "/": { normal: LandingPage, admin: AdminLandingPage },
 
-  // Top Nav Bar
+  // --------------------------------------------------
+  //                     Top Nav Bar
+  // --------------------------------------------------
 
   // About us Routes
   // Administrator Routes
+  "/principal": { normal: Princ, admin: AdminPrinc },
+  "/dean": { normal: Dean, admin: AdminDean },
+  "/admin": { normal: CardPage, admin: AdminCardPage },
+  "/handbook": { normal: Handbook, admin: AdminHandbook },
+  
   // Academics Routes
+  "acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -87,9 +118,18 @@ export const routeConfig = {
   "/place-team": { normal: PlacementTeam, admin: AdminPlacementTeam },
   "/place-dep": { normal: PlacementDetails, admin: AdminPlacementDetails },
 
-  // Second Nav Bar Routes
+  // --------------------------------------------------
+  //                     Second Nav Bar
+  // --------------------------------------------------
+
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
+  "/Accredation": { normal: Accredation, admin: AdminAccredation },
+  "/NSS": { normal: NSS, admin: AdminNSS },
+  "/NCC": { normal: NCCMAIN, admin: AdminNCCMAIN },
+  "/nccnavy": { normal: NCC_NAVY, admin: AdminNCC_NAVY },
+  "/nccarmy": { normal: NCC_ARMY, admin: AdminNCC_ARMY },
+  "/YRC": { normal: YRC, admin: AdminYrc },
   "/transport": { normal: Transport, admin: AdminTransport },
   "/hosLanding": { normal: HostelPage, admin: AdminHostelPage },
   "/grievances": { normal: GrievanceForm, admin: AdminGrievanceForm },
@@ -99,4 +139,5 @@ export const routeConfig = {
   // Superior Admin Routes
   "/admin_dash": { normal: NotFound, admin: AdminDashboard },
   "/admin_approval": { normal: NotFound, admin: AdminApprovalPage },
+  "/admin_profile": { normal: NotFound, admin: AdminProfilePage }
 };

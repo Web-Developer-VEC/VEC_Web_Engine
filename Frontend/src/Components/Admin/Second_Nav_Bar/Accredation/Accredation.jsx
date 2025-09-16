@@ -1,0 +1,108 @@
+import React, { useState } from 'react'
+import Naac from './naac'
+import NBA_F from './NBA_F'
+import NIRF from './nirf'
+import Banner from '../../Banner'
+import SideNav from '../SideNav'
+import LoadComp from '../../LoadComp'
+import { useEffect } from 'react'
+import IQauge from './igauge'
+import axios from 'axios'
+import { useLocation, useNavigate } from "react-router";
+  
+const AdminAccredation = ({toggle,theme}) => {
+
+    const location = useLocation();
+    const [naac,setNaac] = useState("NAAC");
+    const [accdata, setAccData] = useState(null);
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (location.state?.section) {
+        setNaac(location.state?.section);
+      }
+    }, [location.state]);
+
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // or 'auto' for instant scroll
+      });
+    }, [naac]);
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const typeMatch = {
+          "NAAC": "naac",
+          "NBA": "nba",
+          "NIRF": "nirf",
+          "QS Rating": "qs_rating"
+        }
+        try {
+          const response = await axios.post('/api/main-backend/accreditation',
+            {
+              type: typeMatch[naac]
+            }
+          )
+
+          const data = response.data.data;
+
+          setAccData(data);
+          
+        } catch (error) {
+          console.error("Error Fetching Accredation Data",error);
+            if (error.response.data.status === 429) {
+              navigate('/ratelimit', { state: { msg: error.response.data.message}})
+            }
+        }
+      }
+      fetchData();
+    }, [naac])
+
+    const navData = {
+        "NAAC": <Naac data={accdata}/>,
+        "NBA": <NBA_F data={accdata}/>,
+        "NIRF":<NIRF  data={accdata}/>,
+        "QS Rating": <IQauge data={accdata}/>
+    };
+
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    if (!isOnline) {
+        return (
+          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+            <LoadComp txt={"You are offline"} />
+          </div>
+        );
+     }
+
+  return <>
+
+   <Banner
+        toggle={toggle} theme={theme}
+        backgroundImage="./Banners/Accreditations_Ranking.webp"
+        headerText="Accreditations & Ranking"
+        subHeaderText="Accreditations"
+    />
+
+    <div className="">
+      <SideNav  sts={naac} setSts={setNaac} navData={navData} cls={""}/>
+    </div>
+  </>
+}
+
+
+export default AdminAccredation

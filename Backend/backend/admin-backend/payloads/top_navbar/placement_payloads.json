@@ -1,0 +1,234 @@
+[
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "about_placement_test_insert",
+    "collection_type": "about_placement",
+    "meta_data": {
+      "Training_Placement_Department": [
+        "focus on Machine Learning & Cloud Computing upskilling."
+      ],
+      "phone": [
+        "9900112233"
+      ]
+    }
+  },
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "placement_team_test_insert",
+    "collection_type": "placement_team",
+    "meta_data": {
+      "name": "(TEST)",
+      "designation": "Campus Placement Coordinator",
+      "qualification": "MBA (HR)",
+      "photo_path": "/static/images/placement_members/leodas_test.webp"
+    }
+  },
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "placement_details_test_insert",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "statistics": {
+        "years": [
+          {
+            "year": "2025-29",
+            "values": [
+              "320",
+              "610",
+              "590",
+              "910",
+              "97.12",
+              "5.50 LPA"
+            ]
+          }
+        ]
+      },
+      "department_wise": {
+        "years": [
+          {
+            "year": "2025-29",
+            "values": [
+              "105",
+              "98",
+              "92",
+              "86",
+              "93",
+              "89",
+              "82",
+              "78",
+              "-",
+              "91"
+            ]
+          }
+        ]
+      },
+      "year_wise_pdfs": [
+        {
+          "year": "2025-26",
+          "pdf_path": "/static/pdfs/placement_docs/placements_25-26_test.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "alumini_test_insert",
+    "collection_type": "alumini",
+    "meta_data": [
+      {
+        "alumni_image_path": [
+          "/static/images/alumni/110_test.webp",
+          "/static/images/alumni/111_test.webp"
+        ]
+      }
+    ]
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "about_placement_test_update",
+    "collection_type": "about_placement",
+    "original_data": {
+      "section": "about"
+    },
+    "meta_data": {
+      "Our_Vision": "To be the leading placement cell enabling industry-ready graduates.",
+      "Our_Mission": "Equip students with practical skills and corporate readiness.",
+      "email": "placements_test@velammal.edu.in",
+      "phone": [
+        "9887766554",
+        "9900223344"
+      ]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "placement_team_test_update_role",
+    "collection_type": "placement_team",
+    "original_data": {
+      "name": "LEO DAS"
+    },
+    "meta_data": {
+      "designation": "Senior Soft Skills Trainer (Test)",
+      "qualification": "M.Sc., M.B.A. (Testing)",
+      "photo_path": "/static/images/placement_members/leodas_updated_test.webp"
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "placement_team_test_update_name",
+    "collection_type": "placement_team",
+    "original_data": {
+      "name": "LEO DAS"
+    },
+    "meta_data": {
+      "name": "Parthiban (Test)",
+      "designation": "Senior Soft Skills Trainer",
+      "qualification": "M.Sc., M.B.A., P.G.D.C.I (Test)",
+      "photo_path": "/static/images/placement_members/parthiban_test.webp"
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "placement_details_test_update_dept",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "department_wise",
+      "year": "2025-29"
+    },
+    "meta_data": {
+      "values": [
+        "21",
+        "31",
+        "505",
+        "705",
+        "86.00",
+        "6.25",
+        "28",
+        "35",
+        "46",
+        "11"
+      ]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "placement_details_test_update_pdf",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "year_wise_pdfs",
+      "year": "2025-26"
+    },
+    "meta_data": {
+      "pdf_path": "/static/pdfs/placement_docs/placements_23-24_v2_test.pdf"
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "alumini_test_update_image",
+    "collection_type": "alumini",
+    "original_data": {
+      "alumni_image_path": "/static/images/alumni/110.webp"
+    },
+    "meta_data": {
+      "alumni_image_path": "/static/images/alumni/110_updated_test.webp"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "alumini_test_delete_image",
+    "collection_type": "alumini",
+    "meta_data": {
+      "image_path": "/static/images/alumni/111_updated_test.webp"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "placement_details_test_delete_pdf",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "key": "year_wise_pdfs",
+      "year": "2025-26"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "placement_details_test_delete_dept",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "key": "department_wise",
+      "year": "2025-29"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "placement_details_test_delete_stats",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "key": "statistics",
+      "year": "2025-29"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "placement_team_test_delete_member",
+    "collection_type": "placement_team",
+    "meta_data": {
+      "name": "Parthiban"
+    }
+  }
+]
