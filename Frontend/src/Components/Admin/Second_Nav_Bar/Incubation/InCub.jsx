@@ -15,7 +15,7 @@ import axios from "axios";
 
 
 
-const Incub = ( {toggle, theme}) => {
+const AdminIncub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
     const [incubation,setIncubation] = useState(null);
     const navigate = useNavigate();
@@ -141,4 +141,4 @@ const Incub = ( {toggle, theme}) => {
     );
 };
 
-export default Incub;
+export default AdminIncub;
