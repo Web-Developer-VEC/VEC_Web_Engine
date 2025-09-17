@@ -10,13 +10,15 @@ function checkRoleByCollection() {
     let docs = [];
 
     try {
-      // ✅ Handle docs in different formats
-      if (typeof req.body.docs === "string") {
-        docs = JSON.parse(req.body.docs); // frontend sent stringified JSON
+      // Use Busboy-parsed docs if available
+      if (req.docsFromBusboy) {
+        docs = req.docsFromBusboy;
+      } else if (typeof req.body.docs === "string") {
+        docs = JSON.parse(req.body.docs);
       } else if (Array.isArray(req.body.docs)) {
-        docs = req.body.docs; // already array
+        docs = req.body.docs;
       } else if (req.body.docs && typeof req.body.docs === "object") {
-        docs = [req.body.docs]; // single object
+        docs = [req.body.docs];
       } else {
         return res.status(400).json({ error: "docs must be provided (object or array)" });
       }
@@ -24,15 +26,11 @@ function checkRoleByCollection() {
       return res.status(400).json({ error: "Invalid JSON format for docs" });
     }
 
-    // ✅ Normalize to array
-    if (!Array.isArray(docs)) {
-      docs = [docs];
-    }
+    if (!Array.isArray(docs)) docs = [docs];
 
-    // ✅ Validate each doc’s collectionName
+    // Validate each doc
     for (const doc of docs) {
       const { collectionName } = doc;
-
       if (!collectionName) {
         return res.status(400).json({ error: "collectionName is required in each document" });
       }

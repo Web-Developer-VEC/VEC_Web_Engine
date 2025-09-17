@@ -4,17 +4,17 @@ import { SiPublons } from "react-icons/si";
 import { FaOrcid, FaResearchgate, FaLinkedin, FaBook } from "react-icons/fa";
 import styles from "./Faculties.module.css";
 import { FaGoogleScholar } from "react-icons/fa6";
+import { input, style } from "framer-motion/m";
 
 
 
-function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile}) {
+function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile, isEdit,teaching}) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const navigate = useNavigate()
   return  (
     <>
     <div 
@@ -24,13 +24,40 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
                   ${firstTile ? 'w-[65%] lg:w-full mb-8 lg:mr-10 basis-full mx-3' : 'w-fit lg:w-[90%]'} 
                   ${firstTile ? styles.firstTile : styles.imageCard}`}>
 
-
+      <div >
       <img src={UrlParser(photo)} alt={name} className={firstTile ? styles.firstTileImage : styles.image} />
-      <div className={firstTile ? styles.firstTileContent : styles.cardContent}>
-        <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
-        <p className="+ text-[#800000] dark:text-drka">{Designation}</p>
-       
-          <div className={`${firstTile ? styles.firstTileSocialLinks : styles.socialLinks} h-[10px]`}>
+      
+      <button className={`flex text-text m-auto hover:text-prim bg-secd hover:bg-brwn px-2 py-2 rounded my-2` } style={{display: isEdit ? "flex":"none"}} > Replace image</button>
+      </div>
+      <div className={firstTile ? styles.firstTileContent : styles.cardContent+" p-4 flex gap-2 flex-col items-center"}>
+        {isEdit ? (
+          <input type="text" value={name}  className={` ${firstTile ? "w-80 h-8 text-text dark:text-drkt pl-2 rounded":"w-60 text-text dark:text-drkt pl-2 rounded"}`}/>
+        ):(
+          <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{name}</h3>
+        )}
+        {isEdit ? (
+         
+          firstTile ? (<h3 className={styles.facultyName + " text-text dark:text-drkt"}>{Designation}</h3>)
+          :
+          (
+            <select name="" id="" value={Designation}  className={` ${firstTile ? "w-80 h-8 text-text dark:text-drkt pl-2 rounded":"w-60 text-text dark:text-drkt pl-2 rounded"}`}>
+                <option value="" disabled>Select Designation</option>
+               {teaching && <option value="Professor">Professor</option>}
+              {teaching  && <option value="Assistant Professor">Assistant Professor</option>}
+              {teaching && <option value="Associative Professor">Associative Professor</option>}
+              {!teaching && <option value="Lab Assistant">Lab Assistant</option>}
+              {!teaching && <option value="Lab Instructor">Lab Instructor</option>}
+              
+            </select>
+        )
+        ):(
+             <h3 className={styles.facultyName + " text-text dark:text-drkt"}>{Designation}</h3>
+        
+        )}
+          
+          <div className={`${isEdit ? `${firstTile ? " flex flex-col w-80 gap-4 mt-2 border-2 border-gray-400 border-dashed p-2 mt-4 rounded":"flex flex-col w-60 gap-4 mt-2 border-2 border-gray-400 border-dashed p-3 mt-4 rounded" }`: `${firstTile ? " flex flex-col w-80 gap-4 mt-2 ":"flex flex-col w-60 gap-4 mt-2 " }`} `}>
+
+          <div className={`${firstTile ? styles.firstTileSocialLinks : styles.socialLinks} h-[10px] m-auto flex gap-4`}>
             {Linkedin && (
               <a href={Linkedin} target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="text-brwn dark:text-drka" />
@@ -62,8 +89,18 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
               </a>
             )}
           </div>
+          <div>
+         {isEdit && (<>
+         {Scopus || Research || Orchid || Scholar || Linkedin || Publon ? (<button className="hover:text-prim bg-secd hover:bg-brwn px-2 py-2 rounded w-28"> Edit Links </button>) : (  <button className="hover:text-prim bg-secd hover:bg-brwn px-2 py-2 rounded w-28"> Add Links </button>) }
         
-        <button
+          </>)}
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-start gap-2">
+        
+       {!isEdit && (
+          <button
           // onClick={() => navigate(`/facultyprofile/${uid}`)}
           onClick={() => {
             if (profile && profile.trim() !== "") {
@@ -73,9 +110,11 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
               }
             }
           }}
-          className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
+          className={styles.facButton + " bg-brwn hover:text-text dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
           View More
         </button>
+       )} 
+      </div>  
     </div>
   </div>
   </>

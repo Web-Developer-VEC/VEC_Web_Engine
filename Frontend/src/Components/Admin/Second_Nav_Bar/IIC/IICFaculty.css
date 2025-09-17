@@ -1,0 +1,85 @@
+/* Common button style */
+.iic-admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;               /* space between icon & text */
+  padding: 6px 12px;      /* px-3 py-1 equivalent */
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer; 
+  margin-right: 4px;
+}
+
+
+/* Colors (default yellow bg, black text) */
+.iic-admin-btn {
+
+  background-color: #fdcc03;
+  color: black;
+}
+
+.iic-admin-btn:hover {
+  background-color: #800000;
+  color: white;
+}
+
+/* Variants if you need different looks */
+.iic-btn-edit {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.iic-btn-save {
+  background-color: #fdcc03;
+}
+
+.iic-btn-cancel {
+  background-color: #fdcc03;
+}
+
+
+.iic-h3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  font-family:  'Poppins', sans-serif;
+
+}
+
+.iic-members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  gap: 20px;
+  padding: 20px;
+  font-family:  'Poppins', sans-serif;
+}
+.iic-pdf-container{
+  margin: auto;
+  align-items:center ;
+  justify-items:center ;
+}
+
+.iic-stud-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  gap: 20px;
+  padding: 20px;
+  font-family:  'Poppins', sans-serif;
+}
+
+.iic-faculty-card {
+  width: 350px;
+  height: fit-content;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+} 
