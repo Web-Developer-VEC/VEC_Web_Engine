@@ -17,8 +17,8 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       role: req.session.admin.role,
     };
 
-    // Prepare documents for DB with per-document file mapping
-    const tempDocs = docs.map((doc, index) => {
+    // Prepare documents for DB
+    const tempDocs = docs.map((doc) => {
       const {
         collectionName,
         collection_type,
@@ -35,16 +35,21 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         );
       }
 
-      // Filter uploaded files that belong to this document (using docIndex)
-      const docFiles = (req.uploadedFiles || []).filter(f => f.docIndex === index);
+      // ✅ Use all uploaded files (no docIndex filter)
+      const allFiles = req.uploadedFiles || [];
 
-      const pdf_path = docFiles
-        .filter(f => f.mimetype === "application/pdf")
-        .map(f => f.location || `/${f.key}`);
+      const pdf_path = allFiles
+        .filter((f) => f.mimetype === "application/pdf")
+        .map((f) => f.location || `/${f.key}`);
 
-      const image_path = docFiles
-        .filter(f => f.mimetype?.startsWith("image/"))
-        .map(f => f.location || `/${f.key}`);
+      const image_path = allFiles
+        .filter((f) => f.mimetype?.startsWith("image/"))
+        .map((f) => f.location || `/${f.key}`);
+
+      console.log("📂 Docs from busboy:", docs);
+      console.log("📂 Uploaded files (S3):", req.uploadedFiles);
+      console.log("pdf path ", pdf_path)
+      console.log("image path ", image_path)
 
       return {
         collection: collectionName,
@@ -53,7 +58,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         title,
         category: category || null,
         meta_data: {
-          ...(meta_data || {}),
+          ...(meta_data || {}), // keep other frontend meta
           ...(image_path.length ? { image_path } : {}),
           ...(pdf_path.length ? { pdf_path } : {}),
         },

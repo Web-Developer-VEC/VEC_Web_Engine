@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const {getTempRequests} = require('../middlewares/temprequest_middleware');
-const { getTempCompleted } = require("../middlewares/tempcomplete_middleware");
+const {getTempRequests} = require('../../middlewares/temprequest_middleware');
+const { getTempCompleted } = require("../../middlewares/tempcomplete_middleware");
 
 router.get('/request',getTempRequests);
 

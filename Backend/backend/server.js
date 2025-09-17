@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 //Loading Main Routes
 const mainBackendRoutes = require('./main-backend/routes/landing');
-const typeRoutes = require('./admin-backend/routes');
+const typeRoutes = require('./admin-backend/routes/landing');
 
 
 app.set('trust proxy', true ); // Necessary for rate limiter to work correctly

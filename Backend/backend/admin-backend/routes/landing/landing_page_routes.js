@@ -1,0 +1,17 @@
+const express = require("express");
+const router = express.Router();
+const { handleTempAction } = require("../../middlewares/action_handle_middleware");
+const { checkRole } = require("../../middlewares/role_middleware")
+const {  handleTempApproval } = require("../../middlewares/approve_middleware");
+const { insertData } = require("../../controllers/landing_page_controllers/landing_page_insert_controllers")
+const{updateData}=require("../../controllers/landing_page_controllers/landing_page_update_controllers")
+
+router.post(
+  "/landingpageadmin",
+  checkRole(["superadmin"]), 
+  handleTempApproval,
+  handleTempAction(  insertData,updateData,null )
+);
+
+module.exports = router;
+
