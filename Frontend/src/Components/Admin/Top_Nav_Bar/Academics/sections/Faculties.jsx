@@ -1,8 +1,35 @@
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
+import { FaUserEdit } from "react-icons/fa";
+import { useState } from "react";
+import { isCancel } from "axios";
+import { Send } from "lucide-react";
 
 const Faculties = ({ data }) => {
+
+  //handle hooks 
+  const [isEditing, setIsEditing] = useState(false);
+
+  //handle save session
+  const handleSaveSession = () => {
+    
+  };
+
+  //handle cancel session
+  const handleCancelSession = () => {
+    
+  };
+
+  //handle discard all session
+  const handleDiscardAllSession = () => {
+
+  };
+
+  //handle request session
+  const handleRequestSession = () => {
+
+  };
 
   if (!data || !Array.isArray(data)) {
     return <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -26,6 +53,13 @@ const Faculties = ({ data }) => {
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>
+        <button
+          className="flex ml-auto mr-8 items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim my-4"
+          onClick={() => setIsEditing(true)}
+          style={{ display: isEditing ? 'none' : 'flex' }}
+        >
+          <FaUserEdit className="mr-2" /> Edit
+        </button>
       <div className={styles.imageGallery + " w-full"}>
           <div className={`${styles.fullWidthTile} relative`}>
             <ImageCard
@@ -43,6 +77,7 @@ const Faculties = ({ data }) => {
               uid={hod_details?.[0]?.unique_id}
               profile={hod_details?.[0]?.resume_pdf}
               isViewmore={true}
+              isEdit={isEditing}
             />
             <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
               <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"  
@@ -56,7 +91,7 @@ const Faculties = ({ data }) => {
                 }}
                 >
                   Faculty List
-                </button>
+              </button>
             </div>
           </div>
           {teaching_staff_details?.length > 0 && (
@@ -78,6 +113,8 @@ const Faculties = ({ data }) => {
                     uid={faculty?.unique_id}
                     profile={faculty?.resume_pdf}
                     isViewmore={true}
+                    teaching={true}
+                    isEdit={isEditing}
                   />
                 ))}
               </div>
@@ -102,12 +139,32 @@ const Faculties = ({ data }) => {
                     uid={faculty?.unique_id}
                     profile={faculty?.resume_pdf}
                     isViewmore={false}
+                    teaching={false}
+                    isEdit={isEditing}
                   />
                 ))}
               </div>       
             </>
           )}
       </div>
+           <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
+            <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancelSession}>
+              Cancel
+            </button>
+          
+              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSaveSession}>
+                Save
+              </button>
+          </div>
+            <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
+              {/* Removed Edit Again button here */}
+              <button className="bg-red-500 px-3 py-2 rounded text-white" onClick={handleDiscardAllSession}>
+                Discard All
+              </button>
+              <button className="bg-green-500 px-3 py-2 flex flex-row rounded text-white" onClick={handleRequestSession}>
+                <Send className="mr-2" /> Request
+              </button>
+            </div>
     </div>
   );
 };

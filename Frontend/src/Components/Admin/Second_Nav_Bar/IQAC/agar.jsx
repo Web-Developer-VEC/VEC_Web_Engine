@@ -1,4 +1,4 @@
-import { Edit, Trash2, Plus, Save, Send, ArrowDown } from "lucide-react";
+import { Edit, Trash2, Plus, Save, Send, Eye, X, Pencil } from "lucide-react";
 import LoadComp from "../../LoadComp";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,13 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function IqaQar({ iqacData }) {
   const [editableData, setEditableData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
+  const [editMode, setEditMode] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
-  const [editingRow, setEditingRow] = useState(null);
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const [changes, setChanges] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState({}); // track uploaded PDFs
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const [indexToDelete, setIndexToDelete] = useState(null);
+  const [uploadedFiles, setUploadedFiles] = useState({});
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [changesLog, setChangesLog] = useState([]); // 🔹 track all changes
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,35 +26,48 @@ export default function IqaQar({ iqacData }) {
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
       setEditableData([...iqacData]);
+      setOriginalData([...iqacData]);
     }
   }, [iqacData]);
+
+  // 🔹 Track changes (merge instead of duplicate)
+  const logChange = (action, index, row) => {
+    const rowTitle = row?.year || "Untitled Row";
+
+    setChangesLog((prev) => {
+      const existingIndex = prev.findIndex((c) => c.rowIndex === index);
+
+      if (existingIndex !== -1) {
+        const updatedLogs = [...prev];
+        updatedLogs[existingIndex] = {
+          ...updatedLogs[existingIndex],
+          action: updatedLogs[existingIndex].action === "Insert" ? "Insert" : action,
+          title: rowTitle,
+          row,
+        };
+        return updatedLogs;
+      }
+
+      return [
+        ...prev,
+        {
+          id: Date.now() + index,
+          rowIndex: index,
+          action,
+          section: "IQAC",
+          title: rowTitle,
+          row,
+        },
+      ];
+    });
+  };
 
   const handleInputChange = (index, field, value) => {
     const newData = [...editableData];
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
     setHasChanges(true);
-
-    setChanges((prev) => {
-      const changeIndex = prev.findIndex((c) => c.index === index);
-
-      if (changeIndex >= 0) {
-        const updated = [...prev];
-        updated[changeIndex].changes = {
-          ...updated[changeIndex].changes,
-          [field]: { old: iqacData[index]?.[field], new: value },
-        };
-        return updated;
-      }
-      return [
-        ...prev,
-        {
-          index,
-          action: iqacData[index] ? "edit" : "add",
-          changes: { [field]: { old: iqacData[index]?.[field], new: value } },
-        },
-      ];
-    });
+    logChange("Edit", index, newData[index]);
   };
 
   const handleFileUpload = (index, file) => {
@@ -63,41 +77,66 @@ export default function IqaQar({ iqacData }) {
         ...prev,
         [index]: { file, fileURL },
       }));
-      handleInputChange(index, "path", file.name); // save file name temporarily
+      handleInputChange(index, "path", file.name);
     }
-  };
-
-  const handleEdit = (index) => setEditingRow(index);
-
-  const handleDelete = (index) => {
-    const newData = editableData.filter((_, i) => i !== index);
-    setEditableData(newData);
-    setHasChanges(true);
-    setChanges([
-      ...changes,
-      { index, action: "delete", deletedItem: editableData[index] },
-    ]);
   };
 
   const handleAddRow = () => {
     const newRow = { year: "", path: "" };
     setEditableData([...editableData, newRow]);
-    setEditingRow(editableData.length);
+    setHasChanges(true);
+    logChange("Insert", editableData.length, newRow);
+  };
+
+  const toggleRowSelection = (index) => {
+    setSelectedRows((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+
+  const handleDeleteSelected = () => {
+    selectedRows.forEach((index) => {
+      logChange("Delete", index, editableData[index]);
+    });
+    setEditableData(editableData.filter((_, i) => !selectedRows.includes(i)));
+    setSelectedRows([]);
+    setShowDeleteConfirm(false);
     setHasChanges(true);
   };
 
-  const confirmDelete = () => {
-    handleDelete(indexToDelete);
-    setDeleteConfirm(false);
-    setIndexToDelete(null);
+  const handleSave = () => {
+    setEditMode(false);
+    toast.success("Changes saved. Submit request for approval.");
+  };
+
+  const handleCancel = () => {
+    setEditableData([...originalData]);
+    setUploadedFiles({});
+    setHasChanges(false);
+    setEditMode(false);
+    setSelectedRows([]);
+    setChangesLog([]);
+  };
+
+  const handleDiscard = () => {
+    setEditableData([...originalData]);
+    setUploadedFiles({});
+    setHasChanges(false);
+    setChangesLog([]);
+    toast.info("Changes discarded.");
   };
 
   const handleRequestConfirm = () => {
-    console.log("Final AQAR request submitted:", editableData, changes, uploadedFiles);
+    console.log("Submitting request with changes:", changesLog);
     toast.success("Request submitted successfully!");
     setShowRequestModal(false);
     setHasChanges(false);
-    setChanges([]);
+    setChangesLog([]);
+  };
+
+  const handleUndoChange = (id) => {
+    setChangesLog((prev) => prev.filter((c) => c.id !== id));
+    toast.info("Change removed from request list.");
   };
 
   return (
@@ -108,10 +147,22 @@ export default function IqaQar({ iqacData }) {
         </div>
       ) : (
         <>
-          <h2 className="basis-full text-brwn dark:text-drkt text-center text-[24px] mt-[15px]">
-            AQAR
-          </h2>
+          {/* Header */}
+          <div className="flex justify-between items-center mt-[15px] px-6">
+            <h2 className="basis-full text-brwn dark:text-drkt text-center text-[24px]">
+              AQAR
+            </h2>
+            {!editMode && (
+              <button
+                onClick={() => setEditMode(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
+              >
+                <Pencil size={16} /> Edit
+              </button>
+            )}
+          </div>
 
+          {/* Table */}
           <div className="flex justify-center p-4 w-full">
             <div className="overflow-x-auto border rounded-lg shadow-md">
               <table className="w-[700px] department-table">
@@ -120,17 +171,20 @@ export default function IqaQar({ iqacData }) {
                     <th className="text-center px-4 py-2">S.No</th>
                     <th className="text-center px-4 py-2">Year</th>
                     <th className="text-center px-4 py-2">PDF</th>
-                    <th className="text-center px-4 py-2">Actions</th>
+                    {editMode && <th className="px-2 py-2 text-center">Select</th>}
                   </tr>
                 </thead>
                 <tbody>
                   {editableData?.map((item, index) => (
-                    <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <tr
+                      key={index}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-800"
+                    >
                       <td className="text-center px-2 py-2">{index + 1}</td>
 
                       {/* Year */}
                       <td className="text-center px-2 py-2">
-                        {editingRow === index ? (
+                        {editMode ? (
                           <input
                             type="text"
                             value={item.year || ""}
@@ -145,25 +199,33 @@ export default function IqaQar({ iqacData }) {
                       </td>
 
                       {/* PDF */}
-                      <td className="text-center px-2 py-2">
-                        {editingRow === index ? (
-                          <input
-                            type="file"
-                            accept="application/pdf"
-                            onChange={(e) =>
-                              handleFileUpload(index, e.target.files[0])
-                            }
-                            className="w-[250px] px-2 py-1 border rounded"
-                          />
-                        ) : uploadedFiles[index] ? (
-                          <a
-                            href={uploadedFiles[index].fileURL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline"
-                          >
-                            {uploadedFiles[index].file.name}
-                          </a>
+                      <td className="text-center px-2 py-2 flex justify-center items-center gap-2">
+                        {editMode ? (
+                          <>
+                            <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
+                              {item.path ? "Replace PDF" : "Upload PDF"}
+                              <input
+                                type="file"
+                                accept="application/pdf"
+                                className="hidden"
+                                onChange={(e) =>
+                                  handleFileUpload(index, e.target.files[0])
+                                }
+                              />
+                            </label>
+                            {(uploadedFiles[index] || item.path) && (
+                              <a
+                                href={
+                                  uploadedFiles[index]?.fileURL || UrlParser(item.path)
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600"
+                              >
+                                <Eye size={16} />
+                              </a>
+                            )}
+                          </>
                         ) : (
                           <a
                             href={UrlParser(item.path) || "#"}
@@ -176,119 +238,127 @@ export default function IqaQar({ iqacData }) {
                         )}
                       </td>
 
-                      {/* Actions */}
-                      <td className="text-center px-2 py-2">
-                        {editingRow === index ? (
-                          <button
-                            onClick={() => setEditingRow(null)}
-                            className="p-1 text-green-600 hover:bg-green-100 rounded"
-                          >
-                            <Save size={16} />
-                          </button>
-                        ) : (
-                          <div className="flex gap-2 justify-center">
-                            <button
-                              onClick={() => handleEdit(index)}
-                              className="p-1 text-blue-600 hover:bg-blue-100 rounded"
-                            >
-                              <Edit size={16} />
-                            </button>
-                            <button
-                              onClick={() => {setIndexToDelete(index); setDeleteConfirm(true)}}
-                              className="p-1 text-red-600 hover:bg-red-100 rounded"
-                            >
-                              <Trash2 size={16} />
-                            </button>
-                          </div>
-                        )}
-                      </td>
+                      {editMode && (
+                        <td className="text-center">
+                          <input
+                            type="checkbox"
+                            checked={selectedRows.includes(index)}
+                            onChange={() => toggleRowSelection(index)}
+                          />
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
               </table>
 
-              {/* Add Row */}
-              <div className="flex justify-center p-4 border-t">
-                <button
-                  onClick={handleAddRow}
-                  className="flex items-center gap-2 px-4 py-2 bg-secd text-text rounded hover:drks dark:hover:secd"
-                >
-                  <Plus size={16} /> Add New Row
-                </button>
-              </div>
+              {/* Add & Delete Buttons */}
+              {editMode && (
+                <div className="flex justify-center gap-2 p-4 border-t">
+                  <button
+                    onClick={handleAddRow}
+                    className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
+                  >
+                    <Plus size={16} /> Add Row
+                  </button>
+                  {selectedRows.length > 0 && (
+                    <button
+                      onClick={() => setShowDeleteConfirm(true)}
+                      className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    >
+                      <Trash2 size={16} /> Delete Selected
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Request Approval */}
-          <div className="flex justify-center gap-4 mb-4">
-            {hasChanges && (
+          {/* Footer Buttons */}
+          {editMode && (
+            <div className="flex justify-end gap-4 mb-6">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 bg-gray-400 text-white rounded"
+              >
+                Cancel
+              </button>
+              {hasChanges && (
+                <button
+                  onClick={handleSave}
+                  className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
+                >
+                  Save
+                </button>
+              )}
+            </div>
+          )}
+
+          {!editMode && hasChanges && (
+            <div className="flex justify-end gap-4 mb-6">
+              <button
+                onClick={handleDiscard}
+                className="px-4 py-2 bg-gray-400 text-white rounded"
+              >
+                Discard Changes
+              </button>
               <button
                 onClick={() => setShowRequestModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
               >
-                <Send size={16} /> Request Approval
+                <Send size={16} /> Request
               </button>
-            )}
-          </div>
+            </div>
+          )}
+
           <ToastContainer position="bottom-right" autoClose={3000} />
         </>
       )}
 
       {/* Request Modal */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Final Request for the Changes
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-center">
+              Request Changes
             </h2>
-            <p className="text-sm text-red-500 mb-4">
+            <p className="text-sm text-red-500 mb-4 text-center">
               Note: Changes stay pending until approved by the superior admin.
             </p>
-            <div className="max-h-[300px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt">
-                <thead>
-                  <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1">Changes</th>
+
+            <table className="w-full border mb-4">
+              <thead className="bg-gry">
+                <tr>
+                  <th className="px-2 py-1 text-center">Action</th>
+                  <th className="px-2 py-1 text-center">Section</th>
+                  <th className="px-2 py-1 text-center">Changes</th>
+                  <th className="px-2 py-1 text-center">Undo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {changesLog.map((c) => (
+                  <tr key={c.id}>
+                    <td className="px-2 py-1 text-center">{c.action}</td>
+                    <td className="px-2 py-1 text-center">{c.section}</td>
+                    <td className="px-2 py-1 text-center">{c.title}</td>
+                    <td className="px-2 py-1 text-center">
+                      <button
+                        onClick={() => handleUndoChange(c.id)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <X size={16} />
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {changes.map((change, index) => (
-                    <tr key={index}>
-                      <td className="py-1">
-                        {change.action === "edit" && (
-                          <span className="text-blue-600">✎ Edited</span>
-                        )}
-                        {change.action === "add" && (
-                          <span className="text-green-600">+ Added</span>
-                        )}
-                        {change.action === "delete" && (
-                          <span className="text-red-600">🗑 Deleted</span>
-                        )}
-                      </td>
-                      <td className="py-1">AQAR</td>
-                      <td className="py-1 text-[12px]">
-                        {change.action === "delete" ? (
-                          <span>Row {change.index + 1} deleted</span>
-                        ) : (
-                          <div className="flex flex-col items-center">
-                            {Object.entries(change.changes).map(([field, values]) => (
-                              <div key={field}>
-                                <strong>{field}:</strong>{" "}
-                                {values.old || "Empty"}{" "}
-                                <ArrowDown size={12} className="inline" />{" "}
-                                {values.new}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
+
+            {changesLog.length === 0 && (
+              <p className="text-center text-gray-500">
+                No changes to request.
+              </p>
+            )}
 
             <div className="flex justify-end gap-2">
               <button
@@ -297,41 +367,45 @@ export default function IqaQar({ iqacData }) {
               >
                 Cancel
               </button>
-              <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
-              >
-                Final Request
-              </button>
+              {changesLog.length > 0 && (
+                <button
+                  onClick={handleRequestConfirm}
+                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                >
+                  Confirm Request
+                </button>
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* Delete confirmation popup */}
-      {deleteConfirm && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+      {/* Delete Confirmation */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-              <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
-              <p className="text-sm mb-4 text-center">
-                  Are you sure you want to delete this member?
-              </p>
-              <div className="flex justify-center gap-3">
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Confirm Delete
+            </h2>
+            <p className="text-sm mb-4 text-center">
+              Are you sure you want to delete the selected rows?
+            </p>
+            <div className="flex justify-center gap-3">
               <button
-                  onClick={() => setDeleteConfirm(null)}
-                  className="px-4 py-2 bg-gray-400 text-white rounded"
+                onClick={() => setShowDeleteConfirm(false)}
+                className="px-4 py-2 bg-gray-400 text-white rounded"
               >
-                  Cancel
+                Cancel
               </button>
               <button
-                  onClick={confirmDelete}
-                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                onClick={handleDeleteSelected}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
               >
-                  Delete
+                Delete
               </button>
-              </div>
+            </div>
           </div>
-          </div>
+        </div>
       )}
     </>
   );
