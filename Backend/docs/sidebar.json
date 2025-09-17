@@ -7,7 +7,7 @@
       { "id": "HeadDepartment", "hascontent": true },
       { "id": "Faculties", "hascontent": true },
       { "id": "Syllabus", "hascontent": true },
-      { "id": "NewsLetter", "hascontent": false },
+      { "id": "NewsLetter", "hascontent": true },
       { "id": "Activities", "hascontent": true },
       { "id": "Pedagogy", "hascontent": false },
       { "id": "StudentAchievments", "hascontent": true },
