@@ -556,6 +556,20 @@
             "dept_id": "001"
           }
         ]
+      },
+      {
+        "category":"newsletter",
+        "content":
+        [
+        {
+           "year": "2023-2024",
+           "pdf_path":["/static/pdfs/newsletter/001/newsletter 23 -24.pdf"]
+        },
+        {
+            "year":"2024-2025",
+            "pdf_path":["/static/pdfs/newsletter/001/newsletter 24-25.pdf"]
+        }
+        ]
       }
     ]
   },

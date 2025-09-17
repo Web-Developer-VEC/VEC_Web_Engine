@@ -186,8 +186,8 @@
     "type": "projects",
     "data": [
       {
-        "title": "MSME IDEA HACKATHON 5.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 5.0",
+        "content": [
           {
             "number": 223,
             "label": "Received Ideas"
@@ -195,8 +195,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 4.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 4.0",
+        "content": [
           {
             "number": 78,
             "label": "Received Ideas"
@@ -212,8 +212,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 3.0 (Women)",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 3.0 (Women)",
+        "content": [
           {
             "number": 198,
             "label": "Received Ideas"
@@ -229,8 +229,8 @@
         ]
       },
       {
-        "title": "IEDC",
-        "stats": [
+        "category": "IEDC",
+        "content": [
           {
             "number": 60,
             "label": "2.84 c"
