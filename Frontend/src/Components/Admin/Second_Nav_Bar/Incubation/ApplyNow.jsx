@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaUserEdit } from "react-icons/fa";
 
 export default function Applynow () {
 
@@ -91,7 +92,12 @@ function generateCaptcha() {
     setCaptcha(generateCaptcha());
   };
     return (
+      <div>
+          <div className="flex justify-end pr-8">
+         
+        </div>
         <div className="bg-prim dark:bg-drkts p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit m-auto">
+
           <h2 className="text-[20px] font-bold text-[#800000] dark:text-drkt">Incubation Committe Application</h2>
           <p className="text-[16px] text-prim dark:text-drkt">Please fill the form.</p>
 
@@ -104,7 +110,7 @@ function generateCaptcha() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-              />
+                />
               <input
                 type="number"
                 placeholder="Contact Number"
@@ -112,7 +118,7 @@ function generateCaptcha() {
                 value={contact_number}
                 onChange={(e) => setContactNumber(e.target.value)}
                 required
-              />
+                />
             </div>
             <input
               type="email"
@@ -121,7 +127,7 @@ function generateCaptcha() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            />
+              />
             <textarea
               placeholder="Type your message here"
               className="p-2 border border-gray-300 dark:bg-gray-300 placeholder-text text-text rounded w-full"
@@ -129,7 +135,7 @@ function generateCaptcha() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
-            ></textarea>
+              ></textarea>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-2 bg-gray-200 dark:bg-gray-300 text-center text-lg font-bold text-[#800000] rounded">
                 {captcha}
@@ -141,18 +147,19 @@ function generateCaptcha() {
                 value={userCaptcha}
                 onChange={(e) => setUserCaptcha(e.target.value)}
                 required
-              />
+                />
             </div>
             <button
               type="submit"
               disabled={loading}
               className={`p-2 rounded w-full ${
                 loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#800000] text-white"
-              }`}
-            >
+                }`}
+                >
               {loading ? "Submitting..." : "Submit"}
             </button>
           </form>
         </div>
+      </div>
     )
 }

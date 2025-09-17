@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Eactivity.css";
 import LoadComp from "../../LoadComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { FaUserEdit } from "react-icons/fa";
+import { Trash2, Send } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -13,10 +17,7 @@ const UrlParser = (path) => {
 const EcellActivity = ({ year, pdfspath }) => (
   <button
     onClick={() => window.open(pdfspath, "_blank")}
-    className="flex items-center justify-center gap-2 px-6 py-4 
-           rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-secd text-text dark:text-prim text-lg font-medium
-           hover:bg-yellow-600 shadow-md transition-all duration-200 no-underline cursor-pointer
-           bg-transparent"
+    className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-secd text-text dark:text-prim text-lg font-medium hover:bg-yellow-600 shadow-md transition-all duration-200 no-underline cursor-pointer bg-transparent"
     type="button"
   >
     <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
@@ -25,6 +26,160 @@ const EcellActivity = ({ year, pdfspath }) => (
 );
 
 export default function ImageGallery({ activity }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [data, setData] = useState([]); // baseline
+  const [savedData, setSavedData] = useState([]); // draft
+  const [tempData, setTempData] = useState([]); // working copy
+  const [showChangesPopup, setShowChangesPopup] = useState(false);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(new Set());
+
+  // Initialize data with unique IDs
+  useEffect(() => {
+    if (Array.isArray(activity) && activity.length > 0) {
+      const withIds = activity.map((item, idx) => ({
+        ...item,
+        _id: item._id || idx + "-" + Date.now(),
+      }));
+      setData(withIds);
+      setSavedData(withIds);
+      setTempData(withIds);
+    }
+  }, [activity]);
+
+  // Editing controls
+  const handleEdit = () => {
+    setIsEditing(true);
+    setIsSaved(false);
+  };
+
+  const handleSave = () => {
+    for (let i = 0; i < tempData.length; i++) {
+      if (!tempData[i].year || !tempData[i].pdf_path) {
+        toast.error("⚠️ Please fill both Year and PDF Path before saving.");
+        return;
+      }
+    }
+    setSavedData([...tempData]);
+    setIsEditing(false);
+    setIsSaved(true);
+    toast.success("✅ Changes saved. You can edit again or request.");
+  };
+
+  const handleCancel = () => {
+    setTempData([...savedData]);
+    setIsEditing(false);
+    setSelectedImage(new Set());
+
+    if (JSON.stringify(savedData) !== JSON.stringify(data)) {
+      setIsSaved(true);
+    } else {
+      setIsSaved(false);
+    }
+
+    toast.info("✖️ Current editing session cancelled.");
+  };
+
+  const handleDiscardChanges = () => {
+    setTempData([...data]);
+    setSavedData([...data]);
+    setIsSaved(false);
+    toast.info("🗑️ All changes discarded (reset to original).");
+  };
+
+  const handleRequest = () => {
+    setShowChangesPopup(true);
+  };
+
+  const handleFinalRequest = () => {
+    setData([...savedData]);
+    setShowChangesPopup(false);
+    setIsSaved(false);
+    toast.success("📩 Final request submitted successfully.");
+  };
+
+  const handleChanges = (index, key, value) => {
+    setTempData((prev) => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [key]: value };
+      return updated;
+    });
+  };
+
+  const handleAddNew = () => {
+    setTempData((prev) => [
+      ...prev,
+      { year: "", pdf_path: "", _id: Date.now() + "-" + Math.random() },
+    ]);
+  };
+
+  const handleCheckBox = (index) => {
+    setSelectedImage((prev) => {
+      const currentImg = new Set(prev);
+      if (currentImg.has(index)) currentImg.delete(index);
+      else currentImg.add(index);
+      return currentImg;
+    });
+  };
+
+  const handleDelete = () => {
+    setDeleteConfirmOpen(true);
+  };
+
+  const confirmDelete = () => {
+    setTempData((prev) => prev.filter((item) => !selectedImage.has(prev.indexOf(item))));
+    setSelectedImage(new Set());
+    setDeleteConfirmOpen(false);
+    toast.success("🗑️ Selected activities deleted.");
+  };
+
+  const cancelDelete = () => {
+    setDeleteConfirmOpen(false);
+  };
+
+  // Diff generator using _id
+  const getChanges = () => {
+    const changes = [];
+    const dataMap = new Map(data.map((item) => [item._id, item]));
+
+    // Check all tempData items
+    tempData.forEach((newItem) => {
+      const oldItem = dataMap.get(newItem._id);
+      if (!oldItem) {
+        changes.push({
+          _id: newItem._id,
+          type: "Added",
+          changes: newItem,
+        });
+      } else if (
+        oldItem.year !== newItem.year ||
+        oldItem.pdf_path !== newItem.pdf_path
+      ) {
+        changes.push({
+          _id: newItem._id,
+          type: "Edited",
+          changes: {
+            year: { old: oldItem.year, new: newItem.year },
+            pdf_path: { old: oldItem.pdf_path, new: newItem.pdf_path },
+          },
+        });
+      }
+      dataMap.delete(newItem._id);
+    });
+
+    // Remaining items in dataMap were deleted
+    for (let [_, oldItem] of dataMap) {
+      changes.push({
+        _id: oldItem._id,
+        type: "Deleted",
+        changes: oldItem,
+      });
+    }
+
+    return changes;
+  };
+
   if (!Array.isArray(activity)) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -35,26 +190,238 @@ export default function ImageGallery({ activity }) {
 
   return (
     <>
-      {activity ? (
+      {activity && (
         <div className="flex flex-col items-center my-12 px-4">
-          <h2 className="text-[32px] font-semibold mb-8 text-brwn dark:text-drkt">
-            E-Cell Activities
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 justify-center items-center">
-            {activity.map((yearObj, idx) => (
-              <EcellActivity
-                key={idx}
-                year={yearObj?.year}
-                pdfspath={UrlParser(yearObj?.pdf_path)}
-              />
+          {/* Header */}
+          <div className="flex justify-between w-full px-8 mb-4">
+            <h2 className="text-[32px] font-semibold text-brwn dark:text-drkt">
+              E-Cell Activities
+            </h2>
+            {!isEditing && (
+              <button
+                className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
+                onClick={handleEdit}
+              >
+                <FaUserEdit className="mr-2" /> Edit
+              </button>
+            )}
+          </div>
+
+          {/* Activities Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center">
+            {tempData?.map((act, index) => (
+              <div
+                key={act._id}
+                className="relative flex flex-col items-center justify-center p-4 border rounded shadow-md"
+              >
+                {isEditing ? (
+                  <>
+                    <input
+                      type="text"
+                      value={act?.year || ""}
+                      placeholder="Enter year"
+                      className="w-full mb-2 border rounded p-2"
+                      onChange={(e) =>
+                        handleChanges(index, "year", e.target.value)
+                      }
+                      required
+                    />
+                    <input
+                      type="file"
+                      accept="application/pdf"
+                      className="w-full mb-2 border rounded p-2"
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                          handleChanges(index, "pdf_path", file.name);
+                        }
+                      }}
+                      required
+                    />
+                    <p className="text-xs text-gray-500">
+                      {act?.pdf_path
+                        ? `Selected: ${act.pdf_path}`
+                        : "No PDF chosen"}
+                    </p>
+
+                    <input
+                      type="checkbox"
+                      className="absolute top-2 right-2"
+                      checked={selectedImage.has(index)}
+                      onChange={() => handleCheckBox(index)}
+                    />
+                  </>
+                ) : (
+                  <EcellActivity
+                    year={act?.year}
+                    pdfspath={UrlParser(act?.pdf_path)}
+                  />
+                )}
+              </div>
             ))}
+
+            {isEditing && (
+              <div className="w-120 h-44">
+                <button
+                  className="bg-gray-200 text-text px-3 py-8 rounded w-full h-full border-dashed border-2 hover:border-secd"
+                  onClick={handleAddNew}
+                >
+                  + Add New Activity
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Delete Button */}
+          {isEditing && selectedImage.size > 0 && (
+            <div>
+              <button
+                className="bg-red-500 text-prim flex flex-row gap-4 mt-4 p-2"
+                onClick={handleDelete}
+              >
+                <Trash2 /> Delete Selected
+              </button>
+            </div>
+          )}
+
+          {/* Global Buttons */}
+          <div className="py-4 mt-4 flex justify-end gap-4 w-full px-8">
+            {isEditing && (
+              <>
+                <button
+                  className="flex items-center bg-gray-500 px-3 py-2 rounded text-white"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+                {getChanges().length > 0 && (
+                  <button
+                    className="flex items-center border-4 border-yellow-400 px-3 py-2 rounded-lg"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>
+                )}
+              </>
+            )}
+            {!isEditing && isSaved && (
+              <>
+                <button
+                  className="flex items-center bg-gray-500 px-3 py-2 rounded text-prim"
+                  onClick={handleDiscardChanges}
+                >
+                  Discard Changes
+                </button>
+                <button
+                  className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim "
+                  onClick={handleRequest}
+                >
+                  <Send className="mr-2" /> Request
+                </button>
+              </>
+            )}
           </div>
         </div>
-      ) : (
-        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
-          <LoadComp txt={""} />
+      )}
+
+      {/* Request Modal */}
+      {showChangesPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-[1000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[530px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-drkt text-center">
+              Request
+            </h2>
+             <p className="text-sm text-red-500 mb-4">
+        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+      </p>
+
+            {getChanges().length > 0 ? (
+              <table className="w-full text-left text-gray-800 dark:text-drkt text-sm">
+                <thead>
+                  <tr>
+                    <th className="py-1 border">Action</th>
+                    <th className="py-1 border">Section</th>
+                    <th className="py-1 border">Changed Field</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getChanges().map((change) => (
+                    <tr key={change._id} className="even:bg-white odd:bg-gray-50">
+                      <td className="py-1 border font-semibold text-center">
+                        {change.type === "Added" && <span className="text-green-600">+ Added</span>}
+                        {change.type === "Deleted" && <span className="text-red-600">🗑 Deleted</span>}
+                        {change.type === "Edited" && <span className="text-blue-600">✎ Edited</span>}
+                      </td>
+                      <td className="py-1 border text-center">Activity</td>
+                      <td className="py-1 border text-[13px] text-center">
+                        {change.type === "Deleted" ? (
+                          <div>Row deleted</div>
+                        ) : change.type === "Added" ? (
+                          <div>Added entire row</div>
+                        ) : (
+                          <div>
+                            {Object.keys(change.changes).join(", ")}
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-gray-500 text-center">No changes detected</p>
+            )}
+
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                onClick={() => {
+                  setShowChangesPopup(false);
+                  setIsSaved(false);
+                }}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleFinalRequest}
+                className="px-4 py-2 rounded bg-[#800000] text-white hover:bg-[#a00000]"
+              >
+                Final Request
+              </button>
+            </div>
+          </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      {deleteConfirmOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-[1000]">
+          <div className="bg-white p-6 rounded-xl shadow-lg w-[400px]">
+            <h2 className="text-lg font-bold mb-4 text-gray-800">
+              Confirm Delete
+            </h2>
+            <p className="text-sm text-gray-600 mb-6">
+              Are you sure you want to delete the selected activities?
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={cancelDelete}
+                className="px-4 py-2 bg-gray-300 rounded text-black"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ToastContainer position="bottom-right" autoClose={2000} />
     </>
   );
 }
