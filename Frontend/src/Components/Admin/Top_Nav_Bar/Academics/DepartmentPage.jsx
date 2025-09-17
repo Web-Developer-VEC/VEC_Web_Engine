@@ -18,7 +18,7 @@ import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
-const DepartmentPage = ({ theme, toggle }) => {
+const AdminDepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -242,4 +242,4 @@ const DepartmentPage = ({ theme, toggle }) => {
   );
 };
 
-export default DepartmentPage;
+export default AdminDepartmentPage;
