@@ -75,6 +75,8 @@ import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredatio
 import AdminAccredation from "./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx";
 import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
 import AdminIic from "./Components/Admin/Second_Nav_Bar/IIC/iic.jsx";
+import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
+import AdminIncub from "./Components/Admin/Second_Nav_Bar/Incubation/InCub.jsx";
 
 export const routeConfig = {
 
@@ -126,6 +128,7 @@ export const routeConfig = {
 
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
+  '/incubation':{normal:Incub ,admin:AdminIncub},
   "/Accredation": { normal: Accredation, admin: AdminAccredation },
   "/iic": { normal: Iic, admin: AdminIic },
   "/NSS": { normal: NSS, admin: AdminNSS },
