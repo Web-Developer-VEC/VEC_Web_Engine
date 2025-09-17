@@ -430,6 +430,51 @@
         "brochure_path": "/static/images/events/NLPI.webp",
         "website_link": "",
         "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Digital Twin Technology",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/TWIN.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "22 SEPT, 2025",
+        "end_date": "22 SEPT, 2025",
+        "date": "22-09-2025",
+        "title": "Scalathon",
+        "department": "Computer Science & Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/SCALATHON.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Building Real Time Systems using Data Structure and Java Programming",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/DATA STRUCTURE.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "From Idea to Device: A Hands-on Journey into IoT",
+        "department": "Artificial Intelligence and Data Science",
+        "content": "",
+        "brochure_path": "/static/images/events/JOURNEY.webp",
+        "website_link": "",
+        "status": "True"
+
       }
     ]
   }
