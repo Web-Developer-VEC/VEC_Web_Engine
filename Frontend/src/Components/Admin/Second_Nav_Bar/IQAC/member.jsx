@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Trash2, Plus } from "lucide-react";
+import { Trash2, Plus, X, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,54 +22,76 @@ function IqaMem({ iqacData }) {
     const category = data[groupIdx]?.category;
 
     setChanges((prev) => {
-        // 🟢 If it's an update on an already "added" member → just replace last newData
-        if (action === "updated") {
+      // 🟢 If it's an update on an already "added" member → just replace last newData
+      if (action === "updated") {
         const existingAdd = prev.find(
-            (c) =>
+          (c) =>
             c.action === "added" &&
             c.category === category &&
             c.memberIdx === memberIdx
         );
         if (existingAdd) {
-            return prev?.map((c) =>
+          return prev?.map((c) =>
             c === existingAdd ? { ...c, newData } : c
-            );
+          );
         }
-        }
+      }
 
-        // 🟢 For updates → merge with latest update for the same member instead of duplicating
-        if (action === "updated") {
+      // 🟢 For updates → merge with latest update for the same member instead of duplicating
+      if (action === "updated") {
         const withoutOld = prev.filter(
-            (c) =>
-            !(c.action === "updated" &&
-                c.category === category &&
-                c.memberIdx === memberIdx)
+          (c) =>
+            !(
+              c.action === "updated" &&
+              c.category === category &&
+              c.memberIdx === memberIdx
+            )
         );
         return [
-            ...withoutOld,
-            { action, category, memberIdx, newData, oldData, timestamp: new Date().toISOString() },
+          ...withoutOld,
+          {
+            action,
+            category,
+            memberIdx,
+            newData,
+            oldData,
+            timestamp: new Date().toISOString(),
+          },
         ];
-        }
+      }
 
-        // Default case → add new change
-        return [
+      // Default case → add new change
+      return [
         ...prev,
-        { action, category, memberIdx, newData, oldData, timestamp: new Date().toISOString() },
-        ];
+        {
+          action,
+          category,
+          memberIdx,
+          newData,
+          oldData,
+          timestamp: new Date().toISOString(),
+        },
+      ];
     });
 
     setHasChanges(true);
-};
+  };
 
-const handleFieldChange = (groupIdx, memberIdx, field, value) => {
+  const handleFieldChange = (groupIdx, memberIdx, field, value) => {
     const updated = [...data];
     const oldData = { ...updated[groupIdx].members[memberIdx] };
 
     updated[groupIdx].members[memberIdx][field] = value;
     setData(updated);
 
-    trackChange("updated", groupIdx, memberIdx, updated[groupIdx].members[memberIdx], oldData);
-};
+    trackChange(
+      "updated",
+      groupIdx,
+      memberIdx,
+      updated[groupIdx].members[memberIdx],
+      oldData
+    );
+  };
 
   const handleAddMember = (groupIdx) => {
     const updated = [...data];
@@ -82,7 +104,12 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
     updated[groupIdx].members.push(newMember);
     setData(updated);
 
-    trackChange("added", groupIdx, updated[groupIdx].members.length - 1, newMember);
+    trackChange(
+      "added",
+      groupIdx,
+      updated[groupIdx].members.length - 1,
+      newMember
+    );
   };
 
   const handleDeleteMember = (groupIdx, memberIdx) => {
@@ -105,7 +132,7 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
   const handleSave = () => {
     setIsEditing(false);
     if (hasChanges) {
-      setShowRequest(true); // only show request button if changes exist
+      setShowRequest(true); // only show request/discard after changes
     }
     console.log("Saved locally:", data);
     console.log("Pending Changes:", changes);
@@ -126,32 +153,29 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
     setHasChanges(false);
   };
 
+  const handleDiscard = () => {
+    setData(iqacData || []);
+    setChanges([]);
+    setShowRequest(false);
+    setHasChanges(false);
+    toast.info("All changes discarded.");
+  };
+
+  const handleUndoChange = (index) => {
+    setChanges((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="mt-8 mb-4 px-4">
-      {/* Floating Buttons */}
+      {/* Top-right Edit Button */}
       <div className="top-10 right-10 flex justify-end gap-2 z-50">
-        {!isEditing ? (
+        {!isEditing && !showRequest && (
           <button
             onClick={() => setIsEditing(true)}
-            className="px-4 py-2 bg-secd dark:bg-drks text-text rounded hover:bg-[#800000] hover:text-drkt"
+            className="px-3 py-2 bg-secd dark:bg-drks text-text rounded hover:bg-[#800000] hover:text-drkt flex items-center gap-1"
           >
-            Edit
+            <Pencil size={16} /> Edit
           </button>
-        ) : (
-          <>
-            <button
-              onClick={() => setIsEditing(false)}
-              className="px-4 py-2 bg-gray-400 text-white rounded"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleSave}
-              className="px-4 py-2 bg-secd text-white rounded hover:bg-[#800000]"
-            >
-              Save
-            </button>
-          </>
         )}
       </div>
 
@@ -203,7 +227,12 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                           value={member.name}
                           placeholder="Name"
                           onChange={(e) =>
-                            handleFieldChange(groupIdx, i, "name", e.target.value)
+                            handleFieldChange(
+                              groupIdx,
+                              i,
+                              "name",
+                              e.target.value
+                            )
                           }
                           className="w-full mb-2 p-2 border rounded"
                         />
@@ -212,7 +241,12 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                           value={member.designation}
                           placeholder="Designation"
                           onChange={(e) =>
-                            handleFieldChange(groupIdx, i, "designation", e.target.value)
+                            handleFieldChange(
+                              groupIdx,
+                              i,
+                              "designation",
+                              e.target.value
+                            )
                           }
                           className="w-full mb-2 p-2 border rounded"
                         />
@@ -221,7 +255,12 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                           value={member.role}
                           placeholder="Role"
                           onChange={(e) =>
-                            handleFieldChange(groupIdx, i, "role", e.target.value)
+                            handleFieldChange(
+                              groupIdx,
+                              i,
+                              "role",
+                              e.target.value
+                            )
                           }
                           className="w-full mb-2 p-2 border rounded"
                         />
@@ -257,25 +296,61 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
           </div>
         ))}
 
-        <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {/* Request Button (bottom only after Save) */}
-      {showRequest && (
-        <div className="flex justify-center mt-6">
+      {/* Bottom Buttons */}
+      <div className="flex justify-center mt-6 gap-3">
+        {isEditing && !hasChanges && (
           <button
-            onClick={handleRequest}
-            className="px-6 py-2 bg-secd dark:bg-drks text-text rounded"
+            onClick={() => setIsEditing(false)}
+            className="px-4 py-2 bg-gray-400 text-white rounded"
           >
-            Request
+            Cancel
           </button>
-        </div>
-      )}
+        )}
+
+        {isEditing && hasChanges && (
+          <>
+            <button
+              onClick={() => setIsEditing(false)}
+              className="px-4 py-2 bg-gray-400 text-white rounded"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-secd text-white rounded hover:bg-[#800000]"
+            >
+              Save
+            </button>
+          </>
+        )}
+
+        {showRequest && !isEditing && (
+          <>
+            <button
+              onClick={handleDiscard}
+              className="px-6 py-2 bg-gray-400 text-white rounded"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={handleRequest}
+              className="px-6 py-2 bg-secd dark:bg-drks text-text rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Request
+            </button>
+          </>
+        )}
+      </div>
 
       {/* Delete confirmation popup */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+        <div className="fixed inset-0 bg-black/70 flex justify-center z-[1000] overflow-y-auto py-10">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px] h-fit my-auto">
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Confirm Delete
+            </h2>
             <p className="text-sm mb-4 text-center">
               Are you sure you want to delete this member?
             </p>
@@ -299,8 +374,8 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
 
       {/* Final Request Confirmation Popup */}
       {confirmPopup && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[550px]">
+        <div className="fixed inset-0 bg-black/70 flex justify-center z-[1000] overflow-y-auto py-10">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[550px] h-fit my-auto">
             {/* Title */}
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Final Request for the Changes
@@ -308,8 +383,9 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
 
             {/* Note */}
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin. 
-              Once approved, they will be applied automatically to the live site.
+              Note: Your changes will stay pending until approved by the superior
+              admin. Once approved, they will be applied automatically to the live
+              site.
             </p>
 
             {/* Summary of Changes */}
@@ -320,6 +396,7 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                     <th className="py-1 border">Action</th>
                     <th className="py-1 border">Section</th>
                     <th className="py-1 border text-center">Changes</th>
+                    <th className="py-1 border text-center">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -337,19 +414,9 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                         {/* Changes */}
                         <td className="py-1 text-[12px] flex flex-col items-center gap-1 border">
                           {change.action === "updated" && (
-                            <>
-                              <span className="text-red-500 line-through">
-                                {change.oldData
-                                  ? `${change.oldData.name || ""} ${change.oldData.designation || ""} ${change.oldData.role || ""}`
-                                  : "—"}
-                              </span>
-                              <span className="text-gray-400">↓</span>
-                              <span className="text-green-500">
-                                {change.newData
-                                  ? `${change.newData.name || ""} ${change.newData.designation || ""} ${change.newData.role || ""}`
-                                  : "—"}
-                              </span>
-                            </>
+                            <span className="text-red-400">
+                              {change.newData.name}
+                            </span>
                           )}
 
                           {change.action === "added" && (
@@ -364,11 +431,19 @@ const handleFieldChange = (groupIdx, memberIdx, field, value) => {
                             </span>
                           )}
                         </td>
+                        <td>
+                          <button
+                            onClick={() => handleUndoChange(index)}
+                            className="text-red-500 hover:text-red-700"
+                          >
+                            <X size={16} />
+                          </button>
+                        </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="3" className="py-2 text-gray-400">
+                      <td colSpan="4" className="py-2 text-gray-400">
                         No changes to display
                       </td>
                     </tr>
