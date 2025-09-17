@@ -81,7 +81,9 @@ if (!isOnline) {
           <div className="regulation-grid">
             {regulationdata?.map((reg, index) => (
               <div key={index} className="regulation-card">
-                <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks"> {reg.year}</h2>
+
+                <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">{reg.category}</h2>
+
                 <ul className="regulation-list">
                   {reg.links.map((link, idx) => (
 

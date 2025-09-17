@@ -421,7 +421,7 @@
         "status": "True"
       },
       {
-        "start_date": "10 SEP",
+        "start_date":"10 SEP",
         "end_date": "10 SEP, 2025",
         "date": "10-09-2025",
         "title": "Network Layer Protocol - IP and Mobile IP",
@@ -474,6 +474,7 @@
         "brochure_path": "/static/images/events/JOURNEY.webp",
         "website_link": "",
         "status": "True"
+
       }
     ]
   }

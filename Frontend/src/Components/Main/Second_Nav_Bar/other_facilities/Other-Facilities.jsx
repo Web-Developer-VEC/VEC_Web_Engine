@@ -23,7 +23,7 @@ export default function OtherFacilities({ theme, toggle }) {
   };
 
   const currentFacility = otherFacilities?.find(
-    (facility) => facility?.title === activeTab
+    (facility) => facility?.category === activeTab
   );
 
   const nextImage = () => {
@@ -50,7 +50,7 @@ export default function OtherFacilities({ theme, toggle }) {
         });
         const data = response.data.data;
         setOtherFacilities(data);
-        setActiveTab(data[0]?.title || null);
+        setActiveTab(data[0]?.category || null);
       } catch (error) {
         console.error("Error fetching Other facilities", error);
         if (error.response.data.status === 429) {
@@ -111,16 +111,16 @@ export default function OtherFacilities({ theme, toggle }) {
         <div className="tabs-container">
           {otherFacilities?.map((facility) => (
             <button
-              key={facility?.title}
+              key={facility?.category}
               className={`tab-button ${
-                activeTab === facility?.title ? "active-tab" : ""
+                activeTab === facility?.category ? "active-tab" : ""
               } bg-secd dark:bg-drks text-text`}
               onClick={() => {
-                setActiveTab(facility?.title);
+                setActiveTab(facility?.category);
                 setImageIndex(0);
               }}
             >
-              {facility?.title}
+              {facility?.category}
             </button>
           ))}
         </div>

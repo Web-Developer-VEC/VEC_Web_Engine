@@ -76,12 +76,13 @@ const AbtYear = ({ toggle, theme }) => {
     );
   };
 
-  const navData = {
-    "2021-2022": renderYearContent("2021-2022"),
-    "2022-2023": renderYearContent("2022-2023"),
-    "2023-2024": renderYearContent("2023-2024"),
-    "2024-2025": renderYearContent("2024-2025")
-  };
+  const navData = (aboutYearData)?.reduce((acc, item) => {
+    if (item?.category) {
+      acc[item.category] = renderYearContent(item.category);
+    }
+    return acc;
+  }, {});
+
 
   return (
     <>

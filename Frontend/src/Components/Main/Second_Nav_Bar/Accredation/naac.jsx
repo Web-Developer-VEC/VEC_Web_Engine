@@ -85,7 +85,7 @@ const Naac = ({ data }) => {
                     : "bg-accn dark:bg-drks text-white "
                 }`}
                 >
-                  {section.title}
+                  {section?.category}
                   {openSection === index ? <FaChevronUp /> : <FaChevronDown />}
                 </button>
 
