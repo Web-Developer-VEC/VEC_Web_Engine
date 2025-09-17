@@ -73,7 +73,7 @@ const NIRF = ({ data }) => {
             ?.reverse()
             ?.map((item, index) => (
               <div key={index} className="nirf-year">
-                <h3 className="text-text dark:text-drkt">NIRF {item?.year}</h3>
+                <h3 className="text-text dark:text-drkt">{item?.category}</h3>
                 {item?.content?.map((cat, catIndex) => (
                   <button
                     key={catIndex}
