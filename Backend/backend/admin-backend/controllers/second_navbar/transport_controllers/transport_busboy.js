@@ -43,10 +43,15 @@ async function transportHandler(fileStream, docs, req, cb, filename, mimetype) {
       key: s3Key, // S3 key
       location: `/${s3Key}`, // or full URL if needed
       collection: collectionName,
-      mimetype: mimetype,
+      mimetype: effectiveMime,
     });
 
-    
+    console.log("✅ File uploaded to S3:", {
+  key: s3Key,
+  location: `/${s3Key}`,
+  collection: collectionName,
+  
+});
 
     cb(null, data);
   } catch (err) {

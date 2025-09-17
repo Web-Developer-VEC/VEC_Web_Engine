@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {signup, login} = require('../controllers/admin_controllers');
+const {signup, login} = require('../../controllers/admin_controllers');
 // const createRateLimiter = require('../../middlewares/ratelimiter');
 // const xss = require('../../middlewares/xss');
 // const nosql = require('../../middlewares/sanitizers/nosql_injection');

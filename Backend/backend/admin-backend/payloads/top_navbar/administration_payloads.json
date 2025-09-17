@@ -1,0 +1,214 @@
+[
+
+
+
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "insert",
+    "title": "Insert Academic Council Committee",
+    "meta_data": {
+      "name": "Academic Council",
+      "pdf_path": "/static/pdfs/committee/academic_council_2025.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "insert",
+    "title": "Insert Admin Office",
+    "meta_data": {
+      "name": "Finance Office",
+      "pdf_path": "/static/pdfs/admin_office/finance2025.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "dean_and_association",
+    "action": "insert",
+    "title": "Insert Dean",
+    "meta_data": {
+      "name": "Dr. John Doe",
+      "profile_link": "/static/profiles/deans/johndoe.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "insert",
+    "title": "Append new HandBook entries",
+    "meta_data": {
+      "Years": [
+        "2018-2019",
+        "2019-2020",
+        "2020-2021",
+        "2021-2022",
+        "2022-2023",
+        "2023-2024",
+        "2024-2025",
+        "2025-2026"
+      ],
+      "pdfs_path": [
+        "/static/pdfs/handbook/Handbook-18-19.pdf",
+        "/static/pdfs/handbook/Handbook-19-20.pdf",
+        "/static/pdfs/handbook/Handbook-20-21.pdf",
+        "/static/pdfs/handbook/Handbook-21-22.pdf",
+        "/static/pdfs/handbook/HandBook-22-23.pdf",
+        "/static/pdfs/handbook/HandBook-23-24.pdf",
+        "/static/pdfs/handbook/Revised_New_Hand_Book_24-25.pdf"      ]
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "principal",
+    "action": "insert",
+    "title": "Update principal profile",
+    "meta_data": {
+      "name": "Dr. Jane Smith",
+      "phone": "9876543210",
+      "profile_pdf": "/static/pdfs/principal/jane_smith.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "update",
+    "title": "Update committee pdf path",
+    "meta_data": {
+      "name": "Academic Council",
+      "pdf_path": "/static/pdfs/committee/academic_council_2026.pdf"
+    },
+    "original_data": {
+      "name": "Academic Council",
+      "pdf_path": "/static/pdfs/committee/academic_council_2025.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "update",
+    "title": "Update Admin Office Name",
+    "meta_data": {
+      "name": "Accounts Office",
+      "pdf_path": "/static/pdfs/admin_office/accounts2025.pdf"
+    },
+    "original_data": {
+      "name": "Finance Office",
+      "pdf_path": "/static/pdfs/admin_office/finance2025.pdf"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "dean_and_association",
+    "action": "update",
+    "title": "Update Dean Profile Link",
+    "meta_data": {
+    "name": "Dr.  A",
+    "type": "Dean",
+    "designation": "Prof & Head - Civil Engineering",
+    "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+    "unique_id": "VEC-001-01-001"
+  },
+    "original_data":{
+    "name": "Dr. JEEVA KATIRAVAN",
+    "type": "Dean",
+    "designation": "Prof & Head - Information Technology",
+    "image_path": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
+  }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "update",
+    "title": "Update HandBook PDF for Year",
+    "meta_data": {
+      "Years": ["2025-2026"],
+      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_FINAL.pdf"]
+    },
+    "original_data": {
+      "Years": ["2025-2026"],
+      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_UPDATED.pdf"]
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "principal",
+    "action": "update",
+    "title": "Update principal phone number",
+    "meta_data": {
+      "name": "Dr. Jane Smith",
+      "phone": "9999999999"
+    },
+    "original_data": {
+      "name": "Dr. Jane Smith",
+      "phone": "9876543210"
+    }
+  },
+
+ 
+
+
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "delete",
+    "title": "Delete committee by name",
+    "meta_data": {
+      "name": "Academic Council"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "delete",
+    "title": "Delete Admin Office by name",
+    "meta_data": {
+      "name": "Finance Office"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "dean_and_association",
+    "action": "delete",
+    "title": "Delete Dean by name",
+    "meta_data": {
+    "name": "Dr. JEEVA KATIRAVAN",
+    "type": "Dean",
+    "designation": "Prof & Head - Information Technology",
+    "image_path": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
+  }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "delete",
+    "title": "Delete HandBook entry for year",
+    "meta_data": {
+      "Years": ["2025-2026"],
+      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_UPDATED.pdf"]
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "principal",
+    "action": "delete",
+    "title": "Delete principal phone number",
+    "meta_data": {
+      "phone": "9876543210"
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "delete",
+    "title": "Delete all committee entries",
+    "meta_data": {}
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "delete",
+    "title": "Delete all HandBook entries",
+    "meta_data": {}
+  }
+]
