@@ -156,31 +156,31 @@ const Activities = ({ data }) => {
 
       {/* Year Filter */}
       <div className="year-filter flex flex-wrap justify-center gap-4 my-4">
-          {years?.map((year) => (
-            <div key={year} className="relative">
-              <button
-                onClick={() => setSelectedYear(year)}
-                className={`relative px-4 py-2 rounded deptevent-year-button ${
-                  selectedYear === year
-                    ? "bg-accn text-prim"
-                    : "bg-secd text-text dark:bg-drks"
-                }`}
-              >
-                {year}
+        {years?.map((year) => (
+          <div key={year} className="relative">
+            <button
+              onClick={() => setSelectedYear(year)}
+              className={`relative px-4 py-2 rounded deptevent-year-button ${
+                selectedYear === year
+                  ? "bg-accn text-prim"
+                  : "bg-secd text-text dark:bg-drks"
+              }`}
+            >
+              {year}
 
-                {/* Checkbox in top-right corner */}
-                {isEditing && (
-                  <input
-                    type="checkbox"
-                    checked={selectedYears.includes(year)}
-                    onChange={() => toggleYearSelection(year)}
-                    className="absolute top-0 right-0 m-1 w-4 h-4"
-                    onClick={(e) => e.stopPropagation()} // prevents triggering year button click
-                  />
-                )}
-              </button>
-            </div>
-          ))}
+              {/* Checkbox in top-right corner */}
+              {isEditing && (
+                <input
+                  type="checkbox"
+                  checked={selectedYears.includes(year)}
+                  onChange={() => toggleYearSelection(year)}
+                  className="absolute top-0 right-0 m-1 w-4 h-4"
+                  onClick={(e) => e.stopPropagation()} // prevents triggering year button click
+                />
+              )}
+            </button>
+          </div>
+        ))}
 
         {/* Add Year Button */}
         {isEditing && !addingYear && (
@@ -470,6 +470,33 @@ const Activitiestile = ({
     }
   };
 
+  const handleRemovePdf = (itemName) => {
+    setHasChanges(true);
+
+    setDepartmentActivities((prev) =>
+      prev.map((yearItem) =>
+        yearItem.year === selectedYear
+          ? {
+              ...yearItem,
+              activities_tile: yearItem.activities_tile.map((act) =>
+                act.name === itemName ? { ...act, pdf_path: "" } : act
+              ),
+            }
+          : yearItem
+      )
+    );
+
+    setChangesLog((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        action: "Remove PDF",
+        section: "Activity",
+        title: itemName,
+      },
+    ]);
+  };
+
   return data ? (
     <div className="Rd-page mb-10">
       <div className="deptevent-content">
@@ -507,12 +534,21 @@ const Activitiestile = ({
 
                       {/* Eye Button */}
                       {item?.pdf_path && (
-                        <button
-                          className="px-2 py-1 rounded text-blue-300"
-                          onClick={() => handlePdfOpen(item?.pdf_path)}
-                        >
-                          <Eye />
-                        </button>
+                        <>
+                          <button
+                            className="px-2 py-1 rounded text-blue-300"
+                            onClick={() => handlePdfOpen(item?.pdf_path)}
+                          >
+                            <Eye />
+                          </button>
+                          {/* Remove PDF Button */}
+                          <button
+                            className="px-2 py-1 rounded text-red-500"
+                            onClick={() => handleRemovePdf(item?.name)}
+                          >
+                            <X />
+                          </button>
+                        </>
                       )}
                     </div>
                   )}
