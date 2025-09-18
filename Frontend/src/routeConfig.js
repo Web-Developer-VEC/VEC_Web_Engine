@@ -77,6 +77,16 @@ import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
 import AdminIic from "./Components/Admin/Second_Nav_Bar/IIC/iic.jsx";
 import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
 import AdminIncub from "./Components/Admin/Second_Nav_Bar/Incubation/InCub.jsx";
+import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import AdminEcell from "./Components/Admin/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import DepartmentPage from "./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx";
+import AcademicDepartments from "./Components/Main/Top_Nav_Bar/Academics/Department.jsx";
+import AdminAcademicDepartments from "./Components/Admin/Top_Nav_Bar/Academics/Department.jsx";
+import DepartmentRoute from "./deptRoute.js";
+import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
+import AdminProgrammes from "./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx";
+import AdminSportsPage from "./Components/Admin/Second_Nav_Bar/sports/admin_SportsPage.jsx";
+import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
 
 export const routeConfig = {
 
@@ -95,6 +105,9 @@ export const routeConfig = {
   "/handbook": { normal: Handbook, admin: AdminHandbook },
   
   // Academics Routes
+  "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
+  "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
+  "/programs": { normal: Programmes, admin: AdminProgrammes },
   "/acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
@@ -128,7 +141,8 @@ export const routeConfig = {
 
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
-  '/incubation':{normal:Incub ,admin:AdminIncub},
+  '/incubation': { normal:Incub, admin:AdminIncub },
+  "/ecell": { normal: Ecell, admin: AdminEcell },
   "/Accredation": { normal: Accredation, admin: AdminAccredation },
   "/iic": { normal: Iic, admin: AdminIic },
   "/NSS": { normal: NSS, admin: AdminNSS },
@@ -136,6 +150,7 @@ export const routeConfig = {
   "/nccnavy": { normal: NCC_NAVY, admin: AdminNCC_NAVY },
   "/nccarmy": { normal: NCC_ARMY, admin: AdminNCC_ARMY },
   "/YRC": { normal: YRC, admin: AdminYrc },
+  "/sports": { normal: SportsPage, admin: AdminSportsPage },
   "/transport": { normal: Transport, admin: AdminTransport },
   "/hosLanding": { normal: HostelPage, admin: AdminHostelPage },
   "/grievances": { normal: GrievanceForm, admin: AdminGrievanceForm },
