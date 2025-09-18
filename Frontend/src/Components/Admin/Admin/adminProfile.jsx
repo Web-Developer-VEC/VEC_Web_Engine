@@ -104,7 +104,26 @@ const routeDictionary = {
   "/web_contact": "Web Contact",
   "/admin_dash": "Admin Dashboard",
   "/admin_approval": "Admin Approval",
-}
+
+  // Department Routes
+  "/dept/001": "Artificial Intelligence and Data Science",
+  "/dept/002": "Automobile Engineering",
+  "/dept/003": "Chemistry",
+  "/dept/004": "Civil Engineering",
+  "/dept/005": "Computer Science and Engineering",
+  "/dept/006": "Computer Science and Engineering (Cyber Security)",
+  "/dept/007": "Electrical and Electronics Engineering",
+  "/dept/008": "Electronics and Instrumentation Engineering",
+  "/dept/009": "Electronics and Communication Engineering",
+  "/dept/010": "English",
+  "/dept/011": "Information Technology",
+  "/dept/012": "Mathematics",
+  "/dept/013": "Mechanical Engineering",
+  "/dept/014": "Tamil",
+  "/dept/015": "Physics",
+  "/dept/016": "Master of Engineering in Computer Science",
+  "/dept/017": "Master of Business Administration",
+};
 
 const getActionIcon = (action) => {
   switch (action) {
@@ -354,7 +373,7 @@ export default function AdminProfilePage() {
                   <p className="text-sm text-gray-400">Contact your superior admin for access</p>
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="space-y-3 overflow-y-auto max-h-96">
                   {userSession.routes
                     .filter((route) => route !== "/admin_profile")
                     .map((route, index) => (
@@ -365,7 +384,7 @@ export default function AdminProfilePage() {
                         <div className="flex items-center justify-between">
                           <a
                             href={route}
-                            className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1"
+                            className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1 cursor-pointer"
                           >
                             <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full group-hover:scale-125 transition-transform"></div>
                             <span className="font-semibold group-hover:text-green-700">
