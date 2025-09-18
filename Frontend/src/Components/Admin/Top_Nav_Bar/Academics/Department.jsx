@@ -25,7 +25,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 
-const AcademicDepartments = ({ theme , toggle }) => {
+const AdminAcademicDepartments = ({ theme , toggle }) => {
   
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [departments,setDepartments] = useState(null);
@@ -87,6 +87,13 @@ const AcademicDepartments = ({ theme , toggle }) => {
       };
   }, []);
 
+  const session = JSON.parse(sessionStorage.getItem("userSession"))
+  
+  const isRouteAllowed = (link) => {
+      if (!session?.routes) return true; // If no session routes, allow by default
+      return session.routes.includes(link);
+  };
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -128,8 +135,8 @@ const AcademicDepartments = ({ theme , toggle }) => {
                         >
                           <span className="department1-icon">{IconComponent}</span>
                           <a
-                            href={dept.link}
-                            className="department1-department-link text-text dark:text-drkt"
+                            href={`${isRouteAllowed(dept.link) ? dept.link : "#"}`}
+                            className={`department1-department-link text-text dark:text-drkt ${isRouteAllowed(dept.link) ?  "" : "cursor-not-allowed"}`}
                           >
                             {dept.name}
                           </a>
@@ -152,4 +159,4 @@ const AcademicDepartments = ({ theme , toggle }) => {
 
 };
 
-export default AcademicDepartments;
+export default AdminAcademicDepartments;
