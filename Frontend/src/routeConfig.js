@@ -85,6 +85,8 @@ import AdminAcademicDepartments from "./Components/Admin/Top_Nav_Bar/Academics/D
 import DepartmentRoute from "./deptRoute.js";
 import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
 import AdminProgrammes from "./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx";
+import AdminSportsPage from "./Components/Admin/Second_Nav_Bar/sports/admin_SportsPage.jsx";
+import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
 
 export const routeConfig = {
 
@@ -148,6 +150,7 @@ export const routeConfig = {
   "/nccnavy": { normal: NCC_NAVY, admin: AdminNCC_NAVY },
   "/nccarmy": { normal: NCC_ARMY, admin: AdminNCC_ARMY },
   "/YRC": { normal: YRC, admin: AdminYrc },
+  "/sports": { normal: SportsPage, admin: AdminSportsPage },
   "/transport": { normal: Transport, admin: AdminTransport },
   "/hosLanding": { normal: HostelPage, admin: AdminHostelPage },
   "/grievances": { normal: GrievanceForm, admin: AdminGrievanceForm },
