@@ -39,6 +39,8 @@ const accreditationsandrankingadmin = require("../second_navbar/accreditations_a
 const hodadmin = require('../top_navbar/academics_routes/hod_routes')
 const activitiesadmin = require('../top_navbar/academics_routes/activities_routes')
 const infrastructureadmin = require('../top_navbar/academics_routes/infrastructure_routes')
+const newsletteradmin = require('../top_navbar/academics_routes/newsletter_routes')
+const studentachievementsadmin = require('../top_navbar/academics_routes/student_achievements_routes')
 
 
 //Action routes 
@@ -78,6 +80,8 @@ router.use('',accreditationsandrankingadmin);
 router.use('',hodadmin);
 router.use('',infrastructureadmin);
 router.use('',activitiesadmin);
+router.use('',newsletteradmin);
+router.use('',studentachievementsadmin)
 
 
 
