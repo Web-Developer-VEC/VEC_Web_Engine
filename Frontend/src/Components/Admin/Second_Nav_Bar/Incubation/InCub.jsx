@@ -15,13 +15,13 @@ import axios from "axios";
 
 
 
-const Incub = ( {toggle, theme}) => {
+const AdminIncub = ( {toggle, theme}) => {
     const [cub, setCub] = useState("Home")
     const [incubation,setIncubation] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
-        if (cub === "E-Cell") {
-            navigate("/ecell");
+        if (cub === "E-Cell") { 
+            navigate("/admin_ecell");
         }
     }, [cub, navigate]);
 
@@ -141,4 +141,4 @@ const Incub = ( {toggle, theme}) => {
     );
 };
 
-export default Incub;
+export default AdminIncub;

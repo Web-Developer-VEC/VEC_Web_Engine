@@ -33,8 +33,7 @@ const Forms = ({ theme, toggle }) => {
           type: "all_forms",
         });
 
-        const data = response?.data?.data;
-
+                const data = response?.data?.data;
         if (data) {
           const students = data?.find((item) => item.category == "student")?.content || [];
           const faculty = data?.find((item) => item.category == "faculty")?.content || [];

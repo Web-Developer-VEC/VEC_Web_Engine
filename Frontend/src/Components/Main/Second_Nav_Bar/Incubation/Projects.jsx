@@ -52,9 +52,9 @@ export default function Projects({data}) {
         <div className="max-w-6xl mx-auto space-y-10">
           {data?.map((section, i) => (
             <div key={i} className="space-y-4">
-              <h2 className="text-center text-lg font-bold">{section?.title}</h2>
+              <h2 className="text-center text-lg font-bold">{section?.category}</h2>
               <div className="flex flex-wrap justify-center gap-5">
-                {section?.stats?.map((item, j) => {
+                {section?.content?.map((item, j) => {
                   const color = colors[j % colors.length];
                   return (
                     <StatCard

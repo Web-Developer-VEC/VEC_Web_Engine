@@ -1,0 +1,291 @@
+/* Base styles */
+.news-container {
+    position: relative;
+    padding: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.announcement-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .announcement-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* Image section */
+.image-section {
+    position: relative;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .image-section {
+        display: block;
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .image-section {
+        width: 30%;
+    }
+}
+
+.image-overlay {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(253, 204, 3, 0.69), transparent);
+    clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0 100%);
+}
+
+.college-image {
+    position: absolute;
+    bottom: 130px;
+    width: 73.5%;
+    height: auto;
+}
+
+/* Nominations section */
+.nominations-section {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .nominations-section {
+        width: 55%;
+        padding: 1.5rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nominations-section {
+        width: 35%;
+    }
+}
+
+.lan-section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--accn);
+}
+
+.section-content {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.awards-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.award-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.award-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.award-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.award-link:hover {
+    text-decoration: underline;
+}
+
+/* Announcements card */
+.announcements-card {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .announcements-card {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .announcements-card {
+        width: 30%;
+    }
+
+    .college-image {
+      bottom: 30px;
+    }
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    z-index: 2;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: auto; /* Auto height */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, 
+.card-back {
+    position: absolute;
+    width: 100%;
+    min-height: 300px; /* Flexible height */
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .card-front, .card-back {
+        min-height: 250px;
+        padding: 1rem;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+    .card-front, .card-back {
+        min-height: 200px;
+        padding: 0.75rem;
+    }
+}
+
+.card-front {
+    background: linear-gradient(290deg, rgba(239, 59, 59, 0.8), rgba(255, 255, 0, 0.8), rgba(255, 165, 0, 0.8));
+    animation: gradientAnimation 9s ease infinite;
+    background-size: 400% 400%;
+}
+
+.card-back {
+    background: linear-gradient(72deg, rgba(255, 0, 0, 0.74), rgba(255, 255, 0, 0.729), rgba(197, 136, 23, 0.8));
+    transform: rotateY(180deg);
+    animation: gradientAnimation 9s ease infinite;
+    background-size: 400% 400%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--accn);
+}
+
+.announcements-content {
+    flex-grow: 1;
+    overflow-y: visible;  /* ✅ Removed scrolling */
+    padding: 0.5rem 0;
+}
+
+.announcement-item {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .announcement-item {
+        font-size: 1rem;
+    }
+}
+
+.announcement-link {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.announcement-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.flip-buttons {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+
+.flip-btn {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flip-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+    .college-image {
+        max-height: 50vh;
+    }
+    
+    .announcements-card {
+        /* margin-top: 1rem; */
+        margin-bottom: 4rem;
+    }
+    
+    .card-container {
+        min-height: 250px;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

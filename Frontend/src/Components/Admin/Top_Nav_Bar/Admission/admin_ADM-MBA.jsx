@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./ADM-MBA.css";
 import { FaLink } from "react-icons/fa";
-import Banner from "../../../Banner";
-import LoadComp from "../../../LoadComp";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router-dom";
 import {
   SaveAll,

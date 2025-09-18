@@ -71,7 +71,7 @@ const Transport = ({ theme, toggle }) => {
         </div>
             
             <div className="font-[poppins]">
-                {transportData?.[0]?.route && ( <PDF pdfRoute={transportData[0].route} /> )}
+                {transportData?.[0]?.pdf_path && ( <PDF pdfRoute={transportData[0].pdf_path} /> )}
             </div>
             
             {/* Styled Transport Facilities Paragraph */}

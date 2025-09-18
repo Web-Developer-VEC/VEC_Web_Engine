@@ -41,22 +41,22 @@ const AdminForms = ({ theme, toggle }) => {
           type: "all_forms",
         });
 
-        const data = response?.data?.data?.[0];
+        const data = response?.data?.data;
         if (data) {
-          const students = data?.students?.[0] || { name: [], link: [] };
-          const faculty = data?.faculty?.[0] || { name: [], link: [] };
+          const students = data?.find((item) => item.category == "student")?.content || [];
+          const faculty = data?.find((item) => item.category == "faculty")?.content || [];
 
-          const formattedStudentResources = (students.name || []).map(
+          const formattedStudentResources = (students || []).map(
             (name, index) => ({
-              name,
-              url: UrlParser(students.link?.[index] || "#"),
+              name: name?.name,
+              url: UrlParser(name?.pdf_path || "#"),
             })
           );
 
-          const formattedFacultyResources = (faculty.name || []).map(
+          const formattedFacultyResources = (faculty || []).map(
             (name, index) => ({
-              name,
-              url: UrlParser(faculty.link?.[index] || "#"),
+              name: name?.name,
+              url: UrlParser(name?.pdf_path || "#"),
             })
           );
 

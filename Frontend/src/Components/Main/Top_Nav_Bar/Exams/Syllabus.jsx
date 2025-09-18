@@ -130,16 +130,6 @@ if (!isOnline) {
               <LoadComp txt={""} />
             </div>
           ) : (
-            // curriculumData?.map((yearData, index) => {
-            //   const year = Object.keys(yearData)[0];
-            //   if (year === "_id") return null;
-            //   if (year === "Verticals" || year === "01") {
-            //     return yearData[year]?.map((verticalData, vIndex) =>
-            //       renderSection(verticalData, `${year}-${vIndex}`)
-            //     );
-            //   }
-            //   return renderSection(yearData[year][0], year);
-            // })
             renderSection(curriculumData)
           )}
         </motion.div>

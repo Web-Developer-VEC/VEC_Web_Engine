@@ -1,144 +1,118 @@
-
-// ------------------- INSERT -------------------
-async function insertData(req, res, tempDoc, mainCollection) {
+async function insertData( tempDoc, mainCollection) {
   try {
-    let { collection_type, meta_data, category } = tempDoc;
+    const { collection_type, meta_data, category } = tempDoc;
 
-    meta_data = JSON.parse(meta_data);
-
-    if (!collection_type || !meta_data)
-      return res.status(400).json({ error: "Type and metadata required" });
-    if (tempDoc.meta_data?.filePaths) {
-      tempDoc.meta_data.image_path = tempDoc.meta_data.filePaths;
-      delete tempDoc.meta_data.filePaths;
+    // 1️⃣ Validate required fields
+    if (!collection_type || !meta_data) {
+      throw new Error("collection_type and meta_data are required");
     }
 
-    let doc = await mainCollection.findOne({ type: collection_type });
+    // 2️⃣ Define type categories
+    const singleDocTypes = ["about"];
+    const multiDocTypes = ["events","awards"];
+    const categoryBasedTypes = [
+      "team"
+    ];
 
-    // ---------- ABOUT ----------
-    if (collection_type === "about") {
-      let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data]; // normalize to array
-
-      // loop through each object in the array
-      updatedData = updatedData.map((item) => {
-        let newItem = { ...item };
-        Object.keys(meta_data).forEach((key) => {
-          if (newItem.hasOwnProperty(key)) {
-            if (Array.isArray(newItem[key])) {
-              // merge arrays
-              newItem[key] = [
-                ...new Set([
-                  ...newItem[key],
-                  ...(Array.isArray(meta_data[key])
-                    ? meta_data[key]
-                    : [meta_data[key]]),
-                ]),
-              ];
-            } else {
-              // convert string → array and append
-              newItem[key] = [
-                ...new Set([
-                  newItem[key],
-                  ...(Array.isArray(meta_data[key])
-                    ? meta_data[key]
-                    : [meta_data[key]]),
-                ]),
-              ];
-            }
-          } else {
-            // if key doesn't exist, add it
-            newItem[key] = Array.isArray(meta_data[key])
-              ? meta_data[key]
-              : [meta_data[key]];
-          }
-        });
-        return newItem;
-      });
-
-      // persist changes in MongoDB
+    // 3️⃣ Single document type → overwrite
+    if (singleDocTypes.includes(collection_type)) {
       await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: updatedData } }
+        { type: collection_type },
+        { $set: { data: [meta_data] } },
+        { upsert: true }
       );
-
-      return res.json({
-        message: "About data updated successfully",
-        data: updatedData,
-      });
+      return {
+       
+        message: `Overwritten successfully for ${collection_type}`,
+        data: meta_data,
+      };
     }
 
-    //newsupdate for nss and yrc
-
-    if (collection_type === "news_updates") {
-      if (!meta_data) {
-        return res.status(400).json({ error: "newData is required" });
-      }
-
-      const updatedData = [...doc.data, meta_data]; // append string
-
+    // 4️⃣ Multi-document type → append
+    if (multiDocTypes.includes(collection_type)) {
       await mainCollection.updateOne(
-        { type: "news_updates" },
-        { $set: { data: updatedData } }
+        { type: collection_type },
+        { $push: { data: meta_data } },
+        { upsert: true }
       );
-
-      return res.json({
-        message: "News update inserted successfully",
-        data: updatedData,
-      });
-    }
-    // ---------- AWARDS / EVENTS ----------
-    if (["awards", "events"].includes(collection_type)) {
-      if (!doc) {
-        await mainCollection.insertOne({
-          type: collection_type,
-          data: [meta_data],
-        });
-      } else {
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $push: { data: meta_data } }
-        );
-      }
-      return res.json({ message: `Insert successful for ${collection_type}` });
+      return {
+       
+        message: `Inserted successfully for ${collection_type}`,
+        data: meta_data,
+      };
     }
 
-    // ---------- TEAM ----------
-    if (collection_type === "team") {
+    // 3️⃣ Category-based → insert or merge
+    if (categoryBasedTypes.includes(collection_type)) {
       if (!category)
-        return res.status(400).json({ error: "Category required for team" });
+        throw new Error("category is required");
 
-      if (doc) {
-        // Check if category exists
-        const categoryExists = doc.data.find((c) => c.category === category);
+      const doc = await mainCollection.findOne({ type: collection_type });
+      const categoryExists = doc?.data?.find((c) => c.category === category);
 
-        if (categoryExists) {
-          // Push new member to existing category
+      if (categoryExists) {
+        const content = categoryExists.members;
+
+         if (Array.isArray(content) && content[0]?.name) {
+          // Array of objects → add unique by name
+          const newItems = Array.isArray(meta_data?.content)
+            ? meta_data.content
+            : Array.isArray(meta_data)
+            ? meta_data
+            : [meta_data]; // wrap single object
+
+          newItems.forEach((newItem) => {
+            if (!content.some((item) => item.name === newItem.name)) {
+              content.push(newItem);
+            }
+          });
+        console.log("dinesh");
+        
           await mainCollection.updateOne(
             { type: collection_type, "data.category": category },
             { $push: { "data.$.members": meta_data } }
           );
         } else {
-          // Add new category with members
+          // Single object → overwrite
           await mainCollection.updateOne(
-            { type: collection_type },
-            { $push: { data: { category, members: [meta_data] } } }
+            { type: collection_type, "data.category": category },
+            {
+              $set: {
+                "data.$.members": Array.isArray(meta_data)
+                  ? meta_data
+                  : [meta_data],
+              },
+            }
           );
         }
       } else {
-        // No team doc yet, create fresh
-        await mainCollection.insertOne({
-          type: collection_type,
-          data: [{ category, members: [meta_data] }],
-        });
+        // Create new category
+        await mainCollection.updateOne(
+          { type: collection_type },
+          {
+            $push: {
+              data: {
+                category,
+                members: Array.isArray(meta_data) ? meta_data : [meta_data],
+              },
+            },
+          },
+          { upsert: true }
+        );
       }
 
-      return res.json({ message: "Insert successful for Team" });
+      return {
+       
+        message: `Insert successful for ${collection_type} - category ${category}`,
+        data: meta_data,
+      };
     }
 
-    return res.status(400).json({ error: "Invalid type" });
+    // 6️⃣ Unknown type fallback
+    throw new Error("Unknown collection_type");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error", details: error.message });
+    console.error("Error inserting data:", error);
+    throw new Error("Internal server error");
   }
 }
 

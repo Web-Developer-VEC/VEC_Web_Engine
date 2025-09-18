@@ -1,37 +1,11 @@
 const { getAdminDb } = require("../../main-backend/config/db");
 
-
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
+    const docs = req.docsFromBusboy || [];
 
-    let docs = [];
-
-    // Case 1: form-data with "data" key
-    if (req.body.data) {
-      try {
-        const parsed = JSON.parse(req.body.data);
-        docs = Array.isArray(parsed) ? parsed : [parsed];
-      } catch (e) {
-        return res.status(400).json({
-          success: false,
-          error: "Invalid JSON in 'data'",
-          details: e.message,
-        });
-      }
-    } else {
-      // Case 2: raw JSON (application/json)
-      docs = Array.isArray(req.body) ? req.body : [req.body];
-    }
-
-    if (docs.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "No documents provided",
-      });
-    }
-
-    if (docs.length === 0) {
+    if (!docs || docs.length === 0) {
       return res
         .status(400)
         .json({ success: false, error: "No documents provided" });
@@ -43,17 +17,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       role: req.session.admin.role,
     };
 
-    let fileMeta = { image_path: [], pdf_path: [] };
-    if (req.files && req.files.length > 0) {
-      for (const file of req.files) {
-        if (file.mimetype.startsWith("image/")) {
-          fileMeta.image_path.push(file.path.replace("temp", ""));
-        } else if (file.mimetype === "application/pdf") {
-          fileMeta.pdf_path.push(file.path.replace("temp", ""));
-        }
-      }
-    }
-
+    // Prepare documents for DB
     const tempDocs = docs.map((doc) => {
       const {
         collectionName,
@@ -71,6 +35,22 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         );
       }
 
+      // ✅ Use all uploaded files (no docIndex filter)
+      const allFiles = req.uploadedFiles || [];
+
+      const pdf_path = allFiles
+        .filter((f) => f.mimetype === "application/pdf")
+        .map((f) => f.location || `/${f.key}`);
+
+      const image_path = allFiles
+        .filter((f) => f.mimetype?.startsWith("image/"))
+        .map((f) => f.location || `/${f.key}`);
+
+      console.log("📂 Docs from busboy:", docs);
+      console.log("📂 Uploaded files (S3):", req.uploadedFiles);
+      console.log("pdf path ", pdf_path)
+      console.log("image path ", image_path)
+
       return {
         collection: collectionName,
         collection_type,
@@ -78,9 +58,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         title,
         category: category || null,
         meta_data: {
-          ...(meta_data || {}),
-          ...(fileMeta.image_path.length ? { image_path: fileMeta.image_path } : {}),
-          ...(fileMeta.pdf_path.length ? { pdf_path: fileMeta.pdf_path } : {}),
+          ...(meta_data || {}), // keep other frontend meta
+          ...(image_path.length ? { image_path } : {}),
+          ...(pdf_path.length ? { pdf_path } : {}),
         },
         original_data: original_data || null,
         admin: adminMeta,
@@ -89,6 +69,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       };
     });
 
+    // Group by collection and insert
     const groupedByCollection = tempDocs.reduce((acc, doc) => {
       if (!acc[doc.collection]) acc[doc.collection] = [];
       acc[doc.collection].push(doc);
@@ -96,7 +77,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
     }, {});
 
     let totalInserted = 0;
-    let insertedResults = {};
+    const insertedResults = {};
 
     for (const [collectionName, groupDocs] of Object.entries(
       groupedByCollection
@@ -122,11 +103,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       insertedIds: insertedResults,
     });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({
-      success: false,
-      error: "Server error",
-      details: err.message,
-    });
+    console.error("❌ TempStore Error:", err);
+    return res
+      .status(500)
+      .json({ success: false, error: "Server error", details: err.message });
   }
 };

@@ -7,10 +7,10 @@
     background-color: #fff9db;
   }
   
-  .flex {
+  /* .flex {
     display: flex;
   }
-  
+   */
   .items-center {
     align-items: center;
   }
@@ -40,9 +40,9 @@
     border-radius: 0.5rem;
   }
   
-  .w-full {
+  /* .w-full {
     width: 100%;
-  }
+  } */
   
   .max-w-2xl {
     max-width: 42rem;
@@ -85,17 +85,17 @@
   }
   
   /* Form Layout */
-  .grid {
+  /* .grid {
     display: grid;
-  }
-  
+  } */
+/*   
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
   
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  } */
   
   .gap-4 {
     gap: 1rem;
