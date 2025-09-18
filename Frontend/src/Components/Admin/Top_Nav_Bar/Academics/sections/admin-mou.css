@@ -1,0 +1,202 @@
+.mou-page {
+  padding: 20px;
+  font-family: Poppins, sans-serif;
+}
+
+.mou-header h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.mou-details {
+  margin-top: 30px;
+}
+
+.mou-table-container {
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+.mou-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.mou-table th, .mou-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.mou-table th {
+  background-color: #808080;
+  color: white;
+}
+
+.mou-pdf-link {
+  background-color: #fdcc03;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.mou-pdf-link:hover {
+  background-color: #830000;
+}
+
+@media (max-width: 768px) {
+  .mou-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mou-table {
+    min-width: 600px; /* Ensure the table has a minimum width for scrolling */
+  }
+
+  .mou-table th, .mou-table td {
+    padding: 8px; /* Adjust padding for better fit on smaller screens */
+  }
+}
+
+.mou-page {
+  padding: 16px;
+}
+
+/* leave space for action bar */
+.mou-details {
+  padding-bottom: 50px;
+}
+
+.mou-table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 6px;
+  /* border: 1px solid #e6e6e6; */
+}
+
+/* table */
+.mou-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mou-table th,
+.mou-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* style for the tfoot row so button looks inside table border */
+.add-row-tr td.add-row-td {
+  padding: 16px;
+  border-top: 1px solid #e6e6e6;
+  background: white;
+  text-align: center;
+}
+
+/* button inside table */
+.add-row-btn-inside {
+  display: inline-block;
+  background: #fdcc03;
+  border: 2px solid #fdcc03;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.add-row-btn-inside:hover {
+  background: #fdcc03;
+  color: black;
+}
+
+/* centered multi-delete button */
+.multi-delete-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px; 
+  z-index: 50;
+}
+
+/* button styles */
+.multi-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Action bar - placed after table so it doesn't hide content */
+.action-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  /* padding: 12px 18px; */
+  margin-top: 6px;
+  /* border-top: 1px solid #eee; */
+  /* background: #fff; */
+  /* box-shadow: 0 -1px 4px rgba(0,0,0,0.03); */
+}
+
+/* right side buttons */
+.action-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* button styles */
+.btn-cancel {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #9ca3af;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.btn-cancel:hover { opacity: 0.95; }
+
+.btn-save {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #fdcc03;
+  color: #222;
+  border: none;
+  cursor: pointer;
+}
+.btn-save:hover { background: #f0b500; }
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px;
+  }
+  .action-right {
+    justify-content: flex-end;
+  }
+  .add-row-btn-inside {
+    width: 90%;
+  }
+  .multi-delete-center {
+    bottom: 140px;
+  }
+}
