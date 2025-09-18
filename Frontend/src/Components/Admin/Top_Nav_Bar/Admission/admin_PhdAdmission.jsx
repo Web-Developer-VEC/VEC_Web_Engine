@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./AdminPhdadmission.css";
-import point from "../../../Assets/points.png";
+import point from "../../Assets/points.png";
 import { GiConvergenceTarget } from "react-icons/gi";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
