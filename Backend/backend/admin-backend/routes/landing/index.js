@@ -32,7 +32,13 @@ const nccarmyadmin = require('../second_navbar/ncc_army_routes')
 const nssadmin = require('../second_navbar/nss_routes')
 const yrcadmin = require('../second_navbar/yrc_routes')
 const iqacadmin = require('../second_navbar/iqac_routes')
+const incubationadmin = require('../second_navbar/incubation_routes')
+const accreditationsandrankingadmin = require("../second_navbar/accreditations_and_ranking_routes")
 
+//academics
+const hodadmin = require('../top_navbar/academics_routes/hod_routes')
+const activitiesadmin = require('../top_navbar/academics_routes/activities_routes')
+const infrastructureadmin = require('../top_navbar/academics_routes/infrastructure_routes')
 
 
 //Action routes 
@@ -40,9 +46,8 @@ router.use('',tempstore);
 router.use('',admin);
 router.use('',admintemp);
 
-
 //Main pages
-router.use('',landingadmin)
+router.use('',landingadmin);
 
 //Top Nav bar
 router.use('',researchadmin);
@@ -50,6 +55,7 @@ router.use('',examadmin);
 router.use('',placementadmin);
 router.use('',aboutusadmin);
 router.use('',admissionadmin);
+router.use('',administrationadmin);
 
 //Second Nav Bar
 router.use('',nccnavyadmin)
@@ -64,6 +70,14 @@ router.use('',transportadmin);
 router.use('',otherfacilitiesadmin);
 router.use('',galleryadmin);
 router.use('',helpdeskadmin);
+router.use('',iqacadmin);
+router.use('',incubationadmin);
+router.use('',accreditationsandrankingadmin);
+
+//Academics
+router.use('',hodadmin);
+router.use('',infrastructureadmin);
+router.use('',activitiesadmin);
 
 
 

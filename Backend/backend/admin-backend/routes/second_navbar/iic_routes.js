@@ -11,9 +11,9 @@ const { deleteData } = require("../../controllers/second_navbar/iic_controllers/
 
 
 router.post("/iicadmin",
+    checkRole(["super_admin"]),
     handleTempApproval,
-    handleTempAction(insertData, updateData, deleteData),
-    checkRole(["super_admin"])
+    handleTempAction(insertData, updateData, deleteData), 
 ); 
 
 module.exports = router;
