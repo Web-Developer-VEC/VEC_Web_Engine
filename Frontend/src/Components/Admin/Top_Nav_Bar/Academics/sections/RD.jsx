@@ -63,7 +63,7 @@ const Research = ({ data }) => {
         {department_research?.map((res,i) => (
           <button
             key={i}
-            className={`RD-year-button ${selectedYear === res?.year
+            className={`RD-year-button rounded ${selectedYear === res?.year
               ? "active bg-accn text-prim dark:bg-brwn"
               : "bg-secd text-text dark:bg-drks"
               }`}
