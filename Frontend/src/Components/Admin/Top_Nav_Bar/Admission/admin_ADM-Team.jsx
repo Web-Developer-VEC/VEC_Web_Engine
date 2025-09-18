@@ -11,6 +11,7 @@ import {
   Trash2,
   Send,
   PlusCircle,
+  Pencil,
 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -138,12 +139,12 @@ const Card = ({ image, name, designation, onEdit, onDelete, editMode }) => {
 
       {editMode && (
         <div className="absolute top-2 right-2 flex gap-2">
-          <button
+          {/* <button
             className="bg-white p-1 rounded-full shadow hover:bg-gray-200"
             onClick={onEdit}
           >
             <Edit3 size={18} />
-          </button>
+          </button> */}
 
           <button
             onClick={onDelete}
@@ -188,12 +189,12 @@ const AdminCard = ({ image, name, designation, onEdit, onDelete, editMode }) => 
 
       {editMode && (
         <div className="absolute top-2 right-2 flex gap-2">
-          <button
+          {/* <button
             className="bg-white p-1 rounded-full shadow hover:bg-gray-200"
             onClick={onEdit}
           >
             <Edit3 size={18} />
-          </button>
+          </button> */}
 
           <button
             onClick={onDelete}
@@ -282,32 +283,7 @@ export default function AdminADMteam({ theme, toggle }) {
     }
   };
 
-  const handleUndoChange = (idx) => {
-    const change = changeList[idx];
-    let updatedData = { ...ugData };
 
-    if (change.type === "added") {
-      updatedData[change.section] = updatedData[change.section].filter(
-        (row) => row !== change.row
-      );
-    } else if (change.type === "deleted") {
-      updatedData[change.section] = [...updatedData[change.section], change.row];
-    } else if (change.type === "edited") {
-      const sectionData = [...updatedData[change.section]];
-      const itemIdx = sectionData.findIndex(
-        (item) => Object.keys(item)[0] === change.to
-      );
-      if (itemIdx !== -1) {
-        sectionData[itemIdx] = {
-          [change.from]: Object.values(sectionData[itemIdx])[0],
-        };
-      }
-      updatedData[change.section] = sectionData;
-    }
-
-    setUgData(updatedData);
-    setChangeList((prev) => prev.filter((_, i) => i !== idx));
-  };
 
   const handleSave = () => {
     if (
@@ -374,24 +350,14 @@ export default function AdminADMteam({ theme, toggle }) {
         headerText="Admission team"
         subHeaderText="Driving organizational excellence through strategic leadership and seamless coordination."
       />
-
-      <div className="flex justify-end mr-10">
-        <button
-          className="admin-edit-ug flex-end flex gap-1 mt-3"
-          onClick={() => setTeamcardEdit(!teamcardedit)}
-        >
-          {teamcardedit ? (
-            <>
-              <CircleX /> Cancel
-            </>
-          ) : (
-            <>
-              <SquarePen /> Edit
-            </>
-          )}
-        </button>
-      </div>
-
+          <div className="flex justify-end mr-10">
+          <button
+            className="admin-edit-ug flex gap-1 mt-3"
+            onClick={() => setTeamcardEdit(true)}
+          >
+            <Pencil size={18} />  Edit
+          </button>
+        </div>
       {isLoading ? (
         <div className="h-screen flex items-center justify-center">
           <LoadComp txt="" />
@@ -503,7 +469,6 @@ export default function AdminADMteam({ theme, toggle }) {
                 <tr className="border-b">
                   <th className="text-left p-2">Action</th>
                   <th className="text-left p-2">Section</th>
-                  <th className="text-left p-2">Undo</th>
                 </tr>
               </thead>
               <tbody>
@@ -523,24 +488,44 @@ export default function AdminADMteam({ theme, toggle }) {
                     </td>
                     <td className="p-2 capitalize">{req.section}</td>
                     <td className="p-2">
-                      <button
-                        className="nss-btn nss-btn-undo flex items-center gap-1"
-                        onClick={() => handleUndoChange(idx)}
-                      >
-                        Undo
-                      </button>
+
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            {/* Delete confirmation popup */}
+      {deleteConfirm && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
+              <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+              <p className="text-sm mb-4 text-center">
+                  Are you sure you want to delete this member?
+              </p>
+              <div className="flex justify-center gap-3">
+              <button
+                  onClick={() => setDeleteConfirm(null)}
+                  className="px-4 py-2 bg-gray-400 text-white rounded"
+              >
+                  Cancel
+              </button>
+              <button
+                  onClick={confirmDelete}
+                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                  Delete
+              </button>
+              </div>
+          </div>
+          </div>
+      )}
 
             <div className="flex justify-end gap-3 mt-4">
               <button
                 className="px-4 py-2 bg-gray-300 rounded-md"
                 onClick={() => setShowPopup(false)}
               >
-                Cancel
+                Back TO Edit
               </button>
               <button
                 className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center"
