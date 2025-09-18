@@ -28,6 +28,8 @@ const roleAccessMap = {
   yrc : ["yrc_admin","super_admin"],
   incubation : ["incubation_admin","super_admin"],
   iqac : ["iqac_admin","super_admin"],
+  accreditations_and_ranking:["super_admin"]
+  
   
 };  
 
