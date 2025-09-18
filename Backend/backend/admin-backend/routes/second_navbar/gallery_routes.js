@@ -12,7 +12,7 @@ router.post(
   "/galleryadmin",
   checkRole(["super_admin"]), 
   handleTempApproval,
-  handleTempAction( insertData, deleteData )
+  handleTempAction( insertData, null , deleteData )
 );
 
 module.exports = router;

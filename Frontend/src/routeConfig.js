@@ -73,6 +73,18 @@ import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalend
 import AdminAcadamiccal from "./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx";
 import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
 import AdminAccredation from "./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx";
+import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
+import AdminIic from "./Components/Admin/Second_Nav_Bar/IIC/iic.jsx";
+import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
+import AdminIncub from "./Components/Admin/Second_Nav_Bar/Incubation/InCub.jsx";
+import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import AdminEcell from "./Components/Admin/Second_Nav_Bar/E-cell/aboutEcell.jsx";
+import DepartmentPage from "./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx";
+import AcademicDepartments from "./Components/Main/Top_Nav_Bar/Academics/Department.jsx";
+import AdminAcademicDepartments from "./Components/Admin/Top_Nav_Bar/Academics/Department.jsx";
+import DepartmentRoute from "./deptRoute.js";
+import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
+import AdminProgrammes from "./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx";
 
 export const routeConfig = {
 
@@ -91,7 +103,10 @@ export const routeConfig = {
   "/handbook": { normal: Handbook, admin: AdminHandbook },
   
   // Academics Routes
-  "acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
+  "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
+  "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
+  "/programs": { normal: Programmes, admin: AdminProgrammes },
+  "/acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -124,7 +139,10 @@ export const routeConfig = {
 
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
+  '/incubation': { normal:Incub, admin:AdminIncub },
+  "/ecell": { normal: Ecell, admin: AdminEcell },
   "/Accredation": { normal: Accredation, admin: AdminAccredation },
+  "/iic": { normal: Iic, admin: AdminIic },
   "/NSS": { normal: NSS, admin: AdminNSS },
   "/NCC": { normal: NCCMAIN, admin: AdminNCCMAIN },
   "/nccnavy": { normal: NCC_NAVY, admin: AdminNCC_NAVY },
