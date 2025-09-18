@@ -387,7 +387,7 @@ const revertField = (changeIdx) => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[350px]">
             <h2 className="font-semibold mb-4">Confirm Delete</h2>
             <p>Are you sure you want to delete selected faculties?</p>

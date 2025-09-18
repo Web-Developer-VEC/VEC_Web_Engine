@@ -344,6 +344,7 @@ const Achievements = ({ data }) => {
         <Modal
           title="Confirm Delete"
           width="400px"
+          className="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
           onClose={() => setShowDeleteModal(false)}
           actions={
             <>
