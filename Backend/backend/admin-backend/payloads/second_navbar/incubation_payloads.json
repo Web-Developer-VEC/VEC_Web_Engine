@@ -1,0 +1,326 @@
+[
+    {
+        "collectionName":"incubation",
+        "collection_type":"home",
+        "action":"insert",
+        "title":"insert in home",
+        "meta_data":{
+        "about_us": "The objective of the scheme is to promote and support untapped creativity and to promote adoption of latest technologies in MSMEs that seek the validation of their ideas at the proof-of-concept level. The scheme also supports engagement with enablers who will advise such MSMEs in expanding the business by supporting them in design, strategy and execution.",
+        "vision": "To be a premier institution fostering innovation and entrepreneurship through quality education and industry collaboration",
+        "activities": [
+          "Promote innovative thinking among students",
+          "Facilitate industry-academia partnerships",
+          "Support startup incubation",
+          "Enhance research capabilities",
+          "hello everyone"
+        ]
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"home",
+        "action":"update",
+        "title":"update in home",
+        "original_data":{
+        "about_us": "The objective of the scheme is to promote and support untapped creativity and to promote adoption of latest technologies in MSMEs that seek the validation of their ideas at the proof-of-concept level. The scheme also supports engagement with enablers who will advise such MSMEs in expanding the business by supporting them in design, strategy and execution.",
+        "vision": "To be a premier institution fostering innovation and entrepreneurship through quality education and industry collaboration",
+        "activities": [
+          "Promote innovative thinking among students",
+          "Facilitate industry-academia partnerships",
+          "Support startup incubation",
+          "Enhance research capabilities",
+          "hello everyone"
+        ]
+      },
+        "meta_data":{
+        "about_us": "The objective of the scheme is to promote and support untapped creativity and to promote adoption of latest technologies in MSMEs that seek the validation of their ideas at the proof-of-concept level. The scheme also supports engagement with enablers who will advise such MSMEs in expanding the business by supporting them in design, strategy and execution.",
+        "vision": "To be a premier institution fostering innovation and entrepreneurship through quality education and industry collaboration",
+        "activities": [
+          "Promote innovative thinking among students",
+          "Facilitate industry-academia partnerships",
+          "Support startup incubation",
+          "Enhance research capabilities"
+        ]
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"start_up",
+        "action":"insert",
+        "title":"insert in start_up",
+        "meta_data":{
+        "s_no": 12,
+        "start_up_name": "dinesh",
+        "directors": ["Dr.A.Balajiganesh"],
+        "type": "Faculty",
+        "date_of_registration": "16.07.2021",
+        "corporate_identity_number": "AAX-8010",
+        "udyam_number": "UDYAM-TN-02-0116060"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"start_up",
+        "action":"update",
+        "title":"update in start_up",
+        "original_data":{
+        "s_no": 12,
+        "start_up_name": "dinesh",
+        "directors": ["Dr.A.Balajiganesh"],
+        "type": "Faculty",
+        "date_of_registration": "16.07.2021",
+        "corporate_identity_number": "AAX-8010",
+        "udyam_number": "UDYAM-TN-02-0116060"
+      },
+        "meta_data":{
+        "s_no": 12,
+        "start_up_name": "hari",
+        "directors": ["Dr.A.Balajiganesh"],
+        "type": "Faculty",
+        "date_of_registration": "16.07.2021",
+        "corporate_identity_number": "AAX-8010",
+        "udyam_number": "UDYAM-TN-02-0116060"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"start_up",
+        "action":"delete",
+        "title":"delete in start_up",
+        "meta_data":{
+        "s_no": 12,
+        "start_up_name": "hari",
+        "directors": ["Dr.A.Balajiganesh"],
+        "type": "Faculty",
+        "date_of_registration": "16.07.2021",
+        "corporate_identity_number": "AAX-8010",
+        "udyam_number": "UDYAM-TN-02-0116060"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"incubation_committee",
+        "action":"insert",
+        "title":"insert in incubation_committee",
+        "meta_data":{
+        "name": "Dr.dinesh",
+        "image": "",
+        "Designation": "MBA Head",
+        "position": "Incubation Head"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"incubation_committee",
+        "action":"update",
+        "title":"update in incubation_committee",
+        "original_data":{
+        "name": "Dr.dinesh",
+        "image": "",
+        "Designation": "MBA Head",
+        "position": "Incubation Head"
+      },
+        "meta_data":{
+        "name": "Dr.hari",
+        "image": "",
+        "Designation": "MBA Head",
+        "position": "Incubation Head"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"incubation_committee",
+        "action":"delete",
+        "title":"delete in incubation_committee",
+        "meta_data":{
+        "name": "Dr.hari",
+        "image": "",
+        "Designation": "MBA Head",
+        "position": "Incubation Head"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"facilities",
+        "action":"insert",
+        "title":"insert in facilities",
+        "meta_data":{
+        "name": "dinesh",
+        "image": "/static/images/incubation/1.webp"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"facilities",
+        "action":"update",
+        "title":"update in facilities",
+        "original_data":{
+        "name": "dinesh",
+        "image": "/static/images/incubation/1.webp"
+      },
+        "meta_data":{
+        "name": "hari",
+        "image": "/static/images/incubation/1.webp"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"facilities",
+        "action":"delete",
+        "title":"delete in facilities",
+        "meta_data":{
+        "name": "hari",
+        "image": "/static/images/incubation/1.webp"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"projects",
+        "action":"insert",
+        "title":"insert in projects",
+        "category":"MSME IDEA HACKATHON 5.0",
+        "meta_data":
+          {
+            "number": "hari",
+            "label": "Received Ideas"
+          }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"projects",
+        "action":"update",
+        "title":"update in projects",
+        "category":"MSME IDEA HACKATHON 5.0",
+        "original_data":
+          {
+            "number": "hari",
+            "label": "Received Ideas"
+          },
+        "meta_data":
+          {
+            "number": "dinesh",
+            "label": "Received Ideas"
+          }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"projects",
+        "action":"delete",
+        "title":"delete in projects",
+        "category":"MSME IDEA HACKATHON 5.0",
+        "meta_data":
+          {
+            "number": "dinesh",
+            "label": "Received Ideas"
+          }
+        
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"patent",
+        "action":"insert",
+        "title":"insert in patent",
+        "meta_data":{
+        "Sl_No": 1001,
+        "Patent_Application_No": "201841024729",
+        "Status_of_Patent": "Published",
+        "Inventor_Name": ["Dr. dinesh"],
+        "Title_of_the_Patent": "Augumented Reality and Internet of Things Supported Environmental Monitoring System",
+        "Applicant_Name": "Velammal Engineering College",
+        "Patent_Filed_Date": "03-07-2018"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"patent",
+        "action":"update",
+        "title":"update in patent",
+        "meta_data":{
+        "Sl_No": 1001,
+        "Patent_Application_No": "201841024729",
+        "Status_of_Patent": "Published",
+        "Inventor_Name": ["Dr. hari"],
+        "Title_of_the_Patent": "Augumented Reality and Internet of Things Supported Environmental Monitoring System",
+        "Applicant_Name": "Velammal Engineering College",
+        "Patent_Filed_Date": "03-07-2018"
+      },
+        "original_data":{
+        "Sl_No": 1001,
+        "Patent_Application_No": "201841024729",
+        "Status_of_Patent": "Published",
+        "Inventor_Name": ["Dr. dinesh"],
+        "Title_of_the_Patent": "Augumented Reality and Internet of Things Supported Environmental Monitoring System",
+        "Applicant_Name": "Velammal Engineering College",
+        "Patent_Filed_Date": "03-07-2018"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"patent",
+        "action":"delete",
+        "title":"delete in patent",
+        "meta_data":{
+        "Sl_No": 1001,
+        "Patent_Application_No": "201841024729",
+        "Status_of_Patent": "Published",
+        "Inventor_Name": ["Dr. hari"],
+        "Title_of_the_Patent": "Augumented Reality and Internet of Things Supported Environmental Monitoring System",
+        "Applicant_Name": "Velammal Engineering College",
+        "Patent_Filed_Date": "03-07-2018"
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"seed_money",
+        "action":"insert",
+        "title":"insert in seed_money",
+        "meta_data":{
+        "name": "Dr.dinesh",
+        "funds": [
+          {
+            "amount_in_rupees": 1450000,
+            "organization": "MSME",
+            "year": "2023-2024"
+          }]
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"seed_money",
+        "action":"update",
+        "title":"update in seed_money",
+        "original_data":{
+        "name": "Dr.dinesh",
+        "funds": [
+          {
+            "amount_in_rupees": 1450000,
+            "organization": "MSME",
+            "year": "2023-2024"
+          }]
+      },
+        "meta_data":{
+        "name": "Dr.hari",
+        "funds": [
+          {
+            "amount_in_rupees": 1450000,
+            "organization": "MSME",
+            "year": "2023-2024"
+          }]
+      }
+    },
+    {
+        "collectionName":"incubation",
+        "collection_type":"seed_money",
+        "action":"delete",
+        "title":"delete in seed_money",
+        "meta_data":{
+        "name": "Dr.hari",
+        "funds": [
+          {
+            "amount_in_rupees": 1450000,
+            "organization": "MSME",
+            "year": "2023-2024"
+          }]
+      }
+    }
+]

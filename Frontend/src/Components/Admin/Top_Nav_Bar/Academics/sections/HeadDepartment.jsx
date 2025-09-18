@@ -80,7 +80,7 @@ const HeadDepartment = ({ data }) => {
           {/* Top Edit button always visible if global save clicked */}
           {(globalSaved || !isEditing) && (
             <button
-              className="absolute top-2 right-2 flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              className="absolute -top-4 right-8 flex items-center gap-2 px-4 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
               onClick={() => { setBackupData(formData); setIsEditing(true); setGlobalSaved(false); }}
             >
               <Pencil size={16} />
@@ -88,7 +88,7 @@ const HeadDepartment = ({ data }) => {
             </button>
           )}
 
-          <div className={styles.textColumn}>
+          <div className={`${styles.textColumn} mb-18`}>
             <div className={styles.hodInfo}>
               {isEditing ? (
                 <>
@@ -116,7 +116,7 @@ const HeadDepartment = ({ data }) => {
             </div>
           </div>
 
-          <div className={styles.imageColumn}>
+          <div className={`${styles.imageColumn} mb-24`}>
             {formData.Image ? (
               <img src={formData.Image?.startsWith("blob:") ? formData.Image : UrlParser(formData.Image)} alt="Head of Department" className={styles.hodImage}/>
             ) : (<p>No image available</p>)}
@@ -160,7 +160,7 @@ const HeadDepartment = ({ data }) => {
           </div>
 
           {/* Global buttons */}
-          <div className="absolute -bottom-24 right-4 flex gap-3">
+          <div className="absolute bottom-0 right-4 flex gap-3">
             {globalSaved ? (
               <>
                 <button onClick={handleDiscard} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Discard</button>
@@ -177,211 +177,224 @@ const HeadDepartment = ({ data }) => {
           </div>
 
           {/* Link Editor Modal */}
-{showLinkEditor && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 pt-32">
-    <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] max-h-[80vh] overflow-y-auto relative">
-      <button
-        onClick={() => setShowLinkEditor(false)}
-        className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
-      >
-        <X size={20}/>
-      </button>
-      <h2 className="text-xl font-bold mb-4 text-center">Edit Social Links</h2>
+          {showLinkEditor && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 pt-32">
+              <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] max-h-[80vh] overflow-y-auto relative">
+                <button
+                  onClick={() => setShowLinkEditor(false)}
+                  className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+                >
+                  <X size={20}/>
+                </button>
+                <h2 className="text-xl font-bold mb-4 text-center">Edit Social Links</h2>
 
-      <table className="w-full border border-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2 text-left">Profile</th>
-            <th className="border p-2 text-left">Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          {profiles.map((profile) => {
-            const oldVal = initialData.Social_media_links[profile.key] || "";
-            const currentVal = formData.Social_media_links[profile.key] || "";
-            return (
-              <tr key={profile.key}>
-                <td className="border p-2 font-medium">{profile.label}</td>
-                <td className="border p-2">
-                  <input
-                    type="text"
-                    value={currentVal}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      setFormData((prev) => ({
-                        ...prev,
-                        Social_media_links: {
-                          ...prev.Social_media_links,
-                          [profile.key]: val
-                        }
-                      }));
-                    }}
-                    className="border px-2 py-1 w-full rounded"
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                <table className="w-full border border-gray-300">
+                  <thead>
+                    <tr className="bg-gray-200">
+                      <th className="border p-2 text-left">Profile</th>
+                      <th className="border p-2 text-left">Link</th>
+                      <th className="border p-2 text-center">Delete</th> {/* NEW Column */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {profiles.map((profile) => {
+                      const currentVal = formData.Social_media_links[profile.key] || "";
+                      return (
+                        <tr key={profile.key}>
+                          <td className="border p-2 font-medium">{profile.label}</td>
+                          <td className="border p-2">
+                            <input
+                              type="text"
+                              value={currentVal}
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  Social_media_links: {
+                                    ...prev.Social_media_links,
+                                    [profile.key]: val
+                                  }
+                                }));
+                                setIsDirty(true);
+                              }}
+                              className="border px-2 py-1 w-full rounded"
+                            />
+                          </td>
+                          <td className="border p-2 text-center">
+                            <button
+                              onClick={() => {
+                                setFormData((prev) => {
+                                  const updatedLinks = { ...prev.Social_media_links };
+                                  delete updatedLinks[profile.key]; // remove the link
+                                  return { ...prev, Social_media_links: updatedLinks };
+                                });
+                                setIsDirty(true);
+                              }}
+                              className="p-1 rounded hover:bg-red-100"
+                              title="Delete this link"
+                            >
+                              <X size={18} className="text-red-500" /> {/* Trash Icon */}
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
 
-      <div className="flex justify-end gap-3 mt-4">
-        <button
-          onClick={() => setShowLinkEditor(false)}
-          className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-        >
-          Cancel
-        </button>
+                <div className="flex justify-end gap-3 mt-4">
+                  <button
+                    onClick={() => setShowLinkEditor(false)}
+                    className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+                  >
+                    Cancel
+                  </button>
 
-        {/* Show Save only if any social link changed */}
-{profiles.some(profile => 
-  (formData.Social_media_links[profile.key] || "") !== (initialData.Social_media_links[profile.key] || "")
-) && (
-  <button
-    onClick={() => {
-      setShowLinkEditor(false); // close the modal
-      setIsDirty(true);         // mark form as dirty to show global Save/Cancel buttons
-    }}
-    className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-  >
-    Save
-  </button>
-)}
-
-      </div>
-    </div>
-  </div>
-)}
-
+                  {/* Show Save only if any social link changed */}
+                  {profiles.some(profile => 
+                    (formData.Social_media_links[profile.key] || "") !== (initialData.Social_media_links[profile.key] || "")
+                  ) && (
+                    <button
+                      onClick={() => {
+                        setShowLinkEditor(false);
+                        setIsDirty(true);
+                      }}
+                      className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+                    >
+                      Save
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Request Modal with Undo Column */}
-{showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-    <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
-      <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved, they will go live.
-      </p>
+          {showRequestModal && (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+              <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
+                <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
+                <p className="text-sm text-red-500 mb-4">
+                  Note: Your changes will stay pending until approved by the superior admin. Once approved, they will go live.
+                </p>
 
-      {/* Changes Table */}
-      <table className="w-full border border-gray-300 text-sm text-center">
-        <thead className="bg-gray-200">
-          <tr>
-            <th className="border p-2">Action</th>
-            <th className="border p-2">Section</th>
-            <th className="border p-2">Changes</th>
-            <th className="border p-2">Undo</th> {/* Undo Column */}
-          </tr>
-        </thead>
-        <tbody>
-          {/* Base Fields */}
-          {Object.keys(initialData).map((field) => {
-            if (field === "Social_media_links" || field === "Image") return null;
-            const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
-            const newVal = Array.isArray(formData[field]) ? formData[field].join(", ") : formData[field];
-            if (oldVal !== newVal) {
-              return (
-                <tr key={field}>
-                  <td className="border p-2 text-blue-600">Edited</td>
-                  <td className="border p-2">HOD</td>
-                  <td className="border p-2">{field}</td>
-                  <td className="border p-2">
-                    <button
-                      onClick={() => setFormData(prev => ({ ...prev, [field]: initialData[field] }))}
-                      className="p-1 rounded hover:bg-gray-100"
-                      title="Revert this field"
-                    >
-                      <X size={16} className="text-red-500" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            }
-            return null;
-          })}
-
-          {/* Social Media Links */}
-          {Object.keys(initialData.Social_media_links).map((key) => {
-            const oldVal = initialData.Social_media_links[key] || "";
-            const newVal = formData.Social_media_links[key] || "";
-            if (oldVal !== newVal) {
-              return (
-                <tr key={key}>
-                  <td className="border p-2 text-blue-600">Edited</td>
-                  <td className="border p-2">Social Links</td>
-                  <td className="border p-2">{key}</td>
-                  <td className="border p-2">
-                    <button
-                      onClick={() =>
-                        setFormData(prev => ({
-                          ...prev,
-                          Social_media_links: { ...prev.Social_media_links, [key]: initialData.Social_media_links[key] }
-                        }))
+                {/* Changes Table */}
+                <table className="w-full border border-gray-300 text-sm text-center">
+                  <thead className="bg-gray-200">
+                    <tr>
+                      <th className="border p-2">Action</th>
+                      <th className="border p-2">Section</th>
+                      <th className="border p-2">Changes</th>
+                      <th className="border p-2">Undo</th> {/* Undo Column */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Base Fields */}
+                    {Object.keys(initialData).map((field) => {
+                      if (field === "Social_media_links" || field === "Image") return null;
+                      const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
+                      const newVal = Array.isArray(formData[field]) ? formData[field].join(", ") : formData[field];
+                      if (oldVal !== newVal) {
+                        return (
+                          <tr key={field}>
+                            <td className="border p-2 text-blue-600">Edited</td>
+                            <td className="border p-2">HOD</td>
+                            <td className="border p-2">{field}</td>
+                            <td className="border p-2">
+                              <button
+                                onClick={() => setFormData(prev => ({ ...prev, [field]: initialData[field] }))}
+                                className="p-1 rounded hover:bg-gray-100"
+                                title="Revert this field"
+                              >
+                                <X size={16} className="text-red-500" />
+                              </button>
+                            </td>
+                          </tr>
+                        );
                       }
-                      className="p-1 rounded hover:bg-gray-100"
-                      title="Revert this link"
-                    >
-                      <X size={16} className="text-red-500" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            }
-            return null;
-          })}
+                      return null;
+                    })}
 
-          {/* Image */}
-          {initialData.Image !== formData.Image && (
-            <tr>
-              <td className="border p-2 text-blue-600">Edited</td>
-              <td className="border p-2">HOD Image</td>
-              <td className="border p-2">Image</td>
-              <td className="border p-2">
-                <button
-                  onClick={() => setFormData(prev => ({ ...prev, Image: initialData.Image }))}
-                  className="p-1 rounded hover:bg-gray-100"
-                  title="Revert image"
-                >
-                  <X size={16} className="text-red-500" />
-                </button>
-              </td>
-            </tr>
+                    {/* Social Media Links */}
+                    {Object.keys(initialData.Social_media_links).map((key) => {
+                      const oldVal = initialData.Social_media_links[key] || "";
+                      const newVal = formData.Social_media_links[key] || "";
+                      if (oldVal !== newVal) {
+                        return (
+                          <tr key={key}>
+                            <td className="border p-2 text-blue-600">Edited</td>
+                            <td className="border p-2">Social Links</td>
+                            <td className="border p-2">{key}</td>
+                            <td className="border p-2">
+                              <button
+                                onClick={() =>
+                                  setFormData(prev => ({
+                                    ...prev,
+                                    Social_media_links: { ...prev.Social_media_links, [key]: initialData.Social_media_links[key] }
+                                  }))
+                                }
+                                className="p-1 rounded hover:bg-gray-100"
+                                title="Revert this link"
+                              >
+                                <X size={16} className="text-red-500" />
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    {/* Image */}
+                    {initialData.Image !== formData.Image && (
+                      <tr>
+                        <td className="border p-2 text-blue-600">Edited</td>
+                        <td className="border p-2">HOD Image</td>
+                        <td className="border p-2">Image</td>
+                        <td className="border p-2">
+                          <button
+                            onClick={() => setFormData(prev => ({ ...prev, Image: initialData.Image }))}
+                            className="p-1 rounded hover:bg-gray-100"
+                            title="Revert image"
+                          >
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+
+                {/* Modal Actions */}
+                <div className="flex justify-end gap-2 mt-6">
+                  <button
+                    onClick={() => setShowRequestModal(false)}
+                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      console.log("Request sent:", formData); // send this to API if needed
+                      setShowRequestModal(false);
+                      setGlobalSaved(false); // mark as pending request
+                      // Do NOT call handleDiscard(), keep changes
+                    }}
+                    className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+                  >
+                    Confirm Request
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
-        </tbody>
-      </table>
-
-      {/* Modal Actions */}
-      <div className="flex justify-end gap-2 mt-6">
-        <button
-          onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-white"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={() => {
-            console.log("Request sent:", formData); // send this to API if needed
-            setShowRequestModal(false);
-            setGlobalSaved(false); // mark as pending request
-            // Do NOT call handleDiscard(), keep changes
-          }}
-          className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
-        >
-          Confirm Request
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-
         </div>
       ) : (
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
         </div>
       )}
+      
     </>
   );
 };

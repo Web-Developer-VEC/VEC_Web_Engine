@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./VisionMission.css";
 import LoadComp from "../../../LoadComp";
-import { Pencil,X } from "lucide-react";
+import { Pencil, X, Trash2,Send } from "lucide-react";
 
 const VisionMission = ({ data }) => {
   console.log(data);
@@ -42,8 +42,7 @@ const VisionMission = ({ data }) => {
   const [hasChanges, setHasChanges] = useState(false);
   const [initialData, setInitialData] = useState(JSON.parse(JSON.stringify(formData)));
 
-
-  // Track selected items for deletion
+  // Track selected items for deletion (PEO, PO, PSO only)
   const [selectedItems, setSelectedItems] = useState({
     peo: [],
     po: [],
@@ -53,6 +52,10 @@ const VisionMission = ({ data }) => {
   // Track modal visibility
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+
+  // NEW: for vision/mission trash delete
+  const [deleteTarget, setDeleteTarget] = useState(null);
+  const [showItemDeleteModal, setShowItemDeleteModal] = useState(false);
 
   // Track if we are in request mode (after Save)
   const [requestMode, setRequestMode] = useState(false);
@@ -70,13 +73,12 @@ const VisionMission = ({ data }) => {
       </div>
     );
 
- const handleEdit = () => {
-  setBackupData(JSON.parse(JSON.stringify(formData)));
-  setInitialData(JSON.parse(JSON.stringify(formData))); // track original
-  setIsEditing(true);
-  setRequestMode(false); // if you have a request mode state
-};
-
+  const handleEdit = () => {
+    setBackupData(JSON.parse(JSON.stringify(formData)));
+    setInitialData(JSON.parse(JSON.stringify(formData))); // track original
+    setIsEditing(true);
+    setRequestMode(false);
+  };
 
   const handleCancel = () => {
     setFormData(backupData);
@@ -112,7 +114,7 @@ const VisionMission = ({ data }) => {
   return (
     <div className="main-content font-[Poppins] relative flex flex-col min-h-screen">
       {/* Edit button */}
-      <div className="absolute top-2 right-4 flex gap-2 z-10">
+      <div className="absolute top-0 right-4 flex gap-2 z-10">
         {!isEditing && !requestMode && (
           <button
             className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text  rounded-lg shadow-md hover:bg-[#800000] hover:text-prim "
@@ -172,23 +174,51 @@ const VisionMission = ({ data }) => {
               {formData.vision?.length > 0 && (
                 <ul className="text-text dark:text-drkt list-none">
                   {formData.vision.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className="flex items-center gap-2">
                       {isEditing ? (
-                        <input
-                          className="w-full border p-1 rounded"
-                          value={item}
-                          onChange={(e) => {
-                            const updated = [...formData.vision];
-                            updated[index] = e.target.value;
-                            setFormData({ ...formData, vision: updated });
-                          }}
-                        />
+                        <>
+                          <input
+                            className="w-full border p-1 rounded mb-2"
+                            value={item}
+                            onChange={(e) => {
+                              const updated = [...formData.vision];
+                              updated[index] = e.target.value;
+                              setFormData({ ...formData, vision: updated });
+                            }}
+                          />
+                          <button
+                            onClick={() => {
+                              setDeleteTarget({ type: "vision", index });
+                              setShowItemDeleteModal(true);
+                            }}
+                            className="text-red-500 hover:text-red-700"
+                            title="Delete Vision"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </>
                       ) : (
                         item
                       )}
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {isEditing && (
+                <div className="flex justify-start">
+                  <button
+                    className="mt-2 px-2 py-1 text-sm bg-[#fdcc03] text-text rounded shadow hover:bg-[#800000] transition hover:text-prim"
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        vision: [...prev.vision, ""],
+                      }))
+                    }
+                  >
+                    + New Vision
+                  </button>
+                </div>
               )}
             </div>
           </div>
@@ -203,17 +233,29 @@ const VisionMission = ({ data }) => {
               </div>
               <ul className="list-none text-text dark:text-drkt">
                 {formData.mission?.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} className="flex items-center gap-2">
                     {isEditing ? (
-                      <input
-                        className="w-full border p-1 rounded mb-2"
-                        value={item}
-                        onChange={(e) => {
-                          const updated = [...formData.mission];
-                          updated[index] = e.target.value;
-                          setFormData({ ...formData, mission: updated });
-                        }}
-                      />
+                      <>
+                        <input
+                          className="w-full border p-1 rounded mb-2"
+                          value={item}
+                          onChange={(e) => {
+                            const updated = [...formData.mission];
+                            updated[index] = e.target.value;
+                            setFormData({ ...formData, mission: updated });
+                          }}
+                        />
+                        <button
+                          onClick={() => {
+                            setDeleteTarget({ type: "mission", index });
+                            setShowItemDeleteModal(true);
+                          }}
+                          className="text-red-500 hover:text-red-700"
+                          title="Delete Mission"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </>
                     ) : (
                       item
                     )}
@@ -222,21 +264,24 @@ const VisionMission = ({ data }) => {
               </ul>
 
               {isEditing && (
-                <button
-                  className="mt-2 px-3 py-1 bg-[#fdcc03] text-text rounded shadow hover:bg-[#800000] transition hover:text-prim"
-                  onClick={() =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      mission: [...prev.mission, ""],
-                    }))
-                  }
-                >
-                  + New Mission
-                </button>
+                <div className="flex justify-start">
+                  <button
+                    className="mt-2 px-2 py-1 text-sm bg-[#fdcc03] text-text rounded shadow hover:bg-[#800000] transition hover:text-prim"
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        mission: [...prev.mission, ""],
+                      }))
+                    }
+                  >
+                    + New Mission
+                  </button>
+                </div>
               )}
             </div>
           </div>
         </div>
+
 
         {/* PEO, PO, PSO Sections */}
         {["peo", "po", "pso"].map((type) =>
@@ -358,11 +403,13 @@ const VisionMission = ({ data }) => {
             Discard Changes
           </button>
           <button
-            className="px-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
-            onClick={() => setShowRequestModal(true)}
-          >
-            Request
-          </button>
+  className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+  onClick={() => setShowRequestModal(true)}
+>
+  <Send size={16} className="text-current" />
+  Request
+</button>
+
         </div>
       ) : null}
 
@@ -403,9 +450,9 @@ const VisionMission = ({ data }) => {
 {showRequestModal && (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
     <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Request </h2>
       <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved, they will go live.
+        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
       </p>
 
       {/* Changes Table */}
@@ -519,7 +566,45 @@ const VisionMission = ({ data }) => {
     </div>
   </div>
 )}
-
+{/* Delete Confirmation Modal for Vision/Mission */}
+      {showItemDeleteModal && deleteTarget && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 shadow-lg w-80">
+            <h2 className="text-lg font-semibold mb-4">Confirm Delete</h2>
+            <p className="mb-6">
+              Are you sure you want to delete this{" "}
+              <span className="font-bold">{deleteTarget.type}</span> item?
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-600 transition"
+                onClick={() => {
+                  setDeleteTarget(null);
+                  setShowItemDeleteModal(false);
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-800 transition"
+                onClick={() => {
+                  setFormData((prev) => {
+                    const updated = { ...prev };
+                    updated[deleteTarget.type] = prev[deleteTarget.type].filter(
+                      (_, idx) => idx !== deleteTarget.index
+                    );
+                    return updated;
+                  });
+                  setDeleteTarget(null);
+                  setShowItemDeleteModal(false);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

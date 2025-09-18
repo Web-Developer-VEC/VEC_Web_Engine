@@ -12,7 +12,7 @@ const { updateData } = require("../../controllers/second_navbar/library_controll
 router.post("/libraryadmin",
     checkRole(["super_admin"]),
     handleTempApproval,
-    handleTempAction( insertData, deleteData, updateData )
+    handleTempAction( insertData , updateData , deleteData )
     ); 
 
 module.exports = router;
