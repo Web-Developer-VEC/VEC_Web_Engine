@@ -266,52 +266,52 @@ const Achievements1 = ({ data }) => {
               </div>
 
               {/* Coordinator Images Table */}
-              <table className="w-[700px] justify-items-center m-auto border-collapse">
-                <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-700">
-                    <th className="p-2">Image</th>
-                    <th className="p-2">Select</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentRows.map((item) => (
-                    <tr key={item.id} className="border-b">
-
-                      <td className="p-2 flex items-center gap-2">
-                        {item.image && (
-                          <img
-                            src={item.image}
-                            alt="preview"
-                            className="w-20 h-20 object-cover rounded"
-                          />
-                        )}
-                        <label className="bg-yellow-500 text-white px-3 py-1 rounded cursor-pointer">
-                          <span>{item.image ? "Replace" : "Upload"}</span>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={(e) => handleImageUpload(item.id, e.target.files[0])}
-                          />
-                        </label>
-                      </td>
-                      <td className="p-2 text-center">
-                        <input
-                          type="checkbox"
-                          checked={selected.includes(item.id)}
-                          onChange={() =>
-                            setSelected(prev =>
-                              prev.includes(item.id)
-                                ? prev.filter(s => s !== item.id)
-                                : [...prev, item.id]
-                            )
-                          }
-                        />
-                      </td>
+                <table className="w-[700px] justify-items-center m-auto border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100 dark:bg-gray-700">
+                      <th className="p-2">Image</th>
+                      <th className="p-2">Select</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {currentRows.map((item) => (
+                      <tr key={item.id} className="border-b">
+
+                        <td className="p-2 flex items-center gap-2">
+                          {item.image && (
+                            <img
+                              src={item.image}
+                              alt="preview"
+                              className="w-20 h-20 object-cover rounded"
+                            />
+                          )}
+                          <label className="bg-yellow-500 text-white px-3 py-1 rounded cursor-pointer">
+                            <span>{item.image ? "Replace" : "Upload"}</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={(e) => handleImageUpload(item.id, e.target.files[0])}
+                            />
+                          </label>
+                        </td>
+                        <td className="p-2 text-center">
+                          <input
+                            type="checkbox"
+                            checked={selected.includes(item.id)}
+                            onChange={() =>
+                              setSelected(prev =>
+                                prev.includes(item.id)
+                                  ? prev.filter(s => s !== item.id)
+                                  : [...prev, item.id]
+                              )
+                            }
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
 
               {/* Pagination */}
               <div className="flex justify-between items-center mt-4">
@@ -436,7 +436,7 @@ const Achievements1 = ({ data }) => {
       {/* Modals */}
       {/* Delete Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[350px]">
             <h2 className="font-semibold mb-4">Confirm Delete</h2>
             <p>Are you sure you want to delete the selected items?</p>
@@ -465,7 +465,8 @@ const Achievements1 = ({ data }) => {
               Request Changes
             </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
+          Note: Your changes will stay pending until approved by the superior admin.  
+            Once approved, they will be applied automatically to the live site..
             </p>
 
             <table className="w-full text-sm text-black dark:text-white border">
@@ -526,7 +527,7 @@ const Achievements1 = ({ data }) => {
               </button>
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white"
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
               >
                 Final Request
               </button>

@@ -187,8 +187,6 @@ const handleAddRow = () => {
               `Zonal Results ${currentYear}`
             )}
         </h1>
-
-
       {/* Table */}
       {!editMode ? (
         <div className="hidden sm:block overflow-x-auto shadow-md rounded-lg">
