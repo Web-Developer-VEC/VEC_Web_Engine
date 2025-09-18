@@ -11,7 +11,7 @@ router.post(
   "/helpdeskadmin",
   checkRole(["super_admin"]), 
   handleTempApproval,
-  handleTempAction( updateData )
+  handleTempAction( null , updateData , null )
 );
 
 module.exports = router;

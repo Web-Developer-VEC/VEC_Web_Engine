@@ -12,9 +12,9 @@ const { updateData } = require ("../../controllers/second_navbar/ncc_navy_contro
 const { deleteData } = require ("../../controllers/second_navbar/ncc_navy_controllers/navy_delete_controllers");
 
 
-router.post("/navyadmin",
-          handleTempApproval,
+router.post("/navyadmin",      
           checkRole(["super_admin"]),
+          handleTempApproval,
           handleTempAction(insertData , updateData , deleteData));
 
 module.exports = router;

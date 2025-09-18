@@ -1,0 +1,42 @@
+[
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "infrastructure",
+    "action": "insert",
+    "title": "insert for infrastructure",
+    "category": "infrastructure_images",
+    "meta_data": {
+      "image_path": "/static/images/infrastructure/005/1.webp",
+      "image_name": "dinesh",
+      "image_content": ""
+    }
+  },
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "infrastructure",
+    "action": "update",
+    "title": "update for infrastructure",
+    "category": "infrastructure_images",
+    "meta_data": {
+      "image_path": "/static/images/infrastructure/005/1.webp",
+      "image_name": "hari",
+      "image_content": ""
+    },
+    "original_data": {
+      "image_path": "/static/images/infrastructure/005/1.webp",
+      "image_name": "dinesh",
+      "image_content": ""
+    }
+  },
+{
+  "collectionName": "CSE_005",
+  "collection_type": "infrastructure",
+  "action": "delete",
+  "title": "deletefor infrastructure",
+  "category": "infrastructure_images",
+  "meta_data": {
+    "image_path": "/static/images/infrastructure/005/1.webp",
+    "image_name": "hari",
+    "image_content": ""
+  }
+}]
