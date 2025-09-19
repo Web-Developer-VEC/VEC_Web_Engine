@@ -11,20 +11,20 @@ function handleTempAction(insertData, updateData, deleteData) {
       switch (tempDoc.action) {
         case "insert":
           fileResult = await insertFile(tempDoc, tempCollection);
-          tempDoc.meta_data = fileResult.meta_data; // ✅ update meta_data
+          tempDoc.meta_data = fileResult.meta_data; 
           result = await insertData(tempDoc, mainCollection);
           break;
 
         case "update":
           fileResult = await updateFile(tempDoc, mainCollection);
-          tempDoc.meta_data = fileResult.meta_data; // ✅ update meta_data
+          tempDoc.meta_data = fileResult.meta_data; 
           result = await updateData(tempDoc, mainCollection);
           break;
 
         case "delete":
           fileResult = await deleteFile(tempDoc, tempCollection);
           tempDoc.meta_data = fileResult.meta_data;
-          console.log(tempDoc.meta_data) // ✅ keep for history if needed
+          console.log(tempDoc.meta_data) 
           result = await deleteData(tempDoc, mainCollection);
           break;
 

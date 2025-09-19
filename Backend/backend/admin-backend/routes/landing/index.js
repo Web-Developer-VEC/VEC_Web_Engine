@@ -41,7 +41,9 @@ const activitiesadmin = require('../top_navbar/academics_routes/activities_route
 const infrastructureadmin = require('../top_navbar/academics_routes/infrastructure_routes')
 const newsletteradmin = require('../top_navbar/academics_routes/newsletter_routes')
 const studentachievementsadmin = require('../top_navbar/academics_routes/student_achievements_routes')
-
+const mousadmin = require('../top_navbar/academics_routes/mous_routes')
+const pedagogyadmin = require('../top_navbar/academics_routes/pedagogy_routes')
+const syllabusadmin = require("../top_navbar/academics_routes/syllabus_routes")
 
 //Action routes 
 router.use('',tempstore);
@@ -82,7 +84,9 @@ router.use('',infrastructureadmin);
 router.use('',activitiesadmin);
 router.use('',newsletteradmin);
 router.use('',studentachievementsadmin)
-
+router.use('',mousadmin)
+router.use('',pedagogyadmin)
+router.use('',syllabusadmin)
 
 
 module.exports = router;
