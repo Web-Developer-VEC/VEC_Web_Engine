@@ -1,6 +1,6 @@
 [
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "about",
     "action": "insert",
     "title": "Add about IIC",
@@ -24,7 +24,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "about",
     "action": "update",
     "title": "update about ",
@@ -65,7 +65,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "about",
     "action": "delete",
     "title": "delete about ",
@@ -77,7 +77,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "news_updates",
     "action": "insert",
     "title": "Add news",
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "news_updates",
     "action": "update",
     "title": "update news",
@@ -109,7 +109,7 @@
     ]
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "insert",
     "title": "Add events",
@@ -120,7 +120,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "update",
     "title": "update in events",
@@ -136,7 +136,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "delete",
     "title": "delete events",
@@ -147,7 +147,7 @@
       }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "team",
     "action": "insert",
     "category": "faculty_coordinators",
@@ -159,7 +159,7 @@
           }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "team",
     "action": "update",
     "category": "faculty_coordinators",

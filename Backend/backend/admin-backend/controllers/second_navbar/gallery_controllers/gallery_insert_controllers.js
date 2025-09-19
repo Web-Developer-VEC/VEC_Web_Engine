@@ -5,7 +5,7 @@ async function insertData(tempDoc, mainCollection) {
     throw new Error("collection_type, category, and filePaths are required");
   }
 
-  const filePaths = meta_data.filePaths; // fixed: use key string not var
+  const filePaths = meta_data.image_path; // fixed: use key string not var
 
   const existingDoc = await mainCollection.findOne({ type: collection_type });
 
@@ -35,6 +35,7 @@ async function insertData(tempDoc, mainCollection) {
     const existingImages = existingDoc.data[categoryIndex].image_path || [];
     const newImages = Array.isArray(filePaths) ? filePaths : [filePaths];
     existingDoc.data[categoryIndex].image_path = Array.from(new Set([...existingImages, ...newImages]));
+    console.log("1.",existingImages,"2.",newImages)
   }
 
   await mainCollection.updateOne(
