@@ -1,5 +1,5 @@
 [{
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "about_the_library",
   "action": "insert",
   "title": "update about library",
@@ -15,7 +15,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "Faculty_Staff",
   "action": "insert",
   "title": "Add new faculty",
@@ -27,7 +27,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "Faculty_Staff",
   "action": "update",
   "title": "Update faculty info",
@@ -45,7 +45,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "Faculty_Staff",
   "action": "delete",
   "title": "Delete faculty",
@@ -58,7 +58,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "about_the_library",
   "action": "update",
   "title": "update about library",
@@ -90,7 +90,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "about_the_library",
   "action": "delete",
   "title": "delete about library",
@@ -106,7 +106,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "membership_details",
   "action": "update",
   "title": "Update member types",
@@ -126,7 +126,7 @@
 },
 {
   
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "membership_details",
   "action": "insert",
   "title": "insert member types",
@@ -140,7 +140,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "membership_details",
   "action": "delete",
   "title": "insert member types",
@@ -148,7 +148,7 @@
   "meta_data": {}
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "library_services",
   "action": "insert",
   "title": "insertion of gallery",
@@ -160,7 +160,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "library_services",
   "action": "update",
   "title": "update of gallery",
@@ -177,7 +177,7 @@
   }
 },
 {
-  "collection": "library",
+  "collectionName": "library",
   "collection_type": "library_services",
   "action": "delete",
   "title": "delete of gallery",
