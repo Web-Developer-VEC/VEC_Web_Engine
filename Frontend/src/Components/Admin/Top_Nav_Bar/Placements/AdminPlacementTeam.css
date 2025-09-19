@@ -56,7 +56,7 @@ body {
 }
 
 .person-image {
-  width: 220px;
+  width: auto;
   height: 220px;
   object-fit: cover;
 }
@@ -65,6 +65,31 @@ body {
   padding: 20px;
   justify-content: center;
   margin-left: 30px;
+}
+.person-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  /* font-size: 24px; */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.person-textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: justify;
+  resize: vertical;
+  line-height: 1.5;
+}
+.person-content {
+  padding: 20px;
+  max-width: 80%; 
 }
 
 .person-content {
@@ -301,7 +326,7 @@ body {
 .save-btn {
   margin-top: 10px;
   padding: 6px 12px;
-  background: #16a34a;
+  background: #fdcc03;
   color: white;
   border: none;
   border-radius: 8px;
@@ -312,7 +337,7 @@ body {
 }
 
 .save-btn:hover {
-  background: #15803d;
+  background: #fdcc03;
 }
 
 .cancel-btn-t {
@@ -340,7 +365,7 @@ body {
 
 .save-btn-tt {
   padding: 8px 16px;
-  background: #16a34a;
+  background: #fdcc03;
   color: white;
   border: none;
   border-radius: 8px;
@@ -351,7 +376,7 @@ body {
 }
 
 .save-btn-tt:hover {
-  background: #15803d;
+  background: #fdcc03;
 }
 
 .person-image-wrapper {
@@ -527,3 +552,91 @@ body {
   background: #28a745;
   color: white;
 }
+
+/* new styles for upload below image and top-right checkbox */
+
+/* card wrapper: ensure relative so absolute children (checkbox) work */
+.new-card-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+/* image + upload wrapper */
+.new-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* for checkbox absolute placement */
+}
+
+/* upload area below images */
+.new-upload-below {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* label styled button for upload */
+.new-upload-label {
+  background: #fdcc03; /* blue */
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+/* small tip text under upload */
+.new-upload-below .text-sm {
+  font-size: 12px;
+  color: #6b7280; /* gray-500 */
+}
+
+/* top-right checkbox inside card */
+.new-top-checkbox {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  z-index: 60;
+  cursor: pointer;
+  /* make it a little more visible on dark backgrounds */
+  accent-color: #ef4444; /* red-ish when checked (supports modern browsers) */
+}
+
+/* make sure checkbox doesn't overlap image on small screens */
+@media (max-width: 768px) {
+  .new-top-checkbox {
+    top: 6px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* optional: smaller image for mobile so upload sits nicely */
+@media (max-width: 576px) {
+  .person-image-mem {
+    width: 140px;
+    height: 140px;
+  }
+  .person-image {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* accessibility: focus outline for upload label */
+.new-upload-label:focus,
+.new-upload-label:active {
+  outline: 2px solid rgba(0,0,0,0.12);
+  outline-offset: 2px;
+}
+
+/* If you want the top-right checkbox only visible when editing, you already conditionally render it in JSX */
