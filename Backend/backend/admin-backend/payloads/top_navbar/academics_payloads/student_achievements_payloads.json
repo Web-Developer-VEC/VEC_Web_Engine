@@ -1,0 +1,70 @@
+[
+    {
+        "collectionName":"CSE_005",
+        "collection_type":"student_achievements",
+        "category":"student_achievements_details",
+        "action":"insert",
+        "title":"insert in student_achievements",
+        "meta_data":
+        {
+            "image_path": "/static/images/student_activities/005/1.webp",
+            "event_name": "dinesh",
+            "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
+            "date": "2025-02-14"
+        }
+    },
+    {
+        "collectionName":"CSE_005",
+        "collection_type":"student_achievements",
+        "category":"student_achievements_details",
+        "action":"update",
+        "title":"update in student_achievements",
+        "original_data":
+        {
+            "image_path": "/static/images/student_activities/005/1.webp",
+            "event_name": "dinesh",
+            "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
+            "date": "2025-02-14"
+        },
+        "meta_data":
+        {
+            "image_path": "/static/images/student_activities/005/1.webp",
+            "event_name": "hari",
+            "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
+            "date": "2025-02-14"
+        }
+    },
+    {
+        "collectionName":"CSE_005",
+        "collection_type":"student_achievements",
+        "category":"student_achievements_details",
+        "action":"delete",
+        "title":"delete in student_achievements",
+        "meta_data":
+        {
+            "image_path": "/static/images/student_activities/005/1.webp",
+            "event_name": "hari",
+            "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
+            "date": "2025-02-14"
+        }
+    },
+    {
+        "collectionName":"CSE_005",
+        "collection_type":"student_achievements",
+        "category":"student_achievements_content",
+        "action":"insert",
+        "title":"insert in student_achievements",
+        "meta_data":[ "HI how are you","I am Fine"]
+        
+    },
+    {
+        "collectionName":"CSE_005",
+        "collection_type":"student_achievements",
+        "category":"student_achievements_content",
+        "action":"update",
+        "title":"update in student_achievements",
+        "meta_data":[ "dinesh","I am Fine"],
+        "original_data":[ "HI how are you","I am Fine"]
+        
+    }
+]
