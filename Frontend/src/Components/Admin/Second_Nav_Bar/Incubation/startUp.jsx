@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Save, Plus, Trash2, ArrowDown } from "lucide-react";
+import { Send, Save, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -58,6 +58,8 @@ export default function Startup({ data }) {
     else nxt.add(index);
     setSelectedRows(nxt);
   };
+
+  
 
   // Add a new row
   const handleAddRow = () => {
@@ -116,6 +118,8 @@ export default function Startup({ data }) {
     });
   };
 
+  
+
   // Save current session
   const handleSave = () => {
     if (sessionChanges.length === 0) {
@@ -148,6 +152,45 @@ export default function Startup({ data }) {
     setIsSavedOnce(false);
     toast.info("All changes discarded and data reset.");
   };
+
+  const handleUndoChange = (change) => {
+  if (change.action === "add") {
+    // Remove the newly added row from editableData
+    setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
+  } 
+  else if (change.action === "delete") {
+    // Restore the deleted row back at the same index
+    setEditableData((prev) => {
+      const newList = [...prev];
+      newList.splice(change.index, 0, change.deletedItem);
+      return newList.map((r, i) => ({ ...r, s_no: i + 1 })); // re-number
+    });
+  } 
+  else if (change.action === "edit") {
+    // Revert edited fields back to old values
+    setEditableData((prev) =>
+      prev.map((item, idx) =>
+        idx === change.index
+          ? {
+              ...item,
+              ...Object.fromEntries(
+                Object.entries(change.changes).map(([field, values]) => [
+                  field,
+                  values.old,
+                ])
+              ),
+            }
+          : item
+      )
+    );
+  }
+
+  // Remove this change from the final popup list
+  setAllChanges((prev) =>
+    prev.filter((c, i) => !(c.index === change.index && c.action === change.action))
+  );
+};
+
 
   // Request confirm
   const handleRequest = () => {
@@ -229,14 +272,14 @@ export default function Startup({ data }) {
                     className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim "
                     onClick={() => setIsEditing(true)}
                   >
-                    <FaUserEdit className="mr-2" /> Edit
+                    <Pencil className="mr-2" /> Edit
                   </button>
                 ) : (
                   <button
                     className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim "
                     onClick={() => setIsEditing(true)}
                   >
-                    <FaUserEdit className="mr-2" /> Edit
+                    <Pencil className="mr-2" /> Edit
                   </button>
                 )}
               </div>
@@ -388,7 +431,7 @@ export default function Startup({ data }) {
               Cancel
             </button>
             {sessionChanges.length > 0 && (
-              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSave}>
+              <button className="bg-secd hoverbg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg" onClick={handleSave}>
                 Save
               </button>
             )}
@@ -398,10 +441,10 @@ export default function Startup({ data }) {
       {!isEditing && isSavedOnce && (
   <div className="flex flex-row gap-2 mr-8">
     {/* Removed Edit Again button here */}
-    <button className="bg-red-500 px-3 py-2 rounded text-white" onClick={handleDiscardAll}>
+    <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>
       Discard All
     </button>
-    <button className="bg-green-500 px-3 py-2 flex flex-row rounded text-white" onClick={handleRequest}>
+    <button className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 flex flex-row rounded " onClick={handleRequest}>
       <Send className="mr-2" /> Request
     </button>
   </div>
@@ -409,77 +452,88 @@ export default function Startup({ data }) {
       </div>
 
       {/* Final Request Modal */}
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-            <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
-              <p className="text-sm text-red-500 mb-4">
+ {/* Final Request Modal */}
+{showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+    <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
+      <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
+      <p className="text-sm text-red-500 mb-4">
         Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
       </p>
 
+      <div className="max-h-[320px] overflow-y-auto mb-4">
+        <table className="w-full text-sm text-left border">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="py-2 px-3 border">Action</th>
+              <th className="py-2 px-3 border">Section</th>
+              <th className="py-2 px-3 border">Changed Field</th>
+              <th className="py-2 px-3 border text-center">Undo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allChanges.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="text-center py-4">
+                  No changes to submit
+                </td>
+              </tr>
+            ) : (
+              allChanges.map((change, idx) => (
+                <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                  <td className="py-2 px-3 border align-top">
+                    {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                    {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                    {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+                  </td>
+                  <td className="py-2 px-3 border align-top">Startup</td>
+                  <td className="py-2 px-3 border text-[13px]">
+                    {change.action === "delete" ? (
+                      <div>Row {change.index + 1} deleted</div>
+                    ) : Object.keys(change.changes || {}).length === 0 ? (
+                      <div>Added/changed entire row</div>
+                    ) : (
+                      Object.entries(change.changes).map(([field, values]) => (
+                        <div key={field} className="mb-1">
+                          <p className="capitalize">{field}</p>{" "}
+                         
+                         
+                        </div>
+                      ))
+                    )}
+                  </td>
+                  <td className="py-2 px-3 border text-center">
+                    <button
+                      className="text-red-500 hover:text-red-700"
+                      onClick={() => handleUndoChange(change)}
+                    >
+                      ✖
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
 
-            <div className="max-h-[320px] overflow-y-auto mb-4">
-              <table className="w-full text-sm text-left border">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="py-2 px-3 border">Action</th>
-                    <th className="py-2 px-3 border">Section</th>
-                    <th className="py-2 px-3 border">Changed Field</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allChanges.length === 0 ? (
-                    <tr>
-                      <td colSpan={3} className="text-center py-4">
-                        No changes to submit
-                      </td>
-                    </tr>
-                  ) : (
-                    allChanges.map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                        <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                        </td>
-                        <td className="py-2 px-3 border align-top">Startup</td>
-                        <td className="py-2 px-3 border text-[13px]">
-                          {change.action === "delete" ? (
-                            <div>Row {change.index + 1} deleted</div>
-                          ) : Object.keys(change.changes || {}).length === 0 ? (
-                            <div>Added/changed entire row</div>
-                          ) : (
-                            Object.entries(change.changes).map(([field, values]) => (
-                              <div key={field} className="mb-1">
-                                <strong className="capitalize">{field}:</strong>{" "}
-                                {Array.isArray(values.old) ? values.old.join(", ") : values.old ?? "-"}
-                                <ArrowDown className="inline mx-2" size={14} />
-                                {Array.isArray(values.new) ? values.new.join(", ") : values.new ?? "-"}
-                              </div>
-                            ))
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
-              >
-                Cancel
-              </button>
-              <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-yellow-400 text-black">
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="flex justify-end gap-3">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleFinalRequestConfirm}
+          className="px-4 py-2 rounded bg-yellow-400 text-black"
+        >
+          Final Request
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (

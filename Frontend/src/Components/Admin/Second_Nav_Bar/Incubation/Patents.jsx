@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Save, Plus, Trash2, ArrowDown } from "lucide-react";
+import { Send, Save, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,31 +23,63 @@ export default function Patents({ data }) {
 
 
   // Convert dd.mm.yyyy -> yyyy-mm-dd (for input)
+// 🔹 Convert various formats -> yyyy-mm-dd (for <input type="date">)
 const formatToInputDate = (dateStr) => {
   if (!dateStr) return "";
-  const parts = dateStr.split(".");
-  if (parts.length !== 3) return "";
-  const [day, month, year] = parts;
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  const s = String(dateStr).trim();
+
+  // Already in yyyy-mm-dd
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+
+  // dd.mm.yyyy -> yyyy-mm-dd
+  if (/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(s)) {
+    const [day, month, year] = s.split(".");
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+
+  // Try Date parse (handles ISO with time etc.)
+  const parsed = new Date(s);
+  if (!isNaN(parsed)) {
+    const y = parsed.getFullYear();
+    const m = String(parsed.getMonth() + 1).padStart(2, "0");
+    const d = String(parsed.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
+
+  return "";
 };
 
-// Convert yyyy-mm-dd -> dd.mm.yyyy (for saving back)
+// 🔹 Convert yyyy-mm-dd -> dd.mm.yyyy (used when user edits)
 const formatFromInputDate = (dateStr) => {
   if (!dateStr) return "";
-  const parts = dateStr.split("-");
-  if (parts.length !== 3) return "";
-  const [year, month, day] = parts;
-  return `${day}.${month}.${year}`;
+  const s = String(dateStr).trim();
+  // handle yyyy-mm-dd (or yyyy-mm-ddTHH:MM:SS)
+  const datePart = s.split("T")[0];
+  const parts = datePart.split("-");
+  if (parts.length === 3) {
+    const [year, month, day] = parts;
+    return `${day.padStart(2, "0")}.${month.padStart(2, "0")}.${year}`;
+  }
+  // fallback: try parse
+  const parsed = new Date(s);
+  if (!isNaN(parsed)) {
+    const y = parsed.getFullYear();
+    const m = String(parsed.getMonth() + 1).padStart(2, "0");
+    const d = String(parsed.getDate()).padStart(2, "0");
+    return `${d}.${m}.${y}`;
+  }
+  return "";
 };
 
-  useEffect(() => {
-    if (Array.isArray(data)) {
-      const clone = JSON.parse(JSON.stringify(data));
-      originalRef.current = clone;
-      savedDataRef.current = clone;
-      setEditableData(clone);
-    }
-  }, [data]);
+
+useEffect(() => {
+  if (Array.isArray(data)) {
+    const clone = data.map((row) => ({ ...row, id: Date.now() + Math.random() }));
+    originalRef.current = clone;
+    savedDataRef.current = clone;
+    setEditableData(clone);
+  }
+}, [data]);
 
   const toggleSelectRow = (index) => {
     const nxt = new Set(selectedRows);
@@ -56,71 +88,144 @@ const formatFromInputDate = (dateStr) => {
     setSelectedRows(nxt);
   };
 
-  const handleAddRow = () => {
-    const newRow = {
-      Sl_No: editableData.length + 1,
-      Patent_Application_No: "",
-      Status_of_Patent: "",
-      Inventor_Name: [],
-      Title_of_the_Patent: "",
-      Applicant_Name: "",
-      Patent_Filed_Date: "",
-    };
-    setEditableData((p) => [...p, newRow]);
-    setSessionChanges((p) => [
-      ...p,
-      { index: editableData.length, action: "add", changes: {} },
-    ]);
+const handleAddRow = () => {
+  const newRow = {
+    id: Date.now(), // unique id
+    Sl_No: editableData.length + 1,
+    Patent_Application_No: "",
+    Status_of_Patent: "",
+    Inventor_Name: [],
+    Title_of_the_Patent: "",
+    Applicant_Name: "",
+    Patent_Filed_Date: "",
   };
+  setEditableData((p) => [...p, newRow]);
+  setSessionChanges((p) => [
+    ...p,
+    { id: newRow.id, index: editableData.length, action: "add", changes: {} },
+  ]);
+};
 
-  const handleFieldChange = (index, field, value) => {
-    const newData = [...editableData];
-    const oldVal = newData[index]?.[field];
+  // Get all changes for the request modal
+const getChangedPatents = () => {
+  const changes = [];
 
-    if (field === "Inventor_Name" && typeof value === "string") {
-      value = value.split(",").map((d) => d.trim()).filter(Boolean);
-    }
+  editableData.forEach((row, idx) => {
+    const saved = savedDataRef.current[idx];
 
-    newData[index] = { ...newData[index], [field]: value };
-    setEditableData(newData);
-
-    setSessionChanges((prev) => {
-      const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
-      if (existingIndex >= 0) {
-        cp[existingIndex] = {
-          ...cp[existingIndex],
-          action: cp[existingIndex].action === "add" ? "add" : "edit",
-          changes: {
-            ...cp[existingIndex].changes,
-            [field]: { old: oldVal, new: value },
-          },
-        };
-      } else {
-        cp.push({
-          index,
-          action: savedDataRef.current[index] ? "edit" : "add",
-          changes: { [field]: { old: oldVal, new: value } },
-        });
+    if (!saved) {
+      // New row added
+      changes.push({ type: "Added", index: idx, row, fields: [] });
+    } else {
+      const editedFields = [];
+      Object.keys(row).forEach((field) => {
+        if (JSON.stringify(row[field]) !== JSON.stringify(saved[field])) {
+          editedFields.push(field);
+        }
+      });
+      if (editedFields.length > 0) {
+        changes.push({ type: "Edited", index: idx, row, fields: editedFields });
       }
-      return cp;
-    });
-  };
-
-  const handleSave = () => {
-    if (sessionChanges.length === 0) {
-      toast.info("No changes to save.");
-      return;
     }
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-    setAllChanges((p) => [...p, ...sessionChanges]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(true);
-    toast.success("Changes saved. Now you can Request or Edit again.");
-  };
+  });
+
+  // Include deleted rows
+  sessionChanges
+    .filter((c) => c.action === "delete")
+    .forEach((c) => changes.push({ type: "Deleted", index: c.index, row: c.deletedItem, fields: [] }));
+
+  return changes;
+};
+
+
+const handleFieldChange = (index, field, value) => {
+  const newData = [...editableData];
+  const oldVal = newData[index]?.[field];
+
+  if (field === "Inventor_Name" && typeof value === "string") {
+    value = value.split(",").map((d) => d.trim()).filter(Boolean);
+  }
+
+  newData[index] = { ...newData[index], [field]: value };
+  setEditableData(newData);
+
+  setSessionChanges((prev) => {
+    const cp = [...prev];
+    const rowId = newData[index].id;
+    const existingIndex = cp.findIndex((c) => c.id === rowId && c.action !== "delete");
+
+    if (existingIndex >= 0) {
+      cp[existingIndex] = {
+        ...cp[existingIndex],
+        action: cp[existingIndex].action === "add" ? "add" : "edit",
+        changes: {
+          ...cp[existingIndex].changes,
+          [field]: { old: oldVal, new: value },
+        },
+      };
+    } else {
+      cp.push({
+        id: rowId,
+        index,
+        action: savedDataRef.current[index] ? "edit" : "add",
+        changes: { [field]: { old: oldVal, new: value } },
+      });
+    }
+    return cp;
+  });
+};
+
+
+// Inside handleUndoChange
+const handleUndoChange = (change) => {
+  const newEditable = [...editableData];
+  const newSessionChanges = [...sessionChanges];
+
+  if (change.type === "Added") {
+    const rowIndex = newEditable.findIndex((r) => r.id === change.id);
+    if (rowIndex >= 0) newEditable.splice(rowIndex, 1);
+  } else if (change.type === "Edited") {
+    const savedRow = savedDataRef.current.find((r) => r.id === change.id);
+    const rowIndex = newEditable.findIndex((r) => r.id === change.id);
+    if (savedRow && rowIndex >= 0) {
+      newEditable[rowIndex] = JSON.parse(JSON.stringify(savedRow));
+    }
+  } else if (change.type === "Deleted") {
+    // Restore deleted row at the original index
+    if (typeof change.index === "number" && change.row) {
+      newEditable.splice(change.index, 0, change.row);
+    }
+  }
+
+  setEditableData(newEditable);
+
+  // Remove from sessionChanges and allChanges
+  setSessionChanges(newSessionChanges.filter((c) => c.id !== change.id));
+  setAllChanges(allChanges.filter((c) => c.id !== change.id));
+};
+
+
+
+const handleSave = () => {
+  if (sessionChanges.length === 0) {
+    toast.info("No changes to save.");
+    return;
+  }
+
+  // Ensure all changes have id
+  const changesWithId = sessionChanges.map((c) => ({
+    ...c,
+    id: c.id || (editableData[c.index]?.id ?? Date.now() + Math.random()),
+  }));
+
+  savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+  setAllChanges((p) => [...p, ...changesWithId]);
+  setSessionChanges([]);
+  setIsEditing(false);
+  setIsSavedOnce(true);
+  toast.success("Changes saved. Now you can Request or Edit again.");
+};
+
 
   const handleCancelSession = () => {
     setEditableData(JSON.parse(JSON.stringify(savedDataRef.current)));
@@ -211,7 +316,7 @@ const formatFromInputDate = (dateStr) => {
             className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         </div>
       )}
@@ -288,7 +393,7 @@ const formatFromInputDate = (dateStr) => {
                     <input
                       type="date"
                       className="border px-2 py-1 w-full"
-                      value={formatToInputDate(row.Patent_Filed_Date) ?? ""}
+                      value={formatToInputDate(row.Patent_Filed_Date) }
                       onChange={(e) => handleFieldChange(i, "Patent_Filed_Date", formatFromInputDate(e.target.value))}
                     />
                   ) : row.Patent_Filed_Date || "-"}
@@ -324,7 +429,7 @@ const formatFromInputDate = (dateStr) => {
               Cancel
             </button>
             {sessionChanges.length > 0 && (
-              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSave}>
+              <button className="bg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg" onClick={handleSave}>
                 Save
               </button>
             )}
@@ -344,70 +449,75 @@ const formatFromInputDate = (dateStr) => {
       </div>
 
       {/* Final Request Modal */}
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-            <h2 className="text-xl font-semibold mb-2 text-center"> Request</h2>
-              <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+ {/* Final Request Modal */}
+{showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+    <div className="bg-white p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto shadow-lg">
+      <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">Request</h2>
+      <p className="text-sm text-red-500 mb-4 text-center">
+        Note: Your changes will stay pending until approved by the superior admin.
       </p>
 
-            <div className="max-h-[320px] overflow-y-auto mb-4">
-              <table className="w-full text-sm text-left border">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="py-2 px-3 border">Action</th>
-                    <th className="py-2 px-3 border">Section</th>
-                    <th className="py-2 px-3 border">Changed Field</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allChanges.length === 0 ? (
-                    <tr>
-                      <td colSpan={3} className="text-center py-4">No changes to submit</td>
-                    </tr>
-                  ) : (
-                    allChanges.map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                        <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                        </td>
-                        <td className="py-2 px-3 border align-top">Patents</td>
-                        <td className="py-2 px-3 border text-[13px]">
-                          {change.action === "delete" ? (
-                            <div>Row {change.index + 1} deleted</div>
-                          ) : Object.keys(change.changes || {}).length === 0 ? (
-                            <div>Added/changed entire row</div>
-                          ) : (
-                            Object.entries(change.changes).map(([field, values]) => (
-                              <div key={field} className="mb-1">
-                                <strong className="capitalize">{field}:</strong>{" "}
-                                {Array.isArray(values.old) ? values.old.join(", ") : values.old ?? "-"}
-                                <ArrowDown className="inline mx-2" size={14} />
-                                {Array.isArray(values.new) ? values.new.join(", ") : values.new ?? "-"}
-                              </div>
-                            ))
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-            <div className="flex justify-end gap-3">
-              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
-                Cancel
-              </button>
-              <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-yellow-400 text-black">
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <table className="w-full border text-sm">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="py-2 px-3 border">Action</th>
+            <th className="py-2 px-3 border">Row</th>
+            <th className="py-2 px-3 border">Changed Field</th>
+            <th className="py-2 px-3 border">Undo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allChanges.map((c, idx) => (
+  <tr key={c.id || idx} className="even:bg-white odd:bg-gray-50">
+    <td className="py-2 px-3 border text-blue-600">
+      {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
+    </td>
+    <td className="py-2 px-3 border">{c.index + 1}</td>
+    <td className="py-2 px-3 border text-[13px]">
+      {c.action === "edit"
+        ? Object.keys(c.changes).join(", ")
+        : c.action === "add"
+        ? "New row added"
+        : "Row deleted"}
+    </td>
+    <td className="py-2 px-3 border text-center">
+     <button
+  className="text-red-500"
+  onClick={() => handleUndoChange({
+    type: c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted",
+    id: c.id || c.row?.id,
+    index: c.index,
+    row: c.row
+  })}
+>
+  X
+</button>
+
+    </td>
+  </tr>
+))}
+
+        </tbody>
+      </table>
+
+      <div className="flex justify-end gap-2 mt-6">
+        <button
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+          onClick={() => setShowRequestModal(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="px-4 py-2 rounded bg-secd text-text"
+          onClick={handleFinalRequestConfirm}
+        >
+          Final Request
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (

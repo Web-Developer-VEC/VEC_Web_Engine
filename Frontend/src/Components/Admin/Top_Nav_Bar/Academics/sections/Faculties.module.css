@@ -19,6 +19,7 @@
   display: none;
 }
 
+
 /* First faculty tile - Full width */
 .fullWidthTile {
   width: 100%;
@@ -51,6 +52,8 @@
 .facultyModalHeader{
   margin-bottom: 15px;
 }
+
+
 
 /* Grid for remaining tiles */
 .gridContainer {
@@ -85,10 +88,6 @@
   margin-bottom: 10px;
 }
 
-.imageCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
 .facultyName {
   font-size: 18px;
@@ -285,20 +284,26 @@
     justify-content: center;
   }
 
+  .firstTile {
+    flex-shrink: 0; /* Add this to all responsive breakpoints */
+  }
+
   .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    grid-auto-rows: max-content; 
     justify-content: center;
   }
 
-  .firstTile {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-  }
+.firstTile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 100%; /* or flex-basis: 65% as in JSX */
+  gap: 20px;
+  flex-shrink: 0; /* Step 2 added */
+}
 
   .firstTileContent {
     text-align: center;
@@ -481,3 +486,14 @@
     border: none;
   }
 }
+
+.firstTile {
+  flex-shrink: 0;
+}
+
+
+
+/* .imageCard:hover { dont use this one 
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+} */
