@@ -7,7 +7,7 @@
 }
 
 /* Placement Section Styling */
-.placement-percent {
+.admin-placement-percent {
   margin: 3rem;
   padding: 1rem;
   align-items: center;
@@ -16,7 +16,7 @@
 }
 
 /* Responsive Table */
-.placement-percent table {
+.admin-placement-percent table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
@@ -30,7 +30,7 @@
 
 
 /* Table Heading */
-.placement-percent th {
+.admin-placement-percent th {
   background-color: #808080;
   color: rgb(0, 0, 0);
   text-align: center;
@@ -39,8 +39,9 @@
   border: 1px #ddd solid;
 }
 
+
 /* Table Content */
-.placement-percent td th {
+.admin-placement-percent td th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
@@ -83,6 +84,13 @@
   display: inline-block;
   text-align: center;
   min-width: 150px; /* Ensures buttons are the same size */
+}
+.edit-input-0 {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 8px;
 }
 
 .place-course-button:hover {
@@ -210,25 +218,25 @@
     margin-bottom: 18px;
     padding: 8px 0;
   }
-  .placement-percent{
+  .admin-placement-percent{
     margin-right: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .placement-percent {
+  .admin-placement-percent {
     overflow-x: auto;
   }
   .placement-yearwise h4 {
     left: 25px;
   }
 
-  .placement-percent{
+  .admin-placement-percent{
     width: 90%;
     margin-left:1.2rem ;
   }
 
-  .placement-percent table {
+  .admin-placement-percent table {
     display: block;
     width: 100%;
     overflow-x: auto;
@@ -403,7 +411,7 @@
   margin-top: 15px;
 }
 /* Table border styling */
-.placement-percent table {
+.admin-placement-percent table {
   border: 1px solid #ddd;
   width: 100%;
   border-collapse: collapse;
@@ -413,17 +421,17 @@
 }
 
 /* Table cells with borders */
-.placement-percent th, 
-.placement-percent td {
+.admin-placement-percent th, 
+.admin-placement-percent td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
 /* Dark mode support for borders */
-.dark .placement-percent table,
-.dark .placement-percent th, 
-.dark .placement-percent td {
+.dark .admin-placement-percent table,
+.dark .admin-placement-percent th, 
+.dark .admin-placement-percent td {
   border-color: #4a5568; /* A gray that works well in dark mode */
 }
 
@@ -483,7 +491,7 @@
 }
 
 /* Button Styles */
-.edit-btn-t, .cancel-btn-t, .save-btn,.request-btn {
+.edit-btn-t, .cancel-btn-t, .save-btn-0,.request-btn {
   padding: 8px 16px;
   border-radius: 4px;
   font-weight: 600;
@@ -522,7 +530,7 @@
 }
 
 .cancel-btn-t {
-  background-color: #800000;
+  background-color: gray;
   color: white;
 }
 
@@ -530,13 +538,13 @@
   background-color: #800000;
 }
 
-.save-btn {
-  background-color: #10b981;
+.save-btn-0 {
+  background-color: #fdcc03;
   color: white;
 }
 
-.save-btn:hover {
-  background-color: #059669;
+.save-btn-0:hover {
+  background-color: #fdcc03;
 }
 
 .delete-btn-t {
@@ -590,8 +598,8 @@
   background-color: #dc2626;
 }
 
-.dark .save-btn {
-  background-color: #059669;
+.dark .save-btn-0{
+  background-color: #fdcc03;
 }
 
 .dark .delete-btn-t {

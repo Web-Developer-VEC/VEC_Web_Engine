@@ -58,21 +58,21 @@
 }
 
 .cancel-btn-t {
-  background-color: #ef4444;
+  background-color: gray;
   color: white;
 }
 
 .cancel-btn-t:hover {
-  background-color: #dc2626;
+  background-color: gray;
 }
 
 .save-btn {
-  background-color: #10b981;
+  background-color: #fdcc03;
   color: white;
 }
 
 .save-btn:hover {
-  background-color: #059669;
+  background-color: #fdcc06;
 }
 
 .request-btn-1 {

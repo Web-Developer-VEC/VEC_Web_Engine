@@ -433,8 +433,10 @@ export default function Facilities({ data }) {
                       <th className="py-2 px-3 border">Action</th>
                       <th className="py-2 px-3 border">Section</th>
                       <th className="py-2 px-3 border">Changed Field</th>
+
                       <th className="py-2 px-3 border text-center">Undo</th>
                     </tr>
+
                   </thead>
                   <tbody>
                     {allChanges.length === 0 ? (

@@ -5,7 +5,7 @@ import LoadComp from "../../LoadComp";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-const Programmes = ({toggle, theme}) => {
+const AdminProgrammes = ({toggle, theme}) => {
     
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [programmes, setProgrammes] = useState(null);
@@ -47,6 +47,13 @@ const Programmes = ({toggle, theme}) => {
         };
     }, []);
 
+    const session = JSON.parse(sessionStorage.getItem("userSession"))
+    
+    const isRouteAllowed = (link) => {
+        if (!session?.routes) return true; // If no session routes, allow by default
+        return session.routes.includes(link);
+    };
+
     if (!isOnline) {
         return (
           <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -72,7 +79,7 @@ const Programmes = ({toggle, theme}) => {
                                 {
                                     dept?.content?.map((data) => (
                                         <div className="programmes-name flex items-center " key={data.name}>
-                                            <img src="/badge.png" alt="" /><a href={data.link} className='text=[#2980b9] dark:text-drka'><p>{data.name}</p></a>
+                                            <img src="/badge.png" alt="" /><a href={`${isRouteAllowed(data.link) ? data.link : "#"}`} className={`text=[#2980b9] dark:text-drka ${isRouteAllowed(data.link) ?  "" : "cursor-not-allowed"}`}><p>{data.name}</p></a>
                                         </div>
                                     ))
                                 }
@@ -91,4 +98,4 @@ const Programmes = ({toggle, theme}) => {
     )
 }
 
-export default Programmes;
+export default AdminProgrammes;

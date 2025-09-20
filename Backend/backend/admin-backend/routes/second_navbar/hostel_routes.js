@@ -14,7 +14,7 @@ router.post(
   "/hosteladmin",
   checkRole(["super_admin"]), 
   handleTempApproval,
-  handleTempAction( insertData, deleteData, updateData )
+  handleTempAction( insertData, updateData, deleteData )
 );
 
 module.exports = router;

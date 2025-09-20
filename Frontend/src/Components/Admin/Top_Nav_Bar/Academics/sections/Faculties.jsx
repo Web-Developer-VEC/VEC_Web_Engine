@@ -3,9 +3,11 @@ import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
 import { FaUserEdit } from "react-icons/fa";
+
 import { Edit, Edit2, Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 /**
  * Faculties component (final)
@@ -15,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
  * - Delete confirm modal, Replace PDF, Final Request modal kept
  * - Multi-select & multi-delete added (via checkboxes on each card)
  */
+
 
 export default function Faculties({ data }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -369,6 +372,7 @@ const handleUndoChange = (idx) => {
     reader.readAsDataURL(file);
   };
 
+
   // URL parser
   const UrlParser = (path) => {
     if (!path) return "";
@@ -472,6 +476,7 @@ const handleUndoChange = (idx) => {
   }
 
   return (
+
     <>
       <div className={styles.app + " p-0 md:p-12"}>
         {/* Edit button */}
@@ -485,6 +490,7 @@ const handleUndoChange = (idx) => {
 
         <div className={styles.imageGallery + " w-full"}>
           {/* HOD */}
+
           <div className={`${styles.fullWidthTile} relative`}>
             <ImageCard
               key={hod?.unique_id ?? "hod"}
@@ -498,11 +504,13 @@ const handleUndoChange = (idx) => {
               Scopus={hod?.socialmedia_links?.scopus}
               Linkedin={hod?.socialmedia_links?.linkedin}
               firstTile={true}
+
               uid={hod?.unique_id ?? "hod"}
               profile={hod?.resume_pdf}
               isEdit={isEditing}
               teaching={true}
               onChange={(field, value, uid) => handleHodChange(field, value)}
+
             />
 
             {/* Faculty List + Replace */}
@@ -515,6 +523,7 @@ const handleUndoChange = (idx) => {
                   }
                 }}>
                   Faculty List
+
                 </button>
 
                 {isEditing && (
@@ -558,6 +567,7 @@ const handleUndoChange = (idx) => {
             {isEditing && (
               <div className="flex items-center justify-center border-2 border-dashed border-gray-400 rounded-lg mx-8 min-h-96 h-100 cursor-pointer" onClick={() => handleAddFaculty("teaching")}>
                 + Add New Faculty
+
               </div>
             )}
           </div>
@@ -614,11 +624,36 @@ const handleUndoChange = (idx) => {
         <div className="flex flex-row gap-2 mr-8 justify-end my-4">
           {isEditing ? (
             <>
+
               <button className="bg-gray-500 px-3 py-2 rounded text-prim" onClick={handleCancelSession}>Cancel</button>
               {/* Save visible only when sessionChanges exist */}
               {sessionChanges.length > 0 && (
                 <button className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
               )}
+
+              <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Non Teaching Staff</h2>
+              <div className={`${styles.gridContainer} grid grid-cols-2 md:grid-cols-4 bg-black-100`}>
+                {non_teaching_staff_details?.map((faculty, index) => (
+                  <ImageCard
+                    key={faculty?.unique_id || index}
+                    name={faculty?.name}
+                    photo={faculty?.image_path}
+                    Designation={faculty?.designation}
+                    Scholar={faculty?.socialmedia_links?.googlescholar}
+                    Research={faculty?.socialmedia_links?.researchgate}
+                    Orchid={faculty?.socialmedia_links?.orchidprofile}
+                    Publon={faculty?.socialmedia_links?.publonprofile}
+                    Scopus={faculty?.socialmedia_links?.scopus}
+                    Linkedin={faculty?.socialmedia_links?.linkedin}
+                    uid={faculty?.unique_id}
+                    profile={faculty?.resume_pdf}
+                    isViewmore={false}
+                    teaching={false}
+                    isEdit={isEditing}
+                  />
+                ))}
+              </div>       
+
             </>
           ) : (
             isSavedOnce && (
@@ -740,6 +775,24 @@ const handleUndoChange = (idx) => {
           Final Request
         </button>
       </div>
+           <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
+            <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancelSession}>
+              Cancel
+            </button>
+          
+              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSaveSession}>
+                Save
+              </button>
+          </div>
+            <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
+              {/* Removed Edit Again button here */}
+              <button className="bg-red-500 px-3 py-2 rounded text-white" onClick={handleDiscardAllSession}>
+                Discard All
+              </button>
+              <button className="bg-green-500 px-3 py-2 flex flex-row rounded text-white" onClick={handleRequestSession}>
+                <Send className="mr-2" /> Request
+              </button>
+            </div>
     </div>
   </div>
 )}

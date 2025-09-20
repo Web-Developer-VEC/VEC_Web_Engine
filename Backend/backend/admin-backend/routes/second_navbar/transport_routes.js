@@ -1,5 +1,6 @@
 const express = require("express");
-const { handleTempAction } = require("../../middlewares/action_handle_middleware"); 
+//const { handleTempAction } = require("../../middlewares/action_handle_middleware"); 
+const {handleTempAction} = require('../../middlewares/action_handle_middleware')
 const { checkRole } = require("../../middlewares/role_middleware");
 const { handleTempApproval } = require("../../middlewares/approve_middleware");
 const router = express.Router();
@@ -11,7 +12,7 @@ router.post(
   "/transportadmin",
   checkRole(["super_admin"]),
   handleTempApproval,
-  handleTempAction( updateData )
+  handleTempAction( null , updateData , null)
 );
 
 module.exports = router;

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { SiPublons } from "react-icons/si";
 import { FaOrcid, FaResearchgate, FaLinkedin, FaBook } from "react-icons/fa";
 import { FaGoogleScholar } from "react-icons/fa6";
+
 import { Trash2 } from "lucide-react";
 import styles from "./Faculties.module.css";
+
 
 /**
  * ImageCard
@@ -43,6 +45,7 @@ function ImageCard({
     publonprofile: Publon || "",
     scopus: Scopus || "",
   };
+
 
   const [links, setLinks] = useState(initialLinks);
   const [updatedLinks, setUpdatedLinks] = useState(initialLinks);
@@ -221,6 +224,7 @@ function ImageCard({
           >
             {links.linkedin && (
               <a href={links.linkedin} target="_blank" rel="noreferrer">
+
                 <FaLinkedin className="text-brwn dark:text-drka" />
               </a>
             )}
@@ -250,6 +254,7 @@ function ImageCard({
               </a>
             )}
           </div>
+
 
           {isEdit && (
             <button
@@ -316,10 +321,12 @@ function ImageCard({
       {/* Action Buttons */}
       <div className="flex justify-end gap-3 mt-4">
         <button
+
           onClick={() => {
             setUpdatedLinks(links);
             setLinkEditer(false);
           }}
+
           className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
         >
           Cancel
@@ -331,6 +338,7 @@ function ImageCard({
           Save
         </button>
       </div>
+
     </div>
   </div>
 )}
