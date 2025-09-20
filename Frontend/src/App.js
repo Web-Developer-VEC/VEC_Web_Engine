@@ -52,7 +52,7 @@ import {PlacementDetails} from "./Components/Main/Top_Nav_Bar/Placements/Placeme
 import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
 import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
 import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
-import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
+// import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
 import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
 import Alumni from "./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx";
 import NSS from "./Components/Main/Second_Nav_Bar/NSS/NSS.jsx";
@@ -105,6 +105,7 @@ import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
 import AdminIQAC from "./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx";
 import AdminLandingPage from "./AdminLanding.jsx";
+import Admin_DepartmentPage from "./Components/Admin/Top_Nav_Bar/Academics/DepartmentPage.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -264,11 +265,12 @@ const App = () => {
                                 <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
                                 {/* <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} /> */}
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin_dept/:deptID" drk element={<Admin_DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 {/* <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/> */}
                                 {/* <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme}/>}/>  */}
-                                <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
-                                <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
+                                {/* <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/> */}
+                                {/* <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/> */}
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />

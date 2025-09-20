@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FaUserEdit } from "react-icons/fa";
-import { Send, Trash2, ArrowDown } from "lucide-react";
+import { Send, Trash2, ArrowDown, Pencil } from "lucide-react";
 import LoadComp from "../../LoadComp";
 
 export default function Facilities({ data }) {
@@ -53,6 +53,40 @@ export default function Facilities({ data }) {
     return "";
   };
 
+  const handleUndoChange = (change) => {
+    if (change.action === "add") {
+      setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
+    } else if (change.action === "delete") {
+      setEditableData((prev) => {
+        const newList = [...prev];
+        newList.splice(change.index, 0, change.deletedItem);
+        return newList;
+      });
+    } else if (change.action === "edit") {
+      setEditableData((prev) =>
+        prev.map((item, idx) =>
+          idx === change.index
+            ? {
+                ...item,
+                ...Object.fromEntries(
+                  Object.entries(change.changes).map(([field, values]) => [
+                    field,
+                    values.old,
+                  ])
+                ),
+              }
+            : item
+        )
+      );
+    }
+
+    setAllChanges((prev) =>
+      prev.filter(
+        (c) => !(c.index === change.index && c.action === change.action)
+      )
+    );
+  };
+
   // ---- editing ----
   const handleFieldChange = (index, newName) => {
     const oldVal = editableData[index]?.name ?? "";
@@ -64,7 +98,9 @@ export default function Facilities({ data }) {
 
     setSessionChanges((prev) => {
       const cp = [...prev];
-      const existingIndex = cp.findIndex((c) => c.index === index && c.action !== "delete");
+      const existingIndex = cp.findIndex(
+        (c) => c.index === index && c.action !== "delete"
+      );
       if (existingIndex >= 0) {
         cp[existingIndex] = {
           ...cp[existingIndex],
@@ -85,6 +121,39 @@ export default function Facilities({ data }) {
     });
   };
 
+  const handleImageChange = (index, file) => {
+    const oldVal = editableData[index]?.image ?? "";
+    setEditableData((prev) => {
+      const copy = prev.map((it) => ({ ...it }));
+      copy[index].image = file;
+      return copy;
+    });
+
+    setSessionChanges((prev) => {
+      const cp = [...prev];
+      const existingIndex = cp.findIndex(
+        (c) => c.index === index && c.action !== "delete"
+      );
+      if (existingIndex >= 0) {
+        cp[existingIndex] = {
+          ...cp[existingIndex],
+          action: cp[existingIndex].action === "add" ? "add" : "edit",
+          changes: {
+            ...cp[existingIndex].changes,
+            image: { old: oldVal, new: file },
+          },
+        };
+      } else {
+        cp.push({
+          index,
+          action: savedDataRef.current[index] ? "edit" : "add",
+          changes: { image: { old: oldVal, new: file } },
+        });
+      }
+      return cp;
+    });
+  };
+
   const handleNewFileSelect = (e) => {
     const f = e.target.files?.[0] ?? null;
     setNewImageFile(f);
@@ -96,7 +165,10 @@ export default function Facilities({ data }) {
     setEditableData((prev) => {
       const idx = prev.length;
       const arr = [...prev, newItem];
-      setSessionChanges((ch) => [...ch, { index: idx, action: "add", item: newItem }]);
+      setSessionChanges((ch) => [
+        ...ch,
+        { index: idx, action: "add", item: newItem },
+      ]);
       return arr;
     });
     setNewImageFile(null);
@@ -120,7 +192,11 @@ export default function Facilities({ data }) {
     setEditableData((prev) => prev.filter((_, i) => !selectedRows.has(i)));
     setSessionChanges((prev) => [
       ...prev,
-      ...toDelete.map((idx) => ({ index: idx, action: "delete", deletedItem: editableData[idx] })),
+      ...toDelete.map((idx) => ({
+        index: idx,
+        action: "delete",
+        deletedItem: editableData[idx],
+      })),
     ]);
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
@@ -175,14 +251,13 @@ export default function Facilities({ data }) {
   // ---- render ----
   return (
     <div className="bg-prim dark:bg-drkp min-h-screen font-[Poppins,sans-serif]">
-      {/* top right edit */}
       <div className="flex justify-end pr-8 pt-6">
         {!isEditing && (
           <button
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         )}
       </div>
@@ -198,11 +273,28 @@ export default function Facilities({ data }) {
               key={idx}
               className="relative bg-prim dark:bg-black rounded-lg shadow hover:shadow-lg overflow-hidden transition-shadow"
             >
+              {/* ✅ Image with editing support */}
               <img
                 src={UrlParser(f.image)}
                 alt={f.name || `Facility ${idx + 1}`}
                 className="w-full h-48 object-cover"
               />
+
+              {isEditing && (
+                <div className="absolute top-2 left-2 z-20">
+                  <label className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-1 rounded cursor-pointer text-sm">
+                    Change Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) =>
+                        e.target.files?.[0] && handleImageChange(idx, e.target.files[0])
+                      }
+                    />
+                  </label>
+                </div>
+              )}
 
               {isEditing && (
                 <input
@@ -232,26 +324,6 @@ export default function Facilities({ data }) {
           ))}
         </div>
 
-        {/* editing controls */}
-        {isEditing && (
-          <div className="mt-4 flex gap-4 items-center">
-            <button
-              className="bg-gray-400 text-white px-3 py-2 rounded"
-              onClick={() => setShowAddForm((s) => !s)}
-            >
-              + Add New Facility
-            </button>
-            {selectedRows.size > 0 && (
-              <button
-                className="bg-red-600 text-white px-3 py-2 rounded"
-                onClick={openDeleteConfirm}
-              >
-                <Trash2 className="inline mr-2" /> Delete Selected
-              </button>
-            )}
-          </div>
-        )}
-
         {/* add form */}
         {isEditing && showAddForm && (
           <div className="mt-4 p-4 border rounded max-w-md">
@@ -267,7 +339,7 @@ export default function Facilities({ data }) {
             />
             <div className="mt-3 flex gap-2">
               <button
-                className="bg-secd px-3 py-2 rounded text-white"
+                className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded"
                 onClick={handleAddNew}
               >
                 Add
@@ -286,6 +358,25 @@ export default function Facilities({ data }) {
           </div>
         )}
 
+        {isEditing && (
+          <div className="mt-4 flex gap-4 items-center">
+            <button
+              className="bg-gray-100 border-2 border-dashed border-secd w-[350px] h-80 text-text px-3 py-2 rounded"
+              onClick={() => setShowAddForm((s) => !s)}
+            >
+              + Add New Facility
+            </button>
+            {selectedRows.size > 0 && (
+              <button
+                className="bg-red-600 text-white px-3 py-2 rounded"
+                onClick={openDeleteConfirm}
+              >
+                <Trash2 className="inline mr-2" /> Delete Selected
+              </button>
+            )}
+          </div>
+        )}
+
         {/* bottom right controls */}
         <div className="py-6 flex justify-end gap-4 mr-8">
           {isEditing && (
@@ -298,7 +389,7 @@ export default function Facilities({ data }) {
               </button>
               {hasUnsavedChanges && (
                 <button
-                  className="border-4 border-yellow-400 px-3 py-2 rounded-lg"
+                  className="bg-secd hover:bg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg"
                   onClick={handleSave}
                 >
                   Save
@@ -309,7 +400,7 @@ export default function Facilities({ data }) {
 
           {!isEditing && isSavedOnce && (
             <>
-                <button
+              <button
                 className="bg-gray-500 px-3 py-2 rounded text-prim"
                 onClick={handleDiscardAll}
               >
@@ -325,16 +416,15 @@ export default function Facilities({ data }) {
           )}
         </div>
 
-        {/* 🔹 Final Request Modal (like Patents) */}
+        {/* Final Request Modal */}
         {showRequestModal && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
             <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-              <h2 className="text-xl font-semibold mb-2 text-center">
-                 Request 
-              </h2>
-               <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+              <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
+              <p className="text-sm text-red-500 mb-4">
+                Note: Your changes will stay pending until approved by the superior
+                admin. Once approved will go live.
+              </p>
 
               <div className="max-h-[320px] overflow-y-auto mb-4">
                 <table className="w-full text-sm text-left border">
@@ -343,12 +433,13 @@ export default function Facilities({ data }) {
                       <th className="py-2 px-3 border">Action</th>
                       <th className="py-2 px-3 border">Section</th>
                       <th className="py-2 px-3 border">Changed Field</th>
-                    </tr> 
+                      <th className="py-2 px-3 border text-center">Undo</th>
+                    </tr>
                   </thead>
                   <tbody>
                     {allChanges.length === 0 ? (
                       <tr>
-                        <td colSpan={3} className="text-center py-4">
+                        <td colSpan={4} className="text-center py-4">
                           No changes to submit
                         </td>
                       </tr>
@@ -369,19 +460,33 @@ export default function Facilities({ data }) {
                           <td className="py-2 px-3 border align-top">Facilities</td>
                           <td className="py-2 px-3 border text-[13px]">
                             {change.action === "delete" ? (
-                              <div>Deleted {change.deletedItem?.name || "Unnamed"}</div>
+                              <div>
+                                Deleted {change.deletedItem?.name || "Unnamed"}
+                              </div>
                             ) : Object.keys(change.changes || {}).length === 0 ? (
                               <div>Added/changed entire facility</div>
                             ) : (
                               Object.entries(change.changes).map(([field, values]) => (
                                 <div key={field} className="mb-1">
                                   <strong className="capitalize">{field}:</strong>{" "}
-                                  {values.old ?? "-"}
+                                  {values.old instanceof File
+                                    ? values.old.name
+                                    : values.old ?? "-"}
                                   <ArrowDown className="inline mx-2" size={14} />
-                                  {values.new ?? "-"}
+                                  {values.new instanceof File
+                                    ? values.new.name
+                                    : values.new ?? "-"}
                                 </div>
                               ))
                             )}
+                          </td>
+                          <td className="py-2 px-3 border text-center">
+                            <button
+                              className="text-red-500 hover:text-red-700"
+                              onClick={() => handleUndoChange(change)}
+                            >
+                              ✖
+                            </button>
                           </td>
                         </tr>
                       ))
@@ -393,13 +498,13 @@ export default function Facilities({ data }) {
               <div className="flex justify-end gap-3">
                 <button
                   onClick={() => setShowRequestModal(false)}
-                  className="px-4 py-2 rounded bg-gray-400 text-white"
+                  className="px-4 py-2 rounded bg-gray-400 text-prim"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleFinalRequestConfirm}
-                  className="px-4 py-2 rounded bg-yellow-400 text-black"
+                  className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim"
                 >
                   Final Request
                 </button>

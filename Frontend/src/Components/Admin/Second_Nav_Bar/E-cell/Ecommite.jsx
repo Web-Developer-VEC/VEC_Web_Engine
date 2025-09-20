@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
-import { Trash2, Send, Plus, ArrowDown } from "lucide-react";
+import { Trash2, Send, Plus, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
@@ -78,6 +78,36 @@ export default function ECellCommittee({ committee }) {
       return copy;
     });
   };
+
+  // Add this function inside ECellCommittee
+const handleUndoChange = (change) => {
+  let newEditableData = [...editableData];
+  let newAllChanges = [...allChanges];
+
+  if (change.action === "add") {
+    // Remove newly added member
+    newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
+  } else if (change.action === "edit") {
+    // Revert edited fields
+    const idx = change.index;
+    newEditableData[idx] = {
+      ...newEditableData[idx],
+      ...Object.fromEntries(
+        Object.entries(change.changes).map(([field, vals]) => [field, vals.old])
+      ),
+    };
+  } else if (change.action === "delete") {
+    // Restore deleted member
+    newEditableData.splice(change.index, 0, change.deletedItem);
+  }
+
+  // Remove the undone change from allChanges
+  newAllChanges = newAllChanges.filter((c) => c !== change);
+
+  setEditableData(newEditableData);
+  setAllChanges(newAllChanges);
+};
+
 
   // Save changes
   const handleSave = () => {
@@ -192,7 +222,7 @@ export default function ECellCommittee({ committee }) {
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         )}
         </div>
@@ -258,7 +288,7 @@ export default function ECellCommittee({ committee }) {
           <div className="mt-4 flex gap-2">
             {selectedRows.size > 0 && (
               <button
-                className="bg-red-600 text-white px-3 py-2 rounded flex items-center gap-2"
+                className="bg-red-600 text-white px-3 py-2 rounded flex m-auto items-center gap-2"
                 onClick={openDeleteMultiple}
               >
                 <Trash2 /> Delete Selected
@@ -279,7 +309,7 @@ export default function ECellCommittee({ committee }) {
               </button>
                 {sessionChanges.length > 0 && (
                   <button
-                    className="border-4 border-yellow-400 px-3 py-2 rounded-lg"
+                    className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
                     onClick={handleSave}
                   >
                     Save
@@ -324,54 +354,48 @@ export default function ECellCommittee({ committee }) {
                   <th className="py-2 px-3 border">Action</th>
                   <th className="py-2 px-3 border">Section</th>
                   <th className="py-2 px-3 border">Changed Field</th>
+                  <th className="py-2 px-3 border">Undo</th>
                 </tr>
               </thead>
-              <tbody>
-                {allChanges.length === 0 ? (
-                  <tr>
-                    <td colSpan={3} className="text-center py-4">
-                      No changes to submit
+             <tbody>
+              {allChanges.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="text-center py-4">
+                    No changes to submit
+                  </td>
+                </tr>
+              ) : (
+                allChanges.map((change, idx) => (
+                  <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                    <td className="py-2 px-3 border text-center">
+                      {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                      {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                      {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+                    </td>
+                    <td className="py-2 px-3 border text-center">Committee</td>
+                    <td className="py-2 px-3 border text-[13px]">
+                      {change.action === "delete"
+                        ? "Member deleted"
+                        : Object.keys(change.changes || {}).length === 0
+                        ? "Added entire member"
+                        : Object.entries(change.changes)
+                            .filter(([_, vals]) => vals.old !== vals.new)
+                            .map(([field]) => field)
+                            .join(", ")}
+                    </td>
+                    <td className="py-2 px-3 border text-center">
+                      <button
+                        className="text-red-500 font-bold"
+                        onClick={() => handleUndoChange(change)}
+                      >
+                        X
+                      </button>
                     </td>
                   </tr>
-                ) : (
-                  allChanges.map((change, idx) => (
-                    <tr
-                      key={idx}
-                      className="even:bg-white odd:bg-gray-50"
-                    >
-                      <td className="py-2 px-3 border align-top">
-                        {change.action === "edit" && (
-                          <span className="text-blue-600">✎ Edited</span>
-                        )}
-                        {change.action === "add" && (
-                          <span className="text-green-600">+ Added</span>
-                        )}
-                        {change.action === "delete" && (
-                          <span className="text-red-600">🗑 Deleted</span>
-                        )}
-                      </td>
-                      <td className="py-2 px-3 border align-top">
-                        Committee
-                      </td>
-                 
-                      <td className="py-2 px-3 border text-[13px]">
-                        {change.action === "delete" ? (
-                          <div>Member deleted</div>
-                        ) : Object.keys(change.changes || {}).length === 0 ? (
-                          <div>Added entire member</div>
-                        ) : (
-                          <div>
-                            {Object.entries(change.changes)
-                              .filter(([field, values]) => values.old !== values.new) // only changed fields
-                              .map(([field]) => field)
-                              .join(", ")} {/* join all changed fields in one line */}
-                          </div>
-                        )}
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
+                ))
+              )}
+            </tbody>
+
             </table>
 
             <div className="flex justify-end gap-3 mt-4">
