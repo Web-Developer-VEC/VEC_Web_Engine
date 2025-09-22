@@ -126,8 +126,20 @@ module.exports = {
                 LslideUp: {
                     '0%': {transform: 'translateY(0)'},
                     '100%': {transform: 'translateY(-100%)'}
-                }
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-5px)' },
+                },
+                bounceX: {
+                    '0%, 100%': { transform: 'translateX(0)' },
+                    '50%': { transform: 'translateX(5px)' },
+                },
             },
+        },
+        animation: {
+            float: 'float 2s ease-in-out infinite',
+            bounceX: 'bounceX 2s ease-in-out infinite',
         },
         screens: {
             sm: '640px',

@@ -32,6 +32,10 @@ async function getTempRequests(req, res) {
               status: doc.status,
               meta_data: doc.meta_data,
               category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
             };
           } else if (action === "update") {
             filteredData = {
@@ -40,6 +44,10 @@ async function getTempRequests(req, res) {
               original_data: doc.original_data,
               meta_data: doc.meta_data,
               category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
             };
           } else if (action === "delete") {
             filteredData = {
@@ -47,6 +55,10 @@ async function getTempRequests(req, res) {
               status: doc.status,
               meta_data: doc.meta_data,
               category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
             };
           }
 
@@ -71,7 +83,7 @@ async function getTempRequests(req, res) {
         (data.update && data.update[0]) ||
         (data.delete && data.delete[0]);
 
-      const admin_details = details?.admin || null;
+      const admin_details = pendingRequests[0]?.admin || null;
 
       if (actions.length > 0) {
         results.push({
