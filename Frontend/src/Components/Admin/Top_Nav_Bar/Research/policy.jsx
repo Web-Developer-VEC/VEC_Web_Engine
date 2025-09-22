@@ -269,10 +269,45 @@ export default function AdminPolicies({ theme, toggle }) {
     savedDataRef.current = JSON.parse(JSON.stringify(policies));
   };
 
-  const handleUndoChange = (idx) => {
-    setAllChanges((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change removed from request");
-  };
+const handleUndoChange = (idx) => {
+  setAllChanges((prev) => {
+    const change = prev[idx];
+
+    if (change) {
+      setPolicies((data) => {
+        let newData = [...data];
+
+        if (change.action === "edit") {
+          const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
+          if (targetIndex !== -1) {
+            newData[targetIndex] = {
+              ...newData[targetIndex],
+              year: change.changes.year.old,
+              pdf_path: change.changes.pdf_path.old,
+            };
+          }
+        }
+
+        if (change.action === "add") {
+          // Remove the newly added item
+          newData = newData.filter((d) => d.year !== change.key);
+        }
+
+        if (change.action === "delete") {
+          // Re-insert the deleted item
+          newData = [...newData, change.changes.deleted];
+        }
+
+        return newData;
+      });
+    }
+
+    return prev.filter((_, i) => i !== idx); // remove from log
+  });
+
+  toast.info("Change reverted");
+};
+
 
   // Preview the selected (newPdf) file or existing path in popup
   const handleViewNewPdf = () => {
@@ -541,7 +576,7 @@ export default function AdminPolicies({ theme, toggle }) {
         )}
       </div>
 
-      <ToastContainer position="bottom-right" autoClose={2200} />
+      <ToastContainer position="bottom-right" autoClose={1000} />
     </>
   );
 }

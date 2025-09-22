@@ -2,17 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
-import { FaUserEdit } from "react-icons/fa";
-
-import { Edit, Edit2, Pencil, Send, Trash2, X } from "lucide-react";
+import {Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 /**
  * Faculties component (final)
  * - Keeps your original UI & classes
- * - Required validation: name, designation, image_path
+ * - Required validation: name, designation, image_pathvmd
  * - Save button visible only when sessionChanges exist
  * - Delete confirm modal, Replace PDF, Final Request modal kept
  * - Multi-select & multi-delete added (via checkboxes on each card)
@@ -162,17 +159,6 @@ export default function Faculties({ data }) {
     toast.success("Changes saved. You can now Request or Edit again.");
   };
 
-  // Undo a change from the pending request list
-const handleUndoChange = (idx) => {
-  setAllChanges((prev) => {
-    const copy = [...prev];
-    if (idx >= 0 && idx < copy.length) copy.splice(idx, 1);
-    return copy;
-  });
-  toast.info("Change removed from request");
-};
-
-
   // discard all saved -> restore originalRef
   const handleDiscardAll = () => {
     const orig = originalRef.current;
@@ -297,6 +283,14 @@ const handleUndoChange = (idx) => {
       return copy;
     });
   };
+  const handleUndoChange = (idx) => {
+  setAllChanges((prev) => {
+    const copy = [...prev];
+    if (idx >= 0 && idx < copy.length) copy.splice(idx, 1);
+    return copy;
+  });
+  toast.info("Change removed from request");
+};
 
   // handle HOD changes
   const handleHodChange = (field, value) => {
@@ -371,7 +365,6 @@ const handleUndoChange = (idx) => {
     };
     reader.readAsDataURL(file);
   };
-
 
   // URL parser
   const UrlParser = (path) => {
@@ -476,21 +469,19 @@ const handleUndoChange = (idx) => {
   }
 
   return (
-
     <>
       <div className={styles.app + " p-0 md:p-12"}>
         {/* Edit button */}
         {!isEditing && (
           <div className="flex justify-end pr-8">
             <button className="flex ml-auto mr-8 items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim my-4" onClick={startEdit}>
-              <Pencil className="mr-2" /> Edit
+              <Pencil  className="mr-2" /> Edit
             </button>
           </div>
         )}
 
         <div className={styles.imageGallery + " w-full"}>
           {/* HOD */}
-
           <div className={`${styles.fullWidthTile} relative`}>
             <ImageCard
               key={hod?.unique_id ?? "hod"}
@@ -504,13 +495,11 @@ const handleUndoChange = (idx) => {
               Scopus={hod?.socialmedia_links?.scopus}
               Linkedin={hod?.socialmedia_links?.linkedin}
               firstTile={true}
-
               uid={hod?.unique_id ?? "hod"}
               profile={hod?.resume_pdf}
               isEdit={isEditing}
               teaching={true}
               onChange={(field, value, uid) => handleHodChange(field, value)}
-
             />
 
             {/* Faculty List + Replace */}
@@ -523,7 +512,6 @@ const handleUndoChange = (idx) => {
                   }
                 }}>
                   Faculty List
-
                 </button>
 
                 {isEditing && (
@@ -567,7 +555,6 @@ const handleUndoChange = (idx) => {
             {isEditing && (
               <div className="flex items-center justify-center border-2 border-dashed border-gray-400 rounded-lg mx-8 min-h-96 h-100 cursor-pointer" onClick={() => handleAddFaculty("teaching")}>
                 + Add New Faculty
-
               </div>
             )}
           </div>
@@ -624,42 +611,17 @@ const handleUndoChange = (idx) => {
         <div className="flex flex-row gap-2 mr-8 justify-end my-4">
           {isEditing ? (
             <>
-
               <button className="bg-gray-500 px-3 py-2 rounded text-prim" onClick={handleCancelSession}>Cancel</button>
               {/* Save visible only when sessionChanges exist */}
               {sessionChanges.length > 0 && (
                 <button className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
               )}
-
-              <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Non Teaching Staff</h2>
-              <div className={`${styles.gridContainer} grid grid-cols-2 md:grid-cols-4 bg-black-100`}>
-                {non_teaching_staff_details?.map((faculty, index) => (
-                  <ImageCard
-                    key={faculty?.unique_id || index}
-                    name={faculty?.name}
-                    photo={faculty?.image_path}
-                    Designation={faculty?.designation}
-                    Scholar={faculty?.socialmedia_links?.googlescholar}
-                    Research={faculty?.socialmedia_links?.researchgate}
-                    Orchid={faculty?.socialmedia_links?.orchidprofile}
-                    Publon={faculty?.socialmedia_links?.publonprofile}
-                    Scopus={faculty?.socialmedia_links?.scopus}
-                    Linkedin={faculty?.socialmedia_links?.linkedin}
-                    uid={faculty?.unique_id}
-                    profile={faculty?.resume_pdf}
-                    isViewmore={false}
-                    teaching={false}
-                    isEdit={isEditing}
-                  />
-                ))}
-              </div>       
-
             </>
           ) : (
             isSavedOnce && (
               <>
                 <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>Discard All</button>
-                <button className="bg-secd hover:bg-brwn  px-3 py-2 flex flex-row rounded text-text hover:text-prim" onClick={handleRequest}><Send className="mr-2" /> Request</button>
+                <button className="bg-secd hover:bg-brwn  px-3 py-2 flex flex-row rounded text-text" onClick={handleRequest}><Send className="mr-2" /> Request</button>
               </>
             )
           )}
@@ -671,16 +633,16 @@ const handleUndoChange = (idx) => {
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1150]">
           <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
             <h3 className="text-lg font-semibold mb-2">Confirm Delete Selected</h3>
-            {/* <p className="text-sm mb-4">Are you sure you want to delete the following faculty from current session? This can be undone only before saving.</p> */}
+            <p className="text-sm mb-4">Are you sure you want to delete the following faculty from current session? This can be undone only before saving.</p>
 
-            <div className="max-h-64 overflow-y-auto p-2 rounded">
+            <div className="max-h-64 overflow-y-auto border p-2 rounded">
               {multiDeletePreview.map((p, idx) => (
                 <div key={idx} className="flex justify-between border-b py-2">
                   <div>
-                  
-                  <p className="text-sm mb-4">Are you sure you want to delete?</p>
+                    <div className="font-medium text-sm">{p.item?.name || "(no name)"}</div>
+                    <div className="text-xs text-gray-600">{p.section} — index {p.index}</div>
                   </div>
-                 
+                  <div className="text-xs text-red-600">Will be deleted</div>
                 </div>
               ))}
             </div>
@@ -694,7 +656,7 @@ const handleUndoChange = (idx) => {
       )}
 
       {/* Request modal */}
-    {showRequestModal && (
+      {showRequestModal && (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
     <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
       <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
@@ -775,25 +737,8 @@ const handleUndoChange = (idx) => {
           Final Request
         </button>
       </div>
-           <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
-            <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancelSession}>
-              Cancel
-            </button>
-          
-              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSaveSession}>
-                Save
-              </button>
-          </div>
-            <div className="flex flex-row gap-2 mr-8 justify-end my-4" style={{ display: isEditing ? 'flex' : 'none' }}>
-              {/* Removed Edit Again button here */}
-              <button className="bg-red-500 px-3 py-2 rounded text-white" onClick={handleDiscardAllSession}>
-                Discard All
-              </button>
-              <button className="bg-green-500 px-3 py-2 flex flex-row rounded text-white" onClick={handleRequestSession}>
-                <Send className="mr-2" /> Request
-              </button>
-            </div>
     </div>
+
   </div>
 )}
 

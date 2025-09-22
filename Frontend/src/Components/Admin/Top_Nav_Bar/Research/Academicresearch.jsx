@@ -142,11 +142,11 @@ export default function AdminConsultancy({ theme, toggle }) {
     setSelectedToDelete(nxt);
   };
 
-  const openDeleteConfirmSingle = (index) => {
-    setDeleteMode("single");
-    setDeleteTargetIndex(index);
-    setDeleteConfirmOpen(true);
-  };
+  // const openDeleteConfirmSingle = (index) => {
+  //   setDeleteMode("single");
+  //   setDeleteTargetIndex(index);
+  //   setDeleteConfirmOpen(true);
+  // };
 
   const openDeleteConfirmMultiple = () => {
     if (selectedToDelete.size === 0) {
@@ -260,10 +260,45 @@ export default function AdminConsultancy({ theme, toggle }) {
     setIsDoneClicked(false);
   };
 
-  const handleUndoChange = (idx) => {
-    setAllChanges((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change removed from request");
-  };
+const handleUndoChange = (idx) => {
+  setAllChanges((prev) => {
+    const change = prev[idx];
+
+    if (change) {
+      setAcadamicRes((data) => {
+        let newData = [...data];
+
+        if (change.action === "edit") {
+          const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
+          if (targetIndex !== -1) {
+            newData[targetIndex] = {
+              ...newData[targetIndex],
+              year: change.changes.year.old,
+              pdf_path: change.changes.pdf_path.old,
+            };
+          }
+        }
+
+        if (change.action === "add") {
+          // Remove the newly added item
+          newData = newData.filter((d) => d.year !== change.key);
+        }
+
+        if (change.action === "delete") {
+          // Re-insert the deleted item
+          newData = [...newData, change.changes.deleted];
+        }
+
+        return newData;
+      });
+    }
+
+    return prev.filter((_, i) => i !== idx); // remove from log
+  });
+
+  toast.info("Change reverted");
+};
+
 
   const handleViewNewPdf = () => {
     if (!newPdf) return;
@@ -378,8 +413,13 @@ export default function AdminConsultancy({ theme, toggle }) {
                <Plus/> Add new
             </button>
 
-            {selectedToDelete.size > 0 && (
-              <div className="flex justify-end mt-4">
+         
+          </div>
+        )}
+
+
+           {selectedToDelete.size > 0 && (
+              <div className="flex justify-center mt-4">
                 <button
                   className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
                   onClick={openDeleteConfirmMultiple}
@@ -388,8 +428,6 @@ export default function AdminConsultancy({ theme, toggle }) {
                 </button>
               </div>
             )}
-          </div>
-        )}
 
         {/* FOOTER ACTIONS */}
         <div className="flex flex-row justify-end gap-4 mr-12 mb-8">

@@ -181,7 +181,7 @@ export default function Gall({ gallery }) {
 
       {isEditing && (
         <div className="mt-4 flex gap-4 items-center">
-          <label className="bg-gray-400 text-white px-3 py-2 rounded cursor-pointer">
+          <label className="bg-gray-300 w-[410px] h-[350px] flex justify-center items-center border-4 border-dashed hover:border-bg-secd border-bg-text text-text px-3 py-2 rounded cursor-pointer">
             + Add New Image
             <input
               type="file"
@@ -193,7 +193,7 @@ export default function Gall({ gallery }) {
 
           {selectedRows.size > 0 && (
             <button
-              className="bg-red-600 text-white px-3 py-2 rounded"
+              className="bg-red-600  flex justify-end mr-auto ml-40 text-white px-3 py-2 rounded"
               onClick={openDeleteConfirm}
             >
               <Trash2 className="inline mr-2" /> Delete Selected
@@ -213,7 +213,7 @@ export default function Gall({ gallery }) {
             </button>
             {hasUnsavedChanges && (
               <button
-                className="flex items-centerbg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+                className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
                 onClick={handleSave}
               >
                 Save
