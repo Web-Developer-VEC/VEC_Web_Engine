@@ -21,7 +21,7 @@
         "s_no": 1,
         "start_up_name": "IP EVER LLP",
         "directors": ["Dr.A.Balajiganesh"],
-        "type": "Faculty",
+        "type": " y",
         "date_of_registration": "16.07.2021",
         "corporate_identity_number": "AAX-8010",
         "udyam_number": "UDYAM-TN-02-0116060"
@@ -123,19 +123,19 @@
     "data": [
       {
         "name": "Dr.Nirmal",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       },
       {
         "name": "Dr.Jeeva Kathiravan",
-        "image": "",
+        "image_path": "",
         "Designation": "",
         "position": "Pre-Incubation Head(IEDC)"
       },
       {
         "name": "Mr.M.Yuvaraj",
-        "image": "",
+        "image_path": "",
         "Designation": "",
         "position": "MSME Head"
       }
@@ -146,39 +146,39 @@
     "data": [
       {
         "name": "INCUBATION CENTER (VELAMMAL INCUBATION)",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/images/incubation/1.webp"
       },
       {
         "name": "PRE-INCUBATION (NEW GEN IEDC)",
-        "image": "/static/images/incubation/2.webp"
+        "image_path": "/static/images/incubation/2.webp"
       },
       {
         "name": "MAKERS LAB",
-        "image": "/static/images/incubation/3.webp"
+        "image_path": "/static/images/incubation/3.webp"
       },
       {
         "name": "IPR CELL",
-        "image": "/static/images/incubation/4.webp"
+        "image_path": "/static/images/incubation/4.webp"
       },
       {
         "name": "IDEA & INNOVATION CELL",
-        "image": "/static/images/incubation/5.webp"
+        "image_path": "/static/images/incubation/5.webp"
       },
       {
         "name": "STARTUP CELL",
-        "image": "/static/images/incubation/6.webp"
+        "image_path": "/static/images/incubation/6.webp"
       },
       {
         "name": "DESIGN CENTRE",
-        "image": "/static/images/incubation/7.webp"
+        "image_path": "/static/images/incubation/7.webp"
       },
       {
         "name": "TINKERING LAB",
-        "image": "/static/images/incubation/8.webp"
+        "image_path": "/static/images/incubation/8.webp"
       },
       {
         "name": "ENTREPRENEURSHIP CELL",
-        "image": "/static/images/incubation/9.webp"
+        "image_path": "/static/images/incubation/9.webp"
       }
     ]
   },
@@ -186,8 +186,8 @@
     "type": "projects",
     "data": [
       {
-        "title": "MSME IDEA HACKATHON 5.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 5.0",
+        "content": [
           {
             "number": 223,
             "label": "Received Ideas"
@@ -195,8 +195,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 4.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 4.0",
+        "content": [
           {
             "number": 78,
             "label": "Received Ideas"
@@ -212,8 +212,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 3.0 (Women)",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 3.0 (Women)",
+        "content": [
           {
             "number": 198,
             "label": "Received Ideas"
@@ -229,8 +229,8 @@
         ]
       },
       {
-        "title": "IEDC",
-        "stats": [
+        "category": "IEDC",
+        "content": [
           {
             "number": 60,
             "label": "2.84 c"

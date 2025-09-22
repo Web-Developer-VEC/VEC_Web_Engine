@@ -467,13 +467,11 @@
         [
             {
             "image_path": "/static/images/infrastructure/003/1.webp",
-            "image_name": "ENGINEERING CHEMISTRY LABORATORY",
-            "image_content": ""
+            "image_name": "ENGINEERING CHEMISTRY LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/003/2.webp",
-            "image_name": "ELECTRO CHEMISTRY RESEARCH LABORATORY",
-            "image_content": ""
+            "image_name": "ELECTRO CHEMISTRY RESEARCH LABORATORY"
             }
         ]
       }
