@@ -41,11 +41,15 @@
         "content": [
           {
             "header": "PEO 1",
-            "content": "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
+            "content": "Build successful careers in interdisciplinary domains by applying Artificial Intelligence and Data Science knowledge to solve real-world problems."
           },
           {
             "header": "PEO 2",
-            "content": "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+            "content": "Excel in higher education, research, or entrepreneurship while upholding strong ethical and social values."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Demonstrate professional growth and adaptability by contributing to technological advancements and continuous learning in AI and Data Science"
           }
         ]
       },
@@ -765,81 +769,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities":[
-                {
-                "date": "06/10/2023",
-                "name_of_event": "Seminar on Development of IOT Applications",
-                "coordinator": "Mrs. J. Savija\nMrs. S. Mythili",
-                "resource_person": "Mr. Kamala Kannan,\nLead Technical Solution Architect,\nDXC Technology",
-                "beneficiaries": "IV YEAR",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path": ["/static/images/dept_activities/001/Development_at_IOT.webp"]
-                },
-                {
-                "date": "27/09/2023",
-                "name_of_event": "Hands on training-Big data processing : Hadoop",
-                "coordinator": "Mrs.A.Prema\nMrs.S.Saranya",
-                "resource_person": "Ms.J.Purnima\nSenior Associate\nFord motor company chennai.",
-                "beneficiaries": "IV Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path":["/static/images/dept_activities/001/Hadoop.webp"]
-                },
-                {
-                "date": "05/09/2023",
-                "name_of_event": "Workshop on Cloud Enabling Technologies",
-                "coordinator": "Mrs.P.V.RajaSuganya\nMrs.R.Kavitha",
-                "resource_person": "Mr.Shanmuga raja\nCTO,Netstack Technology Solutions.",
-                "beneficiaries": "III Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path": ["/static/images/dept_activities/001/Cloud_Enabling_Technologies.webp"]
-                },
-                {
-                "date": "19/08/2023",
-                "name_of_event": "Hands on Workshop on AWS Cloud",
-                "coordinator": "Mrs.R.Kavitha\nMrs.P.V.RajaSuganya",
-                "resource_person": "Mr.Shanmuga raja\nCTO-Netstack Technology Solutions.",
-                "beneficiaries": "IV year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path": ["/static/images/dept_activities/001/AWS_Cloud_Workshop.webp"]
-                },
-                {
-                "date": "08/11/2023",
-                "name_of_event": "Collision Resolution Techniques in Hashing.",
-                "coordinator": "Mrs.A.Prema\nMrs.P.V.RajaSuganya",
-                "resource_person": "Mrs.K.BalaSaranya",
-                "beneficiaries": "II Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path":["/static/images/dept_activities/001/Collision_Resolution.webp"]
-                },
-                {
-                "date": "06/11/2023",
-                "name_of_event": "Guest lecture on memory management in computer architecture",
-                "coordinator": "Mrs.S.Saranya\nMrs.R.Kavitha",
-                "resource_person": "Dr.A.Arockia Abins",
-                "beneficiaries": "II Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path":["/static/images/dept_activities/001/Memory_Management.webp"]
-                },
-                {
-                "date": "20/09/2023",
-                "name_of_event": "Guest Lecture on Genetic programming in Machine Learning",
-                "coordinator": "Mrs.S.Vijayalakshmii\nMrs.Vinisha Gladys Belshi",
-                "resource_person": "Mrs.M.Maheswari\nAssistant Professor\nDMI College of Engineering",
-                "beneficiaries": "III Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path": ["/static/images/dept_activities/001/Genetic_Programming_in_ML.webp"]
-                },
-                {
-                "date": "31/08/2023",
-                "name_of_event": "Guest Lecture on Utility of AI in India and abroad",
-                "coordinator": "Mrs.T.Hannah Rose Esther\nMrs.M.Priya\nMrs.P.Nithya",
-                "resource_person": "Dr.V.Balaji.\nAssociate Professor/E&CE,\nMAI-NEFHI College of Engineering and Technology.",
-                "beneficiaries": "II Year",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path":["/static/images/dept_activities/001/Utility_of_AI.webp"]
-                }
-            ]
+      ]
         },
         {
           "year": "2021 - 2022", 
@@ -876,18 +806,8 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities":[
-                {
-                "date": "1.11.2022&\n2.11.2022",
-                "name_of_event": "Workshop on Artificial Intelligence and deep learning",
-                "coordinator": "Mrs.S.Saranya &Mrs.A.Prema",
-                "resource_person": "Dr.S.Sibi Chakkaravathy,\nAssociate Professor,VIT,Andhra Pradesh",
-                "beneficiaries": "III,II Year Students",
-                "relevant_PO_PSO": "PSO1,PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
-                "image_path": ["/static/images/dept_activities/001/Workshop _on_DL.webp"]
-                }
-           ]
+      ]
+           
             }
 
         ]
@@ -1083,53 +1003,43 @@
         "content": [
           {
             "image_path": "/static/images/infrastructure/001/1.webp",
-            "image_name": "DATA SCIENCE LABORATORY",
-            "image_content": ""
+            "image_name": "DATA SCIENCE LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/2.webp",
-            "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY",
-            "image_content": ""
+            "image_name": "PROBLEM SOLVING AND PROGRAMMING LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/3.webp",
-            "image_name": "PROGRAMMING LABORATORY",
-            "image_content": ""
+            "image_name": "PROGRAMMING LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/4.webp",
-            "image_name": "DATA STRUCTURES LABORATORY",
-            "image_content": ""
+            "image_name": "DATA STRUCTURES LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/5.webp",
-            "image_name": "OBJECT ORIENTED PROGRAMMING LABORATORY",
-            "image_content": ""
+            "image_name": "OBJECT ORIENTED PROGRAMMING LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/6.webp",
-            "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY",
-            "image_content": ""
+            "image_name": "DATABASE MANAGEMENT SYSTEMS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/7.webp",
-            "image_name": "DATA SCIENCE AND ANALYTICS LABORATORY",
-            "image_content": ""
+            "image_name": "DATA SCIENCE AND ANALYTICS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/8.webp",
-            "image_name": "MACHINE LEARNING LABORATORY",
-            "image_content": ""
+            "image_name": "MACHINE LEARNING LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/9.webp",
-            "image_name": "DEEP LEARNING LABORATORY",
-            "image_content": ""
+            "image_name": "DEEP LEARNING LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/001/10.webp",
-            "image_name": "PROJECT LABORATORY",
-            "image_content": ""
+            "image_name": "PROJECT LABORATORY"
           }
         ]
       }
@@ -1152,87 +1062,60 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
+           
             "ORGANISATION_NAME": "NET stack Technology Solutions",
             "MONTH_AND_YEAR": "22-12-2022",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "/static/images/mous/001/net_stack_technology_solutions.jpg",
-            "PDF_PATH": "manualNss.pdf",
-            "ACTIVITIES_PLANNED": [
-              "AI Research",
-              "Data Science Workshops",
-              "Collaborative Projects"
-            ]
+            "VALIDITY": "Till date"
+            
           },
           {
-            "S_NO": 2,
+            
             "ORGANISATION_NAME": "ArjunVision Tech Solutions",
             "MONTH_AND_YEAR": "22-02-2023",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "/static/images/mous/001/arjunvision_tech_solutions.jpg",
-            "ACTIVITIES_PLANNED": ["AI Solutions", "Machine Learning Research"]
-          },
+            "VALIDITY": "Till date"
+        },
           {
-            "S_NO": 3,
+          
             "ORGANISATION_NAME": "M/S Tata Elxsi Ltd",
             "MONTH_AND_YEAR": "23-02-2022",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "/static/images/mous/001/m/s_tata_elxsi_ltd.jpg",
-            "ACTIVITIES_PLANNED": ["Autonomous Systems", "IoT Projects"]
+            "VALIDITY": "Till date"
+            
           },
           {
-            "S_NO": 4,
+            
             "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
             "MONTH_AND_YEAR": "2023",
-            "VALIDITY": "5 Years",
-            "LOGO_PATH": "/static/images/mous/001/digialert_solutions_private_limited.jpg",
-            "ACTIVITIES_PLANNED": [
-              "Cybersecurity Initiatives",
-              "Cloud Solutions"
-            ]
+            "VALIDITY": "5 Years"
           },
           {
-            "S_NO": 5,
+          
             "ORGANISATION_NAME": "Aristo Creative Technologies",
             "MONTH_AND_YEAR": "2022",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "/static/images/mous/001/aristo_creative_technologies.jpg",
-            "ACTIVITIES_PLANNED": ["Creative AI", "Media and Art Integration"]
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 6,
+            
             "ORGANISATION_NAME": "Cognizant Technology Solutions India Private Limited",
             "MONTH_AND_YEAR": "15-02-2024",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "/static/images/mous/001/cognizant_technology_solutions_india_private_limited.jpg",
-            "ACTIVITIES_PLANNED": [
-              "AI-enabled Solutions",
-              "Blockchain Research"
-            ]
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 7,
+            
             "ORGANISATION_NAME": "Sify Technologies",
             "MONTH_AND_YEAR": "09-08-2024",
-            "VALIDITY": "5 Years",
-            "LOGO_PATH": "/static/images/mous/001/sify_technologies.jpg",
-            "ACTIVITIES_PLANNED": ["Digital Transformation", "Cloud Solutions"]
+            "VALIDITY": "5 Years"
           },
           {
-            "S_NO": 8,
+          
             "ORGANISATION_NAME": "Hexaware Technologies",
             "MONTH_AND_YEAR": "12-08-2024",
-            "VALIDITY": "3 Years",
-            "LOGO_PATH": "/static/images/mous/001/hexaware_technologies.jpg",
-            "ACTIVITIES_PLANNED": ["AI in Finance", "Automation Research"]
+            "VALIDITY": "3 Years"
           },
           {
-            "S_NO": 9,
+          
             "ORGANISATION_NAME": "Movate Technologies Private Ltd",
             "MONTH_AND_YEAR": "04-11-2024",
-            "VALIDITY": "3 Years",
-            "LOGO_PATH": "/static/images/mous/001/movate_technologies_private_ltd.jpg",
-            "ACTIVITIES_PLANNED": ["IT Solutions", "Cloud Computing"]
+            "VALIDITY": "3 Years"
           }
         ]
       }

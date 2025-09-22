@@ -401,18 +401,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-           "activities":[
-                {
-                "date": "17.02.2025",
-                "name_of_event": "Energy and Fuel Users Association of India (ENFUSE) Professional Society Student Chapter, Saksham 2025",
-                "coordinator": "Dr.M.Senthamil Selvan",
-                "resource_person": "Shri. Shankaran Ramalingam,National President, Enfuse",
-                "beneficiaries": "2nd & 3rd Year students from AME & EEE",
-                "relevant_PO_PSO": "PO6, PO7, PO12 & PSO1",
-                "image_path": ["/static/images/dept_activities/002/1.1.webp","/static/images/dept_activities/002/1.2.webp"]
-                }
-            ]
+      ]
         },
         {
            "year":"2023 - 2024",
@@ -449,63 +438,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities":[
-                {
-                "date": "01.03.2024",
-                "name_of_event": "Student Technical National Level Symposium CARAXE 24",
-                "coordinator": "Mr.M.Yuvaraj,Mr.P.Thennarasu",
-                "resource_person": "Mr.ManojVehicle/CAB Architect Volvo",
-                "beneficiaries": "External participants",
-                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/2.1.webp"]
-                },
-                {
-                "date": "20.03.2024",
-                "name_of_event": "NationalConference onEmerging Trends in Automotive andMechanical Sciences",
-                "coordinator": "Dr.V.Chandran,Mr.P.Thennarasu",
-                "resource_person": "",
-                "beneficiaries": "External participants",
-                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/3.1.webp","/static/images/dept_activities/002/3.2.webp"]
-                },
-                {
-                "date": "27.01.2024",
-                "name_of_event": "Seminar on  201cGovernment Funding Schemes for Startup 2019s and MSME 2019s 201d",
-                "coordinator": "Mr.P.Thennarasu",
-                "resource_person": "Dr.E.Bhaskaran, Join Director (Engineering),District Industires Centre (D.I.C), Thirupattur, Department of Industries and Commerce, MSME Department, Government of Tamil Nadu.",
-                "beneficiaries": "2nd & 3rd Year students from AME",
-                "relevant_PO_PSO": "PO6, PO7, PO8, PO9, PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/4.1.webp","/static/images/dept_activities/002/4.2.webp"]
-                },
-                {
-                "date": "09.02.2024",
-                "name_of_event": "The Imperative of Model Based development in the Automotive Industry",
-                "coordinator": "Mr.P.Thennarasu",
-                "resource_person": "Mr.Narendaran,Lead Engineering,Bosch Global Software Solution.",
-                "beneficiaries": "2nd & 3rd Year students from AME",
-                "relevant_PO_PSO": "PO5, PO7, PO8, PO9, PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/6.1.webp"]
-                },
-                {
-                "date": "23.3.2024",
-                "name_of_event": "Scope of entrepreneurship in supply chain management",
-                "coordinator": "Mr.M.Yuvaraj",
-                "resource_person": "Mr.Nitin Raaj,Manager Product Supply,Procter and Gamble",
-                "beneficiaries": "2nd,3rd & 4th Year students from AME",
-                "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/7.1.webp"]
-                },
-                {
-                "date": "02.3.2024",
-                "name_of_event": "Project Expo",
-                "coordinator": "Mr.M.Yuvaraj",
-                "resource_person": "Mr.Arokiavelu, Joint Editor Motor Vikatan",
-                "beneficiaries": "2nd,3rd & 4th Year students from AME",
-                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/8.1.webp","/static/images/dept_activities/002/8.2.webp"]
-                }
-            ]
+      ]
         },
         {
            "year":"2022 - 2023",
@@ -542,18 +475,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities":[
-                {
-                "date": "10.02.2023",
-                "name_of_event": "Virtual Hands-on Training on Automotive Components and Electric Vehicles",
-                "coordinator": "Mr.M.Senthamil Selvan",
-                "resource_person": "Dr.A.RagothamanDivisional Manager  2013 Product Development,Ashik Leyland Technical Centre, VVC.",
-                "beneficiaries": "External participants",
-                "relevant_PO_PSO": "PO1, PO2, PO6, PO7, PO8, PO9, P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/9.1.webp"]
-                }
-            ]
+      ]
         },
         {
           "year":"2021 - 2022", 
@@ -590,18 +512,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities":[
-                {
-                "date": "24.12.2022",
-                "name_of_event": "One Day Hands-on Training Workshop on 'Patent Drafting for KAPILA Scheme'",
-                "coordinator": "Mr.P.Thennarasu",
-                "resource_person": "Dr. A. Balaji Ganesh,Research Dean, Velammal Engineering College.Dr. S. Baskara SethupathyAssociate Research Dean, Velammal Engineering College",
-                "beneficiaries": "2nd & 3rd Year students from AME",
-                "relevant_PO_PSO": "PO6, PO7, PO8, PO9,P11 PO12 & PSO1",
-                "image_path":["/static/images/dept_activities/002/5.1.webp"]
-                }
-            ]
+      ]
         }
 
         ]
@@ -747,63 +658,51 @@
         [
             {
             "image_path": "/static/images/infrastructure/002/1.webp",
-            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1",
-            "image_content": ""
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1"
             },
             {
             "image_path": "/static/images/infrastructure/002/2.webp",
-            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2",
-            "image_content": ""
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2"
             },
             {
             "image_path": "/static/images/infrastructure/002/3.webp",
-            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3",
-            "image_content": ""
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3"
             },
             {
             "image_path": "/static/images/infrastructure/002/4.webp",
-            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4",
-            "image_content": ""
+            "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4"
             },
             {
             "image_path": "/static/images/infrastructure/002/5.webp",
-            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY",
-            "image_content": ""
+            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/002/6.webp",
-            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY",
-            "image_content": ""
+            "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/002/7.webp",
-            "image_name": "VEHICLE TESTING LABORATORY-1",
-            "image_content": ""
+            "image_name": "VEHICLE TESTING LABORATORY-1"
             },
             {
             "image_path": "/static/images/infrastructure/002/8.webp",
-            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY",
-            "image_content": ""
+            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/002/9.webp",
-            "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY",
-            "image_content": ""
+            "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/002/10.webp",
-            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY",
-            "image_content": ""
+            "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
             },
             {
             "image_path": "/static/images/infrastructure/002/11.webp",
-            "image_name": "VEHICLE TESTING LABORATORY-2",
-            "image_content": ""
+            "image_name": "VEHICLE TESTING LABORATORY-2"
             },
             {
             "image_path": "/static/images/infrastructure/002/12.webp",
-            "image_name": "VEHICLE TESTING LABORATORY-3",
-            "image_content": ""
+            "image_name": "VEHICLE TESTING LABORATORY-3"
             }
         ]
       }
@@ -827,108 +726,81 @@
         "category": "mous_details",
         "content": [
           {
-        "S_NO": 1,
+    
         "ORGANISATION_NAME": "Sify Technologies Limited",
         "MONTH_AND_YEAR": "09.08.2024",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 2,
+       
         "ORGANISATION_NAME": "Hexaware Technologies Limited",
         "MONTH_AND_YEAR": "12.08.2024",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 3,
         "ORGANISATION_NAME": "Movate Technologies Private Limited",
         "MONTH_AND_YEAR": "04.11.2024",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 4,
+       
         "ORGANISATION_NAME": "Akash Industries",
         "MONTH_AND_YEAR": "23.11.2022",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
     },
     {
-        "S_NO": 5,
+        
         "ORGANISATION_NAME": "V Ramakrishna Polytechnic College",
         "MONTH_AND_YEAR": "06.09.2022",
-        "VALIDITY": "5 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "5 Years"
     },
     {
-        "S_NO": 6,
+        
         "ORGANISATION_NAME": "E-Way Electric",
         "MONTH_AND_YEAR": "31.05.2022",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 7,
+        
         "ORGANISATION_NAME": "Kathir Sudhir Automation India Pvt. Ltd",
         "MONTH_AND_YEAR": "24.05.2022",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 8,
+        
         "ORGANISATION_NAME": "Sunbam Technologies",
         "MONTH_AND_YEAR": "02.04.2022",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 9,
+       
         "ORGANISATION_NAME": "TATA ELXSI Limited",
         "MONTH_AND_YEAR": "23.02.2022",
-        "VALIDITY": "1 Year",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "1 Year"
     },
     {
-        "S_NO": 10,
+       
         "ORGANISATION_NAME": "Diaganol CADD",
         "MONTH_AND_YEAR": "23.10.2019",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
     },
     {
-        "S_NO": 11,
+       
         "ORGANISATION_NAME": "Preethi Kitchen Appliances Pvt. Ltd.",
         "MONTH_AND_YEAR": "09.01.2019",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
     },
     {
-        "S_NO": 12,
+        
         "ORGANISATION_NAME": "Tamilnadu Dr. J. Jayalalitha Fisheries University",
         "MONTH_AND_YEAR": "24.12.2018",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
     },
     {
-        "S_NO": 13,
+       
         "ORGANISATION_NAME": "ProCAE",
         "MONTH_AND_YEAR": "01.02.2018",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
     }
         ]
       }
