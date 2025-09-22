@@ -11,11 +11,23 @@
         "/static/images/about_vec/aboutvec2.webp",
         "/static/images/about_vec/aboutvec3.webp"
       ],
-      "pdf_path": [
-        "uploads/2025/07/EOA_Report_2025-2026.pdf",
-        "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
-        "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
-        "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+      "about_us_pdf": [
+        {
+          "name": "AICTE Approval",
+          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"
+        },
+        {
+          "name": "University Affiliation",
+          "pdf_path": "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf"
+        },
+        {
+          "name": "Governing Body",
+          "pdf_path": "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf"
+        },
+        {
+          "name": "Mandatory Disclosures",
+          "pdf_path": "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+        }
       ]
     }
   },
@@ -87,81 +99,73 @@
     "type": "AISHE",
     "data": [
       {
-        "category":"2021-2022",
-        "content":[
+        "category": "2021-2022",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
-            }
-      ]
-        
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+          }
+        ]
       },
-        {
-        "category":"2022-2023",
-        "content":[
+      {
+        "category": "2022-2023",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"       
-
-            }
-      ]
-        
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"
+          }
+        ]
       },
-        {
-        "category":"2023-2024",
-        "content":[
+      {
+        "category": "2023-2024",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"       
-
-            }
-      ]
-        
-        },
-        {
-          "category": "2024-2025",
-          "content": [
-            {
-              "name": "Certificate",
-              "pdf_path": "/static/pdfs/about_vec/AISHE/2024-2025/AISHE 2024-2025 Certificate.pdf"
-            },
-            {
-              "name": "Data Capture Format",
-              "pdf_path": ""
-            },
-            {
-              "name": "Teaching Staff Details",
-              "pdf_path": ""
-            }
-          ]
-        }
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"
+          }
+        ]
+      },
+      {
+        "category": "2024-2025",
+        "content": [
+          {
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2024-2025/AISHE 2024-2025 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": ""
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": ""
+          }
+        ]
+      }
     ]
   }
 ]
