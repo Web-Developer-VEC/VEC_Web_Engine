@@ -313,7 +313,7 @@ const LIBFacl = ({ faculty }) => {
                   className="flex items-center gap-2 px-6 py-2 rounded-md bg-[#fdcc03] text-text shadow-md hover:bg-[#800000] transition hover:text-prim"
                   onClick={handleSave}
                 >
-                  <Save size={18} /> Save
+                 Save
                 </button>
               )}
               

@@ -9,11 +9,12 @@ import { Plus, Send, Pencil, Eye, X } from "lucide-react";
 const AdminREGULATION = ({ theme, toggle }) => {
   const [regulationData, setRegulationData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
+  const [initialData, setInitialData] = useState([]); // 🔑 first baseline
+  const [sessionBackup, setSessionBackup] = useState([]); // 🔑 snapshot for current edit session
   const [hasChanges, setHasChanges] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setLoading] = useState(true);
   const [deletedRegs, setDeletedRegs] = useState([]);
-
 
   // UI states
   const [isEditing, setIsEditing] = useState(false);
@@ -65,8 +66,10 @@ const AdminREGULATION = ({ theme, toggle }) => {
         const response = await axios.post("/api/main-backend/exam", {
           type: "regulation",
         });
-        setRegulationData(response.data.data || []);
-        setOriginalData(response.data.data || []);
+        const data = response.data.data || [];
+        setRegulationData(data);
+        setOriginalData(data);
+        setInitialData(data); // 🔑 keep very first baseline
         setLoading(false);
       } catch (error) {
         console.error("Error Fetching Regulation data");
@@ -81,12 +84,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
     fetchData();
   }, [navigate]);
 
-  // Track changes
+  // Track changes relative to sessionBackup
   useEffect(() => {
     setHasChanges(
-      JSON.stringify(regulationData) !== JSON.stringify(originalData)
+      JSON.stringify(regulationData) !== JSON.stringify(sessionBackup)
     );
-  }, [regulationData, originalData]);
+  }, [regulationData, sessionBackup]);
 
   // Checkbox selection
   const handleCheckboxChange = (index) => {
@@ -110,28 +113,36 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
   };
 
-  // Cancel editing
+  // Start editing session
+  const handleStartEditing = () => {
+    setSessionBackup(JSON.parse(JSON.stringify(regulationData))); // deep copy snapshot
+    setIsEditing(true);
+  };
+
+  // Cancel editing (restore snapshot of current session)
   const handleCancel = () => {
-    setRegulationData(originalData);
+    setRegulationData(sessionBackup);
     setIsEditing(false);
     setSelectedRegs([]);
   };
 
-  // Save changes
+  // Save changes (commit this session’s edits as new baseline)
   const handleSave = () => {
+    setOriginalData(regulationData);
     setHasChanges(false);
     setIsEditing(false);
     setIsDone(true);
   };
 
-  // Discard all changes
+  // Discard all changes (reset to very first fetch state)
   const handleDiscardChanges = () => {
-    const clonedData = originalData.map((reg) => ({
+    const clonedData = initialData.map((reg) => ({
       category: reg.category,
       links: reg.links.map((link) => ({ ...link })),
     }));
 
     setRegulationData(clonedData);
+    setOriginalData(clonedData);
     setIsEditing(false);
     setIsDone(false);
     setShowPopup(false);
@@ -145,22 +156,25 @@ const AdminREGULATION = ({ theme, toggle }) => {
     ]);
     setHasChanges(false);
     setSelectedRegs([]);
+    setDeletedRegs([]);
   };
 
   // Undo a change for Request Modal
   const undoChange = (index) => {
-    const cloned = [...regulationData];
-    cloned[index] = { ...originalData[index] };
-    setRegulationData(cloned);
-    if (selectedRegs.includes(index)) setSelectedRegs(selectedRegs.filter(i => i !== index));
-  };
+  const cloned = [...regulationData];
+  cloned[index] = { ...initialData[index] };  // 🔑 revert to very first baseline
+  setRegulationData(cloned);
+  if (selectedRegs.includes(index)) {
+    setSelectedRegs(selectedRegs.filter(i => i !== index));
+  }
+};
+
+
   // Final submission from Request Changes modal
   const handleRequest = () => {
     console.log("Final submitted data:", regulationData);
-    setIsDone(false); // you can also reset other states if needed
-    // Optionally, send data to backend here
+    setIsDone(false);
   };
-
 
   // Add new popup
   const handleAddNew = () => {
@@ -209,11 +223,11 @@ const AdminREGULATION = ({ theme, toggle }) => {
       ) : (
         <div className="regulation-container mt-10">
           {/* Top Edit Button */}
-          {!isEditing && !isDone && (
+          {!isEditing && (
             <div className="flex justify-end pr-8 my-0 mr-10">
               <button
                 className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-text gap-2 hover:bg-[#800000] hover:text-prim"
-                onClick={() => setIsEditing(true)}
+                onClick={handleStartEditing}
               >
                 <Pencil size={16} /> Edit
               </button>
@@ -297,13 +311,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] flex items-center gap-2 hover:text-prim"
                     onClick={handleSave}
                   >
-                     Save
+                    Save
                   </button>
                 )}
               </>
             )}
 
-            {isDone && (
+            {isDone && !isEditing && (
               <>
                 <button
                   className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
@@ -358,7 +372,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                 <span className="font-medium">{link.name}</span>
                 <div className="flex gap-2 items-center">
                   <button
-                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    className="px-2 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
                     onClick={() =>
                       document.getElementById(`file-${idx}`).click()
                     }
@@ -396,7 +410,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
             <div className="flex justify-end gap-3 mt-4">
               <button
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
                 onClick={() => {
                   const newReg = { category: newYear, links: newLinks };
                   handleAddOrUpdateRegulation(
@@ -440,18 +454,18 @@ const AdminREGULATION = ({ theme, toggle }) => {
             </p>
             <div className="flex justify-center gap-4">
               <button
-              className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
-              onClick={() => {
-                setDeletedRegs(selectedRegs);  // store deleted items
-                setRegulationData((prev) =>
-                  prev.filter((_, idx) => !selectedRegs.includes(idx))
-                );
-                setSelectedRegs([]);
-                setShowDeleteConfirm(false);
-              }}
-            >
-              Yes, Delete
-            </button>
+                className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
+                onClick={() => {
+                  setDeletedRegs(selectedRegs);
+                  setRegulationData((prev) =>
+                    prev.filter((_, idx) => !selectedRegs.includes(idx))
+                  );
+                  setSelectedRegs([]);
+                  setShowDeleteConfirm(false);
+                }}
+              >
+                Yes, Delete
+              </button>
 
               <button
                 className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
@@ -483,59 +497,57 @@ const AdminREGULATION = ({ theme, toggle }) => {
                 </tr>
               </thead>
               <tbody>
-              {regulationData.map((reg, index) => {
-                const original = originalData[index] || { category: "", links: [] };
-                if (JSON.stringify(reg) !== JSON.stringify(original)) {
+                {regulationData.map((reg, index) => {
+                  const original = initialData[index] || { category: "", links: [] };
+                  if (JSON.stringify(reg) !== JSON.stringify(original)) {
+                    return (
+                      <tr key={index}>
+                        <td className="border p-2 text-blue-600">Updated</td>
+                        <td className="border p-2">{reg.category}</td>
+                        <td className="border p-2">
+                          {reg.links.map(l => l.name).join(", ")}
+                        </td>
+                        <td className="border p-2">
+                          <button
+                            onClick={() => undoChange(index)}
+                            className="p-1 rounded hover:bg-gray-100"
+                          >
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  }
+                  return null;
+                })}
+
+                {deletedRegs.map((idx) => {
+                  const reg = originalData[idx];
                   return (
-                    <tr key={index}>
-                      <td className="border p-2 text-blue-600">Edited</td>
+                    <tr key={`deleted-${idx}`}>
+                      <td className="border p-2 text-red-600">Deleted</td>
                       <td className="border p-2">{reg.category}</td>
                       <td className="border p-2">
                         {reg.links.map(l => l.name).join(", ")}
                       </td>
                       <td className="border p-2">
                         <button
-                          onClick={() => undoChange(index)}
+                          onClick={() => {
+                            const restored = [...regulationData];
+                            restored.splice(idx, 0, reg);
+                            setRegulationData(restored);
+                            setDeletedRegs(deletedRegs.filter(i => i !== idx));
+                          }}
                           className="p-1 rounded hover:bg-gray-100"
-                          title="Revert this change"
+                          title="Restore deleted item"
                         >
-                          <X size={16} className="text-red-500" />
+                          <X size={16} className="text-green-500" />
                         </button>
                       </td>
                     </tr>
                   );
-                }
-                return null;
-              })}
-
-              {/* Render deleted items */}
-              {deletedRegs.map((idx) => {
-                const reg = originalData[idx];
-                return (
-                  <tr key={`deleted-${idx}`}>
-                    <td className="border p-2 text-red-600">Deleted</td>
-                    <td className="border p-2">{reg.category}</td>
-                    <td className="border p-2">
-                      {reg.links.map(l => l.name).join(", ")}
-                    </td>
-                    <td className="border p-2">
-                      <button
-                        onClick={() => {
-                          const restored = [...regulationData];
-                          restored.splice(idx, 0, reg);
-                          setRegulationData(restored);
-                          setDeletedRegs(deletedRegs.filter(i => i !== idx));
-                        }}
-                        className="p-1 rounded hover:bg-gray-100"
-                        title="Restore deleted item"
-                      >
-                        <X size={16} className="text-green-500" />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+                })}
+              </tbody>
             </table>
 
             <div className="flex justify-end gap-2 mt-6">

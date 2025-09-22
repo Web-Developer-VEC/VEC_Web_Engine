@@ -698,5 +698,4 @@ const AdminCoe = ({ toggle, theme }) => {
     </>
   );
 };
-
 export default AdminCoe;
