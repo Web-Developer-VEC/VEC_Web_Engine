@@ -43,25 +43,25 @@
         "name": "SENTHIVEL T",
         "designation": "Library Assistant",
         "educational_qualification": "M.A., M.L.I.Sc",
-        "image": "/static/images/library/faculty/Senthivel T.webp"
+        "image_path": "/static/images/library/faculty/Senthivel T.webp"
       },
       {
         "name": "KUMARAVEL P",
         "designation": "Library Assistant",
         "educational_qualification": "(B.A)",
-        "image": "/static/images/library/faculty/Kumaravel P.webp"
+        "image_path": "/static/images/library/faculty/Kumaravel P.webp"
       },
       {
         "name": "PANCHAVARNAM M",
         "designation": "Library Assistant",
         "educational_qualification": "B.Com",
-        "image": "/static/images/library/faculty/Panchavarnam M.webp"
+        "image_path": "/static/images/library/faculty/Panchavarnam M.webp"
       },
       {
         "name": "UDAYAKAL P",
         "designation": "Library Assistant",
         "educational_qualification": "B.A., B.L.I.Sc",
-        "image": "/static/images/library/faculty/Udayakkal P.webp"
+        "image_path": "/static/images/library/faculty/Udayakkal P.webp"
       }
     ]
    
@@ -279,32 +279,32 @@
           {
             "title": "REPROGRAPHY SECTION",
             "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
-            "image": "/static/images/library/library_images/REPROGRAPHY SECTION.webp"
+            "image_path": "/static/images/library/library_images/REPROGRAPHY SECTION.webp"
           },
           {
             "title": "STACK ROOM WITH READING HALL",
             "description": "A well-equipped, multi-storied stock room with modern book stacks for easy access. Books are classified using the Universal Decimal Classification, and an Open Access System is followed.",
-            "image": "/static/images/library/library_images/STACK ROOM WITH READING HALL.webp"
+            "image_path": "/static/images/library/library_images/STACK ROOM WITH READING HALL.webp"
           },
           {
             "title": "READING HALL",
             "description": "Designed to provide a wonderful reading atmosphere with comfortable tables and chairs for 250 users. Students can bring books and journals from stacks for reference work.",
-            "image": "/static/images/library/library_images/Common.webp"
+            "image_path": "/static/images/library/library_images/Common.webp"
           },
           {
             "title": "PERIODICAL SECTION",
             "description": "Contains technical and non-technical journals of national and international origins. Latest issues are displayed outside, while back volumes are stored for reference.",
-            "image": "/static/images/library/library_images/PERIODICAL SECTION.webp"
+            "image_path": "/static/images/library/library_images/PERIODICAL SECTION.webp"
           },
           {
             "title": "REFERENCE SECTION",
             "description": "Holds about 5000 reference books on Engineering, Science, Humanities, English, Encyclopedias & Dictionaries, including a collection of rare books.",
-            "image": "/static/images/library/library_images/REFERENCE SECTION.webp"
+            "image_path": "/static/images/library/library_images/REFERENCE SECTION.webp"
           },
           {
             "title": "PROJECT REPORT & BACK VOLUMES",
             "description": "The Library houses 2768 journal back volumes covering Engineering, Science, Humanities and Business, along with 3192 student project reports.",
-            "image": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
+            "image_path": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
           }
         ]
       }
@@ -316,22 +316,22 @@
       {
         "title": "NEW ARRIVALS - BOOKS/PERIODICALS",
         "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
-        "image": "/static/images/library/library_images/New Arrivals.webp"
+        "image_path": "/static/images/library/library_images/New Arrivals.webp"
       },
       {
         "title": "IEEE STUDENT BRANCH LIBRARY",
         "description": "The IEEE student branch is highly active, providing access to 50+ IEEE journals and transactions. All students and staff can reference these materials.",
-        "image": "/static/images/library/library_images/Multimedia Library 1.webp"
+        "image_path": "/static/images/library/library_images/Multimedia Library 1.webp"
       },
       {
         "title": "INTERNET / CD BROWSING",
         "description": "Apart from internet access in the computer lab, the library offers four computers for internet and CD browsing.",
-        "image": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
+        "image_path": "/static/images/library/library_images/PROJECT REPORT & BACK VOLUMES.webp"
       },
       {
         "title": "AUDIO VIDEO SECTION",
         "description": "The library contains audio cassettes, video tapes, and CDs to enhance communication skills, subject knowledge, and competitive exam preparation.",
-        "image": "/static/images/library/library_images/Multimedia Library 2.webp"
+        "image_path": "/static/images/library/library_images/Multimedia Library 2.webp"
       }
     ]
   },
@@ -341,9 +341,11 @@
       {
         "category": "Anti-Plagiarism Scanner Software",
         "content": [
-          { "name": "TurnItOut", "link": "https://www.turnitout.com" },
+          { "name": "TurnItOut", 
+          "link": "https://www.turnitout.com" },
 
-          { "name": "Copyscape", "link": "https://www.copyscape.com" },
+          { "name": "Copyscape", 
+          "link": "https://www.copyscape.com" },
           {
             "name": "CodeMatch (CodeSuite)",
             "link": "https://www.zeidmanconsulting.com/CodeSuite.htm"
@@ -395,20 +397,32 @@
         "name": "University of Pennsylvania",
         "url": "http://digital.library.upenn.edu/books"
       },
-      { "name": "Project Gothenburg", "url": "http://www.gutenberg.org" },
-      { "name": "Free e books", "url": "http://www.free-ebooks.net" },
-      { "name": "Free Tech books", "url": "http://www.freetechbooks.com" },
-      { "name": "Campus books", "url": "http://www.campusbooks.com" },
+      { 
+        "name": "Project Gothenburg", 
+        "url": "http://www.gutenberg.org" },
+      { 
+        "name": "Free e books", 
+        "url": "http://www.free-ebooks.net" },
+      { 
+        "name": "Free Tech books", 
+        "url": "http://www.freetechbooks.com" },
+      { 
+        "name": "Campus books", 
+        "url": "http://www.campusbooks.com" },
       {
         "name": "University of Virginia; e-book Library",
         "url": "http://etext.lib.virginia.edu/ebooks/ebooklist.html"
       },
-      { "name": "NAP Open Book", "url": "http://www.nap.edu/index.html" },
+      { 
+        "name": "NAP Open Book", 
+        "url": "http://www.nap.edu/index.html" },
       {
         "name": "Internet public Library",
         "url": "http://www.ipl.org/div/books"
       },
-      { "name": "Direct Text Book", "url": "http://www.directtextbook.com" },
+      { 
+        "name": "Direct Text Book", 
+        "url": "http://www.directtextbook.com" },
       { "name": "e-books", "url": "http://e-books.org" },
       { "name": "e-books Palace", "url": "http://www.ebookpalace.com" },
       {

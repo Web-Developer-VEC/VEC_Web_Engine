@@ -7,11 +7,11 @@
         "content": [
           {
             "name": "Cycle 1 SSR",
-            "pdfs_path": "/static/pdfs/naac/ssr_1.pdf"
+            "pdf_path": "/static/pdfs/naac/ssr_1.pdf"
           },
           {
             "name": "Cycle 2 SSR",
-            "pdfs_path": "/static/pdfs/naac/ssr_2.pdf"
+            "pdf_path": "/static/pdfs/naac/ssr_2.pdf"
           }
         ]
       },
@@ -20,19 +20,19 @@
         "content": [
           {
             "name": "Cycle 1 - 2009-2014",
-            "pdfs_path": "/static/pdfs/naac/cycle1_2009-2014.pdf"
+            "pdf_path": "/static/pdfs/naac/cycle1_2009-2014.pdf"
           },
           {
             "name": "Cycle 2 - 2016-2021",
-            "pdfs_path": "/static/pdfs/naac/cycle2_2016-2021.pdf"
+            "pdf_path": "/static/pdfs/naac/cycle2_2016-2021.pdf"
           },
           {
             "name": "Extended Cycle 2 (2018-2024)",
-            "pdfs_path": "/static/pdfs/naac/extended_cycle2_2018-2024.pdf"
+            "pdf_path": "/static/pdfs/naac/extended_cycle2_2018-2024.pdf"
           },
           {
             "name": "Extended Cycle 2 January 2025 till date",
-            "pdfs_path": "/static/pdfs/naac/extended_cycle2_Jan-2025.pdf"
+            "pdf_path": "/static/pdfs/naac/extended_cycle2_Jan-2025.pdf"
           }
         ]
       }
@@ -47,15 +47,15 @@
         "pdfs": [
           {
             "name": "2018 - 21",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
           },
           {
             "name": "2021 - 22",
-            "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -65,11 +65,11 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+            "pdf_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -79,15 +79,15 @@
         "pdfs": [
           {
             "name": "2018 - 21",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
           },
           {
             "name": "2021 - 22",
-            "pdfs_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -97,11 +97,11 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+            "pdf_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -111,11 +111,11 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
+            "pdf_path": "/static/pdfs/nba/3.Velammal Engg. Collge22_3_2019_19_7_3.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -125,11 +125,11 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+            "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+            "pdf_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
       },
@@ -139,11 +139,11 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+            "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           },
           {
             "name": "2022 - 25",
-            "pdfs_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
+            "pdf_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           }
         ]
       },
@@ -153,7 +153,7 @@
         "pdfs": [
           {
             "name": "2019 - 22",
-            "pdfs_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+            "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
         ]
       }

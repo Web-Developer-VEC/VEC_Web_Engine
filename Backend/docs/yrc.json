@@ -16,7 +16,7 @@
     ]
   },
   {
-    "type": "events",
+    "type": "event",
     "data": [
       {
         "image_path": "/static/images/yrc/event/eco_bloom.webp",
