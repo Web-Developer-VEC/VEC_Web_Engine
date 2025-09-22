@@ -1,9 +1,22 @@
 /* Main Container */
-.AP-main-container {
+.Admin-AP-main-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
+.editable-active {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 4px;
+  min-height: 24px;
+  outline: none;
+}
+
+.editable-active:focus {
+  border-color: #fdcc03; /* blue highlight */
+  box-shadow: 0 0 3px #fdcc03;
+}
+
 
 /* Grid Layout */
 .AP-grid-VM {
@@ -102,7 +115,7 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .AP-main-container {
+  .Admin-AP-main-container {
     padding: 30px 15px;
   }
 
@@ -126,7 +139,7 @@
 }
 
 @media (max-width: 768px) {
-  .AP-main-container {
+  .Admin-AP-main-container {
     padding: 20px;
   }
 
@@ -151,7 +164,7 @@
 }
 
 @media (max-width: 480px) {
-  .AP-main-container {
+  .Admin-AP-main-container {
     padding: 15px;
     display: flex;
     flex-direction: column;
