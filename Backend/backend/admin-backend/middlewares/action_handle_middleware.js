@@ -1,4 +1,4 @@
-const {insertFile , updateFile , deleteFile} = require('./file_handle_middleware')
+const {insertFile , updateFile , deleteFile , updateOriginalData} = require('./file_handle_middleware')
 
 function handleTempAction(insertData, updateData, deleteData) {
   return async function (req, res) {
@@ -16,9 +16,10 @@ function handleTempAction(insertData, updateData, deleteData) {
           break;
 
         case "update":
-          fileResult = await updateFile(tempDoc, mainCollection);
+          fileResult = await updateFile(tempDoc, tempCollection);
           tempDoc.meta_data = fileResult.meta_data; 
           result = await updateData(tempDoc, mainCollection);
+          result1=await updateOriginalData(tempDoc,tempCollection)
           break;
 
         case "delete":
