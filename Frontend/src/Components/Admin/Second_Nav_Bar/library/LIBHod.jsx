@@ -233,7 +233,6 @@ const LIBHod = ({ data }) => {
                   }}
                   className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-text rounded-lg shadow-md hover:bg-[#800000] transition hover:text-prim"
                 >
-                  <Save size={18} />
                   <span>Save</span>
                 </button>
               )}
