@@ -34,6 +34,7 @@ const yrcadmin = require('../second_navbar/yrc_routes')
 const iqacadmin = require('../second_navbar/iqac_routes')
 const incubationadmin = require('../second_navbar/incubation_routes')
 const accreditationsandrankingadmin = require("../second_navbar/accreditations_and_ranking_routes")
+const sportsadmin = require('../second_navbar/sports_routes')
 
 //academics
 const hodadmin = require('../top_navbar/academics_routes/hod_routes')
@@ -44,6 +45,9 @@ const studentachievementsadmin = require('../top_navbar/academics_routes/student
 const mousadmin = require('../top_navbar/academics_routes/mous_routes')
 const pedagogyadmin = require('../top_navbar/academics_routes/pedagogy_routes')
 const syllabusadmin = require("../top_navbar/academics_routes/syllabus_routes")
+const deptresearchadmin = require('../top_navbar/academics_routes/research_routes')
+const visionmissionadmin = require('../top_navbar/academics_routes/vision_mission_routes')
+const facultyadmin = require('../top_navbar/academics_routes/faculty_routes')
 
 //Action routes 
 router.use('',tempstore);
@@ -77,6 +81,7 @@ router.use('',helpdeskadmin);
 router.use('',iqacadmin);
 router.use('',incubationadmin);
 router.use('',accreditationsandrankingadmin);
+router.use('',sportsadmin)
 
 //Academics
 router.use('',hodadmin);
@@ -87,6 +92,9 @@ router.use('',studentachievementsadmin)
 router.use('',mousadmin)
 router.use('',pedagogyadmin)
 router.use('',syllabusadmin)
+router.use('',deptresearchadmin)
+router.use('',facultyadmin)
+router.use('',visionmissionadmin)
 
 
 module.exports = router;
