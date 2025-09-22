@@ -14,7 +14,7 @@ async function moveFile(srcKey, destKey) {
   await s3.send(
     new CopyObjectCommand({
       Bucket: bucketName,
-      CopySource: `${bucketName}/${srcKey}`, // ✅ no leading slash
+      CopySource: `${bucketName}/${srcKey}`, 
       Key: destKey,
     })
   );
@@ -26,7 +26,7 @@ async function moveFile(srcKey, destKey) {
     })
   );
 
-  return `/${destKey}`; // return path to store in DB
+  return `/${destKey}`; 
 }
 
 /**
@@ -39,7 +39,7 @@ async function insertFile(tempDoc, tempCollection) {
   if (!value) continue;
 
   const isArray = Array.isArray(value);
-  const paths = isArray ? value : [value]; // make it an array for processing
+  const paths = isArray ? value : [value]; 
 
   const updatedPaths = await Promise.all(
     paths.map(async (p) => {
@@ -54,7 +54,7 @@ async function insertFile(tempDoc, tempCollection) {
     })
   );
 
-  meta[key] = isArray ? updatedPaths : updatedPaths[0]; // restore string if original
+  meta[key] = isArray ? updatedPaths : updatedPaths[0]; 
 }
 
 
@@ -69,78 +69,121 @@ async function insertFile(tempDoc, tempCollection) {
 /**
  * Update: move old → history, new temp → static
  */
-async function updateFile(tempDoc, mainCollection) {
+async function updateFile(tempDoc, tempCollection) {
   const meta = { ...(tempDoc.meta_data || {}) };
-
-  const existingDoc = await mainCollection.findOne({
-    type: tempDoc.collection_type,
-  });
-
-  if (!existingDoc) {
-    throw new Error("Document not found for update");
-  }
+  const original = { ...(tempDoc.original_data || {}) };
 
   // 1️⃣ Move old files → history
-  const oldMeta = existingDoc.meta_data || {};
-  for (const [key, paths] of Object.entries(oldMeta)) {
-    if (!Array.isArray(paths)) continue;
+  for (const key of new Set([...Object.keys(meta), ...Object.keys(original)])) {
+    const oldValue =
+      original[key] ||
+      (Array.isArray(meta[key]) && meta[key].length > 0 ? meta[key] : null);
 
-    oldMeta[key] = await Promise.all(
+    if (!oldValue) continue;
+
+    const paths = Array.isArray(oldValue) ? oldValue : [oldValue];
+
+    await Promise.all(
       paths.map(async (p) => {
         if (!p) return null;
 
         const srcKey = p.replace(/^\//, "");
-
         if (srcKey.startsWith("static/")) {
           const destKey = srcKey.replace(/^static\//, "history/static/");
-          return await moveFile(srcKey, destKey);
+          await moveFile(srcKey, destKey);
         }
-
-        return p; // already temp/history
+        return null;
       })
     );
   }
 
   // 2️⃣ Promote new temp files → static
-  for (const [key, paths] of Object.entries(meta)) {
-    if (!Array.isArray(paths)) continue;
+  for (const [key, value] of Object.entries(meta)) {
+    if (!value) continue;
 
-    meta[key] = await Promise.all(
+    const paths = Array.isArray(value) ? value : [value];
+
+    const updatedPaths = await Promise.all(
       paths.map(async (p) => {
         if (!p) return null;
 
         const srcKey = p.replace(/^\//, "");
-
-        if (srcKey.startsWith("temp/")) {
-          const destKey = srcKey.replace(/^temp\//, "static/");
+        if (srcKey.startsWith("temp/static/")) {
+          const destKey = srcKey.replace(/^temp\/static\//, "static/");
           return await moveFile(srcKey, destKey);
         }
-
-        return p; // already static/history
+        return p;
       })
     );
+
+    // ✅ Save updated file paths back to meta
+    meta[key] = Array.isArray(value)
+      ? updatedPaths.filter(Boolean)
+      : updatedPaths[0];
   }
 
-  // 3️⃣ Prepare update data
-  const updateFields = {
-    type: tempDoc.collection_type,
-    meta_data: meta,
-    status: "active",
-    updatedAt: new Date(),
-  };
 
-  // 4️⃣ Update DB
-  await mainCollection.updateOne(
-    { _id: existingDoc._id },
-    { $set: updateFields }
+  // 3️⃣ Save updated metadata
+  await tempCollection.updateOne(
+    { _id: tempDoc._id },
+    {
+      $set: {
+        meta_data: meta,
+        updatedAt: new Date(),
+      },
+    }
   );
 
-  return { updatedId: existingDoc._id, meta_data: meta };
+  return { tempId: tempDoc._id, meta_data: meta };
 }
 
-/**
- * Delete: move files → history + mark deleted
- */
+
+
+async function updateOriginalData(tempDoc, tempCollection) {
+  const original = { ...(tempDoc.original_data || {}) };
+
+  // 1️⃣ Move original_data files → history
+  for (const [key, value] of Object.entries(original)) {
+    if (!value) continue;
+
+    const paths = Array.isArray(value) ? value : [value];
+
+    const updatedPaths = await Promise.all(
+      paths.map(async (p) => {
+        if (!p) return null;
+
+        const srcKey = p.replace(/^\//, "");
+        if (srcKey.startsWith("static/")) {
+          const destKey = srcKey.replace(/^static\//, "/history/static/");
+          return destKey;
+        }
+        return p; // if not static, keep it unchanged
+      })
+    );
+
+    // ✅ update original_data with history paths
+    original[key] = Array.isArray(value)
+      ? updatedPaths.filter(Boolean)
+      : updatedPaths[0];
+  }
+
+  // 2️⃣ Save updated original_data
+  await tempCollection.updateOne(
+    { _id: tempDoc._id },
+    {
+      $set: {
+        original_data: original,
+        updatedAt: new Date(),
+      },
+    }
+  );
+
+  return { tempId: tempDoc._id, original_data: original };
+}
+
+
+
+
 async function deleteFile(tempDoc, tempCollection) {
  
   const meta = { ...(tempDoc.meta_data || {}) };
@@ -190,8 +233,11 @@ async function deleteFile(tempDoc, tempCollection) {
   return { tempId: tempDoc._id, meta_data: meta };
 }
 
+
+
 module.exports = {
   insertFile,
   updateFile,
   deleteFile,
+  updateOriginalData
 };

@@ -65,7 +65,7 @@ else if (docs[0].collection_type === "academic_admin_audit"){
 }
 
 else  if (docs[0].collection_type === "minutes_of_meetings" || "strategic_plan" || "best_practices" || "institutional_distinctiveness" || "code_of_ethics" || "aqar" || "iso_certificate"){
-    const folder = `temp/static/pdf/iqac/`;
+    const folder = `temp/static/pdfs/iqac/`;
     s3Key = folder + realPdfname;
     
     command = new PutObjectCommand({

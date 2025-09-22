@@ -2208,19 +2208,19 @@
     "data": [
       {
         "name": "National Innovation Startup Policy",
-        "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
+        "pdf_path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
       },
       {
         "name": "Tamilnadu Innovation and Startup Policy",
-        "path": "/static/pdfs/iic/policy/Tamilnadu-Innovation-and-Startup-Policy.pdf"
+        "pdf_path": "/static/pdfs/iic/policy/Tamilnadu-Innovation-and-Startup-Policy.pdf"
       },
       {
         "name": "TNMSME Policy",
-        "path": "/static/pdfs/iic/policy/TNMSMEpolicy.pdf"
+        "pdf_path": "/static/pdfs/iic/policy/TNMSMEpolicy.pdf"
       },
       {
         "name": "Velammal Innovation and Startup Policy",
-        "path": "/static/pdfs/iic/policy/Velammal-Innovation-and-Startup-Policy.pdf"
+        "pdf_path": "/static/pdfs/iic/policy/Velammal-Innovation-and-Startup-Policy.pdf"
       }
     ]
   },

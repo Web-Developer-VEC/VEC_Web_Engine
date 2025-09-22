@@ -502,7 +502,7 @@
       {
         "category": "infrastructure_images",
         "content": [
-             {"image_path": "/static/images/infrastructure/010/1.webp", "image_name": "COMMUNICATION SKILLS LABORATORY", "image_content": ""}
+             {"image_path": "/static/images/infrastructure/010/1.webp", "image_name": "COMMUNICATION SKILLS LABORATORY"}
         ]
       }
     ]
