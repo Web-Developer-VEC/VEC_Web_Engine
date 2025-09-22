@@ -250,10 +250,45 @@ export default function AdminJournal({ theme, toggle }) {
     savedDataRef.current = JSON.parse(JSON.stringify(journal));
   };
 
-  const handleUndoChange = (idx) => {
-    setAllChanges((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change removed from request");
-  };
+const handleUndoChange = (idx) => {
+  setAllChanges((prev) => {
+    const change = prev[idx];
+
+    if (change) {
+      setJournal((data) => {
+        let newData = [...data];
+
+        if (change.action === "edit") {
+          const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
+          if (targetIndex !== -1) {
+            newData[targetIndex] = {
+              ...newData[targetIndex],
+              year: change.changes.year.old,
+              pdf_path: change.changes.pdf_path.old,
+            };
+          }
+        }
+
+        if (change.action === "add") {
+          // Remove the newly added item
+          newData = newData.filter((d) => d.year !== change.key);
+        }
+
+        if (change.action === "delete") {
+          // Re-insert the deleted item
+          newData = [...newData, change.changes.deleted];
+        }
+
+        return newData;
+      });
+    }
+
+    return prev.filter((_, i) => i !== idx); // remove from log
+  });
+
+  toast.info("Change reverted");
+};
+
 
   const handleViewNewPdf = () => {
     if (!newPdf) return;
@@ -339,8 +374,12 @@ export default function AdminJournal({ theme, toggle }) {
              <Plus/> Add new
             </button>
 
+          </div>
+        )}
+
+        
             {selectedToDelete.size > 0 && (
-              <div className="flex justify-end mt-4">
+              <div className="flex justify-center mt-4">
                 <button
                   className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
                   onClick={openDeleteConfirmMultiple}
@@ -349,8 +388,6 @@ export default function AdminJournal({ theme, toggle }) {
                 </button>
               </div>
             )}
-          </div>
-        )}
 
         {/* FOOTER ACTIONS */}
         <div className="flex flex-row justify-end gap-4 mr-12 mb-8">
