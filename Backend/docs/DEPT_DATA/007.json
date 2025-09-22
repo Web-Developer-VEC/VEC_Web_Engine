@@ -877,13 +877,9 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
             "ORGANISATION_NAME": "",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": ""
           }
         ]
       }
