@@ -459,35 +459,6 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/008/2023-2024/Add-On Course.pdf"
               }
-            ],
-            "activities": [
-              {
-                "date": "4/7/2024",
-                "name_of_event": "EPIC'24 ",
-                "coordinator": "Dr. ANUSANKARI S",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/006/1.webp",
-                  "/static/images/dept_activities/008/2.webp"
-                ]
-              },
-              {
-                "date": "03 /08 /2024",
-                "name_of_event": "MEACON 2K24 -2.0 ",
-                "coordinator": "Dr. ANUSANKARI S",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/008/19.webp",
-                  "/static/images/dept_activities/008/15.webp",
-                  "/static/images/dept_activities/008/16.webp",
-                  "/static/images/dept_activities/008/17.webp",
-                  "/static/images/dept_activities/008/18.webp"
-                ]
-              }
             ]
           },
           {
@@ -525,67 +496,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Add-On Course.pdf"
               }
-      ],
-            "activities": [
-              {
-                "date": "28/02/2023",
-                "name_of_event": "EPIC 2023 ",
-                "coordinator": "Mrs. PADMA S",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/008/1.webp",
-                  "/static/images/dept_activities/008/2.webp",
-                  "/static/images/dept_activities/008/3.webp"
-                ]
-              },
-              {
-                "date": "25/03/2023",
-                "name_of_event": "SEMINAR ON ARTIFICIAL INTELLIGENCE IN AUTOMATION",
-                "coordinator": "Mr. RAJNARAIN B",
-                "resource_person": "",
-                "beneficiaries": "II & III Year Students",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/006/3.webp"]
-              },
-              {
-                "date": "10/01/2023",
-                "name_of_event": "MOU signed with YASHIKA INDUSTRIES",
-                "coordinator": "Dr. BRIJET Z",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/4.webp"]
-              },
-              {
-                "date": "3/4/2023",
-                "name_of_event": "WEBINAR ON “BEST RESEARCH AND INNOVATION PRACTICES",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/20.webp"]
-              },
-              {
-                "date": "6/4/2023",
-                "name_of_event": "SEMINAR ON AUTOMATION IN MANUFACTURING AND PROCESS INDUSTRIES",
-                "coordinator": "Mr. RAJNARAIN B",
-                "resource_person": "",
-                "beneficiaries": "II yr and III yr students",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/7.webp"]
-              },
-              {
-                "date": "18/04/2023",
-                "name_of_event": "INDUSTRIAL VISIT:RENAULT NISSAN AUTOMOTIVE INDIA PRIVATE LTD.,",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "III YR STUDENTS",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/21.webp"]
-              }
-            ]
+      ]
           },
           {
             "year":"2020 - 2021",
@@ -622,18 +533,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ],
-            "activities" :[
-              {
-                "date": "24/11/2021",
-                "name_of_event": "FIRST YEAR ORIENTATION PROGRAM FOR BATCH (2021 -2025)",
-                "coordinator": "Dr. BRIJET Z",
-                "resource_person": "",
-                "beneficiaries": "III YR STUDENTS",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/008/9.webp"]
-              }
-            ]
+      ]
           }
         ]
       }
@@ -800,38 +700,31 @@
         "content": [
           {
             "image_path": "/static/images/infrastructure/008/1.webp",
-            "image_name": "VIRTUAL INSTRUMENTATION CENTRE",
-            "image_content": ""
+            "image_name": "VIRTUAL INSTRUMENTATION CENTRE"
           },
           {
             "image_path": "/static/images/infrastructure/008/2.webp",
-            "image_name": "PROCESS CONTROL LABORATORY",
-            "image_content": ""
+            "image_name": "PROCESS CONTROL LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/008/3.webp",
-            "image_name": "R&D LABORATORY",
-            "image_content": ""
+            "image_name": "R&D LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/008/4.webp",
-            "image_name": "DEPARTMENT LIBRARY",
-            "image_content": ""
+            "image_name": "DEPARTMENT LIBRARY"
           },
           {
             "image_path": "/static/images/infrastructure/008/5.webp",
-            "image_name": "MICROPROCESSOR AND MICROCONTROLLER LABORATORY",
-            "image_content": ""
+            "image_name": "MICROPROCESSOR AND MICROCONTROLLER LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/008/6.webp",
-            "image_name": "CIRCUITS AND DEVICES LABORATORY",
-            "image_content": ""
+            "image_name": "CIRCUITS AND DEVICES LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/008/7.webp",
-            "image_name": "INSTRUMENTATION LABORATORY",
-            "image_content": ""
+            "image_name": "INSTRUMENTATION LABORATORY"
           }
         ]
       }
@@ -854,29 +747,20 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
             "ORGANISATION_NAME": "SREE TECHNOLOGIES",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Life Time"
           },
           {
-            "S_NO": 2,
             "ORGANISATION_NAME": "ENSOLT PRIVATE LIMITED",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time",
-            "LOGO_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Life Time"
           },
           {
-            "S_NO": 3,
             "ORGANISATION_NAME": "YASHIKA INDUSTRIES",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time",
-            "LOGO_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Life Time"
+
           }
         ]
       }
