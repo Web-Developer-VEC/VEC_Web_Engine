@@ -4,7 +4,7 @@ import LoadComp from "../../LoadComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FaUserEdit } from "react-icons/fa";
-import { Trash2, Send } from "lucide-react";
+import { Trash2, Send, Pencil, Eye } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -188,6 +188,28 @@ export default function ImageGallery({ activity }) {
     );
   }
 
+  // Add this function inside ImageGallery
+const handleUndoChange = (change) => {
+  let newTempData = [...tempData];
+
+  if (change.type === "Added") {
+    // Remove newly added row
+    newTempData = newTempData.filter((item) => item._id !== change._id);
+  } else if (change.type === "Edited") {
+    // Revert edited row
+    const idx = newTempData.findIndex((item) => item._id === change._id);
+    if (idx !== -1) {
+      newTempData[idx] = { ...data.find((item) => item._id === change._id) };
+    }
+  } else if (change.type === "Deleted") {
+    // Restore deleted row
+    newTempData.push(change.changes);
+  }
+
+  setTempData(newTempData);
+};
+
+
   return (
     <>
       {activity && (
@@ -202,7 +224,7 @@ export default function ImageGallery({ activity }) {
                 className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
                 onClick={handleEdit}
               >
-                <FaUserEdit className="mr-2" /> Edit
+                <Pencil className="mr-2" /> Edit
               </button>
             )}
           </div>
@@ -214,6 +236,8 @@ export default function ImageGallery({ activity }) {
                 key={act._id}
                 className="relative flex flex-col items-center justify-center p-4 border rounded shadow-md"
               >
+                <div className={`${isEditing &&  "border-secd border-2 rounded flex flex-col px-4 py-2 m-auto" }`}>
+
                 {isEditing ? (
                   <>
                     <input
@@ -225,39 +249,59 @@ export default function ImageGallery({ activity }) {
                         handleChanges(index, "year", e.target.value)
                       }
                       required
-                    />
-                    <input
-                      type="file"
-                      accept="application/pdf"
-                      className="w-full mb-2 border rounded p-2"
-                      onChange={(e) => {
-                        const file = e.target.files[0];
-                        if (file) {
-                          handleChanges(index, "pdf_path", file.name);
-                        }
-                      }}
-                      required
-                    />
+                      />
+                  <div className="flex flex-row justify-center items-center gap-2">
+                    <div className="my-2 flex flex-row justify-center">
+                      <input
+                        id={`pdf-upload-${index}`}
+                        type="file"
+                        accept="application/pdf"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files[0];
+                          if (file) {
+                            handleChanges(index, "pdf_path", file.name);
+                          }
+                        }}
+                        required
+                        />
+
+                      <label
+                        htmlFor={`pdf-upload-${index}`}
+                        className="cursor-pointer bg-secd hover:bg-brwn px-2 py-2 text-text hover:text-prim rounded inline-block"
+                        >
+                       {act.pdf_path ? " Replace File " : "Upload File"}
+                      </label>
+                    </div>
                     <p className="text-xs text-gray-500">
-                      {act?.pdf_path
-                        ? `Selected: ${act.pdf_path}`
-                        : "No PDF chosen"}
+                      {act?.pdf_path ? (
+                        <div className="flex flex-row items-center justify-center">
+                         
+                          <a href={act.pdf_path} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-500 hover:underline hover:cursor-pointer">
+                            <Eye className="w-8 h-8 ml-1 mt-2" />
+                          </a>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </p>
+                  </div>
 
                     <input
                       type="checkbox"
                       className="absolute top-2 right-2"
                       checked={selectedImage.has(index)}
                       onChange={() => handleCheckBox(index)}
-                    />
+                      />
                   </>
                 ) : (
                   <EcellActivity
-                    year={act?.year}
-                    pdfspath={UrlParser(act?.pdf_path)}
+                  year={act?.year}
+                  pdfspath={UrlParser(act?.pdf_path)}
                   />
                 )}
               </div>
+            </div>
             ))}
 
             {isEditing && (
@@ -276,7 +320,7 @@ export default function ImageGallery({ activity }) {
           {isEditing && selectedImage.size > 0 && (
             <div>
               <button
-                className="bg-red-500 text-prim flex flex-row gap-4 mt-4 p-2"
+                className="bg-red-500 text-prim rounded  flex flex-row gap-4 mt-4 p-2"
                 onClick={handleDelete}
               >
                 <Trash2 /> Delete Selected
@@ -296,7 +340,7 @@ export default function ImageGallery({ activity }) {
                 </button>
                 {getChanges().length > 0 && (
                   <button
-                    className="flex items-center border-4 border-yellow-400 px-3 py-2 rounded-lg"
+                    className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim   px-3 py-2 rounded-lg"
                     onClick={handleSave}
                   >
                     Save
@@ -342,9 +386,11 @@ export default function ImageGallery({ activity }) {
                     <th className="py-1 border">Action</th>
                     <th className="py-1 border">Section</th>
                     <th className="py-1 border">Changed Field</th>
+                    <th className="py-1 border">Undo</th>
+
                   </tr>
                 </thead>
-                <tbody>
+               <tbody>
                   {getChanges().map((change) => (
                     <tr key={change._id} className="even:bg-white odd:bg-gray-50">
                       <td className="py-1 border font-semibold text-center">
@@ -354,19 +400,24 @@ export default function ImageGallery({ activity }) {
                       </td>
                       <td className="py-1 border text-center">Activity</td>
                       <td className="py-1 border text-[13px] text-center">
-                        {change.type === "Deleted" ? (
-                          <div>Row deleted</div>
-                        ) : change.type === "Added" ? (
-                          <div>Added entire row</div>
-                        ) : (
-                          <div>
-                            {Object.keys(change.changes).join(", ")}
-                          </div>
-                        )}
+                        {change.type === "Deleted"
+                          ? "Row deleted"
+                          : change.type === "Added"
+                          ? "Added entire row"
+                          : Object.keys(change.changes).join(", ")}
+                      </td>
+                      <td className="py-1 border text-center">
+                        <button
+                          className="text-red-500 font-bold"
+                          onClick={() => handleUndoChange(change)}
+                        >
+                          X
+                        </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
+
               </table>
             ) : (
               <p className="text-gray-500 text-center">No changes detected</p>
@@ -384,7 +435,7 @@ export default function ImageGallery({ activity }) {
               </button>
               <button
                 onClick={handleFinalRequest}
-                className="px-4 py-2 rounded bg-[#800000] text-white hover:bg-[#a00000]"
+                className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim"
               >
                 Final Request
               </button>

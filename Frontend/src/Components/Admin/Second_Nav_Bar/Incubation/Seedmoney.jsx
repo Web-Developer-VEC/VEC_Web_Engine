@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Save, Plus, Trash2, ArrowDown } from "lucide-react";
+import { Send, Save, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -150,6 +150,35 @@ export default function Seedmoney({ data }) {
     setShowRequestModal(true);
   };
 
+  // Add this function inside your Seedmoney component
+const handleUndoChange = (change) => {
+  const newEditable = [...editableData];
+
+  if (change.action === "add") {
+    // Remove newly added row
+    newEditable.splice(change.index, 1);
+  } else if (change.action === "edit") {
+    // Revert edited row
+    newEditable[change.index] = JSON.parse(JSON.stringify(savedDataRef.current[change.index]));
+  } else if (change.action === "delete") {
+    // Restore deleted row at its original index
+    if (change.deletedItem) {
+      newEditable.splice(change.index, 0, change.deletedItem);
+    }
+  }
+
+  // Recalculate slNo
+  newEditable.forEach((r, i) => (r.slNo = i + 1));
+
+  // Remove this change from allChanges and sessionChanges
+  const newAllChanges = allChanges.filter((c) => c !== change);
+  const newSessionChanges = sessionChanges.filter((c) => c !== change);
+
+  setEditableData(newEditable);
+  setAllChanges(newAllChanges);
+  setSessionChanges(newSessionChanges);
+};
+
   const handleFinalRequestConfirm = () => {
     console.log("FINAL REQUEST SUBMITTED:", { allChanges, editableData });
     toast.success("Final request submitted");
@@ -217,7 +246,7 @@ export default function Seedmoney({ data }) {
             className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         </div>
       )}
@@ -335,7 +364,7 @@ export default function Seedmoney({ data }) {
               Cancel
             </button>
             {sessionChanges.length > 0 && (
-              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSave}>
+              <button className="bg-secd hoverbg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg" onClick={handleSave}>
                 Save
               </button>
             )}
@@ -355,77 +384,72 @@ export default function Seedmoney({ data }) {
       </div>
 
       {/* Final Request Modal */}
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-            <h2 className="text-xl font-semibold mb-2 text-center">  Request </h2>
-              <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+{showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+    <div className="bg-white p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto shadow-lg">
+      <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">Request</h2>
+      <p className="text-sm text-red-500 mb-4 text-center">
+        Note: Your changes will stay pending until approved by the superior
+        admin. Once approved will go live.
       </p>
 
+      <table className="w-full border text-sm">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="py-2 px-3 border">Action</th>
+            <th className="py-2 px-3 border">Row</th>
+            <th className="py-2 px-3 border">Changed Field</th>
+            <th className="py-2 px-3 border">Undo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allChanges.map((c, idx) => (
+            <tr key={idx} className="even:bg-white odd:bg-gray-50">
+              <td className="py-2 px-3 border text-blue-600">
+                {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
+              </td>
+              <td className="py-2 px-3 border">{c.index + 1}</td>
+              <td className="py-2 px-3 border text-[13px]">
+                {c.action === "edit"
+                  ? Object.keys(c.changes).join(", ")
+                  : c.action === "add"
+                  ? "New row added"
+                  : "Row deleted"}
+              </td>
+              <td className="py-2 px-3 border text-center">
+               <td className="py-2 px-3  text-center">
+                <button
+                  className="text-red-500"
+                  onClick={() => handleUndoChange(c)}
+                >
+                  X
+                </button>
+              </td>
 
-            <div className="max-h-[320px] overflow-y-auto mb-4">
-              <table className="w-full text-sm text-left border">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="py-2 px-3 border">Action</th>
-                    <th className="py-2 px-3 border">Section</th>
-                    <th className="py-2 px-3 border">Changed Field</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allChanges.length === 0 ? (
-                    <tr>
-                      <td colSpan={3} className="text-center py-4">
-                        No changes to submit
-                      </td>
-                    </tr>
-                  ) : (
-                    allChanges.map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                        <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                        </td>
-                        <td className="py-2 px-3 border align-top">Seed Money</td>
-                        <td className="py-2 px-3 border text-[13px]">
-                          {change.action === "delete" ? (
-                            <div>Row {change.index + 1} deleted</div>
-                          ) : Object.keys(change.changes || {}).length === 0 ? (
-                            <div>Added/changed entire row</div>
-                          ) : (
-                            Object.entries(change.changes).map(([field, values]) => (
-                              <div key={field} className="mb-1">
-                                <strong className="capitalize">{field}:</strong>{" "}
-                                {values.old ?? "-"}
-                                <ArrowDown className="inline mx-2" size={14} />
-                                {values.new ?? "-"}
-                              </div>
-                            ))
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
-              >
-                Cancel
-              </button>
-              <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-yellow-400 text-black">
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="flex justify-end gap-2 mt-6">
+        <button
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+          onClick={() => setShowRequestModal(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="px-4 py-2 rounded bg-secd text-text"
+          onClick={handleFinalRequestConfirm}
+        >
+          Final Request
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (

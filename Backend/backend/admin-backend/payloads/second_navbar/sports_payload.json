@@ -1,0 +1,430 @@
+[
+
+    {
+  "collectionName": "sports",
+  "collection_type": "introduction",
+  "action": "insert",
+  "title": "Insertion of Introduction",
+  "meta_data":[
+      "Our College department of Physical Education is an integral part...",
+      "We are now having 3 faculty members...",
+      "Our college students got the 18th consecutive years of overall championship..."
+    ],
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "introduction",
+  "action": "update",
+  "title": "Updation of Introduction",
+  "meta_data": [
+      "Updated introduction line 1.",
+      "Updated introduction line 2."
+    ],
+  "original_data":[
+      "Old introduction line 1.",
+      "Old introduction line 2."
+    ]
+},
+{
+  "collectionName": "sports",
+  "collection_type": "introduction",
+  "action": "delete",
+  "title": "Deletion of Introduction",
+  "meta_data": [
+      "Our College department of Physical Education is an integral part..."
+    ],
+  "original_data": null
+},
+
+{
+  "collectionName": "sports",
+  "collection_type": "vision",
+  "action": "insert",
+  "title": "Insertion of Vision",
+  "meta_data": [
+      "To promote physical education and sports activities...",
+      "To develop the overall personality of students..."
+    ],
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "vision",
+  "action": "update",
+  "title": "Updation of Vision",
+  "meta_data":[
+      "Updated vision line 1.",
+      "Updated vision line 2."
+    ],
+  "original_data": [
+      "Old vision line 1.",
+      "Old vision line 2."
+    ]
+},
+{
+  "collectionName": "sports",
+  "collection_type": "vision",
+  "action": "delete",
+  "title": "Deletion of Vision",
+  "meta_data":[
+      "To promote physical education and sports activities..."
+    ],
+  "original_data": null
+},
+
+
+{
+  "collectionName": "sports",
+  "collection_type": "faculty",
+  "action": "insert",
+  "title": "Insertion of Faculty Member",
+  "meta_data":  {
+      "name": "Ms.JAYANTHI K",
+      "qualification": "M.P.Ed., M.Phil.",
+       "designation": "Asst.Physical Director",
+      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "faculty",
+  "action": "update",
+  "title": "Updation of Faculty Member",
+  "meta_data":  {
+      "name": "Ms.JAYANTHI K",
+      "qualification": "M.P.Ed., M.Phil.",
+       "designation": "Asst.Physical Director",
+      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+    
+  },
+  "original_data": {
+      "name": "Ms.JAYANTHI K",
+      "qualification": "M.P.Ed., M.Phil.",
+       "designation": "Asst.Physical Director",
+      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+    }
+  
+},
+{
+  "collectionName": "sports",
+  "collection_type": "faculty",
+  "action": "delete",
+  "title": "Deletion of Faculty Member",
+  "meta_data": {
+      "name": "Ms.JAYANTHI K",
+      "qualification": "M.P.Ed., M.Phil.",
+       "designation": "Asst.Physical Director",
+      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+    
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "hod",
+  "action": "insert",
+  "title": "Insertion of HOD",
+  "meta_data": {
+        "name": "Dr.RAMESH KANNAN P",
+        "designation": "Head - Department of Physical Education",
+        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+        "message": "Sports play an important role...",
+        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
+      
+    
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "hod",
+  "action": "update",
+  "title": "Updation of HOD",
+  "meta_data": {
+        "name": "Dr.RAMESH KANNAN P",
+        "designation": "Head - Department of Physical Education",
+        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+        "message": "Updated message from HOD.",
+        "image_path": "/static/images/sports/hod/Rameshkannan_updated.webp"
+      
+    
+  },
+  "original_data": {
+        "name": "Dr.RAMESH KANNAN P",
+        "designation": "Head - Department of Physical Education",
+        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+        "message": "Sports play an important role...",
+        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
+      
+    }
+  
+},
+{
+  "collectionName": "sports",
+  "collection_type": "hod",
+  "action": "delete",
+  "title": "Deletion of HOD",
+  "meta_data": {
+        "name": "Dr.RAMESH KANNAN P",
+        "designation": "Head - Department of Physical Education",
+        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+        "message": "Sports play an important role...",
+        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
+      
+    
+  },
+  "original_data": null
+},
+
+{
+  "collectionName": "sports",
+  "collection_type": "action_plan",
+  "action": "insert",
+  "title": "Insertion of Action Plan",
+  "meta_data": 
+      {
+        "training": "Regular practice sessions from 4:15 pm to 6:15 pm.",
+        "goals": "To become champions of champions.",
+        "health": "To give awareness to the importance of regular food habits.",
+        "facilities": "Over all champions in Anna University Zone 1 Sports Competition."
+      
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "action_plan",
+  "action": "update",
+  "title": "Updation of Action Plan",
+  "meta_data": 
+      {
+        "training": ["Updated training plan."],
+        "goals": ["Updated goal 1."],
+        "health": ["Updated health tip 1."],
+        "facilities": ["Updated facility 1."]
+      
+  },
+  "original_data": 
+      {
+        "training": ["Regular practice sessions from 4:15 pm to 6:15 pm."],
+        "goals": ["To become champions of champions."],
+        "health": ["To give awareness to the importance of regular food habits."],
+        "facilities": ["Over all champions in Anna University Zone 1 Sports Competition."]
+      
+    }
+  
+},
+{
+  "collectionName": "sports",
+  "collection_type": "action_plan",
+  "action": "delete",
+  "title": "Deletion of Action Plan",
+  "meta_data": 
+      {
+        "training": "Regular practice sessions from 4:15 pm to 6:15 pm.",
+        "goals": ["To become champions of champions."],
+        "health": ["To give awareness to the importance of regular food habits."],
+        "facilities": ["Over all champions in Anna University Zone 1 Sports Competition."]
+      
+    
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "infrastructure",
+  "action": "insert",
+  "title": "Insertion of Infrastructure",
+  "meta_data": 
+      {
+        "title": "WILMA RUDOLPH INDOOR STADIUM",
+        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
+        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
+      
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "infrastructure",
+  "action": "update",
+  "title": "Updation of Infrastructure",
+  "meta_data": 
+      {
+        "title": "Updated Infrastructure Title",
+        "description": "Updated description of the infrastructure.",
+        "image_path": "/static/images/sports/infrastructure/Updated_Infrastructure.webp"
+      
+  },
+  "original_data": 
+      {
+        "title": "WILMA RUDOLPH INDOOR STADIUM",
+        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
+        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
+      
+    }
+  
+},
+{
+  "collectionName": "sports",
+  "collection_type": "infrastructure",
+  "action": "delete",
+  "title": "Deletion of Infrastructure",
+  "meta_data": 
+      {
+        "title": "WILMA RUDOLPH INDOOR STADIUM",
+        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
+        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
+      
+    
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "insert",
+  "title": "Insertion of Achievements",
+  "category": "zonal_table",
+  "meta_data": {
+  "game": "tt(M)", "position": "Winner" },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "update",
+  "title": "Updation of Achievements",
+  "category": "zonal_table",
+
+  "meta_data": 
+      { "game": "Badminton(M)", "position": "Winner" },
+  "original_data": 
+      { "game": "Badminton(M)", "position": "Winner" }
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "delete",
+  "title": "Deletion of Achievements",
+  "category": "zonal_table",
+  "meta_data": 
+      { "game": "Badminton(M)", "position": "Winner" },
+     
+  "original_data": null
+},
+
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "insert",
+  "title": "Insertion of Achievements",
+  "category": "coordinator",
+  "meta_data":
+  {
+  "zone": "1",
+  "year": "2024-25",
+  "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+},
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "update",
+  "title": "Updation of Achievements",
+  "category": "coordinator",
+  "meta_data":
+  {
+  "zone": "1",
+  "year": "2040-45",
+  "image_path": "/static/images/sports/coordinates/coordinates_1.webp"
+},
+  "original_data": {
+    "zone": "1",
+    "year": "2024-25",
+    "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+    
+  }
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "delete",
+  "title": "deletion of Achievements",
+  "category": "coordinator",
+  "meta_data":
+  {
+  "zone": "1",
+  "year": "2024-25",
+  "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+},
+  "original_data": null
+},
+
+
+{
+  "collectionName": "sports",
+  "collection_type": "intramural",
+  "action": "insert",
+  "title": "Insertion of Intramural Event",
+  "meta_data": 
+      { 
+    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+    "title": "Boys Basketball Winner IT Department",
+    "year": "2024-25"
+      
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "intramural",
+  "action": "insert",
+  "title": "insertion of Intramural Winner",
+  "meta_data": {
+    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+    "title": "Boys Basketball Winner IT Department",
+    "year": "2024-25"
+  },
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "intramural",
+  "action": "update",
+  "title": "Updation of Intramural Event",
+  "meta_data": 
+      {
+    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+    "title": "Boys Basketball Winner IT Department",
+    "year": "2024-25"
+      
+  },
+  "original_data": 
+      {
+    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+    "title": "Boys Basketball Winner IT Department",
+    "year": "2024-25"
+      
+    }
+  
+},
+{
+  "collectionName": "sports",
+  "collection_type": "intramural",
+  "action": "delete",
+  "title": "Deletion of Intramural Winner",
+  "meta_data": {
+    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
+    "title": "Boys Basketball Winner IT Department",
+    "year": "2024-25"
+  },
+  "original_data": null
+}
+
+
+
+]

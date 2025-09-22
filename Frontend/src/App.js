@@ -23,6 +23,8 @@ import CollegeOrgChart from "./Components/Main/Top_Nav_Bar/Administration/Organi
 /* Academics Pages Imports */
 import Facultyprofile from "./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx";
 /* Second_Nav_Bar Pages Imports */
+
+
 import Alumni from "./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx";
 import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
 import OtherFacilities from "./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
@@ -53,6 +55,7 @@ import AuthPage from "./Components/Admin/Auth/auth.jsx";
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
 import AdminLandingPage from "./AdminLanding.jsx";
+import Admin_DepartmentPage from "./Components/Admin/Top_Nav_Bar/Academics/DepartmentPage.jsx";
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -208,7 +211,9 @@ const App = () => {
                                 <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
                                 <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme}/>}/>
                                 <Route path="/clg-org" drk element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
+
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
+
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
                                 <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
