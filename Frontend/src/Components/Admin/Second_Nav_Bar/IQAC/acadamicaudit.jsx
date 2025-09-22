@@ -3,6 +3,7 @@ import LoadComp from "../../LoadComp";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function IqaAud({ iqacData }) {
   const [editableData, setEditableData] = useState([]);
@@ -14,6 +15,7 @@ export default function IqaAud({ iqacData }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,17 +27,34 @@ export default function IqaAud({ iqacData }) {
 
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
-      setEditableData([...iqacData]);
-      setOriginalData([...iqacData]);
+      // Add a unique _id to each row for tracking
+      const withIds = iqacData.map((row, idx) => ({
+        _id: row._id || Date.now() + idx,
+        ...row,
+      }));
+      setEditableData([...withIds]);
+      setOriginalData([...withIds]);
     }
   }, [iqacData]);
 
   const logChange = (action, index, row) => {
     const rowTitle = row?.department_name || "Untitled Department";
-    setChangesLog((prev) => [
-      ...prev,
-      { id: Date.now() + index, rowIndex: index, action, section: "Audit", title: rowTitle, row }
-    ]);
+    setChangesLog((prev) => {
+      const filtered = prev.filter(
+        (c) => !(c.rowIndex === index && c.action === action)
+      );
+      return [
+        ...filtered,
+        {
+          id: Date.now() + index,
+          rowIndex: index,
+          action,
+          section: "Audit",
+          title: rowTitle,
+          row,
+        },
+      ];
+    });
   };
 
   const toggleRowSelection = (index) => {
@@ -49,7 +68,26 @@ export default function IqaAud({ iqacData }) {
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
     setHasChanges(true);
-    logChange("Edit", index, newData[index]);
+  };
+
+  const handleAddRow = () => {
+    const newRow = {
+      _id: Date.now(),
+      department_name: "",
+      year: [""],
+      path: [""],
+      _isNew: true,
+    };
+    setEditableData([...editableData, newRow]);
+    setHasChanges(true);
+    logChange("Insert", editableData.length, newRow);
+  };
+
+  const handleInputBlur = (index) => {
+    const row = editableData[index];
+    if (!row._isNew) {
+      logChange("Edit", index, row);
+    }
   };
 
   const handleYearChange = (deptIndex, yearIndex, value) => {
@@ -59,7 +97,9 @@ export default function IqaAud({ iqacData }) {
     newData[deptIndex].year = years;
     setEditableData(newData);
     setHasChanges(true);
-    logChange("Edit", deptIndex, newData[deptIndex]);
+    if (!newData[deptIndex]._isNew) {
+      logChange("Edit", deptIndex, newData[deptIndex]);
+    }
   };
 
   const handleFileUpload = (deptIndex, yearIndex, file) => {
@@ -67,7 +107,7 @@ export default function IqaAud({ iqacData }) {
       const fileURL = URL.createObjectURL(file);
       setUploadedFiles((prev) => ({
         ...prev,
-        [`${deptIndex}-${yearIndex}`]: { file, fileURL }
+        [`${deptIndex}-${yearIndex}`]: { file, fileURL },
       }));
       const newData = [...editableData];
       const paths = [...newData[deptIndex].path];
@@ -75,17 +115,20 @@ export default function IqaAud({ iqacData }) {
       newData[deptIndex].path = paths;
       setEditableData(newData);
       setHasChanges(true);
-      logChange("Edit", deptIndex, newData[deptIndex]);
+
+      if (!newData[deptIndex]._isNew) {
+        logChange("Edit", deptIndex, newData[deptIndex]);
+      }
     }
   };
 
-  const handleAddRow = () => {
-    const newRow = { department_name: "", year: [""], path: [""] };
-    setEditableData([...editableData, newRow]);
-    setHasChanges(true);
-  };
-
   const handleDeleteSelected = () => {
+    const deletedRows = editableData.filter((_, i) =>
+      selectedRows.includes(i)
+    );
+    deletedRows.forEach((row, i) => {
+      logChange("Delete", i, row);
+    });
     const newData = editableData.filter((_, i) => !selectedRows.includes(i));
     setEditableData(newData);
     setSelectedRows([]);
@@ -103,8 +146,12 @@ export default function IqaAud({ iqacData }) {
 
   const handleDeleteYear = (deptIndex, yearIndex) => {
     const newData = [...editableData];
-    newData[deptIndex].year = newData[deptIndex].year.filter((_, i) => i !== yearIndex);
-    newData[deptIndex].path = newData[deptIndex].path.filter((_, i) => i !== yearIndex);
+    newData[deptIndex].year = newData[deptIndex].year.filter(
+      (_, i) => i !== yearIndex
+    );
+    newData[deptIndex].path = newData[deptIndex].path.filter(
+      (_, i) => i !== yearIndex
+    );
     setEditableData(newData);
     setHasChanges(true);
     logChange("Edit", deptIndex, newData[deptIndex]);
@@ -131,13 +178,78 @@ export default function IqaAud({ iqacData }) {
     toast.info("All changes discarded.");
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Final request submitted:", editableData, uploadedFiles);
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setHasChanges(false);
-    setOriginalData([...editableData]);
+  // FIXED buildPayload
+  const buildPayload = (originalData, editableData, uploadedFiles) => {
+    const payload = [];
+    const files = [];
+
+    // Deletions & Updates
+    originalData.forEach((orig) => {
+      const match = editableData.find((ed) => ed._id === orig._id);
+
+      if (!match) {
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "academic_admin_audit",
+          action: "delete",
+          title: "deletion of academic and administrative audit",
+          category: "Academic & Administrative Audit",
+          meta_data: { ...orig },
+          original_data: null,
+        });
+      } else if (JSON.stringify(match) !== JSON.stringify(orig)) {
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "academic_admin_audit",
+          action: "update",
+          title: "updation of academic and administrative audit",
+          meta_data: { ...match },
+          original_data: { ...orig },
+        });
+      }
+    });
+
+    // Insertions
+    editableData.forEach((ed) => {
+      if (ed._isNew) {
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "academic_admin_audit",
+          action: "insert",
+          title: "insertion of academic and administrative audit",
+          meta_data: { ...ed },
+          original_data: null,
+        });
+      }
+    });
+
+    // Collect files
+    Object.values(uploadedFiles).forEach(({ file }) => {
+      if (file) files.push(file);
+    });
+
+    return { payload, files };
   };
+
+  const handleRequestConfirm = async () => {
+    const { payload, files } = buildPayload(
+      originalData,
+      editableData,
+      uploadedFiles
+    );
+    console.log("Final request payload:", payload);
+    console.log("Files to upload:", files);
+
+    const response = await sendRequest(payload, files);
+    if (response) {
+      setShowRequestModal(false);
+      setHasChanges(false);
+      setOriginalData([...editableData]);
+    }
+  };
+
+  console.log(changesLog);
+  
 
   return (
     <>
@@ -177,37 +289,55 @@ export default function IqaAud({ iqacData }) {
                   </thead>
                   <tbody>
                     {editableData?.map((dept, deptIndex) => (
-                      <tr key={deptIndex}>
+                      <tr key={dept._id}>
                         <td className="text-center">{deptIndex + 1}</td>
                         <td className="px-2 py-2">
                           <input
                             type="text"
                             value={dept.department_name}
                             onChange={(e) =>
-                              handleInputChange(deptIndex, "department_name", e.target.value)
+                              handleInputChange(
+                                deptIndex,
+                                "department_name",
+                                e.target.value
+                              )
                             }
+                            onBlur={() => handleInputBlur(deptIndex)}
                             className="w-[250px] px-2 py-1 border rounded"
                           />
                         </td>
                         <td className="px-2 py-2">
                           <div className="flex flex-col gap-3">
                             {dept.year?.map((year, yearIndex) => (
-                              <div key={yearIndex} className="flex gap-2 items-center">
+                              <div
+                                key={yearIndex}
+                                className="flex gap-2 items-center"
+                              >
                                 <input
                                   type="text"
                                   value={year}
                                   onChange={(e) =>
-                                    handleYearChange(deptIndex, yearIndex, e.target.value)
+                                    handleYearChange(
+                                      deptIndex,
+                                      yearIndex,
+                                      e.target.value
+                                    )
                                   }
                                   className="w-[120px] px-2 py-1 border rounded text-center"
                                 />
                                 <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
-                                  {dept.path[yearIndex] ? "Replace PDF" : "Upload PDF"}
+                                  {dept.path[yearIndex]
+                                    ? "Replace PDF"
+                                    : "Upload PDF"}
                                   <input
                                     type="file"
                                     accept="application/pdf"
                                     onChange={(e) =>
-                                      handleFileUpload(deptIndex, yearIndex, e.target.files[0])
+                                      handleFileUpload(
+                                        deptIndex,
+                                        yearIndex,
+                                        e.target.files[0]
+                                      )
                                     }
                                     className="hidden"
                                   />
@@ -216,7 +346,8 @@ export default function IqaAud({ iqacData }) {
                                   dept.path[yearIndex]) && (
                                   <a
                                     href={
-                                      uploadedFiles[`${deptIndex}-${yearIndex}`]?.fileURL ||
+                                      uploadedFiles[`${deptIndex}-${yearIndex}`]
+                                        ?.fileURL ||
                                       UrlParser(dept.path[yearIndex])
                                     }
                                     target="_blank"
@@ -227,7 +358,9 @@ export default function IqaAud({ iqacData }) {
                                   </a>
                                 )}
                                 <button
-                                  onClick={() => handleDeleteYear(deptIndex, yearIndex)}
+                                  onClick={() =>
+                                    handleDeleteYear(deptIndex, yearIndex)
+                                  }
                                   className="text-red-500 hover:text-red-700"
                                 >
                                   <Trash2 size={16} />
@@ -287,23 +420,24 @@ export default function IqaAud({ iqacData }) {
                   </thead>
                   <tbody>
                     {editableData?.map((dept, deptIndex) => (
-                      <tr key={deptIndex}>
+                      <tr key={dept._id}>
                         <td className="text-center">{deptIndex + 1}</td>
                         <td>{dept.department_name}</td>
                         <td>
                           <ul className="reportlist">
-                            {dept.year?.map((yr, yrIndex) => (
-                              <li key={yrIndex}>
-                                <a
-                                  href={UrlParser(dept.path[yrIndex])}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-600 underline"
-                                >
-                                  {yr}
-                                </a>
-                              </li>
-                            ))}
+                            {Array.isArray(dept?.year) &&
+                              dept.year?.map((yr, yrIndex) => (
+                                <li key={yrIndex}>
+                                  <a
+                                    href={UrlParser(dept.path[yrIndex])}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 underline"
+                                  >
+                                    {yr}
+                                  </a>
+                                </li>
+                              ))}
                           </ul>
                         </td>
                       </tr>
@@ -317,7 +451,10 @@ export default function IqaAud({ iqacData }) {
           {/* Bottom Buttons */}
           {isEditMode && (
             <div className="flex justify-end gap-4 mb-6">
-              <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-white">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
                 Cancel
               </button>
               {hasChanges && (
@@ -382,7 +519,9 @@ export default function IqaAud({ iqacData }) {
                         <td className="text-center px-2 py-1">
                           <button
                             onClick={() =>
-                              setChangesLog((prev) => prev.filter((c) => c.id !== log.id))
+                              setChangesLog((prev) =>
+                                prev.filter((c) => c.id !== log.id)
+                              )
                             }
                             className="text-red-500 hover:text-red-700"
                           >
@@ -393,7 +532,10 @@ export default function IqaAud({ iqacData }) {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="4" className="text-center py-2 text-gray-500">
+                      <td
+                        colSpan="4"
+                        className="text-center py-2 text-gray-500"
+                      >
                         No changes detected
                       </td>
                     </tr>
@@ -423,7 +565,9 @@ export default function IqaAud({ iqacData }) {
       {deleteConfirm && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Confirm Delete
+            </h2>
             <p className="text-sm mb-4 text-center">
               Are you sure you want to delete the selected rows?
             </p>
