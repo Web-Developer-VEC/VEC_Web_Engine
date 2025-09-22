@@ -21,7 +21,7 @@ const AdminIncub = ( {toggle, theme}) => {
     const navigate = useNavigate();
     useEffect(() => {
         if (cub === "E-Cell") { 
-            navigate("/admin_ecell");
+            navigate("/ecell");
         }
     }, [cub, navigate]);
 

@@ -15,7 +15,9 @@ import { useNavigate } from "react-router";
 
 
 
+
 const AdminEcell = ({toggle,theme}) => {
+
     const [section, setEcell] = useState("About E-cell");
     const [ecell,setEcellData] = useState(null);
     const navigate = useNavigate();
@@ -101,4 +103,6 @@ const AdminEcell = ({toggle,theme}) => {
 
 
 
+
 export default AdminEcell;
+
