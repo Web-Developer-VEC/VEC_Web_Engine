@@ -250,11 +250,11 @@
         "title": "PySpark",
         "department": "Artificial Intelligence & Data Science",
         "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "brochure_path": "/static/images/events/PySpark.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/PySpark.webp",
+        "link": "",
         "status": "True"
       },
-     
+
       {
         "start_date": "18 JUL",
         "end_date": "18 JUL, 2025",
@@ -262,8 +262,8 @@
         "title": "Empowering Smart Grids: THe Innovative Role of Power Electronics",
         "department": "Electrical & Electronics Engineering",
         "content": "A power-packed guest lecture on Smart Grids and Power Electronics—discover how innovation is electrifying the future of energy!",
-        "brochure_path": "/static/images/events/Smart_Grids.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/Smart_Grids.webp",
+        "link": "",
         "status": "True"
       },
       {
@@ -273,8 +273,8 @@
         "title": "Math Quiz",
         "department": "Mathematics",
         "content": "Celebrate excellence and test your math skills! Join us for the 2024–25 prize distribution and a fun Math Quiz for II-year students.",
-        "brochure_path": "/static/images/events/M_Quiz.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/M_Quiz.webp",
+        "link": "",
         "status": "True"
       },
       {
@@ -284,8 +284,8 @@
         "title": "Server-Side Scripting - Node.JS",
         "department": "Computer Science & Engineering",
         "content": "Level up your backend skills! Don't miss the expert talk on Server-Side Scripting with Node.js for III-year CSE students.",
-        "brochure_path": "/static/images/events/NodeJs.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/NodeJs.webp",
+        "link": "",
         "status": "True"
       },
       {
@@ -295,8 +295,8 @@
         "title": "10 Steps to Become a Successful Entrepreneur",
         "department": "Automobile Engineering",
         "content": "Dreaming of your own startup? Learn 10 steps to become a successful entrepreneur with expert guidance and funding insights.",
-        "brochure_path": "/static/images/events/Successful_Entrepreneur.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/Successful_Entrepreneur.webp",
+        "link": "",
         "status": "True"
       },
       {
@@ -306,8 +306,8 @@
         "title": "Innovation/Prototype Validation - Converting Innovation into a Start-up",
         "department": "Electronics & Communication Engineering",
         "content": "Got an idea? Learn how to turn it into a real business in our Innovation/Prototype to Start-up session by an ECE alumnus from Accenture.",
-        "brochure_path": "/static/images/events/Innovation_2_startup.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/Innovation_2_startup.webp",
+        "link": "",
         "status": "True"
       },
       {
@@ -317,108 +317,164 @@
         "title": "NOCTIVUS",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
-        "brochure_path": "/static/images/events/noctivus.webp",
-        "website_link": "http://www.noctivus.pro/",
+        "image_path": "/static/images/events/noctivus.webp",
+        "link": "http://www.noctivus.pro/",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "CLOUDSCAPE",
         "department": "Computer Science Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/cloudscape.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/cloudscape.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "Mastering of Fundamentals of Application Penetration Testing",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "brochure_path": "/static/images/events/mfapt.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/mfapt.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"09 AUG",
+      {
+        "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",
         "date": "09-08-2025",
         "title": "Debate Competition - 'Clash of Gears'",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "brochure_path": "/static/images/events/dccog.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/dccog.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"18 AUG",
+      {
+        "start_date": "18 AUG",
         "end_date": "22 AUG, 2025",
         "date": "18-08-2025",
         "title": "Essentials of Artificial Intelligence and Machine Learning",
         "department": "Artificial Intelligence & Data Science",
         "content": "",
-        "brochure_path": "/static/images/events/eaiml.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/eaiml.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"19 AUG",
+      {
+        "start_date": "19 AUG",
         "end_date": "19 AUG, 2025",
         "date": "19-08-2025",
         "title": "3D - ANIMATION",
         "department": "Computer Science Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/3D.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/3D.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"22 AUG",
+      {
+        "start_date": "22 AUG",
         "end_date": "22 AUG, 2025",
         "date": "22-08-2025",
         "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
         "department": "Electrical & Electronics Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/GOITSEI.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/GOITSEI.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"20 AUG",
+      {
+        "start_date": "20 AUG",
         "end_date": "20 AUG, 2025",
         "date": "20-08-2025",
         "title": "DESTINY 29 – I Year Inauguration Ceremony",
         "department": "DESTINY 29",
         "content": "",
-        "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
-        "website_link": "",
+        "image_path": "/static/images/events/Destiny 29 - Invitation.pdf",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"19 AUG",
+      {
+        "start_date": "19 AUG",
         "end_date": "19 AUG, 2025",
         "date": "19-08-2025",
         "title": "Career guidance - Need for skill Development",
         "department": "Electrical & Instrumentation Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/CG.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/CG.webp",
+        "link": "",
         "status": "True"
       },
-       {
-        "start_date":"25 AUG",
+      {
+        "start_date": "25 AUG",
         "end_date": "25 AUG, 2025",
         "date": "25-08-2025",
         "title": "Smart Healthcare Revolution",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/SHR.webp",
-        "website_link": "",
+        "image_path": "/static/images/events/SHR.webp",
+        "link": "",
         "status": "True"
+      },
+      {
+        "start_date":"10 SEP",
+        "end_date": "10 SEP, 2025",
+        "date": "10-09-2025",
+        "title": "Network Layer Protocol - IP and Mobile IP",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "image_path": "/static/images/events/NLPI.webp",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Digital Twin Technology",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "",
+        "image_path": "/static/images/events/TWIN.webp",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "22 SEPT, 2025",
+        "end_date": "22 SEPT, 2025",
+        "date": "22-09-2025",
+        "title": "Scalathon",
+        "department": "Computer Science & Engineering",
+        "content": "",
+        "image_path": "/static/images/events/SCALATHON.webp",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "Building Real Time Systems using Data Structure and Java Programming",
+        "department": "Electronics & Communication Engineering",
+        "content": "",
+        "image_path": "/static/images/events/DATA STRUCTURE.webp",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "13 SEPT, 2025",
+        "end_date": "13 SEPT, 2025",
+        "date": "13-09-2025",
+        "title": "From Idea to Device: A Hands-on Journey into IoT",
+        "department": "Artificial Intelligence and Data Science",
+        "content": "",
+        "image_path": "/static/images/events/JOURNEY.webp",
+        "link": "",
+        "status": "True"
+
       }
     ]
   }

@@ -88,7 +88,7 @@
     "type": "regulation",
     "data": [
       {
-        "year": "2023",
+        "category": "Regulation 2023",
         "links": [
           {
             "name": "UG - B.E / B.Tech",
@@ -105,7 +105,7 @@
         ]
       },
       {
-        "year": "2019(A)",
+        "category": "Regulation 2019(A)",
         "links": [
           {
             "name": "UG - B.E / B.Tech",
@@ -122,7 +122,7 @@
         ]
       },
       {
-        "year": "2019",
+        "category": "Regulation 2019",
         "links": [
           {
             "name": "UG - B.E / B.Tech",

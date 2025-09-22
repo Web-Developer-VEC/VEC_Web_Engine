@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { Send, Trash2 } from "react-feather";
+import { Send, Trash2 } from "lucide-react";
 import "./admin-CurriculumPage.css";
 import LoadComp from "../../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
