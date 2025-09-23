@@ -432,7 +432,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEPT, 2025",
+        "start_date": "13 SEP",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "Digital Twin Technology",
@@ -443,7 +443,7 @@
         "status": "True"
       },
       {
-        "start_date": "22 SEPT, 2025",
+        "start_date": "22 SEP",
         "end_date": "22 SEPT, 2025",
         "date": "22-09-2025",
         "title": "Scalathon",
@@ -454,7 +454,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEPT, 2025",
+        "start_date": "13 SEP",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "Building Real Time Systems using Data Structure and Java Programming",
@@ -465,7 +465,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEPT, 2025",
+        "start_date": "13 SEP",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "From Idea to Device: A Hands-on Journey into IoT",
@@ -475,6 +475,27 @@
         "link": "",
         "status": "True"
 
+      },{
+        "start_date":"18 SEP",
+        "end_date": "19 Sep, 2025",
+        "date": "18-09-2025",
+        "title": "AI FUNDAMENTALS FOR MECHANICAL ENGINEERS",
+        "department": "Mechanical Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/AI.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"19 SEP",
+        "end_date": "19 SEP 2025",
+        "date": "19-09-2025",
+        "title": "WHY AI IS INEVITABLE IN INDUSTRIES",
+        "department": "Electronics & Instrumentation Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/INDUSTRIES.webp",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }

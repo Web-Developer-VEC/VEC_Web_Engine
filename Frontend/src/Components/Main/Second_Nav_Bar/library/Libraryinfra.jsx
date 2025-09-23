@@ -88,113 +88,108 @@ const LibrarySections = ({data, lib}) => {
 
     function LIBHigh({ data }) {
         if (!data || !Array.isArray(data)) return null;
-
-        // separate normal sections and image gallery
-        const normalSections = data.filter(sec => sec.category !== "Image_Gallery" || []);
-        const imageGallery = data.find(sec => sec.category === "Image_Gallery" ||[]);
-
         return (
             <>
             {/* ✅ First div: Services, Facilities, E-Resources */}
-<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-  {data
-    ?.filter(section => section.category !== "Image_Gallery")
-    .map((section, index) => (
-      <motion.div
-        key={index}
-        className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
-                transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
-                dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drkt mb-4 sm:mb-6">
-          {section.category}
-        </h2>
-        <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
-          {Array.isArray(section.content) &&
-            section.content.map((item, i) => (
-              <motion.li
-                key={i}
-                className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drkt transition-colors duration-300"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
-                <span className="text-start">
-                  {typeof item === "string" ? item : item.name}
-                </span>
-              </motion.li>
-            ))}
-        </ul>
-      </motion.div>
-    ))}
-</div>
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+              {data
+                ?.filter(section => section.category !== "Image_Gallery")
+                .map((section, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-4 sm:p-6 md:p-8 rounded-2xl shadow-md sm:shadow-lg text-center dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                            transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-[color-mix(in_srgb,theme(colors.secd),transparent_85%)]
+                            dark:hover:bg-[color-mix(in_srgb,theme(colors.drks),transparent_85%)]"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                  >
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-accn dark:text-drkt mb-4 sm:mb-6">
+                      {section.category}
+                    </h2>
+                    <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
+                      {Array.isArray(section.content) &&
+                        section.content.map((item, i) => (
+                          <motion.li
+                            key={i}
+                            className="flex items-center space-x-2 sm:space-x-3 hover:text-accn dark:hover:text-drkt transition-colors duration-300"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <span className="w-2 h-2 sm:w-3 sm:h-3 bg-secd dark:bg-drks rounded-full"></span>
+                            <span className="text-start">
+                              {typeof item === "string" ? item : item.name}
+                            </span>
+                          </motion.li>
+                        ))}
+                    </ul>
+                  </motion.div>
+                ))}
+            </div>
 
-{/* ✅ Second div: Library Highlights (Image_Gallery) */}
-{Array.isArray(
-  data?.find(section => section.category === "Image_Gallery")?.content
-) &&
-  data.find(section => section.category === "Image_Gallery").content.length >
-    0 && (
-    <div className="h-auto py-12 sm:py-16 px-4 sm:px-6">
-      <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drkt uppercase tracking-wide mb-8 sm:mb-12">
-        Library Highlights
-      </h2>
+            {/* ✅ Second div: Library Highlights (Image_Gallery) */}
+            {Array.isArray(
+              data?.find(section => section.category === "Image_Gallery")?.content
+            ) &&
+              data.find(section => section.category === "Image_Gallery").content.length >
+                0 && (
+                <div className="h-auto py-12 sm:py-16 px-4 sm:px-6">
+                  <h2 className="text-3xl sm:text-5xl font-extrabold text-center text-accn dark:text-drkt uppercase tracking-wide mb-8 sm:mb-12">
+                    Library Highlights
+                  </h2>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-        {data
-          .find(section => section.category === "Image_Gallery")
-          .content.map((item, index) => (
-            <motion.div
-              key={index}
-              className="relative group"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-            >
-              <Tilt
-                options={{
-                  max: 15,
-                  scale: 1.05,
-                  speed: 400,
-                  glare: true,
-                  "max-glare": 0.2,
-                }}
-                className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={UrlParser(item.image)}
-                    alt={item.title}
-                    className="w-full h-56 sm:h-60 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
+                  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                    {data
+                      .find(section => section.category === "Image_Gallery")
+                      .content.map((item, index) => (
+                        <motion.div
+                          key={index}
+                          className="relative group"
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.6,
+                            delay: index * 0.15,
+                            ease: "easeOut",
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <Tilt
+                            options={{
+                              max: 15,
+                              scale: 1.05,
+                              speed: 400,
+                              glare: true,
+                              "max-glare": 0.2,
+                            }}
+                            className="relative rounded-2xl shadow-lg overflow-hidden transition-all transform dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] group-hover:shadow-2xl"
+                          >
+                            <div className="relative overflow-hidden">
+                              <img
+                                src={UrlParser(item.image_path)}
+                                alt={item.title}
+                                className="w-full h-56 sm:h-60 object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity"></div>
+                            </div>
+
+                            <div className="p-5 sm:p-6">
+                              <h3 className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt group-hover:text-secd dark:group-hover:text-drks transition-colors">
+                                {item.title}
+                              </h3>
+                              <p className="mt-2 sm:mt-3 leading-relaxed">
+                                {item.description}
+                              </p>
+                            </div>
+                          </Tilt>
+                        </motion.div>
+                      ))}
+                  </div>
                 </div>
-
-                <div className="p-5 sm:p-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-accn dark:text-drkt group-hover:text-secd dark:group-hover:text-drks transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 sm:mt-3 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </Tilt>
-            </motion.div>
-          ))}
-      </div>
-    </div>
-  )}
+              )}
 
             </>
         );
@@ -280,7 +275,7 @@ const LibrarySections = ({data, lib}) => {
                                 >
                                     <div className="group relative">
                                         <img
-                                            src={UrlParser(section.image)}
+                                            src={UrlParser(section.image_path)}
                                             alt={section.title}
                                             className="w-full h-60 object-cover filter brightness-90 group-hover:brightness-100 transition-all"
                                         />
@@ -310,82 +305,82 @@ const LibrarySections = ({data, lib}) => {
         return (
             <>
                 {Array.isArray(data) && (
-  <div className="py-16 px-6">
-    <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-12 text-center">
-      Library Resources
-    </h2>
+                <div className="py-16 px-6">
+                  <h2 className="text-4xl font-bold text-accn dark:text-drkt mb-12 text-center">
+                    Library Resources
+                  </h2>
 
-    <div className="max-w-4xl mx-auto space-y-6">
-      {data?.map((section, index) => (
-        <div
-          key={index}
-          className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
-        >
-          {/* Toggle button */}
-          <button
-            onClick={() => toggleSection(index)}
-            className={`w-full flex justify-between items-center 
-              text-base sm:text-lg px-6 py-4 font-semibold
-              transition-all rounded-2xl text-white dark:text-drkp mb-4
-              ${
-                openSection === index
-                  ? "bg-[#FDCC03] text-black dark:bg-drks"
-                  : "bg-accn dark:bg-drks"
-              }`}
-          >
-            <h2
-              className={`${
-                openSection === index ? "text-black" : "text-white"
-              }`}
-            >
-              {section.category}
-            </h2>
-            {openSection === index ? (
-              <FaChevronUp className="text-black" />
-            ) : (
-              <FaChevronDown />
-            )}
-          </button>
-
-          {/* Collapsible content */}
-          {openSection === index && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="px-6 py-4"
-            >
-              {Array.isArray(section.content) ? (
-                <ul className="list-disc marker:text-accn dark:marker:text-drka pl-6 space-y-2">
-                  {section.content.map((item, idx) =>
-                    typeof item === "string" ? (
-                      <li key={idx} className="text-text dark:text-drka">
-                        {item}
-                      </li>
-                    ) : (
-                      <li key={idx}>
-                        <a
-                          href={item.link}
-                          className="text-text dark:text-drka hover:underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                  <div className="max-w-4xl mx-auto space-y-6">
+                    {data?.map((section, index) => (
+                      <div
+                        key={index}
+                        className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg"
+                      >
+                        {/* Toggle button */}
+                        <button
+                          onClick={() => toggleSection(index)}
+                          className={`w-full flex justify-between items-center 
+                            text-base sm:text-lg px-6 py-4 font-semibold
+                            transition-all rounded-2xl text-white dark:text-drkp mb-4
+                            ${
+                              openSection === index
+                                ? "bg-[#FDCC03] text-black dark:bg-drks"
+                                : "bg-accn dark:bg-drks"
+                            }`}
                         >
-                          {item.name}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
-                <p>{section.content}</p>
+                          <h2
+                            className={`${
+                              openSection === index ? "text-black" : "text-white"
+                            }`}
+                          >
+                            {section.category}
+                          </h2>
+                          {openSection === index ? (
+                            <FaChevronUp className="text-black" />
+                          ) : (
+                            <FaChevronDown />
+                          )}
+                        </button>
+
+                        {/* Collapsible content */}
+                        {openSection === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="px-6 py-4"
+                          >
+                            {Array.isArray(section.content) ? (
+                              <ul className="list-disc marker:text-accn dark:marker:text-drka pl-6 space-y-2">
+                                {section.content.map((item, idx) =>
+                                  typeof item === "string" ? (
+                                    <li key={idx} className="text-text dark:text-drka">
+                                      {item}
+                                    </li>
+                                  ) : (
+                                    <li key={idx}>
+                                      <a
+                                        href={item.link}
+                                        className="text-text dark:text-drka hover:underline"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                      >
+                                        {item.name}
+                                      </a>
+                                    </li>
+                                  )
+                                )}
+                              </ul>
+                            ) : (
+                              <p>{section.content}</p>
+                            )}
+                          </motion.div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               )}
-            </motion.div>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-)}
 
             </>
         )
@@ -484,37 +479,6 @@ const LibrarySections = ({data, lib}) => {
             </>
         );
       };
-
-    //   const LIBnewspaperdetails = () => {
-    //     const stats = [
-    //       { label: "Total Newspapers", value: 325, icon: "📰" },
-    //       { label: "Daily Newspapers", value: 120, icon: "📆" },
-    //       { label: "Weekly Newspapers", value: 85, icon: "📅" },
-    //       { label: "Monthly Newspapers", value: 60, icon: "🗞" },
-    //       { label: "Archived Newspapers", value: 45, icon: "📂" },
-    //       { label: "Digital Newspapers", value: 15, icon: "💻" }
-    //     ];
-      
-    //     return (
-    //         <>
-    //             {stats ? (
-    //                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-prim dark:bg-drkp rounded-lg shadow-lg">
-    //                     {stats?.map((stat, index) => (
-    //                     <div key={index} className="flex flex-col items-center bg-prim dark:bg-text p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
-    //                         <span className="text-5xl">{stat.icon}</span>
-    //                         <Counter value={stat.value} />
-    //                         <p className="text-text dark:text-prim text-lg mt-2">{stat.label}</p>
-    //                     </div>
-    //                     ))}
-    //                 </div>
-    //             ) : (
-    //                 <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-    //                     <LoadComp />
-    //                 </div>
-    //             )}
-    //         </>
-    //     );
-    //   };
 
     const [openSection, setOpenSection] = useState(null);
     const navData = {

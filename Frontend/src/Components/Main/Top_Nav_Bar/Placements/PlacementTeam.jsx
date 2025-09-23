@@ -16,7 +16,7 @@ function PersonDetail({ person, isImageLeft }) {
   
   return (
     <div className={`person-detail ${isImageLeft ? 'left' : 'right'} dark:bg-drkts`}>
-      <img src={UrlParser(person?.photo_path)} alt={person?.name} className="person-image" />
+      <img src={UrlParser(person?.image_path)} alt={person?.name} className="person-image" />
       <div className="person-content">
       <h3 className='placement-head'>{person?.name}</h3>
         <p className="text-accn dark:text-drka text-[24px]">{person?.designation}</p>
@@ -36,7 +36,7 @@ function PersonMemberDetail({ person, isImageLeft }) {
   
   return (
     <div className={`person-detail ${isImageLeft ? 'left' : 'right'} dark:bg-drkts`}>
-      <img src={UrlParser(person.photo_path)} alt={person.name} className="person-image-mem" />
+      <img src={UrlParser(person.image_path)} alt={person.name} className="person-image-mem" />
       <div className="person-content-mem">
         <h3 className='placement-member-head'>{person.name}</h3>
         <p className="text-accn dark:text-drka ">{person.designation}</p>

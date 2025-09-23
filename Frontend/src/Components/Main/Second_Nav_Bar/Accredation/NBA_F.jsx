@@ -24,7 +24,7 @@ const NBA_F = ({ data }) => {
   }, []);
 
   const handlePdfClick = (pdf) => {
-    window.open(`${UrlParser(pdf.pdfs_path)}#toolbar=0`, "_blank");
+    window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
   };
 
   if (!isOnline) {
