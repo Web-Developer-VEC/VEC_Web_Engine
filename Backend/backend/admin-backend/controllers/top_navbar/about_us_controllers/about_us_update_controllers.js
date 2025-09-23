@@ -11,7 +11,6 @@ async function updatedData(tempDoc, mainCollection) {
     const doc = await mainCollection.findOne({ type: collection_type });
 
     const singleDocTypes = [
-      "about_vec",
       "about_trust",
       "vision_and_mission",
       "Management",
@@ -22,6 +21,17 @@ async function updatedData(tempDoc, mainCollection) {
 
     if (!doc) {
       throw new Error(`Document with type ${collection_type} not found`);
+    }
+
+    if(collection_type === "about_vec"){
+
+      await mainCollection.updateOne(
+        {type:"about_vec"},
+        {$set:{"data.$.about_us_pdf.$[elem]":meta_data}},
+        {arrayFilters:[{"elem.name":original_data.name}]}
+      );
+
+       return{message:"The data is updated into about_vec pdf links"}
     }
     if (singleDocTypes.includes(collection_type)) {
       await mainCollection.updateOne(
