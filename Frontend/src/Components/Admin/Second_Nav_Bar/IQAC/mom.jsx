@@ -3,6 +3,7 @@ import LoadComp from "../../LoadComp";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function IqaMet({ iqacData }) {
   const [editableData, setEditableData] = useState([]);
@@ -14,6 +15,7 @@ export default function IqaMet({ iqacData }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]); // track all changes
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -23,38 +25,40 @@ export default function IqaMet({ iqacData }) {
     return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  // ✅ Add stable IDs when loading data
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
-      setEditableData([...iqacData]);
-      setOriginalData([...iqacData]);
+      const withIds = iqacData.map((row, i) => ({
+        ...row,
+        _id: row._id || `${Date.now()}-${i}`, // stable id
+      }));
+      setEditableData(withIds);
+      setOriginalData(withIds);
     }
   }, [iqacData]);
 
-  const logChange = (action, index, row) => {
+  const logChange = (action, rowId, row) => {
     const rowTitle = row?.year || "Untitled Row";
 
     setChangesLog((prev) => {
-      // Check if this row already has a log
-      const existingIndex = prev.findIndex((c) => c.rowIndex === index);
+      const existingIndex = prev.findIndex((c) => c.rowId === rowId);
 
       if (existingIndex !== -1) {
-        // If it's already logged, update the existing log
         const updatedLogs = [...prev];
         updatedLogs[existingIndex] = {
           ...updatedLogs[existingIndex],
-          action: updatedLogs[existingIndex].action === "Insert" ? "Insert" : action, 
+          action: updatedLogs[existingIndex].action === "Insert" ? "Insert" : action,
           title: rowTitle,
           row,
         };
         return updatedLogs;
       }
 
-      // Otherwise, add a new log entry
       return [
         ...prev,
         {
-          id: Date.now() + index,
-          rowIndex: index,
+          id: Date.now() + rowId,
+          rowId,
           action,
           section: "IQAC",
           title: rowTitle,
@@ -69,7 +73,7 @@ export default function IqaMet({ iqacData }) {
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
     setHasChanges(true);
-    logChange("Edit", index, newData[index]);
+    logChange("Edit", newData[index]._id, newData[index]);
   };
 
   const handleFileUpload = (index, file) => {
@@ -77,30 +81,37 @@ export default function IqaMet({ iqacData }) {
       const fileURL = URL.createObjectURL(file);
       setUploadedFiles((prev) => ({
         ...prev,
-        [index]: { file, fileURL },
+        [editableData[index]._id]: { file, fileURL },
       }));
       handleInputChange(index, "path", file.name);
     }
   };
 
   const handleAddRow = () => {
-    const newRow = { year: "", path: "", type: "", conducted_on: "" };
+    const newRow = {
+      _id: `${Date.now()}-${Math.random()}`,
+      year: "",
+      path: "",
+      type: "",
+      conducted_on: "",
+    };
     setEditableData([...editableData, newRow]);
     setHasChanges(true);
-    logChange("Insert", editableData.length, newRow);
+    logChange("Insert", newRow._id, newRow);
   };
 
-  const toggleRowSelection = (index) => {
+  const toggleRowSelection = (rowId) => {
     setSelectedRows((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(rowId) ? prev.filter((id) => id !== rowId) : [...prev, rowId]
     );
   };
 
   const handleDeleteSelected = () => {
-    selectedRows.forEach((index) => {
-      logChange("Delete", index, editableData[index]);
+    selectedRows.forEach((rowId) => {
+      const row = editableData.find((r) => r._id === rowId);
+      logChange("Delete", rowId, row);
     });
-    setEditableData(editableData.filter((_, i) => !selectedRows.includes(i)));
+    setEditableData(editableData.filter((r) => !selectedRows.includes(r._id)));
     setSelectedRows([]);
     setShowDeleteConfirm(false);
     setHasChanges(true);
@@ -128,12 +139,69 @@ export default function IqaMet({ iqacData }) {
     toast.info("Changes discarded.");
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Submitting request with changes:", changesLog);
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setHasChanges(false);
-    setChangesLog([]);
+  const buildPayload = (changesLog, editableData, originalData) => {
+    return changesLog.map((change) => {
+      const row = editableData.find((r) => r._id === change.rowId) || change.row;
+      const oldRow = originalData.find((r) => r._id === change.rowId) || null;
+
+      const yearWithType = row?.year && row?.type ? `${row.year} (${row.type})` : row?.year;
+
+      let actionType = "";
+      let title = "";
+
+      switch (change.action) {
+        case "Insert":
+          actionType = "insert";
+          title = "insertion of iqac minutes of meetings";
+          break;
+        case "Edit":
+          actionType = "update";
+          title = "updation of iqac minutes of meetings";
+          break;
+        case "Delete":
+          actionType = "delete";
+          title = "deletion of iqac minutes of meetings";
+          break;
+        default:
+          actionType = "unknown";
+      }
+
+      return {
+        collectionName: "iqac",
+        collection_type: "minutes_of_meetings",
+        action: actionType,
+        title,
+        meta_data: {
+          year: yearWithType,
+          path: row?.path || "",
+          type: row?.type || "",
+          conducted_on: row?.conducted_on || "",
+        },
+        original_data:
+          actionType === "update"
+            ? {
+                year: oldRow?.year && oldRow?.type ? `${oldRow.year} (${oldRow.type})` : oldRow?.year,
+                path: oldRow?.path || "",
+                type: oldRow?.type || "",
+                conducted_on: oldRow?.conducted_on || "",
+              }
+            : null,
+      };
+    });
+  };
+
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload(changesLog, editableData, originalData);
+
+    const files = Object.values(uploadedFiles).map((f) => f.file).filter(Boolean);
+
+    const result = await sendRequest(payload, files);
+    if (result) {
+      setShowRequestModal(false);
+      setHasChanges(false);
+      setChangesLog([]);
+      setUploadedFiles({});
+    }
   };
 
   // 🔹 Convert dd.mm.yyyy -> yyyy-mm-dd
@@ -201,7 +269,7 @@ export default function IqaMet({ iqacData }) {
                 <tbody>
                   {editableData?.map((item, index) => (
                     <tr
-                      key={index}
+                      key={item._id}
                       className="hover:bg-gray-50 dark:hover:bg-gray-800"
                     >
                       <td className="text-center px-2 py-2">{index + 1}</td>
@@ -272,10 +340,10 @@ export default function IqaMet({ iqacData }) {
                                 }
                               />
                             </label>
-                            {(uploadedFiles[index] || item.path) && (
+                            {(uploadedFiles[item._id] || item.path) && (
                               <a
                                 href={
-                                  uploadedFiles[index]?.fileURL ||
+                                  uploadedFiles[item._id]?.fileURL ||
                                   UrlParser(item.path)
                                 }
                                 target="_blank"
@@ -302,8 +370,8 @@ export default function IqaMet({ iqacData }) {
                         <td className="text-center">
                           <input
                             type="checkbox"
-                            checked={selectedRows.includes(index)}
-                            onChange={() => toggleRowSelection(index)}
+                            checked={selectedRows.includes(item._id)}
+                            onChange={() => toggleRowSelection(item._id)}
                           />
                         </td>
                       )}
@@ -423,16 +491,18 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                disabled={loading}
               >
                 Cancel
               </button>
               {changesLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                  className={`px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                  disabled={loading}
                 >
-                  Confirm Request
+                  {loading ? "Processing..." : "Final Request"}
                 </button>
               )}
             </div>
