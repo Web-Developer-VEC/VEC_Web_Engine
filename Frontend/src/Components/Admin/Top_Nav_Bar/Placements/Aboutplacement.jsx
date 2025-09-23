@@ -498,7 +498,7 @@ toast.error("Change has been reverted");
                     <th className="border p-2">Action</th>
                     <th className="border p-2">Section</th>
                     <th className="border p-2">Changes</th>
-                    <th className="border p-2">Revert</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
