@@ -423,7 +423,7 @@ toast.info("All Change has been reverted");
 
       {showRequestModal && (
         <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
-          <div className="bg-prim p-6 rounded-xl w-[55%] max-h-[80vh] overflow-y-auto">
+          <div className="bg-prim p-6 rounded-xl w-[45%] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
             <p className="text-sm text-red-500 mb-4">Your changes will stay pending until approved by the superior admin. Once approved they will go live.</p>
 
