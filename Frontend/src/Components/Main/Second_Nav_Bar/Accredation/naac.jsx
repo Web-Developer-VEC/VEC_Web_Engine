@@ -33,8 +33,8 @@ const Naac = ({ data }) => {
   }, []);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") return;
-    const url = `${UrlParser(pdf.pdfs_path)}#toolbar=0`;
+    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") return;
+    const url = `${UrlParser(pdf.pdf_path)}#toolbar=0`;
     window.open(url, "_blank"); // always new tab
   };
 
