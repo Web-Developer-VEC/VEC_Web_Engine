@@ -703,8 +703,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/011/2024-2025/Add-On Course.pdf"
               }
-      ],
-            "activities": []
+      ]
           },
           {
             "year": "2023 - 2024",
@@ -741,75 +740,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/011/2023-2024/Add-On Course.pdf"
               }
-      ],
-            "activities": [
-              {
-                "date": "28.03.2024",
-                "name_of_event": "Explore OS Innovation through Virtualization and Relevant cases",
-                "coordinator": "Mrs.Sathyabama A R, Mrs.Parvathy M",
-                "resource_person": "Mrs K Bala Saranya, Assistant Professor, R.M.D Engineering College",
-                "beneficiaries": "II Year Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/exlore_os.webp"
-                ]
-              },
-              {
-                "date": "05.03.2024",
-                "name_of_event": "Career Opportunity in Data Science with Tableau and Power BI",
-                "coordinator": "Dr.Jeevaa Katiravan",
-                "resource_person": "Mr.R.Ahamed Khalid, Senior Vice President, Head-Academic Alliance",
-                "beneficiaries": "II Year Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/career_opportunity.webp"
-                ]
-              },
-              {
-                "date": "22.02.2024",
-                "name_of_event": "Design Thinking on Full Stack Development",
-                "coordinator": "Mr.K.R.MohanRaj, Mr.RajKumar S",
-                "resource_person": "Mr.Rajavasanthan, Tech Enthusiast, Entrepreneur, Mentor Grids and Guides Each One and Teach One",
-                "beneficiaries": "II Year and III Year students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/design_thinking_on_full_stack.webp"
-                ]
-              },
-              {
-                "date": "20.02.2024",
-                "name_of_event": "Unleashing Creativity and Growth through Study abroad Experiences",
-                "coordinator": "Mrs.Preetih G, Mrs.Vinodhini S",
-                "resource_person": "Ms.Bindu Mary, Head of Operations Tamilnadu, AECC India Private Limited",
-                "beneficiaries": "II Year and III Year students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
-                "image_path": [
-                  "/static/images/dept_activities/011/unleashing_creativity.webp"
-                ]
-              },
-              {
-                "date": "15.02.2024",
-                "name_of_event": "Unfolding innovative Opportunities in Overseas Education",
-                "coordinator": "Mrs.Parvathy M, Mrs. Revathy S P",
-                "resource_person": "Mr.Sabarinath Vijayakumar,Director of Partnerships – India, Heriot Watt University",
-                "beneficiaries": "II Year and III Year students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
-                "image_path": [
-                  "/static/images/dept_activities/011/unfolding_innovative_opportunities.webp"
-                ]
-              },
-              {
-                "date": "10.02.2024",
-                "name_of_event": "Symposium events",
-                "coordinator": "Mr.Mohan Raj K R, Mrs.Sathyabama A R",
-                "resource_person": "Mr. M.Ganesh Thirunavukkarasu, Regional Head, Academic Interface Programme @TCS",
-                "beneficiaries": "External Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO10",
-                "image_path": [
-                  "/static/images/dept_activities/011/symposium_events.webp"
-                ]
-              }
-            ]
+      ]
           },
           {
             "year": "2022 - 2023",
@@ -846,185 +777,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/011/2022-2023/Add-On Course.pdf"
               }
-      ],
-            "activities": [
-              {
-                "date": "06.11.2023 to 11.11.2023",
-                "name_of_event": "Research Challenges and Opportunities in Information Technology",
-                "coordinator": "Dr.Sathya  Priya J, Mrs.Revathy S P,  Mrs.Parvathy M",
-                "resource_person": "",
-                "beneficiaries": "Internal & External Faculty members",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
-                "image_path": [
-                  "/static/images/dept_activities/011/research_challenges_and_opportunities.webp"
-                ]
-              },
-              {
-                "date": "01.11.2023",
-                "name_of_event": "Big Data Tools and Technologies",
-                "coordinator": "Ms.M.N.Sowmiya, Mrs.S.P.Abinaya, Mrs.S.Vinodhini",
-                "resource_person": "Mrs.Vinoja M, Senior Software Engineer, HCL Tech",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9",
-                "image_path": [
-                  "/static/images/dept_activities/011/big_data_tools_and_technologies.webp"
-                ]
-              },
-              {
-                "date": "09.10.2023",
-                "name_of_event": "Cloudify Your Future",
-                "coordinator": "Ms.M.N.Sowmiya, Mrs.S.P.Abinaya, Mrs.S.Vinodhini",
-                "resource_person": "",
-                "beneficiaries": "IV year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO9, PO10",
-                "image_path": [
-                  "/static/images/dept_activities/011/cloudify_your_future.webp"
-                ]
-              },
-              {
-                "date": "04.10.2023",
-                "name_of_event": "Mastering the Arts of Software Testing",
-                "coordinator": "Mrs.S.Vinodhini, Mrs.P.Vimala Imogen",
-                "resource_person": "Mrs.Sindhu Sivaraman, Senior Test Specialist, IBM India Private Limited.",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/mastering_the_arts_of_software_testing.webp"
-                ]
-              },
-              {
-                "date": "14.09.2023",
-                "name_of_event": "Python for Industry: A Deep Dive into OOP",
-                "coordinator": "Mrs.S.P.Revathy, Mrs.S.Vinodhini",
-                "resource_person": "Mr.Darvin Rajesh J, Gold Coast IT Solutions, Chennai",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/python_for_industry.webp"
-                ]
-              },
-              {
-                "date": "07.09.2023",
-                "name_of_event": "AWS Cloud",
-                "coordinator": "Mrs.T.Thivya, Ms.M.N.Sowmiya, Mrs.S.P.Abinaya",
-                "resource_person": "Mr.Shanmuga Raja Rajeswaran, CTO – Netstack Technology Solutions",
-                "beneficiaries": "III Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/aws_cloud.webp"
-                ]
-              },
-              {
-                "date": "30.08.2023",
-                "name_of_event": "Development of Entrepreneurial Mindset",
-                "coordinator": "Mrs.M.Parvathy",
-                "resource_person": "Dr.A.Nirmal Raj, Professor & Head, Department of Management Studies.",
-                "beneficiaries": "III Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO11",
-                "image_path": [
-                  "/static/images/dept_activities/011/development_of_entrepreneurial_mindset.webp"
-                ]
-              },
-              {
-                "date": "30.08.2023",
-                "name_of_event": "Unveiling the wonders of Data Science",
-                "coordinator": "Mrs.C.M.Nalayini, Mrs.A.R.Sathyabama",
-                "resource_person": "Mr.A.Vignesh Kumaran, Pantech E-Learning Team Lead",
-                "beneficiaries": "III Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/unveiling_the_wonders_of_data_science.webp"
-                ]
-              },
-              {
-                "date": "04.08.23 to 06.08.23",
-                "name_of_event": "Code the Node and Way to Cloud",
-                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
-                "resource_person": "Mr.D.Aravind, Senior Programmer, CDW Private Limited.",
-                "beneficiaries": "III Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/code_the_node_and_way_to_cloud.webp"
-                ]
-              },
-              {
-                "date": "12.07.2023 to 14.07.2023",
-                "name_of_event": "Exploring Block Chain: From Concept to Application",
-                "coordinator": "Mrs.Sathyabama A R,  Mrs.Vimala Imogen, Mrs.Preethi G",
-                "resource_person": "Dr.Sangeetha G, Associate Professor, Dept of AI&DS, RMK College of Engineering & Technology,  Mrs.Nalayini C M, Assistant Professor, Dept of IT, Velammal Engineering College, Dr.Nirmala G, Associate Professor, RMD Engineering College, Mrs.Rajeswari P, Assistant Professor, RMD Engineering College, Dr.Anasuya Threse, Founder & Director, Biniworld Innovations Private Limited.",
-                "beneficiaries": "II Year & III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6",
-                "image_path": [
-                  "/static/images/dept_activities/011/exploring_block_chain.webp"
-                ]
-              },
-              {
-                "date": "15.04.2023",
-                "name_of_event": "Software Testing",
-                "coordinator": "Mr.K.R.MohanRaj Mr.S.Rajkumar",
-                "resource_person": "Ms.Padmavathi, Software Testing, Amazon",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/software_testing.webp"
-                ]
-              },
-              {
-                "date": "11.04.2023",
-                "name_of_event": "National Conference on Recent Technologies and Computing Sciences",
-                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
-                "resource_person": "Dr. Bhavani R, Professor, Departement of CSE, Saveetha School of Engineering",
-                "beneficiaries": "Students, Faculty and Research Scholars",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO6, PO9, PO10, PO11",
-                "image_path": [
-                  "/static/images/dept_activities/011/national_conference_on_recent_technologies_and_computing_sciences.webp"
-                ]
-              },
-              {
-                "date": "20.03.2023 to 27.03.2023",
-                "name_of_event": "FDP on Exploring Research in Information and Communication Engineering",
-                "coordinator": "Mrs.J.SathyaPriya, Mrs.Thivya, Mrs.Revathy",
-                "resource_person": "Dr.V.Gowri, Dr.Angayarkanni S A, Dr.Parameshwari M, Dr.Raja Ratna S, Dr.Rajesh Babu, Dr.Kalaivani A,  Mr.Vadivelan T, Mrs.GangaDevi G, Mrs.Sathya R, Mrs.PadmaPriya K.",
-                "beneficiaries": "Internal and External Faculty members",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
-                "image_path": [
-                  "/static/images/dept_activities/011/fdp_on_exploring_research_in_information_and_communication_engineering.webp"
-                ]
-              },
-              {
-                "date": "20.03.2023",
-                "name_of_event": "Guest Lecture on Design and Analysis of Algorithm",
-                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
-                "resource_person": "Dr.C.Geetha, Professor-CSE, RMK Engineering College",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/guest_lecture_on_design_and_analysis_of_algorithm.webp"
-                ]
-              },
-              {
-                "date": "17.03.2023",
-                "name_of_event": "Seminar on R Programming tools for Statistical Analysis",
-                "coordinator": "Mrs.G.Preethi, Mrs.S.Vinodhini",
-                "resource_person": "Mrs.M.Shanmuga Priya, AP,Sairam Institute of Technology",
-                "beneficiaries": "III Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/seminar_on_r_programming_tools_for_statistical_analysis.webp"
-                ]
-              },
-              {
-                "date": "17.02.2023",
-                "name_of_event": "Guest Lecture on UI/UX Design",
-                "coordinator": "Mrs.C.M.Nalayini, Mr.K.R.MohanRaj, Mrs.A.R.Sathyabama",
-                "resource_person": "Mr.Sri Balaji Aravind, Co-Founder, arjun Vision Tech Solution",
-                "beneficiaries": "II Year IT students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/guest_lecture_on_ui_ux_design.webp"
-                ]
-              }
-            ]
+      ]
           },
           {
             "year": "2021 - 2022",
@@ -1061,86 +814,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/011/2021-2022/Add-On Course.pdf"
               }
-      ],
-            "activities": [
-              {
-                "date": "16.11.2022",
-                "name_of_event": "Webinar on Statistics Using R Programming",
-                "coordinator": "Dr.J.Sathya Priya",
-                "resource_person": "Dr.N.Deepa, Associate Professor, Saveetha School of Engineering.",
-                "beneficiaries": "II Year students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/webinar_on_statistics_using_r_programming.webp"
-                ]
-              },
-              {
-                "date": "31.10.2022 to 04.11.2022",
-                "name_of_event": "Workshop on Augmented Reality and Virtual Reality",
-                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
-                "resource_person": "Mr.Ankith Sreenath & Mr.Prashanth Gupta, Instructor, Incage Technologies.",
-                "beneficiaries": "External Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/workshop_on_augmented_reality_and_virtual_reality.webp"
-                ]
-              },
-              {
-                "date": "15.10.2022",
-                "name_of_event": "Webinar on Packet Analyzer using Network Tools",
-                "coordinator": "Mrs.C.M.Nalayini, Mrs.A.R.Sathyabama",
-                "resource_person": "Mr.S.Suresh Kumar, KNET Solutions, Pallikaranai.",
-                "beneficiaries": "III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/webinar_on_packet_analyzer_using_network_tools.webp"
-                ]
-              },
-              {
-                "date": "30.09.2022",
-                "name_of_event": "Webinar on Mobile Application Development",
-                "coordinator": "Mrs.G.Preethi, Mrs.Vimala Imogen",
-                "resource_person": "Mr.Ajay Gowtham, UIUX Designer, Experience.com",
-                "beneficiaries": "III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/webinar_on_mobile_application_development.webp"
-                ]
-              },
-              {
-                "date": "22.09.2022",
-                "name_of_event": "Webinar on JAVA Programming",
-                "coordinator": "Mrs.S.P.Revathy, Mrs.S.Vinodhini",
-                "resource_person": "Mr.Moses Antony, Senior Architect, Chennai Development Centre.",
-                "beneficiaries": "III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/webinar_on_java_programming.webp"
-                ]
-              },
-              {
-                "date": "09.09.2022",
-                "name_of_event": "Seminar on Emerging world with IOT Innovation",
-                "coordinator": "Mr.K.R.MohanRaj, Mr.S.Rajkumar",
-                "resource_person": "Mr.D.Arun,CEO, Karyyoun Innovations Private Limited.",
-                "beneficiaries": "III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5",
-                "image_path": [
-                  "/static/images/dept_activities/011/seminar_on_emerging_world_with_iot_innovation.webp"
-                ]
-              },
-              {
-                "date": "27.07.2022",
-                "name_of_event": "Quiz Competition on DBMS",
-                "coordinator": "Mrs.C.M.Nalayini",
-                "resource_person": "",
-                "beneficiaries": "III Year IT Students",
-                "relevant_PO_PSO": "PO1, PO2, PO3, PO4, PO5, PO10",
-                "image_path": [
-                  "/static/images/dept_activities/011/quiz_competition_on_dbms.webp"
-                ]
-              }
-            ]
+      ]
           }
         ]
       }
@@ -1268,10 +942,10 @@
       {
         "category": "infrastructure_images",
         "content": [
-          {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY", "image_content":""},
-          {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY", "image_content": ""},
-          {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY", "image_content": ""},
-          {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY", "image_content": ""}
+          {"image_path": "/static/images/infrastructure/011/1.webp", "image_name": "CASE TOOLS LABORATORY"},
+          {"image_path": "/static/images/infrastructure/011/2.webp", "image_name": "PROGRAMMING LABORATORY"},
+          {"image_path": "/static/images/infrastructure/011/3.webp", "image_name": "RDBMS LABORATORY"},
+          {"image_path": "/static/images/infrastructure/011/4.webp", "image_name": "RESEARCH LABORATORY"}
         ]
       }
     ]
@@ -1292,170 +966,107 @@
         "category": "mous_details",
         "content": [
         {
-        "S_NO": 1,
         "ORGANISATION_NAME": "Data DNA Technologies",
         "MONTH_AND_YEAR": "01-11-2022",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "PDF_PATH":"",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
       },
       {
-        "S_NO": 2,
         "ORGANISATION_NAME": "ArjunVision Tech Solutions",
         "MONTH_AND_YEAR": "24-02-2023",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
       },
       {
-        "S_NO": 3,
         "ORGANISATION_NAME": "Tata Elxsi",
         "MONTH_AND_YEAR": "29-01-2020",
-        "VALIDITY": "11 Months",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "11 Months"
       },
       {
-        "S_NO": 4,
         "ORGANISATION_NAME": "DigiALERT Solutions Private Limited",
         "MONTH_AND_YEAR": "08-09-2023",
-        "VALIDITY": "5 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "5 Years"
       },
       {
-        "S_NO": 5,
         "ORGANISATION_NAME": "Karyyoun Innovations LTD",
         "MONTH_AND_YEAR": "06-09-2022",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
       },
       {
-        "S_NO": 6,
         "ORGANISATION_NAME": "SALANG CONSULTANTS PVT LTD",
         "MONTH_AND_YEAR": "09-09-2021",
-        "VALIDITY": "Till date",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "Till date"
       },
       {
-        "S_NO": 7,
         "ORGANISATION_NAME": "Sify Technologies",
         "MONTH_AND_YEAR": "09-08-2024",
-        "VALIDITY": "5 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "5 Years"
       },
       {
-        "S_NO": 8,
         "ORGANISATION_NAME": "Hexaware Technologies",
         "MONTH_AND_YEAR": "12-08-2024",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       },
       {
-        "S_NO": 9,
         "ORGANISATION_NAME": "Movate Technologies Private Ltd",
         "MONTH_AND_YEAR": "04-11-2024",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       },
       {
-        "S_NO":10,
         "ORGANISATION_NAME": "GUVI GREEK NETWORK",
         "MONTH_AND_YEAR": "22-01-2024",
-        "VALIDITY": "1 Month",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "1 Month"
       },
       {
-        "S_NO":11,
         "ORGANISATION_NAME": "ASPIRE SYSTEMS",
         "MONTH_AND_YEAR": "29-09-2021",
-        "VALIDITY": "1 Year",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "1 Year"
       },
       {
-        "S_NO": 12,
         "ORGANISATION_NAME": "RED HAT INDIA PRIVATE LTD",
         "MONTH_AND_YEAR": "03-01-2019",
-        "VALIDITY": "2 Years 1 Month",
-        "LOGO_PATH":"",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "2 Years 1 Month"
       },
       {
-        "S_NO":13,
         "ORGANISATION_NAME": "MAZENET SOLUTIONS PRIVATE LTD",
         "MONTH_AND_YEAR": "26-07-2017",
-        "VALIDITY": "1 Year",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "1 Year"
       },
       {
-        "S_NO":14,
         "ORGANISATION_NAME": "PRARAMBHAN ENTERTAINMENT PRIVATE LIMITED",
         "MONTH_AND_YEAR": "06-02-2017",
-        "VALIDITY": "2 Years 2 Months",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "2 Years 2 Months"
       },
       {
-        "S_NO":15,
         "ORGANISATION_NAME": "LIVE WIRE PRIVATE LTD",
         "MONTH_AND_YEAR": "04-01-2017",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       },
       {
-        "S_NO":16,
         "ORGANISATION_NAME": "COMPUTER SCIENCE CORPORATION LIMITED",
         "MONTH_AND_YEAR": "02-07-2015",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       },
       {
-        "S_NO":17,
         "ORGANISATION_NAME": "TATA CONSULTANCY SERVICES LTD",
         "MONTH_AND_YEAR": "07-05-2015",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       },
       {
-        "S_NO":18,
         "ORGANISATION_NAME": "BACK END SOLUTIONS LTD",
         "MONTH_AND_YEAR": "10-04-2014",
-        "VALIDITY": "5 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
-      }, {
-        "S_NO":19,
+        "VALIDITY": "5 Years"
+      },
+       {
         "ORGANISATION_NAME": "TRANS STELLAR",
         "MONTH_AND_YEAR": "10-07-2012",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       }, {
-        "S_NO":20,
         "ORGANISATION_NAME": "KAASHIV INFOTECH",
         "MONTH_AND_YEAR": "31-01-2011",
-        "VALIDITY": "5 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "5 Years"
       }, {
-        "S_NO":21,
         "ORGANISATION_NAME": "TRIMINTUS TECHNOLOGIES",
         "MONTH_AND_YEAR": "14-10-2009",
-        "VALIDITY": "3 Years",
-        "LOGO_PATH": "",
-        "ACTIVITIES_PLANNED": []
+        "VALIDITY": "3 Years"
       }
         ]
       }

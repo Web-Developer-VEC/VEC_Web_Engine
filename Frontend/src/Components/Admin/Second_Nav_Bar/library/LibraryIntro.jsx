@@ -260,7 +260,7 @@ const LibraryIntro = ({ about }) => {
                       setShowRequest(true);
                     }}
                   >
-                    <Save size={18} /> Save
+                     Save
                   </button>
                 )}
               </div>

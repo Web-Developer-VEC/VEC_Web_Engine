@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./Enterpreneur.css";
 import LoadComp from "../../LoadComp";
 import { FaUserEdit } from "react-icons/fa";
-import { Edit, Save, Send, Plus, Trash2, ArrowDown } from "lucide-react";
+import { Edit, Save, Send, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -53,6 +53,33 @@ export default function EnterpreN({ enterpreneur }) {
     else nxt.add(index);
     setSelectedRows(nxt);
   };
+
+  const handleUndoChange = (change) => {
+  let newEditableData = [...editableData];
+  let newAllChanges = [...allChanges];
+
+  if (change.action === "add") {
+    // Remove newly added row
+    newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
+  } else if (change.action === "delete") {
+    // Restore deleted row
+    newEditableData.splice(change.index, 0, change.deletedItem);
+  } else if (change.action === "edit") {
+    // Revert edited fields
+    const oldRow = { ...newEditableData[change.index] };
+    for (const field in change.changes) {
+      oldRow[field] = change.changes[field].old;
+    }
+    newEditableData[change.index] = oldRow;
+  }
+
+  // Remove undone change from allChanges
+  newAllChanges = newAllChanges.filter((c) => c !== change);
+
+  setEditableData(newEditableData);
+  setAllChanges(newAllChanges);
+};
+
 
   // Add row
   const handleAddRow = () => {
@@ -205,7 +232,7 @@ export default function EnterpreN({ enterpreneur }) {
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-yellow-400"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         </div>
       )}
@@ -340,7 +367,7 @@ export default function EnterpreN({ enterpreneur }) {
               )}
               {isEditing && sessionChanges.length > 0 && (
             <button
-              className="border-4 border-yellow-400 px-3 py-2 rounded-lg"
+              className="bg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
               onClick={handleSave}
             >
               Save
@@ -379,46 +406,53 @@ export default function EnterpreN({ enterpreneur }) {
             <div className="max-h-[320px] overflow-y-auto mb-4">
               <table className="w-full text-sm text-left border">
                 <thead className="bg-gray-100">
-                  <tr>
-                    <th className="py-2 px-3 border">Action</th>
-                    <th className="py-2 px-3 border">Section</th>
-                    <th className="py-2 px-3 border">Changed Field</th>
-                  </tr>
-                </thead>
+              
+                <tr>
+                  <th className="py-2 px-3 border">Action</th>
+                  <th className="py-2 px-3 border">Section</th>
+                  <th className="py-2 px-3 border">Changed Field</th>
+                  <th className="py-2 px-3 border">Undo</th> {/* new column */}
+                </tr>
+              </thead>
                 <tbody>
-                  {allChanges.length === 0 ? (
-                    <tr>
-                      <td colSpan={3} className="text-center py-4">
-                        No changes to submit
-                      </td>
-                    </tr>
-                  ) : (
-                    allChanges.map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                        <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                        </td>
-                        <td className="py-2 px-3 border align-top">Entrepreneur</td>
-                       <td className="py-2 px-3 border text-[13px]">
-                        {change.action === "delete" ? (
-                          <div>Row {change.index + 1} deleted</div>
-                        ) : Object.keys(change.changes || {}).length === 0 ? (
-                          <div>Added/changed entire row</div>
-                        ) : (
-                          <div>
-                            {Object.entries(change.changes)
-                              .filter(([field, values]) => values.old !== values.new) // only changed fields
-                              .map(([field]) => field.charAt(0).toUpperCase() + field.slice(1)) // capitalize first letter
-                              .join(", ")} {/* join all changed fields in one line */}
-                          </div>
-                        )}
-                      </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
+  {allChanges.length === 0 ? (
+    <tr>
+      <td colSpan={4} className="text-center py-4">
+        No changes to submit
+      </td>
+    </tr>
+  ) : (
+    allChanges.map((change, idx) => (
+      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+        <td className="py-2 px-3 border align-top text-center">
+          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+          {change.action === "add" && <span className="text-green-600">+ Added</span>}
+          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+        </td>
+        <td className="py-2 px-3 border align-top text-center">Entrepreneur</td>
+        <td className="py-2 px-3 border text-[13px]">
+          {change.action === "delete"
+            ? `Row ${change.index + 1} deleted`
+            : Object.keys(change.changes || {}).length === 0
+            ? "Added/changed entire row"
+            : Object.entries(change.changes)
+                .filter(([_, val]) => val.old !== val.new)
+                .map(([field]) => field.charAt(0).toUpperCase() + field.slice(1))
+                .join(", ")}
+        </td>
+        <td className="py-2 px-3 border text-center">
+          <button
+            className="text-red-500 font-bold"
+            onClick={() => handleUndoChange(change)}
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    ))
+  )}
+</tbody>
+
               </table>
             </div>
 
@@ -431,7 +465,7 @@ export default function EnterpreN({ enterpreneur }) {
               </button>
               <button
                 onClick={handleFinalRequestConfirm}
-                className="px-4 py-2 rounded bg-yellow-400 text-black"
+                className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim  "
               >
                 Final Request
               </button>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Pencil } from "lucide-react";
+import { Pencil, ArrowDown, X } from "lucide-react";
 import { FaLink } from "react-icons/fa";
 import "./admin_igauge.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ArrowDown } from "lucide-react";
 
 export default function IQGauge({ data }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -13,28 +12,69 @@ export default function IQGauge({ data }) {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [changes, setChanges] = useState([]);
 
   const UrlParser = (path) => {
-    let paths;
     if (typeof path === "string") {
-      paths = path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+      return path.startsWith("http") ? path : `${BASE_URL}${path}`;
     }
-    return paths;
+    return "";
   };
+
+  const oldpath = Array.isArray(data) && data[0]?.pdf_path?.split("/");
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setUploadedFile({ file, fileURL });
-    }
+    if (!file) return;
+    const fileURL = URL.createObjectURL(file);
+    setUploadedFile({ file, fileURL });
+    const change = {
+      id: Date.now() + Math.floor(Math.random() * 1000),
+      action: "Edited",
+      section: "IQ Gauge",
+      oldValue: oldpath?.[4] || "current.pdf",
+      newValue: file.name,
+      fileURL,
+    };
+    setChanges((prev) => [...prev, change]);
   };
 
   const handleRequestConfirm = () => {
-    console.log("Request confirmed for:", uploadedFile);
+    if (changes.length === 0) {
+      toast.info("No changes to submit");
+      return;
+    }
     toast.success("Request submitted successfully!");
     setShowRequestModal(false);
     setIsEditing(false);
+    setChanges([]);
+    setUploadedFile(null);
+  };
+
+  const handleRevertChange = (change) => {
+    setChanges((prev) => prev.filter((c) => c.id !== change.id));
+    if (uploadedFile?.fileURL === change.fileURL) {
+      setUploadedFile(null);
+    }
+  };
+
+  const getChanges = () => changes;
+
+  const describeChange = (change) => {
+    return (
+      <div className="flex flex-col items-center">
+        <span className="text-xs">{change.oldValue}</span>
+        <ArrowDown size={14} />
+        <a
+          href={change.fileURL}
+          className="cursor-pointer text-blue-600 text-xs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {change.newValue}
+        </a>
+      </div>
+    );
   };
 
   if (!data || !Array.isArray(data)) {
@@ -45,16 +85,12 @@ export default function IQGauge({ data }) {
     );
   }
 
-  const oldpath =
-    Array.isArray(data) && data[0]?.pdf_path?.split("/");
-
   return (
     <div className="text-center py-10 dark:bg-drkp">
       <h1 className="text-2xl font-bold text-brwn dark:text-drkt mb-8">
         QS I QUAGE
       </h1>
 
-      {/* Edit Button */}
       {!isEditing && (
         <div className="flex justify-end pt-3 mr-8">
           <button
@@ -66,7 +102,6 @@ export default function IQGauge({ data }) {
         </div>
       )}
 
-      {/* Replace PDF / Request Button */}
       {isEditing && (
         <div className="mb-4 flex justify-center gap-4">
           {!uploadedFile ? (
@@ -90,6 +125,7 @@ export default function IQGauge({ data }) {
               <button
                 onClick={() => {
                   setUploadedFile(null);
+                  setChanges([]);
                 }}
                 className="bg-gray-500 text-white px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-white"
               >
@@ -106,7 +142,6 @@ export default function IQGauge({ data }) {
         </div>
       )}
 
-      {/* PDF Viewer */}
       <div className="w-full flex justify-center px-2 overflow-x-auto">
         <div className="iframe-wrapper">
           <iframe
@@ -122,66 +157,73 @@ export default function IQGauge({ data }) {
         </div>
       </div>
 
-      {/* Optional External Link */}
-      {/* <a
-        href={UrlParser(data[0]?.link)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mt-6 dark:text-drka text-lg underline"
-      >
-        <FaLink className="inline size-5 mr-1 mb-1" />
-        I QUAGE Score
-      </a> */}
-
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {/* Request Confirmation Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px]">
-            {/* Title */}
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px] max-w-[95vw]">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Final Request for the Changes
+              Request
             </h2>
-
-            {/* Note */}
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the
-              superior admin. Once approved, they will be applied automatically
-              to the live site.
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
             </p>
 
-            {/* Summary */}
-            <div className="max-h-[200px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt">
+            <div className="max-h-[320px] overflow-y-auto mb-4">
+              <table className="w-full text-center text-text dark:text-drkt border">
                 <thead>
-                  <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
+                  <tr className="bg-gray-200 dark:bg-drka">
+                    <th className="py-2">Action</th>
+                    <th className="py-2">Section</th>
+                    <th className="py-2 text-center">Changes</th>
+                    <th className="py-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="py-1 text-blue-600">✎ Edited</td>
-                    <td className="py-1">IQ Gauge</td>
-                    <td className="py-1 text-[12px] flex flex-col items-center">
-                      {oldpath && oldpath[4]} <ArrowDown />{" "}
-                      <a
-                        href={uploadedFile?.fileURL}
-                        className="cursor-pointer"
-                        target="_blank"
-                        rel="noreferrer"
+                  {getChanges().map((change) => (
+                    <tr key={change.id} className="border-t">
+                      <td
+                        className={`py-2 ${
+                          change.action === "Added"
+                            ? "text-green-600"
+                            : change.action === "Deleted"
+                            ? "text-red-600"
+                            : "text-blue-600"
+                        }`}
                       >
-                        {uploadedFile?.file.name}
-                      </a>
-                    </td>
-                  </tr>
+                        {change.action}
+                      </td>
+
+                      <td className="py-2">{change.section}</td>
+
+                      <td className="py-2 text-[13px]">
+                        <div className="flex items-center justify-center gap-2">
+                          <span>{describeChange(change)}</span>
+                        </div>
+                      </td>
+
+                      <td className="py-2">
+                        <button
+                          onClick={() => handleRevertChange(change)}
+                          className="text-red-500 hover:text-red-700 font-bold"
+                          title="Revert this change"
+                        >
+                          <X size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                  {getChanges().length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="py-6 text-sm text-gray-500">
+                        No pending changes
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
@@ -191,7 +233,7 @@ export default function IQGauge({ data }) {
               </button>
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
               >
                 Final Request
               </button>

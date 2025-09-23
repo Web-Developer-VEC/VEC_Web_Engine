@@ -1,160 +1,135 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import "./AdminPlacementTeam.css";
-import Banner from "../../Banner";
-import LoadComp from "../../LoadComp";
+import './AdminPlacementTeam.css';
+import Banner from '../../Banner';
+import LoadComp from '../../LoadComp';
 import { useNavigate } from "react-router";
-import { FiEdit, FiTrash2, FiX, FiUpload } from "react-icons/fi";
+import { Trash2 } from 'react-feather';
+import { Pencil, Send, Plus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function PersonDetail({ person, isEditing, onChange, isViewMode }) {
+function PersonDetail({ person, isEditable, onChange }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) =>
-    path?.startsWith("blob") || path?.startsWith("http")
-      ? path
-      : `${BASE_URL}${path}`;
+  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      onChange({ ...person, photo_path: imageUrl });
-    }
-  };
+  if (!person) return null;
+
+  const hasImage = !!(person.photo_path || person.photo_file);
 
   return (
-    <div className="person-detail left dark:bg-drkts">
-      <div className="flex items-start gap-6 w-full">
-        <div className="flex flex-col items-center">
-          <img
-            src={UrlParser(person?.photo_path)}
-            alt={person?.name}
-            className="w-40 h-40 mt-10 object-cover rounded-md"
-          />
-          {isEditing && !isViewMode && (
-            <label className="mt-2 cursor-pointer flex items-center gap-2 text-blue-500">
-              <FiUpload size={18} /> Upload
+    <div className={`person-detail left dark:bg-drkts new-card-wrap`} style={{ position: 'relative' }}>
+      <div className="person-image-wrap new-image-wrap">
+        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image" />
+        {isEditable && (
+          <div className="new-upload-below">
+            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
+              {hasImage ? 'Replace' : 'Upload'}
               <input
                 type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                style={{ display: "none" }}
+                accept="image/*,application/pdf"
+                className="hidden"
+                onChange={(e) => onChange('photo_file', e.target.files[0])}
               />
             </label>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
 
-        <div className="flex-1">
-          {isEditing && !isViewMode ? (
-            <>
-              <input
-                type="text"
-                value={person.name}
-                onChange={(e) => onChange({ ...person, name: e.target.value })}
-                className="w-full p-2 mb-3 border border-gray-300 rounded-md"
-              />
-              <input
-                type="text"
-                value={person.designation}
-                onChange={(e) =>
-                  onChange({ ...person, designation: e.target.value })
-                }
-                className="w-full p-2 mb-3 border border-gray-300 rounded-md"
-              />
-              <textarea
-                value={person.content}
-                onChange={(e) =>
-                  onChange({ ...person, content: e.target.value })
-                }
-                className="w-full p-2 border border-gray-300 rounded-md min-h-[100px]"
-              />
-            </>
-          ) : (
-            <>
-              <h3 className="placement-head">{person?.name}</h3>
-              <p className="text-accn dark:text-drka text-[24px]">
-                {person?.designation}
-              </p>
-              <p>{person?.content}</p>
-            </>
-          )}
-        </div>
+      <div className="person-content">
+        {isEditable ? (
+          <>
+            <input
+              className="person-input"
+              value={person.name || ''}
+              onChange={(e) => onChange('name', e.target.value)}
+              placeholder="Name"
+            />
+            <input
+              className="person-input"
+              value={person.designation || ''}
+              onChange={(e) => onChange('designation', e.target.value)}
+              placeholder="Designation"
+            />
+            <textarea
+              className="person-textarea"
+              rows={4}
+              value={person.content || ''}
+              onChange={(e) => onChange('content', e.target.value)}
+              placeholder="Description / Content"
+            />
+          </>
+        ) : (
+          <>
+            <h3 className='placement-head'>{person?.name}</h3>
+            <p className="text-accn dark:text-drka text-[24px]">{person?.designation}</p>
+            <p>{person?.content}</p>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-function PersonMemberDetail({
-  person,
-  isImageLeft,
-  isEditing,
-  onChange,
-  onDelete,
-  isViewMode
-}) {
+function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked, onCheck }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) =>
-    path?.startsWith("blob") || path?.startsWith("http")
-      ? path
-      : `${BASE_URL}${path}`;
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      onChange({ ...person, photo_path: imageUrl });
-    }
-  };
+  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const hasImage = !!(person.photo_path || person.photo_file);
 
   return (
     <div
-      className={`person-detail ${isImageLeft ? "left" : "right"} dark:bg-drkts`}
+      className={`person-detail ${isImageLeft ? 'left' : 'right'} dark:bg-drkts new-card-wrap`}
+      style={{ position: 'relative' }}
     >
-      <div className="flex flex-col items-center">
-        <img
-          src={UrlParser(person.photo_path)}
-          alt={person.name}
-          className="person-image-mem"
+      {isEditable && (
+        <input
+          type="checkbox"
+          className="new-top-checkbox"
+          checked={!!checked}
+          onChange={(e) => onCheck(e.target.checked)}
+          aria-label={`select ${person?.name || 'member'}`}
         />
-        {isEditing && !isViewMode && (
-          <label className="mt-2 cursor-pointer flex items-center gap-2 text-blue-500">
-            <FiUpload size={16} /> Upload
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
-          </label>
+      )}
+
+      <div className="new-image-wrap">
+        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image-mem" />
+        {isEditable && (
+          <div className="new-upload-below">
+            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
+              {hasImage ? 'Replace' : 'Upload'}
+              <input
+                type="file"
+                accept="image/*,application/pdf"
+                className="hidden"
+                onChange={(e) => onChange('photo_file', e.target.files[0])}
+              />
+            </label>
+          </div>
         )}
       </div>
 
       <div className="person-content-mem">
-        {isEditing && !isViewMode ? (
+        {isEditable ? (
           <>
+            <div className="flex items-center justify-between">
+              <input
+                className="w-[100%] p-1 rounded border"
+                value={person.name || ''}
+                onChange={(e) => onChange('name', e.target.value)}
+                placeholder="Name"
+              />
+            </div>
             <input
-              type="text"
-              value={person.name}
-              onChange={(e) => onChange({ ...person, name: e.target.value })}
-              className="w-full p-1 mb-2 border border-gray-300 rounded-md"
+              className="w-full mt-2 p-1 rounded border"
+              value={person.designation || ''}
+              onChange={(e) => onChange('designation', e.target.value)}
+              placeholder="Designation"
             />
-            <input
-              type="text"
-              value={person.designation}
-              onChange={(e) =>
-                onChange({ ...person, designation: e.target.value })
-              }
-              className="w-full p-1 mb-2 border border-gray-300 rounded-md"
-            />
-            <button className="delete-btn-tt" onClick={onDelete}>
-              <FiTrash2 size={20} />
-            </button>
           </>
         ) : (
           <>
-            <h3 className="placement-member-head">{person.name}</h3>
-            <p className="text-accn dark:text-drka">{person.designation}</p>
+            <h3 className='placement-member-head'>{person?.name}</h3>
+            <p className="text-accn dark:text-drka ">{person?.designation}</p>
           </>
         )}
       </div>
@@ -163,44 +138,51 @@ function PersonMemberDetail({
 }
 
 export const AdminPlacementTeam = ({ toggle, theme }) => {
-  const [PlacementTeam, setPlacementTeam] = useState([]);
-  const [editedTeam, setEditedTeam] = useState([]);
-  const [deletedItems, setDeletedItems] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  // saved (server) version:
+  const [placementTeam, setPlacementTeam] = useState([]);
+  // current in-editor draft (when editMode true):
+  const [draftTeam, setDraftTeam] = useState([]);
+  // saved-by-user draft that is pending approval (when user clicks Save)
+  const [pendingDraft, setPendingDraft] = useState(null);
+
+  // snapshot of the draft when entering edit mode — used so Cancel reverts only session edits
+  const [initialDraft, setInitialDraft] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [isEditing, setIsEditing] = useState(false);
-  const [isViewMode, setIsViewMode] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [newPerson, setNewPerson] = useState({
-    name: "",
-    designation: "",
-    content: "",
-    photo_path: "",
-  });
-  const [showSavePopup, setShowSavePopup] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [pendingChanges, setPendingChanges] = useState(false); // true when pendingDraft exists
+  const [selectedItems, setSelectedItems] = useState([]); // indexes of selected members in draftTeam.slice(1)
+  const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
   const navigate = useNavigate();
 
-  // ---------- fetch data ----------
+  // returns whether the draft differs from current saved placementTeam (unsaved edits vs server)
+  const hasServerDiff = (d = draftTeam) => JSON.stringify(placementTeam) !== JSON.stringify(d);
+
+  // returns whether the draft differs from initialDraft (i.e., session unsaved changes)
+  const hasSessionChanges = () => {
+    if (!initialDraft) return false;
+    return JSON.stringify(initialDraft) !== JSON.stringify(draftTeam);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(`/api/main-backend/placement`, {
-          type: "placement_team",
-        });
+        const response = await axios.post(`/api/main-backend/placement`, { type: "placement_team" });
         const data = response.data.data || [];
-
-        // assign temporary _id
-        const withIds = data.map((p, i) => ({ ...p, _id: i + 1 }));
-
-        setPlacementTeam(withIds);
-        setEditedTeam(JSON.parse(JSON.stringify(withIds)));
-        setLoading(false);
+        setPlacementTeam(data.map(x => ({ ...x })));
+        setDraftTeam(data.map(x => ({ ...x })));
+        setPendingDraft(null);
+        setPendingChanges(false);
+        setInitialDraft(null);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error.message);
-        if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+        console.error("Error fetching data:", error?.message);
+        if (error?.response?.data?.status === 429) {
+          navigate('/ratelimit', { state: { msg: error?.response?.data?.message } });
         }
-        setLoading(true);
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -209,78 +191,15 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
+
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
+
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-
-  const handleProfileChange = (index, newData) => {
-    setEditedTeam((prev) => {
-      const updated = [...prev];
-      updated[index] = newData;
-      return updated;
-    });
-  };
-
-  const handleDelete = (index) => {
-    const removedPerson = editedTeam[index];
-    setEditedTeam((prev) => prev.filter((_, i) => i !== index));
-    const existedInOriginal = PlacementTeam.some((p) => p._id === removedPerson._id);
-    if (existedInOriginal) {
-      setDeletedItems((prev) =>
-        prev.some((p) => p._id === removedPerson._id) ? prev : [...prev, removedPerson]
-      );
-    }
-  };
-
-  const hasChanges = () => {
-    if (deletedItems.length > 0) return true;
-    const added = editedTeam.some((person) => !PlacementTeam.some((p) => p._id === person._id));
-    if (added) return true;
-    const modified = editedTeam.some((person) => {
-      const old = PlacementTeam.find((p) => p._id === person._id);
-      if (!old) return false;
-      return (
-        old.name !== person.name ||
-        old.designation !== person.designation ||
-        (old.content || "") !== (person.content || "")
-      );
-    });
-    if (modified) return true;
-    return false;
-  };
-
-  const handleSaveAll = () => {
-    if (!hasChanges()) {
-      toast.info("No changes to save");
-      return;
-    }
-    setShowSavePopup(true);
-  };
-
-  const confirmSaveAll = () => {
-    setPlacementTeam(JSON.parse(JSON.stringify(editedTeam)));
-    setIsEditing(false);
-    setShowSavePopup(false);
-    setDeletedItems([]);
-    toast.success("Request submitted successfully!");
-  };
-
-  const handleViewPage = () => {
-    setIsViewMode(true);
-    setIsEditing(false);
-  };
-
-  const handleExitViewPage = () => {
-    setIsViewMode(false);
-  };
-
-  const handleRequest = () => {
-    setShowSavePopup(true);
-  };
 
   if (!isOnline) {
     return (
@@ -290,218 +209,395 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     );
   }
 
+  // ---------- Editable handlers ----------
+  const enterEdit = () => {
+    setEditMode(true);
+    // choose base: pendingDraft (if user previously saved) else placementTeam
+    const base = pendingDraft ? pendingDraft : placementTeam;
+    const snapshot = (base || []).map(x => ({ ...x }));
+    setInitialDraft(snapshot); // snapshot of state at edit-session start
+    setDraftTeam(snapshot.map(x => ({ ...x })));
+  };
+
+  const exitEdit = () => {
+    // revert unsaved edits only — now we revert to initialDraft (session start)
+    if (initialDraft) {
+      setDraftTeam(initialDraft.map(x => ({ ...x })));
+    } else {
+      setDraftTeam((placementTeam || []).map(x => ({ ...x })));
+    }
+    setSelectedItems([]);
+    setEditMode(false);
+    setInitialDraft(null);
+  };
+
+  const handleFieldChange = (idx, field, value) => {
+    setDraftTeam(prev => {
+      const copy = prev.map(x => ({ ...x }));
+      if (!copy[idx]) copy[idx] = {};
+      if (field === 'photo_file') {
+        copy[idx].photo_file = value;
+        try {
+          copy[idx].photo_path = URL.createObjectURL(value);
+        } catch (e) {
+          console.warn('object url failed', e);
+        }
+      } else {
+        copy[idx][field] = value;
+      }
+      return copy;
+    });
+  };
+
+  const handleSave = async () => {
+    setPendingDraft(draftTeam.map(x => ({ ...x })));
+    setPendingChanges(true);
+    setEditMode(false);
+    setSelectedItems([]);
+    setInitialDraft(null);
+  };
+
+  const handleDiscardAll = () => {
+    setPendingDraft(null);
+    setDraftTeam((placementTeam || []).map(x => ({ ...x })));
+    setPendingChanges(false);
+    setSelectedItems([]);
+    setEditMode(false);
+    setInitialDraft(null);
+    toast.error("All changes discarded.");
+  };
+
+  const handleCancel = () => {
+    if (hasSessionChanges()) {
+      setDraftTeam(initialDraft.map(x => ({ ...x })));
+      setEditMode(false);
+      setSelectedItems([]);
+      setInitialDraft(null);
+    } else {
+      setEditMode(false);
+      setInitialDraft(null);
+    }
+  };
+
+  const toggleSelectItem = (memberIndex, checked) => {
+    setSelectedItems(prev => {
+      const copy = new Set(prev);
+      if (checked) copy.add(memberIndex);
+      else copy.delete(memberIndex);
+      return Array.from(copy);
+    });
+  };
+
+  const confirmMultiDelete = () => {
+    setShowMultiDeleteConfirm(false);
+    // selectedItems correspond to indexes inside draftTeam.slice(1)
+    setDraftTeam(prev => prev.filter((_, idx) => !(idx >= 1 && selectedItems.includes(idx - 1))));
+    setSelectedItems([]);
+  };
+
+  // Add a new blank member at the end
+  const handleAddNewMember = () => {
+    setDraftTeam(prev => [
+      ...prev,
+      { name: "", designation: "", photo_path: "", content: "" }
+    ]);
+  };
+
+  const getChanges = (baseDraft = pendingDraft) => {
+    const changes = [];
+    const orig = placementTeam || [];
+    const draf = (baseDraft || []);
+
+    const maxLen = Math.max(orig.length, draf.length);
+    for (let i = 0; i < maxLen; i++) {
+      const o = orig[i];
+      const d = draf[i];
+      if (o && !d) {
+        changes.push({ action: 'Deleted', section: 'Placement Team', data: o, index: i });
+      } else if (!o && d) {
+        changes.push({ action: 'Added', section: 'Placement Team', data: d, index: i });
+      } else if (o && d && JSON.stringify(o) !== JSON.stringify(d)) {
+        changes.push({ action: 'Modified', section: 'Placement Team', data: d, index: i });
+      }
+    }
+    return changes;
+  };
+
+  const handleRevertChange = (change) => {
+    setPendingDraft(prevPending => {
+      const working = (prevPending || []).map(x => ({ ...x }));
+      if (!prevPending) {
+        setDraftTeam(prev => {
+          const copy = prev.map(x => ({ ...x }));
+          if (change.action === 'Added') {
+            copy.splice(change.index, 1);
+            return copy;
+          } else if (change.action === 'Modified') {
+            copy[change.index] = { ...(placementTeam[change.index] || {}) };
+            return copy;
+          } else if (change.action === 'Deleted') {
+            copy.splice(change.index, 0, (placementTeam[change.index] || {}));
+            return copy;
+          }
+          return prev;
+        });
+        return null;
+      }
+
+      if (change.action === 'Added') {
+        working.splice(change.index, 1);
+      } else if (change.action === 'Modified') {
+        working[change.index] = { ...(placementTeam[change.index] || {}) };
+      } else if (change.action === 'Deleted') {
+        working.splice(change.index, 0, { ...(placementTeam[change.index] || {}) });
+      }
+      setDraftTeam(working.map(x => ({ ...x })));
+      return working;
+    });
+  };
+
+  const handleRequestConfirm = async () => {
+    try {
+      setShowRequestModal(false);
+      toast.success("Request submitted successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Request failed. Please try again.");
+    }
+  };
+
   return (
     <>
-      <Banner
-        toggle={toggle}
-        theme={theme}
+      <Banner toggle={toggle} theme={theme}
         backgroundImage="./Banners/placementbanner.webp"
         headerText="Placement Team"
-        subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
-      />
+        subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services." />
 
-      <div className="place-container relative">
-        <div className="absolute top-5 right-5 flex gap-2">
-          {!isEditing && !isViewMode ? (
-            <button
-              className="edit-btn-t flex items-center gap-1"
-              onClick={() => {
-                setIsEditing(true);
-                setDeletedItems([]);
-              }}
-            >
-              <FiEdit size={18} /> Edit
-            </button>
-          ) : !isViewMode ? (
-            <button
-              className="bg-gray-400 text-white px-4 py-1 rounded-md flex items-center gap-1"
-              onClick={() => {
-                setIsEditing(false);
-                setEditedTeam(JSON.parse(JSON.stringify(PlacementTeam)));
-                setDeletedItems([]);
-              }}
-            >
-              <FiX size={18} /> Cancel
-            </button>
-          ) : null}
-        </div>
+      <div className='place-container pb-60 pt-10'>
+        <div className="Placement-App" style={{ marginTop: '30px', position: 'relative' }}>
 
-        <div className="Placement-App" style={{ marginTop: "30px" }}>
+          {/* Edit button top-right (visible when not editing) */}
+          {!editMode && (
+            <div style={{ position: 'absolute', right: 12, top: -50, zIndex: 50 }}>
+              <button
+                onClick={enterEdit}
+                className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+                aria-label="Enter edit mode"
+              >
+                <Pencil size={16} />
+                <span>Edit</span>
+              </button>
+            </div>
+          )}
+
           {isLoading ? (
             <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
               <LoadComp txt={""} />
             </div>
           ) : (
             <>
-              {editedTeam[0] && (
-                <PersonDetail
-                  key={editedTeam[0]._id}
-                  person={editedTeam[0]}
-                  isEditing={isEditing}
-                  onChange={(data) => handleProfileChange(0, data)}
-                  isViewMode={isViewMode}
-                />
-              )}
+              {/* Main person */}
+              <PersonDetail
+                person={draftTeam[0] || { name: "", designation: "", content: "", photo_path: "" }}
+                isEditable={editMode}
+                onChange={(field, value) => handleFieldChange(0, field, value)}
+              />
 
+              {/* Members list */}
               <div className="placement-members">
-                {editedTeam.slice(1).map((person, index) => (
+                {draftTeam.slice(1).map((person, index) => (
+                  // use stable key based on index to avoid remount when name changes
                   <PersonMemberDetail
-                    key={person._id}
+                    key={`member-${index}`}
                     person={person}
                     isImageLeft={index % 2 === 0}
-                    isEditing={isEditing}
-                    onChange={(data) => handleProfileChange(index + 1, data)}
-                    onDelete={() => handleDelete(index + 1)}
-                    isViewMode={isViewMode}
+                    isEditable={editMode}
+                    onChange={(field, value) => handleFieldChange(index + 1, field, value)}
+                    checked={selectedItems.includes(index)}
+                    onCheck={(checked) => toggleSelectItem(index, checked)}
                   />
                 ))}
 
-                {isEditing && !isViewMode && (
+                {/* ADD NEW MEMBER CARD centered and same size */}
+                {editMode && (
                   <div
-                    className="person-detail add-box dark:bg-drkts cursor-pointer"
-                    onClick={() => setShowPopup(true)}
+                    className="person-detail centered-card dark:bg-drkts new-card-wrap flex items-center justify-center cursor-pointer hover:bg-gray-200"
+                    style={{ position: 'relative', minHeight: '220px', minWidth: '300px', margin: '20px auto' }}
+                    onClick={handleAddNewMember}
+                    aria-label="Add new member"
                   >
-                    <div className="flex flex-col items-center justify-center w-full h-full">
-                      <span className="text-4xl text-gray-500">+</span>
-                      <p className="text-gray-600">Add Member</p>
+                    <div className="flex flex-col items-center gap-2">
+                      <Plus size={26} />
                     </div>
                   </div>
                 )}
               </div>
-            </>
-          )}
-        </div>
 
-        {/* View Page Button at the bottom */}
-        <div className="mt-8 mb-4 flex justify-center gap-4">
-          {!isViewMode ? (
-            <button className="view-btn" onClick={handleViewPage}>
-              View Page
-            </button>
-          ) : (
-            <>
-              <button className="exit-view-btn" onClick={handleExitViewPage}>
-                Exit View Page
-              </button>
-              <button className="request-btn" onClick={handleRequest}>
-                Request
-              </button>
+              {/* Multi-delete center bottom (visible only while editing and items selected) */}
+              {editMode && selectedItems.length > 0 && (
+                <div className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 z-40">
+                  <button
+                    onClick={() => setShowMultiDeleteConfirm(true)}
+                    className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
+                  >
+                    <Trash2 size={16} /> Delete ({selectedItems.length})
+                  </button>
+                </div>
+              )}
+
+              {/* Bottom right action buttons */}
+              <div style={{ position: 'absolute', right: 20, bottom: -40, display: 'flex', gap: 8, zIndex: 60 }}>
+                {/* CANCEL (left) - visible in edit mode */}
+                {editMode && (
+                  <button
+                    onClick={handleCancel}
+                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                  >
+                    Cancel
+                  </button>
+                )}
+
+                {/* SAVE (right) - visible only while editing and there are unsaved session changes */}
+                {editMode && hasSessionChanges() && (
+                  <button
+                    onClick={handleSave}
+                    className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  >
+                    Save
+                  </button>
+                )}
+
+                {/* After saving (not editing) show Discard & Request */}
+                {!editMode && pendingChanges && (
+                  <>
+                    <button
+                      onClick={handleDiscardAll}
+                      className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                    >
+                      Discard Changes
+                    </button>
+                    <button
+                      onClick={() => setShowRequestModal(true)}
+                      className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                    >
+                      <Send size={16}/>
+                      Request
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Multi-delete Confirmation Modal */}
+              {showMultiDeleteConfirm && (
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
+                  <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
+                    <h3 className="text-lg font-semibold mb-3">Confirm Delete</h3>
+                    <p className="mb-4">Are you sure you want to delete {selectedItems.length} selected item</p>
+                    <div className="flex justify-end gap-2 mt-[20px]">
+                      <button
+                        onClick={() => setShowMultiDeleteConfirm(false)}
+                        className="px-4 py-2 rounded bg-gray-400 text-white"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={confirmMultiDelete}
+                        className="px-4 py-2 rounded bg-red-600 text-white"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Final Request Modal (shows changes from pendingDraft) */}
+              {showRequestModal && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+                  <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+                    <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+                      Request
+                    </h2>
+                    <p className="text-sm text-red-500 mb-4">
+                      Note: Your changes will stay pending until approved by the superior admin.
+                      Once approved they will go live.
+                    </p>
+
+                    <div className="max-h-[250px] overflow-y-auto mb-4">
+                      <table className="w-full text-center text-text dark:text-drkt border">
+                        <thead>
+                          <tr className="bg-gray-200 dark:bg-drka">
+                            <th className="py-1">Action</th>
+                            <th className="py-1">Section</th>
+                            <th className="py-1 text-center">Changes</th>
+                            <th className="py-1">Undo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {getChanges(pendingDraft).map((change, idx) => (
+                            <tr key={idx} className="border-t">
+                              <td
+                                className={`py-1 ${
+                                  change.action === "Added"
+                                    ? "text-green-600"
+                                    : change.action === "Deleted"
+                                      ? "text-red-600"
+                                      : "text-blue-600"
+                                }`}
+                              >
+                                {change.action}
+                              </td>
+                              <td className="py-1">Placement Team</td>
+                              <td className="py-1 text-[12px]">
+                                <div className="flex items-center justify-center gap-2">
+                                  <span>{change.data?.name || "Unnamed"}</span>
+                                </div>
+                              </td>
+                              <td><button
+                                    onClick={() => handleRevertChange(change)}
+                                    className="text-red-500 hover:text-red-700 font-bold"
+                                  >
+                                    ✕
+                                  </button></td>
+                            </tr>
+                          ))}
+                          {getChanges(pendingDraft).length === 0 && (
+                            <tr>
+                              <td colSpan={3} className="py-3 text-sm">No pending changes.</td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="flex justify-end gap-2">
+                      <button
+                        onClick={() => setShowRequestModal(false)}
+                        className="px-4 py-2 rounded bg-gray-400 text-white"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleRequestConfirm}
+                        className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+                      >
+                        Final Request
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
             </>
           )}
         </div>
       </div>
 
-      {/* Add member popup */}
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <h2>Add New Member</h2>
-            <input
-              type="text"
-              placeholder="Name"
-              value={newPerson.name}
-              onChange={(e) =>
-                setNewPerson({ ...newPerson, name: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Designation"
-              value={newPerson.designation}
-              onChange={(e) =>
-                setNewPerson({ ...newPerson, designation: e.target.value })
-              }
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  const imageUrl = URL.createObjectURL(file);
-                  setNewPerson({ ...newPerson, photo_path: imageUrl });
-                }
-              }}
-            />
-            <div className="popup-buttons">
-              <button onClick={() => setShowPopup(false)}>Cancel</button>
-              <button
-                onClick={() => {
-                  if (!newPerson.name || !newPerson.designation) {
-                    toast.error("Name & Designation required");
-                    return;
-                  }
-                  setEditedTeam((prev) => [
-                    ...prev,
-                    { ...newPerson, _id: Date.now() }, // new member with unique id
-                  ]);
-                  setShowPopup(false);
-                  setNewPerson({
-                    name: "",
-                    designation: "",
-                    content: "",
-                    photo_path: "",
-                  });
-                }}
-              >
-                Apply
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Save summary popup */}
-      {showSavePopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <h2>Changes Summary</h2>
-            <p className="note-pop">Note: Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.</p>
-            <ul className="text-left mb-4">
-              {editedTeam.map((person) => {
-                const old = PlacementTeam.find((p) => p._id === person._id);
-                if (!old) {
-                  return (
-                    <li key={"add-" + person._id}>
-                      <strong>{person.name}</strong> → Added
-                    </li>
-                  );
-                }
-                const isModified =
-                  old.name !== person.name ||
-                  old.designation !== person.designation ||
-                  (old.content || "") !== (person.content || "");
-                if (isModified) {
-                  return (
-                    <li key={"mod-" + person._id}>
-                      <strong>{old.name}</strong> → Modified
-                    </li>
-                  );
-                }
-                return null;
-              })}
-
-              {deletedItems.map((p) => (
-                <li key={"del-" + p._id}>
-                  <strong>{p.name}</strong> → Deleted
-                </li>
-              ))}
-            </ul>
-            <div className="popup-buttons">
-              <button
-                onClick={() => {
-                  setShowSavePopup(false);
-                }}
-              >
-                Cancel
-              </button>
-              <button onClick={confirmSaveAll}>Send Request</button>
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* Toast container */}
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 };
+
+export default AdminPlacementTeam;

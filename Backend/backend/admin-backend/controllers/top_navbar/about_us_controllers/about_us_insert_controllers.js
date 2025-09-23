@@ -8,12 +8,22 @@ try{
     
     const doc = await mainCollection.findOne({ type: collection_type });
 
-    const singleDocTypes = ["about_vec", "about_trust", "vision_and_mission", "Management", "contact_us"];
+    const singleDocTypes = [ "about_trust", "vision_and_mission", "Management", "contact_us"];
 
     const categoryBasedtypes = ["AISHE"];
 
     if(!doc){
         throw new Error(`Document with type ${collection_type} not found`);
+    };
+
+    if (collection_type === "about_vec"){
+
+        await mainCollection.updateOne(
+            {type:"about_vec"},
+            {$push:{"data.$.about_us_pdf":meta_data}}
+        );
+
+        return{message:"The data is inserted into about_vec pdf links"}
     }
     if(singleDocTypes.includes(collection_type)){
         await mainCollection.updateOne(

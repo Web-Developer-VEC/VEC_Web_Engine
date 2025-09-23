@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Egalary.css";
 import LoadComp from "../../LoadComp";
 import { FaUserEdit } from "react-icons/fa";
-import { Trash2, Send, ArrowDown } from "lucide-react";
+import { Trash2, Send, ArrowDown, Pencil } from "lucide-react";
 
 export default function Gall({ gallery }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -37,6 +37,29 @@ export default function Gall({ gallery }) {
     if (path instanceof File) return URL.createObjectURL(path);
     return "";
   };
+
+  const handleUndoChange = (change) => {
+  let newEditableData = [...editableData];
+  let newAllChanges = [...allChanges];
+
+  if (change.action === "add") {
+    // Remove newly added image
+    newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
+  } else if (change.action === "delete") {
+    // Restore deleted image
+    newEditableData.splice(change.index, 0, change.deletedItem);
+  } else if (change.action === "edit") {
+    // Revert edited image (if you track edited fields)
+    newEditableData[change.index] = change.oldItem;
+  }
+
+  // Remove undone change from allChanges
+  newAllChanges = newAllChanges.filter((c) => c !== change);
+
+  setEditableData(newEditableData);
+  setAllChanges(newAllChanges);
+};
+
 
   // ---- editing ----
   const handleAddNew = (e) => {
@@ -131,7 +154,7 @@ export default function Gall({ gallery }) {
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         )}
       </div>
@@ -158,7 +181,7 @@ export default function Gall({ gallery }) {
 
       {isEditing && (
         <div className="mt-4 flex gap-4 items-center">
-          <label className="bg-gray-400 text-white px-3 py-2 rounded cursor-pointer">
+          <label className="bg-gray-300 w-[410px] h-[350px] flex justify-center items-center border-4 border-dashed hover:border-bg-secd border-bg-text text-text px-3 py-2 rounded cursor-pointer">
             + Add New Image
             <input
               type="file"
@@ -170,7 +193,7 @@ export default function Gall({ gallery }) {
 
           {selectedRows.size > 0 && (
             <button
-              className="bg-red-600 text-white px-3 py-2 rounded"
+              className="bg-red-600  flex justify-end mr-auto ml-40 text-white px-3 py-2 rounded"
               onClick={openDeleteConfirm}
             >
               <Trash2 className="inline mr-2" /> Delete Selected
@@ -190,7 +213,7 @@ export default function Gall({ gallery }) {
             </button>
             {hasUnsavedChanges && (
               <button
-                className="flex items-center border-4 border-yellow-400 px-3 py-2 rounded-lg"
+                className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
                 onClick={handleSave}
               >
                 Save
@@ -218,79 +241,77 @@ export default function Gall({ gallery }) {
 
       {/* 🔹 Final Request Modal */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-            <h2 className="text-xl font-semibold mb-2 text-center">
-              Request
-            </h2>
-              <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+      <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+  <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
+    <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
+    <p className="text-sm text-red-500 mb-4">
+      Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+    </p>
+    <div className="max-h-[320px] overflow-y-auto mb-4">
+      <table className="w-full text-sm text-left border">
+         <thead className="bg-gray-100">
+                <tr>
+                  <th className="py-2 px-3 border">Action</th>
+                  <th className="py-2 px-3 border">Section</th>
+                  <th className="py-2 px-3 border">Changed Field</th>
+                  <th className="py-2 px-3 border">Undo</th>
+                </tr>
+              </thead>
+      <tbody>
+  {allChanges.length === 0 ? (
+    <tr>
+      <td colSpan={4} className="text-center py-4">
+        No changes to submit
+      </td>
+    </tr>
+  ) : (
+    allChanges.map((change, idx) => (
+      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+        <td className="py-2 px-3 border text-center">
+          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+          {change.action === "add" && <span className="text-green-600">+ Added</span>}
+          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+        </td>
+        <td className="py-2 px-3 border text-center">Gallery</td>
+        <td className="py-2 px-3 border text-[13px]">
+          {change.action === "delete"
+            ? "Deleted image"
+            : change.action === "add"
+            ? "Added new image"
+            : "Edited image"}
+        </td>
+        <td className="py-2 px-3 border text-center">
+          <button
+            className="text-red-500 font-bold"
+            onClick={() => handleUndoChange(change)}
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    ))
+  )}
+</tbody>
 
+      </table>
+    </div>
+    <div className="flex justify-end gap-3">
+      <button
+        onClick={() => setShowRequestModal(false)}
+        className="px-4 py-2 rounded bg-gray-400 text-white"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleFinalRequestConfirm}
+        className="px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim"
+      >
+        Final Request
+      </button>
+    </div>
+  </div>
+</div>
 
-            <div className="max-h-[320px] overflow-y-auto mb-4">
-              <table className="w-full text-sm text-left border">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="py-2 px-3 border">Action</th>
-                    <th className="py-2 px-3 border">Section</th>
-                    <th className="py-2 px-3 border">Changed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allChanges.length === 0 ? (
-                    <tr>
-                      <td colSpan={3} className="text-center py-4">
-                        No changes to submit
-                      </td>
-                    </tr>
-                  ) : (
-                    allChanges.map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                        <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && (
-                            <span className="text-blue-600">✎ Edited</span>
-                          )}
-                          {change.action === "add" && (
-                            <span className="text-green-600">+ Added</span>
-                          )}
-                          {change.action === "delete" && (
-                            <span className="text-red-600">🗑 Deleted</span>
-                          )}
-                        </td>
-                        <td className="py-2 px-3 border align-top">Gallery</td>
-                        <td className="py-2 px-3 border text-[13px]">
-                          {change.action === "delete" ? (
-                            <div>Deleted image</div>
-                          ) : change.action === "add" ? (
-                            <div>Added new image</div>
-                          ) : (
-                            <div>Edited image</div>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleFinalRequestConfirm}
-                className="px-4 py-2 rounded bg-yellow-400 text-black"
-              >
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
       )}
 
       {/* Delete Confirmation */}

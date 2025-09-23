@@ -8,7 +8,7 @@ import {
   FaPlus,
   FaEye,
 } from "react-icons/fa";
-import { Pencil, Trash2,Send } from "lucide-react";
+import { Pencil, Trash2, Send, X } from "lucide-react";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
@@ -125,8 +125,25 @@ const Naac = ({ data }) => {
   };
 
   const handleRequestConfirm = () => {
-    // TODO: send changeLog to backend here (API call) if needed
-    console.log("Submitting request:", changeLog);
+    // Build payload with section "NAAC" and list of change descriptions
+    const payload = {
+      section: "NAAC",
+      timestamp: new Date().toISOString(),
+      changes: getChanges().map((c) => {
+        // create human readable description for each change
+        const desc = describeChange(c);
+        return {
+          id: c.id,
+          action: c.action,
+          raw: c,
+          description: desc,
+        };
+      }),
+    };
+
+    // Replace with your API call to send `payload`
+    console.log("Submitting request payload:", payload);
+
     setShowRequestModal(false);
     setSavedChanges([]); // clear saved changes
     setChangeLog([]); // clear log after sending
@@ -224,6 +241,43 @@ const Naac = ({ data }) => {
 
   const getChanges = () => {
     return changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
+  };
+
+  // Helper to produce human readable change description
+  const describeChange = (change) => {
+    // Default: show data.name or sectionName
+    const sectionName = change.sectionName ?? change.data?.sectionName ?? "";
+    const fileName = change.data?.name ?? "";
+    if (change.sectionAdded) {
+      return `Section added: ${sectionName || "(unnamed section)"}`;
+    }
+    if (change.sectionDeleted) {
+      return `Section deleted: ${sectionName || "(unnamed section)"}`;
+    }
+    if (change.action === "Added") {
+      // Could be added file or added item
+      if (change.tempId || typeof change.itemIndex === "number") {
+        return `File added: ${fileName || "(untitled file)"} (in section: ${sectionName || "(unknown)"})`;
+      }
+      return fileName ? `Added: ${fileName}` : `Added: ${JSON.stringify(change.data)}`;
+    }
+    if (change.action === "Deleted") {
+      if (change.sectionDeleted) return `Section deleted: ${sectionName || "(unnamed section)"}`;
+      return `File deleted: ${fileName || "(untitled file)"} (from section: ${sectionName || "(unknown)"})`;
+    }
+    if (change.action === "Edited") {
+      if (change.type === "sectionName") {
+        return `Section renamed to: ${change.data?.name || "(unnamed)"}`;
+      }
+      if (change.type === "itemName") {
+        return `File renamed to: ${change.data?.name || "(unnamed)"} (in section: ${sectionName || "(unknown)"})`;
+      }
+      if (change.type === "fileReplace") {
+        return `File replaced: ${change.data?.name || "(untitled)"} (in section: ${sectionName || "(unknown)"})`;
+      }
+      return `Edited: ${fileName || sectionName || "(change)"}`;
+    }
+    return `${change.action}: ${fileName || sectionName || JSON.stringify(change.data || {})}`;
   };
 
   // ---- Data Editing Handlers ----
@@ -453,7 +507,6 @@ const Naac = ({ data }) => {
               <button
                 onClick={handleEditClick}
                 className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-                // style={{ backgroundColor: "#fdcc06" }}
               >
                 <Pencil size={16} /> Edit
               </button>
@@ -584,7 +637,7 @@ const Naac = ({ data }) => {
                                     className="text-red-500"
                                     title="Delete"
                                   >
-                                    <FaTrash />
+                                    <Trash2 />
                                   </button>
                                 </div>
                               ) : (
@@ -628,8 +681,7 @@ const Naac = ({ data }) => {
               <>
                 <button
                   onClick={handleCancelClick}
-                 className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-                  // style={{ backgroundColor: "#fdcc03" }}
+                  className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                 >
                   Cancel
                 </button>
@@ -637,7 +689,6 @@ const Naac = ({ data }) => {
                   <button
                     onClick={handleSaveClick}
                     className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                    // style={{ backgroundColor: "#fdcc03" }}
                   >
                     Save
                   </button>
@@ -650,14 +701,12 @@ const Naac = ({ data }) => {
                 <button
                   onClick={handleRetrieveClick}
                   className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-                  // style={{ backgroundColor: "#fdcc03" }}
                 >
                   Discard Changes
                 </button>
                 <button
                   onClick={() => setShowRequestModal(true)}
                   className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                  // style={{ backgroundColor: "#fdcc03" }}
                 >
                   <Send size={18} /> Request
                 </button>
@@ -693,7 +742,8 @@ const Naac = ({ data }) => {
                       <tr className="bg-gray-200 dark:bg-drka text-sm">
                         <th className="py-2">Action</th>
                         <th className="py-2">Section</th>
-                        <th className="py-2">Title</th>
+                        <th className="py-2">Changes</th>
+                        <th className="py-2">Undo</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -710,24 +760,29 @@ const Naac = ({ data }) => {
                           >
                             {change.action}
                           </td>
-                          <td className="py-2">{change.sectionName || change.section || "Unknown"}</td>
+
+                          {/* Section column is set to NAAC as requested */}
+                          <td className="py-2">NAAC</td>
+
                           <td className="py-2 text-[12px]">
                             <div className="flex items-center justify-center gap-2">
-                              <span>{change.data?.name || change.sectionName || "Untitled"}</span>
-                              <button
-                                onClick={() => handleRevertChange(change)}
-                                className="text-red-500 hover:text-red-700 font-bold"
-                                title="Revert this change"
-                              >
-                                ✕
-                              </button>
+                              <span>{describeChange(change)}</span>
                             </div>
+                          </td>
+                          <td>
+                            <button
+                              onClick={() => handleRevertChange(change)}
+                              className="text-red-500 hover:text-red-700 font-bold"
+                              title="Revert this change"
+                            >
+                              <X size={16} />
+                            </button>
                           </td>
                         </tr>
                       ))}
                       {getChanges().length === 0 && (
                         <tr>
-                          <td colSpan={3} className="py-6 text-sm text-gray-500">No pending changes</td>
+                          <td colSpan={4} className="py-6 text-sm text-gray-500">No pending changes</td>
                         </tr>
                       )}
                     </tbody>
@@ -758,7 +813,7 @@ const Naac = ({ data }) => {
               <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
                 <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
                 <p className="text-sm mb-4 text-center">
-                  Are you sure you want to delete this member?
+                  Are you sure you want to delete?
                 </p>
                 <div className="flex justify-center gap-3">
                   <button
@@ -780,30 +835,30 @@ const Naac = ({ data }) => {
         </div>
       )}
       {/* Multi-delete confirmation popup */}
-          {showMultiDeleteConfirm && (
-            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-              <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
-                <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
-                <p className="text-sm mb-4 text-center">
-                  Are you sure you want to delete the selected {selectedItems.length} section{selectedItems.length > 1 ? 's' : ''}?
-                </p>
-                <div className="flex justify-center gap-3">
-                  <button
-                    onClick={() => setShowMultiDeleteConfirm(false)}
-                    className="px-4 py-2 bg-gray-400 text-white rounded"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={confirmMultiDelete}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+      {showMultiDeleteConfirm && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
+            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+            <p className="text-sm mb-4 text-center">
+              Are you sure you want to delete the selected {selectedItems.length} section{selectedItems.length > 1 ? 's' : ''}?
+            </p>
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={() => setShowMultiDeleteConfirm(false)}
+                className="px-4 py-2 bg-gray-400 text-white rounded"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmMultiDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                Delete
+              </button>
             </div>
-          )}
+          </div>
+        </div>
+      )}
 
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>

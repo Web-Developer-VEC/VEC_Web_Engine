@@ -519,13 +519,11 @@
       "content": [
         {
           "image_path": "/static/images/infrastructure/015/1.webp",
-          "image_name": "ENGINEERING PRACTICE LABORATORY",
-          "image_content": ""
+          "image_name": "ENGINEERING PRACTICE LABORATORY"
         },
         {
           "image_path": "/static/images/infrastructure/015/2.webp",
-          "image_name": "MATERIALS RESEARCH LABORATARY",
-          "image_content": ""
+          "image_name": "MATERIALS RESEARCH LABORATARY"
         }
       ]
     }

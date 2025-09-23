@@ -6,21 +6,22 @@ import Transportvideo from "./TransportVideo";
 import LoadComp from '../../LoadComp'
 import Toggle from "../../Toggle";
 import { useNavigate } from "react-router";
-import { ArrowDown, FileEdit, Send } from "lucide-react"; // icon
+import { ArrowDown, FileEdit, Pencil, Send, X } from "lucide-react"; // added X
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminTransport = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-    const [transportData, settransportData] = useState([]);
+    const [transportData, setTransportData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { sendRequest, loading: loadings , error } = useAdminRequest();
     const navigate = useNavigate();
 
-    // for pdf replace
+    // editing flow
+    const [isEditing, setIsEditing] = useState(false);
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [confirmPopup, setConfirmPopup] = useState(false);
-    console.log(selectedPdf);
-    
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -41,7 +42,7 @@ const AdminTransport = ({ theme, toggle }) => {
             const response = await axios.post('/api/main-backend/transport',
               { type: "transport" }
             ) 
-            settransportData(response.data.data);
+            setTransportData(response.data.data);
             setLoading(false);
           } catch (error) {
             console.error("Error fetching data:", error.message);
@@ -76,7 +77,6 @@ const AdminTransport = ({ theme, toggle }) => {
         if (!selectedPdf) return;
 
         const oldPath = transportData[0]?.pdf_path;
-
         const newFilePath = `/static/pdfs/transport/${selectedPdf.file.name}`;
 
         const payload = [
@@ -85,7 +85,7 @@ const AdminTransport = ({ theme, toggle }) => {
             collection_type: "transport",
             action: "update",
             title: "Updation of transport Route pdf",
-            category: null,
+            category: "transport",
             meta_data: {
                 pdf_path: newFilePath,
             },
@@ -94,41 +94,20 @@ const AdminTransport = ({ theme, toggle }) => {
             },
             },
         ];
+        
+        const result = await sendRequest(payload, selectedPdf.file);
 
-        try {
-            const formData = new FormData();
-            formData.append("docs", JSON.stringify(payload));
-            formData.append("files", selectedPdf.file);
-            console.log(payload);
-            
-
-            const res = await axios.post(
-                `/api/admin-backend/temp`,
-                formData,
-            {
-                headers: { "Content-Type": "multipart/form-data" },
-                withCredentials: true, // if using cookies/auth
-            }
-            );
-
-            toast.success(res.data.message || "Request submitted successfully!");
+        if (result) {
             setConfirmPopup(false);
             setSelectedPdf(null);
-        } catch (error) {
-            toast.error("Request not submitted successfully!");
-            console.error("Error sending request", error);
-        }
+            setIsEditing(false);
+        } 
     };
-
-    const oldpath = transportData[0]?.pdf_path
-  ? transportData[0].pdf_path.split("/")
-  : [];
-
-    
 
     return (
         <div style={{ paddingBottom: "40px" }}>
-            <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] h-[250px] font-[poppins]">
+            {/* Video Header */}
+            <div className="relative w-full h-[200px] overflow-hidden flex items-center justify-center md:h-[400px] font-[poppins]">
                 <Transportvideo/>
                 <Toggle toggle={toggle} theme={theme}
                     attr="absolute top-[10%] lg:top-[1%] left-[0.3%] lg:left-[0.3%] h-12 w-[11%] bg-[#0000001a] backdrop-blur-[4px]
@@ -137,35 +116,60 @@ const AdminTransport = ({ theme, toggle }) => {
                     VEC Transport Facilities
                 </div>
             </div>
-            
+
+            {/* Edit Button */}
+            {!isEditing && (
+                <div className="flex justify-end pt-3 mr-8">
+                    <button 
+                        className="bg-secd text-text px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-drkt flex" 
+                        onClick={() => setIsEditing(true)}
+                    >
+                        <Pencil/> Edit
+                    </button>
+                </div>
+            )}
+
             <div className="font-[poppins] flex flex-col items-center mt-6">
                 {/* PDF Display */}
-                { (selectedPdf || transportData?.[0]?.pdf_path) && (
+                {(selectedPdf || transportData?.[0]?.pdf_path) && (
                     <PDF pdfRoute={selectedPdf ? selectedPdf.fileURL : transportData[0].pdf_path} />
                 )}
 
                 {/* Replace PDF Button */}
-                {!selectedPdf ? (
-                    <div className="mt-4">
-                        <label
-                            htmlFor="pdf-upload"
-                            className="cursor-pointer bg-yellow-400 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-2xl flex items-center gap-2"
-                        >
-                            <FileEdit size={18}/> Replace PDF
-                        </label>
-                        <input
-                            id="pdf-upload"
-                            type="file"
-                            accept="application/pdf"
-                            className="hidden"
-                            onChange={handlePdfChange}
-                        />
-                    </div>
-                ) : (
-                    <div className="p-6 flex justify-end">
-                        <button className="p-[12px] bg-secd dark:drks cursor-pointer border rounded-[12px] flex gap-[10px] justify-center"
-                                onClick={() => setConfirmPopup(true)}
-                        ><Send/>Request</button>
+                {isEditing && (
+                    <div className="mt-4 flex gap-4">
+                        {!selectedPdf ? (
+                            <>
+                                <label
+                                    htmlFor="pdf-upload"
+                                    className="cursor-pointer bg-yellow-400 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-2xl flex items-center gap-2"
+                                >
+                                    <FileEdit size={18}/> Replace PDF
+                                </label>
+                                <input
+                                    id="pdf-upload"
+                                    type="file"
+                                    accept="application/pdf"
+                                    className="hidden"
+                                    onChange={handlePdfChange}
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <button 
+                                    onClick={() => setSelectedPdf(null)} 
+                                    className="bg-gray-500 text-white px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-white flex items-center gap-2"
+                                >
+                                     Cancel
+                                </button>
+                                <button 
+                                    className="bg-yellow-400 text-brown px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-white flex items-center gap-2"
+                                    onClick={() => setConfirmPopup(true)}
+                                >
+                                    <Send/> Request
+                                </button>
+                            </>
+                        )}
                     </div>
                 )}
             </div>
@@ -198,9 +202,11 @@ const AdminTransport = ({ theme, toggle }) => {
                 <Transportcarousel items={transportData} loading={loading}/>
             </div>
             <ToastContainer position="bottom-right" autoClose={3000} />
+
+            {/* Confirm Modal */}
             {confirmPopup && (
             <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-                <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
+                <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
                     {/* Title */}
                     <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
                     Final Request for the Changes
@@ -213,20 +219,29 @@ const AdminTransport = ({ theme, toggle }) => {
                     </p>
 
                     {/* Summary */}
-                    <div className="max-h-[200px] overflow-y-auto mb-4">
+                    <div className="max-h-[200px] overflow-y-auto mb-4 ">
                     <table className="w-full text-left text-text dark:text-drkt">
                         <thead>
                         <tr>
                             <th className="py-1">Action</th>
                             <th className="py-1">Section</th>
                             <th className="py-1 text-center">Changes</th>
+                            <th className="py-1 text-center">Undo</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td className="py-1 text-blue-600">✎ Edited</td>
                             <td className="py-1">Transport</td>
-                            <td className="py-1 text-[12px] flex flex-col items-center">{oldpath[4]} <ArrowDown/> <a href={selectedPdf.fileURL} className="cursor-pointer" target="_blank">{selectedPdf.file.name}</a></td>
+                            <td className="py-1 text-[12px] flex flex-col items-center">{selectedPdf.file.name}</td>
+                            <td className="py-1 text-center">
+                                <button 
+                                    onClick={() => { setSelectedPdf(null); setConfirmPopup(false); }}
+                                    className="text-red-500 hover:text-red-700"
+                                >
+                                    <X/>
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -236,15 +251,19 @@ const AdminTransport = ({ theme, toggle }) => {
                     <div className="flex justify-end gap-2">
                     <button
                         onClick={() => setConfirmPopup(false)}
-                        className="px-4 py-2 rounded bg-gray-400 text-white"
+                        disabled={loadings}
+                        className={`px-4 py-2 rounded bg-gray-400 text-white ${loadings ? "cursor-not-allowed" : ""}`}
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleConfirmRequest}
-                        className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                        disabled={loadings}
+                        className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                            loadings ? "cursor-progress" : "hover:bg-[#800000]"
+                        }`}
                     >
-                        Final Request
+                        {loadings ? "Processing..." : "Final Request"}
                     </button>
                     </div>
                 </div>

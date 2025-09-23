@@ -596,8 +596,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/007/2024-2025/Value Added Course.pdf"
               }
-            ],
-            "activities": []
+            ]
           },
           {
             "year":"2023 - 2024",
@@ -633,85 +632,6 @@
               {
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/007/2023-2024/Value Added Course.pdf"
-              }
-            ],
-            "activities": [
-              {
-                "date": "14.03.2024",
-                "name_of_event": "Job Interview Etiquettes and Overview of Contemporary Workplace Skills",
-                "coordinator": "Ms.B.Kanimozhi Senior Technical Officer, Project Planning, Monitoring and Evaluation CSIR-Central Leather Research Institute ",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/1.webp"
-                ]
-              },
-              {
-                "date": "02.01.2024 to 04.01.2024",
-                "name_of_event": "Circuit Designing",
-                "coordinator": "Mr.Rajkumar, Senior Engineer, EQUAD Engineering",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/2.webp"
-                ]
-              },
-              {
-                "date": "03.01.2024 to 05.01.2024",
-                "name_of_event": "Let's Wind the Machine with MagNet",
-                "coordinator": "N.Kasirathi, AP/EEE and V.Rengarajan, AP/EEE",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/3.webp"
-                ]
-              },
-              {
-                "date": "04.01.2024",
-                "name_of_event": "PROXPO 2K24 - Project Exhibition",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/4.webp"
-                ]
-              },
-              {
-                "date": "24.02.2024",
-                "name_of_event": "Recent trends in research and innovation",
-                "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/5.webp"
-                ]
-              },
-              {
-                "date": "24.02.2024",
-                "name_of_event": "Faculty interaction with Foreign Professor on recent trends in research and innovation",
-                "coordinator": "Dr.In-Ho Ra, Professor, School of Software, NationalUniversityGunsan, Republic of Korea",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/6.webp"
-                ]
-              },
-              {
-                "date": "25.03.2024",
-                "name_of_event": "Cloud Computing in Industrial Growth",
-                "coordinator": "Er.J.Satheesh Bab, Divisional Head, corp. Engg& Projects ",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/7.webp"
-                ]
               }
             ]
           },
@@ -750,63 +670,6 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/007/2022-2023/Value Added Course.pdf"
               }
-            ],
-            "activities": [
-              {
-                "date": "23.02.2023",
-                "name_of_event": "Awareness Programm- Intellectual Property Rights(IPR)",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/8.webp"
-                ]
-              },
-              {
-                "date": "18.08.2023",
-                "name_of_event": "AIML with Azure MLOPs",
-                "coordinator": "Mr.Kiran Kumar Sabbisetti, Head - Cloud Centreof Excellence Sopra Steria",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/9.webp"
-                ]
-              },
-              {
-                "date": "19.08.2023",
-                "name_of_event": "Incubation Visit – Interaction with the founder",
-                "coordinator": "IITM Research park",
-                "resource_person": "",
-                "beneficiaries": "III yr EEE",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/11.webp"
-                ]
-              },
-              {
-                "date": "30.08.2023",
-                "name_of_event": "VEESC Inauguration",
-                "coordinator": "C.B.Thamarai Selvan B.E,M.Tech, MIE Protection & Communication, Assistant Executive Engineer, Tamil Nadu Electricity Board",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/12.webp"
-                ]
-              },
-              {
-                "date": "31.08.2023",
-                "name_of_event": "Workshop on Arduino Tools and Techniques",
-                "coordinator": "Dr.D.Sunitha, V.Rengarajan",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/13.webp"
-                ]
-              }
             ]
           },
           {
@@ -843,19 +706,6 @@
               {
                 "name": "Valued Added Course",
                 "pdf_path": ""
-              }
-            ],
-            "activities": [
-              {
-                "date": "26.11.2022",
-                "name_of_event": "TECHNOLOGY BUSINESS INCUBATOR - 3DPrinted Projects Fabrication",
-                "coordinator": "Veltech Incubation Center",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": [
-                  "/static/images/dept_activities/007/14.webp"
-                ]
               }
             ]
           }
@@ -968,53 +818,43 @@
         "content": [
           {
             "image_path": "/static/images/infrastructure/007/1.webp",
-            "image_name": "WORKSHOP PRACTICE",
-            "image_content": ""
+            "image_name": "WORKSHOP PRACTICE"
           },
           {
             "image_path": "/static/images/infrastructure/007/2.webp",
-            "image_name": "ELECTRIC CIRCUITS LABORATORY",
-            "image_content": ""
+            "image_name": "ELECTRIC CIRCUITS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/3.webp",
-            "image_name": "ELECTRICAL MACHINES – I & II LABORATORY",
-            "image_content": ""
+            "image_name": "ELECTRICAL MACHINES – I & II LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/4.webp",
-            "image_name": "ELECTRONICS LABORATORY LABORATORY",
-            "image_content": ""
+            "image_name": "ELECTRONICS LABORATORY LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/6.webp",
-            "image_name": "CONTROL AND INSTRUMENTATION LABORATORY",
-            "image_content": ""
+            "image_name": "CONTROL AND INSTRUMENTATION LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/7.webp",
-            "image_name": "MICROPROCESSOR AND MICROCONTROLLER  LABORATORY",
-            "image_content": ""
+            "image_name": "MICROPROCESSOR AND MICROCONTROLLER  LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/8.webp",
-            "image_name": "POWER ELECTRONICS LABORATORY",
-            "image_content": ""
+            "image_name": "POWER ELECTRONICS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/9.webp",
-            "image_name": "RENEWABLE ENERGY SYSTEMS LABORATORY ",
-            "image_content": ""
+            "image_name": "RENEWABLE ENERGY SYSTEMS LABORATORY "
           },
           {
             "image_path": "/static/images/infrastructure/007/10.webp",
-            "image_name": "POWER SYSTEM SIMULATION LABORATORY",
-            "image_content": ""
+            "image_name": "POWER SYSTEM SIMULATION LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/007/11.webp",
-            "image_name": "RESEARCH LABS",
-            "image_content": ""
+            "image_name": "RESEARCH LABS"
           }
         ]
       }
@@ -1037,13 +877,9 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
             "ORGANISATION_NAME": "",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": ""
           }
         ]
       }
