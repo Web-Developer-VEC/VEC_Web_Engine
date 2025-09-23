@@ -48,19 +48,14 @@ async function deleteData( tempDoc, mainCollection) {
 
       const content = categoryExists.members;
 
-      if (
-        !meta_data ||
-        (typeof meta_data === "object" &&
-          !Array.isArray(meta_data) &&
-          Object.keys(meta_data).length === 0) ||
-        (Array.isArray(meta_data) && meta_data.length === 0) ||
-        (meta_data.content && meta_data.content.length === 0)
-      ) {
+      if (meta_data.category === category) {
         // Delete entire category
         await mainCollection.updateOne(
           { type: collection_type },
           { $pull: { data: { category } } }
         );
+
+        return{message:"The entire category is deleted"}
       }
       //   else if (Array.isArray(content) && typeof content[0] === "string") {
       //     // Delete string items
