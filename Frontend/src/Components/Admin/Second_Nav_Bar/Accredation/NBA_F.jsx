@@ -114,7 +114,7 @@ const NBA_F = ({ data }) => {
       } else if (change.type === "fileReplace") {
         if (typeof change.rowIndex === "number" && typeof change.pdfIndex === "number") {
           if (updated[change.rowIndex] && updated[change.rowIndex].pdfs?.[change.pdfIndex]) {
-            updated[change.rowIndex].pdfs[change.pdfIndex].pdfs_path = change.prevData?.pdfs_path ?? updated[change.rowIndex].pdfs[change.pdfIndex].pdfs_path;
+            updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path = change.prevData?.pdf_path ?? updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path;
             if (change.prevData?.file) updated[change.rowIndex].pdfs[change.pdfIndex].file = change.prevData.file;
             else delete updated[change.rowIndex].pdfs[change.pdfIndex].file;
           }
@@ -151,11 +151,11 @@ const NBA_F = ({ data }) => {
   }, [data]);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") {
+    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") {
       toast.warn("No PDF available for this file!");
       return;
     }
-    window.open(`${UrlParser(pdf.pdfs_path)}#toolbar=0`, "_blank");
+    window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
   };
 
   const handleEditToggle = () => {
@@ -297,7 +297,7 @@ const NBA_F = ({ data }) => {
 
   const handleAddPdf = (rowIndex) => {
     const updated = [...editableData];
-    const newPdf = { name: "", pdfs_path: "", _tempId: uid("tmp_pdf_") };
+    const newPdf = { name: "", pdf_path: "", _tempId: uid("tmp_pdf_") };
     if (!Array.isArray(updated[rowIndex].pdfs)) updated[rowIndex].pdfs = [];
     updated[rowIndex].pdfs.push(newPdf);
     setEditableData(updated);
@@ -317,9 +317,9 @@ const NBA_F = ({ data }) => {
     const fileURL = URL.createObjectURL(file);
 
     const prevItem = updated[rowIndex]?.pdfs?.[pdfIndex] || {};
-    const prevData = { pdfs_path: prevItem.pdfs_path, file: prevItem.file };
+    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
 
-    updated[rowIndex].pdfs[pdfIndex].pdfs_path = fileURL;
+    updated[rowIndex].pdfs[pdfIndex].pdf_path = fileURL;
     updated[rowIndex].pdfs[pdfIndex].file = file;
     setEditableData(updated);
     setHasChanges(true);
@@ -547,7 +547,7 @@ const NBA_F = ({ data }) => {
                                       className="border p-1 rounded text-sm"
                                     />
                                     <label className="bg-yellow-400 text-white px-3 py-1 rounded cursor-pointer">
-                                      {pdf?.pdfs_path ? "Replace" : "Upload"}
+                                      {pdf?.pdf_path ? "Replace" : "Upload"}
                                       <input
                                         type="file"
                                         accept="application/pdf"
