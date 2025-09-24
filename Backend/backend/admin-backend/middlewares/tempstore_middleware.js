@@ -40,9 +40,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         // ✅ Use all uploaded files (no docIndex filter)
         const allFiles = req.uploadedFiles || [];
 
-        const skipPdfFor = ["placement_details", "nirf", "nba"];
+        const skipPdfFor = ["placement_details", "nirf", "nba","regulation","all_forms","COE"];
 
-        const skipImageFor = [];
+        const skipImageFor = ["warden","members","library_services","team","achivements"];
 
         const mainCollection = maindb.collection(collectionName);
         const existingDoc = await mainCollection.findOne(
@@ -68,8 +68,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         // console.log("📂 Uploaded files (S3):", req.uploadedFiles);
         // console.log("pdf path ", pdf_path);
         // console.log("image path ", image_path);
-    
-        
+          
 
         const notdoc = Array.isArray(existingDoc.data)?existingDoc.data:[existingDoc.data];
 

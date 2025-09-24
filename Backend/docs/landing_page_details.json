@@ -519,6 +519,38 @@
         "brochure_path": "/static/images/events/MATHLETICS.webp",
         "website_link": "",
         "status": "True"
+      },{
+        "start_date":"24 Sep",
+        "end_date": "24 SEP, 2025",
+        "date": "24-09-2025",
+        "title": "Quality Control and Precision Measurement in Automobile Industry",
+        "department": "Automobile Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/QUALITY CONTROL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"24 Sep",
+        "end_date": "24 SEP, 2025",
+        "date": "24-09-2025",
+        "title": "PROXPO 2K25",
+        "department": "Electrical & Electronics Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/PROXPO.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"25 Sep",
+        "end_date": "25 SEP, 2025",
+        "date": "25-09-2025",
+        "title": "Data Science and Machine Learning",
+        "department": "Computer Science & Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/DATA SCIENCe.webp",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }
