@@ -12,13 +12,6 @@ async function updateData( tempDoc, mainCollection) {
     if (!doc) throw new Error("Document not found");
     if (!doc.data) throw new Error("Document has no data field");
 
-    // Debug
-    console.log("🔎 Incoming update request:", {
-      collection_type,
-      category,
-      original_data,
-      meta_data,
-    });
 
     // 3️⃣ Define type categories
     const singleDocTypes = ["about"];

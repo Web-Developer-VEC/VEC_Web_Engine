@@ -2,47 +2,6 @@
   {
     "collectionName": "ncc_army",
     "collection_type": "about",
-    "action": "insert",
-    "title": "Add about IIC",
-    "meta_data": {
-        "about_us": [
-          "The VEC NCC Army embodies the motto of the National Cadet Corps (NCC) – Unity and Discipline. At Velammal Engineering College, we take immense pride in fostering leadership, discipline and patriotism among our cadets. Under the able guidance of our Associate NCC Officer (ANO), Captain R. Chezhian, the unit consistently strives for excellence in both training and service.",
-          "Our NCC Army wing provides a structured training program that instills qualities of leadership, teamwork and social responsibility. The cadets undergo rigorous physical training, drill sessions, and weapon training, preparing them to face challenges with confidence. Additionally, the unit actively participates in various social service activities, including environmental campaigns, disaster relief efforts, and blood donation camps, contributing to the welfare of society.",
-          "The VEC NCC Army also encourages participation in prestigious camps such as the Republic Day Camp (RDC), Thal Sainik Camp (TSC) and Combined Annual Training Camp (CATC). These experiences help cadets develop resilience, discipline and camaraderie, essential for personal and professional growth.",
-          "We are committed to shaping responsible citizens who uphold the values of service, courage and integrity. Through the unwavering dedication of our cadets and the support of our faculty, the VEC NCC Army continues to uphold the spirit of the NCC and inspire young minds to serve the nation with honor and pride."
-        ],
-        "objectives": [
-          "To fulfill the requirements expected in the latest socio-economic scenario in India.",
-          "To develop character, discipline, comradeship, secular outlook, ideals of selfless services and adventure spirits amongst large numbers of young citizens.",
-          "To create a pool of trained, organized and motivated youth with various leadership qualities in every walk of their life and serve the Nation irrespective of the career they choose.",
-          "To provide a sound environment conducive towards motivating large numbers of young people of India to join armed forces."
-        ],
-        "aim": [
-          "To Create a Human Resource of Organized, Trained and Motivated Youth, To Provide Leadership in all Walks of life and be Always Available for the Service of the Nation.",
-          "To Provide a Suitable Environment to Motivate the Youth to Take Up a Career in the Armed Forces.",
-          "To Develop Character, Comradeship, Discipline, Leadership, Secular Outlook, Spirit of Adventure and Ideals of Selfless Service amongst the Youth of the Country."
-        ],
-        "motto": "Unity and Discipline",
-        "cardinals": [
-          "Obey with a smile",
-          "Be punctual",
-          "Work hard and without fuss",
-          "Make no excuses and tell no lies"
-        ],
-        "pledge": [
-          "WE THE CADETS OF THE NATIONAL CADET CORPS,",
-          "DO SOLEMNLY PLEDGE THAT WE SHALL ALWAYS UPHOLD THE UNITY OF INDIA.",
-          "WE RESOLVE TO BE DISCIPLINED AND RESPONSIBLE CITIZENS OF OUR NATION.",
-          "WE SHALL UNDERTAKE POSITIVE COMMUNITY SERVICE IN THE SPIRIT OF SELFLESSNESS",
-          "AND CONCERN FOR OUR FELLOW BEINGS.",
-          "WE SHALL ALWAYS BE READY TO SACRIFICE OUR LIFE AND PROPERTY FOR THE CAUSE OF OUR NATION."
-        ],
-        "contact_address": "VEC NCC Army Room (Next to Electronic Practices Lab) Anna Auditorium, Velammal Engineering College, Surapet,Chennai - 600 066"
-      }
-  },
-  {
-    "collectionName": "ncc_army",
-    "collection_type": "about",
     "action": "update",
     "title": "update about ",
     "original_data": {
@@ -115,39 +74,7 @@
         "contact_address": "VEC NCC Army Room (Next to Electronic Practices Lab) Anna Auditorium, Velammal Engineering College, Surapet,Chennai - 600 066"
       }
   },
-  {
-    "collectionName": "ncc_army",
-    "collection_type": "about",
-    "action": "delete",
-    "title": "delete about ",
-    "meta_data":{
-        "about_us": [
-          "The VEC NCC Army embodies the motto of the National Cadet Corps (NCC) – Unity and Discipline. At Velammal Engineering College, we take immense pride in fostering leadership, discipline and patriotism among our cadets. Under the able guidance of our Associate NCC Officer (ANO), Captain R. Chezhian, the unit consistently strives for excellence in both training and service.",
-          "Our NCC Army wing provides a structured training program that instills qualities of leadership, teamwork and social responsibility. The cadets undergo rigorous physical training, drill sessions, and weapon training, preparing them to face challenges with confidence. Additionally, the unit actively participates in various social service activities, including environmental campaigns, disaster relief efforts, and blood donation camps, contributing to the welfare of society.",
-          "The VEC NCC Army also encourages participation in prestigious camps such as the Republic Day Camp (RDC), Thal Sainik Camp (TSC) and Combined Annual Training Camp (CATC). These experiences help cadets develop resilience, discipline and camaraderie, essential for personal and professional growth.",
-          "We are committed to shaping responsible citizens who uphold the values of service, courage and integrity. Through the unwavering dedication of our cadets and the support of our faculty, the VEC NCC Army continues to uphold the spirit of the NCC and inspire young minds to serve the nation with honor and pride."
-        ],
-        "objectives": [
-          "To fulfill the requirements expected in the latest socio-economic scenario in India.",
-          "To develop character, discipline, comradeship, secular outlook, ideals of selfless services and adventure spirits amongst large numbers of young citizens.",
-          "To create a pool of trained, organized and motivated youth with various leadership qualities in every walk of their life and serve the Nation irrespective of the career they choose.",
-          "To provide a sound environment conducive towards motivating large numbers of young people of India to join armed forces."
-        ],
-        "aim": [
-          "To Create a Human Resource of Organized, Trained and Motivated Youth, To Provide Leadership in all Walks of life and be Always Available for the Service of the Nation.",
-          "To Provide a Suitable Environment to Motivate the Youth to Take Up a Career in the Armed Forces.",
-          "To Develop Character, Comradeship, Discipline, Leadership, Secular Outlook, Spirit of Adventure and Ideals of Selfless Service amongst the Youth of the Country."
-        ],
-        "motto": "Unity and Discipline",
-        "cardinals": [
-          "Obey with a smile",
-          "Be punctual",
-          "Work hard and without fuss",
-          "Make no excuses and tell no lies"
-        ],
-        "contact_address": "VEC NCC Army Room (Next to Electronic Practices Lab) Anna Auditorium, Velammal Engineering College, Surapet,Chennai - 600 066"
-      }
-  },
+
   {
     "collectionName": "ncc_army",
     "collection_type": "team",
@@ -188,5 +115,22 @@
             "designation": "NCC Army Coordinator",
             "image_path": "/static/images/ncc/army/chairman.webp"
           }
+  },
+  {
+    "collectionName": "ncc_army",
+    "collection_type": "team",
+    "action": "delete",
+    "category": "faculty_coordinators",
+    "title": "delete Faculty Member",
+    "meta_data": {
+        "category": "faculty_coordinators",
+        "members": [
+          {
+            "name": "Captain CHEZHIAN R",
+            "designation": "NCC Army Coordinator",
+            "image_path": "/static/images/ncc/army/chairman.webp"
+          }
+        ]
+      }
   }
 ]
