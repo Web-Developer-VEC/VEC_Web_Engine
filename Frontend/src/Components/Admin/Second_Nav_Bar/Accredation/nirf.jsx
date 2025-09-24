@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./admin_nirf.css";
 import LoadComp from "../../LoadComp";
-import { Pencil, Eye, Plus, Trash2, Send } from "lucide-react";
+import { Pencil, Eye, Plus, Trash2, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,6 +22,18 @@ const NIRF = ({ data }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [requestSent, setRequestSent] = useState(false);
   const [lastSavedState, setLastSavedState] = useState(null); // Track last saved state
+
+  // changeLog state
+  const [changeLog, setChangeLog] = useState([]);
+
+  // uid helper
+  const uid = (() => {
+    let i = Date.now();
+    return (prefix = "") => {
+      i += 1;
+      return `${prefix}${i}`;
+    };
+  })();
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -47,8 +59,62 @@ const NIRF = ({ data }) => {
       setEditableData(copy);
       setOriginalData(JSON.parse(JSON.stringify(copy))); // Deep copy
       setLastSavedState(JSON.parse(JSON.stringify(copy))); // Set initial saved state
+      setSavedChanges(null);
+      setChangeLog([]);
+      setRequestSent(false);
     }
   }, [data]);
+
+  // changeLog helpers
+  const pushChangeLog = (entry) => {
+    setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
+  };
+
+  // upsertEdited: first try to find a matching Added entry (tempId/yearId) and update it.
+  // If no Added exists, coalesce into an Edited entry (update existing Edited if present).
+  const upsertEditedLog = (matchPredicate, newEntry) => {
+    setChangeLog((prev) => {
+      const clone = [...prev];
+
+      // 1) If there is an Added entry that corresponds to this item (tempId OR yearId+rowAdded), update that.
+      const addedIdx = clone.findIndex((c) => {
+        if (c.action !== "Added") return false;
+        if (newEntry.tempId && c.tempId && c.tempId === newEntry.tempId) return true;
+        if (newEntry.yearId && c.rowAdded && c.yearId === newEntry.yearId) return true;
+        return false;
+      });
+
+      if (addedIdx !== -1) {
+        const existing = clone[addedIdx];
+        clone[addedIdx] = {
+          ...existing,
+          data: { ...(existing.data || {}), ...(newEntry.data || {}) },
+        };
+        return clone;
+      }
+
+      // 2) Else, try to find existing Edited entry matching predicate and update it
+      const editedIdx = clone.findIndex((c) => c.action === "Edited" && matchPredicate(c));
+      if (editedIdx !== -1) {
+        const existing = clone[editedIdx];
+        clone[editedIdx] = {
+          ...existing,
+          prevData: existing.prevData || newEntry.prevData,
+          data: { ...(existing.data || {}), ...(newEntry.data || {}) },
+          yearId: existing.yearId ?? newEntry.yearId,
+          docIndex: existing.docIndex ?? newEntry.docIndex,
+          tempId: existing.tempId ?? newEntry.tempId,
+          type: existing.type ?? newEntry.type,
+        };
+        return clone;
+      }
+
+      // 3) Otherwise push a fresh Edited entry
+      return [...clone, { id: uid("chg_"), action: "Edited", ...newEntry }];
+    });
+  };
+
+  const getChanges = () => changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
 
   const handlePdfClick = (cat) => {
     if (!cat?.pdf_path) return;
@@ -75,59 +141,275 @@ const NIRF = ({ data }) => {
     setSelectedItems([]);
   };
 
+  // Field change (year or document name)
   const handleFieldChange = (yearIndex, docIndex, key, value) => {
-    const updated = [...editableData];
+    const updated = JSON.parse(JSON.stringify(editableData));
+    const year = updated[yearIndex];
+    if (!year) return;
+
     if (docIndex === null) {
-      updated[yearIndex][key] = value;
+      // editing year field
+      const prev = year.year;
+      year[key] = value;
+      setEditableData(updated);
+      setHasChanges(true);
+
+      upsertEditedLog(
+        (c) => c.type === "year" && c.yearId === year.__id,
+        {
+          action: "Edited",
+          type: "year",
+          yearId: year.__id,
+          prevData: { year: prev },
+          data: { year: value },
+        }
+      );
     } else {
-      updated[yearIndex].content[docIndex][key] = value;
+      // editing document name
+      if (!Array.isArray(year.content)) return;
+      const doc = year.content[docIndex];
+      if (!doc) return;
+      const prev = doc[key];
+      doc[key] = value;
+      setEditableData(updated);
+      setHasChanges(true);
+
+      upsertEditedLog(
+        (c) =>
+          c.type === "docName" &&
+          c.yearId === year.__id &&
+          (c.docIndex === docIndex || c.tempId === doc._tempId),
+        {
+          action: "Edited",
+          type: "docName",
+          yearId: year.__id,
+          docIndex,
+          tempId: doc._tempId,
+          prevData: { name: prev },
+          data: { name: value },
+        }
+      );
     }
-    setEditableData(updated);
-    setHasChanges(true);
   };
 
   const handleFileUpload = (yearIndex, docIndex, file) => {
-    const updated = [...editableData];
+    const updated = JSON.parse(JSON.stringify(editableData));
+    if (!updated[yearIndex]) return;
+    if (!Array.isArray(updated[yearIndex].content)) updated[yearIndex].content = [];
     const fileURL = URL.createObjectURL(file);
-    if (!updated[yearIndex].content) updated[yearIndex].content = [];
+    const prevItem = updated[yearIndex].content[docIndex] || {};
+    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
+
+    // set new file
     updated[yearIndex].content[docIndex].pdf_path = fileURL;
     updated[yearIndex].content[docIndex].file = file;
     setEditableData(updated);
     setHasChanges(true);
+
+    upsertEditedLog(
+      (c) =>
+        c.type === "fileReplace" &&
+        c.yearId === updated[yearIndex].__id &&
+        (c.docIndex === docIndex || c.tempId === updated[yearIndex].content[docIndex]?._tempId),
+      {
+        action: "Edited",
+        type: "fileReplace",
+        yearId: updated[yearIndex].__id,
+        docIndex,
+        tempId: updated[yearIndex].content[docIndex]?._tempId,
+        prevData,
+        data: { name: updated[yearIndex].content[docIndex]?.name },
+      }
+    );
   };
 
   const handleAddDocument = (yearIndex) => {
-    const updated = [...editableData];
-    if (!updated[yearIndex].content) updated[yearIndex].content = [];
-    updated[yearIndex].content.push({
-      name: "",
-      pdf_path: "",
-    });
+    const updated = JSON.parse(JSON.stringify(editableData));
+    if (!Array.isArray(updated[yearIndex].content)) updated[yearIndex].content = [];
+    const newDoc = { name: "", pdf_path: "", _tempId: uid("tmp_doc_") };
+    updated[yearIndex].content.push(newDoc);
     setEditableData(updated);
     setHasChanges(true);
+
+    pushChangeLog({
+      action: "Added",
+      yearId: updated[yearIndex].__id,
+      tempId: newDoc._tempId,
+      data: { name: newDoc.name },
+    });
   };
 
+  const handleAddYear = () => {
+    const updated = JSON.parse(JSON.stringify(editableData));
+    const newYear = {
+      year: "",
+      content: [],
+      isNew: true,
+      __id: `${Date.now()}-new-${Math.random().toString(36).slice(2, 9)}`,
+    };
+    updated.unshift(newYear);
+    setEditableData(updated);
+    setHasChanges(true);
+
+    pushChangeLog({
+      action: "Added",
+      rowAdded: true,
+      yearId: newYear.__id,
+      data: newYear,
+    });
+  };
+
+  // delete document flow
   const handleDeleteDocument = (yearIndex, docIndex) => {
-    setDeleteConfirm({ yearIndex, docIndex });
+    setDeleteConfirm({ yearIndex, docIndex, type: "doc" });
   };
 
   const confirmDelete = () => {
     if (!deleteConfirm) return;
-    const { yearIndex, docIndex } = deleteConfirm;
-    const updated = [...editableData];
-    if (updated[yearIndex] && Array.isArray(updated[yearIndex].content)) {
-      updated[yearIndex].content.splice(docIndex, 1);
+    const updated = JSON.parse(JSON.stringify(editableData));
+
+    if (deleteConfirm.type === "doc") {
+      const { yearIndex, docIndex } = deleteConfirm;
+      const year = updated[yearIndex];
+      if (!year || !Array.isArray(year.content)) {
+        setDeleteConfirm(null);
+        return;
+      }
+      const deletedDoc = year.content.splice(docIndex, 1)[0];
+      setEditableData(updated);
+      setHasChanges(true);
+      setDeleteConfirm(null);
+
+      pushChangeLog({
+        action: "Deleted",
+        yearId: year.__id,
+        docIndex,
+        data: deletedDoc,
+      });
+      toast.success("Document deleted successfully");
+    } else if (deleteConfirm.type === "multiple") {
+      setDeleteConfirm(null);
+    } else if (deleteConfirm.type === "year") {
+      const { yearIndex } = deleteConfirm;
+      const deletedYear = updated.splice(yearIndex, 1)[0];
+      setEditableData(updated);
+      setHasChanges(true);
+      setDeleteConfirm(null);
+
+      pushChangeLog({
+        action: "Deleted",
+        rowDeleted: true,
+        yearId: deletedYear.__id,
+        data: deletedYear,
+      });
+      toast.success("Year deleted");
     }
-    setEditableData(updated);
-    setHasChanges(true);
-    setDeleteConfirm(null);
-    toast.success("Document deleted successfully");
   };
 
+  const handleDeleteSelected = () => {
+    if (selectedItems.length === 0) return;
+    const toDelete = [...selectedItems].sort((a, b) => a - b);
+    let updated = JSON.parse(JSON.stringify(editableData));
+    for (let i = toDelete.length - 1; i >= 0; i--) {
+      const idx = toDelete[i];
+      const rowCopy = updated[idx];
+      pushChangeLog({
+        action: "Deleted",
+        rowDeleted: true,
+        yearId: rowCopy.__id,
+        data: rowCopy,
+      });
+      updated.splice(idx, 1);
+    }
+    setEditableData(updated);
+    setSelectedItems([]);
+    setHasChanges(true);
+    setDeleteConfirm(null);
+    toast.success("Selected items deleted successfully");
+  };
+
+  // Revert single change (Undo)
+  const handleRevertChange = (change) => {
+    const updated = JSON.parse(JSON.stringify(editableData));
+
+    try {
+      if (change.action === "Added") {
+        if (change.rowAdded || change.yearId) {
+          const yi = updated.findIndex((y) => y.__id === change.yearId);
+          if (yi !== -1) updated.splice(yi, 1);
+        } else if (change.tempId && change.yearId) {
+          const yIdx = updated.findIndex((y) => y.__id === change.yearId);
+          if (yIdx !== -1 && Array.isArray(updated[yIdx].content)) {
+            const pi = updated[yIdx].content.findIndex((p) => p._tempId === change.tempId);
+            if (pi !== -1) updated[yIdx].content.splice(pi, 1);
+          }
+        }
+      } else if (change.action === "Deleted") {
+        if (change.rowDeleted) {
+          const exists = updated.some((y) => y.__id === change.data.__id);
+          if (!exists) updated.push(change.data);
+        } else if (typeof change.yearId !== "undefined") {
+          const yIdx = updated.findIndex((y) => y.__id === change.yearId);
+          if (yIdx !== -1) {
+            if (!Array.isArray(updated[yIdx].content)) updated[yIdx].content = [];
+            const pos = Math.min(change.docIndex ?? updated[yIdx].content.length, updated[yIdx].content.length);
+            updated[yIdx].content.splice(pos, 0, change.data);
+          } else {
+            updated.push({ year: change.data.year ?? "", content: [change.data], __id: change.yearId || uid("rest_") });
+          }
+        }
+      } else if (change.action === "Edited") {
+        if (change.type === "year") {
+          const yIdx = updated.findIndex((y) => y.__id === change.yearId);
+          if (yIdx !== -1) {
+            updated[yIdx].year = change.prevData?.year ?? updated[yIdx].year;
+          }
+        } else if (change.type === "docName") {
+          const yIdx = updated.findIndex((y) => y.__id === change.yearId);
+          if (yIdx !== -1 && Array.isArray(updated[yIdx].content)) {
+            const pIdx = change.docIndex;
+            if (typeof pIdx === "number" && updated[yIdx].content[pIdx]) {
+              updated[yIdx].content[pIdx].name = change.prevData?.name ?? updated[yIdx].content[pIdx].name;
+            } else if (change.tempId) {
+              const pi = updated[yIdx].content.findIndex((p) => p._tempId === change.tempId);
+              if (pi !== -1) updated[yIdx].content[pi].name = change.prevData?.name ?? updated[yIdx].content[pi].name;
+            }
+          }
+        } else if (change.type === "fileReplace") {
+          const yIdx = updated.findIndex((y) => y.__id === change.yearId);
+          if (yIdx !== -1 && Array.isArray(updated[yIdx].content)) {
+            const pIdx = change.docIndex;
+            if (typeof pIdx === "number" && updated[yIdx].content[pIdx]) {
+              updated[yIdx].content[pIdx].pdf_path = change.prevData?.pdf_path ?? updated[yIdx].content[pIdx].pdf_path;
+              if (change.prevData?.file) updated[yIdx].content[pIdx].file = change.prevData.file;
+              else delete updated[yIdx].content[pIdx].file;
+            } else if (change.tempId) {
+              const pi = updated[yIdx].content.findIndex((p) => p._tempId === change.tempId);
+              if (pi !== -1) {
+                updated[yIdx].content[pi].pdf_path = change.prevData?.pdf_path ?? updated[yIdx].content[pi].pdf_path;
+                if (change.prevData?.file) updated[yIdx].content[pi].file = change.prevData.file;
+                else delete updated[yIdx].content[pi].file;
+              }
+            }
+          }
+        }
+      }
+
+      setEditableData(updated);
+      setChangeLog((prev) => prev.filter((c) => c.id !== change.id));
+      setHasChanges(true);
+      toast.info("Reverted change");
+    } catch (err) {
+      console.error("Revert failed", err);
+      toast.error("Failed to revert change");
+    }
+  };
+
+  // Save: persist current editableData as savedChanges (but keep changeLog for request)
   const handleSave = () => {
     const currentState = JSON.parse(JSON.stringify(editableData));
-    setSavedChanges(currentState); // Save current state
-    setLastSavedState(currentState); // Update last saved state
+    setSavedChanges(currentState);
+    setLastSavedState(currentState);
     setEditMode(false);
     setHasChanges(false);
     setSelectedItems([]);
@@ -137,18 +419,37 @@ const NIRF = ({ data }) => {
 
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalData)));
-    setLastSavedState(JSON.parse(JSON.stringify(originalData))); // Reset to original
+    setLastSavedState(JSON.parse(JSON.stringify(originalData)));
     setSavedChanges(null);
     setEditMode(false);
     setHasChanges(false);
     setSelectedItems([]);
     setRequestSent(false);
+    setChangeLog([]);
     toast.info("All changes discarded");
   };
 
+  const handleSendRequest = () => {
+    setShowRequestModal(true);
+  };
+
   const handleRequestConfirm = () => {
+    const payload = {
+      section: "NIRF",
+      timestamp: new Date().toISOString(),
+      changes: getChanges().map((c) => ({
+        id: c.id,
+        action: c.action,
+        raw: c,
+        description: describeChange(c),
+      })),
+    };
+
+    console.log("Submitting request payload:", payload);
     setShowRequestModal(false);
     setRequestSent(true);
+    setChangeLog([]);
+    setSavedChanges(null);
     toast.success("Final request submitted!");
   };
 
@@ -161,135 +462,33 @@ const NIRF = ({ data }) => {
     }
   };
 
-  const handleAddYear = () => {
-    const updated = [...editableData];
-    updated.unshift({
-      year: "",
-      content: [],
-      isNew: true,
-      __id: `${Date.now()}-new-${Math.random().toString(36).slice(2, 9)}`,
-    });
-    setEditableData(updated);
-    setHasChanges(true);
-  };
-
-  const handleDeleteSelected = () => {
-    if (selectedItems.length === 0) return;
-    const updated = editableData.filter(
-      (_, index) => !selectedItems.includes(index)
-    );
-    setEditableData(updated);
-    setHasChanges(true);
-    setSelectedItems([]);
-    setDeleteConfirm(null);
-    toast.success("Selected items deleted successfully");
-  };
-
-  // ---------- NEW helpers for the requested modal ----------
-  const getChanges = () => {
-    // Returns an array of change objects { action: 'Added'|'Deleted'|'Updated', section: string, data: yearObject }
-    if (!savedChanges) return [];
-
-    const origMap = new Map((originalData || []).map((i) => [i.__id, i]));
-    const savedMap = new Map((savedChanges || []).map((i) => [i.__id, i]));
-    const changes = [];
-
-    // Check saved items for Added / Updated
-    for (const s of savedChanges) {
-      const o = origMap.get(s.__id);
-      if (!o) {
-        changes.push({
-          action: "Added",
-          section: `NIRF ${s.year || "-"}`,
-          data: s,
-        });
-      } else {
-        // Determine if there's any difference between original and saved for this year
-        const origDocs = o.content || [];
-        const savedDocs = s.content || [];
-        const docsDifferent =
-          origDocs.length !== savedDocs.length ||
-          origDocs.some((od, idx) => {
-            const sd = savedDocs[idx];
-            // If either missing or name/pdf changed -> treat as different
-            if (!sd) return true;
-            if ((od.name || "") !== (sd.name || "")) return true;
-            if ((od.pdf_path || "") !== (sd.pdf_path || "")) return true;
-            return false;
-          });
-
-        if (String(o.year) !== String(s.year) || docsDifferent) {
-          changes.push({
-            action: "Updated",
-            section: `NIRF ${s.year || "-"}`,
-            data: s,
-          });
-        }
+  // human readable descriptions
+  const describeChange = (change) => {
+    if (change.rowAdded) {
+      return `Year added: ${change.data?.year || "(new year)"}`;
+    }
+    if (change.rowDeleted) {
+      return `Year deleted: ${change.data?.year || "(deleted year)"}`;
+    }
+    if (change.action === "Added" && change.tempId && change.yearId) {
+      return `Document added: ${change.data?.name || "(untitled)"} (Year id: ${change.yearId})`;
+    }
+    if (change.action === "Deleted" && change.yearId && change.data?.name) {
+      return `Document deleted: ${change.data.name} (Year id: ${change.yearId})`;
+    }
+    if (change.action === "Edited") {
+      if (change.type === "year") {
+        return `Year changed to: ${change.data?.year || "(blank)"}`;
+      }
+      if (change.type === "docName") {
+        return `Document renamed to: ${change.data?.name || "(blank)"}`;
+      }
+      if (change.type === "fileReplace") {
+        return `File replaced for: ${change.data?.name || "(doc)"} `;
       }
     }
-
-    // Check original items for Deleted (present in original but not in saved)
-    for (const o of originalData) {
-      if (!savedMap.has(o.__id)) {
-        changes.push({
-          action: "Deleted",
-          section: `NIRF ${o.year || "-"}`,
-          data: o,
-        });
-      }
-    }
-
-    return changes;
+    return JSON.stringify(change.data || {});
   };
-
-  const handleRevertChange = (change) => {
-    if (!savedChanges) return;
-    let updated = JSON.parse(JSON.stringify(savedChanges));
-
-    try {
-      if (change.action === "Added") {
-        // Remove added year from savedChanges
-        updated = updated.filter((y) => y.__id !== change.data.__id);
-      } else if (change.action === "Deleted") {
-        // Re-add the deleted year from originalData (if found)
-        const orig = originalData.find((o) => o.__id === change.data.__id);
-        if (orig) {
-          // If it's not present, add it back
-          if (!updated.some((u) => u.__id === orig.__id)) {
-            updated.push(JSON.parse(JSON.stringify(orig)));
-          }
-        } else {
-          toast.error("Original item not found to revert");
-          return;
-        }
-      } else if (change.action === "Updated") {
-        // Revert this year's data to originalData copy
-        const orig = originalData.find((o) => o.__id === change.data.__id);
-        if (orig) {
-          updated = updated.map((y) =>
-            y.__id === orig.__id ? JSON.parse(JSON.stringify(orig)) : y
-          );
-        } else {
-          // If original not found, remove it (safe fallback)
-          updated = updated.filter((y) => y.__id !== change.data.__id);
-        }
-      } else {
-        // unknown action - no op
-        toast.error("Unknown change action");
-        return;
-      }
-
-      // Update savedChanges and the editableData to reflect the revert in the UI
-      setSavedChanges(updated);
-      setEditableData(JSON.parse(JSON.stringify(updated)));
-      setHasChanges(true); // there's been a change from previous savedChanges
-      toast.info("Change reverted");
-    } catch (err) {
-      console.error("Revert failed", err);
-      toast.error("Failed to revert change");
-    }
-  };
-  // ---------- end new helpers ----------
 
   if (!isOnline) {
     return (
@@ -311,8 +510,9 @@ const NIRF = ({ data }) => {
     <div className="nirf-page relative">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {!editMode && !requestSent && (
-        <div className="flex justify-end px-6 py-4">
+      {/* EDIT button: always top-right when not in edit mode (fixes left-bottom issue) */}
+      {!editMode && (
+        <div className="absolute top-4 right-6 z-50">
           <button
             onClick={handleEditToggle}
             className="flex items-center px-4 py-2 rounded-lg bg-[#fdcc06] text-black hover:bg-[#800000] transition-colors"
@@ -342,6 +542,7 @@ const NIRF = ({ data }) => {
           <div
             onClick={handleAddYear}
             className="adminnirf-year flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-400 text-gray-500 hover:bg-gray-100"
+            title="Add Year"
           >
             <Plus size={28} />
           </div>
@@ -446,10 +647,16 @@ const NIRF = ({ data }) => {
                         </button>
                       )}
                       <button
-                        onClick={() => handleDeleteDocument(yearIndex, docIndex)}
+                        onClick={() =>
+                          setDeleteConfirm({
+                            type: "doc",
+                            yearIndex,
+                            docIndex,
+                          })
+                        }
                         className="text-red-500"
                       >
-                        🗑
+                        <Trash2/>
                       </button>
                     </div>
                   ) : (
@@ -542,15 +749,6 @@ const NIRF = ({ data }) => {
         </div>
       )}
 
-      {!editMode && requestSent && (
-        <button
-          onClick={handleEditToggle}
-          className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-        >
-          <Pencil size={16} /> Edit
-        </button>
-      )}
-
       {deleteConfirm && deleteConfirm.type !== "multiple" && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
@@ -596,7 +794,9 @@ const NIRF = ({ data }) => {
                 Cancel
               </button>
               <button
-                onClick={handleDeleteSelected}
+                onClick={() => {
+                  handleDeleteSelected();
+                }}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
               >
                 Delete
@@ -606,10 +806,10 @@ const NIRF = ({ data }) => {
         </div>
       )}
 
-      {/* ---------- REPLACED: Final Request Modal (your provided markup) ---------- */}
+      {/* Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px] max-w-[95vw]">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Request
             </h2>
@@ -618,21 +818,21 @@ const NIRF = ({ data }) => {
               Once approved will go live.
             </p>
 
-            <div className="max-h-[250px] overflow-y-auto mb-4">
+            <div className="max-h-[320px] overflow-y-auto mb-4">
               <table className="w-full text-center text-text dark:text-drkt border">
                 <thead>
                   <tr className="bg-gray-200 dark:bg-drka">
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
+                    <th className="py-2">Action</th>
+                    <th className="py-2">Section</th>
+                    <th className="py-2 text-center">Changes</th>
+                    <th className="py-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {getChanges().map((change, idx) => (
-                    <tr key={idx} className="border-t">
-                      {/* Action */}
+                  {getChanges().map((change) => (
+                    <tr key={change.id} className="border-t">
                       <td
-                        className={`py-1 ${
+                        className={`py-2 ${
                           change.action === "Added"
                             ? "text-green-600"
                             : change.action === "Deleted"
@@ -643,36 +843,29 @@ const NIRF = ({ data }) => {
                         {change.action}
                       </td>
 
-                      {/* Section */}
-                      <td className="py-1">
-                        {change.section || "Library Faculty"}
+                      <td className="py-2">NIRF</td>
+
+                      <td className="py-2 text-[13px]">
+                        <div className="flex items-center justify-center gap-2">
+                          <span>{describeChange(change)}</span>
+                        </div>
                       </td>
 
-                      {/* Faculty Name + X button (adapted to show year/doc) */}
-                      <td className="py-1 text-[12px]">
-                        <div className="flex items-center justify-center gap-2">
-                          {/* show a friendly label: if year-level change show year, else list document names */}
-                          {change.data?.content && change.data.content.length > 0 ? (
-                            <span className="truncate">
-                              {change.data.content.map((d, i) => d?.name || "Untitled").join(", ")}
-                            </span>
-                          ) : (
-                            <span>{change.data?.year || "Unnamed"}</span>
-                          )}
-                          <button
-                            onClick={() => handleRevertChange(change)}
-                            className="text-red-500 hover:text-red-700 font-bold"
-                          >
-                            ✕
-                          </button>
-                        </div>
+                      <td className="py-2">
+                        <button
+                          onClick={() => handleRevertChange(change)}
+                          className="text-red-500 hover:text-red-700 font-bold"
+                          title="Revert this change"
+                        >
+                          <X size={16} />
+                        </button>
                       </td>
                     </tr>
                   ))}
                   {getChanges().length === 0 && (
                     <tr>
-                      <td colSpan="3" className="py-4 text-sm text-gray-500">
-                        No changes to send.
+                      <td colSpan={4} className="py-6 text-sm text-gray-500">
+                        No pending changes
                       </td>
                     </tr>
                   )}
@@ -680,7 +873,6 @@ const NIRF = ({ data }) => {
               </table>
             </div>
 
-            {/* Footer */}
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./admin-mou.css";
 import LoadComp from "../../../LoadComp";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -338,9 +338,9 @@ const MOU = ({ data }) => {
                   </button>
                   <button
                     onClick={() => setShowRequestModal(true)}
-                    className="btn-save"
+                    className="btn-save inline-flex items-center gap-2 px-4 py-2 rounded"
                   >
-                    Request
+                    <Send size={16}/>Request
                   </button>
                 </>
               ) : null}
@@ -392,7 +392,7 @@ const MOU = ({ data }) => {
                         <th className="py-1">Action</th>
                         <th className="py-1">Section</th>
                         <th className="py-1 text-center">Changes</th>
-                        <th className="py-1">Remove</th>
+                        <th className="py-1">Undo</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -415,12 +415,8 @@ const MOU = ({ data }) => {
                               {change.action === "Edited" ? (
                                 <>
                                   <div>
-                                    <strong>Before:</strong>{" "}
+                                    {" "}
                                     {change.data.before?.ORGANISATION_NAME || "-"}
-                                  </div>
-                                  <div>
-                                    <strong>After:</strong>{" "}
-                                    {change.data.after?.ORGANISATION_NAME || "-"}
                                   </div>
                                 </>
                               ) : (
@@ -433,7 +429,7 @@ const MOU = ({ data }) => {
                               onClick={() => removeChangeEntry(idx)}
                               className="text-red-500 hover:text-red-700 font-bold"
                             >
-                              ✕
+                              <X/>
                             </button>
                           </td>
                         </tr>
