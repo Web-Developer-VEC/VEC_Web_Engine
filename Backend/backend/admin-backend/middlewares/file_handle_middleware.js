@@ -29,6 +29,16 @@ async function moveFile(srcKey, destKey) {
   return `/${destKey}`; 
 }
 
+
+async function normalizeKey(key) {
+  if (!key) return key;
+  return key
+    .normalize("NFC")               // normalize unicode
+    .replace(/\u00A0/g, " ")        // replace non-breaking space with normal space
+    .trim();
+}
+
+
 /**
  * Insert: promote temp → static
  */
@@ -44,13 +54,27 @@ async function insertFile(tempDoc, tempCollection) {
   const updatedPaths = await Promise.all(
     paths.map(async (p) => {
       if (!p) return null;
+        // case 1: p is a string
+        if (typeof p === "string") {
+          const srcKey = p.replace(/^\//, "");
+          if (srcKey.startsWith("temp/static/")) {
+            const destKey = srcKey.replace(/^temp\/static\//, "static/");
+            await moveFile(srcKey, destKey);
+            return destKey;
+          }
+          return p;
+        }
 
-      const srcKey = p.replace(/^\//, "");
-      if (srcKey.startsWith("temp/static/")) {
-        const destKey = srcKey.replace(/^temp\/static\//, "static/");
-        return await moveFile(srcKey, destKey);
-      }
-      return p;
+        // case 2: p is an object with pdf_path
+        if (typeof p === "object" && p.pdf_path) {
+          let pathStr = p.pdf_path.replace(/^\//, "");
+          if (pathStr.startsWith("temp/static/")) {
+            const destKey = pathStr.replace(/^temp\/static\//, "static/");
+            await moveFile(pathStr, destKey);
+            return { ...p, pdf_path: destKey };
+          }
+          return p;
+        }
     })
   );
 
@@ -75,99 +99,150 @@ async function updateFile(tempDoc, tempCollection) {
 
   // 1️⃣ Move old files → history
   for (const key of new Set([...Object.keys(meta), ...Object.keys(original)])) {
-    const oldValue =
+    let oldValue =
       original[key] ||
       (Array.isArray(meta[key]) && meta[key].length > 0 ? meta[key] : null);
 
     if (!oldValue) continue;
 
-    const paths = Array.isArray(oldValue) ? oldValue : [oldValue];
-
-    await Promise.all(
-      paths.map(async (p) => {
-        if (!p) return null;
-
-        const srcKey = p.replace(/^\//, "");
-        if (srcKey.startsWith("static/")) {
-          const destKey = srcKey.replace(/^static\//, "history/static/");
-          await moveFile(srcKey, destKey);
-        }
-        return null;
-      })
-    );
-  }
-
-  // 2️⃣ Promote new temp files → static
-  for (const [key, value] of Object.entries(meta)) {
-    if (!value) continue;
-
-    const paths = Array.isArray(value) ? value : [value];
+    const isArray = Array.isArray(oldValue);
+    const paths = isArray ? oldValue : [oldValue];
 
     const updatedPaths = await Promise.all(
       paths.map(async (p) => {
         if (!p) return null;
 
-        const srcKey = p.replace(/^\//, "");
-        if (srcKey.startsWith("temp/static/")) {
-          const destKey = srcKey.replace(/^temp\/static\//, "static/");
-          return await moveFile(srcKey, destKey);
+        // case 1: p is a string
+        if (typeof p === "string") {
+          const srcKey = await normalizeKey(p.replace(/^\//, ""));
+          if (srcKey.startsWith("static/")) {
+            const destKey = srcKey.replace(/^static\//, "history/static/");
+            await moveFile(srcKey, destKey);
+            return destKey;
+          }
+          return p;
         }
+
+        // case 2: p is an object with pdf_path
+        if (typeof p === "object" && p.pdf_path) {
+          let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
+          if (pathStr.startsWith("static/")) {
+            const destKey = pathStr.replace(/^static\//, "history/static/");
+            await moveFile(pathStr, destKey);
+            return { ...p, pdf_path: destKey };
+          }
+          return p;
+        }
+
         return p;
       })
     );
 
-    // ✅ Save updated file paths back to meta
-    meta[key] = Array.isArray(value)
-      ? updatedPaths.filter(Boolean)
-      : updatedPaths[0];
+    const finalValue = isArray ? updatedPaths.filter(Boolean) : updatedPaths[0];
+    original[key] = finalValue; // update original_data with history paths
   }
 
+  // 2️⃣ Promote new temp files → static
+  for (const [key, value] of Object.entries(meta)) {
+    if ( key === "pdf_path" || "image_path") 
+      if (!value) break ;
+   
 
-  // 3️⃣ Save updated metadata
+    const isArray = Array.isArray(value);
+    const paths = isArray ? value : [value];
+
+    const updatedPaths = await Promise.all(
+      paths.map(async (p) => {
+        if (!p) return null;
+
+        // case 1: p is a string
+        if (typeof p === "string") {
+          const srcKey = await normalizeKey(p.replace(/^\//, ""));
+          if (srcKey.startsWith("temp/static/")) {
+            const destKey = srcKey.replace(/^temp\/static\//, "static/");
+            await moveFile(srcKey, destKey);
+            return destKey;
+          }
+          return p;
+        }
+
+        // case 2: p is an object with pdf_path
+        if (typeof p === "object" && p.pdf_path) {
+          let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
+          if (pathStr.startsWith("temp/static/")) {
+            const destKey = pathStr.replace(/^temp\/static\//, "static/");
+            await moveFile(pathStr, destKey);
+            return { ...p, pdf_path: destKey };
+          }
+          return p;
+        }
+
+        return p;
+      })
+    );
+
+    meta[key] = isArray ? updatedPaths.filter(Boolean) : updatedPaths[0];
+  }
+
+  // 3️⃣ Save updated metadata & original_data
   await tempCollection.updateOne(
     { _id: tempDoc._id },
     {
       $set: {
         meta_data: meta,
+        original_data: original,
         updatedAt: new Date(),
       },
     }
   );
 
-  return { tempId: tempDoc._id, meta_data: meta };
+  return { tempId: tempDoc._id, meta_data: meta, original_data: original };
 }
-
 
 
 async function updateOriginalData(tempDoc, tempCollection) {
   const original = { ...(tempDoc.original_data || {}) };
 
-  // 1️⃣ Move original_data files → history
+  // Move original_data files → history
   for (const [key, value] of Object.entries(original)) {
     if (!value) continue;
 
-    const paths = Array.isArray(value) ? value : [value];
+    const isArray = Array.isArray(value);
+    const paths = isArray ? value : [value];
 
     const updatedPaths = await Promise.all(
       paths.map(async (p) => {
         if (!p) return null;
 
-        const srcKey = p.replace(/^\//, "");
-        if (srcKey.startsWith("static/")) {
-          const destKey = srcKey.replace(/^static\//, "/history/static/");
-          return destKey;
+        // case 1: p is a string
+        if (typeof p === "string") {
+          const srcKey = await normalizeKey(p.replace(/^\//, ""));
+          if (srcKey.startsWith("static/")) {
+            const destKey = srcKey.replace(/^static\//, "history/static/");
+            await moveFile(srcKey, destKey);
+            return destKey;
+          }
+          return p;
         }
-        return p; // if not static, keep it unchanged
+
+        // case 2: p is an object with pdf_path
+        if (typeof p === "object" && p.pdf_path) {
+          let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
+          if (pathStr.startsWith("static/")) {
+            const destKey = pathStr.replace(/^static\//, "history/static/");
+            await moveFile(pathStr, destKey);
+            return { ...p, pdf_path: destKey };
+          }
+          return p;
+        }
+
+        return p;
       })
     );
 
-    // ✅ update original_data with history paths
-    original[key] = Array.isArray(value)
-      ? updatedPaths.filter(Boolean)
-      : updatedPaths[0];
+    original[key] = isArray ? updatedPaths.filter(Boolean) : updatedPaths[0];
   }
 
-  // 2️⃣ Save updated original_data
   await tempCollection.updateOne(
     { _id: tempDoc._id },
     {
@@ -203,17 +278,35 @@ async function deleteFile(tempDoc, tempCollection) {
     const paths = isArray ? currentValue : [currentValue];
 
     const updatedPaths = await Promise.all(
-      paths.map(async (p) => {
-        if (!p) return null;
+  paths.map(async (p) => {
+    if (!p) return null;
 
-        const srcKey = p.replace(/^\//, "");
-        if (srcKey.startsWith("static/")) {
-          const destKey = srcKey.replace(/^static\//, "history/static/");
-          return await moveFile(srcKey, destKey);
-        }
-        return p;
-      })
-    );
+    // case 1: p is a string
+    if (typeof p === "string") {
+      const srcKey =  await normalizeKey(p.replace(/^\//, ""));
+      if (srcKey.startsWith("static/")) {
+        const destKey = srcKey.replace(/^static\//, "history/static/");
+        return await moveFile(srcKey, destKey);
+      }
+      return p;
+    }
+
+    // case 2: p is an object with pdf_path
+    if (typeof p === "object" && p.pdf_path) {
+      let pathStr = p.pdf_path.replace(/^\//, "");
+       pathStr = await normalizeKey(pathStr);
+      if (pathStr.startsWith("static/")) {
+        const destKey = pathStr.replace(/^static\//, "history/static/");
+        const moved = await moveFile(pathStr, destKey);
+        return { ...p, pdf_path: moved }; // keep the object structure
+      }
+      return p;
+    }
+
+    return p; // fallback
+  })
+);
+
 
     const finalValue = isArray ? updatedPaths : updatedPaths[0];
     meta[key] = finalValue;
