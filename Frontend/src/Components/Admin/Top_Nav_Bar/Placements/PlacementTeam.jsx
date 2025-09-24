@@ -4,7 +4,7 @@ import './AdminPlacementTeam.css';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
 import { useNavigate } from "react-router";
-import { Trash2 } from 'react-feather';
+import { Trash2 } from 'lucide-react';
 import { Pencil, Send, Plus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
