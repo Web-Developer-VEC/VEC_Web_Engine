@@ -68,11 +68,11 @@ const Naac = ({ data }) => {
   }, [data]);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") {
+    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") {
       toast.warn("No PDF available for this file!");
       return;
     }
-    const url = `${UrlParser(pdf.pdfs_path)}#toolbar=0`;
+    const url = `${UrlParser(pdf.pdf_path)}#toolbar=0`;
     window.open(url, "_blank"); // always new tab
   };
 
@@ -162,7 +162,7 @@ const Naac = ({ data }) => {
     const updated = JSON.parse(JSON.stringify(editableData));
 
     if (change.action === "Added") {
-      // If Added was an item: remove the newly added item by tempId or by matching name and empty pdfs_path
+      // If Added was an item: remove the newly added item by tempId or by matching name and empty pdf_path
       if (change.tempId) {
         // search for item with _tempId
         for (let s = 0; s < updated.length; s++) {
@@ -224,7 +224,7 @@ const Naac = ({ data }) => {
       } else if (change.type === "fileReplace") {
         if (typeof change.sectionIndex === "number" && typeof change.itemIndex === "number") {
           if (updated[change.sectionIndex] && updated[change.sectionIndex].content?.[change.itemIndex]) {
-            updated[change.sectionIndex].content[change.itemIndex].pdfs_path = change.prevData?.pdfs_path ?? updated[change.sectionIndex].content[change.itemIndex].pdfs_path;
+            updated[change.sectionIndex].content[change.itemIndex].pdf_path = change.prevData?.pdf_path ?? updated[change.sectionIndex].content[change.itemIndex].pdf_path;
             if (change.prevData?.file) updated[change.sectionIndex].content[change.itemIndex].file = change.prevData.file;
             else delete updated[change.sectionIndex].content[change.itemIndex].file;
           }
@@ -331,9 +331,9 @@ const Naac = ({ data }) => {
 
     // capture prev
     const prevItem = updated[sectionIndex]?.content?.[itemIndex] || {};
-    const prevData = { pdfs_path: prevItem.pdfs_path, file: prevItem.file };
+    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
 
-    updated[sectionIndex].content[itemIndex].pdfs_path = fileURL;
+    updated[sectionIndex].content[itemIndex].pdf_path = fileURL;
     updated[sectionIndex].content[itemIndex].file = file;
     setEditableData(updated);
     setHasChanges(true);
@@ -385,7 +385,7 @@ const Naac = ({ data }) => {
 
   const handleAddItem = (sectionIndex) => {
     const updated = [...editableData];
-    const newItem = { name: "", pdfs_path: "", _tempId: uid("tmp_") };
+    const newItem = { name: "", pdf_path: "", _tempId: uid("tmp_") };
     if (!Array.isArray(updated[sectionIndex].content)) updated[sectionIndex].content = [];
     updated[sectionIndex].content.push(newItem);
     setEditableData(updated);
@@ -606,7 +606,7 @@ const Naac = ({ data }) => {
 
                                   {/* Upload / Replace Button */}
                                   <label className="bg-[#fdcc03] text-white px-3 py-1 rounded cursor-pointer">
-                                    {item?.pdfs_path ? "Replace" : "Upload"}
+                                    {item?.pdf_path ? "Replace" : "Upload"}
                                     <input
                                       type="file"
                                       accept="application/pdf"

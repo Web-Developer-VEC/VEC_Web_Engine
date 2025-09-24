@@ -15,12 +15,12 @@ function PersonDetail({ person, isEditable, onChange }) {
 
   if (!person) return null;
 
-  const hasImage = !!(person.photo_path || person.photo_file);
+  const hasImage = !!(person.image_path || person.photo_file);
 
   return (
     <div className={`person-detail left dark:bg-drkts new-card-wrap`} style={{ position: 'relative' }}>
       <div className="person-image-wrap new-image-wrap">
-        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image" />
+        <img src={UrlParser(person.image_path)} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
             <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
@@ -74,7 +74,7 @@ function PersonDetail({ person, isEditable, onChange }) {
 function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked, onCheck }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  const hasImage = !!(person.photo_path || person.photo_file);
+  const hasImage = !!(person.image_path || person.photo_file);
 
   return (
     <div
@@ -92,7 +92,7 @@ function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked
       )}
 
       <div className="new-image-wrap">
-        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image-mem" />
+        <img src={UrlParser(person.image_path)} alt={person?.name} className="person-image-mem" />
         {isEditable && (
           <div className="new-upload-below">
             <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
@@ -238,7 +238,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       if (field === 'photo_file') {
         copy[idx].photo_file = value;
         try {
-          copy[idx].photo_path = URL.createObjectURL(value);
+          copy[idx].image_path = URL.createObjectURL(value);
         } catch (e) {
           console.warn('object url failed', e);
         }
@@ -299,7 +299,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   const handleAddNewMember = () => {
     setDraftTeam(prev => [
       ...prev,
-      { name: "", designation: "", photo_path: "", content: "" }
+      { name: "", designation: "", image_path: "", content: "" }
     ]);
   };
 
@@ -398,7 +398,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
             <>
               {/* Main person */}
               <PersonDetail
-                person={draftTeam[0] || { name: "", designation: "", content: "", photo_path: "" }}
+                person={draftTeam[0] || { name: "", designation: "", content: "", image_path: "" }}
                 isEditable={editMode}
                 onChange={(field, value) => handleFieldChange(0, field, value)}
               />
