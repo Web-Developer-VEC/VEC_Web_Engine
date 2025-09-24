@@ -61,7 +61,7 @@
     "title": "update",
     "category": "2022-2023",
     "meta_data": {
-      "name": "Certificate 2",
+      "name": "Certificate",
       "pdf_path": ""
     },
     "original_data": {
@@ -103,8 +103,8 @@
             "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
           },
           {
-            "name": "Teaching Staff Details",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
           }
         ]
       }

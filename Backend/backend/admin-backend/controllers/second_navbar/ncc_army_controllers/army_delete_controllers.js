@@ -1,9 +1,8 @@
-async function deleteData( tempDoc, mainCollection) {
+async function deleteData(tempDoc, mainCollection) {
   try {
     const { collection_type, category, meta_data } = tempDoc;
 
-    if (!collection_type)
-      throw new Error("collection_type is required");
+    if (!collection_type) throw new Error("collection_type is required");
 
     const singleDocTypes = ["about"];
     const multiDocTypes = [];
@@ -30,7 +29,6 @@ async function deleteData( tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
       return {
-       
         message: `Deleted one document from ${collection_type}`,
         deleted: meta_data,
       };
@@ -38,13 +36,11 @@ async function deleteData( tempDoc, mainCollection) {
 
     // 3️⃣ Category-based
     if (categoryBasedTypes.includes(collection_type)) {
-      if (!category)
-        throw new Error("category is required");
+      if (!category) throw new Error("category is required");
 
       const doc = await mainCollection.findOne({ type: collection_type });
       const categoryExists = doc?.data?.find((c) => c.category === category);
-      if (!categoryExists)
-        throw new Error(`Category ${category} not found`);
+      if (!categoryExists) throw new Error(`Category ${category} not found`);
 
       const content = categoryExists.members;
 
@@ -55,7 +51,7 @@ async function deleteData( tempDoc, mainCollection) {
           { $pull: { data: { category } } }
         );
 
-        return{message:"The entire category is deleted"}
+        return { message: "The entire category is deleted" };
       }
       //   else if (Array.isArray(content) && typeof content[0] === "string") {
       //     // Delete string items
@@ -67,31 +63,18 @@ async function deleteData( tempDoc, mainCollection) {
       //       { $pull: { "data.$.content": { $in: itemsToDelete } } }
       //     );
       //   }
-      else if (Array.isArray(content) && typeof content[0] === "object") {
-        // Delete object(s) by name (or other unique key)
-        const itemsToDelete = Array.isArray(meta_data.content)
-          ? meta_data.content
-          : [meta_data];
+      else {
 
-        const titlesToDelete = itemsToDelete.map((item) => item.name);
-
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $pull: { "data.$.members": { name: { $in: titlesToDelete } } } }
-        );
-      } else {
-        // Fallback: clear content
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $set: { "data.$.members": [] } }
-        );
+       await mainCollection.updateOne(
+      { type: collection_type, "data.category": category },
+      { $pull: { "data.$.members": { name: meta_data.name } } }
+    );
+        return {
+         
+          message: `Delete successful for ${collection_type} - category ${category}`,
+          data: meta_data,
+        };
       }
-
-      return {
-       
-        message: `Delete successful for ${collection_type} - category ${category}`,
-        data: meta_data,
-      };
     }
 
     throw new Error("Invalid delete request");

@@ -20,7 +20,7 @@ try{
 
         await mainCollection.updateOne(
             {type:"about_vec"},
-            {$push:{"data.$.about_us_pdf":meta_data}}
+            {$push:{"data.about_us_pdf":meta_data}}
         );
 
         return{message:"The data is inserted into about_vec pdf links"}

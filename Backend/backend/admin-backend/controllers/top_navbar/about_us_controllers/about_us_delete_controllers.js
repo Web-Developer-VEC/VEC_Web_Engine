@@ -32,6 +32,8 @@ async function deleteData(tempDoc, mainCollection) {
       }
 
       const existingCategory = doc.data.find((c) => c.category === category);
+      console.log("Ext",existingCategory);
+      
       if (!existingCategory) {
         throw new Error(`Category ${category} not found`);
       }
@@ -48,12 +50,10 @@ async function deleteData(tempDoc, mainCollection) {
         };
 
 
-      }
-      else if (
-        typeof meta_data === "object" &&
-        Object.keys(meta_data).length > 0
-      ) {
+      } else {
         const isEqual = (obj1, obj2) => {
+          console.log("Ajith",obj1,obj2);
+          
           return (
             Object.keys(obj1).length === Object.keys(obj2).length &&
             Object.keys(obj1).every((key) => obj2[key] === obj1[key])
