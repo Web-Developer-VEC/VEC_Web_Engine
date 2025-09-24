@@ -139,6 +139,9 @@ export default function IqaQar({ iqacData }) {
     toast.info("Change removed from request list.");
   };
 
+  console.log(changesLog);
+  
+
   return (
     <>
       {!iqacData ? (

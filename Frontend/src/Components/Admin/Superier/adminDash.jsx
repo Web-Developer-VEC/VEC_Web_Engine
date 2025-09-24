@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
-import { Trash2, Plus, Check, X, Clock, TrendingUp, Users, FileText, Activity } from "lucide-react"
+import { Trash2, Plus, Check, X, Clock, TrendingUp, Users, FileText, Activity, Power } from "lucide-react"
 import PastRequestsPage from "./pastReq"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { LogOut } from "react-feather"
 
 export default function AdminDashboard() {
   const [currentView, setCurrentView] = useState("dashboard")
@@ -101,7 +102,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 py-3 rounded-xl border border-white/20 transition-all duration-300 hover:scale-105" onClick={handleLogout}>
-                Logout
+                Logout <Power />
               </button>
             </div>
           </div>
@@ -192,23 +193,23 @@ export default function AdminDashboard() {
                       onClick={() => handleRequestClick(request)}
                     >
                       <div className="flex items-center gap-4">
-                        {/* <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 flex -space-x-3">
                           {request.action.includes("insert") && (
-                            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <div className="w-8 h-8 bg-green-500 rounded-xl flex items-center justify-center shadow-lg animate-float">
                               <Plus className="w-6 h-6 text-white" />
                             </div>
                           )}
                           {request.action.includes("update") && (
-                            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <div className="w-8 h-8 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg animate-bounceX">
                               <Check className="w-6 h-6 text-white" />
                             </div>
                           )}
                           {request.action.includes("delete") && (
-                            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <div className="w-8 h-8 bg-red-500 rounded-xl flex items-center justify-center shadow-lg animate-float">
                               <Trash2 className="w-6 h-6 text-white" />
                             </div>
                           )}
-                        </div> */}
+                        </div>
                         <div>
                           <h4 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
                             {request.collection}
@@ -267,11 +268,11 @@ export default function AdminDashboard() {
                     >
                       <div className="flex-shrink-0">
                         {decision.status === "approved" ? (
-                          <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                             <Check className="w-6 h-6 text-white" />
                           </div>
                         ) : (
-                          <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
+                          <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
                             <X className="w-6 h-6 text-white" />
                           </div>
                         )}

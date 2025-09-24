@@ -14,6 +14,7 @@ import IqaPra from "./bestpractice";
 import IqaQar from "./agar";
 import IqaMem from "./member";
 import IqaGal from "./gallery";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -115,7 +116,7 @@ const AdminIQAC = ({ toggle , theme }) => {
             </>
         );
     };
-
+    
     // Render Coordinator content
     function IqaCor() {
         const [isEditing, setIsEditing] = useState(false);
@@ -124,6 +125,7 @@ const AdminIQAC = ({ toggle , theme }) => {
         const [uploadedFile, setUploadedFile] = useState(null);
         const [showRequestModal, setShowRequestModal] = useState(false);
         const [changes, setChanges] = useState({}); // Track field changes
+        const { sendRequest, loading, error } = useAdminRequest();
 
         if (!iqacData) {
             return (
@@ -190,10 +192,42 @@ const AdminIQAC = ({ toggle , theme }) => {
             }
         };
 
-        const handleRequestConfirm = () => {
-            console.log("Final request submitted:", { savedData, uploadedFile });
-            toast.success("Request submitted successfully!");
-            setShowRequestModal(false);
+
+        const handleRequestConfirm = async () => {
+            if (Object.keys(changes).length === 0) return;
+
+            // old data from DB
+            const originalData = iqacData;
+
+            // new data from edits
+            const metaData = {
+                ...savedData,
+                image_path: uploadedFile
+                ? `/static/images/profile_photos/${uploadedFile.file.name}` 
+                : savedData.image_path,
+            };
+
+            // payload in the required format
+            const payload = [
+                {
+                    collectionName: "iqac",
+                    collection_type: "coordinator",
+                    action: "update",
+                    title: "Updation of iqac coordinator Details",
+                    category: "IQAC",
+                    meta_data: metaData,
+                    original_data: originalData,
+                },
+            ];            
+
+            const result = await sendRequest(payload, uploadedFile?.file);
+
+            if (result) {
+                setShowRequestModal(false);
+                setUploadedFile(null);
+                setChanges({});
+                setIsEditing(false);
+            }
         };
 
         return (
@@ -217,15 +251,6 @@ const AdminIQAC = ({ toggle , theme }) => {
                     <div className="admin-coordinator-image-container">
                         {isEditing ? (
                             <>
-                                <label className="block w-fit cursor-pointer bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt">
-                                    Upload Image
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={handleFileUpload}
-                                        className="hidden"
-                                    />
-                                </label>
                                 {uploadedFile ? (
                                     <img src={uploadedFile.fileURL} alt="preview" className="coordinator-image mt-2" />
                                 ) : (
@@ -235,6 +260,15 @@ const AdminIQAC = ({ toggle , theme }) => {
                                         className="coordinator-image mt-2"
                                     />
                                 )}
+                                <label className="block w-fit cursor-pointer bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt m-auto">
+                                    Upload Image
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleFileUpload}
+                                        className="hidden"
+                                    />
+                                </label>
                             </>
                         ) : (
                             <img
@@ -351,16 +385,16 @@ const AdminIQAC = ({ toggle , theme }) => {
                             <div className="flex justify-end gap-2">
                                 <button
                                     onClick={() => setShowRequestModal(false)}
-                                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleRequestConfirm}
-                                    className="px-4 py-2 rounded bg-secd hover:bg-[#800000] text-text hover:text-drkt"
-                                    disabled={Object.keys(changes).length === 0}
+                                    className={`px-4 py-2 rounded bg-secd hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                                    disabled={Object.keys(changes).length === 0 || loading}
                                 >
-                                    Final Request
+                                    {loading ? "Processing..." : "Final Request"}
                                 </button>
                             </div>
                         </div>
@@ -375,6 +409,7 @@ const AdminIQAC = ({ toggle , theme }) => {
         const [uploadedFile, setUploadedFile] = useState(null);
         const [showRequestModal, setShowRequestModal] = useState(false);
         const [isEditing, setIsEditing] = useState(false);
+        const { sendRequest, loading, error } = useAdminRequest();
 
         const handleFileUpload = (e) => {
             const file = e.target.files[0];
@@ -384,14 +419,45 @@ const AdminIQAC = ({ toggle , theme }) => {
             }
         };
 
-        const handleRequestConfirm = () => {
-            // later you can merge API request here
-            console.log("Request confirmed for:", uploadedFile);
-            toast.success("Request submitted successfully!");
-            setShowRequestModal(false);
-        };
+        const typeMap = {
+            "Code of Ethics": "code_of_ethics",
+            "Strategic Development Plan": "strategic_plan",
+            "Institutional Distinctiveness": "institutional_distinctiveness",
+            "ISO Certificate": "iso_certificate"
+        }
 
-        const oldpath = Array.isArray(iqacData) && iqacData[0]?.paths?.split('/');
+        const handleRequestConfirm = async () => {
+            if (!uploadedFile) return;
+
+            // const oldPath = iqacData?.[0]?.paths;
+            const oldPath = Array.isArray(iqacData) && iqacData[0]?.paths;
+            const newPath = `/static/pdfs/iqac/${uploadedFile.file.name}`;
+
+            const payload = [
+            {
+                collectionName: "iqac",
+                collection_type: typeMap[title], 
+                action: "update",
+                title: `updation of pdf in ${typeMap[title]}`,
+                meta_data: {
+                    path: newPath,
+                },
+                original_data: {
+                    path: oldPath,
+                },
+            }];
+
+            console.log(payload);
+            
+
+            const result = await sendRequest(payload, uploadedFile.file);
+
+            if (result) {
+                setShowRequestModal(false);
+                setUploadedFile(null);
+                setIsEditing(false);
+            }
+        };
         
         return (
             <>
@@ -439,7 +505,7 @@ const AdminIQAC = ({ toggle , theme }) => {
                                     onClick={() => setShowRequestModal(true)}
                                     className="bg-yellow-400 text-brown px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-white"
                                 >
-                                    Request
+                                    <Send/> Request
                                 </button>
                                 </>
                             )}
@@ -479,13 +545,25 @@ const AdminIQAC = ({ toggle , theme }) => {
                                         <th className="py-1">Action</th>
                                         <th className="py-1">Section</th>
                                         <th className="py-1 text-center">Changes</th>
+                                        <th className="py-1 text-center">Undo</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td className="py-1 text-blue-600">✎ Edited</td>
                                         <td className="py-1">IQAC {title}</td>
-                                        <td className="py-1 text-[12px] flex flex-col items-center">{oldpath[4]} <ArrowDown/> <a href={uploadedFile?.fileURL} className="cursor-pointer" target="_blank">{uploadedFile?.file.name}</a></td>
+                                        <td className="py-1 text-[12px] flex flex-col items-center">{uploadedFile?.file.name}</td>
+                                        <td className="py-1">
+                                            <button
+                                                onClick={() => {
+                                                setUploadedFile(null); // reset uploaded file
+                                                setShowRequestModal(false);
+                                                }}
+                                                className="text-red-500 hover:text-red-700"
+                                            >
+                                                <X />
+                                            </button>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -495,15 +573,17 @@ const AdminIQAC = ({ toggle , theme }) => {
                                 <div className="flex justify-end gap-2">
                                 <button
                                     onClick={() => setShowRequestModal(false)}
-                                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                                    disabled={loading}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleRequestConfirm}
-                                    className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                                    className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                                    disabled={loading}
                                 >
-                                    Final Request
+                                    {loading ? "Processing..." : "Final Request"}
                                 </button>
                                 </div>
                             </div>

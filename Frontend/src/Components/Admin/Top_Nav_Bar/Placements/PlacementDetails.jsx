@@ -986,6 +986,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                           <th className="py-1">Action</th>
                           <th className="py-1">Section</th>
                           <th className="py-1 text-center">Changes</th>
+                          <th className="py-1 mr-2">Undo</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -996,9 +997,10 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                             <td className="py-1 text-[12px]">
                               <div className="flex items-center justify-center gap-2">
                                 <span>{change.changeText}</span>
-                                <button onClick={() => handleRevertChange(change)} className="text-red-500 hover:text-red-700 font-bold">✕</button>
+                               
                               </div>
                             </td>
+                            <td> <button onClick={() => handleRevertChange(change)} className="text-red-500 hover:text-red-700 font-bold">✕</button></td>
                           </tr>
                         ))}
                         {getChanges().length === 0 && (<tr><td colSpan={3} className="py-3">No changes found</td></tr>)}
@@ -1023,10 +1025,10 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                   <p className="text-sm mb-4 text-center">
                     {(() => {
                       const a = deleteConfirm.action;
-                      if (a === 'deleteYears') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} year(s)? (tables will remain unchanged)`;
-                      if (a === 'deleteColumns') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} column(s) from ${deleteConfirm.section}?`;
-                      if (a === 'deleteRows') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} row(s) from ${deleteConfirm.section}?`;
-                      if (a === 'deleteSingleRow') return `Are you sure you want to delete this row from ${deleteConfirm.section}?`;
+                      if (a === 'deleteYears') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} year`;
+                      if (a === 'deleteColumns') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} column`;
+                      if (a === 'deleteRows') return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} row`;
+                      if (a === 'deleteSingleRow') return `Are you sure you want to delete this row`;
                       return 'Are you sure you want to delete?';
                     })()}
                   </p>

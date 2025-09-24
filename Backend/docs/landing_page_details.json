@@ -475,6 +475,50 @@
         "link": "",
         "status": "True"
 
+      },
+      {
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Building Management System(BMS), Direct Digital Control (DDC), Electrical Connections and Safety in RAC Systems ",
+        "department": "Mechanical Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/BMS.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Non-Traditional Machining - Unlocking the Next Frontier in Engineering: Insights, Challenges and Opportunities from a Supply Chain Perspective",
+        "department": "Mechanical Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/NON-TRADITIONAL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Emerging Trends: Explainable AI, Edge AI, and Multimodal Systems",
+        "department": "Computer Science Engineering",
+        "content": "",
+        "brochure_path": "/static/images/events/MULTIMODAL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"23 Sep",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Mathletics",
+        "department": "Mathematics",
+        "content": "",
+        "brochure_path": "/static/images/events/MATHLETICS.webp",
+        "website_link": "",
+        "status": "True"
       }
     ]
   }

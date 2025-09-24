@@ -632,26 +632,19 @@
         "content":
             [
                 {             
-                    
                     "ORGANISATION_NAME": "ETA Geospatial Solutions",
                     "MONTH_AND_YEAR": "18-12-2024 to 17-12-2029",
                     "VALIDITY": "5 years"
                 },
                 {
-                    "S_NO": 2,
                     "ORGANISATION_NAME": "GBL Ganesan Builders PVT.Limited",
                     "MONTH_AND_YEAR": "05-04-2023 to 04-04-2026",
-                    "VALIDITY": "3 years",
-                    "LOGO_PATH": "/static/images/mous/004/gbl_ganesan_builders_pvt_limited.jpg",
-                    "ACTIVITIES_PLANNED": []
+                    "VALIDITY": "3 years"
                 },
                 {
-                    "S_NO": 3,
                     "ORGANISATION_NAME": "CMTI Construction Management Training Institute",
                     "MONTH_AND_YEAR": "15-04-2021 to 14-04-2026",
-                    "VALIDITY": "5 years",
-                    "LOGO_PATH": "/static/images/mous/004/cmti_construvtion_management_training_institute.jpg",
-                    "ACTIVITIES_PLANNED": []
+                    "VALIDITY": "5 years"
                 }
 
             ]
