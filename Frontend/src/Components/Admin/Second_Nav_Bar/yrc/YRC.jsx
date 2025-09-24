@@ -16,14 +16,8 @@ import YRCCoord from "../yrc/YRCCoord";
 import Awardsnss from "../yrc/Awardsnss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast, ToastContainer } from "react-toastify";
-import {
-  faEdit,
-  faTimes,
-  faPaperPlane,
-  faEye,
-  faUndo,
-} from "@fortawesome/free-solid-svg-icons";
 import useBlockNavigation from "../useBlockNavigation";
+import { Pencil, X, Trash2, Send, Plus } from "lucide-react";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -31,14 +25,224 @@ const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
+// ---------------- YRCAbout Component with Edit Functionality ----------------
+function YRCAbout({ data, isEditing, onUpdate, onStartEdit }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleAboutChange = (value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]) {
+      updatedData[0].about_us = value;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  return (
+    <>
+      {!isEditing && (
+        <div className="flex justify-end px-6 py-4">
+          <button
+            onClick={onStartEdit}
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+          >
+            <Pencil size={18} />
+            Edit
+          </button>
+        </div>
+      )}
+      
+      <div className="YRC-about mt-4">
+        <div className="YRC-Aboutus border-l-4 border-secd mx-auto dark:border-drks dark:bg-drkb px-6">
+          <h2 className="YRC-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+            ABOUT US
+          </h2>
+
+          {isEditing ? (
+            <textarea
+              value={localData[0]?.about_us || ""}
+              onChange={(e) => handleAboutChange(e.target.value)}
+              className="w-full p-2 border rounded min-h-[150px] mt-2"
+              placeholder="About YRC"
+            />
+          ) : (
+            <p className="YRC-content mt-2">
+              {data[0]?.about_us}
+            </p>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
 const AdminYrc = ({ toggle, theme }) => {
   const [yrcData, setYrcData] = useState(null);
+  const [committedData, setCommittedData] = useState(null);
+  const [pendingData, setPendingData] = useState(null);
   const [yrc, setYrc] = useState("About YRC");
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const navigate = useNavigate();
 
+const handleDataUpdate = (newData) => {
+  setYrcData(newData);
+
+  // Check if data is actually changed from original committedData
+  const originalText = committedData?.[0]?.about_us || "";
+  const currentText = newData?.[0]?.about_us || "";
+
+  setIsDirty(currentText.trim() !== originalText.trim());
+};
+
+
+  const handleStartEdit = () => {
+    if (pendingData) {
+      setYrcData(JSON.parse(JSON.stringify(pendingData)));
+    } else {
+      setYrcData(JSON.parse(JSON.stringify(committedData)));
+    }
+    setIsEditing(true);
+    setIsDirty(false);
+    setIsSaved(!!pendingData);
+  };
+
+  const handleCancel = () => {
+    if (pendingData) {
+      setYrcData(JSON.parse(JSON.stringify(pendingData)));
+    } else {
+      setYrcData(JSON.parse(JSON.stringify(committedData)));
+    }
+    setIsEditing(false);
+    setIsDirty(false);
+    setIsSaved(!!pendingData);
+  };
+
+  const handleSave = () => {
+    if (!yrcData || !yrcData[0] || !yrcData[0].about_us?.trim()) {
+      // alert("Please fill all fields before saving!");
+      toast.warning("Please fill all fields before saving!");
+      return;
+    }
+
+    const pending = JSON.parse(JSON.stringify(yrcData));
+    setPendingData(pending);
+    setIsSaved(true);
+    setIsEditing(false);
+    setIsDirty(false);
+  };
+
+  const handleDiscard = () => {
+    setYrcData(JSON.parse(JSON.stringify(committedData)));
+    setPendingData(null);
+    setIsSaved(false);
+    setIsDirty(false);
+  };
+
+  const handleRequest = () => {
+    setShowRequestModal(true);
+  };
+
+  const handleFinalRequestConfirm = () => {
+    if (!pendingData) return;
+
+    setCommittedData(JSON.parse(JSON.stringify(pendingData)));
+    setYrcData(JSON.parse(JSON.stringify(pendingData)));
+    setPendingData(null);
+    setIsSaved(false);
+    setShowRequestModal(false);
+  };
+
+  const revertChange = (field) => {
+    if (!pendingData || !committedData) return;
+
+    const updated = JSON.parse(JSON.stringify(pendingData));
+    updated[0][field] = committedData[0][field];
+
+    setPendingData(updated);
+    setYrcData(JSON.parse(JSON.stringify(updated)));
+  };
+
+  const getChanges = () => {
+    if (!pendingData || !committedData) return [];
+    const changes = [];
+
+    const fields = ["about_us"];
+
+    fields.forEach((field) => {
+      const oldVal = committedData[0][field] || "";
+      const newVal = pendingData[0][field] || "";
+
+      if (oldVal !== newVal) {
+        changes.push({
+          field: field,
+          section: "About Us",
+          oldValue: oldVal,
+          newValue: newVal,
+        });
+      }
+    });
+
+    return changes;
+  };
+
+  const changes = getChanges();
+
   const navData = {
-    "About YRC": <YRCAbout data={yrcData} />,
+    "About YRC": (
+      <>
+        <YRCAbout
+          data={yrcData}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+          onStartEdit={handleStartEdit}
+        />
+        
+        {/* Buttons for Save/Cancel/Request */}
+        {isEditing && (
+          <div className="flex justify-end gap-3 px-6 py-4">
+            <button
+              onClick={handleCancel}
+              className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+            >
+              Cancel
+            </button>
+            {isDirty && (
+              <button
+                onClick={handleSave}
+                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+              >
+                Save
+              </button>
+            )}
+          </div>
+        )}
+
+        {isSaved && !isEditing && (
+          <div className="flex justify-end gap-3 px-6 py-4">
+            <button
+              onClick={handleDiscard}
+              className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={handleRequest}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            >
+              <Send size={18} /> Request
+            </button>
+          </div>
+        )}
+      </>
+    ),
     "News & Updates": <NotificationBox1 data={yrcData} />,
     "Recent Events": <CarouselYRC data={yrcData} />,
     "Team & Coordinators": <YRCCoord data={yrcData} />,
@@ -59,7 +263,13 @@ const AdminYrc = ({ toggle, theme }) => {
         const response = await axios.post("/api/main-backend/yrc", {
           type: typeMatch[yrc],
         });
-        setYrcData(response.data.data);
+        const data = response.data.data;
+        setYrcData(data);
+        setCommittedData(JSON.parse(JSON.stringify(data)));
+        setPendingData(null);
+        setIsEditing(false);
+        setIsDirty(false);
+        setIsSaved(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
         if (error.response?.data?.status === 429) {
@@ -70,6 +280,19 @@ const AdminYrc = ({ toggle, theme }) => {
 
     fetchData();
   }, [yrc, navigate]);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
   if (!isOnline) {
     return (
@@ -88,261 +311,76 @@ const AdminYrc = ({ toggle, theme }) => {
         toggle={toggle}
         theme={theme}
       />
-
+<ToastContainer position="bottom-right" autoClose={2000} />
       {yrcData ? (
-        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
+        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} backButton={true} />
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />
         </div>
       )}
-    </div>
-  );
-};
 
-// ---------------- YRCAbout Component ----------------
-function YRCAbout({ data }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [isPreviewing, setIsPreviewing] = useState(false);
-  const [aboutText, setAboutText] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
-  const [changes, setChanges] = useState([]);
-const [originalAbout, setOriginalAbout] = useState("");
-useBlockNavigation(isEditing);
-useEffect(() => {
-  if (data && data[0]?.about_us) {
-    setAboutText(data[0].about_us);
-    setOriginalAbout(data[0].about_us);
-  }
-}, [data]);
+      {/* Final Request Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Request</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
-  // useEffect(() => {
-  //   if (data && data[0]?.about_us) {
-  //     setAboutText(data[0].about_us);
-  //   }
-  // }, [data]);
-
-  const handleEdit = () => setIsEditing(true);
-
-const handleCancel = () => {
-  // Restore original text
-  setAboutText(originalAbout);
-
-  // Clear changes
-  setChanges([]);
-
-  // Exit edit/preview modes
-  setIsEditing(false);
-  setIsPreviewing(false);
-
-  // Show toast
-  toast.info("Changes discarded");
-};
-
-
-  const handlePreviewClick = () => {
-    setIsPreviewing(true);
-    setChanges([
-      {
-        action: "edit",
-        target: "About YRC",
-        details: aboutText,
-      },
-    ]);
-  };
-const hasChanges = changes.length > 0;
-const validateaboutData = () => {
-    return aboutText.trim() !== "";
-  }
-
-
-  const handleBackToEdit = () => setIsPreviewing(false);
-
-  const handleRequest = () => {
-    setShowPopup(true);
-  };
-
-
-
-  const handleFinalRequest = () => {
-    console.log("Submitting request:", changes);
-    toast.success("Request submitted Successfully");
-    setShowPopup(false);
-    setIsEditing(false);
-    setIsPreviewing(false);
-  };
-const handleUndo = (index) => {
-  const undoneChange = changes[index];
-
-  // If undoing about_us, restore original
-  if (undoneChange?.target === "About YRC" || undoneChange?.target === "about_us") {
-    setAboutText(originalAbout);
-  }
-
-  const updatedChanges = [...changes];
-  updatedChanges.splice(index, 1);
-  setChanges(updatedChanges);
-};
-
-
-  return (
-    <div className="YRC-about mt-4">
-      <ToastContainer position="bottom-right" autoClose={3000} />
-      {/* Top Right Buttons */}
-      {!isPreviewing && (
-        <div className="flex justify-end gap-3 mt-4 p-3">
-          {!isEditing ? (
-            <button className="nss-btn nss-btn-edit" onClick={handleEdit}>
-              <FontAwesomeIcon icon={faEdit} /> Edit
-            </button>
-          ) : (
-            <button className="nss-btn nss-btn-cancel" onClick={handleCancel}>
-              <FontAwesomeIcon icon={faTimes} /> Cancel
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* Main Content */}
-      {isPreviewing ? (
-        <div className="YRC-Aboutus border-l-4 border-secd mx-auto dark:border-drks dark:bg-drkb p-6">
-          <h2 className="YRC-heading text-brwn dark:text-drkt text-2xl font-bold mb-4">
-            ABOUT US
-          </h2>
-          <p className="YRC-content text-gray-700 dark:text-gray-300">
-            {aboutText}
-          </p>
-        </div>
-      ) : isEditing ? (
-<textarea
-  value={aboutText}
-  onChange={(e) => {
-    const newVal = e.target.value;
-    setAboutText(newVal);
-
-    if (newVal !== originalAbout) {
-      setChanges([{ action: "edit", target: "about_us", details: newVal }]);
-    } else {
-      setChanges([]); // reset if back to original
-    }
-  }}
-  className="w-full p-3 border rounded min-h-[200px] text-gray-700"
-/>
-
-
-      ) : (
-        <div className="YRC-Aboutus border-l-4 border-secd mx-auto dark:border-drks dark:bg-drkb p-6">
-          <h2 className="YRC-heading text-brwn dark:text-drkt text-2xl font-bold mb-4">
-            ABOUT US
-          </h2>
-          <p className="YRC-content text-gray-700 dark:text-gray-300">
-            {aboutText}
-          </p>
-        </div>
-      )}
-
-      {/* Preview Mode Buttons */}
-      {isEditing && !isPreviewing && (
-        <div className="flex justify-end gap-3 mt-4 p-3 bottom-4 right-4 flex gap-2">
-
-
-          <button
-            className={`nss-btn nss-btn-request ${!hasChanges ? "opacity-50 cursor-not-allowed" : ""}`}
-             onClick={() => {
-                if (validateaboutData()) {
-                  handlePreviewClick();
-                } else {
-                  toast.error("Please fill all required fields before previewing.");
-                }
-              }}
-            disabled={!hasChanges}
-          >
-           
-            <FontAwesomeIcon icon={faEye} /> Preview
-          </button>
-
-        </div>
-      )}
-
-      {isPreviewing && (
-        <div className="flex justify-end gap-3 mt-4 p-2">
-          <button
-            className="nss-btn nss-btn-back flex items-center gap-2 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-            onClick={handleBackToEdit}
-          >
-            <FontAwesomeIcon icon={faTimes} /> Back to Edit
-          </button>
-          <button
-            className="nss-btn nss-btn-request flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            onClick={handleRequest}
-          >
-            <FontAwesomeIcon icon={faPaperPlane} /> Request Changes
-          </button>
-        </div>
-      )}
-
-      {/* Popup for Review */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-auto">
-            <h3 className="text-xl font-bold mb-4">Review Changes</h3>
-            <div className="max-h-64 overflow-auto mb-4">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left border-b">
-                    <th className="pb-2">Action</th>
-                    <th className="pb-2">Target</th>
-                    {/* <th className="pb-2">Details</th> */}
-                    <th className="pb-2">Undo</th>
+            {changes.length > 0 ? (
+              <table className="w-full border border-gray-300 text-sm text-center">
+                <thead className="bg-gray-200">
+                  <tr>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {changes.map((change, index) => (
-                    <tr key={index} className="border-b">
-                      <td className="py-2 capitalize">{change.action}</td>
-                      <td className="py-2 capitalize">{change.target}</td>
-                      {/* <td className="py-2">{change.details || "-"}</td> */}
-                      <td className="py-2">
+                  {changes.map((change, i) => (
+                    <tr key={i}>
+                      <td className="border p-2 text-blue-600">Edited</td>
+                      <td className="border p-2">{change.section}</td>
+                      <td className="border p-2">
                         <button
-                          onClick={() => handleUndo(index)}
-                          className="text-red-500 hover:text-red-700 px-2 py-1 bg-red-100 rounded"
+                          onClick={() => revertChange(change.field)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title="Revert this field"
                         >
-                          <FontAwesomeIcon icon={faUndo} /> Undo
+                          <X size={16} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-              These changes will be submitted for review before being published.
-            </p>
-            <div className="flex justify-end gap-3">
+            ) : (
+              <p className="text-gray-600">No changes detected.</p>
+            )}
+
+            <div className="flex justify-end gap-2 mt-6">
               <button
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-                onClick={() => setShowPopup(false)}
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim"
               >
                 Cancel
               </button>
-              <button
-  className={`px-4 py-2 rounded flex items-center gap-2 ${
-    changes.length === 0
-      ? "bg-gray-300 cursor-not-allowed"
-      : "bg-green-500 text-white hover:bg-green-600"
-  }`}
-  onClick={handleFinalRequest}
-  disabled={changes.length === 0}
->
-  <FontAwesomeIcon icon={faPaperPlane} /> Submit Request
-</button>
-
+              {changes.length > 0 && (
+                <button
+                  onClick={handleFinalRequestConfirm}
+                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                >
+                  Confirm Request
+                </button>
+              )}
             </div>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default AdminYrc;
