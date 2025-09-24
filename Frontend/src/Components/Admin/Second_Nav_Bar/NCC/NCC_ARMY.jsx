@@ -9,291 +9,685 @@ import LoadComp from "../../LoadComp";
 import logo from '../../../Assets/NccArmy.png';
 import Banner from "../../Banner";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEdit,
-  faTimes,
-  faPaperPlane,
-  faPlusCircle,
-  faTrash,
-  faUndo,
-  faEye
-} from "@fortawesome/free-solid-svg-icons";
+import { Pencil, X, Trash2, Send, Plus } from "lucide-react";
 import AutoResizeTextarea from "../AutoResizeTextarea";
-import { Trash2, PlusCircle, SquarePen } from "lucide-react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import useBlockNavigation from "../useBlockNavigation";
 
-/* ------------ Editable List Component ------------ */
-function EditableList({ title, data, field, isEditing, onChange, onAdd, onDelete }) {
+// NCCAbout Component with Edit Functionality
+function NCCAbout({ data, isEditing, onUpdate, onStartEdit }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleChange = (index, value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.about_us) {
+      const newAboutUs = [...updatedData[0].about_us];
+      newAboutUs[index] = value;
+      updatedData[0].about_us = newAboutUs;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleAddPoint = () => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.about_us) {
+      updatedData[0].about_us = [...updatedData[0].about_us, ""];
+    } else if (updatedData[0]) {
+      updatedData[0].about_us = [""];
+    }
+    setLocalData(updatedData);
+    onUpdate(updatedData);
+  };
+
+  const handleRemovePoint = (index) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.about_us) {
+      updatedData[0].about_us = updatedData[0].about_us.filter((_, i) => i !== index);
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
   return (
-    <section className="NCC_ARMY-section bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6 mt-4">
-      <h2 className="NCC_ARMY-section-title text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
-        {title}
-      </h2>
-      <ul className="Ncc_Army-list text-justify marker:text-accn dark:marker:text-drka">
-        {data?.map((item, i) => (
-          <React.Fragment key={i}>
-            {item?.[field]?.map((content, j) => (
-              <li key={j} className="flex items-start gap-2">
-                {isEditing ? (
-                  <>
-                    <AutoResizeTextarea
-                      value={content}
-                      onChange={(e) => onChange(field, i, j, e.target.value)}
-                      className="w-full border p-2 rounded"
-                    />
-                    <button onClick={() => onDelete(field, i, j)} className="text-red-500">
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </>
-                ) : (
-                  <li>{content}</li>
-                )}
-              </li>
-            ))}
-          </React.Fragment>
-        ))}
-      </ul>
-      {isEditing && (
-        <button
-          onClick={() => onAdd(field)}
-          className="mt-2 text-green-600 flex items-center gap-1"
-        >
-          <FontAwesomeIcon icon={faPlusCircle} /> Add New
-        </button>
+    <>
+      {!isEditing && (
+        <div className="flex justify-end px-6 py-4">
+          <button
+            onClick={onStartEdit}
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+          >
+            <Pencil size={18} />
+            Edit
+          </button>
+        </div>
       )}
-    </section>
+      <section className="NCC_ARMY-section bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6 mt-4">
+        <h2 className="NCC_ARMY-section-title text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+          About NCC
+        </h2>
+        {isEditing ? (
+          <div className="py-2">
+            {localData[0]?.about_us?.map((content, i) => (
+              <div key={i} className="flex items-center gap-2 mb-2">
+                <AutoResizeTextarea
+                  type="text"
+                  value={content}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  className="w-full p-2 border rounded"
+                  placeholder="About point"
+                />
+                <button
+                  onClick={() => handleRemovePoint(i)}
+                  className="p-2 text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={handleAddPoint}
+              className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+            >
+              <Plus size={16} /> Add Point
+            </button>
+          </div>
+        ) : (
+          <ul className="Ncc_Army-list text-justify marker:text-accn dark:marker:text-drka">
+            {localData[0]?.about_us?.map((content, i) => (
+              <li key={i}>{content}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </>
   );
 }
 
-/* ------------ NCC Motto Component ------------ */
-function NCCMotto({ data, isEditing, onChange, onAdd, onDelete }) {
+// NCCObjectives Component with Edit Functionality
+function NCCObjectives({ data, isEditing, onUpdate }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleChange = (index, value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.objectives) {
+      const newObjectives = [...updatedData[0].objectives];
+      newObjectives[index] = value;
+      updatedData[0].objectives = newObjectives;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleAddPoint = () => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.objectives) {
+      updatedData[0].objectives = [...updatedData[0].objectives, ""];
+    } else if (updatedData[0]) {
+      updatedData[0].objectives = [""];
+    }
+    setLocalData(updatedData);
+    onUpdate(updatedData);
+  };
+
+  const handleRemovePoint = (index) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.objectives) {
+      updatedData[0].objectives = updatedData[0].objectives.filter((_, i) => i !== index);
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
   return (
-    <div className="NCC_ARMY-motto-pledge-container">
-      {/* MOTTO OF NCC */}
-      <div className="NCC_ARMY-motto bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6 mb-4">
-        <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
-          MOTTO OF NCC
+    <div className="NCC_ARMY-row mt-4">
+      <section className="NCC_ARMY-section bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-3">
+        <h2 className="NCC_ARMY-section-title text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+          Objectives of NCC
         </h2>
         {isEditing ? (
-          <AutoResizeTextarea
-            value={data?.[0]?.motto || ""}
-            onChange={(e) => onChange("motto", 0, null, e.target.value)}
-            className="w-full border p-2 rounded"
-          />
-        ) : (
-          <p className="NCC_ARMY-content-1">{data?.[0]?.motto}</p>
-        )}
-      </div>
-
-      {/* CARDINALS OF NCC */}
-      <div className="NCC_ARMY-pledge bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6">
-        <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
-          CARDINALS OF NCC
-        </h2>
-        <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
-          {data?.map((item, i) =>
-            item?.cardinals?.map((content, j) => (
-              <li key={j} className="flex items-start gap-2">
-                {isEditing ? (
-                  <>
-                    <AutoResizeTextarea
-                      value={content}
-                      onChange={(e) => onChange("cardinals", i, j, e.target.value)}
-                      className="w-full border p-2 rounded"
-                    />
-                    <button
-                      onClick={() => onDelete("cardinals", i, j)}
-                      className="text-red-500"
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </>
-                ) : (
-                  <li>{content}</li>
-                )}
-              </li>
-            ))
-          )}
-          {isEditing && (
+          <div className="py-2">
+            {localData[0]?.objectives?.map((content, i) => (
+              <div key={i} className="flex items-center gap-2 mb-2">
+                <AutoResizeTextarea
+                  type="text"
+                  value={content}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  className="w-full p-2 border rounded"
+                  placeholder="Objective point"
+                />
+                <button
+                  onClick={() => handleRemovePoint(i)}
+                  className="p-2 text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
             <button
-              onClick={() => onAdd("cardinals")}
-              className="mt-2 text-green-600 flex items-center gap-1"
+              onClick={handleAddPoint}
+              className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
             >
-              <FontAwesomeIcon icon={faPlusCircle} /> Add New
+              <Plus size={16} /> Add Point
             </button>
-          )}
-        </ul>
+          </div>
+        ) : (
+          <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
+            {localData[0]?.objectives?.map((content, i) => (
+              <li key={i}>{content}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </div>
+  );
+}
+
+// NCCAim Component with Edit Functionality
+function NCCAim({ data, isEditing, onUpdate }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleChange = (index, value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.aim) {
+      const newAim = [...updatedData[0].aim];
+      newAim[index] = value;
+      updatedData[0].aim = newAim;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleAddPoint = () => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.aim) {
+      updatedData[0].aim = [...updatedData[0].aim, ""];
+    } else if (updatedData[0]) {
+      updatedData[0].aim = [""];
+    }
+    setLocalData(updatedData);
+    onUpdate(updatedData);
+  };
+
+  const handleRemovePoint = (index) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.aim) {
+      updatedData[0].aim = updatedData[0].aim.filter((_, i) => i !== index);
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  return (
+    <div className="NCC_ARMY-aim-container bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks px-6">
+      <div className="NCC_ARMY-aim">
+        <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+          <img src={logo} alt="NCC Logo" className="NCC_ARMY-icon" />
+          AIM of NCC
+        </h2>
+        {isEditing ? (
+          <div className="py-2">
+            {localData[0]?.aim?.map((content, i) => (
+              <div key={i} className="flex items-center gap-2 mb-2">
+                <AutoResizeTextarea
+                  type="text"
+                  value={content}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  className="w-full p-2 border rounded"
+                  placeholder="Aim point"
+                />
+                <button
+                  onClick={() => handleRemovePoint(i)}
+                  className="p-2 text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={handleAddPoint}
+              className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+            >
+              <Plus size={16} /> Add Point
+            </button>
+          </div>
+        ) : (
+          <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
+            {localData[0]?.aim?.map((content, i) => (
+              <li key={i}>{content}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
 }
 
-/* ------------ NCC Pledge Component ------------ */
-function NCCPledge({ data, isEditing, onChange, onAdd, onDelete }) {
+// NCCMotto Component with Edit Functionality
+function NCCMotto({ data, isEditing, isDirty, isSaved, onUpdate, onCancel, onSave, onDiscard, onRequest }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleMottoChange = (value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]) {
+      updatedData[0].motto = value;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleCardinalChange = (index, value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.cardinals) {
+      const newCardinals = [...updatedData[0].cardinals];
+      newCardinals[index] = value;
+      updatedData[0].cardinals = newCardinals;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleAddCardinal = () => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.cardinals) {
+      updatedData[0].cardinals = [...updatedData[0].cardinals, ""];
+    } else if (updatedData[0]) {
+      updatedData[0].cardinals = [""];
+    }
+    setLocalData(updatedData);
+    onUpdate(updatedData);
+  };
+
+  const handleRemoveCardinal = (index) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.cardinals) {
+      updatedData[0].cardinals = updatedData[0].cardinals.filter((_, i) => i !== index);
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  return (
+    <>
+      <div className="NCC_ARMY-motto-pledge-container">
+        <div className="NCC_ARMY-motto bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6">
+          <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+            MOTTO OF NCC
+          </h2>
+          {isEditing ? (
+            <AutoResizeTextarea
+              type="text"
+              value={localData[0]?.motto || ""}
+              onChange={(e) => handleMottoChange(e.target.value)}
+              className="w-full p-2 border rounded"
+              placeholder="Motto"
+            />
+          ) : (
+            <p className="NCC_ARMY-content-1">{localData[0]?.motto}</p>
+          )}
+        </div>
+
+        <div className="NCC_ARMY-pledge bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6">
+          <h2 className="NCC_ARMY-heading text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
+            CARDINALS OF NCC
+          </h2>
+          {isEditing ? (
+            <div className="py-2">
+              {localData[0]?.cardinals?.map((content, i) => (
+                <div key={i} className="flex items-center gap-2 mb-2">
+                  <AutoResizeTextarea
+                    type="text"
+                    value={content}
+                    onChange={(e) => handleCardinalChange(i, e.target.value)}
+                    className="w-full p-2 border rounded"
+                    placeholder="Cardinal point"
+                  />
+                  <button
+                    onClick={() => handleRemoveCardinal(i)}
+                    className="p-2 text-red-500 hover:text-red-700"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              ))}
+              <button
+                onClick={handleAddCardinal}
+                className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+              >
+                <Plus size={16} /> Add Cardinal
+              </button>
+            </div>
+          ) : (
+            <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
+              {localData[0]?.cardinals?.map((content, i) => (
+                <li key={i}>{content}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+
+    </>
+  );
+}
+
+// NCCPledge Component with Edit Functionality
+function NCCPledge({ data, isEditing, onUpdate }) {
+  const [localData, setLocalData] = useState(data || []);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleChange = (index, value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.pledge) {
+      const newPledge = [...updatedData[0].pledge];
+      newPledge[index] = value;
+      updatedData[0].pledge = newPledge;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
+  const handleAddPoint = () => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.pledge) {
+      updatedData[0].pledge = [...updatedData[0].pledge, ""];
+    } else if (updatedData[0]) {
+      updatedData[0].pledge = [""];
+    }
+    setLocalData(updatedData);
+    onUpdate(updatedData);
+  };
+
+  const handleRemovePoint = (index) => {
+    const updatedData = [...localData];
+    if (updatedData[0]?.pledge) {
+      updatedData[0].pledge = updatedData[0].pledge.filter((_, i) => i !== index);
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
   return (
     <div className="NCC_ARMY-row mt-4">
       <section className="NCC_ARMY-section bg-prim dark:bg-drkb border-l-4 border-[#FDB515] dark:border-drks px-6">
         <h2 className="NCC_ARMY-section-title text-accn dark:text-drkt border-b-2 border-secd dark:border-drks w-fit">
           Pledge of NCC
         </h2>
-        <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
-          {data?.map((item, i) =>
-            item?.pledge?.map((content, j) => (
-              <li key={j} className="flex items-start gap-2">
-                {isEditing ? (
-                  <>
-                    <AutoResizeTextarea
-                      value={content}
-                      onChange={(e) => onChange("pledge", i, j, e.target.value)}
-                      className="w-full border p-2 rounded"
-                    />
-                    <button
-                      onClick={() => onDelete("pledge", i, j)}
-                      className="text-red-500"
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </>
-                ) : (
-                  <li>{content}</li>
-                )}
-              </li>
-            ))
-          )}
-          {isEditing && (
+        {isEditing ? (
+          <div className="py-2">
+            {localData[0]?.pledge?.map((content, i) => (
+              <div key={i} className="flex items-center gap-2 mb-2">
+                <AutoResizeTextarea
+                  type="text"
+                  value={content}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  className="w-full p-2 border rounded"
+                  placeholder="Pledge point"
+                />
+                <button
+                  onClick={() => handleRemovePoint(i)}
+                  className="p-2 text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
             <button
-              onClick={() => onAdd("pledge")}
-              className="mt-2 text-green-600 flex items-center gap-1"
+              onClick={handleAddPoint}
+              className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
             >
-              <FontAwesomeIcon icon={faPlusCircle} /> Add New
+              <Plus size={16} /> Add Point
             </button>
-          )}
-        </ul>
+          </div>
+        ) : (
+          <ul className="Ncc_Army-list marker:text-accn dark:marker:text-drka">
+            {localData[0]?.pledge?.map((content, i) => (
+              <li key={i}>{content}</li>
+            ))}
+          </ul>
+        )}
       </section>
     </div>
   );
 }
 
-/* ------------ Contact Component ------------ */
-function NCCContact({ data, isEditing, onChange }) {
+// NCCContact Component with Edit Functionality
+function NCCContact({ data, isEditing, isDirty, isSaved, onUpdate, onCancel, onSave, onDiscard, onRequest })  {
+  const [localData, setLocalData] = useState(data || []);
+  // const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    setLocalData(data || []);
+  }, [data]);
+
+  const handleChange = (value) => {
+    const updatedData = [...localData];
+    if (updatedData[0]) {
+      updatedData[0].contact_address = value;
+      setLocalData(updatedData);
+      onUpdate(updatedData);
+    }
+  };
+
   return (
-    <div className="max-w-lg mx-auto p-6 mb-4 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
+
+    <> <div className="max-w-lg mx-auto p-6 mb-4 bg-gray-100 dark:bg-drkb rounded-lg shadow-md text-center">
       <h2 className="text-2xl text-brwn font-bold dark:text-white mb-4">
         Contact Us
       </h2>
       {isEditing ? (
-        <AutoResizeTextarea
-          value={data?.[0]?.contact_address || ""}
-          onChange={(e) => onChange("contact_address", 0, null, e.target.value)}
-          className="w-full border p-2 rounded"
+        <textarea
+          value={localData[0]?.contact_address || ""}
+          onChange={(e) => handleChange(e.target.value)}
+          className="w-full p-2 border rounded"
+          placeholder="Contact address"
+          rows={3}
         />
       ) : (
         <p className="text-lg font-poppi text-[16px] text-gray-700 dark:text-gray-300">
-          {Array.isArray(data) && data[0]?.contact_address}
+          {localData[0]?.contact_address}
         </p>
       )}
     </div>
+          {/* Buttons only here */}
+      {isEditing && (
+        <div className="flex justify-end gap-3 px-6 py-4">
+          <button
+            onClick={onCancel}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+          >
+            Cancel
+          </button>
+          {isDirty && (
+            <button
+              onClick={onSave}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            >
+              Save
+            </button>
+          )}
+        </div>
+      )}
+
+      {isSaved && !isEditing && (
+        <div className="flex justify-end gap-3 px-6 py-4">
+          <button
+            onClick={onDiscard}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+          >
+            Discard Changes
+          </button>
+          <button
+            onClick={onRequest}
+            className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+          >
+            <Send size={18} /> Request
+          </button>
+        </div>
+      )}
+    </>
+   
+    
   );
+
 }
 
-/* ------------ Main Admin Component ------------ */
-const AdminNCC_ARMY = ({ toggle, theme }) => {
+const NCC_ARMY = ({ toggle, theme }) => {
   const [ncc_army, setarmydata] = useState(null);
+  const [committedData, setCommittedData] = useState(null);
+  const [pendingData, setPendingData] = useState(null);
   const [army, setnccarmy] = useState("About NCC Army");
   const [isEditing, setIsEditing] = useState(false);
-  const [isPreviewing, setIsPreviewing] = useState(false);
-  const [changes, setChanges] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [backupData, setBackupData] = useState(null);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
   const navigate = useNavigate();
 
-  useBlockNavigation(isEditing);
+  const handleDataUpdate = (newData) => {
+    setarmydata(newData);
+    setIsDirty(true);
+  };
 
-  /* ------------ Change Handler ------------ */
-  const handleChange = (field, i, j, value) => {
-    const updated = [...ncc_army];
-    if (j !== null) updated[i][field][j] = value;
-    else updated[i][field] = value;
-    setarmydata(updated);
+  const handleStartEdit = () => {
+    if (pendingData) {
+      setarmydata(JSON.parse(JSON.stringify(pendingData)));
+    } else {
+      setarmydata(JSON.parse(JSON.stringify(committedData)));
+    }
+    setIsEditing(true);
+    setIsDirty(false);
+    setIsSaved(!!pendingData);
+  };
 
-    setChanges((prev) => {
-      const idx = prev.findIndex(ch => ch.target === field && ch.i === i && ch.j === j);
-      if (idx !== -1) {
-        const newPrev = [...prev];
-        newPrev[idx].new = { value };
-        return newPrev;
-      } else {
-        return [...prev, { action: "edited", target: field, i, j, new: { value } }];
+  const handleCancel = () => {
+    if (pendingData) {
+      setarmydata(JSON.parse(JSON.stringify(pendingData)));
+    } else {
+      setarmydata(JSON.parse(JSON.stringify(committedData)));
+    }
+    setIsEditing(false);
+    setIsDirty(false);
+    setIsSaved(!!pendingData);
+  };
+
+  const handleSave = () => {
+    let hasEmptyFields = false;
+
+    if (ncc_army && ncc_army[0]) {
+      const data = ncc_army[0];
+      const fieldsToCheck = ["about_us", "objectives", "aim", "cardinals", "pledge"];
+
+      for (const field of fieldsToCheck) {
+        if (data[field] && data[field].some((item) => !item.trim())) {
+          hasEmptyFields = true;
+          break;
+        }
       }
-    });
-  };
 
-  const validateNCCData = () => {
-  let hasEmpty = false;
-
-  ncc_army.forEach(item => {
-    // Check about_us, objectives, aim
-    ["about_us", "objectives", "aim"].forEach(field => {
-      if (item[field]?.some(text => !text.trim())) hasEmpty = true;
-    });
-
-    // Check motto
-    if (!item.motto?.trim()) hasEmpty = true;
-
-    // Check cardinals
-    if (item.cardinals?.some(text => !text.trim())) hasEmpty = true;
-
-    // Check pledge
-    if (item.pledge?.some(text => !text.trim())) hasEmpty = true;
-
-    // Check contact
-    if (!item.contact_address?.trim()) hasEmpty = true;
-  });
-
-  return !hasEmpty; // true if everything is filled
-};
-
-
-  /* ------------ Add Handler ------------ */
-  const handleAdd = (field) => {
-    const updated = [...ncc_army];
-    updated[0][field].push("");
-    const newIndex = updated[0][field].length - 1;
-    setarmydata(updated);
-    setChanges(prev => [...prev, { action: "added", target: field, i: 0, j: newIndex, new: { value: "" } }]);
-  };
-
-  /* ------------ Delete Handler ------------ */
-  const handleDelete = (field, i, j) => {
-    const updated = [...ncc_army];
-    const deleted = updated[i][field][j];
-    updated[i][field].splice(j, 1);
-    setarmydata(updated);
-    setChanges(prev => [...prev, { action: "deleted", target: field, i, j, old: { value: deleted } }]);
-  };
-
-  /* ------------ Undo Handler ------------ */
-  const handleUndo = (idx) => {
-    const change = changes[idx];
-    const updated = [...ncc_army];
-
-    if (change.action === "added") {
-      updated[change.i][change.target].splice(change.j, 1);
-    } else if (change.action === "deleted") {
-      updated[change.i][change.target].splice(change.j, 0, change.old.value);
-    } else if (change.action === "edited") {
-      if (change.j !== null) updated[change.i][change.target][change.j] = change.old.value;
-      else updated[change.i][change.target] = change.old.value;
+      if (
+        !data.motto?.trim() ||
+        !data.contact_address?.trim()
+      ) {
+        hasEmptyFields = true;
+      }
     }
 
-    setarmydata(updated);
-    setChanges(prev => prev.filter((_, i) => i !== idx));
+    if (hasEmptyFields) {
+      alert("Please fill all fields before saving!");
+      return;
+    }
+
+    const pending = JSON.parse(JSON.stringify(ncc_army));
+    setPendingData(pending);
+    setIsSaved(true);
+    setIsEditing(false);
+    setIsDirty(false);
   };
 
-  /* ------------ Fetch Data ------------ */
+  const handleDiscard = () => {
+    setarmydata(JSON.parse(JSON.stringify(committedData)));
+    setPendingData(null);
+    setIsSaved(false);
+    setIsDirty(false);
+  };
+
+  const handleRequest = () => {
+    setShowRequestModal(true);
+  };
+
+  const handleFinalRequestConfirm = () => {
+    if (!pendingData) return;
+
+    setCommittedData(JSON.parse(JSON.stringify(pendingData)));
+    setarmydata(JSON.parse(JSON.stringify(pendingData)));
+    setPendingData(null);
+    setIsSaved(false);
+    setShowRequestModal(false);
+  };
+
+  const revertChange = (field) => {
+    if (!pendingData || !committedData) return;
+
+    const updated = JSON.parse(JSON.stringify(pendingData));
+    updated[0][field] = committedData[0][field];
+
+    setPendingData(updated);
+    setarmydata(JSON.parse(JSON.stringify(updated)));
+  };
+
+  const getChanges = () => {
+    if (!pendingData || !committedData) return [];
+    const changes = [];
+
+    const fields = ["about_us", "objectives", "aim", "motto", "cardinals", "pledge", "contact_address"];
+
+    fields.forEach((field) => {
+      const oldVal = Array.isArray(committedData[0][field])
+        ? committedData[0][field].join(", ")
+        : committedData[0][field];
+      const newVal = Array.isArray(pendingData[0][field])
+        ? pendingData[0][field].join(", ")
+        : pendingData[0][field];
+
+      if (oldVal !== newVal) {
+        changes.push({
+          field: field,
+          section: field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, " "),
+          oldValue: oldVal,
+          newValue: newVal,
+        });
+      }
+    });
+
+    return changes;
+  };
+
+  const changes = getChanges();
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const typeMatch = {
       "About NCC Army": "about",
@@ -307,11 +701,13 @@ const AdminNCC_ARMY = ({ toggle, theme }) => {
         const response = await axios.post('/api/main-backend/ncc_army', {
           type: typeMatch[army]
         });
-        setarmydata(response.data.data);
-        setBackupData(JSON.parse(JSON.stringify(response.data.data)));
+        const data = response.data.data;
+        setarmydata(data);
+        setCommittedData(JSON.parse(JSON.stringify(data)));
+        setPendingData(null);
         setIsEditing(false);
-        setIsPreviewing(false);
-        setChanges([]);
+        setIsDirty(false);
+        setIsSaved(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
         if (error.response?.data?.status === 429) {
@@ -319,17 +715,18 @@ const AdminNCC_ARMY = ({ toggle, theme }) => {
         }
       }
     };
-    
     fetchData();
   }, [army, navigate]);
 
-  /* ------------ Offline Check ------------ */
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
+
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
+
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
@@ -344,249 +741,58 @@ const AdminNCC_ARMY = ({ toggle, theme }) => {
     );
   }
 
-  if (!ncc_army) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp />
-      </div>
-    );
-  }
-
-  /* ------------ Render About Content ------------ */
-  const renderAboutContent = () => {
-    if (isPreviewing) {
-      return (
-        <div className="relative">
-          <ToastContainer position="bottom-right" autoClose={3000} />
-          
-          
-          <div className="pt-5">
-            <EditableList 
-              title="About NCC" 
-              data={ncc_army} 
-              field="about_us" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="Objectives of NCC" 
-              data={ncc_army} 
-              field="objectives" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="AIM of NCC" 
-              data={ncc_army} 
-              field="aim" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCMotto 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCPledge 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCContact 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-            />
-          </div>
-<div className="flex justify-end gap-3 mt-4 p-3 relative">
-  {/* Back Button */}
-  <button 
-    className="nss-btn nss-btn-edit flex items-center gap-1"
-    onClick={() => setIsPreviewing(false)}
-  >
-    <FontAwesomeIcon icon={faUndo} /> Back to Edit
-  </button>
-
-  {/* Request Changes Button */}
-  <button
-    className="nss-btn nss-btn-request flex items-center gap-1"
-    onClick={() => setShowPopup(true)}
-  >
-    <FontAwesomeIcon icon={faPaperPlane} /> Request Changes
-  </button>
-</div>
-        </div>
-      );
-    } else if (isEditing) {
-      return (
-        <div className="relative">
-          <ToastContainer position="bottom-right" autoClose={3000} />
-          <div className="absolute top-4 right-4 pb-4">
-            <button 
-              className="nss-btn nss-btn-cancel" 
-              onClick={() => {
-                if (backupData) setarmydata(backupData);
-                setChanges([]);
-                setIsEditing(false);
-              }}
-            >
-              <FontAwesomeIcon icon={faTimes} /> Cancel
-            </button>
-          </div>
-          
-          <div className="pt-5">
-            <EditableList 
-              title="About NCC" 
-              data={ncc_army} 
-              field="about_us" 
-              isEditing={true} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="Objectives of NCC" 
-              data={ncc_army} 
-              field="objectives" 
-              isEditing={true} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="AIM of NCC" 
-              data={ncc_army} 
-              field="aim" 
-              isEditing={true} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCMotto 
-              data={ncc_army} 
-              isEditing={true} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCPledge 
-              data={ncc_army} 
-              isEditing={true} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCContact 
-              data={ncc_army} 
-              isEditing={true} 
-              onChange={handleChange} 
-            />
-          </div>
-
-          <div className="flex justify-end gap-3 mt-4 p-3">
-            <button
-              className={`nss-btn nss-btn-request flex items-center gap-1 ${
-                changes.length === 0 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              // onClick={() => changes.length > 0 && setIsPreviewing(true)}
-              onClick={() => {
-    if (validateNCCData()) {
-      setIsPreviewing(true);
-    } else {
-      toast.error("Please fill all required fields before previewing.");
-    }
-  }}
-              disabled={changes.length === 0}
-            >
-              <FontAwesomeIcon icon={faEye} /> View Changes
-            </button>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="relative">
-          <ToastContainer position="bottom-right" autoClose={3000} />
-          <div className="absolute top-4 right-4 pb-4">
-            <button 
-              className="nss-btn nss-btn-edit" 
-              onClick={() => {
-                setBackupData(JSON.parse(JSON.stringify(ncc_army)));
-                setIsEditing(true);
-              }}
-            >
-              <FontAwesomeIcon icon={faEdit} /> Edit
-            </button>
-          </div>
-          
-          <div className="pt-5">
-            <EditableList 
-              title="About NCC" 
-              data={ncc_army} 
-              field="about_us" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="Objectives of NCC" 
-              data={ncc_army} 
-              field="objectives" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <EditableList 
-              title="AIM of NCC" 
-              data={ncc_army} 
-              field="aim" 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCMotto 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCPledge 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-              onAdd={handleAdd} 
-              onDelete={handleDelete} 
-            />
-            <NCCContact 
-              data={ncc_army} 
-              isEditing={false} 
-              onChange={handleChange} 
-            />
-          </div>
-        </div>
-      );
-    }
-  };
-
   const navData = {
-    "About NCC Army": renderAboutContent(),
-    // "Recent Events": <NCCACarousel data={ncc_army} />,
-    "Team & Coordinators": <NCCAMembers data={ncc_army} />
-    // "Awards & Recognition": <AlumniSlider data={ncc_army} />,
+    "About NCC Army": (
+      <>
+        <NCCAbout
+          data={ncc_army}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+          onStartEdit={handleStartEdit}
+        />
+        <NCCObjectives
+          data={ncc_army}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+        />
+        <NCCAim
+          data={ncc_army}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+        />
+        <NCCMotto
+          data={ncc_army}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+          onCancel={handleCancel}
+          onSave={handleSave}
+          onDiscard={handleDiscard}
+          onRequest={handleRequest}
+          isSaved={isSaved}
+          isDirty={isDirty}
+        />
+        <NCCPledge
+          data={ncc_army}
+          isEditing={isEditing}
+          onUpdate={handleDataUpdate}
+        />
+<NCCContact
+  data={ncc_army}
+  isEditing={isEditing}
+  isDirty={isDirty}       // <-- pass this
+  isSaved={isSaved}       // <-- pass this
+  onUpdate={handleDataUpdate}
+  onCancel={handleCancel}
+  onSave={handleSave}
+  onDiscard={handleDiscard}
+  onRequest={handleRequest}
+/>
+
+      </>
+    ),
+    "Recent Events": <NCCACarousel data={ncc_army} />,
+    "Team & Coordinators": <NCCAMembers data={ncc_army} />,
+    "Awards & Recognition": <AlumniSlider data={ncc_army} />,
   };
 
   return (
@@ -599,68 +805,64 @@ const AdminNCC_ARMY = ({ toggle, theme }) => {
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
         isVideo={true}
       />
-      
+
       <SideNav sts={army} setSts={setnccarmy} navData={navData} cls="" backButton={true} />
 
-      {showPopup && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-[90%] md:w-[600px]">
-            <h3 className="text-lg font-semibold mb-4">Final Request for the Changes</h3>
-            <div className="max-h-64 overflow-auto mb-4">
-              <table className="w-full">
-                <thead>
-                  <tr className="text-left">
-                    <th className="pb-2">Action</th>
-                    <th className="pb-2">Target</th>
-                    <th className="pb-2">Undo</th>
+      {/* Final Request Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Request</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
+
+            {changes.length > 0 ? (
+              <table className="w-full border border-gray-300 text-sm text-center">
+                <thead className="bg-gray-200">
+                  <tr>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {changes.map((ch, i) => {
-                    let IconComponent = null;
-                    if (ch.action === "added") IconComponent = PlusCircle;
-                    else if (ch.action === "deleted") IconComponent = Trash2;
-                    else if (ch.action === "edited") IconComponent = SquarePen;
-
-                    return (
-                      <tr key={i} className="border-t">
-                        <td className="py-2 flex items-center gap-1">
-                          {IconComponent && <IconComponent className="w-5 h-5" />}
-                          <span className="capitalize">{ch.action}</span>
-                        </td>
-                        <td>{ch.target}</td>
-                        <td>
-                          <button
-                            onClick={() => handleUndo(i)}
-                            className="px-2 py-1 bg-yellow-400 rounded text-black flex items-center gap-1"
-                          >
-                            <FontAwesomeIcon icon={faUndo} /> Undo
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {changes.map((change, i) => (
+                    <tr key={i}>
+                      <td className="border p-2 text-blue-600">Edited</td>
+                      <td className="border p-2">{change.section}</td>
+                      <td className="border p-2">
+                        <button
+                          onClick={() => revertChange(change.field)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title="Revert this field"
+                        >
+                          <X size={16} className="text-red-500" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
-            </div>
-            <p className="text-red-600 mb-4">Note: Your changes will stay pending until approved by the superior admin.</p>
-            <div className="flex justify-end gap-3">
-              <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowPopup(false)}>
+            ) : (
+              <p className="text-gray-600">No changes detected.</p>
+            )}
+
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim"
+              >
                 Cancel
               </button>
-              
-              <button className={`nss-btn nss-btn-request flex items-center gap-1 ${changes.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
-                onClick={() => { 
-                  toast.success("Request submitted successfully!"); 
-                  setChanges([]); 
-                  setShowPopup(false); 
-                  setIsEditing(false); 
-                  setIsPreviewing(false);
-                }}
-                disabled={changes.length === 0}
+              {changes.length > 0 && (
+                <button
+                  onClick={handleFinalRequestConfirm}
+                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                 >
-                <FontAwesomeIcon icon={faPaperPlane} /> Request
-              </button>
+                  Confirm Request
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -669,4 +871,4 @@ const AdminNCC_ARMY = ({ toggle, theme }) => {
   );
 };
 
-export default AdminNCC_ARMY;
+export default NCC_ARMY;
