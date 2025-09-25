@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
-import {Pencil, Send, Trash2, X } from "lucide-react";
+import {Eye, Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -49,6 +49,37 @@ export default function Faculties({ data }) {
     if (!f) return undefined;
     return f.unique_id ?? f.id ?? f.uid ?? f._id;
   };
+
+
+
+  const handleOpenFacultyPdf = () => {
+  if (!facultyPdfPath?.trim()) {
+    toast.info("No Faculty PDF uploaded yet");
+    return;
+  }
+
+  // Check if Base64
+  if (facultyPdfPath.startsWith("data:")) {
+    // Open in new window as blob
+    const win = window.open();
+    if (!win) {
+      toast.error("Popup blocked");
+      return;
+    }
+    win.document.write(
+      `<iframe width="100%" height="100%" src="${facultyPdfPath}" frameborder="0"></iframe>`
+    );
+  } else {
+    // Normal URL
+    const url = UrlParser(facultyPdfPath);
+    if (url && url.startsWith("http")) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      toast.error("Invalid Faculty PDF URL");
+    }
+  }
+};
+
 
   // initialize from data prop
   useEffect(() => {
@@ -283,15 +314,72 @@ export default function Faculties({ data }) {
       return copy;
     });
   };
-  const handleUndoChange = (idx) => {
+
+
+const handleUndoChange = (idx) => {
   setAllChanges((prev) => {
     const copy = [...prev];
-    if (idx >= 0 && idx < copy.length) copy.splice(idx, 1);
-    return copy;
-  });
-  toast.info("Change removed from request");
+    if (idx >= 0 && idx < copy.length) {
+      const change = copy[idx];
+      if (change.action === "delete" && change.deletedItem) {
+        // Restore deleted item
+        if (change.section === "teaching") {
+          setTeachingStaff((prevArr) => {
+            const arr = [...prevArr];
+            arr.splice(change.index, 0, change.deletedItem);
+            return arr;
+          });
+        } else if (change.section === "nonTeaching") {
+          setNonTeachingStaff((prevArr) => {
+            const arr = [...prevArr];
+            arr.splice(change.index, 0, change.deletedItem);
+            return arr;
+          });
+        }}
+      if (change.action === "edit" && change.changes) {
+        const rollback = (arrSetter, arr, section) => {
+          const newArr = [...arr];
+          Object.keys(change.changes).forEach((field) => {
+            newArr[change.index] = {
+              ...newArr[change.index],
+              [field]: change.changes[field].old,
+            };
+          });
+          arrSetter(newArr);
+        };
+        if (change.section === "teaching") {
+          rollback(setTeachingStaff, teachingStaff, "teaching");
+        } else if (change.section === "nonTeaching") {
+          rollback(setNonTeachingStaff, nonTeachingStaff, "nonTeaching");
+        } else if (change.section === "hod") {
+          setHod((prev) => {
+            const restored = { ...prev };
+            Object.keys(change.changes).forEach((field) => {
+              restored[field] = change.changes[field].old;
+            });
+            return restored;
+          });
+        }
+      }
+      if (change.action === "add") {
+        if (change.section === "teaching") {
+          setTeachingStaff((prevArr) => {
+            const arr = [...prevArr];
+            arr.splice(change.index, 1);
+            return arr;
+          });
+        } else if (change.section === "nonTeaching") {
+          setNonTeachingStaff((prevArr) => {
+            const arr = [...prevArr];
+            arr.splice(change.index, 1);
+            return arr;
+          });
+        }
+      }
+      copy.splice(idx, 1);}
+    return copy; });
+  toast.info("Undo successful");
 };
-
   // handle HOD changes
   const handleHodChange = (field, value) => {
     const oldVal = (savedDataRef.current.hod && (savedDataRef.current.hod[field] ?? undefined));
@@ -503,25 +591,50 @@ export default function Faculties({ data }) {
             />
 
             {/* Faculty List + Replace */}
+          {/* Faculty List + Replace PDF */}
             <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md" onClick={() => {
-                  if (facultyPdfPath && facultyPdfPath.trim() !== "") {
-                    const url = UrlParser(facultyPdfPath);
-                    if (url) window.open(url, "_blank", "noopener,noreferrer");
-                  }
-                }}>
+                {/* Open Faculty PDF button safely */}
+                <button
+                  className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"
+                  onClick={handleOpenFacultyPdf}
+                >
                   Faculty List
                 </button>
 
+                {/* Eye icon for preview (if PDF exists) */}
+                {facultyPdfPath?.trim() && (
+                  <a
+                    href={UrlParser(facultyPdfPath)?.trim()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer"
+                  >
+                    <Eye />
+                  </a>
+                )}
+
+                {/* Replace PDF input */}
                 {isEditing && (
                   <>
-                    <input id="replace-faculty-pdf" type="file" accept=".pdf" style={{ display: "none" }} onChange={handleFacultyPdfReplace} />
-                    <label htmlFor="replace-faculty-pdf" className="px-2 py-2 bg-gray-200 rounded cursor-pointer">Replace</label>
+                    <input
+                      id="replace-faculty-pdf"
+                      type="file"
+                      accept=".pdf"
+                      style={{ display: "none" }}
+                      onChange={handleFacultyPdfReplace}
+                    />
+                    <label
+                      htmlFor="replace-faculty-pdf"
+                      className="px-2 py-2 bg-gray-200 rounded cursor-pointer hover:bg-gray-300"
+                    >
+                      Replace PDF
+                    </label>
                   </>
                 )}
               </div>
             </div>
+
           </div>
 
           {/* Teaching */}
@@ -621,7 +734,7 @@ export default function Faculties({ data }) {
             isSavedOnce && (
               <>
                 <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>Discard All</button>
-                <button className="bg-secd hover:bg-brwn  px-3 py-2 flex flex-row rounded text-text" onClick={handleRequest}><Send className="mr-2" /> Request</button>
+                <button className="bg-secd hover:bg-brwn  px-3 py-2 flex flex-row rounded text-text hover:text-prim" onClick={handleRequest}><Send className="mr-2" /> Request</button>
               </>
             )
           )}

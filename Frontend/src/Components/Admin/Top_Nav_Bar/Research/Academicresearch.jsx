@@ -39,7 +39,7 @@ export default function AdminConsultancy({ theme, toggle }) {
 
   // Admin quick toggles (kept for compatibility with existing behavior)
   const [isContentEditable, setIsContentEditable] = useState(true);
-  const [isDoneClicked, setIsDoneClicked] = useState(false);
+  // const [isDoneClicked, setIsDoneClicked] = useState(false);
 
   // -------------------- Fetch --------------------
   useEffect(() => {
@@ -104,7 +104,6 @@ export default function AdminConsultancy({ theme, toggle }) {
           pdf_path: { old: oldEntry?.pdf_path ?? null, new: pdfValue },
         },
       });
-
       toast.success("Entry updated (session)");
     } else {
       const newEntry = { year: newYear, pdf_path: pdfValue };
@@ -142,11 +141,7 @@ export default function AdminConsultancy({ theme, toggle }) {
     setSelectedToDelete(nxt);
   };
 
-  // const openDeleteConfirmSingle = (index) => {
-  //   setDeleteMode("single");
-  //   setDeleteTargetIndex(index);
-  //   setDeleteConfirmOpen(true);
-  // };
+
 
   const openDeleteConfirmMultiple = () => {
     if (selectedToDelete.size === 0) {
@@ -214,7 +209,7 @@ export default function AdminConsultancy({ theme, toggle }) {
     setIsEditing(false);
     setIsSavedOnce(true);
     setIsContentEditable(true);
-    setIsDoneClicked(false);
+    // setIsDoneClicked(false);
     toast.success("Session saved. You can Request now.");
   };
 
@@ -234,7 +229,7 @@ export default function AdminConsultancy({ theme, toggle }) {
     setIsEditing(false);
     setIsSavedOnce(false);
     setIsContentEditable(true);
-    setIsDoneClicked(false);
+    // setIsDoneClicked(false);
     toast.success("All changes discarded and reset.");
   };
 
@@ -257,7 +252,7 @@ export default function AdminConsultancy({ theme, toggle }) {
     originalRef.current = JSON.parse(JSON.stringify(acadamicRes));
     savedDataRef.current = JSON.parse(JSON.stringify(acadamicRes));
     setIsContentEditable(true);
-    setIsDoneClicked(false);
+    // setIsDoneClicked(false);
   };
 
 const handleUndoChange = (idx) => {
@@ -318,22 +313,22 @@ const handleUndoChange = (idx) => {
   };
 
   // quick admin handlers that existed in the original consultancy file — keep behavior but integrated
-  const handleDone = () => {
-    setIsDoneClicked(true);
-    setIsContentEditable(true); // ensure content mode consistent
-  };
+  // const handleDone = () => {
+  //   // setIsDoneClicked(true);
+  //   setIsContentEditable(true); // ensure content mode consistent
+  // };
 
-  const handleBackToEdit = () => {
-    setIsDoneClicked(false);
-    setIsContentEditable(false);
-  };
+  // const handleBackToEdit = () => {
+  //   // setIsDoneClicked(false);
+  //   setIsContentEditable(false);
+  // };
 
-  const handleRequestSent = () => {
-    // emulate sending request (we keep the same behavior as BookChapter finalization)
-    setIsContentEditable(true);
-    setIsDoneClicked(false);
-    toast.success("Request sent (session)"); // small feedback
-  };
+  // const handleRequestSent = () => {
+  //   // emulate sending request (we keep the same behavior as BookChapter finalization)
+  //   setIsContentEditable(true);
+  //   // setIsDoneClicked(false);
+  //   toast.success("Request sent (session)"); // small feedback
+  // };
 
   // -------------------- Render --------------------
   return (
@@ -354,7 +349,7 @@ const handleUndoChange = (idx) => {
             onClick={() => {
               setIsEditing(true);
               setIsContentEditable(false);
-              setIsDoneClicked(false);
+              // setIsDoneClicked(false);
             }}
           >
             <Pencil className="mr-2" /> Edit
@@ -454,7 +449,7 @@ const handleUndoChange = (idx) => {
         </div>
 
         {/* Old quick-mode UI preserved for compatibility with earlier file behavior */}
-        {!isEditing && !isDoneClicked && (
+        {!isEditing  && (
           <div className="course-selection-container p-12">
             {acadamicRes?.map((course, index) => (
               <div
@@ -467,41 +462,13 @@ const handleUndoChange = (idx) => {
             ))}
           </div>
         )}
-
-        {/* Done / Back / Request quick actions when user used older pattern */}
-        {/* {!isEditing && !isDoneClicked && (
-          <button
-            className="flex items-center ml-auto mr-20 mb-10 border-4 border-secd hover:bg-gray-300 hover:border-brwn text-text px-3 py-2 rounded-lg"
-            onClick={() => handleDone()}
-          >
-            <FaUserEdit className="mr-2" /> Done
-          </button>
-        )} */}
-
-        {!isEditing && isDoneClicked && (
-          <div className="flex gap-4 justify-end pr-8 my-8 mr-10">
-            <button
-              className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded "
-              onClick={() => handleBackToEdit()}
-            >
-              <FaUserEdit className="mr-2" /> Back to edit
-            </button>
-            <button
-              className="flex items-center bg-green-500 text-text hover:text-prim hover:bg-green-600 px-3 py-2 rounded"
-              onClick={() => handleRequestSent()}
-            >
-              <Send className="mr-2" />
-              Request
-            </button>
-          </div>
-        )}
-
          {!isEditing && isSavedOnce && (
             <div className="flex flex-row justify-end mr-12 mb-4 gap-4">
               <button
                 className="bg-red-500 px-3 py-2 rounded text-prim"
                 onClick={handleDiscardAll}
               >
+      
                 Discard All
               </button>
               <button

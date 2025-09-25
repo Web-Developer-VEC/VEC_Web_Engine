@@ -110,6 +110,7 @@ function ImageCard({
             width: 18,
             height: 18,
           }}
+          disabled={!name || !Designation || !photo}
         />
       )}
 
@@ -338,7 +339,6 @@ function ImageCard({
           Save
         </button>
       </div>
-
     </div>
   </div>
 )}
