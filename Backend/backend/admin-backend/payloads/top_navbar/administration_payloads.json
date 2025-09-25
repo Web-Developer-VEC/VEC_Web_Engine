@@ -1,214 +1,238 @@
 [
-
-
-
-  {
-    "collectionName": "administration",
-    "collection_type": "committee",
-    "action": "insert",
-    "title": "Insert Academic Council Committee",
-    "meta_data": {
-      "name": "Academic Council",
-      "pdf_path": "/static/pdfs/committee/academic_council_2025.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "admin_office",
-    "action": "insert",
-    "title": "Insert Admin Office",
-    "meta_data": {
-      "name": "Finance Office",
-      "pdf_path": "/static/pdfs/admin_office/finance2025.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "dean_and_association",
-    "action": "insert",
-    "title": "Insert Dean",
-    "meta_data": {
-      "name": "Dr. John Doe",
-      "profile_link": "/static/profiles/deans/johndoe.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "HandBook",
-    "action": "insert",
-    "title": "Append new HandBook entries",
-    "meta_data": {
-      "Years": [
-        "2018-2019",
-        "2019-2020",
-        "2020-2021",
-        "2021-2022",
-        "2022-2023",
-        "2023-2024",
-        "2024-2025",
-        "2025-2026"
-      ],
-      "pdfs_path": [
-        "/static/pdfs/handbook/Handbook-18-19.pdf",
-        "/static/pdfs/handbook/Handbook-19-20.pdf",
-        "/static/pdfs/handbook/Handbook-20-21.pdf",
-        "/static/pdfs/handbook/Handbook-21-22.pdf",
-        "/static/pdfs/handbook/HandBook-22-23.pdf",
-        "/static/pdfs/handbook/HandBook-23-24.pdf",
-        "/static/pdfs/handbook/Revised_New_Hand_Book_24-25.pdf"      ]
-    }
-  },
   {
     "collectionName": "administration",
     "collection_type": "principal",
-    "action": "insert",
-    "title": "Update principal profile",
-    "meta_data": {
-      "name": "Dr. Jane Smith",
-      "phone": "9876543210",
-      "profile_pdf": "/static/pdfs/principal/jane_smith.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "committee",
     "action": "update",
-    "title": "Update committee pdf path",
+    "title": "update principal",
     "meta_data": {
-      "name": "Academic Council",
-      "pdf_path": "/static/pdfs/committee/academic_council_2026.pdf"
+      "name": "Dr. Dinesh T",
+      "qualification": "M.E. ,Ph.D",
+      "message": "VEC is one of the leading technical institutions delivering quality education in Tamil Nadu. The strengths of VEC are its proven teaching and learning ecosystem, research and knowledge creation culture and industry collaborations. We help students acquire the knowledge and skills required to become competent and excel in the broader field of Engineering, Technology and Business Administration. We keep our curricula up to date with the latest technological breakthroughs and industry best practises and provide a vibrant intellectual environment for students by fostering critical, reflective, and conceptual thinking, with the purpose of enriching their education and preparing them industry ready through innovative teaching methods..",
+      "image_path": "/static/images/principal_data/principal_photo.webp",
+      "social_links": {
+        "LinkedIn Profile": "https://www.linkedin.com/in/satishchennai/?originalSubdomain=in",
+        "Google Scholar Profile": "https://scholar.google.com/citations?user=nqRRK20AAAAJ&hl=en",
+        "Research Gate": "https://www.researchgate.net/profile/S-Satishkumar",
+        "Scopus Author Profile": "https://www.scopus.com/authid/detail.uri?authorId=13806246500"
+      }
     },
-    "original_data": {
-      "name": "Academic Council",
-      "pdf_path": "/static/pdfs/committee/academic_council_2025.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "admin_office",
-    "action": "update",
-    "title": "Update Admin Office Name",
-    "meta_data": {
-      "name": "Accounts Office",
-      "pdf_path": "/static/pdfs/admin_office/accounts2025.pdf"
-    },
-    "original_data": {
-      "name": "Finance Office",
-      "pdf_path": "/static/pdfs/admin_office/finance2025.pdf"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "dean_and_association",
-    "action": "update",
-    "title": "Update Dean Profile Link",
-    "meta_data": {
-    "name": "Dr.  A",
-    "type": "Dean",
-    "designation": "Prof & Head - Civil Engineering",
-    "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
-    "unique_id": "VEC-001-01-001"
-  },
     "original_data":{
-    "name": "Dr. JEEVA KATIRAVAN",
-    "type": "Dean",
-    "designation": "Prof & Head - Information Technology",
-    "image_path": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
-  }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "HandBook",
-    "action": "update",
-    "title": "Update HandBook PDF for Year",
-    "meta_data": {
-      "Years": ["2025-2026"],
-      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_FINAL.pdf"]
-    },
-    "original_data": {
-      "Years": ["2025-2026"],
-      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_UPDATED.pdf"]
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "principal",
-    "action": "update",
-    "title": "Update principal phone number",
-    "meta_data": {
-      "name": "Dr. Jane Smith",
-      "phone": "9999999999"
-    },
-    "original_data": {
-      "name": "Dr. Jane Smith",
-      "phone": "9876543210"
-    }
-  },
-
- 
-
-
-  {
-    "collectionName": "administration",
-    "collection_type": "committee",
-    "action": "delete",
-    "title": "Delete committee by name",
-    "meta_data": {
-      "name": "Academic Council"
-    }
-  },
-  {
-    "collectionName": "administration",
-    "collection_type": "admin_office",
-    "action": "delete",
-    "title": "Delete Admin Office by name",
-    "meta_data": {
-      "name": "Finance Office"
+      "name": "Dr. SATISH KUMAR S",
+      "qualification": "M.E. ,Ph.D",
+      "message": "VEC is one of the leading technical institutions delivering quality education in Tamil Nadu. The strengths of VEC are its proven teaching and learning ecosystem, research and knowledge creation culture and industry collaborations. We help students acquire the knowledge and skills required to become competent and excel in the broader field of Engineering, Technology and Business Administration. We keep our curricula up to date with the latest technological breakthroughs and industry best practises and provide a vibrant intellectual environment for students by fostering critical, reflective, and conceptual thinking, with the purpose of enriching their education and preparing them industry ready through innovative teaching methods..",
+      "image_path": "/static/images/principal_data/principal_photo.webp",
+      "social_links": {
+        "LinkedIn Profile": "https://www.linkedin.com/in/satishchennai/?originalSubdomain=in",
+        "Google Scholar Profile": "https://scholar.google.com/citations?user=nqRRK20AAAAJ&hl=en",
+        "Research Gate": "https://www.researchgate.net/profile/S-Satishkumar",
+        "Scopus Author Profile": "https://www.scopus.com/authid/detail.uri?authorId=13806246500"
+      }
     }
   },
   {
     "collectionName": "administration",
     "collection_type": "dean_and_association",
-    "action": "delete",
-    "title": "Delete Dean by name",
+    "action": "insert",
+    "title": "insert dean_and_association",
+    "category":"Academics",
     "meta_data": {
-    "name": "Dr. JEEVA KATIRAVAN",
-    "type": "Dean",
-    "designation": "Prof & Head - Information Technology",
-    "image_path": "/static/images/dean_and_associates/dr_jeeva_katiravan.webp"
-  }
+            "name": "Dr. Dinesh",
+            "type": "Dean",
+            "designation": "Prof & Head - Civil Engineering",
+            "image_path": "",
+            "unique_id": "VEC-001-01-001"
+          }
   },
   {
     "collectionName": "administration",
-    "collection_type": "HandBook",
-    "action": "delete",
-    "title": "Delete HandBook entry for year",
+    "collection_type": "dean_and_association",
+    "action": "update",
+    "title": "update dean_and_association",
+    "category":"Academics",
+    "original_data": {
+            "name": "Dr. Dinesh",
+            "type": "Dean",
+            "designation": "Prof & Head - Civil Engineering",
+            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "unique_id": "VEC-001-01-001"
+          },
     "meta_data": {
-      "Years": ["2025-2026"],
-      "pdfs_path": ["/static/pdfs/handbook/Handbook-25-26_UPDATED.pdf"]
-    }
+            "name": "Dr. hari",
+            "type": "Dean",
+            "designation": "Prof & Head - Civil Engineering",
+            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "unique_id": "VEC-001-01-001"
+          }
   },
   {
     "collectionName": "administration",
-    "collection_type": "principal",
+    "collection_type": "dean_and_association",
     "action": "delete",
-    "title": "Delete principal phone number",
+    "title": "delete dean_and_association",
+    "category":"Academics",
     "meta_data": {
-      "phone": "9876543210"
-    }
+            "name": "Dr. hari",
+            "type": "Dean",
+            "designation": "Prof & Head - Civil Engineering",
+            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "unique_id": "VEC-001-01-001"
+          }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "dean_and_association",
+    "action": "delete",
+    "title": "delete dean_and_association",
+    "category":"Academics",
+    "meta_data": {
+        "category": "Academics",
+        "members": [
+          {
+            "name": "Dr. JEBAMALAR A",
+            "type": "Dean",
+            "designation": "Prof & Head - Civil Engineering",
+            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "unique_id": "VEC-001-01-001"
+          },
+          {
+            "name": "Dr. AROCKIA JASWIN M",
+            "type": "Associate Dean",
+            "designation": "Prof. Mechanical Engineering.",
+            "image_path": "/static/images/dean_and_associates/dr_m_arockia_jaswin.webp",
+            "unique_id": "VEC-001-01-001"
+          }
+        ]
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "insert",
+    "title": "insert admin_office",
+    "meta_data":{
+        "name": "DR. DINESH V",
+        "designation": "Administrative Officer & Professor, CSE  ",
+        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "update",
+    "title": "update admin_office",
+    "original_data":{
+        "name": "DR. DINESH V",
+        "designation": "Administrative Officer & Professor, CSE  ",
+        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+      },
+    "meta_data":{
+        "name": "DR. HARI V",
+        "designation": "Administrative Officer & Professor, CSE  ",
+        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "admin_office",
+    "action": "delete",
+    "title": "delete admin_office",
+    "meta_data":{
+        "name": "DR. HARI V",
+        "designation": "Administrative Officer & Professor, CSE  ",
+        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "insert",
+    "title": "insert committee",
+    "meta_data":{
+        "name": "DINESH",
+        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "committee",
+    "action": "update",
+    "title": "update committee",
+    "original_data":{
+        "name": "DINESH",
+        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+      },
+    "meta_data":{
+        "name": "HARI",
+        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+      }
   },
   {
     "collectionName": "administration",
     "collection_type": "committee",
     "action": "delete",
-    "title": "Delete all committee entries",
-    "meta_data": {}
+    "title": "delete committee",
+    "meta_data":{
+        "name": "HARI",
+        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "insert",
+    "title": "insert HandBook",
+    "meta_data":{
+        "year": "2026-2027",
+        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HandBook",
+    "action": "update",
+    "title": "update HandBook",
+    "meta_data":{
+        "year": "2027-2028",
+        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+      },
+    "original_data":{
+        "year": "2025-2026",
+        "pdf_path": "/static/pdfs/handbook/Handbook-25-26.pdf"
+      }
   },
   {
     "collectionName": "administration",
     "collection_type": "HandBook",
     "action": "delete",
-    "title": "Delete all HandBook entries",
-    "meta_data": {}
+    "title": "delete HandBook",
+    "meta_data":{
+        "year": "2027-2028",
+        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+      }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "HRHandBook",
+    "action": "update",
+    "title": "update HRHandBook",
+    "meta_data":{
+      "pdf_path": []
+    },
+    "original_data":{
+      "pdf_path": ["/static/pdfs/handbook/HR-Handbook.pdf"]
+    }
+  },
+  {
+    "collectionName": "administration",
+    "collection_type": "organization_chart",
+    "action": "update",
+    "title": "update organization_chart",
+    "meta_data": {
+      "image_path": "/static/images/orgchart/dinesh.webp"
+    },
+    "original_data": {
+      "image_path": "/static/images/orgchart/chart.webp"
+    }
   }
+ 
 ]

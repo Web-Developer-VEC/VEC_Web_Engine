@@ -2,16 +2,6 @@
   {
     "collectionName": "yrc",
     "collection_type": "about",
-    "action": "insert",
-    "title": "Add about IIC",
-    "meta_data": {
-        "about_us":[ "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals.",
-        "hello everyone"]
-      }
-  },
-  {
-    "collectionName": "yrc",
-    "collection_type": "about",
     "action": "update",
     "title": "update about ",
     "original_data": {
@@ -21,18 +11,6 @@
     "meta_data":{
         "about_us":"The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
       }
-  },
-  {
-    "collectionName": "yrc",
-    "collection_type": "news_updates",
-    "action": "insert",
-    "title": "Add news",
-    "meta_data": [
-      "1. College Fest 2025 will be held on March 25th.",
-      "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
-      "3. The annual sports meet is scheduled for April 10th.",
-      "hello everyone"
-    ]
   },
   {
     "collectionName": "yrc",
@@ -121,6 +99,35 @@
             "designation": "NCC Navy Coordinator",
             "image_path": "/static/images/ncc/navy/chairman.webp"
           }
+  },
+  {
+    "collectionName": "yrc",
+    "collection_type": "team",
+    "action": "delete",
+    "category": "faculty_coordinators",
+    "title": "delete Faculty Member",
+    "original_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "yrc",
+    "collection_type": "team",
+    "action": "delete",
+    "category": "faculty_coordinators",
+    "title": "delete Faculty Member",
+    "original_data": {
+        "category": "faculty_coordinator",
+        "members": [
+          {
+            "name": "Dr. V.Ramesh Kumar",
+            "designation": "Programme Officer",
+            "image_path": "/static/images/yrc/head.webp"
+          }
+        ]
+      }
   },
   {
     "collectionName": "yrc",

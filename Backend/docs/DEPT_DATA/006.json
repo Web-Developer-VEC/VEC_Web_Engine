@@ -558,26 +558,19 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
             "ORGANISATION_NAME": "TechGreech Cyberlabs Private Limited",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 2,
             "ORGANISATION_NAME": "Azefox Innovations",
             "MONTH_AND_YEAR": "",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           }
         ]
       }
     ]
-  },
+},
   {
     "type": "research",
     "data": [

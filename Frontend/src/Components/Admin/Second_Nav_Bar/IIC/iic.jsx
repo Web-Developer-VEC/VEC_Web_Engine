@@ -19,105 +19,17 @@ import IicFacCertificate from "./certificates";
 import IicFacnir from "./nir";
 import { useNavigate } from "react-router";
 import { div } from "framer-motion/m";
+import IicHome from "./IicHome";
+import IicEst from "./Establishment";
 
 
 
-function IicHome({ data }) {
-  if (!Array.isArray(data) || data.length === 0 || !data[0]?.about_iic) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp />
-      </div>
-    );
-  }
-
-  const aboutArray = data[0]?.about_iic || [];
-
-  return (
-    <div>
-      <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 font-bold">Home</h1>
-    <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto text-sm md:text-base">
-      <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
-        About IIC
-      </h2>
-      <div className="text-text dark:text-drkt">
-        {aboutArray?.map((paragraph, index) => (
-          <p key={index} className="mb-2 text-justify">
-            {paragraph}
-          </p>
-        ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const getCategory = (dataArray, categoryName) => {
   return dataArray.find(item => item.category === categoryName)?.content || [];
 };
 
 
-function IicEst({ data }) {
-  if (!Array.isArray(data) || data.length === 0) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp />
-      </div>
-    );
-  }
-
-  // get content dynamically by category
-  const majorFocus = getCategory(data, "majorfocus");
-  const vision = getCategory(data, "vision");
-  const mission = getCategory(data, "mission");
-  const functions = getCategory(data, "function");
-
-  return (
-    <div className="about-section">
-      <div>
-        <h1 className="text-brwn dark:text-drkt text-4xl font-bold text-center">
-          Establishment of IIC
-        </h1>
-      </div>
-
-      <div className="naac-info-panel-icc border-l-4 border-secd dark:border-drks dark:bg-drkb">
-        <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
-          Major Focus of IIC
-        </h2>
-        <p className="text-justify">
-          {majorFocus.map((point, i) => (
-            <span key={i}>
-              <br />• {point}
-            </span>
-          ))}
-        </p>
-      </div>
-
-      <div className="flex flex-col lg:flex-row justify-between gap-6">
-        {/* Vision */}
-        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-          <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
-            Vision
-          </h2>
-          <p>{vision[0]}</p>
-        </div>
-
-        {/* Mission */}
-        <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-          <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">
-            Mission
-          </h2>
-          <p>{mission[0]}</p>
-        </div>
-      </div>
-
-      {/* I&E Ecosystem */}
-      <div>
-        <IicEco data={functions} />
-      </div>
-    </div>
-  );
-}
 
 function IicEco({ data }) {
   if (!Array.isArray(data) || data.length === 0) {

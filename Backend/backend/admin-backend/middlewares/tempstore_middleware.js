@@ -1,8 +1,9 @@
-const { getAdminDb } = require("../../main-backend/config/db");
+const { getAdminDb, getDb } = require("../../main-backend/config/db");
 
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
     const db = getAdminDb();
+    const maindb = getDb();
     const docs = req.docsFromBusboy || [];
 
     if (!docs || docs.length === 0) {
@@ -18,56 +19,126 @@ module.exports = async function storeTempMiddleware(req, res, next) {
     };
 
     // Prepare documents for DB
-    const tempDocs = docs.map((doc) => {
-      const {
-        collectionName,
-        collection_type,
-        action,
-        title,
-        category,
-        meta_data,
-        original_data,
-      } = doc;
+    const tempDocs = await Promise.all(
+      docs.map(async (doc) => {
+        const {
+          collectionName,
+          collection_type,
+          action,
+          title,
+          category,
+          meta_data,
+          original_data,
+        } = doc;
 
-      if (!collectionName || !collection_type || !action || !title) {
-        throw new Error(
-          "collectionName, collection_type, action, and title are required"
+        if (!collectionName || !collection_type || !action || !title) {
+          throw new Error(
+            "collectionName, collection_type, action, and title are required"
+          );
+        }
+
+        // ✅ Use all uploaded files (no docIndex filter)
+        const allFiles = req.uploadedFiles || [];
+
+        const skipPdfFor = ["placement_details", "nirf", "nba","regulation","all_forms","COE"];
+
+        const skipImageFor = ["warden","members","library_services","team","achivements"];
+
+        const mainCollection = maindb.collection(collectionName);
+        const existingDoc = await mainCollection.findOne(
+          { type: collection_type },
+          { projection: { data: 1 } }
         );
-      }
+   
 
-      // ✅ Use all uploaded files (no docIndex filter)
-      const allFiles = req.uploadedFiles || [];
+        let pdf_path = !skipPdfFor.includes(collection_type)
+          ? allFiles
+              .filter((f) => f.mimetype === "application/pdf")
+              .map((f) => f.location || `/${f.key}`)
+          : [];
 
-      const pdf_path = allFiles
-        .filter((f) => f.mimetype === "application/pdf")
-        .map((f) => f.location || `/${f.key}`);
 
-      const image_path = allFiles
-        .filter((f) => f.mimetype?.startsWith("image/"))
-        .map((f) => f.location || `/${f.key}`);
+        let image_path = !skipImageFor.includes(collection_type)
+          ? allFiles
+              .filter((f) => f.mimetype?.startsWith("image/"))
+              .map((f) => f.location || `/${f.key}`)
+          : [];
 
-      console.log("📂 Docs from busboy:", docs);
-      console.log("📂 Uploaded files (S3):", req.uploadedFiles);
-      console.log("pdf path ", pdf_path)
-      console.log("image path ", image_path)
+        // console.log("📂 Docs from busboy:", docs);
+        // console.log("📂 Uploaded files (S3):", req.uploadedFiles);
+        // console.log("pdf path ", pdf_path);
+        // console.log("image path ", image_path);
+          
 
-      return {
-        collection: collectionName,
-        collection_type,
-        action,
-        title,
-        category: category || null,
-        meta_data: {
-          ...(meta_data || {}), // keep other frontend meta
-          ...(image_path.length ? { image_path } : {}),
-          ...(pdf_path.length ? { pdf_path } : {}),
-        },
-        original_data: original_data || null,
-        admin: adminMeta,
-        status: "pending",
-        createdAt: new Date(),
-      };
-    });
+        const notdoc = Array.isArray(existingDoc.data)?existingDoc.data:[existingDoc.data];
+
+        if(action === "update"){
+          if(pdf_path.length>0){
+            for (const item of notdoc) {
+              const matches = Object.keys(original_data).filter(k=>k!=="pdf_path").every(
+                k=> item[k] === original_data[k]
+              );
+             
+              if (matches) {
+                
+                pdf_path = Array.isArray(item.pdf_path)
+                  ? pdf_path
+                  : pdf_path[0];
+                break;
+              }
+            }
+          }else if (image_path.length>0){
+
+            for (const item of notdoc) {
+              const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
+                k=> item[k] === original_data[k]
+              );
+              if (matches) {
+                image_path = Array.isArray(item.image_path)
+                  ? image_path
+                  : image_path[0];
+                break;
+              }
+            }
+          }
+        }
+        if(action === "insert"){
+          if(pdf_path.length>0){
+            for (const item of notdoc) {
+                pdf_path = Array.isArray(item.pdf_path)
+                  ? pdf_path
+                  :pdf_path[0];
+                  
+                break;
+            }
+          }else if(image_path.length>0){
+            for (const item of notdoc) {
+                image_path = Array.isArray(item.image_path)
+                  ? image_path
+                  : image_path[0];
+                break;
+            }
+          }
+        }
+
+        return {
+          collection: collectionName,
+          collection_type,
+          action,
+          title,
+          category: category || null,
+          meta_data: {
+            ...(meta_data || {}), // keep other frontend meta
+            ...(image_path.length ? { image_path } : {}),
+            ...(pdf_path.length ? { pdf_path } : {}),
+          },
+          original_data: original_data || null,
+          admin: adminMeta,
+          status: "pending",
+          createdAt: new Date(),
+        };
+      })
+    );
 
     // Group by collection and insert
     const groupedByCollection = tempDocs.reduce((acc, doc) => {
@@ -109,3 +180,4 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       .json({ success: false, error: "Server error", details: err.message });
   }
 };
+

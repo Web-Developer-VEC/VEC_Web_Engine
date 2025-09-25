@@ -492,7 +492,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                 <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
                   <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
                     <h3 className="text-lg font-semibold mb-3">Confirm Delete</h3>
-                    <p className="mb-4">Are you sure you want to delete {selectedItems.length} selected item(s)?</p>
+                    <p className="mb-4">Are you sure you want to delete {selectedItems.length} selected item</p>
                     <div className="flex justify-end gap-2 mt-[20px]">
                       <button
                         onClick={() => setShowMultiDeleteConfirm(false)}
@@ -530,6 +530,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                             <th className="py-1">Action</th>
                             <th className="py-1">Section</th>
                             <th className="py-1 text-center">Changes</th>
+                            <th className="py-1">Undo</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -550,14 +551,14 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                               <td className="py-1 text-[12px]">
                                 <div className="flex items-center justify-center gap-2">
                                   <span>{change.data?.name || "Unnamed"}</span>
-                                  <button
+                                </div>
+                              </td>
+                              <td><button
                                     onClick={() => handleRevertChange(change)}
                                     className="text-red-500 hover:text-red-700 font-bold"
                                   >
                                     ✕
-                                  </button>
-                                </div>
-                              </td>
+                                  </button></td>
                             </tr>
                           ))}
                           {getChanges(pendingDraft).length === 0 && (

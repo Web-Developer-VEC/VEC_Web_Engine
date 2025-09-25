@@ -65,7 +65,6 @@ const CurriculumPage = ({ data }) => {
         const row = list[i];
         if (!row) return false;
         if (!row.year || String(row.year).trim() === "") return false;
-        // Accept existing pdf_path OR newly uploaded file
         if (!row.pdf_path && !row._uploadedFile) return false;
       }
     }
@@ -311,6 +310,61 @@ const CurriculumPage = ({ data }) => {
     return changes;
   };
 
+  const formatChangeText = (change) => {
+    const idx = change.path?.idx;
+    if (change.action === "Added") {
+      if (idx === null) {
+        return `Section added: ${change.data?.heading || "(no heading)"}`;
+      } else {
+        const year = change.data?.year || "";
+        const file = change.data?.pdf_path || "";
+        const parts = [];
+        if (year) parts.push(`Year: ${year}`);
+        if (file) parts.push(`File: ${file}`);
+        return parts.length ? `Added — ${parts.join(" | ")}` : "Added";
+      }
+    } else if (change.action === "Deleted") {
+      if (idx === null) {
+        return `Section deleted: ${change.data?.heading || "(no heading)"}`;
+      } else {
+        const year = change.data?.year || "";
+        const file = change.data?.pdf_path || "";
+        const parts = [];
+        if (year) parts.push(`Year: ${year}`);
+        if (file) parts.push(`File: ${file}`);
+        return parts.length ? `Deleted — ${parts.join(" | ")}` : "Deleted";
+      }
+    } else if (change.action === "Updated") {
+      if (idx === null) {
+        const before = change.data?.before || "";
+        const after = change.data?.after || "";
+        return `Heading: "${before}" → "${after}"`;
+      } else {
+        const before = change.data?.before || {};
+        const after = change.data?.after || {};
+        const beforeParts = [];
+        const afterParts = [];
+        if (before.year) beforeParts.push(before.year);
+        if (before.pdf_path) beforeParts.push(before.pdf_path);
+        if (after.year) afterParts.push(after.year);
+        if (after.pdf_path) afterParts.push(after.pdf_path);
+        const b = beforeParts.length ? beforeParts.join(" | ") : "—";
+        const a = afterParts.length ? afterParts.join(" | ") : "—";
+        return `Updated — ${b} → ${a}`;
+      }
+    }
+    return JSON.stringify(change.data);
+  };
+
+  // NEW: displayAction maps internal action values to labels the user asked for
+  const displayAction = (action) => {
+    if (!action) return "";
+    if (action === "Updated") return "Edit";
+    if (action === "Added") return "Add";
+    if (action === "Deleted") return "Delete";
+    return action;
+  };
+
   const handleRevertChange = (change) => {
     if (!pendingData) return;
     const updated = deepCopy(pendingData);
@@ -321,7 +375,6 @@ const CurriculumPage = ({ data }) => {
     const idx = path?.idx;
 
     if (action === "Added") {
-
       if (idx === null) {
         if (updated[sec]) updated.splice(sec, 1);
       } else {
@@ -367,9 +420,10 @@ const CurriculumPage = ({ data }) => {
     );
   }
 
+  const changes = getChanges();
+
   return (
     <div className="containers mt-5 relative pb-28">
-      {/* Toast container */}
       <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover />
 
       {!isEditing && (
@@ -447,7 +501,6 @@ const CurriculumPage = ({ data }) => {
                               }
                             />
                           </label>
-                          {/* validation message */}
                           {(!item?.pdf_path && !item?._uploadedFile) && isChanged && (
                             <div className="text-xs text-red-500 mt-1"></div>
                           )}
@@ -485,7 +538,6 @@ const CurriculumPage = ({ data }) => {
                   </div>
                 ))}
 
-                {/* If editing, allow adding a new syllabus row for that section */}
                 {isEditing && (
                   <div style={{ marginTop: 8 }}>
                     <button
@@ -520,7 +572,6 @@ const CurriculumPage = ({ data }) => {
         </div>
       )}
 
-      {/* bottom floating edit controls (Cancel left, Save right if changes AND valid) */}
       {isEditing && (
         <div
           style={{
@@ -539,7 +590,6 @@ const CurriculumPage = ({ data }) => {
             Cancel
           </button>
 
-          {/* Save button only appears when there are changes AND mandatory fields are filled */}
           {isChanged && editedData && isValidForSave(editedData) && (
             <button
               onClick={handleSave}
@@ -551,7 +601,6 @@ const CurriculumPage = ({ data }) => {
         </div>
       )}
 
-      {/* After saving (pendingData exists) show Discard + Request buttons bottom-right when NOT editing */}
       {!isEditing && pendingData && (
         <div
           className="pending-actions"
@@ -581,7 +630,6 @@ const CurriculumPage = ({ data }) => {
         </div>
       )}
 
-      {/* Multi-delete confirm modal */}
       {showMultiDeleteConfirm && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
@@ -608,7 +656,6 @@ const CurriculumPage = ({ data }) => {
         </div>
       )}
 
-      {/* Final Request Modal (your provided modal UI integrated) */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
@@ -627,28 +674,19 @@ const CurriculumPage = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {getChanges().map((change, idx) => (
+                  {changes.map((change, idx) => (
                     <tr key={idx} className="border-t">
-                      {/* Action */}
                       <td
                         className={`py-1 ${
                           change.action === "Added" ? "text-green-600" : change.action === "Deleted" ? "text-red-600" : "text-blue-600"
                         }`}
                       >
-                        {change.action}
+                        {displayAction(change.action)}
                       </td>
-
-                      {/* Section */}
                       <td className="py-1">{change.section || "Library Faculty"}</td>
-
-                      {/* Data + revert button */}
                       <td className="py-1 text-[12px]">
                         <div className="flex items-center justify-center gap-2">
-                          <span>
-                            {change.action === "Updated"
-                              ? change.data?.after?.year || change.data?.after?.pdf_path || "Updated"
-                              : change.data?.year || change.data?.pdf_path || JSON.stringify(change.data)}
-                          </span>
+                          <span>{formatChangeText(change)}</span>
                           <button
                             onClick={() => handleRevertChange(change)}
                             className="text-red-500 hover:text-red-700 font-bold"
@@ -660,7 +698,7 @@ const CurriculumPage = ({ data }) => {
                     </tr>
                   ))}
 
-                  {getChanges().length === 0 && (
+                  {changes.length === 0 && (
                     <tr>
                       <td colSpan={3} className="py-4">
                         No changes to request.
@@ -671,7 +709,6 @@ const CurriculumPage = ({ data }) => {
               </table>
             </div>
 
-            {/* Footer */}
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
                 Cancel

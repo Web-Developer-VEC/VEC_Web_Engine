@@ -4,7 +4,7 @@ import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaUserEdit } from "react-icons/fa";
-import { Plus, Send, Trash, Pencil } from "lucide-react";
+import { Plus, Send, Pencil } from "lucide-react";
 
 const AdminForms = ({ theme, toggle }) => {
   const studentTailRef = useRef(null);
@@ -27,6 +27,15 @@ const AdminForms = ({ theme, toggle }) => {
   const [newName, setNewName] = useState("");
   const [newLink, setNewLink] = useState("");
 
+  // Selected items for deletion
+  const [selectedItems, setSelectedItems] = useState({
+    student: [],
+    faculty: [],
+  });
+
+  // Confirmation modal state
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
 
@@ -43,22 +52,18 @@ const AdminForms = ({ theme, toggle }) => {
 
         const data = response?.data?.data;
         if (data) {
-          const students = data?.find((item) => item.category == "student")?.content || [];
-          const faculty = data?.find((item) => item.category == "faculty")?.content || [];
+          const students = data?.find((item) => item.category === "student")?.content || [];
+          const faculty = data?.find((item) => item.category === "faculty")?.content || [];
 
-          const formattedStudentResources = (students || []).map(
-            (name, index) => ({
-              name: name?.name,
-              url: UrlParser(name?.pdf_path || "#"),
-            })
-          );
+          const formattedStudentResources = (students || []).map((name) => ({
+            name: name?.name,
+            url: UrlParser(name?.pdf_path || "#"),
+          }));
 
-          const formattedFacultyResources = (faculty || []).map(
-            (name, index) => ({
-              name: name?.name,
-              url: UrlParser(name?.pdf_path || "#"),
-            })
-          );
+          const formattedFacultyResources = (faculty || []).map((name) => ({
+            name: name?.name,
+            url: UrlParser(name?.pdf_path || "#"),
+          }));
 
           setStudentResources(formattedStudentResources);
           setFacultyResources(formattedFacultyResources);
@@ -112,14 +117,6 @@ const AdminForms = ({ theme, toggle }) => {
     // 👉 Send data to backend here
   };
 
-  const handleDelete = (type, index) => {
-    if (type === "student") {
-      setStudentResources((prev) => prev.filter((_, i) => i !== index));
-    } else {
-      setFacultyResources((prev) => prev.filter((_, i) => i !== index));
-    }
-  };
-
   const handleEdit = (type, index) => {
     const item = type === "student" ? studentResources[index] : facultyResources[index];
     setIsEditingItem(true);
@@ -131,12 +128,34 @@ const AdminForms = ({ theme, toggle }) => {
   };
 
   const handleAddNew = (type) => {
-    
     setIsEditingItem(false);
     setEditType(type);
     setNewName("");
     setNewLink("");
     setShowPopup(true);
+  };
+
+  const handleCheckboxChange = (type, index) => {
+    setSelectedItems((prev) => {
+      const current = new Set(prev[type]);
+      if (current.has(index)) {
+        current.delete(index);
+      } else {
+        current.add(index);
+      }
+      return { ...prev, [type]: Array.from(current) };
+    });
+  };
+
+  const handleDeleteSelected = () => {
+    setStudentResources((prev) =>
+      prev.filter((_, i) => !selectedItems.student.includes(i))
+    );
+    setFacultyResources((prev) =>
+      prev.filter((_, i) => !selectedItems.faculty.includes(i))
+    );
+    setSelectedItems({ student: [], faculty: [] });
+    setShowDeleteConfirm(false);
   };
 
   // ✅ Handle Offline
@@ -164,17 +183,17 @@ const AdminForms = ({ theme, toggle }) => {
                 {isEditing ? (
                   <>
                     <button
-                      className="text-text bg-secd rounded-xl px-2 py-2 "
+                      className="text-text bg-secd rounded-xl px-2 py-2"
                       onClick={() => handleEdit(type, index)}
                     >
                       <Pencil size={18} />
                     </button>
-                    <button
-                      className="text-prim bg-red-700 rounded-xl px-2 py-2 "
-                      onClick={() => handleDelete(type, index)}
-                    >
-                      <Trash size={18} />
-                    </button>
+                    <input
+                      type="checkbox"
+                      checked={selectedItems[type]?.includes(index)}
+                      onChange={() => handleCheckboxChange(type, index)}
+                      className="w-4 h-4"
+                    />
                   </>
                 ) : (
                   <button
@@ -218,10 +237,10 @@ const AdminForms = ({ theme, toggle }) => {
           {!isEditing && !isDone && (
             <div className="flex justify-end pr-8 my-0 mr-10">
               <button
-                className="flex items-center bg-secd px-3 py-2 rounded text-text"
+                className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim"
                 onClick={() => setIsEditing(true)}
               >
-                <FaUserEdit className="mr-2" /> Edit
+                <Pencil size={16} className="mr-2" /> Edit
               </button>
             </div>
           )}
@@ -293,6 +312,46 @@ const AdminForms = ({ theme, toggle }) => {
               </>
             ) : null}
           </div>
+
+          {/* 🔽 Bottom Center Delete Button */}
+          {isEditing && (selectedItems.student.length > 0 || selectedItems.faculty.length > 0) && (
+            <div className="flex justify-center my-6">
+              <button
+                className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+                onClick={() => setShowDeleteConfirm(true)}
+              >
+                Delete Selected
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 🔽 Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[400px]">
+            <h2 className="text-lg font-semibold mb-4 text-center text-red-600">
+              Confirm Deletion
+            </h2>
+            <p className="text-center mb-6 text-gray-700 dark:text-gray-300">
+              Are you sure you want to delete the selected resources?
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                onClick={handleDeleteSelected}
+              >
+                Confirm
+              </button>
+              <button
+                className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
+                onClick={() => setShowDeleteConfirm(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -311,20 +370,55 @@ const AdminForms = ({ theme, toggle }) => {
               onChange={(e) => setNewName(e.target.value)}
               className="w-full mb-3 p-2 border rounded"
             />
-          
-            <input
-              type="text"
-              placeholder="Enter PDF Path"
-              value={newLink}
-              onChange={(e) => setNewLink(e.target.value)}
-              className="w-full mb-3 p-2 border rounded"
-            />
+
+            {/* Upload PDF */}
+            <div className="mb-3">
+              <label className="block text-sm font-medium mb-1"></label>
+              <input
+                type="file"
+                accept="application/pdf"
+                id="pdfUpload"
+                style={{ display: "none" }}
+                onChange={async (e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    try {
+                      const formData = new FormData();
+                      formData.append("file", file);
+
+                      // 👉 Adjust API endpoint for your backend
+                      const response = await axios.post("/api/upload/pdf", formData, {
+                        headers: { "Content-Type": "multipart/form-data" },
+                      });
+
+                      setNewLink(response.data.url || "");
+                    } catch (err) {
+                      console.error("Upload failed:", err);
+                      alert("Failed to upload file. Please try again.");
+                    }
+                  }
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => document.getElementById("pdfUpload").click()}
+                className="px-4 py-2 bg-secd text-text rounded hover:bg-brwn hover:text-prim"
+              >
+                Upload PDF
+              </button>
+
+              {/* {newLink && (
+                <p className="mt-2 text-sm text-green-600 break-words">
+                  ✅ File uploaded: {newLink}
+                </p>
+              )} */}
+            </div>
 
             <div className="flex justify-end gap-3 mt-4">
               <button
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                className="px-4 py-2 bg-secd text-text rounded hover:bg-brwn hover:text-prim"
                 onClick={() => {
-                  if(!newName || !newLink){
+                  if (!newName || !newLink) {
                     alert("update with all details");
                     return;
                   }
@@ -355,7 +449,7 @@ const AdminForms = ({ theme, toggle }) => {
                       ]);
                     }
                   }
-                  
+
                   setShowPopup(false);
                   setNewName("");
                   setNewLink("");
