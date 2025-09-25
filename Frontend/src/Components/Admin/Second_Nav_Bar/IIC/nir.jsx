@@ -270,7 +270,7 @@ const handleCancel = () => {
                         <th className="border p-2">Item</th>
                         <th className="border p-2">Old Value</th>
                         <th className="border p-2">New Value</th>
-                        <th className="border p-2">Revert</th>
+                        <th className="border p-2">Undo</th>
                       </tr>
                     </thead>
                     <tbody>

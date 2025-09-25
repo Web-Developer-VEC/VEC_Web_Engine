@@ -1,110 +1,112 @@
-[{
-  "collectionName": "about_us",
-  "collection_type": "about_vec",
-  "action": "insert",
-  "title": "insert ",
-  "meta_data": {
-    "content": [
-      "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.",
-      "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence.",
-      "hello everyone"
-    ],
-    "image_path": [
-      "/static/images/aboutvec/aboutvec1.webp",
-      "/static/images/aboutvec/aboutvec2.webp",
-      "/static/images/aboutvec/aboutvec3.webp"
-    ],
-    "links": [
-      "uploads/2025/07/EOA_Report_2025-2026.pdf",
-      "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
-      "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
-      "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
-    ]
-  }
-},
-{
-  "collectionName": "about_us",
-  "collection_type": "AISHE",
-  "action": "insert",
-  "title": "insert ",
-  "category": "2021-2022",
-  "meta_data": {
-    "name": "dinesh",
-    "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
-  }
-},
-{
-  "collectionName": "about_us",
-  "collection_type": "about_vec",
-  "action": "update",
-  "title": "update",
-  "meta_data": {
-    "content": [
-      "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.",
-      "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence."
-    ],
-    "image_path": [
-      "/static/images/aboutvec/aboutvec1.webp",
-      "/static/images/aboutvec/aboutvec2.webp",
-      "/static/images/aboutvec/aboutvec3.webp"
-    ],
-    "links": [
-      "uploads/2025/07/EOA_Report_2025-2026.pdf",
-      "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
-      "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
-      "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
-    ]
+[
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "about_vec",
+    "action": "insert",
+    "title": "insert about vec",
+    "meta_data": {
+      "name":"AICTE Approval",
+      "pdf_path":""
+    }
   },
-  "original_data": {
-    "content": [
-      "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.",
-      "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence.",
-      "hello everyone"
-    ],
-    "image_path": [
-      "/static/images/aboutvec/aboutvec1.webp",
-      "/static/images/aboutvec/aboutvec2.webp",
-      "/static/images/aboutvec/aboutvec3.webp"
-    ],
-    "links": [
-      "uploads/2025/07/EOA_Report_2025-2026.pdf",
-      "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
-      "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
-      "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
-    ]
-  }
-},
-{
-  "collectionName": "about_us",
-  "collection_type": "AISHE",
-  "action": "update",
-  "title": "update",
-  "category": "2022-2023",
-  "meta_data": {
-    "name": "dinesh",
-    "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "about_vec",
+    "action": "update",
+    "title": "update",
+    "meta_data": {
+          "name": "AICTE",
+          "pdf_path":  ""  
+    },
+    "original_data": {
+          "name": "AICTE Approval",
+          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"     
+    }
   },
-  "original_data": {
-    "name": "Certificate",
-    "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "about_vec",
+    "action": "delete",
+    "title": "delete",
+    "meta_data":
+        {
+          "name": "AICTE Approval",
+          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"
+        }
+  },
+
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "insert",
+    "title": "insert ",
+    "category": "2025-2026",
+    "meta_data": 
+        {
+          "name": "Certificate",
+          "pdf_path": ""
+        }
+
+      },
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "update",
+    "title": "update",
+    "category": "2022-2023",
+    "meta_data": {
+      "name": "Certificate",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "name": "Certificate",
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+    }
+  },
+
+
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "delete",
+    "title": "delete ",
+    "category": "2021-2022",
+    "meta_data": {
+      "name": "Certificate 2",
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2021-2022 Certificate.pdf"
+    }
+  },
+
+
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "delete",
+    "title": "delete ",
+    "category": "2022-2023",
+    "meta_data": {
+        "category": "2021-2022",
+        "content": [
+          {
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+          }
+        ]
+      }
   }
-},
-{
-  "collectionName": "about_us",
-  "collection_type": "AISHE",
-  "action": "delete",
-  "title": "delete ",
-  "category": "2021-2022",
-  "meta_data": {
-    "name": "Certificate",
-    "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2021-2022 Certificate.pdf"
-  }
-},
-{
-  "collectionName": "about_us",
-  "collection_type": "AISHE",
-  "action": "delete",
-  "title": "delete ",
-  "category": "2022-2023",
-  "meta_data": {}
-}]
+]

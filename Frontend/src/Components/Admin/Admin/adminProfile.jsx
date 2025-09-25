@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Check, Clock, Trash2, Plus, LogOut, Mail, Phone, Shield, Calendar, Activity } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 // Dummy static pending requests (replace with API later)
 const staticPendingRequests = [
@@ -169,7 +170,23 @@ export default function AdminProfilePage() {
   const userSession = JSON.parse(sessionStorage.getItem("userSession") || "{}");
   const navigate = useNavigate();
 
-  const [pendingRequests] = useState(staticPendingRequests)
+  const [pendingRequests, setPendingRequests] = useState(staticPendingRequests);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responce = await axios.get('/api/admin-backend/adminrequest');
+
+        console.log("Responce",responce.data);
+
+        // setPendingRequests(responce.data);
+      } catch (error) {
+        console.error("Error fetching the Admin pending request",error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const handleLogout = () => {
     sessionStorage.removeItem("userSession")

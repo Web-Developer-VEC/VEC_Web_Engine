@@ -68,7 +68,7 @@ const allRoutes = [
   "/hosLanding",
   "/other-facilities",
   "/gallery",
-  "/gallery-details",
+  "/gallery_details",
   "/grievances",
   "/webteam",
   "/web_contact",

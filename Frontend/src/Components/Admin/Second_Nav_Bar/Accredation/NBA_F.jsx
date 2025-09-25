@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./admin_NBA_F.css";
 import LoadComp from "../../LoadComp";
 import { FaTrash, FaPlus, FaEye } from "react-icons/fa";
-import { Pencil, Send, Trash2 } from "lucide-react";
+import { Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -44,9 +44,32 @@ const NBA_F = ({ data }) => {
     setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
   };
 
+  // upsertEdited: coalesce multiple quick edits into single Edited entry for same identifiers
+  const upsertEditedLog = (matchPredicate, newEntry) => {
+    setChangeLog((prev) => {
+      const clone = [...prev];
+      const idx = clone.findIndex((c) => c.action === "Edited" && matchPredicate(c));
+      if (idx !== -1) {
+        // preserve original prevData if it exists, otherwise set from newEntry.prevData
+        const existing = clone[idx];
+        clone[idx] = {
+          ...existing,
+          // keep existing.prevData if present, else newEntry.prevData
+          prevData: existing.prevData || newEntry.prevData,
+          // update data and other fields
+          ...newEntry,
+          id: existing.id, // keep id stable
+        };
+        return clone;
+      } else {
+        return [...clone, { id: uid("chg_"), ...newEntry }];
+      }
+    });
+  };
+
   const getChanges = () => changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
 
-  // revert a logged change and update editableData and changeLog
+  // Revert a logged change and update editableData and changeLog
   const handleRevertChange = (change) => {
     const updated = JSON.parse(JSON.stringify(editableData));
 
@@ -91,7 +114,7 @@ const NBA_F = ({ data }) => {
       } else if (change.type === "fileReplace") {
         if (typeof change.rowIndex === "number" && typeof change.pdfIndex === "number") {
           if (updated[change.rowIndex] && updated[change.rowIndex].pdfs?.[change.pdfIndex]) {
-            updated[change.rowIndex].pdfs[change.pdfIndex].pdfs_path = change.prevData?.pdfs_path ?? updated[change.rowIndex].pdfs[change.pdfIndex].pdfs_path;
+            updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path = change.prevData?.pdf_path ?? updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path;
             if (change.prevData?.file) updated[change.rowIndex].pdfs[change.pdfIndex].file = change.prevData.file;
             else delete updated[change.rowIndex].pdfs[change.pdfIndex].file;
           }
@@ -128,11 +151,11 @@ const NBA_F = ({ data }) => {
   }, [data]);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") {
+    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") {
       toast.warn("No PDF available for this file!");
       return;
     }
-    window.open(`${UrlParser(pdf.pdfs_path)}#toolbar=0`, "_blank");
+    window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
   };
 
   const handleEditToggle = () => {
@@ -251,6 +274,7 @@ const NBA_F = ({ data }) => {
     toast.success("Selected rows deleted!");
   };
 
+  // ---- UPDATED: coalescing Dept edits ----
   const handleDeptChange = (rowIndex, value) => {
     const updated = [...editableData];
     const prev = updated[rowIndex]?.department;
@@ -258,18 +282,22 @@ const NBA_F = ({ data }) => {
     setEditableData(updated);
     setHasChanges(true);
 
-    pushChangeLog({
-      action: "Edited",
-      type: "dept",
-      rowIndex,
-      prevData: { department: prev },
-      data: { department: value },
-    });
+    // Upsert Edited entry for dept (coalesce keystrokes)
+    upsertEditedLog(
+      (c) => c.type === "dept" && c.rowIndex === rowIndex,
+      {
+        action: "Edited",
+        type: "dept",
+        rowIndex,
+        prevData: { department: prev },
+        data: { department: value },
+      }
+    );
   };
 
   const handleAddPdf = (rowIndex) => {
     const updated = [...editableData];
-    const newPdf = { name: "", pdfs_path: "", _tempId: uid("tmp_pdf_") };
+    const newPdf = { name: "", pdf_path: "", _tempId: uid("tmp_pdf_") };
     if (!Array.isArray(updated[rowIndex].pdfs)) updated[rowIndex].pdfs = [];
     updated[rowIndex].pdfs.push(newPdf);
     setEditableData(updated);
@@ -283,28 +311,34 @@ const NBA_F = ({ data }) => {
     });
   };
 
+  // ---- UPDATED: coalesce file replace edits ----
   const handleFileUpload = (rowIndex, pdfIndex, file) => {
     const updated = [...editableData];
     const fileURL = URL.createObjectURL(file);
 
     const prevItem = updated[rowIndex]?.pdfs?.[pdfIndex] || {};
-    const prevData = { pdfs_path: prevItem.pdfs_path, file: prevItem.file };
+    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
 
-    updated[rowIndex].pdfs[pdfIndex].pdfs_path = fileURL;
+    updated[rowIndex].pdfs[pdfIndex].pdf_path = fileURL;
     updated[rowIndex].pdfs[pdfIndex].file = file;
     setEditableData(updated);
     setHasChanges(true);
 
-    pushChangeLog({
-      action: "Edited",
-      type: "fileReplace",
-      rowIndex,
-      pdfIndex,
-      prevData,
-      data: { name: updated[rowIndex].pdfs[pdfIndex].name },
-    });
+    // upsert Edited entry for fileReplace (coalesce)
+    upsertEditedLog(
+      (c) => c.type === "fileReplace" && c.rowIndex === rowIndex && c.pdfIndex === pdfIndex,
+      {
+        action: "Edited",
+        type: "fileReplace",
+        rowIndex,
+        pdfIndex,
+        prevData,
+        data: { name: updated[rowIndex].pdfs[pdfIndex].name },
+      }
+    );
   };
 
+  // ---- UPDATED: coalesce pdf name edits ----
   const handlePdfNameChange = (rowIndex, pdfIndex, value) => {
     const updated = [...editableData];
     const prevName = updated[rowIndex]?.pdfs?.[pdfIndex]?.name;
@@ -312,14 +346,18 @@ const NBA_F = ({ data }) => {
     setEditableData(updated);
     setHasChanges(true);
 
-    pushChangeLog({
-      action: "Edited",
-      type: "pdfName",
-      rowIndex,
-      pdfIndex,
-      prevData: { name: prevName },
-      data: { name: value },
-    });
+    // Upsert Edited entry for pdfName
+    upsertEditedLog(
+      (c) => c.type === "pdfName" && c.rowIndex === rowIndex && c.pdfIndex === pdfIndex,
+      {
+        action: "Edited",
+        type: "pdfName",
+        rowIndex,
+        pdfIndex,
+        prevData: { name: prevName },
+        data: { name: value },
+      }
+    );
   };
 
   const handleDeletePdf = (rowIndex, pdfIndex) => {
@@ -341,8 +379,21 @@ const NBA_F = ({ data }) => {
   };
 
   const handleRequestConfirm = () => {
-    // Submit changeLog (API) if needed
-    console.log("Submitting request with changes:", changeLog);
+    // Build payload with section "NBA" and list of change descriptions
+    const payload = {
+      section: "NBA",
+      timestamp: new Date().toISOString(),
+      changes: getChanges().map((c) => ({
+        id: c.id,
+        action: c.action,
+        raw: c,
+        description: describeChange(c),
+      })),
+    };
+
+    // Replace with your API call to send `payload`
+    console.log("Submitting request payload:", payload);
+
     setShowRequestModal(false);
     setRequestSent(true);
     setChangesSaved(false);
@@ -354,6 +405,48 @@ const NBA_F = ({ data }) => {
     setSelectedItems((prev) =>
       prev.includes(rowIndex) ? prev.filter((i) => i !== rowIndex) : [...prev, rowIndex]
     );
+  };
+
+  // --- Human-readable change descriptions ---
+  const describeChange = (change) => {
+    // row-level additions / deletions
+    if (change.rowAdded) {
+      const name = change.data?.department || "New Row";
+      return `Row added: ${name}`;
+    }
+    if (change.rowDeleted) {
+      const name = change.data?.department || `Row ${change.rowIndexDeleted + 1}`;
+      return `Row deleted: ${name}`;
+    }
+
+    // file-level adds/deletes/edits
+    if (change.action === "Added" && change.rowIndex != null && change.tempId) {
+      const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
+      const fname = change.data?.name || "(untitled file)";
+      return `File added: ${fname} (in Program: ${rowName})`;
+    }
+
+    if (change.action === "Deleted" && typeof change.rowIndex === "number" && change.data?.name) {
+      const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
+      return `File deleted: ${change.data.name} (from Program: ${rowName})`;
+    }
+
+    if (change.action === "Edited") {
+      if (change.type === "dept") {
+        return `Program renamed to: ${change.data?.department ?? "(unnamed)"}`;
+      }
+      if (change.type === "pdfName") {
+        const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
+        return `File renamed to: ${change.data?.name || "(unnamed)"} (in Program: ${rowName})`;
+      }
+      if (change.type === "fileReplace") {
+        const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
+        return `File replaced: ${change.data?.name || "(unnamed)"} (in Program: ${rowName})`;
+      }
+    }
+
+    // fallback
+    return change.data?.name ?? change.data?.department ?? JSON.stringify(change.data || {});
   };
 
   if (!isOnline) {
@@ -454,7 +547,7 @@ const NBA_F = ({ data }) => {
                                       className="border p-1 rounded text-sm"
                                     />
                                     <label className="bg-yellow-400 text-white px-3 py-1 rounded cursor-pointer">
-                                      {pdf?.pdfs_path ? "Replace" : "Upload"}
+                                      {pdf?.pdf_path ? "Replace" : "Upload"}
                                       <input
                                         type="file"
                                         accept="application/pdf"
@@ -480,7 +573,7 @@ const NBA_F = ({ data }) => {
                                       }
                                       className="text-red-500"
                                     >
-                                      <FaTrash />
+                                      <Trash2 />
                                     </button>
                                   </>
                                 ) : (
@@ -618,7 +711,7 @@ const NBA_F = ({ data }) => {
         {/* Final Request Modal */}
         {showRequestModal && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-            <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+            <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[680px] max-w-[95vw]">
               <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
                 Request
               </h2>
@@ -627,21 +720,22 @@ const NBA_F = ({ data }) => {
                 Once approved will go live.
               </p>
 
-              <div className="max-h-[250px] overflow-y-auto mb-4">
+              <div className="max-h-[320px] overflow-y-auto mb-4">
                 <table className="w-full text-center text-text dark:text-drkt border">
                   <thead>
                     <tr className="bg-gray-200 dark:bg-drka">
-                      <th className="py-1">Action</th>
-                      <th className="py-1">Section</th>
-                      <th className="py-1 text-center">Changes</th>
+                      <th className="py-2">Action</th>
+                      <th className="py-2">Section</th>
+                      <th className="py-2 text-center">Changes</th>
+                      <th className="py-2">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {getChanges().map((change, idx) => (
+                    {getChanges().map((change) => (
                       <tr key={change.id} className="border-t">
                         {/* Action */}
                         <td
-                          className={`py-1 ${
+                          className={`py-2 ${
                             change.action === "Added"
                               ? "text-green-600"
                               : change.action === "Deleted"
@@ -652,32 +746,31 @@ const NBA_F = ({ data }) => {
                           {change.action}
                         </td>
 
-                        {/* Section */}
-                        <td className="py-1">
-                          {typeof change.rowIndex === "number"
-                            ? editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`
-                            : change.data?.department || "NBA Table"}
+                        {/* Section (static "NBA" as requested) */}
+                        <td className="py-2">NBA</td>
+
+                        {/* Changes description */}
+                        <td className="py-2 text-[13px]">
+                          <div className="flex items-center justify-center gap-2">
+                            <span>{describeChange(change)}</span>
+                          </div>
                         </td>
 
-                        {/* Title (name) + revert button */}
-                        <td className="py-1 text-[12px]">
-                          <div className="flex items-center justify-center gap-2">
-                            <span>
-                              {change.data?.name ?? change.data?.department ?? (change.type === "dept" ? change.data?.department : "Unnamed")}
-                            </span>
-                            <button
-                              onClick={() => handleRevertChange(change)}
-                              className="text-red-500 hover:text-red-700 font-bold"
-                            >
-                              ✕
-                            </button>
-                          </div>
+                        {/* Undo button */}
+                        <td className="py-2">
+                          <button
+                            onClick={() => handleRevertChange(change)}
+                            className="text-red-500 hover:text-red-700 font-bold"
+                            title="Revert this change"
+                          >
+                            <X size={16} />
+                          </button>
                         </td>
                       </tr>
                     ))}
                     {getChanges().length === 0 && (
                       <tr>
-                        <td colSpan={3} className="py-6 text-sm text-gray-500">
+                        <td colSpan={4} className="py-6 text-sm text-gray-500">
                           No pending changes
                         </td>
                       </tr>

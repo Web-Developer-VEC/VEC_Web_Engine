@@ -1223,204 +1223,116 @@
         "category": "mous_details",
         "content": 
         [
-  {
-    "S_NO": 1,
-    "ORGANISATION_NAME": "Ajeya Infosol Private Ltd",
-    "MONTH_AND_YEAR": "07-09-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 2,
-    "ORGANISATION_NAME": "Futurecalls Technologies Private Ltd",
-    "MONTH_AND_YEAR": "08-09-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 3,
-    "ORGANISATION_NAME": "Salang Consultants Private Ltd",
-    "MONTH_AND_YEAR": "09-09-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 4,
-    "ORGANISATION_NAME": "MIT Square Services Private Limited, India",
-    "MONTH_AND_YEAR": "16-09-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 5,
-    "ORGANISATION_NAME": "Techfruits Solutions Private Limited",
-    "MONTH_AND_YEAR": "25-10-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 6,
-    "ORGANISATION_NAME": "Vectra Technosoft Private Limited",
-    "MONTH_AND_YEAR": "09-12-2021",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 7,
-    "ORGANISATION_NAME": "Heptre Techworks Private Limited",
-    "MONTH_AND_YEAR": "07-01-2022",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 8,
-    "ORGANISATION_NAME": "Silicon Harvest Private Limited",
-    "MONTH_AND_YEAR": "13-01-2022",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 9,
-    "ORGANISATION_NAME": "Tata Elxsi",
-    "MONTH_AND_YEAR": "23-02-2022",
-    "VALIDITY": "23-02-2024",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 10,
-    "ORGANISATION_NAME": "Arjun Vision Tech Solution Pvt. Ltd",
-    "MONTH_AND_YEAR": "24-02-2023",
-    "VALIDITY": "24-02-2026",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 11,
-    "ORGANISATION_NAME": "First Language Technologies Private Limited",
-    "MONTH_AND_YEAR": "23-11-2022",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 12,
-    "ORGANISATION_NAME": "One Host Private Limited",
-    "MONTH_AND_YEAR": "14-10-2022",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 13,
-    "ORGANISATION_NAME": "M/S Edge Matrix Multinational Coorporation ,Delaware",
-    "MONTH_AND_YEAR": "17-06-2023",
-    "VALIDITY": "17-06-2026",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 14,
-    "ORGANISATION_NAME": "DigiALERT Solution Private Limited",
-    "MONTH_AND_YEAR": "12-09-2023",
-    "VALIDITY": "12-09-2028",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 15,
-    "ORGANISATION_NAME": "Imarticus Learning",
-    "MONTH_AND_YEAR": "14-09-2023",
-    "VALIDITY": "14-09-2026",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 16,
-    "ORGANISATION_NAME": "Chase Technologies",
-    "MONTH_AND_YEAR": "30-11-2023",
-    "VALIDITY": "30-11-2026",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 17,
-    "ORGANISATION_NAME": "FeOS Technologies Private Limited",
-    "MONTH_AND_YEAR": "10-01-2024",
-    "VALIDITY": "10-01-2027",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  { 
-    "S_NO": 18,
-    "ORGANISATION_NAME": "IBM Clouds-DigiLab",
-    "MONTH_AND_YEAR": "13-02-2024",
-    "VALIDITY": "13-02-2025",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 19,
-    "ORGANISATION_NAME": "Reccsar Private Limited,Madurai",
-    "MONTH_AND_YEAR": "15-07-2024",
-    "VALIDITY": "16-07-2027",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 20,
-    "ORGANISATION_NAME": "Vish Gyana Technology Solutions,Chennai",
-    "MONTH_AND_YEAR": "19-08-2024",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 21,
-    "ORGANISATION_NAME": "Eagle Hitech Softclou Private Limited",
-    "MONTH_AND_YEAR": "17-12-2024",
-    "VALIDITY": "17-12-2029",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  },
-  {
-    "S_NO": 22,
-    "ORGANISATION_NAME": "Hyperlynx Infotech Private Limited",
-    "MONTH_AND_YEAR": "27-02-2025",
-    "VALIDITY": "Till Date",
-    "LOGO_PATH": "",
-    "PDF_PATH": "",
-    "ACTIVITIES_PLANNED": []
-  }
+            {
+              "ORGANISATION_NAME": "Ajeya Infosol Private Ltd",
+              "MONTH_AND_YEAR": "07-09-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Futurecalls Technologies Private Ltd",
+              "MONTH_AND_YEAR": "08-09-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Salang Consultants Private Ltd",
+              "MONTH_AND_YEAR": "09-09-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "MIT Square Services Private Limited, India",
+              "MONTH_AND_YEAR": "16-09-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Techfruits Solutions Private Limited",
+              "MONTH_AND_YEAR": "25-10-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Vectra Technosoft Private Limited",
+              "MONTH_AND_YEAR": "09-12-2021",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Heptre Techworks Private Limited",
+              "MONTH_AND_YEAR": "07-01-2022",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Silicon Harvest Private Limited",
+              "MONTH_AND_YEAR": "13-01-2022",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Tata Elxsi",
+              "MONTH_AND_YEAR": "23-02-2022",
+              "VALIDITY": "23-02-2024"
+            },
+            {
+              "ORGANISATION_NAME": "Arjun Vision Tech Solution Pvt. Ltd",
+              "MONTH_AND_YEAR": "24-02-2023",
+              "VALIDITY": "24-02-2026"
+            },
+            {
+              "ORGANISATION_NAME": "First Language Technologies Private Limited",
+              "MONTH_AND_YEAR": "23-11-2022",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "One Host Private Limited",
+              "MONTH_AND_YEAR": "14-10-2022",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "M/S Edge Matrix Multinational Coorporation ,Delaware",
+              "MONTH_AND_YEAR": "17-06-2023",
+              "VALIDITY": "17-06-2026"
+            },
+            {
+              "ORGANISATION_NAME": "DigiALERT Solution Private Limited",
+              "MONTH_AND_YEAR": "12-09-2023",
+              "VALIDITY": "12-09-2028"
+            },
+            {
+              "ORGANISATION_NAME": "Imarticus Learning",
+              "MONTH_AND_YEAR": "14-09-2023",
+              "VALIDITY": "14-09-2026"
+            },
+            {
+              "ORGANISATION_NAME": "Chase Technologies",
+              "MONTH_AND_YEAR": "30-11-2023",
+              "VALIDITY": "30-11-2026"
+            },
+            {
+              "ORGANISATION_NAME": "FeOS Technologies Private Limited",
+              "MONTH_AND_YEAR": "10-01-2024",
+              "VALIDITY": "10-01-2027"
+            },
+            { 
+              "ORGANISATION_NAME": "IBM Clouds-DigiLab",
+              "MONTH_AND_YEAR": "13-02-2024",
+              "VALIDITY": "13-02-2025"
+            },
+            {
+              "ORGANISATION_NAME": "Reccsar Private Limited,Madurai",
+              "MONTH_AND_YEAR": "15-07-2024",
+              "VALIDITY": "16-07-2027"
+            },
+            {
+              "ORGANISATION_NAME": "Vish Gyana Technology Solutions,Chennai",
+              "MONTH_AND_YEAR": "19-08-2024",
+              "VALIDITY": "Till Date"
+            },
+            {
+              "ORGANISATION_NAME": "Eagle Hitech Softclou Private Limited",
+              "MONTH_AND_YEAR": "17-12-2024",
+              "VALIDITY": "17-12-2029"
+            },
+            {
+              "ORGANISATION_NAME": "Hyperlynx Infotech Private Limited",
+              "MONTH_AND_YEAR": "27-02-2025",
+              "VALIDITY": "Till Date"
+            }
 ]
       }
     ]

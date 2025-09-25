@@ -521,7 +521,8 @@
   },
   {
     "type": "gallery",
-    "image_path": [
+    "data":{
+      "image_path": [
       "/static/images/e_cell/1.webp",
       "/static/images/e_cell/2.webp",
       "/static/images/e_cell/3.webp",
@@ -532,5 +533,6 @@
       "/static/images/e_cell/8.webp",
       "/static/images/e_cell/9.webp"
     ]
+  }
   }
 ]

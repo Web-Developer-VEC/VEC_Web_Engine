@@ -475,7 +475,7 @@ const handleInputChange = (id, index, field, value) => {
                     <th className="border p-2">Action</th>
                     <th className="border p-2">Section</th>
                     <th className="border p-2"> Changed</th>
-                    <th className="border p-2">Revert</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
