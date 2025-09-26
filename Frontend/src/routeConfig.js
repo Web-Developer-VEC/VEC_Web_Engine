@@ -110,7 +110,7 @@ export const routeConfig = {
   "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
   "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
   "/programs": { normal: Programmes, admin: AdminProgrammes },
-  "/acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
+  "/acadamiccal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
