@@ -219,7 +219,6 @@ async function updateOriginalData(tempDoc, tempCollection) {
           const srcKey = await normalizeKey(p.replace(/^\//, ""));
           if (srcKey.startsWith("static/")) {
             const destKey = srcKey.replace(/^static\//, "history/static/");
-            await moveFile(srcKey, destKey);
             return destKey;
           }
           return p;
@@ -230,7 +229,6 @@ async function updateOriginalData(tempDoc, tempCollection) {
           let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
           if (pathStr.startsWith("static/")) {
             const destKey = pathStr.replace(/^static\//, "history/static/");
-            await moveFile(pathStr, destKey);
             return { ...p, pdf_path: destKey };
           }
           return p;
