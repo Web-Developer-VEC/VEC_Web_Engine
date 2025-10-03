@@ -118,6 +118,7 @@ async function updateFile(tempDoc, tempCollection) {
           if (srcKey.startsWith("static/")) {
             const destKey = srcKey.replace(/^static\//, "history/static/");
             await moveFile(srcKey, destKey);
+            console.log("Hari String",destKey)
             return destKey;
           }
           return p;
@@ -129,6 +130,7 @@ async function updateFile(tempDoc, tempCollection) {
           if (pathStr.startsWith("static/")) {
             const destKey = pathStr.replace(/^static\//, "history/static/");
             await moveFile(pathStr, destKey);
+            console.log("Hari Object",destKey)
             return { ...p, pdf_path: destKey };
           }
           return p;
@@ -219,7 +221,7 @@ async function updateOriginalData(tempDoc, tempCollection) {
           const srcKey = await normalizeKey(p.replace(/^\//, ""));
           if (srcKey.startsWith("static/")) {
             const destKey = srcKey.replace(/^static\//, "history/static/");
-            return destKey;
+            return `/${destKey}`;
           }
           return p;
         }
@@ -229,7 +231,7 @@ async function updateOriginalData(tempDoc, tempCollection) {
           let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
           if (pathStr.startsWith("static/")) {
             const destKey = pathStr.replace(/^static\//, "history/static/");
-            return { ...p, pdf_path: destKey };
+            return { ...p, pdf_path: `/${destKey}` };
           }
           return p;
         }

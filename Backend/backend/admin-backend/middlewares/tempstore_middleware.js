@@ -37,6 +37,60 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           );
         }
 
+        // Deep equality (compares nested arrays & objects by value)
+function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    return a.every((el, i) => deepEqual(el, b[i]));
+  }
+
+  if (typeof a === "object" && typeof b === "object" && a && b) {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    if (keysA.length !== keysB.length) return false;
+    return keysA.every(k => deepEqual(a[k], b[k]));
+  }
+
+  return false;
+}
+
+// Recursively search inside objects/arrays
+function findMatchingItem(container, original, excludeKey) {
+  if (!container) return null;
+
+  // If it's an array, check each element
+  if (Array.isArray(container)) {
+    for (const el of container) {
+      const found = findMatchingItem(el, original, excludeKey);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  // If it's an object
+  if (typeof container === "object") {
+    // Match check (ignoring excluded key)
+    const matches = Object.keys(original)
+      .filter(k => k !== excludeKey)
+      .every(k => deepEqual(container[k], original[k]));
+
+    if (matches) return container;
+
+    // Otherwise search nested props
+    for (const key in container) {
+      if (Array.isArray(container[key]) || typeof container[key] === "object") {
+        const found = findMatchingItem(container[key], original, excludeKey);
+        if (found) return found;
+      }
+    }
+  }
+
+  return null;
+}
+
+
         // ✅ Use all uploaded files (no docIndex filter)
         const allFiles = req.uploadedFiles || [];
 
@@ -73,12 +127,20 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         const notdoc = Array.isArray(existingDoc.data)?existingDoc.data:[existingDoc.data];
 
         if(action === "update"){
+          
           if(pdf_path.length>0){
+               
+
             for (const item of notdoc) {
-              const matches = Object.keys(original_data).filter(k=>k!=="pdf_path").every(
-                k=> item[k] === original_data[k]
-              );
-             
+              const matches = findMatchingItem(item, original_data, "pdf_path");
+              // const matches = Object.keys(original_data).filter(k=>k!=="pdf_path").every(
+              //   k=> item[k] === original_data[k]
+              // );
+
+              console.log("Hari",original_data.pdf_path); 
+              console.log("Dinesh",item.pdf_path)
+              console.log("Ajith",matches)
+              
               if (matches) {
                 
                 pdf_path = Array.isArray(item.pdf_path)
@@ -88,11 +150,15 @@ module.exports = async function storeTempMiddleware(req, res, next) {
               }
             }
           }else if (image_path.length>0){
-
             for (const item of notdoc) {
-              const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
-                k=> item[k] === original_data[k]
-              );
+
+              const matches = findMatchingItem(item, original_data, "image_path");
+              // const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
+              //   k=> item[k] === original_data[k]
+               
+              // );
+               console.log("Main",item, "Original",original_data)
+
               if (matches) {
                 image_path = Array.isArray(item.image_path)
                   ? image_path

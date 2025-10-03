@@ -269,7 +269,7 @@
         "title": "dinesh",
         "department": "Artificial Intelligence & Data Science",
         "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "brochure_path": "/static/images/events/PySpark.webp",
+        "image_path": "/static/images/events/PySpark.webp",
         "website_link": "",
         "status": "True"
       }
@@ -286,7 +286,7 @@
         "title": "dinesh",
         "department": "Artificial Intelligence & Data Science",
         "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "brochure_path": "/static/images/events/PySpark.webp",
+        "image_path": "/static/images/events/PySpark.webp",
         "website_link": "",
         "status": "True"
       },
@@ -297,7 +297,7 @@
         "title": "hari",
         "department": "Artificial Intelligence & Data Science",
         "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "brochure_path": "/static/images/events/PySpark.webp",
+        "image_path": "/static/images/events/PySpark.webp",
         "website_link": "",
         "status": "True"
       }

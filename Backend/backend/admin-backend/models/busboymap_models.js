@@ -23,12 +23,14 @@ const hodHandler = require("../controllers/top_navbar/academics_controllers/hod_
 
 const busboyModels = {
   // Testing Complete
+ about_us: aboutusHandler,
+ administration: administrationHandler,
+ transport: transportHandler,
 
   // Testing Incomplete
-  about_us: aboutusHandler,
-  administration: administrationHandler,
+ 
+  
   gallery: galleryHandler,
-  transport: transportHandler,
   iqac: iqacHandler,
   landing_page_details: landingpageHandler,
   accreditations_and_ranking: accreditations_and_rankingHandler,
