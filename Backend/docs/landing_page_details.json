@@ -432,7 +432,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEP",
+        "start_date": "13 SEPT, 2025",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "Digital Twin Technology",
@@ -443,7 +443,7 @@
         "status": "True"
       },
       {
-        "start_date": "22 SEP",
+        "start_date": "22 SEPT, 2025",
         "end_date": "22 SEPT, 2025",
         "date": "22-09-2025",
         "title": "Scalathon",
@@ -454,7 +454,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEP",
+        "start_date": "13 SEPT, 2025",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "Building Real Time Systems using Data Structure and Java Programming",
@@ -465,7 +465,7 @@
         "status": "True"
       },
       {
-        "start_date": "13 SEP",
+        "start_date": "13 SEPT, 2025",
         "end_date": "13 SEPT, 2025",
         "date": "13-09-2025",
         "title": "From Idea to Device: A Hands-on Journey into IoT",
@@ -475,25 +475,80 @@
         "link": "",
         "status": "True"
 
-      },{
-        "start_date":"18 SEP",
-        "end_date": "19 Sep, 2025",
-        "date": "18-09-2025",
-        "title": "AI FUNDAMENTALS FOR MECHANICAL ENGINEERS",
+      },
+      {
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Building Management System(BMS), Direct Digital Control (DDC), Electrical Connections and Safety in RAC Systems ",
         "department": "Mechanical Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/AI.webp",
+        "image_path": "/static/images/events/BMS.webp",
         "website_link": "",
         "status": "True"
       },
        {
-        "start_date":"19 SEP",
-        "end_date": "19 SEP 2025",
-        "date": "19-09-2025",
-        "title": "WHY AI IS INEVITABLE IN INDUSTRIES",
-        "department": "Electronics & Instrumentation Engineering",
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Non-Traditional Machining - Unlocking the Next Frontier in Engineering: Insights, Challenges and Opportunities from a Supply Chain Perspective",
+        "department": "Mechanical Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/INDUSTRIES.webp",
+        "image_path": "/static/images/events/NON-TRADITIONAL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+      {
+        "start_date":"23 SEP",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Emerging Trends: Explainable AI, Edge AI, and Multimodal Systems",
+        "department": "Computer Science Engineering",
+        "content": "",
+        "image_path": "/static/images/events/MULTIMODAL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"23 Sep",
+        "end_date": "23 SEP, 2025",
+        "date": "23-09-2025",
+        "title": "Mathletics",
+        "department": "Mathematics",
+        "content": "",
+        "image_path": "/static/images/events/MATHLETICS.webp",
+        "website_link": "",
+        "status": "True"
+      },{
+        "start_date":"24 Sep",
+        "end_date": "24 SEP, 2025",
+        "date": "24-09-2025",
+        "title": "Quality Control and Precision Measurement in Automobile Industry",
+        "department": "Automobile Engineering",
+        "content": "",
+        "image_path": "/static/images/events/QUALITY CONTROL.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"24 Sep",
+        "end_date": "24 SEP, 2025",
+        "date": "24-09-2025",
+        "title": "PROXPO 2K25",
+        "department": "Electrical & Electronics Engineering",
+        "content": "",
+        "image_path": "/static/images/events/PROXPO.webp",
+        "website_link": "",
+        "status": "True"
+      },
+       {
+        "start_date":"25 Sep",
+        "end_date": "25 SEP, 2025",
+        "date": "25-09-2025",
+        "title": "Data Science and Machine Learning",
+        "department": "Computer Science & Engineering",
+        "content": "",
+        "image_path": "/static/images/events/DATA SCIENCe.webp",
         "website_link": "",
         "status": "True"
       }
