@@ -154,16 +154,11 @@ const AbtUs = ({ theme, toggle }) => {
 
                         <div className='m-2 p-2 font-[Poppins]'>
                         <div className='pdf-links grid grid-cols-1 md:grid-cols-1 md:flex flex-wrap justify-center gap-6 w-fit mx-auto text-left'>
-                            {[
-                                "AICTE Approval",
-                                "University Affiliation",
-                                "Governing Body",
-                                "Mandatory Disclosures",
-                            ].map((label, index) => (
-                           <div
+                            {AbtUsData?.about_us_pdf?.map((doc, index) => (
+                                <div
                                     key={index}
                                     onClick={() => {
-                                        const url = AbtUsData?.links[index];
+                                        const url = doc?.pdf_path;
                                         if (window.innerWidth <= 600) {
                                             window.open(UrlParser(url), "_blank");
                                         } else {
@@ -173,7 +168,7 @@ const AbtUs = ({ theme, toggle }) => {
                                     }}
                                     className='cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd hover:bg-accn text-text dark:text- hover:text-drkt'
                                 >
-                                    {label}
+                                    {doc?.name}
                                 </div>
                         ))}
                         <button

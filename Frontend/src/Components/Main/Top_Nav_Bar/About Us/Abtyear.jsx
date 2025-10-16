@@ -75,13 +75,21 @@ const AbtYear = ({ toggle, theme }) => {
       </div>
     );
   };
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> origin/main
   const navData = (aboutYearData)?.reduce((acc, item) => {
     if (item?.category) {
       acc[item.category] = renderYearContent(item.category);
     }
     return acc;
   }, {});
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 
   return (
     <>

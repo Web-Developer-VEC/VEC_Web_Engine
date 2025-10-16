@@ -162,10 +162,17 @@ const IQAC = ({ toggle , theme }) => {
 
         // Create the "OVERALL" category dynamically
         const overallPaths = Array.isArray(galleryData)
+<<<<<<< HEAD
             ? galleryData.flatMap(item => item?.paths || [])
             : [];
         const galleryWithOverall = [
             { category: "OVERALL", paths: overallPaths },
+=======
+            ? galleryData.flatMap(item => item?.image_path || [])
+            : [];
+        const galleryWithOverall = [
+            { category: "OVERALL", image_path: overallPaths },
+>>>>>>> origin/main
             ...galleryData
         ];
 
@@ -205,7 +212,11 @@ const IQAC = ({ toggle , theme }) => {
 
                         {/* Images */}
                         <div className="columns-xs mb-12">
+<<<<<<< HEAD
                             {selectedItem?.paths?.map((imagePath, index) => (
+=======
+                            {selectedItem?.image_path?.map((imagePath, index) => (
+>>>>>>> origin/main
                                 <img
                                     key={imagePath}
                                     src={UrlParser(imagePath)}
@@ -346,8 +357,8 @@ const IQAC = ({ toggle , theme }) => {
                                     <td className="text-center">{dept?.conducted_on}</td>
                                     <td className="text-center">
                                         <a
-                                            href={UrlParser(dept?.path) || "#"}
-                                            target={dept?.path ? "_blank" : ""}
+                                            href={UrlParser(dept?.pdf_path) || "#"}
+                                            target={dept?.pdf_path ? "_blank" : ""}
                                             rel="noopener noreferrer"
                                             className="text-blue-600 underline"
                                         >
@@ -396,7 +407,7 @@ const IQAC = ({ toggle , theme }) => {
                                 <td>{dept?.department_name}</td>
                                 <td className="text-center">
                                 <ul className="reportlist">
-                                    {Array.isArray(dept?.path) && dept?.path?.map((rep, repIndex) => (
+                                    {Array.isArray(dept?.pdf_path) && dept?.pdf_path?.map((rep, repIndex) => (
                                     <li key={repIndex}>
                                         <a
                                             href={UrlParser(rep) || "#"}
@@ -439,7 +450,7 @@ const IQAC = ({ toggle , theme }) => {
 
                     <embed
                         className="embed"
-                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.paths) + "#toolbar=0"
+                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.pdf_path) + "#toolbar=0"
                         }
                         type="application/pdf"
                         width="100%"
@@ -464,7 +475,7 @@ const IQAC = ({ toggle , theme }) => {
 
                     <embed
                         className="embed"
-                        src={UrlParser(iqacData[0]?.paths) + "#toolbar=0"}
+                        src={UrlParser(iqacData[0]?.pdf_path) + "#toolbar=0"}
                         type="application/pdf"
                         width="100%"
                         height="600px"
@@ -508,8 +519,8 @@ const IQAC = ({ toggle , theme }) => {
                                     {Array.isArray(dept?.title) && dept?.title?.map((title, repIndex) => (
                                     <li key={repIndex}>
                                         <a
-                                            href={UrlParser(dept?.path) || "#"}
-                                            target={dept?.path ? "_blank" : ""}
+                                            href={UrlParser(dept?.pdf_path) || "#"}
+                                            target={dept?.pdf_path ? "_blank" : ""}
                                             rel="noopener noreferrer"
                                             className="text-blue-600 underline cursor-pointer"
                                         >
@@ -543,7 +554,7 @@ const IQAC = ({ toggle , theme }) => {
                     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>Code of Ethics</h2>
                     <embed
                         className="embed"
-                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.paths) + "#toolbar=0"}
+                        src={UrlParser(Array.isArray(iqacData) && iqacData[0]?.pdf_path) + "#toolbar=0"}
                         type="application/pdf"
                         width="100%"
                         height="600px"
@@ -584,8 +595,8 @@ const IQAC = ({ toggle , theme }) => {
                                 <td className="text-center">{aqar?.year}</td>
                                 <td className="text-center">
                                     <a
-                                        href={UrlParser(aqar?.path) || "#"}
-                                        target={aqar?.path ? "_blank" : ""}
+                                        href={UrlParser(aqar?.pdf_path) || "#"}
+                                        target={aqar?.pdf_path ? "_blank" : ""}
                                         rel="noopener noreferrer"
                                         className="text-blue-600 underline cursor-pointer"
                                     >
@@ -616,7 +627,7 @@ const IQAC = ({ toggle , theme }) => {
                     <h2 className={"basis-full text-center text-[24px] text-brwn dark:text-drkt"}>ISO Certificate</h2>
                     <embed
                         className="embed"
-                        src={UrlParser(iqacData[0]?.paths) + "#toolbar=0"
+                        src={UrlParser(iqacData[0]?.pdf_path) + "#toolbar=0"
                         }
                         type="application/pdf"
                         width="100%"

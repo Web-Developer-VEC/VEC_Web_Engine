@@ -123,7 +123,7 @@ const MBA = ({ theme, toggle }) => {
                   onClick={() =>
                     handlePdfOpen(
                       // MBA_Government?.MBA_Government_link_name,
-                      UrlParser(MBA_Government?.MBA_Government_link)
+                      UrlParser(MBA_Government?.pdf_path)
                     )
                   }
                 >
@@ -151,8 +151,7 @@ const MBA = ({ theme, toggle }) => {
                               className="text-blue-600 dark:text-drka"
                               onClick={() =>
                                 handlePdfOpen(
-                                  // MBA_Management?.MBA_Management_link_name,
-                                  UrlParser(MBA_Management?.MBA_Management_link)
+                                  UrlParser(MBA_Management?.pdf_path)
                                 )
                               }
                             >
