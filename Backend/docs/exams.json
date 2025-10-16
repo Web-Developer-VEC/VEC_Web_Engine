@@ -145,55 +145,55 @@
     "data": [
         {
           "department": "B.E Automobile Engineering",
-          "deptid": "002"
+          "deptId": "002"
         },
         {
           "department": "B.E Civil Engineering",
-          "deptid": "004"
+          "deptId": "004"
         },
         {
           "department": "B.E Computer Science and Engineering",
-          "deptid": "005"
+          "deptId": "005"
         },
         {
           "department": "B.E Computer Science and Engineering (Cyber Security)",
-          "deptid": "006"
+          "deptId": "006"
         },
         {
           "department": "B.E Electronics and Communication Engineering",
-          "deptid": "009"
+          "deptId": "009"
         },
         {
           "department": "B.E Electrical and Electronics Engineering",
-          "deptid": "007"
+          "deptId": "007"
         },
         {
           "department": "B.E Electronics and Instrumentation Engineering",
-          "deptid": "008"
+          "deptId": "008"
         },
         {
           "department": "B.E Mechanical Engineering",
-          "deptid": "013"
+          "deptId": "013"
         },
         {
           "department": "B.Tech Artificial Intelligence and Data Science",
-          "deptid": "001"
+          "deptId": "001"
         },
         {
           "department": "B.Tech Information Technology",
-          "deptid": "011"
+          "deptId": "011"
         },
         {
           "department": "M.E Computer Science and Engineering",
-          "deptid": "005"
+          "deptId": "005"
         },
         {
           "department": "M.E Power Systems Engineering",
-          "deptid": "008"
+          "deptId": "008"
         },
         {
           "department": "MBA - Master of Business Administration",
-          "deptid": "017"
+          "deptId": "017"
         }
         ]
       },
