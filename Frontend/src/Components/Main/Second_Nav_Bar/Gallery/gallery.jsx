@@ -39,8 +39,8 @@ const Gallery = ({ toggle, theme}) => {
     fetchdata();
   },[])
 
-  const handleReadMore = (images, tit) => {
-    navigate(`/gallery-details`, { state: { imagespath: images, title: tit }});
+  const handleReadMore = (images, tit, link) => {
+    navigate(`/gallery-details`, { state: { imagespath: images, title: tit, link: link }});
 
   };
 
@@ -89,7 +89,7 @@ const Gallery = ({ toggle, theme}) => {
                       <h2 className="gallery-title-text">{img?.category}</h2>
                       <button
                         className="read-more-button bg-secd dark:bg-drks"
-                        onClick={() => handleReadMore(img?.image_path, img?.category)}
+                        onClick={() => handleReadMore(img?.image_path, img?.category, img?.link)}
                       >
                         View More
                       </button>

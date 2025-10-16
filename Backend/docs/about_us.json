@@ -110,8 +110,8 @@
             "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
           },
           {
-            "name": "Teaching Staff Details",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
           }
         ]
       },
@@ -127,8 +127,8 @@
             "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "
           },
           {
-            "name": "Teaching Staff Details",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"
           }
         ]
       },
@@ -144,8 +144,8 @@
             "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "
           },
           {
-            "name": "Teaching Staff Details",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"
           }
         ]
       },
@@ -161,7 +161,7 @@
             "pdf_path": ""
           },
           {
-            "name": "Teaching Staff Details",
+            "name": "Teaching Staff Details",
             "pdf_path": ""
           }
         ]
