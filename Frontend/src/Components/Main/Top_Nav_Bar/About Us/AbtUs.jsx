@@ -5,7 +5,7 @@ import LoadComp from '../../LoadComp'
 import axios from 'axios';
 import ScrollToTopButton from '../../ScrollToTopButton';
 import { useNavigate } from "react-router";
-import AbtYear from './Abtyear';
+import AbtYear from './Aishe';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);

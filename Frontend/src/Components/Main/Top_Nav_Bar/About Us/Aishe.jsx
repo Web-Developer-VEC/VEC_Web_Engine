@@ -5,7 +5,7 @@ import SideNav from "../../Second_Nav_Bar/SideNav";
 import "./AbtYr.css";
 import axios from "axios";
 
-const AbtYear = ({ toggle, theme }) => {
+const Aishe = ({ toggle, theme }) => {
   const navigate = useNavigate();
   const [section, setAbtyear] = useState("2021-2022");
   const [aboutYearData, setAboutYearData] = useState([]);
@@ -110,4 +110,4 @@ const AbtYear = ({ toggle, theme }) => {
   );
 };
 
-export default AbtYear;
+export default Aishe;

@@ -10,6 +10,7 @@ const roleAccessMap = {
   placement: ["super_admin"],
   admissions: ["super_admin"],
   administration: ["super_admin"],
+  academics: ["super_admin"],
 
   //Second Nav Bar
   gallery: ["super_admin", "gallery_admin"],

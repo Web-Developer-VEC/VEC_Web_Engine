@@ -46,8 +46,8 @@
         "department": "B.E. Civil Engineering",
         "pdfs": [
           {
-            "name": "dinesh",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "name": "santho",
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
           }
         ]
       }
@@ -62,8 +62,8 @@
         "department": "B.E. Civil Engineering",
         "pdfs": [
           {
-            "name": "dinesh",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "name": "2022 - 25",
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
           }
         ]
       },
@@ -73,7 +73,7 @@
         "pdfs": [
           {
             "name": "hari",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
           }
         ]
       }
@@ -88,8 +88,8 @@
         "department": "B.E. Civil Engineering",
         "pdfs": [
           {
-            "name": "hari",
-            "pdfs_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+            "name": "santho",
+          "pdf_path": "static/pdfs/nba/B.E. Civil Engineering_santho.pdf"
           }
         ]
       }
