@@ -2,15 +2,17 @@ async function updateData(tempDoc, mainCollection) {
 
   try {
     if (!tempDoc || typeof tempDoc !== "object") throw new Error("Invalid tempDoc format.");
+    
     const { collection_type, meta_data, category, original_data } = tempDoc;
-    if (!collection_type || !meta_data || original_data) throw new Error("Type and meta_data and original_data required");
+
+    if (!collection_type || !meta_data || !original_data) throw new Error("Type and meta_data and original_data required");
 
     // Allowed types
     const update = ["principal","HRHandBook","organization_chart"]
 
-
     // Find the document for the given collection_type
     let doc = await mainCollection.findOne({ type: collection_type });
+
     if (!doc) throw new Error(`Type '${collection_type}' does not exist. Cannot insert to non-existent collection.`);
 
     // Block HRHandBook and organization_chart insert
@@ -54,7 +56,8 @@ async function updateData(tempDoc, mainCollection) {
     );
 
     return{message:`The data is updated into the ${collection_type}`}
-   }else if(collection_type === "HandBook" ){
+   }
+   else if(collection_type === "HandBook" ){
 
     await mainCollection.updateOne(
       {type:collection_type},

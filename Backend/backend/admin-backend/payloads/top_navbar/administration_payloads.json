@@ -192,12 +192,12 @@
     "action": "update",
     "title": "update HandBook",
     "meta_data":{
-        "year": "2027-2028",
-        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+        "year": "2026-2027",
+        "pdf_path": ""
       },
     "original_data":{
-        "year": "2025-2026",
-        "pdf_path": "/static/pdfs/handbook/Handbook-25-26.pdf"
+        "year": "2026-2027",
+        "pdf_path": "/static/pdfs/handbook/HandBook-2026-2027.pdf"
       }
   },
   {
@@ -206,8 +206,8 @@
     "action": "delete",
     "title": "delete HandBook",
     "meta_data":{
-        "year": "2027-2028",
-        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+       "year": "2026-2027",
+        "pdf_path": "static/pdfs/handbook/HandBook-2026-2027.pdf"
       }
   },
   {

@@ -6,22 +6,32 @@ async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
     const realFilename =
       typeof filename === "string"
         ? filename
-        : filename?.filename || "image.jpg";
+        : filename?.filename || "file";
 
-    const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
+    const effectiveMime = mimetype || filename?.mimeType || "application/octet-stream";
 
     console.log("Uploading ecell gallery file:", { realFilename, effectiveMime });
 
-    // ✅ Allow only image formats
+    // ✅ Allow only images and PDFs
     if (!(effectiveMime.startsWith("image/") || effectiveMime === "application/pdf")) {
-  fileStream.resume();
-  return cb(new Error("Only images or PDFs are allowed")); // updated message
-}
+      fileStream.resume();
+      return cb(new Error("Only images or PDFs are allowed"));
+    }
 
     const collection_type = docs[0]?.collection_type || "gallery";
 
-    const folder = `temp/static/ecell/`;
-    const s3Key = folder + realFilename;
+    // Determine folder path based on file type
+    let folder;
+    if (effectiveMime.startsWith("image/")) {
+      folder = `temp/static/images/e_cell/`;
+    } else if (effectiveMime === "application/pdf") {
+      folder = `temp/static/pdfs/e_cell/`;
+    } else {
+      fileStream.resume();
+      return cb(new Error("Unsupported file type"));
+    }
+
+    const s3Key = `${folder}${realFilename}`;
 
     // Buffer the stream
     const chunks = [];
@@ -44,7 +54,7 @@ async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
-      location: `/${s3Key}`, // replace with full S3 URL if needed
+      location: `/${s3Key}`, // You can convert to full URL if needed
       mimetype: effectiveMime,
     });
 
