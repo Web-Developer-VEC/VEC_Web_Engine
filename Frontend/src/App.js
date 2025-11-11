@@ -94,6 +94,7 @@ import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
 import EnquiryWeb from "./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
+import RankHonder from "./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -261,6 +262,7 @@ const App = () => {
                                 <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
                                 <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
+                                <Route path="/rankholders" drk element={<RankHonder toggle={toggle} theme={theme}/>}/>
                                 <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
                                 <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>

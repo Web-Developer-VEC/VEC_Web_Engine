@@ -115,7 +115,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 5],
+            cod: [0, 6],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
@@ -132,6 +132,7 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
+                {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
                 {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
             ],
