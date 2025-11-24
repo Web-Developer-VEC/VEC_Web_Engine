@@ -84,7 +84,7 @@ async function administrationHandler(fileStream, docs, req, cb, filename, mimety
       mimeType = effectivepdfMime;
         ext = path.extname(realpdfname) || ".pdf";
         type = "pdfs"
-        last = `HandBook/${collection_type}-${meta_data.year}`;
+        last = `handbook/${collection_type}-${meta_data.year}`;
         folder = `temp/static/${type}/${last}${ext}`;
     } 
     else if ( collection_type === "HRHandBook") {
