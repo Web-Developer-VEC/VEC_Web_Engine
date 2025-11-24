@@ -9,8 +9,9 @@ const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/
 const hitTracker = require('./main-backend/middlewares/hit_tracker');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const compression = require('compression');
 
-dotenv.config({ quiet : true });
+dotenv.config({ quiet: true });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,8 +21,9 @@ const mainBackendRoutes = require('./main-backend/routes/landing');
 const typeRoutes = require('./admin-backend/routes/landing');
 
 
-app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
+app.set('trust proxy', true); // Necessary for rate limiter to work correctly
 
+app.use(compression());
 app.use(helmet);
 //app.use(cors);
 // Middleware
@@ -59,7 +61,7 @@ connectToDatabase();
 
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
-app.use('/api/admin-backend',typeRoutes);
+app.use('/api/admin-backend', typeRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
