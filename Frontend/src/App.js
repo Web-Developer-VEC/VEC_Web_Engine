@@ -15,6 +15,7 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
+import RankHonder from "./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -246,66 +247,66 @@ const App = () => {
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
                             <Routes>
-                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData} />} />
-                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme} />} />
-                                <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme} />} />
-                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
-                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme} />} />
-                                <Route path="/handbook" drk element={<Handbook toggle={toggle} theme={theme} />} />
-                                <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme} />} />
-                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme} />} />
-                                <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme} />} />
-                                <Route path="/dean" drk element={<Dean toggle={toggle} theme={theme} />} />
-                                <Route path="/admin" drk element={<CardPage toggle={toggle} theme={theme} />} />
-                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme} />} />
-                                <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme} />} />
-                                <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme} />} />
-                                <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme} />} />
-                                <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme} />} />
-                                <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme} />} />
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
-                                <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme} />} />
-                                <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme} />} />
-                                <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme} />} />
-                                <Route path="/phd" drk element={<PhdAdmission toggle={toggle} theme={theme} />} />
-                                <Route path="/admission-team" drk element={<ADMteam toggle={toggle} theme={theme} />} />
-                                <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme} />} />
-                                <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme} />} />
-                                <Route path="/form" dork element={<Forms toggle={toggle} theme={theme} />} />
-                                <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme} />} />
-                                <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme} />} />
-                                <Route path="/rankholders" drk element={<RankHonder toggle={toggle} theme={theme} />} />
-                                <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme} />} />
-                                <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme} />} />
-                                <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme} />} />
+                                <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData}/>}/>
+                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
+                                <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
+                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme}/>}/>
+                                <Route path="/handbook"  drk element={<Handbook toggle={toggle} theme={theme}/>}/>
+                                <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
+                                <Route path="/principal" drk element={<Princ toggle={toggle} theme={theme}/>}/>
+                                <Route path="/dean" drk element={<Dean toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admin" drk element={<CardPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme}/>}/>
+                                <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
+                                <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme}/>}/>
+                                <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
+                                <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
+                                <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
+                                <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
+                                <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
+                                <Route path="/phd" drk element={<PhdAdmission toggle={toggle} theme={theme}/>}/>
+                                <Route path="/admission-team" drk element={<ADMteam toggle={toggle} theme={theme}/>}/>
+                                <Route path="/reg" drk element={<REGULATION toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Syllabus" drk element={<Syllabus toggle={toggle} theme={theme}/>}/>
+                                <Route path="/form" dork element={<Forms toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Academic" drk element={<Academres toggle={toggle} theme={theme}/>}/>
+                                <Route path="/coe" drk element={<Coe toggle={toggle} theme={theme}/>}/>
+                                <Route path="/rankholders" drk element={<RankHonder toggle={toggle} theme={theme}/>}/>
+                                <Route path="/abtplace" drk element={<Aboutplacement toggle={toggle} theme={theme}/>}/>
+                                <Route path="/place-team" drk element={<PlacementTeam toggle={toggle} theme={theme}/>}/>
+                                <Route path="/place-dep" drk element={<PlacementDetails toggle={toggle} theme={theme}/>}/>
 
-                                <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme} />} />
-                                <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme} />} />
-                                <Route path="/policies" drk element={<Policies toggle={toggle} theme={theme} />} />
-                                <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme} />} />
-                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme} />} />
-
-                                <Route path="/Accredation" drk element={<Accredation toggle={toggle} theme={theme} />} />
-                                <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme} />} />
-                                <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme} />} />
-                                <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme} />} />
-                                <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme} />} />
-                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
-                                <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme} />} />
-                                <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme} />} />
-                                <Route path="/nccnavy" drk element={<NCC_NAVY toggle={toggle} theme={theme} />} />
-                                <Route path="/nccarmy" drk element={<NCC_ARMY toggle={toggle} theme={theme} />} />
-                                <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme} />} />
-                                <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme} />} />
-                                <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme} />} />
-                                <Route path="/library" drk element={<Library toggle={toggle} theme={theme} />} />
-                                <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme} />} />
-                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} />
-                                <Route path="/gallery" drk element={<Gallery toggle={toggle} theme={theme} />} />
-                                <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme} />} />
-                                <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />} />
-                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
-                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
+                                <Route path="/Consultancy" drk element={<Consultancy toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Journal" drk element={<Journal toggle={toggle} theme={theme}/>}/>
+                                <Route path="/policies" drk element={<Policies toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
+                                
+                                <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
+                                <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme}/>}/> 
+                                <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>
+                                <Route path="/incubation" drk element={<Incub toggle={toggle} theme={theme}/>}/>
+                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
+                                <Route path="/NSS" drk element={<NSS toggle={toggle} theme={theme}/>}/>
+                                <Route path="/NCC" drk element={<NCC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/nccnavy" drk element={<NCC_NAVY toggle={toggle} theme={theme}/>}/>
+                                <Route path="/nccarmy" drk element={<NCC_ARMY toggle={toggle} theme={theme}/>}/>
+                                <Route path="/YRC" drk element={<YRC toggle={toggle} theme={theme}/>}/>
+                                <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/transport" drk element={<Transport toggle={toggle} theme={theme}/>}/>
+                                <Route path="/library" drk element={<Library toggle={toggle} theme={theme}/>}/>
+                                <Route path="/hosLanding" drk element={<HostelPage toggle={toggle} theme={theme}/>}/>
+                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
+                                <Route path="/gallery" drk element={<Gallery toggle={toggle} theme={theme}/>}/>
+                                <Route path="/gallery-details" drk element={<Gallerydetails toggle={toggle} theme={theme}/>}/>
+                                <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
+                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
+                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
