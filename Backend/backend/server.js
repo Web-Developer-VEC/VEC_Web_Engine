@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
 const helmet = require('./main-backend/middlewares/helmet_security');
@@ -7,7 +8,7 @@ const scheduleResetCounters = require('./main-backend/middlewares/schedulers/res
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
 
-dotenv.config({ quiet : true });
+dotenv.config({ quiet: true });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,8 +17,9 @@ const port = process.env.PORT || 5000;
 const mainBackendRoutes = require('./main-backend/routes/landing');
 
 
-app.set('trust proxy', true ); // Necessary for rate limiter to work correctly
+app.set('trust proxy', true); // Necessary for rate limiter to work correctly
 
+app.use(compression());
 app.use(helmet);
 //app.use(cors);
 // Middleware

@@ -1,100 +1,112 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
-import { Router, Routes, Route, useLocation} from "react-router-dom";
+import React, { useRef, useState, useCallback, useEffect, Suspense } from "react";
+import { Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styled from "styled-components";
-import {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Cookies from "universal-cookie";
+import axios from 'axios';
 import useGoogleAnalytics from "./useAnalytics.js";
-/* Landing Page Imports */
+
+/* Static Imports (Layout & Critical) */
 import Boot from "./Components/Main/Landing Comp/BootUp";
-import LandingPage from "./Landing.jsx";
 import Head from "./Components/Main/Landing Comp/Head.jsx";
 import Footer from "./Components/Main/Landing Comp/Footer.jsx";
-import TermsandCon from "./Components/Main/Landing Comp/Terms_and_Con_.jsx";
-/* AboutUs Pages Imports */
-import AbtUs from "./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx";
-import Collegevisionmission from "./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx";
-import Management from "./Components/Main/Top_Nav_Bar/About Us/Management.jsx";
-import NewTrust from "./Components/Main/Top_Nav_Bar/About Us/Trust.jsx";
-import AbtYear from "./Components/Main/Top_Nav_Bar/About Us/Abtyear.jsx";
-/* Administration Pages Imports */
-import Princ from "./Components/Main/Top_Nav_Bar/Administration/Princ.jsx";
-import Dean from "./Components/Main/Top_Nav_Bar/Administration/dean.jsx";
-import CardPage from "./Components/Main/Top_Nav_Bar/Administration/admin.jsx";
-import ExecutiveCommittee from "./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx";
-import CollegeOrgChart from "./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx";
-import Handbook from "./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx";
-/* Academics Pages Imports */
-import DepartmentPage from "./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx";
-import AcademicDepartments from "./Components/Main/Top_Nav_Bar/Academics/Department.jsx";
-import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
-import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx";
-import Facultyprofile from "./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx";
-/* Admisiion Pages Imports */
-import UgAdmission from "./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx";
-import ME from "./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx";
-import MBA from "./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx";
-import PhdAdmission from "./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx";
-import ADMteam from "./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx";
-/* Exams Pages Imports */
-import REGULATION from "./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx";
-import Syllabus from "./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx";
-import Forms from "./Components/Main/Top_Nav_Bar/Exams/forms.jsx";
-import Coe from "./Components/Main/Top_Nav_Bar/Exams/Coe.jsx";
-/* Research Pages Import */
-import Academres from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
-import Policies from "./Components/Main/Top_Nav_Bar/Research/policy.jsx";
-/* Placements Pages Imports */
-import Aboutplacement from "./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx";
-import {PlacementTeam} from "./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx";
-import {PlacementDetails} from "./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx";
-/* Second_Nav_Bar Pages Imports */
-import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
-import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
-import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
-import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
-import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import Alumni from "./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx";
-import NSS from "./Components/Main/Second_Nav_Bar/NSS/NSS.jsx";
-import NCC from "./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
-import YRC from "./Components/Main/Second_Nav_Bar/yrc/YRC.jsx";
-import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
-import Transport from "./Components/Main/Second_Nav_Bar/Transport/Transport.jsx"
-import Library from "./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"
-import OtherFacilities from "./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
-import GrievanceForm from "./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx";
-import NCC_NAVY from "./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import NCC_ARMY from "./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-import HostelPage from "./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx";
-import Gallery from "./Components/Main/Second_Nav_Bar/Gallery/gallery.jsx";
-import Gallerydetails from "./Components/Main/Second_Nav_Bar/Gallery/detailpage.jsx";
-import WebTeam from "./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx";
-// Digital Hostel
-import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
-import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
-import SuperiorLayout from "./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx";
-import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboard.jsx";
-import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
-import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-// other stuffs
-import NotFound from "./NotFound";
-import axios from 'axios';
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
-import RateLimitReach from "./ratelimit.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
-import Consultancy from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
-import BookChapter from "./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx";
-import Funded from "./Components/Main/Top_Nav_Bar/Research/Funded.jsx";
-import Journal from "./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx";
-
-import ErrorLogPage from "./Components/Developer_stuffs/errorlog/errorlog.jsx";
-import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
-import { useNavigate } from "react-router";
-import EnquiryWeb from "./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
 import DynamicTitle from "./Header.jsx";
 import RankHonder from "./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx";
+
+/* Lazy Loaded Components */
+/* Landing Page */
+const LandingPage = React.lazy(() => import("./Landing.jsx"));
+const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
+
+/* AboutUs Pages */
+const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
+const Collegevisionmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx"));
+const Management = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Management.jsx"));
+const NewTrust = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Trust.jsx"));
+const AbtYear = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Abtyear.jsx"));
+
+/* Administration Pages */
+const Princ = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Princ.jsx"));
+const Dean = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/dean.jsx"));
+const CardPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/admin.jsx"));
+const ExecutiveCommittee = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx"));
+const CollegeOrgChart = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx"));
+const Handbook = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx"));
+
+/* Academics Pages */
+const DepartmentPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx"));
+const AcademicDepartments = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Department.jsx"));
+const Programmes = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx"));
+const Acadamiccal = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const Facultyprofile = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
+
+/* Admission Pages */
+const UgAdmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx"));
+const ME = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx"));
+const MBA = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx"));
+const PhdAdmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx"));
+const ADMteam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx"));
+
+/* Exams Pages */
+const REGULATION = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx"));
+const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx"));
+const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
+const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+
+/* Research Pages */
+const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const Policies = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/policy.jsx"));
+const Consultancy = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const BookChapter = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx"));
+const Funded = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Funded.jsx"));
+const Journal = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx"));
+
+/* Placements Pages */
+const Aboutplacement = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
+const PlacementTeam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx").then(module => ({ default: module.PlacementTeam })));
+const PlacementDetails = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx").then(module => ({ default: module.PlacementDetails })));
+
+/* Second_Nav_Bar Pages */
+const Accredation = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const Iic = React.lazy(() => import("./Components/Main/Second_Nav_Bar/IIC/iic.jsx"));
+const IQAC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx"));
+const Incub = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx"));
+const Ecell = React.lazy(() => import("./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx"));
+const Alumni = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
+const NSS = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NSS/NSS.jsx"));
+const NCC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx"));
+const NCC_NAVY = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx"));
+const NCC_ARMY = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx"));
+const YRC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/yrc/YRC.jsx"));
+const SportsPage = React.lazy(() => import("./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx"));
+const Transport = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Transport/Transport.jsx"));
+const Library = React.lazy(() => import("./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"));
+const OtherFacilities = React.lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const GrievanceForm = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx"));
+const HostelPage = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx"));
+const Gallery = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/gallery.jsx"));
+const Gallerydetails = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/detailpage.jsx"));
+const WebTeam = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
+const EnquiryWeb = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
+
+/* Digital Hostel */
+const StudentLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
+const WardenLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
+const SuperiorLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx"));
+const SecurityLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/SecurityDashboard.jsx"));
+const HostelLoginDigital = React.lazy(() => import("./Components/Digital Hostel/HostelPages/Hostel Login.jsx"));
+const ForgotPassword = React.lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
+
+/* Other Stuffs */
+const NotFound = React.lazy(() => import("./NotFound"));
+const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
+const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
+const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
 
 const GlobalStyle = createGlobalStyle`
@@ -119,8 +131,8 @@ const GlobalStyle = createGlobalStyle`
         cursor: url("/cursor.svg") 0 0, auto;
     }
     `;
-    
-    const AppContainer = styled.div`
+
+const AppContainer = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -141,7 +153,7 @@ const App = () => {
     const navigate = useNavigate();
     useGoogleAnalytics();
     const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -150,27 +162,27 @@ const App = () => {
                         type: "landing_data"
                     }
                 );
-    
+
                 setLandingData(responce.data.data);
-                
+
             } catch (error) {
-                console.error("Error fetching thhe landing page Data",error);
+                console.error("Error fetching thhe landing page Data", error);
                 if (error.response.data.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
-                }
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
+                }
             }
         }
-    
+
         fetchData();
     }, []);
-    
+
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
-    
+
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
-    
+
         return () => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
@@ -185,14 +197,14 @@ const App = () => {
 
     let isAuth = cookies.get('firstTime') !== undefined && +(cookies.get('firstTime')) > 3
     if (cookies.get('firstTime') === undefined) cookies.set('firstTime', 0)
-    else if(cookies.get('firstTime') < 5) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+    else if (cookies.get('firstTime') < 5) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
 
     const load = useCallback(() => {
         setLoaded(true);
     })
 
     const toggle = useCallback(() => {
-        if(theme === "light") cookies.set('theme', 'dark')
+        if (theme === "light") cookies.set('theme', 'dark')
         else cookies.set('theme', 'light')
         setTheme(cookies.get('theme'))
     })
@@ -213,26 +225,27 @@ const App = () => {
 
     if (!isOnline) {
         return (
-          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-            <LoadComp txt={"You are offline"} />
-          </div>
-        );
-    }
+            <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+                <LoadComp txt={"You are offline"} />
+            </div>
+        );
+    }
 
     const isHostelRoute = currentPath.startsWith("/hostel")
 
     return (
         <>
-            <GlobalStyle/>
+            <GlobalStyle />
             {/* The rest of the routes */}
-                    <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
-                    {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
-                    {/* Conditionally render Head and Footer */}  
-                    <>
-                        {/* <Head/> */} 
-                        {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
-                        <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
-                            <DynamicTitle/>
+            <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
+                {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
+                {/* Conditionally render Head and Footer */}
+                <>
+                    {/* <Head/> */}
+                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                    <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
+                        <DynamicTitle />
+                        <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
                             <Routes>
                                 <Route path="/" drk element={<LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData}/>}/>
                                 <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
@@ -299,8 +312,8 @@ const App = () => {
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
-                                <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                <Route path="/hostel/login" element={<HostelLoginDigital />} />
+                                <Route path="/hostel/forget-password" element={<ForgotPassword />} />
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
@@ -310,15 +323,16 @@ const App = () => {
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
                             </Routes>
-                          
-                        </MainContentWrapper>
-                        {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={footer?.[0]}/>}
+                        </Suspense>
 
-                        <SideButton/>
-                        <ScrollToTopButton />
-                    </>
-                </AppContainer>
+                    </MainContentWrapper>
+                    {/* <Footer ref={footerRef}/> */}
+                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+
+                    <SideButton />
+                    <ScrollToTopButton />
+                </>
+            </AppContainer>
         </>
     );
 };
