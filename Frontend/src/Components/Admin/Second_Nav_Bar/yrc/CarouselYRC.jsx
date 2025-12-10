@@ -4,6 +4,7 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { FaUpload, FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -20,6 +21,7 @@ const CarouselYRC = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -202,16 +204,109 @@ const CarouselYRC = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
+  // const handleFinalRequestConfirm = () => {
+  //   if (!pendingItems) return;
     
-    setCommittedItems(deepCopy(pendingItems));
-    setItems(deepCopy(pendingItems));
-    setPendingItems(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+  //   setCommittedItems(deepCopy(pendingItems));
+  //   setItems(deepCopy(pendingItems));
+  //   setPendingItems(null);
+  //   setIsSaved(false);
+  //   setShowRequestModal(false);
+  //   toast.success("Final request submitted!");
+  // };
+
+  const handleFinalRequestConfirm = async () => {
+  if (!pendingItems && !committedItems) return;
+
+  const payload = [];
+
+  // Loop through pendingItems to detect Added/Updated items
+  pendingItems?.forEach(pItem => {
+    const cItem = committedItems.find(c => c.id === pItem.id);
+
+    if (!cItem) {
+      // New Item → Insert
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "insert",
+        title: "Add events",
+        meta_data: {
+          image_path: pItem.image_path,
+          title: pItem.title,
+          description: pItem.description,
+          date: pItem.date,
+        }
+      });
+    } else if (
+      cItem.title !== pItem.title ||
+      cItem.description !== pItem.description ||
+      cItem.date !== pItem.date ||
+      cItem.image_path !== pItem.image_path
+    ) {
+      // Existing Item → Update
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "update",
+        title: "update in events",
+        original_data: {
+          image_path: cItem.image_path,
+          title: cItem.title,
+          description: cItem.description,
+          date: cItem.date,
+        },
+        meta_data: {
+          image_path: pItem.image_path,
+          title: pItem.title,
+          description: pItem.description,
+          date: pItem.date,
+        }
+      });
+    }
+  });
+
+  // Detect Deleted items
+  committedItems?.forEach(cItem => {
+    const exists = pendingItems?.find(p => p.id === cItem.id);
+    if (!exists) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "delete",
+        title: "delete events",
+        meta_data: {
+          image_path: cItem.image_path,
+          title: cItem.title,
+          description: cItem.description,
+          date: cItem.date,
+        }
+      });
+    }
+  });
+
+  if (!payload.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  try {
+    const result = await sendRequest(payload);
+
+    if (result) {
+      setCommittedItems(deepCopy(pendingItems));
+      setItems(deepCopy(pendingItems));
+      setPendingItems(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Final request submitted successfully!");
+   
+    }
+  } catch (err) {
+    toast.error("Failed to submit request!");
+  }
+};
+
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
