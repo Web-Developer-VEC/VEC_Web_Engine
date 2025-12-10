@@ -445,28 +445,28 @@
     "data": [
       {
         "category": "23-24 FIRST MEETING",
-        "pdf_path": [
+        "image_path": [
           "/static/images/iqac/23-24_first_meeting/1.webp",
           "/static/images/iqac/23-24_first_meeting/2.webp"
         ]
       },
       {
         "category": "23-24 SECOND MEETING",
-        "pdf_path": [
+        "image_path": [
           "/static/images/iqac/23-24_second_meeting/1.webp",
           "/static/images/iqac/23-24_second_meeting/2.webp"
         ]
       },
       {
         "category": "24-25 FIRST MEETING",
-        "pdf_path": [
+        "image_path": [
           "/static/images/iqac/24-25_first_meeting/1.webp",
           "/static/images/iqac/24-25_first_meeting/2.webp"
         ]
       },
       {
         "category": "24-25 SECOND MEETING",
-        "pdf_path": [
+        "image_path": [
           "/static/images/iqac/24-25_second_meeting/1.webp",
           "/static/images/iqac/24-25_second_meeting/2.webp"
         ]

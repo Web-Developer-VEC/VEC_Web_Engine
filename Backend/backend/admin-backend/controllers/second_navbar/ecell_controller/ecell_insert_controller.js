@@ -93,20 +93,35 @@ async function insertData(tempDoc, mainCollection) {
 
     // ---------- GALLERY ----------
     if (collection_type === "gallery") {
-      if (!meta_data.image_path) throw new Error("Image path required");
-      if (!doc) {
-        await mainCollection.insertOne({
-          type: collection_type,
-          data: [meta_data.image_path],
-        });
-      } else {
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $push: { data: meta_data.image_path } }
-        );
-      }
-      return { success: true, message: "Gallery image inserted successfully" };
+    if (!meta_data.image_path) throw new Error("Image path required");
+
+    if (!doc) {
+    // No document yet, create object structure
+    await mainCollection.insertOne({
+      type: collection_type,
+      data: { image_path: meta_data.image_path },
+    });
+    } else {
+    // Document exists, append new images
+    if (!doc.data || typeof doc.data !== "object") {
+      doc.data = { image_path: [] };
     }
+    if (!Array.isArray(doc.data.image_path)) {
+      doc.data.image_path = [];
+    }
+
+    // Append new images
+    doc.data.image_path.push(...meta_data.image_path);
+
+    await mainCollection.updateOne(
+      { type: collection_type },
+      { $set: { data: doc.data } }
+    );
+    }
+
+    return { success: true, message: "Gallery images updated successfully", data: doc ? doc.data : meta_data };
+    }
+
 
     throw new Error("Invalid collection type");
   } catch (error) {

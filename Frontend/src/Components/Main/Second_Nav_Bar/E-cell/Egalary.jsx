@@ -13,7 +13,7 @@ const UrlParser = (path) => {
 };
 
 
-if (!Array.isArray(gallery)) {
+if (!Array.isArray(gallery?.image_path)) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp />
@@ -27,7 +27,7 @@ if (!Array.isArray(gallery)) {
         <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
         <div className="gallery-images">
 
-          {gallery.map((imgPath, index) => (
+          {gallery?.image_path?.map((imgPath, index) => (
             <div className="gallery-item" key={index}>
               <img src={UrlParser(imgPath)} alt={`Gallery ${index + 1}`} className="gallery-image" />
             </div>

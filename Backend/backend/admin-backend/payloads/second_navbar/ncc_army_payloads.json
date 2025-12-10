@@ -94,12 +94,12 @@
     "category": "faculty_coordinators",
     "title": "update Faculty Member",
     "original_data": {
-            "name": "Captain dinesh R",
+            "name": "Captain CHEZHIAN R",
             "designation": "NCC Army Coordinator",
             "image_path": "/static/images/ncc/army/chairman.webp"
           },
     "meta_data": {
-            "name": "Captain hari R",
+            "name": "Captain hari"  ,
             "designation": "NCC Army Coordinator",
             "image_path": "/static/images/ncc/army/chairman.webp"
           }
@@ -134,3 +134,5 @@
       }
   }
 ]
+
+

@@ -46,7 +46,7 @@ useEffect(() => {
 },[])
 
 const handleNext = useCallback(() => {
-  if (!isFlipping && currentPage < alumniData?.alumni_image_path.length - 1) {
+  if (!isFlipping && currentPage < alumniData?.image_path.length - 1) {
     setIsFlipping(true);
     setFlipDirection("right");
 
@@ -56,7 +56,7 @@ const handleNext = useCallback(() => {
       setIsFlipping(false);
     }, 500); // Match CSS transition duration
   }
-}, [isFlipping, currentPage, alumniData?.alumni_image_path.length]);
+}, [isFlipping, currentPage, alumniData?.image_path.length]);
 
 const handlePrev = useCallback(() => {
   if (!isFlipping && currentPage > 0) {
@@ -127,9 +127,9 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
                     flipDirection === "right" ? "flip-right" : ""
                   } ${flipDirection === "left" ? "flip-left" : ""}`}
                 >
-                  {alumniData?.alumni_image_path.length > 0 && (
+                  {alumniData?.image_path.length > 0 && (
                     <img
-                      src={UrlParser(alumniData?.alumni_image_path[currentPage])}
+                      src={UrlParser(alumniData?.image_path[currentPage])}
                       alt={`Alumni ${currentPage + 1}`}
                       className="image"
                     />
@@ -148,7 +148,7 @@ const [isOnline, setIsOnline] = useState(navigator.onLine);
                 </button>
                 <button
                   onClick={handleNext}
-                  disabled={currentPage === alumniData?.alumni_image_path.length - 1 || isFlipping}
+                  disabled={currentPage === alumniData?.image_path.length - 1 || isFlipping}
                   className="button"
                 >
                   ›

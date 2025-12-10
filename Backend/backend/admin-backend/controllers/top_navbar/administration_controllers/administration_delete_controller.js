@@ -1,14 +1,13 @@
-async function deleteData(tempDoc, mainCollection) {
+async function deleteData(deletetemp, mainCollection) {
   try {
-    if (!tempDoc || typeof tempDoc !== "object")
-      throw new Error("Invalid tempDoc format.");
-    const { collection_type, meta_data, category } = tempDoc;
+  
+    if (!deletetemp || typeof deletetemp !== "object")
+      throw new Error("Invalid deletetemp format.");
+    const { collection_type, meta_data, category } = deletetemp;
     if (!collection_type || !meta_data)
       throw new Error("Type and meta_data required");
 
-    if (!allAllowedTypes.includes(collection_type)) {
-      throw new Error(`'${collection_type}' is not a valid collection type.`);
-    }
+   
 
     // Find the document for the given collection_type
     let doc = await mainCollection.findOne({ type: collection_type });
@@ -65,7 +64,7 @@ async function deleteData(tempDoc, mainCollection) {
     ) {
       await mainCollection.updateOne(
             { type: collection_type},
-            { $pull: { "data.$.members": { year: meta_data.year } } }
+            { $pull: { data: { year: meta_data.year } } }
           );
 
       return { message: `The data is updated into the ${collection_type}` };

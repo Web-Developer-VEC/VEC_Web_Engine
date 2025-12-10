@@ -521,18 +521,19 @@
   },
   {
     "type": "gallery",
-    "data":{
-      "image_path": [
-      "/static/images/e_cell/1.webp",
-      "/static/images/e_cell/2.webp",
-      "/static/images/e_cell/3.webp",
-      "/static/images/e_cell/4.webp",
-      "/static/images/e_cell/6.webp",
-      "/static/images/e_cell/5.webp",
-      "/static/images/e_cell/7.webp",
-      "/static/images/e_cell/8.webp",
-      "/static/images/e_cell/9.webp"
-    ]
+    "data": {
+      "image_path":[
+        "/static/images/e_cell/1.webp",
+        "/static/images/e_cell/2.webp",
+        "/static/images/e_cell/3.webp",
+        "/static/images/e_cell/4.webp",
+        "/static/images/e_cell/6.webp",
+        "/static/images/e_cell/5.webp",
+        "/static/images/e_cell/7.webp",
+        "/static/images/e_cell/8.webp",
+        "/static/images/e_cell/9.webp"
+      ]
+    }
   }
-  }
+  
 ]
