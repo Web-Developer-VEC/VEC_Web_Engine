@@ -33,8 +33,8 @@ const Naac = ({ data }) => {
   }, []);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdfs_path || pdf.pdfs_path.trim() === "") return;
-    const url = `${UrlParser(pdf.pdfs_path)}#toolbar=0`;
+    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") return;
+    const url = `${UrlParser(pdf.pdf_path)}#toolbar=0`;
     window.open(url, "_blank"); // always new tab
   };
 
@@ -79,13 +79,12 @@ const Naac = ({ data }) => {
                   onClick={() => toggleSection(index)}
                   className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
                 transition-all rounded-2xl mb-4
-                ${
-                  openSection === index
-                    ? "bg-secd text-text dark:bg-brwn "
-                    : "bg-accn dark:bg-drks text-white "
-                }`}
+                ${openSection === index
+                      ? "bg-secd text-text dark:bg-brwn "
+                      : "bg-accn dark:bg-drks text-white "
+                    }`}
                 >
-                  {section.category}
+                  {section?.category}
                   {openSection === index ? <FaChevronUp /> : <FaChevronDown />}
                 </button>
 

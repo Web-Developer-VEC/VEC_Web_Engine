@@ -61,7 +61,6 @@ const EditModal = ({ initialData, onClose, onSave }) => {
         <h2 className="text-lg font-bold mb-4">
           {initialData ? "Edit Handbook" : "Add Handbook"}
         </h2>
-
         <div className="mb-4">
           <label className="block mb-2">Year</label>
           <input
@@ -84,7 +83,6 @@ const EditModal = ({ initialData, onClose, onSave }) => {
             placeholder="Enter PDF URL"
           />
         </div>
-
         <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
@@ -104,32 +102,55 @@ const EditModal = ({ initialData, onClose, onSave }) => {
   );
 };
 
+/* ---------- Confirm Cancel Modal ---------- */
+const ConfirmCancelModal = ({ onCancelConfirm, onCancelAbort }) => (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2000]">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px] max-w-[92vw]">
+      <h2 className="text-lg font-bold mb-4">Discard Changes?</h2>
+      <p className="mb-4">Are you sure you want to cancel and discard all unsaved changes made in this edit session?</p>
+      <div className="flex justify-end gap-3">
+        <button
+          onClick={onCancelAbort}
+          className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+        >
+          No, Keep Editing
+        </button>
+        <button
+          onClick={onCancelConfirm}
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Yes, Discard Changes
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 /* ---------- Main Admin Handbook Page ---------- */
 const AdminHandbook = ({ theme, toggle }) => {
-  const [handBook, setHandbook] = useState(null);
+  const [handBook, setHandbook] = useState(null); // current visible
+  const [originalHandbook, setOriginalHandbook] = useState(null); // snapshot before edit mode
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [editData, setEditData] = useState(null);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [changes, setChanges] = useState([]);
-  const [saved, setSaved] = useState(false);
+
+  // Track changes in current edit session
+  const [editModeChanges, setEditModeChanges] = useState([]);
+  const [showConfirmCancelModal, setShowConfirmCancelModal] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.post("/api/main-backend/administration", {
-          type: "HandBook",
-        });
+        const response = await axios.post("/api/main-backend/administration", { type: "HandBook" });
         setHandbook(response.data.data);
+        setOriginalHandbook(response.data.data); // initial data
       } catch (error) {
         console.error("Error fetching handbook data", error);
         if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", {
-            state: { msg: error.response.data.message },
-          });
+          navigate("/ratelimit", { state: { msg: error.response.data.message } });
         }
       }
     };
@@ -147,58 +168,83 @@ const AdminHandbook = ({ theme, toggle }) => {
     };
   }, []);
 
-  const handleOpenPDF = (year, pdfUrl) => {
-    if (pdfUrl && pdfUrl !== "#") {
-      window.open(pdfUrl, "_blank", "noopener,noreferrer");
-    }
+  // Enter edit mode - snapshot originalHandbook
+  const handleEditMode = () => {
+    setOriginalHandbook(handBook);
+    setEditMode(true);
+    setEditModeChanges([]); // start fresh
   };
 
+  // Track changes
+  const addChange = (change) => {
+    setEditModeChanges((prev) => [...prev, change]);
+  };
+
+  // Add
   const handleAdd = () => {
     setEditData(null);
     setShowModal(true);
-    setSaved(false);
   };
 
+  // Edit
   const handleEdit = (item, index) => {
     setEditData({ ...item, index });
     setShowModal(true);
-    setSaved(false);
   };
 
+  // Delete
   const handleDelete = (index) => {
     setHandbook((prev) => prev.filter((_, i) => i !== index));
-    setChanges((prev) => [...prev, { type: "Deleted", label: `Handbook ${index + 1}` }]);
-    setSaved(false);
+    addChange({ type: "Deleted", label: `Handbook ${index + 1}`, index, prevItem: handBook[index] });
   };
 
+  // Save modal (add/edit)
   const handleSaveModal = (form) => {
     if (editData) {
       const updated = [...handBook];
       updated[editData.index] = form;
       setHandbook(updated);
-      setChanges((prev) => [...prev, { type: "Updated", label: form.year, fields: ["year", "pdf_path"] }]);
+      addChange({ type: "Updated", label: form.year, index: editData.index, prevItem: handBook[editData.index], newItem: form });
     } else {
       setHandbook((prev) => [...prev, form]);
-      setChanges((prev) => [...prev, { type: "Added", label: form.year }]);
+      addChange({ type: "Added", label: form.year, item: form });
     }
     setShowModal(false);
-    setSaved(false);
   };
 
+  // Undo individual change (optional, could be implemented)
+  // const handleUndo = (c) => { ... }
+
+  // Save all: persist changes (simulate - could call API)
   const handleSaveAll = () => {
     setEditMode(false);
-    setSaved(true);
+    setOriginalHandbook(handBook); // update baseline
+    setEditModeChanges([]);
+    // You can add API call here to persist changes
   };
 
-  const handleUndo = (c) => {
-    setChanges((prev) => prev.filter((x) => x !== c));
+  // Cancel: show confirm modal
+  const handleCancelEdit = () => {
+    setShowConfirmCancelModal(true);
   };
 
-  const handleRequest = () => {
-    console.log("Request submitted:", changes);
-    setShowConfirmModal(false);
-    setChanges([]);
-    setSaved(false);
+  // Confirm Cancel: revert to originalHandbook, discard current editModeChanges
+  const handleConfirmCancel = () => {
+    setHandbook(originalHandbook);
+    setEditMode(false);
+    setEditModeChanges([]);
+    setShowConfirmCancelModal(false);
+  };
+
+  // Abort Cancel: just close modal, stay in edit mode
+  const handleAbortCancel = () => {
+    setShowConfirmCancelModal(false);
+  };
+
+  const handleOpenPDF = (year, pdfUrl) => {
+    if (pdfUrl && pdfUrl !== "#") {
+      window.open(pdfUrl, "_blank", "noopener,noreferrer");
+    }
   };
 
   if (!isOnline) {
@@ -219,10 +265,11 @@ const AdminHandbook = ({ theme, toggle }) => {
         subHeaderText="Comprehensive manual for students and staff"
       />
 
+      {/* Edit Button - top right */}
       {!editMode && (
         <div className="flex justify-end mt-3 px-6">
           <button
-            onClick={() => setEditMode(true)}
+            onClick={handleEditMode}
             className="px-4 py-2 mr-5 font-poppi bg-yellow-400 text-black rounded hover:bg-yellow-500"
           >
             Edit
@@ -273,92 +320,31 @@ const AdminHandbook = ({ theme, toggle }) => {
         />
       )}
 
-      {/* Confirm Request Modal */}
-      {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2000]">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[520px] max-w-[92vw]">
-            <h2 className="text-lg font-bold mb-4">Final Request for the Changes</h2>
-            <p className="text-red-600 mb-4">
-              <span className="font-semibold">Note:</span> Your changes will stay pending
-              until approved by the superior admin. Once approved, they will be applied automatically.
-            </p>
-
-            <table className="w-full border-collapse mb-6 text-sm">
-              <thead>
-                <tr className="text-left border-b">
-                  <th className="pb-2">Action</th>
-                  <th className="pb-2">Member</th>
-                  <th className="pb-2">Details</th>
-                  <th className="pb-2">Undo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {changes.length ? (
-                  changes.map((c, idx) => (
-                    <tr key={`${c.type}-${c.label}-${idx}`} className="border-b">
-                      <td className="py-2">{c.type}</td>
-                      <td className="py-2">{c.label}</td>
-                      <td className="py-2">{c.type === "Updated" ? c.fields?.join(", ") : "—"}</td>
-                      <td className="py-2">
-                        <button
-                          onClick={() => handleUndo(c)}
-                          className="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-1"
-                          title="Undo this change"
-                        >
-                          <MdUndo /> Undo
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={4} className="text-center py-4 text-gray-500">
-                      No changes detected.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-
-            <div className="flex justify-between">
-              <button
-                onClick={() => setShowConfirmModal(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleRequest}
-                className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2 hover:bg-yellow-500"
-              >
-                <FaPaperPlane /> Confirm Request
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Confirm Cancel Modal */}
+      {showConfirmCancelModal && (
+        <ConfirmCancelModal
+          onCancelConfirm={handleConfirmCancel}
+          onCancelAbort={handleAbortCancel}
+        />
       )}
 
-      {/* Bottom-right buttons */}
+      {/* Bottom-right buttons in edit mode */}
       {editMode && (
-            <div className="flex justify-end">
-              <button
-                onClick={handleSaveAll}
-                className="px-4 py-2 mb-2 mr-10 bg-green-500 text-white font-[poppins] rounded flex items-center gap-2 hover:bg-green-600"
-              >
-                Save
-              </button>
-            </div>
-          )}
-          
-
-      {!editMode && saved && changes.length > 0 && (
-        <div className="flex justify-end">
+        <div className="fixed bottom-6 right-10 flex gap-3 z-[1000]">
           <button
-            onClick={() => setShowConfirmModal(true)}
-            className="px-3 py-2 mb-3 mr-10 bg-yellow-400 text-black font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
+            onClick={handleCancelEdit}
+            className="px-4 py-2 bg-gray-400 text-white font-[poppins] rounded hover:bg-gray-500 shadow"
           >
-            <FaPaperPlane /> Request
+            Cancel
           </button>
+          {editModeChanges.length > 0 && (
+            <button
+              onClick={handleSaveAll}
+              className="px-4 py-2 bg-secd text-white font-[poppins] rounded hover:bg-yellow-500 shadow"
+            >
+              Save
+            </button>
+          )}
         </div>
       )}
     </>

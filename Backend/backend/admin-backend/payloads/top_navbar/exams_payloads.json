@@ -1,153 +1,133 @@
-[{
-  "collectionName": "exams",
-  "collection_type": "COE",
-  "action": "insert",
-  "title": "insert",
-  "category": "COE",
-  "meta_data": {
-    "name": "Dr. dinesh S",
-    "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
-    "position": "Controller of Examinations",
-    "image_path": "/static/images/coe/srinath.webp"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "regulation",
-  "action": "insert",
-  "title": "insert",
-  "category": "2023",
-  "meta_data": {
-    "name": "lg - B.E / B.Tech",
-    "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "all_forms",
-  "action": "insert",
-  "title": "insert",
-  "category": "student",
-  "meta_data": {
-    "name": "dinesh Course Registration form for credit transfer",
-    "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "exam_curriculum",
-  "action": "insert",
-  "title": "insert",
-  "meta_data": {
-    "department": "dinesh",
-    "deptid": "018"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "exam_curriculum",
-  "action": "update",
-  "title": "update",
-  "meta_data": {
-    "department": "hari",
-    "deptid": "018"
+[
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "update",
+    "title": "updating COE",
+    "category": "COE",
+    "meta_data": {
+      "name": "Dr. dinesh S",
+      "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
+      "position": "Controller of Examinations",
+      "image_path": ""
+    },
+    "original_data": {
+            "name": "Dr. SRINATH S",
+            "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
+            "position": "Controller of Examinations",
+            "image_path": "/static/images/coe/srinath.webp"
+          }
   },
-  "original_data": {
-    "department": "dinesh",
-    "deptid": "018"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "all_forms",
-  "action": "update",
-  "title": "update",
-  "category": "student",
-  "meta_data": {
-    "name": "hari Course Registration form for credit transfer",
-    "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+
+
+  {
+    "collectionName": "exams",
+    "collection_type": "regulation",
+    "action": "insert",
+    "title": "insert",
+    "category": "2023",
+    "meta_data": {
+      "name": "lg - B.E / B.Tech",
+      "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+    }
   },
-  "original_data": {
-    "name": "NPTEL Course Registration form for credit transfer",
-    "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "regulation",
-  "action": "update",
-  "title": "update",
-  "category": "2023",
-  "meta_data": {
-    "name": " B.E / B.Tech",
-    "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+  {
+    "collectionName": "exams",
+    "collection_type": "all_forms",
+    "action": "insert",
+    "title": "insert",
+    "category": "student",
+    "meta_data": {
+      "name": "dinesh Course Registration form for credit transfer",
+      "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+    }
   },
-  "original_data": {
-    "name": "UG - B.E / B.Tech",
-    "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "COE",
-  "action": "update",
-  "title": "update",
-  "category": "COE",
-  "meta_data": {
-    "name": "Dr. hari S",
-    "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
-    "position": "Controller of Examinations",
-    "image_path": "/static/images/coe/srinath.webp"
+  {
+    "collectionName": "exams",
+    "collection_type": "exam_curriculum",
+    "action": "insert",
+    "title": "insert",
+    "meta_data": {
+      "department": "dinesh",
+      "deptid": "018"
+    }
   },
-  "original_data": {
-    "name": "Dr. SRINATH S",
-    "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
-    "position": "Controller of Examinations",
-    "image_path": "/static/images/coe/srinath.webp"
+  {
+    "collectionName": "exams",
+    "collection_type": "exam_curriculum",
+    "action": "update",
+    "title": "update",
+    "meta_data": {
+      "department": "hari",
+      "deptid": "018"
+    },
+    "original_data": {
+      "department": "dinesh",
+      "deptid": "018"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "all_forms",
+    "action": "update",
+    "title": "update",
+    "category": "student",
+    "meta_data": {
+      "name": "hari Course Registration form for credit transfer",
+      "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+    },
+    "original_data": {
+      "name": "NPTEL Course Registration form for credit transfer",
+      "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "regulation",
+    "action": "update",
+    "title": "update",
+    "category": "2023",
+    "meta_data": {
+      "name": " B.E / B.Tech",
+      "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+    },
+    "original_data": {
+      "name": "UG - B.E / B.Tech",
+      "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+    }
+  },
+  
+  
+  {
+    "collectionName": "exams",
+    "collection_type": "regulation",
+    "action": "delete",
+    "title": "delete",
+    "category": "2023",
+    "meta_data": {
+      "name": "PG - ME",
+      "pdf_path": "/static/pdfs/regulation_docs/2023_me.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "exam_curriculum",
+    "action": "delete",
+    "title": "delete",
+    "meta_data": {
+      "department": "B.E Automobile Engineering",
+      "deptid": "002"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "all_forms",
+    "action": "delete",
+    "title": "delete",
+    "category": "student",
+    "meta_data": {
+      "name": "Application Form - NPTEL Credit Transfer",
+      "pdf_path": "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf"
+    }
   }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "COE",
-  "action": "delete",
-  "title": "delete",
-  "category": "COE",
-  "meta_data": {
-    "name": "Dr. hari S",
-    "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
-    "position": "Controller of Examinations",
-    "image_path": "/static/images/coe/srinath.webp"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "regulation",
-  "action": "delete",
-  "title": "delete",
-  "category": "2023",
-  "meta_data": {
-    "name": "PG - ME",
-    "pdf_path": "/static/pdfs/regulation_docs/2023_me.pdf"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "exam_curriculum",
-  "action": "delete",
-  "title": "delete",
-  "meta_data": {
-    "department": "B.E Automobile Engineering",
-    "deptid": "002"
-  }
-},
-{
-  "collectionName": "exams",
-  "collection_type": "all_forms",
-  "action": "delete",
-  "title": "delete",
-  "category": "student",
-  "meta_data": {
-    "name": "Application Form - NPTEL Credit Transfer",
-    "pdf_path": "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf"
-  }
-}]
+]

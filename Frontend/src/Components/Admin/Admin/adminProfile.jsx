@@ -170,7 +170,7 @@ export default function AdminProfilePage() {
   const userSession = JSON.parse(sessionStorage.getItem("userSession") || "{}");
   const navigate = useNavigate();
 
-  const [pendingRequests, setPendingRequests] = useState(staticPendingRequests);
+  const [pendingRequests, setPendingRequests] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -178,6 +178,7 @@ export default function AdminProfilePage() {
         const responce = await axios.get('/api/admin-backend/adminrequest');
 
         console.log("Responce",responce.data);
+        setPendingRequests(responce.data[0])
 
         // setPendingRequests(responce.data);
       } catch (error) {
@@ -287,7 +288,8 @@ export default function AdminProfilePage() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Access</p>
-                  <p className="text-sm font-semibold text-gray-900">{userSession?.routes?.length - 1 || 0} Routes</p>
+                  <p className="text-sm font-semibold text-gray-900">{userSession.routes
+                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")?.length || 0} Routes</p>
                 </div>
               </div>
             </div>
@@ -305,17 +307,17 @@ export default function AdminProfilePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">Pending Requests</h3>
-                    <p className="text-sm text-gray-500">{pendingRequests.length} requests awaiting approval</p>
+                    <p className="text-sm text-gray-500">{pendingRequests?.requests?.length} requests awaiting approval</p>
                   </div>
                 </div>
                 <div className="px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-sm font-bold rounded-full border border-orange-200">
-                  {pendingRequests.length}
+                  {pendingRequests?.requests?.length}
                 </div>
               </div>
             </div>
 
             <div className="p-6">
-              {pendingRequests.length === 0 ? (
+              {pendingRequests?.requests?.length === 0 ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-8 h-8 text-white" />
@@ -325,9 +327,9 @@ export default function AdminProfilePage() {
                 </div>
               ) : (
                 <div className="space-y-4 overflow-y-auto max-h-96">
-                  {pendingRequests.map((request) => (
+                  {pendingRequests?.requests?.map((request, idx) => (
                     <div
-                      key={request.id}
+                      key={idx}
                       className="group p-5 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
                     >
                       <div className="flex items-start space-x-4">
@@ -339,7 +341,7 @@ export default function AdminProfilePage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-2">
                             <h4 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                              {request.title}
+                              {request?.data?.[0]?.title}
                             </h4>
                             <span
                               className={`px-2 py-1 text-xs font-semibold rounded-full border capitalize ${getActionBadgeColor(request.action)}`}
@@ -347,10 +349,9 @@ export default function AdminProfilePage() {
                               {request.action}
                             </span>
                           </div>
-                          <p className="text-sm text-gray-600 mb-3 leading-relaxed">{request.description}</p>
                           <div className="flex items-center text-xs text-gray-500">
                             <Calendar className="w-3 h-3 mr-2" />
-                            <span className="font-medium">{request.timestamp}</span>
+                            <span className="font-medium">{request.time}</span>
                           </div>
                         </div>
                       </div>
@@ -375,7 +376,8 @@ export default function AdminProfilePage() {
                   </div>
                 </div>
                 <div className="px-3 py-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 text-sm font-bold rounded-full border border-green-200">
-                  {userSession?.routes?.length - 1 || 0}
+                  {userSession.routes
+                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")?.length || 0}
                 </div>
               </div>
             </div>
@@ -392,7 +394,7 @@ export default function AdminProfilePage() {
               ) : (
                 <div className="space-y-3 overflow-y-auto max-h-96">
                   {userSession.routes
-                    .filter((route) => route !== "/admin_profile")
+                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")
                     .map((route, index) => (
                       <div
                         key={index}
