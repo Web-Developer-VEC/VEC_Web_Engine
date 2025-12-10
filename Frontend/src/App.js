@@ -15,7 +15,6 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-import RankHonder from "./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
