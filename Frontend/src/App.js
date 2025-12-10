@@ -1,61 +1,49 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
-import { Router, Routes, Route, useLocation} from "react-router-dom";
+import React, { useRef, useState, useCallback, useEffect, lazy, Suspense } from "react";
+import { Router, Routes, Route, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import Cookies from "universal-cookie";
 import useGoogleAnalytics from "./useAnalytics.js";
-/* Landing Page Imports */
-import Boot from "./Components/Main/Landing Comp/BootUp";
-import LandingPage from "./Landing.jsx";
-import Head from "./Components/Main/Landing Comp/Head.jsx";
-import Footer from "./Components/Main/Landing Comp/Footer.jsx";
-import TermsandCon from "./Components/Main/Landing Comp/Terms_and_Con_.jsx";
-/* AboutUs Pages Imports */
-import AbtUs from "./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx";
-import Collegevisionmission from "./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx";
-import Management from "./Components/Main/Top_Nav_Bar/About Us/Management.jsx";
-import NewTrust from "./Components/Main/Top_Nav_Bar/About Us/Trust.jsx";
-import AbtYear from "./Components/Main/Top_Nav_Bar/About Us/Abtyear.jsx";
-/* Administration Pages Imports */
-import ExecutiveCommittee from "./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx";
-import CollegeOrgChart from "./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx";
-/* Academics Pages Imports */
-import Facultyprofile from "./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx";
-/* Second_Nav_Bar Pages Imports */
-
-
-import Alumni from "./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx";
-import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
-import OtherFacilities from "./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx";
-import WebTeam from "./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx";
-// Digital Hostel
-import StudentLayout from "./Components/Digital Hostel/Layouts/StudentDashboard.jsx";
-import WardenLayout from "./Components/Digital Hostel/Layouts/WardenDashboard.jsx";
-import SuperiorLayout from "./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx";
-import SecurityLayout from "./Components/Digital Hostel/Layouts/SecurityDashboard.jsx";
-import HostelLoginDigital from "./Components/Digital Hostel/HostelPages/Hostel Login.jsx";
-import ForgotPassword from "./Components/Digital Hostel/HostelPages/ForgetPassword.jsx";
-import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
-// other stuffs
-import NotFound from "./NotFound";
+import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
+import LoadComp from "./Components/Main/LoadComp.jsx";
 import axios from 'axios';
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
-import LoadComp from "./Components/Main/LoadComp.jsx";
-
-import ErrorLogPage from "./Components/Developer_stuffs/errorlog/errorlog.jsx";
-import HitLogs from './Components/Developer_stuffs/AnalyticsDashboard/HitLogs';
 import { useNavigate } from "react-router";
-import EnquiryWeb from "./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx";
-import DynamicTitle from "./Header.jsx";
-// Admin stuffs
-import AuthPage from "./Components/Admin/Auth/auth.jsx";
+import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
-import AdminLandingPage from "./AdminLanding.jsx";
-import Admin_DepartmentPage from "./Components/Admin/Top_Nav_Bar/Academics/DepartmentPage.jsx";
+
+// Lazy load components
+const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
+const Head = lazy(() => import("./Components/Main/Landing Comp/Head.jsx"));
+const Footer = lazy(() => import("./Components/Main/Landing Comp/Footer.jsx"));
+const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
+const AbtUs = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
+const Collegevisionmission = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx"));
+const Management = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Management.jsx"));
+const NewTrust = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Trust.jsx"));
+const ExecutiveCommittee = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx"));
+const CollegeOrgChart = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx"));
+const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
+const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
+const OtherFacilities = lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const WebTeam = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
+const StudentLayout = lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
+const WardenLayout = lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
+const SuperiorLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx"));
+const SecurityLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SecurityDashboard.jsx"));
+const HostelLoginDigital = lazy(() => import("./Components/Digital Hostel/HostelPages/Hostel Login.jsx"));
+const ForgotPassword = lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
+const HostelHeader = lazy(() => import("./Components/Digital Hostel/HostelPages/HeadHeader.jsx"));
+const NotFound = lazy(() => import("./NotFound"));
+const ErrorLogPage = lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
+const HitLogs = lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
+const EnquiryWeb = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
+const AuthPage = lazy(() => import("./Components/Admin/Auth/auth.jsx"));
+const Aishe = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Aishe.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -79,8 +67,8 @@ const GlobalStyle = createGlobalStyle`
         cursor: url("/cursor.svg") 0 0, auto;
     }
     `;
-    
-    const AppContainer = styled.div`
+
+const AppContainer = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -101,7 +89,7 @@ const App = () => {
     const navigate = useNavigate();
     useGoogleAnalytics();
     const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -110,27 +98,27 @@ const App = () => {
                         type: "landing_data"
                     }
                 );
-    
+
                 setLandingData(responce.data.data);
-                
+
             } catch (error) {
-                console.error("Error fetching thhe landing page Data",error);
-                if (error.response.data.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
-                }
+                console.error("Error fetching thhe landing page Data", error);
+                if (error.response && error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
+                }
             }
         }
-    
+
         fetchData();
     }, []);
-    
+
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
-    
+
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
-    
+
         return () => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
@@ -145,14 +133,14 @@ const App = () => {
 
     let isAuth = cookies.get('firstTime') !== undefined && +(cookies.get('firstTime')) > 3
     if (cookies.get('firstTime') === undefined) cookies.set('firstTime', 0)
-    else if(cookies.get('firstTime') < 5) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
+    else if (cookies.get('firstTime') < 5) cookies.set('firstTime', +(cookies.get('firstTime')) + 1)
 
     const load = useCallback(() => {
         setLoaded(true);
     })
 
     const toggle = useCallback(() => {
-        if(theme === "light") cookies.set('theme', 'dark')
+        if (theme === "light") cookies.set('theme', 'dark')
         else cookies.set('theme', 'light')
         setTheme(cookies.get('theme'))
     })
@@ -173,71 +161,82 @@ const App = () => {
 
     if (!isOnline) {
         return (
-          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-            <LoadComp txt={"You are offline"} />
-          </div>
-        );
-    }
+            <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+                <LoadComp txt={"You are offline"} />
+            </div>
+        );
+    }
 
     const isHostelRoute = currentPath.startsWith("/hostel");
 
 
-    const session = JSON.parse(sessionStorage.getItem("userSession")); 
+    const session = JSON.parse(sessionStorage.getItem("userSession"));
 
     return (
         <>
-            <GlobalStyle/>
+            <GlobalStyle />
             {/* The rest of the routes */}
-                    <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
-                    {window.location.pathname === "/" && showBoot && (<Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />)}
-                    {/* Conditionally render Head and Footer */}  
-                    <>
-                        {/* <Head/> */} 
+            <AppContainer className={`App ${theme} bg-prim dark:bg-drkp text-text dark:text-drkt`}>
+                {window.location.pathname === "/" && showBoot && (
+                    <Suspense fallback={null}>
+                        <Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />
+                    </Suspense>
+                )}
+                {/* Conditionally render Head and Footer */}
+                <>
+                    <Suspense fallback={<div className="h-20 bg-prim dark:bg-drkp"></div>}>
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
-                        <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
-                            <DynamicTitle/>
+                    </Suspense>
+                    <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
+                        <DynamicTitle />
+                        <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
                             <Routes>
-                                <Route path="/" drk 
-                                    element={session && session.routes.includes("/")
-                                        ? <AdminLandingPage load={load} toggle={toggle} theme={theme} pageData={landingData} />
-                                        : <LandingPage load={load} toggle={toggle} theme={theme} pageData={landingData} />
+                                <Route path="/" drk
+                                    element={
+                                        <LandingPage
+                                            load={load}
+                                            toggle={toggle}
+                                            theme={theme}
+                                            pageData={landingData}
+                                            isAdmin={session && session.routes.includes("/")}
+                                        />
                                     }
                                 />
-                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme}/>}/>
-                                <Route path="/abt-yr" drk element={<AbtYear toggle={toggle} theme={theme}/>}/>
-                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme}/>}/>
-                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme}/>}/>
-                                <Route path="/v_m" dork element={<Collegevisionmission toggle={toggle} theme={theme}/>}/>
-                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme}/>}/>
-                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme}/>}/>
-                                <Route path="/clg-org" drk element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
+                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme} />} />
+                                <Route path="/abt-yr" drk element={<Aishe toggle={toggle} theme={theme} />} />
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
+                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme} />} />
+                                <Route path="/v_m" drk element={<Collegevisionmission toggle={toggle} theme={theme} />} />
+                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme} />} />
+                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme} />} />
+                                <Route path="/clg-org" drk element={<CollegeOrgChart toggle={toggle} theme={theme} />} />
 
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
 
-                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme}/>}/>
-                                <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme}/>}/>
-                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme}/>} />
-                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
-                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
+                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
+                                {/* <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme} />} /> */}
+                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} />
+                                <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
+                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
-                                <Route path="/hostel/login" element={<HostelLoginDigital/>}/>
-                                <Route path="/hostel/forget-password" element={<ForgotPassword/>}/>
+                                <Route path="/hostel/login" element={<HostelLoginDigital />} />
+                                <Route path="/hostel/forget-password" element={<ForgotPassword />} />
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
-                                <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme}/>}/>
-                                
+                                <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme} />} />
+
                                 {/* Admin based route */}
                                 {Object.keys(routeConfig).map((path) => (
                                     <Route
-                                    key={path}
-                                    path={path}
-                                    drk
-                                    element={getRouteElement(path, session, toggle, theme)}
+                                        key={path}
+                                        path={path}
+                                        drk
+                                        element={getRouteElement(path, session, toggle, theme)}
                                     />
                                 ))}
 
@@ -246,15 +245,19 @@ const App = () => {
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
                             </Routes>
-                          
-                        </MainContentWrapper>
-                        {/* <Footer ref={footerRef}/> */}
-                        {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} ref={footerRef}/>}
+                        </Suspense>
 
-                        <SideButton/>
-                        <ScrollToTopButton />
-                    </>
-                </AppContainer>
+                    </MainContentWrapper>
+                    {!isHostelRoute && (
+                        <Suspense fallback={null}>
+                            <Footer theme={theme} data={footer?.[0]} ref={footerRef} />
+                        </Suspense>
+                    )}
+
+                    <SideButton />
+                    <ScrollToTopButton />
+                </>
+            </AppContainer>
         </>
     );
 };

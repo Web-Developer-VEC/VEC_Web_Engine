@@ -79,22 +79,10 @@
     "action": "delete",
     "title": "delete events",
     "meta_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "/static/images/ncc/navy/events59.jpg",
         "title": "INTERNATIONAL hari DAY 2015",
         "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College"
       }
-  },
-  {
-    "collectionName": "ncc_navy",
-    "collection_type": "team",
-    "action": "insert",
-    "category": "faculty_coordinators",
-    "title": "Add Faculty Member",
-    "meta_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
   },
   {
     "collectionName": "ncc_navy",
@@ -116,9 +104,26 @@
   {
     "collectionName": "ncc_navy",
     "collection_type": "team",
-    "action": "delete",
-    "category": "faculty_coordinators",
-    "title": "DELETE Faculty Member",
+    "action": "insert",
+    "category": "student_coordinators",
+    "title": "Add Faculty Member",
+    "meta_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "update",
+    "category": "student_coordinators",
+    "title": "update Faculty Member",
+    "original_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          },
     "meta_data": {
             "name": "Sub. LT hari R",
             "designation": "NCC Navy Coordinator",
@@ -129,19 +134,15 @@
     "collectionName": "ncc_navy",
     "collection_type": "team",
     "action": "delete",
-    "category": "faculty_coordinators",
+    "category": "student_coordinators",
     "title": "DELETE Faculty Member",
-    "meta_data":  {
-        "category": "faculty_coordinatores",
-        "members": [
-          {
-            "name": "Sub. LT DHANALAKSHMI R",
+    "meta_data": {
+            "name": "Sub. LT hari R",
             "designation": "NCC Navy Coordinator",
             "image_path": "/static/images/ncc/navy/chairman.webp"
           }
-        ]
-      }
   },
+
   {
     "collectionName": "ncc_navy",
     "collection_type": "awards",
@@ -156,8 +157,7 @@
     "collectionName": "ncc_navy",
     "collection_type": "awards",
     "action": "update",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
+    "title": "delete awards",
     "meta_data": {
         "image_path": "static/images/ncc/navy/stud.webp",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
@@ -171,8 +171,7 @@
     "collectionName": "ncc_navy",
     "collection_type": "awards",
     "action": "delete",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
+    "title": "delete awards",
     "meta_data": {
         "image_path": "static/images/ncc/navy/stud.webp",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"

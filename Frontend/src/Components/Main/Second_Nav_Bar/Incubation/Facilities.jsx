@@ -1,6 +1,6 @@
 import LoadComp from "../../LoadComp";
 
-function FacilityCard({ image, name, desc }) {
+function FacilityCard({ image_path, name }) {
      const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const UrlParser = (path) => {
@@ -8,7 +8,7 @@ function FacilityCard({ image, name, desc }) {
     };
   return (
     <div className="bg-prim dark:bg-black rounded-lg shadow hover:shadow-lg overflow-hidden transition-shadow">
-      <img src={UrlParser(image)} alt={name} className="w-full h-48 object-cover" />
+      <img src={UrlParser(image_path)} alt={name} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h3 className="text-lg text-center font-semibold mb-2 text-text dark:text-drkt">{name}</h3>
       </div>

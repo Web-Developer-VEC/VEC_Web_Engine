@@ -305,16 +305,16 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
                 )}
 
                 {/* Notification section */}
-                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax]'>
-                    <div className='relative no-wrap h-[15vh] md:h-[30vh] w-[35vmax] mt-4 overflow-hidden'>
+                <div className='absolute font-popp text-[1.5vmax] max-w-[50vmax] -top-12 md:-top-28 -right-5 lg:right-[1vmax] pointer-events-none overflow-hidden'>
+                    <div className='relative no-wrap h-[15vh] md:h-[30vh] w-[35vmax] mt-4 pointer-events-none overflow-hidden'>
                         {displayItems?.map((elm, i) => (
                             <p
                                 key={i} className={`absolute z-20 min-w-[20vmax] max-w-[30vmax] h-[70%] md:h-full translate-x-[-40vmax] 
                                     animate-[LslideIn_50s_ease-in_infinite] px-4 py-[4vw] border-y-2 lg:line-clamp-none line-clamp-2 
                                     [border-image:linear-gradient(to_right,theme(colors.secd),theme(colors.accn),theme(colors.secd))_1] 
                                     dark:[border-image:linear-gradient(to_right,theme(colors.drks),theme(colors.drka),theme(colors.drks))_1] 
-                                    bg-[#0000001a] backdrop-blur-[0px] text-white text-[125%]`} 
-                                    style={{ animationDelay: `${i * 8}s` }}
+                                    bg-[#0000001a] backdrop-blur-[0px] text-white text-[125%]`}
+                                style={{ animationDelay: `${i * 8}s` }}
                             >
                                 <span className="font-bold text-secd block text-[12px] md:text-2xl leading-tight">
                                     {elm.header}
@@ -329,18 +329,18 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
 
                 <img alt="Hell on earth" src={College} className={`h-[100vh] w-[100vw] fixed z-0`} />
                 <div className='absolute bottom-1/2 right-4 p-4 z-[60] pointer-events-auto'>
-                {isEditing && (
-                    <div className="flex gap-2">
-                        <button onClick={handleCancel} className="bg-gray-400 text-white rounded-[10px] px-4 py-2">Cancel</button>
-                        <button onClick={handleSave} className="bg-secd dark:bg-drkp text-text px-4 py-2 rounded-md shadow-md hover:bg-brwn hover:text-prim transition-colors flex items-center gap-2">Save</button>
-                    </div>
-                )} 
-                {finalizing && (
-                    <div className="flex gap-2">
-                        <button onClick={handleDiscardChanges} className="bg-gray-400 text-text rounded-[10px] px-4 py-2">Discard Changes</button>
-                        <button onClick={handleRequest} className="bg-secd dark:bg-drkp text-text px-4 py-2 rounded-md shadow-md hover:bg-brwn hover:text-prim transition-colors flex items-center gap-2">Request</button>
-                    </div>
-                )}
+                    {isEditing && (
+                        <div className="flex gap-2">
+                            <button onClick={handleCancel} className="bg-gray-400 text-white rounded-[10px] px-4 py-2">Cancel</button>
+                            <button onClick={handleSave} className="bg-secd dark:bg-drkp text-text px-4 py-2 rounded-md shadow-md hover:bg-brwn hover:text-prim transition-colors flex items-center gap-2">Save</button>
+                        </div>
+                    )}
+                    {finalizing && (
+                        <div className="flex gap-2">
+                            <button onClick={handleDiscardChanges} className="bg-gray-400 text-text rounded-[10px] px-4 py-2">Discard Changes</button>
+                            <button onClick={handleRequest} className="bg-secd dark:bg-drkp text-text px-4 py-2 rounded-md shadow-md hover:bg-brwn hover:text-prim transition-colors flex items-center gap-2">Request</button>
+                        </div>
+                    )}
                 </div>
             </div>
 

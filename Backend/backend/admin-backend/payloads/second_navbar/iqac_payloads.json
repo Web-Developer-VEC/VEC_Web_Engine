@@ -97,7 +97,7 @@
                     "name": "Dr. SATISH KUMAR S",
                     "designation": "Chairperson",
                     "role": "Principal, Velammal Engineering College",
-                    "imagepath": "/static/images/principal_data/principal_photo.webp"
+                    "image_path": "/static/images/principal_data/principal_photo.webp"
                 
                 
             },
@@ -114,14 +114,14 @@
                     "name": "Dr. RAMESH KUMAR",
                     "designation": "Chairperson",
                     "role": "Principal & Academic Director, Velammal Engineering College",
-                    "imagepath": "/static/images/principal_data/new_principal.webp"
+                    "image_path": "/static/images/principal_data/new_principal.webp"
             },
             "original_data": 
                 {
                     "name": "Dr. SATISH KUMAR S",
                     "designation": "Chairperson",
                     "role": "Principal, Velammal Engineering College",
-                    "imagepath": "/static/images/principal_data/principal_photo.webp"
+                    "image_path": "/static/images/principal_data/principal_photo.webp"
             }
             },
             {
@@ -136,7 +136,7 @@
                     "name": "Dr. SATISH KUMAR S",
                     "designation": "Chairperson",
                     "role": "Principal, Velammal Engineering College",
-                    "imagepath": "/static/images/principal_data/principal_photo.webp"
+                    "image_path": "/static/images/principal_data/principal_photo.webp"
                 }
                 ]
             },
@@ -153,7 +153,7 @@
             "meta_data":{
                 
                 "year": "2020-2021 (ODD)",
-                "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
+                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
                 },
             "original_data": null
             },
@@ -164,11 +164,11 @@
             "title": "updation of iqac minutes of meetings",
             "meta_data": {
                 "year": "2021-2022 (EVEN)",
-                "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf"
+                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf"
             },
             "original_data": {
                 "year": "2020-2021 (EVEN)",
-                "path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf"
+                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf"
             }
             },
             {
@@ -178,7 +178,7 @@
             "title": "deletion of iqac minutes of meetings",
             "meta_data": {
                 "year": "2020-2021 (ODD)",
-                "path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
+                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
             },
             "original_data": null
             },
@@ -193,7 +193,7 @@
                 "2022-2023",
                 "2023-2024"
                 ],
-                "path": [
+                "pdf_path": [
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2022-23.pdf",
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2023-24.pdf"
                 ]
@@ -211,7 +211,7 @@
                 "2023-2024",
                 "2022-2023"
                 ],
-                "path": [
+                "pdf_path": [
                 "/static/pdfs/iqac/aaa/004/Academic_Audit_Civil_2023-24_v2.pdf",
                 "/static/pdfs/iqac/aaa/004/Academic_Audit_Civil_2022-23_v2.pdf"
                 ]
@@ -222,7 +222,7 @@
                 "2022-2023",
                 "2023-2024"
                 ],
-                "path": [
+                "pdf_path": [
                 "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf",
                 "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
                 ]
@@ -240,7 +240,7 @@
                 "2022-2023",
                 "2023-2024"
                 ],
-                "path": [
+                "pdf_path": [
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2022-23.pdf",
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2023-24.pdf"
                 ]
@@ -257,7 +257,7 @@
             "category": "24-25 FIRST MEETING",
             "meta_data": {
                 "category": "24-25 FIRST MEETING",
-                "paths": [
+                "image_path": [
                 "/static/images/iqac/24-25_first_meeting/1.webp",
                 "/static/images/iqac/24-25_first_meeting/2.webp"
                 ]
@@ -271,13 +271,13 @@
             "title": "updation of gallery images",
             "category": "23-24 FIRST MEETING",
             "meta_data": {
-                "paths": [
+                "image_path": [
                 "/static/images/iqac/22-23_first_meeting/1.webp",
                 "/static/images/iqac/22-23_first_meeting/2.webp"
                 ]
             },
             "original_data": {
-                "paths": [
+                "image_path": [
                 "/static/images/iqac/23-24_first_meeting/1.webp",
                 "/static/images/iqac/23-24_first_meeting/2.webp"
                 ]
@@ -290,7 +290,7 @@
             "title": "deletion of gallery images",
             "category": "23-24 FIRST MEETING",
             "meta_data": {
-                "paths": [
+                "image_path": [
                 "/static/images/iqac/23-24_first_meeting/1.webp",
                 "/static/images/iqac/23-24_first_meeting/2.webp"
                 ]
@@ -304,11 +304,11 @@
             "title": "updation of strategic plan",
             "meta_data": {
                 "years": "2029-35",
-                "paths": "/static/pdfs/iqac/strategic_plan_2024-29_v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29_v2.pdf"
             },
             "original_data":  {
                 "years": "2024-29",
-                "paths": "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
+                "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
             }
             },
             {
@@ -318,7 +318,7 @@
             "title": "insertion of best practices",
             "meta_data": {
                 "year": "2022-23",
-                "path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
+                "pdf_path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
             },
             "original_data": null
             },
@@ -329,11 +329,11 @@
             "title": "updation of best practices",
             "meta_data": {
                 "year": "2020-21",
-                "path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
             },
             "original_data":  {
                 "year": "2022-23",
-                "path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
+                "pdf_path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
             }
             },
             {
@@ -343,7 +343,7 @@
             "title": "deletion of best practices",
             "meta_data":{
                 "year": "2020-21",
-                "path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
             },
             "original_data": null
             },
@@ -353,10 +353,10 @@
             "action": "update",
             "title": "updation of institutional distinctiveness",
             "meta_data": {
-                "path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
             },
             "original_data": {
-                "path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
             }
             },  
             {
@@ -365,10 +365,10 @@
             "action": "update",
             "title": "updation of code of ethics",
             "meta_data": {
-                "path": "/static/pdfs/iqac/code_of_ethics_updated.pdf"
+                "pdf_path": "/static/pdfs/iqac/code_of_ethics_updated.pdf"
             },
             "original_data": {
-                "path": "/static/pdfs/iqac/code_of_ethics.pdf"
+                "pdf_path": "/static/pdfs/iqac/code_of_ethics.pdf"
             }
             },
             {
@@ -378,7 +378,7 @@
             "title": "insertion of AQAR",
             "meta_data": {
                 "year": "2021-22",
-                "path": "/static/pdfs/iqac/AQAR_2021-2022.pdf"
+                "pdf_path": "/static/pdfs/iqac/AQAR_2021-2022.pdf"
             },
             "original_data": null
             },
@@ -389,11 +389,11 @@
             "title": "updation of AQAR",
             "meta_data": {
                 "year": "2020-21",
-                "path": "/static/pdfs/iqac/AQAR_2020-2021_v2.pdf"
+                "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021_v2.pdf"
             },
             "original_data": {
                 "year": "2018-19",
-                "path": "/static/pdfs/iqac/AQAR_2020-2021.pdf"
+                "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021.pdf"
             }
             },
             {
@@ -403,7 +403,7 @@
             "title": "deletion of AQAR",
             "meta_data": {
                 "year": "2018-19",
-                "path": "/static/pdfs/iqac/AQAR_2018-2019.pdf"
+                "pdf_path": "/static/pdfs/iqac/AQAR_2018-2019.pdf"
             },
             "original_data": null
             },
@@ -413,10 +413,10 @@
             "action": "update",
             "title": "updation of ISO certificate",
             "meta_data": {
-                "path": "/static/pdfs/iqac/iso_certificate_updated.pdf"
+                "pdf_path": "/static/pdfs/iqac/iso_certificate_updated.pdf"
             },
             "original_data": {
-                "path": "/static/pdfs/iqac/iso_certificate.pdf"
+                "pdf_path": "/static/pdfs/iqac/iso_certificate.pdf"
             }
             }
 ]
