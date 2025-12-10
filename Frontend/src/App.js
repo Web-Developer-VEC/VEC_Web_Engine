@@ -15,7 +15,97 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-import RankHonder from "./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx";
+
+/* Lazy Loaded Components */
+/* Landing Page */
+const LandingPage = React.lazy(() => import("./Landing.jsx"));
+const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
+
+/* AboutUs Pages */
+const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
+const Collegevisionmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx"));
+const Management = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Management.jsx"));
+const NewTrust = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Trust.jsx"));
+const AbtYear = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Abtyear.jsx"));
+
+/* Administration Pages */
+const Princ = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Princ.jsx"));
+const Dean = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/dean.jsx"));
+const CardPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/admin.jsx"));
+const ExecutiveCommittee = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx"));
+const CollegeOrgChart = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx"));
+const Handbook = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx"));
+
+/* Academics Pages */
+const DepartmentPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx"));
+const AcademicDepartments = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Department.jsx"));
+const Programmes = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx"));
+const Acadamiccal = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const Facultyprofile = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
+
+/* Admission Pages */
+const UgAdmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx"));
+const ME = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx"));
+const MBA = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx"));
+const PhdAdmission = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx"));
+const ADMteam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx"));
+
+/* Exams Pages */
+const REGULATION = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx"));
+const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx"));
+const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
+const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+
+/* Research Pages */
+const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const Policies = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/policy.jsx"));
+const Consultancy = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const BookChapter = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx"));
+const Funded = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Funded.jsx"));
+const Journal = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx"));
+
+/* Placements Pages */
+const Aboutplacement = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
+const PlacementTeam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx").then(module => ({ default: module.PlacementTeam })));
+const PlacementDetails = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx").then(module => ({ default: module.PlacementDetails })));
+
+/* Second_Nav_Bar Pages */
+const Accredation = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const Iic = React.lazy(() => import("./Components/Main/Second_Nav_Bar/IIC/iic.jsx"));
+const IQAC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx"));
+const Incub = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx"));
+const Ecell = React.lazy(() => import("./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx"));
+const Alumni = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
+const NSS = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NSS/NSS.jsx"));
+const NCC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx"));
+const NCC_NAVY = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx"));
+const NCC_ARMY = React.lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx"));
+const YRC = React.lazy(() => import("./Components/Main/Second_Nav_Bar/yrc/YRC.jsx"));
+const SportsPage = React.lazy(() => import("./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx"));
+const Transport = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Transport/Transport.jsx"));
+const Library = React.lazy(() => import("./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"));
+const OtherFacilities = React.lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const GrievanceForm = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx"));
+const HostelPage = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx"));
+const Gallery = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/gallery.jsx"));
+const Gallerydetails = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/detailpage.jsx"));
+const WebTeam = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
+const EnquiryWeb = React.lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
+
+/* Digital Hostel */
+const StudentLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
+const WardenLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
+const SuperiorLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx"));
+const SecurityLayout = React.lazy(() => import("./Components/Digital Hostel/Layouts/SecurityDashboard.jsx"));
+const HostelLoginDigital = React.lazy(() => import("./Components/Digital Hostel/HostelPages/Hostel Login.jsx"));
+const ForgotPassword = React.lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
+
+/* Other Stuffs */
+const NotFound = React.lazy(() => import("./NotFound"));
+const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
+const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
+const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
 /* Lazy Loaded Components */
 /* Landing Page */
