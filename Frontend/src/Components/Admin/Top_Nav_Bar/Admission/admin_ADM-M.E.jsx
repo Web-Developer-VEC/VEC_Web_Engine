@@ -11,6 +11,9 @@ import {
   Trash2,
   CircleX,
   Send,
+  Pencil,
+  Plus,
+  X,
 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,9 +24,13 @@ const AdminME = ({ theme, toggle }) => {
   const pg = pgData?.PG || [];
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const navigate = useNavigate();
+  const [originalData, setOriginalData] = useState(null);
+  const [hasChanges, setHasChanges] = useState(false);
+   const [showDeleteModal,setShowDeleteModal]= useState();
 
   const [pgedit, setpgEdit] = useState(false);
   const [savedOnce, setSavedOnce] = useState(false);
+  const [selectedRows, setSelectedRows] = useState([]);
 
   // Popup & changes state
   const [showPopup, setShowPopup] = useState(false);
@@ -42,7 +49,7 @@ const AdminME = ({ theme, toggle }) => {
           return Object.keys(c.row)[0] === Object.keys(newChange.row)[0];
         }
         // For 'edited' changes, check by the course name and field.
-        if (c.type === "edited" && c.courseName === newChange.courseName && c.field === newChange.field) {
+        if (c.type === "edited" && c.courseName === newChange.courseName) {
           return true;
         }
         return false;
@@ -67,6 +74,7 @@ const AdminME = ({ theme, toggle }) => {
           type: "pg",
         });
         setpgData(response.data.data);
+         setOriginalData(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -80,23 +88,70 @@ const AdminME = ({ theme, toggle }) => {
     };
     fetchData();
   }, [navigate]);
+   const handleDiscardChanges = () => {
+    if (!originalData) return;
 
-  // ✅ Add row
-  const handleAddNewRow = () => {
-    const newRow = {
-      "": {
-        "Government Quota Intakes": 0,
-        "Management Quota Intakes": 0,
-        "Total Intakes": 0,
-      },
-    };
-    setpgData({ ...pgData, PG: [...pg, newRow] });
-    logChange("added", "PG", { row: newRow });
+    setpgData(JSON.parse(JSON.stringify(originalData))); // Deep copy
+    setChangeList([]);          // Clear change logs
+    setSelectedRows([]);        // Clear selected rows
+    setHasChanges(false);       // Reset flag
+    setpgEdit(false);           // Exit edit mode
+    setSavedOnce(false);        // Reset save flag
+    setShowDeleteModal(false);  // Close delete modal if open
+
+    toast.info("All changes discarded and original data restored.");
   };
+const handleAddNewRow = () => {
+  const newRow = {
+    "New Course": { 
+      "Government Quota Intakes": 0,
+      "Management Quota Intakes": 0,
+      "Total Intakes": 0,
+    },
+  };
+
+  setpgData({ ...pgData, PG: [...pg, newRow] });
+
+  // Save rowIndex in change log for reference
+  logChange("added", "PG", { row: newRow, rowIndex: pg.length });
+};
+
+
+
+  const handleDeleteSelected = () => {
+  if (selectedRows.length === 0) {
+    toast.error("No rows selected to delete.");
+    setShowDeleteModal(false);
+    return;
+  }
+
+    const dataCopy = { ...pgData };
+    let pgArray = [...dataCopy.PG];
+
+    // Get rows before deleting for logging
+    const removedRows = selectedRows.map((idx) => pgArray[idx]);
+
+    // Filter out selected rows
+    pgArray = pgArray.filter((_, idx) => !selectedRows.includes(idx));
+
+    setpgData({ ...pgData, PG: pgArray });
+
+    // Log each removed row
+    removedRows.forEach((row) => {
+      logChange("deleted", "PG", { row });
+    });
+
+    // Clear selection
+    setSelectedRows([]);
+
+    setShowDeleteModal(false)
+
+    toast.info("Selected rows deleted. They will be removed on final request.");
+};
+
 
   // ✅ Delete row
   const handleDeleteRow = (rowIndex) => {
-    if (window.confirm("Are you sure you want to delete this row?")) {
       const dataCopy = { ...pgData };
       const pgArray = [...dataCopy.PG];
       const removedRow = pgArray[rowIndex];
@@ -104,35 +159,71 @@ const AdminME = ({ theme, toggle }) => {
       setpgData({ ...pgData, PG: pgArray });
       logChange("deleted", "PG", { row: removedRow });
       toast.info("Row deleted. It will be removed on final request.");
-    }
+      setShowDeleteModal(false);
   };
 
-  // ✅ Edit course name
-  const handleCourseNameChange = (rowIndex, newName) => {
-    const dataCopy = { ...pgData };
-    const pgArray = [...dataCopy.PG];
-    const [oldName, details] = Object.entries(pgArray[rowIndex])[0];
-    pgArray[rowIndex] = { [newName]: details };
-    setpgData({ ...pgData, PG: pgArray });
-    logChange("renamed", "PG", { from: oldName, to: newName });
-  };
+const handleCourseNameChange = (rowIndex, newName) => {
+  const dataCopy = { ...pgData };
+  const pgArray = [...dataCopy.PG];
+
+  if (!pgArray[rowIndex]) return;
+
+  const [oldName, details] = Object.entries(pgArray[rowIndex])[0];
+
+  // Update table row
+  pgArray[rowIndex] = { [newName]: details };
+  setpgData({ ...dataCopy, PG: pgArray });
+
+  // Update "added" change in changeList to reflect typed name
+  setChangeList((prev) => 
+    prev.map((change) => {
+      if (change.type === "added" && change.rowIndex === rowIndex) {
+        return { ...change, row: { [newName]: details } };
+      }
+      return change;
+    })
+  );
+};
+
 
   // ✅ Edit intake values
-  const handleInputChange = (rowIndex, field, value) => {
-    const updatedData = { ...pgData };
-    const pgArray = [...updatedData.PG];
-    const [courseName, details] = Object.entries(pgArray[rowIndex])[0];
-    const oldValue = details[field];
+const handleInputChange = (rowIndex, field, value) => {
+  const updatedData = { ...pgData };
+  const pgArray = [...updatedData.PG];
+  const [courseName, details] = Object.entries(pgArray[rowIndex])[0];
 
-    const updated = { ...details, [field]: value === "" ? 0 : Number(value) };
-    const gov = Number(updated["Government Quota Intakes"]) || 0;
-    const man = Number(updated["Management Quota Intakes"]) || 0;
-    updated["Total Intakes"] = gov + man;
+  const oldValue = details[field];
+  
+  // Keep it as string but convert safely to number only for calculations
+  details[field] = value;
 
-    pgArray[rowIndex] = { [courseName]: updated };
-    setpgData({ ...updatedData, PG: pgArray });
-    logChange("edited", "PG", { courseName, field, from: oldValue, to: updated[field] });
-  };
+  // Recalculate total as number
+  const gov = parseInt(details["Government Quota Intakes"] || 0, 10);
+  const mgmt = parseInt(details["Management Quota Intakes"] || 0, 10);
+
+  details["Total Intakes"] = gov + mgmt;
+
+  pgArray[rowIndex] = { [courseName]: details };
+  setpgData({ ...updatedData, PG: pgArray });
+
+  // Log change only if not newly added
+  const isAdded = changeList.some(
+    (c) => c.type === "added" && c.rowIndex === rowIndex
+  );
+  if (!isAdded) {
+    logChange("edited", "PG", { courseName, field, from: oldValue, to: value });
+  }
+};
+
+
+  const handleCheckboxChange = (rowIndex, checked) => {
+  setSelectedRows((prev) =>
+    checked ? [...prev, rowIndex] : prev.filter((i) => i !== rowIndex)
+  );
+
+  setHasChanges(true); // 🔥 mark changes
+};
+
 
   // ✅ Undo change (restores state)
   const handleUndoChange = (idx) => {
@@ -185,6 +276,14 @@ const AdminME = ({ theme, toggle }) => {
       toast.error("Failed to submit request!");
     }
   };
+const handleCancel = () => {
+    setpgData(originalData);     // restore the original fetched data
+    setChangeList([]);           // clear change logs
+    setSelectedRows([]);         // clear any selected checkboxes
+    setpgEdit(false);            // exit edit mode
+    setSavedOnce(false);         // reset save flag
+    toast.info("All changes discarded.");
+};
 
   // ✅ Online/offline detection
   useEffect(() => {
@@ -230,6 +329,7 @@ const AdminME = ({ theme, toggle }) => {
       </div>
     );
   }
+console.log("new",pg.year);
 
   return (
     <>
@@ -294,22 +394,16 @@ const AdminME = ({ theme, toggle }) => {
                 Consortium of Self –Financing Professional, Arts and Science
                 Colleges in Tamil Nadu
               </p>
-              <div className="flex justify-end">
-                <button
-                  className="admin-pgedit flex gap-1"
-                  onClick={() => setpgEdit(!pgedit)}
-                >
-                  {pgedit ? (
-                    <>
-                      <CircleX /> Cancel
-                    </>
-                  ) : (
-                    <>
-                      <SquarePen /> Edit
-                    </>
-                  )}
-                </button>
-              </div>
+             {!pgedit && (
+                  <div className="flex justify-end">
+                    <button
+                      className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mt-4 mr-10"
+                      onClick={() => setpgEdit(true)}
+                    >
+                      <Pencil size={16} /> Edit
+                    </button>
+                  </div>
+                )}
             </div>
             <div className="me-container">
               <center>
@@ -317,13 +411,23 @@ const AdminME = ({ theme, toggle }) => {
                   {pgedit ? (
                     <>
                       {"M.E - Total Intake "}
-                      <input
+                     <input
                         type="text"
                         className="admin-mbain w-20 inline-block text-center"
                         value={pgData.year || ""}
-                        onChange={(e) =>
-                          setpgData({ ...pgData, year: e.target.value })
-                        }
+                        onChange={(e) => {
+                          const oldYear = pgData.year || "";
+                          const newYear = e.target.value;
+
+                          setpgData({ ...pgData, year: newYear });
+
+                          // log the year change
+                          logChange("edited", "year", {
+                            
+                            changes: "year",
+                            to: newYear,
+                          });
+                        }}
                       />
                     </>
                   ) : (
@@ -331,6 +435,7 @@ const AdminME = ({ theme, toggle }) => {
                   )}
                 </h4>
               </center>
+              
 
               <table className="intake-table">
                 <thead>
@@ -402,58 +507,84 @@ const AdminME = ({ theme, toggle }) => {
                           )}
                         </td>
                         <td>{courseDetails["Total Intakes"]}</td>
-                        {pgedit && (
-                          <td className="text-center">
-                            <button
-                              className="text-red-600 hover:text-red-800"
-                              onClick={() => handleDeleteRow(rowIndex)}
-                              title="Delete"
-                            >
-                              <Trash2 size={18} />
-                            </button>
-                          </td>
-                        )}
+                     {pgedit && (
+                      <td className="text-center">
+                        <input
+                          type="checkbox"
+                          checked={selectedRows?.includes(rowIndex)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedRows((prev) => [...prev, rowIndex]);
+                            } else {
+                              setSelectedRows((prev) => prev.filter((i) => i !== rowIndex));
+                            }
+                          }}
+                        />
+                      </td>
+                     )}
                       </tr>
                     );
                   })}
+                    {pgedit && (
+                        <tr>
+                          <td colSpan={5}>
+                            <div className="flex justify-center items-center gap-2">
+                              <button
+                                onClick={handleAddNewRow}
+                                className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                              >
+                                <Plus size={16} /> Add
+                              </button>
+
+                              {selectedRows.length > 0 && (
+                                <button
+                                  onClick={() => setShowDeleteModal(true)} 
+                                  className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                                >
+                                  <Trash2 size={16} /> Delete 
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      )}
                 </tbody>
               </table>
-
-              {pgedit && (
-                <div className="flex justify-end mt-3">
-                  <button
-                    className="admin-edit-pg flex items-center gap-1"
-                    onClick={handleAddNewRow}
-                  >
-                    <PlusCircle size={16} />
-                    <span className="btn-text">Add New</span>
-                  </button>
-                </div>
-              )}
             </div>
           </div>
 
           {/* ✅ Save button only in edit mode */}
           {pgedit && (
-            <div className="admin-controls flex flex-col items-end gap-2 mt-4">
+            <div className="flex gap-2 mt-4 justify-end mr-12">
               <button
-                className="admin-edit-ug active flex items-center gap-1"
-                onClick={handleSaveClick}
+                  onClick={handleCancel}
+                className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
               >
-                <SaveAll size={16} />
-                <span className="btn-text">Save</span>
+                Cancel
+              </button>
+              <button
+               onClick={() => { handleSaveClick(); }}
+                className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition "
+              >
+                Save
               </button>
             </div>
           )}
 
           {/* ✅ Request Changes button only after Save */}
           {!pgedit && savedOnce && (
-            <div className="admin-controls flex justify-end mt-4">
+           <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
-                className="admin-edit-ug flex gap-1"
-                onClick={() => setShowPopup(true)}
+                className="px-4 py-2 bg-gray-500 text-white rounded"
+         onClick={() => handleDiscardChanges()}
               >
-                <Send /> Request changes
+                Discard Changes
+              </button>
+              <button
+                className="px-4 py-2 bg-[#FDCC03] text-white rounded flex items-center gap-2"
+                onClick={() => {setShowPopup(true);}}
+              >
+                <Send size={16} /> Request 
               </button>
             </div>
           )}
@@ -461,12 +592,34 @@ const AdminME = ({ theme, toggle }) => {
           <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
       )}
+       {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+            <h2 className="font-semibold mb-4">Confirm Delete</h2>
+            <p>Are you sure you want to delete selected faculties?</p>
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded"
+                onClick={() => setShowDeleteModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded"
+                onClick={handleDeleteSelected }
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-[500px]">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-lg font-semibold mb-4">
-              Final Request for the Changes
+              Final Request 
             </h2>
             <p className="text-red-600 mb-4">
               <span className="font-medium">Note:</span> Your changes will stay
@@ -474,48 +627,51 @@ const AdminME = ({ theme, toggle }) => {
               will be applied automatically to the live site.
             </p>
 
-            <table className="w-full text-sm">
+            <table className=" border w-full text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-2">Action</th>
-                  <th className="text-left p-2">Details</th>
-                  <th className="text-left p-2">Undo</th>
+                  <th className=" border p-2">Action</th>
+                  <th className=" border p-2">field</th>
+                  <th className="border p-2 ">changes</th>
+                  <th className=" border p-2">Undo</th>
                 </tr>
               </thead>
               <tbody>
                 {changeList.length === 0 ? (
                   <tr>
-                    <td className="p-2" colSpan={3}>
+                    <td className="p-2 border" colSpan={3}>
                       No pending changes.
                     </td>
                   </tr>
                 ) : (
                   changeList.map((req, idx) => (
-                    <tr key={idx} className="border-b">
-                      <td className="p-2 capitalize">{req.type}</td>
-                      <td className="p-2">
+                    <tr key={idx} className=" p-2 border-b">
+                      <td className="p-2 capitalize  border">{req.type}</td>                    
+                      <td className="border ">M.E</td>
+                      <td className="p-2 border ">
                         {req.type === "edited" ? (
                           <>
-                            <b>{req.courseName} - {req.field}</b>: {req.from} → {req.to}
+                            <b>{req.courseName} </b>
                           </>
                         ) : req.type === "renamed" ? (
-                            <>Renamed <b>{req.from}</b> to <b>{req.to}</b></>
+                            <> <b>{req.from}</b> </>
                         ) : req.type === "added" ? (
                           <>
-                            Added: <b>{Object.keys(req.row)[0]}</b>
+                            <b>{Object.keys(req.row)[0]}</b>
                           </>
                         ) : req.type === "deleted" ? (
                           <>
-                            Deleted: <b>{Object.keys(req.row)[0]}</b>
+                             <b>{Object.keys(req.row)[0]}</b>
                           </>
                         ) : null}
                       </td>
-                      <td className="p-2">
+                      
+                      <td className="p-2 border">
                         <button
-                          className="nss-btn nss-btn-undo flex items-center gap-1"
+                          className=" border flex items-center gap-1"
                           onClick={() => handleUndoChange(idx)}
                         >
-                          <CircleX size={16} className="text-red-500 hover:text-red-700" />
+                          <X size={16} className="text-red-500 hover:text-red-700" />
                         </button>
                       </td>
                     </tr>
