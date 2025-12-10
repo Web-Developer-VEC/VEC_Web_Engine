@@ -7,15 +7,27 @@
         "Velammal Engineering College (Autonomous) is affiliated to Anna University and is approved by the All India Council for Technical Education (AICTE). The institution was certified ISO 9001:2015 by M/s. TUV, India in just 5 years of its inception. The college is accredited by NAAC and all eligible programmes are accredited by NBA. Based in Chennai city, VEC, the safe campus, offers a truly unrivalled study experience with various courses, outstanding facilities, comprehensive support, and highly disciplined life.Velammal Engineering College achieved its autonomous status in the year 2019. Autonomy can be found in the choice of curriculum, pedagogy, and evaluation systems. It helps students to carve a niche for themselves as they have greater flexibility towards academic development for improvement of academic standards and excellence."
       ],
       "image_path": [
-        "/static/images/aboutvec/aboutvec1.webp",
-        "/static/images/aboutvec/aboutvec2.webp",
-        "/static/images/aboutvec/aboutvec3.webp"
+        "/static/images/about_vec/aboutvec1.webp",
+        "/static/images/about_vec/aboutvec2.webp",
+        "/static/images/about_vec/aboutvec3.webp"
       ],
-      "links": [
-        "uploads/2025/07/EOA_Report_2025-2026.pdf",
-        "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf",
-        "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf",
-        "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+      "about_us_pdf": [
+        {
+          "name": "AICTE Approval",
+          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"
+        },
+        {
+          "name": "University Affiliation",
+          "pdf_path": "/static/pdfs/about_vec/AU_Grant_of_Affiliation_2024-25.pdf"
+        },
+        {
+          "name": "Governing Body",
+          "pdf_path": "/static/pdfs/about_vec/4th_Governing_Body_Members.pdf"
+        },
+        {
+          "name": "Mandatory Disclosures",
+          "pdf_path": "uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+        }
       ]
     }
   },
@@ -87,81 +99,73 @@
     "type": "AISHE",
     "data": [
       {
-        "year":"2021-2022",
-        "content":[
+        "category": "2021-2022",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
-            }
-      ]
-        
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+          }
+        ]
       },
-        {
-        "year":"2022-2023",
-        "content":[
+      {
+        "category": "2022-2023",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"       
-
-            }
-      ]
-        
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Teaching Staff Details.pdf"
+          }
+        ]
       },
-        {
-        "year":"2023-2024",
-        "content":[
+      {
+        "category": "2023-2024",
+        "content": [
           {
-            "name":"Certificate",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
-            },
-            {
-            "name":"Data Capture Format",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "        
-
-            },
-            {
-            "name":"Teaching Staff Details",
-            "pdf_path":"/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"       
-
-            }
-      ]
-        
-        },
-        {
-          "year": "2024-2025",
-          "content": [
-            {
-              "name": "Certificate",
-              "pdf_path": "/static/pdfs/about_vec/AISHE/2024-2025/AISHE 2024-2025 Certificate.pdf"
-            },
-            {
-              "name": "Data Capture Format",
-              "pdf_path": ""
-            },
-            {
-              "name": "Teaching Staff Details",
-              "pdf_path": ""
-            }
-          ]
-        }
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Data Capture Format.pdf "
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"
+          }
+        ]
+      },
+      {
+        "category": "2024-2025",
+        "content": [
+          {
+            "name": "Certificate",
+            "pdf_path": "/static/pdfs/about_vec/AISHE/2024-2025/AISHE 2024-2025 Certificate.pdf"
+          },
+          {
+            "name": "Data Capture Format",
+            "pdf_path": ""
+          },
+          {
+            "name": "Teaching Staff Details",
+            "pdf_path": ""
+          }
+        ]
+      }
     ]
   }
 ]

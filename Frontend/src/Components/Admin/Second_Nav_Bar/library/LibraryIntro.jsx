@@ -3,8 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 import { ArrowDown, Pencil, Send, Save } from "lucide-react"; 
-import { ToastContainer, toast } from "react-toastify"; // ✅ Toast
-import "react-toastify/dist/ReactToastify.css"; // ✅ Toast CSS
+import { ToastContainer, toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 
 const LibraryIntro = ({ about }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -13,17 +13,15 @@ const LibraryIntro = ({ about }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  // ✅ State
   const [isEditing, setIsEditing] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const [showDiscardModal, setShowDiscardModal] = useState(false); // ✅ Discard confirm modal
+  const [showDiscardModal, setShowDiscardModal] = useState(false);
 
   const [formData, setFormData] = useState(null);
   const [originalData, setOriginalData] = useState(null);
-  const [editBackup, setEditBackup] = useState(null); // ✅ Backup for current edit session
+  const [editBackup, setEditBackup] = useState(null);
 
-  // ✅ Sync with about data whenever it changes
   useEffect(() => {
     if (about?.[0]) {
       const freshData = {
@@ -40,17 +38,14 @@ const LibraryIntro = ({ about }) => {
     }
   }, [about]);
 
-  // ✅ Detect if any changes
   const isChanged =
     JSON.stringify(formData) !== JSON.stringify(originalData);
 
-  // ✅ Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Confirm request (only place where toast is shown)
   const handleRequestConfirm = () => {
     console.log("Final request submitted with data:", formData);
     setShowRequestModal(false);
@@ -61,12 +56,11 @@ const LibraryIntro = ({ about }) => {
     });
   };
 
-  // ✅ Confirm discard
   const handleDiscardConfirm = () => {
-    setFormData(originalData); // revert changes
-    setShowRequest(false); // hide Request + Discard
-    setIsEditing(false);   // back to Edit mode
-    setShowDiscardModal(false); // close modal
+    setFormData(originalData);
+    setShowRequest(false);
+    setIsEditing(false);
+    setShowDiscardModal(false);
     toast.info("❌ Changes discarded", {
       position: "bottom-right",
       autoClose: 2000,
@@ -90,7 +84,7 @@ const LibraryIntro = ({ about }) => {
             <button
               className="bg-[#FDCC03] text-text flex items-center gap-2 px-4 py-2 rounded-lg shadow-md hover:bg-[#800000] transition hover:text-prim"
               onClick={() => {
-                setEditBackup(formData); // ✅ store current session backup
+                setEditBackup(formData);
                 setIsEditing(true);
               }}
             >
@@ -207,30 +201,48 @@ const LibraryIntro = ({ about }) => {
             <p className="text-[#800000] text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd inline-block pb-1">
               Vision
             </p>
-            <p className="text-sm sm:text-base text-black-800 leading-relaxed text-justify">
-              {formData.vision}
-            </p>
+            {isEditing ? (
+              <textarea
+                name="vision"
+                value={formData.vision}
+                onChange={handleChange}
+                className="w-full border p-2 rounded bg-gray-200 text-sm sm:text-base"
+                rows={7}
+              />
+            ) : (
+              <p className="text-sm sm:text-base text-black-800 leading-relaxed text-justify">
+                {formData.vision}
+              </p>
+            )}
           </div>
 
           <div className="lg:basis-[49%] border-l-4 p-4 border-secd dark:border-drks rounded-xl w-full bg-prim dark:bg-drkb">
             <p className="text-[#800000] text-[20px] font-semibold mb-3 font-poppins border-b-[2px] border-secd inline-block pb-1">
               Mission
             </p>
-            <p className="text-sm sm:text-base text-gray-800 leading-relaxed text-justify">
-              {formData.mission}
-            </p>
+            {isEditing ? (
+              <textarea
+                name="mission"
+                value={formData.mission}
+                onChange={handleChange}
+                className="w-full border p-2 rounded bg-gray-200 text-sm sm:text-base"
+                rows={7}
+              />
+            ) : (
+              <p className="text-sm sm:text-base text-gray-800 leading-relaxed text-justify">
+                {formData.mission}
+              </p>
+            )}
 
             {/* ✅ Buttons */}
             {!isEditing && showRequest && (
               <div className="mt-4 flex justify-end gap-2">
-                {/* Discard Changes Button */}
                 <button
                   onClick={() => setShowDiscardModal(true)}
                   className="bg-gray-400 hover:bg-gray-500 text-prim px-4 py-2 rounded-lg shadow transition"
                 >
                   Discard Changes
                 </button>
-                {/* Request Button */}
                 <button
                   onClick={() => setShowRequestModal(true)}
                   className="bg-[#FDCC03] hover:bg-[#800000] text-text flex items-center gap-2 px-4 py-2 rounded-lg shadow transition hover:text-prim"
@@ -245,7 +257,7 @@ const LibraryIntro = ({ about }) => {
                 <button
                   className="bg-gray-400 text-prim px-4 py-2 rounded-lg shadow-md hover:bg-gray-500 transition"
                   onClick={() => {
-                    setFormData(editBackup); // ✅ restore only this edit session
+                    setFormData(editBackup);
                     setIsEditing(false);
                   }}
                 >
@@ -326,13 +338,8 @@ const LibraryIntro = ({ about }) => {
                     if (formData[key] !== originalData[key]) {
                       return (
                         <tr key={key} className="border-b">
-                          {/* Action */}
                           <td className="p-2 text-blue-600">✎ Edited</td>
-
-                          {/* Section */}
                           <td className="p-2 font-semibold">{key}</td>
-
-                          {/* Changes */}
                           <td className="p-2">
                             <div className="flex items-center gap-2">
                               <span className="text-gray-600 line-through">
@@ -345,7 +352,7 @@ const LibraryIntro = ({ about }) => {
                                 onClick={() =>
                                   setFormData((prev) => ({
                                     ...prev,
-                                    [key]: originalData[key], // revert just this field
+                                    [key]: originalData[key],
                                   }))
                                 }
                               >
@@ -408,7 +415,6 @@ const LibraryIntro = ({ about }) => {
         </div>
       )}
 
-      {/* ✅ Toast container */}
       <ToastContainer position="bottom-right" autoClose={2000} />
     </>
   );

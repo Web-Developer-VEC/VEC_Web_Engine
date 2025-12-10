@@ -23,16 +23,14 @@ async function getLandingpageData(req, res) {
     // Grouped type (like landing_data)
     if (ALLOWED_TYPES[type]) {
       const sections = ALLOWED_TYPES[type];
-      const results = [];
-
-      for (const section of sections) {
+      const promises = sections.map(async (section) => {
         if (section === 'events') {
           const document = await collection.findOne(
             { type: 'events' },
             { projection: { _id: 0, type: 1, data: 1 } }
           );
 
-          if (!document || !Array.isArray(document.data)) continue;
+          if (!document || !Array.isArray(document.data)) return null;
 
           const now = new Date();
           const validEvents = document.data.filter(e => e.status === "True");
@@ -51,15 +49,16 @@ async function getLandingpageData(req, res) {
             selectedEvents = selectedEvents.concat(pastEvents.slice(0, needed));
           }
 
-          results.push({ type: 'events', data: selectedEvents });
+          return { type: 'events', data: selectedEvents };
         } else {
-          const doc = await collection.findOne(
+          return await collection.findOne(
             { type: section },
             { projection: { _id: 0, type: 1, data: 1 } }
           );
-          if (doc) results.push(doc);
         }
-      }
+      });
+
+      const results = (await Promise.all(promises)).filter(item => item !== null);
 
       return res.status(200).json({ type, data: results });
     }

@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
 import axios from 'axios';
 import { useNavigate } from "react-router";
-import { FaPaperPlane, FaBook, FaLinkedin, FaResearchgate } from 'react-icons/fa';
+import { MdUndo } from "react-icons/md";
+import { Trash2 } from 'lucide-react'
+import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from 'react-icons/fa';
 import { FaGoogleScholar } from 'react-icons/fa6';
-import { MdDelete, MdUndo } from "react-icons/md";
-import { Pencil } from 'lucide-react';
+import { SiPublons } from 'react-icons/si';
+
+const SOCIAL_LINKS_CONFIG = [
+  { key: "linkedin", label: "LinkedIn", icon: FaLinkedin, backendKey: "LinkedIn Profile" },
+  { key: "googlescholar", label: "Google Scholar", icon: FaGoogleScholar, backendKey: "Google Scholar Profile" },
+  { key: "researchgate", label: "Research Gate", icon: FaResearchgate, backendKey: "Research Gate" },
+  { key: "orchidprofile", label: "Orcid", icon: FaOrcid, backendKey: "Orcid Profile" },
+  { key: "publonprofile", label: "Publons", icon: SiPublons, backendKey: "Publons Profile" },
+  { key: "scopus", label: "Scopus", icon: FaBook, backendKey: "Scopus Author Profile" }
+];
 
 const AdminPrinc = ({ theme, toggle }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [newLink, setNewLink] = useState({ name: "", url: "", icon: "FaBook" });
+  const [editSessionData, setEditSessionData] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [requestStep, setRequestStep] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [pendingDeleteKey, setPendingDeleteKey] = useState(null);
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
+  const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
+  const textareaRef = useRef();
 
   const UrlParser = (path) => {
     if (!path) return path;
@@ -32,7 +49,22 @@ const AdminPrinc = ({ theme, toggle }) => {
     return path;
   };
 
-  // Fetch data
+  function backendToLocalLinks(backendLinks) {
+    const out = {};
+    SOCIAL_LINKS_CONFIG.forEach(({ key, backendKey }) => {
+      out[key] = backendLinks?.[backendKey] || "";
+    });
+    return out;
+  }
+
+  function localToBackendLinks(localLinks) {
+    const out = {};
+    SOCIAL_LINKS_CONFIG.forEach(({ key, backendKey }) => {
+      out[backendKey] = localLinks?.[key] || "";
+    });
+    return out;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -41,8 +73,14 @@ const AdminPrinc = ({ theme, toggle }) => {
           type: "principal"
         });
         const result = response.data.data;
-        setData(result);
-        setEditedData(result);
+        setData({
+          ...result,
+          social_links: backendToLocalLinks(result.social_links)
+        });
+        setEditedData({
+          ...result,
+          social_links: backendToLocalLinks(result.social_links)
+        });
       } catch (err) {
         setError(err?.message || "Failed to load");
         if (err.response?.data?.status === 429) {
@@ -68,23 +106,28 @@ const AdminPrinc = ({ theme, toggle }) => {
     };
   }, []);
 
-  // Save changes locally (before requesting)
   const handleSave = () => {
-    setIsSaved(true);
-    console.log("Changes saved locally.");
+    setRequestStep(true);
+    setIsEditing(false);
+    setPreviewImage(previewImage);
   };
 
-  // Show confirmation modal before final request
-  const handleConfirm = () => {
-    setShowConfirmModal(true);
+  const getProfileIcon = (IconComponent, url) => {
+    if (!url) return null;
+    return <IconComponent size={20} />;
   };
 
-  // Actually send data (after user reviews)
+  const handleConfirm = () => setShowConfirmModal(true);
+
   const handleRequest = async () => {
     try {
       const formData = new FormData();
       formData.append("type", "principal");
-      formData.append("data", JSON.stringify(editedData));
+      const sendData = {
+        ...editedData,
+        social_links: localToBackendLinks(editedData.social_links)
+      };
+      formData.append("data", JSON.stringify(sendData));
       if (editedData?.newImageFile) {
         formData.append("image", editedData.newImageFile);
       }
@@ -92,74 +135,60 @@ const AdminPrinc = ({ theme, toggle }) => {
         headers: { "Content-Type": "multipart/form-data" }
       });
       setData(editedData);
-      setIsEditing(false);
+      setRequestStep(false);
       setShowConfirmModal(false);
-      setIsSaved(false);
       setPreviewImage(null);
-      console.log("Request submitted successfully.");
     } catch (err) {
-      console.error("Error sending request", err);
       setError(err?.message || "Failed to send request");
     }
   };
 
-  // Cancel with confirmation
+  const handleCancelClick = () => {
+    if (getSessionChanges().length > 0) {
+      setShowCancelConfirm(true);
+    } else {
+      setIsEditing(false);
+      setPreviewImage(null);
+      setEditedData(requestStep ? editedData : data);
+    }
+  };
+
   const handleCancelConfirm = () => {
-  setEditedData(data);
-  setPreviewImage(null);
-  setIsEditing(false);
-  setIsSaved(false);
-  setShowCancelConfirm(false);
-};
-
-  const hasChanges = () => getChanges().length > 0;
-
-  // Add new social link
-  const handleAddLink = () => {
-    if (!newLink.name || !newLink.url) {
-      // simple guard. no alerts as requested.
-      console.warn("Link name and url required");
-      return;
-    }
-    setEditedData((prev) => ({
-      ...prev,
-      social_links: {
-        ...(prev?.social_links || {}),
-        [newLink.name]: { url: newLink.url, icon: newLink.icon },
-      },
-    }));
-    setShowModal(false);
-    setNewLink({ name: "", url: "", icon: "FaBook" });
+    setEditedData(editSessionData);
+    setPreviewImage(null);
+    setIsEditing(false);
+    setShowCancelConfirm(false);
   };
 
-  // Delete social link
-  const handleDeleteLink = (name) => {
-    if (!editedData) return;
+  const handleDiscardConfirm = () => {
+    setEditedData(data);
+    setPreviewImage(null);
+    setRequestStep(false);
+    setShowDiscardConfirm(false);
+    setIsEditing(false);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+    setEditedData(requestStep ? editedData : data);
+    setEditSessionData(requestStep ? editedData : data);
+    setPreviewImage(null);
+  };
+
+  const handleDeleteLink = (key) => {
+    setPendingDeleteKey(key);
+    setShowDeleteConfirm(true);
+  };
+  const handleConfirmedDelete = () => {
+    if (!editedData || !pendingDeleteKey) return;
     const updatedLinks = { ...(editedData.social_links || {}) };
-    delete updatedLinks[name];
+    updatedLinks[pendingDeleteKey] = "";
     setEditedData({ ...editedData, social_links: updatedLinks });
+    setShowDeleteConfirm(false);
+    setPendingDeleteKey(null);
   };
 
-  // Render correct icon
-  const renderIcon = (name, iconKey) => {
-    if (iconKey) {
-      switch (iconKey) {
-        case "FaLinkedin": return <FaLinkedin />;
-        case "FaGoogleScholar": return <FaGoogleScholar />;
-        case "FaResearchgate": return <FaResearchgate />;
-        case "FaBook": return <FaBook />;
-        default: return <FaBook />;
-      }
-    }
-    if (name.includes("LinkedIn")) return <FaLinkedin />;
-    if (name.includes("Google Scholar")) return <FaGoogleScholar />;
-    if (name.includes("Research")) return <FaResearchgate />;
-    if (name.includes("Scopus")) return <FaBook />;
-    return <FaBook />;
-  };
-
-  // Change detection with previous values for undo
-  const getChanges = () => {
+  const getRequestChanges = () => {
     if (!data || !editedData) return [];
     const changes = [];
     if (data.name !== editedData.name) {
@@ -187,7 +216,6 @@ const AdminPrinc = ({ theme, toggle }) => {
       });
     }
     if (editedData?.newImageFile) {
-      // try common image key names from backend, else null
       const prevImg = data?.image || data?.photo || data?.profile_image || null;
       changes.push({
         action: "Edited",
@@ -199,14 +227,50 @@ const AdminPrinc = ({ theme, toggle }) => {
     return changes;
   };
 
-  // Undo a specific change by restoring prevValue
+  const getSessionChanges = () => {
+    if (!editSessionData || !editedData) return [];
+    const changes = [];
+    if (editSessionData.name !== editedData.name) {
+      changes.push({
+        action: "Edited",
+        section: "Name",
+        prevValue: editSessionData.name,
+        newValue: editedData.name,
+      });
+    }
+    if (editSessionData.message !== editedData.message) {
+      changes.push({
+        action: "Edited",
+        section: "Message",
+        prevValue: editSessionData.message,
+        newValue: editedData.message,
+      });
+    }
+    if (JSON.stringify(editSessionData.social_links || {}) !== JSON.stringify(editedData.social_links || {})) {
+      changes.push({
+        action: "Edited",
+        section: "Social Links",
+        prevValue: editSessionData.social_links || {},
+        newValue: editedData.social_links || {},
+      });
+    }
+    if (editedData?.newImageFile) {
+      const prevImg = editSessionData?.image || editSessionData?.photo || editSessionData?.profile_image || null;
+      changes.push({
+        action: "Edited",
+        section: "Profile Image",
+        prevValue: prevImg,
+        newValue: editedData.newImageFile,
+      });
+    }
+    return changes;
+  };
+
   const handleUndoChange = (change) => {
     if (!change || !editedData || !data) return;
     const { section, prevValue } = change;
-
     setEditedData((prev) => {
       const copy = { ...prev };
-
       switch (section) {
         case "Name":
           copy.name = prevValue;
@@ -218,7 +282,6 @@ const AdminPrinc = ({ theme, toggle }) => {
           copy.social_links = prevValue || {};
           break;
         case "Profile Image":
-          // remove any staged new file
           if (copy.newImageFile) {
             delete copy.newImageFile;
           }
@@ -228,21 +291,17 @@ const AdminPrinc = ({ theme, toggle }) => {
       }
       return copy;
     });
-
-    // preview behavior for image undo
     if (section === "Profile Image") {
-      // clear preview so img falls back to the original path (if any)
       setPreviewImage(null);
     }
-
-    // If all changes are undone, reset saved flag
-    setTimeout(() => {
-      const remaining = getChanges();
-      if (remaining.length === 0) {
-        setIsSaved(false);
-      }
-    }, 0);
   };
+
+  useEffect(() => {
+    if (isEditing && textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [editedData?.message, isEditing]);
 
   if (!isOnline) {
     return (
@@ -268,37 +327,19 @@ const AdminPrinc = ({ theme, toggle }) => {
         </div>
       ) : (
         <div className="relative max-w-[90%] mx-auto my-8 px-4 pb-15">
-          {/* 🔹 Edit/Cancel */}
-          {!isEditing ? (
+          {/* Top-right Edit button */}
+          {!isEditing && (
+            <div className='flex justify-end top-0 right-0'>
             <button
-              onClick={() => {
-                setIsEditing(true);
-                setEditedData(data);
-              }}
-              className="px-3 py-2 absolute top-0 right-0 bg-yellow-400  p-2 rounded shadow-md hover:bg-yellow-500"
+              onClick={handleEditClick}
+              className="px-3 py-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500"
             >
               Edit
             </button>
-          ) : (
-            <button
-              onClick={() => {
-                if (hasChanges()) {
-                  setShowCancelConfirm(true); // ask confirmation only if changed
-                } else {
-                  // no changes → just exit editing
-                  setIsEditing(false);
-                  setPreviewImage(null);
-                  setIsSaved(false);
-                  setEditedData(data);
-                }
-              }}
-              className="px-3xx py-2 absolute top-0 right-0 bg-brwn text-white font-poppi p-2 rounded shadow-md hover:bg-gray-600"
-            >
-              Cancel
-            </button>
+            </div>
           )}
 
-          {/* 🔹 Content */}
+          {/* Content */}
           <div className="flex flex-col md:flex md:justify-center lg:flex-row-reverse items-center lg:items-start">
             <div className="lg:max-w-sm lg:ml-6 flex-shrink-0 mx-auto py-8 relative">
               <img
@@ -307,22 +348,6 @@ const AdminPrinc = ({ theme, toggle }) => {
                 alt="Principal"
               />
               <div className='text-center w-full '>
-                {isEditing && (
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="mt-3 border"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
-                      if (file) {
-                        setPreviewImage(URL.createObjectURL(file));
-                        setEditedData((prev) => ({ ...prev, newImageFile: file }));
-                      }
-                    }}
-                  />
-                )}
-              </div>
-              <div className="text-center">
                 {isEditing ? (
                   <input
                     type="text"
@@ -338,31 +363,24 @@ const AdminPrinc = ({ theme, toggle }) => {
                   </span>
                 )}
 
-                {/* Social Links */}
+                {/* Social Links as icons */}
                 <div className="socialLinks flex flex-row gap-3 justify-center mt-4 text-xl">
-                  {Object.entries(editedData?.social_links || {}).map(([key, val], idx) => {
-                    const url = typeof val === "string" ? val : val.url;
-                    const iconKey = typeof val === "string" ? null : val.icon;
-                    return (
-                      <div key={idx} className="flex items-center gap-1">
+                  {SOCIAL_LINKS_CONFIG.map(({ key, icon: IconComponent }) => {
+                    const url = editedData?.social_links?.[key];
+                    if (url) {
+                      return (
                         <a
+                          key={key}
                           href={url}
                           className="text-accn dark:text-drka hover:text-secd dark:hover:text-drks"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          {renderIcon(key, iconKey)}
+                          <IconComponent size={20} />
                         </a>
-                        {isEditing && (
-                          <button
-                            onClick={() => handleDeleteLink(key)}
-                            className="text-red-500 hover:text-red-700"
-                          >
-                            <MdDelete />
-                          </button>
-                        )}
-                      </div>
-                    );
+                      );
+                    }
+                    return null;
                   })}
                 </div>
 
@@ -377,92 +395,148 @@ const AdminPrinc = ({ theme, toggle }) => {
               </div>
             </div>
 
-            {/* Text */}
             <div className="text-justify leading-relaxed max-w-[95%] lg:max-w-[60%] mx-auto">
               <p className="princ-tex text-lg lg:text-[24px] font-[poppins] font-bold mb-3 mt-2 text-brwn dark:text-prim inline-block border-b-2 border-[#FDCC03] dark:border-drks pb-1">
                 From the Principal's Desk
               </p>
               {isEditing ? (
                 <textarea
+                  ref={textareaRef}
                   value={editedData?.message || ""}
-                  onChange={(e) =>
-                    setEditedData({ ...editedData, message: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setEditedData({ ...editedData, message: e.target.value });
+                  }}
                   className="w-full border p-2 rounded-md"
                   rows={6}
+                  style={{ minHeight: "120px", overflow: "hidden", resize: "none" }}
                 />
               ) : (
                 <q className="text-md font-[Poppins] lg:text-[16px] block">
-                  {data?.message}
+                  {editedData?.message}
                 </q>
               )}
             </div>
           </div>
 
-          {/* 🔹 Save & Request flow */}
-          {isEditing && (
-            <div className="flex justify-end mt-4 gap-3">
-              {!isSaved ? (
-                <button
-                  onClick={handleSave}
-                  className="px-3 py-2 bg-yellow-400 text-black font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
-                >
-                  Save
-                </button>
-              ) : (
-                getChanges().length > 0 && (
+          {/* BUTTON GROUP*/}
+          {(isEditing || requestStep) && (
+            <div className="flex justify-end top-0 right-0 gap-3">
+              {isEditing && (
+                <>
+                  <button
+                    onClick={handleCancelClick}
+                    className="px-3 py-2 bg-gray-400 text-white rounded font-[poppins] hover:bg-gray-500"
+                  >
+                    Cancel
+                  </button>
+                  {getSessionChanges().length > 0 && (
+                    <button
+                      onClick={handleSave}
+                      className="px-3 py-2 bg-yellow-400 text-black font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
+                    >
+                      Save
+                    </button>
+                  )}
+                </>
+              )}
+              {!isEditing && requestStep && (
+                <>
+                  <button
+                    onClick={() => setShowDiscardConfirm(true)}
+                    className="px-3 py-2 bg-gray-400 text-white rounded font-[poppins] hover:bg-gray-500"
+                  >
+                    Discard All Changes
+                  </button>
                   <button
                     onClick={handleConfirm}
                     className="px-3 py-2 bg-yellow-400 text-black font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
                   >
-                    <FaPaperPlane /> Request
+                    Request
                   </button>
-                )
+                </>
               )}
             </div>
           )}
         </div>
       )}
 
-      {/* 🔹 Modal for Social Links */}
+      {/* Social Links Modal Edit Table */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px]">
-            <h2 className="text-lg font-bold mb-4">Add Social Links</h2>
-            <input
-              type="text"
-              placeholder="Link Name"
-              value={newLink.name}
-              onChange={(e) => setNewLink({ ...newLink, name: e.target.value })}
-              className="w-full mb-3 p-2 border rounded"
-            />
-            <input
-              type="text"
-              placeholder="Link URL"
-              value={newLink.url}
-              onChange={(e) => setNewLink({ ...newLink, url: e.target.value })}
-              className="w-full mb-3 p-2 border rounded"
-            />
-            <select
-              value={newLink.icon}
-              onChange={(e) => setNewLink({ ...newLink, icon: e.target.value })}
-              className="w-full mb-3 p-2 border rounded"
-            >
-              <option value="FaLinkedin">LinkedIn</option>
-              <option value="FaGoogleScholar">Google Scholar</option>
-              <option value="FaResearchgate">ResearchGate</option>
-              <option value="FaBook">Scopus/Other</option>
-            </select>
-            <div className="flex justify-end gap-2 font-[poppins]">
+        <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-black/60">
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                          bg-white p-6 rounded-xl shadow-2xl min-w-[850px] max-w-[90%] max-h-[75vh]
+                          overflow-y-auto border border-gray-200">
+
+            <h2 className="text-xl font-bold mb-4 text-center text-[#800000]">
+              Add / Edit links
+            </h2>
+
+            <table className="w-full border border-gray-300 rounded-lg overflow-hidden">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border px-2 py-1">Profile</th>
+                  <th className="border px-2 text-left py-1">Link</th>
+                  <th className="border px-2 text-left py-1">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SOCIAL_LINKS_CONFIG.map(({ key, label, icon: IconComponent }) => {
+                  const url = editedData?.social_links?.[key] || "";
+                  return (
+                    <tr key={key}>
+                      <td className="border px-2 font-medium py-1 flex items-center gap-2">
+                        {getProfileIcon(IconComponent, url)}
+                        <span>{label}</span>
+                      </td>
+                      <td className="border px-2 py-1">
+                        <input
+                          type="text"
+                          value={url}
+                          onChange={(e) => {
+                            setEditedData((prev) => ({
+                              ...prev,
+                              social_links: {
+                                ...prev.social_links,
+                                [key]: e.target.value
+                              }
+                            }));
+                          }}
+                          className="border px-2 py-1 w-full rounded focus:ring focus:ring-[#fdcc03]"
+                        />
+                      </td>
+                      <td className="border px-4 w-20 text-center text-red-500 py-1">
+                        <button
+                          onClick={() => {
+                            setEditedData((prev) => ({
+                              ...prev,
+                              social_links: {
+                                ...prev.social_links,
+                                [key]: ""
+                              }
+                            }));
+                          }}
+                          title="Delete"
+                        >
+                          {/* You may use <MdDelete size={20} /> if you want a delete icon from react-icons */}
+                          <Trash2 size={20} />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-3 py-1 bg-brwn text-white rounded hover:bg-amber-900"
+                className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
               >
                 Cancel
               </button>
               <button
-                onClick={handleAddLink}
-                className="px-3 py-1 bg-secd text-black  rounded"
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded-lg hover:bg-[#800000] hover:text-white"
               >
                 Save
               </button>
@@ -470,17 +544,15 @@ const AdminPrinc = ({ theme, toggle }) => {
           </div>
         </div>
       )}
-
-      {/* 🔹 Confirm Changes Modal */}
+      
+      {/* Request Modal - CHANGES ALWAYS SHOW */}
       {showConfirmModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[450px]">
             <h2 className="text-lg font-bold mb-4">Final Request for the Changes</h2>
-
             <p className="text-red-600 mb-4">
               <span className="font-semibold">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
             </p>
-
             <table className="w-full border-collapse mb-6">
               <thead>
                 <tr className="text-left border-b">
@@ -490,8 +562,8 @@ const AdminPrinc = ({ theme, toggle }) => {
                 </tr>
               </thead>
               <tbody>
-                {getChanges().length > 0 ? (
-                  getChanges().map((change, idx) => (
+                {getRequestChanges().length > 0 ? (
+                  getRequestChanges().map((change, idx) => (
                     <tr key={idx} className="border-b">
                       <td className="py-2">{change.action}</td>
                       <td className="py-2">{change.section}</td>
@@ -514,7 +586,6 @@ const AdminPrinc = ({ theme, toggle }) => {
                 )}
               </tbody>
             </table>
-
             <div className="flex justify-between">
               <button
                 onClick={() => setShowConfirmModal(false)}
@@ -526,19 +597,19 @@ const AdminPrinc = ({ theme, toggle }) => {
                 onClick={handleRequest}
                 className="px-4 py-2 bg-yellow-400 text-black rounded font-[poppins] flex items-center gap-2 hover:bg-yellow-500"
               >
-                <FaPaperPlane /> Final Request
+                Final Request
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* 🔹 Cancel Confirmation Modal */}
+      {/* Cancel Confirmation Modal (Edit Mode) */}
       {showCancelConfirm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px]">
             <h2 className="text-lg font-bold mb-4">Cancel Changes?</h2>
-            <p className="mb-4">Are you sure you want to discard all changes?</p>
+            <p className="mb-4">Are you sure you want to discard your edits?</p>
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowCancelConfirm(false)}
@@ -551,6 +622,54 @@ const AdminPrinc = ({ theme, toggle }) => {
                 className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
               >
                 Yes, Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Discard All Changes Confirmation Modal (Request Step) */}
+      {showDiscardConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-bold mb-4">Discard All Changes?</h2>
+            <p className="mb-4">Are you sure you want to discard all pending changes?</p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDiscardConfirm(false)}
+                className="px-3 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+              >
+                No
+              </button>
+              <button
+                onClick={handleDiscardConfirm}
+                className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Yes, Discard All
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Social Link Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-bold mb-4">Delete Link?</h2>
+            <p className="mb-4">Are you sure you want to delete this social link?</p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="px-3 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+              >
+                No
+              </button>
+              <button
+                onClick={handleConfirmedDelete}
+                className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Yes, Delete
               </button>
             </div>
           </div>

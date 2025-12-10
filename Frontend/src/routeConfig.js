@@ -1,92 +1,98 @@
-import Admingallerydetails from "./Components/Admin/Second_Nav_Bar/Gallery/detailpage";
-import Admingallery from "./Components/Admin/Second_Nav_Bar/Gallery/gallery";
-import AdminTransport from "./Components/Admin/Second_Nav_Bar/Transport/Transport";
-import AdminDashboard from "./Components/Admin/Superier/adminDash";
-import Gallerydetails from "./Components/Main/Second_Nav_Bar/Gallery/detailpage";
-import Gallery from "./Components/Main/Second_Nav_Bar/Gallery/gallery";
-import Transport from "./Components/Main/Second_Nav_Bar/Transport/Transport";
-import AdminIQAC from "./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx";
-import IQAC from "./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx";
-import NotFound from "./NotFound";
-import AdminApprovalPage from "./Components/Admin/Superier/admin-approval-page.jsx";
-import Consultancy from "./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx";
-import AdminConsultancy from "./Components/Admin/Top_Nav_Bar/Research/Academicresearch.jsx";
-import Journal from "./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx";
-import AdminJournal from "./Components/Admin/Top_Nav_Bar/Research/Journal_publica.jsx";
-import Policies from "./Components/Main/Top_Nav_Bar/Research/policy.jsx";
-import AdminPolicies from "./Components/Admin/Top_Nav_Bar/Research/policy.jsx";
-import Funded from "./Components/Main/Top_Nav_Bar/Research/Funded.jsx";
-import AdminFunded from "./Components/Admin/Top_Nav_Bar/Research/Funded.jsx";
-import BookChapter from "./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx";
-import AdminBookChapter from "./Components/Admin/Top_Nav_Bar/Research/BookChapter.jsx";
-import REGULATION from "./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx";
-import AdminREGULATION from "./Components/Admin/Top_Nav_Bar/Exams/Regulation.jsx";
-import Syllabus from "./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx";
-import AdminSyllabus from "./Components/Admin/Top_Nav_Bar/Exams/Syllabus.jsx";
-import Forms from "./Components/Main/Top_Nav_Bar/Exams/forms.jsx";
-import AdminForms from "./Components/Admin/Top_Nav_Bar/Exams/forms.jsx";
-import Coe from "./Components/Main/Top_Nav_Bar/Exams/Coe.jsx";
-import AdminCoe from "./Components/Admin/Top_Nav_Bar/Exams/Coe.jsx";
-import UgAdmission from "./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx";
-import AdminUgAdmission from "./Components/Admin/Top_Nav_Bar/Admission/admin_UgAdmission.jsx";
-import ME from "./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx";
-import AdminME from "./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-M.E.jsx";
-import MBA from "./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx";
-import AdminMBA from "./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-MBA.jsx";
-import ADMteam from "./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx";
-import AdminADMteam from "./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-Team.jsx";
-import PhdAdmission from "./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx";
-import AdminPhdAdmission from "./Components/Admin/Top_Nav_Bar/Admission/admin_PhdAdmission.jsx";
-import Aboutplacement from "./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx";
-import AdminAboutplacement from "./Components/Admin/Top_Nav_Bar/Placements/Aboutplacement.jsx";
-import { PlacementTeam } from "./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx";
-import { AdminPlacementDetails } from "./Components/Admin/Top_Nav_Bar/Placements/PlacementDetails.jsx";
-import { PlacementDetails } from "./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx";
-import { AdminPlacementTeam } from "./Components/Admin/Top_Nav_Bar/Placements/PlacementTeam.jsx";
-import HostelPage from "./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx";
-import AdminHostelPage from "./Components/Admin/Second_Nav_Bar/Hostel/Hostel.jsx";
-import GrievanceForm from "./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx";
-import AdminGrievanceForm from "./Components/Admin/Second_Nav_Bar/Helpdesk/admin_Grievences.jsx";
-import LibraryLayout from "./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx";
-import AdminLibraryLayout from "./Components/Admin/Second_Nav_Bar/library/LibraryLayout.jsx";
-import AdminPrinc from "./Components/Admin/Top_Nav_Bar/Administration/Princ.jsx";
-import AdminDean from "./Components/Admin/Top_Nav_Bar/Administration/dean.jsx";
-import AdminCardPage from "./Components/Admin/Top_Nav_Bar/Administration/admin.jsx";
-import AdminHandbook from "./Components/Admin/Top_Nav_Bar/Administration/Handbook.jsx";
-import Princ from "./Components/Main/Top_Nav_Bar/Administration/Princ.jsx";
-import Dean from "./Components/Main/Top_Nav_Bar/Administration/dean.jsx";
-import CardPage from "./Components/Main/Top_Nav_Bar/Administration/admin.jsx";
-import Handbook from "./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx";
-import NCCMAIN from "./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
-import AdminNSS from "./Components/Admin/Second_Nav_Bar/NSS/NSS.jsx";
-import NSS from "./Components/Main/Second_Nav_Bar/NSS/NSS.jsx";
-import AdminNCCMAIN from "./Components/Admin/Second_Nav_Bar/NCC/NCC_MAIN.jsx";
-import NCC_NAVY from "./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import AdminNCC_NAVY from "./Components/Admin/Second_Nav_Bar/NCC/NCC_NAVY.jsx";
-import NCC_ARMY from "./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-import AdminNCC_ARMY from "./Components/Admin/Second_Nav_Bar/NCC/NCC_ARMY.jsx";
-import YRC from "./Components/Main/Second_Nav_Bar/yrc/YRC.jsx";
-import AdminYrc from "./Components/Admin/Second_Nav_Bar/yrc/YRC.jsx";
-import AdminProfilePage from "./Components/Admin/Admin/adminProfile.jsx";
-// import AdminLandingPage from "./AdminLanding.jsx";
-import Acadamiccal from "./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx";
-import AdminAcadamiccal from "./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx";
-import Accredation from "./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx";
-import AdminAccredation from "./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx";
-import Iic from "./Components/Main/Second_Nav_Bar/IIC/iic.jsx";
-import AdminIic from "./Components/Admin/Second_Nav_Bar/IIC/iic.jsx";
-import Incub from "./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx";
-import AdminIncub from "./Components/Admin/Second_Nav_Bar/Incubation/InCub.jsx";
-import Ecell from "./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import AdminEcell from "./Components/Admin/Second_Nav_Bar/E-cell/aboutEcell.jsx";
-import DepartmentPage from "./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx";
-import AcademicDepartments from "./Components/Main/Top_Nav_Bar/Academics/Department.jsx";
-import AdminAcademicDepartments from "./Components/Admin/Top_Nav_Bar/Academics/Department.jsx";
-import DepartmentRoute from "./deptRoute.js";
-import Programmes from "./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx";
-import AdminProgrammes from "./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx";
-import AdminSportsPage from "./Components/Admin/Second_Nav_Bar/sports/admin_SportsPage.jsx";
-import SportsPage from "./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx";
+import { lazy } from 'react';
+import DepartmentRoute from "./deptRoute.js"; // Keep this eager if it's not a component or used differently? It's used as 'admin: DepartmentRoute'. Let's check.
+
+// Lazy load components
+const Admingallerydetails = lazy(() => import("./Components/Admin/Second_Nav_Bar/Gallery/detailpage"));
+const Admingallery = lazy(() => import("./Components/Admin/Second_Nav_Bar/Gallery/gallery"));
+const AdminTransport = lazy(() => import("./Components/Admin/Second_Nav_Bar/Transport/Transport"));
+const AdminDashboard = lazy(() => import("./Components/Admin/Superier/adminDash"));
+const Gallerydetails = lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/detailpage"));
+const Gallery = lazy(() => import("./Components/Main/Second_Nav_Bar/Gallery/gallery"));
+const Transport = lazy(() => import("./Components/Main/Second_Nav_Bar/Transport/Transport"));
+const AdminIQAC = lazy(() => import("./Components/Admin/Second_Nav_Bar/IQAC/IQAC.jsx"));
+const IQAC = lazy(() => import("./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx"));
+const NotFound = lazy(() => import("./NotFound"));
+const AdminApprovalPage = lazy(() => import("./Components/Admin/Superier/admin-approval-page.jsx"));
+const Consultancy = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const AdminConsultancy = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const Journal = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx"));
+const AdminJournal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Journal_publica.jsx"));
+const Policies = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/policy.jsx"));
+const AdminPolicies = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/policy.jsx"));
+const Funded = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Funded.jsx"));
+const AdminFunded = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Funded.jsx"));
+const BookChapter = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/BookChapter.jsx"));
+const AdminBookChapter = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/BookChapter.jsx"));
+const REGULATION = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Regulation.jsx"));
+const AdminREGULATION = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Regulation.jsx"));
+const Syllabus = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx"));
+const AdminSyllabus = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Syllabus.jsx"));
+const Forms = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
+const AdminForms = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/forms.jsx"));
+const Coe = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const AdminCoe = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Coe.jsx"));
+const UgAdmission = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx"));
+const AdminUgAdmission = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_UgAdmission.jsx"));
+const ME = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-M.E.jsx"));
+const AdminME = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-M.E.jsx"));
+const MBA = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-MBA.jsx"));
+const AdminMBA = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-MBA.jsx"));
+const ADMteam = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/ADM-Team.jsx"));
+const AdminADMteam = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_ADM-Team.jsx"));
+const PhdAdmission = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/PhdAdmission.jsx"));
+const AdminPhdAdmission = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_PhdAdmission.jsx"));
+const Aboutplacement = lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
+const AdminAboutplacement = lazy(() => import("./Components/Admin/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
+
+// Named imports handling
+const PlacementTeam = lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx").then(module => ({ default: module.PlacementTeam })));
+const AdminPlacementDetails = lazy(() => import("./Components/Admin/Top_Nav_Bar/Placements/PlacementDetails.jsx").then(module => ({ default: module.AdminPlacementDetails })));
+const PlacementDetails = lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementDetails.jsx").then(module => ({ default: module.PlacementDetails })));
+const AdminPlacementTeam = lazy(() => import("./Components/Admin/Top_Nav_Bar/Placements/PlacementTeam.jsx").then(module => ({ default: module.AdminPlacementTeam })));
+
+const HostelPage = lazy(() => import("./Components/Main/Second_Nav_Bar/Hostel/Hostel.jsx"));
+const AdminHostelPage = lazy(() => import("./Components/Admin/Second_Nav_Bar/Hostel/Hostel.jsx"));
+const GrievanceForm = lazy(() => import("./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx"));
+const AdminGrievanceForm = lazy(() => import("./Components/Admin/Second_Nav_Bar/Helpdesk/admin_Grievences.jsx"));
+const LibraryLayout = lazy(() => import("./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"));
+const AdminLibraryLayout = lazy(() => import("./Components/Admin/Second_Nav_Bar/library/LibraryLayout.jsx"));
+const AdminPrinc = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/Princ.jsx"));
+const AdminDean = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/dean.jsx"));
+const AdminCardPage = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/admin.jsx"));
+const AdminHandbook = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/Handbook.jsx"));
+const Princ = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Princ.jsx"));
+const Dean = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/dean.jsx"));
+const CardPage = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/admin.jsx"));
+const Handbook = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Handbook.jsx"));
+const NCCMAIN = lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_MAIN.jsx"));
+const AdminNSS = lazy(() => import("./Components/Admin/Second_Nav_Bar/NSS/NSS.jsx"));
+const NSS = lazy(() => import("./Components/Main/Second_Nav_Bar/NSS/NSS.jsx"));
+const AdminNCCMAIN = lazy(() => import("./Components/Admin/Second_Nav_Bar/NCC/NCC_MAIN.jsx"));
+const NCC_NAVY = lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_NAVY.jsx"));
+const AdminNCC_NAVY = lazy(() => import("./Components/Admin/Second_Nav_Bar/NCC/NCC_NAVY.jsx"));
+const NCC_ARMY = lazy(() => import("./Components/Main/Second_Nav_Bar/NCC/NCC_ARMY.jsx"));
+const AdminNCC_ARMY = lazy(() => import("./Components/Admin/Second_Nav_Bar/NCC/NCC_ARMY.jsx"));
+const YRC = lazy(() => import("./Components/Main/Second_Nav_Bar/yrc/YRC.jsx"));
+const AdminYrc = lazy(() => import("./Components/Admin/Second_Nav_Bar/yrc/YRC.jsx"));
+const AdminProfilePage = lazy(() => import("./Components/Admin/Admin/adminProfile.jsx"));
+const Acadamiccal = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const AdminAcadamiccal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const Accredation = lazy(() => import("./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const AdminAccredation = lazy(() => import("./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const Iic = lazy(() => import("./Components/Main/Second_Nav_Bar/IIC/iic.jsx"));
+const AdminIic = lazy(() => import("./Components/Admin/Second_Nav_Bar/IIC/iic.jsx"));
+const Incub = lazy(() => import("./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx"));
+const AdminIncub = lazy(() => import("./Components/Admin/Second_Nav_Bar/Incubation/InCub.jsx"));
+const Ecell = lazy(() => import("./Components/Main/Second_Nav_Bar/E-cell/aboutEcell.jsx"));
+const AdminEcell = lazy(() => import("./Components/Admin/Second_Nav_Bar/E-cell/aboutEcell.jsx"));
+const DepartmentPage = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/DepartmentPage.jsx"));
+const AcademicDepartments = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Department.jsx"));
+const AdminAcademicDepartments = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/Department.jsx"));
+const Programmes = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Programmes.jsx"));
+const AdminProgrammes = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx"));
+const AdminSportsPage = lazy(() => import("./Components/Admin/Second_Nav_Bar/sports/admin_SportsPage.jsx"));
+const SportsPage = lazy(() => import("./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx"));
+
 
 export const routeConfig = {
 
@@ -103,12 +109,12 @@ export const routeConfig = {
   "/dean": { normal: Dean, admin: AdminDean },
   "/admin": { normal: CardPage, admin: AdminCardPage },
   "/handbook": { normal: Handbook, admin: AdminHandbook },
-  
+
   // Academics Routes
   "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
   "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
   "/programs": { normal: Programmes, admin: AdminProgrammes },
-  "/acadamic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
+  "/acadamiccal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -141,7 +147,7 @@ export const routeConfig = {
 
   "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
-  '/incubation': { normal:Incub, admin:AdminIncub },
+  '/incubation': { normal: Incub, admin: AdminIncub },
   "/ecell": { normal: Ecell, admin: AdminEcell },
   "/Accredation": { normal: Accredation, admin: AdminAccredation },
   "/iic": { normal: Iic, admin: AdminIic },
@@ -156,7 +162,7 @@ export const routeConfig = {
   "/grievances": { normal: GrievanceForm, admin: AdminGrievanceForm },
   "/gallery": { normal: Gallery, admin: Admingallery },
   "/gallery_details": { normal: Gallerydetails, admin: Admingallerydetails },
-  
+
   // Superior Admin Routes
   "/admin_dash": { normal: NotFound, admin: AdminDashboard },
   "/admin_approval": { normal: NotFound, admin: AdminApprovalPage },

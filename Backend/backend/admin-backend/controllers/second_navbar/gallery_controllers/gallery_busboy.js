@@ -18,8 +18,8 @@ async function galleryHandler(fileStream, docs, req, cb, filename, mimetype) {
       return cb(new Error("Only images are allowed"));
     }
 
-    const collection_type = docs[0]?.collection_type || "gallery";
-    const folder = `temp/static/gallery/${collection_type}/`;
+    const category = docs[0]?.category;
+    const folder = `temp/static/images/gallery/${category}/`;
     const s3Key = folder + realFilename;
 
     // Buffer the stream

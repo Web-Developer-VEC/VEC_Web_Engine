@@ -1,418 +1,631 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FaRegCircleLeft, FaRegCircleRight, FaPaperPlane, FaFontAwesome,FaEye } from "react-icons/fa6";
-import { Trash2, PlusCircle, Edit2, XCircle } from "lucide-react";
+import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
+import { Pencil, Trash2, Plus, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import LoadComp from "../../LoadComp";
 import "./Couroselnss.css";
+import LoadComp from "../../LoadComp";
+
+const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
 const CarouselNSS = ({ data }) => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const swiperRef = useRef(null);
+  const [items, setItems] = useState([]);
+  const [committedItems, setCommittedItems] = useState([]);
+  const [pendingItems, setPendingItems] = useState(null);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
 
-  const UrlParser = (path) => {
-    if (!path) return "";
-    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const [editing, setEditing] = useState(false);
-  const [slides, setSlides] = useState(data || []);
-  const [changes, setChanges] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [swiperInstance, setSwiperInstance] = useState(null);
-  const [isPreviewing, setIsPreviewing] = useState(false);
-const [previewImg, setPreviewImg] = useState(null); // single preview (faculty)
-  // refs for navigation buttons
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
 
-  useEffect(() => {
-    setSlides(data);
-  }, [data]);
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  useEffect(() => {
-    if (swiperInstance) {
-      swiperInstance.params.navigation.prevEl = prevRef.current;
-      swiperInstance.params.navigation.nextEl = nextRef.current;
-      swiperInstance.navigation.init();
-      swiperInstance.navigation.update();
-    }
-  }, [swiperInstance]);
-
-  // --- Handlers ---
-  const handleEdit = () => setEditing(true);
-
-  const handleCancel = () => {
-    toast.info("Changes canceled");
-    setSlides(data);
-    setChanges([]);
-    setEditing(false);
-    setIsPreviewing(false);
-  };
-
-  const handleDelete = (index) => {
-    const deletedItem = slides[index];
-    setSlides(slides.filter((_, i) => i !== index));
-    setChanges([...changes, { action: "deleted", section: deletedItem, index }]);
-  };
-
-  const handleAddNew = () => {
-    const newSlide = { id: Date.now(), title: "", image_path: "", date: "", isNew: true };
-    setSlides([...slides, newSlide]);
-    setChanges([...changes, { action: "added", section: newSlide, index: slides.length }]);
-  };
-
-  const handleRequest = () => {
-    if (changes.length > 0) setShowPopup(true);
-  };
-
-const handlePreviewClick = () => {
-  // check required fields for all slides
-  const hasEmptyFields = slides.some(
-    (s) => !s.title.trim() || !s.date.trim() || !s.image_path
-  );
-
-  if (hasEmptyFields) {
-    toast.error("Please fill all required fields before previewing.");
-    return; // stop preview
+const UrlParser = (path) => {
+  if (!path) return "/placeholder.jpg"; // fallback
+  if (path.startsWith("http") || path.startsWith("blob") || path.startsWith("data:")) {
+    return path; // absolute URL or blob/base64
   }
-
-  setIsPreviewing(true);
+  return `${BASE_URL}${path}`; // relative path
 };
 
 
-  const handleBackToEdit = () => {
-    setIsPreviewing(false);
+
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const formattedData = data.map((item, idx) => ({
+        id: idx,
+        image_path: item.image_path || "",
+        title: item.title || "",
+        date: item.date || "",
+        selected: false
+      }));
+      
+      const copy = deepCopy(formattedData);
+      setCommittedItems(copy);
+      setItems(deepCopy(copy));
+      setPendingItems(null);
+      setIsEditing(false);
+      setIsDirty(false);
+      setIsSaved(false);
+      setSelectedItems([]);
+      setSelectAll(false);
+    }
+  }, [data]);
+
+useEffect(() => {
+  if (swiperRef.current && swiperRef.current.swiper) {
+    const swiper = swiperRef.current.swiper;
+    swiper.navigation.destroy(); // destroy old nav
+    swiper.navigation.init();
+    swiper.navigation.update();
+  }
+}, [items, isEditing]);
+
+
+
+const handleStartEdit = () => {
+  if (pendingItems) {
+    setItems(deepCopy(pendingItems)); // Load draft if exists
+  } else {
+    setItems(deepCopy(committedItems));
+  }
+  setIsEditing(true);
+  setIsDirty(false);
+  setIsSaved(!!pendingItems); // Draft exists
+  setSelectedItems([]);
+  setSelectAll(false);
+};
+
+
+const handleChange = (e, idx, field) => {
+  let value = e.target.value;
+
+  // Capitalize first letter of each word for title or date fields
+  if (field === "title" || field === "date") {
+    value = value.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  const updated = items.map((item, i) =>
+    i === idx ? { ...item, [field]: value } : item
+  );
+  setItems(updated);
+  setIsDirty(true);
+};
+
+
+  const handleAddItem = () => {
+    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
+      id: Date.now(), 
+      image_path: "",
+      title: "",
+      date: "",
+      selected: false
+    }]);
+    setIsDirty(true);
   };
 
-  const handleRequestClick = () => {
-    if (changes.length > 0) setShowPopup(true);
+  const handleItemSelect = (index) => {
+    const updatedItems = items.map((item, i) => 
+      i === index ? { ...item, selected: !item.selected } : item
+    );
+    
+    setItems(updatedItems);
+    
+    const selectedIndices = updatedItems
+      .map((item, i) => item.selected ? i : -1)
+      .filter(i => i !== -1);
+    
+    setSelectedItems(selectedIndices);
+    setSelectAll(selectedIndices.length === updatedItems.length && updatedItems.length > 0);
   };
 
-  // Track edits properly
-  const handleChange = (index, key, value) => {
-    const updated = [...slides];
-    const oldItem = { ...updated[index] };
+  const handleSelectAll = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    
+    const updatedItems = items.map(item => ({ ...item, selected: newSelectAll }));
+    setItems(updatedItems);
+    
+    setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
+  };
 
-    updated[index][key] = value;
-    setSlides(updated);
+  const confirmDelete = () => {
+    const updated = items.filter((_, i) => !selectedItems.includes(i)).map((item) => ({ ...item }));
+    setItems(updated);
+    setSelectedItems([]);
+    setSelectAll(false);
+    setShowDeleteModal(false);
+    setIsDirty(true);
+  };
 
-    setChanges((prev) => {
-      const existingChange = prev.find(
-        (ch) => ch.index === index && ch.action === "edited"
-      );
+const handleCancel = () => {
+  if (pendingItems) {
+    setItems(deepCopy(pendingItems)); // Revert to draft
+    toast.info("Cancelled edits. Draft preserved!");
+  } else {
+    setItems(deepCopy(committedItems)); // No draft, revert to committed
+    toast.info("Cancelled. Reverted to original data!");
+  }
 
-      // if it was just added, don't log "edited" separately
-      const wasAdded = prev.some((ch) => ch.index === index && ch.action === "added");
+  setIsEditing(false);
+  setIsDirty(false);
+  setSelectedItems([]);
+  setSelectAll(false);
+  setIsSaved(!!pendingItems); // Maintain draft state
+};
 
-      if (wasAdded) {
-        return prev.map((ch) =>
-          ch.index === index && ch.action === "added"
-            ? { ...ch, section: updated[index] }
-            : ch
-        );
+
+const handleSave = () => {
+  // Check for empty fields
+  const invalidItem = items.find(item => 
+    !item.image_path?.trim() || 
+    !item.title?.trim() || 
+    !item.date?.trim()
+  );
+
+  if (invalidItem) {
+    toast.error("Please fill all fields before saving!");
+    return;
+  }
+
+  const pending = deepCopy(items);
+  setPendingItems(pending); // Save draft
+  setIsSaved(true);
+  setIsEditing(false);
+  setIsDirty(false);
+  setSelectedItems([]);
+  setSelectAll(false);
+  toast.success("Changes saved as draft!");
+};
+
+
+  const handleDiscard = () => {
+    setItems(deepCopy(committedItems));
+    setPendingItems(null);
+    setIsSaved(false);
+    setIsDirty(false);
+    setSelectedItems([]);
+    setSelectAll(false);
+    toast.info("Changes discarded!");
+  };
+
+  const handleRequest = () => {
+    setShowRequestModal(true);
+  };
+
+const handleFinalRequestConfirm = () => {
+  if (!pendingItems) return;
+  
+  // committedItems now keep base64 paths as well
+  setCommittedItems(deepCopy(pendingItems));
+  setItems(deepCopy(pendingItems));
+  setPendingItems(null);
+  setIsSaved(false);
+  setShowRequestModal(false);
+  toast.success("Final request submitted!");
+};
+
+
+  const revertChange = (itemId) => {
+    if (!pendingItems) return;
+
+    const committedItem = committedItems.find(item => item.id === itemId);
+    let updated;
+
+    if (!committedItem) {
+      // Item was newly added → remove it
+      updated = pendingItems.filter(item => item.id !== itemId);
+    } else if (!pendingItems.find(item => item.id === itemId)) {
+      // Item was deleted → restore it
+      updated = [...pendingItems, deepCopy(committedItem)];
+    } else {
+      // Item was edited → reset to committed version
+      updated = pendingItems.map(item => item.id === itemId ? deepCopy(committedItem) : item);
+    }
+
+    setPendingItems(updated);
+    setItems(deepCopy(updated));
+  };
+
+const handleImageUpload = (e, index) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const updatedItems = [...items];
+    updatedItems[index] = { ...updatedItems[index], image_path: event.target.result }; // base64
+    setItems(updatedItems);
+    setIsDirty(true);
+  };
+  reader.readAsDataURL(file);
+};
+
+
+
+
+
+  const getChanges = () => {
+    if (!pendingItems) return [];
+    const changes = [];
+
+    const committedMap = new Map(committedItems.map(item => [item.id, item]));
+    const pendingMap = new Map(pendingItems.map(item => [item.id, item]));
+
+    // Check for deleted and edited items
+    committedMap.forEach((oldItem, id) => {
+      if (!pendingMap.has(id)) {
+        changes.push({
+          action: "Deleted",
+          section: "Carousel Items",
+          changes: `Item: ${oldItem.title || "Untitled"}`,
+          itemId: id
+        });
+      } else {
+        const newItem = pendingMap.get(id);
+        if (
+          oldItem.image_path !== newItem.image_path ||
+          oldItem.title !== newItem.title ||
+          oldItem.date !== newItem.date
+        ) {
+          changes.push({
+            action: "Edited",
+            section: "Carousel Items",
+            changes: `Item: ${oldItem.title || "Untitled"}`,
+            itemId: id
+          });
+        }
       }
-
-      if (existingChange) {
-        return prev.map((ch) =>
-          ch.index === index && ch.action === "edited"
-            ? { ...ch, section: updated[index] }
-            : ch
-        );
-      }
-
-      return [...prev, { action: "edited", section: updated[index], old: oldItem, index }];
     });
+
+    // Check for newly added items
+    pendingMap.forEach((newItem, id) => {
+      if (!committedMap.has(id)) {
+        changes.push({
+          action: "Added",
+          section: "Carousel Items",
+          changes: `Item: ${newItem.title || "New"}`,
+          itemId: id
+        });
+      }
+    });
+
+    return changes;
   };
 
-  // File uploads
-  const handleFileChange = (index, file) => {
-    if (file) {
-      const fileUrl = URL.createObjectURL(file);
-      handleChange(index, "image_path", fileUrl);
-    }
-  };
+  const changes = getChanges();
 
-  // Undo logic
-  const handleUndo = (changeIndex) => {
-    const change = changes[changeIndex];
-    let newSlides = [...slides];
+  const capitalizeWords = (str) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
 
-    if (change.action === "deleted") {
-      newSlides.splice(change.index, 0, change.section);
-    } else if (change.action === "added") {
-      newSlides.splice(change.index, 1);
-    } else if (change.action === "edited") {
-      newSlides[change.index] = change.old;
-    }
-
-    setSlides(newSlides);
-    setChanges(changes.filter((_, i) => i !== changeIndex));
-  };
-
-  // Final request
-  const handleFinalRequest = () => {
-    if (changes.length === 0) {
-      toast.error("No changes to submit");
-      return;
-    }
-
-    toast.success("Final request submitted!");
-    console.log("Submitted changes:", changes);
-
-    setShowPopup(false);
-    setEditing(false);
-    setChanges([]);
-    setIsPreviewing(false);
-  };
-
-  // --- Loader ---
-  if (!slides || slides.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <div className="text-center text-gray-600 mt-10">
-        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
         </div>
       </div>
     );
   }
 
-  const hasChanges = changes.length > 0;
+  return (
+    <>
+      <div className="carouselnss-container relative">
+        {/* Header */}
+        <div className="relative mb-4 flex justify-between items-center">
+          {/* Title */}
+          <div>
+            <h2 className="events-title uppercase text-brwn dark:text-drkt">Events</h2>
+            <div className="w-[60px] h-0.5 bg-[#eab308] mb-10 mt-1 rounded"></div>
+          </div>
+          
+          {/* Edit button on right - Only show when not editing and no saved draft */}
+          {!isEditing && (
+            <button
+              onClick={handleStartEdit}
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+            >
+              <Pencil size={18} />
+              Edit
+            </button>
+          )}
+        </div>
 
-  const renderSwiper = () => (
-    <div className="p-5">
-      <Swiper
-        modules={[Navigation]}
-        onSwiper={setSwiperInstance}
-        spaceBetween={20}
-        slidesPerView={4}
-        loop={true}
-        breakpoints={{
-          1024: { slidesPerView: 4 },
-          768: { slidesPerView: 3 },
-          600: { slidesPerView: 2 },
-          0: { slidesPerView: 1 },
-        }}
-          >
-        {slides.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="carouselnss-card relative">
-              <img
-                src={UrlParser(item.image_path)}
-                alt={item.title || "NSS Event"}
-                className="carouselnss-image"
-              />
-              <div className="carouselnss-content">
-                <h3>{item.title}</h3>
-                <p className="carouselnss-location text-brwn dark:text-drka">NSS VEC</p>
-<span className="carouselnss-date">{item.date}</span>
+        {/* Content */}
+        {isEditing ? (
+          // Edit Mode - Table View
+          <>
+            <div className="overflow-x-auto border border-black rounded-md mb-4">
+              <table className="min-w-full table-auto border border-black text-[16px]">
+                <thead>
+                  <tr className="bg-gry">
+                    
+                    <th className="border border-black px-4 py-3">S.No.</th>
+                    <th className="border border-black px-4 py-3">Image Path</th>
+                    <th className="border border-black px-4 py-3">Title</th>
+                    <th className="border border-black px-4 py-3">Date</th>
+                    <th className="border border-black px-4 py-3 text-center">
+                      <input
+                        type="checkbox"
+                        checked={selectAll}
+                        onChange={handleSelectAll}
+                        className="h-4 w-4"
+                      />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item, i) => (
+                    <tr key={item.id || i} className={item.selected ? "bg-blue-50 dark:bg-blue-900/20" : ""}>
+                      
+                      <td className="border border-black px-4 py-3 text-center">{i + 1}</td>
+<td className="border border-black px-4 py-3 text-center">
+  <div className="flex flex-col items-center gap-2">
+    {/* Show existing or newly uploaded image */}
+    {item.image_path && (
+      <img
+        src={item.image_path.startsWith("data:") ? item.image_path : UrlParser(item.image_path)}
+        alt={item.title || "Event Image"}
+        className="w-24 h-24 object-cover rounded border"
+      />
+    )}
+    <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
+      {item.image_path ? "Replace" : "Upload"}
+      <input
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => handleImageUpload(e, i)}
+      />
+    </label>
+  </div>
+</td>
+
+
+
+                      <td className="border border-black px-4 py-3">
+                        <input
+                          className="w-full p-1 border rounded"
+                          value={item.title}
+                          onChange={(e) => handleChange(e, i, "title")}
+                          placeholder="Title"
+                        />
+                      </td>
+                      <td className="border border-black px-4 py-3">
+                        <input
+                          className="w-full p-1 border rounded"
+                          value={item.date}
+                          onChange={(e) => handleChange(e, i, "date")}
+                          placeholder="Date"
+                        />
+                      </td>
+                      <td className="border border-black px-4 py-3 text-center">
+                        <input
+                          type="checkbox"
+                          checked={item.selected || false}
+                          onChange={() => handleItemSelect(i)}
+                          className="h-4 w-4"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            {/* Buttons outside the table container */}
+            <div className="mt-4">
+              {/* Add Row Button */}
+              <div className="flex justify-start mb-3">
+                <button 
+                  className="flex items-center gap-1 px-3 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim" 
+                  onClick={handleAddItem}
+                >
+                  <Plus size={16} /> Add New
+                </button>
+              </div>
+              
+              {/* Delete Selected Button */}
+              {selectedItems.length > 0 && (
+                <div className="flex justify-center my-2">
+                  <button
+                    onClick={() => setShowDeleteModal(true)}
+                    className="flex items-center gap-1 px-3 py-2 bg-red-500 text-prim rounded hover:bg-red-600"
+                  >
+                    <Trash2 size={16} /> Delete Selected ({selectedItems.length})
+                  </button>
+                </div>
+              )}
+              
+              {/* Cancel & Save Buttons */}
+              <div className="flex justify-end items-center gap-3 mt-4">
+                <button
+                  onClick={handleCancel}
+                  className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+                >
+                  Cancel
+                </button>
+
+                {isDirty && (
+                  <button
+                    onClick={handleSave}
+                    className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  >
+                     Save
+                  </button>
+                )}
               </div>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Custom Navigation */}
-      <button ref={prevRef} className="swiper-button-prev custom-prev">
-        <FaRegCircleLeft />
-      </button>
-      <button ref={nextRef} className="swiper-button-next custom-next">
-        <FaRegCircleRight />
-      </button>
-    </div>
-  );
-
-  const renderEditTable = () => (
-    <div className="overflow-x-auto mt-4">
-      <table className="table-auto border w-full">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="border p-2">Title</th>
-            <th className="border p-2">Date</th>
-            <th className="border p-2">Image</th>
-            <th className="border p-2">Preview</th>
-            <th className="border p-2">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {slides.map((item, index) => (
-            <tr key={index}>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  value={item.title}
-                  placeholder="Title"
-                  onChange={(e) => handleChange(index, "title", e.target.value)}
-                  className="border p-1 rounded w-full"
-                  required
-                />
-              </td>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  value={item.date}
-                  placeholder="Date"
-                  onChange={(e) => handleChange(index, "date", e.target.value)}
-                  className="border p-1 rounded w-full"
-                  required
-                />
-              </td>
-              <td className="border p-2">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleFileChange(index, e.target.files[0])}
-                  required
-                />
-              </td>
-              <td className="border p-2 text-center">
-                {item.image_path ? (
-
-                  <img
-  src={
-    previewImg
-      ? previewImg
-      : item?.image_path
-        ? UrlParser(item.image_path)
-        : "/placeholder-image.jpg"
-  }
-  // alt={faculty?.name || "Faculty"}
-  className="w-32 h-32 rounded border object-cover"
-/>
-                ) : (
-                  <span className="text-gray-400 text-sm">No Image</span>
-                )}
-              </td>
-              <td className="border p-2 text-center">
-                <button className="text-red-700" onClick={() => handleDelete(index)}>
-                  <Trash2 size={18} />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Add New Row */}
-      <div className="mt-3 flex justify-start">
-        <button className="nss-btn nss-btn-add flex items-center gap-1" onClick={handleAddNew}>
-          <PlusCircle size={18} /> Add New
-        </button>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="carouselnss-container relative">
-      <ToastContainer position="bottom-right" autoClose={3000} />
-      
-      {/* Heading */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="events-title uppercase text-brwn dark:text-drkt">Events</h2>
-        {!editing ? (
-          <button className="nss-btn nss-btn-edit flex items-center gap-1" onClick={handleEdit}>
-            <Edit2 size={18} /> Edit
-          </button>
-        ) : (
-          <button className="nss-btn nss-btn-cancel flex items-center gap-1" onClick={handleCancel}>
-            <XCircle size={18} /> Cancel
-          </button>
-        )}
-      </div>
-
-      {/* Content */}
-      {isPreviewing ? (
-        renderSwiper()
-      ) : editing ? (
-        renderEditTable()
-      ) : (
-        renderSwiper()
-      )}
-
-      {/* Action Buttons */}
-      {editing && !isPreviewing && (
-        <div className="absolute bottom-4 right-4 flex gap-2">
-          <button
-            className={`nss-btn nss-btn-request ${!hasChanges ? "opacity-50 cursor-not-allowed" : ""}`}
-            onClick={handlePreviewClick}
-            disabled={!hasChanges}
-          >
-            <FaEye size={16} />Preview
-          </button>
-
-        </div>
-      )}
-<div className="nss-req">      {isPreviewing && (
-        <div className="absolute bottom-4 right-4 flex gap-2 ">
-          <button className="nss-btn nss-btn-edit" onClick={handleBackToEdit}>
-            Back to Edit
-          </button>
-          <button
-            className="nss-btn nss-btn-request flex items-center gap-1"
-            onClick={handleRequestClick}
-          >
-            <FaPaperPlane size={16} /> Request Changes
-          </button>
-        </div>
-      )}</div>
-
-
-      {/* Final Request Popup */}
-      {showPopup && (
-        <div className="popup">
-          <div className="bg-white p-6 rounded w-11/12 md:w-1/2">
-            <h3 className="flex items-center gap-2">Final Request for the Changes</h3>
-            <p className="text-red-600 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
-              Once approved, they will be applied automatically to the live site.
-            </p>
-
-            <table className="border w-full mb-4">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Slide</th>
-                  <th>Undo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {changes.map((ch, i) => (
-                  <tr key={i}>
-                    <td>{ch.action}</td>
-                    <td>
-                      {Array.isArray(ch.section) 
-                        ? ch.section.map((s, idx) => <span key={idx}>{s.title}</span>) 
-                        : ch.section?.title}
-                    </td>
-                    <td>
-                      <button className="nss-btn btn-undo flex items-center gap-1" onClick={() => handleUndo(i)}>
-                        <FaRegCircleLeft /> Undo
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <div className="flex justify-end gap-3 mt-4">
-              <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={() => setShowPopup(false)}>
-                Cancel
-              </button>
-              <button
-                className={`nss-btn nss-btn-request flex items-center gap-1 ${changes.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
-                onClick={handleFinalRequest}
-                disabled={changes.length === 0}
-              >
-                <FaPaperPlane size={16} /> Request
-              </button>
-            </div>
+          </>
+        ) : 
+        (
+          // View Mode - Carousel Display
+          <>
+          
+<div className="relative z-[60]">
+  <Swiper
+    ref={swiperRef}
+    modules={[Navigation]}
+    spaceBetween={20}
+    slidesPerView={4}
+    loop={true}
+    navigation={{
+      nextEl: ".custom-next",
+      prevEl: ".custom-prev",
+    }}
+    breakpoints={{
+      1024: { slidesPerView: 4 },
+      768: { slidesPerView: 3 },
+      600: { slidesPerView: 2 },
+      0: { slidesPerView: 1 },
+    }}
+  >
+    {items.map((item, index) => (
+      <SwiperSlide key={index}>
+        <div className="carouselnss-card">
+          <img
+            src={UrlParser(item.image_path)}
+            alt={item.title || "NSS Event"}
+            className="carouselnss-image"
+          />
+          <div className="carouselnss-content">
+            <h3>{item.title}</h3>
+            <p className="carouselnss-location text-brwn dark:text-drka">NSS VEC</p>
+            <span className="carouselnss-date">{item.date}</span>
           </div>
         </div>
-      )}
-    </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+
+  {/* Custom Navigation Buttons */}
+  <button className="swiper-button-prev custom-prev">
+    <FaRegCircleLeft />
+  </button>
+  <button className="swiper-button-next custom-next">
+    <FaRegCircleRight />
+  </button>
+</div>
+
+            {/* Discard/Request buttons when saved draft exists */}
+            {isSaved && (
+              <div className="flex justify-end gap-3 mt-6">
+                <button 
+                  onClick={handleDiscard} 
+                  className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+                >
+                  Discard Changes
+                </button>
+                {changes.length > 0 && (
+                  <button
+                    onClick={handleRequest}
+                    className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  >
+                    <Send size={18} /> Request
+                  </button>
+                )}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Final Request Modal */}
+        {showRequestModal && (
+          <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
+            <div className="bg-prim p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+              <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
+              <p className="text-sm text-red-500 mb-4">
+                Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+              </p>
+              {changes.length > 0 ? (
+                <table className="w-full text-center text-sm border">
+                  <thead className="bg-gray-200">
+                    <tr>
+                      <th className="border p-2">Action</th>
+                      <th className="border p-2">Section</th>
+                      <th className="border p-2">Changes</th>
+                      <th className="border p-2">Undo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {changes.map((ch, i) => (
+                      <tr key={i}>
+                        <td className="border p-2 text-blue-600">{ch.action}</td>
+                        <td className="border p-2">{ch.section}</td>
+                        <td className="border p-2">{ch.changes}</td>
+                        <td className="border p-2">
+                          <button
+                            onClick={() => revertChange(ch.itemId)}
+                            className="p-1 rounded hover:bg-gray-100"
+                            title="Revert this change"
+                          >
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-600">No changes detected.</p>
+              )}
+              <div className="flex justify-end gap-2 mt-6">
+                <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-prim">
+                  Cancel
+                </button>
+                {changes.length > 0 && (
+                  <button
+                    onClick={handleFinalRequestConfirm}
+                    className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  >
+                    Final Request
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Delete Confirmation Modal */}
+        {showDeleteModal && (
+          <div className="fixed inset-0 bg-text/50 flex items-center justify-center z-50">
+            <div className="bg-prim p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
+              <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
+              <p className="text-gray-600 mb-6">
+                Are you sure you want to delete {selectedItems.length} selected item{selectedItems.length > 1 ? 's' : ''}?
+              </p>
+              <div className="flex justify-end gap-3">
+                <button
+                  onClick={() => setShowDeleteModal(false)}
+                  className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmDelete}
+                  className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <ToastContainer position="bottom-right" autoClose={2000} />
+      </div>
+    </>
   );
 };
 

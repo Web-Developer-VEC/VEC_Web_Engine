@@ -1,0 +1,46 @@
+[
+{
+  "collectionName": "CSE_005",
+  "collection_type": "newsletter",
+  "action": "insert",
+  "title": "insert for newsletter",
+  "category": "newsletter",
+  "meta_data": {
+    "year": "dinesh",
+    "pdf_path": [
+      "/static/pdfs/newsletter/005/2022.pdf"
+    ]
+  }
+},
+{
+  "collectionName": "CSE_005",
+  "collection_type": "newsletter",
+  "action": "delete",
+  "title": "deletefor newsletter",
+  "category": "newsletter",
+  "meta_data": {
+    "year": "hari",
+    "pdf_path": [
+      "/static/pdfs/newsletter/005/2022.pdf"
+    ]
+  }
+},
+{
+  "collectionName": "CSE_005",
+  "collection_type": "newsletter",
+  "action": "update",
+  "title": "update for newsletter",
+  "category": "newsletter",
+  "meta_data": {
+    "year": "hari",
+    "pdf_path": [
+      "/static/pdfs/newsletter/005/2022.pdf"
+    ]
+  },
+  "original_data": {
+    "year": "dinesh",
+    "pdf_path": [
+      "/static/pdfs/newsletter/005/2022.pdf"
+    ]
+  }
+}]

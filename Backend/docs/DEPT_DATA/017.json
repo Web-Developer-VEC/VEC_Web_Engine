@@ -785,8 +785,7 @@
         "content": [
           {
             "image_path": "/static/images/infrastructure/017/1.webp",
-            "image_name": "DATA ANALYSIS AND BUSINESS MODELING LABORATORY",
-            "image_content": ""
+            "image_name": "DATA ANALYSIS AND BUSINESS MODELING LABORATORY"
           }
           
         ]
@@ -810,17 +809,15 @@
         "content": [
           {
             
-             "S_NO": 1,
             "ORGANISATION_NAME": "Imarticus Learning",
             "MONTH_AND_YEAR": "03-02-2023",
-            "VALIDITY": "",
-            "LOGO_PATH": "/static/images/mous/017/imarticus.jpg",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": ""
           }
         ]
       }
     ]
-  },
+  }
+,
   {
     "type": "research",
     "data": [

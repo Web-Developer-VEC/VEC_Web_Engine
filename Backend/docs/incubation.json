@@ -21,7 +21,7 @@
         "s_no": 1,
         "start_up_name": "IP EVER LLP",
         "directors": ["Dr.A.Balajiganesh"],
-        "type": "Faculty",
+        "type": " y",
         "date_of_registration": "16.07.2021",
         "corporate_identity_number": "AAX-8010",
         "udyam_number": "UDYAM-TN-02-0116060"
@@ -123,19 +123,19 @@
     "data": [
       {
         "name": "Dr.Nirmal",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       },
       {
         "name": "Dr.Jeeva Kathiravan",
-        "image": "",
+        "image_path": "",
         "Designation": "",
         "position": "Pre-Incubation Head(IEDC)"
       },
       {
         "name": "Mr.M.Yuvaraj",
-        "image": "",
+        "image_path": "",
         "Designation": "",
         "position": "MSME Head"
       }
@@ -146,39 +146,39 @@
     "data": [
       {
         "name": "INCUBATION CENTER (VELAMMAL INCUBATION)",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/images/incubation/1.webp"
       },
       {
         "name": "PRE-INCUBATION (NEW GEN IEDC)",
-        "image": "/static/images/incubation/2.webp"
+        "image_path": "/static/images/incubation/2.webp"
       },
       {
         "name": "MAKERS LAB",
-        "image": "/static/images/incubation/3.webp"
+        "image_path": "/static/images/incubation/3.webp"
       },
       {
         "name": "IPR CELL",
-        "image": "/static/images/incubation/4.webp"
+        "image_path": "/static/images/incubation/4.webp"
       },
       {
         "name": "IDEA & INNOVATION CELL",
-        "image": "/static/images/incubation/5.webp"
+        "image_path": "/static/images/incubation/5.webp"
       },
       {
         "name": "STARTUP CELL",
-        "image": "/static/images/incubation/6.webp"
+        "image_path": "/static/images/incubation/6.webp"
       },
       {
         "name": "DESIGN CENTRE",
-        "image": "/static/images/incubation/7.webp"
+        "image_path": "/static/images/incubation/7.webp"
       },
       {
         "name": "TINKERING LAB",
-        "image": "/static/images/incubation/8.webp"
+        "image_path": "/static/images/incubation/8.webp"
       },
       {
         "name": "ENTREPRENEURSHIP CELL",
-        "image": "/static/images/incubation/9.webp"
+        "image_path": "/static/images/incubation/9.webp"
       }
     ]
   },
@@ -186,8 +186,8 @@
     "type": "projects",
     "data": [
       {
-        "title": "MSME IDEA HACKATHON 5.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 5.0",
+        "content": [
           {
             "number": 223,
             "label": "Received Ideas"
@@ -195,8 +195,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 4.0",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 4.0",
+        "content": [
           {
             "number": 78,
             "label": "Received Ideas"
@@ -212,8 +212,8 @@
         ]
       },
       {
-        "title": "MSME IDEA HACKATHON 3.0 (Women)",
-        "stats": [
+        "category": "MSME IDEA HACKATHON 3.0 (Women)",
+        "content": [
           {
             "number": 198,
             "label": "Received Ideas"
@@ -229,8 +229,8 @@
         ]
       },
       {
-        "title": "IEDC",
-        "stats": [
+        "category": "IEDC",
+        "content": [
           {
             "number": 60,
             "label": "2.84 c"
@@ -258,7 +258,7 @@
         "Inventor_Name": ["DR.J.S.LEENA JASMINE"],
         "Title_of_the_Patent": "SMART WATER NETWORK OPTIMIZATION TECHNIQUES FOR WATER QUALITY MONITORING AND LEAKAGE MANAGEMENT",
         "Applicant_Name": "Dr.V.P.Gladis Pushparathi",
-        "Patent_Filed_Date": "24/01/2020"
+        "Patent_Filed_Date": "24-01-2020"
       },
       {
         "Sl_No": 3,
@@ -267,7 +267,7 @@
         "Inventor_Name": ["Dr. A. Balaji Ganesh", "Dr.A.Lakshmi Sangeetha"],
         "Title_of_the_Patent": "Portable OptoElectronic Sensing System for the Detection of Food Freshness",
         "Applicant_Name": "Velammal Engineering College",
-        "Patent_Filed_Date": "20/11/2018"
+        "Patent_Filed_Date": "20-11-2018"
       },
       {
         "Sl_No": 4,
@@ -276,7 +276,7 @@
         "Inventor_Name": ["Dr.Jeevaa Katiravan"],
         "Title_of_the_Patent": "Water Consumption control system for irrigation based on IoT",
         "Applicant_Name": "Dr.Jeevaa Katiravan",
-        "Patent_Filed_Date": "03.07.2020"
+        "Patent_Filed_Date": "03-07-2020"
       },
       {
         "Sl_No": 5,
@@ -294,7 +294,7 @@
         "Inventor_Name": ["DR.S.MARY JOANS"],
         "Title_of_the_Patent": "AUGMENTED REALITY AND INTERNET OF THINGS SUPPORTED MONITORING SYSTEM",
         "Applicant_Name": "Newgen IEDC of Velammal Engineering College",
-        "Patent_Filed_Date": "15/11/2019"
+        "Patent_Filed_Date": "15-11-2019"
       },
       {
         "Sl_No": 7,
@@ -303,7 +303,7 @@
         "Inventor_Name": ["MR.P.VINAYAGAM"],
         "Title_of_the_Patent": "SELF-CONFIGURED AND INTERNET OF THINGS SUPPORTED CALORIES AND WORKOUT BALANCING SYSTEM",
         "Applicant_Name": "Newgen IEDC of Velammal Engineering College",
-        "Patent_Filed_Date": "08/11/ 2019"
+        "Patent_Filed_Date": "08-11-2019"
       },
       {
         "Sl_No": 8,
@@ -312,7 +312,7 @@
         "Inventor_Name": ["M. S.", "Murali Dhar"],
         "Title_of_the_Patent": "A system and the method for secured data storage classification for agent based Mobile cloud",
         "Applicant_Name": "Dr.MuraliDhar.M.S",
-        "Patent_Filed_Date": "18.03.2021"
+        "Patent_Filed_Date": "18-03-2021"
       },
       {
         "Sl_No": 9,
@@ -330,14 +330,14 @@
         "Inventor_Name": ["Mrs.C.M.Nalayini"],
         "Title_of_the_Patent": "A System and method for predicting Seismic Event using ML & AI Interfaces",
         "Applicant_Name": "Mrs.C.M.Nalayini",
-        "Patent_Filed_Date": "07.07.2021"
+        "Patent_Filed_Date": "07-07-2021"
       },
       {
         "Sl_No": 11,
         "Patent_Application_No": "202141031885 A",
         "Status_of_Patent": "Published",
         "Inventor_Name": ["Dr. P. Visu"],
-        "Title_of_the_Patent": "IoT based remote Intellient Healthcare System for the Detection and Prevention of a Patient Health Monitoring",
+        "Title_of_the_Patent": "IoT based remote Intelligent Healthcare System for the Detection and Prevention of a Patient Health Monitoring",
         "Applicant_Name": "Dr. P. Visu",
         "Patent_Filed_Date": "15-07-2021"
       },
@@ -366,7 +366,7 @@
         "Inventor_Name": ["Dr.S.BaskaraSethupathy"],
         "Title_of_the_Patent": "Energy Efficient Cooking Device",
         "Applicant_Name": "Velammal Engineering College",
-        "Patent_Filed_Date": "22.04.2020"
+        "Patent_Filed_Date": "22-04-2020"
       },
       {
         "Sl_No": 15,
@@ -375,7 +375,7 @@
         "Inventor_Name": ["Dr.P.Visu"],
         "Title_of_the_Patent": "A Novel method- Crop Health Monitoring System Using IoT and Machine Learning",
         "Applicant_Name": "Dr.P.Visu",
-        "Patent_Filed_Date": "25.08.2021"
+        "Patent_Filed_Date": "25-08-2021"
       },
       {
         "Sl_No": 16,
@@ -384,7 +384,7 @@
         "Inventor_Name": ["DR.J.S.LEENA JASMINE"],
         "Title_of_the_Patent": "DESIGN SYSTEM OF DIGITAL AND ROBUST CONTROL FOR SUGAR REFINERY USING MACHINE LEARNING",
         "Applicant_Name": "Dr.Jebakumar Immanuel D",
-        "Patent_Filed_Date": "26/01/2022"
+        "Patent_Filed_Date": "26-01-2022"
       },
       {
         "Sl_No": 17,
@@ -402,7 +402,7 @@
         "Inventor_Name": ["MRS.KAVITHA V P"],
         "Title_of_the_Patent": "IOT DRIVEN DESIGN FRAMEWORK OF EYEBALL AND GESTURE CONTROL SMART WHEELCHAIR FOR DISABLED PERSON USING MACHINE LEARNING  ",
         "Applicant_Name": "MRS.KAVITHA V P, ",
-        "Patent_Filed_Date": "25/04/2022"
+        "Patent_Filed_Date": "25-04-2022"
       },
       {
         "Sl_No": 19,
@@ -411,7 +411,7 @@
         "Inventor_Name": ["MRS.DOLLY IRENE J"],
         "Title_of_the_Patent": "RADIATION OF HIGH POWER FAST RISE TIME PULSES BY HYDROGEN SPARK GAP ANTENNA AT A HIGH REPETITION RATE ",
         "Applicant_Name": "Dr.Suresh Kumar Muthuvel",
-        "Patent_Filed_Date": "28/04/2022"
+        "Patent_Filed_Date": "28-04-2022"
       },
       {
         "Sl_No": 20,
@@ -429,7 +429,7 @@
         "Inventor_Name": ["Dr.K.Lavanya"],
         "Title_of_the_Patent": "Miniaturized T Slotted Circular Patch Antenna For The Monitoring Of The Healing Of Bone Fracture",
         "Applicant_Name": "DR.K.LAVANYA",
-        "Patent_Filed_Date": "26.07.2023"
+        "Patent_Filed_Date": "26-07-2023"
       },
       {
         "Sl_No": 22,
@@ -438,7 +438,7 @@
         "Inventor_Name": ["Dr.S.BaskaraSethupathy"],
         "Title_of_the_Patent": "Automated Dosa Cooking Machine and Methods of cooking Dosa Thereof",
         "Applicant_Name": "Velammal Engineering College",
-        "Patent_Filed_Date": "08.05.2021"
+        "Patent_Filed_Date": "08-05-2021"
       },
       {
         "Sl_No": 23,
@@ -456,7 +456,7 @@
         "Inventor_Name": ["DR. S. MANJU"],
         "Title_of_the_Patent": "CONSTRUCTION OF A USER-FRIENDLY INTELLIGENT SANITARY NAPKIN VENDOR MACHINES IN PUBLIC PLACES",
         "Applicant_Name": "DR. S. MANJU",
-        "Patent_Filed_Date": "30/11/2022"
+        "Patent_Filed_Date": "30-11-2022"
       },
       {
         "Sl_No": 25,
@@ -465,7 +465,7 @@
         "Inventor_Name": ["DR.V.MAGESH"],
         "Title_of_the_Patent": "DESIGN SYSTEMS OF NLP AS SPELLING CORRECTION FOR OFFLINE HANDWRITTEN TEXT RECOGNITION USING MACHINE ",
         "Applicant_Name": "Dr.Kavitha V P",
-        "Patent_Filed_Date": "24/11/2022"
+        "Patent_Filed_Date": "24-11-2022"
       },
       {
         "Sl_No": 26,
@@ -501,7 +501,7 @@
         "Inventor_Name": ["Dr.J.S.Leena Jasmine"],
         "Title_of_the_Patent": "Intelligent Chip Control Oxygen Concentrator",
         "Applicant_Name": "",
-        "Patent_Filed_Date": "5.6.2023"
+        "Patent_Filed_Date": "5-6-2023"
       },
       {
         "Sl_No": 30,
@@ -555,7 +555,7 @@
         "Inventor_Name": ["Dr.P.Visu"],
         "Title_of_the_Patent": "NETWORK GATEWAY DEVICE",
         "Applicant_Name": "Dr.P.Visu",
-        "Patent_Filed_Date": "29.11.2023"
+        "Patent_Filed_Date": "29-11-2023"
       },
       {
         "Sl_No": 36,
@@ -605,7 +605,7 @@
         "Inventor_Name": ["Dr.P.Visu"],
         "Title_of_the_Patent": "IOT BASED INDUSTRIAL POLLUTION MEASUREMENT DEVICE",
         "Applicant_Name": "Dr.P.Visu",
-        "Patent_Filed_Date": "20.02.2024"
+        "Patent_Filed_Date": "20-02-2024"
       },
       {
         "Sl_No": 41,
@@ -614,7 +614,7 @@
         "Inventor_Name": ["Dr.P.Visu"],
         "Title_of_the_Patent": "AI BASED INDUSTRIAL ROBOT FOR CHECKING PRODUCT QUALITY",
         "Applicant_Name": "Dr.P.Visu",
-        "Patent_Filed_Date": "20.02.2024"
+        "Patent_Filed_Date": "20-02-2024"
       },
       {
         "Sl_No": 42,
@@ -648,9 +648,9 @@
         "Patent_Application_No": "DESIGN APPLICATION  429990-001",
         "Status_of_Patent": "Published",
         "Inventor_Name": ["Dr.K.Thilagam"],
-        "Title_of_the_Patent": "Ai And Iot Based Sprinkler For Automated Agricultyral Irrigation",
+        "Title_of_the_Patent": "Ai And Iot Based Sprinkler For Automated Agricultural Irrigation",
         "Applicant_Name": "",
-        "Patent_Filed_Date": "10.09.2024"
+        "Patent_Filed_Date": "10-09-2024"
       },
       {
         "Sl_No": 46,
@@ -659,7 +659,7 @@
         "Inventor_Name": ["Dr.V.Anitha"],
         "Title_of_the_Patent": "Surface Treated Groundnut Shell powder composites: Eco-friendly Alternatives",
         "Applicant_Name": "G Ashwin prabhu",
-        "Patent_Filed_Date": "12.09.2024"
+        "Patent_Filed_Date": "12-09-2024"
       },
       {
         "Sl_No": 47,
@@ -668,7 +668,7 @@
         "Inventor_Name": ["Mrs.Nandhini"],
         "Title_of_the_Patent": "An Anti-Smuggling System For Trees In A Forest That Users A Fles Sensor",
         "Applicant_Name": "VELAMMAL ENGINEERING COLLEGE",
-        "Patent_Filed_Date": "13.09.2024"
+        "Patent_Filed_Date": "13-09-2024"
       },
       {
         "Sl_No": 48,
@@ -677,10 +677,10 @@
         "Inventor_Name": ["Dr.N.Balamurugapandian"],
         "Title_of_the_Patent": "Experimental Investigation of Mechanical Properties of Sisal and Jute Fiber Reinforced Composites",
         "Applicant_Name": "G Ashwin prabhu",
-        "Patent_Filed_Date": "21.09.2024"
-      }
-    ]
-  },
+        "Patent_Filed_Date": "21-09-2024"
+ }
+]
+},
   {
     "type": "seed_money",
     "data": [

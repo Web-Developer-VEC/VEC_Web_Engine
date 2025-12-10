@@ -1,0 +1,73 @@
+[
+    {
+  "collectionName": "CSE_005",
+  "collection_type": "vision_and_mission",
+  "action": "insert",
+  "title": "Insert Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": 
+      {
+       
+          "header":"PEO 6",
+          "content":"new one "
+        
+    }
+  },
+    {
+  "collectionName": "CSE_005",
+  "collection_type": "vision_and_mission",
+  "action": "update",
+  "title": "update Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": 
+      {
+          "header":"PEO 5",
+          "content":"updated one "
+        
+      },
+      "original_data": 
+            {
+          "header":"PEO 5",
+          "content":"Graduates should have the ability to apply modern computing technology for the development of the society and ethical values with integrity."
+        }
+        
+},
+{
+  "collectionName": "CSE_005",
+  "collection_type": "vision_and_mission",
+  "action": "update",
+  "title": "update Vision and Mission",
+  "category": "about_the_department",
+  "meta_data": 
+      [
+        "Graduates should have the ability to analyze engineering problems "
+       ],
+    "original_data":  [
+          "Established in 1995, the Department of Computer Science and Engineering at our institution has been dedicated to providing high-quality education to 240 students. Our mission is to equip young minds with the knowledge and skills necessary to excel in the field of IT and drive organizational success.To achieve this, we offer a comprehensive curriculum that incorporates the latest technologies, collaborative projects, research associations, and hands-on training through semester-long internships and live industry problem-solving. Our program also features flexible electives, open electives, honors, and minor degrees, promoting an interdisciplinary approach that prepares students to thrive in a rapidly evolving tech landscape. "
+        ]
+    },
+    {
+  "collectionName": "CSE_005",
+  "collection_type": "vision_and_mission",
+  "action": "delete",
+  "title": "delete Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": {
+
+          "header":"PEO 2",
+          "content":"Graduates should have the ability to analyze engineering problems "
+
+    }
+},
+  
+ {
+  "collectionName": "CSE_005",
+  "collection_type": "vision_and_mission",
+  "action": "delete",
+  "title": "delete Vision and Mission",
+  "category": "about_the_department",
+  "meta_data":[
+          "Established in 1995, the Department of Computer Science and Engineering at our institution has been dedicated to providing high-quality education to 240 students. Our mission is to equip young minds with the knowledge and skills necessary to excel in the field of IT and drive organizational success.To achieve this, we offer a comprehensive curriculum that incorporates the latest technologies, collaborative projects, research associations, and hands-on training through semester-long internships and live industry problem-solving. Our program also features flexible electives, open electives, honors, and minor degrees, promoting an interdisciplinary approach that prepares students to thrive in a rapidly evolving tech landscape. "
+        ]
+}
+]

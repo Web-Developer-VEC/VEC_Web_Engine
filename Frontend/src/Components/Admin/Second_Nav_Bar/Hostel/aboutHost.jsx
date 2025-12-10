@@ -3,7 +3,7 @@ import "./aboutHost.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Pencil, Send } from "lucide-react";
+import { Pencil, Send, X } from "lucide-react";
 
 export default function AboutHostel({ hostelData, theme, toggle }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,6 +21,9 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
   const [hasChanges, setHasChanges] = useState(false); // unsaved (in-edit) changes
   const [changesSaved, setChangesSaved] = useState(false); // indicates we have saved changes that can be requested or discarded
+
+  // New: detailed change log used for the final request modal with undo
+  const [changeLog, setChangeLog] = useState([]);
 
   let data;
   if (hostelData) {
@@ -60,11 +63,12 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     const file = e.target.files[0];
     if (file) {
       setTempImageFile(file);
+      const fileURL = URL.createObjectURL(file);
       setUploadedFile({
         file,
-        fileURL: URL.createObjectURL(file),
+        fileURL,
       });
-      setImagePath(URL.createObjectURL(file));
+      setImagePath(fileURL);
     }
   };
 
@@ -91,11 +95,34 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     if (!originalData) return;
 
     const modified = [];
+    const newChangeEntries = [];
+
     if (aboutText !== (originalData.about_us || "")) {
       modified.push("About text modified");
+      // push to changeLog with previous value so we can undo later
+      newChangeEntries.push({
+        action: "Edited",
+        section: "About Hostel",
+        title: "About Text",
+        data: {
+          prev: originalData.about_us || "",
+          next: aboutText,
+        },
+      });
     }
     if (tempImageFile) {
       modified.push("Image changed");
+      newChangeEntries.push({
+        action: "Edited",
+        section: "About Hostel",
+        title: "Hostel Image",
+        data: {
+          prev: originalData.image_path || initialSnapshot?.image_path || "",
+          // store file name and preview URL for user-friendly display
+          next: uploadedFile ? uploadedFile.file.name : tempImageFile.name,
+          fileURL: uploadedFile ? uploadedFile.fileURL : null,
+        },
+      });
     }
 
     if (modified.length === 0) {
@@ -105,12 +132,18 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
     // update originalData to reflect saved changes
     const updatedOriginal = { ...originalData };
-    updatedOriginal.about_us = aboutText;
+    if (aboutText !== (originalData.about_us || "")) {
+      updatedOriginal.about_us = aboutText;
+    }
     // In real scenario: server will return a new image path; here we store data URL for preview
     if (tempImageFile) {
+      // store the preview URL or just the filename; we keep the preview for UX
       updatedOriginal.image_path = imagePath;
     }
     setOriginalData(updatedOriginal);
+
+    // Append new entries to changeLog
+    setChangeLog((prev) => [...prev, ...newChangeEntries]);
 
     // Set saved changes summary
     setChanges({
@@ -140,12 +173,13 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     setHasChanges(false);
     setChangesSaved(false);
     setIsEditing(false);
+    setChangeLog([]);
     toast.info("All saved changes discarded");
   };
 
   // Open request modal (if there are saved changes)
   const openRequestModal = () => {
-    if (!changesSaved || (changes.modified && changes.modified.length === 0)) {
+    if (!changesSaved || changeLog.length === 0) {
       toast.info("No saved changes to request");
       return;
     }
@@ -158,7 +192,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     console.log("Request submitted:", {
       about_us: originalData?.about_us,
       image: uploadedFile ? uploadedFile.file.name : "No image change",
-      changes: changes.modified,
+      changeLog,
     });
 
     toast.success("Request submitted successfully!");
@@ -166,19 +200,18 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     // CLOSE the modal
     setShowRequestModal(false);
 
-    // IMPORTANT: hide Discard & Request buttons by clearing the "changesSaved" flag
+    // hide Discard & Request buttons by clearing the "changesSaved" flag
     // Also clear the changes list since request has been sent
     setChangesSaved(false);
     setChanges({ modified: [], added: [], deleted: [] });
 
-    // Optionally keep 'originalData' as-is (we left it updated on save)
-    // Clean uploadedFile/temp file if you prefer:
+    // Clear change log and uploaded/temp files
+    setChangeLog([]);
     setUploadedFile(null);
     setTempImageFile(null);
     setHasChanges(false);
 
-    // Now the Discard + Request buttons (which are shown only when changesSaved === true)
-    // will disappear automatically.
+    // Optionally keep 'originalData' as-is (we left it updated on save)
   };
 
   // Toggle Page View (kept for compatibility; this toggles editing appropriately)
@@ -192,6 +225,62 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     }
   };
 
+  // Revert a specific saved change from changeLog (undo)
+  const revertChange = (index) => {
+    const ch = changeLog[index];
+    if (!ch) return;
+
+    // Create new changeLog without the reverted entry
+    const newLog = changeLog.filter((_, i) => i !== index);
+
+    // Apply revert based on the change type/title
+    if (ch.title === "About Text") {
+      // revert the text to previous value
+      setOriginalData((prev) => {
+        const copy = { ...(prev || {}) };
+        copy.about_us = ch.data.prev;
+        return copy;
+      });
+      setAboutText(ch.data.prev);
+    } else if (ch.title === "Hostel Image") {
+      const prevPath = ch.data.prev || "";
+      setOriginalData((prev) => {
+        const copy = { ...(prev || {}) };
+        copy.image_path = prevPath;
+        return copy;
+      });
+      setImagePath(prevPath ? UrlParser(prevPath) : "");
+      // Clear uploaded/temp image since we reverted the image change
+      setUploadedFile(null);
+      setTempImageFile(null);
+    } else {
+      // Generic fallback: if data.prev contains keys, try to revert those
+      if (ch.data && typeof ch.data.prev === "object") {
+        setOriginalData((prev) => ({ ...(prev || {}), ...(ch.data.prev || {}) }));
+      }
+    }
+
+    setChangeLog(newLog);
+
+    // If no more saved changes remain, clear flags & summary
+    if (newLog.length === 0) {
+      setChangesSaved(false);
+      setChanges({ modified: [], added: [], deleted: [] });
+    } else {
+      // rebuild changes.modified summary from remaining log
+      setChanges({
+        ...changes,
+        modified: newLog.map((g) => {
+          if (g.title === "About Text") return "About text modified";
+          if (g.title === "Hostel Image") return "Image changed";
+          return "Edited";
+        }),
+      });
+    }
+
+    toast.info("Change reverted");
+  };
+
   // If no data loaded
   if (!data) {
     return (
@@ -203,6 +292,8 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
       </>
     );
   }
+
+  const hasExistingImage = Boolean(imagePath || data?.image_path || originalData?.image_path);
 
   return (
     <>
@@ -251,8 +342,9 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
             {/* Upload when editing */}
             {isEditing && (
-              <label className="mt-2 cursor-pointer text-white bg-blue-500 px-3 py-1 rounded inline-flex items-center gap-2">
-                Upload
+              <label className="mt-2 cursor-pointer text-white bg-[#fdcc03] px-3 py-1 rounded inline-flex items-center gap-2">
+                {/* Show 'Replace' if an image already exists, otherwise 'Upload' */}
+                {hasExistingImage ? "Replace" : "Upload"}
                 <input
                   type="file"
                   accept="image/*"
@@ -288,7 +380,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
         )}
 
         {/* After Save: show Discard Changes + Request (bottom-right) */}
-        {!isEditing && changesSaved && (
+        {!isEditing && changesSaved && changeLog.length > 0 && (
           <div className="absolute bottom-4 right-4 flex gap-2 items-center z-[60]">
             <button
               onClick={handleDiscardAll}
@@ -300,7 +392,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
               onClick={openRequestModal}
               className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
             >
-              <Send size={16}/>Request
+              <Send size={16} /> Request
             </button>
           </div>
         )}
@@ -323,84 +415,91 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {/* Request Modal Popup */}
+      {/* Final Request Modal (updated to the requested layout) */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px]">
-            {/* Title */}
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Final Request for the Changes
-            </h2>
-
-            {/* Note */}
+        <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
+          <div className="bg-prim p-6 rounded-xl w-[40%] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
-              Once approved, they will be applied automatically to the live site.
+              Your changes will stay pending until approved by the superior admin. Once approved they will go live.
             </p>
 
-            {/* Summary */}
-            <div className="max-h-[200px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt">
-                <thead>
+            {changeLog.length > 0 ? (
+              <table className="w-full text-center text-sm border">
+                <thead className="bg-gray-200">
                   <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Changes</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {changes.modified && changes.modified.length > 0 ? (
-                    changes.modified.map((change, index) => (
-                      <tr key={index}>
-                        <td className="py-1 text-blue-600">✎ Edited</td>
-                        <td className="py-1">Hostel About</td>
-                        <td className="py-1 text-[12px] flex flex-col items-center">
-                          {change.toLowerCase().includes("text") && (
-                            <span>Text content updated</span>
-                          )}
+                  {changeLog.map((ch, i) => (
+                    <tr key={i}>
+                      <td className="border p-2 text-blue-600">{ch.action}</td>
+                      {/* Always "About Hostel" / "Hostel" section */}
+                      <td className="border p-2">{ch.section}</td>
+                      <td className="border p-2 text-left whitespace-pre-wrap">
+                        {/* For text changes show a short snippet */}
+                        {ch.title === "About Text" && (
+                          <div>
+                            <p>About text changed</p>
+                          </div>
+                        )}
 
-                          {change.toLowerCase().includes("image") && uploadedFile && (
-                            <>
-                              <span>Previous: {getFilenameFromPath(initialSnapshot?.image_path || originalData?.image_path)}</span>
-                              <span className="mx-2">→</span>
+                        {/* For image changes show previous filename → new filename with preview link */}
+                        {ch.title === "Hostel Image" && (
+                          <div className="flex flex-col items-start gap-1">
+                            <span>Previous: {getFilenameFromPath(ch.data.prev || initialSnapshot?.image_path || originalData?.image_path)}</span>
+                            <span className="mx-2">→</span>
+                            {ch.data.fileURL ? (
                               <a
-                                href={uploadedFile.fileURL}
-                                className="cursor-pointer text-blue-500 underline"
+                                href={ch.data.fileURL}
+                                className="cursor-pointer text-blue-500 underline text-sm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                {uploadedFile.file.name}
+                                {ch.data.next}
                               </a>
-                            </>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td className="py-2" colSpan={3}>
-                        No changes to request
+                            ) : (
+                              <span className="text-sm">{ch.data.next}</span>
+                            )}
+                          </div>
+                        )}
+                      </td>
+                      <td className="border p-2">
+                        <button
+                          onClick={() => revertChange(i)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title="Revert this change"
+                        >
+                          <X size={16} className="text-red-500" />
+                        </button>
                       </td>
                     </tr>
-                  )}
+                  ))}
                 </tbody>
               </table>
-            </div>
+            ) : (
+              <p className="text-gray-600">No changes detected.</p>
+            )}
 
-            {/* Action Buttons */}
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-2 mt-6">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-prim"
               >
                 Cancel
               </button>
-              <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
-              >
-                Final Request
-              </button>
+              {changeLog.length > 0 && (
+                <button
+                  onClick={handleRequestConfirm}
+                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                >
+                  Final Request
+                </button>
+              )}
             </div>
           </div>
         </div>

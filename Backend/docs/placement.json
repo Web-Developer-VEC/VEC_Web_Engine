@@ -20,25 +20,25 @@
         "name": "ARUN RAMASWAMI A",
         "designation": "Dean - Corporate Relations & Higher Studies",
         "content": "Being a post graduate in Business Administration, he is an expert in using his people skills and networking to design students' careers. Mr. Arun strongly believes that getting a job is just a primitive stage, and students have to scale greater heights and bring laurels to our brand, 'Velammal,' globally. His primary focus is on the learning and development of the students in various employability skills in addition to their academic curriculum. He has consistently produced 90% placement in Velammal Group of Colleges, Chennai & Madurai, and improved the average salary to 4.20 LPA. More than 200+ students every year get more than 6.50 LPA.",
-        "photo_path": "/static/images/placement_members/arun_ramaswami.webp"
+        "image_path": "/static/images/placement_members/arun_ramaswami.webp"
       },
       {
         "name": "SOWMIYA UDAYAKUMAR",
         "designation": "Soft Skills Trainer",
         "qualification": "M.Sc.,M.B.A.,P.G.D.C.I",
-        "photo_path": "/static/images/placement_members/sowmiya_udayakumar.webp"
+        "image_path": "/static/images/placement_members/sowmiya_udayakumar.webp"
       },
       {
         "name": "DEEPA RAJESH",
         "designation": "Soft Skills Trainer",
         "qualification": "M.S.Psychology",
-        "photo_path": "/static/images/placement_members/deepa_rajesh.webp"
+        "image_path": "/static/images/placement_members/deepa_rajesh.webp"
       },
       {
         "name": "CHANDARPRENA",
         "designation": "Aptitude Trainer",
         "qualification": "M.S.Psychology",
-        "photo_path": "/static/images/placement_members/chandarprena.webp"
+        "image_path": "/static/images/placement_members/chandarprena.webp"
       }
     ]
   },
@@ -251,7 +251,7 @@
     "type": "alumini",
     "data": [
       {
-        "alumni_image_path": [
+        "image_path": [
           "/static/images/alumni/1.webp",
           "/static/images/alumni/2.webp",
           "/static/images/alumni/3.webp",

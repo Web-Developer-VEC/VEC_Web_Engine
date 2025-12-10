@@ -17,6 +17,8 @@ async function transportHandler(fileStream, docs, req, cb, filename, mimetype) {
     }
 
     const collectionName = docs[0]?.collectionName || "transport";
+
+    
     const folder = `temp/static/pdfs/${collectionName}/`;
     const s3Key = folder + realFilename;
 

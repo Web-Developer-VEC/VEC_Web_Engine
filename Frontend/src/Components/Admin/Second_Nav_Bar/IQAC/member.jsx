@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Trash2, Plus, X, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 function IqaMem({ iqacData }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [data, setData] = useState(null); // local working data
+  const [data, setData] = useState(null);
   const [hasChanges, setHasChanges] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // 🔹 track all changes separately
   const [changes, setChanges] = useState([]);
@@ -18,49 +20,42 @@ function IqaMem({ iqacData }) {
     setData(iqacData || []);
   }, [iqacData]);
 
+  /** ✅ Refactored trackChange */
   const trackChange = (action, groupIdx, memberIdx, newData, oldData = null) => {
     const category = data[groupIdx]?.category;
 
     setChanges((prev) => {
-      // 🟢 If it's an update on an already "added" member → just replace last newData
+      // Check if this member already has an "update" recorded
+      const existingUpdate = prev.find(
+        (c) =>
+          c.action === "updated" &&
+          c.category === category &&
+          c.memberIdx === memberIdx
+      );
+
       if (action === "updated") {
-        const existingAdd = prev.find(
-          (c) =>
-            c.action === "added" &&
-            c.category === category &&
-            c.memberIdx === memberIdx
-        );
-        if (existingAdd) {
-          return prev?.map((c) =>
-            c === existingAdd ? { ...c, newData } : c
+        if (existingUpdate) {
+          // Preserve original oldData, only update newData
+          return prev.map((c) =>
+            c === existingUpdate ? { ...c, newData } : c
           );
         }
-      }
 
-      // 🟢 For updates → merge with latest update for the same member instead of duplicating
-      if (action === "updated") {
-        const withoutOld = prev.filter(
-          (c) =>
-            !(
-              c.action === "updated" &&
-              c.category === category &&
-              c.memberIdx === memberIdx
-            )
-        );
+        // First update → save the original snapshot of oldData
         return [
-          ...withoutOld,
+          ...prev,
           {
             action,
             category,
             memberIdx,
             newData,
-            oldData,
+            oldData: JSON.parse(JSON.stringify(oldData)), // deep copy
             timestamp: new Date().toISOString(),
           },
         ];
       }
 
-      // Default case → add new change
+      // Default case (added / deleted)
       return [
         ...prev,
         {
@@ -77,20 +72,15 @@ function IqaMem({ iqacData }) {
     setHasChanges(true);
   };
 
+  /** ✅ handle field change */
   const handleFieldChange = (groupIdx, memberIdx, field, value) => {
     const updated = [...data];
-    const oldData = { ...updated[groupIdx].members[memberIdx] };
+    const oldData = JSON.parse(JSON.stringify(updated[groupIdx].members[memberIdx]));
 
     updated[groupIdx].members[memberIdx][field] = value;
     setData(updated);
 
-    trackChange(
-      "updated",
-      groupIdx,
-      memberIdx,
-      updated[groupIdx].members[memberIdx],
-      oldData
-    );
+    trackChange("updated", groupIdx, memberIdx, updated[groupIdx].members[memberIdx], oldData);
   };
 
   const handleAddMember = (groupIdx) => {
@@ -132,7 +122,7 @@ function IqaMem({ iqacData }) {
   const handleSave = () => {
     setIsEditing(false);
     if (hasChanges) {
-      setShowRequest(true); // only show request/discard after changes
+      setShowRequest(true);
     }
     console.log("Saved locally:", data);
     console.log("Pending Changes:", changes);
@@ -142,15 +132,46 @@ function IqaMem({ iqacData }) {
     setConfirmPopup(true);
   };
 
-  const handleConfirmRequest = () => {
-    setConfirmPopup(false);
-    console.log("Final submitted data:", data);
-    console.log("Submitted Changes:", changes);
-    toast.success("Request submitted successfully!");
-    // 👉 Here you can send { data, changes } to your backend
-    setChanges([]); // clear after submission
-    setShowRequest(false);
-    setHasChanges(false);
+  const buildPayload = () => {
+    return changes.map((change) => {
+      let actionType = "";
+      let title = "";
+
+      if (change.action === "added") {
+        actionType = "insert";
+        title = `insertion of iqac ${change.category.toLowerCase()}`;
+      } else if (change.action === "updated") {
+        actionType = "update";
+        title = `updation of iqac ${change.category.toLowerCase()}`;
+      } else if (change.action === "deleted") {
+        actionType = "delete";
+        title = `deletion of iqac ${change.category.toLowerCase()}`;
+      }
+
+      return {
+        collectionName: "iqac",
+        collection_type: "members",
+        action: actionType,
+        title,
+        category: change.category,
+        meta_data: change.newData || null,
+        original_data: change.action === "updated" ? change.oldData : null,
+      };
+    });
+  };
+
+  const handleConfirmRequest = async () => {
+    
+    const payload = buildPayload();
+    
+    const result = await sendRequest(payload);
+    
+    if (result) {
+      setConfirmPopup(false);
+      setChanges([]);
+      setShowRequest(false);
+      setHasChanges(false);
+    }
   };
 
   const handleDiscard = () => {
@@ -456,15 +477,17 @@ function IqaMem({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                disabled={loading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                disabled={loading}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

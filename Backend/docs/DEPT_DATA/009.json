@@ -803,8 +803,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Value Added Course.pdf"
               }
-            ],
-            "activities": []
+            ]
           },
           {
             "year":"2023 - 2024",
@@ -841,91 +840,8 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Value Added Course.pdf"
               }
-            ],
-            "activities":[
-              {
-                "date": "25.01.24",
-                "name_of_event": "ELECTROWIZ’24",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/1.webp"]
-              },
-              {
-                "date": "25.01.2024",
-                "name_of_event": "Workshop on Artificial Intelligence for IoT",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/2.webp"]
-              },
-              {
-                "date": "01.02.2024 & 02.02.24",
-                "name_of_event": "Industrial Visit to Retech lasers, Chennai ",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/3.webp"]
-              },
-              {
-                "date": "05.03.2024",
-                "name_of_event": "Project Expo-INVENTRONIX’24 ",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/4.webp"]
-              },
-              {
-                "date": "",
-                "name_of_event": "IETE Students Forum’24 Events",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/5.webp"]
-              },
-              {
-                "date": "07.03.2024 ",
-                "name_of_event": "Technical Turncoat, Start-up Idea Poster Presentation ",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/6.webp"]
-              },
-              {
-                "date": "12.3.2024 ",
-                "name_of_event": "Clusters and Warehouse Scale Computers",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/7.webp"]
-              },
-              {
-                "date": "20.3.2024",
-                "name_of_event": "Insights on VLSI ",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/8.webp"]
-              },
-              {
-                "date": "13.03.2024",
-                "name_of_event": "National Conference RACES’24",
-                "coordinator": "",
-                "resource_person": "",
-                "beneficiaries": "",
-                "relevant_PO_PSO": "",
-                "image_path": ["/static/images/dept_activities/009/9.webp"]
-              }
             ]
-          },
+           },
           {
             "year": "2022 - 2023",
             "activities_tile": [
@@ -961,8 +877,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Value Added Course.pdf"
               }
-            ],
-            "activities": []
+            ]
           }
         ]
       }
@@ -1133,38 +1048,31 @@
         "content": [
           {
             "image_path": "/static/images/infrastructure/009/1.webp",
-            "image_name": "ELECTRONICS LABORATORY",
-            "image_content": ""
+            "image_name": "ELECTRONICS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/2.webp",
-            "image_name": "NETWORK LABORATORY",
-            "image_content": ""
+            "image_name": "NETWORK LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/3.webp",
-            "image_name": "MICROPROCESSOR LABORATORY",
-            "image_content": ""
+            "image_name": "MICROPROCESSOR LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/4.webp",
-            "image_name": "MICROWAVE & COMMUNICATION LABORATORY",
-            "image_content": ""
+            "image_name": "MICROWAVE & COMMUNICATION LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/5.webp",
-            "image_name": "INTEGRATED CIRCUITS LABORATORY",
-            "image_content": ""
+            "image_name": "INTEGRATED CIRCUITS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/6.webp",
-            "image_name": "ADVANCED ELECTRONICS LABORATORY",
-            "image_content": ""
+            "image_name": "ADVANCED ELECTRONICS LABORATORY"
           },
           {
             "image_path": "/static/images/infrastructure/009/7.webp",
-            "image_name": "STIMULATION LABORATORY",
-            "image_content": ""
+            "image_name": "STIMULATION LABORATORY"
           }
         ]
       }
@@ -1186,94 +1094,54 @@
         "category": "mous_details",
         "content": [
           {
-            "S_NO": 1,
             "ORGANISATION_NAME": "UNIQUE Technologies",
             "MONTH_AND_YEAR": "16.07.2021",
-            "VALIDITY": "2 years ",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "2 years "
           },
           {
-            "S_NO": 2,
             "ORGANISATION_NAME": "PANTECH ELEARNING",
             "MONTH_AND_YEAR": "29.07.2021",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 3,
             "ORGANISATION_NAME": "LEMA LABS TECHNOLOGIES PVT LTD, THARAMANI, CHENNAI-600113",
             "MONTH_AND_YEAR": "04.09.2021",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 4,
             "ORGANISATION_NAME": "AIDELTECZ, PERUNGUDI, CHENNAI-600096",
             "MONTH_AND_YEAR": "09.10.2021",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 5,
             "ORGANISATION_NAME": "STEAM TROOPS Innovation Labs Pvt Ltd, West CIT Nagar, Porur, Chennai -600116",
             "MONTH_AND_YEAR": "05.09.2023",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 6,
             "ORGANISATION_NAME": "RETECH Solutions Pvt Ltd, No.31, Alagesan Street, West Tambaram, Chennai",
             "MONTH_AND_YEAR": "29.09.2023",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 7,
             "ORGANISATION_NAME": "ABE Semiconductor Designs, Level 5, North Block, Thamarai Tech Park, Thiru Vika Industrial Estate, Guindy, Chennai",
             "MONTH_AND_YEAR": "13.03.2024",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 8,
             "ORGANISATION_NAME": "Axis Global Institute of Industrial Training, Ekkattuthangal, Chennai – 600 032",
             "MONTH_AND_YEAR": "10.07.2024",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 9,
             "ORGANISATION_NAME": "FIIT Formacion Pvt Ltd, No.8, 1st Floor, Kamajar Nagar Main Road, Avadi, Chennai-71",
             "MONTH_AND_YEAR": "27.09.2024",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           },
           {
-            "S_NO": 10,
             "ORGANISATION_NAME": "Airports Authority of India, Chennai International Airport, Chennai - 600 027",
             "MONTH_AND_YEAR": "05.11.2024",
-            "VALIDITY": "Till date",
-            "LOGO_PATH": "",
-            "PDF_PATH": "",
-            "ACTIVITIES_PLANNED": []
+            "VALIDITY": "Till date"
           }
         ]
       }

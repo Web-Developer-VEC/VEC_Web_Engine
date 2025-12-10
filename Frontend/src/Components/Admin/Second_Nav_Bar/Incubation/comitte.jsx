@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Plus, Trash2, ArrowDown } from "lucide-react";
+import { Send, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -63,6 +63,47 @@ export default function Committe({ data }) {
       return copy;
     });
   };
+
+  const handleUndoChange = (change) => {
+  if (change.action === "add") {
+    // remove the newly added member
+    setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
+  } 
+  else if (change.action === "delete") {
+    // restore the deleted member back
+    setEditableData((prev) => {
+      const newList = [...prev];
+      newList.splice(change.index, 0, change.deletedItem);
+      return newList;
+    });
+  } 
+  else if (change.action === "edit") {
+    // revert edited fields back to old values
+    setEditableData((prev) =>
+      prev.map((item, idx) =>
+        idx === change.index
+          ? {
+              ...item,
+              ...Object.fromEntries(
+                Object.entries(change.changes).map(([field, values]) => [
+                  field,
+                  values.old,
+                ])
+              ),
+            }
+          : item
+      )
+    );
+  }
+
+  // remove this change from the final changes list
+  setAllChanges((prev) =>
+    prev.filter(
+      (c, i) => !(c.index === change.index && c.action === change.action)
+    )
+  );
+};
+
 
   const handleSave = () => {
     if (sessionChanges.length === 0) {
@@ -159,7 +200,7 @@ export default function Committe({ data }) {
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
             onClick={() => setIsEditing(true)}
           >
-            <FaUserEdit className="mr-2" /> Edit
+            <Pencil className="mr-2" /> Edit
           </button>
         </div>
       )}
@@ -215,7 +256,7 @@ export default function Committe({ data }) {
 
         {isEditing && (
           <button
-            className="bg-gray-200 text-text px-3 py-2 rounded h-48 w-64 border-dashed border-2 border-gray-500 flex items-center justify-center"
+            className="bg-gray-200 text-text px-3 py-2 rounded h-44 w-64 border-dashed border-2 border-gray-500 flex items-center justify-center"
             onClick={handleAddMember}
           >
             <Plus /> Add Member
@@ -236,9 +277,9 @@ export default function Committe({ data }) {
       <div className="py-4 mt-4 flex justify-end gap-4 mr-8">
         {isEditing && (
           <>
-            <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancelSession}>Cancel</button>
+            <button className="bg-gray-500 px-3 py-2 rounded text-prim" onClick={handleCancelSession}>Cancel</button>
             {sessionChanges.length > 0 && (
-              <button className="border-4 border-yellow-400 px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
+              <button className="bg-secd hover:bg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
             )}
           </>
         )}
@@ -252,16 +293,15 @@ export default function Committe({ data }) {
       </div>
 
    {/* Final Request Modal */}
+{/* Final Request Modal */}
 {showRequestModal && (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
     <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-      <h2 className="text-xl font-semibold mb-2 text-center">
-         Request 
-      </h2>
-      
+      <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
       <p className="text-sm text-red-500 mb-4">
         Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
       </p>
+
       <div className="max-h-[320px] overflow-y-auto mb-4">
         <table className="w-full text-sm text-left border">
           <thead className="bg-gray-100">
@@ -269,12 +309,13 @@ export default function Committe({ data }) {
               <th className="py-2 px-3 border">Action</th>
               <th className="py-2 px-3 border">Section</th>
               <th className="py-2 px-3 border">Changed Field</th>
+              <th className="py-2 px-3 border text-center">Undo</th>
             </tr>
           </thead>
           <tbody>
             {allChanges.length === 0 ? (
               <tr>
-                <td colSpan={3} className="text-center py-4">
+                <td colSpan={4} className="text-center py-4">
                   No changes to submit
                 </td>
               </tr>
@@ -295,11 +336,19 @@ export default function Committe({ data }) {
                     ) : (
                       <div>
                         {Object.keys(change.changes)
-                          .filter(field => change.changes[field].old !== change.changes[field].new)
-                          .map(field => field.charAt(0).toUpperCase() + field.slice(1))
+                          .filter((field) => change.changes[field].old !== change.changes[field].new)
+                          .map((field) => field.charAt(0).toUpperCase() + field.slice(1))
                           .join(", ")}
                       </div>
                     )}
+                  </td>
+                  <td className="py-2 px-3 border text-center">
+                    <button
+                      className="text-red-500 hover:text-red-700"
+                      onClick={() => handleUndoChange(change)}
+                    >
+                      ✖
+                    </button>
                   </td>
                 </tr>
               ))
@@ -311,13 +360,13 @@ export default function Committe({ data }) {
       <div className="flex justify-end gap-3">
         <button
           onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-white"
+          className="px-4 py-2 rounded bg-gray-400 text-prim"
         >
           Cancel
         </button>
         <button
           onClick={handleFinalRequestConfirm}
-          className="px-4 py-2 rounded bg-yellow-400 text-black"
+          className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
         >
           Final Request
         </button>

@@ -1,107 +1,35 @@
 [
   {
-    "collectionName": "ncc_navy",
-    "collection_type": "about",
-    "action": "insert",
-    "title": "Add about IIC",
-    "meta_data": {
-        "about": [
-          "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India.",
-          "Popularly known as NSS, the scheme was launched in Gandhiji's Centenary year, 1969. Aimed at developing students' personality through community service. The motto of NSS is 'Not Me, But You'."
-        ],
-        "objectives": [
-          "To understand the community in which they work.",
-          "To understand themselves in relation to their community.",
-          "To identify the needs and problems of the community and involve them in problem-solving.",
-          "To develop among themselves a sense of social and civic responsibility.",
-          "To utilize their knowledge in finding practical solutions to community problems.",
-          "To gain skills in mobilizing community participation.",
-          "To acquire leadership qualities and democratic attitudes.",
-          "To develop the capacity to meet emergencies and natural disasters.",
-          "To practice national integration and social harmony.",
-          "hello everyone"
-        ]
-      }
-  },
-  {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "about",
     "action": "update",
-    "title": "update about ",
-    "original_data":  {
-        "about": [
-          "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India.",
-          "Popularly known as NSS, the scheme was launched in Gandhiji's Centenary year, 1969. Aimed at developing students' personality through community service. The motto of NSS is 'Not Me, But You'."
-        ],
-        "objectives": [
-          "To understand the community in which they work.",
-          "To understand themselves in relation to their community.",
-          "To identify the needs and problems of the community and involve them in problem-solving.",
-          "To develop among themselves a sense of social and civic responsibility.",
-          "To utilize their knowledge in finding practical solutions to community problems.",
-          "To gain skills in mobilizing community participation.",
-          "To acquire leadership qualities and democratic attitudes.",
-          "To develop the capacity to meet emergencies and natural disasters.",
-          "To practice national integration and social harmony.",
-          "hello everyone"
-        ]
-      },
+    "title": "update about NSS",
+    "category": null,
     "meta_data": {
-        "about": [
-          "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India.",
-          "Popularly known as NSS, the scheme was launched in Gandhiji's Centenary year, 1969. Aimed at developing students' personality through community service. The motto of NSS is 'Not Me, But You'."
-        ],
-        "objectives": [
-          "To understand the community in which they work.",
-          "To understand themselves in relation to their community.",
-          "To identify the needs and problems of the community and involve them in problem-solving.",
-          "To develop among themselves a sense of social and civic responsibility.",
-          "To utilize their knowledge in finding practical solutions to community problems.",
-          "To gain skills in mobilizing community participation.",
-          "To acquire leadership qualities and democratic attitudes.",
-          "To develop the capacity to meet emergencies and natural disasters.",
-          "To practice national integration and social harmony."
-        ]
-      }
+      "about": [
+        "The NSS is a student-centered program focusing on social service and nation building."
+      ]
+    },
+    "original_data": {
+      "about": [
+        "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India."
+      ]
+    }
   },
   {
-    "collectionName": "ncc_navy",
-    "collection_type": "about",
-    "action": "delete",
-    "title": "delete about ",
-    "meta_data":{
-        "about": [
-          "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India.",
-          "Popularly known as NSS, the scheme was launched in Gandhiji's Centenary year, 1969. Aimed at developing students' personality through community service. The motto of NSS is 'Not Me, But You'."
-        ]
-      }
-  },
-  {
-    "collectionName": "ncc_navy",
-    "collection_type": "news_updates",
-    "action": "insert",
-    "title": "Add news",
-    "meta_data": [
-      "Blood Donation and Eye Check-Up Camps: In February 2019, the nss unit, in collaboration with the Youth Red Cross (YRC), organized blood donation and eye check-up camps, partnering with multiple hospitals to facilitate these health services",
-      "Environmental Awareness Campaigns: The nss volunteers have participated in campaigns such as 'Lifestyle for Environment (LiFE),'' emphasizing sustainable living practices. ",
-      "Health and Safety Programs: The nss unit has conducted various health campaigns, including eye camps, first aid awareness programs, and COVID-19 care awareness initiatives.",
-      "Community Engagement Activities: Volunteers have engaged in activities such as lake cleaning, orphanage and old age home visits, drug prevention awareness programs, mental health awareness, fire safety awareness, and campaigns against child marriage.",
-      "hello everyone"
-    ]
-  },
-  {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "news_updates",
     "action": "update",
-    "title": "update news",
-    "original_data":  [
+    "title": "update news update",
+    "category": null,
+    "meta_data":  [
       "Blood Donation and Eye Check-Up Camps: In February 2019, the nss unit, in collaboration with the Youth Red Cross (YRC), organized blood donation and eye check-up camps, partnering with multiple hospitals to facilitate these health services",
       "Environmental Awareness Campaigns: The nss volunteers have participated in campaigns such as 'Lifestyle for Environment (LiFE),'' emphasizing sustainable living practices. ",
       "Health and Safety Programs: The nss unit has conducted various health campaigns, including eye camps, first aid awareness programs, and COVID-19 care awareness initiatives.",
       "Community Engagement Activities: Volunteers have engaged in activities such as lake cleaning, orphanage and old age home visits, drug prevention awareness programs, mental health awareness, fire safety awareness, and campaigns against child marriage.",
       "hello everyone"
     ],
-    "meta_data":  [
+    "original_data":  [
       "Blood Donation and Eye Check-Up Camps: In February 2019, the nss unit, in collaboration with the Youth Red Cross (YRC), organized blood donation and eye check-up camps, partnering with multiple hospitals to facilitate these health services",
       "Environmental Awareness Campaigns: The nss volunteers have participated in campaigns such as 'Lifestyle for Environment (LiFE),'' emphasizing sustainable living practices. ",
       "Health and Safety Programs: The nss unit has conducted various health campaigns, including eye camps, first aid awareness programs, and COVID-19 care awareness initiatives.",
@@ -109,70 +37,103 @@
     ]
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "insert",
-    "title": "Add events",
+    "title": "insert event",
+    "category": null,
     "meta_data": {
-        "title": "INTERNATIONAL dinesh DAY 2015",
-        "date": "20 November 2024",
-        "image_path": "static/images/ncc/navy/events09.webp"
-      }
+      "title": "Ignite'24",
+      "date": "20th November 2024",
+      "image_path": "/static/images/nss/event/ignite24.webp"
+    }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "update",
-    "title": "update in events",
+    "title": "update event",
+    "category": null,
+    "meta_data": {
+      "title": "Republic Day",
+      "date": "26th January 2025",
+      "image_path": "/static/images/nss/event/republic day.webp"
+    },
     "original_data": {
-        "title": "INTERNATIONAL dinesh DAY 2015",
-        "date": "20 November 2024",
-        "image_path": "static/images/ncc/navy/events09.webp"
-      },
-      "meta_data": {
-        "title": "INTERNATIONAL hari DAY 2015",
-        "date": "20 November 2024",
-        "image_path": "static/images/ncc/navy/events09.webp"
-      }
+      "title": "Ignite'24",
+      "date": "20th November 2024",
+      "image_path": "/static/images/nss/event/ignite24.webp"
+    }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "events",
     "action": "delete",
-    "title": "delete events",
+    "title": "delete event",
+    "category": null,
     "meta_data": {
-        "title": "INTERNATIONAL hari DAY 2015",
-        "date": "20 November 2024",
-        "image_path": "static/images/ncc/navy/events09.webp"
-      }
+       "title": "Republic Day",
+      "date": "26th January 2025",
+      "image_path": "/static/images/nss/event/republic day.webp"
+    }
   },
+
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "team",
     "action": "insert",
-    "category": "faculty_coordinators",
-    "title": "Add Faculty Member",
+    "title": "insert team member",
+    "category": "student_coordinater",
     "meta_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
+      "name": "RAHUL KUMARAN R",
+      "designation": "AI&DS coordinator",
+      "image_path": "/static/images/nss/8.webp"
+    }
   },
   {
-    "collectionName": "ncc_navy",
+    "collectionName": "nss",
     "collection_type": "team",
     "action": "update",
-    "category": "faculty_coordinators",
-    "title": "update Faculty Member",
-    "original_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          },
+    "title": "update team member",
+    "category": "student_coordinater",
     "meta_data": {
-            "name": "Sub. LT hari R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
+     "name": "Dr. KARTHIK R",
+      "designation": "Programme Officer",
+      "image_path": "/static/images/nss/1.webp"
+    },
+    "original_data": {
+      "name": "RAHUL KUMARAN R",
+      "designation": "AI&DS coordinator",
+      "image_path": "/static/images/nss/8.webp"
+    }
+  },
+  {
+    "collectionName": "nss",
+    "collection_type": "team",
+    "action": "delete",
+    "title": "delete team member",
+    "category": "student_coordinater",
+    "meta_data": {
+       "name": "Dr. KARTHIK R",
+      "designation": "Programme Officer",
+      "image_path": "/static/images/nss/1.webp"
+    }
+  },
+  {
+    "collectionName": "nss",
+    "collection_type": "team",
+    "action": "update",
+    "title": "update team member",
+    "category": "faculty_coordinater",
+    "meta_data": {
+      "name": "Dr. KARTHIK R",
+      "designation": "Programme Officer & Faculty Head",
+      "image_path": "/static/images/nss/1.webp"
+    },
+    "original_data": {
+      "name": "Dr. KARTHIK R",
+      "designation": "Programme Officer",
+      "image_path": "/static/images/nss/1.webp"
+    }
   }
 ]

@@ -2,33 +2,6 @@
   {
     "collectionName": "ncc_navy",
     "collection_type": "about",
-    "action": "insert",
-    "title": "Add about IIC",
-    "meta_data": {
-        "about_us": [
-          "National Cadet Corps is a Tri-Services Organization, comprising the Army, Navy and Air Force, engaged in grooming the youth of the country into disciplined and patriotic citizens.",
-          "The National Cadet Corps (NCC) is a youth development movement. It has enormous potential for nation-building.",
-          "The NCC provides opportunities to the youth of the country for their all-round development with a sense of Duty, Commitment, Dedication, Discipline and Moral Values so that they become able leaders and useful citizens.",
-          "The NCC provides exposure to the cadets in a wide range of activities, with a distinct emphasis on Social Services, Discipline and Adventure Training.",
-          "The NCC is open to all regular students of schools and colleges on a voluntary basis all over India.",
-          "The cadets have no liability for active military service once they complete their course but are given preference over normal candidates during selections based on the achievements in the corps."
-        ],
-        "vision": "Empower volunteer youth to become potential leaders and responsible citizens of the country.",
-        "mission": "To develop leadership and character qualities, mold discipline and nurture social integration and cohesion through multi-faceted programs conducted in a military environment.",
-        "aim": [
-          "The ‘Aims’ of the NCC laid out in 1988 have stood the test of time and continue to meet the requirements expected of it in the current socio-economic scenario of the country.",
-          "To develop good qualities like character, commandership, discipline, leadership, secular outlook and selfless service.",
-          "To create a human resource of trained and motivated youth.",
-          "To provide an environment to motivate youth for a career in the Armed Forces.",
-          "hello everyone"
-        ],
-        "motto": "The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec 1957. It brings together the youth from different parts of the country, molding them into united, secular and disciplined citizens.",
-        "pledge": "We, the cadets of the National Cadet Corps, do solemnly pledge that we shall always uphold the unity of India. We resolve to be disciplined and responsible citizens of our nation."
-      }
-  },
-  {
-    "collectionName": "ncc_navy",
-    "collection_type": "about",
     "action": "update",
     "title": "update about ",
     "original_data":  {
@@ -75,26 +48,6 @@
   },
   {
     "collectionName": "ncc_navy",
-    "collection_type": "about",
-    "action": "delete",
-    "title": "delete about ",
-    "meta_data":{
-        "about_us": [
-          "National Cadet Corps is a Tri-Services Organization, comprising the Army, Navy and Air Force, engaged in grooming the youth of the country into disciplined and patriotic citizens.",
-          "The National Cadet Corps (NCC) is a youth development movement. It has enormous potential for nation-building.",
-          "The NCC provides opportunities to the youth of the country for their all-round development with a sense of Duty, Commitment, Dedication, Discipline and Moral Values so that they become able leaders and useful citizens.",
-          "The NCC provides exposure to the cadets in a wide range of activities, with a distinct emphasis on Social Services, Discipline and Adventure Training.",
-          "The NCC is open to all regular students of schools and colleges on a voluntary basis all over India.",
-          "The cadets have no liability for active military service once they complete their course but are given preference over normal candidates during selections based on the achievements in the corps."
-        ],
-        "vision": "Empower volunteer youth to become potential leaders and responsible citizens of the country.",
-        "mission": "To develop leadership and character qualities, mold discipline and nurture social integration and cohesion through multi-faceted programs conducted in a military environment.",
-        "motto": "The motto of NCC is “Unity and Discipline,” adopted on 23rd Dec 1957. It brings together the youth from different parts of the country, molding them into united, secular and disciplined citizens.",
-        "pledge": "We, the cadets of the National Cadet Corps, do solemnly pledge that we shall always uphold the unity of India. We resolve to be disciplined and responsible citizens of our nation."
-      }
-  },
-  {
-    "collectionName": "ncc_navy",
     "collection_type": "events",
     "action": "insert",
     "title": "Add events",
@@ -126,22 +79,10 @@
     "action": "delete",
     "title": "delete events",
     "meta_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "/static/images/ncc/navy/events59.jpg",
         "title": "INTERNATIONAL hari DAY 2015",
         "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College"
       }
-  },
-  {
-    "collectionName": "ncc_navy",
-    "collection_type": "team",
-    "action": "insert",
-    "category": "faculty_coordinators",
-    "title": "Add Faculty Member",
-    "meta_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
   },
   {
     "collectionName": "ncc_navy",
@@ -162,6 +103,48 @@
   },
   {
     "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "insert",
+    "category": "student_coordinators",
+    "title": "Add Faculty Member",
+    "meta_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "update",
+    "category": "student_coordinators",
+    "title": "update Faculty Member",
+    "original_data": {
+            "name": "Sub. LT dinesh R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          },
+    "meta_data": {
+            "name": "Sub. LT hari R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+  {
+    "collectionName": "ncc_navy",
+    "collection_type": "team",
+    "action": "delete",
+    "category": "student_coordinators",
+    "title": "DELETE Faculty Member",
+    "meta_data": {
+            "name": "Sub. LT hari R",
+            "designation": "NCC Navy Coordinator",
+            "image_path": "/static/images/ncc/navy/chairman.webp"
+          }
+  },
+
+  {
+    "collectionName": "ncc_navy",
     "collection_type": "awards",
     "action": "insert",
     "title": "insert awards",
@@ -174,8 +157,7 @@
     "collectionName": "ncc_navy",
     "collection_type": "awards",
     "action": "update",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
+    "title": "delete awards",
     "meta_data": {
         "image_path": "static/images/ncc/navy/stud.webp",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
@@ -189,8 +171,7 @@
     "collectionName": "ncc_navy",
     "collection_type": "awards",
     "action": "delete",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
+    "title": "delete awards",
     "meta_data": {
         "image_path": "static/images/ncc/navy/stud.webp",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"

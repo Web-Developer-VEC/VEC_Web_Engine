@@ -12,13 +12,7 @@ async function updateData( tempDoc, mainCollection) {
     if (!doc) throw new Error("Document not found");
     if (!doc.data) throw new Error("Document has no data field");
 
-    // Debug
-    console.log("🔎 Incoming update request:", {
-      collection_type,
-      category,
-      original_data,
-      meta_data,
-    });
+  
 
     // 3️⃣ Define type categories
     const singleDocTypes = ["about", "news_updates"];
@@ -29,13 +23,7 @@ async function updateData( tempDoc, mainCollection) {
     if (singleDocTypes.includes(collection_type)) {
       let newData;
 
-      if (collection_type === "news_updates" && Array.isArray(meta_data)) {
-        // Update entire array of strings directly
-        newData = meta_data;
-      } else {
-        // For other types (like "about"), wrap in array of object
-        newData = [meta_data];
-      }
+      newData = Array.isArray(meta_data)?meta_data:[meta_data];
 
       await mainCollection.updateOne(
         { type: collection_type },

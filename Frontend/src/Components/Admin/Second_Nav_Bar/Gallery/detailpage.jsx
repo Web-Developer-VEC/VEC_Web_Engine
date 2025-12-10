@@ -4,26 +4,34 @@ import LoadComp from "../../LoadComp";
 import { Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function Admingallerydetails() {
   const [modalImage, setModalImage] = useState(null);
   const [pagetitle, setPageTitle] = useState(null);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const location = useLocation();
   const [imagePaths, setImagePaths] = useState([]);
+  const [originalData, setOriginalData] = useState({});
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") || path?.startsWith('blob') ? path : `${BASE_URL}${path}`;
   };
+
+  console.log(imagePaths);
+  
 
   // Track pending changes
   const [pendingChanges, setPendingChanges] = useState([]);
 
-  // Modals
+  // Bulk selection
+  const [selectedItems, setSelectedItems] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteTarget, setDeleteTarget] = useState(null);
+
+  // Modals
   const [showAddModal, setShowAddModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
 
@@ -31,11 +39,16 @@ export default function Admingallerydetails() {
   const [newFiles, setNewFiles] = useState([]);
   const [newLinks, setNewLinks] = useState([]);
   const [linkInput, setLinkInput] = useState("");
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     if (location.state && location.state.imagespath) {
       setImagePaths(location.state.imagespath);
       setPageTitle(location.state.title || "Gallery Details");
+      setOriginalData({
+        image_path: location.state.imagespath,
+        category: location.state.title,
+      });
     }
   }, [location.state]);
 
@@ -44,12 +57,18 @@ export default function Admingallerydetails() {
     (path) => path.includes("youtube.com") || path.includes("youtu.be")
   );
 
-  const images = imagePaths.filter(
-    (path) =>
-      /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(path) &&
-      !path.includes("youtube.com") &&
-      !path.includes("youtu.be")
-  );
+
+  useEffect(() => {
+    setImages(
+      imagePaths.filter(
+        (path) =>
+          // /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(path) &&
+          !path.includes("youtube.com") &&
+          !path.includes("youtu.be")
+      )
+    );
+  }, [imagePaths]);
+
 
   const getYouTubeEmbedUrl = (url) => {
     try {
@@ -94,22 +113,73 @@ export default function Admingallerydetails() {
     toast.success("Items added successfully");
   };
 
-  // Confirm delete
-  const confirmDelete = () => {
-    setImagePaths(imagePaths.filter((p) => p !== deleteTarget));
+  // Toggle selection
+  const toggleSelect = (item) => {
+    setSelectedItems((prev) =>
+      prev.includes(item) ? prev.filter((p) => p !== item) : [...prev, item]
+    );
+  };
+
+  // Bulk delete confirm
+  const confirmBulkDelete = () => {
+    setImagePaths(imagePaths.filter((p) => !selectedItems.includes(p)));
 
     setPendingChanges((prev) => [
       ...prev,
-      { action: "delete", category: pagetitle, target: deleteTarget },
+      ...selectedItems.map((target) => ({
+        action: "delete",
+        category: pagetitle,
+        target,
+      })),
     ]);
 
     setShowDeleteModal(false);
-    setDeleteTarget(null);
-    toast.success("Item marked for deletion. Click Request to confirm.");
+    setSelectedItems([]);
+    toast.success("Selected items marked for deletion.");
   };
 
-  // Handle final request
-  const handleConfirmRequest = async () => {
+  const handleDiscardChanges = () => {
+    setImagePaths(originalData.image_path || []); // restore original images
+    setPendingChanges([]);                        // clear pending changes
+    setSelectedItems([]);                         // clear selections
+    setNewFiles([]);                              // reset add form
+    setNewLinks([]);
+    setLinkInput("");
+    toast.info("All changes discarded");
+  };
+  
+  // Undo specific pending change
+  const handleUndoChange = (index) => {
+    const change = pendingChanges[index];
+
+    if (change.action === "insert") {
+      // Remove inserted files/links from preview
+      const insertedPaths = [
+        ...(change.files?.map((f) =>
+          URL.createObjectURL(f)
+        ) || []),
+        ...(change.links || []),
+      ];
+
+      setImagePaths((prev) =>
+        prev.filter((p) => !insertedPaths.includes(p))
+      );
+    }
+
+    if (change.action === "delete") {
+      // Restore deleted items
+      if (change.target) {
+        setImagePaths((prev) => [...prev, change.target]);
+      }
+    }
+    // Remove this change from pendingChanges
+    setPendingChanges((prev) => prev.filter((_, i) => i !== index));
+  
+    toast.info("Change undone");
+  };
+    
+    // Handle final request
+    const handleConfirmRequest = async () => {
     if (pendingChanges.length === 0) {
       toast.error("No changes to request");
       return;
@@ -126,6 +196,8 @@ export default function Admingallerydetails() {
       if (change.links?.length) grouped[key].links.push(...change.links);
       if (change.target) grouped[key].targets.push(change.target);
     });
+
+
 
     // Build payload from grouped data
     const payload = Object.values(grouped).map((change) => {
@@ -152,38 +224,25 @@ export default function Admingallerydetails() {
       return {
         collectionName: "gallery",
         collection_type: "gallery",
-        action: change.action,
-        title:
-          change.action === "insert"
-            ? "insertion of items"
-            : "deletion of items",
+        action: "update",
+        title: `Updation in ${pagetitle} ${
+          change.action == "insert"
+            ? "(Inserted some image)"
+            : "(Deletion of some image)"
+        }`,
         category: pagetitle,
         meta_data: { category: pagetitle, image_path: imagePaths },
-        original_data: null,
+        original_data: originalData,
       };
     });
 
-    // Prepare FormData
-    const formData = new FormData();
-    formData.append("docs", JSON.stringify(payload));
+    const files = Object.values(grouped).flatMap((item) => item.files || []);
 
-    // Attach all files together
-    Object.values(grouped).forEach((change) => {
-      change.files?.forEach((file) => formData.append("files", file));
-    });
+    const result = await sendRequest(payload, files);
 
-    try {
-      const res = await fetch(`/api/admin-backend/temp`, {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
-      toast.success(data.message || "Request submitted successfully!");
+    if (result) {
       setPendingChanges([]);
       setShowRequestModal(false);
-    } catch (err) {
-      console.error("Upload failed", err);
-      toast.error("Request failed.");
     }
   };
 
@@ -206,15 +265,13 @@ export default function Admingallerydetails() {
                     allowFullScreen
                   ></iframe>
                 </div>
-                <button
-                  onClick={() => {
-                    setDeleteTarget(item);
-                    setShowDeleteModal(true);
-                  }}
-                  className="absolute top-2 right-2 bg-red-600 p-2 rounded-full hover:bg-red-800"
-                >
-                  <Trash2 size={18} color="white" />
-                </button>
+                {/* Selection Checkbox */}
+                <input
+                  type="checkbox"
+                  className="absolute top-2 left-2 w-5 h-5"
+                  checked={selectedItems.includes(item)}
+                  onChange={() => toggleSelect(item)}
+                />
               </div>
             ))}
           </div>
@@ -226,17 +283,15 @@ export default function Admingallerydetails() {
                 <img
                   src={UrlParser(item)}
                   alt={"Images"}
-                  onClick={() => setModalImage(UrlParser(item))}
+                  onClick={() => !selectedItems.length && setModalImage(UrlParser(item))}
                 />
-                <button
-                  onClick={() => {
-                    setDeleteTarget(item);
-                    setShowDeleteModal(true);
-                  }}
-                  className="absolute top-2 right-2 bg-red-600 p-2 rounded-full hover:bg-red-800"
-                >
-                  <Trash2 size={18} color="white" />
-                </button>
+                {/* Selection Checkbox */}
+                <input
+                  type="checkbox"
+                  className="absolute top-2 left-2 w-5 h-5 cursor-pointer"
+                  checked={selectedItems.includes(item)}
+                  onChange={() => toggleSelect(item)}
+                />
               </div>
             ))}
 
@@ -251,8 +306,28 @@ export default function Admingallerydetails() {
 
           <ToastContainer position="bottom-right" autoClose={3000} />
 
-          {pendingChanges.length > 0 && (
+          {/* Bulk Delete Button */}
+          {selectedItems.length > 0 && (
             <div className="p-6 flex justify-end">
+              <button
+                className="p-[12px] bg-red-600 text-white cursor-pointer border rounded-[12px] flex gap-[10px] justify-center hover:bg-red-800"
+                onClick={() => setShowDeleteModal(true)}
+              >
+                <Trash2 /> Delete Selected ({selectedItems.length})
+              </button>
+            </div>
+          )}
+
+          {/* Request Button */}
+          {pendingChanges.length > 0 && (
+            <div className="p-6 flex justify-end gap-2">
+              <button
+                className="p-[12px] bg-gray-500 text-white cursor-pointer border rounded-[12px] flex gap-[10px] justify-center hover:bg-gray-700"
+                onClick={handleDiscardChanges}
+              >
+                Discard Changes
+              </button>
+
               <button
                 className="p-[12px] bg-secd dark:drks cursor-pointer border rounded-[12px] flex gap-[10px] justify-center"
                 onClick={() => setShowRequestModal(true)}
@@ -290,24 +365,31 @@ export default function Admingallerydetails() {
         </div>
       )}
 
-      {/* Delete Confirm Modal */}
+      {/* Bulk Delete Confirm Modal */}
       {showDeleteModal && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]"
           onClick={() => setShowDeleteModal(false)}
         >
           <div
-            className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[350px]"
+            className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[400px]"
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-lg font-bold mb-4 dark:text-drkt text-text">
               Confirm Delete
             </h2>
             <p className="dark:text-drkt text-text mb-4">
-              Are you sure you want to delete this item?
+              Are you sure you want to delete {selectedItems.length} selected item(s)?
             </p>
-            <div>
-              <img src={UrlParser(deleteTarget)} alt="deleted  item" className="w-full h-auto rounded" />
+            <div className="max-h-[150px] overflow-y-auto grid grid-cols-3 gap-2 mb-4">
+              {selectedItems.map((item, idx) => (
+                <img
+                  key={idx}
+                  src={UrlParser(item)}
+                  alt="to-delete"
+                  className="w-full h-20 object-cover rounded"
+                />
+              ))}
             </div>
             <div className="flex justify-end gap-2">
               <button
@@ -317,7 +399,7 @@ export default function Admingallerydetails() {
                 Cancel
               </button>
               <button
-                onClick={confirmDelete}
+                onClick={confirmBulkDelete}
                 className="px-4 py-2 rounded bg-red-600 hover:bg-red-800 text-white"
               >
                 Delete
@@ -456,6 +538,7 @@ export default function Admingallerydetails() {
                       <th className="py-1">Action</th>
                       <th className="py-1">Section</th>
                       <th className="py-1">Changes</th>
+                      <th className="py-1">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -476,6 +559,14 @@ export default function Admingallerydetails() {
                             `, ${g.links.length} links`}
                           {g.target && "1 item"}
                         </td>
+                        <td>
+                          <button
+                            onClick={() => handleUndoChange(i)}
+                            className="text-red-500 hover:text-red-700"
+                          >
+                            <X />
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -488,15 +579,17 @@ export default function Admingallerydetails() {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                disabled={loading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                disabled={loading}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

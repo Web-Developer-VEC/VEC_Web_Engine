@@ -4,7 +4,7 @@ import "./hostelfacilities.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Send, Trash2, X } from "lucide-react";
 
 export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL ?? "";
@@ -40,6 +40,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
   });
   const [tempId, setTempId] = useState(null);
 
+  // Initialize when hostelData arrives
   useEffect(() => {
     if (hostelData) {
       const dataWithIds = hostelData.map((item, index) => ({
@@ -69,15 +70,15 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // HasChanges derived from original + deleted list
   useEffect(() => {
     if (!originalData) {
       setHasChanges(false);
       return;
     }
-    const hasDataChanged =
-      JSON.stringify(facilitiesData) !== JSON.stringify(originalData) ||
-      (deletedFacilities && deletedFacilities.length > 0);
-    setHasChanges(hasDataChanged);
+    const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
+    const changed = detected.added.length > 0 || detected.deleted.length > 0 || detected.modified.length > 0;
+    setHasChanges(changed);
   }, [facilitiesData, originalData, deletedFacilities]);
 
   const handleExpand = (id) => {
@@ -221,37 +222,42 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     setHasChanges(true);
   };
 
-  const computeChanges = (current, original, deletedList) => {
+  // computeChanges: returns object with added/modified/deleted arrays
+  const computeChanges = (current = [], original = [], deletedList = []) => {
     const changesDetected = { modified: [], added: [], deleted: [] };
-    if (!original) {
-      (current || []).forEach((f) => changesDetected.added.push({id: f.id, title: f.title || "Untitled"}));
-      return changesDetected;
-    }
 
-    current.forEach((facility) => {
-      const isNew = !original.some((orig) => orig.id === facility.id);
-      if (isNew) changesDetected.added.push({id: facility.id, title: facility.title || "Untitled"});
+    const origById = {};
+    (original || []).forEach((o) => (origById[o.id] = o));
+
+    // Deleted: from deletedList (these are full objects)
+    (deletedList || []).forEach((d) => {
+      changesDetected.deleted.push({ id: d.id, title: d.title || "Untitled" });
     });
 
-    if (deletedList && deletedList.length > 0) {
-      deletedList.forEach((f) => changesDetected.deleted.push({id: f.id, title: f.title || "Untitled"}));
-    }
+    // Added: any current item not present in original (by id) OR items marked __isTemp
+    (current || []).forEach((f) => {
+      const existsInOriginal = !!origById[f.id];
+      if (!existsInOriginal || f.__isTemp) {
+        changesDetected.added.push({ id: f.id, title: f.title || "Untitled" });
+      }
+    });
 
-    current.forEach((facility) => {
-      const orig = original.find((o) => o.id === facility.id);
+    // Modified: items that are in both current & original but with differences
+    (current || []).forEach((f) => {
+      const orig = origById[f.id];
       if (orig) {
-        const titleChanged = facility.title !== orig.title;
-        const descChanged = facility.description !== orig.description;
-        const imageChanged = (facility.image_path || "") !== (orig.image_path || "");
+        const titleChanged = (f.title || "") !== (orig.title || "");
+        const descChanged = (f.description || "") !== (orig.description || "");
+        const imageChanged = (f.image_path || "") !== (orig.image_path || "");
         if (titleChanged || descChanged || imageChanged) {
           const parts = [];
           if (titleChanged) parts.push("title");
           if (descChanged) parts.push("description");
           if (imageChanged) parts.push("image");
           changesDetected.modified.push({
-            id: facility.id,
-            oldTitle: orig.title,
-            newTitle: facility.title,
+            id: f.id,
+            oldTitle: orig.title || "Untitled",
+            newTitle: f.title || "Untitled",
             changes: parts
           });
         }
@@ -261,81 +267,89 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     return changesDetected;
   };
 
-  const getChanges = () => {
-    const cur = changes && (changes.added.length > 0 || changes.deleted.length > 0 || changes.modified.length > 0) 
-      ? changes 
-      : computeChanges(facilitiesData, originalData, deletedFacilities);
-    
+  // returns list of rows for popup in required format
+  const buildChangeRows = () => {
+    const cur = computeChanges(facilitiesData, originalData, deletedFacilities);
+
     const out = [];
-    
+
     (cur.added || []).forEach((item) => {
-      out.push({ 
-        action: "Added", 
-        section: "Facilities", 
-        data: { name: item.title || "Untitled", id: item.id },
-        raw: `Added: "${item.title || "Untitled"}"`
+      out.push({
+        action: "Added",
+        section: "Hostel Facilities",
+        changesText: ` ${item.title || "Untitled"}`,
+        data: { id: item.id, name: item.title || "Untitled" }
       });
     });
-    
+
     (cur.deleted || []).forEach((item) => {
-      out.push({ 
-        action: "Deleted", 
-        section: "Facilities", 
-        data: { name: item.title || "Untitled", id: item.id },
-        raw: `Deleted: "${item.title || "Untitled"}"`
+      out.push({
+        action: "Deleted",
+        section: "Hostel Facilities",
+        changesText: `${item.title || "Untitled"}`,
+        data: { id: item.id, name: item.title || "Untitled" }
       });
     });
-    
+
     (cur.modified || []).forEach((item) => {
       out.push({
         action: "Edited",
-        section: "Facilities",
-        data: { 
-          oldName: item.oldTitle || "Untitled", 
-          newName: item.newTitle || "Untitled", 
+        section: "Hostel Facilities",
+        changesText: `${item.oldTitle || "Untitled"}`,
+        data: {
           id: item.id,
+          oldName: item.oldTitle || "Untitled",
+          newName: item.newTitle || "Untitled",
           changes: item.changes
-        },
-        raw: `Edited: "${item.oldTitle || "Untitled"}" → "${item.newTitle || "Untitled"}" (${item.changes.join(" & ")})`
+        }
       });
     });
-    
+
     return out;
   };
 
-  const handleRevertChange = (change) => {
-    if (!change) return;
-    
-    if (change.action === "Added") {
-      const id = change.data?.id;
-      setFacilitiesData((prev) => prev.filter((f) => f.id !== id));
-      toast.info(`Reverted add: ${change.data?.name}`);
-    } else if (change.action === "Deleted") {
-      const id = change.data?.id;
-      const found = deletedFacilities.find((d) => d.id === id);
+  // Revert a change row (Added / Deleted / Edited)
+  const handleRevertChange = (changeRow) => {
+    if (!changeRow) return;
+    const { action, data } = changeRow;
+
+    if (action === "Added") {
+      // remove the added item from current
+      const newFacilities = facilitiesData.filter((f) => f.id !== data.id);
+      setFacilitiesData(newFacilities);
+      // recompute changes with the new current & existing original/deleted
+      const recomputed = computeChanges(newFacilities, originalData, deletedFacilities);
+      setChanges(recomputed);
+      toast.info(`Reverted add: ${data.name}`);
+    } else if (action === "Deleted") {
+      // restore deleted item from deletedFacilities
+      const found = deletedFacilities.find((d) => d.id === data.id);
       if (found) {
-        setFacilitiesData((prev) => [...prev, found]);
-        setDeletedFacilities((prev) => prev.filter((d) => d.id !== id));
-        toast.info(`Restored: ${change.data?.name}`);
+        // ensure we don't duplicate if already present
+        const already = facilitiesData.some((f) => f.id === found.id);
+        const newFacilities = already ? [...facilitiesData] : [...facilitiesData, found];
+        const newDeleted = deletedFacilities.filter((d) => d.id !== found.id);
+        setFacilitiesData(newFacilities);
+        setDeletedFacilities(newDeleted);
+        const recomputed = computeChanges(newFacilities, originalData, newDeleted);
+        setChanges(recomputed);
+        toast.info(`Restored: ${data.name}`);
       } else {
         toast.warn("Original deleted item not found to restore");
       }
-    } else if (change.action === "Edited") {
-      const id = change.data?.id;
-      const found = originalData.find((d) => d.id === id);
-      if (found) {
-        setFacilitiesData((prev) => 
-          prev.map((f) => f.id === id ? {...found} : f)
-        );
-        toast.info(`Reverted edit: ${change.data?.newName} → ${change.data?.oldName}`);
+    } else if (action === "Edited") {
+      // revert modified item to originalData version
+      const orig = (originalData || []).find((d) => d.id === data.id);
+      if (orig) {
+        const newFacilities = facilitiesData.map((f) => (f.id === data.id ? { ...orig } : f));
+        setFacilitiesData(newFacilities);
+        const recomputed = computeChanges(newFacilities, originalData, deletedFacilities);
+        setChanges(recomputed);
+        toast.info(`Reverted edit: ${data.newName} → ${data.oldName}`);
       } else {
         toast.warn("Unable to find original data to revert");
       }
     }
-    
-    // Recompute changes after revert
-    const recomputed = computeChanges(facilitiesData, originalData, deletedFacilities);
-    setChanges(recomputed);
   };
 
   const analyzeChanges = () => {
@@ -350,6 +364,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     }
   };
 
+  // Save = create a draft snapshot of changes but DO NOT overwrite originalData
   const handleSave = () => {
     const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
     const hasReal =
@@ -359,14 +374,37 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
       return;
     }
 
-    setOriginalData(JSON.parse(JSON.stringify(facilitiesData)));
+    // Keep originalData intact so computeChanges can still detect differences
     setChanges(detected);
     setChangesSaved(true);
-    setDeletedFacilities([]);
+
+    // Do NOT clear deletedFacilities here — we need them for Request popup
     setHasChanges(false);
     setEditMode(false);
     setSelectedItems([]);
     toast.success("Changes saved (pending request)");
+  };
+
+  // Final Request = simulate sending request and APPLY the changes (update originalData)
+  const handleRequestConfirm = () => {
+    const finalChanges = computeChanges(facilitiesData, originalData, deletedFacilities);
+    console.log("Request sent:", { facilities: facilitiesData, changes: finalChanges });
+
+    // Success feedback
+    toast.success("Request submitted successfully!");
+
+    // Apply the changes locally by updating originalData snapshot to current
+    // (If you want to wait for admin approval instead, remove this update.)
+    setOriginalData(JSON.parse(JSON.stringify(facilitiesData)));
+
+    // Clear pending state
+    setShowRequestModal(false);
+    setChangesSaved(false);
+    setChanges({ modified: [], added: [], deleted: [] });
+    setHasChanges(false);
+    setDeletedFacilities([]); // applied -> clear deleted listing
+    setSelectedItems([]);
+    setEditMode(false);
   };
 
   const handleDiscardAll = () => {
@@ -409,18 +447,6 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     }
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Request sent:", { facilities: facilitiesData, changes });
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setChangesSaved(false);
-    setChanges({ modified: [], added: [], deleted: [] });
-    setHasChanges(false);
-    setDeletedFacilities([]);
-    setSelectedItems([]);
-    setEditMode(false);
-  };
-
   const togglePageView = () => {
     setIsPageView(!isPageView);
     if (isPageView) setEditMode(true);
@@ -438,6 +464,8 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     );
   }
 
+  const changeRows = buildChangeRows();
+
   return (
     <>
       <div className="hos-facility">
@@ -454,7 +482,6 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
               <Pencil size={16} /> Edit
             </button>
           )}
-
         </div>
 
         <motion.h2
@@ -520,7 +547,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                   <div className="hos-text-content">
                     {editMode && !isPageView ? (
                       <>
-                        <div style={{ marginBottom: 5 , alignItems: "center" }}>
+                        <div style={{ marginBottom: 5, alignItems: "center" }}>
                           <div className="flex justify-center">
                             <label className="bg-[#fdcc03] text-white px-3 py-1 rounded cursor-pointer inline-block">
                               {facility.image_path ? "Replace" : "Upload"}
@@ -534,7 +561,6 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                               />
                             </label>
                           </div>
-
                         </div>
 
                         <input
@@ -592,53 +618,37 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
               </button>
             )}
           </div>
-          )}
+        )}
 
         {!editMode && changesSaved && (
-        <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end">
-          <button
-            onClick={handleDiscardAll}
-            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-          >
-            Discard Changes
-          </button>
-          <button
-            onClick={() => {
-              const computed = computeChanges(facilitiesData, originalData, deletedFacilities);
-              setChanges(computed);
-              setShowRequestModal(true);
-            }}
-            className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-          >
-            Request
-          </button>
-        </div>
-
+          <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end">
+            <button
+              onClick={handleDiscardAll}
+              className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={() => {
+                const computed = computeChanges(facilitiesData, originalData, deletedFacilities);
+                setChanges(computed);
+                setShowRequestModal(true);
+              }}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            >
+              <Send size={16}/>Request
+            </button>
+          </div>
         )}
 
         {editMode && selectedItems.length > 0 && (
-<div className="hos-delete-action flex justify-center mt-6">
-  <button
-    onClick={() => setShowMultiDeleteConfirm(true)}
-    className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
-  >
-    <Trash2 size={16} /> Delete ({selectedItems.length})
-  </button>
-</div>
-
-        )}
-
-        {hasChanges && !editMode && (
-          <div className="hos-page-view-button-container">
-            {!isPageView ? (
-              <button className="hos-page-view-btn" onClick={togglePageView}>
-                save
-              </button>
-            ) : (
-              <button className="hos-exit-page-view-btn-1" onClick={togglePageView}>
-                Back To Edit
-              </button>
-            )}
+          <div className="hos-delete-action flex justify-center mt-6">
+            <button
+              onClick={() => setShowMultiDeleteConfirm(true)}
+              className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
+            >
+              <Trash2 size={16} /> Delete ({selectedItems.length})
+            </button>
           </div>
         )}
       </div>
@@ -734,7 +744,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
             <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
             <p className="text-sm mb-4 text-center">
-              Are you sure you want to delete the selected item(s)?
+              Are you sure you want to delete the selected item?
             </p>
             <div className="flex justify-center gap-3">
               <button
@@ -772,11 +782,16 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                     <th className="py-1">Action</th>
                     <th className="py-1">Section</th>
                     <th className="py-1 text-center">Changes</th>
-                    <th className="py-1">Action</th>
+                    <th className="py-1">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {getChanges().map((change, idx) => (
+                  {changeRows.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="py-3">No changes detected</td>
+                    </tr>
+                  )}
+                  {changeRows.map((change, idx) => (
                     <tr key={idx} className="border-t">
                       <td
                         className={`py-1 ${
@@ -791,13 +806,11 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                       </td>
 
                       <td className="py-1">
-                        {change.section || "Facilities"}
+                        {change.section}
                       </td>
 
                       <td className="py-1 text-[12px]">
-                        {change.action === "Added" && `Added: "${change.data?.name}"`}
-                        {change.action === "Deleted" && `Deleted: "${change.data?.name}"`}
-                        {change.action === "Edited" && `Edited: "${change.data?.oldName}" → "${change.data?.newName}"`}
+                        {change.changesText}
                       </td>
                       
                       <td className="py-1">
@@ -806,7 +819,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                           className="text-red-500 hover:text-red-700 font-bold px-2 py-1"
                           title="Revert this change"
                         >
-                          Revert
+                        <X size={16} className="text-red-500" />
                         </button>
                       </td>
                     </tr>

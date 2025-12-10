@@ -1,46 +1,67 @@
+const { insertFile, updateFile, deleteFile , updateOriginalData} = require("./file_handle_middleware");
+
 function handleTempAction(insertData, updateData, deleteData) {
   return async function (req, res) {
-    const { tempDoc, mainCollection, tempCollection } = req;
+    // Support single-doc (old) and multi-doc (new) modes
+    const approvedDocs = req.approvedDocs || [
+      {
+        tempDoc: req.tempDoc,
+        mainCollection: req.mainCollection,
+        tempCollection: req.tempCollection,
+      },
+    ];
+
+    const results = [];
 
     try {
-      let result;
+      for (const { tempDoc, mainCollection, tempCollection } of approvedDocs) {
+        let result;
+        let fileResult;
 
-      const controllers = [insertData, updateData, deleteData].filter(Boolean);
-
-      if (controllers.length === 1) {
-        result = await controllers[0](tempDoc, mainCollection);
-      } else {
         switch (tempDoc.action) {
           case "insert":
-            if (!insertData) throw new Error("Insert controller not provided");
+            fileResult = await insertFile(tempDoc, tempCollection);
+            tempDoc.meta_data = fileResult.meta_data;
             result = await insertData(tempDoc, mainCollection);
             break;
 
           case "update":
-            if (!updateData) throw new Error("Update controller not provided");
+            fileResult = await updateFile(tempDoc, tempCollection);
+            tempDoc.meta_data = fileResult.meta_data;
             result = await updateData(tempDoc, mainCollection);
+            result1 = await updateOriginalData(tempDoc,tempCollection)
             break;
 
           case "delete":
-            if (!deleteData) throw new Error("Delete controller not provided");
-            result = await deleteData(tempDoc, mainCollection);
+            let deletetemp =  structuredClone(tempDoc); // its to send the original data with old path for deletion
+            fileResult = await deleteFile(tempDoc, tempCollection);
+            tempDoc.meta_data = fileResult.meta_data;
+            result = await deleteData(deletetemp, mainCollection);
             break;
 
           default:
-            return res.status(400).json({ error: "Invalid action" });
+            results.push({ id: tempDoc._id, error: "Invalid action" });
+            continue;
         }
-      }
 
-      // ✅ 4. Mark temp document as approved after success
-      await tempCollection.updateOne(
-        { _id: tempDoc._id },
-        { $set: { status: "approved" } }
-      );
+        // Mark request as approved in temp collection
+        await tempCollection.updateOne(
+          { _id: tempDoc._id },
+          { $set: { status: "approved" } }
+        );
+
+        results.push({
+          id: tempDoc._id,
+          success: true,
+          action: tempDoc.action,
+          ...result,
+        });
+      }
 
       return res.json({
         success: true,
-        action: tempDoc.action,
-        ...result,
+        results,
+        bulkResults: req.bulkResults || undefined, // optional summary from middleware
       });
     } catch (error) {
       console.error(error);
