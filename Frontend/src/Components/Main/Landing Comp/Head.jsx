@@ -115,7 +115,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 6],
+            cod: [0, 7],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
@@ -135,6 +135,7 @@ const Head = () => {
                 {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
                 {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
+                {hrd: false, ttl: "QP", sup: [], lnk: "/Qp"},
             ],
         },
         {
