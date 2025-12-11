@@ -49,6 +49,7 @@ const Head = () => {
             sub: [
                 { ttl: "Student Login", lnk: "https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" },
                 { ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" },
+                { ttl: "QA Exam Login", lnk: "/QA/qaexam" },
             ],
         },
     ];

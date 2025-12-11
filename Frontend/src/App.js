@@ -113,7 +113,7 @@ const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/erro
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
 /* Aptitude */
-const Aptitude = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
+const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
 const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
 
@@ -338,9 +338,9 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 {/* Aptitude Routes */}
-                                <Route path="/QA/que" element={<QuestionPage />} />
-                                <Route path="/QA/aptitude" element={<Aptitude />} />
                                 <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
+                                <Route path="/QA/confirm" element={<InstructionPage />} />
+                                <Route path="/QA/questions" element={<QuestionPage />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />

@@ -22,12 +22,15 @@ const branchesByDegree = {
 };
 
 const departmentOptions = [
-  "Computer Science (CSE)",
-  "Electronics (ECE)",
-  "Mechanical (ME)",
-  "Civil (CE)",
-  "Information Technology (IT)",
-  "Aerospace (AE)",
+  "CSE",
+  "AI&DS",
+  "AME",
+  "Civil",
+  "IT",
+  "EEE",
+  "ECE",
+  "EIE",
+  "CSE(CS)"
 ];
 
 const subjectsMap = {
