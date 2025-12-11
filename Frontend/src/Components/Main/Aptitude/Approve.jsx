@@ -1,18 +1,13 @@
 import { useState } from "react";
 import "./Approve.css";
 import { CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function InstructionPage() {
   const [accepted, setAccepted] = useState(false);
   const primary = "#821d34";
   const secondary = "#a83552";
-
-  const handleNext = () => {
-    if (accepted) {
-      // Consider using React Router instead of window.location for SPA navigation
-      window.location.href = "/exam";
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="inst-page">
@@ -84,7 +79,7 @@ export default function InstructionPage() {
                     <button
           className={`next-btn ${accepted ? "active" : "disabled"}`}
           disabled={!accepted}
-          onClick={handleNext}
+          onClick={() => navigate("/QA/questions")}
           aria-label="Proceed to test"
         >
           Proceed to Assessment
