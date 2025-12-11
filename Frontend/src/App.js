@@ -15,7 +15,7 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-// import QuestionPage from "./Components/Main/Aptitude/questions.jsx";
+import Layout from "./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -317,6 +317,8 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+                                {/*  Question paper Routes */}
+                                <Route path="/preview" element={<Layout />} />
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
