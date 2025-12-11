@@ -316,6 +316,7 @@ const App = () => {
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+                                {/* Aptitude Routes */}
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
