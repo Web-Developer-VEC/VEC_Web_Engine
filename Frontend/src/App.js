@@ -15,7 +15,7 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-import Layout from "./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx";
+// import Layout from "./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -56,6 +56,8 @@ const REGULATION = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/
 const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx"));
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
+const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
 
 /* Research Pages */
@@ -319,6 +321,7 @@ const App = () => {
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
                                 {/*  Question paper Routes */}
                                 <Route path="/preview" element={<Layout />} />
+                                <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
