@@ -15,6 +15,7 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
+// import QuestionPage from "./Components/Main/Aptitude/questions.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -56,6 +57,7 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
@@ -317,6 +319,7 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 {/* Aptitude Routes */}
+                                <Route path="/que" element={<QuestionPage />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
