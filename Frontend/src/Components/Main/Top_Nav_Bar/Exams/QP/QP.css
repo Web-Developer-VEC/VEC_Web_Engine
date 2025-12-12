@@ -1,13 +1,12 @@
 /* GenerateTable.css
    Styles for GenerateTable and the custom departments multi-select (no checkboxes in dropdown list)
-   (Re-use the previous CSS - unchanged)
 */
 
 .gt-page {
   max-width: 700px;
   margin: 20px auto;
   padding: 18px;
-  font-family: "Poppins";
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #222;
 }
 
@@ -24,8 +23,7 @@
   margin: 0 0 16px 0;
   font-size: 20px;
   font-weight: 600;
-  color: brown; 
-  margin-bottom: 2px solid yellow;
+  color: brown;
 }
 
 .gt-row {
@@ -43,6 +41,12 @@
   color: #0f172a;
 }
 
+.gt-label-time {
+  width: 40px;
+  min-width: 10px;
+  font-weight: 600;
+  color: #0f172a;
+}
 .gt-radio-group {
   display: flex;
   gap: 18px;
@@ -86,6 +90,7 @@
   position: relative;
   display: inline-block;
   min-width: 260px;
+  width: 320px;
 }
 
 .gt-multiwrap.disabled {
@@ -105,6 +110,12 @@
   background: #fff;
   cursor: pointer;
   text-align: left;
+  outline: none;
+}
+
+.gt-multitoggle:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
 .gt-multitags {
@@ -184,9 +195,8 @@
 /* dropdown (options without checkboxes) */
 .gt-dropdown {
   position: absolute;
-  left: 0;
-  top: calc(100% + 6px);
-  width: 100%;
+  /* top: calc(100% + 6px); */
+  width: 330px;
   max-height: 220px;
   overflow: auto;
   background: #fff;
@@ -197,6 +207,7 @@
   padding: 8px;
   list-style: none;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .gt-option {
