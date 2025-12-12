@@ -16,6 +16,7 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
+// import QuestionPage from "./Components/Main/Aptitude/questions.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -57,8 +58,10 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 
 // Question Paper
+const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
 const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
 const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx"));
 
@@ -114,7 +117,7 @@ const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/Analytics
 
 /* Aptitude */
 const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
-const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+// const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
 
 
@@ -240,12 +243,15 @@ const App = () => {
         );
     }
 
-    const renderHeader = () => {
-        if (currentPath.startsWith('/hostel')) return <HostelHeader />;
-        if (currentPath.startsWith('/QA')) return <AptitudeHeader />;
+    // Determine if timer should show
+    const showTimer = currentPath === "/QA/questions";
 
-        return <Head />
-    }
+    // Render header
+    const renderHeader = () => {
+            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            if (currentPath.startsWith('/QA')) return <AptitudeHeader showTimer={showTimer} />;
+            return <Head />;
+}
 
     const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
@@ -332,6 +338,7 @@ const App = () => {
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
                                 {/*  Question paper Routes */}
+                                <Route path="/login" element={<AuthPage />} />
                                 <Route path="/preview" element={<Layout />} />
                                 <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}
