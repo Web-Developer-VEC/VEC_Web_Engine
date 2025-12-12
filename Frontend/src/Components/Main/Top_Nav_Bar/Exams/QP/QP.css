@@ -1,0 +1,313 @@
+/* GenerateTable.css
+   Styles for GenerateTable and the custom departments multi-select (no checkboxes in dropdown list)
+   (Re-use the previous CSS - unchanged)
+*/
+
+.gt-page {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 18px;
+  font-family: "Poppins";
+  color: #222;
+}
+
+.gt-form {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+.gt-title {
+  text-align: center;
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: brown; 
+  margin-bottom: 2px solid yellow;
+}
+
+.gt-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.gt-label {
+  width: 160px;
+  min-width: 120px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.gt-radio-group {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gt-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  color: #0f172a;
+}
+
+/* Basic select */
+.gt-select {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  min-width: 260px;
+  color: #0f172a;
+}
+
+.gt-select option[value=""] {
+  color: #6b7280;
+}
+
+/* Hint text */
+.gt-hint {
+  font-size: 13px;
+  color: #6b7280;
+  margin-left: 10px;
+}
+
+/* --- Custom multi-dropdown styles (no checkboxes in option list) --- */
+.gt-multiwrap {
+  position: relative;
+  display: inline-block;
+  min-width: 260px;
+}
+
+.gt-multiwrap.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.gt-multitoggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.gt-multitags {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: calc(100% - 60px);
+}
+
+.gt-placeholder {
+  color: #6b7280;
+}
+
+/* Tag */
+.gt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eef2ff;
+  color: #800000;
+  padding: 4px 6px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.gt-tag-text {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* tag close button */
+.gt-tag-close {
+  border: none;
+  background: transparent;
+  color: #800000;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+/* actions area on toggle */
+.gt-multi-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* clear button inside toggle */
+.gt-clear {
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+}
+
+/* caret */
+.gt-caret {
+  color: #475569;
+  transition: transform 0.12s ease;
+}
+
+.gt-caret.open {
+  transform: rotate(180deg);
+}
+
+/* dropdown (options without checkboxes) */
+.gt-dropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  width: 100%;
+  max-height: 220px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  z-index: 60;
+  padding: 8px;
+  list-style: none;
+  margin: 0;
+}
+
+.gt-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.gt-option:hover {
+  background: #f8fafc;
+}
+
+/* option label text */
+.gt-option-label {
+  font-size: 14px;
+  color: #0f172a;
+}
+
+/* muted no-options */
+.gt-option-muted {
+  color: #6b7280;
+  padding: 10px;
+}
+
+/* disabled appearance */
+.gt-select:disabled,
+.gt-multiwrap.disabled,
+.gt-radio-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button */
+.gt-center {
+  justify-content: center;
+}
+
+.gt-btn {
+  background: #800000;
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+
+.gt-btn:hover:not(:disabled) {
+  background: #3f0202;
+  transform: translateY(-1px);
+}
+
+.gt-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Preview table */
+.gt-preview {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+}
+
+.gt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.gt-table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+
+.gt-td-label {
+  width: 200px;
+  padding: 10px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #0f172a;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.gt-td-value {
+  padding: 10px;
+  border-bottom: 1px solid #eef2f7;
+  color: #0f172a;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .gt-label {
+    width: 100%;
+  }
+  .gt-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .gt-select,
+  .gt-multiwrap {
+    width: 100%;
+  }
+  .gt-radio-group {
+    margin-top: 6px;
+  }
+}
