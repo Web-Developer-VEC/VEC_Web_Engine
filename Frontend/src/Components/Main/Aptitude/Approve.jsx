@@ -8,7 +8,13 @@ export default function InstructionPage() {
   const primary = "#821d34";
   const secondary = "#a83552";
   const navigate = useNavigate();
-
+  const [status, setStatus] = useState('idle');
+    const startExam = () => {
+    setStatus('active');
+    document.documentElement.requestFullscreen().catch(() => {
+      alert("Fullscreen is required. Please use a Chrome browser on Desktop.");
+    });
+  };
   return (
     <div className="inst-page">
       <div className="inst-box">
@@ -79,7 +85,10 @@ export default function InstructionPage() {
                     <button
           className={`next-btn ${accepted ? "active" : "disabled"}`}
           disabled={!accepted}
-          onClick={() => navigate("/QA/questions")}
+                    onClick={() => {
+                startExam();
+                navigate("/QA/questions");
+              }}
           aria-label="Proceed to test"
         >
           Proceed to Assessment

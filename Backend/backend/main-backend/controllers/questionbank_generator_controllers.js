@@ -30,12 +30,28 @@ async function questionbank_form(req, res) {
 
 
 
-function cleanQuestion(cell) {
+function cleanCellValue(cell) {
   if (!cell) return "";
+
+  // Plain string
   if (typeof cell === "string") return cell.trim();
-  if (cell.richText) return cell.richText.map(t => t.text).join("").trim();
+
+  // Excel RichText
+  if (cell.richText && Array.isArray(cell.richText)) {
+    return cell.richText.map(r => r.text || "").join("").trim();
+  }
+
+  // Objects containing text
+  if (typeof cell === "object") {
+    if (cell.text) return String(cell.text).trim();
+    if (cell.result) return String(cell.result).trim();
+  }
+
   return String(cell).trim();
 }
+
+
+
 
 async function downloadFromS3Url(url) {
   try {
@@ -49,107 +65,109 @@ async function downloadFromS3Url(url) {
   }
 }
 
-async function extractImages(workbook) {
-    const imageMap = {}; // key: "row-col", value: base64 image
+async function loadQuestions(s3Url, folderName) {
+  const buffer = await downloadFromS3Url(s3Url);
 
-    workbook.eachSheet(sheet => {
-        sheet.getImages().forEach(img => {
-            const image = workbook.getImage(img.imageId);
-            if (!image) return;
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.load(buffer);
 
-            const { tl } = img.range; // top-left cell of image
-            const row = tl.row + 1;   // ExcelJS index fix
-            const col = tl.col + 1;
+  const sheet = workbook.worksheets[0];
+  const q = [];
+  let columnMapping = {};
+  let headerRowIndex = 0;
 
-            const ext = image.extension;
-            const base64 = image.buffer.toString("base64");
+  // 🔍 Detect headers
+  for (let rowIndex = 1; rowIndex <= sheet.rowCount; rowIndex++) {
+    const row = sheet.getRow(rowIndex);
+    let foundHeaders = 0;
+    let tempMapping = {};
 
-            imageMap[`${row}-${col}`] = `data:image/${ext};base64,${base64}`;
-        });
+    row.eachCell((cell, colNumber) => {
+      if (!cell.value) return;
+
+      const headerName = String(cell.value).toLowerCase().trim();
+      switch (headerName) {
+        case 'unit':
+          tempMapping.unit = colNumber;
+          foundHeaders++;
+          break;
+        case 'group':
+          tempMapping.group = colNumber;
+          foundHeaders++;
+          break;
+        case 'difficulty level':
+          tempMapping.difficulty = colNumber;
+          foundHeaders++;
+          break;
+        case 'question':
+          tempMapping.question = colNumber;
+          foundHeaders++;
+          break;
+        case 'co':
+          tempMapping.co = colNumber;
+          foundHeaders++;
+          break;
+        case 'mark':
+          tempMapping.mark = colNumber;
+          foundHeaders++;
+          break;
+        case 'blooms level':
+          tempMapping.bloom = colNumber;
+          foundHeaders++;
+          break;
+        case 'image':  // <-- This is your actual column name
+          tempMapping.image = colNumber;
+          foundHeaders++;
+          break;
+      }
     });
 
-    return imageMap;
-}
-
-
-async function loadQuestions(s3Url) {
-    const buffer = await downloadFromS3Url(s3Url);
-
-    const workbook = new ExcelJS.Workbook();
-    await workbook.xlsx.load(buffer);
-
-    const sheet = workbook.worksheets[0];
-
-    // Extract all pasted images
-    const imageMap = await extractImages(workbook);
-
-    const q = [];
-    let columnMapping = {};
-    let headerRowIndex = 0;
-
-    // Detect headers
-    for (let rowIndex = 1; rowIndex <= sheet.rowCount; rowIndex++) {
-        const row = sheet.getRow(rowIndex);
-        let foundHeaders = 0;
-        let tempMapping = {};
-
-        row.eachCell((cell, col) => {
-            if (!cell.value) return;
-            const header = String(cell.value).toLowerCase().trim();
-
-            if (header === "unit") tempMapping.unit = col;
-            if (header === "group") tempMapping.group = col;
-            if (header === "difficulty level") tempMapping.difficulty = col;
-            if (header === "question") tempMapping.question = col;
-            if (header === "diagram") tempMapping.image = col;  // <- NEW
-            if (header === "co") tempMapping.co = col;
-            if (header === "mark") tempMapping.mark = col;
-            if (header === "blooms level") tempMapping.bloom = col;
-
-            if (["unit", "group", "difficulty level", "question"].includes(header))
-                foundHeaders++;
-        });
-
-        if (foundHeaders >= 4) {
-            columnMapping = tempMapping;
-            headerRowIndex = rowIndex;
-            break;
-        }
+    if (foundHeaders >= 4) {
+      columnMapping = tempMapping;
+      headerRowIndex = rowIndex;
+      break;
     }
+  }
 
-    // Validate required columns
-    const missing = ["unit", "group", "difficulty", "question", "co", "mark", "bloom"]
-        .filter(k => !columnMapping[k]);
+  // ❗ Fix required column names
+  const requiredColumns = ['unit', 'group', 'difficulty', 'question', 'co', 'mark', 'bloom', 'image'];
+  const missingColumns = requiredColumns.filter(col => !columnMapping[col]);
 
-    if (missing.length > 0) {
-        throw new Error("Missing required Excel columns: " + missing.join(", "));
+  if (missingColumns.length > 0) {
+    throw new Error(`Missing required columns in Excel header: ${missingColumns.join(', ')}`);
+  }
+
+  // 📌 Load all rows
+  sheet.eachRow((row, index) => {
+    if (index <= headerRowIndex) return;
+
+    // const imageFile = cleanCellValue(row.getCell(columnMapping.image).value);
+    const imageCell = row.getCell(columnMapping.image).value;
+    const imageFile = cleanCellValue(imageCell);
+
+
+
+    const questionData = {
+      id: `${index}_${Date.now()}_${Math.random()}`,
+      unit: Number(row.getCell(columnMapping.unit).value) || 0,
+      group: Number(row.getCell(columnMapping.group).value) || 0,
+      difficulty: Number(row.getCell(columnMapping.difficulty).value) || 0,
+      question: cleanCellValue(row.getCell(columnMapping.question).value),
+      co: row.getCell(columnMapping.co).value || '',
+      mark: Number(row.getCell(columnMapping.mark).value) || 0,
+      bloom: row.getCell(columnMapping.bloom).value || '',
+      image: imageFile, // original filename
+      imagePath: imageFile
+        ? `/static/images/exams/${folderName}/${imageFile}.webp`
+        : null
+    };
+
+    if (questionData.unit > 0 && questionData.question) {
+      q.push(questionData);
     }
+  });
 
-    // Read data rows
-    sheet.eachRow((row, index) => {
-        if (index <= headerRowIndex) return;
-
-        const imgKey = `${index}-${columnMapping.image}`; // row-col
-        const base64Image = imageMap[imgKey] || null;
-
-        const questionData = {
-            id: `${index}_${Date.now()}_${Math.random()}`,
-            unit: Number(row.getCell(columnMapping.unit).value) || 0,
-            group: Number(row.getCell(columnMapping.group).value) || 0,
-            difficulty: Number(row.getCell(columnMapping.difficulty).value) || 0,
-            question: cleanQuestion(row.getCell(columnMapping.question).value),
-            image: base64Image, // <-- INCLUDE IMAGE IN OUTPUT
-            co: row.getCell(columnMapping.co).value || "",
-            mark: Number(row.getCell(columnMapping.mark).value) || 0,
-            bloom: row.getCell(columnMapping.bloom).value || ""
-        };
-
-        if (questionData.unit > 0 && questionData.question) {
-            q.push(questionData);
-        }
-    });
-
-    return q;
+  return q;
 }
 
 
@@ -178,56 +196,60 @@ function pickRandom(qs, count, usedIds = new Set()) {
   return selected;
 }
 
-function formatQuestionPartA(question, questionNumber, marks = null) {
+function formatQuestionPartA(question, questionNumber, marks = null, folderName) {
   if (!question) return null;
-  
+
   return {
     "Q.no": questionNumber,
-    "question": question. question,
-    "diagram": question.image,
-    "co": question.co,
+    question: question.question,
+    co: question.co,
     "blooms level": question.bloom,
-    "marks": marks !== null ? marks : question.mark
+    marks: marks ?? question.mark,
+    image: question.imagePath
   };
 }
 
-function formatQuestionPartB(questionA, questionB, questionNumber, marks = null) {
+
+
+function formatQuestionPartB(questionA, questionB, questionNumber, marks = null, folderName) {
   const result = [];
-  
+
   if (questionA) {
     result.push({
       "Q.no": questionNumber,
-      "option": "a",
-      "question": questionA.question,
-      "diagram": questionA.image,
-      "co":  questionA.co,
+      option: "a",
+      question: questionA.question,
+      co: questionA.co,
       "blooms level": questionA.bloom,
-      "marks": marks !== null ? marks : questionA.mark
+      marks: marks ?? questionA.mark,
+      image: questionA.imagePath
     });
   }
-  
+
   if (questionB) {
     result.push({
       "Q.no": questionNumber,
-      "option": "b",
-      "question": questionB. question,
-      "diagram": questionB.image,
-      "co": questionB.co,
+      option: "b",
+      question: questionB.question,
+      co: questionB.co,
       "blooms level": questionB.bloom,
-      "marks": marks !== null ? marks : questionB.mark
+      marks: marks ?? questionB.mark,
+      image: questionB.imagePath
     });
   }
-  
+
   return result;
 }
 
-function buildAllPapers(q) {
-  const papers = {};
-  papers.CIE1 = buildCIEPaper(q, [1, 2]);
-  papers.CIE2 = buildCIEPaper(q, [3, 4]);
-  papers.MODEL = buildModelPaper(q);
-  return papers;
-}
+
+
+// function buildAllPapers(q) {
+//   const papers = {};
+//   papers.CIE1 = buildCIEPaper(q, [1, 2]);
+//   papers.CIE2 = buildCIEPaper(q, [3, 4]);
+//   papers.MODEL = buildModelPaper(q);
+//   return papers;
+// }
 
 function buildCIEPaper(q, units) {
   const usedQuestionIds = new Set();
@@ -308,6 +330,9 @@ function buildModelPaper(q) {
     "PART B": partB.filter(q => q !== null)
   };
 }
+
+
+
 
 async function questionbank_generator(req, res) {
   try {
@@ -395,10 +420,14 @@ async function questionbank_generator(req, res) {
       });
     }
 
+    const excelFilename = filePath.split('/').pop();           // subject123.xlsx
+    const folderName = excelFilename.replace('.xlsx', '');
     const fullFileUrl = `${baseUrl}${filePath}`;
-    const questions = await loadQuestions(fullFileUrl);
+    const questions = await loadQuestions(fullFileUrl, folderName);
     let paper = null;
     let examTypeTitle = "";
+          // subject123
+
 
     if (examType.toLowerCase() === 'cie1' || examType.toLowerCase() === 'cie 1') {
       paper = buildCIEPaper(questions, [1, 2]);
