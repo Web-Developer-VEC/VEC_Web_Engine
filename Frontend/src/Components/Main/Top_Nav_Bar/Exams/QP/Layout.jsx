@@ -1,7 +1,6 @@
 import { Download } from "lucide-react";
-import React from "react";
-import {ReactToPrint} from "react-to-print";
-import{ useRef} from "react";
+import{ useRef } from "react";
+import logo from '../../../../Assets/LOGOcap.png'
 
 const Layout = () => {
 
@@ -13,15 +12,17 @@ const Layout = () => {
     // });
 
   return (
-    <div className="my-20">
-      <div className="border border-text w-[70%] mx-auto h-auto min-h-80 p-12 py-16" ref={componentReference} >
+    <div className="my-20 font-rome">
+      <div className="border border-text w-[70%] mx-auto h-auto min-h-80 p-12 py-16 font-rome" ref={componentReference} >
 
         {/* HEADER */}
         <header>
           <div className="border border-text flex flex-row">
-            <div className="basis-1/5 border border-2 border-text p-4">helo</div>
+            <div className="basis-1/5 border border-2 border-text p-4">
+              <img src={logo} alt="Logo" className="w-26 h-26"/>
+            </div>
 
-            <div className="basis-4/5 text-center border border-3 border-text p-2">
+            <div className="basis-4/5 flex flex-col justify-center text-center items-center border border-3 border-text p-2">
               <h4>VELAMMAL ENGINEERING COLLEGE</h4>
               <i>(An Autonomous institution, Affiliated to Anna university - Chennai)</i>
               <h4>Velammal Newgen park Ambattur - RedHills Road, Chennai - 600 066</h4>

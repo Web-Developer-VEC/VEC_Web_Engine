@@ -11,11 +11,11 @@ import Boot from "./Components/Main/Landing Comp/BootUp";
 import Head from "./Components/Main/Landing Comp/Head.jsx";
 import Footer from "./Components/Main/Landing Comp/Footer.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
+import AptitudeHeader from "./Components/Main/Aptitude/AptitudeHeader.jsx";
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-// import Layout from "./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -56,9 +56,11 @@ const REGULATION = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/
 const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Syllabus.jsx"));
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+
+// Question Paper
 const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
 const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx"));
-const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
@@ -110,9 +112,11 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
-/*Aptitude */
-const Aptitude = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
+/* Aptitude */
+const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
 const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
+
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -236,7 +240,14 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel")
+    const renderHeader = () => {
+        if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+        if (currentPath.startsWith('/QA')) return <AptitudeHeader />;
+
+        return <Head />
+    }
+
+    const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
     return (
         <>
@@ -247,7 +258,8 @@ const App = () => {
                 {/* Conditionally render Head and Footer */}
                 <>
                     {/* <Head/> */}
-                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                    {/* {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />} */}
+                    {renderHeader()}
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
@@ -326,8 +338,9 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 {/* Aptitude Routes */}
-                                <Route path="/QA/que" element={<QuestionPage />} />
-                                <Route path="/QA/aptitude" element={<Aptitude />} />
+                                <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
+                                <Route path="/QA/confirm" element={<InstructionPage />} />
+                                <Route path="/QA/questions" element={<QuestionPage />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
@@ -338,10 +351,14 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
-                    <SideButton />
-                    <ScrollToTopButton />
+                    {!isFooter && (
+                        <>
+                            <SideButton />
+                            <ScrollToTopButton />
+                        </>
+                    )}
                 </>
             </AppContainer>
         </>
