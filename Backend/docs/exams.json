@@ -346,18 +346,22 @@
           "regulations": ["R2019"," R2023"],
           "cie": ["I", "II", "III"],
           "degree": ["B.E","B.Tech"],
-          "departments": [
-            "B.E Automobile Engineering",
-            "B.E Civil Engineering",
-            "B.E Computer Science and Engineering",
-            "B.E Computer Science and Engineering (Cyber Security)",
-            "B.E Electronics and Communication Engineering",
-            "B.E Electrical and Electronics Engineering",
-            "B.E Electronics and Instrumentation Engineering",
-            "B.E Mechanical Engineering",
-            "B.Tech Artificial Intelligence and Data Science",
-            "B.Tech Information Technology"
-          ],
+          "departments": {
+            "BE": [
+              "Automobile Engineering",
+              "Civil Engineering",
+              "Computer Science Engineering",
+              "Cyber Security Engineering",
+              "Electrical and Electronic Engineering",
+              "Electronics and Communication Engineering",
+              "Electronics and Instrumentation Engineering",
+              "Mechanical Engineering"
+            ],
+            "BTech": [
+              "Artificial Intelligence and Data Science",
+              "Information Technology"
+            ]
+          },
           "years": ["I", "II", "III", "IV"],
           "semesters": ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"],
           
@@ -416,8 +420,6 @@
             "B.Tech Artificial Intelligence and Data Science",
             "B.Tech Information Technology"
           ]
-        
-      
     }
   ]
 }]

@@ -61,6 +61,7 @@ const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/
 const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 
 // Question Paper
+const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
 const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
 const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx"));
 
@@ -337,6 +338,7 @@ const App = () => {
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
                                 {/*  Question paper Routes */}
+                                <Route path="/login" element={<AuthPage />} />
                                 <Route path="/preview" element={<Layout />} />
                                 <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}

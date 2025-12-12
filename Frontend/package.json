@@ -45,6 +45,7 @@
     "react-parallax-tilt": "^1.7.299",
     "react-qr-barcode-scanner": "^1.0.4",
     "react-responsive-carousel": "^3.2.23",
+    "react-router": "^7.10.1",
     "react-router-dom": "^7.2.0",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.30.3",
