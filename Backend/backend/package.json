@@ -20,7 +20,12 @@
     "compression": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
+<<<<<<< Updated upstream
     "express": "^4.22.1",
+=======
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+>>>>>>> Stashed changes
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.11.2",
     "express-session": "^1.18.1",
