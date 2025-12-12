@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import "./Details.css";
+import { useNavigate } from "react-router-dom";
 
 export default function DetailsPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     regNo: "",
@@ -79,7 +81,7 @@ function handleSubmit(e) {
           onChange={handleChange}
         />
 
-        <button type="submit">Enter into Exam</button>
+        <button type="submit" onClick={() => navigate("/QA/confirm")}>Enter into Exam</button>
       </form>
     </div>
     </div>
