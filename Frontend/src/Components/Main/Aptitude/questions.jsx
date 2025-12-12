@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import AptitudeHeader from "./AptitudeHeader";
 import "./questions.css";
 
 const QuestionPage = () => {
@@ -15,19 +16,30 @@ const QuestionPage = () => {
     { id: 10, question: "Which is the longest river?", options: ["Ganga", "Amazon", "Nile", "Yamuna"], answer: "Nile" },
     { id: 11, question: "Extra Question 11", options: ["A","B","C","D"], answer:"A" },
     { id: 12, question: "Extra Question 12", options: ["A","B","C","D"], answer:"B" },
-    // Add more as needed
   ];
 
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState({});
   const [visited, setVisited] = useState({});
-
   const scrollRef = useRef(null);
   const circleRefs = useRef([]);
 
-  const handleSelect = (opt) => {
-    setSelected(prev => ({ ...prev, [current]: opt }));
+  // ---------- TIMER STATE ----------
+  const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+    const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const formatTime = (sec) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
   };
+
+  const handleSelect = (opt) => setSelected(prev => ({ ...prev, [current]: opt }));
 
   const nextQuestion = () => {
     if (!selected[current]) {
@@ -53,7 +65,10 @@ const QuestionPage = () => {
   const q = questions[current];
 
   return (
-    <div className="quest_page">
+    <div className="quest_page relative">
+      {/* HEADER WITH TIMER */}
+      {/* <AptitudeHeader timer={formatTime(timeLeft)} /> */}
+
       {/* LEFT COLUMN */}
       <div className="quest_left">
         <h2 className="quest_title">Question</h2>

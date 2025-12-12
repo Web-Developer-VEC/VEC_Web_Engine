@@ -116,7 +116,7 @@ const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/Analytics
 
 /* Aptitude */
 const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
-const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+// const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
 
 
@@ -242,12 +242,15 @@ const App = () => {
         );
     }
 
-    const renderHeader = () => {
-        if (currentPath.startsWith('/hostel')) return <HostelHeader />;
-        if (currentPath.startsWith('/QA')) return <AptitudeHeader />;
+    // Determine if timer should show
+    const showTimer = currentPath === "/QA/questions";
 
-        return <Head />
-    }
+    // Render header
+    const renderHeader = () => {
+            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            if (currentPath.startsWith('/QA')) return <AptitudeHeader showTimer={showTimer} />;
+            return <Head />;
+}
 
     const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
