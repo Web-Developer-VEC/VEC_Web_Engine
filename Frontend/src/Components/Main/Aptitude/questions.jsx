@@ -1,6 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import AptitudeHeader from "./AptitudeHeader";
 import "./questions.css";
+import Swal from "sweetalert2";
+
+const showSweetAlert = (title, text, icon = "info", confirmButtonText = "OK") => {
+  Swal.fire({
+    title,
+    text,
+    icon,
+    confirmButtonText,
+  });
+};
 
 const QuestionPage = () => {
   const questions = [
@@ -21,8 +31,16 @@ const QuestionPage = () => {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState({});
   const [visited, setVisited] = useState({});
+  const [status, setStatus] = useState('active');
   const scrollRef = useRef(null);
   const circleRefs = useRef([]);
+    const handlersRef = useRef({
+    popstate: null,
+    beforeUnload: null,
+    keydown: null,
+    docClick: null,
+    contextmenu: null,
+  });
 
   // ---------- TIMER STATE ----------
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
@@ -41,6 +59,10 @@ const QuestionPage = () => {
 
   const handleSelect = (opt) => setSelected(prev => ({ ...prev, [current]: opt }));
 
+  const triggerViolation = (msg) => {
+  alert(msg);
+};
+  
   const nextQuestion = () => {
     if (!selected[current]) {
       alert("Please answer this question before continuing.");
@@ -51,8 +73,14 @@ const QuestionPage = () => {
   };
 
   const handleSubmit = () => {
-    alert("Exam Completed!");
+    showSweetAlert("completed","Exam Completed!","success");
     console.log(selected);
+  };
+    const startExam = () => {
+    setStatus('active');
+    document.documentElement.requestFullscreen().catch(() => {
+      showSweetAlert("Alert!","Fullscreen is required. Please use a Chrome browser on Desktop.","error");
+    });
   };
 
   // Auto scroll to current circle
@@ -63,6 +91,153 @@ const QuestionPage = () => {
   }, [current]);
 
   const q = questions[current];
+useEffect(() => {
+  if (status !== "active") return;
+
+  const handleKeyDown = (e) => {
+    if (e.ctrlKey && ["c", "v", "p", "u", "s"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+     showSweetAlert("Alert",`Shortcut Ctrl+${e.key.toUpperCase()} blocked`,"error");
+    }
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.hidden) showSweetAlert("Alert!","Tab/Window Switch detected","error");
+  };
+
+  const handleBlur = () => showSweetAlert("Alert!","Window focus lost (Alt+Tab)","error");
+
+  const handleContextMenu = (e) => e.preventDefault();
+
+  window.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  window.addEventListener("blur", handleBlur);
+  window.addEventListener("contextmenu", handleContextMenu);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    window.removeEventListener("blur", handleBlur);
+    window.removeEventListener("contextmenu", handleContextMenu);
+  };
+}, [status]);
+ useEffect(() => {
+    if (status !== "active") {
+      removeNavigationGuards();
+      return;
+    }
+
+    // helper to push dummy state
+    const pushDummyState = () => {
+      try {
+        window.history.pushState({ examGuard: true }, "");
+      } catch (e) {
+        // ignore if pushState fails in this environment
+      }
+    };
+    const onPopState = (e) => {
+      // immediately re-push so browser stays on the same page
+      pushDummyState();
+    };
+    // beforeunload -> native confirm dialog on refresh/close
+    const onBeforeUnload = (e) => {
+      const confirmationMessage = "You have an ongoing exam. Are you sure you want to leave?";
+      (e || window.event).returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
+
+    // intercept <a> links
+    const onDocClick = (ev) => {
+      const anchor = ev.target.closest && ev.target.closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
+      ev.preventDefault();
+      // showSweetAlert("Navigation blocked", "You cannot navigate away during the exam. Please finish or submit the exam first.", "error");
+    };
+
+    // extra keydown checks to block alt+arrow / backspace navigation
+    const onKeyDown = (e) => {
+      const key = e.key.toLowerCase();
+      if (e.ctrlKey && ["c", "v", "p", "u", "s"].includes(key)) {
+        e.preventDefault();
+        showSweetAlert("Shortcut blocked", `Ctrl+${key.toUpperCase()} is disabled during the exam.`, "error");
+        return;
+      }
+      if (e.altKey && (key === "arrowleft" || key === "arrowright")) {
+        e.preventDefault();
+        // showSweetAlert("Navigation blocked", "Navigation keys are disabled during the exam.", "error");
+        return;
+      }
+      const activeTag = document.activeElement && document.activeElement.tagName;
+      if (key === "backspace" && !["INPUT", "TEXTAREA"].includes(activeTag)) {
+        e.preventDefault();
+        // showSweetAlert("Navigation blocked", "Backspace navigation is disabled during the exam.", "error");
+        return;
+      }
+    };
+
+    const onContextMenu = (e) => e.preventDefault();
+
+    // push initial dummy state and register handlers
+    pushDummyState();
+
+    handlersRef.current.popstate = onPopState;
+    handlersRef.current.beforeUnload = onBeforeUnload;
+    handlersRef.current.docClick = onDocClick;
+    handlersRef.current.keydown = onKeyDown;
+    handlersRef.current.contextmenu = onContextMenu;
+
+    window.addEventListener("popstate", onPopState);
+    window.addEventListener("beforeunload", onBeforeUnload);
+    document.addEventListener("click", onDocClick, true);
+    window.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("contextmenu", onContextMenu);
+
+    return () => {
+      removeNavigationGuards();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
+
+  const removeNavigationGuards = () => {
+    try {
+      if (handlersRef.current.popstate) {
+        window.removeEventListener("popstate", handlersRef.current.popstate);
+        handlersRef.current.popstate = null;
+      }
+      if (handlersRef.current.beforeUnload) {
+        window.removeEventListener("beforeunload", handlersRef.current.beforeUnload);
+        handlersRef.current.beforeUnload = null;
+      }
+      if (handlersRef.current.docClick) {
+        document.removeEventListener("click", handlersRef.current.docClick, true);
+        handlersRef.current.docClick = null;
+      }
+      if (handlersRef.current.keydown) {
+        window.removeEventListener("keydown", handlersRef.current.keydown, true);
+        handlersRef.current.keydown = null;
+      }
+      if (handlersRef.current.contextmenu) {
+        window.removeEventListener("contextmenu", handlersRef.current.contextmenu);
+        handlersRef.current.contextmenu = null;
+      }
+    } catch (err) {
+      // ignore removal errors
+    }
+
+    try {
+      window.history.replaceState({}, "");
+    } catch (e) {}
+  };
+
+  // cleanup on unmount
+  useEffect(() => {
+    return () => {
+      removeNavigationGuards();
+    };
+  }, []);
+
 
   return (
     <div className="quest_page relative">
