@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Details.css";
 import { useNavigate } from "react-router-dom";
+import loginImg from "../../Assets/login.jpg"; 
 
 export default function DetailsPage() {
   const navigate = useNavigate();
@@ -17,73 +17,104 @@ export default function DetailsPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-function handleSubmit(e) {
-  e.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  if (
-    formData.name.trim() === "" ||
-    formData.regNo.trim() === "" ||
-    formData.email.trim() === "" 
-    // ||
-    // formData.password.trim() === ""
-  ) {
-    alert("Please fill all mandatory fields.");
-    return;
+    if (
+      formData.name.trim() === "" ||
+      formData.regNo.trim() === "" ||
+      formData.email.trim() === ""
+      // ||
+      // formData.password.trim() === ""
+    ) {
+      alert("Please fill all mandatory fields.");
+      return;
+    }
+
+    console.log("Submitted:", formData);
   }
 
-  console.log("Submitted:", formData);
-}
-
-
   return (
-    <div className="QAEXAM">
-    <div className="form-container">
-      <h2 className="title_of_Aptitude font-bold">Aptitude Examination</h2>
+    <div
+      className="QAEXAM"
+      style={{
+        backgroundImage: `url(${loginImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="form-container">
+        <h2 className="title_of_Aptitude font-bold">Aptitude Examination</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Name*"
-          value={formData.name}
-          onChange={handleChange}
-        />
+        <form onSubmit={handleSubmit}>
 
-        <input
-          type="text"
-          name="regNo"
-          placeholder="Enter Registration No:*"
-          value={formData.regNo}
-          onChange={handleChange}
-        />
+          <div className="input-group">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder=""
+            />
+            <label>Name*</label>
+          </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email*"
-          value={formData.email}
-          onChange={handleChange}
-        />
+          <div className="input-group">
+            <input
+              type="text"
+              name="regNo"
+              value={formData.regNo}
+              onChange={handleChange}
+              required
+              placeholder=""
+            />
+            <label>Registration No*</label>
+          </div>
 
-        {/* <input
-          type="password"
-          name="password"
-          placeholder="Enter Password *"
-          value={formData.password}
-          onChange={handleChange}
-        /> */}
+          <div className="input-group">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder=""
+            />
+            <label>Email*</label>
+          </div>
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Enter Phone Number (Optional)"
-          value={formData.phone}
-          onChange={handleChange}
-        />
+          {/*
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder=""
+            />
+            <label>Password*</label>
+          </div>
+          */}
 
-        <button type="submit" onClick={() => navigate("/QA/confirm")}>Enter into Exam</button>
-      </form>
-    </div>
+          <div className="input-group">
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder=""
+            />
+            <label>Phone Number (Optional)</label>
+          </div>
+
+          <button type="submit" onClick={() => navigate("/QA/confirm")}>
+            Enter into Exam
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
