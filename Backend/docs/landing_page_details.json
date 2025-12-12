@@ -182,34 +182,55 @@
     "data": [
       {
         "unique_id": "announcement_1",
-        "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
-        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028).pdf",
+        "announcement_name": "B.E./B.Tech./M.E./MBA - Exam Schedule - SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)]",
+        "pdf_path": "/static/pdfs/announcements/B.E.B.Tech.-Exam Schedule-SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)].pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
         "unique_id": "announcement_2",
+        "announcement_name": "Notification 1 - B.E./B.Tech.-Rescheduled date-SEE Nov.2025 - R2019 & R2019A (Batches : 2019-23, 2020-24, 2021-25, 2022-26)",
+        "pdf_path": "/static/pdfs/announcements/Rescheduled date_08-11-2025 to 28th Oct. & 13th Nov. 2025.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },{
+        "unique_id": "announcement_3",
+        "announcement_name": "Notification 2 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
+        "pdf_path": "/static/pdfs/announcements/Rescheduled date_8th, 10th Dec. to 29th, 31st Dec. 2025 - MBA.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+       {
+        "unique_id": "announcement_4",
+        "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
+        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028) - updated (1).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      
+      {
+        "unique_id": "announcement_5",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_3",
+        "unique_id": "announcement_6",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_7",
         "announcement_name": "M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_5",
+        "unique_id": "announcement_8",
         "announcement_name": "MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
@@ -250,7 +271,7 @@
         "title": "PySpark",
         "department": "Artificial Intelligence & Data Science",
         "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "image_path": "/static/images/events/PySpark.webp",
+        "brochure_path": "/static/images/events/PySpark.webp",
         "link": "",
         "status": "True"
       },
@@ -262,7 +283,7 @@
         "title": "Empowering Smart Grids: THe Innovative Role of Power Electronics",
         "department": "Electrical & Electronics Engineering",
         "content": "A power-packed guest lecture on Smart Grids and Power Electronics—discover how innovation is electrifying the future of energy!",
-        "image_path": "/static/images/events/Smart_Grids.webp",
+        "brochure_path": "/static/images/events/Smart_Grids.webp",
         "link": "",
         "status": "True"
       },
@@ -273,7 +294,7 @@
         "title": "Math Quiz",
         "department": "Mathematics",
         "content": "Celebrate excellence and test your math skills! Join us for the 2024–25 prize distribution and a fun Math Quiz for II-year students.",
-        "image_path": "/static/images/events/M_Quiz.webp",
+        "brochure_path": "/static/images/events/M_Quiz.webp",
         "link": "",
         "status": "True"
       },
@@ -284,7 +305,7 @@
         "title": "Server-Side Scripting - Node.JS",
         "department": "Computer Science & Engineering",
         "content": "Level up your backend skills! Don't miss the expert talk on Server-Side Scripting with Node.js for III-year CSE students.",
-        "image_path": "/static/images/events/NodeJs.webp",
+        "brochure_path": "/static/images/events/NodeJs.webp",
         "link": "",
         "status": "True"
       },
@@ -295,7 +316,7 @@
         "title": "10 Steps to Become a Successful Entrepreneur",
         "department": "Automobile Engineering",
         "content": "Dreaming of your own startup? Learn 10 steps to become a successful entrepreneur with expert guidance and funding insights.",
-        "image_path": "/static/images/events/Successful_Entrepreneur.webp",
+        "brochure_path": "/static/images/events/Successful_Entrepreneur.webp",
         "link": "",
         "status": "True"
       },
@@ -306,7 +327,7 @@
         "title": "Innovation/Prototype Validation - Converting Innovation into a Start-up",
         "department": "Electronics & Communication Engineering",
         "content": "Got an idea? Learn how to turn it into a real business in our Innovation/Prototype to Start-up session by an ECE alumnus from Accenture.",
-        "image_path": "/static/images/events/Innovation_2_startup.webp",
+        "brochure_path": "/static/images/events/Innovation_2_startup.webp",
         "link": "",
         "status": "True"
       },
@@ -317,7 +338,7 @@
         "title": "NOCTIVUS",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
-        "image_path": "/static/images/events/noctivus.webp",
+        "brochure_path": "/static/images/events/noctivus.webp",
         "link": "http://www.noctivus.pro/",
         "status": "True"
       },
@@ -328,7 +349,7 @@
         "title": "CLOUDSCAPE",
         "department": "Computer Science Engineering",
         "content": "",
-        "image_path": "/static/images/events/cloudscape.webp",
+        "brochure_path": "/static/images/events/cloudscape.webp",
         "link": "",
         "status": "True"
       },
@@ -339,7 +360,7 @@
         "title": "Mastering of Fundamentals of Application Penetration Testing",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "image_path": "/static/images/events/mfapt.webp",
+        "brochure_path": "/static/images/events/mfapt.webp",
         "link": "",
         "status": "True"
       },
@@ -350,7 +371,7 @@
         "title": "Debate Competition - 'Clash of Gears'",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "image_path": "/static/images/events/dccog.webp",
+        "brochure_path": "/static/images/events/dccog.webp",
         "link": "",
         "status": "True"
       },
@@ -361,7 +382,7 @@
         "title": "Essentials of Artificial Intelligence and Machine Learning",
         "department": "Artificial Intelligence & Data Science",
         "content": "",
-        "image_path": "/static/images/events/eaiml.webp",
+        "brochure_path": "/static/images/events/eaiml.webp",
         "link": "",
         "status": "True"
       },
@@ -372,7 +393,7 @@
         "title": "3D - ANIMATION",
         "department": "Computer Science Engineering",
         "content": "",
-        "image_path": "/static/images/events/3D.webp",
+        "brochure_path": "/static/images/events/3D.webp",
         "link": "",
         "status": "True"
       },
@@ -383,7 +404,7 @@
         "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
         "department": "Electrical & Electronics Engineering",
         "content": "",
-        "image_path": "/static/images/events/GOITSEI.webp",
+        "brochure_path": "/static/images/events/GOITSEI.webp",
         "link": "",
         "status": "True"
       },
@@ -394,7 +415,7 @@
         "title": "DESTINY 29 – I Year Inauguration Ceremony",
         "department": "DESTINY 29",
         "content": "",
-        "image_path": "/static/images/events/Destiny 29 - Invitation.pdf",
+        "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
         "link": "",
         "status": "True"
       },
@@ -405,7 +426,7 @@
         "title": "Career guidance - Need for skill Development",
         "department": "Electrical & Instrumentation Engineering",
         "content": "",
-        "image_path": "/static/images/events/CG.webp",
+        "brochure_path": "/static/images/events/CG.webp",
         "link": "",
         "status": "True"
       },
@@ -416,7 +437,7 @@
         "title": "Smart Healthcare Revolution",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "image_path": "/static/images/events/SHR.webp",
+        "brochure_path": "/static/images/events/SHR.webp",
         "link": "",
         "status": "True"
       },
@@ -427,7 +448,7 @@
         "title": "Network Layer Protocol - IP and Mobile IP",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "image_path": "/static/images/events/NLPI.webp",
+        "brochure_path": "/static/images/events/NLPI.webp",
         "link": "",
         "status": "True"
       },
@@ -438,7 +459,7 @@
         "title": "Digital Twin Technology",
         "department": "Artificial Intelligence & Data Science",
         "content": "",
-        "image_path": "/static/images/events/TWIN.webp",
+        "brochure_path": "/static/images/events/TWIN.webp",
         "link": "",
         "status": "True"
       },
@@ -449,7 +470,7 @@
         "title": "Scalathon",
         "department": "Computer Science & Engineering",
         "content": "",
-        "image_path": "/static/images/events/SCALATHON.webp",
+        "brochure_path": "/static/images/events/SCALATHON.webp",
         "link": "",
         "status": "True"
       },
@@ -460,7 +481,7 @@
         "title": "Building Real Time Systems using Data Structure and Java Programming",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "image_path": "/static/images/events/DATA STRUCTURE.webp",
+        "brochure_path": "/static/images/events/DATA STRUCTURE.webp",
         "link": "",
         "status": "True"
       },
@@ -471,7 +492,7 @@
         "title": "From Idea to Device: A Hands-on Journey into IoT",
         "department": "Artificial Intelligence and Data Science",
         "content": "",
-        "image_path": "/static/images/events/JOURNEY.webp",
+        "brochure_path": "/static/images/events/JOURNEY.webp",
         "link": "",
         "status": "True"
 
@@ -483,7 +504,7 @@
         "title": "Building Management System(BMS), Direct Digital Control (DDC), Electrical Connections and Safety in RAC Systems ",
         "department": "Mechanical Engineering",
         "content": "",
-        "image_path": "/static/images/events/BMS.webp",
+        "brochure_path": "/static/images/events/BMS.webp",
         "website_link": "",
         "status": "True"
       },
@@ -494,7 +515,7 @@
         "title": "Non-Traditional Machining - Unlocking the Next Frontier in Engineering: Insights, Challenges and Opportunities from a Supply Chain Perspective",
         "department": "Mechanical Engineering",
         "content": "",
-        "image_path": "/static/images/events/NON-TRADITIONAL.webp",
+        "brochure_path": "/static/images/events/NON-TRADITIONAL.webp",
         "website_link": "",
         "status": "True"
       },
@@ -505,7 +526,7 @@
         "title": "Emerging Trends: Explainable AI, Edge AI, and Multimodal Systems",
         "department": "Computer Science Engineering",
         "content": "",
-        "image_path": "/static/images/events/MULTIMODAL.webp",
+        "brochure_path": "/static/images/events/MULTIMODAL.webp",
         "website_link": "",
         "status": "True"
       },
@@ -516,7 +537,7 @@
         "title": "Mathletics",
         "department": "Mathematics",
         "content": "",
-        "image_path": "/static/images/events/MATHLETICS.webp",
+        "brochure_path": "/static/images/events/MATHLETICS.webp",
         "website_link": "",
         "status": "True"
       },{
@@ -526,7 +547,7 @@
         "title": "Quality Control and Precision Measurement in Automobile Industry",
         "department": "Automobile Engineering",
         "content": "",
-        "image_path": "/static/images/events/QUALITY CONTROL.webp",
+        "brochure_path": "/static/images/events/QUALITY CONTROL.webp",
         "website_link": "",
         "status": "True"
       },
@@ -537,7 +558,7 @@
         "title": "PROXPO 2K25",
         "department": "Electrical & Electronics Engineering",
         "content": "",
-        "image_path": "/static/images/events/PROXPO.webp",
+        "brochure_path": "/static/images/events/PROXPO.webp",
         "website_link": "",
         "status": "True"
       },
@@ -548,7 +569,7 @@
         "title": "Data Science and Machine Learning",
         "department": "Computer Science & Engineering",
         "content": "",
-        "image_path": "/static/images/events/DATA SCIENCe.webp",
+        "brochure_path": "/static/images/events/DATA SCIENCe.webp",
         "website_link": "",
         "status": "True"
       }
