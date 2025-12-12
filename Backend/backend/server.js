@@ -7,6 +7,8 @@ const cors = require('./main-backend/middlewares/cros_security');
 const scheduleResetCounters = require('./main-backend/middlewares/schedulers/reset_hit_counters');
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
+const session = require("express-session");
+
 
 dotenv.config({ quiet: true });
 
@@ -32,6 +34,15 @@ scheduleMongoHealthCheck();
 connectToDatabase();
 //Global Middleware to track hits for all endpoints
 // app.use(hitTracker);
+
+app.use(session({
+    secret: "vec_secret_key_123",  // change to strong key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false,
+      maxAge: 30 * 60 * 1000
+     }   // secure: true only when using HTTPS
+}));
 
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
