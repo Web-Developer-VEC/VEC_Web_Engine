@@ -6,6 +6,20 @@ const New = forwardRef(function New(props, ref) {
   const partA = data?.paper?.["PART A"] ?? [];
   const partB = data?.paper?.["PART B"] ?? [];
 
+  const semesterFormat = {
+    "1st Semester": "I",
+    "2nd Semester": "I",
+
+    "3rd Semester": "II",
+    "4th Semester": "II",
+
+    "5th Semester": "III",
+    "6th Semester": "III",
+
+    "7th Semester": "IV",
+    "8th Semester": "IV",
+  };
+
   const resolveImage = (imgPath) => {
     if (!imgPath) return null;
     try {
@@ -82,7 +96,7 @@ const New = forwardRef(function New(props, ref) {
 
             <tr className="no-break">
               <td className="border-1 border-text p-2 h-[38px] font-bold">Year / Sem :</td>
-              <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.year} / {state?.semester}</td>
+              <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.year} / {semesterFormat[state?.semester]}</td>
               <td className="border-1 border-text p-2 h-[38px] font-bold">Set :</td>
               <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.set}</td>
             </tr>

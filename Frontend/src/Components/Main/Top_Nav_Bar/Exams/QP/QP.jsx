@@ -625,9 +625,6 @@ const handleSubjectCodeSelect = (val) => {
       mark: exam === "III" ? 100 : 50
     };
 
-    console.log(data);
-    
-
     setPreviewData(data);
     navigate("/preview", { state: data });
   };

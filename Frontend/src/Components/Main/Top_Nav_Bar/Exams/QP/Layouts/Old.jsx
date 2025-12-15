@@ -1,82 +1,25 @@
 import React, { forwardRef } from "react";
 import logo from '../../../../../Assets/LOGOcap.png';
 
-  const mcqData = [
-    {
-      question: "Cloud Service consists of:",
-      options:
-  `a) "Platform, Software, Infrastructure"    b) "Software, Hardware, Infrastructure"
-  c) "Platform, Hardware, Infrastructure"    d) "None of the above"`
-    },
-
-    {
-      question: "Which of the following is a primary characteristic of cloud computing?",
-      options:
-  `a) "High initial hardware costs"    b) "Limited scalability and accessibility"
-  c) "On-demand self-service"    d) "Exclusive access for a single user"`
-    },
-
-    {
-      question: "__________ is partitioning of a single physical server into multiple logical servers.",
-      options:
-  `a) "Virtualization"    b) "Private Cloud"
-  c) "Public Cloud"    d) "Hybrid Cloud"`
-    },
-
-    {
-      question: "Which cloud service model provides access to fundamental computing resources like servers, storage, and networking?",
-      options:
-  `a) "SaaS (Software as a Service)"    b) "PaaS (Platform as a Service)"
-  c) "IaaS (Infrastructure as a Service)"    d) "FaaS (Function as a Service)"`
-    },
-
-    {
-      question: "Which AWS storage service assists S3 with transferring data?",
-      options:
-  `a) "CloudFront"    b) "AWS Import/Export"
-  c) "DynamoDB"    d) "Elastic Cache"`
-    },
-
-    {
-      question: "Which cloud provider is known for its AWS platform?",
-      options:
-  `a) "Microsoft"    b) "Google"
-  c) "Amazon"    d) "IBM"`
-    },
-
-    {
-      question: "In which environment do admins have the most control over cloud app security?",
-      options:
-  `a) "PaaS"    b) "SaaS"
-  c) "IaaS"    d) "SECaaS"`
-    },
-
-    {
-      question: "During which phase of a cloud migration framework is security the most critical?",
-      options:
-  `a) "Discovery phase"    b) "Cloud migration phase"
-  c) "Operations phase"    d) "All of the above"`
-    },
-
-    {
-      question: "What type of service does OpenStack provide?",
-      options:
-  `a) "Software as a Service"    b) "Platform as a Service"
-  c) "Infrastructure as a Service"    d) "Network as a Service"`
-    },
-
-    {
-      question: "A company is looking for a provider offering virtual server provisioning and on-demand storage for running applications. This refers to:",
-      options:
-  `a) "SaaS"    b) "PaaS"
-  c) "IaaS"    d) "SECaaS"`
-    }
-  ];
-
 const Old = forwardRef(function Old(props, ref) {
     const { data, state } = props; 
     const partA = data?.paper?.["PART A"] ?? [];
     const partB = data?.paper?.["PART B"] ?? [];
+    const partC = data?.paper?.["PART C"] ?? [];
+
+    const semesterFormat = {
+      "1st Semester": "I",
+      "2nd Semester": "I",
+
+      "3rd Semester": "II",
+      "4th Semester": "II",
+
+      "5th Semester": "III",
+      "6th Semester": "III",
+
+      "7th Semester": "IV",
+      "8th Semester": "IV",
+    };
 
     const resolveImage = (imgPath) => {
       if (!imgPath) return null;
@@ -90,14 +33,38 @@ const Old = forwardRef(function Old(props, ref) {
       }
     };
 
-    const partBGroups = partB.reduce((acc, item) => {
+    const partCGroups = partC.reduce((acc, item) => {
       const qno = item["Q.no"];
       if (!acc[qno]) acc[qno] = [];
       acc[qno].push(item);
       return acc;
     }, {});
 
-    const partBQnos = Object.keys(partBGroups).map(n => Number(n)).sort((a,b) => a - b);
+    const partCQnos = Object.keys(partCGroups).map(n => Number(n)).sort((a,b) => a - b);
+
+    const OPTION_LENGTH_LIMIT = 40;
+
+    const formatOptions = (options) => {
+      if (!options) return [];
+
+      const entries = Object.entries(options).map(
+        ([key, value]) => `${key}) ${value}`
+      );
+
+      const hasLongOption = entries.some(opt => opt.length > OPTION_LENGTH_LIMIT);
+
+      if (hasLongOption) {
+        // one option per line
+        return entries.map(opt => [opt]);
+      }
+
+      // two options per line
+      const rows = [];
+      for (let i = 0; i < entries.length; i += 2) {
+        rows.push(entries.slice(i, i + 2));
+      }
+      return rows;
+    };
     
     return (
       <div
@@ -154,7 +121,7 @@ const Old = forwardRef(function Old(props, ref) {
   
               <tr className="no-break">
                 <td className="border-1 border-text p-2 h-[38px] font-bold">Year / Sem :</td>
-                <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.year} / {state?.semester}</td>
+                <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.year} / {semesterFormat[state?.semester]}</td>
                 <td className="border-1 border-text p-2 h-[38px] font-bold">Set :</td>
                 <td className="border-1 border-text p-2 h-[38px] font-bold">{state?.set}</td>
               </tr>
@@ -178,20 +145,56 @@ const Old = forwardRef(function Old(props, ref) {
               </tr>
             </thead>
             <tbody>
-              {mcqData.map((item, index) => (
-                <tr className="no-break" key={index}>
-                  <td className="border-1 border-text p-2 min-h-[38px]">{index + 1}.</td>
+              {partA.length > 0 ? (
+                partA.map((q, index) => (
+                  <tr className="no-break" key={index}>
+                    <td className="border-1 border-text p-2 min-h-[38px]">
+                      {q["Q.no"] ?? index + 1}.
+                    </td>
 
-                  <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
-                    {item.question}
-                    <br />
-                    {item.options}
+                    <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
+                      {q.question}
+
+                      <div className="mt-1 space-y-1">
+                        {formatOptions(q.options).map((row, idx) => (
+                          <div key={idx} className="flex gap-8">
+                            {row.map((opt, i) => (
+                              <span key={i} className="flex-1">
+                                {opt}
+                              </span>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+
+                      {q.image && (
+                        <div className="mt-2">
+                          <img
+                            src={resolveImage(q.image)}
+                            alt={`partA-${q["Q.no"]}`}
+                            className="max-w-full mt-2"
+                            crossOrigin="anonymous"
+                          />
+                        </div>
+                      )}
+                    </td>
+
+                    <td className="border-1 border-text p-2 min-h-[38px]">
+                      {q.co ?? ""}
+                    </td>
+
+                    <td className="border-1 border-text p-2 min-h-[38px]">
+                      {q["blooms level"] ?? ""}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr className="no-break">
+                  <td colSpan={4} className="border-1 border-text p-2 text-center">
+                    No PART-A questions found
                   </td>
-
-                  <td className="border-1 border-text p-2 min-h-[38px]">CO1</td>
-                  <td className="border-1 border-text p-2 min-h-[38px]">C1</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
@@ -212,8 +215,8 @@ const Old = forwardRef(function Old(props, ref) {
             </thead>
   
             <tbody>
-              {partA.length > 0 ? (
-                partA.map((q, idx) => (
+              {partB.length > 0 ? (
+                partB.map((q, idx) => (
                   <tr className="no-break" key={idx}>
                     <td className="border-1 border-text p-2 min-h-[38px]">{q["Q.no"] ?? idx + 1}.</td>
                     <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
@@ -267,9 +270,9 @@ const Old = forwardRef(function Old(props, ref) {
             </thead>
   
             <tbody>
-              {partBQnos.length > 0 ? (
-                partBQnos.map((qno) => {
-                  const group = partBGroups[qno]; // array of options for this qno
+              {partCQnos.length > 0 ? (
+                partCQnos.map((qno) => {
+                  const group = partCGroups[qno]; // array of options for this qno
                   // render pattern:
                   // if exactly 2 options -> (a) row, (OR) row, (b) row
                   // else -> render each option as a row, showing Q.no only on first row with rowspan = group.length * maybe +1
@@ -285,7 +288,7 @@ const Old = forwardRef(function Old(props, ref) {
                             {first.question}
                             {first.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(first.image)} alt={`b-${qno}-a`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                                <img src={resolveImage("https://velammal.edu.in/wp-content//static/images/aboutvec/aboutvec2.webp")} alt={`b-${qno}-a`} className="max-w-full mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
@@ -304,7 +307,7 @@ const Old = forwardRef(function Old(props, ref) {
                             {second.question}
                             {second.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(second.image)} alt={`b-${qno}-b`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                                <img src={resolveImage("https://testdatavec.s3.ap-south-1.amazonaws.com/static/images/exams/reg21qb/v_of_bigdata.webp")} alt={`b-${qno}-b`} className="max-w-full mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
@@ -325,11 +328,11 @@ const Old = forwardRef(function Old(props, ref) {
                       <td className="border-1 border-text p-2 min-h-[38px]">{item.option ?? ""}</td>
                       <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
                         {item.question}
-                        {item.image ? (
+                        {/* {item.image ? ( */}
                           <div className="mt-2">
-                            <img src={resolveImage(item.image)} alt={`b-${qno}-${idx}`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                            <img src={resolveImage("https://testdatavec.s3.ap-south-1.amazonaws.com/static/images/exams/reg21qb/v_of_bigdata.webp")} alt={`b-${qno}-${idx}`} className="max-w-full mt-2" crossOrigin="anonymous" />
                           </div>
-                        ) : null}
+                        {/* ) : null} */}
                       </td>
                       <td className="border-1 border-text p-2 min-h-[38px]">{item.marks ?? ""}</td>
                       <td className="border-1 border-text p-2 min-h-[38px]">{item.co ?? ""}</td>
