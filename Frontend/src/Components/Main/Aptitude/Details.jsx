@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Details.css";
 import { useNavigate } from "react-router-dom";
-import loginImg from "../../Assets/login.jpg"; 
+import Swal from "sweetalert2";
+import loginImg from "../../Assets/login.jpg";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
@@ -52,6 +53,40 @@ export default function DetailsPage() {
     checkDevice();
     window.addEventListener('resize', checkDevice); // Re-check if window is resized
     return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  // ---------------- FULLSCREEN ENFORCEMENT WITH WARNING ----------------
+  useEffect(() => {
+    const enterFullscreenOnce = () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+      document.removeEventListener("click", enterFullscreenOnce);
+    };
+
+    document.addEventListener("click", enterFullscreenOnce);
+
+    const onFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        Swal.fire({
+          title: "Fullscreen Required",
+          text: "Please stay in fullscreen mode to continue the examination process.",
+          icon: "warning",
+          confirmButtonText: "Return to Fullscreen",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+        }).then(() => {
+          document.documentElement.requestFullscreen().catch(() => {});
+        });
+      }
+    };
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+
+    return () => {
+      document.removeEventListener("click", enterFullscreenOnce);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    };
   }, []);
 
   // INVALID DEVICE POPUP
