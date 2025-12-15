@@ -3,6 +3,7 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 // import "./NotificationBox.css";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
@@ -19,6 +20,7 @@ const NotificationBox1 = ({ data }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -155,15 +157,37 @@ const handleStartEdit = () => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
-    setCommittedItems(deepCopy(pendingItems));
-    setItems(deepCopy(pendingItems));
-    setPendingItems(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+const handleFinalRequestConfirm = async () => {
+  if (!pendingItems) return;
+
+  // Prepare payload for backend
+  const payload = [
+    {
+      collectionName: "yrc",
+      collection_type: "news_updates",
+      action: "update",
+      title: "update news",
+      original_data: committedItems, // old news data
+      meta_data: pendingItems,       // updated news data
+    },
+  ];
+
+  try {
+    const result = await sendRequest(payload);
+
+    if (result) {
+      // Update local state after successful request
+      setCommittedItems(JSON.parse(JSON.stringify(pendingItems)));
+      setItems(JSON.parse(JSON.stringify(pendingItems)));
+      setPendingItems(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Final request submitted successfully!");
+    }
+  } catch (err) {
+    toast.error("Failed to submit request!");
+  }
+};
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;

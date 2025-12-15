@@ -3,7 +3,7 @@ import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { SaveAll, SquarePen, CircleX, Send } from "lucide-react";
+import { SaveAll, SquarePen, CircleX, Send, Pencil, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./admin_Grievences.css";
@@ -63,7 +63,19 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     };
     fetchGrievanceData();
   }, []);
-
+const handleDiscardChanges = () => {
+  setEditableData(grievanceData);   // Restore from original fetched data
+  setChangeList([]);                // Clear change list
+  setSavedOnce(false);              // Reset saved state
+  setgrEdit(false);                 // Exit edit mode
+  toast.info("All changes discarded. Original data restored.");
+};
+const handleCancel = () => {
+  setEditableData([...editableData]); // Keep the current saved data
+  setChangeList([]);                  // Clear pending edits
+  setgrEdit(false);                   // Exit edit mode
+  toast.info("Edit cancelled. Kept last saved changes.");
+};
   // Check if data is loaded before accessing its properties
   const section =
     grievanceData?.find((item) => item.category === "section & level")
@@ -204,7 +216,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
           let details = {};
 
           if (Array.isArray(editableContent)) {
-            action = `Edited content for ${editableItem.category}`;
+            action = ` ${editableItem.category}`;
             details = { from: originalContent, to: editableContent };
           } else {
             const changedFields = Object.keys(editableContent).filter(
@@ -212,7 +224,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
             );
 
             if (changedFields.length > 0) {
-              action = `Edited fields in ${editableItem.category}`;
+              action = ` ${editableItem.category}`;
               details = changedFields.reduce((acc, field) => {
                 acc[field] = {
                   from: originalContent[field],
@@ -459,15 +471,13 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
 
         <div className="admin-controls-gr flex justify-end mb-2">
           <button
-            className="admin-edit-gr  flex gap-1 items-center"
-            onClick={() => {
-              setgrEdit(!gredit);
+            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
+            onClick={() => { setgrEdit(!gredit);
               setSavedOnce(false); // Reset saved status on edit/cancel
               setChangeList([]); // Clear pending changes
-              setEditableData(grievanceData); // Reset data to original on cancel
-            }}
+              setEditableData(grievanceData);  }}
           >
-            {gredit ? <><CircleX size={18} /> Cancel</> : <><SquarePen size={18} /> Edit</>}
+            <Pencil size={16} /> Edit
           </button>
         </div>
 
@@ -619,30 +629,45 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
         )}
       </div>
 
-              {gredit && (
-                <div className="admin-controls flex flex-col items-end gap-2 mt-4">
-                  <button className="admin-edit-gr active flex items-center gap-1" onClick={handleSaveClick}>
-                    <SaveAll size={16} />
-                    <span className="btn-text">Save</span>
+             {gredit && (
+                <div className="flex justify-end gap-2 mt-4">
+                  <button 
+                    className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    onClick={() => handleSaveClick(true)} 
+                    className="px-4 py-1 bg-[#800000] text-white rounded"
+                  >
+                    Save
                   </button>
                 </div>
               )}
-
-              {!gredit && savedOnce && (
-                <div className="admin-controls flex justify-end mt-4">
-                  <button className="admin-edit-gr flex gap-1 items-center" onClick={() => setShowPopup(true)}>
-                    <Send size={18} /> Request changes
-                  </button>
-                </div>
-              )}
-
+             {!gredit && savedOnce && (
+                    <div className="flex justify-end gap-3 mt-6 mb-4">
+                      <button 
+                        className="px-4 py-2 bg-gray-500 text-white rounded"
+                        onClick={handleDiscardChanges}
+                      >
+                        Discard Changes
+                      </button>
+                      <button 
+                        className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2" 
+                        onClick={() => setShowPopup(true)}
+                      >
+                        <Send size={16} /> Request
+                      </button>
+                    </div>
+                  )}
               <ToastContainer position="bottom-right" autoClose={3000} />
             </div>
 
             {/* Modal */}
             {showPopup && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-[500px]">
+              <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
                   <h2 className="text-lg font-semibold mb-4">Final Request for the Changes</h2>
                   <p className="text-red-600 mb-4">
                     <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
@@ -651,9 +676,10 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left p-2">Action</th>
-                        <th className="text-left p-2">Section/Category</th>
-                        <th className="text-left p-2">Undo</th>
+                        <th className="border p-2">Action</th>
+                        <th className="border p-2">Section</th>
+                        <th className="p-2 border">changes</th>
+                        <th className="border p-2">Undo</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -664,11 +690,14 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
                       ) : (
                         changeList.map((req, idx) => (
                           <tr key={idx} className="border-b">
-                            <td className="p-2">{req.action}</td>
-                            <td className="p-2 capitalize">{req.category}</td>
-                            <td className="p-2">
-                              <button className="nss-btn nss-btn-undo flex items-center gap-1" onClick={() => handleUndoChange(idx)}>
-                                <CircleX size={16} className="text-red-500 hover:text-red-700" />
+                            <td className="p-2 border">Edited</td>
+                            <td className="p-2 border capitalize">Help Desk</td>
+                            <td className="p-2 border">
+                              {req.action}
+                            </td>
+                            <td className="p-2 py-2 border">
+                              <button className="" onClick={() => handleUndoChange(idx)}>
+                                <X size={16} className="text-red-500 hover:text-red-700" />
                               </button>
                             </td>
                           </tr>

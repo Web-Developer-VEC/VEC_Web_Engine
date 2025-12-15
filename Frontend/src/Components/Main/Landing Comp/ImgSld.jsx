@@ -1,10 +1,9 @@
-
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import College from '../../Assets/Hell.png';
 import Toggle from "../Toggle";
 
-const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
+const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     const videoRef = useRef(null);
 
     // Debounce function to limit how often the scroll event is processed
@@ -47,14 +46,14 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
 
         // after each animation cycle (50s in your css), pick new 7
         const interval = setInterval(() => {
-        setDisplayItems(pickRandom7());
+            setDisplayItems(pickRandom7());
         }, 50000); // 50 seconds = your animation duration
 
         return () => clearInterval(interval);
     }, [lst]);
 
     useEffect(() => {
-        window.addEventListener('scroll', hndlScrll, {passive: true});
+        window.addEventListener('scroll', hndlScrll, { passive: true });
         const video = videoRef.current;
 
         const handleCanPlayThrough = () => {
@@ -77,35 +76,35 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+        const container = containerRef.current;
+        if (!container) return;
 
-    const onWheel = (e) => {
-        e.preventDefault(); // stop the scroll
-        e.stopPropagation();
-    };
+        const onWheel = (e) => {
+            e.preventDefault(); // stop the scroll
+            e.stopPropagation();
+        };
 
-    container.addEventListener('wheel', onWheel, { passive: false }); // must set passive:false for preventDefault to work
-    return () => container.removeEventListener('wheel', onWheel);
+        container.addEventListener('wheel', onWheel, { passive: false }); // must set passive:false for preventDefault to work
+        return () => container.removeEventListener('wheel', onWheel);
     }, []);
 
     const toggleRef = useRef(null);
 
     useEffect(() => {
-    const toggleEl = toggleRef.current;
-    if (!toggleEl) return;
+        const toggleEl = toggleRef.current;
+        if (!toggleEl) return;
 
-    const handleWheel = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
+        const handleWheel = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        };
 
-    // Add the listener with passive:false
-    toggleEl.addEventListener('wheel', handleWheel, { passive: false });
+        // Add the listener with passive:false
+        toggleEl.addEventListener('wheel', handleWheel, { passive: false });
 
-    return () => {
-        toggleEl.removeEventListener('wheel', handleWheel);
-    };
+        return () => {
+            toggleEl.removeEventListener('wheel', handleWheel);
+        };
     }, []);
 
 
@@ -117,15 +116,15 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     className='min-h-[50vmax] w-full bg-center fixed -top-12 z-10'
                     autoPlay loop muted ref={videoRef} id='BgVid'
                     playsInline>
-                    <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4'/>
+                    <source src={"./Banners/Vid_banner/Landing_page_draft.mp4"} type='video/mp4' />
                 </video>
                 <div className="absolute flex gap-3 z-[50] bottom-[50%] md:bottom-[60%] tabland:bottom-[10%] lg:bottom-[35%] xl:bottom-[50%] left-0 mb-3 ml-3 md:w-[550px] pointer-events-auto "
                     ref={containerRef}
                 >
-                    <button onClick={() => window.location.href = `tel:${ph}`}   onWheel={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault(); // This is what actually blocks scrolling
-                        }}
+                    <button onClick={() => window.location.href = `tel:${ph}`} onWheel={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault(); // This is what actually blocks scrolling
+                    }}
 
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
@@ -135,10 +134,10 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                         {ph}
                     </button>
 
-                    <button onClick={() => window.open(`mailto:${email}`, '_blank')}   onWheel={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault(); // This is what actually blocks scrolling
-                        }}
+                    <button onClick={() => window.open(`mailto:${email}`, '_blank')} onWheel={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault(); // This is what actually blocks scrolling
+                    }}
                         className="bg-prim dark:bg-drkp rounded-full px-3 py-1 lg:py-2 lg:px-3 outline outline-prim
                         dark:outline-drkp outline-offset-2 hover:outline-secd dark:hover:outline-drks bg-[length:200%_100%]
                         bg-[position:0%_100%] text-[1lvh] lg:text-lg text-text dark:text-white bg-gradient-to-l from-secd
@@ -175,7 +174,7 @@ const ImgSld = ({load, toggle, theme, lst, ph, email}) => {
                     </div>
                 </div>
 
-                <img alt="Hell on earth" src={College} className={`h-[100vh] w-[100vw] bg-cover bottom-0 fixed z-0`}/>
+                <img alt="Hell on earth" src={College} className={`h-[100vh] w-[100vw] bg-cover bottom-0 fixed z-0`} />
             </div>
         </div>
     );

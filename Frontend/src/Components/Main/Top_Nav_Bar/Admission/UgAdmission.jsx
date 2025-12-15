@@ -165,7 +165,7 @@ const UgAdmission = ({ theme, toggle }) => {
                 onClick={() =>
                   handlePdfClick(
                     BE_Government?.BE_Government_link_name,
-                    UrlParser(BE_Government?.BE_Government_link)
+                    UrlParser(BE_Government?.pdf_path)
                   )
                 }
               >
@@ -189,7 +189,7 @@ const UgAdmission = ({ theme, toggle }) => {
                 onClick={() =>
                   handlePdfClick(
                       BE_Management?.BE_Management_link_name,
-                      UrlParser(BE_Management?.BE_Management_link)
+                      UrlParser(BE_Management?.pdf_path)
                   )
                 }
                 className="text-blue-600 dark:text-drka"

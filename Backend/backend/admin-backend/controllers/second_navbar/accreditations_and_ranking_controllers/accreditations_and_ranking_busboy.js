@@ -3,85 +3,73 @@ const { PutObjectCommand } = require("@aws-sdk/client-s3");
 
 async function accreditations_and_rankingHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
-   const realFilename =
-  typeof filename === "string"
-    ? filename
-    : filename?.filename || "file";
+    const realFilename =
+      typeof filename === "string"
+        ? filename
+        : filename?.filename || "file.pdf";
 
-const effectiveMime = mimetype || filename?.mimeType || "application/octet-stream";
+    const effectiveMime = mimetype || filename?.mimeType || "application/octet-stream";
 
-console.log("Uploading accreditations and ranking file:", { realFilename, effectiveMime });
+    console.log("Uploading accreditations and ranking file:", { realFilename, effectiveMime });
 
-// ✅ Allow only images and PDFs
-if (!(effectiveMime.startsWith("image/") || effectiveMime === "application/pdf")) {
-  fileStream.resume();
-  return cb(new Error("Only images or PDFs are allowed"));
-}
-
-
-    const collection_type = docs[0]?.collection_type || "accreditations_and_ranking";
-    const category = docs[0]?.category;
-
-    // Helper to extract SSR code like "ssr_1.pdf"
-    function extractSSRCode(name) {
-      const match = name.match(/Cycle\s+(\d+)\s+SSR/i);
-      return match ? `ssr_${match[1]}.pdf` : null;
+    // ✅ Allow only images and PDFs
+    if (!(effectiveMime.startsWith("image/") || effectiveMime === "application/pdf")) {
+      fileStream.resume();
+      return cb(new Error("Only images or PDFs are allowed"));
     }
 
-    // Define S3 key
+    const collection_type = docs[0]?.collection_type || "accreditations_and_ranking";
+    const category = docs[0]?.category || "General";
+    const meta_data = docs[0]?.meta_data || {};
+
+    // Build S3 key path dynamically
     let s3Key;
     if (!req.fileIndex) req.fileIndex = 0;
 
-    if (collection_type === "naac") {
-      if (category === "Self Study Reports") {
-        const nameFromDocs = docs[0].meta_data.name;
-        const ssrName = extractSSRCode(nameFromDocs); // e.g. "ssr_1.pdf"
-
-        if (!ssrName) {
-          return cb(new Error("Invalid SSR name format"));
+    switch (collection_type) {
+      case "naac":
+        if (category === "Self Study Reports" || category === "Certificates") {
+          s3Key = `temp/static/pdfs/naac/${realFilename}`;
+        } else {
+          s3Key = `temp/static/pdfs/naac/others/${realFilename}`;
         }
+        break;
 
-        s3Key = `temp/static/pdfs/${collection_type}/${ssrName}`;
-      }
+      case "nba":
+        const { department, pdfs } = meta_data;
+        const pdfNBA = pdfs?.[req.fileIndex];
+        if (!pdfNBA) return cb(new Error("Too many files uploaded for NBA"));
 
-      if (category === "Certificates") {
-        const certName = docs[0].meta_data.name; // e.g. "certificate1"
-        s3Key = `temp/static/pdfs/${collection_type}/${certName}.pdf`;
-      }
+        const year = pdfNBA.name;
+        s3Key = `temp/static/pdfs/nba/${realFilename}`;
+        pdfNBA.pdf_path = `/${s3Key}`;
+        break;
+
+      case "nirf":
+        const content = meta_data.content || [];
+        const pdfNIRF = content[req.fileIndex];
+        req.fileIndex++;
+
+        if (!pdfNIRF) return cb(new Error("Too many files uploaded for NIRF"));
+
+        const nameNIRF = pdfNIRF.name;
+        s3Key = `temp/static/pdfs/nirf/${realFilename}`;
+        pdfNIRF.pdf_path = `/${s3Key}`;
+        const { pdf_path, ...restMeta } = meta_data;
+        docs[0].meta_data = restMeta;
+        break;
+
+      case "qs_rating":
+        s3Key = `static/pdfs/qs_rating/${realFilename}`;
+        break;
+
+      default:
+        // Generic fallback
+        s3Key = `temp/static/pdfs/${collection_type}/${category}/${realFilename}`;
+        break;
     }
-  if (collection_type === "nba") {  
-      const { department, pdfs } = docs[0].meta_data;
-      const pdf = pdfs[req.fileIndex]; // pick nth entry
-      if (!pdf) return cb(new Error("Too many files uploaded for NBA"));
-      const year = pdf.name;
-      s3Key = `temp/static/pdfs/${collection_type}/${department}_${year}.pdf`;
-      pdf.pdf_path = `/${s3Key}`;
-    }
- if (collection_type === "nirf") {
-  const meta_data = docs[0].meta_data;
-  const content = meta_data?.content || [];
 
-  if (!req.fileIndex) req.fileIndex = 0;
-  const pdf = content[req.fileIndex];
-  req.fileIndex++;
-  if (!pdf) return cb(new Error("Too many files uploaded for NIRF"));
-
-  const name = pdf.name;
-  s3Key = `temp/static/pdfs/${collection_type}/${category}-${name}.pdf`;
-
-  // replace only this pdf’s path
-  pdf.pdf_path = `/${s3Key}`;
-     const { pdf_path, ...restMeta } = meta_data;
-  docs[0].meta_data = restMeta;
-}
-
-if(collection_type=="qs_rating"){
-  s3Key = `/static/pdfs/qs+rating/${realFilename}`;
-}
-
-
-
-    // Buffer the stream
+    // Buffer the file stream
     const chunks = [];
     for await (const chunk of fileStream) {
       chunks.push(chunk);
@@ -102,7 +90,7 @@ if(collection_type=="qs_rating"){
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
-      location: `/${s3Key}`, // ⚠️ replace with full S3 URL if needed
+      location: `/${s3Key}`,
       mimetype: effectiveMime,
     });
 

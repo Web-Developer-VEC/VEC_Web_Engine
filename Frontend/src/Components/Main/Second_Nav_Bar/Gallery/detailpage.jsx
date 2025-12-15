@@ -9,6 +9,7 @@ export default function Gallerydetails() {
 
   const location = useLocation();
   const [imagePaths, setImagePaths] = useState([]);
+  const [links, setLinks] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,6 +21,7 @@ export default function Gallerydetails() {
     if (location.state && location.state.imagespath) {
       setImagePaths(location.state.imagespath);
       setPageTitle(location.state.title);
+      setLinks(location.state.link)
     }
   }, [location.state]);
 
@@ -49,18 +51,21 @@ export default function Gallerydetails() {
       return url;
     }
   };
+
+  console.log(links, imagePaths, pagetitle);
+  
   
   return (
     <>
-      {(videos && images) ? (
+      {(links && imagePaths) ? (
         <div className="gallery-container">
           <h2 className="gallery-title text-brwn dark:text-drkt">{pagetitle}</h2>
 
           {/* Videos First */}
           <div className="gallery-videos elementor-widget-wrap">
-            {videos && (
+            {links && (
               <>
-                {videos?.map((item,i) => (
+                {links?.map((item,i) => (
                   <div key={i} className="gallery-item-video">
                     <div className="video-wrapper">
                       <iframe
@@ -80,9 +85,9 @@ export default function Gallerydetails() {
 
           {/* Images Next */}
           <div className="gallery-gri">
-            {images && (
+            {imagePaths && (
               <>
-                {images?.map((item,i) => (
+                {imagePaths?.map((item,i) => (
                   <div key={i} className="gallery-item">
                     <img src={UrlParser(item)} alt={"Images"} onClick={() => setModalImage(UrlParser(item))} />
                     {/* <p>{item.title}</p> */}

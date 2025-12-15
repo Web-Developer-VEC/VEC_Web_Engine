@@ -142,13 +142,13 @@ const CardPage = ({theme, toggle}) => {
             <div className="ao-container flex flex-col md:flex-row gap-4 ">
             <AdminCard
               key={adminData[0]?.id}
-              image={UrlParser(adminData[0]?.photo_path)}
+              image={UrlParser(adminData[0]?.image_path)}
               name={adminData[0]?.name}
               designation={adminData[0]?.designation}
             />
             <AdminCard
               key={adminData[1]?.id}
-              image={UrlParser(adminData[1]?.photo_path)}
+              image={UrlParser(adminData[1]?.image_path)}
               name={adminData[1]?.name}
               designation={adminData[1]?.designation}
             />
@@ -157,7 +157,7 @@ const CardPage = ({theme, toggle}) => {
             {adminData.slice(2).map((card) => (
               <Card
                 key={card.id}
-                image={UrlParser(card.photo_path)}
+                image={UrlParser(card.image_path)}
                 name={card.name}
                 designation={card.designation}
               />
