@@ -91,7 +91,7 @@ function generateCaptcha() {
     setCaptcha(generateCaptcha());
   };
     return (
-        <div className="bg-prim dark:bg-drkts p-8 shadow-lg rounded-lg w-full max-w-2xl h-fit m-auto">
+        <div className="bg-prim dark:bg-drkts p-8 mt-5 mb-2 shadow-lg rounded-lg w-full max-w-2xl h-fit m-auto">
           <h2 className="text-[20px] font-bold text-[#800000] dark:text-drkt">Incubation Committe Application</h2>
           <p className="text-[16px] text-prim dark:text-drkt">Please fill the form.</p>
 
