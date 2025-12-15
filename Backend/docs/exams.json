@@ -419,6 +419,17 @@
             "B.E Mechanical Engineering",
             "B.Tech Artificial Intelligence and Data Science",
             "B.Tech Information Technology"
+          ],
+          "departmentOptions":[
+            "CSE",
+            "AI&DS",
+            "AME",
+            "Civil",
+            "IT",
+            "EEE",
+            "ECE",
+            "EIE",
+            "CSE(CS)"
           ]
     }
   ]

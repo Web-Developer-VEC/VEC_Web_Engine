@@ -37,7 +37,7 @@ connectToDatabase();
 
 app.use(session({
     secret: "vec_secret_key_123",  // change to strong key
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: { secure: false,
       maxAge: 60 * 60 * 1000

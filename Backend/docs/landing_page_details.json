@@ -199,9 +199,15 @@
         "pdf_path": "/static/pdfs/announcements/Rescheduled date_8th, 10th Dec. to 29th, 31st Dec. 2025 - MBA.pdf",
         "date": "2025-07-28",
         "status": "active"
+      },{
+        "unique_id": "announcement_4",
+        "announcement_name": "Notification 3 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
+        "pdf_path": "/static/pdfs/announcements/MBA_Rescheduled date_29-12-2025 to 30-12-2025-1.pdf",
+        "date": "2025-07-28",
+        "status": "active"
       },
        {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_5",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028) - updated (1).pdf",
         "date": "2025-07-28",
@@ -209,28 +215,28 @@
       },
       
       {
-        "unique_id": "announcement_5",
+        "unique_id": "announcement_6",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_6",
+        "unique_id": "announcement_7",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_7",
+        "unique_id": "announcement_8",
         "announcement_name": "M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_8",
+        "unique_id": "announcement_9",
         "announcement_name": "MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
