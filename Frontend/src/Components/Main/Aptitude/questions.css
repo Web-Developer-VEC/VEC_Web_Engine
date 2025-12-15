@@ -1,13 +1,13 @@
 /* Layout */
 .quest_page {
   width: 100%;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   justify-content: space-between;
   padding: 40px;
   background: linear-gradient(135deg, #f7f3f3 0%, #f0ecec 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  position: relative;
+  /* position: relative; */
 }
 
 /* LEFT COLUMN */
