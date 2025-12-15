@@ -715,13 +715,13 @@ async function questionbank_generator(req, res) {
     if (regulationType === 'r-19') {
       if (examType. toLowerCase() === 'cie1' || examType.toLowerCase() === 'cie 1') {
         paper = buildCIEPaperR19(questions, [1, 2]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1 (50 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1";
       } else if (examType.toLowerCase() === 'cie2' || examType.toLowerCase() === 'cie 2') {
         paper = buildCIEPaperR19(questions, [3, 4]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2 (50 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2";
       } else if (examType.toLowerCase() === 'cie3' || examType.toLowerCase() === 'cie 3' || examType.toLowerCase() === 'model') {
         paper = buildModelPaperR19(questions);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3 (100 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3";
       } else {
         return res.status(400).json({
           success: false,
@@ -731,13 +731,13 @@ async function questionbank_generator(req, res) {
     } else {
       if (examType.toLowerCase() === 'cie1' || examType.toLowerCase() === 'cie 1') {
         paper = buildCIEPaperR23(questions, [1, 2]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1 (50 Marks)";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1";
       } else if (examType.toLowerCase() === 'cie2' || examType.toLowerCase() === 'cie 2') {
         paper = buildCIEPaperR23(questions, [3, 4]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2 (50 Marks)";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2";
       } else if (examType.toLowerCase() === 'cie3' || examType.toLowerCase() === 'cie 3' || examType.toLowerCase() === 'model') {
         paper = buildModelPaperR23(questions);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3 (100 Marks)";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3";
       } else {
         return res.status(400).json({
           success: false,
