@@ -16,7 +16,6 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-// import QuestionPage from "./Components/Main/Aptitude/questions.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -63,7 +62,7 @@ const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questio
 // Question Paper
 const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
 const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
-const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/Layout.jsx"));
+const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QuestionPaper.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));

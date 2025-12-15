@@ -36,7 +36,7 @@ export function LoginForm() {
 
       sessionStorage.setItem("coeuserSession", JSON.stringify(data.session));
 
-      const redirectPath = "/Qp";
+      const redirectPath = "/qp";
       
       setTimeout(() => {
         navigate(redirectPath);
@@ -74,7 +74,7 @@ export function LoginForm() {
             placeholder="Username"
             value={formData.username}
             onChange={handleChange}
-            className="pl-10 h-12 border-slate-300 focus:border-[#fdcc03] focus:ring-2 focus:ring-[#fdcc03]/20 transition-all duration-300"
+            className="pl-10 h-12 border-slate-300 focus:border-[#fdcc03] focus:ring-2 focus:ring-[#fdcc03]/20 transition-all duration-300 w-full"
             required
           />
         </div>
@@ -94,7 +94,7 @@ export function LoginForm() {
             placeholder="Enter your password"
             value={formData.password}
             onChange={handleChange}
-            className="pl-10 pr-10 h-12 border-slate-300 focus:border-[#fdcc03] focus:ring-2 focus:ring-[#fdcc03]/20 transition-all duration-300"
+            className="pl-10 pr-10 h-12 border-slate-300 focus:border-[#fdcc03] focus:ring-2 focus:ring-[#fdcc03]/20 transition-all duration-300 w-full"
             required
           />
           <button
