@@ -26,7 +26,7 @@ async function questionbank_form(req, res) {
 
 
 function cleanCellValue(cell) {
-  if (! cell) return "";
+  if (!cell) return "";
 
   if (typeof cell === "string") return cell.trim();
 
@@ -56,11 +56,10 @@ async function downloadFromS3Url(url) {
 }
 
 
-
 async function loadQuestionsR23(s3Url, folderName) {
   const buffer = await downloadFromS3Url(s3Url);
 
-  const workbook = new ExcelJS.Workbook();
+  const workbook = new ExcelJS. Workbook();
   await workbook.xlsx.load(buffer);
 
   const sheet = workbook.worksheets[0];
@@ -70,12 +69,12 @@ async function loadQuestionsR23(s3Url, folderName) {
 
  
   for (let rowIndex = 1; rowIndex <= sheet.rowCount; rowIndex++) {
-    const row = sheet. getRow(rowIndex);
+    const row = sheet.getRow(rowIndex);
     let foundHeaders = 0;
     let tempMapping = {};
 
     row.eachCell((cell, colNumber) => {
-      if (!cell. value) return;
+      if (! cell. value) return;
 
       const headerName = String(cell.value).toLowerCase().trim();
       switch (headerName) {
@@ -91,7 +90,7 @@ async function loadQuestionsR23(s3Url, folderName) {
           tempMapping.difficulty = colNumber;
           foundHeaders++;
           break;
-        case 'question': 
+        case 'question':  
           tempMapping.question = colNumber;
           foundHeaders++;
           break;
@@ -122,7 +121,7 @@ async function loadQuestionsR23(s3Url, folderName) {
   }
 
   const requiredColumns = ['unit', 'group', 'difficulty', 'question', 'co', 'mark', 'bloom', 'image'];
-  const missingColumns = requiredColumns. filter(col => !columnMapping[col]);
+  const missingColumns = requiredColumns.filter(col => !columnMapping[col]);
 
   if (missingColumns.length > 0) {
     throw new Error(`Missing required columns in Excel header: ${missingColumns.join(', ')}`);
@@ -145,7 +144,7 @@ async function loadQuestionsR23(s3Url, folderName) {
       bloom: row.getCell(columnMapping.bloom).value || '',
       image: imageFile,
       imagePath: imageFile
-        ? `/static/images/exams/${folderName}/${imageFile}.webp`
+        ? `/static/images/exams/${folderName}/${imageFile}. webp`
         : null
     };
 
@@ -162,21 +161,21 @@ async function loadQuestionsR23(s3Url, folderName) {
 async function loadQuestionsR19(s3Url, folderName) {
   const buffer = await downloadFromS3Url(s3Url);
 
-  const workbook = new ExcelJS.Workbook();
+  const workbook = new ExcelJS. Workbook();
   await workbook.xlsx.load(buffer);
 
-  const sheet = workbook.worksheets[0];
+  const sheet = workbook. worksheets[0];
   const q = [];
   let columnMapping = {};
   let headerRowIndex = 0;
 
   // Detect headers for R19 format
-  for (let rowIndex = 1; rowIndex <= sheet. rowCount; rowIndex++) {
+  for (let rowIndex = 1; rowIndex <= sheet.rowCount; rowIndex++) {
     const row = sheet.getRow(rowIndex);
     let foundHeaders = 0;
     let tempMapping = {};
 
-    row. eachCell((cell, colNumber) => {
+    row.eachCell((cell, colNumber) => {
       if (!cell.value) return;
 
       const headerName = String(cell.value).toLowerCase().trim();
@@ -193,12 +192,12 @@ async function loadQuestionsR19(s3Url, folderName) {
           tempMapping.group = colNumber;
           foundHeaders++;
           break;
-        case 'difficulty level': 
+        case 'difficulty level':  
           tempMapping.difficulty = colNumber;
           foundHeaders++;
           break;
         case 'question':
-          tempMapping.question = colNumber;
+          tempMapping. question = colNumber;
           foundHeaders++;
           break;
         case 'image':
@@ -209,11 +208,11 @@ async function loadQuestionsR19(s3Url, folderName) {
           tempMapping.optionA = colNumber;
           foundHeaders++;
           break;
-        case 'option-b': 
+        case 'option-b':  
           tempMapping.optionB = colNumber;
           foundHeaders++;
           break;
-        case 'option-c':
+        case 'option-c': 
           tempMapping.optionC = colNumber;
           foundHeaders++;
           break;
@@ -267,7 +266,7 @@ async function loadQuestionsR19(s3Url, folderName) {
       imagePath: imageFile
         ? `/static/images/exams/${folderName}/${imageFile}.webp`
         : null,
-      optionA: columnMapping.optionA ?  cleanCellValue(row.getCell(columnMapping.optionA).value) : null,
+      optionA: columnMapping.optionA ? cleanCellValue(row.getCell(columnMapping.optionA).value) : null,
       optionB: columnMapping.optionB ? cleanCellValue(row.getCell(columnMapping.optionB).value) : null,
       optionC: columnMapping.optionC ? cleanCellValue(row. getCell(columnMapping.optionC).value) : null,
       optionD: columnMapping. optionD ? cleanCellValue(row.getCell(columnMapping.optionD).value) : null,
@@ -290,19 +289,19 @@ const shuffle = arr => [... arr].sort(() => Math.random() - 0.5);
 function pickRule(qs, group, difficulty, usedIds = new Set()) {
   let availableQs = qs.filter(q => !usedIds.has(q.id));
   
-  let a = availableQs.filter(q => q.group === group && q. difficulty === difficulty);
+  let a = availableQs.filter(q => q.group === group && q.difficulty === difficulty);
   if (a.length === 0) a = availableQs.filter(q => q.group === group);
   if (a.length === 0) a = availableQs;
   
-  if (a.length === 0) return null;
+  if (a. length === 0) return null;
   
   const selected = shuffle(a)[0];
-  usedIds.add(selected.id);
+  usedIds. add(selected.id);
   return selected;
 }
 
 function pickRandom(qs, count, usedIds = new Set()) {
-  const availableQs = qs. filter(q => !usedIds.has(q.id));
+  const availableQs = qs.filter(q => !usedIds. has(q.id));
   const shuffled = shuffle(availableQs);
   const selected = shuffled.slice(0, count);
   
@@ -356,7 +355,7 @@ function formatQuestionPartB(questionA, questionB, questionNumber, marks = null)
 
 // ==================== REGULATION 23 FUNCTIONS ====================
 
-function buildCIEPaperR23(q, units, paperMarks = 50) {
+function buildCIEPaperR23(q, units) {
   const usedQuestionIds = new Set();
   
   const partA = [];
@@ -383,9 +382,7 @@ function buildCIEPaperR23(q, units, paperMarks = 50) {
   const longQs = q.filter(x => x.mark === 16);
   let partBQuestionNo = 11;
 
-  // For 50 marks paper, Part B questions should be 15 marks
-  // For 100 marks paper, Part B questions should be 16 marks
-  const partBMarks = paperMarks === 50 ? 15 : 16;
+  const partBMarks = 15;
 
   units.forEach(unit => {
     const U = longQs.filter(x => x.unit === unit);
@@ -411,7 +408,7 @@ function buildModelPaperR23(q) {
   let partAQuestionNo = 1;
 
   for (let u = 1; u <= 5; u++) {
-    const U = q.filter(x => x.unit === u && x. mark === 2);
+    const U = q.filter(x => x.unit === u && x.mark === 2);
     const q1 = pickRule(U, 1, 1, usedQuestionIds);
     const q2 = pickRule(U, 2, 2, usedQuestionIds);
     
@@ -424,18 +421,18 @@ function buildModelPaperR23(q) {
   let partBQuestionNo = 11;
 
   for (let u = 1; u <= 5; u++) {
-    const U = LQs.filter(x => x.unit === u);
+    const U = LQs. filter(x => x.unit === u);
     const q1 = pickRule(U, 1, 1, usedQuestionIds);
     const q2 = pickRule(U, 2, 2, usedQuestionIds);
     
     if (q1 && q2) {
       const optionQuestions = formatQuestionPartB(q1, q2, partBQuestionNo++, 16);
-      partB.push(...optionQuestions);
+      partB.push(... optionQuestions);
     }
   }
 
   return {
-    "PART A":  partA.filter(q => q !== null),
+    "PART A": partA.filter(q => q !== null),
     "PART B": partB.filter(q => q !== null)
   };
 }
@@ -476,7 +473,7 @@ function buildCIEPaperR19(q, units) {
   const partA = [];
   let partAQuestionNo = 1;
 
-  units.forEach(unit => {
+  units. forEach(unit => {
     const U = q.filter(x => x.part === 'A' && x.unit === unit && x.mark === 1);
     
     // Pick 3 questions per unit using shuffling logic
@@ -501,7 +498,6 @@ function buildCIEPaperR19(q, units) {
   units.forEach(unit => {
     const U = q.filter(x => x.part === 'B' && x. unit === unit && x.mark === 2);
     
-  
     const questions = [
       pickRule(U, 1, 1, usedQuestionIds), // Group 1, Easy
       pickRule(U, 1, 2, usedQuestionIds), // Group 1, Difficult
@@ -571,7 +567,7 @@ function buildModelPaperR19(q) {
       pickRule(U, 2, 2, usedQuestionIds)
     ];
     
-    questions.forEach(question => {
+    questions. forEach(question => {
       if (question) {
         partB.push(formatQuestionPartA(question, partBQuestionNo++, 2));
       }
@@ -581,7 +577,7 @@ function buildModelPaperR19(q) {
   // PART C - 5 questions (each with 2 options), 14 marks each
   // Accept questions with marks 14, 15, or 16
   const partC = [];
-  const partCQuestions = q.filter(x => x.part === 'C' && (x.mark === 14 || x.mark === 15 || x.mark === 16));
+  const partCQuestions = q. filter(x => x.part === 'C' && (x. mark === 14 || x. mark === 15 || x. mark === 16));
   let partCQuestionNo = 1;
 
   for (let u = 1; u <= 5; u++) {
@@ -596,7 +592,7 @@ function buildModelPaperR19(q) {
   }
 
   return {
-    "PART A":  partA.filter(q => q !== null),
+    "PART A": partA.filter(q => q !== null),
     "PART B": partB.filter(q => q !== null),
     "PART C": partC.filter(q => q !== null)
   };
@@ -626,7 +622,7 @@ async function questionbank_generator(req, res) {
     // Default to R-23 if not specified
     const regulationType = regulation ?  regulation.toLowerCase() : 'r-23';
 
-    if (!['r-19', 'r-23'].includes(regulationType)) {
+    if (!['r-19', 'r-23']. includes(regulationType)) {
       return res.status(400).json({
         success: false,
         error: "Invalid regulation.  Valid options are:  'r-19', 'r-23'"
@@ -653,7 +649,7 @@ async function questionbank_generator(req, res) {
       const questionBankData = questionBankDoc.data[0];
       
       if (questionBankData. subject && Array.isArray(questionBankData.subject)) {
-        subjectRecord = questionBankData. subject.find(subject => 
+        subjectRecord = questionBankData.subject.find(subject => 
           subject.code && (
             subject.code.toLowerCase() === subjectcode.toLowerCase() ||
             subject.code.toUpperCase() === subjectcode.toUpperCase() ||
@@ -669,7 +665,7 @@ async function questionbank_generator(req, res) {
         const questionBankData = questionBankDoc.data[0];
         if (questionBankData.subject && Array.isArray(questionBankData.subject)) {
           availableSubjects = questionBankData.subject
-            .filter(subject => subject.code)
+            .filter(subject => subject. code)
             .map(subject => ({
               code: subject.code,
               name: subject.name
@@ -693,7 +689,7 @@ async function questionbank_generator(req, res) {
       });
     }
 
-    const baseUrl = process.env. STATIC_FILES_BASE_URL;
+    const baseUrl = process.env.STATIC_FILES_BASE_URL;
     if (!baseUrl) {
       return res.status(500).json({
         success: false,
@@ -717,16 +713,15 @@ async function questionbank_generator(req, res) {
     let examTypeTitle = "";
 
     if (regulationType === 'r-19') {
-  
       if (examType. toLowerCase() === 'cie1' || examType.toLowerCase() === 'cie 1') {
         paper = buildCIEPaperR19(questions, [1, 2]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1 (50 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1";
       } else if (examType.toLowerCase() === 'cie2' || examType.toLowerCase() === 'cie 2') {
         paper = buildCIEPaperR19(questions, [3, 4]);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2 (50 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2";
       } else if (examType.toLowerCase() === 'cie3' || examType.toLowerCase() === 'cie 3' || examType.toLowerCase() === 'model') {
         paper = buildModelPaperR19(questions);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3 (100 Marks) - REGULATION 19";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3";
       } else {
         return res.status(400).json({
           success: false,
@@ -734,17 +729,15 @@ async function questionbank_generator(req, res) {
         });
       }
     } else {
-      const marks = paperMarks || 50; 
-
       if (examType.toLowerCase() === 'cie1' || examType.toLowerCase() === 'cie 1') {
-        paper = buildCIEPaperR23(questions, [1, 2], marks);
-        examTypeTitle = `CONTINUOUS INTERNAL EXAMINATION - 1 (${marks} Marks)`;
+        paper = buildCIEPaperR23(questions, [1, 2]);
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 1";
       } else if (examType.toLowerCase() === 'cie2' || examType.toLowerCase() === 'cie 2') {
-        paper = buildCIEPaperR23(questions, [3, 4], marks);
-        examTypeTitle = `CONTINUOUS INTERNAL EXAMINATION - 2 (${marks} Marks)`;
+        paper = buildCIEPaperR23(questions, [3, 4]);
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 2";
       } else if (examType.toLowerCase() === 'cie3' || examType.toLowerCase() === 'cie 3' || examType.toLowerCase() === 'model') {
         paper = buildModelPaperR23(questions);
-        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3 (100 Marks)";
+        examTypeTitle = "CONTINUOUS INTERNAL EXAMINATION - 3";
       } else {
         return res.status(400).json({
           success: false,
