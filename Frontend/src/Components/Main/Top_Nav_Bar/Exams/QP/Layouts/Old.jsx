@@ -33,6 +33,12 @@ const Old = forwardRef(function Old(props, ref) {
       }
     };
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+    const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    };
+
     const partCGroups = partC.reduce((acc, item) => {
       const qno = item["Q.no"];
       if (!acc[qno]) acc[qno] = [];
