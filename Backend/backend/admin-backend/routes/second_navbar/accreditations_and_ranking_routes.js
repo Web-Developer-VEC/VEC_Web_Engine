@@ -9,7 +9,7 @@ const { updateData } = require("../../controllers/second_navbar/accreditations_a
 const { deleteData } = require("../../controllers/second_navbar/accreditations_and_ranking_controllers/accreditations_and_ranking_delete_controllers")   
 router.post(
   "/accreditations_and_ranking_admin",
-  checkRole(["superadmin"]), 
+  checkRole(["super_admin"]), 
   handleTempApproval,
   handleTempAction(insertData, updateData, deleteData)
 );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Lottie from 'react-lottie-player';
 import './ContactIcon.css'; 
 
-const ContactIcon = () => {
+const ContactIcon = ({ data }) => {
     const [showPopup, setShowPopup] = useState(false);
       useEffect(() => {
         const handleScroll = () => {
@@ -59,12 +59,12 @@ const ContactIcon = () => {
             {showPopup && (
                 <div className="click-popup rounded-xl font-popp">
                     <p className='bg-secd dark:bg-drks'>📞 Call us: 
-                        <a href="tel:+044-26590758" className='font-popp'> +044-26590758 </a>  
+                        <a href={`tel:${data?.phone_number}`} className='font-popp'> {data?.phone_number} </a>  
                         {/* <a href="tel:+1234567899" className='font-popp'>1234567899</a> */}
                     </p>
                     <p className='bg-secd dark:bg-drks'>🎓 For Admission:  
-                        <a href="tel:+9123547550" className='font-popp'> 9123547550</a> | 
-                        <a href="tel:+918939221120" className='font-popp'>8939221120</a>
+                        <a href={`tel:${data?.admission_contact[0]}`} className='font-popp'> {data?.admission_contact[0]} </a> | 
+                        <a href={`tel:${data?.admission_contact[1]}`} className='font-popp'> {data?.admission_contact[1]} </a>
                     </p>
                 </div>
             )}

@@ -12,6 +12,7 @@ import Fcbk from '../../Assets/facebook.png'
 import Twtr from '../../Assets/twitter.png'
 import Lknd from '../../Assets/linkedin.png'
 import logo from '../../Assets/NEWLOGO.png'
+import { Crown } from 'lucide-react';
 
 const Head = () => {
     const navigate = useNavigate();
@@ -72,7 +73,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/vm"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -98,7 +99,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
               ],
         },
         {
@@ -364,9 +365,22 @@ const Head = () => {
                             className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
                             Fees Payment
                         </button>
+                        <button
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
+                            {session && session?.role === "super_admin" && (
+                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer'>
+                                    Admin
+                                </a>
+                            )}
+                        </button>
 
                         {/* Social Icons */}
                         <div className="flex group items-center justify-end grow gap-3">
+                            {/* {session && session?.role === "super_admin" && (
+                                <a href="/admin_dash">
+                                    <Crown className='text-text cursor-pointer'/>
+                                </a>
+                            )} */}
                             {socls.map((socl, i) => (
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}

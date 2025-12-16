@@ -5,17 +5,17 @@ import SideNav from "../../Second_Nav_Bar/SideNav";
 import "./AbtYr.css";
 import axios from "axios";
 
-const AbtYear = ({ toggle, theme }) => {
+const Aishe = ({ toggle, theme }) => {
   const navigate = useNavigate();
   const [section, setAbtyear] = useState("2021-2022");
   const [aboutYearData, setAboutYearData] = useState([]);
 
 
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
-    const UrlParser = (path) => {
-        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-    };
-    
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const UrlParser = (path) => {
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,25 +57,24 @@ const AbtYear = ({ toggle, theme }) => {
       return <p style={{ textAlign: "center" }}>No data available for {selectedYear}</p>;
     }
     return (
-      <div className="mt:[15px] py-[10px] h-[400px]"> 
-      <div style={{  textAlign: "center" }}>
-        <h1 className="yr-title mt-[30px] font-[poppins]">{yearData.category}</h1>
-        <div className="btn-yr text-black">
-          {yearData.content.map((entry, index) => (
-            <button
-              className="button-yr font-[poppins] "
-              key={index}
-              onClick={() => openInNewTab(entry.pdf_path)}
-            >
-              {entry.name}
-            </button>
-          ))}
+      <div className="mt:[15px] py-[10px] h-[400px]">
+        <div style={{ textAlign: "center" }}>
+          <h1 className="yr-title mt-[30px] font-[poppins]">{yearData.category}</h1>
+          <div className="btn-yr text-black">
+            {yearData.content.map((entry, index) => (
+              <button
+                className="button-yr font-[poppins] "
+                key={index}
+                onClick={() => openInNewTab(entry.pdf_path)}
+              >
+                {entry.name}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
     );
   };
-  
   const navData = (aboutYearData)?.reduce((acc, item) => {
     if (item?.category) {
       acc[item.category] = renderYearContent(item.category);
@@ -102,4 +101,4 @@ const AbtYear = ({ toggle, theme }) => {
   );
 };
 
-export default AbtYear;
+export default Aishe;

@@ -16,7 +16,7 @@ export default function IicFacPolicy({ data }) {
     const policyArray = Array.isArray(data) ? 
         data?.map((name, index) => ({
         year: name?.name,
-        path: UrlParser(name?.path),
+        path: UrlParser(name?.pdf_path),
     })) : []
 
   return (

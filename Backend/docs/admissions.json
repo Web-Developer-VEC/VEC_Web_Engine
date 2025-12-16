@@ -142,12 +142,12 @@
       ],
 
       "BE_Government":{
-      "BE_Government_link_name":"* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
-      "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+        "BE_Government_link_name":"* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
+        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
       },
       "BE_Management":{
-      "BE_Management_link_name":"* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
-      "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"    
+        "BE_Management_link_name":"* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
+        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"    
       }
     }
   },
@@ -196,11 +196,6 @@
   {
     "type": "admission_team",
     "data": [
-      {
-        "name": "Mrs. SHEEBA JOSEPH",
-        "designation": "Senior Student Admission Counselor",
-        "image_path": "/static/images/admission_team/Sheeba_joseph.webp"
-      },
       {
         "name": "Mrs. JENEFER ASHA JEYARANI M",
         "designation": "Student Admission Counselor",

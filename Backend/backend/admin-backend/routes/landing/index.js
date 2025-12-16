@@ -17,6 +17,7 @@ const placementadmin = require("../top_navbar/placement_routes");
 const aboutusadmin = require('../top_navbar/about_us_routes');
 const admissionadmin = require('../top_navbar/admission_routes')
 const administrationadmin = require('../top_navbar/administration_routes')
+const academicadmin = require('../top_navbar/academics_routes/academic_calendar_routes')
 
 //Second Nav Bar
 const transportadmin = require('../second_navbar/transport_routes');
@@ -64,6 +65,7 @@ router.use('',placementadmin);
 router.use('',aboutusadmin);
 router.use('',admissionadmin);
 router.use('',administrationadmin);
+router.use('',academicadmin)
 
 //Second Nav Bar
 router.use('',nccnavyadmin)

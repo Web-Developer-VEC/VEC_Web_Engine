@@ -1,6 +1,7 @@
 // import {useState, useEffect} from 'react'
 import {useLocation, useNavigate} from 'react-router-dom';
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
+import { Crown } from 'lucide-react';
 import Sidebar from './SideBar'
 import Nord from '../../Assets/1723802229690.png'
 import Naac from '../../Assets/1723802229711.png'
@@ -72,7 +73,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/vm"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -98,7 +99,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamiccal" },
               ],
         },
         {
@@ -367,6 +368,11 @@ const Head = () => {
 
                         {/* Social Icons */}
                         <div className="flex group items-center justify-end grow gap-3">
+                            {session && session?.role === "super_admin" && (
+                                <a href="/admin_dash" target='_blank'>
+                                    <Crown />
+                                </a>
+                            )}
                             {socls.map((socl, i) => (
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}
