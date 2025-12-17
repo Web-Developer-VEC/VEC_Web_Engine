@@ -18,59 +18,124 @@ function flattenQuestionsFromDB(subjectDoc) {
 // ---------- HELPERS ----------
 const shuffle = arr => arr.sort(() => Math.random() - 0.5);
 
-function pickRule(pool, group, diff, used, global) {
-  const available = pool.filter(
-    q => !used.has(q.id) && !global.has(q.id)
-  );
-
-  const priority =
-    available.filter(q => q.group === group && q.difficulty === diff) ||
-    available.filter(q => q.group === group) ||
-    available;
-
-  if (!priority.length) return null;
-
-  const selected = shuffle(priority)[0];
-  used.add(selected.id);
-  return selected;
-}
-
-// ---------- PAPER BUILDERS ----------
-function buildCIEPaper(qs, units, used, global) {
+// ---------- PAPER BUILDER (METHOD-1) ----------
+function buildCIEPaper(
+  qs,
+  units,
+  used,
+  global,
+  shortCount,
+  longQuestionCount,
+  displayLongMark,
+  isModelExam = false
+) {
   const partA = [];
   const partB = [];
-  let a = 1, b = 11;
 
-  units.forEach(u => {
-    const shortQs = qs.filter(q => q.unit === u && q.mark === 2);
-    const longQs = qs.filter(q => q.unit === u && q.mark === 16);
+  let qNoA = 1;
+  let qNoB = shortCount + 1;
 
-    [
-      pickRule(shortQs, 1, 1, used, global),
-      pickRule(shortQs, 1, 2, used, global),
-      pickRule(shortQs, 2, 1, used, global),
-      pickRule(shortQs, 2, 2, used, global)
-    ].forEach(q => q && partA.push({
-      "Q.no": a++,
-      question: q.question,
-      co: q.co,
-      "blooms level": q.bloom,
-      marks: 2,
-      image: q.imagePath
-    }));
-
-    const q1 = pickRule(longQs, 1, 1, used, global);
-    const q2 = pickRule(longQs, 2, 2, used, global);
-    if (q1 && q2) {
-      partB.push(
-        { "Q.no": b, option: "a", ...q1, marks: 16 },
-        { "Q.no": b++, option: "b", ...q2, marks: 16 }
+  // ================= PART A =================
+  if (isModelExam) {
+    // 🔥 MODEL EXAM STRICT UNIT–NUMBER MAPPING
+    units.forEach(unit => {
+      const unitShortQs = qs.filter(
+        q =>
+          q.mark === 2 &&
+          q.unit === unit &&
+          !used.has(q.id) &&
+          !global.has(q.id)
       );
-    }
+
+      if (unitShortQs.length < 2) {
+        throw new Error(`Not enough 2-mark questions in Unit ${unit}`);
+      }
+
+      shuffle(unitShortQs)
+        .slice(0, 2)
+        .forEach(q => {
+          used.add(q.id);
+          partA.push({
+            "Q.no": qNoA++, // Q1–Q10 in correct order
+            question: q.question,
+            co: q.co,
+            "blooms level": q.bloom,
+            marks: 2,
+            image: q.imagePath
+          });
+        });
+    });
+  } else {
+    // 🔹 CIE-1 & CIE-2 (5 per unit)
+    const shortPerUnit = shortCount / units.length;
+
+    units.forEach(unit => {
+      const unitShortQs = qs.filter(
+        q =>
+          q.mark === 2 &&
+          q.unit === unit &&
+          !used.has(q.id) &&
+          !global.has(q.id)
+      );
+
+      if (unitShortQs.length < shortPerUnit) {
+        throw new Error(`Not enough 2-mark questions in Unit ${unit}`);
+      }
+
+      shuffle(unitShortQs)
+        .slice(0, shortPerUnit)
+        .forEach(q => {
+          used.add(q.id);
+          partA.push({
+            "Q.no": qNoA++,
+            question: q.question,
+            co: q.co,
+            "blooms level": q.bloom,
+            marks: 2,
+            image: q.imagePath
+          });
+        });
+    });
+  }
+
+  // ================= PART B (OPTION a / b) =================
+  let questionIndex = 0;
+
+  units.forEach(unit => {
+    if (questionIndex >= longQuestionCount) return;
+
+    const unitLongQs = qs.filter(
+      q =>
+        q.mark === 16 &&
+        q.unit === unit &&
+        !used.has(q.id) &&
+        !global.has(q.id)
+    );
+
+    if (unitLongQs.length < 2) return;
+
+    shuffle(unitLongQs)
+      .slice(0, 2)
+      .forEach((q, i) => {
+        used.add(q.id);
+        partB.push({
+          "Q.no": qNoB,
+          option: i === 0 ? "a" : "b",
+          question: q.question,
+          co: q.co,
+          "blooms level": q.bloom,
+          marks: displayLongMark,
+          image: q.imagePath
+        });
+      });
+
+    qNoB++;
+    questionIndex++;
   });
 
   return { partA, partB };
 }
+
 
 // ---------- MAIN ----------
 async function generateQuestionBankFromDB(subjectDoc, examType) {
@@ -83,35 +148,75 @@ async function generateQuestionBankFromDB(subjectDoc, examType) {
   const usedThisSet = new Set();
   let paper, title;
 
+  // ---------- CIE 1 ----------
   if (/cie\s?1/i.test(examType)) {
-    paper = buildCIEPaper(qs, [1, 2], usedThisSet, globalUsed);
+    paper = buildCIEPaper(
+      qs,
+      [1, 2],
+      usedThisSet,
+      globalUsed,
+      10,
+      2,
+      15
+    );
     title = "CONTINUOUS INTERNAL EXAMINATION - 1 (50 Marks)";
-  } else if (/cie\s?2/i.test(examType)) {
-    paper = buildCIEPaper(qs, [3, 4], usedThisSet, globalUsed);
+  }
+
+  // ---------- CIE 2 ----------
+  else if (/cie\s?2/i.test(examType)) {
+    paper = buildCIEPaper(
+      qs,
+      [3, 4],
+      usedThisSet,
+      globalUsed,
+      10,
+      2,
+      15
+    );
     title = "CONTINUOUS INTERNAL EXAMINATION - 2 (50 Marks)";
-  } else {
-    paper = buildCIEPaper(qs, [1,2,3,4,5], usedThisSet, globalUsed);
+  }
+
+  // ---------- MODEL / CIE 3 ----------
+  else {
+    paper = buildCIEPaper(
+      qs,
+      [1, 2, 3, 4, 5],
+      usedThisSet,
+      globalUsed,
+      10,
+      5,
+      16
+    );
     title = "CONTINUOUS INTERNAL EXAMINATION - 3 (100 Marks)";
   }
 
   await updateUsageState(subjectDoc.subjectCode, [...usedThisSet]);
 
-  return { paper: { "PART A": paper.partA, "PART B": paper.partB }, examTypeTitle: title };
+  return {
+    paper: {
+      "PART A": paper.partA,
+      "PART B": paper.partB
+    },
+    examTypeTitle: title
+  };
 }
 
 // ---------- USAGE ----------
 async function getUsageState(subjectCode) {
   const col = getDb().collection("question_usage");
-  return (
-    (await col.findOne({ _id: subjectCode })) ||
-    (await col.insertOne({
-      _id: subjectCode,
-      subjectCode,
-      usedQuestionCodes: [],
-      setCount: 0,
-      updatedAt: new Date()
-    })).ops?.[0]
-  );
+  const doc = await col.findOne({ _id: subjectCode });
+
+  if (doc) return doc;
+
+  const res = await col.insertOne({
+    _id: subjectCode,
+    subjectCode,
+    usedQuestionCodes: [],
+    setCount: 0,
+    updatedAt: new Date()
+  });
+
+  return res.ops[0];
 }
 
 async function updateUsageState(subjectCode, used) {
