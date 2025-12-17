@@ -51,7 +51,7 @@
     {
       "section": "library timings",
       "breakfast": "6:00 AM - 9:00 AM",
-      "lunch": "12:00 PM - 1:00 PM",
+      "lunch": "12:00 PM - 11:00 PM",
       "dinner": "6:00 PM - 10:00 PM"
     }
   },
@@ -63,7 +63,7 @@
     "collection_type": "about",
     "meta_data": 
     {
-      "about_us": "The hostel provides excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
+      "about_us": "The hostel vanakam excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
     }
   },
   {
@@ -74,7 +74,7 @@
     "collection_type": "about",
     "original_data": 
     {
-      "about_us": "The hostel provides excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
+      "about_us": "The hostel vanakam excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
     },
     "meta_data": 
     {
@@ -108,6 +108,7 @@
     {
       "warden_name": "Meow Das V",
       "phone_number": "4500304304",
+      "image_path": "/static/images/warden_profile_photos/999.webp",
       "designation": "Deputy Warden"
     },
     "meta_data": 
@@ -125,23 +126,12 @@
     {
       "section": "library timings",
       "breakfast": "6:00 AM - 9:00 AM",
-      "lunch": "12:00 PM - 1:00 PM",
+      "lunch": "12:00 PM - 11:00 PM",
       "dinner": "9:00 PM - 11:00 PM"
     },
     "meta_data": 
     {
       "dinner": "9:00 PM - 12:00 PM"
-    }
-  },
-  {
-  "action": "delete",
-  "collectionName": "hostel_details",
-  "title": "Powerhouse",
-  "collection_type": "about_us",
-  "category": null,
-  "meta_data":
-    {
-      "about_us":"Naan thaan da LEO, LEO DAS"
     }
   },
   {
