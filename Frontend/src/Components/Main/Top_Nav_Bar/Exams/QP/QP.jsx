@@ -277,7 +277,6 @@ const GenerateTable = ({ toggle, theme }) => {
   const location = useLocation();
   const previousData = location.state;
   const [degree, setDegree] = useState("");
-  const [regulation, setRegulation] = useState("");
   const [year, setYear] = useState("");
   const [section, setSection] = useState("");
   const [branch, setBranch] = useState("");
@@ -297,17 +296,10 @@ const GenerateTable = ({ toggle, theme }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!config || !previousData) 
-    {
-      console.log("Hello");
-      return;
-    }
+    if (!config || !previousData) return;
 
     // Degree
     setDegree(previousData.degree === "B.E" ? "BE" : "BTech");
-
-    // Regulation
-    setRegulation(previousData.regulation ? "R2019" : "R2023");
 
     setYear(previousData.year);
     setSection(previousData.section);
@@ -367,19 +359,9 @@ const GenerateTable = ({ toggle, theme }) => {
     return config.degree;
   }, [config]);
 
-  const regulationOptions = useMemo(() => {
-    if (!config) return [];
-    return config.regulations;
-  }, [config]);
-
   const yearOptions = useMemo(() => {
     if (!config) return [];
     return config.years;
-  }, [config]);
-
-  const semesterOptions = useMemo(() => {
-    if (!config) return [];
-    return config.semesters;
   }, [config]);
 
   const branchOptions = useMemo(() => {
@@ -416,21 +398,6 @@ const GenerateTable = ({ toggle, theme }) => {
   /* --- Handlers (these also clear dependent selections where appropriate) --- */
   const handleDegreeChange = (val) => {
     setDegree(val);
-    setRegulation("");
-    setYear("");
-    setSection("");
-    setBranch("");
-    setSemester("");
-    setSubject("");
-    setSubjectCode("");
-    setSetGroup("");
-    setDepartments([]);
-    setExam("");
-    setPreviewData(null);
-  };
-
-  const handleRegulationChange = (val) => {
-    setRegulation(val);
     setYear("");
     setSection("");
     setBranch("");
@@ -576,7 +543,6 @@ const handleSubjectCodeSelect = (val) => {
 
   const allFilled =
     degree &&
-    regulation &&
     year &&
     section &&
     date &&
@@ -604,8 +570,6 @@ const handleSubjectCodeSelect = (val) => {
 
     const data = {
       degree: degree === "BE" ? "B.E" : "B.Tech",
-      regulationType: regulation === "R2019" ? "R2019" : "R2023",
-      regulation: regulation === "R2019",
       year,
       section,
       date: formatDateDDMMYYYY(date),
@@ -627,6 +591,12 @@ const handleSubjectCodeSelect = (val) => {
 
     setPreviewData(data);
     navigate("/preview", { state: data });
+  };
+
+  const session = JSON.parse(sessionStorage.getItem("coeuserSession"));
+
+  if (!session) {
+    navigate("/login");
   };
 
   return (
@@ -659,26 +629,6 @@ const handleSubjectCodeSelect = (val) => {
             </div>
           </div>
 
-          {/* Regulation */}
-          <div className="gt-row">
-            <label className="gt-label">Regulation:</label>
-            <div className="gt-radio-group">
-              {regulationOptions.map((r) => (
-                <label key={r} className="gt-radio-label">
-                  <input
-                    type="radio"
-                    name="regulation"
-                    value={r}
-                    checked={regulation === r}
-                    onChange={() => handleRegulationChange(r)}
-                    disabled={!degree}
-                  />
-                  {r}
-                </label>
-              ))}
-            </div>
-          </div>
-
           {/* Year */}
           <div className="gt-row">
             <label className="gt-label">Year:</label>
@@ -691,7 +641,6 @@ const handleSubjectCodeSelect = (val) => {
                     value={y}
                     checked={year === y}
                     onChange={() => handleYearChange(y)}
-                    disabled={!regulation}
                   />
                   {y}
                 </label>

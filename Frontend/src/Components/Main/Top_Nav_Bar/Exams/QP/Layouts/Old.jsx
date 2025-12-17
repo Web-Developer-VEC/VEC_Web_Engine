@@ -288,13 +288,13 @@ const Old = forwardRef(function Old(props, ref) {
                     return (
                       <React.Fragment key={qno}>
                         <tr className="no-break">
-                          <td rowSpan={3} className="border-1 border-text p-2 min-h-[38px]">{qno}.</td>
+                          <td rowSpan={3} className="border-1 border-text p-2 min-h-[38px] align-top">{qno}.</td>
                           <td className="border-1 border-text p-2 min-h-[38px]">(a)</td>
                           <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
                             {first.question}
                             {first.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage("https://velammal.edu.in/wp-content//static/images/aboutvec/aboutvec2.webp")} alt={`b-${qno}-a`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                                <img src={resolveImage(first.image)} alt={`b-${qno}-a`} className="max-w-full mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
@@ -313,7 +313,7 @@ const Old = forwardRef(function Old(props, ref) {
                             {second.question}
                             {second.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage("https://testdatavec.s3.ap-south-1.amazonaws.com/static/images/exams/reg21qb/v_of_bigdata.webp")} alt={`b-${qno}-b`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                                <img src={resolveImage(second.image)} alt={`b-${qno}-b`} className="max-w-full mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
@@ -329,14 +329,14 @@ const Old = forwardRef(function Old(props, ref) {
                   return group.map((item, idx) => (
                     <tr className="no-break" key={`${qno}-${idx}`}>
                       {idx === 0 ? (
-                        <td rowSpan={group.length} className="border-1 border-text p-2 min-h-[38px]">{qno}.</td>
+                        <td rowSpan={group.length} className="border-1 border-text p-2 min-h-[38px] align-top">{qno}.</td>
                       ) : null}
                       <td className="border-1 border-text p-2 min-h-[38px]">{item.option ?? ""}</td>
                       <td className="border-1 border-text p-2 min-h-[38px] whitespace-pre-line">
                         {item.question}
                         {/* {item.image ? ( */}
                           <div className="mt-2">
-                            <img src={resolveImage("https://testdatavec.s3.ap-south-1.amazonaws.com/static/images/exams/reg21qb/v_of_bigdata.webp")} alt={`b-${qno}-${idx}`} className="max-w-full mt-2" crossOrigin="anonymous" />
+                            <img src={resolveImage(item.image)} alt={`b-${qno}-${idx}`} className="max-w-full mt-2" crossOrigin="anonymous" />
                           </div>
                         {/* ) : null} */}
                       </td>
