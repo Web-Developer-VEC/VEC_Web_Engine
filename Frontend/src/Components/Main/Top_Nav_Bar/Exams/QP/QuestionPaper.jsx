@@ -29,19 +29,13 @@ const ExamPDF = () => {
         "III": "cie3"
       }
 
-      const regulationMap = {
-        "R2019": "R-19",
-        "R2023": "R-23"
-      }
-
       try {
         const responce = await axios.post("/api/main-backend/questionbank_generator",{
           examType: examTypeMap[state?.exam],
           subjectcode: state?.subjectCode,
-          regulation: regulationMap[state?.regulationType]
+          regulation: "r-23"
         })
-        
-        console.log(responce.data);
+      
         setQuestions(responce.data);
         
       } catch (error) {
@@ -101,10 +95,39 @@ const ExamPDF = () => {
       // Add CSS to cloned to reduce unexpected breaks (mostly for visual parity)
       const style = document.createElement("style");
       style.textContent = `
-        .page-break { page-break-before: always; break-before: page; }
-        .no-break { break-inside: avoid; page-break-inside: avoid; -webkit-column-break-inside: avoid; }
-        tr { break-inside: avoid; page-break-inside: avoid; }
-        body { background-color: #ffffff !important; }
+        /* ONLY PAGE BREAK SAFETY */
+        .no-break {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+          -webkit-column-break-inside: avoid !important;
+        }
+
+        .part-b-block {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        tr {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        body {
+          background: #ffffff !important;
+        }
+
+        header {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        .reg {
+          padding-bottom: 15px;
+        }
+
+        .he th {
+          padding-bottom: 5px;
+        }
       `;
       pagerWrapper.appendChild(style);
 
@@ -117,7 +140,7 @@ const ExamPDF = () => {
       );
 
       // Render whole cloned node to canvas
-      const scale = 2; // you can experiment with 2 for better quality
+      const scale = 3; // you can experiment with 2 for better quality
       const canvas = await html2canvas(cloned, {
         scale,
         useCORS: true,
@@ -134,18 +157,42 @@ const ExamPDF = () => {
       const printableHeightPx = printableHeightMM * pxPerMM;
       const totalHeightPx = canvas.height;
 
-      // Build array of safe cut positions from .no-break elements (bottom offsets in canvas pixels)
       const parentRect = cloned.getBoundingClientRect();
-      const safeRects = Array.from(cloned.querySelectorAll('.no-break')).map(el => {
+
+      // Build array of safe cut positions from .no-break elements (bottom offsets in canvas pixels)
+      const atomicBlocks = Array.from(
+        cloned.querySelectorAll('[data-atomic="true"]')
+      );
+
+      const safeRects = [];
+
+      // 1️⃣ Add atomic blocks FIRST
+      atomicBlocks.forEach(el => {
         const r = el.getBoundingClientRect();
         const topPxDom = r.top - parentRect.top;
         const bottomPxDom = r.bottom - parentRect.top;
-        // convert to canvas px
-        return {
+
+        safeRects.push({
           topPxCanvas: Math.round(topPxDom * domToCanvas),
-          bottomPxCanvas: Math.round(bottomPxDom * domToCanvas)
-        };
-      }).filter(r => !Number.isNaN(r.topPxCanvas) && !Number.isNaN(r.bottomPxCanvas));
+          bottomPxCanvas: Math.round(bottomPxDom * domToCanvas),
+          atomic: true
+        });
+      });
+
+      // 2️⃣ Add other no-break elements EXCEPT those inside atomic blocks
+      Array.from(cloned.querySelectorAll('.no-break')).forEach(el => {
+        if (el.closest('[data-atomic="true"]')) return; // 🚫 IGNORE inner rows
+
+        const r = el.getBoundingClientRect();
+        const topPxDom = r.top - parentRect.top;
+        const bottomPxDom = r.bottom - parentRect.top;
+
+        safeRects.push({
+          topPxCanvas: Math.round(topPxDom * domToCanvas),
+          bottomPxCanvas: Math.round(bottomPxDom * domToCanvas),
+          atomic: false
+        });
+      });
 
       // Sort safeRects by position just in case
       safeRects.sort((a, b) => a.topPxCanvas - b.topPxCanvas);
@@ -243,7 +290,9 @@ const ExamPDF = () => {
         pagerWrapper.parentNode.removeChild(pagerWrapper);
       }
 
-      pdf.save("QuestionPaper_A4.pdf");
+      const paperName = `${state?.subject}_${state?.set}.pdf`
+
+      pdf.save(paperName);
     } catch (err) {
       console.error("PDF generation error:", err);
       alert("Failed to generate PDF. See console for details.");
@@ -267,11 +316,7 @@ const ExamPDF = () => {
       </div>
       <div className="my-10 font-rome">
         {/* captured div */}
-        {state?.regulation ? (
-          <Old ref={componentReference} data={questions} state={state}/>
-        ) : (
-          <New ref={componentReference} data={questions} state={state}/>
-        )}
+        <New ref={componentReference} data={questions} state={state}/>
 
         <div className="flex w-fit mx-auto gap-4">
           <div className="w-fit p-2 px-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim mx-auto mt-4">

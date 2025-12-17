@@ -49,7 +49,6 @@ const Head = () => {
             sub: [
                 { ttl: "Student Login", lnk: "https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" },
                 { ttl: "Faculty Login", lnk: "https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" },
-                { ttl: "QA Exam Login", lnk: "/QA/qaexam" },
             ],
         },
     ];
@@ -116,7 +115,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 7],
+            cod: [0, 6],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
@@ -136,7 +135,6 @@ const Head = () => {
                 {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
                 {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
-                {hrd: false, ttl: "QP", sup: [], lnk: "/Qp"},
             ],
         },
         {
