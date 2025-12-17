@@ -1,6 +1,6 @@
 const express = require('express');
-const { questionbank_generator  } = require('../../controllers/questionbank_generator_controllers.js');
-const {questionbank_form} = require('../../controllers/questionbank_generator_controllers.js');
+const { questionbank_generator  } = require('../../controllers/questionbank_controllers/questionbank_generator_controllers.js');
+const {questionbank_form} = require('../../controllers/questionbank_controllers/questionbank_generator_controllers.js');
 const  {coeloginsecuritycheck} = require('../../controllers/coe_login_controllers.js')
 const createRateLimiter = require('../../middlewares/ratelimiter');
 const xss = require('../../middlewares/xss');
