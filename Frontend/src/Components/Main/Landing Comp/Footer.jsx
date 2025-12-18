@@ -108,6 +108,7 @@ const Footer = forwardRef((props, ref) => {
                             <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank">Fees Payment</a></li>
                             <li><a href="/grievances">Grievances</a></li>
                             <li><a href="#">Login</a></li>
+                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdzOYGuOJVllSmrlYQN9rXvCpB7meQYfv6VYS2QDTLV1cIQSw/viewform" target="_blank" rel="noopener noreferrer">Career</a></li>
                         </ul>   
                     </div>
                 </div>
