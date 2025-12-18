@@ -130,15 +130,20 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       const updatedData = doc.data.map((item) => {
-        if (
-          (item._id &&
-            original_data._id &&
-            item._id.toString() === original_data._id.toString()) ||
-          JSON.stringify(item) === JSON.stringify(original_data)
-        ) {
-          return { ...item, ...meta_data };
-        }
-        return item;
+      const isMatch =
+      item.name === original_data.name &&
+      item.educational_qualification === original_data.educational_qualification &&
+      item.designation === original_data.designation;
+
+      if (isMatch) {
+      return {
+        ...item,
+        ...meta_data,          // update fields
+        image_path: meta_data.image_path || item.image_path
+      };
+      }
+
+      return item;
       });
 
       await mainCollection.updateOne(
