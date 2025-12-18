@@ -35,19 +35,19 @@ const New = forwardRef(function New(props, ref) {
     return normalized;
   };
 
-  const resolveImage = (imgPath) => {
-    if (!imgPath) return null;
-    try {
-      if (data?.sourceFile) {
-        return new URL(imgPath, data.sourceFile).href;
-      }
-      return imgPath;
-    } catch (e) {
-      return imgPath;
-    }
-  };
+  // const UrlParser = (imgPath) => {
+  //   if (!imgPath) return null;
+  //   try {
+  //     if (data?.sourceFile) {
+  //       return new URL(imgPath, data.sourceFile).href;
+  //     }
+  //     return imgPath;
+  //   } catch (e) {
+  //     return imgPath;
+  //   }
+  // };
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = process.env.REACT_APP_TEST_BASE_URL;
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
@@ -93,7 +93,7 @@ const New = forwardRef(function New(props, ref) {
             <tbody>
               <tr className="no-break">
                 <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">Subject Code :</td>
-                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{data?.subjectcode ?? "—"}</td>
+                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.subjectcode ?? "—"}</td>
                 <td className="border-1 border-text pl-2 pb-2 w-[100px] font-bold text-[16pt]">Marks :</td>
                 <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">{state?.mark} mark</td>
               </tr>
@@ -130,18 +130,18 @@ const New = forwardRef(function New(props, ref) {
 
         {/* PART - A */}
         <div className="">
-          <h3 className="text-center text-[16pt] mb-0">Answer All Questions</h3>
+          <h3 className="text-center text-[16pt]">Answer All Questions</h3>
 
           <h5 className="border-text text-center text-[16pt]">PART-A (10 × 2 = 20 Marks)</h5>
 
           <table className="w-full table-fixed border-text border-collapse">
             <thead>
               <tr className="no-break he">
-                <th className="w-[30px] border-1 border-text text-center">Q No</th>
-                <th className="w-[500px] border-1 border-text text-center">Questions</th>
-                <th className="w-[40px] border-1 border-text text-center">Marks</th>
-                <th className="w-[50px] border-1 border-text text-center">CO</th>
-                <th className="w-[50px] border-1 border-text text-center">Blooms Level</th>
+                <th className="w-[30px]  text-center">Q No</th>
+                <th className="w-[500px]  text-center">Questions</th>
+                <th className="w-[40px]  text-center">Marks</th>
+                <th className="w-[50px]  text-center">CO</th>
+                <th className="w-[50px]  text-center">Blooms Level</th>
               </tr>
             </thead>
 
@@ -149,34 +149,35 @@ const New = forwardRef(function New(props, ref) {
               {partA.length > 0 ? (
                 partA.map((q, idx) => (
                   <tr className="no-break" key={idx}>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q["Q.no"] ?? idx + 1}.</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                    <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q["Q.no"] ?? idx + 1}.</td>
+                    <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                       {formatQuestion(q.question)}
                       {q.image ? (
                         <div className="mt-2">
                           <img
-                            src={resolveImage(q.image)}
+                            src={UrlParser(q.image)}
                             alt={`q-${q["Q.no"]}-img`}
-                            className="max-w-full mt-2"
+                            className="max-w-[500px]"
+                            style={{ height: "auto" }}
                             crossOrigin="anonymous"
                           />
                         </div>
                       ) : null}
                     </td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q.marks ?? ""}</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q.co ?? ""}</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q["blooms level"] ?? ""}</td>
+                    <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q.marks ?? ""}</td>
+                    <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q.co ?? ""}</td>
+                    <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{q["blooms level"] ?? ""}</td>
                   </tr>
                 ))
               ) : (
                 // placeholder rows while loading/no data
                 [1, 2, 3, 4, 5].map(i => (
                   <tr className="no-break" key={i}>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">{i}.</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">Loading question...</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                    <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">2</td>
+                    <td className=" pl-2 pb-3 min-h-[38px]">{i}.</td>
+                    <td className=" pl-2 pb-3 min-h-[38px]">Loading question...</td>
+                    <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                    <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                    <td className=" pl-2 pb-3 min-h-[38px]">2</td>
                   </tr>
                 ))
               )}
@@ -211,38 +212,38 @@ const New = forwardRef(function New(props, ref) {
                     return (
                       <>
                         <tr>
-                          <td rowSpan={3} className="border-1 border-text text-center align-top text-[16pt]">{firstQno}.</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">(a)</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                          <td rowSpan={3} className=" text-center align-top text-[16pt]">{firstQno}.</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(a)</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(a.question)}
                             {a.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(a.image)} alt={`b-${firstQno}-a`} className="w-[800px] mt-2" crossOrigin="anonymous" />
+                                <img src={UrlParser(a.image)} alt={`b-${firstQno}-a`} className="w-[500px] mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a.marks}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a.co}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a["blooms level"]}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a.marks}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a.co}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{a["blooms level"]}</td>
                         </tr>
 
                         <tr>
-                          <td colSpan="5" className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt] pb-2">(OR)</td>
+                          <td colSpan="5" className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] pb-2">(OR)</td>
                         </tr>
 
                         <tr>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">(b)</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] aligh-top">(b)</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(b.question)}
                             {b.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(b.image)} alt={`b-${firstQno}-a`} className="w-[800px] mt-2" crossOrigin="anonymous" />
+                                <img src={UrlParser(b.image)} alt={`b-${firstQno}-a`} className="w-[500px] mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b.marks}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b.co}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b["blooms level"]}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b.marks}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b.co}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{b["blooms level"]}</td>
                         </tr>
                       </>
                     );
@@ -277,38 +278,38 @@ const New = forwardRef(function New(props, ref) {
                     return (
                       <React.Fragment key={qno}>
                         <tr className="no-break">
-                          <td rowSpan={3} className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">(a)</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                          <td rowSpan={3} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(a)</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(first.question)}
                             {first.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(first.image)} alt={`b-${qno}-a`} className="w-[800px] mt-2" crossOrigin="anonymous" />
+                                <img src={UrlParser(first.image)} alt={`b-${qno}-a`} className="w-[500px] mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first.marks ?? ""}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first.co ?? ""}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first["blooms level"] ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first.marks ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first.co ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{first["blooms level"] ?? ""}</td>
                         </tr>
 
                         <tr className="no-break">
-                          <td colSpan="5" className="border-1 border-text text-center pl-2 pb-3 text-[16pt] min-h-[38px] text-[16pt]">(OR)</td>
+                          <td colSpan="5" className=" text-center pl-2 pb-3 text-[16pt] min-h-[38px] text-[16pt]">(OR)</td>
                         </tr>
 
                         <tr className="no-break">
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">(b)</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(b)</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(second.question)}
                             {second.image ? (
                               <div className="mt-2">
-                                <img src={resolveImage(second.image)} alt={`b-${qno}-b`} className="w-[800px] mt-2" crossOrigin="anonymous" />
+                                <img src={UrlParser(second.image)} alt={`b-${qno}-b`} className="w-[500px] mt-2" crossOrigin="anonymous" />
                               </div>
                             ) : null}
                           </td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second.marks ?? ""}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second.co ?? ""}</td>
-                          <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second["blooms level"] ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second.marks ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second.co ?? ""}</td>
+                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{second["blooms level"] ?? ""}</td>
                         </tr>
                       </React.Fragment>
                     );
@@ -318,31 +319,31 @@ const New = forwardRef(function New(props, ref) {
                   return group.map((item, idx) => (
                     <tr className="no-break" key={`${qno}-${idx}`}>
                       {idx === 0 ? (
-                        <td rowSpan={group.length} className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
+                        <td rowSpan={group.length} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
                       ) : null}
-                      <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.option ?? ""}</td>
-                      <td className="border-1 border-text pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
+                      <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.option ?? ""}</td>
+                      <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                         {formatQuestion(item.question)}
                         {item.image ? (
                           <div className="mt-2">
-                            <img src={resolveImage(item.image)} alt={`b-${qno}-${idx}`} className="w-[800px] mt-2" crossOrigin="anonymous" />
+                            <img src={UrlParser(item.image)} alt={`b-${qno}-${idx}`} className="w-[500px] mt-2" crossOrigin="anonymous" />
                           </div>
                         ) : null} <br />
                       </td>
-                      <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.marks ?? ""}</td>
-                      <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.co ?? ""}</td>
-                      <td className="border-1 border-text pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item["blooms level"] ?? ""}</td>
+                      <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.marks ?? ""}</td>
+                      <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.co ?? ""}</td>
+                      <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item["blooms level"] ?? ""}</td>
                     </tr>
                   ));
                 })
               ) : (
                 <tr className="no-break">
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">No PART B questions found</td>
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
-                  <td className="border-1 border-text pl-2 pb-3 min-h-[38px]">—</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">No PART B questions found</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">—</td>
+                  <td className=" pl-2 pb-3 min-h-[38px]">—</td>
                 </tr>
               )}
             </tbody>
