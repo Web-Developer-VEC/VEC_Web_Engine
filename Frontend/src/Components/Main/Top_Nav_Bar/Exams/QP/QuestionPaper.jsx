@@ -33,7 +33,7 @@ const ExamPDF = () => {
         const responce = await axios.post("/api/main-backend/questionbank_generator",{
           examType: examTypeMap[state?.exam],
           subjectcode: state?.subjectCode,
-          regulation: "r-23"
+          set: state?.set
         })
       
         setQuestions(responce.data);
@@ -56,7 +56,12 @@ const ExamPDF = () => {
     let pagerWrapper = null;
     
     try {
-      const pdf = new jsPDF("p", "mm", "a4");
+      const pdf = new jsPDF({
+        orientation: "p",
+        unit: "mm",
+        format: "a4",
+        compress: true
+      });
       const pageWidthMM = pdf.internal.pageSize.getWidth();
       const pageHeightMM = pdf.internal.pageSize.getHeight();
       const marginMM = 15;
@@ -140,9 +145,9 @@ const ExamPDF = () => {
       );
 
       // Render whole cloned node to canvas
-      const scale = 3; // you can experiment with 2 for better quality
+      // const scale = window.devicePixelRatio || 2;
       const canvas = await html2canvas(cloned, {
-        scale,
+        scale: 3,
         useCORS: true,
         allowTaint: false,
         logging: false,
@@ -271,14 +276,14 @@ const ExamPDF = () => {
           0, 0, canvas.width, s.height
         );
 
-        const imgData = sliceCanvas.toDataURL("image/png");
+        const imgData = sliceCanvas.toDataURL("image/jpeg", 0.85);
         const imgHeightMM = s.height / pxPerMM;
 
         if (i === 0) {
-          pdf.addImage(imgData, "PNG", marginMM, marginMM, printableWidthMM, imgHeightMM);
+          pdf.addImage(imgData, "JPEG", marginMM, marginMM, printableWidthMM, imgHeightMM);
         } else {
           pdf.addPage();
-          pdf.addImage(imgData, "PNG", marginMM, marginMM, printableWidthMM, imgHeightMM);
+          pdf.addImage(imgData, "JPEG", marginMM, marginMM, printableWidthMM, imgHeightMM);
         }
 
         // cleanup
