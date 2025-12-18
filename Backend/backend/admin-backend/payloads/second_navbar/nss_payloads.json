@@ -62,7 +62,7 @@
     "original_data": {
       "title": "Ignite'24",
       "date": "20th November 2024",
-      "image_path": "/static/images/nss/event/ignite24.webp"
+      "image_path": "/static/images/nss/event/ignite24.png"
     }
   },
   {
@@ -74,7 +74,7 @@
     "meta_data": {
        "title": "Republic Day",
       "date": "26th January 2025",
-      "image_path": "/static/images/nss/event/republic day.webp"
+      "image_path": "/static/images/nss/event/republic day.png"
     }
   },
 
@@ -85,7 +85,7 @@
     "title": "insert team member",
     "category": "student_coordinater",
     "meta_data": {
-      "name": "RAHUL KUMARAN R",
+      "name": "deepak R",
       "designation": "AI&DS coordinator",
       "image_path": "/static/images/nss/8.webp"
     }
@@ -102,9 +102,9 @@
       "image_path": "/static/images/nss/1.webp"
     },
     "original_data": {
-      "name": "RAHUL KUMARAN R",
+      "name": "deepak R",
       "designation": "AI&DS coordinator",
-      "image_path": "/static/images/nss/8.webp"
+      "image_path": "/static/images/nss/deepak R.png"
     }
   },
   {
@@ -116,24 +116,7 @@
     "meta_data": {
        "name": "Dr. KARTHIK R",
       "designation": "Programme Officer",
-      "image_path": "/static/images/nss/1.webp"
-    }
-  },
-  {
-    "collectionName": "nss",
-    "collection_type": "team",
-    "action": "update",
-    "title": "update team member",
-    "category": "faculty_coordinater",
-    "meta_data": {
-      "name": "Dr. KARTHIK R",
-      "designation": "Programme Officer & Faculty Head",
-      "image_path": "/static/images/nss/1.webp"
-    },
-    "original_data": {
-      "name": "Dr. KARTHIK R",
-      "designation": "Programme Officer",
-      "image_path": "/static/images/nss/1.webp"
+      "image_path": "/static/images/nss/Dr. KARTHIK R.png"
     }
   }
 ]
