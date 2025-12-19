@@ -74,13 +74,13 @@ const YRC = ({toggle,theme}) => {
   return (
     <div>
         <Banner
-        backgroundImage="./Banners/YRC.webp"
+          backgroundImage="./Banners/YRC.webp"
           headerText="Youth Red Cross (YRC)"
           subHeaderText="Fostering excellence in social service and community well-being."
           toggle={toggle} theme={theme}
           />
           {yrcData ? (
-            <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} />
+            <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={""} />
           ) : (
             <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
               <LoadComp />

@@ -15,12 +15,12 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-import Career from "./Components/Main/Landing Comp/career.jsx";
 
 /* Lazy Loaded Components */
 /* Landing Page */
 const LandingPage = React.lazy(() => import("./Landing.jsx"));
 const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
+const Career = React.lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
 
 /* AboutUs Pages */
 const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
