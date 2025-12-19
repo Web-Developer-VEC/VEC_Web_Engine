@@ -5,6 +5,7 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { FaUpload, FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -27,6 +28,8 @@ const Awardsnss = ({ data }) => {
   const [backupData, setBackupData] = useState([]);
   const [carouselData, setCarouselData] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+
+  const { sendRequest, loading, error } = useAdminRequest();
 
 
 
@@ -109,16 +112,22 @@ const Awardsnss = ({ data }) => {
     setIsDirty(true);
   };
 
-  const handleAddItem = () => {
-    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
-      id: Date.now(), 
+const handleAddItem = () => {
+  const updated = [
+    ...items.map(item => ({ ...item })),
+    {
+      id: Date.now(),
       image_path: "",
       title: "",
       description: "",
-      selected: false
-    }]);
-    setIsDirty(true);
-  };
+      selected: false,
+    },
+  ];
+
+  setItems(updated);
+  setIsDirty(hasChanges(updated, committedItems));
+};
+
 
   const handleItemSelect = (index) => {
     const updatedItems = items.map((item, i) => 
@@ -145,14 +154,37 @@ const Awardsnss = ({ data }) => {
     setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
   };
 
-  const confirmDelete = () => {
-    const updated = items.filter((_, i) => !selectedItems.includes(i)).map((item) => ({ ...item }));
-    setItems(updated);
-    setSelectedItems([]);
-    setSelectAll(false);
-    setShowDeleteModal(false);
-    setIsDirty(true);
-  };
+ 
+ const hasChanges = (current, committed) => {
+  if (current.length !== committed.length) return true;
+
+  return current.some((item, index) => {
+    const oldItem = committed[index];
+    if (!oldItem) return true;
+
+    return (
+      item.title !== oldItem.title ||
+      item.description !== oldItem.description ||
+      item.image_path !== oldItem.image_path
+    );
+  });
+};
+ 
+const confirmDelete = () => {
+  const updated = items
+    .filter((_, i) => !selectedItems.includes(i))
+    .map(item => ({ ...item }));
+
+  setItems(updated);
+  setSelectedItems([]);
+  setSelectAll(false);
+  setShowDeleteModal(false);
+
+  // ✅ recalculate dirty state
+  const dirty = hasChanges(updated, committedItems);
+  setIsDirty(dirty);
+};
+
 
   const handleCancel = () => {
     if (pendingItems) {
@@ -207,16 +239,119 @@ const Awardsnss = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
-    
+const isAwardChanged = (oldItem, newItem) => {
+  if (!oldItem || !newItem) return false;
+
+  return (
+    oldItem.title !== newItem.title ||
+    oldItem.description !== newItem.description ||
+    oldItem.image_path !== newItem.image_path
+  );
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingItems) return;
+
+  const payload = [];
+  const files = [];
+
+  const committedMap = new Map(
+    committedItems.map(i => [String(i.id), i])
+  );
+  const pendingMap = new Map(
+    pendingItems.map(i => [String(i.id), i])
+  );
+
+  /* ================= INSERT ================= */
+  pendingItems.forEach((pItem) => {
+    if (!committedMap.has(String(pItem.id))) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "awards",
+        action: "insert",
+        title: "insert awards",
+        meta_data: {
+          title: pItem.title,
+          image_path: pItem.image_path,
+          description: pItem.description,
+        },
+      });
+
+      if (pItem.image_file) {
+        files.push(pItem.image_file);
+      }
+    }
+  });
+
+  /* ================= UPDATE ================= */
+  pendingItems.forEach((pItem) => {
+    const cItem = committedMap.get(String(pItem.id));
+
+    if (cItem && isAwardChanged(cItem, pItem)) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "awards",
+        action: "update",
+        title: "update awards",
+        meta_data: {
+          title: pItem.title,
+          image_path: pItem.image_path,
+          description: pItem.description,
+        },
+        original_data: {
+          title: cItem.title,
+          image_path: cItem.image_path,
+          description: cItem.description,
+        },
+      });
+
+      if (pItem.image_file) {
+        files.push(pItem.image_file);
+      }
+    }
+  });
+
+  /* ================= DELETE ================= */
+  committedItems.forEach((cItem) => {
+    if (!pendingMap.has(String(cItem.id))) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "awards",
+        action: "delete",
+        title: "delete awards",
+        meta_data: {
+          title: cItem.title,
+          image_path: cItem.image_path,
+          description: cItem.description,
+        },
+      });
+    }
+  });
+
+  /* ================= FINAL ================= */
+  if (payload.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  try {
+    await sendRequest(payload, files);
+
     setCommittedItems(deepCopy(pendingItems));
     setItems(deepCopy(pendingItems));
     setPendingItems(null);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+
+    toast.success("Final request submitted successfully!");
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
+
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -236,19 +371,30 @@ const Awardsnss = ({ data }) => {
     setItems(deepCopy(updated));
   };
 
-  const handleImageUpload = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
+const handleImageUpload = (e, index) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const updatedItems = [...items];
-      updatedItems[index] = { ...updatedItems[index], image_path: event.target.result };
-      setItems(updatedItems);
-      setIsDirty(true);
-    };
-    reader.readAsDataURL(file);
-  };
+  const previewUrl = URL.createObjectURL(file);
+
+  setItems(prev =>
+    prev.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            image_file: file, // ✅ actual file
+            image_path: `/static/images/yrc/awards/${file.name}`, // ✅ FINAL PATH
+            preview_url: previewUrl, // ✅ preview only
+          }
+        : item
+    )
+  );
+
+  setIsDirty(true);
+};
+
+
+
 
   const getChanges = () => {
     if (!pendingItems) return [];
@@ -312,7 +458,7 @@ const Awardsnss = ({ data }) => {
 
   return (
     <>
-      <div className="ncc-carousel-wrap relative">
+      <div className="ncc-carousel-wrap relative p-8">
         <ToastContainer position="bottom-right" autoClose={2000} />
         
         {/* Header */}
@@ -320,7 +466,8 @@ const Awardsnss = ({ data }) => {
           <h2 className="text-2xl font-bold text-brwn dark:text-drkt"></h2>
           
           {/* Edit button on right - Only show when not editing */}
-          {!isEditing && (
+          {!isEditing &&
+           (
             <button
               onClick={handleStartEdit}
               className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
@@ -332,7 +479,8 @@ const Awardsnss = ({ data }) => {
         </div>
 
         {/* Content */}
-        {isEditing ? (
+        {isEditing ? 
+        (
           // Edit Mode - Table View
           <>
             <div className="overflow-x-auto border border-black rounded-md mb-4">
@@ -360,11 +508,19 @@ const Awardsnss = ({ data }) => {
                       <td className="border border-black px-4 py-3 text-center">
                         <div className="flex flex-col items-center gap-2">
                           {item.image_path && (
-                            <img
-                              src={item.image_path.startsWith("data:") ? item.image_path : UrlParser(item.image_path)}
-                              alt={item.title || "Event Image"}
-                              className="w-24 h-24 object-cover rounded border"
-                            />
+<img
+  src={
+    item.preview_url
+      ? item.preview_url
+      : item.image_path
+      ? UrlParser(item.image_path)
+      : "/placeholder.jpg"
+  }
+  alt={item.title || "Award"}
+  className="w-24 h-24 object-cover rounded"
+/>
+
+
                           )}
                           <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
                             {item.image_path ? "Replace" : "Upload"}
@@ -433,7 +589,7 @@ const Awardsnss = ({ data }) => {
               )}
               
               {/* Cancel & Save Buttons */}
-              <div className="flex justify-end items-center gap-3 mt-4">
+              <div className="flex justify-end items-center gap-3 mt-4 mb-4">
                 <button
                   onClick={handleCancel}
                   className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
@@ -470,7 +626,13 @@ const Awardsnss = ({ data }) => {
           className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
         >
           <img
-            src={item?.image_path ? UrlParser(item.image_path) : "/placeholder-image.jpg"}
+            src={
+    item.preview_url
+      ? item.preview_url
+      : item.image_path
+      ? UrlParser(item.image_path)
+      : "/placeholder.jpg"
+  }
             alt={item?.title || `Slide ${index + 1}`}
             className="w-full h-80 md:h-96 object-cover rounded-t-lg mx-auto"
           />

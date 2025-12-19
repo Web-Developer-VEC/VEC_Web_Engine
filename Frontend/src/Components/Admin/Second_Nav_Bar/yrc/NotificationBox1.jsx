@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-// import "./NotificationBox.css";
+import "./YrcNotificationBox.css";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -160,15 +160,18 @@ const handleStartEdit = () => {
 const handleFinalRequestConfirm = async () => {
   if (!pendingItems) return;
 
-  // Prepare payload for backend
+  // ✅ Convert items → string array (WHAT BACKEND EXPECTS)
+  const originalData = committedItems.map(item => item.content);
+  const updatedData = pendingItems.map(item => item.content);
+
   const payload = [
     {
       collectionName: "yrc",
       collection_type: "news_updates",
       action: "update",
       title: "update news",
-      original_data: committedItems, // old news data
-      meta_data: pendingItems,       // updated news data
+      original_data: originalData,
+      meta_data: updatedData,
     },
   ];
 
@@ -176,15 +179,16 @@ const handleFinalRequestConfirm = async () => {
     const result = await sendRequest(payload);
 
     if (result) {
-      // Update local state after successful request
-      setCommittedItems(JSON.parse(JSON.stringify(pendingItems)));
-      setItems(JSON.parse(JSON.stringify(pendingItems)));
+      setCommittedItems(deepCopy(pendingItems));
+      setItems(deepCopy(pendingItems));
       setPendingItems(null);
       setIsSaved(false);
       setShowRequestModal(false);
+
       toast.success("Final request submitted successfully!");
     }
   } catch (err) {
+    console.error(err);
     toast.error("Failed to submit request!");
   }
 };
@@ -266,7 +270,7 @@ const handleFinalRequestConfirm = async () => {
 
 return (
     <>
-      <div className="nss-notification-container relative">
+      <div className="yrc-notification-container relative">
         {/* Header */}
         {/* Edit Button Div */}
         {!isEditing && (
@@ -284,7 +288,7 @@ return (
         )}
         
         {/* Title Div */}
-        <div className="nss-news-updates text-sm md:text-[16px] ml-auto md:ml-0 text-brwn dark:text-drkt border-b-2 border-[#eab308] pb-1">
+        <div className="yrc-news-updates text-sm md:text-[16px] ml-auto md:ml-0 text-brwn dark:text-drkt border-b-2 border-[#eab308] pb-1">
           Bringing you the latest news & updates
         </div>
         
@@ -292,8 +296,8 @@ return (
 {isEditing ? (
   // ✅ Edit Mode
   <>
-    <div className="nss-notification-box dark:bg-drkb mt-2">
-      <div className="nss-notification-header flex justify-between items-center">
+    <div className="yrc-notification-box dark:bg-drkb mt-2">
+      <div className="yrc-notification-header flex justify-between items-center">
         <span>Recent Updates</span>
       </div>
 <div>      <div className="overflow-x-auto mt-2">
@@ -391,13 +395,32 @@ return (
   </>
 ) : (
   // ✅ View Mode
-  <div className="nss-notification-box dark:bg-drkb">
-    <div className="nss-notification-header flex justify-between items-center">
+  // <div className="yrc-notification-box dark:bg-drkb">
+  //   <div className="yrc-notification-header flex justify-between items-center">
+  //     <span>Recent Updates</span>
+  //   </div>
+
+  //   <div className="yrc-scrolling-news">
+  //     <div className="yrc-scrolling-inner">
+  //       {items.map((item, index) => (
+  //         <p
+  //           key={index}
+  //           className="news-item text-sm md:text-base text-justify lg:text-base dark:text-drkt mb-2"
+  //         >
+  //           <li>{item.content}</li>
+  //         </p>
+  //       ))}
+  //     </div>
+  //   </div>
+  // </div>
+
+    <div className="yrc-notification-box dark:bg-drkb">
+    <div className="yrc-notification-header flex justify-between items-center">
       <span>Recent Updates</span>
     </div>
 
-    <div className="scrolling-news">
-      <div className="scrolling-inner">
+    <div className="yrc-scrolling-news">
+      <div className="yrc-scrolling-inner">
         {items.map((item, index) => (
           <p
             key={index}
@@ -409,6 +432,7 @@ return (
       </div>
     </div>
   </div>
+
 )}
 
 {!isEditing && isSaved && (
