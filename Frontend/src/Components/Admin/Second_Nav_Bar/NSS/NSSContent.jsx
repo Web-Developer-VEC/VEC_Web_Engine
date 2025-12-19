@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./NSSCotent.css";
-import { Pencil, Plus, Send, X,Trash2 } from "lucide-react";
+import { Pencil, Plus, Send, X, Trash2 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
 import Autotextarea from "../AutoResizeTextarea";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -16,6 +17,8 @@ const NSSContent = ({ data }) => {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data
   useEffect(() => {
@@ -95,7 +98,6 @@ const NSSContent = ({ data }) => {
   };
 
   const handleSave = () => {
-    // Check for empty fields
     let hasEmptyFields = false;
     
     if (content.about) {
@@ -131,15 +133,61 @@ const NSSContent = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingContent) return;
-    
-    setCommittedContent(deepCopy(pendingContent));
-    setContent(deepCopy(pendingContent));
-    setPendingContent(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingContent) {
+      toast.error("No draft to submit. Please save changes first.");
+      return;
+    }
+
+    const aboutArray = pendingContent?.about ?? content?.about ?? committedContent?.about ?? [];
+    const originalAbout = committedContent?.about ?? [];
+
+    const singlePayload = [
+      {
+        collectionName: "nss",
+        collection_type: "about",
+        action: "update",
+        title: "update about NSS",
+        category: null,
+        meta_data: {
+          about: pendingContent.about,
+        },
+        original_data: {
+          about: committedContent.about,
+        },
+      },
+      {
+        collectionName: "nss",
+        collection_type: "about",
+        action: "update",
+        title: "update about NSS",
+        category: null,
+        meta_data: {
+          objectives: pendingContent.objectives,
+        },
+        original_data: {
+          objectives: committedContent.objectives,
+        },
+      },
+    ];
+
+
+    try {
+      const result = await sendRequest(singlePayload, []); 
+      if (result) {
+        setCommittedContent(deepCopy(pendingContent));
+        setContent(deepCopy(pendingContent));
+        setPendingContent(null);
+        setIsSaved(false);
+        setShowRequestModal(false);
+        toast.success("Final request submitted!");
+      } else {
+        toast.error("Request failed. Check console for details.");
+      }
+    } catch (err) {
+      console.error("Final request error:", err);
+      toast.error("An error occurred while sending request.");
+    }
   };
 
   const revertChange = (section) => {
@@ -156,7 +204,6 @@ const NSSContent = ({ data }) => {
     if (!pendingContent || !committedContent) return [];
     const changes = [];
 
-    // Check for changes in about section
     if (JSON.stringify(committedContent.about) !== JSON.stringify(pendingContent.about)) {
       changes.push({
         action: "Edited",
@@ -166,7 +213,6 @@ const NSSContent = ({ data }) => {
       });
     }
 
-    // Check for changes in objectives section
     if (JSON.stringify(committedContent.objectives) !== JSON.stringify(pendingContent.objectives)) {
       changes.push({
         action: "Edited",
@@ -381,8 +427,9 @@ return (
               <button
                 onClick={handleFinalRequestConfirm}
                 className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                disabled={loading}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             )}
           </div>

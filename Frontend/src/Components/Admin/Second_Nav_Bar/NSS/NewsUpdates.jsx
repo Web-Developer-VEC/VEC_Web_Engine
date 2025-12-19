@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
 import "./NotificationBox.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -20,14 +21,16 @@ const NotificationBox = ({ data }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  const { sendRequest, loading } = useAdminRequest();
+
   useEffect(() => {
     if (data && data.length > 0) {
       const formattedData = data.map((item, idx) => ({
         id: idx,
         content: typeof item === "string" ? item : JSON.stringify(item),
-        selected: false
+        selected: false,
       }));
-      
+
       const copy = deepCopy(formattedData);
       setCommittedItems(copy);
       setItems(deepCopy(copy));
@@ -40,21 +43,20 @@ const NotificationBox = ({ data }) => {
     }
   }, [data]);
 
-const handleStartEdit = () => {
-  if (pendingItems) {
-    setItems(deepCopy(pendingItems));   // load saved draft
-    setIsSaved(true);
-  } else {
-    setItems(deepCopy(committedItems)); // load original committed items
-    setIsSaved(false);
-  }
+  const handleStartEdit = () => {
+    if (pendingItems) {
+      setItems(deepCopy(pendingItems)); // load saved draft
+      setIsSaved(true);
+    } else {
+      setItems(deepCopy(committedItems)); // load original committed items
+      setIsSaved(false);
+    }
 
-  setIsEditing(true);
-  setIsDirty(false);
-  setSelectedItems([]);
-  setSelectAll(false);
-};
-
+    setIsEditing(true);
+    setIsDirty(false);
+    setSelectedItems([]);
+    setSelectAll(false);
+  };
 
   const handleChange = (e, idx) => {
     const value = e.target.value;
@@ -64,25 +66,24 @@ const handleStartEdit = () => {
   };
 
   const handleAddItem = () => {
-    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
-      id: Date.now(), 
-      content: "",
-      selected: false
-    }]);
+    setItems((prev) => [
+      ...prev.map((item) => ({ ...item })),
+      {
+        id: Date.now(),
+        content: "",
+        selected: false,
+      },
+    ]);
     setIsDirty(true);
   };
 
   const handleItemSelect = (index) => {
-    const updatedItems = items.map((item, i) => 
-      i === index ? { ...item, selected: !item.selected } : item
-    );
-    
+    const updatedItems = items.map((item, i) => (i === index ? { ...item, selected: !item.selected } : item));
+
     setItems(updatedItems);
-    
-    const selectedIndices = updatedItems
-      .map((item, i) => item.selected ? i : -1)
-      .filter(i => i !== -1);
-    
+
+    const selectedIndices = updatedItems.map((item, i) => (item.selected ? i : -1)).filter((i) => i !== -1);
+
     setSelectedItems(selectedIndices);
     setSelectAll(selectedIndices.length === updatedItems.length && updatedItems.length > 0);
   };
@@ -90,10 +91,10 @@ const handleStartEdit = () => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    
-    const updatedItems = items.map(item => ({ ...item, selected: newSelectAll }));
+
+    const updatedItems = items.map((item) => ({ ...item, selected: newSelectAll }));
     setItems(updatedItems);
-    
+
     setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
   };
 
@@ -124,7 +125,7 @@ const handleStartEdit = () => {
 
   const handleSave = () => {
     // Check for empty fields
-    const invalidItem = items.find(item => !item.content?.trim());
+    const invalidItem = items.find((item) => !item.content?.trim());
 
     if (invalidItem) {
       toast.error("Please fill all fields before saving!");
@@ -155,31 +156,59 @@ const handleStartEdit = () => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
-    setCommittedItems(deepCopy(pendingItems));
-    setItems(deepCopy(pendingItems));
-    setPendingItems(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingItems) {
+      toast.error("No draft to submit. Save changes first.");
+      return;
+    }
+
+    // Build arrays for meta_data and original_data
+    const metaDataArray = pendingItems.map((it) => it.content);
+    const originalDataArray = committedItems.map((it) => it.content);
+
+    const payload = {
+      collectionName: "nss",
+      collection_type: "news_updates",
+      action: "update",
+      title: "update news update",
+      category: null,
+      meta_data: metaDataArray,
+      original_data: originalDataArray,
+    };
+
+    try {
+      const result = await sendRequest([payload], []); // send as array with no files
+      if (result) {
+        setCommittedItems(deepCopy(pendingItems));
+        setItems(deepCopy(pendingItems));
+        setPendingItems(null);
+        setIsSaved(false);
+        setShowRequestModal(false);
+        toast.success("Final request submitted!");
+      } else {
+        toast.error("Final request failed. Check console for details.");
+      }
+    } catch (err) {
+      console.error("Final request error:", err);
+      toast.error("An error occurred while sending request.");
+    }
   };
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
 
-    const committedItem = committedItems.find(item => item.id === itemId);
+    const committedItem = committedItems.find((item) => item.id === itemId);
     let updated;
 
     if (!committedItem) {
       // Item was newly added → remove it
-      updated = pendingItems.filter(item => item.id !== itemId);
-    } else if (!pendingItems.find(item => item.id === itemId)) {
+      updated = pendingItems.filter((item) => item.id !== itemId);
+    } else if (!pendingItems.find((item) => item.id === itemId)) {
       // Item was deleted → restore it
       updated = [...pendingItems, deepCopy(committedItem)];
     } else {
       // Item was edited → reset to committed version
-      updated = pendingItems.map(item => item.id === itemId ? deepCopy(committedItem) : item);
+      updated = pendingItems.map((item) => (item.id === itemId ? deepCopy(committedItem) : item));
     }
 
     setPendingItems(updated);
@@ -190,8 +219,8 @@ const handleStartEdit = () => {
     if (!pendingItems) return [];
     const changes = [];
 
-    const committedMap = new Map(committedItems.map(item => [item.id, item]));
-    const pendingMap = new Map(pendingItems.map(item => [item.id, item]));
+    const committedMap = new Map(committedItems.map((item) => [item.id, item]));
+    const pendingMap = new Map(pendingItems.map((item) => [item.id, item]));
 
     // Check for deleted and edited items
     committedMap.forEach((oldItem, id) => {
@@ -200,7 +229,7 @@ const handleStartEdit = () => {
           action: "Deleted",
           section: "Notification Items",
           changes: `Item: ${oldItem.content.substring(0, 50)}...`,
-          itemId: id
+          itemId: id,
         });
       } else {
         const newItem = pendingMap.get(id);
@@ -209,7 +238,7 @@ const handleStartEdit = () => {
             action: "Edited",
             section: "Notification Items",
             changes: `Item: ${oldItem.content.substring(0, 50)}...`,
-            itemId: id
+            itemId: id,
           });
         }
       }
@@ -222,7 +251,7 @@ const handleStartEdit = () => {
           action: "Added",
           section: "Notification Items",
           changes: `Item: ${newItem.content.substring(0, 50) || "New"}...`,
-          itemId: id
+          itemId: id,
         });
       }
     });
@@ -240,7 +269,7 @@ const handleStartEdit = () => {
     );
   }
 
-return (
+  return (
     <>
       <div className="nss-notification-container relative">
         {/* Header */}
@@ -258,165 +287,119 @@ return (
             </div>
           </div>
         )}
-        
+
         {/* Title Div */}
         <div className="nss-news-updates text-sm md:text-[16px] ml-auto md:ml-0 text-brwn dark:text-drkt border-b-2 border-[#eab308] pb-1">
           Bringing you the latest news & updates
         </div>
-        
+
         {/* Content */}
-{isEditing ? (
-  // ✅ Edit Mode
-  <>
-    <div className="nss-notification-box dark:bg-drkb mt-2">
-      <div className="nss-notification-header flex justify-between items-center">
-        <span>Recent Updates</span>
-      </div>
-<div>      <div className="overflow-x-auto mt-2">
-        <table className="min-w-full border border-gray-300 text-sm">
-          <thead>
-            <tr className="bg-yellow-400 text-brown-900">
-              <th className="border px-2 py-1">SL No</th>
-              <th className="border px-2 py-1">News Item</th>
-              <th className="border px-2 py-1 text-center">
-                <input
-                  type="checkbox"
-                  checked={selectAll}
-                  onChange={handleSelectAll}
-                  className="h-4 w-4"
-                />
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr
-                key={item.id || index}
-                className={item.selected ? "bg-blue-50 dark:bg-blue-900/20" : ""}
-              >
-                <td className="border px-2 py-1 text-center">{index + 1}</td>
-                <td className="border px-2 py-1">
-                  <textarea
-                    className="w-full p-1 border rounded"
-                    value={item.content}
-                    onChange={(e) => handleChange(e, index)}
-                    rows={3}
-                  />
-                </td>
-                <td className="border px-2 py-1 text-center">
-                  <input
-                    type="checkbox"
-                    checked={item.selected || false}
-                    onChange={() => handleItemSelect(index)}
-                    className="h-4 w-4"
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        {isEditing ? (
+          // ✅ Edit Mode
+          <>
+            <div className="nss-notification-box dark:bg-drkb mt-2">
+              <div className="nss-notification-header flex justify-between items-center">
+                <span>Recent Updates</span>
+              </div>
+              <div>
+                <div className="overflow-x-auto mt-2">
+                  <table className="min-w-full border border-gray-300 text-sm">
+                    <thead>
+                      <tr className="bg-yellow-400 text-brown-900">
+                        <th className="border px-2 py-1">SL No</th>
+                        <th className="border px-2 py-1">News Item</th>
+                        <th className="border px-2 py-1 text-center">
+                          <input type="checkbox" checked={selectAll} onChange={handleSelectAll} className="h-4 w-4" />
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {items.map((item, index) => (
+                        <tr key={item.id || index} className={item.selected ? "bg-blue-50 dark:bg-blue-900/20" : ""}>
+                          <td className="border px-2 py-1 text-center">{index + 1}</td>
+                          <td className="border px-2 py-1">
+                            <textarea className="w-full p-1 border rounded" value={item.content} onChange={(e) => handleChange(e, index)} rows={3} />
+                          </td>
+                          <td className="border px-2 py-1 text-center">
+                            <input type="checkbox" checked={item.selected || false} onChange={() => handleItemSelect(index)} className="h-4 w-4" />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
 
-      {/* ✅ Add + Delete inside table bottom center */}
-      <div className="table-actions-container flex justify-center gap-3 mt-4">
-        <button
-          onClick={handleAddItem}
-          className="px-3 py-1 flex items-center gap-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim text-sm mb-3"
-        >
-          <PlusCircle size={16} /> Add New
-        </button>
+                {/* ✅ Add + Delete inside table bottom center */}
+                <div className="table-actions-container flex justify-center gap-3 mt-4">
+                  <button
+                    onClick={handleAddItem}
+                    className="px-3 py-1 flex items-center gap-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim text-sm mb-3"
+                  >
+                    <PlusCircle size={16} /> Add New
+                  </button>
 
-        {selectedItems.length > 0 && (
-          <button
-            onClick={() => setShowDeleteModal(true)}
-            className="px-3 py-1 flex items-center gap-1 bg-red-500 text-prim rounded hover:bg-red-600 text-sm mb-3"
-          >
-            <Trash2 size={16} /> Delete Selected ({selectedItems.length})
-          </button>
+                  {selectedItems.length > 0 && (
+                    <button onClick={() => setShowDeleteModal(true)} className="px-3 py-1 flex items-center gap-1 bg-red-500 text-prim rounded hover:bg-red-600 text-sm mb-3">
+                      <Trash2 size={16} /> Delete Selected ({selectedItems.length})
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="relative w-full">
+              {/* Table content here */}
+              <div className="absolute bottom-2 right-2 flex items-center gap-2">
+                <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500 text-sm">
+                  Cancel
+                </button>
+
+                {isDirty && (
+                  <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim text-sm">
+                    Save
+                  </button>
+                )}
+              </div>
+            </div>
+          </>
+        ) : (
+          // ✅ View Mode
+          <div className="nss-notification-box dark:bg-drkb">
+            <div className="nss-notification-header flex justify-between items-center">
+              <span>Recent Updates</span>
+            </div>
+
+            <div className="scrolling-news">
+              <div className="scrolling-inner">
+                {items.map((item, index) => (
+                  <p key={index} className="news-item text-sm md:text-base text-justify lg:text-base dark:text-drkt mb-2">
+                    <li>{item.content}</li>
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
         )}
-      </div>
 
-      </div>
+        {!isEditing && isSaved && (
+          <div className="w-full mt-4">
+            {/* Footer for saved changes */}
+            <div className="flex justify-end items-center gap-2">
+              <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500 text-sm">
+                Discard
+              </button>
 
-    </div>
-
-<div className="relative w-full">
-  {/* Table content here */}
-  <div className="absolute bottom-2 right-2 flex items-center gap-2">
-    <button
-      onClick={handleCancel}
-      className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500 text-sm"
-    >
-      Cancel
-    </button>
-
-    {isDirty && (
-      <button
-        onClick={handleSave}
-        className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim text-sm"
-      >
-        Save
-      </button>
-    )}
-  </div>
-</div>
-
-        
-
-    
-  </>
-) : (
-  // ✅ View Mode
-  <div className="nss-notification-box dark:bg-drkb">
-    <div className="nss-notification-header flex justify-between items-center">
-      <span>Recent Updates</span>
-    </div>
-
-    <div className="scrolling-news">
-      <div className="scrolling-inner">
-        {items.map((item, index) => (
-          <p
-            key={index}
-            className="news-item text-sm md:text-base text-justify lg:text-base dark:text-drkt mb-2"
-          >
-            <li>{item.content}</li>
-          </p>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
-
-{!isEditing && isSaved && (
-  <div className="w-full mt-4">
-    {/* Footer for saved changes */}
-    <div className="flex justify-end items-center gap-2">
-      <button
-        onClick={handleDiscard}
-        className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500 text-sm"
-      >
-        Discard
-      </button>
-
-      {getChanges().length > 0 && (
-        <button
-          onClick={handleRequest}
-          className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim text-sm"
-        >
-          <Send size={18} /> Request
-        </button>
-      )}
-    </div>
-  </div>
-)}
-
-
-
-        
+              {getChanges().length > 0 && (
+                <button onClick={handleRequest} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim text-sm">
+                  <Send size={18} /> Request
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Final Request Modal */}
-        {showRequestModal &&
-         (
+        {showRequestModal && (
           <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
             <div className="bg-prim p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
               <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
@@ -440,11 +423,7 @@ return (
                         <td className="border p-2">{ch.section}</td>
                         <td className="border p-2">{ch.changes}</td>
                         <td className="border p-2">
-                          <button
-                            onClick={() => revertChange(ch.itemId)}
-                            className="p-1 rounded hover:bg-gray-100"
-                            title="Revert this change"
-                          >
+                          <button onClick={() => revertChange(ch.itemId)} className="p-1 rounded hover:bg-gray-100" title="Revert this change">
                             <X size={16} className="text-red-500" />
                           </button>
                         </td>
@@ -460,11 +439,8 @@ return (
                   Cancel
                 </button>
                 {changes.length > 0 && (
-                  <button
-                    onClick={handleFinalRequestConfirm}
-                    className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                  >
-                    Final Request
+                  <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim" disabled={loading}>
+                    {loading ? "Processing..." : "Final Request"}
                   </button>
                 )}
               </div>
@@ -478,19 +454,13 @@ return (
             <div className="bg-prim p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
               <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
               <p className="text-gray-600 mb-6">
-                Are you sure you want to delete {selectedItems.length} selected item{selectedItems.length > 1 ? 's' : ''}?
+                Are you sure you want to delete {selectedItems.length} selected item{selectedItems.length > 1 ? "s" : ""}?
               </p>
               <div className="flex justify-end gap-3">
-                <button
-                  onClick={() => setShowDeleteModal(false)}
-                  className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
-                >
+                <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
                   Cancel
                 </button>
-                <button
-                  onClick={confirmDelete}
-                  className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700"
-                >
+                <button onClick={confirmDelete} className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700">
                   Delete
                 </button>
               </div>

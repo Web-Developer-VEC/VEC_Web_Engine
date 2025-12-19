@@ -18,6 +18,23 @@
   },
   {
     "collectionName": "nss",
+    "collection_type": "about",
+    "action": "update",
+    "title": "update about NSS",
+    "category": null,
+    "meta_data": {
+      "objectives": [
+        "The NSS is a student-centered program focusing on social service and nation building."
+      ]
+    },
+    "original_data": {
+      "objectives": [
+        "The National Service Scheme (NSS) is an Indian government-sponsored public service program conducted by the Ministry of Youth Affairs and Sports of the Government of India."
+      ]
+    }
+  },
+  {
+    "collectionName": "nss",
     "collection_type": "news_updates",
     "action": "update",
     "title": "update news update",
@@ -75,6 +92,36 @@
        "title": "Republic Day",
       "date": "26th January 2025",
       "image_path": "/static/images/nss/event/republic day.png"
+    }
+  },
+
+  {
+    "collectionName": "nss",
+    "collection_type": "team",
+    "action": "insert",
+    "title": "insert team member",
+    "category": "faculty_coordinater",
+    "meta_data": {
+      "name": "deepak R",
+      "designation": "AI&DS coordinator",
+      "image_path": "/static/images/nss/8.webp"
+    }
+  },
+  {
+    "collectionName": "nss",
+    "collection_type": "team",
+    "action": "update",
+    "title": "update team member",
+    "category": "faculty_coordinater",
+    "meta_data": {
+     "name": "Dr. KARTHIK R",
+      "designation": "Programme Officer",
+      "image_path": "/static/images/nss/1.webp"
+    },
+    "original_data": {
+      "name": "deepak R",
+      "designation": "AI&DS coordinator",
+      "image_path": "/static/images/nss/deepak R.png"
     }
   },
 
