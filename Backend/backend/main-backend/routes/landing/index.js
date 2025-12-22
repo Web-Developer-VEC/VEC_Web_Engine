@@ -34,6 +34,7 @@ const research = require('../top_navbar/research_routes');
 const coelogin = require('../questionbank/coe_login_routes');
 const qbform = require('../questionbank/questionbank_routes')
 const login = require('../qa_exams/login_routes');
+const qa_schedule = require('../qa_exams/qa_schedule_routes')
 
 
 // TOP & SECOND NAV
@@ -70,6 +71,9 @@ router.use('', feedback);
 router.use('', research);
 router.use('', coelogin);
 router.use('', qbform);
-router.use('',login)
+
+//QA
+router.use('',login);
+router.use("",qa_schedule)
 
 module.exports = router;

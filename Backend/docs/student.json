@@ -1,174 +1,74 @@
 [
   {
-    "Department": "Artificial Intelligence and Data Science",
-    "Data": [
-      {
-        "year": "1st",
-        "values": [
-          {
-            "Name": "Hariprasath V",
-            "Regno": "113223072040",
-            "Gmail": "hari.velusmy@gmail.com",
-            "Phoneno": "9876543210",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Karthik R",
-            "Regno": "113223072041",
-            "Gmail": "karthik.r@gmail.com",
-            "Phoneno": "9876543211",
-            "Password": "date-of-birth"
-          }
-        ]
-      },
-      {
-        "year": "2nd",
-        "values": [
-          {
-            "Name": "Priya S",
-            "Regno": "113223072101",
-            "Gmail": "priya.s@gmail.com",
-            "Phoneno": "9876543220",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Arjun K",
-            "Regno": "113223072102",
-            "Gmail": "arjun.k@gmail.com",
-            "Phoneno": "9876543221",
-            "Password": "date-of-birth"
-          }
-        ]
-      }
-    ]
+    "name": "Hariprasath V",
+    "registerno": "113223072040",
+    "email": "hari.velusmy@gmail.com",
+    "phone": "9876543210",
+    "password": "$2b$10$hash_dob_1",
+    "department": "Artificial Intelligence and Data Science",
+    "year": 1
   },
   {
-    "Department": "Computer Science and Engineering",
-    "Data": [
-      {
-        "year": "1st",
-        "values": [
-          {
-            "Name": "Sanjay M",
-            "Regno": "113223062001",
-            "Gmail": "sanjay.m@gmail.com",
-            "Phoneno": "9876543300",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Nithya P",
-            "Regno": "113223062002",
-            "Gmail": "nithya.p@gmail.com",
-            "Phoneno": "9876543301",
-            "Password": "date-of-birth"
-          }
-        ]
-      },
-      {
-        "year": "2nd",
-        "values": [
-          {
-            "Name": "Vignesh R",
-            "Regno": "113223062101",
-            "Gmail": "vignesh.r@gmail.com",
-            "Phoneno": "9876543310",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Anitha S",
-            "Regno": "113223062102",
-            "Gmail": "anitha.s@gmail.com",
-            "Phoneno": "9876543311",
-            "Password": "date-of-birth"
-          }
-        ]
-      }
-    ]
+    "name": "Karthik R",
+    "registerno": "113223072041",
+    "email": "karthik.r@gmail.com",
+    "phone": "9876543211",
+    "password": "$2b$10$hash_dob_2",
+    "department": "Artificial Intelligence and Data Science",
+    "year": 1
   },
   {
-    "Department": "Information Technology",
-    "Data": [
-      {
-        "year": "1st",
-        "values": [
-          {
-            "Name": "Rahul K",
-            "Regno": "113223052001",
-            "Gmail": "rahul.k@gmail.com",
-            "Phoneno": "9876543400",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Divya N",
-            "Regno": "113223052002",
-            "Gmail": "divya.n@gmail.com",
-            "Phoneno": "9876543401",
-            "Password": "date-of-birth"
-          }
-        ]
-      },
-      {
-        "year": "2nd",
-        "values": [
-          {
-            "Name": "Kiran S",
-            "Regno": "113223052101",
-            "Gmail": "kiran.s@gmail.com",
-            "Phoneno": "9876543410",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Meena R",
-            "Regno": "113223052102",
-            "Gmail": "meena.r@gmail.com",
-            "Phoneno": "9876543411",
-            "Password": "date-of-birth"
-          }
-        ]
-      }
-    ]
+    "name": "Priya S",
+    "registerno": "113223072101",
+    "email": "priya.s@gmail.com",
+    "phone": "9876543220",
+    "password": "$2b$10$hash_dob_3",
+    "department": "Artificial Intelligence and Data Science",
+    "year": 2
   },
   {
-    "Department": "Electronics and Communication Engineering",
-    "Data": [
-      {
-        "year": "1st",
-        "values": [
-          {
-            "Name": "Balaji T",
-            "Regno": "113223042001",
-            "Gmail": "balaji.t@gmail.com",
-            "Phoneno": "9876543500",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Sneha L",
-            "Regno": "113223042002",
-            "Gmail": "sneha.l@gmail.com",
-            "Phoneno": "9876543501",
-            "Password": "date-of-birth"
-          }
-        ]
-      },
-      {
-        "year": "2nd",
-        "values": [
-          {
-            "Name": "Ramesh K",
-            "Regno": "113223042101",
-            "Gmail": "ramesh.k@gmail.com",
-            "Phoneno": "9876543510",
-            "Password": "date-of-birth"
-          },
-          {
-            "Name": "Pavithra S",
-            "Regno": "113223042102",
-            "Gmail": "pavithra.s@gmail.com",
-            "Phoneno": "9876543511",
-            "Password": "date-of-birth"
-          }
-        ]
-      }
-    ]
+    "name": "Sanjay M",
+    "registerno": "113223062001",
+    "email": "sanjay.m@gmail.com",
+    "phone": "9876543300",
+    "password": "$2b$10$hash_dob_4",
+    "department": "Computer Science and Engineering",
+    "year": 1
+  },
+  {
+    "name": "Nithya P",
+    "registerno": "113223062002",
+    "email": "nithya.p@gmail.com",
+    "phone": "9876543301",
+    "password": "$2b$10$hash_dob_5",
+    "department": "Computer Science and Engineering",
+    "year": 1
+  },
+  {
+    "name": "Rahul K",
+    "registerno": "113223052001",
+    "email": "rahul.k@gmail.com",
+    "phone": "9876543400",
+    "password": "$2b$10$hash_dob_6",
+    "department": "Information Technology",
+    "year": 1
+  },
+  {
+    "name": "Divya N",
+    "registerno": "113223052002",
+    "email": "divya.n@gmail.com",
+    "phone": "9876543401",
+    "password": "$2b$10$hash_dob_7",
+    "department": "Information Technology",
+    "year": 1
+  },
+  {
+    "name": "Balaji T",
+    "registerno": "113223042001",
+    "email": "balaji.t@gmail.com",
+    "phone": "9876543500",
+    "password": "$2b$10$hash_dob_8",
+    "department": "Electronics and Communication Engineering",
+    "year": 1
   }
 ]
