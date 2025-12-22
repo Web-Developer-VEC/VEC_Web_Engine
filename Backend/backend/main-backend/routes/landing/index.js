@@ -31,8 +31,10 @@ const web_team = require('./web_team_routes');
 const log = require('./log_routes');
 const feedback = require('../second_navbar/feedback_routes');
 const research = require('../top_navbar/research_routes');
-const coelogin = require('./coe_login_routes');
-const qbform = require('../top_navbar/questionbank_routes')
+const coelogin = require('../questionbank/coe_login_routes');
+const qbform = require('../questionbank/questionbank_routes')
+const login = require('../qa_exams/login_routes');
+
 
 // TOP & SECOND NAV
 router.use('', about_us);
@@ -68,5 +70,6 @@ router.use('', feedback);
 router.use('', research);
 router.use('', coelogin);
 router.use('', qbform);
+router.use('',login)
 
 module.exports = router;

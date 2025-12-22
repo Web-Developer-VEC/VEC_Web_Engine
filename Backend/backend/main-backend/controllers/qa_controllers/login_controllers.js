@@ -1,0 +1,142 @@
+const { hashPassword, comparePassword } = require("../../../admin-backend/middlewares/bcrypt");
+const { generateToken } = require("../../../admin-backend/middlewares/jwt");
+const { getDb } = require("../../config/db");
+
+
+async function signup(req, res) {
+  try {
+    const db = getDb();
+    const collection = db.collection("staff");
+
+    const{ name, role, email, password, phone_no }  = req.body;
+
+    // check if exists
+    const existingAdmin = await collection.findOne({ email });
+    if (existingAdmin) {
+      return res.status(400).json({ message: "Admin already exists" });
+    }
+
+    // hash password
+    const hashedPassword = await hashPassword(password);
+
+    // save admin
+    await collection.insertOne({
+      name,
+      role,
+      email,
+      password: hashedPassword,
+      phone_no,
+    });
+
+    res.status(201).json({ message: "Signup successful" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+}
+
+// 🔹 Login
+async function stafflogin(req, res) {
+  try {
+    const db = getDb();
+    const collection = db.collection("staff");
+    const { email, password } = req.body;
+
+    const user = await collection.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const isMatch = await comparePassword(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const token = generateToken({
+      id: user._id,
+      role: user.role
+    });
+
+    req.session.user = {
+      id: user._id,
+      role: user.role,
+      token
+    };
+
+    res.json({
+      message: "Login successful",
+      token,
+      role: user.role
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
+
+async function studentlogin(req, res) {
+  try {
+    const db = getDb();
+    const collection = db.collection("student");
+
+    const { registerno, password, department, year } = req.body;
+
+    // 1️⃣ Validate required fields
+    if (!registerno || !password || !department || !year) {
+      return res.status(400).json({
+        message: "Register number, password, department, and year are required"
+      });
+    }
+
+    // 2️⃣ Find student using multiple fields
+    const student = await collection.findOne({
+      registerno,
+      department,
+      year
+    });
+
+    if (!student) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // 3️⃣ Verify password (plain text)
+    if (password !== student.password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // 4️⃣ Generate token
+    const token = generateToken({
+      id: student._id,
+      registerno: student.registerno
+    });
+
+    // 5️⃣ Create session
+    req.session.user = {
+      id: student._id,
+      registerno: student.registerno,
+      department: student.department,
+      year: student.year,
+      token
+    };
+
+    // 6️⃣ Success response
+    return res.json({
+      message: "Student login successful",
+      token,
+      student: {
+        name: student.name,
+        registerno: student.registerno,
+        department: student.department,
+        year: student.year
+      }
+    });
+
+  } catch (err) {
+    return res.status(500).json({
+      message: "Server error",
+      error: err.message
+    });
+  }
+}
+
+module.exports = {signup , stafflogin , studentlogin}

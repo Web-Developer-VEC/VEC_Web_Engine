@@ -1,4 +1,4 @@
-const { getDb } = require("../../main-backend/config/db");
+const { getDb } = require("../../config/db");
 
 async function coelogin(req, res) {
   try {
