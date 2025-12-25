@@ -1,12 +1,12 @@
 const express = require('express');
 const { questionbank_generator  } = require('../../controllers/questionbank_controllers/questionbank_generator_controllers.js');
 const {questionbank_form} = require('../../controllers/questionbank_controllers/questionbank_generator_controllers.js');
-const  {coeloginsecuritycheck} = require('../../controllers/coe_login_controllers.js')
-const createRateLimiter = require('../../middlewares/ratelimiter');
-const xss = require('../../middlewares/xss');
-const nosql  = require('../../middlewares/sanitizers/nosql_injection');
+const  {coeloginsecuritycheck} = require('../../controllers/questionbank_controllers/coe_login_controllers.js')
+const createRateLimiter = require('../../middlewares/ratelimiter.js');
+const xss = require('../../middlewares/xss.js');
+const nosql  = require('../../middlewares/sanitizers/nosql_injection.js');
 
-const hitTracker = require('../../middlewares/hit_tracker')
+const hitTracker = require('../../middlewares/hit_tracker.js')
 
 const limiter = createRateLimiter({ max: 800, windowMs: 10 * 60 * 1000 });
 
