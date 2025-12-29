@@ -1,5 +1,5 @@
 const express = require('express');
-const {signup , stafflogin, studentlogin} = require('../../controllers/qa_controllers/login_controllers')
+const {signup , stafflogin, studentlogin} = require('../../controllers/qa_controllers/qa_login_controllers')
 const router = express.Router();
 
 router.post('/signup',signup);

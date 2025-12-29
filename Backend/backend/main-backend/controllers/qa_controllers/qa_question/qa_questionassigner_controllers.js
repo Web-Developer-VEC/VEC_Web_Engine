@@ -1,6 +1,6 @@
 const { getDb } = require('../../../config/db');
-const { generateQuestionsForStudent } = require('../qa_question/question_shuffler');
-const { getOrCreateSubjectQuestions } = require('./qaquestiongenerator');
+const { generateQuestionsForStudent } = require('./qa_questionshuffler_controllers');
+const { getOrCreateSubjectQuestions } = require('./qa_questiongenerator_controllers');
 
 async function assignQuestionsToStudents(req, res) {
   try {

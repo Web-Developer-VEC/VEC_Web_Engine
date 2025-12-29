@@ -33,9 +33,10 @@ const feedback = require('../second_navbar/feedback_routes');
 const research = require('../top_navbar/research_routes');
 const coelogin = require('../questionbank/coe_login_routes');
 const qbform = require('../questionbank/questionbank_routes')
-const login = require('../qa_exams/login_routes');
+const login = require('../qa_exams/qa_login_routes.js');
 const qa_schedule = require('../qa_exams/qa_schedule_routes')
-const assign=require('../qa_exams/bringcode.js');
+const assign=require('../qa_exams/qa_questionassign_routes.js');
+const answer = require('../qa_exams/qa_answer_routes.js');
 
 
 // TOP & SECOND NAV
@@ -77,5 +78,6 @@ router.use('', qbform);
 router.use('',login);
 router.use("",qa_schedule)
 router.use('',assign);
+router.use('',answer);
 
 module.exports = router;

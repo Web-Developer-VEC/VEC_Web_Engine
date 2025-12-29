@@ -55,7 +55,6 @@ function normalizeQuestion(row) {
     question: row["Question statement is required. This is the statement that will be delivered to the participant. "] || "",
     options,
     correctOption,
-    choosedoption: "",
   };
 }
 
