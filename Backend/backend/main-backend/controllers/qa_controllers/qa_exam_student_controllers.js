@@ -11,7 +11,7 @@ async function createExamFromSchedule(scheduleId) {
   const studentCollection = db.collection("student");
   const examCollection = db.collection("qa_exam");
 
-  /* -----------------------------
+  /* -----------------------------m
      Get schedule
   ----------------------------- */
 

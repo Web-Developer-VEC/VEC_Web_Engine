@@ -41,10 +41,11 @@
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.3",
     "twilio": "^5.4.3",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "concurrently": "^9.2.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.11"
   }
 }

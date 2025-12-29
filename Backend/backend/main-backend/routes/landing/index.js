@@ -35,6 +35,7 @@ const coelogin = require('../questionbank/coe_login_routes');
 const qbform = require('../questionbank/questionbank_routes')
 const login = require('../qa_exams/login_routes');
 const qa_schedule = require('../qa_exams/qa_schedule_routes')
+const assign=require('../qa_exams/bringcode.js');
 
 
 // TOP & SECOND NAV
@@ -75,5 +76,6 @@ router.use('', qbform);
 //QA
 router.use('',login);
 router.use("",qa_schedule)
+router.use('',assign);
 
 module.exports = router;
