@@ -94,6 +94,9 @@ const AdminYrc = ({ toggle, theme }) => {
   const navigate = useNavigate();
   const { sendRequest, loading, error } = useAdminRequest();
 
+  console.log(yrcData);
+  
+
 const handleDataUpdate = (newData) => {
   setYrcData(newData);
 
@@ -180,7 +183,7 @@ const handleFinalRequestConfirm = async () => {
 
   try {
     const result = await sendRequest(payload); // Send using the hook
-
+    toast.success("Request confirmed and sent successfully!");
     if (result) {
       // Update local states after successful request
       setCommittedData(JSON.parse(JSON.stringify(pendingData)));
@@ -189,7 +192,7 @@ const handleFinalRequestConfirm = async () => {
       setIsSaved(false);
       setShowRequestModal(false);
 
-      toast.success("Request confirmed and sent successfully!");
+      // toast.success("Request confirmed and sent successfully!");
     }
   } catch (err) {
     toast.error("Failed to send request!");
@@ -301,6 +304,8 @@ const handleFinalRequestConfirm = async () => {
           type: typeMatch[yrc],
         });
         const data = response.data.data;
+        console.log("fetched data", data);
+        
         setYrcData(data);
         setCommittedData(JSON.parse(JSON.stringify(data)));
         setPendingData(null);
@@ -348,9 +353,9 @@ const handleFinalRequestConfirm = async () => {
         toggle={toggle}
         theme={theme}
       />
-<ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       {yrcData ? (
-        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} backButton={true} />
+        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={""} />
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />

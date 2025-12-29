@@ -1,0 +1,140 @@
+
+/* Carousel Wrapper */
+.yrc-carousel-wrap {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Carousel Inner Container */
+.yrc-carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Slide */
+.yrc-carousel-slide {
+    min-width: 100%;
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image Styling */
+.yrc-carousel-slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Text Overlay */
+.yrc-carousel-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    max-width: 300px;
+}
+
+/* Carousel Buttons */
+.yrc-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.yrc-carousel-btn-left {
+    left: 10px;
+}
+
+.yrc-carousel-btn-right {
+    right: 10px;
+}
+
+/* Hover Effects */
+.yrc-carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots Indicator */
+.yrc-carousel-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.yrc-dot {
+    width: 10px;
+    height: 10px;
+    /*background: #ccc;*/
+    display: inline-block;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.yrc-dot.active {
+    background: #fdb515;
+}
+
+
+.yrc-carousel-content {
+  position: relative;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: justify;
+  width: auto;
+  
+}
+
+.yrc-carousel-content-left {
+  flex: 1;
+}
+
+.yrc-carousel-content-left h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.yrc-carousel-content-left p {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.yrc-carousel-content-right {
+  position: absolute;
+  right: 15px;
+  /* bottom: -10px; */
+  top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background: #ffc107;
+  border-radius: 5px;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
