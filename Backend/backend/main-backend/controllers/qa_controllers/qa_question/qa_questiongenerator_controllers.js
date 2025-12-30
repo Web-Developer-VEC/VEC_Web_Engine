@@ -1,63 +1,70 @@
-const fs = require('fs');
-const path = require('path');
 const xlsx = require('xlsx');
 const { getDb } = require('../../../config/db');
+const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+
+const s3 = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
+});
+
+const streamToBuffer = async (stream) => {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+};
 
 async function getOrCreateSubjectQuestions(subjectCode, subjectName) {
-  if (!subjectCode || !subjectName) {
-    throw new Error("subjectCode and subjectName are required");
-  }
+  if (!subjectCode) throw new Error("subjectCode is required");
+  if (!subjectName) throw new Error("subjectName is required");
 
   const db = getDb();
   const qaQuestionBank = db.collection('qa_questionbank');
-  const examsCollection = db.collection('exams');
 
-  // 1️⃣ Check existing
+  // ✅ Cache check by subjectCode (recommended unique key)
   const existing = await qaQuestionBank.findOne({ subjectCode });
-  if (existing) {
-    return existing;
-  }
+  if (existing) return existing;
 
-  // 2️⃣ Load config
-  const examDoc = await examsCollection.findOne({ type: "questionbank" });
-  if (!examDoc || !examDoc.data?.length) {
-    throw new Error("Questionbank not found");
-  }
+  // "QA/VR" → ["QA", "VR"]
+  const sections = subjectName.includes('/')
+    ? subjectName.split('/')
+    : [subjectName];
 
-  const subject = examDoc.data[0].subject.find(s => s.code === subjectCode);
-  if (!subject) {
-    throw new Error("Subject not found in questionbank");
-  }
+  // ✅ Base document (NO MODIFICATION)
+  const qaData = {
+    subjectCode,
+    subjectName
+  };
 
-  if (!Array.isArray(subject.excel_path) || !subject.excel_path.length) {
-    throw new Error("No excel paths found for subject");
-  }
+  for (const section of sections) {
 
-  // 3️⃣ Read Excel
-  const qaData = { subjectCode, subjectName };
+    const cleanSection = section.trim().toUpperCase(); // QA / VR
+    const s3Key = `static/xlsx/qa/question/${cleanSection}.xlsx`;
 
-  for (const excelPath of subject.excel_path) {
-    const filePath = path.isAbsolute(excelPath)
-      ? excelPath
-      : path.join(__dirname, '..', excelPath);
+    const s3Response = await s3.send(
+      new GetObjectCommand({
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key: s3Key
+      })
+    );
 
-    if (!fs.existsSync(filePath)) continue;
+    const buffer = await streamToBuffer(s3Response.Body);
+    const workbook = xlsx.read(buffer, { type: 'buffer' });
 
-    const workbook = xlsx.readFile(filePath);
-
-    let sectionKey = path.basename(filePath, path.extname(filePath)).toLowerCase();
-    if (sectionKey === 'qabs') sectionKey = 'qa';
-    if (sectionKey === 'verbal') sectionKey = 'vr';
-
-    qaData[sectionKey] ??= { questions: [] };
+    // ✅ Store under EXACT keys: QA / VR
+    qaData[cleanSection] ??= { questions: [] };
 
     workbook.SheetNames.forEach(sheetName => {
-      const rows = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: "" });
-      qaData[sectionKey].questions.push(...rows);
+      const rows = xlsx.utils.sheet_to_json(
+        workbook.Sheets[sheetName],
+        { defval: "" }
+      );
+      qaData[cleanSection].questions.push(...rows);
     });
   }
 
-  // 4️⃣ Store
   const doc = {
     ...qaData,
     createdAt: new Date(),

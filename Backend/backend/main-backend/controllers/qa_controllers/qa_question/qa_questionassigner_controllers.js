@@ -23,7 +23,7 @@ async function assignQuestionsToStudents(req, res) {
       const studentIndex = i;
 
       const questions = await generateQuestionsForStudent(
-        subjectCode,
+        subject,
         cie,
         studentIndex
       );

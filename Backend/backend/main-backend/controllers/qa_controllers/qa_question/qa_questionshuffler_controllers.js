@@ -60,9 +60,13 @@ function normalizeQuestion(row) {
 
 /* ------------------ MAIN GENERATOR ------------------ */
 
-async function generateQuestionsForStudent(subjectCode, cie, studentIndex = 0) {
+async function generateQuestionsForStudent(subject, cie, studentIndex = 0) {
   const db = getDb();
-  const questionBankDoc = await db.collection('qa_questionbank').findOne({ subjectCode });
+  const questionBankDoc = await db.collection('qa_questionbank').findOne({ subjectName: subject  });
+
+  if (!questionBankDoc) {
+  throw new Error("Question bank not found");
+}
 
   let qaCount, otherCount;
 
@@ -76,15 +80,19 @@ async function generateQuestionsForStudent(subjectCode, cie, studentIndex = 0) {
     throw new Error("Invalid CIE value");
   }
 
-  const qaPool = questionBankDoc.qa?.questions || [];
+  const sections = subject.split('/').map(s => s.trim());
 
-  const otherSections = Object.keys(questionBankDoc)
-    .filter(k => !['subjectCode','subjectName','qa','_id','createdAt','updatedAt'].includes(k));
+   const primarySection = sections[0];        
+  const secondarySections = sections.slice(1);
+
+  const qaPool = questionBankDoc[primarySection]?.questions || [];
+
 
   let otherPool = [];
-  for (const sec of otherSections) {
+  for (const sec of secondarySections) {
     otherPool.push(...(questionBankDoc[sec]?.questions || []));
   }
+
 
   if (qaPool.length < qaCount || otherPool.length < otherCount) {
     throw new Error("Not enough questions in question bank");

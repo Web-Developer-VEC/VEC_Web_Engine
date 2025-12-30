@@ -1,5 +1,5 @@
-const { hashPassword, comparePassword } = require("../../../admin-backend/middlewares/bcrypt");
-const { generateToken } = require("../../../admin-backend/middlewares/jwt");
+const { hashPassword, comparePassword } = require("../../middlewares/bcrypt");
+const { generateToken } = require("../../middlewares/jwt");
 const { getDb } = require("../../config/db");
 
 

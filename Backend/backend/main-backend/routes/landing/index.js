@@ -37,6 +37,7 @@ const login = require('../qa_exams/qa_login_routes.js');
 const qa_schedule = require('../qa_exams/qa_schedule_routes')
 const assign=require('../qa_exams/qa_questionassign_routes.js');
 const answer = require('../qa_exams/qa_answer_routes.js');
+const result = require('../qa_exams/qa_markgenerator_routes.js');
 
 
 // TOP & SECOND NAV
@@ -79,5 +80,6 @@ router.use('',login);
 router.use("",qa_schedule)
 router.use('',assign);
 router.use('',answer);
+router.use('',result);
 
 module.exports = router;
