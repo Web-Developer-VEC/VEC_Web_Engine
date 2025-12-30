@@ -11,6 +11,7 @@ import Boot from "./Components/Main/Landing Comp/BootUp";
 import Head from "./Components/Main/Landing Comp/Head.jsx";
 import Footer from "./Components/Main/Landing Comp/Footer.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
+import AptitudeHeader from "./Components/Main/Aptitude/AptitudeHeader.jsx";
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
@@ -57,6 +58,12 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+
+// Question Paper
+const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
+const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
+const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QuestionPaper.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
@@ -107,6 +114,11 @@ const NotFound = React.lazy(() => import("./NotFound"));
 const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
+
+/* Aptitude */
+const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
+// const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
 
 
 const GlobalStyle = createGlobalStyle`
@@ -231,7 +243,17 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel")
+    // Determine if timer should show
+    const showTimer = currentPath === "/QA/questions";
+
+    // Render header
+    const renderHeader = () => {
+            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            if (currentPath.startsWith('/QA')) return <AptitudeHeader showTimer={showTimer} />;
+            return <Head />;
+}
+
+    const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
     return (
         <>
@@ -242,7 +264,8 @@ const App = () => {
                 {/* Conditionally render Head and Footer */}
                 <>
                     {/* <Head/> */}
-                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                    {/* {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />} */}
+                    {renderHeader()}
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
@@ -315,9 +338,17 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+                                {/*  Question paper Routes */}
+                                <Route path="/login" element={<AuthPage />} />
+                                <Route path="/preview" element={<Layout />} />
+                                <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+                                {/* Aptitude Routes */}
+                                <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
+                                <Route path="/QA/confirm" element={<InstructionPage />} />
+                                <Route path="/QA/questions" element={<QuestionPage />} />
                                 <Route path="/careers" element={<Career />} />
 
                                 {/*  404 - Page not found  */}
@@ -329,10 +360,14 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
-                    <SideButton />
-                    <ScrollToTopButton />
+                    {!isFooter && (
+                        <>
+                            <SideButton />
+                            <ScrollToTopButton />
+                        </>
+                    )}
                 </>
             </AppContainer>
         </>
