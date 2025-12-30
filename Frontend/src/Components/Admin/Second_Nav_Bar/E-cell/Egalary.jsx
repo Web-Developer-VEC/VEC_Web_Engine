@@ -3,6 +3,10 @@ import "./Egalary.css";
 import LoadComp from "../../LoadComp";
 import { FaUserEdit } from "react-icons/fa";
 import { Trash2, Send, ArrowDown, Pencil } from "lucide-react";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function Gall({ gallery }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -21,6 +25,8 @@ export default function Gall({ gallery }) {
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
 
+  const { sendRequest, loading, error } = useAdminRequest();
+
   useEffect(() => {
     if (Array.isArray(gallery)) {
       setEditableData(gallery);
@@ -29,14 +35,23 @@ export default function Gall({ gallery }) {
     }
   }, [gallery]);
 
-  const UrlParser = (path) => {
-    if (!path) return "";
-    if (typeof path === "string") {
-      return path.startsWith("http") ? path : `${BASE_URL}${path}`;
-    }
-    if (path instanceof File) return URL.createObjectURL(path);
-    return "";
-  };
+const UrlParser = (path) => {
+  if (!path) return "";
+
+  if (typeof path === "string") {
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+  }
+
+  if (path instanceof File) {
+    return URL.createObjectURL(path); // local preview
+  }
+
+  return "";
+};
+
+
+  
+  
 
   const handleUndoChange = (change) => {
   let newEditableData = [...editableData];
@@ -126,13 +141,96 @@ export default function Gall({ gallery }) {
 
   const handleRequest = () => setShowRequestModal(true);
 
-  const handleFinalRequestConfirm = () => {
-    console.log("Submitting changes:", allChanges);
+const normalizeImagePath = (path) => {
+  if (!path) return "";
+
+  // Local file → return final server path
+  if (path instanceof File) {
+    return `/static/images/e_cell/${path.name}`;
+  }
+
+  // Cloud path
+  if (typeof path === "string") {
+    if (path.startsWith("/static")) return path;
+    return `/static/images/e_cell/${path}`;
+  }
+
+  return "";
+};
+
+
+
+const generatePayload = () => {
+  return allChanges.map((change) => {
+    // ADD
+    if (change.action === "add") {
+      return {
+        action: "insert",
+        collectionName: "ecell",
+        title: "gallery insert",
+        collection_type: "gallery",
+        meta_data: {
+          image_path: normalizeImagePath(change.item),
+        },
+      };
+    }
+
+    // UPDATE
+    if (change.action === "edit") {
+      return {
+        action: "update",
+        collectionName: "ecell",
+        title: "gallery update",
+        collection_type: "gallery",
+        original_data: {
+          image_path: normalizeImagePath(change.oldItem),
+        },
+        meta_data: {
+          image_path: normalizeImagePath(change.item),
+        },
+      };
+    }
+
+    // DELETE
+    if (change.action === "delete") {
+      return {
+        action: "delete",
+        collectionName: "ecell",
+        title: "gallery delete",
+        collection_type: "gallery",
+        meta_data: {
+          image_path: normalizeImagePath(change.deletedItem),
+        },
+      };
+    }
+
+    return null;
+  }).filter(Boolean);
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  const payload = generatePayload();
+  if (payload.length === 0) {
+    toast.alert("No changes to submit");
+    return;
+  }
+
+  try {
+    await sendRequest(payload); // send payload to admin
+    toast.success("📩 Request sent for admin approval");
+
+    // Update original references and clear changes
     originalRef.current = JSON.parse(JSON.stringify(savedDataRef.current));
     setAllChanges([]);
     setIsSavedOnce(false);
     setShowRequestModal(false);
-  };
+  } catch (err) {
+    console.error(err);
+    toast.alert("Failed to submit request");
+  }
+};
+
 
   if (!Array.isArray(gallery)) {
     return (
@@ -145,6 +243,7 @@ export default function Gall({ gallery }) {
   // ---- render ----
   return (
     <div className="p-8">
+      <ToastContainer position="bottom-right" autoClose={2500} />
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">
           Gallery

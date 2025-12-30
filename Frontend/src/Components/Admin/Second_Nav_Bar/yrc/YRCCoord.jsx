@@ -5,18 +5,19 @@ import { FaPaperPlane, FaUpload, FaRegCircleLeft, FaEye } from "react-icons/fa6"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useBlockNavigation from "../useBlockNavigation";
+import "./YRC.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const YRCCoord = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
-  const parseUrl = (path) => {
-    if (!path) return "/placeholder.jpg";
-    if (path.startsWith("http") || path.startsWith("blob") || path.startsWith("data:")) {
-      return path;
-    }
-    return `${BASE_URL}${path}`;
-  };
 
+
+  const parseUrl = (path) => {
+  if (!path) return "";
+  if (path.startsWith("http") || path.startsWith("blob:")) return path;
+  return `${BASE_URL}${path}`;
+};
   // State management
   const [faculty, setFaculty] = useState(null);
   const [students, setStudents] = useState([]);
@@ -33,6 +34,8 @@ const YRCCoord = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [previewImgs, setPreviewImgs] = useState({});
   const [errors, setErrors] = useState({});
+
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data
   useEffect(() => {
@@ -92,30 +95,62 @@ const YRCCoord = ({ data }) => {
     setIsDirty(true);
   };
 
-  const handleFacultyPreviewChange = (file) => {
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPreviewImgs((prev) => ({ ...prev, faculty: url }));
-      handleChangeFaculty("image_path", url);
-    }
-  };
+const handleFacultyPreviewChange = (file) => {
+  if (!file) return;
 
-  const handleStudentPreviewChange = (index, file) => {
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPreviewImgs((prev) => ({ ...prev, [index]: url }));
-      handleChangeStudent(index, "image_path", url);
-    }
-  };
+  const previewUrl = URL.createObjectURL(file);
+
+  // UI preview only
+  setPreviewImgs((prev) => ({ ...prev, faculty: previewUrl }));
+
+  // store file, NOT blob
+  setFaculty((prev) => ({
+    ...prev,
+    image_file: file,
+    image_path: `/static/images/yrc/faculty/${file.name}`, // ✅ final path
+  }));
+
+  setIsDirty(true);
+};
+
+
+const handleStudentPreviewChange = (index, file) => {
+  if (!file) return;
+
+  const previewUrl = URL.createObjectURL(file);
+
+  setPreviewImgs((prev) => ({
+    ...prev,
+    [index]: previewUrl,
+  }));
+
+  setStudents((prev) =>
+    prev.map((s, i) =>
+      i === index
+        ? {
+            ...s,
+            image_file: file, // ✅ actual file
+            image_path: `/static/images/yrc/students/${file.name}`, // ✅ final path
+          }
+        : s
+    )
+  );
+
+  setIsDirty(true);
+};
+
+
 
   const handleAddStudent = () => {
-    const newStudent = { 
-      id: String(Date.now()),
-      name: "", 
-      designation: "", 
-      image_path: "",
-      selected: false
-    };
+    const newStudent = {
+  id: String(Date.now()),
+  name: "",
+  designation: "",
+  image_path: "",     // final server path
+  image_file: null,   // 👈 NEW (actual file)
+  selected: false
+};
+
     setStudents((prev) => [...prev, newStudent]);
     setIsDirty(true);
   };
@@ -233,19 +268,166 @@ const YRCCoord = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingFaculty && pendingStudents.length === 0) return;
-    
-    setCommittedFaculty(deepCopy(pendingFaculty || faculty));
-    setCommittedStudents(deepCopy(pendingStudents.length > 0 ? pendingStudents : students));
-    setFaculty(deepCopy(pendingFaculty || faculty));
-    setStudents(deepCopy(pendingStudents.length > 0 ? pendingStudents : students));
+const isFacultyChanged = (oldF, newF) => {
+  if (!oldF && newF) return true;   // added
+  if (oldF && !newF) return true;   // deleted
+  if (!oldF && !newF) return false;
+
+  return (
+    oldF.name !== newF.name ||
+    oldF.designation !== newF.designation ||
+    oldF.image_path !== newF.image_path
+  );
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  const payload = [];
+  const files = [];
+
+  /* ================= FILES ================= */
+
+  if (pendingFaculty?.image_file && pendingFaculty.image_path) {
+    files.push(pendingFaculty.image_file);
+  }
+
+  pendingStudents.forEach((s) => {
+    if (s.image_file && s.image_path) {
+      files.push(s.image_file);
+    }
+  });
+
+  /* ================= FACULTY ================= */
+
+/* ================= FACULTY (UPDATE ONLY) ================= */
+
+if (
+  committedFaculty &&
+  pendingFaculty &&
+  isFacultyChanged(committedFaculty, pendingFaculty)
+) {
+  payload.push({
+    collectionName: "yrc",
+    collection_type: "team",
+    action: "update",
+    category: "faculty_coordinators",
+    title: "update Faculty Coordinator",
+    original_data: {
+      name: committedFaculty.name,
+      designation: committedFaculty.designation,
+      image_path: committedFaculty.image_path,
+    },
+    meta_data: {
+      name: pendingFaculty.name,
+      designation: pendingFaculty.designation,
+      image_path: pendingFaculty.image_path,
+    },
+  });
+}
+
+
+  /* ================= STUDENTS ================= */
+  // (your existing student logic stays EXACTLY the same)
+
+  pendingStudents.forEach((pStu) => {
+    const cStu = committedStudents.find(
+      (s) => String(s.id) === String(pStu.id)
+    );
+
+    if (!cStu) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "team",
+        action: "insert",
+        category: "student_coordinators",
+        title: "add Student Coordinator",
+        meta_data: {
+          name: pStu.name,
+          designation: pStu.designation,
+          image_path: pStu.image_path,
+        },
+      });
+    } else if (
+      cStu.name !== pStu.name ||
+      cStu.designation !== pStu.designation ||
+      cStu.image_path !== pStu.image_path
+    ) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "team",
+        action: "update",
+        category: "student_coordinators",
+        title: "update Student Coordinator",
+        original_data: {
+          name: cStu.name,
+          designation: cStu.designation,
+          image_path: cStu.image_path,
+        },
+        meta_data: {
+          name: pStu.name,
+          designation: pStu.designation,
+          image_path: pStu.image_path,
+        },
+      });
+    }
+  });
+
+  committedStudents.forEach((cStu) => {
+    const exists = pendingStudents.find(
+      (p) => String(p.id) === String(cStu.id)
+    );
+
+    if (!exists) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "team",
+        action: "delete",
+        category: "student_coordinators",
+        title: "delete Student Coordinator",
+        original_data: {
+          name: cStu.name,
+          designation: cStu.designation,
+          image_path: cStu.image_path,
+        },
+        meta_data: {
+        name: cStu.name,
+        designation: cStu.designation,
+        image_path: cStu.image_path,
+  },
+      });
+    }
+  });
+
+  /* ================= FINAL ================= */
+
+  if (payload.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  try {
+    await sendRequest(payload, files);
+
+    setCommittedFaculty(deepCopy(pendingFaculty));
+    setCommittedStudents(deepCopy(pendingStudents));
+    setFaculty(deepCopy(pendingFaculty));
+    setStudents(deepCopy(pendingStudents));
+
     setPendingFaculty(null);
     setPendingStudents([]);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+
+    toast.success("Final request submitted successfully!");
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
+
+
+
 
   const revertChange = (itemId, action, isFaculty = false) => {
     const idKey = String(itemId);
@@ -404,10 +586,10 @@ const YRCCoord = ({ data }) => {
         
         {/* Edit button on right */}
         {!isEditing && (
-          <div className="absolute right-0">
+          <div className="absolute right-4">
             <button
               onClick={handleStartEdit}
-              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mt-4"
             >
               <Pencil size={18} />
               Edit
@@ -423,7 +605,7 @@ const YRCCoord = ({ data }) => {
             FACULTY COORDINATOR
           </h2>
           <div className="flex flex-col items-center justify-center">
-            <div className="nss-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4 p-4">
+            <div className="yrc-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4 p-4">
               {/* Faculty Image */}
               <div className="flex-shrink-0 relative">
                 <img
@@ -519,19 +701,22 @@ const YRCCoord = ({ data }) => {
                 </div>
 
                 {/* Upload Button */}
-                {isEditing && (
-                  <div className="mb-3">
-                   <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
+{isEditing && (
+  <div className="mb-3">
+    <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
       {member?.image_path ? "Replace" : "Upload"}
       <input
         type="file"
         accept="image/*"
         className="hidden"
-        onChange={(e) => handleStudentPreviewChange(e.target.files?.[0])}
+        onChange={(e) =>
+          handleStudentPreviewChange(index, e.target.files?.[0])
+        }
       />
     </label>
-                  </div>
-                )}
+  </div>
+)}
+
 
                 {/* Student Fields */}
                 {isEditing ? (
@@ -603,17 +788,26 @@ const YRCCoord = ({ data }) => {
             )}
           </div>
         </>
-      ) : (
+      ) :
+       (
         // View Mode - Normal Display
         <>
           {/* Faculty */}
           <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt mb-1">
             FACULTY COORDINATOR
           </h2>
-          <div className="nss-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4 p-4">
+          <div className="yrc-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6">
             <div className="flex-shrink-0">
               <img
-                src={faculty?.image_path ? parseUrl(faculty.image_path) : "/placeholder-image.jpg"}
+              
+                // src={faculty?.image_path ? parseUrl(faculty.image_path) : "/placeholder-image.jpg"}
+                 src={
+                    previewImgs.faculty
+                      ? previewImgs.faculty
+                      : faculty?.image_path
+                      ? parseUrl(faculty.image_path)
+                      : "/placeholder-image.jpg"
+                  }
                 alt={faculty?.name || "Faculty"}
                 className="w-32 h-32 rounded border object-cover"
               />
@@ -635,7 +829,13 @@ const YRCCoord = ({ data }) => {
                 className="dark:bg-text shadow-md rounded-xl p-4 flex flex-col items-center text-center"
               >
                 <img
-                  src={student?.image_path ? parseUrl(student.image_path) : "/placeholder-image.jpg"}
+                  src={
+                      previewImgs[index]
+                        ? previewImgs[index]
+                        : student?.image_path
+                        ? parseUrl(student.image_path)
+                        : "/placeholder-image.jpg"
+                    }
                   alt={student?.name || "Student"}
                   className="w-24 h-24 border rounded object-cover mb-3"
                 />

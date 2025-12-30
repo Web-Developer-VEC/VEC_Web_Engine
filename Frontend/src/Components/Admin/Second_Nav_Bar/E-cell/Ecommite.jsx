@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
 import "./Ecommite.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function ECellCommittee({ committee }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -16,6 +17,7 @@ export default function ECellCommittee({ committee }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [indexToDelete, setIndexToDelete] = useState(null);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
@@ -38,46 +40,66 @@ export default function ECellCommittee({ committee }) {
   };
 
   // Add new member
-  const handleAddMember = () => {
-    const newMember = { id: Date.now(), name: "", affiliation: "" };
-    setEditableData((prev) => [...prev, newMember]);
-    setSessionChanges((prev) => [
-      ...prev,
-      { index: editableData.length, action: "add", changes: {} },
-    ]);
+const handleAddMember = () => {
+  const newMember = {
+    _tempId: Date.now(),   // 🔑 stable key
+    name: "",
+    affiliation: "",
   };
+
+  setEditableData((prev) => [...prev, newMember]);
+
+  setSessionChanges((prev) => [
+    ...prev,
+    {
+      tempId: newMember._tempId,
+      action: "add",
+      data: newMember,     // ✅ store full row
+    },
+  ]);
+};
+
 
   // Handle field change
-  const handleFieldChange = (index, field, value) => {
-    const newData = [...editableData];
-    const oldVal = newData[index]?.[field];
-    newData[index] = { ...newData[index], [field]: value };
-    setEditableData(newData);
+const handleFieldChange = (index, field, value) => {
+  const newData = [...editableData];
+  const oldVal = newData[index]?.[field];
+  newData[index] = { ...newData[index], [field]: value };
+  setEditableData(newData);
 
-    setSessionChanges((prev) => {
-      const copy = [...prev];
-      const existingIndex = copy.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
-      if (existingIndex >= 0) {
-        copy[existingIndex] = {
-          ...copy[existingIndex],
-          action: copy[existingIndex].action === "add" ? "add" : "edit",
-          changes: {
-            ...copy[existingIndex].changes,
-            [field]: { old: oldVal, new: value },
-          },
-        };
-      } else {
-        copy.push({
-          index,
-          action: savedDataRef.current[index] ? "edit" : "add",
-          changes: { [field]: { old: oldVal, new: value } },
-        });
-      }
-      return copy;
-    });
-  };
+  setSessionChanges((prev) => {
+    const copy = [...prev];
+    const row = newData[index];
+
+    const existingIndex = copy.findIndex(
+      (c) =>
+        (c.tempId && c.tempId === row._tempId) ||
+        (c.index === index && c.action !== "delete")
+    );
+
+    if (existingIndex >= 0) {
+      copy[existingIndex] = {
+        ...copy[existingIndex],
+        action: copy[existingIndex].action === "add" ? "add" : "edit",
+        data: row, // ✅ ALWAYS update row snapshot
+        changes: {
+          ...(copy[existingIndex].changes || {}),
+          [field]: { old: oldVal, new: value },
+        },
+      };
+    } else {
+      copy.push({
+        index,
+        action: savedDataRef.current[index] ? "edit" : "add",
+        data: row,
+        changes: { [field]: { old: oldVal, new: value } },
+      });
+    }
+
+    return copy;
+  });
+};
+
 
   // Add this function inside ECellCommittee
 const handleUndoChange = (change) => {
@@ -110,18 +132,34 @@ const handleUndoChange = (change) => {
 
 
   // Save changes
-  const handleSave = () => {
-    if (sessionChanges.length === 0) {
-      toast.info("No changes to save.");
-      return;
-    }
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-    setAllChanges((prev) => [...prev, ...sessionChanges]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(true);
-    toast.success("Changes saved. You can now Request or Edit again.");
-  };
+const handleSave = () => {
+  if (sessionChanges.length === 0) {
+    toast.info("No changes to save.");
+    return;
+  }
+
+  // 🚫 Block save if any required field is empty
+  const hasEmptyFields = editableData.some(
+    (row) =>
+      !row.name?.trim() ||
+      !row.affiliation?.trim()
+  );
+
+  if (hasEmptyFields) {
+    toast.warning("Please fill all fields before saving.");
+    return; // ⛔ STOP SAVE
+  }
+
+  // ✅ Save allowed
+  savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+  setAllChanges((prev) => [...prev, ...sessionChanges]);
+  setSessionChanges([]);
+  setIsEditing(false);
+  setIsSavedOnce(true);
+
+  toast.success("Changes saved successfully.");
+};
+
 
   // Cancel session
   const handleCancelSession = () => {
@@ -152,17 +190,112 @@ const handleUndoChange = (change) => {
   };
 
   // Confirm final request
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED:", { allChanges, editableData });
-    toast.success("Final request submitted");
+const handleFinalRequestConfirm = async () => {
+  if (allChanges.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  const payload = allChanges
+    .map((change) => {
+
+      /* ========== INSERT ========== */
+      if (change.action === "add") {
+        const row = change.data; // ✅ FIX
+
+        if (!row?.name?.trim() || !row?.affiliation?.trim()) {
+          toast.warning("Empty fields found. Cannot submit request.");
+          return null;
+        }
+
+        return {
+          action: "insert",
+          collectionName: "ecell",
+          title: "coolie",
+          collection_type: "committee",
+          meta_data: {
+            name: row.name,
+            affiliation: row.affiliation,
+          },
+        };
+      }
+
+      /* ========== UPDATE ========== */
+      if (change.action === "edit") {
+        const original = originalRef.current[change.index];
+        if (!original) return null;
+
+        const updatedFields = {};
+        Object.entries(change.changes || {}).forEach(([k, v]) => {
+          if (v.old !== v.new) updatedFields[k] = v.new;
+        });
+
+        if (Object.keys(updatedFields).length === 0) return null;
+
+        return {
+          action: "update",
+          collectionName: "ecell",
+          title: "coolie",
+          collection_type: "committee",
+          original_data: {
+            name: original.name,
+            affiliation: original.affiliation,
+          },
+          meta_data: updatedFields,
+        };
+      }
+
+      /* ========== DELETE ========== */
+      if (change.action === "delete") {
+        const member = change.deletedItem;
+        if (!member) return null;
+
+        return {
+          action: "delete",
+          collectionName: "ecell",
+          title: "coolie",
+          collection_type: "committee",
+          meta_data: {
+            name: member.name,
+            affiliation: member.affiliation,
+          },
+        };
+      }
+
+      return null;
+    })
+    .filter(Boolean);
+
+  if (payload.length === 0) {
+    toast.info("No valid changes to submit");
+    return;
+  }
+
+  console.log("FINAL PAYLOAD:", payload);
+
+  try {
+    await sendRequest(payload);
+
+    toast.success("Request sent for admin approval");
+
     setShowRequestModal(false);
     setAllChanges([]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(editableData));
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-  };
+
+    originalRef.current = structuredClone(editableData);
+    savedDataRef.current = structuredClone(editableData);
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
+
+
+
+
 
   // Open delete multiple modal
   const openDeleteMultiple = () => {
@@ -175,29 +308,41 @@ const handleUndoChange = (change) => {
   };
 
   // Confirm delete
-  const confirmDelete = () => {
-    let newData = [...editableData];
-    let newChanges = [...sessionChanges];
+const confirmDelete = () => {
+  let newData = [...editableData];
+  let newChanges = [...sessionChanges];
 
-    if (indexToDelete === "multiple") {
-      const toDelete = Array.from(selectedRows).sort((a, b) => b - a);
-      for (const idx of toDelete) {
-        newChanges.push({
-          index: idx,
-          action: "delete",
-          deletedItem: newData[idx],
-        });
-        newData.splice(idx, 1);
-      }
+  const handleDelete = (idx) => {
+    // ❌ Remove ANY previous changes (add/edit) for this index
+    newChanges = newChanges.filter((c) => c.index !== idx);
+
+    // ✅ If original data exists, record delete
+    if (savedDataRef.current[idx]) {
+      newChanges.push({
+        index: idx,
+        action: "delete",
+        deletedItem: newData[idx],
+      });
     }
 
-    setEditableData(newData);
-    setSessionChanges(newChanges);
-    setSelectedRows(new Set());
-    setDeleteConfirmOpen(false);
-    setIndexToDelete(null);
-    toast.success("Members deleted in this session.");
+    // Remove row from UI
+    newData.splice(idx, 1);
   };
+
+  if (indexToDelete === "multiple") {
+    [...selectedRows].sort((a, b) => b - a).forEach(handleDelete);
+  }
+
+  setEditableData(newData);
+  setSessionChanges(newChanges);
+  setSelectedRows(new Set());
+  setDeleteConfirmOpen(false);
+  setIndexToDelete(null);
+
+  toast.success("Member deleted.");
+};
+
+
 
   const cancelDelete = () => {
     setDeleteConfirmOpen(false);
@@ -244,7 +389,7 @@ const handleUndoChange = (change) => {
               )}
               {isEditing ? (
                 <>
-                  <textarea
+                  <input
                     value={member.name}
                     placeholder="Enter name"
                     className="w-full mb-2 border rounded p-1"
