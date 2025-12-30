@@ -13,7 +13,7 @@ async function questionbank_form(req, res) {
 
     return res.json({
       success: true,
-      data: doc.data
+      data: doc. data
     });
   } catch (err) {
     return res.status(500).json({
@@ -27,10 +27,34 @@ async function questionbank_generator(req, res) {
   try {
     const { subjectcode, examType, set } = req.body;
 
-    if (!subjectcode || !examType || !set) {
+    // ✅ VALIDATE INPUTS
+    if (!subjectcode) {
       return res.status(400).json({
         success: false,
-        error: "subjectcode, examType, set are required"
+        error: "subjectcode is required"
+      });
+    }
+
+    if (!examType) {
+      return res. status(400).json({
+        success: false,
+        error:  "examType is required"
+      });
+    }
+
+    if (!set) {
+      return res. status(400).json({
+        success: false,
+        error:  "set is required (must be 'A', 'B', or 'C')"
+      });
+    }
+
+    // Validate set value
+    const normalizedSet = set.toString().toUpperCase();
+    if (!['A', 'B', 'C'].includes(normalizedSet)) {
+      return res. status(400).json({
+        success: false,
+        error:  "set must be 'A', 'B', or 'C'"
       });
     }
 
@@ -48,11 +72,11 @@ async function questionbank_generator(req, res) {
       });
     }
 
-    const subjectRecord = meta.data?.[0]?.subject?.find(
-      s => s.code?.toLowerCase() === subjectCode
+    const subjectRecord = meta.data?.[0]?.subject?. find(
+      s => s.code?. toLowerCase() === subjectCode
     );
 
-    if (!subjectRecord?.excel_path) {
+    if (!subjectRecord?. excel_path) {
       return res.status(404).json({
         success: false,
         error: "Excel path not found for subject"
@@ -62,15 +86,16 @@ async function questionbank_generator(req, res) {
     // Ensure subject exists in DB (Excel → DB only once)
     const subjectDoc = await ensureSubjectExists(subjectCode, subjectRecord);
 
-    // Generate paper from DB
-    const { paper, examTypeTitle } =
-      await generateQuestionBankFromDB(subjectDoc, examType);
+    // ✅ PASS SET NUMBER TO GENERATOR
+    const { paper, examTypeTitle, setNumber } =
+      await generateQuestionBankFromDB(subjectDoc, examType, normalizedSet);
 
     return res.json({
       success: true,
       subjectCode,
       subjectName: subjectDoc.subjectName,
-      examType: examTypeTitle,
+      examType:  examTypeTitle,
+      setNumber:  setNumber,
       paper
     });
 
@@ -78,7 +103,7 @@ async function questionbank_generator(req, res) {
     console.error("Question Bank Error:", err);
     return res.status(500).json({
       success: false,
-      error: err.message
+      error:  err.message
     });
   }
 }
