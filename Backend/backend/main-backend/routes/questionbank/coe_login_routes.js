@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { coelogin} = require('../../controllers/coe_login_controllers');
+const { coelogin} = require('../../controllers/questionbank_controllers/coe_login_controllers');
 
 
 const router = express.Router();
