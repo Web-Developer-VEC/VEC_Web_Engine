@@ -1,0 +1,117 @@
+import { useState, useRef, useEffect } from "react"
+
+export function SearchableInput({
+  label,
+  icon: Icon,
+  options,
+  value,
+  onChange,
+  placeholder,
+  multiple = false,
+}) {
+  const [query, setQuery] = useState("")
+  const [open, setOpen] = useState(false)
+  const wrapperRef = useRef(null)
+
+  /* Close dropdown on outside click */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  /* Filter options */
+  const filteredOptions = options
+    .filter((opt) => {
+      if (multiple) return !value.includes(opt)
+      return true
+    })
+    .filter((opt) =>
+      opt.toLowerCase().includes(query.toLowerCase())
+    )
+
+  const handleSelect = (item) => {
+    if (multiple) {
+      onChange([...value, item])
+      setQuery("")
+    } else {
+      onChange(item)
+      setQuery(item)
+      setOpen(false)
+    }
+  }
+
+  const removeItem = (item) => {
+    onChange(value.filter((v) => v !== item))
+  }
+
+  /* Sync single value into input */
+  useEffect(() => {
+    if (!multiple && value) {
+      setQuery(value)
+    }
+  }, [value, multiple])
+
+  return (
+    <div ref={wrapperRef} className="relative space-y-2">
+      <label className="text-slate-700 font-medium text-sm">{label}</label>
+
+      <div
+        className="relative border border-slate-300 rounded-md min-h-[48px]
+        flex flex-wrap items-center gap-2 px-3 focus-within:ring-2
+        focus-within:ring-[#fdcc03]/20"
+        onClick={() => setOpen(true)}
+      >
+        <Icon className="text-slate-400 w-4 h-4" />
+
+        {multiple &&
+          value.map((v) => (
+            <span
+              key={v}
+              className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs"
+            >
+              {v}
+              <button
+                type="button"
+                className="ml-1"
+                onClick={() => removeItem(v)}
+              >
+                ✕
+              </button>
+            </span>
+          ))}
+
+        <input
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value)
+            setOpen(true)
+          }}
+          placeholder={placeholder}
+          className="flex-1 outline-none text-sm bg-transparent"
+        />
+      </div>
+
+      {open && filteredOptions.length > 0 && (
+        <div
+          className="absolute z-10 w-full bg-white border rounded-md shadow-md
+          max-h-40 overflow-auto"
+        >
+          {filteredOptions.map((item) => (
+            <div
+              key={item}
+              onClick={() => handleSelect(item)}
+              className="px-3 py-2 hover:bg-slate-100 cursor-pointer text-sm"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}

@@ -62,6 +62,8 @@ const New = forwardRef(function New(props, ref) {
 
   const partBQnos = Object.keys(partBGroups).map(n => Number(n)).sort((a,b) => a - b);
 
+  const partBHead = state?.exam === "III" ? "PART-B (5 × 16 = 80 Marks)" : "PART-B (2 × 15 = 30 Marks)"
+
   return (
     <div
       className="border-text border w-[70%] mx-auto h-auto min-h-80 p-12 py-16 font-rome printable"
@@ -93,7 +95,7 @@ const New = forwardRef(function New(props, ref) {
             <tbody>
               <tr className="no-break">
                 <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">Subject Code :</td>
-                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.subjectcode ?? "—"}</td>
+                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.subjectCode ?? "—"}</td>
                 <td className="border-1 border-text pl-2 pb-2 w-[100px] font-bold text-[16pt]">Marks :</td>
                 <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">{state?.mark} mark</td>
               </tr>
@@ -132,16 +134,16 @@ const New = forwardRef(function New(props, ref) {
         <div className="">
           <h3 className="text-center text-[16pt]">Answer All Questions</h3>
 
-          <h5 className="border-text text-center text-[16pt]">PART-A (10 × 2 = 20 Marks)</h5>
+          <h5 className="border-text text-center text-[16pt] text-bold">PART-A (10 × 2 = 20 Marks)</h5>
 
           <table className="w-full table-fixed border-text border-collapse">
             <thead>
               <tr className="no-break he">
-                <th className="w-[30px]  text-center">Q No</th>
-                <th className="w-[500px]  text-center">Questions</th>
-                <th className="w-[40px]  text-center">Marks</th>
-                <th className="w-[50px]  text-center">CO</th>
-                <th className="w-[50px]  text-center">Blooms Level</th>
+                <th className="w-[40px]  text-center text-[16pt]">Q No</th>
+                <th className="w-[500px]  text-center text-[16pt]">Questions</th>
+                <th className="w-[40px]  text-center text-[16pt]">Marks</th>
+                <th className="w-[50px]  text-center text-[16pt]">CO</th>
+                <th className="w-[50px]  text-center text-[16pt]">Blooms Level</th>
               </tr>
             </thead>
 
@@ -188,7 +190,7 @@ const New = forwardRef(function New(props, ref) {
         {/* PART - B */}
         <div className="part-b">
           <div className="part-b-block no-break" data-atomic="true">
-            <h5 className="border-text text-center">PART-B (2 × 15 = 30 Marks)</h5>
+            <h5 className="border-text text-center text-bold">{partBHead}</h5>
 
             <table className="w-full table-fixed border-text border-collapse">
               <thead>

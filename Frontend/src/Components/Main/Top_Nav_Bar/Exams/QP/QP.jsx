@@ -593,7 +593,7 @@ const handleSubjectCodeSelect = (val) => {
     navigate("/preview", { state: data });
   };
 
-  const session = JSON.parse(sessionStorage.getItem("coeuserSession"));
+  const session = JSON.parse(sessionStorage.getItem("userSession"));
 
   if (!session) {
     navigate("/login");
@@ -601,7 +601,7 @@ const handleSubjectCodeSelect = (val) => {
 
   return (
     <>
-      <Banner backgroundImage="./Banners/examsbanner.webp" headerText="Question Paper Generator" subHeaderText="QPG" toggle={toggle} theme={theme} />
+      <Banner backgroundImage="./Banners/examsbanner.webp" headerText="Question Paper Generator" subHeaderText="" toggle={toggle} theme={theme} />
 
       <div className="gt-page">
         <form className="gt-form" onSubmit={handleGenerate}>

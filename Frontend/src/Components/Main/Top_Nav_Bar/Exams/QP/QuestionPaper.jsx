@@ -326,7 +326,7 @@ const ExamPDF = () => {
         <div className="flex w-fit mx-auto gap-4">
           <div className="w-fit p-2 px-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim mx-auto mt-4">
             <button onClick={() => navigate("/qp", { state })} className="flex flex-row gap-2 items-center px-3 py-2 rounded" type="button">
-              <ArrowLeft />Back to edit
+              <ArrowLeft />Back to Edit
             </button>
           </div>
           <div className="w-fit p-2 px-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim mx-auto mt-4">

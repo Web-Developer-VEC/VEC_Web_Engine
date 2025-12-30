@@ -96,3 +96,21 @@ form button {
   color: #000;
 }
 
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  /* border: none; */
+  border: 1px solid #999;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  appearance: none;
+}
+
+.input-group select:focus ~ label,
+.input-group select:not([value=""]) ~ label {
+  top: -8px;
+  font-size: 12px;
+  color: #5264ae;
+}
+

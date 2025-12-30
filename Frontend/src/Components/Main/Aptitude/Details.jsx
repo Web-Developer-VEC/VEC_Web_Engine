@@ -4,40 +4,77 @@ import "./Details.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import loginImg from "../../Assets/login.jpg";
+import axios from "axios";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
   const [status, setStatus] = useState('idle'); 
   const [formData, setFormData] = useState({
-    name: "",
-    regNo: "",
-    email: "",
+    department: "",
+    registerno: "",
     password: "",
-    phone: ""
+    year: ""
   });
+
+  const DEPARTMENTS = ["CSE", "ECE", "EEE", "MECH", "IT", "AI&DS"];
+  const YEARS = ["I", "II", "III", "IV"];
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    if (
-      formData.name.trim() === "" ||
-      formData.regNo.trim() === "" ||
-      formData.email.trim() === "" 
-      // ||
-      // formData.password.trim() === ""
-    ) {
-      alert("Please fill all mandatory fields.");
-      return;
+    try {
+      if (
+        formData.department.trim() === "" ||
+        formData.registerno.trim() === "" ||
+        formData.password.trim() === "" ||
+        formData.year.trim() === ""
+      ) {
+        alert("Please fill all mandatory fields.");
+        return;
+      }
+
+      const deptMap = {
+        "AI&DS": "Artificial Intelligence and Data Science"
+      }
+
+      const yearMap = {
+        "I": 1,
+        "II": 2
+      }
+
+      const res = await axios.post("/api/main-backend/studentlogin", {
+        registerno: formData.registerno,
+        password: formData.password,
+        department: deptMap[formData.department],
+        year: yearMap[formData.year]
+      })
+
+      const data = res.data;
+
+      console.log(data);
+      
+
+      sessionStorage.setItem(
+        "userSession",
+        JSON.stringify({
+          token: data.token,
+          student: data.student
+        })
+      )
+
+      console.log("Submitted:", formData);
+
+      // Navigate ONLY after successful validation
+      setTimeout(() => {
+        navigate("/QA/confirm");
+      }, 500);
+    } catch (error) {
+      console.error("Error login the student details");
     }
-
-    console.log("Submitted:", formData);
-
-    // Navigate ONLY after successful validation
-    navigate("/QA/confirm");
   }
 
   useEffect(() => {
@@ -145,20 +182,8 @@ export default function DetailsPage() {
           <div className="input-group">
             <input
               type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder=""
-              required
-            />
-            <label>Name*</label>
-          </div>
-
-          <div className="input-group">
-            <input
-              type="text"
-              name="regNo"
-              value={formData.regNo}
+              name="registerno"
+              value={formData.registerno}
               onChange={handleChange}
               placeholder=""
               required
@@ -168,39 +193,48 @@ export default function DetailsPage() {
 
           <div className="input-group">
             <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder=""
-              required
-            />
-            <label>Email*</label>
-          </div>
-
-          {/* 
-          <div className="input-group">
-            <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              required
               placeholder=""
+              required
             />
             <label>Password*</label>
           </div>
-          */}
 
           <div className="input-group">
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
+            <select
+              name="department"
+              value={formData.department}
               onChange={handleChange}
-              placeholder=""
-            />
-            <label>Phone Number (Optional)</label>
+              required
+            >
+              <option value="" disabled hidden></option>
+              {DEPARTMENTS.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+            <label>Department*</label>
+          </div>
+
+          <div className="input-group">
+            <select
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled hidden></option>
+              {YEARS.map((yr) => (
+                <option key={yr} value={yr}>
+                  {yr}
+                </option>
+              ))}
+            </select>
+            <label>Year*</label>
           </div>
 
           <button type="submit">
