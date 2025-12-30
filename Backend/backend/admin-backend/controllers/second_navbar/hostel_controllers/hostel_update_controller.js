@@ -95,59 +95,83 @@ async function updateData(tempDoc, mainCollection) {
 
       return { success: true, message: "Warden updated successfully" };
     }
+// ---------- GENERAL INFO ----------
+if (collection_type === "general_info") {
+  if (!category) {
+    throw new Error("Category required for general_info");
+  }
 
-    // ---------- GENERAL INFO ----------
-    if (collection_type === "general_info") {
-      if (!category) throw new Error("Category required for general_info");
+  const catIndex = doc.data.findIndex(
+    (c) => c.category === category
+  );
 
-      const catIndex = doc.data.findIndex((c) => c.category === category);
-      if (catIndex === -1) throw new Error("Category not found");
+  if (catIndex === -1) {
+    throw new Error(`Category not found: ${category}`);
+  }
 
-      // ✅ Special handling for Menu
-      if (category === "Menu") {
-        const menu = doc.data[catIndex].content[0].hostel_menu[0];
-
-        ["day", "Breakfast", "lunch", "snacks", "dinner"].forEach((key) => {
-          if (meta_data[key]) {
-            const arr = menu[key];
-
-            const idx = arr.findIndex((val) => val === original_data[key]);
-
-            if (idx !== -1) {
-              arr[idx] = meta_data[key];
-            } else {
-              arr.push(meta_data[key]);
-            }
-          }
-        });
-
-        await mainCollection.updateOne(
-          { type: "general_info" },
-          { $set: { data: doc.data } }
-        );
-
-        return { success: true, message: "General info (Menu) updated successfully" };
-      }
-
-      // ✅ Default handling for Timings (or other categories)
-      const contentIndex = doc.data[catIndex].content.findIndex((c) =>
-        Object.keys(original_data).every((k) => c[k] === original_data[k])
-      );
-      if (contentIndex === -1) throw new Error("Content not found");
-
-      doc.data[catIndex].content[contentIndex] = {
-        ...doc.data[catIndex].content[contentIndex],
-        ...meta_data,
-      };
-
-      await mainCollection.updateOne(
-        { type: "general_info" },
-        { $set: { data: doc.data } }
-      );
-
-      return { success: true, message: "General info (Timings) updated successfully" };
+  /* ===================== MENU ===================== */
+  if (category === "Menu") {
+    const menuContainer = doc.data[catIndex].content?.[0]?.hostel_menu?.[0];
+    if (!menuContainer) {
+      throw new Error("Menu structure not found");
     }
 
+    Object.keys(meta_data).forEach((key) => {
+      if (!menuContainer[key]) return;
+
+      // Replace only matched value
+      if (original_data?.[key]) {
+        const idx = menuContainer[key].findIndex(
+          (v) => v === original_data[key]
+        );
+        if (idx !== -1) {
+          menuContainer[key][idx] = meta_data[key];
+        }
+      }
+    });
+
+    await mainCollection.updateOne(
+      { type: "general_info" },
+      { $set: { data: doc.data } }
+    );
+
+    return {
+      success: true,
+      message: "General info (Menu) updated successfully",
+    };
+  }
+
+  /* ===================== TIMINGS / OTHERS ===================== */
+  if (!original_data?.section) {
+    throw new Error("Section is required to update general_info content");
+  }
+
+  const contentIndex = doc.data[catIndex].content.findIndex(
+    (item) => item.section === original_data.section
+  );
+
+  if (contentIndex === -1) {
+    throw new Error(
+      `Content not found for section: ${original_data.section}`
+    );
+  }
+
+  // 🔹 Merge only updated fields (eg: dinner)
+  doc.data[catIndex].content[contentIndex] = {
+    ...doc.data[catIndex].content[contentIndex],
+    ...meta_data,
+  };
+
+  await mainCollection.updateOne(
+    { type: "general_info" },
+    { $set: { data: doc.data } }
+  );
+
+  return {
+    success: true,
+    message: `General info (${category}) updated successfully`,
+  };
+}
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error(error);

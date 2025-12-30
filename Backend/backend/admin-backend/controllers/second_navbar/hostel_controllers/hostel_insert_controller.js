@@ -15,51 +15,30 @@ async function insertData(tempDoc, mainCollection) {
 
     // ---------- ABOUT ----------
     if (collection_type === "about") {
-      let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data];
+  // get existing about object (always first item)
+  const existingData =
+    Array.isArray(doc.data) && doc.data.length > 0
+      ? doc.data[0]
+      : {};
 
-      updatedData = updatedData.map((item) => {
-        let newItem = { ...item };
-        Object.keys(meta_data).forEach((key) => {
-          if (newItem.hasOwnProperty(key)) {
-            if (Array.isArray(newItem[key])) {
-              newItem[key] = [
-                ...new Set([
-                  ...newItem[key],
-                  ...(Array.isArray(meta_data[key])
-                    ? meta_data[key]
-                    : [meta_data[key]]),
-                ]),
-              ];
-            } else {
-              newItem[key] = [
-                ...new Set([
-                  newItem[key],
-                  ...(Array.isArray(meta_data[key])
-                    ? meta_data[key]
-                    : [meta_data[key]]),
-                ]),
-              ];
-            }
-          } else {
-            newItem[key] = Array.isArray(meta_data[key])
-              ? meta_data[key]
-              : [meta_data[key]];
-          }
-        });
-        return newItem;
-      });
+  // merge meta_data into existing object (overwrite only)
+  const updatedAbout = {
+    ...existingData,
+    ...meta_data,
+  };
 
-      await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: updatedData } }
-      );
+  await mainCollection.updateOne(
+    { type: "about" },
+    { $set: { data: [updatedAbout] } } // always keep array with one object
+  );
 
-      return {
-        success: true,
-        message: "About data updated successfully",
-        data: updatedData,
-      };
-    }
+  return {
+    success: true,
+    message: "About data updated successfully",
+    data: [updatedAbout],
+  };
+}
+
 
     // ---------- HOSTEL FACILITIES ----------
     if (collection_type === "hostel_facilities") {
