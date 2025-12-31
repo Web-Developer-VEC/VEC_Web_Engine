@@ -42,6 +42,7 @@ async function storeExamSchedule(req, res) {
       });
     }
 
+
     /* -----------------------------
        Build schedule document
     ----------------------------- */
@@ -66,6 +67,33 @@ async function storeExamSchedule(req, res) {
 
       createdAt: new Date()
     };
+
+    /* -----------------------------
+   Conflict check
+----------------------------- */
+
+const conflictQuery = {
+  date,
+  status: { $ne: "cancelled" },
+  $or: [
+    department ? { department } : null,
+    registerNo && registerNo.length
+      ? { registerNo: { $in: registerNo } }
+      : null
+  ].filter(Boolean)
+};
+
+const existingSchedule = await collection.findOne(conflictQuery);
+
+if (existingSchedule) {
+  return res.status(409).json({
+    success: false,
+    message:
+      "An exam is already scheduled for this department or register number on the same date. Please delete the previous schedule and try again.",
+    existingScheduleId: existingSchedule._id
+  });
+}
+
 
     /* -----------------------------
        Insert schedule

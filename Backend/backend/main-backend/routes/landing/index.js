@@ -40,6 +40,9 @@ const qa_result = require('../qa_exams/qa_result_routes')
 const qa_assign = require('../qa_exams/qa_questionassign_routes')
 const qa_answer = require('../qa_exams/qa_answer_routes')
 const qa_mark = require('../qa_exams/qa_markgenerator_routes')
+const qa_code_validation = require('../qa_exams/qa_validation_routes')
+const qa_form = require('../qa_exams/qa_form_routes')
+const qa_getstudent = require('../qa_exams/qa_getstudent_routes')
 
 
 // TOP & SECOND NAV
@@ -84,5 +87,9 @@ router.use('',qa_answer)
 router.use('',qa_assign)
 router.use('',qa_mark)
 router.use('',qa_result)
+router.use('',qa_code_validation)
+router.use('',qa_form)
+router.use('',qa_getstudent)
+
 
 module.exports = router;
