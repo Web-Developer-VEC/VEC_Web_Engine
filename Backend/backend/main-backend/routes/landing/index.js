@@ -33,8 +33,13 @@ const feedback = require('../second_navbar/feedback_routes');
 const research = require('../top_navbar/research_routes');
 const coelogin = require('../questionbank/coe_login_routes');
 const qbform = require('../questionbank/questionbank_routes')
+//QA
 const login = require('../qa_exams/login_routes');
 const qa_schedule = require('../qa_exams/qa_schedule_routes')
+const qa_result = require('../qa_exams/qa_result_routes')
+const qa_assign = require('../qa_exams/qa_questionassign_routes')
+const qa_answer = require('../qa_exams/qa_answer_routes')
+const qa_mark = require('../qa_exams/qa_markgenerator_routes')
 
 
 // TOP & SECOND NAV
@@ -75,5 +80,9 @@ router.use('', qbform);
 //QA
 router.use('',login);
 router.use("",qa_schedule)
+router.use('',qa_answer)
+router.use('',qa_assign)
+router.use('',qa_mark)
+router.use('',qa_result)
 
 module.exports = router;

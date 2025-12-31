@@ -36,12 +36,14 @@ connectToDatabase();
 // app.use(hitTracker);
 
 app.use(session({
-    secret: "vec_secret_key_123",  // change to strong key
-    resave: true,
-    saveUninitialized: true,
-    cookie: { secure: false,
-      maxAge: 60 * 60 * 1000
-     }   // secure: true only when using HTTPS
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,   // true in HTTPS
+    httpOnly: true,  // prevents JS access
+    maxAge: 4 * 60 * 60 * 1000
+  }
 }));
 
 // Load modular routes
