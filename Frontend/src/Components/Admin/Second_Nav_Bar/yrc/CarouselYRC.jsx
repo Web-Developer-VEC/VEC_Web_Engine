@@ -4,6 +4,8 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { FaUpload, FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import "./CarouselYRC.css";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -20,11 +22,15 @@ const CarouselYRC = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const { sendRequest, loading, error } = useAdminRequest();
+
+  // console.log("Incoming data", d);
+  
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-    if (!path) return "/placeholder.jpg";
+    if (!path) return "/placeholder.jpg"
     if (path.startsWith("http") || path.startsWith("blob") || path.startsWith("data:")) {
       return path;
     }
@@ -86,32 +92,56 @@ const CarouselYRC = ({ data }) => {
     setSelectAll(false);
   };
 
-  const handleChange = (e, idx, field) => {
-    let value = e.target.value;
+const handleChange = (e, idx, field) => {
+  let value = e.target.value;
 
-    // Capitalize first letter of each word for title field
-    if (field === "title") {
-      value = value.replace(/\b\w/g, (char) => char.toUpperCase());
-    }
+  if (field === "title") {
+    value = value.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
 
-    const updated = items.map((item, i) =>
-      i === idx ? { ...item, [field]: value } : item
+  const updated = items.map((item, i) =>
+    i === idx ? { ...item, [field]: value } : item
+  );
+
+  setItems(updated);
+  setIsDirty(hasChanges(updated, committedItems));
+};
+
+
+const hasChanges = (current, committed) => {
+  if (current.length !== committed.length) return true;
+
+  return current.some((item, index) => {
+    const oldItem = committed[index];
+    if (!oldItem) return true;
+
+    return (
+      item.title !== oldItem.title ||
+      item.description !== oldItem.description ||
+      item.date !== oldItem.date ||
+      item.image_path !== oldItem.image_path
     );
-    setItems(updated);
-    setIsDirty(true);
-  };
+  });
+};
 
-  const handleAddItem = () => {
-    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
-      id: Date.now(), 
+
+const handleAddItem = () => {
+  const updated = [
+    ...items.map(item => ({ ...item })),
+    {
+      id: Date.now(),
       image_path: "",
       title: "",
       date: "",
       description: "",
-      selected: false
-    }]);
-    setIsDirty(true);
-  };
+      selected: false,
+    },
+  ];
+
+  setItems(updated);
+  setIsDirty(hasChanges(updated, committedItems));
+};
+
 
   const handleItemSelect = (index) => {
     const updatedItems = items.map((item, i) => 
@@ -138,14 +168,20 @@ const CarouselYRC = ({ data }) => {
     setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
   };
 
-  const confirmDelete = () => {
-    const updated = items.filter((_, i) => !selectedItems.includes(i)).map((item) => ({ ...item }));
-    setItems(updated);
-    setSelectedItems([]);
-    setSelectAll(false);
-    setShowDeleteModal(false);
-    setIsDirty(true);
-  };
+const confirmDelete = () => {
+  const updated = items
+    .filter((_, i) => !selectedItems.includes(i))
+    .map(item => ({ ...item }));
+
+  setItems(updated);
+  setSelectedItems([]);
+  setSelectAll(false);
+  setShowDeleteModal(false);
+
+  // ✅ recalculate dirty state correctly
+  setIsDirty(hasChanges(updated, committedItems));
+};
+
 
   const handleCancel = () => {
     if (pendingItems) {
@@ -202,16 +238,115 @@ const CarouselYRC = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
-    
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingItems) return;
+
+  const payload = [];
+  const files = [];
+
+  const committedMap = new Map(committedItems.map(i => [String(i.id), i]));
+  const pendingMap = new Map(pendingItems.map(i => [String(i.id), i]));
+
+  /* ================= INSERT ================= */
+  pendingItems.forEach((pItem) => {
+    if (!committedMap.has(String(pItem.id))) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "insert",
+        title: "Add events",
+        meta_data: {
+          image_path: pItem.image_path, // existing path or new file will be uploaded
+          title: pItem.title,
+          description: pItem.description,
+          date: pItem.date,
+        },
+      });
+
+      if (pItem.image_file) files.push(pItem.image_file); // for file uploads
+    }
+  });
+
+  /* ================= UPDATE ================= */
+  pendingItems.forEach((pItem) => {
+    const cItem = committedMap.get(String(pItem.id));
+
+    if (cItem && (
+        cItem.title !== pItem.title ||
+        cItem.description !== pItem.description ||
+        cItem.date !== pItem.date ||
+        cItem.image_path !== pItem.image_path
+      )) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "update",
+        title: "update in events",
+        meta_data: {
+          image_path: pItem.image_path,
+          title: pItem.title,
+          description: pItem.description,
+          date: pItem.date,
+        },
+        original_data: {
+          image_path: cItem.image_path,
+          title: cItem.title,
+          description: cItem.description,
+          date: cItem.date,
+        },
+      });
+
+      if (pItem.image_file) files.push(pItem.image_file);
+    }
+  });
+
+  /* ================= DELETE ================= */
+  committedItems.forEach((cItem) => {
+    if (!pendingMap.has(String(cItem.id))) {
+      payload.push({
+        collectionName: "yrc",
+        collection_type: "events",
+        action: "delete",
+        title: "delete events",
+        meta_data: {
+          image_path: cItem.image_path,
+          title: cItem.title,
+          description: cItem.description,
+          date: cItem.date,
+        },
+      });
+    }
+  });
+
+  /* ================= FINAL ================= */
+  if (payload.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  try {
+    // send payload and files together
+    await sendRequest(payload, files);
+
+    // update local state after successful submission
     setCommittedItems(deepCopy(pendingItems));
     setItems(deepCopy(pendingItems));
     setPendingItems(null);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+
+    toast.success("Final request submitted successfully!");
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
+
+
+
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -231,19 +366,32 @@ const CarouselYRC = ({ data }) => {
     setItems(deepCopy(updated));
   };
 
-  const handleImageUpload = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
+const handleImageUpload = (e, index) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const updatedItems = [...items];
-      updatedItems[index] = { ...updatedItems[index], image_path: event.target.result };
-      setItems(updatedItems);
-      setIsDirty(true);
-    };
-    reader.readAsDataURL(file);
-  };
+  const previewUrl = URL.createObjectURL(file);
+
+  setItems(prev =>
+    prev.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            image_file: file, // actual file for uploading
+            image_path: `/static/images/yrc/events/${file.name}`, // final path saved in DB
+            preview_url: previewUrl, // temporary preview in UI
+          }
+        : item
+    )
+  );
+
+  setIsDirty(true);
+};
+
+
+
+
+
 
   
   const getChanges = () => {
@@ -324,7 +472,7 @@ const formatForDisplay = (yyyymmdd) => {
 
   return (
     <>
-      <div className="nss-carousel-wrap relative">
+      <div className="yrc-carousel-wrap relative">
         <ToastContainer position="bottom-right" autoClose={2000} />
         
         {/* Header */}
@@ -374,10 +522,17 @@ const formatForDisplay = (yyyymmdd) => {
                         <div className="flex flex-col items-center gap-2">
                           {item.image_path && (
                             <img
-                              src={item.image_path.startsWith("data:") ? item.image_path : UrlParser(item.image_path)}
+                              src={
+                                item.preview_url
+                                  ? item.preview_url
+                                  : item.image_path
+                                  ? UrlParser(item.image_path)
+                                  : "/placeholder.jpg"
+                              }
                               alt={item.title || "Event Image"}
                               className="w-24 h-24 object-cover rounded border"
                             />
+
                           )}
                           <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
                             {item.image_path ? "Replace" : "Upload"}
@@ -398,17 +553,17 @@ const formatForDisplay = (yyyymmdd) => {
                           placeholder="Title"
                         />
                       </td>
-<td className="border border-black px-4 py-3">
-  <input
-    type="date"
-    className="w-full p-1 border rounded"
-    value={formatForInput(item.date)}
-    onChange={(e) => {
-      const updatedDate = formatForDisplay(e.target.value);
-      handleChange({ target: { value: updatedDate } }, i, "date");
-    }}
-  />
-</td>
+                        <td className="border border-black px-4 py-3">
+                          <input
+                            type="date"
+                            className="w-full p-1 border rounded"
+                            value={formatForInput(item.date)}
+                            onChange={(e) => {
+                              const updatedDate = formatForDisplay(e.target.value);
+                              handleChange({ target: { value: updatedDate } }, i, "date");
+                            }}
+                          />
+                        </td>
 
                       <td className="border border-black px-4 py-3">
                         <textarea
@@ -480,11 +635,17 @@ const formatForDisplay = (yyyymmdd) => {
         ) : (
           // View Mode - Carousel Display
           <>
-            <div className="nss-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            <div className="yrc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
               {items.map((item, index) => (
-                <div className="nss-carousel-slide" key={index}>
+                <div className="yrc-carousel-slide" key={index}>
                   <img
-                    src={UrlParser(item.image_path)}
+                    src={
+                    item.preview_url
+                      ? item.preview_url
+                      : item.image_path
+                      ? UrlParser(item.image_path)
+                      : "/placeholder.jpg"
+                  }
                     alt={item.title}
                     className="nss-carousel-image"
                   />
@@ -502,19 +663,19 @@ const formatForDisplay = (yyyymmdd) => {
             </div>
 
             {/* Navigation Buttons */}
-            <button className="nss-carousel-btn nss-carousel-btn-left" onClick={prevSlide}>
+            <button className="yrc-carousel-btn yrc-carousel-btn-left" onClick={prevSlide}>
               &#10094;
             </button>
-            <button className="nss-carousel-btn nss-carousel-btn-right" onClick={nextSlide}>
+            <button className="yrc-carousel-btn yrc-carousel-btn-right" onClick={nextSlide}>
               &#10095;
             </button>
 
             {/* Dots Indicator */}
-            <div className="nss-carousel-dots">
+            <div className="yrc-carousel-dots">
               {items.map((_, index) => (
                 <span
                   key={index}
-                  className={`nss-dot ${index === currentIndex ? "active" : ""}`}
+                  className={`yrc-dot ${index === currentIndex ? "active" : ""}`}
                   onClick={() => setCurrentIndex(index)}
                 ></span>
               ))}

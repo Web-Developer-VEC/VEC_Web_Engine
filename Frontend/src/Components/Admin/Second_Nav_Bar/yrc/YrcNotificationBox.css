@@ -1,0 +1,203 @@
+/* Popup overlay */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup content container */
+.popup > div {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: popupFade 0.3s ease-in-out;
+}
+
+/* Popup heading */
+.popup h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Popup paragraph */
+/* .popup p {
+  font-size: 0.9rem;
+  color: #555555;
+} */
+
+/* Popup table */
+.popup table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.popup table th,
+.popup table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.popup table th {
+  background-color: #facc15; /* yellow header */
+  color: #5a3e36; /* dark brown text */
+  font-weight: 600;
+}
+
+.popup table tr:hover {
+  background-color: #f3f4f6; /* light hover color */
+}
+
+/* Popup buttons */
+.popup .yrc-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.popup .yrc-btn-request {
+  /* background-color: #2563eb; blue */
+  color: #fff;
+}
+
+.popup .btn-undo {
+  background-color: #f59e0b; /* amber/orange */
+  color: #fff;
+}
+
+.popup button:hover {
+  opacity: 0.85;
+}
+
+/* Animations */
+@keyframes popupFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .popup > div {
+    width: 90%;
+    padding: 1rem;
+  }
+  .popup table th,
+  .popup table td {
+    font-size: 0.8rem;
+  }
+}
+
+/* Container to align elements */
+.yrc-notification-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    flex-direction:column;
+    font-family:  'Poppins', sans-serif;
+
+}
+.news-item {
+  padding: 0 1rem; /* 1rem = 16px on both left and right */
+}
+
+/* Left-side text styling */
+.yrc-news-updates {
+    /* Increased font size */
+    font-weight: bold;
+    /* Deep navy blue for a professional look */
+    flex: 1;
+    text-align: left;
+    /* padding-left: 20px; */
+    position: relative;
+    font-family:  'Poppins', sans-serif;
+
+}
+
+/* Notification box styling */
+.yrc-notification-box {
+    width: 750px;
+    /* Increased width */
+    border-radius: 12px;
+    /* Slightly rounded corners */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin:20px;
+}
+
+/* Notification header */
+.yrc-notification-header {
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    /* Slightly larger header */
+    padding: 12px;
+}
+
+/* Notification content area */
+.yrc-notification-content {
+    height: 200px;
+    /* Increased height */
+    padding: 12px;
+    overflow: hidden;
+}
+
+/* Styling for the scrolling text */
+.yrc-scrolling-news {
+  height: 200px; /* Or any visible height */
+  overflow: hidden;
+  position: relative;
+}
+.yrc-scrolling-inner {
+  display: inline-block;
+  animation: scroll-up 10s linear infinite;
+  padding-left: 1vw;
+}
+.yrc-scrolling-inner {
+  animation: scroll-up 12s linear infinite; /* ⏱️ speed: faster than 25s */
+}
+
+.yrc-scrolling-news:hover .yrc-scrolling-inner {
+  animation-play-state: paused; /* ✋ pauses on hover */
+}
+@keyframes scroll-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 768px){
+    .yrc-notification-box{
+        width: 375px;
+        margin: 10px;
+    }
+}

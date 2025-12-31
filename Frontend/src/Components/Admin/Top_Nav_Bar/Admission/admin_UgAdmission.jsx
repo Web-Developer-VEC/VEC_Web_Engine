@@ -4,444 +4,120 @@ import "./admin_UgAdmission.css";
 import { FaLink } from "react-icons/fa";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
-import { useNavigate } from "react-router";
-import { SaveAll, SquarePen, PlusCircle, Trash2, CircleX, Send } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Pencil, Plus, Trash2, Eye, X, Send } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Editable Title Component
-const EditableTitle = ({ title, setTitle, isEdit, section }) => {
-  const [tempTitle, setTempTitle] = useState(title);
-
-  useEffect(() => {
-    setTempTitle(title);
-  }, [title]);
-
-  const handleBlur = () => {
-    if (tempTitle.trim() === "") {
-      toast.error("Title cannot be empty!");
-      setTempTitle(title); // Revert to the original title
-      return;
-    }
-    setTitle(tempTitle);
-  };
-
-  return (
-    <div className="text-center">
-      {isEdit ? (
-        <input
-          type="text"
-          className="admin-ugtit"
-          value={tempTitle}
-          onChange={(e) => setTempTitle(e.target.value)}
-          onBlur={handleBlur}
-          autoFocus
-          required
-        />
-      ) : (
-        <h4 className="text-accn dark:text-drka Eligibility">{title}</h4>
-      )}
-    </div>
-  );
-};
-
-// Final Request Modal Component
-const FinalRequestModal = ({ changeList, onClose, onSubmit, handleUndoChange, isRequesting }) => {
-  return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-      <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto shadow-lg">
-        <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-          Final Request for the Changes
-        </h2>
-
-        <p className="text-sm text-red-500 mb-4">
-          Note: Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
-        </p>
-
-        {changeList.length > 0 ? (
-          <>
-            <table className="w-full text-center text-text dark:text-drkt mb-4 text-sm">
-              <thead>
-                <tr>
-                  <th className="py-1">Action</th>
-                  <th className="py-1">Section</th>
-                  <th className="py-1">Details</th>
-                  <th className="py-1">Undo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {changeList.map((change, idx) => (
-                  <tr key={idx}>
-                    <td className="py-1 capitalize text-blue-600">{change.type}</td>
-                    <td className="py-1">{change.section}</td>
-                    <td className="py-1 text-left px-2">
-                      {change.type === "title-edited" && <>Title changed: <b>{change.from}</b> → <b>{change.to}</b></>}
-                      {change.type === "renamed" && <>Renamed <b>{change.from}</b> → <b>{change.to}</b></>}
-                      {change.type === "edited-values" && <>Updated values for <b>{Object.keys(change.row)[0]}</b></>}
-                      {change.type === "added" && <>Added row: <b>{Object.keys(change.row)[0]}</b></>}
-                      {change.type === "deleted" && <>Deleted row: <b>{Object.keys(change.row)[0]}</b></>}
-                      {change.type === "pdf-name-edited" && <>PDF name changed in <b>{change.section}</b>: <b>{change.from}</b> → <b>{change.to}</b></>}
-                      {change.type === "pdf-file-replaced" && <>PDF file replaced in <b>{change.section}</b>: {change.from} → {change.to}{change.fileName && <> (File: {change.fileName})</>}</>}
-                    </td>
-                    <td>
-                      <button onClick={() => handleUndoChange(idx)} title="Undo">
-                        <CircleX size={16} className="text-red-500 hover:text-red-700" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <div className="flex justify-end gap-2 mt-4">
-              <button onClick={onClose} className="px-4 py-2 rounded bg-gray-400 text-white">
-                Cancel
-              </button>
-              <button
-                onClick={onSubmit}
-                disabled={changeList.length === 0 || isRequesting}
-                className={`px-4 py-2 rounded ${changeList.length === 0 || isRequesting ? "bg-gray-300 cursor-not-allowed" : "bg-secd dark:bg-drks hover:bg-[#800000]"} text-white`}
-              >
-                {isRequesting ? "Submitting..." : "Final Request"}
-              </button>
-            </div>
-          </>
-        ) : (
-          <p className="text-center text-gray-500">No changes to submit.</p>
-        )}
-      </div>
-    </div>
-  );
-};
-
-// Main Component
 const AdminUgAdmission = ({ theme, toggle }) => {
   const [ugData, setUgData] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(
+    typeof navigator !== "undefined" ? navigator.onLine : true
+  );
   const navigate = useNavigate();
 
-  const [editUG, setEditUG] = useState(false);
-  const [editLateral, setEditLateral] = useState(false);
+  const originalRef = useRef(null);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const [ugTitle, setUgTitle] = useState("");
-  const [lateralTitle, setLateralTitle] = useState("");
+  // Separate editable years for UG & Lateral (so editing one won't affect the other)
+  const [editableYearUG, setEditableYearUG] = useState("");
+  const [editableYearLateral, setEditableYearLateral] = useState("");
 
-  const [govLinkName, setGovLinkName] = useState("");
-  const [govLinkFile, setGovLinkFile] = useState(null);
+  // Separate editable states for UG and UG_Lateral
+  // Each row now carries `originalCourse` (string or null)
+  const [editableUGRows, setEditableUGRows] = useState([]);
+  const [editableLateralRows, setEditableLateralRows] = useState([]);
 
-  const [mgmtLinkName, setMgmtLinkName] = useState("");
-  const [mgmtLinkFile, setMgmtLinkFile] = useState(null);
+  // Deleted rows tracked separately per table (store originalCourse if existed)
+  const [deletedUGRows, setDeletedUGRows] = useState([]);
+  const [deletedLateralRows, setDeletedLateralRows] = useState([]);
 
+  const [beGovLinkName, setBeGovLinkName] = useState("");
+  const [beGovLinkFile, setBeGovLinkFile] = useState(null);
+  const [beMgmtLinkName, setBeMgmtLinkName] = useState("");
+  const [beMgmtLinkFile, setBeMgmtLinkFile] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteTargetTable, setDeleteTargetTable] = useState("UG"); // "UG" or "UG_Lateral"
   const [showPopup, setShowPopup] = useState(false);
   const [changeList, setChangeList] = useState([]);
-  const [isRequesting, setIsRequesting] = useState(false);
-  const [tempCourseNames, setTempCourseNames] = useState({});
+  const [isSaved, setIsSaved] = useState(false);
 
-  const [hasSavedUG, setHasSavedUG] = useState(false);
-  const [hasSavedLateral, setHasSavedLateral] = useState(false);
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
-  const ugTableRef = useRef(null);
-  const latTableRef = useRef(null);
-
-  const ug = ugData?.UG || [];
-  const ug_lateral = ugData?.UG_Lateral || [];
-  const BE_Government = ugData?.BE_Government || {};
-  const BE_Management = ugData?.BE_Management || {};
-  const year = ugData?.year;
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-
-  // Deduplicate changes and update existing ones
-  const addChange = (change) => {
-    setChangeList((prev) => {
-      let updatedList = [...prev];
-      const existingIndex = updatedList.findIndex(c => {
-        if (c.type === change.type && c.section === change.section) {
-          if (change.type === "renamed" || change.type === "deleted" || change.type === "added" || change.type === "edited-values") {
-            const newRowKey = change.row ? Object.keys(change.row)[0] : null;
-            const existingRowKey = c.row ? Object.keys(c.row)[0] : null;
-            if (newRowKey && existingRowKey && newRowKey === existingRowKey) {
-              return true;
-            }
-          }
-          if (change.type === "renamed") return c.from === change.from;
-          if (change.type === "pdf-name-edited" || change.type === "pdf-file-replaced") return true;
-        }
-        return false;
-      });
-
-      if (existingIndex !== -1) {
-        updatedList[existingIndex] = change;
-      } else {
-        updatedList.push(change);
-      }
-      return updatedList;
-    });
+  const UrlParser = (path) => {
+    if (!path) return "";
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
-  const handleUndoChange = (idx) => {
-    setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change undone.");
-  };
-
-  const scrollTo = (ref) => setTimeout(() => ref.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
-
-const handleChange = (section, idx, field, value) => {
-  const updatedData = { ...ugData };
-  const sectionArray = [...updatedData[section]];
-
-  // Retrieve the course object
-  const courseEntry = sectionArray[idx];
-  const courseName = Object.keys(courseEntry)[0];
-  const details = courseEntry[courseName];
-
-  // Keep value as empty string if input is cleared, else convert to number
-  const parsedValue = value === "" ? "" : Number(value);
-  const updatedDetails = { ...details, [field]: parsedValue };
-
-  // Calculate totals only if values are numbers, else default to 0
-  const gov = Number(updatedDetails["Government Quota Intakes"]) || 0;
-  const man = Number(updatedDetails["Management Quota Intakes"]) || 0;
-  updatedDetails["Total Intakes"] =
-    updatedDetails["Government Quota Intakes"] === "" &&
-    updatedDetails["Management Quota Intakes"] === ""
-      ? ""
-      : gov + man;
-
-  // Update the array
-  sectionArray[idx] = { [courseName]: updatedDetails };
-  updatedData[section] = sectionArray;
-
-  setUgData(updatedData);
-
-  // Log changes
-  addChange({
-    type: "edited-values",
-    section,
-    row: { [courseName]: updatedDetails },
-  });
-};
-
-  
-  const handleNameChange = (section, idx, newName) => {
-    setTempCourseNames(prev => ({ ...prev, [`${section}-${idx}`]: newName }));
-  };
-
-  const handleNameBlur = (section, idx, oldName) => {
-    const newName = tempCourseNames[`${section}-${idx}`];
-    if (newName && newName.trim() === "") {
-        toast.error("Course name cannot be empty!");
-        setTempCourseNames(prev => ({ ...prev, [`${section}-${idx}`]: oldName }));
-        return;
-    }
-    if (newName && newName !== oldName) {
-      const data = [...ugData[section]];
-      const details = Object.entries(data[idx])[0][1];
-      data[idx] = { [newName]: details };
-      setUgData({ ...ugData, [section]: data });
-      addChange({ type: "renamed", section, from: oldName, to: newName });
-    }
-    setTempCourseNames(prev => {
-      const newTemp = { ...prev };
-      delete newTemp[`${section}-${idx}`];
-      return newTemp;
-    });
-  };
-
-  const handleTitleChange = (section, newTitle) => {
-    const oldTitle = section === "UG" ? ugTitle : lateralTitle;
-    if (oldTitle === newTitle) return; // Avoid adding change if title is the same
-    if (section === "UG") setUgTitle(newTitle);
-    else setLateralTitle(newTitle);
-    addChange({ type: "title-edited", section, from: oldTitle, to: newTitle });
-  };
-
-  const addRow = (section) => {
-    const newRow = { "": { "Government Quota Intakes": 0, "Management Quota Intakes": 0, "Total Intakes": 0 } };
-    setUgData({ ...ugData, [section]: [...ugData[section], newRow] });
-    addChange({ type: "added", section, row: newRow });
-  };
-
-  const deleteRow = (section, idx) => {
-    if (window.confirm("Are you sure you want to delete this row?")) {
-      const updated = [...ugData[section]];
-      const removedRow = updated[idx];
-      updated.splice(idx, 1);
-      setUgData({ ...ugData, [section]: updated });
-      addChange({ type: "deleted", section, row: removedRow });
-      toast.info("Row deleted. It will be removed on final request.");
-    }
-  };
-
-const validateSectionData = (section) => {
-  const data = ugData[section];
-  return data.every(row => {
-    const [name, details] = Object.entries(row)[0];
-    return (
-      name.trim() !== "" &&
-      details["Government Quota Intakes"] !== "" &&
-      details["Management Quota Intakes"] !== "" &&
-      Number(details["Government Quota Intakes"]) >= 0 &&
-      Number(details["Management Quota Intakes"]) >= 0
-    );
-  });
-};
-
-
-  const saveSection = (section) => {
-    if (validateSectionData(section)) {
-      if (section === "UG") { setEditUG(false); setHasSavedUG(true); }
-      else { setEditLateral(false); setHasSavedLateral(true); }
-      toast.success("Changes saved successfully!");
-    } else {
-      toast.error("All courses must have a name and non-negative intakes!");
-    }
-  };
-
-  const handlePdfChange = (section, type, oldName, newNameOrFile) => {
-    const sectionName = section === "UG" ? "UG PDF Links" : "Lateral PDF Links";
-    if (type === "name") {
-      addChange({ type: "pdf-name-edited", section: sectionName, from: oldName, to: newNameOrFile });
-    } else if (type === "file") {
-      addChange({ type: "pdf-file-replaced", section: sectionName, from: oldName, to: oldName, fileName: newNameOrFile?.name || null });
-    }
-  };
-
-  const handlePdfClick = (_name, url) => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    } else {
-      toast.info("No file available to display.");
-    }
-  };
-
-  const handleFinalRequest = async () => {
-    if (changeList.length === 0) {
-      toast.info("No changes to submit.");
-      setShowPopup(false);
-      return;
-    }
-
-    setIsRequesting(true);
-    try {
-      // Create a FormData object to handle file uploads
-      const formData = new FormData();
-      formData.append("changes", JSON.stringify(changeList));
-      formData.append("data", JSON.stringify(ugData));
-      if (govLinkFile) {
-        formData.append("govPdf", govLinkFile);
-      }
-      if (mgmtLinkFile) {
-        formData.append("mgmtPdf", mgmtLinkFile);
-      }
-
-      const response = await axios.post("/api/admin/request-changes", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      if (response.status === 200) {
-        toast.success("Request submitted for approval!");
-        setChangeList([]);
-        setShowPopup(false);
-        setHasSavedUG(false);
-        setHasSavedLateral(false);
-        setGovLinkFile(null);
-        setMgmtLinkFile(null);
-      } else {
-        throw new Error("Failed to submit request.");
-      }
-    } catch (error) {
-      toast.error("Failed to submit request!");
-      console.error("Submission error:", error);
-    } finally {
-      setIsRequesting(false);
-    }
-  };
-
-  const renderTable = (data, section, title, subtitle, isEdit, ref) => (
-    <div className="table-container mt-5" ref={ref}>
-      <EditableTitle title={title} setTitle={(t) => handleTitleChange(section, t)} isEdit={isEdit} section={section} />
-      <h6 className="text-accn dark:text-drkt Eligibility font-thin text-center">{subtitle}</h6>
-
-      <div className="table-card overflow-x">
-        <table className="styled-table min-w-[800px]">
-          <thead>
-            <tr>
-              <th className="ugHeader">UG COURSES</th>
-              <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
-              <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
-              <th className="ugHeader">TOTAL INTAKE</th>
-              {isEdit && <th className="ugHeader">ACTIONS</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, idx) => {
-              const [courseName, courseDetails] = Object.entries(item)[0];
-              const tempName = tempCourseNames[`${section}-${idx}`] ?? courseName;
-              return (
-                <tr key={idx} className="bg-prim dark:bg-text">
-                  <td className="text-start text-center">
-                    {isEdit ? <input value={tempName} onChange={(e) => handleNameChange(section, idx, e.target.value)} onBlur={() => handleNameBlur(section, idx, courseName)} className="admin-nlugin" placeholder="Course Name" required /> : courseName}
-                  </td>
-                  <td className="font-light text-center">
-                    {isEdit ? <input type="number" className="admin-ugin" value={courseDetails["Government Quota Intakes"] ?? 0} onChange={(e) => handleChange(section, idx, "Government Quota Intakes", e.target.value)} required /> : courseDetails["Government Quota Intakes"]}
-                  </td>
-                  <td className="font-light text-center">
-                    {isEdit ? <input type="number" className="admin-ugin" value={courseDetails["Management Quota Intakes"] ?? 0} onChange={(e) => handleChange(section, idx, "Management Quota Intakes", e.target.value)} required /> : courseDetails["Management Quota Intakes"]}
-                  </td>
-                  <td className="font-light text-center">{courseDetails["Total Intakes"]}</td>
-                  {isEdit && (
-                    <td className="text-center">
-                      <button className="text-red-600 hover:text-red-800" onClick={() => deleteRow(section, idx)}><Trash2 size={18} /></button>
-                    </td>
-                  )}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-   {isEdit && (
-  <div className="table-controls flex justify-end gap-2 mt-2">
-    <button
-      onClick={() => { addRow(section); }}
-      className="admin-edit-ug active flex gap-1"
-    >
-      <PlusCircle size={16} /> Add
-    </button>
-        {validateSectionData(section) && (
-              <button
-                onClick={() => { saveSection(section); }}
-                className="admin-edit-ug active flex gap-1"
-              >
-                <SaveAll size={16} /> Save
-              </button>
-            )}
-          </div>
-        )}
-    </div>
-  );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(`/api/main-backend/admission`, { type: "ug" });
-        const data = response.data.data;
+        const response = await axios.post(`/api/main-backend/admission`, {
+          type: "ug",
+        });
+        const data = response.data?.data || {};
         setUgData(data);
-        setUgTitle(`UG COURSES - TOTAL INTAKE ${data.year}`);
-        setLateralTitle(`UG COURSES - TOTAL INTAKE ${data.year}`);
-        setGovLinkName(data.BE_Government?.BE_Government_link_name || "");
-        setMgmtLinkName(data.BE_Management?.BE_Management_link_name || "");
+        originalRef.current = data;
+
+        // prepare editor state from fetched data
+        setEditableYearUG(data?.year || "");
+        // if your backend stores a separate lateral year, use it, otherwise default to same year
+        setEditableYearLateral(data?.year_lateral ?? data?.year ?? "");
+
+        setBeGovLinkName(data?.BE_Government?.BE_Government_link_name || "");
+        setBeMgmtLinkName(data?.BE_Management?.BE_Management_link_name || "");
+
+        // populate editable UG rows (track originalCourse)
+        const ugArray = Array.isArray(data?.UG) ? data.UG : [];
+        const ugRowsInit = ugArray.map((item) => {
+          const [courseName, courseDetails] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: courseName || "", // original name for matching
+            course: courseName || "",
+            governmentQuota: courseDetails["Government Quota Intakes"] ?? "",
+            managementQuota: courseDetails["Management Quota Intakes"] ?? "",
+            totalIntake: courseDetails["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        });
+
+        // populate editable lateral rows (track originalCourse)
+        const lateralArray = Array.isArray(data?.UG_Lateral) ? data.UG_Lateral : [];
+        const lateralRowsInit = lateralArray.map((item) => {
+          const [courseName, courseDetails] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: courseName || "",
+            course: courseName || "",
+            governmentQuota: courseDetails["Government Quota Intakes"] ?? "",
+            managementQuota: courseDetails["Management Quota Intakes"] ?? "",
+            totalIntake: courseDetails["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        });
+
+        setEditableUGRows(
+          ugRowsInit.length
+            ? ugRowsInit
+            : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }]
+        );
+        setEditableLateralRows(
+          lateralRowsInit.length
+            ? lateralRowsInit
+            : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }]
+        );
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
-        setLoading(true);
-        if (error.response?.data?.status === 429) navigate("/ratelimit", { state: { msg: error.response.data.message } });
+        setLoading(false);
+        if (error.response?.data?.status === 429) {
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
+        } else {
+          toast.error("Failed to fetch UG admission data.");
+        }
       }
     };
     fetchData();
@@ -450,95 +126,972 @@ const validateSectionData = (section) => {
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
+
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
-    return () => { window.removeEventListener("online", handleOnline); window.removeEventListener("offline", handleOffline); };
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
   }, []);
 
-  if (!isOnline) return <div className="h-screen flex items-center justify-center md:mt-[10%] md:block"><LoadComp txt={"You are offline"} /></div>;
+  if (!isOnline) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
+    );
+  }
+
+  // ---------- Helpers ----------
+  const handlePdfOpen = (url) => {
+    if (!url) return;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // ---------- Change collection ----------
+  // note: each change record may include `origName` to help undo (originalCourse)
+  const collectChangeList = () => {
+    const changes = [];
+    const original = originalRef.current || {};
+
+    // Year changes (separate UG vs Lateral)
+    if ((editableYearUG || "") !== (original?.year || "")) {
+      changes.push({ type: "edited", section: "Year (UG)", changes: "", origName: null });
+    }
+    // Compare lateral year with original lateral year if present, else compare to original year
+    const originalLatYear = original?.year_lateral ?? original?.year ?? "";
+    if ((editableYearLateral || "") !== (originalLatYear || "")) {
+      changes.push({ type: "edited", section: "Year (Lateral)", changes: "", origName: null });
+    }
+
+    // BE Government (explicitly mark as UG)
+    const govChanges = [];
+    if ((beGovLinkName || "").trim() !== (original?.BE_Government?.BE_Government_link_name || "")) govChanges.push("Link Name");
+    if (beGovLinkFile) govChanges.push("File Uploaded");
+    if (govChanges.length) changes.push({ type: "edited", section: "BE Government (UG)", changes: govChanges.join(", "), origName: null });
+
+    // BE Management (explicitly mark as UG)
+    const mgmtChanges = [];
+    if ((beMgmtLinkName || "").trim() !== (original?.BE_Management?.BE_Management_link_name || "")) mgmtChanges.push("Link Name");
+    if (beMgmtLinkFile) mgmtChanges.push("File Uploaded");
+    if (mgmtChanges.length) changes.push({ type: "edited", section: "BE Management (UG)", changes: mgmtChanges.join(", "), origName: null });
+
+    // Deleted UG rows (we store originalCourse for deleted originals)
+    deletedUGRows.forEach((r) => {
+      if (r && r.course) changes.push({ type: "deleted", section: `${r.course} (UG)`, changes: "", origName: r.course });
+    });
+    // Deleted lateral rows
+    deletedLateralRows.forEach((r) => {
+      if (r && r.course) changes.push({ type: "deleted", section: `${r.course} (Lateral)`, changes: "", origName: r.course });
+    });
+
+    // Build maps of original rows keyed by original course name
+    const originalUGRows = Array.isArray(original?.UG)
+      ? original.UG.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            course: c,
+            governmentQuota: String(d["Government Quota Intakes"] ?? ""),
+            managementQuota: String(d["Management Quota Intakes"] ?? ""),
+            totalIntake: String(d["Total Intakes"] ?? ""),
+          };
+        })
+      : [];
+
+    const originalLateralRows = Array.isArray(original?.UG_Lateral)
+      ? original.UG_Lateral.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            course: c,
+            governmentQuota: String(d["Government Quota Intakes"] ?? ""),
+            managementQuota: String(d["Management Quota Intakes"] ?? ""),
+            totalIntake: String(d["Total Intakes"] ?? ""),
+          };
+        })
+      : [];
+
+    // Check UG additions/edits using originalCourse tracking
+    editableUGRows.forEach((row) => {
+      const origName = row.originalCourse ?? null;
+      if (!origName) {
+        // newly added
+        changes.push({ type: "added", section: `${row.course} (UG)`, changes: "", origName: null });
+      } else {
+        // existed originally; check if any fields changed or name changed (rename)
+        const orig = originalUGRows.find((o) => o.course === origName);
+        const govChanged = String(orig?.governmentQuota || "") !== String(row.governmentQuota || "");
+        const manChanged = String(orig?.managementQuota || "") !== String(row.managementQuota || "");
+        const totChanged = String(orig?.totalIntake || "") !== String(row.totalIntake || "");
+        const nameChanged = origName !== (row.course || "");
+        if (govChanged || manChanged || totChanged || nameChanged) {
+          // label with current course name but include origName to help undo
+          changes.push({ type: "edited", section: `${row.course} (UG)`, changes: "", origName: origName });
+        }
+      }
+    });
+
+    // Check Lateral additions/edits using originalCourse tracking
+    editableLateralRows.forEach((row) => {
+      const origName = row.originalCourse ?? null;
+      if (!origName) {
+        // newly added
+        changes.push({ type: "added", section: `${row.course} (Lateral)`, changes: "", origName: null });
+      } else {
+        // existed originally; check if any fields changed or name changed (rename)
+        const orig = originalLateralRows.find((o) => o.course === origName);
+        const govChanged = String(orig?.governmentQuota || "") !== String(row.governmentQuota || "");
+        const manChanged = String(orig?.managementQuota || "") !== String(row.managementQuota || "");
+        const totChanged = String(orig?.totalIntake || "") !== String(row.totalIntake || "");
+        const nameChanged = origName !== (row.course || "");
+        if (govChanged || manChanged || totChanged || nameChanged) {
+          changes.push({ type: "edited", section: `${row.course} (Lateral)`, changes: "", origName: origName });
+        }
+      }
+    });
+
+    setChangeList(changes);
+    return changes;
+  };
+
+  // ---------- Table/editor handlers ----------
+  const handleRowChange = (table, index, field, value) => {
+    if (table === "UG") {
+      setEditableUGRows((prev) => {
+        const updated = prev.map((r, i) => (i === index ? { ...r, [field]: value } : r));
+        if (field === "governmentQuota" || field === "managementQuota") {
+          const row = updated[index];
+          const gov = Number(row.governmentQuota) || 0;
+          const man = Number(row.managementQuota) || 0;
+          updated[index] = { ...row, totalIntake: gov + man };
+        }
+        return updated;
+      });
+    } else {
+      setEditableLateralRows((prev) => {
+        const updated = prev.map((r, i) => (i === index ? { ...r, [field]: value } : r));
+        if (field === "governmentQuota" || field === "managementQuota") {
+          const row = updated[index];
+          const gov = Number(row.governmentQuota) || 0;
+          const man = Number(row.managementQuota) || 0;
+          updated[index] = { ...row, totalIntake: gov + man };
+        }
+        return updated;
+      });
+    }
+  };
+
+  const handleAddNew = (table) => {
+    const newRow = { originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false };
+    if (table === "UG") setEditableUGRows((prev) => [...prev, newRow]);
+    else setEditableLateralRows((prev) => [...prev, newRow]);
+  };
+
+  const handleUGCheckboxChange = (index, checked) => {
+    setEditableUGRows((prev) => prev.map((r, i) => (i === index ? { ...r, isSelected: checked } : r)));
+  };
+
+  const handleLateralCheckboxChange = (index, checked) => {
+    setEditableLateralRows((prev) => prev.map((r, i) => (i === index ? { ...r, isSelected: checked } : r)));
+  };
+
+  const handleDeleteSelectedUG = () => {
+    const toDelete = editableUGRows.filter((r) => r.isSelected);
+    // record only originals for backend audit — newly added rows (originalCourse == null) don't need to be recorded as deleted
+    const deleted = toDelete.filter((t) => t.originalCourse).map((t) => ({ course: t.originalCourse }));
+    setDeletedUGRows((prev) => [...prev, ...deleted]);
+    setEditableUGRows((prev) => prev.filter((r) => !r.isSelected));
+  };
+
+  const handleDeleteSelectedLateral = () => {
+    const toDelete = editableLateralRows.filter((r) => r.isSelected);
+    const deleted = toDelete.filter((t) => t.originalCourse).map((t) => ({ course: t.originalCourse }));
+    setDeletedLateralRows((prev) => [...prev, ...deleted]);
+    setEditableLateralRows((prev) => prev.filter((r) => !r.isSelected));
+  };
+
+  const handleDeleteSelected = () => {
+    if (deleteTargetTable === "UG") {
+      handleDeleteSelectedUG();
+    } else {
+      handleDeleteSelectedLateral();
+    }
+    setShowDeleteModal(false);
+  };
+
+  // Cancel edits and restore editor to current live data
+  const handleCancel = () => {
+    if (!ugData && !originalRef.current) return;
+    const current = ugData || originalRef.current || {};
+    setEditableYearUG(current?.year || "");
+    setEditableYearLateral(current?.year_lateral ?? current?.year ?? "");
+    setBeGovLinkName(current?.BE_Government?.BE_Government_link_name || "");
+    setBeMgmtLinkName(current?.BE_Management?.BE_Management_link_name || "");
+    setBeGovLinkFile(null);
+    setBeMgmtLinkFile(null);
+
+    setDeletedUGRows([]);
+    setDeletedLateralRows([]);
+    setChangeList([]);
+
+    const ugRowsReset = Array.isArray(current?.UG)
+      ? current.UG.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: c,
+            course: c,
+            governmentQuota: d["Government Quota Intakes"] ?? "",
+            managementQuota: d["Management Quota Intakes"] ?? "",
+            totalIntake: d["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        })
+      : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+    const lateralRowsReset = Array.isArray(current?.UG_Lateral)
+      ? current.UG_Lateral.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: c,
+            course: c,
+            governmentQuota: d["Government Quota Intakes"] ?? "",
+            managementQuota: d["Management Quota Intakes"] ?? "",
+            totalIntake: d["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        })
+      : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+    setEditableUGRows(ugRowsReset);
+    setEditableLateralRows(lateralRowsReset);
+
+    setIsEditing(false);
+    toast.info("Editing cancelled.");
+  };
+
+  // Save local changes (not yet submitted to server)
+  const handleSave = () => {
+    if (!String(editableYearUG || "").trim()) {
+      toast.error("Please fill in the UG year field.");
+      return;
+    }
+
+    // validate UG rows
+    const hasEmptyUG = editableUGRows.some((r) => !String(r.course || "").trim() || r.governmentQuota === "" || r.managementQuota === "");
+    const hasEmptyLateral = editableLateralRows.some((r) => !String(r.course || "").trim() || r.governmentQuota === "" || r.managementQuota === "");
+    if (hasEmptyUG || hasEmptyLateral) {
+      toast.error("All course and intake fields must be filled out for both tables.");
+      return;
+    }
+    if (!beGovLinkName.trim() || !beMgmtLinkName.trim()) {
+      toast.error("Both Government and Management link names are required.");
+      return;
+    }
+
+    // build local snapshot to show on page (no change to backend data shape except year_lateral)
+    const newUgData = {
+      ...(ugData || {}),
+      year: editableYearUG.toString().trim(),
+      year_lateral: editableYearLateral.toString().trim(),
+      BE_Government: {
+        ...(ugData?.BE_Government || {}),
+        BE_Government_link_name: beGovLinkName.trim(),
+        ...(beGovLinkFile ? { BE_Government_link: "/uploads/" + beGovLinkFile.name } : {}),
+      },
+      BE_Management: {
+        ...(ugData?.BE_Management || {}),
+        BE_Management_link_name: beMgmtLinkName.trim(),
+        ...(beMgmtLinkFile ? { BE_Management_link: "/uploads/" + beMgmtLinkFile.name } : {}),
+      },
+      UG: editableUGRows.map((r) => ({
+        [r.course]: {
+          "Government Quota Intakes": Number(r.governmentQuota),
+          "Management Quota Intakes": Number(r.managementQuota),
+          "Total Intakes": Number(r.totalIntake),
+        },
+      })),
+      UG_Lateral: editableLateralRows.map((r) => ({
+        [r.course]: {
+          "Government Quota Intakes": Number(r.governmentQuota),
+          "Management Quota Intakes": Number(r.managementQuota),
+          "Total Intakes": Number(r.totalIntake),
+        },
+      })),
+    };
+
+    setUgData(newUgData);
+    collectChangeList();
+    setIsEditing(false);
+    setIsSaved(true);
+    toast.success("Changes saved locally. Submit for approval when ready.");
+  };
+
+  const startEditing = () => {
+    const current = ugData || originalRef.current || {};
+    setEditableYearUG(current?.year || "");
+    setEditableYearLateral(current?.year_lateral ?? current?.year ?? "");
+    setBeGovLinkName(current?.BE_Government?.BE_Government_link_name || "");
+    setBeMgmtLinkName(current?.BE_Management?.BE_Management_link_name || "");
+    setBeGovLinkFile(null);
+    setBeMgmtLinkFile(null);
+
+    setDeletedUGRows([]);
+    setDeletedLateralRows([]);
+    setChangeList([]);
+
+    const ugRowsInit = Array.isArray(current?.UG)
+      ? current.UG.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: c,
+            course: c,
+            governmentQuota: d["Government Quota Intakes"] ?? "",
+            managementQuota: d["Management Quota Intakes"] ?? "",
+            totalIntake: d["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        })
+      : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+    const lateralRowsInit = Array.isArray(current?.UG_Lateral)
+      ? current.UG_Lateral.map((item) => {
+          const [c, d] = Object.entries(item)[0] || ["", {}];
+          return {
+            originalCourse: c,
+            course: c,
+            governmentQuota: d["Government Quota Intakes"] ?? "",
+            managementQuota: d["Management Quota Intakes"] ?? "",
+            totalIntake: d["Total Intakes"] ?? "",
+            isSelected: false,
+          };
+        })
+      : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+    setEditableUGRows(ugRowsInit);
+    setEditableLateralRows(lateralRowsInit);
+
+    setIsEditing(true);
+  };
+const handleDiscardChanges = () => {
+  const original = originalRef.current || {};
+  setEditableYearUG(original?.year || "");
+  setEditableYearLateral(original?.year_lateral ?? original?.year ?? "");
+  setBeGovLinkName(original?.BE_Government?.BE_Government_link_name || "");
+  setBeMgmtLinkName(original?.BE_Management?.BE_Management_link_name || "");
+  setBeGovLinkFile(null);
+  setBeMgmtLinkFile(null);
+
+  setDeletedUGRows([]);
+  setDeletedLateralRows([]);
+  setChangeList([]);
+
+  // Re-populate editable rows from the original data
+  const ugRowsReset = Array.isArray(original?.UG)
+    ? original.UG.map((item) => {
+        const [c, d] = Object.entries(item)[0] || ["", {}];
+        return {
+          originalCourse: c,
+          course: c,
+          governmentQuota: d["Government Quota Intakes"] ?? "",
+          managementQuota: d["Management Quota Intakes"] ?? "",
+          totalIntake: d["Total Intakes"] ?? "",
+          isSelected: false,
+        };
+      })
+    : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+  const lateralRowsReset = Array.isArray(original?.UG_Lateral)
+    ? original.UG_Lateral.map((item) => {
+        const [c, d] = Object.entries(item)[0] || ["", {}];
+        return {
+          originalCourse: c,
+          course: c,
+          governmentQuota: d["Government Quota Intakes"] ?? "",
+          managementQuota: d["Management Quota Intakes"] ?? "",
+          totalIntake: d["Total Intakes"] ?? "",
+          isSelected: false,
+        };
+      })
+    : [{ originalCourse: null, course: "", governmentQuota: "", managementQuota: "", totalIntake: "", isSelected: false }];
+
+  setEditableUGRows(ugRowsReset);
+  setEditableLateralRows(lateralRowsReset);
+  setUgData(original); // This is an important step to make the non-editing view show the original data again.
+
+  setIsEditing(false);
+  setIsSaved(false); // Reset this flag as well
+  toast.info("Editing cancelled. Data reverted to original.");
+};
+  const handleUndoChange = (idx) => {
+    const change = changeList[idx];
+    const original = originalRef.current || {};
+    if (!change) return;
+
+    switch (change.type) {
+      case "edited":
+        // Year edits
+        if (change.section?.startsWith("Year")) {
+          if (change.section.includes("(UG)")) {
+            setEditableYearUG(original?.year || "");
+          } else if (change.section.includes("(Lateral)")) {
+            setEditableYearLateral(original?.year_lateral ?? original?.year ?? "");
+          }
+        } else if (change.section?.startsWith("BE Government")) {
+          setBeGovLinkName(original?.BE_Government?.BE_Government_link_name || "");
+          setBeGovLinkFile(null);
+        } else if (change.section?.startsWith("BE Management")) {
+          setBeMgmtLinkName(original?.BE_Management?.BE_Management_link_name || "");
+          setBeMgmtLinkFile(null);
+        } else {
+          // course-level revert: we have change.origName if the row originally existed
+          const section = change.section;
+          const isUG = section.endsWith("(UG)");
+          const isLat = section.endsWith("(Lateral)");
+          const currentCourseName = section.replace(/\s*\(UG\)$|\s*\(Lateral\)$/, "").trim();
+          const origName = change.origName ?? null;
+
+          if (isUG) {
+            if (origName) {
+              // revert to original details and name
+              const origCourseObj = (original?.UG || []).find((item) => Object.keys(item)[0] === origName);
+              const details = origCourseObj ? Object.values(origCourseObj)[0] : { "Government Quota Intakes": "", "Management Quota Intakes": "", "Total Intakes": "" };
+              setEditableUGRows((prev) =>
+                prev.map((r) =>
+                  (r.originalCourse === origName || r.course === currentCourseName)
+                    ? {
+                        originalCourse: origName,
+                        course: origName,
+                        governmentQuota: details["Government Quota Intakes"] ?? "",
+                        managementQuota: details["Management Quota Intakes"] ?? "",
+                        totalIntake: details["Total Intakes"] ?? "",
+                        isSelected: false,
+                      }
+                    : r
+                )
+              );
+            } else {
+              // If origName null, it was added — revert by removing added row
+              setEditableUGRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === currentCourseName)));
+            }
+          } else if (isLat) {
+            if (origName) {
+              const origCourseObj = (original?.UG_Lateral || []).find((item) => Object.keys(item)[0] === origName);
+              const details = origCourseObj ? Object.values(origCourseObj)[0] : { "Government Quota Intakes": "", "Management Quota Intakes": "", "Total Intakes": "" };
+              setEditableLateralRows((prev) =>
+                prev.map((r) =>
+                  (r.originalCourse === origName || r.course === currentCourseName)
+                    ? {
+                        originalCourse: origName,
+                        course: origName,
+                        governmentQuota: details["Government Quota Intakes"] ?? "",
+                        managementQuota: details["Management Quota Intakes"] ?? "",
+                        totalIntake: details["Total Intakes"] ?? "",
+                        isSelected: false,
+                      }
+                    : r
+                )
+              );
+            } else {
+              // added row -> remove it
+              setEditableLateralRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === currentCourseName)));
+            }
+          } else {
+            // fallback: try UG then Lateral
+            if (origName) {
+              const origCourseObj = (original?.UG || []).find((item) => Object.keys(item)[0] === origName);
+              if (origCourseObj) {
+                const details = Object.values(origCourseObj)[0] || {};
+                setEditableUGRows((prev) =>
+                  prev.map((r) =>
+                    (r.originalCourse === origName || r.course === currentCourseName)
+                      ? {
+                          originalCourse: origName,
+                          course: origName,
+                          governmentQuota: details["Government Quota Intakes"] ?? "",
+                          managementQuota: details["Management Quota Intakes"] ?? "",
+                          totalIntake: details["Total Intakes"] ?? "",
+                          isSelected: false,
+                        }
+                      : r
+                  )
+                );
+              } else {
+                const origLat = (original?.UG_Lateral || []).find((item) => Object.keys(item)[0] === origName);
+                const details = origLat ? Object.values(origLat)[0] : {};
+                setEditableLateralRows((prev) =>
+                  prev.map((r) =>
+                    (r.originalCourse === origName || r.course === currentCourseName)
+                      ? {
+                          originalCourse: origName,
+                          course: origName,
+                          governmentQuota: details["Government Quota Intakes"] ?? "",
+                          managementQuota: details["Management Quota Intakes"] ?? "",
+                          totalIntake: details["Total Intakes"] ?? "",
+                          isSelected: false,
+                        }
+                      : r
+                  )
+                );
+              }
+            } else {
+              // was an added row -> remove if present
+              setEditableUGRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === currentCourseName)));
+              setEditableLateralRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === currentCourseName)));
+            }
+          }
+        }
+        break;
+
+      case "added":
+        // remove added course (we only tagged added rows with origName === null)
+        {
+          const sectionName = change.section.replace(/\s*\(UG\)$|\s*\(Lateral\)$/, "").trim();
+          // remove any row that is an added row with same current name
+          setEditableUGRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === sectionName)));
+          setEditableLateralRows((prev) => prev.filter((r) => !(r.originalCourse === null && r.course === sectionName)));
+        }
+        break;
+
+      case "deleted":
+        // restore deleted row from original snapshot if possible (we used origName)
+        if (change.origName) {
+          const name = change.origName;
+          // find in original UG or lateral and restore accordingly
+          const origUG = (original?.UG || []).find((item) => Object.keys(item)[0] === name);
+          if (origUG) {
+            const details = Object.values(origUG)[0] || { "Government Quota Intakes": "", "Management Quota Intakes": "", "Total Intakes": "" };
+            setEditableUGRows((prev) => [
+              ...prev,
+              {
+                originalCourse: name,
+                course: name,
+                governmentQuota: details["Government Quota Intakes"] ?? "",
+                managementQuota: details["Management Quota Intakes"] ?? "",
+                totalIntake: details["Total Intakes"] ?? "",
+                isSelected: false,
+              },
+            ]);
+            setDeletedUGRows((prev) => prev.filter((d) => d.course !== name));
+            break;
+          }
+          const origLat = (original?.UG_Lateral || []).find((item) => Object.keys(item)[0] === name);
+          if (origLat) {
+            const details = Object.values(origLat)[0] || { "Government Quota Intakes": "", "Management Quota Intakes": "", "Total Intakes": "" };
+            setEditableLateralRows((prev) => [
+              ...prev,
+              {
+                originalCourse: name,
+                course: name,
+                governmentQuota: details["Government Quota Intakes"] ?? "",
+                managementQuota: details["Management Quota Intakes"] ?? "",
+                totalIntake: details["Total Intakes"] ?? "",
+                isSelected: false,
+              },
+            ]);
+            setDeletedLateralRows((prev) => prev.filter((d) => d.course !== name));
+            break;
+          }
+        } else {
+          // fallback: nothing to restore
+        }
+        break;
+      default:
+        break;
+    }
+
+    setChangeList((prev) => prev.filter((_, i) => i !== idx));
+    toast.info("Change reverted.");
+  };
+
+  const handleFinalRequest = async () => {
+    // ensure we collect latest changes before sending
+    collectChangeList();
+
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(ugData));
+    formData.append("changes", JSON.stringify(changeList));
+    if (beGovLinkFile) formData.append("govPdf", beGovLinkFile);
+    if (beMgmtLinkFile) formData.append("mgmtPdf", beMgmtLinkFile);
+
+    try {
+      const response = await axios.post("/api/admin/request-ug-changes", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      if (response.data?.success) {
+        toast.success("Request submitted successfully!");
+        setShowPopup(false);
+        setIsSaved(false);
+        setChangeList([]);
+      } else {
+        toast.error(response.data?.message || "Failed to submit request.");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit request. Try again.");
+    }
+  };
+
+  // ---------- Table rendering helper ----------
+  // tableKey: "UG" or "UG_Lateral"
+  const renderTable = (dataArray, title, subtitle, tableKey = "UG") => {
+    const editableRows = tableKey === "UG" ? editableUGRows : editableLateralRows;
+    const onCheckboxChange = tableKey === "UG" ? handleUGCheckboxChange : handleLateralCheckboxChange;
+    const onAdd = () => handleAddNew(tableKey);
+    const anySelected = editableRows.some((r) => r.isSelected);
+
+    return (
+      <div className="table-container mt-5">
+        <h4 className="text-accn dark:text-drkt Eligibility text-center">{title}</h4>
+        <h6 className="text-accn dark:text-drkt Eligibility font-thin text-center">{subtitle}</h6>
+        <div className="table-card overflow-x-auto">
+          <table className="styled-table w-auto">
+            <thead>
+              <tr>
+                <th className="ugHeader">UG COURSES</th>
+                <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
+                <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
+                <th className="ugHeader">TOTAL INTAKE</th>
+                {isEditing && <th className="ugHeader">Actions</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {isEditing ? (
+                // show editableRows per table when editing
+                editableRows.map((row, idx) => (
+                  <tr key={`${tableKey}-${idx}`} className="bg-prim dark:bg-text">
+                    <td>
+                      <input
+                        className="admin-nlugin"
+                        value={row.course}
+                        onChange={(e) => handleRowChange(tableKey, idx, "course", e.target.value)}
+                        placeholder="Course name"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="admin-ugin"
+                        value={row.governmentQuota}
+                        onChange={(e) => handleRowChange(tableKey, idx, "governmentQuota", e.target.value)}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        className="admin-ugin"
+                        value={row.managementQuota}
+                        onChange={(e) => handleRowChange(tableKey, idx, "managementQuota", e.target.value)}
+                      />
+                    </td>
+                    <td>{row.totalIntake}</td>
+                    <td className="text-center">
+                      <input type="checkbox" checked={row.isSelected || false} onChange={(e) => onCheckboxChange(idx, e.target.checked)} />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                // non-editing view uses dataArray (original UG or Lateral)
+                (Array.isArray(dataArray) ? dataArray : []).map((item, rowIndex) => {
+                  const [courseName, courseDetails] = Object.entries(item)[0] || ["", {}];
+                  return (
+                    <tr key={`${tableKey}-row-${rowIndex}`} className="bg-prim dark:bg-text">
+                      <td className="text-start text-center">{courseName}</td>
+                      <td className="font-light text-center">{courseDetails["Government Quota Intakes"]}</td>
+                      <td className="font-light text-center">{courseDetails["Management Quota Intakes"]}</td>
+                      <td className="font-light text-center">{courseDetails["Total Intakes"]}</td>
+                    </tr>
+                  );
+                })
+              )}
+
+              {isEditing && (
+                <tr>
+                  <td colSpan={isEditing ? 5 : 4}>
+                    <div className="flex justify-center items-center gap-2">
+                      <button onClick={onAdd} className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                        <Plus size={16} /> Add
+                      </button>
+                      {anySelected && (
+                        <button
+                          onClick={() => {
+                            setDeleteTargetTable(tableKey === "UG" ? "UG" : "UG_Lateral");
+                            setShowDeleteModal(true);
+                          }}
+                          className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                        >
+                          <Trash2 size={16} /> Delete
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
-      <Banner toggle={toggle} theme={theme} backgroundImage="./Banners/admissionbanner.webp" headerText="UG Admission" subHeaderText="Empowering the next generation of leaders through access to world-class education and opportunities." />
-      {isLoading ? <div className="h-screen flex items-center justify-center md:mt-[10%] md:block"><LoadComp txt={""} /></div> : (
+      <ToastContainer position="top-right" />
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/admissionbanner.webp"
+        headerText="UG Admission"
+        subHeaderText="Empowering the next generation of leaders through access to world-class education and opportunities."
+      />
+<div className="flex justify-end mt-4">
+              {!isEditing && (
+                <button className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mt-4 mr-10" onClick={startEditing}>
+                  <Pencil size={16} /> Edit
+                </button>
+              )}
+            </div>
+      {isLoading ? (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={""} />
+        </div>
+      ) : (
         <div className="Admission">
-          {/* UG Section */}
           <div className="B-E">
             <h3 className="text-accn dark:text-drkt border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">B.E./B.Tech. Degree Programme</h3>
-            <div className="ADM-content bg-[#fffae6] dark:bg-drkb border-l-4 border-secd dark:border-drks">
-              <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
-              <p className="description-text">Candidates seeking admission should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.</p>
-              <br /><p className="text-start description-text ">( OR )</p><br />
-              <p className="description-text">Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.</p>
-
-              <div className="admin-controls-ug flex justify-end mb-2">
-                {!editUG && <button className="admin-edit-ug flex gap-1" onClick={() => { setEditUG(true); scrollTo(ugTableRef); }}><SquarePen /> Edit</button>}
-              </div>
-
-              {/* Government quota */}
-              <div>
-                <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2">GOVERNMENT QUOTA</p>
-                <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
-                <div className="flex justify-center mt-4">
-                  <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-                  {editUG ? (
-                    <div className="flex flex-col gap-2">
-                      <input type="text" className="admin-govtlugin" value={govLinkName} onChange={(e) => { const newName = e.target.value; handlePdfChange("UG", "name", govLinkName, newName); setGovLinkName(newName); }} placeholder="Enter Link Name" required />
-                      <input type="file" accept="application/pdf" onChange={(e) => { const file = e.target.files[0]; setGovLinkFile(file); handlePdfChange("UG", "file", BE_Government?.BE_Government_link_name, file); }} required />
-                    </div>
-                  ) : (
-                    <button className="text-blue-600 dark:text-drka" onClick={() => handlePdfClick(BE_Government?.BE_Government_link_name, UrlParser(BE_Government?.BE_Government_link))}><FaLink className="inline size-5 mr-1 mb-1" />{govLinkName}</button>
-                  )}
-                </div>
-
-                {/* Management quota */}
-                <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
-                <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through Consortium of Self –Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
-                <div className="flex justify-center mt-4">
-                  <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
-                  {editUG ? (
-                    <div className="flex flex-col gap-2 w-[700px]">
-                      <input type="text" className="admin-nlugin" value={mgmtLinkName} onChange={(e) => { const newName = e.target.value; handlePdfChange("UG", "name", mgmtLinkName, newName); setMgmtLinkName(newName); }} placeholder="Enter Link Name" required />
-                      <input type="file" accept="application/pdf" onChange={(e) => { const file = e.target.files[0]; setMgmtLinkFile(file); handlePdfChange("UG", "file", BE_Management?.BE_Management_link_name, file); }} required />
-                    </div>
-                  ) : (
-                    <button className="text-blue-600 dark:text-drka" onClick={() => handlePdfClick(BE_Management?.BE_Management_link_name, UrlParser(BE_Management?.BE_Management_link))}><FaLink className="inline size-5 mr-1 mb-1" />{mgmtLinkName}</button>
-                  )}
-                </div>
-              </div>
-
-              {renderTable(ug, "UG", ugTitle, "(For First Year Admissions)", editUG, ugTableRef)}
-
-              {!editUG && hasSavedUG && <div className="flex justify-end mt-2"><button onClick={() => setShowPopup(true)} className="admin-edit-ug flex gap-1"><Send size={16} /> Request Changes</button></div>}
-            </div>
           </div>
-          {/* Lateral Entry Section */}
+
+          <div className="ADM-content bg-[#fffae6] dark:bg-drkb border-l-4 border-secd dark:border-drks">
+            <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
+
+            <p className="description-text">
+              Candidates seeking admission should have passed the Higher Secondary Examinations of (10+2) Curriculum (Academic Stream) prescribed by the Government of Tamil Nadu with Mathematics, Physics, and Chemistry as three of the four subjects of study under Part-III or any examination of any other University or authority accepted by the Syndicate of Anna University as equivalent thereto.
+            </p>
+            <br />
+            <p className="text-start description-text ">( OR )</p>
+            <br />
+            <p className="description-text">Should have passed the Higher Secondary Examination of Vocational stream (Vocational groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.</p>
+            <br />
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2">GOVERNMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through TNEA Counselling</p>
+            </div>
+
+            <div className="flex justify-center mt-4">
+              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+
+              {isEditing ? (
+                <div className="flex flex-col gap-2">
+                  <input type="text" className="admin-govtlugin" value={beGovLinkName} onChange={(e) => setBeGovLinkName(e.target.value)} placeholder="Enter Link Name" />
+                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                    <span>Replace</span>
+                    <input type="file" accept="application/pdf" className="hidden" onChange={(e) => setBeGovLinkFile(e.target.files?.[0] || null)} />
+                  </label>
+
+                  <div className="w-[100px]">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (beGovLinkFile) {
+                          const fileURL = URL.createObjectURL(beGovLinkFile);
+                          window.open(fileURL, "_blank", "noopener,noreferrer");
+                        } else if (ugData?.BE_Government?.BE_Government_link) {
+                          window.open(UrlParser(ugData.BE_Government.BE_Government_link), "_blank", "noopener,noreferrer");
+                        } else {
+                          alert("No PDF available to view");
+                        }
+                      }}
+                    >
+                      <Eye color="blue" size={18} />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button className="text-blue-600 dark:text-drka" onClick={() => handlePdfOpen(UrlParser(ugData?.BE_Government?.BE_Government_link))}>
+                  <FaLink className="inline size-5 mr-1 mb-1" />
+                  {ugData?.BE_Government?.BE_Government_link_name || "View PDF"}
+                </button>
+              )}
+            </div>
+
+            <div>
+              <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">MANAGEMENT QUOTA</p>
+              <p className="text-text dark:text-drkt ml-8">B.E/ B.Tech : Apply through Consortium of Self –Financing Professional, Arts and Science Colleges in Tamil Nadu</p>
+            </div>
+
+            <div className="flex justify-center mt-4">
+              <p className="text-text dark:text-drkt font-bold mr-8">INFORMATION TO…..</p>
+
+              {isEditing ? (
+                <div className="flex flex-col gap-2">
+                  <input type="text" className="admin-nlugin w-full" value={beMgmtLinkName} onChange={(e) => setBeMgmtLinkName(e.target.value)} placeholder="Enter Link Name" />
+                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                    <span>Replace</span>
+                    <input type="file" accept="application/pdf" className="hidden" onChange={(e) => setBeMgmtLinkFile(e.target.files?.[0] || null)} />
+                  </label>
+
+                  <div className="w-[100px]">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (beMgmtLinkFile) {
+                          const fileURL = URL.createObjectURL(beMgmtLinkFile);
+                          window.open(fileURL, "_blank", "noopener,noreferrer");
+                        } else if (ugData?.BE_Management?.BE_Management_link) {
+                          window.open(UrlParser(ugData.BE_Management.BE_Management_link), "_blank", "noopener,noreferrer");
+                        } else {
+                          alert("No PDF available to view");
+                        }
+                      }}
+                    >
+                      <Eye  color="blue" size={18} />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button className="text-blue-600 dark:text-drka" onClick={() => handlePdfOpen(UrlParser(ugData?.BE_Management?.BE_Management_link))}>
+                  <FaLink className="inline size-5 mr-1 mb-1" />* FIRST YEAR {ugData?.BE_Management?.BE_Management_link_name || ""}
+                </button>
+              )}
+            </div>
+
+            {renderTable(
+              ugData?.UG || [],
+              isEditing ? (
+                <>
+                  UG COURSES - TOTAL INTAKE{" "}
+                  <input type="text" value={editableYearUG} onChange={(e) => setEditableYearUG(e.target.value)} className="admin-mbain w-20 inline-block text-center" />
+                </>
+              ) : (
+                <>UG COURSES - TOTAL INTAKE {ugData?.year || ""}</>
+              ),
+              "(For First Year Admissions)",
+              "UG"
+            )}
+          </div>
+
+          {/* Lateral Entry */}
           <div className="B-E">
             <h3 className="text-accn dark:text-drkt mt-5 border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Lateral Entry</h3>
           </div>
           <div className="ADM-content lateral-entry bg-[#fffae6] dark:bg-drkb border-l-4 border-secd dark:border-drks">
             <div className="text-start text-accn dark:text-drkt mb-3 Eligibility font-bold border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">Eligibility</div>
             <p className="description-text">Candidates possessing a Diploma in Engineering/Technology awarded by the State Board of Technical Education, Tamilnadu or its equivalent are eligible for Lateral entry admission to the third semester of B.E./B.Tech. as per the rules fixed by the Govt. of Tamilnadu.</p>
-            <br /><p className="description-text">( OR )</p><br />
+            <br />
+            <p className="description-text">( OR )</p>
+            <br />
             <p className="description-text">Candidates possessing a Degree in Science (B.Sc.,) (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible for Lateral entry admission to the third semester of B.E./B.Tech.</p>
-            {!editLateral && <div className="admin-controls-ug flex justify-end mb-2"><button className="admin-edit-ug" onClick={() => { setEditLateral(true); scrollTo(latTableRef); }}><SquarePen /> Edit</button></div>}
 
-            {renderTable(ug_lateral, "UG_Lateral", lateralTitle, "(For Lateral Entry Admissions)", editLateral, latTableRef)}
-
-            {!editLateral && hasSavedLateral && <div className="flex justify-end mt-2"><button onClick={() => setShowPopup(true)} className="admin-edit-ug flex gap-1"><Send size={16} /> Request Changes</button></div>}
+            {renderTable(
+              ugData?.UG_Lateral || [],
+              isEditing ? (
+                <>
+                  UG COURSES - TOTAL INTAKE{" "}
+                  <input type="text" value={editableYearLateral} onChange={(e) => setEditableYearLateral(e.target.value)} className="admin-mbain w-20 inline-block text-center" />
+                </>
+              ) : (
+                <>UG COURSES - TOTAL INTAKE {(ugData?.year_lateral ?? ugData?.year) || ""}</>
+              ),
+              "(For Diploma Holders Only)",
+              "UG_Lateral"
+            )}
           </div>
 
-          <ToastContainer position="bottom-right" autoClose={3000} />
+          {/* Save / Request controls */}
+          {isEditing && (
+            <div className="flex gap-2 mt-4 justify-end mr-12">
+              <button onClick={handleCancel} className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500">
+                Cancel
+              </button>
+              <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition ">
+                Save
+              </button>
+            </div>
+          )}
 
-          {/* Final Request Modal */}
-          {showPopup && changeList.length > 0 && (
-            <FinalRequestModal 
-              changeList={changeList} 
-              onClose={() => setShowPopup(false)} 
-              onSubmit={handleFinalRequest} 
-              handleUndoChange={handleUndoChange} 
-              isRequesting={isRequesting}
-            />
+          {!isEditing && isSaved && (
+            <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
+              <button className="px-4 py-2 bg-gray-500 text-white rounded" onClick={() => { handleDiscardChanges(); }}>
+                Discard Changes
+              </button>
+              <button className="px-4 py-2 bg-[#FDCC03] text-white rounded flex items-center gap-2" onClick={() => { collectChangeList(); setShowPopup(true); }}>
+                <Send size={16} /> Request
+              </button>
+            </div>
+          )}
+
+          {/* Delete Modal */}
+          {showDeleteModal && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
+              <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+                <h2 className="font-semibold mb-4">Confirm Delete</h2>
+                <p>Are you sure you want to delete selected courses from {deleteTargetTable === "UG" ? "UG" : "Lateral"}?</p>
+                <div className="flex justify-end gap-3 mt-4">
+                  <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowDeleteModal(false)}>
+                    Cancel
+                  </button>
+                  <button className="px-4 py-2 bg-red-600 text-white rounded" onClick={handleDeleteSelected}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Final request popup */}
+          {showPopup && (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+              <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
+                <h2 className="text-lg font-semibold mb-4">Final Request</h2>
+                <p className="text-red-600 mb-4">
+                  <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
+                </p>
+
+                <table className="w-full text-sm border">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="border p-2">Action</th>
+                      <th className="border p-2">Section</th>
+                      <th className="border p-2">Changes</th>
+                      <th className="border p-2">Undo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {changeList.length === 0 ? (
+                      <tr>
+                        <td colSpan={4}>No pending changes.</td>
+                      </tr>
+                    ) : (
+                      changeList.map((req, idx) => (
+                        <tr key={idx} className="border-b">
+                          <td className="p-2">
+                            <span style={{ textTransform: "capitalize" }}>{req.type}</span>
+                          </td>
+                          <td className="border p-2">
+                            {/* {req.changes || ""} */} UG
+                          </td>
+                          <td className="p-2 border">{req.section}</td>
+                          <td className="p-2 border">
+                            <button onClick={() => handleUndoChange(idx)}>
+                              <X />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+
+                <div className="flex justify-end gap-3 mt-4">
+                  <button onClick={() => setShowPopup(false)} className="px-4 py-2 bg-gray-300 rounded-md">
+                    Cancel
+                  </button>
+                  <button onClick={handleFinalRequest} className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center">
+                    <Send size={16} /> Final Request
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       )}

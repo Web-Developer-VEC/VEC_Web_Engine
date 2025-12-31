@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast, ToastContainer } from "react-toastify";
 import useBlockNavigation from "../useBlockNavigation";
 import { Pencil, X, Trash2, Send, Plus } from "lucide-react";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -91,6 +92,10 @@ const AdminYrc = ({ toggle, theme }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const navigate = useNavigate();
+  const { sendRequest, loading, error } = useAdminRequest();
+
+  console.log(yrcData);
+  
 
 const handleDataUpdate = (newData) => {
   setYrcData(newData);
@@ -150,15 +155,50 @@ const handleDataUpdate = (newData) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingData) return;
+  // const handleFinalRequestConfirm = () => {
+  //   if (!pendingData) return;
 
-    setCommittedData(JSON.parse(JSON.stringify(pendingData)));
-    setYrcData(JSON.parse(JSON.stringify(pendingData)));
-    setPendingData(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-  };
+  //   setCommittedData(JSON.parse(JSON.stringify(pendingData)));
+  //   setYrcData(JSON.parse(JSON.stringify(pendingData)));
+  //   setPendingData(null);
+  //   setIsSaved(false);
+  //   setShowRequestModal(false);
+  // };
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingData) return;
+
+  // Prepare payload for the backend
+  const payload = [
+    {
+      collectionName: "yrc",
+      collection_type: "about",
+      action: "update",
+      title: "Update About YRC",
+      original_data: committedData[0], // data before edit
+      meta_data: pendingData[0],       // data after edit
+    },
+  ];
+
+  try {
+    const result = await sendRequest(payload); // Send using the hook
+    toast.success("Request confirmed and sent successfully!");
+    if (result) {
+      // Update local states after successful request
+      setCommittedData(JSON.parse(JSON.stringify(pendingData)));
+      setYrcData(JSON.parse(JSON.stringify(pendingData)));
+      setPendingData(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+
+      // toast.success("Request confirmed and sent successfully!");
+    }
+  } catch (err) {
+    toast.error("Failed to send request!");
+  }
+};
+
 
   const revertChange = (field) => {
     if (!pendingData || !committedData) return;
@@ -264,6 +304,8 @@ const handleDataUpdate = (newData) => {
           type: typeMatch[yrc],
         });
         const data = response.data.data;
+        console.log("fetched data", data);
+        
         setYrcData(data);
         setCommittedData(JSON.parse(JSON.stringify(data)));
         setPendingData(null);
@@ -311,9 +353,9 @@ const handleDataUpdate = (newData) => {
         toggle={toggle}
         theme={theme}
       />
-<ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       {yrcData ? (
-        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={"w-screen"} backButton={true} />
+        <SideNav sts={yrc} setSts={setYrc} navData={navData} cls={""} />
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />

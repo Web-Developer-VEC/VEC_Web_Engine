@@ -2,62 +2,70 @@ const path = require("path");
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
 
-
 async function nssHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
-    const realimagename =
+    const realImageName =
       typeof filename === "string"
         ? filename
         : filename?.filename || "image.jpg";
 
-    const effectiveimageMime = mimetype || filename?.mimeType || "image/jpeg";
+    const effectiveImageMime =
+      mimetype || filename?.mimeType || "image/jpeg";
 
-    if (!effectiveimageMime.startsWith("image/")) {
+    // ✅ Allow only images
+    if (!effectiveImageMime.startsWith("image/")) {
       fileStream.resume();
       return cb(new Error("Only images are allowed"));
     }
 
     const collection_type = docs[0]?.collection_type;
     const collectionName = docs[0]?.collectionName;
-    const meta_data = docs[0]?.meta_data;
+    const meta_data = docs[0]?.meta_data || {};
 
-
-    // Buffer the stream
+    // 🔹 Buffer the stream
     const chunks = [];
     for await (const chunk of fileStream) {
       chunks.push(chunk);
     }
     const fileBuffer = Buffer.concat(chunks);
 
-    let last, folder, s3Key, command;
-    const ext = path.extname(realimagename) || ".jpg";
+    const ext = path.extname(realImageName) || ".jpg";
+
+    let fileNamePart;
 
     if (collection_type === "team") {
-      last = meta_data?.name;
+      // ✅ Student name → filename
+      fileNamePart =
+        meta_data.name?.trim() ||
+        path.basename(realImageName, ext);
     } else if (collection_type === "events") {
-      last =`event/${meta_data?.title}`;
+      fileNamePart = `event/${meta_data.title?.trim() || Date.now()}`;
     } else {
       return cb(new Error("Unsupported collection type"));
     }
 
-    folder = `temp/static/images/${collectionName}/${last}${ext}`;
-    s3Key = folder;
+    // ✅ FINAL S3 KEY (TEMP PATH)
+    const s3Key = `temp/static/images/${collectionName}/${fileNamePart}${ext}`;
 
-    command = new PutObjectCommand({
+    const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: s3Key,
       Body: fileBuffer,
-      ContentType: effectiveimageMime,
+      ContentType: effectiveImageMime,
     });
 
     const data = await s3.send(command);
+    docs[0].meta_data = {
+      ...meta_data,
+      image_path: `/${s3Key}`, // → /temp/static/images/...
+    };
 
-    // Track uploaded files
+    // ✅ Track uploaded files (used by temp middleware)
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
       location: `/${s3Key}`,
-      mimetype: command.input.ContentType,
+      mimetype: effectiveImageMime,
     });
 
     cb(null, data);
