@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.958.0",
     "@pinecone-database/pinecone": "^4.1.0",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.9",
@@ -41,7 +42,8 @@
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.3",
     "twilio": "^5.4.3",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "concurrently": "^9.2.0",

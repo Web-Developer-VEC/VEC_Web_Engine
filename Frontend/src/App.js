@@ -21,6 +21,7 @@ import DynamicTitle from "./Header.jsx";
 /* Landing Page */
 const LandingPage = React.lazy(() => import("./Landing.jsx"));
 const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
+const Career = React.lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
 
 /* AboutUs Pages */
 const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
@@ -329,6 +330,7 @@ const App = () => {
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
+                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
@@ -347,6 +349,7 @@ const App = () => {
                                 <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
                                 <Route path="/QA/confirm" element={<InstructionPage />} />
                                 <Route path="/QA/questions" element={<QuestionPage />} />
+                                <Route path="/careers" element={<Career />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
