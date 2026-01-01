@@ -51,6 +51,7 @@ export function LoginForm() {
         JSON.stringify({
           token: data.token,
           role: data.role,
+          session: data.session
         })
       )
 

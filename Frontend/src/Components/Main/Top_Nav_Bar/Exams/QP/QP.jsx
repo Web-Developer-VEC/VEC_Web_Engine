@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from "react";
 import Banner from "../../../Banner";
 import "./QP.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Power } from "lucide-react";
 
 function yearToSemestersLookup(y) {
   const map = {
@@ -24,8 +25,22 @@ function formatTime12(t) {
   const suffix = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
   if (hours === 0) hours = 12;
-  return `${hours}:${minutes}`;
+  return `${hours}:${minutes} ${suffix}`;
 }
+
+const getExamTime = (exam) => {
+  if (exam === "III") {
+    return {
+      startTime: "13:00",
+      endTime: "16:00",
+    };
+  }
+
+  return {
+    startTime: "08:40",
+    endTime: "10:20",
+  };
+};
 
 const formatDateDDMMYYYY = (dateStr) => {
   if (!dateStr) return "";
@@ -289,8 +304,6 @@ const GenerateTable = ({ toggle, theme }) => {
   const [previewData, setPreviewData] = useState(null);
 
   const [date, setDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
 
   const [config, setConfig] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -316,9 +329,6 @@ const GenerateTable = ({ toggle, theme }) => {
     // Date & Time (convert back!)
     const [day, month, year] = previousData.date.split("-");
     setDate(`${year}-${month}-${day}`);
-
-    setStartTime(previousData.startTime);
-    setEndTime(previousData.endTime);
 
     // prevent re-run
     navigate(".", { replace: true, state: null });
@@ -390,8 +400,6 @@ const GenerateTable = ({ toggle, theme }) => {
   useEffect(() => {
     if (!section) {
       setDate("");
-      setStartTime("");
-      setEndTime("");
     }
   }, [section]);
 
@@ -434,8 +442,6 @@ const GenerateTable = ({ toggle, theme }) => {
     setExam("");
     setPreviewData(null);
     setDate("");
-    setStartTime("");
-    setEndTime("");
   };
 
   const handleBranchChange = (val) => {
@@ -516,16 +522,6 @@ const handleSubjectCodeSelect = (val) => {
     setPreviewData(null);
   };
 
-  const handleStartTimeChange = (val) => {
-    setStartTime(val);
-    setPreviewData(null);
-  };
-
-  const handleEndTimeChange = (val) => {
-    setEndTime(val);
-    setPreviewData(null);
-  };
-
   const handleDateChange = (val) => {
     setDate(val);
     setPreviewData(null);
@@ -546,8 +542,6 @@ const handleSubjectCodeSelect = (val) => {
     year &&
     section &&
     date &&
-    startTime &&
-    endTime &&
     branch &&
     semester &&
     subject &&
@@ -563,10 +557,7 @@ const handleSubjectCodeSelect = (val) => {
       return;
     }
 
-    if (startTime >= endTime) {
-      const ok = window.confirm("Start time is not earlier than end time. Do you want to continue?");
-      if (!ok) return;
-    }
+    const { startTime, endTime } = getExamTime(exam);
 
     const data = {
       degree: degree === "BE" ? "B.E" : "B.Tech",
@@ -595,7 +586,7 @@ const handleSubjectCodeSelect = (val) => {
 
   const session = JSON.parse(sessionStorage.getItem("userSession"));
 
-  if (!session) {
+  if (!session || !session.role === "coe") {
     navigate("/login");
   };
 
@@ -604,6 +595,20 @@ const handleSubjectCodeSelect = (val) => {
       <Banner backgroundImage="./Banners/examsbanner.webp" headerText="Question Paper Generator" subHeaderText="" toggle={toggle} theme={theme} />
 
       <div className="gt-page">
+        <div className="w-full flex justify-end">
+          <button
+            className="coe-logout-btn"
+            onClick={() => {
+              sessionStorage.clear();
+              navigate("/login");
+            }}
+            title="Log out"
+            type="button"
+          >
+            <Power size={18} />
+            <span>Logout</span>
+          </button>
+        </div>
         <form className="gt-form" onSubmit={handleGenerate}>
           <h2 className="gt-title">Question Paper Generator</h2>
 
@@ -665,20 +670,12 @@ const handleSubjectCodeSelect = (val) => {
             <label className="gt-label">Date:</label>
             <input className="gt-input" type="date" value={date} onChange={(e) => handleDateChange(e.target.value)} disabled={!section} aria-disabled={!section} aria-label="Select exam date" style={{ width: 160 }} />
 
-            <label className="gt-label-time" style={{ marginLeft: 12 }}>Time:</label>
-
-            <input className="gt-input" type="time" value={startTime} onChange={(e) => handleStartTimeChange(e.target.value)} disabled={!section} aria-disabled={!section} aria-label="Start time" style={{ width: 70 }} />
-
-            <span aria-hidden style={{ margin: "0 6px" }}>-</span>
-
-            <input className="gt-input" type="time" value={endTime} onChange={(e) => handleEndTimeChange(e.target.value)} disabled={!section} aria-disabled={!section} aria-label="End time" style={{ width: 60 }} />
-
             <div className="gt-hint" style={{ marginLeft: 170 }}>
               {!section
                 ? "Select a section first"
                 : date
-                ? `Selected: ${date}${startTime && endTime ? `, ${formatTime12(startTime)} - ${formatTime12(endTime)}` : ""}`
-                : "Choose date & time"}
+                ? `Selected: ${date}`
+                : "Choose Date of Examination"}
             </div>
           </div>
 

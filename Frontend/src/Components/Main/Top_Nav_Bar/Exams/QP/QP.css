@@ -305,6 +305,39 @@
   color: #0f172a;
 }
 
+.coe-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #b42318;
+  background-color: #fff;
+  border: 1px solid #f5c2c7;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.coe-logout-btn:hover {
+  background-color: #b42318;
+  color: #ffffff;
+  border-color: #b42318;
+}
+
+.coe-logout-btn:active {
+  transform: translateY(1px);
+}
+
+.coe-logout-btn svg {
+  stroke-width: 2;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .gt-label {

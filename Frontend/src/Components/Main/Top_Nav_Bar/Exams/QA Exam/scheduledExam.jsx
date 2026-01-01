@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Banner from "../../../Banner";
+import { ArrowLeft, Power } from "lucide-react";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const ScheduledExam = ({ toggle, theme }) => {
   const [filters, setFilters] = useState({
@@ -9,6 +12,7 @@ const ScheduledExam = ({ toggle, theme }) => {
     time: "",
   });
   const [examData, setExamData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,15 +40,62 @@ const ScheduledExam = ({ toggle, theme }) => {
     );
   });
 
-  const handleCancel = () => {
+  const handleCancel = async (scheduleId) => {
+    const result = await Swal.fire({
+      title: "Cancel Exam?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, cancel it",
+      cancelButtonText: "No",
+    });
 
-  }
+    if (!result.isConfirmed) return;
+
+    try {
+      const response = await axios.post(
+        "/api/main-backend/exam_schedule/cancel",
+        { scheduleId }
+      );
+
+      if (response.data.success) {
+        // Update UI immediately
+        setExamData((prev) =>
+          prev.map((exam) =>
+            exam.scheduleId === scheduleId
+              ? { ...exam, status: "cancelled", examCode: null }
+              : exam
+          )
+        );
+
+        Swal.fire({
+          title: "Cancelled!",
+          text: "Exam schedule has been cancelled successfully.",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.error("Error cancelling exam schedule", error);
+
+      Swal.fire({
+        title: "Error",
+        text:
+          error.response?.data?.message ||
+          "Failed to cancel exam schedule",
+        icon: "error",
+      });
+    }
+  };
 
   const statusStyles = {
     active: "bg-green-100 text-green-700",
     scheduled: "bg-green-200 text-green-700",
-    Completed: "bg-indigo-100 text-indigo-700",
-    Cancelled: "bg-red-100 text-red-700",
+    completed: "bg-indigo-100 text-indigo-700",
+    cancelled: "bg-red-100 text-red-700",
   };
 
   const session = JSON.parse(sessionStorage.getItem("userSession"));
@@ -60,9 +111,29 @@ const ScheduledExam = ({ toggle, theme }) => {
     />
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-brwn mb-6">
-          Today's Exam Schedule
-        </h1>
+        <div className="flex justify-between">
+          {session.role === "admin" && (
+            <button className="flex gap-2 justify-center items-center" onClick={() => navigate(-1)}>
+              <ArrowLeft size={16} /> Back
+            </button>
+          )}
+          <h1 className="text-2xl font-bold text-brwn mb-6">
+            Today's Exam Schedule
+          </h1>
+
+          <button
+              className="qa-logout-btn"
+              onClick={() => {
+                sessionStorage.removeItem("userSession");
+                navigate("/login");
+              }}
+              title="Log out"
+              type="button"
+            >
+              <Power size={18} />
+              <span>Logout</span>
+          </button>
+        </div>
 
         {/* Filters */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -145,8 +216,16 @@ const ScheduledExam = ({ toggle, theme }) => {
                   </TableCell>
                   {session.role === "admin" && (
                     <TableCell>
-                        <button className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">
-                            Cancel
+                        <button
+                          onClick={() => handleCancel(exam.scheduleId)}
+                          disabled={exam.status === "cancelled"}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            exam.status === "cancelled"
+                              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                              : "bg-red-100 text-red-700 hover:bg-red-200"
+                          }`}
+                        >
+                          Cancel
                         </button>
                     </TableCell>
                   )}

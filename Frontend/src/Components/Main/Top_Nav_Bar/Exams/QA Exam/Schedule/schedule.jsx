@@ -6,36 +6,17 @@ import {
   BookOpen,
   Calendar,
   Clock,
+  Power,
 } from "lucide-react"
-import { SearchableInput } from "./searchableInput"
+import { Dropdown, SearchableInput } from "./searchableInput"
 import Banner from "../../../../Banner"
 import { useNavigate } from "react-router"
-
-const YEARS = ["I", "II", "III", "IV"]
-
-const DEPARTMENTS = ["CSE", "ECE", "EEE", "AI&DS"]
-
-const SUBJECTS = [
-  { code: "QA204", name: "QA/VR" },
-  { code: "QA301", name: "QA/BS" },
-  { code: "QA210", name: "QA" },
-]
-
-const STUDENTS = [
-  { reg: "113223072040", dept: "AI&DS" },
-  { reg: "113223072041", dept: "AI&DS" },
-  { reg: "113223072101", dept: "AI&DS" },
-  { reg: "113223062001", dept: "CSE" },
-  { reg: "113223062002", dept: "CSE" },
-  { reg: "113223052001", dept: "IT" },
-  { reg: "113223052002", dept: "IT" },
-  { reg: "113223042001", dept: "ECE" }
-]
-
+import Swal from "sweetalert2"
+import axios from "axios"
 
 const Schedule = ({ toggle, theme }) => {
   const [year, setYear] = useState("")
-  const [departments, setDepartments] = useState([])
+  const [departments, setDepartments] = useState("")
   const [registerState, setRegisterState] = useState({
     mode: "none", // none | partial | all
     values: [],
@@ -45,15 +26,87 @@ const Schedule = ({ toggle, theme }) => {
   const [subject, setSubject] = useState("")
   const [subjectCode, setSubjectCode] = useState("")
   const [date, setDate] = useState("")
-  const [start, setStart] = useState("")
-  const [end, setEnd] = useState("")
+  const [time, setTime] = useState("")
+  const [examType, setExamType] = useState("")
+  const [years, setYears] = useState([])
+  const [departmentOptions, setDepartmentOptions] = useState([])
+  const [subjects, setSubjects] = useState([])
+  const [topicOptions, setTopicOptions] = useState([])
+  const [studentRegs, setStudentRegs] = useState([])
+  const [loadingRegs, setLoadingRegs] = useState(false)
+  const [topics, setTopics] = useState([])
   const navigate = useNavigate();
 
-  const filteredRegs = useMemo(() => {
-    return STUDENTS
-      .filter((s) => departments.includes(s.dept))
-      .map((s) => s.reg)
-  }, [departments])
+  useEffect(() => {
+    if (!year || !departments) return
+
+    const yearMap = {
+      I: 1,
+      II: 2,
+      III: 3,
+      IV: 4,
+    }
+
+    const deptMap = {
+      "AI&DS": "Artificial Intelligence and Data Science",
+      "CSE": "Computer Science and Engineering",
+      "IT": "Information Technology",
+      "ECE": "Electronics and Communication Engineering"
+    }
+
+    const fetchStudents = async () => {
+      setLoadingRegs(true)
+
+      try {
+        const payload = {
+          department: deptMap[departments],
+          year: yearMap[year],
+        }
+
+        const res = await axios.post("/api/main-backend/getstudent", payload)
+
+        setStudentRegs(res.data.registerNumbers || [])
+
+        // Reset previous selection
+        setRegisterState({ mode: "none", values: [] })
+
+      } catch (err) {
+        console.error("Failed to fetch students", err)
+        setStudentRegs([])
+      } finally {
+        setLoadingRegs(false)
+      }
+    }
+
+    fetchStudents()
+  }, [year, departments])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("/api/main-backend/form")
+        const data = res.data
+
+        setYears(data.years || [])
+        setDepartmentOptions(data.departments || "")
+        setSubjects(data.subjectList || [])
+
+        // If topics depend on subject_name = "QA"
+        const qaSubject = data.subjects?.find(
+          (s) => s.subject_name === "QA"
+        )
+        setTopicOptions(qaSubject?.topics || [])
+
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  const filteredRegs = studentRegs
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -74,44 +127,32 @@ const Schedule = ({ toggle, theme }) => {
 
   // Year changed → reset dept + register
   useEffect(() => {
-    setDepartments([])
+    setDepartments("")
     setRegDropdownOpen(false);
     setRegisterState({ mode: "none", values: [] })
   }, [year])
 
   const handleSubjectSelect = (name) => {
-    const sub = SUBJECTS.find((s) => s.name === name)
+    const sub = subjects.find((s) => s.name === name)
     setSubject(name)
-    setSubjectCode(sub.code)
+    setSubjectCode(sub?.code || "")
   }
 
   const handleCodeSelect = (code) => {
-    const sub = SUBJECTS.find((s) => s.code === code)
+    const sub = subjects.find((s) => s.code === code)
     setSubjectCode(code)
-    setSubject(sub.name)
+    setSubject(sub?.name || "")
   }
 
-  const selectAllStudents = () => {
-    setRegisterState({
-      mode: "all",
-      values: filteredRegs,
-    })
-    setRegDropdownOpen(false);
-  }
-
-  const handleRegisterSelect = (reg) => {
-    setRegisterState((prev) => ({
-      mode: "partial",
-      values: prev.values.includes(reg)
-        ? prev.values.filter((r) => r !== reg)
-        : [...prev.values, reg],
-    }))
-    setRegDropdownOpen(false);
-  }
 
   const submitExamSchedule = async () => {
-    if (!year || departments.length === 0 || registerState.values.length === 0) {
-      alert("Please fill all required fields")
+    if (!year || !departments) {
+      await Swal.fire({
+        icon: "warning",
+        title: "Missing Details",
+        text: "Please fill all required fields before submitting.",
+        confirmButtonColor: "#800000",
+      })
       return
     }
 
@@ -119,20 +160,28 @@ const Schedule = ({ toggle, theme }) => {
       year,
       department: departments,
       registerNo: registerState.values,
-      cie: "CIE", // or "CIE-1", make this dynamic if needed
+      cie: examType,
       subject,
       subjectCode,
       date,
-      start,
-      end,
+      time,
     }
+
+    // 🔄 Show loading
+    Swal.fire({
+      title: "Scheduling Exam...",
+      text: "Please wait",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+    })
 
     try {
       const res = await fetch("/api/main-backend/exam_schedule", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${token}`  // if using JWT
         },
         body: JSON.stringify(payload),
       })
@@ -143,225 +192,267 @@ const Schedule = ({ toggle, theme }) => {
         throw new Error(data.message || "Failed to schedule exam")
       }
 
-      alert("Exam scheduled successfully")
+      // ✅ Success popup
+      await Swal.fire({
+        icon: "success",
+        title: "Exam Scheduled",
+        text: "The exam has been scheduled successfully.",
+        confirmButtonColor: "#800000",
+      })
 
-      // OPTIONAL: reset form
+      // 🔁 Reset form
       setYear("")
       setDepartments([])
       setRegisterState({ mode: "none", values: [] })
       setSubject("")
       setSubjectCode("")
       setDate("")
-      setStart("")
-      setEnd("")
+      setTime("")
+      setExamType("")
     } catch (error) {
       console.error("Schedule error:", error)
-      alert(error.message)
+
+      Swal.fire({
+        icon: "error",
+        title: "Scheduling Failed",
+        text: error.message || "Something went wrong",
+        confirmButtonColor: "#800000",
+      })
     }
   }
 
   return (
     <>
-    <Banner
-      toggle={toggle}
-      theme={theme}
-      backgroundImage="./Banners/examsbanner.webp"
-      headerText="office of controller of examinations"
-      subHeaderText="QA"
-    />
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/examsbanner.webp"
+        headerText="office of controller of examinations"
+        subHeaderText="QA"
+      />
 
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 mb-4">
-      <div className="mt-4 px-4 mb-2 flex justify-end w-full">
-        <button
-          onClick={() => navigate("/scheduled-exam")}
-          className="
-            inline-flex items-center gap-2
-            px-4 py-2
-            rounded-lg
-            border border-[#800000]/30
-            bg-white
-            text-[#800000]
-            text-sm font-medium
-            shadow-sm
-            hover:bg-[#800000]
-            hover:text-text
-            hover:border-[#800000]
-            transition-all duration-200
-            focus:outline-none focus:ring-2 focus:ring-[#800000]/30
-          "
-        >
-          View Scheduled Exams
-          <span className="text-base">→</span>
-        </button>
-      </div>
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg border p-8 space-y-6">
-        <h2 className="text-2xl font-bold text-brwn text-center">
-          CIE Details Entry
-        </h2>
+      <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 mb-4">
+        <div className="mt-4 px-4 mb-2 flex justify-end w-full">
+          <div className="flex gap-1">
+            <button
+              onClick={() => navigate("/scheduled-exam")}
+              className="
+              inline-flex items-center gap-2
+              px-4 py-2
+              rounded-lg
+              border border-[#800000]/30
+              bg-white
+              text-[#800000]
+              text-sm font-medium
+              shadow-sm
+              hover:bg-[#800000]
+              hover:text-text
+              hover:border-[#800000]
+              transition-all duration-200
+              focus:outline-none focus:ring-2 focus:ring-[#800000]/30
+            "
+            >
+              View Scheduled Exams
+              <span className="text-base">→</span>
+            </button>
+            <button
+              className="qa-logout-btn"
+              onClick={() => {
+                sessionStorage.removeItem("userSession");
+                navigate("/login");
+              }}
+              title="Log out"
+              type="button"
+            >
+              <Power size={18} />
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+        <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg border p-8 space-y-6">
+          <h2 className="text-2xl font-bold text-brwn text-center">
+            CIE Details Entry
+          </h2>
 
-        <SearchableInput
-          label="Year"
-          icon={GraduationCap}
-          options={YEARS}
-          value={year}
-          onChange={setYear}
-          placeholder="Select year"
-        />
+          <SearchableInput
+            label="Year"
+            icon={GraduationCap}
+            options={years}
+            value={year}
+            onChange={setYear}
+            placeholder="Select year"
+          />
 
-        <SearchableInput
-          label="Department"
-          icon={Building2}
-          options={DEPARTMENTS}
-          value={departments}
-          onChange={setDepartments}
-          multiple
-          placeholder="Select department(s)"
-        />
+          <SearchableInput
+            label="Department"
+            icon={Building2}
+            options={departmentOptions}
+            value={departments}
+            onChange={setDepartments}
+            placeholder="Select department(s)"
+          />
 
-        <div ref={regRef} className="space-y-2 relative">
-          <label className="text-slate-700 font-medium text-sm">
-            Register Numbers
-          </label>
+          <div ref={regRef} className="space-y-2 relative">
+            <label className="text-slate-700 font-medium text-sm">
+              Register Numbers
+            </label>
 
-          {/* Input box (same style as others) */}
-          <div
-            className="relative border border-slate-300 rounded-md min-h-[48px]
+            {/* Input box (same style as others) */}
+            <div
+              className="relative border border-slate-300 rounded-md min-h-[48px]
             flex items-center gap-2 px-3 cursor-pointer
             focus-within:ring-2 focus-within:ring-[#fdcc03]/20"
-            onClick={() => setRegDropdownOpen((v) => !v)}
-          >
-            <Hash className="w-4 h-4 text-slate-400" />
-
-            {registerState.mode === "all" ? (
-              <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
-                All students selected ({registerState.values.length})
-              </span>
-            ) : registerState.values.length > 0 ? (
-              <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
-                {registerState.values.length} students selected
-              </span>
-            ) : (
-              <span className="text-slate-400 text-sm">
-                Select register numbers
-              </span>
-            )}
-          </div>
-
-          {/* Actions */}
-          <div className="flex gap-4 text-xs">
-            <button
-              type="button"
-              onClick={() => {
-                setRegisterState({ mode: "all", values: filteredRegs })
-                setRegDropdownOpen(false)
-              }}
-              className="text-[#800000] font-medium"
+              onClick={() => setRegDropdownOpen((v) => !v)}
             >
-              Select all students
-            </button>
+              <Hash className="w-4 h-4 text-slate-400" />
 
-            {registerState.mode !== "none" && (
+              {registerState.mode === "all" ? (
+                <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
+                  All students selected ({registerState.values.length})
+                </span>
+              ) : registerState.values.length > 0 ? (
+                <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
+                  {registerState.values.length} students selected
+                </span>
+              ) : (
+                <span className="text-slate-400 text-sm">
+                  Select register numbers
+                </span>
+              )}
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-4 text-xs">
               <button
                 type="button"
-                onClick={() =>
-                  setRegisterState({ mode: "none", values: [] })
-                }
-                className="text-slate-500"
+                onClick={() => {
+                  setRegisterState({ mode: "all", values: filteredRegs })
+                  setRegDropdownOpen(false)
+                }}
+                className="text-[#800000] font-medium"
               >
-                Clear
+                Select all students
               </button>
+
+              {registerState.mode !== "none" && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRegisterState({ mode: "none", values: [] })
+                  }
+                  className="text-slate-500"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            {/* DROPDOWN — INSIDE REF */}
+            {regDropdownOpen && (
+              <div
+                className="absolute z-20 w-full bg-white border rounded-md
+              shadow-md max-h-60 overflow-auto"
+              >
+                {loadingRegs ? (
+                  <div className="px-3 py-2 text-sm text-slate-400">
+                    Loading students...
+                  </div>
+                ) : filteredRegs.length === 0 ? (
+                  <div className="px-3 py-2 text-sm text-slate-400">
+                    No students found
+                  </div>
+                ) : (
+                  filteredRegs.map((reg) => {
+                    const selected = registerState.values.includes(reg)
+
+                    return (
+                      <div
+                        key={reg}
+                        onClick={() => {
+                          setRegisterState((prev) => ({
+                            mode: "partial",
+                            values: selected
+                              ? prev.values.filter((r) => r !== reg)
+                              : [...prev.values, reg],
+                          }))
+                        }}
+                        className={`px-3 py-2 cursor-pointer text-sm
+                          ${selected
+                            ? "bg-[#fdcc03]/20 font-medium"
+                            : "hover:bg-slate-100"
+                          }`}
+                      >
+                        {reg}
+                      </div>
+                    )
+                  })
+                )}
+              </div>
             )}
           </div>
 
-          {/* DROPDOWN — INSIDE REF */}
-          {regDropdownOpen && (
-            <div
-              className="absolute z-20 w-full bg-white border rounded-md
-              shadow-md max-h-60 overflow-auto"
-            >
-              {filteredRegs.map((reg) => {
-                const selected = registerState.values.includes(reg)
+          <div className="grid grid-cols-2 gap-4">
+            <SearchableInput
+              label="Subject Code"
+              icon={Hash}
+              options={subjects.map((s) => s.code)}
+              value={subjectCode}
+              onChange={handleCodeSelect}
+              placeholder="Search code"
+            />
 
-                return (
-                  <div
-                    key={reg}
-                    onClick={() => {
-                      setRegisterState((prev) => ({
-                        mode: "partial",
-                        values: selected
-                          ? prev.values.filter((r) => r !== reg)
-                          : [...prev.values, reg],
-                      }))
-                    }}
-                    className={`px-3 py-2 cursor-pointer text-sm
-                      transition-colors
-                      ${selected
-                        ? "bg-[#fdcc03]/20 font-medium"
-                        : "hover:bg-slate-100"
-                      }`}
-                  >
-                    {reg}
-                  </div>
-                )
-              })}
-            </div>
-          )}
-        </div>
+            <SearchableInput
+              label="Subject"
+              icon={BookOpen}
+              options={subjects.map((s) => s.name)}
+              value={subject}
+              onChange={handleSubjectSelect}
+              placeholder="Search subject"
+            />
 
-        <div className="grid grid-cols-2 gap-4">
-          <SearchableInput
-            label="Subject Code"
-            icon={Hash}
-            options={SUBJECTS.map((s) => s.code)}
-            value={subjectCode}
-            onChange={handleCodeSelect}
-            placeholder="Search code"
-          />
+            <SearchableInput
+              label="Topics"
+              icon={Building2}
+              options={topicOptions}
+              value={topics}
+              onChange={setTopics}
+              multiple
+              placeholder="Select Topic(s)"
+            />
+          </div>
 
-          <SearchableInput
-            label="Subject"
-            icon={BookOpen}
-            options={SUBJECTS.map((s) => s.name)}
-            value={subject}
-            onChange={handleSubjectSelect}
-            placeholder="Search subject"
-          />
-        </div>
+          <div className="grid grid-cols-3 gap-4">
+            <Input
+              label="Date"
+              icon={Calendar}
+              type="date"
+              value={date}
+              onChange={setDate}
+            />
+            <Dropdown
+              label="Exam Time"
+              icon={Clock}
+              value={time}
+              onChange={setTime}
+            />
+            <Dropdown
+              label="Exam Type"
+              icon={GraduationCap}
+              value={examType}
+              onChange={setExamType}
+            />
+          </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          <Input
-            label="Date"
-            icon={Calendar}
-            type="date"
-            value={date}
-            onChange={setDate}
-          />
-          <Input
-            label="Start Time"
-            icon={Clock}
-            type="time"
-            value={start}
-            onChange={setStart}
-          />
-          <Input
-            label="End Time"
-            icon={Clock}
-            type="time"
-            value={end}
-            onChange={setEnd}
-          />
-        </div>
-
-        <button
-          onClick={submitExamSchedule}
-          type="button"
-          className="w-full h-12 bg-[#fdcc03] hover:bg-[#800000]
+          <button
+            onClick={submitExamSchedule}
+            type="button"
+            className="w-full h-12 bg-[#fdcc03] hover:bg-[#800000]
           text-text hover:text-prim font-medium rounded-md transition"
-        >
-          Submit CIE Details
-        </button>
+          >
+            Submit CIE Details
+          </button>
+        </div>
       </div>
-    </div>
     </>
   )
 }

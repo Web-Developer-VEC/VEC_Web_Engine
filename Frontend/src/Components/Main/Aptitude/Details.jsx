@@ -26,54 +26,75 @@ export default function DetailsPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      if (
-        formData.department.trim() === "" ||
-        formData.registerno.trim() === "" ||
-        formData.password.trim() === "" ||
-        formData.year.trim() === ""
-      ) {
-        alert("Please fill all mandatory fields.");
-        return;
-      }
+    if (
+      !formData.department ||
+      !formData.registerno ||
+      !formData.password ||
+      !formData.year
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Fields",
+        text: "Please fill all mandatory fields.",
+        confirmButtonColor: "#800000",
+      });
+      return;
+    }
 
+    try {
       const deptMap = {
-        "AI&DS": "Artificial Intelligence and Data Science"
-      }
+        "AI&DS": "Artificial Intelligence and Data Science",
+        "CSE": "Computer Science Engineering",
+        "ECE": "Electrical and Electronic Engineering",
+        "EEE": "EEE",
+        "MECH": "MECH",
+        "IT": "IT",
+      };
 
       const yearMap = {
-        "I": 1,
-        "II": 2
-      }
+        I: 1,
+        II: 2,
+        III: 3,
+        IV: 4,
+      };
 
       const res = await axios.post("/api/main-backend/studentlogin", {
         registerno: formData.registerno,
         password: formData.password,
         department: deptMap[formData.department],
-        year: yearMap[formData.year]
-      })
+        year: yearMap[formData.year],
+      });
 
       const data = res.data;
-
-      console.log(data);
-      
 
       sessionStorage.setItem(
         "userSession",
         JSON.stringify({
           token: data.token,
-          student: data.student
+          student: data.student,
         })
-      )
+      );
 
-      console.log("Submitted:", formData);
+      await Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You have successfully logged in.",
+        confirmButtonColor: "#800000",
+        timer: 1500,
+        showConfirmButton: false,
+      });
 
-      // Navigate ONLY after successful validation
-      setTimeout(() => {
-        navigate("/QA/confirm");
-      }, 500);
+      navigate("/QA/confirm", { replace: true });
+
     } catch (error) {
-      console.error("Error login the student details");
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text:
+          error?.response?.data?.message ||
+          "Invalid credentials. Please try again.",
+        confirmButtonColor: "#800000",
+      });
     }
   }
 
@@ -203,7 +224,7 @@ export default function DetailsPage() {
             <label>Password*</label>
           </div>
 
-          <div className="input-group">
+          <div className={`input-group ${formData.department ? "has-value" : ""}`}>
             <select
               name="department"
               value={formData.department}
@@ -220,7 +241,7 @@ export default function DetailsPage() {
             <label>Department*</label>
           </div>
 
-          <div className="input-group">
+          <div className={`input-group ${formData.year ? "has-value" : ""}`}>
             <select
               name="year"
               value={formData.year}

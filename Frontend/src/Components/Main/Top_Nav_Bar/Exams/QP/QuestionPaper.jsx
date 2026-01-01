@@ -22,29 +22,42 @@ const ExamPDF = () => {
   const [questions, setQuestions] = useState(null);
   
   useEffect(() => {
+    if (!state) return;
+
+    const storageKey = `exam_questions_${state.subjectCode}_${state.set}_${state.exam}`;
+
+    const cached = sessionStorage.getItem(storageKey);
+    if (cached) {
+      setQuestions(JSON.parse(cached));
+      return;
+    }
+
     const fethData = async () => {
       const examTypeMap = {
-        "I": "cie1",
-        "II": "cie2",
-        "III": "cie3"
-      }
+        I: "cie1",
+        II: "cie2",
+        III: "cie3",
+      };
 
       try {
-        const responce = await axios.post("/api/main-backend/questionbank_generator",{
-          examType: examTypeMap[state?.exam],
-          subjectcode: state?.subjectCode,
-          set: state?.set
-        })
-      
-        setQuestions(responce.data);
-        
+        const response = await axios.post(
+          "/api/main-backend/questionbank_generator",
+          {
+            examType: examTypeMap[state.exam],
+            subjectcode: state.subjectCode,
+            set: state.set,
+          }
+        );
+
+        setQuestions(response.data);
+        sessionStorage.setItem(storageKey, JSON.stringify(response.data));
       } catch (error) {
-        console.error("Error fetching Questions from excel",error);
+        console.error("Error fetching Questions", error);
       }
-    }
-    
+    };
+
     fethData();
-  }, [])
+  }, [state]);
   
   if (!state) return null;
 
@@ -325,7 +338,13 @@ const ExamPDF = () => {
 
         <div className="flex w-fit mx-auto gap-4">
           <div className="w-fit p-2 px-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim mx-auto mt-4">
-            <button onClick={() => navigate("/qp", { state })} className="flex flex-row gap-2 items-center px-3 py-2 rounded" type="button">
+            <button onClick={() => {
+                      const storageKey = `exam_questions_${state.subjectCode}_${state.set}_${state.exam}`;
+                      sessionStorage.removeItem(storageKey);
+                      navigate("/qp", { state });
+                    }}
+                    className="flex flex-row gap-2 items-center px-3 py-2 rounded" type="button"
+            >
               <ArrowLeft />Back to Edit
             </button>
           </div>

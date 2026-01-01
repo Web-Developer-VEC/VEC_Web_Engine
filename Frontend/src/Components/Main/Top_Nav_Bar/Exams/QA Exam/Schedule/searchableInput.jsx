@@ -31,7 +31,7 @@ export function SearchableInput({
       return true
     })
     .filter((opt) =>
-      opt.toLowerCase().includes(query.toLowerCase())
+      opt.toLowerCase().includes(query?.toLowerCase())
     )
 
   const handleSelect = (item) => {
@@ -112,6 +112,42 @@ export function SearchableInput({
           ))}
         </div>
       )}
+    </div>
+  )
+}
+
+const TIME_SLOTS = [
+  "08:40 AM - 10:20 AM"
+]
+
+const EXAM_TYPE = [
+  "I", "II", "III"
+]
+
+export function Dropdown({ label, icon: Icon, value, onChange }) {
+  return (
+    <div className="space-y-2">
+      <label className="text-sm font-medium text-slate-700">{label}</label>
+      <div className="relative">
+        <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="pl-10 h-12 w-full border border-slate-300 rounded-md
+          focus:ring-2 focus:ring-[#fdcc03]/20 bg-white"
+        >
+          <option value="">{label === "Exam Time" ? "Select Time" : "Select Exam Type"}</option>
+          {label === "Exam Time" ? TIME_SLOTS.map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          )) : EXAM_TYPE.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   )
 }
