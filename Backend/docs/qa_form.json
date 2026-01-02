@@ -1,0 +1,25 @@
+[{
+  "type": "qa_details",
+  "data": {
+    "years": ["I", "II", "III", "IV"],
+
+    "departments": [
+      "Computer Science & Engineering",
+      "Electronics and Communication Engineering",
+      "Electrical & Electronics Engineering",
+      "Artificial Intelligence and Data Science",
+      "Civil Engineering",
+      "Automobile Engieering",
+      "Electronics & Instrumentation Engineering",
+      "Mechanical Engineering",
+      "Computer Science and Engineering (CYBER SECURITY)",
+      "Information Technology"
+    ],
+    "subjects": [
+      { "code": "QA204", "name": "QA/VR" },
+      { "code": "QA301", "name": "QA/BS" },
+      { "code": "QA210", "name": "QA" }
+    ]
+  }
+}
+]

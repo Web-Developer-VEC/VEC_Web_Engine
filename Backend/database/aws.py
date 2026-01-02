@@ -250,6 +250,24 @@ def insert_academics_sections():
 
     print("academics sections inserted successfully.")
 
+def insert_qa_form():
+    collection = db["qa_form"]
+
+    with open("/root/VEC_Web_Engine/Backend/docs/qa_form.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("qa_form sections inserted successfully.")
+
+
+
 insert_department_data_sections()
 insert_academics_sections()
 insert_gallery_sections()
@@ -263,6 +281,7 @@ insert_exams_sections()
 insert_sidebar_details()
 insert_iic_sections()
 insert_admissions_sections()
+insert_qa_form()
 
 department_mapping = {
     "Artificial Intelligence and Data Science": "001",
