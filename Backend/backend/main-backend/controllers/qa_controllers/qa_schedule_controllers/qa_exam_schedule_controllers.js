@@ -74,6 +74,7 @@ async function storeExamSchedule(req, res) {
 
 const conflictQuery = {
   date,
+  year,
   status: { $ne: "cancelled" },
   $or: [
     department ? { department } : null,
