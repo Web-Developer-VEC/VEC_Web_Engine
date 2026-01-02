@@ -11,10 +11,29 @@ async function validateExamCode(req, res) {
     const examCollection = db.collection("qa_exam");
 
     // Extract input data from the request body
-    const { code, registerNo } = req.body;
+    const { code } = req.body;
+
+    const user = req.session.user;
+
+if (!user) {
+  return res.status(401).json({
+    success: false,
+    message: "Session expired or not logged in"
+  });
+}
+
+const { registerno, department, year } = user;
+
+
+    if (!registerno || !department || !year) {
+      return res.status(401).json({
+        success: false,
+        message: "Session expired or not logged in"
+      });
+    }
 
     // Validate the input payload
-    if (!code || !registerNo) {
+    if (!code) {
       return res.status(400).json({
         success: false,
         message: "Access denied. Invalid request parameters."
@@ -50,13 +69,51 @@ async function validateExamCode(req, res) {
       });
     }
 
-    // Validate if registerNo exists in qa_exam.students
-    const studentFound = exam.students.some(student => student.registerno === registerNo);
+    // Validate if registerno exists in qa_exam.students
+    const studentFound = exam.students.some(student => student.registerno === registerno);
 
     if (!studentFound) {
       return res.status(403).json({
         success: false,
         message: "Access denied. You are not authorized to attend this exam."
+      });
+    }
+
+    const result = await examCollection.aggregate([
+      { $match: { scheduleId: schedule._id } },
+      { $unwind: "$students" },
+      {
+        $match: {
+          "students.registerno": registerno,
+          "students.department": department,
+          "students.year": year
+        }
+      },
+       {
+        $project: {
+          _id: 0,
+          questions: {
+            $map: {
+              input: "$students.questions",
+              as: "q",
+              in: {
+                question: "$$q.question",
+                A: "$$q.A",
+                B: "$$q.B",
+                C: "$$q.C",
+                D: "$$q.D",
+                E: "$$q.E" 
+              }
+            }
+          }
+        }
+      }
+    ]).toArray();
+
+    if (!result.length) {
+      return res.status(404).json({
+        success: false,
+        message: "No questions found for this student"
       });
     }
 
@@ -67,12 +124,15 @@ async function validateExamCode(req, res) {
       examDetails: {
         subject: exam.subject,
         subjectCode: exam.subjectCode,
+        questions:result[0].questions,
         date: schedule.date,
         startTime: schedule.start,
         endTime: schedule.end
       }
     });
   } catch (error) {
+
+    console.error("❌ validateExamCode ERROR:", error); 
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred. Please try again later."
