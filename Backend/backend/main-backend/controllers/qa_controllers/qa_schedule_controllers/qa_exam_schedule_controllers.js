@@ -106,13 +106,12 @@ if (existingSchedule) {
        Schedule one-time activation
     ----------------------------- */
 
+    await createExamFromSchedule(result.insertedId);
+
     scheduleExamActivation({
       ...scheduleDoc,
       _id: result.insertedId,year, department, cie, subject, subjectCode, topics, date
     });
-
-    await createExamFromSchedule(result.insertedId);
-
 
     /* -----------------------------
        Response

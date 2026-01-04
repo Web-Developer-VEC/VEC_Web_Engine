@@ -53,7 +53,7 @@ async function generateExam(year, department, cie, subject, subjectCode, topics,
 
     
 
-    const examDoc = await examCol.findOne({subject,subjectCode,cie, date, students: {$elemMatch: {department,year}}});
+    const examDoc = await examCol.findOne({subject,subjectCode,cie, date});
 
 
     if (!examDoc) {
@@ -94,7 +94,14 @@ async function generateExam(year, department, cie, subject, subjectCode, topics,
 
       subjectState[subject] = {};
 
-      const subjectTopics = topics[subject] || [];
+      let subjectTopics = [];
+
+      if (Array.isArray(topics)) {
+        subjectTopics = topics;
+      } else {
+        subjectTopics = topics[subject] || [];
+      }
+
       if (subjectTopics.length === 0) {
         throw new Error(`No topics provided for ${subject}`);
       }
