@@ -1,5 +1,6 @@
 const crypto = require("crypto");
-const { getDb } = require("../../config/db");
+const { getDb } = require("../../../config/db");
+const { generateExam } = require("../qa_question_controllers/qa_questionassigner_controllers");
 
 /* ---------------------------------------------------
    Time utilities
@@ -105,6 +106,16 @@ async function activateExam(examId, validFrom, validTill) {
         status: "active"
       }
     }
+  );
+
+  await generateExam(
+    exam.year,
+    exam.department,
+    exam.cie,
+    exam.subject,
+    exam.subjectCode,
+    exam.topics,
+    exam.date
   );
 
 }
