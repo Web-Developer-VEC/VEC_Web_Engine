@@ -117,7 +117,10 @@ export function SearchableInput({
 }
 
 const TIME_SLOTS = [
-  "08:40 AM - 10:20 AM"
+  "08:40 AM - 10:20 AM",
+  "10:30 AM - 12:10 PM",
+  "12:40 PM - 02:20 PM",
+  "02:30 PM - 04:00 PM"
 ]
 
 const EXAM_TYPE = [

@@ -35,6 +35,7 @@ const Schedule = ({ toggle, theme }) => {
   const [studentRegs, setStudentRegs] = useState([])
   const [loadingRegs, setLoadingRegs] = useState(false)
   const [topics, setTopics] = useState([])
+  const [subjectTopics, setSubjectTopics] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,25 +48,18 @@ const Schedule = ({ toggle, theme }) => {
       IV: 4,
     }
 
-    const deptMap = {
-      "AI&DS": "Artificial Intelligence and Data Science",
-      "CSE": "Computer Science and Engineering",
-      "IT": "Information Technology",
-      "ECE": "Electronics and Communication Engineering"
-    }
-
     const fetchStudents = async () => {
       setLoadingRegs(true)
 
       try {
         const payload = {
-          department: deptMap[departments],
+          department: departments,
           year: yearMap[year],
         }
 
-        const res = await axios.post("/api/main-backend/getstudent", payload)
+        const res = await axios.post("/api/main-backend/get_register_no", payload)
 
-        setStudentRegs(res.data.registerNumbers || [])
+        setStudentRegs(res.data.students || [])
 
         // Reset previous selection
         setRegisterState({ mode: "none", values: [] })
@@ -91,12 +85,7 @@ const Schedule = ({ toggle, theme }) => {
         setYears(data.years || [])
         setDepartmentOptions(data.departments || "")
         setSubjects(data.subjectList || [])
-
-        // If topics depend on subject_name = "QA"
-        const qaSubject = data.subjects?.find(
-          (s) => s.subject_name === "QA"
-        )
-        setTopicOptions(qaSubject?.topics || [])
+        setSubjectTopics(data.subjects || [])
 
       } catch (error) {
         console.error("Error fetching data:", error)
@@ -132,6 +121,22 @@ const Schedule = ({ toggle, theme }) => {
     setRegisterState({ mode: "none", values: [] })
   }, [year])
 
+  useEffect(() => {
+    if (!subject) {
+      setTopicOptions([])
+      setTopics([])
+      return
+    }
+
+    const selectedSubject = subjectTopics.find(
+      (s) => s.subject_name === subject
+    )
+
+    setTopicOptions(selectedSubject?.topics || [])
+    setTopics([]) 
+
+  }, [subject, subjectTopics])
+
   const handleSubjectSelect = (name) => {
     const sub = subjects.find((s) => s.name === name)
     setSubject(name)
@@ -144,6 +149,12 @@ const Schedule = ({ toggle, theme }) => {
     setSubject(sub?.name || "")
   }
 
+  function parseTimeSlot(timeSlot) {
+    if (!timeSlot) return { start: "", end: "" }
+
+    const [start, end] = timeSlot.split(" - ")
+    return { start, end }
+  }
 
   const submitExamSchedule = async () => {
     if (!year || !departments) {
@@ -156,15 +167,26 @@ const Schedule = ({ toggle, theme }) => {
       return
     }
 
+    const { start, end } = parseTimeSlot(time)
+
+    const yearMap = {
+      I: 1,
+      II: 2,
+      III: 3,
+      IV: 4,
+    }
+
     const payload = {
-      year,
+      year: yearMap[year],
       department: departments,
       registerNo: registerState.values,
       cie: examType,
       subject,
       subjectCode,
+      topics,
       date,
-      time,
+      start,
+      end
     }
 
     // 🔄 Show loading
@@ -202,13 +224,14 @@ const Schedule = ({ toggle, theme }) => {
 
       // 🔁 Reset form
       setYear("")
-      setDepartments([])
+      setDepartments("")
       setRegisterState({ mode: "none", values: [] })
       setSubject("")
       setSubjectCode("")
       setDate("")
       setTime("")
       setExamType("")
+      setTopics([])
     } catch (error) {
       console.error("Schedule error:", error)
 
@@ -410,6 +433,7 @@ const Schedule = ({ toggle, theme }) => {
               placeholder="Search subject"
             />
 
+          </div>
             <SearchableInput
               label="Topics"
               icon={Building2}
@@ -419,7 +443,6 @@ const Schedule = ({ toggle, theme }) => {
               multiple
               placeholder="Select Topic(s)"
             />
-          </div>
 
           <div className="grid grid-cols-3 gap-4">
             <Input

@@ -34,12 +34,12 @@ async function submitAnswer(req, res) {
       s =>
         s.registerno === registerno
     );
-
+    
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    const q = student.question.find(
+    const q = student.questions.find(
       q => q.question.trim() === question.trim()
     );
 
@@ -47,15 +47,24 @@ async function submitAnswer(req, res) {
       return res.status(404).json({ message: "Question not found" });
     }
 
+    const optionMap = {
+      A: q.A,
+      B: q.B,
+      C: q.C,
+      D: q.D
+    };
+
+    const correctAnswer = optionMap[q.correct_option];
+
     const isCorrect =
-      choosedOption.trim() === q.correctOption.trim();
+      choosedOption.trim() === correctAnswer.trim();
 
     await collection.updateOne(
       { _id: doc._id },
       {
         $set: {
-          "students.$[stu].question.$[ques].choosedOption": choosedOption,
-          "students.$[stu].question.$[ques].isCorrect": isCorrect
+          "students.$[stu].questions.$[ques].choosedOption": choosedOption,
+          "students.$[stu].questions.$[ques].isCorrect": isCorrect
         }
       },
       {
@@ -71,7 +80,7 @@ async function submitAnswer(req, res) {
       s => s.registerno === registerno
     );
 
-    const answeredCount = updatedStudent.question.filter(
+    const answeredCount = updatedStudent.questions.filter(
       q => q.choosedOption && q.choosedOption.trim() !== ""
     ).length;
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Approve.css";
 import { CheckCircle, XCircle, AlertCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function InstructionPage() {
   const [accepted, setAccepted] = useState(false);
@@ -11,28 +12,38 @@ export default function InstructionPage() {
   const [secretCode, setSecretCode] = useState("");
   const [codeVerified, setCodeVerified] = useState(false);
   const [codeError, setCodeError] = useState("");
+  const location = useLocation();
+  const student = location.state?.student;
+  const token = location.state?.token;
+  const [examData, setExamData] = useState(null);
 
   useEffect(() => {
-      const checkDevice = () => {
-        // Logic: If screen width is less than 1024px, it's likely a mobile or tablet
-        if (window.innerWidth < 1024) {
-          setStatus('invalid_device');
-        } else if (localStorage.getItem('exam_status') === 'blocked') {
-          setStatus('blocked');
-        }
-      };
-  
-      checkDevice();
-      window.addEventListener('resize', checkDevice); // Re-check if window is resized
-      return () => window.removeEventListener('resize', checkDevice);
-    }, []);
+    const checkDevice = () => {
+      // Logic: If screen width is less than 1024px, it's likely a mobile or tablet
+      if (window.innerWidth < 1024) {
+        setStatus('invalid_device');
+      } else if (localStorage.getItem('exam_status') === 'blocked') {
+        setStatus('blocked');
+      }
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice); // Re-check if window is resized
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  useEffect(() => {
+    if (!student || !token) {
+      navigate('/QA/qaexam', { replace: true });
+    }
+  }, [student, token]);
 
   // ---------------- FULLSCREEN ENFORCEMENT WITH WARNING ----------------
   useEffect(() => {
     // Enter fullscreen on first user interaction
     const enterFullscreenOnce = () => {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().catch(() => { });
       }
       document.removeEventListener("click", enterFullscreenOnce);
     };
@@ -50,7 +61,7 @@ export default function InstructionPage() {
           allowOutsideClick: false,
           allowEscapeKey: false,
         }).then(() => {
-          document.documentElement.requestFullscreen().catch(() => {});
+          document.documentElement.requestFullscreen().catch(() => { });
         });
       }
     };
@@ -63,24 +74,47 @@ export default function InstructionPage() {
     };
   }, []);
 
-  const verifyCode = () => {
+  const verifyCode = async () => {
     if (!/^[a-zA-Z0-9]{6}$/.test(secretCode)) {
       setCodeError("Code must be 6 alphanumeric characters");
       return;
     }
 
-    // Replace with backend validation
-    if (secretCode === "A1B2C3") {
-      setCodeVerified(true);
-      setCodeError("");
-    } else {
-      setCodeError("Invalid secret code");
+    try {
+      const responce = await axios.post("/api/main-backend/validate-exam-code", { 
+        code: secretCode, 
+        registerNo: student.registerno,
+        token 
+      });
+
+      if (responce.data.success) {
+        setCodeVerified(true);
+        setExamData(responce.data.examDetails);
+        localStorage.setItem("exam_data", JSON.stringify(responce.data.examDetails));
+        setCodeError("");
+        Swal.fire({
+          title: "Code Verified",
+          text: "The code has been verified successfully.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      } else {
+        setCodeError("Invalid secret code");
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error Verifying Code",
+        text: error.response.data.message,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      console.error("Error verifying code:", error);
     }
   };
 
   const startExam = () => {
     setStatus('active');
-      document.documentElement.requestFullscreen().catch(() => {
+    document.documentElement.requestFullscreen().catch(() => {
       alert("Fullscreen is required. Please use a Chrome browser on Desktop.");
     });
   };
@@ -130,11 +164,11 @@ export default function InstructionPage() {
         <div className="header-section">
           <h1 className="inst-title">Assessment Instructions</h1>
           <p className="inst-subtitle">Please read all instructions carefully before starting your test</p>
-          
+
           {/* Progress indicator */}
           <div className="progress-indicator">
             <div className="progress-step active">Instructions</div>
-            
+
           </div>
         </div>
 
@@ -228,18 +262,24 @@ export default function InstructionPage() {
               disabled={!accepted && !codeVerified}
               onClick={() => {
                 startExam();
-                navigate("/QA/questions");
+                navigate("/QA/questions", {
+                  state: {
+                    exam: examData,
+                    student,
+                    token
+                  },
+                });
               }}
-            aria-label="Proceed to test"
-          >
-            Proceed to Assessment
-            <span className="btn-arrow">→</span>
-          </button>
-        
+              aria-label="Proceed to test"
+            >
+              Proceed to Assessment
+              <span className="btn-arrow">→</span>
+            </button>
+
           </div>
         </div>
 
-        
+
         {/* Button with loading state consideration */}
 
         {/* Optional timer info */}

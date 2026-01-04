@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
-  const [status, setStatus] = useState('idle'); 
+  const [status, setStatus] = useState('idle');
   const [formData, setFormData] = useState({
     department: "",
     registerno: "",
@@ -84,7 +84,10 @@ export default function DetailsPage() {
         showConfirmButton: false,
       });
 
-      navigate("/QA/confirm", { replace: true });
+      navigate("/QA/confirm", {
+        replace: true,
+        state: { student: data.student, token: data.token },
+      });
 
     } catch (error) {
       Swal.fire({
@@ -117,7 +120,7 @@ export default function DetailsPage() {
   useEffect(() => {
     const enterFullscreenOnce = () => {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().catch(() => { });
       }
       document.removeEventListener("click", enterFullscreenOnce);
     };
@@ -134,7 +137,7 @@ export default function DetailsPage() {
           allowOutsideClick: false,
           allowEscapeKey: false,
         }).then(() => {
-          document.documentElement.requestFullscreen().catch(() => {});
+          document.documentElement.requestFullscreen().catch(() => { });
         });
       }
     };
