@@ -23,13 +23,6 @@ if (!user) {
   });
 }
 
-if (!user) {
-  return res.status(401).json({
-    success: false,
-    message: "Session expired or not logged in"
-  });
-}
-
 const { registerno, department, year } = user;
 
 
