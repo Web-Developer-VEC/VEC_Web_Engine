@@ -1,8 +1,11 @@
 [{
   "type": "qa_details",
   "data": {
-    "years": ["I", "II", "III", "IV"],
-
+    "batch": [
+      "2023-2027",
+      "2024-2028",
+      "2025-2029"
+    ],
     "departments": [
       "Computer Science & Engineering",
       "Electronics and Communication Engineering",
@@ -16,9 +19,18 @@
       "Information Technology"
     ],
     "subjects": [
-      { "code": "QA204", "name": "QA/VR" },
-      { "code": "QA301", "name": "QA/BS" },
-      { "code": "QA210", "name": "QA" }
+      {
+        "code": "QA204",
+        "name": "QA/VR"
+      },
+      {
+        "code": "QA301",
+        "name": "QA/BS"
+      },
+      {
+        "code": "QA210",
+        "name": "QA"
+      }
     ]
   }
 }

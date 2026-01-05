@@ -7,20 +7,13 @@ async function submitAnswer(req, res) {
     const collection = db.collection("qa_exam");
     const sessionCol = db.collection("qa_exam_sessions");
 
-    const { token, question, choosedOption, questionIndex  } = req.body;
+    const { question, choosedOption, questionIndex } = req.body;    
 
-    if (!token || !question || !choosedOption) {
+    if (!question || !choosedOption) {
       return res.status(400).json({ message: "Missing fields" });
     }
-
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.status(401).json({ message: "Invalid token" });
-    }
     
-    const { registerno } = decoded;
+    const { registerno } = req.session.user;
     
     const session = await sessionCol.findOne({ registerno });
 
@@ -67,17 +60,8 @@ async function submitAnswer(req, res) {
       return res.status(404).json({ message: "Question not found" });
     }
 
-    const optionMap = {
-      A: q.A,
-      B: q.B,
-      C: q.C,
-      D: q.D
-    };
-
-    const correctAnswer = optionMap[q.correct_option];
-
     const isCorrect =
-      choosedOption.trim() === correctAnswer.trim();
+      q.correct_option.trim() === choosedOption.trim();
 
     await collection.updateOne(
       { _id: doc._id },

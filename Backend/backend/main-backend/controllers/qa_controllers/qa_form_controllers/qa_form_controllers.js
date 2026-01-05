@@ -1,18 +1,18 @@
 const { getDb } = require("../../../config/db");
-const { getStudentsByDeptYear } = require("./qa_getstudent_controllers");
+const { getStudentsByDeptbatch } = require("./qa_getstudent_controllers");
 
 async function qa_form(req, res) {
   try {
-    const { department, year } = req.body;
+    const { department, batch } = req.body;
 
-    if (!department || !year) {
+    if (!department || !batch) {
       return res.status(400).json({
-        message: "Department and year are required"
+        message: "Department and batch are required"
       });
     }
 
     // ✅ fetch students
-    const registerNumbers = await getStudentsByDeptYear(department, year);
+    const registerNumbers = await getStudentsByDeptbatch(department, batch);
 
     if (registerNumbers.length === 0) {
       return res.status(404).json({
@@ -40,12 +40,12 @@ async function getQaForm(req, res) {
     const form_collection = db.collection("qa_form");
     const question_collection = db.collection("qa_question");
 
-    // Fetch years, departments, subjects config
+    // Fetch batch, departments, subjects config
     const [formData] = await form_collection.aggregate([
       {
         $project: {
           _id: 0,
-          years: "$data.years",
+          batch: "$data.batch",
           departments: "$data.departments",
           subjects: "$data.subjects"
         }
@@ -64,7 +64,7 @@ async function getQaForm(req, res) {
     ]).toArray();
 
     res.status(200).json({
-      years: formData?.years || [],
+      batch: formData?.batch || [],
       departments: formData?.departments || [],
       subjectList: formData?.subjects || [],
       subjects

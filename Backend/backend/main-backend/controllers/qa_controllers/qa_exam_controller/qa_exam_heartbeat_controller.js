@@ -60,8 +60,13 @@ async function heartbeat(req, res) {
   }
 
   await sessionCol.updateOne(
-    { _id: session._id },
-    { $set: { lastSeenAt: new Date() } }
+    { registerno },
+    {
+      $set: {
+        isOnline: true,
+        lastSeenAt: new Date()
+      }
+    }
   );
 
   res.json({ success: true });
