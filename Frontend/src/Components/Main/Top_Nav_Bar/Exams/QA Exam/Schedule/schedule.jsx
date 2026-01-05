@@ -41,20 +41,13 @@ const Schedule = ({ toggle, theme }) => {
   useEffect(() => {
     if (!year || !departments) return
 
-    const yearMap = {
-      I: 1,
-      II: 2,
-      III: 3,
-      IV: 4,
-    }
-
     const fetchStudents = async () => {
       setLoadingRegs(true)
 
       try {
         const payload = {
           department: departments,
-          year: yearMap[year],
+          batch: year,
         }
 
         const res = await axios.post("/api/main-backend/get_register_no", payload)
@@ -82,7 +75,10 @@ const Schedule = ({ toggle, theme }) => {
         const res = await axios.get("/api/main-backend/form")
         const data = res.data
 
-        setYears(data.years || [])
+        console.log(data);
+        
+
+        setYears(data.batch || [])
         setDepartmentOptions(data.departments || "")
         setSubjects(data.subjectList || [])
         setSubjectTopics(data.subjects || [])
@@ -169,15 +165,8 @@ const Schedule = ({ toggle, theme }) => {
 
     const { start, end } = parseTimeSlot(time)
 
-    const yearMap = {
-      I: 1,
-      II: 2,
-      III: 3,
-      IV: 4,
-    }
-
     const payload = {
-      year: yearMap[year],
+      year: year,
       department: departments,
       registerNo: registerState.values,
       cie: examType,
@@ -298,12 +287,12 @@ const Schedule = ({ toggle, theme }) => {
           </h2>
 
           <SearchableInput
-            label="Year"
+            label="Batch"
             icon={GraduationCap}
             options={years}
             value={year}
             onChange={setYear}
-            placeholder="Select year"
+            placeholder="Select Batch"
           />
 
           <SearchableInput

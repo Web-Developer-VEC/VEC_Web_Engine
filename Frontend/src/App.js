@@ -16,7 +16,6 @@ import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
 import DynamicTitle from "./Header.jsx";
-import QAQuastionPapaerUpload from "";
 
 /* Lazy Loaded Components */
 /* Landing Page */
@@ -355,7 +354,7 @@ const App = () => {
                                 <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
                                 <Route path="/QA/upload" element={<QAQuastionPapaerUpload toggle={toggle} theme={theme}/>} />
                                 <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
-                                
+
                                 <Route path="/careers" element={<Career />} />
 
                                 {/*  404 - Page not found  */}
