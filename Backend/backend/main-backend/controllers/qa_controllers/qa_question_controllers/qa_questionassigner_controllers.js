@@ -212,4 +212,4 @@ async function generateExam(
   }
 }
 
-module.exports = { generateExam };
+module.exports = {generateExam};
