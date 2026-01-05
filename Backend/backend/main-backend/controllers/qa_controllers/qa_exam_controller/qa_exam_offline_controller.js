@@ -11,7 +11,9 @@ async function markOffline(req, res) {
     {
       $set: {
         status: "PAUSED",
-        "offline.lastDisconnectedAt": new Date()
+        "offline.lastDisconnectedAt": new Date(),
+        isOnline: false,
+        lastSeenAt: new Date()
       },
       $inc: { "offline.count": 1 }
     }
@@ -28,7 +30,7 @@ async function resumeSession(req, res) {
 
   const session = await sessionCol.findOne({ registerno });
 
-  if (!session || session.status !== "PAUSED") {
+  if (!session || !["PAUSED"].includes(session.status)) {
     return res.status(403).json({
       status: session?.status,
       reason: session?.terminatedReason
@@ -40,6 +42,7 @@ async function resumeSession(req, res) {
     {
       $set: {
         status: "ACTIVE",
+        isOnline: true,
         lastSeenAt: new Date()
       }
     }
@@ -89,4 +92,39 @@ async function getResumeData(req, res) {
   });
 }
 
-module.exports = { markOffline, resumeSession, getResumeData }
+async function getResumeQuestions(req, res) {
+  const db = getDb();
+  const examCol = db.collection("qa_exam");
+  const sessionCol = db.collection("qa_exam_sessions");
+
+  const { registerno } = req.session.user;
+
+  const session = await sessionCol.findOne({ registerno });
+
+  if (!session || session.status !== "ACTIVE") {
+    return res.status(403).json({ message: "Session not active" });
+  }
+
+  const exam = await examCol.findOne({
+    _id: session.examId,
+    "students.registerno": registerno
+  });
+
+  const student = exam.students.find(
+    s => s.registerno === registerno
+  );
+
+  res.json({
+    subject: exam.subject,
+    subjectCode: exam.subjectCode,
+    questions: student.questions.map(q => ({
+      question: q.question,
+      A: q.A,
+      B: q.B,
+      C: q.C,
+      D: q.D
+    }))
+  });
+}
+
+module.exports = { markOffline, resumeSession, getResumeData, getResumeQuestions }

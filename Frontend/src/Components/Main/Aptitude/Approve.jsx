@@ -14,12 +14,12 @@ export default function InstructionPage() {
   const [codeError, setCodeError] = useState("");
   const location = useLocation();
   const student = location.state?.student;
-  const token = location.state?.token;
   const [examData, setExamData] = useState(null);
+  const [codeLoading, setCodeLoading] = useState(false);
+  const [startExamLoading, setStartExamLoading] = useState(false);
 
   useEffect(() => {
     const checkDevice = () => {
-      // Logic: If screen width is less than 1024px, it's likely a mobile or tablet
       if (window.innerWidth < 1024) {
         setStatus('invalid_device');
       } else if (localStorage.getItem('exam_status') === 'blocked') {
@@ -28,19 +28,18 @@ export default function InstructionPage() {
     };
 
     checkDevice();
-    window.addEventListener('resize', checkDevice); // Re-check if window is resized
+    window.addEventListener('resize', checkDevice);
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
   useEffect(() => {
-    if (!student || !token) {
+    if (!student) {
       navigate('/QA/qaexam', { replace: true });
     }
-  }, [student, token]);
+  }, [student, navigate]); // ✅ Added navigate to dependencies
 
   // ---------------- FULLSCREEN ENFORCEMENT WITH WARNING ----------------
   useEffect(() => {
-    // Enter fullscreen on first user interaction
     const enterFullscreenOnce = () => {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(() => { });
@@ -50,7 +49,6 @@ export default function InstructionPage() {
 
     document.addEventListener("click", enterFullscreenOnce);
 
-    // Warn & re-enter fullscreen if exited
     const onFullscreenChange = () => {
       if (!document.fullscreenElement) {
         Swal.fire({
@@ -75,54 +73,119 @@ export default function InstructionPage() {
   }, []);
 
   const verifyCode = async () => {
-    if (!/^[a-zA-Z0-9]{6}$/.test(secretCode)) {
+    if (!/^[A-Z0-9]{6}$/.test(secretCode)) {
       setCodeError("Code must be 6 alphanumeric characters");
       return;
     }
 
     try {
-      const responce = await axios.post("/api/main-backend/validate-exam-code", { 
-        code: secretCode, 
-        registerNo: student.registerno,
-        token 
+      setCodeLoading(true);
+      const response = await axios.post("/api/main-backend/validate-exam-code", { 
+        code: secretCode,
       });
 
-      if (responce.data.success) {
+      if (response.data.success) {
         setCodeVerified(true);
-        setExamData(responce.data.examDetails);
-        localStorage.setItem("exam_data", JSON.stringify(responce.data.examDetails));
+        setExamData(response.data.examDetails);
+        localStorage.setItem("exam_data", JSON.stringify(response.data.examDetails));
         setCodeError("");
+        
         Swal.fire({
           title: "Code Verified",
           text: "The code has been verified successfully.",
           icon: "success",
           confirmButtonText: "OK",
+          timer: 2000, // ✅ Added auto-close
         });
       } else {
         setCodeError("Invalid secret code");
       }
     } catch (error) {
+      const errorMessage = error.response?.data?.message || "Failed to verify code";
+      
       Swal.fire({
         title: "Error Verifying Code",
-        text: error.response.data.message,
+        text: errorMessage,
         icon: "error",
         confirmButtonText: "OK",
       });
+      
+      if (errorMessage === "Session expired or not logged in") {
+        navigate("/QA/qaexam", { replace: true });
+      }
+      
       console.error("Error verifying code:", error);
+    } finally {
+      setCodeLoading(false);
     }
   };
 
-  const startExam = () => {
-    setStatus('active');
-    document.documentElement.requestFullscreen().catch(() => {
-      alert("Fullscreen is required. Please use a Chrome browser on Desktop.");
-    });
+  const startExam = async () => {
+    // ✅ Validation check before starting
+    if (!accepted || !codeVerified) {
+      Swal.fire({
+        title: "Cannot Start Exam",
+        text: "Please verify the exam code and accept the terms before proceeding.",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    try {
+      setStartExamLoading(true);
+      
+      const response = await axios.post("/api/main-backend/qa/session/start-exam", {
+        scheduleId: examData.scheduleId,
+        examId: examData.examId
+      });
+
+      if (response.data.success) {
+        setStatus('active');
+        
+        // ✅ Enter fullscreen before navigation
+        try {
+          await document.documentElement.requestFullscreen();
+        } catch (err) {
+          console.warn("Fullscreen request failed:", err);
+          // Still allow navigation even if fullscreen fails
+        }
+
+        // ✅ Navigate to questions page
+        navigate("/QA/questions", {
+          state: {
+            exam: examData,
+            student,
+            sessionId: response.data.sessionId
+          },
+          replace: true // ✅ Prevent going back to instruction page
+        });
+      }
+    } catch (error) {
+      console.error("Error starting exam:", error);
+      
+      const errorMessage = error.response?.data?.message || "Failed to start exam";
+      
+      Swal.fire({
+        title: "Error Starting Exam",
+        text: errorMessage,
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+
+      // ✅ Handle specific error cases
+      if (errorMessage.includes("Session expired") || errorMessage.includes("not logged in")) {
+        navigate("/QA/qaexam", { replace: true });
+      }
+    } finally {
+      setStartExamLoading(false);
+    }
   };
 
   // INVALID DEVICE POPUP
   if (status === "invalid_device") {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4">
+      <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4 z-50">
         <div className="bg-white shadow-xl rounded-xl p-6 max-w-md w-full text-center">
           <h2 className="text-2xl font-bold text-red-600 mb-3">⚠ DESKTOP REQUIRED</h2>
           <p>This exam cannot be taken on a Mobile or Tablet device.</p>
@@ -143,7 +206,7 @@ export default function InstructionPage() {
   // BLOCKED POPUP
   if (status === "blocked") {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4">
+      <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4 z-50">
         <div className="bg-white shadow-xl rounded-xl p-6 max-w-md w-full text-center">
           <h2 className="text-2xl font-bold text-yellow-600 mb-3">⛔ ACCESS BLOCKED</h2>
           <p>Your access to this exam has been blocked.</p>
@@ -165,10 +228,8 @@ export default function InstructionPage() {
           <h1 className="inst-title">Assessment Instructions</h1>
           <p className="inst-subtitle">Please read all instructions carefully before starting your test</p>
 
-          {/* Progress indicator */}
           <div className="progress-indicator">
             <div className="progress-step active">Instructions</div>
-
           </div>
         </div>
 
@@ -195,15 +256,15 @@ export default function InstructionPage() {
               <h2 className="section-title">Things to Avoid</h2>
             </div>
             <ul className="list">
-              <li><span className="bullet">✗</span>Do not switch tabs or minimize the window.</li>
-              <li><span className="bullet">✗</span>Do not use mobile phones or calculators.</li>
-              <li><span className="bullet">✗</span>Do not take screenshots.</li>
-              <li><span className="bullet">✗</span>Do not seek help from anyone.</li>
+              <li><span className="bullet">✗</span> Do not switch tabs or minimize the window.</li>
+              <li><span className="bullet">✗</span> Do not use mobile phones or calculators.</li>
+              <li><span className="bullet">✗</span> Do not take screenshots.</li>
+              <li><span className="bullet">✗</span> Do not seek help from anyone.</li>
             </ul>
           </div>
         </div>
 
-        {/* Warning note with icon */}
+        {/* Warning note */}
         <div className="note-box">
           <AlertCircle size={20} />
           <p>
@@ -224,20 +285,22 @@ export default function InstructionPage() {
               readOnly={codeVerified}
               placeholder="XXXXXX"
               className={`code-input ${codeVerified ? "locked" : ""}`}
+              style={{ textTransform: 'uppercase' }}
               onChange={(e) => {
                 if (!codeVerified) {
-                  setSecretCode(e.target.value.replace(/[^a-zA-Z0-9]/g, ""));
+                  setSecretCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""));
                   setCodeError("");
                 }
               }}
+              disabled={codeLoading} // ✅ Disable during loading
             />
 
             <button
-              className={`verify-btn ${codeVerified ? "verified" : ""}`}
+              className={`verify-btn ${codeVerified ? "verified" : ""} ${codeLoading ? "cursor-progress opacity-70" : ""}`}
               onClick={verifyCode}
-              disabled={codeVerified}
+              disabled={codeVerified || codeLoading || secretCode.length !== 6} // ✅ Better validation
             >
-              {codeVerified ? "Verified ✓" : "Verify Code"}
+              {codeLoading ? "Verifying..." : codeVerified ? "Verified ✓" : "Verify Code"}
             </button>
           </div>
 
@@ -253,36 +316,27 @@ export default function InstructionPage() {
               checked={accepted}
               onChange={(e) => setAccepted(e.target.checked)}
               className="styled-checkbox"
+              disabled={!codeVerified} // ✅ Only enable after code verification
             />
             <label htmlFor="agree" className="checkbox-label">
               I have read, understood, and agree to all the instructions above
             </label>
+            
             <button
-              className={`next-btn ${accepted && codeVerified ? "active" : "disabled"}`}
-              disabled={!accepted && !codeVerified}
-              onClick={() => {
-                startExam();
-                navigate("/QA/questions", {
-                  state: {
-                    exam: examData,
-                    student,
-                    token
-                  },
-                });
-              }}
+              className={`next-btn ${
+                (accepted && codeVerified && !startExamLoading) ? "active" : "disabled"
+              } ${startExamLoading ? "cursor-progress opacity-70" : ""}`}
+              disabled={!accepted || !codeVerified || startExamLoading}
+              onClick={startExam} // ✅ FIXED - Properly calls the function
               aria-label="Proceed to test"
             >
-              Proceed to Assessment
+              {startExamLoading ? "Starting Exam..." : "Proceed to Assessment"}
               <span className="btn-arrow">→</span>
             </button>
-
           </div>
         </div>
 
-
-        {/* Button with loading state consideration */}
-
-        {/* Optional timer info */}
+        {/* Timer info */}
         <div className="timer-info">
           <small>Note: Timer starts immediately after you proceed</small>
         </div>
