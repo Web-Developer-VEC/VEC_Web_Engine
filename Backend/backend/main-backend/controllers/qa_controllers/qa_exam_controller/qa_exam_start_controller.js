@@ -90,7 +90,7 @@ async function startExam(req, res) {
       studentId: user.id,
       registerno,
       department: user.department,
-      year: user.year,
+      batch: user.batch,
 
       status: "ACTIVE",
       isOnline: true,
