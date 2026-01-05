@@ -23,30 +23,6 @@ if (!user) {
   });
 }
 
-const { registerno, department, year } = user;
-
-
-    if (!registerno || !department || !year) {
-      return res.status(401).json({
-        success: false,
-        message: "Session expired or not logged in"
-      });
-    }
-
-    // Validate the input payload
-    if (!code) {
-      return res.status(400).json({
-        success: false,
-        message: "Access denied. Invalid request parameters."
-      });
-    }
-
-if (!user) {
-  return res.status(401).json({
-    success: false,
-    message: "Session expired or not logged in"
-  });
-}
 
 const { registerno, department, year } = user;
 
