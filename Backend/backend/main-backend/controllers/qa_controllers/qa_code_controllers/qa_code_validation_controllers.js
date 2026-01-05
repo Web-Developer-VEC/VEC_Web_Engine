@@ -9,6 +9,7 @@ async function validateExamCode(req, res) {
     const db = getDb();
     const scheduleCollection = db.collection("qa_schedule");
     const examCollection = db.collection("qa_exam");
+    const sessionCollection = db.collection("qa_exam_sessions");
 
     // Extract input data from the request body
     const { code } = req.body;
@@ -25,42 +26,89 @@ if (!user) {
 const { registerno, department, year } = user;
 
 
-    if (!registerno || !department || !year) {
-      return res.status(401).json({
-        success: false,
-        message: "Session expired or not logged in"
-      });
-    }
+if (!registerno || !department || !year) {
+  return res.status(401).json({
+    success: false,
+    message: "Session expired or not logged in"
+  });
+}
 
-    // Validate the input payload
-    if (!code) {
-      return res.status(400).json({
-        success: false,
-        message: "Access denied. Invalid request parameters."
-      });
-    }
+// Validate the input payload
+if (!code) {
+  return res.status(400).json({
+    success: false,
+    message: "Access denied. Invalid request parameters."
+  });
+}
 
-    // Retrieve the schedule matching the exam code
-    const schedule = await scheduleCollection.findOne({ examCode: code, status: "active" });
+// Retrieve the schedule matching the exam code
+const schedule = await scheduleCollection.findOne({ examCode: code, status: "active" });
 
-    if (!schedule) {
-      return res.status(404).json({
-        success: false,
-        message: "Access denied. Invalid exam code."
-      });
-    }
+if (!schedule) {
+  return res.status(404).json({
+    success: false,
+    message: "Access denied. Invalid exam code."
+  });
+}
 
-    // Check if the current time is within the exam's valid window
-    const now = new Date();
-    if (now < schedule.validFrom || now > schedule.validTill) {
-      return res.status(400).json({
-        success: false,
-        message: "The exam is not accessible at this time. Please try again during the scheduled time."
-      });
-    }
+// Check if the current time is within the exam's valid window
+const now = new Date();
+if (now < schedule.validFrom || now > schedule.validTill) {
+  return res.status(400).json({
+    success: false,
+    message: "The exam is not accessible at this time. Please try again during the scheduled time."
+  });
+}
 
+    // Exam session
     // Retrieve the qa_exam document linked to the scheduleId
     const exam = await examCollection.findOne({ scheduleId: schedule._id });
+
+    const durationMinutes = schedule.duration;
+
+    // check if session already exists
+    let session = await sessionCollection.findOne({
+      scheduleId: schedule._id,
+      registerno
+    });
+
+    if (!session) {
+      await sessionCollection.insertOne({
+        scheduleId: schedule._id,
+        examId: exam._id,
+        studentId: user.id,
+        registerno,
+
+        status: "ACTIVE",
+        currentQuestionIndex: 0,
+
+        durationMinutes,
+        startedAt: now,
+        endsAt: new Date(now.getTime() + durationMinutes * 60 * 1000),
+
+        lastSeenAt: now,
+
+        violations: {
+          fullscreenExit: 0,
+          tabSwitch: 0
+        },
+
+        offline: {
+          count: 0,
+          totalOfflineSeconds: 0
+        },
+      });
+    } else {
+      // ❌ Block re-entry
+      if (session.status !== "ACTIVE") {
+        return res.status(403).json({
+          success: false,
+          message: `Exam already ${session.status.toLowerCase()}`,
+          reason: session.terminatedReason
+        });
+      }
+    }
+
 
     if (!exam) {
       return res.status(404).json({

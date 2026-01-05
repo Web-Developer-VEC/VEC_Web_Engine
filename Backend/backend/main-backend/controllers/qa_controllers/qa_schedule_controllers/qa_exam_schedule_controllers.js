@@ -59,6 +59,7 @@ async function storeExamSchedule(req, res) {
       date,
       start,
       end,
+      duration: cie == 3 ? 180 : 60,
 
       examCode: null,
       validFrom: null,
