@@ -4,40 +4,101 @@ import "./Details.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import loginImg from "../../Assets/login.jpg";
+import axios from "axios";
 
 export default function DetailsPage() {
   const navigate = useNavigate();
-  const [status, setStatus] = useState('idle'); 
+  const [status, setStatus] = useState('idle');
   const [formData, setFormData] = useState({
-    name: "",
-    regNo: "",
-    email: "",
+    department: "",
+    registerno: "",
     password: "",
-    phone: ""
+    year: ""
   });
+
+  const DEPARTMENTS = ["CSE", "ECE", "EEE", "MECH", "IT", "AI&DS"];
+  const YEARS = ["I", "II", "III", "IV"];
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (
-      formData.name.trim() === "" ||
-      formData.regNo.trim() === "" ||
-      formData.email.trim() === "" 
-      // ||
-      // formData.password.trim() === ""
+      !formData.department ||
+      !formData.registerno ||
+      !formData.password ||
+      !formData.year
     ) {
-      alert("Please fill all mandatory fields.");
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Fields",
+        text: "Please fill all mandatory fields.",
+        confirmButtonColor: "#800000",
+      });
       return;
     }
 
-    console.log("Submitted:", formData);
+    try {
+      const deptMap = {
+        "AI&DS": "Artificial Intelligence and Data Science",
+        "CSE": "Computer Science Engineering",
+        "ECE": "Electrical and Electronic Engineering",
+        "EEE": "EEE",
+        "MECH": "MECH",
+        "IT": "IT",
+      };
 
-    // Navigate ONLY after successful validation
-    navigate("/QA/confirm");
+      const yearMap = {
+        I: 1,
+        II: 2,
+        III: 3,
+        IV: 4,
+      };
+
+      const res = await axios.post("/api/main-backend/studentlogin", {
+        registerno: formData.registerno,
+        password: formData.password,
+        department: deptMap[formData.department],
+        year: yearMap[formData.year],
+      });
+
+      const data = res.data;
+
+      sessionStorage.setItem(
+        "userSession",
+        JSON.stringify({
+          token: data.token,
+          student: data.student,
+        })
+      );
+
+      await Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You have successfully logged in.",
+        confirmButtonColor: "#800000",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      navigate("/QA/confirm", {
+        replace: true,
+        state: { student: data.student, token: data.token },
+      });
+
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text:
+          error?.response?.data?.message ||
+          "Invalid credentials. Please try again.",
+        confirmButtonColor: "#800000",
+      });
+    }
   }
 
   useEffect(() => {
@@ -59,7 +120,7 @@ export default function DetailsPage() {
   useEffect(() => {
     const enterFullscreenOnce = () => {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().catch(() => { });
       }
       document.removeEventListener("click", enterFullscreenOnce);
     };
@@ -76,7 +137,7 @@ export default function DetailsPage() {
           allowOutsideClick: false,
           allowEscapeKey: false,
         }).then(() => {
-          document.documentElement.requestFullscreen().catch(() => {});
+          document.documentElement.requestFullscreen().catch(() => { });
         });
       }
     };
@@ -145,20 +206,8 @@ export default function DetailsPage() {
           <div className="input-group">
             <input
               type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder=""
-              required
-            />
-            <label>Name*</label>
-          </div>
-
-          <div className="input-group">
-            <input
-              type="text"
-              name="regNo"
-              value={formData.regNo}
+              name="registerno"
+              value={formData.registerno}
               onChange={handleChange}
               placeholder=""
               required
@@ -168,39 +217,48 @@ export default function DetailsPage() {
 
           <div className="input-group">
             <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder=""
-              required
-            />
-            <label>Email*</label>
-          </div>
-
-          {/* 
-          <div className="input-group">
-            <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              required
               placeholder=""
+              required
             />
             <label>Password*</label>
           </div>
-          */}
 
-          <div className="input-group">
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
+          <div className={`input-group ${formData.department ? "has-value" : ""}`}>
+            <select
+              name="department"
+              value={formData.department}
               onChange={handleChange}
-              placeholder=""
-            />
-            <label>Phone Number (Optional)</label>
+              required
+            >
+              <option value="" disabled hidden></option>
+              {DEPARTMENTS.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+            <label>Department*</label>
+          </div>
+
+          <div className={`input-group ${formData.year ? "has-value" : ""}`}>
+            <select
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled hidden></option>
+              {YEARS.map((yr) => (
+                <option key={yr} value={yr}>
+                  {yr}
+                </option>
+              ))}
+            </select>
+            <label>Year*</label>
           </div>
 
           <button type="submit">

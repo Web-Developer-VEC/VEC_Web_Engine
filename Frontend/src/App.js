@@ -59,6 +59,8 @@ const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
 const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
+const Schedule = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/Schedule/schedule.jsx"));
+const ScheduledExam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/scheduledExam.jsx"));
 
 // Question Paper
 const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
@@ -347,8 +349,10 @@ const App = () => {
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 {/* Aptitude Routes */}
                                 <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
-                                <Route path="/QA/confirm" element={<InstructionPage />} />
-                                <Route path="/QA/questions" element={<QuestionPage />} />
+                                <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
+                                <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
                                 <Route path="/careers" element={<Career />} />
 
                                 {/*  404 - Page not found  */}

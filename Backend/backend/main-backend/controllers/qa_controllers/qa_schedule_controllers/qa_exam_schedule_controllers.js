@@ -1,12 +1,9 @@
-const { getDb } = require("../../config/db");
+const { getDb } = require("../../../config/db");
 const { ObjectId } = require("mongodb");
-const {scheduleExamActivation} = require("./qa_code_generator_controllers");
+const {scheduleExamActivation} = require("../qa_code_controllers/qa_code_generator_controllers");
 const { createExamFromSchedule } = require("./qa_exam_student_controllers");
 
-/**
- * Create / store exam schedule
- * Exam code is NOT generated here
- */
+
 async function storeExamSchedule(req, res) {
   try {
     const db = getDb();
@@ -19,6 +16,7 @@ async function storeExamSchedule(req, res) {
       cie,
       subject,
       subjectCode,
+      topics,
       date,
       start,
       end
@@ -28,7 +26,7 @@ async function storeExamSchedule(req, res) {
        Validation
     ----------------------------- */
 
-    if (!year || !cie || !subject || !subjectCode || !date || !start || !end) {
+    if (!year || !cie || !subject || !subjectCode || !date || !start || !end || !topics) {
       return res.status(400).json({
         success: false,
         message: "Missing required fields"
@@ -56,6 +54,8 @@ async function storeExamSchedule(req, res) {
       subject,
       subjectCode,
 
+      topics,
+
       date,
       start,
       end,
@@ -74,6 +74,7 @@ async function storeExamSchedule(req, res) {
 
 const conflictQuery = {
   date,
+  year,
   status: { $ne: "cancelled" },
   $or: [
     department ? { department } : null,
@@ -105,12 +106,12 @@ if (existingSchedule) {
        Schedule one-time activation
     ----------------------------- */
 
+    await createExamFromSchedule(result.insertedId);
+
     scheduleExamActivation({
       ...scheduleDoc,
-      _id: result.insertedId
+      _id: result.insertedId,year, department, cie, subject, subjectCode, topics, date
     });
-
-    await createExamFromSchedule(result.insertedId);
 
     /* -----------------------------
        Response

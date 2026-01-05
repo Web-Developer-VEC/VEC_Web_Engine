@@ -46,6 +46,13 @@ app.use(session({
   }
 }));
 
+app.get('/api/main-backend/check-session', (req, res) => {
+  const sessionExists = !! req.session;
+  res.json({ 
+    session: sessionExists ?  'exists' : 'not exists'
+  });
+});
+
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
 

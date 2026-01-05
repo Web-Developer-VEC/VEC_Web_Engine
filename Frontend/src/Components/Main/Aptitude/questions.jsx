@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./questions.css";
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const alertBox = (title, text, icon = "info") => {
@@ -12,14 +14,28 @@ const alertBox = (title, text, icon = "info") => {
 };
 
 const QuestionPage = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const exam =
+    location.state?.exam ||
+    JSON.parse(localStorage.getItem("exam_data"));
+  const student = location.state?.student;
+  const token = location.state?.token;
+
+  // SAFETY CHECK
+  useEffect(() => {
+    if (!exam) {
+      navigate("/QA/qaexam", { replace: true });
+    }
+  }, [exam]);
   // ---------------- QUESTIONS ----------------
-  const questions = [
-    { id: 1, question: "What is the capital of India?", options: ["Mumbai", "Delhi", "Chennai", "Kolkata"] },
-    { id: 2, question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Jupiter", "Mercury"] },
-    { id: 3, question: "2 + 2 = ?", options: ["3", "4", "5", "6"] },
-    { id: 4, question: "Who wrote the Ramayana?", options: ["Tulsidas", "Valmiki", "Kabir", "Kalidas"] },
-    { id: 5, question: "Which gas do plants absorb?", options: ["Oxygen", "Hydrogen", "Carbon Dioxide", "Nitrogen"] },
-  ];
+  const questions = exam.questions.map((q, index) => ({
+    id: index + 1,
+    question: q.question,
+    options: [q.A, q.B, q.C, q.D],
+  }));
 
   // ---------------- STATE ----------------
   const [current, setCurrent] = useState(0);
@@ -30,6 +46,7 @@ const QuestionPage = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [offlineCount, setOfflineCount] = useState(0);
   const [offlineSeconds, setOfflineSeconds] = useState(0);
+  const [saving, setSaving] = useState(false);
   const [violations, setViolations] = useState({
     fullscreenExit: 0,
     tabSwitch: 0,
@@ -247,20 +264,55 @@ const QuestionPage = () => {
   }, [current]);
 
   // ---------------- ACTIONS ----------------
-  const selectOption = (opt) => {
+  const selectOption = async (opt) => {
     setSelected((prev) => ({ ...prev, [current]: opt }));
+
+    // await axios.post("/api/main-backend/next", {
+    //   token,
+    //   question: questions[current].question,
+    //   choosedOption: opt,
+    // });
   };
 
-  const nextQuestion = () => {
+  const nextQuestion = async () => {
     if (!selected[current]) {
       alertBox("Required", "Please select an option before continuing.", "info");
       return;
     }
+
+    const success = await submitCurrentAnswer();
+    if (!success) return;
+
     setVisited((prev) => ({ ...prev, [current]: true }));
     setCurrent((prev) => prev + 1);
   };
 
-  const submitExam = (forced = false) => {
+  const submitCurrentAnswer = async () => {
+    try {
+      const currentQuestion = questions[current];
+
+      await axios.post("/api/main-backend/next", {
+        token,
+        question: currentQuestion.question,
+        choosedOption: selected[current],
+      });
+
+      return true;
+    } catch (error) {
+      Swal.fire({
+        title: "Submission Error",
+        text: error.response?.data?.message || "Failed to save answer",
+        icon: "error",
+        allowOutsideClick: false,
+      });
+      return false;
+    }
+  };
+
+  const submitExam = async (forced = false) => {
+    if (selected[current]) {
+      await submitCurrentAnswer();
+    }
     Swal.fire({
       title: forced ? "Exam Terminated" : "Exam Completed",
       text: forced

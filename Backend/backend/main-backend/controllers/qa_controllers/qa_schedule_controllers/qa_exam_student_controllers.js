@@ -1,4 +1,4 @@
-const { getDb } = require("../../config/db");
+const { getDb } = require("../../../config/db");
 const { ObjectId } = require("mongodb");
 
 /**
@@ -57,7 +57,7 @@ async function createExamFromSchedule(scheduleId) {
     registerno: s.registerno,
     name: s.name,
     department: s.department,
-    year: s.year,
+    year: s.year
   }));
 
   /* -----------------------------
@@ -72,6 +72,8 @@ async function createExamFromSchedule(scheduleId) {
     cie: schedule.cie,
 
     students: studentList,
+
+    date:schedule.date,
 
     createdAt: new Date()
   };
