@@ -38,6 +38,7 @@ const login = require('../qa_exams/login_routes');
 const qa_examiner = require('../qa_exams/qa_examiner_routes');
 const qa_student = require('../qa_exams/qa_student_routes');
 const qa_exam = require('../qa_exams/qa_exam_routes')
+const qa_question_paper = require('../qa_exams/qa_questionstore_routes')
 
 // TOP & SECOND NAV
 router.use('', about_us);
@@ -76,9 +77,11 @@ router.use('', qbform);
 
 //QA
 router.use('',login);
-router.use('',qa_examiner)
-router.use('',qa_student)
 router.use('',qa_exam)
+router.use('',qa_examiner);
+router.use('',qa_student);
+router.use('',qa_question_paper)
+
 
 
 module.exports = router;
