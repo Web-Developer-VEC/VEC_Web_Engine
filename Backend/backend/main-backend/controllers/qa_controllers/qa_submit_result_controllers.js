@@ -6,22 +6,14 @@ async function qaresult(req, res) {
   try {
     const db = getDb();
     const collection = db.collection("qa_exam");
+    const sessionCollection = db.collection("qa_exam_sessions");
 
-    const { token } = req.body;
-    if (!token) {
-      return res.status(400).json({ message: "Token required" });
-    }
+    const { registerno } = req.session.user;
 
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.status(401).json({ message: "Invalid token" });
-    }
+    const examDoc = await collection.findOne({
+      "students.registerno": registerno
+    });
 
-    const registerno = decoded.registerno;
-
-    const examDoc = await collection.findOne({});
     if (!examDoc) {
       return res.status(404).json({ message: "Exam record not found" });
     }
@@ -34,9 +26,20 @@ async function qaresult(req, res) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    const totalMarks = student.question.filter(
+    const totalMarks = student.questions.filter(
       q => q.isCorrect === true
     ).length;
+
+    await collection.updateOne(
+      { "students.registerno": registerno },
+      {
+        $set: {
+          "students.$.isComplete": true
+        }
+      }
+    );
+
+    await sessionCollection.deleteOne({ registerno })
 
     res.json({
       registerno,

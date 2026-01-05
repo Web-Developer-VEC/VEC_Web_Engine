@@ -11,9 +11,11 @@ async function registerViolation(req, res) {
 
   if (!session) return res.sendStatus(404);
 
-  const total =
-    session.violations.fullscreenExit +
-    session.violations.tabSwitch + 1;
+  const currentTotal =
+    (session.violations.fullscreenExit || 0) +
+    (session.violations.tabSwitch || 0);
+
+  const total = currentTotal + 1;
 
   if (total >= 10) {
     await sessionCol.updateOne(
@@ -28,7 +30,8 @@ async function registerViolation(req, res) {
     );
 
     return res.status(403).json({
-      terminated: true
+      terminated: true,
+      totalViolations: total
     });
   }
 
@@ -37,7 +40,14 @@ async function registerViolation(req, res) {
     { $inc: { [`violations.${type}`]: 1 } }
   );
 
-  res.json({ success: true, fullscreenExit: session.violations.fullscreenExit, tabSwitch: session.violations.tabSwitch });
+  const updatedSession = await sessionCol.findOne({ registerno });
+
+  res.json({ 
+    success: true, 
+    totalViolations: total, 
+    fullscreenExit: updatedSession.violations.fullscreenExit,
+    tabSwitch: updatedSession.violations.tabSwitch
+  });
 }
 
 module.exports = { registerViolation }

@@ -1,24 +1,33 @@
 import { useState, useEffect, useCallback } from "react";
 import logo from '../../Assets/NEWLOGO.png';
+import useExamTimer from "../../Hooks/useExamTimer";
+import Swal from "sweetalert2";
 
-const AptitudeHeader = ({ showTimer, initialTime = 1800 }) => {
+const AptitudeHeader = ({ showTimer }) => {
   const [scroll, setScroll] = useState(0);
   const [hdr, setHdr] = useState("");
+
   
-  // TIMER STATE
-  const [timeLeft, setTimeLeft] = useState(initialTime);
+  
+  const remainingSeconds = useExamTimer((data) => {
+    if (data?.status !== "TIME_UP") return;
+    
+    Swal.fire({
+      title: "Time Up",
+      text: "Your exam time has ended.",
+      icon: "info",
+      allowOutsideClick: false
+    }).then(() => {
+      // submitExam(false);
+    });
+  });
+  
+  const formatTime = (totalSeconds) => {
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
 
-  // Countdown effect
-  useEffect(() => {
-    if (!showTimer || timeLeft <= 0) return;
-    const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
-    return () => clearInterval(timer);
-  }, [timeLeft, showTimer]);
-
-  const formatTime = (sec) => {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+    return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   };
 
   const hndlScrll = useCallback(() => {
@@ -45,7 +54,7 @@ const AptitudeHeader = ({ showTimer, initialTime = 1800 }) => {
             "flex items-center font-popp group bg-white text-slate-200 transition-all ease-in-out duration-300 w-full h-auto h-20"
           }
         >
-          <a href="/" className="flex flex-col items-center justify-center select-none ml-4">
+          <a href="#" className="flex flex-col items-center justify-center select-none ml-4">
             <div className="z-10">
               <img
                 src={logo}
@@ -77,9 +86,9 @@ const AptitudeHeader = ({ showTimer, initialTime = 1800 }) => {
           </div>
 
           {/* Timer */}
-          {showTimer && (
+          {showTimer && remainingSeconds !== null && (
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-red-700 font-bold text-[1.2rem] z-20">
-              {formatTime(timeLeft)}
+              {formatTime(remainingSeconds)}
             </div>
           )}
         </div>

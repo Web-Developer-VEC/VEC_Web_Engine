@@ -66,15 +66,7 @@ export default function DetailsPage() {
       });
 
       const data = res.data;
-
-      sessionStorage.setItem(
-        "userSession",
-        JSON.stringify({
-          token: data.token,
-          student: data.student,
-        })
-      );
-
+        
       await Swal.fire({
         icon: "success",
         title: "Login Successful",
@@ -86,13 +78,24 @@ export default function DetailsPage() {
 
       navigate("/QA/confirm", {
         replace: true,
-        state: { student: data.student, token: data.token },
+        state: { student: data.student }
       });
-
+        
     } catch (error) {
+      if (error.response?.data?.code === "ALREADY_LOGGED_IN") {
+        Swal.fire({
+          icon: "warning",
+          title: "Already Logged In",
+          text:
+            "You are already attending the exam on another device or tab. Please continue there.",
+          confirmButtonColor: "#800000",
+        });
+        return;
+      }
+
       Swal.fire({
         icon: "error",
-        title: "Login Failed",
+        title: "Login Failed ajith",
         text:
           error?.response?.data?.message ||
           "Invalid credentials. Please try again.",
