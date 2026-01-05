@@ -25,7 +25,8 @@ async function coelogin(req, res) {
     // Success
     return res.json({
       message: "login success",
-      session: req.session.username
+      session: req.session.username,
+      role: "coe"
     });
 
   } catch (err) {

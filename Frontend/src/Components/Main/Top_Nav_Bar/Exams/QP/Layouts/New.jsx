@@ -32,7 +32,7 @@ const New = forwardRef(function New(props, ref) {
       "\n($1)"
     );
 
-    return normalized;
+    return normalized.replace(/^\n+/, "");
   };
 
   // const UrlParser = (imgPath) => {
@@ -62,13 +62,15 @@ const New = forwardRef(function New(props, ref) {
 
   const partBQnos = Object.keys(partBGroups).map(n => Number(n)).sort((a,b) => a - b);
 
+  const partBHead = state?.exam === "III" ? "PART-B (5 × 16 = 80 Marks)" : "PART-B (2 × 15 = 30 Marks)"
+
   return (
     <div
       className="border-text border w-[70%] mx-auto h-auto min-h-80 p-12 py-16 font-rome printable"
     >
       <div ref={ref} className="printable font-rome">
         <div className="flex justify-end mb-3">
-          <div className="border-text border-1 font-bold text-[16pt] w-80 text-start pl-2 reg">Registration No.</div>
+          <div className="border-text border-1 font-bold text-[16pt] w-[40%] text-start pl-2 reg">Registration No.</div>
         </div>
         {/* HEADER */}
         <header>
@@ -93,9 +95,9 @@ const New = forwardRef(function New(props, ref) {
             <tbody>
               <tr className="no-break">
                 <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">Subject Code :</td>
-                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.subjectcode ?? "—"}</td>
+                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.subjectCode ?? "—"}</td>
                 <td className="border-1 border-text pl-2 pb-2 w-[100px] font-bold text-[16pt]">Marks :</td>
-                <td className="border-1 border-text pl-2 pb-2 w-[160px] font-bold text-[16pt]">{state?.mark} mark</td>
+                <td className="border-1 border-text pl-2 pb-2 w-[200px] font-bold text-[16pt]">{state?.mark} mark</td>
               </tr>
 
               <tr className="no-break">
@@ -110,12 +112,12 @@ const New = forwardRef(function New(props, ref) {
                 <td className="border-1 border-text font-bold text-[16pt]">
                   <ul className="flex pl-2 pb-2 mb-0 gapl-2">
                     {state?.departments?.map((dep,i) => (
-                      <li key={i}>{dep}{i < state?.departments.length - 1 ? ', ' : ''}</li>
+                      <li key={i}>{dep}{i < state?.departments.length - 1 ? '/' : ''}</li>
                     ))}
                   </ul>
                 </td>
                 <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">Time :</td>
-                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.startTime12} to {state?.endTime12}</td>
+                <td className="border-1 border-text pl-2 pb-2 font-bold text-[16pt]">{state?.startTime12} - {state?.endTime12}</td>
               </tr>
 
               <tr className="no-break">
@@ -132,16 +134,16 @@ const New = forwardRef(function New(props, ref) {
         <div className="">
           <h3 className="text-center text-[16pt]">Answer All Questions</h3>
 
-          <h5 className="border-text text-center text-[16pt]">PART-A (10 × 2 = 20 Marks)</h5>
+          <h5 className="border-text text-center text-[16pt] font-bold">PART-A (10 × 2 = 20 Marks)</h5>
 
           <table className="w-full table-fixed border-text border-collapse">
             <thead>
               <tr className="no-break he">
-                <th className="w-[30px]  text-center">Q No</th>
-                <th className="w-[500px]  text-center">Questions</th>
-                <th className="w-[40px]  text-center">Marks</th>
-                <th className="w-[50px]  text-center">CO</th>
-                <th className="w-[50px]  text-center">Blooms Level</th>
+                <th className="w-[40px]  text-center text-[16pt]">Q No</th>
+                <th className="w-[500px]  text-center text-[16pt]">Questions</th>
+                <th className="w-[40px]  text-center text-[16pt]">Marks</th>
+                <th className="w-[50px]  text-center text-[16pt]">CO</th>
+                <th className="w-[50px]  text-center text-[16pt]">Blooms Level</th>
               </tr>
             </thead>
 
@@ -188,9 +190,9 @@ const New = forwardRef(function New(props, ref) {
         {/* PART - B */}
         <div className="part-b">
           <div className="part-b-block no-break" data-atomic="true">
-            <h5 className="border-text text-center">PART-B (2 × 15 = 30 Marks)</h5>
+            <h5 className="border-text text-center font-bold mb-0 leading-none">{partBHead}</h5>
 
-            <table className="w-full table-fixed border-text border-collapse">
+            <table className="w-full table-fixed border-text border-collapse mt-0 pt-0">
               <thead>
                 <tr className="no-break">
                   <th className="w-[30px]"></th>
@@ -212,7 +214,7 @@ const New = forwardRef(function New(props, ref) {
                     return (
                       <>
                         <tr>
-                          <td rowSpan={3} className=" text-center align-top text-[16pt]">{firstQno}.</td>
+                          <td rowSpan={3} className=" text-center align-top text-[16pt]" style={{ paddingTop: 0 }}>{firstQno}.</td>
                           <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(a)</td>
                           <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(a.question)}
@@ -278,8 +280,8 @@ const New = forwardRef(function New(props, ref) {
                     return (
                       <React.Fragment key={qno}>
                         <tr className="no-break">
-                          <td rowSpan={3} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
-                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(a)</td>
+                          <td rowSpan={3} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]" style={{ paddingTop: 0 }}>{qno}.</td>
+                          <td className=" pl-2 pb-1 min-h-[38px] text-center text-[16pt] align-top">(a)</td>
                           <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(first.question)}
                             {first.image ? (
@@ -298,7 +300,7 @@ const New = forwardRef(function New(props, ref) {
                         </tr>
 
                         <tr className="no-break">
-                          <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt] align-top">(b)</td>
+                          <td className=" pl-2 pb-1 min-h-[38px] text-center text-[16pt] align-top">(b)</td>
                           <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">
                             {formatQuestion(second.question)}
                             {second.image ? (
@@ -319,7 +321,7 @@ const New = forwardRef(function New(props, ref) {
                   return group.map((item, idx) => (
                     <tr className="no-break" key={`${qno}-${idx}`}>
                       {idx === 0 ? (
-                        <td rowSpan={group.length} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]">{qno}.</td>
+                        <td rowSpan={group.length} className=" pl-2 pb-3 min-h-[38px] text-center align-top text-[16pt]" style={{ paddingTop: 0 }}>{qno}.</td>
                       ) : null}
                       <td className=" pl-2 pb-3 min-h-[38px] text-center text-[16pt]">{item.option ?? ""}</td>
                       <td className=" pl-2 pb-3 min-h-[38px] whitespace-pre-line text-[16pt]">

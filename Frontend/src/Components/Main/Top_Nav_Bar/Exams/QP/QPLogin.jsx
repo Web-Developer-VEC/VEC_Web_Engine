@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom"
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
-    username: "",
+    identifier: "",
     password: "",
+    role: "coe", // default
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -20,12 +21,20 @@ export function LoginForm() {
     setSuccess("")
 
     try {
-      const res = await fetch("/api/main-backend/coelogin", {
+      const endpoint =
+        formData.role === "coe"
+          ? "/api/main-backend/coelogin"
+          : "/api/main-backend/stafflogin"
+
+      const payload =
+        formData.role === "coe"
+          ? { username: formData.identifier, password: formData.password }
+          : { email: formData.identifier, password: formData.password }
+
+      const res = await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       })
 
       const data = await res.json()
@@ -34,18 +43,35 @@ export function LoginForm() {
         throw new Error(data.message || "Login failed")
       }
 
-      sessionStorage.setItem("coeuserSession", JSON.stringify(data.session));
+      sessionStorage.clear();
 
-      const redirectPath = "/qp";
-      
-      setTimeout(() => {
-        navigate(redirectPath);
-      }, 1000);
+      // store token/session
+      sessionStorage.setItem(
+        "userSession",
+        JSON.stringify({
+          token: data.token,
+          role: data.role,
+          session: data.session
+        })
+      )
 
       setSuccess("Login successful! Redirecting...")
+
+      let redirectPath;
+
+      if (formData.role === "coe") {
+        redirectPath = "/qp";
+      } else if (data.role === "staff") {
+        redirectPath = "/scheduled-exam";
+      } else if (data.role === "admin") {
+        redirectPath = "/staff-dashboard";
+      } else {
+        redirectPath = "/login"
+      }
+
+      setTimeout(() => navigate(redirectPath), 1000)
     } catch (err) {
       setError(err.message)
-      console.error("Error login",err);
     } finally {
       setLoading(false)
     }
@@ -60,6 +86,18 @@ export function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-2">
+        <label className="text-slate-700 font-medium">Login As</label>
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          className="h-12 border-slate-300 w-full"
+        >
+          <option value="coe">COE</option>
+          <option value="staff">QA Admin</option>
+        </select>
+      </div>
       {/* Email Field */}
       <div className="space-y-2">
         <label htmlFor="email" className="text-slate-700 font-medium">
@@ -69,7 +107,7 @@ export function LoginForm() {
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
           <input
             id="email"
-            name="username"
+            name="identifier"
             type="text"
             placeholder="Username"
             value={formData.username}

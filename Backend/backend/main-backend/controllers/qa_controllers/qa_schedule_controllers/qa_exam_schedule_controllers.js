@@ -59,6 +59,7 @@ async function storeExamSchedule(req, res) {
       date,
       start,
       end,
+      duration: cie == 3 ? 180 : 60,
 
       examCode: null,
       validFrom: null,
@@ -106,13 +107,12 @@ if (existingSchedule) {
        Schedule one-time activation
     ----------------------------- */
 
+    await createExamFromSchedule(result.insertedId);
+
     scheduleExamActivation({
       ...scheduleDoc,
       _id: result.insertedId,year, department, cie, subject, subjectCode, topics, date
     });
-
-    await createExamFromSchedule(result.insertedId);
-
 
     /* -----------------------------
        Response
