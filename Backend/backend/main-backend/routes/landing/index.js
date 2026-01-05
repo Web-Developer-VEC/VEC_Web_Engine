@@ -36,7 +36,8 @@ const qbform = require('../questionbank/questionbank_routes')
 //QA
 const login = require('../qa_exams/login_routes');
 const qa_examiner = require('../qa_exams/qa_examiner_routes');
-const qa_student = require('../qa_exams/qa_student_routes')
+const qa_student = require('../qa_exams/qa_student_routes');
+const qa_exam = require('../qa_exams/qa_exam_routes')
 
 // TOP & SECOND NAV
 router.use('', about_us);
@@ -77,6 +78,7 @@ router.use('', qbform);
 router.use('',login);
 router.use('',qa_examiner)
 router.use('',qa_student)
+router.use('',qa_exam)
 
 
 module.exports = router;

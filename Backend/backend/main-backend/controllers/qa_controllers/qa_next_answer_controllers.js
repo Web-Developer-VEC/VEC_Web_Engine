@@ -5,8 +5,9 @@ async function submitAnswer(req, res) {
   try {
     const db = getDb();
     const collection = db.collection("qa_exam");
+    const sessionCol = db.collection("qa_exam_sessions");
 
-    const { token, question, choosedOption } = req.body;
+    const { token, question, choosedOption, questionIndex  } = req.body;
 
     if (!token || !question || !choosedOption) {
       return res.status(400).json({ message: "Missing fields" });
@@ -18,9 +19,28 @@ async function submitAnswer(req, res) {
     } catch (err) {
       return res.status(401).json({ message: "Invalid token" });
     }
-
+    
     const { registerno } = decoded;
     
+    const session = await sessionCol.findOne({ registerno });
+
+    if (!session) return res.sendStatus(404);
+
+    if (session.status !== "ACTIVE") {
+      return res.status(403).json({
+        message: "Session not active"
+      });
+    }
+
+    await sessionCol.updateOne(
+      { registerno },
+      {
+        $set: {
+          currentQuestionIndex: questionIndex + 1, // move forward
+          lastSeenAt: new Date()
+        }
+      }
+    );
 
     const doc = await collection.findOne({
       "students.registerno": registerno
