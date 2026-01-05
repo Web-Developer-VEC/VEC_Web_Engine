@@ -11,14 +11,15 @@ async function validateExamCode(req, res) {
     const user = req.session.user;
 
     // 1. Validate session
-    if (!user || !user.registerno || !user.department || !user.year) {
+    if (!user || !user.registerno || !user.department || !user.batch) {
       return res.status(401).json({
         success: false,
         message: "Session expired or not logged in"
+
       });
     }
 
-    const { registerno, department, year } = user;
+    const { registerno, department, batch } = user;
 
     // 2. Validate input
     if (!code) {
@@ -115,7 +116,7 @@ async function validateExamCode(req, res) {
             $match: {
               "students.registerno": registerno,
               "students.department": department,
-              "students.year": year
+              "students.batch": batch
             }
           },
           {
@@ -155,7 +156,7 @@ async function validateExamCode(req, res) {
         $match: {
           "students.registerno": registerno,
           "students.department": department,
-          "students.year": year
+          "students.batch": batch
         }
       },
       {

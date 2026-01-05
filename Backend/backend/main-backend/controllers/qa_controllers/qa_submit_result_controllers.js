@@ -45,7 +45,7 @@ async function qaresult(req, res) {
       registerno,
       name: student.name,
       department: student.department,
-      year: student.year,
+      batch: student.batch,
       totalMarks
     });
 

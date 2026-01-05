@@ -32,7 +32,7 @@ function shuffleQuestionOptions(question) {
 /* ================= MAIN ================= */
 
 async function generateExam(
-  year,
+  batch,
   department,
   cie,
   subject,
@@ -41,7 +41,7 @@ async function generateExam(
   date
 ) {
   try {
-    if (!year || !department || !cie || !subject || !subjectCode || !topics) {
+    if (!batch || !department || !cie || !subject || !subjectCode || !topics) {
       throw new Error("Missing required fields");
     }
 
@@ -56,7 +56,7 @@ async function generateExam(
       subjectCode,
       cie,
       date,
-      students: { $elemMatch: { department, year } },
+      students: { $elemMatch: { department, batch } },
     });
 
     if (!examDoc) throw new Error("Exam not found");

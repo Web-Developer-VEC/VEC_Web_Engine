@@ -336,9 +336,7 @@ async function parseExcelToQuestions(buffer) {
   allQuestions.forEach((row) => {
     const topic = row.Topic || row.topic || "General";
 
-     // Add difficulty level as a NUMBER (1, 2, or 3)
-    const difficultyValue = row["Difficulty Level"] || row["Difficulty"] || row.difficulty || row["difficulty level"] || "";
-    question.difficulty_level = normalizeDifficultyLevel(difficultyValue);
+  
     
     const question = {
       question: row. Question || row.question || "",
@@ -356,6 +354,10 @@ async function parseExcelToQuestions(buffer) {
 
     // Add correct answer
     question.correct_option = row["Answer(No Option)"] || row.Answer || row.answer || row.correct_option || "";
+
+       // Add difficulty level as a NUMBER (1, 2, or 3)
+    const difficultyValue = row["Difficulty Level"] || row["Difficulty"] || row.difficulty || row["difficulty level"] || "";
+    question.difficulty_level = normalizeDifficultyLevel(difficultyValue);
 
     // Only add image if it exists
     const imageName = row["Images (Image name)"] || row.Images || row.image || "";

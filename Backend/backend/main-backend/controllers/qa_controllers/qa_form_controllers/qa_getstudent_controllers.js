@@ -1,8 +1,8 @@
 const { getDb } = require("../../../config/db");
 
-async function getStudentsByDeptYear(department, year) {
-  if (!department || !year) {
-    throw new Error("Department and year are required");
+async function getStudentsByDeptbatch(department, batch) {
+  if (!department || !batch) {
+    throw new Error("Department and batch are required");
   }
 
   const db = getDb();
@@ -12,7 +12,7 @@ async function getStudentsByDeptYear(department, year) {
     .find(
       {
         department,
-        year: Number(year)
+        batch: Number(batch)
       },
       {
         projection: { registerno: 1, _id: 0 }
@@ -23,4 +23,4 @@ async function getStudentsByDeptYear(department, year) {
   return students.map(s => s.registerno);
 }
 
-module.exports = { getStudentsByDeptYear };
+module.exports = { getStudentsByDeptbatch };
