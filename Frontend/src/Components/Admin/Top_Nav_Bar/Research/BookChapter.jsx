@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminBookChapter({ theme, toggle }) {
   const [bookChapter, setBookChapter] = useState([]);
@@ -36,6 +37,7 @@ export default function AdminBookChapter({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   // -------------------- Fetch --------------------
   useEffect(() => {
@@ -236,17 +238,102 @@ export default function AdminBookChapter({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED", { allChanges, bookChapter });
-    toast.success("Final request submitted");
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(bookChapter));
-    savedDataRef.current = JSON.parse(JSON.stringify(bookChapter));
-  };
+  const handleFinalRequestConfirm = async () => {
+  if (!allChanges.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  const payload = [];
+  const filesToUpload = [];
+
+  for (const change of allChanges) {
+
+    // ---------- ADD ----------
+    if (change.action === "add") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "insert",
+        collectionName: "research",
+        title: "Books and Book chapters",
+        collection_type: "Books and Book chapters",
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- EDIT ----------
+    if (change.action === "edit") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "update",
+        collectionName: "research",
+        title: "Books and Book chapters",
+        collection_type: "Books and Book chapters",
+        original_data: {
+          year: year.old,
+          pdf_path: pdf_path.old
+        },
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- DELETE ----------
+    if (change.action === "delete") {
+      payload.push({
+        action: "delete",
+        collectionName: "research",
+        title: "Books and Book chapters",
+        collection_type: "Books and Book chapters",
+        meta_data: {
+          year: change.key
+        }
+      });
+    }
+  }
+
+  try {
+    const result = await sendRequest(payload, filesToUpload);
+
+    if (result) {
+      console.log("FINAL REQUEST SUBMITTED", { payload, bookChapter });
+
+      toast.success("Final request submitted");
+
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
+
+      originalRef.current = JSON.parse(JSON.stringify(bookChapter));
+      savedDataRef.current = JSON.parse(JSON.stringify(bookChapter));
+    }
+  } catch (err) {
+    console.error("Final request failed:", err);
+    toast.error("Request submission failed");
+  }
+};
+
 
 const handleUndoChange = (idx) => {
   setAllChanges((prev) => {

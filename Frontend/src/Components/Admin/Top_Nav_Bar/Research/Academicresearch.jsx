@@ -7,6 +7,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { Send, Trash2, Eye, Pencil, X, Plus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminConsultancy({ theme, toggle }) {
   const [acadamicRes, setAcadamicRes] = useState([]);
@@ -36,6 +37,7 @@ export default function AdminConsultancy({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   // Admin quick toggles (kept for compatibility with existing behavior)
   const [isContentEditable, setIsContentEditable] = useState(true);
