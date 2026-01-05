@@ -1,6 +1,5 @@
 const { getDb } = require("../../../config/db");
-
-const {getSubjectQuestions} = require('./qa_questiongenerator_controllers');
+const { getSubjectQuestions } = require("./qa_questiongenerator_controllers");
 
 /* ---------------- SHUFFLE ---------------- */
 function shuffle(arr) {
@@ -12,37 +11,38 @@ function shuffle(arr) {
   return a;
 }
 
-/* -------- ROTATING PICKER (NO SKIP) -------- */
-function getNextBatch(state, count) {
-  const result = [];
+/* -------- OPTION SHUFFLER -------- */
+function shuffleQuestionOptions(question) {
+  const optionKeys = ["A", "B", "C", "D", "E"].filter(
+    (k) => question[k] !== undefined && question[k] !== ""
+  );
 
-  while (result.length < count) {
-    const remaining = state.pool.length - state.index;
+  if (optionKeys.length === 0) return question;
 
-    if (remaining >= count - result.length) {
-      result.push(
-        ...state.pool.slice(
-          state.index,
-          state.index + (count - result.length)
-        )
-      );
-      state.index += count - result.length;
-    } else {
-      result.push(...state.pool.slice(state.index));
-      state.pool = shuffle(state.pool);
-      state.index = 0;
-    }
-  }
+  const values = shuffle(optionKeys.map((k) => question[k]));
+  const newQ = { ...question };
 
-  return result;
+  optionKeys.forEach((k, i) => {
+    newQ[k] = values[i];
+  });
+
+  return newQ;
 }
 
-async function generateExam(year, department, cie, subject, subjectCode, topics, date) {
-  try {
-    
+/* ================= MAIN ================= */
 
-    if ( !subject || !cie || !topics || !subjectCode || !year || !department) {
-      throw new Error({ error: "Missing required fields" });
+async function generateExam(
+  year,
+  department,
+  cie,
+  subject,
+  subjectCode,
+  topics,
+  date
+) {
+  try {
+    if (!year || !department || !cie || !subject || !subjectCode || !topics) {
+      throw new Error("Missing required fields");
     }
 
     const db = getDb();
@@ -51,26 +51,28 @@ async function generateExam(year, department, cie, subject, subjectCode, topics,
 
     await getSubjectQuestions(subject);
 
-    
+    const examDoc = await examCol.findOne({
+      subject,
+      subjectCode,
+      cie,
+      date,
+      students: { $elemMatch: { department, year } },
+    });
 
-    const examDoc = await examCol.findOne({subject,subjectCode,cie, date});
+    if (!examDoc) throw new Error("Exam not found");
 
-
-    if (!examDoc) {
-      throw new Error("Exam not found");
-    }
-
-    const subjects = subject.split("/").map(s => s.trim());
+    /* -------- SUBJECT PARSE -------- */
+    const subjects = subject.split("/").map((s) => s.trim());
 
     if (subjects.length < 1 || subjects.length > 2) {
-      throw new Error( "Only 1 or 2 subjects are supported");
+      throw new Error("Only 1 or 2 subjects supported");
     }
 
+    /* -------- QUESTION COUNTS -------- */
     const subjectCounts = {};
 
     if (subjects.length === 1) {
-      subjectCounts[subjects[0]] =
-        cie === "cie3" ? 60 : 30;
+      subjectCounts[subjects[0]] = cie === "cie3" ? 60 : 30;
     } else {
       if (cie === "cie3") {
         subjectCounts[subjects[0]] = 60;
@@ -81,102 +83,133 @@ async function generateExam(year, department, cie, subject, subjectCode, topics,
       }
     }
 
+    //SUBJECT ORDER
+    let orderedSubjects = [...subjects];
+    if (orderedSubjects.length === 2) {
+      orderedSubjects.sort((a, b) => subjectCounts[a] - subjectCounts[b]);
+    }
+
     const subjectState = {};
 
-    for (const subject of subjects) {
-      const subjectDoc = await questionCol.findOne({
-        subject_name: subject
-      });
+    for (const sub of subjects) {
+      const doc = await questionCol.findOne({ subject_name: sub });
+      if (!doc) throw new Error(`Question bank not found for ${sub}`);
 
-      if (!subjectDoc) {
-        throw new Error(`Question bank not found for ${subject}`);
+      subjectState[sub] = {};
+      const subTopics = topics[sub];
+
+      if (!Array.isArray(subTopics) || subTopics.length === 0) {
+        throw new Error(`No topics provided for ${sub}`);
       }
 
-      subjectState[subject] = {};
+      for (const t of subTopics) {
+        const block = doc.exam.find((e) => e.topic === t);
+        if (!block) continue;
 
-      let subjectTopics = [];
-
-      if (Array.isArray(topics)) {
-        subjectTopics = topics;
-      } else {
-        subjectTopics = topics[subject] || [];
-      }
-
-      if (subjectTopics.length === 0) {
-        throw new Error(`No topics provided for ${subject}`);
-      }
-
-      for (const topicName of subjectTopics) {
-        const topicBlock = subjectDoc.exam.find(
-          t => t.topic === topicName
-        );
-
-        if (!topicBlock) continue;
-
-        subjectState[subject][topicName] = {
-          pool: shuffle(topicBlock.topic_question),
-          index: 0
+        subjectState[sub][t] = {
+          1: shuffle(
+            block.topic_question.filter((q) => q.difficulty_level == "1")
+          ),
+          2: shuffle(
+            block.topic_question.filter((q) => q.difficulty_level == "2")
+          ),
+          3: shuffle(
+            block.topic_question.filter((q) => q.difficulty_level == "3")
+          ),
         };
       }
     }
+    const poolIndex = {};
 
-const updatedStudents = examDoc.students.map(student => {
-  let questions = [];
+    const updatedStudents = examDoc.students.map((student) => {
+      let finalQuestions = [];
 
-  for (const subject of subjects) {
-    const totalForSubject = subjectCounts[subject];
-    const topicNames = Object.keys(subjectState[subject]);
+      for (const sub of orderedSubjects) {
+        const totalForSubject = subjectCounts[sub];
+        const topicNames = Object.keys(subjectState[sub]);
 
-    const basePerTopic = Math.floor(
-      totalForSubject / topicNames.length
-    );
-    const leftover = totalForSubject % topicNames.length;
+        const lvlTotals = {
+          1: Math.round(totalForSubject * 0.4),
+          2: Math.round(totalForSubject * 0.4),
+          3: totalForSubject - Math.round(totalForSubject * 0.4) * 2,
+        };
 
-    topicNames.forEach((topic, index) => {
-      const countForThisTopic =
-        basePerTopic + (index < leftover ? 1 : 0);
+        const perTopicDifficulty = {};
 
-      questions.push(
-        ...getNextBatch(
-          subjectState[subject][topic],
-          countForThisTopic
-        )
-      );
+        ["1", "2", "3"].forEach((lvl) => {
+          const base = Math.floor(lvlTotals[lvl] / topicNames.length);
+          const extra = lvlTotals[lvl] % topicNames.length;
+
+          perTopicDifficulty[lvl] = topicNames.map(
+            (_, i) => base + (i < extra ? 1 : 0)
+          );
+        });
+
+        let subjectQuestions = [];
+
+        topicNames.forEach((topic, idx) => {
+          ["1", "2", "3"].forEach((lvl) => {
+            const need = perTopicDifficulty[lvl][idx];
+
+            poolIndex[sub] ??= {};
+            poolIndex[sub][topic] ??= { 1: 0, 2: 0, 3: 0 };
+
+            let pool = subjectState[sub][topic][lvl];
+            // let pointer = poolIndex[sub][topic][lvl];
+
+            let selected = [];
+
+            for (let i = 0; i < need; i++) {
+              if (poolIndex[sub][topic][lvl] >= pool.length) {
+                subjectState[sub][topic][lvl] = shuffle(pool);
+                poolIndex[sub][topic][lvl] = 0;
+              }
+
+              selected.push(
+                subjectState[sub][topic][lvl][poolIndex[sub][topic][lvl]]
+              );
+
+              poolIndex[sub][topic][lvl]++;
+            }
+
+            subjectQuestions.push(...selected.map((q) => ({ ...q, topic })));
+          });
+        });
+
+        subjectQuestions = shuffle(subjectQuestions).map((q) =>
+          shuffleQuestionOptions(q)
+        );
+
+        finalQuestions.push(...subjectQuestions);
+      }
+
+      return {
+        ...student,
+        questions: finalQuestions,
+      };
     });
-  }
-
-  return {
-    ...student,
-    questions: shuffle(questions)
-  };
-});
-
 
     await examCol.updateOne(
       { _id: examDoc._id },
       {
         $set: {
           students: updatedStudents,
-          generatedAt: new Date()
-        }
+          generatedAt: new Date(),
+        },
       }
     );
 
-    return ({
+    return {
       message: "Exam generated successfully",
-      mode: subject,
       cie,
-      perStudent: Object.values(subjectCounts).reduce(
-        (a, b) => a + b,
-        0
-      ),
-      students: updatedStudents.length
-    });
-
-  }catch (err) {
-  console.error("❌ generateExam error:", err.message);
-  throw err; 
-}
+      mode: subject,
+      students: updatedStudents.length,
+      perStudent: Object.values(subjectCounts).reduce((a, b) => a + b, 0),
+    };
+  } catch (err) {
+    console.error("❌ generateExam error:", err.message);
+    throw err;
+  }
 }
 
 module.exports = { generateExam };
