@@ -7,6 +7,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { Trash2, Send, Pencil, Eye } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -34,6 +35,7 @@ export default function ImageGallery({ activity }) {
   const [showChangesPopup, setShowChangesPopup] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(new Set());
+    const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data with unique IDs
   useEffect(() => {
@@ -92,12 +94,98 @@ export default function ImageGallery({ activity }) {
     setShowChangesPopup(true);
   };
 
-  const handleFinalRequest = () => {
+const normalizePdfPath = (path) => {
+  if (!path) return "";
+  if (path.startsWith("/static")) return path;
+  return `/static/pdfs/e_cell/${path}`;
+};
+
+
+const handleFinalRequest = async () => {
+  const changes = getChanges();
+
+  if (changes.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  const payload = changes.map((change) => {
+    // 🔹 INSERT
+    if (change.type === "Added") {
+      return {
+        action: "insert",
+        collectionName: "ecell",
+        title: "Activity Insert",
+        collection_type: "activity",
+        meta_data: {
+          year: change.changes.year,
+          pdf_path: normalizePdfPath(change.changes.pdf_path),
+        },
+      };
+    }
+
+    // 🔹 UPDATE
+    if (change.type === "Edited") {
+      const original = data.find((d) => d._id === change._id);
+
+      const meta_data = {};
+      if (change.changes.year) {
+        meta_data.year = change.changes.year.new;
+      }
+      if (change.changes.pdf_path) {
+        meta_data.pdf_path = normalizePdfPath(
+          change.changes.pdf_path.new
+        );
+      }
+
+      return {
+        action: "update",
+        collectionName: "ecell",
+        title: "Activity Update",
+        collection_type: "activity",
+        original_data: {
+          year: original.year,
+          pdf_path: normalizePdfPath(original.pdf_path),
+        },
+        meta_data,
+      };
+    }
+
+    // 🔹 DELETE
+    if (change.type === "Deleted") {
+      return {
+        action: "delete",
+        collectionName: "ecell",
+        title: "Activity Delete",
+        collection_type: "activity",
+        meta_data: {
+          year: change.changes.year,
+          pdf_path: normalizePdfPath(change.changes.pdf_path),
+        },
+      };
+    }
+
+    return null;
+  }).filter(Boolean);
+
+  console.log("FINAL PAYLOAD 👉", payload);
+
+  try {
+    await sendRequest(payload);
+
+    toast.success("📩 Request sent for admin approval");
+
+    // lock state
     setData([...savedData]);
     setShowChangesPopup(false);
     setIsSaved(false);
-    toast.success("📩 Final request submitted successfully.");
-  };
+    setIsEditing(false);
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
 
   const handleChanges = (index, key, value) => {
     setTempData((prev) => {
@@ -209,6 +297,15 @@ const handleUndoChange = (change) => {
   setTempData(newTempData);
 };
 
+const getPdfPreviewUrl = (act) => {
+  // Case 2: newly uploaded file from local
+  if (act.pdf_file) {
+    return URL.createObjectURL(act.pdf_file);
+  }
+  // Case 1: existing PDF from cloud
+  return UrlParser(act.pdf_path);
+};
+
 
   return (
     <>
@@ -238,7 +335,8 @@ const handleUndoChange = (change) => {
               >
                 <div className={`${isEditing &&  "border-secd border-2 rounded flex flex-col px-4 py-2 m-auto" }`}>
 
-                {isEditing ? (
+                {isEditing ? 
+                (
                   <>
                     <input
                       type="text"
@@ -252,19 +350,21 @@ const handleUndoChange = (change) => {
                       />
                   <div className="flex flex-row justify-center items-center gap-2">
                     <div className="my-2 flex flex-row justify-center">
-                      <input
-                        id={`pdf-upload-${index}`}
-                        type="file"
-                        accept="application/pdf"
-                        className="hidden"
-                        onChange={(e) => {
-                          const file = e.target.files[0];
-                          if (file) {
-                            handleChanges(index, "pdf_path", file.name);
-                          }
-                        }}
-                        required
-                        />
+<input
+  id={`pdf-upload-${index}`}
+  type="file"
+  accept="application/pdf"
+  className="hidden"
+  onChange={(e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // store both file name and file object
+      handleChanges(index, "pdf_path", file.name);
+      handleChanges(index, "pdf_file", file); // new field
+    }
+  }}
+/>
+
 
                       <label
                         htmlFor={`pdf-upload-${index}`}
@@ -277,9 +377,15 @@ const handleUndoChange = (change) => {
                       {act?.pdf_path ? (
                         <div className="flex flex-row items-center justify-center">
                          
-                          <a href={act.pdf_path} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-500 hover:underline hover:cursor-pointer">
-                            <Eye className="w-8 h-8 ml-1 mt-2" />
-                          </a>
+<a
+  href={getPdfPreviewUrl(act)}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center text-blue-500 hover:underline hover:cursor-pointer"
+>
+  <Eye className="w-8 h-8 ml-1 mt-2" />
+</a>
+
                         </div>
                       ) : (
                         ""
@@ -297,7 +403,7 @@ const handleUndoChange = (change) => {
                 ) : (
                   <EcellActivity
                   year={act?.year}
-                  pdfspath={UrlParser(act?.pdf_path)}
+                  pdfspath={getPdfPreviewUrl(act)}
                   />
                 )}
               </div>
@@ -427,7 +533,7 @@ const handleUndoChange = (change) => {
               <button
                 onClick={() => {
                   setShowChangesPopup(false);
-                  setIsSaved(false);
+                  // setIsSaved(false);
                 }}
                 className="px-4 py-2 rounded bg-gray-400 text-white"
               >
