@@ -80,12 +80,12 @@ async function studentlogin(req, res) {
     const studentCol = db.collection("student");
     const sessionCol = db.collection("qa_exam_sessions");
 
-    const { registerno, password, department, year } = req.body;
+    const { registerno, password, department, batch } = req.body;
 
     // 1️⃣ Validate required fields
-    if (!registerno || !password || !department || !year) {
+    if (!registerno || !password || !department || !batch) {
       return res.status(400).json({
-        message: "Register number, password, department, and year are required"
+        message: "Register number, password, department, and batch are required"
       });
     }
 
@@ -93,7 +93,7 @@ async function studentlogin(req, res) {
     const student = await studentCol.findOne({
       registerno,
       department,
-      year
+      batch
     });
 
     if (!student) {
@@ -131,7 +131,7 @@ async function studentlogin(req, res) {
       id: student._id,
       registerno: student.registerno,
       department: student.department,
-      year: student.year,
+      batch: student.batch,
       token
     };
 
@@ -143,7 +143,7 @@ async function studentlogin(req, res) {
         name: student.name,
         registerno: student.registerno,
         department: student.department,
-        year: student.year
+        batch: student.batch
       }
     });
 

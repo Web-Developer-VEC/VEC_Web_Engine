@@ -29,11 +29,11 @@ async function createExamFromSchedule(scheduleId) {
 
   let students = [];
 
-  // Case 1: Department + Year based
-  if (schedule.department && schedule.year) {
+  // Case 1: Department + batch based
+  if (schedule.department && schedule.batch) {
     students = await studentCollection.find({
       department: schedule.department,
-      year: schedule.year
+      batch: schedule.batch
     }).toArray();
   }
 
@@ -57,7 +57,7 @@ async function createExamFromSchedule(scheduleId) {
     registerno: s.registerno,
     name: s.name,
     department: s.department,
-    year: s.year
+    batch: s.batch
   }));
 
   /* -----------------------------
@@ -70,6 +70,7 @@ async function createExamFromSchedule(scheduleId) {
     subject: schedule.subject,
     subjectCode: schedule.subjectCode,
     cie: schedule.cie,
+    batch: schedule.batch,
 
     students: studentList,
 

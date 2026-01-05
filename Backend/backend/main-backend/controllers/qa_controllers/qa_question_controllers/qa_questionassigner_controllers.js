@@ -1,7 +1,6 @@
 const { getDb } = require("../../../config/db");
 const { getSubjectQuestions } = require("./qa_questiongenerator_controllers");
 
-/* ---------------- SHUFFLE ---------------- */
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -11,7 +10,6 @@ function shuffle(arr) {
   return a;
 }
 
-/* -------- OPTION SHUFFLER -------- */
 function shuffleQuestionOptions(question) {
   const optionKeys = ["A", "B", "C", "D", "E"].filter(
     (k) => question[k] !== undefined && question[k] !== ""
@@ -29,10 +27,125 @@ function shuffleQuestionOptions(question) {
   return newQ;
 }
 
-/* ================= MAIN ================= */
+function getRequiredDistribution(total) {
+  const l1 = Math.round(total * 0.4);
+  const l2 = Math.round(total * 0.4);
+  const l3 = total - l1 - l2;
+  return { 1: l1, 2: l2, 3: l3 };
+}
+
+function getQuestionKey(q) {
+  const keyParts = [];
+  
+  if (q.question && typeof q.question === 'string') {
+    const normalizedQuestion = q.question
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, ' ') 
+      .replace(/[^\w\s]/g, ''); 
+    
+    keyParts.push(`q:${normalizedQuestion}`);
+  }
+  
+  const optionValues = [];
+  const optionKeys = ["A", "B", "C", "D", "E"];
+  
+  for (const opt of optionKeys) {
+    if (q[opt] && typeof q[opt] === 'string' && q[opt].trim() !== '') {
+      const normalizedOpt = q[opt]
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+        .replace(/[^\w\s]/g, '');
+      optionValues.push(normalizedOpt);
+    }
+  }
+  
+  if (optionValues.length > 0) {
+    keyParts.push(`opts:${optionValues.sort().join('|')}`);
+  }
+  
+  const otherFields = ['correct_answer', 'explanation', 'hint'];
+  for (const field of otherFields) {
+    if (q[field] && typeof q[field] === 'string' && q[field].trim() !== '') {
+      const normalized = q[field].trim().toLowerCase().replace(/\s+/g, ' ');
+      keyParts.push(`${field}:${normalized}`);
+    }
+  }
+  
+  if (keyParts.length > 0) {
+    return keyParts.join('||');
+  }
+  
+  const { _id, ...rest } = q;
+  return JSON.stringify(rest);
+}
+
+function pickQuestionsWithBorrowing(topicPools, requiredCounts, ctx = {}) {
+  const used = new Set(); 
+  const result = [];
+
+  const pools = {
+    1: shuffle([...topicPools[1]]),
+    2: shuffle([...topicPools[2]]),
+    3: shuffle([...topicPools[3]]),
+  };
+
+  function pickUniqueQuestion(pool, level, targetLevel) {
+    for (let i = 0; i < pool.length; i++) {
+      const q = pool[i];
+      const key = getQuestionKey(q);
+      
+      if (!used.has(key)) {
+        const [picked] = pool.splice(i, 1);
+        used.add(key);        
+        return picked;
+      }
+    }
+    return null;
+  }
+
+  for (const targetLevel of [1, 2, 3]) {
+    let need = requiredCounts[targetLevel];
+    while (need > 0 && pools[targetLevel].length > 0) {
+      const picked = pickUniqueQuestion(pools[targetLevel], targetLevel, targetLevel);
+      if (picked) {
+        result.push(picked);
+        need--;
+      } else {
+        break;
+      }
+    }
+
+    if (need > 0) {
+      const otherLevels = targetLevel === 1 ? [2, 3] : 
+                         targetLevel === 2 ? [1, 3] : [2, 1];
+      
+      for (const borrowLevel of otherLevels) {
+        while (need > 0 && pools[borrowLevel].length > 0) {
+          const picked = pickUniqueQuestion(pools[borrowLevel], borrowLevel, targetLevel);
+          if (picked) {
+            result.push(picked);
+            need--;
+          } else {
+            break;
+          }
+        }
+        if (need === 0) break;
+      }
+    }
+
+    if (need > 0) {
+      throw new Error(`Not enough unique questions for this student in ${ctx.topic || 'topic'}`);
+    }
+
+  }
+
+  return result;
+}
 
 async function generateExam(
-  year,
+  batch,
   department,
   cie,
   subject,
@@ -41,7 +154,7 @@ async function generateExam(
   date
 ) {
   try {
-    if (!year || !department || !cie || !subject || !subjectCode || !topics) {
+    if (!batch || !department || !cie || !subject || !subjectCode || !topics) {
       throw new Error("Missing required fields");
     }
 
@@ -56,19 +169,17 @@ async function generateExam(
       subjectCode,
       cie,
       date,
-      students: { $elemMatch: { department, year } },
+      students: { $elemMatch: { department, batch } },
     });
 
     if (!examDoc) throw new Error("Exam not found");
 
-    /* -------- SUBJECT PARSE -------- */
     const subjects = subject.split("/").map((s) => s.trim());
 
     if (subjects.length < 1 || subjects.length > 2) {
       throw new Error("Only 1 or 2 subjects supported");
     }
 
-    /* -------- QUESTION COUNTS -------- */
     const subjectCounts = {};
 
     if (subjects.length === 1) {
@@ -83,11 +194,9 @@ async function generateExam(
       }
     }
 
-    //SUBJECT ORDER
-    let orderedSubjects = [...subjects];
-    if (orderedSubjects.length === 2) {
-      orderedSubjects.sort((a, b) => subjectCounts[a] - subjectCounts[b]);
-    }
+    const storageOrder = Object.entries(subjectCounts)
+      .sort(([, countA], [, countB]) => countA - countB)
+      .map(([subjectName]) => subjectName);
 
     const subjectState = {};
 
@@ -107,80 +216,78 @@ async function generateExam(
         if (!block) continue;
 
         subjectState[sub][t] = {
-          1: shuffle(
-            block.topic_question.filter((q) => q.difficulty_level == "1")
-          ),
-          2: shuffle(
-            block.topic_question.filter((q) => q.difficulty_level == "2")
-          ),
-          3: shuffle(
-            block.topic_question.filter((q) => q.difficulty_level == "3")
-          ),
+          1: block.topic_question.filter((q) => q.difficulty_level == "1"),
+          2: block.topic_question.filter((q) => q.difficulty_level == "2"),
+          3: block.topic_question.filter((q) => q.difficulty_level == "3"),
         };
       }
     }
-    const poolIndex = {};
 
-    const updatedStudents = examDoc.students.map((student) => {
-      let finalQuestions = [];
-
-      for (const sub of orderedSubjects) {
+    const updatedStudents = examDoc.students.map((student, studentIndex) => {
+      
+      const questionsBySubject = {};
+      
+      for (const sub of subjects) {
         const totalForSubject = subjectCounts[sub];
         const topicNames = Object.keys(subjectState[sub]);
 
-        const lvlTotals = {
-          1: Math.round(totalForSubject * 0.4),
-          2: Math.round(totalForSubject * 0.4),
-          3: totalForSubject - Math.round(totalForSubject * 0.4) * 2,
-        };
+        const basePerTopic = Math.floor(totalForSubject / topicNames.length);
+        const remainder = totalForSubject % topicNames.length;
 
-        const perTopicDifficulty = {};
+        const subjectQuestions = [];
 
-        ["1", "2", "3"].forEach((lvl) => {
-          const base = Math.floor(lvlTotals[lvl] / topicNames.length);
-          const extra = lvlTotals[lvl] % topicNames.length;
+        topicNames.forEach((topic, index) => {
+          const topicPools = subjectState[sub][topic];
+          const totalForTopic = basePerTopic + (index < remainder ? 1 : 0);
 
-          perTopicDifficulty[lvl] = topicNames.map(
-            (_, i) => base + (i < extra ? 1 : 0)
-          );
-        });
+          const required = getRequiredDistribution(totalForTopic);
 
-        let subjectQuestions = [];
-
-        topicNames.forEach((topic, idx) => {
-          ["1", "2", "3"].forEach((lvl) => {
-            const need = perTopicDifficulty[lvl][idx];
-
-            poolIndex[sub] ??= {};
-            poolIndex[sub][topic] ??= { 1: 0, 2: 0, 3: 0 };
-
-            let pool = subjectState[sub][topic][lvl];
-            // let pointer = poolIndex[sub][topic][lvl];
-
-            let selected = [];
-
-            for (let i = 0; i < need; i++) {
-              if (poolIndex[sub][topic][lvl] >= pool.length) {
-                subjectState[sub][topic][lvl] = shuffle(pool);
-                poolIndex[sub][topic][lvl] = 0;
-              }
-
-              selected.push(
-                subjectState[sub][topic][lvl][poolIndex[sub][topic][lvl]]
-              );
-
-              poolIndex[sub][topic][lvl]++;
+          const picked = pickQuestionsWithBorrowing(
+            topicPools,
+            required,
+            {
+              student: student.usn || student.rollNo || `Student_${studentIndex}`,
+              subject: sub,
+              topic,
             }
+          ).map((q) => ({ 
+            ...q, 
+            topic,
+            subject: sub 
+          }));
 
-            subjectQuestions.push(...selected.map((q) => ({ ...q, topic })));
-          });
+          subjectQuestions.push(...picked);
         });
 
-        subjectQuestions = shuffle(subjectQuestions).map((q) =>
-          shuffleQuestionOptions(q)
-        );
+        questionsBySubject[sub] = subjectQuestions;
+      }
 
-        finalQuestions.push(...subjectQuestions);
+      let finalQuestions = [];
+      
+      for (const sub of storageOrder) {
+        if (questionsBySubject[sub]) {
+          const shuffledSubjectQuestions = shuffle([...questionsBySubject[sub]]);
+          finalQuestions.push(...shuffledSubjectQuestions);
+          
+        }
+      }
+
+      finalQuestions = finalQuestions.map(shuffleQuestionOptions);
+
+      finalQuestions = finalQuestions.map((q, index) => ({
+        ...q,
+        questionNumber: index + 1
+      }));
+
+      let currentSubject = null;
+      let subjectStart = 1;
+      
+      for (let i = 0; i < finalQuestions.length; i++) {
+        const q = finalQuestions[i];
+        if (currentSubject !== q.subject) {
+          currentSubject = q.subject;
+          subjectStart = i + 1;
+        }
       }
 
       return {
@@ -212,4 +319,4 @@ async function generateExam(
   }
 }
 
-module.exports = { generateExam };
+module.exports = {generateExam};
