@@ -12,7 +12,7 @@ client = MongoClient(mongo_uri)
 db = client[db_name]
 logsdb = client["LOGS_VEC"]
 
-def insert_admissions_sections():
+def insert_student():
     collection = db["student"]
 
     with open("/root/VEC_Web_Engine/Backend/docs/students_output.json", "r", encoding="utf-8") as file:
@@ -21,4 +21,7 @@ def insert_admissions_sections():
     # Direct insert (normal insert)
     collection.insert_many(admissions_data)
 
-    print("Admission sections inserted successfully.")
+    print("students inserted successfully.")
+
+insert_student()
+
