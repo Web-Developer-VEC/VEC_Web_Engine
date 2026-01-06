@@ -116,18 +116,30 @@ export function SearchableInput({
   )
 }
 
-const TIME_SLOTS = [
-  "08:40 AM - 10:20 AM",
-  "10:30 AM - 12:10 PM",
-  "12:40 PM - 02:20 PM",
-  "02:30 PM - 04:00 PM"
-]
+const TIME_SLOTS = {
+  model: [
+    "08:40 AM - 12:10 PM",
+    "12:40 PM - 04:00 PM"
+  ],
+  internal: [
+    "08:40 AM - 10:20 AM",
+    "10:30 AM - 12:10 PM",
+    "12:40 PM - 02:20 PM",
+    "02:30 PM - 04:00 PM"
+  ]
+}
 
 const EXAM_TYPE = [
   "I", "II", "III"
 ]
 
-export function Dropdown({ label, icon: Icon, value, onChange }) {
+const typeMap = {
+  I: "internal",
+  II: "internal",
+  III: "model"
+}
+
+export function Dropdown({ label, icon: Icon, value, onChange, type }) {
   return (
     <div className="space-y-2">
       <label className="text-sm font-medium text-slate-700">{label}</label>
@@ -136,19 +148,22 @@ export function Dropdown({ label, icon: Icon, value, onChange }) {
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          disabled={label === "Exam Time" && !type}
           className="pl-10 h-12 w-full border border-slate-300 rounded-md
           focus:ring-2 focus:ring-[#fdcc03]/20 bg-white"
         >
           <option value="">{label === "Exam Time" ? "Select Time" : "Select Exam Type"}</option>
-          {label === "Exam Time" ? TIME_SLOTS.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          )) : EXAM_TYPE.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
+          {label === "Exam Time"
+            ? (TIME_SLOTS[typeMap[type]] || []).map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))
+            : EXAM_TYPE.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
         </select>
       </div>
     </div>
