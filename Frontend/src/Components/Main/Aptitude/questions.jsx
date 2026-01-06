@@ -587,7 +587,11 @@ const QuestionPage = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("/api/main-backend/studentresult");
+      const res = await axios.post("/api/main-backend/studentresult", 
+        {
+          scheduleId: exam.scheduleId
+        }
+      );
 
       const { registerno, name, department, year, totalMarks } = res.data;
 
