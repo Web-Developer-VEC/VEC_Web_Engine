@@ -8,7 +8,7 @@ const scheduleResetCounters = require('./main-backend/middlewares/schedulers/res
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
 const session = require("express-session");
-
+const MongoStore = require("connect-mongo");
 
 dotenv.config({ quiet: true });
 

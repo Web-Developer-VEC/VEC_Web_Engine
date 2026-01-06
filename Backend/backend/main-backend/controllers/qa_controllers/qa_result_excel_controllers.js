@@ -249,6 +249,7 @@ async function generateSingleDepartmentExcel(examDoc, students, department, sche
   }
 
   const firstStudent = students[0];
+
   const examType = subjectName.toUpperCase().trim();
 
   let firstSectionCount = 0;
@@ -544,6 +545,7 @@ async function generateMultipleDepartmentsExcel(examDoc, studentsByDepartment, d
   }
   
   const firstStudent = validFirstStudent;
+
   const examType = subjectName.toUpperCase().trim();
 
   let firstSectionCount = 0;
@@ -595,7 +597,9 @@ async function generateMultipleDepartmentsExcel(examDoc, studentsByDepartment, d
       
       const studentFirstSectionQuestions = student.questions.slice(0, firstSectionCount);
       studentFirstSectionQuestions.forEach(q => {
+
         if (q && q.topic) {
+
           allFirstSectionTopics.add(q.topic);
         }
       });
@@ -740,7 +744,7 @@ async function generateMultipleDepartmentsExcel(examDoc, studentsByDepartment, d
   });
 
   const headers = [
-    "Roll No",
+    "S No",
     "REG NO.",
     "NAME (BLOCK LETTERS)",
     "BRANCH"

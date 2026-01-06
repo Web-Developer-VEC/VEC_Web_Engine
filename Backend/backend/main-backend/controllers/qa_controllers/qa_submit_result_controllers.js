@@ -1,4 +1,6 @@
 const { getDb } = require("../../config/db");
+const { ObjectId } = require("mongodb");
+
 
 async function qaresult(req, res) {
   try {
@@ -6,8 +8,16 @@ async function qaresult(req, res) {
     const collection = db.collection("qa_exam");
     const sessionCollection = db.collection("qa_exam_sessions");
 
+    if (!req.session.user) {
+  return res.status(401).json({ message: "Session expired / not logged in" });
+}
+
     const { registerno } = req.session.user;
-    const { scheduleId } = req.body;   // 👈 IMPORTANT
+    
+    const { scheduleId } = req.body;  
+
+    const scheduleObjectId = new ObjectId(scheduleId);
+
 
     if (!scheduleId) {
       return res.status(400).json({
@@ -17,7 +27,7 @@ async function qaresult(req, res) {
 
     // 🎯 Find EXACT exam
     const examDoc = await collection.findOne({
-      scheduleId,
+      scheduleId:scheduleObjectId,
       "students.registerno": registerno
     });
 
