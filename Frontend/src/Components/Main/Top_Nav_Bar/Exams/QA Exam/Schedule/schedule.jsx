@@ -34,7 +34,7 @@ const Schedule = ({ toggle, theme }) => {
   const [topicOptions, setTopicOptions] = useState([])
   const [studentRegs, setStudentRegs] = useState([])
   const [loadingRegs, setLoadingRegs] = useState(false)
-  const [topics, setTopics] = useState([])
+  const [topics, setTopics] = useState({})
   const [subjectTopics, setSubjectTopics] = useState([])
   const navigate = useNavigate();
 
@@ -133,6 +133,29 @@ const Schedule = ({ toggle, theme }) => {
 
   }, [subject, subjectTopics])
 
+  const splitSubjects = useMemo(() => {
+    if (!subject) return []
+    return subject.split("/").map(s => s.trim())
+  }, [subject])
+
+  const getTopicsForSubject = (sub) => {
+    return subjectTopics.find(s => s.subject_name === sub)?.topics || []
+  }
+
+  useEffect(() => {
+    if (!splitSubjects.length) {
+      setTopics({})
+      return
+    }
+
+    const initialTopics = {}
+    splitSubjects.forEach(sub => {
+      initialTopics[sub] = []
+    })
+
+    setTopics(initialTopics)
+  }, [splitSubjects])
+
   const handleSubjectSelect = (name) => {
     const sub = subjects.find((s) => s.name === name)
     setSubject(name)
@@ -166,7 +189,7 @@ const Schedule = ({ toggle, theme }) => {
     const { start, end } = parseTimeSlot(time)
 
     const payload = {
-      year: year,
+      batch: year,
       department: departments,
       registerNo: registerState.values,
       cie: examType,
@@ -246,6 +269,48 @@ const Schedule = ({ toggle, theme }) => {
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 mb-4">
         <div className="mt-4 px-4 mb-2 flex justify-end w-full">
           <div className="flex gap-1">
+            <button
+              onClick={() => navigate("/scheduled-exam")}
+              className="
+              inline-flex items-center gap-2
+              px-4 py-2
+              rounded-lg
+              border border-[#800000]/30
+              bg-white
+              text-[#800000]
+              text-sm font-medium
+              shadow-sm
+              hover:bg-[#800000]
+              hover:text-text
+              hover:border-[#800000]
+              transition-all duration-200
+              focus:outline-none focus:ring-2 focus:ring-[#800000]/30
+            "
+            >
+              Upload Questions
+              <span className="text-base">→</span>
+            </button>
+            <button
+              onClick={() => navigate("/scheduled-exam")}
+              className="
+              inline-flex items-center gap-2
+              px-4 py-2
+              rounded-lg
+              border border-[#800000]/30
+              bg-white
+              text-[#800000]
+              text-sm font-medium
+              shadow-sm
+              hover:bg-[#800000]
+              hover:text-text
+              hover:border-[#800000]
+              transition-all duration-200
+              focus:outline-none focus:ring-2 focus:ring-[#800000]/30
+            "
+            >
+              Download Student Result
+              <span className="text-base">→</span>
+            </button>
             <button
               onClick={() => navigate("/scheduled-exam")}
               className="
@@ -423,15 +488,26 @@ const Schedule = ({ toggle, theme }) => {
             />
 
           </div>
-            <SearchableInput
-              label="Topics"
-              icon={Building2}
-              options={topicOptions}
-              value={topics}
-              onChange={setTopics}
-              multiple
-              placeholder="Select Topic(s)"
-            />
+
+          <div>
+            {splitSubjects.map((sub) => (
+              <SearchableInput
+                key={sub}
+                label={`Topics - ${sub}`}
+                icon={Building2}
+                options={getTopicsForSubject(sub)}
+                value={topics[sub] || []}
+                onChange={(selected) =>
+                  setTopics(prev => ({
+                    ...prev,
+                    [sub]: selected
+                  }))
+                }
+                multiple
+                placeholder={`Select ${sub} Topic(s)`}
+              />
+            ))}
+          </div>
 
           <div className="grid grid-cols-3 gap-4">
             <Input
@@ -441,17 +517,20 @@ const Schedule = ({ toggle, theme }) => {
               value={date}
               onChange={setDate}
             />
-            <Dropdown
-              label="Exam Time"
-              icon={Clock}
-              value={time}
-              onChange={setTime}
-            />
+            
             <Dropdown
               label="Exam Type"
               icon={GraduationCap}
               value={examType}
               onChange={setExamType}
+            />
+
+            <Dropdown
+              label="Exam Time"
+              icon={Clock}
+              value={time}
+              onChange={setTime}
+              type={examType}
             />
           </div>
 
