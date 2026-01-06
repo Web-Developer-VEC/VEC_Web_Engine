@@ -12,13 +12,14 @@ async function getStudentsByDeptbatch(department, batch) {
     .find(
       {
         department,
-        batch: Number(batch)
+        batch: batch
       },
       {
         projection: { registerno: 1, _id: 0 }
       }
     )
     .toArray();
+
 
   return students.map(s => s.registerno);
 }
