@@ -70,6 +70,7 @@ async function createExamFromSchedule(scheduleId) {
     subject: schedule.subject,
     subjectCode: schedule.subjectCode,
     cie: schedule.cie,
+    batch: schedule.batch,
 
     students: studentList,
 

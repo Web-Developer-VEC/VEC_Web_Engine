@@ -1,6 +1,4 @@
-const jwt = require("jsonwebtoken");
-
-const {getDb} = require('../../config/db')
+const { getDb } = require("../../config/db");
 
 async function qaresult(req, res) {
   try {
@@ -9,13 +7,24 @@ async function qaresult(req, res) {
     const sessionCollection = db.collection("qa_exam_sessions");
 
     const { registerno } = req.session.user;
+    const { scheduleId } = req.body;   // 👈 IMPORTANT
 
+    if (!scheduleId) {
+      return res.status(400).json({
+        message: "scheduleId is required"
+      });
+    }
+
+    // 🎯 Find EXACT exam
     const examDoc = await collection.findOne({
+      scheduleId,
       "students.registerno": registerno
     });
 
     if (!examDoc) {
-      return res.status(404).json({ message: "Exam record not found" });
+      return res.status(404).json({
+        message: "Exam record not found for this schedule"
+      });
     }
 
     const student = examDoc.students.find(
@@ -23,29 +32,44 @@ async function qaresult(req, res) {
     );
 
     if (!student) {
-      return res.status(404).json({ message: "Student not found" });
+      return res.status(404).json({
+        message: "Student not found in this exam"
+      });
     }
 
+    // ✅ Calculate marks
     const totalMarks = student.questions.filter(
       q => q.isCorrect === true
     ).length;
 
+    // 🔒 Mark completion ONLY for this exam
     await collection.updateOne(
-      { "students.registerno": registerno },
+      {
+        scheduleId,
+        "students.registerno": registerno
+      },
       {
         $set: {
-          "students.$.isComplete": true
+          "students.$.isComplete": true,
+          "students.$.completedAt": new Date()
         }
       }
     );
 
-    await sessionCollection.deleteOne({ registerno })
+    // 🧹 Delete ONLY this exam session
+    await sessionCollection.deleteOne({
+      scheduleId,
+      registerno
+    });
 
     res.json({
+      scheduleId,
       registerno,
       name: student.name,
       department: student.department,
       batch: student.batch,
+      subject: examDoc.subject,
+      cie: examDoc.cie,
       totalMarks
     });
 
@@ -53,7 +77,6 @@ async function qaresult(req, res) {
     console.error(err);
     res.status(500).json({ message: "Internal server error" });
   }
-};
+}
 
-
-module.exports = {qaresult}
+module.exports = { qaresult };
