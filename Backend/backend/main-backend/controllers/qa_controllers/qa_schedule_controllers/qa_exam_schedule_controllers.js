@@ -21,9 +21,7 @@ async function storeExamSchedule(req, res) {
       start,
       end
     } = req.body;
-
-    console.log(cieRoman);
-    
+  
 
     const cieMap = {
       I: "cie1",
