@@ -9,11 +9,11 @@ async function storeExamSchedule(req, res) {
     const db = getDb();
     const collection = db.collection("qa_schedule");
 
-    const {
+   const {
       batch,
       department,
       registerNo,
-      cie,
+      cie: cieRoman,
       subject,
       subjectCode,
       topics,
@@ -21,6 +21,15 @@ async function storeExamSchedule(req, res) {
       start,
       end
     } = req.body;
+  
+
+    const cieMap = {
+      I: "cie1",
+      II: "cie2",
+      III: "cie3"
+    }
+
+    const cie = cieMap[cieRoman]
 
     /* -----------------------------
        Validation
