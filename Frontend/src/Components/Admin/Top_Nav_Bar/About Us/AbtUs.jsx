@@ -6,13 +6,8 @@ import axios from 'axios';
 import ScrollToTopButton from '../../ScrollToTopButton';
 import "./AbtUs.css";
 import { useNavigate } from "react-router";
-
-const DEFAULT_PDF_NAMES = [
-  "AICTE Approval",
-  "University Affiliation",
-  "Governing Body",
-  "Mandatory Disclosures"
-];
+import { useAdminRequest } from '../../../hooks/useAdminRequest';
+import { toast } from 'react-toastify';
 
 const AdminAbtUs = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -52,6 +47,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
+  const { sendRequest, loading: reqLoading } = useAdminRequest();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,12 +56,35 @@ const AdminAbtUs = ({ theme, toggle }) => {
         const data = responce.data.data;
         setAbtUsData(data);
         setEditedContent(data.content);
-        const initialPdfLinks = [
-          { name: DEFAULT_PDF_NAMES[0], url: data.links?.[0] || "" },
-          { name: DEFAULT_PDF_NAMES[1], url: data.links?.[1] || "" },
-          { name: DEFAULT_PDF_NAMES[2], url: data.links?.[2] || "" },
-          { name: DEFAULT_PDF_NAMES[3], url: data.links?.[3] || "" }
-        ];
+
+        const pdfSource = data?.about_us_pdf || data?.links || data?.about_us || data?.pdfs || [];
+        let initialPdfLinks = [];
+
+        if (Array.isArray(pdfSource) && pdfSource.length > 0) {
+          if (typeof pdfSource[0] === 'object' && (pdfSource[0].name || pdfSource[0].pdf_path || pdfSource[0].url)) {
+            // array of objects with name and pdf_path/url
+            initialPdfLinks = pdfSource.map((item, idx) => ({
+              name: item.name || `Document ${idx + 1}`,
+              url: item.pdf_path || item.pdf || item.url || ""
+            }));
+          } else {
+            // array of strings - URLs
+            initialPdfLinks = pdfSource.map((url, idx) => ({
+              name: `Document ${idx + 1}`,
+              url: url || ""
+            }));
+          }
+        } else {
+          // no backend pdf data - fallback to any links array fields if present on data
+          const linksArray = data?.links || [];
+          initialPdfLinks = [
+            { name: linksArray[0] ? `Document 1` : "Document 1", url: linksArray?.[0] || "" },
+            { name: linksArray[1] ? `Document 2` : "Document 2", url: linksArray?.[1] || "" },
+            { name: linksArray[2] ? `Document 3` : "Document 3", url: linksArray?.[2] || "" },
+            { name: linksArray[3] ? `Document 4` : "Document 4", url: linksArray?.[3] || "" }
+          ];
+        }
+
         setPdfLinks(initialPdfLinks.map(pdf => ({ ...pdf })));
         setOriginalPdfLinks(initialPdfLinks.map(pdf => ({ ...pdf })));
         setEditSessionSnapshot(null);
@@ -232,18 +252,195 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setShowDeleteConfirm(false);
   };
 
-  const handleRequest = () => setShowRequestModal(true);
-  const confirmRequest = () => {
-    setShowRequestModal(false);
-    setSavedChanges(false);
-    setEditMode(false);
+  // helper to create safe filename
+  const makeSafeFileName = (file) => {
+    if (!file) return "";
+    const ts = Date.now();
+    // remove spaces, keep extension
+    const name = file.name.replace(/\s+/g, "_");
+    return `${ts}_${name}`;
   };
 
+  // Build backend arrays/paths based on postSaveSnapshot (new) and abtUsData (old)
+  const buildBackendRepresentation = (oldData, newSnapshot) => {
+    // oldData may contain image_path (array) and about_us_pdf (array of objects or strings)
+    const oldImagePaths = oldData?.image_path || [];
+    const oldPdfArray = oldData?.about_us_pdf || oldData?.links || oldData?.pdfs || [];
+
+    // images
+    const newImagePaths = [];
+    for (let i = 0; i < 3; i++) {
+      const newFile = newSnapshot?.images?.[i];
+      if (newFile) {
+        const safeName = makeSafeFileName(newFile);
+        newImagePaths[i] = `/static/images/about_us/${safeName}`;
+      } else {
+        newImagePaths[i] = oldImagePaths?.[i] || "";
+      }
+    }
+
+    // pdfs
+    const newPdfArray = (newSnapshot?.pdfLinks || []).map((pdf) => {
+      if (pdf.file) {
+        const safeName = makeSafeFileName(pdf.file);
+        return {
+          name: pdf.name || "",
+          pdf_path: `/static/pdfs/about_us/${safeName}`
+        };
+      }
+      // if it is a url string (could be full URL or backend path)
+      return {
+        name: pdf.name || "",
+        pdf_path: pdf.url || ""
+      };
+    });
+
+    const originalPdfArrayNormalized = [];
+    if (Array.isArray(oldPdfArray)) {
+      oldPdfArray.forEach((item) => {
+        if (typeof item === "string") {
+          originalPdfArrayNormalized.push({ name: "", pdf_path: item });
+        } else if (item && typeof item === "object") {
+          originalPdfArrayNormalized.push({
+            name: item.name || "",
+            pdf_path: item.pdf_path || item.pdf || item.url || ""
+          });
+        } else {
+          originalPdfArrayNormalized.push({ name: "", pdf_path: "" });
+        }
+      });
+    }
+
+    return {
+      newBackend: {
+        content: newSnapshot?.content || "",
+        image_path: newImagePaths,
+        about_us_pdf: newPdfArray
+      },
+      oldBackend: {
+        content: oldData?.content || "",
+        image_path: oldImagePaths,
+        about_us_pdf: originalPdfArrayNormalized
+      },
+      originalPdfArrayNormalized
+    };
+  };
+
+  // Build entries (add/update/delete) and files to send based on diffs
+  const buildEntriesAndFiles = (oldData, newSnapshot) => {
+    const { newBackend, oldBackend, originalPdfArrayNormalized } = buildBackendRepresentation(oldData, newSnapshot);
+    const entries = [];
+    const filesToSend = [];
+
+    // Content change
+    if ((oldBackend.content || "") !== (newBackend.content || "")) {
+      entries.push({
+        collectionName: "about_us",
+        collection_type: "about_vec",
+        action: "update",
+        title: "Update About VEC Content",
+        category: "about_us",
+        meta_data: { content: newBackend.content },
+        original_data: { content: oldBackend.content }
+      });
+    }
+
+    // Image changes - per-index
+    for (let i = 0; i < 3; i++) {
+      const newFile = newSnapshot.images?.[i];
+      const oldPath = oldBackend.image_path?.[i] || "";
+      const newPath = newBackend.image_path?.[i] || "";
+      if (newFile) {
+        // include file
+        const safeName = makeSafeFileName(newFile);
+        const renamed = new File([newFile], safeName, { type: newFile.type });
+        filesToSend.push(renamed);
+
+        entries.push({
+          collectionName: "about_us",
+          collection_type: "about_vec",
+          action: "update",
+          title: `Update About VEC Image ${i + 1}`,
+          category: "about_us",
+          meta_data: { image_path: newPath },
+          original_data: { image_path: oldPath }
+        });
+      }
+    }
+
+    // PDFs - compare by index, produce add/update/delete per item
+    const oldPdfList = oldBackend.about_us_pdf || [];
+    const newPdfList = newBackend.about_us_pdf || [];
+    const maxLen = Math.max(oldPdfList.length, newPdfList.length);
+
+    for (let i = 0; i < maxLen; i++) {
+      const oldItem = oldPdfList[i] || null;
+      const newItem = newPdfList[i] || null;
+      const newSnapshotPdf = (newSnapshot.pdfLinks || [])[i] || null;
+
+      if (oldItem && !newItem) {
+        // deleted
+        entries.push({
+          collectionName: "about_us",
+          collection_type: "about_vec",
+          action: "delete",
+          title: `Delete About VEC PDF ${oldItem.name || i + 1}`,
+          category: "about_us",
+          meta_data: { name: oldItem.name || "", pdf_path: "" },
+          original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" }
+        });
+      } else if (!oldItem && newItem) {
+        // newly added
+        entries.push({
+          collectionName: "about_us",
+          collection_type: "about_vec",
+          action: "add",
+          title: `Add About VEC PDF ${newItem.name || i + 1}`,
+          category: "about_us",
+          meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
+          original_data: {}
+        });
+        // if this new item corresponds to an uploaded file, include file
+        if (newSnapshotPdf?.file) {
+          const safeName = makeSafeFileName(newSnapshotPdf.file);
+          const renamed = new File([newSnapshotPdf.file], safeName, { type: newSnapshotPdf.file.type });
+          filesToSend.push(renamed);
+        }
+      } else if (oldItem && newItem) {
+        // both exist - check if changed (name or path) or file uploaded
+        const nameChanged = (oldItem.name || "") !== (newItem.name || "");
+        const pathChanged = (oldItem.pdf_path || "") !== (newItem.pdf_path || "");
+        const fileUploaded = !!newSnapshotPdf?.file;
+
+        if (nameChanged || pathChanged || fileUploaded) {
+          entries.push({
+            collectionName: "about_us",
+            collection_type: "about_vec",
+            action: "update",
+            title: `Update About VEC PDF ${newItem.name || i + 1}`,
+            category: "about_us",
+            meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
+            original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" }
+          });
+
+          if (fileUploaded) {
+            const safeName = makeSafeFileName(newSnapshotPdf.file);
+            const renamed = new File([newSnapshotPdf.file], safeName, { type: newSnapshotPdf.file.type });
+            filesToSend.push(renamed);
+          }
+        }
+      }
+    }
+
+    return { entries, filesToSend };
+  };
+
+  // Get diff summary for modal
   const getPdfDiffSummary = () => {
     const added = [];
     const modified = [];
     const deleted = [];
-    const base = postSaveSnapshot ? originalPdfLinks : originalPdfLinks;
+    const base = originalPdfLinks;
     const curr = postSaveSnapshot ? postSaveSnapshot.pdfLinks : pdfLinks;
     curr.forEach((pdf, idx) => {
       const orig = base[idx];
@@ -257,6 +454,81 @@ const AdminAbtUs = ({ theme, toggle }) => {
       if (!curr[idx]) deleted.push(pdf.name);
     });
     return { added, modified, deleted };
+  };
+
+  // Build and send admin request on final confirm
+  const confirmRequest = async () => {
+    // Prepare source snapshots
+    const oldData = abtUsData || {};
+    const newSnapshot = postSaveSnapshot || {
+      content: editedContent,
+      images: { ...editedImages },
+      pdfLinks: pdfLinks.map(pdf => ({ ...pdf }))
+    };
+
+    // Determine if any meaningful change exists
+    const hasContentChanged = (oldData?.content || "") !== (newSnapshot.content || "");
+    const hasImageChanges = [0, 1, 2].some(i => !!newSnapshot.images?.[i]);
+    // For PDF changes compare lengths or any file present or name/url changed
+    const oldPdfList = originalPdfLinks || [];
+    const newPdfList = newSnapshot.pdfLinks || [];
+    let pdfChanged = false;
+    if (oldPdfList.length !== newPdfList.length) pdfChanged = true;
+    else {
+      for (let i = 0; i < newPdfList.length; i++) {
+        const a = oldPdfList[i] || {};
+        const b = newPdfList[i] || {};
+        if (b.file || a.name !== b.name || a.url !== b.url) {
+          pdfChanged = true;
+          break;
+        }
+      }
+    }
+
+    if (!hasContentChanged && !hasImageChanges && !pdfChanged) {
+      toast.info("No changes detected to request.");
+      setShowRequestModal(false);
+      return;
+    }
+
+    // Build entries and files to send (this will create add/update/delete per-PDF)
+    const { entries, filesToSend } = buildEntriesAndFiles(oldData, newSnapshot);
+
+    if (!entries.length) {
+      toast.info("No actionable changes to request.");
+      setShowRequestModal(false);
+      return;
+    }
+
+    try {
+      const result = await sendRequest(entries, filesToSend.length ? filesToSend : null);
+      if (result?.success) {
+        // optimistic update: set abtUsData to reflect submitted changes (use newBackend representation)
+        const { newBackend } = buildBackendRepresentation(oldData, newSnapshot);
+        const updatedBackend = {
+          ...oldData,
+          content: newBackend.content,
+          image_path: newBackend.image_path,
+          about_us_pdf: newBackend.about_us_pdf
+        };
+        setAbtUsData(updatedBackend);
+        setOriginalPdfLinks(newBackend.about_us_pdf.map(p => ({ name: p.name || "", url: p.pdf_path || "" })));
+        setPostSaveSnapshot(null);
+        setSavedChanges(false);
+        setChanged(false);
+        setShowRequestModal(false);
+        toast.success("Request submitted successfully.");
+      } else {
+        if (result?.status === 429 || result?.data?.status === 429) {
+          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" }});
+          return;
+        }
+        toast.error(result?.message || "Failed to submit request.");
+      }
+    } catch (err) {
+      console.error("Error sending admin request", err);
+      toast.error("Request failed.");
+    }
   };
 
   if (!isOnline) {
@@ -388,20 +660,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
                         onChange={(e) => { e.stopPropagation(); toggleSelectPdf(index); }}
                         className="custom-checkbox w-4 h-3"
                       />
-                      {/* Eye icon always present; open PDF in new tab */}
-                      {/* <button
-                        title="Preview PDF"
-                        className="p-1 rounded-full hover:bg-blue-200"
-                        onClick={e => {
-                          e.stopPropagation();
-                          openPdfInNewTab(pdf);
-                        }}
-                      >
-                        <Eye size={18} />
-                      </button> */}
                     </div>
                   )}
-                  {/* Non-edit mode: open PDF in new tab when clicked */}
                   {!editMode &&
                     <div
                       className="absolute left-0 top-0 w-full h-full"
@@ -460,7 +720,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             {!editMode && savedChanges && (
               <div className="flex justify-end gap-4 p-4 mr-5">
                 <button onClick={handleDiscardAll} className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded">Discard All Changes</button>
-                <button onClick={handleRequest} className="bg-secd hover:bg-yellow-500 text-black px-4 py-2 rounded">Request</button>
+                <button onClick={() => setShowRequestModal(true)} className="bg-secd hover:bg-yellow-500 text-black px-4 py-2 rounded">Request</button>
               </div>
             )}
           </div>
@@ -659,14 +919,16 @@ const AdminAbtUs = ({ theme, toggle }) => {
               <button
                 onClick={() => setShowRequestModal(false)}
                 className="px-4 py-2 rounded bg-gray-400 text-white"
+                disabled={reqLoading}
               >
                 Edit Again
               </button>
               <button
                 onClick={confirmRequest}
                 className="px-4 py-2 rounded bg-secd dark:bg-drks hover:bg-yellow-500 text-text hover:text-black"
+                disabled={reqLoading}
               >
-                Final Request
+                {reqLoading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

@@ -252,7 +252,6 @@ const AdminDean = ({ theme, toggle }) => {
     let updated = [...tempData];
 
     if (change.action === "Added") {
-      // remove newly added section by Position
       updated = updated.filter((s) => s.Position !== change.section);
     } else if (change.action === "Deleted") {
   const original = deanData.find((s) => s.Position === change.section);
@@ -415,8 +414,7 @@ else if (change.action.includes("Dean")) {
 
                             <img
                               src={
-                                UrlParser(section.Dean_Image) ||
-                                "https://via.placeholder.com/150"
+                                UrlParser(section.Dean_Image) 
                               }
                               alt={section.Dean || "Dean"}
                             />
@@ -502,8 +500,7 @@ else if (change.action.includes("Dean")) {
 
                             <img
                               src={
-                                UrlParser(section.Associate_Dean_Image) ||
-                                "https://via.placeholder.com/150"
+                                UrlParser(section.Associate_Dean_Image) 
                               }
                               alt={section.Associate_Dean || "Associate Dean"}
                             />
