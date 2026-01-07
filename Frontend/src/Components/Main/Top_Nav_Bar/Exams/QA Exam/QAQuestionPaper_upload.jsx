@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const QAQuastionPapaerUpload = () => {
@@ -18,10 +19,7 @@ const QAQuastionPapaerUpload = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await axios.post("/api/main-backend/excelupload", formData);
 
       const result = await response.json();
       console.log(result);

@@ -22,9 +22,8 @@ const COLLECTION_MAP = {
 
 // Supported file extensions for conversion
 const SUPPORTED_EXTENSIONS = [
-  '. xlsx', '.xls', '.csv', '. ods', '.xlsb', '.xlsm',
-  '.txt', '.tsv', '.xml', '.html', '.htm'
-];
+  '.xlsx', '.xls'
+]; 
 
 // Define required columns for valid data
 const REQUIRED_COLUMNS = ['question', 'option a', 'option b', 'option c', 'option d', 'answer','topic','Difficulty level'];
@@ -334,7 +333,7 @@ async function parseExcelToQuestions(buffer) {
   const topicsMap = {};
 
   allQuestions.forEach((row) => {
-    const topic = row.Topic || row.topic || "General";
+    const topic = (row.Topic || row.topic || "General").toUpperCase();
 
   
     

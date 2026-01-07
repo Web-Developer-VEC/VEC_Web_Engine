@@ -8,7 +8,7 @@ const scheduleResetCounters = require('./main-backend/middlewares/schedulers/res
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
 const session = require("express-session");
-
+const {MongoStore} = require("connect-mongo");
 
 dotenv.config({ quiet: true });
 
@@ -29,22 +29,37 @@ app.use(express.json());
 // Start scheduled task (reset daily counters at midnight)
 scheduleResetCounters();
 scheduleMongoHealthCheck();
-
-// Connect to DBs
-connectToDatabase();
 //Global Middleware to track hits for all endpoints
 // app.use(hitTracker);
-
 app.use(session({
+  name: "qa.sid",
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: "sessions",
+    ttl: 4 * 60 * 60
+  }),
+
   cookie: {
-    secure: false,   // true in HTTPS
-    httpOnly: true,  // prevents JS access
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
     maxAge: 4 * 60 * 60 * 1000
   }
 }));
+
+// after session middleware
+app.use((req, res, next) => {
+  if (req.session?.user) {
+    req.session.touch();
+  }
+  next();
+});
+
+
 
 app.get('/api/main-backend/check-session', (req, res) => {
   const sessionExists = !! req.session;
@@ -56,6 +71,13 @@ app.get('/api/main-backend/check-session', (req, res) => {
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+async function startServer() {
+  await connectToDatabase();
+
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+startServer();
+
