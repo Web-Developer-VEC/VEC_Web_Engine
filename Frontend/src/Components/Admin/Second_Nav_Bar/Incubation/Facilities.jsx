@@ -1,14 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
-import { FaUserEdit } from "react-icons/fa";
 import { Send, Trash2, ArrowDown, Pencil } from "lucide-react";
 import LoadComp from "../../LoadComp";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
 
 export default function Facilities({ data }) {
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   // refs
   const originalRef = useRef([]);
-  const savedDataRef = useRef([]);
+  const savedDataRef = useRef([]); 
+  const baseBeforeEditRef = useRef([]); 
 
   // state
   const [isEditing, setIsEditing] = useState(false);
@@ -41,6 +45,12 @@ export default function Facilities({ data }) {
       setEditableData(normalized);
       originalRef.current = normalized;
       savedDataRef.current = JSON.parse(JSON.stringify(normalized));
+      baseBeforeEditRef.current = JSON.parse(JSON.stringify(normalized));
+      setSessionChanges([]);
+      setAllChanges([]);
+      setSelectedRows(new Set());
+      setIsEditing(false);
+      setIsSavedOnce(false);
     }
   }, [data]);
 
@@ -51,6 +61,13 @@ export default function Facilities({ data }) {
     }
     if (path instanceof File) return URL.createObjectURL(path);
     return "";
+  };
+
+  const startEditSession = () => {
+    baseBeforeEditRef.current = JSON.parse(JSON.stringify(editableData));
+    setSessionChanges([]);
+    setSelectedRows(new Set());
+    setIsEditing(true);
   };
 
   const handleUndoChange = (change) => {
@@ -69,7 +86,7 @@ export default function Facilities({ data }) {
             ? {
                 ...item,
                 ...Object.fromEntries(
-                  Object.entries(change.changes).map(([field, values]) => [
+                  Object.entries(change.changes || {}).map(([field, values]) => [
                     field,
                     values.old,
                   ])
@@ -81,9 +98,10 @@ export default function Facilities({ data }) {
     }
 
     setAllChanges((prev) =>
-      prev.filter(
-        (c) => !(c.index === change.index && c.action === change.action)
-      )
+      prev.filter((c) => !(c.index === change.index && c.action === change.action))
+    );
+    setSessionChanges((prev) =>
+      prev.filter((c) => !(c.index === change.index && c.action === change.action))
     );
   };
 
@@ -98,9 +116,7 @@ export default function Facilities({ data }) {
 
     setSessionChanges((prev) => {
       const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
+      const existingIndex = cp.findIndex((c) => c.index === index && c.action !== "delete");
       if (existingIndex >= 0) {
         cp[existingIndex] = {
           ...cp[existingIndex],
@@ -113,7 +129,7 @@ export default function Facilities({ data }) {
       } else {
         cp.push({
           index,
-          action: savedDataRef.current[index] ? "edit" : "add",
+          action: baseBeforeEditRef.current[index] ? "edit" : "add",
           changes: { name: { old: oldVal, new: newName } },
         });
       }
@@ -131,9 +147,7 @@ export default function Facilities({ data }) {
 
     setSessionChanges((prev) => {
       const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
+      const existingIndex = cp.findIndex((c) => c.index === index && c.action !== "delete");
       if (existingIndex >= 0) {
         cp[existingIndex] = {
           ...cp[existingIndex],
@@ -146,7 +160,7 @@ export default function Facilities({ data }) {
       } else {
         cp.push({
           index,
-          action: savedDataRef.current[index] ? "edit" : "add",
+          action: baseBeforeEditRef.current[index] ? "edit" : "add",
           changes: { image: { old: oldVal, new: file } },
         });
       }
@@ -162,15 +176,14 @@ export default function Facilities({ data }) {
   const handleAddNew = () => {
     if (!newImageFile) return;
     const newItem = { image: newImageFile, name: newImageName || "" };
+
     setEditableData((prev) => {
       const idx = prev.length;
       const arr = [...prev, newItem];
-      setSessionChanges((ch) => [
-        ...ch,
-        { index: idx, action: "add", item: newItem },
-      ]);
+      setSessionChanges((ch) => [...ch, { index: idx, action: "add", item: newItem }]);
       return arr;
     });
+
     setNewImageFile(null);
     setNewImageName("");
     setShowAddForm(false);
@@ -203,8 +216,7 @@ export default function Facilities({ data }) {
   };
 
   // ---- workflow ----
-  const hasUnsavedChanges =
-    JSON.stringify(editableData) !== JSON.stringify(savedDataRef.current);
+  const hasUnsavedChanges = JSON.stringify(editableData) !== JSON.stringify(savedDataRef.current);
 
   const handleSave = () => {
     if (!hasUnsavedChanges) return;
@@ -224,18 +236,101 @@ export default function Facilities({ data }) {
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalRef.current)));
     savedDataRef.current = JSON.parse(JSON.stringify(originalRef.current));
+    baseBeforeEditRef.current = JSON.parse(JSON.stringify(originalRef.current));
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
   };
 
-  const handleRequest = () => setShowRequestModal(true);
+  const getChangesForRequest = () => [...allChanges, ...sessionChanges];
 
-  const handleFinalRequestConfirm = () => {
-    console.log("Submitting changes:", allChanges);
+  const handleRequest = () => {
+    if (getChangesForRequest().length === 0) {
+      toast.info("No changes to request.");
+      return;
+    }
+    setShowRequestModal(true);
+  };
+
+  const extractImagePathString = (imgVal) => {
+    if (!imgVal) return "";
+    if (typeof imgVal === "string") return imgVal;
+    return "";
+  };
+
+  const normalizeFacilityMeta = (item) => ({
+    name: item?.name ?? "",
+    image_path: extractImagePathString(item?.image),
+  });
+
+  const buildFacilitiesPayloadsAndFiles = () => {
+    const changes = getChangesForRequest();
+    const payloads = [];
+    const files = [];
+
+    for (const change of changes) {
+      if (change.action === "delete") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "facilities",
+          action: "delete",
+          title: "delete in facilities",
+          meta_data: normalizeFacilityMeta(change.deletedItem),
+        });
+        continue;
+      }
+
+      const current = editableData[change.index];
+      if (!current) continue;
+
+      if (change.action === "add") {
+        if (current.image instanceof File) files.push(current.image);
+
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "facilities",
+          action: "insert",
+          title: "insert in facilities",
+          meta_data: normalizeFacilityMeta(current),
+        });
+        continue;
+      }
+
+      if (change.action === "edit") {
+        const original = baseBeforeEditRef.current?.[change.index];
+
+        if (current.image instanceof File) files.push(current.image);
+
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "facilities",
+          action: "update",
+          title: "update in facilities",
+          original_data: normalizeFacilityMeta(original),
+          meta_data: normalizeFacilityMeta(current),
+        });
+      }
+    }
+
+    return { payloads, files };
+  };
+
+  const handleFinalRequestConfirm = async () => {
+    const { payloads, files } = buildFacilitiesPayloadsAndFiles();
+
+    if (payloads.length === 0) {
+      toast.info("No changes to submit.");
+      return;
+    }
+
+    const res = await sendRequest(payloads, files);
+    if (!res) return;
+
     originalRef.current = JSON.parse(JSON.stringify(savedDataRef.current));
+    baseBeforeEditRef.current = JSON.parse(JSON.stringify(savedDataRef.current));
     setAllChanges([]);
+    setSessionChanges([]);
     setIsSavedOnce(false);
     setShowRequestModal(false);
   };
@@ -247,15 +342,13 @@ export default function Facilities({ data }) {
       </div>
     );
   }
-
-  // ---- render ----
   return (
     <div className="bg-prim dark:bg-drkp min-h-screen font-[Poppins,sans-serif]">
       <div className="flex justify-end pr-8 pt-6">
         {!isEditing && (
           <button
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
-            onClick={() => setIsEditing(true)}
+            onClick={startEditSession}
           >
             <Pencil className="mr-2" /> Edit
           </button>
@@ -273,7 +366,6 @@ export default function Facilities({ data }) {
               key={idx}
               className="relative bg-prim dark:bg-black rounded-lg shadow hover:shadow-lg overflow-hidden transition-shadow"
             >
-              {/* ✅ Image with editing support */}
               <img
                 src={UrlParser(f.image)}
                 alt={f.name || `Facility ${idx + 1}`}
@@ -377,7 +469,6 @@ export default function Facilities({ data }) {
           </div>
         )}
 
-        {/* bottom right controls */}
         <div className="py-6 flex justify-end gap-4 mr-8">
           {isEditing && (
             <>
@@ -407,8 +498,9 @@ export default function Facilities({ data }) {
                 Discard All
               </button>
               <button
-                className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim "
+                className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim"
                 onClick={handleRequest}
+                disabled={requestLoading}
               >
                 <Send className="mr-2" /> Request
               </button>
@@ -422,8 +514,7 @@ export default function Facilities({ data }) {
             <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
               <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
               <p className="text-sm text-red-500 mb-4">
-                Note: Your changes will stay pending until approved by the superior
-                admin. Once approved will go live.
+                Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
               </p>
 
               <div className="max-h-[320px] overflow-y-auto mb-4">
@@ -433,51 +524,39 @@ export default function Facilities({ data }) {
                       <th className="py-2 px-3 border">Action</th>
                       <th className="py-2 px-3 border">Section</th>
                       <th className="py-2 px-3 border">Changed Field</th>
-
                       <th className="py-2 px-3 border text-center">Undo</th>
                     </tr>
-
                   </thead>
                   <tbody>
-                    {allChanges.length === 0 ? (
+                    {getChangesForRequest().length === 0 ? (
                       <tr>
                         <td colSpan={4} className="text-center py-4">
                           No changes to submit
                         </td>
                       </tr>
                     ) : (
-                      allChanges.map((change, idx) => (
+                      getChangesForRequest().map((change, idx) => (
                         <tr key={idx} className="even:bg-white odd:bg-gray-50">
                           <td className="py-2 px-3 border align-top">
-                            {change.action === "edit" && (
-                              <span className="text-blue-600">✎ Edited</span>
-                            )}
-                            {change.action === "add" && (
-                              <span className="text-green-600">+ Added</span>
-                            )}
-                            {change.action === "delete" && (
-                              <span className="text-red-600">🗑 Deleted</span>
-                            )}
+                            {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                            {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                            {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
                           </td>
                           <td className="py-2 px-3 border align-top">Facilities</td>
                           <td className="py-2 px-3 border text-[13px]">
                             {change.action === "delete" ? (
-                              <div>
-                                Deleted {change.deletedItem?.name || "Unnamed"}
-                              </div>
+                              <div>Deleted {change.deletedItem?.name || "Unnamed"}</div>
+                            ) : change.action === "add" ? (
+                              <div>Added {editableData[change.index]?.name || "Unnamed"}</div>
                             ) : Object.keys(change.changes || {}).length === 0 ? (
-                              <div>Added/changed entire facility</div>
+                              <div>Updated facility</div>
                             ) : (
                               Object.entries(change.changes).map(([field, values]) => (
                                 <div key={field} className="mb-1">
                                   <strong className="capitalize">{field}:</strong>{" "}
-                                  {values.old instanceof File
-                                    ? values.old.name
-                                    : values.old ?? "-"}
+                                  {values.old instanceof File ? values.old.name : values.old ?? "-"}
                                   <ArrowDown className="inline mx-2" size={14} />
-                                  {values.new instanceof File
-                                    ? values.new.name
-                                    : values.new ?? "-"}
+                                  {values.new instanceof File ? values.new.name : values.new ?? "-"}
                                 </div>
                               ))
                             )}
@@ -501,14 +580,16 @@ export default function Facilities({ data }) {
                 <button
                   onClick={() => setShowRequestModal(false)}
                   className="px-4 py-2 rounded bg-gray-400 text-prim"
+                  disabled={requestLoading}
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleFinalRequestConfirm}
                   className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim"
+                  disabled={requestLoading}
                 >
-                  Final Request
+                  {requestLoading ? "Submitting..." : "Final Request"}
                 </button>
               </div>
             </div>
@@ -542,6 +623,8 @@ export default function Facilities({ data }) {
             </div>
           </div>
         )}
+
+        <ToastContainer position="bottom-right" autoClose={2500} />
       </section>
     </div>
   );

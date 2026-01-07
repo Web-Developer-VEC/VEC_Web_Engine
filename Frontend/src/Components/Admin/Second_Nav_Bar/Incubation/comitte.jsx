@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
+import { Send, Plus, Trash2, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
 
 export default function Committe({ data }) {
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
+
   const [isEditing, setIsEditing] = useState(false);
   const [isSavedOnce, setIsSavedOnce] = useState(false);
   const [editableData, setEditableData] = useState([]);
@@ -18,14 +20,19 @@ export default function Committe({ data }) {
   const [indexToDelete, setIndexToDelete] = useState(null);
 
   const originalRef = useRef([]);
-  const savedDataRef = useRef([]);
+  const sessionBaseRef = useRef([]);
 
   useEffect(() => {
     if (Array.isArray(data)) {
       const clone = JSON.parse(JSON.stringify(data));
       originalRef.current = clone;
-      savedDataRef.current = clone;
+      sessionBaseRef.current = clone;
       setEditableData(clone);
+      setSelectedRows(new Set());
+      setSessionChanges([]);
+      setAllChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
     }
   }, [data]);
 
@@ -36,90 +43,110 @@ export default function Committe({ data }) {
     setSelectedRows(nxt);
   };
 
+  const startEditSession = () => {
+    sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
+    setSessionChanges([]);
+    setSelectedRows(new Set());
+    setIsEditing(true);
+  };
+
   const handleAddMember = () => {
-    const newMember = { id: Date.now(), name: "", Designation: "", position: "" };
+    const newMember = {
+      id: Date.now(),
+      name: "",
+      Designation: "",
+      position: "",
+    };
+
     setEditableData((prev) => [...prev, newMember]);
-    setSessionChanges((prev) => [...prev, { index: editableData.length, action: "add", changes: {} }]);
+    setSessionChanges((prev) => [
+      ...prev,
+      { index: editableData.length, action: "add", changes: {} },
+    ]);
   };
 
   const handleFieldChange = (index, field, value) => {
     const newData = [...editableData];
     const oldVal = newData[index]?.[field];
+
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
 
     setSessionChanges((prev) => {
       const copy = [...prev];
       const existingIndex = copy.findIndex((c) => c.index === index && c.action !== "delete");
+
       if (existingIndex >= 0) {
         copy[existingIndex] = {
           ...copy[existingIndex],
           action: copy[existingIndex].action === "add" ? "add" : "edit",
-          changes: { ...copy[existingIndex].changes, [field]: { old: oldVal, new: value } },
+          changes: {
+            ...copy[existingIndex].changes,
+            [field]: { old: oldVal, new: value },
+          },
         };
       } else {
-        copy.push({ index, action: savedDataRef.current[index] ? "edit" : "add", changes: { [field]: { old: oldVal, new: value } } });
+        copy.push({
+          index,
+          action: sessionBaseRef.current[index] ? "edit" : "add",
+          changes: { [field]: { old: oldVal, new: value } },
+        });
       }
       return copy;
     });
   };
 
   const handleUndoChange = (change) => {
-  if (change.action === "add") {
-    // remove the newly added member
-    setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
-  } 
-  else if (change.action === "delete") {
-    // restore the deleted member back
-    setEditableData((prev) => {
-      const newList = [...prev];
-      newList.splice(change.index, 0, change.deletedItem);
-      return newList;
-    });
-  } 
-  else if (change.action === "edit") {
-    // revert edited fields back to old values
-    setEditableData((prev) =>
-      prev.map((item, idx) =>
-        idx === change.index
-          ? {
-              ...item,
-              ...Object.fromEntries(
-                Object.entries(change.changes).map(([field, values]) => [
-                  field,
-                  values.old,
-                ])
-              ),
-            }
-          : item
-      )
+    if (change.action === "add") {
+      setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
+    } else if (change.action === "delete") {
+      setEditableData((prev) => {
+        const newList = [...prev];
+        newList.splice(change.index, 0, change.deletedItem);
+        return newList;
+      });
+    } else if (change.action === "edit") {
+      setEditableData((prev) =>
+        prev.map((item, idx) =>
+          idx === change.index
+            ? {
+                ...item,
+                ...Object.fromEntries(
+                  Object.entries(change.changes || {}).map(([field, values]) => [
+                    field,
+                    values.old,
+                  ])
+                ),
+              }
+            : item
+        )
+      );
+    }
+
+    setAllChanges((prev) =>
+      prev.filter((c) => !(c.index === change.index && c.action === change.action))
     );
-  }
-
-  // remove this change from the final changes list
-  setAllChanges((prev) =>
-    prev.filter(
-      (c, i) => !(c.index === change.index && c.action === change.action)
-    )
-  );
-};
-
+    setSessionChanges((prev) =>
+      prev.filter((c) => !(c.index === change.index && c.action === change.action))
+    );
+  };
 
   const handleSave = () => {
     if (sessionChanges.length === 0) {
       toast.info("No changes to save.");
       return;
     }
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+
     setAllChanges((prev) => [...prev, ...sessionChanges]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
+
     toast.success("Changes saved. You can now Request or Edit again.");
   };
 
   const handleCancelSession = () => {
-    setEditableData(JSON.parse(JSON.stringify(savedDataRef.current)));
+    setEditableData(JSON.parse(JSON.stringify(sessionBaseRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
     toast.info("Session changes discarded. Previous saves preserved.");
@@ -127,7 +154,7 @@ export default function Committe({ data }) {
 
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalRef.current)));
-    savedDataRef.current = JSON.parse(JSON.stringify(originalRef.current));
+    sessionBaseRef.current = JSON.parse(JSON.stringify(originalRef.current));
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
@@ -135,24 +162,91 @@ export default function Committe({ data }) {
     toast.info("All changes discarded and data reset.");
   };
 
+  const getChangesForRequest = () => [...allChanges, ...sessionChanges];
+
   const handleRequest = () => {
-    if (allChanges.length === 0) {
+    const changes = getChangesForRequest();
+    if (changes.length === 0) {
       toast.info("No changes to request.");
       return;
     }
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED:", { allChanges, editableData });
-    toast.success("Final request submitted");
+  const normalizeMember = (m) => ({
+    name: m?.name ?? "",
+    image_path: m?.image_path ?? "", 
+    Designation: m?.Designation ?? "",
+    position: m?.position ?? "",
+  });
+
+  const buildCommitteePayloads = () => {
+    const changes = getChangesForRequest();
+    const payloads = [];
+
+    for (const change of changes) {
+      if (change.action === "delete") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "incubation_committee",
+          action: "delete",
+          title: "delete in incubation_committee",
+          meta_data: normalizeMember(change.deletedItem),
+        });
+        continue;
+      }
+
+      const currentMember = editableData[change.index];
+      if (!currentMember) continue;
+
+      if (change.action === "add") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "incubation_committee",
+          action: "insert",
+          title: "insert in incubation_committee",
+          meta_data: normalizeMember(currentMember),
+        });
+        continue;
+      }
+
+      if (change.action === "edit") {
+        const originalMember = sessionBaseRef.current?.[change.index];
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "incubation_committee",
+          action: "update",
+          title: "update in incubation_committee",
+          original_data: normalizeMember(originalMember),
+          meta_data: normalizeMember(currentMember),
+        });
+      }
+    }
+
+    return payloads;
+  };
+
+  const handleFinalRequestConfirm = async () => {
+    const payloads = buildCommitteePayloads();
+
+    if (payloads.length === 0) {
+      toast.info("No changes to submit.");
+      return;
+    }
+
+    const res = await sendRequest(payloads);
+    if (!res) return;
+
+    toast.success(res.message || "Final request submitted");
     setShowRequestModal(false);
+
     setAllChanges([]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
+
     originalRef.current = JSON.parse(JSON.stringify(editableData));
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+    sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
   };
 
   const openDeleteMultiple = () => {
@@ -189,7 +283,13 @@ export default function Committe({ data }) {
     setIndexToDelete(null);
   };
 
-  if (!data) return <div className="h-screen flex items-center justify-center md:mt-[15%]"><LoadComp /></div>;
+  if (!data) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%]">
+        <LoadComp />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -198,26 +298,29 @@ export default function Committe({ data }) {
         <div className="flex justify-end pr-8 mt-4">
           <button
             className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
-            onClick={() => setIsEditing(true)}
+            onClick={startEditSession}
           >
             <Pencil className="mr-2" /> Edit
           </button>
         </div>
       )}
 
-      <h2 className="text-2xl font-bold mb-6 mt-4 text-brwn dark:text-drkt text-center">COMMITTEE MEMBERS</h2>
+      <h2 className="text-2xl font-bold mb-6 mt-4 text-brwn dark:text-drkt text-center">
+        COMMITTEE MEMBERS
+      </h2>
 
       <div className="flex flex-wrap justify-center gap-4 m-4">
         {editableData.map((member, i) => (
-          <div key={member.id} className="student-card dark:bg-text h-[120px] p-2 relative">
+          <div key={member.id ?? i} className="student-card dark:bg-text h-[120px] p-2 relative">
             {isEditing && (
               <input
                 type="checkbox"
-                className="absolute top-2 right-2 w-4 h-4 "
+                className="absolute top-2 right-2 w-4 h-4"
                 checked={selectedRows.has(i)}
                 onChange={() => toggleSelectRow(i)}
               />
             )}
+
             <div className="text-left">
               {isEditing ? (
                 <div className="py-[18px]">
@@ -225,21 +328,21 @@ export default function Committe({ data }) {
                     type="text"
                     placeholder="Name"
                     className="w-full mb-1 border rounded p-1 text-center"
-                    value={member.name}
+                    value={member.name ?? ""}
                     onChange={(e) => handleFieldChange(i, "name", e.target.value)}
                   />
-                  <input  
+                  <input
                     type="text"
                     placeholder="Designation"
                     className="w-full mb-1 border rounded p-1"
-                    value={member.Designation}
+                    value={member.Designation ?? ""}
                     onChange={(e) => handleFieldChange(i, "Designation", e.target.value)}
                   />
                   <input
                     type="text"
                     placeholder="Position"
                     className="w-full mb-1 border rounded p-1"
-                    value={member.position}
+                    value={member.position ?? ""}
                     onChange={(e) => handleFieldChange(i, "position", e.target.value)}
                   />
                 </div>
@@ -267,7 +370,10 @@ export default function Committe({ data }) {
       {isEditing && (
         <div className="flex justify-center mt-2 gap-2">
           {selectedRows.size > 0 && (
-            <button onClick={openDeleteMultiple} className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded">
+            <button
+              onClick={openDeleteMultiple}
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded"
+            >
               <Trash2 /> Delete Selected
             </button>
           )}
@@ -277,103 +383,135 @@ export default function Committe({ data }) {
       <div className="py-4 mt-4 flex justify-end gap-4 mr-8">
         {isEditing && (
           <>
-            <button className="bg-gray-500 px-3 py-2 rounded text-prim" onClick={handleCancelSession}>Cancel</button>
+            <button
+              className="bg-gray-500 px-3 py-2 rounded text-prim"
+              onClick={handleCancelSession}
+            >
+              Cancel
+            </button>
             {sessionChanges.length > 0 && (
-              <button className="bg-secd hover:bg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
+              <button
+                className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+                onClick={handleSave}
+              >
+                Save
+              </button>
             )}
           </>
         )}
 
         {!isEditing && isSavedOnce && (
           <>
-            <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>Discard All</button>
-            <button className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim " onClick={handleRequest}><Send className="mr-2" /> Request</button>
+            <button
+              className="bg-red-500 px-3 py-2 rounded text-prim"
+              onClick={handleDiscardAll}
+            >
+              Discard All
+            </button>
+            <button
+              className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
+              onClick={handleRequest}
+              disabled={requestLoading}
+            >
+              <Send className="mr-2" /> Request
+            </button>
           </>
         )}
       </div>
 
-   {/* Final Request Modal */}
-{/* Final Request Modal */}
-{showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-    <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
-      <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
-      <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+      {/* Final Request Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
+            <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
-      <div className="max-h-[320px] overflow-y-auto mb-4">
-        <table className="w-full text-sm text-left border">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="py-2 px-3 border">Action</th>
-              <th className="py-2 px-3 border">Section</th>
-              <th className="py-2 px-3 border">Changed Field</th>
-              <th className="py-2 px-3 border text-center">Undo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allChanges.length === 0 ? (
-              <tr>
-                <td colSpan={4} className="text-center py-4">
-                  No changes to submit
-                </td>
-              </tr>
-            ) : (
-              allChanges.map((change, idx) => (
-                <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                  <td className="py-2 px-3 border text-center">
-                    {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                    {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                    {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                  </td>
-                  <td className="py-2 px-3 border text-center">Committee</td>
-                  <td className="py-2 px-3 border text-[13px] text-center">
-                    {change.action === "delete" ? (
-                      <div>Member deleted</div>
-                    ) : Object.keys(change.changes || {}).length === 0 ? (
-                      <div>Added/changed entire member</div>
-                    ) : (
-                      <div>
-                        {Object.keys(change.changes)
-                          .filter((field) => change.changes[field].old !== change.changes[field].new)
-                          .map((field) => field.charAt(0).toUpperCase() + field.slice(1))
-                          .join(", ")}
-                      </div>
-                    )}
-                  </td>
-                  <td className="py-2 px-3 border text-center">
-                    <button
-                      className="text-red-500 hover:text-red-700"
-                      onClick={() => handleUndoChange(change)}
-                    >
-                      ✖
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+            <div className="max-h-[320px] overflow-y-auto mb-4">
+              <table className="w-full text-sm text-left border">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="py-2 px-3 border">Action</th>
+                    <th className="py-2 px-3 border">Section</th>
+                    <th className="py-2 px-3 border">Changed Field</th>
+                    <th className="py-2 px-3 border text-center">Undo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getChangesForRequest().length === 0 ? (
+                    <tr>
+                      <td colSpan={4} className="text-center py-4">
+                        No changes to submit
+                      </td>
+                    </tr>
+                  ) : (
+                    getChangesForRequest().map((change, idx) => (
+                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                        <td className="py-2 px-3 border text-center align-top">
+                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+                        </td>
 
-      <div className="flex justify-end gap-3">
-        <button
-          onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-prim"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handleFinalRequestConfirm}
-          className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
-        >
-          Final Request
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+                        <td className="py-2 px-3 border text-center align-top">Committee</td>
+
+                        {/* show only what changed (no raw JSON) */}
+                        <td className="py-2 px-3 border text-[13px] text-center align-top">
+                          {change.action === "delete" ? (
+                            <div>Member deleted</div>
+                          ) : change.action === "add" ? (
+                            <div>Member added</div>
+                          ) : Object.keys(change.changes || {}).length === 0 ? (
+                            <div>Member updated</div>
+                          ) : (
+                            <div>
+                              {Object.keys(change.changes)
+                                .filter(
+                                  (field) =>
+                                    change.changes[field]?.old !== change.changes[field]?.new
+                                )
+                                .map((field) => field.charAt(0).toUpperCase() + field.slice(1))
+                                .join(", ")}
+                            </div>
+                          )}
+                        </td>
+
+                        <td className="py-2 px-3 border text-center align-top">
+                          <button
+                            className="text-red-500 hover:text-red-700"
+                            onClick={() => handleUndoChange(change)}
+                            title="Undo this change"
+                          >
+                            ✖
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim"
+                disabled={requestLoading}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleFinalRequestConfirm}
+                className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
+                disabled={requestLoading}
+              >
+                {requestLoading ? "Submitting..." : "Final Request"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (
@@ -382,8 +520,12 @@ export default function Committe({ data }) {
             <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
             <p className="text-sm mb-4">Are you sure you want to delete?</p>
             <div className="flex justify-center gap-4">
-              <button className="px-4 py-2 rounded bg-gray-400 text-white" onClick={cancelDelete}>Cancel</button>
-              <button className="px-4 py-2 rounded bg-red-600 text-white" onClick={confirmDelete}>Delete</button>
+              <button className="px-4 py-2 rounded bg-gray-400 text-white" onClick={cancelDelete}>
+                Cancel
+              </button>
+              <button className="px-4 py-2 rounded bg-red-600 text-white" onClick={confirmDelete}>
+                Delete
+              </button>
             </div>
           </div>
         </div>
