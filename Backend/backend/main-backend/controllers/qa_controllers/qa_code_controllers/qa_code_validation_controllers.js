@@ -35,8 +35,6 @@ async function validateExamCode(req, res) {
       status: "active" 
     });
 
-    console.log(schedule);
-    
 
     if (!schedule) {
       return res.status(404).json({
@@ -46,13 +44,16 @@ async function validateExamCode(req, res) {
     }
 
     // 4. Check time window
-    const now = new Date();
-    if (now < schedule.validFrom || now > schedule.validTill) {
-      return res.status(400).json({
-        success: false,
-        message: "The exam is not accessible at this time. Please try again during the scheduled time."
-      });
-    }
+    const now = Date.now();
+const validFrom = new Date(schedule.validFrom).getTime();
+const validTill = new Date(schedule.validTill).getTime();
+
+if (now < validFrom || now > validTill) {
+  return res.status(400).json({
+    success: false,
+    message: "The exam is not accessible at this time. Please try again during the scheduled time."
+  });
+}
 
     // 5. Get exam details
     const exam = await examCollection.findOne({ scheduleId: schedule._id });

@@ -2,7 +2,7 @@ const ExcelJS = require('exceljs');
 const XLSX = require('xlsx');
 const Busboy = require('busboy');
 const { getDb } = require('../../config/db');
-console.log('📦 Student Excel Upload Module Loaded');
+
 
 // Helper function to extract department from programme
 function extractDepartment(programme) {
