@@ -8,6 +8,7 @@ import { Trash2 } from 'lucide-react'
 import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from 'react-icons/fa';
 import { FaGoogleScholar } from 'react-icons/fa6';
 import { SiPublons } from 'react-icons/si';
+import { useAdminRequest } from '../../../hooks/useAdminRequest';
 
 const SOCIAL_LINKS_CONFIG = [
   { key: "linkedin", label: "LinkedIn", icon: FaLinkedin, backendKey: "LinkedIn Profile" },
@@ -42,6 +43,8 @@ const AdminPrinc = ({ theme, toggle }) => {
   const navigate = useNavigate();
   const textareaRef = useRef();
 
+  const { sendRequest, loading: loadings, error: reqError } = useAdminRequest();
+
   const UrlParser = (path) => {
     if (!path) return path;
     if (path.startsWith("http")) return path;
@@ -64,6 +67,12 @@ const AdminPrinc = ({ theme, toggle }) => {
     });
     return out;
   }
+
+  // helper map: local key -> backendKey
+  const localToBackendKeyMap = SOCIAL_LINKS_CONFIG.reduce((acc, cur) => {
+    acc[cur.key] = cur.backendKey;
+    return acc;
+  }, {});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,25 +128,134 @@ const AdminPrinc = ({ theme, toggle }) => {
 
   const handleConfirm = () => setShowConfirmModal(true);
 
+  // Build payload entries according to changes (supports add, update, delete actions)
+  const buildPayloadEntriesFromChanges = (oldData, newData) => {
+    const entries = [];
+
+    // Name change
+    if ((oldData?.name || "") !== (newData?.name || "")) {
+      entries.push({
+        collectionName: "administration",
+        collection_type: "principal",
+        action: "update",
+        title: "Update Principal Name",
+        category: "administration",
+        meta_data: { name: newData?.name || "" },
+        original_data: { name: oldData?.name || "" }
+      });
+    }
+
+    // Message change
+    if ((oldData?.message || "") !== (newData?.message || "")) {
+      entries.push({
+        collectionName: "administration",
+        collection_type: "principal",
+        action: "update",
+        title: "Update Principal Message",
+        category: "administration",
+        meta_data: { message: newData?.message || "" },
+        original_data: { message: oldData?.message || "" }
+      });
+    }
+
+    // Profile image change
+    if (newData?.newImageFile) {
+      // We send an update entry for the image. The file will be attached separately.
+      entries.push({
+        collectionName: "administration",
+        collection_type: "principal",
+        action: "update",
+        title: "Update Principal Profile Image",
+        category: "administration",
+        meta_data: { image: newData?.newImageFile?.name || "" },
+        original_data: { image: oldData?.image || oldData?.photo || oldData?.profile_image || "" }
+      });
+    }
+
+    const oldLinksBackend = localToBackendLinks(oldData?.social_links || {});
+    const newLinksBackend = localToBackendLinks(newData?.social_links || {});
+
+    SOCIAL_LINKS_CONFIG.forEach(({ key, label, backendKey }) => {
+      const oldVal = oldLinksBackend[backendKey] || "";
+      const newVal = newLinksBackend[backendKey] || "";
+
+      if (!oldVal && newVal) {
+        // add
+        const meta = { [backendKey]: newVal };
+        entries.push({
+          collectionName: "administration",
+          collection_type: "principal",
+          action: "add",
+          title: `Add ${label} Link`,
+          category: "administration",
+          meta_data: meta,
+          original_data: { [backendKey]: "" }
+        });
+      } else if (oldVal && !newVal) {
+        // delete
+        entries.push({
+          collectionName: "administration",
+          collection_type: "principal",
+          action: "delete",
+          title: `Delete ${label} Link`,
+          category: "administration",
+          meta_data: { [backendKey]: "" },
+          original_data: { [backendKey]: oldVal }
+        });
+      } else if (oldVal && newVal && oldVal !== newVal) {
+        // update
+        entries.push({
+          collectionName: "administration",
+          collection_type: "principal",
+          action: "update",
+          title: `Update ${label} Link`,
+          category: "administration",
+          meta_data: { [backendKey]: newVal },
+          original_data: { [backendKey]: oldVal }
+        });
+      }
+    });
+
+    return entries;
+  };
+
   const handleRequest = async () => {
     try {
-      const formData = new FormData();
-      formData.append("type", "principal");
-      const sendData = {
+      const oldData = data || {};
+      const newData = {
         ...editedData,
-        social_links: localToBackendLinks(editedData.social_links)
+        social_links: editedData?.social_links || {}
       };
-      formData.append("data", JSON.stringify(sendData));
-      if (editedData?.newImageFile) {
-        formData.append("image", editedData.newImageFile);
+
+      const payloadEntries = buildPayloadEntriesFromChanges(oldData, newData);
+
+      if (!payloadEntries.length) {
+        setError("No changes detected to request.");  
+        return;
       }
-      await axios.put('/api/main-backend/administration', formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
-      setData(editedData);
-      setRequestStep(false);
-      setShowConfirmModal(false);
-      setPreviewImage(null);
+
+      // if there's a new image file, attach it
+      const fileToSend = editedData?.newImageFile ? editedData.newImageFile : null;
+
+      const result = await sendRequest(payloadEntries, fileToSend);
+
+      if (result?.success) {
+        setData({
+          ...newData
+        });
+        setEditedData({
+          ...newData
+        });
+        setRequestStep(false);
+        setShowConfirmModal(false);
+        setPreviewImage(null);
+      } else {
+        if (result?.status === 429 || result?.data?.status === 429) {
+          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" }});
+          return;
+        }
+        setError(result?.message || "Failed to send request");
+      }
     } catch (err) {
       setError(err?.message || "Failed to send request");
     }
@@ -179,6 +297,7 @@ const AdminPrinc = ({ theme, toggle }) => {
     setPendingDeleteKey(key);
     setShowDeleteConfirm(true);
   };
+
   const handleConfirmedDelete = () => {
     if (!editedData || !pendingDeleteKey) return;
     const updatedLinks = { ...(editedData.social_links || {}) };
