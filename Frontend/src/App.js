@@ -60,7 +60,8 @@ const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
 const Schedule = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/Schedule/schedule.jsx"));
 const ScheduledExam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/scheduledExam.jsx"));
-const QAQuastionPapaerUpload = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/QAQuestionPaper_upload.jsx"));
+const QAExamResults = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/qaExamResult.jsx"));
+const UploadContainer = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/uploads/uploadContainer.jsx"));
 
 // Question Paper
 const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
@@ -352,8 +353,9 @@ const App = () => {
                                 <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
                                 <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
                                 <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
-                                <Route path="/QA/upload" element={<QAQuastionPapaerUpload toggle={toggle} theme={theme}/>} />
+                                <Route path="/upload" element={<UploadContainer toggle={toggle} theme={theme}/>} />
                                 <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
+                                <Route path="/qaresult" element={<QAExamResults toggle={toggle} theme={theme}/>} />
 
                                 <Route path="/careers" element={<Career />} />
 

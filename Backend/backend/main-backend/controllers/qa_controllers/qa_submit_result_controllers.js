@@ -66,11 +66,15 @@ async function qaresult(req, res) {
       }
     );
 
-    // 🧹 Delete ONLY this exam session
-    await sessionCollection.deleteOne({
-      scheduleId,
-      registerno
-    });
+    // 🧹 Update ONLY this exam session
+    const result = await sessionCollection.updateOne(
+      { scheduleObjectId, registerno },
+      { $set: { status: "COMPLETED", isOnline: false } }
+    );
+
+    if (result.matchedCount === 0) {
+      console.log("No matching document found");
+    }
 
     res.json({
       scheduleId,
