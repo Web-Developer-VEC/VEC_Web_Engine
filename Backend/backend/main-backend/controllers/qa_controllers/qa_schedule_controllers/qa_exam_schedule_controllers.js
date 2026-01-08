@@ -9,11 +9,11 @@ async function storeExamSchedule(req, res) {
     const db = getDb();
     const collection = db.collection("qa_schedule");
 
-    const {
-      year,
+   const {
+      batch,
       department,
       registerNo,
-      cie,
+      cie: cieRoman,
       subject,
       subjectCode,
       topics,
@@ -21,12 +21,21 @@ async function storeExamSchedule(req, res) {
       start,
       end
     } = req.body;
+  
+
+    const cieMap = {
+      I: "cie1",
+      II: "cie2",
+      III: "cie3"
+    }
+
+    const cie = cieMap[cieRoman]
 
     /* -----------------------------
        Validation
     ----------------------------- */
 
-    if (!year || !cie || !subject || !subjectCode || !date || !start || !end || !topics) {
+    if (!batch || !cie || !subject || !subjectCode || !date || !start || !end || !topics) {
       return res.status(400).json({
         success: false,
         message: "Missing required fields"
@@ -46,7 +55,7 @@ async function storeExamSchedule(req, res) {
     ----------------------------- */
 
     const scheduleDoc = {
-      year,
+      batch,
       department: department || null,
       registerNo: registerNo || null,
 
@@ -59,6 +68,7 @@ async function storeExamSchedule(req, res) {
       date,
       start,
       end,
+      duration: cie == 3 ? 180 : 60,
 
       examCode: null,
       validFrom: null,
@@ -74,7 +84,7 @@ async function storeExamSchedule(req, res) {
 
 const conflictQuery = {
   date,
-  year,
+  batch,
   status: { $ne: "cancelled" },
   $or: [
     department ? { department } : null,
@@ -110,7 +120,7 @@ if (existingSchedule) {
 
     scheduleExamActivation({
       ...scheduleDoc,
-      _id: result.insertedId,year, department, cie, subject, subjectCode, topics, date
+      _id: result.insertedId,batch, department, cie, subject, subjectCode, topics, date
     });
 
     /* -----------------------------

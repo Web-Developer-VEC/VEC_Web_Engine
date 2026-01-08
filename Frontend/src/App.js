@@ -58,9 +58,9 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
-const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const Schedule = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/Schedule/schedule.jsx"));
 const ScheduledExam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/scheduledExam.jsx"));
+const QAQuastionPapaerUpload = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/QAQuestionPaper_upload.jsx"));
 
 // Question Paper
 const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
@@ -118,8 +118,8 @@ const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/erro
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
 /* Aptitude */
+const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
-// const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
 const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
 
 
@@ -352,7 +352,9 @@ const App = () => {
                                 <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
                                 <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
                                 <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
+                                <Route path="/QA/upload" element={<QAQuastionPapaerUpload toggle={toggle} theme={theme}/>} />
                                 <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
+
                                 <Route path="/careers" element={<Career />} />
 
                                 {/*  404 - Page not found  */}

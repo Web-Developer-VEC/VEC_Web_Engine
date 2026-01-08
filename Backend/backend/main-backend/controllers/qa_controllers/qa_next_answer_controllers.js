@@ -5,22 +5,35 @@ async function submitAnswer(req, res) {
   try {
     const db = getDb();
     const collection = db.collection("qa_exam");
+    const sessionCol = db.collection("qa_exam_sessions");
 
-    const { token, question, choosedOption } = req.body;
+    const { question, choosedOption, questionIndex } = req.body;    
 
-    if (!token || !question || !choosedOption) {
+    if (!question || !choosedOption) {
       return res.status(400).json({ message: "Missing fields" });
     }
+    
+    const { registerno } = req.session.user;
+    
+    const session = await sessionCol.findOne({ registerno });
 
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.status(401).json({ message: "Invalid token" });
+    if (!session) return res.sendStatus(404);
+
+    if (session.status !== "ACTIVE") {
+      return res.status(403).json({
+        message: "Session not active"
+      });
     }
 
-    const { registerno } = decoded;
-    
+    await sessionCol.updateOne(
+      { registerno },
+      {
+        $set: {
+          currentQuestionIndex: questionIndex + 1, // move forward
+          lastSeenAt: new Date()
+        }
+      }
+    );
 
     const doc = await collection.findOne({
       "students.registerno": registerno
@@ -47,17 +60,8 @@ async function submitAnswer(req, res) {
       return res.status(404).json({ message: "Question not found" });
     }
 
-    const optionMap = {
-      A: q.A,
-      B: q.B,
-      C: q.C,
-      D: q.D
-    };
-
-    const correctAnswer = optionMap[q.correct_option];
-
     const isCorrect =
-      choosedOption.trim() === correctAnswer.trim();
+      q.correct_option.trim() === choosedOption.trim();
 
     await collection.updateOne(
       { _id: doc._id },

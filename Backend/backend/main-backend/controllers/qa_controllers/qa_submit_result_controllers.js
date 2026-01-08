@@ -1,29 +1,40 @@
-const jwt = require("jsonwebtoken");
+const { getDb } = require("../../config/db");
+const { ObjectId } = require("mongodb");
 
-const {getDb} = require('../../config/db')
 
 async function qaresult(req, res) {
   try {
     const db = getDb();
     const collection = db.collection("qa_exam");
+    const sessionCollection = db.collection("qa_exam_sessions");
 
-    const { token } = req.body;
-    if (!token) {
-      return res.status(400).json({ message: "Token required" });
+    if (!req.session.user) {
+  return res.status(401).json({ message: "Session expired / not logged in" });
+}
+
+    const { registerno } = req.session.user;
+    
+    const { scheduleId } = req.body;  
+
+    const scheduleObjectId = new ObjectId(scheduleId);
+
+
+    if (!scheduleId) {
+      return res.status(400).json({
+        message: "scheduleId is required"
+      });
     }
 
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.status(401).json({ message: "Invalid token" });
-    }
+    // 🎯 Find EXACT exam
+    const examDoc = await collection.findOne({
+      scheduleId:scheduleObjectId,
+      "students.registerno": registerno
+    });
 
-    const registerno = decoded.registerno;
-
-    const examDoc = await collection.findOne({});
     if (!examDoc) {
-      return res.status(404).json({ message: "Exam record not found" });
+      return res.status(404).json({
+        message: "Exam record not found for this schedule"
+      });
     }
 
     const student = examDoc.students.find(
@@ -31,18 +42,44 @@ async function qaresult(req, res) {
     );
 
     if (!student) {
-      return res.status(404).json({ message: "Student not found" });
+      return res.status(404).json({
+        message: "Student not found in this exam"
+      });
     }
 
-    const totalMarks = student.question.filter(
+    // ✅ Calculate marks
+    const totalMarks = student.questions.filter(
       q => q.isCorrect === true
     ).length;
 
+    // 🔒 Mark completion ONLY for this exam
+    await collection.updateOne(
+      {
+        scheduleId,
+        "students.registerno": registerno
+      },
+      {
+        $set: {
+          "students.$.isComplete": true,
+          "students.$.completedAt": new Date()
+        }
+      }
+    );
+
+    // 🧹 Delete ONLY this exam session
+    await sessionCollection.deleteOne({
+      scheduleId,
+      registerno
+    });
+
     res.json({
+      scheduleId,
       registerno,
       name: student.name,
       department: student.department,
-      year: student.year,
+      batch: student.batch,
+      subject: examDoc.subject,
+      cie: examDoc.cie,
       totalMarks
     });
 
@@ -50,7 +87,6 @@ async function qaresult(req, res) {
     console.error(err);
     res.status(500).json({ message: "Internal server error" });
   }
-};
+}
 
-
-module.exports = {qaresult}
+module.exports = { qaresult };

@@ -5,11 +5,29 @@ const { generateExam } = require("../qa_question_controllers/qa_questionassigner
 /* ---------------------------------------------------
    Time utilities
 --------------------------------------------------- */
-
 function toDateTime(dateStr, timeStr) {
-  return new Date(`${dateStr} ${timeStr}`);
-}
+  const [year, month, day] = dateStr.split("-").map(Number);
 
+  const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!match) {
+    throw new Error("Invalid time format: " + timeStr);
+  }
+
+  let hour = Number(match[1]);
+  const minute = Number(match[2]);
+  const meridiem = match[3].toUpperCase();
+
+  if (meridiem === "PM" && hour !== 12) hour += 12;
+  if (meridiem === "AM" && hour === 12) hour = 0;
+
+  const FRONTEND_TZ_OFFSET_MINUTES = 330;
+
+  const utcTime =
+    Date.UTC(year, month - 1, day, hour, minute) -
+    FRONTEND_TZ_OFFSET_MINUTES * 60 * 1000;
+
+  return new Date(utcTime);
+}
 /* ---------------------------------------------------
    Exam code generator (6 chars A–Z 0–9)
 --------------------------------------------------- */
@@ -109,7 +127,7 @@ async function activateExam(examId, validFrom, validTill) {
   );
 
   await generateExam(
-    exam.year,
+    exam.batch,
     exam.department,
     exam.cie,
     exam.subject,

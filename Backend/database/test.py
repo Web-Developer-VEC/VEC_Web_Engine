@@ -1,35 +1,27 @@
-import json
+import os
+import requests
+import pandas as pd
 from pymongo import MongoClient
+import json
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
+#Hostel Student Test Settings is Turned On Till Now at line 1126
 mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
-
 client = MongoClient(mongo_uri)
 db = client[db_name]
+logsdb = client["LOGS_VEC"]
 
-def insert_library_sections():
-    collection = db["library"]
+def insert_student():
+    collection = db["student"]
 
-    with open("/root/VEC_Web_Engine/Backend/docs/library.json", "r", encoding="utf-8") as file:
-        exams_data = json.load(file)
+    with open("/root/VEC_Web_Engine/Backend/docs/students_output.json", "r", encoding="utf-8") as file:
+        admissions_data = json.load(file)
 
-        for section in exams_data:
-            section_key = section["type"]
-            document = {
-                "type": section_key,
-                "data": section["data"]
-            }
-            collection.insert_one(document)
+    # Direct insert (normal insert)
+    collection.insert_many(admissions_data)
 
-    print("library sections inserted successfully.")
+    print("students inserted successfully.")
 
-def insert_sidebar_details():
-    collection= db['sidebar']
-    with open ("/root/VEC_Web_Engine/Backend/docs/sidebar.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("Sidebar documents inserted successfully\n")
+insert_student()
 
-
-insert_library_sections()
-insert_sidebar_details()

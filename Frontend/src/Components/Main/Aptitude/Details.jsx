@@ -15,9 +15,9 @@ export default function DetailsPage() {
     password: "",
     year: ""
   });
-
-  const DEPARTMENTS = ["CSE", "ECE", "EEE", "MECH", "IT", "AI&DS"];
-  const YEARS = ["I", "II", "III", "IV"];
+  
+  const DEPARTMENTS = ["CSE", "ECE", "EEE", "MECH", "IT", "AI&DS", "EIE", "AUTO", "CIVIL", "CSE(CS)"];
+  const YEARS = ["2023-2027", "2024-2028", "2025-2029"];
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,38 +43,28 @@ export default function DetailsPage() {
 
     try {
       const deptMap = {
-        "AI&DS": "Artificial Intelligence and Data Science",
-        "CSE": "Computer Science Engineering",
-        "ECE": "Electrical and Electronic Engineering",
-        "EEE": "EEE",
-        "MECH": "MECH",
-        "IT": "IT",
+        "AI&DS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+        "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+        "CSE": "COMPUTER SCIENCE AND ENGINEERING",
+        "EEE": "ELECTRICAL AND ELECTRONICS ENGINEERING",
+        "EIE": "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
+        "IT": "INFORMATION TECHNOLOGY",
+        "MECH": "MECHANICAL ENGINEERING",
+        "AUTO": "AUTOMOBILE ENGINEERING",
+        "CIVIL": "CIVIL ENGINEERING",
+        "CSE(CS)": "CSE(CYBER SECURITY)"
       };
 
-      const yearMap = {
-        I: 1,
-        II: 2,
-        III: 3,
-        IV: 4,
-      };
 
       const res = await axios.post("/api/main-backend/studentlogin", {
         registerno: formData.registerno,
         password: formData.password,
         department: deptMap[formData.department],
-        year: yearMap[formData.year],
+        batch: formData.year,
       });
 
       const data = res.data;
-
-      sessionStorage.setItem(
-        "userSession",
-        JSON.stringify({
-          token: data.token,
-          student: data.student,
-        })
-      );
-
+        
       await Swal.fire({
         icon: "success",
         title: "Login Successful",
@@ -86,13 +76,24 @@ export default function DetailsPage() {
 
       navigate("/QA/confirm", {
         replace: true,
-        state: { student: data.student, token: data.token },
+        state: { student: data.student }
       });
-
+        
     } catch (error) {
+      if (error.response?.data?.code === "ALREADY_LOGGED_IN") {
+        Swal.fire({
+          icon: "warning",
+          title: "Already Logged In",
+          text:
+            "You are already attending the exam on another device or tab. Please continue there.",
+          confirmButtonColor: "#800000",
+        });
+        return;
+      }
+
       Swal.fire({
         icon: "error",
-        title: "Login Failed",
+        title: "Login Failed ajith",
         text:
           error?.response?.data?.message ||
           "Invalid credentials. Please try again.",
@@ -258,7 +259,7 @@ export default function DetailsPage() {
                 </option>
               ))}
             </select>
-            <label>Year*</label>
+            <label>Batch*</label>
           </div>
 
           <button type="submit">
