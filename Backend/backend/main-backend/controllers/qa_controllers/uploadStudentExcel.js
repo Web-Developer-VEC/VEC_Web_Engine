@@ -8,108 +8,192 @@ const { getDb } = require('../../config/db');
 function extractDepartment(programme) {
     if (!programme) return 'Unknown';
     
-    let dept = programme. replace(/B\.Tech\./gi, '').trim();
+    let dept = programme.replace(/B\.Tech\./gi, '').trim();
     dept = dept.replace(/M\.Tech\./gi, '').trim();
     dept = dept.replace(/B\.E\./gi, '').trim();
-    
-    console.log(`🏫 Extracted department: "${dept}" from programme: "${programme}"`);
+    dept = dept.toUpperCase();
     return dept || 'Unknown';
 }
 
-// Helper function to format date of birth (DD-MM-YYYY format)
-function formatDOB(dob) {
-    if (!dob) {
-        console.log('⚠️ No DOB provided, using default:  01-01-1990');
-        return '01-01-1990';
+// Helper function to convert scientific notation to full number string
+function parseRegisterNumber(value) {
+    if (!value) return '';
+    
+    // Convert to string first
+    let str = String(value);
+    
+    // Check if it's in scientific notation (contains 'E' or 'e')
+    if (str.includes('E') || str.includes('e')) {
+        // Parse as float and convert to fixed string without decimals
+        const num = parseFloat(str);
+        // Convert to string without scientific notation
+        str = num.toFixed(0);
     }
     
-    try {
-        let dateStr = '';
-        
-        // Handle Date object
-        if (dob instanceof Date) {
-            const day = String(dob.getDate()).padStart(2, '0');
-            const month = String(dob.getMonth() + 1).padStart(2, '0');
-            const year = dob.getFullYear();
-            dateStr = `${day}-${month}-${year}`;
-            console.log(`📅 Formatted Date object: ${dateStr}`);
-        }
-        // Handle DD-MM-YYYY format string
-        else if (typeof dob === 'string' && dob.includes('-')) {
-            const parts = dob.split('-');
-            if (parts.length === 3) {
-                const day = parts[0].padStart(2, '0');
-                const month = parts[1]. padStart(2, '0');
-                const year = parts[2];
-                dateStr = `${day}-${month}-${year}`;
-                console.log(`📅 Formatted DD-MM-YYYY string: ${dateStr}`);
-            }
-        }
-        // Handle DD/MM/YYYY format string
-        else if (typeof dob === 'string' && dob. includes('/')) {
-            const parts = dob.split('/');
-            if (parts.length === 3) {
-                const day = parts[0].padStart(2, '0');
-                const month = parts[1].padStart(2, '0');
-                const year = parts[2];
-                dateStr = `${day}-${month}-${year}`;
-                console.log(`📅 Formatted DD/MM/YYYY string: ${dateStr}`);
-            }
-        }
-        // Handle string without separators (DDMMYYYY)
-        else if (typeof dob === 'string' && dob.length === 8) {
-            dateStr = `${dob.substring(0, 2)}-${dob.substring(2, 4)}-${dob.substring(4, 8)}`;
-            console.log(`📅 Formatted DDMMYYYY string: ${dateStr}`);
-        }
-        
-        return dateStr || '01-01-1990';
-    } catch (error) {
-        console.error('❌ Error formatting DOB:', error);
-        return '01-01-1990';
-    }
+    return str.trim();
 }
 
+// Helper function to convert Excel serial date to DD-MM-YYYY
+function excelSerialToDate(serial) {
+    const excelEpoch = new Date(1900, 0, 1);
+    const daysOffset = serial - 2;
+    const date = new Date(excelEpoch.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+    
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    
+    return `${day}-${month}-${year}`;
+}
+
+// Helper function to check if value is a Date string
+function isDateString(str) {
+    if (typeof str !== 'string') return false;
+    return str.includes('GMT') || str.includes('IST') || str.match(/^\w{3}\s\w{3}\s\d{2}\s\d{4}/);
+}
+
+// Helper function to check if string is DD-MM-YYYY or DD/MM/YYYY
+function isValidDateFormat(str) {
+    if (typeof str !== 'string') return false;
+    const datePattern = /^\d{1,2}[-\/]\d{1,2}[-\/]\d{4}$/;
+    return datePattern. test(str. trim());
+}
+
+// Normalize date string to DD-MM-YYYY
+function normalizeDateString(str) {
+    let normalized = str.replace(/\//g, '-');
+    const parts = normalized.split('-');
+    if (parts.length === 3) {
+        const day = parts[0]. padStart(2, '0');
+        const month = parts[1].padStart(2, '0');
+        const year = parts[2];
+        return `${day}-${month}-${year}`;
+    }
+    return normalized;
+}
+
+// Comprehensive DOB formatting function
+function formatDOB(dob) {
+    
+    if (! dob || dob === '') {
+        return 'nil';
+    }
+    
+    // Convert to string for processing
+    const dobString = String(dob).trim();
+    
+    // CASE 1: Check if it's a Date string (like "Wed Mar 01 2006...")
+    if (isDateString(dobString)) {
+        try {
+            const parsedDate = new Date(dobString);
+            if (!isNaN(parsedDate.getTime())) {
+                const day = String(parsedDate.getDate()).padStart(2, '0');
+                const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+                const year = parsedDate.getFullYear();
+                const formatted = `${day}-${month}-${year}`;
+                return formatted;
+            }
+        } catch (e) {
+        }
+    }
+    
+    // CASE 2: Already in DD-MM-YYYY or DD/MM/YYYY format
+    if (isValidDateFormat(dobString)) {
+        const normalized = normalizeDateString(dobString);
+        return normalized;
+    }
+    
+    // CASE 3: Check if it's a number (Excel serial)
+    const numValue = parseFloat(dobString);
+    if (!isNaN(numValue) && numValue > 10000 && numValue < 60000) {
+        // Only convert to date if it's in a reasonable range for DOB
+        // 10000 = 1927-05-18, 60000 = 2064-04-07
+        // This excludes small numbers like 1234
+        const formatted = excelSerialToDate(numValue);
+        return formatted;
+    }
+    
+    // CASE 4: Return as-is for other formats (like "1234" or small numbers)
+    return dobString || '01-01-1990';
+}
 // Helper function to check file extension
 function getFileExtension(filename) {
     if (!filename) return '';
     const ext = filename.toLowerCase().split('.').pop();
-    console.log(`📄 File extension detected: . ${ext}`);
     return ext;
 }
 
-// Convert any Excel format to .xlsx using XLSX library
+// Convert any Excel format to . xlsx using XLSX library
 async function convertToXLSX(fileBuffer, ext) {
-    console.log(`🔄 Converting . ${ext} to .xlsx format...`);
     
     try {
-        // Read the file with XLSX library (supports .xls, .xlsm, . csv, etc.)
+        // Read with cellDates false to keep dates as serial numbers
         const workbook = XLSX.read(fileBuffer, { 
-            type: 'buffer', 
-            cellDates: true,
+            type: 'buffer',
+            cellDates: false,  // CRITICAL: Keep as serial numbers
             cellNF: false,
-            cellText: false
+            cellText: false,
+            raw: true
         });
         
-        console.log(`✅ File read successfully.  Sheets found: ${workbook.SheetNames.join(', ')}`);
         
-        // Write as .xlsx buffer
-        const xlsxBuffer = XLSX.write(workbook, { 
+        // Get the first sheet
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        
+        // Log cell types for debugging
+        const range = XLSX.utils.decode_range(worksheet['!ref']);
+        
+        // Convert sheet to JSON to preserve raw values with more control
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, {
+            header: 1,  // Return array of arrays
+            raw: true,  // Keep numbers as numbers, don't convert
+            dateNF: false,  // Don't format dates
+            defval: '',
+            blankrows: false
+        });
+        
+        console. log(`📋 Extracted ${jsonData.length} rows`);
+        
+      
+        // Create new workbook with raw values - NO date conversion
+        const newWorkbook = XLSX.utils.book_new();
+        const newWorksheet = XLSX.utils.aoa_to_sheet(jsonData);
+        
+        // Force all cells to be treated as general/text, not dates
+        const newRange = XLSX.utils.decode_range(newWorksheet['!ref']);
+        for (let R = newRange.s.r; R <= newRange.e.r; ++R) {
+            for (let C = newRange.s.c; C <= newRange.e. c; ++C) {
+                const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
+                const cell = newWorksheet[cellAddress];
+                if (cell && cell.t === 'd') {  // If it's a date type
+                    // Convert date to numeric value
+                    cell.t = 'n';  // Change type to number
+                    cell. z = '0';  // Remove date format
+                }
+            }
+        }
+        
+        XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, 'Worksheet');
+        
+        // Write as .xlsx buffer - NO date conversion
+        const xlsxBuffer = XLSX.write(newWorkbook, { 
             type: 'buffer', 
             bookType: 'xlsx',
-            cellDates: true 
+            cellDates: false,  // CRITICAL
+            bookSST: false
         });
         
-        console.log(`✅ Conversion successful. New buffer size: ${xlsxBuffer. length} bytes`);
+        console. log(`✅ Conversion successful. New buffer size: ${xlsxBuffer.length} bytes`);
         return xlsxBuffer;
     } catch (error) {
-        console.error(`❌ Error converting . ${ext} to .xlsx:`, error. message);
-        throw new Error(`Failed to convert .${ext} file to .xlsx format: ${error. message}`);
+        console.error(`❌ Error converting .${ext} to .xlsx:`, error.message);
+        throw new Error(`Failed to convert .${ext} file to .xlsx format: ${error.message}`);
     }
 }
 
 // Process Excel file using ExcelJS
 async function processExcelFile(fileBuffer) {
-    console.log('📊 Starting Excel file processing with ExcelJS...');
     
     const workbook = new ExcelJS. Workbook();
     await workbook.xlsx.load(fileBuffer);
@@ -121,7 +205,6 @@ async function processExcelFile(fileBuffer) {
         throw new Error('No worksheet found in Excel file');
     }
     
-    console.log(`✅ Worksheet loaded:  "${worksheet.name}" with ${worksheet.rowCount} rows`);
     
     const data = [];
     const headerRow = worksheet.getRow(1);
@@ -129,10 +212,13 @@ async function processExcelFile(fileBuffer) {
     
     // Extract headers
     headerRow.eachCell((cell, colNumber) => {
-        headers[colNumber - 1] = cell.value;
+        let headerValue = cell.value;
+        if (headerValue && typeof headerValue === 'object' && headerValue.text) {
+            headerValue = headerValue.text;
+        }
+        headers[colNumber - 1] = headerValue;
     });
     
-    console.log(`📋 Headers extracted: ${headers. join(', ')}`);
     
     // Extract data rows
     worksheet.eachRow((row, rowIndex) => {
@@ -141,7 +227,7 @@ async function processExcelFile(fileBuffer) {
         const rowData = {};
         let hasData = false;
         
-        row.eachCell((cell, colNumber) => {
+        row.eachCell({ includeEmpty: true }, (cell, colNumber) => {
             const header = headers[colNumber - 1];
             if (header) {
                 let value = cell.value;
@@ -154,29 +240,29 @@ async function processExcelFile(fileBuffer) {
                 else if (value && typeof value === 'object' && value.result !== undefined) {
                     value = value.result;
                 }
-                // Handle Date objects
+                // If it's a Date object - this should NOT happen after our conversion
                 else if (value instanceof Date) {
+                    // Try to recover - use the numeric value if possible
                     value = value;
                 }
                 
-                rowData[header] = value || '';
-                if (value) hasData = true;
+                rowData[header] = value !== undefined && value !== null ? value : '';
+                if (value !== undefined && value !== null && value !== '') hasData = true;
             }
         });
         
         if (hasData) {
-            data.push(rowData);
+            data. push(rowData);
         }
     });
     
-    console.log(`✅ Data extraction complete. Total data rows: ${data.length}`);
     
     return { data };
 }
+
 const uploadStudentExcel = async (req, res) => {
 
     try {
-        console.log('🔧 Initializing Busboy parser...');
         const busboy = Busboy({ 
             headers: req.headers,
             limits: {
@@ -184,7 +270,6 @@ const uploadStudentExcel = async (req, res) => {
                 files: 1
             }
         });
-        console.log('✅ Busboy initialized with 10MB file size limit');
 
         let fileProcessed = false;
         let responseSent = false;
@@ -197,17 +282,11 @@ const uploadStudentExcel = async (req, res) => {
             uploadedFilename = filename;
             processingStarted = true;
 
-            console.log('\n📤 FILE UPLOAD STARTED');
-            console.log(`   Field name: ${fieldname}`);
-            console.log(`   Filename: ${filename}`);
-            console.log(`   MIME Type: ${mimeType}`);
-            console.log(`   Encoding: ${encoding}`);
-
             // Validate file extension - Support multiple formats
             const ext = getFileExtension(filename);
             const allowedExtensions = ['xlsx', 'xls', 'xlsm', 'csv'];
             
-            if (!allowedExtensions.includes(ext)) {
+            if (!allowedExtensions. includes(ext)) {
                 console.error(`❌ Invalid file type: . ${ext}`);
                 console.error(`   Allowed types: ${allowedExtensions.join(', ')}`);
                 file.resume();
@@ -215,23 +294,21 @@ const uploadStudentExcel = async (req, res) => {
                     responseSent = true;
                     return res.status(400).json({
                         success: false,
-                        message: `Invalid file type.  Allowed:  ${allowedExtensions.join(', ')}. Received: .${ext}`
+                        message:  `Invalid file type.  Allowed:  ${allowedExtensions.join(', ')}. Received: .${ext}`
                     });
                 }
                 return;
             }
             
-            console.log(`✅ File type validated: .${ext}`);
 
             // Collect file data into buffer
             file.on('data', (data) => {
-                console.log(`📦 Received chunk:  ${data.length} bytes`);
                 fileBuffers.push(data);
             });
 
             file.on('limit', () => {
-                console. error('❌ File size limit exceeded (10MB)');
-                if (! responseSent) {
+                console.error('❌ File size limit exceeded (10MB)');
+                if (!responseSent) {
                     responseSent = true;
                     return res.status(400).json({
                         success: false,
@@ -244,12 +321,9 @@ const uploadStudentExcel = async (req, res) => {
                 if (responseSent || fileProcessed) return;
 
                 try {
-                    console.log(`\n✅ File upload complete`);
-                    console.log(`   Total chunks: ${fileBuffers.length}`);
                     
                     // Combine all chunks into single buffer
                     const fileBuffer = Buffer.concat(fileBuffers);
-                    console.log(`   Combined buffer size: ${fileBuffer.length} bytes (${(fileBuffer.length / 1024).toFixed(2)} KB)`);
 
                     if (fileBuffer.length === 0) {
                         console.error('❌ Uploaded file is empty');
@@ -268,18 +342,14 @@ const uploadStudentExcel = async (req, res) => {
                     const ext = getFileExtension(uploadedFilename);
                     
                     if (ext !== 'xlsx') {
-                        console.log(`\n🔄 AUTO-CONVERSION REQUIRED`);
                         processBuffer = await convertToXLSX(fileBuffer, ext);
                     } else {
-                        console.log(`\n✅ File is already .xlsx format, no conversion needed`);
                     }
 
                     // Process the Excel file
-                    console.log('\n📊 PROCESSING EXCEL DATA...');
                     const result = await processExcelFile(processBuffer);
                     const data = result.data;
 
-                    console.log(`✅ Excel processing complete:  ${data.length} rows extracted`);
 
                     if (data.length === 0) {
                         console.error('❌ No data found in Excel file');
@@ -293,23 +363,21 @@ const uploadStudentExcel = async (req, res) => {
                         return;
                     }
 
-                    console.log('\n🗄️ DATABASE OPERATIONS STARTING...');
                     const db = getDb();
                     const studentsCollection = db.collection('student');
-                    console.log('✅ Connected to student collection');
 
                     const studentsToInsert = [];
                     const errors = [];
 
                     // Process each row
-                    console.log('\n👥 PROCESSING STUDENT RECORDS...');
                     for (let i = 0; i < data.length; i++) {
                         const row = data[i];
-                        console.log(`\n   Processing row ${i + 2}... `);
                         
                         try {
                             // Extract fields
-                            const registerNo = row['Register No'] || row['RegisterNo'] || row['registerno'] || row['Register no'] || '';
+                            const registerNo = parseRegisterNumber(
+                                row['Register No'] || row['RegisterNo'] || row['registerno'] || row['Register no'] || ''
+                            );
                             const studentName = row['Student Name'] || row['StudentName'] || row['name'] || row['Name'] || '';
                             const email = row['Email Id'] || row['Email'] || row['email'] || row['Email ID'] || '';
                             const mobile = row['Student Mobile'] || row['Mobile'] || row['phone'] || row['Phone'] || row['Student mobile'] || '';
@@ -317,8 +385,6 @@ const uploadStudentExcel = async (req, res) => {
                             const batch = row['Batch'] || row['batch'] || '';
                             const dob = row['Date of Birth'] || row['DOB'] || row['dob'] || row['Date Of Birth'] || '';
 
-                            console.log(`   📝 Name: ${studentName}`);
-                            console.log(`   🆔 Register No: ${registerNo}`);
 
                             if (!registerNo) {
                                 console.error(`   ❌ Missing register number`);
@@ -330,7 +396,7 @@ const uploadStudentExcel = async (req, res) => {
                             }
 
                             // Check for duplicates
-                            const existingStudent = await studentsCollection. findOne({ 
+                            const existingStudent = await studentsCollection.findOne({ 
                                 registerno: String(registerNo).trim()
                             });
 
@@ -357,30 +423,22 @@ const uploadStudentExcel = async (req, res) => {
                             };
 
                             studentsToInsert.push(studentDoc);
-                            console.log(`   ✅ Student prepared for insertion`);
 
                         } catch (error) {
                             console.error(`   ❌ Error processing row:  ${error.message}`);
                             errors.push({ 
                                 row: i + 2, 
-                                error: error. message 
+                                error: error.message 
                             });
                         }
                     }
 
-                    console.log(`\n📊 PROCESSING SUMMARY:`);
-                    console.log(`   Total rows:  ${data.length}`);
-                    console.log(`   Valid students: ${studentsToInsert. length}`);
-                    console.log(`   Errors/Duplicates: ${errors.length}`);
 
                     // Insert valid students
                     let insertResult = null;
                     if (studentsToInsert.length > 0) {
-                        console.log(`\n💾 INSERTING ${studentsToInsert.length} STUDENTS INTO DATABASE... `);
                         insertResult = await studentsCollection.insertMany(studentsToInsert);
-                        console.log(`✅ Successfully inserted ${studentsToInsert.length} students`);
                     } else {
-                        console.log(`\n⚠️ No valid students to insert`);
                     }
 
                     const response = {
@@ -400,10 +458,6 @@ const uploadStudentExcel = async (req, res) => {
                     fileProcessed = true;
                     if (! responseSent) {
                         responseSent = true;
-                        console.log('\n✅ SENDING SUCCESS RESPONSE TO CLIENT');
-                        console.log('═══════════════════════════════════════════════════');
-                        console.log('🎉 UPLOAD PROCESS COMPLETED SUCCESSFULLY');
-                        console.log('═══════════════════════════════════════════════════\n');
                         return res.status(200).json(response);
                     }
 
@@ -435,17 +489,16 @@ const uploadStudentExcel = async (req, res) => {
         });
 
         busboy.on('field', (fieldname, value) => {
-            console.log(`📝 Form field received: [${fieldname}] = ${value}`);
         });
 
         busboy.on('finish', () => {
             console. log('✅ Busboy finished parsing form data');
             if (!processingStarted) {
                 setTimeout(() => {
-                    if (!responseSent) {
+                    if (! responseSent) {
                         responseSent = true;
                         console.error('❌ No file was uploaded');
-                        return res.status(400).json({
+                        return res. status(400).json({
                             success: false,
                             message: 'No file uploaded'
                         });
@@ -465,8 +518,6 @@ const uploadStudentExcel = async (req, res) => {
                 });
             }
         });
-
-        console.log('🔗 Piping request to Busboy...');
         req.pipe(busboy);
 
     } catch (error) {

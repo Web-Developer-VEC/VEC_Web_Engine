@@ -470,11 +470,10 @@ async function generateSingleDepartmentExcel(examDoc, students, department, sche
   const sheetData = [
     ["Subject Name", subjectName],
     ["Subject Code", subjectCode],
-    ["CIE", cie],
+    ["CIE", cie.toUpperCase()],
     ["Batch", batch],
     ["Department", department],
     ["Exam Type", examType],
-    ["Schedule ID", scheduleId],
     [],
     headers,
     ... marksData
@@ -768,11 +767,10 @@ async function generateMultipleDepartmentsExcel(examDoc, studentsByDepartment, d
   const sheetData = [
     ["Subject Name", subjectName],
     ["Subject Code", subjectCode],
-    ["CIE", cie],
+    ["CIE", cie.toUpperCase()],
     ["Batch", batch],
     ["Departments", departments. join(", ")],
     ["Exam Type", examType],
-    ["Schedule ID", scheduleId],
     [],
     headers,
     ...marksData

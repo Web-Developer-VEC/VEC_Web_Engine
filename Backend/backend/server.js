@@ -9,6 +9,7 @@ const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
 const session = require("express-session");
 const {MongoStore} = require("connect-mongo");
+require('./main-backend/middlewares/schedulers/session_cleanup_cron');
 
 dotenv.config({ quiet: true });
 
