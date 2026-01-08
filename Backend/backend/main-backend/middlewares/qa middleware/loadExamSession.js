@@ -19,7 +19,7 @@ module.exports = async function loadExamSession(req, res, next) {
     req.examSession = session;
     next();
   } catch (err) {
-    console.error("loadExamSession error:", err);
+    // console.error("loadExamSession error:", err);
     res.status(500).json({ message: "Session load failed" });
   }
 };

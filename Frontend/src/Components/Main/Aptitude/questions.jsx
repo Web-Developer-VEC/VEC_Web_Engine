@@ -13,6 +13,18 @@ const alertBox = (title, text, icon = "info") => {
   });
 };
 
+const checkRealInternet = async () => {
+  try {
+    await axios.get("/api/main-backend/qa/session/ping", {
+      timeout: 5000,
+      headers: { "Cache-Control": "no-cache" }
+    });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const QuestionPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -151,13 +163,37 @@ const QuestionPage = () => {
 
   // ---------------- BEACON ON UNLOAD ---------------
   useEffect(() => {
-    const onUnload = () => {
-      navigator.sendBeacon("/api/main-backend/qa/session/offline");
+    const onUnload = async (e) => {
+      // Method 1: sendBeacon (fast, non-blocking)
+      const beaconSent = navigator.sendBeacon(
+        "/api/main-backend/qa/session/offline",
+        JSON.stringify({ registerno: student.registerno })
+      );
+      
+      // Method 2: If beacon fails, try synchronous fetch (as backup)
+      if (!beaconSent) {
+        try {
+          // Synchronous XHR as last resort
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "/api/main-backend/qa/session/offline", false); // false = synchronous
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.send(JSON.stringify({ registerno: student.registerno }));
+        } catch (err) {
+          console.error("Failed to mark offline:", err);
+        }
+      }
     };
 
     window.addEventListener("beforeunload", onUnload);
-    return () => window.removeEventListener("beforeunload", onUnload);
-  }, []);
+    window.addEventListener("unload", onUnload); // Also listen to unload
+    window.addEventListener("pagehide", onUnload); // For mobile browsers
+
+    return () => {
+      window.removeEventListener("beforeunload", onUnload);
+      window.removeEventListener("unload", onUnload);
+      window.removeEventListener("pagehide", onUnload);
+    };
+  }, [student.registerno]);
 
   // ---------------- DISABLE CLIPBOARD ----------------------
   useEffect(() => {
@@ -174,79 +210,92 @@ const QuestionPage = () => {
     };
   }, []);
 
-  // ---------------- BLOCK BACK NAVIGATION ----------------
-  useEffect(() => {
-    window.history.pushState(null, "", window.location.href);
-
-    const blockBackNavigation = () => {
-      Swal.fire({
-        title: "Exam in Progress",
-        text: "You cannot go back during the exam.",
-        icon: "warning",
-        confirmButtonText: "OK",
-      });
-      window.history.pushState(null, "", window.location.href);
-    };
-
-    const warnBeforeUnload = (e) => {
-      e.preventDefault();
-      e.returnValue = "You have an ongoing exam.";
-    };
-
-    window.addEventListener("popstate", blockBackNavigation);
-    window.addEventListener("beforeunload", warnBeforeUnload);
-
-    return () => {
-      window.removeEventListener("popstate", blockBackNavigation);
-      window.removeEventListener("beforeunload", warnBeforeUnload);
-    };
-  }, []);
-
   // ---------------- OFFLINE/ONLINE HANDLING ----------
+  // useEffect(() => {
+  //   const handleOffline = async () => {
+  //     setIsOnline(false);
+  //     await axios.post("/api/main-backend/qa/session/offline");
+
+  //     Swal.fire({
+  //       title: "Connection Lost",
+  //       text: "Exam paused. Please reconnect.",
+  //       icon: "warning",
+  //       allowOutsideClick: false,
+  //       showConfirmButton: false,
+  //     });
+  //   };
+
+  //   const handleOnline = async () => {
+  //     setIsOnline(true);
+
+  //     Swal.close();
+
+  //     try {
+  //       await axios.post("/api/main-backend/qa/session/resume");
+
+  //       const res = await axios.get("/api/main-backend/qa/session/resume-data");
+
+  //       setCurrent(res.data.currentQuestionIndex || 0);
+  //       setSelected(res.data.selectedAnswers || {});
+  //       setVisited(res.data.selectedAnswers || {});
+
+  //       Swal.fire({
+  //         title: "Resumed",
+  //         text: "Exam resumed",
+  //         icon: "success",
+  //         timer: 2000,
+  //       });
+  //     } catch (err) {
+  //       forceExit(err.response?.data || {});
+  //     }
+  //   };
+
+  //   window.addEventListener("offline", handleOffline);
+  //   window.addEventListener("online", handleOnline);
+
+  //   return () => {
+  //     window.removeEventListener("offline", handleOffline);
+  //     window.removeEventListener("online", handleOnline);
+  //   };
+  // }, []);
+
   useEffect(() => {
-    const handleOffline = async () => {
-      setIsOnline(false);
-      await axios.post("/api/main-backend/qa/session/offline");
+    let offlineTriggered = false;
 
-      Swal.fire({
-        title: "Connection Lost",
-        text: "Exam paused. Please reconnect.",
-        icon: "warning",
-        allowOutsideClick: false,
-        showConfirmButton: false,
-      });
-    };
+    const monitorInternet = async () => {
+      const hasInternet = await checkRealInternet();
 
-    const handleOnline = async () => {
-      setIsOnline(true);
+      if (!hasInternet && !offlineTriggered) {
+        offlineTriggered = true;
+        setIsOnline(false);
 
-      try {
-        await axios.post("/api/main-backend/qa/session/resume");
-
-        const res = await axios.get("/api/main-backend/qa/session/resume-data");
-
-        setCurrent(res.data.currentQuestionIndex || 0);
-        setSelected(res.data.selectedAnswers || {});
-        setVisited(res.data.selectedAnswers || {});
+        await axios.post("/api/main-backend/qa/session/offline");
 
         Swal.fire({
-          title: "Resumed",
-          text: "Exam resumed",
-          icon: "success",
-          timer: 2000,
+          title: "Connection Lost",
+          text: "Internet connection lost. Exam paused.",
+          icon: "warning",
+          allowOutsideClick: false,
+          showConfirmButton: false,
         });
-      } catch (err) {
-        forceExit(err.response?.data || {});
+      }
+
+      if (hasInternet && offlineTriggered) {
+        offlineTriggered = false;
+        setIsOnline(true);
+
+        Swal.close();
+
+        try {
+          await axios.post("/api/main-backend/qa/session/resume");
+        } catch (err) {
+          forceExit(err.response?.data || {});
+        }
       }
     };
 
-    window.addEventListener("offline", handleOffline);
-    window.addEventListener("online", handleOnline);
-
-    return () => {
-      window.removeEventListener("offline", handleOffline);
-      window.removeEventListener("online", handleOnline);
-    };
+    const interval = setInterval(monitorInternet, 5000); // every 5 sec
+    return () => clearInterval(interval);
   }, []);
 
   // ---------------- VIOLATION TRACKING ----------------
@@ -284,24 +333,8 @@ const QuestionPage = () => {
     }
   };
 
-  // ---------------- DISABLE CLIPBOARD ----------------------
-  useEffect(() => {
-    const blockClipboard = (e) => e.preventDefault();
-
-    document.addEventListener("copy", blockClipboard);
-    document.addEventListener("cut", blockClipboard);
-    document.addEventListener("paste", blockClipboard);
-
-    return () => {
-      document.removeEventListener("copy", blockClipboard);
-      document.removeEventListener("cut", blockClipboard);
-      document.removeEventListener("paste", blockClipboard);
-    };
-  }, []);
-
   // ---------------- BACK PROPAGATION HABDLE ----------------
   useEffect(() => {
-    // Push dummy state so back button stays on this page
     window.history.pushState(null, "", window.location.href);
 
     const blockBackNavigation = () => {
@@ -386,27 +419,287 @@ const QuestionPage = () => {
   }, []);
 
   // ---------------- FULLSCREEN ENFORCEMENT ----------------
+  // useEffect(() => {
+  //   const onFullscreenChange = () => {
+  //     if (!document.fullscreenElement) {
+  //       registerViolation("fullscreenExit", "You exited fullscreen mode.");
+
+  //       Swal.fire({
+  //         title: "Return to Fullscreen",
+  //         text: "Click OK to continue the exam",
+  //         icon: "warning",
+  //         allowOutsideClick: false,
+  //         allowEscapeKey: false,
+  //       }).then(() => {
+  //         document.documentElement.requestFullscreen().catch(() => {});
+  //       });
+  //     }
+  //   };
+
+  //   document.addEventListener("fullscreenchange", onFullscreenChange);
+  //   return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+  // }, []);
+
   useEffect(() => {
-    const onFullscreenChange = () => {
+    const enterFullscreenOnce = () => {
       if (!document.fullscreenElement) {
         registerViolation("fullscreenExit", "You exited fullscreen mode.");
+        document.documentElement.requestFullscreen().catch(() => { });
+      }
+      document.removeEventListener("click", enterFullscreenOnce);
+    };
 
+    document.addEventListener("click", enterFullscreenOnce);
+
+    const onFullscreenChange = () => {
+      if (!document.fullscreenElement) {
         Swal.fire({
-          title: "Return to Fullscreen",
-          text: "Click OK to continue the exam",
+          title: "Fullscreen Required",
+          text: "Please stay in fullscreen mode to continue the examination process.",
           icon: "warning",
+          confirmButtonText: "Return to Fullscreen",
           allowOutsideClick: false,
           allowEscapeKey: false,
         }).then(() => {
-          document.documentElement.requestFullscreen().catch(() => {
-            forceExit({ reason: "Unable to maintain fullscreen mode" });
-          });
+          document.documentElement.requestFullscreen().catch(() => { });
         });
       }
     };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
-    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+
+    return () => {
+      document.removeEventListener("click", enterFullscreenOnce);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    };
+  }, []);
+
+  // ---------------- DETECT BROWSER EXTENSIONS ----------------
+  useEffect(() => {
+    const detectExtensions = async () => {
+      // Method 1: Check for common extension resources
+      const commonExtensions = [
+        'chrome-extension://',
+        'moz-extension://',
+        'safari-extension://',
+        'ms-browser-extension://'
+      ];
+
+      // Check if any extension scripts are injected
+      const scripts = Array.from(document.querySelectorAll('script'));
+      const hasExtensionScript = scripts.some(script => 
+        commonExtensions.some(prefix => script.src.includes(prefix))
+      );
+
+      if (hasExtensionScript) {
+        registerViolation('extensionDetected', 'Browser extension detected');
+      }
+
+      // Method 2: Check for modified DOM properties (common extension behavior)
+      const originalFetch = window.fetch;
+      const originalXHR = window.XMLHttpRequest;
+      
+      if (window.fetch !== originalFetch || window.XMLHttpRequest !== originalXHR) {
+        registerViolation('extensionDetected', 'Modified browser APIs detected');
+      }
+    };
+
+    detectExtensions();
+    
+    // Periodic check every 5 seconds
+    const interval = setInterval(detectExtensions, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // ---------------- DETECT CHROME/EDGE EXTENSIONS SPECIFICALLY ----------------
+  useEffect(() => {
+    const detectChromeExtensions = () => {
+      // Check if chrome.runtime exists (only available to extensions)
+      if (window.chrome && window.chrome.runtime && window.chrome.runtime.id) {
+        registerViolation('extensionDetected', 'Chrome extension API detected');
+        return true;
+      }
+
+      // Check for extension-injected elements
+      const elementsWithExtensionId = document.querySelectorAll('[data-extension-id], [data-ext-id]');
+      if (elementsWithExtensionId.length > 0) {
+        registerViolation('extensionDetected', 'Extension-injected elements detected');
+        return true;
+      }
+
+      return false;
+    };
+
+    if (detectChromeExtensions()) {
+      Swal.fire({
+        title: '⚠️ Extensions Detected',
+        text: 'Please disable all browser extensions and restart the exam.',
+        icon: 'error',
+        allowOutsideClick: false,
+        confirmButtonText: 'Exit Exam'
+      }).then(() => {
+        navigate("/QA/qaexam", { replace: true });
+      });
+    }
+
+    const interval = setInterval(detectChromeExtensions, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // ---------------- MONITOR DOM MUTATIONS (Extension Activity) ----------------
+  useEffect(() => {
+    let mutationCount = 0;
+    const MUTATION_THRESHOLD = 50; // Adjust based on your app's normal behavior
+
+    const observer = new MutationObserver((mutations) => {
+      // Filter out mutations caused by your own app
+      const suspiciousMutations = mutations.filter(mutation => {
+        // Check if mutation is from extension
+        const target = mutation.target;
+        if (target.hasAttribute && (
+          target.hasAttribute('data-extension-id') ||
+          target.className?.includes('extension') ||
+          target.id?.includes('extension')
+        )) {
+          return true;
+        }
+        return false;
+      });
+
+      if (suspiciousMutations.length > 0) {
+        mutationCount += suspiciousMutations.length;
+        
+        if (mutationCount > MUTATION_THRESHOLD) {
+          registerViolation('suspiciousActivity', 'Unusual DOM modifications detected');
+          mutationCount = 0; // Reset counter
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'id', 'data-extension-id']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // ---------------- DETECT RESOURCE LOADING FROM EXTENSIONS ----------------
+  useEffect(() => {
+    // Override resource loading to detect extension resources
+    const originalCreateElement = document.createElement;
+    
+    document.createElement = function(...args) {
+      const element = originalCreateElement.apply(document, args);
+      
+      if (element.tagName === 'SCRIPT' || element.tagName === 'LINK') {
+        const originalSetAttribute = element.setAttribute;
+        
+        element.setAttribute = function(name, value) {
+          if ((name === 'src' || name === 'href') && 
+              (value.includes('extension://') || value.includes('moz-extension://'))) {
+            registerViolation('extensionResource', 'Extension resource loading detected');
+          }
+          return originalSetAttribute.apply(this, arguments);
+        };
+      }
+      
+      return element;
+    };
+
+    return () => {
+      document.createElement = originalCreateElement;
+    };
+  }, []);
+
+  // ---------------- IFRAME INJECTION DETECTION ----------------
+  useEffect(() => {
+    const detectIframes = () => {
+      const iframes = document.querySelectorAll('iframe');
+      
+      iframes.forEach(iframe => {
+        try {
+          // Check if iframe is from extension
+          if (iframe.src.includes('extension://') || 
+              iframe.src.includes('moz-extension://')) {
+            registerViolation('extensionIframe', 'Extension iframe detected');
+            iframe.remove();
+          }
+        } catch (e) {
+          // Cross-origin iframes will throw error, which is suspicious
+          registerViolation('suspiciousIframe', 'Suspicious iframe detected');
+          iframe.remove();
+        }
+      });
+    };
+
+    detectIframes();
+    
+    const observer = new MutationObserver(detectIframes);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // ---------------- CHECK FOR EXTENSION-MODIFIED WINDOW PROPERTIES ----------------
+  useEffect(() => {
+    const checkWindowModifications = () => {
+      // const suspiciousProperties = [
+      //   '__REACT_DEVTOOLS_GLOBAL_HOOK__',
+      //   '__REDUX_DEVTOOLS_EXTENSION__',
+      //   '__VUE_DEVTOOLS_GLOBAL_HOOK__'
+      // ];
+
+      // suspiciousProperties.forEach(prop => {
+      //   if (window[prop]) {
+      //     registerViolation('devTools', 'Developer tools extension detected');
+      //   }
+      // });
+
+      // Check for unusual window properties that might be added by extensions
+      const windowKeys = Object.keys(window);
+      const suspiciousKeys = windowKeys.filter(key => 
+        key.toLowerCase().includes('extension') || 
+        key.toLowerCase().includes('plugin')
+      );
+
+      if (suspiciousKeys.length > 0) {
+        registerViolation('extensionProperty', 'Extension properties detected in window object');
+      }
+    };
+
+    checkWindowModifications();
+    
+    const interval = setInterval(checkWindowModifications, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // ---------------- PERFORMANCE MONITORING (Extensions can slow down page) ----------------
+  useEffect(() => {
+    let performanceChecks = 0;
+    
+    const checkPerformance = () => {
+      const entries = performance.getEntriesByType('resource');
+      
+      const extensionResources = entries.filter(entry => 
+        entry.name.includes('extension://') || 
+        entry.name.includes('moz-extension://')
+      );
+
+      if (extensionResources.length > 0) {
+        performanceChecks++;
+        
+        if (performanceChecks >= 3) {
+          registerViolation('extensionActivity', 'Extension network activity detected');
+          performanceChecks = 0;
+        }
+      }
+    };
+
+    const interval = setInterval(checkPerformance, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   // ---------------- WINDOW BLUR DETECTION (Better Alt+Tab Detection) ----------------
@@ -426,7 +719,6 @@ const QuestionPage = () => {
   // ---------------- MOUSE LEAVE DETECTION ----------------
   useEffect(() => {
     const onMouseLeave = () => {
-      // Detects when mouse leaves the browser window
       registerViolation(
         "mouseLeave",
         "Mouse left browser window"
@@ -437,7 +729,7 @@ const QuestionPage = () => {
     return () => document.removeEventListener('mouseleave', onMouseLeave);
   }, []);
 
-  // ---------------- PREVENT TEXT SELECTION (Smarter Version) ----------------
+  // ---------------- PREVENT TEXT SELECTION ----------------
   useEffect(() => {
     const preventSelection = (e) => {
       e.preventDefault();
@@ -447,7 +739,7 @@ const QuestionPage = () => {
     return () => document.removeEventListener('selectstart', preventSelection);
   }, []);
 
-  // ---------------- SCREENSHOT DETECTION (Advanced) ----------------
+  // ---------------- SCREENSHOT DETECTION ----------------
   useEffect(() => {
     const detectScreenshot = (e) => {
       if (
@@ -466,8 +758,8 @@ const QuestionPage = () => {
   // ---------------- FOCUS THEFT PREVENTION ----------------
   useEffect(() => {
     let consecutiveFocusLoss = 0;
-    const FOCUS_CHECK_INTERVAL = 2000; // 2 seconds
-    const MAX_CONSECUTIVE_LOSS = 5; // 10 seconds total (5 × 2s)
+    const FOCUS_CHECK_INTERVAL = 2000; 
+    const MAX_CONSECUTIVE_LOSS = 5;
 
     const enforceWindowFocus = () => {
       if (document.hidden || !document.hasFocus()) {
@@ -487,7 +779,6 @@ const QuestionPage = () => {
           });
         }
       } else {
-        // Reset counter when focus returns
         consecutiveFocusLoss = 0;
       }
     };
@@ -593,7 +884,7 @@ const QuestionPage = () => {
         }
       );
 
-      const { registerno, name, department, year, totalMarks } = res.data;
+      const { registerno, name, department, batch, totalMarks } = res.data;
 
       Swal.fire({
         title: "Exam Result",
@@ -603,7 +894,7 @@ const QuestionPage = () => {
             <p><b>Register No:</b> ${registerno}</p>
             <p><b>Name:</b> ${name}</p>
             <p><b>Department:</b> ${department}</p>
-            <p><b>Year:</b> ${year}</p>
+            <p><b>Year:</b> ${batch}</p>
             <hr/>
             <h3 style="text-align:center;color:#16a34a">
               Total Marks: ${totalMarks}
@@ -630,7 +921,7 @@ const QuestionPage = () => {
   return (
     <>
       {/* ✅ TIMER HEADER */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b shadow-sm">
+      <div className="z-50 bg-white border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="text-2xl font-bold text-gray-900">
             Time Left: <span className={timeLeft < 300 ? "text-red-600" : "text-green-600"}>{formatTime(timeLeft)}</span>
@@ -666,7 +957,7 @@ const QuestionPage = () => {
         </div>
       </div>
 
-      <div className="quest_page relative select-none" style={{ paddingTop: "80px" }}>
+      <div className="quest_page relative select-none" style={{ paddingTop: "20px" }}>
         {/* LEFT COLUMN */}
         <div className="quest_left">
           <h2 className="quest_title">Question</h2>
@@ -693,7 +984,7 @@ const QuestionPage = () => {
           </div>
           <div className="quest_button_area">
             {current < questions.length - 1 ? (
-              <button className="quest_btn_next" onClick={nextQuestion} disabled={loading}>
+              <button className="quest_btn_next" onClick={nextQuestion} disabled={loading || !isOnline}>
                 {loading ? "Saving..." : "Next"}
               </button>
             ) : (

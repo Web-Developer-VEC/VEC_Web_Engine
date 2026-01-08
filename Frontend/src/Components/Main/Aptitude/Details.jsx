@@ -23,6 +23,28 @@ export default function DetailsPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  const loginStudent = async () => {
+    const deptMap = {
+      "AI&DS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+      "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+      "CSE": "COMPUTER SCIENCE AND ENGINEERING",
+      "EEE": "ELECTRICAL AND ELECTRONICS ENGINEERING",
+      "EIE": "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
+      "IT": "INFORMATION TECHNOLOGY",
+      "MECH": "MECHANICAL ENGINEERING",
+      "AUTO": "AUTOMOBILE ENGINEERING",
+      "CIVIL": "CIVIL ENGINEERING",
+      "CSE(CS)": "CSE(CYBER SECURITY)",
+    };
+
+    return axios.post("/api/main-backend/studentlogin", {
+      registerno: formData.registerno,
+      password: formData.password,
+      department: deptMap[formData.department],
+      batch: formData.year,
+    });
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -42,43 +64,46 @@ export default function DetailsPage() {
     }
 
     try {
-      const deptMap = {
-        "AI&DS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
-        "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
-        "CSE": "COMPUTER SCIENCE AND ENGINEERING",
-        "EEE": "ELECTRICAL AND ELECTRONICS ENGINEERING",
-        "EIE": "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
-        "IT": "INFORMATION TECHNOLOGY",
-        "MECH": "MECHANICAL ENGINEERING",
-        "AUTO": "AUTOMOBILE ENGINEERING",
-        "CIVIL": "CIVIL ENGINEERING",
-        "CSE(CS)": "CSE(CYBER SECURITY)"
-      };
-
-
-      const res = await axios.post("/api/main-backend/studentlogin", {
-        registerno: formData.registerno,
-        password: formData.password,
-        department: deptMap[formData.department],
-        batch: formData.year,
-      });
-
+      const res = await loginStudent();
       const data = res.data;
-        
+
+      // ✅ PAUSED SESSION
+      if (data.code === "SESSION_PAUSED" && data.canResume) {
+        const result = await Swal.fire({
+          icon: "info",
+          title: "Previous Session Found",
+          text: "You have a paused exam session. Do you want to resume it?",
+          confirmButtonText: "Resume Exam",
+          confirmButtonColor: "#800000",
+          allowOutsideClick: false,
+        });
+
+        if (result.isConfirmed) {
+
+          Swal.close(); // ✅ IMPORTANT
+
+          navigate("/QA/confirm", {
+            replace: true,
+            state: { student: data.student, canResume: true },
+          });
+        }
+
+        return;
+      }
+
       await Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You have successfully logged in.",
-        confirmButtonColor: "#800000",
         timer: 1500,
         showConfirmButton: false,
       });
 
       navigate("/QA/confirm", {
         replace: true,
-        state: { student: data.student }
+        state: { student: data.student },
       });
-        
+
     } catch (error) {
       if (error.response?.data?.code === "ALREADY_LOGGED_IN") {
         Swal.fire({
@@ -93,7 +118,7 @@ export default function DetailsPage() {
 
       Swal.fire({
         icon: "error",
-        title: "Login Failed ajith",
+        title: "Login Failed",
         text:
           error?.response?.data?.message ||
           "Invalid credentials. Please try again.",
