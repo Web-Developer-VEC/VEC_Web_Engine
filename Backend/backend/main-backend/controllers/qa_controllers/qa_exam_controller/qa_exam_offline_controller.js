@@ -1,13 +1,17 @@
 const { getDb } = require("../../../config/db");
 
 async function markOffline(req, res) {
+  console.log("OFFLINE");
+  
   const db = getDb();
   const sessionCol = db.collection("qa_exam_sessions");
 
   const { registerno } = req.session.user;
 
-  await sessionCol.updateOne(
-    { registerno },
+  console.log(`📴 Marking ${registerno} offline...`); 
+
+  const result = await sessionCol.updateOne(
+    { registerno, status: "ACTIVE" },
     {
       $set: {
         status: "PAUSED",
@@ -19,7 +23,10 @@ async function markOffline(req, res) {
     }
   );
 
-  res.json({ success: true });
+  console.log(`✅ Update result:`, result.modifiedCount); // ← Log result
+
+  // Even if update fails, return success (beacon might retry)
+  res.status(200).json({ success: true });
 }
 
 async function resumeSession(req, res) {

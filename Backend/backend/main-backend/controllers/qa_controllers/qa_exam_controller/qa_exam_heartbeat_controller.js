@@ -8,10 +8,21 @@ async function heartbeat(req, res) {
 
   const session = await sessionCol.findOne({ registerno });
 
-  if (!session || session.status !== "ACTIVE") {
+  if (!session) {
+    return res.status(403).json({ status: "TERMINATED" });
+  }
+
+  if (session.status === "TERMINATED") {
     return res.status(403).json({
-      status: session?.status || "TERMINATED",
-      reason: session?.terminatedReason
+      status: "TERMINATED",
+      reason: session.terminatedReason
+    });
+  }
+
+  if (session.status === "PAUSED") {
+    return res.status(409).json({
+      status: "PAUSED",
+      reason: "Session paused"
     });
   }
 
@@ -36,26 +47,27 @@ async function heartbeat(req, res) {
 //     });
 //   }
 
-  // 🔥 LONG DISCONNECT CHECK
+  const HEARTBEAT_TIMEOUT = 20 * 1000; // 20 seconds
+
   if (
-    session.status === "PAUSED" &&
-    session.offline?.lastDisconnectedAt &&
-    Date.now() - new Date(session.offline.lastDisconnectedAt).getTime() > 5 * 60 * 1000
+    session.lastSeenAt &&
+    Date.now() - new Date(session.lastSeenAt).getTime() > HEARTBEAT_TIMEOUT &&
+    session.status === "ACTIVE"
   ) {
     await sessionCol.updateOne(
-        { _id: session._id },
-        {
+      { _id: session._id },
+      {
         $set: {
-            status: "TERMINATED",
-            terminatedReason: "LONG_DISCONNECT",
-            endedAt: new Date()
+          status: "PAUSED",
+          isOnline: false,
+          "offline.lastDisconnectedAt": new Date()
         }
-        }
+      }
     );
 
-    return res.status(403).json({
-        status: "TERMINATED",
-        reason: "Disconnected too long"
+    return res.status(409).json({
+      status: "PAUSED",
+      reason: "Heartbeat timeout"
     });
   }
 
@@ -63,7 +75,6 @@ async function heartbeat(req, res) {
     { registerno },
     {
       $set: {
-        isOnline: true,
         lastSeenAt: new Date()
       }
     }
@@ -72,4 +83,8 @@ async function heartbeat(req, res) {
   res.json({ success: true });
 }
 
-module.exports = { heartbeat }
+async function ping(req, res) {
+  res.json({ ok: true, timestamp: Date.now() });
+}
+
+module.exports = { heartbeat, ping }

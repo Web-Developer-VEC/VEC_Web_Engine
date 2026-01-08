@@ -8,7 +8,7 @@ import {
   Clock,
   Power,
 } from "lucide-react"
-import { Dropdown, SearchableInput } from "./searchableInput"
+import { Dropdown, MultiSearchDropdown, SearchableInput } from "./searchableInput"
 import Banner from "../../../../Banner"
 import { useNavigate } from "react-router"
 import Swal from "sweetalert2"
@@ -36,25 +36,31 @@ const Schedule = ({ toggle, theme }) => {
   const [loadingRegs, setLoadingRegs] = useState(false)
   const [topics, setTopics] = useState({})
   const [subjectTopics, setSubjectTopics] = useState([])
+  const [isRetest, setIsRetest] = useState(false)
+  const [semester, setSemester] = useState("")
+  // Static semester data for now as you requested
+  const [sem, setSem] = useState(["I","II","III","IV","V","VI","VII","VIII"])
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!year || !departments) return
+    if (!year) return
 
     const fetchStudents = async () => {
       setLoadingRegs(true)
 
       try {
-        const payload = {
-          department: departments,
-          batch: year,
-        }
+        const payload = isRetest
+          ? { batch: year }
+          : { department: departments, batch: year }
 
-        const res = await axios.post("/api/main-backend/get_register_no", payload)
+        const url = isRetest
+          ? "/api/main-backend/get_register_no_retest"
+          : "/api/main-backend/get_register_no"
+
+        const res = await axios.post(url, payload)
 
         setStudentRegs(res.data.students || [])
 
-        // Reset previous selection
         setRegisterState({ mode: "none", values: [] })
 
       } catch (err) {
@@ -66,7 +72,7 @@ const Schedule = ({ toggle, theme }) => {
     }
 
     fetchStudents()
-  }, [year, departments])
+  }, [year, departments, isRetest])
 
 
   useEffect(() => {
@@ -74,10 +80,6 @@ const Schedule = ({ toggle, theme }) => {
       try {
         const res = await axios.get("/api/main-backend/form")
         const data = res.data
-
-        console.log(data);
-        
-
         setYears(data.batch || [])
         setDepartmentOptions(data.departments || "")
         setSubjects(data.subjectList || [])
@@ -176,7 +178,7 @@ const Schedule = ({ toggle, theme }) => {
   }
 
   const submitExamSchedule = async () => {
-    if (!year || !departments) {
+    if (!year || !date || !time || !semester) {
       await Swal.fire({
         icon: "warning",
         title: "Missing Details",
@@ -190,7 +192,7 @@ const Schedule = ({ toggle, theme }) => {
 
     const payload = {
       batch: year,
-      department: departments,
+      semester,
       registerNo: registerState.values,
       cie: examType,
       subject,
@@ -199,6 +201,10 @@ const Schedule = ({ toggle, theme }) => {
       date,
       start,
       end
+    }
+
+    if (!isRetest) {
+      payload.department = departments
     }
 
     // 🔄 Show loading
@@ -244,6 +250,7 @@ const Schedule = ({ toggle, theme }) => {
       setTime("")
       setExamType("")
       setTopics([])
+      setSemester("")
     } catch (error) {
       console.error("Schedule error:", error)
 
@@ -267,10 +274,41 @@ const Schedule = ({ toggle, theme }) => {
       />
 
       <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center px-4 mb-4">
-        <div className="mt-4 px-4 mb-2 flex justify-end w-full">
+        <div className="mt-4 px-4 mb-2 flex justify-between items-center w-full">
+          <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border shadow-sm">
+            <Power size={16} className="text-slate-500" />
+            <label className="text-sm font-medium text-slate-700">Retest Mode</label>
+            <input
+              type="checkbox"
+              checked={isRetest}
+              onChange={(e) => setIsRetest(e.target.checked)}
+              className="h-4 w-4 accent-[#800000] cursor-pointer"
+            />
+          </div>
           <div className="flex gap-1">
             <button
-              onClick={() => navigate("/scheduled-exam")}
+              onClick={() => navigate("/upload", { state: { page: "student" } })}
+              className="
+              inline-flex items-center gap-2
+              px-4 py-2
+              rounded-lg
+              border border-[#800000]/30
+              bg-white
+              text-[#800000]
+              text-sm font-medium
+              shadow-sm
+              hover:bg-[#800000]
+              hover:text-text
+              hover:border-[#800000]
+              transition-all duration-200
+              focus:outline-none focus:ring-2 focus:ring-[#800000]/30
+            "
+            >
+              Upload Student Data
+              <span className="text-base">→</span>
+            </button>
+            <button
+              onClick={() => navigate("/upload", { state: { page: "question" } })}
               className="
               inline-flex items-center gap-2
               px-4 py-2
@@ -291,7 +329,7 @@ const Schedule = ({ toggle, theme }) => {
               <span className="text-base">→</span>
             </button>
             <button
-              onClick={() => navigate("/scheduled-exam")}
+              onClick={() => navigate("/qaresult")}
               className="
               inline-flex items-center gap-2
               px-4 py-2
@@ -332,24 +370,36 @@ const Schedule = ({ toggle, theme }) => {
               View Scheduled Exams
               <span className="text-base">→</span>
             </button>
-            <button
-              className="qa-logout-btn"
-              onClick={() => {
-                sessionStorage.removeItem("userSession");
-                navigate("/login");
-              }}
-              title="Log out"
-              type="button"
-            >
-              <Power size={18} />
-              <span>Logout</span>
-            </button>
           </div>
+          <button
+            className="qa-logout-btn"
+            onClick={() => {
+              sessionStorage.removeItem("userSession");
+              navigate("/login");
+            }}
+            title="Log out"
+            type="button"
+          >
+            <Power size={18} />
+            <span>Logout</span>
+          </button>
         </div>
         <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg border p-8 space-y-6">
-          <h2 className="text-2xl font-bold text-brwn text-center">
-            CIE Details Entry
-          </h2>
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold text-brwn text-center flex-1">
+              CIE Details Entry
+            </h2>
+
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-slate-700">Retest</label>
+              <input
+                type="checkbox"
+                checked={isRetest}
+                onChange={(e) => setIsRetest(e.target.checked)}
+                className="h-4 w-4 accent-[#800000] cursor-pointer"
+              />
+            </div>
+          </div>
 
           <SearchableInput
             label="Batch"
@@ -360,43 +410,64 @@ const Schedule = ({ toggle, theme }) => {
             placeholder="Select Batch"
           />
 
-          <SearchableInput
-            label="Department"
-            icon={Building2}
-            options={departmentOptions}
-            value={departments}
-            onChange={setDepartments}
-            placeholder="Select department(s)"
-          />
+          {!isRetest && (
+            <SearchableInput
+              label="Department"
+              icon={Building2}
+              options={departmentOptions}
+              value={departments}
+              onChange={setDepartments}
+              placeholder="Select department(s)"
+            />
+          )}
+
+          {/* <SearchableInput
+            label="Semester"
+            icon={BookOpen}
+            options={sem}
+            value={semester}
+            onChange={setSemester}
+            placeholder="Select Semester"
+          /> */}
 
           <div ref={regRef} className="space-y-2 relative">
-            <label className="text-slate-700 font-medium text-sm">
-              Register Numbers
-            </label>
-
             {/* Input box (same style as others) */}
-            <div
-              className="relative border border-slate-300 rounded-md min-h-[48px]
-            flex items-center gap-2 px-3 cursor-pointer
-            focus-within:ring-2 focus-within:ring-[#fdcc03]/20"
-              onClick={() => setRegDropdownOpen((v) => !v)}
-            >
-              <Hash className="w-4 h-4 text-slate-400" />
+            {isRetest ? (
+              <MultiSearchDropdown
+                label="Register Numbers"
+                icon={Hash}
+                options={studentRegs}
+                value={registerState.values}
+                onChange={(vals) =>
+                  setRegisterState({ mode: "partial", values: vals })
+                }
+                placeholder="Search register number"
+                multiple
+              />
+            ) : (
+              <div
+                className="relative border border-slate-300 rounded-md min-h-[48px]
+              flex items-center gap-2 px-3 cursor-pointer
+              focus-within:ring-2 focus-within:ring-[#fdcc03]/20"
+                onClick={() => setRegDropdownOpen((v) => !v)}
+              >
+                <Hash className="w-4 h-4 text-slate-400" />
 
-              {registerState.mode === "all" ? (
-                <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
-                  All students selected ({registerState.values.length})
-                </span>
-              ) : registerState.values.length > 0 ? (
-                <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
-                  {registerState.values.length} students selected
-                </span>
-              ) : (
-                <span className="text-slate-400 text-sm">
-                  Select register numbers
-                </span>
-              )}
-            </div>
+                {registerState.mode === "all" ? (
+                  <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
+                    All students selected ({registerState.values.length})
+                  </span>
+                ) : registerState.values.length > 0 ? (
+                  <span className="bg-[#fdcc03]/20 px-2 py-1 rounded text-xs">
+                    {registerState.values.length} students selected
+                  </span>
+                ) : (
+                  <span className="text-slate-400 text-sm">
+                    Select register numbers
+                  </span>
+                )}
+              </div>
+            )}
 
             {/* Actions */}
             <div className="flex gap-4 text-xs">
