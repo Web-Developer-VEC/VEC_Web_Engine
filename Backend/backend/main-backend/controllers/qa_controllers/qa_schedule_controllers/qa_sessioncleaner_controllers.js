@@ -41,13 +41,10 @@ const SessionClean = async () => {
           registerno: { $in: registerNumbers },
         });
 
-        console.log(
-          `🗑️ Deleted ${result.deletedCount} sessions for schedule ${schedule._id}`
-        );
+        
       }
     }
   } catch (error) {
-    console.error("Session cleanup failed:", error);
   }
 };
 
