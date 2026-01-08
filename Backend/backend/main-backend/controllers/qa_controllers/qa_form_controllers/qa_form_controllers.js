@@ -12,7 +12,7 @@ async function qa_form(req, res) {
     }
 
     // ✅ fetch students
-    const registerNumbers = await getStudentsByDeptbatch(department, batch);
+    const registerNumbers = await getStudentsByDeptbatch(department.toUpperCase(), batch);
 
     if (registerNumbers.length === 0) {
       return res.status(404).json({

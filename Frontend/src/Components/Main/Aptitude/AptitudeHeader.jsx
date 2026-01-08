@@ -9,18 +9,18 @@ const AptitudeHeader = ({ showTimer }) => {
 
   
   
-  const remainingSeconds = useExamTimer((data) => {
-    if (data?.status !== "TIME_UP") return;
+  // const remainingSeconds = useExamTimer((data) => {
+  //   if (data?.status !== "TIME_UP") return;
     
-    Swal.fire({
-      title: "Time Up",
-      text: "Your exam time has ended.",
-      icon: "info",
-      allowOutsideClick: false
-    }).then(() => {
-      // submitExam(false);
-    });
-  });
+  //   Swal.fire({
+  //     title: "Time Up",
+  //     text: "Your exam time has ended.",
+  //     icon: "info",
+  //     allowOutsideClick: false
+  //   }).then(() => {
+  //     // submitExam(false);
+  //   });
+  // });
   
   const formatTime = (totalSeconds) => {
     const h = Math.floor(totalSeconds / 3600);
@@ -86,11 +86,11 @@ const AptitudeHeader = ({ showTimer }) => {
           </div>
 
           {/* Timer */}
-          {showTimer && remainingSeconds !== null && (
+          {/* {showTimer && remainingSeconds !== null && (
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-red-700 font-bold text-[1.2rem] z-20">
               {formatTime(remainingSeconds)}
             </div>
-          )}
+          )} */}
         </div>
         <div className='hidden lg:flex px-4 pb-1.5 font-popp bg-secd text-text z-10 w-full h-[0.75rem] rounded-b-lg transition-all'></div>
       </nav>

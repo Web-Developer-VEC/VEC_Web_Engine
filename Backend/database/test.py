@@ -15,7 +15,7 @@ logsdb = client["LOGS_VEC"]
 def insert_student():
     collection = db["student"]
 
-    with open("/root/VEC_Web_Engine/Backend/docs/students_output.json", "r", encoding="utf-8") as file:
+    with open("/root/VEC_Web_Engine/Backend/docs/student_example.json", "r", encoding="utf-8") as file:
         admissions_data = json.load(file)
 
     # Direct insert (normal insert)

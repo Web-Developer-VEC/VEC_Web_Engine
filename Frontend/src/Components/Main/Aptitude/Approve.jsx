@@ -14,6 +14,8 @@ export default function InstructionPage() {
   const [codeError, setCodeError] = useState("");
   const location = useLocation();
   const student = location.state?.student;
+  console.log("Stu",student);
+  
   const [examData, setExamData] = useState(null);
   const [codeLoading, setCodeLoading] = useState(false);
   const [startExamLoading, setStartExamLoading] = useState(false);
@@ -36,7 +38,7 @@ export default function InstructionPage() {
     if (!student) {
       navigate('/QA/qaexam', { replace: true });
     }
-  }, [student, navigate]); // ✅ Added navigate to dependencies
+  }, [student]);
 
   // ---------------- FULLSCREEN ENFORCEMENT WITH WARNING ----------------
   useEffect(() => {

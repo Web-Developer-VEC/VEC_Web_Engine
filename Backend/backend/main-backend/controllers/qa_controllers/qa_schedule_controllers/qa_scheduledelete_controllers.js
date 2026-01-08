@@ -16,9 +16,7 @@ const deleteSchedules = async () => {
       createdAt: { $lte: tenDaysAgo }
     });
 
-    console.log(
-      `[CRON] Deleted ${result.deletedCount} old schedules`
-    );
+    
   } catch (error) {
     console.error("[CRON] Schedule cleanup failed:", error);
   }

@@ -416,7 +416,7 @@ async function appendQuestionsToMongo(filetype, newExam) {
         // Topic exists, check for duplicate questions
         const existingQuestions = mergedExam[existingTopicIndex].topic_question;
         
-        newTopic.topic_question. forEach((newQuestion) => {
+        newTopic.topic_question.forEach((newQuestion) => {
           // Check if this question already exists
           const isDuplicate = existingQuestions. some(existingQuestion => 
             isDuplicateQuestion(newQuestion, existingQuestion)
@@ -544,7 +544,7 @@ const uploadFile = async (req, res) => {
       const { duplicatesFound, questionsAdded } = await appendQuestionsToMongo(filetype, parsedExam);
 
       const originalExt = path.extname(originalFilename).toLowerCase();
-      const wasConverted = originalExt !== '. xlsx';
+      const wasConverted = originalExt !== '.xlsx';
 
       safeRespond(200, {
         success: true,
@@ -556,7 +556,7 @@ const uploadFile = async (req, res) => {
         duplicatesSkipped: duplicatesFound,
         originalFormat: originalExt,
         converted: wasConverted,
-        finalFormat: '. xlsx',
+        finalFormat: '.xlsx',
         sheetsProcessed: metadata.processedSheets,
         sheetsSkipped: metadata.skippedSheets,
         totalSheets: metadata.totalSheets,

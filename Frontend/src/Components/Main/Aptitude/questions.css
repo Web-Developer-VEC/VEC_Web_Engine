@@ -1,10 +1,10 @@
 /* Layout */
 .quest_page {
   width: 100%;
-  min-height: 85vh;
+  /* min-height: 85vh; */
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 20px;
   background: linear-gradient(135deg, #f7f3f3 0%, #f0ecec 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* position: relative; */
@@ -96,7 +96,6 @@
 
 /* RIGHT COLUMN – SCROLLABLE CIRCLES */
 .quest_right {
-  width: 25%;
   text-align: right;
   position: sticky; /* Fixed in viewport */
   top: 40px;
@@ -109,7 +108,7 @@
 }
 
 .quest_circles_scroll {
-  max-height: 80vh; /* Scrollable area */
+  max-height: 65vh; /* Scrollable area */
   overflow-y: auto;
   display: flex;
   flex-direction: column;

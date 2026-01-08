@@ -31,6 +31,20 @@ async function storeExamSchedule(req, res) {
 
     const cie = cieMap[cieRoman]
 
+    const examDate = new Date(date);
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC + 5:30
+    const currentDateIST = new Date(now.getTime() + istOffset);
+    examDate.setHours(0, 0, 0, 0);
+    currentDateIST.setHours(0, 0, 0, 0);
+    
+    if (examDate < currentDateIST) {
+      return res.status(400).json({
+        success: false,
+        message: "Cannot schedule exam for past dates.  Please select current or future date."
+      });
+    }
+
     /* -----------------------------
        Validation
     ----------------------------- */
