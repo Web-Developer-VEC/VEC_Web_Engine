@@ -71,11 +71,11 @@ const AdminIic = ({toggle, theme}) => {
         },
 
         "Event Organized": {
-            "IIC 3.0": <IicFacEvent title={"IIC 3.0"} data={iicData}/>,  
-            "IIC 4.0": <IicFacEvent title={"IIC 4.0"} data={iicData}/>,  
-            "IIC 5.0": <IicFacEvent title={"IIC 5.0"} data={iicData}/>,
-            'IIC 6.0': <IicFacEvent title={"IIC 6.0"} data={iicData}/>,
-            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData}/>
+            "IIC 3.0": <IicFacEvent title={"IIC 3.0"} data={iicData} collectionType={"iic3"}/>,  
+            "IIC 4.0": <IicFacEvent title={"IIC 4.0"} data={iicData} collectionType={"iic4"}/>,  
+            "IIC 5.0": <IicFacEvent title={"IIC 5.0"} data={iicData} collectionType={"iic5"}/>,
+            'IIC 6.0': <IicFacEvent title={"IIC 6.0"} data={iicData} collectionType={"iic6"}/>,
+            'IIC 7.0' : < IicFacEvent title={"IIC 7.0"} data={iicData} collectionType={"iic7"}/>
         },
         "Kapila": <KamalaBar data={iicData} />, 
         "Mentee Institution":   <IICMentee data={iicData}/>,
