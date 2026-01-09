@@ -37,9 +37,6 @@ const Schedule = ({ toggle, theme }) => {
   const [topics, setTopics] = useState({})
   const [subjectTopics, setSubjectTopics] = useState([])
   const [isRetest, setIsRetest] = useState(false)
-  const [semester, setSemester] = useState("")
-  // Static semester data for now as you requested
-  const [sem, setSem] = useState(["I","II","III","IV","V","VI","VII","VIII"])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -178,7 +175,7 @@ const Schedule = ({ toggle, theme }) => {
   }
 
   const submitExamSchedule = async () => {
-    if (!year || !date || !time || !semester) {
+    if (!year || !date || !time) {
       await Swal.fire({
         icon: "warning",
         title: "Missing Details",
@@ -192,7 +189,6 @@ const Schedule = ({ toggle, theme }) => {
 
     const payload = {
       batch: year,
-      semester,
       registerNo: registerState.values,
       cie: examType,
       subject,
@@ -250,7 +246,6 @@ const Schedule = ({ toggle, theme }) => {
       setTime("")
       setExamType("")
       setTopics([])
-      setSemester("")
     } catch (error) {
       console.error("Schedule error:", error)
 
@@ -420,15 +415,6 @@ const Schedule = ({ toggle, theme }) => {
               placeholder="Select department(s)"
             />
           )}
-
-          {/* <SearchableInput
-            label="Semester"
-            icon={BookOpen}
-            options={sem}
-            value={semester}
-            onChange={setSemester}
-            placeholder="Select Semester"
-          /> */}
 
           <div ref={regRef} className="space-y-2 relative">
             {/* Input box (same style as others) */}

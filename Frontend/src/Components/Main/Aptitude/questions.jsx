@@ -13,6 +13,7 @@ const alertBox = (title, text, icon = "info") => {
   });
 };
 
+// ✅ REAL INTERNET CHECK - Not just network adapter
 const checkRealInternet = async () => {
   try {
     await axios.get("/api/main-backend/qa/session/ping", {
@@ -31,22 +32,27 @@ const QuestionPage = () => {
 
   const exam = location.state?.exam || JSON.parse(localStorage.getItem("exam_data"));
   const student = location.state?.student;
+  const violation = location.state?.violations;
 
   // ✅ STATE
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState({});
   const [visited, setVisited] = useState({});
-  const [timeLeft, setTimeLeft] = useState(null); // ✅ TIMER STATE
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [timeLeft, setTimeLeft] = useState(null);
+  const [isOnline, setIsOnline] = useState(true); // Start optimistic
   const [loading, setLoading] = useState(false);
   const [violations, setViolations] = useState({
-    fullscreenExit: 0,
-    tabSwitch: 0,
+    fullscreenExit: violation.fullscreenExit || 0,
+    tabSwitch: violation.tabSwitch || 0,
   });
 
   const scrollRef = useRef(null);
   const circleRefs = useRef([]);
   const MAX_VIOLATIONS = 10;
+  
+  // ✅ Refs to track states
+  const isFullscreenWarningShown = useRef(false);
+  const offlineAlertShown = useRef(false);
 
   // SAFETY CHECK
   useEffect(() => {
@@ -63,7 +69,7 @@ const QuestionPage = () => {
 
   const q = questions[current];
 
-  // ✅ TIMER - Fetch remaining time and countdown
+  // ✅ TIMER
   useEffect(() => {
     const fetchRemainingTime = async () => {
       try {
@@ -85,7 +91,7 @@ const QuestionPage = () => {
         if (prev === null) return null;
         if (prev <= 1) {
           clearInterval(interval);
-          submitExam(true); // Auto-submit when time's up
+          submitExam(true);
           return 0;
         }
         return prev - 1;
@@ -95,7 +101,6 @@ const QuestionPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Format time as MM:SS
   const formatTime = (seconds) => {
     if (seconds === null) return "Loading...";
     const mins = Math.floor(seconds / 60);
@@ -103,29 +108,26 @@ const QuestionPage = () => {
     return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   };
 
-  // ---------------- SESSION CHECK STATUS -------------------
+  // SESSION CHECK STATUS
   useEffect(() => {
     const verifySession = async () => {
       try {
         const res = await axios.get("/api/main-backend/qa/session/status");
-
         if (res.data.status !== "ACTIVE") {
           forceExit(res.data);
         }
-      } catch {
-        forceExit({ reason: "Session verification failed" });
+      } catch (err) {
+        console.error("Session verification error:", err);
       }
     };
-
     verifySession();
   }, []);
 
-  // ✅ RESUME EXAM DATA
+  // RESUME EXAM DATA
   useEffect(() => {
     const resumeExam = async () => {
       try {
         const res = await axios.get("/api/main-backend/qa/session/resume-data");
-
         const { currentQuestionIndex, selectedAnswers } = res.data;
 
         const normalizedSelected = {};
@@ -141,14 +143,13 @@ const QuestionPage = () => {
         setSelected(normalizedSelected);
         setVisited(normalizedVisited);
       } catch (err) {
-        forceExit(err.response?.data || {});
+        console.error("Resume exam error:", err);
       }
     };
-
     resumeExam();
   }, []);
 
-  // ---------------- HEARTBEAT CHECK ---------------
+  // HEARTBEAT CHECK
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
@@ -156,28 +157,25 @@ const QuestionPage = () => {
       } catch (err) {
         forceExit(err.response?.data || {});
       }
-    }, 15000); // every 15 sec
+    }, 15000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // ---------------- BEACON ON UNLOAD ---------------
+  // BEACON ON UNLOAD
   useEffect(() => {
-    const onUnload = async (e) => {
-      // Method 1: sendBeacon (fast, non-blocking)
+    const onUnload = () => {
       const beaconSent = navigator.sendBeacon(
         "/api/main-backend/qa/session/offline",
-        JSON.stringify({ registerno: student.registerno })
+        JSON.stringify({ registerno: student?.registerno })
       );
       
-      // Method 2: If beacon fails, try synchronous fetch (as backup)
       if (!beaconSent) {
         try {
-          // Synchronous XHR as last resort
           const xhr = new XMLHttpRequest();
-          xhr.open("POST", "/api/main-backend/qa/session/offline", false); // false = synchronous
+          xhr.open("POST", "/api/main-backend/qa/session/offline", false);
           xhr.setRequestHeader("Content-Type", "application/json");
-          xhr.send(JSON.stringify({ registerno: student.registerno }));
+          xhr.send(JSON.stringify({ registerno: student?.registerno }));
         } catch (err) {
           console.error("Failed to mark offline:", err);
         }
@@ -185,24 +183,22 @@ const QuestionPage = () => {
     };
 
     window.addEventListener("beforeunload", onUnload);
-    window.addEventListener("unload", onUnload); // Also listen to unload
-    window.addEventListener("pagehide", onUnload); // For mobile browsers
+    window.addEventListener("unload", onUnload);
+    window.addEventListener("pagehide", onUnload);
 
     return () => {
       window.removeEventListener("beforeunload", onUnload);
       window.removeEventListener("unload", onUnload);
       window.removeEventListener("pagehide", onUnload);
     };
-  }, [student.registerno]);
+  }, [student?.registerno]);
 
-  // ---------------- DISABLE CLIPBOARD ----------------------
+  // DISABLE CLIPBOARD
   useEffect(() => {
     const blockClipboard = (e) => e.preventDefault();
-
     document.addEventListener("copy", blockClipboard);
     document.addEventListener("cut", blockClipboard);
     document.addEventListener("paste", blockClipboard);
-
     return () => {
       document.removeEventListener("copy", blockClipboard);
       document.removeEventListener("cut", blockClipboard);
@@ -210,118 +206,109 @@ const QuestionPage = () => {
     };
   }, []);
 
-  // ---------------- OFFLINE/ONLINE HANDLING ----------
-  // useEffect(() => {
-  //   const handleOffline = async () => {
-  //     setIsOnline(false);
-  //     await axios.post("/api/main-backend/qa/session/offline");
-
-  //     Swal.fire({
-  //       title: "Connection Lost",
-  //       text: "Exam paused. Please reconnect.",
-  //       icon: "warning",
-  //       allowOutsideClick: false,
-  //       showConfirmButton: false,
-  //     });
-  //   };
-
-  //   const handleOnline = async () => {
-  //     setIsOnline(true);
-
-  //     Swal.close();
-
-  //     try {
-  //       await axios.post("/api/main-backend/qa/session/resume");
-
-  //       const res = await axios.get("/api/main-backend/qa/session/resume-data");
-
-  //       setCurrent(res.data.currentQuestionIndex || 0);
-  //       setSelected(res.data.selectedAnswers || {});
-  //       setVisited(res.data.selectedAnswers || {});
-
-  //       Swal.fire({
-  //         title: "Resumed",
-  //         text: "Exam resumed",
-  //         icon: "success",
-  //         timer: 2000,
-  //       });
-  //     } catch (err) {
-  //       forceExit(err.response?.data || {});
-  //     }
-  //   };
-
-  //   window.addEventListener("offline", handleOffline);
-  //   window.addEventListener("online", handleOnline);
-
-  //   return () => {
-  //     window.removeEventListener("offline", handleOffline);
-  //     window.removeEventListener("online", handleOnline);
-  //   };
-  // }, []);
-
+  // ✅ FIX #1: REAL OFFLINE/ONLINE HANDLING - Checks actual internet, not just adapter
   useEffect(() => {
-    let offlineTriggered = false;
+    let checkInterval;
 
-    const monitorInternet = async () => {
+    const handleOffline = async () => {
+      // Double-check with real internet ping
       const hasInternet = await checkRealInternet();
-
-      if (!hasInternet && !offlineTriggered) {
-        offlineTriggered = true;
+      
+      if (!hasInternet && !offlineAlertShown.current) {
+        offlineAlertShown.current = true;
         setIsOnline(false);
 
-        await axios.post("/api/main-backend/qa/session/offline");
+        // try {
+        //   await axios.post("/api/main-backend/qa/session/offline");
+        // } catch (err) {
+        //   console.error("Failed to notify offline status:", err);
+        // }
 
         Swal.fire({
           title: "Connection Lost",
-          text: "Internet connection lost. Exam paused.",
+          text: "Internet connection lost. Exam paused. Reconnect to continue.",
           icon: "warning",
           allowOutsideClick: false,
           showConfirmButton: false,
         });
       }
+    };
 
-      if (hasInternet && offlineTriggered) {
-        offlineTriggered = false;
+    const handleOnline = async () => {
+      // Verify real internet before resuming
+      const hasInternet = await checkRealInternet();
+      
+      if (hasInternet && offlineAlertShown.current) {
+        offlineAlertShown.current = false;
         setIsOnline(true);
-
         Swal.close();
 
         try {
           await axios.post("/api/main-backend/qa/session/resume");
+          
+          const res = await axios.get("/api/main-backend/qa/session/resume-data");
+          setCurrent(res.data.currentQuestionIndex || 0);
+          setSelected(res.data.selectedAnswers || {});
+          setVisited(res.data.selectedAnswers || {});
+
+          Swal.fire({
+            title: "Reconnected",
+            text: "Exam resumed successfully",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false,
+          });
         } catch (err) {
-          forceExit(err.response?.data || {});
+          console.error("Failed to resume:", err);
         }
       }
     };
 
-    const interval = setInterval(monitorInternet, 5000); // every 5 sec
-    return () => clearInterval(interval);
+    // Listen to browser online/offline events
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
+
+    // Also poll real internet every 5 seconds
+    checkInterval = setInterval(async () => {
+      const hasInternet = await checkRealInternet();
+      
+      if (!hasInternet && !offlineAlertShown.current) {
+        handleOffline();
+      } else if (hasInternet && offlineAlertShown.current) {
+        handleOnline();
+      }
+    }, 5000);
+
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
+      clearInterval(checkInterval);
+    };
   }, []);
 
-  // ---------------- VIOLATION TRACKING ----------------
+  // VIOLATION TRACKING
   const registerViolation = async (type, message) => {
     try {
-      setViolations((prev) => ({
-        ...prev,
-        [type]: (prev[type] || 0) + 1,
-      }));
-
       const res = await axios.post("/api/main-backend/qa/session/violation", {
         type,
-        timestamp: new Date().toISOString(),
       });
-
+      
       if (res.data.terminated) {
         forceExit({ reason: "Violation limit exceeded" });
         return;
       }
 
+      setViolations({
+        fullscreenExit: res.data.fullscreenExit || 0,
+        tabSwitch: res.data.tabSwitch || 0,
+      });
+      
       Swal.fire({
         title: "⚠️ Warning",
         html: `
           <p>${message}</p>
           <p style="margin-top: 10px; color: #dc3545; font-weight: bold;">
-            Total Violations: ${res.data.fullscreenExit + res.data.tabSwitch}
+            Total Violations: ${res.data.totalViolations}
           </p>
         `,
         icon: "warning",
@@ -329,11 +316,11 @@ const QuestionPage = () => {
         timerProgressBar: true,
       });
     } catch (err) {
-      forceExit(err.response?.data || {});
+      console.error("Violation registration error:", err);
     }
   };
 
-  // ---------------- BACK PROPAGATION HABDLE ----------------
+  // BACK NAVIGATION BLOCKING
   useEffect(() => {
     window.history.pushState(null, "", window.location.href);
 
@@ -344,7 +331,6 @@ const QuestionPage = () => {
         icon: "warning",
         confirmButtonText: "OK",
       });
-
       window.history.pushState(null, "", window.location.href);
     };
 
@@ -362,9 +348,15 @@ const QuestionPage = () => {
     };
   }, []);
 
-  // ---------------- BLOCK ALL KEYBOARD ----------------
+  // KEYBOARD BLOCKING
   useEffect(() => {
     const blockKeyboard = (e) => {
+      // Allow typing in radio buttons and other interactive elements
+      const target = e.target;
+      if (target.type === 'radio' || target.type === 'checkbox') {
+        return;
+      }
+      
       e.preventDefault();
       e.stopPropagation();
       return false;
@@ -381,15 +373,9 @@ const QuestionPage = () => {
     };
   }, []);
 
-  // ---------------- SELECTIVE KEYBOARD BLOCKING ----------------
+  // SELECTIVE KEYBOARD BLOCKING
   useEffect(() => {
     const blockDangerousKeys = (e) => {
-      const target = e.target;
-      if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
-        return;
-      }
-
-      // Block DevTools
       if (
         e.key === "F12" ||
         (e.ctrlKey && e.shiftKey && e.key === "I") ||
@@ -400,13 +386,11 @@ const QuestionPage = () => {
         return false;
       }
 
-      // Block Copy/Paste
       if (e.ctrlKey && ["c", "v", "x"].includes(e.key.toLowerCase())) {
         e.preventDefault();
         return false;
       }
 
-      // Block Print Screen
       if (e.key === "PrintScreen") {
         e.preventDefault();
         registerViolation("printScreen", "Screenshot attempt detected");
@@ -418,328 +402,95 @@ const QuestionPage = () => {
     return () => document.removeEventListener("keydown", blockDangerousKeys, true);
   }, []);
 
-  // ---------------- FULLSCREEN ENFORCEMENT ----------------
-  // useEffect(() => {
-  //   const onFullscreenChange = () => {
-  //     if (!document.fullscreenElement) {
-  //       registerViolation("fullscreenExit", "You exited fullscreen mode.");
-
-  //       Swal.fire({
-  //         title: "Return to Fullscreen",
-  //         text: "Click OK to continue the exam",
-  //         icon: "warning",
-  //         allowOutsideClick: false,
-  //         allowEscapeKey: false,
-  //       }).then(() => {
-  //         document.documentElement.requestFullscreen().catch(() => {});
-  //       });
-  //     }
-  //   };
-
-  //   document.addEventListener("fullscreenchange", onFullscreenChange);
-  //   return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
-  // }, []);
-
+  // FULLSCREEN ENFORCEMENT - Fixed to always show warning
   useEffect(() => {
-    const enterFullscreenOnce = () => {
+    let isHandlingExit = false;
+
+    const forceFullscreen = () => {
       if (!document.fullscreenElement) {
-        registerViolation("fullscreenExit", "You exited fullscreen mode.");
-        document.documentElement.requestFullscreen().catch(() => { });
+        document.documentElement.requestFullscreen().catch(() => {});
       }
-      document.removeEventListener("click", enterFullscreenOnce);
     };
 
-    document.addEventListener("click", enterFullscreenOnce);
+    // Enter fullscreen on first interaction
+    document.addEventListener("click", forceFullscreen, { once: true });
 
     const onFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        Swal.fire({
-          title: "Fullscreen Required",
-          text: "Please stay in fullscreen mode to continue the examination process.",
-          icon: "warning",
-          confirmButtonText: "Return to Fullscreen",
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        }).then(() => {
-          document.documentElement.requestFullscreen().catch(() => { });
-        });
+      if (!document.fullscreenElement && !isHandlingExit) {
+        isHandlingExit = true;
+
+        // 🚨 Register violation immediately
+        registerViolation(
+          "fullscreenExit",
+          "Exited fullscreen mode"
+        );
+
+        // 🔒 Force fullscreen back instantly
+        setTimeout(() => {
+          forceFullscreen();
+          isHandlingExit = false;
+        }, 200); // small delay to avoid browser race condition
       }
     };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
 
     return () => {
-      document.removeEventListener("click", enterFullscreenOnce);
       document.removeEventListener("fullscreenchange", onFullscreenChange);
     };
-  }, []);
+  }, [document.fullscreenElement]);
 
-  // ---------------- DETECT BROWSER EXTENSIONS ----------------
+  // TAB SWITCH vs WINDOW BLUR - Properly differentiated
   useEffect(() => {
-    const detectExtensions = async () => {
-      // Method 1: Check for common extension resources
-      const commonExtensions = [
-        'chrome-extension://',
-        'moz-extension://',
-        'safari-extension://',
-        'ms-browser-extension://'
-      ];
+    let blurTimeout;
 
-      // Check if any extension scripts are injected
-      const scripts = Array.from(document.querySelectorAll('script'));
-      const hasExtensionScript = scripts.some(script => 
-        commonExtensions.some(prefix => script.src.includes(prefix))
-      );
-
-      if (hasExtensionScript) {
-        registerViolation('extensionDetected', 'Browser extension detected');
-      }
-
-      // Method 2: Check for modified DOM properties (common extension behavior)
-      const originalFetch = window.fetch;
-      const originalXHR = window.XMLHttpRequest;
-      
-      if (window.fetch !== originalFetch || window.XMLHttpRequest !== originalXHR) {
-        registerViolation('extensionDetected', 'Modified browser APIs detected');
-      }
-    };
-
-    detectExtensions();
-    
-    // Periodic check every 5 seconds
-    const interval = setInterval(detectExtensions, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ---------------- DETECT CHROME/EDGE EXTENSIONS SPECIFICALLY ----------------
-  useEffect(() => {
-    const detectChromeExtensions = () => {
-      // Check if chrome.runtime exists (only available to extensions)
-      if (window.chrome && window.chrome.runtime && window.chrome.runtime.id) {
-        registerViolation('extensionDetected', 'Chrome extension API detected');
-        return true;
-      }
-
-      // Check for extension-injected elements
-      const elementsWithExtensionId = document.querySelectorAll('[data-extension-id], [data-ext-id]');
-      if (elementsWithExtensionId.length > 0) {
-        registerViolation('extensionDetected', 'Extension-injected elements detected');
-        return true;
-      }
-
-      return false;
-    };
-
-    if (detectChromeExtensions()) {
-      Swal.fire({
-        title: '⚠️ Extensions Detected',
-        text: 'Please disable all browser extensions and restart the exam.',
-        icon: 'error',
-        allowOutsideClick: false,
-        confirmButtonText: 'Exit Exam'
-      }).then(() => {
-        navigate("/QA/qaexam", { replace: true });
-      });
-    }
-
-    const interval = setInterval(detectChromeExtensions, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ---------------- MONITOR DOM MUTATIONS (Extension Activity) ----------------
-  useEffect(() => {
-    let mutationCount = 0;
-    const MUTATION_THRESHOLD = 50; // Adjust based on your app's normal behavior
-
-    const observer = new MutationObserver((mutations) => {
-      // Filter out mutations caused by your own app
-      const suspiciousMutations = mutations.filter(mutation => {
-        // Check if mutation is from extension
-        const target = mutation.target;
-        if (target.hasAttribute && (
-          target.hasAttribute('data-extension-id') ||
-          target.className?.includes('extension') ||
-          target.id?.includes('extension')
-        )) {
-          return true;
-        }
-        return false;
-      });
-
-      if (suspiciousMutations.length > 0) {
-        mutationCount += suspiciousMutations.length;
-        
-        if (mutationCount > MUTATION_THRESHOLD) {
-          registerViolation('suspiciousActivity', 'Unusual DOM modifications detected');
-          mutationCount = 0; // Reset counter
-        }
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['class', 'id', 'data-extension-id']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // ---------------- DETECT RESOURCE LOADING FROM EXTENSIONS ----------------
-  useEffect(() => {
-    // Override resource loading to detect extension resources
-    const originalCreateElement = document.createElement;
-    
-    document.createElement = function(...args) {
-      const element = originalCreateElement.apply(document, args);
-      
-      if (element.tagName === 'SCRIPT' || element.tagName === 'LINK') {
-        const originalSetAttribute = element.setAttribute;
-        
-        element.setAttribute = function(name, value) {
-          if ((name === 'src' || name === 'href') && 
-              (value.includes('extension://') || value.includes('moz-extension://'))) {
-            registerViolation('extensionResource', 'Extension resource loading detected');
-          }
-          return originalSetAttribute.apply(this, arguments);
-        };
-      }
-      
-      return element;
-    };
-
-    return () => {
-      document.createElement = originalCreateElement;
-    };
-  }, []);
-
-  // ---------------- IFRAME INJECTION DETECTION ----------------
-  useEffect(() => {
-    const detectIframes = () => {
-      const iframes = document.querySelectorAll('iframe');
-      
-      iframes.forEach(iframe => {
-        try {
-          // Check if iframe is from extension
-          if (iframe.src.includes('extension://') || 
-              iframe.src.includes('moz-extension://')) {
-            registerViolation('extensionIframe', 'Extension iframe detected');
-            iframe.remove();
-          }
-        } catch (e) {
-          // Cross-origin iframes will throw error, which is suspicious
-          registerViolation('suspiciousIframe', 'Suspicious iframe detected');
-          iframe.remove();
-        }
-      });
-    };
-
-    detectIframes();
-    
-    const observer = new MutationObserver(detectIframes);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // ---------------- CHECK FOR EXTENSION-MODIFIED WINDOW PROPERTIES ----------------
-  useEffect(() => {
-    const checkWindowModifications = () => {
-      // const suspiciousProperties = [
-      //   '__REACT_DEVTOOLS_GLOBAL_HOOK__',
-      //   '__REDUX_DEVTOOLS_EXTENSION__',
-      //   '__VUE_DEVTOOLS_GLOBAL_HOOK__'
-      // ];
-
-      // suspiciousProperties.forEach(prop => {
-      //   if (window[prop]) {
-      //     registerViolation('devTools', 'Developer tools extension detected');
-      //   }
-      // });
-
-      // Check for unusual window properties that might be added by extensions
-      const windowKeys = Object.keys(window);
-      const suspiciousKeys = windowKeys.filter(key => 
-        key.toLowerCase().includes('extension') || 
-        key.toLowerCase().includes('plugin')
-      );
-
-      if (suspiciousKeys.length > 0) {
-        registerViolation('extensionProperty', 'Extension properties detected in window object');
-      }
-    };
-
-    checkWindowModifications();
-    
-    const interval = setInterval(checkWindowModifications, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ---------------- PERFORMANCE MONITORING (Extensions can slow down page) ----------------
-  useEffect(() => {
-    let performanceChecks = 0;
-    
-    const checkPerformance = () => {
-      const entries = performance.getEntriesByType('resource');
-      
-      const extensionResources = entries.filter(entry => 
-        entry.name.includes('extension://') || 
-        entry.name.includes('moz-extension://')
-      );
-
-      if (extensionResources.length > 0) {
-        performanceChecks++;
-        
-        if (performanceChecks >= 3) {
-          registerViolation('extensionActivity', 'Extension network activity detected');
-          performanceChecks = 0;
-        }
-      }
-    };
-
-    const interval = setInterval(checkPerformance, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ---------------- WINDOW BLUR DETECTION (Better Alt+Tab Detection) ----------------
-  useEffect(() => {
     const onWindowBlur = () => {
-      // This fires when user clicks outside browser or Alt+Tabs
-      registerViolation(
-        "windowBlur",
-        "Focus lost - Did you switch windows?"
-      );
+      // Set a short timeout to distinguish between blur and visibility change
+      blurTimeout = setTimeout(() => {
+        // Only trigger if page is still visible (meaning it's window blur, not tab switch)
+        if (!document.hidden) {
+          registerViolation("tabSwitch", "Focus lost - Did you switch windows?");
+        }
+      }, 100); // Small delay to let visibility change event fire first
+    };
+
+    const onWindowFocus = () => {
+      // Clear timeout if focus returns quickly
+      if (blurTimeout) {
+        clearTimeout(blurTimeout);
+      }
     };
 
     window.addEventListener('blur', onWindowBlur);
-    return () => window.removeEventListener('blur', onWindowBlur);
+    window.addEventListener('focus', onWindowFocus);
+    
+    return () => {
+      window.removeEventListener('blur', onWindowBlur);
+      window.removeEventListener('focus', onWindowFocus);
+      if (blurTimeout) clearTimeout(blurTimeout);
+    };
   }, []);
 
-  // ---------------- MOUSE LEAVE DETECTION ----------------
+  // ✅ TAB SWITCH DETECTION - Separate from window blur
   useEffect(() => {
-    const onMouseLeave = () => {
-      registerViolation(
-        "mouseLeave",
-        "Mouse left browser window"
-      );
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        registerViolation("tabSwitch", "Tab or window switch detected.");
+      }
     };
 
-    document.addEventListener('mouseleave', onMouseLeave);
-    return () => document.removeEventListener('mouseleave', onMouseLeave);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
   }, []);
 
-  // ---------------- PREVENT TEXT SELECTION ----------------
+  // PREVENT TEXT SELECTION
   useEffect(() => {
-    const preventSelection = (e) => {
-      e.preventDefault();
-    };
-
+    const preventSelection = (e) => e.preventDefault();
     document.addEventListener('selectstart', preventSelection);
     return () => document.removeEventListener('selectstart', preventSelection);
   }, []);
 
-  // ---------------- SCREENSHOT DETECTION ----------------
+  // SCREENSHOT DETECTION
   useEffect(() => {
     const detectScreenshot = (e) => {
       if (
@@ -755,58 +506,14 @@ const QuestionPage = () => {
     return () => document.removeEventListener('keyup', detectScreenshot);
   }, []);
 
-  // ---------------- FOCUS THEFT PREVENTION ----------------
-  useEffect(() => {
-    let consecutiveFocusLoss = 0;
-    const FOCUS_CHECK_INTERVAL = 2000; 
-    const MAX_CONSECUTIVE_LOSS = 5;
-
-    const enforceWindowFocus = () => {
-      if (document.hidden || !document.hasFocus()) {
-        consecutiveFocusLoss++;
-        
-        // Only register violation after sustained focus loss
-        if (consecutiveFocusLoss === 3) {
-          registerViolation(
-            "sustainedFocusLoss",
-            "Sustained focus loss detected (6 seconds)"
-          );
-        }
-        
-        if (consecutiveFocusLoss >= MAX_CONSECUTIVE_LOSS) {
-          forceExit({ 
-            reason: 'Excessive focus loss detected. Exam terminated for security.' 
-          });
-        }
-      } else {
-        consecutiveFocusLoss = 0;
-      }
-    };
-
-    const interval = setInterval(enforceWindowFocus, FOCUS_CHECK_INTERVAL);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ---------------- TAB SWITCH DETECTION ----------------
-  useEffect(() => {
-    const onVisibilityChange = () => {
-      if (document.hidden) {
-        registerViolation("tabSwitch", "Tab or window switch detected.");
-      }
-    };
-
-    document.addEventListener("visibilitychange", onVisibilityChange);
-    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
-  }, []);
-
-  // ---------------- DISABLE RIGHT CLICK ----------------
+  // DISABLE RIGHT CLICK
   useEffect(() => {
     const disableContextMenu = (e) => e.preventDefault();
     document.addEventListener("contextmenu", disableContextMenu);
     return () => document.removeEventListener("contextmenu", disableContextMenu);
   }, []);
 
-  // ---------------- AUTO SCROLL PROGRESS ----------------
+  // AUTO SCROLL PROGRESS
   useEffect(() => {
     if (circleRefs.current[current]) {
       circleRefs.current[current].scrollIntoView({
@@ -816,11 +523,11 @@ const QuestionPage = () => {
     }
   }, [current]);
 
-  // ---------------- ACTIONS ----------------
+  // ACTIONS
   const forceExit = (data) => {
     Swal.fire({
       title: "Exam Ended",
-      text: data.reason || "Your exam session is no longer active.",
+      text: data.reason || data.message || "Your exam session is no longer active.",
       icon: "error",
       allowOutsideClick: false,
     }).then(() => {
@@ -846,6 +553,10 @@ const QuestionPage = () => {
   };
 
   const submitCurrentAnswer = async () => {
+    if (!selected[current]) {
+      alertBox("Required", "Please select an option before continuing.", "info");
+      return;
+    }
     try {
       setLoading(true);
       const currentQuestion = questions[current];
@@ -878,11 +589,9 @@ const QuestionPage = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("/api/main-backend/studentresult", 
-        {
-          scheduleId: exam.scheduleId
-        }
-      );
+      const res = await axios.post("/api/main-backend/studentresult", {
+        scheduleId: exam.scheduleId
+      });
 
       const { registerno, name, department, batch, totalMarks } = res.data;
 
@@ -917,10 +626,9 @@ const QuestionPage = () => {
     }
   };
 
-  // ---------------- UI ----------------
+  // UI
   return (
     <>
-      {/* ✅ TIMER HEADER */}
       <div className="z-50 bg-white border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="text-2xl font-bold text-gray-900">
@@ -939,18 +647,14 @@ const QuestionPage = () => {
             </div>
           </div>
 
-          <div
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold border ${
+          <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold border ${
               isOnline
                 ? "bg-green-100 text-green-700 border-green-300"
                 : "bg-red-100 text-red-700 border-red-300"
-            }`}
-          >
-            <span
-              className={`h-2.5 w-2.5 rounded-full ${
+            }`}>
+            <span className={`h-2.5 w-2.5 rounded-full ${
                 isOnline ? "bg-green-500" : "bg-red-500 animate-pulse"
-              }`}
-            ></span>
+              }`}></span>
             {isOnline ? "Online" : "Offline"}
             {!isOnline && <span className="ml-1 text-xs font-medium">(Paused)</span>}
           </div>
@@ -958,7 +662,6 @@ const QuestionPage = () => {
       </div>
 
       <div className="quest_page relative select-none" style={{ paddingTop: "20px" }}>
-        {/* LEFT COLUMN */}
         <div className="quest_left">
           <h2 className="quest_title">Question</h2>
           <h3 className="quest_question">
@@ -966,7 +669,6 @@ const QuestionPage = () => {
           </h3>
         </div>
 
-        {/* CENTER COLUMN */}
         <div className="quest_center">
           <h2 className="quest_options_title">Options</h2>
           <div className="quest_options_container" key={current}>
@@ -977,6 +679,7 @@ const QuestionPage = () => {
                   name={`q-${current}`}
                   checked={selected[current] === opt}
                   onChange={() => selectOption(opt)}
+                  disabled={!isOnline}
                 />
                 <span>{opt}</span>
               </label>
@@ -988,14 +691,13 @@ const QuestionPage = () => {
                 {loading ? "Saving..." : "Next"}
               </button>
             ) : (
-              <button className="quest_btn_submit" onClick={() => submitExam()} disabled={loading}>
+              <button className="quest_btn_submit" onClick={() => submitExam()} disabled={loading || !isOnline}>
                 {loading ? "Submitting..." : "Submit"}
               </button>
             )}
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
         <div className="quest_right">
           <h2 className="quest_progress_title">Progress</h2>
           <div className="quest_circles_scroll" ref={scrollRef}>

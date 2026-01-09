@@ -9,6 +9,7 @@ import axios from "axios";
 export default function DetailsPage() {
   const navigate = useNavigate();
   const [status, setStatus] = useState('idle');
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     department: "",
     registerno: "",
@@ -64,6 +65,7 @@ export default function DetailsPage() {
     }
 
     try {
+      setLoading(true);
       const res = await loginStudent();
       const data = res.data;
 
@@ -124,6 +126,8 @@ export default function DetailsPage() {
           "Invalid credentials. Please try again.",
         confirmButtonColor: "#800000",
       });
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -187,7 +191,7 @@ export default function DetailsPage() {
             Please use a <b>Laptop or Desktop</b> with minimum width 1024px.
           </p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/QA/qaexam")}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
           >
             Go Back
@@ -205,7 +209,7 @@ export default function DetailsPage() {
           <h2 className="text-2xl font-bold text-yellow-600 mb-3">⛔ ACCESS BLOCKED</h2>
           <p>Your access to this exam has been blocked.</p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/QA/qaexam")}
             className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
           >
             Go Back Home
@@ -287,8 +291,8 @@ export default function DetailsPage() {
             <label>Batch*</label>
           </div>
 
-          <button type="submit">
-            Enter into Exam
+          <button type="submit" disabled={loading}>
+            {loading ? "Entering..." : "Enter into Exam"}
           </button>
         </form>
       </div>

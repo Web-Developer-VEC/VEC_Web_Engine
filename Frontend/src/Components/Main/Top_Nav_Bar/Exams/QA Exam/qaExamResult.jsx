@@ -198,7 +198,7 @@ const QAExamResults = ({ toggle, theme }) => {
                     <TableCell>{item.examType}</TableCell>
 
                     <TableCell>
-                      <button
+                      {/* <button
                         onClick={() =>
                           handleDownload(
                             item.fileUrl,
@@ -208,7 +208,8 @@ const QAExamResults = ({ toggle, theme }) => {
                         className="px-3 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded-full text-xs font-medium"
                       >
                         Download
-                      </button>
+                      </button> */}
+                      <a href={item.fileUrl} className="px-3 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded-full text-xs font-medium" >Download</a>
                     </TableCell>
                   </tr>
                 ))}
