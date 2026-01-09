@@ -586,6 +586,11 @@ const QuestionPage = () => {
       await submitCurrentAnswer();
     }
 
+    if (!selected[current]) {
+      alertBox("Required", "Please select an option before continuing.", "info");
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -606,7 +611,7 @@ const QuestionPage = () => {
             <p><b>Year:</b> ${batch}</p>
             <hr/>
             <h3 style="text-align:center;color:#16a34a">
-              Total Marks: ${totalMarks}
+              Total Marks: ${totalMarks}/50
             </h3>
           </div>
         `,

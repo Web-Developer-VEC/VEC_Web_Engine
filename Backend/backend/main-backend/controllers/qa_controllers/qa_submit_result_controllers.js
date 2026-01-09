@@ -68,7 +68,7 @@ async function qaresult(req, res) {
 
     // 🧹 Update ONLY this exam session
     const result = await sessionCollection.updateOne(
-      { scheduleObjectId, registerno },
+      { scheduleId: scheduleObjectId, registerno },
       { $set: { status: "COMPLETED", isOnline: false } }
     );
 
