@@ -17,7 +17,7 @@ async function registerViolation(req, res) {
 
   const total = currentTotal + 1;
 
-  if (total >= 10) {
+  if (total >= 5) {
     await sessionCol.updateOne(
       { registerno },
       {
