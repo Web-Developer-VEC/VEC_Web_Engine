@@ -28,11 +28,30 @@ function shuffleQuestionOptions(question) {
 }
 
 function getRequiredDistribution(total) {
-  const l1 = Math.round(total * 0.4);
-  const l2 = Math.round(total * 0.4);
-  const l3 = total - l1 - l2;
+  let l1 = Math.round(total * 0.4);
+  let l2 = Math.round(total * 0.4);
+  let l3 = Math.round(total * 0.2);
+
+  let remaining = total - (l1 + l2 + l3);
+
+  if (remaining > 0) {
+    l1 += 1;
+    remaining -= 1;
+  }
+
+  if (remaining > 0) {
+    l2 += 1;
+    remaining -= 1;
+  }
+  
+  if (remaining > 0) {
+    l3 += 1;
+    remaining -= 1;
+  }
+
   return { 1: l1, 2: l2, 3: l3 };
 }
+
 
 function getQuestionKey(q) {
   const keyParts = [];
