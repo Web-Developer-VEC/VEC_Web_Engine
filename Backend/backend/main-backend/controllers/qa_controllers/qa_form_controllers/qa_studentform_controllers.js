@@ -47,7 +47,7 @@ async function getStudent(req, res) {
     res.json({
       departments: departmentArray,
       batches: batchArray
-    });
+    }); 
 
   } catch (err) {
     res.status(500).json({ error: err.message });

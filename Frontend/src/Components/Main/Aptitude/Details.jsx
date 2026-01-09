@@ -9,6 +9,7 @@ import axios from "axios";
 export default function DetailsPage() {
   const navigate = useNavigate();
   const [status, setStatus] = useState('idle');
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     department: "",
     registerno: "",
@@ -22,6 +23,28 @@ export default function DetailsPage() {
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
+
+  const loginStudent = async () => {
+    const deptMap = {
+      "AI&DS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+      "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+      "CSE": "COMPUTER SCIENCE AND ENGINEERING",
+      "EEE": "ELECTRICAL AND ELECTRONICS ENGINEERING",
+      "EIE": "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
+      "IT": "INFORMATION TECHNOLOGY",
+      "MECH": "MECHANICAL ENGINEERING",
+      "AUTO": "AUTOMOBILE ENGINEERING",
+      "CIVIL": "CIVIL ENGINEERING",
+      "CSE(CS)": "CSE(CYBER SECURITY)",
+    };
+
+    return axios.post("/api/main-backend/studentlogin", {
+      registerno: formData.registerno,
+      password: formData.password,
+      department: deptMap[formData.department],
+      batch: formData.year,
+    });
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -42,43 +65,47 @@ export default function DetailsPage() {
     }
 
     try {
-      const deptMap = {
-        "AI&DS": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
-        "ECE": "ELECTRONICS AND COMMUNICATION ENGINEERING",
-        "CSE": "COMPUTER SCIENCE AND ENGINEERING",
-        "EEE": "ELECTRICAL AND ELECTRONICS ENGINEERING",
-        "EIE": "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
-        "IT": "INFORMATION TECHNOLOGY",
-        "MECH": "MECHANICAL ENGINEERING",
-        "AUTO": "AUTOMOBILE ENGINEERING",
-        "CIVIL": "CIVIL ENGINEERING",
-        "CSE(CS)": "CSE(CYBER SECURITY)"
-      };
-
-
-      const res = await axios.post("/api/main-backend/studentlogin", {
-        registerno: formData.registerno,
-        password: formData.password,
-        department: deptMap[formData.department],
-        batch: formData.year,
-      });
-
+      setLoading(true);
+      const res = await loginStudent();
       const data = res.data;
-        
+
+      // ✅ PAUSED SESSION
+      if (data.code === "SESSION_PAUSED" && data.canResume) {
+        const result = await Swal.fire({
+          icon: "info",
+          title: "Previous Session Found",
+          text: "You have a paused exam session. Do you want to resume it?",
+          confirmButtonText: "Resume Exam",
+          confirmButtonColor: "#800000",
+          allowOutsideClick: false,
+        });
+
+        if (result.isConfirmed) {
+
+          Swal.close(); // ✅ IMPORTANT
+
+          navigate("/QA/confirm", {
+            replace: true,
+            state: { student: data.student, canResume: true },
+          });
+        }
+
+        return;
+      }
+
       await Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You have successfully logged in.",
-        confirmButtonColor: "#800000",
         timer: 1500,
         showConfirmButton: false,
       });
 
       navigate("/QA/confirm", {
         replace: true,
-        state: { student: data.student }
+        state: { student: data.student },
       });
-        
+
     } catch (error) {
       if (error.response?.data?.code === "ALREADY_LOGGED_IN") {
         Swal.fire({
@@ -93,12 +120,14 @@ export default function DetailsPage() {
 
       Swal.fire({
         icon: "error",
-        title: "Login Failed ajith",
+        title: "Login Failed",
         text:
           error?.response?.data?.message ||
           "Invalid credentials. Please try again.",
         confirmButtonColor: "#800000",
       });
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -162,7 +191,7 @@ export default function DetailsPage() {
             Please use a <b>Laptop or Desktop</b> with minimum width 1024px.
           </p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/QA/qaexam")}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
           >
             Go Back
@@ -180,7 +209,7 @@ export default function DetailsPage() {
           <h2 className="text-2xl font-bold text-yellow-600 mb-3">⛔ ACCESS BLOCKED</h2>
           <p>Your access to this exam has been blocked.</p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/QA/qaexam")}
             className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
           >
             Go Back Home
@@ -262,8 +291,8 @@ export default function DetailsPage() {
             <label>Batch*</label>
           </div>
 
-          <button type="submit">
-            Enter into Exam
+          <button type="submit" disabled={loading}>
+            {loading ? "Entering..." : "Enter into Exam"}
           </button>
         </form>
       </div>

@@ -69,7 +69,7 @@ export function LoginForm() {
         redirectPath = "/login"
       }
 
-      setTimeout(() => navigate(redirectPath), 1000)
+      setTimeout(() => navigate(redirectPath), 500)
     } catch (err) {
       setError(err.message)
     } finally {

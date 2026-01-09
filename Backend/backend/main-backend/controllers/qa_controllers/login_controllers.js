@@ -108,17 +108,91 @@ async function studentlogin(req, res) {
     // 🔥 4️⃣ BLOCK SECOND LOGIN IF EXAM SESSION EXISTS
     const activeSession = await sessionCol.findOne({
       registerno,
-      status: { $in: ["ACTIVE"] }
+      status: { $in: ["ACTIVE", "PAUSED"] }
     });
 
     if (activeSession) {
-      return res.status(403).json({
-        success: false,
-        code: "ALREADY_LOGGED_IN",
-        message:
-          "You are already logged in and attending the examination. Multiple logins are not allowed."
-      });
+      const lastSeenAt = new Date(activeSession.lastSeenAt);
+      const timeSinceLastSeen = Date.now() - lastSeenAt.getTime();
+      
+      if (timeSinceLastSeen > 6000000) {
+        // Zombie session - auto cleanup
+        await sessionCol.updateOne(
+          { _id: activeSession._id },
+          {
+            $set: {
+              status: "TERMINATED",
+              terminatedReason: "SESSION_ABANDONED",
+              endedAt: new Date()
+            }
+          }
+        );
+      } else if (activeSession.status === "PAUSED") {
+        // Session is paused - allow recovery
+        return res.status(200).json({
+          success: true,
+          code: "SESSION_PAUSED",
+          message: "Your previous exam session was paused. You can resume it.",
+          canResume: true,
+          sessionId: activeSession.sessionId,
+          student: {
+            name: student.name,
+            registerno: student.registerno,
+            department: student.department,
+            batch: student.batch
+          }
+        });
+      } else {
+        // Genuinely active session
+        return res.status(403).json({
+          success: false,
+          code: "ALREADY_LOGGED_IN",
+          message: "You are already attending the exam. Multiple logins are not allowed."
+        });
+      }
     }
+
+    const blockedSession = await sessionCol.findOne({
+      registerno,
+      status: { $in: ["TERMINATED", "COMPLETED"] }
+    });
+
+    if(blockedSession){
+
+      if (blockedSession.status === "TERMINATED") {
+         // Session is terminated - dont allow recovery
+         return res.status(403).json({
+           success: false,
+           code: "SESSION_TERMINATED",
+           message: "The exam was terminated due to a violation of the exam guidelines.",
+           canResume: false,
+           sessionId: blockedSession.sessionId,
+           student: {
+             name: student.name,
+             registerno: student.registerno,
+             department: student.department,
+             batch: student.batch
+           }
+         });
+       }
+       else if (blockedSession.status === "COMPLETED") {
+         // Session is completed - dont allow recovery
+         return res.status(403).json({
+           success: false,
+           code: "SESSION_COMPLETED",
+           message: "The exam has been completed. therefore, you cannot log in again.",
+           canResume: false,
+           sessionId: blockedSession.sessionId,
+           student: {
+             name: student.name,
+             registerno: student.registerno,
+             department: student.department,
+             batch: student.batch
+           }
+         });
+       }
+    }
+
 
     // 5️⃣ Generate JWT token
     const token = generateToken({

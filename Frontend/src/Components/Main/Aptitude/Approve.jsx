@@ -14,9 +14,11 @@ export default function InstructionPage() {
   const [codeError, setCodeError] = useState("");
   const location = useLocation();
   const student = location.state?.student;
+  
   const [examData, setExamData] = useState(null);
   const [codeLoading, setCodeLoading] = useState(false);
   const [startExamLoading, setStartExamLoading] = useState(false);
+  const [violations, setViolations] = useState({})
 
   useEffect(() => {
     const checkDevice = () => {
@@ -36,7 +38,7 @@ export default function InstructionPage() {
     if (!student) {
       navigate('/QA/qaexam', { replace: true });
     }
-  }, [student, navigate]); // ✅ Added navigate to dependencies
+  }, [student]);
 
   // ---------------- FULLSCREEN ENFORCEMENT WITH WARNING ----------------
   useEffect(() => {
@@ -156,7 +158,8 @@ export default function InstructionPage() {
           state: {
             exam: examData,
             student,
-            sessionId: response.data.sessionId
+            sessionId: response.data.sessionId,
+            violations: response.data.violations
           },
           replace: true // ✅ Prevent going back to instruction page
         });

@@ -67,7 +67,8 @@ async function startExam(req, res) {
         return res.status(200).json({
           success: true,
           message: "Exam session resumed",
-          sessionId: existingSession.sessionId
+          sessionId: existingSession.sessionId,
+          violations: existingSession.violations
         });
       }
 
@@ -121,6 +122,10 @@ async function startExam(req, res) {
       success: true,
       message: "Exam session started successfully",
       sessionId,
+      violations: {
+        fullscreenExit: 0,
+        tabSwitch: 0
+      },
       endsAt: new Date(now.getTime() + durationMinutes * 60 * 1000)
     });
 

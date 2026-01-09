@@ -1,5 +1,5 @@
 const { getDb } = require("../../../config/db");
-const { getStudentsByDeptbatch } = require("./qa_getstudent_controllers");
+const { getStudentsByDeptbatch, getStudentsByBatch } = require("./qa_getstudent_controllers");
 
 async function qa_form(req, res) {
   try {
@@ -12,7 +12,7 @@ async function qa_form(req, res) {
     }
 
     // ✅ fetch students
-    const registerNumbers = await getStudentsByDeptbatch(department, batch);
+    const registerNumbers = await getStudentsByDeptbatch(department.toUpperCase(), batch);
 
     if (registerNumbers.length === 0) {
       return res.status(404).json({
@@ -79,4 +79,37 @@ async function getQaForm(req, res) {
   }
 }
 
-module.exports = { qa_form, getQaForm };
+async function qa_form_all_student(req, res) {
+  try {
+    const { batch } = req.body;
+
+    if (!batch) {
+      return res.status(400).json({
+        message: "Batch is required"
+      });
+    }
+
+    // ✅ fetch all students by batch (no department filter)
+    const registerNumbers = await getStudentsByBatch(batch);
+
+    if (registerNumbers.length === 0) {
+      return res.status(404).json({
+        message: "No students found for this batch"
+      });
+    }
+
+    res.status(200).json({
+      students: registerNumbers,
+      count: registerNumbers.length,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error",
+      error: error.message
+    });
+  }
+}
+
+
+module.exports = { qa_form, getQaForm, qa_form_all_student };
