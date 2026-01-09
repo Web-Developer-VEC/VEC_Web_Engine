@@ -28,7 +28,7 @@ const SessionClean = async () => {
         { $set: { status: "inactive" } }
       );
 
-      const cleanupTime = new Date(validTill.getTime() + 30 * 60 * 1000);
+      const cleanupTime = new Date(validTill.getTime() + 5 * 60 * 1000);
 
       if (now >= cleanupTime) {
         const exam = await qaExamCol.findOne({ scheduleId: schedule._id });

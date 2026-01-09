@@ -278,7 +278,8 @@ async function generateExam(
           subjectQuestions.push(...picked);
         });
 
-        questionsBySubject[sub] = subjectQuestions;
+        questionsBySubject[sub] =shuffle(subjectQuestions).slice(0, totalForSubject);
+
       }
 
       let finalQuestions = [];
