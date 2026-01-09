@@ -152,6 +152,48 @@ async function studentlogin(req, res) {
       }
     }
 
+    const blockedSession = await sessionCol.findOne({
+      registerno,
+      status: { $in: ["TERMINATED", "COMPLETED"] }
+    });
+
+    if(blockedSession){
+
+      if (blockedSession.status === "TERMINATED") {
+         // Session is terminated - dont allow recovery
+         return res.status(403).json({
+           success: false,
+           code: "SESSION_TERMINATED",
+           message: "The exam was terminated due to a violation of the exam guidelines.",
+           canResume: false,
+           sessionId: blockedSession.sessionId,
+           student: {
+             name: student.name,
+             registerno: student.registerno,
+             department: student.department,
+             batch: student.batch
+           }
+         });
+       }
+       else if (blockedSession.status === "COMPLETED") {
+         // Session is completed - dont allow recovery
+         return res.status(403).json({
+           success: false,
+           code: "SESSION_COMPLETED",
+           message: "The exam has been completed. therefore, you cannot log in again.",
+           canResume: false,
+           sessionId: blockedSession.sessionId,
+           student: {
+             name: student.name,
+             registerno: student.registerno,
+             department: student.department,
+             batch: student.batch
+           }
+         });
+       }
+    }
+
+
     // 5️⃣ Generate JWT token
     const token = generateToken({
       id: student._id,
