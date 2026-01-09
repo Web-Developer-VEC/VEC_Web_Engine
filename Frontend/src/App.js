@@ -192,6 +192,28 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        const handler = (event) => {
+        const msg = event?.message || "";
+        const isChunkError =
+            msg.includes("Loading chunk") ||
+            msg.includes("ChunkLoadError") ||
+            /\/static\/js\/.*\.chunk\.js/i.test(msg) ||
+            /chunk\..*\.js/i.test(msg);
+
+        if (isChunkError) {
+            const key = "chunk-reload-once";
+            if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, "1");
+            window.location.reload();
+            }
+        }
+        };
+
+        window.addEventListener("error", handler);
+        return () => window.removeEventListener("error", handler);
+    }, []);
+
+    useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
 
