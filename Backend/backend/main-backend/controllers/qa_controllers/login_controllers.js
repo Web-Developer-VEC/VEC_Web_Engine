@@ -115,7 +115,7 @@ async function studentlogin(req, res) {
       const lastSeenAt = new Date(activeSession.lastSeenAt);
       const timeSinceLastSeen = Date.now() - lastSeenAt.getTime();
       
-      if (timeSinceLastSeen >  5 * 60 * 1000) {
+      if (timeSinceLastSeen >  60 * 60 * 1000) {
         // Zombie session - auto cleanup
         await sessionCol.updateOne(
           { _id: activeSession._id },
